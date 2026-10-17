@@ -1,0 +1,13 @@
+{
+  "captured_utc": "2026-10-17T15:31:24.489496+00:00",
+  "session": "spinon-c0412-pr-tailnet-20261018",
+  "agent_browser_cli": "0.31.1",
+  "close_command": "/opt/homebrew/bin/agent-browser --session spinon-c0412-pr-tailnet-20261018 close",
+  "closed": true,
+  "session_info_active": false,
+  "session_info_pid": null,
+  "former_background_pid": 65356,
+  "former_background_pid_running": false,
+  "terminal_browser_pid": 96767,
+  "terminal_browser_process_preserved": true
+}

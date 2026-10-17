@@ -452,5 +452,28 @@
       "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
       "matches_preflight": true
     }
+  ],
+  "post_close_refresh": {
+    "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/browser-verification.json",
+    "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/post-close-refresh/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/browser-verification.json",
+    "bytes": 3816,
+    "sha256": "de0f7b08013ca19edf3725789a51285e29d8f5cf30fc002be86665368f21ab36",
+    "match": true
+  },
+  "post_close_refreshes": [
+    {
+      "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/browser-verification.json",
+      "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/post-close-refresh/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/browser-verification.json",
+      "bytes": 3816,
+      "sha256": "de0f7b08013ca19edf3725789a51285e29d8f5cf30fc002be86665368f21ab36",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/selected-build.log",
+      "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/post-close-refresh/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/selected-build.log",
+      "bytes": 9424,
+      "sha256": "75883569b72331d91f31018568f5f956e9a0e09e60f7ba8d744167b675c0ba97",
+      "match": true
+    }
   ]
 }

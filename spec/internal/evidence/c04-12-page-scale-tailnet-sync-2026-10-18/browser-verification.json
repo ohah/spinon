@@ -113,7 +113,99 @@
       "bytes": 723767,
       "sha256": "86ae503212fb268c58d65d69c2802824cc544d8cb616e57cfc629fe2b215d3ff",
       "captured_by": "Agent Browser 0.31.1 screenshot"
+    },
+    {
+      "file": "tailnet-sync-evidence-agent-browser.png",
+      "width": 1280,
+      "height": 633,
+      "bytes": 133490,
+      "sha256": "1dce409fa70a37794255454fc2fe62c2b89372e7e1c489fe4cb26808734835ed",
+      "captured_by": "Agent Browser 0.31.1 screenshot"
     }
   ],
-  "browser_session_close": "pending"
+  "browser_session_close": {
+    "closed": true,
+    "close_command": "/opt/homebrew/bin/agent-browser --session spinon-c0412-pr-tailnet-20261018 close",
+    "session_info_active": false,
+    "session_info_pid": null,
+    "former_background_pid": 65356,
+    "former_background_pid_running": false,
+    "terminal_browser_pid": 96767,
+    "terminal_browser_touched": false
+  },
+  "final_sync_page": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/README.html",
+    "h1": "C04.12 page-scale Tailnet 로드맵 동기화",
+    "counter": "207개 표시 · 공식 완료 74/207",
+    "opened": true,
+    "manifest_link_opened": true,
+    "images": [
+      {
+        "alt": "Tailnet 로드맵의 C04.12 page-scale note",
+        "width": 1280,
+        "height": 633,
+        "loaded": true
+      },
+      {
+        "alt": "Tailnet 공식 완료 집계 74/207",
+        "width": 1280,
+        "height": 633,
+        "loaded": true
+      },
+      {
+        "alt": "C04.12 상위 미완료와 visual viewport 하위 항목",
+        "width": 1280,
+        "height": 633,
+        "loaded": true
+      },
+      {
+        "alt": "C04.12 page-scale WGPU 하위 항목",
+        "width": 1280,
+        "height": 633,
+        "loaded": true
+      },
+      {
+        "alt": "실행 근거 페이지 전체 캡처",
+        "width": 1280,
+        "height": 9337,
+        "loaded": true
+      }
+    ]
+  },
+  "pr_280": {
+    "url": "https://github.com/ohah/spinon/pull/280",
+    "state_at_capture": "OPEN",
+    "merge_state": "CLEAN",
+    "checks": "no checks reported",
+    "labels": [
+      "documentation",
+      "area: docs"
+    ],
+    "body_images": [
+      {
+        "file": "tailnet-roadmap-agent-browser.png",
+        "width": 1280,
+        "height": 633,
+        "loaded": true
+      },
+      {
+        "file": "tailnet-counter-agent-browser.png",
+        "width": 1280,
+        "height": 633,
+        "loaded": true
+      },
+      {
+        "file": "tailnet-status-c04-12-agent-browser.png",
+        "width": 1280,
+        "height": 633,
+        "loaded": true
+      },
+      {
+        "file": "tailnet-status-page-scale-agent-browser.png",
+        "width": 1280,
+        "height": 633,
+        "loaded": true
+      }
+    ]
+  }
 }

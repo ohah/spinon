@@ -1,0 +1,21 @@
+{
+  "copied": 2,
+  "verified": 2,
+  "deletions": 0,
+  "files": [
+    {
+      "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/browser-verification.json",
+      "bytes": 6340,
+      "sha256": "538cd605e13999e883a09c2c220eab6a9785f7ea387cc41a89c8d2c7dc42b6df",
+      "expected_sha256": "538cd605e13999e883a09c2c220eab6a9785f7ea387cc41a89c8d2c7dc42b6df",
+      "match": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/selected-build.log",
+      "bytes": 9403,
+      "sha256": "f9ac7faf6badb834d8fcb92f7937ccfe0c4ff83d0ceb10a96fa700dd82986e3b",
+      "expected_sha256": "f9ac7faf6badb834d8fcb92f7937ccfe0c4ff83d0ceb10a96fa700dd82986e3b",
+      "match": true
+    }
+  ]
+}
