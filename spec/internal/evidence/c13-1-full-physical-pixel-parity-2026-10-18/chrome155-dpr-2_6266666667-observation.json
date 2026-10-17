@@ -1,0 +1,51 @@
+{
+  "schema": "spinon-c13-1-full-physical-pixel-observation/v1",
+  "status": "captured",
+  "browser": {
+    "product": "Chrome for Testing",
+    "version": "155.0.8059.40",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "v8Version": "15.5.35.20",
+    "revision": "cfaadc5a132d78e1828635aa8405a499f3e14864",
+    "binarySha256": "ec365e6f71279593f8de4de81ec84f8a5be20129a35ee1d611ee6423bcaca38f"
+  },
+  "fixture": {
+    "wrapper": {
+      "file": "tests/fixtures/css/c13/c13-1-compact-surface-matrix.html",
+      "sha256": "431f4b4452969adcae80c4e5f89e5e45b1e8756fc3c4d8995b7a5eccfbc6f355"
+    },
+    "domCss": {
+      "file": "tests/fixtures/css/c13/c13-1-compact-surface-matrix.js",
+      "sha256": "d36bc1f7d3c791cdc91f6d878c3961e067efc2f88ca1486db8a065c5fd69c760"
+    },
+    "agentEval": {
+      "file": "tools/css-reference/c13-1-compact-surface-matrix-agent-eval.js",
+      "sha256": "5622623ce7d0f7c29452382b873ed1e12cc5ee2dc159e07c7ff61f48ee42b45b"
+    }
+  },
+  "page": "http://127.0.0.1:51702/tests/fixtures/css/c13/c13-1-compact-surface-matrix.html",
+  "geometryOracle": {
+    "file": "spec/internal/evidence/c13-1-compact-surface-matrix-2026-10-14/chrome155-observation.json",
+    "sha256": "515fc95f811399fda9e336a13e7583f2d22555fce4727f1fe7f734981abd0299"
+  },
+  "viewport": {
+    "width": 300,
+    "height": 100,
+    "deviceScaleFactor": 2.6266666666666665,
+    "reportedDeviceScaleFactor": 2.626666784286499,
+    "deviceScaleFactorMatched": true,
+    "visualViewport": [300, 100, 1],
+    "scrollX": 0,
+    "scrollY": 0,
+    "visualScale": 1,
+    "colorGamut": "srgb",
+    "screenshotColorProfile": null
+  },
+  "screenshot": {
+    "file": "spec/internal/evidence/c13-1-full-physical-pixel-parity-2026-10-18/chrome155-dpr-2_6266666667.png",
+    "width": 788,
+    "height": 263,
+    "sha256": "d6375de2893cede8335d403104d048c310348fe8438aefe3e4cd33a4f3f84f64"
+  },
+  "captureTool": "agent-browser 0.31.1 connected to Chrome DevTools Protocol port 63502"
+}
