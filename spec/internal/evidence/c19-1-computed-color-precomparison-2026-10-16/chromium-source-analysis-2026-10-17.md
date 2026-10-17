@@ -19,15 +19,17 @@
 
 ## CSS Color 4 기준 판정
 
-2026-10-09 공개된 [CSS Color 4 Candidate Recommendation Draft §14.2](https://www.w3.org/TR/2026/CRD-css-color-4-20261009/#css-gamut-mapping-to-an-rgb-destination)는 SDR 색상이 RGB 디스플레이 또는 sRGB `unorm8` 캔버스의 gamut 밖이면 CSS gamut mapping이 필요하다고 적는다. 구현은 Local MINDE, EdgeSeeker, Ray Trace 중 품질·비용에 맞는 방식을 고를 수 있지만, gamut mapping이 필요한 곳에서는 선택한 방식을 사용해야 한다. Stylo의 Local MINDE는 허용된 방식 중 하나다.
+2026-10-09 공개된 [CSS Color 4 Candidate Recommendation Draft §14.2](https://www.w3.org/TR/2026/CRD-css-color-4-20261009/#css-gamut-mapping-to-an-rgb-destination)는 SDR 색상이 RGB 디스플레이 또는 sRGB `unorm8` 캔버스의 gamut 밖이면 CSS gamut mapping을 요구한다. 구현은 Local MINDE, EdgeSeeker, Ray Trace 중 하나를 선택할 수 있고 선택한 알고리즘은 해당 매핑이 요구되는 경로에서 사용해야 한다. 세 방식은 모두 OkLCh에서 lightness와 hue를 유지하며 chroma를 줄이는 것을 목표로 한다. Stylo의 `[0,142,196]`은 Local MINDE 구현 표본이다.
 
-따라서 이 표본에서 Stylo `[0,142,196]`은 현재 CR Draft에 적힌 gamut mapping 방식과 일치한다. Chrome `[0,142,200]`은 그 결과와 다르고, 확인한 Blink의 기본 매핑 비활성 변환 경로 및 단순 채널 clipping 관측과 일치하므로 **현재 CSS Color 4 기준에서는 Chrome 출력이 벗어난 것으로 보인다**. 문서는 Candidate Recommendation Draft로 아직 작업 중이며, capture 때의 Finch assignment도 보존되지 않았다. 이 판정은 해당 Chrome 155/macOS/sRGB/unorm8 표본에 한정하고, 모든 Chrome 플랫폼·경로에 일반화하지 않는다.
+이 사실만으로 Chrome의 `[0,142,200]`이 잘못됐다고 판정할 수는 없다. Chromium `refs/branch-heads/8059` 공개 소스에서 Blink `Color::toSkColor4f()`는 Finch `kBakedGamutMapping` 상태를 읽어 `ToSRGB()`에 전달한다. 같은 branch의 해당 feature 기본값은 disabled이며, `OklabGamutMap()`은 Rec.2020 gamut의 polyhedral approximation을 사용한다. feature가 비활성인 경우 그 helper를 거치지 않고 `XYZD50ToSRGB()`로 변환한다. 이는 CSS Color 4 Local MINDE 구현과 다른 경로이므로 관찰값의 의심스러운 원인 후보지만, 이것만으로 전체 Canvas 2D paint/readback 경로의 적합성을 확정하지 않는다.
+
+원본 Chrome 캡처에는 Finch의 최종 feature assignment와 전체 Canvas 변환 경로가 보존되지 않았다. 따라서 이번 기록의 결론은 **Chrome 대 Stylo 불일치 관찰은 확정, 어느 한쪽의 오류 판정은 보류**다. 판정하려면 동일한 Chrome 155 revision에서 feature state를 고정해 재현하고, sRGB `unorm8` 결과를 Local MINDE·EdgeSeeker·Ray Trace 허용 결과 및 downstream clipping/conversion과 비교해야 한다. 이 CR Draft는 작업 중인 문서이며 결과는 해당 버전·플랫폼·경로에 한정한다.
 
 ## Stylo와 값이 다른 이유
 
-Stylo 결과 `[0,142,196]`은 CSS Color 4 Local MINDE를 적용해 OKLCH의 lightness와 hue를 유지하면서 sRGB 경계 안으로 chroma를 줄인 값이다. Chrome oracle `[0,142,200]`은 같은 paint-stage Local MINDE 출력을 쓰지 않는다. Chromium 소스는 기본 feature가 꺼져 있을 때 OKLCH를 sRGB로 변환하는 paint 경로에서 Local MINDE를 실행하지 않는다는 점을 설명한다. 결과 차이는 입력 parse나 alpha compositing 오류의 증거가 아니라 wide-gamut 색을 sRGB 8-bit Canvas에 표현하는 방식의 차이다.
+Stylo 표본은 CSS Color 4 Local MINDE로 sRGB gamut 안에 들어오며, Chrome 표본은 다른 최종 RGB를 기록했다. 소스는 Blink의 feature-gated 변환 경로에서 차이가 생길 수 있음을 보여 주지만, `toSkColor4f()`가 이 Canvas 2D 입력에서 실제로 사용되었는지와 저장소의 마지막 변환·clipping 단계는 원본 실행 자료로 확인되지 않았다. 그러므로 차이를 parse 또는 alpha compositing 문제라고 단정하지 않으며, 반대로 Chrome이 유효한 다른 CSS 알고리즘을 썼다고도 단정하지 않는다.
 
-이 표본만으로 모든 Chrome platform/backend의 gamut mapping 동작, Finch 상태, 또는 Chrome이 CSS Color 4의 특정 대체 알고리즘을 사용한다고 단정할 수 없다. C19.1 oracle는 원본 Chrome 155 macOS/sRGB/unorm8 관찰값으로 고정하고, Stylo Local MINDE 결과를 별도 typed value로 계속 보존한다.
+C19.1 oracle에는 Chrome 155의 역사적 관측값 `[0,142,200,255]`와 Stylo Local MINDE 비교값 `[0,142,196,255]`를 별개로 보존한다. 이 표본은 비교 자료이지 CSS Color 4 conformance 판정은 아니다. 재현에서는 실제 feature list와 Canvas 경로를 기록하고, 세 허용 알고리즘 각각의 sRGB `unorm8` 결과를 함께 보존한다.
 
 ## 소스 파일 식별자
 

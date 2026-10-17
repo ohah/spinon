@@ -1,0 +1,76 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: /private/tmp/spinon-c15-3-wgpu-glyph-paint-tailnet-sync-20261017/packages/docs
+warn    Current dist path: /private/tmp/spinon-c15-3-wgpu-tailnet-selected-20261017
+info    Rendering pages...
+success Pages rendered in 76 ms.
+ready   built in 0.59s (web)
+ready   built in 0.59s (node)
+
+File (web)                                                                                                                    Size        Gzip
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/i.25208e7c92.js                                          0.10 kB     0.09 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/styles.2da0941fcb.js                                           0.47 kB     0.23 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/icon.svg                                                                 0.64 kB     0.41 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/route-fe58d88acce0.2ca91d10cb.js                         5.2 kB      2.2 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/route-99ce983111cf.4ec3882288.js                         6.0 kB      2.6 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/route-4fc60b47d996.82788d1888.js                         6.9 kB      2.3 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/route-410b8fac7053.0dac4f3bbd.js                         6.9 kB      2.6 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/route-d2ded2f59991.7dd80ce0f2.js                         7.3 kB      3.0 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/route-7f1586660381.ae96b77f3e.js                         8.2 kB      3.3 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/route-de3bb2a34479.40382c7d4c.js                         8.6 kB      3.0 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/route-e4492196d4bd.1e92fd4604.js                         9.7 kB      3.2 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/route-2a8fb458a6a4.9cfeb4e57c.js                         10.1 kB     3.7 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/route-d91703daf823.8601704c08.js                         10.7 kB     3.6 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/route-0ea6f3745400.18e7f2483d.js                         10.8 kB     3.5 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/route-815a6cb5ee57.4696b9d071.js                         10.9 kB     3.9 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/route-017bed2a42da.3f4d3d6ae6.js                         11.9 kB     3.9 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/route-3e2d0954f57f.a0fd297596.js                         13.0 kB     4.6 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/route-b2108e9f6e7b.b6fe005f58.js                         14.1 kB     4.6 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/route-896411e7ef19.158ab35915.js                         15.0 kB     5.4 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/lib-router.1e14e568cb.js                                       35.4 kB     12.7 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/index.5ed7af6352.js                                            46.7 kB     14.8 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/route-117783875241.97f2433f4b.js                         47.3 kB     13.5 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/css/styles.8d918fd78e.css                                         74.0 kB     14.2 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/image/tailnet-contract-agent-browser.b7c62ebe9d.png               117.9 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/image/tailnet-contract-0072-agent-browser.d114e3e06f.png          125.5 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/image/tailnet-runtime-evidence-agent-browser.c20b9e074c.png       135.0 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/route-a1017bdf23ca.e659632386.js                         161.6 kB    34.0 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/image/tailnet-color-source-verdict-agent-browser.70673c6e8a.png   192.4 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/image/tailnet-status-c15-agent-browser.0408c0ab07.png             215.2 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/a.8137248d79.js                                                217.1 kB    71.7 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/lib-react.9cdf8f49ce.js                                        218.4 kB    68.9 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/image/tailnet-status-agent-browser.e21a5fc481.png                 227.0 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/image/tailnet-roadmap-c19-color-agent-browser.2604e0d367.png      237.6 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/image/tailnet-roadmap-c15-3-agent-browser.2c4ca9b5fd.png          261.1 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/image/tailnet-roadmap-agent-browser.76ed7206a9.png                272.0 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/js/async/route-6c33a3943990.c993c68f7b.js                         351.6 kB    81.9 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/static/search_index.ko.486659a2.json                                     402.9 kB    128.5 kB
+
+                                                                                                                     Total:   3495.0 kB   2280.0 kB
+
+File (node)                                                                                                                                                     Size        Gzip
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/404.html                                                                                                   8.5 kB      2.5 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/render-build-result.html                  27.7 kB     5.7 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/internal/0072-c15-3-wgpu-glyph-paint.html                                                                  28.9 kB     6.1 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/platform-route-plan-review-20.html                     29.6 kB     6.5 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/internal/0071-c15-3-glyph-raster-snapshot.html                                                             30.4 kB     6.8 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.html                              30.4 kB     6.7 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.html                                   30.6 kB     6.0 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.html                      30.8 kB     6.2 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.html                                    31.8 kB     7.3 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/internal/evidence/c15-3-glyph-raster-2026-10-17/README.html                                                32.0 kB     7.1 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html   33.2 kB     7.3 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/implementation-review-20.html                          35.1 kB     8.1 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/README.html                               35.4 kB     6.9 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/pr-delta-review-30.html                                35.9 kB     8.8 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/README.html                                            36.0 kB     8.1 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.html                       39.0 kB     6.9 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/internal/evidence/c15-3-wgpu-glyph-paint-tailnet-sync-2026-10-17/pr-delta-review-30.html                   43.2 kB     7.5 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/plan/c15-inline-text-layout.html                                                                           63.5 kB     16.8 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/internal/README.html                                                                                       159.1 kB    36.9 kB
+../../../spinon-c15-3-wgpu-tailnet-selected-20261017/STATUS.html                                                                                                339.2 kB    84.0 kB
+
+                                                                                                                                                       Total:   1100.2 kB   252.3 kB
