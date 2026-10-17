@@ -285,6 +285,16 @@ int32_t spinon_runtime_gpu_host_readback_c19_2_offscreen_for_test(
     SpinonRuntimeGpuHost *host, char *output, size_t output_capacity);
 #endif
 
+#if defined(SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST
+/* C15.3 고정 글꼴 glyph mask를 WGPU paint command로 제출하는 앱 fixture-test host입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c15_3_glyph_paint_fixture(
+    char *output, size_t output_capacity);
+int32_t spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+#endif
+
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
     SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
 /* C13.3 Android 입력 어댑터 전용 opt-in gesture fixture host입니다. */

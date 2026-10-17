@@ -12,6 +12,8 @@ use crate::geometry::{ColoredGeometry, Vertex, build_colored_geometry};
 
 pub(crate) mod images;
 use images::RuntimeImageRenderer;
+pub(crate) mod glyphs;
+pub(crate) use glyphs::RuntimeGlyphRenderer;
 
 mod backend;
 use backend::{android_auto_backend_order, backend_from_abi, choose_sdr_format, color_encoding};
@@ -69,7 +71,9 @@ pub struct RuntimeRenderer {
     pipeline: wgpu::RenderPipeline,
     opacity_group_renderer: OpacityGroupRenderer,
     image_renderer: RuntimeImageRenderer,
+    glyph_renderer: RuntimeGlyphRenderer,
     last_image_draw_count: usize,
+    last_glyph_batch_draw_count: usize,
     vertex_buffer: wgpu::Buffer,
     vertex_capacity: u64,
     vertex_count: u32,
@@ -307,6 +311,8 @@ impl RuntimeRenderer {
         let opacity_group_renderer = OpacityGroupRenderer::new(&device, config.format);
         let image_renderer = RuntimeImageRenderer::new(&device, config.format)
             .map_err(RuntimeRendererError::Initialization)?;
+        let glyph_renderer = RuntimeGlyphRenderer::new(&device, config.format)
+            .map_err(RuntimeRendererError::Initialization)?;
         let vertex_capacity = std::mem::size_of::<Vertex>() as u64;
         let vertex_buffer = device.create_buffer(&wgpu::BufferDescriptor {
             label: Some("spinon-runtime-gpu-vertices"),
@@ -324,7 +330,9 @@ impl RuntimeRenderer {
                 pipeline,
                 opacity_group_renderer,
                 image_renderer,
+                glyph_renderer,
                 last_image_draw_count: 0,
+                last_glyph_batch_draw_count: 0,
                 vertex_buffer,
                 vertex_capacity,
                 vertex_count: 0,
@@ -371,6 +379,10 @@ impl RuntimeRenderer {
 
     pub fn last_image_draw_count(&self) -> usize {
         self.last_image_draw_count
+    }
+
+    pub fn last_glyph_batch_draw_count(&self) -> usize {
+        self.last_glyph_batch_draw_count
     }
 
     #[doc(hidden)]
@@ -472,6 +484,22 @@ impl RuntimeRenderer {
                 return Err(RuntimeRendererError::Geometry(error));
             }
         };
+        let prepared_glyphs = match self.glyph_renderer.prepare(
+            &self.device,
+            &self.queue,
+            scene,
+            self.config.width,
+            self.config.height,
+        ) {
+            Ok(glyphs) => glyphs,
+            Err(error) => {
+                discard_surface_pixel_samples(
+                    &mut self.pending_surface_pixel_samples,
+                    &mut self.last_surface_pixel_samples,
+                );
+                return Err(RuntimeRendererError::Geometry(error));
+            }
+        };
         if let Err(error) = self.upload_vertices(&geometry.vertices) {
             discard_surface_pixel_samples(
                 &mut self.pending_surface_pixel_samples,
@@ -543,6 +571,8 @@ impl RuntimeRenderer {
                     &geometry,
                     &self.image_renderer,
                     &prepared_images,
+                    &self.glyph_renderer,
+                    &prepared_glyphs,
                 )
                 .map_err(RuntimeRendererError::Geometry)?
         } else {
@@ -565,6 +595,7 @@ impl RuntimeRenderer {
             0
         };
         self.last_image_draw_count = image_draw_count;
+        self.last_glyph_batch_draw_count = prepared_glyphs.batch_draw_count();
         if !is_current() {
             discard_surface_pixel_samples(
                 &mut self.pending_surface_pixel_samples,

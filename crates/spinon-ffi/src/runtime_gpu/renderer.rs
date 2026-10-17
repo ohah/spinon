@@ -200,6 +200,7 @@ impl RuntimeGpuHost {
             .map_err(|error| (ERR_LAYOUT, error.to_string()))?;
         let surface_texture_size = renderer.last_surface_texture_size();
         let image_draw_count = renderer.last_image_draw_count();
+        let glyph_batch_draw_count = renderer.last_glyph_batch_draw_count();
         let pixel_samples = renderer.take_surface_pixel_samples_for_test();
         drop(renderer_slot);
         if !presented {
@@ -244,8 +245,9 @@ impl RuntimeGpuHost {
             ),
         };
         let runtime_image_count = snapshot.map_or(0, |scene| scene.images().len());
+        let runtime_text_count = snapshot.map_or(0, |scene| scene.texts().len());
         report.push_str(&format!(
-            " runtime_image_count={runtime_image_count} image_draw_count={image_draw_count}"
+            " runtime_image_count={runtime_image_count} image_draw_count={image_draw_count} runtime_text_count={runtime_text_count} glyph_batch_draw_count={glyph_batch_draw_count}"
         ));
         if let Some(samples) = pixel_samples {
             for sample in &samples {

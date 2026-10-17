@@ -1668,6 +1668,7 @@ dependencies = [
  "spinon-style",
  "spinon-style-layout-spike",
  "spinon-style-to-layout",
+ "spinon-text-layout",
 ]
 
 [[package]]

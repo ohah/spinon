@@ -141,6 +141,16 @@ require(spinonC192BoxPaintOpacityFixtureTestValue == "0" ||
 require(spinonC192BoxPaintOpacityFixtureTestValue != "1" || spinonC04RuntimeGpuValue == "1") {
     "C19.2 box paint·opacity fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다."
 }
+val spinonC153WgpuGlyphPaintFixtureTest =
+    providers.environmentVariable("SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST").orElse("0")
+val spinonC153WgpuGlyphPaintFixtureTestValue = spinonC153WgpuGlyphPaintFixtureTest.get()
+require(spinonC153WgpuGlyphPaintFixtureTestValue == "0" ||
+    spinonC153WgpuGlyphPaintFixtureTestValue == "1") {
+    "SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST는 0 또는 1이어야 합니다."
+}
+require(spinonC153WgpuGlyphPaintFixtureTestValue != "1" || spinonC04RuntimeGpuValue == "1") {
+    "C15.3 glyph paint fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다."
+}
 val spinonImagePaintFixtureTestValue =
     spinonC181ImagePaintFixtureTestValue == "1" || spinonC182AlphaImageFixtureTestValue == "1" ||
         spinonC183ObjectFitPositionFixtureTestValue == "1" || spinonC184AsyncImageFixtureTestValue == "1"
@@ -179,6 +189,10 @@ val prepareSpinonBootstrap by tasks.registering(Exec::class) {
     environment(
         "SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST",
         spinonC192BoxPaintOpacityFixtureTestValue,
+    )
+    environment(
+        "SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST",
+        spinonC153WgpuGlyphPaintFixtureTestValue,
     )
     commandLine("bash", "tools/build-android.sh")
 }
@@ -291,6 +305,11 @@ android {
             "SPINON_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST",
             (spinonC192BoxPaintOpacityFixtureTestValue == "1").toString(),
         )
+        buildConfigField(
+            "boolean",
+            "SPINON_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST",
+            (spinonC153WgpuGlyphPaintFixtureTestValue == "1").toString(),
+        )
     }
 
     buildFeatures {
@@ -317,6 +336,9 @@ android {
         }
         if (spinonC192BoxPaintOpacityFixtureTestValue == "1") {
             java.srcDir("src/c19_2_box_paint_opacity_fixture_test/java")
+        }
+        if (spinonC153WgpuGlyphPaintFixtureTestValue == "1") {
+            java.srcDir("src/c15_3_wgpu_glyph_paint_fixture_test/java")
         }
     }
 }

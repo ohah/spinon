@@ -958,6 +958,22 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 #endif
 
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST
++ (uint64_t)createRuntimeGpuHostWithC15_3GlyphPaintFixture {
+  std::array<char, 2048> output{};
+  SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_c15_3_glyph_paint_fixture(
+      output.data(), output.size());
+  if (host == nullptr) {
+    NSLog(@"SPINON_C153_HOST_ERROR=%s", output.data());
+    return 0;
+  }
+  NSLog(@"SPINON_C153_HOST=%s", output.data());
+  return reinterpret_cast<uint64_t>(host);
+}
+#endif
+
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
 + (uint64_t)createRuntimeGpuHostWithC13_3GestureFixture:(int32_t)scenarioID {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
@@ -1719,6 +1735,22 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
   NSString *report = C0410Report(status, output);
   C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
                  "SPINON_C192_EVAL", report);
+  return report;
+}
+#endif
+
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST
++ (NSString *)evalRuntimeGpuC15_3GlyphPaintFixture:(uint64_t)handle {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C153_EVAL", report);
   return report;
 }
 #endif

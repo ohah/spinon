@@ -375,6 +375,39 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC131OverflowClipBorder
 #endif
 }
 
+#if defined(SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST
+extern "C" JNIEXPORT jlong JNICALL
+Java_dev_spinon_bootstrap_GlyphPaintFixtureNativeAdapter_createHost(JNIEnv *, jclass) {
+  std::array<char, 2048> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_c15_3_glyph_paint_fixture(output.data(), output.size());
+  if (host == nullptr) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag, "SPINON_C153_HOST_ERROR=%s", output.data());
+    return 0;
+  }
+  __android_log_print(ANDROID_LOG_INFO, kTag, "SPINON_C153_HOST=%s", output.data());
+  return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
+}
+#endif
+
+#if defined(SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_GlyphPaintFixtureNativeAdapter_evalFixture(
+    JNIEnv *env, jclass, jlong host_handle) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture(
+      host, 10000, output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C153_EVAL %s", report.c_str());
+  return ToByteArray(env, report);
+}
+#endif
+
 #if defined(SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST) && \
     SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST
 extern "C" JNIEXPORT jlong JNICALL

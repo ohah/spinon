@@ -1,0 +1,111 @@
+--------- beginning of main
+10-17 11:31:28.417 I/libprocessgroup( 7461): Created cgroup /sys/fs/cgroup/apps/uid_10229/pid_7461
+10-17 11:31:28.421 I/Zygote  ( 7461): Process 7461 created for dev.spinon.bootstrap
+10-17 11:31:28.421 I/pinon.bootstrap( 7461): Late-enabling -Xcheck:jni
+10-17 11:31:28.424 I/pinon.bootstrap( 7461): Using generational CollectorTypeCMC GC.
+10-17 11:31:28.433 D/nativeloader( 7461): Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+10-17 11:31:28.483 D/nativeloader( 7461): Configuring clns-9 for other apk /data/app/~~NjVNEXgJnqzhctQ2W6o2VQ==/dev.spinon.bootstrap-BdGXTs09_vE7TGLQfu95LA==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~NjVNEXgJnqzhctQ2W6o2VQ==/dev.spinon.bootstrap-BdGXTs09_vE7TGLQfu95LA==/lib/arm64:/data/app/~~NjVNEXgJnqzhctQ2W6o2VQ==/dev.spinon.bootstrap-BdGXTs09_vE7TGLQfu95LA==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/dev.spinon.bootstrap
+--------- beginning of system
+10-17 11:31:28.489 D/ActivityThread( 7461): Set OS env TMPDIR to /data/user/0/dev.spinon.bootstrap/cache
+10-17 11:31:28.492 V/GraphicsEnvironment( 7461): Currently set values for:
+10-17 11:31:28.492 V/GraphicsEnvironment( 7461):   angle_gl_driver_selection_pkgs=[]
+10-17 11:31:28.492 V/GraphicsEnvironment( 7461):   angle_gl_driver_selection_values=[]
+10-17 11:31:28.492 V/GraphicsEnvironment( 7461): dev.spinon.bootstrap is not listed in per-application setting
+10-17 11:31:28.493 V/GraphicsEnvironment( 7461): No special selections for ANGLE, returning default driver choice
+10-17 11:31:28.499 V/GraphicsEnvironment( 7461): Neither updatable production driver nor prerelease driver is supported.
+10-17 11:31:28.514 I/DisplayManager( 7461): Choreographer implicitly registered for the refresh rate.
+10-17 11:31:28.554 D/nativeloader( 7461): Load /data/app/~~NjVNEXgJnqzhctQ2W6o2VQ==/dev.spinon.bootstrap-BdGXTs09_vE7TGLQfu95LA==/base.apk!/lib/arm64-v8a/libspinon_bootstrap.so using class loader ns clns-9 (caller=/data/app/~~NjVNEXgJnqzhctQ2W6o2VQ==/dev.spinon.bootstrap-BdGXTs09_vE7TGLQfu95LA==/base.apk!classes2.dex): ok
+10-17 11:31:28.568 I/GFXSTREAM( 7461): [eglDisplay.cpp(297)] Opening libGLESv1_CM_emulation.so
+10-17 11:31:28.568 I/GFXSTREAM( 7461): [eglDisplay.cpp(297)] Opening libGLESv2_emulation.so
+10-17 11:31:28.572 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.573 D/CompatChangeReporter( 7461): Compat change id reported: 376561342; UID 10229; state: ENABLED
+10-17 11:31:28.576 W/HWUI    ( 7461): Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+10-17 11:31:28.576 W/HWUI    ( 7461): Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-17 11:31:28.580 D/CompatChangeReporter( 7461): Compat change id reported: 377864165; UID 10229; state: ENABLED
+10-17 11:31:28.600 I/SpinonBootstrap( 7461): SPINON_C153_HOST=session=ready owner_tid=7481 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=800 session_startup_us=18496
+10-17 11:31:28.601 W/HWUI    ( 7461): Unknown dataspace 0
+10-17 11:31:28.621 I/SpinonBootstrap( 7461): SPINON_C0410_ENVIRONMENT status=0 environment_revision=0 layout=empty boxes=0 generation=1 document_revision=0 render_tree_revision=0 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=0 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 node_frames_css_px=[] paint_node_order=[]
+10-17 11:31:28.621 I/SpinonBootstrap( 7461): SPINON_C0410_ENVIRONMENT viewport=360.0x240.0 scale=1.0 dark=false status=0 environment_revision=0 layout=empty boxes=0 generation=1 document_revision=0 render_tree_revision=0 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=0 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 node_frames_css_px=[] paint_node_order=[]
+10-17 11:31:28.628 I/SpinonBootstrap( 7461): SPINON_C153_EVAL status=0 seq=1 trace_cookie=1 op=eval status=0 caller_tid=7479 owner_tid=7481 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=5 v8_call_us=2556 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=8 render_tree_revision=2 document_nodes=2 document_string_units=320 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=2 document_collection_live_handles=2 document_collection_empty_handles=0 document_collection_last_scan_start_ns=173724336717045 document_collection_last_scan_us=6 document_collection_wrapper_root_buffer_bytes=8 document_collection_reclaimed_node_buffer_bytes=8 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=560 ua_snapshot_submitted=true enqueue_total_us=3 response_wait_us=3127 submit_total_us=3131 response_report_append_us=0 layout=ready boxes=2 ge
+10-17 11:31:28.630 I/SpinonBootstrap( 7461): SPINON_C0410_EVAL status=0 seq=1 trace_cookie=1 op=eval status=0 caller_tid=7479 owner_tid=7481 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=5 v8_call_us=2556 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=8 render_tree_revision=2 document_nodes=2 document_string_units=320 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=2 document_collection_live_handles=2 document_collection_empty_handles=0 document_collection_last_scan_start_ns=173724336717045 document_collection_last_scan_us=6 document_collection_wrapper_root_buffer_bytes=8 document_collection_reclaimed_node_buffer_bytes=8 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=560 ua_snapshot_submitted=true enqueue_total_us=3 response_wait_us=3127 submit_total_us=3131 response_report_append_us=0 layout=ready boxes=2 generation=1 document_revision=8 render_tree_revision=2 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=2 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=360x240 render_viewport_css_px=360x240 render_root_css_px=360x240 node_frames_css_px=[0:node=1,x=0,y=0,width=360,height=240;1:node=2,x=160,y=0,width=200,height=60] paint_node_order=[0:1,1:2] c15_3_text=attached font=NotoSansKR glyphs=36 raster_scale=1 clip_right_css_px=160
+10-17 11:31:28.632 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.633 I/SpinonBootstrap( 7461): SPINON_C0410_SURFACE_RELEASED generation=0
+10-17 11:31:28.634 I/SpinonBootstrap( 7461): SPINON_C0410_SURFACE_RELEASED generation=0
+10-17 11:31:28.668 D/WindowOnBackDispatcher( 7461): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@852206c
+10-17 11:31:28.672 D/WindowOnBackDispatcher( 7461): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@852206c
+10-17 11:31:28.677 D/VRI[MainActivity]( 7461): WindowInsets changed: 1080x2400 statusBars:[0,128,0,0] navigationBars:[0,0,0,63] mandatorySystemGestures:[0,160,0,84] 
+10-17 11:31:28.677 I/HWUI    ( 7461): Using FreeType backend (prop=Auto)
+10-17 11:31:28.682 I/Surface ( 7461): Creating surface for consumer unnamed-7461-0 with slotExpansion=1 for 64 slots
+10-17 11:31:28.683 I/Surface ( 7461): Creating surface for consumer VRI[MainActivity]#0(BLAST Consumer)0 with slotExpansion=1 for 64 slots
+10-17 11:31:28.686 I/Surface ( 7461): Creating surface for consumer unnamed-7461-1 with slotExpansion=1 for 64 slots
+10-17 11:31:28.686 I/Surface ( 7461): Creating surface for consumer 1645aca SurfaceView[dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity]#1(BLAST Consumer)1 with slotExpansion=1 for 64 slots
+10-17 11:31:28.686 I/SpinonBootstrap( 7461): SPINON_C0410_SURFACE_CREATED generation=1
+10-17 11:31:28.686 I/SpinonBootstrap( 7461): SPINON_C0410_SURFACE_CHANGED generation=2 size=945x630 changed=true
+10-17 11:31:28.689 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.689 W/libc    ( 7461): Access denied finding property "vendor.mesa.log"
+10-17 11:31:28.689 W/libc    ( 7461): Access denied finding property "vendor.mesa.log.level"
+10-17 11:31:28.689 W/libc    ( 7461): Access denied finding property "vendor.mesa.log.prefix"
+10-17 11:31:28.689 W/libc    ( 7461): Access denied finding property "vendor.mesa.gallium.print.options"
+10-17 11:31:28.689 W/libc    ( 7461): Access denied finding property "vendor.mesa.log.file.auto"
+10-17 11:31:28.689 W/libc    ( 7461): Access denied finding property "vendor.mesa.log.file"
+10-17 11:31:28.689 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.689 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.689 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.689 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.693 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.693 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.695 D/vulkan  ( 7461): searching for layers in '/data/app/~~NjVNEXgJnqzhctQ2W6o2VQ==/dev.spinon.bootstrap-BdGXTs09_vE7TGLQfu95LA==/lib/arm64'
+10-17 11:31:28.695 D/vulkan  ( 7461): searching for layers in '/data/app/~~NjVNEXgJnqzhctQ2W6o2VQ==/dev.spinon.bootstrap-BdGXTs09_vE7TGLQfu95LA==/base.apk!/lib/arm64-v8a'
+10-17 11:31:28.696 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.696 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.696 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.696 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.696 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.696 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.696 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.696 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.697 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.697 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.697 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.697 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.697 W/libc    ( 7461): Access denied finding property "vendor.mesa.vk.trace"
+10-17 11:31:28.697 W/libc    ( 7461): Access denied finding property "vendor.mesa.vk.trace.per.submit"
+10-17 11:31:28.697 W/libc    ( 7461): Access denied finding property "vendor.mesa.vk.trace.frame"
+10-17 11:31:28.697 W/libc    ( 7461): Access denied finding property "vendor.mesa.vk.trace.trigger"
+10-17 11:31:28.719 W/libc    ( 7461): Access denied finding property "vendor.mesa.vk.wsi.debug"
+10-17 11:31:28.722 I/SpinonBootstrap( 7461): SPINON_C0410_ENVIRONMENT status=0 environment_revision=0 layout=ready boxes=2 generation=1 document_revision=8 render_tree_revision=2 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=2 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=360x240 render_viewport_css_px=360x240 render_root_css_px=360x240 node_frames_css_px=[0:node=1,x=0,y=0,width=360,height=240;1:node=2,x=160,y=0,width=200,height=60] paint_node_order=[0:1,1:2] c15_3_text=attached font=NotoSansKR glyphs=36 raster_scale=1 clip_right_css_px=160
+10-17 11:31:28.722 I/SpinonBootstrap( 7461): SPINON_C0410_ENVIRONMENT viewport=360.0x240.0 scale=1.0 dark=false sequence=4 status=0 environment_revision=0 layout=ready boxes=2 generation=1 document_revision=8 render_tree_revision=2 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=2 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 root_frame_css_px=360x240 render_viewport_css_px=360x240 render_root_css_px=360x240 node_frames_css_px=[0:node=1,x=0,y=0,width=360,height=240;1:node=2,x=160,y=0,width=200,height=60] paint_node_order=[0:1,1:2] c15_3_text=attached font=NotoSansKR glyphs=36 raster_scale=1 clip_right_css_px=160
+10-17 11:31:28.734 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.734 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.735 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.735 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.764 W/libc    ( 7461): Access denied finding property "vendor.mesa.vk.wsi.present.mode"
+10-17 11:31:28.764 W/libc    ( 7461): Access denied finding property "vendor.mesa.vk.wsi.headless.swapchain"
+10-17 11:31:28.764 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.764 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.764 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.764 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.798 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.799 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.815 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.815 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.815 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.815 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.815 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.815 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.815 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.815 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.816 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.816 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.816 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.816 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.816 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.816 E/MESA    ( 7461): Failed to open rendernode: No such file or directory
+10-17 11:31:28.819 W/libc    ( 7461): Access denied finding property "vendor.mesa.virtgpu.kumquat"
+10-17 11:31:28.875 D/InsetsController( 7461): hide(ime())
+10-17 11:31:28.875 I/ImeTracker( 7461): dev.spinon.bootstrap:e89eceea: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+10-17 11:31:29.050 I/SpinonBootstrap( 7461): SPINON_C0410_RENDERER=backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=945x630 selection=auto
+10-17 11:31:29.050 I/SpinonBootstrap( 7461): SPINON_C0410_RENDERER generation=2 size=945x630
+10-17 11:31:29.159 I/SpinonBootstrap( 7461): SPINON_C0410_DRAW status=0 presented boxes=2 environment_revision=0 document_revision=8 render_tree_revision=2 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=360x240 surface_texture=945x630 root_css_px=360x240 runtime_image_count=0 image_draw_count=0 runtime_text_count=1 glyph_batch_draw_count=1
+10-17 11:31:29.159 I/SpinonBootstrap( 7461): SPINON_C0410_DRAW generation=2 status=0 presented boxes=2 environment_revision=0 document_revision=8 render_tree_revision=2 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=360x240 surface_texture=945x630 root_css_px=360x240 runtime_image_count=0 image_draw_count=0 runtime_text_count=1 glyph_batch_draw_count=1
+10-17 11:31:29.309 I/pinon.bootstrap( 7461): Compiler allocated 5599KB to compile void android.view.ViewRootImpl.performTraversals(long)

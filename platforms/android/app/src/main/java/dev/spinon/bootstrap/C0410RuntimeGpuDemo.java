@@ -469,6 +469,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final String c131CompactSurfaceMatrixRunId;
     private final boolean c131BorderStripProbeRequested;
     private final boolean c192BoxPaintOpacityProbeRequested;
+    private final boolean c153GlyphPaintProbeRequested;
     private boolean c192SurfaceCaptureStarted;
     private final boolean imageObjectFitPositionProbeRequested;
     private final boolean imageAsyncReplacementProbeRequested;
@@ -639,6 +640,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c131_overflow_clip_border", false);
         c192BoxPaintOpacityProbeRequested = BuildConfig.SPINON_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST
                 && activity.getIntent().getBooleanExtra("spinon_c192_box_paint_opacity", false);
+        c153GlyphPaintProbeRequested = BuildConfig.SPINON_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST
+                && activity.getIntent().getBooleanExtra("spinon_c153_glyph_paint", false);
         imageObjectFitPositionProbeRequested =
                 BuildConfig.SPINON_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST
                 && activity.getIntent().getBooleanExtra("spinon_c183_object_fit_position", false);
@@ -860,6 +863,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || c131CompactSurfaceMatrixProbeRequested
                 || c131BorderStripProbeRequested
                 || c192BoxPaintOpacityProbeRequested
+                || c153GlyphPaintProbeRequested
                 || c132ScrollFixtureRequested
                 || c133GestureFixtureRequested
                 || c123FixedPositionProbeRequested
@@ -902,7 +906,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         setBackgroundColor(Color.rgb(14, 19, 31));
 
         TextView title = new TextView(activity);
-        title.setText(c192BoxPaintOpacityProbeRequested
+        title.setText(c153GlyphPaintProbeRequested
+                ? "SPINON · C15.3 WGPU glyph paint"
+                : c192BoxPaintOpacityProbeRequested
                 ? "SPINON · C19.2 box paint·opacity"
                 : c1133GridTemplateAreasRequested
                 ? "SPINON · C11.3.3 Grid template areas"
@@ -999,7 +1005,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         addView(title, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
         TextView description = new TextView(activity);
-        description.setText(c192BoxPaintOpacityProbeRequested
+        description.setText(c153GlyphPaintProbeRequested
+                ? "고정 Noto Sans KR glyph coverage mask · WGPU · 360×240 CSS px · DPR 1"
+                : c192BoxPaintOpacityProbeRequested
                 ? "alpha·중첩 opacity·clip·z-order·currentColor·OKLCH · 16 PixelCopy 표본 · 360×240 CSS px"
                 : c131CompactSurfaceMatrixProbeRequested
                 ? "13개 overflow clip case · 30,000 hit identity + 52 PixelCopy 표본 · WGPU · 300×100 CSS px"
@@ -1113,7 +1121,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 surfaceView.setOnClickListener(view -> onC133TapProbeClick());
             }
         }
-        surfaceView.setContentDescription(c192BoxPaintOpacityProbeRequested
+        surfaceView.setContentDescription(c153GlyphPaintProbeRequested
+                ? "C15.3 고정 Noto Sans KR glyph alpha mask를 WGPU surface에 그리는 fixture"
+                : c192BoxPaintOpacityProbeRequested
                 ? "C19.2 box paint, opacity, clipping, z-order, and wide-gamut WGPU surface"
                 : c131CompactSurfaceMatrixProbeRequested
                 ? "C13.1 compact 13-case overflow Chrome oracle WGPU surface"
@@ -1195,7 +1205,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || imageObjectFitPositionProbeRequested ? 224 : 80
                 : c131CompactSurfaceMatrixProbeRequested ? 300
                 : c131BorderStripProbeRequested ? 400
-                : c192BoxPaintOpacityProbeRequested ? 360
+                : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 360
                 : c132ScrollFixtureRequested ? 400
                 : c133GestureFixtureRequested ? 400
                 : fixedSizeCssFixtureRequested ? 320 : 301;
@@ -1204,7 +1214,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         : imageObjectFitPositionProbeRequested ? 72 : 40
                 : c131CompactSurfaceMatrixProbeRequested ? 100
                 : c131BorderStripProbeRequested ? 160
-                : c192BoxPaintOpacityProbeRequested ? 240
+                : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 240
                 : fixedSizeCssFixtureRequested ? 240 : 100;
         LayoutParams surfaceParams = new LayoutParams(
                 dp(initialSurfaceWidth, density), dp(initialSurfaceHeight, density));
@@ -1345,6 +1355,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("실패 · C19.2 fixture-test feature가 꺼져 있습니다");
             return false;
         }
+        if (!BuildConfig.SPINON_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST
+                && activity.getIntent().getBooleanExtra("spinon_c153_glyph_paint", false)) {
+            Log.e(TAG, "SPINON_C153_ARGUMENT_ERROR rejected=true reason=fixture-feature-disabled");
+            postStatus("실패 · C15.3 glyph paint fixture-test 옵션이 꺼져 있습니다");
+            return false;
+        }
         if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST
                 && activity.getIntent().getBooleanExtra("spinon_c133_tap_probe", false)
                 && !c133GestureFixtureRequested) {
@@ -1385,6 +1401,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 + (c131CompactSurfaceMatrixProbeRequested ? 1 : 0)
                 + (c131BorderStripProbeRequested ? 1 : 0)
                 + (c192BoxPaintOpacityProbeRequested ? 1 : 0)
+                + (c153GlyphPaintProbeRequested ? 1 : 0)
                 + (c132ScrollFixtureRequested ? 1 : 0)
                 + (c133GestureFixtureRequested ? 1 : 0)
                 + (BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested ? 1 : 0);
@@ -1397,6 +1414,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
         String selectedExtra = c133GestureFixtureRequested
                 ? "spinon_c133_gesture_fixture"
+                : c153GlyphPaintProbeRequested
+                ? "spinon_c153_glyph_paint"
                 : c192BoxPaintOpacityProbeRequested
                 ? "spinon_c192_box_paint_opacity"
                 : BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested
@@ -1484,6 +1503,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? nativeCreateC1121GridPlacementHost()
                 : c11GridFixtureRequested
                 ? nativeCreateC11GridHost()
+                : BuildConfig.SPINON_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST
+                        && c153GlyphPaintProbeRequested
+                ? (Long) invokeFixtureNative(
+                        "dev.spinon.bootstrap.GlyphPaintFixtureNativeAdapter",
+                        "createHost", new Class<?>[0])
                 : BuildConfig.SPINON_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST
                         && c192BoxPaintOpacityProbeRequested
                 ? (Long) invokeFixtureNative(
@@ -1538,7 +1562,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             widthCssPx = BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST
                     && imagePaintProbeRequested ? imageAsyncReplacementProbeRequested
                             || imageObjectFitPositionProbeRequested ? 224 : 80
-                    : c192BoxPaintOpacityProbeRequested ? 360
+                    : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 360
                     : c131CompactSurfaceMatrixProbeRequested ? 300
                     : c131BorderStripProbeRequested ? 400
                     : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 400
@@ -1550,7 +1574,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             heightCssPx = BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST
                     && imagePaintProbeRequested ? imageAsyncReplacementProbeRequested ? 88
                             : imageObjectFitPositionProbeRequested ? 72 : 40
-                    : c192BoxPaintOpacityProbeRequested ? 240
+                    : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 240
                     : c131CompactSurfaceMatrixProbeRequested ? 100
                     : c131BorderStripProbeRequested ? 160
                     : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 240
@@ -1561,7 +1585,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     ? 800 : fixedSizeCssFixtureRequested ? 240 : cssViewportHeightLocked();
             dark = darkMode;
         }
-        float environmentScale = c192BoxPaintOpacityProbeRequested
+        float environmentScale = c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested
                 || c123FixedPositionProbeRequested || c1131GridRepeatRequested
                 || c1132GridNamedLinesRequested || c1133GridTemplateAreasRequested
                 ? 1.0f : density;
@@ -1608,6 +1632,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         host, c1121GridSceneId, c1121GridRunId))
                 : c11GridFixtureRequested
                 ? decode(nativeEvalC11GridSceneFixture(host, c11GridSceneIndex))
+                : BuildConfig.SPINON_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST
+                        && c153GlyphPaintProbeRequested
+                ? decode((byte[]) invokeFixtureNative(
+                        "dev.spinon.bootstrap.GlyphPaintFixtureNativeAdapter",
+                        "evalFixture", new Class<?>[] {long.class}, host))
                 : BuildConfig.SPINON_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST
                         && c192BoxPaintOpacityProbeRequested
                 ? decode((byte[]) invokeFixtureNative(
@@ -1691,6 +1720,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : authorStylesheetsProbeRequested
                         ? decode(nativeEvalAuthorStylesheetsFixture(host))
                         : decode(nativeEvalFixture(host));
+        }
+        if (c153GlyphPaintProbeRequested
+                && (!result.startsWith("status=0 ")
+                        || !result.contains("c15_3_text=attached")
+                        || !result.contains("glyphs="))) {
+            Log.e(TAG, "SPINON_C153_EVAL_ERROR rejected=true reason=text-command-not-published report="
+                    + result);
+            postStatus("실패 · C15.3 glyph paint command가 runtime snapshot에 제출되지 않았습니다");
+            return;
         }
         if (c1133GridTemplateAreasRequested
                 && C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(c1133GridTemplateAreasSceneId)
@@ -3958,6 +3996,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         final float widthCssPx;
         final float heightCssPx;
         final boolean dark;
+        final float environmentScale;
         synchronized (stateLock) {
             if (closing || !surfaceAvailable || hostHandle == 0) return;
             host = hostHandle;
@@ -3966,12 +4005,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             widthCssPx = cssViewportWidthLocked();
             heightCssPx = cssViewportHeightLocked();
             dark = darkMode;
+            environmentScale = c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested
+                    ? 1.0f : density;
         }
         if (!isCurrentPresentation(generation, sequence)) return;
         String result = decode(nativeSetEnvironment(
-                host, widthCssPx, heightCssPx, density, dark));
+                host, widthCssPx, heightCssPx, environmentScale, dark));
         Log.i(TAG, "SPINON_C0410_ENVIRONMENT viewport=" + widthCssPx + "x" + heightCssPx
-                + " scale=" + density + " dark=" + dark + " sequence=" + sequence
+                + " scale=" + environmentScale + " dark=" + dark + " sequence=" + sequence
                 + " " + result);
         if (c1131GridRepeatRequested && result.startsWith("status=0 ")) {
             Log.i(TAG, "SPINON_C1131_GRID_ENVIRONMENT_RESULT run_id=" + c1131GridRepeatRunId
@@ -3989,7 +4030,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private float cssViewportWidthLocked() {
-        if (c192BoxPaintOpacityProbeRequested) return 360.0f;
+        if (c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested) return 360.0f;
         if (BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested) {
             return imageAsyncReplacementProbeRequested || imageObjectFitPositionProbeRequested
                     ? 224.0f : 80.0f;
@@ -4002,7 +4043,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private float cssViewportHeightLocked() {
-        if (c192BoxPaintOpacityProbeRequested) return 240.0f;
+        if (c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested) return 240.0f;
         if (BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested) {
             return imageAsyncReplacementProbeRequested ? 88.0f
                     : imageObjectFitPositionProbeRequested ? 72.0f : 40.0f;
@@ -4164,7 +4205,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         Log.i(TAG, "SPINON_C0410_DRAW generation=" + generation + " " + result);
         if (c192BoxPaintOpacityProbeRequested
                 && result.contains("surface_pixel_samples_json=")) {
-            BoxPaintOpacityFixtureCaptureAdapter.logPixelSamples(result, "SURFACE");
+            invokeC192CaptureAdapter("logPixelSamples", result, "SURFACE");
         }
         if (result.startsWith("status=-12 ")) {
             Log.i(TAG, "SPINON_C0410_DRAW_SUPERSEDED generation=" + generation);
@@ -4173,6 +4214,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         if (!result.startsWith("status=0 ")) {
             postStatus("실패 · " + result);
+            return;
+        }
+        if (c153GlyphPaintProbeRequested
+                && (!result.contains("runtime_text_count=1")
+                        || !result.contains("glyph_batch_draw_count=1"))) {
+            Log.e(TAG, "SPINON_C153_DRAW_ASSERTIONS failed=true " + result);
+            postStatus("실패 · C15.3 WGPU glyph batch draw가 제출되지 않았습니다");
             return;
         }
         if (BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested
@@ -4247,25 +4295,45 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             height = surfaceHeight;
         }
         try {
-            int[] sampleCoordinates = BoxPaintOpacityFixtureCaptureAdapter
-                    .surfaceSampleCoordinates(width, height);
+            int[] sampleCoordinates = (int[]) invokeC192CaptureAdapter(
+                    "surfaceSampleCoordinates", width, height);
             String request = decode(nativeRequestC192SurfacePixels(renderer, sampleCoordinates));
             Log.i(TAG, "SPINON_C192_DIRECT_REQUEST " + request);
             if (request.startsWith("status=0 ")) requestDraw();
             String offscreen = decode(nativeReadbackC192Offscreen(renderer));
             Log.i(TAG, "SPINON_C192_OFFSCREEN_REQUEST " + offscreen);
-            BoxPaintOpacityFixtureCaptureAdapter.logPixelSamples(offscreen, "OFFSCREEN");
+            invokeC192CaptureAdapter("logPixelSamples", offscreen, "OFFSCREEN");
         } catch (IllegalArgumentException error) {
             Log.e(TAG, "SPINON_C192_DIRECT_REQUEST status=error reason=" + error.getMessage());
         }
-        BoxPaintOpacityFixtureCaptureAdapter.request(surfaceView, activity, width, height,
-                generation, mainHandler, runtimeQueue, () -> {
-                    synchronized (stateLock) {
-                        return !closing && surfaceAvailable && surfaceGeneration == generation
-                                && rendererHandle == renderer && rendererGeneration == generation
-                                && surfaceWidth == width && surfaceHeight == height;
-                    }
-                }, this::postStatus);
+        java.util.function.BooleanSupplier sourceIsCurrent = () -> {
+            synchronized (stateLock) {
+                return !closing && surfaceAvailable && surfaceGeneration == generation
+                        && rendererHandle == renderer && rendererGeneration == generation
+                        && surfaceWidth == width && surfaceHeight == height;
+            }
+        };
+        java.util.function.Consumer<String> status = this::postStatus;
+        invokeC192CaptureAdapter("request", surfaceView, activity, width, height,
+                generation, mainHandler, runtimeQueue, sourceIsCurrent, status);
+    }
+
+    // C19.2 캡처 어댑터는 fixture-test source set에만 있으므로 기본 앱에서 직접 참조하지 않는다.
+    private static Object invokeC192CaptureAdapter(String methodName, Object... arguments) {
+        try {
+            Class<?> adapter = Class.forName(
+                    "dev.spinon.bootstrap.BoxPaintOpacityFixtureCaptureAdapter");
+            for (java.lang.reflect.Method method : adapter.getDeclaredMethods()) {
+                if (!method.getName().equals(methodName)
+                        || method.getParameterCount() != arguments.length) continue;
+                method.setAccessible(true);
+                return method.invoke(null, arguments);
+            }
+            throw new IllegalStateException("C19.2 adapter method not found: " + methodName);
+        } catch (ReflectiveOperationException | SecurityException error) {
+            throw new IllegalStateException("C19.2 adapter invocation failed: " + methodName,
+                    error);
+        }
     }
 
     private void requestImagePaintSurfaceCapture(long renderer, long generation) {

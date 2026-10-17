@@ -1,3 +1,4 @@
+use crate::OpaqueCssSrgb;
 use spinon_core::{
     AttributeName, DocumentChangeBatch, DocumentOperation, EnvironmentRevision, HostDocument,
     HostParent, NodeId, OwnerId, StyleRevision,
@@ -5,7 +6,7 @@ use spinon_core::{
 use std::sync::Arc;
 
 use super::{
-    CssAxisClip, CssClip, CssRect, CssSize, OpaqueCssSrgb, RuntimeBorder, RuntimeBorderSide,
+    CssAxisClip, CssClip, CssRect, CssSize, RuntimeBorder, RuntimeBorderSide,
     RuntimeImageResourceKey, RuntimePaint, RuntimePaintCommand, RuntimeRenderBox,
     RuntimeRenderImage, RuntimeRenderKey, RuntimeScrollRenderMetadata,
 };
