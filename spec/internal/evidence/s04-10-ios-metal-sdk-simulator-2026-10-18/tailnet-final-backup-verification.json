@@ -1,0 +1,998 @@
+{
+  "createdAt": "2026-10-17T22:27:24.597526+00:00",
+  "verifiedBackupRootCount": 7,
+  "verifiedFileCount": 141,
+  "failed": 0,
+  "failures": [],
+  "files": [
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "404.html",
+      "expectedSha256": "c184130fdb79ee35d261819721f5d72b7ee9169f8f2ea376165d5f9c24f963ff",
+      "actualSha256": "c184130fdb79ee35d261819721f5d72b7ee9169f8f2ea376165d5f9c24f963ff",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "README.html",
+      "expectedSha256": "3958110fb32e9a5e09cc87c23aebeefcf4c6298ca9037dda9191406b6a9a64b8",
+      "actualSha256": "3958110fb32e9a5e09cc87c23aebeefcf4c6298ca9037dda9191406b6a9a64b8",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "STATUS.html",
+      "expectedSha256": "234dbf7a304d9a4e68d53953a17283a8fa424ce12aa54669c94090ac98038a88",
+      "actualSha256": "234dbf7a304d9a4e68d53953a17283a8fa424ce12aa54669c94090ac98038a88",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "api/README.html",
+      "expectedSha256": "b58afa91fe70d1264e5aa66f994d1f38f5d821684bdcd6c0894f70e358295749",
+      "actualSha256": "b58afa91fe70d1264e5aa66f994d1f38f5d821684bdcd6c0894f70e358295749",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "api/index.html",
+      "expectedSha256": "1ce75412f42b1978699915e55faee275fd020ca4e44df6eba41963c10816ea6d",
+      "actualSha256": "1ce75412f42b1978699915e55faee275fd020ca4e44df6eba41963c10816ea6d",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "index.html",
+      "expectedSha256": "90956945743c618ea8bae7c0ff009008faef52817d99049d9720f32e5c364d49",
+      "actualSha256": "90956945743c618ea8bae7c0ff009008faef52817d99049d9720f32e5c364d49",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "internal/0019-s04-css-layout-gpu-slice.html",
+      "expectedSha256": "bea692b9035b800c9408c75610210a12ce4d75ab45b4dffe5fe282ea213d037d",
+      "actualSha256": "bea692b9035b800c9408c75610210a12ce4d75ab45b4dffe5fe282ea213d037d",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "internal/0079-s04-10-confirmed-frame-registry.html",
+      "expectedSha256": "0e7f4ae58d0fcf104364df2b69c83bfeeb30948c1be5d43d4a88def58682bab8",
+      "actualSha256": "0e7f4ae58d0fcf104364df2b69c83bfeeb30948c1be5d43d4a88def58682bab8",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "internal/README.html",
+      "expectedSha256": "2b159a479caceb6ad35770b56c9fb92932aaaad056c0f5f65c6f2706ec14dd28",
+      "actualSha256": "2b159a479caceb6ad35770b56c9fb92932aaaad056c0f5f65c6f2706ec14dd28",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "expectedSha256": "02109223a8560a6054e99993c1c60ac8d9fb2ff1575103a11bce407212f45fc1",
+      "actualSha256": "02109223a8560a6054e99993c1c60ac8d9fb2ff1575103a11bce407212f45fc1",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "expectedSha256": "6606ada0e2e514692537ce1474b87e4ed4d7384da73ef87299a3694b8dafc2e5",
+      "actualSha256": "6606ada0e2e514692537ce1474b87e4ed4d7384da73ef87299a3694b8dafc2e5",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "expectedSha256": "2cd28a29494b1d71198db293a2530dfd239bfc48f3bacd953a7b9c5d8deb85da",
+      "actualSha256": "2cd28a29494b1d71198db293a2530dfd239bfc48f3bacd953a7b9c5d8deb85da",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "expectedSha256": "02f0d33809bc62ce077d2600685e2870702c64377a3c7da70c16e3ca789cea74",
+      "actualSha256": "02f0d33809bc62ce077d2600685e2870702c64377a3c7da70c16e3ca789cea74",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "expectedSha256": "a426dbcb725f8316eb26629f4ced392c33d22ebc381748beba52b8039642e72d",
+      "actualSha256": "a426dbcb725f8316eb26629f4ced392c33d22ebc381748beba52b8039642e72d",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "expectedSha256": "86f838a055274502768bb6ff03ae015634a2c41a37181edb9a37528ddabc3d7e",
+      "actualSha256": "86f838a055274502768bb6ff03ae015634a2c41a37181edb9a37528ddabc3d7e",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "expectedSha256": "8361a3a5599acb22c0b13eec6dc06c2b351ffa43a989719acfb57dc04cef5c11",
+      "actualSha256": "8361a3a5599acb22c0b13eec6dc06c2b351ffa43a989719acfb57dc04cef5c11",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "internal/evidence/s04-10-tailnet-sync-2026-10-18/selected-build.log",
+      "expectedSha256": "63abcf6aaa03fe4ddb409723474090b0b1a421affb04f3edf8f5317bf1cb7275",
+      "actualSha256": "63abcf6aaa03fe4ddb409723474090b0b1a421affb04f3edf8f5317bf1cb7275",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-evidence-agent-browser.png",
+      "expectedSha256": "f088b0ae0e705a0ebe84d9995e9a0dab29d8cb80f348d5ff84a27b5e811fd110",
+      "actualSha256": "f088b0ae0e705a0ebe84d9995e9a0dab29d8cb80f348d5ff84a27b5e811fd110",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "plan/s04-10-presented-frame-gate.html",
+      "expectedSha256": "18820cdc86147165fd3f411b3699a47607c7034b17498c95a2a1a7f5fd9fc042",
+      "actualSha256": "18820cdc86147165fd3f411b3699a47607c7034b17498c95a2a1a7f5fd9fc042",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "spec/STATUS.html",
+      "expectedSha256": "ce4a87db089afd5a443ae420749c8223a4718189ae0bf883fccc3128d4059d29",
+      "actualSha256": "ce4a87db089afd5a443ae420749c8223a4718189ae0bf883fccc3128d4059d29",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "spec/internal/0019-s04-css-layout-gpu-slice.html",
+      "expectedSha256": "310d095e9558904a92962aef391874fb819e0a165329115a28a092afa52c621f",
+      "actualSha256": "310d095e9558904a92962aef391874fb819e0a165329115a28a092afa52c621f",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "spec/internal/0079-s04-10-confirmed-frame-registry.html",
+      "expectedSha256": "4ac0e7ec518bd62cb28c44e6b283c44517eef968408df1070ab46069ee9e2ad8",
+      "actualSha256": "4ac0e7ec518bd62cb28c44e6b283c44517eef968408df1070ab46069ee9e2ad8",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "spec/internal/README.html",
+      "expectedSha256": "122f4c37c79d4c0303183f0de84848f7a51ca15db74fe2f2cc33ab2ffbf456d2",
+      "actualSha256": "122f4c37c79d4c0303183f0de84848f7a51ca15db74fe2f2cc33ab2ffbf456d2",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "spec/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "expectedSha256": "0a02583b2accbe73b3f784da330987e236f27e1242f602004790426eac47fe36",
+      "actualSha256": "0a02583b2accbe73b3f784da330987e236f27e1242f602004790426eac47fe36",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "spec/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "expectedSha256": "0982c7c9b5c5103ae8ffa7c1203657b7db64237e239527e37e4fc25b8e9ad084",
+      "actualSha256": "0982c7c9b5c5103ae8ffa7c1203657b7db64237e239527e37e4fc25b8e9ad084",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "spec/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "expectedSha256": "29aa22e25b9a53b338fdb0d87f5cce730f025fa82ec00a15386a4701d942d0b1",
+      "actualSha256": "29aa22e25b9a53b338fdb0d87f5cce730f025fa82ec00a15386a4701d942d0b1",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "spec/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "expectedSha256": "37970ed24e3d3ec95d75f9cbde046b2ab77b84ffeae8187f2e3f23bdd3ba7525",
+      "actualSha256": "37970ed24e3d3ec95d75f9cbde046b2ab77b84ffeae8187f2e3f23bdd3ba7525",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "expectedSha256": "1034aa0a3db94c79216a0d191c3e9b1905cc0284a57bd60ac1bc0e3fd209040e",
+      "actualSha256": "1034aa0a3db94c79216a0d191c3e9b1905cc0284a57bd60ac1bc0e3fd209040e",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "expectedSha256": "ffd5b6d26e7a1acd9b869138b251a184fd28381d9c1cfc9dda095dff6ddc3851",
+      "actualSha256": "ffd5b6d26e7a1acd9b869138b251a184fd28381d9c1cfc9dda095dff6ddc3851",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "plan/s04-10-presented-frame-gate.md",
+      "expectedSha256": "9c688d9c28e36118553487b1b73a49dae457f86fd41bbb3e3ed6a945a1500a75",
+      "actualSha256": "9c688d9c28e36118553487b1b73a49dae457f86fd41bbb3e3ed6a945a1500a75",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "spec/STATUS.md",
+      "expectedSha256": "4f619eedc657360a80984d08e0e00e0e927a5706d2dd888bd10bcd66c95e48da",
+      "actualSha256": "4f619eedc657360a80984d08e0e00e0e927a5706d2dd888bd10bcd66c95e48da",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "spec/internal/README.md",
+      "expectedSha256": "96318e88e90b374087459db15c33592321c91ffc684c33884ae9a27929fcc43a",
+      "actualSha256": "96318e88e90b374087459db15c33592321c91ffc684c33884ae9a27929fcc43a",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018",
+      "path": "spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.md",
+      "expectedSha256": "54eb9b3b3a2b27960eba00896b6fc52cbfeff967dfc0574c9d4b8e16a355e12a",
+      "actualSha256": "54eb9b3b3a2b27960eba00896b6fc52cbfeff967dfc0574c9d4b8e16a355e12a",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-roadmap-pass2",
+      "path": "roadmap.html",
+      "expectedSha256": "282d54a80e2ac036a105e006bacde63f20e6776fb2a56bc83717235c1fb6a577",
+      "actualSha256": "282d54a80e2ac036a105e006bacde63f20e6776fb2a56bc83717235c1fb6a577",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-roadmap-pass2",
+      "path": "spec/public/roadmap.html",
+      "expectedSha256": "743394efeed4de81831ac3124da535fb2caddbec5a818e65c4afa898fc523e0c",
+      "actualSha256": "743394efeed4de81831ac3124da535fb2caddbec5a818e65c4afa898fc523e0c",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-buildlog-pass3",
+      "path": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "expectedSha256": "150007c890957947646e0364a7c125850a25dc855a0c267e02251bb12d28d6e5",
+      "actualSha256": "150007c890957947646e0364a7c125850a25dc855a0c267e02251bb12d28d6e5",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "404.html",
+      "expectedSha256": "6c2709910061688ca9147e63a9d470baa352159800edd4830a760770af302ec5",
+      "actualSha256": "6c2709910061688ca9147e63a9d470baa352159800edd4830a760770af302ec5",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "README.html",
+      "expectedSha256": "f0309df2f8dbd741c0acf5ac4c1d0cc261a2d608c9bc2b82319076e752e5a3d4",
+      "actualSha256": "f0309df2f8dbd741c0acf5ac4c1d0cc261a2d608c9bc2b82319076e752e5a3d4",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "STATUS.html",
+      "expectedSha256": "75aaa28dcb45dd29726f795cba8f727e17ac7fdd96535bb4b396a3926c149a60",
+      "actualSha256": "75aaa28dcb45dd29726f795cba8f727e17ac7fdd96535bb4b396a3926c149a60",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "api/README.html",
+      "expectedSha256": "49ff908dd248ac8f0144a12d2c477fbadd204266a0124e6cc2237cd1a4174c4e",
+      "actualSha256": "49ff908dd248ac8f0144a12d2c477fbadd204266a0124e6cc2237cd1a4174c4e",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "api/index.html",
+      "expectedSha256": "b60391560a4d5269e845ba4ea99a19d0271061838fd0f436816ccc9ba98c9598",
+      "actualSha256": "b60391560a4d5269e845ba4ea99a19d0271061838fd0f436816ccc9ba98c9598",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "index.html",
+      "expectedSha256": "db56aec52f9910fca94cdb5a4fcbce365160399b55e22bb5e0a96a6bb2245c63",
+      "actualSha256": "db56aec52f9910fca94cdb5a4fcbce365160399b55e22bb5e0a96a6bb2245c63",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "internal/0019-s04-css-layout-gpu-slice.html",
+      "expectedSha256": "0c40c99004100b2799256aeeebb22e61c0c1e2b307a79ac45f18bbea94ef1439",
+      "actualSha256": "0c40c99004100b2799256aeeebb22e61c0c1e2b307a79ac45f18bbea94ef1439",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "internal/0079-s04-10-confirmed-frame-registry.html",
+      "expectedSha256": "f7a9af4cf901c88f45d01b8d20e088df18992c5ae1c4118d74dcfc2eaf5fc7a6",
+      "actualSha256": "f7a9af4cf901c88f45d01b8d20e088df18992c5ae1c4118d74dcfc2eaf5fc7a6",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "internal/README.html",
+      "expectedSha256": "0437b761f88927ffe5bb23ae62dada74bb2c7b02fdb62be448bc6de0ee31feae",
+      "actualSha256": "0437b761f88927ffe5bb23ae62dada74bb2c7b02fdb62be448bc6de0ee31feae",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "expectedSha256": "51cf271dd267d75821b1277804abab9490aadb41daa7f3bd99c566d89ae07b66",
+      "actualSha256": "51cf271dd267d75821b1277804abab9490aadb41daa7f3bd99c566d89ae07b66",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "expectedSha256": "c752ac1f6421f30d0e3511299c74d435bad7489c162d6fa2a134c3d5f423b41c",
+      "actualSha256": "c752ac1f6421f30d0e3511299c74d435bad7489c162d6fa2a134c3d5f423b41c",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "expectedSha256": "1a47d084258853d02ea2a59fbacebee745279964b1f1b305a1d811add1e596c7",
+      "actualSha256": "1a47d084258853d02ea2a59fbacebee745279964b1f1b305a1d811add1e596c7",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "expectedSha256": "33cf1803593adba4bb9caf964d3b7c1e9cbd4ae08b54db970e789df3115b4940",
+      "actualSha256": "33cf1803593adba4bb9caf964d3b7c1e9cbd4ae08b54db970e789df3115b4940",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "expectedSha256": "934b4eca0e57f52928ade8a2e112340eb0a556cc41126443e5d35caa725d5029",
+      "actualSha256": "934b4eca0e57f52928ade8a2e112340eb0a556cc41126443e5d35caa725d5029",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "expectedSha256": "38152fa5b42271c062fd4c79526728420fb7281e4f3ea9dfeed51f8e05093932",
+      "actualSha256": "38152fa5b42271c062fd4c79526728420fb7281e4f3ea9dfeed51f8e05093932",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "expectedSha256": "06cadeb05873ab6bb655510839f97154a391b2097bfe9e216a5fffaa5a3b454d",
+      "actualSha256": "06cadeb05873ab6bb655510839f97154a391b2097bfe9e216a5fffaa5a3b454d",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "expectedSha256": "d4fcce10cd468d495c3da2f0b84b51ee51e6b157da44f15a4987c1001e74aa40",
+      "actualSha256": "d4fcce10cd468d495c3da2f0b84b51ee51e6b157da44f15a4987c1001e74aa40",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "plan/s04-10-presented-frame-gate.html",
+      "expectedSha256": "6d6476cdc33d9a3cf4ce304effbaa2c4f462c16155f889adf642d81831c00820",
+      "actualSha256": "6d6476cdc33d9a3cf4ce304effbaa2c4f462c16155f889adf642d81831c00820",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "spec/STATUS.html",
+      "expectedSha256": "c1809ad63470ae18841e2140f630b2046044010e6d868bdf1a7c0f04dd14acbf",
+      "actualSha256": "c1809ad63470ae18841e2140f630b2046044010e6d868bdf1a7c0f04dd14acbf",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "spec/internal/0019-s04-css-layout-gpu-slice.html",
+      "expectedSha256": "a1c7eaaa1be0789130ba86c9d473ecf47613b25fa6c5eff1f05d0e2a47d8a0aa",
+      "actualSha256": "a1c7eaaa1be0789130ba86c9d473ecf47613b25fa6c5eff1f05d0e2a47d8a0aa",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "spec/internal/0079-s04-10-confirmed-frame-registry.html",
+      "expectedSha256": "c8174d5805c612108d976685ff8525235282d5e7d701feb101721966d80f8621",
+      "actualSha256": "c8174d5805c612108d976685ff8525235282d5e7d701feb101721966d80f8621",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "spec/internal/README.html",
+      "expectedSha256": "3c8f6dc07add6595865a797f81b7a51bd56e1f7ed43086eb0978489198b2f61e",
+      "actualSha256": "3c8f6dc07add6595865a797f81b7a51bd56e1f7ed43086eb0978489198b2f61e",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "expectedSha256": "efdbd1e476bd6dde4726d350c00231ba69dab66ebfd159dbbd51aa409317e738",
+      "actualSha256": "efdbd1e476bd6dde4726d350c00231ba69dab66ebfd159dbbd51aa409317e738",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "expectedSha256": "679e5ee68f00407b66c796efd7f2d8a9db284a568df323f6fe310a6284bcd0c3",
+      "actualSha256": "679e5ee68f00407b66c796efd7f2d8a9db284a568df323f6fe310a6284bcd0c3",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "spec/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "expectedSha256": "b1688ab18f8e42dda4f826c2d182a219e1ec5782e97b3a4a0cde28ac24da9303",
+      "actualSha256": "b1688ab18f8e42dda4f826c2d182a219e1ec5782e97b3a4a0cde28ac24da9303",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "spec/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "expectedSha256": "fc716b1e40f2b75a059fdb8a7f36f041c7aee781de73b51c02ad4a2c4a1bda54",
+      "actualSha256": "fc716b1e40f2b75a059fdb8a7f36f041c7aee781de73b51c02ad4a2c4a1bda54",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "spec/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "expectedSha256": "9656631b231ffd312dad1af304a863bd1e21501ff722e284f46e157ec3c81c14",
+      "actualSha256": "9656631b231ffd312dad1af304a863bd1e21501ff722e284f46e157ec3c81c14",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "spec/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "expectedSha256": "54d68c0601c10c08b13188ef6b0130808ad478437d85fec45aae4d75b8db6923",
+      "actualSha256": "54d68c0601c10c08b13188ef6b0130808ad478437d85fec45aae4d75b8db6923",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "expectedSha256": "6d50ab87ba0d9f8af900de666f2e9d14bca5a7adb373583f38cc94e761618fc0",
+      "actualSha256": "6d50ab87ba0d9f8af900de666f2e9d14bca5a7adb373583f38cc94e761618fc0",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "expectedSha256": "cf440f4a980411329ff0c81e37f935510c660fc5f37be0505c488049988574f8",
+      "actualSha256": "cf440f4a980411329ff0c81e37f935510c660fc5f37be0505c488049988574f8",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "spec/internal/README.md",
+      "expectedSha256": "dc1cda7931bd0d219dfa44077b4abc4e2f54efbacb299c45c1c4d5688d74d5d6",
+      "actualSha256": "dc1cda7931bd0d219dfa44077b4abc4e2f54efbacb299c45c1c4d5688d74d5d6",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.md",
+      "expectedSha256": "5b933bbc23ddd0c1ba5bb5f6255c5a4fddce21065fbad0657ec8e3551f7d18d7",
+      "actualSha256": "5b933bbc23ddd0c1ba5bb5f6255c5a4fddce21065fbad0657ec8e3551f7d18d7",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "expectedSha256": "2bfc6aa5b5fe68ae584b022d147669fc4fe60dee57e74bae8c522876082d271f",
+      "actualSha256": "2bfc6aa5b5fe68ae584b022d147669fc4fe60dee57e74bae8c522876082d271f",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-20.html",
+      "expectedSha256": "fe2350f9384701c5cc9202e2d1bba9fed2c5378934fa6658c264b5e32296831c",
+      "actualSha256": "fe2350f9384701c5cc9202e2d1bba9fed2c5378934fa6658c264b5e32296831c",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-20.html",
+      "expectedSha256": "f627e8ba4add35fcec3b07ab24b19e24d8bfa92304bd933cec0307634595de4c",
+      "actualSha256": "f627e8ba4add35fcec3b07ab24b19e24d8bfa92304bd933cec0307634595de4c",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-review-pass4",
+      "path": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-20.md",
+      "expectedSha256": "4f7b86e0086e9fe3f9b78eddd41f9d6b13ba0352aa4638419d9c70c7e33e898f",
+      "actualSha256": "4f7b86e0086e9fe3f9b78eddd41f9d6b13ba0352aa4638419d9c70c7e33e898f",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "404.html",
+      "expectedSha256": "5b8b77e5f59b75ca51b3cff0fc4ef901c13c1e6978ea98b6efae08dc27e84359",
+      "actualSha256": "5b8b77e5f59b75ca51b3cff0fc4ef901c13c1e6978ea98b6efae08dc27e84359",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "README.html",
+      "expectedSha256": "fcedcdd9a5d11c9b67e8ecd591846f8f9b698a15c824459f6878d4cbfad6814c",
+      "actualSha256": "fcedcdd9a5d11c9b67e8ecd591846f8f9b698a15c824459f6878d4cbfad6814c",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "STATUS.html",
+      "expectedSha256": "c30f160da23f30be1c9e5681e3fd0e4abab4b710a906ecc3b22cbea02397fc15",
+      "actualSha256": "c30f160da23f30be1c9e5681e3fd0e4abab4b710a906ecc3b22cbea02397fc15",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "api/README.html",
+      "expectedSha256": "7e2b11e5186cacfb78c950163076c79c5e57c12169e8aff6b390eaad6d8010fe",
+      "actualSha256": "7e2b11e5186cacfb78c950163076c79c5e57c12169e8aff6b390eaad6d8010fe",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "api/index.html",
+      "expectedSha256": "ba3e44c66118bfa9be7279b352fdb1dc3e52492a1c51a73d65dcba3862bb0f37",
+      "actualSha256": "ba3e44c66118bfa9be7279b352fdb1dc3e52492a1c51a73d65dcba3862bb0f37",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "index.html",
+      "expectedSha256": "4c9fde53ea11a642d285f899169f5bb7bd2bc6ede8798f5602a93e5219cca963",
+      "actualSha256": "4c9fde53ea11a642d285f899169f5bb7bd2bc6ede8798f5602a93e5219cca963",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "internal/0019-s04-css-layout-gpu-slice.html",
+      "expectedSha256": "759c556578a9a7c6e9f9629c42c00c7aa002ed16f125fc52f36ba24490526187",
+      "actualSha256": "759c556578a9a7c6e9f9629c42c00c7aa002ed16f125fc52f36ba24490526187",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "internal/0079-s04-10-confirmed-frame-registry.html",
+      "expectedSha256": "db5ea848264972a997b0d937a3a91f5369cfe15580aeb7bbf9948670b8656446",
+      "actualSha256": "db5ea848264972a997b0d937a3a91f5369cfe15580aeb7bbf9948670b8656446",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "internal/README.html",
+      "expectedSha256": "49ebd096ef60ecd9abf4da930b19c2c4c4a572959b3a7fc9fe167139c96a6f6c",
+      "actualSha256": "49ebd096ef60ecd9abf4da930b19c2c4c4a572959b3a7fc9fe167139c96a6f6c",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "expectedSha256": "bc96d5bf22c19af47585c92ad83040efd5a474e07bc7203f6315bf192170fa0b",
+      "actualSha256": "bc96d5bf22c19af47585c92ad83040efd5a474e07bc7203f6315bf192170fa0b",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "expectedSha256": "7e2b522edb2eb8e65733329a5b6e17600c6dca049e95cf61f12ee8ff7c3b51c9",
+      "actualSha256": "7e2b522edb2eb8e65733329a5b6e17600c6dca049e95cf61f12ee8ff7c3b51c9",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "expectedSha256": "f95c683209dcba2f487740bd3af301106f424853f32dd4a1c2e79713b5fd85f0",
+      "actualSha256": "f95c683209dcba2f487740bd3af301106f424853f32dd4a1c2e79713b5fd85f0",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "expectedSha256": "74b14adb2a0d0a281cc4e23885b65cb31c05bbf7d48138885d8b4a59e24a5ad1",
+      "actualSha256": "74b14adb2a0d0a281cc4e23885b65cb31c05bbf7d48138885d8b4a59e24a5ad1",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "expectedSha256": "2292dd2cc237b745e0fb659c1b26d7918eaef3ce6dce4c17f0cd5d03f6b9967c",
+      "actualSha256": "2292dd2cc237b745e0fb659c1b26d7918eaef3ce6dce4c17f0cd5d03f6b9967c",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "expectedSha256": "3122dc284fe9189bcfae35e9ddfd8105a8d57f9a715642ff70524f6e2d5da9e6",
+      "actualSha256": "3122dc284fe9189bcfae35e9ddfd8105a8d57f9a715642ff70524f6e2d5da9e6",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "expectedSha256": "990c8c5997505e9694e75cad3f58827e347ba91fbd14bd3e64f0c5707bfcaad0",
+      "actualSha256": "990c8c5997505e9694e75cad3f58827e347ba91fbd14bd3e64f0c5707bfcaad0",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "expectedSha256": "677e9dc047578acb1b6e1f64e4082f1fb9f04c52da3c65a2835e378cea1b1450",
+      "actualSha256": "677e9dc047578acb1b6e1f64e4082f1fb9f04c52da3c65a2835e378cea1b1450",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "expectedSha256": "4a5dd8a9cd33f2ed7822f36825c5a28f567e31553b3faa1abe07cfa15a30ae8b",
+      "actualSha256": "4a5dd8a9cd33f2ed7822f36825c5a28f567e31553b3faa1abe07cfa15a30ae8b",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "plan/s04-10-presented-frame-gate.html",
+      "expectedSha256": "3aede976ec507e73f23c561c0fd503615588757795b156e4300f757fbba3ae56",
+      "actualSha256": "3aede976ec507e73f23c561c0fd503615588757795b156e4300f757fbba3ae56",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "spec/STATUS.html",
+      "expectedSha256": "b07b9b2925f9a6f83cac71da3688de935c326bf39e51c7a56f5a64ba39e8d09a",
+      "actualSha256": "b07b9b2925f9a6f83cac71da3688de935c326bf39e51c7a56f5a64ba39e8d09a",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "spec/internal/0019-s04-css-layout-gpu-slice.html",
+      "expectedSha256": "cff2ea996cb2bd00d36d32a8c52c411dc9a98960b51079468f29166a1d43b8cd",
+      "actualSha256": "cff2ea996cb2bd00d36d32a8c52c411dc9a98960b51079468f29166a1d43b8cd",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "spec/internal/0079-s04-10-confirmed-frame-registry.html",
+      "expectedSha256": "92d386a6785668d10eddcc0d3d34f3ebf2973bc9a93195d6895f46dd3f2470b1",
+      "actualSha256": "92d386a6785668d10eddcc0d3d34f3ebf2973bc9a93195d6895f46dd3f2470b1",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "spec/internal/README.html",
+      "expectedSha256": "1a8ec4b1da6304e0580fb66afd172efb6651ab173803c681341e5c6f628ca1cb",
+      "actualSha256": "1a8ec4b1da6304e0580fb66afd172efb6651ab173803c681341e5c6f628ca1cb",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "expectedSha256": "28869057d3d09fe94b6bfc92f571ff399da41d70380b1124e7030b0f87e1648f",
+      "actualSha256": "28869057d3d09fe94b6bfc92f571ff399da41d70380b1124e7030b0f87e1648f",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "expectedSha256": "e9349282c48dbb0946a39c4374da8ef193b48a8ac6736f4f7f54b5753c7cf31e",
+      "actualSha256": "e9349282c48dbb0946a39c4374da8ef193b48a8ac6736f4f7f54b5753c7cf31e",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "expectedSha256": "6d9bd6b6245f06da290c9af70dc079bb9e880de6047f167753635d1b0a61f464",
+      "actualSha256": "6d9bd6b6245f06da290c9af70dc079bb9e880de6047f167753635d1b0a61f464",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "spec/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "expectedSha256": "09929268be5ee4831a2665aeae225d79ee4b8ee38efbcb99925ecad06b38bd85",
+      "actualSha256": "09929268be5ee4831a2665aeae225d79ee4b8ee38efbcb99925ecad06b38bd85",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "spec/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "expectedSha256": "092915e428484e22ade5640ba37ad8052c40c4f0847f798c3aa4bc0dc4e238d2",
+      "actualSha256": "092915e428484e22ade5640ba37ad8052c40c4f0847f798c3aa4bc0dc4e238d2",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "spec/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "expectedSha256": "0158b178072d0e53c1d26383e9dc8694d328a11f0cbf96fcd82ec17b60906506",
+      "actualSha256": "0158b178072d0e53c1d26383e9dc8694d328a11f0cbf96fcd82ec17b60906506",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "spec/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "expectedSha256": "82af2ba2731bc395b55fd7942a4766ca24dd951080008661529ce8a40653e539",
+      "actualSha256": "82af2ba2731bc395b55fd7942a4766ca24dd951080008661529ce8a40653e539",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "expectedSha256": "800e882eb4c15a8a4976ff5eb4a0b78ea6fcc0a34829c15847da640be22edd9b",
+      "actualSha256": "800e882eb4c15a8a4976ff5eb4a0b78ea6fcc0a34829c15847da640be22edd9b",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "expectedSha256": "88a03413b1c56d2b66de5c3039a248be06889e4b414f29f7d71c9400c1df029f",
+      "actualSha256": "88a03413b1c56d2b66de5c3039a248be06889e4b414f29f7d71c9400c1df029f",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.md",
+      "expectedSha256": "6522a07ac3bdd83b8f3ad6a84fdad38479017f149640b5c8ae3c3d52c5c34019",
+      "actualSha256": "6522a07ac3bdd83b8f3ad6a84fdad38479017f149640b5c8ae3c3d52c5c34019",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass5",
+      "path": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "expectedSha256": "2b5c5f1b3b2ab257f62a7c0f78a42204b7bc1f5cfbe058cb660119eb3fd93f3c",
+      "actualSha256": "2b5c5f1b3b2ab257f62a7c0f78a42204b7bc1f5cfbe058cb660119eb3fd93f3c",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "404.html",
+      "expectedSha256": "f0ac1324fb70cf910969671114d1774b85780422277593f5faf374a642b3452d",
+      "actualSha256": "f0ac1324fb70cf910969671114d1774b85780422277593f5faf374a642b3452d",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "README.html",
+      "expectedSha256": "7e5e442fab7f58b16cb0ecba051623ec45c20c849741099142640b05deee0ca7",
+      "actualSha256": "7e5e442fab7f58b16cb0ecba051623ec45c20c849741099142640b05deee0ca7",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "STATUS.html",
+      "expectedSha256": "b6e55421227023c41d85a263354639e84e47309b0e5563c11d59a08e6cffa0b1",
+      "actualSha256": "b6e55421227023c41d85a263354639e84e47309b0e5563c11d59a08e6cffa0b1",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "api/README.html",
+      "expectedSha256": "feecb7f632dd4335ee197eef94b54d57920519cb87f6358741a04ab7aabaedf3",
+      "actualSha256": "feecb7f632dd4335ee197eef94b54d57920519cb87f6358741a04ab7aabaedf3",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "api/index.html",
+      "expectedSha256": "8d417a8f81b2842085e077816c6377eb930b565d4261bc2b737d3d3179466eea",
+      "actualSha256": "8d417a8f81b2842085e077816c6377eb930b565d4261bc2b737d3d3179466eea",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "index.html",
+      "expectedSha256": "c1265b2cdfb11e70cdfc1b208c7c552ea8cf6105a7ae0e60b8ac3f1a2d6de322",
+      "actualSha256": "c1265b2cdfb11e70cdfc1b208c7c552ea8cf6105a7ae0e60b8ac3f1a2d6de322",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "internal/0019-s04-css-layout-gpu-slice.html",
+      "expectedSha256": "c3b90e8cacc9ce4082b375eab2e4224a622c844915d60a9d58304eedeca37c0b",
+      "actualSha256": "c3b90e8cacc9ce4082b375eab2e4224a622c844915d60a9d58304eedeca37c0b",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "internal/0079-s04-10-confirmed-frame-registry.html",
+      "expectedSha256": "88d7146ad7c26cc55a610dd8285a837e03a7974d0a226a680f72f1f2bf34e7de",
+      "actualSha256": "88d7146ad7c26cc55a610dd8285a837e03a7974d0a226a680f72f1f2bf34e7de",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "internal/README.html",
+      "expectedSha256": "2ee2c1f691e7ac7e1e8fceded583e062f213d5fe56d51e19d459d4edc5cf1b17",
+      "actualSha256": "2ee2c1f691e7ac7e1e8fceded583e062f213d5fe56d51e19d459d4edc5cf1b17",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "expectedSha256": "87c80f09b9ab7e9de0338f781c156629a7a9c36ae4ddfb6385b0e9b6770c6026",
+      "actualSha256": "87c80f09b9ab7e9de0338f781c156629a7a9c36ae4ddfb6385b0e9b6770c6026",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "expectedSha256": "7edde7c5ad79704ce612f259d147473342d98394029979c03074ba521da0433b",
+      "actualSha256": "7edde7c5ad79704ce612f259d147473342d98394029979c03074ba521da0433b",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "expectedSha256": "a895cecc1585e9c16bb96b780210e834b60ead8b2498b72afe96db88128219de",
+      "actualSha256": "a895cecc1585e9c16bb96b780210e834b60ead8b2498b72afe96db88128219de",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "expectedSha256": "442d63fd3d3d75a03c5f5f1349ed15b62deeb05b168802a63df3f2ae8ceda26a",
+      "actualSha256": "442d63fd3d3d75a03c5f5f1349ed15b62deeb05b168802a63df3f2ae8ceda26a",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "expectedSha256": "874e1485457268b128d67acfc31108ba72a3108936f78d529d92bfc02702b02c",
+      "actualSha256": "874e1485457268b128d67acfc31108ba72a3108936f78d529d92bfc02702b02c",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "expectedSha256": "026abe8fb2dbb366356d6d77a3079cf812e725d6cde7dcaa30972d3b0adad794",
+      "actualSha256": "026abe8fb2dbb366356d6d77a3079cf812e725d6cde7dcaa30972d3b0adad794",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "expectedSha256": "2d40fed1fe5a2fe9b7f8f30e2b9baaa8e638258b8de3e237ebb675d398161b49",
+      "actualSha256": "2d40fed1fe5a2fe9b7f8f30e2b9baaa8e638258b8de3e237ebb675d398161b49",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "expectedSha256": "83156041fbc61b826ee99f64e2bb4fb6691b99e6092d41be83b109186c7eadb5",
+      "actualSha256": "83156041fbc61b826ee99f64e2bb4fb6691b99e6092d41be83b109186c7eadb5",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "expectedSha256": "162e45df8a6dc1df1fb276b844775fcf86b3594d33a97fe431703ebdb7f983ca",
+      "actualSha256": "162e45df8a6dc1df1fb276b844775fcf86b3594d33a97fe431703ebdb7f983ca",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "plan/s04-10-presented-frame-gate.html",
+      "expectedSha256": "833e654c8b9250aa14381db4fa363eb40ae37ddf0ea535f3dab3ba4dbb69b2c2",
+      "actualSha256": "833e654c8b9250aa14381db4fa363eb40ae37ddf0ea535f3dab3ba4dbb69b2c2",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "spec/STATUS.html",
+      "expectedSha256": "262f6a7be7affbb3881fa6bcb4fe367c7211cc634ba842ac506eadd806731b65",
+      "actualSha256": "262f6a7be7affbb3881fa6bcb4fe367c7211cc634ba842ac506eadd806731b65",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "spec/internal/0019-s04-css-layout-gpu-slice.html",
+      "expectedSha256": "9cc08c944c890b28e747d11ee9203c4efa0a824101aec25d51309ffa6d5a8b56",
+      "actualSha256": "9cc08c944c890b28e747d11ee9203c4efa0a824101aec25d51309ffa6d5a8b56",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "spec/internal/0079-s04-10-confirmed-frame-registry.html",
+      "expectedSha256": "f3306878b02ce5ff0fb3b78faf6f24d5081b7853a336afec422af7d2698fbc85",
+      "actualSha256": "f3306878b02ce5ff0fb3b78faf6f24d5081b7853a336afec422af7d2698fbc85",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "spec/internal/README.html",
+      "expectedSha256": "cbccfa9e081df79d50e83e367c0e0056ec4ae809ce56508d975d0d91ca784299",
+      "actualSha256": "cbccfa9e081df79d50e83e367c0e0056ec4ae809ce56508d975d0d91ca784299",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "expectedSha256": "915e880c7dd693a3d4976949d78562537f0a1b4c69342303132baf02481e84e7",
+      "actualSha256": "915e880c7dd693a3d4976949d78562537f0a1b4c69342303132baf02481e84e7",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "expectedSha256": "0feadb4ba644b37ccdc9f67d898aa3995c592d701636be1235b116e92151c9d1",
+      "actualSha256": "0feadb4ba644b37ccdc9f67d898aa3995c592d701636be1235b116e92151c9d1",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "expectedSha256": "f3f913ef47183a26d8aaee2cda2b7ce0e67fd051582385a9dcb531d0a31c251a",
+      "actualSha256": "f3f913ef47183a26d8aaee2cda2b7ce0e67fd051582385a9dcb531d0a31c251a",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "spec/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "expectedSha256": "b2dcc142e589771207bcb562de9cdd69a7a7b78c9544341281d9b0abc448944e",
+      "actualSha256": "b2dcc142e589771207bcb562de9cdd69a7a7b78c9544341281d9b0abc448944e",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "spec/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "expectedSha256": "30b95c88f6d4f2bc217e85610e8cf577aceab86f6f008d68f0e9351557d6c16b",
+      "actualSha256": "30b95c88f6d4f2bc217e85610e8cf577aceab86f6f008d68f0e9351557d6c16b",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "spec/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "expectedSha256": "ec72394cb6ccd65ee11ffbdc5965dde5c587a745053e519627660fc4eb2203eb",
+      "actualSha256": "ec72394cb6ccd65ee11ffbdc5965dde5c587a745053e519627660fc4eb2203eb",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "spec/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "expectedSha256": "f9f470542be69e8d8d3765087ca0821e96b0ac7cbf5ca08b13ade29a25e25f41",
+      "actualSha256": "f9f470542be69e8d8d3765087ca0821e96b0ac7cbf5ca08b13ade29a25e25f41",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "expectedSha256": "6d85a42ed378772c7eecb7f70e794f8c9972a6488ece1482121a4c237edfd4e6",
+      "actualSha256": "6d85a42ed378772c7eecb7f70e794f8c9972a6488ece1482121a4c237edfd4e6",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "expectedSha256": "04ad094c673c27dc636960e280f31dd77cdff0af17a726b6b664960e7b036aed",
+      "actualSha256": "04ad094c673c27dc636960e280f31dd77cdff0af17a726b6b664960e7b036aed",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.md",
+      "expectedSha256": "4946174e7846f48d28a355ff1280f2fa95bd11da30478cea2e4635e14f107eff",
+      "actualSha256": "4946174e7846f48d28a355ff1280f2fa95bd11da30478cea2e4635e14f107eff",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "expectedSha256": "266e97f1ec12549fa5045ba6b5925bda591f40144afd19c26cd3dcba5d56d0fe",
+      "actualSha256": "266e97f1ec12549fa5045ba6b5925bda591f40144afd19c26cd3dcba5d56d0fe",
+      "match": true
+    },
+    {
+      "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+      "path": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "expectedSha256": "266e97f1ec12549fa5045ba6b5925bda591f40144afd19c26cd3dcba5d56d0fe",
+      "actualSha256": "266e97f1ec12549fa5045ba6b5925bda591f40144afd19c26cd3dcba5d56d0fe",
+      "match": true
+    }
+  ],
+  "scope": "All verified backup targets through final pass 7.",
+  "note": "The previous preview copy of this report is excluded from its own list to avoid recursive verification; its pass 8 replacement backup is recorded separately in tailnet-final-pass8-copy-verification.json."
+}

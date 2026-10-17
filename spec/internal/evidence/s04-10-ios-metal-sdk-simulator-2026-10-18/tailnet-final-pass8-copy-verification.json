@@ -1,0 +1,22 @@
+{
+  "createdAt": "2026-10-17T22:28:11.829989+00:00",
+  "preflight": "tailnet-final-pass8-preflight.json",
+  "copiedOrSkipped": 1,
+  "backedUp": 1,
+  "deletions": 0,
+  "verification": "new file matches preflight source; previous destination is backed up and hash verified",
+  "files": [
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-final-backup-verification.json",
+      "action": "backup-and-replace",
+      "sha256": "8cb329f5e96b68461f6005461662eecdf82ebdac1a5b00175a9547727c312413"
+    }
+  ],
+  "backups": [
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-final-backup-verification.json",
+      "backupRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-final-backup-verification.json",
+      "sha256": "018bb3953864d2f5f8912eed4a174eaa0acc64d19784fe8cf266746b0c128c14"
+    }
+  ]
+}

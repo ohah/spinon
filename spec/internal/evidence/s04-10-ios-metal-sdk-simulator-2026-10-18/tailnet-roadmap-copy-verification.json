@@ -1,0 +1,16 @@
+{
+  "createdAt": "2026-10-17T22:13:31.595809+00:00",
+  "copied": [
+    {
+      "targetRelative": "roadmap.html",
+      "sha256": "24b25b60917c256e39ae08e8554420afa2498e28a1e4d2a26283bbab3d5cfb97",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "spec/public/roadmap.html",
+      "sha256": "24b25b60917c256e39ae08e8554420afa2498e28a1e4d2a26283bbab3d5cfb97",
+      "action": "backup-and-replace"
+    }
+  ],
+  "deletions": 0
+}

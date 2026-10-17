@@ -59,3 +59,8 @@
 ## 이 slice에서 완료로 주장하지 않는 항목
 
 Android `VK_GOOGLE_display_timing` 또는 iOS `MTLDrawable` callback 연결, 실제 `presentID`/drawable timestamp, timestamp와 input event의 clock mapping, callback·input 동시성의 실제 플랫폼 실행, surface 교체 중 native callback, optical scanout, S04.10/S05.2/C13.3 전체, DOM event dispatch, 실기기 검증은 미완료로 남긴다.
+
+
+### iOS 26.2 Simulator API 경계
+
+2026-10-18 SDK 대조에서 iPhoneOS 26.2 SDK는 `MTLDrawable.addPresentedHandler`, `presentedTime`, `drawableID`를 선언하지만 iPhoneSimulator 26.2 SDK와 iOS 26.2 Simulator runtime에는 이 멤버가 없다. 따라서 Simulator compile·runtime을 positive callback 검증으로 사용할 수 없으며, 기기 SDK type-check도 실제 기기 실행 근거가 아니다. 자세한 원본은 [SDK·Simulator 확인](../spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.md)을 따른다.

@@ -1,0 +1,18 @@
+{
+  "createdAt": "2026-10-17T22:23:01.532848+00:00",
+  "session": "spinon-s04-10-ios-sdk-1b88647ec4ab",
+  "agentBrowserVersion": "0.31.1",
+  "closeCommand": "agent-browser --session spinon-s04-10-ios-sdk-1b88647ec4ab close",
+  "closeCommandResult": "Browser closed",
+  "postCloseSessionInfo": {
+    "active": true,
+    "browserLaunched": false,
+    "pageCount": 0,
+    "backgroundPid": 9901
+  },
+  "subsequentProcessCheck": {
+    "agentBrowserSessionProcesses": 0,
+    "sessionChromeProcesses": 0
+  },
+  "note": "The session daemon exited after the close check and before a termination signal was sent; no signal is claimed."
+}

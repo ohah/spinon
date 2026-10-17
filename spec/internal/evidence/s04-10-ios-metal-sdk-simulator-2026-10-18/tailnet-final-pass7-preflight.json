@@ -1,0 +1,936 @@
+{
+  "createdAt": "2026-10-17T22:26:28.443750+00:00",
+  "phase": "final selected build plus all linked browser and backup evidence",
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-final-pass7",
+  "selectedBuildHtmlRouteCount": 33,
+  "plannedFileCount": 115,
+  "deletions": 0,
+  "summary": {
+    "backup-and-replace": 35,
+    "skip-identical": 75,
+    "add": 5
+  },
+  "files": [
+    {
+      "targetRelative": "404.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/404.html",
+      "sourceSha256": "628cda3cb3bf9637f2c6c9a98581104f878469e9c10be314bd8f6eaf126c8bc8",
+      "targetSha256Before": "f0ac1324fb70cf910969671114d1774b85780422277593f5faf374a642b3452d",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "README.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/README.html",
+      "sourceSha256": "addad94a09080a129b7004699113e29be1ab9db7e615e937a6521a622a28fa90",
+      "targetSha256Before": "7e5e442fab7f58b16cb0ecba051623ec45c20c849741099142640b05deee0ca7",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "STATUS.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/STATUS.html",
+      "sourceSha256": "be550829051a76eebd17c5a9129c628fd35da67b82b1c579d9d32a3fa8f56307",
+      "targetSha256Before": "b6e55421227023c41d85a263354639e84e47309b0e5563c11d59a08e6cffa0b1",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "api/README.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/api/README.html",
+      "sourceSha256": "605a165cd2a361bf7de2067d42280e1d0a5355c00363bedb1d8da599015a19a7",
+      "targetSha256Before": "feecb7f632dd4335ee197eef94b54d57920519cb87f6358741a04ab7aabaedf3",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "api/index.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/api/index.html",
+      "sourceSha256": "3f9838997d6f3ffb141673cf28aac13deef3b439904727894aa0f3c06bfe9afc",
+      "targetSha256Before": "8d417a8f81b2842085e077816c6377eb930b565d4261bc2b737d3d3179466eea",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "icon.svg",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/icon.svg",
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetSha256Before": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "index.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/index.html",
+      "sourceSha256": "59e15a94a2c2b334660ac99e3649b6556c6c3b8d250c4c72369e278d2a57d04b",
+      "targetSha256Before": "c1265b2cdfb11e70cdfc1b208c7c552ea8cf6105a7ae0e60b8ac3f1a2d6de322",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "internal/0019-s04-css-layout-gpu-slice.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/0019-s04-css-layout-gpu-slice.html",
+      "sourceSha256": "af438e2365e23d69e51e719fbaeb64bcf047f9ae25aa406173039686a0ee05f1",
+      "targetSha256Before": "c3b90e8cacc9ce4082b375eab2e4224a622c844915d60a9d58304eedeca37c0b",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "internal/0079-s04-10-confirmed-frame-registry.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/0079-s04-10-confirmed-frame-registry.html",
+      "sourceSha256": "464da2b2ca00bc3a5006680c68c774204abab11ed98f00392505723011380416",
+      "targetSha256Before": "88d7146ad7c26cc55a610dd8285a837e03a7974d0a226a680f72f1f2bf34e7de",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "internal/README.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/README.html",
+      "sourceSha256": "0b4fdf1e2e3877b3b32ec80c323d74ae78baf778f3e1f1ff5d48b67e26e0c24f",
+      "targetSha256Before": "2ee2c1f691e7ac7e1e8fceded583e062f213d5fe56d51e19d459d4edc5cf1b17",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "sourceSha256": "6db01ace2d09d2b6a2eb5fd5ad73739c4e4bac7c553e23d060f6f155bab6b264",
+      "targetSha256Before": "87c80f09b9ab7e9de0338f781c156629a7a9c36ae4ddfb6385b0e9b6770c6026",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "sourceSha256": "b252cedc7cad8c1eaa90187540e7bdd8dc353ef4b210192408d1be21a38c6147",
+      "targetSha256Before": "7edde7c5ad79704ce612f259d147473342d98394029979c03074ba521da0433b",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "sourceSha256": "ed865c8becf69c8eabefcbf2296b68f0a77d5d5d17ddc7aa5e25f9a07f6719c7",
+      "targetSha256Before": "a895cecc1585e9c16bb96b780210e834b60ead8b2498b72afe96db88128219de",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "sourceSha256": "3a46031c1f46f209db2b0caaa1abc14dacdf52a3974518e4635718b55fe2ffce",
+      "targetSha256Before": "442d63fd3d3d75a03c5f5f1349ed15b62deeb05b168802a63df3f2ae8ceda26a",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "sourceSha256": "99efb614c9062b0d2761a609630ecca5ff50f2e3220bfcf37feaaa206d0aa360",
+      "targetSha256Before": "874e1485457268b128d67acfc31108ba72a3108936f78d529d92bfc02702b02c",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "sourceSha256": "901a9c7a4dd3d62a58c0133d10429f0dffa07437d16325d7e5873ec4db9433b3",
+      "targetSha256Before": "026abe8fb2dbb366356d6d77a3079cf812e725d6cde7dcaa30972d3b0adad794",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "sourceSha256": "23f0050ac868c21015bf67afabaa58ddfaec9506c238abb4f3a9daa79c4b01fd",
+      "targetSha256Before": "2d40fed1fe5a2fe9b7f8f30e2b9baaa8e638258b8de3e237ebb675d398161b49",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "sourceSha256": "bfb5372b04b20728e26a41b65e4c740caa2640f2519b662188f00b9735947e9d",
+      "targetSha256Before": "83156041fbc61b826ee99f64e2bb4fb6691b99e6092d41be83b109186c7eadb5",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/README.md",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.md",
+      "sourceSha256": "de77ddb0f126a4d55a7a614d9e3deaafca5520c64bb41611fbad870dea96cf85",
+      "targetSha256Before": "de77ddb0f126a4d55a7a614d9e3deaafca5520c64bb41611fbad870dea96cf85",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/agent-browser-network.log",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-tailnet-sync-2026-10-18/agent-browser-network.log",
+      "sourceSha256": "0135859ef58e4a5885cd306540d49d1c0738f97f3a79bddaa79b490b84fe6fb7",
+      "targetSha256Before": "0135859ef58e4a5885cd306540d49d1c0738f97f3a79bddaa79b490b84fe6fb7",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/backup-verification.json",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-tailnet-sync-2026-10-18/backup-verification.json",
+      "sourceSha256": "6c3aab31660d8bb0495456a58e46527871143250500a4573ddccdde52edf22bb",
+      "targetSha256Before": "6c3aab31660d8bb0495456a58e46527871143250500a4573ddccdde52edf22bb",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/browser-verification.json",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-tailnet-sync-2026-10-18/browser-verification.json",
+      "sourceSha256": "6fd695ffd6233c7b95f6514ac2da508ca2f07fb41cc1ce091ced9f343bd614e6",
+      "targetSha256Before": "6fd695ffd6233c7b95f6514ac2da508ca2f07fb41cc1ce091ced9f343bd614e6",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/copy-verification.json",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-tailnet-sync-2026-10-18/copy-verification.json",
+      "sourceSha256": "de9abd5c08d3e873e47e591e2d3022fa016756b6676badaa5ce9d82ee5ffc087",
+      "targetSha256Before": "de9abd5c08d3e873e47e591e2d3022fa016756b6676badaa5ce9d82ee5ffc087",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/manifest.json",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-tailnet-sync-2026-10-18/manifest.json",
+      "sourceSha256": "7aa9ea5e1e2eb56c72555b744bd1da53492d5be6e1e5007c54b326f6e65f34dd",
+      "targetSha256Before": "7aa9ea5e1e2eb56c72555b744bd1da53492d5be6e1e5007c54b326f6e65f34dd",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "sourceSha256": "3d6b2797b114db4929cfd28c1bd301d604f3ddaa002742a6861b03b73b9bb9da",
+      "targetSha256Before": "162e45df8a6dc1df1fb276b844775fcf86b3594d33a97fe431703ebdb7f983ca",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.md",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.md",
+      "sourceSha256": "2c0aa72655cf2f0c7d1e3c5112ba204dc6d85578437b3e732c916a58691acdc7",
+      "targetSha256Before": "2c0aa72655cf2f0c7d1e3c5112ba204dc6d85578437b3e732c916a58691acdc7",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/preflight.json",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-tailnet-sync-2026-10-18/preflight.json",
+      "sourceSha256": "81ba5f6944dd573b824cc6d0cc0692e649c08f801438e106dec9a65bd2f6ccf3",
+      "targetSha256Before": "81ba5f6944dd573b824cc6d0cc0692e649c08f801438e106dec9a65bd2f6ccf3",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/selected-build.log",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-tailnet-sync-2026-10-18/selected-build.log",
+      "sourceSha256": "31c0f5e612f93a1765b938a7658540fe723cd1443521c3831bb2ce55df287335",
+      "targetSha256Before": "31c0f5e612f93a1765b938a7658540fe723cd1443521c3831bb2ce55df287335",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/served-verification.json",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-tailnet-sync-2026-10-18/served-verification.json",
+      "sourceSha256": "8855da9a2a79af535675d47e395eb7a21a145115aa18eaa5571e6ed3d00baf23",
+      "targetSha256Before": "8855da9a2a79af535675d47e395eb7a21a145115aa18eaa5571e6ed3d00baf23",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-evidence-agent-browser.png",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-evidence-agent-browser.png",
+      "sourceSha256": "5b0bfc4b60e15ed83579d16c6267cb7ba0a55dff99eac4d56dc2d2bb40a67eaf",
+      "targetSha256Before": "5b0bfc4b60e15ed83579d16c6267cb7ba0a55dff99eac4d56dc2d2bb40a67eaf",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "sourceSha256": "e9c223e4d240793620d52df790df45adace0f0029dfcb669fb0e5ca30721ebcc",
+      "targetSha256Before": "e9c223e4d240793620d52df790df45adace0f0029dfcb669fb0e5ca30721ebcc",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-status-agent-browser.png",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/internal/evidence/s04-10-tailnet-sync-2026-10-18/tailnet-status-agent-browser.png",
+      "sourceSha256": "845ceab93a62a65f71c5a1f087c1647066e58165a6e3e64a453b88613f1881b7",
+      "targetSha256Before": "845ceab93a62a65f71c5a1f087c1647066e58165a6e3e64a453b88613f1881b7",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "logo.svg",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/logo.svg",
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetSha256Before": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "plan/s04-10-presented-frame-gate.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/plan/s04-10-presented-frame-gate.html",
+      "sourceSha256": "64bf6a02069399a88b10b7ced60bcb06f8e5fb82ddb844ac19e2557a8c542fe3",
+      "targetSha256Before": "833e654c8b9250aa14381db4fa363eb40ae37ddf0ea535f3dab3ba4dbb69b2c2",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "roadmap.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/roadmap.html",
+      "sourceSha256": "24b25b60917c256e39ae08e8554420afa2498e28a1e4d2a26283bbab3d5cfb97",
+      "targetSha256Before": "24b25b60917c256e39ae08e8554420afa2498e28a1e4d2a26283bbab3d5cfb97",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "spec/STATUS.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/spec/STATUS.html",
+      "sourceSha256": "3ed3ed9e7c14330ef446e15df9e106f8db6e5566ba62871a33f155571ae65222",
+      "targetSha256Before": "262f6a7be7affbb3881fa6bcb4fe367c7211cc634ba842ac506eadd806731b65",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "spec/internal/0019-s04-css-layout-gpu-slice.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/spec/internal/0019-s04-css-layout-gpu-slice.html",
+      "sourceSha256": "e34f9c9e289f89cc30cd77d60b738cd3f64a5beb921a163dff005f756d6aeb1f",
+      "targetSha256Before": "9cc08c944c890b28e747d11ee9203c4efa0a824101aec25d51309ffa6d5a8b56",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "spec/internal/0079-s04-10-confirmed-frame-registry.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/spec/internal/0079-s04-10-confirmed-frame-registry.html",
+      "sourceSha256": "6b2ecf342be4826539b13595e331f8e54b98c3127d0cc486588a890aa3e45a25",
+      "targetSha256Before": "f3306878b02ce5ff0fb3b78faf6f24d5081b7853a336afec422af7d2698fbc85",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "spec/internal/README.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/spec/internal/README.html",
+      "sourceSha256": "777bb59987034aec5ad4bce3d3e17e5f65f4814c9c9d6453cf9595229bcd5d36",
+      "targetSha256Before": "cbccfa9e081df79d50e83e367c0e0056ec4ae809ce56508d975d0d91ca784299",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "sourceSha256": "f3a78ec7c8237131bc9ef335080d3a71f561323e5bb9856c24b11286e98ea2b8",
+      "targetSha256Before": "915e880c7dd693a3d4976949d78562537f0a1b4c69342303132baf02481e84e7",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.html",
+      "sourceSha256": "2f88f7150c3cc52c17328eae7f2f643ecdbf78fe487a0898522357077f9ca575",
+      "targetSha256Before": "0feadb4ba644b37ccdc9f67d898aa3995c592d701636be1235b116e92151c9d1",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "sourceSha256": "15ff2741d53a7181e6b824154d5f798e575225c13218be7d234e7967768b375d",
+      "targetSha256Before": "f3f913ef47183a26d8aaee2cda2b7ce0e67fd051582385a9dcb531d0a31c251a",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/spec/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "sourceSha256": "e48943dfcbe8ec3c7d95e3309b88bf89f4fcab767196ae36a25202ccc26e3de9",
+      "targetSha256Before": "b2dcc142e589771207bcb562de9cdd69a7a7b78c9544341281d9b0abc448944e",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/spec/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "sourceSha256": "67f9072bfae5787632188347a29a48610636283b9c64247f2654a77293a191cc",
+      "targetSha256Before": "30b95c88f6d4f2bc217e85610e8cf577aceab86f6f008d68f0e9351557d6c16b",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/spec/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "sourceSha256": "61701b3bc6dfda0b8dd17b51aa50fdb5687500cdafd14404fcbc073eb2677009",
+      "targetSha256Before": "ec72394cb6ccd65ee11ffbdc5965dde5c587a745053e519627660fc4eb2203eb",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/spec/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "sourceSha256": "62cdccdf724f7a4bffed75f78c2a7e9ea8b0cadd98821d97a35ae4cf12521f2f",
+      "targetSha256Before": "f9f470542be69e8d8d3765087ca0821e96b0ac7cbf5ca08b13ade29a25e25f41",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/README.html",
+      "sourceSha256": "9edbd37dcf038fa0cb29ac7f78a8dcc5701a0130c3c8a43927e73b5e839d2c9f",
+      "targetSha256Before": "6d85a42ed378772c7eecb7f70e794f8c9972a6488ece1482121a4c237edfd4e6",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/spec/internal/evidence/s04-10-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "sourceSha256": "e3838ee04e421339871c02eb6327b08713bb71d3bff22f9dcdc6b9a2fa8c16ca",
+      "targetSha256Before": "04ad094c673c27dc636960e280f31dd77cdff0af17a726b6b664960e7b036aed",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "static/css/styles.8d918fd78e.css",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/css/styles.8d918fd78e.css",
+      "sourceSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "targetSha256Before": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/2.1aa8a93d31.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/2.1aa8a93d31.js",
+      "sourceSha256": "b21acdce969ebad569ff75b046d68b6edf0130a56631a440fb2d22a9258a65fb",
+      "targetSha256Before": "b21acdce969ebad569ff75b046d68b6edf0130a56631a440fb2d22a9258a65fb",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/2.1aa8a93d31.js.LICENSE.txt",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/2.1aa8a93d31.js.LICENSE.txt",
+      "sourceSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "targetSha256Before": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/1.9d6d094526.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/1.9d6d094526.js",
+      "sourceSha256": "d6f6b4dbea1173cbf7c99162893e587afc13cda01fd4e1405d5b780a918b5a72",
+      "targetSha256Before": "d6f6b4dbea1173cbf7c99162893e587afc13cda01fd4e1405d5b780a918b5a72",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-04bc2c24c122.86aec007f6.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-04bc2c24c122.86aec007f6.js",
+      "sourceSha256": "757b0389f90ecf891f77222214c3d4d603b8f190c74a68841c1f74965989781a",
+      "targetSha256Before": "757b0389f90ecf891f77222214c3d4d603b8f190c74a68841c1f74965989781a",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-0f4abc145d07.96e377b35d.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-0f4abc145d07.96e377b35d.js",
+      "sourceSha256": "d2d3c1492f8efb35b17cfc09a0de2513cd05b0a9c5bf0699efe5d67f0fc9a874",
+      "targetSha256Before": "d2d3c1492f8efb35b17cfc09a0de2513cd05b0a9c5bf0699efe5d67f0fc9a874",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-107ea9bc59bb.d698652131.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-107ea9bc59bb.d698652131.js",
+      "sourceSha256": "6eabf5248ad661e986d6db7fa2a8571ee91c08fa383437c5cd7f5a1308af2985",
+      "targetSha256Before": "6eabf5248ad661e986d6db7fa2a8571ee91c08fa383437c5cd7f5a1308af2985",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-1c606a9bcf5f.5004d069f3.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-1c606a9bcf5f.5004d069f3.js",
+      "sourceSha256": "1c42471c235fff6d073495a2c2324f14faf52035c4552172dbd3a86add44a7b8",
+      "targetSha256Before": "1c42471c235fff6d073495a2c2324f14faf52035c4552172dbd3a86add44a7b8",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-2308615ee227.bb3042fc6e.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-2308615ee227.bb3042fc6e.js",
+      "sourceSha256": "c3d1509815a01a5597c72269f989eabd635e6767b9cf70dc0f6bbfd104885212",
+      "targetSha256Before": "c3d1509815a01a5597c72269f989eabd635e6767b9cf70dc0f6bbfd104885212",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-311b470225ee.1fdddbead8.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-311b470225ee.1fdddbead8.js",
+      "sourceSha256": "02fc15dc80a3d178554e042bcbdd85578bd0918ec116097c2ccbe6668c23bd96",
+      "targetSha256Before": "02fc15dc80a3d178554e042bcbdd85578bd0918ec116097c2ccbe6668c23bd96",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-343e2be2a1e8.4ea8591518.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-343e2be2a1e8.4ea8591518.js",
+      "sourceSha256": "507bd621f2c71751b4a0e8e331ae0b7d56c3ed84ffd5d7e065678d6e222537fd",
+      "targetSha256Before": "507bd621f2c71751b4a0e8e331ae0b7d56c3ed84ffd5d7e065678d6e222537fd",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-4665cde077d0.5c95071ff1.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-4665cde077d0.5c95071ff1.js",
+      "sourceSha256": "70b39cd08f0befc2ae8961ed360e5773f8493faf3a53504974ea50ac62677127",
+      "targetSha256Before": "70b39cd08f0befc2ae8961ed360e5773f8493faf3a53504974ea50ac62677127",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-5eb92dc32e34.ef091f118c.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-5eb92dc32e34.ef091f118c.js",
+      "sourceSha256": "cf15976ae3761544570e1c1c38e1da355014b1ee5b74ef900fab591cef9a2bf3",
+      "targetSha256Before": "cf15976ae3761544570e1c1c38e1da355014b1ee5b74ef900fab591cef9a2bf3",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-6c33a3943990.b1fc24aa5c.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-6c33a3943990.b1fc24aa5c.js",
+      "sourceSha256": "49c5e03b9f884d566e2d15dbe6be7729f636f818176828a478891ad4079d4d73",
+      "targetSha256Before": "49c5e03b9f884d566e2d15dbe6be7729f636f818176828a478891ad4079d4d73",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-6e8db818f69d.0016b0de5c.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-6e8db818f69d.0016b0de5c.js",
+      "sourceSha256": "0b802e8309bdaa190f50db7ef3a19a6f77aa41c943610ad5b523f73d96379987",
+      "targetSha256Before": "0b802e8309bdaa190f50db7ef3a19a6f77aa41c943610ad5b523f73d96379987",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-6fe650616266.86352fd971.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-6fe650616266.86352fd971.js",
+      "sourceSha256": "0a00b91d8adb4b9aa2d52bbbc6781a52b1ca2950067bbd63e8a9fbb40e413375",
+      "targetSha256Before": "0a00b91d8adb4b9aa2d52bbbc6781a52b1ca2950067bbd63e8a9fbb40e413375",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-73701410f94e.d153747404.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-73701410f94e.d153747404.js",
+      "sourceSha256": "031291a4931e4a7bbb24ad1a29425e88beeaf2df1d79c173103705cb50ff4da7",
+      "targetSha256Before": "031291a4931e4a7bbb24ad1a29425e88beeaf2df1d79c173103705cb50ff4da7",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-7ae5198feb44.81647f3d9b.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-7ae5198feb44.81647f3d9b.js",
+      "sourceSha256": "bc9b59c9c96c08104183f4da188ee6e0d76cbcc05b44fbcd260da81d2cf03f02",
+      "targetSha256Before": null,
+      "action": "add"
+    },
+    {
+      "targetRelative": "static/js/async/route-7b63acbe348a.7e7a4b1a42.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-7b63acbe348a.7e7a4b1a42.js",
+      "sourceSha256": "3d62aaec4fde5c74a68eacbca5e3c231a05fa4a537787397bdf44161bd145ac3",
+      "targetSha256Before": "3d62aaec4fde5c74a68eacbca5e3c231a05fa4a537787397bdf44161bd145ac3",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-7ce2535ac56d.85232c1bf7.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-7ce2535ac56d.85232c1bf7.js",
+      "sourceSha256": "846b0e9657165f30b0b93b5087fc0bf6d3ecd92b0617ed017a60c442e6669dd3",
+      "targetSha256Before": "846b0e9657165f30b0b93b5087fc0bf6d3ecd92b0617ed017a60c442e6669dd3",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-7f43a109d20e.6bb2703eab.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-7f43a109d20e.6bb2703eab.js",
+      "sourceSha256": "6847659da427c5190fde0f061596c29264a932b1db5e26147e6d0186531c275a",
+      "targetSha256Before": "6847659da427c5190fde0f061596c29264a932b1db5e26147e6d0186531c275a",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-9e27f397e76b.12ca9be988.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-9e27f397e76b.12ca9be988.js",
+      "sourceSha256": "9e034fb8c572beeb07f35d95655073ee10a342d74168d242368c03a68b0a0aa6",
+      "targetSha256Before": "9e034fb8c572beeb07f35d95655073ee10a342d74168d242368c03a68b0a0aa6",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-a1017bdf23ca.9f7ac0e838.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-a1017bdf23ca.9f7ac0e838.js",
+      "sourceSha256": "6b028ea866e4295da4b07616af6ee01d1fd435f691dd19e29a4a4d4dc24a555f",
+      "targetSha256Before": "6b028ea866e4295da4b07616af6ee01d1fd435f691dd19e29a4a4d4dc24a555f",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-a991d6de67ad.efc0581923.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-a991d6de67ad.efc0581923.js",
+      "sourceSha256": "0a0a4c8c8c002c59813edfcf2d8d4c57a665d8983533a35cdb977a702bfe8319",
+      "targetSha256Before": "0a0a4c8c8c002c59813edfcf2d8d4c57a665d8983533a35cdb977a702bfe8319",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-aea8aafbbb87.8402df5c3f.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-aea8aafbbb87.8402df5c3f.js",
+      "sourceSha256": "bf2e88c1d8d12987d556696ecd3f96f22d48c00325e3527e7c770e2fe234d1fc",
+      "targetSha256Before": "bf2e88c1d8d12987d556696ecd3f96f22d48c00325e3527e7c770e2fe234d1fc",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-afc04a26c114.28aed42506.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-afc04a26c114.28aed42506.js",
+      "sourceSha256": "10c184eef830c5fe1c7140ffcc1775c041ec0e7d903bf03f772628629e0ddc08",
+      "targetSha256Before": "10c184eef830c5fe1c7140ffcc1775c041ec0e7d903bf03f772628629e0ddc08",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-b33563055168.081cf13555.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-b33563055168.081cf13555.js",
+      "sourceSha256": "029b47c881d5d7310960a60c1b908f787b3c3862e7058cda5650cda40b073867",
+      "targetSha256Before": "029b47c881d5d7310960a60c1b908f787b3c3862e7058cda5650cda40b073867",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-c6d90fac6bcd.252e7d59d9.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-c6d90fac6bcd.252e7d59d9.js",
+      "sourceSha256": "db4c03ab7b8a816fe058a4b6e7840ca27447d539b3dbbb02149b51414fd70d82",
+      "targetSha256Before": "db4c03ab7b8a816fe058a4b6e7840ca27447d539b3dbbb02149b51414fd70d82",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-c7b1c23e00a1.028cd521df.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-c7b1c23e00a1.028cd521df.js",
+      "sourceSha256": "5586e8b084be7d713adcf63459457dd49d47757671a89e4fa3eb798abd088f72",
+      "targetSha256Before": "5586e8b084be7d713adcf63459457dd49d47757671a89e4fa3eb798abd088f72",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-d044253b30b9.64590e475d.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-d044253b30b9.64590e475d.js",
+      "sourceSha256": "eeb36847c4f7a8d7d1600cb7a52d46e34013e441a98bcfca6e5fe59187f25c7a",
+      "targetSha256Before": null,
+      "action": "add"
+    },
+    {
+      "targetRelative": "static/js/async/route-d0f54d53ad2b.9c0481ae8f.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-d0f54d53ad2b.9c0481ae8f.js",
+      "sourceSha256": "64b1258f80a29e87913455efab85f0eb052ef3eafc87912bcfc22c8442512f3e",
+      "targetSha256Before": "64b1258f80a29e87913455efab85f0eb052ef3eafc87912bcfc22c8442512f3e",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-de98351b28cb.e94b00e4de.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-de98351b28cb.e94b00e4de.js",
+      "sourceSha256": "fa8fa1205d13124512db40aaeda92a0719648c47bb52c77ba0d0733b6800df56",
+      "targetSha256Before": "fa8fa1205d13124512db40aaeda92a0719648c47bb52c77ba0d0733b6800df56",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-e0472d60744a.279ba2d9b7.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-e0472d60744a.279ba2d9b7.js",
+      "sourceSha256": "023092e4454d5313549a72c326f682f516dac2b36b4dc2b3a9e386b1af6dbea8",
+      "targetSha256Before": "023092e4454d5313549a72c326f682f516dac2b36b4dc2b3a9e386b1af6dbea8",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-e2d1348b3fb4.212bf22be4.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-e2d1348b3fb4.212bf22be4.js",
+      "sourceSha256": "1bb43822aa795d99f62d5647430fdfbc127da800fba2e145cdb69b624a6b1b52",
+      "targetSha256Before": "1bb43822aa795d99f62d5647430fdfbc127da800fba2e145cdb69b624a6b1b52",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/async/route-ef6f0445d65c.0efb9d3794.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/async/route-ef6f0445d65c.0efb9d3794.js",
+      "sourceSha256": "087655fcba03486f745a61e859245da1ea1df9ac39650850d40fb891e400c5a4",
+      "targetSha256Before": "087655fcba03486f745a61e859245da1ea1df9ac39650850d40fb891e400c5a4",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/index.507cb2253e.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/index.507cb2253e.js",
+      "sourceSha256": "4678f5d5e0205a5c42640c203489a7ad0ff82093a48a6ae5bebb565eeb42ca2c",
+      "targetSha256Before": null,
+      "action": "add"
+    },
+    {
+      "targetRelative": "static/js/lib-react.d9aa10f4b0.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/lib-react.d9aa10f4b0.js",
+      "sourceSha256": "ad3b1fffada69190b9d14bfd2e16a62d31865b2d3de8a5044cb200fa67961cc8",
+      "targetSha256Before": "ad3b1fffada69190b9d14bfd2e16a62d31865b2d3de8a5044cb200fa67961cc8",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/lib-react.d9aa10f4b0.js.LICENSE.txt",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/lib-react.d9aa10f4b0.js.LICENSE.txt",
+      "sourceSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "targetSha256Before": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/lib-router.95ea184a3c.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/lib-router.95ea184a3c.js",
+      "sourceSha256": "71a8993452741417ebd7ac492fa9420ba9172794d33d650e50b8ab5fa71c327e",
+      "targetSha256Before": "71a8993452741417ebd7ac492fa9420ba9172794d33d650e50b8ab5fa71c327e",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/lib-router.95ea184a3c.js.LICENSE.txt",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/lib-router.95ea184a3c.js.LICENSE.txt",
+      "sourceSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "targetSha256Before": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/js/styles.7b0c5651b6.js",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/js/styles.7b0c5651b6.js",
+      "sourceSha256": "4a90f3ba024b9eb4ad9a48173029ba9ca3eae3c00a7741aa19aaad0d828f6749",
+      "targetSha256Before": "4a90f3ba024b9eb4ad9a48173029ba9ca3eae3c00a7741aa19aaad0d828f6749",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "static/search_index.ko.1edeac6e.json",
+      "sourceKind": "build",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-selected-out-20261018/static/search_index.ko.1edeac6e.json",
+      "sourceSha256": "1edeac6e9d861df818e896ec98e1598c842d95919d19b4c053ab1859ea169508",
+      "targetSha256Before": null,
+      "action": "add"
+    },
+    {
+      "targetRelative": "plan/s04-10-presented-frame-gate.md",
+      "sourceKind": "source",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/plan/s04-10-presented-frame-gate.md",
+      "sourceSha256": "e89960d31a3993320829926321ab98928599ca49f92102e88ab34fefa441b994",
+      "targetSha256Before": "e89960d31a3993320829926321ab98928599ca49f92102e88ab34fefa441b994",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "spec/STATUS.md",
+      "sourceKind": "source",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/STATUS.md",
+      "sourceSha256": "00274a22e7178e5a193fa7e6fa77f8447e90d7da3623742129abcd9d00e061f4",
+      "targetSha256Before": "00274a22e7178e5a193fa7e6fa77f8447e90d7da3623742129abcd9d00e061f4",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "spec/internal/README.md",
+      "sourceKind": "source",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/README.md",
+      "sourceSha256": "2e1739504a75b66d6159ee4da02daff5f2fefa38a792694a40815478202304d0",
+      "targetSha256Before": "2e1739504a75b66d6159ee4da02daff5f2fefa38a792694a40815478202304d0",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.md",
+      "sourceKind": "source",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.md",
+      "sourceSha256": "c741a3774d1e13d68cbf682e4a71334e9f5605249fdda5cefa263467b6e86e68",
+      "targetSha256Before": "c741a3774d1e13d68cbf682e4a71334e9f5605249fdda5cefa263467b6e86e68",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/Info.plist",
+      "sourceKind": "source",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/Info.plist",
+      "sourceSha256": "18d6fa164951c16b8f238a4083d5f68b394890273762c99b2ff1ebe2fc2ec838",
+      "targetSha256Before": "18d6fa164951c16b8f238a4083d5f68b394890273762c99b2ff1ebe2fc2ec838",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.md",
+      "sourceKind": "source",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.md",
+      "sourceSha256": "7a1f7ce4dde4e838d5d2ee27df8a734bda9499047e4b0d1803e0e97649e8f26c",
+      "targetSha256Before": "4946174e7846f48d28a355ff1280f2fa95bd11da30478cea2e4635e14f107eff",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/metal-api-probe.swift",
+      "sourceKind": "source",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/metal-api-probe.swift",
+      "sourceSha256": "ec22901e6ebf4f73356271a1d9879a63f3b499f6389dabdd1960b8cd5ac552a0",
+      "targetSha256Before": "ec22901e6ebf4f73356271a1d9879a63f3b499f6389dabdd1960b8cd5ac552a0",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.md",
+      "sourceKind": "source",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.md",
+      "sourceSha256": "21fda322d71a10f68f61a93cd71d38b9424c12444cd56bbca9a5ec5bd675c64a",
+      "targetSha256Before": "21fda322d71a10f68f61a93cd71d38b9424c12444cd56bbca9a5ec5bd675c64a",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "sourceKind": "source",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "sourceSha256": "2cd6a09824bd53f7cd3fa01ad2e4102ca53fd020a69e24a395f0fa392867d3c6",
+      "targetSha256Before": "266e97f1ec12549fa5045ba6b5925bda591f40144afd19c26cd3dcba5d56d0fe",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/simulator-runtime.log",
+      "sourceKind": "source",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/simulator-runtime.log",
+      "sourceSha256": "b912d0ae4d63d929e07ab1d9a11c4044e2cf9df75843f326988cbd7ebdf65ae9",
+      "targetSha256Before": "b912d0ae4d63d929e07ab1d9a11c4044e2cf9df75843f326988cbd7ebdf65ae9",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/simulator-selector-probe.m",
+      "sourceKind": "source",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/simulator-selector-probe.m",
+      "sourceSha256": "6a932cfbb8fbd2c59f7369456d65bb52fdf1bcdf333816015bf788bf70983da7",
+      "targetSha256Before": "6a932cfbb8fbd2c59f7369456d65bb52fdf1bcdf333816015bf788bf70983da7",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "sourceKind": "source",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "sourceSha256": "4a0aef2ccad9c69c4d125b28e630b50c303807f5baddf855ae79859fbff54993",
+      "targetSha256Before": "4a0aef2ccad9c69c4d125b28e630b50c303807f5baddf855ae79859fbff54993",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-status-agent-browser.png",
+      "sourceKind": "source",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-status-agent-browser.png",
+      "sourceSha256": "77b8a29e91e15641af8540c88d7ccae5c87843e8048ad4b66f7ec7d654f47059",
+      "targetSha256Before": "77b8a29e91e15641af8540c88d7ccae5c87843e8048ad4b66f7ec7d654f47059",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-evidence-agent-browser.png",
+      "sourceKind": "source",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-evidence-agent-browser.png",
+      "sourceSha256": "9348d8f42949ce65c9e6ccd37bd902b56d42b50a0a41e94ce98afb1d1a91d511",
+      "targetSha256Before": "9348d8f42949ce65c9e6ccd37bd902b56d42b50a0a41e94ce98afb1d1a91d511",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-verification.json",
+      "sourceKind": "source",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-verification.json",
+      "sourceSha256": "44e57779af931f961c755f843ef2c876a8e75f87dd211aea4826fc306992d656",
+      "targetSha256Before": "44e57779af931f961c755f843ef2c876a8e75f87dd211aea4826fc306992d656",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-session-shutdown.json",
+      "sourceKind": "source",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-session-shutdown.json",
+      "sourceSha256": "6c8c8d7eeb64ba5537ccbf7a7bb85f31438357b7e06318338399784b44bc7b8b",
+      "targetSha256Before": "6c8c8d7eeb64ba5537ccbf7a7bb85f31438357b7e06318338399784b44bc7b8b",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/agent-browser-network.log",
+      "sourceKind": "source",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/agent-browser-network.log",
+      "sourceSha256": "5233d3e29ef07653eea968cb1c0374c53576a6c77f50f151e2a6049625647050",
+      "targetSha256Before": "5233d3e29ef07653eea968cb1c0374c53576a6c77f50f151e2a6049625647050",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "sourceKind": "evidence-link",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "sourceSha256": "2cd6a09824bd53f7cd3fa01ad2e4102ca53fd020a69e24a395f0fa392867d3c6",
+      "targetSha256Before": "266e97f1ec12549fa5045ba6b5925bda591f40144afd19c26cd3dcba5d56d0fe",
+      "action": "backup-and-replace"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-verification.json",
+      "sourceKind": "evidence-link",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-verification.json",
+      "sourceSha256": "44e57779af931f961c755f843ef2c876a8e75f87dd211aea4826fc306992d656",
+      "targetSha256Before": "44e57779af931f961c755f843ef2c876a8e75f87dd211aea4826fc306992d656",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-session-shutdown.json",
+      "sourceKind": "evidence-link",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-session-shutdown.json",
+      "sourceSha256": "6c8c8d7eeb64ba5537ccbf7a7bb85f31438357b7e06318338399784b44bc7b8b",
+      "targetSha256Before": "6c8c8d7eeb64ba5537ccbf7a7bb85f31438357b7e06318338399784b44bc7b8b",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/agent-browser-network.log",
+      "sourceKind": "evidence-link",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/agent-browser-network.log",
+      "sourceSha256": "5233d3e29ef07653eea968cb1c0374c53576a6c77f50f151e2a6049625647050",
+      "targetSha256Before": "5233d3e29ef07653eea968cb1c0374c53576a6c77f50f151e2a6049625647050",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "sourceKind": "evidence-link",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "sourceSha256": "4a0aef2ccad9c69c4d125b28e630b50c303807f5baddf855ae79859fbff54993",
+      "targetSha256Before": "4a0aef2ccad9c69c4d125b28e630b50c303807f5baddf855ae79859fbff54993",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-status-agent-browser.png",
+      "sourceKind": "evidence-link",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-status-agent-browser.png",
+      "sourceSha256": "77b8a29e91e15641af8540c88d7ccae5c87843e8048ad4b66f7ec7d654f47059",
+      "targetSha256Before": "77b8a29e91e15641af8540c88d7ccae5c87843e8048ad4b66f7ec7d654f47059",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-evidence-agent-browser.png",
+      "sourceKind": "evidence-link",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-evidence-agent-browser.png",
+      "sourceSha256": "9348d8f42949ce65c9e6ccd37bd902b56d42b50a0a41e94ce98afb1d1a91d511",
+      "targetSha256Before": "9348d8f42949ce65c9e6ccd37bd902b56d42b50a0a41e94ce98afb1d1a91d511",
+      "action": "skip-identical"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-final-backup-verification.json",
+      "sourceKind": "evidence-link",
+      "sourcePath": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-final-backup-verification.json",
+      "sourceSha256": "018bb3953864d2f5f8912eed4a174eaa0acc64d19784fe8cf266746b0c128c14",
+      "targetSha256Before": null,
+      "action": "add"
+    }
+  ]
+}

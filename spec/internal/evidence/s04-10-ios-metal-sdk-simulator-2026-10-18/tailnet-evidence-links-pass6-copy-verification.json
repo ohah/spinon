@@ -1,0 +1,46 @@
+{
+  "createdAt": "2026-10-17T22:24:35.851162+00:00",
+  "preflight": "tailnet-evidence-links-pass6-preflight.json",
+  "copiedOrSkipped": 7,
+  "backedUp": 0,
+  "deletions": 0,
+  "verification": "copied files match source hashes",
+  "files": [
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "action": "add",
+      "sha256": "266e97f1ec12549fa5045ba6b5925bda591f40144afd19c26cd3dcba5d56d0fe"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-verification.json",
+      "action": "add",
+      "sha256": "44e57779af931f961c755f843ef2c876a8e75f87dd211aea4826fc306992d656"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/browser-session-shutdown.json",
+      "action": "add",
+      "sha256": "6c8c8d7eeb64ba5537ccbf7a7bb85f31438357b7e06318338399784b44bc7b8b"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/agent-browser-network.log",
+      "action": "add",
+      "sha256": "5233d3e29ef07653eea968cb1c0374c53576a6c77f50f151e2a6049625647050"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "action": "add",
+      "sha256": "4a0aef2ccad9c69c4d125b28e630b50c303807f5baddf855ae79859fbff54993"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-status-agent-browser.png",
+      "action": "add",
+      "sha256": "77b8a29e91e15641af8540c88d7ccae5c87843e8048ad4b66f7ec7d654f47059"
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/tailnet-evidence-agent-browser.png",
+      "action": "add",
+      "sha256": "9348d8f42949ce65c9e6ccd37bd902b56d42b50a0a41e94ce98afb1d1a91d511"
+    }
+  ],
+  "backups": []
+}

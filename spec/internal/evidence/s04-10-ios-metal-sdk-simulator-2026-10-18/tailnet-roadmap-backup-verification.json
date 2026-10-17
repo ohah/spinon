@@ -1,0 +1,19 @@
+{
+  "createdAt": "2026-10-17T22:13:31.596071+00:00",
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-roadmap-pass2",
+  "backedUp": [
+    {
+      "targetRelative": "roadmap.html",
+      "backupRelative": "roadmap.html",
+      "sha256": "282d54a80e2ac036a105e006bacde63f20e6776fb2a56bc83717235c1fb6a577",
+      "bytes": 127027
+    },
+    {
+      "targetRelative": "spec/public/roadmap.html",
+      "backupRelative": "spec/public/roadmap.html",
+      "sha256": "743394efeed4de81831ac3124da535fb2caddbec5a818e65c4afa898fc523e0c",
+      "bytes": 119413
+    }
+  ],
+  "allHashesMatch": true
+}

@@ -1,0 +1,18 @@
+{
+  "createdAt": "2026-10-17T22:14:07.048619+00:00",
+  "phase": "build log follow-up preflight",
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/s04-10-ios-sdk-simulator-20261018-buildlog-pass3",
+  "deletions": 0,
+  "files": [
+    {
+      "source": "/private/tmp/spinon-s04-10-ios-sdk-simulator-20261018/spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "targetRelative": "spec/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/selected-build.log",
+      "bytes": 10739,
+      "sha256": "2bfc6aa5b5fe68ae584b022d147669fc4fe60dee57e74bae8c522876082d271f",
+      "targetExists": true,
+      "targetSha256": "150007c890957947646e0364a7c125850a25dc855a0c267e02251bb12d28d6e5",
+      "action": "backup-and-replace"
+    }
+  ]
+}
