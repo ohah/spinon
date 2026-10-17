@@ -1,5 +1,5 @@
 use bytemuck::{Pod, Zeroable};
-use spinon_render::{CssClip, RuntimePaint, RuntimeRenderSnapshot};
+use spinon_render::{CssClip, CssSize, RuntimePaint, RuntimeRenderSnapshot};
 use std::ops::Range;
 
 mod image;
@@ -36,6 +36,102 @@ pub(crate) enum ColorEncoding {
     Srgb,
 }
 
+#[derive(Clone, Copy, Debug)]
+pub(crate) struct CssToSurfaceMapping {
+    viewport: CssSize,
+    surface_width: u32,
+    surface_height: u32,
+    physical_scale: Option<f32>,
+}
+
+impl CssToSurfaceMapping {
+    pub(crate) fn new(
+        scene: &RuntimeRenderSnapshot,
+        surface_width: u32,
+        surface_height: u32,
+    ) -> Self {
+        Self {
+            viewport: scene.viewport_css_px(),
+            surface_width,
+            surface_height,
+            physical_scale: scene
+                .page_scale_transform()
+                .map(|transform| transform.physical_scale()),
+        }
+    }
+
+    pub(crate) fn visible_width_css(self) -> f64 {
+        self.physical_scale.map_or_else(
+            || f64::from(self.viewport.width()),
+            |scale| f64::from(self.surface_width) / f64::from(scale),
+        )
+    }
+
+    pub(crate) fn visible_height_css(self) -> f64 {
+        self.physical_scale.map_or_else(
+            || f64::from(self.viewport.height()),
+            |scale| f64::from(self.surface_height) / f64::from(scale),
+        )
+    }
+
+    pub(crate) fn x_to_ndc(self, css: f32) -> Result<f32, String> {
+        let ndc = if let Some(scale) = self.physical_scale {
+            (-1.0 + 2.0 * f64::from(css) * f64::from(scale) / f64::from(self.surface_width)) as f32
+        } else {
+            -1.0 + 2.0 * css / self.viewport.width()
+        };
+        if ndc.is_finite() {
+            Ok(ndc)
+        } else {
+            Err("CSS x 좌표를 유한한 WGPU 표면 좌표로 변환하지 못했습니다".to_owned())
+        }
+    }
+
+    pub(crate) fn y_to_ndc(self, css: f32) -> Result<f32, String> {
+        let ndc = if let Some(scale) = self.physical_scale {
+            (1.0 - 2.0 * f64::from(css) * f64::from(scale) / f64::from(self.surface_height)) as f32
+        } else {
+            1.0 - 2.0 * css / self.viewport.height()
+        };
+        if ndc.is_finite() {
+            Ok(ndc)
+        } else {
+            Err("CSS y 좌표를 유한한 WGPU 표면 좌표로 변환하지 못했습니다".to_owned())
+        }
+    }
+
+    pub(crate) fn x_to_ndc_f64(self, css: f64) -> Result<f32, String> {
+        let ndc = if let Some(scale) = self.physical_scale {
+            -1.0 + 2.0 * css * f64::from(scale) / f64::from(self.surface_width)
+        } else {
+            let surface_px = css * f64::from(self.surface_width) / f64::from(self.viewport.width());
+            -1.0 + 2.0 * surface_px / f64::from(self.surface_width)
+        };
+        let ndc = ndc as f32;
+        if ndc.is_finite() {
+            Ok(ndc)
+        } else {
+            Err("glyph x 좌표를 유한한 WGPU 표면 좌표로 변환하지 못했습니다".to_owned())
+        }
+    }
+
+    pub(crate) fn y_to_ndc_f64(self, css: f64) -> Result<f32, String> {
+        let ndc = if let Some(scale) = self.physical_scale {
+            1.0 - 2.0 * css * f64::from(scale) / f64::from(self.surface_height)
+        } else {
+            let surface_px =
+                css * f64::from(self.surface_height) / f64::from(self.viewport.height());
+            1.0 - 2.0 * surface_px / f64::from(self.surface_height)
+        };
+        let ndc = ndc as f32;
+        if ndc.is_finite() {
+            Ok(ndc)
+        } else {
+            Err("glyph y 좌표를 유한한 WGPU 표면 좌표로 변환하지 못했습니다".to_owned())
+        }
+    }
+}
+
 #[cfg(test)]
 pub(crate) fn build_vertices(
     scene: &RuntimeRenderSnapshot,
@@ -55,7 +151,7 @@ pub(crate) fn build_colored_geometry(
     if width == 0 || height == 0 {
         return Err("WGPU 표면 크기는 0보다 커야 합니다".to_owned());
     }
-    let viewport = scene.viewport_css_px();
+    let mapping = CssToSurfaceMapping::new(scene, width, height);
     let quad_capacity = scene.boxes().iter().fold(0_usize, |count, render_box| {
         let border = render_box.border();
         let sides = [border.top(), border.right(), border.bottom(), border.left()];
@@ -104,10 +200,9 @@ pub(crate) fn build_colored_geometry(
             [x, y, right, bottom],
             render_box.paint(),
             clip,
-            viewport.width(),
-            viewport.height(),
+            mapping,
             color_encoding,
-        );
+        )?;
 
         let border = render_box.border();
         let top_width = border.top().width_css_px().min(rect.height());
@@ -122,10 +217,9 @@ pub(crate) fn build_colored_geometry(
             [x, y, right, y + top_width],
             border.top().paint(),
             clip,
-            viewport.width(),
-            viewport.height(),
+            mapping,
             color_encoding,
-        );
+        )?;
         append_colored_rect(
             &mut geometry.vertices,
             [
@@ -136,28 +230,25 @@ pub(crate) fn build_colored_geometry(
             ],
             border.right().paint(),
             clip,
-            viewport.width(),
-            viewport.height(),
+            mapping,
             color_encoding,
-        );
+        )?;
         append_colored_rect(
             &mut geometry.vertices,
             [x, bottom - bottom_width, right, bottom],
             border.bottom().paint(),
             clip,
-            viewport.width(),
-            viewport.height(),
+            mapping,
             color_encoding,
-        );
+        )?;
         append_colored_rect(
             &mut geometry.vertices,
             [x, y + top_width, x + left_width, bottom - bottom_width],
             border.left().paint(),
             clip,
-            viewport.width(),
-            viewport.height(),
+            mapping,
             color_encoding,
-        );
+        )?;
         let last = u32::try_from(geometry.vertices.len())
             .map_err(|_| "WGPU 정점 index가 범위를 넘었습니다".to_owned())?;
         geometry.ranges.push(first..last);
@@ -170,12 +261,11 @@ fn append_colored_rect(
     rect: [f32; 4],
     paint: RuntimePaint,
     clip: CssClip,
-    viewport_width: f32,
-    viewport_height: f32,
+    mapping: CssToSurfaceMapping,
     color_encoding: ColorEncoding,
-) {
+) -> Result<(), String> {
     let (red, green, blue, alpha) = match paint {
-        RuntimePaint::None => return,
+        RuntimePaint::None => return Ok(()),
         RuntimePaint::Opaque(color) => (
             f32::from(color.red()) / 255.0,
             f32::from(color.green()) / 255.0,
@@ -190,12 +280,12 @@ fn append_colored_rect(
     let y0_css = clip.y().map_or(y, |axis| y.max(axis.min()));
     let y1_css = clip.y().map_or(bottom, |axis| bottom.min(axis.max()));
     if x1_css <= x0_css || y1_css <= y0_css {
-        return;
+        return Ok(());
     }
-    let x0 = -1.0 + 2.0 * x0_css / viewport_width;
-    let x1 = -1.0 + 2.0 * x1_css / viewport_width;
-    let y0 = 1.0 - 2.0 * y0_css / viewport_height;
-    let y1 = 1.0 - 2.0 * y1_css / viewport_height;
+    let x0 = mapping.x_to_ndc(x0_css)?;
+    let x1 = mapping.x_to_ndc(x1_css)?;
+    let y0 = mapping.y_to_ndc(y0_css)?;
+    let y1 = mapping.y_to_ndc(y1_css)?;
     let encode: fn(f32) -> f32 = match color_encoding {
         ColorEncoding::Linear => srgb_to_linear,
         ColorEncoding::Srgb => |channel| channel,
@@ -225,6 +315,7 @@ fn append_colored_rect(
         bottom_left,
         bottom_right,
     ]);
+    Ok(())
 }
 
 fn srgb_to_linear(encoded: f32) -> f32 {
@@ -277,6 +368,73 @@ mod tests {
             ],
         )
         .unwrap()
+    }
+
+    #[test]
+    fn page_scale_geometry_matches_chrome_fixed_width_probe_pixels() {
+        let document = HostDocument::new().unwrap().snapshot();
+        let scene = spinon_render::RuntimeRenderSnapshot::new(
+            RuntimeRenderKey::new(
+                document.generation(),
+                document.document_revision(),
+                document.render_tree_revision(),
+                StyleRevision::INITIAL,
+                EnvironmentRevision::INITIAL,
+            ),
+            CssSize::new(500.0, 1082.0513).unwrap(),
+            vec![RuntimeRenderBox::new(
+                NodeId::new(1).unwrap(),
+                CssRect::new(100.0, 50.0, 20.0, 10.0).unwrap(),
+                RuntimePaint::Opaque(spinon_render::OpaqueCssSrgb::new(255, 0, 0)),
+                0,
+            )],
+        )
+        .unwrap()
+        .with_page_scale_transform(3.0, 1.0)
+        .unwrap();
+        let vertices = build_vertices(&scene, 1170, 2532, ColorEncoding::Srgb).unwrap();
+        let to_x_px = |ndc: f32| f64::from((ndc + 1.0) * 1170.0 / 2.0);
+        let to_y_px = |ndc: f32| f64::from((1.0 - ndc) * 2532.0 / 2.0);
+        assert!((to_x_px(vertices[0].position[0]) - 300.0).abs() < 0.001);
+        assert!((to_x_px(vertices[2].position[0]) - 360.0).abs() < 0.001);
+        assert!((to_y_px(vertices[0].position[1]) - 150.0).abs() < 0.001);
+        assert!((to_y_px(vertices[1].position[1]) - 180.0).abs() < 0.001);
+        assert_eq!(scene.viewport_css_px().width(), 500.0);
+        assert_eq!(
+            scene.hit_test_css_point(100.0, 50.0).unwrap().node_id(),
+            NodeId::new(1).unwrap()
+        );
+    }
+
+    #[test]
+    fn page_scale_geometry_matches_chrome_half_scale_probe_pixels() {
+        let document = HostDocument::new().unwrap().snapshot();
+        let scene = spinon_render::RuntimeRenderSnapshot::new(
+            RuntimeRenderKey::new(
+                document.generation(),
+                document.document_revision(),
+                document.render_tree_revision(),
+                StyleRevision::INITIAL,
+                EnvironmentRevision::INITIAL,
+            ),
+            CssSize::new(780.0, 1688.0).unwrap(),
+            vec![RuntimeRenderBox::new(
+                NodeId::new(1).unwrap(),
+                CssRect::new(100.0, 50.0, 20.0, 10.0).unwrap(),
+                RuntimePaint::Opaque(spinon_render::OpaqueCssSrgb::new(255, 0, 0)),
+                0,
+            )],
+        )
+        .unwrap()
+        .with_page_scale_transform(3.0, 0.5)
+        .unwrap();
+        let vertices = build_vertices(&scene, 1170, 2532, ColorEncoding::Srgb).unwrap();
+        let to_x_px = |ndc: f32| f64::from((ndc + 1.0) * 1170.0 / 2.0);
+        let to_y_px = |ndc: f32| f64::from((1.0 - ndc) * 2532.0 / 2.0);
+        assert!((to_x_px(vertices[0].position[0]) - 150.0).abs() < 0.001);
+        assert!((to_x_px(vertices[2].position[0]) - 180.0).abs() < 0.001);
+        assert!((to_y_px(vertices[0].position[1]) - 75.0).abs() < 0.001);
+        assert!((to_y_px(vertices[1].position[1]) - 90.0).abs() < 0.001);
     }
 
     fn clipped_image_scene(clip: CssClip) -> spinon_render::RuntimeRenderSnapshot {

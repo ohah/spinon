@@ -16,6 +16,7 @@ mod scroll_gesture_session;
 mod scroll_input_queue;
 mod snapshot;
 mod text;
+mod viewport;
 
 pub use error::RuntimeRenderError;
 pub use image::RuntimeImageResourceKey;
@@ -44,6 +45,7 @@ pub use scroll_input_queue::{
     RuntimeScrollWheelSample, RuntimeScrollWheelSource, RuntimeScrollWheelUnit,
 };
 pub use text::{RuntimeGlyphBitmap, RuntimeRenderText};
+pub use viewport::RuntimePageScaleTransform;
 
 #[cfg(test)]
 #[path = "runtime/scroll_gesture_session_tests.rs"]
@@ -333,6 +335,7 @@ impl RuntimeRenderBox {
 pub struct RuntimeRenderSnapshot {
     key: RuntimeRenderKey,
     viewport_css_px: CssSize,
+    page_scale_transform: Option<RuntimePageScaleTransform>,
     boxes: Arc<[RuntimeRenderBox]>,
     base_boxes: Arc<[RuntimeRenderBox]>,
     scroll_containers: Arc<[RuntimeScrollContainer]>,

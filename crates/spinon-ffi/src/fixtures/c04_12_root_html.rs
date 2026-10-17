@@ -9,6 +9,11 @@ use spinon_runtime::{ROOT_HTML_SOURCE_MAX_BYTES, RuntimeSession, TaskPriority};
 use std::ffi::c_char;
 use std::time::Duration;
 
+#[cfg(not(test))]
+mod page_scale_wgpu;
+#[cfg(not(test))]
+use page_scale_wgpu::validate_page_scale_wgpu_case;
+
 const ROOT_HTML_ASSET_ASSERTION: &str = r#"(() => {
   const elementChildren = parent => {
     const result = [];
@@ -132,15 +137,6 @@ fn validate_root_html_viewport_matrix() -> Result<(), String> {
                 ));
             }
 
-            let values = |environment: SpinonRuntimeRootHtmlEnvironment| {
-                [
-                    environment.viewport_width_css_px,
-                    environment.viewport_height_css_px,
-                    environment.visual_viewport_width_css_px,
-                    environment.visual_viewport_height_css_px,
-                    environment.page_scale,
-                ]
-            };
             let session = unsafe { &*c_session.cast::<RuntimeSession>() };
             let _layout_terminal = session.wait_for_layout_snapshot(Duration::from_secs(3));
             let cascade = session.ua_cascade_snapshot();
@@ -169,45 +165,49 @@ fn validate_root_html_viewport_matrix() -> Result<(), String> {
                     canvas.cascade_environment_revision
                 ));
             }
-            Ok((values(environment), values(canvas.environment)))
+            Ok((environment, canvas.environment))
         })();
         unsafe { spinon_runtime_session_free(c_session) };
         let (environment_values, canvas_values) = ffi_values?;
-        let actual = [
-            environment_values[0],
-            environment_values[1],
-            environment_values[2],
-            environment_values[3],
-            environment_values[4],
-        ];
+        let actual = values(environment_values);
+        let canvas_actual = values(canvas_values);
         let required = [
             expected.layout_width,
             expected.layout_height,
             expected.visual_width,
             expected.visual_height,
+            3.0,
             expected.page_scale,
         ];
         if actual
             .into_iter()
             .zip(required)
             .any(|(actual, required)| (actual - required).abs() > 0.001)
-            || canvas_values
+            || canvas_actual
                 .into_iter()
                 .zip(required)
                 .any(|(actual, required)| (actual - required).abs() > 0.001)
         {
             return Err(format!(
-                "{} viewport mismatch: layout={}x{} visual={}x{} scale={}",
-                expected.name,
-                environment_values[0],
-                environment_values[1],
-                environment_values[2],
-                environment_values[3],
-                environment_values[4]
+                "{} viewport mismatch: layout={}x{} visual={}x{} dpr={} page_scale={}",
+                expected.name, actual[0], actual[1], actual[2], actual[3], actual[4], actual[5]
             ));
         }
+        #[cfg(not(test))]
+        validate_page_scale_wgpu_case(expected.name, environment_values)?;
     }
     Ok(())
+}
+
+fn values(environment: SpinonRuntimeRootHtmlEnvironment) -> [f32; 6] {
+    [
+        environment.viewport_width_css_px,
+        environment.viewport_height_css_px,
+        environment.visual_viewport_width_css_px,
+        environment.visual_viewport_height_css_px,
+        environment.device_scale_factor,
+        environment.page_scale,
+    ]
 }
 
 /// 실제 V8 DOM facade에서 root HTML의 document accessor를 확인하는 opt-in fixture입니다.
@@ -312,8 +312,12 @@ pub unsafe extern "C" fn spinon_c04_12_root_html_asset_fixture(
         let _ = crate::write_report(output, output_capacity, &error);
         return -1;
     }
+    #[cfg(not(test))]
+    let page_scale_report = " page_scale_wgpu=PASS cases=3 samples=30";
+    #[cfg(test)]
+    let page_scale_report = "";
     let report = format!(
-        "status=0 c04_12_root_html_asset=PASS c04_12_viewport=PASS c04_12_environment_abi=PASS cases=3 fixed_width=500x1082 visual=390x844 startup={}",
+        "status=0 c04_12_root_html_asset=PASS c04_12_viewport=PASS c04_12_environment_abi=PASS cases=3 fixed_width=500x1082 visual=390x844{page_scale_report} startup={}",
         startup_report.replace(' ', "_")
     );
     if crate::write_report(output, output_capacity, &report) {
