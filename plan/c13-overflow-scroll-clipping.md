@@ -120,6 +120,12 @@ agent-browser로 만든 Chrome 155 사전 비교 fixture는 [원본 HTML](../tes
 - 내부 계약에서 미완료로 둔 복합 stacking descendant 관찰을 별도 [계획](c13-1-stacking-descendant-clip-controls.md)으로 좁혔다. 고정 Chrome 155 fixture는 같은 geometry의 `visible`/`clip`/`hidden` parent, nested z-index descendant, root sibling overlay와 18개 paint/hit 표본을 포함한다. 현재 PR은 계획·oracle만 추가하며 runtime 구현, Android AVD 및 iOS Simulator 실행 전에 멈춘다.
 - 이 계획은 DOM event dispatch·WPT·radius·transform·scroll 기능을 다루지 않으며 C13.1/C13 완료 상태를 바꾸지 않는다.
 
+### C13.1 중첩 stacking descendant 전체 viewport 앱 hit identity 계획 · 2026-10-18
+
+- 앞선 중첩 stacking descendant 앱 route는 case별 6개, 총 18개 Chrome hit/RGBA 표본을 확인했다. 후속 [계획](c13-1-stacking-app-full-viewport-hit-identity.md)은 같은 540×128 fixture의 정수 viewport hit 69,120점을 Android/iOS 앱의 immutable runtime snapshot과 exact 비교한다.
+- Agent Browser Chrome 155 사전 oracle는 128개 RLE row·1,136 run, 13개 node identity로 고정했다. 정수 right/bottom edge와 fractional edge `null` 관찰은 분리해 기록했다([oracle·계획 검토](../spec/internal/evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/README.md)).
+- 현재 변경은 계획과 Chrome oracle만 포함한다. Android/iOS 전체 grid app route, C13.1/C13 완료, DOM event, CSSOM, WPT, 실기기와 hardware GPU는 미검증 또는 범위 밖이다.
+
 ### C13.1 compact surface matrix 후속 · 2026-10-14
 
 - Chrome 155의 compact 13-case fixture를 Android API 37 ARM64 AVD에 연결했다. ADB transport는 정상이었다. 최초 실패는 `SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST`와 Gradle/native path가 읽던 legacy flag 이름 불일치였다. 호환 alias와 충돌 거부를 추가한 뒤, body 없는 host document, Android surface environment가 compact viewport를 덮는 문제, auto positioned parent 배경의 paint 순서 문제를 차례로 재현·수정했다.
