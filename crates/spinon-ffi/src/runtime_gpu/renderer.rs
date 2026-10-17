@@ -124,7 +124,8 @@ impl RuntimeGpuHost {
             feature = "c18-2-alpha-image-compositing-fixture-test",
             feature = "c18-3-object-fit-position-fixture-test",
             feature = "c18-4-image-fixture-test",
-            feature = "c19-2-box-paint-opacity-fixture-test"
+            feature = "c19-2-box-paint-opacity-fixture-test",
+            feature = "c15-3-wgpu-glyph-paint-fixture-test"
         ))]
         let (renderer, report) = if self.surface_pixel_readback_test {
             RuntimeRenderer::initialize_uikit_surface_with_copy_src(pending, width, height)?
@@ -140,7 +141,8 @@ impl RuntimeGpuHost {
             feature = "c18-2-alpha-image-compositing-fixture-test",
             feature = "c18-3-object-fit-position-fixture-test",
             feature = "c18-4-image-fixture-test",
-            feature = "c19-2-box-paint-opacity-fixture-test"
+            feature = "c19-2-box-paint-opacity-fixture-test",
+            feature = "c15-3-wgpu-glyph-paint-fixture-test"
         )))]
         let (renderer, report) = RuntimeRenderer::initialize_uikit_surface(pending, width, height)?;
         *renderer_slot = Some(renderer);
@@ -287,7 +289,8 @@ impl RuntimeGpuHost {
         feature = "c18-2-alpha-image-compositing-fixture-test",
         feature = "c18-3-object-fit-position-fixture-test",
         feature = "c18-4-image-fixture-test",
-        feature = "c19-2-box-paint-opacity-fixture-test"
+        feature = "c19-2-box-paint-opacity-fixture-test",
+        feature = "c15-3-wgpu-glyph-paint-fixture-test"
     ))]
     pub(super) fn request_surface_pixel_readback_for_test(
         &self,

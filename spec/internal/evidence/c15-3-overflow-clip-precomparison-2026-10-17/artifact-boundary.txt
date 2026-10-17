@@ -1,0 +1,18 @@
+Base commit: 073c74f7bd3140f9cdefbac70a344dd2db3d240c; artifacts built from the current dirty worktree after fixture input refactor.
+Inspection method: strings scan for exported C ABI names and fixture payload markers; Apple nm cannot decode some Rust LLVM 22.1 object attributes in this archive.
+Default: cargo build --locked -p spinon-ffi --lib
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.14s
+e4f3d6fcfc6bf54bc43b317403d6d28eb849a4d56bd81e3ffa6418d4336642ce  target/debug/libspinon_ffi.a
+PASS: fixture symbol and payload markers absent in default artifact
+Opt-in positive control: cargo build --locked -p spinon-ffi --lib --features c15-3-wgpu-glyph-paint-fixture-test
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.08s
+84ac54e9696f817d67495a8f8ab1abe55a440f0cb9739894acd1c44205d588ed  target/debug/libspinon_ffi.a
+_spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture
+_spinon_runtime_gpu_host_new_c15_3_glyph_paint_fixture
+_spinon_runtime_gpu_host_request_c15_3_surface_pixels_for_test
+spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture
+spinon_runtime_gpu_host_new_c15_3_glyph_paint_fixture
+spinon_runtime_gpu_host_request_c15_3_surface_pixels_for_test
+G overflow_clip_source=owner_render_box overflow_samples_css_px=visible:
+ overflow sampleXXAhem visible overflowC15.3 visible text owner clip
+PASS: opt-in artifact contains fixture symbols and payload markers

@@ -52,11 +52,74 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture(
     }
 }
 
+#[unsafe(no_mangle)]
+/// 다음 C15.3 draw에서 실제 drawable의 고정 glyph-overflow 표본 3개를 읽도록 요청합니다.
+///
+/// # Safety
+/// `host`는 살아 있는 C15.3 readback fixture host여야 합니다. `sample_xy`는 정확히 6개의
+/// 읽기 가능한 `u32`를 호출 중 유지해야 합니다. 호출 중 host 해제나 동시 호출은 허용하지
+/// 않으며 `output`은 `output_capacity` 바이트를 쓸 수 있어야 합니다.
+pub unsafe extern "C" fn spinon_runtime_gpu_host_request_c15_3_surface_pixels_for_test(
+    host: *mut SpinonRuntimeGpuHost,
+    sample_xy: *const u32,
+    sample_count: usize,
+    output: *mut c_char,
+    output_capacity: usize,
+) -> i32 {
+    if output.is_null() || output_capacity == 0 {
+        return ERR_ARGUMENT;
+    }
+    if sample_count != 3 {
+        return write_host_status(
+            ERR_ARGUMENT,
+            format!("C15.3 surface 표본 수는 정확히 3개여야 합니다: {sample_count}"),
+            output,
+            output_capacity,
+        );
+    }
+    if sample_xy.is_null() {
+        return write_host_status(
+            ERR_ARGUMENT,
+            "C15.3 surface 표본 좌표가 null입니다".to_owned(),
+            output,
+            output_capacity,
+        );
+    }
+    let Some(value_count) = sample_count.checked_mul(2) else {
+        return write_host_status(
+            ERR_ARGUMENT,
+            "C15.3 surface 표본 좌표 개수가 범위를 넘었습니다".to_owned(),
+            output,
+            output_capacity,
+        );
+    };
+    // SAFETY: 표본 수를 3개로 제한했고 포인터 범위는 호출자 계약에 따른다.
+    let values = unsafe { std::slice::from_raw_parts(sample_xy, value_count) };
+    let points = [
+        (values[0], values[1]),
+        (values[2], values[3]),
+        (values[4], values[5]),
+    ];
+    let Some(host) = raw_host(host) else {
+        return write_host_status(
+            ERR_ARGUMENT,
+            "C15.3 surface-pixel host가 null입니다".to_owned(),
+            output,
+            output_capacity,
+        );
+    };
+    match host.request_surface_pixel_readback_for_test(&points) {
+        Ok(report) => write_host_status(0, report, output, output_capacity),
+        Err(error) => write_host_status(ERR_ARGUMENT, error, output, output_capacity),
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::{
         spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture,
         spinon_runtime_gpu_host_new_c15_3_glyph_paint_fixture,
+        spinon_runtime_gpu_host_request_c15_3_surface_pixels_for_test,
     };
     use std::ptr;
 
@@ -74,6 +137,36 @@ mod tests {
                 spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture(
                     ptr::null_mut(),
                     100,
+                    output.as_mut_ptr(),
+                    output.len(),
+                )
+            },
+            -1
+        );
+        assert_eq!(
+            unsafe {
+                spinon_runtime_gpu_host_request_c15_3_surface_pixels_for_test(
+                    ptr::null_mut(),
+                    ptr::null(),
+                    3,
+                    output.as_mut_ptr(),
+                    output.len(),
+                )
+            },
+            -1
+        );
+    }
+
+    #[test]
+    fn c15_3_surface_readback_rejects_unbounded_sample_counts() {
+        let mut output = [0_i8; 128];
+        let points = [0_u32; 8];
+        assert_eq!(
+            unsafe {
+                spinon_runtime_gpu_host_request_c15_3_surface_pixels_for_test(
+                    ptr::null_mut(),
+                    points.as_ptr(),
+                    4,
                     output.as_mut_ptr(),
                     output.len(),
                 )

@@ -695,6 +695,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var c153GlyphPaintProbeRequested: Bool {
         c153GlyphPaintArgumentRequested
     }
+    private var c153GlyphPaintEvaluationReport = ""
+    private var c153MetalPixelRequestIssued = false
+    private var c153MetalPixelReadbackFinished = false
+    private var c153MetalPixelRequestGeneration: UInt64?
+    private var c153MetalPixelRequestDrawableSize = CGSize.zero
+    private var c153MetalPixelRequestFormat = ""
+    private var c153MetalSamplePointsCss: [(String, UInt32, UInt32)] = []
 #else
     private let c153GlyphPaintProbeRequested = false
 #endif
@@ -2592,6 +2599,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 postStatus("실패 · C15.3 glyph paint command가 runtime snapshot에 제출되지 않았습니다")
                 return
             }
+            c153GlyphPaintEvaluationReport = report
         }
 #if SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST_1
         if c192BoxPaintOpacityProbeRequested {
@@ -4817,6 +4825,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             try requestC192MetalPixelReadback(handle: handle, generation: generation)
         }
 #endif
+#if SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST_1
+        if c153GlyphPaintProbeRequested && !c153MetalPixelRequestIssued
+            && !c153MetalPixelReadbackFinished {
+            try requestC153MetalPixelReadback(handle: handle, generation: generation)
+        }
+#endif
         let result = SpinonRunner.drawRuntimeGpuWgpu(handle)
         if c133TapProbeRequested {
             log("SPINON_C133_TAP_IOS_DRAW \(result ?? "missing-report")")
@@ -4827,6 +4841,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("SPINON_C0410_DRAW generation=\(generation) \(result ?? "")")
         }
         if result?.hasPrefix("status=-12 ") == true {
+#if SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST_1
+            if c153MetalPixelRequestIssued && !c153MetalPixelReadbackFinished {
+                c153MetalPixelReadbackFinished = true
+                log("SPINON_C153_METAL_PIXEL_ERROR stage=draw-superseded generation=\(generation)")
+                throw C0410LatestTaskLaneError.operationFailed(
+                    "C15.3 Metal 표본 요청 뒤 draw report가 stale 처리됐습니다"
+                )
+            }
+#endif
 #if SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST_1
             if c192MetalPixelRequestIssued && !c192MetalPixelReadbackFinished {
                 c192MetalPixelReadbackFinished = true
@@ -4865,6 +4888,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         if result?.hasPrefix("status=0 ") != true {
             postStatus("실패 · \(result ?? "WGPU draw 보고 없음")")
+#if SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST_1
+            if c153MetalPixelRequestIssued && !c153MetalPixelReadbackFinished {
+                c153MetalPixelReadbackFinished = true
+                log("SPINON_C153_METAL_PIXEL_ERROR stage=draw generation=\(generation) report=\(result ?? "missing")")
+                throw C0410LatestTaskLaneError.operationFailed(
+                    result ?? "C15.3 Metal 표본을 포함한 draw report가 없습니다"
+                )
+            }
+#endif
 #if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
             if imagePaintMetalPixelRequestIssued && !imagePaintMetalPixelReadbackFinished {
                 throw failC181MetalPixelReadback(
@@ -4899,14 +4931,23 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             throw C0410LatestTaskLaneError.operationFailed(result ?? "WGPU draw 실패 보고 없음")
         }
         if c153GlyphPaintProbeRequested
-            && (result?.contains("runtime_text_count=1") != true
-                || result?.contains("glyph_batch_draw_count=1") != true) {
+            && (result?.contains("runtime_text_count=3") != true
+                || result?.contains("glyph_batch_draw_count=3") != true) {
             log("SPINON_C153_DRAW_ASSERTIONS failed=true \(result ?? "missing-report")")
-            postStatus("실패 · C15.3 WGPU glyph batch draw가 제출되지 않았습니다")
+            postStatus("실패 · C15.3 Noto/Ahem glyph batch 3개가 제출되지 않았습니다")
             throw C0410LatestTaskLaneError.operationFailed(
                 "C15.3 WGPU draw report에 text batch가 없습니다"
             )
         }
+#if SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST_1
+        if c153GlyphPaintProbeRequested && c153MetalPixelRequestIssued
+            && !c153MetalPixelReadbackFinished {
+            try verifyC153MetalPixelReadback(
+                result: result ?? "",
+                generation: generation
+            )
+        }
+#endif
 #if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         if imagePaintProbeRequested && imagePaintMetalPixelRequestIssued
             && !imagePaintMetalPixelReadbackFinished {
@@ -5070,6 +5111,192 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             runFailureRecoveryProbe(handle: handle, baseline: result ?? "")
         }
     }
+
+#if SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST_1
+    private func c153OverflowSamplePoints() throws -> [(String, UInt32, UInt32)] {
+        let encoded = reportField(c153GlyphPaintEvaluationReport, "overflow_samples_css_px=")
+        var points: [String: (UInt32, UInt32)] = [:]
+        for entry in encoded.split(separator: ";") {
+            let pair = entry.split(separator: ":", maxSplits: 1)
+            guard pair.count == 2 else {
+                throw C0410LatestTaskLaneError.operationFailed(
+                    "C15.3 overflow 표본 항목이 올바르지 않습니다"
+                )
+            }
+            let coordinates = pair[1].split(separator: ",", maxSplits: 1)
+            guard coordinates.count == 2,
+                  let x = UInt32(coordinates[0]), let y = UInt32(coordinates[1]),
+                  x < 360, y < 240 else {
+                throw C0410LatestTaskLaneError.operationFailed(
+                    "C15.3 overflow CSS 표본 좌표가 올바르지 않습니다"
+                )
+            }
+            let name = String(pair[0])
+            guard points[name] == nil,
+                  ["visible", "hidden_inside", "hidden_outside"].contains(name) else {
+                throw C0410LatestTaskLaneError.operationFailed(
+                    "C15.3 overflow 표본 이름이 중복되거나 알 수 없습니다"
+                )
+            }
+            points[name] = (x, y)
+        }
+        guard let visible = points["visible"],
+              let hiddenInside = points["hidden_inside"],
+              let hiddenOutside = points["hidden_outside"],
+              visible.0 == hiddenOutside.0,
+              visible.1 + 40 == hiddenOutside.1,
+              visible.0 >= 29, visible.1 >= 81, visible.1 < 91,
+              hiddenInside.0 >= 13, hiddenInside.0 < 28,
+              hiddenInside.1 >= 121, hiddenInside.1 < 131,
+              hiddenOutside.0 >= 29,
+              hiddenOutside.1 >= 121, hiddenOutside.1 < 131 else {
+            throw C0410LatestTaskLaneError.operationFailed(
+                "C15.3 overflow 표본이 paired visible/hidden clip 경계를 증명하지 않습니다"
+            )
+        }
+        return [
+            ("visible-outside-parent", visible.0, visible.1),
+            ("hidden-inside-clip", hiddenInside.0, hiddenInside.1),
+            ("hidden-outside-parent", hiddenOutside.0, hiddenOutside.1)
+        ]
+    }
+
+    private func requestC153MetalPixelReadback(
+        handle: UInt64,
+        generation: UInt64
+    ) throws {
+        stateLock.lock()
+        let drawableSize = c111MetalDrawableSize
+        let viewportWidth = viewportWidthCssPx
+        let viewportHeight = viewportHeightCssPx
+        let format = rendererSurfaceFormat ?? ""
+        stateLock.unlock()
+        guard viewportWidth == 360, viewportHeight == 240,
+              drawableSize.width > 0, drawableSize.height > 0,
+              let width = Int(exactly: drawableSize.width),
+              let height = Int(exactly: drawableSize.height), !format.isEmpty,
+              isCurrentSurfaceGeneration(generation) else {
+            c153MetalPixelReadbackFinished = true
+            throw C0410LatestTaskLaneError.operationFailed(
+                "C15.3 Metal viewport 또는 drawable 크기가 올바르지 않습니다"
+            )
+        }
+        do {
+            let samples = try c153OverflowSamplePoints()
+            let scaleX = Double(width) / 360.0
+            let scaleY = Double(height) / 240.0
+            let coordinates = samples.flatMap { _, x, y in
+                [
+                    UInt32(floor((Double(x) + 0.5) * scaleX)),
+                    UInt32(floor((Double(y) + 0.5) * scaleY))
+                ]
+            }
+            guard coordinates.count == 6,
+                  Set(stride(from: 0, to: coordinates.count, by: 2).map {
+                      "\(coordinates[$0]):\(coordinates[$0 + 1])"
+                  }).count == 3,
+                  stride(from: 0, to: coordinates.count, by: 2).allSatisfy({
+                      coordinates[$0] < UInt32(width) && coordinates[$0 + 1] < UInt32(height)
+                  }) else {
+                throw C0410LatestTaskLaneError.operationFailed(
+                    "C15.3 Metal 표본 좌표가 중복되거나 drawable 밖입니다"
+                )
+            }
+            let request = coordinates.withUnsafeBufferPointer { buffer in
+                SpinonRunner.requestRuntimeGpuC15_3SurfacePixels(
+                    forTest: handle,
+                    sampleXY: buffer.baseAddress,
+                    sampleCount: UInt(samples.count)
+                )
+            } ?? "status=-1 missing-request-report"
+            guard request.hasPrefix("status=0 ") else {
+                throw C0410LatestTaskLaneError.operationFailed(request)
+            }
+            c153MetalSamplePointsCss = samples
+            c153MetalPixelRequestIssued = true
+            c153MetalPixelRequestGeneration = generation
+            c153MetalPixelRequestDrawableSize = drawableSize
+            c153MetalPixelRequestFormat = format
+            log("SPINON_C153_METAL_PIXEL_REQUESTED generation=\(generation) viewport=360x240 drawable=\(width)x\(height) scale_x=\(scaleX) scale_y=\(scaleY) format=\(format) samples=\(samples.count) css=\(samples.map { "\($0.0):\($0.1),\($0.2)" }.joined(separator: ";"))")
+        } catch {
+            c153MetalPixelReadbackFinished = true
+            log("SPINON_C153_METAL_PIXEL_ERROR stage=request reason=\(error)")
+            throw C0410LatestTaskLaneError.operationFailed(
+                "C15.3 Metal 표본 요청 실패: \(error)"
+            )
+        }
+    }
+
+    private func verifyC153MetalPixelReadback(
+        result: String,
+        generation: UInt64
+    ) throws {
+        stateLock.lock()
+        let drawableSize = c111MetalDrawableSize
+        let format = rendererSurfaceFormat ?? ""
+        stateLock.unlock()
+        guard c153MetalPixelRequestGeneration == generation,
+              c153MetalPixelRequestDrawableSize == drawableSize,
+              c153MetalPixelRequestFormat == format,
+              isCurrentSurfaceGeneration(generation),
+              let width = Int(exactly: drawableSize.width),
+              let height = Int(exactly: drawableSize.height),
+              let encoded = reportField(result, "surface_pixel_samples_json=")
+                .data(using: .utf8),
+              let values = try? JSONSerialization.jsonObject(with: encoded)
+                as? [[String: Any]], values.count == c153MetalSamplePointsCss.count else {
+            c153MetalPixelReadbackFinished = true
+            throw C0410LatestTaskLaneError.operationFailed(
+                "C15.3 Metal drawable report가 요청된 표본 세 개를 돌려주지 않았습니다"
+            )
+        }
+        let scaleX = Double(width) / 360.0
+        let scaleY = Double(height) / 240.0
+        var visibleInk = false
+        var hiddenInsideInk = false
+        var hiddenOutsideBackground = false
+        for (index, sample) in c153MetalSamplePointsCss.enumerated() {
+            guard let value = values[index] as? [String: Any],
+                  let xNumber = value["x"] as? NSNumber,
+                  let yNumber = value["y"] as? NSNumber,
+                  let channels = value["rgba"] as? [NSNumber], channels.count == 4 else {
+                c153MetalPixelReadbackFinished = true
+                throw C0410LatestTaskLaneError.operationFailed(
+                    "C15.3 Metal 표본 JSON 형태가 올바르지 않습니다"
+                )
+            }
+            let x = xNumber.uint32Value
+            let y = yNumber.uint32Value
+            let rgba = channels.map(\.uint32Value)
+            let expectedX = UInt32(floor((Double(sample.1) + 0.5) * scaleX))
+            let expectedY = UInt32(floor((Double(sample.2) + 0.5) * scaleY))
+            let background = rgba == [247, 249, 252, 255]
+            let expectedInk = rgba == [9, 33, 112, 255]
+            if sample.0 == "visible-outside-parent" { visibleInk = expectedInk }
+            else if sample.0 == "hidden-inside-clip" { hiddenInsideInk = expectedInk }
+            else if sample.0 == "hidden-outside-parent" {
+                hiddenOutsideBackground = background
+            }
+            let exactCoordinates = x == expectedX && y == expectedY
+            log("SPINON_C153_METAL_PIXEL_SAMPLE sample=\(sample.0) x=\(x) y=\(y) rgba=\(rgba.map(String.init).joined(separator: ",")) expected_x=\(expectedX) expected_y=\(expectedY) stage_background=\(background) expected_ink=\(expectedInk) coordinates_match=\(exactCoordinates)")
+            guard exactCoordinates else {
+                c153MetalPixelReadbackFinished = true
+                throw C0410LatestTaskLaneError.operationFailed(
+                    "C15.3 Metal drawable sample 좌표가 CSS pixel 중심 변환과 다릅니다"
+                )
+            }
+        }
+        c153MetalPixelReadbackFinished = true
+        let passed = visibleInk && hiddenInsideInk && hiddenOutsideBackground
+        log("SPINON_C153_METAL_PIXEL_SUMMARY status=\(passed ? "matched" : "mismatch") generation=\(generation) viewport=360x240 drawable=\(width)x\(height) format=\(format) samples=3 visible_outside_ink=\(visibleInk) hidden_inside_ink=\(hiddenInsideInk) hidden_outside_background=\(hiddenOutsideBackground) renderer=metal-drawable-before-compositor")
+        guard passed else {
+            throw C0410LatestTaskLaneError.operationFailed(
+                "실제 Metal drawable overflow clip 표본이 CSS 기대값과 다릅니다"
+            )
+        }
+        postStatus("C15.3 Metal drawable overflow clip 표본 통과 · 3/3")
+    }
+#endif
 
 #if SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST_1
     private func requestC192MetalPixelReadback(

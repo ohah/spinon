@@ -17,8 +17,29 @@ clippedRemainder.setAttribute('style',
 );
 stage.appendChild(clippedRemainder);
 
+for (const mode of ['visible', 'hidden']) {
+  const parent = document.createElement('div');
+  parent.setAttribute('id', `c15-3-overflow-${mode}`);
+  parent.setAttribute('style',
+    `position:absolute;left:12px;top:${mode === 'visible' ? 80 : 120}px;width:15px;height:10px;` +
+    `border:1px solid rgb(136 136 136);background-color:rgb(222 233 246);overflow:${mode}`,
+  );
+  stage.appendChild(parent);
+
+  const textOwner = document.createElement('div');
+  textOwner.setAttribute('id', `c15-3-overflow-${mode}-text-owner`);
+  textOwner.setAttribute('style',
+    'position:absolute;left:0;top:0;width:40px;height:10px;background-color:transparent',
+  );
+  parent.appendChild(textOwner);
+}
+
 ({
   schema: 'spinon-c15-3-wgpu-glyph-paint/v1',
   viewport: { width: 360, height: 240, deviceScaleFactor: 1 },
   glyphClip: { left: 12, right: 160, top: 12 },
+  overflowParents: [
+    { id: 'c15-3-overflow-visible', overflow: 'visible', text: 'XX' },
+    { id: 'c15-3-overflow-hidden', overflow: 'hidden', text: 'XX' },
+  ],
 })

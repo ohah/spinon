@@ -76,7 +76,8 @@ struct RuntimeGpuHost {
         feature = "c18-2-alpha-image-compositing-fixture-test",
         feature = "c18-3-object-fit-position-fixture-test",
         feature = "c18-4-image-fixture-test",
-        feature = "c19-2-box-paint-opacity-fixture-test"
+        feature = "c19-2-box-paint-opacity-fixture-test",
+        feature = "c15-3-wgpu-glyph-paint-fixture-test"
     ))]
     surface_pixel_readback_test: bool,
     #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
@@ -169,7 +170,8 @@ impl RuntimeGpuHost {
                 feature = "c18-2-alpha-image-compositing-fixture-test",
                 feature = "c18-3-object-fit-position-fixture-test",
                 feature = "c18-4-image-fixture-test",
-                feature = "c19-2-box-paint-opacity-fixture-test"
+                feature = "c19-2-box-paint-opacity-fixture-test",
+                feature = "c15-3-wgpu-glyph-paint-fixture-test"
             ))]
             surface_pixel_readback_test: false,
             #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
