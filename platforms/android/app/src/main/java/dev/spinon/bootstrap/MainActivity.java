@@ -284,6 +284,8 @@ public final class MainActivity extends Activity {
                 .getBooleanExtra("spinon_c131_overflow_clip", false);
         boolean c131CompactSurfaceMatrixRequested = getIntent()
                 .getBooleanExtra("spinon_c131_compact_surface_matrix", false);
+        boolean c131StackingDescendantClipRequested = getIntent()
+                .getBooleanExtra("spinon_c131_stacking_descendant_clip", false);
         boolean c131OverflowClipBorderRequested = getIntent()
                 .getBooleanExtra("spinon_c131_overflow_clip_border", false);
         boolean c153GlyphPaintArgument = getIntent()
@@ -327,6 +329,7 @@ public final class MainActivity extends Activity {
         }
         if ((c131OverflowClipRequested ? 1 : 0)
                 + (c131CompactSurfaceMatrixRequested ? 1 : 0)
+                + (c131StackingDescendantClipRequested ? 1 : 0)
                 + (c131OverflowClipBorderRequested ? 1 : 0) > 1) {
             TextView unavailable = new TextView(this);
             unavailable.setText("C13.1 앱 fixture route는 한 번에 하나만 선택해야 합니다.");
@@ -495,6 +498,7 @@ public final class MainActivity extends Activity {
                 || getIntent().getBooleanExtra("spinon_c123_fixed_position", false)
                 || getIntent().getBooleanExtra("spinon_c124_stacking_context", false)
                 || c131OverflowClipRequested || c131CompactSurfaceMatrixRequested
+                || c131StackingDescendantClipRequested
                 || c131OverflowClipBorderRequested
                 || imagePaintFixtureRequested
                 || c153GlyphPaintRequested
@@ -522,6 +526,7 @@ public final class MainActivity extends Activity {
                 return;
             }
             if ((c131OverflowClipRequested || c131CompactSurfaceMatrixRequested
+                    || c131StackingDescendantClipRequested
                     || c131OverflowClipBorderRequested)
                     && !BuildConfig.SPINON_C131_OVERFLOW_CLIP_FIXTURE_TEST) {
                 TextView unavailable = new TextView(this);

@@ -1,0 +1,105 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(std-17ed52d55cdc389f.std.93770f9ee7fea9f3-cgu.0.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(panic_unwind-9a32fb245480f528.panic_unwind.a331c06c1e6ef3d5-cgu.0.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(object-8b64be67f913de08.object.a236db0c519018c0-cgu.0.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(memchr-3762cec828807364.memchr.974bd0912affcd89-cgu.0.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(addr2line-0abc405dd050a4bd.addr2line.e30de277bd18de38-cgu.0.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(gimli-5dac8ce5659ebf4b.gimli.778a3ee5c07a5cc4-cgu.0.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+target/debug/libspinon_ffi.a:cfg_if-0d9d6d77ae9bd193.cfg_if.edf119ddab75db36-cgu.0.rcgu.o: no symbols
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(rustc_demangle-f1c0dff48932fb76.rustc_demangle.a5d13367891c35e7-cgu.0.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(std_detect-fd12ae8ddfd7777a.std_detect.4ef08b183ba6886b-cgu.0.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(hashbrown-3a921fb12000c176.hashbrown.d254dda9918e1e8-cgu.0.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+target/debug/libspinon_ffi.a:rustc_std_workspace_alloc-d7644d33b12481aa.rustc_std_workspace_alloc.4a6bf8cf9327e754-cgu.0.rcgu.o: no symbols
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(miniz_oxide-2e3513a8bc960403.miniz_oxide.7269def90e20bc32-cgu.0.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(adler2-b00214c9551d6dfa.adler2.b62506865ebf6ac0-cgu.0.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+target/debug/libspinon_ffi.a:unwind-b439bd6b39ed89d9.unwind.eac6c18a66b71f98-cgu.0.rcgu.o: no symbols
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(libc-2ef4c0f456d0d042.libc.23ceca83d06a0d78-cgu.0.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+target/debug/libspinon_ffi.a:rustc_std_workspace_core-01875f5d21777e25.rustc_std_workspace_core.fb1b1b87ab2f5ef-cgu.0.rcgu.o: no symbols
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(alloc-fbda4f5cabb1ffb1.alloc.9e718a9324190137-cgu.0.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(core-5e078980c4cd1668.core.d73c09da13b2be7a-cgu.0.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.000.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.001.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.002.rcgu.o): Unknown attribute kind (105) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.003.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.004.rcgu.o): Unknown attribute kind (105) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.005.rcgu.o): Unknown attribute kind (105) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.006.rcgu.o): Unknown attribute kind (105) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.007.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.008.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.009.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.010.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.011.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.015.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.016.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.017.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.018.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.019.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.020.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.021.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.022.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.024.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.027.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.028.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.029.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.037.rcgu.o): Unknown attribute kind (105) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.038.rcgu.o): Unknown attribute kind (105) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.039.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.058.rcgu.o): Unknown attribute kind (105) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.061.rcgu.o): Unknown attribute kind (105) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.062.rcgu.o): Unknown attribute kind (102) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.083.rcgu.o): Unknown attribute kind (105) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.084.rcgu.o): Unknown attribute kind (105) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.097.rcgu.o): Unknown attribute kind (105) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.103.rcgu.o): Unknown attribute kind (105) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm: error: target/debug/libspinon_ffi.a(compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.116.rcgu.o): Unknown attribute kind (105) (Producer: 'LLVM22.1.2-rust-1.96.1-stable' Reader: 'LLVM APPLE_1_1700.6.3.2_0')
+
+target/debug/libspinon_ffi.a:compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.227.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.229.rcgu.o: no symbols
+target/debug/libspinon_ffi.a:compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.230.rcgu.o: no symbols

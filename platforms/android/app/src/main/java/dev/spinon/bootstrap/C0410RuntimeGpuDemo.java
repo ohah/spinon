@@ -130,6 +130,25 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static final String[] C131_COMPACT_SURFACE_SAMPLE_ROLES = {
             "paint", "target-beyond-frame", "x-overflow", "y-overflow",
     };
+    private static final String[] C131_STACKING_CLIP_SAMPLE_ROLES = {
+            "parent-only", "target-inside", "clip-edge-inside", "clip-edge-outside",
+            "escape-before-overlay", "stacking-overlay",
+    };
+    private static final String[] C131_STACKING_CLIP_CASE_IDS = {"visible", "clip", "hidden"};
+    private static final double[] C131_STACKING_CLIP_SAMPLE_X = {
+            44.5, 122.5, 139.5, 140.5, 144.5, 156.5,
+            214.5, 292.5, 309.5, 310.5, 314.5, 326.5,
+            384.5, 462.5, 479.5, 480.5, 484.5, 496.5,
+    };
+    private static final String[] C131_STACKING_CLIP_HIT_IDS = {
+            "visible-parent", "visible-target", "visible-target", "visible-target",
+            "visible-target", "visible-overlay", "clip-parent", "clip-target",
+            "clip-target", "root", "root", "clip-overlay", "hidden-parent",
+            "hidden-target", "hidden-target", "root", "root", "hidden-overlay",
+    };
+    private static final int[] C131_STACKING_CLIP_NODE_INDEX = {
+            1, 3, 3, 3, 3, 4, 5, 7, 7, 0, 0, 8, 9, 11, 11, 0, 0, 12,
+    };
     private static final String C131_COMPACT_HIT_IDENTITY_SHA256 =
             "93cccd042e82d8cd30cb7a8ab34a5154073d4a9eccbc4038294d3ca5b9dfce87";
     private static final String C131_COMPACT_GRID_ORACLE_SHA256 =
@@ -263,6 +282,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native long nativeCreateC131OverflowClipHost();
     private static native long nativeCreateC131CompactSurfaceMatrixHost();
     private static native long nativeCreateC131OverflowClipBorderHost();
+    private static native long nativeCreateC131StackingDescendantClipHost();
     private static native long nativeCreateC132ScrollHost();
     private static native long nativeCreateC133GestureHost(int scenarioId);
     private static native long nativeCreateC11GridHost();
@@ -301,6 +321,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalC131OverflowClipFixture(long host);
     private static native byte[] nativeEvalC131CompactSurfaceMatrixFixture(long host);
     private static native byte[] nativeEvalC131OverflowClipBorderFixture(long host);
+    private static native byte[] nativeEvalC131StackingDescendantClipFixture(long host);
     private static native byte[] nativeEvalC132ScrollFixture(long host);
     private static native byte[] nativeEvalC133GestureFixture(long host);
     private static native byte[] nativeApplyC133StyleInvalidation(long host);
@@ -467,6 +488,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean c131OverflowClipProbeRequested;
     private final boolean c131CompactSurfaceMatrixProbeRequested;
     private final String c131CompactSurfaceMatrixRunId;
+    private final boolean c131StackingDescendantClipProbeRequested;
+    private final boolean c131StackingDescendantClipStaleRevisionProbeRequested;
+    private final String c131StackingDescendantClipRunId;
+    private boolean c131StackingDescendantClipCaptureStarted;
     private final boolean c131BorderStripProbeRequested;
     private final boolean c192BoxPaintOpacityProbeRequested;
     private final boolean c153GlyphPaintProbeRequested;
@@ -570,6 +595,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private String c124SurfaceInventorySha256 = "";
     private volatile List<SurfaceViewPixelCapture.Sample> c131CompactSurfaceSamples = List.of();
     private volatile Map<String, String> c131CompactSurfaceExpectedRgba = Collections.emptyMap();
+    private volatile List<SurfaceViewPixelCapture.Sample> c131StackingDescendantClipSamples = List.of();
+    private volatile Map<String, String> c131StackingDescendantClipExpectedRgba = Collections.emptyMap();
+    private volatile Map<String, String> c131StackingDescendantClipExpectedRevisions = Collections.emptyMap();
     private CountDownLatch surfaceDestroyBarrier;
 
     C0410RuntimeGpuDemo(
@@ -638,6 +666,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         c131CompactSurfaceMatrixProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c131_compact_surface_matrix", false);
         c131CompactSurfaceMatrixRunId = c131CompactSurfaceMatrixProbeRequested
+                ? Long.toHexString(SystemClock.elapsedRealtimeNanos()) : "";
+        c131StackingDescendantClipProbeRequested = BuildConfig.SPINON_C131_OVERFLOW_CLIP_FIXTURE_TEST
+                && activity.getIntent().getBooleanExtra(
+                        "spinon_c131_stacking_descendant_clip", false);
+        c131StackingDescendantClipStaleRevisionProbeRequested =
+                c131StackingDescendantClipProbeRequested
+                && activity.getIntent().getBooleanExtra(
+                        "spinon_c131_stacking_descendant_clip_stale_revision", false);
+        c131StackingDescendantClipRunId = c131StackingDescendantClipProbeRequested
                 ? Long.toHexString(SystemClock.elapsedRealtimeNanos()) : "";
         c131BorderStripProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c131_overflow_clip_border", false);
@@ -946,6 +983,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "SPINON · C13.3 wheel fixture"
                 : c133GestureFixtureRequested
                 ? "SPINON · C13.3 Android native input"
+                : c131StackingDescendantClipProbeRequested
+                ? "SPINON · C13.1 nested stacking clip"
                 : c131BorderStripProbeRequested
                 ? "SPINON · C13.1 paint/hit border"
                 : c131OverflowClipProbeRequested
@@ -1023,6 +1062,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "alpha·중첩 opacity·clip·z-order·currentColor·OKLCH · 16 PixelCopy 표본 · 360×240 CSS px"
                 : c131CompactSurfaceMatrixProbeRequested
                 ? "13개 overflow clip case · 30,000 hit identity + 52 PixelCopy 표본 · WGPU · 300×100 CSS px"
+                : c131StackingDescendantClipProbeRequested
+                ? "visible/clip/hidden stacking descendant · 18 Chrome hit/color 표본 · WGPU · 540×128 CSS px"
                 : c132ScrollFixtureRequested
                 ? "V8 scroll owner·offset·paint/hit → WGPU · 5 PixelCopy 표본 · 400×240 CSS px"
                 : BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested
@@ -1141,6 +1182,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "C19.2 box paint, opacity, clipping, z-order, and wide-gamut WGPU surface"
                 : c131CompactSurfaceMatrixProbeRequested
                 ? "C13.1 compact 13-case overflow Chrome oracle WGPU surface"
+                : c131StackingDescendantClipProbeRequested
+                ? "C13.1 nested stacking descendant clip Chrome oracle WGPU surface"
                 : c131BorderStripProbeRequested
                 ? "C13.1 paint/hit border-strip Chrome oracle WGPU 장면"
                 : c132ScrollFixtureRequested
@@ -1217,6 +1260,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         int initialSurfaceWidth = BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST
                 && imagePaintProbeRequested ? imageAsyncReplacementProbeRequested
                         || imageObjectFitPositionProbeRequested ? 224 : 80
+                : c131StackingDescendantClipProbeRequested ? 540
                 : c131CompactSurfaceMatrixProbeRequested ? 300
                 : c131BorderStripProbeRequested ? 400
                 : c153HostDocumentTextPaintProbeRequested ? 320
@@ -1227,6 +1271,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         int initialSurfaceHeight = BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST
                 && imagePaintProbeRequested ? imageAsyncReplacementProbeRequested ? 88
                         : imageObjectFitPositionProbeRequested ? 72 : 40
+                : c131StackingDescendantClipProbeRequested ? 128
                 : c131CompactSurfaceMatrixProbeRequested ? 100
                 : c131BorderStripProbeRequested ? 160
                 : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 240
@@ -1364,6 +1409,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private boolean validateC131FixtureRoute() {
+        if (activity.getIntent().getBooleanExtra(
+                    "spinon_c131_stacking_descendant_clip", false)
+                && !BuildConfig.SPINON_C131_OVERFLOW_CLIP_FIXTURE_TEST) {
+            Log.e(TAG, "SPINON_C131_STACKING_CLIP_ARGUMENT_ERROR rejected=true reason=fixture-feature-disabled");
+            postStatus("실패 · C13.1 stacking descendant clip fixture-test feature가 꺼져 있습니다");
+            return false;
+        }
         if (!BuildConfig.SPINON_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST
                 && activity.getIntent().getBooleanExtra("spinon_c192_box_paint_opacity", false)) {
             Log.e(TAG, "SPINON_C192_ARGUMENT_ERROR rejected=true reason=fixture-feature-disabled");
@@ -1414,6 +1466,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         int selectedRoutes = (c131OverflowClipProbeRequested ? 1 : 0)
                 + (c131CompactSurfaceMatrixProbeRequested ? 1 : 0)
+                + (c131StackingDescendantClipProbeRequested ? 1 : 0)
                 + (c131BorderStripProbeRequested ? 1 : 0)
                 + (c192BoxPaintOpacityProbeRequested ? 1 : 0)
                 + (c153GlyphPaintProbeRequested ? 1 : 0)
@@ -1423,6 +1476,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (selectedRoutes > 1) {
             Log.e(TAG, "SPINON_C13_ARGUMENT_ERROR conflicting=multiple-fixture-routes");
             postStatus("실패 · C13 route를 하나만 선택해야 합니다");
+            return false;
+        }
+        if (activity.getIntent().hasExtra("spinon_c131_stacking_descendant_clip_stale_revision")
+                && !c131StackingDescendantClipProbeRequested) {
+            Log.e(TAG, "SPINON_C131_ARGUMENT_ERROR rejected=stale-revision-requires-stacking-route");
+            postStatus("실패 · stale revision control에는 C13.1 stacking clip route가 필요합니다");
             return false;
         }
         if (selectedRoutes == 0) return true;
@@ -1441,6 +1500,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         : imageAlphaProbeRequested ? "spinon_c182_alpha_image" : "spinon_c181_image_paint"
                 : c132ScrollFixtureRequested
                 ? "spinon_c132_scroll_fixture"
+                : c131StackingDescendantClipProbeRequested
+                ? "spinon_c131_stacking_descendant_clip"
                 : c131CompactSurfaceMatrixProbeRequested
                 ? "spinon_c131_compact_surface_matrix"
                 : c131BorderStripProbeRequested
@@ -1470,6 +1531,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || key.equals("spinon_c0410_runtime_gpu")
                     || (c132ScrollFixtureRequested
                             && key.equals("spinon_c132_surface_pixel_run_id"))
+                    || (c131StackingDescendantClipProbeRequested
+                            && key.equals("spinon_c131_stacking_descendant_clip_stale_revision"))
                     || (c133GestureFixtureRequested
                             && (key.equals("spinon_c133_worker_delay_ms")
                                     || key.equals("spinon_c133_synthetic_second_pointer")
@@ -1549,6 +1612,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         new Class<?>[0])
                 : c132ScrollFixtureRequested
                 ? nativeCreateC132ScrollHost()
+                : c131StackingDescendantClipProbeRequested
+                ? nativeCreateC131StackingDescendantClipHost()
                 : c131CompactSurfaceMatrixProbeRequested
                 ? nativeCreateC131CompactSurfaceMatrixHost()
                 : c131BorderStripProbeRequested
@@ -1585,6 +1650,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             || imageObjectFitPositionProbeRequested ? 224 : 80
                     : c153HostDocumentTextPaintProbeRequested ? 320
                     : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 360
+                    : c131StackingDescendantClipProbeRequested ? 540
                     : c131CompactSurfaceMatrixProbeRequested ? 300
                     : c131BorderStripProbeRequested ? 400
                     : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 400
@@ -1597,6 +1663,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     && imagePaintProbeRequested ? imageAsyncReplacementProbeRequested ? 88
                             : imageObjectFitPositionProbeRequested ? 72 : 40
                     : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 240
+                    : c131StackingDescendantClipProbeRequested ? 128
                     : c131CompactSurfaceMatrixProbeRequested ? 100
                     : c131BorderStripProbeRequested ? 160
                     : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 240
@@ -1679,6 +1746,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         new Class<?>[] {long.class}, host))
                 : c132ScrollFixtureRequested
                 ? decode(nativeEvalC132ScrollFixture(host))
+                : c131StackingDescendantClipProbeRequested
+                ? decode(nativeEvalC131StackingDescendantClipFixture(host))
                 : c131CompactSurfaceMatrixProbeRequested
                 ? decode(nativeEvalC131CompactSurfaceMatrixFixture(host))
                 : c131BorderStripProbeRequested
@@ -2024,6 +2093,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("실패 · C13.1 compact frame·hit-test 결과 불일치");
             return;
         }
+        if (c131StackingDescendantClipProbeRequested
+                && !logC131StackingDescendantClipFixtureReport(result)) {
+            postStatus("실패 · C13.1 nested stacking frame·hit-test 결과 불일치");
+            return;
+        }
         if (c131BorderStripProbeRequested && !logC131BorderFixtureReport(result)) {
             postStatus("실패 · C13.1 border-strip frame·hit-test 결과 불일치");
             return;
@@ -2042,7 +2116,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         : imageAlphaProbeRequested ? "SPINON_C182_ALPHA_IMAGE_EVAL "
                         : "SPINON_C181_IMAGE_PAINT_EVAL " : c133GestureFixtureRequested
                 ? "SPINON_C133_EVAL " : c132ScrollFixtureRequested
-                ? "SPINON_C132_SCROLL_EVAL " : c131CompactSurfaceMatrixProbeRequested
+                ? "SPINON_C132_SCROLL_EVAL " : c131StackingDescendantClipProbeRequested
+                ? "SPINON_C131_STACKING_CLIP_EVAL_RUN run_id="
+                        + c131StackingDescendantClipRunId + " "
+                : c131CompactSurfaceMatrixProbeRequested
                 ? "SPINON_C131_COMPACT_EVAL_RUN run_id=" + c131CompactSurfaceMatrixRunId + " "
                 : c131BorderStripProbeRequested
                 ? "SPINON_C131_BORDER_EVAL_RUN " : c131OverflowClipProbeRequested
@@ -2483,6 +2560,203 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 });
     }
 
+    private boolean logC131StackingDescendantClipFixtureReport(String report) {
+        if (!report.startsWith("status=0 ") || !report.contains(" layout=ready ")
+                || !"13".equals(reportField(report, "boxes="))
+                || !"540x128".equals(reportField(report, "render_viewport_css_px="))) {
+            Log.e(TAG, "SPINON_C131_STACKING_CLIP_SUMMARY status=error stage=runtime-report "
+                    + runtimeStatusSummary(report));
+            return false;
+        }
+        int frameMarker = report.indexOf("node_frames_css_px=[");
+        int frameStart = frameMarker < 0 ? -1 : report.indexOf('[', frameMarker);
+        int frameEnd = frameStart < 0 ? -1 : report.indexOf(']', frameStart + 1);
+        if (frameStart < 0 || frameEnd < 0) {
+            Log.e(TAG, "SPINON_C131_STACKING_CLIP_SUMMARY status=error stage=frame-report");
+            return false;
+        }
+        String[] frames = report.substring(frameStart + 1, frameEnd).split(";");
+        double[] expectedFrameGeometry = {
+                0, 0, 540, 128,
+                20, 28, 120, 72, 76, 40, 80, 48, 108, 40, 72, 48, 148, 40, 16, 48,
+                190, 28, 120, 72, 246, 40, 80, 48, 278, 40, 72, 48, 318, 40, 16, 48,
+                360, 28, 120, 72, 416, 40, 80, 48, 448, 40, 72, 48, 488, 40, 16, 48,
+        };
+        Set<String> nodeIds = new HashSet<>();
+        boolean geometryValid = frames.length == 13;
+        for (int index = 0; index < frames.length; index++) {
+            if (index >= 13) {
+                geometryValid = false;
+                continue;
+            }
+            String[] fields = frames[index].split(",");
+            if (fields.length != 5 || !fields[0].startsWith(index + ":node=")) {
+                geometryValid = false;
+                continue;
+            }
+            String nodeId = fields[0].substring((index + ":node=").length());
+            geometryValid &= !nodeId.isEmpty() && nodeIds.add(nodeId);
+            for (int fieldIndex = 1; fieldIndex < fields.length; fieldIndex++) {
+                String[] pair = fields[fieldIndex].split("=", -1);
+                if (pair.length != 2 || !Double.isFinite(parseDoubleOrNaN(pair[1]))) {
+                    geometryValid = false;
+                    continue;
+                }
+                double actual = parseDoubleOrNaN(pair[1]);
+                double expected = expectedFrameGeometry[index * 4 + fieldIndex - 1];
+                geometryValid &= Math.abs(actual - expected) <= 0.5;
+            }
+            Log.i(TAG, "SPINON_C131_STACKING_CLIP_NODE_FRAME " + frames[index]);
+        }
+        if (!geometryValid || nodeIds.size() != 13) {
+            Log.e(TAG, "SPINON_C131_STACKING_CLIP_GEOMETRY_SUMMARY status=error frames="
+                    + frames.length + " expected=13 unique_nodes=" + nodeIds.size());
+            return false;
+        }
+
+        String marker = "hit_test_samples_json=";
+        int markerIndex = report.indexOf(marker);
+        int sampleStart = markerIndex < 0 ? -1 : report.indexOf('[', markerIndex + marker.length());
+        int sampleEnd = sampleStart < 0 ? -1 : findJsonArrayEnd(report, sampleStart);
+        if (sampleStart < 0 || sampleEnd < 0) {
+            Log.e(TAG, "SPINON_C131_STACKING_CLIP_SUMMARY status=error stage=hit-report");
+            return false;
+        }
+        final JSONArray observations;
+        try {
+            observations = new JSONArray(report.substring(sampleStart, sampleEnd));
+        } catch (Exception error) {
+            Log.e(TAG, "SPINON_C131_STACKING_CLIP_SUMMARY status=error stage=hit-json");
+            return false;
+        }
+        List<SurfaceViewPixelCapture.Sample> samples = new ArrayList<>(18);
+        Map<String, String> expectedRgba = new HashMap<>(18);
+        Set<String> uniqueIds = new HashSet<>(18);
+        Set<String> uniquePixels = new HashSet<>(18);
+        int matched = 0;
+        boolean valid = observations.length() == 18;
+        for (int index = 0; index < observations.length(); index++) {
+            JSONObject sample = observations.optJSONObject(index);
+            if (sample == null || index >= C131_STACKING_CLIP_SAMPLE_X.length) {
+                valid = false;
+                continue;
+            }
+            int caseIndex = index / C131_STACKING_CLIP_SAMPLE_ROLES.length;
+            int roleIndex = index % C131_STACKING_CLIP_SAMPLE_ROLES.length;
+            String caseId = C131_STACKING_CLIP_CASE_IDS[caseIndex];
+            String role = C131_STACKING_CLIP_SAMPLE_ROLES[roleIndex];
+            String id = caseId + ":" + role;
+            String elementId = C131_STACKING_CLIP_HIT_IDS[index];
+            double x = sample.optDouble("xCssPx", Double.NaN);
+            double y = sample.optDouble("yCssPx", Double.NaN);
+            int pixelX = sample.optInt("pixelX", -1);
+            int pixelY = sample.optInt("pixelY", -1);
+            int expectedPixelX = (int) Math.floor(C131_STACKING_CLIP_SAMPLE_X[index]);
+            boolean validCoordinates = Double.isFinite(x) && Double.isFinite(y)
+                    && x == C131_STACKING_CLIP_SAMPLE_X[index] && y == 52.5
+                    && pixelX == expectedPixelX && pixelY == 52;
+            String pixelKey = pixelX + "," + pixelY;
+            String actualRgba = rgbaString(sample.optJSONArray("rgba"));
+            String expectedColor = c131StackingDescendantClipExpectedRgba(elementId);
+            boolean sampleMatches = id.equals(sample.optString("id", "missing"))
+                    && caseId.equals(sample.optString("caseId", "missing"))
+                    && role.equals(sample.optString("role", "missing"))
+                    && "matched".equals(sample.optString("status", "missing"))
+                    && elementId.equals(sample.optString("elementId", "missing"))
+                    && sample.optInt("nodeIndex", -1) == C131_STACKING_CLIP_NODE_INDEX[index]
+                    && validCoordinates && expectedColor.equals(actualRgba)
+                    && uniqueIds.add(id) && uniquePixels.add(pixelKey);
+            if (!sampleMatches) valid = false;
+            if ("matched".equals(sample.optString("status", ""))) matched++;
+            if (validCoordinates && expectedColor.equals(actualRgba)) {
+                samples.add(new SurfaceViewPixelCapture.Sample(id, pixelX, pixelY));
+                expectedRgba.put(id, expectedColor);
+            }
+            Log.i(TAG, "SPINON_C131_STACKING_CLIP_HIT_TEST id=" + id + " x=" + x
+                    + " y=" + y + " element=" + sample.optString("elementId", "missing")
+                    + " node_index=" + sample.optInt("nodeIndex", -1)
+                    + " rgba=" + actualRgba + " status="
+                    + (sampleMatches ? "matched" : "error"));
+        }
+        valid &= observations.length() == 18 && samples.size() == 18
+                && expectedRgba.size() == 18 && uniqueIds.size() == 18
+                && uniquePixels.size() == 18 && matched == 18;
+        Log.i(TAG, "SPINON_C131_STACKING_CLIP_HIT_TEST_SUMMARY status="
+                + (valid ? "ok" : "error") + " matched=" + matched
+                + " total=" + observations.length() + " unique_ids=" + uniqueIds.size()
+                + " unique_pixels=" + uniquePixels.size());
+        if (!valid) {
+            Log.e(TAG, "SPINON_C131_STACKING_CLIP_SUMMARY status=error frames="
+                    + frames.length + " hit_samples=" + observations.length());
+            return false;
+        }
+        Map<String, String> runtimeRevisions = new HashMap<>(4);
+        for (String field : List.of("generation", "document_revision",
+                "render_tree_revision", "style_revision")) {
+            String value = reportField(report, field + "=");
+            if (!isUnsignedInteger(value)) {
+                Log.e(TAG, "SPINON_C131_STACKING_CLIP_SUMMARY status=error stage=revision-identity field="
+                        + field + " value=" + value);
+                return false;
+            }
+            runtimeRevisions.put(field, value);
+        }
+        c131StackingDescendantClipSamples = Collections.unmodifiableList(samples);
+        c131StackingDescendantClipExpectedRgba = Collections.unmodifiableMap(expectedRgba);
+        c131StackingDescendantClipExpectedRevisions = Collections.unmodifiableMap(runtimeRevisions);
+        Log.i(TAG, "SPINON_C131_STACKING_CLIP_SUMMARY status=ok boxes=13 frames=13 "
+                + "hit_samples=18 hit_matches=18 viewport=540x128");
+        return true;
+    }
+
+    private static String c131StackingDescendantClipExpectedRgba(String elementId) {
+        if ("root".equals(elementId)) return "240,244,247,255";
+        if (elementId.endsWith("-parent")) return "240,198,116,255";
+        if (elementId.endsWith("-target")) return "87,166,217,255";
+        if (elementId.endsWith("-overlay")) return "228,81,79,255";
+        return "invalid";
+    }
+
+    private static String rgbaString(JSONArray rgba) {
+        if (rgba == null || rgba.length() != 4) return "invalid";
+        StringBuilder result = new StringBuilder();
+        for (int index = 0; index < 4; index++) {
+            int channel = rgba.optInt(index, -1);
+            if (channel < 0 || channel > 255) return "invalid";
+            if (index > 0) result.append(',');
+            result.append(channel);
+        }
+        return result.toString();
+    }
+
+    private static double parseDoubleOrNaN(String value) {
+        try {
+            double parsed = Double.parseDouble(value);
+            return Double.isFinite(parsed) ? parsed : Double.NaN;
+        } catch (NumberFormatException error) {
+            return Double.NaN;
+        }
+    }
+
+    private static int findJsonArrayEnd(String text, int start) {
+        int depth = 0;
+        boolean inString = false;
+        boolean escaped = false;
+        for (int index = start; index < text.length(); index++) {
+            char current = text.charAt(index);
+            if (inString) {
+                if (escaped) escaped = false;
+                else if (current == '\\') escaped = true;
+                else if (current == '"') inString = false;
+                continue;
+            }
+            if (current == '"') inString = true;
+            else if (current == '[') depth++;
+            else if (current == ']' && --depth == 0) return index + 1;
+        }
+        return -1;
+    }
+
     private boolean logC131CompactSurfaceMatrixFixtureReport(String report) {
         if (!report.startsWith("status=0 ") || !report.contains(" layout=ready ")
                 || !"41".equals(reportField(report, "boxes="))
@@ -2896,6 +3170,144 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return new int[] {240, 198, 116, 255};
         }
         return new int[] {16, 24, 39, 255};
+    }
+
+    private void requestC131StackingDescendantClipSurfaceCapture(
+            long renderer, long generation, String drawReport
+    ) {
+        Map<String, String> expectedRevisions = c131StackingDescendantClipExpectedRevisions;
+        Map<String, String> revisionExpectations = new HashMap<>(expectedRevisions);
+        if (c131StackingDescendantClipStaleRevisionProbeRequested) {
+            String documentRevision = revisionExpectations.get("document_revision");
+            if (isUnsignedInteger(documentRevision)) {
+                revisionExpectations.put("document_revision",
+                        Long.toString(Long.parseLong(documentRevision) + 1));
+                Log.i(TAG, "SPINON_C131_STACKING_CLIP_NEGATIVE_CONTROL"
+                        + " name=stale-document-revision injected=true");
+            }
+        }
+        Map<String, String> drawRevisions = new HashMap<>(4);
+        boolean revisionIdentityMatches = drawReport.startsWith("status=0 ")
+                && "13".equals(reportField(drawReport, "boxes="))
+                && "540x128".equals(reportField(drawReport, "root_css_px="));
+        String mismatchField = "";
+        for (String field : List.of("generation", "document_revision",
+                "render_tree_revision", "style_revision")) {
+            String value = reportField(drawReport, field + "=");
+            drawRevisions.put(field, value);
+            boolean fieldMatches = isUnsignedInteger(value)
+                    && value.equals(revisionExpectations.get(field));
+            revisionIdentityMatches &= fieldMatches;
+            if (!fieldMatches && mismatchField.isEmpty()) mismatchField = field;
+        }
+        if (!revisionIdentityMatches) {
+            if (c131StackingDescendantClipStaleRevisionProbeRequested) {
+                Log.i(TAG, "SPINON_C131_STACKING_CLIP_NEGATIVE_CONTROL"
+                        + " name=stale-document-revision status="
+                        + ("document_revision".equals(mismatchField) ? "rejected" : "error")
+                        + " field=" + mismatchField + " surface_readback=not-requested");
+            }
+            Log.e(TAG, "SPINON_C131_STACKING_CLIP_PIXELCOPY status=error stage=stale-revision"
+                    + " run_id=" + c131StackingDescendantClipRunId
+                    + " expected=" + revisionExpectations + " actual=" + drawRevisions);
+            postStatus("실패 · C13.1 PixelCopy runtime revision이 검증 snapshot과 다릅니다");
+            return;
+        }
+
+        final int width;
+        final int height;
+        final long presentationSequence;
+        synchronized (stateLock) {
+            if (closing || c131StackingDescendantClipCaptureStarted || !surfaceAvailable
+                    || surfaceGeneration != generation || rendererHandle != renderer
+                    || rendererGeneration != generation) {
+                return;
+            }
+            if (c131StackingDescendantClipSamples.size() != 18
+                    || c131StackingDescendantClipExpectedRgba.size() != 18
+                    || expectedRevisions.size() != 4) {
+                Log.e(TAG, "SPINON_C131_STACKING_CLIP_PIXELCOPY status=error stage=sample-state");
+                return;
+            }
+            c131StackingDescendantClipCaptureStarted = true;
+            width = surfaceWidth;
+            height = surfaceHeight;
+            presentationSequence = hostPresentationSequence;
+        }
+        String runId = c131StackingDescendantClipRunId;
+        List<SurfaceViewPixelCapture.Sample> samples = c131StackingDescendantClipSamples;
+        Map<String, String> expectedRgba = c131StackingDescendantClipExpectedRgba;
+        File output = new File(
+                new File(activity.getCacheDir(), "c131-stacking-descendant-clip-captures"),
+                "stacking-descendant-clip-" + runId + ".png");
+        Log.i(TAG, "SPINON_C131_STACKING_CLIP_PIXELCOPY_BEGIN run_id=" + runId
+                + " pid=" + android.os.Process.myPid() + " surface_generation=" + generation
+                + " presentation_sequence=" + presentationSequence
+                + " draw_generation=" + drawRevisions.get("generation")
+                + " document_revision=" + drawRevisions.get("document_revision")
+                + " render_tree_revision=" + drawRevisions.get("render_tree_revision")
+                + " style_revision=" + drawRevisions.get("style_revision")
+                + " width=" + width + " height=" + height + " viewport=540x128"
+                + " samples=" + samples.size());
+        SurfaceViewPixelCapture.requestForCssViewport(surfaceView, width, height,
+                540, 128, 0, 0, "runtime-stacking-descendant-clip", runId, output,
+                samples, mainHandler, runtimeQueue,
+                () -> {
+                    synchronized (stateLock) {
+                        return !closing && surfaceAvailable && surfaceGeneration == generation
+                                && rendererHandle == renderer && rendererGeneration == generation
+                                && surfaceWidth == width && surfaceHeight == height
+                                && hostPresentationSequence == presentationSequence;
+                    }
+                }, result -> {
+                    synchronized (stateLock) {
+                        if (closing || !surfaceAvailable || surfaceGeneration != generation
+                                || rendererHandle != renderer || rendererGeneration != generation
+                                || surfaceWidth != width || surfaceHeight != height
+                                || hostPresentationSequence != presentationSequence) {
+                            boolean artifactDeleted = result.error.isEmpty() && output.delete();
+                            Log.e(TAG, "SPINON_C131_STACKING_CLIP_PIXELCOPY status=error"
+                                    + " run_id=" + runId + " stage=stale-callback"
+                                    + " surface_generation=" + generation
+                                    + " presentation_sequence=" + presentationSequence
+                                    + " artifact_deleted=" + artifactDeleted);
+                            return;
+                        }
+                    }
+                    if (!result.error.isEmpty()) {
+                        Log.e(TAG, "SPINON_C131_STACKING_CLIP_PIXELCOPY status=error run_id="
+                                + runId + " surface_generation=" + generation + " attempts="
+                                + result.attempts + " reason=" + result.error);
+                        postStatus("실패 · C13.1 stacking clip PixelCopy · " + result.error);
+                        return;
+                    }
+                    int matched = 0;
+                    for (SurfaceViewPixelCapture.Pixel pixel : result.pixels) {
+                        String expected = expectedRgba.get(pixel.id);
+                        String actual = pixel.red + "," + pixel.green + ","
+                                + pixel.blue + "," + pixel.alpha;
+                        boolean exact = actual.equals(expected);
+                        if (exact) matched++;
+                        Log.i(TAG, "SPINON_C131_STACKING_CLIP_PIXEL run_id=" + runId
+                                + " sample=" + pixel.id + " x=" + pixel.x + " y=" + pixel.y
+                                + " rgba=" + actual + " expected=" + expected
+                                + " exact=" + exact);
+                    }
+                    boolean valid = result.pixels.size() == 18 && matched == 18;
+                    Log.i(TAG, "SPINON_C131_STACKING_CLIP_PIXELCOPY_SUMMARY status="
+                            + (valid ? "matched" : "mismatch") + " run_id=" + runId
+                            + " pid=" + android.os.Process.myPid()
+                            + " surface_generation=" + generation
+                            + " presentation_sequence=" + presentationSequence
+                            + " draw_generation=" + drawRevisions.get("generation")
+                            + " document_revision=" + drawRevisions.get("document_revision")
+                            + " render_tree_revision=" + drawRevisions.get("render_tree_revision")
+                            + " style_revision=" + drawRevisions.get("style_revision")
+                            + " samples=" + matched + "/18" + " png="
+                            + output.getAbsolutePath() + " sha256=" + result.sha256);
+                    if (valid) postStatus("완료 · C13.1 stacking clip PixelCopy 18/18");
+                    else postStatus("실패 · C13.1 stacking clip PixelCopy 표본 불일치");
+                });
     }
 
     private void requestC131CompactSurfaceMatrixCapture(long renderer, long generation) {
@@ -4311,6 +4723,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         if (c192BoxPaintOpacityProbeRequested) {
             requestC192SurfaceCapture(renderer, generation);
+        } else if (c131StackingDescendantClipProbeRequested) {
+            requestC131StackingDescendantClipSurfaceCapture(renderer, generation, result);
         } else if (c131CompactSurfaceMatrixProbeRequested) {
             requestC131CompactSurfaceMatrixCapture(renderer, generation);
         } else if (c131BorderStripProbeRequested) {

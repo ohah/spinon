@@ -676,16 +676,58 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c131-compact-metal-pixel-centers")
     private let c131FullPhysicalMetalPixelsRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c131-full-physical-metal-pixels")
+    private let c131StackingDescendantClipProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c131-stacking-descendant-clip")
+    private let c131StackingDescendantClipStaleRevisionProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c131-stacking-descendant-clip-stale-revision")
+    private static let c131StackingClipRoles = [
+        "parent-only", "target-inside", "clip-edge-inside", "clip-edge-outside",
+        "escape-before-overlay", "stacking-overlay",
+    ]
+    private static let c131StackingClipCases = ["visible", "clip", "hidden"]
+    private static let c131StackingClipPixelCoordinates: [(Int, Int)] = [
+        (44, 52), (122, 52), (139, 52), (140, 52), (144, 52), (156, 52),
+        (214, 52), (292, 52), (309, 52), (310, 52), (314, 52), (326, 52),
+        (384, 52), (462, 52), (479, 52), (480, 52), (484, 52), (496, 52),
+    ]
+    private static let c131StackingClipExpectedHitIDs = [
+        "visible-parent", "visible-target", "visible-target", "visible-target",
+        "visible-target", "visible-overlay", "clip-parent", "clip-target",
+        "clip-target", "root", "root", "clip-overlay", "hidden-parent",
+        "hidden-target", "hidden-target", "root", "root", "hidden-overlay",
+    ]
+    private static let c131StackingClipExpectedNodeIndices = [
+        1, 3, 3, 3, 3, 4, 5, 7, 7, 0, 0, 8, 9, 11, 11, 0, 0, 12,
+    ]
+    private static let c131StackingClipExpectedRGBA: [[Int]] = [
+        [240, 198, 116, 255], [87, 166, 217, 255], [87, 166, 217, 255],
+        [87, 166, 217, 255], [87, 166, 217, 255], [228, 81, 79, 255],
+        [240, 198, 116, 255], [87, 166, 217, 255], [87, 166, 217, 255],
+        [240, 244, 247, 255], [240, 244, 247, 255], [228, 81, 79, 255],
+        [240, 198, 116, 255], [87, 166, 217, 255], [87, 166, 217, 255],
+        [240, 244, 247, 255], [240, 244, 247, 255], [228, 81, 79, 255],
+    ]
     private var c131MetalPixelCaptureRequested: Bool {
         c131CompactMetalPixelCentersRequested || c131FullPhysicalMetalPixelsRequested
+            || c131StackingDescendantClipProbeRequested
+    }
+    private var c131MetalCaptureRunID: String {
+        c131StackingDescendantClipProbeRequested
+            ? c131StackingDescendantClipRunID : c131CompactSurfaceMatrixRunID
     }
     private var c131CompactSurfaceMatrixRouteRequested: Bool {
         c131CompactSurfaceMatrixProbeRequested || c131CompactHitIdentityGridProbeRequested
     }
     private let c131CompactSurfaceMatrixRunID = UUID().uuidString
         .replacingOccurrences(of: "-", with: "").lowercased()
+    private let c131StackingDescendantClipRunID = UUID().uuidString
+        .replacingOccurrences(of: "-", with: "").lowercased()
     private var c131CompactHitIdentityGridStatusMessage: String?
     private var c131MetalPixelCapture: (any C131MetalSurfacePixelCaptureProtocol)?
+    private var c131StackingClipSampleCoordinates: [(Int, Int)] = []
+    private var c131StackingClipExpectedRGBA: [[Int]] = []
+    private var c131StackingClipExpectedRevisionFields: [String: String] = [:]
+    private var c131StackingClipStaleRevisionInjectionApplied = false
     private var c131MetalCaptureBaselineDrawReady = false
     private var c131MetalPixelBatchRequested = false
     private var c131MetalPixelCaptureComplete = false
@@ -878,7 +920,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var fixedSizeCssFixtureRequested: Bool {
         let selected = c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested
             || c131CompactSurfaceMatrixRouteRequested || c131OverflowClipProbeRequested
-            || c131BorderStripProbeRequested || c132ScrollFixtureRequested
+            || c131StackingDescendantClipProbeRequested || c131BorderStripProbeRequested
+            || c132ScrollFixtureRequested
             || c133GestureFixtureRequested || c11GridFixtureRequested
         var selectedWithImagePaint = selected
 #if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
@@ -921,6 +964,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "SPINON · C19.2 box paint·opacity"
             : c131CompactHitIdentityGridProbeRequested
             ? "SPINON · C13.1 iOS hit identity grid"
+            : c131StackingDescendantClipProbeRequested
+            ? "SPINON · C13.1 nested stacking clip"
             : c131CompactSurfaceMatrixProbeRequested
             ? "SPINON · C13.1 compact surface"
             : c131BorderStripProbeRequested
@@ -1027,6 +1072,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "alpha·중첩 opacity·clip·z-order·currentColor·OKLCH → WGPU Metal · 16표본 · 360×240 CSS px"
             : c131CompactHitIdentityGridProbeRequested
             ? "Chrome 155 integer hit identity 30,000점 · 52 sample · 300×100 CSS px"
+            : c131StackingDescendantClipProbeRequested
+            ? "visible/clip/hidden stacked descendant · 18 Chrome hit/color sample · 540×128 CSS px"
             : c131CompactSurfaceMatrixProbeRequested
             ? "13개 overflow clip case · 52 hit sample → WGPU Metal · 300×100 CSS px"
             : c131BorderStripProbeRequested
@@ -1136,6 +1183,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "C19.2 box paint, opacity, clipping, z-order, currentColor, and wide-gamut WGPU Metal surface"
             : c131CompactHitIdentityGridProbeRequested
             ? "C13.1 iOS Simulator full 30,000-point hit identity grid WGPU Metal surface"
+            : c131StackingDescendantClipProbeRequested
+            ? "C13.1 nested stacking descendant clip Chrome oracle WGPU Metal surface"
             : c131CompactSurfaceMatrixProbeRequested
             ? "C13.1 compact 13-case overflow Chrome oracle WGPU Metal surface"
             : c131BorderStripProbeRequested
@@ -1361,6 +1410,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 ? imageAsyncReplacementProbeRequested || imageObjectFitPositionProbeRequested ? 224 : 80
                 : c153HostDocumentTextPaintArgumentRequested ? 320
                 : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 360
+                : c131StackingDescendantClipProbeRequested ? 540
                 : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                 ? 360 : c131CompactSurfaceMatrixRouteRequested ? 300
                 : c131BorderStripProbeRequested || c132ScrollFixtureRequested
@@ -1374,6 +1424,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                 ? 800 : c131CompactSurfaceMatrixRouteRequested ? 100
                 : c131BorderStripProbeRequested ? 160
+                : c131StackingDescendantClipProbeRequested ? 128
                 : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 240
                 : fixedSizeCssFixtureRequested ? 240 : 100
         )
@@ -1623,6 +1674,159 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         log("SPINON_C131_HIT_TEST_SUMMARY status=\(passed ? "ok" : "error") matched=\(matched.count) total=\(samples.count) ids=\(sampleIDs == expectedHitIDs ? "fixed" : "unexpected")")
         log("SPINON_C131_FIXTURE_SUMMARY status=\(passed ? "ok" : "error") boxes=13 frames=\(frames.count) hit_samples=\(samples.count) hit_matches=\(matched.count)")
         return passed
+    }
+
+    private func logC131StackingDescendantClipFixtureReport(_ report: String) -> Bool {
+        guard report.hasPrefix("status=0 "), report.contains(" layout=ready "),
+              reportField(report, "boxes=") == "13",
+              reportField(report, "render_viewport_css_px=") == "540x128",
+              let frameMarker = report.range(of: "node_frames_css_px=["),
+              let frameEnd = report[frameMarker.upperBound...].firstIndex(of: "]") else {
+            log("SPINON_C131_STACKING_CLIP_SUMMARY status=error stage=runtime-report \(runtimeStatusSummary(report))")
+            return false
+        }
+        let frames = report[frameMarker.upperBound..<frameEnd].split(separator: ";")
+        let expectedGeometry: [[Double]] = [
+            [0, 0, 540, 128],
+            [20, 28, 120, 72], [76, 40, 80, 48], [108, 40, 72, 48], [148, 40, 16, 48],
+            [190, 28, 120, 72], [246, 40, 80, 48], [278, 40, 72, 48], [318, 40, 16, 48],
+            [360, 28, 120, 72], [416, 40, 80, 48], [448, 40, 72, 48], [488, 40, 16, 48],
+        ]
+        var valid = frames.count == expectedGeometry.count
+        var nodeIDs = Set<String>()
+        for (index, frame) in frames.enumerated() {
+            guard index < expectedGeometry.count else {
+                valid = false
+                continue
+            }
+            let fields = frame.split(separator: ",")
+            guard fields.count == 5, fields[0].hasPrefix("\(index):node=") else {
+                valid = false
+                continue
+            }
+            let nodeID = String(fields[0].dropFirst("\(index):node=".count))
+            valid = valid && !nodeID.isEmpty && nodeIDs.insert(nodeID).inserted
+            let expectedKeys = ["x", "y", "width", "height"]
+            for fieldIndex in 1..<fields.count {
+                let pair = fields[fieldIndex].split(separator: "=", maxSplits: 1)
+                guard pair.count == 2,
+                      String(pair[0]) == expectedKeys[fieldIndex - 1],
+                      let actual = Double(pair[1]), actual.isFinite,
+                      abs(actual - expectedGeometry[index][fieldIndex - 1]) <= 0.5 else {
+                    valid = false
+                    continue
+                }
+            }
+            log("SPINON_C131_STACKING_CLIP_NODE_FRAME \(frame)")
+        }
+        guard valid, nodeIDs.count == 13,
+              let sampleMarker = report.range(of: "hit_test_samples_json="),
+              let sampleStart = report[sampleMarker.upperBound...].firstIndex(of: "["),
+              let sampleEnd = closingJSONArrayIndex(in: report, startingAt: sampleStart),
+              let sampleData = String(report[sampleStart...sampleEnd]).data(using: .utf8),
+              let samples = try? JSONSerialization.jsonObject(with: sampleData) as? [[String: Any]],
+              samples.count == 18 else {
+            log("SPINON_C131_STACKING_CLIP_SUMMARY status=error stage=frame-or-hit-report frames=\(frames.count)")
+            return false
+        }
+        var seenIDs = Set<String>()
+        var seenPixels = Set<String>()
+        var matched = 0
+        for (index, sample) in samples.enumerated() {
+            let caseID = Self.c131StackingClipCases[index / Self.c131StackingClipRoles.count]
+            let role = Self.c131StackingClipRoles[index % Self.c131StackingClipRoles.count]
+            let id = "\(caseID):\(role)"
+            let x = (sample["xCssPx"] as? NSNumber)?.doubleValue ?? .nan
+            let y = (sample["yCssPx"] as? NSNumber)?.doubleValue ?? .nan
+            let pixelX = sample["pixelX"] as? Int ?? -1
+            let pixelY = sample["pixelY"] as? Int ?? -1
+            let rgba = (sample["rgba"] as? [NSNumber])?.map(\.intValue) ?? []
+            let pixel = "\(pixelX),\(pixelY)"
+            let expectedCoordinate = Self.c131StackingClipPixelCoordinates[index]
+            let sampleMatches = sample["id"] as? String == id
+                && sample["caseId"] as? String == caseID
+                && sample["role"] as? String == role
+                && sample["elementId"] as? String == Self.c131StackingClipExpectedHitIDs[index]
+                && sample["nodeIndex"] as? Int == Self.c131StackingClipExpectedNodeIndices[index]
+                && sample["status"] as? String == "matched"
+                && x == Double(expectedCoordinate.0) + 0.5
+                && y == Double(expectedCoordinate.1) + 0.5
+                && pixelX == expectedCoordinate.0 && pixelY == expectedCoordinate.1
+                && rgba == Self.c131StackingClipExpectedRGBA[index]
+                && seenIDs.insert(id).inserted && seenPixels.insert(pixel).inserted
+            if sampleMatches { matched += 1 } else { valid = false }
+            log("SPINON_C131_STACKING_CLIP_HIT_TEST id=\(id) x=\(x) y=\(y) element=\(sample["elementId"] ?? "missing") node_index=\(sample["nodeIndex"] ?? "missing") rgba=\(rgba) status=\(sampleMatches ? "matched" : "error")")
+        }
+        valid = valid && matched == 18 && seenIDs.count == 18 && seenPixels.count == 18
+        var runtimeRevisionFields: [String: String] = [:]
+        if valid {
+            for field in ["generation", "document_revision", "render_tree_revision", "style_revision"] {
+                let value = reportField(report, "\(field)=")
+                guard UInt64(value) != nil else {
+                    log("SPINON_C131_STACKING_CLIP_FIXTURE_SUMMARY status=error stage=revision-identity field=\(field)")
+                    return false
+                }
+                runtimeRevisionFields[field] = value
+            }
+            c131StackingClipExpectedRevisionFields = runtimeRevisionFields
+            log("SPINON_C131_STACKING_CLIP_RUNTIME_IDENTITY run_id=\(c131StackingDescendantClipRunID) source=evaluation \(c131StackingClipRuntimeRevisionSummary())")
+        }
+        let generation = reportField(report, "generation=")
+        log("SPINON_C131_STACKING_CLIP_HIT_TEST_SUMMARY status=\(valid ? "ok" : "error") run_id=\(c131StackingDescendantClipRunID) generation=\(generation) matched=\(matched)/18 unique_ids=\(seenIDs.count) unique_pixels=\(seenPixels.count)")
+        log("SPINON_C131_STACKING_CLIP_FIXTURE_SUMMARY status=\(valid ? "ok" : "error") boxes=13 frames=\(frames.count) hit_samples=18 hit_matches=\(matched) viewport=540x128")
+        if valid {
+            c131CompactHitIdentityGridStatusMessage = "완료 · C13.1 stacking clip Chrome hit identity 18/18"
+            postStatus(c131CompactHitIdentityGridStatusMessage ?? "C13.1 stacking clip hit identity 검증 완료")
+        }
+        return valid
+    }
+
+    private func c131StackingClipRevisionMismatch(in report: String) -> String? {
+        guard report.hasPrefix("status=0 "),
+              reportField(report, "boxes=") == "13",
+              reportField(report, "root_css_px=") == "540x128" else {
+            return "draw-shape"
+        }
+        let fields = ["generation", "document_revision", "render_tree_revision", "style_revision"]
+        guard c131StackingClipExpectedRevisionFields.count == fields.count else {
+            return "missing-evaluation-revisions"
+        }
+        for field in fields {
+            let actual = reportField(report, "\(field)=")
+            guard UInt64(actual) != nil,
+                  actual == c131StackingClipExpectedRevisionFields[field] else {
+                return field
+            }
+        }
+        return nil
+    }
+
+    private func c131StackingClipRuntimeRevisionSummary() -> String {
+        ["generation", "document_revision", "render_tree_revision", "style_revision"]
+            .map { field in "\(field)=\(c131StackingClipExpectedRevisionFields[field] ?? "missing")" }
+            .joined(separator: " ")
+    }
+
+    private func closingJSONArrayIndex(in text: String, startingAt start: String.Index) -> String.Index? {
+        var depth = 0
+        var inString = false
+        var escaped = false
+        for index in text[start...].indices {
+            let character = text[index]
+            if inString {
+                if escaped { escaped = false }
+                else if character == "\\" { escaped = true }
+                else if character == "\"" { inString = false }
+                continue
+            }
+            if character == "\"" { inString = true }
+            else if character == "[" { depth += 1 }
+            else if character == "]" {
+                depth -= 1
+                if depth == 0 { return index }
+            }
+        }
+        return nil
     }
 
     private func logC131CompactSurfaceMatrixFixtureReport(_ report: String, runID: String? = nil) -> Bool {
@@ -2185,9 +2389,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             return
         }
         if c131MetalPixelCaptureRequested
-            && !c131CompactHitIdentityGridProbeRequested {
-            log("SPINON_C131_METAL_PIXEL_ARGUMENT_ERROR reason=requires-compact-hit-identity-grid")
-            postStatus("실패 · Metal pixel route에는 C13.1 compact hit identity route가 필요합니다")
+            && !(c131CompactHitIdentityGridProbeRequested
+                || c131StackingDescendantClipProbeRequested) {
+            log("SPINON_C131_METAL_PIXEL_ARGUMENT_ERROR reason=requires-fixed-hit-sample-route")
+            postStatus("실패 · Metal pixel route에는 고정 C13.1 hit sample route가 필요합니다")
             return
         }
 #if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
@@ -2222,6 +2427,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             c153GlyphPaintProbeRequested,
             c192BoxPaintOpacityProbeRequested,
             c131OverflowClipProbeRequested,
+            c131StackingDescendantClipProbeRequested,
             c131CompactSurfaceMatrixProbeRequested,
             c131CompactHitIdentityGridProbeRequested,
             c131BorderStripProbeRequested,
@@ -2237,10 +2443,19 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             postStatus("실패 · CSS fixture route를 하나만 선택해야 합니다")
             return
         }
+        if c131StackingDescendantClipStaleRevisionProbeRequested
+            && !c131StackingDescendantClipProbeRequested {
+            log("SPINON_C131_ARGUMENT_ERROR rejected=stale-revision-requires-stacking-route")
+            postStatus("실패 · stale revision control에는 C13.1 stacking clip route가 필요합니다")
+            return
+        }
         if selectedC131Routes == 1,
            let conflictingArgument = ProcessInfo.processInfo.arguments.first(where: {
                $0.hasPrefix("--spinon-c")
                    && $0 != "--spinon-c131-overflow-clip"
+                   && $0 != "--spinon-c131-stacking-descendant-clip"
+                   && !(c131StackingDescendantClipProbeRequested
+                       && $0 == "--spinon-c131-stacking-descendant-clip-stale-revision")
                    && $0 != "--spinon-c131-compact-surface-matrix"
                    && $0 != "--spinon-c131-compact-hit-identity-grid"
                    && $0 != "--spinon-c131-compact-metal-pixel-centers"
@@ -2428,7 +2643,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             handle = c192Host
         } else {
             handle = c131MetalPixelCaptureRequested
-            ? SpinonRunner.createRuntimeGpuHostWithC13_1CompactSurfacePixelReadbackFixture()
+            ? c131StackingDescendantClipProbeRequested
+                ? SpinonRunner.createRuntimeGpuHostWithC13_1StackingDescendantClipFixture()
+                : SpinonRunner.createRuntimeGpuHostWithC13_1CompactSurfacePixelReadbackFixture()
+            : c131StackingDescendantClipProbeRequested
+            ? SpinonRunner.createRuntimeGpuHostWithC13_1StackingDescendantClipFixture()
             : c131CompactSurfaceMatrixRouteRequested
             ? SpinonRunner.createRuntimeGpuHostWithC13_1CompactSurfaceMatrixFixture()
             : c131BorderStripProbeRequested
@@ -2498,23 +2717,34 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 #endif
         if c131MetalPixelCaptureRequested {
             do {
-                if c131FullPhysicalMetalPixelsRequested {
+                if c131StackingDescendantClipProbeRequested {
+                    c131MetalPixelCapture = try C131MetalSurfacePixelCapture(
+                        runID: c131StackingDescendantClipRunID,
+                        viewportWidthCssPx: 540,
+                        viewportHeightCssPx: 128,
+                        sampleCoordinates: Self.c131StackingClipPixelCoordinates,
+                        expectedRGBA: Self.c131StackingClipExpectedRGBA
+                    )
+                } else if c131FullPhysicalMetalPixelsRequested {
                     c131MetalPixelCapture = try C131MetalFullSurfacePixelCapture(
-                        runID: c131CompactSurfaceMatrixRunID
+                        runID: c131MetalCaptureRunID
                     )
                 } else {
                     c131MetalPixelCapture = try C131MetalSurfacePixelCapture(
-                        runID: c131CompactSurfaceMatrixRunID
+                        runID: c131MetalCaptureRunID
                     )
                 }
                 if let capture = c131MetalPixelCapture {
-                    let mode = c131FullPhysicalMetalPixelsRequested
+                    let mode = c131StackingDescendantClipProbeRequested
+                        ? "fixed-chrome-samples" : c131FullPhysicalMetalPixelsRequested
                         ? "full-physical-surface" : "css-pixel-centers"
-                    log("SPINON_C131_METAL_PIXEL_CAPTURE_BEGIN run_id=\(c131CompactSurfaceMatrixRunID) mode=\(mode) viewport=300x100 samples=\(capture.expectedSampleCount) batch_size=64 batch_count=\(capture.expectedBatchCount)")
+                    let viewport = c131StackingDescendantClipProbeRequested
+                        ? "540x128" : "300x100"
+                    log("SPINON_C131_METAL_PIXEL_CAPTURE_BEGIN run_id=\(c131MetalCaptureRunID) mode=\(mode) viewport=\(viewport) samples=\(capture.expectedSampleCount) batch_size=64 batch_count=\(capture.expectedBatchCount)")
                 }
             } catch {
                 SpinonRunner.freeRuntimeGpuHost(handle)
-                log("SPINON_C131_METAL_PIXEL_CAPTURE_ERROR run_id=\(c131CompactSurfaceMatrixRunID) stage=artifact-init reason=\(error)")
+                log("SPINON_C131_METAL_PIXEL_CAPTURE_ERROR run_id=\(c131MetalCaptureRunID) stage=artifact-init reason=\(error)")
                 postStatus("실패 · C13.1 Metal pixel artifact를 준비하지 못했습니다")
                 return
             }
@@ -2533,7 +2763,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? imageAsyncReplacementProbeRequested || imageObjectFitPositionProbeRequested ? 224 : 80
             : c153HostDocumentTextPaintArgumentRequested ? 320
             : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested
-                ? 360 : c131CompactSurfaceMatrixRouteRequested
+                ? 360 : c131StackingDescendantClipProbeRequested
+                ? 540 : c131CompactSurfaceMatrixRouteRequested
             ? 300 : c131BorderStripProbeRequested
             ? 400 : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 400 : c131OverflowClipProbeRequested
             ? 320 : c122AbsoluteBlockProbeRequested
@@ -2544,7 +2775,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let viewportHeight: Float = imagePaintProbeRequested
             ? imageAsyncReplacementProbeRequested ? 88
             : imageObjectFitPositionProbeRequested ? 72 : 40
-            : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 240 : c131CompactSurfaceMatrixRouteRequested
+            : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 240 : c131StackingDescendantClipProbeRequested
+            ? 128 : c131CompactSurfaceMatrixRouteRequested
             ? 100 : c131BorderStripProbeRequested
             ? 160 : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 240 : c131OverflowClipProbeRequested
             ? 240 : c122AbsoluteBlockProbeRequested
@@ -2668,7 +2900,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
 #endif
         if result == nil {
-        if c131CompactSurfaceMatrixRouteRequested {
+        if c131StackingDescendantClipProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuC13_1StackingDescendantClipFixture(handle)
+        } else if c131CompactSurfaceMatrixRouteRequested {
             result = SpinonRunner.evalRuntimeGpuC13_1CompactSurfaceMatrixFixture(handle)
         } else if c131BorderStripProbeRequested {
             result = SpinonRunner.evalRuntimeGpuC13_1OverflowClipBorderFixture(handle)
@@ -2940,6 +3174,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 requestDraw()
             }
 #endif
+        } else if c131StackingDescendantClipProbeRequested {
+            let report = result ?? "status=-1 missing-report"
+            log("SPINON_C131_STACKING_CLIP_EVAL_RUN run_id=\(c131StackingDescendantClipRunID) \(runtimeStatusSummary(report))")
+            guard logC131StackingDescendantClipFixtureReport(report) else {
+                c131CompactHitIdentityGridStatusMessage = "실패 · C13.1 stacking clip frame·hit-test 검증 결과 불일치"
+                postStatus("실패 · C13.1 stacking clip frame·hit-test 검증 결과 불일치")
+                return
+            }
         } else if c131CompactSurfaceMatrixRouteRequested {
             let report = result ?? "status=-1 missing-report"
             if c131CompactHitIdentityGridProbeRequested {
@@ -4420,7 +4662,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         c131MetalPixelBatchRequested = false
         c131MetalPixelCaptureFailed = true
         let reason = String(describing: error)
-        log("SPINON_C131_METAL_PIXEL_CAPTURE_ERROR run_id=\(c131CompactSurfaceMatrixRunID) stage=\(stage) reason=\(reason)")
+        log("SPINON_C131_METAL_PIXEL_CAPTURE_ERROR run_id=\(c131MetalCaptureRunID) stage=\(stage) reason=\(reason)")
         postStatus("실패 · C13.1 Metal pixel 표면 대조 \(stage)")
         return .operationFailed("C13.1 Metal pixel capture \(stage): \(reason)")
     }
@@ -4716,7 +4958,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let format = rendererSurfaceFormat ?? ""
             stateLock.unlock()
             do {
-                guard viewportWidth == 300, viewportHeight == 100,
+                let expectedViewportWidth = c131StackingDescendantClipProbeRequested ? 540 : 300
+                let expectedViewportHeight = c131StackingDescendantClipProbeRequested ? 128 : 100
+                guard viewportWidth == Float(expectedViewportWidth),
+                      viewportHeight == Float(expectedViewportHeight),
                       drawableSize.width > 0, drawableSize.height > 0,
                       let width = Int(exactly: drawableSize.width),
                       let height = Int(exactly: drawableSize.height) else {
@@ -4751,7 +4996,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                     throw C0410LatestTaskLaneError.operationFailed(request)
                 }
                 c131MetalPixelBatchRequested = true
-                log("SPINON_C131_METAL_PIXEL_BATCH_REQUESTED run_id=\(c131CompactSurfaceMatrixRunID) batch=\(batch[0].index / 64) count=\(batch.count) generation=\(generation) drawable=\(width)x\(height)")
+                log("SPINON_C131_METAL_PIXEL_BATCH_REQUESTED run_id=\(c131MetalCaptureRunID) batch=\(batch[0].index / 64) count=\(batch.count) generation=\(generation) drawable=\(width)x\(height)")
             } catch {
                 throw failC131MetalPixelCapture(stage: "request", error: error)
             }
@@ -4984,6 +5229,30 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
             throw C0410LatestTaskLaneError.operationFailed(result ?? "WGPU draw 실패 보고 없음")
         }
+        if c131StackingDescendantClipProbeRequested,
+           c131StackingDescendantClipStaleRevisionProbeRequested,
+           !c131StackingClipStaleRevisionInjectionApplied,
+           let documentRevision = UInt64(c131StackingClipExpectedRevisionFields["document_revision"] ?? ""),
+           documentRevision < UInt64.max {
+            c131StackingClipExpectedRevisionFields["document_revision"] = "\(documentRevision + 1)"
+            c131StackingClipStaleRevisionInjectionApplied = true
+            log("SPINON_C131_STACKING_CLIP_NEGATIVE_CONTROL name=stale-document-revision injected=true")
+        }
+        if c131StackingDescendantClipProbeRequested,
+           c131StackingClipExpectedRevisionFields.count == 4,
+           let staleField = c131StackingClipRevisionMismatch(in: result ?? "") {
+            if c131StackingDescendantClipStaleRevisionProbeRequested {
+                log("SPINON_C131_STACKING_CLIP_NEGATIVE_CONTROL name=stale-document-revision status=\(staleField == "document_revision" ? "rejected" : "error") field=\(staleField) surface_readback=not-requested")
+            }
+            throw failC131MetalPixelCapture(
+                stage: "stale-revision",
+                error: C131MetalSurfacePixelCapture.CaptureError.invalidReportField(staleField)
+            )
+        }
+        if c131StackingDescendantClipProbeRequested,
+           c131StackingClipExpectedRevisionFields.count == 4 {
+            log("SPINON_C131_STACKING_CLIP_DRAW_IDENTITY run_id=\(c131StackingDescendantClipRunID) surface_generation=\(generation) \(c131StackingClipRuntimeRevisionSummary())")
+        }
         if c153GlyphPaintProbeRequested
             && (c153HostDocumentTextPaintArgumentRequested
                 ? (result?.contains("runtime_text_count=1") != true
@@ -5077,7 +5346,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
            !c131MetalPixelCaptureFailed,
            c131CompactHitIdentityGridStatusMessage?.hasPrefix("완료") == true {
             c131MetalCaptureBaselineDrawReady = true
-            log("SPINON_C131_METAL_PIXEL_BASELINE_DRAW_READY run_id=\(c131CompactSurfaceMatrixRunID) generation=\(generation) boxes=\(reportField(result ?? "", "boxes=")) surface_texture=\(reportField(result ?? "", "surface_texture="))")
+            log("SPINON_C131_METAL_PIXEL_BASELINE_DRAW_READY run_id=\(c131MetalCaptureRunID) generation=\(generation) boxes=\(reportField(result ?? "", "boxes=")) surface_texture=\(reportField(result ?? "", "surface_texture="))")
             requestDraw()
         }
         if let capture = c131MetalPixelCapture,
@@ -5112,12 +5381,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 c131MetalPixelBatchRequested = false
                 if progress.complete {
                     c131MetalPixelCaptureComplete = true
-                    log("SPINON_C131_METAL_PIXEL_CAPTURE_COMPLETE run_id=\(c131CompactSurfaceMatrixRunID) generation=\(generation) samples=\(progress.capturedSamples) batches=\(progress.capturedBatches) sample_file=\(progress.sampleFileName ?? "missing") manifest_file=\(progress.manifestFileName ?? "missing")")
-                    let mode = c131FullPhysicalMetalPixelsRequested
+                    log("SPINON_C131_METAL_PIXEL_CAPTURE_COMPLETE run_id=\(c131MetalCaptureRunID) generation=\(generation) samples=\(progress.capturedSamples) batches=\(progress.capturedBatches) sample_file=\(progress.sampleFileName ?? "missing") manifest_file=\(progress.manifestFileName ?? "missing")")
+                    let mode = c131StackingDescendantClipProbeRequested
+                        ? "고정 Chrome pixel 표본" : c131FullPhysicalMetalPixelsRequested
                         ? "전체 물리 pixel" : "CSS pixel center"
                     postStatus("완료 · C13.1 iOS Metal \(mode) \(progress.capturedSamples)/\(progress.totalSamples)")
                 } else {
-                    log("SPINON_C131_METAL_PIXEL_BATCH_COMPLETE run_id=\(c131CompactSurfaceMatrixRunID) generation=\(generation) samples=\(progress.capturedSamples)/\(progress.totalSamples) batches=\(progress.capturedBatches)/\(progress.totalBatches)")
+                    log("SPINON_C131_METAL_PIXEL_BATCH_COMPLETE run_id=\(c131MetalCaptureRunID) generation=\(generation) samples=\(progress.capturedSamples)/\(progress.totalSamples) batches=\(progress.capturedBatches)/\(progress.totalBatches)")
                     requestDraw()
                 }
             } catch {

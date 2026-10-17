@@ -1,6 +1,6 @@
 # C13.1 · 복합 stacking descendant의 overflow clip 경계
 
-**상태:** 구현 전 계획 · Chrome 155 사전 비교 고정 · fixture 전용 범위
+**상태:** 고정 fixture runtime 구현·검증 완료 · C13.1/C13 전체 미완료
 **상위:** [C13 overflow·scroll·클리핑 계획](c13-overflow-scroll-clipping.md) · [구현 상태 대장](../spec/STATUS.md)
 **내부 계약:** [0060 C13.1 overflow clip](../spec/internal/0060-c13-1-overflow-clip.md), `0.1.0-draft` 유지
 **Chrome 근거:** [고정 사전 비교와 화면](../spec/internal/evidence/c13-1-stacking-descendant-clip-plan-2026-10-18/README.md)
@@ -55,3 +55,11 @@ case별 절대 x는 visible `20+offset`, clip `190+offset`, hidden `360+offset`�
 변경 책임에 따라 formatter, C13.1·renderer·FFI/reference test, workspace test·Clippy, Android API 37 AVD와 iOS Simulator app build/run을 수행한다. 실행한 명령과 실패/수정 전후 근거를 기록한다. default/opt-in artifact 경계를 확인하고 agent-browser로 Chrome fixture를 수집·시각 확인한 뒤 그 agent-browser process를 종료한다. `spec/STATUS.md`는 C13.1 및 C13 상위 항목을 미완료로 유지한다.
 
 계획 변경 PR과 뒤이은 구현 PR은 서로 다른 관점의 적대적 검증을 20개씩 남긴다. 구현 PR에는 계획 자체의 20개 검토와 겹치지 않는 신규 구현 실패 관점 20개를 별도로 둔다.
+
+## 구현 결과 · 2026-10-18
+
+고정 HTML·Chrome oracle을 opt-in C13.1 runtime fixture에 연결했다. Rust는 13개 frame과 18개 hit target·색 표본을 pinned oracle에서 읽어 검증한다. Android/iOS 앱은 같은 fixture를 실제 WGPU surface에 제출하고 eval/draw의 layout generation·document revision·render-tree revision·style revision을 대조한 뒤 고정 표면 표본을 읽는다. Chrome oracle의 hit identity는 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 18/18, 양쪽 표면 색은 각 18/18 exact였다.
+
+서로 다른 Android app process 3개와 iOS Simulator process 3개에서 재실행했다. 양 플랫폼의 별도 stale-document-revision negative control은 revision을 의도적으로 어긋나게 해 표면 readback 전에 거부했다. Android/iOS route 충돌도 host 생성 전에 거부했다. 세부 run ID, PID, 이미지·원본 로그, 명령, hash, 빌드·테스트·artifact 경계와 초기 실행 오류의 원인은 [구현 실행 근거](../spec/internal/evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/README.md)에 기록했다. 기본 archive와 opt-in archive의 별도 근거는 [feature 경계](../spec/internal/evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/feature-boundary/README.md)다. 신규 구현 실패 관점 20개와 PR 변경 관점 30개는 각각 [구현 검토](../spec/internal/evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/implementation-review-20.md), [PR 변경 검토](../spec/internal/evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/pr-diff-review-30.md)에 남겼다.
+
+이 결과는 지정 fixture·고정 Chrome 155 oracle·Android software-renderer AVD·iOS Simulator Metal drawable에 한정한다. 양 플랫폼 표면 readback 및 iOS compositor 전 drawable 확인이며 compositor/scanout, 실기기·hardware GPU, WPT, DOM event, 일반 CSS stacking·overflow 지원을 확인하지 않았다. 이 구현 slice를 C13.1 또는 C13 완료 수에 포함하지 않는다.

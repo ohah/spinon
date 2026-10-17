@@ -4,6 +4,7 @@ use crate::runtime_gpu::fixtures::c13_1::{
     RUNTIME_CSS_C13_1_BORDER_FIXTURE_SOURCE,
     RUNTIME_CSS_C13_1_COMPACT_SURFACE_MATRIX_FIXTURE_SOURCE,
     RUNTIME_CSS_C13_1_OVERFLOW_CLIP_FIXTURE_SOURCE,
+    RUNTIME_CSS_C13_1_STACKING_DESCENDANT_CLIP_FIXTURE_SOURCE,
 };
 use std::ffi::c_char;
 use std::ptr;
@@ -71,6 +72,31 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_new_c13_1_compact_surface_matri
         return ptr::null_mut();
     }
     let (host, report) = match RuntimeGpuHost::new_c13_1_compact_surface_matrix_fixture() {
+        Ok(host) => host,
+        Err(error) => {
+            crate::write_report(output, output_capacity, &error);
+            return ptr::null_mut();
+        }
+    };
+    if !crate::write_report(output, output_capacity, &report) {
+        return ptr::null_mut();
+    }
+    Box::into_raw(Box::new(host)).cast::<SpinonRuntimeGpuHost>()
+}
+
+#[unsafe(no_mangle)]
+/// 복합 stacking descendant overflow clip scene의 고정 runtime fixture host를 만듭니다.
+///
+/// # Safety
+/// `output`은 `output_capacity` 바이트를 쓸 수 있어야 합니다.
+pub unsafe extern "C" fn spinon_runtime_gpu_host_new_c13_1_stacking_descendant_clip_fixture(
+    output: *mut c_char,
+    output_capacity: usize,
+) -> *mut SpinonRuntimeGpuHost {
+    if output.is_null() || output_capacity == 0 {
+        return ptr::null_mut();
+    }
+    let (host, report) = match RuntimeGpuHost::new_c13_1_stacking_descendant_clip_fixture() {
         Ok(host) => host,
         Err(error) => {
             crate::write_report(output, output_capacity, &error);
@@ -258,16 +284,46 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_eval_c13_1_compact_surface_matr
     }
 }
 
+#[unsafe(no_mangle)]
+/// 고정 C13.1 복합 stacking descendant scene을 V8·Stylo·Taffy·WGPU 경로에서 평가합니다.
+///
+/// # Safety
+/// `host`는 살아 있는 C13.1 stacking descendant clip fixture host여야 하며 호출 중 해제하거나
+/// 동시 호출하면 안 됩니다. 호출은 기다림 허용 background executor에서 해야 합니다. `output`은
+/// `output_capacity` 바이트를 쓸 수 있어야 합니다.
+pub unsafe extern "C" fn spinon_runtime_gpu_host_eval_c13_1_stacking_descendant_clip_fixture(
+    host: *mut SpinonRuntimeGpuHost,
+    layout_timeout_millis: u64,
+    output: *mut c_char,
+    output_capacity: usize,
+) -> i32 {
+    if output.is_null() || output_capacity == 0 {
+        return ERR_ARGUMENT;
+    }
+    let Some(host) = raw_host(host) else {
+        return ERR_ARGUMENT;
+    };
+    match host.eval(
+        RUNTIME_CSS_C13_1_STACKING_DESCENDANT_CLIP_FIXTURE_SOURCE,
+        layout_timeout_millis,
+    ) {
+        Ok(report) => write_host_status(0, report, output, output_capacity),
+        Err((status, report)) => write_host_status(status, report, output, output_capacity),
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::{
         spinon_runtime_gpu_host_eval_c13_1_compact_surface_matrix_fixture,
         spinon_runtime_gpu_host_eval_c13_1_overflow_clip_border_fixture,
         spinon_runtime_gpu_host_eval_c13_1_overflow_clip_fixture,
+        spinon_runtime_gpu_host_eval_c13_1_stacking_descendant_clip_fixture,
         spinon_runtime_gpu_host_new_c13_1_compact_surface_matrix_fixture,
         spinon_runtime_gpu_host_new_c13_1_compact_surface_pixel_readback_fixture,
         spinon_runtime_gpu_host_new_c13_1_overflow_clip_border_fixture,
         spinon_runtime_gpu_host_new_c13_1_overflow_clip_fixture,
+        spinon_runtime_gpu_host_new_c13_1_stacking_descendant_clip_fixture,
         spinon_runtime_gpu_host_request_c13_1_surface_pixels_for_test,
     };
     use std::ptr;
@@ -333,6 +389,15 @@ mod tests {
             }
             .is_null()
         );
+        assert!(
+            unsafe {
+                spinon_runtime_gpu_host_new_c13_1_stacking_descendant_clip_fixture(
+                    ptr::null_mut(),
+                    0,
+                )
+            }
+            .is_null()
+        );
         assert_eq!(
             unsafe {
                 spinon_runtime_gpu_host_eval_c13_1_compact_surface_matrix_fixture(
@@ -340,6 +405,28 @@ mod tests {
                     0,
                     output.as_mut_ptr(),
                     output.len(),
+                )
+            },
+            super::super::super::super::ERR_ARGUMENT
+        );
+        assert_eq!(
+            unsafe {
+                spinon_runtime_gpu_host_eval_c13_1_stacking_descendant_clip_fixture(
+                    ptr::null_mut(),
+                    0,
+                    output.as_mut_ptr(),
+                    output.len(),
+                )
+            },
+            super::super::super::super::ERR_ARGUMENT
+        );
+        assert_eq!(
+            unsafe {
+                spinon_runtime_gpu_host_eval_c13_1_stacking_descendant_clip_fixture(
+                    ptr::null_mut(),
+                    0,
+                    output.as_mut_ptr(),
+                    0,
                 )
             },
             super::super::super::super::ERR_ARGUMENT

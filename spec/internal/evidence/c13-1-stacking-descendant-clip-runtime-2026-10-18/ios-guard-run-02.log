@@ -1,0 +1,44 @@
+2026-10-18 03:26:59.297 Df SpinonBootstrap[80392:489fb13] SPINON_C131_STACKING_CLIP_HOST=session=ready owner_tid=76151578 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=62 session_startup_us=1423
+2026-10-18 03:26:59.298 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_METAL_PIXEL_CAPTURE_BEGIN run_id=44a26937455d46468551ff5dc939608c mode=fixed-chrome-samples viewport=540x128 samples=18 batch_size=64 batch_count=1
+2026-10-18 03:26:59.303 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_EVAL_RUN run_id=44a26937455d46468551ff5dc939608c status=0 layout=ready boxes=13 generation=1 document_revision=65 environment_revision=0
+2026-10-18 03:26:59.303 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_NODE_FRAME 0:node=1,x=0,y=0,width=540,height=128
+2026-10-18 03:26:59.303 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_NODE_FRAME 1:node=2,x=20,y=28,width=120,height=72
+2026-10-18 03:26:59.303 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_NODE_FRAME 2:node=3,x=76,y=40,width=80,height=48
+2026-10-18 03:26:59.303 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_NODE_FRAME 3:node=4,x=108,y=40,width=72,height=48
+2026-10-18 03:26:59.303 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_NODE_FRAME 4:node=5,x=148,y=40,width=16,height=48
+2026-10-18 03:26:59.303 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_NODE_FRAME 5:node=6,x=190,y=28,width=120,height=72
+2026-10-18 03:26:59.303 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_NODE_FRAME 6:node=7,x=246,y=40,width=80,height=48
+2026-10-18 03:26:59.303 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_NODE_FRAME 7:node=8,x=278,y=40,width=72,height=48
+2026-10-18 03:26:59.303 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_NODE_FRAME 8:node=9,x=318,y=40,width=16,height=48
+2026-10-18 03:26:59.303 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_NODE_FRAME 9:node=10,x=360,y=28,width=120,height=72
+2026-10-18 03:26:59.304 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_NODE_FRAME 10:node=11,x=416,y=40,width=80,height=48
+2026-10-18 03:26:59.304 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_NODE_FRAME 11:node=12,x=448,y=40,width=72,height=48
+2026-10-18 03:26:59.304 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_NODE_FRAME 12:node=13,x=488,y=40,width=16,height=48
+2026-10-18 03:26:59.305 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_HIT_TEST id=visible:parent-only x=44.5 y=52.5 element=visible-parent node_index=1 rgba=[240, 198, 116, 255] status=matched
+2026-10-18 03:26:59.305 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_HIT_TEST id=visible:target-inside x=122.5 y=52.5 element=visible-target node_index=3 rgba=[87, 166, 217, 255] status=matched
+2026-10-18 03:26:59.305 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_HIT_TEST id=visible:clip-edge-inside x=139.5 y=52.5 element=visible-target node_index=3 rgba=[87, 166, 217, 255] status=matched
+2026-10-18 03:26:59.305 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_HIT_TEST id=visible:clip-edge-outside x=140.5 y=52.5 element=visible-target node_index=3 rgba=[87, 166, 217, 255] status=matched
+2026-10-18 03:26:59.305 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_HIT_TEST id=visible:escape-before-overlay x=144.5 y=52.5 element=visible-target node_index=3 rgba=[87, 166, 217, 255] status=matched
+2026-10-18 03:26:59.305 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_HIT_TEST id=visible:stacking-overlay x=156.5 y=52.5 element=visible-overlay node_index=4 rgba=[228, 81, 79, 255] status=matched
+2026-10-18 03:26:59.305 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_HIT_TEST id=clip:parent-only x=214.5 y=52.5 element=clip-parent node_index=5 rgba=[240, 198, 116, 255] status=matched
+2026-10-18 03:26:59.305 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_HIT_TEST id=clip:target-inside x=292.5 y=52.5 element=clip-target node_index=7 rgba=[87, 166, 217, 255] status=matched
+2026-10-18 03:26:59.305 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_HIT_TEST id=clip:clip-edge-inside x=309.5 y=52.5 element=clip-target node_index=7 rgba=[87, 166, 217, 255] status=matched
+2026-10-18 03:26:59.305 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_HIT_TEST id=clip:clip-edge-outside x=310.5 y=52.5 element=root node_index=0 rgba=[240, 244, 247, 255] status=matched
+2026-10-18 03:26:59.305 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_HIT_TEST id=clip:escape-before-overlay x=314.5 y=52.5 element=root node_index=0 rgba=[240, 244, 247, 255] status=matched
+2026-10-18 03:26:59.305 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_HIT_TEST id=clip:stacking-overlay x=326.5 y=52.5 element=clip-overlay node_index=8 rgba=[228, 81, 79, 255] status=matched
+2026-10-18 03:26:59.305 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_HIT_TEST id=hidden:parent-only x=384.5 y=52.5 element=hidden-parent node_index=9 rgba=[240, 198, 116, 255] status=matched
+2026-10-18 03:26:59.305 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_HIT_TEST id=hidden:target-inside x=462.5 y=52.5 element=hidden-target node_index=11 rgba=[87, 166, 217, 255] status=matched
+2026-10-18 03:26:59.305 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_HIT_TEST id=hidden:clip-edge-inside x=479.5 y=52.5 element=hidden-target node_index=11 rgba=[87, 166, 217, 255] status=matched
+2026-10-18 03:26:59.305 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_HIT_TEST id=hidden:clip-edge-outside x=480.5 y=52.5 element=root node_index=0 rgba=[240, 244, 247, 255] status=matched
+2026-10-18 03:26:59.305 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_HIT_TEST id=hidden:escape-before-overlay x=484.5 y=52.5 element=root node_index=0 rgba=[240, 244, 247, 255] status=matched
+2026-10-18 03:26:59.305 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_HIT_TEST id=hidden:stacking-overlay x=496.5 y=52.5 element=hidden-overlay node_index=12 rgba=[228, 81, 79, 255] status=matched
+2026-10-18 03:26:59.305 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_RUNTIME_IDENTITY run_id=44a26937455d46468551ff5dc939608c source=evaluation generation=1 document_revision=65 render_tree_revision=13 style_revision=0
+2026-10-18 03:26:59.306 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_HIT_TEST_SUMMARY status=ok run_id=44a26937455d46468551ff5dc939608c generation=1 matched=18/18 unique_ids=18 unique_pixels=18
+2026-10-18 03:26:59.306 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_FIXTURE_SUMMARY status=ok boxes=13 frames=13 hit_samples=18 hit_matches=18 viewport=540x128
+2026-10-18 03:26:59.323 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C0410_DRAW generation=1 status=0 boxes=13 surface_texture=1620x384
+2026-10-18 03:26:59.323 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_DRAW_IDENTITY run_id=44a26937455d46468551ff5dc939608c surface_generation=1 generation=1 document_revision=65 render_tree_revision=13 style_revision=0
+2026-10-18 03:26:59.323 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_METAL_PIXEL_BASELINE_DRAW_READY run_id=44a26937455d46468551ff5dc939608c generation=1 boxes=13 surface_texture=1620x384
+2026-10-18 03:26:59.323 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_METAL_PIXEL_BATCH_REQUESTED run_id=44a26937455d46468551ff5dc939608c batch=0 count=18 generation=1 drawable=1620x384
+2026-10-18 03:26:59.333 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C0410_DRAW generation=1 status=0 boxes=13 surface_texture=1620x384
+2026-10-18 03:26:59.333 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_STACKING_CLIP_DRAW_IDENTITY run_id=44a26937455d46468551ff5dc939608c surface_generation=1 generation=1 document_revision=65 render_tree_revision=13 style_revision=0
+2026-10-18 03:26:59.336 Df SpinonBootstrap[80392:489fb13] (Foundation) SPINON_C131_METAL_PIXEL_CAPTURE_COMPLETE run_id=44a26937455d46468551ff5dc939608c generation=1 samples=18 batches=1 sample_file=c131-metal-pixel-centers-44a26937455d46468551ff5dc939608c.jsonl manifest_file=c131-metal-pixel-centers-44a26937455d46468551ff5dc939608c.manifest.json
