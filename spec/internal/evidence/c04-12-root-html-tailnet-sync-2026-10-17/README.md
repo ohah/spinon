@@ -24,6 +24,8 @@
 
 Agent Browser 0.31.1에서 Tailnet 로드맵의 C04.12 미완료 상태, 계획·PR #268·PR #269, 내부 계약과 비교 근거 링크를 확인했다. 공식 counter는 `205개 표시 · 공식 완료 71/205`였고 STATUS 동기화 문구는 상위 78개, 세부 ID 125개, ID 없는 하위 2개를 표시했다. 계획, 내부 계약, evidence README도 각각 열렸으며 README의 Chrome oracle 이미지 2장이 정상 로드됐다.
 
+PR #271 본문에 붙인 roadmap과 counter 캡처도 Agent Browser에서 열어 각각 1280×633 크기로 로드되는 것을 확인했다. PR 본문은 공식 `71/205`, C04.12 미완료, 이번 변경의 남은 범위를 표시한다. 확인이 끝난 전용 세션은 닫았고 `session info`가 `active: false`, `pid: null`을 반환했으며 브라우저 프로세스 PID 72211도 더는 존재하지 않았다.
+
 로드맵 캡처는 C04.12 범위와 링크를 보여주고 counter 캡처는 공식 71/205 집계를 보여준다. 이들은 Tailnet 문서 화면 근거이며 앱 실행 화면이나 C04.12 기능 완료 증거가 아니다.
 
 ![Tailnet C04.12 roadmap](tailnet-roadmap-agent-browser.png)
@@ -41,4 +43,5 @@ Agent Browser 0.31.1에서 Tailnet 로드맵의 C04.12 미완료 상태, 계획�
 ## 관련 근거
 
 - [Rspress 선택 빌드 결과](render-build-result.md), [빌드 로그](selected-build.log), [원본 로그 gzip](selected-build.log.raw.gz)
-- [브라우저 검증](browser-verification.json), [최종 manifest](manifest.json), [counter 정정 백업](counter-correction-backup-verification.json)
+- [브라우저 검증](browser-verification.json), [PR 변경 검토 30항목](pr-delta-review-30.md), [SHA-256 목록](SHA256SUMS)
+- [최종 manifest](manifest.json), [counter 정정 백업](counter-correction-backup-verification.json)
