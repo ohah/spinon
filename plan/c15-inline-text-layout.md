@@ -103,6 +103,10 @@ HostDocument의 실제 text node와 inline element를 CSS inline formatting cont
 
 이 slice의 계획은 구현 전 독립 실패 관점 20개로 검토한다. [이 slice 계획 검토 20개](../spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/plan-review-20.md). 구현 뒤에는 계획 표를 재사용하지 않고 실제 코드·스크롤 snapshot·GPU 표면을 대상으로 새로운 구현 실패 관점 20개를 검토한다. C15.3의 다른 단계 및 상위 C15/C16 상태는 그대로 미완료다.
 
+#### C15.3 구현 결과 · non-zero scroll ancestor glyph transform
+
+`RuntimeRenderText`는 불변 base origin에서 ancestor offset 합을 매 snapshot마다 빼고, base text clip과 현재 owner paint clip을 교차한다. 고정 fixture에서 horizontal `3→6→0`, vertical `18→7→0`, nested `4+5→2+3→0+0` 경로를 연결했다. 동일 CSS 좌표의 opaque Ahem sample은 Android API 37 ARM64 AVD PixelCopy와 iPhone 17 Pro/iOS 26.2 Simulator Metal drawable에서 각각 `6/6` exact였다. [내부 계약 0074](../spec/internal/0074-c15-3-runtime-glyph-scroll-transform.md) · [구현·Simulator 실행 근거와 화면](../spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/README.md) · [독립 구현 실패 관점 20개](../spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/implementation-review-20.md) · [PR 변경 실패 관점 20개](../spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/pr-delta-review-20.md). 이 고정 fixture 결과는 일반 DOM text admission이나 실기기 동작을 뜻하지 않으며 C15.3과 상위 C15는 미완료다.
+
 연결할 upstream WPT revision은 df642c4142354ffb5a0af6fa41610677f6321092다: css/css-text/line-break/line-break-strict-015a.xht, css/css-text/line-break/line-break-shaping-001.html, css/css-fonts/font-variant-ligatures-01.html, css/css-text/bidi/bidi-lines-001.html. 이 경로들은 구현 시 실행할 후보일 뿐 이 계획 amendment에서는 실행하지 않았고, Chrome oracle도 WPT/Spinon pass가 아니다. [C15.3 계획 검토 20개](../spec/internal/evidence/c15-3-unicode-shaping-plan-review-20-2026-10-17.md)
 
 ## 고정 사전 비교 모델

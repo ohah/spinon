@@ -1,11 +1,15 @@
-use std::{collections::BTreeSet, sync::Arc};
+use std::{
+    collections::{BTreeMap, BTreeSet},
+    sync::Arc,
+};
 
 use spinon_core::{HostDocumentSnapshot, NodeId, ScrollStateRevision};
 
 #[cfg(feature = "c13-3-gesture-fixture-test")]
 use super::scroll::RuntimeScrollInputPolicy;
 use super::scroll::{
-    RuntimeScrollClipLayer, RuntimeScrollContainer, RuntimeScrollRenderMetadata, apply_scroll_state,
+    RuntimeScrollClipLayer, RuntimeScrollContainer, RuntimeScrollRenderMetadata,
+    apply_scroll_state, scroll_offset_sum,
 };
 use super::{
     CssSize, RuntimePaint, RuntimePaintCommand, RuntimeRenderBox, RuntimeRenderError,
@@ -125,17 +129,27 @@ impl RuntimeRenderSnapshot {
                 return Err(RuntimeRenderError::DuplicateScrollOwner(container.owner()));
             }
         }
+        let scroll_offsets = scroll_containers
+            .iter()
+            .map(|container| {
+                (
+                    container.owner(),
+                    (container.offset_x_css_px(), container.offset_y_css_px()),
+                )
+            })
+            .collect::<BTreeMap<_, _>>();
+        let boxes = apply_scroll_state(&base_boxes, &scroll_containers, &scroll_metadata)?;
         validate_texts_and_apply_owner_clips(
             &mut texts,
             key,
-            &base_boxes,
+            &boxes,
             &scroll_containers,
             &scroll_metadata,
+            &scroll_offsets,
         )?;
         let base_boxes: Arc<[RuntimeRenderBox]> = base_boxes.into();
         let scroll_containers: Arc<[RuntimeScrollContainer]> = scroll_containers.into();
         let scroll_metadata: Arc<[RuntimeScrollRenderMetadata]> = scroll_metadata.into();
-        let boxes = apply_scroll_state(&base_boxes, &scroll_containers, &scroll_metadata)?;
         Ok(Self {
             key,
             viewport_css_px,
@@ -456,6 +470,7 @@ fn validate_texts_and_apply_owner_clips(
     boxes: &[RuntimeRenderBox],
     scroll_containers: &[RuntimeScrollContainer],
     scroll_metadata: &[RuntimeScrollRenderMetadata],
+    scroll_offsets: &BTreeMap<NodeId, (f32, f32)>,
 ) -> Result<(), RuntimeRenderError> {
     let mut seen = BTreeSet::new();
     for text in texts {
@@ -477,18 +492,9 @@ fn validate_texts_and_apply_owner_clips(
         {
             return Err(RuntimeRenderError::UnsupportedTextScroll(text.node_id()));
         }
-        for ancestor in scroll_metadata[index].scroll_ancestors() {
-            let Some(container) = scroll_containers
-                .iter()
-                .find(|container| container.owner() == *ancestor)
-            else {
-                return Err(RuntimeRenderError::InvalidScrollState);
-            };
-            if container.offset_x_css_px() != 0.0 || container.offset_y_css_px() != 0.0 {
-                return Err(RuntimeRenderError::UnsupportedTextScroll(text.node_id()));
-            }
-        }
-        text.intersect_owner_clip(boxes[index].clip_css_px());
+        let (scroll_x_css_px, scroll_y_css_px) =
+            scroll_offset_sum(scroll_metadata[index].scroll_ancestors(), scroll_offsets)?;
+        text.apply_scroll_transform(scroll_x_css_px, scroll_y_css_px, boxes[index].clip_css_px())?;
     }
     Ok(())
 }

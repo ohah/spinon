@@ -1726,7 +1726,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (c153GlyphPaintProbeRequested
                 && (!result.startsWith("status=0 ")
                         || !result.contains("c15_3_text=attached")
-                        || !result.contains("glyphs="))) {
+                        || !result.contains("glyphs=")
+                        || !"3>6>0;18>7>0;4+5>2+3>0+0".equals(
+                                reportField(result, "scroll_sequences="))
+                        || !"horizontal_owner;vertical_owner;nested_owner".equals(
+                                reportField(result, "scroll_hit_test=")))) {
             Log.e(TAG, "SPINON_C153_EVAL_ERROR rejected=true reason=text-command-not-published report="
                     + result);
             postStatus("실패 · C15.3 glyph paint command가 runtime snapshot에 제출되지 않았습니다");
@@ -4220,10 +4224,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return;
         }
         if (c153GlyphPaintProbeRequested
-                && (!result.contains("runtime_text_count=3")
-                        || !result.contains("glyph_batch_draw_count=3"))) {
+                && (!result.contains("runtime_text_count=6")
+                        || !result.contains("glyph_batch_draw_count=6"))) {
             Log.e(TAG, "SPINON_C153_DRAW_ASSERTIONS failed=true " + result);
-            postStatus("실패 · C15.3 Noto/Ahem glyph batch 3개가 제출되지 않았습니다");
+            postStatus("실패 · C15.3 Noto/Ahem glyph batch 6개가 제출되지 않았습니다");
             return;
         }
         if (c153GlyphPaintProbeRequested) {
@@ -4370,6 +4374,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     boolean visibleInk = false;
                     boolean hiddenInsideInk = false;
                     boolean hiddenOutsideBackground = false;
+                    boolean horizontalScrollInk = false;
+                    boolean verticalScrollInk = false;
+                    boolean nestedScrollInk = false;
                     int observed = 0;
                     for (SurfaceViewPixelCapture.Pixel pixel : result.pixels) {
                         boolean background = pixel.red == 247 && pixel.green == 249
@@ -4382,6 +4389,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             hiddenInsideInk = expectedInk;
                         } else if ("hidden-outside-parent".equals(pixel.id)) {
                             hiddenOutsideBackground = background;
+                        } else if ("horizontal-scroll-glyph".equals(pixel.id)) {
+                            horizontalScrollInk = expectedInk;
+                        } else if ("vertical-scroll-glyph".equals(pixel.id)) {
+                            verticalScrollInk = expectedInk;
+                        } else if ("nested-scroll-glyph".equals(pixel.id)) {
+                            nestedScrollInk = expectedInk;
                         }
                         observed++;
                         Log.i(TAG, "SPINON_C153_PIXELCOPY_SAMPLE run_id=" + runId
@@ -4391,15 +4404,19 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                                 + background + " expected_ink=" + expectedInk);
                     }
                     boolean outsideParent = samples.get(2).xCssPx >= 29.0;
-                    boolean passed = observed == 3 && visibleInk && hiddenInsideInk
-                            && hiddenOutsideBackground && outsideParent;
+                    boolean passed = observed == 6 && visibleInk && hiddenInsideInk
+                            && hiddenOutsideBackground && horizontalScrollInk
+                            && verticalScrollInk && nestedScrollInk && outsideParent;
                     Log.i(TAG, "SPINON_C153_PIXELCOPY_SUMMARY status="
                             + (passed ? "matched" : "mismatch") + " run_id=" + runId
                             + " pid=" + android.os.Process.myPid() + " generation=" + generation
-                            + " viewport=360x240 expected_samples=3 observed_samples=" + observed
+                            + " viewport=360x240 expected_samples=6 observed_samples=" + observed
                             + " visible_outside_ink=" + visibleInk
                             + " hidden_inside_ink=" + hiddenInsideInk
                             + " hidden_outside_background=" + hiddenOutsideBackground
+                            + " horizontal_scroll_ink=" + horizontalScrollInk
+                            + " vertical_scroll_ink=" + verticalScrollInk
+                            + " nested_scroll_ink=" + nestedScrollInk
                             + " outside_parent=" + outsideParent + " png="
                             + output.getAbsolutePath() + " sha256=" + result.sha256);
                     if (!passed) postStatus("실패 · C15.3 실제 surface overflow clip 표본 불일치");
@@ -4407,57 +4424,70 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static List<SurfaceViewPixelCapture.Sample> parseC153SurfaceSamples(String report) {
-        String marker = "overflow_samples_css_px=";
-        int start = report.indexOf(marker);
-        if (start < 0) return null;
-        start += marker.length();
-        int end = report.indexOf(' ', start);
-        String encoded = end < 0 ? report.substring(start) : report.substring(start, end);
-        int[] visible = null;
-        int[] hiddenInside = null;
-        int[] hiddenOutside = null;
-        for (String entry : encoded.split(";")) {
-            String[] pair = entry.split(":", 2);
-            if (pair.length != 2) return null;
-            String[] coordinates = pair[1].split(",", 2);
-            if (coordinates.length != 2) return null;
-            final int x;
-            final int y;
-            try {
-                x = Integer.parseInt(coordinates[0]);
-                y = Integer.parseInt(coordinates[1]);
-            } catch (NumberFormatException error) {
-                return null;
-            }
-            if (x < 0 || x >= 360 || y < 0 || y >= 240) return null;
-            int[] point = new int[] {x, y};
-            if ("visible".equals(pair[0])) {
-                if (visible != null) return null;
-                visible = point;
-            } else if ("hidden_inside".equals(pair[0])) {
-                if (hiddenInside != null) return null;
-                hiddenInside = point;
-            } else if ("hidden_outside".equals(pair[0])) {
-                if (hiddenOutside != null) return null;
-                hiddenOutside = point;
-            } else {
-                return null;
+        Map<String, int[]> points = new HashMap<>();
+        Set<String> coordinatesSeen = new HashSet<>();
+        String[] encodedFields = new String[] {
+                reportField(report, "overflow_samples_css_px="),
+                reportField(report, "scroll_samples_css_px=")
+        };
+        Set<String> acceptedNames = Set.of(
+                "visible", "hidden_inside", "hidden_outside",
+                "horizontal", "vertical", "nested");
+        for (String encoded : encodedFields) {
+            if (encoded.isEmpty()) return null;
+            for (String entry : encoded.split(";")) {
+                String[] pair = entry.split(":", 2);
+                if (pair.length != 2 || !acceptedNames.contains(pair[0])) return null;
+                String[] coordinates = pair[1].split(",", 2);
+                if (coordinates.length != 2) return null;
+                final int x;
+                final int y;
+                try {
+                    x = Integer.parseInt(coordinates[0]);
+                    y = Integer.parseInt(coordinates[1]);
+                } catch (NumberFormatException error) {
+                    return null;
+                }
+                String coordinate = x + ":" + y;
+                if (x < 0 || x >= 360 || y < 0 || y >= 240
+                        || !coordinatesSeen.add(coordinate)
+                        || points.put(pair[0], new int[] {x, y}) != null) return null;
             }
         }
+        int[] visible = points.get("visible");
+        int[] hiddenInside = points.get("hidden_inside");
+        int[] hiddenOutside = points.get("hidden_outside");
+        int[] horizontal = points.get("horizontal");
+        int[] vertical = points.get("vertical");
+        int[] nested = points.get("nested");
         if (visible == null || hiddenInside == null || hiddenOutside == null
+                || horizontal == null || vertical == null || nested == null
+                || points.size() != 6
                 || visible[0] != hiddenOutside[0] || visible[1] + 40 != hiddenOutside[1]
                 || visible[0] < 29 || visible[1] < 81 || visible[1] >= 91
                 || hiddenInside[0] < 13 || hiddenInside[0] >= 28
                 || hiddenInside[1] < 121 || hiddenInside[1] >= 131
                 || hiddenOutside[0] < 29 || hiddenOutside[1] < 121
-                || hiddenOutside[1] >= 131) return null;
+                || hiddenOutside[1] >= 131
+                || horizontal[0] < 41 || horizontal[0] >= 54
+                || horizontal[1] < 161 || horizontal[1] >= 181
+                || vertical[0] < 101 || vertical[0] >= 129
+                || vertical[1] < 161 || vertical[1] >= 174
+                || nested[0] < 257 || nested[0] >= 276
+                || nested[1] < 162 || nested[1] >= 181) return null;
         return List.of(
                 new SurfaceViewPixelCapture.Sample(
                         "visible-outside-parent", visible[0], visible[1]),
                 new SurfaceViewPixelCapture.Sample(
                         "hidden-inside-clip", hiddenInside[0], hiddenInside[1]),
                 new SurfaceViewPixelCapture.Sample(
-                        "hidden-outside-parent", hiddenOutside[0], hiddenOutside[1]));
+                        "hidden-outside-parent", hiddenOutside[0], hiddenOutside[1]),
+                new SurfaceViewPixelCapture.Sample(
+                        "horizontal-scroll-glyph", horizontal[0], horizontal[1]),
+                new SurfaceViewPixelCapture.Sample(
+                        "vertical-scroll-glyph", vertical[0], vertical[1]),
+                new SurfaceViewPixelCapture.Sample(
+                        "nested-scroll-glyph", nested[0], nested[1]));
     }
 
     // C19.2 캡처 어댑터는 fixture-test source set에만 있으므로 기본 앱에서 직접 참조하지 않는다.

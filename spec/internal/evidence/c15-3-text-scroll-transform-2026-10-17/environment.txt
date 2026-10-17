@@ -1,0 +1,23 @@
+Capture date: 2026-10-17 (Asia/Seoul)
+Repository base: 9a89f7e2ec2622911bd60f8fb995dd79f73106ce
+V8 source revision: 7b50b62cb18f28617959e8452e2cd18195b38bcf
+Build features: SPINON_ENABLE_C04_RUNTIME_GPU=1 SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST=1
+SPINON_V8_DIR: /Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8
+
+Android
+- Target: Android API 37 ARM64 AVD, emulator serial emulator-5554
+- ABI: arm64-v8a
+- Emulator display: 1080x2400; rendered surface: 945x630; CSS viewport: 360x240
+- Graphics backend: ANGLE/SwiftShader software path
+- Build: mise exec -- env SPINON_V8_DIR=/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8 SPINON_ENABLE_C04_RUNTIME_GPU=1 SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST=1 bun run build:android
+- Capture: 2026-10-17 15:58 KST; PixelCopy 6/6 exact
+
+iOS
+- Target: iPhone 17 Pro Simulator, UUID ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D
+- Runtime: iOS 26.2; architecture arm64 simulator
+- CSS viewport: 360x240; Metal drawable: 1080x720; format Bgra8Unorm
+- Readback point: Metal drawable before compositor submission
+- Build: mise exec -- env SPINON_V8_DIR=/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8 SPINON_ENABLE_C04_RUNTIME_GPU=1 SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST=1 bun run build:ios-sim
+- Capture: 2026-10-17 15:59 KST; Metal drawable 6/6 exact
+
+No physical Android or iOS device was connected or used.

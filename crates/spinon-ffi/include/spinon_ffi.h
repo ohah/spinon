@@ -293,7 +293,7 @@ SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c15_3_glyph_paint_fixture(
 int32_t spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
-/* 다음 C15.3 draw report에 CSS 고정 glyph 표본 3점을 drawable pixel로 예약합니다. */
+/* 다음 C15.3 draw report에 overflow/scroll CSS glyph 표본 6점을 drawable pixel로 예약합니다. */
 int32_t spinon_runtime_gpu_host_request_c15_3_surface_pixels_for_test(
     SpinonRuntimeGpuHost *host, const uint32_t *sample_xy, size_t sample_count,
     char *output, size_t output_capacity);
