@@ -81,3 +81,9 @@ Android 17/API 37.2 ARM64 AVD(`emulator-5562`, 1080×1920, 420 dpi, 60 Hz)에서
 exact match된 60개 record 모두 `presentTimeNanos == PRESENTATION_TIME_UNKNOWN`이었다. 따라서 이번 결과는 이 on-demand AVD fixture의 **frame-token/revision 연결만** 확인한다. event-to-present 지연, positive actual-present timestamp, 광학 표시 시각은 측정하지 않았다. WGPU AVD 경로는 Goldfish GFXStream/llvmpipe, GLES 경로는 ANGLE/Vulkan SwiftShader이므로 renderer 성능 비교가 아니다. API 36 fallback fixture는 `present_signal_api_unavailable`로 join을 닫고 기존 WGPU draw를 실행했다.
 
 stale/invalid VSync token 자체 주입, surface generation 전환 중 pending `VsyncCallback`, 연속 렌더링, exception/linkage failure 주입은 아직 실행하지 않았다. 계획의 해당 경계는 미완료로 남기며 `spec/STATUS.md` R05.3/R05를 완료 처리하지 않는다. 원시 block log, API 36 fallback log와 두 renderer의 화면 캡처는 [실행 근거](../spec/internal/evidence/r05-frame-timeline-join-2026-10-08.md)에 보존했다.
+
+### API 37.2 AVD 재생성 재실행 · 2026-10-18
+
+구버전 Command-line Tools가 만든 `target=android-0` AVD는 HVF를 사용하지 못하고 ADB `offline`에 머물렀다. Command-line Tools 23으로 AVD를 다시 만들자 `target=android-37.2`, `-enable-hvf`, `sys.boot_completed=1`이 확인됐다. corrected AVD에 고정 V8 debug APK를 설치해 WGPU와 GLES 각각 독립 3×10 scored 입력과 drain tap을 다시 실행했다.
+
+점수 표본 WGPU 30/30, GLES 30/30은 모두 JankData VSync ID exact match였지만 `presentTimeNanos`는 60/60 `PRESENTATION_TIME_UNKNOWN` (`-1`)이었다. Positive actual-present 값은 0건이고 event-to-present latency는 산출하지 않았다. AVD 속성 `service.sf.present_timestamp=0`은 함께 기록했으나 이것만으로 원인을 단정하지 않는다. 자세한 기기·빌드 hash, raw log, GLES 화면 캡처 및 30개 적대적 검토는 [2026-10-18 재실행 근거](../spec/internal/evidence/r05-present-time-api37-2-2026-10-18/README.md)와 [PR 검토 기록](../spec/internal/evidence/r05-present-time-api37-2-2026-10-18/pr-hostile-review.md)에 있다. R05.3/R05는 미완료로 유지한다.
