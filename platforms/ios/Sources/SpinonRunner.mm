@@ -393,6 +393,26 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
   return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(session));
 }
 
++ (uint64_t)createRuntimeSessionWithRootHTML:(NSString *)source {
+  NSData *sourceData = [source dataUsingEncoding:NSUTF8StringEncoding];
+  if (sourceData == nil || sourceData.length > 1'048'576) {
+    os_log_error(OS_LOG_DEFAULT,
+                 "SPINON_ROOT_HTML_SESSION_ERROR reason=invalid-or-oversized-source");
+    return 0;
+  }
+  std::array<char, 512> output{};
+  SpinonRuntimeSession *session = spinon_runtime_session_new_with_root_html(
+      static_cast<const char *>(sourceData.bytes), sourceData.length,
+      output.data(), output.size());
+  if (session == nullptr) {
+    os_log_error(OS_LOG_DEFAULT, "SPINON_ROOT_HTML_SESSION_ERROR=%{public}s",
+                 output.data());
+    return 0;
+  }
+  os_log(OS_LOG_DEFAULT, "SPINON_ROOT_HTML_SESSION=%{public}s", output.data());
+  return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(session));
+}
+
 #if defined(SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST) && \
     SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST
 + (NSString *)runC0412RootHtmlAccessorsFixture {

@@ -9,7 +9,7 @@
     "docs:dev": "bun run --filter @spinon/docs docs:dev",
     "docs:build": "bun run --filter @spinon/docs docs:build",
     "docs:preview": "bun run --filter @spinon/docs docs:preview",
-    "bundle:bootstrap": "mkdir -p build/spinon/bootstrap && bun build examples/bootstrap/app.js --target=browser --outfile build/spinon/bootstrap/app.js",
+    "bundle:bootstrap": "mkdir -p build/spinon/bootstrap && bun build examples/bootstrap/app.js --target=browser --outfile build/spinon/bootstrap/app.js && bun build examples/bootstrap/root-app.js --target=browser --outfile build/spinon/bootstrap/root-app.js && cp examples/bootstrap/index.html build/spinon/bootstrap/index.html",
     "test:js": "cd examples/bootstrap && bun test",
     "test:css-reference": "node --test tools/css-reference/*.test.mjs",
     "test:css-c13-1-surface-pixel-centers": "node --test tools/css-reference/compare-c13-1-surface-pixel-centers.test.mjs",

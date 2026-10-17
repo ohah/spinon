@@ -4,7 +4,7 @@
 
 필요한 도구는 Xcode, iOS Simulator SDK, 루트 `mise.toml`에 고정한 Rust·Bun입니다. Xcode의 빌드 스크립트가 Rust 정적 라이브러리와 V8 어댑터를 준비하고 번들을 앱 리소스에 복사합니다. V8 checkout 경로를 바꾸려면 `SPINON_V8_DIR`을 지정하며, 시뮬레이터 빌드가 컴파일·링크 양쪽에 같은 경로를 전달합니다. V8 커밋과 시뮬레이터·기기별 GN 산출물은 [V8 빌드 안내](../../native/v8/VERSION.md)를 따릅니다.
 
-루트에서 `mise exec -- bun run build:ios-sim`으로 시뮬레이터 앱을 빌드합니다. 기본 실행 로그의 `SPINON_BOOTSTRAP_EXECUTION is_main_thread=false`와 `SPINON_BOOTSTRAP_RESULT=nodes=2 last_node=8 tag=text text=이벤트:7`로 백그라운드 JS 부팅을 확인할 수 있습니다.
+루트에서 `mise exec -- bun run build:ios-sim`으로 시뮬레이터 앱을 빌드합니다. 기본 실행 로그의 `SPINON_BOOTSTRAP_RESULT=...`와 `SPINON_ROOT_HTML_BOOT status=pass source=index.html`로 기존 JS smoke 및 루트 HTML document session의 초기화·조회·속성 변경을 확인할 수 있습니다. `index.html`의 viewport/color-scheme metadata는 현재 DOM 보존만 확인하며 앱 환경이나 화면에는 적용되지 않습니다.
 
 ## R05 callback·display tick 진단
 

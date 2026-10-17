@@ -98,6 +98,7 @@ public final class MainActivity extends Activity {
     private static native byte[] nativeRun(byte[] sourceUtf8, float width, float height,
                                            float density, boolean runR10);
     private static native long nativeSessionCreate();
+    private static native long nativeSessionCreateWithRootHtml(byte[] sourceUtf8);
     private static native byte[] nativeSessionEval(long session, byte[] sourceUtf8);
     private static native byte[] nativeSessionDispatch(long session, int nodeId);
     private static native byte[] nativeSessionPriorityProbe();
@@ -136,6 +137,8 @@ public final class MainActivity extends Activity {
     private C0410RuntimeGpuDemo runtimeGpuDemo;
     private boolean gpuWasPaused;
     private volatile long runtimeSession;
+    private final Object rootDocumentSessionLock = new Object();
+    private long rootDocumentSession;
     private volatile boolean activityClosing;
     private TextView runtimeLog;
     private ScrollView runtimeScroll;
@@ -669,6 +672,16 @@ public final class MainActivity extends Activity {
 
         try {
             String source = readAsset("app.js");
+            String rootHtml;
+            String rootAppSource;
+            try {
+                rootHtml = readAsset("index.html");
+                rootAppSource = readAsset("root-app.js");
+            } catch (IOException error) {
+                Log.e(TAG, "SPINON_ROOT_HTML_ASSET_ERROR", error);
+                finish();
+                return;
+            }
             DisplayMetrics metrics = getResources().getDisplayMetrics();
             lifecycleGcFixtureRequested = getIntent().getBooleanExtra("spinon_dom_gc", false);
             runLifecycleGcAutomatically = lifecycleGcFixtureRequested
@@ -694,6 +707,7 @@ public final class MainActivity extends Activity {
                         ? "native bridge returned no result"
                         : new String(outputUtf8, StandardCharsets.UTF_8);
                 Log.i(TAG, "SPINON_BOOTSTRAP_RESULT=" + output);
+                startRootDocumentSession(rootHtml, rootAppSource);
                 if (runR10 && !activityClosing) {
                     runOnUiThread(() -> {
                         if (!activityClosing) showR10Report(r10Report(output), density);
@@ -705,6 +719,32 @@ public final class MainActivity extends Activity {
         } catch (RuntimeException error) {
             Log.e(TAG, "SPINON_BOOTSTRAP_RUNTIME_ERROR", error);
         }
+    }
+
+    private void startRootDocumentSession(String rootHtml, String rootAppSource) {
+        long session = nativeSessionCreateWithRootHtml(rootHtml.getBytes(StandardCharsets.UTF_8));
+        if (session == 0) {
+            Log.e(TAG, "SPINON_ROOT_HTML_BOOT_ERROR reason=session-create-failed");
+            return;
+        }
+        byte[] reportBytes = nativeSessionEval(session, rootAppSource.getBytes(StandardCharsets.UTF_8));
+        String report = reportBytes == null ? "native runtime returned no report"
+                : new String(reportBytes, StandardCharsets.UTF_8);
+        if (!report.startsWith("status=0")) {
+            nativeSessionFree(session);
+            Log.e(TAG, "SPINON_ROOT_HTML_BOOT_ERROR " + report);
+            return;
+        }
+        boolean keepSession;
+        synchronized (rootDocumentSessionLock) {
+            keepSession = !activityClosing;
+            if (keepSession) rootDocumentSession = session;
+        }
+        if (!keepSession) {
+            nativeSessionFree(session);
+            return;
+        }
+        Log.i(TAG, "SPINON_ROOT_HTML_BOOT status=pass source=index.html " + report);
     }
 
     private void showC0412RootHtmlFixtureUnavailable() {
@@ -2361,8 +2401,14 @@ public final class MainActivity extends Activity {
         bootstrapExecutor.shutdownNow();
         delayedHost.shutdownNow();
         runtimeCalls.shutdown();
+        long rootHandle;
+        synchronized (rootDocumentSessionLock) {
+            rootHandle = rootDocumentSession;
+            rootDocumentSession = 0;
+        }
         try {
             runtimeControl.execute(() -> {
+                if (rootHandle != 0) nativeSessionFree(rootHandle);
                 long handle = runtimeSession;
                 if (handle != 0) nativeSessionCancel(handle);
                 boolean interrupted = false;

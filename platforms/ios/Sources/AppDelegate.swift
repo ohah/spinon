@@ -29,6 +29,9 @@ let spinonC143AppFixtureTestEnabled = false
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     private let logger = Logger(subsystem: "dev.spinon.bootstrap", category: "runtime")
+    private let rootDocumentSessionLock = NSLock()
+    private var rootDocumentSession: UInt64 = 0
+    private var applicationIsTerminating = false
 
     func application(
         _ application: UIApplication,
@@ -352,20 +355,68 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func applicationWillTerminate(_ application: UIApplication) {
+        rootDocumentSessionLock.lock()
+        applicationIsTerminating = true
+        let handle = rootDocumentSession
+        rootDocumentSession = 0
+        rootDocumentSessionLock.unlock()
+        SpinonRunner.freeRuntimeSession(handle)
+    }
+
     private func runBootstrapInBackground() {
-        DispatchQueue.global(qos: .userInitiated).async { [logger] in
+        DispatchQueue.global(qos: .userInitiated).async { [weak self, logger] in
+            guard let self else { return }
             logger.notice("SPINON_BOOTSTRAP_EXECUTION is_main_thread=\(Thread.isMainThread)")
-            guard let sourceURL = Bundle.main.url(forResource: "app", withExtension: "js") else {
+            if let sourceURL = Bundle.main.url(forResource: "app", withExtension: "js") {
+                do {
+                    let source = try String(contentsOf: sourceURL, encoding: .utf8)
+                    let result = SpinonRunner.runSource(source) ?? "empty bootstrap result"
+                    logger.notice("SPINON_BOOTSTRAP_RESULT=\(result, privacy: .public)")
+                } catch {
+                    logger.error("SPINON_BOOTSTRAP_ASSET_ERROR=\(String(describing: error), privacy: .public)")
+                }
+            } else {
                 logger.error("SPINON_BOOTSTRAP_ASSET_ERROR=app.js missing")
+            }
+            self.loadRootDocumentSession()
+        }
+    }
+
+    private func loadRootDocumentSession() {
+        guard let htmlURL = Bundle.main.url(forResource: "index", withExtension: "html"),
+              let appURL = Bundle.main.url(forResource: "root-app", withExtension: "js") else {
+            logger.error("SPINON_ROOT_HTML_ASSET_ERROR=index.html or root-app.js missing")
+            return
+        }
+        do {
+            let html = try String(contentsOf: htmlURL, encoding: .utf8)
+            let appSource = try String(contentsOf: appURL, encoding: .utf8)
+            let handle = SpinonRunner.createRuntimeSession(withRootHTML: html)
+            guard handle != 0 else {
+                logger.error("SPINON_ROOT_HTML_BOOT_ERROR reason=session-create-failed")
                 return
             }
-            do {
-                let source = try String(contentsOf: sourceURL, encoding: .utf8)
-                let result = SpinonRunner.runSource(source) ?? "empty bootstrap result"
-                logger.notice("SPINON_BOOTSTRAP_RESULT=\(result, privacy: .public)")
-            } catch {
-                logger.error("SPINON_BOOTSTRAP_ASSET_ERROR=\(String(describing: error), privacy: .public)")
+            let report = SpinonRunner.evalRuntimeSession(handle, source: appSource)
+                ?? "native runtime returned no report"
+            guard report.hasPrefix("status=0") else {
+                SpinonRunner.freeRuntimeSession(handle)
+                logger.error("SPINON_ROOT_HTML_BOOT_ERROR report=\(report, privacy: .public)")
+                return
             }
+            rootDocumentSessionLock.lock()
+            let shouldKeepSession = !applicationIsTerminating
+            if shouldKeepSession {
+                rootDocumentSession = handle
+            }
+            rootDocumentSessionLock.unlock()
+            if shouldKeepSession {
+                logger.notice("SPINON_ROOT_HTML_BOOT status=pass source=index.html report=\(report, privacy: .public)")
+            } else {
+                SpinonRunner.freeRuntimeSession(handle)
+            }
+        } catch {
+            logger.error("SPINON_ROOT_HTML_ASSET_ERROR=\(String(describing: error), privacy: .public)")
         }
     }
 
