@@ -1,0 +1,13 @@
+# 기본 FFI artifact fixture 경계 확인
+
+## 실행
+
+- `cargo build --locked -p spinon-ffi --lib` — 성공 (`default-build.txt`).
+- 확인 대상: `target/debug/libspinon_ffi.a` (`spinon-ffi` crate 기본 feature 구성).
+- `strings target/debug/libspinon_ffi.a | rg 'hit_test=visible_owner|C15.3 visible overflow glyph|spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture'` — 일치 없음 (rg exit 1).
+- Rust 모듈 경계: `runtime_gpu/fixtures.rs`와 `runtime_gpu/ffi/fixtures.rs` 모두 `#[cfg(feature = "c15-3-wgpu-glyph-paint-fixture-test")]` 아래 `c15_3` 모듈을 선언한다.
+- opt-in positive evidence: [`rust-tests.txt`](./rust-tests.txt)의 동일 feature `cargo test`가 신규 clip negative control, overlay control과 fixture report를 포함해 47 passed / 2 ignored로 통과했다.
+
+## 한계
+
+macOS 기본 `nm`은 Rust 1.96/LLVM 22 archive object의 LLVM attribute kind를 읽지 못해 symbol table scan을 완료하지 못했다. 따라서 이 artifact 근거는 기본 static archive의 printable-string absence와 source cfg, opt-in feature test 통과를 합친 범위다. final platform app export나 release artifact 전체 경계를 주장하지 않는다.

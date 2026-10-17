@@ -157,10 +157,36 @@ pub(crate) fn attach_glyph_paint(
     if scene.texts()[1].clip_css_px() != visible_owner.clip_css_px() {
         return Err("C15.3 visible text owner clip이 예상과 다릅니다".to_owned());
     }
+    let hit_test_point = |point: (u32, u32)| (point.0 as f32 + 0.5, point.1 as f32 + 0.5);
+    let visible_hit = hit_test_point(sample_points.visible);
+    let hidden_inside_hit = hit_test_point(sample_points.hidden_inside);
+    let hidden_outside_hit = hit_test_point(sample_points.hidden_outside);
+    let visible_target = scene
+        .hit_test_css_point(visible_hit.0, visible_hit.1)
+        .map(|render_box| render_box.node_id());
+    let hidden_inside_target = scene
+        .hit_test_css_point(hidden_inside_hit.0, hidden_inside_hit.1)
+        .map(|render_box| render_box.node_id());
+    let hidden_outside_target = scene
+        .hit_test_css_point(hidden_outside_hit.0, hidden_outside_hit.1)
+        .map(|render_box| render_box.node_id());
+    if visible_target != Some(visible_owner.node_id()) {
+        return Err(format!(
+            "C15.3 visible overflow glyph의 event owner가 맞지 않습니다: {visible_target:?}"
+        ));
+    }
+    if hidden_inside_target != Some(hidden_owner.node_id()) {
+        return Err(format!(
+            "C15.3 hidden 내부 glyph의 event owner가 맞지 않습니다: {hidden_inside_target:?}"
+        ));
+    }
+    if hidden_outside_target == Some(hidden_owner.node_id()) {
+        return Err("C15.3 hidden clip 밖 점이 text owner에 적중했습니다".to_owned());
+    }
     Ok((
         scene,
         format!(
-            " c15_3_text=attached font=NotoSansKR glyphs={glyph_count} raster_scale={noto_scale} clip_right_css_px={clip_right} overflow_font=Ahem overflow_glyphs={overflow_glyph_count} overflow_clip_source=owner_render_box overflow_samples_css_px=visible:{},{};hidden_inside:{},{};hidden_outside:{},{}",
+            " c15_3_text=attached font=NotoSansKR glyphs={glyph_count} raster_scale={noto_scale} clip_right_css_px={clip_right} overflow_font=Ahem overflow_glyphs={overflow_glyph_count} overflow_clip_source=owner_render_box overflow_samples_css_px=visible:{},{};hidden_inside:{},{};hidden_outside:{},{} hit_test=visible_owner;hidden_inside_owner;hidden_outside_excludes_hidden_owner",
             sample_points.visible.0,
             sample_points.visible.1,
             sample_points.hidden_inside.0,
@@ -436,9 +462,116 @@ mod tests {
         assert!(report.contains("overflow_font=Ahem"));
         assert!(report.contains("overflow_clip_source=owner_render_box"));
         assert!(report.contains("hidden_outside:"));
+        assert!(report.contains(
+            "hit_test=visible_owner;hidden_inside_owner;hidden_outside_excludes_hidden_owner"
+        ));
         assert!(matches!(
             scene.paint_commands().last(),
             Some(spinon_render::RuntimePaintCommand::DrawText { index: 2 })
         ));
+    }
+
+    #[test]
+    fn fixture_rejects_a_hidden_clip_on_the_visible_overflow_owner() {
+        let document = HostDocument::new().unwrap().snapshot();
+        let key = RuntimeRenderKey::new(
+            document.generation(),
+            document.document_revision(),
+            document.render_tree_revision(),
+            StyleRevision::INITIAL,
+            EnvironmentRevision::INITIAL,
+        );
+        let visible_clip = CssClip::unconstrained()
+            .with_x(CssAxisClip::new(13.0, 28.0).unwrap())
+            .with_y(CssAxisClip::new(81.0, 91.0).unwrap());
+        let hidden_clip = CssClip::unconstrained()
+            .with_x(CssAxisClip::new(13.0, 28.0).unwrap())
+            .with_y(CssAxisClip::new(121.0, 131.0).unwrap());
+        let scene = RuntimeRenderSnapshot::new(
+            key,
+            CssSize::new(360.0, 240.0).unwrap(),
+            vec![
+                RuntimeRenderBox::new(
+                    NodeId::new(1).unwrap(),
+                    CssRect::new(0.0, 0.0, 360.0, 240.0).unwrap(),
+                    RuntimePaint::None,
+                    0,
+                ),
+                RuntimeRenderBox::new(
+                    NodeId::new(2).unwrap(),
+                    CssRect::new(13.0, 81.0, 40.0, 10.0).unwrap(),
+                    RuntimePaint::None,
+                    1,
+                )
+                .with_clip(visible_clip),
+                RuntimeRenderBox::new(
+                    NodeId::new(3).unwrap(),
+                    CssRect::new(13.0, 121.0, 40.0, 10.0).unwrap(),
+                    RuntimePaint::None,
+                    2,
+                )
+                .with_clip(hidden_clip),
+            ],
+        )
+        .unwrap();
+
+        let error = attach_glyph_paint(scene).unwrap_err();
+        assert!(error.contains("visible overflow glyph의 event owner가 맞지 않습니다"));
+    }
+
+    #[test]
+    fn fixture_does_not_let_visible_text_override_a_later_overlay_hit_target() {
+        let document = HostDocument::new().unwrap().snapshot();
+        let key = RuntimeRenderKey::new(
+            document.generation(),
+            document.document_revision(),
+            document.render_tree_revision(),
+            StyleRevision::INITIAL,
+            EnvironmentRevision::INITIAL,
+        );
+        let hidden_clip = CssClip::unconstrained()
+            .with_x(CssAxisClip::new(13.0, 28.0).unwrap())
+            .with_y(CssAxisClip::new(121.0, 131.0).unwrap());
+        let overlay = NodeId::new(4).unwrap();
+        let scene = RuntimeRenderSnapshot::new(
+            key,
+            CssSize::new(360.0, 240.0).unwrap(),
+            vec![
+                RuntimeRenderBox::new(
+                    NodeId::new(1).unwrap(),
+                    CssRect::new(0.0, 0.0, 360.0, 240.0).unwrap(),
+                    RuntimePaint::None,
+                    0,
+                ),
+                RuntimeRenderBox::new(
+                    NodeId::new(2).unwrap(),
+                    CssRect::new(13.0, 81.0, 40.0, 10.0).unwrap(),
+                    RuntimePaint::None,
+                    1,
+                ),
+                RuntimeRenderBox::new(
+                    NodeId::new(3).unwrap(),
+                    CssRect::new(13.0, 121.0, 40.0, 10.0).unwrap(),
+                    RuntimePaint::None,
+                    2,
+                )
+                .with_clip(hidden_clip),
+                RuntimeRenderBox::new(
+                    overlay,
+                    CssRect::new(29.0, 81.0, 24.0, 10.0).unwrap(),
+                    RuntimePaint::None,
+                    3,
+                ),
+            ],
+        )
+        .unwrap();
+
+        let error = attach_glyph_paint(scene).unwrap_err();
+        assert_eq!(
+            error,
+            format!(
+                "C15.3 visible overflow glyph의 event owner가 맞지 않습니다: Some({overlay:?})"
+            )
+        );
     }
 }
