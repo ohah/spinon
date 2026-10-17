@@ -1,5 +1,6 @@
 use std::collections::BTreeMap;
 use std::ops::Range;
+use std::sync::Arc;
 
 use parley::{
     BaseDirection, FontContext, InlineBoxKind, LayoutContext,
@@ -14,6 +15,7 @@ use spinon_core::NodeId;
 mod fonts;
 mod glyphs;
 mod inline_boxes;
+mod raster;
 mod run_styles;
 
 use glyphs::positioned_glyphs_with_sources;
@@ -23,12 +25,15 @@ use crate::{
     ParagraphInput, TextDirection, TextLayoutError, TextLayoutSnapshot, TextLine, TextRect,
     TextRun, WhiteSpaceMode, WordBreakMode,
     normalize::{normalize, overlapping_sources, positioned_sources},
+    snapshot::FontRegistryToken,
 };
 
 pub struct TextLayoutEngine {
     font_context: FontContext,
     layout_context: LayoutContext,
     font_registry_revision: FontRegistryRevision,
+    font_registry_token: FontRegistryToken,
+    font_assets: BTreeMap<String, Arc<Vec<u8>>>,
 }
 
 impl Clone for TextLayoutEngine {
@@ -37,6 +42,8 @@ impl Clone for TextLayoutEngine {
             font_context: self.font_context.clone(),
             layout_context: LayoutContext::new(),
             font_registry_revision: self.font_registry_revision,
+            font_registry_token: self.font_registry_token.clone(),
+            font_assets: self.font_assets.clone(),
         }
     }
 }
@@ -137,6 +144,7 @@ impl TextLayoutEngine {
             return Ok(TextLayoutSnapshot {
                 paragraph: input.node,
                 font_registry_revision: self.font_registry_revision,
+                font_registry_token: self.font_registry_token.clone(),
                 available_width,
                 direction: input.style.direction,
                 line_break: input.style.line_break,
@@ -408,6 +416,7 @@ impl TextLayoutEngine {
         Ok(TextLayoutSnapshot {
             paragraph: input.node,
             font_registry_revision: self.font_registry_revision,
+            font_registry_token: self.font_registry_token.clone(),
             available_width,
             direction: input.style.direction,
             line_break: input.style.line_break,
@@ -482,3 +491,7 @@ pub(super) fn valid_text_range(range: &Range<usize>, text: &str) -> bool {
 #[cfg(test)]
 #[path = "tests.rs"]
 mod tests;
+
+#[cfg(test)]
+#[path = "engine/raster_tests.rs"]
+mod raster_tests;

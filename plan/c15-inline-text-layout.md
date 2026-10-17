@@ -70,7 +70,7 @@ HostDocument의 실제 text node와 inline element를 CSS inline formatting cont
 - text geometry가 Block·Flex·Grid sizing, overflow/scroll, paint order, clip, hit-test, text ink bounds에서 소비되는 경계를 추가한다. 이미지·text의 inline baseline과 replaced inline object는 이 단계가 별도 fixture를 소유할 때만 추가한다.
 - C16에서 `font-family/size/weight/style`, CSS `line-height` 값의 parsing·cascade, `@font-face`, asynchronous font load/fallback, letter/word spacing, text-align/decoration/transform/overflow와 전체 cascade 연결을 별도 구현한다. C15 fixture의 fixed-font/internal line-height scalar는 이 계약을 대신하지 않는다.
 
-현재 C15.3 구현 slice는 `spinon-text-layout` 안의 고정 font Unicode shaping, glyph identity, bidi/line-break/ligature mode와 source mapping까지다. 이 결과는 immutable Rust snapshot만 만들며, 위 acceptance 목록 중 실제 Block/Flex/Grid 소비, WGPU glyph ink, overflow/clip/hit, Android/iOS Simulator 확인은 남아 있다. 이 slice와 후속 renderer를 함께 C15.3 완료로 표시하지 않는다.
+현재 C15.3 구현 slice는 `spinon-text-layout` 안의 고정 font Unicode shaping, glyph identity, bidi/line-break/ligature mode와 source mapping이다. 후속 raster 준비 단계는 등록 font bytes에서 DPR-scaled immutable glyph bitmap snapshot을 만든다. 이 단계도 Rust data만 만들며, 실제 Block/Flex/Grid 소비, WGPU glyph ink, overflow/clip/hit, Android/iOS Simulator 확인은 남아 있다. raster 준비와 후속 renderer를 함께 C15.3 완료로 표시하지 않는다.
 
 #### C15.3 고정 acceptance oracle
 

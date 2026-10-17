@@ -401,5 +401,8 @@ mod c15_2;
 #[path = "tests/c15_3.rs"]
 mod c15_3;
 
+#[path = "tests/c15_3_raster.rs"]
+mod c15_3_raster;
+
 #[path = "tests/paragraph_style.rs"]
 mod paragraph_style;

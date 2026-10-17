@@ -4,6 +4,7 @@ mod engine;
 mod error;
 mod model;
 mod normalize;
+mod raster;
 mod snapshot;
 
 pub use engine::TextLayoutEngine;
@@ -12,6 +13,7 @@ pub use model::{
     InlineBoxStyle, InlineEdges, InlineRunStyle, LigatureMode, LineBreakMode, ParagraphInput,
     ParagraphStyle, TextDirection, TextSource, WhiteSpaceMode, WordBreakMode,
 };
+pub use raster::{GlyphBitmap, GlyphBitmapContent, TextGlyphRaster, TextGlyphRasterSnapshot};
 pub use snapshot::{
     FontMetricsSnapshot, FontRegistryRevision, InlineFragment, TextGlyph, TextLayoutSnapshot,
     TextLine, TextRect, TextRun, TextSourceRange,
