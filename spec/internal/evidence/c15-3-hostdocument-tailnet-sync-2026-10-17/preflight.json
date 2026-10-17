@@ -1,0 +1,1673 @@
+{
+  "title": "C15.3 HostDocument text paint Tailnet sync preflight",
+  "generated_at": "2026-10-17T09:11:08.177Z",
+  "source_head": "6c5edcdadfcf55ec01e381964acc02a66b880c89",
+  "source_root": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017",
+  "source_tree_clean": true,
+  "target_root": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "target_base": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "backup_root": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17",
+  "preview_url": "http://127.0.0.1:8768/spinon/",
+  "tailnet_url": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "copy_only": true,
+  "deletions": [],
+  "total_paths": 165,
+  "total_bytes": 4948920,
+  "counts": {
+    "create": 137,
+    "replace": 13,
+    "unchanged": 15
+  },
+  "files": [
+    {
+      "path": "icon.svg",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/icon.svg",
+      "reason": "Rspress site chrome asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/internal/0070-c15-1-inline-text-layout.html",
+      "reason": "Rspress route updated for merged C15.3 HostDocument slice",
+      "bytes": 42509,
+      "sha256": "081e309574123f119da8f75b88dad937c994049f3a513aff0a82858080a1ba64",
+      "previous_sha256": "e47bcb6571de37f56fa45125f185a54c9bf8d71715ac0599a23538b51683c0db",
+      "action": "replace",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/internal/0070-c15-1-inline-text-layout.html"
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.md",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/0070-c15-1-inline-text-layout.md",
+      "reason": "current merged source Markdown or fixture directly linked from selected pages",
+      "bytes": 15240,
+      "sha256": "e26b0116d7317dad03ac712000d31b427499aa96e40d453c7af7bdb1c7ec901a",
+      "previous_sha256": "e26b0116d7317dad03ac712000d31b427499aa96e40d453c7af7bdb1c7ec901a",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0071-c15-3-glyph-raster-snapshot.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/internal/0071-c15-3-glyph-raster-snapshot.html",
+      "reason": "Rspress route updated for merged C15.3 HostDocument slice",
+      "bytes": 28370,
+      "sha256": "4ed023cc69f3bd69ab78217ba13327abad5779e29c86e7ef5aac731841a229af",
+      "previous_sha256": "ca55f9fd53dd19eeda93bad93a584249611e204c641c31d94c2e0cc66c2cb9e2",
+      "action": "replace",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/internal/0071-c15-3-glyph-raster-snapshot.html"
+    },
+    {
+      "path": "internal/0071-c15-3-glyph-raster-snapshot.md",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/0071-c15-3-glyph-raster-snapshot.md",
+      "reason": "current merged source Markdown or fixture directly linked from selected pages",
+      "bytes": 4596,
+      "sha256": "978ff0c93e28fb0c18417008778ec3a6fd44946fa4beed2210c40c8478f34e6b",
+      "previous_sha256": "978ff0c93e28fb0c18417008778ec3a6fd44946fa4beed2210c40c8478f34e6b",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0072-c15-3-wgpu-glyph-paint.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/internal/0072-c15-3-wgpu-glyph-paint.html",
+      "reason": "Rspress route updated for merged C15.3 HostDocument slice",
+      "bytes": 26440,
+      "sha256": "27d089f7f382cc45ee51591b5fe281ee0c9010e7ec3165a826310eedb43f4d31",
+      "previous_sha256": "ed11ec37c6f67ff71e7d112faf28f61a3c255782277c287d2a3bfdc0171b9c13",
+      "action": "replace",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/internal/0072-c15-3-wgpu-glyph-paint.html"
+    },
+    {
+      "path": "internal/0072-c15-3-wgpu-glyph-paint.md",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/0072-c15-3-wgpu-glyph-paint.md",
+      "reason": "current merged source Markdown or fixture directly linked from selected pages",
+      "bytes": 3369,
+      "sha256": "c32ef5157e0084eb341731635e0c3df6f869d0dca58f336cc4b45299a39aff82",
+      "previous_sha256": "c32ef5157e0084eb341731635e0c3df6f869d0dca58f336cc4b45299a39aff82",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0073-c15-3-overflow-text-owner-hit-test.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/internal/0073-c15-3-overflow-text-owner-hit-test.html",
+      "reason": "Rspress route updated for merged C15.3 HostDocument slice",
+      "bytes": 25798,
+      "sha256": "1661fbe1592cc8260def9599c7e8f8b889a2df58211e90db020d4f16bcf2e5b3",
+      "previous_sha256": "ef7ac4ec81cde2d10c4eb06aa7663ef117c01c8aba795dc723169485ad78a911",
+      "action": "replace",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/internal/0073-c15-3-overflow-text-owner-hit-test.html"
+    },
+    {
+      "path": "internal/0073-c15-3-overflow-text-owner-hit-test.md",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/0073-c15-3-overflow-text-owner-hit-test.md",
+      "reason": "current merged source Markdown or fixture directly linked from selected pages",
+      "bytes": 2740,
+      "sha256": "fa027d9f04d65d3c296c3560130e72589979012372084650011a60f329526b17",
+      "previous_sha256": "fa027d9f04d65d3c296c3560130e72589979012372084650011a60f329526b17",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0074-c15-3-runtime-glyph-scroll-transform.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/internal/0074-c15-3-runtime-glyph-scroll-transform.html",
+      "reason": "Rspress route updated for merged C15.3 HostDocument slice",
+      "bytes": 28859,
+      "sha256": "8e6d94349f5e809fe6e8a10b561ba8f32fefc02dad58a4a669351f79d7fdc5f3",
+      "previous_sha256": "011fd1ef3ef54c386c4c099c4f74f8f0bb435eb46f44a0811f56bd8b2e85adbe",
+      "action": "replace",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/internal/0074-c15-3-runtime-glyph-scroll-transform.html"
+    },
+    {
+      "path": "internal/0074-c15-3-runtime-glyph-scroll-transform.md",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/0074-c15-3-runtime-glyph-scroll-transform.md",
+      "reason": "current merged source Markdown or fixture directly linked from selected pages",
+      "bytes": 4634,
+      "sha256": "3240b7bf80e45708275f84bdaa2e7b19f28a28e65926e8b24eabba611ded6ceb",
+      "previous_sha256": "3240b7bf80e45708275f84bdaa2e7b19f28a28e65926e8b24eabba611ded6ceb",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0075-c15-3-hostdocument-text-paint-bridge.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/internal/0075-c15-3-hostdocument-text-paint-bridge.html",
+      "reason": "Rspress route updated for merged C15.3 HostDocument slice",
+      "bytes": 30442,
+      "sha256": "a089dd9fc7c2d517fc4d94979ee8e762c721f446e7169a9bbfec9997596c39e6",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0075-c15-3-hostdocument-text-paint-bridge.md",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/0075-c15-3-hostdocument-text-paint-bridge.md",
+      "reason": "current merged source Markdown or fixture directly linked from selected pages",
+      "bytes": 5835,
+      "sha256": "cff3867984eae0a39c2e4fa2cd80f0cb7489008b4dd482f17c6a76b770e8e1d1",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-roadmap-pr-delta-review-30-2026-10-17.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/internal/evidence/c15-3-hostdocument-roadmap-pr-delta-review-30-2026-10-17.html",
+      "reason": "Rspress route updated for merged C15.3 HostDocument slice",
+      "bytes": 29275,
+      "sha256": "991b091b04691bb59243153e7d8421ae74394680d2a6c759feabbf047238aeda",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-roadmap-pr-delta-review-30-2026-10-17.md",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-roadmap-pr-delta-review-30-2026-10-17.md",
+      "reason": "current merged source Markdown or fixture directly linked from selected pages",
+      "bytes": 5097,
+      "sha256": "db89b03c285ba36795939f203a45104e875019d2abb63e2f7a89f292bcc4dfb8",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/android-api-level.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/android-api-level.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 3,
+      "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/android-avd.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/android-avd.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 28,
+      "sha256": "6b155c3bed6bef87b3f93560e239c1286ed38bcca6a05db907fe05280e34d58e",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/android-logcat.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/android-logcat.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 11298,
+      "sha256": "75b96a916bd3564d20a513ba041c790280771d84eac0051394371dbf47276e68",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/android-model.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/android-model.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 20,
+      "sha256": "e0f9bb61ec4aad8a6f443ffdb60d60934f2243bdd5339399be29c61955ef9090",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/android-release.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/android-release.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 3,
+      "sha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/android-screen.png",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/android-screen.png",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 82583,
+      "sha256": "b3aa116fbc95148ee20c474249c870edb561dc59025a195be47da2bed6613874",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/app-cache-list.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/app-cache-list.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 117,
+      "sha256": "c9376874ebec4a6ad682691d8e3d926a3e2ebf95a7dc93702ac6eff55340b0e3",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/build-command.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/build-command.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 366,
+      "sha256": "9fa0b5a746f96159c5bdca1f92c065b4d4119e848ce59d111b840cbf64c7c9f0",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/build.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/build.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 4032,
+      "sha256": "1b1cab792d002326210d7d1ee8bb44d4e54c8c900f8fee4f4d7edf31b6567166",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/install.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/install.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/launch.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/launch.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 216,
+      "sha256": "b1914d4012fdc1dbd959530f474775a8e6ef9e89ec8a301c11634478e246e786",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/pixelcopy.png",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/pixelcopy.png",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 3294,
+      "sha256": "3993f3b64fc90f42675108b941fbc6b1b5dadbff2238ab3ac66554e7767544fd",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/sha256.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-20261017T082555Z/sha256.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 713,
+      "sha256": "a8a54993a2300be4dc69bfcaf0e749d464c22dd68a6b4f61328f119952a6db2b",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/android-api-level.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/android-api-level.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 3,
+      "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/android-avd.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/android-avd.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 28,
+      "sha256": "6b155c3bed6bef87b3f93560e239c1286ed38bcca6a05db907fe05280e34d58e",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/android-fingerprint.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/android-fingerprint.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 84,
+      "sha256": "abdd5ce6cf434d81b668307c8ce76e4ccdf541fcaf211f6ae6eff9bc99419b2e",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/android-logcat.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/android-logcat.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 2871,
+      "sha256": "be6ab85806ff56d251abc3887f4944c2e4232d13a88fd4b9c547cbd977ba901f",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/android-model.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/android-model.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 20,
+      "sha256": "e0f9bb61ec4aad8a6f443ffdb60d60934f2243bdd5339399be29c61955ef9090",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/android-screen.png",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/android-screen.png",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 82517,
+      "sha256": "afdf7467851acb58464778b954bbd791beddd8761a88c3e12f4fbae02a05ac6c",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/build-command.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/build-command.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 386,
+      "sha256": "a5799338118ff3eb87b35a246ca820b46cb4d5d187d8f5da2e47283e35c36cfc",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/build.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/build.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 4334,
+      "sha256": "178d5ad5c7b13e6534da283a3bc7dddd9e613bd22ce55aa062ed3269d1dc4b28",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/pixelcopy.png",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/pixelcopy.png",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 3294,
+      "sha256": "3993f3b64fc90f42675108b941fbc6b1b5dadbff2238ab3ac66554e7767544fd",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/run-command.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/run-command.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 697,
+      "sha256": "0be2428d0a4aa0a7dcd542b46b1ec56e78b986cec250dcaa1e2b936fb4fabefe",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/sha256.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final-20261017T085000Z/sha256.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 531,
+      "sha256": "686a0181583ae518511dc1c1294989c61074092e581843c7e98b640a5d831c10",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/android-api-level.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/android-api-level.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 3,
+      "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/android-avd.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/android-avd.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 28,
+      "sha256": "6b155c3bed6bef87b3f93560e239c1286ed38bcca6a05db907fe05280e34d58e",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/android-fingerprint.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/android-fingerprint.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 84,
+      "sha256": "abdd5ce6cf434d81b668307c8ce76e4ccdf541fcaf211f6ae6eff9bc99419b2e",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/android-logcat.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/android-logcat.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 2869,
+      "sha256": "c6841ede22b6e9bc94c509938df297d401d390b897011e2d273391b364aaeffb",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/android-model.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/android-model.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 20,
+      "sha256": "e0f9bb61ec4aad8a6f443ffdb60d60934f2243bdd5339399be29c61955ef9090",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/android-screen.png",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/android-screen.png",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 82527,
+      "sha256": "64aaa453b3026789542361eaf7cfd7f2c76427cbd68276b76203a27342c94a38",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/build-command.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/build-command.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 386,
+      "sha256": "a5799338118ff3eb87b35a246ca820b46cb4d5d187d8f5da2e47283e35c36cfc",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/build.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/build.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 4084,
+      "sha256": "24c6265ee6511e7d8371e6afbfcbe2492aa566f337f09ab24edc198639d0e4dd",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/pixelcopy.png",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/pixelcopy.png",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 3294,
+      "sha256": "3993f3b64fc90f42675108b941fbc6b1b5dadbff2238ab3ac66554e7767544fd",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/run-command.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/run-command.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 697,
+      "sha256": "c2bf997675c445e49740cdd5898444d4ba3b7e95a58186807b5876bca974aeec",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/sha256.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/android-api37-avd-final2-20261017T085535Z/sha256.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 533,
+      "sha256": "97d51032fbf04f882a87f32be26430982173101370edfb765dde2a5a80a6d2e8",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-boundary-default-command.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-boundary-default-command.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 187,
+      "sha256": "3e9a51ad01e64e2345947e2699036a70c0582b37ea4f09a7894486e07eb47334",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-boundary-default-final.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-boundary-default-final.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 60,
+      "sha256": "40108eb5c2e432741fc7f36afdf5c793ec02b19e7b1ce5e51bdd2ba377bd26cb",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-boundary-default.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-boundary-default.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 1964,
+      "sha256": "4ef10357aa37a8857732e2100098604fc78793e43f7cc459c6456c1631c04a1a",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-boundary-optin-command.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-boundary-optin-command.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 234,
+      "sha256": "e4d77fe089eacaa5eda3a0c04bd516ecf911a2f2d1f9a17e8b89c934a3c4f8f1",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-boundary-optin-final.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-boundary-optin-final.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 60,
+      "sha256": "fcce12e8e9a3743502ec98eb1888a43a32489c10219b715f931aa40675ed5311",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-boundary-optin.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-boundary-optin.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 80,
+      "sha256": "58ea71ca45a7a7e00e82b0e7616e6fe648d9c89fd609f04a29c855be57d124fb",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-boundary-scan-command.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-boundary-scan-command.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 114,
+      "sha256": "806711f5d1e02624cf60df1f5b1e8a5f5f1dc81ae6f5db57445dcd7119f490c3",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-boundary-scan-final.json",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-boundary-scan-final.json",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 978,
+      "sha256": "b21ad03721195fe0c9d9053393263b376764dd256843acd9638098e9aeda0601",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-boundary-scan.json",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-boundary-scan.json",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 978,
+      "sha256": "138e8fea0b28aabbbfe4f52a665018f2fbbf20bfd757b29a18007e567167e172",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-build-disk-after.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-build-disk-after.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 157,
+      "sha256": "8686f5e58ca03aca148af0bc6d2fc635b93499873befd1d6a269b5f14ad509a1",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-build-disk-before.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/artifact-build-disk-before.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 157,
+      "sha256": "5b161e2de2bd0988f522a43ac21f28b841df9da25310818c85343c008ddd03ce",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/clippy-command.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/clippy-command.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 258,
+      "sha256": "f542cbcec0f7519fa8990a8b99f5a47bf4ad8097288e25a00efe01a6004396b1",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/clippy.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/clippy.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 5963,
+      "sha256": "9f050f4153afcfb9661e5ed7ad450745892b897f4876cd72751c4e5a6878fdc0",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/feature-clippy-final.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/feature-clippy-final.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 166,
+      "sha256": "d8483378fb616319d03dddd967b799c4cdf044dfb33c1f274bd81b4e3d2ee2a4",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/fixture-module-boundary-final.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/fixture-module-boundary-final.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 676,
+      "sha256": "33155e9356b555d4966e2fc3c8fa6cb10c26a5faa82510fd44f6b18cb536c045",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/full-ffi-test-command.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/full-ffi-test-command.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 228,
+      "sha256": "2d539b8e242ac81a621196071eb308b0f75482082f2fe5475a5d145c03d589ea",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/full-ffi-test-final.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/full-ffi-test-final.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 5992,
+      "sha256": "c9cc0a5cec1eb9e963fd1a937b78b226f005e5a10b1a2de7ff73e790c21e805a",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/full-ffi-test.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/full-ffi-test.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 5900,
+      "sha256": "64ce4f967f51bcbc9dc6e0c216ee6bc42ad5cc8c28642476acc5e9ef06f14004",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/implementation-review-20.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/implementation-review-20.html",
+      "reason": "Rspress route updated for merged C15.3 HostDocument slice",
+      "bytes": 36324,
+      "sha256": "b1adbfafe3f2752f949cbee1b8b5f1dbeb3a6f3fba34df8f9a09cea1fc7136af",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/implementation-review-20.md",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/implementation-review-20.md",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 8335,
+      "sha256": "304770a0b8e11d25d8ecb44766e9ff02d150a0e26167798c40decc2c370e8aa3",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/app-binary-sha256.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/app-binary-sha256.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 367,
+      "sha256": "9567fd9ccd8b78a6b872c496e5ff4162c4672cd0a34c2a1dd89f863aa13d9463",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/build-command.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/build-command.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 311,
+      "sha256": "cdeb5229d2d8dccf61f8679804c6101b77fcc90e2a92aad4c9be9ee4e6563b7f",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/build-result.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/build-result.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 120,
+      "sha256": "757c6b83a66c9a01a168922d24af284f32632d74890122922e7fbba23b33d7f4",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/install.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/install.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/ios-device.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/ios-device.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 73,
+      "sha256": "cc35aa4fbd69d5b49f7880f5433687efd2df590fa1217dd3c64ca9acb0fb502e",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/ios-log.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/ios-log.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 30640,
+      "sha256": "62d3909d2c0a0de7dbad0df81288f4087fa9f8bdd45963115a28c8bb799910ef",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/ios-screen.png",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/ios-screen.png",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 140620,
+      "sha256": "7982926a885ac35b4d188b7a679f8b40d744f555eabd9b0e3ccb58ec26910115",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/ios-xcodebuild.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/ios-xcodebuild.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 140356,
+      "sha256": "6c487a629b5fb96531365f8fbdf639d6464d515f5f552f3f1074c62bdcbb2e9d",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/launch.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/launch.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 28,
+      "sha256": "369600aebe6a586531cffcf762af617235b2673d1df63831575484fec07b5cb7",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/screenshot.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-20261017T082555Z/screenshot.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 198,
+      "sha256": "3814b22674f134feca28b8ce003e789e3601adb7fbfa08420db8a565308a10dd",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final-20261017T085000Z/build-command.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final-20261017T085000Z/build-command.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 382,
+      "sha256": "ca5d97cabd23502ffffcaf3664155e8abac7ecb8f1ddb506cbc5c1197303be0c",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final-20261017T085000Z/build.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final-20261017T085000Z/build.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 89781,
+      "sha256": "e0334356caae4740b119eda4aa2ade83324ad2b533b9e751feb96d46cbb3918c",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final-20261017T085000Z/ios-screen.png",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final-20261017T085000Z/ios-screen.png",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 138583,
+      "sha256": "6539110e6dd88f3b1eb2b2ba63c1d14d0ae8ca782131874831df2fa03c4fce3f",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final-20261017T085000Z/ios-unified.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final-20261017T085000Z/ios-unified.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 4145,
+      "sha256": "1a4141e0c24b207425ca9ac2acf2c51a122449d1813449cc84ed073961f252d4",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final-20261017T085000Z/run-command.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final-20261017T085000Z/run-command.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 612,
+      "sha256": "2b8533fd492fdcc38b4c323d271f77c9824a90b671c614f4ce55ccbeb352f4e2",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final-20261017T085000Z/sha256.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final-20261017T085000Z/sha256.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 414,
+      "sha256": "f7c87dba388acca491a079914f5e56d191992508092ec8864204370a393381f0",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final2-20261017T085535Z/build-command.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final2-20261017T085535Z/build-command.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 382,
+      "sha256": "ca5d97cabd23502ffffcaf3664155e8abac7ecb8f1ddb506cbc5c1197303be0c",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final2-20261017T085535Z/build.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final2-20261017T085535Z/build.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 63597,
+      "sha256": "a0f3c1c5ce3417aae239bf61ffe3343ef528741d5bd9bf74c638b6dcef3c7873",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final2-20261017T085535Z/ios-screen.png",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final2-20261017T085535Z/ios-screen.png",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 138722,
+      "sha256": "c087dc450058251adbec23da86f513cd2802dec38ffa1383d54d4c86f4efacf9",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final2-20261017T085535Z/ios-unified.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final2-20261017T085535Z/ios-unified.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 4145,
+      "sha256": "14c7077de5f1563eb15314da5b13220ddaedd69cd5f6f4189c077d966e24b3a2",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final2-20261017T085535Z/run-command.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final2-20261017T085535Z/run-command.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 612,
+      "sha256": "2b8533fd492fdcc38b4c323d271f77c9824a90b671c614f4ce55ccbeb352f4e2",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final2-20261017T085535Z/sha256.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final2-20261017T085535Z/sha256.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 415,
+      "sha256": "8d07afa7c3fb47143eb9a9756ac3a0b4fb8b86e52df854d1a7eb10b38b640ac7",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final2-20261017T085535Z/simulator.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-final2-20261017T085535Z/simulator.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 153,
+      "sha256": "d5bb30797a2d9043d572eba634586fe8b3a6af8eaf4b0f4514bf6abd986737c9",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/booted-simulators.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/booted-simulators.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 243,
+      "sha256": "a1164be7c43a092302459ec7af570211eef89bf0278a99a9b478f0cc3b26b916",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/build-command.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/build-command.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 382,
+      "sha256": "ca5d97cabd23502ffffcaf3664155e8abac7ecb8f1ddb506cbc5c1197303be0c",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/install.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/install.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/ios-screen.png",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/ios-screen.png",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 140011,
+      "sha256": "006e904a3157a2d9ed36503c1925dbf67a56282794393ef6085578ed1b42a986",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/ios-unified.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/ios-unified.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 39540,
+      "sha256": "ffc096f3563ee37e248223f64fd38d6fbac82ecd9619f7c30b371a8128d1cc95",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/ios-xcodebuild.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/ios-xcodebuild.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 147798,
+      "sha256": "9da5b9faf74e666bc00fc3ed293f0eac915d7632043d362a925780d510f66d00",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/launch.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/launch.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 28,
+      "sha256": "b4259f1d6392f73475de6c715df722c9b35f116876abda4ccc3d641708a8c825",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/log-show-stderr.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/log-show-stderr.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 44,
+      "sha256": "8b9e4a529f3e367142876bd0ce03ed7c7f10a50657c9a73fda0d6e30867e7523",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/run-metadata.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/run-metadata.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 191,
+      "sha256": "bf17b9fdea1d68dedba3a39850f811f31430bc4fb8ce99c1bb882605b377b62b",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/screenshot.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/ios-simulator-iphone17pro-route-fix-20261017T083816Z/screenshot.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 208,
+      "sha256": "ae987dc53d00d845c817b742de43779d4ef878c4dac575f03903fd5e406b8f93",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/pr-delta-review-30.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/pr-delta-review-30.html",
+      "reason": "Rspress route updated for merged C15.3 HostDocument slice",
+      "bytes": 34153,
+      "sha256": "ce5db60ca985d7c4bff65fa59ea2a0277045178c37718ee833cd339adf892918",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/pr-delta-review-30.md",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/pr-delta-review-30.md",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 9128,
+      "sha256": "3d356992addb7cae2a5d30e080f5f5ff0c074cecbf8f6ef4a890c9a21626fe5e",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/README.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/README.html",
+      "reason": "Rspress route updated for merged C15.3 HostDocument slice",
+      "bytes": 30108,
+      "sha256": "cb35bddcfd41b1f2b8e5ae8c9b2890576a9833c9497ddf0bde8ac268d7083b32",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/README.md",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/README.md",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 5222,
+      "sha256": "c106dba76531dddfb9b456428446ab3478ff353ac27524381322b781c6808d2f",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/rust-lint-final.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/rust-lint-final.html",
+      "reason": "Rspress route updated for merged C15.3 HostDocument slice",
+      "bytes": 23498,
+      "sha256": "da65c87b8fbe9c327f836b874534f21c20b217ac370f7df82e50695dd7f8b3ef",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/rust-lint-final.md",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/rust-lint-final.md",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 828,
+      "sha256": "82aa2800fd812f8e5d198d755c05213c3505b3f76c27a15b3050ede97cc80e23",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/rustfmt-command.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/rustfmt-command.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 40,
+      "sha256": "5fc847cf669e7ed814bf5633d83dd177e8ce8fc58a17c49723e7990beb2077f2",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/rustfmt-final.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/rustfmt-final.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 58,
+      "sha256": "14e17f91700a5e311be3bcad3545c7b1492f235240e637d7661787ea3e053f5d",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/rustfmt.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/rustfmt.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 11,
+      "sha256": "1b5d8d6341069801a016b6c550c9e2fb6912797d3e814d44ff0961d7a67cfee6",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/workspace-clippy-command.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/workspace-clippy-command.txt",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 209,
+      "sha256": "d7198706f8e636bbe6c36d6e8493315603cc0c9c255fef9892d069680d2e0ef5",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/workspace-clippy-final.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/workspace-clippy-final.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 60,
+      "sha256": "dda7980e8da1041233b9bd7cd86f479320cbe44ef953019bb06c5f1c023ea622",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/workspace-clippy.log",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/workspace-clippy.log",
+      "reason": "implementation evidence logs, screenshots and hash records",
+      "bytes": 1711,
+      "sha256": "af43f75a5837a045f022569a0c03b2e9c067c034095021c3d220ef99ab6148c0",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/chrome155-direct-text-observation.json",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/chrome155-direct-text-observation.json",
+      "reason": "oracle evidence, screenshot and source hash",
+      "bytes": 2802,
+      "sha256": "ee3a28f4d2086fca8dc21b66c5638a9155a97b1704851657befbc185ad205a54",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/chrome155-label-removed.png",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/chrome155-label-removed.png",
+      "reason": "oracle evidence, screenshot and source hash",
+      "bytes": 21818,
+      "sha256": "1af1ab2626b57097da0b3b9f93d499a24a244f85c9a71bd291c7926ee840f43f",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/plan-review-20.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/plan-review-20.html",
+      "reason": "Rspress route updated for merged C15.3 HostDocument slice",
+      "bytes": 35991,
+      "sha256": "447ea93309ec4410f94df47425b0c4f138ea0973735cb773040c3d1f4e2e975e",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/plan-review-20.md",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/plan-review-20.md",
+      "reason": "oracle evidence, screenshot and source hash",
+      "bytes": 4941,
+      "sha256": "3276bb1d4db736a09a23fb3e13e95cbb4f558c1942eb9e1e3461d1c53c5142f4",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/pr-delta-review-20.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/pr-delta-review-20.html",
+      "reason": "Rspress route updated for merged C15.3 HostDocument slice",
+      "bytes": 34170,
+      "sha256": "47fb33ac1c1ffd255bcd15b4c1dfdfbdbcf4dbd9ac7ac3b82764fa8a40f5a8fd",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/pr-delta-review-20.md",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/pr-delta-review-20.md",
+      "reason": "oracle evidence, screenshot and source hash",
+      "bytes": 4317,
+      "sha256": "7b1a292d193f741c0a511142436f18cf82f8c5a4de7164e69d4d9396893d8e9d",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/README.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/README.html",
+      "reason": "Rspress route updated for merged C15.3 HostDocument slice",
+      "bytes": 26995,
+      "sha256": "8ca9e1de9efdba9565365cad6c32b4ad010938bbd1eda7e8f9f7fb121e6bdbbc",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/README.md",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/README.md",
+      "reason": "oracle evidence, screenshot and source hash",
+      "bytes": 3458,
+      "sha256": "d5a21310e90f9e046700931b40e294733f8138f6d16a6bb91c2d8a786a142034",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/sha256.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/sha256.txt",
+      "reason": "oracle evidence, screenshot and source hash",
+      "bytes": 355,
+      "sha256": "1a1c0a3db4c8fe5fbedfa83365394a8b38d664a2a3e8913039d83131aca60091",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/README.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/internal/README.html",
+      "reason": "Rspress route updated for merged C15.3 HostDocument slice",
+      "bytes": 161204,
+      "sha256": "e330b3e4003d03e1ffd2c0beae58b9d87adeda90ca39eefcdaaa114fdff51db0",
+      "previous_sha256": "df5f1a3dacbc317c46a65c563ef21e15e8ab5729d09264f0fb490e3430551a08",
+      "action": "replace",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/internal/README.html"
+    },
+    {
+      "path": "internal/README.md",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/internal/README.md",
+      "reason": "current merged source Markdown or fixture directly linked from selected pages",
+      "bytes": 114289,
+      "sha256": "2faa246c918d03541cbcd5767b7ad05a31c9b299a3a3d5e42269b02799bd960e",
+      "previous_sha256": "f7ab9ec5351a9ca8e4aa79f4a1e4dedb1fb35bb744ec9a4fd6a9e8818b3ee855",
+      "action": "replace",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/internal/README.md"
+    },
+    {
+      "path": "logo.svg",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/logo.svg",
+      "reason": "Rspress site chrome asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "previous_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "plan/c15-inline-text-layout.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/plan/c15-inline-text-layout.html",
+      "reason": "Rspress route updated for merged C15.3 HostDocument slice",
+      "bytes": 74893,
+      "sha256": "860e637b32db618d66c886f2cc32a838874e774c462ef7a4766f971a3a4f2280",
+      "previous_sha256": "1dd15ebacff846574dfae31433c1b903d96187cefa26d425bc87f9ab6a2ff7e7",
+      "action": "replace",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/plan/c15-inline-text-layout.html"
+    },
+    {
+      "path": "plan/c15-inline-text-layout.md",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/plan/c15-inline-text-layout.md",
+      "reason": "current merged source Markdown or fixture directly linked from selected pages",
+      "bytes": 38613,
+      "sha256": "87325f481f433bbe0c49130e95ac3751938e7732aee56121b535e99da5d14c78",
+      "previous_sha256": "d3b2d56ca1e72c16805a62ef05aee443c62a1985f7e3f97f93b7681bda2228e0",
+      "action": "replace",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/plan/c15-inline-text-layout.md"
+    },
+    {
+      "path": "public/roadmap.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/public/roadmap.html",
+      "reason": "custom roadmap source mirror",
+      "bytes": 117503,
+      "sha256": "edc78d20b8d8cd9a067ee501ad24f100cb94306382228828a0eceea983d270fe",
+      "previous_sha256": "fa59fd5c3c21708346767e221e4c00a9d66b0779b7940d5ceb6e9c216113d979",
+      "action": "replace",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/public/roadmap.html"
+    },
+    {
+      "path": "README.md",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/README.md",
+      "reason": "current merged source Markdown or fixture directly linked from selected pages",
+      "bytes": 3721,
+      "sha256": "9ba0f43d492f7826b0d4e4669545fd832f41411a45d571368adea46bb7caa705",
+      "previous_sha256": "9ba0f43d492f7826b0d4e4669545fd832f41411a45d571368adea46bb7caa705",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "roadmap.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/public/roadmap.html",
+      "reason": "custom Tailnet roadmap updated for merged PR #264",
+      "bytes": 117503,
+      "sha256": "edc78d20b8d8cd9a067ee501ad24f100cb94306382228828a0eceea983d270fe",
+      "previous_sha256": "fa59fd5c3c21708346767e221e4c00a9d66b0779b7940d5ceb6e9c216113d979",
+      "action": "replace",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/roadmap.html"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/css/styles.8d918fd78e.css",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "previous_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.bd3f2ea084.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/a.bd3f2ea084.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 217100,
+      "sha256": "dfd2af601e6a52dc47a61490ceafc3de7635271d550474e8b84cf00dee96af32",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.bd3f2ea084.js.LICENSE.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/a.bd3f2ea084.js.LICENSE.txt",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/i.25208e7c92.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "previous_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-08dd089e447f.202a3a7c0d.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-08dd089e447f.202a3a7c0d.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 10606,
+      "sha256": "1cac349c19da6eb31c15fce7ee6e75a69d6fc57d1e49178c935096d239171ab1",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-117783875241.36ed733376.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-117783875241.36ed733376.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 62352,
+      "sha256": "69eb7246b3247627af385b9eb1706fea308c3a9c47b187b41c59282f6fdc72fc",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-17675d96f29f.8cba81b2e2.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-17675d96f29f.8cba81b2e2.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 11366,
+      "sha256": "3d878be8af6159f4de3a63bcc510a403e5ce179b612a7d45f4be47ac22c602af",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-4d17e1463417.fade3c5f30.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-4d17e1463417.fade3c5f30.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 8140,
+      "sha256": "2b52306f68a8cc2701bf5d33cf786edd13d0d66c06f420f481f418f93fc71722",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-56103828be18.a4cdaf2096.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-56103828be18.a4cdaf2096.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 8556,
+      "sha256": "8d90c7d9b739966d92526f3046f57f907c07b3688c5c29feaa5f80f173345377",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-5c3b005e2ac4.1fc8ec9bb7.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-5c3b005e2ac4.1fc8ec9bb7.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 16873,
+      "sha256": "dba9d3b9a5cdf16592d9d53655e4930c8f96538ad6eb20cd43b6b4a727002e31",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-5f8576cb54d3.8db9ea75da.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-5f8576cb54d3.8db9ea75da.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 15815,
+      "sha256": "e3af4f01998d24a66a2127f686ed5d178b3fa29c22c93b3d1d764965277001f2",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.ef586b096f.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-6c33a3943990.ef586b096f.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 360282,
+      "sha256": "f14149a609704345767c5434995fc8cb16b746287842e3208b2967e199cf7fd7",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-7a57417efac1.fe7a7a5e92.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-7a57417efac1.fe7a7a5e92.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 7636,
+      "sha256": "4ba2fb112c970186a240eae4d3a573043a02884d01474e3f6e262e209a40a8c2",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-7f1586660381.b852d65680.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-7f1586660381.b852d65680.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 8168,
+      "sha256": "27e73ada001856a3c8bc8bc7315f3d10a8a5a4ae18291631ef3b114942d2dab8",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-7ffe75ba0a2f.df092ce75e.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-7ffe75ba0a2f.df092ce75e.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 10423,
+      "sha256": "42a1f4f1b2d44009123425aa2ed54a4f1e1c461545a96bbe44e5a21328acc4f6",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-96fe16660847.656f272b79.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-96fe16660847.656f272b79.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 7337,
+      "sha256": "152d3359d70f564edb895761f8719a1514bd39f2fa3f639354409fbed87bc57a",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-99ce983111cf.3352cc5f72.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-99ce983111cf.3352cc5f72.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 5984,
+      "sha256": "d8b2264c6eaadfb3a10435df55ec8c2c8a95ed1b9daa4f33bac958abbca6c29f",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.d269f61ea3.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-a1017bdf23ca.d269f61ea3.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 166910,
+      "sha256": "ead1939edaf3859b2d1446fa6c99c904eff8604621cdc60e1ccd3d00ef2efd9b",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-acf9bf8a5ef1.d24a86cca5.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-acf9bf8a5ef1.d24a86cca5.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 26163,
+      "sha256": "0ea1865dc77707a29c3c1bcb3902d2545310a104b0bf989a0b9e393edfe7031e",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-b33563055168.a9c0db3f3e.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-b33563055168.a9c0db3f3e.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 7916,
+      "sha256": "7177e0a82959d68e6be6805e0b4deb7f237fe469d29ca3dd8c1610177c816d64",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-baf428b57bf0.b67560ecfc.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-baf428b57bf0.b67560ecfc.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 2094,
+      "sha256": "25809c0a28b8f79aa026db3188b616ad63602630add5b3bb917c9479e8f6f137",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-d31b5645247a.524dffbd4e.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/async/route-d31b5645247a.524dffbd4e.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 5310,
+      "sha256": "a5ce54308fc3fc9ba708dff2cc7595897f7288fdf48b8d7aa9ca3de2081068b3",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/index.cc60bdc0b8.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/index.cc60bdc0b8.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 44703,
+      "sha256": "3c89c89a7968725eeab10cd77dcb0536bce9e64fcf54135f8116f12250ba427a",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/lib-react.9cdf8f49ce.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "previous_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "previous_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/lib-router.1e14e568cb.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "previous_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "previous_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "action": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/styles.1a3bc822db.js",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/js/styles.1a3bc822db.js",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 472,
+      "sha256": "72a88f2085dd2ebb63ba97062da86f5de546513b94db82032857fa81fc0c5179",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/search_index.ko.10c4c57f.json",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/static/search_index.ko.10c4c57f.json",
+      "reason": "Rspress CSS/JS/search asset required by selected updated routes",
+      "bytes": 415783,
+      "sha256": "10c4c57f173fc1f35347277884ec34b73a062ea639e13a67775a3b5ddfabe760",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "STATUS.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-docs-out-20261017/STATUS.html",
+      "reason": "Rspress route updated for merged C15.3 HostDocument slice",
+      "bytes": 344604,
+      "sha256": "86e3bc385db4111c128bbbca71b370374f24904afc8bf2e4ebc7a60f7100484a",
+      "previous_sha256": "f15f23932aa7d249062452834c164caeffca54eca3c53744dea95b7b30f5221a",
+      "action": "replace",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/STATUS.html"
+    },
+    {
+      "path": "STATUS.md",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/spec/STATUS.md",
+      "reason": "current merged source Markdown or fixture directly linked from selected pages",
+      "bytes": 261512,
+      "sha256": "2c3eedfefa807f9c8005888ce73c4f83c689147264354e6701127b7ceacb7b7c",
+      "previous_sha256": "ade6a24da7852fd3765e02f5de15bceef9712bc359b7d246a49fa677032ee021",
+      "action": "replace",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/STATUS.md"
+    },
+    {
+      "path": "tests/fixtures/css/c15/inline-text-precomparison.html",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/tests/fixtures/css/c15/inline-text-precomparison.html",
+      "reason": "current merged source Markdown or fixture directly linked from selected pages",
+      "bytes": 5524,
+      "sha256": "efba6981d73c2e8d2aa21e38b92f2936ce2a6ecb56bc758ce420a785b5cdaf64",
+      "previous_sha256": null,
+      "action": "create",
+      "backup_path": null
+    },
+    {
+      "path": "tests/fixtures/resources/c15/Ahem.ttf",
+      "source": "/private/tmp/spinon-c15-3-hostdocument-tailnet-evidence-20261017/tests/fixtures/resources/c15/Ahem.ttf",
+      "reason": "current merged source Markdown or fixture directly linked from selected pages",
+      "bytes": 21768,
+      "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+      "previous_sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+      "action": "unchanged",
+      "backup_path": null
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "title": "C15.3 HostDocument Tailnet backup verification",
+  "generated_at": "2026-10-17T09:11:23.716Z",
+  "backup_root": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17",
+  "count": 13,
+  "files": [
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/internal/0070-c15-1-inline-text-layout.html",
+      "sha256": "e47bcb6571de37f56fa45125f185a54c9bf8d71715ac0599a23538b51683c0db",
+      "bytes": 35517
+    },
+    {
+      "path": "internal/0071-c15-3-glyph-raster-snapshot.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/internal/0071-c15-3-glyph-raster-snapshot.html",
+      "sha256": "ca55f9fd53dd19eeda93bad93a584249611e204c641c31d94c2e0cc66c2cb9e2",
+      "bytes": 41439
+    },
+    {
+      "path": "internal/0072-c15-3-wgpu-glyph-paint.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/internal/0072-c15-3-wgpu-glyph-paint.html",
+      "sha256": "ed11ec37c6f67ff71e7d112faf28f61a3c255782277c287d2a3bfdc0171b9c13",
+      "bytes": 25958
+    },
+    {
+      "path": "internal/0073-c15-3-overflow-text-owner-hit-test.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/internal/0073-c15-3-overflow-text-owner-hit-test.html",
+      "sha256": "ef7ac4ec81cde2d10c4eb06aa7663ef117c01c8aba795dc723169485ad78a911",
+      "bytes": 25796
+    },
+    {
+      "path": "internal/0074-c15-3-runtime-glyph-scroll-transform.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/internal/0074-c15-3-runtime-glyph-scroll-transform.html",
+      "sha256": "011fd1ef3ef54c386c4c099c4f74f8f0bb435eb46f44a0811f56bd8b2e85adbe",
+      "bytes": 28892
+    },
+    {
+      "path": "internal/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/internal/README.html",
+      "sha256": "df5f1a3dacbc317c46a65c563ef21e15e8ab5729d09264f0fb490e3430551a08",
+      "bytes": 160482
+    },
+    {
+      "path": "internal/README.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/internal/README.md",
+      "sha256": "f7ab9ec5351a9ca8e4aa79f4a1e4dedb1fb35bb744ec9a4fd6a9e8818b3ee855",
+      "bytes": 113643
+    },
+    {
+      "path": "plan/c15-inline-text-layout.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/plan/c15-inline-text-layout.html",
+      "sha256": "1dd15ebacff846574dfae31433c1b903d96187cefa26d425bc87f9ab6a2ff7e7",
+      "bytes": 67245
+    },
+    {
+      "path": "plan/c15-inline-text-layout.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/plan/c15-inline-text-layout.md",
+      "sha256": "d3b2d56ca1e72c16805a62ef05aee443c62a1985f7e3f97f93b7681bda2228e0",
+      "bytes": 32812
+    },
+    {
+      "path": "public/roadmap.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/public/roadmap.html",
+      "sha256": "fa59fd5c3c21708346767e221e4c00a9d66b0779b7940d5ceb6e9c216113d979",
+      "bytes": 115998
+    },
+    {
+      "path": "roadmap.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/roadmap.html",
+      "sha256": "fa59fd5c3c21708346767e221e4c00a9d66b0779b7940d5ceb6e9c216113d979",
+      "bytes": 115998
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/STATUS.html",
+      "sha256": "f15f23932aa7d249062452834c164caeffca54eca3c53744dea95b7b30f5221a",
+      "bytes": 342200
+    },
+    {
+      "path": "STATUS.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-hostdocument-tailnet-sync-2026-10-17/STATUS.md",
+      "sha256": "ade6a24da7852fd3765e02f5de15bceef9712bc359b7d246a49fa677032ee021",
+      "bytes": 259131
+    }
+  ],
+  "all_previous_sha256_match": true
+}
