@@ -1,0 +1,1273 @@
+{
+  "createdAt": "2026-10-17T21:38:47.492Z",
+  "endpoints": {
+    "local": "http://127.0.0.1:8768/spinon/",
+    "tailnet": "HTTPS Tailnet URL (host redacted)"
+  },
+  "summary": {
+    "total": 74,
+    "localHttp200AndHashMatch": 74,
+    "tailnetHttp200AndHashMatch": 74,
+    "failed": 0
+  },
+  "files": [
+    {
+      "targetRelative": "icon.svg",
+      "expectedBytes": 638,
+      "expectedSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "local": {
+        "status": 200,
+        "bytes": 638,
+        "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 638,
+        "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "internal/0019-s04-css-layout-gpu-slice.html",
+      "expectedBytes": 88646,
+      "expectedSha256": "ec0e98016e1e8fabe65526f070c2514fc058f75bde21d844e69a76e0269b9b7d",
+      "local": {
+        "status": 200,
+        "bytes": 88646,
+        "sha256": "ec0e98016e1e8fabe65526f070c2514fc058f75bde21d844e69a76e0269b9b7d",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 88646,
+        "sha256": "ec0e98016e1e8fabe65526f070c2514fc058f75bde21d844e69a76e0269b9b7d",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "internal/0019-s04-css-layout-gpu-slice.md",
+      "expectedBytes": 45589,
+      "expectedSha256": "7a8b28efa7c61b990ba4f8af06542ab2baa949cf6c195f02261d7b708ce448e3",
+      "local": {
+        "status": 200,
+        "bytes": 45589,
+        "sha256": "7a8b28efa7c61b990ba4f8af06542ab2baa949cf6c195f02261d7b708ce448e3",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 45589,
+        "sha256": "7a8b28efa7c61b990ba4f8af06542ab2baa949cf6c195f02261d7b708ce448e3",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "internal/0079-s04-10-confirmed-frame-registry.html",
+      "expectedBytes": 19127,
+      "expectedSha256": "53229da693c06a5b1de9bd54cbf18ea42d185f1a7b3d6cb9b21d614c29798a99",
+      "local": {
+        "status": 200,
+        "bytes": 19127,
+        "sha256": "53229da693c06a5b1de9bd54cbf18ea42d185f1a7b3d6cb9b21d614c29798a99",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 19127,
+        "sha256": "53229da693c06a5b1de9bd54cbf18ea42d185f1a7b3d6cb9b21d614c29798a99",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "internal/0079-s04-10-confirmed-frame-registry.md",
+      "expectedBytes": 5311,
+      "expectedSha256": "58ff5e920ff8c1cd78ce7bd4669ee52191f60c91efd448bd02e9de6e23c94e9f",
+      "local": {
+        "status": 200,
+        "bytes": 5311,
+        "sha256": "58ff5e920ff8c1cd78ce7bd4669ee52191f60c91efd448bd02e9de6e23c94e9f",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 5311,
+        "sha256": "58ff5e920ff8c1cd78ce7bd4669ee52191f60c91efd448bd02e9de6e23c94e9f",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presentation-signal-audit-2026-10-07.html",
+      "expectedBytes": 41662,
+      "expectedSha256": "ecefc8c9ad12800d646d722cb710e8113248a0e05cd6e46914b02af55335efc1",
+      "local": {
+        "status": 200,
+        "bytes": 41662,
+        "sha256": "ecefc8c9ad12800d646d722cb710e8113248a0e05cd6e46914b02af55335efc1",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 41662,
+        "sha256": "ecefc8c9ad12800d646d722cb710e8113248a0e05cd6e46914b02af55335efc1",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presentation-signal-audit-2026-10-07.md",
+      "expectedBytes": 17408,
+      "expectedSha256": "54eb9b3b3a2b27960eba00896b6fc52cbfeff967dfc0574c9d4b8e16a355e12a",
+      "local": {
+        "status": 200,
+        "bytes": 17408,
+        "sha256": "54eb9b3b3a2b27960eba00896b6fc52cbfeff967dfc0574c9d4b8e16a355e12a",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 17408,
+        "sha256": "54eb9b3b3a2b27960eba00896b6fc52cbfeff967dfc0574c9d4b8e16a355e12a",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "expectedBytes": 15634,
+      "expectedSha256": "1e3bf103527d27e1173d519c367aa1c8344ff30f657498bfef6fb3612af0b230",
+      "local": {
+        "status": 200,
+        "bytes": 15634,
+        "sha256": "1e3bf103527d27e1173d519c367aa1c8344ff30f657498bfef6fb3612af0b230",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 15634,
+        "sha256": "1e3bf103527d27e1173d519c367aa1c8344ff30f657498bfef6fb3612af0b230",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.md",
+      "expectedBytes": 2475,
+      "expectedSha256": "afd5f38ecf6ffc80294302db220cee74c70875d40d68ae943b56b2f1a0b27b1b",
+      "local": {
+        "status": 200,
+        "bytes": 2475,
+        "sha256": "afd5f38ecf6ffc80294302db220cee74c70875d40d68ae943b56b2f1a0b27b1b",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 2475,
+        "sha256": "afd5f38ecf6ffc80294302db220cee74c70875d40d68ae943b56b2f1a0b27b1b",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "expectedBytes": 20372,
+      "expectedSha256": "181976458fc5c9e0c335250c2ee3ce70d2c1cf8d73317623e082e091621d9d48",
+      "local": {
+        "status": 200,
+        "bytes": 20372,
+        "sha256": "181976458fc5c9e0c335250c2ee3ce70d2c1cf8d73317623e082e091621d9d48",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 20372,
+        "sha256": "181976458fc5c9e0c335250c2ee3ce70d2c1cf8d73317623e082e091621d9d48",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.md",
+      "expectedBytes": 6139,
+      "expectedSha256": "d5e79790d62fbd10b24c253dcbfffe3c82b737f97fb34410540bd1d72cecb0af",
+      "local": {
+        "status": 200,
+        "bytes": 6139,
+        "sha256": "d5e79790d62fbd10b24c253dcbfffe3c82b737f97fb34410540bd1d72cecb0af",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 6139,
+        "sha256": "d5e79790d62fbd10b24c253dcbfffe3c82b737f97fb34410540bd1d72cecb0af",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "expectedBytes": 19404,
+      "expectedSha256": "8112cc1dd663b8e6ace3f249645ea7a7f0464fd9fbe774e517bbf5fed2e66d38",
+      "local": {
+        "status": 200,
+        "bytes": 19404,
+        "sha256": "8112cc1dd663b8e6ace3f249645ea7a7f0464fd9fbe774e517bbf5fed2e66d38",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 19404,
+        "sha256": "8112cc1dd663b8e6ace3f249645ea7a7f0464fd9fbe774e517bbf5fed2e66d38",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.md",
+      "expectedBytes": 5777,
+      "expectedSha256": "ea2728a5e1fe84d34dc25a9bf84b5b8557ae63b6f5a8e71114f70bcfe8cd2fa6",
+      "local": {
+        "status": 200,
+        "bytes": 5777,
+        "sha256": "ea2728a5e1fe84d34dc25a9bf84b5b8557ae63b6f5a8e71114f70bcfe8cd2fa6",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 5777,
+        "sha256": "ea2728a5e1fe84d34dc25a9bf84b5b8557ae63b6f5a8e71114f70bcfe8cd2fa6",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "expectedBytes": 20565,
+      "expectedSha256": "adc9a3d12ae2f19328df930c02b6a9f67cee2aa46ca5833793f83a18fb6162d4",
+      "local": {
+        "status": 200,
+        "bytes": 20565,
+        "sha256": "adc9a3d12ae2f19328df930c02b6a9f67cee2aa46ca5833793f83a18fb6162d4",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 20565,
+        "sha256": "adc9a3d12ae2f19328df930c02b6a9f67cee2aa46ca5833793f83a18fb6162d4",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.md",
+      "expectedBytes": 6422,
+      "expectedSha256": "876ff392334d45e4aad19ffdb621cd23b585d0c3f3cc13551a8ef313140043c0",
+      "local": {
+        "status": 200,
+        "bytes": 6422,
+        "sha256": "876ff392334d45e4aad19ffdb621cd23b585d0c3f3cc13551a8ef313140043c0",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 6422,
+        "sha256": "876ff392334d45e4aad19ffdb621cd23b585d0c3f3cc13551a8ef313140043c0",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "internal/README.html",
+      "expectedBytes": 158646,
+      "expectedSha256": "980e15390c17fbb6dd8821e2051316d486209dd2cee8638547f249ae91d27efe",
+      "local": {
+        "status": 200,
+        "bytes": 158646,
+        "sha256": "980e15390c17fbb6dd8821e2051316d486209dd2cee8638547f249ae91d27efe",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 158646,
+        "sha256": "980e15390c17fbb6dd8821e2051316d486209dd2cee8638547f249ae91d27efe",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "internal/README.md",
+      "expectedBytes": 119716,
+      "expectedSha256": "96318e88e90b374087459db15c33592321c91ffc684c33884ae9a27929fcc43a",
+      "local": {
+        "status": 200,
+        "bytes": 119716,
+        "sha256": "96318e88e90b374087459db15c33592321c91ffc684c33884ae9a27929fcc43a",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 119716,
+        "sha256": "96318e88e90b374087459db15c33592321c91ffc684c33884ae9a27929fcc43a",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "logo.svg",
+      "expectedBytes": 568,
+      "expectedSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "local": {
+        "status": 200,
+        "bytes": 568,
+        "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 568,
+        "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "plan/s04-10-presented-frame-gate.html",
+      "expectedBytes": 21783,
+      "expectedSha256": "6c627f72d9e659c1af637dcadcf6b6ef66751ce3524ca3bd2ada76480a1c37e8",
+      "local": {
+        "status": 200,
+        "bytes": 21783,
+        "sha256": "6c627f72d9e659c1af637dcadcf6b6ef66751ce3524ca3bd2ada76480a1c37e8",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 21783,
+        "sha256": "6c627f72d9e659c1af637dcadcf6b6ef66751ce3524ca3bd2ada76480a1c37e8",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "plan/s04-10-presented-frame-gate.md",
+      "expectedBytes": 7742,
+      "expectedSha256": "9c688d9c28e36118553487b1b73a49dae457f86fd41bbb3e3ed6a945a1500a75",
+      "local": {
+        "status": 200,
+        "bytes": 7742,
+        "sha256": "9c688d9c28e36118553487b1b73a49dae457f86fd41bbb3e3ed6a945a1500a75",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 7742,
+        "sha256": "9c688d9c28e36118553487b1b73a49dae457f86fd41bbb3e3ed6a945a1500a75",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "roadmap.html",
+      "expectedBytes": 127027,
+      "expectedSha256": "282d54a80e2ac036a105e006bacde63f20e6776fb2a56bc83717235c1fb6a577",
+      "local": {
+        "status": 200,
+        "bytes": 127027,
+        "sha256": "282d54a80e2ac036a105e006bacde63f20e6776fb2a56bc83717235c1fb6a577",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 127027,
+        "sha256": "282d54a80e2ac036a105e006bacde63f20e6776fb2a56bc83717235c1fb6a577",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "spec/internal/0019-s04-css-layout-gpu-slice.html",
+      "expectedBytes": 88652,
+      "expectedSha256": "10b14633cdc8a6037e3d8b820b31c37884b877dc69a3dd45fb673126cc3bdf30",
+      "local": {
+        "status": 200,
+        "bytes": 88652,
+        "sha256": "10b14633cdc8a6037e3d8b820b31c37884b877dc69a3dd45fb673126cc3bdf30",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 88652,
+        "sha256": "10b14633cdc8a6037e3d8b820b31c37884b877dc69a3dd45fb673126cc3bdf30",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "spec/internal/0019-s04-css-layout-gpu-slice.md",
+      "expectedBytes": 45589,
+      "expectedSha256": "7a8b28efa7c61b990ba4f8af06542ab2baa949cf6c195f02261d7b708ce448e3",
+      "local": {
+        "status": 200,
+        "bytes": 45589,
+        "sha256": "7a8b28efa7c61b990ba4f8af06542ab2baa949cf6c195f02261d7b708ce448e3",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 45589,
+        "sha256": "7a8b28efa7c61b990ba4f8af06542ab2baa949cf6c195f02261d7b708ce448e3",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "spec/internal/0079-s04-10-confirmed-frame-registry.html",
+      "expectedBytes": 19137,
+      "expectedSha256": "a18ec6eb9e56f066f31ed16a47d59f110fe23727fe437475a22abdb8fef16542",
+      "local": {
+        "status": 200,
+        "bytes": 19137,
+        "sha256": "a18ec6eb9e56f066f31ed16a47d59f110fe23727fe437475a22abdb8fef16542",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 19137,
+        "sha256": "a18ec6eb9e56f066f31ed16a47d59f110fe23727fe437475a22abdb8fef16542",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "spec/internal/0079-s04-10-confirmed-frame-registry.md",
+      "expectedBytes": 5311,
+      "expectedSha256": "58ff5e920ff8c1cd78ce7bd4669ee52191f60c91efd448bd02e9de6e23c94e9f",
+      "local": {
+        "status": 200,
+        "bytes": 5311,
+        "sha256": "58ff5e920ff8c1cd78ce7bd4669ee52191f60c91efd448bd02e9de6e23c94e9f",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 5311,
+        "sha256": "58ff5e920ff8c1cd78ce7bd4669ee52191f60c91efd448bd02e9de6e23c94e9f",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presentation-signal-audit-2026-10-07.md",
+      "expectedBytes": 17408,
+      "expectedSha256": "54eb9b3b3a2b27960eba00896b6fc52cbfeff967dfc0574c9d4b8e16a355e12a",
+      "local": {
+        "status": 200,
+        "bytes": 17408,
+        "sha256": "54eb9b3b3a2b27960eba00896b6fc52cbfeff967dfc0574c9d4b8e16a355e12a",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 17408,
+        "sha256": "54eb9b3b3a2b27960eba00896b6fc52cbfeff967dfc0574c9d4b8e16a355e12a",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "expectedBytes": 15642,
+      "expectedSha256": "3639c9683075b85dab9e4904ca7cedc2127358ba054ecf23ef8ce8e2a3cac7f3",
+      "local": {
+        "status": 200,
+        "bytes": 15642,
+        "sha256": "3639c9683075b85dab9e4904ca7cedc2127358ba054ecf23ef8ce8e2a3cac7f3",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 15642,
+        "sha256": "3639c9683075b85dab9e4904ca7cedc2127358ba054ecf23ef8ce8e2a3cac7f3",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.md",
+      "expectedBytes": 2475,
+      "expectedSha256": "afd5f38ecf6ffc80294302db220cee74c70875d40d68ae943b56b2f1a0b27b1b",
+      "local": {
+        "status": 200,
+        "bytes": 2475,
+        "sha256": "afd5f38ecf6ffc80294302db220cee74c70875d40d68ae943b56b2f1a0b27b1b",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 2475,
+        "sha256": "afd5f38ecf6ffc80294302db220cee74c70875d40d68ae943b56b2f1a0b27b1b",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.html",
+      "expectedBytes": 20372,
+      "expectedSha256": "e25f0a17f090f7484757fc74ec5285093b1a38a9d61074dabf265cc09d9f3b0f",
+      "local": {
+        "status": 200,
+        "bytes": 20372,
+        "sha256": "e25f0a17f090f7484757fc74ec5285093b1a38a9d61074dabf265cc09d9f3b0f",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 20372,
+        "sha256": "e25f0a17f090f7484757fc74ec5285093b1a38a9d61074dabf265cc09d9f3b0f",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.md",
+      "expectedBytes": 6139,
+      "expectedSha256": "d5e79790d62fbd10b24c253dcbfffe3c82b737f97fb34410540bd1d72cecb0af",
+      "local": {
+        "status": 200,
+        "bytes": 6139,
+        "sha256": "d5e79790d62fbd10b24c253dcbfffe3c82b737f97fb34410540bd1d72cecb0af",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 6139,
+        "sha256": "d5e79790d62fbd10b24c253dcbfffe3c82b737f97fb34410540bd1d72cecb0af",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.html",
+      "expectedBytes": 19405,
+      "expectedSha256": "806592953da585b0fef8d32c0bbc4a0e61200ddb9146ef87a72b384698ef229c",
+      "local": {
+        "status": 200,
+        "bytes": 19405,
+        "sha256": "806592953da585b0fef8d32c0bbc4a0e61200ddb9146ef87a72b384698ef229c",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 19405,
+        "sha256": "806592953da585b0fef8d32c0bbc4a0e61200ddb9146ef87a72b384698ef229c",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.md",
+      "expectedBytes": 5777,
+      "expectedSha256": "ea2728a5e1fe84d34dc25a9bf84b5b8557ae63b6f5a8e71114f70bcfe8cd2fa6",
+      "local": {
+        "status": 200,
+        "bytes": 5777,
+        "sha256": "ea2728a5e1fe84d34dc25a9bf84b5b8557ae63b6f5a8e71114f70bcfe8cd2fa6",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 5777,
+        "sha256": "ea2728a5e1fe84d34dc25a9bf84b5b8557ae63b6f5a8e71114f70bcfe8cd2fa6",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.html",
+      "expectedBytes": 20565,
+      "expectedSha256": "033d4d90cf7602c4b3fc608edb96ded2f51ba5919bbd15b346d02a8d3a0af78f",
+      "local": {
+        "status": 200,
+        "bytes": 20565,
+        "sha256": "033d4d90cf7602c4b3fc608edb96ded2f51ba5919bbd15b346d02a8d3a0af78f",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 20565,
+        "sha256": "033d4d90cf7602c4b3fc608edb96ded2f51ba5919bbd15b346d02a8d3a0af78f",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "spec/internal/evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.md",
+      "expectedBytes": 6422,
+      "expectedSha256": "876ff392334d45e4aad19ffdb621cd23b585d0c3f3cc13551a8ef313140043c0",
+      "local": {
+        "status": 200,
+        "bytes": 6422,
+        "sha256": "876ff392334d45e4aad19ffdb621cd23b585d0c3f3cc13551a8ef313140043c0",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 6422,
+        "sha256": "876ff392334d45e4aad19ffdb621cd23b585d0c3f3cc13551a8ef313140043c0",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "spec/internal/README.html",
+      "expectedBytes": 158683,
+      "expectedSha256": "7c408439e2e799ba73f7bc68d11ef28f33c8f2188e87c12af29418c81b24b480",
+      "local": {
+        "status": 200,
+        "bytes": 158683,
+        "sha256": "7c408439e2e799ba73f7bc68d11ef28f33c8f2188e87c12af29418c81b24b480",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 158683,
+        "sha256": "7c408439e2e799ba73f7bc68d11ef28f33c8f2188e87c12af29418c81b24b480",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "spec/internal/README.md",
+      "expectedBytes": 119716,
+      "expectedSha256": "96318e88e90b374087459db15c33592321c91ffc684c33884ae9a27929fcc43a",
+      "local": {
+        "status": 200,
+        "bytes": 119716,
+        "sha256": "96318e88e90b374087459db15c33592321c91ffc684c33884ae9a27929fcc43a",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 119716,
+        "sha256": "96318e88e90b374087459db15c33592321c91ffc684c33884ae9a27929fcc43a",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "spec/plan/s04-10-presented-frame-gate.md",
+      "expectedBytes": 7742,
+      "expectedSha256": "9c688d9c28e36118553487b1b73a49dae457f86fd41bbb3e3ed6a945a1500a75",
+      "local": {
+        "status": 200,
+        "bytes": 7742,
+        "sha256": "9c688d9c28e36118553487b1b73a49dae457f86fd41bbb3e3ed6a945a1500a75",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 7742,
+        "sha256": "9c688d9c28e36118553487b1b73a49dae457f86fd41bbb3e3ed6a945a1500a75",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "spec/STATUS.html",
+      "expectedBytes": 348123,
+      "expectedSha256": "f3123a1d9dc27b5ebc8f27202a874093ff6e98e6eb8755875b31ff5242bfbd9b",
+      "local": {
+        "status": 200,
+        "bytes": 348123,
+        "sha256": "f3123a1d9dc27b5ebc8f27202a874093ff6e98e6eb8755875b31ff5242bfbd9b",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 348123,
+        "sha256": "f3123a1d9dc27b5ebc8f27202a874093ff6e98e6eb8755875b31ff5242bfbd9b",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "spec/STATUS.md",
+      "expectedBytes": 272604,
+      "expectedSha256": "4f619eedc657360a80984d08e0e00e0e927a5706d2dd888bd10bcd66c95e48da",
+      "local": {
+        "status": 200,
+        "bytes": 272604,
+        "sha256": "4f619eedc657360a80984d08e0e00e0e927a5706d2dd888bd10bcd66c95e48da",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 272604,
+        "sha256": "4f619eedc657360a80984d08e0e00e0e927a5706d2dd888bd10bcd66c95e48da",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/css/styles.8d918fd78e.css",
+      "expectedBytes": 73952,
+      "expectedSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "local": {
+        "status": 200,
+        "bytes": 73952,
+        "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 73952,
+        "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/3.ae702e3e80.js",
+      "expectedBytes": 217077,
+      "expectedSha256": "33fc8bdfc9f4d81159ab48526bd88d30a15cc69c829241893708f7cb3d05cad0",
+      "local": {
+        "status": 200,
+        "bytes": 217077,
+        "sha256": "33fc8bdfc9f4d81159ab48526bd88d30a15cc69c829241893708f7cb3d05cad0",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 217077,
+        "sha256": "33fc8bdfc9f4d81159ab48526bd88d30a15cc69c829241893708f7cb3d05cad0",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/3.ae702e3e80.js.LICENSE.txt",
+      "expectedBytes": 384,
+      "expectedSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "local": {
+        "status": 200,
+        "bytes": 384,
+        "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 384,
+        "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/l.76b60f2b87.js",
+      "expectedBytes": 98,
+      "expectedSha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "local": {
+        "status": 200,
+        "bytes": 98,
+        "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 98,
+        "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-04bc2c24c122.f63a727938.js",
+      "expectedBytes": 9707,
+      "expectedSha256": "7f3906de7d390483c7a6245cfdfbdfb6ab41990dfe83c5be8b7913888bf1042b",
+      "local": {
+        "status": 200,
+        "bytes": 9707,
+        "sha256": "7f3906de7d390483c7a6245cfdfbdfb6ab41990dfe83c5be8b7913888bf1042b",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 9707,
+        "sha256": "7f3906de7d390483c7a6245cfdfbdfb6ab41990dfe83c5be8b7913888bf1042b",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-0f4abc145d07.3deb9161b8.js",
+      "expectedBytes": 92617,
+      "expectedSha256": "178931e1eab8fc2672a2121d0eee589df202583a8ee17c2b82841320e519806a",
+      "local": {
+        "status": 200,
+        "bytes": 92617,
+        "sha256": "178931e1eab8fc2672a2121d0eee589df202583a8ee17c2b82841320e519806a",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 92617,
+        "sha256": "178931e1eab8fc2672a2121d0eee589df202583a8ee17c2b82841320e519806a",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-107ea9bc59bb.0c5a98f666.js",
+      "expectedBytes": 12341,
+      "expectedSha256": "30698d7ce820665440108525187c318a61ed45d446a27a9d67110d2276d750a8",
+      "local": {
+        "status": 200,
+        "bytes": 12341,
+        "sha256": "30698d7ce820665440108525187c318a61ed45d446a27a9d67110d2276d750a8",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 12341,
+        "sha256": "30698d7ce820665440108525187c318a61ed45d446a27a9d67110d2276d750a8",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-1c606a9bcf5f.a4aa12c88f.js",
+      "expectedBytes": 9723,
+      "expectedSha256": "6fe08b39cd17911b4b67f8ed7cdd98124539e2eb7b99402120e866a61aa82542",
+      "local": {
+        "status": 200,
+        "bytes": 9723,
+        "sha256": "6fe08b39cd17911b4b67f8ed7cdd98124539e2eb7b99402120e866a61aa82542",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 9723,
+        "sha256": "6fe08b39cd17911b4b67f8ed7cdd98124539e2eb7b99402120e866a61aa82542",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-2308615ee227.6ce5d22125.js",
+      "expectedBytes": 5396,
+      "expectedSha256": "f108c45eb239c0eab8f4bf82eff5bf92b22eb71ba2fb6bee354dca22bc36ccfb",
+      "local": {
+        "status": 200,
+        "bytes": 5396,
+        "sha256": "f108c45eb239c0eab8f4bf82eff5bf92b22eb71ba2fb6bee354dca22bc36ccfb",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 5396,
+        "sha256": "f108c45eb239c0eab8f4bf82eff5bf92b22eb71ba2fb6bee354dca22bc36ccfb",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-311b470225ee.553faa2faf.js",
+      "expectedBytes": 12489,
+      "expectedSha256": "0feb21f8167e78b95d4a74a0deed80df41bb2848814989008351e1a334161658",
+      "local": {
+        "status": 200,
+        "bytes": 12489,
+        "sha256": "0feb21f8167e78b95d4a74a0deed80df41bb2848814989008351e1a334161658",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 12489,
+        "sha256": "0feb21f8167e78b95d4a74a0deed80df41bb2848814989008351e1a334161658",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-5eb92dc32e34.e938a50a36.js",
+      "expectedBytes": 92636,
+      "expectedSha256": "5ff6d19361b31afae0c179b9bd336a6a8956a45f978dfd5b2fb7277a048e5aba",
+      "local": {
+        "status": 200,
+        "bytes": 92636,
+        "sha256": "5ff6d19361b31afae0c179b9bd336a6a8956a45f978dfd5b2fb7277a048e5aba",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 92636,
+        "sha256": "5ff6d19361b31afae0c179b9bd336a6a8956a45f978dfd5b2fb7277a048e5aba",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-6c33a3943990.04e1df3fde.js",
+      "expectedBytes": 374786,
+      "expectedSha256": "09f8f0098ff2938f57c5edb16ac6460e4e437e4e1592f0b9cf73e5a8290d2554",
+      "local": {
+        "status": 200,
+        "bytes": 374786,
+        "sha256": "09f8f0098ff2938f57c5edb16ac6460e4e437e4e1592f0b9cf73e5a8290d2554",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 374786,
+        "sha256": "09f8f0098ff2938f57c5edb16ac6460e4e437e4e1592f0b9cf73e5a8290d2554",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-6fe650616266.c1f2c69904.js",
+      "expectedBytes": 5019,
+      "expectedSha256": "8b25f8e36f224c990cb8482ab09f7c557922f14d09bae463f4c34604166c6fe1",
+      "local": {
+        "status": 200,
+        "bytes": 5019,
+        "sha256": "8b25f8e36f224c990cb8482ab09f7c557922f14d09bae463f4c34604166c6fe1",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 5019,
+        "sha256": "8b25f8e36f224c990cb8482ab09f7c557922f14d09bae463f4c34604166c6fe1",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-73701410f94e.e51cf0ae32.js",
+      "expectedBytes": 6214,
+      "expectedSha256": "f7af4746e50ed61d4d56d70e4f3b4e05ed5dd3ce4b59469788081a0d04dc46b9",
+      "local": {
+        "status": 200,
+        "bytes": 6214,
+        "sha256": "f7af4746e50ed61d4d56d70e4f3b4e05ed5dd3ce4b59469788081a0d04dc46b9",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 6214,
+        "sha256": "f7af4746e50ed61d4d56d70e4f3b4e05ed5dd3ce4b59469788081a0d04dc46b9",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-7b63acbe348a.876aa00666.js",
+      "expectedBytes": 12346,
+      "expectedSha256": "bc3282f168e7537aba7527cf9b89547e40671a12a0495cb76a849ed89e2996f1",
+      "local": {
+        "status": 200,
+        "bytes": 12346,
+        "sha256": "bc3282f168e7537aba7527cf9b89547e40671a12a0495cb76a849ed89e2996f1",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 12346,
+        "sha256": "bc3282f168e7537aba7527cf9b89547e40671a12a0495cb76a849ed89e2996f1",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-7ce2535ac56d.f8d3c7fa37.js",
+      "expectedBytes": 374795,
+      "expectedSha256": "f4b6436ab11fd4921b3cb6225b9dada0bb52190e836c7e8eef24e5a911af06de",
+      "local": {
+        "status": 200,
+        "bytes": 374795,
+        "sha256": "f4b6436ab11fd4921b3cb6225b9dada0bb52190e836c7e8eef24e5a911af06de",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 374795,
+        "sha256": "f4b6436ab11fd4921b3cb6225b9dada0bb52190e836c7e8eef24e5a911af06de",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-a1017bdf23ca.43625bd706.js",
+      "expectedBytes": 175203,
+      "expectedSha256": "0583380a52d2f7784ea10dc7251f8025e8e15613db8e9a14452be41ceba9d701",
+      "local": {
+        "status": 200,
+        "bytes": 175203,
+        "sha256": "0583380a52d2f7784ea10dc7251f8025e8e15613db8e9a14452be41ceba9d701",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 175203,
+        "sha256": "0583380a52d2f7784ea10dc7251f8025e8e15613db8e9a14452be41ceba9d701",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-a991d6de67ad.df77ec4b93.js",
+      "expectedBytes": 175247,
+      "expectedSha256": "78483a2a58a2fbafe80d402f355aa1485d6143165995bb53234670da259588d7",
+      "local": {
+        "status": 200,
+        "bytes": 175247,
+        "sha256": "78483a2a58a2fbafe80d402f355aa1485d6143165995bb53234670da259588d7",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 175247,
+        "sha256": "78483a2a58a2fbafe80d402f355aa1485d6143165995bb53234670da259588d7",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-aea8aafbbb87.0539173068.js",
+      "expectedBytes": 11011,
+      "expectedSha256": "02233cb938d5bdcc50589a0c2556260fb91f551864e54257e2aead5d50377dcf",
+      "local": {
+        "status": 200,
+        "bytes": 11011,
+        "sha256": "02233cb938d5bdcc50589a0c2556260fb91f551864e54257e2aead5d50377dcf",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 11011,
+        "sha256": "02233cb938d5bdcc50589a0c2556260fb91f551864e54257e2aead5d50377dcf",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-afc04a26c114.0621590058.js",
+      "expectedBytes": 13095,
+      "expectedSha256": "d1e1e49cd3383f648be016631d42896be89c78bffec2f32763212436b0856e0a",
+      "local": {
+        "status": 200,
+        "bytes": 13095,
+        "sha256": "d1e1e49cd3383f648be016631d42896be89c78bffec2f32763212436b0856e0a",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 13095,
+        "sha256": "d1e1e49cd3383f648be016631d42896be89c78bffec2f32763212436b0856e0a",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-b33563055168.3ea9c13662.js",
+      "expectedBytes": 7917,
+      "expectedSha256": "0036f2565da1bf391e67e127ca2ac0673f669384f493cafa7003cba6f4bbe78e",
+      "local": {
+        "status": 200,
+        "bytes": 7917,
+        "sha256": "0036f2565da1bf391e67e127ca2ac0673f669384f493cafa7003cba6f4bbe78e",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 7917,
+        "sha256": "0036f2565da1bf391e67e127ca2ac0673f669384f493cafa7003cba6f4bbe78e",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-c6d90fac6bcd.9cb003e466.js",
+      "expectedBytes": 29816,
+      "expectedSha256": "5a66f4442ae36dc064e208edfcaaf8e36419cbc7937596494b9034c1383c20a4",
+      "local": {
+        "status": 200,
+        "bytes": 29816,
+        "sha256": "5a66f4442ae36dc064e208edfcaaf8e36419cbc7937596494b9034c1383c20a4",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 29816,
+        "sha256": "5a66f4442ae36dc064e208edfcaaf8e36419cbc7937596494b9034c1383c20a4",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-c7b1c23e00a1.99b7981dd4.js",
+      "expectedBytes": 3078,
+      "expectedSha256": "9d73cfbf51aa6567ea6a492f550fa64c1b906ee0eaf657ada4f9335e2e2a4425",
+      "local": {
+        "status": 200,
+        "bytes": 3078,
+        "sha256": "9d73cfbf51aa6567ea6a492f550fa64c1b906ee0eaf657ada4f9335e2e2a4425",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 3078,
+        "sha256": "9d73cfbf51aa6567ea6a492f550fa64c1b906ee0eaf657ada4f9335e2e2a4425",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-d0f54d53ad2b.72fbe195f7.js",
+      "expectedBytes": 6224,
+      "expectedSha256": "ded2e9b48205edfed4a7db170b06bce6bf5ad5b5bf81c9b3597bda1c4b1ce04a",
+      "local": {
+        "status": 200,
+        "bytes": 6224,
+        "sha256": "ded2e9b48205edfed4a7db170b06bce6bf5ad5b5bf81c9b3597bda1c4b1ce04a",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 6224,
+        "sha256": "ded2e9b48205edfed4a7db170b06bce6bf5ad5b5bf81c9b3597bda1c4b1ce04a",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-e0472d60744a.f05e638bce.js",
+      "expectedBytes": 11012,
+      "expectedSha256": "13446021e08c311d8f3533b2151f058cb54f8d8f8577c20e173e8e8eadc2cb51",
+      "local": {
+        "status": 200,
+        "bytes": 11012,
+        "sha256": "13446021e08c311d8f3533b2151f058cb54f8d8f8577c20e173e8e8eadc2cb51",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 11012,
+        "sha256": "13446021e08c311d8f3533b2151f058cb54f8d8f8577c20e173e8e8eadc2cb51",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/async/route-ef6f0445d65c.bbbd238adf.js",
+      "expectedBytes": 13100,
+      "expectedSha256": "032fdbed08a1fe105349e70277a224960370da441f0d006dafd401f2c8e62ad6",
+      "local": {
+        "status": 200,
+        "bytes": 13100,
+        "sha256": "032fdbed08a1fe105349e70277a224960370da441f0d006dafd401f2c8e62ad6",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 13100,
+        "sha256": "032fdbed08a1fe105349e70277a224960370da441f0d006dafd401f2c8e62ad6",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/index.0c32043ae9.js",
+      "expectedBytes": 35419,
+      "expectedSha256": "896a96cadf393f108b29f1ae7e3713a8179332de7b98ebe2f7305ad62a1b0fba",
+      "local": {
+        "status": 200,
+        "bytes": 35419,
+        "sha256": "896a96cadf393f108b29f1ae7e3713a8179332de7b98ebe2f7305ad62a1b0fba",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 35419,
+        "sha256": "896a96cadf393f108b29f1ae7e3713a8179332de7b98ebe2f7305ad62a1b0fba",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/lib-react.801d719c4f.js",
+      "expectedBytes": 218366,
+      "expectedSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "local": {
+        "status": 200,
+        "bytes": 218366,
+        "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 218366,
+        "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "expectedBytes": 1209,
+      "expectedSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "local": {
+        "status": 200,
+        "bytes": 1209,
+        "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 1209,
+        "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/lib-router.d3b08da66f.js",
+      "expectedBytes": 35366,
+      "expectedSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "local": {
+        "status": 200,
+        "bytes": 35366,
+        "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 35366,
+        "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "expectedBytes": 222,
+      "expectedSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "local": {
+        "status": 200,
+        "bytes": 222,
+        "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 222,
+        "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/js/styles.aba03c5c90.js",
+      "expectedBytes": 472,
+      "expectedSha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5",
+      "local": {
+        "status": 200,
+        "bytes": 472,
+        "sha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 472,
+        "sha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "static/search_index.ko.ee6e57c0.json",
+      "expectedBytes": 762135,
+      "expectedSha256": "ee6e57c041f04a555dc41f73f07b5bdf866dea83bca37cd301c3fdb76b4ece25",
+      "local": {
+        "status": 200,
+        "bytes": 762135,
+        "sha256": "ee6e57c041f04a555dc41f73f07b5bdf866dea83bca37cd301c3fdb76b4ece25",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 762135,
+        "sha256": "ee6e57c041f04a555dc41f73f07b5bdf866dea83bca37cd301c3fdb76b4ece25",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "STATUS.html",
+      "expectedBytes": 348571,
+      "expectedSha256": "726e1f2ab7b0353ad63c83ba2c6d862b0bc2353261ea0b51b6bf3ae211d1ba71",
+      "local": {
+        "status": 200,
+        "bytes": 348571,
+        "sha256": "726e1f2ab7b0353ad63c83ba2c6d862b0bc2353261ea0b51b6bf3ae211d1ba71",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 348571,
+        "sha256": "726e1f2ab7b0353ad63c83ba2c6d862b0bc2353261ea0b51b6bf3ae211d1ba71",
+        "matches": true
+      }
+    },
+    {
+      "targetRelative": "STATUS.md",
+      "expectedBytes": 272604,
+      "expectedSha256": "4f619eedc657360a80984d08e0e00e0e927a5706d2dd888bd10bcd66c95e48da",
+      "local": {
+        "status": 200,
+        "bytes": 272604,
+        "sha256": "4f619eedc657360a80984d08e0e00e0e927a5706d2dd888bd10bcd66c95e48da",
+        "matches": true
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 272604,
+        "sha256": "4f619eedc657360a80984d08e0e00e0e927a5706d2dd888bd10bcd66c95e48da",
+        "matches": true
+      }
+    }
+  ]
+}

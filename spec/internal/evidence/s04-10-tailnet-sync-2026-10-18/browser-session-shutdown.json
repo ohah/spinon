@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-10-17T21:49:57Z",
+  "session": "spinon-s04-10-tailnet-sync-20261018-6aa2cba22f0a",
+  "closeCommand": "agent-browser --session <task-session> close",
+  "closeResult": "Browser closed",
+  "sessionAfterClose": {
+    "active": false,
+    "pid": null,
+    "runtime": null
+  },
+  "processCheck": {
+    "recordedSessionPidExited": true,
+    "taskCreatedAgentBrowserProcessesRemaining": 0
+  },
+  "scope": "Only the Agent Browser session started for this Tailnet verification was closed. Other sessions and the preview listener were left untouched."
+}
