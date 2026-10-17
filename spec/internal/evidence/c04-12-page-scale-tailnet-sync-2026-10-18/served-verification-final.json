@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-17T15:26:30.888389+00:00",
+  "created_utc": "2026-10-17T15:31:56.217787+00:00",
   "source_files": 93,
   "requests": 186,
   "http_200": 186,
@@ -586,18 +586,18 @@
       "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/browser-verification.json",
       "url": "http://127.0.0.1:8768/spinon/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/browser-verification.json",
       "status": 200,
-      "bytes": 3816,
-      "sha256": "de0f7b08013ca19edf3725789a51285e29d8f5cf30fc002be86665368f21ab36",
-      "expected_sha256": "de0f7b08013ca19edf3725789a51285e29d8f5cf30fc002be86665368f21ab36",
+      "bytes": 6340,
+      "sha256": "538cd605e13999e883a09c2c220eab6a9785f7ea387cc41a89c8d2c7dc42b6df",
+      "expected_sha256": "538cd605e13999e883a09c2c220eab6a9785f7ea387cc41a89c8d2c7dc42b6df",
       "match": true
     },
     {
       "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/browser-verification.json",
       "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/browser-verification.json",
       "status": 200,
-      "bytes": 3816,
-      "sha256": "de0f7b08013ca19edf3725789a51285e29d8f5cf30fc002be86665368f21ab36",
-      "expected_sha256": "de0f7b08013ca19edf3725789a51285e29d8f5cf30fc002be86665368f21ab36",
+      "bytes": 6340,
+      "sha256": "538cd605e13999e883a09c2c220eab6a9785f7ea387cc41a89c8d2c7dc42b6df",
+      "expected_sha256": "538cd605e13999e883a09c2c220eab6a9785f7ea387cc41a89c8d2c7dc42b6df",
       "match": true
     },
     {
@@ -730,18 +730,18 @@
       "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/selected-build.log",
       "url": "http://127.0.0.1:8768/spinon/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/selected-build.log",
       "status": 200,
-      "bytes": 9424,
-      "sha256": "75883569b72331d91f31018568f5f956e9a0e09e60f7ba8d744167b675c0ba97",
-      "expected_sha256": "75883569b72331d91f31018568f5f956e9a0e09e60f7ba8d744167b675c0ba97",
+      "bytes": 9403,
+      "sha256": "f9ac7faf6badb834d8fcb92f7937ccfe0c4ff83d0ceb10a96fa700dd82986e3b",
+      "expected_sha256": "f9ac7faf6badb834d8fcb92f7937ccfe0c4ff83d0ceb10a96fa700dd82986e3b",
       "match": true
     },
     {
       "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/selected-build.log",
       "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/selected-build.log",
       "status": 200,
-      "bytes": 9424,
-      "sha256": "75883569b72331d91f31018568f5f956e9a0e09e60f7ba8d744167b675c0ba97",
-      "expected_sha256": "75883569b72331d91f31018568f5f956e9a0e09e60f7ba8d744167b675c0ba97",
+      "bytes": 9403,
+      "sha256": "f9ac7faf6badb834d8fcb92f7937ccfe0c4ff83d0ceb10a96fa700dd82986e3b",
+      "expected_sha256": "f9ac7faf6badb834d8fcb92f7937ccfe0c4ff83d0ceb10a96fa700dd82986e3b",
       "match": true
     },
     {

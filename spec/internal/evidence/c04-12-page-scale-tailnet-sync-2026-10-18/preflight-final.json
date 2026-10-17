@@ -942,5 +942,52 @@
       "target_existed": false,
       "target_before": null
     }
+  ],
+  "post_close_refresh": {
+    "created_utc": "2026-10-17T15:31:24.495181+00:00",
+    "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/browser-verification.json",
+    "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/post-close-refresh/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/browser-verification.json",
+    "before": {
+      "bytes": 3816,
+      "sha256": "de0f7b08013ca19edf3725789a51285e29d8f5cf30fc002be86665368f21ab36"
+    },
+    "backup_matches_before": true,
+    "after": {
+      "bytes": 6340,
+      "sha256": "538cd605e13999e883a09c2c220eab6a9785f7ea387cc41a89c8d2c7dc42b6df"
+    },
+    "copy_match": true,
+    "listener_pid": 1191,
+    "deletions": 0
+  },
+  "post_close_refreshes": [
+    {
+      "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/browser-verification.json",
+      "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/post-close-refresh/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/browser-verification.json",
+      "before": {
+        "bytes": 3816,
+        "sha256": "de0f7b08013ca19edf3725789a51285e29d8f5cf30fc002be86665368f21ab36"
+      },
+      "backup_matches_before": true,
+      "after": {
+        "bytes": 6340,
+        "sha256": "538cd605e13999e883a09c2c220eab6a9785f7ea387cc41a89c8d2c7dc42b6df"
+      },
+      "copy_match": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/selected-build.log",
+      "backup": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-page-scale-tailnet-sync-20261018/post-close-refresh/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/selected-build.log",
+      "before": {
+        "bytes": 9424,
+        "sha256": "75883569b72331d91f31018568f5f956e9a0e09e60f7ba8d744167b675c0ba97"
+      },
+      "backup_matches_before": true,
+      "after": {
+        "bytes": 9403,
+        "sha256": "f9ac7faf6badb834d8fcb92f7937ccfe0c4ff83d0ceb10a96fa700dd82986e3b"
+      },
+      "copy_match": true
+    }
   ]
 }
