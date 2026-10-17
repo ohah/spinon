@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "source_revision": "12e5daa75f8ae15dfd1c720e08b1ca739dcbb637",
+  "captured_at_utc": "2026-10-17T20:19:03Z",
+  "platform": "iPadOS Simulator",
+  "device_name": "iPad Pro 13-inch (M5)",
+  "device_udid": "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+  "runtime_version": "26.2",
+  "xcode_version_actual": 2620,
+  "xcode_product_build_version": "17C52",
+  "build_flags": {
+    "SPINON_ENABLE_C04_RUNTIME_GPU": 1,
+    "SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST": 1
+  },
+  "launch_arguments": [
+    "--spinon-c133-scroll-gesture",
+    "--spinon-c133-native-wheel-preflight"
+  ],
+  "v8_revision_pinned": "7b50b62cb18f28617959e8452e2cd18195b38bcf",
+  "v8_revision_used": "7b50b62cb18f28617959e8452e2cd18195b38bcf",
+  "app_executable_sha256": "9b5f146e99d9d131bd0d848929f3b2cf507c271c4ae561055bde9530ab38100a",
+  "initial_screenshot_sha256": "0e55056f9b1b406e51e81f679063afdd4b34ecb199c2c0195d322c0e2f518a66",
+  "ready_log": "SPINON_C133_READY",
+  "native_wheel_callback_observed": false,
+  "native_scroll_event_sent": false,
+  "reason": "loginwindow lock overlay was above Simulator windows and Simulator could not be foregrounded"
+}

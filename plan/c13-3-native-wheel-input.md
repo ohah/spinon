@@ -1,6 +1,6 @@
 # C13.3 · 네이티브 wheel·trackpad 입력 수집과 정규화
 
-**상태:** Android API 37 AVD native mouse wheel 행렬 8/8, 기존 거부 3/3, Control-wheel 4/4, 복합 source 2/2와 ADB touchpad ACTION_SCROLL fixture route 1/1 통과. API 29 ARM64 AVD 최소 지원선 follow-up에서도 ±H/V·대각 8/8 및 Control-wheel 거부 4/4를 확인했다. 기본 surface는 point-outside-surface로 거부되고 opt-in test harness의 surface 이동에서 target 7·revision 2까지 처리했다. 실제 trackpad hardware와 iPadOS callback은 미검증이며 iOS adapter는 보류.
+**상태:** Android API 37 AVD native mouse wheel 행렬 8/8, 기존 거부 3/3, Control-wheel 4/4, 복합 source 2/2와 ADB touchpad ACTION_SCROLL fixture route 1/1 통과. API 29 ARM64 AVD 최소 지원선 follow-up에서도 ±H/V·대각 8/8 및 Control-wheel 거부 4/4를 확인했다. 기본 surface는 point-outside-surface로 거부되고 opt-in test harness의 surface 이동에서 target 7·revision 2까지 처리했다. iPadOS 26.2 opt-in 앱은 재빌드 후 ready까지 확인했지만 macOS `loginwindow`가 Simulator를 덮어 이번 실행에서 native scroll 입력은 보내지 않았다. 실제 trackpad hardware와 iPadOS callback은 미검증이며 iOS adapter는 보류. [2026-10-18 iPadOS 사전 점검](../spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/README.md)
 **ADB touchpad follow-up:** [실행·화면·artifact](../spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/README.md) · [구현 검토 20개](../spec/internal/evidence/c13-3-android-avd-touchpad-point-implementation-review-20-2026-10-16.md) · [PR 변경 검토 30개](../spec/internal/evidence/c13-3-android-avd-touchpad-point-pr-delta-review-30-2026-10-16.md)
 **Android API 29 follow-up:** [사전 판정·실행·화면·pixel·hash](../internal/evidence/c13-3-native-wheel-api29-2026-10-17/README.html) · [구현·실행 적대 검토 20개](../internal/evidence/c13-3-native-wheel-api29-2026-10-17/implementation-review-20.html) · [PR 변경 적대 검토 30개](../internal/evidence/c13-3-native-wheel-api29-2026-10-17/pr-delta-review-30.html)
 **공식 상위 항목:** [구현 상태 대장](../spec/STATUS.md#css-구현-체크리스트)
@@ -89,6 +89,10 @@ fixture-test build와 spinon_c133_touchpad_origin_target intent가 함께 켜진
 ±H/V와 네 대각 입력 8/8에서 `ViewConfiguration` factor 168 physical px, SurfaceView scale 2.625 px/CSS px, 각 축 64 CSS px, point `(132.19048,112)` CSS px, queue sequence 1·target 7·revision 2 및 owner offsets가 기존 oracle과 일치했다. 좌우 Control × H/V는 `modifiers=2`로 queue 전에 4/4 거부됐다. positive-positive diagonal의 aligned SurfaceView 661,500 pixel 비교는 scrollport 바깥 changed 0, 안쪽 50,684였고 Control-left horizontal 거부 대조는 661,500 pixel 모두 unchanged였다. [API 29 사전 판정·실행·화면·pixel·hash](../internal/evidence/c13-3-native-wheel-api29-2026-10-17/README.html).
 
 이 AVD는 GL/ANGLE/SwiftShader 소프트웨어 renderer이며 4 KB page size다. AVD uinput 결과를 물리 mouse/trackpad나 실기기 동작으로 확대하지 않는다. iOS UIKit callback/sign 미관찰로 native iOS adapter gate는 여전히 미통과이고 C13.3 전체는 미완료다.
+
+## 2026-10-18 iPadOS Simulator native wheel preflight 재실행
+
+iPad Pro 13-inch (M5) / iOS 26.2 Simulator의 C13.3 opt-in 앱을 현재 소스와 고정 V8 revision으로 다시 빌드했다. `SPINON_C133_READY`에서 고정 canvas와 초기 scroll state를 확인했다. host WindowServer 목록에는 Simulator 창보다 위에 전체 화면 `loginwindow` layer가 있었고 전경 앱은 System Settings였다. Simulator 활성화 요청 뒤에도 전경 앱이 바뀌지 않아 이번 실행에서는 scroll event를 보내지 않았다. 따라서 UIKit callback/source/translation sign을 관찰하지 않았고 adapter gate와 C13.3 완료 상태는 바꾸지 않았다. [빌드·ready 화면·host window 관찰·hash 근거](../spec/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/README.md).
 
 ## 실행·증거 경계
 
