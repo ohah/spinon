@@ -1,0 +1,98 @@
+{
+  "captured_utc": "2026-10-17T14:28:58Z",
+  "browser": {
+    "agent_browser_cli": "0.31.1",
+    "engine": "HeadlessChrome/155.0.0.0",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36"
+  },
+  "roadmap": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "title": "스피논 구현 로드맵",
+    "counter": "206개 표시 · 공식 완료 73/206",
+    "historical_61_197_label": true,
+    "viewport_summary_present": true
+  },
+  "status": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+    "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+    "c04_12_parent_checked": false,
+    "visual_viewport_substep_checked": true
+  },
+  "pages": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c04-12-visual-viewport.html",
+      "title": "C04.12 visual viewport와 CSS layout 높이 - 스피논 문서",
+      "opened": true
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/0077-c04-12-root-html-document.html",
+      "title": "0077 · C04.12 루트 HTML document 진입점 - 스피논 문서",
+      "c04_12_uncompleted_text_present": true
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-visual-viewport-2026-10-17/README.html",
+      "title": "C04.12 visual viewport 사전 비교 - 스피논 문서",
+      "images": [
+        {
+          "alt": "Android API 37 AVD의 C04.12 HTML asset fixture PASS 화면",
+          "width": 1080,
+          "height": 2400,
+          "loaded": true
+        },
+        {
+          "alt": "iPhone 17 Pro Simulator의 C04.12 HTML asset fixture PASS 화면",
+          "width": 1206,
+          "height": 2622,
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-tailnet-roadmap-sync-2026-10-17/README.html",
+      "title": "C04.12 Tailnet 로드맵 동기화와 화면 검증 - 스피논 문서",
+      "images_loaded": 3
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "tailnet-roadmap-agent-browser.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 421732,
+      "sha256": "d51d736e6bd0e4832f7dd2c2c583a80669574500817cb3eb20d173aa2e615979",
+      "captured_by": "Agent Browser 0.31.1 screenshot"
+    },
+    {
+      "file": "tailnet-counter-agent-browser.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 330777,
+      "sha256": "ad0e98445075dfb188ee28ad1a3ba52e1363eca861f72cf10cbba96d5094ef8c",
+      "captured_by": "Agent Browser 0.31.1 screenshot"
+    },
+    {
+      "file": "tailnet-plan-agent-browser.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 191807,
+      "sha256": "b25604947d6eaa0daffc1484058016fb26eb1667e1d1aef22b5b61937741f317",
+      "captured_by": "Agent Browser 0.31.1 screenshot"
+    }
+  ],
+  "shutdown": {
+    "close_command": "agent-browser --session spinon-c04-12-tailnet-20261017 close",
+    "closed": true,
+    "session_list_empty": true,
+    "session_info_active": false,
+    "session_info_pid": null,
+    "former_session_pid": 40928,
+    "former_pid_exists_after_close": false
+  },
+  "preserved": {
+    "tailscale_listener_pid": 1191,
+    "tailscale_listener_restarted": false,
+    "tmux_changed": false,
+    "terminal_browser_touched": false,
+    "simulator_or_physical_device_run": false
+  }
+}

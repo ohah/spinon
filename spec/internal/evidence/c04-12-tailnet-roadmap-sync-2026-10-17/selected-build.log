@@ -1,0 +1,45 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: /private/tmp/spinon-c04-12-page-scale-20261017
+warn    Current dist path: /private/tmp/spinon-c04-12-viewport-render-20261017/out-final2
+info    Rendering pages...
+success Pages rendered in 61 ms.
+ready   built in 0.45s (web)
+ready   built in 0.45s (node)
+
+File (web)                                                                                                         Size        Gzip   
+../spinon-c04-12-viewport-render-20261017/out-final2/static/js/async/l.76b60f2b87.js                               0.10 kB     0.09 kB
+../spinon-c04-12-viewport-render-20261017/out-final2/static/js/styles.b5d9a69293.js                                0.47 kB     0.23 kB
+../spinon-c04-12-viewport-render-20261017/out-final2/icon.svg                                                      0.64 kB     0.41 kB
+../spinon-c04-12-viewport-render-20261017/out-final2/static/js/async/route-c58db35cda4b.e4a65b3a3a.js              8.7 kB      3.1 kB
+../spinon-c04-12-viewport-render-20261017/out-final2/static/js/async/route-f7ef4ddf795f.719d922e78.js              9.1 kB      3.2 kB
+../spinon-c04-12-viewport-render-20261017/out-final2/static/js/async/route-88803213741a.08fe20902c.js              11.8 kB     3.5 kB
+../spinon-c04-12-viewport-render-20261017/out-final2/static/js/index.80441781bc.js                                 15.9 kB     6.6 kB
+../spinon-c04-12-viewport-render-20261017/out-final2/static/js/async/route-7ff1bc4fef68.7b2caa6a84.js              26.6 kB     7.6 kB
+../spinon-c04-12-viewport-render-20261017/out-final2/static/js/lib-router.d3b08da66f.js                            35.4 kB     12.7 kB
+../spinon-c04-12-viewport-render-20261017/out-final2/static/image/android-api37-viewport-matrix.ff3e32cdcb.png     72.3 kB  
+../spinon-c04-12-viewport-render-20261017/out-final2/static/css/styles.8d918fd78e.css                              74.0 kB     14.2 kB
+../spinon-c04-12-viewport-render-20261017/out-final2/static/image/ios-iphone17pro-viewport-matrix.0975a8eb56.png   118.4 kB 
+../spinon-c04-12-viewport-render-20261017/out-final2/static/image/tailnet-plan-agent-browser.a546bb9898.png        191.8 kB 
+../spinon-c04-12-viewport-render-20261017/out-final2/static/js/3.7e8db14a76.js                                     217.1 kB    71.7 kB
+../spinon-c04-12-viewport-render-20261017/out-final2/static/js/lib-react.801d719c4f.js                             218.4 kB    68.9 kB
+../spinon-c04-12-viewport-render-20261017/out-final2/static/search_index.ko.557d6bb9.json                          237.8 kB    78.0 kB
+../spinon-c04-12-viewport-render-20261017/out-final2/static/image/tailnet-counter-agent-browser.ad6a480e94.png     330.8 kB 
+../spinon-c04-12-viewport-render-20261017/out-final2/static/js/async/route-6c33a3943990.cf371d2f2a.js              366.0 kB    85.1 kB
+../spinon-c04-12-viewport-render-20261017/out-final2/static/image/tailnet-roadmap-agent-browser.0f4e73a41c.png     421.7 kB 
+
+                                                                                                          Total:   2357.0 kB   1490.4 kB
+
+File (node)                                                                                                                 Size       Gzip   
+../spinon-c04-12-viewport-render-20261017/out-final2/404.html                                                               8.5 kB     2.5 kB
+../spinon-c04-12-viewport-render-20261017/out-final2/plan/c04-12-visual-viewport.html                                       23.8 kB    6.2 kB
+../spinon-c04-12-viewport-render-20261017/out-final2/internal/evidence/c04-12-tailnet-roadmap-sync-2026-10-17/README.html   24.0 kB    6.1 kB
+../spinon-c04-12-viewport-render-20261017/out-final2/internal/evidence/c04-12-visual-viewport-2026-10-17/README.html        25.5 kB    6.5 kB
+../spinon-c04-12-viewport-render-20261017/out-final2/internal/0077-c04-12-root-html-document.html                           38.6 kB    10.4 kB
+../spinon-c04-12-viewport-render-20261017/out-final2/STATUS.html                                                            344.9 kB   86.7 kB
+
+                                                                                                                   Total:   465.3 kB   118.5 kB
+
