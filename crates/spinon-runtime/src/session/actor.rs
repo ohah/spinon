@@ -7,6 +7,7 @@ use super::{
     current_thread_id, lock,
 };
 use crate::host::{HostDocumentBridge, collect_callback, commit_callback, query_callback};
+use crate::root_html::ParsedRootHtml;
 use crate::v8::{
     spinon_v8_current_thread_id, spinon_v8_runtime_cancel_termination, spinon_v8_runtime_dispatch,
     spinon_v8_runtime_document_collection_stats, spinon_v8_runtime_eval, spinon_v8_runtime_free,
@@ -27,14 +28,14 @@ pub(super) struct CallbackState {
 }
 
 impl CallbackState {
-    fn new(root_html: Option<&str>) -> Result<Self, String> {
+    fn new(root_html: Option<ParsedRootHtml>) -> Result<Self, String> {
         Ok(Self {
             callback_count: 0,
             created_nodes: 0,
             last_node_id: 0,
             callback_thread_id: 0,
             document: match root_html {
-                Some(source) => HostDocumentBridge::new_with_root_html(source)?,
+                Some(parsed) => HostDocumentBridge::new_with_parsed_root_html(parsed)?,
                 None => HostDocumentBridge::new()?,
             },
         })
@@ -100,10 +101,10 @@ pub(super) fn actor_loop(
     scheduler: Arc<TaskScheduler>,
     control: Arc<Mutex<RuntimeControl>>,
     ua_cascade: RuntimeUaCascadeHandle,
-    root_html: Option<String>,
+    root_html: Option<ParsedRootHtml>,
     ready: mpsc::Sender<Result<u64, String>>,
 ) {
-    let mut callbacks = match CallbackState::new(root_html.as_deref()) {
+    let mut callbacks = match CallbackState::new(root_html) {
         Ok(callbacks) => callbacks,
         Err(error) => {
             let _ = ready.send(Err(format!(

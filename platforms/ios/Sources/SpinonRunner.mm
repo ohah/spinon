@@ -413,6 +413,32 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
   return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(session));
 }
 
++ (NSString *)setRuntimeSessionRootHtmlEnvironment:(uint64_t)handle
+                                    surfaceWidthPx:(float)surfaceWidthPx
+                                   surfaceHeightPx:(float)surfaceHeightPx
+                                deviceScaleFactor:(float)deviceScaleFactor
+                                     prefersDark:(BOOL)prefersDark {
+  if (handle == 0) return @"status=-1 session=missing";
+  SpinonRuntimeRootHtmlEnvironment environment{};
+  const int32_t status = spinon_runtime_session_set_root_html_environment(
+      reinterpret_cast<SpinonRuntimeSession *>(static_cast<uintptr_t>(handle)),
+      surfaceWidthPx, surfaceHeightPx, deviceScaleFactor,
+      prefersDark == YES ? 1 : 0, &environment);
+  if (status != 0) {
+    return [NSString stringWithFormat:@"status=%d", status];
+  }
+  NSString *report = [NSString stringWithFormat:
+      @"status=0 viewport_css_px=%.3fx%.3f device_scale_factor=%.3f "
+       "page_scale=%.6f prefers_color_scheme=%d document_color_scheme=%d "
+       "environment_revision=%llu",
+      environment.viewport_width_css_px, environment.viewport_height_css_px,
+      environment.device_scale_factor, environment.page_scale,
+      environment.prefers_color_scheme, environment.document_color_scheme,
+      static_cast<unsigned long long>(environment.environment_revision)];
+  os_log(OS_LOG_DEFAULT, "SPINON_ROOT_HTML_ENVIRONMENT %{public}@", report);
+  return report;
+}
+
 #if defined(SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST) && \
     SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST
 + (NSString *)runC0412RootHtmlAccessorsFixture {

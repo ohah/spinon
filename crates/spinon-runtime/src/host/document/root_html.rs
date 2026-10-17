@@ -2,8 +2,12 @@ use super::{DocumentBatchOperation, HostDocumentBridge, MAX_BATCH_OPERATIONS};
 use crate::root_html::{ParsedNodeKind, ParsedRootHtml};
 
 impl HostDocumentBridge {
+    #[cfg(test)]
     pub(crate) fn new_with_root_html(source: &str) -> Result<Self, String> {
-        let parsed = ParsedRootHtml::parse(source)?;
+        Self::new_with_parsed_root_html(ParsedRootHtml::parse(source)?)
+    }
+
+    pub(crate) fn new_with_parsed_root_html(parsed: ParsedRootHtml) -> Result<Self, String> {
         let mut bridge = Self::new()?;
         let mut operations = Vec::with_capacity(MAX_BATCH_OPERATIONS);
         let mut pending = parsed

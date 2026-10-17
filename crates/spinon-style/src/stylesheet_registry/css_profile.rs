@@ -7,10 +7,14 @@ use style_traits::ToCss;
 
 use super::{CssOrigin, StylesheetRegistry};
 
+#[cfg(test)]
+mod tests;
+
 #[derive(Clone, Copy)]
 struct AuthorFeaturePolicy {
     allow_layers: bool,
     allow_media: bool,
+    allow_viewport_dimensions: bool,
     allow_custom_properties: bool,
     allow_background_color: bool,
     allow_property_registration: bool,
@@ -96,10 +100,30 @@ pub(super) fn first_unsupported_author_feature_with_media(
         AuthorFeaturePolicy {
             allow_layers: false,
             allow_media: true,
+            allow_viewport_dimensions: false,
             allow_custom_properties: false,
             allow_background_color: false,
             allow_property_registration: false,
             allow_border_image_initial_resets: false,
+        },
+    )
+}
+
+pub(super) fn first_unsupported_runtime_author_feature_with_media(
+    registry: &StylesheetRegistry,
+    allowed_properties: &[&str],
+) -> Option<(String, String)> {
+    first_unsupported_author_feature_with_rules(
+        registry,
+        allowed_properties,
+        AuthorFeaturePolicy {
+            allow_layers: false,
+            allow_media: true,
+            allow_viewport_dimensions: true,
+            allow_custom_properties: true,
+            allow_background_color: false,
+            allow_property_registration: false,
+            allow_border_image_initial_resets: true,
         },
     )
 }
@@ -117,6 +141,7 @@ pub(super) fn first_unsupported_runtime_author_feature(
         AuthorFeaturePolicy {
             allow_layers,
             allow_media: false,
+            allow_viewport_dimensions: false,
             allow_custom_properties,
             allow_background_color,
             allow_property_registration: false,
@@ -136,6 +161,7 @@ pub(super) fn first_unsupported_runtime_registered_properties_author_feature(
         AuthorFeaturePolicy {
             allow_layers: false,
             allow_media: false,
+            allow_viewport_dimensions: false,
             allow_custom_properties: true,
             allow_background_color,
             allow_property_registration: true,
@@ -155,6 +181,7 @@ pub(super) fn first_unsupported_runtime_layered_registered_properties_author_fea
         AuthorFeaturePolicy {
             allow_layers: true,
             allow_media: false,
+            allow_viewport_dimensions: false,
             allow_custom_properties: true,
             allow_background_color,
             allow_property_registration: true,
@@ -174,6 +201,7 @@ fn first_unsupported_author_feature_with_layer_rules(
         AuthorFeaturePolicy {
             allow_layers,
             allow_media: false,
+            allow_viewport_dimensions: false,
             allow_custom_properties: false,
             allow_background_color: false,
             allow_property_registration: false,
@@ -241,7 +269,12 @@ fn unsupported_rule_feature(
         CssRule::Media(media) if policy.allow_media => {
             let media_queries = media.media_queries.read_with(guard);
             let serialized = media_queries.to_css_string();
-            if !supported_media_query_surface(&serialized) {
+            let supported = if policy.allow_viewport_dimensions {
+                supported_root_html_media_query_surface(&serialized)
+            } else {
+                supported_media_query_surface(&serialized)
+            };
+            if !supported {
                 return Some("지원 범위 밖 media query feature".to_owned());
             }
             let rules = media.rules.read_with(guard);
@@ -297,6 +330,83 @@ pub(crate) fn is_border_image_initial(declaration: &PropertyDeclaration, name: &
 }
 
 fn supported_media_query_surface(source: &str) -> bool {
+    supported_media_query_surface_with_viewport_dimensions(source, false)
+}
+
+fn supported_root_html_media_query_surface(source: &str) -> bool {
+    #[derive(Clone, Copy)]
+    enum QueryState {
+        Start,
+        AfterNot,
+        AfterOnly,
+        AfterType,
+        NeedFeature,
+        AfterFeature,
+    }
+
+    let mut parser = cssparser::Parser::new(source);
+    let mut state = QueryState::Start;
+    while !parser.is_exhausted() {
+        let token = match parser.next_including_whitespace_and_comments() {
+            Ok(token) => token.clone(),
+            Err(_) => return false,
+        };
+        match token {
+            cssparser::Token::WhiteSpace(_) | cssparser::Token::Comment(_) => {}
+            cssparser::Token::Comma
+                if matches!(state, QueryState::AfterType | QueryState::AfterFeature) =>
+            {
+                state = QueryState::Start;
+            }
+            cssparser::Token::Ident(value)
+                if value.eq_ignore_ascii_case("not") && matches!(state, QueryState::Start) =>
+            {
+                state = QueryState::AfterNot;
+            }
+            cssparser::Token::Ident(value)
+                if value.eq_ignore_ascii_case("only") && matches!(state, QueryState::Start) =>
+            {
+                state = QueryState::AfterOnly;
+            }
+            cssparser::Token::Ident(value)
+                if (value.eq_ignore_ascii_case("screen") || value.eq_ignore_ascii_case("all"))
+                    && matches!(
+                        state,
+                        QueryState::Start | QueryState::AfterNot | QueryState::AfterOnly
+                    ) =>
+            {
+                state = QueryState::AfterType;
+            }
+            cssparser::Token::Ident(value)
+                if value.eq_ignore_ascii_case("and")
+                    && matches!(state, QueryState::AfterType | QueryState::AfterFeature) =>
+            {
+                state = QueryState::NeedFeature;
+            }
+            cssparser::Token::ParenthesisBlock
+                if matches!(
+                    state,
+                    QueryState::Start | QueryState::AfterNot | QueryState::NeedFeature
+                ) =>
+            {
+                if parser
+                    .parse_nested_block(|nested| supported_media_query_block(nested, true))
+                    .is_err()
+                {
+                    return false;
+                }
+                state = QueryState::AfterFeature;
+            }
+            _ => return false,
+        }
+    }
+    matches!(state, QueryState::AfterType | QueryState::AfterFeature)
+}
+
+fn supported_media_query_surface_with_viewport_dimensions(
+    source: &str,
+    allow_viewport_dimensions: bool,
+) -> bool {
     const ALLOWED_IDENTIFIERS: &[&str] = &[
         "all",
         "and",
@@ -325,7 +435,9 @@ fn supported_media_query_surface(source: &str) -> bool {
             cssparser::Token::Ident(value) if ALLOWED_IDENTIFIERS.contains(&value.as_ref()) => {}
             cssparser::Token::ParenthesisBlock => {
                 if parser
-                    .parse_nested_block(supported_media_query_block)
+                    .parse_nested_block(|nested| {
+                        supported_media_query_block(nested, allow_viewport_dimensions)
+                    })
                     .is_err()
                 {
                     return false;
@@ -343,9 +455,11 @@ fn supported_media_query_surface(source: &str) -> bool {
 
 fn supported_media_query_block<'i>(
     parser: &mut cssparser::Parser<'i>,
+    allow_viewport_dimensions: bool,
 ) -> Result<(), cssparser::ParseError<()>> {
     let mut feature = None;
-    let mut value = None;
+    let mut identifier_value = None;
+    let mut pixel_value = None;
     let mut saw_colon = false;
     while !parser.is_exhausted() {
         let token = parser.next_including_whitespace_and_comments()?.clone();
@@ -353,18 +467,41 @@ fn supported_media_query_block<'i>(
             cssparser::Token::Ident(ident) if !saw_colon && feature.is_none() => {
                 feature = Some(ident.to_ascii_lowercase());
             }
-            cssparser::Token::Ident(ident) if saw_colon && value.is_none() => {
-                value = Some(ident.to_ascii_lowercase());
+            cssparser::Token::Ident(ident)
+                if saw_colon && identifier_value.is_none() && pixel_value.is_none() =>
+            {
+                identifier_value = Some(ident.to_ascii_lowercase());
+            }
+            cssparser::Token::Dimension { value, unit, .. }
+                if saw_colon && identifier_value.is_none() && pixel_value.is_none() =>
+            {
+                if !unit.eq_ignore_ascii_case("px") || !value.is_finite() || value < 0.0 {
+                    return Err(cssparser::ParseError::custom(()));
+                }
+                pixel_value = Some(value);
+            }
+            cssparser::Token::Number { value, .. }
+                if saw_colon
+                    && identifier_value.is_none()
+                    && pixel_value.is_none()
+                    && value == 0.0 =>
+            {
+                pixel_value = Some(value);
             }
             cssparser::Token::WhiteSpace(_) | cssparser::Token::Comment(_) => {}
             cssparser::Token::Colon if feature.is_some() && !saw_colon => saw_colon = true,
             _ => return Err(cssparser::ParseError::custom(())),
         }
     }
-    match (feature.as_deref(), value.as_deref()) {
-        (Some("prefers-color-scheme"), Some("light" | "dark"))
-        | (Some("pointer" | "any-pointer"), Some("none" | "coarse" | "fine"))
-        | (Some("hover" | "any-hover"), Some("none" | "hover")) => Ok(()),
+    match (feature.as_deref(), identifier_value.as_deref(), pixel_value) {
+        (Some("prefers-color-scheme"), Some("light" | "dark"), None)
+        | (Some("pointer" | "any-pointer"), Some("none" | "coarse" | "fine"), None)
+        | (Some("hover" | "any-hover"), Some("none" | "hover"), None) => Ok(()),
+        (
+            Some("width" | "min-width" | "max-width" | "height" | "min-height" | "max-height"),
+            None,
+            Some(_),
+        ) if allow_viewport_dimensions => Ok(()),
         _ => Err(cssparser::ParseError::custom(())),
     }
 }

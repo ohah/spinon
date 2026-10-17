@@ -36,6 +36,7 @@ use std::time::Instant;
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub(super) enum RuntimeCalculationProfile {
     FlexLayout,
+    RootHtmlDocument,
     FlexPaint,
     RegisteredPropertiesPaint,
     BlockPaint,
@@ -57,7 +58,7 @@ pub(super) enum RuntimeCalculationProfile {
 
 impl RuntimeCalculationProfile {
     const fn has_paint(self) -> bool {
-        !matches!(self, Self::FlexLayout)
+        !matches!(self, Self::FlexLayout | Self::RootHtmlDocument)
     }
 }
 
@@ -156,6 +157,12 @@ impl RuntimeCalculation {
 
 pub(super) fn compute_request(request: &WorkRequest) -> Result<RuntimeCalculation, String> {
     compute_request_with_profile(request, RuntimeCalculationProfile::FlexLayout)
+}
+
+pub(super) fn compute_request_for_root_html(
+    request: &WorkRequest,
+) -> Result<RuntimeCalculation, String> {
+    compute_request_with_profile(request, RuntimeCalculationProfile::RootHtmlDocument)
 }
 
 pub(super) fn compute_request_for_runtime_gpu(
@@ -437,6 +444,9 @@ fn compute_root(
         RuntimeCalculationProfile::FlexLayout => {
             ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
         }
+        RuntimeCalculationProfile::RootHtmlDocument => {
+            ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
+        }
         RuntimeCalculationProfile::FlexPaint => {
             ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
         }
@@ -518,6 +528,14 @@ fn compute_root(
         let styles = match calculation_profile {
             RuntimeCalculationProfile::FlexLayout => {
                 compute_runtime_flex_custom_properties_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    request.key.style_revision,
+                )
+            }
+            RuntimeCalculationProfile::RootHtmlDocument => {
+                spinon_style::compute_runtime_flex_custom_properties_media_environment_cascade_with_stylesheets(
                     &view,
                     author_stylesheets,
                     request.viewport,

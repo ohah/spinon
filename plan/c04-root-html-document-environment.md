@@ -2,13 +2,15 @@
 
 - **문서 유형:** 구현 계획 · 공식 구현 상태는 [`spec/STATUS.md`](../spec/STATUS.md)에서 관리
 - **상위 항목:** [CSS 호환성](../spec/0008-css-compatibility.md), C01 HTML/CSS 기준 inventory, C04 런타임 스타일·환경
-- **현재 상태:** 기존 계획에 없던 신규 작업이다. HTML5 문서 트리 parser·HostDocument import·V8 DOM getter, opt-in asset fixture와 기본 앱의 `index.html`→V8 document session 경로를 Android API 37 AVD와 iOS 26.2 Simulator에서 확인했다. viewport/page-scale 및 color-scheme 효과 적용은 미완료
+- **현재 상태:** 기존 계획에 없던 신규 작업이다. HTML5 문서 트리 parser·HostDocument import·V8 DOM getter와 기본 앱의 `index.html`→V8 document session 경로를 양쪽 Simulator에서 확인했다. 후보 구현은 metadata viewport를 CSS cascade에 연결하고 viewport/scheme media query 및 환경 revision을 계산한다. root CSS `color-scheme`은 computed snapshot에만 보존한다. `page_scale` surface transform, Canvas/native theme, root HTML layout·paint는 미지원이며 C04.12는 미완료
 - **계획 적대 검토:** [20개 실패 관점 검토](../spec/internal/evidence/c04-root-html-document-environment-plan-review-2026-10-17.md)
 - **현재 asset fixture 검토:** [구현 실패 관점 20개](../spec/internal/evidence/c04-12-root-html-asset-implementation-review-20-2026-10-17.md) · [PR diff 적대 검토 30개](../spec/internal/evidence/c04-12-root-html-asset-pr-diff-review-30-2026-10-17.md)
+- **기본 앱 HTML 검토:** [구현 실패 관점 20개](../spec/internal/evidence/c04-12-root-html-default-app-2026-10-17/implementation-review-20.md) · [PR diff 적대 검토 30개](../spec/internal/evidence/c04-12-root-html-default-app-2026-10-17/pr-delta-review-30.md)
+- **환경 cascade 검토:** 이 후속 구현 slice는 기존 parser·기본 앱 검토를 재사용하지 않고 새 구현 실패 관점 20개와 최종 PR diff 30개를 별도 근거로 남긴다. [실행·빌드·테스트 로그](../spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/README.md).
 
 ## 배경과 목표
 
-기존 계획에는 앱 루트 HTML 파일을 HTML 문서로 파싱하거나 viewport·color-scheme metadata를 적용하는 항목이 없었다. R01 inventory 계획은 `<meta>`·viewport를 비표시 요소로 분리하는 경계만 다뤘고, metadata 해석·앱 환경 연결은 계획하지 않았다. HTML5 문서 트리 parser, HostDocument import, `documentElement`·`head`·`body` getter를 만들고 이제 기본 앱 asset 경로에서도 `index.html`을 새 V8 document session의 초기 문서로 전달한다. 외부 `root-app.js` 검증 코드는 같은 세션에서 실행한다. metadata는 아직 DOM에 보존될 뿐 앱 환경에 적용되지 않으며, 앱 화면도 HTML로 그리지 않는다. C04.11은 만들어진 HostDocument의 연결 `<style>`을 수집하지만 viewport·color-scheme 의미를 해석하지 않는다.
+기존 계획에는 앱 루트 HTML 파일을 HTML 문서로 파싱하거나 viewport·color-scheme metadata를 적용하는 항목이 없었다. R01 inventory 계획은 `<meta>`·viewport를 비표시 요소로 분리하는 경계만 다뤘고, metadata 해석·앱 환경 연결은 계획하지 않았다. HTML5 문서 트리 parser, HostDocument import, `documentElement`·`head`·`body` getter를 만들고 기본 앱 asset 경로의 `index.html`을 새 V8 document session에 전달한다. 외부 `root-app.js` 검증 코드는 같은 세션에서 실행한다. 이번 후보 변경은 metadata viewport와 native OS color preference를 CSS cascade 입력에 연결하고, `@media` viewport/scheme 결과를 계산한다. `meta color-scheme`은 별도 initial document scheme 값으로 반환한다. root CSS `color-scheme`은 computed style snapshot에만 들어가며 UA theme 선택과 실제 화면에는 연결하지 않는다. C04.11 author stylesheet 수집 경로는 기존 HostDocument를 재사용한다.
 
 이 계획은 앱의 루트 HTML을 문서 입력의 기준으로 삼고, Chromium 모바일 동작을 oracle로 삼아 문서 구조와 환경 metadata를 런타임 cascade·layout 입력에 연결한다. 첫 구현 범위는 `<meta name="viewport">`, `<meta name="color-scheme">`, 루트 CSS의 `color-scheme`, 그리고 이 환경을 소비하는 viewport 및 `prefers-color-scheme` media 조건이다. 일반 HTML 전체 또는 CSS 전체 지원으로 확대 해석하지 않는다.
 
@@ -47,11 +49,17 @@
 - 모바일 viewport meta가 없으면 layout viewport가 `980×2121`이고 visual scale은 약 `0.39795917`이었다. `width=device-width, initial-scale=1`에서는 `390×844`, scale `1`; `initial-scale=0.5`에서는 layout width `780`, scale `0.5`였다. 고정 width 320도 scale 1에서 device width 390으로 확장됐다. 그러므로 layout viewport, page scale, native surface size와 DPR은 별도 값으로 유지해야 한다.
 - OS light에서 `meta color-scheme: dark` 및 root CSS `color-scheme: dark`는 Canvas probe를 어둡게 했지만 `prefers-color-scheme: light`는 계속 참이었다. OS dark에서는 문서가 `light dark`를 지원한다고 선언할 때 어두운 Canvas가 선택됐다. meta 지원 목록, root CSS used scheme, OS preference, media-query 결과를 별도 state로 유지한다.
 - 중복 scheme metadata와 중복 viewport metadata의 관찰값은 해당 Chrome 빌드에 한정한다. 표준상 중복이 금지된 입력은 별도 negative case로 두고, 브라우저 관찰을 무조건 normative 규칙으로 확대하지 않는다.
-- 확인 범위는 Chromium oracle이다. 실제 회전, Spinon runtime, Android/iOS Simulator 결과는 아직 없다. 화면 캡처도 Chrome oracle 그림이며 앱 화면 증거가 아니다.
+- 확인 범위는 Chromium oracle이다. 여기 기록한 화면 캡처는 Chrome oracle 그림이며 앱 화면 증거가 아니다. 이어진 Spinon runtime 실행은 아래 별도 근거에서 다룬다.
 
-기존 `RuntimeSession::new()`의 JavaScript-only 동작은 유지하고 `new_with_root_html`을 별도 생성 경로로 사용한다. parser 입력은 UTF-8 1 MiB, imported tree 65,536 node, depth 256, 전체 16,384 attribute로 제한한다. 기본 Android/iOS 앱은 bundle의 `index.html`을 이 경로에 전달하고, 별도 `root-app.js`가 같은 V8 session에서 문서 요소·viewport/color-scheme metadata·문서 text를 확인한 뒤 속성을 변경하고 다시 읽는다. Android API 37 AVD와 iPhone 17 Pro / iOS 26.2 Simulator에서 default app 빌드 및 실제 V8 boot marker를 확인했다. 이 확인은 DOM 초기화와 JS 평가만 다루며 화면은 기존 빈 네이티브 창 그대로다. `meta viewport`의 CSS viewport/page scale, OS preference 수집, `prefers-color-scheme`, meta/CSS `color-scheme` 효과, UA Canvas 색과 HTML paint는 미구현이다. 따라서 이 단계는 기본 앱 HTML 전달만 제공하며 C04.12를 완료하지 않는다. 다음 구현은 문서 metadata를 별도 environment revision에 연결해 Chrome mobile oracle과 비교하는 것이다.
+## 후보 구현 진행과 판정
 
-첫 구현 profile은 `meta viewport`의 width/device-width/initial-scale, `meta color-scheme`, root CSS `color-scheme`, `prefers-color-scheme`, 제한된 Canvas default color, 기존 C04.11 `<style>` 연결로 한정한다. `initial-scale`을 native DPR에 합쳐 기록하지 않으며, page scale 적용 위치를 별도 내부 계약에서 고정한다. 현재 tree foundation은 UTF-8 source 1 MiB, 65,536 imported node, depth 256, `NoQuirks` document, namespace 없는 attribute profile과 HTML5 recovery를 사용한다. 이 선택은 metadata profile이나 제품 지원을 뜻하지 않는다.
+`RuntimeSession::new_with_root_html`은 host surface physical pixel, DPR과 OS light/dark preference를 받는 `set_root_html_environment` 경로를 제공한다. `meta viewport`의 제한 allowlist를 CSS layout viewport에 반영하고 DPR·OS preference와 함께 root-only Stylo profile로 전달한다. 이 profile의 `@media` allowlist는 `width`·`height`와 `min/max-width`·`min/max-height`의 px/0 query 및 기존 scheme/pointer/hover feature로 제한한다. JavaScript-only/default profile은 바뀌지 않는다. 동일 입력은 environment revision을 유지하고 viewport·DPR·media input 변경은 새 revision으로 재계산한다.
+
+`:root { color-scheme: light dark; }`는 기본 앱 stylesheet를 cascade에서 거부하지 않도록 root-only profile에서 computed property로 기록한다. 이 값은 meta `color-scheme`와 우선순위 결정을 하지 않으며 UA Canvas, native surface, form controls, renderer palette에도 적용하지 않는다. `page_scale`도 snapshot에만 남는다. HTML UA blockification 문제를 해결한 것은 아니므로 root HTML layout은 Ready로 주장하지 않는다.
+
+Android API 37 AVD와 iPhone 17 Pro / iOS 26.2 Simulator의 앱 기본 경로에서 surface/DPR/OS scheme 초기값과 dark/light preference 변경에 따른 environment revision 및 cascade profile을 기록한다. 이 검증은 실제 V8 root document의 environment input을 확인하지만 HTML frame, text, GPU, compositor surface를 캡처하지 않는다. 최신 실행 명령·로그 해시와 20개 구현/30개 PR diff 실패 검토는 [후속 환경 runtime evidence](../spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/README.md)에 연결한다. C04.12는 viewport sizing/scale 완전 동작, CSS color-scheme/UA Canvas, HTML layout·paint, malformed/duplicate 전체 Chrome parity가 남아 있어 unchecked 상태다.
+
+목표 profile은 `meta viewport`의 width/device-width/initial-scale, `meta color-scheme`, root CSS `color-scheme`, `prefers-color-scheme`, 제한된 Canvas default color, 기존 C04.11 `<style>` 연결을 다룬다. 현재 후보 구현은 viewport/media cascade 입력과 root CSS `color-scheme` computed snapshot까지만 연결하고 Canvas default color는 다루지 않는다. `initial-scale`을 native DPR에 합쳐 기록하지 않으며, page scale 적용 위치는 별도 내부 계약에서 정한다. 현재 tree foundation은 UTF-8 source 1 MiB, 65,536 imported node, depth 256, `NoQuirks` document, namespace 없는 attribute profile과 HTML5 recovery를 사용한다. 이 선택은 전체 metadata profile 지원을 뜻하지 않는다.
 
 ## 완료 기준
 

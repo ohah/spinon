@@ -99,6 +99,9 @@ public final class MainActivity extends Activity {
                                            float density, boolean runR10);
     private static native long nativeSessionCreate();
     private static native long nativeSessionCreateWithRootHtml(byte[] sourceUtf8);
+    private static native byte[] nativeSessionSetRootHtmlEnvironment(
+            long session, float surfaceWidthPx, float surfaceHeightPx,
+            float deviceScaleFactor, boolean prefersDark);
     private static native byte[] nativeSessionEval(long session, byte[] sourceUtf8);
     private static native byte[] nativeSessionDispatch(long session, int nodeId);
     private static native byte[] nativeSessionPriorityProbe();
@@ -698,6 +701,10 @@ public final class MainActivity extends Activity {
             float width = metrics.widthPixels / metrics.density;
             float height = metrics.heightPixels / metrics.density;
             float density = metrics.density;
+            float surfaceWidthPx = metrics.widthPixels;
+            float surfaceHeightPx = metrics.heightPixels;
+            boolean prefersDark = (getResources().getConfiguration().uiMode
+                    & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
             bootstrapExecutor.execute(() -> {
                 boolean isMainThread = Thread.currentThread() == Looper.getMainLooper().getThread();
                 Log.i(TAG, "SPINON_BOOTSTRAP_EXECUTION is_main_thread=" + isMainThread);
@@ -707,7 +714,9 @@ public final class MainActivity extends Activity {
                         ? "native bridge returned no result"
                         : new String(outputUtf8, StandardCharsets.UTF_8);
                 Log.i(TAG, "SPINON_BOOTSTRAP_RESULT=" + output);
-                startRootDocumentSession(rootHtml, rootAppSource);
+                startRootDocumentSession(
+                        rootHtml, rootAppSource, surfaceWidthPx, surfaceHeightPx, density,
+                        prefersDark);
                 if (runR10 && !activityClosing) {
                     runOnUiThread(() -> {
                         if (!activityClosing) showR10Report(r10Report(output), density);
@@ -721,12 +730,25 @@ public final class MainActivity extends Activity {
         }
     }
 
-    private void startRootDocumentSession(String rootHtml, String rootAppSource) {
+    private void startRootDocumentSession(
+            String rootHtml, String rootAppSource, float surfaceWidthPx,
+            float surfaceHeightPx, float deviceScaleFactor, boolean prefersDark) {
         long session = nativeSessionCreateWithRootHtml(rootHtml.getBytes(StandardCharsets.UTF_8));
         if (session == 0) {
             Log.e(TAG, "SPINON_ROOT_HTML_BOOT_ERROR reason=session-create-failed");
             return;
         }
+        byte[] environmentBytes = nativeSessionSetRootHtmlEnvironment(
+                session, surfaceWidthPx, surfaceHeightPx, deviceScaleFactor, prefersDark);
+        String environmentReport = environmentBytes == null
+                ? "native runtime returned no environment report"
+                : new String(environmentBytes, StandardCharsets.UTF_8);
+        if (!environmentReport.startsWith("status=0")) {
+            nativeSessionFree(session);
+            Log.e(TAG, "SPINON_ROOT_HTML_ENVIRONMENT_ERROR " + environmentReport);
+            return;
+        }
+        Log.i(TAG, "SPINON_ROOT_HTML_ENVIRONMENT source=activity-start " + environmentReport);
         byte[] reportBytes = nativeSessionEval(session, rootAppSource.getBytes(StandardCharsets.UTF_8));
         String report = reportBytes == null ? "native runtime returned no report"
                 : new String(reportBytes, StandardCharsets.UTF_8);
@@ -744,6 +766,11 @@ public final class MainActivity extends Activity {
             nativeSessionFree(session);
             return;
         }
+        runOnUiThread(() -> {
+            if (!activityClosing) {
+                updateRootDocumentEnvironment(getResources().getConfiguration());
+            }
+        });
         Log.i(TAG, "SPINON_ROOT_HTML_BOOT status=pass source=index.html " + report);
     }
 
@@ -2389,6 +2416,28 @@ public final class MainActivity extends Activity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         if (runtimeGpuDemo != null) runtimeGpuDemo.updateColorScheme(newConfig);
+        updateRootDocumentEnvironment(newConfig);
+    }
+
+    private void updateRootDocumentEnvironment(Configuration configuration) {
+        long session;
+        synchronized (rootDocumentSessionLock) {
+            session = rootDocumentSession;
+        }
+        if (session == 0 || activityClosing) return;
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        boolean prefersDark = (configuration.uiMode & Configuration.UI_MODE_NIGHT_MASK)
+                == Configuration.UI_MODE_NIGHT_YES;
+        byte[] output = nativeSessionSetRootHtmlEnvironment(
+                session, metrics.widthPixels, metrics.heightPixels,
+                metrics.density, prefersDark);
+        String report = output == null ? "native runtime returned no environment report"
+                : new String(output, StandardCharsets.UTF_8);
+        if (report.startsWith("status=0")) {
+            Log.i(TAG, "SPINON_ROOT_HTML_ENVIRONMENT source=configuration-change " + report);
+        } else {
+            Log.e(TAG, "SPINON_ROOT_HTML_ENVIRONMENT_ERROR source=configuration-change " + report);
+        }
     }
 
     @Override

@@ -383,6 +383,7 @@ fn compute_profile_layout(
         ComputedStyleProfile::SupportedElementsUaV1
         | ComputedStyleProfile::RuntimeFlexLayoutV1
         | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+        | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
         | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
@@ -516,6 +517,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeFlexLayoutV1
             | ComputedStyleProfile::RuntimeFlexPaintV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
@@ -549,6 +551,7 @@ fn compute_layout_from_styles(
         ComputedStyleProfile::RuntimeFlexLayoutV1
             | ComputedStyleProfile::RuntimeFlexPaintV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
@@ -597,6 +600,7 @@ fn compute_layout_from_styles(
         ComputedStyleProfile::RuntimeFlexLayoutV1
             | ComputedStyleProfile::RuntimeFlexPaintV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
+            | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1

@@ -45,6 +45,7 @@ pub use runtime_grid::{
 pub use runtime_layout::{
     compute_runtime_flex_custom_properties_cascade,
     compute_runtime_flex_custom_properties_cascade_with_stylesheets,
+    compute_runtime_flex_custom_properties_media_environment_cascade_with_stylesheets,
     compute_runtime_flex_layout_cascade,
     compute_runtime_flex_registered_properties_cascade_with_stylesheets,
     first_unsupported_runtime_custom_properties_inline_property,

@@ -21,6 +21,18 @@ const LEGACY_UA_PROPERTIES: &[&str] = &[
     "padding-inline-start",
 ];
 
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default)]
+pub struct SpinonRuntimeRootHtmlEnvironment {
+    viewport_width_css_px: f32,
+    viewport_height_css_px: f32,
+    device_scale_factor: f32,
+    page_scale: f32,
+    prefers_color_scheme: i32,
+    document_color_scheme: i32,
+    environment_revision: u64,
+}
+
 fn color_scheme_from_abi(value: i32) -> Option<CssColorScheme> {
     match value {
         0 => Some(CssColorScheme::Light),
@@ -113,6 +125,58 @@ pub unsafe extern "C" fn spinon_runtime_session_set_ua_cascade_environment(
     ) {
         Ok(revision) => {
             unsafe { environment_revision.write(revision.get()) };
+            0
+        }
+        Err(error) => error.status_code(),
+    }
+}
+
+/// Root HTML viewport metadata와 OS scheme 선호를 CSS cascade 환경에 연결합니다.
+///
+/// # Safety
+/// `session`은 아직 해제되지 않은 root HTML 세션이어야 하고, `environment`는 쓰기 가능한
+/// `SpinonRuntimeRootHtmlEnvironment`를 가리켜야 합니다. 호출 중 session free와 병행하면 안 됩니다.
+#[unsafe(no_mangle)]
+pub unsafe extern "C" fn spinon_runtime_session_set_root_html_environment(
+    session: *mut crate::runtime_session::SpinonRuntimeSession,
+    surface_width_px: f32,
+    surface_height_px: f32,
+    device_scale_factor: f32,
+    prefers_color_scheme: i32,
+    environment: *mut SpinonRuntimeRootHtmlEnvironment,
+) -> i32 {
+    if session.is_null() || environment.is_null() {
+        return ERR_ARGUMENT;
+    }
+    let Some(color_scheme) = color_scheme_from_abi(prefers_color_scheme) else {
+        return ERR_ARGUMENT;
+    };
+    let mut media_environment = CssMediaEnvironment::MOBILE;
+    media_environment.color_scheme = color_scheme;
+    match unsafe { &*session.cast::<RuntimeSession>() }.set_root_html_environment(
+        surface_width_px,
+        surface_height_px,
+        device_scale_factor,
+        media_environment,
+    ) {
+        Ok(snapshot) => {
+            unsafe {
+                environment.write(SpinonRuntimeRootHtmlEnvironment {
+                    viewport_width_css_px: snapshot.viewport_width_css_px,
+                    viewport_height_css_px: snapshot.viewport_height_css_px,
+                    device_scale_factor: snapshot.device_scale_factor,
+                    page_scale: snapshot.page_scale,
+                    prefers_color_scheme: match snapshot.prefers_color_scheme {
+                        CssColorScheme::Light => 0,
+                        CssColorScheme::Dark => 1,
+                    },
+                    document_color_scheme: match snapshot.document_color_scheme {
+                        CssColorScheme::Light => 0,
+                        CssColorScheme::Dark => 1,
+                    },
+                    environment_revision: snapshot.environment_revision.get(),
+                });
+            }
             0
         }
         Err(error) => error.status_code(),
@@ -253,6 +317,7 @@ mod tests {
     use super::{
         ERR_ARGUMENT, ERR_OUTPUT_TOO_SMALL, completed_json, copy_json, legacy_ua_properties,
         media_environment_from_abi, snapshot_json, spinon_runtime_session_copy_ua_cascade_json,
+        spinon_runtime_session_set_root_html_environment,
         spinon_runtime_session_set_ua_cascade_environment,
     };
     use spinon_runtime::{
@@ -413,6 +478,19 @@ mod tests {
                     1,
                     0,
                     1,
+                    std::ptr::null_mut(),
+                )
+            },
+            ERR_ARGUMENT
+        );
+        assert_eq!(
+            unsafe {
+                spinon_runtime_session_set_root_html_environment(
+                    std::ptr::null_mut(),
+                    390.0,
+                    844.0,
+                    3.0,
+                    0,
                     std::ptr::null_mut(),
                 )
             },

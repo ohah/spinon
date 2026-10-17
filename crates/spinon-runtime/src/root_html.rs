@@ -6,6 +6,11 @@ use std::borrow::Cow;
 use std::cell::RefCell;
 use std::collections::BTreeMap;
 
+mod environment;
+
+pub use environment::RootHtmlEnvironmentSnapshot;
+pub(crate) use environment::{RootHtmlEnvironmentMetadata, resolve_root_html_environment};
+
 const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 const MAX_ROOT_HTML_NODES: usize = 65_536;
 const MAX_ROOT_HTML_DEPTH: usize = 256;

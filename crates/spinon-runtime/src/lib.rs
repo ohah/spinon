@@ -4,6 +4,8 @@ mod root_html;
 mod session;
 mod v8;
 
+pub use root_html::RootHtmlEnvironmentSnapshot;
+
 /// 최대 UTF-8 루트 HTML source 크기입니다.
 pub const ROOT_HTML_SOURCE_MAX_BYTES: usize = 1_048_576;
 
