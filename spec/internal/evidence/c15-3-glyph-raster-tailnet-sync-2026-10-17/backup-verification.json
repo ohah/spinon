@@ -1,0 +1,93 @@
+{
+  "title": "C15.3 glyph raster Tailnet backup verification",
+  "generated_at": "2026-10-17T10:20:28+09:00",
+  "backup_root": "/Users/yoonhb/Library/Application Support/SpinonPreview/backup/c15-3-glyph-raster-tailnet-sync-log-normalization-2026-10-17",
+  "checked_backups": 12,
+  "failures": [],
+  "files": [
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/selected-build.log",
+      "backup_path": "backup/c15-3-glyph-raster-tailnet-sync-log-normalization-2026-10-17/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/selected-build.log",
+      "previous_sha256": "5d37227b8fc48d778cf3bdfaa0302ca4200ef820f4ff49d6984a3ee9cd7a0e64",
+      "backup_sha256": "5d37227b8fc48d778cf3bdfaa0302ca4200ef820f4ff49d6984a3ee9cd7a0e64",
+      "bytes": 6315
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/selected-build.log",
+      "backup_path": "backup/c15-3-glyph-raster-tailnet-sync-log-normalization-2026-10-17/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/selected-build.log",
+      "previous_sha256": "5d37227b8fc48d778cf3bdfaa0302ca4200ef820f4ff49d6984a3ee9cd7a0e64",
+      "backup_sha256": "5d37227b8fc48d778cf3bdfaa0302ca4200ef820f4ff49d6984a3ee9cd7a0e64",
+      "bytes": 6315
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/preflight.json",
+      "backup_path": "backup/c15-3-glyph-raster-tailnet-sync-log-normalization-2026-10-17/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/preflight.json",
+      "previous_sha256": "6c1fc25a283bacc436d8dc98fdfceaaa2a842dbce736aba134241be6d946ea41",
+      "backup_sha256": "6c1fc25a283bacc436d8dc98fdfceaaa2a842dbce736aba134241be6d946ea41",
+      "bytes": 45904
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/preflight.json",
+      "backup_path": "backup/c15-3-glyph-raster-tailnet-sync-log-normalization-2026-10-17/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/preflight.json",
+      "previous_sha256": "6c1fc25a283bacc436d8dc98fdfceaaa2a842dbce736aba134241be6d946ea41",
+      "backup_sha256": "6c1fc25a283bacc436d8dc98fdfceaaa2a842dbce736aba134241be6d946ea41",
+      "bytes": 45904
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/copy-verification.json",
+      "backup_path": "backup/c15-3-glyph-raster-tailnet-sync-log-normalization-2026-10-17/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/copy-verification.json",
+      "previous_sha256": "07c4592a8870708ae496b1e1fd09f2da1f15f82a0a38b630c6075d5d435d4a10",
+      "backup_sha256": "07c4592a8870708ae496b1e1fd09f2da1f15f82a0a38b630c6075d5d435d4a10",
+      "bytes": 49905
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/copy-verification.json",
+      "backup_path": "backup/c15-3-glyph-raster-tailnet-sync-log-normalization-2026-10-17/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/copy-verification.json",
+      "previous_sha256": "07c4592a8870708ae496b1e1fd09f2da1f15f82a0a38b630c6075d5d435d4a10",
+      "backup_sha256": "07c4592a8870708ae496b1e1fd09f2da1f15f82a0a38b630c6075d5d435d4a10",
+      "bytes": 49905
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/backup-verification.json",
+      "backup_path": "backup/c15-3-glyph-raster-tailnet-sync-log-normalization-2026-10-17/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/backup-verification.json",
+      "previous_sha256": "4ca9f84fb8538368e942d3265058a524d5399c7253ec507671181bfecf440988",
+      "backup_sha256": "4ca9f84fb8538368e942d3265058a524d5399c7253ec507671181bfecf440988",
+      "bytes": 15610
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/backup-verification.json",
+      "backup_path": "backup/c15-3-glyph-raster-tailnet-sync-log-normalization-2026-10-17/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/backup-verification.json",
+      "previous_sha256": "4ca9f84fb8538368e942d3265058a524d5399c7253ec507671181bfecf440988",
+      "backup_sha256": "4ca9f84fb8538368e942d3265058a524d5399c7253ec507671181bfecf440988",
+      "bytes": 15610
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/served-verification.json",
+      "backup_path": "backup/c15-3-glyph-raster-tailnet-sync-log-normalization-2026-10-17/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/served-verification.json",
+      "previous_sha256": "1195446cc1122fcd2906ebd02ab4f6fa4393ad66727cc95c37400af26a6c1549",
+      "backup_sha256": "1195446cc1122fcd2906ebd02ab4f6fa4393ad66727cc95c37400af26a6c1549",
+      "bytes": 37625
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/served-verification.json",
+      "backup_path": "backup/c15-3-glyph-raster-tailnet-sync-log-normalization-2026-10-17/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/served-verification.json",
+      "previous_sha256": "1195446cc1122fcd2906ebd02ab4f6fa4393ad66727cc95c37400af26a6c1549",
+      "backup_sha256": "1195446cc1122fcd2906ebd02ab4f6fa4393ad66727cc95c37400af26a6c1549",
+      "bytes": 37625
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/manifest.json",
+      "backup_path": "backup/c15-3-glyph-raster-tailnet-sync-log-normalization-2026-10-17/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/manifest.json",
+      "previous_sha256": "3ec232c58a0950460e90ecc33f49dc87a961644a4c0f7dcc598d8ac7dae99c9d",
+      "backup_sha256": "3ec232c58a0950460e90ecc33f49dc87a961644a4c0f7dcc598d8ac7dae99c9d",
+      "bytes": 55996
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/manifest.json",
+      "backup_path": "backup/c15-3-glyph-raster-tailnet-sync-log-normalization-2026-10-17/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/manifest.json",
+      "previous_sha256": "3ec232c58a0950460e90ecc33f49dc87a961644a4c0f7dcc598d8ac7dae99c9d",
+      "backup_sha256": "3ec232c58a0950460e90ecc33f49dc87a961644a4c0f7dcc598d8ac7dae99c9d",
+      "bytes": 55996
+    }
+  ]
+}

@@ -1,0 +1,783 @@
+{
+  "title": "C15.3 glyph raster Tailnet served-byte verification",
+  "generated_at": "2026-10-17T10:20:38+09:00",
+  "checked_paths": 86,
+  "failures": [],
+  "files": [
+    {
+      "path": "STATUS.html",
+      "url": "http://127.0.0.1:8768/spinon/STATUS.html",
+      "status": 200,
+      "bytes": 332398,
+      "sha256": "d98edbcf0e24e2644655f8546f82698b496626c7397c8cc1e792d4d95b5a30b7",
+      "expected_sha256": "d98edbcf0e24e2644655f8546f82698b496626c7397c8cc1e792d4d95b5a30b7",
+      "matches": true
+    },
+    {
+      "path": "STATUS.md",
+      "url": "http://127.0.0.1:8768/spinon/STATUS.md",
+      "status": 200,
+      "bytes": 252965,
+      "sha256": "42f97c8f1f28c800c8c1e087033a855ad979001c86bc04ec971dd014a3bdae9a",
+      "expected_sha256": "42f97c8f1f28c800c8c1e087033a855ad979001c86bc04ec971dd014a3bdae9a",
+      "matches": true
+    },
+    {
+      "path": "icon.svg",
+      "url": "http://127.0.0.1:8768/spinon/icon.svg",
+      "status": 200,
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "matches": true
+    },
+    {
+      "path": "internal/0071-c15-3-glyph-raster-snapshot.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/0071-c15-3-glyph-raster-snapshot.html",
+      "status": 200,
+      "bytes": 25017,
+      "sha256": "13b433ce50131896d28b17fb3d6794bfda29ae75a6cbd3a41fc3ab9e1de40e23",
+      "expected_sha256": "13b433ce50131896d28b17fb3d6794bfda29ae75a6cbd3a41fc3ab9e1de40e23",
+      "matches": true
+    },
+    {
+      "path": "internal/0071-c15-3-glyph-raster-snapshot.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/0071-c15-3-glyph-raster-snapshot.md",
+      "status": 200,
+      "bytes": 4596,
+      "sha256": "978ff0c93e28fb0c18417008778ec3a6fd44946fa4beed2210c40c8478f34e6b",
+      "expected_sha256": "978ff0c93e28fb0c18417008778ec3a6fd44946fa4beed2210c40c8478f34e6b",
+      "matches": true
+    },
+    {
+      "path": "internal/README.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/README.html",
+      "status": 200,
+      "bytes": 151768,
+      "sha256": "4e9889905d0b470734f16c3abefd30cb4a067595aeeb369ec7c1e5079548eace",
+      "expected_sha256": "4e9889905d0b470734f16c3abefd30cb4a067595aeeb369ec7c1e5079548eace",
+      "matches": true
+    },
+    {
+      "path": "internal/README.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/README.md",
+      "status": 200,
+      "bytes": 108800,
+      "sha256": "d6c4c250dd15fe7da3d828bc37cb4530452b7b87641ca152c546822174072ee8",
+      "expected_sha256": "d6c4c250dd15fe7da3d828bc37cb4530452b7b87641ca152c546822174072ee8",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/README.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-2026-10-17/README.html",
+      "status": 200,
+      "bytes": 26596,
+      "sha256": "036c04e04947f05a59e140d2b7bfb9f79df202960e9fe5739496c1b091a4a4fd",
+      "expected_sha256": "036c04e04947f05a59e140d2b7bfb9f79df202960e9fe5739496c1b091a4a4fd",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/README.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-2026-10-17/README.md",
+      "status": 200,
+      "bytes": 4945,
+      "sha256": "89ff9b4b1ef62c759d1e747baaf9b202e6ef05c9bdb47069e16417d03f1b8d35",
+      "expected_sha256": "89ff9b4b1ef62c759d1e747baaf9b202e6ef05c9bdb47069e16417d03f1b8d35",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/clippy.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-2026-10-17/clippy.log",
+      "status": 200,
+      "bytes": 994,
+      "sha256": "0d1d41a8e4579e2f63496fe0fad317029177211c712775550f33f90691f40966",
+      "expected_sha256": "0d1d41a8e4579e2f63496fe0fad317029177211c712775550f33f90691f40966",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.html",
+      "status": 200,
+      "bytes": 24997,
+      "sha256": "808036ff57563d523132342b2a1b0182401fcad7a8d39a6bb22eb23e5e9bed0f",
+      "expected_sha256": "808036ff57563d523132342b2a1b0182401fcad7a8d39a6bb22eb23e5e9bed0f",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.md",
+      "status": 200,
+      "bytes": 4822,
+      "sha256": "9d539833b657e471db7e7a398e9aeda7812061b60da3efb6db9cc2265277ad2b",
+      "expected_sha256": "9d539833b657e471db7e7a398e9aeda7812061b60da3efb6db9cc2265277ad2b",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.html",
+      "status": 200,
+      "bytes": 26441,
+      "sha256": "0706c1d110a38b8cb24a724a9b5b347f7e58d80b6192d0884af89fdddd87f584",
+      "expected_sha256": "0706c1d110a38b8cb24a724a9b5b347f7e58d80b6192d0884af89fdddd87f584",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.md",
+      "status": 200,
+      "bytes": 6312,
+      "sha256": "aa0f79fdeffa1a33c5aac7bf06697457870d51c823b3f53c0a1a99e4d0fa7abb",
+      "expected_sha256": "aa0f79fdeffa1a33c5aac7bf06697457870d51c823b3f53c0a1a99e4d0fa7abb",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/rust-tests.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-2026-10-17/rust-tests.log",
+      "status": 200,
+      "bytes": 19104,
+      "sha256": "4c3325bdfe8edb0daba4da20f5f1bad0ec583bcd53da4971365cd66a4f2124ab",
+      "expected_sha256": "4c3325bdfe8edb0daba4da20f5f1bad0ec583bcd53da4971365cd66a4f2124ab",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/rustfmt.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-2026-10-17/rustfmt.log",
+      "status": 200,
+      "bytes": 35,
+      "sha256": "b729524df34fc34d98becf55c15c2a3d64441e3f74e001188151f777faa8fb14",
+      "expected_sha256": "b729524df34fc34d98becf55c15c2a3d64441e3f74e001188151f777faa8fb14",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.html",
+      "status": 200,
+      "bytes": 25187,
+      "sha256": "cceecbcaa6269179df16cec491025455c21b4c6855996b1b16af61104dfe0f53",
+      "expected_sha256": "cceecbcaa6269179df16cec491025455c21b4c6855996b1b16af61104dfe0f53",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.md",
+      "status": 200,
+      "bytes": 3205,
+      "sha256": "4b28766e176f8ddcf8f92691ebb235def773ed906ca877832df304cf7b97b4f3",
+      "expected_sha256": "4b28766e176f8ddcf8f92691ebb235def773ed906ca877832df304cf7b97b4f3",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/backup-verification.json",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/backup-verification.json",
+      "status": 200,
+      "bytes": 6245,
+      "sha256": "447cd5de8830f9f5e9cbe024ddf5b03b8e72ffb6e63d950f3328897f4d25685d",
+      "expected_sha256": "447cd5de8830f9f5e9cbe024ddf5b03b8e72ffb6e63d950f3328897f4d25685d",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/copy-verification.json",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/copy-verification.json",
+      "status": 200,
+      "bytes": 47527,
+      "sha256": "7d109f1f47f2f583ddd648c93a4edaf4c24da0f8935cd73d362562f9cbf349d8",
+      "expected_sha256": "7d109f1f47f2f583ddd648c93a4edaf4c24da0f8935cd73d362562f9cbf349d8",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/manifest.json",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/manifest.json",
+      "status": 200,
+      "bytes": 53677,
+      "sha256": "429d78d5a73d7d264128c3fe56ee0c3faa39c1ea86e7389277c771c23497b8fe",
+      "expected_sha256": "429d78d5a73d7d264128c3fe56ee0c3faa39c1ea86e7389277c771c23497b8fe",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "status": 200,
+      "bytes": 33631,
+      "sha256": "6d2594040a7e61eeb4b608dc61d6eb6d29a8015b8d5f72c0c4cae06e7c93e103",
+      "expected_sha256": "6d2594040a7e61eeb4b608dc61d6eb6d29a8015b8d5f72c0c4cae06e7c93e103",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "status": 200,
+      "bytes": 5134,
+      "sha256": "c6d5c6a1720de658da6e2842a06028458c1b56316269ce47442241e37aed9024",
+      "expected_sha256": "c6d5c6a1720de658da6e2842a06028458c1b56316269ce47442241e37aed9024",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/preflight.json",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/preflight.json",
+      "status": 200,
+      "bytes": 46120,
+      "sha256": "e6d8788b45b5f86680826e4c13bff3bfccef5cc2c877b7b2a2d6067c254d03f0",
+      "expected_sha256": "e6d8788b45b5f86680826e4c13bff3bfccef5cc2c877b7b2a2d6067c254d03f0",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.html",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.html",
+      "status": 200,
+      "bytes": 25368,
+      "sha256": "bc64815bc014058cdd1e3778f8dba6d6d1ababaea05de256e901318de4852996",
+      "expected_sha256": "bc64815bc014058cdd1e3778f8dba6d6d1ababaea05de256e901318de4852996",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.md",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.md",
+      "status": 200,
+      "bytes": 2762,
+      "sha256": "a53e76de9ddc01efd623e3633570477d4d01d6c1fe08b856002e58db52026202",
+      "expected_sha256": "a53e76de9ddc01efd623e3633570477d4d01d6c1fe08b856002e58db52026202",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/selected-build.log",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/selected-build.log",
+      "status": 200,
+      "bytes": 6305,
+      "sha256": "bc4d6b8c0d269d7c326391a7178352f8403f2bb243ac72c9dc1c976d873dfcc9",
+      "expected_sha256": "bc4d6b8c0d269d7c326391a7178352f8403f2bb243ac72c9dc1c976d873dfcc9",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-contract-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-contract-agent-browser.png",
+      "status": 200,
+      "bytes": 117851,
+      "sha256": "0e2fcf4cb76151e77878e30f91ded405e0c5b385ff729a5fc857fbd23d05b5da",
+      "expected_sha256": "0e2fcf4cb76151e77878e30f91ded405e0c5b385ff729a5fc857fbd23d05b5da",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-roadmap-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-roadmap-agent-browser.png",
+      "status": 200,
+      "bytes": 271970,
+      "sha256": "d3b468a563a58c47ae10eca12fa9fc37e5682cc8f136c10910c2152de290a653",
+      "expected_sha256": "d3b468a563a58c47ae10eca12fa9fc37e5682cc8f136c10910c2152de290a653",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-status-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-status-agent-browser.png",
+      "status": 200,
+      "bytes": 227042,
+      "sha256": "0029ed2524a9eaee7c0cb43eb2de43f8526eb17aa94ceab4dcb2824da3d7d1a7",
+      "expected_sha256": "0029ed2524a9eaee7c0cb43eb2de43f8526eb17aa94ceab4dcb2824da3d7d1a7",
+      "matches": true
+    },
+    {
+      "path": "logo.svg",
+      "url": "http://127.0.0.1:8768/spinon/logo.svg",
+      "status": 200,
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "matches": true
+    },
+    {
+      "path": "plan/c15-inline-text-layout.html",
+      "url": "http://127.0.0.1:8768/spinon/plan/c15-inline-text-layout.html",
+      "status": 200,
+      "bytes": 57539,
+      "sha256": "6bd798d4d26859d779aa8f8db38629edbd9dc39c9a64a63890d746048f4d41a5",
+      "expected_sha256": "6bd798d4d26859d779aa8f8db38629edbd9dc39c9a64a63890d746048f4d41a5",
+      "matches": true
+    },
+    {
+      "path": "plan/c15-inline-text-layout.md",
+      "url": "http://127.0.0.1:8768/spinon/plan/c15-inline-text-layout.md",
+      "status": 200,
+      "bytes": 27857,
+      "sha256": "24e17d95162476733cd44f1a794461103f5ef1bb84dcaf7ef920e82d181990e6",
+      "expected_sha256": "24e17d95162476733cd44f1a794461103f5ef1bb84dcaf7ef920e82d181990e6",
+      "matches": true
+    },
+    {
+      "path": "public/roadmap.html",
+      "url": "http://127.0.0.1:8768/spinon/public/roadmap.html",
+      "status": 200,
+      "bytes": 108150,
+      "sha256": "b8be5c0d54b2b9dba71a17d1dbad7a9a0991c968e55b50beb3e0e1c2bbda3823",
+      "expected_sha256": "b8be5c0d54b2b9dba71a17d1dbad7a9a0991c968e55b50beb3e0e1c2bbda3823",
+      "matches": true
+    },
+    {
+      "path": "roadmap.html",
+      "url": "http://127.0.0.1:8768/spinon/roadmap.html",
+      "status": 200,
+      "bytes": 108150,
+      "sha256": "b8be5c0d54b2b9dba71a17d1dbad7a9a0991c968e55b50beb3e0e1c2bbda3823",
+      "expected_sha256": "b8be5c0d54b2b9dba71a17d1dbad7a9a0991c968e55b50beb3e0e1c2bbda3823",
+      "matches": true
+    },
+    {
+      "path": "spec/STATUS.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/STATUS.html",
+      "status": 200,
+      "bytes": 332398,
+      "sha256": "d98edbcf0e24e2644655f8546f82698b496626c7397c8cc1e792d4d95b5a30b7",
+      "expected_sha256": "d98edbcf0e24e2644655f8546f82698b496626c7397c8cc1e792d4d95b5a30b7",
+      "matches": true
+    },
+    {
+      "path": "spec/STATUS.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/STATUS.md",
+      "status": 200,
+      "bytes": 252965,
+      "sha256": "42f97c8f1f28c800c8c1e087033a855ad979001c86bc04ec971dd014a3bdae9a",
+      "expected_sha256": "42f97c8f1f28c800c8c1e087033a855ad979001c86bc04ec971dd014a3bdae9a",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/0071-c15-3-glyph-raster-snapshot.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/0071-c15-3-glyph-raster-snapshot.html",
+      "status": 200,
+      "bytes": 25017,
+      "sha256": "13b433ce50131896d28b17fb3d6794bfda29ae75a6cbd3a41fc3ab9e1de40e23",
+      "expected_sha256": "13b433ce50131896d28b17fb3d6794bfda29ae75a6cbd3a41fc3ab9e1de40e23",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/0071-c15-3-glyph-raster-snapshot.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/0071-c15-3-glyph-raster-snapshot.md",
+      "status": 200,
+      "bytes": 4596,
+      "sha256": "978ff0c93e28fb0c18417008778ec3a6fd44946fa4beed2210c40c8478f34e6b",
+      "expected_sha256": "978ff0c93e28fb0c18417008778ec3a6fd44946fa4beed2210c40c8478f34e6b",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/README.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/README.html",
+      "status": 200,
+      "bytes": 151768,
+      "sha256": "4e9889905d0b470734f16c3abefd30cb4a067595aeeb369ec7c1e5079548eace",
+      "expected_sha256": "4e9889905d0b470734f16c3abefd30cb4a067595aeeb369ec7c1e5079548eace",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/README.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/README.md",
+      "status": 200,
+      "bytes": 108800,
+      "sha256": "d6c4c250dd15fe7da3d828bc37cb4530452b7b87641ca152c546822174072ee8",
+      "expected_sha256": "d6c4c250dd15fe7da3d828bc37cb4530452b7b87641ca152c546822174072ee8",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/README.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/README.html",
+      "status": 200,
+      "bytes": 26596,
+      "sha256": "036c04e04947f05a59e140d2b7bfb9f79df202960e9fe5739496c1b091a4a4fd",
+      "expected_sha256": "036c04e04947f05a59e140d2b7bfb9f79df202960e9fe5739496c1b091a4a4fd",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/README.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/README.md",
+      "status": 200,
+      "bytes": 4945,
+      "sha256": "89ff9b4b1ef62c759d1e747baaf9b202e6ef05c9bdb47069e16417d03f1b8d35",
+      "expected_sha256": "89ff9b4b1ef62c759d1e747baaf9b202e6ef05c9bdb47069e16417d03f1b8d35",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/clippy.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/clippy.log",
+      "status": 200,
+      "bytes": 994,
+      "sha256": "0d1d41a8e4579e2f63496fe0fad317029177211c712775550f33f90691f40966",
+      "expected_sha256": "0d1d41a8e4579e2f63496fe0fad317029177211c712775550f33f90691f40966",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.html",
+      "status": 200,
+      "bytes": 24997,
+      "sha256": "808036ff57563d523132342b2a1b0182401fcad7a8d39a6bb22eb23e5e9bed0f",
+      "expected_sha256": "808036ff57563d523132342b2a1b0182401fcad7a8d39a6bb22eb23e5e9bed0f",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.md",
+      "status": 200,
+      "bytes": 4822,
+      "sha256": "9d539833b657e471db7e7a398e9aeda7812061b60da3efb6db9cc2265277ad2b",
+      "expected_sha256": "9d539833b657e471db7e7a398e9aeda7812061b60da3efb6db9cc2265277ad2b",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.html",
+      "status": 200,
+      "bytes": 26441,
+      "sha256": "0706c1d110a38b8cb24a724a9b5b347f7e58d80b6192d0884af89fdddd87f584",
+      "expected_sha256": "0706c1d110a38b8cb24a724a9b5b347f7e58d80b6192d0884af89fdddd87f584",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.md",
+      "status": 200,
+      "bytes": 6312,
+      "sha256": "aa0f79fdeffa1a33c5aac7bf06697457870d51c823b3f53c0a1a99e4d0fa7abb",
+      "expected_sha256": "aa0f79fdeffa1a33c5aac7bf06697457870d51c823b3f53c0a1a99e4d0fa7abb",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/rust-tests.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/rust-tests.log",
+      "status": 200,
+      "bytes": 19104,
+      "sha256": "4c3325bdfe8edb0daba4da20f5f1bad0ec583bcd53da4971365cd66a4f2124ab",
+      "expected_sha256": "4c3325bdfe8edb0daba4da20f5f1bad0ec583bcd53da4971365cd66a4f2124ab",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/rustfmt.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/rustfmt.log",
+      "status": 200,
+      "bytes": 35,
+      "sha256": "b729524df34fc34d98becf55c15c2a3d64441e3f74e001188151f777faa8fb14",
+      "expected_sha256": "b729524df34fc34d98becf55c15c2a3d64441e3f74e001188151f777faa8fb14",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.html",
+      "status": 200,
+      "bytes": 25187,
+      "sha256": "cceecbcaa6269179df16cec491025455c21b4c6855996b1b16af61104dfe0f53",
+      "expected_sha256": "cceecbcaa6269179df16cec491025455c21b4c6855996b1b16af61104dfe0f53",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.md",
+      "status": 200,
+      "bytes": 3205,
+      "sha256": "4b28766e176f8ddcf8f92691ebb235def773ed906ca877832df304cf7b97b4f3",
+      "expected_sha256": "4b28766e176f8ddcf8f92691ebb235def773ed906ca877832df304cf7b97b4f3",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/backup-verification.json",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/backup-verification.json",
+      "status": 200,
+      "bytes": 6245,
+      "sha256": "447cd5de8830f9f5e9cbe024ddf5b03b8e72ffb6e63d950f3328897f4d25685d",
+      "expected_sha256": "447cd5de8830f9f5e9cbe024ddf5b03b8e72ffb6e63d950f3328897f4d25685d",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/copy-verification.json",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/copy-verification.json",
+      "status": 200,
+      "bytes": 47527,
+      "sha256": "7d109f1f47f2f583ddd648c93a4edaf4c24da0f8935cd73d362562f9cbf349d8",
+      "expected_sha256": "7d109f1f47f2f583ddd648c93a4edaf4c24da0f8935cd73d362562f9cbf349d8",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/manifest.json",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/manifest.json",
+      "status": 200,
+      "bytes": 53677,
+      "sha256": "429d78d5a73d7d264128c3fe56ee0c3faa39c1ea86e7389277c771c23497b8fe",
+      "expected_sha256": "429d78d5a73d7d264128c3fe56ee0c3faa39c1ea86e7389277c771c23497b8fe",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "status": 200,
+      "bytes": 33631,
+      "sha256": "6d2594040a7e61eeb4b608dc61d6eb6d29a8015b8d5f72c0c4cae06e7c93e103",
+      "expected_sha256": "6d2594040a7e61eeb4b608dc61d6eb6d29a8015b8d5f72c0c4cae06e7c93e103",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "status": 200,
+      "bytes": 5134,
+      "sha256": "c6d5c6a1720de658da6e2842a06028458c1b56316269ce47442241e37aed9024",
+      "expected_sha256": "c6d5c6a1720de658da6e2842a06028458c1b56316269ce47442241e37aed9024",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/preflight.json",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/preflight.json",
+      "status": 200,
+      "bytes": 46120,
+      "sha256": "e6d8788b45b5f86680826e4c13bff3bfccef5cc2c877b7b2a2d6067c254d03f0",
+      "expected_sha256": "e6d8788b45b5f86680826e4c13bff3bfccef5cc2c877b7b2a2d6067c254d03f0",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.html",
+      "status": 200,
+      "bytes": 25368,
+      "sha256": "bc64815bc014058cdd1e3778f8dba6d6d1ababaea05de256e901318de4852996",
+      "expected_sha256": "bc64815bc014058cdd1e3778f8dba6d6d1ababaea05de256e901318de4852996",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.md",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.md",
+      "status": 200,
+      "bytes": 2762,
+      "sha256": "a53e76de9ddc01efd623e3633570477d4d01d6c1fe08b856002e58db52026202",
+      "expected_sha256": "a53e76de9ddc01efd623e3633570477d4d01d6c1fe08b856002e58db52026202",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/selected-build.log",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/selected-build.log",
+      "status": 200,
+      "bytes": 6305,
+      "sha256": "bc4d6b8c0d269d7c326391a7178352f8403f2bb243ac72c9dc1c976d873dfcc9",
+      "expected_sha256": "bc4d6b8c0d269d7c326391a7178352f8403f2bb243ac72c9dc1c976d873dfcc9",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-contract-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-contract-agent-browser.png",
+      "status": 200,
+      "bytes": 117851,
+      "sha256": "0e2fcf4cb76151e77878e30f91ded405e0c5b385ff729a5fc857fbd23d05b5da",
+      "expected_sha256": "0e2fcf4cb76151e77878e30f91ded405e0c5b385ff729a5fc857fbd23d05b5da",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-roadmap-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-roadmap-agent-browser.png",
+      "status": 200,
+      "bytes": 271970,
+      "sha256": "d3b468a563a58c47ae10eca12fa9fc37e5682cc8f136c10910c2152de290a653",
+      "expected_sha256": "d3b468a563a58c47ae10eca12fa9fc37e5682cc8f136c10910c2152de290a653",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-status-agent-browser.png",
+      "url": "http://127.0.0.1:8768/spinon/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-status-agent-browser.png",
+      "status": 200,
+      "bytes": 227042,
+      "sha256": "0029ed2524a9eaee7c0cb43eb2de43f8526eb17aa94ceab4dcb2824da3d7d1a7",
+      "expected_sha256": "0029ed2524a9eaee7c0cb43eb2de43f8526eb17aa94ceab4dcb2824da3d7d1a7",
+      "matches": true
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "url": "http://127.0.0.1:8768/spinon/spec/public/roadmap.html",
+      "status": 200,
+      "bytes": 108150,
+      "sha256": "b8be5c0d54b2b9dba71a17d1dbad7a9a0991c968e55b50beb3e0e1c2bbda3823",
+      "expected_sha256": "b8be5c0d54b2b9dba71a17d1dbad7a9a0991c968e55b50beb3e0e1c2bbda3823",
+      "matches": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "url": "http://127.0.0.1:8768/spinon/static/css/styles.8d918fd78e.css",
+      "status": 200,
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "expected_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "matches": true
+    },
+    {
+      "path": "static/image/tailnet-contract-agent-browser.b7c62ebe9d.png",
+      "url": "http://127.0.0.1:8768/spinon/static/image/tailnet-contract-agent-browser.b7c62ebe9d.png",
+      "status": 200,
+      "bytes": 117851,
+      "sha256": "0e2fcf4cb76151e77878e30f91ded405e0c5b385ff729a5fc857fbd23d05b5da",
+      "expected_sha256": "0e2fcf4cb76151e77878e30f91ded405e0c5b385ff729a5fc857fbd23d05b5da",
+      "matches": true
+    },
+    {
+      "path": "static/image/tailnet-roadmap-agent-browser.76ed7206a9.png",
+      "url": "http://127.0.0.1:8768/spinon/static/image/tailnet-roadmap-agent-browser.76ed7206a9.png",
+      "status": 200,
+      "bytes": 271970,
+      "sha256": "d3b468a563a58c47ae10eca12fa9fc37e5682cc8f136c10910c2152de290a653",
+      "expected_sha256": "d3b468a563a58c47ae10eca12fa9fc37e5682cc8f136c10910c2152de290a653",
+      "matches": true
+    },
+    {
+      "path": "static/image/tailnet-status-agent-browser.e21a5fc481.png",
+      "url": "http://127.0.0.1:8768/spinon/static/image/tailnet-status-agent-browser.e21a5fc481.png",
+      "status": 200,
+      "bytes": 227042,
+      "sha256": "0029ed2524a9eaee7c0cb43eb2de43f8526eb17aa94ceab4dcb2824da3d7d1a7",
+      "expected_sha256": "0029ed2524a9eaee7c0cb43eb2de43f8526eb17aa94ceab4dcb2824da3d7d1a7",
+      "matches": true
+    },
+    {
+      "path": "static/js/a.10908bd193.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/a.10908bd193.js",
+      "status": 200,
+      "bytes": 217100,
+      "sha256": "2f61cae3c1ab178c518269d2fc3b800dae36a15f126bf23b476c741dac9f75d8",
+      "expected_sha256": "2f61cae3c1ab178c518269d2fc3b800dae36a15f126bf23b476c741dac9f75d8",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/i.25208e7c92.js",
+      "status": 200,
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "expected_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-117783875241.0af052dc9c.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-117783875241.0af052dc9c.js",
+      "status": 200,
+      "bytes": 46652,
+      "sha256": "0865653503a7e9acde1d439b1eaca77d7aefae7fb59de1c29928445ffa2c87e2",
+      "expected_sha256": "0865653503a7e9acde1d439b1eaca77d7aefae7fb59de1c29928445ffa2c87e2",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-2a8fb458a6a4.1f7f3ec995.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-2a8fb458a6a4.1f7f3ec995.js",
+      "status": 200,
+      "bytes": 10116,
+      "sha256": "373b11dc2f101a4d3ad29a65f341c47870b3bf3dbf11f645f9892a0bb4d774e5",
+      "expected_sha256": "373b11dc2f101a4d3ad29a65f341c47870b3bf3dbf11f645f9892a0bb4d774e5",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-410b8fac7053.0c50e5845b.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-410b8fac7053.0c50e5845b.js",
+      "status": 200,
+      "bytes": 6918,
+      "sha256": "77fdf16139f478685a55af1418e4d2b9c20ce12128abf2dd5c9b08b7b99fdce8",
+      "expected_sha256": "77fdf16139f478685a55af1418e4d2b9c20ce12128abf2dd5c9b08b7b99fdce8",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-4fc60b47d996.e93cc15a79.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-4fc60b47d996.e93cc15a79.js",
+      "status": 200,
+      "bytes": 6866,
+      "sha256": "db698340df8e725468faea7495a0864fe2a92d1bd50fea1e9be2174015fae6ac",
+      "expected_sha256": "db698340df8e725468faea7495a0864fe2a92d1bd50fea1e9be2174015fae6ac",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.2a452693a0.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-6c33a3943990.2a452693a0.js",
+      "status": 200,
+      "bytes": 350126,
+      "sha256": "3d8fcdae04b8961e8c306ee8b13e7f1c67766f2576c5e620ee5167c27dd58a85",
+      "expected_sha256": "3d8fcdae04b8961e8c306ee8b13e7f1c67766f2576c5e620ee5167c27dd58a85",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-7f1586660381.3790388ebb.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-7f1586660381.3790388ebb.js",
+      "status": 200,
+      "bytes": 8178,
+      "sha256": "c163104f0ec08d35416c2646a1fcfc3c4af591b15ba6ac504bdcc6b1dc0af3a1",
+      "expected_sha256": "c163104f0ec08d35416c2646a1fcfc3c4af591b15ba6ac504bdcc6b1dc0af3a1",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-815a6cb5ee57.ed10d25ebc.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-815a6cb5ee57.ed10d25ebc.js",
+      "status": 200,
+      "bytes": 10882,
+      "sha256": "6521eeaba0aa8e1b66620cb2c2108d1be15d80966160e8717273649a58c3bbfb",
+      "expected_sha256": "6521eeaba0aa8e1b66620cb2c2108d1be15d80966160e8717273649a58c3bbfb",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.086e07bb30.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-a1017bdf23ca.086e07bb30.js",
+      "status": 200,
+      "bytes": 159438,
+      "sha256": "62d570e4a959c3fd5de0bbaf398f4f92b386fa35cd5dc8de01e9dd3017d55e3e",
+      "expected_sha256": "62d570e4a959c3fd5de0bbaf398f4f92b386fa35cd5dc8de01e9dd3017d55e3e",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-de3bb2a34479.a96099cb80.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-de3bb2a34479.a96099cb80.js",
+      "status": 200,
+      "bytes": 8639,
+      "sha256": "1887d0ff367db3b23e82c5f578ae52576a4bdaae0945b659a677bea8ddd4b4e3",
+      "expected_sha256": "1887d0ff367db3b23e82c5f578ae52576a4bdaae0945b659a677bea8ddd4b4e3",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-e4492196d4bd.cf17673354.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-e4492196d4bd.cf17673354.js",
+      "status": 200,
+      "bytes": 9671,
+      "sha256": "e222920163283187bcdb344de4a9f8c594dcde6eeeedc5ef69c73b97a08df1b9",
+      "expected_sha256": "e222920163283187bcdb344de4a9f8c594dcde6eeeedc5ef69c73b97a08df1b9",
+      "matches": true
+    },
+    {
+      "path": "static/js/index.aa90162880.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/index.aa90162880.js",
+      "status": 200,
+      "bytes": 27814,
+      "sha256": "11da313ada6457e1c508a36eec8ddb71d372ddf905093fce68fe58a0b7f06181",
+      "expected_sha256": "11da313ada6457e1c508a36eec8ddb71d372ddf905093fce68fe58a0b7f06181",
+      "matches": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/lib-react.9cdf8f49ce.js",
+      "status": 200,
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "expected_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "matches": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/lib-router.1e14e568cb.js",
+      "status": 200,
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "expected_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "matches": true
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "url": "http://127.0.0.1:8768/spinon/static/js/styles.2da0941fcb.js",
+      "status": 200,
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "expected_sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "matches": true
+    },
+    {
+      "path": "static/search_index.ko.459bf797.json",
+      "url": "http://127.0.0.1:8768/spinon/static/search_index.ko.459bf797.json",
+      "status": 200,
+      "bytes": 338884,
+      "sha256": "459bf797c3736516c2b93c233fcc3d12f87d7fb773f1319ddec4f1714858abc9",
+      "expected_sha256": "459bf797c3736516c2b93c233fcc3d12f87d7fb773f1319ddec4f1714858abc9",
+      "matches": true
+    }
+  ],
+  "self_check": "both mirrored served-verification routes are SHA-256 checked after copy"
+}

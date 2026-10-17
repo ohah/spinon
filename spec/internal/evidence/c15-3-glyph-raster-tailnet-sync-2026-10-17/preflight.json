@@ -1,0 +1,912 @@
+{
+  "title": "C15.3 glyph raster Tailnet final preflight",
+  "generated_at": "2026-10-17T10:20:28+09:00",
+  "source_base_commit": "a9a8a5117892514ded6fdb0d8a22ab931af643f6",
+  "preview_root": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "preview_url": "http://127.0.0.1:8768/spinon/",
+  "backup_root_relative": "backup/c15-3-glyph-raster-tailnet-sync-log-normalization-2026-10-17",
+  "deletions": [],
+  "planned_paths": 88,
+  "core_paths": 78,
+  "metadata_paths": 10,
+  "files": [
+    {
+      "path": "STATUS.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/STATUS.html",
+      "source_bytes": 332398,
+      "source_sha256": "d98edbcf0e24e2644655f8546f82698b496626c7397c8cc1e792d4d95b5a30b7",
+      "target_exists": true,
+      "target_bytes": 332398,
+      "target_sha256": "d98edbcf0e24e2644655f8546f82698b496626c7397c8cc1e792d4d95b5a30b7",
+      "will_copy": false
+    },
+    {
+      "path": "STATUS.md",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/STATUS.md",
+      "source_bytes": 252965,
+      "source_sha256": "42f97c8f1f28c800c8c1e087033a855ad979001c86bc04ec971dd014a3bdae9a",
+      "target_exists": true,
+      "target_bytes": 252965,
+      "target_sha256": "42f97c8f1f28c800c8c1e087033a855ad979001c86bc04ec971dd014a3bdae9a",
+      "will_copy": false
+    },
+    {
+      "path": "icon.svg",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/icon.svg",
+      "source_bytes": 638,
+      "source_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "target_exists": true,
+      "target_bytes": 638,
+      "target_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "will_copy": false
+    },
+    {
+      "path": "internal/0071-c15-3-glyph-raster-snapshot.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/internal/0071-c15-3-glyph-raster-snapshot.html",
+      "source_bytes": 25017,
+      "source_sha256": "13b433ce50131896d28b17fb3d6794bfda29ae75a6cbd3a41fc3ab9e1de40e23",
+      "target_exists": true,
+      "target_bytes": 25017,
+      "target_sha256": "13b433ce50131896d28b17fb3d6794bfda29ae75a6cbd3a41fc3ab9e1de40e23",
+      "will_copy": false
+    },
+    {
+      "path": "internal/0071-c15-3-glyph-raster-snapshot.md",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/0071-c15-3-glyph-raster-snapshot.md",
+      "source_bytes": 4596,
+      "source_sha256": "978ff0c93e28fb0c18417008778ec3a6fd44946fa4beed2210c40c8478f34e6b",
+      "target_exists": true,
+      "target_bytes": 4596,
+      "target_sha256": "978ff0c93e28fb0c18417008778ec3a6fd44946fa4beed2210c40c8478f34e6b",
+      "will_copy": false
+    },
+    {
+      "path": "internal/README.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/internal/README.html",
+      "source_bytes": 151768,
+      "source_sha256": "4e9889905d0b470734f16c3abefd30cb4a067595aeeb369ec7c1e5079548eace",
+      "target_exists": true,
+      "target_bytes": 151768,
+      "target_sha256": "4e9889905d0b470734f16c3abefd30cb4a067595aeeb369ec7c1e5079548eace",
+      "will_copy": false
+    },
+    {
+      "path": "internal/README.md",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/README.md",
+      "source_bytes": 108800,
+      "source_sha256": "d6c4c250dd15fe7da3d828bc37cb4530452b7b87641ca152c546822174072ee8",
+      "target_exists": true,
+      "target_bytes": 108800,
+      "target_sha256": "d6c4c250dd15fe7da3d828bc37cb4530452b7b87641ca152c546822174072ee8",
+      "will_copy": false
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/README.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/internal/evidence/c15-3-glyph-raster-2026-10-17/README.html",
+      "source_bytes": 26596,
+      "source_sha256": "036c04e04947f05a59e140d2b7bfb9f79df202960e9fe5739496c1b091a4a4fd",
+      "target_exists": true,
+      "target_bytes": 26596,
+      "target_sha256": "036c04e04947f05a59e140d2b7bfb9f79df202960e9fe5739496c1b091a4a4fd",
+      "will_copy": false
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/README.md",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/README.md",
+      "source_bytes": 4945,
+      "source_sha256": "89ff9b4b1ef62c759d1e747baaf9b202e6ef05c9bdb47069e16417d03f1b8d35",
+      "target_exists": true,
+      "target_bytes": 4945,
+      "target_sha256": "89ff9b4b1ef62c759d1e747baaf9b202e6ef05c9bdb47069e16417d03f1b8d35",
+      "will_copy": false
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/clippy.log",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/clippy.log",
+      "source_bytes": 994,
+      "source_sha256": "0d1d41a8e4579e2f63496fe0fad317029177211c712775550f33f90691f40966",
+      "target_exists": true,
+      "target_bytes": 994,
+      "target_sha256": "0d1d41a8e4579e2f63496fe0fad317029177211c712775550f33f90691f40966",
+      "will_copy": false
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.html",
+      "source_bytes": 24997,
+      "source_sha256": "808036ff57563d523132342b2a1b0182401fcad7a8d39a6bb22eb23e5e9bed0f",
+      "target_exists": true,
+      "target_bytes": 24997,
+      "target_sha256": "808036ff57563d523132342b2a1b0182401fcad7a8d39a6bb22eb23e5e9bed0f",
+      "will_copy": false
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.md",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.md",
+      "source_bytes": 4822,
+      "source_sha256": "9d539833b657e471db7e7a398e9aeda7812061b60da3efb6db9cc2265277ad2b",
+      "target_exists": true,
+      "target_bytes": 4822,
+      "target_sha256": "9d539833b657e471db7e7a398e9aeda7812061b60da3efb6db9cc2265277ad2b",
+      "will_copy": false
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.html",
+      "source_bytes": 26441,
+      "source_sha256": "0706c1d110a38b8cb24a724a9b5b347f7e58d80b6192d0884af89fdddd87f584",
+      "target_exists": true,
+      "target_bytes": 26441,
+      "target_sha256": "0706c1d110a38b8cb24a724a9b5b347f7e58d80b6192d0884af89fdddd87f584",
+      "will_copy": false
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.md",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.md",
+      "source_bytes": 6312,
+      "source_sha256": "aa0f79fdeffa1a33c5aac7bf06697457870d51c823b3f53c0a1a99e4d0fa7abb",
+      "target_exists": true,
+      "target_bytes": 6312,
+      "target_sha256": "aa0f79fdeffa1a33c5aac7bf06697457870d51c823b3f53c0a1a99e4d0fa7abb",
+      "will_copy": false
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/rust-tests.log",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/rust-tests.log",
+      "source_bytes": 19104,
+      "source_sha256": "4c3325bdfe8edb0daba4da20f5f1bad0ec583bcd53da4971365cd66a4f2124ab",
+      "target_exists": true,
+      "target_bytes": 19104,
+      "target_sha256": "4c3325bdfe8edb0daba4da20f5f1bad0ec583bcd53da4971365cd66a4f2124ab",
+      "will_copy": false
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-2026-10-17/rustfmt.log",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/rustfmt.log",
+      "source_bytes": 35,
+      "source_sha256": "b729524df34fc34d98becf55c15c2a3d64441e3f74e001188151f777faa8fb14",
+      "target_exists": true,
+      "target_bytes": 35,
+      "target_sha256": "b729524df34fc34d98becf55c15c2a3d64441e3f74e001188151f777faa8fb14",
+      "will_copy": false
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.html",
+      "source_bytes": 25187,
+      "source_sha256": "cceecbcaa6269179df16cec491025455c21b4c6855996b1b16af61104dfe0f53",
+      "target_exists": true,
+      "target_bytes": 25187,
+      "target_sha256": "cceecbcaa6269179df16cec491025455c21b4c6855996b1b16af61104dfe0f53",
+      "will_copy": false
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.md",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.md",
+      "source_bytes": 3205,
+      "source_sha256": "4b28766e176f8ddcf8f92691ebb235def773ed906ca877832df304cf7b97b4f3",
+      "target_exists": true,
+      "target_bytes": 3205,
+      "target_sha256": "4b28766e176f8ddcf8f92691ebb235def773ed906ca877832df304cf7b97b4f3",
+      "will_copy": false
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "source_bytes": 33631,
+      "source_sha256": "6d2594040a7e61eeb4b608dc61d6eb6d29a8015b8d5f72c0c4cae06e7c93e103",
+      "target_exists": true,
+      "target_bytes": 33631,
+      "target_sha256": "6d2594040a7e61eeb4b608dc61d6eb6d29a8015b8d5f72c0c4cae06e7c93e103",
+      "will_copy": false
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "source_bytes": 5134,
+      "source_sha256": "c6d5c6a1720de658da6e2842a06028458c1b56316269ce47442241e37aed9024",
+      "target_exists": true,
+      "target_bytes": 5134,
+      "target_sha256": "c6d5c6a1720de658da6e2842a06028458c1b56316269ce47442241e37aed9024",
+      "will_copy": false
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.html",
+      "source_bytes": 25368,
+      "source_sha256": "bc64815bc014058cdd1e3778f8dba6d6d1ababaea05de256e901318de4852996",
+      "target_exists": true,
+      "target_bytes": 25368,
+      "target_sha256": "bc64815bc014058cdd1e3778f8dba6d6d1ababaea05de256e901318de4852996",
+      "will_copy": false
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.md",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.md",
+      "source_bytes": 2762,
+      "source_sha256": "a53e76de9ddc01efd623e3633570477d4d01d6c1fe08b856002e58db52026202",
+      "target_exists": true,
+      "target_bytes": 2762,
+      "target_sha256": "a53e76de9ddc01efd623e3633570477d4d01d6c1fe08b856002e58db52026202",
+      "will_copy": false
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/selected-build.log",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/selected-build.log",
+      "source_bytes": 6305,
+      "source_sha256": "bc4d6b8c0d269d7c326391a7178352f8403f2bb243ac72c9dc1c976d873dfcc9",
+      "target_exists": true,
+      "target_bytes": 6315,
+      "target_sha256": "5d37227b8fc48d778cf3bdfaa0302ca4200ef820f4ff49d6984a3ee9cd7a0e64",
+      "will_copy": true
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-contract-agent-browser.png",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-contract-agent-browser.png",
+      "source_bytes": 117851,
+      "source_sha256": "0e2fcf4cb76151e77878e30f91ded405e0c5b385ff729a5fc857fbd23d05b5da",
+      "target_exists": true,
+      "target_bytes": 117851,
+      "target_sha256": "0e2fcf4cb76151e77878e30f91ded405e0c5b385ff729a5fc857fbd23d05b5da",
+      "will_copy": false
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-roadmap-agent-browser.png",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-roadmap-agent-browser.png",
+      "source_bytes": 271970,
+      "source_sha256": "d3b468a563a58c47ae10eca12fa9fc37e5682cc8f136c10910c2152de290a653",
+      "target_exists": true,
+      "target_bytes": 271970,
+      "target_sha256": "d3b468a563a58c47ae10eca12fa9fc37e5682cc8f136c10910c2152de290a653",
+      "will_copy": false
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-status-agent-browser.png",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-status-agent-browser.png",
+      "source_bytes": 227042,
+      "source_sha256": "0029ed2524a9eaee7c0cb43eb2de43f8526eb17aa94ceab4dcb2824da3d7d1a7",
+      "target_exists": true,
+      "target_bytes": 227042,
+      "target_sha256": "0029ed2524a9eaee7c0cb43eb2de43f8526eb17aa94ceab4dcb2824da3d7d1a7",
+      "will_copy": false
+    },
+    {
+      "path": "logo.svg",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/logo.svg",
+      "source_bytes": 568,
+      "source_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "target_exists": true,
+      "target_bytes": 568,
+      "target_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "will_copy": false
+    },
+    {
+      "path": "plan/c15-inline-text-layout.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/plan/c15-inline-text-layout.html",
+      "source_bytes": 57539,
+      "source_sha256": "6bd798d4d26859d779aa8f8db38629edbd9dc39c9a64a63890d746048f4d41a5",
+      "target_exists": true,
+      "target_bytes": 57539,
+      "target_sha256": "6bd798d4d26859d779aa8f8db38629edbd9dc39c9a64a63890d746048f4d41a5",
+      "will_copy": false
+    },
+    {
+      "path": "plan/c15-inline-text-layout.md",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/plan/c15-inline-text-layout.md",
+      "source_bytes": 27857,
+      "source_sha256": "24e17d95162476733cd44f1a794461103f5ef1bb84dcaf7ef920e82d181990e6",
+      "target_exists": true,
+      "target_bytes": 27857,
+      "target_sha256": "24e17d95162476733cd44f1a794461103f5ef1bb84dcaf7ef920e82d181990e6",
+      "will_copy": false
+    },
+    {
+      "path": "public/roadmap.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/public/roadmap.html",
+      "source_bytes": 108150,
+      "source_sha256": "b8be5c0d54b2b9dba71a17d1dbad7a9a0991c968e55b50beb3e0e1c2bbda3823",
+      "target_exists": true,
+      "target_bytes": 108150,
+      "target_sha256": "b8be5c0d54b2b9dba71a17d1dbad7a9a0991c968e55b50beb3e0e1c2bbda3823",
+      "will_copy": false
+    },
+    {
+      "path": "roadmap.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/public/roadmap.html",
+      "source_bytes": 108150,
+      "source_sha256": "b8be5c0d54b2b9dba71a17d1dbad7a9a0991c968e55b50beb3e0e1c2bbda3823",
+      "target_exists": true,
+      "target_bytes": 108150,
+      "target_sha256": "b8be5c0d54b2b9dba71a17d1dbad7a9a0991c968e55b50beb3e0e1c2bbda3823",
+      "will_copy": false
+    },
+    {
+      "path": "spec/STATUS.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/STATUS.html",
+      "source_bytes": 332398,
+      "source_sha256": "d98edbcf0e24e2644655f8546f82698b496626c7397c8cc1e792d4d95b5a30b7",
+      "target_exists": true,
+      "target_bytes": 332398,
+      "target_sha256": "d98edbcf0e24e2644655f8546f82698b496626c7397c8cc1e792d4d95b5a30b7",
+      "will_copy": false
+    },
+    {
+      "path": "spec/STATUS.md",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/STATUS.md",
+      "source_bytes": 252965,
+      "source_sha256": "42f97c8f1f28c800c8c1e087033a855ad979001c86bc04ec971dd014a3bdae9a",
+      "target_exists": true,
+      "target_bytes": 252965,
+      "target_sha256": "42f97c8f1f28c800c8c1e087033a855ad979001c86bc04ec971dd014a3bdae9a",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/0071-c15-3-glyph-raster-snapshot.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/internal/0071-c15-3-glyph-raster-snapshot.html",
+      "source_bytes": 25017,
+      "source_sha256": "13b433ce50131896d28b17fb3d6794bfda29ae75a6cbd3a41fc3ab9e1de40e23",
+      "target_exists": true,
+      "target_bytes": 25017,
+      "target_sha256": "13b433ce50131896d28b17fb3d6794bfda29ae75a6cbd3a41fc3ab9e1de40e23",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/0071-c15-3-glyph-raster-snapshot.md",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/0071-c15-3-glyph-raster-snapshot.md",
+      "source_bytes": 4596,
+      "source_sha256": "978ff0c93e28fb0c18417008778ec3a6fd44946fa4beed2210c40c8478f34e6b",
+      "target_exists": true,
+      "target_bytes": 4596,
+      "target_sha256": "978ff0c93e28fb0c18417008778ec3a6fd44946fa4beed2210c40c8478f34e6b",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/README.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/internal/README.html",
+      "source_bytes": 151768,
+      "source_sha256": "4e9889905d0b470734f16c3abefd30cb4a067595aeeb369ec7c1e5079548eace",
+      "target_exists": true,
+      "target_bytes": 151768,
+      "target_sha256": "4e9889905d0b470734f16c3abefd30cb4a067595aeeb369ec7c1e5079548eace",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/README.md",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/README.md",
+      "source_bytes": 108800,
+      "source_sha256": "d6c4c250dd15fe7da3d828bc37cb4530452b7b87641ca152c546822174072ee8",
+      "target_exists": true,
+      "target_bytes": 108800,
+      "target_sha256": "d6c4c250dd15fe7da3d828bc37cb4530452b7b87641ca152c546822174072ee8",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/README.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/internal/evidence/c15-3-glyph-raster-2026-10-17/README.html",
+      "source_bytes": 26596,
+      "source_sha256": "036c04e04947f05a59e140d2b7bfb9f79df202960e9fe5739496c1b091a4a4fd",
+      "target_exists": true,
+      "target_bytes": 26596,
+      "target_sha256": "036c04e04947f05a59e140d2b7bfb9f79df202960e9fe5739496c1b091a4a4fd",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/README.md",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/README.md",
+      "source_bytes": 4945,
+      "source_sha256": "89ff9b4b1ef62c759d1e747baaf9b202e6ef05c9bdb47069e16417d03f1b8d35",
+      "target_exists": true,
+      "target_bytes": 4945,
+      "target_sha256": "89ff9b4b1ef62c759d1e747baaf9b202e6ef05c9bdb47069e16417d03f1b8d35",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/clippy.log",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/clippy.log",
+      "source_bytes": 994,
+      "source_sha256": "0d1d41a8e4579e2f63496fe0fad317029177211c712775550f33f90691f40966",
+      "target_exists": true,
+      "target_bytes": 994,
+      "target_sha256": "0d1d41a8e4579e2f63496fe0fad317029177211c712775550f33f90691f40966",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.html",
+      "source_bytes": 24997,
+      "source_sha256": "808036ff57563d523132342b2a1b0182401fcad7a8d39a6bb22eb23e5e9bed0f",
+      "target_exists": true,
+      "target_bytes": 24997,
+      "target_sha256": "808036ff57563d523132342b2a1b0182401fcad7a8d39a6bb22eb23e5e9bed0f",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.md",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/implementation-review-20.md",
+      "source_bytes": 4822,
+      "source_sha256": "9d539833b657e471db7e7a398e9aeda7812061b60da3efb6db9cc2265277ad2b",
+      "target_exists": true,
+      "target_bytes": 4822,
+      "target_sha256": "9d539833b657e471db7e7a398e9aeda7812061b60da3efb6db9cc2265277ad2b",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.html",
+      "source_bytes": 26441,
+      "source_sha256": "0706c1d110a38b8cb24a724a9b5b347f7e58d80b6192d0884af89fdddd87f584",
+      "target_exists": true,
+      "target_bytes": 26441,
+      "target_sha256": "0706c1d110a38b8cb24a724a9b5b347f7e58d80b6192d0884af89fdddd87f584",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.md",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/pr-delta-review-20.md",
+      "source_bytes": 6312,
+      "source_sha256": "aa0f79fdeffa1a33c5aac7bf06697457870d51c823b3f53c0a1a99e4d0fa7abb",
+      "target_exists": true,
+      "target_bytes": 6312,
+      "target_sha256": "aa0f79fdeffa1a33c5aac7bf06697457870d51c823b3f53c0a1a99e4d0fa7abb",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/rust-tests.log",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/rust-tests.log",
+      "source_bytes": 19104,
+      "source_sha256": "4c3325bdfe8edb0daba4da20f5f1bad0ec583bcd53da4971365cd66a4f2124ab",
+      "target_exists": true,
+      "target_bytes": 19104,
+      "target_sha256": "4c3325bdfe8edb0daba4da20f5f1bad0ec583bcd53da4971365cd66a4f2124ab",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-2026-10-17/rustfmt.log",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-2026-10-17/rustfmt.log",
+      "source_bytes": 35,
+      "source_sha256": "b729524df34fc34d98becf55c15c2a3d64441e3f74e001188151f777faa8fb14",
+      "target_exists": true,
+      "target_bytes": 35,
+      "target_sha256": "b729524df34fc34d98becf55c15c2a3d64441e3f74e001188151f777faa8fb14",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.html",
+      "source_bytes": 25187,
+      "source_sha256": "cceecbcaa6269179df16cec491025455c21b4c6855996b1b16af61104dfe0f53",
+      "target_exists": true,
+      "target_bytes": 25187,
+      "target_sha256": "cceecbcaa6269179df16cec491025455c21b4c6855996b1b16af61104dfe0f53",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.md",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/README.md",
+      "source_bytes": 3205,
+      "source_sha256": "4b28766e176f8ddcf8f92691ebb235def773ed906ca877832df304cf7b97b4f3",
+      "target_exists": true,
+      "target_bytes": 3205,
+      "target_sha256": "4b28766e176f8ddcf8f92691ebb235def773ed906ca877832df304cf7b97b4f3",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "source_bytes": 33631,
+      "source_sha256": "6d2594040a7e61eeb4b608dc61d6eb6d29a8015b8d5f72c0c4cae06e7c93e103",
+      "target_exists": true,
+      "target_bytes": 33631,
+      "target_sha256": "6d2594040a7e61eeb4b608dc61d6eb6d29a8015b8d5f72c0c4cae06e7c93e103",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "source_bytes": 5134,
+      "source_sha256": "c6d5c6a1720de658da6e2842a06028458c1b56316269ce47442241e37aed9024",
+      "target_exists": true,
+      "target_bytes": 5134,
+      "target_sha256": "c6d5c6a1720de658da6e2842a06028458c1b56316269ce47442241e37aed9024",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.html",
+      "source_bytes": 25368,
+      "source_sha256": "bc64815bc014058cdd1e3778f8dba6d6d1ababaea05de256e901318de4852996",
+      "target_exists": true,
+      "target_bytes": 25368,
+      "target_sha256": "bc64815bc014058cdd1e3778f8dba6d6d1ababaea05de256e901318de4852996",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.md",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/render-build-result.md",
+      "source_bytes": 2762,
+      "source_sha256": "a53e76de9ddc01efd623e3633570477d4d01d6c1fe08b856002e58db52026202",
+      "target_exists": true,
+      "target_bytes": 2762,
+      "target_sha256": "a53e76de9ddc01efd623e3633570477d4d01d6c1fe08b856002e58db52026202",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/selected-build.log",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/selected-build.log",
+      "source_bytes": 6305,
+      "source_sha256": "bc4d6b8c0d269d7c326391a7178352f8403f2bb243ac72c9dc1c976d873dfcc9",
+      "target_exists": true,
+      "target_bytes": 6315,
+      "target_sha256": "5d37227b8fc48d778cf3bdfaa0302ca4200ef820f4ff49d6984a3ee9cd7a0e64",
+      "will_copy": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-contract-agent-browser.png",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-contract-agent-browser.png",
+      "source_bytes": 117851,
+      "source_sha256": "0e2fcf4cb76151e77878e30f91ded405e0c5b385ff729a5fc857fbd23d05b5da",
+      "target_exists": true,
+      "target_bytes": 117851,
+      "target_sha256": "0e2fcf4cb76151e77878e30f91ded405e0c5b385ff729a5fc857fbd23d05b5da",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-roadmap-agent-browser.png",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-roadmap-agent-browser.png",
+      "source_bytes": 271970,
+      "source_sha256": "d3b468a563a58c47ae10eca12fa9fc37e5682cc8f136c10910c2152de290a653",
+      "target_exists": true,
+      "target_bytes": 271970,
+      "target_sha256": "d3b468a563a58c47ae10eca12fa9fc37e5682cc8f136c10910c2152de290a653",
+      "will_copy": false
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-status-agent-browser.png",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/tailnet-status-agent-browser.png",
+      "source_bytes": 227042,
+      "source_sha256": "0029ed2524a9eaee7c0cb43eb2de43f8526eb17aa94ceab4dcb2824da3d7d1a7",
+      "target_exists": true,
+      "target_bytes": 227042,
+      "target_sha256": "0029ed2524a9eaee7c0cb43eb2de43f8526eb17aa94ceab4dcb2824da3d7d1a7",
+      "will_copy": false
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-20261017/spec/public/roadmap.html",
+      "source_bytes": 108150,
+      "source_sha256": "b8be5c0d54b2b9dba71a17d1dbad7a9a0991c968e55b50beb3e0e1c2bbda3823",
+      "target_exists": true,
+      "target_bytes": 108150,
+      "target_sha256": "b8be5c0d54b2b9dba71a17d1dbad7a9a0991c968e55b50beb3e0e1c2bbda3823",
+      "will_copy": false
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/css/styles.8d918fd78e.css",
+      "source_bytes": 73952,
+      "source_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "target_exists": true,
+      "target_bytes": 73952,
+      "target_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "will_copy": false
+    },
+    {
+      "path": "static/image/tailnet-contract-agent-browser.b7c62ebe9d.png",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/image/tailnet-contract-agent-browser.b7c62ebe9d.png",
+      "source_bytes": 117851,
+      "source_sha256": "0e2fcf4cb76151e77878e30f91ded405e0c5b385ff729a5fc857fbd23d05b5da",
+      "target_exists": true,
+      "target_bytes": 117851,
+      "target_sha256": "0e2fcf4cb76151e77878e30f91ded405e0c5b385ff729a5fc857fbd23d05b5da",
+      "will_copy": false
+    },
+    {
+      "path": "static/image/tailnet-roadmap-agent-browser.76ed7206a9.png",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/image/tailnet-roadmap-agent-browser.76ed7206a9.png",
+      "source_bytes": 271970,
+      "source_sha256": "d3b468a563a58c47ae10eca12fa9fc37e5682cc8f136c10910c2152de290a653",
+      "target_exists": true,
+      "target_bytes": 271970,
+      "target_sha256": "d3b468a563a58c47ae10eca12fa9fc37e5682cc8f136c10910c2152de290a653",
+      "will_copy": false
+    },
+    {
+      "path": "static/image/tailnet-status-agent-browser.e21a5fc481.png",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/image/tailnet-status-agent-browser.e21a5fc481.png",
+      "source_bytes": 227042,
+      "source_sha256": "0029ed2524a9eaee7c0cb43eb2de43f8526eb17aa94ceab4dcb2824da3d7d1a7",
+      "target_exists": true,
+      "target_bytes": 227042,
+      "target_sha256": "0029ed2524a9eaee7c0cb43eb2de43f8526eb17aa94ceab4dcb2824da3d7d1a7",
+      "will_copy": false
+    },
+    {
+      "path": "static/js/a.10908bd193.js",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/js/a.10908bd193.js",
+      "source_bytes": 217100,
+      "source_sha256": "2f61cae3c1ab178c518269d2fc3b800dae36a15f126bf23b476c741dac9f75d8",
+      "target_exists": true,
+      "target_bytes": 217100,
+      "target_sha256": "2f61cae3c1ab178c518269d2fc3b800dae36a15f126bf23b476c741dac9f75d8",
+      "will_copy": false
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/js/async/i.25208e7c92.js",
+      "source_bytes": 100,
+      "source_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "target_exists": true,
+      "target_bytes": 100,
+      "target_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "will_copy": false
+    },
+    {
+      "path": "static/js/async/route-117783875241.0af052dc9c.js",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/js/async/route-117783875241.0af052dc9c.js",
+      "source_bytes": 46652,
+      "source_sha256": "0865653503a7e9acde1d439b1eaca77d7aefae7fb59de1c29928445ffa2c87e2",
+      "target_exists": true,
+      "target_bytes": 46652,
+      "target_sha256": "0865653503a7e9acde1d439b1eaca77d7aefae7fb59de1c29928445ffa2c87e2",
+      "will_copy": false
+    },
+    {
+      "path": "static/js/async/route-2a8fb458a6a4.1f7f3ec995.js",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/js/async/route-2a8fb458a6a4.1f7f3ec995.js",
+      "source_bytes": 10116,
+      "source_sha256": "373b11dc2f101a4d3ad29a65f341c47870b3bf3dbf11f645f9892a0bb4d774e5",
+      "target_exists": true,
+      "target_bytes": 10116,
+      "target_sha256": "373b11dc2f101a4d3ad29a65f341c47870b3bf3dbf11f645f9892a0bb4d774e5",
+      "will_copy": false
+    },
+    {
+      "path": "static/js/async/route-410b8fac7053.0c50e5845b.js",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/js/async/route-410b8fac7053.0c50e5845b.js",
+      "source_bytes": 6918,
+      "source_sha256": "77fdf16139f478685a55af1418e4d2b9c20ce12128abf2dd5c9b08b7b99fdce8",
+      "target_exists": true,
+      "target_bytes": 6918,
+      "target_sha256": "77fdf16139f478685a55af1418e4d2b9c20ce12128abf2dd5c9b08b7b99fdce8",
+      "will_copy": false
+    },
+    {
+      "path": "static/js/async/route-4fc60b47d996.e93cc15a79.js",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/js/async/route-4fc60b47d996.e93cc15a79.js",
+      "source_bytes": 6866,
+      "source_sha256": "db698340df8e725468faea7495a0864fe2a92d1bd50fea1e9be2174015fae6ac",
+      "target_exists": true,
+      "target_bytes": 6866,
+      "target_sha256": "db698340df8e725468faea7495a0864fe2a92d1bd50fea1e9be2174015fae6ac",
+      "will_copy": false
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.2a452693a0.js",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/js/async/route-6c33a3943990.2a452693a0.js",
+      "source_bytes": 350126,
+      "source_sha256": "3d8fcdae04b8961e8c306ee8b13e7f1c67766f2576c5e620ee5167c27dd58a85",
+      "target_exists": true,
+      "target_bytes": 350126,
+      "target_sha256": "3d8fcdae04b8961e8c306ee8b13e7f1c67766f2576c5e620ee5167c27dd58a85",
+      "will_copy": false
+    },
+    {
+      "path": "static/js/async/route-7f1586660381.3790388ebb.js",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/js/async/route-7f1586660381.3790388ebb.js",
+      "source_bytes": 8178,
+      "source_sha256": "c163104f0ec08d35416c2646a1fcfc3c4af591b15ba6ac504bdcc6b1dc0af3a1",
+      "target_exists": true,
+      "target_bytes": 8178,
+      "target_sha256": "c163104f0ec08d35416c2646a1fcfc3c4af591b15ba6ac504bdcc6b1dc0af3a1",
+      "will_copy": false
+    },
+    {
+      "path": "static/js/async/route-815a6cb5ee57.ed10d25ebc.js",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/js/async/route-815a6cb5ee57.ed10d25ebc.js",
+      "source_bytes": 10882,
+      "source_sha256": "6521eeaba0aa8e1b66620cb2c2108d1be15d80966160e8717273649a58c3bbfb",
+      "target_exists": true,
+      "target_bytes": 10882,
+      "target_sha256": "6521eeaba0aa8e1b66620cb2c2108d1be15d80966160e8717273649a58c3bbfb",
+      "will_copy": false
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.086e07bb30.js",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/js/async/route-a1017bdf23ca.086e07bb30.js",
+      "source_bytes": 159438,
+      "source_sha256": "62d570e4a959c3fd5de0bbaf398f4f92b386fa35cd5dc8de01e9dd3017d55e3e",
+      "target_exists": true,
+      "target_bytes": 159438,
+      "target_sha256": "62d570e4a959c3fd5de0bbaf398f4f92b386fa35cd5dc8de01e9dd3017d55e3e",
+      "will_copy": false
+    },
+    {
+      "path": "static/js/async/route-de3bb2a34479.a96099cb80.js",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/js/async/route-de3bb2a34479.a96099cb80.js",
+      "source_bytes": 8639,
+      "source_sha256": "1887d0ff367db3b23e82c5f578ae52576a4bdaae0945b659a677bea8ddd4b4e3",
+      "target_exists": true,
+      "target_bytes": 8639,
+      "target_sha256": "1887d0ff367db3b23e82c5f578ae52576a4bdaae0945b659a677bea8ddd4b4e3",
+      "will_copy": false
+    },
+    {
+      "path": "static/js/async/route-e4492196d4bd.cf17673354.js",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/js/async/route-e4492196d4bd.cf17673354.js",
+      "source_bytes": 9671,
+      "source_sha256": "e222920163283187bcdb344de4a9f8c594dcde6eeeedc5ef69c73b97a08df1b9",
+      "target_exists": true,
+      "target_bytes": 9671,
+      "target_sha256": "e222920163283187bcdb344de4a9f8c594dcde6eeeedc5ef69c73b97a08df1b9",
+      "will_copy": false
+    },
+    {
+      "path": "static/js/index.aa90162880.js",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/js/index.aa90162880.js",
+      "source_bytes": 27814,
+      "source_sha256": "11da313ada6457e1c508a36eec8ddb71d372ddf905093fce68fe58a0b7f06181",
+      "target_exists": true,
+      "target_bytes": 27814,
+      "target_sha256": "11da313ada6457e1c508a36eec8ddb71d372ddf905093fce68fe58a0b7f06181",
+      "will_copy": false
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/js/lib-react.9cdf8f49ce.js",
+      "source_bytes": 218364,
+      "source_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "target_exists": true,
+      "target_bytes": 218364,
+      "target_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "will_copy": false
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/js/lib-router.1e14e568cb.js",
+      "source_bytes": 35370,
+      "source_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "target_exists": true,
+      "target_bytes": 35370,
+      "target_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "will_copy": false
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/js/styles.2da0941fcb.js",
+      "source_bytes": 472,
+      "source_sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "target_exists": true,
+      "target_bytes": 472,
+      "target_sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "will_copy": false
+    },
+    {
+      "path": "static/search_index.ko.459bf797.json",
+      "source": "/private/tmp/spinon-c15-3-glyph-raster-tailnet-selected-final5-20261017/static/search_index.ko.459bf797.json",
+      "source_bytes": 338884,
+      "source_sha256": "459bf797c3736516c2b93c233fcc3d12f87d7fb773f1319ddec4f1714858abc9",
+      "target_exists": true,
+      "target_bytes": 338884,
+      "target_sha256": "459bf797c3736516c2b93c233fcc3d12f87d7fb773f1319ddec4f1714858abc9",
+      "will_copy": false
+    }
+  ],
+  "metadata_targets": [
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/preflight.json",
+      "target_exists": true,
+      "target_bytes": 45904,
+      "target_sha256": "6c1fc25a283bacc436d8dc98fdfceaaa2a842dbce736aba134241be6d946ea41"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/preflight.json",
+      "target_exists": true,
+      "target_bytes": 45904,
+      "target_sha256": "6c1fc25a283bacc436d8dc98fdfceaaa2a842dbce736aba134241be6d946ea41"
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/copy-verification.json",
+      "target_exists": true,
+      "target_bytes": 49905,
+      "target_sha256": "07c4592a8870708ae496b1e1fd09f2da1f15f82a0a38b630c6075d5d435d4a10"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/copy-verification.json",
+      "target_exists": true,
+      "target_bytes": 49905,
+      "target_sha256": "07c4592a8870708ae496b1e1fd09f2da1f15f82a0a38b630c6075d5d435d4a10"
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/backup-verification.json",
+      "target_exists": true,
+      "target_bytes": 15610,
+      "target_sha256": "4ca9f84fb8538368e942d3265058a524d5399c7253ec507671181bfecf440988"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/backup-verification.json",
+      "target_exists": true,
+      "target_bytes": 15610,
+      "target_sha256": "4ca9f84fb8538368e942d3265058a524d5399c7253ec507671181bfecf440988"
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/served-verification.json",
+      "target_exists": true,
+      "target_bytes": 37625,
+      "target_sha256": "1195446cc1122fcd2906ebd02ab4f6fa4393ad66727cc95c37400af26a6c1549"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/served-verification.json",
+      "target_exists": true,
+      "target_bytes": 37625,
+      "target_sha256": "1195446cc1122fcd2906ebd02ab4f6fa4393ad66727cc95c37400af26a6c1549"
+    },
+    {
+      "path": "internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/manifest.json",
+      "target_exists": true,
+      "target_bytes": 55996,
+      "target_sha256": "3ec232c58a0950460e90ecc33f49dc87a961644a4c0f7dcc598d8ac7dae99c9d"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-glyph-raster-tailnet-sync-2026-10-17/manifest.json",
+      "target_exists": true,
+      "target_bytes": 55996,
+      "target_sha256": "3ec232c58a0950460e90ecc33f49dc87a961644a4c0f7dcc598d8ac7dae99c9d"
+    }
+  ],
+  "preserved_legacy_assets": [
+    {
+      "path": "static/js/a.10908bd193.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "reason": "not emitted by the latest selected build; retained without deletion"
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.bf63fb7282.js",
+      "bytes": 158752,
+      "sha256": "919fcd6c32e4312e17f653c6fbdc958a60bba24ab2d87e871c3991d6a175ea21",
+      "reason": "not emitted by the latest selected build; retained without deletion"
+    },
+    {
+      "path": "static/js/index.1fbd56efcd.js",
+      "bytes": 19109,
+      "sha256": "be778c00591fd27c16cb6deb7c2daf4f0fa5a2778905f5022611f30daeed40db",
+      "reason": "not emitted by the latest selected build; retained without deletion"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "reason": "not emitted by the latest selected build; retained without deletion"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "reason": "not emitted by the latest selected build; retained without deletion"
+    },
+    {
+      "path": "static/search_index.ko.d4c9ccc1.json",
+      "bytes": 321752,
+      "sha256": "d4c9ccc110530915439687c567fda83866fb8e990b74435a3e16b7d2dc1f9cca",
+      "reason": "not emitted by the latest selected build; retained without deletion"
+    },
+    {
+      "path": "static/js/async/route-de3bb2a34479.a0918d9156.js",
+      "bytes": 8739,
+      "sha256": "6f4981963a4d744b65b02caf21f563e6480ba0e5b0ad3e26d3b3c9482bfdd234",
+      "reason": "not emitted by the latest selected build; retained without deletion"
+    },
+    {
+      "path": "static/js/index.d46e247c53.js",
+      "bytes": 27914,
+      "sha256": "1ffc03d4cd2adf4fab9a9f644121526abe1423cfc1caa61d522d2eedd9ee2832",
+      "reason": "not emitted by the latest selected build; retained without deletion"
+    },
+    {
+      "path": "static/search_index.ko.def86d49.json",
+      "bytes": 339084,
+      "sha256": "def86d493c12b55c113183045a7d22315fcdb6a751c7d19b541c7d5a3777336e",
+      "reason": "not emitted by the latest selected build; retained without deletion"
+    }
+  ]
+}
