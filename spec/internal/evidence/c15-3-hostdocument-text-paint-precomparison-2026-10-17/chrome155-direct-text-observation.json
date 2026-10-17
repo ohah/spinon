@@ -1,0 +1,124 @@
+{
+  "schema": "spinon.c15-3-hostdocument-text-paint-chrome-observation.v1",
+  "purpose": "기존 C15.1 long-word DOM에서 absolute label 제거가 direct Text geometry를 바꾸지 않는지 확인",
+  "agentBrowser": "0.31.1",
+  "browser": {
+    "brand": "Google Chrome",
+    "fullVersion": "155.0.8059.85",
+    "chromiumRevision": "0e66b94549a8bd85f03fbdf189b752d6e7b63c32",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "platform": "macOS",
+    "platformVersion": "26.5.1",
+    "architecture": "arm",
+    "bitness": "64",
+    "locale": "ko-KR"
+  },
+  "viewport": {
+    "width": 1280,
+    "height": 633,
+    "dpr": 1
+  },
+  "input": {
+    "fixture": "tests/fixtures/css/c15/inline-text-precomparison.html",
+    "fixtureSha256": "efba6981d73c2e8d2aa21e38b92f2936ce2a6ecb56bc758ce420a785b5cdaf64",
+    "originalObservation": "spec/internal/evidence/c15-inline-text-precomparison-2026-10-17/chrome155-observation.json",
+    "originalObservationSha256": "8c4673dfb271923cf332845d14faa9bf6fd1101cb72d2f73ec277bc8ec226e86",
+    "targetId": "long-word",
+    "directText": "XX",
+    "font": "Ahem 10px/10px",
+    "fontLoaded": true,
+    "ahemFontSha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+    "mutation": "absolute .label child removed"
+  },
+  "beforeLabelRemoval": {
+    "parentBorderBox": [
+      8,
+      138,
+      15,
+      10
+    ],
+    "textRangeRects": [
+      [
+        8,
+        138,
+        20,
+        10
+      ]
+    ],
+    "characterRects": [
+      [
+        8,
+        138,
+        10,
+        10
+      ],
+      [
+        18,
+        138,
+        10,
+        10
+      ]
+    ]
+  },
+  "afterLabelRemoval": {
+    "parentBorderBox": [
+      8,
+      138,
+      15,
+      10
+    ],
+    "textRangeRects": [
+      [
+        8,
+        138,
+        20,
+        10
+      ]
+    ],
+    "characterRects": [
+      [
+        8,
+        138,
+        10,
+        10
+      ],
+      [
+        18,
+        138,
+        10,
+        10
+      ]
+    ]
+  },
+  "geometryEqual": true,
+  "derivedAcceptance": {
+    "parentRelativeBox": [
+      0,
+      0,
+      15,
+      10
+    ],
+    "parentRelativeTextRange": [
+      0,
+      0,
+      20,
+      10
+    ],
+    "characterAdvances": [
+      10,
+      10
+    ],
+    "overflowPastParentRightCssPx": 5
+  },
+  "screenshot": {
+    "path": "chrome155-label-removed.png",
+    "width": 1280,
+    "height": 633,
+    "sha256": "1af1ab2626b57097da0b3b9f93d499a24a244f85c9a71bd291c7926ee840f43f"
+  },
+  "limitations": [
+    "Chrome DOM geometry oracle only; no Spinon execution",
+    "screenshot is visual context and not an antialias pixel oracle",
+    "absolute page y is viewport-dependent; acceptance uses parent-relative geometry"
+  ]
+}
