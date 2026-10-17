@@ -1,0 +1,5 @@
+xcrun simctl install ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D /Volumes/ZTSBuild/spinon-c15-3-20261017/output/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app
+xcrun simctl launch --terminate-running-process ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D dev.spinon.bootstrap --spinon-c153-hostdocument-text-paint
+sleep 6
+xcrun simctl io ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D screenshot ios-screen.png
+xcrun simctl spawn ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D log show --last 2m --style compact --predicate 'process == "SpinonBootstrap"' | rg 'SPINON_C153|SPINON_C0410_(DRAW|RENDERER)' > ios-unified.log

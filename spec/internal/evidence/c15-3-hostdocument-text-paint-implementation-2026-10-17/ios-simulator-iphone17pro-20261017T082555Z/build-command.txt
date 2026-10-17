@@ -1,0 +1,6 @@
+SPINON_ENABLE_C04_RUNTIME_GPU=1
+SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST=1
+CARGO_TARGET_DIR=/Volumes/ZTSBuild/spinon-c15-3-20261017/target
+CARGO_PROFILE_RELEASE_DEBUG=0
+CARGO_BUILD_JOBS=1
+mise exec -- env SPINON_V8_DIR=/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8 tools/build-ios-sim.sh

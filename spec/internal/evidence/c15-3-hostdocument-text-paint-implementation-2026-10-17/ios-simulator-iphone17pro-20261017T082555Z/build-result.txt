@@ -1,0 +1,2 @@
+xcodebuild=BUILD_SUCCEEDED
+outer_capture_shell=read-only status assignment after build; xcodebuild log is authoritative

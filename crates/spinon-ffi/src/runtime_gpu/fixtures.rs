@@ -3,6 +3,8 @@ mod host;
 
 #[cfg(feature = "c15-3-wgpu-glyph-paint-fixture-test")]
 pub(super) mod c15_3;
+#[cfg(feature = "c15-3-wgpu-glyph-paint-fixture-test")]
+pub(super) mod c15_3_hostdocument_text_paint;
 #[cfg(feature = "c18-1-image-paint-fixture-test")]
 pub(super) mod c18_1;
 #[cfg(feature = "c18-2-alpha-image-compositing-fixture-test")]

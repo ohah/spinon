@@ -533,8 +533,10 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
 test('C15.3 glyph paint 앱 adapter와 고정 글꼴은 opt-in feature 경계에 묶인다', async () => {
   const read = (path) => readFile(resolve(repositoryRoot, path), 'utf8');
   const [runtimeModules, ffiModules, runtimeSource, ffiSource, cargoManifest,
-    c15RuntimeFixture, c15CssFixture, c15FfiFixture, ffiHeader, androidBuild, androidGradle,
-    androidActivity, androidDemo, androidJni, iosBuild, iosProject, iosHeader,
+    c15RuntimeFixture, c15HostDocumentFixture, c15HostDocumentLayout, c15HostDocumentRaster,
+    c15CssFixture, c15FfiFixture, ffiHeader,
+    androidBuild, androidGradle, androidActivity, androidDemo, androidJni, androidAdapter,
+    iosBuild, iosProject, iosHeader,
     iosRunner, iosAppDelegate, iosDemo] = await Promise.all([
     read('crates/spinon-ffi/src/runtime_gpu/fixtures.rs'),
     read('crates/spinon-ffi/src/runtime_gpu/ffi/fixtures.rs'),
@@ -542,6 +544,9 @@ test('C15.3 glyph paint 앱 adapter와 고정 글꼴은 opt-in feature 경계에
     read('crates/spinon-ffi/src/runtime_gpu/ffi.rs'),
     read('crates/spinon-ffi/Cargo.toml'),
     read('crates/spinon-ffi/src/runtime_gpu/fixtures/c15_3.rs'),
+    read('crates/spinon-ffi/src/runtime_gpu/fixtures/c15_3_hostdocument_text_paint.rs'),
+    read('crates/spinon-ffi/src/runtime_gpu/fixtures/c15_3_hostdocument_text_paint/layout.rs'),
+    read('crates/spinon-ffi/src/runtime_gpu/fixtures/c15_3_hostdocument_text_paint/raster.rs'),
     read('tests/fixtures/css/c15/c15-3-wgpu-glyph-paint.js'),
     read('crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c15_3.rs'),
     read('crates/spinon-ffi/include/spinon_ffi.h'),
@@ -550,6 +555,7 @@ test('C15.3 glyph paint 앱 adapter와 고정 글꼴은 opt-in feature 경계에
     read('platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java'),
     read('platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java'),
     read('platforms/android/app/src/main/cpp/spinon_jni.cc'),
+    read('platforms/android/app/src/c15_3_wgpu_glyph_paint_fixture_test/java/dev/spinon/bootstrap/GlyphPaintFixtureNativeAdapter.java'),
     read('tools/build-ios-native.sh'),
     read('platforms/ios/SpinonBootstrap.xcodeproj/project.pbxproj'),
     read('platforms/ios/Sources/SpinonRunner.h'),
@@ -560,24 +566,34 @@ test('C15.3 glyph paint 앱 adapter와 고정 글꼴은 opt-in feature 경계에
 
   assert.match(runtimeModules,
     /#\[cfg\(feature = "c15-3-wgpu-glyph-paint-fixture-test"\)\]\s*pub\(super\) mod c15_3;/);
+  assert.match(runtimeModules,
+    /#\[cfg\(feature = "c15-3-wgpu-glyph-paint-fixture-test"\)\]\s*pub\(super\) mod c15_3_hostdocument_text_paint;/);
+  assert.match(c15HostDocumentFixture, /mod layout;\s*mod raster;/);
   assert.match(ffiModules,
     /#\[cfg\(feature = "c15-3-wgpu-glyph-paint-fixture-test"\)\]\s*mod c15_3;/);
   assert.match(cargoManifest,
-    /c15-3-wgpu-glyph-paint-fixture-test\s*=\s*\[[\s\S]*?"c04-runtime-gpu-fixture-test"[\s\S]*?"dep:spinon-core"[\s\S]*?"dep:spinon-text-layout"[\s\S]*?spinon-runtime\/c19-2-box-paint-opacity-fixture-test[\s\S]*?\]/);
+    /c15-3-wgpu-glyph-paint-fixture-test\s*=\s*\[[\s\S]*?"c04-runtime-gpu-fixture-test"[\s\S]*?"dep:spinon-core"[\s\S]*?"dep:spinon-layout"[\s\S]*?"dep:spinon-text-layout"[\s\S]*?spinon-runtime\/c19-2-box-paint-opacity-fixture-test[\s\S]*?\]/);
   assert.match(c15RuntimeFixture,
     /include_bytes![\s\S]*NotoSansKR-VF\.ttf[\s\S]*c15-3-wgpu-glyph-paint\.js[\s\S]*TextLayoutEngine::new_without_system_fonts[\s\S]*RuntimePaintCommand::DrawText/);
+  assert.match(c15HostDocumentLayout,
+    /from_host_document_with_text_paragraphs[\s\S]*compute_with_text_layout_engine[\s\S]*text_layouts/);
+  assert.match(c15HostDocumentFixture,
+    /rasterize_glyphs[\s\S]*validate_raster_snapshot[\s\S]*RuntimeRenderText::new/);
+  assert.match(c15HostDocumentLayout,
+    /LayoutSourceRevision::HostDocument[\s\S]*source_utf16/);
+  assert.match(c15HostDocumentRaster, /overflow_ink_samples[\s\S]*encode_sample_points/);
   assert.match(c15CssFixture,
-    /spinon-c15-3-wgpu-glyph-paint\/v1/);
+    /spinon-c15-3-wgpu-glyph-paint\/v2/);
   assert.match(c15CssFixture, /width:360px;height:240px/);
   assert.match(c15CssFixture, /left:160px/);
   assert.match(c15FfiFixture,
-    /spinon_runtime_gpu_host_new_c15_3_glyph_paint_fixture[\s\S]*spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture/);
+    /spinon_runtime_gpu_host_new_c15_3_glyph_paint_fixture[\s\S]*spinon_runtime_gpu_host_new_c15_3_hostdocument_text_paint_fixture[\s\S]*spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture/);
   assert.match(runtimeSource,
-    /#\[cfg\(feature = "c15-3-wgpu-glyph-paint-fixture-test"\)\][\s\S]*fixtures::c15_3::attach_glyph_paint/);
+    /#\[cfg\(feature = "c15-3-wgpu-glyph-paint-fixture-test"\)\][\s\S]*fixtures::c15_3_hostdocument_text_paint::attach_hostdocument_text_paint[\s\S]*fixtures::c15_3::attach_glyph_paint/);
   assert.match(ffiModules,
     /#\[cfg\(feature = "c15-3-wgpu-glyph-paint-fixture-test"\)\][\s\S]*c15_3/);
   assert.match(ffiHeader,
-    /#if defined\(SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST\)[\s\S]*?spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture/);
+    /#if defined\(SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST\)[\s\S]*?spinon_runtime_gpu_host_new_c15_3_hostdocument_text_paint_fixture[\s\S]*?spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture/);
 
   assert.match(androidBuild,
     /ffi_features\+=\(c15-3-wgpu-glyph-paint-fixture-test\)/);
@@ -588,20 +604,24 @@ test('C15.3 glyph paint 앱 adapter와 고정 글꼴은 opt-in feature 경계에
   assert.match(androidActivity,
     /spinon_c153_glyph_paint[\s\S]*SPINON_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST/);
   assert.match(androidDemo,
-    /GlyphPaintFixtureNativeAdapter[\s\S]*c15_3_text=attached/);
+    /GlyphPaintFixtureNativeAdapter[\s\S]*createHostDocumentTextPaintHost[\s\S]*hostdocument_text_samples_css_px=/);
   assert.match(androidJni,
-    /#if defined\(SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST\)[\s\S]*?spinon_runtime_gpu_host_new_c15_3_glyph_paint_fixture[\s\S]*?spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture/);
+    /#if defined\(SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST\)[\s\S]*?spinon_runtime_gpu_host_new_c15_3_glyph_paint_fixture[\s\S]*?spinon_runtime_gpu_host_new_c15_3_hostdocument_text_paint_fixture[\s\S]*?spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture/);
+  assert.match(androidAdapter,
+    /createHost\(\);[\s\S]*createHostDocumentTextPaintHost\(\);[\s\S]*evalFixture\(long host\);/);
 
   assert.match(iosBuild,
     /append_ffi_feature c15-3-wgpu-glyph-paint-fixture-test/);
   assert.match(iosProject,
     /SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST=\$\(SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST\)/);
   assert.match(iosHeader,
-    /SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST[\s\S]*createRuntimeGpuHostWithC15_3GlyphPaintFixture/);
+    /SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST[\s\S]*createRuntimeGpuHostWithC15_3GlyphPaintFixture[\s\S]*createRuntimeGpuHostWithC15_3HostDocumentTextPaintFixture/);
   assert.match(iosRunner,
-    /SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST[\s\S]*spinon_runtime_gpu_host_new_c15_3_glyph_paint_fixture[\s\S]*spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture/);
+    /SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST[\s\S]*spinon_runtime_gpu_host_new_c15_3_glyph_paint_fixture[\s\S]*spinon_runtime_gpu_host_new_c15_3_hostdocument_text_paint_fixture[\s\S]*spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture/);
   assert.match(iosAppDelegate,
-    /--spinon-c153-glyph-paint/);
+    /--spinon-c153-glyph-paint[\s\S]*--spinon-c153-hostdocument-text-paint/);
   assert.match(iosDemo,
-    /SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST_1[\s\S]*evalRuntimeGpuC15_3GlyphPaintFixture[\s\S]*c15_3_text=attached/);
+    /\$0 != "--spinon-c153-glyph-paint"[\s\S]*\$0 != "--spinon-c153-hostdocument-text-paint"/);
+  assert.match(iosDemo,
+    /SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST_1[\s\S]*createRuntimeGpuHostWithC15_3HostDocumentTextPaintFixture[\s\S]*hostdocument_text_samples_css_px=/);
 });

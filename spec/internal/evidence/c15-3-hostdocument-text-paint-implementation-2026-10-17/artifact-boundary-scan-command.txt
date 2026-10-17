@@ -1,0 +1,1 @@
+python3 artifact scan: nm -gU on every target/debug/deps/libspinon_ffi-*.rlib; byte-compare each C15 fixture font

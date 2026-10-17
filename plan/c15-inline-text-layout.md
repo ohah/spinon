@@ -118,9 +118,15 @@ HostDocument의 실제 text node와 inline element를 CSS inline formatting cont
 - 이 route는 한 direct text paragraph와 Ahem 고정 폰트에 한정한다. inline span decoration/mixed font는 이미 독립된 layout geometry 입력이더라도 이 paint bridge에 포함하지 않는다. 일반 `style-to-layout`/`style-to-render`가 Text node를 거부하는 동작과 기본 build의 fixture 분리는 유지한다.
 - 누락 paragraph layout, paragraph와 layout revision 불일치, layout source가 다른 HostDocument text node를 가리키는 경우, missing font/glyph, invalid bitmap/geometry, final width와 measure width 불일치는 draw 이전에 실패해야 한다. parent `overflow:visible` 경로에서 line advance를 Block 폭으로 clamp하거나 parent frame으로 glyph ink를 자르는 변형도 각각 실패해야 한다.
 
-이 구현 slice의 계획 실패 관점 20개는 [전용 계획 검토](../spec/internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/plan-review-20.md)에 별도로 기록한다. 구현 후에는 layout-to-paint adapter·revision/source identity·surface 결과를 대상으로 새 구현 검토 20개를 수행하고 계획 표를 재사용하지 않는다. PR 변경 검토도 구현 검토와 독립된 20개 관점으로 남긴다. C15.3, C15, C16은 미완료 상태로 둔다.
+이 구현 slice의 계획 실패 관점 20개는 [전용 계획 검토](../spec/internal/evidence/c15-3-hostdocument-text-paint-precomparison-2026-10-17/plan-review-20.md)에 별도로 기록했다. 구현 후에는 layout-to-paint adapter·revision/source identity·surface 결과를 대상으로 계획 표와 독립된 구현 실패 관점 20개를 검토했다. [PR 변경 적대 검토 30개](../spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/pr-delta-review-30.md)도 구현 검토와 독립적으로 완료했다. C15.3, C15, C16은 미완료 상태로 둔다.
 
-이 slice의 예상 내부 계약은 `0075`(`0.1.0`)이며 입력·출력·오류·fixture feature 경계를 구현 PR에서 확정한다. fixture-only FFI/font symbol과 font payload가 기본 artifact에 들어가지 않는지 default/positive-control artifact 비교를 통과해야 한다.
+#### C15.3 구현 결과 · HostDocument text layout에서 runtime glyph paint까지
+
+고정 fixture에서 HostDocument text source revision, Taffy text layout snapshot, 같은 snapshot의 Ahem glyph raster와 runtime paint를 연결했다. opt-in FFI 전체 suite는 49 passed/0 failed/2 ignored였고, default/opt-in archive scan은 fixture FFI symbol 및 Ahem/Noto Sans KR payload가 opt-in 경계 안에 있음을 확인했다. Android 17/API 37 ARM64 AVD PixelCopy와 iPhone 17 Pro/iOS 26.2 Simulator Metal drawable은 paragraph 안쪽 첫 글자 2개 및 폭 15px owner를 넘어간 둘째 글자 4개를 각각 6/6 exact로 읽었다. iOS 첫 실행에서 새 launch argument를 거부하는 C13 validator 결함을 수정하고 simulator 재실행으로 확인했다. [전체 실행·화면·hash·artifact 근거](../spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/README.md) · [구현 실패 관점 20개](../spec/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/implementation-review-20.md) · [내부 계약 0075](../spec/internal/0075-c15-3-hostdocument-text-paint-bridge.md).
+
+이 제한 fixture 결과는 live V8 DOM text admission, computed CSS font projection, 일반 wrapping/fallback, 실기기, hardware GPU, iOS compositor 이후 표면 또는 상위 C15.3/C15 완료를 의미하지 않는다. 공식 완료 수는 `61/197`로 유지한다.
+
+내부 계약 [0075 · HostDocument text layout→runtime glyph paint](../spec/internal/0075-c15-3-hostdocument-text-paint-bridge.md)은 입력·출력·오류·fixture feature 경계를 `0.1.0`으로 고정한다. fixture-only FFI/font symbol과 font payload가 기본 artifact에 들어가지 않는지 default/positive-control artifact 비교를 통과해야 한다.
 
 연결할 upstream WPT revision은 df642c4142354ffb5a0af6fa41610677f6321092다: css/css-text/line-break/line-break-strict-015a.xht, css/css-text/line-break/line-break-shaping-001.html, css/css-fonts/font-variant-ligatures-01.html, css/css-text/bidi/bidi-lines-001.html. 이 경로들은 구현 시 실행할 후보일 뿐 이 계획 amendment에서는 실행하지 않았고, Chrome oracle도 WPT/Spinon pass가 아니다. [C15.3 계획 검토 20개](../spec/internal/evidence/c15-3-unicode-shaping-plan-review-20-2026-10-17.md)
 

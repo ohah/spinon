@@ -1,0 +1,8 @@
+adb -s emulator-5554 logcat -c
+adb -s emulator-5554 install -r platforms/android/app/build/outputs/apk/debug/app-debug.apk
+adb -s emulator-5554 shell am force-stop dev.spinon.bootstrap
+adb -s emulator-5554 shell am start -W -n dev.spinon.bootstrap/.MainActivity --ez spinon_c153_hostdocument_text_paint true
+sleep 8
+adb -s emulator-5554 shell screencap -p > android-screen.png
+adb -s emulator-5554 logcat -d -v brief | rg 'SPINON_C153_HOSTDOCUMENT|SPINON_C153_PIXELCOPY|SPINON_C0410_(DRAW|RENDERER)' > android-logcat.txt
+adb -s emulator-5554 exec-out run-as dev.spinon.bootstrap cat cache/c153-hostdocument-text-paint-captures/runtime-c15-3-hostdocument-text-paint-1a6f42b9b15.png > pixelcopy.png

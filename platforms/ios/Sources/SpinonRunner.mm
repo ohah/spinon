@@ -972,6 +972,19 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
   NSLog(@"SPINON_C153_HOST=%s", output.data());
   return reinterpret_cast<uint64_t>(host);
 }
+
++ (uint64_t)createRuntimeGpuHostWithC15_3HostDocumentTextPaintFixture {
+  std::array<char, 2048> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_c15_3_hostdocument_text_paint_fixture(
+          output.data(), output.size());
+  if (host == nullptr) {
+    NSLog(@"SPINON_C153_HOSTDOCUMENT_HOST_ERROR=%s", output.data());
+    return 0;
+  }
+  NSLog(@"SPINON_C153_HOSTDOCUMENT_HOST=%s", output.data());
+  return reinterpret_cast<uint64_t>(host);
+}
 #endif
 
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST

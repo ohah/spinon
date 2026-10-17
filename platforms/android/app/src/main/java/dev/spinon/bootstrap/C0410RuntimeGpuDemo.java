@@ -470,6 +470,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean c131BorderStripProbeRequested;
     private final boolean c192BoxPaintOpacityProbeRequested;
     private final boolean c153GlyphPaintProbeRequested;
+    private final boolean c153HostDocumentTextPaintProbeRequested;
     private volatile String c153GlyphPaintEvaluationReport = "";
     private boolean c192SurfaceCaptureStarted;
     private final boolean imageObjectFitPositionProbeRequested;
@@ -642,8 +643,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c131_overflow_clip_border", false);
         c192BoxPaintOpacityProbeRequested = BuildConfig.SPINON_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST
                 && activity.getIntent().getBooleanExtra("spinon_c192_box_paint_opacity", false);
+        c153HostDocumentTextPaintProbeRequested =
+                BuildConfig.SPINON_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST
+                && activity.getIntent().getBooleanExtra(
+                        "spinon_c153_hostdocument_text_paint", false);
         c153GlyphPaintProbeRequested = BuildConfig.SPINON_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST
-                && activity.getIntent().getBooleanExtra("spinon_c153_glyph_paint", false);
+                && (activity.getIntent().getBooleanExtra("spinon_c153_glyph_paint", false)
+                        || c153HostDocumentTextPaintProbeRequested);
         imageObjectFitPositionProbeRequested =
                 BuildConfig.SPINON_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST
                 && activity.getIntent().getBooleanExtra("spinon_c183_object_fit_position", false);
@@ -909,7 +915,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
         TextView title = new TextView(activity);
         title.setText(c153GlyphPaintProbeRequested
-                ? "SPINON · C15.3 WGPU glyph paint"
+                ? c153HostDocumentTextPaintProbeRequested
+                        ? "SPINON · C15.3 HostDocument text paint"
+                        : "SPINON · C15.3 WGPU glyph paint"
                 : c192BoxPaintOpacityProbeRequested
                 ? "SPINON · C19.2 box paint·opacity"
                 : c1133GridTemplateAreasRequested
@@ -1008,7 +1016,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
         TextView description = new TextView(activity);
         description.setText(c153GlyphPaintProbeRequested
-                ? "고정 Noto Sans KR glyph coverage mask · WGPU · 360×240 CSS px · DPR 1"
+                ? c153HostDocumentTextPaintProbeRequested
+                        ? "HostDocument Text(XX) → Taffy text snapshot → Ahem glyph mask · 320×240 CSS px · DPR 1"
+                        : "고정 Noto Sans KR glyph coverage mask · WGPU · 360×240 CSS px · DPR 1"
                 : c192BoxPaintOpacityProbeRequested
                 ? "alpha·중첩 opacity·clip·z-order·currentColor·OKLCH · 16 PixelCopy 표본 · 360×240 CSS px"
                 : c131CompactSurfaceMatrixProbeRequested
@@ -1124,7 +1134,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
         }
         surfaceView.setContentDescription(c153GlyphPaintProbeRequested
-                ? "C15.3 고정 Noto Sans KR glyph alpha mask를 WGPU surface에 그리는 fixture"
+                ? c153HostDocumentTextPaintProbeRequested
+                        ? "C15.3 HostDocument text layout Ahem overflow glyph를 WGPU surface에 그리는 fixture"
+                        : "C15.3 고정 Noto Sans KR glyph alpha mask를 WGPU surface에 그리는 fixture"
                 : c192BoxPaintOpacityProbeRequested
                 ? "C19.2 box paint, opacity, clipping, z-order, and wide-gamut WGPU surface"
                 : c131CompactSurfaceMatrixProbeRequested
@@ -1207,6 +1219,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || imageObjectFitPositionProbeRequested ? 224 : 80
                 : c131CompactSurfaceMatrixProbeRequested ? 300
                 : c131BorderStripProbeRequested ? 400
+                : c153HostDocumentTextPaintProbeRequested ? 320
                 : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 360
                 : c132ScrollFixtureRequested ? 400
                 : c133GestureFixtureRequested ? 400
@@ -1416,6 +1429,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
         String selectedExtra = c133GestureFixtureRequested
                 ? "spinon_c133_gesture_fixture"
+                : c153HostDocumentTextPaintProbeRequested
+                ? "spinon_c153_hostdocument_text_paint"
                 : c153GlyphPaintProbeRequested
                 ? "spinon_c153_glyph_paint"
                 : c192BoxPaintOpacityProbeRequested
@@ -1505,6 +1520,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? nativeCreateC1121GridPlacementHost()
                 : c11GridFixtureRequested
                 ? nativeCreateC11GridHost()
+                : c153HostDocumentTextPaintProbeRequested
+                ? (Long) invokeFixtureNative(
+                        "dev.spinon.bootstrap.GlyphPaintFixtureNativeAdapter",
+                        "createHostDocumentTextPaintHost", new Class<?>[0])
                 : BuildConfig.SPINON_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST
                         && c153GlyphPaintProbeRequested
                 ? (Long) invokeFixtureNative(
@@ -1564,6 +1583,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             widthCssPx = BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST
                     && imagePaintProbeRequested ? imageAsyncReplacementProbeRequested
                             || imageObjectFitPositionProbeRequested ? 224 : 80
+                    : c153HostDocumentTextPaintProbeRequested ? 320
                     : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 360
                     : c131CompactSurfaceMatrixProbeRequested ? 300
                     : c131BorderStripProbeRequested ? 400
@@ -1723,7 +1743,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         ? decode(nativeEvalAuthorStylesheetsFixture(host))
                         : decode(nativeEvalFixture(host));
         }
-        if (c153GlyphPaintProbeRequested
+        if (c153HostDocumentTextPaintProbeRequested
+                ? (!result.startsWith("status=0 ")
+                        || !result.contains("c15_3_hostdocument_text_paint=attached")
+                        || !result.contains("layout_source=fixture_owned_host_document")
+                        || !result.contains("owner_frame_css_px=0,0,15,10")
+                        || !result.contains("overflow_css_px=5")
+                        || reportField(result, "hostdocument_text_samples_css_px=").isEmpty())
+                : c153GlyphPaintProbeRequested
                 && (!result.startsWith("status=0 ")
                         || !result.contains("c15_3_text=attached")
                         || !result.contains("glyphs=")
@@ -4037,6 +4064,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private float cssViewportWidthLocked() {
+        if (c153HostDocumentTextPaintProbeRequested) return 320.0f;
         if (c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested) return 360.0f;
         if (BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested) {
             return imageAsyncReplacementProbeRequested || imageObjectFitPositionProbeRequested
@@ -4224,10 +4252,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return;
         }
         if (c153GlyphPaintProbeRequested
-                && (!result.contains("runtime_text_count=6")
-                        || !result.contains("glyph_batch_draw_count=6"))) {
+                && (c153HostDocumentTextPaintProbeRequested
+                        ? (!result.contains("runtime_text_count=1")
+                                || !result.contains("glyph_batch_draw_count=1"))
+                        : (!result.contains("runtime_text_count=6")
+                                || !result.contains("glyph_batch_draw_count=6")))) {
             Log.e(TAG, "SPINON_C153_DRAW_ASSERTIONS failed=true " + result);
-            postStatus("실패 · C15.3 Noto/Ahem glyph batch 6개가 제출되지 않았습니다");
+            postStatus(c153HostDocumentTextPaintProbeRequested
+                    ? "실패 · C15.3 HostDocument Ahem glyph batch가 제출되지 않았습니다"
+                    : "실패 · C15.3 Noto glyph batch 6개가 제출되지 않았습니다");
             return;
         }
         if (c153GlyphPaintProbeRequested) {
@@ -4347,15 +4380,24 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return;
         }
         String runId = Long.toHexString(SystemClock.elapsedRealtimeNanos());
+        int viewportWidth = c153HostDocumentTextPaintProbeRequested ? 320 : 360;
         File output = new File(
-                new File(activity.getCacheDir(), "c153-glyph-overflow-surface-captures"),
-                "runtime-c15-3-glyph-overflow-" + runId + ".png");
+                new File(activity.getCacheDir(), c153HostDocumentTextPaintProbeRequested
+                        ? "c153-hostdocument-text-paint-captures"
+                        : "c153-glyph-overflow-surface-captures"),
+                (c153HostDocumentTextPaintProbeRequested
+                        ? "runtime-c15-3-hostdocument-text-paint-"
+                        : "runtime-c15-3-glyph-overflow-") + runId + ".png");
         Log.i(TAG, "SPINON_C153_PIXELCOPY_BEGIN run_id=" + runId
                 + " pid=" + android.os.Process.myPid() + " generation=" + generation
-                + " width=" + width + " height=" + height + " viewport=360x240"
+                + " width=" + width + " height=" + height + " viewport="
+                + viewportWidth + "x240"
                 + " samples=" + samples.size());
         SurfaceViewPixelCapture.requestForCssViewport(surfaceView, width, height,
-                360, 240, 0, 0, "c153-glyph-overflow", runId, output, samples,
+                viewportWidth, 240, 0, 0,
+                c153HostDocumentTextPaintProbeRequested
+                        ? "c153-hostdocument-text-paint" : "c153-glyph-overflow",
+                runId, output, samples,
                 mainHandler, runtimeQueue,
                 () -> {
                     synchronized (stateLock) {
@@ -4369,6 +4411,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                                 + " generation=" + generation + " attempts=" + result.attempts
                                 + " reason=" + result.error);
                         postStatus("실패 · C15.3 PixelCopy · " + result.error);
+                        return;
+                    }
+                    if (c153HostDocumentTextPaintProbeRequested) {
+                        verifyC153HostDocumentSurfaceCapture(
+                                runId, generation, samples, output, result);
                         return;
                     }
                     boolean visibleInk = false;
@@ -4424,6 +4471,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static List<SurfaceViewPixelCapture.Sample> parseC153SurfaceSamples(String report) {
+        if (report.contains("c15_3_hostdocument_text_paint=attached")) {
+            return parseC153HostDocumentSurfaceSamples(report);
+        }
         Map<String, int[]> points = new HashMap<>();
         Set<String> coordinatesSeen = new HashSet<>();
         String[] encodedFields = new String[] {
@@ -4488,6 +4538,88 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         "vertical-scroll-glyph", vertical[0], vertical[1]),
                 new SurfaceViewPixelCapture.Sample(
                         "nested-scroll-glyph", nested[0], nested[1]));
+    }
+
+    private static List<SurfaceViewPixelCapture.Sample> parseC153HostDocumentSurfaceSamples(
+            String report) {
+        String encoded = reportField(report, "hostdocument_text_samples_css_px=");
+        Map<String, int[]> points = new HashMap<>();
+        Set<String> coordinatesSeen = new HashSet<>();
+        Set<String> acceptedNames = Set.of(
+                "first_ink_1", "first_ink_2", "overflow_ink_1", "overflow_ink_2",
+                "overflow_ink_3", "overflow_ink_4");
+        if (encoded.isEmpty()) return null;
+        for (String entry : encoded.split(";")) {
+            String[] pair = entry.split(":", 2);
+            if (pair.length != 2 || !acceptedNames.contains(pair[0])) return null;
+            String[] coordinates = pair[1].split(",", 2);
+            if (coordinates.length != 2) return null;
+            final int x;
+            final int y;
+            try {
+                x = Integer.parseInt(coordinates[0]);
+                y = Integer.parseInt(coordinates[1]);
+            } catch (NumberFormatException error) {
+                return null;
+            }
+            String coordinate = x + ":" + y;
+            if (x < 0 || x >= 320 || y < 0 || y >= 240
+                    || !coordinatesSeen.add(coordinate)
+                    || points.put(pair[0], new int[] {x, y}) != null) return null;
+        }
+        int[] first1 = points.get("first_ink_1");
+        int[] first2 = points.get("first_ink_2");
+        int[] overflow1 = points.get("overflow_ink_1");
+        int[] overflow2 = points.get("overflow_ink_2");
+        int[] overflow3 = points.get("overflow_ink_3");
+        int[] overflow4 = points.get("overflow_ink_4");
+        if (points.size() != 6 || first1 == null || first2 == null || overflow1 == null
+                || overflow2 == null || overflow3 == null || overflow4 == null
+                || first1[0] >= 15 || first2[0] >= 15
+                || overflow1[0] < 15 || overflow2[0] < 15
+                || overflow3[0] < 15 || overflow4[0] < 15) return null;
+        return List.of(
+                new SurfaceViewPixelCapture.Sample("first-glyph-ink-1", first1[0], first1[1]),
+                new SurfaceViewPixelCapture.Sample("first-glyph-ink-2", first2[0], first2[1]),
+                new SurfaceViewPixelCapture.Sample("overflow-glyph-ink-1", overflow1[0], overflow1[1]),
+                new SurfaceViewPixelCapture.Sample("overflow-glyph-ink-2", overflow2[0], overflow2[1]),
+                new SurfaceViewPixelCapture.Sample("overflow-glyph-ink-3", overflow3[0], overflow3[1]),
+                new SurfaceViewPixelCapture.Sample("overflow-glyph-ink-4", overflow4[0], overflow4[1]));
+    }
+
+    private void verifyC153HostDocumentSurfaceCapture(
+            String runId,
+            long generation,
+            List<SurfaceViewPixelCapture.Sample> samples,
+            File output,
+            SurfaceViewPixelCapture.Result result) {
+        int firstGlyphInk = 0;
+        int overflowGlyphInk = 0;
+        boolean passed = samples.size() == 6 && result.pixels.size() == 6;
+        for (SurfaceViewPixelCapture.Pixel pixel : result.pixels) {
+            boolean expectedInk = pixel.red == 9 && pixel.green == 33
+                    && pixel.blue == 112 && pixel.alpha == 255;
+            boolean firstGlyph = pixel.id.startsWith("first-glyph-ink-");
+            boolean overflowGlyph = pixel.id.startsWith("overflow-glyph-ink-");
+            passed &= expectedInk
+                    && (firstGlyph && pixel.x < 15 || overflowGlyph && pixel.x >= 15);
+            if (firstGlyph && expectedInk) firstGlyphInk++;
+            if (overflowGlyph && expectedInk) overflowGlyphInk++;
+            Log.i(TAG, "SPINON_C153_HOSTDOCUMENT_PIXELCOPY_SAMPLE run_id=" + runId
+                    + " sample=" + pixel.id + " x=" + pixel.x + " y=" + pixel.y
+                    + " rgba=" + pixel.red + "," + pixel.green + ","
+                    + pixel.blue + "," + pixel.alpha + " expected_ink=" + expectedInk);
+        }
+        passed &= firstGlyphInk == 2 && overflowGlyphInk == 4;
+        Log.i(TAG, "SPINON_C153_HOSTDOCUMENT_PIXELCOPY_SUMMARY status="
+                + (passed ? "matched" : "mismatch") + " run_id=" + runId
+                + " pid=" + android.os.Process.myPid() + " generation=" + generation
+                + " viewport=320x240 owner_width=15 text_advance=20 first_glyph_ink="
+                + firstGlyphInk + "/2 overflow_glyph_ink=" + overflowGlyphInk
+                + "/4 owner_overflow_css_px=5 observed_samples=" + result.pixels.size()
+                + " png=" + output.getAbsolutePath() + " sha256=" + result.sha256);
+        if (!passed) postStatus("실패 · C15.3 HostDocument text overflow PixelCopy 표본 불일치");
+        else postStatus("통과 · C15.3 HostDocument text overflow PixelCopy · 6/6");
     }
 
     // C19.2 캡처 어댑터는 fixture-test source set에만 있으므로 기본 앱에서 직접 참조하지 않는다.

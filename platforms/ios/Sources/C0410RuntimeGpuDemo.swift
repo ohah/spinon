@@ -691,9 +691,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c131-overflow-clip-border")
     private let c153GlyphPaintArgumentRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c153-glyph-paint")
+    private let c153HostDocumentTextPaintArgumentRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c153-hostdocument-text-paint")
 #if SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST_1
     private var c153GlyphPaintProbeRequested: Bool {
-        c153GlyphPaintArgumentRequested
+        c153GlyphPaintArgumentRequested || c153HostDocumentTextPaintArgumentRequested
     }
     private var c153GlyphPaintEvaluationReport = ""
     private var c153MetalPixelRequestIssued = false
@@ -904,8 +906,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
 
         let title = UILabel()
+        title.adjustsFontSizeToFitWidth = c153HostDocumentTextPaintArgumentRequested
+        title.minimumScaleFactor = 0.75
         title.text = c153GlyphPaintProbeRequested
-            ? "SPINON · C15.3 WGPU glyph paint"
+            ? c153HostDocumentTextPaintArgumentRequested
+                ? "SPINON · C15.3 HostDocument text paint"
+                : "SPINON · C15.3 WGPU glyph paint"
             : c192BoxPaintOpacityProbeRequested
             ? "SPINON · C19.2 box paint·opacity"
             : c131CompactHitIdentityGridProbeRequested
@@ -1009,7 +1015,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         let description = UILabel()
         description.text = c153GlyphPaintProbeRequested
-            ? "고정 Noto Sans KR glyph coverage mask → WGPU Metal · 360×240 CSS px · DPR 1"
+            ? c153HostDocumentTextPaintArgumentRequested
+                ? "HostDocument Text(XX) → Taffy text snapshot → Ahem glyph mask · 320×240 CSS px · DPR 1"
+                : "고정 Noto Sans KR glyph coverage mask → WGPU Metal · 360×240 CSS px · DPR 1"
             : c192BoxPaintOpacityProbeRequested
             ? "alpha·중첩 opacity·clip·z-order·currentColor·OKLCH → WGPU Metal · 16표본 · 360×240 CSS px"
             : c131CompactHitIdentityGridProbeRequested
@@ -1116,7 +1124,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.isAccessibilityElement = true
         canvasView.accessibilityLabel = c153GlyphPaintProbeRequested
-            ? "C15.3 고정 Noto Sans KR glyph alpha mask WGPU Metal fixture"
+            ? c153HostDocumentTextPaintArgumentRequested
+                ? "C15.3 HostDocument text layout Ahem overflow WGPU Metal fixture"
+                : "C15.3 고정 Noto Sans KR glyph alpha mask WGPU Metal fixture"
             : c192BoxPaintOpacityProbeRequested
             ? "C19.2 box paint, opacity, clipping, z-order, currentColor, and wide-gamut WGPU Metal surface"
             : c131CompactHitIdentityGridProbeRequested
@@ -1344,6 +1354,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let canvasWidth = canvasView.widthAnchor.constraint(
             equalToConstant: imagePaintProbeRequested
                 ? imageAsyncReplacementProbeRequested || imageObjectFitPositionProbeRequested ? 224 : 80
+                : c153HostDocumentTextPaintArgumentRequested ? 320
                 : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 360
                 : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                 ? 360 : c131CompactSurfaceMatrixRouteRequested ? 300
@@ -1535,7 +1546,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         stateLock.lock()
         defer { stateLock.unlock() }
         return (
-            c153GlyphPaintProbeRequested ? 360 : viewportWidthCssPx,
+            c153HostDocumentTextPaintArgumentRequested ? 320
+                : c153GlyphPaintProbeRequested ? 360 : viewportWidthCssPx,
             c153GlyphPaintProbeRequested ? 240 : viewportHeightCssPx,
             c153GlyphPaintProbeRequested ? 1 : displayScale,
             darkMode
@@ -2190,7 +2202,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             return
         }
 #endif
-        if c153GlyphPaintArgumentRequested && !c153GlyphPaintProbeRequested {
+        if (c153GlyphPaintArgumentRequested || c153HostDocumentTextPaintArgumentRequested)
+            && !c153GlyphPaintProbeRequested {
             log("SPINON_C153_ARGUMENT_ERROR rejected=true reason=fixture-feature-disabled")
             postStatus("실패 · C15.3 glyph paint fixture-test 옵션을 켜서 빌드해야 합니다")
             return
@@ -2225,6 +2238,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                    && $0 != "--spinon-c132-scroll"
                    && $0 != "--spinon-c192-box-paint-opacity"
                    && $0 != "--spinon-c153-glyph-paint"
+                   && $0 != "--spinon-c153-hostdocument-text-paint"
                    && !imagePaintRouteArguments.contains($0)
                    && $0 != "--spinon-c133-scroll-gesture"
                    && !(c133GestureFixtureRequested && $0 == "--spinon-c133-tap-probe")
@@ -2388,8 +2402,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let c192Host: UInt64? = nil
 #endif
 #if SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST_1
-        let c153Host: UInt64? = c153GlyphPaintProbeRequested
-            ? SpinonRunner.createRuntimeGpuHostWithC15_3GlyphPaintFixture() : nil
+        let c153Host: UInt64? = c153HostDocumentTextPaintArgumentRequested
+            ? SpinonRunner.createRuntimeGpuHostWithC15_3HostDocumentTextPaintFixture()
+            : c153GlyphPaintProbeRequested
+                ? SpinonRunner.createRuntimeGpuHostWithC15_3GlyphPaintFixture() : nil
 #else
         let c153Host: UInt64? = nil
 #endif
@@ -2494,6 +2510,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let environmentInputs = currentEnvironment()
         let viewportWidth: Float = imagePaintProbeRequested
             ? imageAsyncReplacementProbeRequested || imageObjectFitPositionProbeRequested ? 224 : 80
+            : c153HostDocumentTextPaintArgumentRequested ? 320
             : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested
                 ? 360 : c131CompactSurfaceMatrixRouteRequested
             ? 300 : c131BorderStripProbeRequested
@@ -2595,12 +2612,20 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let hitTest = reportField(report, "hit_test=")
             log("SPINON_C153_EVAL_RUN \(runtimeStatusSummary(report))")
             log("SPINON_C153_HITTEST \(hitTest)")
+            let hostDocumentPaintMatches =
+                report.contains("c15_3_hostdocument_text_paint=attached")
+                && report.contains("layout_source=fixture_owned_host_document")
+                && report.contains("owner_frame_css_px=0,0,15,10")
+                && report.contains("overflow_css_px=5")
+                && !reportField(report, "hostdocument_text_samples_css_px=").isEmpty
+            let glyphPaintMatches = report.contains("c15_3_text=attached")
+                && report.contains("glyphs=")
+                && hitTest == "visible_owner;hidden_inside_owner;hidden_outside_excludes_hidden_owner"
+                && reportField(report, "scroll_sequences=") == "3>6>0;18>7>0;4+5>2+3>0+0"
+                && reportField(report, "scroll_hit_test=") == "horizontal_owner;vertical_owner;nested_owner"
             guard report.hasPrefix("status=0 "),
-                  report.contains("c15_3_text=attached"),
-                  report.contains("glyphs="),
-                  hitTest == "visible_owner;hidden_inside_owner;hidden_outside_excludes_hidden_owner",
-                  reportField(report, "scroll_sequences=") == "3>6>0;18>7>0;4+5>2+3>0+0",
-                  reportField(report, "scroll_hit_test=") == "horizontal_owner;vertical_owner;nested_owner" else {
+                  c153HostDocumentTextPaintArgumentRequested
+                    ? hostDocumentPaintMatches : glyphPaintMatches else {
                 postStatus("실패 · C15.3 glyph paint command가 runtime snapshot에 제출되지 않았습니다")
                 return
             }
@@ -3751,7 +3776,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || c1132GridNamedLinesProbeRequested || c1133GridTemplateAreasProbeRequested
             || c132ScrollFixtureRequested || c133GestureFixtureRequested
         environmentInputs = (
-            c153GlyphPaintProbeRequested ? 360 : viewportWidthCssPx,
+            c153HostDocumentTextPaintArgumentRequested ? 320
+                : c153GlyphPaintProbeRequested ? 360 : viewportWidthCssPx,
             c153GlyphPaintProbeRequested ? 240 : viewportHeightCssPx,
             fixedCssScaleRoute ? 1 : displayScale, darkMode
         )
@@ -4936,10 +4962,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             throw C0410LatestTaskLaneError.operationFailed(result ?? "WGPU draw 실패 보고 없음")
         }
         if c153GlyphPaintProbeRequested
-            && (result?.contains("runtime_text_count=6") != true
-                || result?.contains("glyph_batch_draw_count=6") != true) {
+            && (c153HostDocumentTextPaintArgumentRequested
+                ? (result?.contains("runtime_text_count=1") != true
+                    || result?.contains("glyph_batch_draw_count=1") != true)
+                : (result?.contains("runtime_text_count=6") != true
+                    || result?.contains("glyph_batch_draw_count=6") != true)) {
             log("SPINON_C153_DRAW_ASSERTIONS failed=true \(result ?? "missing-report")")
-            postStatus("실패 · C15.3 Noto/Ahem glyph batch 6개가 제출되지 않았습니다")
+            postStatus(c153HostDocumentTextPaintArgumentRequested
+                ? "실패 · C15.3 HostDocument Ahem glyph batch가 제출되지 않았습니다"
+                : "실패 · C15.3 Noto glyph batch 6개가 제출되지 않았습니다")
             throw C0410LatestTaskLaneError.operationFailed(
                 "C15.3 WGPU draw report에 text batch가 없습니다"
             )
@@ -5119,6 +5150,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
 #if SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST_1
     private func c153OverflowSamplePoints() throws -> [(String, UInt32, UInt32)] {
+        if c153HostDocumentTextPaintArgumentRequested {
+            return try c153HostDocumentTextSamplePoints()
+        }
         let encodings = [
             reportField(c153GlyphPaintEvaluationReport, "overflow_samples_css_px="),
             reportField(c153GlyphPaintEvaluationReport, "scroll_samples_css_px=")
@@ -5187,6 +5221,58 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         ]
     }
 
+    private func c153HostDocumentTextSamplePoints() throws -> [(String, UInt32, UInt32)] {
+        let encoded = reportField(
+            c153GlyphPaintEvaluationReport,
+            "hostdocument_text_samples_css_px="
+        )
+        let acceptedNames: Set<String> = [
+            "first_ink_1", "first_ink_2", "overflow_ink_1", "overflow_ink_2",
+            "overflow_ink_3", "overflow_ink_4"
+        ]
+        var points: [String: (UInt32, UInt32)] = [:]
+        for entry in encoded.split(separator: ";") {
+            let pair = entry.split(separator: ":", maxSplits: 1)
+            guard pair.count == 2 else {
+                throw C0410LatestTaskLaneError.operationFailed(
+                    "C15.3 HostDocument 표본 항목이 올바르지 않습니다"
+                )
+            }
+            let name = String(pair[0])
+            let coordinates = pair[1].split(separator: ",", maxSplits: 1)
+            guard acceptedNames.contains(name), coordinates.count == 2,
+                  let x = UInt32(coordinates[0]), let y = UInt32(coordinates[1]),
+                  x < 320, y < 240, points[name] == nil else {
+                throw C0410LatestTaskLaneError.operationFailed(
+                    "C15.3 HostDocument 표본 이름 또는 좌표가 올바르지 않습니다"
+                )
+            }
+            points[name] = (x, y)
+        }
+        guard points.count == 6,
+              let first1 = points["first_ink_1"], let first2 = points["first_ink_2"],
+              let overflow1 = points["overflow_ink_1"],
+              let overflow2 = points["overflow_ink_2"],
+              let overflow3 = points["overflow_ink_3"],
+              let overflow4 = points["overflow_ink_4"],
+              Set(points.values.map { "\($0.0):\($0.1)" }).count == 6,
+              first1.0 < 15, first2.0 < 15,
+              overflow1.0 >= 15, overflow2.0 >= 15,
+              overflow3.0 >= 15, overflow4.0 >= 15 else {
+            throw C0410LatestTaskLaneError.operationFailed(
+                "C15.3 HostDocument 표본이 15px owner 경계 양쪽을 증명하지 않습니다"
+            )
+        }
+        return [
+            ("first-glyph-ink-1", first1.0, first1.1),
+            ("first-glyph-ink-2", first2.0, first2.1),
+            ("overflow-glyph-ink-1", overflow1.0, overflow1.1),
+            ("overflow-glyph-ink-2", overflow2.0, overflow2.1),
+            ("overflow-glyph-ink-3", overflow3.0, overflow3.1),
+            ("overflow-glyph-ink-4", overflow4.0, overflow4.1)
+        ]
+    }
+
     private func requestC153MetalPixelReadback(
         handle: UInt64,
         generation: UInt64
@@ -5197,7 +5283,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let viewportHeight = viewportHeightCssPx
         let format = rendererSurfaceFormat ?? ""
         stateLock.unlock()
-        guard viewportWidth == 360, viewportHeight == 240,
+        let expectedViewportWidth: Float = c153HostDocumentTextPaintArgumentRequested ? 320 : 360
+        guard viewportWidth == expectedViewportWidth, viewportHeight == 240,
               drawableSize.width > 0, drawableSize.height > 0,
               let width = Int(exactly: drawableSize.width),
               let height = Int(exactly: drawableSize.height), !format.isEmpty,
@@ -5209,7 +5296,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         do {
             let samples = try c153OverflowSamplePoints()
-            let scaleX = Double(width) / 360.0
+            let scaleX = Double(width) / Double(expectedViewportWidth)
             let scaleY = Double(height) / 240.0
             let coordinates = samples.flatMap { _, x, y in
                 [
@@ -5243,7 +5330,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             c153MetalPixelRequestGeneration = generation
             c153MetalPixelRequestDrawableSize = drawableSize
             c153MetalPixelRequestFormat = format
-            log("SPINON_C153_METAL_PIXEL_REQUESTED generation=\(generation) viewport=360x240 drawable=\(width)x\(height) scale_x=\(scaleX) scale_y=\(scaleY) format=\(format) samples=\(samples.count) css=\(samples.map { "\($0.0):\($0.1),\($0.2)" }.joined(separator: ";"))")
+            log("SPINON_C153_METAL_PIXEL_REQUESTED generation=\(generation) viewport=\(Int(expectedViewportWidth))x240 drawable=\(width)x\(height) scale_x=\(scaleX) scale_y=\(scaleY) format=\(format) samples=\(samples.count) css=\(samples.map { "\($0.0):\($0.1),\($0.2)" }.joined(separator: ";"))")
         } catch {
             c153MetalPixelReadbackFinished = true
             log("SPINON_C153_METAL_PIXEL_ERROR stage=request reason=\(error)")
@@ -5277,7 +5364,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 "C15.3 Metal drawable report가 요청된 표본 세 개를 돌려주지 않았습니다"
             )
         }
-        let scaleX = Double(width) / 360.0
+        let expectedViewportWidth: Double = c153HostDocumentTextPaintArgumentRequested ? 320 : 360
+        let scaleX = Double(width) / expectedViewportWidth
         let scaleY = Double(height) / 240.0
         var visibleInk = false
         var hiddenInsideInk = false
@@ -5285,6 +5373,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         var horizontalScrollInk = false
         var verticalScrollInk = false
         var nestedScrollInk = false
+        var firstGlyphInkSamples = 0
+        var overflowGlyphInkSamples = 0
         for (index, sample) in c153MetalSamplePointsCss.enumerated() {
             let value = values[index]
             guard let xNumber = value["x"] as? NSNumber,
@@ -5302,16 +5392,26 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let expectedY = UInt32(floor((Double(sample.2) + 0.5) * scaleY))
             let background = rgba == [247, 249, 252, 255]
             let expectedInk = rgba == [9, 33, 112, 255]
-            if sample.0 == "visible-outside-parent" { visibleInk = expectedInk }
-            else if sample.0 == "hidden-inside-clip" { hiddenInsideInk = expectedInk }
-            else if sample.0 == "hidden-outside-parent" {
-                hiddenOutsideBackground = background
-            } else if sample.0 == "horizontal-scroll-glyph" {
-                horizontalScrollInk = expectedInk
-            } else if sample.0 == "vertical-scroll-glyph" {
-                verticalScrollInk = expectedInk
-            } else if sample.0 == "nested-scroll-glyph" {
-                nestedScrollInk = expectedInk
+            if c153HostDocumentTextPaintArgumentRequested {
+                if sample.0.hasPrefix("first-glyph-ink-") {
+                    if expectedInk { firstGlyphInkSamples += 1 }
+                    visibleInk = visibleInk || expectedInk && sample.1 < 15
+                } else if sample.0.hasPrefix("overflow-glyph-ink-") {
+                    if expectedInk { overflowGlyphInkSamples += 1 }
+                    hiddenInsideInk = hiddenInsideInk || expectedInk && sample.1 >= 15
+                }
+            } else {
+                if sample.0 == "visible-outside-parent" { visibleInk = expectedInk }
+                else if sample.0 == "hidden-inside-clip" { hiddenInsideInk = expectedInk }
+                else if sample.0 == "hidden-outside-parent" {
+                    hiddenOutsideBackground = background
+                } else if sample.0 == "horizontal-scroll-glyph" {
+                    horizontalScrollInk = expectedInk
+                } else if sample.0 == "vertical-scroll-glyph" {
+                    verticalScrollInk = expectedInk
+                } else if sample.0 == "nested-scroll-glyph" {
+                    nestedScrollInk = expectedInk
+                }
             }
             let exactCoordinates = x == expectedX && y == expectedY
             log("SPINON_C153_METAL_PIXEL_SAMPLE sample=\(sample.0) x=\(x) y=\(y) rgba=\(rgba.map(String.init).joined(separator: ",")) expected_x=\(expectedX) expected_y=\(expectedY) stage_background=\(background) expected_ink=\(expectedInk) coordinates_match=\(exactCoordinates)")
@@ -5323,15 +5423,24 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
         }
         c153MetalPixelReadbackFinished = true
-        let passed = visibleInk && hiddenInsideInk && hiddenOutsideBackground
-            && horizontalScrollInk && verticalScrollInk && nestedScrollInk
-        log("SPINON_C153_METAL_PIXEL_SUMMARY status=\(passed ? "matched" : "mismatch") generation=\(generation) viewport=360x240 drawable=\(width)x\(height) format=\(format) samples=6 visible_outside_ink=\(visibleInk) hidden_inside_ink=\(hiddenInsideInk) hidden_outside_background=\(hiddenOutsideBackground) horizontal_scroll_ink=\(horizontalScrollInk) vertical_scroll_ink=\(verticalScrollInk) nested_scroll_ink=\(nestedScrollInk) renderer=metal-drawable-before-compositor")
+        let passed = c153HostDocumentTextPaintArgumentRequested
+            ? firstGlyphInkSamples == 2 && overflowGlyphInkSamples == 4
+                && visibleInk && hiddenInsideInk
+            : visibleInk && hiddenInsideInk && hiddenOutsideBackground
+                && horizontalScrollInk && verticalScrollInk && nestedScrollInk
+        if c153HostDocumentTextPaintArgumentRequested {
+            log("SPINON_C153_HOSTDOCUMENT_METAL_PIXEL_SUMMARY status=\(passed ? "matched" : "mismatch") generation=\(generation) viewport=320x240 owner_width=15 text_advance=20 drawable=\(width)x\(height) format=\(format) samples=6 first_glyph_ink=\(firstGlyphInkSamples)/2 overflow_glyph_ink=\(overflowGlyphInkSamples)/4 owner_overflow_css_px=5 renderer=metal-drawable-before-compositor")
+        } else {
+            log("SPINON_C153_METAL_PIXEL_SUMMARY status=\(passed ? "matched" : "mismatch") generation=\(generation) viewport=360x240 drawable=\(width)x\(height) format=\(format) samples=6 visible_outside_ink=\(visibleInk) hidden_inside_ink=\(hiddenInsideInk) hidden_outside_background=\(hiddenOutsideBackground) horizontal_scroll_ink=\(horizontalScrollInk) vertical_scroll_ink=\(verticalScrollInk) nested_scroll_ink=\(nestedScrollInk) renderer=metal-drawable-before-compositor")
+        }
         guard passed else {
             throw C0410LatestTaskLaneError.operationFailed(
                 "실제 Metal drawable overflow clip 표본이 CSS 기대값과 다릅니다"
             )
         }
-        postStatus("C15.3 Metal drawable overflow/scroll 표본 통과 · 6/6")
+        postStatus(c153HostDocumentTextPaintArgumentRequested
+            ? "C15.3 HostDocument text overflow Metal 표본 통과 · 6/6"
+            : "C15.3 Metal drawable overflow/scroll 표본 통과 · 6/6")
     }
 #endif
 

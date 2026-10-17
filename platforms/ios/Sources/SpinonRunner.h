@@ -69,6 +69,7 @@
 #if defined(SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST) && \
     SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST
 + (uint64_t)createRuntimeGpuHostWithC15_3GlyphPaintFixture;
++ (uint64_t)createRuntimeGpuHostWithC15_3HostDocumentTextPaintFixture;
 + (NSString *)evalRuntimeGpuC15_3GlyphPaintFixture:(uint64_t)handle;
 + (NSString *)requestRuntimeGpuC15_3SurfacePixelsForTest:(uint64_t)handle
                                                    sampleXY:(const uint32_t *)sampleXY

@@ -87,6 +87,7 @@ c19-2-box-paint-opacity-fixture-test = [
 c15-3-wgpu-glyph-paint-fixture-test = [
     "c04-runtime-gpu-fixture-test",
     "dep:spinon-core",
+    "dep:spinon-layout",
     "dep:spinon-text-layout",
     "spinon-runtime/c19-2-box-paint-opacity-fixture-test",
 ]
