@@ -2,7 +2,7 @@
 
 ## C13.1 복합 stacking descendant와 overflow clip
 
-[계획과 고정 Chrome oracle](../../plan/c13-1-stacking-descendant-clip-controls.md) · [Android API 37 AVD/iOS Simulator 실행·표면 표본·revision negative control](./evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/README.md) · [default/opt-in archive 경계](./evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/feature-boundary/README.md) · [구현 실패 관점 20개](./evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/implementation-review-20.md) · [PR 변경 관점 30개](./evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/pr-diff-review-30.md). 고정 fixture 검증이며 C13.1/C13 전체 완료, WPT, DOM event 또는 일반 CSS 지원 선언은 아니다.
+[계획과 고정 Chrome oracle](../../plan/c13-1-stacking-descendant-clip-controls.md) · [Android API 37 AVD/iOS Simulator 실행·표면 표본·revision negative control](./evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/README.md) · [default/opt-in archive 경계](./evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/feature-boundary/README.md) · [구현 실패 관점 20개](./evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/implementation-review-20.md) · [PR 변경 관점 30개](./evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/pr-diff-review-30.md) · [Tailnet 로드맵 PR 변경 검토 30개](./evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/roadmap-pr-delta-review-30.md). 고정 fixture 검증이며 C13.1/C13 전체 완료, WPT, DOM event 또는 일반 CSS 지원 선언은 아니다.
 
 ## R06 큐 포화·복구
 
