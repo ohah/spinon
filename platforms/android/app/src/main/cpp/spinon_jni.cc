@@ -2347,6 +2347,9 @@ Java_dev_spinon_bootstrap_MainActivity_nativeSessionSetRootHtmlEnvironment(
     report += " viewport_css_px=" +
               std::to_string(environment.viewport_width_css_px) + "x" +
               std::to_string(environment.viewport_height_css_px) +
+              " visual_viewport_css_px=" +
+              std::to_string(environment.visual_viewport_width_css_px) + "x" +
+              std::to_string(environment.visual_viewport_height_css_px) +
               " device_scale_factor=" +
               std::to_string(environment.device_scale_factor) +
               " page_scale=" + std::to_string(environment.page_scale) +

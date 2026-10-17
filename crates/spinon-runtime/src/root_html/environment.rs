@@ -40,6 +40,8 @@ pub(crate) struct RootHtmlEnvironmentMetadata {
 pub(crate) struct ResolvedRootHtmlEnvironment {
     pub(crate) viewport_width_css_px: f32,
     pub(crate) viewport_height_css_px: f32,
+    pub(crate) visual_viewport_width_css_px: f32,
+    pub(crate) visual_viewport_height_css_px: f32,
     pub(crate) device_scale_factor: f32,
     pub(crate) page_scale: f32,
     pub(crate) prefers_color_scheme: CssColorScheme,
@@ -54,6 +56,10 @@ pub struct RootHtmlEnvironmentSnapshot {
     pub viewport_width_css_px: f32,
     /// `meta viewport`를 적용한 CSS layout viewport 높이입니다.
     pub viewport_height_css_px: f32,
+    /// 초기 visual viewport 너비입니다. layout viewport보다 좁을 수 있습니다.
+    pub visual_viewport_width_css_px: f32,
+    /// 초기 visual viewport 높이입니다. layout viewport보다 낮을 수 있습니다.
+    pub visual_viewport_height_css_px: f32,
     /// native surface에서 전달한 device scale입니다. Page scale과 곱해 저장하지 않습니다.
     pub device_scale_factor: f32,
     /// HTML `initial-scale` 또는 mobile overview mode에서 계산한 별도 page scale입니다.
@@ -161,7 +167,9 @@ impl RootHtmlEnvironmentMetadata {
         let page_scale =
             explicit_scale.unwrap_or_else(|| (screen_width_css_px / requested_width).min(1.0));
         let viewport_width_css_px = requested_width.max(screen_width_css_px / page_scale);
-        let viewport_height_css_px = screen_height_css_px / page_scale;
+        let viewport_height_css_px = viewport_width_css_px * (surface_height_px / surface_width_px);
+        let visual_viewport_width_css_px = screen_width_css_px / page_scale;
+        let visual_viewport_height_css_px = screen_height_css_px / page_scale;
         let document_color_scheme = self
             .color_scheme
             .map(|metadata| metadata.resolve(media_environment.color_scheme))
@@ -172,6 +180,10 @@ impl RootHtmlEnvironmentMetadata {
             || viewport_width_css_px > MAX_VIEWPORT_WIDTH_CSS_PX
             || !viewport_height_css_px.is_finite()
             || viewport_height_css_px <= 0.0
+            || !visual_viewport_width_css_px.is_finite()
+            || visual_viewport_width_css_px <= 0.0
+            || !visual_viewport_height_css_px.is_finite()
+            || visual_viewport_height_css_px <= 0.0
             || !page_scale.is_finite()
             || !(MIN_INITIAL_SCALE..=MAX_INITIAL_SCALE).contains(&page_scale)
         {
@@ -181,6 +193,8 @@ impl RootHtmlEnvironmentMetadata {
         Ok(ResolvedRootHtmlEnvironment {
             viewport_width_css_px,
             viewport_height_css_px,
+            visual_viewport_width_css_px,
+            visual_viewport_height_css_px,
             device_scale_factor,
             page_scale,
             prefers_color_scheme: media_environment.color_scheme,
@@ -225,6 +239,8 @@ pub(crate) fn resolve_root_html_environment(
     Ok(RootHtmlEnvironmentSnapshot {
         viewport_width_css_px: resolved.viewport_width_css_px,
         viewport_height_css_px: resolved.viewport_height_css_px,
+        visual_viewport_width_css_px: resolved.visual_viewport_width_css_px,
+        visual_viewport_height_css_px: resolved.visual_viewport_height_css_px,
         device_scale_factor: resolved.device_scale_factor,
         page_scale: resolved.page_scale,
         prefers_color_scheme: resolved.prefers_color_scheme,

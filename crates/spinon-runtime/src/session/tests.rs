@@ -259,6 +259,44 @@ fn root_html_environment_projects_viewport_and_os_scheme_into_css_cascade() {
 }
 
 #[test]
+fn root_html_layout_media_queries_use_layout_height_not_visual_height() {
+    let (session, _) = RuntimeSession::new_with_root_html(
+        "<!doctype html><html><head><meta name='viewport' content='width=500, initial-scale=1'><style>@media (min-height: 1000px) { main { height: 123px; } } @media (max-height: 900px) { main { height: 456px; } }</style></head><body><main>viewport</main></body></html>",
+    )
+    .expect("root HTML session should import the viewport media fixture");
+
+    let environment = session
+        .set_root_html_environment(
+            1170.0,
+            2532.0,
+            3.0,
+            spinon_style::CssMediaEnvironment::MOBILE,
+        )
+        .expect("fixed width metadata should create layout and visual viewports");
+    assert_eq!(environment.viewport_width_css_px, 500.0);
+    assert!((environment.viewport_height_css_px - 1082.0513).abs() <= 0.001);
+    assert_eq!(environment.visual_viewport_width_css_px, 390.0);
+    assert_eq!(environment.visual_viewport_height_css_px, 844.0);
+
+    let _layout = session.wait_for_layout_snapshot(Duration::from_secs(3));
+    let cascade = session.ua_cascade_snapshot();
+    assert_eq!(cascade.state, RuntimeUaCascadeState::Ready);
+    let styles = &cascade.completed.unwrap().roots[0].styles;
+    assert!(styles.elements.iter().any(|element| {
+        element
+            .properties
+            .get("height")
+            .is_some_and(|value| value == "123px")
+    }));
+    assert!(!styles.elements.iter().any(|element| {
+        element
+            .properties
+            .get("height")
+            .is_some_and(|value| value == "456px")
+    }));
+}
+
+#[test]
 fn root_html_canvas_uses_computed_root_scheme_and_exact_chrome_srgb_bytes() {
     let (session, _) = RuntimeSession::new_with_root_html(
         "<!doctype html><html><head><meta name='viewport' content='width=device-width'><meta name='color-scheme' content='light'><style>:root { color-scheme: dark; }</style></head><body><main>canvas</main></body></html>",

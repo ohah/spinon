@@ -47,6 +47,8 @@
 
 2026-10-17 고정 Chrome `155.0.8059.85` arm64에서 viewport와 scheme 행렬을 관찰했다. 상세 입력·실측값·fixture hash·캡처는 [사전 비교 근거](../spec/internal/evidence/c04-root-html-document-environment-2026-10-17/README.md)에 기록했다.
 
+후속 Chrome 155 비교에서 고정 `width=500, initial-scale=1`의 layout viewport `500×1082`, visual viewport `390×844`가 관찰됐다. `initial-scale=2`에서도 layout 높이 `844`와 visual 높이 `422`가 다르다. 계산과 CSS height media query는 [C04.12 visual viewport 계획](./c04-12-visual-viewport.md) 및 [비교·캡처](../spec/internal/evidence/c04-12-visual-viewport-2026-10-17/README.md)를 따른다. 이 세부 단계도 renderer page-scale transform이나 HTML body paint를 구현하지 않으며 C04.12 전체를 완료 처리하지 않는다.
+
 - 모바일 viewport meta가 없으면 layout viewport가 `980×2121`이고 visual scale은 약 `0.39795917`이었다. `width=device-width, initial-scale=1`에서는 `390×844`, scale `1`; `initial-scale=0.5`에서는 layout width `780`, scale `0.5`였다. 고정 width 320도 scale 1에서 device width 390으로 확장됐다. 그러므로 layout viewport, page scale, native surface size와 DPR은 별도 값으로 유지해야 한다.
 - OS light에서 `meta color-scheme: dark` 및 root CSS `color-scheme: dark`는 Canvas probe를 어둡게 했지만 `prefers-color-scheme: light`는 계속 참이었다. OS dark에서는 문서가 `light dark`를 지원한다고 선언할 때 어두운 Canvas가 선택됐다. meta 지원 목록, root CSS used scheme, OS preference, media-query 결과를 별도 state로 유지한다.
 - 중복 scheme metadata와 중복 viewport metadata의 관찰값은 해당 Chrome 빌드에 한정한다. 표준상 중복이 금지된 입력은 별도 negative case로 두고, 브라우저 관찰을 무조건 normative 규칙으로 확대하지 않는다.

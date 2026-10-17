@@ -80,6 +80,8 @@ typedef struct SpinonRuntimeGpuHost SpinonRuntimeGpuHost;
 typedef struct SpinonRuntimeRootHtmlEnvironment {
   float viewport_width_css_px;
   float viewport_height_css_px;
+  float visual_viewport_width_css_px;
+  float visual_viewport_height_css_px;
   float device_scale_factor;
   float page_scale;
   int32_t prefers_color_scheme; /* 0=light, 1=dark */
@@ -159,9 +161,9 @@ int32_t spinon_runtime_session_set_ua_cascade_environment(
     int32_t primary_pointer, int32_t primary_hover,
     uint32_t all_pointer_flags, uint64_t *environment_revision);
 /* 내부 C04.12 API입니다. prefers_color_scheme 입력과 두 출력 scheme은 0=light, 1=dark입니다.
-   surface pixel 크기와 DPR을 전달하면 root HTML의 viewport metadata로 CSS layout viewport를
-   계산하고 OS preference는 prefers-color-scheme으로 전달합니다. document_color_scheme은
-   별도 initial scheme 결과로 반환하며 Canvas paint와 page_scale transform은 적용하지 않습니다.
+   surface pixel 크기와 DPR을 전달하면 root HTML metadata로 CSS layout viewport와 초기 visual
+   viewport를 계산하고 OS preference는 prefers-color-scheme으로 전달합니다. document_color_scheme은
+   별도 initial scheme 결과로 반환하며 Canvas paint와 page_scale renderer transform은 적용하지 않습니다.
    이 호출은 root HTML 세션에서만 유효하고 성공 0, 잘못된 입력·root HTML 미설정 -1,
    종료 중 -6, CSS worker 불능 -7입니다. environment 출력과 session free를 병행하지 마세요. */
 int32_t spinon_runtime_session_set_root_html_environment(

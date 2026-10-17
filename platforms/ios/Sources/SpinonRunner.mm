@@ -433,13 +433,16 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
       static_cast<unsigned int>(canvas.canvas_rgba[1]),
       static_cast<unsigned int>(canvas.canvas_rgba[2])];
   NSString *report = [NSString stringWithFormat:
-      @"status=0 viewport_css_px=%.3fx%.3f device_scale_factor=%.3f "
+      @"status=0 viewport_css_px=%.3fx%.3f visual_viewport_css_px=%.3fx%.3f "
+       "device_scale_factor=%.3f "
        "page_scale=%.6f prefers_color_scheme=%d document_color_scheme=%d "
        "environment_revision=%llu canvas_color=%@ used_color_scheme=%d "
        "cascade_generation=%llu cascade_document_revision=%llu "
        "cascade_render_tree_revision=%llu cascade_style_revision=%llu "
        "cascade_environment_revision=%llu",
       environment.viewport_width_css_px, environment.viewport_height_css_px,
+      environment.visual_viewport_width_css_px,
+      environment.visual_viewport_height_css_px,
       environment.device_scale_factor, environment.page_scale,
       environment.prefers_color_scheme, environment.document_color_scheme,
       static_cast<unsigned long long>(environment.environment_revision), canvasColor,
