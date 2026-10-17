@@ -1,0 +1,2325 @@
+{
+  "generated_at": "2026-10-17T11:47:44.747437+00:00",
+  "source_base_commit": "54a39a3e7403dd7fc9178de17daeafec4f00ec88",
+  "source_overlay": [
+    "spec/internal/README.md",
+    "spec/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/README.md"
+  ],
+  "preview_url": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "local_preview_url": "http://127.0.0.1:8768/spinon/",
+  "preview_root": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "copy_only": true,
+  "deletions": [],
+  "backup_root": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17",
+  "phase_summaries": [
+    {
+      "phase": 1,
+      "generated_at": "2026-10-17T11:40:55.539430+00:00",
+      "file_count": 83,
+      "counts": {
+        "copied": 44,
+        "replaced": 26,
+        "unchanged": 13
+      },
+      "backup_root": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17",
+      "deletions": []
+    },
+    {
+      "phase": 2,
+      "generated_at": "2026-10-17T11:43:14.887561+00:00",
+      "file_count": 61,
+      "counts": {
+        "copied": 5,
+        "replaced": 24,
+        "unchanged": 32
+      },
+      "backup_root": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2",
+      "deletions": []
+    },
+    {
+      "phase": 3,
+      "generated_at": "2026-10-17T11:44:21.487118+00:00",
+      "file_count": 1,
+      "counts": {
+        "copied": 0,
+        "replaced": 1,
+        "unchanged": 0
+      },
+      "backup_root": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase3",
+      "deletions": []
+    },
+    {
+      "phase": 4,
+      "generated_at": "2026-10-17T11:47:18.208889+00:00",
+      "file_count": 1,
+      "counts": {
+        "copied": 0,
+        "replaced": 1,
+        "unchanged": 0
+      },
+      "backup_root": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase4",
+      "deletions": []
+    }
+  ],
+  "files": [
+    {
+      "path": "0001-conformance.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/0001-conformance.html",
+      "bytes": 28790,
+      "sha256": "4623e9485ad5b2ffbee34d2d1edaa2b17cd4d67990315ac010ba54a39be3300c",
+      "previous": {
+        "bytes": 37358,
+        "sha256": "eeb8c6bf5f21fecb8bb3aadf8ed3228e237b842a902939a313b4394afb4a8c2d"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0001-conformance.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 37358,
+            "sha256": "eeb8c6bf5f21fecb8bb3aadf8ed3228e237b842a902939a313b4394afb4a8c2d"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0001-conformance.html"
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 28790,
+            "sha256": "ae6e7df8582d12863af4d78abc2b4e8474e094e518038e02738dade6098b0eea"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/0001-conformance.html"
+        }
+      ]
+    },
+    {
+      "path": "0001-conformance.md",
+      "source": "spec/0001-conformance.md",
+      "bytes": 13381,
+      "sha256": "3a1f6477f68d9842577b14ad4180415c1b843a565e6b830925fb2e7c39c1656e",
+      "previous": {
+        "bytes": 13021,
+        "sha256": "aa7bccb15698f2ed446e6ab46f6917a14a72144bebbf82803b379ed99d169e8d"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0001-conformance.md",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 13021,
+            "sha256": "aa7bccb15698f2ed446e6ab46f6917a14a72144bebbf82803b379ed99d169e8d"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0001-conformance.md"
+        }
+      ]
+    },
+    {
+      "path": "0002-ui-tree-events.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/0002-ui-tree-events.html",
+      "bytes": 27335,
+      "sha256": "318a344fe691a6e881193a2c41148edaf8087e25905071e9d152c1ffb7dc4358",
+      "previous": {
+        "bytes": 40443,
+        "sha256": "6e1e37b6516cd7630e3d05ef8a75535906fc51807085bba5bcb521065627224b"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0002-ui-tree-events.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 40443,
+            "sha256": "6e1e37b6516cd7630e3d05ef8a75535906fc51807085bba5bcb521065627224b"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0002-ui-tree-events.html"
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 27335,
+            "sha256": "7d79c75b487b9bc07db7b0b590c8d9b9833c089dff3c7547a89b0c97eb1862a6"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/0002-ui-tree-events.html"
+        }
+      ]
+    },
+    {
+      "path": "0002-ui-tree-events.md",
+      "source": "spec/0002-ui-tree-events.md",
+      "bytes": 12429,
+      "sha256": "fd47b76508c3dcac4ec19f33c0ae1bb2a5b8d8916da42ff60775799da54c98d1",
+      "previous": {
+        "bytes": 12429,
+        "sha256": "fd47b76508c3dcac4ec19f33c0ae1bb2a5b8d8916da42ff60775799da54c98d1"
+      },
+      "status": "unchanged",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 12429,
+            "sha256": "fd47b76508c3dcac4ec19f33c0ae1bb2a5b8d8916da42ff60775799da54c98d1"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "0003-web-surface.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/0003-web-surface.html",
+      "bytes": 35963,
+      "sha256": "45dc50ca4f0bda9534894011786e0087b3ae04a8f9d145959320f7281e1ca077",
+      "previous": {
+        "bytes": 38889,
+        "sha256": "a14d36240200b90e7bc520c536271c9422723b11433a7db062438656feaa541b"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0003-web-surface.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 38889,
+            "sha256": "a14d36240200b90e7bc520c536271c9422723b11433a7db062438656feaa541b"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0003-web-surface.html"
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 35963,
+            "sha256": "facc910b10ec1ed197760568559665c3c240cafb1966b6bbb9d46ad158b4ba38"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/0003-web-surface.html"
+        }
+      ]
+    },
+    {
+      "path": "0003-web-surface.md",
+      "source": "spec/0003-web-surface.md",
+      "bytes": 17271,
+      "sha256": "360ebbb872af7ce3f03cca016922f04179a9dd3160109ed5c568cce29343dfc8",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "0004-runtime-build.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/0004-runtime-build.html",
+      "bytes": 26504,
+      "sha256": "87748dede5cbc35d9a0128244e122267b50c2d6ced3654b747e69a17ccda677f",
+      "previous": {
+        "bytes": 25709,
+        "sha256": "e7a309fc7f468485aa25cb730d8fb4b4b39e81e7eada480352c3a0fff0837fd9"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0004-runtime-build.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 25709,
+            "sha256": "e7a309fc7f468485aa25cb730d8fb4b4b39e81e7eada480352c3a0fff0837fd9"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0004-runtime-build.html"
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 26504,
+            "sha256": "31b25f4626ad21fc157305b3865ca69ce677f94b0b8a8ff29f31e4800a58e35c"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/0004-runtime-build.html"
+        }
+      ]
+    },
+    {
+      "path": "0004-runtime-build.md",
+      "source": "spec/0004-runtime-build.md",
+      "bytes": 11551,
+      "sha256": "5a309d7c7367c06a17291218a2bc0f6fc5a4db9017a87db5dc38c19c1c719ad2",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "0005-developer-tools.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/0005-developer-tools.html",
+      "bytes": 16806,
+      "sha256": "8159b8311ced3d04c332832e6ef8e1bd24bfa714a6ca710aeee85d5a7c6a4b65",
+      "previous": {
+        "bytes": 19712,
+        "sha256": "d15f8f21b37956ecb63ab5509e7c704aaadc111cd6acb532f91c3766a2aef4d4"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0005-developer-tools.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 19712,
+            "sha256": "d15f8f21b37956ecb63ab5509e7c704aaadc111cd6acb532f91c3766a2aef4d4"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0005-developer-tools.html"
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 16806,
+            "sha256": "b2afc8228e36581b8215364dc6195ce2adb73e2e76247f7dd4a5e86699d7d5c9"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/0005-developer-tools.html"
+        }
+      ]
+    },
+    {
+      "path": "0005-developer-tools.md",
+      "source": "spec/0005-developer-tools.md",
+      "bytes": 3064,
+      "sha256": "da919d0647495285ca2130bb3ea4e7203483b313d3d91ea21b80d1ade7265eb7",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "0006-routing.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/0006-routing.html",
+      "bytes": 21420,
+      "sha256": "50a109ca636113cf38451754eaf7fe82f90ba4193a4ebac976f43d539af77e50",
+      "previous": {
+        "bytes": 24326,
+        "sha256": "18a9a9301eb08648ab2bc1a2c68cd99616f7695839e829455dbf507684d090d2"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0006-routing.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 24326,
+            "sha256": "18a9a9301eb08648ab2bc1a2c68cd99616f7695839e829455dbf507684d090d2"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0006-routing.html"
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 21420,
+            "sha256": "72ea9da3765537f12182efd423ad9398c6b001e316531a3b240e98605bb64869"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/0006-routing.html"
+        }
+      ]
+    },
+    {
+      "path": "0006-routing.md",
+      "source": "spec/0006-routing.md",
+      "bytes": 6484,
+      "sha256": "0df790085427f70c7e84e5b878193d1139474140c11f7e71649aa1d69ad62858",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "0007-dom-compatibility.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/0007-dom-compatibility.html",
+      "bytes": 32735,
+      "sha256": "4aa48e854b173b7b44f937fe98bc3b9d69ee204978cf8a58e35354ad18ea92d2",
+      "previous": {
+        "bytes": 35691,
+        "sha256": "96003d7d633096c264a237431d78b94f288a3d9a52f4549c6262ed37541640f7"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0007-dom-compatibility.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 35691,
+            "sha256": "96003d7d633096c264a237431d78b94f288a3d9a52f4549c6262ed37541640f7"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/0007-dom-compatibility.html"
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 32735,
+            "sha256": "959b3e7f6792113ab152df777f16df16cf368d1910089db96bf49a0ae6e0e7b8"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/0007-dom-compatibility.html"
+        }
+      ]
+    },
+    {
+      "path": "0007-dom-compatibility.md",
+      "source": "spec/0007-dom-compatibility.md",
+      "bytes": 14621,
+      "sha256": "b9a6ef511c302882b01eecb67e078c83f065c56be810a29f5a0a90d0497ce5b2",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "404.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/404.html",
+      "bytes": 6204,
+      "sha256": "0c0ae2235c7c5c80c2d16fa554ca0c51cebd5483d902ac75201294e507f53f01",
+      "previous": {
+        "bytes": 8512,
+        "sha256": "d5716707c0176a5ab78af0f0e561a19abc87471d1fe036605e65d26fd1d4912c"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/404.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 8512,
+            "sha256": "d5716707c0176a5ab78af0f0e561a19abc87471d1fe036605e65d26fd1d4912c"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/404.html"
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 6204,
+            "sha256": "8b1d2f5b973abc909d474b821add57b0830e2e9a107b800bfbc117ff1c040a18"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/404.html"
+        }
+      ]
+    },
+    {
+      "path": "README.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/README.html",
+      "bytes": 19821,
+      "sha256": "b9cfe1d2e70ca9303793a4417c5739896c261787f697062f56591509d690abdf",
+      "previous": {
+        "bytes": 9131,
+        "sha256": "6a639ba48ed0491a8d3fc3cbbc19b3fbcd296e63eadfb6bd3909198fca464371"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/README.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 9131,
+            "sha256": "6a639ba48ed0491a8d3fc3cbbc19b3fbcd296e63eadfb6bd3909198fca464371"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/README.html"
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 19821,
+            "sha256": "d9a2f8ed26efa549df143cab8efe92a2f8df9b2a6bfa3ada62189cffae2a8c0f"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/README.html"
+        }
+      ]
+    },
+    {
+      "path": "README.md",
+      "source": "spec/README.md",
+      "bytes": 3721,
+      "sha256": "9ba0f43d492f7826b0d4e4669545fd832f41411a45d571368adea46bb7caa705",
+      "previous": {
+        "bytes": 3721,
+        "sha256": "9ba0f43d492f7826b0d4e4669545fd832f41411a45d571368adea46bb7caa705"
+      },
+      "status": "unchanged",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 3721,
+            "sha256": "9ba0f43d492f7826b0d4e4669545fd832f41411a45d571368adea46bb7caa705"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "STATUS.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/STATUS.html",
+      "bytes": 338120,
+      "sha256": "7ce8c017bea22793b0cfaf6d5523cf498c069af6fa52ebdeb0bfe483bf642af7",
+      "previous": {
+        "bytes": 345254,
+        "sha256": "b80b04d04839e20afe04785ce3c31f55eaf76511f6f572947a8dda3c2b116b90"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/STATUS.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 345254,
+            "sha256": "b80b04d04839e20afe04785ce3c31f55eaf76511f6f572947a8dda3c2b116b90"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/STATUS.html"
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 338120,
+            "sha256": "41058b0be005dfcce6698693a8b8defd65f5b227f48f6655ac8d7aa8c975a943"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/STATUS.html"
+        }
+      ]
+    },
+    {
+      "path": "STATUS.md",
+      "source": "spec/STATUS.md",
+      "bytes": 265550,
+      "sha256": "21f79915fe513c1bf271f54c5d51431d043078ff8c2e1e8ac2636d1050e4835d",
+      "previous": {
+        "bytes": 265147,
+        "sha256": "47032cbb711d14cd8fddda1f21031c3bc47e3ec9d0c069794160a5aa61b0c99b"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/STATUS.md",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 265147,
+            "sha256": "47032cbb711d14cd8fddda1f21031c3bc47e3ec9d0c069794160a5aa61b0c99b"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/STATUS.md"
+        }
+      ]
+    },
+    {
+      "path": "api/README.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/api/README.html",
+      "bytes": 15012,
+      "sha256": "6f9bb5e4fea7213b1a97f8c7522846fa2637f30b82b33ba1a6dc7c3bf7c3749a",
+      "previous": {
+        "bytes": 17948,
+        "sha256": "0a78b688559a5e34ccf0ae645dbe80f28b212395fae4fe7a68da88dc1efcc9d4"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/api/README.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 17948,
+            "sha256": "0a78b688559a5e34ccf0ae645dbe80f28b212395fae4fe7a68da88dc1efcc9d4"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/api/README.html"
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 15012,
+            "sha256": "1e427f49d4da7d020a05490ef86aeb21c287858a047012110c6bde331f9bf00c"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/api/README.html"
+        }
+      ]
+    },
+    {
+      "path": "api/README.md",
+      "source": "spec/api/README.md",
+      "bytes": 1454,
+      "sha256": "909ec97da2c166a0a9494542afd04cd79aa8dc739c9c28f735f6d3fb85e2903b",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "api/index.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/api/index.html",
+      "bytes": 15809,
+      "sha256": "cb4557d29a57c34f72c0f1e35aa2ba65f09efe4e222413c02edd799859f8b25f",
+      "previous": {
+        "bytes": 18753,
+        "sha256": "7184fecb327960f643036e5da6b5e52be433a86fe114d253cd36195e9b39df2e"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/api/index.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 18753,
+            "sha256": "7184fecb327960f643036e5da6b5e52be433a86fe114d253cd36195e9b39df2e"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/api/index.html"
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 15809,
+            "sha256": "59e111bb069d762995357aeb2a2e8c1943551dbcafc3a7b8932f375d38c6bfd2"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/api/index.html"
+        }
+      ]
+    },
+    {
+      "path": "api/index.md",
+      "source": "spec/api/index.md",
+      "bytes": 1978,
+      "sha256": "451dd2f9d6563c403c4e297d5224eba45c7a0fcaa4cf8dfdb1f1501fd30f1ce4",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "icon.svg",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previous": {
+        "bytes": 638,
+        "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+      },
+      "status": "unchanged",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 638,
+            "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+          },
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 638,
+            "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "index.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/index.html",
+      "bytes": 15735,
+      "sha256": "9397b69739dbb0f738c9b6ee7e75f98e28f395174dec79f8d75bb7aba3bfdfcf",
+      "previous": {
+        "bytes": 18641,
+        "sha256": "3bcbc52e110c433e705b52e621bb640ee3432a992a3996ee26f7ca6e019618fa"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/index.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 18641,
+            "sha256": "3bcbc52e110c433e705b52e621bb640ee3432a992a3996ee26f7ca6e019618fa"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/index.html"
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 15735,
+            "sha256": "d2e06fcdf99b28ab37c62dda444ba6106ff3c4ff7cc5605e7c5976f656d06f49"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/index.html"
+        }
+      ]
+    },
+    {
+      "path": "internal/0077-c04-12-root-html-document.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/internal/0077-c04-12-root-html-document.html",
+      "bytes": 21020,
+      "sha256": "a754a59a259a7cdb2ef511f2eea399b4f664cfbd421f4dc35e7121ee81b5c36d",
+      "previous": {
+        "bytes": 25729,
+        "sha256": "d1af9c1e1ebe020dbe042a90ba799e1f2bef13c0849be27ca23a974f846917ad"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/0077-c04-12-root-html-document.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 25729,
+            "sha256": "d1af9c1e1ebe020dbe042a90ba799e1f2bef13c0849be27ca23a974f846917ad"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/0077-c04-12-root-html-document.html"
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 21020,
+            "sha256": "1c277e80f325ac223494a20ba9448e781ae4200f6ed48cb5e4e2974784978ad9"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/0077-c04-12-root-html-document.html"
+        }
+      ]
+    },
+    {
+      "path": "internal/0077-c04-12-root-html-document.md",
+      "source": "spec/internal/0077-c04-12-root-html-document.md",
+      "bytes": 6519,
+      "sha256": "200f352175b5372ed7799ce9fd8144f52f5ffdbab8ee7959ceae9b41bf26e5fa",
+      "previous": {
+        "bytes": 5368,
+        "sha256": "d973db7ff3b328d2e7f62999a7045eff998d2b86ef138bb69ee7ee57cba30cda"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/0077-c04-12-root-html-document.md",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 5368,
+            "sha256": "d973db7ff3b328d2e7f62999a7045eff998d2b86ef138bb69ee7ee57cba30cda"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/0077-c04-12-root-html-document.md"
+        }
+      ]
+    },
+    {
+      "path": "internal/README.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/internal/README.html",
+      "bytes": 153635,
+      "sha256": "ac601fc4fbc014bb5f302feb2d3415060f9e6cfc6b525b4d8a35e2d8f619306e",
+      "previous": {
+        "bytes": 161204,
+        "sha256": "e330b3e4003d03e1ffd2c0beae58b9d87adeda90ca39eefcdaaa114fdff51db0"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/README.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 161204,
+            "sha256": "e330b3e4003d03e1ffd2c0beae58b9d87adeda90ca39eefcdaaa114fdff51db0"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/README.html"
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 153635,
+            "sha256": "1c57117601b53a806d8adbc166e055cffa2e0f1ab7360adee7cf1b5e8e4b4254"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/README.html"
+        }
+      ]
+    },
+    {
+      "path": "internal/README.md",
+      "source": "spec/internal/README.md",
+      "bytes": 116054,
+      "sha256": "d62e39db95092f8f79521e4f8e081af8f65b435fb4a1aab2f5f4ef9a177e1aa7",
+      "previous": {
+        "bytes": 114289,
+        "sha256": "2faa246c918d03541cbcd5767b7ad05a31c9b299a3a3d5e42269b02799bd960e"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/README.md",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 114289,
+            "sha256": "2faa246c918d03541cbcd5767b7ad05a31c9b299a3a3d5e42269b02799bd960e"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/README.md"
+        }
+      ]
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-asset-implementation-review-20-2026-10-17.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/internal/evidence/c04-12-root-html-asset-implementation-review-20-2026-10-17.html",
+      "bytes": 20067,
+      "sha256": "2581e7f70113acc536b10f3cc13e996f735ec70090c603339323ed92ad7d0ef3",
+      "previous": {
+        "bytes": 25743,
+        "sha256": "3b2515c6a968cc4f4602c3ed1b3e4f3887ca1584e142c126c12b8808db34952c"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/evidence/c04-12-root-html-asset-implementation-review-20-2026-10-17.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 25743,
+            "sha256": "3b2515c6a968cc4f4602c3ed1b3e4f3887ca1584e142c126c12b8808db34952c"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/evidence/c04-12-root-html-asset-implementation-review-20-2026-10-17.html"
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 20067,
+            "sha256": "c6fc39d8f7b998d765e28992487a6a41d429d47266c248e0d92d5baaa414908d"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/evidence/c04-12-root-html-asset-implementation-review-20-2026-10-17.html"
+        }
+      ]
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-asset-pr-diff-review-30-2026-10-17.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/internal/evidence/c04-12-root-html-asset-pr-diff-review-30-2026-10-17.html",
+      "bytes": 21796,
+      "sha256": "46824fd8d3d5f3c0215d4045e6d3fa70f9ac214ca983f0ebc5dce56c41f9fe4e",
+      "previous": {
+        "bytes": 27464,
+        "sha256": "29ba27fb19e93b17c82702b9568d111da6ffdb2c16620f3cb350c9eee9644eb9"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/evidence/c04-12-root-html-asset-pr-diff-review-30-2026-10-17.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 27464,
+            "sha256": "29ba27fb19e93b17c82702b9568d111da6ffdb2c16620f3cb350c9eee9644eb9"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/evidence/c04-12-root-html-asset-pr-diff-review-30-2026-10-17.html"
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 21796,
+            "sha256": "c7eabffabad1fe62bf6fabd84d96c7b9b17f64299ac7bf19c7ba8e98e5273ea5"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/evidence/c04-12-root-html-asset-pr-diff-review-30-2026-10-17.html"
+        }
+      ]
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-2026-10-17/README.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/internal/evidence/c04-12-root-html-default-app-2026-10-17/README.html",
+      "bytes": 18892,
+      "sha256": "bb30ee5d7d9a4d0ad28da8fd89b9ce77c3292b409ed1f1e16c830676095720f4",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 18892,
+            "sha256": "c77454d7f449cf507749a71d993994f9ff618d4104c1e862d568320b1e97fcbf"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/evidence/c04-12-root-html-default-app-2026-10-17/README.html"
+        }
+      ]
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-2026-10-17/README.md",
+      "source": "spec/internal/evidence/c04-12-root-html-default-app-2026-10-17/README.md",
+      "bytes": 4726,
+      "sha256": "bd0159fc8180b5028906f721c0c5d1a8d7fd5858e5f517438a987f0238f3225d",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-2026-10-17/android-api37-bootstrap.png",
+      "source": "spec/internal/evidence/c04-12-root-html-default-app-2026-10-17/android-api37-bootstrap.png",
+      "bytes": 18874,
+      "sha256": "74c998f6a8484243c652150ebad9fc0f62e1de25bc04cdc6793d82a442f73a92",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-2026-10-17/android-api37-logcat.txt",
+      "source": "spec/internal/evidence/c04-12-root-html-default-app-2026-10-17/android-api37-logcat.txt",
+      "bytes": 2896,
+      "sha256": "e685f926899254f6776de2a0a51c526d3d7478eb85e0b2bf9637c1c3b5f12dbf",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-2026-10-17/implementation-review-20.md",
+      "source": "spec/internal/evidence/c04-12-root-html-default-app-2026-10-17/implementation-review-20.md",
+      "bytes": 5632,
+      "sha256": "1426dd6c90ce0a59da95d8bd571563af4e4b38c5df1d3832cdae8ee87f5c61cd",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-2026-10-17/ios-iphone17pro-bootstrap.png",
+      "source": "spec/internal/evidence/c04-12-root-html-default-app-2026-10-17/ios-iphone17pro-bootstrap.png",
+      "bytes": 75929,
+      "sha256": "4ab7926333b3e0bf35e7341079f41819144ac126df31e9360c0c939e0d8d0250",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-2026-10-17/ios-iphone17pro-log.txt",
+      "source": "spec/internal/evidence/c04-12-root-html-default-app-2026-10-17/ios-iphone17pro-log.txt",
+      "bytes": 1782,
+      "sha256": "972e4a6ebe3de8d92ae28c4aea0c321b66cb93a6db1d305f55e327c15fe82f6f",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-2026-10-17/pr-delta-review-30.md",
+      "source": "spec/internal/evidence/c04-12-root-html-default-app-2026-10-17/pr-delta-review-30.md",
+      "bytes": 6241,
+      "sha256": "3999e56b8532d54be66b2a37fe1fc88cb9a61fa0b7641738b7d8639ecf9bde66",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/README.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/README.html",
+      "bytes": 16353,
+      "sha256": "f24ac7eb2470295a1b41562684a9acbbc143286bbd9d1ec571ed8befbda262fa",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 16270,
+            "sha256": "0abe73936625b3625fb264d5baeff713b70e103ba674219a48f9b171e0530911"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/README.html"
+        }
+      ]
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/README.md",
+      "source": "spec/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/README.md",
+      "bytes": 2677,
+      "sha256": "ac581eeb876e6ec810f1ffb7c953cc7065e5315c0b9ed32cb67e11a27d80b962",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 2605,
+            "sha256": "ce75c187211fb2fdf2b8c2d7237285a8007cae4866f9df5ee35e0dcea72f766f"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/README.md"
+        }
+      ]
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "source": "spec/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "bytes": 5139,
+      "sha256": "a405a60afc59f79b7f617f23bc9bac628e0bd9a42e9462e974eded9f801f80d6",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 3,
+          "status": "replaced",
+          "previous": {
+            "bytes": 4677,
+            "sha256": "25fa2a63166bf2f53bd82a0362586de83aa1988995edfc7e8aab2f277f404a90"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase3/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/pr-delta-review-30.md"
+        }
+      ]
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/render-build-result.md",
+      "source": "spec/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/render-build-result.md",
+      "bytes": 2151,
+      "sha256": "32485eac38b42f582a0bb515e72f9d5c7afeb6eedda36895ccb71cb56ab14833",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 1860,
+            "sha256": "fa222a5934717fa362bed8d07c54f375da1e63e9e48e8582c9c12bfd78fd3f19"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/render-build-result.md"
+        },
+        {
+          "phase": 4,
+          "status": "replaced",
+          "previous": {
+            "bytes": 1860,
+            "sha256": "5bb55c3e6fb1e3bc56e9e7b75319d624186b462f942727c47a93b937a32a74db"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase4/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/render-build-result.md"
+        }
+      ]
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/selected-build.log",
+      "source": "spec/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/selected-build.log",
+      "bytes": 7843,
+      "sha256": "db8c9aa7a35ec6256fc3a9f20ef22c6af916b6d45c9b44202b1e7d6f476ae7dc",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 7843,
+            "sha256": "f8e5cca205c985024e0c9faaa637eec1318161c81335e0b42cdc1a2c5997306a"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/selected-build.log"
+        }
+      ]
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/tailnet-roadmap-agent-browser.png",
+      "source": "spec/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/tailnet-roadmap-agent-browser.png",
+      "bytes": 222499,
+      "sha256": "5a25d8f80390f8eb4ca83055d8bf7c55f5e1da4c13505ffddad07763607a7682",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 2,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/tailnet-status-agent-browser.png",
+      "source": "spec/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/tailnet-status-agent-browser.png",
+      "bytes": 210158,
+      "sha256": "ce5659877025429fe4ec83bdfe7ba10e8274c68616fdfc6bddd79d325717d1a1",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 2,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "internal/evidence/c04-root-document-environment-precomparison-review-2026-10-17.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/internal/evidence/c04-root-document-environment-precomparison-review-2026-10-17.html",
+      "bytes": 17823,
+      "sha256": "caa657e45fe83be370f18d9b8e1febb15de2b98a4f388c130caa8a392f63f436",
+      "previous": {
+        "bytes": 23083,
+        "sha256": "4af03e06bb935c43f1dc6ddcd432c0e720f27c22c92315a4b02490346ae960f8"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/evidence/c04-root-document-environment-precomparison-review-2026-10-17.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 23083,
+            "sha256": "4af03e06bb935c43f1dc6ddcd432c0e720f27c22c92315a4b02490346ae960f8"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/internal/evidence/c04-root-document-environment-precomparison-review-2026-10-17.html"
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 17823,
+            "sha256": "da8cae627794960e3287a9c899e7e7be2a17f343afdeedbf6151d11e69032c01"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/internal/evidence/c04-root-document-environment-precomparison-review-2026-10-17.html"
+        }
+      ]
+    },
+    {
+      "path": "logo.svg",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "previous": {
+        "bytes": 568,
+        "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+      },
+      "status": "unchanged",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 568,
+            "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+          },
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 568,
+            "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "plan/c04-root-html-document-environment.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/plan/c04-root-html-document-environment.html",
+      "bytes": 29552,
+      "sha256": "0c8fa3f7862cd7d0c7e384e7c01b6db35c2df222d2f300c2d49fd4948f1459fe",
+      "previous": {
+        "bytes": 36117,
+        "sha256": "371827f242d96ee02697facc0e63a995c2604e7e15c89c8dca10239cff4d043f"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/plan/c04-root-html-document-environment.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 36117,
+            "sha256": "371827f242d96ee02697facc0e63a995c2604e7e15c89c8dca10239cff4d043f"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/plan/c04-root-html-document-environment.html"
+        },
+        {
+          "phase": 2,
+          "status": "replaced",
+          "previous": {
+            "bytes": 29552,
+            "sha256": "2364d5f23f530f8c4e4c1ecb647fa9a86da2b42f5ed2a9e3f4610740dcba0c36"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/phase2/plan/c04-root-html-document-environment.html"
+        }
+      ]
+    },
+    {
+      "path": "plan/c04-root-html-document-environment.md",
+      "source": "plan/c04-root-html-document-environment.md",
+      "bytes": 13208,
+      "sha256": "9bbd3fcd43da84718b58251f5f759260e2f0829ec0392214d805b1ade438e8f1",
+      "previous": {
+        "bytes": 13014,
+        "sha256": "f7b722693c299eb838484cef35b21412e6308b798c67cbe71f3b97b9b6ba68a4"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/plan/c04-root-html-document-environment.md",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 13014,
+            "sha256": "f7b722693c299eb838484cef35b21412e6308b798c67cbe71f3b97b9b6ba68a4"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/plan/c04-root-html-document-environment.md"
+        }
+      ]
+    },
+    {
+      "path": "roadmap.html",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/roadmap.html",
+      "bytes": 119012,
+      "sha256": "e3ad4e15a19186151cbae9883f961b67d62dd46b634916ed57f0ec602b13ae61",
+      "previous": {
+        "bytes": 118776,
+        "sha256": "a76a7ea32f52e5ace3204294d02cc6e18ab34938c9066135392d7048669fe12f"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/roadmap.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 118776,
+            "sha256": "a76a7ea32f52e5ace3204294d02cc6e18ab34938c9066135392d7048669fe12f"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/roadmap.html"
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 119012,
+            "sha256": "e3ad4e15a19186151cbae9883f961b67d62dd46b634916ed57f0ec602b13ae61"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "roadmap.svg",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "previous": {
+        "bytes": 4835,
+        "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+      },
+      "status": "unchanged",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 4835,
+            "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+          },
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 4835,
+            "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "source": "spec/public/roadmap.html",
+      "bytes": 119012,
+      "sha256": "e3ad4e15a19186151cbae9883f961b67d62dd46b634916ed57f0ec602b13ae61",
+      "previous": {
+        "bytes": 118776,
+        "sha256": "a76a7ea32f52e5ace3204294d02cc6e18ab34938c9066135392d7048669fe12f"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/spec/public/roadmap.html",
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "replaced",
+          "previous": {
+            "bytes": 118776,
+            "sha256": "a76a7ea32f52e5ace3204294d02cc6e18ab34938c9066135392d7048669fe12f"
+          },
+          "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-root-html-default-app-tailnet-sync-2026-10-17/spec/public/roadmap.html"
+        }
+      ]
+    },
+    {
+      "path": "spec/public/roadmap.svg",
+      "source": "spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "previous": {
+        "bytes": 4835,
+        "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+      },
+      "status": "unchanged",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 4835,
+            "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "previous": {
+        "bytes": 73952,
+        "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+      },
+      "status": "unchanged",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 73952,
+            "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+          },
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 73952,
+            "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/3.c8e5e2f265.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/3.c8e5e2f265.js",
+      "bytes": 217078,
+      "sha256": "e602b3ecb893e08a5ab83dbd29e4fdb119b633f052127202a0840a7456cede00",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 217078,
+            "sha256": "e602b3ecb893e08a5ab83dbd29e4fdb119b633f052127202a0840a7456cede00"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/3.c8e5e2f265.js.LICENSE.txt",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/3.c8e5e2f265.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 384,
+            "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/l.76b60f2b87.js",
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "previous": {
+        "bytes": 98,
+        "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee"
+      },
+      "status": "unchanged",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 98,
+            "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee"
+          },
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 98,
+            "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-009725493014.547778d67f.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-009725493014.547778d67f.js",
+      "bytes": 16133,
+      "sha256": "8a7c618cf9c11a80053a10e7859243607db1b11e3865def12fe02cc3ad07305c",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 16133,
+            "sha256": "8a7c618cf9c11a80053a10e7859243607db1b11e3865def12fe02cc3ad07305c"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-04ba7e07c84a.4879810e3e.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-04ba7e07c84a.4879810e3e.js",
+      "bytes": 12187,
+      "sha256": "cc995367c9c8d1fcb2dfc672efb199cf9f79a25067f81e9243b0cec0ebad2139",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 12187,
+            "sha256": "cc995367c9c8d1fcb2dfc672efb199cf9f79a25067f81e9243b0cec0ebad2139"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-0c2620f3bf61.0bbddc8285.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-0c2620f3bf61.0bbddc8285.js",
+      "bytes": 9466,
+      "sha256": "94c5ea3a1843290e67685f41743778f4dad2585a2d3a827c760e7dc5ee5334bf",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 9466,
+            "sha256": "94c5ea3a1843290e67685f41743778f4dad2585a2d3a827c760e7dc5ee5334bf"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-2308615ee227.9aabc919fb.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-2308615ee227.9aabc919fb.js",
+      "bytes": 5461,
+      "sha256": "1f4c89a652b12ee9df53a986a57bc03c5f9cae1dd59c15fd73285b1c274cce8a",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 5461,
+            "sha256": "1f4c89a652b12ee9df53a986a57bc03c5f9cae1dd59c15fd73285b1c274cce8a"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-367f2927ddca.a9c5495877.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-367f2927ddca.a9c5495877.js",
+      "bytes": 25722,
+      "sha256": "2680877be668f55e3edba5fbf4a8df110299a275c48548d79c259700f79959e9",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 25722,
+            "sha256": "2680877be668f55e3edba5fbf4a8df110299a275c48548d79c259700f79959e9"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-42452122cfa4.d884108fc9.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-42452122cfa4.d884108fc9.js",
+      "bytes": 8136,
+      "sha256": "4048d1319dc2c395b6df1a490187ec2ce7f9513f5e7f7053005ebcd3957b6764",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 8136,
+            "sha256": "4048d1319dc2c395b6df1a490187ec2ce7f9513f5e7f7053005ebcd3957b6764"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-60cbaa231bd4.e47d80e994.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-60cbaa231bd4.e47d80e994.js",
+      "bytes": 18390,
+      "sha256": "c0ad0a3cbfe9918d55f385ac679a261690e5e220ef444a2c27298af5b59e8ca5",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 18390,
+            "sha256": "c0ad0a3cbfe9918d55f385ac679a261690e5e220ef444a2c27298af5b59e8ca5"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-66d8ed6c8215.78d928ab08.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-66d8ed6c8215.78d928ab08.js",
+      "bytes": 5735,
+      "sha256": "f314afee419f4e80fe45b6bd2d6bc23ffadf9d4460f2e4cf6461a3feddd159d7",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 2,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-66d8ed6c8215.93bfcec3ef.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v6/static/js/async/route-66d8ed6c8215.93bfcec3ef.js",
+      "bytes": 5630,
+      "sha256": "677e9e7e6f17450839dee9f35a087af71ebc04ac00b8d904ae76d9c88bc410e0",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.96a462abd4.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-6c33a3943990.96a462abd4.js",
+      "bytes": 365892,
+      "sha256": "78c05a692b74ecb284ce0cf9f238b088a73824f4a8efeca28321ebe98081cece",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 365892,
+            "sha256": "78c05a692b74ecb284ce0cf9f238b088a73824f4a8efeca28321ebe98081cece"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-6fe650616266.fe727e192e.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-6fe650616266.fe727e192e.js",
+      "bytes": 5078,
+      "sha256": "e0b13fd807f7a5347eee206298a7b74e931e175c7b0849e2df5bc3dbe79fde43",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 5078,
+            "sha256": "e0b13fd807f7a5347eee206298a7b74e931e175c7b0849e2df5bc3dbe79fde43"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-7ff1bc4fef68.68067110da.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-7ff1bc4fef68.68067110da.js",
+      "bytes": 11363,
+      "sha256": "82c54fc61e4417b9ba7622ed4a0256caf0a17eca0e510c452d1dc71d2d802d66",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 11363,
+            "sha256": "82c54fc61e4417b9ba7622ed4a0256caf0a17eca0e510c452d1dc71d2d802d66"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.92908f985b.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-a1017bdf23ca.92908f985b.js",
+      "bytes": 169502,
+      "sha256": "299e664a02ed985a6ef19370477d71784675034cb697dd426d2dc39348dd7769",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 169502,
+            "sha256": "299e664a02ed985a6ef19370477d71784675034cb697dd426d2dc39348dd7769"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-b33563055168.1acfc09d5b.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-b33563055168.1acfc09d5b.js",
+      "bytes": 7969,
+      "sha256": "28c862a4b9560b87643767c2d29d7d0254ccb35d4ae41fa379e19871b0528ba9",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 7969,
+            "sha256": "28c862a4b9560b87643767c2d29d7d0254ccb35d4ae41fa379e19871b0528ba9"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-b77589699581.b959ddc4f2.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-b77589699581.b959ddc4f2.js",
+      "bytes": 10919,
+      "sha256": "c9dd16d333f316307cc51214c4f18429a3a05f6bb9c7602f6e3dbcfb3a4a61fd",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 10919,
+            "sha256": "c9dd16d333f316307cc51214c4f18429a3a05f6bb9c7602f6e3dbcfb3a4a61fd"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-c7b1c23e00a1.6f05a34433.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-c7b1c23e00a1.6f05a34433.js",
+      "bytes": 3141,
+      "sha256": "05bd2062ea0e356ec5b6a4d9be7a40e5895e173a72e798d18433adb34584c230",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 3141,
+            "sha256": "05bd2062ea0e356ec5b6a4d9be7a40e5895e173a72e798d18433adb34584c230"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-d189cf42fdb6.bcdf01ec12.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-d189cf42fdb6.bcdf01ec12.js",
+      "bytes": 13635,
+      "sha256": "9d9460fc87ed5e1922582cce04ecb96a2c79d32bb90721aa72f29e3596bdbdbb",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 13635,
+            "sha256": "9d9460fc87ed5e1922582cce04ecb96a2c79d32bb90721aa72f29e3596bdbdbb"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-e3e67500d82d.b4f1dcfb8a.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-e3e67500d82d.b4f1dcfb8a.js",
+      "bytes": 32300,
+      "sha256": "ec9a3a97800589953a00bde1a0d99f2c9b50a66206864712aa7f604e8496364e",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 32300,
+            "sha256": "ec9a3a97800589953a00bde1a0d99f2c9b50a66206864712aa7f604e8496364e"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-ea34262d0652.83e242ae3b.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-ea34262d0652.83e242ae3b.js",
+      "bytes": 20807,
+      "sha256": "9f22efe887b30b9b30515b12d908b351232cc3fa09074ee8dc6a7363050041f1",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 20807,
+            "sha256": "9f22efe887b30b9b30515b12d908b351232cc3fa09074ee8dc6a7363050041f1"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-ecf129b09e78.c83fbcc331.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-ecf129b09e78.c83fbcc331.js",
+      "bytes": 20042,
+      "sha256": "79ab819de044cbe7dd5c828e991249c62493df722c56cafb9b772aa4439c03d0",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 20042,
+            "sha256": "79ab819de044cbe7dd5c828e991249c62493df722c56cafb9b772aa4439c03d0"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/async/route-eeac1d534988.6c0ba96cc3.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/async/route-eeac1d534988.6c0ba96cc3.js",
+      "bytes": 5807,
+      "sha256": "b790937bed65f09d2678c7d2a176af04c6ba99db422faed64106f2593ab20800",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 5807,
+            "sha256": "b790937bed65f09d2678c7d2a176af04c6ba99db422faed64106f2593ab20800"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/index.7978f6d50f.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/index.7978f6d50f.js",
+      "bytes": 29882,
+      "sha256": "0a5dcbd1d4da968ff09bc4402288f455b741f860d4f64ba48e97ae4bb6a261c9",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 2,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/index.ddecddba2f.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v6/static/js/index.ddecddba2f.js",
+      "bytes": 29882,
+      "sha256": "c8078fde10b5b7aab64543eb46a8c3ff8b14588a68022201e6a22abb26375197",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/lib-react.801d719c4f.js",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "previous": {
+        "bytes": 218366,
+        "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+      },
+      "status": "unchanged",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 218366,
+            "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+          },
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 218366,
+            "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "previous": {
+        "bytes": 1209,
+        "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+      },
+      "status": "unchanged",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 1209,
+            "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+          },
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 1209,
+            "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/lib-router.d3b08da66f.js",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "previous": {
+        "bytes": 35366,
+        "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+      },
+      "status": "unchanged",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 35366,
+            "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+          },
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 35366,
+            "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "previous": {
+        "bytes": 222,
+        "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+      },
+      "status": "unchanged",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 222,
+            "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+          },
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 222,
+            "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/js/styles.aba03c5c90.js",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/js/styles.aba03c5c90.js",
+      "bytes": 472,
+      "sha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5",
+      "previous": {
+        "bytes": 472,
+        "sha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5"
+      },
+      "status": "unchanged",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 472,
+            "sha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5"
+          },
+          "backup_path": null
+        },
+        {
+          "phase": 2,
+          "status": "unchanged",
+          "previous": {
+            "bytes": 472,
+            "sha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5"
+          },
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/search_index.ko.5dd19dd4.json",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v7/static/search_index.ko.5dd19dd4.json",
+      "bytes": 416730,
+      "sha256": "5dd19dd43039c56a3a668899b7988e89b68a7ceb7caa533a855dac9bf682001c",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 2,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    },
+    {
+      "path": "static/search_index.ko.fcaa388a.json",
+      "source": "/private/tmp/spinon-c04-12-root-html-roadmap-20261017/out-v6/static/search_index.ko.fcaa388a.json",
+      "bytes": 416659,
+      "sha256": "fcaa388ab5b2d7d7e19b203072f0cdcd2556a5093296e9f249f4f1be46580381",
+      "previous": null,
+      "status": "copied",
+      "backup_path": null,
+      "phase_history": [
+        {
+          "phase": 1,
+          "status": "copied",
+          "previous": null,
+          "backup_path": null
+        }
+      ]
+    }
+  ],
+  "file_count": 88,
+  "counts": {
+    "replaced": 26,
+    "unchanged": 13,
+    "copied": 49
+  },
+  "bytes": 4415739
+}
