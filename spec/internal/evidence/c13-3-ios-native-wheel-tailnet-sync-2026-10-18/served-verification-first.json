@@ -1,0 +1,10 @@
+{
+  "createdAt": "2026-10-17T20:38:04.616Z",
+  "localBase": "http://127.0.0.1:8768/spinon/",
+  "tailnetBase": "https://tailnet-host-redacted.invalid/spinon/",
+  "artifacts": 74,
+  "responsesChecked": 148,
+  "expectedResponses": 148,
+  "allStatus200AndSha256Match": true,
+  "failures": []
+}

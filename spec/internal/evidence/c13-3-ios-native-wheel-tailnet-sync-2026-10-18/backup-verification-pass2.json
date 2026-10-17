@@ -1,0 +1,80 @@
+{
+  "createdAt": "2026-10-17T20:41:21.406Z",
+  "preflight": "preflight-final.json",
+  "backupRoot": "/Users/<redacted-user>/Library/Application Support/SpinonPreviewBackups/c13-3-ios-native-wheel-tailnet-sync-20261018/pass-2",
+  "count": 10,
+  "allHashesMatch": true,
+  "deletions": 0,
+  "files": [
+    {
+      "target": "/Users/<redacted-user>/Library/Application Support/SpinonPreview/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/pr-delta-review-20.html",
+      "backup": "/Users/<redacted-user>/Library/Application Support/SpinonPreviewBackups/c13-3-ios-native-wheel-tailnet-sync-20261018/pass-2/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/pr-delta-review-20.html",
+      "targetSha256": "d07f7770a38761b11d4a7f522e1af9a253b3063017fba527ff57fd215e9cc0a1",
+      "backupSha256": "d07f7770a38761b11d4a7f522e1af9a253b3063017fba527ff57fd215e9cc0a1",
+      "bytes": 35924
+    },
+    {
+      "target": "/Users/<redacted-user>/Library/Application Support/SpinonPreview/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/README.html",
+      "backup": "/Users/<redacted-user>/Library/Application Support/SpinonPreviewBackups/c13-3-ios-native-wheel-tailnet-sync-20261018/pass-2/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/README.html",
+      "targetSha256": "e96cf2f3705efdddcbac9b4e886620bcd2a670347f6bcfe056d4707ac86f2af1",
+      "backupSha256": "e96cf2f3705efdddcbac9b4e886620bcd2a670347f6bcfe056d4707ac86f2af1",
+      "bytes": 29570
+    },
+    {
+      "target": "/Users/<redacted-user>/Library/Application Support/SpinonPreview/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/pr-delta-review-20.html",
+      "backup": "/Users/<redacted-user>/Library/Application Support/SpinonPreviewBackups/c13-3-ios-native-wheel-tailnet-sync-20261018/pass-2/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/pr-delta-review-20.html",
+      "targetSha256": "4182d8b31161b71e5e4fc85d90215dc20d1da132ed888b366fef5adb3318459a",
+      "backupSha256": "4182d8b31161b71e5e4fc85d90215dc20d1da132ed888b366fef5adb3318459a",
+      "bytes": 35444
+    },
+    {
+      "target": "/Users/<redacted-user>/Library/Application Support/SpinonPreview/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/README.html",
+      "backup": "/Users/<redacted-user>/Library/Application Support/SpinonPreviewBackups/c13-3-ios-native-wheel-tailnet-sync-20261018/pass-2/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/README.html",
+      "targetSha256": "3a186da126e3ca3480bb505702c62158a200f4557a8c2b1bc3b2ed71df73a0bf",
+      "backupSha256": "3a186da126e3ca3480bb505702c62158a200f4557a8c2b1bc3b2ed71df73a0bf",
+      "bytes": 28596
+    },
+    {
+      "target": "/Users/<redacted-user>/Library/Application Support/SpinonPreview/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/README.md",
+      "backup": "/Users/<redacted-user>/Library/Application Support/SpinonPreviewBackups/c13-3-ios-native-wheel-tailnet-sync-20261018/pass-2/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/README.md",
+      "targetSha256": "d6d59b3bf9cd4f00ea649a05e1db46db8182363634859901bba0cb1956369324",
+      "backupSha256": "d6d59b3bf9cd4f00ea649a05e1db46db8182363634859901bba0cb1956369324",
+      "bytes": 2326
+    },
+    {
+      "target": "/Users/<redacted-user>/Library/Application Support/SpinonPreview/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/render-build-result.html",
+      "backup": "/Users/<redacted-user>/Library/Application Support/SpinonPreviewBackups/c13-3-ios-native-wheel-tailnet-sync-20261018/pass-2/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/render-build-result.html",
+      "targetSha256": "2f67d106ba24954cd17902deac5c5f2c23a0cb1696ee7cbc955c78c8cba1ef6f",
+      "backupSha256": "2f67d106ba24954cd17902deac5c5f2c23a0cb1696ee7cbc955c78c8cba1ef6f",
+      "bytes": 27061
+    },
+    {
+      "target": "/Users/<redacted-user>/Library/Application Support/SpinonPreview/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/render-build-result.md",
+      "backup": "/Users/<redacted-user>/Library/Application Support/SpinonPreviewBackups/c13-3-ios-native-wheel-tailnet-sync-20261018/pass-2/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/render-build-result.md",
+      "targetSha256": "ba3b7f896a8cf107d7ee1e81dfba19f367ccd73f9605958f6cfcb29abf79c7f4",
+      "backupSha256": "ba3b7f896a8cf107d7ee1e81dfba19f367ccd73f9605958f6cfcb29abf79c7f4",
+      "bytes": 1393
+    },
+    {
+      "target": "/Users/<redacted-user>/Library/Application Support/SpinonPreview/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/selected-build.log",
+      "backup": "/Users/<redacted-user>/Library/Application Support/SpinonPreviewBackups/c13-3-ios-native-wheel-tailnet-sync-20261018/pass-2/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/selected-build.log",
+      "targetSha256": "063019aa46656d809a8da7e8926a74a2f0574523fdbb57a4f872b02aca8e833d",
+      "backupSha256": "063019aa46656d809a8da7e8926a74a2f0574523fdbb57a4f872b02aca8e833d",
+      "bytes": 14528
+    },
+    {
+      "target": "/Users/<redacted-user>/Library/Application Support/SpinonPreview/internal/README.html",
+      "backup": "/Users/<redacted-user>/Library/Application Support/SpinonPreviewBackups/c13-3-ios-native-wheel-tailnet-sync-20261018/pass-2/internal/README.html",
+      "targetSha256": "db6045da73a8bf405da389c7bef8bc7bccc1a8d868430a9d993cdc31bf36eb8c",
+      "backupSha256": "db6045da73a8bf405da389c7bef8bc7bccc1a8d868430a9d993cdc31bf36eb8c",
+      "bytes": 169506
+    },
+    {
+      "target": "/Users/<redacted-user>/Library/Application Support/SpinonPreview/plan/c13-3-native-wheel-input.html",
+      "backup": "/Users/<redacted-user>/Library/Application Support/SpinonPreviewBackups/c13-3-ios-native-wheel-tailnet-sync-20261018/pass-2/plan/c13-3-native-wheel-input.html",
+      "targetSha256": "a26ae4395b4e9bd6e79536ca5b149188be6cb914dd5c13fc728a65e47066c87b",
+      "backupSha256": "a26ae4395b4e9bd6e79536ca5b149188be6cb914dd5c13fc728a65e47066c87b",
+      "bytes": 53503
+    }
+  ]
+}

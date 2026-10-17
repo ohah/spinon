@@ -1,0 +1,74 @@
+{
+  "createdAt": "2026-10-17T21:01:46Z",
+  "agentBrowser": "0.31.1",
+  "browser": "Chrome 155.0.8059.85 (headless)",
+  "session": "spinon-c133-tailnet-redacted-final-20261018",
+  "pages": [
+    {
+      "route": "Tailnet preview /spinon/plan/c13-3-native-wheel-input.html",
+      "httpStatus": 200,
+      "visualCheck": "The 2026-10-18 iPadOS Simulator native wheel preflight section is visible. It states loginwindow covered Simulator, no scroll event was sent, UIKit callback/source/sign were not observed, and C13.3 remains incomplete.",
+      "screenshot": "tailnet-plan-final-build-agent-browser.png",
+      "sha256": "948f69c23757987d33775ecf9fb2af2666d53250e18248a0b3205e3b58b0aba4",
+      "dimensions": "1280x633"
+    },
+    {
+      "route": "Tailnet preview /spinon/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/README.html",
+      "httpStatus": 200,
+      "renderedReviewLink": "./pr-delta-review-30.html",
+      "publicRedactionNoteVisible": true,
+      "embeddedImages": [
+        { "src": "/spinon/logo.svg", "complete": true, "naturalWidth": 150, "naturalHeight": 150 },
+        { "src": "/spinon/static/image/tailnet-plan-agent-browser.db4e196fca.png", "complete": true, "naturalWidth": 1280, "naturalHeight": 633 },
+        { "src": "/spinon/static/image/tailnet-preflight-agent-browser.96d4a82657.png", "complete": true, "naturalWidth": 1280, "naturalHeight": 2358 },
+        { "src": "/spinon/static/image/tailnet-search-agent-browser.e594141a4d.png", "complete": true, "naturalWidth": 1280, "naturalHeight": 633 }
+      ],
+      "screenshot": "tailnet-report-final-build-agent-browser.png",
+      "sha256": "c2ec493a1fc10f4c640d14879df9bfdcb7846caa131155a2624b6649434f0f33",
+      "dimensions": "1280x633"
+    },
+    {
+      "route": "Tailnet preview /spinon/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "httpStatus": 200,
+      "reviewItemCount": 30,
+      "privateProcessIdPresent": false,
+      "publicRedactionPointPresent": true,
+      "screenshot": "tailnet-review-30-final-agent-browser.png",
+      "sha256": "f97972b0c1e9daf0abd78b01891f8097ffdb43defca7887ee68c55e26e7a6717",
+      "dimensions": "1280x633"
+    }
+  ],
+  "search": {
+    "query": "C13.3",
+    "runtimeIndex": "static/search_index.ko.1f3cf248.json",
+    "runtimeIndexSha256": "1f3cf2482b09dadbdbed1e759b78a5d020aef067f64b19f9c22ba6c603a63b92",
+    "tailnetResponses": [200, 200],
+    "visibleResults": [
+      "C13.3 iPadOS native wheel 입력 사전 점검 · 2026-10-18",
+      "C13.3 iPadOS preflight 근거 PR 변경 관점 검토 20개 · 2026-10-18",
+      "C13.3 iPadOS native wheel Tailnet 미리보기 동기화 · 2026-10-18",
+      "C13.3 iPadOS preflight Tailnet 동기화 · PR 변경 관점 검토 30개"
+    ],
+    "screenshot": "tailnet-search-final-build-agent-browser.png",
+    "sha256": "0f23c4528793666a3a57f69347c4fcb2923108ce147a8f6ee44bc841febbdce9",
+    "dimensions": "1280x633",
+    "networkLog": "agent-browser-network-final-build.log",
+    "previousIndexFix": {
+      "asset": "static/search_index.ko.7ebea52c.json",
+      "initialStatus": 404,
+      "copiedStatus": 200,
+      "evidence": "agent-browser-network-before-search-index-fix.log and search-index-fix-verification.json"
+    }
+  },
+  "preflightSourceImage": {
+    "route": "/spinon/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/initial-launch.png",
+    "naturalWidth": 2064,
+    "naturalHeight": 2752
+  },
+  "limitations": [
+    "No iOS native scroll input was sent during this verification.",
+    "UIKit callback/source/translation sign and the iOS adapter remain unverified; C13.3 remains incomplete.",
+    "No physical device or terminal-browser was used."
+  ],
+  "redactions": ["personal Tailnet DNS name", "user account and checkout paths", "process IDs", "Chrome profile suffixes"]
+}
