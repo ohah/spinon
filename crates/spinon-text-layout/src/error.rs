@@ -9,6 +9,31 @@ pub enum TextLayoutError {
     MissingFontFamily(String),
     InvalidFontData(String),
     FontRevisionOverflow,
+    StaleFontRegistryRevision {
+        expected: crate::FontRegistryRevision,
+        actual: crate::FontRegistryRevision,
+    },
+    ForeignFontRegistrySnapshot,
+    InvalidRasterScale,
+    RasterFontSizeOutOfRange {
+        paragraph: NodeId,
+        font_family: String,
+    },
+    MissingRasterFont(String),
+    InvalidRasterFont(String),
+    GlyphRasterizationFailed {
+        paragraph: NodeId,
+        glyph_id: u32,
+    },
+    InvalidGlyphBitmap {
+        paragraph: NodeId,
+        glyph_id: u32,
+    },
+    RasterSnapshotTooLarge {
+        paragraph: NodeId,
+        max_bytes: usize,
+    },
+    RasterAllocationFailed(NodeId),
     InvalidGlyphLayout(NodeId),
     MissingGlyphCoverage {
         paragraph: NodeId,
@@ -45,6 +70,61 @@ impl fmt::Display for TextLayoutError {
                 )
             }
             Self::FontRevisionOverflow => write!(formatter, "font registry revision이 넘쳤습니다"),
+            Self::StaleFontRegistryRevision { expected, actual } => write!(
+                formatter,
+                "text snapshot font registry revision이 다릅니다: expected={}, actual={}",
+                expected.0, actual.0
+            ),
+            Self::ForeignFontRegistrySnapshot => {
+                formatter.write_str("text snapshot이 다른 font registry에서 만들어졌습니다")
+            }
+            Self::InvalidRasterScale => {
+                formatter.write_str("glyph raster scale은 0보다 크고 64 이하인 유한값이어야 합니다")
+            }
+            Self::RasterFontSizeOutOfRange {
+                paragraph,
+                font_family,
+            } => write!(
+                formatter,
+                "paragraph {paragraph}의 '{font_family}' raster pixel size가 지원 범위를 넘었습니다"
+            ),
+            Self::MissingRasterFont(family) => {
+                write!(
+                    formatter,
+                    "'{family}' font raster source가 등록되지 않았습니다"
+                )
+            }
+            Self::InvalidRasterFont(family) => {
+                write!(
+                    formatter,
+                    "'{family}' font raster source를 읽을 수 없습니다"
+                )
+            }
+            Self::GlyphRasterizationFailed {
+                paragraph,
+                glyph_id,
+            } => write!(
+                formatter,
+                "paragraph {paragraph}의 glyph {glyph_id}를 rasterize하지 못했습니다"
+            ),
+            Self::InvalidGlyphBitmap {
+                paragraph,
+                glyph_id,
+            } => write!(
+                formatter,
+                "paragraph {paragraph}의 glyph {glyph_id} bitmap 크기 또는 pixel 형식이 유효하지 않습니다"
+            ),
+            Self::RasterSnapshotTooLarge {
+                paragraph,
+                max_bytes,
+            } => write!(
+                formatter,
+                "paragraph {paragraph}의 glyph raster snapshot이 {max_bytes} byte 제한을 넘었습니다"
+            ),
+            Self::RasterAllocationFailed(paragraph) => write!(
+                formatter,
+                "paragraph {paragraph}의 glyph raster 결과 메모리를 예약하지 못했습니다"
+            ),
             Self::InvalidGlyphLayout(node) => {
                 write!(
                     formatter,

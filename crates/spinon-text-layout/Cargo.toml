@@ -7,6 +7,7 @@ publish = false
 [dependencies]
 linebender_resource_handle = "=0.1.1"
 parley = { version = "=0.12.0", default-features = false, features = ["std"] }
+swash = { version = "=0.2.10", default-features = false, features = ["render", "scale", "std"] }
 spinon-core = { path = "../spinon-core" }
 
 [lints.rust]

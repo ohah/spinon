@@ -1,4 +1,4 @@
-use std::ops::Range;
+use std::{ops::Range, sync::Arc};
 
 use spinon_core::NodeId;
 
@@ -7,6 +7,20 @@ use crate::{LigatureMode, LineBreakMode, TextDirection};
 /// 같은 font registry 입력에서 생성한 revision입니다.
 #[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
 pub struct FontRegistryRevision(pub u64);
+
+/// 같은 font registry가 복제된 engine 사이에서 공유하는 identity입니다.
+#[derive(Clone, Debug)]
+pub(crate) struct FontRegistryToken(Arc<()>);
+
+impl FontRegistryToken {
+    pub(crate) fn new() -> Self {
+        Self(Arc::new(()))
+    }
+
+    pub(crate) fn matches(&self, other: &Self) -> bool {
+        Arc::ptr_eq(&self.0, &other.0)
+    }
+}
 
 /// shaped run에서 보존한 글꼴 metrics입니다.
 #[derive(Clone, Copy, Debug, Default, PartialEq)]
@@ -86,10 +100,11 @@ pub struct InlineFragment {
 }
 
 /// Taffy measure와 최종 layout이 같은 width에서 사용해야 하는 immutable 결과입니다.
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Clone, Debug)]
 pub struct TextLayoutSnapshot {
     pub paragraph: NodeId,
     pub font_registry_revision: FontRegistryRevision,
+    pub(crate) font_registry_token: FontRegistryToken,
     pub available_width: f32,
     pub direction: TextDirection,
     pub line_break: LineBreakMode,
@@ -101,4 +116,22 @@ pub struct TextLayoutSnapshot {
     pub lines: Vec<TextLine>,
     pub runs: Vec<TextRun>,
     pub inline_fragments: Vec<InlineFragment>,
+}
+
+impl PartialEq for TextLayoutSnapshot {
+    fn eq(&self, other: &Self) -> bool {
+        self.paragraph == other.paragraph
+            && self.font_registry_revision == other.font_registry_revision
+            && self.available_width == other.available_width
+            && self.direction == other.direction
+            && self.line_break == other.line_break
+            && self.ligatures == other.ligatures
+            && self.width == other.width
+            && self.height == other.height
+            && self.text == other.text
+            && self.sources == other.sources
+            && self.lines == other.lines
+            && self.runs == other.runs
+            && self.inline_fragments == other.inline_fragments
+    }
 }
