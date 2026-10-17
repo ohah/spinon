@@ -23,7 +23,7 @@
 | 17 | APK/app executable hash가 빠지거나 양 플랫폼 hash가 뒤바뀌는지 | Android APK와 iOS executable hash를 플랫폼별 summary와 실행 README에 기록했다. |
 | 18 | V8 dependency revision을 움직이는 checkout에서 추적 가능한지 | 두 summary가 공통 V8 revision 7b50b62cb18f28617959e8452e2cd18195b38bcf를 기록한다. |
 | 19 | PR 화면 링크가 Chrome oracle와 앱 화면을 섞는지 | oracle screenshot과 Android/iOS app screenshot을 별도 제목·path로 제시하도록 PR 본문을 구성한다. |
-| 20 | PR image URL이 로컬 경로 또는 잘못된 이미지 확장자를 가리키는지 | push 후 branch의 raw.githubusercontent.com PNG 경로를 사용하고 Agent Browser에서 실제 이미지 load를 확인한다. |
+| 20 | PR image URL이 로컬 경로 또는 잘못된 이미지 확장자를 가리키는지 | 통과. push한 branch의 Android PNG와 iOS PNG raw URL을 Agent Browser에서 직접 열었다. 각각 complete=true이며 natural size 1080×2400, 1206×2622로 로드됐다. |
 | 21 | artifact manifests가 source screenshot을 빠뜨리는지 | 최종 Android/iOS run 폴더마다 artifacts.sha256을 보존하고 README에서 링크한다. |
 | 22 | 화면 캡처 크기·surface PNG 크기가 확인되지 않는지 | capture script dimension check와 각 evidence README에 검증된 실제 dimensions를 남겼다. |
 | 23 | 실패한 이전 캡처 산출물이 성공 근거로 stage되는지 | PR stage 목록은 postcommit 최종 run 두 디렉터리만 포함한다. 이전 실패 artifact는 untracked로 남기고 stage하지 않는다. |
@@ -37,4 +37,4 @@
 
 ## 발견 사항
 
-차단 결함은 남지 않았다. 화면 첨부는 실제 원격 raw image URL을 Agent Browser로 열어 load를 확인한 뒤 PR 본문에 포함한다. 원격 PR 생성 이후 CI, review decision, mergeability는 이 정적 diff 검토의 판정과 구분해 기록한다.
+차단 결함은 남지 않았다. 검증한 두 원격 화면을 PR 본문에 inline 첨부한다. 원격 PR 생성 이후 CI, review decision, mergeability는 이 정적 diff 검토의 판정과 구분해 기록한다.
