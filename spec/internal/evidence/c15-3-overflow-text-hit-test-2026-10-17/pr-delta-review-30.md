@@ -29,8 +29,8 @@
 | 23 | iOS 결과가 화면 screenshot만으로 surface pixel을 주장한다 | 근거는 compositor 전 Metal drawable의 `Bgra8Unorm` pixel log와 분리된 screenshot이다. 통과. |
 | 24 | simulator 로그를 실기기·하드웨어 GPU·compositor 증거로 부풀린다 | README는 Android AVD/iOS Simulator 한계와 compositor 전 표본을 명시한다. 통과. |
 | 25 | iOS dSYM 공간 부족의 실패가 최종 build 상태를 모호하게 한다 | 첫 실패 로그를 별도 보존했고 최종 `ios-build.txt`는 `BUILD SUCCEEDED`, 재실행 log는 새 앱 PID를 기록한다. 통과. |
-| 26 | 캡처 PNG가 없거나 텍스트 로그를 이미지 링크로 연결한다 | Android/iOS screen 및 Android PixelCopy PNG 파일과 파일 형식을 확인했다. 통과. |
-| 27 | Rust 결과가 전체 workspace 또는 0 ignored 통과로 오해된다 | FFI feature test 47 passed, 2 ignored와 focused 3 passed 범위를 README에 구분했다. 통과. |
+| 26 | PR 화면 링크 중 일부가 404여서 동작 화면이 빠진다 | Agent Browser에서 처음 iOS image URL의 branch 경로 오타로 404를 확인하고 direct raw URL로 고쳤다. 최종 Android screen 1080×2400, Android PixelCopy 945×630, iOS screen 1206×2622가 모두 로드됐다. [검증 JSON](./pr-images-agent-browser.json). 통과. |
+| 27 | Rust 결과가 전체 workspace 또는 0 ignored 통과로 오해된다 | FFI feature test 47 passed, 2 ignored이고 C15.3 fixture 3개가 같은 실행에서 통과했다고 README에 구분했다. 통과. |
 | 28 | Clippy/rustfmt 결과가 실행하지 않은 전체 CI를 뜻한다 | README는 명령을 특정 feature/targets로 기록하며 CI 전체 통과를 주장하지 않는다. 통과. |
 | 29 | 다른 작업자의 shared checkout 변경이 PR에 섞인다 | 변경은 `origin/main` SHA `c41a95c5fa06470f6984968276913eaeffc95d7e`에서 만든 격리 worktree에만 있다. 통과. |
 | 30 | PR 병합 방식이 프로젝트 정책과 달라지거나 main에 직접 push한다 | 변경을 작업 브랜치 PR로 제출하고 checks/merge 상태 확인 후 Rebase and merge만 사용한다. 통과. |
