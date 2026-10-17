@@ -7,7 +7,9 @@
 
 ## 목적과 현재 범위
 
-기존 `RuntimeSession::new()`의 빈 `HostDocument` 동작을 유지하면서, 호스트가 전달한 UTF-8 HTML document를 표준 HTML5 tree construction으로 파싱해 V8 `document`와 HostDocument cascade 입력으로 사용한다. HTML source 안의 `<script>`는 실행하지 않는다. Android/iOS 기본 앱은 bundle의 `index.html`을 새 root-HTML session에 전달하고 별도 `root-app.js`를 같은 session에서 평가한다. 이 계약은 HTML document tree와 `documentElement`·`head`·`body` 접근만 정의하며 `meta viewport`와 `meta color-scheme`의 효과는 정의하지 않는다. viewport·color-scheme metadata 적용, OS 설정 수집, page-scale transform, UA Canvas 색상과 HTML paint는 미지원이다.
+기존 `RuntimeSession::new()`의 빈 `HostDocument` 동작을 유지하면서, 호스트가 전달한 UTF-8 HTML document를 표준 HTML5 tree construction으로 파싱해 V8 `document`와 HostDocument cascade 입력으로 사용한다. HTML source 안의 `<script>`는 실행하지 않는다. Android/iOS 기본 앱은 bundle의 `index.html`을 새 root-HTML session에 전달하고 별도 `root-app.js`를 같은 session에서 평가한다. 현재 구현은 viewport와 color-scheme metadata를 DOM에 보존할 뿐 환경에 적용하지 않는다. 아래 초기 metadata profile은 이 계약의 다음 구현 slice를 정의한다. 구현과 Simulator evidence가 병합되기 전까지 앱 환경 적용은 미지원이다.
+
+첫 metadata 환경 slice는 호스트가 전달한 모바일 surface 크기·device scale·OS 색상 선호를 입력으로 받아 root HTML의 viewport와 color-scheme 선언을 별도 typed snapshot으로 해석한다. 구현 목표는 해석된 layout viewport와 OS 선호를 CSS cascade 환경에 전달하는 것이다. `initial-scale`은 page scale 값으로 별도 보존하지만 이 slice에서는 renderer transform에 적용하지 않는다. 문서가 지원하는 scheme과 OS 선호도 서로 다른 값으로 유지한다. 이 slice는 기본 Canvas 색상, CSS `color-scheme` cascade 우선순위, form control theme 또는 HTML paint를 지원 완료로 만들지 않는다.
 
 ## 입력과 parser 제한
 
@@ -27,8 +29,19 @@
 - 기본 app `root-app.js`는 루트 `lang`, head/body 부모 관계, viewport와 color-scheme metadata node/content, root style text, body content를 실제 V8에서 읽는다. 이후 `data-runtime` attribute를 설정하고 같은 session에서 다시 읽는다. 이 assertion은 parser가 metadata element를 DOM으로 보존하는지만 확인하며 viewport·OS scheme·computed CSS·Canvas·화면에 적용되는 효과를 확인하지 않는다.
 - C04.11에 포함된 연결 `<style>` 수집은 같은 HostDocument tree를 사용한다. `documentElement`의 CSS `:root` 의미, UA root blockification과 body/root layout은 별도 검증 전까지 보장하지 않는다.
 
+## 초기 viewport·color-scheme metadata 환경
+
+- Metadata는 parser가 만든 동일 HTML document의 HTML namespace `<head>` 안 `<meta>` 요소에서 수집한다. 태그와 속성 이름 및 지원 키워드는 ASCII 대소문자를 구분하지 않는다. `content` 값의 원문 attribute는 DOM에 계속 보존한다.
+- 호스트 입력은 surface pixel width/height, 양수 유한 `deviceScaleFactor`, OS의 light/dark 선호와 pointer capability다. surface pixel 크기를 device scale로 나눈 값을 metadata 적용 전의 모바일 screen CSS 크기로 사용한다. CSS layout viewport, device scale과 page scale은 별도 값이다.
+- 이 slice의 viewport descriptor allowlist는 `width=device-width`, 양수 CSS px `width`, 양수 `initial-scale`이다. `content`는 comma/semicolon 구분을 허용하며, 같은 element 안에 descriptor가 반복되면 마지막 유효 값이 앞선 값을 대체한다. 여러 viewport `<meta>`가 있으면 마지막 요소를 사용한다. 이 duplicate element 규칙은 [고정 Chrome 155 사전 비교 fixture](./evidence/c04-root-html-document-environment-2026-10-17/mobile-duplicate-width.html)의 관찰에 한정한다. 지원하지 않는 descriptor는 무시하고, 유효하지 않은 width/scale 값은 그 descriptor만 생략해 기본 계산을 유지한다.
+- viewport metadata가 없으면 모바일 기본 layout width는 `980 CSS px`이고 page scale은 `min(screenWidth / 980, 1)`이다. `width=device-width`는 screen CSS width를 요청한다. 고정 width는 initial scale 적용 후 screen CSS 폭보다 좁은 layout viewport를 만들지 않도록 확장한다. layout height는 `screenHeight / pageScale`이다. 이 계산은 [사전 비교 행렬](./evidence/c04-root-html-document-environment-2026-10-17/README.md)에 기록한 no-meta, device width, `width=320, initial-scale=1`, `initial-scale=0.5` 표본에 대해 Chrome 결과와 정확히 비교한다. metadata가 desktop surface에 미치는 동작과 pinch zoom은 이 slice에서 정의하지 않는다.
+- `meta name="color-scheme"`은 `<head>`에서 첫 요소만 선택한다. `content`에서 지원하는 목록은 `light`, `dark`, `only light`, `only dark`다. 목록에 OS 선호가 있으면 그 scheme을 initial document scheme으로 선택하고, `only`는 지정된 scheme을 선택한다. 값이 비어 있거나 지원되지 않으면 initial document scheme은 light다. 이는 UA 초기 scheme 선택 결과이지 OS 선호가 아니다.
+- `CssMediaEnvironment.color_scheme`과 `prefers-color-scheme`는 계속 native OS/user preference만 반영한다. 문서의 metadata가 `dark`여도 OS가 light면 `(prefers-color-scheme: light)`가 참이고, Canvas의 dark theme 선택은 이후 UA paint 연결 범위다. `:root { color-scheme: ... }`와 meta 선언의 cascade 우선순위도 이후 CSS/UA color integration 단계에서 정한다.
+- Root HTML session은 viewport metadata를 적용한 CSS viewport와 호스트 `deviceScaleFactor`·media environment로 cascade를 재요청한다. `pageScale`은 diagnostic/runtime environment snapshot에 별도로 남기며 surface transform을 변경하지 않는다. resize 또는 native scheme 변경이 새 환경 revision을 만들 때 같은 document revision의 새 cascade가 완료되어야 한다.
+- 이 단계의 실행 근거는 metadata typed snapshot, `@media` width/`prefers-color-scheme` 결과 및 environment revision을 구분한다. layout viewport가 적용됐다는 사실만으로 page zoom, Canvas color, HTML rendering, screenshot equivalence를 주장하지 않는다.
+
 ## 오류·검증 경계
 
 - 잘못된 UTF-8, source/node/depth budget 초과, quirks mode, unsupported namespaced attribute, HostDocument quota 및 parser/tree 변환 오류는 세션 생성 실패다. source 일부만 화면에 게시하지 않는다.
-- 이 제한 계약은 앱이 받은 임의 HTML 전체의 WHATWG conformance, HTML metadata 의미, CSS layout·paint 동등성을 뜻하지 않는다.
+- 이 제한 계약은 앱이 받은 임의 HTML 전체의 WHATWG conformance, 위 allowlist 밖 metadata 의미, page zoom, CSS layout·paint 동등성을 뜻하지 않는다.
 - parser 제한의 기존 검증은 tree-construction fixtures, C API validation, JavaScript-only session 경계와 opt-in 실제 V8 document getter를 포함한다. [고정 HTML 직접 전달 Android 캡처](https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-root-html-document-environment-2026-10-17/android-api37-root-html-accessors.png) · [iOS 캡처](https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-root-html-document-environment-2026-10-17/ios-iphone17pro-root-html-accessors.png). 이전 opt-in bundle asset 경로는 [Android 캡처](https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-root-html-document-environment-2026-10-17/android-api37-root-html-asset.png)와 [iOS 캡처](https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-root-html-document-environment-2026-10-17/ios-iphone17pro-root-html-asset.png)에 있다. 기본 앱 경로는 [Android API 37 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 실행 근거](./evidence/c04-12-root-html-default-app-2026-10-17/README.md)를 참조한다. 이 실행은 bundled `index.html`을 V8 document로 초기화하고 별도 JS에서 DOM getter·metadata 보존·attribute mutation을 확인한다. Simulator 화면은 빈 네이티브 host이며 HTML paint가 아니다. viewport/page-scale, OS color preference, `prefers-color-scheme`, meta/CSS color-scheme 효과, UA Canvas와 HTML rendering은 계속 미지원이므로 C04.12 완료 기준에 미달한다.
