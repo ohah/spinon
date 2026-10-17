@@ -1,0 +1,3 @@
+--------- beginning of main
+10-18 08:38:15.380 16389 16409 E SpinonBootstrap: SPINON_C141_NATIVE_ERROR code=-2 report={"detail":"parsed root HTML CSS layout: 노드 15의 display 값 \"inline\"를 layout profile이 지원하지 않습니다; main.display=Some(\"inline\"); img.display=Some(\"block\")","status":"error"}
+10-18 08:38:15.380 16389 16409 E SpinonBootstrap: SPINON_C141_APP_FIXTURE {"detail":"parsed root HTML CSS layout: 노드 15의 display 값 \"inline\"를 layout profile이 지원하지 않습니다; main.display=Some(\"inline\"); img.display=Some(\"block\")","status":"error"}

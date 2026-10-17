@@ -1235,27 +1235,38 @@ public final class MainActivity extends Activity {
         if (!passed) return "C14.1 · 앱 fixture 실패\n\n" + report;
         try {
             JSONObject result = new JSONObject(report);
-            JSONArray natural = result.optJSONArray("natural_size_css_px");
-            JSONArray frame = result.optJSONArray("frame_css_px");
-            String naturalSize = c141Pair(natural);
-            String frameSize = frame == null || frame.length() < 4
-                    ? "확인할 수 없음"
-                    : "x=" + c141Number(frame.optDouble(0))
-                            + ", y=" + c141Number(frame.optDouble(1))
-                            + "\nwidth=" + c141Number(frame.optDouble(2))
-                            + ", height=" + c141Number(frame.optDouble(3));
+            JSONObject eval = result.optJSONObject("live_v8_eval");
+            JSONObject parsed = result.optJSONObject("parsed_root_html_v8");
+            if (eval == null || parsed == null) {
+                return "C14.1 · 앱 fixture report 경로 누락\n\n" + report;
+            }
             return "C14.1 · 앱 fixture report\n\n"
-                    + "PASS · Chrome 155 oracle 일치\n\n"
-                    + "PNG natural size\n" + naturalSize + " CSS px\n\n"
-                    + "img layout frame\n" + frameSize + " CSS px\n\n"
-                    + "HostDocument / intrinsic revision\n"
-                    + (result.optBoolean("intrinsic_source_matches")
-                            && result.optBoolean("intrinsic_revision_matches")
-                            ? "일치" : "불일치")
+                    + "PASS · 두 입력 경로가 Chrome 155 oracle과 일치\n\n"
+                    + "JavaScript 생성 DOM\n" + c141Measurement(eval) + "\n\n"
+                    + "파싱된 루트 HTML\n" + c141Measurement(parsed)
+                    + "\n\nHTML parser → 초기 V8 document → HostDocument snapshot"
+                    + "\n외부 fetch / 이미지 paint는 검사하지 않음"
                     + "\n\nViewport\n120 × 80 CSS px";
         } catch (JSONException malformed) {
             return "C14.1 · 앱 fixture report 해석 실패\n\n" + report;
         }
+    }
+
+    private String c141Measurement(JSONObject result) {
+        JSONArray natural = result.optJSONArray("natural_size_css_px");
+        JSONArray frame = result.optJSONArray("frame_css_px");
+        String frameSize = frame == null || frame.length() < 4
+                ? "확인할 수 없음"
+                : "x=" + c141Number(frame.optDouble(0))
+                        + ", y=" + c141Number(frame.optDouble(1))
+                        + ", width=" + c141Number(frame.optDouble(2))
+                        + ", height=" + c141Number(frame.optDouble(3));
+        boolean revisionsMatch = result.optBoolean("intrinsic_source_matches")
+                && result.optBoolean("intrinsic_revision_matches");
+        return "natural=" + c141Pair(natural) + " CSS px"
+                + "\nframe=" + frameSize + " CSS px"
+                + "\nsource/revision=" + (revisionsMatch ? "일치" : "불일치")
+                + "\nstatus=" + result.optString("status", "missing");
     }
 
     private String c141Pair(JSONArray values) {

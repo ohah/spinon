@@ -1007,27 +1007,36 @@ private final class C141IntrinsicSizeFixtureViewController: UIViewController {
         guard passed,
               let data = jsonReport.data(using: .utf8),
               let value = try? JSONSerialization.jsonObject(with: data),
-              let result = value as? [String: Any]
+              let result = value as? [String: Any],
+              let eval = result["live_v8_eval"] as? [String: Any],
+              let parsed = result["parsed_root_html_v8"] as? [String: Any]
         else {
             return "C14.1 · 앱 fixture 실패\n\n\(report)"
         }
-        let naturalSize = pair(result["natural_size_css_px"] as? [NSNumber])
+        return "C14.1 · 앱 fixture report\n\n"
+            + "PASS · 두 입력 경로가 Chrome 155 oracle과 일치\n\n"
+            + "JavaScript 생성 DOM\n\(measurement(eval))\n\n"
+            + "파싱된 루트 HTML\n\(measurement(parsed))\n\n"
+            + "HTML parser → 초기 V8 document → HostDocument snapshot\n"
+            + "외부 fetch / 이미지 paint는 검사하지 않음\n\n"
+            + "Viewport\n120 × 80 CSS px"
+    }
+
+    private func measurement(_ result: [String: Any]) -> String {
+        let natural = pair(result["natural_size_css_px"] as? [NSNumber])
         let frame = result["frame_css_px"] as? [NSNumber]
         let frameDescription: String
         if let frame, frame.count >= 4 {
-            frameDescription = "x=\(number(frame[0])) · y=\(number(frame[1]))\n"
+            frameDescription = "x=\(number(frame[0])) · y=\(number(frame[1])) · "
                 + "width=\(number(frame[2])) · height=\(number(frame[3]))"
         } else {
             frameDescription = "확인할 수 없음"
         }
         let revisionsMatch = (result["intrinsic_source_matches"] as? Bool == true)
             && (result["intrinsic_revision_matches"] as? Bool == true)
-        return "C14.1 · 앱 fixture report\n\n"
-            + "PASS · Chrome 155 oracle 일치\n\n"
-            + "PNG natural size\n\(naturalSize) CSS px\n\n"
-            + "img layout frame\n\(frameDescription) CSS px\n\n"
-            + "HostDocument / intrinsic revision\n\(revisionsMatch ? "일치" : "불일치")\n\n"
-            + "Viewport\n120 × 80 CSS px"
+        let status = result["status"] as? String ?? "missing"
+        return "natural=\(natural) CSS px\nframe=\(frameDescription) CSS px\n"
+            + "source/revision=\(revisionsMatch ? "일치" : "불일치") · status=\(status)"
     }
 
     private func pair(_ values: [NSNumber]?) -> String {
