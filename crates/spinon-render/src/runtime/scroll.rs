@@ -1,4 +1,4 @@
-use std::sync::Arc;
+use std::{collections::BTreeSet, sync::Arc};
 
 use spinon_core::NodeId;
 
@@ -310,13 +310,17 @@ pub(super) fn apply_scroll_state(
     Ok(boxes)
 }
 
-fn scroll_offset_sum(
+pub(super) fn scroll_offset_sum(
     ancestors: &[NodeId],
     offsets: &std::collections::BTreeMap<NodeId, (f32, f32)>,
 ) -> Result<(f32, f32), RuntimeRenderError> {
     let mut x = 0.0_f32;
     let mut y = 0.0_f32;
+    let mut seen = BTreeSet::new();
     for ancestor in ancestors {
+        if !seen.insert(*ancestor) {
+            return Err(RuntimeRenderError::InvalidScrollState);
+        }
         let Some((offset_x, offset_y)) = offsets.get(ancestor).copied() else {
             return Err(RuntimeRenderError::InvalidScrollState);
         };

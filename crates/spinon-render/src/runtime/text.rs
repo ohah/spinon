@@ -81,10 +81,13 @@ impl RuntimeGlyphBitmap {
 pub struct RuntimeRenderText {
     node_id: NodeId,
     source: RuntimeRenderKey,
+    base_origin_x_css_px: f32,
+    base_origin_y_css_px: f32,
     origin_x_css_px: f32,
     origin_y_css_px: f32,
     device_scale_factor: f32,
     color: RuntimeSrgbColor,
+    base_clip_css_px: CssClip,
     clip_css_px: CssClip,
     glyphs: Arc<[RuntimeGlyphBitmap]>,
 }
@@ -119,10 +122,13 @@ impl RuntimeRenderText {
         Ok(Self {
             node_id,
             source,
+            base_origin_x_css_px: origin_x_css_px,
+            base_origin_y_css_px: origin_y_css_px,
             origin_x_css_px,
             origin_y_css_px,
             device_scale_factor,
             color,
+            base_clip_css_px: clip_css_px,
             clip_css_px,
             glyphs: glyphs.into(),
         })
@@ -156,8 +162,21 @@ impl RuntimeRenderText {
         self.clip_css_px
     }
 
-    pub(super) fn intersect_owner_clip(&mut self, owner_clip_css_px: CssClip) {
-        self.clip_css_px = self.clip_css_px.intersect(owner_clip_css_px);
+    pub(super) fn apply_scroll_transform(
+        &mut self,
+        scroll_x_css_px: f32,
+        scroll_y_css_px: f32,
+        owner_clip_css_px: CssClip,
+    ) -> Result<(), RuntimeRenderError> {
+        let origin_x_css_px = self.base_origin_x_css_px - scroll_x_css_px;
+        let origin_y_css_px = self.base_origin_y_css_px - scroll_y_css_px;
+        if !origin_x_css_px.is_finite() || !origin_y_css_px.is_finite() {
+            return Err(RuntimeRenderError::InvalidTextGeometry);
+        }
+        self.origin_x_css_px = origin_x_css_px;
+        self.origin_y_css_px = origin_y_css_px;
+        self.clip_css_px = self.base_clip_css_px.intersect(owner_clip_css_px);
+        Ok(())
     }
 
     pub fn glyphs(&self) -> &[RuntimeGlyphBitmap] {

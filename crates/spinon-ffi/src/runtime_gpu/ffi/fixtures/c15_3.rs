@@ -53,10 +53,10 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture(
 }
 
 #[unsafe(no_mangle)]
-/// 다음 C15.3 draw에서 실제 drawable의 고정 glyph-overflow 표본 3개를 읽도록 요청합니다.
+/// 다음 C15.3 draw에서 실제 drawable의 고정 overflow/scroll 표본 6개를 읽도록 요청합니다.
 ///
 /// # Safety
-/// `host`는 살아 있는 C15.3 readback fixture host여야 합니다. `sample_xy`는 정확히 6개의
+/// `host`는 살아 있는 C15.3 readback fixture host여야 합니다. `sample_xy`는 정확히 12개의
 /// 읽기 가능한 `u32`를 호출 중 유지해야 합니다. 호출 중 host 해제나 동시 호출은 허용하지
 /// 않으며 `output`은 `output_capacity` 바이트를 쓸 수 있어야 합니다.
 pub unsafe extern "C" fn spinon_runtime_gpu_host_request_c15_3_surface_pixels_for_test(
@@ -69,10 +69,10 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_request_c15_3_surface_pixels_fo
     if output.is_null() || output_capacity == 0 {
         return ERR_ARGUMENT;
     }
-    if sample_count != 3 {
+    if sample_count != 6 {
         return write_host_status(
             ERR_ARGUMENT,
-            format!("C15.3 surface 표본 수는 정확히 3개여야 합니다: {sample_count}"),
+            format!("C15.3 surface 표본 수는 정확히 6개여야 합니다: {sample_count}"),
             output,
             output_capacity,
         );
@@ -93,13 +93,12 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_request_c15_3_surface_pixels_fo
             output_capacity,
         );
     };
-    // SAFETY: 표본 수를 3개로 제한했고 포인터 범위는 호출자 계약에 따른다.
+    // SAFETY: 표본 수를 6개로 제한했고 포인터 범위는 호출자 계약에 따른다.
     let values = unsafe { std::slice::from_raw_parts(sample_xy, value_count) };
-    let points = [
-        (values[0], values[1]),
-        (values[2], values[3]),
-        (values[4], values[5]),
-    ];
+    let points = values
+        .chunks_exact(2)
+        .map(|point| (point[0], point[1]))
+        .collect::<Vec<_>>();
     let Some(host) = raw_host(host) else {
         return write_host_status(
             ERR_ARGUMENT,
@@ -158,20 +157,22 @@ mod tests {
     }
 
     #[test]
-    fn c15_3_surface_readback_rejects_unbounded_sample_counts() {
+    fn c15_3_surface_readback_accepts_only_the_six_bounded_fixture_samples() {
         let mut output = [0_i8; 128];
-        let points = [0_u32; 8];
-        assert_eq!(
-            unsafe {
-                spinon_runtime_gpu_host_request_c15_3_surface_pixels_for_test(
-                    ptr::null_mut(),
-                    points.as_ptr(),
-                    4,
-                    output.as_mut_ptr(),
-                    output.len(),
-                )
-            },
-            -1
-        );
+        let points = [0_u32; 14];
+        for sample_count in [4, 7] {
+            assert_eq!(
+                unsafe {
+                    spinon_runtime_gpu_host_request_c15_3_surface_pixels_for_test(
+                        ptr::null_mut(),
+                        points.as_ptr(),
+                        sample_count,
+                        output.as_mut_ptr(),
+                        output.len(),
+                    )
+                },
+                -1
+            );
+        }
     }
 }

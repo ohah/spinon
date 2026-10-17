@@ -312,7 +312,44 @@ fn text_rejects_scroll_ancestor_metadata_without_a_matching_container() {
 }
 
 #[test]
-fn text_inside_a_scrolled_overflow_owner_still_requires_scroll_transform_support() {
+fn snapshot_rejects_duplicate_scroll_ancestor_metadata_instead_of_double_moving() {
+    let parent = NodeId::new(1).unwrap();
+    let text_owner = NodeId::new(2).unwrap();
+    let key = key();
+    let parent_frame = CssRect::new(0.0, 0.0, 8.0, 8.0).unwrap();
+    let owner_frame = CssRect::new(0.0, 0.0, 16.0, 8.0).unwrap();
+    let boxes = vec![
+        RuntimeRenderBox::new(parent, parent_frame, RuntimePaint::None, 0),
+        RuntimeRenderBox::new(text_owner, owner_frame, RuntimePaint::None, 1),
+    ];
+    let scroll =
+        super::RuntimeScrollContainer::new(parent, parent_frame, 16.0, 8.0, 3.0, 0.0).unwrap();
+    let metadata = vec![
+        super::RuntimeScrollRenderMetadata::new(parent_frame, Vec::new(), Vec::new()),
+        super::RuntimeScrollRenderMetadata::new(owner_frame, vec![parent, parent], Vec::new()),
+    ];
+    let result = RuntimeRenderSnapshot::new_with_scroll_metadata_texts_and_paint_commands(
+        key,
+        CssSize::new(16.0, 8.0).unwrap(),
+        boxes,
+        vec![scroll],
+        metadata,
+        vec![text(text_owner, key)],
+        vec![
+            RuntimePaintCommand::DrawBox { index: 0 },
+            RuntimePaintCommand::DrawBox { index: 1 },
+            RuntimePaintCommand::DrawText { index: 0 },
+        ],
+    );
+
+    assert!(matches!(
+        result,
+        Err(RuntimeRenderError::InvalidScrollState)
+    ));
+}
+
+#[test]
+fn text_inside_a_scrolled_horizontal_ancestor_moves_and_resets_from_base_origin() {
     let parent = NodeId::new(1).unwrap();
     let text_owner = NodeId::new(2).unwrap();
     let key = key();
@@ -324,7 +361,7 @@ fn text_inside_a_scrolled_overflow_owner_still_requires_scroll_transform_support
         RuntimeRenderBox::new(text_owner, owner_frame, RuntimePaint::None, 1).with_clip(clip),
     ];
     let scroll =
-        super::RuntimeScrollContainer::new(parent, parent_frame, 16.0, 8.0, 1.0, 0.0).unwrap();
+        super::RuntimeScrollContainer::new(parent, parent_frame, 16.0, 8.0, 3.0, 0.0).unwrap();
     let metadata = vec![
         super::RuntimeScrollRenderMetadata::new(
             parent_frame,
@@ -351,14 +388,26 @@ fn text_inside_a_scrolled_overflow_owner_still_requires_scroll_transform_support
         ],
     );
 
-    assert_eq!(
-        result,
-        Err(RuntimeRenderError::UnsupportedTextScroll(text_owner))
-    );
+    let scene = result.unwrap();
+    assert_eq!(scene.texts()[0].origin_x_css_px(), -3.0);
+    assert_eq!(scene.texts()[0].origin_y_css_px(), 0.0);
+    assert_eq!(scene.texts()[0].clip_css_px().x(), clip.x());
+
+    let moved = scene
+        .with_scroll_offsets(scene.key().scroll_state_revision(), &[(parent, 6.0, 0.0)])
+        .unwrap();
+    assert_eq!(moved.texts()[0].origin_x_css_px(), -6.0);
+    assert_eq!(moved.texts()[0].clip_css_px().x(), clip.x());
+
+    let reset = moved
+        .with_scroll_offsets(moved.key().scroll_state_revision(), &[(parent, 0.0, 0.0)])
+        .unwrap();
+    assert_eq!(reset.texts()[0].origin_x_css_px(), 0.0);
+    assert_eq!(reset.texts()[0].clip_css_px().x(), clip.x());
 }
 
 #[test]
-fn text_inside_a_vertically_scrolled_overflow_owner_still_requires_scroll_transform_support() {
+fn text_inside_a_scrolled_vertical_ancestor_moves_and_resets_from_base_origin() {
     let parent = NodeId::new(1).unwrap();
     let text_owner = NodeId::new(2).unwrap();
     let key = key();
@@ -370,7 +419,7 @@ fn text_inside_a_vertically_scrolled_overflow_owner_still_requires_scroll_transf
         RuntimeRenderBox::new(text_owner, owner_frame, RuntimePaint::None, 1).with_clip(clip),
     ];
     let scroll =
-        super::RuntimeScrollContainer::new(parent, parent_frame, 16.0, 16.0, 0.0, 1.0).unwrap();
+        super::RuntimeScrollContainer::new(parent, parent_frame, 16.0, 40.0, 0.0, 18.0).unwrap();
     let metadata = vec![
         super::RuntimeScrollRenderMetadata::new(
             parent_frame,
@@ -397,8 +446,108 @@ fn text_inside_a_vertically_scrolled_overflow_owner_still_requires_scroll_transf
         ],
     );
 
+    let scene = result.unwrap();
+    assert_eq!(scene.texts()[0].origin_x_css_px(), 0.0);
+    assert_eq!(scene.texts()[0].origin_y_css_px(), -18.0);
+    assert_eq!(scene.texts()[0].clip_css_px().y(), clip.y());
+
+    let moved = scene
+        .with_scroll_offsets(scene.key().scroll_state_revision(), &[(parent, 0.0, 7.0)])
+        .unwrap();
+    assert_eq!(moved.texts()[0].origin_y_css_px(), -7.0);
+    assert_eq!(moved.texts()[0].clip_css_px().y(), clip.y());
+
+    let reset = moved
+        .with_scroll_offsets(moved.key().scroll_state_revision(), &[(parent, 0.0, 0.0)])
+        .unwrap();
+    assert_eq!(reset.texts()[0].origin_y_css_px(), 0.0);
+    assert_eq!(reset.texts()[0].clip_css_px().y(), clip.y());
+}
+
+#[test]
+fn nested_scroll_offsets_move_text_but_keep_each_scrollport_clip_attached_to_its_owner() {
+    let outer = NodeId::new(1).unwrap();
+    let inner = NodeId::new(2).unwrap();
+    let text_owner = NodeId::new(3).unwrap();
+    let key = key();
+    let outer_frame = CssRect::new(0.0, 0.0, 20.0, 20.0).unwrap();
+    let inner_frame = CssRect::new(0.0, 0.0, 16.0, 16.0).unwrap();
+    let owner_frame = CssRect::new(0.0, 0.0, 30.0, 8.0).unwrap();
+    let outer_clip = CssClip::unconstrained()
+        .with_x(CssAxisClip::new(0.0, 20.0).unwrap())
+        .with_y(CssAxisClip::new(0.0, 20.0).unwrap());
+    let inner_clip = CssClip::unconstrained()
+        .with_x(CssAxisClip::new(0.0, 16.0).unwrap())
+        .with_y(CssAxisClip::new(0.0, 16.0).unwrap());
+    let boxes = vec![
+        RuntimeRenderBox::new(outer, outer_frame, RuntimePaint::None, 0),
+        RuntimeRenderBox::new(inner, inner_frame, RuntimePaint::None, 1),
+        RuntimeRenderBox::new(text_owner, owner_frame, RuntimePaint::None, 2),
+    ];
+    let outer_layer = || super::RuntimeScrollClipLayer::new(outer_clip, outer_clip, Vec::new());
+    let inner_layer = || super::RuntimeScrollClipLayer::new(inner_clip, inner_clip, vec![outer]);
+    let metadata = vec![
+        super::RuntimeScrollRenderMetadata::new(outer_frame, Vec::new(), vec![outer_layer()]),
+        super::RuntimeScrollRenderMetadata::new(
+            inner_frame,
+            vec![outer],
+            vec![outer_layer(), inner_layer()],
+        ),
+        super::RuntimeScrollRenderMetadata::new(
+            owner_frame,
+            vec![inner, outer],
+            vec![outer_layer(), inner_layer()],
+        ),
+    ];
+    let scroll_containers = vec![
+        super::RuntimeScrollContainer::new(outer, outer_frame, 25.0, 20.0, 4.0, 0.0).unwrap(),
+        super::RuntimeScrollContainer::new(inner, inner_frame, 21.0, 16.0, 5.0, 0.0)
+            .unwrap()
+            .with_parent(Some(outer)),
+    ];
+    let scene = RuntimeRenderSnapshot::new_with_scroll_metadata_texts_and_paint_commands(
+        key,
+        CssSize::new(32.0, 24.0).unwrap(),
+        boxes,
+        scroll_containers,
+        metadata,
+        vec![text(text_owner, key)],
+        vec![
+            RuntimePaintCommand::DrawBox { index: 0 },
+            RuntimePaintCommand::DrawBox { index: 1 },
+            RuntimePaintCommand::DrawBox { index: 2 },
+            RuntimePaintCommand::DrawText { index: 0 },
+        ],
+    )
+    .unwrap();
+
+    assert_eq!(scene.texts()[0].origin_x_css_px(), -9.0);
     assert_eq!(
-        result,
-        Err(RuntimeRenderError::UnsupportedTextScroll(text_owner))
+        scene.texts()[0].clip_css_px().x(),
+        Some(CssAxisClip::new(0.0, 12.0).unwrap())
+    );
+
+    let moved = scene
+        .with_scroll_offsets(
+            scene.key().scroll_state_revision(),
+            &[(outer, 2.0, 0.0), (inner, 3.0, 0.0)],
+        )
+        .unwrap();
+    assert_eq!(moved.texts()[0].origin_x_css_px(), -5.0);
+    assert_eq!(
+        moved.texts()[0].clip_css_px().x(),
+        Some(CssAxisClip::new(0.0, 14.0).unwrap())
+    );
+
+    let reset = moved
+        .with_scroll_offsets(
+            moved.key().scroll_state_revision(),
+            &[(outer, 0.0, 0.0), (inner, 0.0, 0.0)],
+        )
+        .unwrap();
+    assert_eq!(reset.texts()[0].origin_x_css_px(), 0.0);
+    assert_eq!(
+        reset.texts()[0].clip_css_px().x(),
+        Some(CssAxisClip::new(0.0, 16.0).unwrap())
     );
 }
