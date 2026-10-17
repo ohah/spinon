@@ -1,0 +1,53 @@
+@spinon/docs docs:build: 🔥 Rspress v2.0.22
+@spinon/docs docs:build:
+@spinon/docs docs:build: info    build started...
+@spinon/docs docs:build: warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+@spinon/docs docs:build: warn    Please set `output.cleanDistPath` config manually.
+@spinon/docs docs:build: warn    Current root path: /private/tmp/spinon-c19-2-box-paint-opacity-20261016/packages/docs
+@spinon/docs docs:build: warn    Current dist path: /private/tmp/spinon-c04-12-tailnet-roadmap-20261017/out
+@spinon/docs docs:build: info    Rendering pages...
+@spinon/docs docs:build: success Pages rendered in 57 ms.
+@spinon/docs docs:build: ready   built in 0.47s (web)
+@spinon/docs docs:build: ready   built in 0.47s (node)
+@spinon/docs docs:build:
+@spinon/docs docs:build: File (web)                                                                                                        Size        Gzip
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/js/async/i.25208e7c92.js                               0.10 kB     0.09 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/js/styles.2da0941fcb.js                                0.47 kB     0.23 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/icon.svg                                                      0.64 kB     0.41 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/js/async/route-42452122cfa4.7047a0ea19.js              8.1 kB      2.4 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/js/async/route-52be8dfb1a96.0561b32247.js              9.3 kB      3.1 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/js/async/route-7ff1bc4fef68.9e25a6eb89.js              9.4 kB      3.4 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/js/async/route-b77589699581.f6f70ceb19.js              10.9 kB     3.5 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/js/async/route-89b9fdd547ea.57266111ec.js              11.5 kB     4.0 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/js/async/route-d189cf42fdb6.ae675f5566.js              13.6 kB     4.2 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/image/chrome-default-scheme-ios-light.732b41ab6f.png   20.0 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/image/chrome-meta-dark-ios-light.dbdf729d3a.png        20.0 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/js/async/route-ea34262d0652.4ead299da7.js              20.5 kB     6.6 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/js/async/route-61aacf138c96.97ddaf684c.js              23.6 kB     6.2 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/js/index.38b5aaad0d.js                                 24.3 kB     8.7 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/js/async/route-e92f758de6f7.68bf5341de.js              30.8 kB     10.0 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/js/lib-router.1e14e568cb.js                            35.4 kB     12.7 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/css/styles.8d918fd78e.css                              74.0 kB     14.2 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/js/a.4d96edf452.js                                     217.1 kB    71.7 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/js/lib-react.9cdf8f49ce.js                             218.4 kB    68.9 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/search_index.ko.99c027ae.json                          284.9 kB    93.1 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/static/js/async/route-6c33a3943990.b486a6e70c.js              364.9 kB    85.0 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build:                                                                                                          Total:   1397.8 kB   438.3 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build: File (node)                                                                                                                                Size       Gzip
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/404.html                                                                               8.5 kB     2.5 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/internal/evidence/c04-root-document-environment-precomparison-review-2026-10-17.html   23.1 kB    5.5 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/internal/evidence/c04-root-html-document-environment-plan-review-2026-10-17.html       24.1 kB    6.2 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/internal/0077-c04-12-root-html-document.html                                           25.7 kB    6.5 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/internal/evidence/c04-12-root-html-asset-implementation-review-20-2026-10-17.html      25.7 kB    6.5 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/internal/evidence/c04-12-root-html-implementation-review-2026-10-17.html               26.5 kB    7.1 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/internal/evidence/c04-12-root-html-asset-pr-diff-review-30-2026-10-17.html             27.5 kB    7.2 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/internal/evidence/c04-root-html-document-environment-2026-10-17/README.html            35.8 kB    9.1 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/plan/c04-root-html-document-environment.html                                           36.1 kB    9.6 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/0008-css-compatibility.html                                                            44.6 kB    13.0 kB
+@spinon/docs docs:build: ../../../spinon-c04-12-tailnet-roadmap-20261017/out/STATUS.html                                                                            345.3 kB   86.8 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build:                                                                                                                                   Total:   623.0 kB   160.1 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build: Exited with code 0
