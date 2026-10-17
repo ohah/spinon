@@ -1,7 +1,8 @@
 # C13.3 · 네이티브 wheel·trackpad 입력 수집과 정규화
 
-**상태:** Android API 37 AVD native mouse wheel 행렬 8/8, 기존 거부 3/3, Control-wheel 4/4, 복합 source 2/2와 ADB touchpad ACTION_SCROLL fixture route 1/1 통과. 기본 surface는 point-outside-surface로 거부되고 opt-in test harness의 surface 이동에서 target 7·revision 2까지 처리했다. 실제 trackpad hardware와 iPadOS callback은 미검증이며 iOS adapter는 보류.
+**상태:** Android API 37 AVD native mouse wheel 행렬 8/8, 기존 거부 3/3, Control-wheel 4/4, 복합 source 2/2와 ADB touchpad ACTION_SCROLL fixture route 1/1 통과. API 29 ARM64 AVD 최소 지원선 follow-up에서도 ±H/V·대각 8/8 및 Control-wheel 거부 4/4를 확인했다. 기본 surface는 point-outside-surface로 거부되고 opt-in test harness의 surface 이동에서 target 7·revision 2까지 처리했다. 실제 trackpad hardware와 iPadOS callback은 미검증이며 iOS adapter는 보류.
 **ADB touchpad follow-up:** [실행·화면·artifact](../spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/README.md) · [구현 검토 20개](../spec/internal/evidence/c13-3-android-avd-touchpad-point-implementation-review-20-2026-10-16.md) · [PR 변경 검토 30개](../spec/internal/evidence/c13-3-android-avd-touchpad-point-pr-delta-review-30-2026-10-16.md)
+**Android API 29 follow-up:** [사전 판정·실행·화면·pixel·hash](../spec/internal/evidence/c13-3-native-wheel-api29-2026-10-17/README.md) · [구현·실행 적대 검토 20개](../spec/internal/evidence/c13-3-native-wheel-api29-2026-10-17/implementation-review-20.md) · [PR 변경 적대 검토 30개](../spec/internal/evidence/c13-3-native-wheel-api29-2026-10-17/pr-delta-review-30.md)
 **공식 상위 항목:** [구현 상태 대장](../spec/STATUS.md#css-구현-체크리스트)
 **선행:** [C13.3 scroll gesture 계획](./c13-3-scroll-gestures.md), [normalized wheel router](./c13-3-wheel-delta-routing.md)
 **계약:** [내부 계약 0063](../spec/internal/0063-c13-3-scroll-gestures.md) · 공개 `WheelEvent`나 DOM `scroll` API 변경 없음
@@ -80,6 +81,14 @@ Android와 iOS host가 OS input pipeline에서 전달받은 mouse wheel 및 trac
 input touchpad scroll은 API 37 AVD에서 ACTION_SCROLL, source 0x100008, raw point (0,0)으로 callback에 도달했다. 기본 SurfaceView origin (15,991)에서는 이 점이 표면 밖이라 queue 전에 거부된다. 위치 정보가 빠진 입력을 이전 cursor 위치로 보완하지 않는다.
 
 fixture-test build와 spinon_c133_touchpad_origin_target intent가 함께 켜진 경우에만 SurfaceView를 이동해 raw (0,0)을 Chrome fixture target (132,112) CSS px에 대응시킨다. AVD 실행에서 계산점 (132.19048,112.0), queue sequence 1, target 7, draw revision 2와 outer owner X offset 64 CSS px를 확인했다. 기본 surface 거부 대조는 revision/offset을 유지했고 두 screenshot hash가 같았다. AVD 입력 shell과 test-only view 배치는 물리 trackpad 검증이 아니다. [실행·화면·로그·artifact 근거](../spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/README.md).
+
+## 2026-10-17 Android API 29 minimum-API follow-up
+
+`spinon_r05_api29_fallback` Android 10 / API 29 Google APIs ARM64 AVD에서 opt-in APK를 실행했다. API 29 ADB `input`에는 `mouse scroll` 명령이 없어 AVD 내부 `/dev/uinput`에 생성·제거하는 test-only virtual mouse로 `REL_HWHEEL`/`REL_WHEEL`을 보냈다. 앱은 실제 `ACTION_SCROLL`/`SOURCE_MOUSE` callback을 받았으며 FFI direct enqueue는 사용하지 않았다.
+
+±H/V와 네 대각 입력 8/8에서 `ViewConfiguration` factor 168 physical px, SurfaceView scale 2.625 px/CSS px, 각 축 64 CSS px, point `(132.19048,112)` CSS px, queue sequence 1·target 7·revision 2 및 owner offsets가 기존 oracle과 일치했다. 좌우 Control × H/V는 `modifiers=2`로 queue 전에 4/4 거부됐다. positive-positive diagonal의 aligned SurfaceView 661,500 pixel 비교는 scrollport 바깥 changed 0, 안쪽 50,684였고 Control-left horizontal 거부 대조는 661,500 pixel 모두 unchanged였다. [API 29 사전 판정·실행·화면·pixel·hash](../spec/internal/evidence/c13-3-native-wheel-api29-2026-10-17/README.md).
+
+이 AVD는 GL/ANGLE/SwiftShader 소프트웨어 renderer이며 4 KB page size다. AVD uinput 결과를 물리 mouse/trackpad나 실기기 동작으로 확대하지 않는다. iOS UIKit callback/sign 미관찰로 native iOS adapter gate는 여전히 미통과이고 C13.3 전체는 미완료다.
 
 ## 실행·증거 경계
 
