@@ -88,7 +88,7 @@ impl RuntimeRenderSnapshot {
         base_boxes: Vec<RuntimeRenderBox>,
         scroll_containers: Vec<RuntimeScrollContainer>,
         scroll_metadata: Vec<RuntimeScrollRenderMetadata>,
-        texts: Vec<RuntimeRenderText>,
+        mut texts: Vec<RuntimeRenderText>,
         paint_commands: Vec<RuntimePaintCommand>,
     ) -> Result<Self, RuntimeRenderError> {
         validate_paint_commands(&paint_commands, base_boxes.len(), texts.len())?;
@@ -125,8 +125,8 @@ impl RuntimeRenderSnapshot {
                 return Err(RuntimeRenderError::DuplicateScrollOwner(container.owner()));
             }
         }
-        validate_texts(
-            &texts,
+        validate_texts_and_apply_owner_clips(
+            &mut texts,
             key,
             &base_boxes,
             &scroll_containers,
@@ -450,8 +450,8 @@ fn validate_paint_commands(
     Ok(())
 }
 
-fn validate_texts(
-    texts: &[RuntimeRenderText],
+fn validate_texts_and_apply_owner_clips(
+    texts: &mut [RuntimeRenderText],
     key: RuntimeRenderKey,
     boxes: &[RuntimeRenderBox],
     scroll_containers: &[RuntimeScrollContainer],
@@ -474,10 +474,21 @@ fn validate_texts(
         if scroll_containers
             .iter()
             .any(|container| container.owner() == text.node_id())
-            || !scroll_metadata[index].scroll_ancestors().is_empty()
         {
             return Err(RuntimeRenderError::UnsupportedTextScroll(text.node_id()));
         }
+        for ancestor in scroll_metadata[index].scroll_ancestors() {
+            let Some(container) = scroll_containers
+                .iter()
+                .find(|container| container.owner() == *ancestor)
+            else {
+                return Err(RuntimeRenderError::InvalidScrollState);
+            };
+            if container.offset_x_css_px() != 0.0 || container.offset_y_css_px() != 0.0 {
+                return Err(RuntimeRenderError::UnsupportedTextScroll(text.node_id()));
+            }
+        }
+        text.intersect_owner_clip(boxes[index].clip_css_px());
     }
     Ok(())
 }

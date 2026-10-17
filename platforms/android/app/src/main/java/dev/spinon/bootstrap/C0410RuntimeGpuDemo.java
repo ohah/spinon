@@ -470,6 +470,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean c131BorderStripProbeRequested;
     private final boolean c192BoxPaintOpacityProbeRequested;
     private final boolean c153GlyphPaintProbeRequested;
+    private volatile String c153GlyphPaintEvaluationReport = "";
     private boolean c192SurfaceCaptureStarted;
     private final boolean imageObjectFitPositionProbeRequested;
     private final boolean imageAsyncReplacementProbeRequested;
@@ -523,6 +524,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private boolean c131OverflowClipSurfaceCaptureStarted;
     private boolean c131CompactSurfaceMatrixCaptureStarted;
     private boolean c131BorderStripSurfaceCaptureStarted;
+    private boolean c153SurfaceCaptureStarted;
     private boolean c132SurfacePixelCaptureStarted;
     private volatile boolean c132ScrollAssertionsPassed;
     private volatile boolean c133GestureFixtureReady;
@@ -1730,6 +1732,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("실패 · C15.3 glyph paint command가 runtime snapshot에 제출되지 않았습니다");
             return;
         }
+        if (c153GlyphPaintProbeRequested) c153GlyphPaintEvaluationReport = result;
         if (c1133GridTemplateAreasRequested
                 && C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(c1133GridTemplateAreasSceneId)
                 && result.startsWith("status=0 ")) {
@@ -4217,11 +4220,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return;
         }
         if (c153GlyphPaintProbeRequested
-                && (!result.contains("runtime_text_count=1")
-                        || !result.contains("glyph_batch_draw_count=1"))) {
+                && (!result.contains("runtime_text_count=3")
+                        || !result.contains("glyph_batch_draw_count=3"))) {
             Log.e(TAG, "SPINON_C153_DRAW_ASSERTIONS failed=true " + result);
-            postStatus("실패 · C15.3 WGPU glyph batch draw가 제출되지 않았습니다");
+            postStatus("실패 · C15.3 Noto/Ahem glyph batch 3개가 제출되지 않았습니다");
             return;
+        }
+        if (c153GlyphPaintProbeRequested) {
+            requestC153SurfaceCapture(renderer, generation);
         }
         if (BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested
                 && !imagePaintSurfaceCaptureStarted) {
@@ -4316,6 +4322,142 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         java.util.function.Consumer<String> status = this::postStatus;
         invokeC192CaptureAdapter("request", surfaceView, activity, width, height,
                 generation, mainHandler, runtimeQueue, sourceIsCurrent, status);
+    }
+
+    private void requestC153SurfaceCapture(long renderer, long generation) {
+        final int width;
+        final int height;
+        synchronized (stateLock) {
+            if (closing || c153SurfaceCaptureStarted || !surfaceAvailable
+                    || surfaceGeneration != generation || rendererHandle != renderer
+                    || rendererGeneration != generation) return;
+            c153SurfaceCaptureStarted = true;
+            width = surfaceWidth;
+            height = surfaceHeight;
+        }
+        List<SurfaceViewPixelCapture.Sample> samples = parseC153SurfaceSamples(
+                c153GlyphPaintEvaluationReport);
+        if (samples == null) {
+            Log.e(TAG, "SPINON_C153_PIXELCOPY status=error stage=sample-report");
+            postStatus("실패 · C15.3 glyph overflow 표본 좌표를 읽지 못했습니다");
+            return;
+        }
+        String runId = Long.toHexString(SystemClock.elapsedRealtimeNanos());
+        File output = new File(
+                new File(activity.getCacheDir(), "c153-glyph-overflow-surface-captures"),
+                "runtime-c15-3-glyph-overflow-" + runId + ".png");
+        Log.i(TAG, "SPINON_C153_PIXELCOPY_BEGIN run_id=" + runId
+                + " pid=" + android.os.Process.myPid() + " generation=" + generation
+                + " width=" + width + " height=" + height + " viewport=360x240"
+                + " samples=" + samples.size());
+        SurfaceViewPixelCapture.requestForCssViewport(surfaceView, width, height,
+                360, 240, 0, 0, "c153-glyph-overflow", runId, output, samples,
+                mainHandler, runtimeQueue,
+                () -> {
+                    synchronized (stateLock) {
+                        return !closing && surfaceAvailable && surfaceGeneration == generation
+                                && rendererHandle == renderer && rendererGeneration == generation
+                                && surfaceWidth == width && surfaceHeight == height;
+                    }
+                }, result -> {
+                    if (!result.error.isEmpty()) {
+                        Log.e(TAG, "SPINON_C153_PIXELCOPY status=error run_id=" + runId
+                                + " generation=" + generation + " attempts=" + result.attempts
+                                + " reason=" + result.error);
+                        postStatus("실패 · C15.3 PixelCopy · " + result.error);
+                        return;
+                    }
+                    boolean visibleInk = false;
+                    boolean hiddenInsideInk = false;
+                    boolean hiddenOutsideBackground = false;
+                    int observed = 0;
+                    for (SurfaceViewPixelCapture.Pixel pixel : result.pixels) {
+                        boolean background = pixel.red == 247 && pixel.green == 249
+                                && pixel.blue == 252 && pixel.alpha == 255;
+                        boolean expectedInk = pixel.red == 9 && pixel.green == 33
+                                && pixel.blue == 112 && pixel.alpha == 255;
+                        if ("visible-outside-parent".equals(pixel.id)) {
+                            visibleInk = expectedInk;
+                        } else if ("hidden-inside-clip".equals(pixel.id)) {
+                            hiddenInsideInk = expectedInk;
+                        } else if ("hidden-outside-parent".equals(pixel.id)) {
+                            hiddenOutsideBackground = background;
+                        }
+                        observed++;
+                        Log.i(TAG, "SPINON_C153_PIXELCOPY_SAMPLE run_id=" + runId
+                                + " sample=" + pixel.id + " x=" + pixel.x + " y=" + pixel.y
+                                + " rgba=" + pixel.red + "," + pixel.green + ","
+                                + pixel.blue + "," + pixel.alpha + " stage_background="
+                                + background + " expected_ink=" + expectedInk);
+                    }
+                    boolean outsideParent = samples.get(2).xCssPx >= 29.0;
+                    boolean passed = observed == 3 && visibleInk && hiddenInsideInk
+                            && hiddenOutsideBackground && outsideParent;
+                    Log.i(TAG, "SPINON_C153_PIXELCOPY_SUMMARY status="
+                            + (passed ? "matched" : "mismatch") + " run_id=" + runId
+                            + " pid=" + android.os.Process.myPid() + " generation=" + generation
+                            + " viewport=360x240 expected_samples=3 observed_samples=" + observed
+                            + " visible_outside_ink=" + visibleInk
+                            + " hidden_inside_ink=" + hiddenInsideInk
+                            + " hidden_outside_background=" + hiddenOutsideBackground
+                            + " outside_parent=" + outsideParent + " png="
+                            + output.getAbsolutePath() + " sha256=" + result.sha256);
+                    if (!passed) postStatus("실패 · C15.3 실제 surface overflow clip 표본 불일치");
+                });
+    }
+
+    private static List<SurfaceViewPixelCapture.Sample> parseC153SurfaceSamples(String report) {
+        String marker = "overflow_samples_css_px=";
+        int start = report.indexOf(marker);
+        if (start < 0) return null;
+        start += marker.length();
+        int end = report.indexOf(' ', start);
+        String encoded = end < 0 ? report.substring(start) : report.substring(start, end);
+        int[] visible = null;
+        int[] hiddenInside = null;
+        int[] hiddenOutside = null;
+        for (String entry : encoded.split(";")) {
+            String[] pair = entry.split(":", 2);
+            if (pair.length != 2) return null;
+            String[] coordinates = pair[1].split(",", 2);
+            if (coordinates.length != 2) return null;
+            final int x;
+            final int y;
+            try {
+                x = Integer.parseInt(coordinates[0]);
+                y = Integer.parseInt(coordinates[1]);
+            } catch (NumberFormatException error) {
+                return null;
+            }
+            if (x < 0 || x >= 360 || y < 0 || y >= 240) return null;
+            int[] point = new int[] {x, y};
+            if ("visible".equals(pair[0])) {
+                if (visible != null) return null;
+                visible = point;
+            } else if ("hidden_inside".equals(pair[0])) {
+                if (hiddenInside != null) return null;
+                hiddenInside = point;
+            } else if ("hidden_outside".equals(pair[0])) {
+                if (hiddenOutside != null) return null;
+                hiddenOutside = point;
+            } else {
+                return null;
+            }
+        }
+        if (visible == null || hiddenInside == null || hiddenOutside == null
+                || visible[0] != hiddenOutside[0] || visible[1] + 40 != hiddenOutside[1]
+                || visible[0] < 29 || visible[1] < 81 || visible[1] >= 91
+                || hiddenInside[0] < 13 || hiddenInside[0] >= 28
+                || hiddenInside[1] < 121 || hiddenInside[1] >= 131
+                || hiddenOutside[0] < 29 || hiddenOutside[1] < 121
+                || hiddenOutside[1] >= 131) return null;
+        return List.of(
+                new SurfaceViewPixelCapture.Sample(
+                        "visible-outside-parent", visible[0], visible[1]),
+                new SurfaceViewPixelCapture.Sample(
+                        "hidden-inside-clip", hiddenInside[0], hiddenInside[1]),
+                new SurfaceViewPixelCapture.Sample(
+                        "hidden-outside-parent", hiddenOutside[0], hiddenOutside[1]));
     }
 
     // C19.2 캡처 어댑터는 fixture-test source set에만 있으므로 기본 앱에서 직접 참조하지 않는다.

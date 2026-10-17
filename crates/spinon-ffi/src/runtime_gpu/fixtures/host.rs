@@ -9,6 +9,7 @@ impl RuntimeGpuHost {
         let mut host = Self::from_session_with_frame_report(session);
         host.include_paint_order_report = true;
         host.c15_3_glyph_paint_fixture = true;
+        host.surface_pixel_readback_test = true;
         Ok((host, report))
     }
 

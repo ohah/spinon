@@ -1753,6 +1753,19 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
                  "SPINON_C153_EVAL", report);
   return report;
 }
+
++ (NSString *)requestRuntimeGpuC15_3SurfacePixelsForTest:(uint64_t)handle
+                                                   sampleXY:(const uint32_t *)sampleXY
+                                                sampleCount:(NSUInteger)sampleCount {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 2048> output{};
+  const int32_t status = spinon_runtime_gpu_host_request_c15_3_surface_pixels_for_test(
+      host, sampleXY, sampleCount, output.data(), output.size());
+  NSString *report = [NSString stringWithFormat:@"status=%d %s", status, output.data()];
+  NSLog(@"SPINON_C153_METAL_PIXEL_REQUEST %@", report);
+  return report;
+}
 #endif
 
 + (NSString *)evalRuntimeGpuC13_1CompactSurfaceMatrixFixture:(uint64_t)handle {

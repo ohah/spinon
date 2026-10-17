@@ -1,7 +1,7 @@
 use super::{
-    CssRect, CssSize, RuntimeGlyphBitmap, RuntimePaint, RuntimePaintCommand, RuntimeRenderBox,
-    RuntimeRenderError, RuntimeRenderKey, RuntimeRenderSnapshot, RuntimeRenderText,
-    RuntimeSrgbColor,
+    CssAxisClip, CssClip, CssRect, CssSize, RuntimeGlyphBitmap, RuntimePaint, RuntimePaintCommand,
+    RuntimeRenderBox, RuntimeRenderError, RuntimeRenderKey, RuntimeRenderSnapshot,
+    RuntimeRenderText, RuntimeSrgbColor,
 };
 use spinon_core::{EnvironmentRevision, HostDocument, NodeId, StyleRevision};
 use std::sync::Arc;
@@ -22,6 +22,14 @@ fn bitmap() -> RuntimeGlyphBitmap {
 }
 
 fn text(node: NodeId, source: RuntimeRenderKey) -> RuntimeRenderText {
+    text_with_clip(node, source, CssClip::unconstrained())
+}
+
+fn text_with_clip(
+    node: NodeId,
+    source: RuntimeRenderKey,
+    clip_css_px: CssClip,
+) -> RuntimeRenderText {
     RuntimeRenderText::new(
         node,
         source,
@@ -29,7 +37,7 @@ fn text(node: NodeId, source: RuntimeRenderKey) -> RuntimeRenderText {
         0.0,
         1.0,
         RuntimeSrgbColor::new(0.0, 0.0, 0.0, 1.0).unwrap(),
-        super::CssClip::unconstrained(),
+        clip_css_px,
         vec![bitmap()],
     )
     .unwrap()
@@ -140,7 +148,59 @@ fn text_paint_command_indices_must_be_complete_and_in_order() {
 }
 
 #[test]
-fn text_owner_inside_scroll_container_is_rejected_until_scroll_transform_is_supported() {
+fn text_clip_intersects_the_owner_boxes_effective_paint_clip() {
+    let owner = NodeId::new(1).unwrap();
+    let owner_clip = CssClip::unconstrained()
+        .with_x(CssAxisClip::new(3.0, 8.0).unwrap())
+        .with_y(CssAxisClip::new(2.0, 9.0).unwrap());
+    let text_clip = CssClip::unconstrained()
+        .with_x(CssAxisClip::new(5.0, 10.0).unwrap())
+        .with_y(CssAxisClip::new(1.0, 6.0).unwrap());
+    let base = RuntimeRenderSnapshot::new(
+        key(),
+        CssSize::new(16.0, 16.0).unwrap(),
+        vec![
+            RuntimeRenderBox::new(
+                owner,
+                CssRect::new(0.0, 0.0, 16.0, 16.0).unwrap(),
+                RuntimePaint::None,
+                0,
+            )
+            .with_clip(owner_clip),
+        ],
+    )
+    .unwrap();
+    let scene = base
+        .with_texts_and_paint_commands(
+            vec![text_with_clip(owner, base.key(), text_clip)],
+            commands_for_one_text(),
+        )
+        .unwrap();
+
+    let effective_clip = scene.texts()[0].clip_css_px();
+    assert_eq!(
+        effective_clip.x(),
+        Some(CssAxisClip::new(5.0, 8.0).unwrap())
+    );
+    assert_eq!(
+        effective_clip.y(),
+        Some(CssAxisClip::new(2.0, 6.0).unwrap())
+    );
+}
+
+#[test]
+fn text_can_overflow_a_visible_owner_when_neither_clip_is_constrained() {
+    let owner = NodeId::new(1).unwrap();
+    let base = scene(owner);
+    let scene = base
+        .with_texts_and_paint_commands(vec![text(owner, base.key())], commands_for_one_text())
+        .unwrap();
+
+    assert_eq!(scene.texts()[0].clip_css_px(), CssClip::unconstrained());
+}
+
+#[test]
+fn text_owner_that_is_itself_a_scroll_container_is_rejected() {
     let owner = NodeId::new(1).unwrap();
     let scene = scene(owner);
     let scroll = super::RuntimeScrollContainer::new(
@@ -174,5 +234,171 @@ fn text_owner_inside_scroll_container_is_rejected_until_scroll_transform_is_supp
     assert_eq!(
         owner_snapshot,
         Err(RuntimeRenderError::UnsupportedTextScroll(owner))
+    );
+}
+
+#[test]
+fn text_inside_an_unscrolled_overflow_owner_keeps_its_paint_clip() {
+    let parent = NodeId::new(1).unwrap();
+    let text_owner = NodeId::new(2).unwrap();
+    let key = key();
+    let parent_frame = CssRect::new(0.0, 0.0, 8.0, 8.0).unwrap();
+    let owner_frame = CssRect::new(0.0, 0.0, 16.0, 8.0).unwrap();
+    let parent_clip = CssClip::unconstrained().with_x(CssAxisClip::new(0.0, 8.0).unwrap());
+    let boxes = vec![
+        RuntimeRenderBox::new(parent, parent_frame, RuntimePaint::None, 0).with_clip(parent_clip),
+        RuntimeRenderBox::new(text_owner, owner_frame, RuntimePaint::None, 1)
+            .with_clip(parent_clip),
+    ];
+    let scroll =
+        super::RuntimeScrollContainer::new(parent, parent_frame, 16.0, 8.0, 0.0, 0.0).unwrap();
+    let clip_layer = || super::RuntimeScrollClipLayer::new(parent_clip, parent_clip, Vec::new());
+    let metadata = vec![
+        super::RuntimeScrollRenderMetadata::new(parent_frame, Vec::new(), vec![clip_layer()]),
+        super::RuntimeScrollRenderMetadata::new(owner_frame, vec![parent], vec![clip_layer()]),
+    ];
+    let scene = RuntimeRenderSnapshot::new_with_scroll_metadata_texts_and_paint_commands(
+        key,
+        CssSize::new(16.0, 8.0).unwrap(),
+        boxes,
+        vec![scroll],
+        metadata,
+        vec![text(text_owner, key)],
+        vec![
+            RuntimePaintCommand::DrawBox { index: 0 },
+            RuntimePaintCommand::DrawBox { index: 1 },
+            RuntimePaintCommand::DrawText { index: 0 },
+        ],
+    )
+    .unwrap();
+
+    assert_eq!(scene.texts()[0].clip_css_px().x(), parent_clip.x());
+}
+
+#[test]
+fn text_rejects_scroll_ancestor_metadata_without_a_matching_container() {
+    let parent = NodeId::new(1).unwrap();
+    let text_owner = NodeId::new(2).unwrap();
+    let key = key();
+    let parent_frame = CssRect::new(0.0, 0.0, 8.0, 8.0).unwrap();
+    let owner_frame = CssRect::new(0.0, 0.0, 16.0, 8.0).unwrap();
+    let clip = CssClip::unconstrained().with_x(CssAxisClip::new(0.0, 8.0).unwrap());
+    let boxes = vec![
+        RuntimeRenderBox::new(parent, parent_frame, RuntimePaint::None, 0).with_clip(clip),
+        RuntimeRenderBox::new(text_owner, owner_frame, RuntimePaint::None, 1).with_clip(clip),
+    ];
+    let metadata = vec![
+        super::RuntimeScrollRenderMetadata::new(parent_frame, Vec::new(), Vec::new()),
+        super::RuntimeScrollRenderMetadata::new(owner_frame, vec![parent], Vec::new()),
+    ];
+    let result = RuntimeRenderSnapshot::new_with_scroll_metadata_texts_and_paint_commands(
+        key,
+        CssSize::new(16.0, 8.0).unwrap(),
+        boxes,
+        Vec::new(),
+        metadata,
+        vec![text(text_owner, key)],
+        vec![
+            RuntimePaintCommand::DrawBox { index: 0 },
+            RuntimePaintCommand::DrawBox { index: 1 },
+            RuntimePaintCommand::DrawText { index: 0 },
+        ],
+    );
+
+    assert!(matches!(
+        result,
+        Err(RuntimeRenderError::InvalidScrollState)
+    ));
+}
+
+#[test]
+fn text_inside_a_scrolled_overflow_owner_still_requires_scroll_transform_support() {
+    let parent = NodeId::new(1).unwrap();
+    let text_owner = NodeId::new(2).unwrap();
+    let key = key();
+    let parent_frame = CssRect::new(0.0, 0.0, 8.0, 8.0).unwrap();
+    let owner_frame = CssRect::new(0.0, 0.0, 16.0, 8.0).unwrap();
+    let clip = CssClip::unconstrained().with_x(CssAxisClip::new(0.0, 8.0).unwrap());
+    let boxes = vec![
+        RuntimeRenderBox::new(parent, parent_frame, RuntimePaint::None, 0).with_clip(clip),
+        RuntimeRenderBox::new(text_owner, owner_frame, RuntimePaint::None, 1).with_clip(clip),
+    ];
+    let scroll =
+        super::RuntimeScrollContainer::new(parent, parent_frame, 16.0, 8.0, 1.0, 0.0).unwrap();
+    let metadata = vec![
+        super::RuntimeScrollRenderMetadata::new(
+            parent_frame,
+            Vec::new(),
+            vec![super::RuntimeScrollClipLayer::new(clip, clip, Vec::new())],
+        ),
+        super::RuntimeScrollRenderMetadata::new(
+            owner_frame,
+            vec![parent],
+            vec![super::RuntimeScrollClipLayer::new(clip, clip, Vec::new())],
+        ),
+    ];
+    let result = RuntimeRenderSnapshot::new_with_scroll_metadata_texts_and_paint_commands(
+        key,
+        CssSize::new(16.0, 8.0).unwrap(),
+        boxes,
+        vec![scroll],
+        metadata,
+        vec![text(text_owner, key)],
+        vec![
+            RuntimePaintCommand::DrawBox { index: 0 },
+            RuntimePaintCommand::DrawBox { index: 1 },
+            RuntimePaintCommand::DrawText { index: 0 },
+        ],
+    );
+
+    assert_eq!(
+        result,
+        Err(RuntimeRenderError::UnsupportedTextScroll(text_owner))
+    );
+}
+
+#[test]
+fn text_inside_a_vertically_scrolled_overflow_owner_still_requires_scroll_transform_support() {
+    let parent = NodeId::new(1).unwrap();
+    let text_owner = NodeId::new(2).unwrap();
+    let key = key();
+    let parent_frame = CssRect::new(0.0, 0.0, 8.0, 8.0).unwrap();
+    let owner_frame = CssRect::new(0.0, 0.0, 16.0, 8.0).unwrap();
+    let clip = CssClip::unconstrained().with_y(CssAxisClip::new(0.0, 8.0).unwrap());
+    let boxes = vec![
+        RuntimeRenderBox::new(parent, parent_frame, RuntimePaint::None, 0).with_clip(clip),
+        RuntimeRenderBox::new(text_owner, owner_frame, RuntimePaint::None, 1).with_clip(clip),
+    ];
+    let scroll =
+        super::RuntimeScrollContainer::new(parent, parent_frame, 16.0, 16.0, 0.0, 1.0).unwrap();
+    let metadata = vec![
+        super::RuntimeScrollRenderMetadata::new(
+            parent_frame,
+            Vec::new(),
+            vec![super::RuntimeScrollClipLayer::new(clip, clip, Vec::new())],
+        ),
+        super::RuntimeScrollRenderMetadata::new(
+            owner_frame,
+            vec![parent],
+            vec![super::RuntimeScrollClipLayer::new(clip, clip, Vec::new())],
+        ),
+    ];
+    let result = RuntimeRenderSnapshot::new_with_scroll_metadata_texts_and_paint_commands(
+        key,
+        CssSize::new(16.0, 8.0).unwrap(),
+        boxes,
+        vec![scroll],
+        metadata,
+        vec![text(text_owner, key)],
+        vec![
+            RuntimePaintCommand::DrawBox { index: 0 },
+            RuntimePaintCommand::DrawBox { index: 1 },
+            RuntimePaintCommand::DrawText { index: 0 },
+        ],
+    );
+
+    assert_eq!(
+        result,
+        Err(RuntimeRenderError::UnsupportedTextScroll(text_owner))
     );
 }

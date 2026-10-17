@@ -156,6 +156,10 @@ impl RuntimeRenderText {
         self.clip_css_px
     }
 
+    pub(super) fn intersect_owner_clip(&mut self, owner_clip_css_px: CssClip) {
+        self.clip_css_px = self.clip_css_px.intersect(owner_clip_css_px);
+    }
+
     pub fn glyphs(&self) -> &[RuntimeGlyphBitmap] {
         &self.glyphs
     }
