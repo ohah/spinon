@@ -1,0 +1,825 @@
+{
+  "schema": "spinon-c13-3-native-wheel-android-api29-avd-v1",
+  "capturedAt": "2026-10-17T03:44:58.250Z",
+  "runDirectory": "run-20261017T034458250Z",
+  "sourceRevision": "824b28dd90b00f67d93de7504ecab84969e0d3bc",
+  "sourceFingerprint": "ee0b7e0334b23e7666a2aef81a8f7523e7715dd43242afef58e6858c4695a576",
+  "helper": {
+    "source": "tools/css-reference/fixtures/c13_3_android_wheel_uinput.c",
+    "sourceSha256": "34753fc2bd907459860c69901488ad61cad47bcd064a2d42f7feb1046f71428b",
+    "binarySha256": "b981bf58949d4dd04c454cc82e44a0fc238cfb2fe3ac493a2c623ca931751de4",
+    "ndkVersion": "27.1.12297006",
+    "clang": "toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android29-clang"
+  },
+  "sourceFileSha256": {
+    "plan/c13-3-native-wheel-input.md": "e1e360b7246404aa8d84c514500136ab8a98fd1bb6b906e1fa1d8d6055860e46",
+    "spec/internal/evidence/c13-3-native-wheel-api29-2026-10-17/precomparison.md": "c6a437558767f46d0cec9a661bc6ff296affe313c563affc1fbf1c1e1c963cba",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "90f451fe17dfc2893745d87ada2659014054492282a1850907433235e223a441",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/WheelSourceClassifier.java": "bca40039968fa54d4e35fced98dad335f6347bf1b3c762feb7a56cd1766695fb",
+    "tools/android-ndk-version.txt": "6b692d67e8fa29d1a7701a2fa0fb4bed4b6385bf42c36a0d5e51313a74dfa2a8",
+    "tools/css-reference/capture-c13-3-android-api29-wheel-runtime.mjs": "8723ac23aef21f4c283c4a9f3c7251f252800500ca9c99f2163f6c4bb74f6465",
+    "tools/css-reference/fixtures/c13_3_android_wheel_uinput.c": "34753fc2bd907459860c69901488ad61cad47bcd064a2d42f7feb1046f71428b"
+  },
+  "android": {
+    "serial": "emulator-5556",
+    "model": "Android SDK built for arm64",
+    "qemu": "1",
+    "avdName": "spinon_r05_api29_fallback",
+    "api": "29",
+    "release": "10",
+    "abi": "arm64-v8a",
+    "pageSize": "4096",
+    "size": "Physical size: 1080x1920",
+    "density": "Physical density: 420"
+  },
+  "build": {
+    "artifact": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+    "sha256": "94fa826e43c616486ab8b2e9a30bf01e714a3ff821801951136f919ba4491ff1",
+    "optInFlags": [
+      "SPINON_ENABLE_C04_RUNTIME_GPU=1",
+      "SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST=1"
+    ]
+  },
+  "renderer": "I/SpinonBootstrap(10605): SPINON_C0410_RENDERER=backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=1050x630 selection=auto",
+  "fixture": {
+    "scenario": "auto-boundary",
+    "viewportCssPx": [
+      400,
+      240
+    ],
+    "targetCssPx": [
+      132,
+      112
+    ],
+    "scrollportCssPx": {
+      "left": 16,
+      "top": 16,
+      "right": 384,
+      "bottom": 224
+    },
+    "directions": [
+      {
+        "name": "h-positive",
+        "screenPointPx": [
+          362,
+          982
+        ],
+        "targetCssPx": [
+          132,
+          112
+        ],
+        "input": {
+          "source": "virtual-uinput-mouse",
+          "action": "ACTION_SCROLL",
+          "hscroll": 1,
+          "vscroll": 0
+        },
+        "observedPointCssPx": [
+          132.19048,
+          112
+        ],
+        "factorsPx": [
+          168,
+          168
+        ],
+        "scalePxPerCssPx": 2.625,
+        "deltaCssPx": [
+          64,
+          0
+        ],
+        "expected": {
+          "deltaCssPx": [
+            64,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            64,
+            0
+          ],
+          "inner": [
+            86,
+            106
+          ]
+        },
+        "offsets": {
+          "revision": 2,
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            64,
+            0
+          ],
+          "inner": [
+            86,
+            106
+          ]
+        },
+        "processId": 10605,
+        "renderer": "I/SpinonBootstrap(10605): SPINON_C0410_RENDERER=backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=1050x630 selection=auto",
+        "queueSequence": 1,
+        "target": 7,
+        "drawRevision": 2,
+        "helperLifecycle": [
+          "device-created screen=362,982 hscroll=1 vscroll=0 control=none",
+          "device-destroyed"
+        ],
+        "screenshotSha256": null,
+        "surfaceBoundsBefore": {
+          "left": 15,
+          "top": 688,
+          "right": 1065,
+          "bottom": 1318
+        }
+      },
+      {
+        "name": "h-negative",
+        "screenPointPx": [
+          362,
+          982
+        ],
+        "targetCssPx": [
+          132,
+          112
+        ],
+        "input": {
+          "source": "virtual-uinput-mouse",
+          "action": "ACTION_SCROLL",
+          "hscroll": -1,
+          "vscroll": 0
+        },
+        "observedPointCssPx": [
+          132.19048,
+          112
+        ],
+        "factorsPx": [
+          168,
+          168
+        ],
+        "scalePxPerCssPx": 2.625,
+        "deltaCssPx": [
+          -64,
+          0
+        ],
+        "expected": {
+          "deltaCssPx": [
+            -64,
+            0
+          ],
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "inner": [
+            22,
+            106
+          ]
+        },
+        "offsets": {
+          "revision": 2,
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "inner": [
+            22,
+            106
+          ]
+        },
+        "processId": 10679,
+        "renderer": "I/SpinonBootstrap(10679): SPINON_C0410_RENDERER=backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=1050x630 selection=auto",
+        "queueSequence": 1,
+        "target": 7,
+        "drawRevision": 2,
+        "helperLifecycle": [
+          "device-created screen=362,982 hscroll=-1 vscroll=0 control=none",
+          "device-destroyed"
+        ],
+        "screenshotSha256": null,
+        "surfaceBoundsBefore": {
+          "left": 15,
+          "top": 688,
+          "right": 1065,
+          "bottom": 1318
+        }
+      },
+      {
+        "name": "v-positive",
+        "screenPointPx": [
+          362,
+          982
+        ],
+        "targetCssPx": [
+          132,
+          112
+        ],
+        "input": {
+          "source": "virtual-uinput-mouse",
+          "action": "ACTION_SCROLL",
+          "hscroll": 0,
+          "vscroll": 1
+        },
+        "observedPointCssPx": [
+          132.19048,
+          112
+        ],
+        "factorsPx": [
+          168,
+          168
+        ],
+        "scalePxPerCssPx": 2.625,
+        "deltaCssPx": [
+          0,
+          -64
+        ],
+        "expected": {
+          "deltaCssPx": [
+            0,
+            -64
+          ],
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "inner": [
+            86,
+            42
+          ]
+        },
+        "offsets": {
+          "revision": 2,
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "inner": [
+            86,
+            42
+          ]
+        },
+        "processId": 10755,
+        "renderer": "I/SpinonBootstrap(10755): SPINON_C0410_RENDERER=backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=1050x630 selection=auto",
+        "queueSequence": 1,
+        "target": 7,
+        "drawRevision": 2,
+        "helperLifecycle": [
+          "device-created screen=362,982 hscroll=0 vscroll=1 control=none",
+          "device-destroyed"
+        ],
+        "screenshotSha256": null,
+        "surfaceBoundsBefore": {
+          "left": 15,
+          "top": 688,
+          "right": 1065,
+          "bottom": 1318
+        }
+      },
+      {
+        "name": "v-negative",
+        "screenPointPx": [
+          362,
+          982
+        ],
+        "targetCssPx": [
+          132,
+          112
+        ],
+        "input": {
+          "source": "virtual-uinput-mouse",
+          "action": "ACTION_SCROLL",
+          "hscroll": 0,
+          "vscroll": -1
+        },
+        "observedPointCssPx": [
+          132.19048,
+          112
+        ],
+        "factorsPx": [
+          168,
+          168
+        ],
+        "scalePxPerCssPx": 2.625,
+        "deltaCssPx": [
+          0,
+          64
+        ],
+        "expected": {
+          "deltaCssPx": [
+            0,
+            64
+          ],
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            64
+          ],
+          "inner": [
+            86,
+            106
+          ]
+        },
+        "offsets": {
+          "revision": 2,
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            64
+          ],
+          "inner": [
+            86,
+            106
+          ]
+        },
+        "processId": 10834,
+        "renderer": "I/SpinonBootstrap(10834): SPINON_C0410_RENDERER=backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=1050x630 selection=auto",
+        "queueSequence": 1,
+        "target": 7,
+        "drawRevision": 2,
+        "helperLifecycle": [
+          "device-created screen=362,982 hscroll=0 vscroll=-1 control=none",
+          "device-destroyed"
+        ],
+        "screenshotSha256": null,
+        "surfaceBoundsBefore": {
+          "left": 15,
+          "top": 688,
+          "right": 1065,
+          "bottom": 1318
+        }
+      },
+      {
+        "name": "diagonal-positive-positive",
+        "screenPointPx": [
+          362,
+          982
+        ],
+        "targetCssPx": [
+          132,
+          112
+        ],
+        "input": {
+          "source": "virtual-uinput-mouse",
+          "action": "ACTION_SCROLL",
+          "hscroll": 1,
+          "vscroll": 1
+        },
+        "observedPointCssPx": [
+          132.19048,
+          112
+        ],
+        "factorsPx": [
+          168,
+          168
+        ],
+        "scalePxPerCssPx": 2.625,
+        "deltaCssPx": [
+          64,
+          -64
+        ],
+        "expected": {
+          "deltaCssPx": [
+            64,
+            -64
+          ],
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            64,
+            0
+          ],
+          "inner": [
+            86,
+            42
+          ]
+        },
+        "offsets": {
+          "revision": 2,
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            64,
+            0
+          ],
+          "inner": [
+            86,
+            42
+          ]
+        },
+        "processId": 10911,
+        "renderer": "I/SpinonBootstrap(10911): SPINON_C0410_RENDERER=backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=1050x630 selection=auto",
+        "queueSequence": 1,
+        "target": 7,
+        "drawRevision": 2,
+        "helperLifecycle": [
+          "device-created screen=362,982 hscroll=1 vscroll=1 control=none",
+          "device-destroyed"
+        ],
+        "pixelComparison": {
+          "comparedPixels": 661500,
+          "changedPixels": 50684,
+          "outsideChangedPixels": 0,
+          "insideChangedPixels": 50684,
+          "mode": "scroll"
+        },
+        "screenshotSha256": {
+          "before": "84a0fbebfc2d221e3617f4d6e329f78d9a900a6d407f1f6b19be04f7d3bfc584",
+          "after": "434d3e85619fde1b94ae7bf037d936cf7da5447b71408a85d7fc3742cb8241b0"
+        },
+        "surfaceBoundsBefore": {
+          "left": 15,
+          "top": 688,
+          "right": 1065,
+          "bottom": 1318
+        },
+        "surfaceBoundsAfter": {
+          "left": 15,
+          "top": 692,
+          "right": 1065,
+          "bottom": 1322
+        }
+      },
+      {
+        "name": "diagonal-negative-negative",
+        "screenPointPx": [
+          362,
+          982
+        ],
+        "targetCssPx": [
+          132,
+          112
+        ],
+        "input": {
+          "source": "virtual-uinput-mouse",
+          "action": "ACTION_SCROLL",
+          "hscroll": -1,
+          "vscroll": -1
+        },
+        "observedPointCssPx": [
+          132.19048,
+          112
+        ],
+        "factorsPx": [
+          168,
+          168
+        ],
+        "scalePxPerCssPx": 2.625,
+        "deltaCssPx": [
+          -64,
+          64
+        ],
+        "expected": {
+          "deltaCssPx": [
+            -64,
+            64
+          ],
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            64
+          ],
+          "inner": [
+            22,
+            106
+          ]
+        },
+        "offsets": {
+          "revision": 2,
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            64
+          ],
+          "inner": [
+            22,
+            106
+          ]
+        },
+        "processId": 10999,
+        "renderer": "I/SpinonBootstrap(10999): SPINON_C0410_RENDERER=backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=1050x630 selection=auto",
+        "queueSequence": 1,
+        "target": 7,
+        "drawRevision": 2,
+        "helperLifecycle": [
+          "device-created screen=362,982 hscroll=-1 vscroll=-1 control=none",
+          "device-destroyed"
+        ],
+        "screenshotSha256": null,
+        "surfaceBoundsBefore": {
+          "left": 15,
+          "top": 688,
+          "right": 1065,
+          "bottom": 1318
+        }
+      },
+      {
+        "name": "diagonal-positive-negative",
+        "screenPointPx": [
+          362,
+          982
+        ],
+        "targetCssPx": [
+          132,
+          112
+        ],
+        "input": {
+          "source": "virtual-uinput-mouse",
+          "action": "ACTION_SCROLL",
+          "hscroll": 1,
+          "vscroll": -1
+        },
+        "observedPointCssPx": [
+          132.19048,
+          112
+        ],
+        "factorsPx": [
+          168,
+          168
+        ],
+        "scalePxPerCssPx": 2.625,
+        "deltaCssPx": [
+          64,
+          64
+        ],
+        "expected": {
+          "deltaCssPx": [
+            64,
+            64
+          ],
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            64,
+            64
+          ],
+          "inner": [
+            86,
+            106
+          ]
+        },
+        "offsets": {
+          "revision": 2,
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            64,
+            64
+          ],
+          "inner": [
+            86,
+            106
+          ]
+        },
+        "processId": 11072,
+        "renderer": "I/SpinonBootstrap(11072): SPINON_C0410_RENDERER=backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=1050x630 selection=auto",
+        "queueSequence": 1,
+        "target": 7,
+        "drawRevision": 2,
+        "helperLifecycle": [
+          "device-created screen=362,982 hscroll=1 vscroll=-1 control=none",
+          "device-destroyed"
+        ],
+        "screenshotSha256": null,
+        "surfaceBoundsBefore": {
+          "left": 15,
+          "top": 688,
+          "right": 1065,
+          "bottom": 1318
+        }
+      },
+      {
+        "name": "diagonal-negative-positive",
+        "screenPointPx": [
+          362,
+          982
+        ],
+        "targetCssPx": [
+          132,
+          112
+        ],
+        "input": {
+          "source": "virtual-uinput-mouse",
+          "action": "ACTION_SCROLL",
+          "hscroll": -1,
+          "vscroll": 1
+        },
+        "observedPointCssPx": [
+          132.19048,
+          112
+        ],
+        "factorsPx": [
+          168,
+          168
+        ],
+        "scalePxPerCssPx": 2.625,
+        "deltaCssPx": [
+          -64,
+          -64
+        ],
+        "expected": {
+          "deltaCssPx": [
+            -64,
+            -64
+          ],
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "inner": [
+            22,
+            42
+          ]
+        },
+        "offsets": {
+          "revision": 2,
+          "root": [
+            0,
+            0
+          ],
+          "outer": [
+            0,
+            0
+          ],
+          "inner": [
+            22,
+            42
+          ]
+        },
+        "processId": 11153,
+        "renderer": "I/SpinonBootstrap(11153): SPINON_C0410_RENDERER=backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=1050x630 selection=auto",
+        "queueSequence": 1,
+        "target": 7,
+        "drawRevision": 2,
+        "helperLifecycle": [
+          "device-created screen=362,982 hscroll=-1 vscroll=1 control=none",
+          "device-destroyed"
+        ],
+        "screenshotSha256": null,
+        "surfaceBoundsBefore": {
+          "left": 15,
+          "top": 688,
+          "right": 1065,
+          "bottom": 1318
+        }
+      }
+    ]
+  },
+  "controlWheelRejections": [
+    {
+      "name": "left-horizontal",
+      "source": "virtual-uinput-mouse",
+      "hscroll": 1,
+      "vscroll": 0,
+      "rejection": "I/SpinonBootstrap(11227): SPINON_C133_NATIVE_WHEEL_REJECT reason=control-wheel source=MouseWheel hscroll=1.0 vscroll=0.0 meta=12288 modifiers=2 event_source_bits=0x2002 pointer_count=1 pointer_tool=mouse pointer_tool_type=3 device_supported_source_bits=0x2103 device=101",
+      "queueOrProcess": false,
+      "revision": 1,
+      "processId": 11227,
+      "offsets": [
+        0,
+        0,
+        0,
+        0,
+        86,
+        106
+      ],
+      "helperLifecycle": [
+        "device-created screen=362,982 hscroll=1 vscroll=0 control=left",
+        "device-destroyed"
+      ],
+      "pixelComparison": {
+        "comparedPixels": 661500,
+        "changedPixels": 0,
+        "outsideChangedPixels": 0,
+        "insideChangedPixels": 0,
+        "mode": "reject"
+      },
+      "screenshotSha256": {
+        "before": "84a0fbebfc2d221e3617f4d6e329f78d9a900a6d407f1f6b19be04f7d3bfc584",
+        "after": "84a0fbebfc2d221e3617f4d6e329f78d9a900a6d407f1f6b19be04f7d3bfc584"
+      }
+    },
+    {
+      "name": "left-vertical",
+      "source": "virtual-uinput-mouse",
+      "hscroll": 0,
+      "vscroll": 1,
+      "rejection": "I/SpinonBootstrap(11314): SPINON_C133_NATIVE_WHEEL_REJECT reason=control-wheel source=MouseWheel hscroll=0.0 vscroll=1.0 meta=12288 modifiers=2 event_source_bits=0x2002 pointer_count=1 pointer_tool=mouse pointer_tool_type=3 device_supported_source_bits=0x2103 device=102",
+      "queueOrProcess": false,
+      "revision": 1,
+      "processId": 11314,
+      "offsets": [
+        0,
+        0,
+        0,
+        0,
+        86,
+        106
+      ],
+      "helperLifecycle": [
+        "device-created screen=362,982 hscroll=0 vscroll=1 control=left",
+        "device-destroyed"
+      ],
+      "screenshotSha256": null
+    },
+    {
+      "name": "right-horizontal",
+      "source": "virtual-uinput-mouse",
+      "hscroll": 1,
+      "vscroll": 0,
+      "rejection": "I/SpinonBootstrap(11390): SPINON_C133_NATIVE_WHEEL_REJECT reason=control-wheel source=MouseWheel hscroll=1.0 vscroll=0.0 meta=20480 modifiers=2 event_source_bits=0x2002 pointer_count=1 pointer_tool=mouse pointer_tool_type=3 device_supported_source_bits=0x2103 device=103",
+      "queueOrProcess": false,
+      "revision": 1,
+      "processId": 11390,
+      "offsets": [
+        0,
+        0,
+        0,
+        0,
+        86,
+        106
+      ],
+      "helperLifecycle": [
+        "device-created screen=362,982 hscroll=1 vscroll=0 control=right",
+        "device-destroyed"
+      ],
+      "screenshotSha256": null
+    },
+    {
+      "name": "right-vertical",
+      "source": "virtual-uinput-mouse",
+      "hscroll": 0,
+      "vscroll": 1,
+      "rejection": "I/SpinonBootstrap(11462): SPINON_C133_NATIVE_WHEEL_REJECT reason=control-wheel source=MouseWheel hscroll=0.0 vscroll=1.0 meta=20480 modifiers=2 event_source_bits=0x2002 pointer_count=1 pointer_tool=mouse pointer_tool_type=3 device_supported_source_bits=0x2103 device=104",
+      "queueOrProcess": false,
+      "revision": 1,
+      "processId": 11462,
+      "offsets": [
+        0,
+        0,
+        0,
+        0,
+        86,
+        106
+      ],
+      "helperLifecycle": [
+        "device-created screen=362,982 hscroll=0 vscroll=1 control=right",
+        "device-destroyed"
+      ],
+      "screenshotSha256": null
+    }
+  ],
+  "classifierTest": {
+    "command": "mise exec -- node --test tools/css-reference/c13-3-native-wheel-source-classifier.test.mjs",
+    "output": "✔ Android wheel source classification rejects device-union misclassification (260.652083ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 295.767\n"
+  },
+  "limits": [
+    "Android 10/API 29 Google APIs ARM64 AVD의 opt-in fixture만 검증했다.",
+    "Linux uinput virtual mouse를 사용했으며 physical mouse, external trackpad, real device 입력이 아니다.",
+    "AVD software renderer 결과이며 hardware GPU나 compositor 이후 scanout 근거가 아니다.",
+    "iOS callback/sign/adapter, public DOM events, Android API 28 이하, C13.3 전체 완료를 증명하지 않는다."
+  ]
+}

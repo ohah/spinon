@@ -1,0 +1,21 @@
+{
+  "sourceRevision": "824b28dd90b00f67d93de7504ecab84969e0d3bc",
+  "sourceFingerprint": "ee0b7e0334b23e7666a2aef81a8f7523e7715dd43242afef58e6858c4695a576",
+  "helper": {
+    "source": "tools/css-reference/fixtures/c13_3_android_wheel_uinput.c",
+    "sourceSha256": "34753fc2bd907459860c69901488ad61cad47bcd064a2d42f7feb1046f71428b",
+    "binarySha256": "b981bf58949d4dd04c454cc82e44a0fc238cfb2fe3ac493a2c623ca931751de4",
+    "ndkVersion": "27.1.12297006",
+    "clang": "toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android29-clang"
+  },
+  "sourceFileSha256": {
+    "plan/c13-3-native-wheel-input.md": "e1e360b7246404aa8d84c514500136ab8a98fd1bb6b906e1fa1d8d6055860e46",
+    "spec/internal/evidence/c13-3-native-wheel-api29-2026-10-17/precomparison.md": "c6a437558767f46d0cec9a661bc6ff296affe313c563affc1fbf1c1e1c963cba",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "90f451fe17dfc2893745d87ada2659014054492282a1850907433235e223a441",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/WheelSourceClassifier.java": "bca40039968fa54d4e35fced98dad335f6347bf1b3c762feb7a56cd1766695fb",
+    "tools/android-ndk-version.txt": "6b692d67e8fa29d1a7701a2fa0fb4bed4b6385bf42c36a0d5e51313a74dfa2a8",
+    "tools/css-reference/capture-c13-3-android-api29-wheel-runtime.mjs": "8723ac23aef21f4c283c4a9f3c7251f252800500ca9c99f2163f6c4bb74f6465",
+    "tools/css-reference/fixtures/c13_3_android_wheel_uinput.c": "34753fc2bd907459860c69901488ad61cad47bcd064a2d42f7feb1046f71428b"
+  },
+  "apkSha256": "94fa826e43c616486ab8b2e9a30bf01e714a3ff821801951136f919ba4491ff1"
+}
