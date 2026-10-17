@@ -2592,10 +2592,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 #endif
         if c153GlyphPaintProbeRequested {
             let report = result ?? "status=-1 missing-report"
+            let hitTest = reportField(report, "hit_test=")
             log("SPINON_C153_EVAL_RUN \(runtimeStatusSummary(report))")
+            log("SPINON_C153_HITTEST \(hitTest)")
             guard report.hasPrefix("status=0 "),
                   report.contains("c15_3_text=attached"),
-                  report.contains("glyphs=") else {
+                  report.contains("glyphs="),
+                  hitTest == "visible_owner;hidden_inside_owner;hidden_outside_excludes_hidden_owner" else {
                 postStatus("실패 · C15.3 glyph paint command가 runtime snapshot에 제출되지 않았습니다")
                 return
             }
