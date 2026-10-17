@@ -1,0 +1,77 @@
+{
+  "schema": "spinon-c13-1-raw-log-preservation/v1",
+  "entries": [
+    {
+      "readableFile": "spec/internal/evidence/c13-1-android-avd-full-surface-2026-10-18/c13-1-android-avd-20261017T162707943Z-e428a27d/runtime.log",
+      "rawGzipFile": "spec/internal/evidence/c13-1-android-avd-full-surface-2026-10-18/c13-1-android-avd-20261017T162707943Z-e428a27d/runtime.log.raw.gz",
+      "originalBytes": 63007,
+      "originalSha256": "f2af3ffbfe7e684fd28e0c9e8de76109d52f264d4e1b5da34e94273ea23a9333",
+      "rawGzipSha256": "a98747cbb496a57c9120d9b844d69d66758c58cc1ea2be12b0e69fa5a0a948d4",
+      "readableSha256": "31240792bca303f37dc692ffd207118a08aaee86a9baa6f55404576c6311689b",
+      "normalization": "trailing spaces and tabs removed from line ends; exact original bytes are in rawGzipFile"
+    },
+    {
+      "readableFile": "spec/internal/evidence/c13-1-android-avd-full-surface-2026-10-18/c13-1-android-avd-20261017T164604252Z-fb38334a/runtime.log",
+      "rawGzipFile": "spec/internal/evidence/c13-1-android-avd-full-surface-2026-10-18/c13-1-android-avd-20261017T164604252Z-fb38334a/runtime.log.raw.gz",
+      "originalBytes": 59444,
+      "originalSha256": "5182bf388a7e1d343c943192ab24c74e0ea2b611e970d82bd29dc8a317ebdfdd",
+      "rawGzipSha256": "84b455dacdaf03ad33bbf2e397882477ae8fed7b0bd5f7b3015cf5ca9e343839",
+      "readableSha256": "66e1989daa357da4e6e2bca4f4dc9efc3098a2547624c63758302cda182ddc65",
+      "normalization": "trailing spaces and tabs removed from line ends; exact original bytes are in rawGzipFile"
+    },
+    {
+      "readableFile": "spec/internal/evidence/c13-1-ios-full-physical-pixels-2026-10-18/c13-1-ios-full-physical-20261017T160010891Z-5a6b2c13/build.log",
+      "rawGzipFile": "spec/internal/evidence/c13-1-ios-full-physical-pixels-2026-10-18/c13-1-ios-full-physical-20261017T160010891Z-5a6b2c13/build.log.raw.gz",
+      "originalBytes": 78616,
+      "originalSha256": "247c20b4a77ec5128308c90952fdc3d0ed4c09f04a3d8907136ee3bffae4fa77",
+      "rawGzipSha256": "1cf554d2f761d58e486ac6768271380d589ce8bd0f44129f0065d09a530a95e2",
+      "readableSha256": "dd7e5837ee3a4a03623e211c57989a1bfa1294f9a64a9764fea69ba50c9616d6",
+      "normalization": "trailing spaces and tabs removed from line ends; exact original bytes are in rawGzipFile"
+    },
+    {
+      "readableFile": "spec/internal/evidence/c13-1-ios-full-physical-pixels-2026-10-18/c13-1-ios-full-physical-20261017T160218556Z-091a38b3/build.log",
+      "rawGzipFile": "spec/internal/evidence/c13-1-ios-full-physical-pixels-2026-10-18/c13-1-ios-full-physical-20261017T160218556Z-091a38b3/build.log.raw.gz",
+      "originalBytes": 90267,
+      "originalSha256": "5f6988a92fa1a05fdde082a71109bdfc5fce2f1e483355bdc65f2a836b1fc355",
+      "rawGzipSha256": "cea805496953abf5d28076d09a28ad381fb5268a19483f0fff7a0a577d506862",
+      "readableSha256": "9b7c98c31441453b4b90763cb7a1360cdde842ad45f0a3a1600f8381f2bf05a3",
+      "normalization": "trailing spaces and tabs removed from line ends; exact original bytes are in rawGzipFile"
+    },
+    {
+      "readableFile": "spec/internal/evidence/c13-1-ios-full-physical-pixels-2026-10-18/c13-1-ios-full-physical-20261017T160249551Z-8a3e593d/build.log",
+      "rawGzipFile": "spec/internal/evidence/c13-1-ios-full-physical-pixels-2026-10-18/c13-1-ios-full-physical-20261017T160249551Z-8a3e593d/build.log.raw.gz",
+      "originalBytes": 108917,
+      "originalSha256": "60c334578b25d828698e81925fce76220f6ac9b8e80d543ad6518e15ed20f560",
+      "rawGzipSha256": "044aab66f7c881d350594a44b9da0fb6970f04487ff99de30509ac89ee1fdacd",
+      "readableSha256": "49f0a9106d26a4cffe279a22f062583ed9945961fc75aff21e16d4e0eba1bd5b",
+      "normalization": "trailing spaces and tabs removed from line ends; exact original bytes are in rawGzipFile"
+    },
+    {
+      "readableFile": "spec/internal/evidence/c13-1-ios-full-physical-pixels-2026-10-18/c13-1-ios-full-physical-20261017T161458085Z-7443dc46/build.log",
+      "rawGzipFile": "spec/internal/evidence/c13-1-ios-full-physical-pixels-2026-10-18/c13-1-ios-full-physical-20261017T161458085Z-7443dc46/build.log.raw.gz",
+      "originalBytes": 65017,
+      "originalSha256": "a2f1cb297db11747db117ae70d222d0a43a08277041cf743e21d5a72d55e8fac",
+      "rawGzipSha256": "7f5a9a510ebf66e4846bd831cd2fd5b6242734f8455b5738779dab9819da042a",
+      "readableSha256": "e1e7e9d45dd068a3ed53b8d7e008fe1d95c44a76c1cf27fa8e616cc4782db97c",
+      "normalization": "trailing spaces and tabs removed from line ends; exact original bytes are in rawGzipFile"
+    },
+    {
+      "readableFile": "spec/internal/evidence/c13-1-ios-full-physical-pixels-2026-10-18/c13-1-ios-full-physical-20261017T162023620Z-e570891e/build.log",
+      "rawGzipFile": "spec/internal/evidence/c13-1-ios-full-physical-pixels-2026-10-18/c13-1-ios-full-physical-20261017T162023620Z-e570891e/build.log.raw.gz",
+      "originalBytes": 91091,
+      "originalSha256": "087b9faffe0299046784ab0e34e8ed81a32f1266b133fb3623a2b211acf9764e",
+      "rawGzipSha256": "c7f3b6aee2916b3397a1926ffff45ffc064224631f897544d9fbd9b5905de96c",
+      "readableSha256": "6b561c551f99865fe56acb4db8b096b2431ce6c0dc86613eadba6377c47f4480",
+      "normalization": "trailing spaces and tabs removed from line ends; exact original bytes are in rawGzipFile"
+    },
+    {
+      "readableFile": "spec/internal/evidence/c13-1-ios-full-physical-pixels-2026-10-18/c13-1-ios-full-physical-20261017T164128008Z-b6ae6818/build.log",
+      "rawGzipFile": "spec/internal/evidence/c13-1-ios-full-physical-pixels-2026-10-18/c13-1-ios-full-physical-20261017T164128008Z-b6ae6818/build.log.raw.gz",
+      "originalBytes": 65017,
+      "originalSha256": "61296a3e009732ea065b362e4a14bad053e099ee0907324ee1d6ca67553618f1",
+      "rawGzipSha256": "e8b09addc18837fdc961ffd2a5aa75cbb83a549e9089ca3774f60fac9070fe6a",
+      "readableSha256": "6682ff480a229d71ca6be5281480a4227f1ebb36a4ee113e1e70d938369aaefc",
+      "normalization": "trailing spaces and tabs removed from line ends; exact original bytes are in rawGzipFile"
+    }
+  ]
+}

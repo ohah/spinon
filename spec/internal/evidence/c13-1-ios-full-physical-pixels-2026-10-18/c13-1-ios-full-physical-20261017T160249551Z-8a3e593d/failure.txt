@@ -1,0 +1,8 @@
+AssertionError [ERR_ASSERTION]: run-1: Chrome 155 exact RGBA comparison
++ actual - expected
+
++ 'mismatch'
+- 'matched'
+
+    at captureSuccessfulRun (file:///private/tmp/spinon-c13-1-full-physical-pixels-20261018/tools/css-reference/capture-c13-1-ios-metal-pixel-centers.mjs:248:10)
+    at async main (file:///private/tmp/spinon-c13-1-full-physical-pixels-20261018/tools/css-reference/capture-c13-1-ios-metal-pixel-centers.mjs:376:20)

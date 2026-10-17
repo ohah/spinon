@@ -1,0 +1,7 @@
+AssertionError [ERR_ASSERTION]: The input did not match the regular expression /^[a-f0-9]{32}$/. Input:
+
+'1a356eaabdc3'
+
+    at compareAndroidPixelCopyPng (file:///private/tmp/spinon-c13-1-full-physical-pixels-20261018/tools/css-reference/compare-c13-1-full-physical-pixels.mjs:139:10)
+    at compareAndroidPixelCopyFiles (file:///private/tmp/spinon-c13-1-full-physical-pixels-20261018/tools/css-reference/compare-c13-1-full-physical-pixels.mjs:310:22)
+    at main (file:///private/tmp/spinon-c13-1-full-physical-pixels-20261018/tools/css-reference/capture-c13-1-android-avd-full-surface.mjs:206:30)
