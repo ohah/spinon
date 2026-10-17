@@ -1,0 +1,1657 @@
+{
+  "generated_at": "2026-10-17T12:41:33.013592+00:00",
+  "source_base_commit": "360a33a7e77b284ef9e4bdab2d12e3e8cd924053",
+  "preview_url": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "local_preview_url": "http://127.0.0.1:8768/spinon/",
+  "preview_root": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "backup_root": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-runtime-roadmap-correction-2026-10-17",
+  "copy_only": true,
+  "deletions": [],
+  "file_count": 137,
+  "files": [
+    {
+      "path": "0001-conformance.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/0001-conformance.html",
+      "bytes": 32549,
+      "sha256": "70f3d677351f4d7116cfe6e0b24ec9b96acfc4e1d9ad3ba7f1ae8849f0b3aa90",
+      "previous": {
+        "bytes": 32549,
+        "sha256": "70f3d677351f4d7116cfe6e0b24ec9b96acfc4e1d9ad3ba7f1ae8849f0b3aa90"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "0001-conformance.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/0001-conformance.md",
+      "bytes": 13381,
+      "sha256": "3a1f6477f68d9842577b14ad4180415c1b843a565e6b830925fb2e7c39c1656e",
+      "previous": {
+        "bytes": 13381,
+        "sha256": "3a1f6477f68d9842577b14ad4180415c1b843a565e6b830925fb2e7c39c1656e"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "0002-ui-tree-events.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/0002-ui-tree-events.html",
+      "bytes": 31148,
+      "sha256": "6f5662ba06eac42de054cddf5b9a9243a5ef33acfd1a8d1ffe9189a295bacd20",
+      "previous": {
+        "bytes": 31148,
+        "sha256": "6f5662ba06eac42de054cddf5b9a9243a5ef33acfd1a8d1ffe9189a295bacd20"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "0002-ui-tree-events.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/0002-ui-tree-events.md",
+      "bytes": 12429,
+      "sha256": "fd47b76508c3dcac4ec19f33c0ae1bb2a5b8d8916da42ff60775799da54c98d1",
+      "previous": {
+        "bytes": 12429,
+        "sha256": "fd47b76508c3dcac4ec19f33c0ae1bb2a5b8d8916da42ff60775799da54c98d1"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "0003-web-surface.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/0003-web-surface.html",
+      "bytes": 40701,
+      "sha256": "8193472f172ede182f66f651790b93a39dce20b55b373eb1a83afe94a1ca50a5",
+      "previous": {
+        "bytes": 40701,
+        "sha256": "8193472f172ede182f66f651790b93a39dce20b55b373eb1a83afe94a1ca50a5"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "0003-web-surface.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/0003-web-surface.md",
+      "bytes": 17271,
+      "sha256": "360ebbb872af7ce3f03cca016922f04179a9dd3160109ed5c568cce29343dfc8",
+      "previous": {
+        "bytes": 17271,
+        "sha256": "360ebbb872af7ce3f03cca016922f04179a9dd3160109ed5c568cce29343dfc8"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "0004-runtime-build.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/0004-runtime-build.html",
+      "bytes": 30114,
+      "sha256": "068d4ac6ed2a550267a0f15bdf56cf1ddcc1264fbb6f04b948d107c06d554152",
+      "previous": {
+        "bytes": 30114,
+        "sha256": "068d4ac6ed2a550267a0f15bdf56cf1ddcc1264fbb6f04b948d107c06d554152"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "0004-runtime-build.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/0004-runtime-build.md",
+      "bytes": 11551,
+      "sha256": "5a309d7c7367c06a17291218a2bc0f6fc5a4db9017a87db5dc38c19c1c719ad2",
+      "previous": {
+        "bytes": 11551,
+        "sha256": "5a309d7c7367c06a17291218a2bc0f6fc5a4db9017a87db5dc38c19c1c719ad2"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "0005-developer-tools.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/0005-developer-tools.html",
+      "bytes": 20267,
+      "sha256": "1f5ff4b444a6038e2c037f9cf56a72fe3862bfdc2fd5e521a4e7eee481af5ab1",
+      "previous": {
+        "bytes": 20267,
+        "sha256": "1f5ff4b444a6038e2c037f9cf56a72fe3862bfdc2fd5e521a4e7eee481af5ab1"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "0005-developer-tools.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/0005-developer-tools.md",
+      "bytes": 3064,
+      "sha256": "da919d0647495285ca2130bb3ea4e7203483b313d3d91ea21b80d1ade7265eb7",
+      "previous": {
+        "bytes": 3064,
+        "sha256": "da919d0647495285ca2130bb3ea4e7203483b313d3d91ea21b80d1ade7265eb7"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "0006-routing.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/0006-routing.html",
+      "bytes": 25110,
+      "sha256": "d76a7a4841e7349c6b93f71dc598bafb4e90dcba3bc72393e6c3d873bf4e8975",
+      "previous": {
+        "bytes": 25110,
+        "sha256": "d76a7a4841e7349c6b93f71dc598bafb4e90dcba3bc72393e6c3d873bf4e8975"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "0006-routing.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/0006-routing.md",
+      "bytes": 6484,
+      "sha256": "0df790085427f70c7e84e5b878193d1139474140c11f7e71649aa1d69ad62858",
+      "previous": {
+        "bytes": 6484,
+        "sha256": "0df790085427f70c7e84e5b878193d1139474140c11f7e71649aa1d69ad62858"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "0007-dom-compatibility.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/0007-dom-compatibility.html",
+      "bytes": 36684,
+      "sha256": "b7083c894cf66d9e8b7a536f6ace13e64ee6dfbda5c8fc5612c8f3cd3f723031",
+      "previous": {
+        "bytes": 36684,
+        "sha256": "b7083c894cf66d9e8b7a536f6ace13e64ee6dfbda5c8fc5612c8f3cd3f723031"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "0007-dom-compatibility.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/0007-dom-compatibility.md",
+      "bytes": 14621,
+      "sha256": "b9a6ef511c302882b01eecb67e078c83f065c56be810a29f5a0a90d0497ce5b2",
+      "previous": {
+        "bytes": 14621,
+        "sha256": "b9a6ef511c302882b01eecb67e078c83f065c56be810a29f5a0a90d0497ce5b2"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "404.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/404.html",
+      "bytes": 8512,
+      "sha256": "acd3b4f33581f1b68c3ec2c25dbff8135526719b6df0367a4c6fea0ba00745b8",
+      "previous": {
+        "bytes": 8512,
+        "sha256": "acd3b4f33581f1b68c3ec2c25dbff8135526719b6df0367a4c6fea0ba00745b8"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "README.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/README.html",
+      "bytes": 23053,
+      "sha256": "a41442c1879de2826f76eeb4fe7dc997d073a4b16e61e4902b67689e6d31ffd8",
+      "previous": {
+        "bytes": 23053,
+        "sha256": "a41442c1879de2826f76eeb4fe7dc997d073a4b16e61e4902b67689e6d31ffd8"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "README.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/README.md",
+      "bytes": 3721,
+      "sha256": "9ba0f43d492f7826b0d4e4669545fd832f41411a45d571368adea46bb7caa705",
+      "previous": {
+        "bytes": 3721,
+        "sha256": "9ba0f43d492f7826b0d4e4669545fd832f41411a45d571368adea46bb7caa705"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "STATUS.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/STATUS.html",
+      "bytes": 343853,
+      "sha256": "02e540f66d8296fdadd9478bd74570b39099dd24b030312b74e005522bcb967e",
+      "previous": {
+        "bytes": 343853,
+        "sha256": "02e540f66d8296fdadd9478bd74570b39099dd24b030312b74e005522bcb967e"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "STATUS.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/STATUS.md",
+      "bytes": 264585,
+      "sha256": "8bf4e89b6f1b58e65a5db47f9c73ccf5f0810f58e301771ddba7caa68c33b5bd",
+      "previous": {
+        "bytes": 264585,
+        "sha256": "8bf4e89b6f1b58e65a5db47f9c73ccf5f0810f58e301771ddba7caa68c33b5bd"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "api/README.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/api/README.html",
+      "bytes": 17831,
+      "sha256": "1a8a7be18bc279c26eaa27e8e988ac442bddbbeacc40051e99b85a50bce02378",
+      "previous": {
+        "bytes": 17831,
+        "sha256": "1a8a7be18bc279c26eaa27e8e988ac442bddbbeacc40051e99b85a50bce02378"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "api/README.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/api/README.md",
+      "bytes": 1454,
+      "sha256": "909ec97da2c166a0a9494542afd04cd79aa8dc739c9c28f735f6d3fb85e2903b",
+      "previous": {
+        "bytes": 1454,
+        "sha256": "909ec97da2c166a0a9494542afd04cd79aa8dc739c9c28f735f6d3fb85e2903b"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "api/index.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/api/index.html",
+      "bytes": 18782,
+      "sha256": "f49f2d91acbf07b293ed82619006f266d5c52e220c562b9dee25cc5eb3c9b234",
+      "previous": {
+        "bytes": 18782,
+        "sha256": "f49f2d91acbf07b293ed82619006f266d5c52e220c562b9dee25cc5eb3c9b234"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "api/index.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/api/index.md",
+      "bytes": 1978,
+      "sha256": "451dd2f9d6563c403c4e297d5224eba45c7a0fcaa4cf8dfdb1f1501fd30f1ce4",
+      "previous": {
+        "bytes": 1978,
+        "sha256": "451dd2f9d6563c403c4e297d5224eba45c7a0fcaa4cf8dfdb1f1501fd30f1ce4"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c10-3-3-android-physical-2026-10-11.png",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/c10-3-3-android-physical-2026-10-11.png",
+      "bytes": 194109,
+      "sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775",
+      "previous": {
+        "bytes": 194109,
+        "sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-depth-safety-2026-10-11.png",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/c12-4-android-api37-depth-safety-2026-10-11.png",
+      "bytes": 72745,
+      "sha256": "33704756e2d8758d73165b63d9fa67977e2c73965d057263d45821c7a416fdae",
+      "previous": {
+        "bytes": 72745,
+        "sha256": "33704756e2d8758d73165b63d9fa67977e2c73965d057263d45821c7a416fdae"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-depth-safety-matrix-2026-10-11.png",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/c12-4-android-api37-depth-safety-matrix-2026-10-11.png",
+      "bytes": 71213,
+      "sha256": "db8f307c59f677cde715075c0efad8ff9056bd7d39a424b5f912da326a1f06cc",
+      "previous": {
+        "bytes": 71213,
+        "sha256": "db8f307c59f677cde715075c0efad8ff9056bd7d39a424b5f912da326a1f06cc"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-emulator-2026-10-11.log",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/c12-4-android-api37-emulator-2026-10-11.log",
+      "bytes": 6079,
+      "sha256": "77adad2002dbeb251d90ce58ba3778e16fd4571601c90b4de407ba9db22b8259",
+      "previous": {
+        "bytes": 6079,
+        "sha256": "77adad2002dbeb251d90ce58ba3778e16fd4571601c90b4de407ba9db22b8259"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-emulator.png",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/c12-4-android-api37-emulator.png",
+      "bytes": 79987,
+      "sha256": "86d8840dc425d99b7cf7e161ef17089d68bc148da8bb7cafe892cf654201f8e5",
+      "previous": {
+        "bytes": 79987,
+        "sha256": "86d8840dc425d99b7cf7e161ef17089d68bc148da8bb7cafe892cf654201f8e5"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.json",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/c12-4-android-api37-matrix-2026-10-11.json",
+      "bytes": 926,
+      "sha256": "4b0f514d3f6b40cdb2dad06a089641c8cd0af8512669265ad9d5f5b9c2a16be2",
+      "previous": {
+        "bytes": 926,
+        "sha256": "4b0f514d3f6b40cdb2dad06a089641c8cd0af8512669265ad9d5f5b9c2a16be2"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.log",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/c12-4-android-api37-matrix-2026-10-11.log",
+      "bytes": 45719,
+      "sha256": "b8f1ed1a8f1bae6d08202e44ee5e24e4c3befa916c5262a5915f6cdf664f6eca",
+      "previous": {
+        "bytes": 45719,
+        "sha256": "b8f1ed1a8f1bae6d08202e44ee5e24e4c3befa916c5262a5915f6cdf664f6eca"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.png",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/c12-4-android-api37-matrix-2026-10-11.png",
+      "bytes": 71121,
+      "sha256": "a56c210a9b45f2289e4595b86430a496cfabc8177f21499ee5d63405ca45b23f",
+      "previous": {
+        "bytes": 71121,
+        "sha256": "a56c210a9b45f2289e4595b86430a496cfabc8177f21499ee5d63405ca45b23f"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.log",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.log",
+      "bytes": 43037,
+      "sha256": "23920b6b1a2a274e609d028b4be8c50cb3811f82a414a95a7820b556390e7bf0",
+      "previous": {
+        "bytes": 43037,
+        "sha256": "23920b6b1a2a274e609d028b4be8c50cb3811f82a414a95a7820b556390e7bf0"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.png",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.png",
+      "bytes": 70563,
+      "sha256": "dc5b919381d4fe3f71e564a1f24953a99446fd92d6902a4de0f8ee79eb9c2aa6",
+      "previous": {
+        "bytes": 70563,
+        "sha256": "dc5b919381d4fe3f71e564a1f24953a99446fd92d6902a4de0f8ee79eb9c2aa6"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.log",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/c12-4-android-api37-matrix-reserve-rerun-2026-10-11.log",
+      "bytes": 42930,
+      "sha256": "967b0572b40411b115e9a7ddf02f424a2e69948ec24d9ea5dda3158650b5269b",
+      "previous": {
+        "bytes": 42930,
+        "sha256": "967b0572b40411b115e9a7ddf02f424a2e69948ec24d9ea5dda3158650b5269b"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.png",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/c12-4-android-api37-matrix-reserve-rerun-2026-10-11.png",
+      "bytes": 71247,
+      "sha256": "183b3e38acf0bdd449a2d8613b2ce361afff558a8fec62a8c7a6aeb7deed28f5",
+      "previous": {
+        "bytes": 71247,
+        "sha256": "183b3e38acf0bdd449a2d8613b2ce361afff558a8fec62a8c7a6aeb7deed28f5"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-sm-s731n-android16-vulkan.png",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/c12-4-android-sm-s731n-android16-vulkan.png",
+      "bytes": 110882,
+      "sha256": "a60c2db2fa7ad194c9a210147c3827ed0ee11e831bf168da5297eb3df8a60dd4",
+      "previous": {
+        "bytes": 110882,
+        "sha256": "a60c2db2fa7ad194c9a210147c3827ed0ee11e831bf168da5297eb3df8a60dd4"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-ios-iphone-17-pro-depth-safety-2026-10-11.png",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/c12-4-ios-iphone-17-pro-depth-safety-2026-10-11.png",
+      "bytes": 142385,
+      "sha256": "bef6d91b248a580d120d0b47df26800b2ed218addd94674409deaecfc2eaf814",
+      "previous": {
+        "bytes": 142385,
+        "sha256": "bef6d91b248a580d120d0b47df26800b2ed218addd94674409deaecfc2eaf814"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-ios-iphone-17-pro-simulator.png",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/c12-4-ios-iphone-17-pro-simulator.png",
+      "bytes": 143083,
+      "sha256": "650f17bb3edda780d32f53f3980f417b7c5b340d862865ef5e0b4250091e372b",
+      "previous": {
+        "bytes": 143083,
+        "sha256": "650f17bb3edda780d32f53f3980f417b7c5b340d862865ef5e0b4250091e372b"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-runtime-evidence.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/c12-4-runtime-evidence.html",
+      "bytes": 14589,
+      "sha256": "64b118c6a84e690b4722d1e75d8b4e6d31588919e5b4a51a229e96808698aee7",
+      "previous": {
+        "bytes": 14589,
+        "sha256": "64b118c6a84e690b4722d1e75d8b4e6d31588919e5b4a51a229e96808698aee7"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-wpt-official-run-2026-10-11.log",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/c12-4-wpt-official-run-2026-10-11.log",
+      "bytes": 356,
+      "sha256": "9f9b4bf38f27fef6cb27d720726389f1bae382e88a383919e26dcb18cbfe6fab",
+      "previous": {
+        "bytes": 356,
+        "sha256": "9f9b4bf38f27fef6cb27d720726389f1bae382e88a383919e26dcb18cbfe6fab"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "icon.svg",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previous": {
+        "bytes": 638,
+        "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "index.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/index.html",
+      "bytes": 11827,
+      "sha256": "e96bdc2646acbcbe92064d7fcc3fe416db84344309bec4709e02f47f6e52302c",
+      "previous": {
+        "bytes": 11827,
+        "sha256": "e96bdc2646acbcbe92064d7fcc3fe416db84344309bec4709e02f47f6e52302c"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0077-c04-12-root-html-document.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/internal/0077-c04-12-root-html-document.html",
+      "bytes": 32870,
+      "sha256": "e877794d503cf88fd599abd70ea50dd346363eedaaa21c3bb281b46e21d3843f",
+      "previous": {
+        "bytes": 32870,
+        "sha256": "e877794d503cf88fd599abd70ea50dd346363eedaaa21c3bb281b46e21d3843f"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0077-c04-12-root-html-document.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/internal/0077-c04-12-root-html-document.md",
+      "bytes": 13031,
+      "sha256": "1664a4a81621627719497c9411a9a98614a9feb4faf37c46383d68877f36867d",
+      "previous": {
+        "bytes": 13031,
+        "sha256": "1664a4a81621627719497c9411a9a98614a9feb4faf37c46383d68877f36867d"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/README.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/internal/README.html",
+      "bytes": 156547,
+      "sha256": "9e8a1b3d7ee9e1fd55b26c2a7d5db127f6ea3c9c38edd14ca5c4347601b24a21",
+      "previous": {
+        "bytes": 156547,
+        "sha256": "9e8a1b3d7ee9e1fd55b26c2a7d5db127f6ea3c9c38edd14ca5c4347601b24a21"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/README.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/internal/README.md",
+      "bytes": 115717,
+      "sha256": "0ef8ad8356434c126e4fa59d58d1abc6d6fcc2b7b55b0ad239279e2616fe8403",
+      "previous": {
+        "bytes": 115717,
+        "sha256": "0ef8ad8356434c126e4fa59d58d1abc6d6fcc2b7b55b0ad239279e2616fe8403"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-asset-implementation-review-20-2026-10-17.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/internal/evidence/c04-12-root-html-asset-implementation-review-20-2026-10-17.html",
+      "bytes": 22931,
+      "sha256": "c5b36c6484638a71c96c89e5bdf891d9e9476f36bb87892133ca1e53113db3b8",
+      "previous": {
+        "bytes": 22931,
+        "sha256": "c5b36c6484638a71c96c89e5bdf891d9e9476f36bb87892133ca1e53113db3b8"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-asset-implementation-review-20-2026-10-17.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/internal/evidence/c04-12-root-html-asset-implementation-review-20-2026-10-17.md",
+      "bytes": 5270,
+      "sha256": "dd803f4591699b436009909965fcdef50b766326ec0ec7c8035a213409c419bd",
+      "previous": {
+        "bytes": 5270,
+        "sha256": "dd803f4591699b436009909965fcdef50b766326ec0ec7c8035a213409c419bd"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-asset-pr-diff-review-30-2026-10-17.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/internal/evidence/c04-12-root-html-asset-pr-diff-review-30-2026-10-17.html",
+      "bytes": 24610,
+      "sha256": "289ee75b009697da9b3ac2f9c6d866af3350d43e45d9a391384641ab04f14955",
+      "previous": {
+        "bytes": 24610,
+        "sha256": "289ee75b009697da9b3ac2f9c6d866af3350d43e45d9a391384641ab04f14955"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-asset-pr-diff-review-30-2026-10-17.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/internal/evidence/c04-12-root-html-asset-pr-diff-review-30-2026-10-17.md",
+      "bytes": 7080,
+      "sha256": "6fbe1d3486c4bd415baaa70cac65c64450b7afe80cc1c9d9622c0471db96c4df",
+      "previous": {
+        "bytes": 7080,
+        "sha256": "6fbe1d3486c4bd415baaa70cac65c64450b7afe80cc1c9d9622c0471db96c4df"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-2026-10-17/README.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/internal/evidence/c04-12-root-html-default-app-2026-10-17/README.html",
+      "bytes": 22320,
+      "sha256": "6b579a310cb6292d2932def85ec5e092c5c37d2170a882f186148cca898e13af",
+      "previous": {
+        "bytes": 22320,
+        "sha256": "6b579a310cb6292d2932def85ec5e092c5c37d2170a882f186148cca898e13af"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-2026-10-17/README.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/internal/evidence/c04-12-root-html-default-app-2026-10-17/README.md",
+      "bytes": 4726,
+      "sha256": "bd0159fc8180b5028906f721c0c5d1a8d7fd5858e5f517438a987f0238f3225d",
+      "previous": {
+        "bytes": 4726,
+        "sha256": "bd0159fc8180b5028906f721c0c5d1a8d7fd5858e5f517438a987f0238f3225d"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-2026-10-17/implementation-review-20.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/internal/evidence/c04-12-root-html-default-app-2026-10-17/implementation-review-20.html",
+      "bytes": 22447,
+      "sha256": "4c9c73079ee1f1046b16b6c98d4d9f4cb90c3a3fe6667245afc7c26e7050299c",
+      "previous": {
+        "bytes": 22447,
+        "sha256": "4c9c73079ee1f1046b16b6c98d4d9f4cb90c3a3fe6667245afc7c26e7050299c"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-2026-10-17/implementation-review-20.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/internal/evidence/c04-12-root-html-default-app-2026-10-17/implementation-review-20.md",
+      "bytes": 5632,
+      "sha256": "1426dd6c90ce0a59da95d8bd571563af4e4b38c5df1d3832cdae8ee87f5c61cd",
+      "previous": {
+        "bytes": 5632,
+        "sha256": "1426dd6c90ce0a59da95d8bd571563af4e4b38c5df1d3832cdae8ee87f5c61cd"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-2026-10-17/pr-delta-review-30.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/internal/evidence/c04-12-root-html-default-app-2026-10-17/pr-delta-review-30.html",
+      "bytes": 23246,
+      "sha256": "3406fcd117f51f6ec33e092fd7ca44a98574dfa6992139604cd60fd7dca72f9c",
+      "previous": {
+        "bytes": 23246,
+        "sha256": "3406fcd117f51f6ec33e092fd7ca44a98574dfa6992139604cd60fd7dca72f9c"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-2026-10-17/pr-delta-review-30.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/internal/evidence/c04-12-root-html-default-app-2026-10-17/pr-delta-review-30.md",
+      "bytes": 6241,
+      "sha256": "3999e56b8532d54be66b2a37fe1fc88cb9a61fa0b7641738b7d8639ecf9bde66",
+      "previous": {
+        "bytes": 6241,
+        "sha256": "3999e56b8532d54be66b2a37fe1fc88cb9a61fa0b7641738b7d8639ecf9bde66"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/README.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/README.html",
+      "bytes": 19730,
+      "sha256": "f9faec3e236b54c58726a13cf50cdf14f526b07bfad5199e2b594bdef9337b6e",
+      "previous": {
+        "bytes": 19730,
+        "sha256": "f9faec3e236b54c58726a13cf50cdf14f526b07bfad5199e2b594bdef9337b6e"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/README.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/README.md",
+      "bytes": 2677,
+      "sha256": "ac581eeb876e6ec810f1ffb7c953cc7065e5315c0b9ed32cb67e11a27d80b962",
+      "previous": {
+        "bytes": 2677,
+        "sha256": "ac581eeb876e6ec810f1ffb7c953cc7065e5315c0b9ed32cb67e11a27d80b962"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "bytes": 21818,
+      "sha256": "c10192e89a1b4be24d6956fe3a894abc87347e8fc8fffdb5ea192d19049b6e15",
+      "previous": {
+        "bytes": 21818,
+        "sha256": "c10192e89a1b4be24d6956fe3a894abc87347e8fc8fffdb5ea192d19049b6e15"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "bytes": 5139,
+      "sha256": "a405a60afc59f79b7f617f23bc9bac628e0bd9a42e9462e974eded9f801f80d6",
+      "previous": {
+        "bytes": 5139,
+        "sha256": "a405a60afc59f79b7f617f23bc9bac628e0bd9a42e9462e974eded9f801f80d6"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/render-build-result.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/render-build-result.html",
+      "bytes": 18390,
+      "sha256": "a0e56a1c15d3c71d2f3cd8bd7469be635aae7ed51631e85a7aa9d36af242c63d",
+      "previous": {
+        "bytes": 18390,
+        "sha256": "a0e56a1c15d3c71d2f3cd8bd7469be635aae7ed51631e85a7aa9d36af242c63d"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/render-build-result.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/internal/evidence/c04-12-root-html-default-app-tailnet-sync-2026-10-17/render-build-result.md",
+      "bytes": 2151,
+      "sha256": "32485eac38b42f582a0bb515e72f9d5c7afeb6eedda36895ccb71cb56ab14833",
+      "previous": {
+        "bytes": 2151,
+        "sha256": "32485eac38b42f582a0bb515e72f9d5c7afeb6eedda36895ccb71cb56ab14833"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/README.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/README.html",
+      "bytes": 22637,
+      "sha256": "2fa9fffe6f24e602f5b039ecdc4fea0e99eb3a778afd6c9fd6f1b5e66e88bcce",
+      "previous": {
+        "bytes": 22637,
+        "sha256": "2fa9fffe6f24e602f5b039ecdc4fea0e99eb3a778afd6c9fd6f1b5e66e88bcce"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/README.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/README.md",
+      "bytes": 4380,
+      "sha256": "a2f853e86fc2bb492f31a095137126eb40b48cd1badd37b22b3e401bef13cbe8",
+      "previous": {
+        "bytes": 4380,
+        "sha256": "a2f853e86fc2bb492f31a095137126eb40b48cd1badd37b22b3e401bef13cbe8"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/SHA256SUMS",
+      "source": "/private/tmp/spinon-c04-12-root-document-runtime-20261017/spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/SHA256SUMS",
+      "bytes": 2045,
+      "sha256": "a56f88a47537ee4fcf5641a321c456ece6e15a61bdebd3817e2282235c899a0e",
+      "previous": {
+        "bytes": 2045,
+        "sha256": "a56f88a47537ee4fcf5641a321c456ece6e15a61bdebd3817e2282235c899a0e"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/android-api37-logcat.txt",
+      "source": "/private/tmp/spinon-c04-12-root-document-runtime-20261017/spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/android-api37-logcat.txt",
+      "bytes": 3851,
+      "sha256": "7d9960622d2a950158c1c08817b75b18de029105deef2edc784617e3e7270308",
+      "previous": {
+        "bytes": 3851,
+        "sha256": "7d9960622d2a950158c1c08817b75b18de029105deef2edc784617e3e7270308"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/android-build.log",
+      "source": "/private/tmp/spinon-c04-12-root-document-runtime-20261017/spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/android-build.log",
+      "bytes": 4251,
+      "sha256": "39f0b35f848e364112e0921c29c5c299bd9a4347453d2f91660b2305039fde01",
+      "previous": {
+        "bytes": 4251,
+        "sha256": "39f0b35f848e364112e0921c29c5c299bd9a4347453d2f91660b2305039fde01"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/android-install.log",
+      "source": "/private/tmp/spinon-c04-12-root-document-runtime-20261017/spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "previous": {
+        "bytes": 36,
+        "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/android-launch.log",
+      "source": "/private/tmp/spinon-c04-12-root-document-runtime-20261017/spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/android-launch.log",
+      "bytes": 60,
+      "sha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e",
+      "previous": {
+        "bytes": 60,
+        "sha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/cargo-clippy.log",
+      "source": "/private/tmp/spinon-c04-12-root-document-runtime-20261017/spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/cargo-clippy.log",
+      "bytes": 72,
+      "sha256": "f0788aa36d1c86b6ccdfb7f4042a5574102d82061c046422a2d42e008a1e4710",
+      "previous": {
+        "bytes": 72,
+        "sha256": "f0788aa36d1c86b6ccdfb7f4042a5574102d82061c046422a2d42e008a1e4710"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/cargo-fmt.log",
+      "source": "/private/tmp/spinon-c04-12-root-document-runtime-20261017/spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/cargo-fmt.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "previous": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/cargo-test-ffi.log",
+      "source": "/private/tmp/spinon-c04-12-root-document-runtime-20261017/spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/cargo-test-ffi.log",
+      "bytes": 2254,
+      "sha256": "ad5448d10bd2cee2870c695873a762ada1e6d196116ec1927b857d705c546f0f",
+      "previous": {
+        "bytes": 2254,
+        "sha256": "ad5448d10bd2cee2870c695873a762ada1e6d196116ec1927b857d705c546f0f"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/cargo-test-runtime.log",
+      "source": "/private/tmp/spinon-c04-12-root-document-runtime-20261017/spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/cargo-test-runtime.log",
+      "bytes": 20751,
+      "sha256": "3228ebd10d404878a21af3ead317d12e853b6431e6b71845c837832374c68eb2",
+      "previous": {
+        "bytes": 20751,
+        "sha256": "3228ebd10d404878a21af3ead317d12e853b6431e6b71845c837832374c68eb2"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/cargo-test-style-to-layout.log",
+      "source": "/private/tmp/spinon-c04-12-root-document-runtime-20261017/spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/cargo-test-style-to-layout.log",
+      "bytes": 20687,
+      "sha256": "7fe4b7ddcdb0e6d90cec55ea44d4cc73acab30a8ecfe197b664e24cdf7674762",
+      "previous": {
+        "bytes": 20687,
+        "sha256": "7fe4b7ddcdb0e6d90cec55ea44d4cc73acab30a8ecfe197b664e24cdf7674762"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/cargo-test-style.log",
+      "source": "/private/tmp/spinon-c04-12-root-document-runtime-20261017/spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/cargo-test-style.log",
+      "bytes": 21096,
+      "sha256": "7ef1268770fec530c7ed8faf3c437689957712621e28421f5b2554acb2de61f3",
+      "previous": {
+        "bytes": 21096,
+        "sha256": "7ef1268770fec530c7ed8faf3c437689957712621e28421f5b2554acb2de61f3"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/git-diff-check.log",
+      "source": "/private/tmp/spinon-c04-12-root-document-runtime-20261017/spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/git-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "previous": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/implementation-review-20.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/implementation-review-20.html",
+      "bytes": 21962,
+      "sha256": "fe9f1fa97eb763b7474d85673e062ec36c756c4968469a8d94bd4462c28a6f28",
+      "previous": {
+        "bytes": 21962,
+        "sha256": "fe9f1fa97eb763b7474d85673e062ec36c756c4968469a8d94bd4462c28a6f28"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/implementation-review-20.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/implementation-review-20.md",
+      "bytes": 4688,
+      "sha256": "f8b4867e97ddc886a5372321e6f768e8bb3d2ecfeb0b2d44a668889fe527b8b5",
+      "previous": {
+        "bytes": 4688,
+        "sha256": "f8b4867e97ddc886a5372321e6f768e8bb3d2ecfeb0b2d44a668889fe527b8b5"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/ios-build.log",
+      "source": "/private/tmp/spinon-c04-12-root-document-runtime-20261017/spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/ios-build.log",
+      "bytes": 66953,
+      "sha256": "cc5b34102d8e1894d6bae8772aad98fac865062bb1c29743ab57115cc7872d9c",
+      "previous": {
+        "bytes": 66953,
+        "sha256": "cc5b34102d8e1894d6bae8772aad98fac865062bb1c29743ab57115cc7872d9c"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/ios-iphone17pro-log.txt",
+      "source": "/private/tmp/spinon-c04-12-root-document-runtime-20261017/spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/ios-iphone17pro-log.txt",
+      "bytes": 3610,
+      "sha256": "7f352f8964638876b7383ea21ee5b15f6c87d30d38155b63c465e1c7a704927a",
+      "previous": {
+        "bytes": 3610,
+        "sha256": "7f352f8964638876b7383ea21ee5b15f6c87d30d38155b63c465e1c7a704927a"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/pr-delta-review-30.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/pr-delta-review-30.html",
+      "bytes": 23105,
+      "sha256": "9db8a9a43cde36697d620f1adb16c242e6e9bf28ea23079d7e661a00fce6e332",
+      "previous": {
+        "bytes": 23105,
+        "sha256": "9db8a9a43cde36697d620f1adb16c242e6e9bf28ea23079d7e661a00fce6e332"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/pr-delta-review-30.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/pr-delta-review-30.md",
+      "bytes": 5637,
+      "sha256": "c4ba5518b68dc32114d73cb1b7cea5d6d543fe2afda2a2d56d07e6432bfbb4a5",
+      "previous": {
+        "bytes": 5637,
+        "sha256": "c4ba5518b68dc32114d73cb1b7cea5d6d543fe2afda2a2d56d07e6432bfbb4a5"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-root-document-environment-precomparison-review-2026-10-17.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/internal/evidence/c04-root-document-environment-precomparison-review-2026-10-17.html",
+      "bytes": 20249,
+      "sha256": "04e4d788b65e9e7eb2cba4f2449266f09ee5ada260e75adfd9bf51efcf9c937e",
+      "previous": {
+        "bytes": 20249,
+        "sha256": "04e4d788b65e9e7eb2cba4f2449266f09ee5ada260e75adfd9bf51efcf9c937e"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-root-document-environment-precomparison-review-2026-10-17.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/internal/evidence/c04-root-document-environment-precomparison-review-2026-10-17.md",
+      "bytes": 3376,
+      "sha256": "afd3b951c256aad3247c68e17f108cdd8f42f03e3bb505a9f0eb1466c8f11d94",
+      "previous": {
+        "bytes": 3376,
+        "sha256": "afd3b951c256aad3247c68e17f108cdd8f42f03e3bb505a9f0eb1466c8f11d94"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-root-html-document-environment-2026-10-17/README.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/internal/evidence/c04-root-html-document-environment-2026-10-17/README.html",
+      "bytes": 32938,
+      "sha256": "933024441fdb60765e1d07f80495520d9dbd318134e9186b57e2c9c57fb425e0",
+      "previous": {
+        "bytes": 32938,
+        "sha256": "933024441fdb60765e1d07f80495520d9dbd318134e9186b57e2c9c57fb425e0"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-root-html-document-environment-2026-10-17/README.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/internal/evidence/c04-root-html-document-environment-2026-10-17/README.md",
+      "bytes": 11629,
+      "sha256": "42c97ca118f10017f76f87c698d554bbcbe6bcb2354255105e71ed669e578d66",
+      "previous": {
+        "bytes": 11629,
+        "sha256": "42c97ca118f10017f76f87c698d554bbcbe6bcb2354255105e71ed669e578d66"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-root-html-document-environment-plan-review-2026-10-17.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/internal/evidence/c04-root-html-document-environment-plan-review-2026-10-17.html",
+      "bytes": 21337,
+      "sha256": "3dbd4ae71257f9cc6eede82fddf9edeb8b10a07eab155afc82845ab6ea58542e",
+      "previous": {
+        "bytes": 21337,
+        "sha256": "3dbd4ae71257f9cc6eede82fddf9edeb8b10a07eab155afc82845ab6ea58542e"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-root-html-document-environment-plan-review-2026-10-17.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/internal/evidence/c04-root-html-document-environment-plan-review-2026-10-17.md",
+      "bytes": 4277,
+      "sha256": "8f1b29ddc1d954a28f8b3774445509e3e88d947160efe0a9fa250234157ec568",
+      "previous": {
+        "bytes": 4277,
+        "sha256": "8f1b29ddc1d954a28f8b3774445509e3e88d947160efe0a9fa250234157ec568"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "logo.svg",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "previous": {
+        "bytes": 568,
+        "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "plan/c04-root-html-document-environment.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/plan/c04-root-html-document-environment.html",
+      "bytes": 37181,
+      "sha256": "2f9b17b5a8a360c476bdd4e9a36ec3f1774e102918f2ec3a5ba91272780a8f4b",
+      "previous": {
+        "bytes": 37181,
+        "sha256": "2f9b17b5a8a360c476bdd4e9a36ec3f1774e102918f2ec3a5ba91272780a8f4b"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "plan/c04-root-html-document-environment.md",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/spec/plan/c04-root-html-document-environment.md",
+      "bytes": 15157,
+      "sha256": "2053e4c3b575a63a08e74f1b1cb3872831ecad9c167308e9479b2224222ffad9",
+      "previous": {
+        "bytes": 15157,
+        "sha256": "2053e4c3b575a63a08e74f1b1cb3872831ecad9c167308e9479b2224222ffad9"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "roadmap.html",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/roadmap.html",
+      "bytes": 119413,
+      "sha256": "743394efeed4de81831ac3124da535fb2caddbec5a818e65c4afa898fc523e0c",
+      "previous": {
+        "bytes": 119012,
+        "sha256": "e3ad4e15a19186151cbae9883f961b67d62dd46b634916ed57f0ec602b13ae61"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-runtime-roadmap-correction-2026-10-17/roadmap.html"
+    },
+    {
+      "path": "roadmap.svg",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "previous": {
+        "bytes": 4835,
+        "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "source": "/private/tmp/spinon-c04-12-root-document-runtime-20261017/spec/public/roadmap.html",
+      "bytes": 119413,
+      "sha256": "743394efeed4de81831ac3124da535fb2caddbec5a818e65c4afa898fc523e0c",
+      "previous": {
+        "bytes": 119012,
+        "sha256": "e3ad4e15a19186151cbae9883f961b67d62dd46b634916ed57f0ec602b13ae61"
+      },
+      "status": "replaced",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-runtime-roadmap-correction-2026-10-17/spec/public/roadmap.html"
+    },
+    {
+      "path": "spec/public/roadmap.svg",
+      "source": "/private/tmp/spinon-c04-12-root-document-runtime-20261017/spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "previous": {
+        "bytes": 4835,
+        "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "previous": {
+        "bytes": 73952,
+        "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/chrome-default-scheme-ios-light.732b41ab6f.png",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/image/chrome-default-scheme-ios-light.732b41ab6f.png",
+      "bytes": 19953,
+      "sha256": "2e3e056ed97d3989c8f2b311beff47dd5137e8f632cce389f031cf3f935297b7",
+      "previous": {
+        "bytes": 19953,
+        "sha256": "2e3e056ed97d3989c8f2b311beff47dd5137e8f632cce389f031cf3f935297b7"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/chrome-meta-dark-ios-light.dbdf729d3a.png",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/image/chrome-meta-dark-ios-light.dbdf729d3a.png",
+      "bytes": 19970,
+      "sha256": "6411424adce1c02ac3c46a09e22e41466fa5d460ce6082d33a6c1dc48869fcf6",
+      "previous": {
+        "bytes": 19970,
+        "sha256": "6411424adce1c02ac3c46a09e22e41466fa5d460ce6082d33a6c1dc48869fcf6"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/3.2389f48f59.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/3.2389f48f59.js",
+      "bytes": 217096,
+      "sha256": "f86c2c336f011c4f3cdfb64ebda8bfa6783e7e42e6aaab13ce0fee38daf921c3",
+      "previous": {
+        "bytes": 217096,
+        "sha256": "f86c2c336f011c4f3cdfb64ebda8bfa6783e7e42e6aaab13ce0fee38daf921c3"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/3.2389f48f59.js.LICENSE.txt",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/3.2389f48f59.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "previous": {
+        "bytes": 384,
+        "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-009725493014.eeb1360bba.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-009725493014.eeb1360bba.js",
+      "bytes": 16072,
+      "sha256": "87dd686206ed0d57a4fd99cb793866c8125cf8896f89ff193335831c1fef0377",
+      "previous": {
+        "bytes": 16072,
+        "sha256": "87dd686206ed0d57a4fd99cb793866c8125cf8896f89ff193335831c1fef0377"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-04ba7e07c84a.40be301f7f.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-04ba7e07c84a.40be301f7f.js",
+      "bytes": 12126,
+      "sha256": "e45d88aed99cba08b58c462e0869d5063bdb5b58953ead59c2c4467dcc0d06ca",
+      "previous": {
+        "bytes": 12126,
+        "sha256": "e45d88aed99cba08b58c462e0869d5063bdb5b58953ead59c2c4467dcc0d06ca"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-0c2620f3bf61.da20120c03.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-0c2620f3bf61.da20120c03.js",
+      "bytes": 9405,
+      "sha256": "9074422c376c4d50310ebdc204fe09187e33da257192f9da8957b8bbefe4b0fc",
+      "previous": {
+        "bytes": 9405,
+        "sha256": "9074422c376c4d50310ebdc204fe09187e33da257192f9da8957b8bbefe4b0fc"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-16b29b1ed8c2.b7ebd80463.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-16b29b1ed8c2.b7ebd80463.js",
+      "bytes": 10366,
+      "sha256": "82d82a9f52f233925b566f9fb5da30030d2d7c95fcb20aaac77da540ebdbd1af",
+      "previous": {
+        "bytes": 10366,
+        "sha256": "82d82a9f52f233925b566f9fb5da30030d2d7c95fcb20aaac77da540ebdbd1af"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-1d2033630fc8.7810ca380e.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-1d2033630fc8.7810ca380e.js",
+      "bytes": 10042,
+      "sha256": "874ebc52ea936a4ce7c2b773f87ebc08fe000ab3828b7cc0def8bf93e1363d0e",
+      "previous": {
+        "bytes": 10042,
+        "sha256": "874ebc52ea936a4ce7c2b773f87ebc08fe000ab3828b7cc0def8bf93e1363d0e"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-2308615ee227.76a02e4565.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-2308615ee227.76a02e4565.js",
+      "bytes": 5400,
+      "sha256": "063d129567d75b6e3c0ace803d28b8a94a9666848bb0b14698ee4d83ebf1bfb7",
+      "previous": {
+        "bytes": 5400,
+        "sha256": "063d129567d75b6e3c0ace803d28b8a94a9666848bb0b14698ee4d83ebf1bfb7"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-2aa2f31aafcc.4749284709.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-2aa2f31aafcc.4749284709.js",
+      "bytes": 4848,
+      "sha256": "81bf05cf3913c5003e5529f2958c163b94f726f5e350cb9ecfe024b4797ebf8a",
+      "previous": {
+        "bytes": 4848,
+        "sha256": "81bf05cf3913c5003e5529f2958c163b94f726f5e350cb9ecfe024b4797ebf8a"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-367f2927ddca.1943c60f64.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-367f2927ddca.1943c60f64.js",
+      "bytes": 25680,
+      "sha256": "c690cc8966110e60eb5904cba983691d3d0012ef6cf728ae45b2de097e13907f",
+      "previous": {
+        "bytes": 25680,
+        "sha256": "c690cc8966110e60eb5904cba983691d3d0012ef6cf728ae45b2de097e13907f"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-42452122cfa4.152f701cd2.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-42452122cfa4.152f701cd2.js",
+      "bytes": 8075,
+      "sha256": "a364e748cd0837d89f05bc24eb94ea30173554db5d183e6c2f9bdca325856dc1",
+      "previous": {
+        "bytes": 8075,
+        "sha256": "a364e748cd0837d89f05bc24eb94ea30173554db5d183e6c2f9bdca325856dc1"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-52be8dfb1a96.053cd4cae1.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-52be8dfb1a96.053cd4cae1.js",
+      "bytes": 9336,
+      "sha256": "22efd7f1d3364e85f037eaadf4c1797a06455d3d91754be912fe6b73077e0013",
+      "previous": {
+        "bytes": 9336,
+        "sha256": "22efd7f1d3364e85f037eaadf4c1797a06455d3d91754be912fe6b73077e0013"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-60cbaa231bd4.008af11b97.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-60cbaa231bd4.008af11b97.js",
+      "bytes": 18336,
+      "sha256": "9e8171bd7ee78b9f75d0b6b3f2091e63111efc42b461b9fe9acbe0c79800779e",
+      "previous": {
+        "bytes": 18336,
+        "sha256": "9e8171bd7ee78b9f75d0b6b3f2091e63111efc42b461b9fe9acbe0c79800779e"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-61aacf138c96.aee05d71b2.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-61aacf138c96.aee05d71b2.js",
+      "bytes": 23625,
+      "sha256": "39bf7ce839877624d1c05d68775dbc30b86415a4b58802beccb92bfcc2b1142b",
+      "previous": {
+        "bytes": 23625,
+        "sha256": "39bf7ce839877624d1c05d68775dbc30b86415a4b58802beccb92bfcc2b1142b"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-66d8ed6c8215.099b2a939e.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-66d8ed6c8215.099b2a939e.js",
+      "bytes": 5822,
+      "sha256": "ee27e927d465661d3761f2d63c5858d00d9ee9f8c28f815e93c22da8aa8b13ed",
+      "previous": {
+        "bytes": 5822,
+        "sha256": "ee27e927d465661d3761f2d63c5858d00d9ee9f8c28f815e93c22da8aa8b13ed"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.3eddcea0b4.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-6c33a3943990.3eddcea0b4.js",
+      "bytes": 364890,
+      "sha256": "2ed0768923e69bb46f45986e3839db234f352930124f4619d9bf2a8cd3bd71e4",
+      "previous": {
+        "bytes": 364890,
+        "sha256": "2ed0768923e69bb46f45986e3839db234f352930124f4619d9bf2a8cd3bd71e4"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6f9b5ae02529.9f98a76f37.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-6f9b5ae02529.9f98a76f37.js",
+      "bytes": 10672,
+      "sha256": "a011f17d6cf904834d2ebf4dda5da8eed712b478744586198f9a602895823dd5",
+      "previous": {
+        "bytes": 10672,
+        "sha256": "a011f17d6cf904834d2ebf4dda5da8eed712b478744586198f9a602895823dd5"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6fe650616266.668348319b.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-6fe650616266.668348319b.js",
+      "bytes": 5022,
+      "sha256": "b0a4ad6122f018c62030f1f43f1111c2f484795ac36e698877cd323c2e2ace5f",
+      "previous": {
+        "bytes": 5022,
+        "sha256": "b0a4ad6122f018c62030f1f43f1111c2f484795ac36e698877cd323c2e2ace5f"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-7ff1bc4fef68.6906f32f7d.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-7ff1bc4fef68.6906f32f7d.js",
+      "bytes": 21322,
+      "sha256": "fc01b6edf87c849ee2e3c74846b35dcf04fea463f0bd75935c6bafcc0517109a",
+      "previous": {
+        "bytes": 21322,
+        "sha256": "fc01b6edf87c849ee2e3c74846b35dcf04fea463f0bd75935c6bafcc0517109a"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-810211eb0c97.0e4de3c6e7.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-810211eb0c97.0e4de3c6e7.js",
+      "bytes": 11862,
+      "sha256": "defde6d948220a01f1745e69f36cb50a339871748746799686f7aeee5b0cca63",
+      "previous": {
+        "bytes": 11862,
+        "sha256": "defde6d948220a01f1745e69f36cb50a339871748746799686f7aeee5b0cca63"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-8856dcc1aeb5.cfae908551.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-8856dcc1aeb5.cfae908551.js",
+      "bytes": 8596,
+      "sha256": "326cac228ee608f403f4a11caa988d30b0361e76295bcc72a542d76234a85588",
+      "previous": {
+        "bytes": 8596,
+        "sha256": "326cac228ee608f403f4a11caa988d30b0361e76295bcc72a542d76234a85588"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.f97d6c531f.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-a1017bdf23ca.f97d6c531f.js",
+      "bytes": 169033,
+      "sha256": "ffed77c0ac7910e9ef7f8f6477f43b6a31d76ba958e54b5db12bb04aca277e7b",
+      "previous": {
+        "bytes": 169033,
+        "sha256": "ffed77c0ac7910e9ef7f8f6477f43b6a31d76ba958e54b5db12bb04aca277e7b"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-b33563055168.5a20ec80b4.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-b33563055168.5a20ec80b4.js",
+      "bytes": 7941,
+      "sha256": "ed475372438bd0857c4c4ba913d6bfb8223d6a060eadf4659bf4952a67f6d9ab",
+      "previous": {
+        "bytes": 7941,
+        "sha256": "ed475372438bd0857c4c4ba913d6bfb8223d6a060eadf4659bf4952a67f6d9ab"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-b77589699581.2a31c0d13b.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-b77589699581.2a31c0d13b.js",
+      "bytes": 10877,
+      "sha256": "3edf0c1ac62757553afd59bb743fa04b341759adbbca50086afd3284dff59cb4",
+      "previous": {
+        "bytes": 10877,
+        "sha256": "3edf0c1ac62757553afd59bb743fa04b341759adbbca50086afd3284dff59cb4"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-c34b25c9a19a.21e0639eea.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-c34b25c9a19a.21e0639eea.js",
+      "bytes": 9927,
+      "sha256": "6303ec45c01b740dde7797cc88b00da41b63e9673c2cd914fbb472d73f2333c8",
+      "previous": {
+        "bytes": 9927,
+        "sha256": "6303ec45c01b740dde7797cc88b00da41b63e9673c2cd914fbb472d73f2333c8"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-c7b1c23e00a1.c87a28e3c6.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-c7b1c23e00a1.c87a28e3c6.js",
+      "bytes": 3080,
+      "sha256": "981f789a62760adc24985bcaed6786f9b11aa8b9d9eb4e73cccc557118278893",
+      "previous": {
+        "bytes": 3080,
+        "sha256": "981f789a62760adc24985bcaed6786f9b11aa8b9d9eb4e73cccc557118278893"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-d189cf42fdb6.ac7fab3bab.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-d189cf42fdb6.ac7fab3bab.js",
+      "bytes": 13573,
+      "sha256": "f5583d369096a2021cfecc95c45d502b0f35f51fdd056105e68be5035cfc7766",
+      "previous": {
+        "bytes": 13573,
+        "sha256": "f5583d369096a2021cfecc95c45d502b0f35f51fdd056105e68be5035cfc7766"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-e3e67500d82d.fcb57be1ef.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-e3e67500d82d.fcb57be1ef.js",
+      "bytes": 32279,
+      "sha256": "2d20e13bb070be4e82313dd515fd373442fc2f610aa635794260e165c801a212",
+      "previous": {
+        "bytes": 32279,
+        "sha256": "2d20e13bb070be4e82313dd515fd373442fc2f610aa635794260e165c801a212"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-ea34262d0652.78ad351ab4.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-ea34262d0652.78ad351ab4.js",
+      "bytes": 23606,
+      "sha256": "5dee5ca6f445eead42761b49d926cf1027cadc3d5d923400ed07ab54c3d65e30",
+      "previous": {
+        "bytes": 23606,
+        "sha256": "5dee5ca6f445eead42761b49d926cf1027cadc3d5d923400ed07ab54c3d65e30"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-ecf129b09e78.d12064b938.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-ecf129b09e78.d12064b938.js",
+      "bytes": 19987,
+      "sha256": "ae61606b65fffea3330e1f33fd0a94ead858cfe82be31e82d748a8a8a3c09791",
+      "previous": {
+        "bytes": 19987,
+        "sha256": "ae61606b65fffea3330e1f33fd0a94ead858cfe82be31e82d748a8a8a3c09791"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-eeac1d534988.71d9884b9b.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/route-eeac1d534988.71d9884b9b.js",
+      "bytes": 5746,
+      "sha256": "15f64b30574414c17ffc7f61c24d65301e1fc5b0fe804ef3eef91e1cdcf7239b",
+      "previous": {
+        "bytes": 5746,
+        "sha256": "15f64b30574414c17ffc7f61c24d65301e1fc5b0fe804ef3eef91e1cdcf7239b"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/z.21a8ee0793.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/async/z.21a8ee0793.js",
+      "bytes": 100,
+      "sha256": "004ebc987cb73a8d8eaa0ff466a017622a0ed05b2b6da813f416c020653d9713",
+      "previous": {
+        "bytes": 100,
+        "sha256": "004ebc987cb73a8d8eaa0ff466a017622a0ed05b2b6da813f416c020653d9713"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/index.02a1416255.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/index.02a1416255.js",
+      "bytes": 41652,
+      "sha256": "57ee55c8fcfb1da0fdc1937a313b022f5ffea12f84264e0006baf94e31c3608a",
+      "previous": {
+        "bytes": 41652,
+        "sha256": "57ee55c8fcfb1da0fdc1937a313b022f5ffea12f84264e0006baf94e31c3608a"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.f98ee1a0b8.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/lib-react.f98ee1a0b8.js",
+      "bytes": 218369,
+      "sha256": "efa8a78693b2fb84c8744cac3f7e54741d1cacc472f6b2e5089e13b60dcfac58",
+      "previous": {
+        "bytes": 218369,
+        "sha256": "efa8a78693b2fb84c8744cac3f7e54741d1cacc472f6b2e5089e13b60dcfac58"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.f98ee1a0b8.js.LICENSE.txt",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/lib-react.f98ee1a0b8.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "previous": {
+        "bytes": 1209,
+        "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.0a04bea349.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/lib-router.0a04bea349.js",
+      "bytes": 35370,
+      "sha256": "90e3245db5bd5870b2e7e50160fa3c8f51d32f846256a8166448f8db4355e47d",
+      "previous": {
+        "bytes": 35370,
+        "sha256": "90e3245db5bd5870b2e7e50160fa3c8f51d32f846256a8166448f8db4355e47d"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.0a04bea349.js.LICENSE.txt",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/lib-router.0a04bea349.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "previous": {
+        "bytes": 222,
+        "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/styles.7bf4982aa6.js",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/js/styles.7bf4982aa6.js",
+      "bytes": 472,
+      "sha256": "8bb903e09eb2da5791627564d465af803d35c0f6820c51cd38fce14a7eeb391f",
+      "previous": {
+        "bytes": 472,
+        "sha256": "8bb903e09eb2da5791627564d465af803d35c0f6820c51cd38fce14a7eeb391f"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/search_index.ko.19e5a6c6.json",
+      "source": "/private/tmp/spinon-c04-12-runtime-tailnet-sync-build-20261017/out/static/search_index.ko.19e5a6c6.json",
+      "bytes": 477323,
+      "sha256": "19e5a6c60c07840c18ec63180841dd9ed398d1e47c0eb9c52629b076e243234f",
+      "previous": {
+        "bytes": 477323,
+        "sha256": "19e5a6c60c07840c18ec63180841dd9ed398d1e47c0eb9c52629b076e243234f"
+      },
+      "status": "unchanged",
+      "backup_path": null
+    }
+  ]
+}

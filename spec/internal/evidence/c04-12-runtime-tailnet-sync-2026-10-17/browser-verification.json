@@ -1,0 +1,55 @@
+{
+  "verified_at_utc": "2026-10-17T12:42:41.391062+00:00",
+  "tool": "Agent Browser 0.31.1",
+  "session": "c04-12-runtime-roadmap-06feef0385b9",
+  "roadmap": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "title": "스피논 구현 로드맵",
+    "corrected_environment_description_visible": true,
+    "stale_dom_only_description_absent": true,
+    "links_loaded": [
+      {
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/0077-c04-12-root-html-document.html",
+        "title": "0077 · C04.12 루트 HTML document 진입점"
+      },
+      {
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-root-html-default-app-2026-10-17/README.html",
+        "title": "C04.12 기본 앱 루트 HTML → V8 document session 실행 근거"
+      },
+      {
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/README.html",
+        "title": "C04.12 root HTML 환경 cascade 실행 근거"
+      }
+    ],
+    "official_status_note": "공식 상태 동기화 완료 · 상위 78개 + 세부 ID 125개 + ID 없는 하위 체크 2개 · 완료 71/205개",
+    "official_completion_count": "71/205",
+    "screenshot": "roadmap-tailnet-preview.png"
+  },
+  "status_ledger": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+    "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+    "c04_12_checked": false,
+    "raw_checkbox_count": 218,
+    "raw_checked_checkbox_count": 81,
+    "note": "Raw rendered STATUS checkboxes include nested scope items and are distinct from the official roadmap counter 71/205."
+  },
+  "runtime_evidence_route": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/README.html",
+    "title": "C04.12 root HTML 환경 cascade 실행 근거",
+    "incomplete_boundary_visible": true
+  },
+  "contract_route": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/0077-c04-12-root-html-document.html",
+    "title": "0077 · C04.12 루트 HTML document 진입점",
+    "parser_stack_visible": true
+  },
+  "browser_cleanup": {
+    "close_output": "Browser closed",
+    "after_close_page_count": 0,
+    "after_close_browser_launched": false,
+    "isolated_daemon_pid": 97466,
+    "pid_after_close": "absent"
+  },
+  "app_behavior_screenshot_available": false,
+  "app_screenshot_reason": "The simulator app host is blank because HTML paint is not implemented; the included screenshot is the docs roadmap preview only."
+}

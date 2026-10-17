@@ -1,0 +1,19 @@
+{
+  "verified_at": "2026-10-17T12:41:44.288081+00:00",
+  "backup_root": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c04-12-runtime-roadmap-correction-2026-10-17",
+  "count": 2,
+  "files": [
+    {
+      "path": "roadmap.html",
+      "bytes": 119012,
+      "sha256": "e3ad4e15a19186151cbae9883f961b67d62dd46b634916ed57f0ec602b13ae61",
+      "expected_sha256": "e3ad4e15a19186151cbae9883f961b67d62dd46b634916ed57f0ec602b13ae61"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "bytes": 119012,
+      "sha256": "e3ad4e15a19186151cbae9883f961b67d62dd46b634916ed57f0ec602b13ae61",
+      "expected_sha256": "e3ad4e15a19186151cbae9883f961b67d62dd46b634916ed57f0ec602b13ae61"
+    }
+  ]
+}
