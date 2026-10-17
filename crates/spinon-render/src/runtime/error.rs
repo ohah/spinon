@@ -9,6 +9,7 @@ pub enum RuntimeRenderError {
     InvalidPaintCommands,
     InvalidHitTestOrder,
     InvalidClip,
+    InvalidPageScaleTransform,
     InvalidBorderWidth,
     InvalidPaintColor,
     InvalidScrollState,
@@ -51,6 +52,9 @@ impl fmt::Display for RuntimeRenderError {
             Self::InvalidClip => {
                 formatter.write_str("runtime clip은 유한하고 순서가 맞는 경계여야 합니다")
             }
+            Self::InvalidPageScaleTransform => formatter.write_str(
+                "runtime page-scale transform의 DPR, page scale 또는 곱이 유효하지 않습니다",
+            ),
             Self::InvalidBorderWidth => {
                 formatter.write_str("runtime border 폭은 유한한 0 이상의 CSS px여야 합니다")
             }

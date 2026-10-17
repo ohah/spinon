@@ -12,8 +12,9 @@ use super::scroll::{
     apply_scroll_state, scroll_offset_sum,
 };
 use super::{
-    CssSize, RuntimePaint, RuntimePaintCommand, RuntimeRenderBox, RuntimeRenderError,
-    RuntimeRenderImage, RuntimeRenderKey, RuntimeRenderSnapshot, RuntimeRenderText,
+    CssSize, RuntimePageScaleTransform, RuntimePaint, RuntimePaintCommand, RuntimeRenderBox,
+    RuntimeRenderError, RuntimeRenderImage, RuntimeRenderKey, RuntimeRenderSnapshot,
+    RuntimeRenderText,
 };
 impl RuntimeRenderSnapshot {
     pub fn new(
@@ -153,6 +154,7 @@ impl RuntimeRenderSnapshot {
         Ok(Self {
             key,
             viewport_css_px,
+            page_scale_transform: None,
             boxes: boxes.into(),
             base_boxes,
             scroll_containers,
@@ -204,13 +206,29 @@ impl RuntimeRenderSnapshot {
         Ok(snapshot)
     }
 
+    /// Root HTML 환경에서 검증된 DPR·초기 page scale을 이 scene의 WGPU 투영에 연결합니다.
+    ///
+    /// CSS layout viewport, CSS hit-test 좌표, native background에는 적용하지 않습니다.
+    pub fn with_page_scale_transform(
+        &self,
+        device_scale_factor: f32,
+        page_scale: f32,
+    ) -> Result<Self, RuntimeRenderError> {
+        let mut snapshot = self.clone();
+        snapshot.page_scale_transform = Some(RuntimePageScaleTransform::new(
+            device_scale_factor,
+            page_scale,
+        )?);
+        Ok(snapshot)
+    }
+
     /// Layout과 raster가 끝난 text bitmap을 revision 검사 후 paint 순서에 연결합니다.
     pub fn with_texts_and_paint_commands(
         &self,
         texts: Vec<RuntimeRenderText>,
         paint_commands: Vec<RuntimePaintCommand>,
     ) -> Result<Self, RuntimeRenderError> {
-        Self::new_with_scroll_metadata_texts_and_paint_commands(
+        let mut snapshot = Self::new_with_scroll_metadata_texts_and_paint_commands(
             self.key,
             self.viewport_css_px,
             self.base_boxes.to_vec(),
@@ -218,8 +236,9 @@ impl RuntimeRenderSnapshot {
             self.scroll_metadata.to_vec(),
             texts,
             paint_commands,
-        )?
-        .with_images(self.images.to_vec())
+        )?;
+        snapshot.page_scale_transform = self.page_scale_transform;
+        snapshot.with_images(self.images.to_vec())
     }
 
     /// 같은 문서 세대와 연결 트리 revision의 snapshot에서 document revision을 다시 발행합니다.
@@ -243,6 +262,7 @@ impl RuntimeRenderSnapshot {
         Some(Self {
             key,
             viewport_css_px: self.viewport_css_px,
+            page_scale_transform: self.page_scale_transform,
             boxes: Arc::clone(&self.boxes),
             base_boxes: Arc::clone(&self.base_boxes),
             scroll_containers: Arc::clone(&self.scroll_containers),
@@ -258,6 +278,7 @@ impl RuntimeRenderSnapshot {
         Self {
             key: self.key.with_scroll_state_revision(revision),
             viewport_css_px: self.viewport_css_px,
+            page_scale_transform: self.page_scale_transform,
             boxes: Arc::clone(&self.boxes),
             base_boxes: Arc::clone(&self.base_boxes),
             scroll_containers: Arc::clone(&self.scroll_containers),
@@ -274,6 +295,10 @@ impl RuntimeRenderSnapshot {
 
     pub const fn viewport_css_px(&self) -> CssSize {
         self.viewport_css_px
+    }
+
+    pub const fn page_scale_transform(&self) -> Option<RuntimePageScaleTransform> {
+        self.page_scale_transform
     }
 
     pub fn boxes(&self) -> &[RuntimeRenderBox] {
@@ -316,7 +341,7 @@ impl RuntimeRenderSnapshot {
             };
             *container = container.with_input_policy(policy);
         }
-        Self::new_with_scroll_metadata_texts_and_paint_commands(
+        let mut snapshot = Self::new_with_scroll_metadata_texts_and_paint_commands(
             self.key,
             self.viewport_css_px,
             self.base_boxes.to_vec(),
@@ -324,8 +349,9 @@ impl RuntimeRenderSnapshot {
             self.scroll_metadata.to_vec(),
             self.texts.to_vec(),
             self.paint_commands.to_vec(),
-        )?
-        .with_images(self.images.to_vec())
+        )?;
+        snapshot.page_scale_transform = self.page_scale_transform;
+        snapshot.with_images(self.images.to_vec())
     }
 
     /// 한 hit target의 scroll owner ancestor 목록을 nearest-to-outer 순서로 반환합니다.
@@ -379,7 +405,7 @@ impl RuntimeRenderSnapshot {
             self.key.scroll_state_revision
         };
         let key = self.key.with_scroll_state_revision(scroll_revision);
-        Self::new_with_scroll_metadata_texts_and_paint_commands(
+        let mut snapshot = Self::new_with_scroll_metadata_texts_and_paint_commands(
             key,
             self.viewport_css_px,
             self.base_boxes.to_vec(),
@@ -387,8 +413,9 @@ impl RuntimeRenderSnapshot {
             self.scroll_metadata.to_vec(),
             self.texts.to_vec(),
             self.paint_commands.to_vec(),
-        )?
-        .with_images(self.images.to_vec())
+        )?;
+        snapshot.page_scale_transform = self.page_scale_transform;
+        snapshot.with_images(self.images.to_vec())
     }
 
     /// hit-test 순서, clip, viewport를 통과한 가장 앞의 CSS event target을 반환합니다.

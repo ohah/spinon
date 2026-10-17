@@ -4,6 +4,8 @@ use bytemuck::{Pod, Zeroable};
 use sha2::{Digest, Sha256};
 use spinon_render::{RuntimeRenderSnapshot, RuntimeRenderText};
 
+use crate::geometry::CssToSurfaceMapping;
+
 mod atlas;
 use atlas::{GpuGlyphAtlas, build_mask_atlas, create_gpu_atlas};
 
@@ -177,6 +179,7 @@ impl RuntimeGlyphRenderer {
                 batch_draw_count: 0,
             });
         };
+        let mapping = CssToSurfaceMapping::new(scene, surface_width, surface_height);
         let mut geometry = GlyphGeometry::default();
         geometry
             .vertices
@@ -237,10 +240,7 @@ impl RuntimeGlyphRenderer {
                 &atlas_data.placements,
                 atlas_data.width,
                 atlas_data.height,
-                scene.viewport_css_px().width(),
-                scene.viewport_css_px().height(),
-                surface_width,
-                surface_height,
+                mapping,
                 self.encode_srgb_color,
             )?;
             let last_vertex = u32::try_from(geometry.vertices.len())
@@ -320,17 +320,13 @@ impl RuntimeGlyphRenderer {
     }
 }
 
-#[allow(clippy::too_many_arguments)]
 fn append_text_vertices(
     vertices: &mut Vec<GlyphVertex>,
     text: &RuntimeRenderText,
     placements: &[(u32, u32)],
     atlas_width: u32,
     atlas_height: u32,
-    viewport_width: f32,
-    viewport_height: f32,
-    surface_width: u32,
-    surface_height: u32,
+    mapping: CssToSurfaceMapping,
     encode_srgb_color: bool,
 ) -> Result<(), String> {
     let scale = f64::from(text.device_scale_factor());
@@ -377,7 +373,7 @@ fn append_text_vertices(
         let visible_right = clip
             .x()
             .map_or(right, |axis| right.min(f64::from(axis.max())))
-            .min(f64::from(viewport_width));
+            .min(mapping.visible_width_css());
         let visible_top = clip
             .y()
             .map_or(top, |axis| top.max(f64::from(axis.min())))
@@ -385,37 +381,35 @@ fn append_text_vertices(
         let visible_bottom = clip
             .y()
             .map_or(bottom, |axis| bottom.min(f64::from(axis.max())))
-            .min(f64::from(viewport_height));
+            .min(mapping.visible_height_css());
         if visible_right <= visible_left || visible_bottom <= visible_top {
             continue;
         }
-        let px_x0 = visible_left * f64::from(surface_width) / f64::from(viewport_width);
-        let px_x1 = visible_right * f64::from(surface_width) / f64::from(viewport_width);
-        let px_y0 = visible_top * f64::from(surface_height) / f64::from(viewport_height);
-        let px_y1 = visible_bottom * f64::from(surface_height) / f64::from(viewport_height);
-        let to_ndc_x = |x: f64| (-1.0 + 2.0 * x / f64::from(surface_width)) as f32;
-        let to_ndc_y = |y: f64| (1.0 - 2.0 * y / f64::from(surface_height)) as f32;
+        let x0 = mapping.x_to_ndc_f64(visible_left)?;
+        let x1 = mapping.x_to_ndc_f64(visible_right)?;
+        let y0 = mapping.y_to_ndc_f64(visible_top)?;
+        let y1 = mapping.y_to_ndc_f64(visible_bottom)?;
         let u0 = (f64::from(*atlas_x) + (visible_left - left) * scale) / f64::from(atlas_width);
         let u1 = (f64::from(*atlas_x) + (visible_right - left) * scale) / f64::from(atlas_width);
         let v0 = (f64::from(*atlas_y) + (visible_top - top) * scale) / f64::from(atlas_height);
         let v1 = (f64::from(*atlas_y) + (visible_bottom - top) * scale) / f64::from(atlas_height);
         let top_left = GlyphVertex {
-            position: [to_ndc_x(px_x0), to_ndc_y(px_y0)],
+            position: [x0, y0],
             uv: [u0 as f32, v0 as f32],
             color,
         };
         let top_right = GlyphVertex {
-            position: [to_ndc_x(px_x1), to_ndc_y(px_y0)],
+            position: [x1, y0],
             uv: [u1 as f32, v0 as f32],
             color,
         };
         let bottom_left = GlyphVertex {
-            position: [to_ndc_x(px_x0), to_ndc_y(px_y1)],
+            position: [x0, y1],
             uv: [u0 as f32, v1 as f32],
             color,
         };
         let bottom_right = GlyphVertex {
-            position: [to_ndc_x(px_x1), to_ndc_y(px_y1)],
+            position: [x1, y1],
             uv: [u1 as f32, v1 as f32],
             color,
         };

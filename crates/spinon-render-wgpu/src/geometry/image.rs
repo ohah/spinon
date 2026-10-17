@@ -2,6 +2,8 @@ use bytemuck::{Pod, Zeroable};
 use spinon_render::RuntimeRenderSnapshot;
 use std::ops::Range;
 
+use super::CssToSurfaceMapping;
+
 #[repr(C)]
 #[derive(Clone, Copy, Debug, Pod, Zeroable)]
 pub(crate) struct ImageVertex {
@@ -35,7 +37,7 @@ pub(crate) fn build_image_geometry(
     if width == 0 || height == 0 {
         return Err("WGPU 표면 크기는 0보다 커야 합니다".to_owned());
     }
-    let viewport = scene.viewport_css_px();
+    let mapping = CssToSurfaceMapping::new(scene, width, height);
     let mut geometry = ImageGeometry {
         vertices: Vec::new(),
         ranges: Vec::new(),
@@ -101,8 +103,7 @@ pub(crate) fn build_image_geometry(
                 &mut geometry.vertices,
                 [x0, y0, x1, y1],
                 [u0, v0, u1, v1],
-                viewport.width(),
-                viewport.height(),
+                mapping,
             )?;
         }
         let last = u32::try_from(geometry.vertices.len())
@@ -116,8 +117,7 @@ fn append_image_quad(
     vertices: &mut Vec<ImageVertex>,
     rect: [f32; 4],
     uv: [f32; 4],
-    viewport_width: f32,
-    viewport_height: f32,
+    mapping: CssToSurfaceMapping,
 ) -> Result<(), String> {
     let [x0_css, y0_css, x1_css, y1_css] = rect;
     let [u0, v0, u1, v1] = uv;
@@ -135,10 +135,10 @@ fn append_image_quad(
     {
         return Err("image quad 또는 UV가 유효하지 않습니다".to_owned());
     }
-    let x0 = -1.0 + 2.0 * x0_css / viewport_width;
-    let x1 = -1.0 + 2.0 * x1_css / viewport_width;
-    let y0 = 1.0 - 2.0 * y0_css / viewport_height;
-    let y1 = 1.0 - 2.0 * y1_css / viewport_height;
+    let x0 = mapping.x_to_ndc(x0_css)?;
+    let x1 = mapping.x_to_ndc(x1_css)?;
+    let y0 = mapping.y_to_ndc(y0_css)?;
+    let y1 = mapping.y_to_ndc(y1_css)?;
     if ![x0, x1, y0, y1].into_iter().all(f32::is_finite) {
         return Err("image quad의 표면 좌표가 유한하지 않습니다".to_owned());
     }
@@ -241,6 +241,27 @@ mod tests {
         assert_eq!(vertices[2].uv[1], 0.0);
         assert!((vertices[0].position[0] - (-1.0 + 2.0 * 104.0 / 224.0)).abs() < 1e-6);
         assert!((vertices[2].position[0] - (-1.0 + 2.0 * 128.0 / 224.0)).abs() < 1e-6);
+    }
+
+    #[test]
+    fn page_scale_maps_image_geometry_without_changing_cropped_uvs() {
+        let scene = scene_with_image(
+            CssRect::new(104.0, 8.0, 24.0, 24.0).unwrap(),
+            "cover",
+            "50% 50%",
+            CssClip::unconstrained(),
+        )
+        .with_page_scale_transform(3.0, 1.0)
+        .unwrap();
+        let geometry = build_image_geometry(&scene, 672, 216).unwrap();
+        let vertices = &geometry.vertices;
+        let to_x_px = |ndc: f32| (ndc + 1.0) * 672.0 / 2.0;
+        let to_y_px = |ndc: f32| (1.0 - ndc) * 216.0 / 2.0;
+        assert!((to_x_px(vertices[0].position[0]) - 312.0).abs() < 0.001);
+        assert!((to_x_px(vertices[2].position[0]) - 384.0).abs() < 0.001);
+        assert!((to_y_px(vertices[0].position[1]) - 24.0).abs() < 0.001);
+        assert_eq!(vertices[0].uv[0], 0.25);
+        assert_eq!(vertices[2].uv[0], 0.75);
     }
 
     #[test]

@@ -7,8 +7,9 @@ use std::sync::Arc;
 
 use super::{
     CssAxisClip, CssClip, CssRect, CssSize, RuntimeBorder, RuntimeBorderSide,
-    RuntimeImageResourceKey, RuntimePaint, RuntimePaintCommand, RuntimeRenderBox,
-    RuntimeRenderImage, RuntimeRenderKey, RuntimeScrollRenderMetadata, RuntimeSrgbColor,
+    RuntimeImageResourceKey, RuntimePageScaleTransform, RuntimePaint, RuntimePaintCommand,
+    RuntimeRenderBox, RuntimeRenderImage, RuntimeRenderKey, RuntimeScrollRenderMetadata,
+    RuntimeSrgbColor,
 };
 
 fn key() -> RuntimeRenderKey {
@@ -31,6 +32,81 @@ fn runtime_render_key_distinguishes_intrinsic_size_revisions() {
     let next = initial.with_intrinsic_size_revision(next_revision);
     assert_ne!(initial, next);
     assert_eq!(next.intrinsic_size_revision(), next_revision);
+}
+
+#[test]
+fn root_html_page_scale_transform_validates_and_survives_snapshot_rebuilds() {
+    for (dpr, page_scale) in [
+        (0.0, 1.0),
+        (-1.0, 1.0),
+        (f32::NAN, 1.0),
+        (1.0, 0.0),
+        (1.0, -1.0),
+        (1.0, f32::INFINITY),
+        (f32::MIN_POSITIVE, f32::MIN_POSITIVE),
+        (f32::MAX, 2.0),
+    ] {
+        assert_eq!(
+            RuntimePageScaleTransform::new(dpr, page_scale),
+            Err(super::RuntimeRenderError::InvalidPageScaleTransform)
+        );
+    }
+    let transform = RuntimePageScaleTransform::new(3.0, 0.5).unwrap();
+    assert_eq!(transform.device_scale_factor(), 3.0);
+    assert_eq!(transform.page_scale(), 0.5);
+    assert_eq!(transform.physical_scale(), 1.5);
+
+    let document = HostDocument::new().unwrap();
+    let document_snapshot = document.snapshot();
+    let render_key = RuntimeRenderKey::new(
+        document_snapshot.generation(),
+        document_snapshot.document_revision(),
+        document_snapshot.render_tree_revision(),
+        StyleRevision::INITIAL,
+        EnvironmentRevision::INITIAL,
+    );
+    let node = NodeId::new(1).unwrap();
+    let base = super::RuntimeRenderSnapshot::new(
+        render_key,
+        CssSize::new(780.0, 1688.0).unwrap(),
+        vec![RuntimeRenderBox::new(
+            node,
+            CssRect::new(100.0, 50.0, 20.0, 10.0).unwrap(),
+            RuntimePaint::None,
+            0,
+        )],
+    )
+    .unwrap();
+    let scaled = base.with_page_scale_transform(3.0, 0.5).unwrap();
+    assert_eq!(scaled.viewport_css_px(), base.viewport_css_px());
+    assert_eq!(scaled.page_scale_transform(), Some(transform));
+    assert_eq!(
+        scaled.hit_test_css_point(100.0, 50.0).unwrap().node_id(),
+        node
+    );
+    assert!(
+        scaled
+            .with_document_snapshot_revision(&document_snapshot)
+            .unwrap()
+            .page_scale_transform()
+            .is_some()
+    );
+    assert!(
+        scaled
+            .with_scroll_state_revision(spinon_core::ScrollStateRevision::INITIAL)
+            .page_scale_transform()
+            .is_some()
+    );
+    assert!(
+        scaled
+            .with_texts_and_paint_commands(
+                Vec::new(),
+                vec![RuntimePaintCommand::DrawBox { index: 0 }],
+            )
+            .unwrap()
+            .page_scale_transform()
+            .is_some()
+    );
 }
 
 #[test]

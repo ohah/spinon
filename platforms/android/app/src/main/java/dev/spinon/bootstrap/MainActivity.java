@@ -846,14 +846,16 @@ public final class MainActivity extends Activity {
             String completedReport = report;
             runOnUiThread(() -> {
                 boolean passed = completedReport.contains("status=0")
-                        && completedReport.contains("c04_12_root_html_asset=PASS");
+                        && completedReport.contains("c04_12_root_html_asset=PASS")
+                        && completedReport.contains("page_scale_wgpu=PASS");
                 status.setText(passed
-                        ? "C04.12 · HTML asset → V8 DOM\n\nPASS\n\n"
-                                + "bundle asset UTF-8\n"
-                                + "documentElement / head / body\n"
-                                + "viewport / color-scheme 보존\n"
-                                + "script inertness"
-                        : "C04.12 · HTML asset → V8 DOM 실패\n\n" + completedReport);
+                        ? "C04.12 · root HTML + WGPU scene fixture\n\nPASS\n\n"
+                                + "bundled HTML → V8 Document\n"
+                                + "DPR × page scale · 3 viewport cases\n"
+                                + "30 surface samples · image · glyph\n"
+                                + "HTML body paint 아님"
+                        : "C04.12 · root HTML + WGPU scene fixture 실패\n\n"
+                                + completedReport);
                 Log.println(passed ? Log.INFO : Log.ERROR, TAG,
                         "SPINON_C0412_ROOT_HTML_ASSET " + completedReport);
             });

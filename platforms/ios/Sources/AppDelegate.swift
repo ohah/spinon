@@ -656,20 +656,22 @@ private final class C0412RootHtmlFixtureViewController: UIViewController {
 
     private func showC0412Result(_ report: String, isAssetFixture: Bool) {
         let passed = report.contains("status=0") && (isAssetFixture
-            ? report.contains("c04_12_root_html_asset=PASS")
+            ? report.contains("c04_12_root_html_asset=PASS") && report.contains("page_scale_wgpu=PASS")
             : report.contains("c04_12_root_html_accessors=PASS"))
         reportView.text = passed
             ? (isAssetFixture
-                ? "C04.12 · HTML asset → V8 DOM\n\nPASS\n\n"
-                    + "bundle asset UTF-8\n"
-                    + "documentElement / head / body\n"
-                    + "viewport / color-scheme 보존\n"
-                    + "script inertness"
+                ? "C04.12 · root HTML + WGPU scene fixture\n\nPASS\n\n"
+                    + "bundled HTML → V8 Document\n"
+                    + "DPR × page scale · 3 viewport cases\n"
+                    + "30 surface samples · image · glyph\n"
+                    + "HTML body paint 아님"
                 : "C04.12 · 실제 V8 DOM\n\nPASS\n\n"
                     + "documentElement · head · body\n"
                     + "meta viewport · meta color-scheme · style tree\n"
                     + "script inertness · HostDocument text/attribute")
-            : "C04.12 · root HTML fixture 실패\n\n\(report)"
+            : (isAssetFixture
+                ? "C04.12 · root HTML + WGPU scene fixture 실패\n\n\(report)"
+                : "C04.12 · 실제 V8 DOM 실패\n\n\(report)")
         let name = isAssetFixture ? "SPINON_C0412_ROOT_HTML_ASSET" : "SPINON_C0412_ROOT_HTML"
         if passed {
             logger.notice("\(name, privacy: .public) status=pass")

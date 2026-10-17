@@ -1,0 +1,18 @@
+Host artifact boundary · macOS ARM64 · rustc 1.96.1 / LLVM 22.1.2
+
+Default negative control:
+  cargo build --locked -p spinon-ffi --lib
+  artifact: target/debug/libspinon_ffi.a
+  SHA-256: c9e19d26a5e8c0b28fdfa229bb8f791061891aae90836a19befd6bb19e6074e3
+  rust toolchain llvm-nm -g: spinon_c04_12_root_html_asset_fixture absent
+  strings: c04_12_root_html_asset=PASS and page_scale_wgpu=PASS absent
+
+Opt-in positive control:
+  cargo build --locked -p spinon-ffi --lib --features c04-12-root-html-fixture-test
+  artifact: target/debug/libspinon_ffi.a
+  SHA-256: 2176e30662be5adcd7ffec5f810b9f4888cd11fc55c406066dcf4be11f85d10e
+  rust toolchain llvm-nm -g: _spinon_c04_12_root_html_asset_fixture present
+  strings: c04_12_root_html_asset=PASS and page_scale_wgpu=PASS present
+
+The artifact is the host static library. These checks do not claim that the
+fixture is absent from every platform app bundle or establish release size.

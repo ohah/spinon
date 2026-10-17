@@ -8,6 +8,8 @@ use spinon_render::{
 };
 use std::sync::Arc;
 
+use crate::geometry::CssToSurfaceMapping;
+
 fn key() -> RuntimeRenderKey {
     let snapshot = HostDocument::new().unwrap().snapshot();
     RuntimeRenderKey::new(
@@ -86,7 +88,19 @@ fn glyph_vertices_clip_both_geometry_and_mask_coordinates_at_half_open_edge() {
         CssClip::unconstrained().with_x(CssAxisClip::new(2.0, 3.0).unwrap()),
     );
     let mut vertices = Vec::new();
-    append_text_vertices(&mut vertices, &text, &[(0, 0)], 2, 2, 4.0, 4.0, 4, 4, false).unwrap();
+    let scene = RuntimeRenderSnapshot::new(
+        key(),
+        CssSize::new(4.0, 4.0).unwrap(),
+        vec![RuntimeRenderBox::new(
+            text.node_id(),
+            CssRect::new(0.0, 0.0, 4.0, 4.0).unwrap(),
+            RuntimePaint::None,
+            0,
+        )],
+    )
+    .unwrap();
+    let mapping = CssToSurfaceMapping::new(&scene, 4, 4);
+    append_text_vertices(&mut vertices, &text, &[(0, 0)], 2, 2, mapping, false).unwrap();
     assert_eq!(vertices.len(), 6);
     assert_eq!(vertices[0].position, [0.0, 0.5]);
     assert_eq!(vertices[2].position, [0.5, 0.5]);
@@ -95,6 +109,99 @@ fn glyph_vertices_clip_both_geometry_and_mask_coordinates_at_half_open_edge() {
 
     let bytes = cast_slice::<_, u8>(&vertices);
     assert_eq!(bytes.len(), std::mem::size_of_val(vertices.as_slice()));
+}
+
+#[test]
+fn page_scale_maps_glyph_raster_and_clips_it_at_visual_viewport() {
+    let document = HostDocument::new().unwrap().snapshot();
+    let node = NodeId::new(1).unwrap();
+    let base = RuntimeRenderSnapshot::new(
+        RuntimeRenderKey::new(
+            document.generation(),
+            document.document_revision(),
+            document.render_tree_revision(),
+            StyleRevision::INITIAL,
+            EnvironmentRevision::INITIAL,
+        ),
+        CssSize::new(500.0, 1082.0513).unwrap(),
+        vec![RuntimeRenderBox::new(
+            node,
+            CssRect::new(100.0, 50.0, 20.0, 10.0).unwrap(),
+            RuntimePaint::None,
+            0,
+        )],
+    )
+    .unwrap()
+    .with_page_scale_transform(3.0, 1.0)
+    .unwrap();
+    let glyph =
+        RuntimeGlyphBitmap::new(60, 30, 0, 0, 0, 0, Arc::from(vec![255_u8; 60 * 30])).unwrap();
+    let visible_text = RuntimeRenderText::new(
+        node,
+        base.key(),
+        100.0,
+        50.0,
+        3.0,
+        RuntimeSrgbColor::new(0.0, 0.0, 0.0, 1.0).unwrap(),
+        CssClip::unconstrained(),
+        vec![glyph],
+    )
+    .unwrap();
+    let scene = base
+        .with_texts_and_paint_commands(
+            vec![visible_text],
+            vec![
+                RuntimePaintCommand::DrawBox { index: 0 },
+                RuntimePaintCommand::DrawText { index: 0 },
+            ],
+        )
+        .unwrap();
+    let atlas = build_mask_atlas(&scene.texts()[0], 1024).unwrap().unwrap();
+    let mapping = CssToSurfaceMapping::new(&scene, 1170, 2532);
+    let mut vertices = Vec::new();
+    append_text_vertices(
+        &mut vertices,
+        &scene.texts()[0],
+        &atlas.placements,
+        atlas.width,
+        atlas.height,
+        mapping,
+        false,
+    )
+    .unwrap();
+    let to_x_px = |ndc: f32| (ndc + 1.0) * 1170.0 / 2.0;
+    let to_y_px = |ndc: f32| (1.0 - ndc) * 2532.0 / 2.0;
+    assert!((to_x_px(vertices[0].position[0]) - 300.0).abs() < 0.001);
+    assert!((to_x_px(vertices[2].position[0]) - 360.0).abs() < 0.001);
+    assert!((to_y_px(vertices[0].position[1]) - 150.0).abs() < 0.001);
+    assert!((to_y_px(vertices[1].position[1]) - 180.0).abs() < 0.001);
+
+    let outside_text = RuntimeRenderText::new(
+        node,
+        scene.key(),
+        400.0,
+        50.0,
+        3.0,
+        RuntimeSrgbColor::new(0.0, 0.0, 0.0, 1.0).unwrap(),
+        CssClip::unconstrained(),
+        vec![
+            RuntimeGlyphBitmap::new(30, 30, 0, 0, 0, 0, Arc::from(vec![255_u8; 30 * 30])).unwrap(),
+        ],
+    )
+    .unwrap();
+    let mut clipped_vertices = Vec::new();
+    let outside_atlas = build_mask_atlas(&outside_text, 1024).unwrap().unwrap();
+    append_text_vertices(
+        &mut clipped_vertices,
+        &outside_text,
+        &outside_atlas.placements,
+        outside_atlas.width,
+        outside_atlas.height,
+        mapping,
+        false,
+    )
+    .unwrap();
+    assert!(clipped_vertices.is_empty());
 }
 
 #[test]

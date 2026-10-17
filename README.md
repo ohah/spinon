@@ -21,7 +21,7 @@ mise exec -- bun run verify:r06-priority:simulators
 
 ## 네이티브 빌드 부트스트랩
 
-Android 앱과 iOS 시뮬레이터 앱은 고정된 V8 소스와 Rust FFI를 함께 묶습니다. 기본 시작에서는 기존 JavaScript smoke와 별도로 `examples/bootstrap/index.html`을 HTML document로 파싱하고 `root-app.js`를 같은 V8 document session에서 실행합니다. 제한 viewport/media 환경과 root Canvas background를 연결했으며, HTML body/text/layout·paint는 아직 지원하지 않습니다. Simulator 실행과 exact Canvas 색상 근거는 [C04.12 Canvas evidence](spec/internal/evidence/c04-12-root-canvas-color-scheme-2026-10-17/README.md)를 참고하세요. 먼저 `mise install`과 Android SDK·Xcode 설치를 마친 뒤 [V8 소스와 플랫폼별 빌드 준비](native/v8/VERSION.md)를 따릅니다. 자세한 SDK 패키지와 로그 확인법은 [Android](platforms/android/README.md), [iOS](platforms/ios/README.md), [내부 V8 인터페이스](spec/internal/0001-v8-bootstrap.md)를 참고하세요.
+Android 앱과 iOS 시뮬레이터 앱은 고정된 V8 소스와 Rust FFI를 함께 묶습니다. 기본 시작에서는 기존 JavaScript smoke와 별도로 `examples/bootstrap/index.html`을 HTML document로 파싱하고 `root-app.js`를 같은 V8 document session에서 실행합니다. 제한 viewport/media 환경과 root Canvas background를 연결했으며, 선택된 WGPU scene에서 초기 DPR×page-scale 좌표만 확인했습니다. 기본 `RuntimeSession`에 자동 연결된 일반 HTML body/text/layout·paint는 아직 지원하지 않습니다. Simulator 실행과 exact Canvas 색상 근거는 [C04.12 Canvas evidence](spec/internal/evidence/c04-12-root-canvas-color-scheme-2026-10-17/README.md), scene 변환의 Chrome·WGPU·Simulator 근거는 [C04.12 page-scale evidence](spec/internal/evidence/c04-12-page-scale-rendering-2026-10-17/README.md)를 참고하세요. 먼저 `mise install`과 Android SDK·Xcode 설치를 마친 뒤 [V8 소스와 플랫폼별 빌드 준비](native/v8/VERSION.md)를 따릅니다. 자세한 SDK 패키지와 로그 확인법은 [Android](platforms/android/README.md), [iOS](platforms/ios/README.md), [내부 V8 인터페이스](spec/internal/0001-v8-bootstrap.md)를 참고하세요.
 
 ```sh
 mise exec -- bun run build:android
