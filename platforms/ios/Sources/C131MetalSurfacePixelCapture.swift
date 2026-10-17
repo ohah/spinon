@@ -81,8 +81,12 @@ final class C131MetalSurfacePixelCapture: C131MetalSurfacePixelCaptureProtocol {
     static let totalBatchCount = (sampleCount + batchSize - 1) / batchSize
     static let totalDeadlineSeconds: TimeInterval = 300
     static let batchDeadlineSeconds: TimeInterval = 15
-    var expectedSampleCount: Int { Self.sampleCount }
-    var expectedBatchCount: Int { Self.totalBatchCount }
+    let viewportWidthCssPx: Int
+    let viewportHeightCssPx: Int
+    private let sampleCoordinates: [(Int, Int)]
+    private let expectedRGBA: [[Int]]?
+    var expectedSampleCount: Int { sampleCoordinates.count }
+    var expectedBatchCount: Int { (sampleCoordinates.count + Self.batchSize - 1) / Self.batchSize }
 
     enum CaptureError: Error, CustomStringConvertible {
         case invalidRunID
@@ -147,11 +151,37 @@ final class C131MetalSurfacePixelCapture: C131MetalSurfacePixelCaptureProtocol {
     private var surfaceFormat: String?
     private var finished = false
 
-    init(runID: String) throws {
+    init(
+        runID: String,
+        viewportWidthCssPx: Int = C131MetalSurfacePixelCapture.viewportWidth,
+        viewportHeightCssPx: Int = C131MetalSurfacePixelCapture.viewportHeight,
+        sampleCoordinates: [(Int, Int)]? = nil,
+        expectedRGBA: [[Int]]? = nil
+    ) throws {
         guard runID.range(of: "^[A-Za-z0-9_-]{1,80}$", options: .regularExpression) != nil else {
             throw CaptureError.invalidRunID
         }
+        guard viewportWidthCssPx > 0, viewportHeightCssPx > 0 else {
+            throw CaptureError.invalidSurfaceSize
+        }
+        let fixedCoordinates = sampleCoordinates ?? (0..<Self.sampleCount).map {
+            ($0 % Self.viewportWidth, $0 / Self.viewportWidth)
+        }
+        guard !fixedCoordinates.isEmpty,
+              fixedCoordinates.allSatisfy({
+                  $0.0 >= 0 && $0.0 < viewportWidthCssPx
+                      && $0.1 >= 0 && $0.1 < viewportHeightCssPx
+              }),
+              Set(fixedCoordinates.map { "\($0.0),\($0.1)" }).count == fixedCoordinates.count,
+              expectedRGBA == nil || expectedRGBA?.count == fixedCoordinates.count,
+              expectedRGBA?.allSatisfy({ $0.count == 4 && $0.allSatisfy { (0...255).contains($0) } }) ?? true else {
+            throw CaptureError.invalidSampleCount
+        }
         self.runID = runID
+        self.viewportWidthCssPx = viewportWidthCssPx
+        self.viewportHeightCssPx = viewportHeightCssPx
+        self.sampleCoordinates = fixedCoordinates
+        self.expectedRGBA = expectedRGBA
         guard let caches = FileManager.default.urls(
             for: .cachesDirectory,
             in: .userDomainMask
@@ -194,8 +224,8 @@ final class C131MetalSurfacePixelCapture: C131MetalSurfacePixelCaptureProtocol {
             .contains(proposedFormat) else {
             throw CaptureError.invalidSurfaceFormat
         }
-        let scaleX = Double(proposedWidth) / Double(Self.viewportWidth)
-        let scaleY = Double(proposedHeight) / Double(Self.viewportHeight)
+        let scaleX = Double(proposedWidth) / Double(viewportWidthCssPx)
+        let scaleY = Double(proposedHeight) / Double(viewportHeightCssPx)
         guard scaleX.isFinite, scaleY.isFinite, scaleX >= 1, scaleY >= 1 else {
             throw CaptureError.scaleTooSmall
         }
@@ -211,15 +241,14 @@ final class C131MetalSurfacePixelCapture: C131MetalSurfacePixelCaptureProtocol {
                     || surfaceFormat != proposedFormat {
             throw CaptureError.surfaceChanged
         }
-        guard nextIndex < Self.sampleCount else { return nil }
+        guard nextIndex < sampleCoordinates.count else { return nil }
 
-        let endIndex = min(nextIndex + Self.batchSize, Self.sampleCount)
+        let endIndex = min(nextIndex + Self.batchSize, sampleCoordinates.count)
         var coordinates: [C131MetalPixelCoordinate] = []
         coordinates.reserveCapacity(endIndex - nextIndex)
         var seen = Set<String>()
         for index in nextIndex..<endIndex {
-            let cssX = index % Self.viewportWidth
-            let cssY = index / Self.viewportWidth
+            let (cssX, cssY) = sampleCoordinates[index]
             let drawableX = Int(floor((Double(cssX) + 0.5) * scaleX))
             let drawableY = Int(floor((Double(cssY) + 0.5) * scaleY))
             guard drawableX >= 0, drawableY >= 0,
@@ -294,6 +323,9 @@ final class C131MetalSurfacePixelCapture: C131MetalSurfacePixelCaptureProtocol {
                 guard rgba.count == 4, rgba.allSatisfy({ (0...255).contains($0) }) else {
                     throw CaptureError.sampleColorInvalid(coordinate.index)
                 }
+                if let expectedRGBA, rgba != expectedRGBA[coordinate.index] {
+                    throw CaptureError.sampleColorInvalid(coordinate.index)
+                }
                 let artifactSample = C131MetalPixelArtifactSample(
                     index: coordinate.index,
                     cssX: cssX,
@@ -322,15 +354,15 @@ final class C131MetalSurfacePixelCapture: C131MetalSurfacePixelCaptureProtocol {
         nextIndex += pendingBatch.count
         self.pendingBatch = nil
         self.pendingAt = nil
-        let complete = nextIndex == Self.sampleCount
+        let complete = nextIndex == sampleCoordinates.count
         if complete {
             try finalize()
         }
         return C131MetalPixelCaptureProgress(
             capturedSamples: nextIndex,
-            totalSamples: Self.sampleCount,
+            totalSamples: sampleCoordinates.count,
             capturedBatches: (nextIndex + Self.batchSize - 1) / Self.batchSize,
-            totalBatches: Self.totalBatchCount,
+            totalBatches: expectedBatchCount,
             complete: complete,
             sampleFileName: complete ? sampleURL.lastPathComponent : nil,
             manifestFileName: complete ? manifestURL.lastPathComponent : nil
@@ -372,15 +404,15 @@ final class C131MetalSurfacePixelCapture: C131MetalSurfacePixelCaptureProtocol {
                 status: "complete",
                 runId: runID,
                 generation: generation,
-                viewportCssPx: [Self.viewportWidth, Self.viewportHeight],
+                viewportCssPx: [viewportWidthCssPx, viewportHeightCssPx],
                 drawablePixelSize: [width, height],
                 surfaceFormat: format,
                 rgbaOrder: "RGBA8",
-                scaleX: Double(width) / Double(Self.viewportWidth),
-                scaleY: Double(height) / Double(Self.viewportHeight),
+                scaleX: Double(width) / Double(viewportWidthCssPx),
+                scaleY: Double(height) / Double(viewportHeightCssPx),
                 sampleCount: nextIndex,
                 batchSize: Self.batchSize,
-                batchCount: (nextIndex + Self.batchSize - 1) / Self.batchSize,
+                batchCount: expectedBatchCount,
                 sampleFile: sampleURL.lastPathComponent,
                 sampleSha256: sampleDigest,
                 processID: ProcessInfo.processInfo.processIdentifier,

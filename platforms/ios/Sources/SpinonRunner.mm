@@ -921,6 +921,28 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 }
 
++ (uint64_t)createRuntimeGpuHostWithC13_1StackingDescendantClipFixture {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
+    SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_c13_1_stacking_descendant_clip_fixture(
+          output.data(), output.size());
+  if (host == nullptr) {
+    os_log_error(OS_LOG_DEFAULT, "SPINON_C131_STACKING_CLIP_HOST_ERROR=%{public}s",
+                 output.data());
+    return 0;
+  }
+  os_log(OS_LOG_DEFAULT, "SPINON_C131_STACKING_CLIP_HOST=%{public}s", output.data());
+  return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
+#else
+  os_log_error(OS_LOG_DEFAULT,
+               "SPINON_C131_STACKING_CLIP_DISABLED enable C04 runtime GPU and C13.1 fixture test");
+  return 0;
+#endif
+}
+
 + (uint64_t)createRuntimeGpuHostWithC13_2ScrollFixture {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
     defined(SPINON_ENABLE_C132_SCROLL_FIXTURE_TEST) && \
@@ -1953,6 +1975,40 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #else
   (void)handle;
   return @"status=-90 feature-disabled";
+#endif
+}
+
++ (NSString *)evalRuntimeGpuC13_1StackingDescendantClipFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
+    SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 32768> output{};
+  const int32_t status =
+      spinon_runtime_gpu_host_eval_c13_1_stacking_descendant_clip_fixture(
+          host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C131_STACKING_CLIP_EVAL", report);
+  if (status == 0) {
+    const NSUInteger frameCount = C10LogNodeFrames(
+        report, "SPINON_C131_STACKING_CLIP_NODE_FRAME");
+    const NSUInteger hitCount = C131LogHitTestSamples(
+        report, 18, "SPINON_C131_STACKING_CLIP_HIT_TEST",
+        "SPINON_C131_STACKING_CLIP_HIT_TEST_SUMMARY");
+    NSString *summary = [NSString stringWithFormat:
+        @"status=%@ boxes=%lu hit_samples=%lu",
+        frameCount == 13 && hitCount == 18 ? @"ok" : @"error",
+        (unsigned long)frameCount, (unsigned long)hitCount];
+    C0410LogReport(frameCount == 13 && hitCount == 18
+                       ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                   "SPINON_C131_STACKING_CLIP_FIXTURE_SUMMARY", summary);
+  }
+  return report;
+#else
+  (void)handle;
+  return @"status=-90 C13.1 fixture-test feature is disabled";
 #endif
 }
 

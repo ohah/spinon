@@ -6,3 +6,6 @@ pub(crate) const RUNTIME_CSS_C13_1_BORDER_FIXTURE_SOURCE: &str =
 
 pub(crate) const RUNTIME_CSS_C13_1_COMPACT_SURFACE_MATRIX_FIXTURE_SOURCE: &str =
     include_str!("../../../../../tests/fixtures/css/c13/c13-1-compact-surface-matrix.js");
+
+pub(crate) const RUNTIME_CSS_C13_1_STACKING_DESCENDANT_CLIP_FIXTURE_SOURCE: &str =
+    include_str!("../../../../../tests/fixtures/css/c13/c13-1-stacking-descendant-clip.js");

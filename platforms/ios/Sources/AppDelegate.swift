@@ -57,6 +57,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             || arguments.contains("--spinon-c131-compact-hit-identity-grid")
             || arguments.contains("--spinon-c131-compact-metal-pixel-centers")
             || arguments.contains("--spinon-c131-full-physical-metal-pixels")
+            || arguments.contains("--spinon-c131-stacking-descendant-clip")
             || arguments.contains("--spinon-c131-overflow-clip")
             || arguments.contains("--spinon-c131-overflow-clip-border")
             || arguments.contains("--spinon-c132-scroll")

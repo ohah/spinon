@@ -1,5 +1,9 @@
 # 내부 인터페이스 명세
 
+## C13.1 복합 stacking descendant와 overflow clip
+
+[계획과 고정 Chrome oracle](../../plan/c13-1-stacking-descendant-clip-controls.md) · [Android API 37 AVD/iOS Simulator 실행·표면 표본·revision negative control](./evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/README.md) · [default/opt-in archive 경계](./evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/feature-boundary/README.md) · [구현 실패 관점 20개](./evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/implementation-review-20.md) · [PR 변경 관점 30개](./evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/pr-diff-review-30.md). 고정 fixture 검증이며 C13.1/C13 전체 완료, WPT, DOM event 또는 일반 CSS 지원 선언은 아니다.
+
 ## R06 큐 포화·복구
 
 - [구현 전 비교 모델](./evidence/r06-queue-saturation-precomparison-2026-10-08.md) · [작업 계획·구현 점검](../../plan/r06-queue-saturation.md) · [실제 V8 실행 근거](./evidence/r06-queue-saturation-2026-10-08.md)

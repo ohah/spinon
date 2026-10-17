@@ -1,0 +1,20 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.15s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-e1aaa1931704dec7)
+
+running 14 tests
+test runtime_gpu::ffi::fixtures::c13_1::tests::c13_1_ffi_rejects_null_host_and_invalid_output_before_runtime_access ... ok
+test runtime_gpu::fixtures::c13_1_compact_surface_matrix::tests::oracle_metadata_rejects_viewport_and_chrome_revision_mutations ... ok
+test runtime_gpu::ffi::fixtures::c13_1::tests::c13_1_surface_pixel_request_rejects_invalid_batch_before_host_access ... ok
+test runtime_gpu::fixtures::c13_1_compact_surface_matrix::hit_identity_grid::tests::rejects_frame_order_that_could_remap_node_ids_to_different_chrome_ids ... ok
+test runtime_gpu::fixtures::c13_1_stacking_descendant_clip::tests::chrome_oracle_rejects_one_byte_mutations_in_each_rgba_channel ... ok
+test runtime_gpu::fixtures::c13_1_compact_surface_matrix::hit_identity_grid::tests::rejects_source_browser_grid_file_and_identity_digest_mutations ... ok
+test runtime_gpu::fixtures::c13_1_stacking_descendant_clip::tests::chrome_oracle_rejects_case_point_sample_order_and_identity_mutations ... ok
+test runtime_gpu::fixtures::c13_1_compact_surface_matrix::tests::pinned_oracle_has_41_ordered_frames_and_52_unique_hit_samples ... ok
+test runtime_gpu::fixtures::c13_1_compact_surface_matrix::hit_identity_grid::tests::rejects_unknown_or_duplicate_node_identities ... ok
+test runtime_gpu::fixtures::c13_1_compact_surface_matrix::hit_identity_grid::tests::full_grid_pins_source_browser_rows_histogram_fixed_samples_and_digest ... ok
+test runtime_gpu::fixtures::c13_1_compact_surface_matrix::hit_identity_grid::tests::rejects_histogram_fixed_subset_and_viewport_mutations ... ok
+test runtime_gpu::fixtures::c13_1_compact_surface_matrix::hit_identity_grid::tests::rejects_row_gaps_overlaps_empty_rows_and_out_of_bounds_runs ... ok
+test runtime_gpu::fixtures::c13_1_compact_surface_matrix::hit_identity_grid::tests::app_comparison_mapping_queries_each_integer_point_once_and_matches_full_digest ... ok
+test runtime_gpu::fixtures::c13_1_compact_surface_matrix::hit_identity_grid::tests::app_comparison_reports_a_single_edge_mismatch_and_bounds_the_preview ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 46 filtered out; finished in 0.01s

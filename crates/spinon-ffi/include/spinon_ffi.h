@@ -245,6 +245,12 @@ SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c13_1_compact_surface_pixel_re
 int32_t spinon_runtime_gpu_host_eval_c13_1_compact_surface_matrix_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
+/* C13.1 중첩 stacking descendant clip fixture-test host와 evaluator입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c13_1_stacking_descendant_clip_fixture(
+    char *output, size_t output_capacity);
+int32_t spinon_runtime_gpu_host_eval_c13_1_stacking_descendant_clip_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
 /* 다음 C13.1 draw report에 포함할 최대 64개 Metal surface sample을 예약합니다. */
 int32_t spinon_runtime_gpu_host_request_c13_1_surface_pixels_for_test(
     SpinonRuntimeGpuHost *host, const uint32_t *sample_xy, size_t sample_count,
