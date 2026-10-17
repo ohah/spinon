@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C13.1 overflow clip and nested stacking descendants</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 540px; height: 128px; overflow: hidden; }
+    #fixture {
+      position: relative;
+      width: 540px;
+      height: 128px;
+      background: #f0f4f7;
+    }
+    .parent {
+      position: absolute;
+      top: 28px;
+      width: 120px;
+      height: 72px;
+      z-index: 0;
+      background: #f0c674;
+    }
+    .layer {
+      position: absolute;
+      left: 56px;
+      top: 12px;
+      width: 80px;
+      height: 48px;
+      z-index: 900;
+    }
+    .target {
+      position: absolute;
+      left: 32px;
+      top: 0;
+      width: 72px;
+      height: 48px;
+      z-index: 10;
+      background: #57a6d9;
+    }
+    .overlay {
+      position: absolute;
+      top: 40px;
+      width: 16px;
+      height: 48px;
+      z-index: 1;
+      background: #e4514f;
+    }
+    [data-case="visible"] .parent { overflow: visible; }
+    [data-case="clip"] .parent { overflow: clip; }
+    [data-case="hidden"] .parent { overflow: hidden; }
+  </style>
+</head>
+<body>
+  <main id="fixture" data-id="root">
+    <section data-case="visible">
+      <div class="parent" data-id="visible-parent" style="left: 20px">
+        <div class="layer" data-id="visible-layer">
+          <div class="target" data-id="visible-target"></div>
+        </div>
+      </div>
+      <div class="overlay" data-id="visible-overlay" style="left: 148px"></div>
+    </section>
+    <section data-case="clip">
+      <div class="parent" data-id="clip-parent" style="left: 190px">
+        <div class="layer" data-id="clip-layer">
+          <div class="target" data-id="clip-target"></div>
+        </div>
+      </div>
+      <div class="overlay" data-id="clip-overlay" style="left: 318px"></div>
+    </section>
+    <section data-case="hidden">
+      <div class="parent" data-id="hidden-parent" style="left: 360px">
+        <div class="layer" data-id="hidden-layer">
+          <div class="target" data-id="hidden-target"></div>
+        </div>
+      </div>
+      <div class="overlay" data-id="hidden-overlay" style="left: 488px"></div>
+    </section>
+  </main>
+  <script>
+    window.collectC131StackingClipObservation = () => {
+      const cases = [...document.querySelectorAll('[data-case]')];
+      return {
+        viewport: {
+          width: innerWidth,
+          height: innerHeight,
+          devicePixelRatio,
+          scrollX,
+          scrollY,
+        },
+        cases: cases.map((section) => {
+          const id = section.dataset.case;
+          const node = (name) => document.querySelector(`[data-id="${id}-${name}"]`);
+          const parent = node('parent');
+          const target = node('target');
+          const overlay = node('overlay');
+          const rect = (element) => {
+            const value = element.getBoundingClientRect();
+            return {
+              x: value.x,
+              y: value.y,
+              width: value.width,
+              height: value.height,
+              top: value.top,
+              right: value.right,
+              bottom: value.bottom,
+              left: value.left,
+            };
+          };
+          const parentRect = rect(parent);
+          const pointSpecs = [
+            ['parent-only', parentRect.left + 24.5, 52.5],
+            ['target-inside', parentRect.left + 102.5, 52.5],
+            ['clip-edge-inside', parentRect.right - 0.5, 52.5],
+            ['clip-edge-outside', parentRect.right + 0.5, 52.5],
+            ['escape-before-overlay', parentRect.right + 4.5, 52.5],
+            ['stacking-overlay', parentRect.right + 16.5, 52.5],
+          ];
+          const hit = (x, y) => {
+            const element = document.elementFromPoint(x, y);
+            return element?.closest('[data-id]')?.getAttribute('data-id') ?? null;
+          };
+          const computed = getComputedStyle(parent);
+          return {
+            id,
+            overflowX: computed.overflowX,
+            overflowY: computed.overflowY,
+            parent: rect(parent),
+            target: rect(target),
+            overlay: rect(overlay),
+            zIndex: {
+              parent: computed.zIndex,
+              layer: getComputedStyle(node('layer')).zIndex,
+              target: getComputedStyle(target).zIndex,
+              overlay: getComputedStyle(overlay).zIndex,
+            },
+            points: pointSpecs.map(([name, x, y]) => ({
+              name,
+              x,
+              y,
+              hit: hit(x, y),
+            })),
+          };
+        }),
+      };
+    };
+  </script>
+</body>
+</html>
