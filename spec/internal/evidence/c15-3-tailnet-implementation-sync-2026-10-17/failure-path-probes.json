@@ -1,0 +1,93 @@
+{
+  "title": "Tailnet preview hostile request and route probes",
+  "generated_at": "2026-10-17T00:27:34.975Z",
+  "listener": "127.0.0.1:8768",
+  "listener_pid": 1191,
+  "no_listener_restart": true,
+  "probes": [
+    {
+      "case": "actual roadmap base route",
+      "method": "GET",
+      "path": "/spinon/roadmap.html",
+      "expected_status": 200,
+      "observed_status": 200,
+      "response_bytes": 107113,
+      "pass": true
+    },
+    {
+      "case": "base prefix omitted",
+      "method": "GET",
+      "path": "/roadmap.html",
+      "expected_status": 404,
+      "observed_status": 404,
+      "response_bytes": 9,
+      "pass": true
+    },
+    {
+      "case": "unknown route",
+      "method": "GET",
+      "path": "/spinon/no-such-route",
+      "expected_status": 404,
+      "observed_status": 404,
+      "response_bytes": 9,
+      "pass": true
+    },
+    {
+      "case": "unsupported write method",
+      "method": "POST",
+      "path": "/spinon/roadmap.html",
+      "expected_status": 405,
+      "observed_status": 405,
+      "response_bytes": 0,
+      "pass": true
+    },
+    {
+      "case": "encoded root traversal",
+      "method": "GET",
+      "path": "/spinon/%2e%2e%2fetc%2fpasswd",
+      "expected_status": 403,
+      "observed_status": 403,
+      "response_bytes": 0,
+      "pass": true
+    },
+    {
+      "case": "HEAD route metadata",
+      "method": "HEAD",
+      "path": "/spinon/roadmap.html",
+      "expected_status": 200,
+      "observed_status": 200,
+      "content_length": 107113,
+      "pass": true
+    },
+    {
+      "case": "source mutation between preflight and copy",
+      "method": "static guard",
+      "expected_status": "abort on hash mismatch",
+      "observed_status": "all 108 source hashes matched before copy",
+      "pass": true
+    },
+    {
+      "case": "target mutation between preflight and copy",
+      "method": "static guard",
+      "expected_status": "abort on hash mismatch",
+      "observed_status": "all 108 previous target hashes matched before copy",
+      "pass": true
+    },
+    {
+      "case": "preexisting backup destination",
+      "method": "preflight negative control",
+      "expected_status": "abort without overwrite",
+      "observed_status": "aborted before copy when first backup path already existed; unique publish2/publish3 roots used for subsequent overlays",
+      "pass": true
+    },
+    {
+      "case": "symlink destination parent",
+      "method": "static guard",
+      "expected_status": "abort",
+      "observed_status": "no destination parent symlinks found in copied path inventory",
+      "pass": true
+    }
+  ],
+  "deletion_count": 0,
+  "listener_state_preserved": true
+}

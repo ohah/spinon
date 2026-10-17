@@ -1,0 +1,127 @@
+{
+  "generated_at": "2026-10-17T00:22:27.668Z",
+  "expected_backup_count": 15,
+  "verified_backup_count": 15,
+  "backups": [
+    {
+      "path": "index.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/index.html",
+      "bytes": 25493,
+      "expected_sha256": "aa3eefe77ed40faa7bac32085926316491a7963bf99fe3e0fde67579192bef44",
+      "actual_sha256": "aa3eefe77ed40faa7bac32085926316491a7963bf99fe3e0fde67579192bef44",
+      "matches_previous_target": true
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/internal/0070-c15-1-inline-text-layout.html",
+      "bytes": 39196,
+      "expected_sha256": "94a1fbb6c646ae834bf01c85552c96291a5c9c370c7120d96656dc052260363f",
+      "actual_sha256": "94a1fbb6c646ae834bf01c85552c96291a5c9c370c7120d96656dc052260363f",
+      "matches_previous_target": true
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.md",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/internal/0070-c15-1-inline-text-layout.md",
+      "bytes": 12599,
+      "expected_sha256": "8fb677b90ace8b3c106ea819b56fad1d99a9e9fb01d03b6c803340057491d2e7",
+      "actual_sha256": "8fb677b90ace8b3c106ea819b56fad1d99a9e9fb01d03b6c803340057491d2e7",
+      "matches_previous_target": true
+    },
+    {
+      "path": "internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html",
+      "bytes": 32250,
+      "expected_sha256": "0dcacd13ed6213c90b91d551e02e42b4bbc72bb1de89400811b5271c3eb88a30",
+      "actual_sha256": "0dcacd13ed6213c90b91d551e02e42b4bbc72bb1de89400811b5271c3eb88a30",
+      "matches_previous_target": true
+    },
+    {
+      "path": "internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "bytes": 33368,
+      "expected_sha256": "7ac88b844a20c78cfa04dc1bb2af6d18582bd0607d5f0486605fb277cf542b78",
+      "actual_sha256": "7ac88b844a20c78cfa04dc1bb2af6d18582bd0607d5f0486605fb277cf542b78",
+      "matches_previous_target": true
+    },
+    {
+      "path": "internal/README.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/internal/README.html",
+      "bytes": 151482,
+      "expected_sha256": "7c4619f8d25976a66c690e57569f7960cfedfa5da354e09011c20422263950f3",
+      "actual_sha256": "7c4619f8d25976a66c690e57569f7960cfedfa5da354e09011c20422263950f3",
+      "matches_previous_target": true
+    },
+    {
+      "path": "internal/README.md",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/internal/README.md",
+      "bytes": 106470,
+      "expected_sha256": "9ccd54c5b354259bb26f79ebc151fcde0c1cf4cd3b49889f23ed0589d0bab281",
+      "actual_sha256": "9ccd54c5b354259bb26f79ebc151fcde0c1cf4cd3b49889f23ed0589d0bab281",
+      "matches_previous_target": true
+    },
+    {
+      "path": "public/roadmap.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/public/roadmap.html",
+      "bytes": 106883,
+      "expected_sha256": "3421822a0c7e9d1c9c7d6cc9e897ff30a066f117dec2ef463b2477cadcc0b33d",
+      "actual_sha256": "3421822a0c7e9d1c9c7d6cc9e897ff30a066f117dec2ef463b2477cadcc0b33d",
+      "matches_previous_target": true
+    },
+    {
+      "path": "roadmap.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/roadmap.html",
+      "bytes": 106883,
+      "expected_sha256": "3421822a0c7e9d1c9c7d6cc9e897ff30a066f117dec2ef463b2477cadcc0b33d",
+      "actual_sha256": "3421822a0c7e9d1c9c7d6cc9e897ff30a066f117dec2ef463b2477cadcc0b33d",
+      "matches_previous_target": true
+    },
+    {
+      "path": "spec/internal/0070-c15-1-inline-text-layout.md",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/spec/internal/0070-c15-1-inline-text-layout.md",
+      "bytes": 12599,
+      "expected_sha256": "8fb677b90ace8b3c106ea819b56fad1d99a9e9fb01d03b6c803340057491d2e7",
+      "actual_sha256": "8fb677b90ace8b3c106ea819b56fad1d99a9e9fb01d03b6c803340057491d2e7",
+      "matches_previous_target": true
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/spec/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html",
+      "bytes": 32250,
+      "expected_sha256": "0dcacd13ed6213c90b91d551e02e42b4bbc72bb1de89400811b5271c3eb88a30",
+      "actual_sha256": "0dcacd13ed6213c90b91d551e02e42b4bbc72bb1de89400811b5271c3eb88a30",
+      "matches_previous_target": true
+    },
+    {
+      "path": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "bytes": 33368,
+      "expected_sha256": "7ac88b844a20c78cfa04dc1bb2af6d18582bd0607d5f0486605fb277cf542b78",
+      "actual_sha256": "7ac88b844a20c78cfa04dc1bb2af6d18582bd0607d5f0486605fb277cf542b78",
+      "matches_previous_target": true
+    },
+    {
+      "path": "spec/internal/README.md",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/spec/internal/README.md",
+      "bytes": 106470,
+      "expected_sha256": "9ccd54c5b354259bb26f79ebc151fcde0c1cf4cd3b49889f23ed0589d0bab281",
+      "actual_sha256": "9ccd54c5b354259bb26f79ebc151fcde0c1cf4cd3b49889f23ed0589d0bab281",
+      "matches_previous_target": true
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/STATUS.html",
+      "bytes": 334182,
+      "expected_sha256": "00055a9e184f5c62a66b8235cc31941660e6349647e5cbc50166df55984c2764",
+      "actual_sha256": "00055a9e184f5c62a66b8235cc31941660e6349647e5cbc50166df55984c2764",
+      "matches_previous_target": true
+    },
+    {
+      "path": "STATUS.md",
+      "backup_path": "backup/c15-3-tailnet-implementation-sync-2026-10-17/STATUS.md",
+      "bytes": 251775,
+      "expected_sha256": "3f6904a132f0148fb9a2bd7a4feeaa7626f6345036e22038a79fcbfc499f07fa",
+      "actual_sha256": "3f6904a132f0148fb9a2bd7a4feeaa7626f6345036e22038a79fcbfc499f07fa",
+      "matches_previous_target": true
+    }
+  ]
+}
