@@ -82,6 +82,7 @@ public final class MainActivity extends Activity {
     };
     private static final int RUNTIME_QUEUE_CAPACITY = 64;
     private static final String LIFECYCLE_FIXTURE_ASSET = "s03-lifecycle-probe.js";
+    private static final String C0412_ROOT_HTML_ASSET = "c04-12-root-html-asset.html";
     private static final String LIFECYCLE_FIXTURE_GLOBAL = "__spinonS03LifecycleProbeV1";
     private static final int LIFECYCLE_STRESS_ROUNDS = 6;
     private static final int LIFECYCLE_STRESS_CYCLES_PER_ROUND = 32;
@@ -201,6 +202,14 @@ public final class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getIntent().getBooleanExtra("spinon_c0412_root_html_asset", false)) {
+            if (!BuildConfig.SPINON_C04_12_ROOT_HTML_FIXTURE_TEST) {
+                showC0412RootHtmlFixtureUnavailable();
+            } else {
+                showC0412RootHtmlAssetFixture();
+            }
+            return;
+        }
         if (getIntent().getBooleanExtra("spinon_c0412_root_html", false)) {
             if (!BuildConfig.SPINON_C04_12_ROOT_HTML_FIXTURE_TEST) {
                 showC0412RootHtmlFixtureUnavailable();
@@ -740,6 +749,45 @@ public final class MainActivity extends Activity {
                         : "C04.12 · 실제 V8 DOM 실패\n\n" + completedReport);
                 Log.println(passed ? Log.INFO : Log.ERROR, TAG,
                         "SPINON_C0412_ROOT_HTML " + completedReport);
+            });
+        });
+    }
+
+    private void showC0412RootHtmlAssetFixture() {
+        TextView status = new TextView(this);
+        status.setText("C04.12 HTML asset을 V8 document로 가져오는 중…");
+        status.setTextColor(Color.WHITE);
+        status.setGravity(Gravity.CENTER);
+        status.setBackgroundColor(Color.rgb(14, 24, 40));
+        status.setTextSize(18);
+        setContentView(status);
+        bootstrapExecutor.execute(() -> {
+            String report;
+            try {
+                String source = readAsset(C0412_ROOT_HTML_ASSET);
+                Class<?> adapter = Class.forName(
+                        "dev.spinon.bootstrap.C0412RootHtmlFixtureNativeAdapter");
+                byte[] bytes = (byte[]) adapter.getMethod("runAsset", byte[].class)
+                        .invoke(null, (Object) source.getBytes(StandardCharsets.UTF_8));
+                report = bytes == null ? "native asset fixture 응답이 비었습니다"
+                        : new String(bytes, StandardCharsets.UTF_8);
+            } catch (IOException | ReflectiveOperationException | RuntimeException error) {
+                report = "HTML asset fixture 실행 실패: " + error.getClass().getSimpleName()
+                        + ": " + error.getMessage();
+            }
+            String completedReport = report;
+            runOnUiThread(() -> {
+                boolean passed = completedReport.contains("status=0")
+                        && completedReport.contains("c04_12_root_html_asset=PASS");
+                status.setText(passed
+                        ? "C04.12 · HTML asset → V8 DOM\n\nPASS\n\n"
+                                + "bundle asset UTF-8\n"
+                                + "documentElement / head / body\n"
+                                + "viewport / color-scheme 보존\n"
+                                + "script inertness"
+                        : "C04.12 · HTML asset → V8 DOM 실패\n\n" + completedReport);
+                Log.println(passed ? Log.INFO : Log.ERROR, TAG,
+                        "SPINON_C0412_ROOT_HTML_ASSET " + completedReport);
             });
         });
     }

@@ -363,6 +363,12 @@ if [[ "${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}" == "1" ]]; then
 else
   rm -f "$bootstrap_assets/s03-lifecycle-probe.js"
 fi
+root_html_asset_fixture="$repo_root/tests/fixtures/html/c04-12-root-html-asset.html"
+if [[ "${SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST:-0}" == "1" ]]; then
+  cp "$root_html_asset_fixture" "$bootstrap_assets/c04-12-root-html-asset.html"
+else
+  rm -f "$bootstrap_assets/c04-12-root-html-asset.html"
+fi
 if [[ "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" == "1" ]]; then
   if command -v mise >/dev/null 2>&1; then
     mise exec -- bun run tools/css-reference/build-c12-4-runtime-matrix.mjs

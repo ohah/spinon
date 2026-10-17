@@ -2,8 +2,9 @@
 
 - **문서 유형:** 구현 계획 · 공식 구현 상태는 [`spec/STATUS.md`](../spec/STATUS.md)에서 관리
 - **상위 항목:** [CSS 호환성](../spec/0008-css-compatibility.md), C01 HTML/CSS 기준 inventory, C04 런타임 스타일·환경
-- **현재 상태:** 신규 작업. HTML5 문서 트리 parser·HostDocument import·V8 DOM getter 기반은 Android API 37 AVD와 iOS 26.2 Simulator에서 확인했다. 기본 앱 HTML asset 연결 및 viewport/color-scheme 적용은 미완료
+- **현재 상태:** 기존 계획에 없던 신규 작업이다. HTML5 문서 트리 parser·HostDocument import·V8 DOM getter와 opt-in fixture의 번들 HTML asset 전달은 Android API 37 AVD와 iOS 26.2 Simulator에서 확인했다. 기본 앱 HTML asset 경로 및 viewport/color-scheme 적용은 미완료
 - **계획 적대 검토:** [20개 실패 관점 검토](../spec/internal/evidence/c04-root-html-document-environment-plan-review-2026-10-17.md)
+- **현재 asset fixture 검토:** [구현 실패 관점 20개](../spec/internal/evidence/c04-12-root-html-asset-implementation-review-20-2026-10-17.md) · [PR diff 적대 검토 30개](../spec/internal/evidence/c04-12-root-html-asset-pr-diff-review-30-2026-10-17.md)
 
 ## 배경과 목표
 
@@ -48,7 +49,7 @@
 - 중복 scheme metadata와 중복 viewport metadata의 관찰값은 해당 Chrome 빌드에 한정한다. 표준상 중복이 금지된 입력은 별도 negative case로 두고, 브라우저 관찰을 무조건 normative 규칙으로 확대하지 않는다.
 - 확인 범위는 Chromium oracle이다. 실제 회전, Spinon runtime, Android/iOS Simulator 결과는 아직 없다. 화면 캡처도 Chrome oracle 그림이며 앱 화면 증거가 아니다.
 
-현재 코드 경계를 확인한 결과 기존 `RuntimeSession` 시작 입력은 JavaScript source다. 별도 `new_with_root_html` 진입점, HTML5 parser, 문서 트리 import, V8 `documentElement`·`head`·`body` getter는 실제 V8이 포함된 Android API 37 AVD와 iOS 26.2 Simulator fixture에서 통과했다. parser 입력은 UTF-8 1 MiB, imported tree 65,536 node, depth 256, 전체 16,384 attribute로 제한한다. 이 fixture는 고정 HTML의 DOM 구조·attribute/text·inert script만 검사하며 기본 앱이나 GPU surface가 HTML asset을 읽는 경로는 아니다. CSS environment/page-scale, OS color preference 연동, UA canvas 처리도 미구현이다. 따라서 현재 기반 구현은 사용자가 지정한 루트 HTML과 viewport/color-scheme metadata 동작을 아직 제공하지 않는다. 다음 연결은 앱이 UTF-8 `index.html` asset 내용을 전달하게 하고 기존 JavaScript-only `RuntimeSession::new`와 기본 앱 경로를 보존해야 한다.
+현재 코드 경계를 확인한 결과 기존 `RuntimeSession` 시작 입력은 JavaScript source다. 별도 `new_with_root_html` 진입점, HTML5 parser, 문서 트리 import, V8 `documentElement`·`head`·`body` getter는 실제 V8이 포함된 Android API 37 AVD와 iOS 26.2 Simulator fixture에서 통과했다. parser 입력은 UTF-8 1 MiB, imported tree 65,536 node, depth 256, 전체 16,384 attribute로 제한한다. 추가 opt-in 앱 fixture는 고정 HTML bundle asset을 읽어 실제 V8 document까지 전달하고 DOM 구조·metadata 노드 보존·inert script를 검사한다. 이 fixture는 테스트 전용이며 기본 앱의 `index.html` loader나 GPU surface 렌더 경로가 아니다. CSS environment/page-scale, OS color preference 연동, UA canvas 처리도 미구현이다. 따라서 현재 기반 구현은 사용자가 지정한 루트 HTML과 viewport/color-scheme metadata 동작을 아직 제공하지 않는다. 다음 연결은 기존 JavaScript-only 기본 경로를 보존하면서 제품 앱의 UTF-8 `index.html` 내용을 새 document session에 공급하는 것이다.
 
 첫 구현 profile은 `meta viewport`의 width/device-width/initial-scale, `meta color-scheme`, root CSS `color-scheme`, `prefers-color-scheme`, 제한된 Canvas default color, 기존 C04.11 `<style>` 연결로 한정한다. `initial-scale`을 native DPR에 합쳐 기록하지 않으며, page scale 적용 위치를 별도 내부 계약에서 고정한다. 현재 tree foundation은 UTF-8 source 1 MiB, 65,536 imported node, depth 256, `NoQuirks` document, namespace 없는 attribute profile과 HTML5 recovery를 사용한다. 이 선택은 metadata profile이나 제품 지원을 뜻하지 않는다.
 

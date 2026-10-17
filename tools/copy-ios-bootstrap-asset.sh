@@ -16,3 +16,9 @@ if [[ -f "$fixture_source" ]]; then
 else
   rm -f "$resource_dir/s03-lifecycle-probe.js"
 fi
+root_html_asset_fixture="$repo_root/build/spinon/bootstrap/c04-12-root-html-asset.html"
+if [[ "${SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST:-0}" == "1" && -f "$root_html_asset_fixture" ]]; then
+  cp "$root_html_asset_fixture" "$resource_dir/c04-12-root-html-asset.html"
+else
+  rm -f "$resource_dir/c04-12-root-html-asset.html"
+fi

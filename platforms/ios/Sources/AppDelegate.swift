@@ -39,6 +39,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let runShutdownProbe = arguments.contains("--spinon-shutdown-probe")
         let runUaCascadeProbe = arguments.contains("--spinon-c048-ua-cascade")
         let runC0412RootHtmlFixture = arguments.contains("--spinon-c0412-root-html")
+        let runC0412RootHtmlAssetFixture = arguments.contains("--spinon-c0412-root-html-asset")
         let runC124SessionStackCostProbe = arguments.contains("--spinon-c124-session-stack-cost")
         let runC124RuntimeMatrixProbe = arguments.contains("--spinon-c124-runtime-matrix")
         let c124RuntimeMatrixRunID = arguments.first {
@@ -112,10 +113,12 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let runR05AttributionProbe = arguments.contains("--spinon-r05-attribution")
         let runLifecycleProbe = arguments.contains("--spinon-dom-gc-auto")
         let runC142ImageRatioFixture = arguments.contains("--spinon-c142-image-ratio")
-        if runC0412RootHtmlFixture {
+        if runC0412RootHtmlFixture || runC0412RootHtmlAssetFixture {
             let window = UIWindow(frame: UIScreen.main.bounds)
 #if SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST_1
-            window.rootViewController = C0412RootHtmlFixtureViewController()
+            let controller = C0412RootHtmlFixtureViewController()
+            controller.loadsBundledRootHtmlAsset = runC0412RootHtmlAssetFixture
+            window.rootViewController = controller
 #else
             let controller = UIViewController()
             controller.view.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
@@ -388,6 +391,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
 #if SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST_1
 private final class C0412RootHtmlFixtureViewController: UIViewController {
+    var loadsBundledRootHtmlAsset = false
     private let reportView = UITextView()
     private let logger = Logger(subsystem: "dev.spinon.bootstrap", category: "c04-12-fixture")
 
@@ -409,25 +413,59 @@ private final class C0412RootHtmlFixtureViewController: UIViewController {
         ])
         reportView.text = "C04.12 · 실제 V8 root HTML document 확인 중…"
 
+        let loadsBundledRootHtmlAsset = self.loadsBundledRootHtmlAsset
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            let report = SpinonRunner.runC0412RootHtmlAccessorsFixture()
-                ?? "status=-1 C ABI 응답이 비었습니다"
+            let report: String
+            if loadsBundledRootHtmlAsset {
+                guard let sourceURL = Bundle.main.url(
+                    forResource: "c04-12-root-html-asset",
+                    withExtension: "html"
+                ) else {
+                    report = "status=-1 bundled root HTML asset가 없습니다"
+                    DispatchQueue.main.async {
+                        self?.showC0412Result(report, isAssetFixture: true)
+                    }
+                    return
+                }
+                do {
+                    let source = try String(contentsOf: sourceURL, encoding: .utf8)
+                    report = SpinonRunner.runC0412RootHtmlAssetFixture(source)
+                        ?? "status=-1 C ABI 응답이 비었습니다"
+                } catch {
+                    report = "status=-1 bundled root HTML asset 읽기 실패: \(error)"
+                }
+            } else {
+                report = SpinonRunner.runC0412RootHtmlAccessorsFixture()
+                    ?? "status=-1 C ABI 응답이 비었습니다"
+            }
             DispatchQueue.main.async {
                 guard let self else { return }
-                let passed = report.contains("status=0")
-                    && report.contains("c04_12_root_html_accessors=PASS")
-                self.reportView.text = passed
-                    ? "C04.12 · 실제 V8 DOM\n\nPASS\n\n"
-                        + "documentElement · head · body\n"
-                        + "meta viewport · meta color-scheme · style tree\n"
-                        + "script inertness · HostDocument text/attribute"
-                    : "C04.12 · 실제 V8 DOM 실패\n\n\(report)"
-                if passed {
-                    self.logger.notice("SPINON_C0412_ROOT_HTML status=pass")
-                } else {
-                    self.logger.error("SPINON_C0412_ROOT_HTML status=fail report=\(report, privacy: .public)")
-                }
+                self.showC0412Result(report, isAssetFixture: loadsBundledRootHtmlAsset)
             }
+        }
+    }
+
+    private func showC0412Result(_ report: String, isAssetFixture: Bool) {
+        let passed = report.contains("status=0") && (isAssetFixture
+            ? report.contains("c04_12_root_html_asset=PASS")
+            : report.contains("c04_12_root_html_accessors=PASS"))
+        reportView.text = passed
+            ? (isAssetFixture
+                ? "C04.12 · HTML asset → V8 DOM\n\nPASS\n\n"
+                    + "bundle asset UTF-8\n"
+                    + "documentElement / head / body\n"
+                    + "viewport / color-scheme 보존\n"
+                    + "script inertness"
+                : "C04.12 · 실제 V8 DOM\n\nPASS\n\n"
+                    + "documentElement · head · body\n"
+                    + "meta viewport · meta color-scheme · style tree\n"
+                    + "script inertness · HostDocument text/attribute")
+            : "C04.12 · root HTML fixture 실패\n\n\(report)"
+        let name = isAssetFixture ? "SPINON_C0412_ROOT_HTML_ASSET" : "SPINON_C0412_ROOT_HTML"
+        if passed {
+            logger.notice("\(name, privacy: .public) status=pass")
+        } else {
+            logger.error("\(name, privacy: .public) status=fail report=\(report, privacy: .public)")
         }
     }
 }

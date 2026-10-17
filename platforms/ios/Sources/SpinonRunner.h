@@ -20,6 +20,7 @@
 #if defined(SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST) && \
     SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST
 + (NSString *)runC0412RootHtmlAccessorsFixture;
++ (NSString *)runC0412RootHtmlAssetFixture:(NSString *)source;
 #endif
 + (NSString *)runRuntimePriorityProbe;
 + (NSString *)runRuntimePriorityFairnessProbe;

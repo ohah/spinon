@@ -403,6 +403,18 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
   if (detail == nil) detail = @"C ABI 보고를 UTF-8로 변환하지 못했습니다";
   return [NSString stringWithFormat:@"status=%d %@", status, detail];
 }
+
++ (NSString *)runC0412RootHtmlAssetFixture:(NSString *)source {
+  NSData *sourceData = [source dataUsingEncoding:NSUTF8StringEncoding];
+  if (sourceData == nil) return @"status=-1 root_html_asset=invalid_utf8";
+  std::array<char, 1024> output{};
+  const int32_t status = spinon_c04_12_root_html_asset_fixture(
+      static_cast<const char *>(sourceData.bytes), sourceData.length,
+      output.data(), output.size());
+  NSString *detail = [NSString stringWithUTF8String:output.data()];
+  if (detail == nil) detail = @"C ABI 보고를 UTF-8로 변환하지 못했습니다";
+  return [NSString stringWithFormat:@"status=%d %@", status, detail];
+}
 #endif
 
 + (NSString *)runRuntimePriorityProbe {
