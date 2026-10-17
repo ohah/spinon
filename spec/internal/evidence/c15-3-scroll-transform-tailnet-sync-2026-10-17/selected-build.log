@@ -1,0 +1,64 @@
+@spinon/docs docs:build: 🔥 Rspress v2.0.22
+@spinon/docs docs:build:
+@spinon/docs docs:build: info    build started...
+@spinon/docs docs:build: warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+@spinon/docs docs:build: warn    Please set `output.cleanDistPath` config manually.
+@spinon/docs docs:build: warn    Current root path: /private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/packages/docs
+@spinon/docs docs:build: warn    Current dist path: /private/tmp/spinon-c15-3-scroll-tailnet-selected-20261017
+@spinon/docs docs:build: info    Rendering pages...
+@spinon/docs docs:build: success Pages rendered in 84 ms.
+@spinon/docs docs:build: ready   built in 0.57s (web)
+@spinon/docs docs:build: ready   built in 0.57s (node)
+@spinon/docs docs:build:
+@spinon/docs docs:build: File (web)                                                                                                 Size        Gzip
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/async/i.25208e7c92.js                     0.10 kB     0.09 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/styles.2da0941fcb.js                      0.47 kB     0.23 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/icon.svg                                            0.64 kB     0.41 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/async/route-c868063ba78d.885b9d58c9.js    2.2 kB      1.2 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/async/route-aac2f37c70ef.b9d1589f56.js    4.2 kB      1.8 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/async/route-d31b5645247a.d4aa265a86.js    5.3 kB      2.2 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/async/route-99ce983111cf.9e61a95620.js    6.0 kB      2.6 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/async/route-56103828be18.f14c48b34d.js    8.6 kB      3.1 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/async/route-399545b21e66.8c7ad5d0ad.js    8.7 kB      2.9 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/async/route-3b5f17ff04a2.de86e82afc.js    8.9 kB      2.8 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/async/route-0107d8fa8011.6a7650693c.js    9.2 kB      3.0 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/async/route-5aa7e2e0f37e.ee4e59daaf.js    9.2 kB      3.6 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/async/route-8e8ef94a82ba.93ce40d0ab.js    9.3 kB      2.7 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/async/route-7c7ce5bd3e77.5ea7b3de8a.js    10.0 kB     3.3 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/async/route-0628738c8c67.b5fda78d1e.js    10.7 kB     3.6 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/async/route-9fbf43f036e8.ded92876b4.js    13.3 kB     3.9 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/image/chrome155-scroll-text.9c8d482a4f.png   15.5 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/index.bbc7f7a220.js                       31.9 kB     10.3 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/lib-router.1e14e568cb.js                  35.4 kB     12.7 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/async/route-117783875241.1b9872c278.js    54.0 kB     15.1 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/css/styles.8d918fd78e.css                    74.0 kB     14.2 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/async/route-a1017bdf23ca.44490af183.js    166.1 kB    34.9 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/a.8331408054.js                           217.1 kB    71.7 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/lib-react.9cdf8f49ce.js                   218.4 kB    68.9 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/js/async/route-6c33a3943990.638b2a202d.js    357.7 kB    83.3 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/static/search_index.ko.03c84a6d.json                367.0 kB    118.1 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build:                                                                                                   Total:   1643.6 kB   482.0 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build: File (node)                                                                                                                                             Size       Gzip
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/404.html                                                                                         8.5 kB     2.5 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/docs-build-result.html    23.8 kB    4.7 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/render-build-result.html        24.3 kB    5.2 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/internal/0073-c15-3-overflow-text-owner-hit-test.html                                            25.8 kB    5.6 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/internal/0072-c15-3-wgpu-glyph-paint.html                                                        26.0 kB    6.0 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/internal/evidence/c15-3-text-scroll-transform-2026-10-17/implementation-review-20.html           27.4 kB    6.3 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/pr-delta-review-20.html   27.4 kB    6.3 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/internal/evidence/c15-3-text-scroll-transform-2026-10-17/pr-delta-review-20.html                 27.7 kB    6.9 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/plan-review-20.html       28.1 kB    6.6 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/internal/0074-c15-3-runtime-glyph-scroll-transform.html                                          28.9 kB    6.5 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.html                     29.3 kB    6.0 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/README.html               29.4 kB    6.8 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.html         30.0 kB    7.0 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/internal/evidence/c15-3-text-scroll-transform-2026-10-17/README.html                             30.5 kB    6.2 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/plan/c15-inline-text-layout.html                                                                 67.2 kB    18.2 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/internal/README.html                                                                             160.5 kB   37.6 kB
+@spinon/docs docs:build: ../../../spinon-c15-3-scroll-tailnet-selected-20261017/STATUS.html                                                                                      342.2 kB   85.3 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build:                                                                                                                                                Total:   936.9 kB   223.6 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build: Exited with code 0

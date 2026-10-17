@@ -1,0 +1,786 @@
+{
+  "backup_roots": [
+    "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17",
+    "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17",
+    "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17"
+  ],
+  "count": 97,
+  "files": [
+    {
+      "path": "STATUS.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/STATUS.html",
+      "bytes": 353812,
+      "sha256": "9f8fcf9bde240e2d175112f3718854ff9b1696bfd3ba39d512bdea07dd258209",
+      "original_sha256": "9f8fcf9bde240e2d175112f3718854ff9b1696bfd3ba39d512bdea07dd258209",
+      "phase": "initial"
+    },
+    {
+      "path": "STATUS.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/STATUS.md",
+      "bytes": 257399,
+      "sha256": "da9f822d47473fa2721f368db559bf3b389cdb378dcf024ceac99035b84cc082",
+      "original_sha256": "da9f822d47473fa2721f368db559bf3b389cdb378dcf024ceac99035b84cc082",
+      "phase": "initial"
+    },
+    {
+      "path": "internal/0072-c15-3-wgpu-glyph-paint.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/internal/0072-c15-3-wgpu-glyph-paint.html",
+      "bytes": 39957,
+      "sha256": "758b29353ab6221efba3c37e9b09c543b085b6cd653db3d7ec8c247ac7bd4097",
+      "original_sha256": "758b29353ab6221efba3c37e9b09c543b085b6cd653db3d7ec8c247ac7bd4097",
+      "phase": "initial"
+    },
+    {
+      "path": "internal/0073-c15-3-overflow-text-owner-hit-test.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/internal/0073-c15-3-overflow-text-owner-hit-test.html",
+      "bytes": 39362,
+      "sha256": "1e7ebaaac721369351b6e4d9fdb53b689eca6635e42103dde98ddd52c54444da",
+      "original_sha256": "1e7ebaaac721369351b6e4d9fdb53b689eca6635e42103dde98ddd52c54444da",
+      "phase": "initial"
+    },
+    {
+      "path": "internal/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/internal/README.html",
+      "bytes": 172729,
+      "sha256": "94865e653faa6683e0ef9b25d6d6395283caee66b0fcfa412e007c209f1fd2bb",
+      "original_sha256": "94865e653faa6683e0ef9b25d6d6395283caee66b0fcfa412e007c209f1fd2bb",
+      "phase": "initial"
+    },
+    {
+      "path": "internal/README.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/internal/README.md",
+      "bytes": 112368,
+      "sha256": "71b4eb6c227fd1ca1b260011bdb330cf44deeb36fc850d3ce6701892d766f954",
+      "original_sha256": "71b4eb6c227fd1ca1b260011bdb330cf44deeb36fc850d3ce6701892d766f954",
+      "phase": "initial"
+    },
+    {
+      "path": "plan/c15-inline-text-layout.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/plan/c15-inline-text-layout.html",
+      "bytes": 75745,
+      "sha256": "10ce1d91478bc3e8dc00b696c76b62d1fd274a45385faaef487d952a53f52ebd",
+      "original_sha256": "10ce1d91478bc3e8dc00b696c76b62d1fd274a45385faaef487d952a53f52ebd",
+      "phase": "initial"
+    },
+    {
+      "path": "plan/c15-inline-text-layout.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/plan/c15-inline-text-layout.md",
+      "bytes": 29353,
+      "sha256": "8ff7a9fc44f3965deb7c2dffa873f45b255c78873004a6539c8781bed1ba8da1",
+      "original_sha256": "8ff7a9fc44f3965deb7c2dffa873f45b255c78873004a6539c8781bed1ba8da1",
+      "phase": "initial"
+    },
+    {
+      "path": "public/roadmap.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/public/roadmap.html",
+      "bytes": 113837,
+      "sha256": "7a1356cff12d3dcc615f0d386ffcdfaaa98cfe5f34e4226cb94abf29c5ae746c",
+      "original_sha256": "7a1356cff12d3dcc615f0d386ffcdfaaa98cfe5f34e4226cb94abf29c5ae746c",
+      "phase": "initial"
+    },
+    {
+      "path": "roadmap.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/roadmap.html",
+      "bytes": 113837,
+      "sha256": "7a1356cff12d3dcc615f0d386ffcdfaaa98cfe5f34e4226cb94abf29c5ae746c",
+      "original_sha256": "7a1356cff12d3dcc615f0d386ffcdfaaa98cfe5f34e4226cb94abf29c5ae746c",
+      "phase": "initial"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/spec/STATUS.html",
+      "bytes": 353812,
+      "sha256": "9f8fcf9bde240e2d175112f3718854ff9b1696bfd3ba39d512bdea07dd258209",
+      "original_sha256": "9f8fcf9bde240e2d175112f3718854ff9b1696bfd3ba39d512bdea07dd258209",
+      "phase": "initial"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/spec/STATUS.md",
+      "bytes": 257399,
+      "sha256": "da9f822d47473fa2721f368db559bf3b389cdb378dcf024ceac99035b84cc082",
+      "original_sha256": "da9f822d47473fa2721f368db559bf3b389cdb378dcf024ceac99035b84cc082",
+      "phase": "initial"
+    },
+    {
+      "path": "spec/internal/0072-c15-3-wgpu-glyph-paint.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/spec/internal/0072-c15-3-wgpu-glyph-paint.html",
+      "bytes": 39957,
+      "sha256": "758b29353ab6221efba3c37e9b09c543b085b6cd653db3d7ec8c247ac7bd4097",
+      "original_sha256": "758b29353ab6221efba3c37e9b09c543b085b6cd653db3d7ec8c247ac7bd4097",
+      "phase": "initial"
+    },
+    {
+      "path": "spec/internal/0073-c15-3-overflow-text-owner-hit-test.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/spec/internal/0073-c15-3-overflow-text-owner-hit-test.html",
+      "bytes": 39362,
+      "sha256": "1e7ebaaac721369351b6e4d9fdb53b689eca6635e42103dde98ddd52c54444da",
+      "original_sha256": "1e7ebaaac721369351b6e4d9fdb53b689eca6635e42103dde98ddd52c54444da",
+      "phase": "initial"
+    },
+    {
+      "path": "spec/internal/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/spec/internal/README.html",
+      "bytes": 172729,
+      "sha256": "94865e653faa6683e0ef9b25d6d6395283caee66b0fcfa412e007c209f1fd2bb",
+      "original_sha256": "94865e653faa6683e0ef9b25d6d6395283caee66b0fcfa412e007c209f1fd2bb",
+      "phase": "initial"
+    },
+    {
+      "path": "spec/internal/README.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/spec/internal/README.md",
+      "bytes": 112368,
+      "sha256": "71b4eb6c227fd1ca1b260011bdb330cf44deeb36fc850d3ce6701892d766f954",
+      "original_sha256": "71b4eb6c227fd1ca1b260011bdb330cf44deeb36fc850d3ce6701892d766f954",
+      "phase": "initial"
+    },
+    {
+      "path": "spec/plan/c15-inline-text-layout.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/spec/plan/c15-inline-text-layout.html",
+      "bytes": 75745,
+      "sha256": "10ce1d91478bc3e8dc00b696c76b62d1fd274a45385faaef487d952a53f52ebd",
+      "original_sha256": "10ce1d91478bc3e8dc00b696c76b62d1fd274a45385faaef487d952a53f52ebd",
+      "phase": "initial"
+    },
+    {
+      "path": "spec/plan/c15-inline-text-layout.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/spec/plan/c15-inline-text-layout.md",
+      "bytes": 29353,
+      "sha256": "8ff7a9fc44f3965deb7c2dffa873f45b255c78873004a6539c8781bed1ba8da1",
+      "original_sha256": "8ff7a9fc44f3965deb7c2dffa873f45b255c78873004a6539c8781bed1ba8da1",
+      "phase": "initial"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/spec/public/roadmap.html",
+      "bytes": 113837,
+      "sha256": "7a1356cff12d3dcc615f0d386ffcdfaaa98cfe5f34e4226cb94abf29c5ae746c",
+      "original_sha256": "7a1356cff12d3dcc615f0d386ffcdfaaa98cfe5f34e4226cb94abf29c5ae746c",
+      "phase": "initial"
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/STATUS.html",
+      "bytes": 342200,
+      "sha256": "69a4e7138e2d8a86b8e3f8dbd6a84c5243500fac5b3165d406e2d60799ece054",
+      "original_sha256": "69a4e7138e2d8a86b8e3f8dbd6a84c5243500fac5b3165d406e2d60799ece054",
+      "phase": "followup"
+    },
+    {
+      "path": "internal/0072-c15-3-wgpu-glyph-paint.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/internal/0072-c15-3-wgpu-glyph-paint.html",
+      "bytes": 25958,
+      "sha256": "31cd58ddfddfacbd9e6c217f931af95d1d078d3cc3ae7373ff9e840131f2f8c7",
+      "original_sha256": "31cd58ddfddfacbd9e6c217f931af95d1d078d3cc3ae7373ff9e840131f2f8c7",
+      "phase": "followup"
+    },
+    {
+      "path": "internal/0073-c15-3-overflow-text-owner-hit-test.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/internal/0073-c15-3-overflow-text-owner-hit-test.html",
+      "bytes": 25796,
+      "sha256": "271cfe65d03c2ecdd901245db96874da0d76bca4b9381760b7459ef5eb4f46a6",
+      "original_sha256": "271cfe65d03c2ecdd901245db96874da0d76bca4b9381760b7459ef5eb4f46a6",
+      "phase": "followup"
+    },
+    {
+      "path": "internal/0074-c15-3-runtime-glyph-scroll-transform.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/internal/0074-c15-3-runtime-glyph-scroll-transform.html",
+      "bytes": 28892,
+      "sha256": "ec721c20b91d8f3508496743320ad754a0e6d65c2e8eaa9691e98bfdc77eb1af",
+      "original_sha256": "ec721c20b91d8f3508496743320ad754a0e6d65c2e8eaa9691e98bfdc77eb1af",
+      "phase": "followup"
+    },
+    {
+      "path": "internal/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/internal/README.html",
+      "bytes": 160482,
+      "sha256": "931f34f8023c9cf21eead293404970ca3914e38316cf506a8d7cd05ad85d4b15",
+      "original_sha256": "931f34f8023c9cf21eead293404970ca3914e38316cf506a8d7cd05ad85d4b15",
+      "phase": "followup"
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.html",
+      "bytes": 27476,
+      "sha256": "64034bbd757dc3baa7f1e1f8286f3cb25c803956344c8dacb44c0b1dc50b9d74",
+      "original_sha256": "64034bbd757dc3baa7f1e1f8286f3cb25c803956344c8dacb44c0b1dc50b9d74",
+      "phase": "followup"
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.md",
+      "bytes": 3511,
+      "sha256": "29cf72e8fc181e5a10991d062eef0e489ea50365f963b289d3901682d4f902ae",
+      "original_sha256": "29cf72e8fc181e5a10991d062eef0e489ea50365f963b289d3901682d4f902ae",
+      "phase": "followup"
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "bytes": 28969,
+      "sha256": "e05eb854eead6ba457b9f07f62d7d82b6a812fb10544dc18384feef823196a97",
+      "original_sha256": "e05eb854eead6ba457b9f07f62d7d82b6a812fb10544dc18384feef823196a97",
+      "phase": "followup"
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "bytes": 4928,
+      "sha256": "bc549b05d7d35da0187cfb72d39c20b79edf27537c321793b709f72c780671ff",
+      "original_sha256": "bc549b05d7d35da0187cfb72d39c20b79edf27537c321793b709f72c780671ff",
+      "phase": "followup"
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/render-build-result.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/render-build-result.html",
+      "bytes": 24026,
+      "sha256": "41c6e73d9906c9d9c0f968907687a3d47e7995597baf44c5471d0443042745f7",
+      "original_sha256": "41c6e73d9906c9d9c0f968907687a3d47e7995597baf44c5471d0443042745f7",
+      "phase": "followup"
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/selected-build.log",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/selected-build.log",
+      "bytes": 8881,
+      "sha256": "c12c1f87b3e938fce2df93764ee8e572fa145b04f2b1c4826ca2a87d2ae62817",
+      "original_sha256": "c12c1f87b3e938fce2df93764ee8e572fa145b04f2b1c4826ca2a87d2ae62817",
+      "phase": "followup"
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/internal/evidence/c15-3-text-scroll-transform-2026-10-17/README.html",
+      "bytes": 30525,
+      "sha256": "3f849e3ed141d7ce86d9259fd113800cbccea20a57dd0d3230056d61cdd54fce",
+      "original_sha256": "3f849e3ed141d7ce86d9259fd113800cbccea20a57dd0d3230056d61cdd54fce",
+      "phase": "followup"
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/implementation-review-20.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/internal/evidence/c15-3-text-scroll-transform-2026-10-17/implementation-review-20.html",
+      "bytes": 27387,
+      "sha256": "7c7c75e26534710acb92f77c354a695501f979a2168bd27eb6dd251f3e50a8e5",
+      "original_sha256": "7c7c75e26534710acb92f77c354a695501f979a2168bd27eb6dd251f3e50a8e5",
+      "phase": "followup"
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/pr-delta-review-20.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/internal/evidence/c15-3-text-scroll-transform-2026-10-17/pr-delta-review-20.html",
+      "bytes": 27715,
+      "sha256": "8a46e1947ad620791618fc517db29129acca14e312a529bf3b1c6d8928b1e995",
+      "original_sha256": "8a46e1947ad620791618fc517db29129acca14e312a529bf3b1c6d8928b1e995",
+      "phase": "followup"
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/README.html",
+      "bytes": 29408,
+      "sha256": "74d58ba0b1d4a5492f11283e4a5ea0fd21971e23e9fad1b9b7c6df4524f0b76e",
+      "original_sha256": "74d58ba0b1d4a5492f11283e4a5ea0fd21971e23e9fad1b9b7c6df4524f0b76e",
+      "phase": "followup"
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/docs-build-result.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/docs-build-result.html",
+      "bytes": 23762,
+      "sha256": "32b85f6d7eb4f8346b7b1986688f64c4c55feeecb646ff531ac8a42bbbd835a5",
+      "original_sha256": "32b85f6d7eb4f8346b7b1986688f64c4c55feeecb646ff531ac8a42bbbd835a5",
+      "phase": "followup"
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/plan-review-20.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/plan-review-20.html",
+      "bytes": 28055,
+      "sha256": "d9f69cb7d6d1ee63e8d434cf075b44c85d5264a0b5de326448fc5114bec4508c",
+      "original_sha256": "d9f69cb7d6d1ee63e8d434cf075b44c85d5264a0b5de326448fc5114bec4508c",
+      "phase": "followup"
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/pr-delta-review-20.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/pr-delta-review-20.html",
+      "bytes": 27400,
+      "sha256": "8de65f4e2b140d1ba8b38922f58b51a2ccd15011c005c6c2d2cf405a8e7ff771",
+      "original_sha256": "8de65f4e2b140d1ba8b38922f58b51a2ccd15011c005c6c2d2cf405a8e7ff771",
+      "phase": "followup"
+    },
+    {
+      "path": "plan/c15-inline-text-layout.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/plan/c15-inline-text-layout.html",
+      "bytes": 67245,
+      "sha256": "d701d87ddb6b0bc4f5609caa110cb78498eabb9e14d8fcd8d8bf6db8e4d4cb5c",
+      "original_sha256": "d701d87ddb6b0bc4f5609caa110cb78498eabb9e14d8fcd8d8bf6db8e4d4cb5c",
+      "phase": "followup"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/spec/STATUS.html",
+      "bytes": 342200,
+      "sha256": "69a4e7138e2d8a86b8e3f8dbd6a84c5243500fac5b3165d406e2d60799ece054",
+      "original_sha256": "69a4e7138e2d8a86b8e3f8dbd6a84c5243500fac5b3165d406e2d60799ece054",
+      "phase": "followup"
+    },
+    {
+      "path": "spec/internal/0072-c15-3-wgpu-glyph-paint.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/spec/internal/0072-c15-3-wgpu-glyph-paint.html",
+      "bytes": 25958,
+      "sha256": "31cd58ddfddfacbd9e6c217f931af95d1d078d3cc3ae7373ff9e840131f2f8c7",
+      "original_sha256": "31cd58ddfddfacbd9e6c217f931af95d1d078d3cc3ae7373ff9e840131f2f8c7",
+      "phase": "followup"
+    },
+    {
+      "path": "spec/internal/0073-c15-3-overflow-text-owner-hit-test.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/spec/internal/0073-c15-3-overflow-text-owner-hit-test.html",
+      "bytes": 25796,
+      "sha256": "271cfe65d03c2ecdd901245db96874da0d76bca4b9381760b7459ef5eb4f46a6",
+      "original_sha256": "271cfe65d03c2ecdd901245db96874da0d76bca4b9381760b7459ef5eb4f46a6",
+      "phase": "followup"
+    },
+    {
+      "path": "spec/internal/0074-c15-3-runtime-glyph-scroll-transform.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/spec/internal/0074-c15-3-runtime-glyph-scroll-transform.html",
+      "bytes": 28892,
+      "sha256": "ec721c20b91d8f3508496743320ad754a0e6d65c2e8eaa9691e98bfdc77eb1af",
+      "original_sha256": "ec721c20b91d8f3508496743320ad754a0e6d65c2e8eaa9691e98bfdc77eb1af",
+      "phase": "followup"
+    },
+    {
+      "path": "spec/internal/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/spec/internal/README.html",
+      "bytes": 160482,
+      "sha256": "931f34f8023c9cf21eead293404970ca3914e38316cf506a8d7cd05ad85d4b15",
+      "original_sha256": "931f34f8023c9cf21eead293404970ca3914e38316cf506a8d7cd05ad85d4b15",
+      "phase": "followup"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.html",
+      "bytes": 27476,
+      "sha256": "64034bbd757dc3baa7f1e1f8286f3cb25c803956344c8dacb44c0b1dc50b9d74",
+      "original_sha256": "64034bbd757dc3baa7f1e1f8286f3cb25c803956344c8dacb44c0b1dc50b9d74",
+      "phase": "followup"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.md",
+      "bytes": 3511,
+      "sha256": "29cf72e8fc181e5a10991d062eef0e489ea50365f963b289d3901682d4f902ae",
+      "original_sha256": "29cf72e8fc181e5a10991d062eef0e489ea50365f963b289d3901682d4f902ae",
+      "phase": "followup"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "bytes": 28969,
+      "sha256": "e05eb854eead6ba457b9f07f62d7d82b6a812fb10544dc18384feef823196a97",
+      "original_sha256": "e05eb854eead6ba457b9f07f62d7d82b6a812fb10544dc18384feef823196a97",
+      "phase": "followup"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "bytes": 4928,
+      "sha256": "bc549b05d7d35da0187cfb72d39c20b79edf27537c321793b709f72c780671ff",
+      "original_sha256": "bc549b05d7d35da0187cfb72d39c20b79edf27537c321793b709f72c780671ff",
+      "phase": "followup"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/render-build-result.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/render-build-result.html",
+      "bytes": 24026,
+      "sha256": "41c6e73d9906c9d9c0f968907687a3d47e7995597baf44c5471d0443042745f7",
+      "original_sha256": "41c6e73d9906c9d9c0f968907687a3d47e7995597baf44c5471d0443042745f7",
+      "phase": "followup"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/selected-build.log",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/selected-build.log",
+      "bytes": 8881,
+      "sha256": "c12c1f87b3e938fce2df93764ee8e572fa145b04f2b1c4826ca2a87d2ae62817",
+      "original_sha256": "c12c1f87b3e938fce2df93764ee8e572fa145b04f2b1c4826ca2a87d2ae62817",
+      "phase": "followup"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/README.html",
+      "bytes": 30525,
+      "sha256": "3f849e3ed141d7ce86d9259fd113800cbccea20a57dd0d3230056d61cdd54fce",
+      "original_sha256": "3f849e3ed141d7ce86d9259fd113800cbccea20a57dd0d3230056d61cdd54fce",
+      "phase": "followup"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/implementation-review-20.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/implementation-review-20.html",
+      "bytes": 27387,
+      "sha256": "7c7c75e26534710acb92f77c354a695501f979a2168bd27eb6dd251f3e50a8e5",
+      "original_sha256": "7c7c75e26534710acb92f77c354a695501f979a2168bd27eb6dd251f3e50a8e5",
+      "phase": "followup"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/pr-delta-review-20.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/pr-delta-review-20.html",
+      "bytes": 27715,
+      "sha256": "8a46e1947ad620791618fc517db29129acca14e312a529bf3b1c6d8928b1e995",
+      "original_sha256": "8a46e1947ad620791618fc517db29129acca14e312a529bf3b1c6d8928b1e995",
+      "phase": "followup"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/README.html",
+      "bytes": 29408,
+      "sha256": "74d58ba0b1d4a5492f11283e4a5ea0fd21971e23e9fad1b9b7c6df4524f0b76e",
+      "original_sha256": "74d58ba0b1d4a5492f11283e4a5ea0fd21971e23e9fad1b9b7c6df4524f0b76e",
+      "phase": "followup"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/docs-build-result.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/docs-build-result.html",
+      "bytes": 23762,
+      "sha256": "32b85f6d7eb4f8346b7b1986688f64c4c55feeecb646ff531ac8a42bbbd835a5",
+      "original_sha256": "32b85f6d7eb4f8346b7b1986688f64c4c55feeecb646ff531ac8a42bbbd835a5",
+      "phase": "followup"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/plan-review-20.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/plan-review-20.html",
+      "bytes": 28055,
+      "sha256": "d9f69cb7d6d1ee63e8d434cf075b44c85d5264a0b5de326448fc5114bec4508c",
+      "original_sha256": "d9f69cb7d6d1ee63e8d434cf075b44c85d5264a0b5de326448fc5114bec4508c",
+      "phase": "followup"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/pr-delta-review-20.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/pr-delta-review-20.html",
+      "bytes": 27400,
+      "sha256": "8de65f4e2b140d1ba8b38922f58b51a2ccd15011c005c6c2d2cf405a8e7ff771",
+      "original_sha256": "8de65f4e2b140d1ba8b38922f58b51a2ccd15011c005c6c2d2cf405a8e7ff771",
+      "phase": "followup"
+    },
+    {
+      "path": "spec/plan/c15-inline-text-layout.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-followup-2026-10-17/spec/plan/c15-inline-text-layout.html",
+      "bytes": 67245,
+      "sha256": "d701d87ddb6b0bc4f5609caa110cb78498eabb9e14d8fcd8d8bf6db8e4d4cb5c",
+      "original_sha256": "d701d87ddb6b0bc4f5609caa110cb78498eabb9e14d8fcd8d8bf6db8e4d4cb5c",
+      "phase": "followup"
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/STATUS.html",
+      "bytes": 342200,
+      "sha256": "47e30a9914e79a848990aa54799f3994cac8475edf80340c5b2deeed1fc98f56",
+      "original_sha256": "47e30a9914e79a848990aa54799f3994cac8475edf80340c5b2deeed1fc98f56",
+      "phase": "finalization"
+    },
+    {
+      "path": "internal/0072-c15-3-wgpu-glyph-paint.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/internal/0072-c15-3-wgpu-glyph-paint.html",
+      "bytes": 25958,
+      "sha256": "59f35fa00e002b9b2707f58b290513c1b6df7a862bf662e690978d7282fbbd19",
+      "original_sha256": "59f35fa00e002b9b2707f58b290513c1b6df7a862bf662e690978d7282fbbd19",
+      "phase": "finalization"
+    },
+    {
+      "path": "internal/0073-c15-3-overflow-text-owner-hit-test.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/internal/0073-c15-3-overflow-text-owner-hit-test.html",
+      "bytes": 25796,
+      "sha256": "acd0c4a1fa6cac9e00b13dc62a89549d78b5d37c774406f95ccf4931fb0a8de7",
+      "original_sha256": "acd0c4a1fa6cac9e00b13dc62a89549d78b5d37c774406f95ccf4931fb0a8de7",
+      "phase": "finalization"
+    },
+    {
+      "path": "internal/0074-c15-3-runtime-glyph-scroll-transform.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/internal/0074-c15-3-runtime-glyph-scroll-transform.html",
+      "bytes": 28892,
+      "sha256": "0358dad84a18253892644665ef055d4195ffe67507c7a3b5c6e867d3915290e5",
+      "original_sha256": "0358dad84a18253892644665ef055d4195ffe67507c7a3b5c6e867d3915290e5",
+      "phase": "finalization"
+    },
+    {
+      "path": "internal/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/internal/README.html",
+      "bytes": 160482,
+      "sha256": "27027630f6fa3dd767bf8eb6b1b4718273f63a06df54d9c3895e77ac77834540",
+      "original_sha256": "27027630f6fa3dd767bf8eb6b1b4718273f63a06df54d9c3895e77ac77834540",
+      "phase": "finalization"
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.html",
+      "bytes": 29192,
+      "sha256": "455a6a1fc7e5b9c4a93c0e5085be9ce759214a7a4f912b4c933e137e2ab242f5",
+      "original_sha256": "455a6a1fc7e5b9c4a93c0e5085be9ce759214a7a4f912b4c933e137e2ab242f5",
+      "phase": "finalization"
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.md",
+      "bytes": 4798,
+      "sha256": "3e7b593dcc3926a8e0db56adc8b302a5c2b0fc63003d305e25b4fdbe7ca76984",
+      "original_sha256": "3e7b593dcc3926a8e0db56adc8b302a5c2b0fc63003d305e25b4fdbe7ca76984",
+      "phase": "finalization"
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "bytes": 30219,
+      "sha256": "8bce1558cee35cb5e30a1a1b998d6497c081041ede16a64f5c17b984ebc97b27",
+      "original_sha256": "8bce1558cee35cb5e30a1a1b998d6497c081041ede16a64f5c17b984ebc97b27",
+      "phase": "finalization"
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "bytes": 6163,
+      "sha256": "5a7fe0fc4a5deeb4f9bdcc74c4b2e4b459559274c45fe1214de4bddb4d26d75d",
+      "original_sha256": "5a7fe0fc4a5deeb4f9bdcc74c4b2e4b459559274c45fe1214de4bddb4d26d75d",
+      "phase": "finalization"
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/render-build-result.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/render-build-result.html",
+      "bytes": 24026,
+      "sha256": "ede4047cf49c479d32e8e9852a0c06c07d303801008f6281891ed2e9c629f101",
+      "original_sha256": "ede4047cf49c479d32e8e9852a0c06c07d303801008f6281891ed2e9c629f101",
+      "phase": "finalization"
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/render-build-result.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/render-build-result.md",
+      "bytes": 1740,
+      "sha256": "c22c28b7d652a8f19cf704950515f8d08665870ee5cf85dac52061e53e89c014",
+      "original_sha256": "c22c28b7d652a8f19cf704950515f8d08665870ee5cf85dac52061e53e89c014",
+      "phase": "finalization"
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/selected-build.log",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/selected-build.log",
+      "bytes": 8881,
+      "sha256": "6b12bd99e298f6cc8e0d1658927e3d5d092ceb8f1b204a83123c297b605c161f",
+      "original_sha256": "6b12bd99e298f6cc8e0d1658927e3d5d092ceb8f1b204a83123c297b605c161f",
+      "phase": "finalization"
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/internal/evidence/c15-3-text-scroll-transform-2026-10-17/README.html",
+      "bytes": 30525,
+      "sha256": "a39066d991ce47484f87f87c1adbc904feec9e62d34a1f04d6cd464d4e23a849",
+      "original_sha256": "a39066d991ce47484f87f87c1adbc904feec9e62d34a1f04d6cd464d4e23a849",
+      "phase": "finalization"
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/implementation-review-20.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/internal/evidence/c15-3-text-scroll-transform-2026-10-17/implementation-review-20.html",
+      "bytes": 27387,
+      "sha256": "18d1e44db6544f1a17740458dcaee253f0f27f5363d6df3841d7e9bfabde3279",
+      "original_sha256": "18d1e44db6544f1a17740458dcaee253f0f27f5363d6df3841d7e9bfabde3279",
+      "phase": "finalization"
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/pr-delta-review-20.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/internal/evidence/c15-3-text-scroll-transform-2026-10-17/pr-delta-review-20.html",
+      "bytes": 27715,
+      "sha256": "61fdf1a0ac07c978ae4fa7ab5d27038b8481005b1608cdb1cbdb216c03683358",
+      "original_sha256": "61fdf1a0ac07c978ae4fa7ab5d27038b8481005b1608cdb1cbdb216c03683358",
+      "phase": "finalization"
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/README.html",
+      "bytes": 29408,
+      "sha256": "08541de81fcd3c54e94d8460216ce61f834e65cf532b8d6e7387143bb6ff298b",
+      "original_sha256": "08541de81fcd3c54e94d8460216ce61f834e65cf532b8d6e7387143bb6ff298b",
+      "phase": "finalization"
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/docs-build-result.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/docs-build-result.html",
+      "bytes": 23762,
+      "sha256": "ee387929d75a14a78ab7186ca2232028c2e86439160fdcf7b5e4f892ccfe7202",
+      "original_sha256": "ee387929d75a14a78ab7186ca2232028c2e86439160fdcf7b5e4f892ccfe7202",
+      "phase": "finalization"
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/plan-review-20.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/plan-review-20.html",
+      "bytes": 28055,
+      "sha256": "34536333ec3ba30b3216c04d874049f1fe0b2bb2f9c2402f58499f68bcd2f7cc",
+      "original_sha256": "34536333ec3ba30b3216c04d874049f1fe0b2bb2f9c2402f58499f68bcd2f7cc",
+      "phase": "finalization"
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/pr-delta-review-20.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/pr-delta-review-20.html",
+      "bytes": 27400,
+      "sha256": "03d7766e42dfaafb1e7fba3e38b0a15fd8c0e81be05cbef61062b11bd6c95697",
+      "original_sha256": "03d7766e42dfaafb1e7fba3e38b0a15fd8c0e81be05cbef61062b11bd6c95697",
+      "phase": "finalization"
+    },
+    {
+      "path": "plan/c15-inline-text-layout.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/plan/c15-inline-text-layout.html",
+      "bytes": 67245,
+      "sha256": "7b2aa12faadd415b732e53731665e74179802788788f83e52b09e5a31a9b5250",
+      "original_sha256": "7b2aa12faadd415b732e53731665e74179802788788f83e52b09e5a31a9b5250",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/STATUS.html",
+      "bytes": 342200,
+      "sha256": "47e30a9914e79a848990aa54799f3994cac8475edf80340c5b2deeed1fc98f56",
+      "original_sha256": "47e30a9914e79a848990aa54799f3994cac8475edf80340c5b2deeed1fc98f56",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/internal/0072-c15-3-wgpu-glyph-paint.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/internal/0072-c15-3-wgpu-glyph-paint.html",
+      "bytes": 25958,
+      "sha256": "59f35fa00e002b9b2707f58b290513c1b6df7a862bf662e690978d7282fbbd19",
+      "original_sha256": "59f35fa00e002b9b2707f58b290513c1b6df7a862bf662e690978d7282fbbd19",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/internal/0073-c15-3-overflow-text-owner-hit-test.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/internal/0073-c15-3-overflow-text-owner-hit-test.html",
+      "bytes": 25796,
+      "sha256": "acd0c4a1fa6cac9e00b13dc62a89549d78b5d37c774406f95ccf4931fb0a8de7",
+      "original_sha256": "acd0c4a1fa6cac9e00b13dc62a89549d78b5d37c774406f95ccf4931fb0a8de7",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/internal/0074-c15-3-runtime-glyph-scroll-transform.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/internal/0074-c15-3-runtime-glyph-scroll-transform.html",
+      "bytes": 28892,
+      "sha256": "0358dad84a18253892644665ef055d4195ffe67507c7a3b5c6e867d3915290e5",
+      "original_sha256": "0358dad84a18253892644665ef055d4195ffe67507c7a3b5c6e867d3915290e5",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/internal/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/internal/README.html",
+      "bytes": 160482,
+      "sha256": "27027630f6fa3dd767bf8eb6b1b4718273f63a06df54d9c3895e77ac77834540",
+      "original_sha256": "27027630f6fa3dd767bf8eb6b1b4718273f63a06df54d9c3895e77ac77834540",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.html",
+      "bytes": 29192,
+      "sha256": "455a6a1fc7e5b9c4a93c0e5085be9ce759214a7a4f912b4c933e137e2ab242f5",
+      "original_sha256": "455a6a1fc7e5b9c4a93c0e5085be9ce759214a7a4f912b4c933e137e2ab242f5",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.md",
+      "bytes": 4798,
+      "sha256": "3e7b593dcc3926a8e0db56adc8b302a5c2b0fc63003d305e25b4fdbe7ca76984",
+      "original_sha256": "3e7b593dcc3926a8e0db56adc8b302a5c2b0fc63003d305e25b4fdbe7ca76984",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "bytes": 30219,
+      "sha256": "8bce1558cee35cb5e30a1a1b998d6497c081041ede16a64f5c17b984ebc97b27",
+      "original_sha256": "8bce1558cee35cb5e30a1a1b998d6497c081041ede16a64f5c17b984ebc97b27",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "bytes": 6163,
+      "sha256": "5a7fe0fc4a5deeb4f9bdcc74c4b2e4b459559274c45fe1214de4bddb4d26d75d",
+      "original_sha256": "5a7fe0fc4a5deeb4f9bdcc74c4b2e4b459559274c45fe1214de4bddb4d26d75d",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/render-build-result.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/render-build-result.html",
+      "bytes": 24026,
+      "sha256": "ede4047cf49c479d32e8e9852a0c06c07d303801008f6281891ed2e9c629f101",
+      "original_sha256": "ede4047cf49c479d32e8e9852a0c06c07d303801008f6281891ed2e9c629f101",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/render-build-result.md",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/render-build-result.md",
+      "bytes": 1740,
+      "sha256": "c22c28b7d652a8f19cf704950515f8d08665870ee5cf85dac52061e53e89c014",
+      "original_sha256": "c22c28b7d652a8f19cf704950515f8d08665870ee5cf85dac52061e53e89c014",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/selected-build.log",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/selected-build.log",
+      "bytes": 8881,
+      "sha256": "6b12bd99e298f6cc8e0d1658927e3d5d092ceb8f1b204a83123c297b605c161f",
+      "original_sha256": "6b12bd99e298f6cc8e0d1658927e3d5d092ceb8f1b204a83123c297b605c161f",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/README.html",
+      "bytes": 30525,
+      "sha256": "a39066d991ce47484f87f87c1adbc904feec9e62d34a1f04d6cd464d4e23a849",
+      "original_sha256": "a39066d991ce47484f87f87c1adbc904feec9e62d34a1f04d6cd464d4e23a849",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/implementation-review-20.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/implementation-review-20.html",
+      "bytes": 27387,
+      "sha256": "18d1e44db6544f1a17740458dcaee253f0f27f5363d6df3841d7e9bfabde3279",
+      "original_sha256": "18d1e44db6544f1a17740458dcaee253f0f27f5363d6df3841d7e9bfabde3279",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/pr-delta-review-20.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/pr-delta-review-20.html",
+      "bytes": 27715,
+      "sha256": "61fdf1a0ac07c978ae4fa7ab5d27038b8481005b1608cdb1cbdb216c03683358",
+      "original_sha256": "61fdf1a0ac07c978ae4fa7ab5d27038b8481005b1608cdb1cbdb216c03683358",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/README.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/README.html",
+      "bytes": 29408,
+      "sha256": "08541de81fcd3c54e94d8460216ce61f834e65cf532b8d6e7387143bb6ff298b",
+      "original_sha256": "08541de81fcd3c54e94d8460216ce61f834e65cf532b8d6e7387143bb6ff298b",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/docs-build-result.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/docs-build-result.html",
+      "bytes": 23762,
+      "sha256": "ee387929d75a14a78ab7186ca2232028c2e86439160fdcf7b5e4f892ccfe7202",
+      "original_sha256": "ee387929d75a14a78ab7186ca2232028c2e86439160fdcf7b5e4f892ccfe7202",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/plan-review-20.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/plan-review-20.html",
+      "bytes": 28055,
+      "sha256": "34536333ec3ba30b3216c04d874049f1fe0b2bb2f9c2402f58499f68bcd2f7cc",
+      "original_sha256": "34536333ec3ba30b3216c04d874049f1fe0b2bb2f9c2402f58499f68bcd2f7cc",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/pr-delta-review-20.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/pr-delta-review-20.html",
+      "bytes": 27400,
+      "sha256": "03d7766e42dfaafb1e7fba3e38b0a15fd8c0e81be05cbef61062b11bd6c95697",
+      "original_sha256": "03d7766e42dfaafb1e7fba3e38b0a15fd8c0e81be05cbef61062b11bd6c95697",
+      "phase": "finalization"
+    },
+    {
+      "path": "spec/plan/c15-inline-text-layout.html",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-finalization-2026-10-17/spec/plan/c15-inline-text-layout.html",
+      "bytes": 67245,
+      "sha256": "7b2aa12faadd415b732e53731665e74179802788788f83e52b09e5a31a9b5250",
+      "original_sha256": "7b2aa12faadd415b732e53731665e74179802788788f83e52b09e5a31a9b5250",
+      "phase": "finalization"
+    }
+  ]
+}

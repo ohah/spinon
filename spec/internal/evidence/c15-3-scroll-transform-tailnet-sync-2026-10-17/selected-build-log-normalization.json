@@ -1,0 +1,9 @@
+{
+  "command": "bun run --filter @spinon/docs docs:build --config /private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/packages/docs/.rspress.tailnet.config.ts",
+  "exit_code": 0,
+  "line_count": 64,
+  "trimmed_line_count": 9,
+  "raw_output_sha256": "a470163cbae62134053833726597e3af9d03c2a297bbe68a7b218a84a81ed11f",
+  "normalized_output_sha256": "151788ae906a5f4fa634c7b6f1dfd1612610455e5d74d5d0cf38b0ef2c11fa69",
+  "normalization": "remove trailing ASCII spaces and tabs per line; preserve content and order"
+}

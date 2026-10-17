@@ -1,0 +1,1060 @@
+{
+  "source_base_commit": "740b64032a68cd24ae258d341cefcfc2a3fe8984",
+  "preview_root": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "copy_only": true,
+  "deletions": [],
+  "counts": {
+    "created": 97,
+    "replaced": 19,
+    "unchanged": 17
+  },
+  "files": [
+    {
+      "path": "STATUS.html",
+      "status": "replaced",
+      "bytes": 342200,
+      "sha256": "69a4e7138e2d8a86b8e3f8dbd6a84c5243500fac5b3165d406e2d60799ece054",
+      "previous_sha256": "9f8fcf9bde240e2d175112f3718854ff9b1696bfd3ba39d512bdea07dd258209",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/STATUS.html"
+    },
+    {
+      "path": "STATUS.md",
+      "status": "replaced",
+      "bytes": 259131,
+      "sha256": "ade6a24da7852fd3765e02f5de15bceef9712bc359b7d246a49fa677032ee021",
+      "previous_sha256": "da9f822d47473fa2721f368db559bf3b389cdb378dcf024ceac99035b84cc082",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/STATUS.md"
+    },
+    {
+      "path": "icon.svg",
+      "status": "unchanged",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0072-c15-3-wgpu-glyph-paint.html",
+      "status": "replaced",
+      "bytes": 25958,
+      "sha256": "31cd58ddfddfacbd9e6c217f931af95d1d078d3cc3ae7373ff9e840131f2f8c7",
+      "previous_sha256": "758b29353ab6221efba3c37e9b09c543b085b6cd653db3d7ec8c247ac7bd4097",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/internal/0072-c15-3-wgpu-glyph-paint.html"
+    },
+    {
+      "path": "internal/0072-c15-3-wgpu-glyph-paint.md",
+      "status": "unchanged",
+      "bytes": 3369,
+      "sha256": "c32ef5157e0084eb341731635e0c3df6f869d0dca58f336cc4b45299a39aff82",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0073-c15-3-overflow-text-owner-hit-test.html",
+      "status": "replaced",
+      "bytes": 25796,
+      "sha256": "271cfe65d03c2ecdd901245db96874da0d76bca4b9381760b7459ef5eb4f46a6",
+      "previous_sha256": "1e7ebaaac721369351b6e4d9fdb53b689eca6635e42103dde98ddd52c54444da",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/internal/0073-c15-3-overflow-text-owner-hit-test.html"
+    },
+    {
+      "path": "internal/0073-c15-3-overflow-text-owner-hit-test.md",
+      "status": "unchanged",
+      "bytes": 2740,
+      "sha256": "fa027d9f04d65d3c296c3560130e72589979012372084650011a60f329526b17",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0074-c15-3-runtime-glyph-scroll-transform.html",
+      "status": "created",
+      "bytes": 28892,
+      "sha256": "ec721c20b91d8f3508496743320ad754a0e6d65c2e8eaa9691e98bfdc77eb1af",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/0074-c15-3-runtime-glyph-scroll-transform.md",
+      "status": "created",
+      "bytes": 4634,
+      "sha256": "3240b7bf80e45708275f84bdaa2e7b19f28a28e65926e8b24eabba611ded6ceb",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/README.html",
+      "status": "replaced",
+      "bytes": 160482,
+      "sha256": "931f34f8023c9cf21eead293404970ca3914e38316cf506a8d7cd05ad85d4b15",
+      "previous_sha256": "94865e653faa6683e0ef9b25d6d6395283caee66b0fcfa412e007c209f1fd2bb",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/internal/README.html"
+    },
+    {
+      "path": "internal/README.md",
+      "status": "replaced",
+      "bytes": 113643,
+      "sha256": "f7ab9ec5351a9ca8e4aa79f4a1e4dedb1fb35bb744ec9a4fd6a9e8818b3ee855",
+      "previous_sha256": "71b4eb6c227fd1ca1b260011bdb330cf44deeb36fc850d3ce6701892d766f954",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/internal/README.md"
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.html",
+      "status": "created",
+      "bytes": 27476,
+      "sha256": "64034bbd757dc3baa7f1e1f8286f3cb25c803956344c8dacb44c0b1dc50b9d74",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.md",
+      "status": "created",
+      "bytes": 3511,
+      "sha256": "29cf72e8fc181e5a10991d062eef0e489ea50365f963b289d3901682d4f902ae",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "status": "created",
+      "bytes": 28969,
+      "sha256": "e05eb854eead6ba457b9f07f62d7d82b6a812fb10544dc18384feef823196a97",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "status": "created",
+      "bytes": 4928,
+      "sha256": "bc549b05d7d35da0187cfb72d39c20b79edf27537c321793b709f72c780671ff",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/preflight.json",
+      "status": "created",
+      "bytes": 74634,
+      "sha256": "d1228232ca8b48b2bdf57595a42a5b9ee5c92afa72ca2c521ad40afc186c2808",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/render-build-result.html",
+      "status": "created",
+      "bytes": 24026,
+      "sha256": "41c6e73d9906c9d9c0f968907687a3d47e7995597baf44c5471d0443042745f7",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/render-build-result.md",
+      "status": "created",
+      "bytes": 1740,
+      "sha256": "c22c28b7d652a8f19cf704950515f8d08665870ee5cf85dac52061e53e89c014",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/selected-build.log",
+      "status": "created",
+      "bytes": 8881,
+      "sha256": "c12c1f87b3e938fce2df93764ee8e572fa145b04f2b1c4826ca2a87d2ae62817",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/README.html",
+      "status": "created",
+      "bytes": 30525,
+      "sha256": "3f849e3ed141d7ce86d9259fd113800cbccea20a57dd0d3230056d61cdd54fce",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/README.md",
+      "status": "created",
+      "bytes": 5051,
+      "sha256": "afca63b907136241d9d781ab2ec78f5ff18ca998925a168206fe75e652da6736",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/android-api37-avd.log",
+      "status": "created",
+      "bytes": 10995,
+      "sha256": "cede9d00cacc3bc9c456487da04491f22921ef212a50482b1aad4eae1aa76fc9",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/android-api37-avd.png",
+      "status": "created",
+      "bytes": 88719,
+      "sha256": "37792ad6f9b84bceb84445f540ecb654c9de630fe4c0ba7c4f7ea0f03932e6f7",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/android-build.log",
+      "status": "created",
+      "bytes": 11954,
+      "sha256": "e36b35100a995a5a90ef770b32e9543e66358a5abbc2ec602a41282303b9b8b2",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/docs-build.log",
+      "status": "created",
+      "bytes": 1688364,
+      "sha256": "506d319b260745bd978b9dc5c263b648f5d74ee4afa31219f3c66748f7875728",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/environment.txt",
+      "status": "created",
+      "bytes": 1400,
+      "sha256": "589f1a9bc7e97c70852d561b01ed553a3a3c939d4b943cfb657dbc4c37004fa5",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/implementation-review-20.html",
+      "status": "created",
+      "bytes": 27387,
+      "sha256": "7c7c75e26534710acb92f77c354a695501f979a2168bd27eb6dd251f3e50a8e5",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/implementation-review-20.md",
+      "status": "created",
+      "bytes": 4401,
+      "sha256": "e7b2d19692268944f4b515188126df55bd6d8d7d1a46f05e553e510d156dee90",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/ios-26-2-simulator.log",
+      "status": "created",
+      "bytes": 3120,
+      "sha256": "19fdc816489c266bd4bdb1e9a16572dd4b450d65f4757e4ebc174deb9df0eb61",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/ios-26-2-simulator.png",
+      "status": "created",
+      "bytes": 149728,
+      "sha256": "426442d9d34b37d45469e02f48466bc1f1188e2e14615d10ee256878d5d78940",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/ios-simulator-build.log",
+      "status": "created",
+      "bytes": 69361,
+      "sha256": "e4edca971c60587f5476ce8b90fb42ec9b5ee957d03f567658c8c2f8509915e8",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/pr-delta-review-20.html",
+      "status": "created",
+      "bytes": 27715,
+      "sha256": "8a46e1947ad620791618fc517db29129acca14e312a529bf3b1c6d8928b1e995",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/pr-delta-review-20.md",
+      "status": "created",
+      "bytes": 5108,
+      "sha256": "eb2cc11bf6d0053b22e400f3b01b212c7bab451319c474a61d69950740506d91",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/rust-validation.log",
+      "status": "created",
+      "bytes": 47798,
+      "sha256": "5a7d6ea6177fd78a6a7a07805fe64a4ab788b7756d812671b8585e0c97d3fc5d",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/sha256.txt",
+      "status": "created",
+      "bytes": 2610,
+      "sha256": "565c2f900211a5b7daa6d7b6cdd6077b6cac0bc2ea49d19f01629e578ddfffaa",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/targeted-links.log",
+      "status": "created",
+      "bytes": 593,
+      "sha256": "ac3f928d57d2190d829a65a14ede88d677c11bf5bad6db5474a3f57a330afeb3",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/README.html",
+      "status": "created",
+      "bytes": 29408,
+      "sha256": "74d58ba0b1d4a5492f11283e4a5ea0fd21971e23e9fad1b9b7c6df4524f0b76e",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/README.md",
+      "status": "created",
+      "bytes": 5169,
+      "sha256": "dcda670e8fe04598e4822af31c03178d299fcbb2ce8a885696e4d8a116fc34f2",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/chrome155-scroll-observation.json",
+      "status": "created",
+      "bytes": 8595,
+      "sha256": "1144e9a3bd1fdbc7ee59c443e21eebc2f8f2aa77d6f59a59c53d61904e2d2e5c",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/chrome155-scroll-text.png",
+      "status": "created",
+      "bytes": 15518,
+      "sha256": "652f2995980129ccd7f9d14c17afd40a9740045aa541e3edd7afeb94d72b4f37",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/docs-build-result.html",
+      "status": "created",
+      "bytes": 23762,
+      "sha256": "32b85f6d7eb4f8346b7b1986688f64c4c55feeecb646ff531ac8a42bbbd835a5",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/docs-build-result.md",
+      "status": "created",
+      "bytes": 901,
+      "sha256": "ea25dc43913f046b3fcd3fbf2dbddaf253a85a81e36929e946146d3e48585ceb",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/plan-review-20.html",
+      "status": "created",
+      "bytes": 28055,
+      "sha256": "d9f69cb7d6d1ee63e8d434cf075b44c85d5264a0b5de326448fc5114bec4508c",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/plan-review-20.md",
+      "status": "created",
+      "bytes": 4763,
+      "sha256": "24ec40766ebe8febd18f093d3deabdd9f56d076df5a265cfd6cab734d6fa3470",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/pr-delta-review-20.html",
+      "status": "created",
+      "bytes": 27400,
+      "sha256": "8de65f4e2b140d1ba8b38922f58b51a2ccd15011c005c6c2d2cf405a8e7ff771",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/pr-delta-review-20.md",
+      "status": "created",
+      "bytes": 3997,
+      "sha256": "0a5ad880a5b172a6f90a0921dd9602cf6b59e73d26050ae6ca7fe5157230227f",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/sha256.txt",
+      "status": "created",
+      "bytes": 1206,
+      "sha256": "f78ec9fbbd025dd8144a313ca3b42d3360e49c1bd7db590a0b74bf93d9c09867",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "logo.svg",
+      "status": "unchanged",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "backup_path": null
+    },
+    {
+      "path": "plan/c15-inline-text-layout.html",
+      "status": "replaced",
+      "bytes": 67245,
+      "sha256": "d701d87ddb6b0bc4f5609caa110cb78498eabb9e14d8fcd8d8bf6db8e4d4cb5c",
+      "previous_sha256": "10ce1d91478bc3e8dc00b696c76b62d1fd274a45385faaef487d952a53f52ebd",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/plan/c15-inline-text-layout.html"
+    },
+    {
+      "path": "plan/c15-inline-text-layout.md",
+      "status": "replaced",
+      "bytes": 32812,
+      "sha256": "d3b2d56ca1e72c16805a62ef05aee443c62a1985f7e3f97f93b7681bda2228e0",
+      "previous_sha256": "8ff7a9fc44f3965deb7c2dffa873f45b255c78873004a6539c8781bed1ba8da1",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/plan/c15-inline-text-layout.md"
+    },
+    {
+      "path": "public/icon.svg",
+      "status": "unchanged",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "backup_path": null
+    },
+    {
+      "path": "public/logo.svg",
+      "status": "unchanged",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "backup_path": null
+    },
+    {
+      "path": "public/roadmap.html",
+      "status": "replaced",
+      "bytes": 115998,
+      "sha256": "fa59fd5c3c21708346767e221e4c00a9d66b0779b7940d5ceb6e9c216113d979",
+      "previous_sha256": "7a1356cff12d3dcc615f0d386ffcdfaaa98cfe5f34e4226cb94abf29c5ae746c",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/public/roadmap.html"
+    },
+    {
+      "path": "roadmap.html",
+      "status": "replaced",
+      "bytes": 115998,
+      "sha256": "fa59fd5c3c21708346767e221e4c00a9d66b0779b7940d5ceb6e9c216113d979",
+      "previous_sha256": "7a1356cff12d3dcc615f0d386ffcdfaaa98cfe5f34e4226cb94abf29c5ae746c",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/roadmap.html"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "status": "replaced",
+      "bytes": 342200,
+      "sha256": "69a4e7138e2d8a86b8e3f8dbd6a84c5243500fac5b3165d406e2d60799ece054",
+      "previous_sha256": "9f8fcf9bde240e2d175112f3718854ff9b1696bfd3ba39d512bdea07dd258209",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/spec/STATUS.html"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "status": "replaced",
+      "bytes": 259131,
+      "sha256": "ade6a24da7852fd3765e02f5de15bceef9712bc359b7d246a49fa677032ee021",
+      "previous_sha256": "da9f822d47473fa2721f368db559bf3b389cdb378dcf024ceac99035b84cc082",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/spec/STATUS.md"
+    },
+    {
+      "path": "spec/internal/0072-c15-3-wgpu-glyph-paint.html",
+      "status": "replaced",
+      "bytes": 25958,
+      "sha256": "31cd58ddfddfacbd9e6c217f931af95d1d078d3cc3ae7373ff9e840131f2f8c7",
+      "previous_sha256": "758b29353ab6221efba3c37e9b09c543b085b6cd653db3d7ec8c247ac7bd4097",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/spec/internal/0072-c15-3-wgpu-glyph-paint.html"
+    },
+    {
+      "path": "spec/internal/0072-c15-3-wgpu-glyph-paint.md",
+      "status": "unchanged",
+      "bytes": 3369,
+      "sha256": "c32ef5157e0084eb341731635e0c3df6f869d0dca58f336cc4b45299a39aff82",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/0073-c15-3-overflow-text-owner-hit-test.html",
+      "status": "replaced",
+      "bytes": 25796,
+      "sha256": "271cfe65d03c2ecdd901245db96874da0d76bca4b9381760b7459ef5eb4f46a6",
+      "previous_sha256": "1e7ebaaac721369351b6e4d9fdb53b689eca6635e42103dde98ddd52c54444da",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/spec/internal/0073-c15-3-overflow-text-owner-hit-test.html"
+    },
+    {
+      "path": "spec/internal/0073-c15-3-overflow-text-owner-hit-test.md",
+      "status": "unchanged",
+      "bytes": 2740,
+      "sha256": "fa027d9f04d65d3c296c3560130e72589979012372084650011a60f329526b17",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/0074-c15-3-runtime-glyph-scroll-transform.html",
+      "status": "created",
+      "bytes": 28892,
+      "sha256": "ec721c20b91d8f3508496743320ad754a0e6d65c2e8eaa9691e98bfdc77eb1af",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/0074-c15-3-runtime-glyph-scroll-transform.md",
+      "status": "created",
+      "bytes": 4634,
+      "sha256": "3240b7bf80e45708275f84bdaa2e7b19f28a28e65926e8b24eabba611ded6ceb",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/README.html",
+      "status": "replaced",
+      "bytes": 160482,
+      "sha256": "931f34f8023c9cf21eead293404970ca3914e38316cf506a8d7cd05ad85d4b15",
+      "previous_sha256": "94865e653faa6683e0ef9b25d6d6395283caee66b0fcfa412e007c209f1fd2bb",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/spec/internal/README.html"
+    },
+    {
+      "path": "spec/internal/README.md",
+      "status": "replaced",
+      "bytes": 113643,
+      "sha256": "f7ab9ec5351a9ca8e4aa79f4a1e4dedb1fb35bb744ec9a4fd6a9e8818b3ee855",
+      "previous_sha256": "71b4eb6c227fd1ca1b260011bdb330cf44deeb36fc850d3ce6701892d766f954",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/spec/internal/README.md"
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.html",
+      "status": "created",
+      "bytes": 27476,
+      "sha256": "64034bbd757dc3baa7f1e1f8286f3cb25c803956344c8dacb44c0b1dc50b9d74",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/README.md",
+      "status": "created",
+      "bytes": 3511,
+      "sha256": "29cf72e8fc181e5a10991d062eef0e489ea50365f963b289d3901682d4f902ae",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.html",
+      "status": "created",
+      "bytes": 28969,
+      "sha256": "e05eb854eead6ba457b9f07f62d7d82b6a812fb10544dc18384feef823196a97",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/pr-delta-review-30.md",
+      "status": "created",
+      "bytes": 4928,
+      "sha256": "bc549b05d7d35da0187cfb72d39c20b79edf27537c321793b709f72c780671ff",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/preflight.json",
+      "status": "created",
+      "bytes": 74634,
+      "sha256": "d1228232ca8b48b2bdf57595a42a5b9ee5c92afa72ca2c521ad40afc186c2808",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/render-build-result.html",
+      "status": "created",
+      "bytes": 24026,
+      "sha256": "41c6e73d9906c9d9c0f968907687a3d47e7995597baf44c5471d0443042745f7",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/render-build-result.md",
+      "status": "created",
+      "bytes": 1740,
+      "sha256": "c22c28b7d652a8f19cf704950515f8d08665870ee5cf85dac52061e53e89c014",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-scroll-transform-tailnet-sync-2026-10-17/selected-build.log",
+      "status": "created",
+      "bytes": 8881,
+      "sha256": "c12c1f87b3e938fce2df93764ee8e572fa145b04f2b1c4826ca2a87d2ae62817",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/README.html",
+      "status": "created",
+      "bytes": 30525,
+      "sha256": "3f849e3ed141d7ce86d9259fd113800cbccea20a57dd0d3230056d61cdd54fce",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/README.md",
+      "status": "created",
+      "bytes": 5051,
+      "sha256": "afca63b907136241d9d781ab2ec78f5ff18ca998925a168206fe75e652da6736",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/android-api37-avd.log",
+      "status": "created",
+      "bytes": 10995,
+      "sha256": "cede9d00cacc3bc9c456487da04491f22921ef212a50482b1aad4eae1aa76fc9",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/android-api37-avd.png",
+      "status": "created",
+      "bytes": 88719,
+      "sha256": "37792ad6f9b84bceb84445f540ecb654c9de630fe4c0ba7c4f7ea0f03932e6f7",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/android-build.log",
+      "status": "created",
+      "bytes": 11954,
+      "sha256": "e36b35100a995a5a90ef770b32e9543e66358a5abbc2ec602a41282303b9b8b2",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/docs-build.log",
+      "status": "created",
+      "bytes": 1688364,
+      "sha256": "506d319b260745bd978b9dc5c263b648f5d74ee4afa31219f3c66748f7875728",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/environment.txt",
+      "status": "created",
+      "bytes": 1400,
+      "sha256": "589f1a9bc7e97c70852d561b01ed553a3a3c939d4b943cfb657dbc4c37004fa5",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/implementation-review-20.html",
+      "status": "created",
+      "bytes": 27387,
+      "sha256": "7c7c75e26534710acb92f77c354a695501f979a2168bd27eb6dd251f3e50a8e5",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/implementation-review-20.md",
+      "status": "created",
+      "bytes": 4401,
+      "sha256": "e7b2d19692268944f4b515188126df55bd6d8d7d1a46f05e553e510d156dee90",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/ios-26-2-simulator.log",
+      "status": "created",
+      "bytes": 3120,
+      "sha256": "19fdc816489c266bd4bdb1e9a16572dd4b450d65f4757e4ebc174deb9df0eb61",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/ios-26-2-simulator.png",
+      "status": "created",
+      "bytes": 149728,
+      "sha256": "426442d9d34b37d45469e02f48466bc1f1188e2e14615d10ee256878d5d78940",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/ios-simulator-build.log",
+      "status": "created",
+      "bytes": 69361,
+      "sha256": "e4edca971c60587f5476ce8b90fb42ec9b5ee957d03f567658c8c2f8509915e8",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/pr-delta-review-20.html",
+      "status": "created",
+      "bytes": 27715,
+      "sha256": "8a46e1947ad620791618fc517db29129acca14e312a529bf3b1c6d8928b1e995",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/pr-delta-review-20.md",
+      "status": "created",
+      "bytes": 5108,
+      "sha256": "eb2cc11bf6d0053b22e400f3b01b212c7bab451319c474a61d69950740506d91",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/rust-validation.log",
+      "status": "created",
+      "bytes": 47798,
+      "sha256": "5a7d6ea6177fd78a6a7a07805fe64a4ab788b7756d812671b8585e0c97d3fc5d",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/sha256.txt",
+      "status": "created",
+      "bytes": 2610,
+      "sha256": "565c2f900211a5b7daa6d7b6cdd6077b6cac0bc2ea49d19f01629e578ddfffaa",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-2026-10-17/targeted-links.log",
+      "status": "created",
+      "bytes": 593,
+      "sha256": "ac3f928d57d2190d829a65a14ede88d677c11bf5bad6db5474a3f57a330afeb3",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/README.html",
+      "status": "created",
+      "bytes": 29408,
+      "sha256": "74d58ba0b1d4a5492f11283e4a5ea0fd21971e23e9fad1b9b7c6df4524f0b76e",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/README.md",
+      "status": "created",
+      "bytes": 5169,
+      "sha256": "dcda670e8fe04598e4822af31c03178d299fcbb2ce8a885696e4d8a116fc34f2",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/chrome155-scroll-observation.json",
+      "status": "created",
+      "bytes": 8595,
+      "sha256": "1144e9a3bd1fdbc7ee59c443e21eebc2f8f2aa77d6f59a59c53d61904e2d2e5c",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/chrome155-scroll-text.png",
+      "status": "created",
+      "bytes": 15518,
+      "sha256": "652f2995980129ccd7f9d14c17afd40a9740045aa541e3edd7afeb94d72b4f37",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/docs-build-result.html",
+      "status": "created",
+      "bytes": 23762,
+      "sha256": "32b85f6d7eb4f8346b7b1986688f64c4c55feeecb646ff531ac8a42bbbd835a5",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/docs-build-result.md",
+      "status": "created",
+      "bytes": 901,
+      "sha256": "ea25dc43913f046b3fcd3fbf2dbddaf253a85a81e36929e946146d3e48585ceb",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/plan-review-20.html",
+      "status": "created",
+      "bytes": 28055,
+      "sha256": "d9f69cb7d6d1ee63e8d434cf075b44c85d5264a0b5de326448fc5114bec4508c",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/plan-review-20.md",
+      "status": "created",
+      "bytes": 4763,
+      "sha256": "24ec40766ebe8febd18f093d3deabdd9f56d076df5a265cfd6cab734d6fa3470",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/pr-delta-review-20.html",
+      "status": "created",
+      "bytes": 27400,
+      "sha256": "8de65f4e2b140d1ba8b38922f58b51a2ccd15011c005c6c2d2cf405a8e7ff771",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/pr-delta-review-20.md",
+      "status": "created",
+      "bytes": 3997,
+      "sha256": "0a5ad880a5b172a6f90a0921dd9602cf6b59e73d26050ae6ca7fe5157230227f",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/sha256.txt",
+      "status": "created",
+      "bytes": 1206,
+      "sha256": "f78ec9fbbd025dd8144a313ca3b42d3360e49c1bd7db590a0b74bf93d9c09867",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/plan/c15-inline-text-layout.html",
+      "status": "replaced",
+      "bytes": 67245,
+      "sha256": "d701d87ddb6b0bc4f5609caa110cb78498eabb9e14d8fcd8d8bf6db8e4d4cb5c",
+      "previous_sha256": "10ce1d91478bc3e8dc00b696c76b62d1fd274a45385faaef487d952a53f52ebd",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/spec/plan/c15-inline-text-layout.html"
+    },
+    {
+      "path": "spec/plan/c15-inline-text-layout.md",
+      "status": "replaced",
+      "bytes": 32812,
+      "sha256": "d3b2d56ca1e72c16805a62ef05aee443c62a1985f7e3f97f93b7681bda2228e0",
+      "previous_sha256": "8ff7a9fc44f3965deb7c2dffa873f45b255c78873004a6539c8781bed1ba8da1",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/spec/plan/c15-inline-text-layout.md"
+    },
+    {
+      "path": "spec/public/icon.svg",
+      "status": "unchanged",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "backup_path": null
+    },
+    {
+      "path": "spec/public/logo.svg",
+      "status": "unchanged",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "backup_path": null
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "status": "replaced",
+      "bytes": 115998,
+      "sha256": "fa59fd5c3c21708346767e221e4c00a9d66b0779b7940d5ceb6e9c216113d979",
+      "previous_sha256": "7a1356cff12d3dcc615f0d386ffcdfaaa98cfe5f34e4226cb94abf29c5ae746c",
+      "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c15-3-scroll-transform-tailnet-sync-2026-10-17/spec/public/roadmap.html"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": "unchanged",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/chrome155-scroll-text.9c8d482a4f.png",
+      "status": "created",
+      "bytes": 15518,
+      "sha256": "652f2995980129ccd7f9d14c17afd40a9740045aa541e3edd7afeb94d72b4f37",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.8331408054.js",
+      "status": "created",
+      "bytes": 217099,
+      "sha256": "9c4fdb558868ffc09870459a22ce4450ab98c0004003703e13d6afaf38ee49a8",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.8331408054.js.LICENSE.txt",
+      "status": "created",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "status": "unchanged",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-0107d8fa8011.6a7650693c.js",
+      "status": "created",
+      "bytes": 9156,
+      "sha256": "9dc79d7d3b76b7b2a6d434bbc3b059fa86e262bb5501af1a81b5f357cf61e209",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-0628738c8c67.b5fda78d1e.js",
+      "status": "created",
+      "bytes": 10675,
+      "sha256": "78e5f655c4ff44cd7281d9f62ffe183983d42f671687782e80bfddb5cf0240f0",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-117783875241.1b9872c278.js",
+      "status": "created",
+      "bytes": 53967,
+      "sha256": "196fa196b763edc7c2d97d2c4d90ade5aaa9b48614442f115b165c3c34d42a57",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-399545b21e66.8c7ad5d0ad.js",
+      "status": "created",
+      "bytes": 8659,
+      "sha256": "b3fca0c1a144ee5ce85e79d815d3ccf1b09fa8c157064e7084a5c3c64705c1d1",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-3b5f17ff04a2.de86e82afc.js",
+      "status": "created",
+      "bytes": 8879,
+      "sha256": "a55770768b88fa39e990b88c8129298173abca367eb1196c7ab82c75883863b9",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-56103828be18.f14c48b34d.js",
+      "status": "created",
+      "bytes": 8566,
+      "sha256": "30174421db4367d10a84e2424fcd92f4d24dc1627ddb63e0c2286fecbffe025b",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-5aa7e2e0f37e.ee4e59daaf.js",
+      "status": "created",
+      "bytes": 9239,
+      "sha256": "01b6e315b69f4ef33bbfeb4c4a5ac5092171a961a63bbdc1ee7711563e0cd931",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.638b2a202d.js",
+      "status": "created",
+      "bytes": 357658,
+      "sha256": "006b55fdae21233640cba61e4db73c20a7aa3d4de5fbc4845c58362962487e78",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-7c7ce5bd3e77.5ea7b3de8a.js",
+      "status": "created",
+      "bytes": 9978,
+      "sha256": "633ccb4200b47ba2ef8f98c15a7e849be5f23ceba915b068e864de04902a82c1",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-8e8ef94a82ba.ece0b817f8.js",
+      "status": "created",
+      "bytes": 7339,
+      "sha256": "57852e8ae318cf4796f1b4b82e81db5d5767da002a7e63ec51671e221e1197ce",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-99ce983111cf.9e61a95620.js",
+      "status": "created",
+      "bytes": 5974,
+      "sha256": "643dc4975de67cbc6247ceadb18c4c3b50e7e5077239e24512501be59930a6bc",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-9fbf43f036e8.a0aa2403a6.js",
+      "status": "created",
+      "bytes": 11992,
+      "sha256": "b49a8e14b3a872bafeefc2c4eca6f6f4eec88a0f857330e946800c5f1f31a99b",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.44490af183.js",
+      "status": "created",
+      "bytes": 166110,
+      "sha256": "8b00f65aa0dc8039af631af1006a01a197ece3ca9cc2b8e1de26a796340922f5",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-aac2f37c70ef.1e2f738d58.js",
+      "status": "created",
+      "bytes": 3915,
+      "sha256": "8d1a460c9ebe770d3b13ee80df715bb10de52080599d9b7b29831f80afd23947",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-c868063ba78d.885b9d58c9.js",
+      "status": "created",
+      "bytes": 2216,
+      "sha256": "58882e092af98e70d52f4bdd5d8a696b9b185095739981179fd58a693ccaf14c",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-d31b5645247a.d4aa265a86.js",
+      "status": "created",
+      "bytes": 5310,
+      "sha256": "6b63396b289beb31abea0cd9d47c2556ba4a5ac4eecac823dd2ce019c3dfd616",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/index.ae15f1a27f.js",
+      "status": "created",
+      "bytes": 31969,
+      "sha256": "ad0101dd75cdfbdc3809c6334fb3ee7877f6329f0e3c98e4daa7ad026de6f1f1",
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "status": "unchanged",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "status": "unchanged",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "status": "unchanged",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "status": "unchanged",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "status": "unchanged",
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "backup_path": null
+    },
+    {
+      "path": "static/search_index.ko.d787f8f4.json",
+      "status": "created",
+      "bytes": 364964,
+      "sha256": "d787f8f4e36c44c851640ed2381e7d5d5c82700a0f62502c839a73376ec2241c",
+      "previous_sha256": null,
+      "backup_path": null
+    }
+  ]
+}
