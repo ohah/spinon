@@ -1,0 +1,28 @@
+✔ pinned Chrome full viewport capture has complete canonical RLE coverage (1.284167ms)
+✔ rejects changed fixture hash (0.393083ms)
+✔ rejects changed fixture source bytes (0.076208ms)
+✔ rejects a different Chrome build (0.24125ms)
+✔ rejects a different browser platform (0.230084ms)
+✔ rejects a changed device scale factor (0.230042ms)
+✔ rejects a scrolled capture (0.385791ms)
+✔ rejects a pixel-center convention substitution (0.193875ms)
+✔ rejects a reordered or duplicated node registry (0.410416ms)
+✔ rejects a changed total point count (0.239625ms)
+✔ rejects a missing viewport row (0.218167ms)
+✔ rejects an under-covered row (0.305583ms)
+✔ rejects an over-covered row (0.338916ms)
+✔ rejects a zero-width run (0.247792ms)
+✔ rejects an unknown node index (0.209208ms)
+✔ rejects noncanonical adjacent runs for one identity (0.2755ms)
+✔ rejects a modified expanded identity digest (0.685292ms)
+✔ rejects a missing or changed right-edge positive control (1.479459ms)
+✔ rejects a missing or changed fractional-edge null control (1.0925ms)
+✔ rejects incorrect screenshot dimensions or bytes (1.2175ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 54.976958
