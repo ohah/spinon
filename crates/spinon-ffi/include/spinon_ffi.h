@@ -101,6 +101,11 @@ SpinonRuntimeSession *spinon_runtime_session_new_with_root_html(
 /* 실제 V8 documentElement/head/body 및 초기 HTML DOM을 검사합니다. */
 int32_t spinon_c04_12_root_html_accessors_fixture(char *output,
                                                   size_t output_capacity);
+/* 플랫폼 asset에서 읽은 UTF-8 HTML을 실제 V8 초기 document에 연결해 검사합니다. */
+int32_t spinon_c04_12_root_html_asset_fixture(const char *source,
+                                              size_t source_length,
+                                              char *output,
+                                              size_t output_capacity);
 #endif
 int32_t spinon_runtime_session_eval(SpinonRuntimeSession *session,
                                    const char *source, char *output,

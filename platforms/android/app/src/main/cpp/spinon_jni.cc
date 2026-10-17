@@ -2309,6 +2309,39 @@ Java_dev_spinon_bootstrap_C0412RootHtmlFixtureNativeAdapter_run(JNIEnv *env,
                           reinterpret_cast<const jbyte *>(report.data()));
   return result;
 }
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0412RootHtmlFixtureNativeAdapter_runAsset(
+    JNIEnv *env, jclass, jbyteArray source_utf8) {
+  auto make_result = [env](const std::string &report) -> jbyteArray {
+    jbyteArray result = env->NewByteArray(static_cast<jsize>(report.size()));
+    if (result == nullptr) return nullptr;
+    env->SetByteArrayRegion(result, 0, static_cast<jsize>(report.size()),
+                            reinterpret_cast<const jbyte *>(report.data()));
+    return env->ExceptionCheck() ? nullptr : result;
+  };
+
+  if (source_utf8 == nullptr) return make_result("status=-1 root_html_asset=null");
+  const jsize source_length = env->GetArrayLength(source_utf8);
+  constexpr size_t kMaxRootHtmlSourceBytes = 1'048'576;
+  if (source_length < 0 ||
+      static_cast<size_t>(source_length) > kMaxRootHtmlSourceBytes) {
+    return make_result("status=-1 root_html_asset=oversized");
+  }
+
+  std::vector<char> source(static_cast<size_t>(source_length));
+  if (source_length > 0) {
+    env->GetByteArrayRegion(source_utf8, 0, source_length,
+                            reinterpret_cast<jbyte *>(source.data()));
+    if (env->ExceptionCheck()) return nullptr;
+  }
+
+  std::array<char, 1024> output{};
+  const int32_t status = spinon_c04_12_root_html_asset_fixture(
+      source.data(), source.size(), output.data(), output.size());
+  return make_result(std::string("status=") + std::to_string(status) + " " +
+                     output.data());
+}
 #endif
 
 extern "C" JNIEXPORT jbyteArray JNICALL

@@ -7,7 +7,7 @@
 
 ## 목적과 현재 범위
 
-기존 `RuntimeSession::new()`의 빈 `HostDocument` 동작을 유지하면서, 호스트가 전달한 UTF-8 HTML document를 표준 HTML5 tree construction으로 파싱해 V8 `document`와 HostDocument cascade 입력으로 사용한다. HTML source 안의 `<script>`는 실행하지 않는다. 이 계약은 HTML document tree와 `documentElement`·`head`·`body` 접근만 정의한다. viewport·color-scheme metadata 적용, OS 설정 수집, page-scale transform, UA Canvas 색상, native asset loader는 아직 지원하지 않는다.
+기존 `RuntimeSession::new()`의 빈 `HostDocument` 동작을 유지하면서, 호스트가 전달한 UTF-8 HTML document를 표준 HTML5 tree construction으로 파싱해 V8 `document`와 HostDocument cascade 입력으로 사용한다. HTML source 안의 `<script>`는 실행하지 않는다. 이 계약은 HTML document tree와 `documentElement`·`head`·`body` 접근만 정의한다. Android/iOS opt-in fixture는 테스트 asset 하나를 bundle에서 읽어 이 생성 경로에 전달하지만, 기본 앱 HTML asset loader는 아직 제공하지 않는다. viewport·color-scheme metadata 적용, OS 설정 수집, page-scale transform, UA Canvas 색상과 HTML paint도 미지원이다.
 
 ## 입력과 parser 제한
 
@@ -29,4 +29,4 @@
 
 - 잘못된 UTF-8, source/node/depth budget 초과, quirks mode, unsupported namespaced attribute, HostDocument quota 및 parser/tree 변환 오류는 세션 생성 실패다. source 일부만 화면에 게시하지 않는다.
 - 이 제한 계약은 앱이 받은 임의 HTML 전체의 WHATWG conformance, HTML metadata 의미, CSS layout·paint 동등성을 뜻하지 않는다.
-- 이 제한 조각의 구현 검증은 tree-construction fixtures, C API validation, 기존 JavaScript-only session regression, 실제 V8 document accessor assertion을 포함한다. Rust tests는 test V8 stub 경계만 확인하고, 별도 opt-in app fixture가 Android API 37 AVD와 iPhone 17 Pro iOS 26.2 Simulator에서 실제 V8 getter 동작을 검사한다. 캡처는 [Android](./evidence/c04-root-html-document-environment-2026-10-17/android-api37-root-html-accessors.png)와 [iOS](./evidence/c04-root-html-document-environment-2026-10-17/ios-iphone17pro-root-html-accessors.png)에 있다. 두 앱 fixture는 고정 root HTML의 DOM 접근만 확인한다. viewport/color-scheme 적용, 기본 앱의 HTML asset 경로, CSS media·Canvas 결과 및 HTML 렌더는 증명하지 않으며 C04.12 전체 완료 기준에는 미달한다.
+- 이 제한 조각의 구현 검증은 tree-construction fixtures, C API validation, 기존 JavaScript-only session regression, 실제 V8 document accessor assertion을 포함한다. Rust tests는 test V8 stub 경계만 확인하고, 별도 opt-in app fixture가 Android API 37 AVD와 iPhone 17 Pro iOS 26.2 Simulator에서 실제 V8 getter 동작을 검사한다. [고정 HTML 직접 전달 캡처](./evidence/c04-root-html-document-environment-2026-10-17/android-api37-root-html-accessors.png) · [iOS](./evidence/c04-root-html-document-environment-2026-10-17/ios-iphone17pro-root-html-accessors.png). 같은 bundle asset을 읽어 실제 V8 초기 document로 넘기는 opt-in 통합 경로는 [Android](./evidence/c04-root-html-document-environment-2026-10-17/android-api37-root-html-asset.png)와 [iOS](./evidence/c04-root-html-document-environment-2026-10-17/ios-iphone17pro-root-html-asset.png)에 기록했다. 두 앱 fixture는 DOM 구조·metadata node 보존·script inertness를 확인하며 실제 HTML paint를 검사하지 않는다. 기본 앱의 `index.html` 경로, viewport/color-scheme 적용, CSS media·Canvas 결과 및 HTML 렌더는 증명하지 않으며 C04.12 전체 완료 기준에는 미달한다.

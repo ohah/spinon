@@ -72,9 +72,23 @@
 ### 구현 경계 및 검증 기록
 
 - `cargo test --locked -p spinon-runtime root_html`: 8/8 통과. source/node/depth/attribute 제한, HTML5 복구 및 table foster parenting, 문서 순서, HostDocument import, `<template>` contents 비노출 및 초기 snapshot을 확인했다.
-- `cargo test --locked -p spinon-ffi root_html --features c04-12-root-html-fixture-test`: 2/2 통과. C ABI에서 비 UTF-8 및 허용 크기 초과 source가 세션 생성 전에 거부된다.
+- `cargo test --locked -p spinon-ffi root_html --features c04-12-root-html-fixture-test`: 5/5 통과. C ABI에서 비 UTF-8, 허용 크기 초과, 양수 길이의 null source가 세션 생성 전에 거부된다.
 - 변경된 runtime·FFI crate의 `cargo clippy --all-targets -- -D warnings`, `cargo fmt --all -- --check`, `git diff --check`, Android/iOS build script 문법 검사를 통과했다.
 - host release staticlib 대조에서 기본 artifact에는 `spinon_c04_12_root_html_accessors_fixture` 심볼과 고정 assertion payload가 없고, `c04-12-root-html-fixture-test` opt-in artifact에는 둘 다 있었다. 이는 host staticlib 경계 근거이며 Android/iOS 최종 app bundle 크기·심볼 검증은 아니다.
 - iOS 빌드 전 C15.3 fixture 비활성 조건에서 해당 전용 변수 대입이 무조건 컴파일되던 기존 Swift 오류를 찾았다. 대입 검증 블록을 C15.3 feature로 한정한 후 C04.12 fixture만 켠 iOS build와 simulator 실행이 통과했다. C15.3 동작은 feature 활성일 때 같은 블록에서 유지된다.
 - 서로 다른 20개 구현 실패 관점 검토는 [별도 기록](../c04-12-root-html-implementation-review-2026-10-17.md)에 있다. 제품 루트 HTML asset 연결 및 metadata 효과가 빠져 있다는 점도 검토 결과와 별도로 이 C04.12 진행 상태에 남겼다.
 - PR 변경 검토 중 `document.documentElement`가 `html` 이름만 반환하던 제한을 발견해 DOM의 첫 element child를 반환하도록 고쳤다. 실제 V8 Android/iOS fixture는 root 교체 후 getter 동작과 `head`·`body` 부재도 검사한다.
+- 이번 bundle asset fixture는 별도의 [20개 구현 실패 관점 검토](../c04-12-root-html-asset-implementation-review-20-2026-10-17.md)와 [30개 PR diff 적대 검토](../c04-12-root-html-asset-pr-diff-review-30-2026-10-17.md)를 거쳤다.
+
+### Opt-in bundle HTML asset → V8 fixture
+
+2026-10-17 후속 fixture는 [`c04-12-root-html-asset.html`](../../../../tests/fixtures/html/c04-12-root-html-asset.html)을 Android APK `assets/`와 iOS app bundle에서 읽어 UTF-8 source로 실제 V8의 `RuntimeSession::new_with_root_html`에 전달한다. DOM assertion은 `documentElement/head/body`, `meta viewport`, `meta color-scheme`, root `<style>` 값, body `<main>`의 attribute/text, `<script>` inertness를 확인한다. 이 경로는 전용 `c04-12-root-html-fixture-test` opt-in feature일 때만 빌드되며 제품 앱의 기본 `index.html` loader가 아니다.
+
+| 플랫폼 | 실행 환경 | 실행 결과 | 화면 |
+| --- | --- | --- | --- |
+| Android | API 37 ARM64 AVD `emulator-5554`; APK `assets/c04-12-root-html-asset.html` 422 bytes | `SPINON_C0412_ROOT_HTML_ASSET status=0 status=0 c04_12_root_html_asset=PASS ...` | [1080×2400 캡처](android-api37-root-html-asset.png) |
+| iOS | iPhone 17 Pro Simulator, iOS 26.2, arm64; app bundle HTML asset 422 bytes | `SPINON_C0412_ROOT_HTML_ASSET status=pass` | [1206×2622 캡처](ios-iphone17pro-root-html-asset.png) |
+
+동일 source hash는 `379a7b8422c3c9db5d550d60bc405ddce1e5b51f36899f92bfc18dfb423d3fde`다. Android APK와 iOS app bundle 내 asset의 SHA-256도 이 값과 일치했다. Android/iOS fixture-test 비활성 빌드 각각에서 해당 asset이 package에 없고, host release staticlib의 기본 feature artifact에는 C04.12 fixture 심볼·assertion 문자열이 없으며 opt-in positive-control artifact에는 포함됨을 확인했다. 이 staticlib 비교는 최종 app release의 전체 symbol/size 감사를 뜻하지 않는다.
+
+실행은 Android `SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST=1` native/Gradle 빌드와 iOS Simulator 빌드 후 각각 `emulator-5554` 및 iPhone 17 Pro Simulator를 사용했다. Android 상태 텍스트는 최초 캡처에서 가로로 잘려 글자 크기와 줄바꿈을 조정한 뒤 다시 캡처했다. 두 화면 모두 fixture 전용 상태 화면이며, root HTML이 CSS layout·viewport·OS `prefers-color-scheme`·UA Canvas·GPU surface로 렌더되는 동작은 검사하지 않는다. C04.12 전체는 미완료다.
