@@ -1,6 +1,6 @@
 # C13.1 중첩 stacking descendant 전체 viewport hit oracle
 
-이 자료는 `visible`·`clip`·`hidden` 중첩 stacking descendant 장면의 Chrome `elementFromPoint()` 결과를 고정한다. 현재는 사전 oracle와 계획 검토만 완료했다. Android/iOS 앱 runtime 전체 grid 연결은 구현되지 않았다.
+이 자료는 `visible`·`clip`·`hidden` 중첩 stacking descendant 장면의 Chrome `elementFromPoint()` 기준과 앱 runtime 전체 viewport hit identity 실행을 함께 기록한다. Chrome oracle와 계획 검토에 이어 Android/iOS fixture app route도 검증했으며, 공개 CSS 지원이나 C13.1 완료를 뜻하지 않는다.
 
 ## 입력과 환경
 
@@ -38,4 +38,16 @@ validator는 Chrome/version, fixture와 screenshot hash, viewport/DPR/scroll, no
 
 캡처 입력은 [Agent Browser eval script](../../../../tools/css-reference/capture-c13-1-stacking-full-viewport-hit.mjs), 검증 코드는 [validator](../../../../tools/css-reference/validate-c13-1-stacking-full-viewport-hit.mjs)와 [20개 integrity test](../../../../tools/css-reference/validate-c13-1-stacking-full-viewport-hit.test.mjs)다. 실행 결과는 [validator log](./validator.log), [20/20 test log](./validator-tests.log), [artifact SHA-256 목록](./artifacts.sha256), [screenshot dimension 검사](./screenshot-dimensions.txt)에 보존했다. [구현 계획](../../../../plan/c13-1-stacking-app-full-viewport-hit-identity.md), [계획 실패 관점 검토 20개](./plan-review-20.md)와 [계획 PR 변경 검토 30개](./plan-pr-delta-review-30.md)를 함께 본다.
 
-이 파일의 캡처는 브라우저 기준만 제공한다. 앱 runtime, WGPU/Metal surface, DOM event, CSSOM, WPT 또는 C13.1 제품 지원 근거가 아니다.
+Chrome screenshot은 브라우저 oracle 화면만 보여준다. 앱 runtime 결과와 화면은 아래 플랫폼별 실행 기록을 따른다.
+
+## 앱 runtime 결과
+
+- 구현 source commit: `1375b7978e6d10d200b8d7b1cc0471dda35e5b73`.
+- 같은 540×128 CSS viewport의 전체 정수 좌표 69,120점을 각각 Android/iOS fixture app의 동일 `RuntimeRenderSnapshot`에서 조회했다. 13개 node frame과 기존 18개 hit/RGBA sample은 유지했다. yellow parent/frame 바깥이지만 viewport 안인 descendant·overlay 영역도 grid에 포함된다.
+- [Android API 37 ARM64 AVD 실행·화면·PixelCopy](./android-avd/c13-1-stacking-android-20261017T195210986Z-cb1a2410/README.md): `emulator-5554`의 새 process 3개가 각각 hit identity 69,120/69,120, 13/13 frame, 18/18 hit, 18/18 PixelCopy RGBA를 맞췄다. screen capture는 `1080×2400`, PixelCopy PNG는 `1418×336`이며 모두 `wm size`/draw surface dimensions와 대조했다.
+- [iOS iPhone 17 Pro / iOS 26.2 Simulator 실행·화면·Metal 표본](./ios-simulator/c13-1-stacking-ios-20261017T195135274Z-ad00912d/README.md): 새 process 3개가 각각 hit identity 69,120/69,120, 13/13 frame, 18/18 hit와 Metal drawable 18/18 sample을 맞췄다.
+- 두 플랫폼 모두 evaluation·draw의 generation/document/render-tree/style revision tuple이 `[1,65,13,0]`으로 같다. 서로 다른 process ID와 per-run summary에 APK/app executable SHA-256을 기록했다.
+- 각 플랫폼의 stale document revision control은 표면 readback 전에 거부했고, route 충돌 control은 host 초기화 전에 거부했다. opt-in fixture artifact 경계는 [feature-boundary 기록](./feature-boundary/README.md)에 둔다.
+- Android PixelCopy와 iOS Metal은 각 18개 고정 표본만 확인한다. 전체 WGPU physical pixel parity, OS compositor/scanout, 실기기/hardware GPU, DOM event dispatch, CSSOM, WPT와 일반 CSS 지원은 미검증이다. C13.1과 C13 상위 상태는 미완료다.
+
+[구현 계획](../../../../plan/c13-1-stacking-app-full-viewport-hit-identity.md) · [내부 계약 0078](../../0078-c13-1-stacking-full-viewport-hit-identity.md) · [구현 실패 관점 20개](./implementation-review-20.md) · [PR 변경 관점 30개](./pr-delta-review-30.md).

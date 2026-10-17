@@ -1,0 +1,3 @@
+cargo build --locked -p spinon-ffi --lib --features c13-1-overflow-clip-fixture-test
+exit=0
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.08s

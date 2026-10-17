@@ -1,7 +1,8 @@
 # C13.1 · 중첩 stacking descendant 앱 전체 viewport hit identity
 
-**상태:** Chrome 155 integer-grid 사전 oracle 고정 · Android/iOS 앱 runtime 구현 미착수
+**상태:** Chrome 155 integer-grid 사전 oracle 고정 · Android/iOS fixture runtime 구현·Simulator 실행 완료 · PR review/merge 대기
 **선행 결과:** [중첩 stacking descendant fixture](./c13-1-stacking-descendant-clip-controls.md) · [전체 viewport host hit 결과 PR #160](https://github.com/ohah/spinon/pull/160)
+**내부 계약:** [0078 · C13.1 전체 viewport hit identity](../spec/internal/0078-c13-1-stacking-full-viewport-hit-identity.md)
 **Chrome 사전 근거:** [캡처·RLE grid·경계 관찰](../spec/internal/evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/README.md)
 **계획 실패 관점 20개:** 같은 evidence 디렉터리의 [`plan-review-20.md`](../spec/internal/evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/plan-review-20.md)
 
@@ -39,6 +40,14 @@
 - 기본/opt-in artifact 경계를 각각 검사한다. Android surface는 PixelCopy, iOS는 Metal drawable 표본을 유지하되 전체 viewport hit identity를 full-surface pixel parity로 해석하지 않는다.
 - Android와 iOS Simulator 화면을 evidence에 저장한다. PR 본문에는 Chrome oracle와 검증된 Simulator 화면을 inline 첨부할 수 있으면 올리고, Agent Browser로 실제 이미지 로드를 확인한다. browser process 종료를 확인하고 terminal-browser/tmux는 건드리지 않는다.
 - `cargo fmt --all -- --check`, 관련 C13.1 fixture/runtime/FFI tests, workspace tests, Clippy, `git diff --check`, Android API 37 AVD build/run, 지정 iOS Simulator build/run을 기록한다. 실행하지 않은 WPT·실기기·hardware GPU·OS compositor/scanout은 미검증으로 남긴다.
+
+## 구현 실행 결과
+
+- 구현 source commit은 `1375b7978e6d10d200b8d7b1cc0471dda35e5b73`이다. Rust comparator는 같은 `RuntimeRenderSnapshot`에서 69,120개 integer point를 한 번씩 조회하고, pinned Chrome oracle의 1,136-run grid·11 edge controls·expanded digest를 검증한다. 불일치 preview는 16개로 제한한다.
+- Android API 37 ARM64 AVD `emulator-5554`와 iPhone 17 Pro / iOS 26.2 Simulator UDID `ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D`에서 각각 신규 process 3개가 69,120/69,120 hit identity를 기록했다. 기존 13 frame·18 hit sample과 각각 18 PixelCopy/Metal RGBA 표본을 유지했다. 앱 executable/APK hash, runtime revision tuple, screenshot, 원본 log와 surface artifact를 [증거 인덱스](../spec/internal/evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/README.md)에 보존했다.
+- Stale document revision은 Metal/PixelCopy readback 전에 거부되고, 중복 fixture route는 host 초기화 전에 거부됐다. default `spinon-ffi` static archive에서 full-grid marker/oracle 문자열이 빠지고 C13.1 opt-in feature archive에는 들어감을 확인했다.
+- `cargo fmt --all -- --check`, `cargo clippy --locked --workspace --all-targets -- -D warnings`, focused FFI 6/6·renderer 1/1 tests, fixture module boundary 6/6, Android build/AVD capture, iOS Simulator build/capture가 통과했다. 전체 workspace test와 WPT는 실행하지 않았다.
+- [구현 실패 관점 20개](../spec/internal/evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/implementation-review-20.md)와 별도의 [PR 변경 관점 30개](../spec/internal/evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/pr-delta-review-30.md)를 기록한다. 이 구현 slice는 fixture 전용이며 C13.1/C13 완료로 승격하지 않는다.
 
 ## 제외 범위
 
