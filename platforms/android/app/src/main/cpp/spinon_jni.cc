@@ -389,6 +389,23 @@ Java_dev_spinon_bootstrap_GlyphPaintFixtureNativeAdapter_createHost(JNIEnv *, jc
   __android_log_print(ANDROID_LOG_INFO, kTag, "SPINON_C153_HOST=%s", output.data());
   return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
 }
+
+extern "C" JNIEXPORT jlong JNICALL
+Java_dev_spinon_bootstrap_GlyphPaintFixtureNativeAdapter_createHostDocumentTextPaintHost(
+    JNIEnv *, jclass) {
+  std::array<char, 2048> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_c15_3_hostdocument_text_paint_fixture(
+          output.data(), output.size());
+  if (host == nullptr) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C153_HOSTDOCUMENT_HOST_ERROR=%s", output.data());
+    return 0;
+  }
+  __android_log_print(ANDROID_LOG_INFO, kTag,
+                      "SPINON_C153_HOSTDOCUMENT_HOST=%s", output.data());
+  return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
+}
 #endif
 
 #if defined(SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST) && \

@@ -290,6 +290,9 @@ int32_t spinon_runtime_gpu_host_readback_c19_2_offscreen_for_test(
 /* C15.3 고정 글꼴 glyph mask를 WGPU paint command로 제출하는 앱 fixture-test host입니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c15_3_glyph_paint_fixture(
     char *output, size_t output_capacity);
+/* C15.3 fixture 소유 HostDocument text layout을 WGPU glyph paint로 잇는 host입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c15_3_hostdocument_text_paint_fixture(
+    char *output, size_t output_capacity);
 int32_t spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);

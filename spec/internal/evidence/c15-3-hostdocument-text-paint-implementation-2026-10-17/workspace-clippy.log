@@ -1,0 +1,23 @@
+    Checking simd-adler32 v0.3.10
+   Compiling crc32fast v1.5.2
+    Checking adler2 v2.0.1
+    Checking miniz_oxide v0.9.1
+    Checking flate2 v1.1.10
+    Checking miniz_oxide v0.8.9
+    Checking fdeflate v0.3.7
+    Checking spinon-runtime v0.1.0 (/private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/crates/spinon-runtime)
+    Checking png v0.18.1
+    Checking spinon-style-layout-spike v0.1.0 (/private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/spikes/style-layout)
+    Checking spinon-image v0.1.0 (/private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/crates/spinon-image)
+    Checking spinon-style-to-layout v0.1.0 (/private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/crates/spinon-style-to-layout)
+    Checking spinon-render-wgpu v0.1.0 (/private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/crates/spinon-render-wgpu)
+    Checking spinon-ffi v0.1.0 (/private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/crates/spinon-ffi)
+    Checking spinon-style-to-render v0.1.0 (/private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/crates/spinon-style-to-render)
+    Checking spinon-style v0.1.0 (/private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/crates/spinon-style)
+    Checking spinon-layout v0.1.0 (/private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/crates/spinon-layout)
+    Checking spinon-text-layout v0.1.0 (/private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/crates/spinon-text-layout)
+    Checking spinon-core v0.1.0 (/private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/crates/spinon-core)
+    Checking spinon-render v0.1.0 (/private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/crates/spinon-render)
+    Finished `dev` profile [unoptimized] target(s) in 7.45s
+
+clippy_exit=0

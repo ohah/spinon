@@ -29,6 +29,31 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_new_c15_3_glyph_paint_fixture(
 }
 
 #[unsafe(no_mangle)]
+/// Fixture 소유 HostDocument text layout 결과를 WGPU glyph paint로 잇는 host를 만듭니다.
+///
+/// # Safety
+/// `output`은 `output_capacity` 바이트를 쓸 수 있어야 합니다.
+pub unsafe extern "C" fn spinon_runtime_gpu_host_new_c15_3_hostdocument_text_paint_fixture(
+    output: *mut c_char,
+    output_capacity: usize,
+) -> *mut SpinonRuntimeGpuHost {
+    if output.is_null() || output_capacity == 0 {
+        return ptr::null_mut();
+    }
+    let (host, report) = match RuntimeGpuHost::new_c15_3_hostdocument_text_paint_fixture() {
+        Ok(host) => host,
+        Err(error) => {
+            crate::write_report(output, output_capacity, &error);
+            return ptr::null_mut();
+        }
+    };
+    if !crate::write_report(output, output_capacity, &report) {
+        return ptr::null_mut();
+    }
+    Box::into_raw(Box::new(host)).cast::<SpinonRuntimeGpuHost>()
+}
+
+#[unsafe(no_mangle)]
 /// 고정 C19.2 box scene과 C15 glyph raster를 실제 WGPU scene으로 평가합니다.
 ///
 /// # Safety
@@ -118,6 +143,7 @@ mod tests {
     use super::{
         spinon_runtime_gpu_host_eval_c15_3_glyph_paint_fixture,
         spinon_runtime_gpu_host_new_c15_3_glyph_paint_fixture,
+        spinon_runtime_gpu_host_new_c15_3_hostdocument_text_paint_fixture,
         spinon_runtime_gpu_host_request_c15_3_surface_pixels_for_test,
     };
     use std::ptr;
@@ -128,6 +154,15 @@ mod tests {
         assert!(
             unsafe {
                 spinon_runtime_gpu_host_new_c15_3_glyph_paint_fixture(ptr::null_mut(), output.len())
+            }
+            .is_null()
+        );
+        assert!(
+            unsafe {
+                spinon_runtime_gpu_host_new_c15_3_hostdocument_text_paint_fixture(
+                    ptr::null_mut(),
+                    output.len(),
+                )
             }
             .is_null()
         );

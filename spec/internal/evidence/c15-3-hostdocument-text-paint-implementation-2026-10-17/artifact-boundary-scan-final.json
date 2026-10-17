@@ -1,0 +1,32 @@
+{
+  "method": "defined global symbols via nm -gU; exact embedded-font byte subsequence",
+  "artifact_count": 2,
+  "artifacts": [
+    {
+      "path": "/Volumes/ZTSBuild/spinon-c15-3-20261017/target/debug/deps/libspinon_ffi-04350ff7df69014f.rlib",
+      "size_bytes": 55049384,
+      "nm_exit": 0,
+      "hostdocument_fixture_symbol": true,
+      "glyph_fixture_symbol": true,
+      "font_payloads": {
+        "Ahem.ttf": true,
+        "NotoSansKR-VF.ttf": true,
+        "NotoSansArabic-VF.ttf": false,
+        "NotoEmoji-VF.ttf": false
+      }
+    },
+    {
+      "path": "/Volumes/ZTSBuild/spinon-c15-3-20261017/target/debug/deps/libspinon_ffi-dc2b7956fcc246bd.rlib",
+      "size_bytes": 427904,
+      "nm_exit": 0,
+      "hostdocument_fixture_symbol": false,
+      "glyph_fixture_symbol": false,
+      "font_payloads": {
+        "Ahem.ttf": false,
+        "NotoSansKR-VF.ttf": false,
+        "NotoSansArabic-VF.ttf": false,
+        "NotoEmoji-VF.ttf": false
+      }
+    }
+  ]
+}

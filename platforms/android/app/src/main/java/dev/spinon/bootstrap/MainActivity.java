@@ -264,9 +264,12 @@ public final class MainActivity extends Activity {
                 .getBooleanExtra("spinon_c131_overflow_clip_border", false);
         boolean c153GlyphPaintArgument = getIntent()
                 .getBooleanExtra("spinon_c153_glyph_paint", false);
+        boolean c153HostDocumentTextPaintArgument = getIntent()
+                .getBooleanExtra("spinon_c153_hostdocument_text_paint", false);
         boolean c153GlyphPaintRequested = BuildConfig.SPINON_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST
-                && c153GlyphPaintArgument;
-        if (c153GlyphPaintArgument && !BuildConfig.SPINON_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST) {
+                && (c153GlyphPaintArgument || c153HostDocumentTextPaintArgument);
+        if ((c153GlyphPaintArgument || c153HostDocumentTextPaintArgument)
+                && !BuildConfig.SPINON_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST) {
             TextView unavailable = new TextView(this);
             unavailable.setText("C15.3 glyph paint fixture-test 옵션을 켜서 빌드해야 합니다.");
             unavailable.setTextColor(Color.WHITE);

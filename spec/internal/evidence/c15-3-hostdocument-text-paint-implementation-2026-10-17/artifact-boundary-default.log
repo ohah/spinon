@@ -1,0 +1,44 @@
+   Compiling smallvec v1.16.2
+   Compiling parking_lot_core v0.9.12
+   Compiling bitflags v2.13.2
+   Compiling num-traits v0.2.19
+   Compiling parking_lot v0.12.5
+   Compiling icu_normalizer v2.3.0
+   Compiling string_cache v0.11.0
+   Compiling once_cell v1.21.4
+   Compiling read-fonts v0.41.0
+   Compiling hashbrown v0.17.1
+   Compiling cssparser v0.38.0
+   Compiling to_shmem v0.6.0
+   Compiling icu_segmenter v2.3.0
+   Compiling selectors v0.41.0
+   Compiling app_units v0.7.8
+   Compiling euclid v0.22.14
+   Compiling skrifa v0.44.0
+   Compiling idna_adapter v1.2.2
+   Compiling fontique v0.12.0
+   Compiling stylo_malloc_size_of v0.22.0
+   Compiling idna v1.1.0
+   Compiling harfrust v0.12.0
+   Compiling parley_engine v0.12.0
+   Compiling stylo_atoms v0.22.0
+   Compiling url v2.5.8
+   Compiling indexmap v2.14.2
+   Compiling swash v0.2.10
+   Compiling stylo_traits v0.22.0
+   Compiling web_atoms v0.3.0
+   Compiling parley v0.12.0
+   Compiling stylo_dom v0.22.0
+   Compiling num-integer v0.1.47
+   Compiling stylo v0.22.0
+   Compiling spinon-text-layout v0.1.0 (/private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/crates/spinon-text-layout)
+   Compiling taffy v0.14.0
+   Compiling spinon-layout v0.1.0 (/private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/crates/spinon-layout)
+   Compiling spinon-style v0.1.0 (/private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/crates/spinon-style)
+   Compiling spinon-style-to-layout v0.1.0 (/private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/crates/spinon-style-to-layout)
+   Compiling spinon-style-to-render v0.1.0 (/private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/crates/spinon-style-to-render)
+   Compiling spinon-runtime v0.1.0 (/private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/crates/spinon-runtime)
+   Compiling spinon-ffi v0.1.0 (/private/tmp/spinon-c15-3-scroll-tailnet-sync-20261017/crates/spinon-ffi)
+    Finished `dev` profile [unoptimized] target(s) in 33.28s
+
+default_build_exit=0

@@ -108,6 +108,8 @@ struct RuntimeGpuHost {
     c13_3_gesture_state: Option<Arc<C13_3GestureState>>,
     #[cfg(feature = "c15-3-wgpu-glyph-paint-fixture-test")]
     c15_3_glyph_paint_fixture: bool,
+    #[cfg(feature = "c15-3-wgpu-glyph-paint-fixture-test")]
+    c15_3_hostdocument_text_paint_fixture: bool,
     operation: Mutex<()>,
     presentation: PresentationScenes,
     renderer: Mutex<Option<RuntimeRenderer>>,
@@ -202,6 +204,8 @@ impl RuntimeGpuHost {
             c13_3_gesture_state: None,
             #[cfg(feature = "c15-3-wgpu-glyph-paint-fixture-test")]
             c15_3_glyph_paint_fixture: false,
+            #[cfg(feature = "c15-3-wgpu-glyph-paint-fixture-test")]
+            c15_3_hostdocument_text_paint_fixture: false,
             operation: Mutex::new(()),
             presentation: PresentationScenes::new(),
             renderer: Mutex::new(None),
@@ -375,7 +379,10 @@ impl RuntimeGpuHost {
         let scene = self.reapply_c13_3_scroll_state(scene)?;
         #[cfg(feature = "c15-3-wgpu-glyph-paint-fixture-test")]
         let (scene, c15_3_glyph_paint_report) =
-            if self.c15_3_glyph_paint_fixture && !scene.boxes().is_empty() {
+            if self.c15_3_hostdocument_text_paint_fixture && !scene.boxes().is_empty() {
+                fixtures::c15_3_hostdocument_text_paint::attach_hostdocument_text_paint(scene.key())
+                    .map_err(|error| (ERR_LAYOUT, error))?
+            } else if self.c15_3_glyph_paint_fixture && !scene.boxes().is_empty() {
                 fixtures::c15_3::attach_glyph_paint(scene).map_err(|error| (ERR_LAYOUT, error))?
             } else {
                 (scene, String::new())
