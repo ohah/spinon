@@ -51,6 +51,7 @@ use calculation::compute_request_for_block_flex_scroll_gesture;
 use calculation::compute_request_for_c19_box_paint_opacity;
 #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
 use calculation::compute_request_for_root_html_block_paint;
+use calculation::compute_request_for_root_html_default_render;
 #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
 use calculation::compute_request_for_root_html_text_paint;
 use calculation::{
@@ -233,6 +234,10 @@ impl RuntimeUaCascadeCoordinator {
 
     pub(super) fn new_root_html_document() -> Result<Self, String> {
         Self::new_with_computer(Arc::new(compute_request_for_root_html))
+    }
+
+    pub(super) fn new_runtime_gpu_root_html_default_render() -> Result<Self, String> {
+        Self::new_with_computer(Arc::new(compute_request_for_root_html_default_render))
     }
 
     pub(super) fn new_runtime_gpu_registered_properties() -> Result<Self, String> {

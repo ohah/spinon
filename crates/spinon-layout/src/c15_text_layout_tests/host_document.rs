@@ -171,6 +171,7 @@ fn host_document_collects_direct_text_and_inherited_spans_in_source_order() {
             direction: spinon_text_layout::TextDirection::Auto,
             line_break: spinon_text_layout::LineBreakMode::Strict,
             ligatures: spinon_text_layout::LigatureMode::Normal,
+            ..ParagraphStyle::default()
         },
     )]);
     let snapshot = document.snapshot();
@@ -469,6 +470,7 @@ fn host_document_rejects_visible_non_span_element_inside_paragraph() {
             direction: spinon_text_layout::TextDirection::Auto,
             line_break: spinon_text_layout::LineBreakMode::Strict,
             ligatures: spinon_text_layout::LigatureMode::Normal,
+            ..ParagraphStyle::default()
         },
     )]);
 

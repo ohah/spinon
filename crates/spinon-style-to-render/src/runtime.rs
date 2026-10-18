@@ -54,7 +54,12 @@ pub fn build_runtime_render_snapshot(
     let styles_by_node = indexed_styles(styles)?;
     let order = runtime_document_order(document, root, &styles_by_node, styles.profile)?;
     validate_style_node_set(&order.document_nodes, &styles_by_node)?;
-    validate_layout_node_set(&order.document_nodes, &output.layout.frames)?;
+    let layout_nodes = if styles.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+        &order.paint_nodes
+    } else {
+        &order.document_nodes
+    };
+    validate_layout_node_set(layout_nodes, &output.layout.frames)?;
 
     let viewport_css_px = CssSize::new(styles.viewport.width_css_px, styles.viewport.height_css_px)
         .map_err(|_| StyleRenderError::InvalidViewport)?;
@@ -177,6 +182,7 @@ fn runtime_document_order(
     let mut positioned_roots = Vec::new();
     let mut visited = std::collections::BTreeSet::new();
     let mut pending = vec![(root, false)];
+    let root_html_text_profile = profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1;
     while let Some((handle, ancestor_hidden)) = pending.pop() {
         if !visited.insert(handle.id()) {
             return Err(StyleRenderError::DuplicateDocumentNode(handle.id()));
@@ -200,9 +206,10 @@ fn runtime_document_order(
             .ok_or(StyleRenderError::MissingComputedStyle(node.id()))?;
         let hidden =
             ancestor_hidden || style.properties.get("display").map(String::as_str) == Some("none");
+        let display = style.properties.get("display").map(String::as_str);
         document_nodes.push(node.id());
         let absolute = style.properties.get("position").map(String::as_str) == Some("absolute");
-        if !hidden {
+        if !hidden && (!root_html_text_profile || display == Some("block")) {
             visible_nodes.insert(node.id());
             if absolute {
                 positioned_roots.push(handle);
@@ -222,6 +229,14 @@ fn runtime_document_order(
     let mut paint_nodes = flow_paint_preorder(document, root, styles)?;
     for positioned_root in positioned_roots {
         append_positioned_subtree(document, positioned_root, styles, &mut paint_nodes)?;
+    }
+    if root_html_text_profile {
+        paint_nodes.retain(|node| {
+            styles
+                .get(node)
+                .and_then(|style| style.properties.get("display"))
+                .is_some_and(|display| display == "block")
+        });
     }
     let unique_paint_nodes = paint_nodes
         .iter()

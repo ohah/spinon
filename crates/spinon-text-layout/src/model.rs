@@ -103,12 +103,33 @@ pub enum LigatureMode {
     None,
 }
 
+/// C04.12 text runtime에서 CSS `font-style`이 계산한 범위입니다.
+#[derive(Clone, Copy, Debug, Default, PartialEq)]
+pub enum FontStyleMode {
+    #[default]
+    Normal,
+    Italic,
+    Oblique(f32),
+}
+
+impl FontStyleMode {
+    fn is_valid(self) -> bool {
+        match self {
+            Self::Normal | Self::Italic => true,
+            Self::Oblique(angle) => angle.is_finite() && (-90.0..=90.0).contains(&angle),
+        }
+    }
+}
+
 /// 계산된 cascade를 대신하지 않는 내부 fixture 글꼴 입력입니다.
 #[derive(Clone, Debug, PartialEq)]
 pub struct ParagraphStyle {
     pub font_family: String,
     pub font_size: f32,
     pub line_height: f32,
+    pub line_height_is_normal: bool,
+    pub font_weight: f32,
+    pub font_style: FontStyleMode,
     pub white_space: WhiteSpaceMode,
     pub word_break: WordBreakMode,
     pub direction: TextDirection,
@@ -124,10 +145,35 @@ impl ParagraphStyle {
         if !self.font_size.is_finite() || self.font_size <= 0.0 {
             return Err("font-size");
         }
-        if !self.line_height.is_finite() || self.line_height <= 0.0 {
+        if !self.line_height_is_normal && (!self.line_height.is_finite() || self.line_height <= 0.0)
+        {
             return Err("line-height");
         }
+        if !self.font_weight.is_finite() || !(1.0..=1000.0).contains(&self.font_weight) {
+            return Err("font-weight");
+        }
+        if !self.font_style.is_valid() {
+            return Err("font-style");
+        }
         Ok(())
+    }
+}
+
+impl Default for ParagraphStyle {
+    fn default() -> Self {
+        Self {
+            font_family: String::new(),
+            font_size: 0.0,
+            line_height: 0.0,
+            line_height_is_normal: false,
+            font_weight: 400.0,
+            font_style: FontStyleMode::Normal,
+            white_space: WhiteSpaceMode::Normal,
+            word_break: WordBreakMode::Normal,
+            direction: TextDirection::Auto,
+            line_break: LineBreakMode::default(),
+            ligatures: LigatureMode::default(),
+        }
     }
 }
 
@@ -137,6 +183,9 @@ pub struct InlineRunStyle {
     pub font_family: String,
     pub font_size: f32,
     pub line_height: f32,
+    pub line_height_is_normal: bool,
+    pub font_weight: f32,
+    pub font_style: FontStyleMode,
 }
 
 impl InlineRunStyle {
@@ -147,10 +196,30 @@ impl InlineRunStyle {
         if !self.font_size.is_finite() || self.font_size <= 0.0 {
             return Err("font-size");
         }
-        if !self.line_height.is_finite() || self.line_height <= 0.0 {
+        if !self.line_height_is_normal && (!self.line_height.is_finite() || self.line_height <= 0.0)
+        {
             return Err("line-height");
         }
+        if !self.font_weight.is_finite() || !(1.0..=1000.0).contains(&self.font_weight) {
+            return Err("font-weight");
+        }
+        if !self.font_style.is_valid() {
+            return Err("font-style");
+        }
         Ok(())
+    }
+}
+
+impl Default for InlineRunStyle {
+    fn default() -> Self {
+        Self {
+            font_family: String::new(),
+            font_size: 0.0,
+            line_height: 0.0,
+            line_height_is_normal: false,
+            font_weight: 400.0,
+            font_style: FontStyleMode::Normal,
+        }
     }
 }
 

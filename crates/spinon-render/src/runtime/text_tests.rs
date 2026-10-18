@@ -125,6 +125,42 @@ fn text_snapshot_checks_bitmap_geometry_source_owner_and_unique_node() {
 }
 
 #[test]
+fn text_snapshot_keeps_per_glyph_colors_and_rejects_wrong_color_count() {
+    let node = NodeId::new(1).unwrap();
+    let source = key();
+    let red = RuntimeSrgbColor::new(1.0, 0.0, 0.0, 1.0).unwrap();
+    let blue = RuntimeSrgbColor::new(0.0, 0.0, 1.0, 1.0).unwrap();
+    let glyphs = vec![bitmap(), bitmap()];
+    let text = RuntimeRenderText::new_with_glyph_colors(
+        node,
+        source,
+        0.0,
+        0.0,
+        1.0,
+        red,
+        vec![red, blue],
+        CssClip::unconstrained(),
+        glyphs.clone(),
+    )
+    .unwrap();
+    assert_eq!(text.glyph_colors(), Some([red, blue].as_slice()));
+    assert_eq!(
+        RuntimeRenderText::new_with_glyph_colors(
+            node,
+            source,
+            0.0,
+            0.0,
+            1.0,
+            red,
+            vec![red],
+            CssClip::unconstrained(),
+            glyphs,
+        ),
+        Err(RuntimeRenderError::InvalidTextBitmap)
+    );
+}
+
+#[test]
 fn text_paint_command_indices_must_be_complete_and_in_order() {
     let node = NodeId::new(1).unwrap();
     let scene = scene(node);

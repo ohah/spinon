@@ -61,6 +61,7 @@ struct RuntimeGpuHost {
     session: RuntimeSession,
     include_node_frame_report: bool,
     include_paint_order_report: bool,
+    root_html_default_render: bool,
     #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
     root_html_block_paint_fixture: bool,
     #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
@@ -148,6 +149,13 @@ impl RuntimeGpuHost {
         Ok((Self::from_session(session), report))
     }
 
+    fn new_with_root_html(source: &str) -> Result<(Self, String), String> {
+        let (session, report) = RuntimeSession::new_runtime_gpu_with_root_html(source)?;
+        let mut host = Self::from_session(session);
+        host.root_html_default_render = true;
+        Ok((host, report))
+    }
+
     fn from_session(session: RuntimeSession) -> Self {
         Self::from_session_with_frame_report_mode(session, false)
     }
@@ -165,6 +173,7 @@ impl RuntimeGpuHost {
             session,
             include_node_frame_report,
             include_paint_order_report: false,
+            root_html_default_render: false,
             #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
             root_html_block_paint_fixture: false,
             #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
@@ -598,16 +607,28 @@ impl RuntimeGpuHost {
         } else {
             CssColorScheme::Light
         };
-        #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
-        let root_html_fixture =
-            self.root_html_block_paint_fixture || self.root_html_text_paint_fixture;
-        #[cfg(all(
-            feature = "c04-12-root-html-block-paint-fixture-test",
-            not(feature = "c04-12-root-html-text-paint-fixture-test")
-        ))]
-        let root_html_fixture = self.root_html_block_paint_fixture;
-        #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
-        let (revision, root_html_environment_report) = if root_html_fixture {
+        let root_html_environment_active = self.root_html_default_render
+            || {
+                #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
+                {
+                    self.root_html_block_paint_fixture
+                }
+                #[cfg(not(feature = "c04-12-root-html-block-paint-fixture-test"))]
+                {
+                    false
+                }
+            }
+            || {
+                #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+                {
+                    self.root_html_text_paint_fixture
+                }
+                #[cfg(not(feature = "c04-12-root-html-text-paint-fixture-test"))]
+                {
+                    false
+                }
+            };
+        let (revision, root_html_environment_report) = if root_html_environment_active {
             let resolved = self
                 .session
                 .set_root_html_environment(
@@ -640,18 +661,6 @@ impl RuntimeGpuHost {
                 .map_err(|error| (ERR_LAYOUT, format!("CSS runtime 환경 갱신 실패: {error:?}")))?;
             (revision, String::new())
         };
-        #[cfg(not(feature = "c04-12-root-html-block-paint-fixture-test"))]
-        let (revision, root_html_environment_report) = (
-            self.session
-                .set_ua_cascade_environment(
-                    width_css_px,
-                    height_css_px,
-                    device_scale_factor,
-                    environment,
-                )
-                .map_err(|error| (ERR_LAYOUT, format!("CSS runtime 환경 갱신 실패: {error:?}")))?,
-            String::new(),
-        );
         #[cfg(feature = "c18-1-image-paint-fixture-test")]
         let attach_c18_1_images = self.c18_1_image_paint_fixture
             && self

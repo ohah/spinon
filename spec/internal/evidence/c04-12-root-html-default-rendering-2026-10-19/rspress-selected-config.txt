@@ -1,0 +1,24 @@
+import * as path from 'node:path';
+import { defineConfig } from '@rspress/core';
+
+const repositoryRoot = path.resolve(import.meta.dirname, '../..');
+const previewRoot = path.join(repositoryRoot, 'build/spinon/c04-12-default-runtime-preview-20261019');
+const sourceRoot = path.join(previewRoot, 'source/spec');
+
+export default defineConfig({
+  root: sourceRoot,
+  outDir: path.join(previewRoot, 'out-final-verified-20261019'),
+  base: '/spinon/',
+  themeDir: path.join(repositoryRoot, 'packages/docs/theme'),
+  lang: 'ko',
+  title: '스피논 문서',
+  description: '스피논의 구현 상태와 버전별 API 명세',
+  icon: '/icon.svg',
+  logo: '/logo.svg',
+  logoText: '스피논',
+  globalStyles: path.join(sourceRoot, 'styles.css'),
+  markdown: { link: { checkDeadLinks: false } },
+  themeConfig: {
+    socialLinks: [{ icon: 'github', mode: 'link', content: 'https://github.com/ohah/spinon' }],
+  },
+});

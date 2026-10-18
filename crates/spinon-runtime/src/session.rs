@@ -140,6 +140,7 @@ pub struct RootHtmlCanvasSnapshot {
 enum RuntimeCssProfile {
     Default,
     RootHtmlDocument,
+    RootHtmlDefaultRender,
     RuntimeGpu,
     RegisteredPropertiesFixture,
     BlockPaintFixture,
@@ -337,6 +338,17 @@ impl RuntimeSession {
         )
     }
 
+    /// 일반 root HTML을 기본 GPU runtime layout·paint 경로에 연결합니다.
+    pub fn new_runtime_gpu_with_root_html(source: &str) -> Result<(Self, String), String> {
+        let parsed = ParsedRootHtml::parse(source)?;
+        let environment = RootHtmlEnvironmentMetadata::from_document(&parsed);
+        Self::new_with_css_profile_and_root_html(
+            RuntimeCssProfile::RootHtmlDefaultRender,
+            Some(parsed),
+            Some(environment),
+        )
+    }
+
     /// 고정 문서형 Block paint fixture 전용 runtime을 만듭니다.
     #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
     pub fn new_runtime_gpu_root_html_block_paint_fixture(
@@ -458,6 +470,9 @@ impl RuntimeSession {
             RuntimeCssProfile::Default => RuntimeUaCascadeCoordinator::new()?,
             RuntimeCssProfile::RootHtmlDocument => {
                 RuntimeUaCascadeCoordinator::new_root_html_document()?
+            }
+            RuntimeCssProfile::RootHtmlDefaultRender => {
+                RuntimeUaCascadeCoordinator::new_runtime_gpu_root_html_default_render()?
             }
             RuntimeCssProfile::RuntimeGpu => RuntimeUaCascadeCoordinator::new_runtime_gpu()?,
             RuntimeCssProfile::RegisteredPropertiesFixture => {

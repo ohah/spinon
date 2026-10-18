@@ -87,6 +87,7 @@ pub struct RuntimeRenderText {
     origin_y_css_px: f32,
     device_scale_factor: f32,
     color: RuntimeSrgbColor,
+    glyph_colors: Option<Arc<[RuntimeSrgbColor]>>,
     base_clip_css_px: CssClip,
     clip_css_px: CssClip,
     glyphs: Arc<[RuntimeGlyphBitmap]>,
@@ -101,6 +102,59 @@ impl RuntimeRenderText {
         origin_y_css_px: f32,
         device_scale_factor: f32,
         color: RuntimeSrgbColor,
+        clip_css_px: CssClip,
+        glyphs: Vec<RuntimeGlyphBitmap>,
+    ) -> Result<Self, RuntimeRenderError> {
+        Self::new_inner(
+            node_id,
+            source,
+            origin_x_css_px,
+            origin_y_css_px,
+            device_scale_factor,
+            color,
+            None,
+            clip_css_px,
+            glyphs,
+        )
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub fn new_with_glyph_colors(
+        node_id: NodeId,
+        source: RuntimeRenderKey,
+        origin_x_css_px: f32,
+        origin_y_css_px: f32,
+        device_scale_factor: f32,
+        fallback_color: RuntimeSrgbColor,
+        glyph_colors: Vec<RuntimeSrgbColor>,
+        clip_css_px: CssClip,
+        glyphs: Vec<RuntimeGlyphBitmap>,
+    ) -> Result<Self, RuntimeRenderError> {
+        if glyph_colors.len() != glyphs.len() {
+            return Err(RuntimeRenderError::InvalidTextBitmap);
+        }
+        Self::new_inner(
+            node_id,
+            source,
+            origin_x_css_px,
+            origin_y_css_px,
+            device_scale_factor,
+            fallback_color,
+            Some(glyph_colors.into()),
+            clip_css_px,
+            glyphs,
+        )
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    fn new_inner(
+        node_id: NodeId,
+        source: RuntimeRenderKey,
+        origin_x_css_px: f32,
+        origin_y_css_px: f32,
+        device_scale_factor: f32,
+        color: RuntimeSrgbColor,
+        glyph_colors: Option<Arc<[RuntimeSrgbColor]>>,
         clip_css_px: CssClip,
         glyphs: Vec<RuntimeGlyphBitmap>,
     ) -> Result<Self, RuntimeRenderError> {
@@ -128,6 +182,7 @@ impl RuntimeRenderText {
             origin_y_css_px,
             device_scale_factor,
             color,
+            glyph_colors,
             base_clip_css_px: clip_css_px,
             clip_css_px,
             glyphs: glyphs.into(),
@@ -156,6 +211,10 @@ impl RuntimeRenderText {
 
     pub const fn color(&self) -> RuntimeSrgbColor {
         self.color
+    }
+
+    pub fn glyph_colors(&self) -> Option<&[RuntimeSrgbColor]> {
+        self.glyph_colors.as_deref()
     }
 
     pub const fn clip_css_px(&self) -> CssClip {

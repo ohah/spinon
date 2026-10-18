@@ -1,6 +1,12 @@
 use super::{RuntimeGpuHost, SpinonRuntimeGpuHost, raw_host};
 use std::ffi::{CStr, c_char};
 use std::ptr;
+use std::slice;
+use std::str;
+
+#[cfg(test)]
+#[path = "ffi/tests.rs"]
+mod tests;
 
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
 mod fixtures;
@@ -22,6 +28,65 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_new(
         return ptr::null_mut();
     }
     let (host, report) = match RuntimeGpuHost::new() {
+        Ok(host) => host,
+        Err(error) => {
+            crate::write_report(output, output_capacity, &error);
+            return ptr::null_mut();
+        }
+    };
+    if !crate::write_report(output, output_capacity, &report) {
+        return ptr::null_mut();
+    }
+    Box::into_raw(Box::new(host)).cast::<SpinonRuntimeGpuHost>()
+}
+
+#[unsafe(no_mangle)]
+/// UTF-8 root HTML을 파싱해 기본 GPU runtime 렌더 host를 생성합니다.
+///
+/// # Safety
+/// `source`가 null이 아니면 `source_length` 바이트 동안 읽을 수 있어야 합니다. `output`은
+/// `output_capacity` 바이트를 쓸 수 있어야 합니다. 호출이 끝날 때까지 두 버퍼는 유효해야 합니다.
+pub unsafe extern "C" fn spinon_runtime_gpu_host_new_with_root_html(
+    source: *const u8,
+    source_length: usize,
+    output: *mut c_char,
+    output_capacity: usize,
+) -> *mut SpinonRuntimeGpuHost {
+    if output.is_null() || output_capacity == 0 {
+        return ptr::null_mut();
+    }
+    if source.is_null() || source_length == 0 {
+        crate::write_report(
+            output,
+            output_capacity,
+            "root HTML bytes가 비어 있거나 null입니다",
+        );
+        return ptr::null_mut();
+    }
+    if source_length > spinon_runtime::ROOT_HTML_SOURCE_MAX_BYTES {
+        crate::write_report(
+            output,
+            output_capacity,
+            &format!(
+                "root HTML은 UTF-8 기준 {}바이트까지 허용합니다",
+                spinon_runtime::ROOT_HTML_SOURCE_MAX_BYTES
+            ),
+        );
+        return ptr::null_mut();
+    }
+    let source_bytes = unsafe { slice::from_raw_parts(source, source_length) };
+    let source = match str::from_utf8(source_bytes) {
+        Ok(source) => source,
+        Err(error) => {
+            crate::write_report(
+                output,
+                output_capacity,
+                &format!("root HTML UTF-8이 잘못되었습니다: {error}"),
+            );
+            return ptr::null_mut();
+        }
+    };
+    let (host, report) = match RuntimeGpuHost::new_with_root_html(source) {
         Ok(host) => host,
         Err(error) => {
             crate::write_report(output, output_capacity, &error);

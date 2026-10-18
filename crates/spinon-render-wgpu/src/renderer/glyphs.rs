@@ -331,7 +331,6 @@ fn append_text_vertices(
 ) -> Result<(), String> {
     let scale = f64::from(text.device_scale_factor());
     let clip = text.clip_css_px();
-    let color = text.color();
     let encode = |channel| {
         if encode_srgb_color {
             srgb_to_linear(channel)
@@ -339,16 +338,12 @@ fn append_text_vertices(
             channel
         }
     };
-    let color = [
-        encode(color.red()),
-        encode(color.green()),
-        encode(color.blue()),
-        color.alpha(),
-    ];
     vertices
         .try_reserve(text.glyphs().len().saturating_mul(6))
         .map_err(|_| "WGPU glyph 정점 목록을 늘리지 못했습니다".to_owned())?;
-    for (glyph, (atlas_x, atlas_y)) in text.glyphs().iter().zip(placements) {
+    for (glyph_index, (glyph, (atlas_x, atlas_y))) in
+        text.glyphs().iter().zip(placements).enumerate()
+    {
         let left_px = i64::from(glyph.origin_x_px()) + i64::from(glyph.left_px());
         let top_px = i64::from(glyph.baseline_y_px()) + i64::from(glyph.top_px());
         let left = f64::from(text.origin_x_css_px()) + left_px as f64 / scale;
@@ -385,6 +380,16 @@ fn append_text_vertices(
         if visible_right <= visible_left || visible_bottom <= visible_top {
             continue;
         }
+        let glyph_color = text
+            .glyph_colors()
+            .and_then(|colors| colors.get(glyph_index).copied())
+            .unwrap_or_else(|| text.color());
+        let color = [
+            encode(glyph_color.red()),
+            encode(glyph_color.green()),
+            encode(glyph_color.blue()),
+            glyph_color.alpha(),
+        ];
         let x0 = mapping.x_to_ndc_f64(visible_left)?;
         let x1 = mapping.x_to_ndc_f64(visible_right)?;
         let y0 = mapping.y_to_ndc_f64(visible_top)?;

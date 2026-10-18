@@ -20,6 +20,7 @@ fn paragraph_style_rejects_invalid_family_and_non_positive_or_non_finite_metrics
                 direction: crate::TextDirection::Auto,
                 line_break: crate::LineBreakMode::Strict,
                 ligatures: crate::LigatureMode::Normal,
+                ..ParagraphStyle::default()
             },
             "font-family",
         ),
@@ -33,6 +34,7 @@ fn paragraph_style_rejects_invalid_family_and_non_positive_or_non_finite_metrics
                 direction: crate::TextDirection::Auto,
                 line_break: crate::LineBreakMode::Strict,
                 ligatures: crate::LigatureMode::Normal,
+                ..ParagraphStyle::default()
             },
             "font-size",
         ),
@@ -46,6 +48,7 @@ fn paragraph_style_rejects_invalid_family_and_non_positive_or_non_finite_metrics
                 direction: crate::TextDirection::Auto,
                 line_break: crate::LineBreakMode::Strict,
                 ligatures: crate::LigatureMode::Normal,
+                ..ParagraphStyle::default()
             },
             "font-size",
         ),
@@ -59,6 +62,7 @@ fn paragraph_style_rejects_invalid_family_and_non_positive_or_non_finite_metrics
                 direction: crate::TextDirection::Auto,
                 line_break: crate::LineBreakMode::Strict,
                 ligatures: crate::LigatureMode::Normal,
+                ..ParagraphStyle::default()
             },
             "line-height",
         ),
@@ -72,6 +76,7 @@ fn paragraph_style_rejects_invalid_family_and_non_positive_or_non_finite_metrics
                 direction: crate::TextDirection::Auto,
                 line_break: crate::LineBreakMode::Strict,
                 ligatures: crate::LigatureMode::Normal,
+                ..ParagraphStyle::default()
             },
             "line-height",
         ),

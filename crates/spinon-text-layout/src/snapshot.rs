@@ -2,7 +2,7 @@ use std::{ops::Range, sync::Arc};
 
 use spinon_core::NodeId;
 
-use crate::{LigatureMode, LineBreakMode, TextDirection};
+use crate::{FontStyleMode, LigatureMode, LineBreakMode, TextDirection};
 
 /// 같은 font registry 입력에서 생성한 revision입니다.
 #[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
@@ -73,7 +73,7 @@ pub struct TextGlyph {
 }
 
 /// 한 줄 안의 shaped font run입니다.
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Clone, Debug)]
 pub struct TextRun {
     pub line_index: usize,
     pub text_range: Range<usize>,
@@ -83,12 +83,44 @@ pub struct TextRun {
     /// ParagraphStyle 또는 가장 안쪽 inline owner가 요청한 family입니다.
     pub font_family: String,
     pub font_size: f32,
+    pub font_weight: f32,
+    pub font_style: FontStyleMode,
     /// Paragraph top 기준 run baseline과 inline text box line-height입니다.
     pub baseline: f32,
     pub line_height: f32,
     pub font_metrics: FontMetricsSnapshot,
+    /// Parley가 이 face에 선택한 variation coordinates입니다.
+    pub(crate) normalized_coords: Vec<i16>,
+    /// Parley가 선택한 face가 요청 굵기보다 가벼울 때의 faux bold입니다.
+    pub(crate) synthesis_embolden: bool,
+    /// Parley가 선택한 face에 적용할 faux oblique 각도입니다.
+    pub(crate) synthesis_skew_degrees: Option<f32>,
     pub sources: Vec<TextSourceRange>,
     pub glyphs: Vec<TextGlyph>,
+    pub(crate) font_data: parley::FontData,
+}
+
+impl PartialEq for TextRun {
+    fn eq(&self, other: &Self) -> bool {
+        self.line_index == other.line_index
+            && self.text_range == other.text_range
+            && self.cluster_range == other.cluster_range
+            && self.is_rtl == other.is_rtl
+            && self.font_family == other.font_family
+            && self.font_size == other.font_size
+            && self.font_weight == other.font_weight
+            && self.font_style == other.font_style
+            && self.baseline == other.baseline
+            && self.line_height == other.line_height
+            && self.font_metrics == other.font_metrics
+            && self.normalized_coords == other.normalized_coords
+            && self.synthesis_embolden == other.synthesis_embolden
+            && self.synthesis_skew_degrees == other.synthesis_skew_degrees
+            && self.sources == other.sources
+            && self.glyphs == other.glyphs
+            && self.font_data.index == other.font_data.index
+            && self.font_data.data.data() == other.font_data.data.data()
+    }
 }
 
 /// span 또는 text node의 한 줄 조각입니다.

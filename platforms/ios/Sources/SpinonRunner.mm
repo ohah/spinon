@@ -728,6 +728,35 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 }
 
++ (uint64_t)createRuntimeGpuHostWithRootHTML:(NSString *)source {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  NSData *sourceData = [source dataUsingEncoding:NSUTF8StringEncoding];
+  if (sourceData == nil || sourceData.length == 0) {
+    os_log_error(OS_LOG_DEFAULT,
+                 "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_HOST_ERROR=empty_source");
+    return 0;
+  }
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_with_root_html(
+      static_cast<const uint8_t *>(sourceData.bytes), sourceData.length,
+      output.data(), output.size());
+  if (host == nullptr) {
+    os_log_error(OS_LOG_DEFAULT,
+                 "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_HOST_ERROR=%{public}s",
+                 output.data());
+    return 0;
+  }
+  os_log(OS_LOG_DEFAULT,
+         "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_HOST=%{public}s", output.data());
+  return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
+#else
+  (void)source;
+  os_log_error(OS_LOG_DEFAULT,
+               "SPINON_C0410_DISABLED rebuild with SPINON_ENABLE_C04_RUNTIME_GPU=1");
+  return 0;
+#endif
+}
+
 + (uint64_t)createRuntimeGpuHostWithBlockPaintFixture {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
   std::array<char, 1024> output{};

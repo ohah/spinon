@@ -1,0 +1,1112 @@
+{
+  "title": "C04.12 root HTML default runtime Tailnet roadmap preview sync",
+  "generated_at": "2026-10-18T16:32:04Z",
+  "preview_url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "server_pid": 1191,
+  "server_port": "127.0.0.1:8768",
+  "build_scope": "Selected-doc RSPress 2.0.22 plus linked raw evidence and fixture; copy-only; no deletions; no Pages workflow",
+  "source_build": "build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019",
+  "original_backup_root": "build/spinon/c04-12-default-runtime-preview-20261019/preview-backup",
+  "final_sync_backup_root": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019",
+  "manifest_self_hash_excluded": true,
+  "integrity_notes": "SHA256SUMS excludes itself and this manifest; this manifest records the SHA256SUMS digest.",
+  "manifest_self_path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/tailnet-sync.json",
+  "agent_browser_validation": {
+    "status": "verified after final sync",
+    "verified_at": "2026-10-18T16:32:04Z",
+    "roadmap_row": true,
+    "roadmap_screenshot_links": "4/4 HTTP 200 image/png",
+    "evidence_page_relative_links": "45/45 HTTP 200",
+    "inline_images": "5/5 loaded: site logo 150x150; Android 1080x2400 light/dark; iOS 1206x2622 light/dark",
+    "browser_screenshots": [
+      "tailnet-roadmap-agent-browser.png",
+      "tailnet-evidence-agent-browser.png"
+    ]
+  },
+  "total_paths": 107,
+  "total_bytes": 18904036,
+  "counts": {
+    "created": 9,
+    "replaced": 33,
+    "unchanged": 65
+  },
+  "files": [
+    {
+      "path": "404.html",
+      "source": "rspress",
+      "bytes": 8512,
+      "previous_sha256": "ee91d24fe43f4f31e70e5c569555b6dcd98749bfdd291a2ce938b2dbe28cb635",
+      "destination_before_sha256": "ee91d24fe43f4f31e70e5c569555b6dcd98749bfdd291a2ce938b2dbe28cb635",
+      "sha256": "02fa87a104d452c9496ba5fc713c563e0038de762db2e684fb6bc98edcec2518",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/404.html"
+    },
+    {
+      "path": "README.html",
+      "source": "rspress",
+      "bytes": 29886,
+      "previous_sha256": "2d8d59f52b21389d56f2427bcaff107c72af167cb53cb2b9127c2201024c7b92",
+      "destination_before_sha256": "2d8d59f52b21389d56f2427bcaff107c72af167cb53cb2b9127c2201024c7b92",
+      "sha256": "c45f3536da9906ac66e6962053ab73fbacd7b84414b68e3443218427177d99e3",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/README.html"
+    },
+    {
+      "path": "STATUS.html",
+      "source": "rspress",
+      "bytes": 376657,
+      "previous_sha256": "e7e095771acaf71d9e75894f4a61d743d7e99ec3ccd35362ea7bc589e8615320",
+      "destination_before_sha256": "e7e095771acaf71d9e75894f4a61d743d7e99ec3ccd35362ea7bc589e8615320",
+      "sha256": "11f125c2c4945628162810599faa90c03877be7df97fdfdfbe7f75e32547de34",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/STATUS.html"
+    },
+    {
+      "path": "c10-3-3-android-physical-2026-10-11.png",
+      "source": "rspress",
+      "bytes": 194109,
+      "previous_sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775",
+      "destination_before_sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775",
+      "sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-depth-safety-2026-10-11.png",
+      "source": "rspress",
+      "bytes": 72745,
+      "previous_sha256": "33704756e2d8758d73165b63d9fa67977e2c73965d057263d45821c7a416fdae",
+      "destination_before_sha256": "33704756e2d8758d73165b63d9fa67977e2c73965d057263d45821c7a416fdae",
+      "sha256": "33704756e2d8758d73165b63d9fa67977e2c73965d057263d45821c7a416fdae",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-depth-safety-matrix-2026-10-11.png",
+      "source": "rspress",
+      "bytes": 71213,
+      "previous_sha256": "db8f307c59f677cde715075c0efad8ff9056bd7d39a424b5f912da326a1f06cc",
+      "destination_before_sha256": "db8f307c59f677cde715075c0efad8ff9056bd7d39a424b5f912da326a1f06cc",
+      "sha256": "db8f307c59f677cde715075c0efad8ff9056bd7d39a424b5f912da326a1f06cc",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-emulator-2026-10-11.log",
+      "source": "rspress",
+      "bytes": 6079,
+      "previous_sha256": "77adad2002dbeb251d90ce58ba3778e16fd4571601c90b4de407ba9db22b8259",
+      "destination_before_sha256": "77adad2002dbeb251d90ce58ba3778e16fd4571601c90b4de407ba9db22b8259",
+      "sha256": "77adad2002dbeb251d90ce58ba3778e16fd4571601c90b4de407ba9db22b8259",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-emulator.png",
+      "source": "rspress",
+      "bytes": 79987,
+      "previous_sha256": "86d8840dc425d99b7cf7e161ef17089d68bc148da8bb7cafe892cf654201f8e5",
+      "destination_before_sha256": "86d8840dc425d99b7cf7e161ef17089d68bc148da8bb7cafe892cf654201f8e5",
+      "sha256": "86d8840dc425d99b7cf7e161ef17089d68bc148da8bb7cafe892cf654201f8e5",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.json",
+      "source": "rspress",
+      "bytes": 926,
+      "previous_sha256": "4b0f514d3f6b40cdb2dad06a089641c8cd0af8512669265ad9d5f5b9c2a16be2",
+      "destination_before_sha256": "4b0f514d3f6b40cdb2dad06a089641c8cd0af8512669265ad9d5f5b9c2a16be2",
+      "sha256": "4b0f514d3f6b40cdb2dad06a089641c8cd0af8512669265ad9d5f5b9c2a16be2",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.log",
+      "source": "rspress",
+      "bytes": 45719,
+      "previous_sha256": "b8f1ed1a8f1bae6d08202e44ee5e24e4c3befa916c5262a5915f6cdf664f6eca",
+      "destination_before_sha256": "b8f1ed1a8f1bae6d08202e44ee5e24e4c3befa916c5262a5915f6cdf664f6eca",
+      "sha256": "b8f1ed1a8f1bae6d08202e44ee5e24e4c3befa916c5262a5915f6cdf664f6eca",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.png",
+      "source": "rspress",
+      "bytes": 71121,
+      "previous_sha256": "a56c210a9b45f2289e4595b86430a496cfabc8177f21499ee5d63405ca45b23f",
+      "destination_before_sha256": "a56c210a9b45f2289e4595b86430a496cfabc8177f21499ee5d63405ca45b23f",
+      "sha256": "a56c210a9b45f2289e4595b86430a496cfabc8177f21499ee5d63405ca45b23f",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.log",
+      "source": "rspress",
+      "bytes": 43037,
+      "previous_sha256": "23920b6b1a2a274e609d028b4be8c50cb3811f82a414a95a7820b556390e7bf0",
+      "destination_before_sha256": "23920b6b1a2a274e609d028b4be8c50cb3811f82a414a95a7820b556390e7bf0",
+      "sha256": "23920b6b1a2a274e609d028b4be8c50cb3811f82a414a95a7820b556390e7bf0",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.png",
+      "source": "rspress",
+      "bytes": 70563,
+      "previous_sha256": "dc5b919381d4fe3f71e564a1f24953a99446fd92d6902a4de0f8ee79eb9c2aa6",
+      "destination_before_sha256": "dc5b919381d4fe3f71e564a1f24953a99446fd92d6902a4de0f8ee79eb9c2aa6",
+      "sha256": "dc5b919381d4fe3f71e564a1f24953a99446fd92d6902a4de0f8ee79eb9c2aa6",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.log",
+      "source": "rspress",
+      "bytes": 42930,
+      "previous_sha256": "967b0572b40411b115e9a7ddf02f424a2e69948ec24d9ea5dda3158650b5269b",
+      "destination_before_sha256": "967b0572b40411b115e9a7ddf02f424a2e69948ec24d9ea5dda3158650b5269b",
+      "sha256": "967b0572b40411b115e9a7ddf02f424a2e69948ec24d9ea5dda3158650b5269b",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.png",
+      "source": "rspress",
+      "bytes": 71247,
+      "previous_sha256": "183b3e38acf0bdd449a2d8613b2ce361afff558a8fec62a8c7a6aeb7deed28f5",
+      "destination_before_sha256": "183b3e38acf0bdd449a2d8613b2ce361afff558a8fec62a8c7a6aeb7deed28f5",
+      "sha256": "183b3e38acf0bdd449a2d8613b2ce361afff558a8fec62a8c7a6aeb7deed28f5",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-android-sm-s731n-android16-vulkan.png",
+      "source": "rspress",
+      "bytes": 110882,
+      "previous_sha256": "a60c2db2fa7ad194c9a210147c3827ed0ee11e831bf168da5297eb3df8a60dd4",
+      "destination_before_sha256": "a60c2db2fa7ad194c9a210147c3827ed0ee11e831bf168da5297eb3df8a60dd4",
+      "sha256": "a60c2db2fa7ad194c9a210147c3827ed0ee11e831bf168da5297eb3df8a60dd4",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-ios-iphone-17-pro-depth-safety-2026-10-11.png",
+      "source": "rspress",
+      "bytes": 142385,
+      "previous_sha256": "bef6d91b248a580d120d0b47df26800b2ed218addd94674409deaecfc2eaf814",
+      "destination_before_sha256": "bef6d91b248a580d120d0b47df26800b2ed218addd94674409deaecfc2eaf814",
+      "sha256": "bef6d91b248a580d120d0b47df26800b2ed218addd94674409deaecfc2eaf814",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-ios-iphone-17-pro-simulator.png",
+      "source": "rspress",
+      "bytes": 143083,
+      "previous_sha256": "650f17bb3edda780d32f53f3980f417b7c5b340d862865ef5e0b4250091e372b",
+      "destination_before_sha256": "650f17bb3edda780d32f53f3980f417b7c5b340d862865ef5e0b4250091e372b",
+      "sha256": "650f17bb3edda780d32f53f3980f417b7c5b340d862865ef5e0b4250091e372b",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-runtime-evidence.html",
+      "source": "rspress",
+      "bytes": 14589,
+      "previous_sha256": "64b118c6a84e690b4722d1e75d8b4e6d31588919e5b4a51a229e96808698aee7",
+      "destination_before_sha256": "64b118c6a84e690b4722d1e75d8b4e6d31588919e5b4a51a229e96808698aee7",
+      "sha256": "64b118c6a84e690b4722d1e75d8b4e6d31588919e5b4a51a229e96808698aee7",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "c12-4-wpt-official-run-2026-10-11.log",
+      "source": "rspress",
+      "bytes": 356,
+      "previous_sha256": "9f9b4bf38f27fef6cb27d720726389f1bae382e88a383919e26dcb18cbfe6fab",
+      "destination_before_sha256": "9f9b4bf38f27fef6cb27d720726389f1bae382e88a383919e26dcb18cbfe6fab",
+      "sha256": "9f9b4bf38f27fef6cb27d720726389f1bae382e88a383919e26dcb18cbfe6fab",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "icon.svg",
+      "source": "rspress",
+      "bytes": 638,
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "destination_before_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0077-c04-12-root-html-document.html",
+      "source": "rspress",
+      "bytes": 53932,
+      "previous_sha256": "7a0160b5f3ffb7feca1281996dbf531bb4e6c6a66f57cfd13db0b0ad4f18bae6",
+      "destination_before_sha256": "7a0160b5f3ffb7feca1281996dbf531bb4e6c6a66f57cfd13db0b0ad4f18bae6",
+      "sha256": "03d8381dd5482d4687c8b7fe0d0bc37ac4aa7908c4d2c0def89d82ee0c18c267",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/0077-c04-12-root-html-document.html"
+    },
+    {
+      "path": "internal/0080-c04-12-root-html-direct-text-paint.html",
+      "source": "rspress",
+      "bytes": 38701,
+      "previous_sha256": "ffad1d5635385fe058d7234898f17a3600e247f61c6e5c1867f947bd3761a793",
+      "destination_before_sha256": "ffad1d5635385fe058d7234898f17a3600e247f61c6e5c1867f947bd3761a793",
+      "sha256": "596ef481f140b7d22f4dec8ad9df89388f8805596d85b2a57efd25802a4a450d",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/0080-c04-12-root-html-direct-text-paint.html"
+    },
+    {
+      "path": "internal/0081-c04-12-root-html-default-runtime.html",
+      "source": "rspress",
+      "bytes": 30031,
+      "previous_sha256": "20f0b4c0e7ba8b18b0976521658c72154f018a2e69fb5406222d0e26802731c7",
+      "destination_before_sha256": "20f0b4c0e7ba8b18b0976521658c72154f018a2e69fb5406222d0e26802731c7",
+      "sha256": "4ac1b90df9b89c34082d41edbf904e333658dacff2071038027bbf5d47f0296d",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/0081-c04-12-root-html-default-runtime.html"
+    },
+    {
+      "path": "internal/README.html",
+      "source": "rspress",
+      "bytes": 172788,
+      "previous_sha256": "47d26bf91b35e8443b7b3ca6f20cdd2f0a4a54f38e2d3dc13e673fc9edffae47",
+      "destination_before_sha256": "47d26bf91b35e8443b7b3ca6f20cdd2f0a4a54f38e2d3dc13e673fc9edffae47",
+      "sha256": "f2e58bfdfcce9d1bbb3c0bb474c9270a7309dfc5f38b26a1bfaca33c57092573",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/README.html"
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/README.html",
+      "source": "rspress",
+      "bytes": 45117,
+      "previous_sha256": "467de59361a29f095d3b811ad97ed04d84763bfb387a72ae11a9347ab1da4596",
+      "destination_before_sha256": "467de59361a29f095d3b811ad97ed04d84763bfb387a72ae11a9347ab1da4596",
+      "sha256": "b523ba8cae787ea1d0cc83d3a7f41e5727f54f6261c443600c8703769c2604fa",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/README.html"
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/README.md",
+      "source": "raw-evidence",
+      "bytes": 9197,
+      "previous_sha256": "aba5cb8eaa939b7cc388de3825979474ece28aabe232c65f8c7004d8148bbb3a",
+      "destination_before_sha256": "aba5cb8eaa939b7cc388de3825979474ece28aabe232c65f8c7004d8148bbb3a",
+      "sha256": "dc2f8a204ae5521383ff732a0c2fddfc30ba768c87d06b4dcfd2aef2d2684439",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/README.md"
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/SHA256SUMS",
+      "source": "raw-evidence",
+      "bytes": 4184,
+      "previous_sha256": "a4cb9a75e5be8df068f24cc59c1234fa9960acde894cb307f43dc1ccae8c49ea",
+      "destination_before_sha256": "a4cb9a75e5be8df068f24cc59c1234fa9960acde894cb307f43dc1ccae8c49ea",
+      "sha256": "eff032753d9ea48ca9375995baaecf180330760a416b08bbd3b3bd895f7aa237",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/SHA256SUMS"
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/android/build.log",
+      "source": "raw-evidence",
+      "bytes": 4950,
+      "previous_sha256": "884595aebc8bebd36d762135a6417672a62191bbc46b80818b96bf019319e61c",
+      "destination_before_sha256": "884595aebc8bebd36d762135a6417672a62191bbc46b80818b96bf019319e61c",
+      "sha256": "884595aebc8bebd36d762135a6417672a62191bbc46b80818b96bf019319e61c",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/android/logcat-dark.txt",
+      "source": "raw-evidence",
+      "bytes": 20314,
+      "previous_sha256": "bacbf9179f356c7b575f997191c844d86104aab2133cf9cfe20ef4203392f2cc",
+      "destination_before_sha256": "bacbf9179f356c7b575f997191c844d86104aab2133cf9cfe20ef4203392f2cc",
+      "sha256": "f055d8a8cc2d919cb7fed3003500b033203e8a150baaa27a97b3a7e691fd9d02",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/android/logcat-dark.txt"
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/android/logcat.txt",
+      "source": "raw-evidence",
+      "bytes": 6517,
+      "previous_sha256": "88c504892a5f924f00a0782c87eeb20de664ec0157aab3a9e053b39e3562506d",
+      "destination_before_sha256": "88c504892a5f924f00a0782c87eeb20de664ec0157aab3a9e053b39e3562506d",
+      "sha256": "88c504892a5f924f00a0782c87eeb20de664ec0157aab3a9e053b39e3562506d",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/android/simulator-screen-dark.png",
+      "source": "raw-evidence",
+      "bytes": 94008,
+      "previous_sha256": "99ca23abf0a9861f6cb317c72ba31eb4b6aaab9440ed579cff2b0b5382eafb98",
+      "destination_before_sha256": "99ca23abf0a9861f6cb317c72ba31eb4b6aaab9440ed579cff2b0b5382eafb98",
+      "sha256": "99ca23abf0a9861f6cb317c72ba31eb4b6aaab9440ed579cff2b0b5382eafb98",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/android/simulator-screen.png",
+      "source": "raw-evidence",
+      "bytes": 94675,
+      "previous_sha256": "88f557abdd92c4898b67d402b83f6294c17807ffe6a11cf4f9ac80203635b56e",
+      "destination_before_sha256": "88f557abdd92c4898b67d402b83f6294c17807ffe6a11cf4f9ac80203635b56e",
+      "sha256": "88f557abdd92c4898b67d402b83f6294c17807ffe6a11cf4f9ac80203635b56e",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/artifact-boundary-fixture-build.log",
+      "source": "raw-evidence",
+      "bytes": 72,
+      "previous_sha256": "8c233a54790c4800d3dd585436af679aa838da259bfdb129412e2d51cdb75cdc",
+      "destination_before_sha256": "8c233a54790c4800d3dd585436af679aa838da259bfdb129412e2d51cdb75cdc",
+      "sha256": "8c233a54790c4800d3dd585436af679aa838da259bfdb129412e2d51cdb75cdc",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/artifact-boundary-product-build.log",
+      "source": "raw-evidence",
+      "bytes": 72,
+      "previous_sha256": "59639588a6f1826f129cbcd121edc07279dab94786f5fa5bde6b3439b2e845cc",
+      "destination_before_sha256": "59639588a6f1826f129cbcd121edc07279dab94786f5fa5bde6b3439b2e845cc",
+      "sha256": "59639588a6f1826f129cbcd121edc07279dab94786f5fa5bde6b3439b2e845cc",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/artifact-boundary.txt",
+      "source": "raw-evidence",
+      "bytes": 2199,
+      "previous_sha256": "f34b7860c25bf30324af191d53f883420e019755f2936e9db7db4239648a81e6",
+      "destination_before_sha256": "f34b7860c25bf30324af191d53f883420e019755f2936e9db7db4239648a81e6",
+      "sha256": "f34b7860c25bf30324af191d53f883420e019755f2936e9db7db4239648a81e6",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/fixture-boundary-test.log",
+      "source": "raw-evidence",
+      "bytes": 83,
+      "previous_sha256": "c21fc8a6d5fd356f7d25dad7f4d1cada20024774735ac003b3c397eae4de6e64",
+      "destination_before_sha256": "c21fc8a6d5fd356f7d25dad7f4d1cada20024774735ac003b3c397eae4de6e64",
+      "sha256": "c21fc8a6d5fd356f7d25dad7f4d1cada20024774735ac003b3c397eae4de6e64",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/implementation-review-20.html",
+      "source": "rspress",
+      "bytes": 34228,
+      "previous_sha256": "856b55fb7aa95a4b07c88ddf4495a9237ddb05c9563b9c0ee0c0c748e56ecb1e",
+      "destination_before_sha256": "856b55fb7aa95a4b07c88ddf4495a9237ddb05c9563b9c0ee0c0c748e56ecb1e",
+      "sha256": "ce9da382b509f65cb35102702682a55ac2ddf66a7c2c051a2fd8e176efc33062",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/implementation-review-20.html"
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/implementation-review-20.md",
+      "source": "raw-evidence",
+      "bytes": 8540,
+      "previous_sha256": "d08e303f32493eb2bf65da39cce2ad43de97d7c752709aeceb46d36284575e53",
+      "destination_before_sha256": "d08e303f32493eb2bf65da39cce2ad43de97d7c752709aeceb46d36284575e53",
+      "sha256": "d08e303f32493eb2bf65da39cce2ad43de97d7c752709aeceb46d36284575e53",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/ios/build.log",
+      "source": "raw-evidence",
+      "bytes": 64336,
+      "previous_sha256": "91b995c3fcfe27eb6887e44a4305bc22fe89b92ac8b3fab8f2cede4e0f08ad5a",
+      "destination_before_sha256": "91b995c3fcfe27eb6887e44a4305bc22fe89b92ac8b3fab8f2cede4e0f08ad5a",
+      "sha256": "edbf0a2e75646ff13194158ea8647fc6cb34038338941379c1401fed7f5cfd03",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/ios/build.log"
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/ios/simulator-screen-dark.png",
+      "source": "raw-evidence",
+      "bytes": 155751,
+      "previous_sha256": "4c74d6d2dde36a8e3d2fdcebeaed0a0d8f3cdd50f7d56304c75c9de0a1eb107b",
+      "destination_before_sha256": "4c74d6d2dde36a8e3d2fdcebeaed0a0d8f3cdd50f7d56304c75c9de0a1eb107b",
+      "sha256": "4c74d6d2dde36a8e3d2fdcebeaed0a0d8f3cdd50f7d56304c75c9de0a1eb107b",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/ios/simulator-screen.png",
+      "source": "raw-evidence",
+      "bytes": 157418,
+      "previous_sha256": "743dc660a394b58a35f24ab0277468d451e95611381851be66fc0a2c01b27646",
+      "destination_before_sha256": "743dc660a394b58a35f24ab0277468d451e95611381851be66fc0a2c01b27646",
+      "sha256": "743dc660a394b58a35f24ab0277468d451e95611381851be66fc0a2c01b27646",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/ios/unified-log.txt",
+      "source": "raw-evidence",
+      "bytes": 5265,
+      "previous_sha256": "143561db39c355de14ea82fb40e96f00bbe51b8d829d3d858cce6b96d8dda55c",
+      "destination_before_sha256": "143561db39c355de14ea82fb40e96f00bbe51b8d829d3d858cce6b96d8dda55c",
+      "sha256": "143561db39c355de14ea82fb40e96f00bbe51b8d829d3d858cce6b96d8dda55c",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/pr-delta-review-30.html",
+      "source": "rspress",
+      "bytes": 36756,
+      "previous_sha256": "98dc59b0df7dd5f55c8aacfcb1642964d5828cfd628c893592078127aaf06bc5",
+      "destination_before_sha256": "98dc59b0df7dd5f55c8aacfcb1642964d5828cfd628c893592078127aaf06bc5",
+      "sha256": "ead9dadd987b254ae9a7054a24d0658ce7d97f26b7c2e5e9c6d2c70cb3c3d0b0",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/pr-delta-review-30.html"
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/pr-delta-review-30.md",
+      "source": "raw-evidence",
+      "bytes": 10915,
+      "previous_sha256": "092c000fe7191d756c2bb79411bc630aaa8c89ecb1c648883f8a3a7acc3b7f48",
+      "destination_before_sha256": "092c000fe7191d756c2bb79411bc630aaa8c89ecb1c648883f8a3a7acc3b7f48",
+      "sha256": "092c000fe7191d756c2bb79411bc630aaa8c89ecb1c648883f8a3a7acc3b7f48",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/related-packages-test.log",
+      "source": "raw-evidence",
+      "bytes": 95932,
+      "previous_sha256": "516653c2a2ee37b08f2f413aef8d23e21b98f4d36fb999101e79795bbc7e2e8c",
+      "destination_before_sha256": "516653c2a2ee37b08f2f413aef8d23e21b98f4d36fb999101e79795bbc7e2e8c",
+      "sha256": "9dfcc870e57936326f5e27e8c68b1c8c302490471a2c1a1dd748de677d38f1ab",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/related-packages-test.log"
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/root-html-ffi-input-test.log",
+      "source": "raw-evidence",
+      "bytes": 1097,
+      "previous_sha256": "9a04ad76339001823369cc9bf63e8fc4c2c359d78a26b3d134d8e16b05453537",
+      "destination_before_sha256": "9a04ad76339001823369cc9bf63e8fc4c2c359d78a26b3d134d8e16b05453537",
+      "sha256": "42539d2c83be7a434a304d777373eb5a36f37a5f2db3cd5bb3e56e2c41506dbc",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/root-html-ffi-input-test.log"
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/root-html-fixture-test.log",
+      "source": "raw-evidence",
+      "bytes": 1159,
+      "previous_sha256": "19dcf24f68e2ba6434878a2d69673bc241f1b84837825c4815ad28434b77eeaf",
+      "destination_before_sha256": "19dcf24f68e2ba6434878a2d69673bc241f1b84837825c4815ad28434b77eeaf",
+      "sha256": "fc1e98bf52b0d0d8bfcacdf860a76d473b263bf72357bfea28dcdbb669aef824",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/root-html-fixture-test.log"
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/root-html-product-check.log",
+      "source": "raw-evidence",
+      "bytes": 708,
+      "previous_sha256": "3f506a269b3f3860727f9dae272fef4dfff7cc5d7a41b5182ee002b8ab121ff4",
+      "destination_before_sha256": "3f506a269b3f3860727f9dae272fef4dfff7cc5d7a41b5182ee002b8ab121ff4",
+      "sha256": "3f506a269b3f3860727f9dae272fef4dfff7cc5d7a41b5182ee002b8ab121ff4",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/root-html-runtime-test.log",
+      "source": "raw-evidence",
+      "bytes": 933,
+      "previous_sha256": "19b291bfd285450ac1e2d30373ebde8634bcf80cf1ded7c1e2b8eb70433792e0",
+      "destination_before_sha256": "19b291bfd285450ac1e2d30373ebde8634bcf80cf1ded7c1e2b8eb70433792e0",
+      "sha256": "321ee898a129e264f5a7b6b293e3481f47f2ef35409492f346390a55739e15f9",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/root-html-runtime-test.log"
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/rspress-build.log",
+      "source": "raw-evidence",
+      "bytes": 11513,
+      "previous_sha256": "a3cea80d8b570ac9d67a55bc74344e2aeabb952886a42c94e20e95bd99889f8c",
+      "destination_before_sha256": "a3cea80d8b570ac9d67a55bc74344e2aeabb952886a42c94e20e95bd99889f8c",
+      "sha256": "72e701096808dd6ae11c17ecaff1da59032cc515cc91a04357a17377455cc4ec",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/rspress-build.log"
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/rspress-selected-config.txt",
+      "source": "raw-evidence",
+      "bytes": 911,
+      "previous_sha256": "34231d4f44f6b35757b3e484943be7e953bd1368afed3cabe25bf65f57373146",
+      "destination_before_sha256": "34231d4f44f6b35757b3e484943be7e953bd1368afed3cabe25bf65f57373146",
+      "sha256": "a67ddb3c5e78e2f4dd424070b09ee860dd584a36247f273b966e107eeb464bdb",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/rspress-selected-config.txt"
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/tailnet-evidence-agent-browser.png",
+      "source": "raw-evidence",
+      "bytes": 1117639,
+      "previous_sha256": "1d3f4a791835bb246825cb1c43bb0d63b8d04fbd7e99c503b5ed9936c7b2d282",
+      "destination_before_sha256": "1d3f4a791835bb246825cb1c43bb0d63b8d04fbd7e99c503b5ed9936c7b2d282",
+      "sha256": "1d3f4a791835bb246825cb1c43bb0d63b8d04fbd7e99c503b5ed9936c7b2d282",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/tailnet-roadmap-agent-browser.png",
+      "source": "raw-evidence",
+      "bytes": 11923156,
+      "previous_sha256": "ddcc53953a6e8f022cb3c82e24072bb10bddd0fbe101dff929eda2a218e7b58b",
+      "destination_before_sha256": "ddcc53953a6e8f022cb3c82e24072bb10bddd0fbe101dff929eda2a218e7b58b",
+      "sha256": "ddcc53953a6e8f022cb3c82e24072bb10bddd0fbe101dff929eda2a218e7b58b",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/text-layout-package-test.log",
+      "source": "raw-evidence",
+      "bytes": 4052,
+      "previous_sha256": "eea28970d4967135b7e67c1a9a63b8b2bc62c26da753159a3cd30bd653ca2d71",
+      "destination_before_sha256": "eea28970d4967135b7e67c1a9a63b8b2bc62c26da753159a3cd30bd653ca2d71",
+      "sha256": "cf4ea3a5bc353befecb88086a5831285c10bc1272eec5cdbf63dec38f9e805c2",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/text-layout-package-test.log"
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/README.html",
+      "source": "rspress",
+      "bytes": 27600,
+      "previous_sha256": "f983408f7bfe7d39e1baad7e8ca1fda985ddd02cbc855464ad42fde0ac0ffbab",
+      "destination_before_sha256": "f983408f7bfe7d39e1baad7e8ca1fda985ddd02cbc855464ad42fde0ac0ffbab",
+      "sha256": "21e3145239243635c60157fa1e7e4f76075b5554fe231f33da0d40b175e1c003",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/README.html"
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/plan-review-20.html",
+      "source": "rspress",
+      "bytes": 28923,
+      "previous_sha256": "a7ee2b21dc4d9799857c344c43f3549de917eff8c615ef99c7f1cb243b082ecb",
+      "destination_before_sha256": "a7ee2b21dc4d9799857c344c43f3549de917eff8c615ef99c7f1cb243b082ecb",
+      "sha256": "80159bd3b9c1f888051b640ebd565597401796cf503b220c246b6af60d69c4d4",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/plan-review-20.html"
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/pr-delta-review-20.html",
+      "source": "rspress",
+      "bytes": 28686,
+      "previous_sha256": "531742cd71dc7a5d49ff2f4b8bcc5bf7a25158b680a1b8c5dada16adc0007f67",
+      "destination_before_sha256": "531742cd71dc7a5d49ff2f4b8bcc5bf7a25158b680a1b8c5dada16adc0007f67",
+      "sha256": "5ae8a21d79bbea4015d5edb5a6e86c6474efdc7f88f55f1f61f7e7259bbdf06c",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/pr-delta-review-20.html"
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/roadmap-followup-pr-review-20.html",
+      "source": "rspress",
+      "bytes": 27538,
+      "previous_sha256": "49411954ab57bb932ec3b148137f3f500623917284e9eb25ca16524904c75c65",
+      "destination_before_sha256": "49411954ab57bb932ec3b148137f3f500623917284e9eb25ca16524904c75c65",
+      "sha256": "f02b3c6aeb20db36a92df29d636f2ee991d512c6228d679e2874a4d169f3e8a6",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/roadmap-followup-pr-review-20.html"
+    },
+    {
+      "path": "logo.svg",
+      "source": "rspress",
+      "bytes": 568,
+      "previous_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "destination_before_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "plan/c04-12-page-scale-rendering.html",
+      "source": "rspress",
+      "bytes": 30089,
+      "previous_sha256": "abb434b00a9994b66980be1564111c61f207e0ec1c10e4720ff1cfd7e7f175a1",
+      "destination_before_sha256": "abb434b00a9994b66980be1564111c61f207e0ec1c10e4720ff1cfd7e7f175a1",
+      "sha256": "cc7e792f0af108029e4bea706a83226e5ceee36c7fd75870952ce6f40c897321",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/plan/c04-12-page-scale-rendering.html"
+    },
+    {
+      "path": "plan/c04-12-root-canvas-color-scheme.html",
+      "source": "rspress",
+      "bytes": 31373,
+      "previous_sha256": "f9f680c9187206157f3ba7397898bb3426bdfd838825faabcbe6e524ac732dfc",
+      "destination_before_sha256": "f9f680c9187206157f3ba7397898bb3426bdfd838825faabcbe6e524ac732dfc",
+      "sha256": "d06f5cafa4d9b603860e0d2de28f04d943f66f12487f99101ade49853a0170ca",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/plan/c04-12-root-canvas-color-scheme.html"
+    },
+    {
+      "path": "plan/c04-12-root-html-block-paint.html",
+      "source": "rspress",
+      "bytes": 38018,
+      "previous_sha256": "ab70b8345ba866c0aac0434e35d33f5c193146f89eb7b65e34aa9f56c4c4c05a",
+      "destination_before_sha256": "ab70b8345ba866c0aac0434e35d33f5c193146f89eb7b65e34aa9f56c4c4c05a",
+      "sha256": "dd6144e67fcd3f567a9a29413e2cba717dcb36e2e94f8d7d2d28c1647d8d38e0",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/plan/c04-12-root-html-block-paint.html"
+    },
+    {
+      "path": "plan/c04-12-root-html-default-rendering.html",
+      "source": "rspress",
+      "bytes": 40558,
+      "previous_sha256": "451214b36e3edfcc6e8d49bd144aadcc717e8ee48a0ca97ec983b1144130c378",
+      "destination_before_sha256": "451214b36e3edfcc6e8d49bd144aadcc717e8ee48a0ca97ec983b1144130c378",
+      "sha256": "7b46f1034e82b4951eaa061c179cec8e5fcf28b7001e36ac7774e76521f4f700",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/plan/c04-12-root-html-default-rendering.html"
+    },
+    {
+      "path": "plan/c04-12-root-html-text-paint.html",
+      "source": "rspress",
+      "bytes": 39767,
+      "previous_sha256": "e988fbe73b3f9a0ea21784f726d091382515cd94496c142c80e98f67cb8e2585",
+      "destination_before_sha256": "e988fbe73b3f9a0ea21784f726d091382515cd94496c142c80e98f67cb8e2585",
+      "sha256": "5344a816a8fb40772acb78cf98b21d40901c8a516c1e4e00322303ff529569c2",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/plan/c04-12-root-html-text-paint.html"
+    },
+    {
+      "path": "plan/c04-12-visual-viewport.html",
+      "source": "rspress",
+      "bytes": 29641,
+      "previous_sha256": "183cecd75934fd9ac4a9b7004a0c29ea45ebeb1bf325e324d4a7560c386c3e5f",
+      "destination_before_sha256": "183cecd75934fd9ac4a9b7004a0c29ea45ebeb1bf325e324d4a7560c386c3e5f",
+      "sha256": "5e2c9276a1ce4cbc7430e210ada187c6b02469dd933f93cfc635f771e4322429",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/plan/c04-12-visual-viewport.html"
+    },
+    {
+      "path": "plan/c04-root-html-document-environment.html",
+      "source": "rspress",
+      "bytes": 46964,
+      "previous_sha256": "a1662b614fb58b5f5dfd51e02c1052cfbc46b193a1641504990caff8609ae988",
+      "destination_before_sha256": "a1662b614fb58b5f5dfd51e02c1052cfbc46b193a1641504990caff8609ae988",
+      "sha256": "061c9a4b183aac851df710c0a4cc3e75c5f9f42d0123253204ac42c91ff8b318",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/plan/c04-root-html-document-environment.html"
+    },
+    {
+      "path": "plan/c15-inline-text-layout.html",
+      "source": "rspress",
+      "bytes": 76069,
+      "previous_sha256": "55e8d63178188e51c1831f0df81ca841c2665103485cdfa23e55ec0fc7957f37",
+      "destination_before_sha256": "55e8d63178188e51c1831f0df81ca841c2665103485cdfa23e55ec0fc7957f37",
+      "sha256": "0e419f924d139907e403340c8d5c7bb8f1c6f15d86cfc18fa8c6476c3d670719",
+      "status": "replaced",
+      "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/plan/c15-inline-text-layout.html"
+    },
+    {
+      "path": "roadmap.html",
+      "source": "rspress",
+      "bytes": 139789,
+      "previous_sha256": "1d82b8085d0b46c4898cf7f40f430944fa1867a36cae4a56f3dd53179dd1aae9",
+      "destination_before_sha256": "1d82b8085d0b46c4898cf7f40f430944fa1867a36cae4a56f3dd53179dd1aae9",
+      "sha256": "1d82b8085d0b46c4898cf7f40f430944fa1867a36cae4a56f3dd53179dd1aae9",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "roadmap.svg",
+      "source": "rspress",
+      "bytes": 4835,
+      "previous_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "destination_before_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "rspress",
+      "bytes": 73952,
+      "previous_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "destination_before_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/simulator-screen-dark.2e54597b94.png",
+      "source": "rspress",
+      "bytes": 155751,
+      "previous_sha256": "4c74d6d2dde36a8e3d2fdcebeaed0a0d8f3cdd50f7d56304c75c9de0a1eb107b",
+      "destination_before_sha256": "4c74d6d2dde36a8e3d2fdcebeaed0a0d8f3cdd50f7d56304c75c9de0a1eb107b",
+      "sha256": "4c74d6d2dde36a8e3d2fdcebeaed0a0d8f3cdd50f7d56304c75c9de0a1eb107b",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/simulator-screen-dark.995850557b.png",
+      "source": "rspress",
+      "bytes": 94008,
+      "previous_sha256": "99ca23abf0a9861f6cb317c72ba31eb4b6aaab9440ed579cff2b0b5382eafb98",
+      "destination_before_sha256": "99ca23abf0a9861f6cb317c72ba31eb4b6aaab9440ed579cff2b0b5382eafb98",
+      "sha256": "99ca23abf0a9861f6cb317c72ba31eb4b6aaab9440ed579cff2b0b5382eafb98",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/simulator-screen.69036695db.png",
+      "source": "rspress",
+      "bytes": 94675,
+      "previous_sha256": "88f557abdd92c4898b67d402b83f6294c17807ffe6a11cf4f9ac80203635b56e",
+      "destination_before_sha256": "88f557abdd92c4898b67d402b83f6294c17807ffe6a11cf4f9ac80203635b56e",
+      "sha256": "88f557abdd92c4898b67d402b83f6294c17807ffe6a11cf4f9ac80203635b56e",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/simulator-screen.828a34af58.png",
+      "source": "rspress",
+      "bytes": 157418,
+      "previous_sha256": "743dc660a394b58a35f24ab0277468d451e95611381851be66fc0a2c01b27646",
+      "destination_before_sha256": "743dc660a394b58a35f24ab0277468d451e95611381851be66fc0a2c01b27646",
+      "sha256": "743dc660a394b58a35f24ab0277468d451e95611381851be66fc0a2c01b27646",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.0179054be0.js",
+      "source": "rspress",
+      "bytes": 217086,
+      "previous_sha256": null,
+      "destination_before_sha256": "e0ac6b6405f9c5221140a387a29c3783dd8dbcf6888e451a54962ca78fe6231a",
+      "sha256": "e0ac6b6405f9c5221140a387a29c3783dd8dbcf6888e451a54962ca78fe6231a",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.0179054be0.js.LICENSE.txt",
+      "source": "rspress",
+      "bytes": 384,
+      "previous_sha256": null,
+      "destination_before_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "source": "rspress",
+      "bytes": 100,
+      "previous_sha256": null,
+      "destination_before_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-01a38c43e2ba.4dba232663.js",
+      "source": "rspress",
+      "bytes": 18147,
+      "previous_sha256": null,
+      "destination_before_sha256": null,
+      "sha256": "8bdf28987b495ff9a6b382f8be6973092b23a161840b90de38e4aeb04919a7bd",
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-10e224d209ed.4249b66c51.js",
+      "source": "rspress",
+      "bytes": 19565,
+      "previous_sha256": null,
+      "destination_before_sha256": null,
+      "sha256": "b78aeac191e95deb3c518e7a525bbcae3422fc109e867f03d72fc56127ec125e",
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-117783875241.7b4bc3aa76.js",
+      "source": "rspress",
+      "bytes": 62508,
+      "previous_sha256": null,
+      "destination_before_sha256": "4ea965476ec9f73fbf8ddbffce53d188ace965c71bcd599da1f5d168f59feb85",
+      "sha256": "4ea965476ec9f73fbf8ddbffce53d188ace965c71bcd599da1f5d168f59feb85",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-2448965e4a94.78536f6df3.js",
+      "source": "rspress",
+      "bytes": 8120,
+      "previous_sha256": null,
+      "destination_before_sha256": "a6ee00b8b123a96449fd39887155c3f21df34b2ef2776823803b631ef185597d",
+      "sha256": "a6ee00b8b123a96449fd39887155c3f21df34b2ef2776823803b631ef185597d",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-367f378b7619.73d31881c7.js",
+      "source": "rspress",
+      "bytes": 15249,
+      "previous_sha256": null,
+      "destination_before_sha256": null,
+      "sha256": "e0f3d749e65efd80f308bb9bf2a2461f3bae96e87faec9517786bb8ead980f78",
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-62564aea649f.c5c2cc7498.js",
+      "source": "rspress",
+      "bytes": 18891,
+      "previous_sha256": null,
+      "destination_before_sha256": "10658948f76c75b75f9278a5e870d578fb2b8cea91df8c523815a57dbdf5126a",
+      "sha256": "10658948f76c75b75f9278a5e870d578fb2b8cea91df8c523815a57dbdf5126a",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6766916ae267.97dbd11b94.js",
+      "source": "rspress",
+      "bytes": 8904,
+      "previous_sha256": null,
+      "destination_before_sha256": "4f6c73a4a47fc0f9fe4fb7f3e47b1e79675a11b27752654701c63b7535e741d1",
+      "sha256": "4f6c73a4a47fc0f9fe4fb7f3e47b1e79675a11b27752654701c63b7535e741d1",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.5deaef1fdf.js",
+      "source": "rspress",
+      "bytes": 394334,
+      "previous_sha256": null,
+      "destination_before_sha256": null,
+      "sha256": "88d274f3e11370310d701de35d2865db5e84b88e85b27678c4f497c4efbe9a1f",
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-7ff1bc4fef68.81bbbf1a7e.js",
+      "source": "rspress",
+      "bytes": 37279,
+      "previous_sha256": null,
+      "destination_before_sha256": "1f42e5533c855cb6fd9d7514992e7041e98dd0a9c7536e8e3430a89ea93e6fcb",
+      "sha256": "1f42e5533c855cb6fd9d7514992e7041e98dd0a9c7536e8e3430a89ea93e6fcb",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-8cbb76a0796e.a83b83e1b3.js",
+      "source": "rspress",
+      "bytes": 26861,
+      "previous_sha256": null,
+      "destination_before_sha256": null,
+      "sha256": "665c8fc1c74922f59b9b552fb9a66c7605f2160cef73ef3a4ed0fd087d929c5e",
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-989ca1f66450.af4c5777e0.js",
+      "source": "rspress",
+      "bytes": 7005,
+      "previous_sha256": null,
+      "destination_before_sha256": "dbd529eaccf0f93766e4e2bb9d55e642bf52faab968d08d92ffafb518259d14e",
+      "sha256": "dbd529eaccf0f93766e4e2bb9d55e642bf52faab968d08d92ffafb518259d14e",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-99d1d44ec434.67ad5f5861.js",
+      "source": "rspress",
+      "bytes": 9226,
+      "previous_sha256": null,
+      "destination_before_sha256": "8c81062fc14bbae057f5b76f81e0548418b7cf8f8258ddf1b906be240b3f8f1a",
+      "sha256": "8c81062fc14bbae057f5b76f81e0548418b7cf8f8258ddf1b906be240b3f8f1a",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-a07f3c9d45d8.07a2d8d1ac.js",
+      "source": "rspress",
+      "bytes": 10558,
+      "previous_sha256": null,
+      "destination_before_sha256": "cd974e6e4f64e32339fd772dd3f5f21cab0d17fdd5cc0f1a78499eccebf19a21",
+      "sha256": "cd974e6e4f64e32339fd772dd3f5f21cab0d17fdd5cc0f1a78499eccebf19a21",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.552b2a4339.js",
+      "source": "rspress",
+      "bytes": 178482,
+      "previous_sha256": null,
+      "destination_before_sha256": null,
+      "sha256": "e9e604e940b7eabfe3f3e987cde6eaf7ddc462fb1aa7fb26d2d937040c4d18b2",
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-b33563055168.648319b268.js",
+      "source": "rspress",
+      "bytes": 7916,
+      "previous_sha256": null,
+      "destination_before_sha256": "c36a1ea7f9b6698bd51f80d96d1b84a34c0fe687e2f0012987cf3ca79e0ca7e3",
+      "sha256": "c36a1ea7f9b6698bd51f80d96d1b84a34c0fe687e2f0012987cf3ca79e0ca7e3",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-b8496d571851.90a7e7174b.js",
+      "source": "rspress",
+      "bytes": 19372,
+      "previous_sha256": null,
+      "destination_before_sha256": "8bd01f59b8483b427d319a64d818a107719f822596fa8a000c642b3d84e25c11",
+      "sha256": "8bd01f59b8483b427d319a64d818a107719f822596fa8a000c642b3d84e25c11",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-d677eda9ba0f.132cd7adf3.js",
+      "source": "rspress",
+      "bytes": 15929,
+      "previous_sha256": null,
+      "destination_before_sha256": "ebefeb24743db112cbb0b583cd6a99720c019009d8e331b0d821f43425e504e4",
+      "sha256": "ebefeb24743db112cbb0b583cd6a99720c019009d8e331b0d821f43425e504e4",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-ea34262d0652.a4e366197a.js",
+      "source": "rspress",
+      "bytes": 25827,
+      "previous_sha256": null,
+      "destination_before_sha256": "081fa5a80377be0493ec711b84956d980bbe408dc58e6f909f9c0ff85c845b46",
+      "sha256": "081fa5a80377be0493ec711b84956d980bbe408dc58e6f909f9c0ff85c845b46",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-f7ef4ddf795f.e944803705.js",
+      "source": "rspress",
+      "bytes": 9137,
+      "previous_sha256": null,
+      "destination_before_sha256": null,
+      "sha256": "90861730d77fb83b2ac482192bcfa02110aa908c312833dcc50156cb062f29e0",
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-faffa23ad0bd.67e36ea690.js",
+      "source": "rspress",
+      "bytes": 10163,
+      "previous_sha256": null,
+      "destination_before_sha256": "d6d55353f105ded634500cdd5a09ee965232d35719d00186a5b1feffb3f5fb5a",
+      "sha256": "d6d55353f105ded634500cdd5a09ee965232d35719d00186a5b1feffb3f5fb5a",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-fc5696cc2162.18588e5022.js",
+      "source": "rspress",
+      "bytes": 8828,
+      "previous_sha256": null,
+      "destination_before_sha256": "a030c72cb5659ca35237e4f9d83c97bbcb75b7694a3a1bc063007a03d51a4e14",
+      "sha256": "a030c72cb5659ca35237e4f9d83c97bbcb75b7694a3a1bc063007a03d51a4e14",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/index.51055166e7.js",
+      "source": "rspress",
+      "bytes": 43858,
+      "previous_sha256": null,
+      "destination_before_sha256": null,
+      "sha256": "626e82f89178923a6eff2736f175a21083ec53a2b0525e79df6122b896f26825",
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "source": "rspress",
+      "bytes": 218364,
+      "previous_sha256": null,
+      "destination_before_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "source": "rspress",
+      "bytes": 1209,
+      "previous_sha256": null,
+      "destination_before_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "source": "rspress",
+      "bytes": 35370,
+      "previous_sha256": null,
+      "destination_before_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "source": "rspress",
+      "bytes": 222,
+      "previous_sha256": null,
+      "destination_before_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/styles.c6d1f0b052.js",
+      "source": "rspress",
+      "bytes": 473,
+      "previous_sha256": null,
+      "destination_before_sha256": "3b8439b09f2251bd3396076f98b4e6a08ad1246a354258aa275215d6b5b4bb11",
+      "sha256": "3b8439b09f2251bd3396076f98b4e6a08ad1246a354258aa275215d6b5b4bb11",
+      "status": "unchanged",
+      "backup_path": null
+    },
+    {
+      "path": "static/search_index.ko.709c6902.json",
+      "source": "rspress",
+      "bytes": 503336,
+      "previous_sha256": null,
+      "destination_before_sha256": null,
+      "sha256": "709c690249b9a92b3fcc4a6cf9795f01ca25d129ebbef00d8c7e12423f5fe3b6",
+      "status": "created",
+      "backup_path": null
+    },
+    {
+      "path": "tests/fixtures/css/c04/root-html-default-rendering.html",
+      "source": "fixture",
+      "bytes": 1298,
+      "previous_sha256": "38813ca802618bd20bdf3bbb9ed9bc7525c289f48c0928813c855567f9e7df85",
+      "destination_before_sha256": "38813ca802618bd20bdf3bbb9ed9bc7525c289f48c0928813c855567f9e7df85",
+      "sha256": "38813ca802618bd20bdf3bbb9ed9bc7525c289f48c0928813c855567f9e7df85",
+      "status": "unchanged",
+      "backup_path": null
+    }
+  ],
+  "manifest_delivery": {
+    "path": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/tailnet-sync.json",
+    "sha256_excluded": true,
+    "previous_sha256": "7c0f392ccdc3019269852b77e8e0a0e013cdbd272a89411f7d1d2e3952545588",
+    "status": "copied after final Agent Browser verification",
+    "backup_path": "/private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/preview-backup/final-before-clean-preview-sync-20261019/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/tailnet-sync.json.before-final-verification"
+  }
+}

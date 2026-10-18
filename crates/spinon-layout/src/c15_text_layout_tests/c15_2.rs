@@ -146,6 +146,7 @@ fn paragraph_input(
             direction: spinon_text_layout::TextDirection::Auto,
             line_break: spinon_text_layout::LineBreakMode::Strict,
             ligatures: spinon_text_layout::LigatureMode::Normal,
+            ..ParagraphStyle::default()
         },
     )]);
     let snapshot = fixture.document.snapshot();
@@ -314,6 +315,7 @@ fn inline_depth_above_two_levels_remains_an_explicit_diagnostic() {
             direction: spinon_text_layout::TextDirection::Auto,
             line_break: spinon_text_layout::LineBreakMode::Strict,
             ligatures: spinon_text_layout::LigatureMode::Normal,
+            ..ParagraphStyle::default()
         },
     )]);
     let snapshot = fixture.document.snapshot();

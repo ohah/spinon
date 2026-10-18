@@ -312,6 +312,7 @@ fn inline_span_rejects_nested_block_topology() {
             font_family: "Roboto".to_owned(),
             font_size: 20.0,
             line_height: 24.0,
+            ..InlineRunStyle::default()
         },
     )]);
     let result = LayoutInput::from_host_document_with_text_paragraphs_and_run_styles(

@@ -216,6 +216,7 @@ pub(super) fn paragraph_style(
         direction: spinon_text_layout::TextDirection::Auto,
         line_break: spinon_text_layout::LineBreakMode::Strict,
         ligatures: spinon_text_layout::LigatureMode::Normal,
+        ..ParagraphStyle::default()
     }
 }
 
@@ -261,6 +262,7 @@ pub(super) fn mixed_layout(fixture: &MixedFixture) -> LayoutInput {
             font_family: "Roboto".to_owned(),
             font_size: 20.0,
             line_height: 24.0,
+            ..InlineRunStyle::default()
         },
     )]);
     LayoutInput::from_host_document_with_text_paragraphs_and_run_styles(

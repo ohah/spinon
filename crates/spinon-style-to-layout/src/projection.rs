@@ -319,6 +319,28 @@ pub fn compute_runtime_style_layout_with_text_paragraphs(
     paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
     text_engine: &TextLayoutEngine,
 ) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    let inline_run_styles = BTreeMap::new();
+    compute_runtime_style_layout_with_text_profiles(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        paragraph_styles,
+        &inline_run_styles,
+        text_engine,
+    )
+}
+
+/// Root HTML computed style의 block·inline font을 같은 HostDocument의 glyph layout에 연결합니다.
+pub fn compute_runtime_style_layout_with_text_profiles(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
+    inline_run_styles: &BTreeMap<NodeId, spinon_layout::InlineRunStyle>,
+    text_engine: &TextLayoutEngine,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
     if computed_styles.profile != ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
         return Err(StyleLayoutError::UnsupportedProfile {
             profile: format!("{:?}", computed_styles.profile),
@@ -334,7 +356,7 @@ pub fn compute_runtime_style_layout_with_text_paragraphs(
         viewport,
         true,
         None,
-        Some((paragraph_styles, text_engine)),
+        Some((paragraph_styles, inline_run_styles, text_engine)),
     )
 }
 
@@ -466,7 +488,11 @@ fn compute_layout_from_styles_with_text(
     viewport: CssViewport,
     reject_cascade_diagnostics: bool,
     intrinsic_sizes: Option<LayoutIntrinsicSizeSnapshot>,
-    text_profile: Option<(&BTreeMap<NodeId, ParagraphStyle>, &TextLayoutEngine)>,
+    text_profile: Option<(
+        &BTreeMap<NodeId, ParagraphStyle>,
+        &BTreeMap<NodeId, spinon_layout::InlineRunStyle>,
+        &TextLayoutEngine,
+    )>,
 ) -> Result<StyleLayoutOutput, StyleLayoutError> {
     assert_matching_revision(snapshot, &computed_styles, computed_styles.profile)?;
     if reject_cascade_diagnostics
@@ -503,6 +529,9 @@ fn compute_layout_from_styles_with_text(
                 ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1 => {
                     matches!(display.as_str(), "block" | "flow-root" | "none")
+                }
+                ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 => {
+                    matches!(display.as_str(), "block" | "inline" | "none")
                 }
                 ComputedStyleProfile::RuntimeBlockFlexStackingV1 => {
                     matches!(display.as_str(), "block" | "flow-root" | "flex" | "none")
@@ -588,13 +617,14 @@ fn compute_layout_from_styles_with_text(
         width: viewport.width_css_px,
         height: viewport.height_css_px,
     };
-    let input = if let Some((paragraph_styles, _)) = text_profile {
-        LayoutInput::from_host_document_with_viewport_containing_block_and_text_paragraphs_ignoring_collapsible_whitespace(
+    let mut input = if let Some((paragraph_styles, inline_run_styles, _)) = text_profile {
+        LayoutInput::from_host_document_with_viewport_containing_block_and_text_paragraphs_and_run_styles_ignoring_collapsible_whitespace(
             snapshot,
             root,
             layout_viewport,
             &styles,
             paragraph_styles,
+            inline_run_styles,
             computed_styles.style_revision,
             viewport.environment_revision,
         )?
@@ -662,11 +692,21 @@ fn compute_layout_from_styles_with_text(
             computed_styles.style_revision,
             viewport.environment_revision,
         )?
-    }
-    .with_css_math(projected.css_math)
-    .with_positioning(positioning)
-    .with_grid_layout(grid_containers, grid_items);
-    let mut layout = if let Some((_, text_engine)) = text_profile {
+    };
+    let layout_node_ids = input
+        .nodes()
+        .iter()
+        .map(|node| node.id)
+        .collect::<BTreeSet<_>>();
+    let positioning = positioning
+        .into_iter()
+        .filter(|(node, _)| layout_node_ids.contains(node))
+        .collect();
+    input = input
+        .with_css_math(projected.css_math)
+        .with_positioning(positioning)
+        .with_grid_layout(grid_containers, grid_items);
+    let mut layout = if let Some((_, _, text_engine)) = text_profile {
         TaffyLayoutEngine.compute_with_text_layout_engine(&input, text_engine)?
     } else if let Some(intrinsic_sizes) = intrinsic_sizes {
         TaffyLayoutEngine.compute_with_intrinsic_size_snapshot(&input, &intrinsic_sizes)?

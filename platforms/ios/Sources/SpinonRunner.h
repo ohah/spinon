@@ -41,6 +41,7 @@
 + (int32_t)notifyRuntimeMemoryPressure:(uint64_t)handle level:(int32_t)level;
 + (void)freeRuntimeSession:(uint64_t)handle;
 + (uint64_t)createRuntimeGpuHostWithRegisteredPropertiesFixture:(BOOL)enabled;
++ (uint64_t)createRuntimeGpuHostWithRootHTML:(NSString *)source;
 + (uint64_t)createRuntimeGpuHostWithBlockPaintFixture;
 + (uint64_t)createRuntimeGpuHostWithRootHtmlBlockPaintFixture;
 + (uint64_t)createRuntimeGpuHostWithRootHtmlTextPaintFixture;

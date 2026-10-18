@@ -1,0 +1,23 @@
+C04.12 default root HTML artifact boundary
+Host: macOS arm64; Cargo target: aarch64-apple-darwin
+Archive: crates/spinon-ffi staticlib, dev profile
+
+Default product feature set: --features c04-runtime-gpu
+SHA-256: 4aca45551cd76c7b205d9c2005deaf877b96eedc2226d00bb0e42f4a2e3bc773
+Size: 648102880 bytes
+spinon_runtime_gpu_host_new_with_root_html symbol: PRESENT
+spinon_runtime_gpu_host_new_root_html_text_paint_fixture symbol: ABSENT
+Exact tests/fixtures/resources/c15/Ahem.ttf payload: ABSENT
+
+Positive control feature set: --features c04-12-root-html-text-paint-fixture-test
+SHA-256: c3a72eeb03d5c49b16d450af037f5ed69032655673ce2974b9a7384a42d398e0
+Size: 659950072 bytes
+spinon_runtime_gpu_host_new_with_root_html symbol: PRESENT
+spinon_runtime_gpu_host_new_root_html_text_paint_fixture symbol: PRESENT
+Exact tests/fixtures/resources/c15/Ahem.ttf payload: PRESENT
+
+Both archives were rebuilt after the hidden-subtree correction and adapter module split with `mise exec -- env CARGO_TARGET_DIR=build/c04-12-root-html-artifacts cargo build --locked -p spinon-ffi --lib` and the feature set above. Build output is in `artifact-boundary-product-build.log` and `artifact-boundary-fixture-build.log`. The fixture positive control initially exposed a stale `ParagraphStyle` initializer after adding computed font weight/style/normal line-height support. The fixture initializer now explicitly retains Ahem 400 normal with fixed 10px line-height. Runtime review then found that a hidden descendant with unsupported text style incorrectly failed the whole render; visible-element filtering and a regression test now cover it. The default runtime pair passes 2 tests and the fixture positive control passes 1 test.
+
+Symbol and exact font-payload presence were checked by byte search in both archives. Apple `nm` could not read objects emitted by Rust LLVM 22 (`Unknown attribute kind`), so its output was not used as evidence.
+
+This host archive comparison confirms the C04.12 text fixture symbol and exact Ahem bytes are excluded from the product `c04-runtime-gpu` archive and included by the opt-in fixture feature. It does not prove Android/iOS linker dead stripping or every other fixture family boundary.

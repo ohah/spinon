@@ -503,6 +503,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c0412-root-html-block-paint")
     private let rootHtmlTextPaintProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c0412-root-html-text-paint")
+    private let rootHtmlDefaultRenderRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c0412-root-html-default-render")
     private var rootHtmlTextPaintReadbackFinished = false
     private let marginCollapseProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c092-margin-collapse")
@@ -1002,6 +1004,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || c132ScrollFixtureRequested
             || c133GestureFixtureRequested || c11GridFixtureRequested
             || rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
+            || rootHtmlDefaultRenderRequested
         var selectedWithImagePaint = selected
 #if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         selectedWithImagePaint = selectedWithImagePaint || imagePaintProbeRequested
@@ -1034,8 +1037,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         let title = UILabel()
         title.adjustsFontSizeToFitWidth = c153HostDocumentTextPaintArgumentRequested
+            || rootHtmlDefaultRenderRequested
         title.minimumScaleFactor = 0.75
-        title.text = c153GlyphPaintProbeRequested
+        title.text = rootHtmlDefaultRenderRequested
+            ? "SPINON · C04.12 root HTML default runtime"
+            : c153GlyphPaintProbeRequested
             ? c153HostDocumentTextPaintArgumentRequested
                 ? "SPINON · C15.3 HostDocument text paint"
                 : "SPINON · C15.3 WGPU glyph paint"
@@ -2473,8 +2479,37 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.layoutIfNeeded()
     }
 
+    private func createRootHtmlDefaultRuntimeHost() -> UInt64 {
+        guard let url = Bundle.main.url(
+            forResource: "root-html-default-rendering", withExtension: "html"
+        ) else {
+            log("SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_ASSET_ERROR missing=true")
+            return 0
+        }
+        do {
+            let source = try String(contentsOf: url, encoding: .utf8)
+            log("SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_SOURCE bytes=\(source.utf8.count)")
+            return SpinonRunner.createRuntimeGpuHost(withRootHTML: source)
+        } catch {
+            log("SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_ASSET_ERROR reason=\(error)")
+            return 0
+        }
+    }
+
     private func initializeRuntime() {
         guard !isClosing else { return }
+        if rootHtmlDefaultRenderRequested {
+            let conflicts = ProcessInfo.processInfo.arguments.filter {
+                $0.hasPrefix("--spinon-c")
+                    && $0 != "--spinon-c0412-root-html-default-render"
+                    && $0 != "--spinon-c0410-runtime-gpu"
+            }
+            if !conflicts.isEmpty {
+                log("SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_ARGUMENT_ERROR conflicting=\(conflicts.joined(separator: ","))")
+                postStatus("실패 · root HTML 기본 렌더와 다른 CSS route를 함께 선택했습니다")
+                return
+            }
+        }
 #if !SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST_1
         if c192BoxPaintOpacityArgumentRequested {
             log("SPINON_C192_ARGUMENT_ERROR rejected=true reason=fixture-feature-disabled")
@@ -2830,6 +2865,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? SpinonRunner.createRuntimeGpuHostWithRootHtmlBlockPaintFixture()
             : blockPaintProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithBlockPaintFixture()
+            : rootHtmlDefaultRenderRequested
+            ? createRootHtmlDefaultRuntimeHost()
             : SpinonRunner.createRuntimeGpuHost(
                 withRegisteredPropertiesFixture: registeredPropertiesProbeRequested
             )
@@ -2927,7 +2964,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         log("SPINON_C0410_ENVIRONMENT_REQUEST width=\(viewportWidth) height=\(viewportHeight)")
         let environmentScale = rootHtmlTextPaintProbeRequested
             ? 1
-            : rootHtmlBlockPaintProbeRequested ? environmentInputs.scale
+            : rootHtmlBlockPaintProbeRequested || rootHtmlDefaultRenderRequested
+                ? environmentInputs.scale
             : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested
                 || c123FixedPositionProbeRequested || c1132GridNamedLinesProbeRequested
                 || c1133GridTemplateAreasProbeRequested || c132ScrollFixtureRequested
@@ -2936,8 +2974,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let environment = SpinonRunner.setRuntimeGpuEnvironment(
             handle,
             width: rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
+                || rootHtmlDefaultRenderRequested
                 ? viewportWidth * environmentScale : viewportWidth,
             height: rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
+                || rootHtmlDefaultRenderRequested
                 ? viewportHeight * environmentScale : viewportHeight,
             scale: environmentScale,
             dark: environmentInputs.dark
@@ -3118,6 +3158,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             result = SpinonRunner.evalRuntimeGpuRootHtmlBlockPaintFixture(handle)
         } else if blockPaintProbeRequested {
             result = SpinonRunner.evalRuntimeGpuBlockPaintFixture(handle)
+        } else if rootHtmlDefaultRenderRequested {
+            result = "status=0 root_html_default_render=source"
         } else if aspectRatioProbeRequested {
             result = SpinonRunner.evalRuntimeGpuAspectRatioFixture(handle)
         } else if borderWidthProbeRequested {
@@ -4191,10 +4233,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || c1132GridNamedLinesProbeRequested || c1133GridTemplateAreasProbeRequested
             || c132ScrollFixtureRequested || c133GestureFixtureRequested
         environmentInputs = (
-            rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested ? 320
+            rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
+                || rootHtmlDefaultRenderRequested ? 320
                 : c153HostDocumentTextPaintArgumentRequested ? 320
                 : c153GlyphPaintProbeRequested ? 360 : viewportWidthCssPx,
             rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
+                || rootHtmlDefaultRenderRequested
                 || c153GlyphPaintProbeRequested
                 ? 240 : viewportHeightCssPx,
             rootHtmlTextPaintProbeRequested ? 1
@@ -4225,8 +4269,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let report = SpinonRunner.setRuntimeGpuEnvironment(
             handle,
             width: rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
+                || rootHtmlDefaultRenderRequested
                 ? environmentInputs.width * environmentInputs.scale : environmentInputs.width,
             height: rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
+                || rootHtmlDefaultRenderRequested
                 ? environmentInputs.height * environmentInputs.scale : environmentInputs.height,
             scale: environmentInputs.scale, dark: environmentInputs.dark
         )

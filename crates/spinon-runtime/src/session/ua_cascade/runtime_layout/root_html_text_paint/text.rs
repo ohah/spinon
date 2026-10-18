@@ -1,7 +1,7 @@
 use std::sync::Arc;
 
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, NodeId};
-use spinon_layout::{LayoutFrame, LayoutTextSnapshot, TextSourceRange};
+use spinon_layout::{FontStyleMode, LayoutFrame, LayoutTextSnapshot, TextSourceRange};
 use spinon_render::{RuntimeGlyphBitmap, RuntimeSrgbColor};
 use spinon_style::{ComputedCssColor, ComputedElementStyle};
 use spinon_text_layout::{
@@ -18,7 +18,10 @@ pub(super) fn paragraph_style(
     Ok(ParagraphStyle {
         font_family: "Ahem".to_owned(),
         font_size: style.font_size_css_px,
+        font_weight: 400.0,
+        font_style: FontStyleMode::Normal,
         line_height: FONT_SIZE,
+        line_height_is_normal: false,
         white_space: WhiteSpaceMode::Normal,
         word_break: WordBreakMode::Normal,
         direction: ParagraphDirection::Ltr,

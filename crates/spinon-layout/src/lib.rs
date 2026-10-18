@@ -43,9 +43,11 @@ pub use grid_placement::{GridItemInput, GridPlacementInput};
 pub use intrinsic_size::{LayoutIntrinsicSize, LayoutIntrinsicSizeSnapshot};
 pub use revision::{LayoutInputRevision, LayoutSourceRevision};
 pub use spinon_text_layout::{
-    FontRegistryRevision, InlineFragment, InlineRunStyle, ParagraphInput, ParagraphStyle,
-    TextGlyph, TextLayoutEngine, TextLayoutSnapshot, TextLine, TextRect, TextRun, TextSource,
-    TextSourceRange, WhiteSpaceMode, WordBreakMode,
+    FontRegistryRevision, FontStyleMode, GlyphBitmap, GlyphBitmapContent, InlineFragment,
+    InlineRunStyle, LigatureMode, LineBreakMode, ParagraphInput, ParagraphStyle,
+    TextDirection as TextParagraphDirection, TextGlyph, TextGlyphRasterSnapshot, TextLayoutEngine,
+    TextLayoutSnapshot, TextLine, TextRect, TextRun, TextSource, TextSourceRange, WhiteSpaceMode,
+    WordBreakMode,
 };
 pub use style::{
     AlignmentSafety, ContentAlignmentPosition, FlexDirection, FlexWrap, ItemAlignmentPosition,

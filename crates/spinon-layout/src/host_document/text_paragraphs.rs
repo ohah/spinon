@@ -172,9 +172,10 @@ impl ParagraphSourceCollector<'_> {
                         );
                         items.push(TextFlowItem::Block(handle.id()));
                         has_block_child = true;
-                    } else if element.namespace() == "http://www.w3.org/1999/xhtml"
-                        && element.local_name() == "span"
-                        && style.display == LayoutDisplay::Inline
+                    } else if is_supported_inline_text_element(
+                        element.namespace(),
+                        element.local_name(),
+                    ) && style.display == LayoutDisplay::Inline
                     {
                         self.collect_inline_span(handle, paragraph_id, Vec::new(), &mut sources)?;
                     } else {
@@ -250,12 +251,11 @@ impl ParagraphSourceCollector<'_> {
                         )?;
                         continue;
                     }
-                    if element.namespace() != "http://www.w3.org/1999/xhtml"
-                        || element.local_name() != "span"
+                    if !is_supported_inline_text_element(element.namespace(), element.local_name())
                     {
                         return Err(LayoutError::UnsupportedTextParagraph {
                             node: paragraph_id,
-                            reason: "inline subtree는 HTML span과 text만 포함할 수 있습니다",
+                            reason: "inline subtree는 HTML span/strong/b/em/i와 text만 포함할 수 있습니다",
                         });
                     }
                     if ancestors.len() >= 2 {
@@ -318,6 +318,11 @@ impl ParagraphSourceCollector<'_> {
     }
 }
 
+fn is_supported_inline_text_element(namespace: &str, local_name: &str) -> bool {
+    namespace == "http://www.w3.org/1999/xhtml"
+        && matches!(local_name, "span" | "strong" | "b" | "em" | "i")
+}
+
 fn push_anonymous_paragraph(
     items: &mut Vec<TextFlowItem>,
     owner: NodeId,
@@ -353,13 +358,14 @@ fn push_anonymous_paragraph(
 
 fn fixed_inline_box_style(style: LayoutStyle) -> Option<InlineBoxStyle> {
     if style.display != LayoutDisplay::Inline
-        || style
-            != (LayoutStyle {
-                display: LayoutDisplay::Inline,
-                border: style.border,
-                padding: style.padding,
-                ..LayoutStyle::default()
-            })
+        || [
+            style.margin.top,
+            style.margin.right,
+            style.margin.bottom,
+            style.margin.left,
+        ]
+        .into_iter()
+        .any(|edge| !zero_or_auto(edge))
     {
         return None;
     }
@@ -393,6 +399,14 @@ fn fixed_inline_box_style(style: LayoutStyle) -> Option<InlineBoxStyle> {
         inline.border.bottom + inline.padding.bottom,
     ];
     sums.into_iter().all(f32::is_finite).then_some(inline)
+}
+
+fn zero_or_auto(value: LayoutLengthPercentage) -> bool {
+    match value {
+        LayoutLengthPercentage::Auto => true,
+        LayoutLengthPercentage::LengthPx(value) => value == 0.0,
+        LayoutLengthPercentage::Percentage(_) | LayoutLengthPercentage::Calc(_) => false,
+    }
 }
 
 fn fixed_nonnegative_px(value: LayoutLengthPercentage) -> Option<f32> {

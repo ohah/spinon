@@ -209,6 +209,48 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateHost(
 }
 
 extern "C" JNIEXPORT jlong JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateHostWithRootHtml(
+    JNIEnv *env, jclass, jbyteArray source) {
+  constexpr jsize kRootHtmlSourceMaxBytes = 1024 * 1024;
+  std::array<char, 1024> output{};
+  if (source == nullptr) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_HOST_ERROR=null_source");
+    return 0;
+  }
+  const jsize source_length = env->GetArrayLength(source);
+  if (source_length <= 0 || source_length > kRootHtmlSourceMaxBytes) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_HOST_ERROR=source_length:%d",
+                        source_length);
+    return 0;
+  }
+  std::vector<uint8_t> source_bytes;
+  try {
+    source_bytes.resize(static_cast<size_t>(source_length));
+  } catch (const std::bad_alloc &) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_HOST_ERROR=allocation_failed");
+    return 0;
+  }
+  env->GetByteArrayRegion(source, 0, source_length,
+                          reinterpret_cast<jbyte *>(source_bytes.data()));
+  if (env->ExceptionCheck()) return 0;
+  SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_with_root_html(
+      source_bytes.data(), source_bytes.size(), output.data(), output.size());
+  if (host == nullptr) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_HOST_ERROR=%s",
+                        output.data());
+    return 0;
+  }
+  __android_log_print(ANDROID_LOG_INFO, kTag,
+                      "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_HOST=%s",
+                      output.data());
+  return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
+}
+
+extern "C" JNIEXPORT jlong JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateBlockPaintHost(
     JNIEnv *, jclass) {
   std::array<char, 1024> output{};
