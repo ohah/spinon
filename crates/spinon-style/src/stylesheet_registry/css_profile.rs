@@ -1,3 +1,4 @@
+use cssparser::{Parser, Token};
 use style::{
     properties::{PropertyDeclaration, PropertyDeclarationId},
     shared_lock::SharedRwLockReadGuard,
@@ -126,6 +127,146 @@ pub(super) fn first_unsupported_runtime_author_feature_with_media(
             allow_border_image_initial_resets: true,
         },
     )
+}
+
+pub(super) fn first_unsupported_runtime_root_html_system_color(
+    registry: &StylesheetRegistry,
+) -> Option<(String, String)> {
+    let guard = registry.shared_lock.read();
+    for stylesheet in registry
+        .stylesheets
+        .iter()
+        .filter(|stylesheet| stylesheet.origin == CssOrigin::Author)
+    {
+        let contents = stylesheet.sheet.0.contents.read_with(&guard);
+        let rules = contents.rules.read_with(&guard);
+        if rules
+            .0
+            .iter()
+            .any(|rule| rule_contains_system_color(rule, &guard))
+        {
+            return Some((
+                stylesheet.id.clone(),
+                "root HTML Canvas 배경 profile에서 CSS system color와 이를 담는 사용자 지정 속성을 지원하지 않습니다".to_owned(),
+            ));
+        }
+    }
+    None
+}
+
+fn rule_contains_system_color(rule: &CssRule, guard: &SharedRwLockReadGuard<'_>) -> bool {
+    match rule {
+        CssRule::Style(rule) => {
+            let rule = rule.read_with(guard);
+            let block = rule.block.read_with(guard);
+            block.declarations().iter().any(|declaration| {
+                let relevant = match declaration.id() {
+                    PropertyDeclarationId::Longhand(id) => id.name() == "background-color",
+                    PropertyDeclarationId::Custom(_) => true,
+                };
+                relevant && declaration_contains_css_system_color(declaration)
+            })
+        }
+        CssRule::Media(media) => {
+            let rules = media.rules.read_with(guard);
+            rules
+                .0
+                .iter()
+                .any(|nested| rule_contains_system_color(nested, guard))
+        }
+        _ => false,
+    }
+}
+
+pub(crate) fn declaration_contains_css_system_color(declaration: &PropertyDeclaration) -> bool {
+    let mut serialized = String::new();
+    if declaration.to_css(&mut serialized).is_err() {
+        return true;
+    }
+    css_contains_system_color_identifier(&serialized)
+}
+
+const CSS_SYSTEM_COLOR_KEYWORDS: &[&str] = &[
+    "accentcolor",
+    "accentcolortext",
+    "activetext",
+    "linktext",
+    "visitedtext",
+    "buttonborder",
+    "buttonface",
+    "buttontext",
+    "canvas",
+    "canvastext",
+    "field",
+    "fieldtext",
+    "graytext",
+    "highlight",
+    "highlighttext",
+    "mark",
+    "marktext",
+    "selecteditem",
+    "selecteditemtext",
+    "activeborder",
+    "inactiveborder",
+    "threeddarkshadow",
+    "threedhighlight",
+    "threedlightshadow",
+    "threedshadow",
+    "windowframe",
+    "buttonhighlight",
+    "buttonshadow",
+    "threedface",
+    "activecaption",
+    "appworkspace",
+    "background",
+    "inactivecaption",
+    "infobackground",
+    "menu",
+    "scrollbar",
+    "window",
+    "captiontext",
+    "infotext",
+    "menutext",
+    "windowtext",
+    "inactivecaptiontext",
+];
+
+fn css_contains_system_color_identifier(source: &str) -> bool {
+    let mut parser = Parser::new(source);
+    parser_contains_system_color_identifier(&mut parser)
+}
+
+fn parser_contains_system_color_identifier(parser: &mut Parser<'_>) -> bool {
+    while !parser.is_exhausted() {
+        let token = match parser.next_including_whitespace_and_comments() {
+            Ok(token) => token,
+            Err(_) => return true,
+        };
+        let contains_system_color = match token {
+            Token::Ident(value)
+                if CSS_SYSTEM_COLOR_KEYWORDS
+                    .iter()
+                    .any(|system_color| value.eq_ignore_ascii_case(system_color)) =>
+            {
+                true
+            }
+            Token::Function(_)
+            | Token::ParenthesisBlock
+            | Token::CurlyBracketBlock
+            | Token::SquareBracketBlock => parser
+                .parse_nested_block(|nested| {
+                    Ok::<bool, cssparser::ParseError<()>>(parser_contains_system_color_identifier(
+                        nested,
+                    ))
+                })
+                .unwrap_or(true),
+            _ => false,
+        };
+        if contains_system_color {
+            return true;
+        }
+    }
+    false
 }
 
 pub(super) fn first_unsupported_runtime_author_feature(

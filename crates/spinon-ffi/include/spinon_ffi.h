@@ -172,11 +172,15 @@ int32_t spinon_runtime_session_set_root_html_environment(
     int32_t prefers_color_scheme,
     SpinonRuntimeRootHtmlEnvironment *environment);
 /* 내부 C04.12 플랫폼 bridge입니다. 환경을 적용하고 CSS cascade 완료를 지정 시간까지 기다린 뒤
-   실제 HTML root의 computed color-scheme으로 Chromium 155 Canvas sRGB 색과 revision key를
-   반환합니다. 호출은 UI thread에서 하지 마세요. timeout은 0~60,000ms이며 root meta 중복
-   -13, cascade timeout -10, stale snapshot -12, root/style 누락 -11,
-   미지원 computed scheme -14를 반환합니다. 그 밖의 입력·환경 오류 -1, worker 오류 -7,
-   종료 중 -6입니다. 출력·세션 해제와 병행 호출하지 마세요. */
+   HTML root의 불투명 background-color, 투명 root에서 body background-color, scheme fallback
+   순으로 canvas RGBA8과 revision key를 반환합니다. 선택되는 배경 후보의 alpha 0은 투명으로
+   처리하고, 불투명 색은 정확히 바이트로 표현되는 sRGB만 지원합니다. system color, 다른 색
+   공간, fractional channel, 선택 후보의 partial alpha 및 image는 지원하지 않습니다.
+   UI thread에서 호출하지 마세요. timeout은 0~60,000ms이며 root meta 중복
+   중복 -13, cascade timeout -10, stale snapshot -12, root/style 누락 -11, 미지원 computed
+   scheme -14, unsupported computed background color -15를 반환합니다. 그 밖의
+   입력·환경 오류 -1, worker/cascade 오류 -7, 종료 중 -6입니다. 실패 시 output은 쓰지
+   않습니다. 출력·세션 해제와 병행 호출하지 마세요. */
 int32_t spinon_runtime_session_resolve_root_html_canvas(
     SpinonRuntimeSession *session, float surface_width_px,
     float surface_height_px, float device_scale_factor,

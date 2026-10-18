@@ -15,6 +15,7 @@ fn computed_font_size_css_px(computed: &ComputedValues) -> f32 {
 fn validate_synthetic_document_box(
     computed: &ComputedValues,
     element: &'static str,
+    allow_canvas_background_color: bool,
 ) -> Result<(), CssCascadeError> {
     let dimensions = dimensions::computed_layout_dimensions(computed);
     for (property, value) in [
@@ -69,7 +70,7 @@ fn validate_synthetic_document_box(
         }
         _ => 1.0,
     };
-    if background_alpha != 0.0 {
+    if background_alpha != 0.0 && !allow_canvas_background_color {
         return Err(CssCascadeError::UnsupportedSyntheticDocumentStyle {
             element,
             property: "background-color",

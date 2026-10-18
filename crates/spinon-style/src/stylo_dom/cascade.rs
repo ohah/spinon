@@ -51,6 +51,7 @@ pub use runtime_layout::{
     first_unsupported_runtime_custom_properties_inline_property,
     first_unsupported_runtime_custom_properties_paint_inline_property,
     first_unsupported_runtime_layout_inline_property,
+    first_unsupported_runtime_root_html_inline_property,
 };
 pub use runtime_overflow::{
     compute_c19_box_paint_opacity_cascade_with_stylesheets,

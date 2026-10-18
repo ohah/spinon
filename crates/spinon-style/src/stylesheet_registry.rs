@@ -6,7 +6,7 @@ use std::{
 };
 mod css_profile;
 mod raw_style;
-pub(crate) use css_profile::is_border_image_initial;
+pub(crate) use css_profile::{declaration_contains_css_system_color, is_border_image_initial};
 
 use cssparser::SourceLocation;
 use style::{
@@ -279,6 +279,12 @@ impl StylesheetRegistry {
         allowed_properties: &[&str],
     ) -> Option<(String, String)> {
         css_profile::first_unsupported_runtime_author_feature_with_media(self, allowed_properties)
+    }
+
+    pub(crate) fn first_unsupported_runtime_root_html_system_color(
+        &self,
+    ) -> Option<(String, String)> {
+        css_profile::first_unsupported_runtime_root_html_system_color(self)
     }
 
     pub(crate) fn first_unsupported_runtime_author_feature(

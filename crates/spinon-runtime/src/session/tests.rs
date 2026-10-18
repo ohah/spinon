@@ -378,6 +378,177 @@ fn root_html_canvas_rejects_duplicate_scheme_metadata_before_publishing_a_color(
     );
 }
 
+#[test]
+fn root_html_canvas_prefers_opaque_html_background_then_propagates_body_background() {
+    let (session, _) = RuntimeSession::new_with_root_html(
+        "<!doctype html><html><head><meta name='viewport' content='width=device-width'><meta name='color-scheme' content='light dark'><style>html { color-scheme: dark; background-color: rgb(18 52 86); } body { background-color: rgb(171 205 239); }</style></head><body><main>canvas</main></body></html>",
+    )
+    .expect("root HTML session should initialize");
+
+    let canvas = session
+        .resolve_root_html_canvas(
+            1170.0,
+            2532.0,
+            3.0,
+            spinon_style::CssMediaEnvironment::MOBILE,
+            Duration::from_secs(3),
+        )
+        .expect("supported root and body backgrounds should resolve");
+    assert_eq!(canvas.used_color_scheme, spinon_style::CssColorScheme::Dark);
+    assert_eq!(canvas.color_rgba, [18, 52, 86, 255]);
+
+    let completed = session.ua_cascade_snapshot().completed.unwrap();
+    let root = &completed.roots[0];
+    let body_id = root.body_node_id.expect("HTML document should have a body");
+    let body = root
+        .styles
+        .elements
+        .iter()
+        .find(|element| element.node_id.get() == body_id)
+        .expect("computed styles should include the body");
+    assert_eq!(
+        body.background_paint,
+        Some(spinon_style::ComputedBackgroundPaint::Opaque(
+            spinon_style::OpaqueCssSrgb {
+                red: 171,
+                green: 205,
+                blue: 239,
+            }
+        ))
+    );
+}
+
+#[test]
+fn root_html_canvas_ignores_unsupported_body_alpha_when_opaque_html_wins() {
+    let (session, _) = RuntimeSession::new_with_root_html(
+        "<!doctype html><html><head><meta name='viewport' content='width=device-width'><meta name='color-scheme' content='light dark'><style>html { background-color: rgb(18 52 86); } body { background-color: rgba(200 100 50 / 0.5); }</style></head><body>canvas</body></html>",
+    )
+    .expect("root HTML session should initialize");
+
+    let canvas = session
+        .resolve_root_html_canvas(
+            1170.0,
+            2532.0,
+            3.0,
+            spinon_style::CssMediaEnvironment::MOBILE,
+            Duration::from_secs(3),
+        )
+        .expect("opaque html background takes precedence over body alpha");
+    assert_eq!(canvas.color_rgba, [18, 52, 86, 255]);
+}
+
+#[test]
+fn root_html_canvas_treats_zero_alpha_body_background_as_transparent() {
+    let (session, _) = RuntimeSession::new_with_root_html(
+        "<!doctype html><html><head><meta name='viewport' content='width=device-width'><meta name='color-scheme' content='light dark'><style>:root { color-scheme: dark; } body { background-color: rgb(30 140 70 / 0); }</style></head><body>canvas</body></html>",
+    )
+    .expect("root HTML session should initialize");
+    let mut media_environment = spinon_style::CssMediaEnvironment::MOBILE;
+    media_environment.color_scheme = spinon_style::CssColorScheme::Dark;
+
+    let canvas = session
+        .resolve_root_html_canvas(
+            1170.0,
+            2532.0,
+            3.0,
+            media_environment,
+            Duration::from_secs(3),
+        )
+        .expect("zero-alpha body background should use the dark Canvas fallback");
+    assert_eq!(canvas.color_rgba, [18, 18, 18, 255]);
+}
+
+#[test]
+fn root_html_canvas_propagates_body_color_from_stylesheet_and_custom_property() {
+    let (session, _) = RuntimeSession::new_with_root_html(
+        "<!doctype html><html><head><meta name='viewport' content='width=device-width'><meta name='color-scheme' content='light dark'><style>:root { --canvas-test: rgb(30 140 70); } body { background-color: var(--canvas-test); }</style></head><body><main>canvas</main></body></html>",
+    )
+    .expect("root HTML session should initialize");
+    let mut media_environment = spinon_style::CssMediaEnvironment::MOBILE;
+    media_environment.color_scheme = spinon_style::CssColorScheme::Dark;
+
+    let canvas = session
+        .resolve_root_html_canvas(
+            1170.0,
+            2532.0,
+            3.0,
+            media_environment,
+            Duration::from_secs(3),
+        )
+        .expect("computed var() body background should resolve");
+    assert_eq!(canvas.used_color_scheme, spinon_style::CssColorScheme::Dark);
+    assert_eq!(canvas.color_rgba, [30, 140, 70, 255]);
+}
+
+#[test]
+fn root_html_canvas_recomputes_body_background_for_prefers_color_scheme() {
+    let (session, _) = RuntimeSession::new_with_root_html(
+        "<!doctype html><html><head><meta name='viewport' content='width=device-width'><meta name='color-scheme' content='light dark'><style>:root { color-scheme: normal; } @media (prefers-color-scheme: light) { body { background-color: rgb(210 220 230); } } @media (prefers-color-scheme: dark) { body { background-color: rgb(12 34 56); } }</style></head><body>canvas</body></html>",
+    )
+    .expect("root HTML session should initialize");
+    let mut media_environment = spinon_style::CssMediaEnvironment::MOBILE;
+    media_environment.color_scheme = spinon_style::CssColorScheme::Light;
+
+    let light = session
+        .resolve_root_html_canvas(
+            1170.0,
+            2532.0,
+            3.0,
+            media_environment,
+            Duration::from_secs(3),
+        )
+        .expect("light media body background should resolve");
+    assert_eq!(light.color_rgba, [210, 220, 230, 255]);
+    assert_eq!(light.used_color_scheme, spinon_style::CssColorScheme::Light);
+
+    media_environment.color_scheme = spinon_style::CssColorScheme::Dark;
+    let dark = session
+        .resolve_root_html_canvas(
+            1170.0,
+            2532.0,
+            3.0,
+            media_environment,
+            Duration::from_secs(3),
+        )
+        .expect("dark media body background should resolve");
+    assert_eq!(dark.color_rgba, [12, 34, 56, 255]);
+    assert_eq!(dark.used_color_scheme, spinon_style::CssColorScheme::Dark);
+    assert!(dark.cascade_key.environment_revision > light.cascade_key.environment_revision);
+}
+
+#[test]
+fn root_html_canvas_fails_closed_for_partial_alpha_and_background_images() {
+    for style in [
+        "body { background-color: rgba(200, 100, 50, 0.5); }",
+        "body { background-color: color(srgb 0.2 0.2 0.9); }",
+        "body { background-color: hsl(120 100% 25%); }",
+        "body { background-color: hwb(240 20% 10%); }",
+        "body { background-color: Canvas; }",
+        "body { background-image: linear-gradient(red, blue); }",
+    ] {
+        let source = format!(
+            "<!doctype html><html><head><meta name='viewport' content='width=device-width'><meta name='color-scheme' content='light dark'><style>{style}</style></head><body>canvas</body></html>"
+        );
+        let (session, _) = RuntimeSession::new_with_root_html(&source)
+            .expect("unsupported background style still parses as HTML");
+        let error = session
+            .resolve_root_html_canvas(
+                1170.0,
+                2532.0,
+                3.0,
+                spinon_style::CssMediaEnvironment::MOBILE,
+                Duration::from_secs(3),
+            )
+            .expect_err("unsupported paint input must not publish a Canvas color");
+        let expected = if style.contains("rgba") {
+            super::RootHtmlCanvasError::UnsupportedComputedBackgroundColor
+        } else {
+            super::RootHtmlCanvasError::CascadeFailed
+        };
+        assert_eq!(error, expected);
+    }
+}
+
 fn eval(session: &RuntimeSession, source: &str) -> super::OperationResponse {
     session.eval(source, TaskPriority::UserVisible)
 }

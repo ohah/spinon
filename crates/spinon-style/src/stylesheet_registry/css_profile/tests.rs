@@ -126,3 +126,47 @@ fn color_scheme_is_admitted_only_by_the_root_html_runtime_profile() {
             .is_none()
     );
 }
+
+#[test]
+fn root_html_canvas_profile_rejects_system_colors_and_their_custom_properties() {
+    for css in [
+        "body { background-color: Canvas; }",
+        "@media (prefers-color-scheme: dark) { body { background-color: CanvasText; } }",
+        ":root { --canvas-background: Canvas; } body { background-color: var(--canvas-background); }",
+    ] {
+        let mut registry = StylesheetRegistry::new();
+        registry
+            .append(StylesheetSource {
+                id: "root-html-system-color".to_owned(),
+                base_url: "https://spinon.invalid/index.html".to_owned(),
+                origin: CssOrigin::Author,
+                css: css.to_owned(),
+            })
+            .unwrap();
+
+        assert!(
+            registry
+                .first_unsupported_runtime_root_html_system_color()
+                .is_some(),
+            "system color must fail closed: {css}"
+        );
+    }
+}
+
+#[test]
+fn root_html_canvas_system_color_scanner_ignores_string_contents() {
+    let mut registry = StylesheetRegistry::new();
+    registry
+        .append(StylesheetSource {
+            id: "root-html-system-color-string".to_owned(),
+            base_url: "https://spinon.invalid/index.html".to_owned(),
+            origin: CssOrigin::Author,
+            css: ":root { --label: \"Canvas\"; } body { background-color: #123456; }".to_owned(),
+        })
+        .unwrap();
+
+    assert_eq!(
+        registry.first_unsupported_runtime_root_html_system_color(),
+        None
+    );
+}

@@ -16,10 +16,13 @@ use std::sync::Arc;
 use spinon_core::{AttributeName, DocumentChangeBatch, DocumentOperation, HostDocument, OwnerId};
 
 use super::{
-    CssViewport, StyloDocumentView, compute_runtime_flex_paint_cascade,
-    first_unsupported_runtime_flex_paint_inline_property,
+    CssViewport, StyloDocumentView,
+    compute_runtime_flex_custom_properties_media_environment_cascade_with_stylesheets,
+    compute_runtime_flex_paint_cascade, first_unsupported_runtime_flex_paint_inline_property,
     first_unsupported_runtime_layout_inline_property,
+    first_unsupported_runtime_root_html_inline_property,
 };
+use crate::{ComputedBackgroundPaint, OpaqueCssSrgb};
 
 const HTML: &str = "http://www.w3.org/1999/xhtml";
 
@@ -48,6 +51,65 @@ fn view_for_inline_style(style: &str) -> (StyloDocumentView, spinon_core::NodeId
         StyloDocumentView::new_html_fragment_child_shared(Arc::new(document.snapshot()), root)
             .unwrap();
     (view, root.id())
+}
+
+#[test]
+fn root_html_profile_exports_inline_background_color_as_typed_paint() {
+    let (view, node) = view_for_inline_style("background-color:#123456");
+    assert_eq!(
+        first_unsupported_runtime_root_html_inline_property(&view),
+        None
+    );
+    let snapshot =
+        compute_runtime_flex_custom_properties_media_environment_cascade_with_stylesheets(
+            &view,
+            &[],
+            CssViewport::C04_FIXTURE,
+            Default::default(),
+        )
+        .unwrap();
+    let style = snapshot
+        .elements
+        .iter()
+        .find(|style| style.node_id == node)
+        .unwrap();
+    assert_eq!(
+        style.background_paint,
+        Some(ComputedBackgroundPaint::Opaque(OpaqueCssSrgb {
+            red: 18,
+            green: 52,
+            blue: 86,
+        }))
+    );
+}
+
+#[test]
+fn root_html_inline_background_image_stays_outside_the_canvas_profile() {
+    let (view, node) = view_for_inline_style("background-image:linear-gradient(red,blue)");
+    assert_eq!(
+        first_unsupported_runtime_root_html_inline_property(&view),
+        Some((node, "background-image".to_owned()))
+    );
+}
+
+#[test]
+fn root_html_inline_system_colors_and_custom_property_values_fail_closed() {
+    for (style, expected_property) in [
+        (
+            "background-color: Canvas",
+            "CSS system color in background-color",
+        ),
+        (
+            "--canvas-background: Canvas; background-color: var(--canvas-background)",
+            "CSS system color in --canvas-background",
+        ),
+    ] {
+        let (view, node) = view_for_inline_style(style);
+        assert_eq!(
+            first_unsupported_runtime_root_html_inline_property(&view),
+            Some((node, expected_property.to_owned()))
+        );
+    }
 }
 
 #[test]

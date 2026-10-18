@@ -1,6 +1,6 @@
 use crate::root_html::{
     ParsedRootHtml, RootHtmlEnvironmentMetadata, RootHtmlEnvironmentSnapshot,
-    resolve_root_html_environment,
+    resolve_root_html_canvas_background, resolve_root_html_environment,
 };
 #[cfg(test)]
 use crate::v8::{NodeCallback, TextCallback};
@@ -94,6 +94,7 @@ pub enum RootHtmlCanvasError {
     MissingRoot,
     MissingRootStyle,
     UnsupportedComputedColorScheme,
+    UnsupportedComputedBackgroundColor,
 }
 
 impl RootHtmlCanvasError {
@@ -106,6 +107,7 @@ impl RootHtmlCanvasError {
             Self::StaleSnapshot => -12,
             Self::MissingRoot | Self::MissingRootStyle => -11,
             Self::UnsupportedComputedColorScheme => -14,
+            Self::UnsupportedComputedBackgroundColor => -15,
         }
     }
 
@@ -119,6 +121,7 @@ impl RootHtmlCanvasError {
             Self::MissingRoot => "missing_root",
             Self::MissingRootStyle => "missing_root_style",
             Self::UnsupportedComputedColorScheme => "unsupported_computed_color_scheme",
+            Self::UnsupportedComputedBackgroundColor => "unsupported_computed_background_color",
         }
     }
 }
@@ -126,7 +129,9 @@ impl RootHtmlCanvasError {
 #[derive(Clone, Debug, PartialEq)]
 pub struct RootHtmlCanvasSnapshot {
     pub environment: RootHtmlEnvironmentSnapshot,
+    /// HTML root CSS와 metadata에서 선택한 scheme입니다. html/body 배경이 투명할 때 canvas fallback으로 쓰입니다.
     pub used_color_scheme: CssColorScheme,
+    /// computed html/body background propagation 또는 scheme fallback으로 선택한 canvas RGBA8입니다.
     pub color_rgba: [u8; 4],
     pub cascade_key: RuntimeUaCascadeKey,
 }
@@ -738,10 +743,26 @@ impl RuntimeSession {
         let used_color_scheme = metadata
             .resolve_canvas_color_scheme(computed_root_value, environment.prefers_color_scheme)
             .ok_or(RootHtmlCanvasError::UnsupportedComputedColorScheme)?;
-        let color_rgba = match used_color_scheme {
-            CssColorScheme::Light => [255, 255, 255, 255],
-            CssColorScheme::Dark => [18, 18, 18, 255],
-        };
+        let html_background = root_style
+            .background_paint
+            .ok_or(RootHtmlCanvasError::MissingRootStyle)?;
+        let body_background = root
+            .body_node_id
+            .map(|body_node_id| {
+                root.styles
+                    .elements
+                    .iter()
+                    .find(|element| element.node_id.get() == body_node_id)
+                    .and_then(|element| element.background_paint)
+                    .ok_or(RootHtmlCanvasError::MissingRootStyle)
+            })
+            .transpose()?;
+        let color_rgba = resolve_root_html_canvas_background(
+            html_background,
+            body_background,
+            used_color_scheme,
+        )
+        .ok_or(RootHtmlCanvasError::UnsupportedComputedBackgroundColor)?;
 
         Ok(RootHtmlCanvasSnapshot {
             environment,

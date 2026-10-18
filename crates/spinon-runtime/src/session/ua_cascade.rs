@@ -127,6 +127,7 @@ pub struct RuntimeUaCascadeKey {
 #[derive(Clone, Debug, PartialEq)]
 pub struct RuntimeUaCascadeRoot {
     pub root_node_id: u64,
+    pub body_node_id: Option<u64>,
     pub styles: ComputedStyleSnapshot,
 }
 

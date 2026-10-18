@@ -171,6 +171,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         runtime_block_flex_grid_template_author_properties();
     let mut runtime_root_html_author_properties = RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES.to_vec();
     runtime_root_html_author_properties.push("color-scheme");
+    runtime_root_html_author_properties.push("background-color");
     let allowed_author_properties: Option<&[&str]> = match profile {
         ComputedStyleProfile::BasicCascadeV1 => None,
         ComputedStyleProfile::SupportedElementsUaV1 => None,
@@ -290,6 +291,15 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
             feature,
         });
     }
+    if profile == ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
+        && let Some((stylesheet_id, feature)) =
+            registry.first_unsupported_runtime_root_html_system_color()
+    {
+        return Err(CssCascadeError::UnsupportedAuthorCss {
+            stylesheet_id,
+            feature,
+        });
+    }
     if matches!(
         profile,
         ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
@@ -384,7 +394,11 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
             &stylesheet_border_sources,
         );
         if is_runtime_layout_profile(profile) {
-            validate_synthetic_document_box(&html_style, "html")?;
+            validate_synthetic_document_box(
+                &html_style,
+                "html",
+                profile == ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1,
+            )?;
         }
         document_root_font_size_css_px = computed_font_size_css_px(&html_style);
         if !document_root_font_size_css_px.is_finite() || document_root_font_size_css_px < 0.0 {
@@ -406,7 +420,11 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
             &stylesheet_border_sources,
         );
         if is_runtime_layout_profile(profile) {
-            validate_synthetic_document_box(&body_style, "body")?;
+            validate_synthetic_document_box(
+                &body_style,
+                "body",
+                profile == ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1,
+            )?;
         }
         mount_parent_style = Some(body_style);
     }

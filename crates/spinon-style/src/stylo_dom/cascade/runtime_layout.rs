@@ -77,6 +77,7 @@ pub(super) fn runtime_flex_wrap_properties() -> Vec<(&'static str, LonghandId)> 
 pub(super) fn runtime_root_html_properties() -> Vec<(&'static str, LonghandId)> {
     let mut properties = runtime_flex_wrap_properties();
     properties.push(("color-scheme", LonghandId::ColorScheme));
+    properties.push(("background-color", LonghandId::BackgroundColor));
     properties
 }
 
@@ -346,6 +347,46 @@ fn first_unsupported_runtime_custom_properties_inline_property_with_paint(
             || RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES.contains(&property)
             || (allow_background_color && property == "background-color")
     })
+}
+
+/// Root HTML 환경 계산에서 inline `background-color`도 허용합니다.
+pub fn first_unsupported_runtime_root_html_inline_property(
+    view: &StyloDocumentView,
+) -> Option<(NodeId, String)> {
+    first_unsupported_runtime_custom_properties_inline_property_with_paint(view, true)
+        .or_else(|| first_runtime_root_html_inline_system_color(view))
+}
+
+fn first_runtime_root_html_inline_system_color(
+    view: &StyloDocumentView,
+) -> Option<(NodeId, String)> {
+    let guard = view.shared_lock().read();
+    let mut pending = vec![view.root_handle()];
+    while let Some(handle) = pending.pop() {
+        if let Some(element) = view.element(handle)
+            && let Some(inline_style) = element.data().inline_style.as_ref()
+        {
+            let block = inline_style.read_with(&guard);
+            for declaration in block.declarations() {
+                let property = declaration.id().name().into_owned();
+                let relevant = property == "background-color" || property.starts_with("--");
+                if relevant
+                    && crate::stylesheet_registry::declaration_contains_css_system_color(
+                        declaration,
+                    )
+                {
+                    return Some((handle.id(), format!("CSS system color in {property}")));
+                }
+            }
+        }
+        if let Some(children) = view.snapshot().children(handle) {
+            let children = children
+                .filter(|child| view.is_member(*child))
+                .collect::<Vec<_>>();
+            pending.extend(children.into_iter().rev());
+        }
+    }
+    None
 }
 
 pub(super) fn first_unsupported_inline_property(
