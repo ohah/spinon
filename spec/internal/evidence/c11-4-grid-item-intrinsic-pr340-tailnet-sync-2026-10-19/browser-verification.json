@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-19",
+  "tool": "Agent Browser",
+  "session": "spinon-c11-4-pr340-tailnet",
+  "host": "redacted",
+  "results": [
+    {
+      "path": "/spinon/roadmap.html",
+      "visible_assertions": [
+        "212개 표시",
+        "공식 완료 72/212"
+      ],
+      "screenshot": "tailnet-roadmap-counter-agent-browser.png"
+    },
+    {
+      "path": "/spinon/STATUS.html",
+      "visible_assertions": [
+        "C11.4 미완료",
+        "PR #340",
+        "grid_item_intrinsic_inputs"
+      ],
+      "screenshots": [
+        "tailnet-status-agent-browser.png",
+        "tailnet-status-pr340-agent-browser.png"
+      ]
+    },
+    {
+      "path": "/spinon/plan/c11-4-grid-track-sizing.html",
+      "visible_assertions": [
+        "C11.4 · CSS Grid track sizing 계획",
+        "grid_item_intrinsic_inputs",
+        "C11.4 미완료 범위"
+      ],
+      "screenshot": "tailnet-plan-agent-browser.png"
+    },
+    {
+      "path": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/grid-item-intrinsic-pr-diff-review-20.html",
+      "visible_assertions": [
+        "Grid item raw intrinsic input PR diff 적대 검토 20개",
+        "20개 독립 실패 관점과 검토 결과·제한"
+      ],
+      "screenshot": "tailnet-pr-review-agent-browser.png"
+    }
+  ],
+  "terminal_browser_used": false
+}
