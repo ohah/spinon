@@ -1,6 +1,6 @@
 # C13.3 · 네이티브 wheel·trackpad 입력 수집과 정규화
 
-**상태:** Android API 37 AVD native mouse wheel 행렬 8/8, 기존 거부 3/3, Control-wheel 4/4, 복합 source 2/2와 ADB touchpad ACTION_SCROLL fixture route 1/1 통과. API 29 ARM64 AVD 최소 지원선 follow-up에서도 ±H/V·대각 8/8 및 Control-wheel 거부 4/4를 확인했다. 후속 iPadOS 26.2 Simulator 재현에서 negative-only는 callback/process 3/3이었지만 시작 offset 0 경계라 실제 소비는 없었다. inner-target 수평 왕복 5회는 XCTest 5/5, positive-X callback/process 5/5, negative-X 3/5였고 누락은 반복 1·5였다. UIKit이 보고한 실제 delta는 XCTest의 ±38 요청과 다르며 관찰된 negative sample 세 개 중 offset 0 복귀는 없었다. 중심점 대조는 결과 번들 저장 공간 부족으로 판정 불가였고 partial log에서 negative sample의 target 5 선택을 관찰했다. 누락 callback 단계는 아직 특정하지 못했다. discrete mouse, Control-wheel, 실기기 trackpad도 미검증이며 C13.3은 미완료다. [iOS adapter 실행 근거와 재검증 로그](../spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.md)
+**상태:** Android API 37 AVD native mouse wheel 행렬 8/8, 기존 거부 3/3, Control-wheel 4/4, 복합 source 2/2와 ADB touchpad ACTION_SCROLL fixture route 1/1 통과. API 29 ARM64 AVD 최소 지원선 follow-up에서도 ±H/V·대각 8/8 및 Control-wheel 거부 4/4를 확인했다. 후속 iPadOS 26.2 Simulator 재현에서 negative-only는 callback/process 3/3이었지만 시작 offset 0 경계라 실제 소비는 없었다. inner-target 수평 왕복 5회는 XCTest 5/5, positive-X callback/process 5/5, negative-X 3/5였고 누락은 반복 1·5였다. UIKit이 보고한 실제 delta는 XCTest의 ±38 요청과 다르며 관찰된 negative sample 세 개 중 offset 0 복귀는 없었다. 중심점 대조는 결과 번들 저장 공간 부족으로 판정 불가였고 partial log에서 negative sample의 target 5 선택을 관찰했다. 누락 callback 단계는 아직 특정하지 못했다. 독립 UIKit 대조 Run 02는 경계 없는 20,000pt UIScrollView에서 10회 중 8회, 일반 UIView의 Run 03은 10회 중 7회 callback을 관찰했다. 양·음 방향별 누락이 Spinon adapter 밖에서도 재현됐지만 XCTest 생성·Simulator 전달·UIKit 인식 중 단계는 아직 분리되지 않았다. [standalone UIKit 대조 실행 근거](../spec/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/README.md). discrete mouse, Control-wheel, 실기기 trackpad도 미검증이며 C13.3은 미완료다. [iOS adapter 실행 근거와 재검증 로그](../spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.md)
 **ADB touchpad follow-up:** [실행·화면·artifact](../spec/internal/evidence/c13-3-android-avd-touchpad-point-2026-10-16/README.md) · [구현 검토 20개](../spec/internal/evidence/c13-3-android-avd-touchpad-point-implementation-review-20-2026-10-16.md) · [PR 변경 검토 30개](../spec/internal/evidence/c13-3-android-avd-touchpad-point-pr-delta-review-30-2026-10-16.md)
 **Android API 29 follow-up:** [사전 판정·실행·화면·pixel·hash](../spec/internal/evidence/c13-3-native-wheel-api29-2026-10-17/README.html) · [구현·실행 적대 검토 20개](../spec/internal/evidence/c13-3-native-wheel-api29-2026-10-17/implementation-review-20.html) · [PR 변경 적대 검토 30개](../spec/internal/evidence/c13-3-native-wheel-api29-2026-10-17/pr-delta-review-30.html)
 **공식 상위 항목:** [구현 상태 대장](../spec/STATUS.md#css-구현-체크리스트)
@@ -120,6 +120,14 @@ Run 06은 두 번째 hover가 원인인지 구분하려고 기존 중심점 test
 두 번째 run의 missing negative callback에는 native callback, process, adapter reject 로그가 모두 없다. 이를 앱 queue rejection으로 해석할 근거는 없고 XCTest synthesis, Simulator delivery, UIKit recognition 중 어느 단계인지도 분리하지 못했다. 현재 결과는 원인 후보를 좁히는 데 그치며 iOS ±X 반복 gate를 통과하지 않는다. 추가 조사는 같은 app hash·simulator에서 event delivery와 recognizer callback을 분리 계측한 뒤 진행한다.
 
 이번 후속 diff의 독립 실패 관점 검토는 [30개 검토표](../spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/pr-delta-review-30-2026-10-18-followup.md)에 기록했다.
+
+## 2026-10-18 standalone UIKit continuous wheel callback control
+
+Run 02는 기존 XCUITest scroll(byDeltaX: ±38, deltaY: 0)를 독립 UIKit 호스트에서 5회 왕복했다. continuous UIPanGestureRecognizer는 Spinon과 같은 scroll/touch 설정으로 두고, UIScrollView content 폭을 20,000pt, 초기 x offset을 10,000pt로 설정했다. 10개 요청 중 callback은 8개였고 positive-X 3/5, negative-X 5/5였다. callback이 없던 positive-X 반복 2·4에서는 offset도 변하지 않았다. offset 전체 범위 8,919~10,791pt는 0 및 최대 경계에서 멀다.
+
+Run 03은 같은 recognizer를 스크롤 뷰 없는 일반 UIView에 직접 부착하고 동일한 입력 순서를 실행했다. 10개 요청 중 callback 7개(positive-X 4/5, negative-X 3/5)를 관찰했다. 반복 3 negative-X, 4 positive-X, 5 negative-X 입력은 callback counter와 callback 기반 표시 offset이 바뀌지 않았다. 따라서 scroll boundary나 UIScrollView 경쟁만으로 누락을 설명할 수 없다.
+
+두 standalone run 모두 XCTest method 자체는 1/1 통과했다. 이 결과는 해당 입력 경로의 비결정성을 Spinon 앱 밖에서도 재현하며 제품 queue/runtime을 검증하지 않는다. 누락이 XCTest event synthesis, Simulator delivery, UIKit recognition 중 어디서 생기는지는 아직 unknown이고 Spinon adapter 결함 가능성도 배제하지 않는다. 이 증거만으로 추측성 제품 변경을 하지 않는다. [실험·원본 log·10회별 관찰](../spec/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/README.md) · [설계 실패 관점 검토 20개](../spec/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/probe-design-review-20.md) · [구현·실행 검토 20개](../spec/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/implementation-review-20.md).
 
 ## 실행·증거 경계
 

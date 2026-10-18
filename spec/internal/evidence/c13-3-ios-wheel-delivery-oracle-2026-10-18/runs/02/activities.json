@@ -1,0 +1,913 @@
+{
+  "testIdentifier" : "C133WheelProbeUITests/testContinuousScrollRecognizerDeliveryOracle()",
+  "testIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testContinuousScrollRecognizerDeliveryOracle",
+  "testName" : "testContinuousScrollRecognizerDeliveryOracle()",
+  "testRuns" : [
+    {
+      "activities" : [
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293091.451,
+          "title" : "Start Test at 2026-10-18 12:11:31.451"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293091.464,
+          "title" : "Set Up"
+        },
+        {
+          "childActivities" : [
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293091.873,
+                  "title" : "Setting up automation session"
+                },
+                {
+                  "childActivities" : [
+                    {
+                      "isAssociatedWithFailure" : false,
+                      "startTime" : 1792293092.408,
+                      "title" : "Update the Info.plist: 1) Support for all orientations will soon be required. 2) Launch screens will soon be required."
+                    }
+                  ],
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293092.381,
+                  "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293091.466,
+              "title" : "Launch dev.spinon.probe.oracle.host"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293091.466,
+          "title" : "Open dev.spinon.probe.oracle.host"
+        },
+        {
+          "childActivities" : [
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293094.553,
+                  "title" : "Checking existence of `\"scroll-oracle\" ScrollView`"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293094.552,
+              "title" : "Checking `Expect predicate `existsNoRetry == 1` for object \"scroll-oracle\" ScrollView`"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293093.49,
+          "title" : "Waiting 10.0s for \"scroll-oracle\" ScrollView to exist"
+        },
+        {
+          "childActivities" : [
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293095.633,
+                  "title" : "Checking existence of `\"scroll-offset\" Any`"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293095.632,
+              "title" : "Checking `Expect predicate `existsNoRetry == 1` for object \"scroll-offset\" Any`"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293094.572,
+          "title" : "Waiting 10.0s for \"scroll-offset\" Any to exist"
+        },
+        {
+          "childActivities" : [
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293096.701,
+                  "title" : "Checking existence of `\"wheel-callbacks\" Any`"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293096.7,
+              "title" : "Checking `Expect predicate `existsNoRetry == 1` for object \"wheel-callbacks\" Any`"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293095.647,
+          "title" : "Waiting 10.0s for \"wheel-callbacks\" Any to exist"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293096.715,
+          "title" : "Find the \"scroll-offset\" Any"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293096.722,
+          "title" : "Find the \"wheel-callbacks\" Any"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293096.731,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293096.733,
+              "title" : "Find the \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293096.75,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293096.739,
+              "title" : "Check for interrupting elements affecting \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293096.767,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293096.775,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293096.783,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293096.767,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293102.154,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293096.731,
+          "title" : "Scroll \"scroll-oracle\" ScrollView[0.50, 0.50] by dx: 38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293102.408,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293102.418,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293102.427,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293102.433,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293102.44,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293102.442,
+              "title" : "Find the \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293102.455,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293102.447,
+              "title" : "Check for interrupting elements affecting \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293102.468,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293102.475,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293102.482,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293102.468,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293107.846,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293102.44,
+          "title" : "Scroll \"scroll-oracle\" ScrollView[0.50, 0.50] by dx: -38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293108.101,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293108.115,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293108.123,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293108.13,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293108.136,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293108.138,
+              "title" : "Find the \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293108.15,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293108.142,
+              "title" : "Check for interrupting elements affecting \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293108.163,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293108.17,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293108.177,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293108.163,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293113.541,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293108.136,
+          "title" : "Scroll \"scroll-oracle\" ScrollView[0.50, 0.50] by dx: 38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293113.799,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293113.813,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293113.822,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293113.83,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293113.838,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293113.839,
+              "title" : "Find the \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293113.853,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293113.845,
+              "title" : "Check for interrupting elements affecting \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293113.867,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293113.875,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293113.883,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293113.867,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293119.247,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293113.838,
+          "title" : "Scroll \"scroll-oracle\" ScrollView[0.50, 0.50] by dx: -38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293119.51,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293119.525,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293119.533,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293119.541,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293119.549,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293119.551,
+              "title" : "Find the \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293119.565,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293119.556,
+              "title" : "Check for interrupting elements affecting \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293119.58,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293119.587,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293119.595,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293119.579,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293124.967,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293119.549,
+          "title" : "Scroll \"scroll-oracle\" ScrollView[0.50, 0.50] by dx: 38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293125.23,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293125.244,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293125.253,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293125.261,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293125.269,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293125.271,
+              "title" : "Find the \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293125.284,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293125.276,
+              "title" : "Check for interrupting elements affecting \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293125.299,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293125.306,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293125.315,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293125.299,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293130.68,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293125.269,
+          "title" : "Scroll \"scroll-oracle\" ScrollView[0.50, 0.50] by dx: -38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293130.936,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293130.95,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293130.963,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293130.97,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293130.977,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293130.979,
+              "title" : "Find the \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293130.993,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293130.985,
+              "title" : "Check for interrupting elements affecting \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293131.008,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293131.016,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293131.026,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293131.008,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293136.391,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293130.977,
+          "title" : "Scroll \"scroll-oracle\" ScrollView[0.50, 0.50] by dx: 38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293136.655,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293136.664,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293136.672,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293136.679,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293136.688,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293136.69,
+              "title" : "Find the \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293136.703,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293136.695,
+              "title" : "Check for interrupting elements affecting \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293136.718,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293136.725,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293136.734,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293136.718,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293142.103,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293136.688,
+          "title" : "Scroll \"scroll-oracle\" ScrollView[0.50, 0.50] by dx: -38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293142.367,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293142.381,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293142.389,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293142.397,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293142.405,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293142.407,
+              "title" : "Find the \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293142.42,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293142.412,
+              "title" : "Check for interrupting elements affecting \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293142.435,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293142.442,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293142.45,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293142.435,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293147.807,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293142.405,
+          "title" : "Scroll \"scroll-oracle\" ScrollView[0.50, 0.50] by dx: 38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293148.07,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293148.083,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293148.092,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293148.099,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293148.107,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293148.109,
+              "title" : "Find the \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293148.123,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293148.114,
+              "title" : "Check for interrupting elements affecting \"scroll-oracle\" ScrollView"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293148.137,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293148.144,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293148.152,
+                  "title" : "Find the \"scroll-oracle\" ScrollView"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293148.137,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293153.519,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293148.107,
+          "title" : "Scroll \"scroll-oracle\" ScrollView[0.50, 0.50] by dx: -38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293153.774,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293153.787,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "attachments" : [
+            {
+              "lifetime" : "keepAlways",
+              "name" : "C13.3 UIKit delivery oracle observations_0_31B44EED-4D5B-4578-BE7E-88231065EB4C.txt",
+              "payloadId" : "0~FzpDWOa87PSfRvBha5VJw7qyoUwaT4An0QlBlECWgxqNpvQElR56kjjwbZNpayhc-sHBh3q63KgloNK9g6YULg==",
+              "timestamp" : 1792293153.796,
+              "uuid" : "FDC0DF0F-B23A-4894-BFDA-FFF8F84E07F3"
+            }
+          ],
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293153.796,
+              "title" : "C13.3 UIKit delivery oracle observations"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293153.796,
+          "title" : "Added attachment named 'C13.3 UIKit delivery oracle observations'"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293153.796,
+          "title" : "Terminate dev.spinon.probe.oracle.host:49002"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293154.868,
+          "title" : "Tear Down"
+        }
+      ],
+      "device" : {
+        "architecture" : "arm64",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "modelName" : "iPad Pro 13-inch (M5)",
+        "osBuildNumber" : "23C54",
+        "osVersion" : "26.2",
+        "platform" : "iOS Simulator"
+      },
+      "testPlanConfiguration" : {
+        "configurationId" : "1",
+        "configurationName" : "Test Scheme Action"
+      }
+    }
+  ]
+}

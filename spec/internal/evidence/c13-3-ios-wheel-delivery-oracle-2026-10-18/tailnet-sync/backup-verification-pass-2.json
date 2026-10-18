@@ -1,0 +1,162 @@
+{
+  "pass": "pass-2",
+  "checked_backup_files": 22,
+  "verified_against_pass1_source": 22,
+  "failures": [],
+  "items": [
+    {
+      "path": "0001-conformance.html",
+      "bytes": 33137,
+      "sha256": "44ce6f6a2458ad20e31dc82c4662b98bdc26e41394f63560d77a7aac0beffc0d",
+      "expected_pass1_source_sha256": "44ce6f6a2458ad20e31dc82c4662b98bdc26e41394f63560d77a7aac0beffc0d",
+      "matches": true
+    },
+    {
+      "path": "0002-ui-tree-events.html",
+      "bytes": 31746,
+      "sha256": "d865dc556d458bbdc19adba439238e93262e710fdf257835545e193793243eb8",
+      "expected_pass1_source_sha256": "d865dc556d458bbdc19adba439238e93262e710fdf257835545e193793243eb8",
+      "matches": true
+    },
+    {
+      "path": "0003-web-surface.html",
+      "bytes": 41299,
+      "sha256": "7873ad9666b30c7f448ba25faa8ebcac4e362ea6d8859b7dd2247bdefce0c6cc",
+      "expected_pass1_source_sha256": "7873ad9666b30c7f448ba25faa8ebcac4e362ea6d8859b7dd2247bdefce0c6cc",
+      "matches": true
+    },
+    {
+      "path": "0004-runtime-build.html",
+      "bytes": 30712,
+      "sha256": "19c2f80c53022dc27cf15e9bfe9435610e790539ebd7eba8a03e5c091f6932d0",
+      "expected_pass1_source_sha256": "19c2f80c53022dc27cf15e9bfe9435610e790539ebd7eba8a03e5c091f6932d0",
+      "matches": true
+    },
+    {
+      "path": "0005-developer-tools.html",
+      "bytes": 20865,
+      "sha256": "f900582be5c325df25de8881b06a125eefdfda5ea484ce45aaf6d249e7ccedba",
+      "expected_pass1_source_sha256": "f900582be5c325df25de8881b06a125eefdfda5ea484ce45aaf6d249e7ccedba",
+      "matches": true
+    },
+    {
+      "path": "0006-routing.html",
+      "bytes": 25708,
+      "sha256": "53140e53899a955c0733f2046a5c9d42410b6460fe1622c5a5f5cf2bf14fbdce",
+      "expected_pass1_source_sha256": "53140e53899a955c0733f2046a5c9d42410b6460fe1622c5a5f5cf2bf14fbdce",
+      "matches": true
+    },
+    {
+      "path": "0007-dom-compatibility.html",
+      "bytes": 37282,
+      "sha256": "52296b50287337babf065868bddc0bf536630030b261809d2451790b7d83883d",
+      "expected_pass1_source_sha256": "52296b50287337babf065868bddc0bf536630030b261809d2451790b7d83883d",
+      "matches": true
+    },
+    {
+      "path": "404.html",
+      "bytes": 9110,
+      "sha256": "98284fea159652a790b012b18cad9d1616fe0f3af2f1c39048f457bddb3ef4fc",
+      "expected_pass1_source_sha256": "98284fea159652a790b012b18cad9d1616fe0f3af2f1c39048f457bddb3ef4fc",
+      "matches": true
+    },
+    {
+      "path": "README.html",
+      "bytes": 23641,
+      "sha256": "21cefd013cf5d3f0ac6ba9d0c9b7aa14a1ea9a72595ced0385551e8076156016",
+      "expected_pass1_source_sha256": "21cefd013cf5d3f0ac6ba9d0c9b7aa14a1ea9a72595ced0385551e8076156016",
+      "matches": true
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 359589,
+      "sha256": "b9a912dc9974f498f215edae5b3880a8dfb60b8529aba126a59f72a78adeef15",
+      "expected_pass1_source_sha256": "b9a912dc9974f498f215edae5b3880a8dfb60b8529aba126a59f72a78adeef15",
+      "matches": true
+    },
+    {
+      "path": "api/README.html",
+      "bytes": 18455,
+      "sha256": "c9993d468da1a6544e3c9c04b0b6d6fdb423ec6e6312d3c2006e89da891802bf",
+      "expected_pass1_source_sha256": "c9993d468da1a6544e3c9c04b0b6d6fdb423ec6e6312d3c2006e89da891802bf",
+      "matches": true
+    },
+    {
+      "path": "api/index.html",
+      "bytes": 19406,
+      "sha256": "09fb2cd74fcf0c3c1cec4ef1cf64300f6cd6085feb6cf45c64eb33e5d950e421",
+      "expected_pass1_source_sha256": "09fb2cd74fcf0c3c1cec4ef1cf64300f6cd6085feb6cf45c64eb33e5d950e421",
+      "matches": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 12425,
+      "sha256": "04b35663b211411f688d4503a336e07123777a352948337e1b1b215521e5accf",
+      "expected_pass1_source_sha256": "04b35663b211411f688d4503a336e07123777a352948337e1b1b215521e5accf",
+      "matches": true
+    },
+    {
+      "path": "internal/0063-c13-3-scroll-gestures.html",
+      "bytes": 69469,
+      "sha256": "774c6265a8d060a4acc8a13d8de81e5f13a240ef10a299a2e3932dce28daee4d",
+      "expected_pass1_source_sha256": "774c6265a8d060a4acc8a13d8de81e5f13a240ef10a299a2e3932dce28daee4d",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/README.html",
+      "bytes": 28320,
+      "sha256": "8b5f31f8851c647866bb25aed085fc6590caf00f61ea434926e5442d92fa43f4",
+      "expected_pass1_source_sha256": "8b5f31f8851c647866bb25aed085fc6590caf00f61ea434926e5442d92fa43f4",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/README.md",
+      "bytes": 6313,
+      "sha256": "519dc63c666e62a8ab420fd3ca1e44c9ada1ce55bbe7b032b8e31eb9dc0a71ba",
+      "expected_pass1_source_sha256": "519dc63c666e62a8ab420fd3ca1e44c9ada1ce55bbe7b032b8e31eb9dc0a71ba",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/implementation-review-20.html",
+      "bytes": 25095,
+      "sha256": "1880633522d63c4013190c112145c15c98d1cba5b21910282f8d9678eaf3b447",
+      "expected_pass1_source_sha256": "1880633522d63c4013190c112145c15c98d1cba5b21910282f8d9678eaf3b447",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/probe-design-review-20.html",
+      "bytes": 25756,
+      "sha256": "f43723c4e539a2c66e3dae7ad4d49bbb3798388b60f0ef3f4e15b24e6fb04559",
+      "expected_pass1_source_sha256": "f43723c4e539a2c66e3dae7ad4d49bbb3798388b60f0ef3f4e15b24e6fb04559",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/render-build-result.md",
+      "bytes": 1581,
+      "sha256": "0c0c5df36b99860c728301f27c15b29f2cf2fb29548bf17cb5eb72ee32cd9f5a",
+      "expected_pass1_source_sha256": "0c0c5df36b99860c728301f27c15b29f2cf2fb29548bf17cb5eb72ee32cd9f5a",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/render-build.log",
+      "bytes": 5851,
+      "sha256": "ba1b443c56b264662097ba55b228929321a9a5ccaaf85c84d622a2caf891fa77",
+      "expected_pass1_source_sha256": "ba1b443c56b264662097ba55b228929321a9a5ccaaf85c84d622a2caf891fa77",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/route-manifest.json",
+      "bytes": 948,
+      "sha256": "cc66fad76757af6cff4d549fffd985cc0647475a589139f4d4ba1c6d50f8ba40",
+      "expected_pass1_source_sha256": "cc66fad76757af6cff4d549fffd985cc0647475a589139f4d4ba1c6d50f8ba40",
+      "matches": true
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.html",
+      "bytes": 61887,
+      "sha256": "447b00a82aaea4f9ce3e499890738b4ef126714efd828071569a0016317f1ef8",
+      "expected_pass1_source_sha256": "447b00a82aaea4f9ce3e499890738b4ef126714efd828071569a0016317f1ef8",
+      "matches": true
+    }
+  ]
+}
