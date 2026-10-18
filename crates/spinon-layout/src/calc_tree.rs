@@ -1,6 +1,6 @@
 use std::{
     cell::RefCell,
-    collections::{BTreeMap, BTreeSet, HashMap},
+    collections::{BTreeMap, HashMap},
     sync::Arc,
 };
 
@@ -16,6 +16,7 @@ use taffy::{
     compute_grid_layout, compute_hidden_layout, compute_leaf_layout, compute_root_layout,
 };
 
+use self::intrinsic_measurements::GridItemIntrinsicMetadata;
 use self::replaced_sizing::{ReplacedSizingInput, resolve_used_size};
 use crate::{
     LayoutCalcId, LayoutCssMathValue, LayoutError, LayoutInput, LayoutIntrinsicMeasurementSource,
@@ -37,7 +38,9 @@ mod replaced_sizing;
 mod text;
 
 #[cfg(test)]
-pub(crate) use self::intrinsic_measurements::fail_next_intrinsic_measurement_reservation;
+pub(crate) use self::intrinsic_measurements::{
+    fail_next_grid_item_intrinsic_input_reservation, fail_next_intrinsic_measurement_reservation,
+};
 
 /// Taffy stores calc handles in the low three tag bits, so every owner is eight-byte aligned.
 #[repr(align(8))]
@@ -86,8 +89,7 @@ pub(super) struct CalcLayoutTree {
     text_flow_nodes: BTreeMap<SpinonNodeId, Vec<(usize, TaffyNodeId)>>,
     text_layouts: RefCell<HashMap<TaffyNodeId, BTreeMap<u32, TextLayoutSnapshot>>>,
     text_intrinsic_layouts: RefCell<HashMap<TaffyNodeId, TextIntrinsicInlineSizes>>,
-    grid_item_nodes: BTreeSet<SpinonNodeId>,
-    grid_item_styles: BTreeMap<SpinonNodeId, LayoutStyle>,
+    grid_item_intrinsic_metadata: BTreeMap<SpinonNodeId, GridItemIntrinsicMetadata>,
     record_intrinsic_measurements: bool,
     intrinsic_measurements: RefCell<Vec<crate::LayoutIntrinsicMeasurement>>,
 }
@@ -202,27 +204,8 @@ impl CalcLayoutTree {
                 &mut viewport_children,
             )?;
         }
-        let grid_item_nodes = input
-            .nodes
-            .iter()
-            .filter(|node| node.style.display == crate::LayoutDisplay::Grid)
-            .flat_map(|node| {
-                layout_children[&node.id].iter().copied().filter(|child| {
-                    !input.positioning.get(child).is_some_and(|positioning| {
-                        matches!(
-                            positioning.position,
-                            crate::LayoutPosition::Absolute | crate::LayoutPosition::Fixed
-                        )
-                    })
-                })
-            })
-            .collect::<BTreeSet<_>>();
-        let grid_item_styles = input
-            .nodes
-            .iter()
-            .filter(|node| grid_item_nodes.contains(&node.id))
-            .map(|node| (node.id, node.style))
-            .collect::<BTreeMap<_, _>>();
+        let grid_item_intrinsic_metadata =
+            self::intrinsic_measurements::grid_item_metadata(input, index, flow_only);
 
         let mut nodes = Vec::with_capacity(next_synthetic_position + 1);
         for (position, external_id) in postorder.iter().copied().enumerate() {
@@ -371,8 +354,7 @@ impl CalcLayoutTree {
             text_flow_nodes,
             text_layouts: RefCell::new(HashMap::new()),
             text_intrinsic_layouts: RefCell::new(HashMap::new()),
-            grid_item_nodes,
-            grid_item_styles,
+            grid_item_intrinsic_metadata,
             record_intrinsic_measurements: !flow_only,
             intrinsic_measurements: RefCell::new(Vec::new()),
         })

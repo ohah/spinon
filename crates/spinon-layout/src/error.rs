@@ -244,7 +244,7 @@ impl fmt::Display for LayoutError {
             ),
             Self::IntrinsicMeasurementAllocationFailure { node } => write!(
                 formatter,
-                "Grid item {node}의 intrinsic measurement 기록 공간을 예약하지 못했습니다"
+                "Grid item {node}의 intrinsic 입력 또는 측정 기록 공간을 예약하지 못했습니다"
             ),
             Self::UnsupportedIntrinsicSizing { node, reason } => {
                 write!(

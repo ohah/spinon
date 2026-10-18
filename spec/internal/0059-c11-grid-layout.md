@@ -107,15 +107,16 @@ Template area 행·열 수와 explicit track 수가 다르면 `grid-template-are
 - [Taffy `0.14.0` · `LayoutGridContainer`](https://docs.rs/taffy/0.14.0/taffy/tree/trait.LayoutGridContainer.html)
 - [C11 구현 계획](../../plan/c11-css-grid.md)
 
-## C11.4 intrinsic measure callback 관찰 조각
+## C11.4 raw intrinsic source input과 measure callback trace
 
-아래 Rust 계약은 C11.4 단계 A의 계측 조각이다. CSS Grid contribution을 계산하거나 public CSS 지원을 선언하지 않는다.
+아래 Rust 계약은 C11.4 단계 A의 입력 계측 조각이다. CSS Grid contribution을 계산하거나 public CSS 지원을 선언하지 않는다.
 
 - `LayoutOutput.intrinsic_measurements`는 시각 layout tree의 Taffy `SizingMode::InherentSize` leaf measure callback에서 관찰한 `LayoutIntrinsicMeasurement` 목록이다. in-flow Grid container의 직접 child에 해당하는 text/replaced 측정만 기록한다. flow-only 보조 계산은 기록하지 않으며, out-of-flow child는 Grid item으로 분류하지 않는다.
-- 항목은 입력 `NodeId`, 최종 `LayoutInputRevision`, 측정 원천, Grid item의 `LayoutStyle`, width/height 축별 `MinContent`·`MaxContent`·`Definite(px)`, callback의 known dimensions와 parent content-box size, callback이 반환한 content-box size를 보존한다. Replaced 원천은 natural size를, text 원천은 `FontRegistryRevision`을 추가로 보존한다.
-- Taffy inherent-size callback의 `available_space`가 항상 min/max-content인 것은 아니다. definite 값도 유효한 관찰 결과이며 이 목록만으로 CSS contribution 종류를 추론하면 안 된다. Taffy cache가 callback을 생략할 수 있으므로 목록은 callback 관찰 trace이지 canonical contribution set이 아니다. 반복 호출은 중복 항목으로 보존한다.
-- Padding/border/box-sizing을 나중 단계에서 적용할 수 있도록 item style은 남지만, 이 단계는 외곽 box 조정·min/max/preferred contribution 선택·item span·automatic minimum을 계산하지 않는다. anonymous Grid text item과 non-leaf Grid item의 aggregate measure 결과 및 descendant text의 item-level provenance도 아직 기록하지 않는다.
-- 기록 벡터 예약은 `try_reserve(1)`로 실패를 전달한다. 기록 오류는 layout 계산 종료 뒤 `LayoutError`가 되어 부분 `LayoutOutput`을 게시하지 않는다. 계측이 없는 출력에는 빈 벡터를 반환한다.
-- 이 type은 Rust `spinon-layout` 내부 경로에만 있다. FFI, Android/iOS 앱 runtime, 공개 `@spinon/*` API에 연결되지 않았다.
+- callback trace 항목은 입력 `NodeId`, 최종 `LayoutInputRevision`, 측정 원천, Grid item의 `LayoutStyle`, width/height 축별 `MinContent`·`MaxContent`·`Definite(px)`, callback의 known dimensions와 parent content-box size, callback이 반환한 content-box size를 보존한다. Replaced 원천은 natural size를, text 원천은 `FontRegistryRevision`을 추가로 보존한다.
+- Taffy inherent-size callback의 `available_space`가 항상 min/max-content인 것은 아니다. definite 값도 유효한 관찰 결과이며 이 목록만으로 CSS contribution 종류를 추론하면 안 된다. callback 호출 또는 cache hit에 결과 수집을 의존하지 않도록 별도의 `LayoutOutput.grid_item_intrinsic_inputs` 원본 목록을 제공한다.
+- 원본 목록은 원래 입력 트리의 직접 Grid child 순서와 container ID를 함께 보존한다. 숨겨진 subtree, absolute/fixed child, 원래 자식이 있는 non-leaf는 제외한다. Text source는 Parley `TextIntrinsicInlineSizes`의 min/max-content inline/block 값과 같은 font registry identity/revision을 보존한다. Replaced source는 C14.3 intrinsic natural content-box size를 보존한다. 모든 항목은 최종 `LayoutInputRevision`과 `LayoutStyle`을 함께 갖는다.
+- 두 목록은 목적이 다르며 서로 대체하지 않는다. 원본 목록은 callback이 관찰한 특정 available-space 응답을 모방하지 않는다. item의 padding/border/box-sizing을 contribution에 반영하거나 preferred/min/max contribution을 선택하지 않고, item span·automatic minimum·track sizing도 계산하지 않는다. anonymous Grid text item, non-leaf item의 aggregate measurement/provenance 및 descendant text의 item-level provenance는 아직 없다.
+- 각 목록의 벡터 예약은 `try_reserve(1)`로 실패를 전달한다. 기록 오류는 layout 계산 종료 뒤 `LayoutError`가 되어 부분 `LayoutOutput`을 게시하지 않는다. 해당 원본이 없는 출력에는 빈 벡터를 반환한다.
+- 이 type은 Rust `spinon-layout` 경로에만 있다. FFI, Android/iOS 앱 runtime, 공개 `@spinon/*` API에 연결되지 않았다.
 
-2026-10-19 구현 후보에서는 image와 text의 direct-leaf Grid callback, source/style/revision 및 축별 constraint regression을 focused Rust test와 [구현 실패 관점 20개](./evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/implementation-review-20.md)로 확인했다. 이는 C11.4 완료나 앱 검증을 뜻하지 않는다. anonymous Grid text item, 자동 최소, 단계별 track sizing, auto-repeat, nested non-leaf item, WPT 및 Android/iOS Simulator 관문은 계속 남아 있다.
+2026-10-19 구현 후보에서는 image와 text의 direct-leaf callback trace와 callback 독립 raw input을 각각 focused Rust test로 확인했다. Ahem text case에서는 callback trace가 definite available-space만 기록해도 새 목록에 min-content 70×20, max-content 100×10 CSS px가 남고, hidden child를 건너뛴 원래 source order 1을 보존한다. Image source의 natural size·style·layout revision, raw input 예약 실패 시 출력 거부와 같은 worker 복구도 확인했다. [기존 callback 구현 검토 20개](./evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/implementation-review-20.md)와 [raw input 구현 검토 20개](./evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/grid-item-intrinsic-input-review-20.md)가 각각의 변경 범위를 검토한다. 이는 C11.4 완료나 앱 검증을 뜻하지 않는다. anonymous Grid text item, 자동 최소, 단계별 track sizing, auto-repeat, nested non-leaf item, WPT 및 Android/iOS Simulator 관문은 계속 남아 있다.

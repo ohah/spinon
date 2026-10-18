@@ -1,7 +1,7 @@
 use std::collections::BTreeMap;
 
 use spinon_core::NodeId;
-use spinon_text_layout::FontRegistryRevision;
+use spinon_text_layout::{FontRegistryRevision, TextIntrinsicInlineSizes};
 use taffy::{AvailableSpace, NodeId as TaffyNodeId, Size};
 
 use crate::{LayoutError, LayoutInput, LayoutTextFlowSegment, LayoutTextSnapshot};
@@ -155,19 +155,7 @@ impl CalcLayoutTree {
                 })
             }
             AvailableSpace::MinContent | AvailableSpace::MaxContent => {
-                let cached = self.text_intrinsic_layouts.borrow().get(&node_id).cloned();
-                let sizes = if let Some(sizes) = cached {
-                    sizes
-                } else {
-                    let sizes = engine
-                        .borrow_mut()
-                        .intrinsic_inline_sizes(&paragraph)
-                        .map_err(LayoutError::TextLayout)?;
-                    self.text_intrinsic_layouts
-                        .borrow_mut()
-                        .insert(node_id, sizes.clone());
-                    sizes
-                };
+                let sizes = self.text_intrinsic_inline_sizes(node_id, paragraph.node)?;
                 Ok(TextMeasureResult {
                     size: match available_width {
                         AvailableSpace::MinContent => Size {
@@ -187,6 +175,34 @@ impl CalcLayoutTree {
             }
         }
     }
+
+    pub(super) fn text_intrinsic_inline_sizes(
+        &self,
+        node_id: TaffyNodeId,
+        owner: NodeId,
+    ) -> Result<TextIntrinsicInlineSizes, LayoutError> {
+        if let Some(sizes) = self.text_intrinsic_layouts.borrow().get(&node_id).cloned() {
+            return Ok(sizes);
+        }
+        let Some(paragraph) = self.text_paragraphs.get(&node_id) else {
+            return Err(LayoutError::UnsupportedTextParagraph {
+                node: owner,
+                reason: "Grid text intrinsic input에 대응하는 paragraph가 없습니다",
+            });
+        };
+        let engine = self
+            .text_layout_engine
+            .as_ref()
+            .ok_or(LayoutError::MissingTextLayoutEngine(paragraph.node))?;
+        let sizes = engine
+            .borrow_mut()
+            .intrinsic_inline_sizes(paragraph)
+            .map_err(LayoutError::TextLayout)?;
+        self.text_intrinsic_layouts
+            .borrow_mut()
+            .insert(node_id, sizes.clone());
+        Ok(sizes)
+    }
 }
 
 fn normalize_zero(value: f32) -> f32 {
@@ -197,22 +213,24 @@ fn normalize_zero(value: f32) -> f32 {
 mod tests {
     use std::{
         cell::RefCell,
-        collections::{BTreeMap, BTreeSet, HashMap},
+        collections::{BTreeMap, HashMap},
     };
 
     use spinon_core::NodeId;
     use spinon_text_layout::{
         ParagraphInput, ParagraphStyle, TextLayoutEngine, TextSource, WhiteSpaceMode, WordBreakMode,
     };
-    use taffy::{AvailableSpace, Style, TaffyTree};
+    use taffy::{AvailableSpace, NodeId as TaffyNodeId};
 
-    use super::CalcLayoutTree;
+    use super::super::intrinsic_measurements::GridItemIntrinsicMetadata;
+    use super::super::{CalcLayoutTree, Node};
 
     const AHEM: &[u8] = include_bytes!("../../../../tests/fixtures/resources/c15/Ahem.ttf");
 
     #[test]
-    fn intrinsic_measurement_returns_both_axes_and_keeps_definite_snapshot_separate() {
+    fn grid_text_source_collection_needs_no_callback_and_keeps_definite_snapshot_separate() {
         let spinon_node = NodeId::new(10).unwrap();
+        let grid_container = NodeId::new(12).unwrap();
         let mut text_engine = TextLayoutEngine::new_without_system_fonts();
         text_engine.register_font("Ahem", AHEM).unwrap();
         let paragraph = ParagraphInput {
@@ -233,11 +251,32 @@ mod tests {
             inline_styles: BTreeMap::new(),
             inline_run_styles: BTreeMap::new(),
         };
-        let mut taffy = TaffyTree::<()>::new();
-        let taffy_node = taffy.new_leaf(Style::default()).unwrap();
+        let taffy_node = TaffyNodeId::from(0_usize);
+        let item_style = crate::LayoutStyle::default();
+        let compact_style = crate::taffy_style::to_taffy_style(
+            spinon_node,
+            item_style,
+            false,
+            crate::LayoutPositioning::default(),
+            false,
+            &BTreeMap::new(),
+            crate::taffy_style::GridTaffyStyleInput {
+                container: None,
+                expanded_rows: None,
+                expanded_columns: None,
+                item: None,
+            },
+        )
+        .unwrap();
         let tree = CalcLayoutTree {
-            nodes: Vec::new(),
-            engine_ids: BTreeMap::new(),
+            nodes: vec![Node::new(
+                Vec::new(),
+                compact_style,
+                None,
+                0,
+                Some(spinon_node),
+            )],
+            engine_ids: BTreeMap::from([(spinon_node, taffy_node)]),
             layout_children: BTreeMap::new(),
             viewport_children: Vec::new(),
             viewport_root: None,
@@ -248,11 +287,39 @@ mod tests {
             text_flow_nodes: BTreeMap::new(),
             text_layouts: RefCell::new(HashMap::new()),
             text_intrinsic_layouts: RefCell::new(HashMap::new()),
-            grid_item_nodes: BTreeSet::new(),
-            grid_item_styles: BTreeMap::new(),
+            grid_item_intrinsic_metadata: BTreeMap::from([(
+                spinon_node,
+                GridItemIntrinsicMetadata {
+                    container: grid_container,
+                    source_order: 2,
+                    is_leaf: true,
+                    style: item_style,
+                },
+            )]),
             record_intrinsic_measurements: true,
             intrinsic_measurements: RefCell::new(Vec::new()),
         };
+
+        let inputs = tree
+            .collect_grid_item_intrinsic_inputs(crate::LayoutInputRevision::default())
+            .unwrap();
+        assert!(tree.intrinsic_measurements.borrow().is_empty());
+        assert_eq!(inputs.len(), 1);
+        assert_eq!(inputs[0].grid_container, grid_container);
+        assert_eq!(inputs[0].node, spinon_node);
+        assert_eq!(inputs[0].source_order, 2);
+        let crate::LayoutGridItemIntrinsicSource::Text { sizes } = &inputs[0].source else {
+            panic!("text grid item must retain its intrinsic source");
+        };
+        assert_eq!(
+            (sizes.min_content(), sizes.min_content_height()),
+            (70.0, 20.0)
+        );
+        assert_eq!(
+            (sizes.max_content(), sizes.max_content_height()),
+            (100.0, 10.0)
+        );
+        assert_eq!(sizes.font_registry_revision().0, 1);
 
         let min_content = tree
             .measure_text(taffy_node, AvailableSpace::MinContent)

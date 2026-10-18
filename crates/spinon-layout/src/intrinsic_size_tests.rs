@@ -168,6 +168,79 @@ fn grid_image_intrinsic_measurement_keeps_style_source_and_both_revisions() {
         (measure.content_size.width, measure.content_size.height),
         (24.0, 16.0)
     );
+
+    let intrinsic_input = output
+        .grid_item_intrinsic_inputs
+        .iter()
+        .find(|item| item.node == image.id())
+        .expect("image source input is recorded independently of its callback");
+    assert_eq!(intrinsic_input.grid_container, root.id());
+    assert_eq!(intrinsic_input.revision, output.revision);
+    assert_eq!(intrinsic_input.item_style, image_style);
+    assert!(matches!(
+        intrinsic_input.source,
+        crate::LayoutGridItemIntrinsicSource::Replaced { natural }
+            if natural == LayoutIntrinsicSize::new(24.0, 16.0)
+    ));
+}
+
+#[test]
+fn grid_image_intrinsic_input_is_separate_from_definite_measure_callback() {
+    let (document, root, image) = document();
+    let snapshot = image_snapshot(&document, image, LayoutIntrinsicSize::new(24.0, 16.0));
+    let mut root_style = root_style();
+    root_style.display = LayoutDisplay::Grid;
+    let item_style = LayoutStyle {
+        width: LayoutDimension::Fixed(24.0),
+        height: LayoutDimension::Fixed(16.0),
+        ..image_style()
+    };
+    let input = layout_input(&document, root, image, root_style, item_style).with_grid_layout(
+        BTreeMap::from([(
+            root.id(),
+            GridContainerInput {
+                columns: vec![GridTrackSize::LengthPx(WIDTH)],
+                rows: vec![GridTrackSize::LengthPx(HEIGHT)],
+                placement_mode: GridPlacementMode::TemplateGrid,
+                ..GridContainerInput::default()
+            },
+        )]),
+        BTreeMap::new(),
+    );
+
+    let output = TaffyLayoutEngine
+        .compute_with_intrinsic_size_snapshot(&input, &snapshot)
+        .unwrap();
+
+    let callback_measurements = output
+        .intrinsic_measurements
+        .iter()
+        .filter(|measurement| measurement.node == image.id())
+        .collect::<Vec<_>>();
+    assert!(!callback_measurements.is_empty());
+    assert!(callback_measurements.iter().all(|measurement| {
+        matches!(
+            measurement.available_space.width,
+            crate::LayoutIntrinsicMeasureSpace::Definite(_)
+        ) && matches!(
+            measurement.available_space.height,
+            crate::LayoutIntrinsicMeasureSpace::Definite(_)
+        )
+    }));
+    let item = output
+        .grid_item_intrinsic_inputs
+        .iter()
+        .find(|item| item.node == image.id())
+        .expect("replaced natural size is kept separate from callback responses");
+    assert_eq!(item.grid_container, root.id());
+    assert_eq!(item.revision, output.revision);
+    assert_eq!(item.revision.intrinsic_size(), snapshot.revision());
+    assert_eq!(item.item_style, item_style);
+    assert!(matches!(
+        item.source,
+        crate::LayoutGridItemIntrinsicSource::Replaced { natural }
+            if natural == LayoutIntrinsicSize::new(24.0, 16.0)
+    ));
 }
 
 #[test]
@@ -194,7 +267,7 @@ fn intrinsic_measurement_reservation_failure_discards_output_and_recovers() {
     let guard = crate::calc_tree::fail_next_intrinsic_measurement_reservation();
     let failed = engine.compute_with_intrinsic_size_snapshot(&input, &snapshot);
     let observed_failure = crate::test_allocator::take_failure_observed();
-    assert!(observed_failure);
+    assert!(observed_failure, "layout result: {failed:?}");
     assert!(matches!(
         failed,
         Err(LayoutError::IntrinsicMeasurementAllocationFailure { node }) if node == image.id()
@@ -209,6 +282,55 @@ fn intrinsic_measurement_reservation_failure_discards_output_and_recovers() {
             .intrinsic_measurements
             .iter()
             .any(|measurement| measurement.node == image.id())
+    );
+    assert!(!crate::test_allocator::take_failure_observed());
+}
+
+#[test]
+fn grid_item_intrinsic_input_reservation_failure_discards_output_and_recovers() {
+    let (document, root, image) = document();
+    let snapshot = image_snapshot(&document, image, LayoutIntrinsicSize::new(24.0, 16.0));
+    let mut root_style = root_style();
+    root_style.display = LayoutDisplay::Grid;
+    let mut item_style = image_style();
+    item_style.width = LayoutDimension::MinContent;
+    let input = layout_input(&document, root, image, root_style, item_style).with_grid_layout(
+        BTreeMap::from([(
+            root.id(),
+            GridContainerInput {
+                columns: vec![GridTrackSize::LengthPx(WIDTH)],
+                rows: vec![GridTrackSize::LengthPx(HEIGHT)],
+                placement_mode: GridPlacementMode::TemplateGrid,
+                ..GridContainerInput::default()
+            },
+        )]),
+        BTreeMap::new(),
+    );
+    let engine = TaffyLayoutEngine;
+    let guard = crate::calc_tree::fail_next_grid_item_intrinsic_input_reservation();
+    let failed = engine.compute_with_intrinsic_size_snapshot(&input, &snapshot);
+    let observed_failure = crate::test_allocator::take_failure_observed();
+    assert!(
+        observed_failure,
+        "compute result: {:?}",
+        failed
+            .as_ref()
+            .map(|output| output.grid_item_intrinsic_inputs.len())
+    );
+    assert!(matches!(
+        failed,
+        Err(LayoutError::IntrinsicMeasurementAllocationFailure { node }) if node == image.id()
+    ));
+    drop(guard);
+
+    let recovered = engine
+        .compute_with_intrinsic_size_snapshot(&input, &snapshot)
+        .expect("같은 worker의 다음 layout 계산은 다시 성공해야 합니다");
+    assert!(
+        recovered
+            .grid_item_intrinsic_inputs
+            .iter()
+            .any(|item| item.node == image.id())
     );
     assert!(!crate::test_allocator::take_failure_observed());
 }

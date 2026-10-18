@@ -4,9 +4,9 @@ use spinon_core::{ChangeBatch, EnvironmentRevision, NodeId, Operation, StyleRevi
 
 use crate::{
     GridContainerInput, GridItemInput, GridPlacementInput, GridPlacementMode, GridTrackSize,
-    LayoutDimension, LayoutDisplay, LayoutEngine, LayoutInput, LayoutIntrinsicMeasurementSource,
-    LayoutStyle, ParagraphInput, ParagraphStyle, TaffyLayoutEngine, TextLayoutEngine, TextSource,
-    Viewport, WhiteSpaceMode, WordBreakMode,
+    LayoutDimension, LayoutDisplay, LayoutEngine, LayoutGridItemIntrinsicSource, LayoutInput,
+    LayoutIntrinsicMeasurementSource, LayoutNode, LayoutStyle, ParagraphInput, ParagraphStyle,
+    TaffyLayoutEngine, TextLayoutEngine, TextSource, Viewport, WhiteSpaceMode, WordBreakMode,
 };
 
 const AHEM: &[u8] = include_bytes!("../../../tests/fixtures/resources/c15/Ahem.ttf");
@@ -195,6 +195,92 @@ fn grid_text_intrinsic_measurement_records_font_and_layout_revisions() {
     );
     assert_eq!(measurement.content_size.width, 100.0);
     assert_eq!(measurement.content_size.height, 10.0);
+}
+
+#[test]
+fn grid_text_intrinsic_input_preserves_minmax_beyond_definite_callback_trace() {
+    let mut grid_input = input(100.0, "XX XXXXXXX", WhiteSpaceMode::Normal);
+    let hidden = node(4);
+    grid_input.nodes[0].children.insert(0, hidden);
+    grid_input.nodes.insert(
+        1,
+        LayoutNode {
+            id: hidden,
+            children: Vec::new(),
+            style: LayoutStyle {
+                display: LayoutDisplay::None,
+                ..LayoutStyle::default()
+            },
+        },
+    );
+    grid_input.nodes[0].style.display = LayoutDisplay::Grid;
+    grid_input.nodes[0].style.height = LayoutDimension::Fixed(80.0);
+    grid_input.nodes[1].style.height = LayoutDimension::Fixed(10.0);
+    grid_input.grid_containers.insert(
+        node(1),
+        GridContainerInput {
+            columns: vec![GridTrackSize::LengthPx(100.0)],
+            rows: vec![GridTrackSize::LengthPx(10.0)],
+            placement_mode: GridPlacementMode::TemplateGrid,
+            ..GridContainerInput::default()
+        },
+    );
+    grid_input.grid_items.insert(
+        node(2),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(1),
+            row_end: GridPlacementInput::Line(2),
+            column_start: GridPlacementInput::Line(1),
+            column_end: GridPlacementInput::Line(2),
+        },
+    );
+
+    let output = TaffyLayoutEngine
+        .compute_with_text_layout_engine(&grid_input, &text_engine())
+        .unwrap();
+
+    let callback_measurements = output
+        .intrinsic_measurements
+        .iter()
+        .filter(|measurement| measurement.node == node(2))
+        .collect::<Vec<_>>();
+    assert!(!callback_measurements.is_empty());
+    assert!(callback_measurements.iter().all(|measurement| {
+        matches!(
+            measurement.available_space.width,
+            crate::LayoutIntrinsicMeasureSpace::Definite(_)
+        ) && matches!(
+            measurement.available_space.height,
+            crate::LayoutIntrinsicMeasureSpace::Definite(_)
+        )
+    }));
+    let item = output
+        .grid_item_intrinsic_inputs
+        .iter()
+        .find(|item| item.node == node(2))
+        .expect("Grid intrinsic input is collected independently of callback trace contents");
+    assert_eq!(item.grid_container, node(1));
+    assert_eq!(item.source_order, 1);
+    assert_eq!(item.revision, output.revision);
+    assert_eq!(item.item_style, grid_input.nodes[2].style);
+    assert!(
+        !output
+            .grid_item_intrinsic_inputs
+            .iter()
+            .any(|item| item.node == hidden)
+    );
+    let LayoutGridItemIntrinsicSource::Text { sizes } = &item.source else {
+        panic!("text Grid item must retain Parley intrinsic sizes");
+    };
+    assert_eq!(
+        (sizes.min_content(), sizes.min_content_height()),
+        (70.0, 20.0)
+    );
+    assert_eq!(
+        (sizes.max_content(), sizes.max_content_height()),
+        (100.0, 10.0)
+    );
+    assert_eq!(sizes.font_registry_revision().0, 1);
 }
 
 #[test]
