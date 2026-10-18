@@ -27,4 +27,4 @@
 
 Android 16/API 36 실기기 SM-S731N에서 APK SHA-256 `d8822ba473723e3f2d55ce35d650401c5fff2474fde0369a1c0d717197f8d781`로 16 cycle·128 session 생성을 완료했다. cycle마다 owner 8개와 CSS worker 8개가 ready 때 존재했고 해제 뒤 없어졌다. 기준 parser negative control과 전체 CSS reference suite도 통과했다. process PSS는 baseline 71,030 KiB, cycle 1/8/16 peak 91,069/94,560/94,600 KiB, 최종 92,026 KiB였다. process-wide 수치만으로 누수 여부를 판정하지 않는다.
 
-[실기기 원본과 요약](c12-4-repeated-session-lifecycle-2026-10-12/c124-lifecycle-20261011T171814366Z-d07c0982/README.md) · [parser negative-control test](../../../tools/css-reference/c12-4-repeated-session-lifecycle-validation.test.mjs)
+[실기기 원본과 요약](c12-4-repeated-session-lifecycle-2026-10-12/c124-lifecycle-20261011T171814366Z-d07c0982/README.md) · [parser negative-control test](https://github.com/ohah/spinon/blob/feat/c12-4-session-lifecycle-20261019/tools/css-reference/c12-4-repeated-session-lifecycle-validation.test.mjs)
