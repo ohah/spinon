@@ -30,7 +30,7 @@
 | 24 | media query나 color-scheme 작업과 혼동되는가 | 색상 스키마나 viewport 지원 주장을 포함하지 않았다. |
 | 25 | C04.12 root document 환경 범위가 확대되는가 | 별도 C04.12 완료 주장 없이 C14.1 slice만 기록했다. |
 | 26 | 계획 링크가 없는 문서로 연결되는가 | 병합된 `plan/c14-1-root-html-image-source.md`가 존재한다. |
-| 27 | 실행 근거 route가 빌드에서 끊기거나 Simulator 이미지가 빠지는가 | Rspress 2.0.22 선택 문서 build가 통과했고 evidence route와 두 screenshot asset이 산출물에 포함됐다. |
+| 27 | evidence route에서 source fixture가 base 밖 URL로 빠지거나 Simulator 이미지가 누락되는가 | fixture는 stable GitHub blob URL을 사용하고, screenshot은 `./` relative import로 고쳤다. Rspress 2.0.22 선택 build에서 evidence route와 두 image asset을 확인했다. |
 | 28 | PR 링크가 다른 번호나 잘못된 repository를 가리키는가 | 링크는 `ohah/spinon`의 병합 PR #295다. |
 | 29 | 날짜와 병합 사실이 맞지 않는가 | PR은 UTC 2026-10-17, KST 2026-10-18에 병합되어 표기 날짜와 일치한다. |
 | 30 | 안내 문구가 공식 완료 집계를 수동 고정하거나 바꾸는가 | 노트는 설명만 추가하며 완료 수는 기존 대로 공식 `STATUS.md`에서 동적으로 읽는다. |
