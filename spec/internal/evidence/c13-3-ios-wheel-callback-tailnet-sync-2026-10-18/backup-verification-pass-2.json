@@ -1,0 +1,111 @@
+{
+  "verified_backups": 15,
+  "all_verified": true,
+  "items": [
+    {
+      "path": "404.html",
+      "bytes": 6226,
+      "original_sha256": "caf2b2f54016fb9e8a3860a860be02a115ab6694a63c805b75e9464ffb228d23",
+      "backup_sha256": "caf2b2f54016fb9e8a3860a860be02a115ab6694a63c805b75e9464ffb228d23",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 355690,
+      "original_sha256": "32f91f529a5124ec294a0cb1c981796aa189569199097e48f41e0046fc5c2bc1",
+      "backup_sha256": "32f91f529a5124ec294a0cb1c981796aa189569199097e48f41e0046fc5c2bc1",
+      "verified": true
+    },
+    {
+      "path": "internal/0063-c13-3-scroll-gestures.html",
+      "bytes": 67976,
+      "original_sha256": "ef6a5b37c56f629db636980d872226da27ccfefeedfcc9d86da1fd1feae275bb",
+      "backup_sha256": "ef6a5b37c56f629db636980d872226da27ccfefeedfcc9d86da1fd1feae275bb",
+      "verified": true
+    },
+    {
+      "path": "internal/README.html",
+      "bytes": 165397,
+      "original_sha256": "f41161116cbc6816645d5cdf70a19c54a0c5aca1981a629f4120488019311a4f",
+      "backup_sha256": "f41161116cbc6816645d5cdf70a19c54a0c5aca1981a629f4120488019311a4f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.html",
+      "bytes": 36956,
+      "original_sha256": "6eeb88902f14bdc45babebeafd986cc91b30fbdb81a42ead22984fdf0f995813",
+      "backup_sha256": "6eeb88902f14bdc45babebeafd986cc91b30fbdb81a42ead22984fdf0f995813",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/pr-delta-review-30-2026-10-18-followup.html",
+      "bytes": 26666,
+      "original_sha256": "a186ec8e223f07bca00a53f9ac8187fd3906c786c38d1e3211dfd7548f1c0d70",
+      "backup_sha256": "a186ec8e223f07bca00a53f9ac8187fd3906c786c38d1e3211dfd7548f1c0d70",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/pr-delta-review-30-2026-10-18.html",
+      "bytes": 37124,
+      "original_sha256": "505531bf5f1615c3482b61cb806084c24fb1d572bb8e36010c8363bb4bf1f846",
+      "backup_sha256": "505531bf5f1615c3482b61cb806084c24fb1d572bb8e36010c8363bb4bf1f846",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-implementation-review-20-2026-10-18.html",
+      "bytes": 26600,
+      "original_sha256": "0f8f12c02d4976f119caafa46d7525b81d48220bb2c526620e1317bfc897164a",
+      "backup_sha256": "0f8f12c02d4976f119caafa46d7525b81d48220bb2c526620e1317bfc897164a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-pr-delta-review-30-2026-10-18.html",
+      "bytes": 27019,
+      "original_sha256": "b5d2a7a1d9170c20e7905b8f4ab4fd505430cd8ec4c7c11e41edd9f20614baba",
+      "backup_sha256": "b5d2a7a1d9170c20e7905b8f4ab4fd505430cd8ec4c7c11e41edd9f20614baba",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/README.html",
+      "bytes": 23861,
+      "original_sha256": "7ea2e15264494aee50cbe0d40f017e3e06a5482f91293331743a2632718af607",
+      "backup_sha256": "7ea2e15264494aee50cbe0d40f017e3e06a5482f91293331743a2632718af607",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "bytes": 30124,
+      "original_sha256": "4661d09e793894f80de31ff7292236632f8b2d1ce5064a4182ba34eab495db4e",
+      "backup_sha256": "4661d09e793894f80de31ff7292236632f8b2d1ce5064a4182ba34eab495db4e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/render-build-result.html",
+      "bytes": 20808,
+      "original_sha256": "b64e29646261e00a8f3a603b7cdcb077f6c2b67dac3e4f9f376d7418e3f725f2",
+      "backup_sha256": "b64e29646261e00a8f3a603b7cdcb077f6c2b67dac3e4f9f376d7418e3f725f2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-callback-tailnet-sync-2026-10-18/README.html",
+      "bytes": 20416,
+      "original_sha256": "f9c9867078a15c32d074f5692982c6c7b1a8fba99351dfcf37363b753da74386",
+      "backup_sha256": "f9c9867078a15c32d074f5692982c6c7b1a8fba99351dfcf37363b753da74386",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-callback-tailnet-sync-2026-10-18/README.md",
+      "bytes": 1652,
+      "original_sha256": "c40982e1e52e33901e6337cb631a92f8bbad0b80fee4056d23bc8846ef70e34d",
+      "backup_sha256": "c40982e1e52e33901e6337cb631a92f8bbad0b80fee4056d23bc8846ef70e34d",
+      "verified": true
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.html",
+      "bytes": 57101,
+      "original_sha256": "b1f3400e995dbed3ed14b6d778a17c0f3155f3b1e8a002dc871f9bc2e131f1ce",
+      "backup_sha256": "b1f3400e995dbed3ed14b6d778a17c0f3155f3b1e8a002dc871f9bc2e131f1ce",
+      "verified": true
+    }
+  ]
+}
