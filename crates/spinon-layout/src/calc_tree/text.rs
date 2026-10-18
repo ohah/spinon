@@ -142,7 +142,7 @@ impl CalcLayoutTree {
                 })
             }
             AvailableSpace::MinContent | AvailableSpace::MaxContent => {
-                let cached = self.text_intrinsic_layouts.borrow().get(&node_id).copied();
+                let cached = self.text_intrinsic_layouts.borrow().get(&node_id).cloned();
                 let sizes = if let Some(sizes) = cached {
                     sizes
                 } else {
@@ -152,7 +152,7 @@ impl CalcLayoutTree {
                         .map_err(LayoutError::TextLayout)?;
                     self.text_intrinsic_layouts
                         .borrow_mut()
-                        .insert(node_id, sizes);
+                        .insert(node_id, sizes.clone());
                     sizes
                 };
                 Ok(match available_width {

@@ -125,6 +125,19 @@ fn ahem_intrinsic_inline_sizes_follow_normal_break_all_and_nowrap_oracles() {
         normal_sizes.font_registry_revision(),
         engine.font_registry_revision()
     );
+    let mut cloned_engine = engine.clone();
+    let cloned_sizes = cloned_engine.intrinsic_inline_sizes(&normal).unwrap();
+    assert!(normal_sizes.uses_same_font_registry_revision(&cloned_sizes));
+    let mut independent_engine = TextLayoutEngine::new_without_system_fonts();
+    independent_engine.register_font("Ahem", AHEM).unwrap();
+    independent_engine.register_font("Roboto", ROBOTO).unwrap();
+    let independent_sizes = independent_engine.intrinsic_inline_sizes(&normal).unwrap();
+    assert_eq!(
+        normal_sizes.font_registry_revision(),
+        independent_sizes.font_registry_revision()
+    );
+    assert!(!normal_sizes.uses_same_font_registry_revision(&independent_sizes));
+    assert_ne!(normal_sizes, independent_sizes);
     close_to(normal_sizes.min_content(), 70.0);
     close_to(normal_sizes.max_content(), 100.0);
 
@@ -172,6 +185,9 @@ fn empty_intrinsic_paragraph_returns_zero_sizes_with_current_font_revision() {
         sizes.font_registry_revision(),
         engine.font_registry_revision()
     );
+    let mut cloned_engine = engine.clone();
+    let cloned_sizes = cloned_engine.intrinsic_inline_sizes(&input).unwrap();
+    assert!(sizes.uses_same_font_registry_revision(&cloned_sizes));
     assert_eq!(sizes.min_content(), 0.0);
     assert_eq!(sizes.max_content(), 0.0);
     assert_eq!(sizes.min_content_height(), 0.0);

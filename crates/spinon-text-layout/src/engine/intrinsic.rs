@@ -41,6 +41,7 @@ impl TextLayoutEngine {
             return Ok(TextIntrinsicInlineSizes::new(
                 input.node,
                 self.font_registry_revision(),
+                self.font_registry_token.clone(),
                 0.0,
                 0.0,
                 0.0,
@@ -68,6 +69,7 @@ impl TextLayoutEngine {
         Ok(TextIntrinsicInlineSizes::new(
             input.node,
             self.font_registry_revision(),
+            self.font_registry_token.clone(),
             min_content.0,
             max_content.0,
             min_content.1,
