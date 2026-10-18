@@ -12,8 +12,8 @@
 | 4 | `<head>`의 metadata, style, title이 layout/paint box로 누출되는가 | 추가 UA stylesheet가 head 계열 요소를 숨기며 visible element validator도 허용 목록 밖 태그를 거부한다. simulator scene은 5개 visible box다. 통과. |
 | 5 | foreign namespace의 `main`/`div`가 이름만으로 허용되는가 | namespace와 local name을 함께 검사한다. SVG negative fixture는 실패한다. 통과. |
 | 6 | `display:none` 조상 아래의 후손이 box나 paint로 살아나는가 | hidden 상태가 subtree 순회, layout 입력, render 순서에 전달된다. hidden text fixture도 성공 장면에서 제외된다. 통과. |
-| 7 | HTML에서 접히지 않는 Unicode 공백 텍스트가 공백으로 오인되어 누락되는가 | 검토 중 Rust `trim()`이 U+2003 등을 제거해 visible text를 성공 처리할 수 있음을 찾았다. 공통 `DomString` 판정을 HTML/CSS ASCII 접이 공백으로 바꿨고 NBSP·U+2003 거부 단위 테스트 1개가 통과했다. 새 runtime 통합 회귀 테스트는 추가했지만 아래 자원 제한으로 실행 완료하지 못했다. |
-| 8 | 실제 CSS collapsible ASCII 공백이 불필요한 텍스트 오류를 내는가 | 새 판정은 space/tab/LF/CR/form-feed만 접이 공백으로 취급한다. 해당 문자열의 core 단위 테스트가 통과했고 runtime 테스트에도 성공 기대값을 추가했다. runtime 재실행은 미완료다. |
+| 7 | HTML에서 접히지 않는 Unicode 공백 텍스트가 공백으로 오인되어 누락되는가 | 검토 중 Rust `trim()`이 U+2003 등을 제거해 visible text를 성공 처리할 수 있음을 찾았다. 공통 `DomString` 판정을 HTML/CSS ASCII 접이 공백으로 바꾸고 NBSP·U+2003를 거부하는 core 단위 테스트 1/1, runtime visible-text regression을 포함한 집중 테스트 2/2가 통과했다. |
+| 8 | 실제 CSS collapsible ASCII 공백이 불필요한 텍스트 오류를 내는가 | 새 판정은 space/tab/LF/CR/form-feed만 접이 공백으로 취급한다. core 단위 테스트와 runtime fixture의 ASCII 공백 성공 대조가 통과했다. |
 | 9 | visible glyph가 paint 목록에는 없어서 조용히 사라지는가 | hidden 조상 밖의 공백 아닌 text는 `visible_root_html_text` 실패다. 기존 visible-text negative 경로를 확인했다. 통과. |
 | 10 | 지원하지 않는 visible HTML tag가 부분 box로 통과하는가 | visible 목록은 `html/body/main/div`로 제한되고 나머지는 `unsupported_visible_root_html_element`가 된다. 통과. |
 | 11 | visible node의 inline/flex/grid/table display가 비슷한 결과만으로 허용되는가 | computed display가 `block`이 아니면 layout 전에 거부한다. 통과. |
@@ -27,7 +27,7 @@
 | 19 | partial alpha가 opaque sRGB로 잘못 변환되어 blending 없이 그려지는가 | root profile 전용 색 변환이 translucent 값을 거부한다. partial-alpha regression test가 포함되어 있다. 통과. |
 | 20 | Display-P3 등 wide-gamut 값을 generic converter가 sRGB로 잘라 허용하는가 | root HTML 전용 색 변환과 regression test가 Display-P3를 거부한다. 구현 검토에서 발견해 수정된 경계다. 통과. |
 | 21 | transparent block이 불투명 box처럼 칠해 아래 색을 가리는가 | transparent paint는 paint snapshot에서 투명으로 유지되고 renderer는 그 box에 배경 draw를 만들지 않는다. simulator 표본은 아래 root 색과 일치한다. 통과. |
-| 22 | hidden node 또는 text가 style/layout node 집합 대조에서 빠져 잘못 통과하는가 | style, layout, document node 집합을 각각 검증하고 text는 명시된 hidden/ASCII whitespace 예외 외에 거부한다. 새 Unicode 예외 경계를 제외하고 코드 경로를 확인했다. 통과. |
+| 22 | hidden node 또는 text가 style/layout node 집합 대조에서 빠져 잘못 통과하는가 | style, layout, document node 집합을 각각 검증하고 text는 hidden/ASCII whitespace 예외 외에 거부한다. hidden text·ASCII 공백 허용·U+2003 거부가 runtime 집중 테스트에서 통과했다. |
 | 23 | document preorder와 paint preorder가 달라 sibling 색상 순서가 뒤바뀌는가 | render snapshot builder가 HostDocument child order를 보존하며 fixture scene order와 Android/iOS 표본이 기준과 맞았다. 통과. |
 | 24 | CSS pixel의 정수 좌상단을 샘플링해 경계 픽셀이 이웃 box로 이동하는가 | Rust 좌표는 각 축의 CSS pixel center `(x+0.5,y+0.5)`를 실제 surface 크기에 비례시킨다. 2개 좌표 단위 테스트와 simulator 좌표가 있다. 통과. |
 | 25 | surface 축 비율 또는 표면 0 크기에서 잘못된 좌표를 반환하는가 | width/height를 별도로 투영하고 0 크기, 비유한 viewport, viewport 밖·drawable 밖 sample을 거부한다. 통과. |
@@ -39,6 +39,6 @@
 
 ## 판정과 남은 검증
 
-검토에서 발견한 Unicode whitespace 누락 경계를 수정했다. `cargo fmt --all -- --check`, `git diff --check`, core의 `collapsible_html_whitespace_uses_the_css_ascii_set` 1/1은 수정 뒤 통과했다. 수정 뒤 runtime 통합 회귀 테스트도 추가했으나, 해당 `cargo test`가 Stylo 의존성을 새로 컴파일하기 시작한 뒤 사용 가능 공간이 ZTSBuild 543 MiB에서 216 MiB, data volume 945 MiB에서 535 MiB로 감소해 더 큰 빌드가 공간을 고갈시키기 전에 중단했다. runtime test는 수정 후 완료되지 않았다. 실행 중 cargo/rustc 프로세스가 없고 대상 경로를 연 프로세스도 없음을 확인했다.
+검토에서 발견한 Unicode whitespace 누락 경계를 수정했다. `cargo fmt --all -- --check`, `git diff --check`, core의 `collapsible_html_whitespace_uses_the_css_ascii_set` 1/1, opt-in runtime의 `c04_12_root_html_block_paint` 집중 테스트 2/2가 수정 뒤 통과했다. runtime test는 `CARGO_PROFILE_TEST_DEBUG=0`으로 빌드했다. 첫 시도는 공간 부족 전에 중단했고, 작업 전용 target 1.3 GiB를 사용자 없는 상태로 확인한 뒤 정리해 여유 공간을 확보하고 재실행했다.
 
 GitHub branch protection 응답에는 required status check가 없고 PR checks도 0개다. 따라서 원격 CI green 판정은 없다. Android/iOS Simulator 캡처와 앱 빌드는 앞서 문서화한 Rust 색상 경계 수정 전 결과이며, 이후 수정은 그 고정 opaque sRGB fixture 입력을 바꾸지 않는다. 이 검토는 PR diff의 범위 확인이며 일반 HTML, 실기기, hardware GPU 또는 iOS compositor 이후 동작을 증명하지 않는다.
