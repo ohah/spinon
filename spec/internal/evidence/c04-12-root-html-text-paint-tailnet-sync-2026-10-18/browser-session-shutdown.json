@@ -1,0 +1,35 @@
+{
+  "recorded_utc": "2026-10-18T13:46:26.624206+00:00",
+  "browser": "Agent Browser CLI 0.31.1",
+  "purpose": "PR #319 Tailnet 화면과 첨부 이미지 검증",
+  "target": {
+    "namespace": "spinon-c04-12",
+    "session": "spinon-pr317-138060237e7c"
+  },
+  "before_close": {
+    "active": true,
+    "pid": 55889,
+    "browser_launched": true,
+    "page_count": 2
+  },
+  "close": {
+    "command": "agent-browser --namespace spinon-c04-12 --session spinon-pr317-138060237e7c close",
+    "result": "Browser closed"
+  },
+  "after_close": {
+    "session_info_active": false,
+    "session_info_pid": null,
+    "session_runtime": null,
+    "target_pid_found_by_ps": false,
+    "matching_namespace_or_session_process_found": false
+  },
+  "preserved": {
+    "tailnet_preview_listener_pid": 1191,
+    "tmux_commands_sent": false,
+    "terminal_browser_used": false,
+    "screenshots_kept": true,
+    "pr_number": 319,
+    "pr_state": "MERGED",
+    "merge_commit": "929927d9c0124b2a40e55843180ccddd8e904ea5"
+  }
+}
