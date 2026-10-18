@@ -26,7 +26,7 @@
 ## 검토
 
 - [새 구현 코드 적대 검토 20개](./implementation-review-20.md)
-- `pr-delta-review-30.md`는 실제 PR diff와 PR 표시 상태를 확인한 뒤 추가한다.
+- [PR #335 최종 변경분 적대 검토 30개](./pr-delta-review-30.md)
 
 ## 미검증 경계
 
