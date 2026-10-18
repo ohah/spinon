@@ -21,10 +21,12 @@ struct HostDocumentLayoutProfile<'a> {
     ignore_collapsible_whitespace_text: bool,
 }
 
-/// 고정 inline paragraph와 run별 글꼴 metric map을 묶은 내부 입력입니다.
-pub(crate) struct HostTextStyleProfile<'a> {
-    pub(crate) paragraphs: &'a BTreeMap<NodeId, ParagraphStyle>,
-    pub(crate) inline_runs: &'a BTreeMap<NodeId, InlineRunStyle>,
+/// HostDocument layout에서 paragraph와 inline run 스타일 입력을 함께 전달합니다.
+pub struct HostTextStyleProfile<'a> {
+    /// 각 paragraph element의 computed text style입니다.
+    pub paragraphs: &'a BTreeMap<NodeId, ParagraphStyle>,
+    /// 각 inline run element의 computed font metric style입니다.
+    pub inline_runs: &'a BTreeMap<NodeId, InlineRunStyle>,
 }
 
 impl LayoutInput {
@@ -152,8 +154,7 @@ impl LayoutInput {
         root: HostNodeHandle,
         viewport: Viewport,
         styles: &BTreeMap<NodeId, LayoutStyle>,
-        paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
-        inline_run_styles: &BTreeMap<NodeId, InlineRunStyle>,
+        text_styles: HostTextStyleProfile<'_>,
         style_revision: StyleRevision,
         environment_revision: EnvironmentRevision,
     ) -> Result<Self, LayoutError> {
@@ -166,8 +167,8 @@ impl LayoutInput {
             environment_revision,
             HostDocumentLayoutProfile {
                 root_sizing: RootSizingPolicy::ResolveWithin,
-                paragraph_styles: Some(paragraph_styles),
-                inline_run_styles: Some(inline_run_styles),
+                paragraph_styles: Some(text_styles.paragraphs),
+                inline_run_styles: Some(text_styles.inline_runs),
                 ignore_collapsible_whitespace_text: true,
             },
         )

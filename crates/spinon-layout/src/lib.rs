@@ -9,6 +9,7 @@ mod grid;
 mod grid_auto_placement;
 mod grid_placement;
 mod host_document;
+mod intrinsic_measurement;
 mod intrinsic_size;
 mod percentage_basis;
 mod positioning;
@@ -40,6 +41,12 @@ pub use grid::{
     GridPlacementMode, GridTrackSize,
 };
 pub use grid_placement::{GridItemInput, GridPlacementInput};
+pub use host_document::HostTextStyleProfile;
+pub use intrinsic_measurement::{
+    LayoutIntrinsicMeasureAvailableSpace, LayoutIntrinsicMeasureKnownDimensions,
+    LayoutIntrinsicMeasureParentSize, LayoutIntrinsicMeasureSize, LayoutIntrinsicMeasureSpace,
+    LayoutIntrinsicMeasurement, LayoutIntrinsicMeasurementSource,
+};
 pub use intrinsic_size::{LayoutIntrinsicSize, LayoutIntrinsicSizeSnapshot};
 pub use revision::{LayoutInputRevision, LayoutSourceRevision};
 pub use spinon_text_layout::{
@@ -179,6 +186,8 @@ pub struct LayoutOutput {
     pub text_layouts: BTreeMap<NodeId, LayoutTextSnapshot>,
     /// 직접 Block 자식 앞뒤의 anonymous inline paragraph 결과를 원본 순서로 보존합니다.
     pub text_flow_layouts: BTreeMap<NodeId, Vec<LayoutTextFlowSegment>>,
+    /// Grid item의 intrinsic measure 요청과 source/revision을 Taffy callback 순서로 보존합니다.
+    pub intrinsic_measurements: Vec<LayoutIntrinsicMeasurement>,
 }
 
 /// 하나의 layout 계산 입력 revision에 결속한 shaping 결과입니다.

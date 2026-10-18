@@ -35,6 +35,9 @@ pub enum LayoutError {
         node: NodeId,
         axis: &'static str,
     },
+    IntrinsicMeasurementAllocationFailure {
+        node: NodeId,
+    },
     UnsupportedIntrinsicSizing {
         node: NodeId,
         reason: &'static str,
@@ -238,6 +241,10 @@ impl fmt::Display for LayoutError {
             Self::InvalidIntrinsicSize { node, axis } => write!(
                 formatter,
                 "노드 {node}의 intrinsic {axis}는 양의 유한 CSS px 값이어야 합니다"
+            ),
+            Self::IntrinsicMeasurementAllocationFailure { node } => write!(
+                formatter,
+                "Grid item {node}의 intrinsic measurement 기록 공간을 예약하지 못했습니다"
             ),
             Self::UnsupportedIntrinsicSizing { node, reason } => {
                 write!(

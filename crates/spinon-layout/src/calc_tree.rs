@@ -1,6 +1,6 @@
 use std::{
     cell::RefCell,
-    collections::{BTreeMap, HashMap},
+    collections::{BTreeMap, BTreeSet, HashMap},
     sync::Arc,
 };
 
@@ -18,9 +18,9 @@ use taffy::{
 
 use self::replaced_sizing::{ReplacedSizingInput, resolve_used_size};
 use crate::{
-    LayoutCalcId, LayoutCssMathValue, LayoutError, LayoutInput, LayoutIntrinsicSize,
-    LayoutPosition, LayoutStyle, PositionedContainingBlockOwner, RootSizingPolicy, TextFlowItem,
-    TextParagraphInput,
+    LayoutCalcId, LayoutCssMathValue, LayoutError, LayoutInput, LayoutIntrinsicMeasurementSource,
+    LayoutIntrinsicSize, LayoutPosition, LayoutStyle, PositionedContainingBlockOwner,
+    RootSizingPolicy, TextFlowItem, TextParagraphInput,
     compact_taffy_style::CompactTaffyStyle,
     grid_placement::normalize_grid_layout,
     positioning::collect_positioned_owners,
@@ -29,16 +29,22 @@ use crate::{
 
 #[path = "calc_tree/grid.rs"]
 mod grid;
+#[path = "calc_tree/intrinsic_measurements.rs"]
+mod intrinsic_measurements;
 #[path = "calc_tree/replaced_sizing.rs"]
 mod replaced_sizing;
 #[path = "calc_tree/text.rs"]
 mod text;
+
+#[cfg(test)]
+pub(crate) use self::intrinsic_measurements::fail_next_intrinsic_measurement_reservation;
 
 /// Taffy stores calc handles in the low three tag bits, so every owner is eight-byte aligned.
 #[repr(align(8))]
 struct CalcOwner(LayoutCssMathValue);
 
 struct Node {
+    spinon_node: Option<SpinonNodeId>,
     children: Vec<TaffyNodeId>,
     style: CompactTaffyStyle,
     replaced_sizing: Option<ReplacedSizingInput>,
@@ -52,8 +58,10 @@ impl Node {
         style: CompactTaffyStyle,
         replaced_sizing: Option<ReplacedSizingInput>,
         order: u32,
+        spinon_node: Option<SpinonNodeId>,
     ) -> Self {
         Self {
+            spinon_node,
             children,
             style,
             replaced_sizing,
@@ -78,6 +86,10 @@ pub(super) struct CalcLayoutTree {
     text_flow_nodes: BTreeMap<SpinonNodeId, Vec<(usize, TaffyNodeId)>>,
     text_layouts: RefCell<HashMap<TaffyNodeId, BTreeMap<u32, TextLayoutSnapshot>>>,
     text_intrinsic_layouts: RefCell<HashMap<TaffyNodeId, TextIntrinsicInlineSizes>>,
+    grid_item_nodes: BTreeSet<SpinonNodeId>,
+    grid_item_styles: BTreeMap<SpinonNodeId, LayoutStyle>,
+    record_intrinsic_measurements: bool,
+    intrinsic_measurements: RefCell<Vec<crate::LayoutIntrinsicMeasurement>>,
 }
 
 impl CalcLayoutTree {
@@ -190,6 +202,27 @@ impl CalcLayoutTree {
                 &mut viewport_children,
             )?;
         }
+        let grid_item_nodes = input
+            .nodes
+            .iter()
+            .filter(|node| node.style.display == crate::LayoutDisplay::Grid)
+            .flat_map(|node| {
+                layout_children[&node.id].iter().copied().filter(|child| {
+                    !input.positioning.get(child).is_some_and(|positioning| {
+                        matches!(
+                            positioning.position,
+                            crate::LayoutPosition::Absolute | crate::LayoutPosition::Fixed
+                        )
+                    })
+                })
+            })
+            .collect::<BTreeSet<_>>();
+        let grid_item_styles = input
+            .nodes
+            .iter()
+            .filter(|node| grid_item_nodes.contains(&node.id))
+            .map(|node| (node.id, node.style))
+            .collect::<BTreeMap<_, _>>();
 
         let mut nodes = Vec::with_capacity(next_synthetic_position + 1);
         for (position, external_id) in postorder.iter().copied().enumerate() {
@@ -265,7 +298,13 @@ impl CalcLayoutTree {
                 },
             )?;
             let order = u32::try_from(position).map_err(|_| LayoutError::TooManyNodes)?;
-            nodes.push(Node::new(children, style, replaced_sizing, order));
+            nodes.push(Node::new(
+                children,
+                style,
+                replaced_sizing,
+                order,
+                Some(external_id),
+            ));
         }
 
         for (engine_id, owner, order) in synthetic_paragraph_styles {
@@ -289,7 +328,8 @@ impl CalcLayoutTree {
             if usize::from(engine_id) != nodes.len() {
                 return Err(LayoutError::TooManyNodes);
             }
-            nodes.push(Node::new(Vec::new(), style, None, order));
+            let spinon_node = text_paragraphs[&engine_id].node;
+            nodes.push(Node::new(Vec::new(), style, None, order, Some(spinon_node)));
         }
 
         let needs_viewport_containing_block = input.root_sizing
@@ -311,6 +351,7 @@ impl CalcLayoutTree {
                 viewport_block_containing_style(input.viewport),
                 None,
                 order,
+                None,
             ));
             Some(engine_id)
         } else {
@@ -330,6 +371,10 @@ impl CalcLayoutTree {
             text_flow_nodes,
             text_layouts: RefCell::new(HashMap::new()),
             text_intrinsic_layouts: RefCell::new(HashMap::new()),
+            grid_item_nodes,
+            grid_item_styles,
+            record_intrinsic_measurements: !flow_only,
+            intrinsic_measurements: RefCell::new(Vec::new()),
         })
     }
 
@@ -469,7 +514,22 @@ impl CalcLayoutTree {
                         |known_dimensions, available_space| {
                             if tree.text_paragraphs.contains_key(&node_id) {
                                 match tree.measure_text(node_id, available_space.width) {
-                                    Ok(size) => size,
+                                    Ok(measured) => {
+                                        if inherent_size {
+                                            tree.record_intrinsic_measurement(
+                                                node_id,
+                                                LayoutIntrinsicMeasurementSource::Text {
+                                                    font_registry_revision: measured
+                                                        .font_registry_revision,
+                                                },
+                                                available_space,
+                                                known_dimensions,
+                                                parent_size,
+                                                measured.size,
+                                            );
+                                        }
+                                        measured.size
+                                    }
                                     Err(error) => {
                                         tree.record_error(error);
                                         Size::ZERO
@@ -484,10 +544,25 @@ impl CalcLayoutTree {
                                     parent_size,
                                     available_space,
                                 ) {
-                                    Ok(size) => Size {
-                                        width: size.content_width,
-                                        height: size.content_height,
-                                    },
+                                    Ok(size) => {
+                                        let content_size = Size {
+                                            width: size.content_width,
+                                            height: size.content_height,
+                                        };
+                                        if inherent_size {
+                                            tree.record_intrinsic_measurement(
+                                                node_id,
+                                                LayoutIntrinsicMeasurementSource::Replaced {
+                                                    natural: input.natural,
+                                                },
+                                                available_space,
+                                                known_dimensions,
+                                                parent_size,
+                                                content_size,
+                                            );
+                                        }
+                                        content_size
+                                    }
                                     Err(error) => {
                                         tree.record_error(error);
                                         Size::ZERO

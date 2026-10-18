@@ -3,9 +3,10 @@ use std::collections::BTreeMap;
 use spinon_core::{ChangeBatch, EnvironmentRevision, NodeId, Operation, StyleRevision, Tree};
 
 use crate::{
-    LayoutDimension, LayoutDisplay, LayoutEngine, LayoutInput, LayoutStyle, ParagraphInput,
-    ParagraphStyle, TaffyLayoutEngine, TextLayoutEngine, TextSource, Viewport, WhiteSpaceMode,
-    WordBreakMode,
+    GridContainerInput, GridItemInput, GridPlacementInput, GridPlacementMode, GridTrackSize,
+    LayoutDimension, LayoutDisplay, LayoutEngine, LayoutInput, LayoutIntrinsicMeasurementSource,
+    LayoutStyle, ParagraphInput, ParagraphStyle, TaffyLayoutEngine, TextLayoutEngine, TextSource,
+    Viewport, WhiteSpaceMode, WordBreakMode,
 };
 
 const AHEM: &[u8] = include_bytes!("../../../tests/fixtures/resources/c15/Ahem.ttf");
@@ -110,6 +111,7 @@ fn taffy_measure_and_final_layout_use_the_same_definite_content_width() {
         let output = TaffyLayoutEngine
             .compute_with_text_layout_engine(&input, &engine)
             .unwrap();
+        assert!(output.intrinsic_measurements.is_empty());
         let frame = output.frames[&node(2)];
         let text = &output.text_layouts[&node(2)];
 
@@ -126,6 +128,73 @@ fn taffy_measure_and_final_layout_use_the_same_definite_content_width() {
         assert_eq!(text.layout.font_registry_revision.0, 1);
         assert_eq!(output.revision, input.revision());
     }
+}
+
+#[test]
+fn grid_text_intrinsic_measurement_records_font_and_layout_revisions() {
+    let mut grid_input = input(100.0, "XX XXXXXXX", WhiteSpaceMode::Normal);
+    grid_input.nodes[0].style.display = LayoutDisplay::Grid;
+    // The root must continue to match the 80px viewport height.
+    grid_input.nodes[0].style.height = LayoutDimension::Fixed(80.0);
+    grid_input.nodes[1].style.height = LayoutDimension::Auto;
+    grid_input.grid_containers.insert(
+        node(1),
+        GridContainerInput {
+            columns: vec![GridTrackSize::LengthPx(100.0)],
+            rows: vec![GridTrackSize::LengthPx(10.0)],
+            placement_mode: GridPlacementMode::TemplateGrid,
+            ..GridContainerInput::default()
+        },
+    );
+    grid_input.grid_items.insert(
+        node(2),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(1),
+            row_end: GridPlacementInput::Line(2),
+            column_start: GridPlacementInput::Line(1),
+            column_end: GridPlacementInput::Line(2),
+        },
+    );
+
+    let engine = text_engine();
+    let output = TaffyLayoutEngine
+        .compute_with_text_layout_engine(&grid_input, &engine)
+        .unwrap();
+    let measurement = output
+        .intrinsic_measurements
+        .iter()
+        .find(|measurement| measurement.node == node(2))
+        .expect("Grid text measure callback is recorded");
+
+    assert_eq!(measurement.revision, output.revision);
+    assert!(matches!(
+        measurement.source,
+        LayoutIntrinsicMeasurementSource::Text {
+            font_registry_revision: revision,
+        } if revision.0 == 1
+    ));
+    assert_eq!(measurement.item_style, grid_input.nodes[1].style);
+    assert_eq!(
+        measurement.available_space.width,
+        crate::LayoutIntrinsicMeasureSpace::Definite(100.0)
+    );
+    assert_eq!(
+        measurement.available_space.height,
+        crate::LayoutIntrinsicMeasureSpace::Definite(10.0)
+    );
+    assert_eq!(
+        measurement.known_dimensions,
+        crate::LayoutIntrinsicMeasureKnownDimensions::default()
+    );
+    assert_eq!(
+        measurement.parent_size,
+        crate::LayoutIntrinsicMeasureParentSize {
+            width: Some(100.0),
+            height: Some(10.0),
+        }
+    );
+    assert_eq!(measurement.content_size.width, 100.0);
+    assert_eq!(measurement.content_size.height, 10.0);
 }
 
 #[test]

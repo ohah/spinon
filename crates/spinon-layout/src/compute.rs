@@ -103,6 +103,7 @@ impl TaffyLayoutEngine {
                 .revision
                 .with_intrinsic_size_revision(snapshot.revision());
         }
+        output.intrinsic_measurements = visual_tree.take_intrinsic_measurements(output.revision);
         Ok(output)
     }
 }
@@ -487,6 +488,7 @@ fn collect_frames(
         fixed_owners: BTreeMap::new(),
         text_layouts: BTreeMap::new(),
         text_flow_layouts: BTreeMap::new(),
+        intrinsic_measurements: Vec::new(),
         frames,
     })
 }

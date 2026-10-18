@@ -6,10 +6,11 @@ use spinon_core::{
 };
 
 use crate::{
-    FlexDirection, LayoutAlignItems, LayoutBorder, LayoutDimension, LayoutDisplay, LayoutEdges,
-    LayoutEngine, LayoutError, LayoutInput, LayoutIntrinsicSize, LayoutIntrinsicSizeSnapshot,
-    LayoutLengthPercentage, LayoutPosition, LayoutPositioning, LayoutSourceRevision, LayoutStyle,
-    TaffyLayoutEngine, Viewport,
+    FlexDirection, GridContainerInput, GridPlacementMode, GridTrackSize, LayoutAlignItems,
+    LayoutBorder, LayoutDimension, LayoutDisplay, LayoutEdges, LayoutEngine, LayoutError,
+    LayoutInput, LayoutIntrinsicSize, LayoutIntrinsicSizeSnapshot, LayoutLengthPercentage,
+    LayoutPosition, LayoutPositioning, LayoutSourceRevision, LayoutStyle, TaffyLayoutEngine,
+    Viewport,
 };
 
 const HTML: &str = "http://www.w3.org/1999/xhtml";
@@ -122,6 +123,94 @@ fn measured_leaf_uses_css_pixel_snapshot_and_stamps_its_revision() {
         (0.0, 0.0, 24.0, 16.0)
     );
     assert_eq!(output.revision.intrinsic_size(), snapshot.revision());
+}
+
+#[test]
+fn grid_image_intrinsic_measurement_keeps_style_source_and_both_revisions() {
+    let (document, root, image) = document();
+    let snapshot = image_snapshot(&document, image, LayoutIntrinsicSize::new(24.0, 16.0));
+    let mut root_style = root_style();
+    root_style.display = LayoutDisplay::Grid;
+    let mut image_style = image_style();
+    image_style.width = LayoutDimension::MinContent;
+    let input = layout_input(&document, root, image, root_style, image_style).with_grid_layout(
+        BTreeMap::from([(
+            root.id(),
+            GridContainerInput {
+                columns: vec![GridTrackSize::LengthPx(WIDTH)],
+                rows: vec![GridTrackSize::LengthPx(HEIGHT)],
+                placement_mode: GridPlacementMode::TemplateGrid,
+                ..GridContainerInput::default()
+            },
+        )]),
+        BTreeMap::new(),
+    );
+
+    let output = TaffyLayoutEngine
+        .compute_with_intrinsic_size_snapshot(&input, &snapshot)
+        .unwrap();
+    let measure = output
+        .intrinsic_measurements
+        .iter()
+        .find(|measure| measure.node == image.id())
+        .expect("Grid image measure callback is recorded");
+
+    assert_eq!(measure.revision, output.revision);
+    assert_eq!(measure.revision.intrinsic_size(), snapshot.revision());
+    assert!(matches!(
+        measure.source,
+        crate::LayoutIntrinsicMeasurementSource::Replaced {
+            natural,
+        } if natural == LayoutIntrinsicSize::new(24.0, 16.0)
+    ));
+    assert_eq!(measure.item_style, image_style);
+    assert_eq!(
+        (measure.content_size.width, measure.content_size.height),
+        (24.0, 16.0)
+    );
+}
+
+#[test]
+fn intrinsic_measurement_reservation_failure_discards_output_and_recovers() {
+    let (document, root, image) = document();
+    let snapshot = image_snapshot(&document, image, LayoutIntrinsicSize::new(24.0, 16.0));
+    let mut root_style = root_style();
+    root_style.display = LayoutDisplay::Grid;
+    let mut item_style = image_style();
+    item_style.width = LayoutDimension::MinContent;
+    let input = layout_input(&document, root, image, root_style, item_style).with_grid_layout(
+        BTreeMap::from([(
+            root.id(),
+            GridContainerInput {
+                columns: vec![GridTrackSize::LengthPx(WIDTH)],
+                rows: vec![GridTrackSize::LengthPx(HEIGHT)],
+                placement_mode: GridPlacementMode::TemplateGrid,
+                ..GridContainerInput::default()
+            },
+        )]),
+        BTreeMap::new(),
+    );
+    let engine = TaffyLayoutEngine;
+    let guard = crate::calc_tree::fail_next_intrinsic_measurement_reservation();
+    let failed = engine.compute_with_intrinsic_size_snapshot(&input, &snapshot);
+    let observed_failure = crate::test_allocator::take_failure_observed();
+    assert!(observed_failure);
+    assert!(matches!(
+        failed,
+        Err(LayoutError::IntrinsicMeasurementAllocationFailure { node }) if node == image.id()
+    ));
+    drop(guard);
+
+    let recovered = engine
+        .compute_with_intrinsic_size_snapshot(&input, &snapshot)
+        .expect("같은 worker의 다음 layout 계산은 다시 성공해야 합니다");
+    assert!(
+        recovered
+            .intrinsic_measurements
+            .iter()
+            .any(|measurement| measurement.node == image.id())
+    );
+    assert!(!crate::test_allocator::take_failure_observed());
 }
 
 #[test]
