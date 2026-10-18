@@ -1,0 +1,4 @@
+AssertionError [ERR_ASSERTION]: PSS/RSS 또는 Vm metric을 수집 결과에서 읽지 못했습니다
+    at parseMemorySummary (file://[Spinon checkout]/tools/css-reference/capture-c12-4-repeated-session-lifecycle.mjs:68:10)
+    at writeMemorySample (file://[Spinon checkout]/tools/css-reference/capture-c12-4-repeated-session-lifecycle.mjs:84:10)
+    at async main (file://[Spinon checkout]/tools/css-reference/capture-c12-4-repeated-session-lifecycle.mjs:143:51)

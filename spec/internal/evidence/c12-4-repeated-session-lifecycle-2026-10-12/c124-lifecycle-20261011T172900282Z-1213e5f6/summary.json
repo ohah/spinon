@@ -1,0 +1,65 @@
+{
+  "schema": "spinon-c12-4-repeated-session-lifecycle/v1",
+  "status": "passed",
+  "runId": "c124-lifecycle-20261011T172900282Z-1213e5f6",
+  "pid": "21288",
+  "serial": "R5KYB06SMPE",
+  "model": "SM-S731N",
+  "release": "16",
+  "apiLevel": 36,
+  "apkSha256": "d8822ba473723e3f2d55ce35d650401c5fff2474fde0369a1c0d717197f8d781",
+  "cycles": 16,
+  "sessionsPerCycle": 8,
+  "totalSessionsCreated": 128,
+  "ownerThreadCreateAndExitChecks": 16,
+  "workerThreadCreateAndExitChecks": 16,
+  "memorySamples": [
+    {
+      "phase": "baseline",
+      "pssKiB": 69673,
+      "rssKiB": 153893,
+      "vmRssKiB": 154056,
+      "vmSizeKiB": 18952736,
+      "vmDataKiB": 3078336
+    },
+    {
+      "phase": "cycle-1-peak",
+      "pssKiB": 91081,
+      "rssKiB": 180757,
+      "vmRssKiB": 166356,
+      "vmSizeKiB": 40436108,
+      "vmDataKiB": 5282156
+    },
+    {
+      "phase": "cycle-8-peak",
+      "pssKiB": 94340,
+      "rssKiB": 184193,
+      "vmRssKiB": 169536,
+      "vmSizeKiB": 40398044,
+      "vmDataKiB": 5279232
+    },
+    {
+      "phase": "cycle-16-peak",
+      "pssKiB": 94384,
+      "rssKiB": 184237,
+      "vmRssKiB": 169628,
+      "vmSizeKiB": 40398044,
+      "vmDataKiB": 5279232
+    },
+    {
+      "phase": "final",
+      "pssKiB": 92179,
+      "rssKiB": 181657,
+      "vmRssKiB": 167800,
+      "vmSizeKiB": 35833556,
+      "vmDataKiB": 3091892
+    }
+  ],
+  "interpretation": "process-wide memory snapshots are observational only; TID absence and repeated create/free are the lifecycle gates.",
+  "limitations": [
+    "single Samsung SM-S731N device and one Android 16/API 36 debug APK",
+    "no renderer, GPU surface, layout evaluation, or WPT conformance test",
+    "process PSS/RSS changes do not prove or disprove a memory leak",
+    "stack-only commit/high-water and global allocator OOM recovery remain unmeasured"
+  ]
+}

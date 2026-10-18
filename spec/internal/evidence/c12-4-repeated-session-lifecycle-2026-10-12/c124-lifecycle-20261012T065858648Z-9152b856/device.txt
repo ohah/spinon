@@ -1,0 +1,11 @@
+serial=emulator-5554
+model=sdk_gphone16k_arm64
+android_release=17
+api_level=37
+qemu=1
+build_fingerprint=google/sdk_gphone16k_arm64/emu64a16k:17/CP31.260623.012/16064790:userdebug/dev-keys
+apk_sha256=6091fd0f758976bcad64615ca388769ca5abc18fe31637f8559932544e67c2bd
+run_id=c124-lifecycle-20261012T065858648Z-9152b856
+cycles=16
+sessions_per_cycle=8
+renderer_created=false

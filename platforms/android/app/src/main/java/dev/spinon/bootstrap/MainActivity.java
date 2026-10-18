@@ -277,6 +277,25 @@ public final class MainActivity extends Activity {
             showShutdownProbe();
             return;
         }
+        if (getIntent().getBooleanExtra("spinon_c124_repeated_session_lifecycle", false)) {
+            String runId = getIntent().getStringExtra("spinon_c124_run_id");
+            TextView probe = new TextView(this);
+            probe.setText("C12.4 runtime session 반복 생성·해제 검증 중…");
+            probe.setTextColor(Color.WHITE);
+            probe.setTextSize(20f);
+            probe.setBackgroundColor(Color.rgb(20, 20, 20));
+            probe.setGravity(Gravity.CENTER);
+            getWindow().setStatusBarColor(Color.rgb(20, 20, 20));
+            getWindow().setNavigationBarColor(Color.rgb(20, 20, 20));
+            setContentView(probe);
+            if (!BuildConfig.DEBUG || !BuildConfig.SPINON_C124_WORKER_STACK_RESIDENCY_TEST
+                    || runId == null || !runId.matches("c124-lifecycle-[A-Za-z0-9-]+")) {
+                Log.e(TAG, "SPINON_C124_LIFECYCLE status=configuration_error");
+                return;
+            }
+            C0410RuntimeGpuDemo.runC124RepeatedSessionLifecycleProbe(this, runId, probe);
+            return;
+        }
         if (getIntent().getBooleanExtra("spinon_c124_session_stack_cost", false)) {
             TextView probe = new TextView(this);
             probe.setText("C12.4 동시 runtime session 메모리 진단 중…");

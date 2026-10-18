@@ -1,0 +1,3 @@
+Error: ENOENT: no such file or directory, mkdir '[Spinon checkout]/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-12/c124-lifecycle-20261011T171736536Z-c70d26e7'
+    at async mkdir (node:internal/fs/promises:1605:10)
+    at async main (file://[Spinon checkout]/tools/css-reference/capture-c12-4-repeated-session-lifecycle.mjs:103:3)

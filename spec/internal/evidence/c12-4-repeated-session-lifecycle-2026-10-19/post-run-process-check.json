@@ -1,0 +1,10 @@
+{
+  "serial": "emulator-5554",
+  "target": "Android API 37 AVD",
+  "targetState": "device",
+  "package": "dev.spinon.bootstrap",
+  "appProcessAfterRun": "not running",
+  "probeScreenRemoteFile": "removed",
+  "method": "serial-scoped adb get-state, shell pidof, and exact run-id screenshot path cleanup",
+  "physicalDeviceCommands": 0
+}

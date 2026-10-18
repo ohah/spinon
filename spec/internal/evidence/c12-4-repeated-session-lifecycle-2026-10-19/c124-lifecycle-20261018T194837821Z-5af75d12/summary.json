@@ -1,0 +1,71 @@
+{
+  "schema": "spinon-c12-4-repeated-session-lifecycle/v1",
+  "status": "passed",
+  "runId": "c124-lifecycle-20261018T194837821Z-5af75d12",
+  "pid": "1509",
+  "serial": "emulator-5554",
+  "model": "sdk_gphone16k_arm64",
+  "release": "17",
+  "apiLevel": 37,
+  "apkSha256": "c31135be4d975e5fb6793c805c8afd7bf15da6cf36df41cc37c26bf881b6792f",
+  "resultScreen": {
+    "file": "lifecycle-result.png",
+    "sha256": "33d86d5600b77a442e8d0994daa5e913d7f7c82f9b2cd830f16a1ea4cdab59d1"
+  },
+  "target": "avd",
+  "targetClassification": "Android API 37 AVD · 시뮬레이터 표면 결과",
+  "cycles": 16,
+  "sessionsPerCycle": 8,
+  "totalSessionsCreated": 128,
+  "ownerThreadCreateAndExitChecks": 16,
+  "workerThreadCreateAndExitChecks": 16,
+  "memorySamples": [
+    {
+      "phase": "baseline",
+      "pssKiB": 54220,
+      "rssKiB": 178208,
+      "vmRssKiB": 179056,
+      "vmSizeKiB": 17083872,
+      "vmDataKiB": 2859312
+    },
+    {
+      "phase": "cycle-1-peak",
+      "pssKiB": 72334,
+      "rssKiB": 199408,
+      "vmRssKiB": 199408,
+      "vmSizeKiB": 38488144,
+      "vmDataKiB": 5057696
+    },
+    {
+      "phase": "cycle-8-peak",
+      "pssKiB": 72926,
+      "rssKiB": 200352,
+      "vmRssKiB": 200128,
+      "vmSizeKiB": 38488768,
+      "vmDataKiB": 5058928
+    },
+    {
+      "phase": "cycle-16-peak",
+      "pssKiB": 73006,
+      "rssKiB": 200432,
+      "vmRssKiB": 200176,
+      "vmSizeKiB": 38488768,
+      "vmDataKiB": 5058928
+    },
+    {
+      "phase": "final",
+      "pssKiB": 65512,
+      "rssKiB": 192880,
+      "vmRssKiB": 192848,
+      "vmSizeKiB": 33924880,
+      "vmDataKiB": 2873680
+    }
+  ],
+  "interpretation": "process-wide memory snapshots are observational only; TID absence and repeated create/free are the lifecycle gates.",
+  "limitations": [
+    "single Android API 37 AVD with ANGLE/SwiftShader; not hardware GPU evidence",
+    "no renderer, GPU surface, layout evaluation, or WPT conformance test",
+    "process PSS/RSS changes do not prove or disprove a memory leak",
+    "stack-only commit/high-water and global allocator OOM recovery remain unmeasured"
+  ]
+}

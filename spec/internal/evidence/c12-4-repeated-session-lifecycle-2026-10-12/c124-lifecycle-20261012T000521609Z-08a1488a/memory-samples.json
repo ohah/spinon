@@ -1,0 +1,42 @@
+[
+  {
+    "phase": "baseline",
+    "pssKiB": 70113,
+    "rssKiB": 161965,
+    "vmRssKiB": 159028,
+    "vmSizeKiB": 18963040,
+    "vmDataKiB": 3077824
+  },
+  {
+    "phase": "cycle-1-peak",
+    "pssKiB": 83946,
+    "rssKiB": 182417,
+    "vmRssKiB": 168712,
+    "vmSizeKiB": 40446412,
+    "vmDataKiB": 5281644
+  },
+  {
+    "phase": "cycle-8-peak",
+    "pssKiB": 87281,
+    "rssKiB": 185869,
+    "vmRssKiB": 171920,
+    "vmSizeKiB": 40408348,
+    "vmDataKiB": 5278976
+  },
+  {
+    "phase": "cycle-16-peak",
+    "pssKiB": 87320,
+    "rssKiB": 185929,
+    "vmRssKiB": 172108,
+    "vmSizeKiB": 40408348,
+    "vmDataKiB": 5278976
+  },
+  {
+    "phase": "final",
+    "pssKiB": 84787,
+    "rssKiB": 183397,
+    "vmRssKiB": 170308,
+    "vmSizeKiB": 35843860,
+    "vmDataKiB": 3091892
+  }
+]

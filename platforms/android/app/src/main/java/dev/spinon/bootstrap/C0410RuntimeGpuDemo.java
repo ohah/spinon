@@ -398,6 +398,101 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native void nativeDestroySurface(long renderer);
     private static native void nativeFreeHost(long host);
 
+    private static void updateC124LifecycleStatus(Activity activity, TextView statusView,
+            String status) {
+        activity.runOnUiThread(() -> statusView.setText(status));
+    }
+
+    static void runC124RepeatedSessionLifecycleProbe(Activity activity, String runId,
+            TextView statusView) {
+        updateC124LifecycleStatus(activity, statusView, "C12.4 session lifecycle · starting");
+        Thread probe = new Thread(() -> {
+            int completedCycles = 0;
+            int totalCreated = 0;
+            boolean failed = false;
+            Log.i(TAG, "SPINON_C124_LIFECYCLE status=started run_id=" + runId
+                    + " cycles=16 sessions_per_cycle=8");
+            updateC124LifecycleStatus(activity, statusView,
+                    "C12.4 session lifecycle · cycle 0/16");
+            SystemClock.sleep(3_000);
+            for (int cycle = 1; cycle <= 16; cycle++) {
+                List<Long> hosts = new ArrayList<>(8);
+                int released = 0;
+                Log.i(TAG, "SPINON_C124_LIFECYCLE status=cycle_begin run_id=" + runId
+                        + " cycle=" + cycle);
+                updateC124LifecycleStatus(activity, statusView,
+                        "C12.4 session lifecycle · cycle " + cycle + "/16 running");
+                try {
+                    while (hosts.size() < 8) {
+                        long host = nativeCreateC124StackingHost();
+                        if (host == 0) {
+                            Log.e(TAG, "SPINON_C124_LIFECYCLE status=create_failed run_id="
+                                    + runId + " cycle=" + cycle + " created=" + hosts.size());
+                            failed = true;
+                            break;
+                        }
+                        hosts.add(host);
+                        totalCreated++;
+                    }
+                    if (!failed) {
+                        for (int index = 0; index < hosts.size(); index++) {
+                            String report = new String(
+                                    nativeC124WorkerStackResidencySample(hosts.get(index)),
+                                    StandardCharsets.UTF_8);
+                            Log.i(TAG, "SPINON_C124_LIFECYCLE_WORKER run_id=" + runId
+                                    + " cycle=" + cycle + " session_index=" + index
+                                    + " report=" + report);
+                        }
+                        Log.i(TAG, "SPINON_C124_LIFECYCLE status=ready run_id=" + runId
+                                + " cycle=" + cycle + " session_count=" + hosts.size());
+                        SystemClock.sleep(cycle == 1 || cycle == 8 || cycle == 16
+                                ? 5_000 : 1_000);
+                    }
+                } catch (RuntimeException error) {
+                    failed = true;
+                    Log.e(TAG, "SPINON_C124_LIFECYCLE status=probe_failed run_id=" + runId
+                            + " cycle=" + cycle + " message=" + error.getMessage(), error);
+                } finally {
+                    for (int index = hosts.size() - 1; index >= 0; index--) {
+                        try {
+                            nativeFreeHost(hosts.get(index));
+                            released++;
+                        } catch (RuntimeException error) {
+                            failed = true;
+                            Log.e(TAG, "SPINON_C124_LIFECYCLE status=free_failed run_id="
+                                    + runId + " cycle=" + cycle + " session_index=" + index,
+                                    error);
+                        }
+                    }
+                }
+                Log.i(TAG, "SPINON_C124_LIFECYCLE status=freed run_id=" + runId
+                        + " cycle=" + cycle + " released=" + released
+                        + " created=" + hosts.size());
+                if (failed || released != hosts.size()) {
+                    Log.e(TAG, "SPINON_C124_LIFECYCLE status=cycle_failed run_id=" + runId
+                            + " cycle=" + cycle);
+                    failed = true;
+                    break;
+                }
+                SystemClock.sleep(1_500);
+                completedCycles++;
+                updateC124LifecycleStatus(activity, statusView,
+                        "C12.4 session lifecycle · cycle " + completedCycles + "/16 complete");
+                Log.i(TAG, "SPINON_C124_LIFECYCLE status=cycle_complete run_id=" + runId
+                        + " cycle=" + cycle + " created=" + hosts.size()
+                        + " released=" + released);
+            }
+            updateC124LifecycleStatus(activity, statusView,
+                    "C12.4 session lifecycle · " + (failed ? "FAIL" : "PASS")
+                            + " · " + completedCycles + "/16 cycles");
+            Log.i(TAG, "SPINON_C124_LIFECYCLE status=finished run_id=" + runId
+                    + " result=" + (failed ? "failed" : "passed")
+                    + " cycles_completed=" + completedCycles
+                    + " sessions_created=" + totalCreated);
+        }, "spinon-c124-lifecycle-probe");
+        probe.start();
+    }
+
     static void runC124SessionStackCostProbe(Activity activity) {
         Thread probe = new Thread(() -> {
             List<Long> hosts = new ArrayList<>();

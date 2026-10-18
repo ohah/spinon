@@ -1,0 +1,25 @@
+{
+  "cycle": 8,
+  "ownerThreadIds": [
+    4318,
+    4321,
+    4323,
+    4325,
+    4327,
+    4330,
+    4334,
+    4336
+  ],
+  "cssWorkerThreadIds": [
+    4316,
+    4319,
+    4322,
+    4324,
+    4326,
+    4328,
+    4332,
+    4335
+  ],
+  "activeAtReady": true,
+  "absentAfterFree": true
+}
