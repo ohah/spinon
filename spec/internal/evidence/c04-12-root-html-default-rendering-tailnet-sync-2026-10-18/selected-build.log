@@ -1,0 +1,79 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: /private/tmp/spinon-roadmap-next-20261018/packages/docs
+warn    Current dist path: /tmp/spinon-c04-12-roadmap-tailnet-20261018/out
+info    Rendering pages...
+success Pages rendered in 81 ms.
+ready   built in 0.62s (web)
+ready   built in 0.62s (node)
+
+File (web)                                                                                                                                    Size        Gzip
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/i.25208e7c92.js                                                 0.10 kB     0.09 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/styles.2da0941fcb.js                                                  0.47 kB     0.23 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/icon.svg                                                                        0.64 kB     0.42 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-bf1bdca76546.891e2b307b.js                                2.2 kB      1.2 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-989ca1f66450.d83566d03b.js                                7.1 kB      2.4 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-4ad8775d68c3.b3c30ddcdc.js                                7.1 kB      2.5 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-2448965e4a94.ed68463a78.js                                8.2 kB      2.9 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-fc5696cc2162.0ab4c215eb.js                                8.9 kB      3.0 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-dfe593960693.f10c333343.js                                9.2 kB      3.2 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-f7ef4ddf795f.2fc214e107.js                                9.2 kB      3.3 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-059bac22a6b5.724e306f6f.js                                9.3 kB      3.3 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-99d1d44ec434.ef3e730c5f.js                                9.3 kB      3.5 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-8a23293a317b.674df5c7a7.js                                9.4 kB      3.1 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-faffa23ad0bd.a753e237e7.js                                10.2 kB     3.6 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-a07f3c9d45d8.47e5cd3b64.js                                10.6 kB     3.7 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-10c6e6a69971.bc1c9c5bf5.js                                12.0 kB     3.8 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-f008be36a2c6.59b958e2fa.js                                12.2 kB     3.9 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-10e224d209ed.beaa1725b3.js                                15.1 kB     5.5 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/image/chrome-agent-browser-iphone12-scale-half.43db41fdbd.png            25.0 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-ea34262d0652.b147e6ecd6.js                                25.9 kB     7.9 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/image/chrome-agent-browser-iphone12-width-500-scale-one.4109664d55.png   26.5 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/image/chrome-agent-browser-iphone12-scale-two.6c05045e76.png             29.0 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/lib-router.1e14e568cb.js                                              35.4 kB     12.7 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-7ff1bc4fef68.53a045439b.js                                37.4 kB     10.7 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/index.23cad32b6f.js                                                   42.9 kB     13.4 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-117783875241.4259f4eb06.js                                62.6 kB     17.4 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/css/styles.8d918fd78e.css                                                74.0 kB     14.2 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/image/android-api37.f4e4045570.png                                       87.7 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/image/tailnet-counter-agent-browser.82c1d88bfa.png                       114.8 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/image/ios-26.2-iphone17pro.a73b7bf27b.png                                127.5 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-a1017bdf23ca.73cd8a3431.js                                177.7 kB    37.3 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/image/tailnet-status-page-scale-agent-browser.e57e07e0de.png             208.0 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/image/tailnet-status-c04-12-agent-browser.f8a374e4bf.png                 213.4 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/a.7a337fa48f.js                                                       217.1 kB    72.0 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/lib-react.9cdf8f49ce.js                                               218.4 kB    68.8 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/image/tailnet-roadmap-agent-browser.46c8d92008.png                       258.6 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/js/async/route-6c33a3943990.9060f709d7.js                                393.5 kB    92.1 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/search_index.ko.dfce587a.json                                            461.8 kB    148.6 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/static/image/tailnet-page-scale-evidence-agent-browser.23a6fbeeda.png           723.8 kB
+
+                                                                                                                                     Total:   3702.0 kB   2359.0 kB
+
+File (node)                                                                                                                                                                      Size        Gzip
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/404.html                                                                                                           8.5 kB      2.6 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/render-build-result.html                               24.9 kB     4.8 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/README.html                          27.0 kB     5.7 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/roadmap-followup-pr-review-20.html   27.8 kB     6.3 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-plan-review-20.html                        28.7 kB     6.6 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/plan/c04-12-visual-viewport.html                                                                                   28.8 kB     6.7 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-review-20.html                             28.9 kB     6.5 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/pr-delta-review-20.html              29.0 kB     6.4 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/plan-review-20.html                  29.2 kB     6.9 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/plan/c04-12-page-scale-rendering.html                                                                              29.4 kB     6.9 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/README.html                                            29.8 kB     6.5 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/plan/c04-12-root-canvas-color-scheme.html                                                                          30.5 kB     7.0 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/internal/evidence/c04-12-page-scale-rendering-2026-10-17/pr-delta-review-30.html                                   30.5 kB     7.1 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/internal/evidence/c04-12-page-scale-rendering-2026-10-17/README.html                                               31.4 kB     7.2 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/pr-delta-review-30.html                                34.3 kB     6.4 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/plan/c04-12-root-html-default-rendering.html                                                                       34.8 kB     8.9 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/plan/c04-root-html-document-environment.html                                                                       45.4 kB     11.4 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/internal/0077-c04-12-root-html-document.html                                                                       52.0 kB     13.9 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/plan/c15-inline-text-layout.html                                                                                   71.1 kB     20.1 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/internal/README.html                                                                                               171.1 kB    39.9 kB
+../../../../../tmp/spinon-c04-12-roadmap-tailnet-20261018/out/STATUS.html                                                                                                        372.6 kB    93.6 kB
+
+                                                                                                                                                                        Total:   1165.7 kB   281.4 kB

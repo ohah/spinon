@@ -1,0 +1,41 @@
+{
+  "title": "C04.12 Tailnet backup verification",
+  "generated_at": "2026-10-18T14:21:36.297Z",
+  "backups": [
+    {
+      "path": "roadmap.html",
+      "backup_path": "backup/c04-12-root-html-default-rendering-tailnet-sync-2026-10-18/roadmap.html",
+      "bytes": 137261,
+      "sha256": "f5a5e6dbc7a9e34bdb7d8942a2a59a0fdc8e0440b26d4bdf17be03209b190f06",
+      "verified": true
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "backup_path": "backup/c04-12-root-html-default-rendering-tailnet-sync-2026-10-18/spec/public/roadmap.html",
+      "bytes": 135448,
+      "sha256": "8ede83f47b37714511d8acb44ad7e0dd579ba635ee3960c248bd4e4ec3ffdd08",
+      "verified": true
+    },
+    {
+      "path": "spec/STATUS.md",
+      "backup_path": "backup/c04-12-root-html-default-rendering-tailnet-sync-2026-10-18/spec/STATUS.md",
+      "bytes": 284980,
+      "sha256": "a841b0061b17f573af1efd9a07d7081f5fcb4ee35977727a26a79f110fb0d2d2",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "backup/c04-12-root-html-default-rendering-tailnet-sync-2026-10-18/STATUS.html",
+      "bytes": 372900,
+      "sha256": "50972ac0c1acf38c267a6659bcb02c2b813157dd88a7457d720937ccd3e7fc6c",
+      "verified": true
+    },
+    {
+      "path": "STATUS.md",
+      "backup_path": "backup/c04-12-root-html-default-rendering-tailnet-sync-2026-10-18/STATUS.md",
+      "bytes": 284980,
+      "sha256": "a841b0061b17f573af1efd9a07d7081f5fcb4ee35977727a26a79f110fb0d2d2",
+      "verified": true
+    }
+  ]
+}

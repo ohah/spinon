@@ -1,0 +1,28 @@
+{
+  "agent_browser_version": "0.31.1",
+  "roadmap": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "title": "스피논 구현 로드맵",
+    "visible_note": "2026-10-18 C04.12 기본 root HTML 렌더링 · 계획 PR #321 병합",
+    "linked_plan": "https://macstudio.tailed42f2.ts.net/spinon/plan/c04-12-root-html-default-rendering.html",
+    "screenshot": "tailnet-roadmap-agent-browser.png",
+    "width": 1280,
+    "height": 633,
+    "sha256": "340ff5b929957d92ff6213ab11c2fde3635e16e57952ef27e18a9f3edf2bbccb"
+  },
+  "plan": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c04-12-root-html-default-rendering.html",
+    "title": "스피논 문서",
+    "heading": "C04.12 · 기본 root HTML 문서 렌더링",
+    "screenshot": "tailnet-plan-agent-browser.png",
+    "width": 1280,
+    "height": 633,
+    "sha256": "a8d6b68f4c7612e1eea3d05c335ffc6e7ad6ffee67247029d21e3976a31bc884"
+  },
+  "shutdown": {
+    "close_command_succeeded": true,
+    "browser_launched": false,
+    "page_count": 0,
+    "process_present_after_close": false
+  }
+}
