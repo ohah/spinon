@@ -1,6 +1,7 @@
 use std::collections::BTreeMap;
 
 use spinon_core::NodeId;
+use spinon_text_layout::FontRegistryRevision;
 use taffy::{AvailableSpace, NodeId as TaffyNodeId, Size};
 
 use crate::{LayoutError, LayoutInput, LayoutTextFlowSegment, LayoutTextSnapshot};
@@ -11,6 +12,12 @@ pub(crate) type FinalTextLayouts = (
     BTreeMap<NodeId, LayoutTextSnapshot>,
     BTreeMap<NodeId, Vec<LayoutTextFlowSegment>>,
 );
+
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub(super) struct TextMeasureResult {
+    pub(super) size: Size<f32>,
+    pub(super) font_registry_revision: FontRegistryRevision,
+}
 
 impl CalcLayoutTree {
     pub(crate) fn final_text_layouts(
@@ -116,9 +123,12 @@ impl CalcLayoutTree {
         &self,
         node_id: TaffyNodeId,
         available_width: AvailableSpace,
-    ) -> Result<Size<f32>, LayoutError> {
+    ) -> Result<TextMeasureResult, LayoutError> {
         let Some(paragraph) = self.text_paragraphs.get(&node_id).cloned() else {
-            return Ok(Size::ZERO);
+            return Ok(TextMeasureResult {
+                size: Size::ZERO,
+                font_registry_revision: FontRegistryRevision::default(),
+            });
         };
         let engine = self
             .text_layout_engine
@@ -136,9 +146,12 @@ impl CalcLayoutTree {
                     .entry(node_id)
                     .or_default()
                     .insert(width.to_bits(), snapshot.clone());
-                Ok(Size {
-                    width: snapshot.width,
-                    height: snapshot.height,
+                Ok(TextMeasureResult {
+                    size: Size {
+                        width: snapshot.width,
+                        height: snapshot.height,
+                    },
+                    font_registry_revision: snapshot.font_registry_revision,
                 })
             }
             AvailableSpace::MinContent | AvailableSpace::MaxContent => {
@@ -155,16 +168,21 @@ impl CalcLayoutTree {
                         .insert(node_id, sizes.clone());
                     sizes
                 };
-                Ok(match available_width {
-                    AvailableSpace::MinContent => Size {
-                        width: sizes.min_content(),
-                        height: sizes.min_content_height(),
+                Ok(TextMeasureResult {
+                    size: match available_width {
+                        AvailableSpace::MinContent => Size {
+                            width: sizes.min_content(),
+                            height: sizes.min_content_height(),
+                        },
+                        AvailableSpace::MaxContent => Size {
+                            width: sizes.max_content(),
+                            height: sizes.max_content_height(),
+                        },
+                        AvailableSpace::Definite(_) => {
+                            unreachable!("matched intrinsic width")
+                        }
                     },
-                    AvailableSpace::MaxContent => Size {
-                        width: sizes.max_content(),
-                        height: sizes.max_content_height(),
-                    },
-                    AvailableSpace::Definite(_) => unreachable!("matched intrinsic width"),
+                    font_registry_revision: sizes.font_registry_revision(),
                 })
             }
         }
@@ -179,7 +197,7 @@ fn normalize_zero(value: f32) -> f32 {
 mod tests {
     use std::{
         cell::RefCell,
-        collections::{BTreeMap, HashMap},
+        collections::{BTreeMap, BTreeSet, HashMap},
     };
 
     use spinon_core::NodeId;
@@ -230,6 +248,10 @@ mod tests {
             text_flow_nodes: BTreeMap::new(),
             text_layouts: RefCell::new(HashMap::new()),
             text_intrinsic_layouts: RefCell::new(HashMap::new()),
+            grid_item_nodes: BTreeSet::new(),
+            grid_item_styles: BTreeMap::new(),
+            record_intrinsic_measurements: true,
+            intrinsic_measurements: RefCell::new(Vec::new()),
         };
 
         let min_content = tree
@@ -238,15 +260,29 @@ mod tests {
         let max_content = tree
             .measure_text(taffy_node, AvailableSpace::MaxContent)
             .unwrap();
-        assert_eq!((min_content.width, min_content.height), (70.0, 20.0));
-        assert_eq!((max_content.width, max_content.height), (100.0, 10.0));
+        assert_eq!(
+            (min_content.size.width, min_content.size.height),
+            (70.0, 20.0)
+        );
+        assert_eq!(
+            (max_content.size.width, max_content.size.height),
+            (100.0, 10.0)
+        );
+        assert_eq!(
+            min_content.font_registry_revision,
+            max_content.font_registry_revision
+        );
         assert!(tree.text_layouts.borrow().is_empty());
         assert_eq!(tree.text_intrinsic_layouts.borrow().len(), 1);
 
         let definite = tree
             .measure_text(taffy_node, AvailableSpace::Definite(30.0))
             .unwrap();
-        assert_eq!(definite.width, 70.0);
+        assert_eq!(definite.size.width, 70.0);
+        assert_eq!(
+            definite.font_registry_revision,
+            min_content.font_registry_revision
+        );
         assert!(tree.text_layouts.borrow()[&taffy_node].contains_key(&30.0_f32.to_bits()));
         assert_eq!(tree.text_intrinsic_layouts.borrow().len(), 1);
     }

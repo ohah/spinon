@@ -9,7 +9,7 @@
 
 ## 호출 흐름과 소유권
 
-1. 호출자는 완전한 `LayoutStyle` map, 내부 `ParagraphStyle` map, 그리고 `HostDocumentSnapshot`을 `LayoutInput::from_host_document_with_text_paragraphs(...)`에 전달한다. 서로 다른 inline font metric이 필요하면 `InlineRunStyle` map을 받는 `..._and_run_styles(...)` profile을 쓴다. paragraph key는 visible HTML element이며 `display:block`이어야 한다.
+1. 호출자는 완전한 `LayoutStyle` map, 내부 `ParagraphStyle` map, 그리고 `HostDocumentSnapshot`을 `LayoutInput::from_host_document_with_text_paragraphs(...)`에 전달한다. 서로 다른 inline font metric이 필요하면 `InlineRunStyle` map도 함께 전달한다. Root HTML의 collapsible whitespace profile은 두 map을 `HostTextStyleProfile { paragraphs, inline_runs }`로 묶어 layout constructor에 전달한다. paragraph key는 visible HTML element이며 `display:block`이어야 한다.
 2. HostDocument adapter는 paragraph의 text node와 inline HTML `span`을 DOM source order대로 수집한다. C15.1은 한 단계 plain span을, C15.2a는 최대 두 단계 span과 고정 px border/padding을 받는다. `display:none` element subtree와 빈 text node는 line geometry에 넣지 않는다. 숨긴 element에는 style이 필요하며 unpaired UTF-16 surrogate는 `InvalidTextEncoding(node)`로 닫는다.
 3. 호출자는 명시적으로 등록한 폰트와 `TextLayoutEngine`을 `TaffyLayoutEngine::compute_with_text_layout_engine(...)`에 전달한다. Taffy measure callback은 definite content width에서 실제 shaping을 수행한다.
 4. 최종 Block content width가 measure width와 bit-exact하게 같을 때만 같은 계산의 snapshot을 `LayoutOutput.text_layouts`에 넣는다. width가 다르거나, auto-height가 snapshot 높이와 `0.05 CSS px` 이상 다르면 layout 계산은 실패한다.

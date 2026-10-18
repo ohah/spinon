@@ -34,6 +34,12 @@ use validation::{assert_matching_revision, assert_no_inline_style, assert_view_m
 
 const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 
+type TextProjectionProfile<'a> = (
+    &'a BTreeMap<NodeId, ParagraphStyle>,
+    &'a BTreeMap<NodeId, spinon_layout::InlineRunStyle>,
+    &'a TextLayoutEngine,
+);
+
 mod fixed_containing_block;
 mod validation;
 
@@ -488,11 +494,7 @@ fn compute_layout_from_styles_with_text(
     viewport: CssViewport,
     reject_cascade_diagnostics: bool,
     intrinsic_sizes: Option<LayoutIntrinsicSizeSnapshot>,
-    text_profile: Option<(
-        &BTreeMap<NodeId, ParagraphStyle>,
-        &BTreeMap<NodeId, spinon_layout::InlineRunStyle>,
-        &TextLayoutEngine,
-    )>,
+    text_profile: Option<TextProjectionProfile<'_>>,
 ) -> Result<StyleLayoutOutput, StyleLayoutError> {
     assert_matching_revision(snapshot, &computed_styles, computed_styles.profile)?;
     if reject_cascade_diagnostics
@@ -623,8 +625,10 @@ fn compute_layout_from_styles_with_text(
             root,
             layout_viewport,
             &styles,
-            paragraph_styles,
-            inline_run_styles,
+            spinon_layout::HostTextStyleProfile {
+                paragraphs: paragraph_styles,
+                inline_runs: inline_run_styles,
+            },
             computed_styles.style_revision,
             viewport.environment_revision,
         )?
