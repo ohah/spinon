@@ -1,6 +1,6 @@
 {
   "schema": "spinon-c13-3-native-wheel-normalization-precomparison-v1",
-  "status": "Android native sign/unit and queue/draw matrix observed; iOS native callback not observed and iOS adapter remains gated",
+  "status": "Android native sign/unit and queue/draw matrix observed; iPadOS 26.2 Simulator continuous callback and partial queue/process observed; discrete source and full iOS direction matrix remain unverified",
   "reference": {
     "chrome": "155.0.8059.40",
     "fixture": "tests/fixtures/css/c13/c13-3-scroll-gesture.html",
@@ -64,10 +64,11 @@
     "native_units_per_css_px": "canvas bounds points / fixture viewport CSS px",
     "cumulative_translation": true,
     "proposed_formula": {"delta_x_css_px":"-(translation_now_x - translation_previous_x) / points_per_css_px","delta_y_css_px":"-(translation_now_y - translation_previous_y) / points_per_css_px"},
-    "formula_confirmation_required_before_implementation": true,
-    "preflight_state": "simulator app reached ready; no discrete/continuous callback observed because host loginwindow obscured Simulator and CGEvent was not delivered",
+    "formula_confirmation_required_before_implementation": false,
+    "formula_validation_scope": "The negative-translation to positive CSS-scroll sign was observed on iPadOS 26.2 Simulator continuous callbacks. Latest four-direction XCTest passed all four UI methods, but native adapter callbacks appeared in only two cases: negative-Y reached queue/process without a consumed offset; positive-X published revision 1 and inner X offset +19.394547 CSS px. Discrete callback, repeatable ±X/±Y delivery, other point scales, physical trackpad, and hardware remain unverified.",
+    "preflight_state": "Initial preflight had no callback because host loginwindow obscured Simulator; a later XCTest follow-up observed intermittent continuous callbacks. See ../c13-3-ios-native-wheel-adapter-2026-10-18/README.md",
     "momentum_phase": "None unless an explicit native signal is provided"
   },
-  "negative_controls": ["zero delta does not publish a new scroll revision","unsupported source/action does not enqueue","Android Control-wheel guard is implemented but not runtime verified; iOS Control-wheel, pinch, and magnification remain unverified here","repeat iOS cumulative translation produces zero second delta","non-finite or non-positive scale/factor is rejected","surface generation change clears the iOS translation baseline"],
+  "negative_controls": ["zero delta does not publish a new scroll revision","unsupported source/action does not enqueue","Android Control-wheel guard is implemented but not runtime verified; iOS Control-wheel, pinch, and magnification remain unverified here","repeated zero cumulative translation was observed to reject as zero-delta in iPadOS Simulator logs","non-finite or non-positive scale/factor is rejected","surface generation change rebases the iOS baseline on the next callback; runtime resize callback was not injected"],
   "evidence_limit": "Android API 37 ARM64 AVD and iPadOS 26.2 Simulator only; no physical-device or public DOM event claim"
 }

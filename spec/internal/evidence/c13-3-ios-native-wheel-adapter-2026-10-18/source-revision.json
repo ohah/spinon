@@ -1,0 +1,47 @@
+{
+  "repository": "ohah/spinon",
+  "branch": "feat/c13-3-ios-native-wheel-runtime-20261018",
+  "base_revision": "2e73f8bc3805a856577d4a1d8e3e915c9ea9e538",
+  "source_commit": "pending-commit",
+  "source_sha256": {
+    "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "28424d0db37d7b11a4babbbf0385f7a39c683561d73d4d6ca63b053e70745590",
+    "tools/css-reference/c13-3-ios-native-wheel-adapter.test.mjs": "b34840a1b1b1a306d3782af3f18b8ce3863265ca5ebafea700322416f0bd8c6d"
+  },
+  "evidence_sha256": {
+    "xcodebuild-opt-in.log.gz": "3c9aed998f234c5d89b6901aa58726cb456eaa557e59bc0a58bd2fafcee3ff1b",
+    "xcodebuild-default.log.gz": "d41a375fc089bd49b97775a90ecfc8038ad4f1dc076179aaf10f7240816c63be",
+    "xctest-four-directions.log": "b95e90422f299d16a16209febf0820b98a145032c65033f5d8b68e62cb51eb9c",
+    "runtime-callbacks-sanitized.log": "b73606644918916f81500118a4b30cf5d949aac16818b002a8e34f3e0319a006",
+    "ios-simulator-scene.png": "4cddc3a1bd188b1b49a87b4be1a569e6e3d407aae3d74d7d4ae7f0075e43306e"
+  },
+  "platform": "iPad Pro 13-inch (M5), iOS Simulator 26.2, arm64",
+  "simulator_udid": "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+  "build_modes": {
+    "opt_in": {
+      "SPINON_ENABLE_C04_RUNTIME_GPU": "1",
+      "SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST": "1",
+      "app_executable_sha256": "46c19b1070ce41ff14084c5c33abf30603c2c6fc1143a213b6da72df91c49f6e",
+      "wheel_ffi_symbol_present": true
+    },
+    "default": {
+      "SPINON_ENABLE_C04_RUNTIME_GPU": "0",
+      "SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST": "0",
+      "app_executable_sha256": "3106d4e641d31f5b5f812a980d192274116c76167ef7a4e6a949cc35a6140358",
+      "ffi_archive_sha256": "26a72e2ad024fc7d1e86bb86275b77a255cc7c70562b0e6b964e84eb0eb3ea34",
+      "adapter_marker_present": false,
+      "wheel_ffi_symbol_present": false
+    }
+  },
+  "runtime_test": {
+    "xcresult": "/tmp/spinon-c13-ios-wheel-xctest-run-20261018/results-adapter-final-verified.xcresult",
+    "ui_tests_passed": 4,
+    "ui_tests_failed": 0,
+    "native_callback_cases_observed": 2,
+    "source": "continuous-trackpad only",
+    "note": "UI method pass count is not equivalent to native callback delivery count."
+  },
+  "source_files": [
+    "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+    "tools/css-reference/c13-3-ios-native-wheel-adapter.test.mjs"
+  ]
+}
