@@ -17,7 +17,7 @@
 | 10 | inline boundary ID·폭이 Parley 반환 값과 바뀜 | 준비 시 ID별 owner/index/edge를 저장하고 returned width bit pattern을 검사한다. 불일치는 `InvalidGlyphLayout`이다. |
 | 11 | 직접 text source의 inline hierarchy가 뒤섞여 잘못된 edge를 붙임 | 기존 inline source order·depth·owner validation을 동일 builder에서 실행한다. 기존 C15.2 nested/wrap 회귀가 계속 통과한다. |
 | 12 | intrinsic 전용 경로가 font/run style 검증을 우회함 | definite layout과 같은 `build_parley_layout`을 사용한다. parent/run font 부재·metric 오류는 기존 구체 `TextLayoutError`로 전달된다. |
-| 13 | registry 변경 전후 결과가 동일 revision이라고 오인됨 | 결과에는 계산 당시 `font_registry_revision`과 paragraph node가 들어가며 getter로 검증한다. registry revision을 변경한 뒤 같은 결과를 재사용하는 전역 cache는 없다. |
+| 13 | 독립 registry 두 개의 같은 revision 숫자가 같은 font 입력으로 오인됨 | 결과는 `FontRegistryRevision`과 private `FontRegistryToken` identity를 함께 보존한다. clone engine 결과는 같은 registry revision이고, 별도 engine의 같은 숫자 revision은 다르다는 회귀를 추가했다. |
 | 14 | NaN, infinity, 음수 또는 min > max가 성공 값으로 나감 | 모든 폭·높이의 finite/nonnegative 조건과 min ≤ max를 반환 전에 검사하고 위반 시 `InvalidGlyphLayout`을 반환한다. |
 | 15 | `MinContent`/`MaxContent` callback이 definite snapshot map을 오염 | callback은 별도 `TextIntrinsicInlineSizes` map에 저장한다. direct callback test에서 definite map이 비어 있음을 확인한다. |
 | 16 | intrinsic callback이 definite measure의 결과를 재사용함 | 테스트가 min/max 요청 후 definite `30px` 요청을 별도 layout으로 수행하고 definite key가 따로 기록됨을 확인한다. |

@@ -2,7 +2,7 @@
 
 ## 변경 범위
 
-이 미병합 구현 slice는 C15 Parley paragraph에서 min-content/max-content inline advance와 각 결과의 block height를 계산해 `TaffyLayoutEngine`의 intrinsic measure callback에 전달한다. definite-width `TextLayoutSnapshot` cache는 그대로 분리하고, intrinsic 결과는 한 `CalcLayoutTree` 수명 안에서 text node별로만 재사용한다. C11.4 Grid track 함수·단계별 sizing·item automatic minimum·auto-repeat·Android/iOS runtime은 구현하지 않았다. C11.4와 C11 상위는 미완료다.
+이 구현 slice는 C15 Parley paragraph에서 min-content/max-content inline advance와 각 결과의 block height를 계산해 `TaffyLayoutEngine`의 intrinsic measure callback에 전달한다. 결과는 font revision 숫자와 registry identity를 함께 보존하므로 별도 engine의 같은 숫자 revision을 같은 입력으로 오인하지 않는다. definite-width `TextLayoutSnapshot` cache는 그대로 분리하고, intrinsic 결과는 한 `CalcLayoutTree` 수명 안에서 text node별로만 재사용한다. C11.4 Grid track 함수·단계별 sizing·item automatic minimum·auto-repeat·Android/iOS runtime은 구현하지 않았다. C11.4와 C11 상위는 미완료다.
 
 ## 기준 입력과 oracle
 

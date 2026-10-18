@@ -132,10 +132,11 @@ pub struct InlineFragment {
 }
 
 /// 같은 paragraph와 font registry에서 계산한 CSS intrinsic inline sizes입니다.
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Debug)]
 pub struct TextIntrinsicInlineSizes {
     paragraph: NodeId,
     font_registry_revision: FontRegistryRevision,
+    font_registry_token: FontRegistryToken,
     min_content: f32,
     max_content: f32,
     min_content_height: f32,
@@ -143,9 +144,10 @@ pub struct TextIntrinsicInlineSizes {
 }
 
 impl TextIntrinsicInlineSizes {
-    pub(crate) const fn new(
+    pub(crate) fn new(
         paragraph: NodeId,
         font_registry_revision: FontRegistryRevision,
+        font_registry_token: FontRegistryToken,
         min_content: f32,
         max_content: f32,
         min_content_height: f32,
@@ -154,6 +156,7 @@ impl TextIntrinsicInlineSizes {
         Self {
             paragraph,
             font_registry_revision,
+            font_registry_token,
             min_content,
             max_content,
             min_content_height,
@@ -161,28 +164,45 @@ impl TextIntrinsicInlineSizes {
         }
     }
 
-    pub const fn paragraph(self) -> NodeId {
+    pub const fn paragraph(&self) -> NodeId {
         self.paragraph
     }
 
-    pub const fn font_registry_revision(self) -> FontRegistryRevision {
+    pub const fn font_registry_revision(&self) -> FontRegistryRevision {
         self.font_registry_revision
     }
 
-    pub const fn min_content(self) -> f32 {
+    /// 두 결과가 같은 font registry의 같은 revision에서 계산됐는지 비교합니다.
+    pub fn uses_same_font_registry_revision(&self, other: &Self) -> bool {
+        self.font_registry_revision == other.font_registry_revision
+            && self.font_registry_token.matches(&other.font_registry_token)
+    }
+
+    pub const fn min_content(&self) -> f32 {
         self.min_content
     }
 
-    pub const fn max_content(self) -> f32 {
+    pub const fn max_content(&self) -> f32 {
         self.max_content
     }
 
-    pub const fn min_content_height(self) -> f32 {
+    pub const fn min_content_height(&self) -> f32 {
         self.min_content_height
     }
 
-    pub const fn max_content_height(self) -> f32 {
+    pub const fn max_content_height(&self) -> f32 {
         self.max_content_height
+    }
+}
+
+impl PartialEq for TextIntrinsicInlineSizes {
+    fn eq(&self, other: &Self) -> bool {
+        self.paragraph == other.paragraph
+            && self.uses_same_font_registry_revision(other)
+            && self.min_content == other.min_content
+            && self.max_content == other.max_content
+            && self.min_content_height == other.min_content_height
+            && self.max_content_height == other.max_content_height
     }
 }
 
