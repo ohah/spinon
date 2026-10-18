@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+: "${SPINON_ENABLE_C04_RUNTIME_GPU:=1}"
+: "${SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST:=0}"
+: "${SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST:=0}"
+
 repo_root="$(cd "$(dirname "$0")/.." && pwd)"
 v8_dir="${SPINON_V8_DIR:-$repo_root/build/v8-source/v8}"
 v8_revision="$(cat "$repo_root/tools/v8/v8-revision.txt")"
@@ -36,6 +40,30 @@ case "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST은 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
+if [[ "${SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST:-0}" == "1" \
+      && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
+  echo "C04 runtime GPU fixture-test는 제품 runtime GPU와 함께 켜야 합니다." >&2
+  exit 2
+fi
+case "${SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST은 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
+if [[ "${SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST:-0}" == "1" \
+      && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
+  echo "C11.2.3 Grid fixture는 제품 C04 runtime GPU와 함께 켜야 합니다." >&2
+  exit 2
+fi
 case "${SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST:-0}" in
   0|1) ;;
   *)
@@ -251,10 +279,36 @@ if [[ "${SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST:-0}" == "1" \
   echo "C11.1 Grid Metal pixel 표본은 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
   exit 2
 fi
+runtime_gpu_fixture_test_enabled="${SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST:-0}"
+for fixture_flag in \
+  "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" \
+  "${SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST:-0}" \
+  "${SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST:-0}" \
+  "${SPINON_ENABLE_C04_12_ROOT_HTML_TEXT_PAINT_FIXTURE_TEST:-0}" \
+  "${SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST:-0}" \
+  "${SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST:-0}" \
+  "${SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST:-0}" \
+  "${SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST:-0}" \
+  "${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0}" \
+  "${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0}" \
+  "${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0}" \
+  "${SPINON_ENABLE_C14_2_APP_FIXTURE_TEST:-0}" \
+  "${SPINON_ENABLE_C14_3_APP_FIXTURE_TEST:-0}" \
+  "${SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST:-0}" \
+  "${SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST:-0}" \
+  "${SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST:-0}" \
+  "${SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST:-0}" \
+  "${SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST:-0}" \
+  "${SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST:-0}"; do
+  if [[ "$fixture_flag" == "1" ]]; then
+    runtime_gpu_fixture_test_enabled=1
+    break
+  fi
+done
 s03_dom_gc_cpp_flag="-DSPINON_ENABLE_S03_DOM_GC_FIXTURE=${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}"
 runtime_gpu_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU=${SPINON_ENABLE_C04_RUNTIME_GPU:-0}"
-runtime_gpu_fixture_test_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=${SPINON_ENABLE_C04_RUNTIME_GPU:-0}"
-c1123_grid_fixture_cpp_flag="-DSPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST=${SPINON_ENABLE_C04_RUNTIME_GPU:-0}"
+runtime_gpu_fixture_test_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=$runtime_gpu_fixture_test_enabled"
+c1123_grid_fixture_cpp_flag="-DSPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST=${SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST:-0}"
 ua_cascade_probe_cpp_flag="-DSPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE=${SPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE:-0}"
 runtime_gpu_failure_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE=${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}"
 c124_surface_readback_cpp_flag="-DSPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST=${SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST:-0}"
@@ -280,7 +334,12 @@ if [[ "${SPINON_ENABLE_R10_EXPERIMENT:-0}" == "1" ]]; then
   append_ffi_feature r10-experiment
 fi
 if [[ "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" == "1" ]]; then
+  append_ffi_feature c04-runtime-gpu
+fi
+if [[ "$runtime_gpu_fixture_test_enabled" == "1" ]]; then
   append_ffi_feature c04-runtime-gpu-fixture-test
+fi
+if [[ "${SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST:-0}" == "1" ]]; then
   append_ffi_feature c11-2-3-grid-fixture-test
 fi
 if [[ "${SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST:-0}" == "1" ]]; then

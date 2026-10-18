@@ -706,11 +706,20 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 + (uint64_t)createRuntimeGpuHostWithRegisteredPropertiesFixture:(BOOL)enabled {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
   std::array<char, 1024> output{};
-  SpinonRuntimeGpuHost *host =
-      enabled == YES
-          ? spinon_runtime_gpu_host_new_registered_properties_fixture(
-                output.data(), output.size())
-          : spinon_runtime_gpu_host_new(output.data(), output.size());
+  SpinonRuntimeGpuHost *host = nullptr;
+  if (enabled == YES) {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
+    host = spinon_runtime_gpu_host_new_registered_properties_fixture(
+        output.data(), output.size());
+#else
+    os_log_error(OS_LOG_DEFAULT,
+                 "SPINON_C052_HOST_ERROR=fixture feature disabled");
+    return 0;
+#endif
+  } else {
+    host = spinon_runtime_gpu_host_new(output.data(), output.size());
+  }
   if (host == nullptr) {
     os_log_error(OS_LOG_DEFAULT, "%{public}s_HOST_ERROR=%{public}s",
                  enabled == YES ? "SPINON_C052" : "SPINON_C0410",
@@ -758,7 +767,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (uint64_t)createRuntimeGpuHostWithBlockPaintFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   std::array<char, 1024> output{};
   SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_block_paint_fixture(
       output.data(), output.size());
@@ -823,7 +833,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (uint64_t)createRuntimeGpuHostWithBlockFormattingFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   std::array<char, 1024> output{};
   SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_block_formatting_fixture(
       output.data(), output.size());
@@ -841,7 +852,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (uint64_t)createRuntimeGpuHostWithC12_1PositionFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   std::array<char, 1024> output{};
   SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_c12_1_position_fixture(
       output.data(), output.size());
@@ -859,7 +871,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (uint64_t)createRuntimeGpuHostWithC12_2AbsoluteBlockFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   std::array<char, 1024> output{};
   SpinonRuntimeGpuHost *host =
       spinon_runtime_gpu_host_new_c12_2_absolute_block_fixture(
@@ -878,7 +891,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (uint64_t)createRuntimeGpuHostWithC12_3FixedFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   std::array<char, 1024> output{};
   SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_c12_3_fixed_fixture(
       output.data(), output.size());
@@ -896,7 +910,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (uint64_t)createRuntimeGpuHostWithC12_4StackingFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   std::array<char, 1024> output{};
   SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_c12_4_stacking_fixture(
       output.data(), output.size());
@@ -914,7 +929,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (uint64_t)createRuntimeGpuHostWithC13_1OverflowClipFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
     SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST
   std::array<char, 1024> output{};
@@ -935,7 +951,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (uint64_t)createRuntimeGpuHostWithC13_1CompactSurfaceMatrixFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
     SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST
   std::array<char, 1024> output{};
@@ -956,7 +973,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (uint64_t)createRuntimeGpuHostWithC13_1CompactSurfacePixelReadbackFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
     SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST
   std::array<char, 1024> output{};
@@ -977,7 +995,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (uint64_t)createRuntimeGpuHostWithC13_1OverflowClipBorderFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
     SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST
   std::array<char, 1024> output{};
@@ -998,7 +1017,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (uint64_t)createRuntimeGpuHostWithC13_1StackingDescendantClipFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
     SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST
   std::array<char, 1024> output{};
@@ -1020,7 +1040,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (uint64_t)createRuntimeGpuHostWithC13_2ScrollFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C132_SCROLL_FIXTURE_TEST) && \
     SPINON_ENABLE_C132_SCROLL_FIXTURE_TEST
   std::array<char, 1024> output{};
@@ -1040,7 +1061,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (uint64_t)createRuntimeGpuHostWithC13_2SurfacePixelReadbackFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C132_SCROLL_FIXTURE_TEST) && \
     SPINON_ENABLE_C132_SCROLL_FIXTURE_TEST
   std::array<char, 1024> output{};
@@ -1077,7 +1099,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 #endif
 
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST) && \
     SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST
 + (uint64_t)createRuntimeGpuHostWithC18_2AlphaImageFixture {
@@ -1093,7 +1116,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 #endif
 
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST) && \
     SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST
 + (uint64_t)createRuntimeGpuHostWithC18_3ObjectFitPositionFixture {
@@ -1110,7 +1134,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 #endif
 
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST) && \
     SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST
 + (uint64_t)createRuntimeGpuHostWithC18_4AsyncImageFixture {
@@ -1126,7 +1151,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 #endif
 
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST) && \
     SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST
 + (uint64_t)createRuntimeGpuHostWithC19_2BoxPaintOpacityFixture {
@@ -1143,7 +1169,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 #endif
 
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST) && \
     SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST
 + (uint64_t)createRuntimeGpuHostWithC15_3GlyphPaintFixture {
@@ -1174,7 +1201,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
 + (uint64_t)createRuntimeGpuHostWithC13_3GestureFixture:(int32_t)scenarioID {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
     SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
   std::array<char, 1024> output{};
@@ -1196,7 +1224,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 
 + (uint64_t)createRuntimeGpuHostWithC11_1GridFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   std::array<char, 1024> output{};
   SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_c11_1_grid_fixture(
       output.data(), output.size());
@@ -1214,7 +1243,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (uint64_t)createRuntimeGpuHostWithC11_2_1GridPlacementFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   std::array<char, 1024> output{};
   SpinonRuntimeGpuHost *host =
       spinon_runtime_gpu_host_new_c11_2_1_grid_placement_fixture(
@@ -1234,7 +1264,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (uint64_t)createRuntimeGpuHostWithC11_2_2GridAutoPlacementFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   std::array<char, 1024> output{};
   SpinonRuntimeGpuHost *host =
       spinon_runtime_gpu_host_new_c11_2_2_grid_auto_placement_fixture(
@@ -1254,7 +1285,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (uint64_t)createRuntimeGpuHostWithC11_2_3GridAutoPlacementFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   std::array<char, 1024> output{};
   SpinonRuntimeGpuHost *host =
       spinon_runtime_gpu_host_new_c11_2_3_grid_auto_placement_fixture(
@@ -1340,7 +1372,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (uint64_t)createRuntimeGpuHostWithC11_1GridSurfacePixelReadbackFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST) && \
     SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST
   std::array<char, 1024> output{};
@@ -1380,7 +1413,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (uint64_t)createRuntimeGpuHostWithC12_4SurfaceReadbackFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST) && \
     SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST
   std::array<char, 1024> output{};
@@ -1401,7 +1435,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (uint64_t)createRuntimeGpuHostWithC10_3_5PositionedFlexFixture {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   std::array<char, 1024> output{};
   SpinonRuntimeGpuHost *host =
       spinon_runtime_gpu_host_new_c10_3_5_positioned_flex_fixture(
@@ -1463,7 +1498,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
   std::array<char, 4096> output{};
@@ -1480,7 +1516,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuAuthorStylesheetsFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
   std::array<char, 4096> output{};
@@ -1497,7 +1534,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuCustomPropertiesFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
   std::array<char, 4096> output{};
@@ -1514,7 +1552,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuRegisteredPropertiesFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
   std::array<char, 4096> output{};
@@ -1531,7 +1570,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuRuntimeResultCacheFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -1546,7 +1586,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuIncrementalRestyleFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -1561,7 +1602,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuPercentageDimensionsFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -1579,7 +1621,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuSpacingPercentagesFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -1597,7 +1640,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuAbsoluteLengthsFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -1615,7 +1659,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuFontRelativeUnitsFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -1633,7 +1678,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuTypedCssMathFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -1651,7 +1697,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuViewportUnitsFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -1669,7 +1716,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuMinMaxSizingFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -1687,7 +1735,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuBorderWidthFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -1705,7 +1754,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuAspectRatioFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -1723,7 +1773,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuBlockPaintFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -1779,7 +1830,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuBlockFormattingFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -1797,7 +1849,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuC12_1PositionFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
   std::array<char, 32768> output{};
@@ -1814,7 +1867,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuC12_2AbsoluteBlockFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
   std::array<char, 32768> output{};
@@ -1831,7 +1885,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuC12_3FixedFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
   std::array<char, 32768> output{};
@@ -1848,7 +1903,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuC12_4StackingFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
   std::array<char, 32768> output{};
@@ -1865,7 +1921,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuC13_1OverflowClipFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
     SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
@@ -1911,7 +1968,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 #endif
 
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST) && \
     SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST
 + (NSString *)evalRuntimeGpuC18_2AlphaImageFixture:(uint64_t)handle {
@@ -1926,7 +1984,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 #endif
 
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST) && \
     SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST
 + (NSString *)evalRuntimeGpuC18_3ObjectFitPositionFixture:(uint64_t)handle {
@@ -1943,7 +2002,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 #endif
 
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST) && \
     SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST
 + (NSString *)evalRuntimeGpuC18_4AsyncImageFixture:(uint64_t)handle {
@@ -1959,7 +2019,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 #endif
 
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST) && \
     SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST
 + (NSString *)evalRuntimeGpuC19_2BoxPaintOpacityFixture:(uint64_t)handle {
@@ -1975,7 +2036,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 #endif
 
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST) && \
     SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST
 + (NSString *)evalRuntimeGpuC15_3GlyphPaintFixture:(uint64_t)handle {
@@ -2005,7 +2067,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 
 + (NSString *)evalRuntimeGpuC13_1CompactSurfaceMatrixFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
     SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
@@ -2061,7 +2124,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuC13_1OverflowClipBorderFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
     SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
@@ -2093,7 +2157,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuC13_1StackingDescendantClipFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST) && \
     SPINON_ENABLE_C131_OVERFLOW_CLIP_FIXTURE_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
@@ -2127,7 +2192,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuC13_2ScrollFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C132_SCROLL_FIXTURE_TEST) && \
     SPINON_ENABLE_C132_SCROLL_FIXTURE_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
@@ -2147,7 +2213,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
 + (NSString *)evalRuntimeGpuC13_3GestureFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
     SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
@@ -2399,7 +2466,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 
 + (NSString *)evalRuntimeGpuC11_1GridFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
   std::array<char, 32768> output{};
@@ -2417,7 +2485,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 
 + (NSString *)evalRuntimeGpuC11_1GridSceneFixture:(uint64_t)handle
                                        sceneIndex:(uint32_t)sceneIndex {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
   std::array<char, 32768> output{};
@@ -2438,7 +2507,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 + (NSString *)evalRuntimeGpuC11_2_1GridPlacementFixture:(uint64_t)handle
                                                 sceneID:(NSString *)sceneID
                                                   runID:(NSString *)runID {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   const char *scene_id = sceneID.UTF8String;
   if (scene_id == nullptr) return @"status=-1 invalid-scene-id";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
@@ -2464,7 +2534,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 + (NSString *)evalRuntimeGpuC11_2_2GridAutoPlacementFixture:(uint64_t)handle
                                                     sceneID:(NSString *)sceneID
                                                       runID:(NSString *)runID {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   const char *scene_id = sceneID.UTF8String;
   if (scene_id == nullptr) return @"status=-1 invalid-scene-id";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
@@ -2491,7 +2562,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 + (NSString *)evalRuntimeGpuC11_2_3GridAutoPlacementFixture:(uint64_t)handle
                                                     sceneID:(NSString *)sceneID
                                                       runID:(NSString *)runID {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   const char *scene_id = sceneID.UTF8String;
   if (scene_id == nullptr) return @"status=-1 invalid-scene-id";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
@@ -2627,8 +2699,34 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 }
 
-+ (NSString *)evalRuntimeGpuC10_3_5PositionedFlexFixture:(uint64_t)handle {
++ (NSString *)evalRuntimeGpuHostSource:(uint64_t)handle source:(NSString *)source {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  const char *source_utf8 = source.UTF8String;
+  if (source_utf8 == nullptr) return @"status=-1 invalid-source";
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  constexpr std::size_t kOutputCapacity = 256 * 1024;
+  std::unique_ptr<char[]> output(new (std::nothrow) char[kOutputCapacity]{});
+  if (output == nullptr) return @"status=-3 runtime report buffer allocation failed";
+  const int32_t status = spinon_runtime_gpu_host_eval(
+      host, source_utf8, 60000, output.get(), kOutputCapacity);
+  NSString *detail = [NSString stringWithUTF8String:output.get()];
+  if (detail == nil) detail = @"C ABI report is not valid UTF-8";
+  NSString *report = [NSString stringWithFormat:@"status=%d %@", status, detail];
+  NSString *summary = [NSString stringWithFormat:@"status=%d bytes=%lu", status,
+                                                   (unsigned long)strlen(output.get())];
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_ROOT_HTML_DEFAULT_APP_EVAL", summary);
+  return report;
+#else
+  (void)handle; (void)source;
+  return @"status=-90 feature-disabled";
+#endif
+}
+
++ (NSString *)evalRuntimeGpuC10_3_5PositionedFlexFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
   std::array<char, 32768> output{};
@@ -2646,7 +2744,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuC12_1PositionState:(uint64_t)handle state:(uint32_t)state {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
   std::array<char, 32768> output{};
@@ -2664,7 +2763,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuMarginCollapseFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -2682,7 +2782,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuFlowRootFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -2700,7 +2801,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuFlexWrapFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -2719,7 +2821,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuFlexDistributionFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -2745,7 +2848,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuFlexReverseFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -2771,7 +2875,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuFlexOrderFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -2797,7 +2902,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuFlexAlignmentFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
@@ -2823,7 +2929,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 }
 
 + (NSString *)evalRuntimeGpuFlexBaselineFixture:(uint64_t)handle {
-#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
   if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));

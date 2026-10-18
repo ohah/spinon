@@ -321,6 +321,8 @@ private func c11GridMetalPixelSceneID(arguments: [String]) -> String? {
 }
 
 final class C0410RuntimeGpuDemoViewController: UIViewController {
+    var defaultRootHtmlApplicationRequested = false
+    private var rootHtmlApplicationScript: String?
 #if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
     private struct C18MetalPixelSample {
         let id: String
@@ -469,6 +471,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var viewportHeightCssPx: Float = 100
     private var presentationSequence: UInt64 = 0
     private var runtimeInitializationComplete = false
+    private var runtimeInitializationEnqueued = false
     private var expandedSurface = false
     private var automaticResizeScheduled = false
     private let failureProbeRequested = ProcessInfo.processInfo.arguments
@@ -1150,6 +1153,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         title.font = .systemFont(ofSize: 22, weight: .bold)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.isHidden = c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
+            || defaultRootHtmlApplicationRequested
         view.addSubview(title)
 
         let description = UILabel()
@@ -1264,11 +1268,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         description.numberOfLines = 2
         description.translatesAutoresizingMaskIntoConstraints = false
         description.isHidden = c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
+            || defaultRootHtmlApplicationRequested
         view.addSubview(description)
 
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.isAccessibilityElement = true
-        canvasView.accessibilityLabel = c153GlyphPaintProbeRequested
+        canvasView.accessibilityLabel = defaultRootHtmlApplicationRequested
+            ? "Spinon 기본 root HTML 화면"
+            : c153GlyphPaintProbeRequested
             ? c153HostDocumentTextPaintArgumentRequested
                 ? "C15.3 HostDocument text layout Ahem overflow WGPU Metal fixture"
                 : "C15.3 고정 Noto Sans KR glyph alpha mask WGPU Metal fixture"
@@ -1434,7 +1441,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         resizeButton.setTitle("표면 크기 전환 · 301×100 CSS px", for: .normal)
         resizeButton.addTarget(self, action: #selector(toggleSurfaceSize), for: .touchUpInside)
         resizeButton.translatesAutoresizingMaskIntoConstraints = false
-        if fixedSizeCssFixtureRequested { resizeButton.isHidden = true }
+        if fixedSizeCssFixtureRequested || defaultRootHtmlApplicationRequested {
+            resizeButton.isHidden = true
+        }
         view.addSubview(resizeButton)
 
         customPropertiesButton.setTitle(
@@ -1493,6 +1502,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || spacingPercentagesProbeRequested {
             customPropertiesButton.isHidden = true
         }
+        if defaultRootHtmlApplicationRequested {
+            customPropertiesButton.isHidden = true
+        }
 
         statusLabel.text = "V8·CSS runtime 준비 중…"
         statusLabel.textColor = UIColor(red: 0.38, green: 0.73, blue: 1, alpha: 1)
@@ -1500,6 +1512,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         statusLabel.numberOfLines = 0
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
         statusLabel.isHidden = c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
+            || defaultRootHtmlApplicationRequested
         view.addSubview(statusLabel)
 
         let canvasWidth = canvasView.widthAnchor.constraint(
@@ -1525,19 +1538,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 240
                 : fixedSizeCssFixtureRequested ? 240 : 100
         )
-        canvasWidthConstraint = canvasWidth
-        canvasHeightConstraint = canvasHeight
-        NSLayoutConstraint.activate([
+        var layoutConstraints: [NSLayoutConstraint] = [
             title.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 22),
             title.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -22),
             title.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
             description.leadingAnchor.constraint(equalTo: title.leadingAnchor),
             description.trailingAnchor.constraint(equalTo: title.trailingAnchor),
             description.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 8),
-            canvasView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            canvasView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            canvasWidth,
-            canvasHeight,
             resizeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             resizeButton.topAnchor.constraint(equalTo: canvasView.bottomAnchor, constant: 12),
             customPropertiesButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -1545,7 +1552,27 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             statusLabel.leadingAnchor.constraint(equalTo: title.leadingAnchor),
             statusLabel.trailingAnchor.constraint(equalTo: title.trailingAnchor),
             statusLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18),
-        ])
+        ]
+        if defaultRootHtmlApplicationRequested {
+            canvasWidthConstraint = nil
+            canvasHeightConstraint = nil
+            layoutConstraints.append(contentsOf: [
+                canvasView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+                canvasView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+                canvasView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+                canvasView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            ])
+        } else {
+            canvasWidthConstraint = canvasWidth
+            canvasHeightConstraint = canvasHeight
+            layoutConstraints.append(contentsOf: [
+                canvasView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                canvasView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                canvasWidth,
+                canvasHeight,
+            ])
+        }
+        NSLayoutConstraint.activate(layoutConstraints)
         if failureProbeRequested && shutdownProbeRequested {
             statusLabel.text = "draw 복구와 종료 검증은 나눠 실행해야 합니다."
             log("SPINON_C0410_PROBE_ARGUMENT_ERROR · failure와 shutdown 검증을 동시에 요청했습니다")
@@ -1567,7 +1594,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             },
             onFailure: { [weak self] message in self?.reportLaneFailure("render", message) }
         )
-        enqueueRuntime { [weak self] in self?.initializeRuntime() }
+        if !defaultRootHtmlApplicationRequested {
+            runtimeInitializationEnqueued = true
+            enqueueRuntime { [weak self] in self?.initializeRuntime() }
+        }
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -1609,7 +1639,16 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         displayScale = Float(scale)
         viewportWidthCssPx = Float(viewportSize.width)
         viewportHeightCssPx = Float(viewportSize.height)
+        let shouldInitializeDefaultRootHtmlApplication =
+            defaultRootHtmlApplicationRequested && !runtimeInitializationEnqueued
+        if shouldInitializeDefaultRootHtmlApplication {
+            runtimeInitializationEnqueued = true
+        }
         stateLock.unlock()
+        if shouldInitializeDefaultRootHtmlApplication {
+            log("SPINON_ROOT_HTML_DEFAULT_APP_SURFACE_READY viewport_css_px=\(viewportSize.width)x\(viewportSize.height) scale=\(scale)")
+            enqueueRuntime { [weak self] in self?.initializeRuntime() }
+        }
         let size = CGSize(
             width: (canvasView.bounds.width * scale).rounded(),
             height: (canvasView.bounds.height * scale).rounded()
@@ -2496,6 +2535,28 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
     }
 
+    private func createRootHtmlApplicationHost() -> UInt64 {
+        guard let htmlURL = Bundle.main.url(forResource: "index", withExtension: "html"),
+              let appURL = Bundle.main.url(forResource: "root-app", withExtension: "js") else {
+            log("SPINON_ROOT_HTML_DEFAULT_APP_ASSET_ERROR missing=index.html-or-root-app.js")
+            return 0
+        }
+        do {
+            let html = try String(contentsOf: htmlURL, encoding: .utf8)
+            let appSource = try String(contentsOf: appURL, encoding: .utf8)
+            guard !html.isEmpty, !appSource.isEmpty else {
+                log("SPINON_ROOT_HTML_DEFAULT_APP_ASSET_ERROR empty=index.html-or-root-app.js")
+                return 0
+            }
+            rootHtmlApplicationScript = appSource
+            log("SPINON_ROOT_HTML_DEFAULT_APP_SOURCE html_bytes=\(html.utf8.count) script_bytes=\(appSource.utf8.count)")
+            return SpinonRunner.createRuntimeGpuHost(withRootHTML: html)
+        } catch {
+            log("SPINON_ROOT_HTML_DEFAULT_APP_ASSET_ERROR reason=\(error)")
+            return 0
+        }
+    }
+
     private func initializeRuntime() {
         guard !isClosing else { return }
         if rootHtmlDefaultRenderRequested {
@@ -2865,6 +2926,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? SpinonRunner.createRuntimeGpuHostWithRootHtmlBlockPaintFixture()
             : blockPaintProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithBlockPaintFixture()
+            : defaultRootHtmlApplicationRequested
+            ? createRootHtmlApplicationHost()
             : rootHtmlDefaultRenderRequested
             ? createRootHtmlDefaultRuntimeHost()
             : SpinonRunner.createRuntimeGpuHost(
@@ -2973,10 +3036,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 ? 1 : environmentInputs.scale
         let environment = SpinonRunner.setRuntimeGpuEnvironment(
             handle,
-            width: rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
+            width: defaultRootHtmlApplicationRequested || rootHtmlBlockPaintProbeRequested
+                || rootHtmlTextPaintProbeRequested
                 || rootHtmlDefaultRenderRequested
                 ? viewportWidth * environmentScale : viewportWidth,
-            height: rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
+            height: defaultRootHtmlApplicationRequested || rootHtmlBlockPaintProbeRequested
+                || rootHtmlTextPaintProbeRequested
                 || rootHtmlDefaultRenderRequested
                 ? viewportHeight * environmentScale : viewportHeight,
             scale: environmentScale,
@@ -3086,7 +3151,22 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
 #endif
         if result == nil {
-        if c131StackingDescendantClipProbeRequested {
+        if defaultRootHtmlApplicationRequested {
+            guard let source = rootHtmlApplicationScript, !source.isEmpty else {
+                log("SPINON_ROOT_HTML_DEFAULT_APP_EVAL_ERROR reason=script-missing")
+                postStatus("실패 · 기본 root-app.js를 읽지 못했습니다")
+                return
+            }
+            result = SpinonRunner.evalRuntimeGpuHostSource(handle, source: source)
+            log("SPINON_ROOT_HTML_DEFAULT_APP_EVAL \(result ?? "native runtime returned no report")")
+            guard result?.hasPrefix("status=0 ") == true,
+                  result?.contains("layout=ready") == true else {
+                log("SPINON_ROOT_HTML_DEFAULT_APP_BOOT_ERROR reason=script-or-layout-failed")
+                postStatus("실패 · root-app.js 실행 또는 HTML 장면 계산에 실패했습니다")
+                return
+            }
+            log("SPINON_ROOT_HTML_DEFAULT_APP_BOOT status=pass root_app_marker=ready \(runtimeStatusSummary(result ?? ""))")
+        } else if c131StackingDescendantClipProbeRequested {
             result = SpinonRunner.evalRuntimeGpuC13_1StackingDescendantClipFixture(handle)
         } else if c131CompactSurfaceMatrixRouteRequested {
             result = SpinonRunner.evalRuntimeGpuC13_1CompactSurfaceMatrixFixture(handle)
@@ -4268,10 +4348,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 #endif
         let report = SpinonRunner.setRuntimeGpuEnvironment(
             handle,
-            width: rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
+            width: defaultRootHtmlApplicationRequested || rootHtmlBlockPaintProbeRequested
+                || rootHtmlTextPaintProbeRequested
                 || rootHtmlDefaultRenderRequested
                 ? environmentInputs.width * environmentInputs.scale : environmentInputs.width,
-            height: rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
+            height: defaultRootHtmlApplicationRequested || rootHtmlBlockPaintProbeRequested
+                || rootHtmlTextPaintProbeRequested
                 || rootHtmlDefaultRenderRequested
                 ? environmentInputs.height * environmentInputs.scale : environmentInputs.height,
             scale: environmentInputs.scale, dark: environmentInputs.dark

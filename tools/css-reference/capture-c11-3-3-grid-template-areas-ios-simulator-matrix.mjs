@@ -142,7 +142,7 @@ function c1133SupersededAttemptComplete(log, sceneID, sceneRunID, requireMetalRe
 async function captureMatrix(simulator) {
   const build = command('mise', ['exec', '--', 'env',
     'SPINON_V8_DIR=' + (process.env.SPINON_V8_DIR ?? resolve(repositoryRoot, 'build/v8-source/v8')),
-    'SPINON_ENABLE_C04_RUNTIME_GPU=1',
+    'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1',
     'SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=1',
     'bun', 'run', 'build:ios-sim'], { timeout: 900_000 });
   await saveLog('build.log', build);

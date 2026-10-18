@@ -123,6 +123,14 @@ public final class MainActivity extends Activity {
         return "revision-reuse".equals(sceneId);
     }
 
+    private static boolean hasSpinonLaunchOverride(Bundle extras) {
+        if (extras == null) return false;
+        for (String key : extras.keySet()) {
+            if (key.startsWith("spinon_")) return true;
+        }
+        return false;
+    }
+
     private final ThreadPoolExecutor runtimeCalls = new ThreadPoolExecutor(
             4, 4, 0L, TimeUnit.MILLISECONDS,
             new ArrayBlockingQueue<>(RUNTIME_QUEUE_CAPACITY),
@@ -611,9 +619,21 @@ public final class MainActivity extends Activity {
                         + "SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE=1로 빌드하세요");
                 return;
             }
+            boolean rootHtmlDefaultRenderRoute = getIntent().getBooleanExtra(
+                    "spinon_c0412_root_html_default_render", false);
+            if (!rootHtmlDefaultRenderRoute
+                    && !BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST) {
+                TextView unavailable = new TextView(this);
+                unavailable.setText("C04 runtime GPU fixture-test 옵션을 켜서 빌드해야 합니다.");
+                unavailable.setTextColor(Color.WHITE);
+                unavailable.setGravity(Gravity.CENTER);
+                setContentView(unavailable);
+                Log.e(TAG, "SPINON_C0410_DISABLED fixture-test feature is off");
+                return;
+            }
             int backend = getIntent().getIntExtra("spinon_r08_backend", 0);
             runtimeGpuDemo = new C0410RuntimeGpuDemo(
-                    this, backend, failureProbe, shutdownProbe, c11GridSceneIndex);
+                    this, backend, failureProbe, shutdownProbe, c11GridSceneIndex, false);
             setContentView(runtimeGpuDemo);
             return;
         }
@@ -714,6 +734,14 @@ public final class MainActivity extends Activity {
             float surfaceHeightPx = metrics.heightPixels;
             boolean prefersDark = (getResources().getConfiguration().uiMode
                     & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
+            boolean useDefaultRootHtmlGpuRoute = !hasSpinonLaunchOverride(getIntent().getExtras());
+            if (useDefaultRootHtmlGpuRoute) {
+                runtimeGpuDemo = new C0410RuntimeGpuDemo(
+                        this, 0, false, false, 0, true);
+                runtimeGpuDemo.setRootHtmlApplicationSources(rootHtml, rootAppSource);
+                setContentView(runtimeGpuDemo);
+                Log.i(TAG, "SPINON_ROOT_HTML_DEFAULT_APP_ROUTE source=index.html");
+            }
             bootstrapExecutor.execute(() -> {
                 boolean isMainThread = Thread.currentThread() == Looper.getMainLooper().getThread();
                 Log.i(TAG, "SPINON_BOOTSTRAP_EXECUTION is_main_thread=" + isMainThread);
@@ -723,9 +751,11 @@ public final class MainActivity extends Activity {
                         ? "native bridge returned no result"
                         : new String(outputUtf8, StandardCharsets.UTF_8);
                 Log.i(TAG, "SPINON_BOOTSTRAP_RESULT=" + output);
-                startRootDocumentSession(
-                        rootHtml, rootAppSource, surfaceWidthPx, surfaceHeightPx, density,
-                        prefersDark);
+                if (!useDefaultRootHtmlGpuRoute) {
+                    startRootDocumentSession(
+                            rootHtml, rootAppSource, surfaceWidthPx, surfaceHeightPx, density,
+                            prefersDark);
+                }
                 if (runR10 && !activityClosing) {
                     runOnUiThread(() -> {
                         if (!activityClosing) showR10Report(r10Report(output), density);

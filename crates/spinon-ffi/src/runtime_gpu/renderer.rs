@@ -349,6 +349,11 @@ impl RuntimeGpuHost {
     pub(super) fn draw(&self) -> Result<String, (i32, String)> {
         let (sequence, scene) = self.presentation.lock_current();
         let snapshot = scene.as_ref().map(|published| published.snapshot.as_ref());
+        let clear_color = if self.root_html_default_render {
+            lock(&self.root_html_canvas_color).unwrap_or([0, 0, 0, 255])
+        } else {
+            [0, 0, 0, 255]
+        };
         let mut renderer_slot = lock(&self.renderer);
         let renderer = renderer_slot
             .as_mut()
@@ -392,7 +397,9 @@ impl RuntimeGpuHost {
             root_html_text_paint_sample_points = Some(points);
         }
         let presented = renderer
-            .draw_if(snapshot, || self.presentation_sequence() == sequence)
+            .draw_if_with_srgb_clear_color(snapshot, clear_color, || {
+                self.presentation_sequence() == sequence
+            })
             .map_err(|error| (ERR_LAYOUT, error.to_string()))?;
         let surface_texture_size = renderer.last_surface_texture_size();
         let image_draw_count = renderer.last_image_draw_count();

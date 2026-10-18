@@ -72,7 +72,7 @@ async function main() {
   assert.equal(deviceList.length, 1, `Android 기기가 연결되지 않았습니다: ${serial}`);
   assert.equal(adb(['shell', 'getprop', 'ro.kernel.qemu']).stdout.trim(), '0', '실기기 전용 수집기에 에뮬레이터가 연결됐습니다.');
 
-  const build = command('mise', ['exec', '--', 'env', 'SPINON_ENABLE_C04_RUNTIME_GPU=1',
+  const build = command('mise', ['exec', '--', 'env', 'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1',
     'bun', 'run', 'build:android'], { timeout: 900_000 });
   await writeFile(resolve(evidenceDirectory, 'build.log'), `${build.stdout}${build.stderr}`);
   assert.match(`${build.stdout}${build.stderr}`, /BUILD SUCCESSFUL/i, 'Android 빌드가 성공하지 않았습니다.');

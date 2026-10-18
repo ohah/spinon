@@ -435,6 +435,16 @@ impl RuntimeRenderer {
         scene: Option<&RuntimeRenderSnapshot>,
         is_current: impl Fn() -> bool,
     ) -> Result<bool, RuntimeRendererError> {
+        self.draw_if_with_srgb_clear_color(scene, [0, 0, 0, 255], is_current)
+    }
+
+    /// 지정한 CSS sRGB Canvas 색으로 표면을 지운 뒤 장면을 그립니다.
+    pub fn draw_if_with_srgb_clear_color(
+        &mut self,
+        scene: Option<&RuntimeRenderSnapshot>,
+        clear_color_srgb: [u8; 4],
+        is_current: impl Fn() -> bool,
+    ) -> Result<bool, RuntimeRendererError> {
         if !self.surface_configured {
             return Err(RuntimeRendererError::Surface(
                 "WGPU surface가 아직 구성되지 않았습니다".to_owned(),
@@ -446,6 +456,7 @@ impl RuntimeRenderer {
                 "C04.10 시험용으로 다음 draw를 실패시켰습니다".to_owned(),
             ));
         }
+        let clear_color = srgb_clear_color_for_format(self.config.format, clear_color_srgb);
         let geometry = match scene {
             Some(scene) => build_colored_geometry(
                 scene,
@@ -578,6 +589,7 @@ impl RuntimeRenderer {
                     &prepared_images,
                     &self.glyph_renderer,
                     &prepared_glyphs,
+                    clear_color,
                 )
                 .map_err(RuntimeRendererError::Geometry)?
         } else {
@@ -588,7 +600,7 @@ impl RuntimeRenderer {
                     depth_slice: None,
                     resolve_target: None,
                     ops: wgpu::Operations {
-                        load: wgpu::LoadOp::Clear(wgpu::Color::BLACK),
+                        load: wgpu::LoadOp::Clear(clear_color),
                         store: wgpu::StoreOp::Store,
                     },
                 })],
@@ -683,6 +695,27 @@ impl RuntimeRenderer {
         }
         self.queue.write_buffer(&self.vertex_buffer, 0, bytes);
         Ok(())
+    }
+}
+
+fn srgb_clear_color_for_format(format: wgpu::TextureFormat, color: [u8; 4]) -> wgpu::Color {
+    let channel = |encoded: u8| {
+        let value = f32::from(encoded) / 255.0;
+        if format.is_srgb() {
+            if value <= 0.04045 {
+                value / 12.92
+            } else {
+                ((value + 0.055) / 1.055).powf(2.4)
+            }
+        } else {
+            value
+        }
+    };
+    wgpu::Color {
+        r: f64::from(channel(color[0])),
+        g: f64::from(channel(color[1])),
+        b: f64::from(channel(color[2])),
+        a: f64::from(color[3]) / 255.0,
     }
 }
 

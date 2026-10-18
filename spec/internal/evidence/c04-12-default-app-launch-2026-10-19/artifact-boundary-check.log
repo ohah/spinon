@@ -1,0 +1,4 @@
+검사 방식: Rust 1.96 LLVM22.1.2 object 속성을 현재 macOS nm이 해석하지 못해 archive 전체 byte-search를 사용했다.
+product: size=74710352 sha256=558a4059385c5d4d0182eb0549afa3e9bbfa4abf6d279bfd9f843f31afaacc9a generic_root_html_symbol=True text_fixture_new=False text_fixture_eval=False Ahem_payload=False
+fixture-positive-control: size=75471312 sha256=955369fc6539b9187b55a30d0a593b75416b773b46d99b066b69a260199eca94 generic_root_html_symbol=True text_fixture_new=True text_fixture_eval=True Ahem_payload=True
+result=PASS

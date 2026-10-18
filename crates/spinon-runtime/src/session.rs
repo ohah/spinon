@@ -743,11 +743,6 @@ impl RuntimeSession {
         media_environment: spinon_style::CssMediaEnvironment,
         timeout: Duration,
     ) -> Result<RootHtmlCanvasSnapshot, RootHtmlCanvasError> {
-        let metadata = self
-            .root_html_environment
-            .ok_or(RootHtmlCanvasError::Environment(
-                RuntimeUaCascadeError::InvalidEnvironment,
-            ))?;
         let environment = self
             .set_root_html_environment(
                 surface_width_px,
@@ -756,6 +751,20 @@ impl RuntimeSession {
                 media_environment,
             )
             .map_err(RootHtmlCanvasError::Environment)?;
+        self.resolve_root_html_canvas_for_environment(environment, timeout)
+    }
+
+    /// 이미 적용한 루트 HTML 환경의 최신 root computed style에서 Canvas 색을 선택합니다.
+    pub fn resolve_root_html_canvas_for_environment(
+        &self,
+        environment: RootHtmlEnvironmentSnapshot,
+        timeout: Duration,
+    ) -> Result<RootHtmlCanvasSnapshot, RootHtmlCanvasError> {
+        let metadata = self
+            .root_html_environment
+            .ok_or(RootHtmlCanvasError::Environment(
+                RuntimeUaCascadeError::InvalidEnvironment,
+            ))?;
         if metadata.has_duplicate_color_scheme_metadata() {
             return Err(RootHtmlCanvasError::DuplicateColorSchemeMetadata);
         }
@@ -777,11 +786,16 @@ impl RuntimeSession {
             return Err(RootHtmlCanvasError::MissingRoot);
         }
         let root = &completed.roots[0];
+        let viewport = root.styles.viewport;
         if root.styles.generation.get() != completed.key.generation
             || root.styles.document_revision.get() != completed.key.document_revision
             || root.styles.render_tree_revision.get() != completed.key.render_tree_revision
             || root.styles.style_revision != completed.key.style_revision
-            || root.styles.viewport.environment_revision.get() != completed.key.environment_revision
+            || viewport.environment_revision.get() != completed.key.environment_revision
+            || viewport.width_css_px.to_bits() != environment.viewport_width_css_px.to_bits()
+            || viewport.height_css_px.to_bits() != environment.viewport_height_css_px.to_bits()
+            || viewport.device_scale_factor.to_bits() != environment.device_scale_factor.to_bits()
+            || viewport.media_environment != environment.media_environment
         {
             return Err(RootHtmlCanvasError::StaleSnapshot);
         }

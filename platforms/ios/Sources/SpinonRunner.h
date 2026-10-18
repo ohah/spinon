@@ -102,6 +102,7 @@
 + (NSString *)setRuntimeGpuEnvironment:(uint64_t)handle width:(float)width
                                 height:(float)height scale:(float)scale dark:(BOOL)dark;
 + (NSString *)evalRuntimeGpuFixture:(uint64_t)handle;
++ (NSString *)evalRuntimeGpuHostSource:(uint64_t)handle source:(NSString *)source;
 + (NSString *)evalRuntimeGpuAuthorStylesheetsFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuCustomPropertiesFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuRegisteredPropertiesFixture:(uint64_t)handle;

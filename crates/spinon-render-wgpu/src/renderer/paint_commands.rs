@@ -69,6 +69,7 @@ impl OpacityGroupRenderer {
         prepared_images: &PreparedImages,
         glyph_renderer: &RuntimeGlyphRenderer,
         prepared_glyphs: &PreparedGlyphs,
+        clear_color: wgpu::Color,
     ) -> Result<usize, String> {
         let precise_draw = PreciseSceneDraw {
             scene,
@@ -77,6 +78,7 @@ impl OpacityGroupRenderer {
             height,
             vertex_buffer,
             geometry,
+            clear_color,
         };
         if let Some(precise_compositor) = self
             .precise_compositor
@@ -120,7 +122,7 @@ impl OpacityGroupRenderer {
                     depth_slice: None,
                     resolve_target: None,
                     ops: wgpu::Operations {
-                        load: wgpu::LoadOp::Clear(wgpu::Color::BLACK),
+                        load: wgpu::LoadOp::Clear(clear_color),
                         store: wgpu::StoreOp::Store,
                     },
                 })],
@@ -141,7 +143,7 @@ impl OpacityGroupRenderer {
                     depth_slice: None,
                     resolve_target: None,
                     ops: wgpu::Operations {
-                        load: wgpu::LoadOp::Clear(wgpu::Color::BLACK),
+                        load: wgpu::LoadOp::Clear(clear_color),
                         store: wgpu::StoreOp::Store,
                     },
                 })],
