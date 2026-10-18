@@ -2,7 +2,7 @@
 
 - **문서 유형:** 구현 계획 · 공식 구현 상태는 [`spec/STATUS.md`](../spec/STATUS.md)에서 관리
 - **상위 항목:** [CSS 호환성](../spec/0008-css-compatibility.md), C01 HTML/CSS 기준 inventory, C04 런타임 스타일·환경
-- **현재 상태:** 기존 계획에 없던 신규 작업이다. HTML5 문서 트리 parser·HostDocument import·V8 DOM getter와 기본 앱의 `index.html`→V8 document session 경로, metadata viewport/media cascade, root CSS/metadata color-scheme을 결합한 native root Canvas fill을 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 확인했다. light→dark→light 전환의 exact Canvas byte와 revision key를 보존했다. `page_scale` surface transform, 일반 HTML layout·text·paint와 문서 호환성은 미지원이며 C04.12는 미완료
+- **현재 상태:** 기존 계획에 없던 신규 작업이다. HTML5 문서 트리 parser·HostDocument import·V8 DOM getter와 기본 앱의 `index.html`→V8 document session 경로, metadata viewport/media cascade, root CSS/metadata color-scheme을 결합한 native root Canvas fill을 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 확인했다. light→dark→light 전환의 exact Canvas byte와 revision key를 보존했다. `page_scale` surface transform, 일반 HTML layout·text·paint와 문서 호환성은 미지원이며 C04.12는 미완료다. 파싱한 HTML tree를 제한 Block scene으로 잇는 후속 계획은 [C04.12 root HTML Block scene](c04-12-root-html-block-paint.md)이며, 아직 구현 전이다.
 - **계획 적대 검토:** [20개 실패 관점 검토](../spec/internal/evidence/c04-root-html-document-environment-plan-review-2026-10-17.md)
 - **현재 asset fixture 검토:** [구현 실패 관점 20개](../spec/internal/evidence/c04-12-root-html-asset-implementation-review-20-2026-10-17.md) · [PR diff 적대 검토 30개](../spec/internal/evidence/c04-12-root-html-asset-pr-diff-review-30-2026-10-17.md)
 - **기본 앱 HTML 검토:** [구현 실패 관점 20개](../spec/internal/evidence/c04-12-root-html-default-app-2026-10-17/implementation-review-20.md) · [PR diff 적대 검토 30개](../spec/internal/evidence/c04-12-root-html-default-app-2026-10-17/pr-delta-review-30.md)
