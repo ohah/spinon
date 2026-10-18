@@ -18,8 +18,8 @@
 | 12 | `cssText` canonicalization의 공백 차이를 selector 의미 차이로 오판할 수 있음 | source text와 CSSOM `cssText`를 별도 필드로 정확 보존한다. |
 | 13 | nested rule 순서를 정렬해 cascade/source order를 훼손할 수 있음 | CSSOM에서 관찰한 rule 순서를 원문 순서대로 기록한다. |
 | 14 | `@import`, font-face 등 외부 요청이 로컬/원격 네트워크를 발생시킬 수 있음 | fixture는 외부 자원을 두지 않고 at-rule samples는 외부 네트워크를 호출하지 않는 입력만 쓴다. |
-| 15 | 실행 환경이 지정한 Chrome 155가 아니어도 산출물을 생성할 수 있음 | 버전 불일치는 명시 실패로 처리하고 reference identity에 browser provenance를 넣는다. |
-| 16 | Agent Browser screenshot과 자동 CDP capture가 서로 다른 Chrome build일 수 있음 | 두 browser의 version/revision이 같지 않으면 비교 근거를 확정하지 않는다. |
+| 15 | 실행 환경이 지정한 Chrome 155 또는 CDP revision이 아니어도 산출물을 생성할 수 있음 | CLI/CDP version과 CDP가 실제 반환하는 commit-only revision을 각각 고정하고 reference identity에 넣는다. upstream branch ref는 별도 provenance로 적는다. |
+| 16 | Agent Browser screenshot과 자동 CDP capture가 서로 다른 Chrome build 또는 locale/time zone/media를 쓸 수 있음 | version/revision이 다르면 확정하지 않고, 고정 환경을 재현하지 못한 screenshot·관찰값은 시각 확인에만 사용한다. |
 | 17 | 임시 Chromium 프로세스를 이름으로 종료해 기존 브라우저를 닫을 수 있음 | 기존 harness의 소유 process group/profile 확인·bounded cleanup을 재사용한다. |
 | 18 | 기존 reference JSON을 새 실행 결과로 덮어써 과거 근거가 바뀔 수 있음 | 새 경로만 생성하고 directory 충돌은 실패시키며 원자 저장한다. |
 | 19 | schema에 지원 상태 같은 필드를 덧붙여 partial oracle을 제품 약속으로 바꿀 수 있음 | exact-key schema와 `completeness: partial`, 고정 `uncovered` 목록을 강제한다. |
@@ -29,4 +29,6 @@
 
 - Rule matching, computed value, geometry, paint를 이번 산출물에서 제외해 selector/rule parser 관찰을 제품 스타일 동작과 혼동하지 않도록 했다.
 - Agent Browser의 시각 확인과 자동 capture의 브라우저가 같은 version/revision인지 확인하지 못하면 결과를 확정하지 않도록 했다.
+- Agent Browser의 host locale/time zone/media가 계획 조건과 다를 수 있으므로 screenshot 관찰을 fixed-environment JSON과 분리하도록 했다.
 - 시뮬레이터 검증은 앱 변경이 없는 기준 수집에 해당하지 않아 계획의 검증 범위에서 제외했다.
+- 실제 CDP revision 문자열은 upstream branch suffix 없이 commit hash만 반환해 고정값을 그 관찰 형식으로 보정했다.

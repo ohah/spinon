@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko" data-c01-node="document-root">
+  <head data-c01-node="head">
+    <meta charset="utf-8" data-c01-node="meta-charset">
+    <meta name="viewport" content="width=device-width, initial-scale=1" data-c01-node="meta-viewport">
+    <title data-c01-node="title">C01.4 Chromium CSS oracle fixture</title>
+  </head>
+  <body data-c01-node="body">
+    <main class="container" data-c01-node="main">
+      <h2 data-c01-node="heading">인접 형제 기준</h2>
+      <section id="target" class="target active" data-state="ready" data-c01-node="target">
+        <span class="target localized" lang="ko" data-c01-node="nested-target">대상 자식</span>
+        <span class="fallback" lang="en" data-c01-node="nested-fallback">대체 선택자</span>
+      </section>
+      <p class="target" data-state="idle" data-c01-node="sibling">일반 형제 기준</p>
+      <aside class="disabled" data-state="blocked" data-c01-node="disabled">제외 대상</aside>
+      <label data-c01-node="checked-label">
+        <input class="checked" type="checkbox" checked data-c01-node="checked-input">
+        checked pseudo-class 기준
+      </label>
+    </main>
+  </body>
+</html>

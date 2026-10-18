@@ -16,3 +16,16 @@
 ## CSSOM 속성 이름 표면
 
 [`cssom-property-surface.html`](cssom-property-surface.html)은 author stylesheet·외부 자원이 없는 HTML namespace `div` 하나를 고정한다. [`property surface 수집기`](../../../../tools/css-reference/capture-property-surface.mjs)는 해당 노드의 `getComputedStyle(element).item(index)` 이름만 별도 snapshot으로 기록한다. 현재 Chrome 154.0.8037.98 관찰 결과는 총 478개(일반 442·prefixed 36·custom 0)다. 이 결과는 전체 속성 registry, 표준 속성 분류, 속성 값 지원, 전체 요소 적용성 또는 제품 CSS 지원을 의미하지 않는다. 실행 환경·provenance·미포함 범위는 [C01.3 근거](../../../../spec/internal/evidence/css-c01-cssom-property-surface-2026-10-09.md)와 고정 reference JSON에서 확인한다.
+
+
+## Selector·at-rule CSSOM surface
+
+[`selector-at-rule-surface.html`](selector-at-rule-surface.html)와 [`selector-at-rule-inventory.v1.json`](selector-at-rule-inventory.v1.json)은 15개 고정 HTML node, selector 23행, at-rule 13행의 partial 비교 입력이다. [`capture-selector-at-rule-surface.mjs`](../../../../tools/css-reference/capture-selector-at-rule-surface.mjs)는 Chrome `155.0.8059.85` / CDP revision `@0e66b94549a8bd85f03fbdf189b752d6e7b63c32`의 selector match ID, syntax exception, CSSOM rule constructor/type/tree를 수집한다. 재현 기준은 [C01.4 실행 근거](../../../../spec/internal/evidence/css-c01-4-selector-at-rule-surface-2026-10-19/README.md)와 고정 reference JSON에 있다.
+
+```sh
+mise exec -- node tools/css-reference/capture-selector-at-rule-surface.mjs
+mise exec -- node tools/css-reference/capture-selector-at-rule-surface.mjs --verify-existing
+mise exec -- node --test tools/css-reference/selector-at-rule-surface.test.mjs
+```
+
+이 표본은 Chromium의 부분 parser/matcher 관찰이며 Spinon의 selector·at-rule·cascade 지원을 의미하지 않는다. 전체 selector/pseudo-state, at-rule·`@import`, computed values, geometry·paint, SVG/Shadow DOM, 앱 runtime은 범위 밖이다. `C01` 부모는 미완료다.

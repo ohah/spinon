@@ -1,0 +1,653 @@
+{
+  "schema": "spinon-css-selector-at-rule-surface/v1",
+  "capturedAtUtc": "2026-10-18T20:45:05.376Z",
+  "captureTool": {
+    "path": "tools/css-reference/capture-selector-at-rule-surface.mjs",
+    "sha256": "0911f41d108fac913070c974aaf62bfa535649ae22e24a4e184c25432f6fbf43",
+    "supportModules": [
+      {
+        "path": "tools/css-reference/chromium-session.mjs",
+        "sha256": "b010ada41ed75dc2d67ee25abd4266b17930f1de95fc683eebc5cdab6ad2cdc1"
+      },
+      {
+        "path": "tools/css-reference/selector-at-rule-surface.mjs",
+        "sha256": "00b445d672ca589fefc467429da2fb3f1dab2cf35d1c6ebc612586271fd762e0"
+      }
+    ]
+  },
+  "oracle": {
+    "name": "Chromium",
+    "product": "Chrome/155.0.8059.85",
+    "version": "155.0.8059.85",
+    "revision": "@0e66b94549a8bd85f03fbdf189b752d6e7b63c32",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "executableSha256": "6e156f2271cef44afce9db36a5b920e94518857b94a4160f082696f8c3bd1c9d"
+  },
+  "environment": {
+    "os": "macOS 26.5.1",
+    "osBuild": "25F80",
+    "architecture": "arm64",
+    "nodeVersion": "v24.20.0",
+    "flags": [
+      "--headless=new",
+      "--no-first-run",
+      "--no-default-browser-check",
+      "--disable-background-networking",
+      "--lang=en-US",
+      "--remote-debugging-port=0",
+      "--user-data-dir=<temporary-profile>"
+    ],
+    "emulation": {
+      "cssViewportPx": {
+        "width": 800,
+        "height": 600
+      },
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "acceptLanguage": "en-US",
+      "timeZone": "UTC",
+      "media": {
+        "prefersColorScheme": "light",
+        "prefersReducedMotion": "no-preference",
+        "forcedColors": "none"
+      }
+    },
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "observed": {
+      "viewport": {
+        "width": 800,
+        "height": 600,
+        "deviceScaleFactor": 1
+      },
+      "locale": "en-US",
+      "intlLocale": "en-US",
+      "timeZone": "UTC",
+      "media": {
+        "prefersColorSchemeDark": false,
+        "prefersReducedMotion": false,
+        "forcedColors": false
+      },
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36"
+    }
+  },
+  "fixture": {
+    "id": "C01-selector-at-rule-surface-v1",
+    "path": "tests/fixtures/css/c01/selector-at-rule-surface.html",
+    "sha256": "4783ff01e66382874c74027543dcd659eb2af23bc85a04d928330f190b03b435",
+    "nodeIds": [
+      "document-root",
+      "head",
+      "meta-charset",
+      "meta-viewport",
+      "title",
+      "body",
+      "main",
+      "heading",
+      "target",
+      "nested-target",
+      "nested-fallback",
+      "sibling",
+      "disabled",
+      "checked-label",
+      "checked-input"
+    ],
+    "elementCount": 15,
+    "authorStyleSheetCount": 0,
+    "externalResourceCount": 0
+  },
+  "inventory": {
+    "id": "C01-selector-at-rule-surface-v1",
+    "completeness": "partial",
+    "sha256": "970e9f0aab8134b603e6e4f4c790ad2c4b59709beb7eee927b276fa728ece7f8",
+    "uncovered": [
+      "전체 CSS selector grammar와 모든 pseudo-class/pseudo-element 조합",
+      "선택자 specificity, cascade·상속·computed value 및 동적 사용자 상태",
+      "CSS 속성별 전체 값 문법·초기값·요소 적용성",
+      "전체 CSS at-rule grammar, @import 자원 해석과 stylesheet source order",
+      "SVG selector namespace, Shadow DOM·scoped tree·custom element 상태",
+      "레이아웃 좌표·텍스트 shaping·paint/GPU pixel 및 Android·iOS 앱 동작"
+    ],
+    "selectorObservations": [
+      {
+        "id": "selector.type.section",
+        "kind": "query",
+        "source": "section",
+        "outcome": "matched",
+        "matches": [
+          "target"
+        ]
+      },
+      {
+        "id": "selector.class.target",
+        "kind": "query",
+        "source": ".target",
+        "outcome": "matched",
+        "matches": [
+          "target",
+          "nested-target",
+          "sibling"
+        ]
+      },
+      {
+        "id": "selector.id.target",
+        "kind": "query",
+        "source": "#target",
+        "outcome": "matched",
+        "matches": [
+          "target"
+        ]
+      },
+      {
+        "id": "selector.universal",
+        "kind": "query",
+        "source": "*",
+        "outcome": "matched",
+        "matches": [
+          "document-root",
+          "head",
+          "meta-charset",
+          "meta-viewport",
+          "title",
+          "body",
+          "main",
+          "heading",
+          "target",
+          "nested-target",
+          "nested-fallback",
+          "sibling",
+          "disabled",
+          "checked-label",
+          "checked-input"
+        ]
+      },
+      {
+        "id": "selector.attribute.presence",
+        "kind": "query",
+        "source": "[data-state]",
+        "outcome": "matched",
+        "matches": [
+          "target",
+          "sibling",
+          "disabled"
+        ]
+      },
+      {
+        "id": "selector.attribute.exact",
+        "kind": "query",
+        "source": "[data-state=\"ready\"]",
+        "outcome": "matched",
+        "matches": [
+          "target"
+        ]
+      },
+      {
+        "id": "selector.combinator.descendant",
+        "kind": "query",
+        "source": ".container .target",
+        "outcome": "matched",
+        "matches": [
+          "target",
+          "nested-target",
+          "sibling"
+        ]
+      },
+      {
+        "id": "selector.combinator.child",
+        "kind": "query",
+        "source": ".container > .target",
+        "outcome": "matched",
+        "matches": [
+          "target",
+          "sibling"
+        ]
+      },
+      {
+        "id": "selector.combinator.adjacent",
+        "kind": "query",
+        "source": "h2 + section",
+        "outcome": "matched",
+        "matches": [
+          "target"
+        ]
+      },
+      {
+        "id": "selector.combinator.general-sibling",
+        "kind": "query",
+        "source": "h2 ~ .target",
+        "outcome": "matched",
+        "matches": [
+          "target",
+          "sibling"
+        ]
+      },
+      {
+        "id": "selector.pseudo.root",
+        "kind": "query",
+        "source": ":root",
+        "outcome": "matched",
+        "matches": [
+          "document-root"
+        ]
+      },
+      {
+        "id": "selector.pseudo.nth-child",
+        "kind": "query",
+        "source": "#target:nth-child(2)",
+        "outcome": "matched",
+        "matches": [
+          "target"
+        ]
+      },
+      {
+        "id": "selector.pseudo.not",
+        "kind": "query",
+        "source": "[data-state=\"ready\"]:not(.disabled)",
+        "outcome": "matched",
+        "matches": [
+          "target"
+        ]
+      },
+      {
+        "id": "selector.pseudo.is",
+        "kind": "query",
+        "source": ":is(#target, .fallback)",
+        "outcome": "matched",
+        "matches": [
+          "target",
+          "nested-fallback"
+        ]
+      },
+      {
+        "id": "selector.pseudo.where",
+        "kind": "query",
+        "source": ":where(.target, .fallback)",
+        "outcome": "matched",
+        "matches": [
+          "target",
+          "nested-target",
+          "nested-fallback",
+          "sibling"
+        ]
+      },
+      {
+        "id": "selector.pseudo.has",
+        "kind": "query",
+        "source": ".container:has(> #target)",
+        "outcome": "matched",
+        "matches": [
+          "main"
+        ]
+      },
+      {
+        "id": "selector.pseudo.lang",
+        "kind": "query",
+        "source": ".localized:lang(ko)",
+        "outcome": "matched",
+        "matches": [
+          "nested-target"
+        ]
+      },
+      {
+        "id": "selector.pseudo.checked",
+        "kind": "query",
+        "source": ".checked:checked",
+        "outcome": "matched",
+        "matches": [
+          "checked-input"
+        ]
+      },
+      {
+        "id": "selector.pseudo.is-forgiving-list",
+        "kind": "query",
+        "source": ":is(.target, :spinon-invalid)",
+        "outcome": "matched",
+        "matches": [
+          "target",
+          "nested-target",
+          "sibling"
+        ]
+      },
+      {
+        "id": "selector.pseudo-element.before",
+        "kind": "pseudo-element-rule",
+        "source": "section::before",
+        "outcome": "rule-parse",
+        "rule": {
+          "constructor": "CSSStyleRule",
+          "type": 1,
+          "cssText": "section::before { content: \"\"; }",
+          "selectorText": "section::before",
+          "name": null,
+          "conditionText": null,
+          "children": []
+        }
+      },
+      {
+        "id": "selector.invalid.unclosed-attribute",
+        "kind": "invalid-query",
+        "source": "[data-state=",
+        "outcome": "exception",
+        "exceptionName": "SyntaxError"
+      },
+      {
+        "id": "selector.invalid.combinator",
+        "kind": "invalid-query",
+        "source": "main > > section",
+        "outcome": "exception",
+        "exceptionName": "SyntaxError"
+      },
+      {
+        "id": "selector.invalid.unknown-pseudo",
+        "kind": "invalid-query",
+        "source": ":spinon-invalid",
+        "outcome": "exception",
+        "exceptionName": "SyntaxError"
+      }
+    ],
+    "atRuleObservations": [
+      {
+        "id": "at-rule.media",
+        "kind": "candidate",
+        "source": "@media (min-width: 600px) { .target { color: red; } }",
+        "outcome": "retained",
+        "rules": [
+          {
+            "constructor": "CSSMediaRule",
+            "type": 4,
+            "cssText": "@media (min-width: 600px) {\n  .target { color: red; }\n}",
+            "selectorText": null,
+            "name": null,
+            "conditionText": "(min-width: 600px)",
+            "children": [
+              {
+                "constructor": "CSSStyleRule",
+                "type": 1,
+                "cssText": ".target { color: red; }",
+                "selectorText": ".target",
+                "name": null,
+                "conditionText": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "at-rule.supports",
+        "kind": "candidate",
+        "source": "@supports (display: grid) { .target { display: grid; } }",
+        "outcome": "retained",
+        "rules": [
+          {
+            "constructor": "CSSSupportsRule",
+            "type": 12,
+            "cssText": "@supports (display: grid) {\n  .target { display: grid; }\n}",
+            "selectorText": null,
+            "name": null,
+            "conditionText": "(display: grid)",
+            "children": [
+              {
+                "constructor": "CSSStyleRule",
+                "type": 1,
+                "cssText": ".target { display: grid; }",
+                "selectorText": ".target",
+                "name": null,
+                "conditionText": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "at-rule.layer",
+        "kind": "candidate",
+        "source": "@layer c01-layer { .target { color: red; } }",
+        "outcome": "retained",
+        "rules": [
+          {
+            "constructor": "CSSLayerBlockRule",
+            "type": 0,
+            "cssText": "@layer c01-layer {\n  .target { color: red; }\n}",
+            "selectorText": null,
+            "name": "c01-layer",
+            "conditionText": null,
+            "children": [
+              {
+                "constructor": "CSSStyleRule",
+                "type": 1,
+                "cssText": ".target { color: red; }",
+                "selectorText": ".target",
+                "name": null,
+                "conditionText": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "at-rule.container",
+        "kind": "candidate",
+        "source": "@container (min-width: 1px) { .target { color: blue; } }",
+        "outcome": "retained",
+        "rules": [
+          {
+            "constructor": "CSSContainerRule",
+            "type": 0,
+            "cssText": "@container (min-width: 1px) {\n  .target { color: blue; }\n}",
+            "selectorText": null,
+            "name": null,
+            "conditionText": "(min-width: 1px)",
+            "children": [
+              {
+                "constructor": "CSSStyleRule",
+                "type": 1,
+                "cssText": ".target { color: blue; }",
+                "selectorText": ".target",
+                "name": null,
+                "conditionText": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "at-rule.scope",
+        "kind": "candidate",
+        "source": "@scope (.container) { .target { color: green; } }",
+        "outcome": "retained",
+        "rules": [
+          {
+            "constructor": "CSSScopeRule",
+            "type": 0,
+            "cssText": "@scope (.container) {\n  .target { color: green; }\n}",
+            "selectorText": null,
+            "name": null,
+            "conditionText": null,
+            "children": [
+              {
+                "constructor": "CSSStyleRule",
+                "type": 1,
+                "cssText": ".target { color: green; }",
+                "selectorText": ".target",
+                "name": null,
+                "conditionText": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "at-rule.starting-style",
+        "kind": "candidate",
+        "source": "@starting-style { .target { opacity: 0; } }",
+        "outcome": "retained",
+        "rules": [
+          {
+            "constructor": "CSSStartingStyleRule",
+            "type": 0,
+            "cssText": "@starting-style {\n  .target { opacity: 0; }\n}",
+            "selectorText": null,
+            "name": null,
+            "conditionText": null,
+            "children": [
+              {
+                "constructor": "CSSStyleRule",
+                "type": 1,
+                "cssText": ".target { opacity: 0; }",
+                "selectorText": ".target",
+                "name": null,
+                "conditionText": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "at-rule.keyframes",
+        "kind": "candidate",
+        "source": "@keyframes c01-keyframes { from { opacity: 0; } to { opacity: 1; } }",
+        "outcome": "retained",
+        "rules": [
+          {
+            "constructor": "CSSKeyframesRule",
+            "type": 7,
+            "cssText": "@keyframes c01-keyframes { \n  0% { opacity: 0; }\n  100% { opacity: 1; }\n}",
+            "selectorText": null,
+            "name": "c01-keyframes",
+            "conditionText": null,
+            "children": [
+              {
+                "constructor": "CSSKeyframeRule",
+                "type": 8,
+                "cssText": "0% { opacity: 0; }",
+                "selectorText": null,
+                "name": null,
+                "conditionText": null,
+                "children": null
+              },
+              {
+                "constructor": "CSSKeyframeRule",
+                "type": 8,
+                "cssText": "100% { opacity: 1; }",
+                "selectorText": null,
+                "name": null,
+                "conditionText": null,
+                "children": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "at-rule.property",
+        "kind": "candidate",
+        "source": "@property --c01-gap { syntax: \"<length>\"; inherits: false; initial-value: 0px; }",
+        "outcome": "retained",
+        "rules": [
+          {
+            "constructor": "CSSPropertyRule",
+            "type": 0,
+            "cssText": "@property --c01-gap { syntax: \"<length>\"; inherits: false; initial-value: 0px; }",
+            "selectorText": null,
+            "name": "--c01-gap",
+            "conditionText": null,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": "at-rule.font-face",
+        "kind": "candidate",
+        "source": "@font-face { font-family: C01Local; src: local(\"Arial\"); }",
+        "outcome": "retained",
+        "rules": [
+          {
+            "constructor": "CSSFontFaceRule",
+            "type": 5,
+            "cssText": "@font-face { font-family: C01Local; src: local(\"Arial\"); }",
+            "selectorText": null,
+            "name": null,
+            "conditionText": null,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": "at-rule.page",
+        "kind": "candidate",
+        "source": "@page { margin: 1cm; }",
+        "outcome": "retained",
+        "rules": [
+          {
+            "constructor": "CSSPageRule",
+            "type": 6,
+            "cssText": "@page { margin: 1cm; }",
+            "selectorText": "",
+            "name": null,
+            "conditionText": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "at-rule.counter-style",
+        "kind": "candidate",
+        "source": "@counter-style c01-symbols { system: cyclic; symbols: \"x\"; suffix: \" \"; }",
+        "outcome": "retained",
+        "rules": [
+          {
+            "constructor": "CSSCounterStyleRule",
+            "type": 11,
+            "cssText": "@counter-style c01-symbols { system: cyclic; symbols: \"x\"; suffix: \" \"; }",
+            "selectorText": null,
+            "name": "c01-symbols",
+            "conditionText": null,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": "at-rule.invalid.unknown",
+        "kind": "invalid-candidate",
+        "source": "@c01-unknown { .target { color: red; } }",
+        "outcome": "dropped",
+        "rules": []
+      },
+      {
+        "id": "at-rule.invalid.media-condition",
+        "kind": "invalid-candidate",
+        "source": "@media (width > ) { .target { color: red; } }",
+        "outcome": "retained",
+        "rules": [
+          {
+            "constructor": "CSSMediaRule",
+            "type": 4,
+            "cssText": "@media (width > ) {\n  .target { color: red; }\n}",
+            "selectorText": null,
+            "name": null,
+            "conditionText": "(width > )",
+            "children": [
+              {
+                "constructor": "CSSStyleRule",
+                "type": 1,
+                "cssText": ".target { color: red; }",
+                "selectorText": ".target",
+                "name": null,
+                "conditionText": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "observationSha256": "3d7805660433e80d0a33e7e4983e993b286e3ef1b772bbdc049a476fd26e5de5"
+  },
+  "referenceId": "c01-selector-at-rule-surface-v1-macos-arm64-macos-26.5.1-25f80-155.0.8059.85-node-v24.20.0-revision-0e66b94549a8-binary-6e156f2271ce-fixture-4783ff01e663-inventory-970e9f0aab81-tools-31f2a4987fd8"
+}

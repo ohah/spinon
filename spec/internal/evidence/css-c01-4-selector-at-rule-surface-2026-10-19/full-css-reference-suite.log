@@ -1,0 +1,738 @@
+.......X............
+....................
+....................
+....................
+....................
+..................XX
+XX..................
+.........X.XXX......
+..............X.....
+..................XX
+.................X..
+...........X........
+....................
+....................
+....................
+....................
+X..X................
+....................
+....................
+....................
+....................
+....................
+....................
+....................
+....................
+..........
+
+Failed tests:
+
+✖ Android와 iOS runtime viewport가 고정 fixture 크기 대신 surface bounds를 사용한다 (6.48975ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /return\s*\(viewportWidthCssPx,\s*viewportHeightCssPx,\s*displayScale,\s*darkMode\)/. Input:
+
+  'import MetalKit\n' +
+    'import UIKit\n' +
+    '\n' +
+    'private let c1133GridTemplateAreasSceneIDs: Set<String> = [\n' +
+    '    "basic-rectangles", "null-cell-dot-runs", "all-null-cells", "single-cell-area",\n' +
+    '    "bare-area-edge-aliases", "grid-area-one-value", "grid-area-two-values",\n' +
+    '    "grid-area-three-values", "grid-area-four-values", "row-column-longhands-area",\n' +
+    '    "grid-template-shorthand", "grid-shorthand", "bare-area-vs-explicit-one-name",\n' +
+    '    "explicit-line-before-area", "explicit-line-after-area", "area-names-ending-start-or-end",\n' +
+    '    "implicit-area-from-explicit-lines", "escaped-and-unicode-identifiers",\n' +
+    '    "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",\n' +
+    '    "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",\n' +
+    '    "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",\n' +
+    ']\n' +
+    '\n' +
+    'private struct C124MetalPixelCase {\n' +
+    '    let direction: String\n' +
+    '    let blueOrder: Int\n' +
+    '    let redOrder: Int\n' +
+    '    let runID: String\n' +
+    '\n' +
+    '    var caseID: String {\n' +
+    '        "flex-\\(direction)-paint-order-\\(blueOrder)-\\(redOrder)"\n' +
+    '    }\n' +
+    '\n' +
+    '    var cssSample: (x: Int, y: Int) {\n' +
+    '        (70, direction.hasPrefix("column") && direction == "column-reverse" ? 175 : 155)\n' +
+    '    }\n' +
+    '\n' +
+    '    var expectedRGBA: String {\n' +
+    '        let blueOnTop = (direction == "row-reverse" || direction == "column-reverse")\n' +
+    '            ? blueOrder == 0 : blueOrder == 1\n' +
+    '        return blueOnTop ? "#2866f6ff" : "#e5484dff"\n' +
+    '    }\n' +
+    '\n' +
+    '    static func parse(arguments: [String]) -> C124MetalPixelCase? {\n' +
+    '        guard let raw = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c124-metal-surface-readback=")\n' +
+    '        }) else { return nil }\n' +
+    '        let fields = String(raw.dropFirst("--spinon-c124-metal-surface-readback=".count))\n' +
+    '            .split(separator: ",", omittingEmptySubsequences: false)\n' +
+    '        guard fields.count == 3,\n' +
+    '              let blueOrder = Int(fields[1]), let redOrder = Int(fields[2]),\n' +
+    '              ["row", "row-reverse", "column", "column-reverse"].contains(String(fields[0])),\n' +
+    '              (blueOrder == 0 || blueOrder == 1), redOrder == 0,\n' +
+    '              let runArgument = arguments.first(where: {\n' +
+    '                  $0.hasPrefix("--spinon-c124-metal-surface-run=")\n' +
+    '              }) else { return nil }\n' +
+    '        let runID = String(runArgument.dropFirst("--spinon-c124-metal-surface-run=".count))\n' +
+    '        guard !runID.isEmpty,\n' +
+    '              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n' +
+    '        else { return nil }\n' +
+    '        return C124MetalPixelCase(\n' +
+    '            direction: String(fields[0]), blueOrder: blueOrder,\n' +
+    '            redOrder: redOrder, runID: runID\n' +
+    '        )\n' +
+    '    }\n' +
+    '}\n' +
+    '\n' +
+    '\n' +
+    '\n' +
+    '\n' +
+    'private struct C111MetalPixelSample: Decodable {\n' +
+    '    let id: String\n' +
+    '    let nodeId: String\n' +
+    '    let xCssPx: UInt32\n' +
+    '    let yCssPx: UInt32\n' +
+    '    let rgba: [UInt32]\n' +
+    '}\n' +
+    '\n' +
+    'private struct C132MetalPixelSample {\n' +
+    '    let id: String\n' +
+    '    let xCssPx: UInt32\n' +
+    '    let yCssPx: UInt32\n' +
+    '    let rgba: [UInt32]\n' +
+    '}\n' +
+    '\n' +
+    'private struct C132MetalPixelRun {\n' +
+    '    let runID: String\n' +
+    '    let samples: [C132MetalPixelSample]\n' +
+    '\n' +
+    '    static let fixedSamples = [\n' +
+    '        C132MetalPixelSample(id: "visible-escape", xCssPx: 150, yCssPx: 30,\n' +
+    '                             rgba: [227, 84, 78, 255]),\n' +
+    '        C132MetalPixelSample(id: "parent-gap", xCssPx: 136, yCssPx: 30,\n' +
+    '                             rgba: [16, 24, 39, 255]),\n' +
+    '        C132MetalPixelSample(id: "parent-interior", xCssPx: 20, yCssPx: 20,\n' +
+    '                             rgba: [52, 66, 86, 255]),\n' +
+    '        C132MetalPixelSample(id: "parent-border", xCssPx: 11, yCssPx: 11,\n' +
+    '                             rgba: [240, 198, 116, 255]),\n' +
+    '        C132MetalPixelSample(id: "root-background", xCssPx: 50, yCssPx: 110,\n' +
+    '                             rgba: [16, 24, 39, 255]),\n' +
+    '    ]\n' +
+    '\n' +
+    '    static func parse(arguments: [String]) -> C132MetalPixelRun? {\n' +
+    '        let prefix = "--spinon-c132-metal-surface-pixels="\n' +
+    '        let values = arguments.filter { $0.hasPrefix(prefix) }\n' +
+    '        guard values.count == 1 else { return nil }\n' +
+    '        let runID = String(values[0].dropFirst(prefix.count))\n' +
+    '        guard (8...80).contains(runID.count),\n' +
+    '              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n' +
+    '        else { return nil }\n' +
+    '        return C132MetalPixelRun(runID: runID, samples: fixedSamples)\n' +
+    '    }\n' +
+    '}\n' +
+    '\n' +
+    'private struct C111MetalPixelRun {\n' +
+    '    let runID: String\n' +
+    '    let sceneID: String\n' +
+    '    let markerPrefix: String\n' +
+    '    let samples: [C111MetalPixelSample]\n' +
+    '    private static let c1121PixelSceneIDs: Set<String> = [\n' +
+    '        "numeric-lines", "positive-spans", "reversed-lines",\n' +
+    '        "shorthand-cascade", "overlap-source-order", "nested-placement-modes",\n' +
+    '    ]\n' +
+    '    private static let c1122PixelSceneIDs: Set<String> = [\n' +
+    '        "definite-first-mixed", "auto-only-fill", "positive-implicit-row",\n' +
+    '        "row-locked-auto-column", "column-locked-auto-row", "auto-column-span",\n' +
+    '        "sparse-hole-not-backfilled", "implicit-track-size-and-gap",\n' +
+    '        "hidden-child-excluded", "nested-independent-placement", "column-cursor-wrap",\n' +
+    '    ]\n' +
+    '    private static let c1123PixelSceneIDs: Set<String> = [\n' +
+    '        "row-sparse-baseline", "row-dense-hole-fill", "row-dense-span-collision",\n' +
+    '        "row-sparse-hole-control", "row-dense-fixed-column",\n' +
+    '        "row-dense-positive-implicit-row", "column-sparse-explicit-fill",\n' +
+    '        "column-sparse-positive-implicit-column", "column-sparse-fixed-row",\n' +
+    '        "column-sparse-fixed-column", "column-dense-hole-fill",\n' +
+    '        "column-sparse-hole-control", "column-dense-span-collision",\n' +
+    '        "column-dense-positive-implicit-column", "definite-first-dense",\n' +
+    '        "hidden-item-excluded", "nested-mixed-flow", "auto-track-no-implicit",\n' +
+    '        "auto-span-at-track-limit",\n' +
+    '    ]\n' +
+    '\n' +
+    '    private static let c1131RepeatPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n' +
+    '        ("grid-background", "c1131-multi-track-repeat-grid", 300, 120, [237, 241, 247, 255]),\n' +
+    '        ("item-blue", "c1131-multi-track-repeat-a", 10, 10, [40, 102, 246, 255]),\n' +
+    '        ("item-red", "c1131-multi-track-repeat-b", 40, 10, [229, 72, 77, 255]),\n' +
+    '        ("column-gap", "c1131-multi-track-repeat-grid", 112, 10, [237, 241, 247, 255]),\n' +
+    '        ("row-gap", "c1131-multi-track-repeat-grid", 10, 53, [237, 241, 247, 255]),\n' +
+    '    ]\n' +
+    '\n' +
+    '    private static let c1132NamedLinePixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n' +
+    '        ("grid-background", "c1132-positive-grid", 20, 80, [237, 241, 247, 255]),\n' +
+    '        ("item-blue", "c1132-positive-item", 100, 10, [40, 102, 246, 255]),\n' +
+    '    ]\n' +
+    '    private static let c1133TemplateAreaPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n' +
+    '        ("grid-background", "c1133-main-grid", 150, 10, [16, 24, 32, 255]),\n' +
+    '        ("item-blue", "c1133-main-item", 100, 50, [62, 99, 221, 255]),\n' +
+    '    ]\n' +
+    '\n' +
+    '    private static func hasFixedC1131RepeatSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n' +
+    '        guard samples.count == c1131RepeatPixelSamples.count else { return false }\n' +
+    '        return c1131RepeatPixelSamples.allSatisfy { expected in\n' +
+    '            samples.contains { sample in\n' +
+    '                sample.id == expected.0 && sample.nodeId == expected.1\n' +
+    '                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n' +
+    '                    && sample.rgba == expected.4\n' +
+    '            }\n' +
+    '        }\n' +
+    '    }\n' +
+    '\n' +
+    '    private static func hasFixedC1132NamedLineSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n' +
+    '        guard samples.count == c1132NamedLinePixelSamples.count else { return false }\n' +
+    '        return c1132NamedLinePixelSamples.allSatisfy { expected in\n' +
+    '            samples.contains { sample in\n' +
+    '                sample.id == expected.0 && sample.nodeId == expected.1\n' +
+    '                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n' +
+    '                    && sample.rgba == expected.4\n' +
+    '            }\n' +
+    '        }\n' +
+    '    }\n' +
+    '\n' +
+    '    private static func hasFixedC1133TemplateAreaSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n' +
+    '        guard samples.count == c1133TemplateAreaPixelSamples.count else { return false }\n' +
+    '        return c1133TemplateAreaPixelSamples.allSatisfy { expected in\n' +
+    '            samples.contains { sample in\n' +
+    '                sample.id == expected.0 && sample.nodeId == expected.1\n' +
+    '                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n' +
+    '                    && sample.rgba == expected.4\n' +
+    '            }\n' +
+    '        }\n' +
+    '    }\n' +
+    '\n' +
+    '    static func parse(arguments: [String], sceneID: String?) -> C111MetalPixelRun? {\n' +
+    '        guard let rawRun = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")\n' +
+    '        }), let rawSamples = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c11-grid-metal-surface-samples=")\n' +
+    '        }), let sceneID else { return nil }\n' +
+    '        let runID = String(rawRun.dropFirst("--spinon-c11-grid-metal-surface-pixels=".count))\n' +
+    '        let encoded = String(rawSamples.dropFirst("--spinon-c11-grid-metal-surface-samples=".count))\n' +
+    '        let c1131Scene = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c1131-grid-repeat-scene=")\n' +
+    '        }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-scene=".count)) }\n' +
+    '        let isC1131Repeat = arguments.contains("--spinon-c1131-grid-repeat") || c1131Scene != nil\n' +
+    '        if isC1131Repeat {\n' +
+    '            let c1131RunID = arguments.first(where: {\n' +
+    '                $0.hasPrefix("--spinon-c1131-grid-repeat-run-id=")\n' +
+    '            }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-run-id=".count)) }\n' +
+    '            guard c1131Scene == "multi-track-repeat", c1131Scene == sceneID,\n' +
+    '                  c1131RunID == runID,\n' +
+    '                  !arguments.contains("--spinon-c1123-grid-auto-placement"),\n' +
+    '                  !arguments.contains("--spinon-c1122-grid-auto-placement"),\n' +
+    '                  !arguments.contains("--spinon-c1121-grid-placement"),\n' +
+    '                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1123-grid-scene=") }),\n' +
+    '                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1122-grid-scene=") }),\n' +
+    '                  !arguments.co'... 341537 more characters
+
+      at TestContext.<anonymous> (file:///private/tmp/spinon-c01-4-selector-at-rule-20261019/tools/css-reference/c04-runtime-css-to-gpu-resize.test.mjs:129:10)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'import MetalKit\nimport UIKit\n\nprivate let c1133GridTemplateAreasSceneIDs: Set<String> = [\n    "basic-rectangles", "null-cell-dot-runs", "all-null-cells", "single-cell-area",\n    "bare-area-edge-aliases", "grid-area-one-value", "grid-area-two-values",\n    "grid-area-three-values", "grid-area-four-values", "row-column-longhands-area",\n    "grid-template-shorthand", "grid-shorthand", "bare-area-vs-explicit-one-name",\n    "explicit-line-before-area", "explicit-line-after-area", "area-names-ending-start-or-end",\n    "implicit-area-from-explicit-lines", "escaped-and-unicode-identifiers",\n    "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",\n    "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",\n    "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",\n]\n\nprivate struct C124MetalPixelCase {\n    let direction: String\n    let blueOrder: Int\n    let redOrder: Int\n    let runID: String\n\n    var caseID: String {\n        "flex-\\(direction)-paint-order-\\(blueOrder)-\\(redOrder)"\n    }\n\n    var cssSample: (x: Int, y: Int) {\n        (70, direction.hasPrefix("column") && direction == "column-reverse" ? 175 : 155)\n    }\n\n    var expectedRGBA: String {\n        let blueOnTop = (direction == "row-reverse" || direction == "column-reverse")\n            ? blueOrder == 0 : blueOrder == 1\n        return blueOnTop ? "#2866f6ff" : "#e5484dff"\n    }\n\n    static func parse(arguments: [String]) -> C124MetalPixelCase? {\n        guard let raw = arguments.first(where: {\n            $0.hasPrefix("--spinon-c124-metal-surface-readback=")\n        }) else { return nil }\n        let fields = String(raw.dropFirst("--spinon-c124-metal-surface-readback=".count))\n            .split(separator: ",", omittingEmptySubsequences: false)\n        guard fields.count == 3,\n              let blueOrder = Int(fields[1]), let redOrder = Int(fields[2]),\n              ["row", "row-reverse", "column", "column-reverse"].contains(String(fields[0])),\n              (blueOrder == 0 || blueOrder == 1), redOrder == 0,\n              let runArgument = arguments.first(where: {\n                  $0.hasPrefix("--spinon-c124-metal-surface-run=")\n              }) else { return nil }\n        let runID = String(runArgument.dropFirst("--spinon-c124-metal-surface-run=".count))\n        guard !runID.isEmpty,\n              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n        else { return nil }\n        return C124MetalPixelCase(\n            direction: String(fields[0]), blueOrder: blueOrder,\n            redOrder: redOrder, runID: runID\n        )\n    }\n}\n\n\n\n\nprivate struct C111MetalPixelSample: Decodable {\n    let id: String\n    let nodeId: String\n    let xCssPx: UInt32\n    let yCssPx: UInt32\n    let rgba: [UInt32]\n}\n\nprivate struct C132MetalPixelSample {\n    let id: String\n    let xCssPx: UInt32\n    let yCssPx: UInt32\n    let rgba: [UInt32]\n}\n\nprivate struct C132MetalPixelRun {\n    let runID: String\n    let samples: [C132MetalPixelSample]\n\n    static let fixedSamples = [\n        C132MetalPixelSample(id: "visible-escape", xCssPx: 150, yCssPx: 30,\n                             rgba: [227, 84, 78, 255]),\n        C132MetalPixelSample(id: "parent-gap", xCssPx: 136, yCssPx: 30,\n                             rgba: [16, 24, 39, 255]),\n        C132MetalPixelSample(id: "parent-interior", xCssPx: 20, yCssPx: 20,\n                             rgba: [52, 66, 86, 255]),\n        C132MetalPixelSample(id: "parent-border", xCssPx: 11, yCssPx: 11,\n                             rgba: [240, 198, 116, 255]),\n        C132MetalPixelSample(id: "root-background", xCssPx: 50, yCssPx: 110,\n                             rgba: [16, 24, 39, 255]),\n    ]\n\n    static func parse(arguments: [String]) -> C132MetalPixelRun? {\n        let prefix = "--spinon-c132-metal-surface-pixels="\n        let values = arguments.filter { $0.hasPrefix(prefix) }\n        guard values.count == 1 else { return nil }\n        let runID = String(values[0].dropFirst(prefix.count))\n        guard (8...80).contains(runID.count),\n              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n        else { return nil }\n        return C132MetalPixelRun(runID: runID, samples: fixedSamples)\n    }\n}\n\nprivate struct C111MetalPixelRun {\n    let runID: String\n    let sceneID: String\n    let markerPrefix: String\n    let samples: [C111MetalPixelSample]\n    private static let c1121PixelSceneIDs: Set<String> = [\n        "numeric-lines", "positive-spans", "reversed-lines",\n        "shorthand-cascade", "overlap-source-order", "nested-placement-modes",\n    ]\n    private static let c1122PixelSceneIDs: Set<String> = [\n        "definite-first-mixed", "auto-only-fill", "positive-implicit-row",\n        "row-locked-auto-column", "column-locked-auto-row", "auto-column-span",\n        "sparse-hole-not-backfilled", "implicit-track-size-and-gap",\n        "hidden-child-excluded", "nested-independent-placement", "column-cursor-wrap",\n    ]\n    private static let c1123PixelSceneIDs: Set<String> = [\n        "row-sparse-baseline", "row-dense-hole-fill", "row-dense-span-collision",\n        "row-sparse-hole-control", "row-dense-fixed-column",\n        "row-dense-positive-implicit-row", "column-sparse-explicit-fill",\n        "column-sparse-positive-implicit-column", "column-sparse-fixed-row",\n        "column-sparse-fixed-column", "column-dense-hole-fill",\n        "column-sparse-hole-control", "column-dense-span-collision",\n        "column-dense-positive-implicit-column", "definite-first-dense",\n        "hidden-item-excluded", "nested-mixed-flow", "auto-track-no-implicit",\n        "auto-span-at-track-limit",\n    ]\n\n    private static let c1131RepeatPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n        ("grid-background", "c1131-multi-track-repeat-grid", 300, 120, [237, 241, 247, 255]),\n        ("item-blue", "c1131-multi-track-repeat-a", 10, 10, [40, 102, 246, 255]),\n        ("item-red", "c1131-multi-track-repeat-b", 40, 10, [229, 72, 77, 255]),\n        ("column-gap", "c1131-multi-track-repeat-grid", 112, 10, [237, 241, 247, 255]),\n        ("row-gap", "c1131-multi-track-repeat-grid", 10, 53, [237, 241, 247, 255]),\n    ]\n\n    private static let c1132NamedLinePixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n        ("grid-background", "c1132-positive-grid", 20, 80, [237, 241, 247, 255]),\n        ("item-blue", "c1132-positive-item", 100, 10, [40, 102, 246, 255]),\n    ]\n    private static let c1133TemplateAreaPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n        ("grid-background", "c1133-main-grid", 150, 10, [16, 24, 32, 255]),\n        ("item-blue", "c1133-main-item", 100, 50, [62, 99, 221, 255]),\n    ]\n\n    private static func hasFixedC1131RepeatSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n        guard samples.count == c1131RepeatPixelSamples.count else { return false }\n        return c1131RepeatPixelSamples.allSatisfy { expected in\n            samples.contains { sample in\n                sample.id == expected.0 && sample.nodeId == expected.1\n                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n                    && sample.rgba == expected.4\n            }\n        }\n    }\n\n    private static func hasFixedC1132NamedLineSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n        guard samples.count == c1132NamedLinePixelSamples.count else { return false }\n        return c1132NamedLinePixelSamples.allSatisfy { expected in\n            samples.contains { sample in\n                sample.id == expected.0 && sample.nodeId == expected.1\n                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n                    && sample.rgba == expected.4\n            }\n        }\n    }\n\n    private static func hasFixedC1133TemplateAreaSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n        guard samples.count == c1133TemplateAreaPixelSamples.count else { return false }\n        return c1133TemplateAreaPixelSamples.allSatisfy { expected in\n            samples.contains { sample in\n                sample.id == expected.0 && sample.nodeId == expected.1\n                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n                    && sample.rgba == expected.4\n            }\n        }\n    }\n\n    static func parse(arguments: [String], sceneID: String?) -> C111MetalPixelRun? {\n        guard let rawRun = arguments.first(where: {\n            $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")\n        }), let rawSamples = arguments.first(where: {\n            $0.hasPrefix("--spinon-c11-grid-metal-surface-samples=")\n        }), let sceneID else { return nil }\n        let runID = String(rawRun.dropFirst("--spinon-c11-grid-metal-surface-pixels=".count))\n        let encoded = String(rawSamples.dropFirst("--spinon-c11-grid-metal-surface-samples=".count))\n        let c1131Scene = arguments.first(where: {\n            $0.hasPrefix("--spinon-c1131-grid-repeat-scene=")\n        }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-scene=".count)) }\n        let isC1131Repeat = arguments.contains("--spinon-c1131-grid-repeat") || c1131Scene != nil\n        if isC1131Repeat {\n            let c1131RunID = arguments.first(where: {\n                $0.hasPrefix("--spinon-c1131-grid-repeat-run-id=")\n            }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-run-id=".count)) }\n            guard c1131Scene == "multi-track-repeat", c1131Scene == sceneID,\n                  c1131RunID == runID,\n                  !arguments.contains("--spinon-c1123-grid-auto-placement"),\n                  !arguments.contains("--spinon-c1122-grid-auto-placement"),\n                  !arguments.contains("--spinon-c1121-grid-placement"),\n                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1123-grid-scene=") }),\n                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1122-grid-scene=") }),\n                  !arguments.co'... 341537 more characters,
+    expected: /return\s*\(viewportWidthCssPx,\s*viewportHeightCssPx,\s*displayScale,\s*darkMode\)/,
+    operator: 'match',
+    diff: 'simple'
+  }
+✖ tools/css-reference/c11-2-1-grid-placement-pixel-matrix.test.mjs (62.002375ms)
+  'test failed'
+✖ tools/css-reference/c11-2-1-grid-placement-runtime-compare.test.mjs (35.495167ms)
+  'test failed'
+✖ tools/css-reference/c11-2-1-grid-placement-runtime-matrix.test.mjs (41.855459ms)
+  'test failed'
+✖ tools/css-reference/c11-2-2-grid-auto-placement-pixel-matrix.test.mjs (35.63075ms)
+  'test failed'
+✖ tools/css-reference/c11-2-2-grid-auto-placement-runtime-matrix.test.mjs (35.936ms)
+  'test failed'
+✖ tools/css-reference/c11-2-3-grid-auto-placement-pixel-matrix.test.mjs (43.721416ms)
+  'test failed'
+✖ tools/css-reference/c11-2-3-grid-auto-placement-precomparison.test.mjs (42.062208ms)
+  'test failed'
+✖ tools/css-reference/c11-2-3-grid-auto-placement-runtime-matrix.test.mjs (40.111209ms)
+  'test failed'
+✖ Android·iOS C11.3.2 진입과 거부 경로가 고정 scene 및 run ID를 검사한다 (3.445584ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /arguments\.contains\("--spinon-c1132-grid-named-lines"\)/. Input:
+
+  ' runRuntimeGpuBase\n' +
+    '            || arguments.contains("--spinon-c181-image-paint")\n' +
+    '            || arguments.contains("--spinon-c182-alpha-image")\n' +
+    '            || arguments.contains("--spinon-c183-object-fit-position")\n' +
+    '            || runC184ImageRoute\n' +
+    '#else\n' +
+    '        let runRuntimeGpu = runRuntimeGpuBase\n' +
+    '#endif'
+
+      at TestContext.<anonymous> (file:///private/tmp/spinon-c01-4-selector-at-rule-20261019/tools/css-reference/c11-3-2-grid-named-lines.test.mjs:175:10)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: ' runRuntimeGpuBase\n            || arguments.contains("--spinon-c181-image-paint")\n            || arguments.contains("--spinon-c182-alpha-image")\n            || arguments.contains("--spinon-c183-object-fit-position")\n            || runC184ImageRoute\n#else\n        let runRuntimeGpu = runRuntimeGpuBase\n#endif',
+    expected: /arguments\.contains\("--spinon-c1132-grid-named-lines"\)/,
+    operator: 'match',
+    diff: 'simple'
+  }
+✖ tools/css-reference/c11-grid-auto-placement-precomparison-v4.test.mjs (39.569333ms)
+  'test failed'
+✖ tools/css-reference/c11-grid-auto-placement-precomparison.test.mjs (50.716917ms)
+  'test failed'
+✖ tools/css-reference/c11-grid-runtime-matrix.test.mjs (40.158458ms)
+  'test failed'
+✖ tools/css-reference/c11-mobile-surface-pixel-matrix.test.mjs (35.091417ms)
+  'test failed'
+✖ C13.3 tap probe stays on the explicit opt-in fixture route (7.314917ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /c133TapProbeRequested && !c133GestureFixtureRequested/. Input:
+
+  'import MetalKit\n' +
+    'import UIKit\n' +
+    '\n' +
+    'private let c1133GridTemplateAreasSceneIDs: Set<String> = [\n' +
+    '    "basic-rectangles", "null-cell-dot-runs", "all-null-cells", "single-cell-area",\n' +
+    '    "bare-area-edge-aliases", "grid-area-one-value", "grid-area-two-values",\n' +
+    '    "grid-area-three-values", "grid-area-four-values", "row-column-longhands-area",\n' +
+    '    "grid-template-shorthand", "grid-shorthand", "bare-area-vs-explicit-one-name",\n' +
+    '    "explicit-line-before-area", "explicit-line-after-area", "area-names-ending-start-or-end",\n' +
+    '    "implicit-area-from-explicit-lines", "escaped-and-unicode-identifiers",\n' +
+    '    "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",\n' +
+    '    "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",\n' +
+    '    "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",\n' +
+    ']\n' +
+    '\n' +
+    'private struct C124MetalPixelCase {\n' +
+    '    let direction: String\n' +
+    '    let blueOrder: Int\n' +
+    '    let redOrder: Int\n' +
+    '    let runID: String\n' +
+    '\n' +
+    '    var caseID: String {\n' +
+    '        "flex-\\(direction)-paint-order-\\(blueOrder)-\\(redOrder)"\n' +
+    '    }\n' +
+    '\n' +
+    '    var cssSample: (x: Int, y: Int) {\n' +
+    '        (70, direction.hasPrefix("column") && direction == "column-reverse" ? 175 : 155)\n' +
+    '    }\n' +
+    '\n' +
+    '    var expectedRGBA: String {\n' +
+    '        let blueOnTop = (direction == "row-reverse" || direction == "column-reverse")\n' +
+    '            ? blueOrder == 0 : blueOrder == 1\n' +
+    '        return blueOnTop ? "#2866f6ff" : "#e5484dff"\n' +
+    '    }\n' +
+    '\n' +
+    '    static func parse(arguments: [String]) -> C124MetalPixelCase? {\n' +
+    '        guard let raw = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c124-metal-surface-readback=")\n' +
+    '        }) else { return nil }\n' +
+    '        let fields = String(raw.dropFirst("--spinon-c124-metal-surface-readback=".count))\n' +
+    '            .split(separator: ",", omittingEmptySubsequences: false)\n' +
+    '        guard fields.count == 3,\n' +
+    '              let blueOrder = Int(fields[1]), let redOrder = Int(fields[2]),\n' +
+    '              ["row", "row-reverse", "column", "column-reverse"].contains(String(fields[0])),\n' +
+    '              (blueOrder == 0 || blueOrder == 1), redOrder == 0,\n' +
+    '              let runArgument = arguments.first(where: {\n' +
+    '                  $0.hasPrefix("--spinon-c124-metal-surface-run=")\n' +
+    '              }) else { return nil }\n' +
+    '        let runID = String(runArgument.dropFirst("--spinon-c124-metal-surface-run=".count))\n' +
+    '        guard !runID.isEmpty,\n' +
+    '              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n' +
+    '        else { return nil }\n' +
+    '        return C124MetalPixelCase(\n' +
+    '            direction: String(fields[0]), blueOrder: blueOrder,\n' +
+    '            redOrder: redOrder, runID: runID\n' +
+    '        )\n' +
+    '    }\n' +
+    '}\n' +
+    '\n' +
+    '\n' +
+    '\n' +
+    '\n' +
+    'private struct C111MetalPixelSample: Decodable {\n' +
+    '    let id: String\n' +
+    '    let nodeId: String\n' +
+    '    let xCssPx: UInt32\n' +
+    '    let yCssPx: UInt32\n' +
+    '    let rgba: [UInt32]\n' +
+    '}\n' +
+    '\n' +
+    'private struct C132MetalPixelSample {\n' +
+    '    let id: String\n' +
+    '    let xCssPx: UInt32\n' +
+    '    let yCssPx: UInt32\n' +
+    '    let rgba: [UInt32]\n' +
+    '}\n' +
+    '\n' +
+    'private struct C132MetalPixelRun {\n' +
+    '    let runID: String\n' +
+    '    let samples: [C132MetalPixelSample]\n' +
+    '\n' +
+    '    static let fixedSamples = [\n' +
+    '        C132MetalPixelSample(id: "visible-escape", xCssPx: 150, yCssPx: 30,\n' +
+    '                             rgba: [227, 84, 78, 255]),\n' +
+    '        C132MetalPixelSample(id: "parent-gap", xCssPx: 136, yCssPx: 30,\n' +
+    '                             rgba: [16, 24, 39, 255]),\n' +
+    '        C132MetalPixelSample(id: "parent-interior", xCssPx: 20, yCssPx: 20,\n' +
+    '                             rgba: [52, 66, 86, 255]),\n' +
+    '        C132MetalPixelSample(id: "parent-border", xCssPx: 11, yCssPx: 11,\n' +
+    '                             rgba: [240, 198, 116, 255]),\n' +
+    '        C132MetalPixelSample(id: "root-background", xCssPx: 50, yCssPx: 110,\n' +
+    '                             rgba: [16, 24, 39, 255]),\n' +
+    '    ]\n' +
+    '\n' +
+    '    static func parse(arguments: [String]) -> C132MetalPixelRun? {\n' +
+    '        let prefix = "--spinon-c132-metal-surface-pixels="\n' +
+    '        let values = arguments.filter { $0.hasPrefix(prefix) }\n' +
+    '        guard values.count == 1 else { return nil }\n' +
+    '        let runID = String(values[0].dropFirst(prefix.count))\n' +
+    '        guard (8...80).contains(runID.count),\n' +
+    '              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n' +
+    '        else { return nil }\n' +
+    '        return C132MetalPixelRun(runID: runID, samples: fixedSamples)\n' +
+    '    }\n' +
+    '}\n' +
+    '\n' +
+    'private struct C111MetalPixelRun {\n' +
+    '    let runID: String\n' +
+    '    let sceneID: String\n' +
+    '    let markerPrefix: String\n' +
+    '    let samples: [C111MetalPixelSample]\n' +
+    '    private static let c1121PixelSceneIDs: Set<String> = [\n' +
+    '        "numeric-lines", "positive-spans", "reversed-lines",\n' +
+    '        "shorthand-cascade", "overlap-source-order", "nested-placement-modes",\n' +
+    '    ]\n' +
+    '    private static let c1122PixelSceneIDs: Set<String> = [\n' +
+    '        "definite-first-mixed", "auto-only-fill", "positive-implicit-row",\n' +
+    '        "row-locked-auto-column", "column-locked-auto-row", "auto-column-span",\n' +
+    '        "sparse-hole-not-backfilled", "implicit-track-size-and-gap",\n' +
+    '        "hidden-child-excluded", "nested-independent-placement", "column-cursor-wrap",\n' +
+    '    ]\n' +
+    '    private static let c1123PixelSceneIDs: Set<String> = [\n' +
+    '        "row-sparse-baseline", "row-dense-hole-fill", "row-dense-span-collision",\n' +
+    '        "row-sparse-hole-control", "row-dense-fixed-column",\n' +
+    '        "row-dense-positive-implicit-row", "column-sparse-explicit-fill",\n' +
+    '        "column-sparse-positive-implicit-column", "column-sparse-fixed-row",\n' +
+    '        "column-sparse-fixed-column", "column-dense-hole-fill",\n' +
+    '        "column-sparse-hole-control", "column-dense-span-collision",\n' +
+    '        "column-dense-positive-implicit-column", "definite-first-dense",\n' +
+    '        "hidden-item-excluded", "nested-mixed-flow", "auto-track-no-implicit",\n' +
+    '        "auto-span-at-track-limit",\n' +
+    '    ]\n' +
+    '\n' +
+    '    private static let c1131RepeatPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n' +
+    '        ("grid-background", "c1131-multi-track-repeat-grid", 300, 120, [237, 241, 247, 255]),\n' +
+    '        ("item-blue", "c1131-multi-track-repeat-a", 10, 10, [40, 102, 246, 255]),\n' +
+    '        ("item-red", "c1131-multi-track-repeat-b", 40, 10, [229, 72, 77, 255]),\n' +
+    '        ("column-gap", "c1131-multi-track-repeat-grid", 112, 10, [237, 241, 247, 255]),\n' +
+    '        ("row-gap", "c1131-multi-track-repeat-grid", 10, 53, [237, 241, 247, 255]),\n' +
+    '    ]\n' +
+    '\n' +
+    '    private static let c1132NamedLinePixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n' +
+    '        ("grid-background", "c1132-positive-grid", 20, 80, [237, 241, 247, 255]),\n' +
+    '        ("item-blue", "c1132-positive-item", 100, 10, [40, 102, 246, 255]),\n' +
+    '    ]\n' +
+    '    private static let c1133TemplateAreaPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n' +
+    '        ("grid-background", "c1133-main-grid", 150, 10, [16, 24, 32, 255]),\n' +
+    '        ("item-blue", "c1133-main-item", 100, 50, [62, 99, 221, 255]),\n' +
+    '    ]\n' +
+    '\n' +
+    '    private static func hasFixedC1131RepeatSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n' +
+    '        guard samples.count == c1131RepeatPixelSamples.count else { return false }\n' +
+    '        return c1131RepeatPixelSamples.allSatisfy { expected in\n' +
+    '            samples.contains { sample in\n' +
+    '                sample.id == expected.0 && sample.nodeId == expected.1\n' +
+    '                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n' +
+    '                    && sample.rgba == expected.4\n' +
+    '            }\n' +
+    '        }\n' +
+    '    }\n' +
+    '\n' +
+    '    private static func hasFixedC1132NamedLineSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n' +
+    '        guard samples.count == c1132NamedLinePixelSamples.count else { return false }\n' +
+    '        return c1132NamedLinePixelSamples.allSatisfy { expected in\n' +
+    '            samples.contains { sample in\n' +
+    '                sample.id == expected.0 && sample.nodeId == expected.1\n' +
+    '                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n' +
+    '                    && sample.rgba == expected.4\n' +
+    '            }\n' +
+    '        }\n' +
+    '    }\n' +
+    '\n' +
+    '    private static func hasFixedC1133TemplateAreaSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n' +
+    '        guard samples.count == c1133TemplateAreaPixelSamples.count else { return false }\n' +
+    '        return c1133TemplateAreaPixelSamples.allSatisfy { expected in\n' +
+    '            samples.contains { sample in\n' +
+    '                sample.id == expected.0 && sample.nodeId == expected.1\n' +
+    '                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n' +
+    '                    && sample.rgba == expected.4\n' +
+    '            }\n' +
+    '        }\n' +
+    '    }\n' +
+    '\n' +
+    '    static func parse(arguments: [String], sceneID: String?) -> C111MetalPixelRun? {\n' +
+    '        guard let rawRun = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")\n' +
+    '        }), let rawSamples = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c11-grid-metal-surface-samples=")\n' +
+    '        }), let sceneID else { return nil }\n' +
+    '        let runID = String(rawRun.dropFirst("--spinon-c11-grid-metal-surface-pixels=".count))\n' +
+    '        let encoded = String(rawSamples.dropFirst("--spinon-c11-grid-metal-surface-samples=".count))\n' +
+    '        let c1131Scene = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c1131-grid-repeat-scene=")\n' +
+    '        }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-scene=".count)) }\n' +
+    '        let isC1131Repeat = arguments.contains("--spinon-c1131-grid-repeat") || c1131Scene != nil\n' +
+    '        if isC1131Repeat {\n' +
+    '            let c1131RunID = arguments.first(where: {\n' +
+    '                $0.hasPrefix("--spinon-c1131-grid-repeat-run-id=")\n' +
+    '            }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-run-id=".count)) }\n' +
+    '            guard c1131Scene == "multi-track-repeat", c1131Scene == sceneID,\n' +
+    '                  c1131RunID == runID,\n' +
+    '                  !arguments.contains("--spinon-c1123-grid-auto-placement"),\n' +
+    '                  !arguments.contains("--spinon-c1122-grid-auto-placement"),\n' +
+    '                  !arguments.contains("--spinon-c1121-grid-placement"),\n' +
+    '                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1123-grid-scene=") }),\n' +
+    '                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1122-grid-scene=") }),\n' +
+    '                  !arguments.co'... 341537 more characters
+
+      at TestContext.<anonymous> (file:///private/tmp/spinon-c01-4-selector-at-rule-20261019/tools/css-reference/c13-3-touch-action-tap-arbitration.test.mjs:24:10)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'import MetalKit\nimport UIKit\n\nprivate let c1133GridTemplateAreasSceneIDs: Set<String> = [\n    "basic-rectangles", "null-cell-dot-runs", "all-null-cells", "single-cell-area",\n    "bare-area-edge-aliases", "grid-area-one-value", "grid-area-two-values",\n    "grid-area-three-values", "grid-area-four-values", "row-column-longhands-area",\n    "grid-template-shorthand", "grid-shorthand", "bare-area-vs-explicit-one-name",\n    "explicit-line-before-area", "explicit-line-after-area", "area-names-ending-start-or-end",\n    "implicit-area-from-explicit-lines", "escaped-and-unicode-identifiers",\n    "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",\n    "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",\n    "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",\n]\n\nprivate struct C124MetalPixelCase {\n    let direction: String\n    let blueOrder: Int\n    let redOrder: Int\n    let runID: String\n\n    var caseID: String {\n        "flex-\\(direction)-paint-order-\\(blueOrder)-\\(redOrder)"\n    }\n\n    var cssSample: (x: Int, y: Int) {\n        (70, direction.hasPrefix("column") && direction == "column-reverse" ? 175 : 155)\n    }\n\n    var expectedRGBA: String {\n        let blueOnTop = (direction == "row-reverse" || direction == "column-reverse")\n            ? blueOrder == 0 : blueOrder == 1\n        return blueOnTop ? "#2866f6ff" : "#e5484dff"\n    }\n\n    static func parse(arguments: [String]) -> C124MetalPixelCase? {\n        guard let raw = arguments.first(where: {\n            $0.hasPrefix("--spinon-c124-metal-surface-readback=")\n        }) else { return nil }\n        let fields = String(raw.dropFirst("--spinon-c124-metal-surface-readback=".count))\n            .split(separator: ",", omittingEmptySubsequences: false)\n        guard fields.count == 3,\n              let blueOrder = Int(fields[1]), let redOrder = Int(fields[2]),\n              ["row", "row-reverse", "column", "column-reverse"].contains(String(fields[0])),\n              (blueOrder == 0 || blueOrder == 1), redOrder == 0,\n              let runArgument = arguments.first(where: {\n                  $0.hasPrefix("--spinon-c124-metal-surface-run=")\n              }) else { return nil }\n        let runID = String(runArgument.dropFirst("--spinon-c124-metal-surface-run=".count))\n        guard !runID.isEmpty,\n              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n        else { return nil }\n        return C124MetalPixelCase(\n            direction: String(fields[0]), blueOrder: blueOrder,\n            redOrder: redOrder, runID: runID\n        )\n    }\n}\n\n\n\n\nprivate struct C111MetalPixelSample: Decodable {\n    let id: String\n    let nodeId: String\n    let xCssPx: UInt32\n    let yCssPx: UInt32\n    let rgba: [UInt32]\n}\n\nprivate struct C132MetalPixelSample {\n    let id: String\n    let xCssPx: UInt32\n    let yCssPx: UInt32\n    let rgba: [UInt32]\n}\n\nprivate struct C132MetalPixelRun {\n    let runID: String\n    let samples: [C132MetalPixelSample]\n\n    static let fixedSamples = [\n        C132MetalPixelSample(id: "visible-escape", xCssPx: 150, yCssPx: 30,\n                             rgba: [227, 84, 78, 255]),\n        C132MetalPixelSample(id: "parent-gap", xCssPx: 136, yCssPx: 30,\n                             rgba: [16, 24, 39, 255]),\n        C132MetalPixelSample(id: "parent-interior", xCssPx: 20, yCssPx: 20,\n                             rgba: [52, 66, 86, 255]),\n        C132MetalPixelSample(id: "parent-border", xCssPx: 11, yCssPx: 11,\n                             rgba: [240, 198, 116, 255]),\n        C132MetalPixelSample(id: "root-background", xCssPx: 50, yCssPx: 110,\n                             rgba: [16, 24, 39, 255]),\n    ]\n\n    static func parse(arguments: [String]) -> C132MetalPixelRun? {\n        let prefix = "--spinon-c132-metal-surface-pixels="\n        let values = arguments.filter { $0.hasPrefix(prefix) }\n        guard values.count == 1 else { return nil }\n        let runID = String(values[0].dropFirst(prefix.count))\n        guard (8...80).contains(runID.count),\n              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n        else { return nil }\n        return C132MetalPixelRun(runID: runID, samples: fixedSamples)\n    }\n}\n\nprivate struct C111MetalPixelRun {\n    let runID: String\n    let sceneID: String\n    let markerPrefix: String\n    let samples: [C111MetalPixelSample]\n    private static let c1121PixelSceneIDs: Set<String> = [\n        "numeric-lines", "positive-spans", "reversed-lines",\n        "shorthand-cascade", "overlap-source-order", "nested-placement-modes",\n    ]\n    private static let c1122PixelSceneIDs: Set<String> = [\n        "definite-first-mixed", "auto-only-fill", "positive-implicit-row",\n        "row-locked-auto-column", "column-locked-auto-row", "auto-column-span",\n        "sparse-hole-not-backfilled", "implicit-track-size-and-gap",\n        "hidden-child-excluded", "nested-independent-placement", "column-cursor-wrap",\n    ]\n    private static let c1123PixelSceneIDs: Set<String> = [\n        "row-sparse-baseline", "row-dense-hole-fill", "row-dense-span-collision",\n        "row-sparse-hole-control", "row-dense-fixed-column",\n        "row-dense-positive-implicit-row", "column-sparse-explicit-fill",\n        "column-sparse-positive-implicit-column", "column-sparse-fixed-row",\n        "column-sparse-fixed-column", "column-dense-hole-fill",\n        "column-sparse-hole-control", "column-dense-span-collision",\n        "column-dense-positive-implicit-column", "definite-first-dense",\n        "hidden-item-excluded", "nested-mixed-flow", "auto-track-no-implicit",\n        "auto-span-at-track-limit",\n    ]\n\n    private static let c1131RepeatPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n        ("grid-background", "c1131-multi-track-repeat-grid", 300, 120, [237, 241, 247, 255]),\n        ("item-blue", "c1131-multi-track-repeat-a", 10, 10, [40, 102, 246, 255]),\n        ("item-red", "c1131-multi-track-repeat-b", 40, 10, [229, 72, 77, 255]),\n        ("column-gap", "c1131-multi-track-repeat-grid", 112, 10, [237, 241, 247, 255]),\n        ("row-gap", "c1131-multi-track-repeat-grid", 10, 53, [237, 241, 247, 255]),\n    ]\n\n    private static let c1132NamedLinePixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n        ("grid-background", "c1132-positive-grid", 20, 80, [237, 241, 247, 255]),\n        ("item-blue", "c1132-positive-item", 100, 10, [40, 102, 246, 255]),\n    ]\n    private static let c1133TemplateAreaPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n        ("grid-background", "c1133-main-grid", 150, 10, [16, 24, 32, 255]),\n        ("item-blue", "c1133-main-item", 100, 50, [62, 99, 221, 255]),\n    ]\n\n    private static func hasFixedC1131RepeatSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n        guard samples.count == c1131RepeatPixelSamples.count else { return false }\n        return c1131RepeatPixelSamples.allSatisfy { expected in\n            samples.contains { sample in\n                sample.id == expected.0 && sample.nodeId == expected.1\n                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n                    && sample.rgba == expected.4\n            }\n        }\n    }\n\n    private static func hasFixedC1132NamedLineSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n        guard samples.count == c1132NamedLinePixelSamples.count else { return false }\n        return c1132NamedLinePixelSamples.allSatisfy { expected in\n            samples.contains { sample in\n                sample.id == expected.0 && sample.nodeId == expected.1\n                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n                    && sample.rgba == expected.4\n            }\n        }\n    }\n\n    private static func hasFixedC1133TemplateAreaSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n        guard samples.count == c1133TemplateAreaPixelSamples.count else { return false }\n        return c1133TemplateAreaPixelSamples.allSatisfy { expected in\n            samples.contains { sample in\n                sample.id == expected.0 && sample.nodeId == expected.1\n                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n                    && sample.rgba == expected.4\n            }\n        }\n    }\n\n    static func parse(arguments: [String], sceneID: String?) -> C111MetalPixelRun? {\n        guard let rawRun = arguments.first(where: {\n            $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")\n        }), let rawSamples = arguments.first(where: {\n            $0.hasPrefix("--spinon-c11-grid-metal-surface-samples=")\n        }), let sceneID else { return nil }\n        let runID = String(rawRun.dropFirst("--spinon-c11-grid-metal-surface-pixels=".count))\n        let encoded = String(rawSamples.dropFirst("--spinon-c11-grid-metal-surface-samples=".count))\n        let c1131Scene = arguments.first(where: {\n            $0.hasPrefix("--spinon-c1131-grid-repeat-scene=")\n        }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-scene=".count)) }\n        let isC1131Repeat = arguments.contains("--spinon-c1131-grid-repeat") || c1131Scene != nil\n        if isC1131Repeat {\n            let c1131RunID = arguments.first(where: {\n                $0.hasPrefix("--spinon-c1131-grid-repeat-run-id=")\n            }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-run-id=".count)) }\n            guard c1131Scene == "multi-track-repeat", c1131Scene == sceneID,\n                  c1131RunID == runID,\n                  !arguments.contains("--spinon-c1123-grid-auto-placement"),\n                  !arguments.contains("--spinon-c1122-grid-auto-placement"),\n                  !arguments.contains("--spinon-c1121-grid-placement"),\n                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1123-grid-scene=") }),\n                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1122-grid-scene=") }),\n                  !arguments.co'... 341537 more characters,
+    expected: /c133TapProbeRequested && !c133GestureFixtureRequested/,
+    operator: 'match',
+    diff: 'simple'
+  }
+✖ iOS tap waits for pan failure and configures pan from computed touch-action before readiness (3.068125ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /tap-probe-requires-fixture-route/. Input:
+
+  'import MetalKit\n' +
+    'import UIKit\n' +
+    '\n' +
+    'private let c1133GridTemplateAreasSceneIDs: Set<String> = [\n' +
+    '    "basic-rectangles", "null-cell-dot-runs", "all-null-cells", "single-cell-area",\n' +
+    '    "bare-area-edge-aliases", "grid-area-one-value", "grid-area-two-values",\n' +
+    '    "grid-area-three-values", "grid-area-four-values", "row-column-longhands-area",\n' +
+    '    "grid-template-shorthand", "grid-shorthand", "bare-area-vs-explicit-one-name",\n' +
+    '    "explicit-line-before-area", "explicit-line-after-area", "area-names-ending-start-or-end",\n' +
+    '    "implicit-area-from-explicit-lines", "escaped-and-unicode-identifiers",\n' +
+    '    "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",\n' +
+    '    "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",\n' +
+    '    "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",\n' +
+    ']\n' +
+    '\n' +
+    'private struct C124MetalPixelCase {\n' +
+    '    let direction: String\n' +
+    '    let blueOrder: Int\n' +
+    '    let redOrder: Int\n' +
+    '    let runID: String\n' +
+    '\n' +
+    '    var caseID: String {\n' +
+    '        "flex-\\(direction)-paint-order-\\(blueOrder)-\\(redOrder)"\n' +
+    '    }\n' +
+    '\n' +
+    '    var cssSample: (x: Int, y: Int) {\n' +
+    '        (70, direction.hasPrefix("column") && direction == "column-reverse" ? 175 : 155)\n' +
+    '    }\n' +
+    '\n' +
+    '    var expectedRGBA: String {\n' +
+    '        let blueOnTop = (direction == "row-reverse" || direction == "column-reverse")\n' +
+    '            ? blueOrder == 0 : blueOrder == 1\n' +
+    '        return blueOnTop ? "#2866f6ff" : "#e5484dff"\n' +
+    '    }\n' +
+    '\n' +
+    '    static func parse(arguments: [String]) -> C124MetalPixelCase? {\n' +
+    '        guard let raw = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c124-metal-surface-readback=")\n' +
+    '        }) else { return nil }\n' +
+    '        let fields = String(raw.dropFirst("--spinon-c124-metal-surface-readback=".count))\n' +
+    '            .split(separator: ",", omittingEmptySubsequences: false)\n' +
+    '        guard fields.count == 3,\n' +
+    '              let blueOrder = Int(fields[1]), let redOrder = Int(fields[2]),\n' +
+    '              ["row", "row-reverse", "column", "column-reverse"].contains(String(fields[0])),\n' +
+    '              (blueOrder == 0 || blueOrder == 1), redOrder == 0,\n' +
+    '              let runArgument = arguments.first(where: {\n' +
+    '                  $0.hasPrefix("--spinon-c124-metal-surface-run=")\n' +
+    '              }) else { return nil }\n' +
+    '        let runID = String(runArgument.dropFirst("--spinon-c124-metal-surface-run=".count))\n' +
+    '        guard !runID.isEmpty,\n' +
+    '              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n' +
+    '        else { return nil }\n' +
+    '        return C124MetalPixelCase(\n' +
+    '            direction: String(fields[0]), blueOrder: blueOrder,\n' +
+    '            redOrder: redOrder, runID: runID\n' +
+    '        )\n' +
+    '    }\n' +
+    '}\n' +
+    '\n' +
+    '\n' +
+    '\n' +
+    '\n' +
+    'private struct C111MetalPixelSample: Decodable {\n' +
+    '    let id: String\n' +
+    '    let nodeId: String\n' +
+    '    let xCssPx: UInt32\n' +
+    '    let yCssPx: UInt32\n' +
+    '    let rgba: [UInt32]\n' +
+    '}\n' +
+    '\n' +
+    'private struct C132MetalPixelSample {\n' +
+    '    let id: String\n' +
+    '    let xCssPx: UInt32\n' +
+    '    let yCssPx: UInt32\n' +
+    '    let rgba: [UInt32]\n' +
+    '}\n' +
+    '\n' +
+    'private struct C132MetalPixelRun {\n' +
+    '    let runID: String\n' +
+    '    let samples: [C132MetalPixelSample]\n' +
+    '\n' +
+    '    static let fixedSamples = [\n' +
+    '        C132MetalPixelSample(id: "visible-escape", xCssPx: 150, yCssPx: 30,\n' +
+    '                             rgba: [227, 84, 78, 255]),\n' +
+    '        C132MetalPixelSample(id: "parent-gap", xCssPx: 136, yCssPx: 30,\n' +
+    '                             rgba: [16, 24, 39, 255]),\n' +
+    '        C132MetalPixelSample(id: "parent-interior", xCssPx: 20, yCssPx: 20,\n' +
+    '                             rgba: [52, 66, 86, 255]),\n' +
+    '        C132MetalPixelSample(id: "parent-border", xCssPx: 11, yCssPx: 11,\n' +
+    '                             rgba: [240, 198, 116, 255]),\n' +
+    '        C132MetalPixelSample(id: "root-background", xCssPx: 50, yCssPx: 110,\n' +
+    '                             rgba: [16, 24, 39, 255]),\n' +
+    '    ]\n' +
+    '\n' +
+    '    static func parse(arguments: [String]) -> C132MetalPixelRun? {\n' +
+    '        let prefix = "--spinon-c132-metal-surface-pixels="\n' +
+    '        let values = arguments.filter { $0.hasPrefix(prefix) }\n' +
+    '        guard values.count == 1 else { return nil }\n' +
+    '        let runID = String(values[0].dropFirst(prefix.count))\n' +
+    '        guard (8...80).contains(runID.count),\n' +
+    '              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n' +
+    '        else { return nil }\n' +
+    '        return C132MetalPixelRun(runID: runID, samples: fixedSamples)\n' +
+    '    }\n' +
+    '}\n' +
+    '\n' +
+    'private struct C111MetalPixelRun {\n' +
+    '    let runID: String\n' +
+    '    let sceneID: String\n' +
+    '    let markerPrefix: String\n' +
+    '    let samples: [C111MetalPixelSample]\n' +
+    '    private static let c1121PixelSceneIDs: Set<String> = [\n' +
+    '        "numeric-lines", "positive-spans", "reversed-lines",\n' +
+    '        "shorthand-cascade", "overlap-source-order", "nested-placement-modes",\n' +
+    '    ]\n' +
+    '    private static let c1122PixelSceneIDs: Set<String> = [\n' +
+    '        "definite-first-mixed", "auto-only-fill", "positive-implicit-row",\n' +
+    '        "row-locked-auto-column", "column-locked-auto-row", "auto-column-span",\n' +
+    '        "sparse-hole-not-backfilled", "implicit-track-size-and-gap",\n' +
+    '        "hidden-child-excluded", "nested-independent-placement", "column-cursor-wrap",\n' +
+    '    ]\n' +
+    '    private static let c1123PixelSceneIDs: Set<String> = [\n' +
+    '        "row-sparse-baseline", "row-dense-hole-fill", "row-dense-span-collision",\n' +
+    '        "row-sparse-hole-control", "row-dense-fixed-column",\n' +
+    '        "row-dense-positive-implicit-row", "column-sparse-explicit-fill",\n' +
+    '        "column-sparse-positive-implicit-column", "column-sparse-fixed-row",\n' +
+    '        "column-sparse-fixed-column", "column-dense-hole-fill",\n' +
+    '        "column-sparse-hole-control", "column-dense-span-collision",\n' +
+    '        "column-dense-positive-implicit-column", "definite-first-dense",\n' +
+    '        "hidden-item-excluded", "nested-mixed-flow", "auto-track-no-implicit",\n' +
+    '        "auto-span-at-track-limit",\n' +
+    '    ]\n' +
+    '\n' +
+    '    private static let c1131RepeatPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n' +
+    '        ("grid-background", "c1131-multi-track-repeat-grid", 300, 120, [237, 241, 247, 255]),\n' +
+    '        ("item-blue", "c1131-multi-track-repeat-a", 10, 10, [40, 102, 246, 255]),\n' +
+    '        ("item-red", "c1131-multi-track-repeat-b", 40, 10, [229, 72, 77, 255]),\n' +
+    '        ("column-gap", "c1131-multi-track-repeat-grid", 112, 10, [237, 241, 247, 255]),\n' +
+    '        ("row-gap", "c1131-multi-track-repeat-grid", 10, 53, [237, 241, 247, 255]),\n' +
+    '    ]\n' +
+    '\n' +
+    '    private static let c1132NamedLinePixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n' +
+    '        ("grid-background", "c1132-positive-grid", 20, 80, [237, 241, 247, 255]),\n' +
+    '        ("item-blue", "c1132-positive-item", 100, 10, [40, 102, 246, 255]),\n' +
+    '    ]\n' +
+    '    private static let c1133TemplateAreaPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n' +
+    '        ("grid-background", "c1133-main-grid", 150, 10, [16, 24, 32, 255]),\n' +
+    '        ("item-blue", "c1133-main-item", 100, 50, [62, 99, 221, 255]),\n' +
+    '    ]\n' +
+    '\n' +
+    '    private static func hasFixedC1131RepeatSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n' +
+    '        guard samples.count == c1131RepeatPixelSamples.count else { return false }\n' +
+    '        return c1131RepeatPixelSamples.allSatisfy { expected in\n' +
+    '            samples.contains { sample in\n' +
+    '                sample.id == expected.0 && sample.nodeId == expected.1\n' +
+    '                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n' +
+    '                    && sample.rgba == expected.4\n' +
+    '            }\n' +
+    '        }\n' +
+    '    }\n' +
+    '\n' +
+    '    private static func hasFixedC1132NamedLineSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n' +
+    '        guard samples.count == c1132NamedLinePixelSamples.count else { return false }\n' +
+    '        return c1132NamedLinePixelSamples.allSatisfy { expected in\n' +
+    '            samples.contains { sample in\n' +
+    '                sample.id == expected.0 && sample.nodeId == expected.1\n' +
+    '                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n' +
+    '                    && sample.rgba == expected.4\n' +
+    '            }\n' +
+    '        }\n' +
+    '    }\n' +
+    '\n' +
+    '    private static func hasFixedC1133TemplateAreaSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n' +
+    '        guard samples.count == c1133TemplateAreaPixelSamples.count else { return false }\n' +
+    '        return c1133TemplateAreaPixelSamples.allSatisfy { expected in\n' +
+    '            samples.contains { sample in\n' +
+    '                sample.id == expected.0 && sample.nodeId == expected.1\n' +
+    '                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n' +
+    '                    && sample.rgba == expected.4\n' +
+    '            }\n' +
+    '        }\n' +
+    '    }\n' +
+    '\n' +
+    '    static func parse(arguments: [String], sceneID: String?) -> C111MetalPixelRun? {\n' +
+    '        guard let rawRun = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")\n' +
+    '        }), let rawSamples = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c11-grid-metal-surface-samples=")\n' +
+    '        }), let sceneID else { return nil }\n' +
+    '        let runID = String(rawRun.dropFirst("--spinon-c11-grid-metal-surface-pixels=".count))\n' +
+    '        let encoded = String(rawSamples.dropFirst("--spinon-c11-grid-metal-surface-samples=".count))\n' +
+    '        let c1131Scene = arguments.first(where: {\n' +
+    '            $0.hasPrefix("--spinon-c1131-grid-repeat-scene=")\n' +
+    '        }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-scene=".count)) }\n' +
+    '        let isC1131Repeat = arguments.contains("--spinon-c1131-grid-repeat") || c1131Scene != nil\n' +
+    '        if isC1131Repeat {\n' +
+    '            let c1131RunID = arguments.first(where: {\n' +
+    '                $0.hasPrefix("--spinon-c1131-grid-repeat-run-id=")\n' +
+    '            }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-run-id=".count)) }\n' +
+    '            guard c1131Scene == "multi-track-repeat", c1131Scene == sceneID,\n' +
+    '                  c1131RunID == runID,\n' +
+    '                  !arguments.contains("--spinon-c1123-grid-auto-placement"),\n' +
+    '                  !arguments.contains("--spinon-c1122-grid-auto-placement"),\n' +
+    '                  !arguments.contains("--spinon-c1121-grid-placement"),\n' +
+    '                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1123-grid-scene=") }),\n' +
+    '                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1122-grid-scene=") }),\n' +
+    '                  !arguments.co'... 341537 more characters
+
+      at TestContext.<anonymous> (file:///private/tmp/spinon-c01-4-selector-at-rule-20261019/tools/css-reference/c13-3-touch-action-tap-arbitration.test.mjs:69:10)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'import MetalKit\nimport UIKit\n\nprivate let c1133GridTemplateAreasSceneIDs: Set<String> = [\n    "basic-rectangles", "null-cell-dot-runs", "all-null-cells", "single-cell-area",\n    "bare-area-edge-aliases", "grid-area-one-value", "grid-area-two-values",\n    "grid-area-three-values", "grid-area-four-values", "row-column-longhands-area",\n    "grid-template-shorthand", "grid-shorthand", "bare-area-vs-explicit-one-name",\n    "explicit-line-before-area", "explicit-line-after-area", "area-names-ending-start-or-end",\n    "implicit-area-from-explicit-lines", "escaped-and-unicode-identifiers",\n    "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",\n    "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",\n    "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",\n]\n\nprivate struct C124MetalPixelCase {\n    let direction: String\n    let blueOrder: Int\n    let redOrder: Int\n    let runID: String\n\n    var caseID: String {\n        "flex-\\(direction)-paint-order-\\(blueOrder)-\\(redOrder)"\n    }\n\n    var cssSample: (x: Int, y: Int) {\n        (70, direction.hasPrefix("column") && direction == "column-reverse" ? 175 : 155)\n    }\n\n    var expectedRGBA: String {\n        let blueOnTop = (direction == "row-reverse" || direction == "column-reverse")\n            ? blueOrder == 0 : blueOrder == 1\n        return blueOnTop ? "#2866f6ff" : "#e5484dff"\n    }\n\n    static func parse(arguments: [String]) -> C124MetalPixelCase? {\n        guard let raw = arguments.first(where: {\n            $0.hasPrefix("--spinon-c124-metal-surface-readback=")\n        }) else { return nil }\n        let fields = String(raw.dropFirst("--spinon-c124-metal-surface-readback=".count))\n            .split(separator: ",", omittingEmptySubsequences: false)\n        guard fields.count == 3,\n              let blueOrder = Int(fields[1]), let redOrder = Int(fields[2]),\n              ["row", "row-reverse", "column", "column-reverse"].contains(String(fields[0])),\n              (blueOrder == 0 || blueOrder == 1), redOrder == 0,\n              let runArgument = arguments.first(where: {\n                  $0.hasPrefix("--spinon-c124-metal-surface-run=")\n              }) else { return nil }\n        let runID = String(runArgument.dropFirst("--spinon-c124-metal-surface-run=".count))\n        guard !runID.isEmpty,\n              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n        else { return nil }\n        return C124MetalPixelCase(\n            direction: String(fields[0]), blueOrder: blueOrder,\n            redOrder: redOrder, runID: runID\n        )\n    }\n}\n\n\n\n\nprivate struct C111MetalPixelSample: Decodable {\n    let id: String\n    let nodeId: String\n    let xCssPx: UInt32\n    let yCssPx: UInt32\n    let rgba: [UInt32]\n}\n\nprivate struct C132MetalPixelSample {\n    let id: String\n    let xCssPx: UInt32\n    let yCssPx: UInt32\n    let rgba: [UInt32]\n}\n\nprivate struct C132MetalPixelRun {\n    let runID: String\n    let samples: [C132MetalPixelSample]\n\n    static let fixedSamples = [\n        C132MetalPixelSample(id: "visible-escape", xCssPx: 150, yCssPx: 30,\n                             rgba: [227, 84, 78, 255]),\n        C132MetalPixelSample(id: "parent-gap", xCssPx: 136, yCssPx: 30,\n                             rgba: [16, 24, 39, 255]),\n        C132MetalPixelSample(id: "parent-interior", xCssPx: 20, yCssPx: 20,\n                             rgba: [52, 66, 86, 255]),\n        C132MetalPixelSample(id: "parent-border", xCssPx: 11, yCssPx: 11,\n                             rgba: [240, 198, 116, 255]),\n        C132MetalPixelSample(id: "root-background", xCssPx: 50, yCssPx: 110,\n                             rgba: [16, 24, 39, 255]),\n    ]\n\n    static func parse(arguments: [String]) -> C132MetalPixelRun? {\n        let prefix = "--spinon-c132-metal-surface-pixels="\n        let values = arguments.filter { $0.hasPrefix(prefix) }\n        guard values.count == 1 else { return nil }\n        let runID = String(values[0].dropFirst(prefix.count))\n        guard (8...80).contains(runID.count),\n              runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })\n        else { return nil }\n        return C132MetalPixelRun(runID: runID, samples: fixedSamples)\n    }\n}\n\nprivate struct C111MetalPixelRun {\n    let runID: String\n    let sceneID: String\n    let markerPrefix: String\n    let samples: [C111MetalPixelSample]\n    private static let c1121PixelSceneIDs: Set<String> = [\n        "numeric-lines", "positive-spans", "reversed-lines",\n        "shorthand-cascade", "overlap-source-order", "nested-placement-modes",\n    ]\n    private static let c1122PixelSceneIDs: Set<String> = [\n        "definite-first-mixed", "auto-only-fill", "positive-implicit-row",\n        "row-locked-auto-column", "column-locked-auto-row", "auto-column-span",\n        "sparse-hole-not-backfilled", "implicit-track-size-and-gap",\n        "hidden-child-excluded", "nested-independent-placement", "column-cursor-wrap",\n    ]\n    private static let c1123PixelSceneIDs: Set<String> = [\n        "row-sparse-baseline", "row-dense-hole-fill", "row-dense-span-collision",\n        "row-sparse-hole-control", "row-dense-fixed-column",\n        "row-dense-positive-implicit-row", "column-sparse-explicit-fill",\n        "column-sparse-positive-implicit-column", "column-sparse-fixed-row",\n        "column-sparse-fixed-column", "column-dense-hole-fill",\n        "column-sparse-hole-control", "column-dense-span-collision",\n        "column-dense-positive-implicit-column", "definite-first-dense",\n        "hidden-item-excluded", "nested-mixed-flow", "auto-track-no-implicit",\n        "auto-span-at-track-limit",\n    ]\n\n    private static let c1131RepeatPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n        ("grid-background", "c1131-multi-track-repeat-grid", 300, 120, [237, 241, 247, 255]),\n        ("item-blue", "c1131-multi-track-repeat-a", 10, 10, [40, 102, 246, 255]),\n        ("item-red", "c1131-multi-track-repeat-b", 40, 10, [229, 72, 77, 255]),\n        ("column-gap", "c1131-multi-track-repeat-grid", 112, 10, [237, 241, 247, 255]),\n        ("row-gap", "c1131-multi-track-repeat-grid", 10, 53, [237, 241, 247, 255]),\n    ]\n\n    private static let c1132NamedLinePixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n        ("grid-background", "c1132-positive-grid", 20, 80, [237, 241, 247, 255]),\n        ("item-blue", "c1132-positive-item", 100, 10, [40, 102, 246, 255]),\n    ]\n    private static let c1133TemplateAreaPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [\n        ("grid-background", "c1133-main-grid", 150, 10, [16, 24, 32, 255]),\n        ("item-blue", "c1133-main-item", 100, 50, [62, 99, 221, 255]),\n    ]\n\n    private static func hasFixedC1131RepeatSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n        guard samples.count == c1131RepeatPixelSamples.count else { return false }\n        return c1131RepeatPixelSamples.allSatisfy { expected in\n            samples.contains { sample in\n                sample.id == expected.0 && sample.nodeId == expected.1\n                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n                    && sample.rgba == expected.4\n            }\n        }\n    }\n\n    private static func hasFixedC1132NamedLineSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n        guard samples.count == c1132NamedLinePixelSamples.count else { return false }\n        return c1132NamedLinePixelSamples.allSatisfy { expected in\n            samples.contains { sample in\n                sample.id == expected.0 && sample.nodeId == expected.1\n                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n                    && sample.rgba == expected.4\n            }\n        }\n    }\n\n    private static func hasFixedC1133TemplateAreaSamples(_ samples: [C111MetalPixelSample]) -> Bool {\n        guard samples.count == c1133TemplateAreaPixelSamples.count else { return false }\n        return c1133TemplateAreaPixelSamples.allSatisfy { expected in\n            samples.contains { sample in\n                sample.id == expected.0 && sample.nodeId == expected.1\n                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3\n                    && sample.rgba == expected.4\n            }\n        }\n    }\n\n    static func parse(arguments: [String], sceneID: String?) -> C111MetalPixelRun? {\n        guard let rawRun = arguments.first(where: {\n            $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")\n        }), let rawSamples = arguments.first(where: {\n            $0.hasPrefix("--spinon-c11-grid-metal-surface-samples=")\n        }), let sceneID else { return nil }\n        let runID = String(rawRun.dropFirst("--spinon-c11-grid-metal-surface-pixels=".count))\n        let encoded = String(rawSamples.dropFirst("--spinon-c11-grid-metal-surface-samples=".count))\n        let c1131Scene = arguments.first(where: {\n            $0.hasPrefix("--spinon-c1131-grid-repeat-scene=")\n        }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-scene=".count)) }\n        let isC1131Repeat = arguments.contains("--spinon-c1131-grid-repeat") || c1131Scene != nil\n        if isC1131Repeat {\n            let c1131RunID = arguments.first(where: {\n                $0.hasPrefix("--spinon-c1131-grid-repeat-run-id=")\n            }).map { String($0.dropFirst("--spinon-c1131-grid-repeat-run-id=".count)) }\n            guard c1131Scene == "multi-track-repeat", c1131Scene == sceneID,\n                  c1131RunID == runID,\n                  !arguments.contains("--spinon-c1123-grid-auto-placement"),\n                  !arguments.contains("--spinon-c1122-grid-auto-placement"),\n                  !arguments.contains("--spinon-c1121-grid-placement"),\n                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1123-grid-scene=") }),\n                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1122-grid-scene=") }),\n                  !arguments.co'... 341537 more characters,
+    expected: /tap-probe-requires-fixture-route/,
+    operator: 'match',
+    diff: 'simple'
+  }
