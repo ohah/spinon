@@ -17,10 +17,13 @@ Light와 dark 양쪽에서 Android와 iPhone 콘텐츠 surface의 위·아래 �
 
 Android는 인수가 없는 실행과 표준 `android.intent.extra.TEST` extra가 추가된 실행을 각각 확인했다. 둘 다 `SPINON_ROOT_HTML_DEFAULT_APP_ROUTE`로 진입해 `root-app.js` 실행과 `layout=ready`를 기록했다. 플랫폼 debug extra가 없는 일반 intent에 다른 Android extra가 있어도 기본 root HTML 경로를 유지한다.
 
+추가 hostile case로 `spinon_c0410_runtime_gpu=false`를 전달했을 때, 수정 전에는 비활성 키를 override로 오인해 DOM-only 경로로 빠지는 것을 재현했다. 판별 함수가 false/null 값을 무시하도록 수정한 뒤 새 APK를 설치해 같은 인수로 재실행했고, 기본 route·`root_app_marker=ready`와 화면을 확인했다. [수정 후 실행 로그](android-runtime-false-extra.log) · [수정 후 화면](android-api37-false-extra.png) · [수정 APK 빌드 로그](android-build-false-extra-fix.log)
+
 | 화면 | Android | iOS |
 | --- | --- | --- |
 | Light | [캡처](android-api37-light.png) | [iPhone](ios-26-2-light.png) · [iPad](ios-ipad-pro-26-2.png) |
 | Dark | [캡처](android-api37-dark.png) | [iPhone](ios-26-2-dark.png) |
+| `spinon_c0410_runtime_gpu=false` | [기본 route 캡처](android-api37-false-extra.png) | — |
 
 OS appearance를 dark로 바꿨을 때 Android와 iPhone 런타임 모두 `dark=true`, `environment_revision=1`, `layout=ready`로 갱신됐다. light로 복구한 뒤 새 환경 revision이 기록됐다. 명시적인 body 배경색이 있으므로 두 appearance 모두 content surface 색은 동일하다. Android AVD 표면을 `1080×2400`에서 `720×1600`으로 바꿨다가 원래 크기로 복구했고, 양쪽 변경에서 CSS viewport와 environment revision이 갱신됐다. iPad의 별도 surface 크기도 초기 환경 계산과 pixel capture로 확인했다.
 
@@ -33,7 +36,7 @@ OS appearance를 dark로 바꿨을 때 Android와 iPhone 런타임 모두 `dark=
 ## 빌드와 fixture 경계
 
 - Android와 iOS Simulator 모두 `c04_runtime_gpu=1`, `c04_runtime_gpu_fixture_test=0`으로 빌드했다. 나머지 C04.12/C11/C13/C14/C15/C18/C19 fixture flags도 빌드 로그에서 모두 `0`이다.
-- Android APK SHA-256: `3904ff9e2b668d430c41847c600c69f74e60bb751f135209767fc7dcb1f68181`
+- Android APK SHA-256: `c407dd5b0a604b02a20f55262fcb626e1b135585ae3d3b74d629e1cc52759e90`
 - iOS Simulator executable SHA-256: `0aab85c709c4c7b06418f882bd832ab94977ba8629f2c0189df2d01529becb82`
 - [Android 빌드 로그](android-build.log) · [iOS Simulator 빌드 로그](ios-build.log)
 - [root Canvas focused Rust 테스트 9개](rust-root-canvas-test.log) · [FFI product feature check](cargo-ffi-check.log) · [iOS build-flag 테스트 13개](bun-ios-build-flags-test.log)
@@ -51,4 +54,4 @@ OS appearance를 dark로 바꿨을 때 Android와 iPhone 런타임 모두 `dark=
 - 빌드는 pinned V8 checkout `/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8`를 읽기 전용 입력으로 사용했다. 빌드 산출물은 이 작업 checkout 안에 생성했다.
 - 전체 화면 캡처는 simulator screenshot이다. Android PixelCopy, iOS compositor 이후 픽셀, 물리 기기 및 hardware GPU는 검증하지 않았다.
 
-새 구현 실패 관점 20개 검토는 [검토 기록](implementation-review-20.md)에 남겼다. PR diff 30개 검토와 PR 병합은 아직 남아 있다. 이 근거는 C04.12/C15/C16/C19 전체 지원 완료를 뜻하지 않는다.
+새 구현 실패 관점 20개 검토는 [검토 기록](implementation-review-20.md)에, PR 변경분의 별도 실패 관점 30개 검토는 [PR 검토 기록](pr-delta-review-30.md)에 남겼다. PR 병합은 아직 남아 있다. 이 근거는 C04.12/C15/C16/C19 전체 지원 완료를 뜻하지 않는다.

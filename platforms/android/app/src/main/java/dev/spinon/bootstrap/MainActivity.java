@@ -126,7 +126,9 @@ public final class MainActivity extends Activity {
     private static boolean hasSpinonLaunchOverride(Bundle extras) {
         if (extras == null) return false;
         for (String key : extras.keySet()) {
-            if (key.startsWith("spinon_")) return true;
+            if (!key.startsWith("spinon_")) continue;
+            Object value = extras.get(key);
+            if (value != null && !Boolean.FALSE.equals(value)) return true;
         }
         return false;
     }

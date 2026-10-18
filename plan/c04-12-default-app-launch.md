@@ -2,7 +2,7 @@
 
 - **문서 유형:** 구현 계획 · 공식 상태는 [`spec/STATUS.md`](../spec/STATUS.md)에서 관리
 - **상위:** [`plan/c04-12-root-html-default-rendering.md`](c04-12-root-html-default-rendering.md) · C04.12/C15/C16/C19는 계속 미완료
-- **상태:** 기본 Android/iOS app route 구현 중. 기본 제품 빌드, API 37 ARM64 AVD·iPhone 17 Pro·iPad Pro 13-inch M5/iOS 26.2 Simulator의 launch와 content-edge sRGB 표본, AVD 표면 크기 변경, product/fixture-positive staticlib boundary 대조 및 새 구현 실패 관점 20개 검토를 마쳤다. PR diff 30개 검토와 PR 병합은 남아 있다.
+- **상태:** 기본 Android/iOS app route 구현 중. 기본 제품 빌드, API 37 ARM64 AVD·iPhone 17 Pro·iPad Pro 13-inch M5/iOS 26.2 Simulator의 launch와 content-edge sRGB 표본, AVD 표면 크기 변경, product/fixture-positive staticlib boundary 대조, 새 구현 실패 관점 20개 및 PR diff 실패 관점 30개 검토를 마쳤다. PR 병합은 남아 있다.
 - **사전 기준:** [Agent Browser Chrome 155 관찰](../spec/internal/evidence/c04-12-default-app-launch-precomparison-2026-10-19/README.md)
 - **계획 검토:** [서로 다른 실패 관점 20개](../spec/internal/evidence/c04-12-default-app-launch-precomparison-2026-10-19/plan-review-20.md)
 - **구현 검토:** [구현 실패 관점 20개](../spec/internal/evidence/c04-12-default-app-launch-2026-10-19/implementation-review-20.md)
@@ -30,7 +30,7 @@ Android와 iOS에서 실험 인수 없이 앱을 정상 실행하면 `examples/b
 
 ## 구현 경계와 판정 기준
 
-1. Android는 `spinon_*` launch extra가 없을 때, iOS는 `--spinon-*` 실행 인수가 없을 때 새 기본 route를 택한다. Android의 일반 시스템 extra는 기본 앱 진입을 막지 않는다. 기존 fixture·실험 인수는 현재 route와 충돌 거부 동작을 유지한다.
+1. Android는 활성 `spinon_*` launch extra가 없을 때, iOS는 `--spinon-*` 실행 인수가 없을 때 새 기본 route를 택한다. Android의 일반 시스템 extra와 false/null `spinon_*` 값은 기본 앱 진입을 막지 않는다. 기존 활성 fixture·실험 인수는 현재 route와 충돌 거부 동작을 유지한다.
 2. 기본 route는 bundle에서 실제 `index.html`/`root-app.js`를 읽고 두 파일을 일반 root HTML GPU host에 전달한다. native wrapper는 generic host create/eval/environment API를 호출하며 fixture 전용 C ABI, C12.4/C0412 fixture selector나 고정 HTML을 호출하지 않는다.
 3. surface bounds에서 CSS viewport `width/height`, device scale, 현재 OS color scheme을 계산한다. 첫 `eval` 전에 최초 환경을 적용한다. Android AVD 표면 크기 변경과 iPhone/iPad의 서로 다른 surface size 및 light/dark 전환에서 최신 revision을 다시 계산하며 이전 revision 장면을 게시하지 않는지 확인한다. CSS viewport는 실제 native content surface bounds를 기준으로 하고 OS 상태 막대·홈 표시 영역을 임의로 늘리지 않는다.
 4. root host에서 `root-app.js`를 실행하고 `data-runtime=ready`를 확인한 뒤에만 첫 render를 게시한다. 기존 DOM-only root document session은 같은 기본 route에서 중복 생성하지 않는다. `app.js` smoke session은 기존 의미와 로그를 유지한다.
