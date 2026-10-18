@@ -46,7 +46,8 @@ pub use cascade::{
     compute_runtime_flex_layout_cascade, compute_runtime_flex_paint_cascade,
     compute_runtime_flex_registered_properties_cascade_with_stylesheets,
     compute_runtime_flex_registered_properties_paint_cascade_with_stylesheets,
-    compute_runtime_incremental_cascade_with_stylesheets, compute_s04_flex_paint_cascade,
+    compute_runtime_incremental_cascade_with_stylesheets,
+    compute_runtime_root_html_block_paint_cascade_with_stylesheets, compute_s04_flex_paint_cascade,
     compute_supported_elements_ua_cascade, first_unsupported_runtime_block_display_inline_value,
     first_unsupported_runtime_block_display_stylesheet_value,
     first_unsupported_runtime_block_flex_grid_auto_placement_inline_property,
@@ -65,6 +66,7 @@ pub use cascade::{
     first_unsupported_runtime_custom_properties_paint_inline_property,
     first_unsupported_runtime_flex_paint_inline_property,
     first_unsupported_runtime_layout_inline_property,
+    first_unsupported_runtime_root_html_block_paint_inline_property,
     first_unsupported_runtime_root_html_inline_property,
 };
 pub use document::{StyloDocument, StyloDocumentView, StyloDomError};

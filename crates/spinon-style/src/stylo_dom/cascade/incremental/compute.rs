@@ -21,6 +21,7 @@ use super::super::{
     runtime_overflow::runtime_block_flex_overflow_clip_author_properties,
     runtime_paint::RUNTIME_BLOCK_IMAGE_AUTHOR_PROPERTIES,
     runtime_paint::RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES,
+    runtime_paint::RUNTIME_ROOT_HTML_BLOCK_PAINT_AUTHOR_PROPERTIES,
     runtime_scroll_gesture::runtime_block_flex_scroll_gesture_author_properties,
     runtime_stacking::runtime_block_flex_stacking_author_properties,
     s04,
@@ -40,6 +41,7 @@ use crate::{
 
 pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
     view: &StyloDocumentView,
+    additional_user_agent_stylesheets: &[StylesheetSource],
     author_stylesheets: &[StylesheetSource],
     viewport: CssViewport,
     style_revision: StyleRevision,
@@ -74,6 +76,14 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         origin: CssOrigin::UserAgent,
         css: UA_STYLESHEET.to_owned(),
     })?;
+    for source in additional_user_agent_stylesheets {
+        if source.origin != CssOrigin::UserAgent {
+            return Err(CssCascadeError::InvalidStylesheetOrigin {
+                id: source.id.clone(),
+            });
+        }
+        registry.append_with_stylo_preferences_held(source.clone())?;
+    }
     for source in author_stylesheets {
         if source.origin != CssOrigin::Author {
             return Err(CssCascadeError::InvalidStylesheetOrigin {
@@ -197,6 +207,9 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         ComputedStyleProfile::RuntimeBlockPaintV1 | ComputedStyleProfile::C19ComputedColorV1 => {
             Some(RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES)
         }
+        ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1 => {
+            Some(RUNTIME_ROOT_HTML_BLOCK_PAINT_AUTHOR_PROPERTIES)
+        }
         ComputedStyleProfile::RuntimeBlockImageV1 => Some(RUNTIME_BLOCK_IMAGE_AUTHOR_PROPERTIES),
         ComputedStyleProfile::RuntimeBlockFormattingV1 => {
             Some(super::runtime_paint::RUNTIME_BLOCK_FORMATTING_AUTHOR_PROPERTIES)
@@ -251,6 +264,11 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
                     )
                 }
             }),
+        ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1 => {
+            allowed_author_properties.and_then(|allowed| {
+                registry.first_unsupported_runtime_author_feature_with_media(allowed)
+            })
+        }
         ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => allowed_author_properties
             .and_then(|allowed| {
@@ -298,6 +316,16 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         return Err(CssCascadeError::UnsupportedAuthorCss {
             stylesheet_id,
             feature,
+        });
+    }
+    if profile == ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+        && let Some((stylesheet_id, diagnostic)) = registry.first_runtime_author_diagnostic()
+    {
+        return Err(CssCascadeError::AuthorStylesheetDiagnostic {
+            stylesheet_id,
+            line: diagnostic.line,
+            column: diagnostic.column,
+            message: diagnostic.message,
         });
     }
     if matches!(

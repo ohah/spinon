@@ -549,6 +549,140 @@ fn root_html_canvas_fails_closed_for_partial_alpha_and_background_images() {
     }
 }
 
+#[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
+#[test]
+fn c04_12_root_html_block_paint_fixture_matches_light_and_dark_geometry() {
+    const SOURCE: &str =
+        include_str!("../../../../tests/fixtures/css/c04/root-html-block-paint.html");
+    fn near(actual: f32, expected: f32) {
+        assert!(
+            (actual - expected).abs() <= 0.5,
+            "actual={actual} expected={expected}"
+        );
+    }
+
+    let (session, _) = RuntimeSession::new_runtime_gpu_root_html_block_paint_fixture(SOURCE)
+        .expect("C04.12 parsed root HTML fixture should initialize");
+    let mut media = spinon_style::CssMediaEnvironment::MOBILE;
+    media.color_scheme = spinon_style::CssColorScheme::Light;
+    let light_environment = session
+        .set_root_html_environment(320.0, 240.0, 1.0, media)
+        .expect("meta viewport should resolve to the 320 by 240 CSS viewport");
+    assert_eq!(light_environment.viewport_width_css_px, 320.0);
+    assert_eq!(light_environment.viewport_height_css_px, 240.0);
+
+    let light = session.wait_for_layout_snapshot(Duration::from_secs(5));
+    assert_eq!(light.state, super::RuntimeLayoutState::Ready, "{light:?}");
+    let light_completed = light.completed.expect("light layout should be complete");
+    assert_eq!(light.requested, Some(light_completed.key));
+    let expected = [
+        [0.0, 0.0, 320.0, 240.0],
+        [0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 320.0, 200.0],
+        [0.0, 0.0, 160.0, 32.0],
+        [0.0, 32.0, 320.0, 24.0],
+        [0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0],
+        [0.0, 32.0, 120.0, 24.0],
+    ];
+    assert_eq!(light_completed.frames.len(), expected.len());
+    for (frame, expected) in light_completed.frames.iter().zip(expected) {
+        for (actual, expected) in [frame.x, frame.y, frame.width, frame.height]
+            .into_iter()
+            .zip(expected)
+        {
+            near(actual, expected);
+        }
+    }
+    let light_scene = light_completed
+        .render_snapshot
+        .as_ref()
+        .expect("root HTML fixture should produce a render scene");
+    assert_eq!(light_scene.boxes().len(), 5);
+    assert!(matches!(
+        light_scene.boxes()[4].paint(),
+        spinon_render::RuntimePaint::Opaque(color)
+            if color == spinon_render::OpaqueCssSrgb::new(64, 160, 96)
+    ));
+
+    media.color_scheme = spinon_style::CssColorScheme::Dark;
+    let dark_environment = session
+        .set_root_html_environment(320.0, 240.0, 1.0, media)
+        .expect("dark scheme should update the parsed document environment");
+    let dark = session.wait_for_layout_snapshot(Duration::from_secs(5));
+    assert_eq!(dark.state, super::RuntimeLayoutState::Ready, "{dark:?}");
+    let dark_completed = dark.completed.expect("dark layout should be complete");
+    assert!(dark_completed.key.environment_revision > light_completed.key.environment_revision);
+    assert_eq!(
+        dark_completed.key.environment_revision,
+        dark_environment.environment_revision.get()
+    );
+    let dark_scene = dark_completed
+        .render_snapshot
+        .as_ref()
+        .expect("dark root HTML fixture should produce a render scene");
+    assert_eq!(dark_scene.boxes().len(), 5);
+    assert!(matches!(
+        dark_scene.boxes()[4].paint(),
+        spinon_render::RuntimePaint::Opaque(color)
+            if color == spinon_render::OpaqueCssSrgb::new(160, 92, 44)
+    ));
+}
+
+#[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
+#[test]
+fn c04_12_root_html_block_paint_rejects_visible_text_and_svg_but_ignores_hidden_text() {
+    fn run(source: &str) -> super::RuntimeLayoutSnapshot {
+        let (session, _) = RuntimeSession::new_runtime_gpu_root_html_block_paint_fixture(source)
+            .expect("valid HTML source should initialize the fixture session");
+        let mut media = spinon_style::CssMediaEnvironment::MOBILE;
+        media.color_scheme = spinon_style::CssColorScheme::Light;
+        session
+            .set_root_html_environment(320.0, 240.0, 1.0, media)
+            .expect("root HTML environment should resolve");
+        session.wait_for_layout_snapshot(Duration::from_secs(5))
+    }
+
+    let visible_text = run(
+        "<!doctype html><html><head><style>main{display:block;width:10px;height:10px}</style></head><body><main>visible text</main></body></html>",
+    );
+    assert_eq!(visible_text.state, super::RuntimeLayoutState::Failed);
+    assert_eq!(
+        visible_text.error.as_ref().map(|error| error.code),
+        Some("visible_root_html_text")
+    );
+
+    let visible_svg = run(
+        "<!doctype html><html><head><style>main{display:block;width:10px;height:10px}</style></head><body><svg></svg><main></main></body></html>",
+    );
+    assert_eq!(visible_svg.state, super::RuntimeLayoutState::Failed);
+    assert_eq!(
+        visible_svg.error.as_ref().map(|error| error.code),
+        Some("unsupported_visible_root_html_element")
+    );
+
+    let hidden_text = run(
+        "<!doctype html><html><head><style>#hidden{display:none}main{display:block;width:10px;height:10px;background-color:#3366ff}</style></head><body><div id='hidden'>hidden text</div><main></main></body></html>",
+    );
+    assert_eq!(
+        hidden_text.state,
+        super::RuntimeLayoutState::Ready,
+        "{hidden_text:?}"
+    );
+    assert_eq!(
+        hidden_text
+            .completed
+            .as_ref()
+            .and_then(|completed| completed.render_snapshot.as_ref())
+            .map(|scene| scene.boxes().len()),
+        Some(3)
+    );
+}
+
 fn eval(session: &RuntimeSession, source: &str) -> super::OperationResponse {
     session.eval(source, TaskPriority::UserVisible)
 }

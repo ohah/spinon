@@ -5,6 +5,55 @@ use spinon_render_wgpu::{RuntimeRenderer, RuntimeRendererError};
 use super::{ERR_ARGUMENT, ERR_LAYOUT, ERR_STALE, RuntimeGpuHost, lock};
 
 impl RuntimeGpuHost {
+    #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
+    fn root_html_block_paint_surface_samples(
+        viewport: spinon_render::CssSize,
+        surface_width_px: u32,
+        surface_height_px: u32,
+    ) -> Result<Vec<(u32, u32)>, String> {
+        const CSS_POINTS: [(u32, u32); 5] = [(10, 10), (10, 40), (10, 60), (200, 40), (10, 210)];
+        if surface_width_px == 0 || surface_height_px == 0 {
+            return Err("C04.12 surface pixel 표면 크기가 0입니다".to_owned());
+        }
+        let viewport_width = f64::from(viewport.width());
+        let viewport_height = f64::from(viewport.height());
+        if !viewport_width.is_finite()
+            || viewport_width <= 0.0
+            || !viewport_height.is_finite()
+            || viewport_height <= 0.0
+        {
+            return Err("C04.12 surface pixel CSS viewport가 유효하지 않습니다".to_owned());
+        }
+        let mut points = Vec::new();
+        points
+            .try_reserve_exact(CSS_POINTS.len())
+            .map_err(|_| "C04.12 surface pixel 표본 목록을 할당하지 못했습니다".to_owned())?;
+        for (x_css_px, y_css_px) in CSS_POINTS {
+            if f64::from(x_css_px) + 0.5 >= viewport_width
+                || f64::from(y_css_px) + 0.5 >= viewport_height
+            {
+                return Err(format!(
+                    "C04.12 surface pixel CSS 표본이 viewport 밖입니다: {x_css_px},{y_css_px}"
+                ));
+            }
+            let x = ((f64::from(x_css_px) + 0.5) * f64::from(surface_width_px) / viewport_width)
+                .floor();
+            let y = ((f64::from(y_css_px) + 0.5) * f64::from(surface_height_px) / viewport_height)
+                .floor();
+            if x < 0.0
+                || y < 0.0
+                || x >= f64::from(surface_width_px)
+                || y >= f64::from(surface_height_px)
+            {
+                return Err(format!(
+                    "C04.12 surface pixel 표본이 drawable 밖입니다: {x},{y}"
+                ));
+            }
+            points.push((x as u32, y as u32));
+        }
+        Ok(points)
+    }
+
     #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
     pub(super) fn readback_c19_2_offscreen_samples(
         &self,
@@ -36,7 +85,53 @@ impl RuntimeGpuHost {
                 "runtime GPU renderer가 이미 생성되었습니다",
             ));
         }
-        #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+        #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
+        let (renderer, report) = if self.root_html_block_paint_fixture {
+            let (renderer, report) =
+                unsafe { RuntimeRenderer::new_android(native_window, width, height, backend) }?;
+            (
+                renderer,
+                format!("{report} surface_pixel_readback_path=AndroidPixelCopy"),
+            )
+        } else {
+            #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
+            let result = if self.c19_2_android_surface_readback_test {
+                match unsafe {
+                    RuntimeRenderer::new_android_with_copy_src(
+                        native_window,
+                        width,
+                        height,
+                        backend,
+                        true,
+                    )
+                } {
+                    Ok((renderer, report)) => {
+                        (renderer, format!("{report} surface_copy_src=enabled"))
+                    }
+                    Err(readback_error) => {
+                        let (renderer, report) = unsafe {
+                            RuntimeRenderer::new_android(native_window, width, height, backend)
+                        }?;
+                        (
+                            renderer,
+                            format!(
+                                "{report} surface_copy_src=unavailable reason={readback_error}"
+                            ),
+                        )
+                    }
+                }
+            } else {
+                unsafe { RuntimeRenderer::new_android(native_window, width, height, backend) }?
+            };
+            #[cfg(not(feature = "c19-2-box-paint-opacity-fixture-test"))]
+            let result =
+                unsafe { RuntimeRenderer::new_android(native_window, width, height, backend) }?;
+            result
+        };
+        #[cfg(all(
+            not(feature = "c04-12-root-html-block-paint-fixture-test"),
+            feature = "c19-2-box-paint-opacity-fixture-test"
+        ))]
         let (renderer, report) = if self.c19_2_android_surface_readback_test {
             match unsafe {
                 RuntimeRenderer::new_android_with_copy_src(
@@ -61,7 +156,10 @@ impl RuntimeGpuHost {
         } else {
             unsafe { RuntimeRenderer::new_android(native_window, width, height, backend) }?
         };
-        #[cfg(not(feature = "c19-2-box-paint-opacity-fixture-test"))]
+        #[cfg(not(any(
+            feature = "c04-12-root-html-block-paint-fixture-test",
+            feature = "c19-2-box-paint-opacity-fixture-test"
+        )))]
         let (renderer, report) =
             unsafe { RuntimeRenderer::new_android(native_window, width, height, backend) }?;
         *renderer_slot = Some(renderer);
@@ -197,6 +295,25 @@ impl RuntimeGpuHost {
         let renderer = renderer_slot
             .as_mut()
             .ok_or_else(|| (ERR_LAYOUT, "runtime GPU renderer가 없습니다".to_owned()))?;
+        #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
+        let mut root_html_block_paint_sample_points = None;
+        #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
+        if self.root_html_block_paint_fixture
+            && let Some(snapshot) = snapshot
+        {
+            let (surface_width_px, surface_height_px) = renderer.surface_dimensions();
+            let points = Self::root_html_block_paint_surface_samples(
+                snapshot.viewport_css_px(),
+                surface_width_px,
+                surface_height_px,
+            )
+            .map_err(|error| (ERR_ARGUMENT, error))?;
+            #[cfg(target_os = "ios")]
+            renderer
+                .request_surface_pixel_readback_for_test(&points)
+                .map_err(|error| (ERR_LAYOUT, error.to_string()))?;
+            root_html_block_paint_sample_points = Some(points);
+        }
         let presented = renderer
             .draw_if(snapshot, || self.presentation_sequence() == sequence)
             .map_err(|error| (ERR_LAYOUT, error.to_string()))?;
@@ -277,6 +394,15 @@ impl RuntimeGpuHost {
                 .map_err(|error| (ERR_LAYOUT, format!("surface pixel JSON 변환 실패: {error}")))?;
             report.push_str(&format!(" surface_pixel_samples_json={sample_json}"));
         }
+        #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
+        if let Some(points) = root_html_block_paint_sample_points {
+            let encoded_points = points
+                .iter()
+                .map(|(x, y)| format!("{x},{y}"))
+                .collect::<Vec<_>>()
+                .join(";");
+            report.push_str(&format!(" root_html_sample_surface_xy={encoded_points}"));
+        }
         Ok(report)
     }
 
@@ -328,5 +454,34 @@ impl RuntimeGpuHost {
         drop(renderer);
         drop(pending);
         Ok(())
+    }
+}
+
+#[cfg(all(test, feature = "c04-12-root-html-block-paint-fixture-test"))]
+mod root_html_block_paint_readback_tests {
+    use super::RuntimeGpuHost;
+
+    #[test]
+    fn css_pixel_centers_map_to_each_surface_axis_without_a_fixed_dpr() {
+        let viewport = spinon_render::CssSize::new(320.0, 240.0).unwrap();
+        assert_eq!(
+            RuntimeGpuHost::root_html_block_paint_surface_samples(viewport, 840, 630).unwrap(),
+            [(27, 27), (27, 106), (27, 158), (526, 106), (27, 552)]
+        );
+        assert_eq!(
+            RuntimeGpuHost::root_html_block_paint_surface_samples(viewport, 960, 720).unwrap(),
+            [(31, 31), (31, 121), (31, 181), (601, 121), (31, 631)]
+        );
+    }
+
+    #[test]
+    fn invalid_surface_and_outside_css_samples_fail_closed() {
+        let viewport = spinon_render::CssSize::new(320.0, 240.0).unwrap();
+        assert!(RuntimeGpuHost::root_html_block_paint_surface_samples(viewport, 0, 720).is_err());
+        let short_viewport = spinon_render::CssSize::new(200.0, 200.0).unwrap();
+        assert!(
+            RuntimeGpuHost::root_html_block_paint_surface_samples(short_viewport, 600, 600)
+                .is_err()
+        );
     }
 }

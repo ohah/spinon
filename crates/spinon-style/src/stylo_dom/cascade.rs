@@ -68,11 +68,13 @@ pub use runtime_paint::{
     compute_runtime_flex_custom_properties_paint_cascade_with_stylesheets,
     compute_runtime_flex_paint_cascade,
     compute_runtime_flex_registered_properties_paint_cascade_with_stylesheets,
+    compute_runtime_root_html_block_paint_cascade_with_stylesheets,
     first_unsupported_runtime_block_formatting_inline_property,
     first_unsupported_runtime_block_image_inline_property,
     first_unsupported_runtime_block_paint_inline_property,
     first_unsupported_runtime_block_positioning_inline_property,
     first_unsupported_runtime_flex_paint_inline_property,
+    first_unsupported_runtime_root_html_block_paint_inline_property,
 };
 pub use runtime_scroll_gesture::{
     compute_runtime_block_flex_scroll_gesture_cascade_with_stylesheets,
@@ -547,8 +549,29 @@ fn compute_cascade(
     properties: &[(&str, LonghandId)],
     profile: ComputedStyleProfile,
 ) -> Result<ComputedStyleSnapshot, CssCascadeError> {
+    compute_cascade_with_additional_user_agent_stylesheets(
+        view,
+        &[],
+        author_stylesheets,
+        viewport,
+        style_revision,
+        properties,
+        profile,
+    )
+}
+
+fn compute_cascade_with_additional_user_agent_stylesheets(
+    view: &StyloDocumentView,
+    additional_user_agent_stylesheets: &[StylesheetSource],
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+    properties: &[(&str, LonghandId)],
+    profile: ComputedStyleProfile,
+) -> Result<ComputedStyleSnapshot, CssCascadeError> {
     incremental::compute_cascade_with_reuse(
         view,
+        additional_user_agent_stylesheets,
         author_stylesheets,
         viewport,
         style_revision,

@@ -1,0 +1,58 @@
+   Compiling foldhash v0.2.0
+   Compiling once_cell v1.21.4
+   Compiling bytemuck_derive v1.12.1
+   Compiling memmap2 v0.9.11
+   Compiling version_check v0.9.5
+   Compiling parlance v0.1.1
+   Compiling linebender_resource_handle v0.1.1
+   Compiling parley_emoji v0.12.0
+   Compiling zeno v0.3.3
+   Compiling yazi v0.2.1
+   Compiling parley_data v0.12.0
+   Compiling tendril v0.5.1
+   Compiling memchr v2.8.3
+   Compiling spinon-render v0.1.0 (/private/tmp/spinon-c04-12-root-html-block-paint-impl-20261018/crates/spinon-render)
+   Compiling hashbrown v0.17.1
+   Compiling slotmap v1.1.1
+   Compiling markup5ever v0.40.0
+   Compiling serde_json v1.0.151
+   Compiling html5ever v0.40.1
+   Compiling indexmap v2.14.2
+   Compiling bytemuck v1.25.2
+   Compiling stylo v0.22.0
+   Compiling taffy v0.14.0
+   Compiling font-types v0.12.7
+   Compiling read-fonts v0.41.0
+   Compiling skrifa v0.44.0
+   Compiling fontique v0.12.0
+   Compiling harfrust v0.12.0
+   Compiling swash v0.2.10
+   Compiling parley_engine v0.12.0
+   Compiling parley v0.12.0
+   Compiling spinon-text-layout v0.1.0 (/private/tmp/spinon-c04-12-root-html-block-paint-impl-20261018/crates/spinon-text-layout)
+   Compiling spinon-layout v0.1.0 (/private/tmp/spinon-c04-12-root-html-block-paint-impl-20261018/crates/spinon-layout)
+   Compiling spinon-style v0.1.0 (/private/tmp/spinon-c04-12-root-html-block-paint-impl-20261018/crates/spinon-style)
+   Compiling spinon-style-to-layout v0.1.0 (/private/tmp/spinon-c04-12-root-html-block-paint-impl-20261018/crates/spinon-style-to-layout)
+   Compiling spinon-style-to-render v0.1.0 (/private/tmp/spinon-c04-12-root-html-block-paint-impl-20261018/crates/spinon-style-to-render)
+   Compiling spinon-runtime v0.1.0 (/private/tmp/spinon-c04-12-root-html-block-paint-impl-20261018/crates/spinon-runtime)
+    Finished `test` profile [unoptimized] target(s) in 14.11s
+     Running unittests src/lib.rs (/Volumes/ZTSBuild/out/spinon-c04-12-root-html-block-paint-impl-20261018/target/debug/deps/spinon_runtime-542e19c5de096296)
+
+running 2 tests
+test session::tests::c04_12_root_html_block_paint_rejects_visible_text_and_svg_but_ignores_hidden_text ... ok
+test session::tests::c04_12_root_html_block_paint_fixture_matches_light_and_dark_geometry ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 185 filtered out; finished in 0.01s
+
+     Running tests/priority_policy_comparison.rs (/Volumes/ZTSBuild/out/spinon-c04-12-root-html-block-paint-impl-20261018/target/debug/deps/priority_policy_comparison-f294488339f09d9b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (/Volumes/ZTSBuild/out/spinon-c04-12-root-html-block-paint-impl-20261018/target/debug/deps/s03_node_lifecycle_contract-65d476d9859fdef2)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s
+

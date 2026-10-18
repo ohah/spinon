@@ -143,6 +143,8 @@ enum RuntimeCssProfile {
     RuntimeGpu,
     RegisteredPropertiesFixture,
     BlockPaintFixture,
+    #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
+    RootHtmlBlockPaintFixture,
     BlockImageFixture,
     BlockFormattingFixture,
     BlockPositioningFixture,
@@ -333,6 +335,20 @@ impl RuntimeSession {
         )
     }
 
+    /// 고정 문서형 Block paint fixture 전용 runtime을 만듭니다.
+    #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
+    pub fn new_runtime_gpu_root_html_block_paint_fixture(
+        source: &str,
+    ) -> Result<(Self, String), String> {
+        let parsed = ParsedRootHtml::parse(source)?;
+        let environment = RootHtmlEnvironmentMetadata::from_document(&parsed);
+        Self::new_with_css_profile_and_root_html(
+            RuntimeCssProfile::RootHtmlBlockPaintFixture,
+            Some(parsed),
+            Some(environment),
+        )
+    }
+
     /// C04.10 내부 GPU renderer 전용 Flex paint profile로 런타임을 만듭니다.
     pub fn new_runtime_gpu() -> Result<(Self, String), String> {
         Self::new_with_css_profile(RuntimeCssProfile::RuntimeGpu)
@@ -433,6 +449,10 @@ impl RuntimeSession {
             }
             RuntimeCssProfile::BlockPaintFixture => {
                 RuntimeUaCascadeCoordinator::new_runtime_gpu_block_paint()?
+            }
+            #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
+            RuntimeCssProfile::RootHtmlBlockPaintFixture => {
+                RuntimeUaCascadeCoordinator::new_runtime_gpu_root_html_block_paint()?
             }
             RuntimeCssProfile::BlockImageFixture => {
                 RuntimeUaCascadeCoordinator::new_runtime_gpu_block_image()?

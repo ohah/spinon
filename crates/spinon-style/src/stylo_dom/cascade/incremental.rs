@@ -144,6 +144,7 @@ pub fn compute_runtime_incremental_cascade_with_stylesheets(
 
     compute_cascade_with_reuse(
         view,
+        &[],
         author_stylesheets,
         viewport,
         style_revision,
@@ -168,6 +169,9 @@ fn runtime_properties_for_profile(
 ) -> Option<Vec<(&'static str, LonghandId)>> {
     if profile == ComputedStyleProfile::RuntimeBlockPaintV1 {
         return Some(runtime_paint::runtime_block_paint_properties());
+    }
+    if profile == ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1 {
+        return Some(runtime_paint::runtime_root_html_block_paint_properties());
     }
     if profile == ComputedStyleProfile::RuntimeBlockImageV1 {
         return Some(runtime_paint::runtime_block_image_properties());
@@ -249,6 +253,7 @@ fn is_runtime_layout_profile(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
+            | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
             | ComputedStyleProfile::RuntimeBlockImageV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1

@@ -225,6 +225,32 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateBlockPaintHost(
 }
 
 extern "C" JNIEXPORT jlong JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateRootHtmlBlockPaintHost(
+    JNIEnv *, jclass) {
+#if defined(SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_root_html_block_paint_fixture(
+          output.data(), output.size());
+  if (host == nullptr) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C0412_ROOT_HTML_BLOCK_PAINT_HOST_ERROR=%s",
+                        output.data());
+    return 0;
+  }
+  __android_log_print(ANDROID_LOG_INFO, kTag,
+                      "SPINON_C0412_ROOT_HTML_BLOCK_PAINT_HOST=%s",
+                      output.data());
+  return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
+#else
+  __android_log_print(ANDROID_LOG_ERROR, kTag,
+                      "SPINON_C0412_ROOT_HTML_BLOCK_PAINT_DISABLED");
+  return 0;
+#endif
+}
+
+extern "C" JNIEXPORT jlong JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateBlockFormattingHost(
     JNIEnv *, jclass) {
   std::array<char, 1024> output{};
@@ -1017,6 +1043,27 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalBlockPaintFixture(
   __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
                       kTag, "SPINON_C08_EVAL %s", report.c_str());
   return ToByteArray(env, report);
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalRootHtmlBlockPaintFixture(
+    JNIEnv *env, jclass, jlong host_handle) {
+#if defined(SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_root_html_block_paint_fixture(
+      host, 10000, output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_C0412_ROOT_HTML_BLOCK_PAINT_EVAL %s",
+                      report.c_str());
+  return ToByteArray(env, report);
+#else
+  return ToByteArray(env,
+      "status=-90 C04.12 root HTML Block paint fixture 빌드가 비활성화되었습니다");
+#endif
 }
 
 extern "C" JNIEXPORT jbyteArray JNICALL

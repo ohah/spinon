@@ -377,6 +377,11 @@ impl RuntimeRenderer {
         self.last_surface_texture_size
     }
 
+    #[doc(hidden)]
+    pub fn surface_dimensions(&self) -> (u32, u32) {
+        (self.config.width, self.config.height)
+    }
+
     pub fn last_image_draw_count(&self) -> usize {
         self.last_image_draw_count
     }

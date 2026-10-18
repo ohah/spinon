@@ -31,6 +31,7 @@ pub fn build_runtime_render_snapshot(
             | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
+            | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
             | ComputedStyleProfile::RuntimeBlockImageV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
@@ -50,7 +51,7 @@ pub fn build_runtime_render_snapshot(
     validate_revisions(document, styles, output.layout.revision, current)?;
 
     let styles_by_node = indexed_styles(styles)?;
-    let order = runtime_document_order(document, root, &styles_by_node)?;
+    let order = runtime_document_order(document, root, &styles_by_node, styles.profile)?;
     validate_style_node_set(&order.document_nodes, &styles_by_node)?;
     validate_layout_node_set(&order.document_nodes, &output.layout.frames)?;
 
@@ -161,6 +162,7 @@ fn runtime_document_order(
     document: &HostDocumentSnapshot,
     root: HostNodeHandle,
     styles: &std::collections::BTreeMap<NodeId, &spinon_style::ComputedElementStyle>,
+    profile: ComputedStyleProfile,
 ) -> Result<RuntimeDocumentOrder, StyleRenderError> {
     if document.parent(root) != Some(spinon_core::HostParent::Root)
         || !document
@@ -180,8 +182,11 @@ fn runtime_document_order(
             return Err(StyleRenderError::DuplicateDocumentNode(handle.id()));
         }
         let node = document.node(handle).ok_or(StyleRenderError::InvalidRoot)?;
-        if matches!(node.kind(), spinon_core::HostNodeKind::Text(_)) {
-            if ancestor_hidden {
+        if let spinon_core::HostNodeKind::Text(text) = node.kind() {
+            if ancestor_hidden
+                || (profile == ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+                    && text.to_string_lossy().trim().is_empty())
+            {
                 continue;
             }
             return Err(StyleRenderError::UnsupportedTextNode(node.id()));

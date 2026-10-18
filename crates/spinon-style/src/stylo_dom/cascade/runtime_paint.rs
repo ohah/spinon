@@ -2,7 +2,7 @@ use spinon_core::{NodeId, StyleRevision};
 use style::properties::{ComputedValues, LonghandId, PropertyDeclarationId};
 
 use crate::{
-    ComputedBackgroundPaint, ComputedBorderPaint, ComputedCssColor, ComputedSrgbColor,
+    ComputedBackgroundPaint, ComputedBorderPaint, ComputedCssColor, ComputedSrgbColor, CssOrigin,
     OpaqueCssSrgb, StylesheetSource,
 };
 
@@ -30,6 +30,26 @@ pub(super) const RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES: &[&str] = &[
     "font-size",
     "font-family",
 ];
+
+pub(super) const RUNTIME_ROOT_HTML_BLOCK_PAINT_AUTHOR_PROPERTIES: &[&str] = &[
+    "display",
+    "box-sizing",
+    "width",
+    "height",
+    "margin",
+    "margin-top",
+    "margin-right",
+    "margin-bottom",
+    "margin-left",
+    "background-color",
+    "color-scheme",
+];
+
+const ROOT_HTML_BLOCK_PAINT_UA_STYLESHEET: &str = r#"
+@namespace "http://www.w3.org/1999/xhtml";
+html, body, main { display: block; }
+head, meta, title, link, script, style { display: none; }
+"#;
 
 pub(super) const RUNTIME_BLOCK_IMAGE_AUTHOR_PROPERTIES: &[&str] = &[
     "display",
@@ -157,6 +177,12 @@ pub(super) fn runtime_block_paint_properties() -> Vec<(&'static str, LonghandId)
     properties
 }
 
+pub(super) fn runtime_root_html_block_paint_properties() -> Vec<(&'static str, LonghandId)> {
+    let mut properties = runtime_block_paint_properties();
+    properties.push(("color-scheme", LonghandId::ColorScheme));
+    properties
+}
+
 pub(super) fn runtime_block_image_properties() -> Vec<(&'static str, LonghandId)> {
     let mut properties = runtime_block_paint_properties();
     properties.extend([
@@ -204,6 +230,7 @@ pub(super) fn computed_background_for_profile(
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
         | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
         | ComputedStyleProfile::RuntimeBlockPaintV1
+        | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
         | ComputedStyleProfile::RuntimeBlockImageV1
         | ComputedStyleProfile::RuntimeBlockFormattingV1
         | ComputedStyleProfile::RuntimeBlockPositioningV1
@@ -222,6 +249,9 @@ pub(super) fn computed_background_for_profile(
                 }
                 ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1 => {
                     computed_root_html_background_paint(computed, node)?
+                }
+                ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1 => {
+                    computed_root_html_block_background_paint(computed, node)?
                 }
                 _ => computed_runtime_background_paint(computed, node)?,
             };
@@ -300,6 +330,31 @@ pub fn compute_runtime_block_paint_cascade_with_stylesheets(
         style_revision,
         &properties,
         ComputedStyleProfile::RuntimeBlockPaintV1,
+    )
+}
+
+/// C04.12의 parsed root HTML document를 제한 Block paint profile로 계산합니다.
+pub fn compute_runtime_root_html_block_paint_cascade_with_stylesheets(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
+    let properties = runtime_root_html_block_paint_properties();
+    let user_agent_stylesheets = [StylesheetSource {
+        id: "ua:root-html-block-paint-v0".to_owned(),
+        base_url: "https://spinon.invalid/ua/root-html-block-paint-v0.css".to_owned(),
+        origin: CssOrigin::UserAgent,
+        css: ROOT_HTML_BLOCK_PAINT_UA_STYLESHEET.to_owned(),
+    }];
+    super::compute_cascade_with_additional_user_agent_stylesheets(
+        view,
+        &user_agent_stylesheets,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        &properties,
+        ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1,
     )
 }
 
@@ -547,6 +602,20 @@ fn computed_root_html_background_paint(
     }))
 }
 
+fn computed_root_html_block_background_paint(
+    computed: &ComputedValues,
+    node: NodeId,
+) -> Result<ComputedBackgroundPaint, CssCascadeError> {
+    let paint = computed_root_html_background_paint(computed, node)?;
+    if matches!(paint, ComputedBackgroundPaint::Translucent(_)) {
+        return Err(CssCascadeError::UnsupportedComputedBackgroundColor {
+            node,
+            reason: "root HTML Block paint는 부분 alpha를 지원하지 않습니다".to_owned(),
+        });
+    }
+    Ok(paint)
+}
+
 pub(super) fn computed_c19_runtime_background_paint(
     computed: &ComputedValues,
     node: NodeId,
@@ -683,6 +752,14 @@ pub fn first_unsupported_runtime_block_paint_inline_property(
 ) -> Option<(NodeId, String)> {
     super::runtime_layout::first_unsupported_inline_property(view, |property| {
         RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES.contains(&property)
+    })
+}
+
+pub fn first_unsupported_runtime_root_html_block_paint_inline_property(
+    view: &StyloDocumentView,
+) -> Option<(NodeId, String)> {
+    super::runtime_layout::first_unsupported_inline_property(view, |property| {
+        RUNTIME_ROOT_HTML_BLOCK_PAINT_AUTHOR_PROPERTIES.contains(&property)
     })
 }
 
