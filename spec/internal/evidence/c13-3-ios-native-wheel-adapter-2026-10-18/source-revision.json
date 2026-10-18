@@ -2,7 +2,7 @@
   "repository": "ohah/spinon",
   "branch": "feat/c13-3-ios-native-wheel-runtime-20261018",
   "base_revision": "2e73f8bc3805a856577d4a1d8e3e915c9ea9e538",
-  "source_commit": "pending-commit",
+  "source_commit": "35663dcd26a0c3995db6d3ec8479d9beb949428d",
   "source_sha256": {
     "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "28424d0db37d7b11a4babbbf0385f7a39c683561d73d4d6ca63b053e70745590",
     "tools/css-reference/c13-3-ios-native-wheel-adapter.test.mjs": "b34840a1b1b1a306d3782af3f18b8ce3863265ca5ebafea700322416f0bd8c6d"
