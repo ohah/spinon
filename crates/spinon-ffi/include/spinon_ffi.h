@@ -176,8 +176,8 @@ int32_t spinon_runtime_session_set_root_html_environment(
    순으로 canvas RGBA8과 revision key를 반환합니다. 선택되는 배경 후보의 alpha 0은 투명으로
    처리하고, 불투명 색은 정확히 바이트로 표현되는 sRGB만 지원합니다. system color, 다른 색
    공간, fractional channel, 선택 후보의 partial alpha 및 image는 지원하지 않습니다.
-   UI thread에서 호출하지 마세요. timeout은 0~60,000ms이며 root meta 중복
-   중복 -13, cascade timeout -10, stale snapshot -12, root/style 누락 -11, 미지원 computed
+   UI thread에서 호출하지 마세요. timeout은 0~60,000ms이며 root meta 중복 -13, cascade
+   timeout -10, stale snapshot -12, root/style 누락 -11, 미지원 computed
    scheme -14, unsupported computed background color -15를 반환합니다. 그 밖의
    입력·환경 오류 -1, worker/cascade 오류 -7, 종료 중 -6입니다. 실패 시 output은 쓰지
    않습니다. 출력·세션 해제와 병행 호출하지 마세요. */
