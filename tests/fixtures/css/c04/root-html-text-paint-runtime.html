@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Root HTML text paint oracle</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      display: block;
+      width: 320px;
+      height: 240px;
+      background-color: #f7f9fc;
+    }
+    body {
+      display: block;
+      width: 320px;
+      height: 20px;
+      background-color: transparent;
+    }
+    main {
+      display: block;
+      width: 320px;
+      height: 20px;
+      background-color: transparent;
+    }
+    .sample {
+      display: block;
+      width: 15px;
+      margin: 0;
+      padding: 0;
+      color: #092170;
+      font-family: Ahem;
+      font-size: 10px;
+      line-height: 10px;
+      white-space: normal;
+      overflow: visible;
+    }
+    #hidden {
+      overflow: hidden;
+    }
+    #not-rendered {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <main id="stage">
+    <div id="visible" class="sample">XX</div>
+    <div id="hidden" class="sample">XX</div>
+    <div id="not-rendered" class="sample">HIDDEN</div>
+  </main>
+</body>
+</html>
