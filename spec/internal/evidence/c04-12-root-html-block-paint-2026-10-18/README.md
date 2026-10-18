@@ -57,4 +57,4 @@ iPhone 17 Pro Simulator (`iPhone18,1`), WGPU Metal `Bgra8Unorm`, 표면 `960×72
 
 위 Android/iOS opt-in 앱 빌드와 네 Simulator 캡처는 마지막 Rust 색상 경계 보강 전에 생성했다. 수정은 새 profile을 기존 root HTML 색 공간 변환기에 연결하고 부분 alpha를 거부한다. 고정 fixture는 불투명 8-bit sRGB만 사용하므로 캡처의 성공 경로 입력은 그대로다. 수정 뒤 `spinon-style` 180개 전체 테스트와 `spinon-runtime` 집중 테스트 2개가 통과했다. 수정 후 Android/iOS native 재빌드와 재캡처는 하지 않았다.
 
-구현 검토는 [서로 다른 실패 관점 20개](../c04-12-root-html-block-paint-implementation-review-20-2026-10-18.md)다. PR 변경분은 병합 전 별도 30개 관점으로 검토한다. C04.12 전체, 일반 HTML layout/paint, text rendering, 실기기, hardware GPU, compositor 이후 픽셀은 범위 밖이다.
+구현 검토는 [서로 다른 실패 관점 20개](../c04-12-root-html-block-paint-implementation-review-20-2026-10-18.md)다. 별도 [PR diff 검토](../c04-12-root-html-block-paint-pr-diff-review-30-2026-10-18.md)에서 Unicode whitespace 누락을 찾아 수정했다. core 단위 테스트는 통과했지만 수정 후 runtime 회귀 테스트는 디스크 여유 부족으로 완료하지 못했다. C04.12 전체, 일반 HTML layout/paint, text rendering, 실기기, hardware GPU, compositor 이후 픽셀은 범위 밖이다.

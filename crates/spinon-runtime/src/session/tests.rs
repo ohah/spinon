@@ -681,6 +681,30 @@ fn c04_12_root_html_block_paint_rejects_visible_text_and_svg_but_ignores_hidden_
             .map(|scene| scene.boxes().len()),
         Some(3)
     );
+
+    let collapsible_whitespace = run(
+        "<!doctype html>\n<html>\n<head><style>body{margin:0}main{display:block;width:10px;height:10px}</style></head>\n<body>\n<main> \t\n\u{000c}\r </main>\n</body>\n</html>",
+    );
+    assert_eq!(
+        collapsible_whitespace.state,
+        super::RuntimeLayoutState::Ready,
+        "ASCII collapsible HTML whitespace should not create a box"
+    );
+
+    let non_collapsible_unicode_whitespace = run(
+        "<!doctype html><html><head><style>body{margin:0}main{display:block;width:10px;height:10px}</style></head><body><main>\u{2003}</main></body></html>",
+    );
+    assert_eq!(
+        non_collapsible_unicode_whitespace.state,
+        super::RuntimeLayoutState::Failed
+    );
+    assert_eq!(
+        non_collapsible_unicode_whitespace
+            .error
+            .as_ref()
+            .map(|error| error.code),
+        Some("visible_root_html_text")
+    );
 }
 
 fn eval(session: &RuntimeSession, source: &str) -> super::OperationResponse {

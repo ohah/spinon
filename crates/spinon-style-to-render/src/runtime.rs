@@ -185,7 +185,7 @@ fn runtime_document_order(
         if let spinon_core::HostNodeKind::Text(text) = node.kind() {
             if ancestor_hidden
                 || (profile == ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
-                    && text.to_string_lossy().trim().is_empty())
+                    && text.is_only_collapsible_html_whitespace())
             {
                 continue;
             }

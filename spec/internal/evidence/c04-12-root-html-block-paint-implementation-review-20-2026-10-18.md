@@ -28,3 +28,7 @@
 ## 판정
 
 색 경계 수정 뒤 `spinon-style` 180/180, opt-in `spinon-runtime` 집중 테스트 2/2, `cargo fmt --all -- --check`, `git diff --check`가 통과했다. 이 수정 뒤 Android/iOS 앱을 다시 빌드하거나 캡처하지 않았다. 기록된 고정 fixture는 opaque 8-bit sRGB라 성공 경로 입력은 바뀌지 않지만, 그 한계를 PR 본문과 실행 근거에 그대로 표시한다.
+
+### PR diff에서 발견한 whitespace 경계 재확인
+
+이후 별도 PR diff 검토에서 `str::trim()`이 CSS에서 접히지 않는 U+00A0/U+2003까지 제거할 수 있음을 찾았다. 입력 판정을 `DomString::is_only_collapsible_html_whitespace`로 바꾸고 hidden-text 처리, HostDocument layout 입력, render 순서, tree validator의 관점을 다시 확인했다. core 단위 테스트는 ASCII 접이 공백을 허용하고 NBSP·U+2003를 구분해 1/1 통과했다. 새 runtime 통합 회귀 테스트는 추가했으나 수정 뒤 실행은 디스크 여유 공간 문제로 완료하지 못했다. PR diff review 근거는 [별도 기록](c04-12-root-html-block-paint-pr-diff-review-30-2026-10-18.md)에 있다.

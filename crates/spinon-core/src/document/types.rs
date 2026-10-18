@@ -90,8 +90,29 @@ impl DomString {
         String::from_utf16_lossy(&self.0)
     }
 
+    /// CSS `white-space: normal`에서 접히는 HTML 공백만 포함하는지 반환합니다.
+    pub fn is_only_collapsible_html_whitespace(&self) -> bool {
+        self.0
+            .iter()
+            .all(|unit| matches!(*unit, 0x0009 | 0x000a | 0x000c | 0x000d | 0x0020))
+    }
+
     pub(super) fn append(&mut self, other: &Self) {
         self.0.extend_from_slice(&other.0);
+    }
+}
+
+#[cfg(test)]
+mod dom_string_tests {
+    use super::DomString;
+
+    #[test]
+    fn collapsible_html_whitespace_uses_the_css_ascii_set() {
+        assert!(DomString::from(" \t\n\r\u{000c}").is_only_collapsible_html_whitespace());
+        assert!(DomString::from("").is_only_collapsible_html_whitespace());
+        assert!(!DomString::from("\u{00a0}").is_only_collapsible_html_whitespace());
+        assert!(!DomString::from("\u{2003}").is_only_collapsible_html_whitespace());
+        assert!(!DomString::from("x ").is_only_collapsible_html_whitespace());
     }
 }
 
