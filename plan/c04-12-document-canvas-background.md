@@ -1,7 +1,7 @@
 # C04.12 후속 · 루트 HTML 문서 배경
 
 **상위 계획:** [앱 루트 HTML과 문서 환경 metadata](c04-root-html-document-environment.md) · [내부 계약 0077](../spec/internal/0077-c04-12-root-html-document.md)
-**상태:** Chrome 사전 비교 완료 · 구현 중 · C04.12 전체 미완료
+**상태:** Chrome 사전 비교 완료 · Canvas 배경 하위 구현과 AVD·iOS Simulator 검증 PR #309 병합 · C04.12 전체 미완료
 
 ## 목표와 제한 범위
 
