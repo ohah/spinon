@@ -60,3 +60,4 @@
 - 전체 관련 크레이트 테스트: runtime 182 passed / 3 ignored, style 179 passed; runtime integration target은 3 passed 및 16 passed. 원본은 [cargo-test.log](cargo-test.log).
 - `cargo clippy -p spinon-style -p spinon-runtime --locked --all-targets -- -D warnings` 통과. 최종 원본은 [cargo-clippy.log](cargo-clippy.log).
 - iOS build와 cargo test의 끝 공백이 제거된 읽기용 로그를 제공한다. 원래 명령 stdout/stderr의 byte-for-byte 사본은 [iOS build 원본](ios-build.raw.log.gz)과 [cargo test 원본](cargo-test.raw.log.gz)에 보존했다.
+- PR #309의 최종 변경분 검토는 [적대 검토 기록](pr-delta-review-30-2026-10-18.md)에 있다.
