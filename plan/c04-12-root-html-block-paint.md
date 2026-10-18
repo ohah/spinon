@@ -2,11 +2,12 @@
 
 - **문서 유형:** 구현 계획 · 공식 상태는 [`spec/STATUS.md`](../spec/STATUS.md)에서 관리
 - **상위 항목:** [C04.12 앱 루트 HTML과 문서 환경 metadata](c04-root-html-document-environment.md), [C08 첫 화면 Block·기본 페인트](c08-first-screen-block-paint.md)
-- **현재 상태:** 제한 구현, Android API 37 AVD·iOS 26.2 Simulator 검증, 구현 검토와 별도 PR diff 검토를 마쳤다. PR diff 검토에서 발견한 Unicode whitespace 경계를 수정했고 core 1개·opt-in runtime 2개 집중 테스트가 통과했다. GitHub branch protection과 PR에는 required status check가 없다. PR 병합이 남아 있다. `RuntimeSession::new_with_root_html`이 만드는 같은 HTML5 root document tree를 제한 Block cascade/layout/scene 경로에 연결한다. 일반 HTML 표시, 글리프, 전체 Bootstrap `index.html` 렌더링은 포함하지 않는다.
+- **현재 상태:** 제한 구현, Android API 37 AVD·iOS 26.2 Simulator 검증, 구현 검토와 별도 PR diff 검토를 마쳤다. PR diff 검토에서 발견한 Unicode whitespace 경계를 수정했고 core 1개·opt-in runtime 2개 집중 테스트가 통과했다. GitHub branch protection과 PR에는 required status check가 없으며, [PR #313](https://github.com/ohah/spinon/pull/313)은 2026-10-18 Rebase and merge로 병합했다. `RuntimeSession::new_with_root_html`이 만드는 같은 HTML5 root document tree를 제한 Block cascade/layout/scene 경로에 연결한다. 일반 HTML 표시, 글리프, 전체 Bootstrap `index.html` 렌더링은 포함하지 않는다.
 - **구현 전 Chromium 기준:** [Agent Browser Chrome 155 비교와 캡처](../spec/internal/evidence/c04-12-root-html-block-paint-precomparison-2026-10-18/README.md)
 - **계획 적대 검토:** [20개 서로 다른 실패 관점](../spec/internal/evidence/c04-12-root-html-block-paint-plan-review-20-2026-10-18.md)
 - **구현 후 검토와 실행 근거:** [구현 실패 관점 20개](../spec/internal/evidence/c04-12-root-html-block-paint-implementation-review-20-2026-10-18.md) · [Android/iOS 및 Rust 검증](../spec/internal/evidence/c04-12-root-html-block-paint-2026-10-18/README.md)
 - **PR 변경 검토:** [30개 서로 다른 실패 관점과 판정](../spec/internal/evidence/c04-12-root-html-block-paint-pr-diff-review-30-2026-10-18.md)
+- **병합 후 문서 상태 검토:** [30개 독립 관점](../spec/internal/evidence/c04-12-root-html-block-paint-post-merge-status-review-30-2026-10-18.md)
 
 ## 목표와 계약 경계
 
