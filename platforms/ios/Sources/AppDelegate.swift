@@ -253,6 +253,32 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         if runLifecycleProbe && !spinonS03DomGcFixtureEnabled {
             logger.error("SPINON_DOM_GC_FIXTURE_DISABLED · 검증 전용 빌드로 다시 빌드하세요")
         }
+#if !SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
+        if runRuntimeGpu && !arguments.contains("--spinon-c0412-root-html-default-render") {
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            let controller = UIViewController()
+            controller.view.backgroundColor = UIColor(
+                red: 0.055, green: 0.075, blue: 0.12, alpha: 1
+            )
+            let label = UILabel()
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.text = "C04 runtime GPU fixture-test 옵션을 켜서 빌드해야 합니다."
+            label.textColor = .white
+            label.textAlignment = .center
+            label.numberOfLines = 0
+            controller.view.addSubview(label)
+            NSLayoutConstraint.activate([
+                label.leadingAnchor.constraint(equalTo: controller.view.leadingAnchor, constant: 24),
+                label.trailingAnchor.constraint(equalTo: controller.view.trailingAnchor, constant: -24),
+                label.centerYAnchor.constraint(equalTo: controller.view.centerYAnchor),
+            ])
+            window.rootViewController = controller
+            window.makeKeyAndVisible()
+            self.window = window
+            logger.error("SPINON_C0410_DISABLED fixture-test feature is off")
+            return true
+        }
+#endif
         if runRuntimeGpu {
             let window = UIWindow(frame: UIScreen.main.bounds)
             window.rootViewController = C0410RuntimeGpuDemoViewController()
@@ -327,6 +353,19 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
 
+        if !arguments.contains(where: { $0.hasPrefix("--spinon-") }) {
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            let controller = C0410RuntimeGpuDemoViewController()
+            controller.defaultRootHtmlApplicationRequested = true
+            window.rootViewController = controller
+            window.backgroundColor = UIColor(red: 0.055, green: 0.075, blue: 0.12, alpha: 1)
+            window.makeKeyAndVisible()
+            self.window = window
+            logger.notice("SPINON_ROOT_HTML_DEFAULT_APP_ROUTE source=index.html")
+            runBootstrapInBackground(loadRootDocumentSession: false)
+            return true
+        }
+
         let window = UIWindow(frame: UIScreen.main.bounds)
         let rootHost = RootDocumentHostViewController()
         rootHost.onEnvironmentChange = { [weak self] environment in
@@ -380,7 +419,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    private func runBootstrapInBackground() {
+    private func runBootstrapInBackground(loadRootDocumentSession: Bool = true) {
         DispatchQueue.global(qos: .userInitiated).async { [weak self, logger] in
             guard let self else { return }
             logger.notice("SPINON_BOOTSTRAP_EXECUTION is_main_thread=\(Thread.isMainThread)")
@@ -395,7 +434,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 logger.error("SPINON_BOOTSTRAP_ASSET_ERROR=app.js missing")
             }
-            self.loadRootDocumentSession()
+            if loadRootDocumentSession {
+                self.loadRootDocumentSession()
+            }
         }
     }
 

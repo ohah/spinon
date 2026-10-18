@@ -70,7 +70,7 @@ async function main() {
   const device = connectedDevice();
   await writeFile(resolve(evidenceDirectory, 'device.json'), `${JSON.stringify(device, null, 2)}\n`);
   const build = command('mise', [
-    'exec', '--', 'env', 'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'bun', 'run', 'build:android',
+    'exec', '--', 'env', 'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1', 'bun', 'run', 'build:android',
   ], { timeout: 900_000, maxBuffer: 96 * 1024 * 1024 });
   await writeFile(resolve(evidenceDirectory, 'build.log'), `${build.stdout}${build.stderr}`);
   const apkBytes = await readFile(androidApkPath);

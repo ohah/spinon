@@ -96,8 +96,8 @@ function samplePayload(scene, encoding) {
 
 function build(targetName) {
   const flags = targetName === 'android-avd'
-    ? ['SPINON_ENABLE_C04_RUNTIME_GPU=1']
-    : ['SPINON_ENABLE_C04_RUNTIME_GPU=1', 'SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=1'];
+    ? ['SPINON_ENABLE_C04_RUNTIME_GPU=1', 'SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1']
+    : ['SPINON_ENABLE_C04_RUNTIME_GPU=1', 'SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1', 'SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=1'];
   const build = command('mise', ['exec', '--', 'env', ...flags,
     'bun', 'run', targetName === 'android-avd' ? 'build:android' : 'build:ios-sim'],
   { timeout: 900_000 });

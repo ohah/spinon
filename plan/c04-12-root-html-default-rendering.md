@@ -2,7 +2,7 @@
 
 - **문서 유형:** 구현 계획 · 공식 상태는 [`spec/STATUS.md`](../spec/STATUS.md)에서 관리
 - **상위:** `plan/c04-root-html-document-environment.md` · `plan/c15-inline-text-layout.md` · [C19 색과 painter](../spec/STATUS.md#css-구현-체크리스트)
-- **상태:** PR #324는 2026-10-18 UTC에 병합했다. Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator에서 light/dark 화면을 확인했고, 제품 기본/fixture-test archive 경계 대조, 구현 실패 관점 20개·최종 PR diff 실패 관점 30개 검토와 문서/Tailnet 링크 검증을 마쳤다. 저장소에는 PR CI workflow와 `main` required status check가 없어 PR check rollup은 비어 있다. PixelCopy/Metal drawable readback은 하지 않았다. C04.12/C15/C16/C19는 완료가 아니다.
+- **상태:** 이 문서의 제한 root HTML runtime slice PR #324는 2026-10-18 UTC에 병합했다. Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator에서 light/dark 화면을 확인했고, 제품 기본/fixture-test archive 경계 대조, 구현 실패 관점 20개·최종 PR diff 실패 관점 30개 검토와 문서/Tailnet 링크 검증을 마쳤다. 실제 예제 HTML을 인수 없는 기본 앱의 GPU surface에 연결하는 별도 후속 작업은 [기본 앱 launch 계획](c04-12-default-app-launch.md)에서 진행 중이다. 해당 후속 화면은 Android/iOS Simulator의 light/dark content-edge까지 확인했으며, 새 구현 검토·PR diff 검토·PR 병합은 남아 있다. 저장소에는 PR CI workflow와 `main` required status check가 없어 PR check rollup은 비어 있다. PixelCopy/Metal drawable readback은 하지 않았다. C04.12/C15/C16/C19는 완료가 아니다.
 - **사전 기준:** [Chrome 155 HTML·텍스트·색 scheme 관찰](../spec/internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/README.md)
 - **계획·구현 검토:** 계획 [실패 관점 20개](../spec/internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/plan-review-20.md) · 계획 문서 diff [실패 관점 20개](../spec/internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/pr-delta-review-20.md) · 구현 실패 관점 [20개](../spec/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/implementation-review-20.md) · 최종 PR diff [30개](../spec/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/pr-delta-review-30.md).
 
@@ -12,14 +12,21 @@
 
 이 계획은 일반 root HTML에 대한 단계별 제품 경로다. 첫 구현은 현재 C04/C15가 지원하는 Block과 inline text subset을 실제 기본 runtime으로 승격하고, 미지원 CSS는 해당 node/property를 식별해 fail-closed한다. 이 결과를 전체 HTML/CSS 지원으로 표시하지 않는다. C04.12 parent와 C15/C16/C19는 후속 범위가 남아 있으므로 미완료로 둔다.
 
-## 현재 기본 경로와 결손
+## PR #324 병합 시 기본 앱 경로 상태
 
-- `RuntimeSession::new_with_root_html()`은 HTML5 document mode parsing 뒤 `RuntimeCssProfile::RootHtmlDocument`를 사용한다.
-- `RuntimeGpuHost::new()`는 `RuntimeSession::new_runtime_gpu()`로 시작한다. 기본 GPU host에서 root HTML source를 받는 생성자가 없고, Android/iOS의 현재 root HTML GPU launch는 fixture selector에만 연결되어 있다.
-- 이 profile의 `RuntimeCalculationProfile::has_paint()`은 false다. 그러므로 일반 root HTML session 계산은 `RuntimeRenderSnapshot`/WGPU paint를 만들지 않는다.
-- 루트 HTML Block paint와 direct-text glyph paint는 각각 opt-in fixture feature에 묶여 있다. direct-text 경로는 고정 HTML tree, Ahem 10px와 `XX`를 요구한다. 기본 앱의 일반 HTML text rendering 근거가 아니다.
-- `spinon-text-layout`은 고정 fixture의 재현성을 위해 현재 `FontContext`의 system font discovery를 끈다. 잠금된 Parley 0.12.0 / Fontique 0.12.0의 Android와 Apple system backend를 실제 대상에서 확인하고, fixture용 no-system-font 생성자는 그대로 보존한다.
-- C15 `HostDocument`/Taffy 경로는 실제 shaping, inline runs, anonymous block flow, glyph raster snapshot을 이미 제공하지만 기본 root HTML profile의 computed text style 및 scene assembly로 이어지지 않는다.
+- PR #324에서 `RuntimeSession::new_runtime_gpu_with_root_html()`와 일반 GPU host root HTML 생성 C ABI를 추가하고, 제한 Block/inline-text cascade·layout·system-font paint를 연결했다. 이 기능은 현재 C0410 demo의 `--spinon-c0412-root-html-default-render` 확인 경로에서 실행한다.
+- 확인용 C0410 경로는 별도 `root-html-default-rendering.html` asset을 사용하며 진단 title을 표시한다. Android/iOS의 인수 없는 일반 launch가 실제 앱 `examples/bootstrap/index.html`을 GPU surface에 표시하는 경로는 아니다.
+- Android 일반 launch는 `index.html`과 `root-app.js`를 읽어 DOM-only `RuntimeSession`에서 실행한다. iOS도 DOM-only root session과 빈 `RootDocumentHostViewController`를 사용한다. 두 플랫폼 모두 기본 앱 화면의 일반 HTML paint에는 아직 연결되지 않았다.
+- 일반 `spinon_runtime_gpu_host_new_with_root_html()`, `spinon_runtime_gpu_host_eval()` 및 environment C ABI는 있다. 기본 앱 route에 필요한 Android/iOS generic eval wrapper와 초기 GPU surface 연결은 [후속 계획](c04-12-default-app-launch.md)에서 다룬다.
+- Android Gradle과 iOS Xcode project의 기본 앱 설정은 `SPINON_ENABLE_C04_RUNTIME_GPU=0`이다. 기본 launch에서 renderer를 사용하려면 product runtime feature를 기본 빌드에 넣되 fixture-test flags와 payload는 계속 배제해야 한다.
+- system-font backend와 일반 root HTML text scene은 제품 C04 runtime slice에서 지원한다. 고정 Ahem fixture 경로는 별도 feature로 남고 기본 app content의 폰트 입력으로 사용하지 않는다.
+
+## 기본 앱 launch follow-up · 2026-10-19
+
+- 인수 없는 Android/iOS 기본 route가 실제 `examples/bootstrap/index.html`과 `root-app.js`를 같은 root HTML GPU host로 연다. 화면은 C0410 diagnostic title이나 C04.12 launch argument에 의존하지 않는다.
+- 첫 content-edge 검증에서 body 색 아래가 검정으로 남는 결함을 찾아 수정했다. 기존 computed Canvas RGBA를 GPU renderer의 format-aware clear color로 전달한다. 일반 GPU route의 기본 검정 clear는 유지한다.
+- Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 light/dark 실행, `dark`·environment revision 갱신, content-edge `(30,140,70)` 표본은 [후속 실행 근거](../spec/internal/evidence/c04-12-default-app-launch-2026-10-19/README.md)에 있다. 제품 build에서 runtime GPU는 켜고 fixture-test flags는 끈다. 현재 macOS arm64 staticlib product/fixture-positive boundary도 통과했다.
+- 독립된 새 구현 실패 관점 20개, PR diff 30개, PR 병합 및 Tailnet 문서 사본 갱신은 남아 있다. 이 후속 작업도 C04.12/C15/C16/C19 전체 완료를 뜻하지 않는다.
 
 ## 구현 현황 · 2026-10-19
 

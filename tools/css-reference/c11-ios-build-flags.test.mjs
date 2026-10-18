@@ -85,8 +85,8 @@ test('mise 유무와 관계없이 iOS simulator 빌드 인자로 Grid pixel 기�
     assert.match(result.args,
       /SPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE=0/);
     assert.match(result.stdout,
-      /SPINON_IOS_SIM_BUILD_FLAGS c04_runtime_gpu=1 c04_runtime_gpu_fixture_test=1 c04_ua_cascade_fixture_probe=0 c11_2_3_grid_fixture=1 c11_grid_metal_surface_pixels=1/);
-    assert.match(result.args, /SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST=1/);
+      /SPINON_IOS_SIM_BUILD_FLAGS c04_runtime_gpu=1 c04_runtime_gpu_fixture_test=1 c04_12_root_html_fixture_test=0 c04_12_root_html_block_paint_fixture_test=0 c04_ua_cascade_fixture_probe=0 c11_2_3_grid_fixture=0 c11_grid_metal_surface_pixels=1/);
+    assert.match(result.args, /SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST=0/);
   }
 });
 
@@ -191,7 +191,8 @@ test('Grid pixel 빌드 설정을 iOS native Rust feature와 C++ define으로 �
   assert.match(nativeBuild, /"\$c11_grid_surface_pixel_cpp_flag"/);
   assert.match(project, /GCC_PREPROCESSOR_DEFINITIONS[^\n]*SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST/);
   assert.match(project, /SWIFT_ACTIVE_COMPILATION_CONDITIONS[^\n]*SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST/);
-  assert.match(matrix, /SPINON_IOS_SIM_BUILD_FLAGS c04_runtime_gpu=1 c04_runtime_gpu_fixture_test=1 c04_ua_cascade_fixture_probe=0 c11_2_3_grid_fixture=1 c11_grid_metal_surface_pixels=1/);
+  assert.match(matrix, /SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1/);
+  assert.doesNotMatch(matrix, /SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST=1/);
   assert.match(matrix, /SPINON_IOS_NATIVE_FEATURES ffi=.*c11-grid-metal-surface-pixels-test/);
 });
 
@@ -203,27 +204,57 @@ test('C04 GPU 핵심과 fixture 검증 feature를 분리하고 앱 검증 빌드
     repositoryRoot,
     'platforms/ios/SpinonBootstrap.xcodeproj/project.pbxproj',
   ), 'utf8');
+  const androidAppBuild = await readFile(resolve(
+    repositoryRoot,
+    'platforms/android/app/build.gradle.kts',
+  ), 'utf8');
+  const androidMainActivity = await readFile(resolve(
+    repositoryRoot,
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java',
+  ), 'utf8');
+  const iosAppDelegate = await readFile(resolve(
+    repositoryRoot,
+    'platforms/ios/Sources/AppDelegate.swift',
+  ), 'utf8');
 
   assert.match(androidBuild,
-    /if \[\[ "\$\{SPINON_ENABLE_C04_RUNTIME_GPU:-0\}" == "1" \]\]; then\s+ffi_features\+=\(c04-runtime-gpu-fixture-test c11-2-3-grid-fixture-test\)\s+fi/);
+    /if \[\[ "\$\{SPINON_ENABLE_C04_RUNTIME_GPU:-0\}" == "1" \]\]; then\s+ffi_features\+=\(c04-runtime-gpu\)\s+fi/);
+  assert.match(androidBuild,
+    /if \[\[ "\$runtime_gpu_fixture_test_enabled" == "1" \]\]; then\s+ffi_features\+=\(c04-runtime-gpu-fixture-test\)\s+fi/);
+  assert.match(androidBuild,
+    /if \[\[ "\$\{SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST:-0\}" == "1" \]\]; then\s+ffi_features\+=\(c11-2-3-grid-fixture-test\)\s+fi/);
   assert.match(androidBuild, /s04_runtime_gpu_fixture_test_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=/);
   assert.match(androidBuild, /"\$s04_runtime_gpu_fixture_test_cpp_flag"/);
   assert.match(androidBuild,
-    /s04_c1123_grid_fixture_cpp_flag="-DSPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST=\$\{SPINON_ENABLE_C04_RUNTIME_GPU:-0\}"/);
+    /s04_c1123_grid_fixture_cpp_flag="-DSPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST=\$\{SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST:-0\}"/);
   assert.match(androidBuild, /"\$s04_c1123_grid_fixture_cpp_flag"/);
   assert.match(iosBuild,
-    /if \[\[ "\$\{SPINON_ENABLE_C04_RUNTIME_GPU:-0\}" == "1" \]\]; then\s+append_ffi_feature c04-runtime-gpu-fixture-test\s+append_ffi_feature c11-2-3-grid-fixture-test\s+fi/);
+    /if \[\[ "\$\{SPINON_ENABLE_C04_RUNTIME_GPU:-0\}" == "1" \]\]; then\s+append_ffi_feature c04-runtime-gpu\s+fi/);
+  assert.match(iosBuild,
+    /if \[\[ "\$runtime_gpu_fixture_test_enabled" == "1" \]\]; then\s+append_ffi_feature c04-runtime-gpu-fixture-test\s+fi/);
+  assert.match(iosBuild,
+    /if \[\[ "\$\{SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST:-0\}" == "1" \]\]; then\s+append_ffi_feature c11-2-3-grid-fixture-test\s+fi/);
   assert.match(iosBuild, /runtime_gpu_fixture_test_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=/);
   assert.match(iosBuild, /"\$runtime_gpu_fixture_test_cpp_flag"/);
   assert.match(iosBuild,
-    /c1123_grid_fixture_cpp_flag="-DSPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST=\$\{SPINON_ENABLE_C04_RUNTIME_GPU:-0\}"/);
+    /c1123_grid_fixture_cpp_flag="-DSPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST=\$\{SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST:-0\}"/);
   assert.match(iosBuild, /"\$c1123_grid_fixture_cpp_flag"/);
   assert.match(iosProject,
     /GCC_PREPROCESSOR_DEFINITIONS[^\n]*SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST[^\n]*SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST/);
+  assert.match(iosProject,
+    /SWIFT_ACTIVE_COMPILATION_CONDITIONS[^\n]*SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_\$\(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST\)/);
+  assert.match(iosAppDelegate,
+    /if runRuntimeGpu && !arguments\.contains\("--spinon-c0412-root-html-default-render"\)/);
   assert.match(ffiManifest,
     /c04-runtime-gpu-fixture-test\s*=\s*\["c04-runtime-gpu"\]/);
   assert.match(ffiManifest,
     /c11-2-3-grid-fixture-test\s*=\s*\["c04-runtime-gpu-fixture-test"\]/);
+  assert.match(androidAppBuild,
+    /"SPINON_C04_RUNTIME_GPU_FIXTURE_TEST",\s*spinonC04RuntimeGpuFixtureTestEnabled\.toString\(\)/);
+  assert.match(androidAppBuild,
+    /environment\(\s*"SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST",\s*if \(spinonC04RuntimeGpuFixtureTestEnabled\) "1" else "0"/);
+  assert.match(androidMainActivity,
+    /!rootHtmlDefaultRenderRoute\s*&&\s*!BuildConfig\.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST/);
   const runtimeGpu = await readFile(resolve(
     repositoryRoot,
     'crates/spinon-ffi/src/runtime_gpu.rs',

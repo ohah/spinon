@@ -113,7 +113,7 @@ async function main() {
   const { device, adb, simctl } = target === 'android' ? androidTarget() : iosTarget();
   await writeFile(resolve(evidenceDirectory, 'device.json'), `${JSON.stringify(device, null, 2)}\n`);
   const build = command('mise', [
-    'exec', '--', 'env', 'SPINON_ENABLE_C04_RUNTIME_GPU=1',
+    'exec', '--', 'env', 'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST=1',
     ...(target === 'ios' && surfacePixelsRequested
       ? ['SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=1'] : []),
     ...(target === 'ios' ? ['bun', 'run', 'build:ios-sim'] : ['bun', 'run', 'build:android']),

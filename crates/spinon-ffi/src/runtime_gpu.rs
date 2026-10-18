@@ -120,6 +120,7 @@ struct RuntimeGpuHost {
     operation: Mutex<()>,
     presentation: PresentationScenes,
     renderer: Mutex<Option<RuntimeRenderer>>,
+    root_html_canvas_color: Mutex<Option<[u8; 4]>>,
     pending_uikit_surface: Mutex<Option<PendingRuntimeSurface>>,
 }
 
@@ -232,6 +233,7 @@ impl RuntimeGpuHost {
             operation: Mutex::new(()),
             presentation: PresentationScenes::new(),
             renderer: Mutex::new(None),
+            root_html_canvas_color: Mutex::new(None),
             pending_uikit_surface: Mutex::new(None),
         }
     }
@@ -601,6 +603,9 @@ impl RuntimeGpuHost {
         let sequence = self
             .invalidate_scene()
             .map_err(|error| (ERR_STALE, error))?;
+        if self.root_html_default_render {
+            *lock(&self.root_html_canvas_color) = None;
+        }
         let mut environment = CssMediaEnvironment::MOBILE;
         environment.color_scheme = if dark {
             CssColorScheme::Dark
@@ -628,39 +633,62 @@ impl RuntimeGpuHost {
                     false
                 }
             };
-        let (revision, root_html_environment_report) = if root_html_environment_active {
-            let resolved = self
-                .session
-                .set_root_html_environment(
-                    width_css_px,
-                    height_css_px,
-                    device_scale_factor,
-                    environment,
+        let (revision, root_html_environment_report, root_html_environment) =
+            if root_html_environment_active {
+                let resolved = self
+                    .session
+                    .set_root_html_environment(
+                        width_css_px,
+                        height_css_px,
+                        device_scale_factor,
+                        environment,
+                    )
+                    .map_err(|error| {
+                        (ERR_LAYOUT, format!("root HTML 환경 갱신 실패: {error:?}"))
+                    })?;
+                (
+                    resolved.environment_revision,
+                    format!(
+                        "root_html_environment=true viewport={}x{} visual_viewport={}x{} page_scale={} ",
+                        resolved.viewport_width_css_px,
+                        resolved.viewport_height_css_px,
+                        resolved.visual_viewport_width_css_px,
+                        resolved.visual_viewport_height_css_px,
+                        resolved.page_scale,
+                    ),
+                    Some(resolved),
                 )
-                .map_err(|error| (ERR_LAYOUT, format!("root HTML 환경 갱신 실패: {error:?}")))?;
-            (
-                resolved.environment_revision,
-                format!(
-                    "root_html_environment=true viewport={}x{} visual_viewport={}x{} page_scale={} ",
-                    resolved.viewport_width_css_px,
-                    resolved.viewport_height_css_px,
-                    resolved.visual_viewport_width_css_px,
-                    resolved.visual_viewport_height_css_px,
-                    resolved.page_scale,
-                ),
-            )
-        } else {
-            let revision = self
+            } else {
+                let revision = self
+                    .session
+                    .set_ua_cascade_environment(
+                        width_css_px,
+                        height_css_px,
+                        device_scale_factor,
+                        environment,
+                    )
+                    .map_err(|error| {
+                        (ERR_LAYOUT, format!("CSS runtime 환경 갱신 실패: {error:?}"))
+                    })?;
+                (revision, String::new(), None)
+            };
+        if self.root_html_default_render
+            && let Some(environment) = root_html_environment
+        {
+            let canvas = self
                 .session
-                .set_ua_cascade_environment(
-                    width_css_px,
-                    height_css_px,
-                    device_scale_factor,
+                .resolve_root_html_canvas_for_environment(
                     environment,
+                    Duration::from_millis(layout_timeout_millis),
                 )
-                .map_err(|error| (ERR_LAYOUT, format!("CSS runtime 환경 갱신 실패: {error:?}")))?;
-            (revision, String::new())
-        };
+                .map_err(|error| {
+                    (
+                        ERR_LAYOUT,
+                        format!("root HTML Canvas 색 선택 실패: {error:?}"),
+                    )
+                })?;
+            *lock(&self.root_html_canvas_color) = Some(canvas.color_rgba);
+        }
         #[cfg(feature = "c18-1-image-paint-fixture-test")]
         let attach_c18_1_images = self.c18_1_image_paint_fixture
             && self

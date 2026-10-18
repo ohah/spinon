@@ -123,6 +123,7 @@ pub fn readback_runtime_scene_samples(
         &prepared_images,
         &glyph_renderer,
         &prepared_glyphs,
+        wgpu::Color::BLACK,
     )?;
     encoder.copy_texture_to_buffer(
         wgpu::TexelCopyTextureInfo {

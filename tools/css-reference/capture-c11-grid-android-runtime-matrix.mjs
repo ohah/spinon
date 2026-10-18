@@ -108,7 +108,7 @@ async function main() {
   assert.equal(matrix.inputs.chromiumReference.sha256, sha256(referenceBytes), 'runtime matrix가 현재 Chrome reference에 고정되지 않았습니다.');
   command('mise', ['exec', '--', 'node', 'tools/css-reference/build-c11-grid-runtime-matrix.mjs', '--check']);
 
-  const build = command('mise', ['exec', '--', 'env', 'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'bun', 'run', 'build:android'],
+  const build = command('mise', ['exec', '--', 'env', 'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1', 'bun', 'run', 'build:android'],
     { timeout: 900_000 });
   await writeFile(resolve(evidenceDirectory, 'build.log'), `${build.stdout}${build.stderr}`);
   assert.match(`${build.stdout}${build.stderr}`, /BUILD SUCCESSFUL/i, 'Android 빌드가 성공하지 않았습니다.');

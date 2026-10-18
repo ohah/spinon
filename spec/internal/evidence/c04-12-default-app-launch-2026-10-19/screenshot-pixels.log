@@ -1,0 +1,6 @@
+android-api37-light.png: dimensions=1080x2400 sha256=f2023da75ea2bb20b6a380850fc3d6286ae3d50b649a1933e590fa8a42319733 samples=[(30, 140, 70), (30, 140, 70), (30, 140, 70), (30, 140, 70), (30, 140, 70)] expected=(30, 140, 70) matched=True
+android-api37-dark.png: dimensions=1080x2400 sha256=f2023da75ea2bb20b6a380850fc3d6286ae3d50b649a1933e590fa8a42319733 samples=[(30, 140, 70), (30, 140, 70), (30, 140, 70), (30, 140, 70), (30, 140, 70)] expected=(30, 140, 70) matched=True
+ios-26-2-light.png: dimensions=1206x2622 sha256=47c914c566e305a2d61c910f410fa0d8d37681b38be984e97d45dd7524a9ba67 samples=[(30, 140, 70), (30, 140, 70), (30, 140, 70), (30, 140, 70), (30, 140, 70)] expected=(30, 140, 70) matched=True
+ios-26-2-dark.png: dimensions=1206x2622 sha256=47c914c566e305a2d61c910f410fa0d8d37681b38be984e97d45dd7524a9ba67 samples=[(30, 140, 70), (30, 140, 70), (30, 140, 70), (30, 140, 70), (30, 140, 70)] expected=(30, 140, 70) matched=True
+ios-ipad-pro-26-2.png: dimensions=2064x2752 sha256=5635e38a7eb2cdfdfa03f12d68e9339dbc3000fa0e1f56b4fae6f6c54d6d5dfa samples=[(30, 140, 70), (30, 140, 70), (30, 140, 70), (30, 140, 70), (30, 140, 70)] expected=(30, 140, 70) matched=True
+result=PASS

@@ -1,0 +1,27 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-9541695cf3ecbbae)
+
+running 9 tests
+test session::tests::root_html_canvas_rejects_duplicate_scheme_metadata_before_publishing_a_color ... ok
+test session::tests::root_html_canvas_ignores_unsupported_body_alpha_when_opaque_html_wins ... ok
+test session::tests::root_html_canvas_prefers_opaque_html_background_then_propagates_body_background ... ok
+test session::tests::root_html_canvas_treats_zero_alpha_body_background_as_transparent ... ok
+test session::tests::root_html_canvas_uses_computed_root_scheme_and_exact_chrome_srgb_bytes ... ok
+test session::tests::root_html_canvas_follows_os_only_when_root_css_and_single_meta_allow_it ... ok
+test session::tests::root_html_canvas_propagates_body_color_from_stylesheet_and_custom_property ... ok
+test session::tests::root_html_canvas_recomputes_body_background_for_prefers_color_scheme ... ok
+test session::tests::root_html_canvas_fails_closed_for_partial_alpha_and_background_images ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 178 filtered out; finished in 0.01s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-ddcd9c67c9479205)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-89979ce70ccb3511)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s

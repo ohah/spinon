@@ -81,7 +81,7 @@ async function main() {
   command('mise', ['exec', '--', 'node', 'tools/css-reference/build-c11-grid-runtime-matrix.mjs', '--check']);
 
   const build = spawnSync('mise', [
-    'exec', '--', 'env', 'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'bun', 'run', 'build:ios-sim',
+    'exec', '--', 'env', 'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1', 'bun', 'run', 'build:ios-sim',
   ], {
     cwd: repositoryRoot, encoding: 'utf8', timeout: 900_000, maxBuffer: 64 * 1024 * 1024,
   });

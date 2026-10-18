@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+: "${SPINON_ENABLE_C04_RUNTIME_GPU:=1}"
+
 repo_root="$(cd "$(dirname "$0")/.." && pwd)"
 sdk_dir="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-$HOME/Library/Android/sdk}}"
 if [[ ! -x "$sdk_dir/platform-tools/adb" ]]; then

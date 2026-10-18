@@ -189,7 +189,7 @@ async function runAndroid() {
   try {
     build = command('mise', ['exec', '--', 'env',
       `SPINON_V8_DIR=${process.env.SPINON_V8_DIR ?? resolve(repositoryRoot, 'build/v8-source/v8')}`,
-      'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'bun', 'run', 'build:android'], { timeout: 900_000 });
+      'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1', 'bun', 'run', 'build:android'], { timeout: 900_000 });
   } catch (error) {
     if (error.result) await saveLog('build.log', error.result);
     throw error;
@@ -292,7 +292,7 @@ async function runIOS() {
   const simulator = bootedSimulator();
   const build = command('mise', ['exec', '--', 'env',
     `SPINON_V8_DIR=${process.env.SPINON_V8_DIR ?? resolve(repositoryRoot, 'build/v8-source/v8')}`,
-    'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=1',
+    'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1', 'SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=1',
     'bun', 'run', 'build:ios-sim'], { timeout: 900_000 });
   await saveLog('build.log', build);
   const buildOutput = `${build.stdout}${build.stderr}`;

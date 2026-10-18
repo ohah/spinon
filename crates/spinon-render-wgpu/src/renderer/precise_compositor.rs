@@ -34,6 +34,7 @@ pub(crate) struct PreciseSceneDraw<'a> {
     pub(crate) height: u32,
     pub(crate) vertex_buffer: &'a wgpu::Buffer,
     pub(crate) geometry: &'a ColoredGeometry,
+    pub(crate) clear_color: wgpu::Color,
 }
 
 pub(crate) struct PreciseCompositor {
@@ -132,6 +133,7 @@ impl PreciseCompositor {
             height,
             vertex_buffer,
             geometry,
+            clear_color,
         } = draw;
         if !scene.images().is_empty() {
             return Err(
@@ -154,7 +156,7 @@ impl PreciseCompositor {
             .as_mut()
             .expect("root accumulator was initialized");
         root.current = 0;
-        clear_layer(encoder, root.current_view(), wgpu::Color::BLACK);
+        clear_layer(encoder, root.current_view(), clear_color);
 
         let mut active_groups = Vec::with_capacity(max_group_depth);
         for command in scene.paint_commands() {

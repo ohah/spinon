@@ -64,7 +64,7 @@ async function main() {
   await writeFile(resolve(evidenceDirectory, 'device.json'),
     `${JSON.stringify(deviceEvidence, null, 2)}\n`);
   const build = command('mise', [
-    'exec', '--', 'env', 'SPINON_ENABLE_C04_RUNTIME_GPU=1',
+    'exec', '--', 'env', 'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1',
     'SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=1', 'bun', 'run', 'build:ios-sim',
   ], { timeout: 900_000, maxBuffer: 96 * 1024 * 1024 });
   await writeFile(resolve(evidenceDirectory, 'build.log'), `${build.stdout}${build.stderr}`);

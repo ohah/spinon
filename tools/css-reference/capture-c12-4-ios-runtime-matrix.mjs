@@ -80,7 +80,8 @@ async function main() {
 
   const buildLogPath = resolve(evidenceDirectory, 'ios-simulator-build.log');
   const build = spawnSync('mise', [
-    'exec', '--', 'env', 'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'bun', 'run', 'build:ios-sim',
+    'exec', '--', 'env', 'SPINON_ENABLE_C04_RUNTIME_GPU=1',
+    'SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1', 'bun', 'run', 'build:ios-sim',
   ], {
     cwd: repositoryRoot,
     encoding: 'utf8',

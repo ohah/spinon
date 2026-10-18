@@ -211,7 +211,7 @@ function launchScene(adb, sceneId, sceneRunID, { samples } = {}) {
 async function captureMatrix(adb) {
   const build = command('mise', ['exec', '--', 'env',
     `SPINON_V8_DIR=${process.env.SPINON_V8_DIR ?? resolve(repositoryRoot, 'build/v8-source/v8')}`,
-    'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'bun', 'run', 'build:android'], { timeout: 900_000 });
+    'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1', 'bun', 'run', 'build:android'], { timeout: 900_000 });
   await saveLog('build.log', build);
   const appSha256 = sha256(await readFile(apkPath));
   await saveLog('install.log', adb(['install', '-r', apkPath]));

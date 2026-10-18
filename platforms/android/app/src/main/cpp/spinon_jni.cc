@@ -189,10 +189,20 @@ extern "C" JNIEXPORT jlong JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateHost(
     JNIEnv *, jclass, jboolean registered_properties_fixture) {
   std::array<char, 1024> output{};
-  SpinonRuntimeGpuHost *host = registered_properties_fixture == JNI_TRUE
-      ? spinon_runtime_gpu_host_new_registered_properties_fixture(
-            output.data(), output.size())
-      : spinon_runtime_gpu_host_new(output.data(), output.size());
+  SpinonRuntimeGpuHost *host = nullptr;
+  if (registered_properties_fixture == JNI_TRUE) {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
+    host = spinon_runtime_gpu_host_new_registered_properties_fixture(
+        output.data(), output.size());
+#else
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C052_HOST_ERROR=fixture feature disabled");
+    return 0;
+#endif
+  } else {
+    host = spinon_runtime_gpu_host_new(output.data(), output.size());
+  }
   if (host == nullptr) {
     __android_log_print(ANDROID_LOG_ERROR, kTag,
                         "%s_HOST_ERROR=%s",
@@ -250,6 +260,8 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateHostWithRootHtml(
   return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
 }
 
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
 extern "C" JNIEXPORT jlong JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateBlockPaintHost(
     JNIEnv *, jclass) {
@@ -844,6 +856,7 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC1035PositionedFlexHos
                       "SPINON_C1035_HOST=%s", output.data());
   return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
 }
+#endif
 
 extern "C" JNIEXPORT jlong JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeBeginPresentationUpdate(
@@ -870,6 +883,8 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeSetEnvironment(
   return ToByteArray(env, report);
 }
 
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
 extern "C" JNIEXPORT jbyteArray JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalFixture(
     JNIEnv *env, jclass, jlong host_handle) {
@@ -1817,7 +1832,35 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC124Source(
   const std::string report = "status=" + std::to_string(status) + " " + output.get();
   return ToByteArray(env, report);
 }
+#endif
 
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalRootHtmlApplicationScript(
+    JNIEnv *env, jclass, jlong host_handle, jstring source_value) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+  if (host == nullptr || source_value == nullptr) {
+    return ToByteArray(env, "status=-1 root-app.js host 또는 source가 null입니다");
+  }
+  const char *source = env->GetStringUTFChars(source_value, nullptr);
+  if (source == nullptr) return nullptr;
+  constexpr std::size_t kOutputCapacity = 256 * 1024;
+  std::unique_ptr<char[]> output(new (std::nothrow) char[kOutputCapacity]{});
+  if (output == nullptr) {
+    env->ReleaseStringUTFChars(source_value, source);
+    return ToByteArray(env, "status=-3 root-app.js 보고 버퍼 할당 실패");
+  }
+  const int32_t status = spinon_runtime_gpu_host_eval(
+      host, source, 60000, output.get(), kOutputCapacity);
+  env->ReleaseStringUTFChars(source_value, source);
+  const std::string report = "status=" + std::to_string(status) + " " + output.get();
+  __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                      kTag, "SPINON_ROOT_HTML_DEFAULT_APP_EVAL %s", report.c_str());
+  return ToByteArray(env, report);
+}
+
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
 extern "C" JNIEXPORT jbyteArray JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC1035PositionedFlexFixture(
     JNIEnv *env, jclass, jlong host_handle) {
@@ -1964,6 +2007,7 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalFlexBaselineFixture(
   if (status == 0) LogC10NodeFrames(report, "SPINON_C1034_NODE_FRAME");
   return ToByteArray(env, report);
 }
+#endif
 
 extern "C" JNIEXPORT jlong JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateSurface(

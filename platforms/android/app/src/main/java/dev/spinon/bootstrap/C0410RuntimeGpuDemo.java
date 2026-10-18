@@ -311,6 +311,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeSetEnvironment(
             long host, float widthCssPx, float heightCssPx, float scale, boolean dark);
     private static native byte[] nativeEvalFixture(long host);
+    private static native byte[] nativeEvalRootHtmlApplicationScript(long host, String source);
     private static native byte[] nativeEvalAuthorStylesheetsFixture(long host);
     private static native byte[] nativeEvalCustomPropertiesFixture(long host);
     private static native byte[] nativeEvalRegisteredPropertiesFixture(long host);
@@ -475,6 +476,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean rootHtmlBlockPaintProbeRequested;
     private final boolean rootHtmlTextPaintProbeRequested;
     private final boolean rootHtmlDefaultRenderRequested;
+    private final boolean rootHtmlApplicationRequested;
+    private String rootHtmlApplicationSource;
+    private String rootHtmlApplicationScript;
     private final boolean blockFormattingProbeRequested;
     private final boolean c121PositioningProbeRequested;
     private final boolean c122AbsoluteBlockProbeRequested;
@@ -625,7 +629,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             int backend,
             boolean failureProbeRequested,
             boolean shutdownProbeRequested,
-            int c11GridSceneIndex
+            int c11GridSceneIndex,
+            boolean rootHtmlApplicationRequested
     ) {
         super(activity);
         this.activity = activity;
@@ -663,6 +668,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c0412_root_html_text_paint", false);
         rootHtmlDefaultRenderRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c0412_root_html_default_render", false);
+        this.rootHtmlApplicationRequested = rootHtmlApplicationRequested;
         marginCollapseProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c092_margin_collapse", false);
         flowRootProbeRequested = activity.getIntent()
@@ -965,9 +971,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 & android.content.res.Configuration.UI_MODE_NIGHT_MASK)
                 == android.content.res.Configuration.UI_MODE_NIGHT_YES;
         setOrientation(VERTICAL);
-        int horizontalPadding = dp(22, density);
-        int topPadding = dp(44, density);
-        int bottomPadding = dp(24, density);
+        int horizontalPadding = rootHtmlApplicationRequested ? 0 : dp(22, density);
+        int topPadding = rootHtmlApplicationRequested ? 0 : dp(44, density);
+        int bottomPadding = rootHtmlApplicationRequested ? 0 : dp(24, density);
         setPadding(horizontalPadding, topPadding, horizontalPadding, bottomPadding);
         setOnApplyWindowInsetsListener((view, insets) -> {
             view.setPadding(
@@ -1086,6 +1092,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         title.setTextColor(Color.rgb(235, 241, 250));
         title.setTextSize(22);
         title.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+        if (rootHtmlApplicationRequested) title.setVisibility(GONE);
         addView(title, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
         TextView description = new TextView(activity);
@@ -1194,6 +1201,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : "실제 V8 DOM → Stylo → Taffy → Rust 장면 → wgpu surface");
         description.setTextColor(Color.rgb(200, 211, 228));
         description.setTextSize(14);
+        if (rootHtmlApplicationRequested) description.setVisibility(GONE);
         LayoutParams descriptionParams =
                 new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         descriptionParams.topMargin = dp(8, density);
@@ -1323,8 +1331,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : c131BorderStripProbeRequested ? 160
                 : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 240
                 : fixedSizeCssFixtureRequested ? 240 : 100;
-        LayoutParams surfaceParams = new LayoutParams(
-                dp(initialSurfaceWidth, density), dp(initialSurfaceHeight, density));
+        LayoutParams surfaceParams = rootHtmlApplicationRequested
+                ? new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+                : new LayoutParams(dp(initialSurfaceWidth, density), dp(initialSurfaceHeight, density));
         if (BuildConfig.SPINON_C133_GESTURE_FIXTURE_TEST
                 && c133GestureFixtureRequested
                 && activity.getIntent().getBooleanExtra(
@@ -1347,7 +1356,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         Button resizeButton = new Button(activity);
         resizeButton.setText("표면 크기 전환 · 301×100 CSS px");
         resizeButton.setOnClickListener(view -> toggleSurfaceSize(resizeButton));
-        if (fixedSizeCssFixtureRequested) resizeButton.setVisibility(GONE);
+        if (fixedSizeCssFixtureRequested || rootHtmlApplicationRequested) {
+            resizeButton.setVisibility(GONE);
+        }
         LayoutParams resizeButtonParams =
                 new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         resizeButtonParams.topMargin = dp(8, density);
@@ -1397,6 +1408,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || spacingPercentagesProbeRequested) {
             customPropertiesButton.setVisibility(GONE);
         }
+        if (rootHtmlApplicationRequested) customPropertiesButton.setVisibility(GONE);
         LayoutParams customPropertiesButtonParams =
                 new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         customPropertiesButtonParams.topMargin = dp(4, density);
@@ -1408,6 +1420,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         status.setTextSize(13);
         status.setTypeface(Typeface.MONOSPACE);
         status.setMinLines(c133GestureFixtureRequested ? 2 : 1);
+        if (rootHtmlApplicationRequested) status.setVisibility(GONE);
         addView(status, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
         runtimePresentationLane = new C0410LatestTaskLane(
@@ -1418,7 +1431,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 renderQueue,
                 this::reconcileRenderState,
                 error -> reportLaneFailure("render", error));
-        if (!c121PositioningProbeRequested && !c122AbsoluteBlockProbeRequested
+        if (!rootHtmlApplicationRequested
+                && !c121PositioningProbeRequested && !c122AbsoluteBlockProbeRequested
                 && !c123FixedPositionProbeRequested && !c124StackingProbeRequested
                 && !c1133GridTemplateAreasRequested && !c132ScrollFixtureRequested
                 && !c133GestureFixtureRequested) {
@@ -1711,6 +1725,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? nativeCreateRootHtmlBlockPaintHost()
                 : blockPaintProbeRequested
                 ? nativeCreateBlockPaintHost()
+                : rootHtmlApplicationRequested
+                ? nativeCreateRootHtmlApplicationHost()
                 : rootHtmlDefaultRenderRequested
                 ? nativeCreateRootHtmlDefaultRenderHost()
                 : nativeCreateHost(registeredPropertiesProbeRequested);
@@ -1761,10 +1777,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? 1.0f : density;
         String environment = decode(nativeSetEnvironment(
                 host,
-                (rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
+                (rootHtmlApplicationRequested || rootHtmlBlockPaintProbeRequested
+                        || rootHtmlTextPaintProbeRequested
                         || rootHtmlDefaultRenderRequested)
                         ? widthCssPx * environmentScale : widthCssPx,
-                (rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
+                (rootHtmlApplicationRequested || rootHtmlBlockPaintProbeRequested
+                        || rootHtmlTextPaintProbeRequested
                         || rootHtmlDefaultRenderRequested)
                         ? heightCssPx * environmentScale : heightCssPx,
                 environmentScale, dark));
@@ -1874,6 +1892,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? decode(nativeEvalMarginCollapseFixture(host))
                 : blockFormattingProbeRequested
                 ? decode(nativeEvalBlockFormattingFixture(host))
+                : rootHtmlApplicationRequested
+                ? decode(nativeEvalRootHtmlApplicationScript(host, rootHtmlApplicationScript))
                 : rootHtmlDefaultRenderRequested
                 ? "status=0 root_html_default_render=source"
                 : rootHtmlTextPaintProbeRequested
@@ -2095,6 +2115,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             if (c122AbsoluteBlockProbeRequested) logC122FailureDetails(result);
             postStatus("실패 · " + result);
             return;
+        }
+        if (rootHtmlApplicationRequested) {
+            if (!result.contains("layout=ready")) {
+                Log.e(TAG, "SPINON_ROOT_HTML_DEFAULT_APP_BOOT_ERROR reason=layout-not-ready "
+                        + result);
+                postStatus("실패 · root-app.js 평가 뒤 HTML 장면이 준비되지 않았습니다");
+                return;
+            }
+            Log.i(TAG, "SPINON_ROOT_HTML_DEFAULT_APP_BOOT status=pass root_app_marker=ready "
+                    + runtimeStatusSummary(result));
         }
         if (c132ScrollFixtureRequested) {
             boolean c132ScrollPassed = result.contains("c13_2_scroll_fixture=passed")
@@ -2550,6 +2580,32 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 && "showModal".equals(api)
                 && report.contains("TypeError:")
                 && report.contains("showModal is not a function");
+    }
+
+    void setRootHtmlApplicationSources(String htmlSource, String appScript) {
+        if (!rootHtmlApplicationRequested || hostHandle != 0) {
+            throw new IllegalStateException("기본 root HTML source는 runtime 초기화 전에만 설정할 수 있습니다");
+        }
+        if (htmlSource == null || htmlSource.isBlank()
+                || appScript == null || appScript.isBlank()) {
+            throw new IllegalArgumentException("index.html과 root-app.js가 비어 있습니다");
+        }
+        rootHtmlApplicationSource = htmlSource;
+        rootHtmlApplicationScript = appScript;
+        Log.i(TAG, "SPINON_ROOT_HTML_DEFAULT_APP_ASSET html_bytes="
+                + htmlSource.getBytes(StandardCharsets.UTF_8).length
+                + " script_bytes=" + appScript.getBytes(StandardCharsets.UTF_8).length);
+        scheduleRuntimeInitializationForReadySurface();
+    }
+
+    private long nativeCreateRootHtmlApplicationHost() {
+        if (rootHtmlApplicationSource == null) {
+            Log.e(TAG, "SPINON_ROOT_HTML_DEFAULT_APP_ASSET_ERROR source=missing");
+            return 0;
+        }
+        byte[] source = rootHtmlApplicationSource.getBytes(StandardCharsets.UTF_8);
+        Log.i(TAG, "SPINON_ROOT_HTML_DEFAULT_APP_SOURCE bytes=" + source.length);
+        return nativeCreateHostWithRootHtml(source);
     }
 
     private long nativeCreateRootHtmlDefaultRenderHost() {
@@ -4199,13 +4255,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private void scheduleRuntimeInitializationForReadySurface() {
-        if (!c121PositioningProbeRequested && !c122AbsoluteBlockProbeRequested
+        if (!rootHtmlApplicationRequested
+                && !c121PositioningProbeRequested && !c122AbsoluteBlockProbeRequested
                 && !c123FixedPositionProbeRequested && !c124StackingProbeRequested
                 && !c1133GridTemplateAreasRequested && !c132ScrollFixtureRequested
                 && !c133GestureFixtureRequested) return;
         synchronized (stateLock) {
             if (closing || hostHandle != 0 || runtimeInitializationQueued
                     || !surfaceAvailable || surfaceWidth <= 0 || surfaceHeight <= 0) {
+                return;
+            }
+            if (rootHtmlApplicationRequested
+                    && (rootHtmlApplicationSource == null || rootHtmlApplicationScript == null)) {
                 return;
             }
             runtimeInitializationQueued = true;
@@ -4694,10 +4755,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (!isCurrentPresentation(generation, sequence)) return;
         String result = decode(nativeSetEnvironment(
                 host,
-                (rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
+                (rootHtmlApplicationRequested || rootHtmlBlockPaintProbeRequested
+                        || rootHtmlTextPaintProbeRequested
                         || rootHtmlDefaultRenderRequested)
                         ? widthCssPx * environmentScale : widthCssPx,
-                (rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
+                (rootHtmlApplicationRequested || rootHtmlBlockPaintProbeRequested
+                        || rootHtmlTextPaintProbeRequested
                         || rootHtmlDefaultRenderRequested)
                         ? heightCssPx * environmentScale : heightCssPx,
                 environmentScale, dark));

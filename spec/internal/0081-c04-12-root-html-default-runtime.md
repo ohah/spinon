@@ -33,3 +33,10 @@ visible foreign namespace·form/control/media/canvas/SVG 요소, inline allowlis
 ## 실행 근거
 
 [Android/iOS Simulator light/dark 화면, 실행 log, build 환경과 hash](./evidence/c04-12-root-html-default-rendering-2026-10-19/README.md) · [제품 기본/fixture-test artifact 경계](./evidence/c04-12-root-html-default-rendering-2026-10-19/artifact-boundary.txt) · [Chrome 155 사전 기준](./evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/README.md) · [구현 계획](../../plan/c04-12-root-html-default-rendering.md)
+
+## 기본 앱 launch와 Canvas clear
+
+- 인수 없는 Android/iOS 기본 launch는 `examples/bootstrap/index.html`과 `root-app.js`를 같은 root HTML GPU host에서 사용한다. script의 `data-runtime=ready`, 최초 environment/layout/render 성공 뒤 scene을 게시한다. HTML bytes나 script marker가 없는 부분 화면은 성공 장면으로 보고하지 않는다.
+- 기본 host는 `set_root_html_environment()`의 반환 environment snapshot을 `resolve_root_html_canvas_for_environment()`에 넘겨 같은 environment revision의 computed `html`/`body` background 또는 scheme fallback을 구한다. 이 경로는 environment revision을 다시 증가시키지 않는다. root canvas 선택 실패는 새 scene을 게시하지 않고 environment operation 오류로 끝난다.
+- `RuntimeGpuHost::draw()`는 선택한 불투명 sRGB RGBA8을 `RuntimeRenderer::draw_if_with_srgb_clear_color()`에 전달한다. `Unorm` surface에는 encoded sRGB channel을, sRGB format에는 대응 linear channel을 전달한다. no-scene·normal paint·opacity compositor 경로가 같은 clear color를 공유한다. 다른 GPU host는 기존 opaque black clear를 유지한다.
+- CSS body background가 root canvas로 전파되어 app content GPU surface 전체에 보인다. 이것은 body element box가 전체 viewport로 커진다는 뜻이 아니며 status/navigation UI palette나 safe-area CSS를 바꾸지 않는다. Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator의 light/dark 캡처는 content-edge sRGB 표본이 Chrome 155 기준과 같음을 확인했다. compositor 이후 pixel은 검사하지 않았다. [기본 app launch 캡처·로그·archive 대조](./evidence/c04-12-default-app-launch-2026-10-19/README.md) · [구현 계획](../../plan/c04-12-default-app-launch.md)

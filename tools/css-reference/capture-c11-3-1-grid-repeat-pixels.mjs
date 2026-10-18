@@ -107,7 +107,7 @@ async function runAndroid() {
   await writeFile(resolve(evidenceDirectory, 'device.json'), `${JSON.stringify(metadata, null, 2)}\n`);
   let build;
   try {
-    build = command('mise', ['exec', '--', 'env', 'SPINON_ENABLE_C04_RUNTIME_GPU=1',
+    build = command('mise', ['exec', '--', 'env', 'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1',
       'bun', 'run', 'build:android'], { timeout: 900_000 });
   } catch (error) {
     if (error.result) await saveLog('build.log', error.result);
@@ -250,7 +250,7 @@ async function runIOS() {
   const simulator = bootedSimulator();
   let build;
   try {
-    build = command('mise', ['exec', '--', 'env', 'SPINON_ENABLE_C04_RUNTIME_GPU=1',
+    build = command('mise', ['exec', '--', 'env', 'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1',
       'SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=1', 'bun', 'run', 'build:ios-sim'],
     { timeout: 900_000 });
   } catch (error) {
