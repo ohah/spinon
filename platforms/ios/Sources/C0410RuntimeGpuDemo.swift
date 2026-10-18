@@ -816,6 +816,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 #if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
     private let c133NativeWheelPreflightRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c133-native-wheel-preflight")
+    private let c133NativeWheelAdapterArgumentRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c133-native-wheel-adapter")
     private let c133GesturePolicyScenarioArguments = ProcessInfo.processInfo.arguments.filter {
         $0.hasPrefix("--spinon-c133-policy-scenario-id=")
     }
@@ -851,9 +853,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 #if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
     private var c133PanRecognizer: UIPanGestureRecognizer?
     private var c133TapRecognizer: UITapGestureRecognizer?
-    private var c133NativeWheelDiscretePreflightRecognizer: UIPanGestureRecognizer?
-    private var c133NativeWheelContinuousPreflightRecognizer: UIPanGestureRecognizer?
-    private var c133NativeWheelPreflightTranslations: [ObjectIdentifier: CGPoint] = [:]
+    private var c133NativeWheelDiscreteRecognizer: UIPanGestureRecognizer?
+    private var c133NativeWheelContinuousRecognizer: UIPanGestureRecognizer?
+    private var c133NativeWheelTranslations:
+        [ObjectIdentifier: (translation: CGPoint, surfaceGeneration: UInt64)] = [:]
     private var c133ActiveTouchIDs = Set<ObjectIdentifier>()
     private var c133BackgroundObserver: NSObjectProtocol?
     private var c133DrainScheduled = false
@@ -1288,28 +1291,28 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             recognizer.delaysTouchesBegan = false
             canvasView.addGestureRecognizer(recognizer)
             c133PanRecognizer = recognizer
-            if c133NativeWheelPreflightRequested {
+            if c133NativeWheelPreflightRequested || c133NativeWheelAdapterArgumentRequested {
                 let discreteRecognizer = UIPanGestureRecognizer(
                     target: self,
-                    action: #selector(handleC133NativeWheelPreflight(_:))
+                    action: #selector(handleC133NativeWheel(_:))
                 )
                 discreteRecognizer.allowedScrollTypesMask = .discrete
                 discreteRecognizer.allowedTouchTypes = []
                 discreteRecognizer.cancelsTouchesInView = false
                 discreteRecognizer.delaysTouchesBegan = false
                 canvasView.addGestureRecognizer(discreteRecognizer)
-                c133NativeWheelDiscretePreflightRecognizer = discreteRecognizer
+                c133NativeWheelDiscreteRecognizer = discreteRecognizer
 
                 let continuousRecognizer = UIPanGestureRecognizer(
                     target: self,
-                    action: #selector(handleC133NativeWheelPreflight(_:))
+                    action: #selector(handleC133NativeWheel(_:))
                 )
                 continuousRecognizer.allowedScrollTypesMask = .continuous
                 continuousRecognizer.allowedTouchTypes = []
                 continuousRecognizer.cancelsTouchesInView = false
                 continuousRecognizer.delaysTouchesBegan = false
                 canvasView.addGestureRecognizer(continuousRecognizer)
-                c133NativeWheelContinuousPreflightRecognizer = continuousRecognizer
+                c133NativeWheelContinuousRecognizer = continuousRecognizer
             }
             if c133TapProbeRequested {
                 let tapRecognizer = UITapGestureRecognizer(
@@ -2392,9 +2395,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
 #endif
 #if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
-        if c133NativeWheelPreflightRequested && !c133GestureFixtureRequested {
-            log("SPINON_C133_ARGUMENT_ERROR rejected=true reason=native-wheel-preflight-requires-fixture-route")
-            postStatus("실패 · C13.3 native wheel preflight에는 gesture fixture route가 필요합니다")
+        if c133NativeWheelPreflightRequested && c133NativeWheelAdapterArgumentRequested {
+            log("SPINON_C133_ARGUMENT_ERROR rejected=true reason=native-wheel-preflight-and-adapter-are-exclusive")
+            postStatus("실패 · C13.3 native wheel preflight와 adapter route는 함께 사용할 수 없습니다")
+            return
+        }
+        if (c133NativeWheelPreflightRequested || c133NativeWheelAdapterArgumentRequested)
+            && !c133GestureFixtureRequested {
+            log("SPINON_C133_ARGUMENT_ERROR rejected=true reason=native-wheel-route-requires-fixture-route")
+            postStatus("실패 · C13.3 native wheel route에는 gesture fixture route가 필요합니다")
             return
         }
 #endif
@@ -2471,6 +2480,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             postStatus("실패 · CSS fixture route를 하나만 선택해야 합니다")
             return
         }
+#if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+        let c133NativeWheelAdapterArguments: Set<String> = [
+            "--spinon-c133-native-wheel-adapter",
+        ]
+#else
+        let c133NativeWheelAdapterArguments: Set<String> = []
+#endif
         if c131StackingDescendantClipStaleRevisionProbeRequested
             && !c131StackingDescendantClipProbeRequested {
             log("SPINON_C131_ARGUMENT_ERROR rejected=stale-revision-requires-stacking-route")
@@ -2499,6 +2515,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                    && !(c133GestureFixtureRequested && $0 == "--spinon-c133-wheel-probe")
                    && !(c133GestureFixtureRequested
                        && $0 == "--spinon-c133-native-wheel-preflight")
+                   && !(c133GestureFixtureRequested
+                       && c133NativeWheelAdapterArguments.contains($0))
                    && !(c133GestureFixtureRequested
                        && $0.hasPrefix("--spinon-c133-policy-scenario-id="))
                    && $0 != "--spinon-c0410-runtime-gpu"
@@ -4202,24 +4220,151 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
     }
 
-    @objc private func handleC133NativeWheelPreflight(_ recognizer: UIPanGestureRecognizer) {
-        guard c133NativeWheelPreflightRequested else { return }
+    @objc private func handleC133NativeWheel(_ recognizer: UIPanGestureRecognizer) {
+        guard c133NativeWheelPreflightRequested || c133NativeWheelAdapterArgumentRequested else {
+            return
+        }
         let identifier = ObjectIdentifier(recognizer)
         let translation = recognizer.translation(in: canvasView)
-        let previous = c133NativeWheelPreflightTranslations[identifier] ?? .zero
+        stateLock.lock()
+        let ready = c133GestureFixtureReady && !closing && hostHandle != 0
+        let handle = hostHandle
+        let generation = surfaceGeneration
+        let widthCss = viewportWidthCssPx
+        let heightCss = viewportHeightCssPx
+        stateLock.unlock()
+
+        let previous = c133NativeWheelTranslations[identifier]
+        let generationChanged = previous.map {
+            $0.surfaceGeneration != generation
+        } ?? false
+        let previousTranslation = previous?.translation ?? .zero
         let delta = CGPoint(
-            x: translation.x - previous.x,
-            y: translation.y - previous.y
+            x: translation.x - previousTranslation.x,
+            y: translation.y - previousTranslation.y
         )
-        c133NativeWheelPreflightTranslations[identifier] = translation
-        let kind = recognizer === c133NativeWheelDiscretePreflightRecognizer
-            ? "discrete-mouse" : "continuous-trackpad"
+        c133NativeWheelTranslations[identifier] = (
+            translation: translation,
+            surfaceGeneration: generation
+        )
+        let isTerminal = recognizer.state == .ended || recognizer.state == .cancelled
+            || recognizer.state == .failed
+        defer {
+            if isTerminal {
+                c133NativeWheelTranslations.removeValue(forKey: identifier)
+            }
+        }
+
+        let source: Int32
+        let kind: String
+        if recognizer === c133NativeWheelDiscreteRecognizer {
+            source = 0
+            kind = "discrete-mouse"
+        } else if recognizer === c133NativeWheelContinuousRecognizer {
+            source = 1
+            kind = "continuous-trackpad"
+        } else {
+            log("SPINON_C133_NATIVE_WHEEL_REJECT reason=unknown-recognizer")
+            return
+        }
         let location = recognizer.location(in: canvasView)
         let modifiers = recognizer.modifierFlags
-        log("SPINON_C133_NATIVE_WHEEL_PREFLIGHT source=\(kind) state=\(recognizer.state.rawValue) translation_points=\(translation.x),\(translation.y) delta_points=\(delta.x),\(delta.y) location_points=\(location.x),\(location.y) modifiers=\(modifiers.rawValue) control=\(modifiers.contains(.control)) touch_types=empty")
-        if recognizer.state == .ended || recognizer.state == .cancelled
-            || recognizer.state == .failed {
-            c133NativeWheelPreflightTranslations.removeValue(forKey: identifier)
+        if c133NativeWheelPreflightRequested {
+            log("SPINON_C133_NATIVE_WHEEL_PREFLIGHT source=\(kind) state=\(recognizer.state.rawValue) translation_points=\(translation.x),\(translation.y) delta_points=\(delta.x),\(delta.y) location_points=\(location.x),\(location.y) modifiers=\(modifiers.rawValue) control=\(modifiers.contains(.control)) touch_types=empty")
+            return
+        }
+
+        guard translation.x.isFinite, translation.y.isFinite,
+              delta.x.isFinite, delta.y.isFinite else {
+            c133NativeWheelTranslations.removeValue(forKey: identifier)
+            log("SPINON_C133_NATIVE_WHEEL_REJECT reason=nonfinite-translation source=\(kind) state=\(recognizer.state.rawValue)")
+            return
+        }
+        guard !generationChanged else {
+            log("SPINON_C133_NATIVE_WHEEL_REJECT reason=surface-generation-changed source=\(kind) generation=\(generation)")
+            return
+        }
+        switch recognizer.state {
+        case .began, .changed, .ended:
+            break
+        case .cancelled, .failed:
+            log("SPINON_C133_NATIVE_WHEEL_RESET source=\(kind) state=\(recognizer.state.rawValue) generation=\(generation)")
+            return
+        default:
+            return
+        }
+
+        var normalizedModifiers: UInt32 = 0
+        if modifiers.contains(.shift) { normalizedModifiers |= 1 }
+        if modifiers.contains(.control) { normalizedModifiers |= 2 }
+        if modifiers.contains(.alternate) { normalizedModifiers |= 4 }
+        if modifiers.contains(.command) { normalizedModifiers |= 8 }
+        guard (normalizedModifiers & 2) == 0 else {
+            log("SPINON_C133_NATIVE_WHEEL_REJECT reason=control-wheel source=\(kind) raw_delta_points=\(delta.x),\(delta.y) modifiers=\(normalizedModifiers) native_modifiers=\(modifiers.rawValue) generation=\(generation)")
+            return
+        }
+
+        guard ready, widthCss > 0, heightCss > 0,
+              canvasView.bounds.width > 0, canvasView.bounds.height > 0 else {
+            log("SPINON_C133_NATIVE_WHEEL_REJECT reason=surface-or-runtime-not-ready source=\(kind) generation=\(generation) ready=\(ready) viewport_css=\(widthCss)x\(heightCss) bounds_points=\(canvasView.bounds.width)x\(canvasView.bounds.height)")
+            return
+        }
+        let bounds = canvasView.bounds
+        let pointsPerCssX = bounds.width / CGFloat(widthCss)
+        let pointsPerCssY = bounds.height / CGFloat(heightCss)
+        guard pointsPerCssX.isFinite, pointsPerCssY.isFinite,
+              pointsPerCssX > 0, pointsPerCssY > 0,
+              abs(pointsPerCssX - pointsPerCssY) <= 0.01 else {
+            log("SPINON_C133_NATIVE_WHEEL_REJECT reason=invalid-coordinate-scale source=\(kind) points_per_css_px=\(pointsPerCssX),\(pointsPerCssY) generation=\(generation)")
+            return
+        }
+        guard location.x.isFinite, location.y.isFinite,
+              location.x >= bounds.minX, location.y >= bounds.minY,
+              location.x < bounds.maxX, location.y < bounds.maxY else {
+            log("SPINON_C133_NATIVE_WHEEL_REJECT reason=point-outside-surface source=\(kind) location_points=\(location.x),\(location.y) bounds_points=\(bounds.minX),\(bounds.minY),\(bounds.maxX),\(bounds.maxY) generation=\(generation)")
+            return
+        }
+
+        let pointXCss = Float((location.x - bounds.minX) / pointsPerCssX)
+        let pointYCss = Float((location.y - bounds.minY) / pointsPerCssY)
+        let rawDeltaX = Float(delta.x)
+        let rawDeltaY = Float(delta.y)
+        let deltaXCss = Float(-delta.x / pointsPerCssX)
+        let deltaYCss = Float(-delta.y / pointsPerCssY)
+        let coordinateScale = Float(pointsPerCssX)
+        guard pointXCss.isFinite, pointYCss.isFinite,
+              rawDeltaX.isFinite, rawDeltaY.isFinite,
+              deltaXCss.isFinite, deltaYCss.isFinite,
+              coordinateScale.isFinite, coordinateScale > 0 else {
+            log("SPINON_C133_NATIVE_WHEEL_REJECT reason=nonfinite-normalized-sample source=\(kind) generation=\(generation)")
+            return
+        }
+        guard deltaXCss != 0 || deltaYCss != 0 else {
+            log("SPINON_C133_NATIVE_WHEEL_REJECT reason=zero-delta source=\(kind) raw_delta_points=\(rawDeltaX),\(rawDeltaY) generation=\(generation)")
+            return
+        }
+
+        let report = SpinonRunner.enqueueRuntimeGpuC13_3Wheel(
+            handle,
+            intent: 0,
+            surfaceGeneration: generation,
+            pointXCssPx: pointXCss,
+            pointYCssPx: pointYCss,
+            deltaXCssPx: deltaXCss,
+            deltaYCssPx: deltaYCss,
+            rawDeltaX: rawDeltaX,
+            rawDeltaY: rawDeltaY,
+            sourceUnit: 2,
+            coordinateScale: coordinateScale,
+            source: source,
+            momentumPhase: 0,
+            modifierFlags: normalizedModifiers
+        ) ?? "status=-1 empty wheel enqueue report"
+        log("SPINON_C133_NATIVE_WHEEL source=\(kind) state=\(recognizer.state.rawValue) generation=\(generation) location_points=\(location.x),\(location.y) point_css_px=\(pointXCss),\(pointYCss) raw_delta_points=\(rawDeltaX),\(rawDeltaY) coordinate_scale_points_per_css_px=\(coordinateScale) delta_css_px=\(deltaXCss),\(deltaYCss) native_modifiers=\(modifiers.rawValue) modifiers=\(normalizedModifiers) unit=UIKitPoints momentum_phase=None \(report)")
+        if report.hasPrefix("status=0 ") && report.contains("admitted=true") {
+            scheduleC133Drain()
+        } else {
+            log("SPINON_C133_NATIVE_WHEEL_REJECT reason=queue-rejected source=\(kind) generation=\(generation) report=\(report)")
         }
     }
 
@@ -4410,6 +4555,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     }
 
     private func handleC133ApplicationDidEnterBackground() {
+        for recognizer in [
+            c133NativeWheelDiscreteRecognizer,
+            c133NativeWheelContinuousRecognizer,
+        ].compactMap({ $0 }) {
+            recognizer.isEnabled = false
+            recognizer.isEnabled = true
+        }
+        c133NativeWheelTranslations.removeAll()
         cancelC133Gesture(reason: 3, source: "application-background")
         c133ActiveTouchIDs.removeAll()
         // Keep the gesture identity until the in-flight style barrier submits its deferred cancel.
@@ -6279,6 +6432,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
     private func beginShutdown() {
 #if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
+        c133NativeWheelTranslations.removeAll()
         cancelC133Gesture(reason: 3, source: "view-disappear")
         if let observer = c133BackgroundObserver {
             NotificationCenter.default.removeObserver(observer)
