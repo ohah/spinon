@@ -1,0 +1,75 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: /private/tmp/spinon-roadmap-next-20261018/packages/docs
+warn    Current dist path: /private/tmp/spinon-roadmap-next-20261018/build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019
+info    Rendering pages...
+success Pages rendered in 98 ms.
+ready   built in 0.69s (node)
+ready   built in 0.69s (web)
+
+File (web)                                                                                                                                 Size        Gzip
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/i.25208e7c92.js                     0.10 kB     0.09 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/styles.c6d1f0b052.js                      0.47 kB     0.23 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/icon.svg                                            0.64 kB     0.42 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-989ca1f66450.af4c5777e0.js    7.0 kB      2.3 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-b33563055168.648319b268.js    7.9 kB      2.8 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-2448965e4a94.78536f6df3.js    8.1 kB      2.8 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-fc5696cc2162.18588e5022.js    8.8 kB      3.0 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-6766916ae267.97dbd11b94.js    8.9 kB      3.5 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-f7ef4ddf795f.e944803705.js    9.1 kB      3.2 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-99d1d44ec434.67ad5f5861.js    9.2 kB      3.5 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-faffa23ad0bd.67e36ea690.js    10.2 kB     3.5 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-a07f3c9d45d8.07a2d8d1ac.js    10.6 kB     3.7 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-367f378b7619.73d31881c7.js    15.2 kB     5.1 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-d677eda9ba0f.132cd7adf3.js    15.9 kB     5.5 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-01a38c43e2ba.4dba232663.js    18.1 kB     6.2 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-62564aea649f.c5c2cc7498.js    18.9 kB     4.9 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-b8496d571851.90a7e7174b.js    19.4 kB     6.6 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-10e224d209ed.4249b66c51.js    19.6 kB     6.7 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-ea34262d0652.a4e366197a.js    25.8 kB     7.9 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-8cbb76a0796e.a83b83e1b3.js    26.9 kB     5.8 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/lib-router.1e14e568cb.js                  35.4 kB     12.7 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-7ff1bc4fef68.81bbbf1a7e.js    37.3 kB     10.6 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/index.51055166e7.js                       43.9 kB     13.5 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-117783875241.7b4bc3aa76.js    62.5 kB     17.3 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/css/styles.8d918fd78e.css                    74.0 kB     14.2 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/image/simulator-screen-dark.995850557b.png   94.0 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/image/simulator-screen.69036695db.png        94.7 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/image/simulator-screen-dark.2e54597b94.png   155.8 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/image/simulator-screen.828a34af58.png        157.4 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-a1017bdf23ca.552b2a4339.js    178.5 kB    37.4 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/a.0179054be0.js                           217.1 kB    72.0 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/lib-react.9cdf8f49ce.js                   218.4 kB    68.8 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/js/async/route-6c33a3943990.5deaef1fdf.js    394.3 kB    92.4 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/static/search_index.ko.709c6902.json                503.3 kB    162.3 kB
+
+                                                                                                                                  Total:   2507.3 kB   1080.8 kB
+
+File (node)                                                                                                                                                                                               Size        Gzip
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/404.html                                                                                                           8.5 kB      2.6 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/roadmap-followup-pr-review-20.html   27.5 kB     6.3 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/README.html                          27.6 kB     5.8 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/pr-delta-review-20.html              28.7 kB     6.5 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/plan-review-20.html                  28.9 kB     6.9 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/plan/c04-12-visual-viewport.html                                                                                   29.6 kB     6.8 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/README.html                                                                                                        29.9 kB     6.5 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/internal/0081-c04-12-root-html-default-runtime.html                                                                30.0 kB     7.0 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/plan/c04-12-page-scale-rendering.html                                                                              30.1 kB     7.0 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/plan/c04-12-root-canvas-color-scheme.html                                                                          31.4 kB     7.2 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/implementation-review-20.html                      34.2 kB     8.6 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/pr-delta-review-30.html                            36.8 kB     9.6 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/plan/c04-12-root-html-block-paint.html                                                                             38.0 kB     9.1 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/internal/0080-c04-12-root-html-direct-text-paint.html                                                              38.7 kB     8.8 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/plan/c04-12-root-html-text-paint.html                                                                              39.8 kB     10.1 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/plan/c04-12-root-html-default-rendering.html                                                                       40.6 kB     10.3 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/README.html                                        45.1 kB     9.7 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/plan/c04-root-html-document-environment.html                                                                       47.0 kB     11.6 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/internal/0077-c04-12-root-html-document.html                                                                       53.9 kB     14.1 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/plan/c15-inline-text-layout.html                                                                                   76.1 kB     20.7 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/internal/README.html                                                                                               172.8 kB    40.4 kB
+../../build/spinon/c04-12-default-runtime-preview-20261019/out-final-verified-20261019/STATUS.html                                                                                                        376.7 kB    94.5 kB
+
+                                                                                                                                                                                                 Total:   1271.8 kB   310.0 kB

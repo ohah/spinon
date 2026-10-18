@@ -102,8 +102,72 @@ pub(super) const RUNTIME_ROOT_HTML_TEXT_PAINT_AUTHOR_PROPERTIES: &[&str] = &[
 
 const ROOT_HTML_BLOCK_PAINT_UA_STYLESHEET: &str = r#"
 @namespace "http://www.w3.org/1999/xhtml";
-html, body, main { display: block; }
-head, meta, title, link, script, style { display: none; }
+html { display: block; }
+body { display: block; margin: 8px; }
+main, div { display: block; }
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+h1 {
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+h2 {
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+h3 {
+    display: block;
+    font-size: 1.17em;
+    font-weight: bold;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+h4 {
+    display: block;
+    font-weight: bold;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+h5 {
+    display: block;
+    font-size: 0.83em;
+    font-weight: bold;
+    margin-block-start: 1.67em;
+    margin-block-end: 1.67em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+h6 {
+    display: block;
+    font-size: 0.67em;
+    font-weight: bold;
+    margin-block-start: 2.33em;
+    margin-block-end: 2.33em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+head, base, meta, title, link, script, style { display: none; }
+strong, b { font-weight: bolder; }
+em, i { font-style: italic; }
 "#;
 
 pub(super) const RUNTIME_BLOCK_IMAGE_AUTHOR_PROPERTIES: &[&str] = &[
@@ -270,6 +334,7 @@ pub(super) fn runtime_root_html_text_paint_properties() -> Vec<(&'static str, Lo
         ("text-indent", LonghandId::TextIndent),
         ("text-transform", LonghandId::TextTransform),
         ("text-align", LonghandId::TextAlign),
+        ("line-break", LonghandId::LineBreak),
         ("direction", LonghandId::Direction),
         ("writing-mode", LonghandId::WritingMode),
         ("overflow-x", LonghandId::OverflowX),

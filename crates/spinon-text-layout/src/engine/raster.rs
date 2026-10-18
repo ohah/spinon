@@ -1,9 +1,7 @@
-use std::collections::BTreeMap;
-
 use swash::{
     FontRef, GlyphId,
     scale::{Render, ScaleContext, Source, StrikeWith},
-    zeno::{Format, Vector},
+    zeno::{Angle, Format, Transform, Vector},
 };
 
 use crate::{
@@ -62,7 +60,6 @@ impl TextLayoutEngine {
             .map_err(|_| TextLayoutError::RasterAllocationFailed(layout.paragraph))?;
 
         let mut scale_context = ScaleContext::new();
-        let mut font_cache = BTreeMap::new();
         let mut raster_bytes = 0;
         for (run_index, run) in layout.runs.iter().enumerate() {
             let pixel_size = run.font_size * device_scale_factor;
@@ -72,20 +69,16 @@ impl TextLayoutEngine {
                     font_family: run.font_family.clone(),
                 });
             }
-            let font_bytes = self
-                .font_assets
-                .get(&run.font_family)
-                .ok_or_else(|| TextLayoutError::MissingRasterFont(run.font_family.clone()))?;
-            let font = *font_cache
-                .entry(run.font_family.as_str())
-                .or_insert_with(|| FontRef::from_index(font_bytes.as_slice(), 0))
-                .as_ref()
+            let font_index = usize::try_from(run.font_data.index)
+                .map_err(|_| TextLayoutError::InvalidRasterFont(run.font_family.clone()))?;
+            let font = FontRef::from_index(run.font_data.data.as_ref(), font_index)
                 .ok_or_else(|| TextLayoutError::InvalidRasterFont(run.font_family.clone()))?;
-            if FontRef::from_index(font_bytes.as_slice(), 1).is_some() {
-                return Err(TextLayoutError::InvalidRasterFont(run.font_family.clone()));
-            }
             let font_glyph_count = font.glyph_metrics(&[]).glyph_count();
-            let mut scaler = scale_context.builder(font).size(pixel_size).build();
+            let mut scaler = scale_context
+                .builder(font)
+                .size(pixel_size)
+                .normalized_coords(run.normalized_coords.iter())
+                .build();
             for (glyph_index, glyph) in run.glyphs.iter().enumerate() {
                 if ![glyph.x, glyph.y, glyph.advance]
                     .iter()
@@ -124,6 +117,15 @@ impl TextLayoutEngine {
                 );
                 let mut renderer = Render::new(RASTER_SOURCES);
                 renderer.format(Format::Alpha).offset(offset);
+                if run.synthesis_embolden {
+                    renderer.embolden((0.013_612_5 * pixel_size).min(0.3));
+                }
+                if let Some(angle) = run.synthesis_skew_degrees {
+                    renderer.transform(Some(Transform::skew(
+                        Angle::from_degrees(angle),
+                        Angle::ZERO,
+                    )));
+                }
                 let bitmap = match renderer.render(&mut scaler, glyph_id) {
                     Some(image) => checked_bitmap(image, layout.paragraph, glyph.id)?,
                     None => None,

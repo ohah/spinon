@@ -21,9 +21,12 @@ use spinon_style::{
 };
 use spinon_style_to_layout::{StyleLayoutError, StyleLayoutOutput, compute_runtime_style_layout};
 use spinon_style_to_render::{CurrentLayoutInputs, StyleRenderError};
+use std::collections::BTreeSet;
 use std::sync::Arc;
 use std::time::{Duration, Instant};
 
+#[path = "runtime_layout/root_html_default_render.rs"]
+mod root_html_default_render;
 #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
 #[path = "runtime_layout/root_html_text_paint.rs"]
 mod root_html_text_paint;
@@ -190,6 +193,9 @@ where
         super::calculation::RuntimeCalculationProfile::RootHtmlBlockPaint => {
             spinon_style::first_unsupported_runtime_root_html_block_paint_inline_property(&view)
         }
+        super::calculation::RuntimeCalculationProfile::RootHtmlDefaultRender => {
+            spinon_style::first_unsupported_runtime_root_html_text_paint_inline_property(&view)
+        }
         #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
         super::calculation::RuntimeCalculationProfile::RootHtmlTextPaint => {
             spinon_style::first_unsupported_runtime_root_html_text_paint_inline_property(&view)
@@ -253,6 +259,16 @@ where
     if profile == super::calculation::RuntimeCalculationProfile::RootHtmlBlockPaint {
         validate_root_html_block_paint_tree(&request.snapshot, root, &styles)?;
     }
+    let root_html_default_render_input =
+        if profile == super::calculation::RuntimeCalculationProfile::RootHtmlDefaultRender {
+            Some(root_html_default_render::prepare(
+                &request.snapshot,
+                root,
+                &styles,
+            )?)
+        } else {
+            None
+        };
     #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
     let root_html_text_input =
         if profile == super::calculation::RuntimeCalculationProfile::RootHtmlTextPaint {
@@ -278,25 +294,60 @@ where
             )),
         ));
     }
-    #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
-    let output = if let Some(text_input) = &root_html_text_input {
-        spinon_style_to_layout::compute_runtime_style_layout_with_text_paragraphs(
+    let mut output = if let Some(text_input) = &root_html_default_render_input {
+        spinon_style_to_layout::compute_runtime_style_layout_with_text_profiles(
             &request.snapshot,
             root,
             styles.clone(),
             request.viewport,
             &text_input.paragraph_styles,
+            &text_input.inline_run_styles,
             &text_input.engine,
         )
     } else {
-        compute_runtime_style_layout(&request.snapshot, root, styles.clone(), request.viewport)
+        #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+        if let Some(text_input) = &root_html_text_input {
+            spinon_style_to_layout::compute_runtime_style_layout_with_text_paragraphs(
+                &request.snapshot,
+                root,
+                styles.clone(),
+                request.viewport,
+                &text_input.paragraph_styles,
+                &text_input.engine,
+            )
+        } else {
+            compute_runtime_style_layout(&request.snapshot, root, styles.clone(), request.viewport)
+        }
+        #[cfg(not(feature = "c04-12-root-html-text-paint-fixture-test"))]
+        {
+            compute_runtime_style_layout(&request.snapshot, root, styles.clone(), request.viewport)
+        }
     }
     .map_err(layout_failure_from_error)?;
-    #[cfg(not(feature = "c04-12-root-html-text-paint-fixture-test"))]
-    let output =
-        compute_runtime_style_layout(&request.snapshot, root, styles.clone(), request.viewport)
-            .map_err(layout_failure_from_error)?;
     let frames = runtime_frames(&request.snapshot, root, &styles, &output.layout)?;
+    if styles.profile == spinon_style::ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+        let document_elements = host_document_element_ids(&request.snapshot, root)?;
+        if let Some(node) = output
+            .layout
+            .frames
+            .keys()
+            .find(|node| !document_elements.contains(node))
+        {
+            return Err(layout_failure(
+                "root_html_default_render_frame_outside_document",
+                Some(node.get()),
+                None,
+            ));
+        }
+        let paint_nodes = frames
+            .iter()
+            .map(|frame| frame.node_id)
+            .collect::<BTreeSet<_>>();
+        output
+            .layout
+            .frames
+            .retain(|node, _| paint_nodes.contains(&node.get()));
+    }
     let render_snapshot = if runtime_paint_enabled {
         let current = CurrentLayoutInputs::for_host_document(
             &request.snapshot,
@@ -308,6 +359,11 @@ where
         #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
         let scene = if let Some(text_input) = &root_html_text_input {
             root_html_text_paint::attach(&request.snapshot, root, &output, text_input, scene)?
+        } else {
+            scene
+        };
+        let scene = if let Some(text_input) = &root_html_default_render_input {
+            root_html_default_render::attach(&request.snapshot, root, &output, text_input, scene)?
         } else {
             scene
         };
@@ -478,9 +534,16 @@ fn runtime_frames(
     styles: &ComputedStyleSnapshot,
     output: &LayoutOutput,
 ) -> Result<Vec<RuntimeLayoutFrame>, RuntimeLayoutFailure> {
-    if output.frames.len() != styles.elements.len() {
+    let root_html_text_profile =
+        styles.profile == spinon_style::ComputedStyleProfile::RuntimeRootHtmlTextPaintV1;
+    if !root_html_text_profile && output.frames.len() != styles.elements.len() {
         return Err(layout_failure("frame_set_mismatch", None, None));
     }
+    let styles_by_node = styles
+        .elements
+        .iter()
+        .map(|style| (style.node_id, style))
+        .collect::<std::collections::BTreeMap<_, _>>();
     let mut frames = Vec::with_capacity(output.frames.len());
     let mut pending = vec![root];
     while let Some(handle) = pending.pop() {
@@ -494,36 +557,84 @@ fn runtime_frames(
         if matches!(node.kind(), spinon_core::HostNodeKind::Text(_)) {
             continue;
         }
-        let Some(frame) = output.frames.get(&handle.id()) else {
-            return Err(layout_failure(
-                "missing_frame",
-                Some(handle.id().get()),
-                None,
-            ));
+        let include_frame = if root_html_text_profile {
+            let style = styles_by_node.get(&handle.id()).ok_or_else(|| {
+                layout_failure("missing_computed_style", Some(handle.id().get()), None)
+            })?;
+            match style.properties.get("display").map(String::as_str) {
+                Some("none") => continue,
+                Some("inline") => false,
+                Some("block") => true,
+                Some(value) => {
+                    return Err(layout_failure(
+                        "unsupported_root_html_default_render_display",
+                        Some(handle.id().get()),
+                        Some(value.to_owned()),
+                    ));
+                }
+                None => {
+                    return Err(layout_failure(
+                        "missing_computed_style",
+                        Some(handle.id().get()),
+                        Some("display".to_owned()),
+                    ));
+                }
+            }
+        } else {
+            true
         };
-        if !valid_frame(*frame) {
-            return Err(layout_failure(
-                "invalid_frame",
-                Some(handle.id().get()),
-                None,
-            ));
+        if include_frame {
+            let Some(frame) = output.frames.get(&handle.id()) else {
+                return Err(layout_failure(
+                    "missing_frame",
+                    Some(handle.id().get()),
+                    None,
+                ));
+            };
+            if !valid_frame(*frame) {
+                return Err(layout_failure(
+                    "invalid_frame",
+                    Some(handle.id().get()),
+                    None,
+                ));
+            }
+            frames.push(RuntimeLayoutFrame {
+                node_id: handle.id().get(),
+                x: frame.x,
+                y: frame.y,
+                width: frame.width,
+                height: frame.height,
+            });
         }
-        frames.push(RuntimeLayoutFrame {
-            node_id: handle.id().get(),
-            x: frame.x,
-            y: frame.y,
-            width: frame.width,
-            height: frame.height,
-        });
         if let Some(children) = snapshot.children(handle) {
             let children = children.collect::<Vec<_>>();
             pending.extend(children.into_iter().rev());
         }
     }
-    if frames.len() != output.frames.len() {
+    if !root_html_text_profile && frames.len() != output.frames.len() {
         return Err(layout_failure("frame_set_mismatch", None, None));
     }
     Ok(frames)
+}
+
+fn host_document_element_ids(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+) -> Result<BTreeSet<spinon_core::NodeId>, RuntimeLayoutFailure> {
+    let mut ids = BTreeSet::new();
+    let mut pending = vec![root];
+    while let Some(handle) = pending.pop() {
+        let node = snapshot
+            .node(handle)
+            .ok_or_else(|| layout_failure("missing_node", Some(handle.id().get()), None))?;
+        if matches!(node.kind(), spinon_core::HostNodeKind::Element(_)) {
+            ids.insert(handle.id());
+        }
+        if let Some(children) = snapshot.children(handle) {
+            pending.extend(children);
+        }
+    }
+    Ok(ids)
 }
 
 fn valid_frame(frame: LayoutFrame) -> bool {

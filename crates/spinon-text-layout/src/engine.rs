@@ -1,13 +1,13 @@
 use std::collections::BTreeMap;
 use std::ops::Range;
-use std::sync::Arc;
 
 use parley::{
     BaseDirection, FontContext, InlineBoxKind, LayoutContext,
     layout::{Alignment, AlignmentOptions, PositionedLayoutItem},
     style::{
-        FontFeatures, LineBreak, LineHeight, OverflowWrap, StyleProperty, TextWrapMode,
-        WhiteSpaceCollapse, WordBreak,
+        FontFamilyName, FontFeatures, FontStyle as ParleyFontStyle, FontWeight as ParleyFontWeight,
+        LineBreak, LineHeight, OverflowWrap, StyleProperty, TextWrapMode, WhiteSpaceCollapse,
+        WordBreak,
     },
 };
 use spinon_core::NodeId;
@@ -33,7 +33,6 @@ pub struct TextLayoutEngine {
     layout_context: LayoutContext,
     font_registry_revision: FontRegistryRevision,
     font_registry_token: FontRegistryToken,
-    font_assets: BTreeMap<String, Arc<Vec<u8>>>,
 }
 
 impl Clone for TextLayoutEngine {
@@ -43,7 +42,6 @@ impl Clone for TextLayoutEngine {
             layout_context: LayoutContext::new(),
             font_registry_revision: self.font_registry_revision,
             font_registry_token: self.font_registry_token.clone(),
-            font_assets: self.font_assets.clone(),
         }
     }
 }
@@ -100,24 +98,14 @@ impl TextLayoutEngine {
             .style
             .validate()
             .map_err(TextLayoutError::InvalidStyle)?;
-        if self
-            .font_context
-            .collection
-            .family_id(&input.style.font_family)
-            .is_none()
-        {
+        if !self.font_family_list_available(&input.style.font_family) {
             return Err(TextLayoutError::MissingFontFamily(
                 input.style.font_family.clone(),
             ));
         }
         for style in input.inline_run_styles.values() {
             style.validate().map_err(TextLayoutError::InvalidStyle)?;
-            if self
-                .font_context
-                .collection
-                .family_id(&style.font_family)
-                .is_none()
-            {
+            if !self.font_family_list_available(&style.font_family) {
                 return Err(TextLayoutError::MissingFontFamily(
                     style.font_family.clone(),
                 ));
@@ -168,9 +156,19 @@ impl TextLayoutEngine {
             input.style.font_family.as_str().into(),
         ));
         builder.push_default(StyleProperty::FontSize(input.style.font_size));
-        builder.push_default(StyleProperty::LineHeight(LineHeight::Absolute(
-            input.style.line_height,
+        builder.push_default(StyleProperty::FontWeight(ParleyFontWeight::new(
+            input.style.font_weight,
         )));
+        builder.push_default(StyleProperty::FontStyle(parley_font_style(
+            input.style.font_style,
+        )));
+        builder.push_default(StyleProperty::LineHeight(
+            if input.style.line_height_is_normal {
+                LineHeight::MetricsRelative(1.0)
+            } else {
+                LineHeight::Absolute(input.style.line_height)
+            },
+        ));
         builder.push_default(StyleProperty::WordBreak(match input.style.word_break {
             WordBreakMode::Normal => WordBreak::Normal,
             WordBreakMode::BreakAll => WordBreak::BreakAll,
@@ -202,7 +200,19 @@ impl TextLayoutEngine {
             );
             builder.push(StyleProperty::FontSize(style.font_size), range.clone());
             builder.push(
-                StyleProperty::LineHeight(LineHeight::Absolute(style.line_height)),
+                StyleProperty::FontWeight(ParleyFontWeight::new(style.font_weight)),
+                range.clone(),
+            );
+            builder.push(
+                StyleProperty::FontStyle(parley_font_style(style.font_style)),
+                range.clone(),
+            );
+            builder.push(
+                StyleProperty::LineHeight(if style.line_height_is_normal {
+                    LineHeight::MetricsRelative(1.0)
+                } else {
+                    LineHeight::Absolute(style.line_height)
+                }),
                 range,
             );
         }
@@ -276,9 +286,20 @@ impl TextLayoutEngine {
                         }
                         let run_style =
                             run_styles::effective_run_style(input, &normalized, &text_range);
+                        let resolved_line_height = if run_style.line_height_is_normal {
+                            font_metrics.ascent + font_metrics.descent + font_metrics.leading
+                        } else {
+                            run_style.line_height
+                        };
+                        let resolved_run_style = crate::InlineRunStyle {
+                            line_height: resolved_line_height,
+                            line_height_is_normal: false,
+                            ..run_style.clone()
+                        };
+                        let synthesis = run.synthesis();
                         let run_baseline = glyph_run.baseline();
                         let run_box_ascent = run_styles::run_box_ascent(
-                            &run_style,
+                            &resolved_run_style,
                             font_metrics.ascent,
                             font_metrics.descent,
                         );
@@ -297,15 +318,25 @@ impl TextLayoutEngine {
                             is_rtl: run.is_rtl(),
                             font_family: run_style.font_family.clone(),
                             font_size: run.font_size(),
+                            font_weight: run_style.font_weight,
+                            font_style: run_style.font_style,
                             baseline: run_baseline,
-                            line_height: run_style.line_height,
+                            line_height: resolved_line_height,
                             font_metrics: FontMetricsSnapshot {
                                 ascent: font_metrics.ascent,
                                 descent: font_metrics.descent,
                                 leading: font_metrics.leading,
                             },
+                            normalized_coords: run
+                                .normalized_coords()
+                                .iter()
+                                .map(|coord| coord.to_bits())
+                                .collect(),
+                            synthesis_embolden: synthesis.embolden(),
+                            synthesis_skew_degrees: synthesis.skew(),
                             sources: run_sources,
                             glyphs,
+                            font_data: run.font().clone(),
                         });
 
                         for cluster in run.clusters() {
@@ -464,6 +495,30 @@ fn add_fragment(
     }
     *entry = merged;
     Ok(())
+}
+
+impl TextLayoutEngine {
+    fn font_family_list_available(&mut self, source: &str) -> bool {
+        let Ok(families) = FontFamilyName::parse_css_list(source).collect::<Result<Vec<_>, _>>()
+        else {
+            return false;
+        };
+        families.into_iter().any(|family| {
+            let name = match family {
+                FontFamilyName::Named(name) => name.into_owned(),
+                FontFamilyName::Generic(_) => return true,
+            };
+            self.font_context.collection.family_id(&name).is_some()
+        })
+    }
+}
+
+fn parley_font_style(style: crate::FontStyleMode) -> ParleyFontStyle {
+    match style {
+        crate::FontStyleMode::Normal => ParleyFontStyle::Normal,
+        crate::FontStyleMode::Italic => ParleyFontStyle::Italic,
+        crate::FontStyleMode::Oblique(angle) => ParleyFontStyle::Oblique(Some(angle)),
+    }
 }
 
 fn rect_is_finite(rect: TextRect) -> bool {

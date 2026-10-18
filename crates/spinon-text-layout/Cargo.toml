@@ -10,5 +10,8 @@ parley = { version = "=0.12.0", default-features = false, features = ["std"] }
 swash = { version = "=0.2.10", default-features = false, features = ["render", "scale", "std"] }
 spinon-core = { path = "../spinon-core" }
 
+[target.'cfg(any(target_os = "android", target_vendor = "apple"))'.dependencies]
+parley = { version = "=0.12.0", default-features = false, features = ["std", "system"] }
+
 [lints.rust]
 unsafe_op_in_unsafe_fn = "deny"

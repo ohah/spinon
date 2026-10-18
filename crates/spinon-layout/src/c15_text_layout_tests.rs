@@ -89,6 +89,7 @@ fn input(width: f32, text: &str, white_space: WhiteSpaceMode) -> LayoutInput {
             direction: spinon_text_layout::TextDirection::Auto,
             line_break: spinon_text_layout::LineBreakMode::Strict,
             ligatures: spinon_text_layout::LigatureMode::Normal,
+            ..ParagraphStyle::default()
         },
         inline_styles: BTreeMap::new(),
         inline_run_styles: BTreeMap::new(),

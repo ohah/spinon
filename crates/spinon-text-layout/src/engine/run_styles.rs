@@ -7,6 +7,9 @@ fn base_run_style(input: &ParagraphInput) -> InlineRunStyle {
         font_family: input.style.font_family.clone(),
         font_size: input.style.font_size,
         line_height: input.style.line_height,
+        line_height_is_normal: input.style.line_height_is_normal,
+        font_weight: input.style.font_weight,
+        font_style: input.style.font_style,
     }
 }
 
@@ -77,5 +80,10 @@ pub(super) fn inline_run_style_ranges(
 pub(super) fn run_box_ascent(style: &InlineRunStyle, ascent: f32, descent: f32) -> f32 {
     let ascent = ascent.round();
     let descent = descent.round();
-    ascent + ((style.line_height - ascent - descent) / 2.0).floor()
+    let line_height = if style.line_height_is_normal {
+        ascent + descent
+    } else {
+        style.line_height
+    };
+    ascent + ((line_height - ascent - descent) / 2.0).floor()
 }

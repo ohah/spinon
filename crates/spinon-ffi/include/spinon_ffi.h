@@ -209,6 +209,11 @@ void spinon_runtime_session_free(SpinonRuntimeSession *session);
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new(char *output,
                                                   size_t output_capacity);
+/* 최대 1 MiB UTF-8 HTML bytes를 복사·파싱해 기본 root HTML GPU runtime을 시작합니다.
+   source는 NUL 종료가 필요 없으며 길이는 UTF-8 bytes 기준입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_with_root_html(
+    const uint8_t *source, size_t source_length, char *output,
+    size_t output_capacity);
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
     SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
 /* C05.2 검증 fixture 전용 `@property` CSS profile로 V8 GPU host를 생성합니다. */

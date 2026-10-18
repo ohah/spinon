@@ -486,6 +486,7 @@ public final class MainActivity extends Activity {
                 || getIntent().getBooleanExtra("spinon_c08_block_paint", false)
                 || getIntent().getBooleanExtra("spinon_c0412_root_html_block_paint", false)
                 || getIntent().getBooleanExtra("spinon_c0412_root_html_text_paint", false)
+                || getIntent().getBooleanExtra("spinon_c0412_root_html_default_render", false)
                 || getIntent().getBooleanExtra("spinon_c091_block_formatting", false)
                 || getIntent().getBooleanExtra("spinon_c092_margin_collapse", false)
                 || getIntent().getBooleanExtra("spinon_c093_flow_root", false)

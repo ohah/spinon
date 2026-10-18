@@ -13,9 +13,25 @@ use super::TextLayoutEngine;
 impl TextLayoutEngine {
     /// 시스템 폰트 검색을 끈 font registry로 시작합니다.
     pub fn new_without_system_fonts() -> Self {
+        Self::new_with_system_font_discovery(false)
+    }
+
+    /// Android·Apple runtime에서는 OS 글꼴을, 그 밖의 host에서는 고정 registry를 사용합니다.
+    pub fn new_for_runtime() -> Self {
+        #[cfg(any(target_os = "android", target_vendor = "apple"))]
+        {
+            Self::new_with_system_font_discovery(true)
+        }
+        #[cfg(not(any(target_os = "android", target_vendor = "apple")))]
+        {
+            Self::new_without_system_fonts()
+        }
+    }
+
+    fn new_with_system_font_discovery(system_fonts: bool) -> Self {
         let collection = Collection::new(CollectionOptions {
             shared: false,
-            system_fonts: false,
+            system_fonts,
         });
         Self {
             font_context: FontContext {
@@ -25,7 +41,6 @@ impl TextLayoutEngine {
             layout_context: parley::LayoutContext::new(),
             font_registry_revision: FontRegistryRevision::default(),
             font_registry_token: FontRegistryToken::new(),
-            font_assets: Default::default(),
         }
     }
 
@@ -54,8 +69,6 @@ impl TextLayoutEngine {
             return Err(TextLayoutError::InvalidFontData(expected_family.to_owned()));
         }
         self.font_context.collection = candidate;
-        self.font_assets
-            .insert(expected_family.to_owned(), font_data);
         self.font_registry_token = FontRegistryToken::new();
         self.font_registry_revision = next_revision;
         Ok(next_revision)

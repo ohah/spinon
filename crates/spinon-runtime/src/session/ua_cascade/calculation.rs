@@ -37,6 +37,7 @@ use std::time::Instant;
 pub(super) enum RuntimeCalculationProfile {
     FlexLayout,
     RootHtmlDocument,
+    RootHtmlDefaultRender,
     RootHtmlBlockPaint,
     #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
     RootHtmlTextPaint,
@@ -68,6 +69,7 @@ impl RuntimeCalculationProfile {
 fn is_root_html_paint_profile(profile: RuntimeCalculationProfile) -> bool {
     match profile {
         RuntimeCalculationProfile::RootHtmlBlockPaint => true,
+        RuntimeCalculationProfile::RootHtmlDefaultRender => true,
         #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
         RuntimeCalculationProfile::RootHtmlTextPaint => true,
         _ => false,
@@ -176,6 +178,12 @@ pub(super) fn compute_request_for_root_html(
     request: &WorkRequest,
 ) -> Result<RuntimeCalculation, String> {
     compute_request_with_profile(request, RuntimeCalculationProfile::RootHtmlDocument)
+}
+
+pub(super) fn compute_request_for_root_html_default_render(
+    request: &WorkRequest,
+) -> Result<RuntimeCalculation, String> {
+    compute_request_with_profile(request, RuntimeCalculationProfile::RootHtmlDefaultRender)
 }
 
 #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
@@ -498,6 +506,9 @@ fn compute_root(
         RuntimeCalculationProfile::RootHtmlBlockPaint => {
             ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
         }
+        RuntimeCalculationProfile::RootHtmlDefaultRender => {
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+        }
         #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
         RuntimeCalculationProfile::RootHtmlTextPaint => {
             ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
@@ -600,6 +611,14 @@ fn compute_root(
             }
             RuntimeCalculationProfile::RootHtmlBlockPaint => {
                 spinon_style::compute_runtime_root_html_block_paint_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    request.key.style_revision,
+                )
+            }
+            RuntimeCalculationProfile::RootHtmlDefaultRender => {
+                spinon_style::compute_runtime_root_html_text_paint_cascade_with_stylesheets(
                     &view,
                     author_stylesheets,
                     request.viewport,

@@ -1,0 +1,14 @@
+   Compiling spinon-text-layout v0.1.0 (/private/tmp/spinon-roadmap-next-20261018/crates/spinon-text-layout)
+   Compiling spinon-layout v0.1.0 (/private/tmp/spinon-roadmap-next-20261018/crates/spinon-layout)
+   Compiling spinon-style-to-layout v0.1.0 (/private/tmp/spinon-roadmap-next-20261018/crates/spinon-style-to-layout)
+   Compiling spinon-style-to-render v0.1.0 (/private/tmp/spinon-roadmap-next-20261018/crates/spinon-style-to-render)
+   Compiling spinon-runtime v0.1.0 (/private/tmp/spinon-roadmap-next-20261018/crates/spinon-runtime)
+   Compiling spinon-ffi v0.1.0 (/private/tmp/spinon-roadmap-next-20261018/crates/spinon-ffi)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.69s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-52c012efcb77901f)
+
+running 2 tests
+test runtime_gpu::ffi::tests::root_html_constructor_rejects_null_and_empty_sources ... ok
+test runtime_gpu::ffi::tests::root_html_constructor_rejects_oversize_and_malformed_utf8_sources ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 46 filtered out; finished in 0.00s

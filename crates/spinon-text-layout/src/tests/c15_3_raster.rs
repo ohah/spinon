@@ -109,6 +109,68 @@ fn raster_snapshot_preserves_visible_glyphs_and_sources_across_c15_3_scripts() {
 }
 
 #[test]
+fn variable_font_raster_uses_the_same_normalized_weight_as_parley_shaping() {
+    let mut engine = font_engine("Roboto", ROBOTO);
+    let regular = paragraph(
+        "A",
+        "Roboto",
+        32.0,
+        40.0,
+        WhiteSpaceMode::Normal,
+        WordBreakMode::Normal,
+    );
+    let mut bold = regular.clone();
+    bold.style.font_weight = 700.0;
+
+    let regular_layout = engine.layout_paragraph(&regular, 100.0).unwrap();
+    let bold_layout = engine.layout_paragraph(&bold, 100.0).unwrap();
+    assert_eq!(regular_layout.runs.len(), 1);
+    assert_eq!(bold_layout.runs.len(), 1);
+    assert!(!bold_layout.runs[0].synthesis_embolden);
+    assert_ne!(
+        regular_layout.runs[0].normalized_coords, bold_layout.runs[0].normalized_coords,
+        "the variable font's weight axis must match the coordinates used by shaping"
+    );
+
+    let regular_raster = engine.rasterize_glyphs(&regular_layout, 1.0).unwrap();
+    let bold_raster = engine.rasterize_glyphs(&bold_layout, 1.0).unwrap();
+    assert_ne!(
+        regular_raster.glyphs[0].bitmap.as_ref().unwrap().pixels,
+        bold_raster.glyphs[0].bitmap.as_ref().unwrap().pixels,
+        "raster output must use the selected weight axis"
+    );
+}
+
+#[test]
+fn static_font_raster_applies_parley_synthetic_bold_and_italic() {
+    let mut engine = font_engine("Ahem", AHEM);
+    let regular = paragraph(
+        "X",
+        "Ahem",
+        20.0,
+        24.0,
+        WhiteSpaceMode::Normal,
+        WordBreakMode::Normal,
+    );
+    let mut emphasized = regular.clone();
+    emphasized.style.font_weight = 700.0;
+    emphasized.style.font_style = crate::FontStyleMode::Italic;
+
+    let regular_layout = engine.layout_paragraph(&regular, 40.0).unwrap();
+    let emphasized_layout = engine.layout_paragraph(&emphasized, 40.0).unwrap();
+    assert_eq!(emphasized_layout.runs.len(), 1);
+    assert!(emphasized_layout.runs[0].synthesis_embolden);
+    assert_eq!(emphasized_layout.runs[0].synthesis_skew_degrees, Some(14.0));
+
+    let regular_raster = engine.rasterize_glyphs(&regular_layout, 1.0).unwrap();
+    let emphasized_raster = engine.rasterize_glyphs(&emphasized_layout, 1.0).unwrap();
+    assert_ne!(
+        regular_raster.glyphs[0].bitmap, emphasized_raster.glyphs[0].bitmap,
+        "synthetic weight/style must change the glyph outline"
+    );
+}
+
+#[test]
 fn ahem_raster_dimensions_scale_in_physical_pixels_but_keep_css_positions() {
     let mut engine = font_engine("Ahem", AHEM);
     let input = paragraph(
@@ -303,17 +365,15 @@ fn rasterizer_rejects_invalid_scale_stale_registry_and_corrupt_glyph_ids() {
     ));
 
     let mut missing_font = layout.clone();
-    missing_font.runs[0].font_family = "Ahem".to_owned();
+    missing_font.runs[0].font_data.index = u32::MAX;
     assert!(matches!(
         engine.rasterize_glyphs(&missing_font, 1.0),
-        Err(TextLayoutError::MissingRasterFont(family)) if family == "Ahem"
+        Err(TextLayoutError::InvalidRasterFont(family)) if family == "Roboto"
     ));
 
     let mut invalid_font_engine = font_engine("Roboto", ROBOTO);
-    let invalid_font_layout = invalid_font_engine.layout_paragraph(&input, 100.0).unwrap();
-    invalid_font_engine
-        .font_assets
-        .insert("Roboto".to_owned(), std::sync::Arc::new(vec![0, 1, 2]));
+    let mut invalid_font_layout = invalid_font_engine.layout_paragraph(&input, 100.0).unwrap();
+    invalid_font_layout.runs[0].font_data.index = u32::MAX;
     assert!(matches!(
         invalid_font_engine.rasterize_glyphs(&invalid_font_layout, 1.0),
         Err(TextLayoutError::InvalidRasterFont(family)) if family == "Roboto"

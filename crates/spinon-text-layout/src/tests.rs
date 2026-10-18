@@ -42,6 +42,7 @@ fn paragraph(
             direction: crate::TextDirection::Auto,
             line_break: crate::LineBreakMode::Strict,
             ligatures: crate::LigatureMode::Normal,
+            ..ParagraphStyle::default()
         },
         inline_styles: Default::default(),
         inline_run_styles: Default::default(),

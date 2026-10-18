@@ -25,10 +25,12 @@ pub(super) fn parse_display(
     value: &str,
     allow_flow_root: bool,
     allow_grid: bool,
+    allow_inline: bool,
 ) -> Result<LayoutDisplay, StyleLayoutError> {
     match value {
         "flex" => Ok(LayoutDisplay::Flex),
         "block" => Ok(LayoutDisplay::Block),
+        "inline" if allow_inline => Ok(LayoutDisplay::Inline),
         "flow-root" if allow_flow_root => Ok(LayoutDisplay::FlowRoot),
         "grid" if allow_grid => Ok(LayoutDisplay::Grid),
         "none" => Ok(LayoutDisplay::None),

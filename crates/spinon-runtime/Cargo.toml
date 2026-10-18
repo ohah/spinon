@@ -12,7 +12,6 @@ c14-1-live-v8-fixture-test = []
 c04-12-root-html-block-paint-fixture-test = []
 c04-12-root-html-text-paint-fixture-test = [
     "c04-12-root-html-block-paint-fixture-test",
-    "dep:spinon-text-layout",
     "spinon-style-to-layout/c04-12-root-html-text-paint-fixture-test",
 ]
 c19-2-box-paint-opacity-fixture-test = []
@@ -25,7 +24,7 @@ spinon-style = { path = "../spinon-style" }
 spinon-style-to-layout = { path = "../spinon-style-to-layout" }
 spinon-style-to-render = { path = "../spinon-style-to-render" }
 spinon-render = { path = "../spinon-render" }
-spinon-text-layout = { path = "../spinon-text-layout", optional = true }
+spinon-text-layout = { path = "../spinon-text-layout" }
 
 [dev-dependencies]
 serde_json = "=1.0.151"

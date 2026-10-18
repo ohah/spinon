@@ -173,6 +173,70 @@ fn root_html_session_imports_document_before_v8_worker_is_ready() {
 }
 
 #[test]
+fn c04_12_root_html_default_runtime_paints_computed_block_and_inline_text() {
+    const SOURCE: &str =
+        include_str!("../../../../tests/fixtures/css/c04/root-html-default-rendering.html");
+    let (session, report) = RuntimeSession::new_runtime_gpu_with_root_html(SOURCE)
+        .expect("default root HTML runtime should import the parsed document");
+    assert!(report.contains("session=ready"));
+    let mut media = spinon_style::CssMediaEnvironment::MOBILE;
+    media.color_scheme = spinon_style::CssColorScheme::Light;
+    session
+        .set_root_html_environment(320.0, 240.0, 1.0, media)
+        .expect("root metadata should configure the CSS environment");
+
+    let layout = session.wait_for_layout_snapshot(Duration::from_secs(5));
+    assert_eq!(
+        layout.state,
+        super::RuntimeLayoutState::Ready,
+        "{layout:?}; cascade={:?}",
+        session.ua_cascade_snapshot()
+    );
+    let completed = layout.completed.expect("root HTML scene should complete");
+    let scene = completed
+        .render_snapshot
+        .as_ref()
+        .expect("default root HTML runtime should publish paint");
+    assert_eq!(scene.texts().len(), 2);
+    assert!(scene.texts().iter().all(|text| {
+        !text.glyphs().is_empty()
+            && text
+                .glyph_colors()
+                .is_some_and(|colors| colors.len() == text.glyphs().len())
+            && text.source().generation().get() == completed.key.generation
+            && text.source().document_revision().get() == completed.key.document_revision
+            && text.source().render_tree_revision().get() == completed.key.render_tree_revision
+            && text.source().style_revision() == completed.key.style_revision
+            && text.source().environment_revision().get() == completed.key.environment_revision
+    }));
+    assert_ne!(
+        scene.texts()[0].color(),
+        scene.texts()[1].color(),
+        "heading and paragraph colors should differ"
+    );
+}
+
+#[test]
+fn c04_12_root_html_default_runtime_ignores_unsupported_styles_in_hidden_subtree() {
+    let source = "<!doctype html><html><head><style>.hidden { display: none; } .hidden p { word-break: keep-all; }</style></head><body><div class='hidden'><p>hidden text</p></div><main>visible text</main></body></html>";
+    let (session, _) = RuntimeSession::new_runtime_gpu_with_root_html(source)
+        .expect("default root HTML runtime should import hidden unsupported subtree");
+    let mut media = spinon_style::CssMediaEnvironment::MOBILE;
+    media.color_scheme = spinon_style::CssColorScheme::Light;
+    session
+        .set_root_html_environment(320.0, 240.0, 1.0, media)
+        .expect("root metadata should configure the CSS environment");
+
+    let layout = session.wait_for_layout_snapshot(Duration::from_secs(5));
+    assert_eq!(layout.state, super::RuntimeLayoutState::Ready, "{layout:?}");
+    let scene = layout
+        .completed
+        .and_then(|completed| completed.render_snapshot.clone())
+        .expect("visible sibling should produce a scene");
+    assert_eq!(scene.texts().len(), 1, "hidden text must not be painted");
+}
+
+#[test]
 fn root_html_environment_projects_viewport_and_os_scheme_into_css_cascade() {
     let (session, _) = RuntimeSession::new_with_root_html(
         "<!doctype html><html><head><meta name='viewport' content='width=device-width, initial-scale=1'><meta name='color-scheme' content='dark'><style>:root { color-scheme: light dark; } main { aspect-ratio: 2; } @media (max-width: 390px) { main { width: 123px; } } @media (prefers-color-scheme: dark) { main { height: 456px; } }</style></head><body><main>초기 화면</main></body></html>",

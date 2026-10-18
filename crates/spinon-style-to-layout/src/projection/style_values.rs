@@ -221,6 +221,7 @@ pub(super) fn project_styles(
                         | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
                         | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
                 ),
+                snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
             )?,
             overflow_x: if supports_overflow_clip(snapshot.profile) {
                 parse_overflow(node, "overflow-x", element.layout_overflow_x)?
