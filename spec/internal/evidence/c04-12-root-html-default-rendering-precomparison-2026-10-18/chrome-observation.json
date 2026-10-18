@@ -1,0 +1,27 @@
+{
+  "browser": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "version": "155.0.0.0",
+    "host": "macOS ARM",
+    "viewportCssPx": [320, 240],
+    "deviceScaleFactor": 1,
+    "schemeEmulation": ["light", "dark"]
+  },
+  "fixture": "tests/fixtures/css/c04/root-html-default-rendering.html",
+  "light": {
+    "body": { "color": "rgb(38, 51, 66)", "backgroundColor": "rgb(255, 255, 255)" },
+    "main": { "rect": [0, 0, 320, 240], "backgroundColor": "rgb(248, 250, 252)" },
+    "heading": { "rect": [16, 16, 288, 30], "font": "700 24px system-ui, sans-serif", "color": "rgb(18, 52, 90)", "textRange": [124.859375, 28] },
+    "paragraph": { "rect": [16, 58, 288, 40], "font": "16px system-ui, sans-serif", "textRange": [272.40625, 38] },
+    "strong": { "rect": [155.453125, 58, 27.6875, 18], "font": "700 16px system-ui, sans-serif" }
+  },
+  "dark": {
+    "body": { "color": "rgb(228, 231, 235)", "backgroundColor": "rgb(18, 18, 18)" },
+    "main": { "backgroundColor": "rgb(29, 41, 57)" },
+    "heading": { "color": "rgb(147, 197, 253)" }
+  },
+  "screenshots": {
+    "light": { "path": "chrome155-light.png", "pixels": [320, 240] },
+    "dark": { "path": "chrome155-dark.png", "pixels": [320, 240] }
+  }
+}
