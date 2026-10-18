@@ -1,0 +1,52 @@
+{
+  "schema": "spinon-tailnet-backup-verification/v1",
+  "created_utc": "2026-10-18T20:09:27.690Z",
+  "replaced_targets": 6,
+  "verified": 6,
+  "failures": 0,
+  "deletions": 0,
+  "files": [
+    {
+      "path": "404.html",
+      "backup_path": "backup/404.html",
+      "bytes": 8512,
+      "sha256": "3e2364cde4ae928220701e5c338792f54eca0198ec686d7e306e2bc0e2a6841e",
+      "matches_before": true
+    },
+    {
+      "path": "plan/c12-4-repeated-session-lifecycle.html",
+      "backup_path": "backup/plan/c12-4-repeated-session-lifecycle.html",
+      "bytes": 8749,
+      "sha256": "c1450096567027574b02cc6866ac577afe80732138a2c0acde8c8f72cd0f7701",
+      "matches_before": true
+    },
+    {
+      "path": "plan/c12-4-repeated-session-lifecycle.md",
+      "backup_path": "backup/plan/c12-4-repeated-session-lifecycle.md",
+      "bytes": 5601,
+      "sha256": "41f6ab10dc69475a6f3ffc427b8c3609dbdcb590e5cb0e9b18b651f0f70e552b",
+      "matches_before": true
+    },
+    {
+      "path": "roadmap.html",
+      "backup_path": "backup/roadmap.html",
+      "bytes": 141982,
+      "sha256": "b7210361591b9fda199d086c3c8d5fbf0833879a171021af6cf37e9e613746ce",
+      "matches_before": true
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "backup/STATUS.html",
+      "bytes": 377758,
+      "sha256": "e558cee1fa9147e407bb48c420edded0a05d4b02893e89bc0ddf0c706b84ed8f",
+      "matches_before": true
+    },
+    {
+      "path": "STATUS.md",
+      "backup_path": "backup/STATUS.md",
+      "bytes": 290648,
+      "sha256": "4fbd14dccece89b9afb18af8d402e288db0a245693e07cf95a289d4a596f5ca0",
+      "matches_before": true
+    }
+  ]
+}
