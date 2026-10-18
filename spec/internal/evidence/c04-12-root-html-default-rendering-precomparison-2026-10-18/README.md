@@ -9,9 +9,11 @@
 - scheme: Agent Browser media emulation으로 light/dark를 각각 선택
 - 입력: `tests/fixtures/css/c04/root-html-default-rendering.html`
 - 화면: `chrome155-light.png` / `chrome155-dark.png`, 각각 `320×240px`
+- 공개 로드맵 후속 화면: `roadmap-followup-agent-browser.png` (`spec/public/roadmap.html`, Agent Browser, `1280×633px`)
 - 수치: `chrome-observation.json`
 - 계획 실패 관점: `plan-review-20.md`
 - PR 변경 실패 관점: `pr-delta-review-20.md`
+- 로드맵 후속 PR diff 실패 관점: `roadmap-followup-pr-review-20.md`
 
 ## 관찰값
 
@@ -28,7 +30,7 @@ Chrome's resolved metrics are the host-specific reference, not a promise that iO
 
 ## Hashes
 
-`SHA256SUMS` binds the fixture and both captured screenshots; run `shasum -a 256 -c spec/internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/SHA256SUMS` from the repository root.
+`SHA256SUMS` binds the fixture and three captured screenshots; run `shasum -a 256 -c spec/internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/SHA256SUMS` from the repository root.
 
 ## 문서 빌드
 
