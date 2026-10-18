@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "backup_root": "SpinonPreviewBackups/c13-3-ios-app-event-boundary-tailnet-sync-2026-10-18-final",
+  "backup_count": 11,
+  "all_verified": true,
+  "backups": [
+    {
+      "path": "404.html",
+      "backup_path": "<backup-root>/404.html",
+      "bytes": 8512,
+      "source_sha256": "242b98ea2a0da4c646670732719102e8292828a9217d8e053c31f1e46c7118e6",
+      "backup_sha256": "242b98ea2a0da4c646670732719102e8292828a9217d8e053c31f1e46c7118e6",
+      "verified": true
+    },
+    {
+      "path": "internal/0063-c13-3-scroll-gestures.html",
+      "backup_path": "<backup-root>/internal/0063-c13-3-scroll-gestures.html",
+      "bytes": 66837,
+      "source_sha256": "f2d8c570f0bc1c4e61f2e694a98eaa354fa4a4a4a1d368636d363e15984e1e8b",
+      "backup_sha256": "f2d8c570f0bc1c4e61f2e694a98eaa354fa4a4a4a1d368636d363e15984e1e8b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-app-event-boundary-2026-10-18/implementation-review-20.html",
+      "backup_path": "<backup-root>/internal/evidence/c13-3-ios-app-event-boundary-2026-10-18/implementation-review-20.html",
+      "bytes": 34367,
+      "source_sha256": "bdcae5b0118528c4cbcc8b372c285988eaa96c0127e9cc14a4fd95d0bb28814b",
+      "backup_sha256": "bdcae5b0118528c4cbcc8b372c285988eaa96c0127e9cc14a4fd95d0bb28814b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-app-event-boundary-2026-10-18/pr-delta-review-30.html",
+      "backup_path": "<backup-root>/internal/evidence/c13-3-ios-app-event-boundary-2026-10-18/pr-delta-review-30.html",
+      "bytes": 42044,
+      "source_sha256": "ab25dccb6265af652c27645e11f49c5b311f9a14e214e4cfa11a2866c5928769",
+      "backup_sha256": "ab25dccb6265af652c27645e11f49c5b311f9a14e214e4cfa11a2866c5928769",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-app-event-boundary-2026-10-18/README.html",
+      "backup_path": "<backup-root>/internal/evidence/c13-3-ios-app-event-boundary-2026-10-18/README.html",
+      "bytes": 28270,
+      "source_sha256": "81cbb92289f66fc7c3e8afe73c39c8407bf52cfeaf431755b39b15764791fe06",
+      "backup_sha256": "81cbb92289f66fc7c3e8afe73c39c8407bf52cfeaf431755b39b15764791fe06",
+      "verified": true
+    },
+    {
+      "path": "internal/README.html",
+      "backup_path": "<backup-root>/internal/README.html",
+      "bytes": 164672,
+      "source_sha256": "5315818e592b6d1dd43c7a8e76d50b604f7faba7f6b77fd3c4e78e9104316dba",
+      "backup_sha256": "5315818e592b6d1dd43c7a8e76d50b604f7faba7f6b77fd3c4e78e9104316dba",
+      "verified": true
+    },
+    {
+      "path": "internal/README.md",
+      "backup_path": "<backup-root>/internal/README.md",
+      "bytes": 121063,
+      "source_sha256": "bd61c2d7996f44f9601a88ebc9f308198c2d34b5112764c20832e70904f8d893",
+      "backup_sha256": "bd61c2d7996f44f9601a88ebc9f308198c2d34b5112764c20832e70904f8d893",
+      "verified": true
+    },
+    {
+      "path": "plan/c13-3-ios-app-event-boundary-plan-review-20.html",
+      "backup_path": "<backup-root>/plan/c13-3-ios-app-event-boundary-plan-review-20.html",
+      "bytes": 28492,
+      "source_sha256": "b88bc25ecfe77e0c1e742dfd57cd7a399f7620f663ae971c81ca298fed7ea5a2",
+      "backup_sha256": "b88bc25ecfe77e0c1e742dfd57cd7a399f7620f663ae971c81ca298fed7ea5a2",
+      "verified": true
+    },
+    {
+      "path": "plan/c13-3-ios-app-event-boundary.html",
+      "backup_path": "<backup-root>/plan/c13-3-ios-app-event-boundary.html",
+      "bytes": 28731,
+      "source_sha256": "79a54a41d877fcd5d78e61074e874a083017666c2c4b0bdc53b562353442d81e",
+      "backup_sha256": "79a54a41d877fcd5d78e61074e874a083017666c2c4b0bdc53b562353442d81e",
+      "verified": true
+    },
+    {
+      "path": "public/roadmap.html",
+      "backup_path": "<backup-root>/public/roadmap.html",
+      "bytes": 126112,
+      "source_sha256": "f3e885cb148cc9e51e85b37565c0f4e70f18c694a3c15f5b5ed94b3b0dca86f8",
+      "backup_sha256": "f3e885cb148cc9e51e85b37565c0f4e70f18c694a3c15f5b5ed94b3b0dca86f8",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "<backup-root>/STATUS.html",
+      "bytes": 360111,
+      "source_sha256": "0d2868073989d7b146438eedaaf006a56e51e20e82f8517236d0b2db58db739f",
+      "backup_sha256": "0d2868073989d7b146438eedaaf006a56e51e20e82f8517236d0b2db58db739f",
+      "verified": true
+    }
+  ]
+}

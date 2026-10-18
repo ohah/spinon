@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "tool": "Agent Browser",
+  "engine": "Chrome 155",
+  "checked_routes": [
+    {
+      "path": "/spinon/roadmap.html",
+      "status": 200,
+      "visible_counter": "207개 표시 · 공식 완료 74/207",
+      "event_boundary_note": true,
+      "c13_3_incomplete": true
+    },
+    {
+      "path": "/spinon/internal/README.html",
+      "status": 200,
+      "new_sync_link": true
+    },
+    {
+      "path": "/spinon/plan/c13-3-ios-app-event-boundary.html",
+      "status": 200
+    },
+    {
+      "path": "/spinon/STATUS.html",
+      "status": 200,
+      "event_boundary_record": true,
+      "official_completion": "74/207"
+    },
+    {
+      "path": "/spinon/internal/evidence/c13-3-ios-app-event-boundary-2026-10-18/README.html",
+      "status": 200,
+      "images_loaded": [
+        {
+          "width": 1536,
+          "height": 2048
+        },
+        {
+          "width": 1536,
+          "height": 2048
+        }
+      ]
+    },
+    {
+      "path": "/spinon/internal/evidence/c13-3-ios-app-event-boundary-tailnet-sync-2026-10-18/README.html",
+      "status": 200,
+      "embedded_browser_screenshots_loaded": 5,
+      "each_viewport": {
+        "width": 1280,
+        "height": 633
+      }
+    },
+    {
+      "path": "/spinon/internal/evidence/c13-3-ios-app-event-boundary-tailnet-sync-2026-10-18/render-build-result.html",
+      "status": 200,
+      "reported_routes": 13
+    },
+    {
+      "path": "/spinon/internal/evidence/c13-3-ios-app-event-boundary-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "status": 200,
+      "review_rows": 30
+    }
+  ],
+  "dynamic_status_request": {
+    "path": "/repos/ohah/spinon/contents/spec/STATUS.md",
+    "status": 200
+  },
+  "network_summary": {
+    "relevant_unique_requests": 39,
+    "all_status_200": true,
+    "hostnames_queries_request_ids_and_headers_removed": true
+  },
+  "screenshot_files": [
+    "tailnet-roadmap-counter-agent-browser.png",
+    "tailnet-roadmap-c133-agent-browser.png",
+    "tailnet-plan-agent-browser.png",
+    "tailnet-status-agent-browser.png",
+    "tailnet-evidence-agent-browser.png"
+  ]
+}

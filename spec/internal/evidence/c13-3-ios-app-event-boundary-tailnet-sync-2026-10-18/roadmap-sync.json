@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-18",
+  "source_pr": {
+    "number": 307,
+    "state": "MERGED",
+    "merge_sha": "faf48de4ba2ffc1d5d12bb2607419ecc220bc40b"
+  },
+  "official_state": {
+    "c13_3_complete": false,
+    "completed": "74/207"
+  },
+  "render": {
+    "rspress": "2.0.22",
+    "selected_root_files": 55,
+    "render_output_files": 48,
+    "render_output_bytes": 4539772,
+    "html_files_including_404": 13,
+    "full_docs_build": false,
+    "dead_link_and_image_checks_disabled_for_selected_root": true
+  },
+  "content_payload": {
+    "files": 102,
+    "bytes": 7109812,
+    "actions": {
+      "add": 34,
+      "replace": 11,
+      "same": 57
+    },
+    "no_deletes": true,
+    "backup_count": 11,
+    "copied_count": 45,
+    "copy_verified": true
+  },
+  "served_content": {
+    "files": 102,
+    "requests": 204,
+    "local_all_200_hash_match": true,
+    "tailnet_all_200_hash_match": true,
+    "all_verified": true
+  },
+  "browser": {
+    "counter": "207개 표시 · 공식 완료 74/207",
+    "event_boundary_note_visible": true,
+    "c13_3_incomplete": true,
+    "dynamic_main_status_http": 200,
+    "verified_routes": [
+      "/spinon/roadmap.html",
+      "/spinon/internal/README.html",
+      "/spinon/plan/c13-3-ios-app-event-boundary.html",
+      "/spinon/STATUS.html",
+      "/spinon/internal/evidence/c13-3-ios-app-event-boundary-2026-10-18/README.html",
+      "/spinon/internal/evidence/c13-3-ios-app-event-boundary-tailnet-sync-2026-10-18/README.html",
+      "/spinon/internal/evidence/c13-3-ios-app-event-boundary-tailnet-sync-2026-10-18/render-build-result.html",
+      "/spinon/internal/evidence/c13-3-ios-app-event-boundary-tailnet-sync-2026-10-18/pr-delta-review-30.html"
+    ],
+    "relevant_requests": 39,
+    "all_status_200": true
+  },
+  "deployment": {
+    "github_pages": false,
+    "existing_preview_listener_restarted": false,
+    "files_deleted": 0
+  }
+}

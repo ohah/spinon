@@ -1,0 +1,42 @@
+Agent Browser Chrome 155 network summary (hostnames, queries, timestamps, request IDs, and headers removed)
+relevant_unique_requests=39
+all_status_200=true
+GET /repos/ohah/spinon/contents/spec/STATUS.md 200 Fetch application/json
+GET /spinon/icon.svg 200 Other image/svg+xml
+GET /spinon/internal/evidence/c13-3-ios-app-event-boundary-2026-10-18/README.html 200 Document text/html
+GET /spinon/internal/evidence/c13-3-ios-app-event-boundary-tailnet-sync-2026-10-18/pr-delta-review-30.html 200 Document text/html
+GET /spinon/internal/evidence/c13-3-ios-app-event-boundary-tailnet-sync-2026-10-18/README.html 200 Document text/html
+GET /spinon/internal/evidence/c13-3-ios-app-event-boundary-tailnet-sync-2026-10-18/render-build-result.html 200 Document text/html
+GET /spinon/internal/README.html 200 Document text/html
+GET /spinon/logo.svg 200 Image image/svg+xml
+GET /spinon/plan/c13-3-ios-app-event-boundary.html 200 Document text/html
+GET /spinon/roadmap.html 200 Document text/html
+GET /spinon/roadmap.svg 200 Image image/svg+xml
+GET /spinon/static/css/styles.8d918fd78e.css 200 Stylesheet text/css
+GET /spinon/static/image/application-event-boundary-screen.516c98e014.png 200 Image image/png
+GET /spinon/static/image/direct-touch-screen.c130100389.png 200 Image image/png
+GET /spinon/static/image/tailnet-evidence-agent-browser.486bbe6fdc.png 200 Image image/png
+GET /spinon/static/image/tailnet-plan-agent-browser.683f75a471.png 200 Image image/png
+GET /spinon/static/image/tailnet-roadmap-c133-agent-browser.4833b31d44.png 200 Image image/png
+GET /spinon/static/image/tailnet-roadmap-counter-agent-browser.a8b7bbc6f0.png 200 Image image/png
+GET /spinon/static/image/tailnet-status-agent-browser.53e6115d5f.png 200 Image image/png
+GET /spinon/static/js/3.7fb37786b2.js 200 Script text/javascript
+GET /spinon/static/js/a.f9f643d77c.js 200 Script text/javascript
+GET /spinon/static/js/async/route-3e337acdadf9.97ceb6d5e0.js 200 Script text/javascript
+GET /spinon/static/js/async/route-51ecd37ca08b.f70aa354cf.js 200 Script text/javascript
+GET /spinon/static/js/async/route-68fa4c4a4091.570e3395ea.js 200 Script text/javascript
+GET /spinon/static/js/async/route-6c0a41c9bc03.523caaadf5.js 200 Script text/javascript
+GET /spinon/static/js/async/route-6c33a3943990.93ea5880cd.js 200 Script text/javascript
+GET /spinon/static/js/async/route-a1017bdf23ca.f8b9ee501f.js 200 Script text/javascript
+GET /spinon/static/js/async/route-bfb6d9c6119d.dd0764e8ec.js 200 Script text/javascript
+GET /spinon/static/js/index.017f882d6b.js 200 Script text/javascript
+GET /spinon/static/js/index.a8c768dffb.js 200 Script text/javascript
+GET /spinon/static/js/lib-react.801d719c4f.js 200 Script text/javascript
+GET /spinon/static/js/lib-react.9cdf8f49ce.js 200 Script text/javascript
+GET /spinon/static/js/lib-router.1e14e568cb.js 200 Script text/javascript
+GET /spinon/static/js/lib-router.d3b08da66f.js 200 Script text/javascript
+GET /spinon/static/js/styles.2da0941fcb.js 200 Script text/javascript
+GET /spinon/static/js/styles.b5d9a69293.js 200 Script text/javascript
+GET /spinon/static/search_index.ko.2a33d25e.json 200 Other application/json
+GET /spinon/static/search_index.ko.f3d010d7.json 200 Other application/json
+GET /spinon/STATUS.html 200 Document text/html

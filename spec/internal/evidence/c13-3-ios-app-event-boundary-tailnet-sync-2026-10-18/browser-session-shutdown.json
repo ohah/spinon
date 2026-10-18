@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "tool": "Agent Browser",
+  "session": "spinon-c13-3-tailnet-sync-followup-20261018",
+  "close_command_succeeded": true,
+  "closed_page_count": 0,
+  "browser_process_launched_after_close": false,
+  "reported_session_process_alive_after_close": false,
+  "persistent_agent_browser_or_chrome_profile_process_observed": false,
+  "unrelated_tmux_sessions_touched": false
+}
