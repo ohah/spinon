@@ -1,0 +1,54 @@
+{
+  "run_id": "run-04-negative-x-only-repeat",
+  "simulator": {
+    "device": "iPad Pro 13-inch (M5)",
+    "udid": "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+    "os": "iOS 26.2",
+    "kind": "Simulator"
+  },
+  "app_executable_sha256": "46c19b1070ce41ff14084c5c33abf30603c2c6fc1143a213b6da72df91c49f6e",
+  "xctest": {
+    "test": "testNegativeXAtInnerTarget",
+    "iterations": 3,
+    "passed": 3,
+    "failed": 0,
+    "result": "Passed",
+    "relaunch_each_iteration": true,
+    "requested_delta_points": [
+      -38,
+      0
+    ]
+  },
+  "observations": {
+    "native_callback_count": 3,
+    "process_count": 3,
+    "source": "continuous-trackpad",
+    "target": 7,
+    "raw_delta_points_x": [
+      5.1843414,
+      2.1793213,
+      20.7473
+    ],
+    "normalized_delta_css_px_x": [
+      -5.1843414,
+      -2.1793213,
+      -20.7473
+    ],
+    "offset_x_before": [
+      0,
+      0,
+      0
+    ],
+    "offset_x_after": [
+      0,
+      0,
+      0
+    ],
+    "published": [
+      false,
+      false,
+      false
+    ]
+  },
+  "interpretation": "세 회 모두 callback과 queue process를 확인했다. 시작 offset이 0인 경계에서 negative delta가 모두 remainder로 남았으므로 reverse scroll 소비 성공으로 세지 않는다."
+}

@@ -18,7 +18,12 @@
       "xctest_methods_failed": 0,
       "native_callbacks_observed": 4,
       "native_callbacks_processed": 4,
-      "target_ids": [7, 7, 7, 7],
+      "target_ids": [
+        7,
+        7,
+        7,
+        7
+      ],
       "roundtrip_offsets_returned_to_zero": {
         "x": true,
         "y": true
@@ -31,7 +36,11 @@
       "xctest_methods_failed": 0,
       "native_callbacks_observed": 3,
       "native_callbacks_processed": 3,
-      "target_ids": [7, 7, 7],
+      "target_ids": [
+        7,
+        7,
+        7
+      ],
       "roundtrip_offsets_returned_to_zero": {
         "x": false,
         "y": true
@@ -45,14 +54,101 @@
       "xctest_methods_failed": 0,
       "native_callbacks_observed": 2,
       "native_callbacks_processed": 2,
-      "target_ids": [7, 7],
+      "target_ids": [
+        7,
+        7
+      ],
       "roundtrip_offsets_returned_to_zero": {
         "x": true
       },
       "result": "horizontal roundtrip observed again"
+    },
+    {
+      "id": "run-04-inner-target-negative-x-only-repeat",
+      "xctest_methods_passed": 3,
+      "xctest_methods_failed": 0,
+      "native_callbacks_observed": 3,
+      "native_callbacks_processed": 3,
+      "target_ids": [
+        7,
+        7,
+        7
+      ],
+      "normalized_delta_css_px_x": [
+        -5.1843414,
+        -2.1793213,
+        -20.7473
+      ],
+      "published": [
+        false,
+        false,
+        false
+      ],
+      "offset_x_before_after": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "result": "negative callbacks and queue processing 3/3; no scroll consumed at zero-offset boundary"
+    },
+    {
+      "id": "run-05-inner-target-horizontal-roundtrip-repeat",
+      "xctest_methods_passed": 5,
+      "xctest_methods_failed": 0,
+      "positive_x_callbacks": 5,
+      "positive_x_processed": 5,
+      "negative_x_callbacks": 3,
+      "negative_x_processed": 3,
+      "missing_negative_x_repetitions": [
+        1,
+        5
+      ],
+      "target_ids": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "final_inner_x_offsets": [
+        7.907501,
+        3.5337067,
+        15.245239,
+        1.8536987,
+        9.195129
+      ],
+      "roundtrip_offsets_returned_to_zero": false,
+      "result": "XCTest 5/5; app callback/process 8/10; UIKit delta sizes differ from requested plus/minus 38"
+    },
+    {
+      "id": "run-06-center-roundtrip-no-hover-partial",
+      "xctest_iterations_requested": 5,
+      "xcresult_result": "unknown",
+      "xcresult_total_test_count": 0,
+      "completed_test_count": 0,
+      "observed_app_processes": 4,
+      "observed_callbacks": 6,
+      "negative_targets_observed": [
+        5,
+        5,
+        5
+      ],
+      "result": "incomplete after Xcode result-bundle write ran out of disk; exclude from pass gate"
     }
   ],
-  "interpretation": "The coordinate-anchored adapter path processed all four directions once and horizontal roundtrip twice, but one of three horizontal repetitions had no negative-x app callback. XCTest method success is not callback success. The cause of the missing callback was not isolated.",
+  "interpretation": "Inner-target negative-only delivered 3/3 callbacks but did not consume at the zero-offset boundary. A five-run inner-target horizontal roundtrip passed XCTest 5/5, while app callbacks/process were 8/10: positive X 5/5 and negative X 3/5. Observed UIKit deltas differed from requested plus/minus 38, so no run returned the inner offset to zero. A center-coordinate control was incomplete because Xcode ran out of disk space; its partial logs show negative samples at target 5. Missing callback stage remains unknown and C13.3 stays incomplete.",
   "scope_limits": [
     "iOS Simulator event synthesis only",
     "discrete mouse not tested",

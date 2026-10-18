@@ -1,0 +1,70 @@
+{
+  "test": "testHorizontalRoundTripAtInnerTarget",
+  "test_runs": [
+    {
+      "repetition": 1,
+      "actions": [
+        {
+          "at": 1792290192.727,
+          "action": "Scroll \"C13.3 iOS UIPanGestureRecognizer nested scroll gesture WGPU Metal 장면\" Other[0.33, 0.47] by dx: 38.00, dy: 0.00"
+        },
+        {
+          "at": 1792290204.152,
+          "action": "Scroll \"C13.3 iOS UIPanGestureRecognizer nested scroll gesture WGPU Metal 장면\" Other[0.33, 0.47] by dx: -38.00, dy: 0.00"
+        }
+      ]
+    },
+    {
+      "repetition": 2,
+      "actions": [
+        {
+          "at": 1792290225.607,
+          "action": "Scroll \"C13.3 iOS UIPanGestureRecognizer nested scroll gesture WGPU Metal 장면\" Other[0.33, 0.47] by dx: 38.00, dy: 0.00"
+        },
+        {
+          "at": 1792290237.027,
+          "action": "Scroll \"C13.3 iOS UIPanGestureRecognizer nested scroll gesture WGPU Metal 장면\" Other[0.33, 0.47] by dx: -38.00, dy: 0.00"
+        }
+      ]
+    },
+    {
+      "repetition": 3,
+      "actions": [
+        {
+          "at": 1792290258.54,
+          "action": "Scroll \"C13.3 iOS UIPanGestureRecognizer nested scroll gesture WGPU Metal 장면\" Other[0.33, 0.47] by dx: 38.00, dy: 0.00"
+        },
+        {
+          "at": 1792290269.949,
+          "action": "Scroll \"C13.3 iOS UIPanGestureRecognizer nested scroll gesture WGPU Metal 장면\" Other[0.33, 0.47] by dx: -38.00, dy: 0.00"
+        }
+      ]
+    },
+    {
+      "repetition": 4,
+      "actions": [
+        {
+          "at": 1792290291.483,
+          "action": "Scroll \"C13.3 iOS UIPanGestureRecognizer nested scroll gesture WGPU Metal 장면\" Other[0.33, 0.47] by dx: 38.00, dy: 0.00"
+        },
+        {
+          "at": 1792290302.898,
+          "action": "Scroll \"C13.3 iOS UIPanGestureRecognizer nested scroll gesture WGPU Metal 장면\" Other[0.33, 0.47] by dx: -38.00, dy: 0.00"
+        }
+      ]
+    },
+    {
+      "repetition": 5,
+      "actions": [
+        {
+          "at": 1792290324.414,
+          "action": "Scroll \"C13.3 iOS UIPanGestureRecognizer nested scroll gesture WGPU Metal 장면\" Other[0.33, 0.47] by dx: 38.00, dy: 0.00"
+        },
+        {
+          "at": 1792290335.837,
+          "action": "Scroll \"C13.3 iOS UIPanGestureRecognizer nested scroll gesture WGPU Metal 장면\" Other[0.33, 0.47] by dx: -38.00, dy: 0.00"
+        }
+      ]
+    }
+  ]
+}
