@@ -1,0 +1,30 @@
+ANDROID_NDK_HOME/ROOT가 고정 버전과 달라 무시하고 SDK의 NDK 27.1.12297006 을 사용합니다.
+SPINON_ANDROID_BUILD_FLAGS c04_runtime_gpu=1 c04_runtime_gpu_fixture_test=1 c04_12_root_html_fixture_test=0 c04_12_root_html_block_paint_fixture_test=0 c13_1_overflow_clip_fixture_test=0 c13_2_scroll_fixture_test=0 c13_3_gesture_fixture_test=0 c14_1_app_fixture_test=0 c14_2_app_fixture_test=0 c14_3_app_fixture_test=0 c18_1_image_paint_fixture_test=0 c18_2_alpha_image_fixture_test=0 c18_3_object_fit_position_fixture_test=0 c18_4_async_image_fixture_test=0 c19_2_box_paint_opacity_fixture_test=0 c15_3_wgpu_glyph_paint_fixture_test=0
+$ mkdir -p build/spinon/bootstrap && bun build examples/bootstrap/app.js --target=browser --outfile build/spinon/bootstrap/app.js && bun build examples/bootstrap/root-app.js --target=browser --outfile build/spinon/bootstrap/root-app.js && cp examples/bootstrap/index.html build/spinon/bootstrap/index.html
+Bundled 1 module in 6ms
+
+  app.js  17.59 KB  (entry point)
+
+Bundled 1 module in 6ms
+
+  root-app.js  1.65 KB  (entry point)
+
+    Finished `release` profile [optimized] target(s) in 0.08s
+    Finished `release` profile [optimized] target(s) in 0.04s
+C12.4 Android runtime matrix: 26 cases, 77 nodes, 21 expected ready, 5 expected rejection
+/private/tmp/spinon-c11-2-3-android-jni-gate-20261019/platforms/android/app/src/main/cpp/spinon_jni.cc:742:7: error: use of undeclared identifier 'spinon_runtime_gpu_host_new_c11_2_3_grid_auto_placement_fixture'; did you mean 'spinon_runtime_gpu_host_new_c11_2_2_grid_auto_placement_fixture'?
+  742 |       spinon_runtime_gpu_host_new_c11_2_3_grid_auto_placement_fixture(
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |       spinon_runtime_gpu_host_new_c11_2_2_grid_auto_placement_fixture
+/private/tmp/spinon-c11-2-3-android-jni-gate-20261019/crates/spinon-ffi/include/spinon_ffi.h:437:23: note: 'spinon_runtime_gpu_host_new_c11_2_2_grid_auto_placement_fixture' declared here
+  437 | SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_2_2_grid_auto_placement_fixture(
+      |                       ^
+/private/tmp/spinon-c11-2-3-android-jni-gate-20261019/platforms/android/app/src/main/cpp/spinon_jni.cc:1697:7: error: use of undeclared identifier 'spinon_runtime_gpu_host_eval_c11_2_3_grid_auto_placement_fixture'; did you mean 'spinon_runtime_gpu_host_eval_c11_2_2_grid_auto_placement_fixture'?
+ 1697 |       spinon_runtime_gpu_host_eval_c11_2_3_grid_auto_placement_fixture(
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |       spinon_runtime_gpu_host_eval_c11_2_2_grid_auto_placement_fixture
+/private/tmp/spinon-c11-2-3-android-jni-gate-20261019/crates/spinon-ffi/include/spinon_ffi.h:631:9: note: 'spinon_runtime_gpu_host_eval_c11_2_2_grid_auto_placement_fixture' declared here
+  631 | int32_t spinon_runtime_gpu_host_eval_c11_2_2_grid_auto_placement_fixture(
+      |         ^
+2 errors generated.
+origin_main_build_exit=1

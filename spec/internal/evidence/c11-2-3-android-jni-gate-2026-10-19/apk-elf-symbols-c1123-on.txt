@@ -1,0 +1,6 @@
+/private/tmp/spinon-c1123-apk-on-lib.so: ELF 64-bit LSB shared object, ARM aarch64, version 1 (SYSV), dynamically linked, stripped
+2da7df96983c832464d3c29e8aaea4049f51cbfe1b696223c3114450cd462f34  /private/tmp/spinon-c1123-apk-on-lib.so
+0000000001d87924 T Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC1123GridAutoPlacementHost
+0000000001d8e5cc T Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC1123GridAutoPlacementFixture
+0000000001da64fc T spinon_runtime_gpu_host_eval_c11_2_3_grid_auto_placement_fixture
+0000000001da6fbc T spinon_runtime_gpu_host_new_c11_2_3_grid_auto_placement_fixture

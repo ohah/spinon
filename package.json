@@ -63,6 +63,7 @@
     "css:check:c11-2-3-grid-fixture": "node tools/css-reference/build-c11-2-3-grid-auto-placement-fixture.mjs",
     "css:reference:c11-2-3-auto-placement": "node tools/css-reference/capture-c11-2-3-grid-auto-placement-precomparison.mjs",
     "test:css-c11-2-3-auto-placement": "node --test tools/css-reference/c11-2-3-grid-auto-placement-precomparison.test.mjs",
+    "test:css-c11-2-3-android-jni-gate": "node --test tools/css-reference/c11-2-3-android-jni-gate.test.mjs",
     "css:generate:c11-2-3-grid-auto-placement-runtime-matrix": "node tools/css-reference/build-c11-2-3-grid-auto-placement-runtime-matrix.mjs",
     "test:css-c11-2-3-grid-auto-placement-runtime-matrix": "node --test tools/css-reference/c11-2-3-grid-auto-placement-runtime-matrix.test.mjs",
     "css:capture:c11-2-3-grid-auto-placement-android-runtime-matrix": "node tools/css-reference/capture-c11-2-3-grid-auto-placement-runtime-matrix.mjs android",

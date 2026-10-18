@@ -737,6 +737,8 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC1122GridAutoPlacement
 extern "C" JNIEXPORT jlong JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC1123GridAutoPlacementHost(
     JNIEnv *, jclass) {
+#if defined(SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST) && \
+    SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST
   std::array<char, 1024> output{};
   SpinonRuntimeGpuHost *host =
       spinon_runtime_gpu_host_new_c11_2_3_grid_auto_placement_fixture(
@@ -749,6 +751,11 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC1123GridAutoPlacement
   __android_log_print(ANDROID_LOG_INFO, kTag,
                       "SPINON_C1123_GRID_HOST=%s", output.data());
   return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
+#else
+  __android_log_print(ANDROID_LOG_ERROR, kTag,
+                      "SPINON_C1123_GRID_DISABLED fixture feature is off");
+  return 0;
+#endif
 }
 
 extern "C" JNIEXPORT jlong JNICALL
@@ -1681,6 +1688,8 @@ extern "C" JNIEXPORT jbyteArray JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC1123GridAutoPlacementFixture(
     JNIEnv *env, jclass, jlong host_handle, jstring scene_id_value,
     jstring run_id_value) {
+#if defined(SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST) && \
+    SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(host_handle));
   const char *scene_id = scene_id_value == nullptr
@@ -1706,6 +1715,12 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC1123GridAutoPlacementFi
   if (scene_id != nullptr) env->ReleaseStringUTFChars(scene_id_value, scene_id);
   if (run_id != nullptr) env->ReleaseStringUTFChars(run_id_value, run_id);
   return ToByteArray(env, report);
+#else
+  (void)host_handle;
+  (void)scene_id_value;
+  (void)run_id_value;
+  return ToByteArray(env, "status=-90 feature-disabled");
+#endif
 }
 
 extern "C" JNIEXPORT jbyteArray JNICALL
