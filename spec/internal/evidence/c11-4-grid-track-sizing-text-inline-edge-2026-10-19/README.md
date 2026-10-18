@@ -4,8 +4,8 @@ base plan의 Grid item `padding`·`border` case와 C15 inline span decoration은
 
 ## 기준 입력과 환경
 
-- Fixture: [`grid-track-sizing-c114-inline-span-edges.html`](../../../../tests/fixtures/css/c11/grid-track-sizing-c114-inline-span-edges.html)
-- Font: [`Ahem.ttf`](../../../../tests/fixtures/resources/c15/Ahem.ttf), SHA-256 `b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448`
+- Fixture: [`grid-track-sizing-c114-inline-span-edges.html`](https://github.com/ohah/spinon/blob/main/tests/fixtures/css/c11/grid-track-sizing-c114-inline-span-edges.html)
+- Font: [`Ahem.ttf`](https://github.com/ohah/spinon/blob/main/tests/fixtures/resources/c15/Ahem.ttf), SHA-256 `b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448`
 - Browser: Agent Browser에서 실행한 `HeadlessChrome/155.0.0.0`, macOS user-agent, DPR 1, viewport `1280×633`
 - `document.fonts.check("10px Ahem")`: `true`
 - 각 Grid는 `width:120px`, `grid-template-columns:min-content`를 사용한다. 텍스트는 Ahem `10px/10px`이며 span은 양쪽에 각각 `4px` padding과 `1px` border가 있다.

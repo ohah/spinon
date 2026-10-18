@@ -1,0 +1,110 @@
+{
+  "backup_root": "<backup root redacted>",
+  "checked_paths": 17,
+  "hash_matches": 17,
+  "all_match": true,
+  "items": [
+    {
+      "path": "0001-conformance.html",
+      "previous_sha256": "c20947e8e81aaeb0a47b0e88946896de84ad9a0287522c0a0db51efaf714209b",
+      "backup_sha256": "c20947e8e81aaeb0a47b0e88946896de84ad9a0287522c0a0db51efaf714209b",
+      "matches": true
+    },
+    {
+      "path": "404.html",
+      "previous_sha256": "2df798b886dfe82ae5cb0dba118f79723ef4d83ab419798e050f47b8dfb58c26",
+      "backup_sha256": "2df798b886dfe82ae5cb0dba118f79723ef4d83ab419798e050f47b8dfb58c26",
+      "matches": true
+    },
+    {
+      "path": "STATUS.html",
+      "previous_sha256": "49f2f117a6db842fb73f5a3a0b38b7a6fb6b2a14193172a53a8015ea50184c41",
+      "backup_sha256": "49f2f117a6db842fb73f5a3a0b38b7a6fb6b2a14193172a53a8015ea50184c41",
+      "matches": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "previous_sha256": "c275f81b43b4ac32e40eb628eb07081758b8d232676761e7ccfbbdd7d0359919",
+      "backup_sha256": "c275f81b43b4ac32e40eb628eb07081758b8d232676761e7ccfbbdd7d0359919",
+      "matches": true
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.html",
+      "previous_sha256": "38d13fcecdb8e9b30b9bc31de50b075339139599aa0c30773d4d8187f634d2eb",
+      "backup_sha256": "38d13fcecdb8e9b30b9bc31de50b075339139599aa0c30773d4d8187f634d2eb",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.html",
+      "previous_sha256": "d82171c3c0cf27e3419f977e1d098830561ea80d7f282c058475799351583d23",
+      "backup_sha256": "d82171c3c0cf27e3419f977e1d098830561ea80d7f282c058475799351583d23",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.md",
+      "previous_sha256": "9cb46a622894d0c66bfb43c05fadf73449cb7b806c9bf44cbe797deddb1ce94f",
+      "backup_sha256": "9cb46a622894d0c66bfb43c05fadf73449cb7b806c9bf44cbe797deddb1ce94f",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.html",
+      "previous_sha256": "73b2c76a83845fca675323616489dcf688b228e1f0357a0f0df883195c00dcd5",
+      "backup_sha256": "73b2c76a83845fca675323616489dcf688b228e1f0357a0f0df883195c00dcd5",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.md",
+      "previous_sha256": "146c8c2a1f17eb7ff7f3172e11c451b8b8e64638df00aec5edfd5d83315b457c",
+      "backup_sha256": "146c8c2a1f17eb7ff7f3172e11c451b8b8e64638df00aec5edfd5d83315b457c",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-delta-review-30.html",
+      "previous_sha256": "e3492c53f72e4c741c6010b53d8c1544b67563a20710033000226ccd7c853f23",
+      "backup_sha256": "e3492c53f72e4c741c6010b53d8c1544b67563a20710033000226ccd7c853f23",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-delta-review-30.md",
+      "previous_sha256": "93d0ea822ad7aa155de45f97bb7d1202ae68866f3dc2825687205a937e6b3001",
+      "backup_sha256": "93d0ea822ad7aa155de45f97bb7d1202ae68866f3dc2825687205a937e6b3001",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.html",
+      "previous_sha256": "d995d70c922c2b457cfebb850f77f668f8c405d9827b6f94965304b28df32f68",
+      "backup_sha256": "d995d70c922c2b457cfebb850f77f668f8c405d9827b6f94965304b28df32f68",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/README.html",
+      "previous_sha256": "c4448babdd9c43891c41ad112aec929c6309c0888f60a2cf5202c5321a653915",
+      "backup_sha256": "c4448babdd9c43891c41ad112aec929c6309c0888f60a2cf5202c5321a653915",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/implementation-review-20.html",
+      "previous_sha256": "8d3b653f7096043edd99de8d704ad3e390b04ebe89c6dd38183834993900d0e3",
+      "backup_sha256": "8d3b653f7096043edd99de8d704ad3e390b04ebe89c6dd38183834993900d0e3",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/pr-delta-review-30.html",
+      "previous_sha256": "925ebdd97bd76856600090dfe5e43dfced26b9d11773f948772e448dabb8c634",
+      "backup_sha256": "925ebdd97bd76856600090dfe5e43dfced26b9d11773f948772e448dabb8c634",
+      "matches": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "previous_sha256": "e70a6f5f5705b6a8ccd03474e81e6b259f80406b8a964378d8b00c2da244bc14",
+      "backup_sha256": "e70a6f5f5705b6a8ccd03474e81e6b259f80406b8a964378d8b00c2da244bc14",
+      "matches": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "previous_sha256": "834e550e96969bbd7cd7af604971add7ca3060df78556327288ef1edeb4107e0",
+      "backup_sha256": "834e550e96969bbd7cd7af604971add7ca3060df78556327288ef1edeb4107e0",
+      "matches": true
+    }
+  ]
+}

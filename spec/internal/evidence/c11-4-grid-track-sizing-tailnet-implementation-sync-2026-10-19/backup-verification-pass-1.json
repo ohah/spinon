@@ -1,0 +1,106 @@
+{
+  "backup_root": "<backup root redacted>",
+  "checked_paths": 14,
+  "hash_matches": 14,
+  "all_match": true,
+  "items": [
+    {
+      "path": "0001-conformance.html",
+      "previous_bytes": 34051,
+      "previous_sha256": "05875624de52468f76ac4c96cfcd074df24ecc605d6ce3f5ab17985c2544f4f0",
+      "backup_sha256": "05875624de52468f76ac4c96cfcd074df24ecc605d6ce3f5ab17985c2544f4f0",
+      "matches": true
+    },
+    {
+      "path": "0001-conformance.md",
+      "previous_bytes": 13862,
+      "previous_sha256": "ea4f83a36e2e72539e600a429755e70c5a4d563df58a120cf538d6fa4a3d625b",
+      "backup_sha256": "ea4f83a36e2e72539e600a429755e70c5a4d563df58a120cf538d6fa4a3d625b",
+      "matches": true
+    },
+    {
+      "path": "404.html",
+      "previous_bytes": 8512,
+      "previous_sha256": "a4d975d8a42d9f20965d5f52ffa65253ae0c4f24f672d3588b4e76169ad74609",
+      "backup_sha256": "a4d975d8a42d9f20965d5f52ffa65253ae0c4f24f672d3588b4e76169ad74609",
+      "matches": true
+    },
+    {
+      "path": "STATUS.html",
+      "previous_bytes": 377380,
+      "previous_sha256": "1a07041be3af9d233923c81d9b28033088f128bdf3d4a9100899337c0f5be7f7",
+      "backup_sha256": "1a07041be3af9d233923c81d9b28033088f128bdf3d4a9100899337c0f5be7f7",
+      "matches": true
+    },
+    {
+      "path": "STATUS.md",
+      "previous_bytes": 293016,
+      "previous_sha256": "9cf946c647472f4ffdb17cc499e17b114aa976bf33c7512b96f3dd87a7b1f289",
+      "backup_sha256": "9cf946c647472f4ffdb17cc499e17b114aa976bf33c7512b96f3dd87a7b1f289",
+      "matches": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "previous_bytes": 65090,
+      "previous_sha256": "1e0818a43b1a996ede4a4f149cbfdfb789105775ff48118cc8741b6a093b3c2b",
+      "backup_sha256": "1e0818a43b1a996ede4a4f149cbfdfb789105775ff48118cc8741b6a093b3c2b",
+      "matches": true
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.html",
+      "previous_bytes": 42509,
+      "previous_sha256": "081e309574123f119da8f75b88dad937c994049f3a513aff0a82858080a1ba64",
+      "backup_sha256": "081e309574123f119da8f75b88dad937c994049f3a513aff0a82858080a1ba64",
+      "matches": true
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.md",
+      "previous_bytes": 15240,
+      "previous_sha256": "e26b0116d7317dad03ac712000d31b427499aa96e40d453c7af7bdb1c7ec901a",
+      "backup_sha256": "e26b0116d7317dad03ac712000d31b427499aa96e40d453c7af7bdb1c7ec901a",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.html",
+      "previous_bytes": 32047,
+      "previous_sha256": "8949013ad408b3b2629f911330ad8b11f6958682cb3910b8be02868e0e9b96cd",
+      "backup_sha256": "8949013ad408b3b2629f911330ad8b11f6958682cb3910b8be02868e0e9b96cd",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.html",
+      "previous_bytes": 26571,
+      "previous_sha256": "910ed03dbee6b4f83cc04cf2c06a97a713eded5bea77f79fc5947d4dfe0233a7",
+      "backup_sha256": "910ed03dbee6b4f83cc04cf2c06a97a713eded5bea77f79fc5947d4dfe0233a7",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-delta-review-30.html",
+      "previous_bytes": 24878,
+      "previous_sha256": "92b433ac616b9041eeee448ceb3c4dcee71e0b27162a481afdf910da374a545e",
+      "backup_sha256": "92b433ac616b9041eeee448ceb3c4dcee71e0b27162a481afdf910da374a545e",
+      "matches": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "previous_bytes": 42265,
+      "previous_sha256": "e505f6deed9a0aef7939344a2c6b635bbb7e6eb95130dfa0bc8da5bdc3097911",
+      "backup_sha256": "e505f6deed9a0aef7939344a2c6b635bbb7e6eb95130dfa0bc8da5bdc3097911",
+      "matches": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "previous_bytes": 18715,
+      "previous_sha256": "1ba4e6f353399dfcac1f65fe2292d77d3350d9311f7b2690580ddf5074c4fa41",
+      "backup_sha256": "1ba4e6f353399dfcac1f65fe2292d77d3350d9311f7b2690580ddf5074c4fa41",
+      "matches": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "previous_bytes": 52218,
+      "previous_sha256": "5ef88d527908a91c6bbf23cdbdc5d99bc0f86e6ec76bf79a69e15de8428f8dad",
+      "backup_sha256": "5ef88d527908a91c6bbf23cdbdc5d99bc0f86e6ec76bf79a69e15de8428f8dad",
+      "matches": true
+    }
+  ]
+}

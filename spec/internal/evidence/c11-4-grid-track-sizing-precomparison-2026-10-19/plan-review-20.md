@@ -1,6 +1,6 @@
 # C11.4 계획 적대 검토 · 20개 독립 관점
 
-**검토 대상:** [`plan/c11-4-grid-track-sizing.md`](../../../../plan/c11-4-grid-track-sizing.md), Chrome precomparison fixture 및 README.
+**검토 대상:** [`plan/c11-4-grid-track-sizing.md`](https://github.com/ohah/spinon/blob/main/plan/c11-4-grid-track-sizing.md), Chrome precomparison fixture 및 README.
 **검토 시점:** 구현 시작 전.
 **결론:** 초기 20관점 검토에서 찾은 oracle 누락을 수정하고 다시 확인했다. 현재 고정 Chrome oracle은 26개다. 계획 검토이므로 runtime 통과나 제품 지원 주장을 의미하지 않는다.
 

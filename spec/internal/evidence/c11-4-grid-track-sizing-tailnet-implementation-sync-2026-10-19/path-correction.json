@@ -1,0 +1,15 @@
+{
+  "issue": "The preview URL prefix was incorrectly treated as a filesystem subdirectory during the first pass 4 copy attempt.",
+  "server_mapping": "The existing server strips /spinon/ and serves from its preview root.",
+  "incorrect_target_prefix": "<preview root>/spinon/",
+  "preflight_created_files": 72,
+  "preflight_existing_files": 0,
+  "cleanup": {
+    "lsof_open_handles_before_cleanup": 0,
+    "files_removed": 72,
+    "each_file_sha256_matched_staged_source_before_removal": true,
+    "remaining_files_under_incorrect_prefix": 0,
+    "existing_preview_root_files_modified": 0
+  },
+  "corrected_copy": "The 72-file allowlist was then copied to the actual preview root; see preflight.json, copy-verification.json, and served-verification.json."
+}
