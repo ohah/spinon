@@ -54,4 +54,4 @@ OS appearance를 dark로 바꿨을 때 Android와 iPhone 런타임 모두 `dark=
 - 빌드는 pinned V8 checkout `/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8`를 읽기 전용 입력으로 사용했다. 빌드 산출물은 이 작업 checkout 안에 생성했다.
 - 전체 화면 캡처는 simulator screenshot이다. Android PixelCopy, iOS compositor 이후 픽셀, 물리 기기 및 hardware GPU는 검증하지 않았다.
 
-새 구현 실패 관점 20개 검토는 [검토 기록](implementation-review-20.md)에, PR 변경분의 별도 실패 관점 30개 검토는 [PR 검토 기록](pr-delta-review-30.md)에 남겼다. PR 병합은 아직 남아 있다. 이 근거는 C04.12/C15/C16/C19 전체 지원 완료를 뜻하지 않는다.
+새 구현 실패 관점 20개 검토는 [검토 기록](implementation-review-20.md)에, PR 변경분의 별도 실패 관점 30개 검토는 [PR 검토 기록](pr-delta-review-30.md)에 남겼다. [PR #326](https://github.com/ohah/spinon/pull/326)은 2026-10-18 UTC에 Rebase and merge됐으며 병합 커밋은 `b99594d1b188e3addc0bd02802d12a53db1b8d95`다. 상태 문서 PR 변경분의 별도 적대 검토 30개는 [검토 기록](docs-pr-delta-review-30-2026-10-19.md)에 남겼다. 이 근거는 C04.12/C15/C16/C19 전체 지원 완료를 뜻하지 않는다.

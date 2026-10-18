@@ -2,7 +2,7 @@
 
 - **문서 유형:** 구현 계획 · 공식 상태는 [`spec/STATUS.md`](../spec/STATUS.md)에서 관리
 - **상위:** [`plan/c04-12-root-html-default-rendering.md`](c04-12-root-html-default-rendering.md) · C04.12/C15/C16/C19는 계속 미완료
-- **상태:** 기본 Android/iOS app route 구현 중. 기본 제품 빌드, API 37 ARM64 AVD·iPhone 17 Pro·iPad Pro 13-inch M5/iOS 26.2 Simulator의 launch와 content-edge sRGB 표본, AVD 표면 크기 변경, product/fixture-positive staticlib boundary 대조, 새 구현 실패 관점 20개 및 PR diff 실패 관점 30개 검토를 마쳤다. PR 병합은 남아 있다.
+- **상태:** 기본 Android/iOS app route 후속 slice 구현을 마쳤다. 기본 제품 빌드, API 37 ARM64 AVD·iPhone 17 Pro·iPad Pro 13-inch M5/iOS 26.2 Simulator의 launch와 content-edge sRGB 표본, AVD 표면 크기 변경, product/fixture-positive staticlib boundary 대조, 새 구현 실패 관점 20개 및 PR diff 실패 관점 30개 검토를 마쳤다. [PR #326](https://github.com/ohah/spinon/pull/326)이 2026-10-18 UTC에 Rebase and merge됐고 병합 커밋은 `b99594d1b188e3addc0bd02802d12a53db1b8d95`다. C04.12/C15/C16/C19 상위 지원 범위는 계속 미완료다.
 - **사전 기준:** [Agent Browser Chrome 155 관찰](../spec/internal/evidence/c04-12-default-app-launch-precomparison-2026-10-19/README.md)
 - **계획 검토:** [서로 다른 실패 관점 20개](../spec/internal/evidence/c04-12-default-app-launch-precomparison-2026-10-19/plan-review-20.md)
 - **구현 검토:** [구현 실패 관점 20개](../spec/internal/evidence/c04-12-default-app-launch-2026-10-19/implementation-review-20.md)
