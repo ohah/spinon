@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko" style="color-scheme: light dark">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C04.12 문서 Canvas 배경 oracle</title>
+  <style>
+    html, body { margin: 0; background-color: transparent; }
+    html { --canvas-test-color: rgb(18 52 86); }
+    html[data-case="html-sheet"] { background-color: rgb(18 52 86); }
+    html[data-case="both-sheet"] { background-color: rgb(18 52 86); }
+    body[data-case="body-sheet"] { background-color: rgb(30 140 70); }
+    body[data-case="both-sheet"] { background-color: rgb(171 205 239); }
+    body[data-case="var"] { background-color: var(--canvas-test-color); }
+    body[data-case="hsl"] { background-color: hsl(120 100% 25%); }
+    body[data-case="hwb"] { background-color: hwb(240 20% 10%); }
+    body[data-case="fractional-srgb"] { background-color: color(srgb 0.2 0.2 0.9); }
+    @media (prefers-color-scheme: dark) {
+      body[data-case="media"] { background-color: rgb(12 34 56); }
+    }
+    @media (prefers-color-scheme: light) {
+      body[data-case="media"] { background-color: rgb(210 220 230); }
+    }
+  </style>
+</head>
+<body data-case="default">
+  <script>
+    window.setCanvasBackgroundCase = (name, htmlColor, bodyColor) => {
+      document.documentElement.dataset.case = name;
+      document.body.dataset.case = name;
+      document.documentElement.style.backgroundColor = htmlColor;
+      document.body.style.backgroundColor = bodyColor;
+    };
+  </script>
+</body>
+</html>

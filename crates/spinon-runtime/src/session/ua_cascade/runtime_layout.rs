@@ -225,9 +225,11 @@ where
         | super::calculation::RuntimeCalculationProfile::RegisteredPropertiesPaint => {
             first_unsupported_runtime_custom_properties_paint_inline_property(&view)
         }
-        super::calculation::RuntimeCalculationProfile::FlexLayout
-        | super::calculation::RuntimeCalculationProfile::RootHtmlDocument => {
+        super::calculation::RuntimeCalculationProfile::FlexLayout => {
             first_unsupported_runtime_custom_properties_inline_property(&view)
+        }
+        super::calculation::RuntimeCalculationProfile::RootHtmlDocument => {
+            spinon_style::first_unsupported_runtime_root_html_inline_property(&view)
         }
     };
     if let Some((node, property)) = unsupported_property {

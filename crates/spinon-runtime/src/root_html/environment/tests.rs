@@ -1,9 +1,11 @@
 use super::{
     ColorSchemeMetadata, RootHtmlEnvironmentMetadata, parse_color_scheme_metadata,
-    resolve_root_html_canvas_color_scheme,
+    resolve_root_html_canvas_background, resolve_root_html_canvas_color_scheme,
 };
 use crate::root_html::ParsedRootHtml;
-use spinon_style::{CssColorScheme, CssMediaEnvironment};
+use spinon_style::{
+    ComputedBackgroundPaint, ComputedSrgbColor, CssColorScheme, CssMediaEnvironment, OpaqueCssSrgb,
+};
 
 const MOBILE_DEFAULT: &str = include_str!(
     "../../../../../spec/internal/evidence/c04-root-html-document-environment-2026-10-17/mobile-default.html"
@@ -272,5 +274,84 @@ fn invalid_surface_inputs_fail_before_creating_a_css_viewport() {
         metadata
             .resolve(1170.0, f32::INFINITY, 3.0, CssMediaEnvironment::MOBILE)
             .is_err()
+    );
+}
+
+fn opaque_background(red: u8, green: u8, blue: u8) -> ComputedBackgroundPaint {
+    ComputedBackgroundPaint::Opaque(OpaqueCssSrgb { red, green, blue })
+}
+
+#[test]
+fn opaque_html_background_precedes_body_background_for_canvas() {
+    assert_eq!(
+        resolve_root_html_canvas_background(
+            opaque_background(18, 52, 86),
+            Some(opaque_background(171, 205, 239)),
+            CssColorScheme::Light,
+        ),
+        Some([18, 52, 86, 255])
+    );
+}
+
+#[test]
+fn opaque_body_background_propagates_when_html_background_is_transparent() {
+    assert_eq!(
+        resolve_root_html_canvas_background(
+            ComputedBackgroundPaint::Transparent,
+            Some(opaque_background(30, 140, 70)),
+            CssColorScheme::Dark,
+        ),
+        Some([30, 140, 70, 255])
+    );
+}
+
+#[test]
+fn transparent_html_and_body_backgrounds_use_the_selected_scheme_fallback() {
+    for (scheme, expected) in [
+        (CssColorScheme::Light, [255, 255, 255, 255]),
+        (CssColorScheme::Dark, [18, 18, 18, 255]),
+    ] {
+        assert_eq!(
+            resolve_root_html_canvas_background(
+                ComputedBackgroundPaint::Transparent,
+                Some(ComputedBackgroundPaint::Transparent),
+                scheme,
+            ),
+            Some(expected)
+        );
+        assert_eq!(
+            resolve_root_html_canvas_background(ComputedBackgroundPaint::Transparent, None, scheme,),
+            Some(expected)
+        );
+    }
+}
+
+#[test]
+fn partial_alpha_is_rejected_only_when_it_is_a_canvas_background_candidate() {
+    let partial = ComputedBackgroundPaint::Translucent(ComputedSrgbColor {
+        red: 0.5,
+        green: 0.25,
+        blue: 0.125,
+        alpha: 0.5,
+    });
+    assert_eq!(
+        resolve_root_html_canvas_background(
+            opaque_background(18, 52, 86),
+            Some(partial),
+            CssColorScheme::Light,
+        ),
+        Some([18, 52, 86, 255])
+    );
+    assert_eq!(
+        resolve_root_html_canvas_background(
+            ComputedBackgroundPaint::Transparent,
+            Some(partial),
+            CssColorScheme::Light,
+        ),
+        None
+    );
+    assert_eq!(
+        resolve_root_html_canvas_background(partial, None, CssColorScheme::Light),
+        None
     );
 }

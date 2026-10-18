@@ -6,7 +6,7 @@ use super::{
     CascadeDiagnostic, RuntimeLayoutCompleted, RuntimeUaCascadeRoot, WorkRequest,
     elapsed_microseconds, key_for_with_style_revision,
 };
-use spinon_core::{HostNodeHandle, HostNodeKind, HostParent, NodeId};
+use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, NodeId};
 use spinon_layout::MAX_LAYOUT_TREE_DEPTH;
 #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
 use spinon_style::compute_c19_box_paint_opacity_cascade_with_stylesheets;
@@ -121,6 +121,7 @@ impl RuntimeCalculation {
                 styles.render_tree_revision = request.snapshot.render_tree_revision();
                 RuntimeUaCascadeRoot {
                     root_node_id: root.root_node_id,
+                    body_node_id: root.body_node_id,
                     styles,
                 }
             })
@@ -424,6 +425,24 @@ fn tree_depth_failure(node: NodeId, depth: usize) -> RuntimeCalculation {
     }
 }
 
+const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
+
+fn root_html_body_node_id(snapshot: &HostDocumentSnapshot, root: HostNodeHandle) -> Option<u64> {
+    let HostNodeKind::Element(root_element) = snapshot.node(root)?.kind() else {
+        return None;
+    };
+    if root_element.namespace() != HTML_NAMESPACE || root_element.local_name() != "html" {
+        return None;
+    }
+    snapshot.children(root)?.find_map(|child| {
+        let HostNodeKind::Element(element) = snapshot.node(child)?.kind() else {
+            return None;
+        };
+        (element.namespace() == HTML_NAMESPACE && element.local_name() == "body")
+            .then(|| child.id().get())
+    })
+}
+
 fn compute_root(
     request: &WorkRequest,
     root: HostNodeHandle,
@@ -691,6 +710,7 @@ fn compute_root(
     Ok((
         RuntimeUaCascadeRoot {
             root_node_id: root.id().get(),
+            body_node_id: root_html_body_node_id(&request.snapshot, root),
             styles,
         },
         view,

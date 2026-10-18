@@ -2,7 +2,8 @@ use spinon_core::{NodeId, StyleRevision};
 use style::properties::{ComputedValues, LonghandId, PropertyDeclarationId};
 
 use crate::{
-    ComputedBackgroundPaint, ComputedBorderPaint, ComputedCssColor, OpaqueCssSrgb, StylesheetSource,
+    ComputedBackgroundPaint, ComputedBorderPaint, ComputedCssColor, ComputedSrgbColor,
+    OpaqueCssSrgb, StylesheetSource,
 };
 
 use super::{
@@ -201,6 +202,7 @@ pub(super) fn computed_background_for_profile(
         ComputedStyleProfile::RuntimeFlexPaintV1
         | ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+        | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
         | ComputedStyleProfile::RuntimeBlockPaintV1
         | ComputedStyleProfile::RuntimeBlockImageV1
         | ComputedStyleProfile::RuntimeBlockFormattingV1
@@ -214,10 +216,14 @@ pub(super) fn computed_background_for_profile(
         | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
         | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
         | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1 => {
-            let paint = if profile == ComputedStyleProfile::C19BoxPaintOpacityV1 {
-                computed_c19_runtime_background_paint(computed, node)?
-            } else {
-                computed_runtime_background_paint(computed, node)?
+            let paint = match profile {
+                ComputedStyleProfile::C19BoxPaintOpacityV1 => {
+                    computed_c19_runtime_background_paint(computed, node)?
+                }
+                ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1 => {
+                    computed_root_html_background_paint(computed, node)?
+                }
+                _ => computed_runtime_background_paint(computed, node)?,
             };
             let color = match paint {
                 ComputedBackgroundPaint::Transparent => None,
@@ -457,6 +463,88 @@ pub(super) fn computed_runtime_background_paint(
             reason: "Stylo 계산값이 절대 색상이 아닙니다".to_owned(),
         }),
     }
+}
+
+fn computed_root_html_background_paint(
+    computed: &ComputedValues,
+    node: NodeId,
+) -> Result<ComputedBackgroundPaint, CssCascadeError> {
+    let color = match computed.clone_background_color() {
+        style::values::computed::Color::Absolute(color) => color,
+        _ => {
+            return Err(CssCascadeError::UnsupportedComputedBackgroundColor {
+                node,
+                reason: "Stylo 계산값이 절대 색상이 아닙니다".to_owned(),
+            });
+        }
+    };
+    let converted = ComputedCssColor::from_absolute_color(color).map_err(|reason| {
+        CssCascadeError::UnsupportedComputedBackgroundColor {
+            node,
+            reason: reason.to_owned(),
+        }
+    })?;
+    if converted.color_space != crate::ComputedCssColorSpace::Srgb {
+        return Err(CssCascadeError::UnsupportedComputedBackgroundColor {
+            node,
+            reason: "root HTML Canvas profile은 sRGB 색상만 지원합니다".to_owned(),
+        });
+    }
+    let [red, green, blue, alpha] = converted.converted_srgb;
+    if !alpha.is_finite() || !(0.0..=1.0).contains(&alpha) {
+        return Err(CssCascadeError::UnsupportedComputedBackgroundColor {
+            node,
+            reason: "root HTML Canvas alpha가 유한한 0..1 값이 아닙니다".to_owned(),
+        });
+    }
+    if alpha == 0.0 {
+        return Ok(ComputedBackgroundPaint::Transparent);
+    }
+    if [red, green, blue]
+        .iter()
+        .any(|channel| !channel.is_finite() || !(0.0..=1.0).contains(channel))
+    {
+        return Err(CssCascadeError::UnsupportedComputedBackgroundColor {
+            node,
+            reason: "root HTML Canvas sRGB channel이 0..1 범위를 벗어났습니다".to_owned(),
+        });
+    }
+    if alpha == 1.0 {
+        let channel_byte = |value: f32| {
+            let scaled = value * 255.0;
+            let rounded = scaled.round();
+            ((scaled - rounded).abs() <= 0.0001).then_some(rounded as u8)
+        };
+        let Some(red) = channel_byte(red) else {
+            return Err(CssCascadeError::UnsupportedComputedBackgroundColor {
+                node,
+                reason: "root HTML Canvas red channel은 8-bit 경계에 맞지 않습니다".to_owned(),
+            });
+        };
+        let Some(green) = channel_byte(green) else {
+            return Err(CssCascadeError::UnsupportedComputedBackgroundColor {
+                node,
+                reason: "root HTML Canvas green channel은 8-bit 경계에 맞지 않습니다".to_owned(),
+            });
+        };
+        let Some(blue) = channel_byte(blue) else {
+            return Err(CssCascadeError::UnsupportedComputedBackgroundColor {
+                node,
+                reason: "root HTML Canvas blue channel은 8-bit 경계에 맞지 않습니다".to_owned(),
+            });
+        };
+        return Ok(ComputedBackgroundPaint::Opaque(OpaqueCssSrgb {
+            red,
+            green,
+            blue,
+        }));
+    }
+    Ok(ComputedBackgroundPaint::Translucent(ComputedSrgbColor {
+        red,
+        green,
+        blue,
+        alpha,
+    }))
 }
 
 pub(super) fn computed_c19_runtime_background_paint(

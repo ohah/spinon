@@ -65,6 +65,7 @@ pub use cascade::{
     first_unsupported_runtime_custom_properties_paint_inline_property,
     first_unsupported_runtime_flex_paint_inline_property,
     first_unsupported_runtime_layout_inline_property,
+    first_unsupported_runtime_root_html_inline_property,
 };
 pub use document::{StyloDocument, StyloDocumentView, StyloDomError};
 pub use element::StyloElement;

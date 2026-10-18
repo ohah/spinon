@@ -1,6 +1,8 @@
 use super::{HTML_NAMESPACE, ParsedNodeKind, ParsedRootHtml};
 use spinon_core::EnvironmentRevision;
-use spinon_style::{CssColorScheme, CssMediaEnvironment, CssViewport};
+use spinon_style::{
+    ComputedBackgroundPaint, CssColorScheme, CssMediaEnvironment, CssViewport, OpaqueCssSrgb,
+};
 
 #[cfg(test)]
 mod tests;
@@ -334,6 +336,26 @@ fn parse_color_scheme_metadata(content: &str) -> Option<ColorSchemeMetadata> {
         }
     }
     (metadata.light || metadata.dark).then_some(metadata)
+}
+
+pub(crate) fn resolve_root_html_canvas_background(
+    html_background: ComputedBackgroundPaint,
+    body_background: Option<ComputedBackgroundPaint>,
+    fallback_scheme: CssColorScheme,
+) -> Option<[u8; 4]> {
+    let to_rgba = |color: OpaqueCssSrgb| [color.red, color.green, color.blue, 255];
+    match html_background {
+        ComputedBackgroundPaint::Opaque(color) => Some(to_rgba(color)),
+        ComputedBackgroundPaint::Translucent(_) => None,
+        ComputedBackgroundPaint::Transparent => match body_background {
+            Some(ComputedBackgroundPaint::Opaque(color)) => Some(to_rgba(color)),
+            Some(ComputedBackgroundPaint::Translucent(_)) => None,
+            Some(ComputedBackgroundPaint::Transparent) | None => Some(match fallback_scheme {
+                CssColorScheme::Light => [255, 255, 255, 255],
+                CssColorScheme::Dark => [18, 18, 18, 255],
+            }),
+        },
+    }
 }
 
 fn resolve_root_html_canvas_color_scheme(
