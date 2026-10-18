@@ -7,7 +7,7 @@ const sourceRoot = path.join(previewRoot, 'source/spec');
 
 export default defineConfig({
   root: sourceRoot,
-  outDir: path.join(previewRoot, 'out-final-verified-20261019'),
+  outDir: path.join(previewRoot, 'out-final-merged-v2-20261019'),
   base: '/spinon/',
   themeDir: path.join(repositoryRoot, 'packages/docs/theme'),
   lang: 'ko',
