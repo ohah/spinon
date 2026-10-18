@@ -1,0 +1,209 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Spinon C11.4 grid track sizing Chrome precomparison</title>
+<style>
+  @font-face { font-family: Ahem; src: url("../../resources/c15/Ahem.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 320px; background: #fff; }
+  body { font: 10px/1 sans-serif; color: #111; }
+  .case { display: flex; align-items: flex-start; gap: 8px; min-height: 48px; border-bottom: 1px solid #ccc; }
+  .label { width: 150px; flex: none; padding-top: 4px; }
+  .grid { flex: none; display: grid; margin: 0; padding: 0; border: 0; gap: 0; align-content: start; justify-content: start; background: #101820; }
+  .image { display: block; margin: 0; padding: 0; border: 0; }
+  .box { margin: 0; padding: 0; border: 0; background: #e5484d; }
+  .text-item { font: 10px/10px Ahem, sans-serif; white-space: normal; color: #e5484d; }
+  #result { display: none; }
+  #auto-img, #minmax-auto-img, #minmax-zero-auto-img, #minmax-min-max-img, #fit-content-12-img, #fit-content-40-img, #fixed-small-overflow-img, #span-img, #fit-content-percent-img, #indefinite-percent-img { width: auto; height: auto; }
+</style>
+<body>
+  <section class="case" data-case="auto-image-definite">
+    <span class="label">auto image, definite 100px grid</span>
+    <div id="auto-image-definite" class="grid" style="width:100px;height:40px;grid-template-columns:auto;grid-template-rows:auto;align-content:start">
+      <img id="auto-img" class="image" src="../../resources/c14-1-png-basic.png" alt="">
+    </div>
+  </section>
+  <section class="case" data-case="minmax-auto-image">
+    <span class="label">minmax(0, auto), intrinsic image</span>
+    <div id="minmax-auto-image" class="grid" style="width:100px;height:40px;grid-template-columns:minmax(0, auto);grid-template-rows:auto;align-content:start">
+      <img id="minmax-auto-img" class="image" src="../../resources/c14-1-png-basic.png" alt="">
+    </div>
+  </section>
+  <section class="case" data-case="minmax-min-max-image">
+    <span class="label">minmax(min-content, max-content)</span>
+    <div id="minmax-min-max-image" class="grid" style="width:100px;height:40px;grid-template-columns:minmax(min-content, max-content);grid-template-rows:auto;align-content:start">
+      <img id="minmax-min-max-img" class="image" src="../../resources/c14-1-png-basic.png" alt="">
+    </div>
+  </section>
+  <section class="case" data-case="fit-content-below-minimum">
+    <span class="label">fit-content(12px), natural min 24px</span>
+    <div id="fit-content-below-minimum" class="grid" style="width:100px;height:40px;grid-template-columns:fit-content(12px);grid-template-rows:auto;align-content:start">
+      <img id="fit-content-12-img" class="image" src="../../resources/c14-1-png-basic.png" alt="">
+    </div>
+  </section>
+  <section class="case" data-case="fit-content-above-intrinsic">
+    <span class="label">fit-content(40px), natural max 24px</span>
+    <div id="fit-content-above-intrinsic" class="grid" style="width:100px;height:40px;grid-template-columns:fit-content(40px);grid-template-rows:auto;align-content:start">
+      <img id="fit-content-40-img" class="image" src="../../resources/c14-1-png-basic.png" alt="">
+    </div>
+  </section>
+  <section class="case" data-case="fit-content-percent">
+    <span class="label">fit-content(50%), 100px definite grid</span>
+    <div id="fit-content-percent" class="grid" style="width:100px;height:40px;grid-template-columns:fit-content(50%);grid-template-rows:auto;align-content:start">
+      <img id="fit-content-percent-img" class="image" src="../../resources/c14-1-png-basic.png" alt="">
+    </div>
+  </section>
+  <section class="case" data-case="fixed-small-track-overflow">
+    <span class="label">12px track, 24px natural image</span>
+    <div id="fixed-small-track-overflow" class="grid" style="width:12px;height:40px;grid-template-columns:minmax(0,12px);grid-template-rows:auto;align-content:start;overflow:visible">
+      <img id="fixed-small-overflow-img" class="image" src="../../resources/c14-1-png-basic.png" alt="">
+    </div>
+  </section>
+  <section class="case" data-case="spanning-minmax-items">
+    <span class="label">70px item spans two auto tracks</span>
+    <div id="spanning-minmax-items" class="grid" style="width:100px;height:30px;grid-template-columns:repeat(2,minmax(0,auto));grid-template-rows:auto;column-gap:4px;align-content:start">
+      <div id="span-box" class="box" style="width:70px;height:10px;grid-column:1 / span 2"></div>
+    </div>
+  </section>
+  <section class="case" data-case="spanning-auto-min-flex-tracks">
+    <span class="label">200px unbreakable word spans two minmax(0,1fr)</span>
+    <div id="spanning-auto-min-flex-tracks" class="grid" style="width:100px;height:30px;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto;column-gap:4px;align-content:start">
+      <div id="span-flex-word" class="text-item" style="grid-column:1 / span 2">XXXXXXXXXXXXXXXXXXXX</div>
+    </div>
+  </section>
+  <section class="case" data-case="spanning-min-content-items">
+    <span class="label">image spans two min-content tracks</span>
+    <div id="spanning-min-content-items" class="grid" style="width:100px;height:30px;grid-template-columns:repeat(2,min-content);grid-template-rows:auto;column-gap:4px;align-content:start">
+      <img id="span-img" class="image" src="../../resources/c14-1-png-basic.png" alt="" style="grid-column:1 / span 2">
+    </div>
+  </section>
+  <section class="case" data-case="min-content-row-image">
+    <span class="label">min-content row, natural image</span>
+    <div id="min-content-row-image" class="grid" style="width:100px;height:80px;grid-template-columns:100px;grid-template-rows:min-content;align-content:start">
+      <img id="min-content-row-image-item" class="image" src="../../resources/c14-1-png-basic.png" alt="">
+    </div>
+  </section>
+  <section class="case" data-case="auto-fill-definite">
+    <span class="label">auto-fill, 100px, 24px min, 4px gap</span>
+    <div id="auto-fill-definite" class="grid" style="width:100px;height:30px;grid-template-columns:repeat(auto-fill,minmax(24px,1fr));grid-template-rows:20px;column-gap:4px">
+      <div id="auto-fill-item" class="box" style="grid-column:1"></div>
+    </div>
+  </section>
+  <section class="case" data-case="auto-fit-definite">
+    <span class="label">auto-fit, one item, 100px width</span>
+    <div id="auto-fit-definite" class="grid" style="width:100px;height:30px;grid-template-columns:repeat(auto-fit,minmax(24px,1fr));grid-template-rows:20px;column-gap:4px">
+      <div id="auto-fit-item" class="box" style="grid-column:1"></div>
+    </div>
+  </section>
+  <section class="case" data-case="auto-fit-all-empty">
+    <span class="label">auto-fit, no placed items</span>
+    <div id="auto-fit-all-empty" class="grid" style="width:100px;height:30px;grid-template-columns:repeat(auto-fit,minmax(24px,1fr));grid-template-rows:20px;column-gap:4px"></div>
+  </section>
+  <section class="case" data-case="indefinite-percent-track">
+    <span class="label">50% track in max-content grid</span>
+    <div id="indefinite-percent-track" class="grid" style="width:max-content;grid-template-columns:50%;grid-template-rows:auto;align-content:start">
+      <img id="indefinite-percent-img" class="image" src="../../resources/c14-1-png-basic.png" alt="">
+    </div>
+  </section>
+  <section class="case" data-case="auto-fill-indefinite">
+    <span class="label">auto-fill fixed 24px in max-content grid</span>
+    <div id="auto-fill-indefinite" class="grid" style="width:max-content;grid-template-columns:repeat(auto-fill,24px);grid-template-rows:auto;align-content:start"></div>
+  </section>
+  <section class="case" data-case="auto-text-max-content">
+    <span class="label">auto track, Ahem text XX XXXXXXX</span>
+    <div id="auto-text-max-content" class="grid" style="width:120px;height:40px;grid-template-columns:auto;grid-template-rows:auto;align-content:start">
+      <div id="auto-text-item" class="text-item">XX XXXXXXX</div>
+    </div>
+  </section>
+  <section class="case" data-case="min-content-text-normal">
+    <span class="label">min-content, normal word breaks</span>
+    <div id="min-content-text-normal" class="grid" style="width:120px;height:40px;grid-template-columns:min-content;grid-template-rows:auto;align-content:start">
+      <div id="min-content-normal-item" class="text-item">XX XXXXXXX</div>
+    </div>
+  </section>
+  <section class="case" data-case="max-content-text-normal">
+    <span class="label">max-content, normal word breaks</span>
+    <div id="max-content-text-normal" class="grid" style="width:120px;height:40px;grid-template-columns:max-content;grid-template-rows:auto;align-content:start">
+      <div id="max-content-normal-item" class="text-item">XX XXXXXXX</div>
+    </div>
+  </section>
+  <section class="case" data-case="fit-content-text-minimum">
+    <span class="label">fit-content(40px), min-content floor</span>
+    <div id="fit-content-text-minimum" class="grid" style="width:120px;height:40px;grid-template-columns:fit-content(40px);grid-template-rows:auto;align-content:start">
+      <div id="fit-content-text-item" class="text-item">XX XXXXXXX</div>
+    </div>
+  </section>
+  <section class="case" data-case="fit-content-calc-limit">
+    <span class="label">fit-content(calc(10% + 5px)), break-all Ahem</span>
+    <div id="fit-content-calc-limit" class="grid" style="width:100px;height:120px;grid-template-columns:fit-content(calc(10% + 5px));grid-template-rows:auto;align-content:start">
+      <div id="fit-content-calc-limit-item" class="text-item" style="word-break:break-all">XXXXXXXX</div>
+    </div>
+  </section>
+  <section class="case" data-case="min-content-text-edge">
+    <span class="label">min-content text plus inline edges</span>
+    <div id="min-content-text-edge" class="grid" style="width:120px;height:50px;grid-template-columns:min-content;grid-template-rows:auto;align-content:start">
+      <div id="min-content-text-edge-item" class="text-item" style="box-sizing:content-box;padding-inline:4px;border-inline:1px solid #e5484d">XX XXXXXXX</div>
+    </div>
+  </section>
+  <section class="case" data-case="min-content-text-min-width">
+    <span class="label">min-content text with min-width:90px</span>
+    <div id="min-content-text-min-width" class="grid" style="width:120px;height:50px;grid-template-columns:min-content;grid-template-rows:auto;align-content:start">
+      <div id="min-content-text-min-width-item" class="text-item" style="min-width:90px">XX XXXXXXX</div>
+    </div>
+  </section>
+  <section class="case" data-case="min-content-text-max-width">
+    <span class="label">min-content text with max-width:40px</span>
+    <div id="min-content-text-max-width" class="grid" style="width:120px;height:50px;grid-template-columns:min-content;grid-template-rows:auto;align-content:start">
+      <div id="min-content-text-max-width-item" class="text-item" style="max-width:40px">XX XXXXXXX</div>
+    </div>
+  </section>
+  <section class="case" data-case="min-content-text-break-all">
+    <span class="label">min-content, word-break:break-all</span>
+    <div id="min-content-text-break-all" class="grid" style="width:120px;height:40px;grid-template-columns:min-content;grid-template-rows:auto;align-content:start">
+      <div id="min-content-break-all-item" class="text-item" style="word-break:break-all">XXXXXXXX</div>
+    </div>
+  </section>
+  <section class="case" data-case="min-content-text-nowrap">
+    <span class="label">min-content, white-space:nowrap</span>
+    <div id="min-content-text-nowrap" class="grid" style="width:120px;height:40px;grid-template-columns:min-content;grid-template-rows:auto;align-content:start">
+      <div id="min-content-nowrap-item" class="text-item" style="white-space:nowrap">XX XXXXXXX</div>
+    </div>
+  </section>
+  <pre id="result" style="white-space:pre-wrap;font:10px/1.2 monospace"></pre>
+  <script>
+    const collectObservation = () => [...document.querySelectorAll('[data-case]')].map((section) => {
+      const grid = section.querySelector('.grid');
+      const item = grid.firstElementChild;
+      const rect = (node) => {
+        if (!node) return null;
+        const value = node.getBoundingClientRect();
+        return {x:value.x, y:value.y, width:value.width, height:value.height, right:value.right, bottom:value.bottom};
+      };
+      const style = getComputedStyle(grid);
+      return {
+        id:section.dataset.case,
+        grid:rect(grid),
+        item:rect(item),
+        columns:style.gridTemplateColumns,
+        rows:style.gridTemplateRows,
+        columnGap:style.columnGap,
+        rowGap:style.rowGap,
+        overflow:style.overflow,
+        naturalImage:item instanceof HTMLImageElement ? {width:item.naturalWidth,height:item.naturalHeight,complete:item.complete} : null,
+        scrollSize:item ? {width:item.scrollWidth,height:item.scrollHeight} : null,
+        text:item instanceof HTMLImageElement ? null : item?.textContent,
+      };
+    });
+    window.__C114_OBSERVATION_READY__ = Promise.all([...document.images].map((image) => image.decode()).concat([document.fonts.load("10px Ahem")]))
+      .then(() => document.fonts.ready)
+      .then(() => {
+        window.__C114_OBSERVATION__ = {
+          userAgent:navigator.userAgent,
+          devicePixelRatio,
+          ahemLoaded:document.fonts.check("10px Ahem"),
+          cases:collectObservation(),
+        };
+        document.querySelector('#result').textContent = JSON.stringify(window.__C114_OBSERVATION__, null, 2);
+        return window.__C114_OBSERVATION__;
+      });
+  </script>
+</body>
