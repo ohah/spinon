@@ -17,8 +17,8 @@
 
 | Platform | Build / install / launch evidence | Screenshot |
 |---|---|---|
-| Android API 37 ARM64 AVD `emulator-5554` | [`build.log`](android-avd/final-opt-in-20261018/build.log) · [`runtime.log`](android-avd/final-opt-in-20261018/runtime.log) · [`launch.log`](android-avd/final-opt-in-20261018/launch.log) | ![Android AVD C14.1 report](android-avd/final-opt-in-20261018/screenshot.png) |
-| iPhone 17 Pro / iOS 26.2 Simulator `ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D` | [`build.log`](ios-simulator/final-opt-in-20261018/build.log) · [`runtime.log`](ios-simulator/final-opt-in-20261018/runtime.log) · [`launch.log`](ios-simulator/final-opt-in-20261018/launch.log) | ![iOS Simulator C14.1 report](ios-simulator/final-opt-in-20261018/screenshot.png) |
+| Android API 37 ARM64 AVD `emulator-5554` | [`build.log`](android-avd/final-opt-in-20261018/build.log) · [`runtime.log`](android-avd/final-opt-in-20261018/runtime.log) · [`launch.log`](android-avd/final-opt-in-20261018/launch.log) | ![Android AVD C14.1 report](./android-avd/final-opt-in-20261018/screenshot.png) |
+| iPhone 17 Pro / iOS 26.2 Simulator `ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D` | [`build.log`](ios-simulator/final-opt-in-20261018/build.log) · [`runtime.log`](ios-simulator/final-opt-in-20261018/runtime.log) · [`launch.log`](ios-simulator/final-opt-in-20261018/launch.log) | ![iOS Simulator C14.1 report](./ios-simulator/final-opt-in-20261018/screenshot.png) |
 
 각 성공 실행 뒤 앱을 `force-stop`/`simctl terminate`했고 process-absence output은 run directory의 `app-pid-after-stop.txt`와 `app-process-after-stop.txt`에 있다. 실기기는 선택하거나 사용하지 않았다.
 
