@@ -1,0 +1,122 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "57A34E85-BDFB-42EB-B13A-15E2E5E9C1E2.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 direct touch aggregate_0_DA0EC334-1BC3-447F-BDBB-8E968B0F121E.txt",
+        "timestamp" : 1792297095.24
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "2F061017-1842-43CD-84E6-C7D0B859AF52.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 direct touch all launch observations_0_F691FD1E-221B-47A8-84DC-FFA1446CA8F8.txt",
+        "timestamp" : 1792297095.24
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "E1D5459C-4BF2-4868-8B76-4F39026250E8.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 direct touch launch 3 observations_0_83AF6BD2-2B96-4539-857B-00D929E85B48.txt",
+        "timestamp" : 1792297094.197
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "ED89F3FD-FC53-43EF-86BB-F339399511A1.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 direct touch launch 2 observations_0_B26FD646-629F-4465-BD7B-42990A9989A8.txt",
+        "timestamp" : 1792297071.177
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "42023EA9-A687-4BB9-87B6-7379827105E1.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 direct touch final screen_0_9FCFDECA-271F-428E-8DA7-D1D3DBEEDD69.png",
+        "timestamp" : 1792297047.907
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "E18E528F-ABD7-470F-9CDD-E89B79B86FC7.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 direct touch launch 1 observations_0_1386358F-CD7A-46FD-A0D5-2D9EBF03FD6D.txt",
+        "timestamp" : 1792297047.838
+      }
+    ],
+    "testIdentifier" : "C133WheelProbeUITests/testDirectTouchRecognizerDeliveryControl()",
+    "testIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testDirectTouchRecognizerDeliveryControl"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "6EA8C3ED-256A-4FDB-B51A-ECEE63E60B02.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 scroll type mask classification aggregate_0_46E6FB5B-FC9A-46E3-84E1-4610D084F967.txt",
+        "timestamp" : 1792297300.168
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "0A048CA1-1AFF-44DE-BEB7-158A11E9F7E5.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 scroll type mask all action observations_0_C6C4530B-72F2-4E6B-8D34-8693D6587887.txt",
+        "timestamp" : 1792297300.165
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "01BFEDD3-9BF0-4937-94E6-BD33A0C75099.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 scroll type mask launch 3 observations_0_C2DDBAAE-D2DD-40E4-B53F-0954C418C72B.txt",
+        "timestamp" : 1792297299.083
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "D23B905F-9FC1-4EF8-A075-C64948B02F6B.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 scroll type mask launch 2 observations_0_8F7A2E4E-A2F7-4193-AC66-459A2E499456.txt",
+        "timestamp" : 1792297233.584
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "8FE9FE5B-FCF2-4F59-BE31-D6E087B736DE.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 scroll type mask final screen_0_7C91994E-2EDF-4009-8A0A-951BC8410A54.png",
+        "timestamp" : 1792297163.966
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "67071118-25C4-46F8-AA9F-10A2E1C9C15A.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 scroll type mask launch 1 observations_0_BF8444EA-8FCF-4057-9B04-7E52CFE2EF5E.txt",
+        "timestamp" : 1792297163.892
+      }
+    ],
+    "testIdentifier" : "C133WheelProbeUITests/testScrollTypeMaskDeliveryClassification()",
+    "testIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testScrollTypeMaskDeliveryClassification"
+  }
+]

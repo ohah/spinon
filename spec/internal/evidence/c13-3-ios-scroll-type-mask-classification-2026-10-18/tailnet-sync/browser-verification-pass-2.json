@@ -1,0 +1,19 @@
+{
+  "tool": "Agent Browser",
+  "terminalBrowserUsed": false,
+  "privateTailnetHostnameRedacted": true,
+  "evidencePage": {
+    "path": "/spinon/internal/evidence/c13-3-ios-scroll-type-mask-classification-2026-10-18/README.html",
+    "title": "스피논 문서",
+    "findingVisible": true,
+    "officialCountVisible": true,
+    "c13MarkedIncomplete": true,
+    "embeddedImages": 4,
+    "embeddedImagesLoaded": 4,
+    "localEvidenceLinks": 19,
+    "localEvidenceLinksHttp200": 17,
+    "outOfBasePlanLinksHttp404": 2,
+    "screenshot": "evidence-agent-browser-pass-2.png"
+  },
+  "finding": "두 plan 링크의 원본 상대경로는 렌더 페이지에서 /spinon base 밖으로 해석됐다. 후속 preview 전용 HTML route 보정과 재검증이 필요하다."
+}

@@ -1,0 +1,30 @@
+{
+  "tool": "Agent Browser",
+  "terminalBrowserUsed": false,
+  "privateTailnetHostnameRedacted": true,
+  "roadmap": {
+    "path": "/spinon/roadmap.html",
+    "officialCount": "74/207",
+    "c13MarkedIncomplete": true,
+    "screenshot": "roadmap-agent-browser-final.png"
+  },
+  "status": {
+    "path": "/spinon/STATUS.html",
+    "scrollTypeMaskEntryVisible": true,
+    "c13MarkedIncomplete": true,
+    "newEntryLinksHttp200": 4,
+    "screenshot": "status-agent-browser-final.png"
+  },
+  "evidencePage": {
+    "path": "/spinon/internal/evidence/c13-3-ios-scroll-type-mask-classification-2026-10-18/README.html",
+    "continuousActions": 20,
+    "noCallbackActions": 10,
+    "discreteCallbacks": 0,
+    "c13MarkedIncomplete": true,
+    "embeddedImages": 4,
+    "embeddedImagesLoaded": 4,
+    "sameOriginLinks": 27,
+    "sameOriginLinksHttp200": 27,
+    "screenshot": "evidence-agent-browser-final.png"
+  }
+}

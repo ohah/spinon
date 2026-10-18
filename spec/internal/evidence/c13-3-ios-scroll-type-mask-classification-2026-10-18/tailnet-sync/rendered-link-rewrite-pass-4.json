@@ -1,0 +1,67 @@
+{
+  "pass": "pass-4",
+  "scope": "Tailnet preview generated HTML only",
+  "reason": "RSPress root strips the repository spec/ prefix; repository-relative plan links then resolve outside /spinon/ in the static preview.",
+  "repository_markdown_changed": false,
+  "base_path": "/spinon/",
+  "files": [
+    {
+      "path": "internal/evidence/c13-3-ios-scroll-type-mask-classification-2026-10-18/README.html",
+      "replacements": [
+        {
+          "from": "../../../../plan/c13-3-ios-scroll-type-mask-classification.md",
+          "to": "/spinon/plan/c13-3-ios-scroll-type-mask-classification.html",
+          "replacements": 1,
+          "alreadyApplied": false
+        },
+        {
+          "from": "../../../../plan/c13-3-ios-scroll-type-mask-classification-plan-review-20.md",
+          "to": "/spinon/plan/c13-3-ios-scroll-type-mask-classification-plan-review-20.html",
+          "replacements": 1,
+          "alreadyApplied": false
+        },
+        {
+          "from": "./implementation-review-20.md",
+          "to": "/spinon/internal/evidence/c13-3-ios-scroll-type-mask-classification-2026-10-18/implementation-review-20.html",
+          "replacements": 1,
+          "alreadyApplied": false
+        },
+        {
+          "from": "./pr-delta-review-30.md",
+          "to": "/spinon/internal/evidence/c13-3-ios-scroll-type-mask-classification-2026-10-18/pr-delta-review-30.html",
+          "replacements": 1,
+          "alreadyApplied": false
+        }
+      ]
+    },
+    {
+      "path": "STATUS.html",
+      "replacements": [
+        {
+          "from": "internal/evidence/c13-3-ios-scroll-type-mask-classification-2026-10-18/README.md",
+          "to": "/spinon/internal/evidence/c13-3-ios-scroll-type-mask-classification-2026-10-18/README.html",
+          "replacements": 1,
+          "alreadyApplied": false
+        },
+        {
+          "from": "../plan/c13-3-ios-scroll-type-mask-classification-plan-review-20.md",
+          "to": "/spinon/plan/c13-3-ios-scroll-type-mask-classification-plan-review-20.html",
+          "replacements": 1,
+          "alreadyApplied": false
+        },
+        {
+          "from": "internal/evidence/c13-3-ios-scroll-type-mask-classification-2026-10-18/implementation-review-20.md",
+          "to": "/spinon/internal/evidence/c13-3-ios-scroll-type-mask-classification-2026-10-18/implementation-review-20.html",
+          "replacements": 1,
+          "alreadyApplied": false
+        },
+        {
+          "from": "internal/evidence/c13-3-ios-scroll-type-mask-classification-2026-10-18/pr-delta-review-30.md",
+          "to": "/spinon/internal/evidence/c13-3-ios-scroll-type-mask-classification-2026-10-18/pr-delta-review-30.html",
+          "replacements": 1,
+          "alreadyApplied": false
+        }
+      ]
+    }
+  ]
+}
