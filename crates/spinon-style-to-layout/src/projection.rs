@@ -9,8 +9,8 @@ use spinon_core::{
 };
 use spinon_layout::{
     LayoutDisplay, LayoutEdges, LayoutEngine, LayoutError, LayoutFrame, LayoutInput,
-    LayoutIntrinsicSizeSnapshot, LayoutOutput, LayoutSourceRevision, LayoutStyle,
-    TaffyLayoutEngine, Viewport,
+    LayoutIntrinsicSizeSnapshot, LayoutOutput, LayoutSourceRevision, LayoutStyle, ParagraphStyle,
+    TaffyLayoutEngine, TextLayoutEngine, Viewport,
 };
 use spinon_style::{
     ComputedStyleProfile, ComputedStyleSnapshot, CssViewport, StylesheetSource, StyloDocumentView,
@@ -309,6 +309,35 @@ pub fn compute_runtime_style_layout(
     )
 }
 
+/// C04.12 고정 Ahem profile의 paragraph를 같은 HostDocument·computed-style snapshot에서 계산합니다.
+#[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+pub fn compute_runtime_style_layout_with_text_paragraphs(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
+    text_engine: &TextLayoutEngine,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    if computed_styles.profile != ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+        return Err(StyleLayoutError::UnsupportedProfile {
+            profile: format!("{:?}", computed_styles.profile),
+        });
+    }
+    if computed_styles.viewport != viewport {
+        return Err(StyleLayoutError::SnapshotMismatch { field: "viewport" });
+    }
+    compute_layout_from_styles_with_text(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        true,
+        None,
+        Some((paragraph_styles, text_engine)),
+    )
+}
+
 /// revision-stamped HTML image natural size를 runtime style/layout 계산에 연결합니다.
 pub fn compute_runtime_style_layout_with_intrinsic_size_snapshot(
     snapshot: &HostDocumentSnapshot,
@@ -389,6 +418,7 @@ fn compute_profile_layout(
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
         | ComputedStyleProfile::RuntimeBlockPaintV1
         | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+        | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
         | ComputedStyleProfile::C19ComputedColorV1
         | ComputedStyleProfile::RuntimeBlockImageV1
         | ComputedStyleProfile::RuntimeBlockFormattingV1
@@ -418,6 +448,26 @@ fn compute_layout_from_styles(
     reject_cascade_diagnostics: bool,
     intrinsic_sizes: Option<LayoutIntrinsicSizeSnapshot>,
 ) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    compute_layout_from_styles_with_text(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        reject_cascade_diagnostics,
+        intrinsic_sizes,
+        None,
+    )
+}
+
+fn compute_layout_from_styles_with_text(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    reject_cascade_diagnostics: bool,
+    intrinsic_sizes: Option<LayoutIntrinsicSizeSnapshot>,
+    text_profile: Option<(&BTreeMap<NodeId, ParagraphStyle>, &TextLayoutEngine)>,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
     assert_matching_revision(snapshot, &computed_styles, computed_styles.profile)?;
     if reject_cascade_diagnostics
         && let Some(diagnostic) = computed_styles.diagnostics.first().cloned()
@@ -428,6 +478,7 @@ fn compute_layout_from_styles(
         computed_styles.profile,
         ComputedStyleProfile::RuntimeBlockPaintV1
             | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+            | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
             | ComputedStyleProfile::RuntimeBlockImageV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
@@ -525,6 +576,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
             | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+            | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
             | ComputedStyleProfile::RuntimeBlockImageV1
     ) && styles
         .get(&root.id())
@@ -536,7 +588,17 @@ fn compute_layout_from_styles(
         width: viewport.width_css_px,
         height: viewport.height_css_px,
     };
-    let input = if matches!(
+    let input = if let Some((paragraph_styles, _)) = text_profile {
+        LayoutInput::from_host_document_with_viewport_containing_block_and_text_paragraphs_ignoring_collapsible_whitespace(
+            snapshot,
+            root,
+            layout_viewport,
+            &styles,
+            paragraph_styles,
+            computed_styles.style_revision,
+            viewport.environment_revision,
+        )?
+    } else if matches!(
         computed_styles.profile,
         ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
@@ -569,6 +631,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
             | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+            | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
             | ComputedStyleProfile::RuntimeBlockImageV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
@@ -603,7 +666,9 @@ fn compute_layout_from_styles(
     .with_css_math(projected.css_math)
     .with_positioning(positioning)
     .with_grid_layout(grid_containers, grid_items);
-    let mut layout = if let Some(intrinsic_sizes) = intrinsic_sizes {
+    let mut layout = if let Some((_, text_engine)) = text_profile {
+        TaffyLayoutEngine.compute_with_text_layout_engine(&input, text_engine)?
+    } else if let Some(intrinsic_sizes) = intrinsic_sizes {
         TaffyLayoutEngine.compute_with_intrinsic_size_snapshot(&input, &intrinsic_sizes)?
     } else {
         TaffyLayoutEngine.compute(&input)?
@@ -619,6 +684,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
             | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+            | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
             | ComputedStyleProfile::RuntimeBlockImageV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1

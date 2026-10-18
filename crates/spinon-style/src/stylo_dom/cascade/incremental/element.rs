@@ -49,6 +49,7 @@ pub(super) fn computed_element_output(
     let has_overflow = matches!(
         profile,
         ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+            | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
             | ComputedStyleProfile::C19BoxPaintOpacityV1
             | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
     );

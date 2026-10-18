@@ -63,6 +63,8 @@ struct RuntimeGpuHost {
     include_paint_order_report: bool,
     #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
     root_html_block_paint_fixture: bool,
+    #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+    root_html_text_paint_fixture: bool,
     #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
     include_c13_1_hit_test_report: bool,
     #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
@@ -165,6 +167,8 @@ impl RuntimeGpuHost {
             include_paint_order_report: false,
             #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
             root_html_block_paint_fixture: false,
+            #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+            root_html_text_paint_fixture: false,
             #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
             include_c13_1_hit_test_report: false,
             #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
@@ -594,8 +598,16 @@ impl RuntimeGpuHost {
         } else {
             CssColorScheme::Light
         };
+        #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+        let root_html_fixture =
+            self.root_html_block_paint_fixture || self.root_html_text_paint_fixture;
+        #[cfg(all(
+            feature = "c04-12-root-html-block-paint-fixture-test",
+            not(feature = "c04-12-root-html-text-paint-fixture-test")
+        ))]
+        let root_html_fixture = self.root_html_block_paint_fixture;
         #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
-        let (revision, root_html_environment_report) = if self.root_html_block_paint_fixture {
+        let (revision, root_html_environment_report) = if root_html_fixture {
             let resolved = self
                 .session
                 .set_root_html_environment(

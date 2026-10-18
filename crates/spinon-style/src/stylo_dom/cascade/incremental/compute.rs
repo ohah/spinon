@@ -22,6 +22,7 @@ use super::super::{
     runtime_paint::RUNTIME_BLOCK_IMAGE_AUTHOR_PROPERTIES,
     runtime_paint::RUNTIME_BLOCK_PAINT_AUTHOR_PROPERTIES,
     runtime_paint::RUNTIME_ROOT_HTML_BLOCK_PAINT_AUTHOR_PROPERTIES,
+    runtime_paint::RUNTIME_ROOT_HTML_TEXT_PAINT_AUTHOR_PROPERTIES,
     runtime_scroll_gesture::runtime_block_flex_scroll_gesture_author_properties,
     runtime_stacking::runtime_block_flex_stacking_author_properties,
     s04,
@@ -210,6 +211,9 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1 => {
             Some(RUNTIME_ROOT_HTML_BLOCK_PAINT_AUTHOR_PROPERTIES)
         }
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 => {
+            Some(RUNTIME_ROOT_HTML_TEXT_PAINT_AUTHOR_PROPERTIES)
+        }
         ComputedStyleProfile::RuntimeBlockImageV1 => Some(RUNTIME_BLOCK_IMAGE_AUTHOR_PROPERTIES),
         ComputedStyleProfile::RuntimeBlockFormattingV1 => {
             Some(super::runtime_paint::RUNTIME_BLOCK_FORMATTING_AUTHOR_PROPERTIES)
@@ -269,6 +273,11 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
                 registry.first_unsupported_runtime_author_feature_with_media(allowed)
             })
         }
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 => {
+            allowed_author_properties.and_then(|allowed| {
+                registry.first_unsupported_runtime_author_feature_with_media(allowed)
+            })
+        }
         ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1 => allowed_author_properties
             .and_then(|allowed| {
@@ -318,7 +327,8 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
             feature,
         });
     }
-    if profile == ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+    if (profile == ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+        || profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1)
         && let Some((stylesheet_id, diagnostic)) = registry.first_runtime_author_diagnostic()
     {
         return Err(CssCascadeError::AuthorStylesheetDiagnostic {

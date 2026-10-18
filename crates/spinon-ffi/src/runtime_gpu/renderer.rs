@@ -54,6 +54,53 @@ impl RuntimeGpuHost {
         Ok(points)
     }
 
+    #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+    fn root_html_text_paint_surface_samples(
+        viewport: spinon_render::CssSize,
+        surface_width_px: u32,
+        surface_height_px: u32,
+    ) -> Result<Vec<(u32, u32)>, String> {
+        const CSS_POINTS: [(u32, u32); 5] = [(1, 1), (16, 1), (1, 11), (16, 11), (100, 100)];
+        if surface_width_px == 0 || surface_height_px == 0 {
+            return Err("C04.12 text surface pixel 표면 크기가 0입니다".to_owned());
+        }
+        let viewport_width = f64::from(viewport.width());
+        let viewport_height = f64::from(viewport.height());
+        if !viewport_width.is_finite()
+            || viewport_width <= 0.0
+            || !viewport_height.is_finite()
+            || viewport_height <= 0.0
+        {
+            return Err("C04.12 text surface pixel CSS viewport가 유효하지 않습니다".to_owned());
+        }
+        CSS_POINTS
+            .into_iter()
+            .map(|(x_css_px, y_css_px)| {
+                if f64::from(x_css_px) + 0.5 >= viewport_width
+                    || f64::from(y_css_px) + 0.5 >= viewport_height
+                {
+                    return Err(format!(
+                        "C04.12 text CSS 표본이 viewport 밖입니다: {x_css_px},{y_css_px}"
+                    ));
+                }
+                let x = ((f64::from(x_css_px) + 0.5) * f64::from(surface_width_px)
+                    / viewport_width)
+                    .floor();
+                let y = ((f64::from(y_css_px) + 0.5) * f64::from(surface_height_px)
+                    / viewport_height)
+                    .floor();
+                if x < 0.0
+                    || y < 0.0
+                    || x >= f64::from(surface_width_px)
+                    || y >= f64::from(surface_height_px)
+                {
+                    return Err(format!("C04.12 text 표본이 drawable 밖입니다: {x},{y}"));
+                }
+                Ok((x as u32, y as u32))
+            })
+            .collect()
+    }
+
     #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
     pub(super) fn readback_c19_2_offscreen_samples(
         &self,
@@ -86,7 +133,18 @@ impl RuntimeGpuHost {
             ));
         }
         #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
-        let (renderer, report) = if self.root_html_block_paint_fixture {
+        let root_html_paint_surface_readback = {
+            #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+            {
+                self.root_html_block_paint_fixture || self.root_html_text_paint_fixture
+            }
+            #[cfg(not(feature = "c04-12-root-html-text-paint-fixture-test"))]
+            {
+                self.root_html_block_paint_fixture
+            }
+        };
+        #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
+        let (renderer, report) = if root_html_paint_surface_readback {
             let (renderer, report) =
                 unsafe { RuntimeRenderer::new_android(native_window, width, height, backend) }?;
             (
@@ -314,6 +372,25 @@ impl RuntimeGpuHost {
                 .map_err(|error| (ERR_LAYOUT, error.to_string()))?;
             root_html_block_paint_sample_points = Some(points);
         }
+        #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+        let mut root_html_text_paint_sample_points = None;
+        #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+        if self.root_html_text_paint_fixture
+            && let Some(snapshot) = snapshot
+        {
+            let (surface_width_px, surface_height_px) = renderer.surface_dimensions();
+            let points = Self::root_html_text_paint_surface_samples(
+                snapshot.viewport_css_px(),
+                surface_width_px,
+                surface_height_px,
+            )
+            .map_err(|error| (ERR_ARGUMENT, error))?;
+            #[cfg(target_os = "ios")]
+            renderer
+                .request_surface_pixel_readback_for_test(&points)
+                .map_err(|error| (ERR_LAYOUT, error.to_string()))?;
+            root_html_text_paint_sample_points = Some(points);
+        }
         let presented = renderer
             .draw_if(snapshot, || self.presentation_sequence() == sequence)
             .map_err(|error| (ERR_LAYOUT, error.to_string()))?;
@@ -403,6 +480,17 @@ impl RuntimeGpuHost {
                 .join(";");
             report.push_str(&format!(" root_html_sample_surface_xy={encoded_points}"));
         }
+        #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+        if let Some(points) = root_html_text_paint_sample_points {
+            let encoded_points = points
+                .iter()
+                .map(|(x, y)| format!("{x},{y}"))
+                .collect::<Vec<_>>()
+                .join(";");
+            report.push_str(&format!(
+                " root_html_text_sample_surface_xy={encoded_points}"
+            ));
+        }
         Ok(report)
     }
 
@@ -482,6 +570,34 @@ mod root_html_block_paint_readback_tests {
         assert!(
             RuntimeGpuHost::root_html_block_paint_surface_samples(short_viewport, 600, 600)
                 .is_err()
+        );
+    }
+}
+
+#[cfg(all(test, feature = "c04-12-root-html-text-paint-fixture-test"))]
+mod root_html_text_paint_readback_tests {
+    use super::RuntimeGpuHost;
+
+    #[test]
+    fn text_oracle_pixel_centers_project_to_the_reported_surface_size() {
+        let viewport = spinon_render::CssSize::new(320.0, 240.0).unwrap();
+        assert_eq!(
+            RuntimeGpuHost::root_html_text_paint_surface_samples(viewport, 840, 630).unwrap(),
+            [(3, 3), (43, 3), (3, 30), (43, 30), (263, 263)]
+        );
+        assert_eq!(
+            RuntimeGpuHost::root_html_text_paint_surface_samples(viewport, 960, 720).unwrap(),
+            [(4, 4), (49, 4), (4, 34), (49, 34), (301, 301)]
+        );
+    }
+
+    #[test]
+    fn invalid_surface_and_outside_text_samples_fail_closed() {
+        let viewport = spinon_render::CssSize::new(320.0, 240.0).unwrap();
+        assert!(RuntimeGpuHost::root_html_text_paint_surface_samples(viewport, 0, 720).is_err());
+        let short_viewport = spinon_render::CssSize::new(100.0, 100.0).unwrap();
+        assert!(
+            RuntimeGpuHost::root_html_text_paint_surface_samples(short_viewport, 600, 600).is_err()
         );
     }
 }

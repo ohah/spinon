@@ -45,6 +45,61 @@ pub(super) const RUNTIME_ROOT_HTML_BLOCK_PAINT_AUTHOR_PROPERTIES: &[&str] = &[
     "color-scheme",
 ];
 
+pub(super) const RUNTIME_ROOT_HTML_TEXT_PAINT_AUTHOR_PROPERTIES: &[&str] = &[
+    "display",
+    "box-sizing",
+    "width",
+    "height",
+    "min-width",
+    "max-width",
+    "min-height",
+    "max-height",
+    "margin",
+    "margin-top",
+    "margin-right",
+    "margin-bottom",
+    "margin-left",
+    "padding",
+    "padding-top",
+    "padding-right",
+    "padding-bottom",
+    "padding-left",
+    "border",
+    "border-width",
+    "border-style",
+    "border-top-width",
+    "border-right-width",
+    "border-bottom-width",
+    "border-left-width",
+    "border-top-style",
+    "border-right-style",
+    "border-bottom-style",
+    "border-left-style",
+    "background-color",
+    "color",
+    "color-scheme",
+    "font-family",
+    "font-size",
+    "font-weight",
+    "font-style",
+    "line-height",
+    "white-space",
+    "white-space-collapse",
+    "text-wrap-mode",
+    "word-break",
+    "overflow-wrap",
+    "letter-spacing",
+    "word-spacing",
+    "text-indent",
+    "text-transform",
+    "text-align",
+    "direction",
+    "writing-mode",
+    "overflow",
+    "overflow-x",
+    "overflow-y",
+];
+
 const ROOT_HTML_BLOCK_PAINT_UA_STYLESHEET: &str = r#"
 @namespace "http://www.w3.org/1999/xhtml";
 html, body, main { display: block; }
@@ -183,6 +238,48 @@ pub(super) fn runtime_root_html_block_paint_properties() -> Vec<(&'static str, L
     properties
 }
 
+pub(super) fn runtime_root_html_text_paint_properties() -> Vec<(&'static str, LonghandId)> {
+    let mut properties = runtime_root_html_block_paint_properties();
+    properties.extend([
+        ("min-width", LonghandId::MinWidth),
+        ("max-width", LonghandId::MaxWidth),
+        ("min-height", LonghandId::MinHeight),
+        ("max-height", LonghandId::MaxHeight),
+        ("padding-top", LonghandId::PaddingTop),
+        ("padding-right", LonghandId::PaddingRight),
+        ("padding-bottom", LonghandId::PaddingBottom),
+        ("padding-left", LonghandId::PaddingLeft),
+        ("border-top-width", LonghandId::BorderTopWidth),
+        ("border-right-width", LonghandId::BorderRightWidth),
+        ("border-bottom-width", LonghandId::BorderBottomWidth),
+        ("border-left-width", LonghandId::BorderLeftWidth),
+        ("border-top-style", LonghandId::BorderTopStyle),
+        ("border-right-style", LonghandId::BorderRightStyle),
+        ("border-bottom-style", LonghandId::BorderBottomStyle),
+        ("border-left-style", LonghandId::BorderLeftStyle),
+        ("font-size", LonghandId::FontSize),
+        ("font-weight", LonghandId::FontWeight),
+        ("font-style", LonghandId::FontStyle),
+        ("line-height", LonghandId::LineHeight),
+        ("white-space-collapse", LonghandId::WhiteSpaceCollapse),
+        ("text-wrap-mode", LonghandId::TextWrapMode),
+        ("word-break", LonghandId::WordBreak),
+        ("overflow-wrap", LonghandId::OverflowWrap),
+        ("letter-spacing", LonghandId::LetterSpacing),
+        ("word-spacing", LonghandId::WordSpacing),
+        ("text-indent", LonghandId::TextIndent),
+        ("text-transform", LonghandId::TextTransform),
+        ("text-align", LonghandId::TextAlign),
+        ("direction", LonghandId::Direction),
+        ("writing-mode", LonghandId::WritingMode),
+        ("overflow-x", LonghandId::OverflowX),
+        ("overflow-y", LonghandId::OverflowY),
+    ]);
+    properties.sort_by_key(|(name, _)| *name);
+    properties.dedup_by_key(|(name, _)| *name);
+    properties
+}
+
 pub(super) fn runtime_block_image_properties() -> Vec<(&'static str, LonghandId)> {
     let mut properties = runtime_block_paint_properties();
     properties.extend([
@@ -231,6 +328,7 @@ pub(super) fn computed_background_for_profile(
         | ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
         | ComputedStyleProfile::RuntimeBlockPaintV1
         | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+        | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
         | ComputedStyleProfile::RuntimeBlockImageV1
         | ComputedStyleProfile::RuntimeBlockFormattingV1
         | ComputedStyleProfile::RuntimeBlockPositioningV1
@@ -253,6 +351,9 @@ pub(super) fn computed_background_for_profile(
                 ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1 => {
                     computed_root_html_block_background_paint(computed, node)?
                 }
+                ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 => {
+                    computed_root_html_block_background_paint(computed, node)?
+                }
                 _ => computed_runtime_background_paint(computed, node)?,
             };
             let color = match paint {
@@ -272,7 +373,10 @@ pub(super) fn computed_color_for_profile(
     computed: &ComputedValues,
     node: NodeId,
 ) -> Result<(Option<ComputedCssColor>, Option<ComputedCssColor>), CssCascadeError> {
-    if profile != ComputedStyleProfile::C19ComputedColorV1 {
+    if !matches!(
+        profile,
+        ComputedStyleProfile::C19ComputedColorV1 | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+    ) {
         return Ok((None, None));
     }
 
@@ -284,6 +388,10 @@ pub(super) fn computed_color_for_profile(
                 reason: reason.to_owned(),
             }
         })?;
+    if profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+        return Ok((Some(computed_color), None));
+    }
+
     let background = match computed.clone_background_color() {
         style::values::computed::Color::Absolute(color) => color,
         style::values::computed::Color::CurrentColor => computed.clone_color(),
@@ -355,6 +463,31 @@ pub fn compute_runtime_root_html_block_paint_cascade_with_stylesheets(
         style_revision,
         &properties,
         ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1,
+    )
+}
+
+/// C04.12의 parsed root HTML 고정 direct-text paint computed values를 계산합니다.
+pub fn compute_runtime_root_html_text_paint_cascade_with_stylesheets(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
+    let properties = runtime_root_html_text_paint_properties();
+    let user_agent_stylesheets = [StylesheetSource {
+        id: "ua:root-html-text-paint-v0".to_owned(),
+        base_url: "https://spinon.invalid/ua/root-html-text-paint-v0.css".to_owned(),
+        origin: CssOrigin::UserAgent,
+        css: ROOT_HTML_BLOCK_PAINT_UA_STYLESHEET.to_owned(),
+    }];
+    super::compute_cascade_with_additional_user_agent_stylesheets(
+        view,
+        &user_agent_stylesheets,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        &properties,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
     )
 }
 
@@ -760,6 +893,14 @@ pub fn first_unsupported_runtime_root_html_block_paint_inline_property(
 ) -> Option<(NodeId, String)> {
     super::runtime_layout::first_unsupported_inline_property(view, |property| {
         RUNTIME_ROOT_HTML_BLOCK_PAINT_AUTHOR_PROPERTIES.contains(&property)
+    })
+}
+
+pub fn first_unsupported_runtime_root_html_text_paint_inline_property(
+    view: &StyloDocumentView,
+) -> Option<(NodeId, String)> {
+    super::runtime_layout::first_unsupported_inline_property(view, |property| {
+        RUNTIME_ROOT_HTML_TEXT_PAINT_AUTHOR_PROPERTIES.contains(&property)
     })
 }
 

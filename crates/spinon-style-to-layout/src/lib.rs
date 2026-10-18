@@ -73,6 +73,8 @@ mod typed_css_math_tests;
 mod viewport_units_tests;
 
 pub use error::StyleLayoutError;
+#[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+pub use projection::compute_runtime_style_layout_with_text_paragraphs;
 pub use projection::{
     StyleLayoutOutput, compute_flex_alignment_layers_style_layout,
     compute_flex_alignment_style_layout, compute_flex_margin_style_layout,

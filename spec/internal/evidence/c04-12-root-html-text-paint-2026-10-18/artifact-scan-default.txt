@@ -1,0 +1,7 @@
+method=raw static archive byte scan for exported symbol names, marker, and exact Ahem bytes
+archive_bytes=490804664
+archive_sha256=468483757753916e161a0954fdb825251283fc5784486ada4e18b8b72b4380dc
+fixture_create_symbol_present=False
+fixture_eval_symbol_present=False
+exact_Ahem_font_payload_present=False
+fixture_sample_marker_present=False

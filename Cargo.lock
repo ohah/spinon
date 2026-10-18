@@ -1748,6 +1748,7 @@ dependencies = [
  "spinon-style",
  "spinon-style-to-layout",
  "spinon-style-to-render",
+ "spinon-text-layout",
 ]
 
 [[package]]

@@ -43,6 +43,7 @@
 + (uint64_t)createRuntimeGpuHostWithRegisteredPropertiesFixture:(BOOL)enabled;
 + (uint64_t)createRuntimeGpuHostWithBlockPaintFixture;
 + (uint64_t)createRuntimeGpuHostWithRootHtmlBlockPaintFixture;
++ (uint64_t)createRuntimeGpuHostWithRootHtmlTextPaintFixture;
 + (uint64_t)createRuntimeGpuHostWithBlockFormattingFixture;
 + (uint64_t)createRuntimeGpuHostWithC12_1PositionFixture;
 + (uint64_t)createRuntimeGpuHostWithC12_2AbsoluteBlockFixture;
@@ -116,6 +117,7 @@
 + (NSString *)evalRuntimeGpuAspectRatioFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuBlockPaintFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuRootHtmlBlockPaintFixture:(uint64_t)handle;
++ (NSString *)evalRuntimeGpuRootHtmlTextPaintFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuBlockFormattingFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuC12_1PositionFixture:(uint64_t)handle;
 + (NSString *)evalRuntimeGpuC12_2AbsoluteBlockFixture:(uint64_t)handle;

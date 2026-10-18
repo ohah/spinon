@@ -53,9 +53,21 @@ case "${SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_C04_12_ROOT_HTML_TEXT_PAINT_FIXTURE_TEST:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C04_12_ROOT_HTML_TEXT_PAINT_FIXTURE_TEST는 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
 if [[ "${SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST:-0}" == "1" \
       && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
   echo "C04.12 root HTML Block paint fixture는 C04 runtime GPU와 함께 켜야 합니다." >&2
+  exit 2
+fi
+if [[ "${SPINON_ENABLE_C04_12_ROOT_HTML_TEXT_PAINT_FIXTURE_TEST:-0}" == "1" \
+      && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
+  echo "C04.12 root HTML text paint fixture는 C04 runtime GPU와 함께 켜야 합니다." >&2
   exit 2
 fi
 case "${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0}" in
@@ -247,6 +259,7 @@ c192_box_paint_opacity_cpp_flag="-DSPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE
 c153_wgpu_glyph_paint_cpp_flag="-DSPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST=${SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST:-0}"
 c0412_root_html_fixture_cpp_flag="-DSPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST=${SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST:-0}"
 c0412_root_html_block_paint_cpp_flag="-DSPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST=${SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST:-0}"
+c0412_root_html_text_paint_cpp_flag="-DSPINON_ENABLE_C04_12_ROOT_HTML_TEXT_PAINT_FIXTURE_TEST=${SPINON_ENABLE_C04_12_ROOT_HTML_TEXT_PAINT_FIXTURE_TEST:-0}"
 s04_android_cpp_flags=()
 if [[ "${SPINON_ENABLE_S04_ANDROID_FIXTURE:-0}" == "1" ]]; then
   s04_android_cpp_flags=(-DSPINON_ENABLE_S04_ANDROID_FIXTURE=1)
@@ -266,6 +279,9 @@ if [[ "${SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST:-0}" == "1" ]]; then
 fi
 if [[ "${SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST:-0}" == "1" ]]; then
   ffi_features+=(c04-12-root-html-block-paint-fixture-test)
+fi
+if [[ "${SPINON_ENABLE_C04_12_ROOT_HTML_TEXT_PAINT_FIXTURE_TEST:-0}" == "1" ]]; then
+  ffi_features+=(c04-12-root-html-text-paint-fixture-test)
 fi
 if [[ "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" == "1" ]]; then
   ffi_features+=(c04-runtime-gpu-test-hooks)
@@ -421,6 +437,7 @@ common=("$target" "$sysroot" -std=c++20 -O2 -fPIC
   "$c153_wgpu_glyph_paint_cpp_flag"
   "$c0412_root_html_fixture_cpp_flag"
   "$c0412_root_html_block_paint_cpp_flag"
+  "$c0412_root_html_text_paint_cpp_flag"
   -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE
   -I"$v8_dir/buildtools/third_party/libc++"
   -isystem "$v8_dir/third_party/libc++/src/include"

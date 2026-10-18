@@ -50,9 +50,21 @@ case "${SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_C04_12_ROOT_HTML_TEXT_PAINT_FIXTURE_TEST:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C04_12_ROOT_HTML_TEXT_PAINT_FIXTURE_TEST는 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
 if [[ "${SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST:-0}" == "1" \
       && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
   echo "C04.12 root HTML Block paint fixture는 C04 runtime GPU와 함께 켜야 합니다." >&2
+  exit 2
+fi
+if [[ "${SPINON_ENABLE_C04_12_ROOT_HTML_TEXT_PAINT_FIXTURE_TEST:-0}" == "1" \
+      && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
+  echo "C04.12 root HTML text paint fixture는 C04 runtime GPU와 함께 켜야 합니다." >&2
   exit 2
 fi
 case "${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0}" in
@@ -256,6 +268,7 @@ c192_box_paint_opacity_cpp_flag="-DSPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE
 c153_wgpu_glyph_paint_cpp_flag="-DSPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST=${SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST:-0}"
 c0412_root_html_fixture_cpp_flag="-DSPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST=${SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST:-0}"
 c0412_root_html_block_paint_cpp_flag="-DSPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST=${SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST:-0}"
+c0412_root_html_text_paint_cpp_flag="-DSPINON_ENABLE_C04_12_ROOT_HTML_TEXT_PAINT_FIXTURE_TEST=${SPINON_ENABLE_C04_12_ROOT_HTML_TEXT_PAINT_FIXTURE_TEST:-0}"
 ffi_features=""
 append_ffi_feature() {
   if [[ -n "$ffi_features" ]]; then
@@ -275,6 +288,9 @@ if [[ "${SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST:-0}" == "1" ]]; then
 fi
 if [[ "${SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST:-0}" == "1" ]]; then
   append_ffi_feature c04-12-root-html-block-paint-fixture-test
+fi
+if [[ "${SPINON_ENABLE_C04_12_ROOT_HTML_TEXT_PAINT_FIXTURE_TEST:-0}" == "1" ]]; then
+  append_ffi_feature c04-12-root-html-text-paint-fixture-test
 fi
 if [[ "${SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST:-0}" == "1" ]]; then
   append_ffi_feature c13-1-overflow-clip-fixture-test
@@ -419,6 +435,7 @@ xcrun --sdk "$sdk" clang++ -std=c++20 -O2 -fPIC -target "$target" \
   "$c192_box_paint_opacity_cpp_flag" "$c153_wgpu_glyph_paint_cpp_flag" \
   "$c0412_root_html_fixture_cpp_flag" \
   "$c0412_root_html_block_paint_cpp_flag" \
+  "$c0412_root_html_text_paint_cpp_flag" \
   -I"$repo_root/native/v8/include" \
   -c "$repo_root/native/v8/src/spinon_v8.cc" \
   -o "$output_dir/spinon_v8.o"

@@ -1,6 +1,8 @@
 mod c04;
 #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
 mod c04_12_root_html_block_paint;
+#[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+mod c04_12_root_html_text_paint;
 mod c05;
 mod c06;
 mod c07;

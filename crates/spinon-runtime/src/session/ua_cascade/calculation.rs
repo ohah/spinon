@@ -38,6 +38,8 @@ pub(super) enum RuntimeCalculationProfile {
     FlexLayout,
     RootHtmlDocument,
     RootHtmlBlockPaint,
+    #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+    RootHtmlTextPaint,
     FlexPaint,
     RegisteredPropertiesPaint,
     BlockPaint,
@@ -60,6 +62,15 @@ pub(super) enum RuntimeCalculationProfile {
 impl RuntimeCalculationProfile {
     const fn has_paint(self) -> bool {
         !matches!(self, Self::FlexLayout | Self::RootHtmlDocument)
+    }
+}
+
+fn is_root_html_paint_profile(profile: RuntimeCalculationProfile) -> bool {
+    match profile {
+        RuntimeCalculationProfile::RootHtmlBlockPaint => true,
+        #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+        RuntimeCalculationProfile::RootHtmlTextPaint => true,
+        _ => false,
     }
 }
 
@@ -172,6 +183,13 @@ pub(super) fn compute_request_for_root_html_block_paint(
     request: &WorkRequest,
 ) -> Result<RuntimeCalculation, String> {
     compute_request_with_profile(request, RuntimeCalculationProfile::RootHtmlBlockPaint)
+}
+
+#[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+pub(super) fn compute_request_for_root_html_text_paint(
+    request: &WorkRequest,
+) -> Result<RuntimeCalculation, String> {
+    compute_request_with_profile(request, RuntimeCalculationProfile::RootHtmlTextPaint)
 }
 
 pub(super) fn compute_request_for_runtime_gpu(
@@ -464,11 +482,10 @@ fn compute_root(
     ),
     String,
 > {
-    let view = match calculation_profile {
-        RuntimeCalculationProfile::RootHtmlBlockPaint => {
-            StyloDocumentView::new_html_shared(Arc::clone(&request.snapshot), root)
-        }
-        _ => StyloDocumentView::new_html_runtime_mount_shared(Arc::clone(&request.snapshot), root),
+    let view = if is_root_html_paint_profile(calculation_profile) {
+        StyloDocumentView::new_html_shared(Arc::clone(&request.snapshot), root)
+    } else {
+        StyloDocumentView::new_html_runtime_mount_shared(Arc::clone(&request.snapshot), root)
     }
     .map_err(|error| error.to_string())?;
     let profile = match calculation_profile {
@@ -480,6 +497,10 @@ fn compute_root(
         }
         RuntimeCalculationProfile::RootHtmlBlockPaint => {
             ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+        }
+        #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+        RuntimeCalculationProfile::RootHtmlTextPaint => {
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
         }
         RuntimeCalculationProfile::FlexPaint => {
             ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
@@ -524,7 +545,7 @@ fn compute_root(
     let previous_style_root = request
         .previous_styles
         .as_deref()
-        .filter(|_| calculation_profile != RuntimeCalculationProfile::RootHtmlBlockPaint)
+        .filter(|_| !is_root_html_paint_profile(calculation_profile))
         .and_then(|roots| (roots.len() == 1).then_some(&roots[0]))
         .filter(|cached| cached.root_node_id == root.id().get());
     let dirty_root_ids = request
@@ -579,6 +600,15 @@ fn compute_root(
             }
             RuntimeCalculationProfile::RootHtmlBlockPaint => {
                 spinon_style::compute_runtime_root_html_block_paint_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    request.key.style_revision,
+                )
+            }
+            #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+            RuntimeCalculationProfile::RootHtmlTextPaint => {
+                spinon_style::compute_runtime_root_html_text_paint_cascade_with_stylesheets(
                     &view,
                     author_stylesheets,
                     request.viewport,

@@ -566,6 +566,8 @@ pub enum ComputedStyleProfile {
     RuntimeBlockPaintV1,
     /// C04.12의 parsed root HTML에 한정한 Block layout·background paint profile입니다.
     RuntimeRootHtmlBlockPaintV1,
+    /// C04.12의 parsed root HTML Block와 고정 Ahem direct-text paint profile입니다.
+    RuntimeRootHtmlTextPaintV1,
     /// C19.1의 `<color>` computed values를 CSS Color 4 typed carrier로 보존하는 profile입니다.
     C19ComputedColorV1,
     /// C18.3의 image object sizing 입력을 C08 Block paint 입력과 분리해 계산합니다.

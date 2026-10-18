@@ -173,6 +173,9 @@ fn runtime_properties_for_profile(
     if profile == ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1 {
         return Some(runtime_paint::runtime_root_html_block_paint_properties());
     }
+    if profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+        return Some(runtime_paint::runtime_root_html_text_paint_properties());
+    }
     if profile == ComputedStyleProfile::RuntimeBlockImageV1 {
         return Some(runtime_paint::runtime_block_image_properties());
     }
@@ -254,6 +257,7 @@ fn is_runtime_layout_profile(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
             | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+            | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
             | ComputedStyleProfile::RuntimeBlockImageV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
