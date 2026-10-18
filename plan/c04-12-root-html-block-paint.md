@@ -8,6 +8,7 @@
 - **구현 후 검토와 실행 근거:** [구현 실패 관점 20개](../spec/internal/evidence/c04-12-root-html-block-paint-implementation-review-20-2026-10-18.md) · [Android/iOS 및 Rust 검증](../spec/internal/evidence/c04-12-root-html-block-paint-2026-10-18/README.md)
 - **PR 변경 검토:** [30개 서로 다른 실패 관점과 판정](../spec/internal/evidence/c04-12-root-html-block-paint-pr-diff-review-30-2026-10-18.md)
 - **병합 후 문서 상태 검토:** [30개 독립 관점](../spec/internal/evidence/c04-12-root-html-block-paint-post-merge-status-review-30-2026-10-18.md)
+- **공식 상태 대장 병합 기록 대조:** [30개 독립 관점](../spec/internal/evidence/c04-12-root-html-block-paint-status-merge-review-30-2026-10-18.md)
 
 ## 목표와 계약 경계
 
