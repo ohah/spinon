@@ -499,6 +499,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c073-aspect-ratio")
     private let blockPaintProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c08-block-paint")
+    private let rootHtmlBlockPaintProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c0412-root-html-block-paint")
     private let marginCollapseProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c092-margin-collapse")
     private let flowRootProbeRequested = ProcessInfo.processInfo.arguments
@@ -926,6 +928,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || c131StackingDescendantClipProbeRequested || c131BorderStripProbeRequested
             || c132ScrollFixtureRequested
             || c133GestureFixtureRequested || c11GridFixtureRequested
+            || rootHtmlBlockPaintProbeRequested
         var selectedWithImagePaint = selected
 #if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         selectedWithImagePaint = selectedWithImagePaint || imagePaintProbeRequested
@@ -1025,6 +1028,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "SPINON · C09.1 Block formatting"
             : viewportUnitsProbeRequested
             ? "SPINON · C06.6 viewport units"
+            : rootHtmlBlockPaintProbeRequested
+            ? "SPINON · C04.12 root HTML Block paint"
             : blockPaintProbeRequested
             ? "SPINON · C08 Block 흐름"
             : aspectRatioProbeRequested
@@ -1131,6 +1136,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "V8 DOM Block·auto margin → Stylo → Taffy → WGPU · 320×240 CSS px"
             : viewportUnitsProbeRequested
             ? "V8 vw/svw/lvw/dvw → Stylo CSS px → Taffy → WGPU"
+            : rootHtmlBlockPaintProbeRequested
+            ? "V8 parsed root HTML → meta viewport/color-scheme → Stylo → Taffy → WGPU · 320×240 CSS px"
             : blockPaintProbeRequested
             ? "V8 DOM Block 흐름 → Stylo → Taffy → WGPU"
             : aspectRatioProbeRequested
@@ -1234,6 +1241,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "C06.6 viewport units WGPU 장면"
             : blockFormattingProbeRequested
             ? "C09.1 일반 Block 흐름·auto margin WGPU 장면"
+            : rootHtmlBlockPaintProbeRequested
+            ? "C04.12 실제 html/head/body Block 배경 페인트 WGPU 장면"
             : blockPaintProbeRequested
             ? "C08 Block 흐름 기본 페인트 WGPU 장면"
             : aspectRatioProbeRequested
@@ -2736,6 +2745,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? SpinonRunner.createRuntimeGpuHostWithC12_1PositionFixture()
             : blockFormattingProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithBlockFormattingFixture()
+            : rootHtmlBlockPaintProbeRequested
+            ? SpinonRunner.createRuntimeGpuHostWithRootHtmlBlockPaintFixture()
             : blockPaintProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithBlockPaintFixture()
             : SpinonRunner.createRuntimeGpuHost(
@@ -2833,13 +2844,20 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 || c1132GridNamedLinesProbeRequested || c1131GridRepeatProbeRequested
                 || fixedSizeCssFixtureRequested ? 240 : environmentInputs.height
         log("SPINON_C0410_ENVIRONMENT_REQUEST width=\(viewportWidth) height=\(viewportHeight)")
-        let environment = SpinonRunner.setRuntimeGpuEnvironment(
-            handle, width: viewportWidth, height: viewportHeight,
-            scale: c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested
+        let environmentScale = rootHtmlBlockPaintProbeRequested
+            ? environmentInputs.scale
+            : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested
                 || c123FixedPositionProbeRequested || c1132GridNamedLinesProbeRequested
                 || c1133GridTemplateAreasProbeRequested || c132ScrollFixtureRequested
                 || c133GestureFixtureRequested || imagePaintProbeRequested
-                ? 1 : environmentInputs.scale,
+                ? 1 : environmentInputs.scale
+        let environment = SpinonRunner.setRuntimeGpuEnvironment(
+            handle,
+            width: rootHtmlBlockPaintProbeRequested
+                ? viewportWidth * environmentScale : viewportWidth,
+            height: rootHtmlBlockPaintProbeRequested
+                ? viewportHeight * environmentScale : viewportHeight,
+            scale: environmentScale,
             dark: environmentInputs.dark
         )
         guard environment?.hasPrefix("status=0 ") == true else {
@@ -3012,6 +3030,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             result = SpinonRunner.evalRuntimeGpuViewportUnitsFixture(handle)
         } else if blockFormattingProbeRequested {
             result = SpinonRunner.evalRuntimeGpuBlockFormattingFixture(handle)
+        } else if rootHtmlBlockPaintProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuRootHtmlBlockPaintFixture(handle)
         } else if blockPaintProbeRequested {
             result = SpinonRunner.evalRuntimeGpuBlockPaintFixture(handle)
         } else if aspectRatioProbeRequested {
@@ -4087,10 +4107,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || c1132GridNamedLinesProbeRequested || c1133GridTemplateAreasProbeRequested
             || c132ScrollFixtureRequested || c133GestureFixtureRequested
         environmentInputs = (
-            c153HostDocumentTextPaintArgumentRequested ? 320
+            rootHtmlBlockPaintProbeRequested ? 320
+                : c153HostDocumentTextPaintArgumentRequested ? 320
                 : c153GlyphPaintProbeRequested ? 360 : viewportWidthCssPx,
-            c153GlyphPaintProbeRequested ? 240 : viewportHeightCssPx,
-            fixedCssScaleRoute ? 1 : displayScale, darkMode
+            rootHtmlBlockPaintProbeRequested || c153GlyphPaintProbeRequested
+                ? 240 : viewportHeightCssPx,
+            rootHtmlBlockPaintProbeRequested ? displayScale
+                : fixedCssScaleRoute ? 1 : displayScale, darkMode
         )
         stateLock.unlock()
         guard isCurrentPresentation(generation: generation, sequence: sequence) else { return }
@@ -4114,7 +4137,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
 #endif
         let report = SpinonRunner.setRuntimeGpuEnvironment(
-            handle, width: environmentInputs.width, height: environmentInputs.height,
+            handle,
+            width: rootHtmlBlockPaintProbeRequested
+                ? environmentInputs.width * environmentInputs.scale : environmentInputs.width,
+            height: rootHtmlBlockPaintProbeRequested
+                ? environmentInputs.height * environmentInputs.scale : environmentInputs.height,
             scale: environmentInputs.scale, dark: environmentInputs.dark
         )
         log("SPINON_C0410_ENVIRONMENT viewport=\(environmentInputs.width)x\(environmentInputs.height) scale=\(environmentInputs.scale) dark=\(environmentInputs.dark) sequence=\(sequence) \(report ?? "")")

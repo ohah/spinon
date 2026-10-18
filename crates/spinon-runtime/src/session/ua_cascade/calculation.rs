@@ -37,6 +37,7 @@ use std::time::Instant;
 pub(super) enum RuntimeCalculationProfile {
     FlexLayout,
     RootHtmlDocument,
+    RootHtmlBlockPaint,
     FlexPaint,
     RegisteredPropertiesPaint,
     BlockPaint,
@@ -164,6 +165,13 @@ pub(super) fn compute_request_for_root_html(
     request: &WorkRequest,
 ) -> Result<RuntimeCalculation, String> {
     compute_request_with_profile(request, RuntimeCalculationProfile::RootHtmlDocument)
+}
+
+#[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
+pub(super) fn compute_request_for_root_html_block_paint(
+    request: &WorkRequest,
+) -> Result<RuntimeCalculation, String> {
+    compute_request_with_profile(request, RuntimeCalculationProfile::RootHtmlBlockPaint)
 }
 
 pub(super) fn compute_request_for_runtime_gpu(
@@ -456,15 +464,22 @@ fn compute_root(
     ),
     String,
 > {
-    let view =
-        StyloDocumentView::new_html_runtime_mount_shared(Arc::clone(&request.snapshot), root)
-            .map_err(|error| error.to_string())?;
+    let view = match calculation_profile {
+        RuntimeCalculationProfile::RootHtmlBlockPaint => {
+            StyloDocumentView::new_html_shared(Arc::clone(&request.snapshot), root)
+        }
+        _ => StyloDocumentView::new_html_runtime_mount_shared(Arc::clone(&request.snapshot), root),
+    }
+    .map_err(|error| error.to_string())?;
     let profile = match calculation_profile {
         RuntimeCalculationProfile::FlexLayout => {
             ComputedStyleProfile::RuntimeFlexCustomPropertiesV1
         }
         RuntimeCalculationProfile::RootHtmlDocument => {
             ComputedStyleProfile::RuntimeFlexCustomPropertiesMediaEnvironmentV1
+        }
+        RuntimeCalculationProfile::RootHtmlBlockPaint => {
+            ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
         }
         RuntimeCalculationProfile::FlexPaint => {
             ComputedStyleProfile::RuntimeFlexCustomPropertiesPaintV1
@@ -509,6 +524,7 @@ fn compute_root(
     let previous_style_root = request
         .previous_styles
         .as_deref()
+        .filter(|_| calculation_profile != RuntimeCalculationProfile::RootHtmlBlockPaint)
         .and_then(|roots| (roots.len() == 1).then_some(&roots[0]))
         .filter(|cached| cached.root_node_id == root.id().get());
     let dirty_root_ids = request
@@ -555,6 +571,14 @@ fn compute_root(
             }
             RuntimeCalculationProfile::RootHtmlDocument => {
                 spinon_style::compute_runtime_flex_custom_properties_media_environment_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    request.key.style_revision,
+                )
+            }
+            RuntimeCalculationProfile::RootHtmlBlockPaint => {
+                spinon_style::compute_runtime_root_html_block_paint_cascade_with_stylesheets(
                     &view,
                     author_stylesheets,
                     request.viewport,

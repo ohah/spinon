@@ -284,6 +284,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
     private static native long nativeCreateHost(boolean registeredPropertiesFixture);
     private static native long nativeCreateBlockPaintHost();
+    private static native long nativeCreateRootHtmlBlockPaintHost();
     private static native long nativeCreateBlockFormattingHost();
     private static native long nativeCreateC121PositionHost();
     private static native long nativeCreateC122AbsoluteBlockHost();
@@ -323,6 +324,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalBorderWidthFixture(long host);
     private static native byte[] nativeEvalAspectRatioFixture(long host);
     private static native byte[] nativeEvalBlockPaintFixture(long host);
+    private static native byte[] nativeEvalRootHtmlBlockPaintFixture(long host);
     private static native byte[] nativeEvalBlockFormattingFixture(long host);
     private static native byte[] nativeEvalC121PositionFixture(long host);
     private static native byte[] nativeEvalC122AbsoluteBlockFixture(long host);
@@ -467,6 +469,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean borderWidthProbeRequested;
     private final boolean aspectRatioProbeRequested;
     private final boolean blockPaintProbeRequested;
+    private final boolean rootHtmlBlockPaintProbeRequested;
     private final boolean blockFormattingProbeRequested;
     private final boolean c121PositioningProbeRequested;
     private final boolean c122AbsoluteBlockProbeRequested;
@@ -504,6 +507,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private boolean c131StackingDescendantClipCaptureStarted;
     private final boolean c131BorderStripProbeRequested;
     private final boolean c192BoxPaintOpacityProbeRequested;
+    private boolean rootHtmlBlockPaintSurfaceCaptureStarted;
     private final boolean c153GlyphPaintProbeRequested;
     private final boolean c153HostDocumentTextPaintProbeRequested;
     private volatile String c153GlyphPaintEvaluationReport = "";
@@ -647,6 +651,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c073_aspect_ratio", false);
         blockPaintProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c08_block_paint", false);
+        rootHtmlBlockPaintProbeRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c0412_root_html_block_paint", false);
         marginCollapseProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c092_margin_collapse", false);
         flowRootProbeRequested = activity.getIntent()
@@ -914,6 +920,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         blockFormattingProbeRequested = flowRootProbeRequested || marginCollapseProbeRequested
                 || activity.getIntent().getBooleanExtra("spinon_c091_block_formatting", false);
         fixedSizeCssFixtureRequested = c122AbsoluteBlockProbeRequested
+                || rootHtmlBlockPaintProbeRequested
                 || BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested
                 || c131CompactSurfaceMatrixProbeRequested
                 || c131BorderStripProbeRequested
@@ -1033,6 +1040,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "SPINON · C09.1 Block formatting"
                 : viewportUnitsProbeRequested
                 ? "SPINON · C06.6 viewport units"
+                : rootHtmlBlockPaintProbeRequested
+                ? "SPINON · C04.12 root HTML Block paint"
                 : blockPaintProbeRequested
                 ? "SPINON · C08 Block 흐름"
                 : aspectRatioProbeRequested
@@ -1136,6 +1145,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "V8 DOM Block·auto margin → Stylo → Taffy → WGPU · 320×240 CSS px"
                 : viewportUnitsProbeRequested
                 ? "V8 vw/svw/lvw/dvw → Stylo CSS px → Taffy → WGPU"
+                : rootHtmlBlockPaintProbeRequested
+                ? "V8 parsed root HTML → meta viewport/color-scheme → Stylo → Taffy → WGPU · 320×240 CSS px"
                 : blockPaintProbeRequested
                 ? "V8 DOM Block 흐름 → Stylo → Taffy → WGPU"
                 : aspectRatioProbeRequested
@@ -1240,6 +1251,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "C09.1 일반 Block 흐름·auto margin WGPU 장면"
                 : viewportUnitsProbeRequested
                 ? "C06.6 viewport units WGPU 장면"
+                : rootHtmlBlockPaintProbeRequested
+                ? "C04.12 실제 html/head/body Block 배경 페인트 WGPU 장면"
                 : blockPaintProbeRequested
                 ? "C08 Block 흐름 기본 페인트 WGPU 장면"
                 : aspectRatioProbeRequested
@@ -1579,6 +1592,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("실패 · C11 Grid 표면 표본 인수가 올바르지 않습니다");
             return;
         }
+        if (rootHtmlBlockPaintProbeRequested
+                && !BuildConfig.SPINON_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST) {
+            postStatus("C04.12 root HTML Block paint fixture-test 옵션을 켜서 빌드해야 합니다.");
+            return;
+        }
         long host = c1133GridTemplateAreasRequested
                 ? nativeCreateC1133GridTemplateAreasHost()
                 : c1132GridNamedLinesRequested
@@ -1642,6 +1660,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? nativeCreateC121PositionHost()
                 : blockFormattingProbeRequested
                 ? nativeCreateBlockFormattingHost()
+                : rootHtmlBlockPaintProbeRequested
+                ? nativeCreateRootHtmlBlockPaintHost()
                 : blockPaintProbeRequested
                 ? nativeCreateBlockPaintHost() : nativeCreateHost(registeredPropertiesProbeRequested);
         if (host == 0) {
@@ -1689,7 +1709,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || c1132GridNamedLinesRequested || c1133GridTemplateAreasRequested
                 ? 1.0f : density;
         String environment = decode(nativeSetEnvironment(
-                host, widthCssPx, heightCssPx, environmentScale, dark));
+                host,
+                rootHtmlBlockPaintProbeRequested ? widthCssPx * environmentScale : widthCssPx,
+                rootHtmlBlockPaintProbeRequested ? heightCssPx * environmentScale : heightCssPx,
+                environmentScale, dark));
         if (!environment.startsWith("status=0 ")) {
             postStatus("실패 · " + environment);
             return;
@@ -1796,6 +1819,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? decode(nativeEvalMarginCollapseFixture(host))
                 : blockFormattingProbeRequested
                 ? decode(nativeEvalBlockFormattingFixture(host))
+                : rootHtmlBlockPaintProbeRequested
+                ? decode(nativeEvalRootHtmlBlockPaintFixture(host))
                 : blockPaintProbeRequested
                 ? decode(nativeEvalBlockPaintFixture(host))
                 : aspectRatioProbeRequested
@@ -2165,7 +2190,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "SPINON_C101_EVAL " : marginCollapseProbeRequested
                 ? "SPINON_C092_EVAL " : blockFormattingProbeRequested
                 ? "SPINON_C091_EVAL " : viewportUnitsProbeRequested
-                ? "SPINON_C066A_EVAL " : blockPaintProbeRequested
+                ? "SPINON_C066A_EVAL " : rootHtmlBlockPaintProbeRequested
+                ? "SPINON_C0412_ROOT_HTML_BLOCK_PAINT_EVAL " : blockPaintProbeRequested
                 ? "SPINON_C08_EVAL " : aspectRatioProbeRequested
                 ? "SPINON_C073_EVAL " : borderWidthProbeRequested
                 ? "SPINON_C072_EVAL " : minMaxSizingProbeRequested
@@ -4594,7 +4620,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         if (!isCurrentPresentation(generation, sequence)) return;
         String result = decode(nativeSetEnvironment(
-                host, widthCssPx, heightCssPx, environmentScale, dark));
+                host,
+                rootHtmlBlockPaintProbeRequested ? widthCssPx * environmentScale : widthCssPx,
+                rootHtmlBlockPaintProbeRequested ? heightCssPx * environmentScale : heightCssPx,
+                environmentScale, dark));
         Log.i(TAG, "SPINON_C0410_ENVIRONMENT viewport=" + widthCssPx + "x" + heightCssPx
                 + " scale=" + environmentScale + " dark=" + dark + " sequence=" + sequence
                 + " " + result);
@@ -4859,6 +4888,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (c124SurfaceCaptureProbeRequested) {
             requestC124SurfaceCapture(renderer, generation);
         }
+        if (BuildConfig.SPINON_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST
+                && rootHtmlBlockPaintProbeRequested
+                && !rootHtmlBlockPaintSurfaceCaptureStarted) {
+            requestRootHtmlBlockPaintSurfaceCapture(renderer, generation, result);
+        }
         if (c192BoxPaintOpacityProbeRequested) {
             requestC192SurfaceCapture(renderer, generation);
         } else if (c131StackingDescendantClipProbeRequested) {
@@ -4911,6 +4945,39 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         java.util.function.Consumer<String> status = this::postStatus;
         invokeC192CaptureAdapter("request", surfaceView, activity, width, height,
                 generation, mainHandler, runtimeQueue, sourceIsCurrent, status);
+    }
+
+    private void requestRootHtmlBlockPaintSurfaceCapture(
+            long renderer, long generation, String drawReport) {
+        final int width;
+        final int height;
+        final boolean dark;
+        synchronized (stateLock) {
+            if (closing || rootHtmlBlockPaintSurfaceCaptureStarted || !surfaceAvailable
+                    || surfaceGeneration != generation || rendererHandle != renderer
+                    || rendererGeneration != generation) return;
+            rootHtmlBlockPaintSurfaceCaptureStarted = true;
+            width = surfaceWidth;
+            height = surfaceHeight;
+            dark = darkMode;
+        }
+        java.util.function.BooleanSupplier sourceIsCurrent = () -> {
+            synchronized (stateLock) {
+                return !closing && surfaceAvailable && surfaceGeneration == generation
+                        && rendererHandle == renderer && rendererGeneration == generation
+                        && surfaceWidth == width && surfaceHeight == height && darkMode == dark;
+            }
+        };
+        java.util.function.Consumer<String> statusCallback = this::postStatus;
+        try {
+            invokeRootHtmlBlockPaintCaptureAdapter("request", surfaceView, activity, width,
+                    height, generation, dark, drawReport, mainHandler, runtimeQueue,
+                    sourceIsCurrent, statusCallback);
+        } catch (IllegalStateException error) {
+            Log.e(TAG, "SPINON_C0412_PIXELCOPY status=adapter-error generation=" + generation
+                    + " reason=" + error.getClass().getSimpleName());
+            postStatus("실패 · C04.12 Android PixelCopy 어댑터 오류");
+        }
     }
 
     private void requestC153SurfaceCapture(long renderer, long generation) {
@@ -5189,6 +5256,25 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         } catch (ReflectiveOperationException | SecurityException error) {
             throw new IllegalStateException("C19.2 adapter invocation failed: " + methodName,
                     error);
+        }
+    }
+
+    private static Object invokeRootHtmlBlockPaintCaptureAdapter(
+            String methodName, Object... arguments) {
+        try {
+            Class<?> adapter = Class.forName(
+                    "dev.spinon.bootstrap.RootHtmlBlockPaintFixtureCaptureAdapter");
+            for (java.lang.reflect.Method method : adapter.getDeclaredMethods()) {
+                if (!method.getName().equals(methodName)
+                        || method.getParameterCount() != arguments.length) continue;
+                method.setAccessible(true);
+                return method.invoke(null, arguments);
+            }
+            throw new IllegalStateException("C04.12 root HTML Block paint adapter method not found: "
+                    + methodName);
+        } catch (ReflectiveOperationException | RuntimeException error) {
+            throw new IllegalStateException("C04.12 root HTML Block paint adapter invocation failed: "
+                    + methodName, error);
         }
     }
 

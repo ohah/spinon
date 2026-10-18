@@ -1,0 +1,8 @@
+profile=dev
+command=CARGO_TARGET_DIR=/Volumes/ZTSBuild/out/spinon-c04-12-root-html-block-paint-impl-20261018/target cargo build --locked -p spinon-ffi --lib
+features=none
+artifact=/Volumes/ZTSBuild/out/spinon-c04-12-root-html-block-paint-impl-20261018/target/debug/libspinon_ffi.a
+new_fixture_symbol=absent
+eval_fixture_symbol=absent
+fixture_title=absent
+check=strings archive scan for the exact exported symbol names and fixture title

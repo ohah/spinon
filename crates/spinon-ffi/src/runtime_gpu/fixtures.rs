@@ -1,6 +1,9 @@
 pub(crate) mod data;
 mod host;
 
+#[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
+pub(super) mod c04_12_root_html_block_paint;
+
 #[cfg(feature = "c15-3-wgpu-glyph-paint-fixture-test")]
 pub(super) mod c15_3;
 #[cfg(feature = "c15-3-wgpu-glyph-paint-fixture-test")]

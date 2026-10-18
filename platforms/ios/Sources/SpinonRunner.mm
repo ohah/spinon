@@ -746,6 +746,30 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 }
 
++ (uint64_t)createRuntimeGpuHostWithRootHtmlBlockPaintFixture {
+#if defined(SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_root_html_block_paint_fixture(
+          output.data(), output.size());
+  if (host == nullptr) {
+    os_log_error(OS_LOG_DEFAULT,
+                 "SPINON_C0412_ROOT_HTML_BLOCK_PAINT_HOST_ERROR=%{public}s",
+                 output.data());
+    return 0;
+  }
+  os_log(OS_LOG_DEFAULT,
+         "SPINON_C0412_ROOT_HTML_BLOCK_PAINT_HOST=%{public}s",
+         output.data());
+  return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
+#else
+  os_log_error(OS_LOG_DEFAULT,
+               "SPINON_C0412_ROOT_HTML_BLOCK_PAINT_DISABLED rebuild with SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST=1");
+  return 0;
+#endif
+}
+
 + (uint64_t)createRuntimeGpuHostWithBlockFormattingFixture {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
   std::array<char, 1024> output{};
@@ -1661,6 +1685,25 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #else
   (void)handle;
   return @"status=-1 C04.10 GPU fixture 빌드가 비활성화되었습니다";
+#endif
+}
+
++ (NSString *)evalRuntimeGpuRootHtmlBlockPaintFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST
+  if (handle == 0) return @"status=-1 runtime GPU host가 0입니다";
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 4096> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_root_html_block_paint_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C0412_ROOT_HTML_BLOCK_PAINT_EVAL", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-90 C04.12 root HTML Block paint fixture 빌드가 비활성화되었습니다";
 #endif
 }
 

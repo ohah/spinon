@@ -21,6 +21,19 @@ require(spinonC0412RootHtmlFixtureTestValue == "0" ||
     spinonC0412RootHtmlFixtureTestValue == "1") {
     "SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST는 0 또는 1이어야 합니다."
 }
+val spinonC0412RootHtmlBlockPaintFixtureTest =
+    providers.environmentVariable("SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST")
+        .orElse("0")
+val spinonC0412RootHtmlBlockPaintFixtureTestValue =
+    spinonC0412RootHtmlBlockPaintFixtureTest.get()
+require(spinonC0412RootHtmlBlockPaintFixtureTestValue == "0" ||
+    spinonC0412RootHtmlBlockPaintFixtureTestValue == "1") {
+    "SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST는 0 또는 1이어야 합니다."
+}
+require(spinonC0412RootHtmlBlockPaintFixtureTestValue != "1" ||
+    spinonC04RuntimeGpuValue == "1") {
+    "C04.12 root HTML Block paint fixture는 C04 runtime GPU와 함께 켜야 합니다."
+}
 val spinonC04UaCascadeFixtureProbe =
     providers.gradleProperty("spinonC04UaCascadeFixtureProbe").orElse("0")
 val spinonC04UaCascadeFixtureProbeValue = spinonC04UaCascadeFixtureProbe.get()
@@ -170,6 +183,10 @@ val prepareSpinonBootstrap by tasks.registering(Exec::class) {
         spinonC0412RootHtmlFixtureTestValue,
     )
     environment(
+        "SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST",
+        spinonC0412RootHtmlBlockPaintFixtureTestValue,
+    )
+    environment(
         "SPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE",
         spinonC04UaCascadeFixtureProbe.get(),
     )
@@ -250,6 +267,11 @@ android {
             "boolean",
             "SPINON_C04_12_ROOT_HTML_FIXTURE_TEST",
             (spinonC0412RootHtmlFixtureTestValue == "1").toString(),
+        )
+        buildConfigField(
+            "boolean",
+            "SPINON_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST",
+            (spinonC0412RootHtmlBlockPaintFixtureTestValue == "1").toString(),
         )
         buildConfigField(
             "boolean",
@@ -340,6 +362,9 @@ android {
         }
         if (spinonC0412RootHtmlFixtureTestValue == "1") {
             java.srcDir("src/c04_12_root_html_fixture_test/java")
+        }
+        if (spinonC0412RootHtmlBlockPaintFixtureTestValue == "1") {
+            java.srcDir("src/c04_12_root_html_block_paint_fixture_test/java")
         }
         if (spinonImagePaintFixtureTestValue) {
             java.srcDir("src/c18_1_image_paint_fixture_test/java")

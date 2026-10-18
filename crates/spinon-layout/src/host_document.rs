@@ -18,6 +18,7 @@ struct HostDocumentLayoutProfile<'a> {
     root_sizing: RootSizingPolicy,
     paragraph_styles: Option<&'a BTreeMap<NodeId, ParagraphStyle>>,
     inline_run_styles: Option<&'a BTreeMap<NodeId, InlineRunStyle>>,
+    ignore_collapsible_whitespace_text: bool,
 }
 
 /// 고정 inline paragraph와 run별 글꼴 metric map을 묶은 내부 입력입니다.
@@ -139,6 +140,7 @@ impl LayoutInput {
                 root_sizing: RootSizingPolicy::Match,
                 paragraph_styles: Some(text_styles.paragraphs),
                 inline_run_styles: Some(text_styles.inline_runs),
+                ignore_collapsible_whitespace_text: false,
             },
         )
     }
@@ -163,6 +165,32 @@ impl LayoutInput {
                 root_sizing,
                 paragraph_styles: None,
                 inline_run_styles: None,
+                ignore_collapsible_whitespace_text: false,
+            },
+        )
+    }
+
+    /// HTML root scene에서 접을 수 있는 공백 text node를 layout box에서 제외합니다.
+    pub fn from_host_document_with_viewport_containing_block_ignoring_collapsible_whitespace(
+        snapshot: &HostDocumentSnapshot,
+        root: HostNodeHandle,
+        viewport: Viewport,
+        styles: &BTreeMap<NodeId, LayoutStyle>,
+        style_revision: StyleRevision,
+        environment_revision: EnvironmentRevision,
+    ) -> Result<Self, LayoutError> {
+        Self::from_host_document_with_text_profile(
+            snapshot,
+            root,
+            viewport,
+            styles,
+            style_revision,
+            environment_revision,
+            HostDocumentLayoutProfile {
+                root_sizing: RootSizingPolicy::ResolveWithin,
+                paragraph_styles: None,
+                inline_run_styles: None,
+                ignore_collapsible_whitespace_text: true,
             },
         )
     }
@@ -180,6 +208,7 @@ impl LayoutInput {
             root_sizing,
             paragraph_styles,
             inline_run_styles,
+            ignore_collapsible_whitespace_text,
         } = profile;
         let root_node = snapshot
             .node(root)
@@ -232,8 +261,11 @@ impl LayoutInput {
             let node = snapshot
                 .node(handle)
                 .ok_or(LayoutError::InvalidHostDocumentRoot(handle.id()))?;
-            if matches!(node.kind(), HostNodeKind::Text(_)) {
+            if let HostNodeKind::Text(text) = node.kind() {
                 if ancestor_hidden {
+                    continue;
+                }
+                if ignore_collapsible_whitespace_text && text.to_string_lossy().trim().is_empty() {
                     continue;
                 }
                 return Err(LayoutError::UnsupportedTextNode(handle.id()));
@@ -257,8 +289,13 @@ impl LayoutInput {
                         child: child.id(),
                     });
                 };
-                if matches!(child_node.kind(), HostNodeKind::Text(_)) {
+                if let HostNodeKind::Text(text) = child_node.kind() {
                     if !hidden && !text_source_nodes.contains(&child.id()) {
+                        if ignore_collapsible_whitespace_text
+                            && text.to_string_lossy().trim().is_empty()
+                        {
+                            continue;
+                        }
                         return Err(LayoutError::UnsupportedTextNode(child.id()));
                     }
                     continue;

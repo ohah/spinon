@@ -61,6 +61,8 @@ struct RuntimeGpuHost {
     session: RuntimeSession,
     include_node_frame_report: bool,
     include_paint_order_report: bool,
+    #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
+    root_html_block_paint_fixture: bool,
     #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
     include_c13_1_hit_test_report: bool,
     #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
@@ -161,6 +163,8 @@ impl RuntimeGpuHost {
             session,
             include_node_frame_report,
             include_paint_order_report: false,
+            #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
+            root_html_block_paint_fixture: false,
             #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
             include_c13_1_hit_test_report: false,
             #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
@@ -590,15 +594,52 @@ impl RuntimeGpuHost {
         } else {
             CssColorScheme::Light
         };
-        let revision = self
-            .session
-            .set_ua_cascade_environment(
-                width_css_px,
-                height_css_px,
-                device_scale_factor,
-                environment,
+        #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
+        let (revision, root_html_environment_report) = if self.root_html_block_paint_fixture {
+            let resolved = self
+                .session
+                .set_root_html_environment(
+                    width_css_px,
+                    height_css_px,
+                    device_scale_factor,
+                    environment,
+                )
+                .map_err(|error| (ERR_LAYOUT, format!("root HTML 환경 갱신 실패: {error:?}")))?;
+            (
+                resolved.environment_revision,
+                format!(
+                    "root_html_environment=true viewport={}x{} visual_viewport={}x{} page_scale={} ",
+                    resolved.viewport_width_css_px,
+                    resolved.viewport_height_css_px,
+                    resolved.visual_viewport_width_css_px,
+                    resolved.visual_viewport_height_css_px,
+                    resolved.page_scale,
+                ),
             )
-            .map_err(|error| (ERR_LAYOUT, format!("CSS runtime 환경 갱신 실패: {error:?}")))?;
+        } else {
+            let revision = self
+                .session
+                .set_ua_cascade_environment(
+                    width_css_px,
+                    height_css_px,
+                    device_scale_factor,
+                    environment,
+                )
+                .map_err(|error| (ERR_LAYOUT, format!("CSS runtime 환경 갱신 실패: {error:?}")))?;
+            (revision, String::new())
+        };
+        #[cfg(not(feature = "c04-12-root-html-block-paint-fixture-test"))]
+        let (revision, root_html_environment_report) = (
+            self.session
+                .set_ua_cascade_environment(
+                    width_css_px,
+                    height_css_px,
+                    device_scale_factor,
+                    environment,
+                )
+                .map_err(|error| (ERR_LAYOUT, format!("CSS runtime 환경 갱신 실패: {error:?}")))?,
+            String::new(),
+        );
         #[cfg(feature = "c18-1-image-paint-fixture-test")]
         let attach_c18_1_images = self.c18_1_image_paint_fixture
             && self
@@ -642,7 +683,10 @@ impl RuntimeGpuHost {
                 attach_c18_4_images,
             },
         )?;
-        Ok(format!("environment_revision={} {ready}", revision.get()))
+        Ok(format!(
+            "{root_html_environment_report}environment_revision={} {ready}",
+            revision.get()
+        ))
     }
 
     fn eval(&self, source: &str, layout_timeout_millis: u64) -> Result<String, (i32, String)> {

@@ -9,6 +9,7 @@ c12-4-worker-stack-residency-test = []
 c13-1-overflow-clip-worker-test = ["spinon-style-to-render/c13-1-overflow-clip-worker-test"]
 c13-3-gesture-fixture-test = ["spinon-style-to-render/c13-3-gesture-fixture-test"]
 c14-1-live-v8-fixture-test = []
+c04-12-root-html-block-paint-fixture-test = []
 c19-2-box-paint-opacity-fixture-test = []
 
 [dependencies]

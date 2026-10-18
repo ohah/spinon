@@ -183,6 +183,9 @@ where
         super::calculation::RuntimeCalculationProfile::BlockPaint => {
             first_unsupported_runtime_block_paint_inline_property(&view)
         }
+        super::calculation::RuntimeCalculationProfile::RootHtmlBlockPaint => {
+            spinon_style::first_unsupported_runtime_root_html_block_paint_inline_property(&view)
+        }
         super::calculation::RuntimeCalculationProfile::BlockImage => {
             spinon_style::first_unsupported_runtime_block_image_inline_property(&view)
         }
@@ -239,6 +242,9 @@ where
             Some(property),
         ));
     }
+    if profile == super::calculation::RuntimeCalculationProfile::RootHtmlBlockPaint {
+        validate_root_html_block_paint_tree(&request.snapshot, root, &styles)?;
+    }
     let projection_started = Instant::now();
     if runtime_paint_enabled && let Some(diagnostic) = styles.diagnostics.first() {
         return Err(layout_failure(
@@ -277,6 +283,126 @@ where
         projection_duration_us: elapsed_microseconds(projection_started),
         cache_hit: false,
     })
+}
+
+fn validate_root_html_block_paint_tree(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    styles: &ComputedStyleSnapshot,
+) -> Result<(), RuntimeLayoutFailure> {
+    const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
+    let style_by_node = styles
+        .elements
+        .iter()
+        .map(|style| (style.node_id, style))
+        .collect::<std::collections::BTreeMap<_, _>>();
+    let root_element = snapshot
+        .node(root)
+        .and_then(|node| match node.kind() {
+            spinon_core::HostNodeKind::Element(element) => Some(element),
+            spinon_core::HostNodeKind::Text(_) => None,
+        })
+        .ok_or_else(|| layout_failure("invalid_root_html", Some(root.id().get()), None))?;
+    if root_element.namespace() != HTML_NAMESPACE || root_element.local_name() != "html" {
+        return Err(layout_failure(
+            "invalid_root_html",
+            Some(root.id().get()),
+            Some("documentElement must be HTML html".to_owned()),
+        ));
+    }
+
+    let mut pending = vec![(root, false)];
+    while let Some((handle, ancestor_hidden)) = pending.pop() {
+        let node = snapshot
+            .node(handle)
+            .ok_or_else(|| layout_failure("missing_node", Some(handle.id().get()), None))?;
+        if let spinon_core::HostNodeKind::Text(text) = node.kind() {
+            if !ancestor_hidden && !text.to_string_lossy().trim().is_empty() {
+                return Err(layout_failure(
+                    "visible_root_html_text",
+                    Some(node.id().get()),
+                    None,
+                ));
+            }
+            continue;
+        }
+        let style = style_by_node
+            .get(&node.id())
+            .ok_or_else(|| layout_failure("missing_computed_style", Some(node.id().get()), None))?;
+        let display = style
+            .properties
+            .get("display")
+            .map(String::as_str)
+            .ok_or_else(|| {
+                layout_failure(
+                    "missing_computed_property",
+                    Some(node.id().get()),
+                    Some("display".to_owned()),
+                )
+            })?;
+        let hidden = ancestor_hidden || display == "none";
+        if !hidden {
+            let spinon_core::HostNodeKind::Element(element) = node.kind() else {
+                unreachable!("text nodes returned above")
+            };
+            if element.namespace() != HTML_NAMESPACE
+                || !matches!(element.local_name(), "html" | "body" | "main" | "div")
+            {
+                return Err(layout_failure(
+                    "unsupported_visible_root_html_element",
+                    Some(node.id().get()),
+                    Some(format!("{}:{}", element.namespace(), element.local_name())),
+                ));
+            }
+            if display != "block" {
+                return Err(layout_failure(
+                    "unsupported_root_html_display",
+                    Some(node.id().get()),
+                    Some(display.to_owned()),
+                ));
+            }
+            for (property, value) in [
+                ("margin-top", style.layout_spacing.margin.top),
+                ("margin-right", style.layout_spacing.margin.right),
+                ("margin-bottom", style.layout_spacing.margin.bottom),
+                ("margin-left", style.layout_spacing.margin.left),
+            ] {
+                if value != spinon_style::ComputedCssSpacingValue::LengthPx(0.0) {
+                    return Err(layout_failure(
+                        "unsupported_root_html_margin",
+                        Some(node.id().get()),
+                        Some(property.to_owned()),
+                    ));
+                }
+            }
+            for (property, value) in [
+                ("width", style.layout_dimensions.width),
+                ("height", style.layout_dimensions.height),
+            ] {
+                if !matches!(
+                    value,
+                    spinon_style::ComputedCssDimension::Auto
+                        | spinon_style::ComputedCssDimension::LengthPx(_)
+                ) {
+                    return Err(layout_failure(
+                        "unsupported_root_html_dimension",
+                        Some(node.id().get()),
+                        Some(property.to_owned()),
+                    ));
+                }
+            }
+        }
+        if let Some(children) = snapshot.children(handle) {
+            pending.extend(
+                children
+                    .collect::<Vec<_>>()
+                    .into_iter()
+                    .rev()
+                    .map(|child| (child, hidden)),
+            );
+        }
+    }
+    Ok(())
 }
 
 fn empty_runtime_render_snapshot(

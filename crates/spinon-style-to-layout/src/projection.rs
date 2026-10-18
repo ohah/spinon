@@ -388,6 +388,7 @@ fn compute_profile_layout(
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
         | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
         | ComputedStyleProfile::RuntimeBlockPaintV1
+        | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
         | ComputedStyleProfile::C19ComputedColorV1
         | ComputedStyleProfile::RuntimeBlockImageV1
         | ComputedStyleProfile::RuntimeBlockFormattingV1
@@ -426,6 +427,7 @@ fn compute_layout_from_styles(
     if matches!(
         computed_styles.profile,
         ComputedStyleProfile::RuntimeBlockPaintV1
+            | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
             | ComputedStyleProfile::RuntimeBlockImageV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
@@ -522,6 +524,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
+            | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
             | ComputedStyleProfile::RuntimeBlockImageV1
     ) && styles
         .get(&root.id())
@@ -546,6 +549,15 @@ fn compute_layout_from_styles(
             computed_styles.style_revision,
             viewport.environment_revision,
         )?
+    } else if computed_styles.profile == ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1 {
+        LayoutInput::from_host_document_with_viewport_containing_block_ignoring_collapsible_whitespace(
+            snapshot,
+            root,
+            layout_viewport,
+            &styles,
+            computed_styles.style_revision,
+            viewport.environment_revision,
+        )?
     } else if matches!(
         computed_styles.profile,
         ComputedStyleProfile::RuntimeFlexLayoutV1
@@ -556,6 +568,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
+            | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
             | ComputedStyleProfile::RuntimeBlockImageV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
@@ -605,6 +618,7 @@ fn compute_layout_from_styles(
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
+            | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
             | ComputedStyleProfile::RuntimeBlockImageV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1

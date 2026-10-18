@@ -217,6 +217,12 @@ SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_registered_properties_fixture(
 /* C08 Block·기본 페인트 검증 전용 CSS runtime host를 생성합니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_block_paint_fixture(
     char *output, size_t output_capacity);
+#if defined(SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST
+/* C04.12의 고정 parsed root HTML Block scene 검증 host입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_root_html_block_paint_fixture(
+    char *output, size_t output_capacity);
+#endif
 /* C09.1 일반 Block 흐름·포함 블록·auto margin 검증 fixture 전용 host입니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_block_formatting_fixture(
     char *output, size_t output_capacity);
@@ -565,6 +571,13 @@ int32_t spinon_runtime_gpu_host_eval_aspect_ratio_fixture(
 int32_t spinon_runtime_gpu_host_eval_block_paint_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
+#if defined(SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST
+/* 파싱된 문서를 변경하지 않고 최신 Block scene으로 발행합니다. */
+int32_t spinon_runtime_gpu_host_eval_root_html_block_paint_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+#endif
 /* C09.1 actual V8 fixture; 보고에는 DOM preorder node별 CSS frame이 포함됩니다. */
 int32_t spinon_runtime_gpu_host_eval_block_formatting_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,

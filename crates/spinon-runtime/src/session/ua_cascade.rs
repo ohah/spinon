@@ -49,6 +49,8 @@ use cache::RuntimeStyleCacheEntry;
 use calculation::compute_request_for_block_flex_scroll_gesture;
 #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
 use calculation::compute_request_for_c19_box_paint_opacity;
+#[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
+use calculation::compute_request_for_root_html_block_paint;
 use calculation::{
     RuntimeCalculation, compute_request, compute_request_for_block_flex_grid,
     compute_request_for_block_flex_grid_auto_placement,
@@ -237,6 +239,11 @@ impl RuntimeUaCascadeCoordinator {
 
     pub(super) fn new_runtime_gpu_block_paint() -> Result<Self, String> {
         Self::new_with_computer(Arc::new(compute_request_for_block_paint))
+    }
+
+    #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
+    pub(super) fn new_runtime_gpu_root_html_block_paint() -> Result<Self, String> {
+        Self::new_with_computer(Arc::new(compute_request_for_root_html_block_paint))
     }
 
     pub(super) fn new_runtime_gpu_block_image() -> Result<Self, String> {

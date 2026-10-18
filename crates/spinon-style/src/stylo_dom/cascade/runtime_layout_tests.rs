@@ -1,3 +1,5 @@
+#[path = "runtime_layout_tests/c04_12_root_html_block_paint.rs"]
+mod c04_12_root_html_block_paint;
 #[path = "runtime_layout_tests/c07_border.rs"]
 mod c07_border;
 #[path = "runtime_layout_tests/c10_flex_alignment.rs"]
