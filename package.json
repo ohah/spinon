@@ -82,6 +82,7 @@
     "css:verify:c11-grid-android-physical": "node tools/css-reference/capture-c11-grid-android-physical-device.mjs",
     "test:c04-queue": "bash tools/c04-queue/run-tests.sh",
     "css:reference:c01-property-surface": "node tools/css-reference/capture-property-surface.mjs",
+    "css:reference:c01-selector-at-rule-surface": "node tools/css-reference/capture-selector-at-rule-surface.mjs",
     "css:reference:c04-flex-alignment": "node tools/css-reference/capture-c04-flex-alignment.mjs",
     "css:reference:c04-margin-layout": "node tools/css-reference/capture-c04-margin-layout.mjs",
     "css:reference:c04-margin-logical-shorthand": "node tools/css-reference/capture-c04-margin-logical-shorthand.mjs",
