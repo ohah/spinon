@@ -1,0 +1,5 @@
+build/spinon/android/jniLibs/arm64-v8a/libspinon_bootstrap.so: ELF 64-bit LSB shared object, ARM aarch64, version 1 (SYSV), dynamically linked, with debug_info, not stripped
+bdd96212be34b6750569b188f92b842346c8e6f23e116c727a9ca035985ab7f7  build/spinon/android/jniLibs/arm64-v8a/libspinon_bootstrap.so
+0000000001d73584 T Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC1123GridAutoPlacementHost
+0000000001d7a1d8 T Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC1123GridAutoPlacementFixture
+fixture_ffi_symbols=absent
