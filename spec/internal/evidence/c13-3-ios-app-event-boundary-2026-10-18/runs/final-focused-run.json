@@ -1,0 +1,23 @@
+{
+  "started_kst": "2026-10-18 15:09:27 KST",
+  "finished_kst": "2026-10-18 15:13:55 KST",
+  "elapsed_seconds": 267.904,
+  "device": {
+    "architecture": "arm64",
+    "deviceId": "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+    "deviceName": "iPad Pro 13-inch (M5)",
+    "modelName": "iPad Pro 13-inch (M5)",
+    "osBuildNumber": "23C54",
+    "osVersion": "26.2",
+    "platform": "iOS Simulator"
+  },
+  "toolchain": "Xcode 26.2 (17C52), macOS 26.5.1",
+  "result": "Passed",
+  "total_tests": 2,
+  "passed_tests": 2,
+  "failed_tests": 0,
+  "skipped_tests": 0,
+  "xcodebuild_exit": 0,
+  "source_revision_json": "source-revision.json",
+  "xcresult_bundle": "/tmp/spinon-c13-3-ios-app-event-boundary-run-20261018/AppEventBoundary-final-focused.xcresult"
+}

@@ -226,15 +226,220 @@ final class C133WheelProbeUITests: XCTestCase {
         XCTAssertEqual(unionInvariantViolations, 0, "typed recognizer callback은 union recognizer에서도 보여야 함")
     }
 
+    func testApplicationEventBoundaryForScrollTypeMasks() {
+        var observations: [String] = []
+        var recognizerCategories: [String: Int] = [:]
+        var eventCategories: [String: Int] = [:]
+        var validLaunches = 0
+        var validApplicationClasses = 0
+        var zeroBaselines = 0
+        var validRows = 0
+        var validCounterWindows = 0
+        var invalidCounterWindows = 0
+        var unionInvariantViolations = 0
+        var recognizersWithoutScrollEvents = 0
+
+        for launch in 1...3 {
+            let observationStart = observations.count
+            let app = XCUIApplication(bundleIdentifier: "dev.spinon.probe.oracle.host")
+            app.launchArguments = ["--plain-scroll-type-mask-oracle", "--app-event-boundary-oracle"]
+            app.launch()
+
+            let target = app.descendants(matching: .any)
+                .matching(identifier: "plain-oracle-target")
+                .firstMatch
+            let callbackLabel = app.descendants(matching: .any)
+                .matching(identifier: "wheel-callbacks")
+                .firstMatch
+            let eventLabel = app.descendants(matching: .any)
+                .matching(identifier: "app-event-counters")
+                .firstMatch
+            let targetExists = target.waitForExistence(timeout: 10)
+            let callbackExists = callbackLabel.waitForExistence(timeout: 10)
+            let eventLabelExists = eventLabel.waitForExistence(timeout: 10)
+            let targetIsHittable = targetExists && target.isHittable
+            guard targetExists && callbackExists && eventLabelExists && targetIsHittable else {
+                observations.append(
+                    "launch=\(launch) setup_failed target_exists=\(targetExists) callback_exists=\(callbackExists) event_label_exists=\(eventLabelExists) target_hittable=\(targetIsHittable)"
+                )
+                app.terminate()
+                continue
+            }
+            validLaunches += 1
+
+            let initialRecognizerCounts = scrollTypeMaskCounts(callbackLabel)
+            let initialEventSnapshot = applicationEventSnapshot(eventLabel)
+            let hasExpectedApplication = initialEventSnapshot.application == "C133ProbeApplication"
+            let hasZeroBaseline = ["continuous", "discrete", "union"].allSatisfy {
+                initialRecognizerCounts[$0] == 0
+            } && initialEventSnapshot.counts.values.allSatisfy { $0 == 0 }
+            validApplicationClasses += hasExpectedApplication ? 1 : 0
+            zeroBaselines += hasZeroBaseline ? 1 : 0
+            observations.append(
+                "launch=\(launch) app_class=\(initialEventSnapshot.application) app_events=\(formatApplicationEventSnapshot(initialEventSnapshot)) recognizers=\(formatScrollTypeMaskCounts(initialRecognizerCounts)) zero=\(hasZeroBaseline)"
+            )
+
+            for repetition in 1...5 {
+                for direction in ["positive", "negative"] {
+                    let beforeRecognizerCounts = scrollTypeMaskCounts(callbackLabel)
+                    let beforeEventSnapshot = applicationEventSnapshot(eventLabel)
+                    let deltaX: CGFloat = direction == "positive" ? 38 : -38
+                    target.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
+                        .scroll(byDeltaX: deltaX, deltaY: 0)
+
+                    let deadline = Date().addingTimeInterval(2.0)
+                    while Date() < deadline {
+                        let currentRecognizers = scrollTypeMaskCounts(callbackLabel)
+                        let currentEvents = applicationEventSnapshot(eventLabel)
+                        let recognizerChanged = ["continuous", "discrete", "union"].contains {
+                            currentRecognizers[$0, default: -1] > beforeRecognizerCounts[$0, default: -1]
+                        }
+                        let eventChanged = currentEvents.counts.contains { key, value in
+                            value > beforeEventSnapshot.counts[key, default: -1]
+                        }
+                        if recognizerChanged || eventChanged {
+                            break
+                        }
+                        Thread.sleep(forTimeInterval: 0.05)
+                    }
+                    Thread.sleep(forTimeInterval: 0.15)
+
+                    let afterRecognizerCounts = scrollTypeMaskCounts(callbackLabel)
+                    let afterEventSnapshot = applicationEventSnapshot(eventLabel)
+                    let validEventWindow = applicationEventWindowIsValid(
+                        before: beforeEventSnapshot,
+                        after: afterEventSnapshot
+                    )
+                    let validRecognizerWindow = recognizerCountWindowIsValid(
+                        before: beforeRecognizerCounts,
+                        after: afterRecognizerCounts
+                    )
+                    let validCounterWindow = validEventWindow && validRecognizerWindow
+                    validCounterWindows += validCounterWindow ? 1 : 0
+                    invalidCounterWindows += validCounterWindow ? 0 : 1
+
+                    let continuousDelta = validRecognizerWindow
+                        ? afterRecognizerCounts["continuous", default: -1]
+                            - beforeRecognizerCounts["continuous", default: -1]
+                        : -1
+                    let discreteDelta = validRecognizerWindow
+                        ? afterRecognizerCounts["discrete", default: -1]
+                            - beforeRecognizerCounts["discrete", default: -1]
+                        : -1
+                    let unionDelta = validRecognizerWindow
+                        ? afterRecognizerCounts["union", default: -1]
+                            - beforeRecognizerCounts["union", default: -1]
+                        : -1
+                    let scrollEventDelta = validEventWindow
+                        ? afterEventSnapshot.counts["scroll", default: -1]
+                            - beforeEventSnapshot.counts["scroll", default: -1]
+                        : -1
+                    let nonScrollEventDelta = validEventWindow
+                        ? afterEventSnapshot.counts.reduce(into: 0) {
+                            if $1.key != "scroll" {
+                                $0 += $1.value - beforeEventSnapshot.counts[$1.key, default: -1]
+                            }
+                        }
+                        : -1
+                    let continuousObserved = continuousDelta > 0
+                    let discreteObserved = discreteDelta > 0
+                    let unionObserved = unionDelta > 0
+                    let recognizerObserved = continuousObserved || discreteObserved || unionObserved
+                    let recognizerCategory: String
+                    if (continuousObserved || discreteObserved) && !unionObserved {
+                        recognizerCategory = "invariant-violation"
+                        unionInvariantViolations += 1
+                    } else if continuousObserved && discreteObserved {
+                        recognizerCategory = "continuous+discrete+union"
+                    } else if continuousObserved {
+                        recognizerCategory = "continuous+union"
+                    } else if discreteObserved {
+                        recognizerCategory = "discrete+union"
+                    } else if unionObserved {
+                        recognizerCategory = "union-only"
+                    } else if !validRecognizerWindow {
+                        recognizerCategory = "invalid-counter-window"
+                    } else {
+                        recognizerCategory = "none"
+                    }
+
+                    let eventCategory: String
+                    if !validEventWindow {
+                        eventCategory = "invalid-counter-window"
+                    } else if scrollEventDelta > 0 {
+                        eventCategory = recognizerObserved
+                            ? "app-scroll-and-recognizer"
+                            : "app-scroll-no-recognizer"
+                    } else if nonScrollEventDelta > 0 {
+                        eventCategory = "app-nonscroll-event"
+                    } else {
+                        eventCategory = "no-app-event"
+                    }
+                    if validEventWindow && validRecognizerWindow
+                        && recognizerObserved && scrollEventDelta <= 0
+                    {
+                        recognizersWithoutScrollEvents += 1
+                    }
+                    recognizerCategories[recognizerCategory, default: 0] += 1
+                    eventCategories[eventCategory, default: 0] += 1
+                    validRows += 1
+                    observations.append(
+                        "launch=\(launch) repetition=\(repetition) direction=\(direction) requested_delta_x=\(deltaX) app_before=\(formatApplicationEventSnapshot(beforeEventSnapshot)) app_after=\(formatApplicationEventSnapshot(afterEventSnapshot)) app_scroll_delta=\(scrollEventDelta) app_non_scroll_delta=\(nonScrollEventDelta) recognizers_before=\(formatScrollTypeMaskCounts(beforeRecognizerCounts)) recognizers_after=\(formatScrollTypeMaskCounts(afterRecognizerCounts)) recognizer_deltas=continuous:\(continuousDelta),discrete:\(discreteDelta),union:\(unionDelta) valid_counter_window=\(validCounterWindow) recognizer_category=\(recognizerCategory) event_category=\(eventCategory)"
+                    )
+                }
+            }
+
+            let launchAttachment = XCTAttachment(
+                string: observations[observationStart...].joined(separator: "\n")
+            )
+            launchAttachment.name = "C13.3 application event boundary launch \(launch) observations"
+            launchAttachment.lifetime = .keepAlways
+            add(launchAttachment)
+            if launch == 1 {
+                XCTContext.runActivity(named: "C13.3 application event boundary final screen") { activity in
+                    let screenshot = XCTAttachment(screenshot: app.screenshot())
+                    screenshot.name = "C13.3 application event boundary final screen"
+                    screenshot.lifetime = .keepAlways
+                    activity.add(screenshot)
+                }
+            }
+            app.terminate()
+        }
+
+        let aggregate = XCTAttachment(string: observations.joined(separator: "\n"))
+        aggregate.name = "C13.3 application event boundary all action observations"
+        aggregate.lifetime = .keepAlways
+        add(aggregate)
+        let summary = XCTAttachment(
+            string: "valid_fresh_launches=\(validLaunches)/3 expected_application_class=\(validApplicationClasses)/3 zero_baselines=\(zeroBaselines)/3 action_rows=\(validRows)/30 valid_counter_windows=\(validCounterWindows)/30 invalid_counter_windows=\(invalidCounterWindows) union_invariant_violations=\(unionInvariantViolations) recognizer_without_scroll_event=\(recognizersWithoutScrollEvents) recognizer_categories=\(recognizerCategories) app_event_categories=\(eventCategories)"
+        )
+        summary.name = "C13.3 application event boundary aggregate"
+        summary.lifetime = .keepAlways
+        add(summary)
+
+        XCTAssertEqual(validLaunches, 3, "app event 경계 fresh launch 수")
+        XCTAssertEqual(validApplicationClasses, 3, "custom UIApplication principal class 확인 수")
+        XCTAssertEqual(zeroBaselines, 3, "app/recognizer zero baseline 수")
+        XCTAssertEqual(validRows, 30, "app event 경계 action row 수")
+        XCTAssertEqual(validCounterWindows, 30, "모든 action의 event/recognizer counter가 완전하고 단조 증가해야 함")
+        XCTAssertEqual(invalidCounterWindows, 0, "파싱 실패 또는 counter 역행 row가 없어야 함")
+        XCTAssertEqual(unionInvariantViolations, 0, "typed recognizer callback은 union recognizer에서도 보여야 함")
+        XCTAssertEqual(recognizersWithoutScrollEvents, 0, "recognizer callback은 app의 scroll event 진입 뒤에 관찰돼야 함")
+    }
+
     func testDirectTouchRecognizerDeliveryControl() {
         var observations: [String] = []
         var callbacksObserved = 0
         var signedOffsetsObserved = 0
+        var directTouchEventRows = 0
+        var directTouchScrollEventRows = 0
+        var validCounterRows = 0
+        var invalidCounterRows = 0
         var validLaunches = 0
         var validBaselines = 0
         for launch in 1...3 {
             let app = XCUIApplication(bundleIdentifier: "dev.spinon.probe.oracle.host")
-            app.launchArguments = ["--plain-direct-touch-oracle"]
+            app.launchArguments = ["--plain-direct-touch-oracle", "--app-event-boundary-oracle"]
             app.launch()
 
             let target = app.descendants(matching: .any)
@@ -246,9 +451,13 @@ final class C133WheelProbeUITests: XCTestCase {
             let callbackLabel = app.descendants(matching: .any)
                 .matching(identifier: "wheel-callbacks")
                 .firstMatch
+            let eventLabel = app.descendants(matching: .any)
+                .matching(identifier: "app-event-counters")
+                .firstMatch
             let targetExists = target.waitForExistence(timeout: 10)
             let labelsExist = offsetLabel.waitForExistence(timeout: 10)
                 && callbackLabel.waitForExistence(timeout: 10)
+                && eventLabel.waitForExistence(timeout: 10)
             let targetIsHittable = targetExists && target.isHittable
             guard targetExists && labelsExist && targetIsHittable else {
                 observations.append(
@@ -261,9 +470,13 @@ final class C133WheelProbeUITests: XCTestCase {
 
             let initialCallbackCount = callbackCount(callbackLabel)
             let initialOffset = offsetX(offsetLabel)
-            validBaselines += initialCallbackCount == 0 && initialOffset == 0 ? 1 : 0
+            let initialEventSnapshot = applicationEventSnapshot(eventLabel)
+            let hasZeroBaseline = initialCallbackCount == 0 && initialOffset == 0
+                && initialEventSnapshot.application == "C133ProbeApplication"
+                && initialEventSnapshot.counts.values.allSatisfy { $0 == 0 }
+            validBaselines += hasZeroBaseline ? 1 : 0
             observations.append(
-                "launch=\(launch) initial_callback_count=\(initialCallbackCount) initial_offset_x=\(initialOffset)"
+                "launch=\(launch) initial_callback_count=\(initialCallbackCount) initial_offset_x=\(initialOffset) app_events=\(formatApplicationEventSnapshot(initialEventSnapshot)) zero=\(hasZeroBaseline)"
             )
             for repetition in 1...5 {
                 for direction in ["left", "right"] {
@@ -271,6 +484,7 @@ final class C133WheelProbeUITests: XCTestCase {
                     let destinationX: CGFloat = direction == "left" ? 0.2 : 0.8
                     let callbackBefore = callbackCount(callbackLabel)
                     let offsetBefore = offsetX(offsetLabel)
+                    let eventsBefore = applicationEventSnapshot(eventLabel)
                     let origin = target.coordinate(
                         withNormalizedOffset: CGVector(dx: originX, dy: 0.5)
                     )
@@ -292,15 +506,43 @@ final class C133WheelProbeUITests: XCTestCase {
                         }
                         Thread.sleep(forTimeInterval: 0.05)
                     }
+                    Thread.sleep(forTimeInterval: 0.15)
 
+                    callbackAfter = callbackCount(callbackLabel)
+                    offsetAfter = offsetX(offsetLabel)
                     let offsetDelta = offsetAfter - offsetBefore
+                    let eventsAfter = applicationEventSnapshot(eventLabel)
+                    let validEventWindow = applicationEventWindowIsValid(
+                        before: eventsBefore,
+                        after: eventsAfter
+                    )
+                    let validCounterWindow = validEventWindow
+                        && callbackBefore >= 0
+                        && callbackAfter >= callbackBefore
+                        && offsetBefore.isFinite
+                        && offsetAfter.isFinite
+                    let touchesDelta = validEventWindow
+                        ? eventsAfter.counts["touches", default: -1]
+                            - eventsBefore.counts["touches", default: -1]
+                        : -1
+                    let scrollEventsDelta = validEventWindow
+                        ? eventsAfter.counts["scroll", default: -1]
+                            - eventsBefore.counts["scroll", default: -1]
+                        : -1
                     let callbackObserved = callbackAfter > callbackBefore
                     let signedOffsetObserved = offsetDelta * expectedSign > 0
                     callbacksObserved += callbackObserved ? 1 : 0
                     signedOffsetsObserved += signedOffsetObserved ? 1 : 0
+                    validCounterRows += validCounterWindow ? 1 : 0
                     observations.append(
-                        "launch=\(launch) repetition=\(repetition) direction=\(direction) callback_before=\(callbackBefore) callback_after=\(callbackAfter) offset_before=\(offsetBefore) offset_after=\(offsetAfter) offset_delta=\(offsetDelta) callback_observed=\(callbackObserved) signed_offset_observed=\(signedOffsetObserved)"
+                        "launch=\(launch) repetition=\(repetition) direction=\(direction) app_before=\(formatApplicationEventSnapshot(eventsBefore)) app_after=\(formatApplicationEventSnapshot(eventsAfter)) touches_delta=\(touchesDelta) scroll_delta=\(scrollEventsDelta) callback_before=\(callbackBefore) callback_after=\(callbackAfter) offset_before=\(offsetBefore) offset_after=\(offsetAfter) offset_delta=\(offsetDelta) valid_counter_window=\(validCounterWindow) callback_observed=\(callbackObserved) signed_offset_observed=\(signedOffsetObserved)"
                     )
+                    if !validCounterWindow {
+                        observations[observations.count - 1] += " invalid_counter_window=true"
+                    }
+                    directTouchEventRows += validEventWindow && touchesDelta > 0 && scrollEventsDelta == 0 ? 1 : 0
+                    directTouchScrollEventRows += validEventWindow && scrollEventsDelta > 0 ? 1 : 0
+                    invalidCounterRows += validCounterWindow ? 0 : 1
                 }
             }
 
@@ -324,7 +566,7 @@ final class C133WheelProbeUITests: XCTestCase {
         allObservations.lifetime = .keepAlways
         add(allObservations)
         let summary = XCTAttachment(
-            string: "valid_fresh_launches=\(validLaunches)/3 valid_zero_baselines=\(validBaselines)/3 callbacks_observed=\(callbacksObserved)/30 signed_offsets_observed=\(signedOffsetsObserved)/30"
+            string: "valid_fresh_launches=\(validLaunches)/3 valid_zero_baselines=\(validBaselines)/3 callbacks_observed=\(callbacksObserved)/30 signed_offsets_observed=\(signedOffsetsObserved)/30 valid_counter_windows=\(validCounterRows)/30 invalid_counter_rows=\(invalidCounterRows) direct_touch_UIEventTypeTouches_rows=\(directTouchEventRows)/30 unexpected_scroll_event_rows=\(directTouchScrollEventRows)"
         )
         summary.name = "C13.3 direct touch aggregate"
         summary.lifetime = .keepAlways
@@ -334,6 +576,9 @@ final class C133WheelProbeUITests: XCTestCase {
         XCTAssertEqual(validBaselines, 3, "direct touch zero baseline 수")
         XCTAssertEqual(callbacksObserved, 30, "직접 touch gesture의 UIKit callback 관찰 수")
         XCTAssertEqual(signedOffsetsObserved, 30, "직접 touch gesture의 부호 일치 offset 관찰 수")
+        XCTAssertEqual(invalidCounterRows, 0, "direct-touch counter parse/monotonicity 위반 수")
+        XCTAssertEqual(directTouchEventRows, 30, "직접 touch gesture의 UIApplication touches event 수")
+        XCTAssertEqual(directTouchScrollEventRows, 0, "direct touch 입력에서 scroll event가 없어야 함")
     }
 
     private func value(_ element: XCUIElement) -> String {
@@ -358,6 +603,79 @@ final class C133WheelProbeUITests: XCTestCase {
             counts[name] = count
         }
         return counts
+    }
+
+    private func applicationEventSnapshot(_ element: XCUIElement) -> (application: String, counts: [String: Int]) {
+        var application = "missing"
+        var counts = [
+            "scroll": -1,
+            "touches": -1,
+            "hover": -1,
+            "transform": -1,
+            "presses": -1,
+            "motion": -1,
+            "remoteControl": -1,
+            "other": -1,
+        ]
+        for token in value(element).split(separator: " ") {
+            let parts = token.split(separator: "=", maxSplits: 1)
+            guard parts.count == 2 else { continue }
+            let key = String(parts[0])
+            let payload = String(parts[1])
+            if key == "application" {
+                application = payload
+            } else if counts[key] != nil, let count = Int(payload) {
+                counts[key] = count
+            }
+        }
+        return (application, counts)
+    }
+
+    private func formatApplicationEventSnapshot(
+        _ snapshot: (application: String, counts: [String: Int])
+    ) -> String {
+        let eventCounts = snapshot.counts.keys.sorted().map {
+            "\($0)=\(snapshot.counts[$0, default: -1])"
+        }
+        return (["application=\(snapshot.application)"] + eventCounts).joined(separator: " ")
+    }
+
+    private func applicationEventWindowIsValid(
+        before: (application: String, counts: [String: Int]),
+        after: (application: String, counts: [String: Int])
+    ) -> Bool {
+        let eventTypes = [
+            "scroll",
+            "touches",
+            "hover",
+            "transform",
+            "presses",
+            "motion",
+            "remoteControl",
+            "other",
+        ]
+        guard before.application == "C133ProbeApplication",
+              after.application == before.application
+        else {
+            return false
+        }
+        return eventTypes.allSatisfy { eventType in
+            guard let beforeCount = before.counts[eventType],
+                  let afterCount = after.counts[eventType]
+            else {
+                return false
+            }
+            return beforeCount >= 0 && afterCount >= beforeCount
+        }
+    }
+
+    private func recognizerCountWindowIsValid(before: [String: Int], after: [String: Int]) -> Bool {
+        ["continuous", "discrete", "union"].allSatisfy { name in
+            guard let beforeCount = before[name], let afterCount = after[name] else {
+                return false
+            }
+            return beforeCount >= 0 && afterCount >= beforeCount
+        }
     }
 
     private func formatScrollTypeMaskCounts(_ counts: [String: Int]) -> String {

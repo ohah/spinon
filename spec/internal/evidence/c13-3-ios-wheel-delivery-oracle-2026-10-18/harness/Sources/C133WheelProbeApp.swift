@@ -1,15 +1,130 @@
 import SwiftUI
 import UIKit
 
+@MainActor
+final class C133ApplicationEventAudit {
+    static let didChangeNotification = Notification.Name("C133ApplicationEventAuditDidChange")
+    private(set) static var enabled = false
+    private(set) static var applicationClassName = "unverified"
+    private(set) static var counts = zeroedCounts()
+
+    private static func zeroedCounts() -> [String: Int] {
+        [
+            "scroll": 0,
+            "touches": 0,
+            "hover": 0,
+            "transform": 0,
+            "presses": 0,
+            "motion": 0,
+            "remoteControl": 0,
+            "other": 0,
+        ]
+    }
+
+    static func configure(application: UIApplication, arguments: [String]) {
+        enabled = arguments.contains("--app-event-boundary-oracle")
+        applicationClassName = NSStringFromClass(type(of: application))
+        counts = zeroedCounts()
+        NSLog(
+            "SPINON_C133_APP_READY application=%@ audit_enabled=%@",
+            applicationClassName,
+            enabled ? "true" : "false"
+        )
+        NotificationCenter.default.post(name: didChangeNotification, object: nil)
+    }
+
+    static func record(_ event: UIEvent) {
+        let name: String
+        switch event.type {
+        case .scroll:
+            name = "scroll"
+        case .touches:
+            name = "touches"
+        case .hover:
+            name = "hover"
+        case .transform:
+            name = "transform"
+        case .presses:
+            name = "presses"
+        case .motion:
+            name = "motion"
+        case .remoteControl:
+            name = "remoteControl"
+        @unknown default:
+            name = "other"
+        }
+
+        counts[name, default: 0] += 1
+        NSLog(
+            "SPINON_C133_APP_EVENT type=%@ raw_type=%ld subtype=%ld count=%ld",
+            name,
+            event.type.rawValue,
+            event.subtype.rawValue,
+            counts[name, default: 0]
+        )
+    }
+
+    static func publishRecordedEvent() {
+        NotificationCenter.default.post(name: didChangeNotification, object: nil)
+    }
+
+    static var summary: String {
+        let eventCounts = counts.keys.sorted().map { "\($0)=\(counts[$0, default: 0])" }
+        return (["application=\(applicationClassName)"] + eventCounts).joined(separator: " ")
+    }
+
+    static var screenSummary: String {
+        "application=\(applicationClassName) scroll=\(counts["scroll", default: 0]) touches=\(counts["touches", default: 0])\n"
+            + "hover=\(counts["hover", default: 0]) transform=\(counts["transform", default: 0]) presses=\(counts["presses", default: 0]) motion=\(counts["motion", default: 0]) remote=\(counts["remoteControl", default: 0]) other=\(counts["other", default: 0])"
+    }
+}
+
+@objc(C133ProbeApplication)
+final class C133ProbeApplication: UIApplication {
+    override func sendEvent(_ event: UIEvent) {
+        let auditEnabled = C133ApplicationEventAudit.enabled
+        if auditEnabled {
+            C133ApplicationEventAudit.record(event)
+        }
+        super.sendEvent(event)
+        if auditEnabled {
+            C133ApplicationEventAudit.publishRecordedEvent()
+        }
+    }
+}
+
+@objc(C133ProbeAppDelegate)
+final class C133ProbeAppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
+
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
+    ) -> Bool {
+        C133ApplicationEventAudit.configure(
+            application: application,
+            arguments: ProcessInfo.processInfo.arguments
+        )
+        let probeWindow = UIWindow(frame: UIScreen.main.bounds)
+        probeWindow.rootViewController = UIHostingController(rootView: C133WheelOracleView())
+        window = probeWindow
+        probeWindow.makeKeyAndVisible()
+        return true
+    }
+}
+
 final class C133WheelOracleViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
     private let scrollView = UIScrollView()
     private let offsetLabel = UILabel()
     private let wheelCallbackLabel = UILabel()
+    private let appEventCounterLabel = UILabel()
     private var wheelCallbackCount = 0
     private var previousWheelTranslation = CGPoint.zero
     private var plainPanOracleRequested = false
     private var plainDirectTouchOracleRequested = false
     private var scrollTypeMaskOracleRequested = false
+    private var appEventBoundaryOracleRequested = false
+    private var appEventAuditObserverRegistered = false
     private var plainPanOracleOffsetX: CGFloat = 0
     private var scrollTypeMaskNameByRecognizer: [ObjectIdentifier: String] = [:]
     private var scrollTypeMaskCallbackCounts: [String: Int] = [:]
@@ -20,6 +135,7 @@ final class C133WheelOracleViewController: UIViewController, UIScrollViewDelegat
         plainPanOracleRequested = ProcessInfo.processInfo.arguments.contains("--plain-pan-oracle")
         plainDirectTouchOracleRequested = ProcessInfo.processInfo.arguments.contains("--plain-direct-touch-oracle")
         scrollTypeMaskOracleRequested = ProcessInfo.processInfo.arguments.contains("--plain-scroll-type-mask-oracle")
+        appEventBoundaryOracleRequested = ProcessInfo.processInfo.arguments.contains("--app-event-boundary-oracle")
         plainPanOracleRequested = plainPanOracleRequested
             || plainDirectTouchOracleRequested
             || scrollTypeMaskOracleRequested
@@ -36,6 +152,23 @@ final class C133WheelOracleViewController: UIViewController, UIScrollViewDelegat
         wheelCallbackLabel.text = "callbacks=0"
         wheelCallbackLabel.accessibilityValue = "callbacks=0"
         view.addSubview(wheelCallbackLabel)
+
+        if appEventBoundaryOracleRequested {
+            appEventCounterLabel.translatesAutoresizingMaskIntoConstraints = false
+            appEventCounterLabel.accessibilityIdentifier = "app-event-counters"
+            appEventCounterLabel.font = .monospacedSystemFont(ofSize: 10, weight: .regular)
+            appEventCounterLabel.numberOfLines = 2
+            appEventCounterLabel.lineBreakMode = .byWordWrapping
+            view.addSubview(appEventCounterLabel)
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(applicationEventAuditDidChange(_:)),
+                name: C133ApplicationEventAudit.didChangeNotification,
+                object: nil
+            )
+            appEventAuditObserverRegistered = true
+            refreshApplicationEventCounters()
+        }
 
         let plainTarget = UIView()
         if plainPanOracleRequested {
@@ -114,16 +247,27 @@ final class C133WheelOracleViewController: UIViewController, UIScrollViewDelegat
             wheelCallbackLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             wheelCallbackLabel.heightAnchor.constraint(equalToConstant: 22),
         ]
+        if appEventBoundaryOracleRequested {
+            constraints += [
+                appEventCounterLabel.topAnchor.constraint(equalTo: wheelCallbackLabel.bottomAnchor, constant: 2),
+                appEventCounterLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+                appEventCounterLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+                appEventCounterLabel.heightAnchor.constraint(equalToConstant: 32),
+            ]
+        }
+        let targetTopAnchor = appEventBoundaryOracleRequested
+            ? appEventCounterLabel.bottomAnchor
+            : wheelCallbackLabel.bottomAnchor
         if plainPanOracleRequested {
             constraints += [
-                plainTarget.topAnchor.constraint(equalTo: wheelCallbackLabel.bottomAnchor, constant: 8),
+                plainTarget.topAnchor.constraint(equalTo: targetTopAnchor, constant: 8),
                 plainTarget.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
                 plainTarget.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
                 plainTarget.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             ]
         } else {
             constraints += [
-                scrollView.topAnchor.constraint(equalTo: wheelCallbackLabel.bottomAnchor, constant: 8),
+                scrollView.topAnchor.constraint(equalTo: targetTopAnchor, constant: 8),
                 scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                 scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                 scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -135,6 +279,22 @@ final class C133WheelOracleViewController: UIViewController, UIScrollViewDelegat
             scrollView.contentOffset = CGPoint(x: 10000, y: 100)
         }
         updateOffsetLabel()
+    }
+
+    deinit {
+        if appEventAuditObserverRegistered {
+            NotificationCenter.default.removeObserver(self)
+        }
+    }
+
+    @objc private func refreshApplicationEventCounters() {
+        guard appEventBoundaryOracleRequested else { return }
+        appEventCounterLabel.text = C133ApplicationEventAudit.screenSummary
+        appEventCounterLabel.accessibilityValue = C133ApplicationEventAudit.summary
+    }
+
+    @objc private func applicationEventAuditDidChange(_ notification: Notification) {
+        refreshApplicationEventCounters()
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -226,13 +386,4 @@ struct C133WheelOracleView: UIViewControllerRepresentable {
     }
 
     func updateUIViewController(_ uiViewController: C133WheelOracleViewController, context: Context) {}
-}
-
-@main
-struct C133WheelProbeApp: App {
-    var body: some Scene {
-        WindowGroup {
-            C133WheelOracleView()
-        }
-    }
 }

@@ -1,0 +1,33 @@
+{
+  "base_commit": "5b28f4f24b4ee47ba380a820ac446feb751135ca",
+  "branch": "feat/c13-3-ios-app-event-boundary-20261018",
+  "run_started_local": "2026-10-18 15:09:27 KST",
+  "run_finished_local": "2026-10-18 15:13:55 KST",
+  "device": "iPad Pro 13-inch (M5), iOS Simulator 26.2 (23C54), arm64",
+  "toolchain": "Xcode 26.2 (17C52), macOS 26.5.1",
+  "xcodebuild_exit": 0,
+  "passed_tests": 2,
+  "failed_tests": 0,
+  "skipped_tests": 0,
+  "instrumentation_order": "count and entry marker before super.sendEvent; accessibility refresh notification after super.sendEvent",
+  "sources": {
+    "spec/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/harness/Sources/C133WheelProbeApp.swift": "fc12c5891b6d7e186b861bb2f0736aa51befa164783d7d529c438fc917099560",
+    "spec/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/harness/Sources/main.swift": "5ff9bb6e0b2636a23fc548f59db55bbebf9dead9efdf1d0116259dd00cd19c89",
+    "spec/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/harness/Tests/C133WheelProbeUITests.swift": "cbf86580460f4f8d9dc945e3eeae6e5dcea5358987f6b3b6415dc391b4ea7f11",
+    "spec/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/harness/C133WheelProbe.xcodeproj/project.pbxproj": "059d5f67d690549a38bd4ec31642cfa3287143db3135298a2053993a8271ccd9"
+  },
+  "products": {
+    "app_executable": {
+      "path": "/tmp/spinon-c13-3-ios-app-event-boundary-run-20261018/DerivedData-Final/Build/Products/Debug-iphonesimulator/C133WheelProbe.app/C133WheelProbe",
+      "sha256": "94020fc0429f53931f494d16c20c5f7fe4b933ee73f15a5b79ed29b48ce28577"
+    },
+    "ui_test_executable": {
+      "path": "/tmp/spinon-c13-3-ios-app-event-boundary-run-20261018/DerivedData-Final/Build/Products/Debug-iphonesimulator/C133WheelProbeUITests-Runner.app/PlugIns/C133WheelProbeUITests.xctest/C133WheelProbeUITests",
+      "sha256": "dc83b81cdc7da3f696ef22c0c5ae7d4cc1bcf03970d2ecb2a46ce9f4c1b30dcc"
+    },
+    "app_debug_dylib": {
+      "path": "/tmp/spinon-c13-3-ios-app-event-boundary-run-20261018/DerivedData-Final/Build/Products/Debug-iphonesimulator/C133WheelProbe.app/C133WheelProbe.debug.dylib",
+      "sha256": "c5f8e1a3adb22c38f83a0081a19d98357c7ba34992a38d85dbb570f3f0f9004d"
+    }
+  }
+}

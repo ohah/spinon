@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		87045B5196BF2C53980B128C /* C133WheelProbeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31EF9161E5B1FA9F13DEC36 /* C133WheelProbeApp.swift */; };
+		D36AB9F22177AC5E84000001 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36AB9F22177AC5E84000002 /* main.swift */; };
 		FFFD3394A853E540B50561C5 /* C133WheelProbeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFE86D96A59E863E7F50852 /* C133WheelProbeUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		1B8DF3D22D65A14A7916C766 /* C133WheelProbeUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = C133WheelProbeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFE86D96A59E863E7F50852 /* C133WheelProbeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C133WheelProbeUITests.swift; sourceTree = "<group>"; };
 		B31EF9161E5B1FA9F13DEC36 /* C133WheelProbeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C133WheelProbeApp.swift; sourceTree = "<group>"; };
+		D36AB9F22177AC5E84000002 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B4CE5A4B0C3A6890765C9294 /* C133WheelProbe.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = C133WheelProbe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				B31EF9161E5B1FA9F13DEC36 /* C133WheelProbeApp.swift */,
+				D36AB9F22177AC5E84000002 /* main.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87045B5196BF2C53980B128C /* C133WheelProbeApp.swift in Sources */,
+				D36AB9F22177AC5E84000001 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

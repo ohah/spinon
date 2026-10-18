@@ -1,0 +1,33 @@
+{
+  "base_commit": "5b28f4f24b4ee47ba380a820ac446feb751135ca",
+  "branch": "feat/c13-3-ios-app-event-boundary-20261018",
+  "run_started_local": "2026-10-18 14:25:10 KST",
+  "run_finished_local": "2026-10-18 14:29:44 KST",
+  "device": "iPad Pro 13-inch (M5), iOS Simulator 26.2 (23C54), arm64",
+  "toolchain": "Xcode 26.2 (17C52), macOS 26.5.1",
+  "xcodebuild_exit": 0,
+  "passed_tests": 2,
+  "failed_tests": 0,
+  "skipped_tests": 0,
+  "sources": {
+    "spec/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/harness/Sources/C133WheelProbeApp.swift": "6c8f53192af6b19b18a5262e84893c82464ca67f82c1d3eac7fb05d68c6efa0a",
+    "spec/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/harness/Sources/main.swift": "5ff9bb6e0b2636a23fc548f59db55bbebf9dead9efdf1d0116259dd00cd19c89",
+    "spec/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/harness/Tests/C133WheelProbeUITests.swift": "cbf86580460f4f8d9dc945e3eeae6e5dcea5358987f6b3b6415dc391b4ea7f11",
+    "spec/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/harness/C133WheelProbe.xcodeproj/project.pbxproj": "059d5f67d690549a38bd4ec31642cfa3287143db3135298a2053993a8271ccd9"
+  },
+  "products": {
+    "app_executable": {
+      "path": "/tmp/spinon-c13-3-ios-app-event-boundary-run-20261018/DerivedData/Build/Products/Debug-iphonesimulator/C133WheelProbe.app/C133WheelProbe",
+      "sha256": "94020fc0429f53931f494d16c20c5f7fe4b933ee73f15a5b79ed29b48ce28577"
+    },
+    "ui_test_executable": {
+      "path": "/tmp/spinon-c13-3-ios-app-event-boundary-run-20261018/DerivedData/Build/Products/Debug-iphonesimulator/C133WheelProbeUITests-Runner.app/PlugIns/C133WheelProbeUITests.xctest/C133WheelProbeUITests",
+      "sha256": "4f7a7e2a151ae6b83dd360ad4c1ccfb2ca5240ad69d3be572403918585ccf252"
+    },
+    "app_debug_dylib": {
+      "path": "/tmp/spinon-c13-3-ios-app-event-boundary-run-20261018/DerivedData/Build/Products/Debug-iphonesimulator/C133WheelProbe.app/C133WheelProbe.debug.dylib",
+      "sha256": "db0184db9c46757d3f810b351167a1b119dd073603b267de0787385d25021baf"
+    }
+  },
+  "run_note": "This passed full suite predates the final tweak that posts the accessibility refresh notification after super.sendEvent."
+}
