@@ -1,0 +1,46 @@
+$ RSPRESS_PERSISTENT_CACHE=false rspress build --config rspress.tailnet-sync.config.ts
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: <worktree>/packages/docs
+warn    Current dist path: <worktree>/build/spinon/c11-4-selected-site-final-20261019
+info    Rendering pages...
+success Pages rendered in 64 ms.
+ready   built in 0.48s (web)
+ready   built in 0.48s (node)
+
+File (web)                                                                                               Size        Gzip
+../../build/spinon/c11-4-selected-site-final-20261019/static/js/async/i.25208e7c92.js                    0.10 kB     0.09 kB
+../../build/spinon/c11-4-selected-site-final-20261019/static/js/styles.2da0941fcb.js                     0.47 kB     0.23 kB
+../../build/spinon/c11-4-selected-site-final-20261019/icon.svg                                           0.64 kB     0.42 kB
+../../build/spinon/c11-4-selected-site-final-20261019/static/js/async/route-c412d9e72a16.8432f7c678.js   11.6 kB     3.7 kB
+../../build/spinon/c11-4-selected-site-final-20261019/static/js/async/route-9eef814e3864.15f4a0bcb7.js   12.9 kB     4.4 kB
+../../build/spinon/c11-4-selected-site-final-20261019/static/js/async/route-ecf129b09e78.11061b063b.js   20.5 kB     7.1 kB
+../../build/spinon/c11-4-selected-site-final-20261019/static/js/async/route-6f303538b8de.2ad632dd51.js   22.2 kB     5.0 kB
+../../build/spinon/c11-4-selected-site-final-20261019/static/js/index.7e46f68329.js                      24.8 kB     9.7 kB
+../../build/spinon/c11-4-selected-site-final-20261019/static/js/async/route-04cbcabea10a.02f19e0048.js   29.6 kB     9.4 kB
+../../build/spinon/c11-4-selected-site-final-20261019/static/js/lib-router.1e14e568cb.js                 35.4 kB     12.7 kB
+../../build/spinon/c11-4-selected-site-final-20261019/static/js/async/route-c2801b21f038.d046f76532.js   38.6 kB     11.5 kB
+../../build/spinon/c11-4-selected-site-final-20261019/static/js/async/route-c4dae6800800.381824a8a0.js   47.9 kB     12.9 kB
+../../build/spinon/c11-4-selected-site-final-20261019/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+../../build/spinon/c11-4-selected-site-final-20261019/static/js/a.355c4fffa2.js                          217.1 kB    72.0 kB
+../../build/spinon/c11-4-selected-site-final-20261019/static/js/lib-react.9cdf8f49ce.js                  218.4 kB    68.8 kB
+../../build/spinon/c11-4-selected-site-final-20261019/static/search_index.ko.005d2a8d.json               334.5 kB    109.9 kB
+../../build/spinon/c11-4-selected-site-final-20261019/static/js/async/route-6c33a3943990.a07e6ad4b4.js   401.2 kB    94.0 kB
+
+                                                                                                Total:   1489.8 kB   436.1 kB
+
+File (node)                                                                                                                                        Size       Gzip
+../../build/spinon/c11-4-selected-site-final-20261019/404.html                                                                                     8.5 kB     2.6 kB
+../../build/spinon/c11-4-selected-site-final-20261019/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-delta-review-30.html   24.9 kB    6.7 kB
+../../build/spinon/c11-4-selected-site-final-20261019/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.html       26.6 kB    7.4 kB
+../../build/spinon/c11-4-selected-site-final-20261019/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.html               32.0 kB    7.9 kB
+../../build/spinon/c11-4-selected-site-final-20261019/0001-conformance.html                                                                        34.1 kB    10.1 kB
+../../build/spinon/c11-4-selected-site-final-20261019/plan/c11-4-grid-track-sizing.html                                                            42.3 kB    12.5 kB
+../../build/spinon/c11-4-selected-site-final-20261019/plan/c11-css-grid.html                                                                       52.2 kB    14.8 kB
+../../build/spinon/c11-4-selected-site-final-20261019/internal/0059-c11-grid-layout.html                                                           65.1 kB    16.4 kB
+../../build/spinon/c11-4-selected-site-final-20261019/STATUS.html                                                                                  377.4 kB   95.7 kB
+
+                                                                                                                                          Total:   663.0 kB   174.1 kB

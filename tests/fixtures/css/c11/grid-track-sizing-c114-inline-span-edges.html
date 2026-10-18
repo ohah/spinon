@@ -1,0 +1,22 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 inline text edge min-content oracle</title>
+<style>
+  @font-face {
+    font-family: Ahem;
+    src: url("../../../../tests/fixtures/resources/c15/Ahem.ttf") format("truetype");
+    font-weight: 100 900;
+  }
+  body { margin: 0; font: 10px/10px Ahem, sans-serif; }
+  .case { display: grid; width: 120px; grid-template-columns: min-content; }
+  .item { font: 10px/10px Ahem; }
+  .decorated { padding-inline: 4px; border-inline: 1px solid red; }
+  #nowrap { white-space: nowrap; }
+  #break-all { word-break: break-all; }
+  #pre-line { white-space: pre-line; }
+</style>
+<div id="normal" class="case"><div class="item"><span class="decorated">XX XXXXXXX</span></div></div>
+<div id="nowrap" class="case"><div class="item"><span class="decorated">XX XXXXXXX</span></div></div>
+<div id="break-all" class="case"><div class="item"><span class="decorated">XXXXXXXX</span></div></div>
+<div id="pre-line" class="case"><div class="item"><span class="decorated">XX
+XXXX</span></div></div>

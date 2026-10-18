@@ -2,9 +2,9 @@
 
 **상위 원본:** [C11 상태와 범위](../spec/STATUS.md) · [C11 Grid 계획](c11-css-grid.md) · [CSS 적합성 계약](../spec/0001-conformance.md) · [Grid 내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획·Chrome 155 사전 비교 완료. 구현, Rust 회귀, Android/iOS 앱 경로는 시작 전이다. C11.4와 C11 상위는 미완료다.
+**상태:** 계획·Chrome 155 사전 비교 완료. 구현은 단계 A 중 Parley text intrinsic 측정 API와 Taffy measure callback 연결까지다. A의 image/automatic-minimum contribution 연결, B의 Grid track 입력·단계별 sizing, C의 auto-repeat, D의 Android/iOS 앱 경로는 아직 구현·검증하지 않았다. C11.4와 C11 상위는 미완료다.
 
-**고정 사전 자료:** [20 case Chrome 155 oracle와 hash 목록](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.md) · [계획 적대 검토 20개](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.md) · [fixture](../tests/fixtures/css/c11/grid-track-sizing-c114-precomparison.html)
+**고정 사전 자료:** [20 case Chrome 155 oracle와 hash 목록](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.md) · [inline span edge supplemental oracle](../spec/internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.md) · [계획 적대 검토 20개](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.md) · [fixture](../tests/fixtures/css/c11/grid-track-sizing-c114-precomparison.html)
 
 ## 목표와 닫을 범위
 
@@ -66,6 +66,8 @@ CSS Grid Level 1 §7.2.2–§7.2.3.2와 §11.3–§11.8을 normative algorithm�
 | text contributions | `auto-text-max-content`, `min-content-text-normal`, `max-content-text-normal`, `fit-content-text-minimum`, `fit-content-calc-limit`, `min-content-text-edge`, `min-content-text-min-width`, `min-content-text-max-width`, `min-content-text-break-all`, `min-content-text-nowrap` |
 
 추가 implementation controls에는 3+ span ordering, multiple spanning items의 경쟁, mixed intrinsic/flexible/fixed tracks, reversed item order, empty/hidden items, specified/transferred-size suggestion, `minmax(auto, max-content)`, zero/negative/non-finite input, non-resolvable `calc()` input, unsupported overflow state, duplicate/nested auto-repeat, auto-repeat with non-fixed sizing, one-track/10,000-track 경계, allocation failure 및 같은 worker 재사용을 둔다. `fit-content(calc(10% + 5px))`, inline padding/border, min/max width와 two-flex-track span은 각각 고정 oracle로 둔다. 나머지 calc case는 computed typed value와 basis를 검증한다. 이 control의 예상 결과는 CSS Grid normative rule에서 도출하거나 별도의 Chrome case를 구현 전 추가한다. 구현 후보 결과를 보고 기대값을 역으로 만들지 않는다.
+
+C15 inline span edge는 Grid item box의 padding/border oracle와 분리해 [추가 Chrome 155 관찰](../spec/internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.md)에 고정했다. normal·nowrap·break-all·pre-line 각 line-boundary contribution을 검증하며 base 26개 fixture count에는 포함하지 않는다.
 
 ## WPT 후보와 역할
 

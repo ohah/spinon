@@ -2,31 +2,29 @@ use std::collections::BTreeMap;
 use std::ops::Range;
 
 use parley::{
-    BaseDirection, FontContext, InlineBoxKind, LayoutContext,
+    FontContext, InlineBoxKind, LayoutContext,
     layout::{Alignment, AlignmentOptions, PositionedLayoutItem},
-    style::{
-        FontFamilyName, FontFeatures, FontStyle as ParleyFontStyle, FontWeight as ParleyFontWeight,
-        LineBreak, LineHeight, OverflowWrap, StyleProperty, TextWrapMode, WhiteSpaceCollapse,
-        WordBreak,
-    },
+    style::{FontFamilyName, FontStyle as ParleyFontStyle},
 };
 use spinon_core::NodeId;
 
 mod fonts;
 mod glyphs;
 mod inline_boxes;
+mod intrinsic;
 mod raster;
 mod run_styles;
 
 use glyphs::positioned_glyphs_with_sources;
 
 use crate::{
-    FontMetricsSnapshot, FontRegistryRevision, InlineFragment, LigatureMode, LineBreakMode,
-    ParagraphInput, TextDirection, TextLayoutError, TextLayoutSnapshot, TextLine, TextRect,
-    TextRun, WhiteSpaceMode, WordBreakMode,
-    normalize::{normalize, overlapping_sources, positioned_sources},
+    FontMetricsSnapshot, FontRegistryRevision, InlineFragment, ParagraphInput, TextLayoutError,
+    TextLayoutSnapshot, TextLine, TextRect, TextRun,
+    normalize::{overlapping_sources, positioned_sources},
     snapshot::FontRegistryToken,
 };
+
+use intrinsic::BuiltParleyLayout;
 
 pub struct TextLayoutEngine {
     font_context: FontContext,
@@ -76,6 +74,8 @@ impl TextLayoutEngine {
         let boundary = inline_boxes::InlineBoundary {
             owners: vec![marker_node],
             width: marker.width,
+            text_index: index,
+            is_start: true,
         };
         self.layout_paragraph_with_inline_items(input, available_width, vec![(marker, boundary)])
     }
@@ -94,40 +94,11 @@ impl TextLayoutEngine {
         } else {
             available_width
         };
-        input
-            .style
-            .validate()
-            .map_err(TextLayoutError::InvalidStyle)?;
-        if !self.font_family_list_available(&input.style.font_family) {
-            return Err(TextLayoutError::MissingFontFamily(
-                input.style.font_family.clone(),
-            ));
-        }
-        for style in input.inline_run_styles.values() {
-            style.validate().map_err(TextLayoutError::InvalidStyle)?;
-            if !self.font_family_list_available(&style.font_family) {
-                return Err(TextLayoutError::MissingFontFamily(
-                    style.font_family.clone(),
-                ));
-            }
-        }
-
-        let normalized = normalize(input);
-        let (mut inline_boxes, mut inline_boundaries) =
-            inline_boxes::prepare_inline_boxes(input, &normalized)?;
-        for (inline_box, boundary) in additional_inline_items {
-            if inline_box.index > normalized.text.len()
-                || !normalized.text.is_char_boundary(inline_box.index)
-                || !inline_box.width.is_finite()
-                || inline_box.width < 0.0
-                || inline_boundaries.contains_key(&inline_box.id)
-                || boundary.width.to_bits() != inline_box.width.to_bits()
-            {
-                return Err(TextLayoutError::InvalidGlyphLayout(input.node));
-            }
-            inline_boundaries.insert(inline_box.id, boundary);
-            inline_boxes.push(inline_box);
-        }
+        let BuiltParleyLayout {
+            normalized,
+            inline_boundaries,
+            mut layout,
+        } = self.build_parley_layout(input, additional_inline_items)?;
         if normalized.text.is_empty() {
             return Ok(TextLayoutSnapshot {
                 paragraph: input.node,
@@ -146,85 +117,6 @@ impl TextLayoutEngine {
                 inline_fragments: Vec::new(),
             });
         }
-
-        // Parley의 정수 metric quantization이 Blink의 정수 ascent/descent와 CSS line
-        // baseline 배치에 맞습니다. Shaped glyph advance는 계속 분수 CSS px로 보존됩니다.
-        let mut builder =
-            self.layout_context
-                .ranged_builder(&mut self.font_context, &normalized.text, 1.0, true);
-        builder.push_default(StyleProperty::FontFamily(
-            input.style.font_family.as_str().into(),
-        ));
-        builder.push_default(StyleProperty::FontSize(input.style.font_size));
-        builder.push_default(StyleProperty::FontWeight(ParleyFontWeight::new(
-            input.style.font_weight,
-        )));
-        builder.push_default(StyleProperty::FontStyle(parley_font_style(
-            input.style.font_style,
-        )));
-        builder.push_default(StyleProperty::LineHeight(
-            if input.style.line_height_is_normal {
-                LineHeight::MetricsRelative(1.0)
-            } else {
-                LineHeight::Absolute(input.style.line_height)
-            },
-        ));
-        builder.push_default(StyleProperty::WordBreak(match input.style.word_break {
-            WordBreakMode::Normal => WordBreak::Normal,
-            WordBreakMode::BreakAll => WordBreak::BreakAll,
-        }));
-        builder.push_default(StyleProperty::LineBreak(match input.style.line_break {
-            LineBreakMode::Normal => LineBreak::Normal,
-            LineBreakMode::Strict => LineBreak::Strict,
-        }));
-        if input.style.ligatures == LigatureMode::None {
-            builder.push_default(StyleProperty::FontFeatures(FontFeatures::from(
-                "\"liga\" off, \"clig\" off, \"dlig\" off, \"hlig\" off, \"calt\" off",
-            )));
-        }
-        builder.push_default(StyleProperty::OverflowWrap(OverflowWrap::Normal));
-        builder.push_default(StyleProperty::TextWrapMode(match input.style.white_space {
-            WhiteSpaceMode::NoWrap => TextWrapMode::NoWrap,
-            WhiteSpaceMode::Normal | WhiteSpaceMode::PreLine => TextWrapMode::Wrap,
-        }));
-        builder.push_default(StyleProperty::WhiteSpaceCollapse(
-            match input.style.white_space {
-                WhiteSpaceMode::PreLine => WhiteSpaceCollapse::PreserveBreaks,
-                WhiteSpaceMode::Normal | WhiteSpaceMode::NoWrap => WhiteSpaceCollapse::Collapse,
-            },
-        ));
-        for (range, style) in run_styles::inline_run_style_ranges(input, &normalized) {
-            builder.push(
-                StyleProperty::FontFamily(style.font_family.as_str().into()),
-                range.clone(),
-            );
-            builder.push(StyleProperty::FontSize(style.font_size), range.clone());
-            builder.push(
-                StyleProperty::FontWeight(ParleyFontWeight::new(style.font_weight)),
-                range.clone(),
-            );
-            builder.push(
-                StyleProperty::FontStyle(parley_font_style(style.font_style)),
-                range.clone(),
-            );
-            builder.push(
-                StyleProperty::LineHeight(if style.line_height_is_normal {
-                    LineHeight::MetricsRelative(1.0)
-                } else {
-                    LineHeight::Absolute(style.line_height)
-                }),
-                range,
-            );
-        }
-        builder.set_base_direction(match input.style.direction {
-            TextDirection::Auto => BaseDirection::Auto,
-            TextDirection::Ltr => BaseDirection::Ltr,
-            TextDirection::Rtl => BaseDirection::Rtl,
-        });
-        for inline_box in inline_boxes {
-            builder.push_inline_box(inline_box);
-        }
-        let mut layout = builder.build(&normalized.text);
         layout.break_all_lines(Some(available_width));
         layout.align(Alignment::Start, AlignmentOptions::default());
         let layout_height = layout.height();

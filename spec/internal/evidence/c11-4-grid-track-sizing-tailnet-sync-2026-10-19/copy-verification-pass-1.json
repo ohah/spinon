@@ -1,0 +1,325 @@
+{
+  "checked_paths": 45,
+  "created": 27,
+  "replaced": 7,
+  "same": 11,
+  "deletions": 0,
+  "all_match": true,
+  "items": [
+    {
+      "path": "0001-conformance.html",
+      "status": "replaced",
+      "bytes": 34051,
+      "sha256": "05875624de52468f76ac4c96cfcd074df24ecc605d6ce3f5ab17985c2544f4f0",
+      "previous_sha256": "acb8ee69aa6a4b7166a9d2c1a248e9eb960b029bbf76eb31fb1a2a28e8f164ec"
+    },
+    {
+      "path": "404.html",
+      "status": "replaced",
+      "bytes": 8512,
+      "sha256": "a4d975d8a42d9f20965d5f52ffa65253ae0c4f24f672d3588b4e76169ad74609",
+      "previous_sha256": "196adb1db1771b1982d3f1bf8a38d398f84541a8f4bc3188dee0ed1a1d0c1e58"
+    },
+    {
+      "path": "STATUS.html",
+      "status": "replaced",
+      "bytes": 377380,
+      "sha256": "1a07041be3af9d233923c81d9b28033088f128bdf3d4a9100899337c0f5be7f7",
+      "previous_sha256": "612bad6aa72745bf13954c39899a6e94fe2eedcbaf156e360bd406b0168bd145"
+    },
+    {
+      "path": "icon.svg",
+      "status": "same",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "target_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "status": "created",
+      "bytes": 65090,
+      "sha256": "1e0818a43b1a996ede4a4f149cbfdfb789105775ff48118cc8741b6a093b3c2b",
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.html",
+      "status": "created",
+      "bytes": 32047,
+      "sha256": "8949013ad408b3b2629f911330ad8b11f6958682cb3910b8be02868e0e9b96cd",
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.html",
+      "status": "created",
+      "bytes": 26571,
+      "sha256": "910ed03dbee6b4f83cc04cf2c06a97a713eded5bea77f79fc5947d4dfe0233a7",
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-delta-review-30.html",
+      "status": "created",
+      "bytes": 24878,
+      "sha256": "92b433ac616b9041eeee448ceb3c4dcee71e0b27162a481afdf910da374a545e",
+      "previous_sha256": null
+    },
+    {
+      "path": "logo.svg",
+      "status": "same",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "target_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "status": "created",
+      "bytes": 42265,
+      "sha256": "e505f6deed9a0aef7939344a2c6b635bbb7e6eb95130dfa0bc8da5bdc3097911",
+      "previous_sha256": null
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "status": "replaced",
+      "bytes": 52218,
+      "sha256": "5ef88d527908a91c6bbf23cdbdc5d99bc0f86e6ec76bf79a69e15de8428f8dad",
+      "previous_sha256": "a0923d50196a028a194f50f4fc0734416e566d61c8cffa72f5ba3c3b2172718b"
+    },
+    {
+      "path": "roadmap.html",
+      "status": "same",
+      "bytes": 143352,
+      "sha256": "8cdf5fbb8a2f8ff296effa949dbba07388fe54f648c8e8132dcba697bb6607fd",
+      "target_sha256": "8cdf5fbb8a2f8ff296effa949dbba07388fe54f648c8e8132dcba697bb6607fd"
+    },
+    {
+      "path": "roadmap.svg",
+      "status": "same",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "target_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": "same",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "target_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/js/a.355c4fffa2.js",
+      "status": "created",
+      "bytes": 217102,
+      "sha256": "0fdf3292fe58646eb59c40d33323893317c80ba04b549a8f66793443021febbe",
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/a.355c4fffa2.js.LICENSE.txt",
+      "status": "created",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "status": "same",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "target_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe"
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.02f19e0048.js",
+      "status": "created",
+      "bytes": 29598,
+      "sha256": "fcc3805097d65a69984027dc41a2d3eb786a18bf9763fb37b3750095f1ab461a",
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.a07e6ad4b4.js",
+      "status": "created",
+      "bytes": 401201,
+      "sha256": "1babf6dc50157f7e2774d5b01a19bae613a248f9debfbb2fc7c185ed96196223",
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/async/route-6f303538b8de.2ad632dd51.js",
+      "status": "created",
+      "bytes": 22249,
+      "sha256": "2ed80bd092e810fd739b8e19d0e641fed52333fc2250c4291f156083530b4761",
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/async/route-9eef814e3864.15f4a0bcb7.js",
+      "status": "created",
+      "bytes": 12863,
+      "sha256": "2670542e1b4e0b83ccba03c91145b7456cf0efeb14135ddd9cfa603c2412da5c",
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.d046f76532.js",
+      "status": "created",
+      "bytes": 38565,
+      "sha256": "6b48069799af184eb4c320f85e963f61ccf7380178c7b64006d8ab1087a9c1e6",
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/async/route-c412d9e72a16.8432f7c678.js",
+      "status": "created",
+      "bytes": 11576,
+      "sha256": "55b5ae0608197f34d23e93457ed6eb79ebd6f95501621fe0d872a4769656da60",
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.381824a8a0.js",
+      "status": "created",
+      "bytes": 47918,
+      "sha256": "7909bc9f36e518f7a9c1c3bf69a0d35e3b31fbd1df475982ba0aaadef5101f51",
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/async/route-ecf129b09e78.11061b063b.js",
+      "status": "created",
+      "bytes": 20535,
+      "sha256": "3e83309017c2510508a79fdbf9b5dee43c1a771bbe2878f2675cca8695c6447e",
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/index.7e46f68329.js",
+      "status": "created",
+      "bytes": 24847,
+      "sha256": "87c680f1be209d0df8a15448756628619d213f198e0fd1f74f11d8458f8a2ae2",
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "status": "same",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "target_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "status": "same",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "target_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "status": "same",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "target_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "status": "same",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "target_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "status": "same",
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "target_sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b"
+    },
+    {
+      "path": "static/search_index.ko.005d2a8d.json",
+      "status": "created",
+      "bytes": 334453,
+      "sha256": "005d2a8d9eba055fd63be8bee6934a66876ab13fe91a39967aa14dd9bdac6632",
+      "previous_sha256": null
+    },
+    {
+      "path": "STATUS.md",
+      "status": "replaced",
+      "bytes": 293016,
+      "sha256": "9cf946c647472f4ffdb17cc499e17b114aa976bf33c7512b96f3dd87a7b1f289",
+      "previous_sha256": "474d9f5a07edca5b84e0d35ff25afa3f9dd419bc65f11d3087dfdcbdf782b2a6"
+    },
+    {
+      "path": "0001-conformance.md",
+      "status": "replaced",
+      "bytes": 13862,
+      "sha256": "ea4f83a36e2e72539e600a429755e70c5a4d563df58a120cf538d6fa4a3d625b",
+      "previous_sha256": "3a1f6477f68d9842577b14ad4180415c1b843a565e6b830925fb2e7c39c1656e"
+    },
+    {
+      "path": "plan/c11-css-grid.md",
+      "status": "replaced",
+      "bytes": 26504,
+      "sha256": "abcb0859a7d95672ad711f2b6e870e90264fd4e38153a20aa9837f701decfeec",
+      "previous_sha256": "5f0b002128a8dcdea1d6b977adf595a77447473ea0d6a01bdd99d782ea389d79"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "status": "created",
+      "bytes": 18715,
+      "sha256": "1ba4e6f353399dfcac1f65fe2292d77d3350d9311f7b2690580ddf5074c4fa41",
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "status": "created",
+      "bytes": 33926,
+      "sha256": "a08dcc9d9dab6d37df72429305a2fa3ea84c7f21b5c726a5e1b6cc8af9267475",
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.md",
+      "status": "created",
+      "bytes": 8445,
+      "sha256": "d478660bbbc8c00a6634bcec15ac4f5c68eb35fe5d3678d969b57a7120fed094",
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/browser-metadata.json",
+      "status": "created",
+      "bytes": 564,
+      "sha256": "6d1f44c5ad3a769726234fe4899e1ff91a647cf7dfa26c9cb6e8aa054aa00c8e",
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-agent-browser-eval.raw.txt",
+      "status": "created",
+      "bytes": 16155,
+      "sha256": "c7453b69936c734d110671d9fcb2525c733f0ac42be1c91b0c783084d7f498ce",
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-agent-browser-metadata.raw.txt",
+      "status": "created",
+      "bytes": 564,
+      "sha256": "6d1f44c5ad3a769726234fe4899e1ff91a647cf7dfa26c9cb6e8aa054aa00c8e",
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-dpr1.png",
+      "status": "created",
+      "bytes": 62568,
+      "sha256": "f1cadfd00aeb934e58205d4cd21d4341b8ec48111a6f808d24df1a80ea3a5662",
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-observation.json",
+      "status": "created",
+      "bytes": 16155,
+      "sha256": "c7453b69936c734d110671d9fcb2525c733f0ac42be1c91b0c783084d7f498ce",
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.md",
+      "status": "created",
+      "bytes": 6629,
+      "sha256": "146c8c2a1f17eb7ff7f3172e11c451b8b8e64638df00aec5edfd5d83315b457c",
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-delta-review-30.md",
+      "status": "created",
+      "bytes": 5318,
+      "sha256": "93d0ea822ad7aa155de45f97bb7d1202ae68866f3dc2825687205a937e6b3001",
+      "previous_sha256": null
+    }
+  ]
+}

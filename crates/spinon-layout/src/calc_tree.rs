@@ -5,7 +5,9 @@ use std::{
 };
 
 use spinon_core::NodeId as SpinonNodeId;
-use spinon_text_layout::{ParagraphInput, TextLayoutEngine, TextLayoutSnapshot};
+use spinon_text_layout::{
+    ParagraphInput, TextIntrinsicInlineSizes, TextLayoutEngine, TextLayoutSnapshot,
+};
 use taffy::{
     AvailableSpace, BlockContext, Cache, CacheTree, Display, Layout, LayoutBlockContainer,
     LayoutFlexboxContainer, LayoutInput as TaffyLayoutInput, LayoutOutput as TaffyLayoutOutput,
@@ -75,6 +77,7 @@ pub(super) struct CalcLayoutTree {
     text_paragraphs: HashMap<TaffyNodeId, ParagraphInput>,
     text_flow_nodes: BTreeMap<SpinonNodeId, Vec<(usize, TaffyNodeId)>>,
     text_layouts: RefCell<HashMap<TaffyNodeId, BTreeMap<u32, TextLayoutSnapshot>>>,
+    text_intrinsic_layouts: RefCell<HashMap<TaffyNodeId, TextIntrinsicInlineSizes>>,
 }
 
 impl CalcLayoutTree {
@@ -326,6 +329,7 @@ impl CalcLayoutTree {
             text_paragraphs,
             text_flow_nodes,
             text_layouts: RefCell::new(HashMap::new()),
+            text_intrinsic_layouts: RefCell::new(HashMap::new()),
         })
     }
 

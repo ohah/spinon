@@ -1,7 +1,8 @@
 use spinon_core::NodeId;
 
 use crate::{
-    ParagraphInput, ParagraphStyle, TextLayoutEngine, TextSource, WhiteSpaceMode, WordBreakMode,
+    InlineBoxStyle, InlineEdges, ParagraphInput, ParagraphStyle, TextLayoutEngine, TextSource,
+    WhiteSpaceMode, WordBreakMode,
 };
 
 const AHEM: &[u8] = include_bytes!("../../../tests/fixtures/resources/c15/Ahem.ttf");
@@ -105,6 +106,146 @@ fn ahem_normalizes_collapsed_spaces_and_preserves_source_range() {
             .iter()
             .all(|source| source.paragraph_utf8 == (1..2))
     );
+}
+
+#[test]
+fn ahem_intrinsic_inline_sizes_follow_normal_break_all_and_nowrap_oracles() {
+    let mut engine = engine();
+    let normal = paragraph(
+        "XX XXXXXXX",
+        "Ahem",
+        10.0,
+        10.0,
+        WhiteSpaceMode::Normal,
+        WordBreakMode::Normal,
+    );
+    let normal_sizes = engine.intrinsic_inline_sizes(&normal).unwrap();
+    assert_eq!(normal_sizes.paragraph(), normal.node);
+    assert_eq!(
+        normal_sizes.font_registry_revision(),
+        engine.font_registry_revision()
+    );
+    close_to(normal_sizes.min_content(), 70.0);
+    close_to(normal_sizes.max_content(), 100.0);
+
+    let break_all = paragraph(
+        "XXXXXXXX",
+        "Ahem",
+        10.0,
+        10.0,
+        WhiteSpaceMode::Normal,
+        WordBreakMode::BreakAll,
+    );
+    let break_all_sizes = engine.intrinsic_inline_sizes(&break_all).unwrap();
+    close_to(break_all_sizes.min_content(), 10.0);
+    close_to(break_all_sizes.max_content(), 80.0);
+
+    let nowrap = paragraph(
+        "XX XXXXXXX",
+        "Ahem",
+        10.0,
+        10.0,
+        WhiteSpaceMode::NoWrap,
+        WordBreakMode::Normal,
+    );
+    let nowrap_sizes = engine.intrinsic_inline_sizes(&nowrap).unwrap();
+    close_to(nowrap_sizes.min_content(), 100.0);
+    close_to(nowrap_sizes.max_content(), 100.0);
+}
+
+#[test]
+fn empty_intrinsic_paragraph_returns_zero_sizes_with_current_font_revision() {
+    let mut engine = engine();
+    let input = paragraph(
+        "",
+        "Ahem",
+        10.0,
+        10.0,
+        WhiteSpaceMode::Normal,
+        WordBreakMode::Normal,
+    );
+
+    let sizes = engine.intrinsic_inline_sizes(&input).unwrap();
+
+    assert_eq!(sizes.paragraph(), input.node);
+    assert_eq!(
+        sizes.font_registry_revision(),
+        engine.font_registry_revision()
+    );
+    assert_eq!(sizes.min_content(), 0.0);
+    assert_eq!(sizes.max_content(), 0.0);
+    assert_eq!(sizes.min_content_height(), 0.0);
+    assert_eq!(sizes.max_content_height(), 0.0);
+}
+
+#[test]
+fn intrinsic_inline_sizes_include_inline_edges_and_pre_line_breaks() {
+    let mut engine = engine();
+    let decorated = |text, white_space, word_break| {
+        let mut input = paragraph(text, "Ahem", 10.0, 10.0, white_space, word_break);
+        let span = node(3);
+        input.sources[0].inline_ancestors = vec![span];
+        input.inline_styles.insert(
+            span,
+            InlineBoxStyle {
+                border: InlineEdges {
+                    left: 1.0,
+                    right: 1.0,
+                    ..InlineEdges::default()
+                },
+                padding: InlineEdges {
+                    left: 4.0,
+                    right: 4.0,
+                    ..InlineEdges::default()
+                },
+            },
+        );
+        input
+    };
+    let normal_decorated = decorated("XX XXXXXXX", WhiteSpaceMode::Normal, WordBreakMode::Normal);
+    let normal_sizes = engine.intrinsic_inline_sizes(&normal_decorated).unwrap();
+    close_to(normal_sizes.min_content(), 75.0);
+    assert_eq!(normal_sizes.min_content_height(), 20.0);
+    let nowrap_decorated = decorated("XX XXXXXXX", WhiteSpaceMode::NoWrap, WordBreakMode::Normal);
+    let nowrap_sizes = engine.intrinsic_inline_sizes(&nowrap_decorated).unwrap();
+    close_to(nowrap_sizes.min_content(), 110.0);
+    assert_eq!(nowrap_sizes.min_content_height(), 10.0);
+    let break_all_decorated =
+        decorated("XXXXXXXX", WhiteSpaceMode::Normal, WordBreakMode::BreakAll);
+    let break_all_sizes = engine.intrinsic_inline_sizes(&break_all_decorated).unwrap();
+    close_to(break_all_sizes.min_content(), 15.0);
+    assert_eq!(break_all_sizes.min_content_height(), 80.0);
+    let pre_line_decorated = decorated("XX\nXXXX", WhiteSpaceMode::PreLine, WordBreakMode::Normal);
+    let pre_line_decorated_sizes = engine.intrinsic_inline_sizes(&pre_line_decorated).unwrap();
+    close_to(pre_line_decorated_sizes.min_content(), 45.0);
+    assert_eq!(pre_line_decorated_sizes.min_content_height(), 20.0);
+
+    let pre_line = paragraph(
+        "XX\nXXXX",
+        "Ahem",
+        10.0,
+        10.0,
+        WhiteSpaceMode::PreLine,
+        WordBreakMode::Normal,
+    );
+    let pre_line_sizes = engine.intrinsic_inline_sizes(&pre_line).unwrap();
+    close_to(pre_line_sizes.min_content(), 40.0);
+    close_to(pre_line_sizes.max_content(), 40.0);
+    assert_eq!(pre_line_sizes.min_content_height(), 20.0);
+    assert_eq!(pre_line_sizes.max_content_height(), 20.0);
+
+    let pre_line_empty = paragraph(
+        "XX\n\nXXXX",
+        "Ahem",
+        10.0,
+        10.0,
+        WhiteSpaceMode::PreLine,
+        WordBreakMode::Normal,
+    );
+    let pre_line_empty_sizes = engine.intrinsic_inline_sizes(&pre_line_empty).unwrap();
+    close_to(pre_line_empty_sizes.min_content(), 40.0);
+    assert_eq!(pre_line_empty_sizes.min_content_height(), 30.0);
+    assert_eq!(pre_line_empty_sizes.max_content_height(), 30.0);
 }
 
 #[test]

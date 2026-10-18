@@ -32,6 +32,8 @@ struct InlineBoxEvent {
 pub(super) struct InlineBoundary {
     pub(super) owners: Vec<NodeId>,
     pub(super) width: f32,
+    pub(super) text_index: usize,
+    pub(super) is_start: bool,
 }
 
 pub(super) fn prepare_inline_boxes(
@@ -147,6 +149,8 @@ pub(super) fn prepare_inline_boxes(
             InlineBoundary {
                 owners: event.owners,
                 width: event.width,
+                text_index: event.index,
+                is_start: event.edge == InlineEdge::Start,
             },
         );
     }
