@@ -1,0 +1,149 @@
+{
+  "tool": "spinon-tailnet-preview-backup-verification",
+  "date": "2026-10-19",
+  "backup_location": "outside served preview root; local path redacted",
+  "verified": 20,
+  "mismatches": 0,
+  "entries": [
+    {
+      "path": "0001-conformance.html",
+      "bytes": 37427,
+      "source_sha256": "d16cb0c307884fb51d595b294bdcd2ea809a3c9023967e427b184ec003bb8768",
+      "backup_sha256": "d16cb0c307884fb51d595b294bdcd2ea809a3c9023967e427b184ec003bb8768",
+      "verified": true
+    },
+    {
+      "path": "0001-conformance.md",
+      "bytes": 13981,
+      "source_sha256": "aa6b8f2b5323b6fa8b6db6f5c9e728f3abfa8af64a64e5d591bd5bb2aaec9404",
+      "backup_sha256": "aa6b8f2b5323b6fa8b6db6f5c9e728f3abfa8af64a64e5d591bd5bb2aaec9404",
+      "verified": true
+    },
+    {
+      "path": "404.html",
+      "bytes": 8512,
+      "source_sha256": "faa1cb25f58a4ac83c8e765bddf5e92ea96e64f41a429b24792038b27cb5ae85",
+      "backup_sha256": "faa1cb25f58a4ac83c8e765bddf5e92ea96e64f41a429b24792038b27cb5ae85",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "bytes": 68282,
+      "source_sha256": "2726a76dac103e5f7e5ebe7d934abdaf2d748c33f108b1c2f4f0ec0247a08cdb",
+      "backup_sha256": "2726a76dac103e5f7e5ebe7d934abdaf2d748c33f108b1c2f4f0ec0247a08cdb",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "bytes": 33926,
+      "source_sha256": "a08dcc9d9dab6d37df72429305a2fa3ea84c7f21b5c726a5e1b6cc8af9267475",
+      "backup_sha256": "a08dcc9d9dab6d37df72429305a2fa3ea84c7f21b5c726a5e1b6cc8af9267475",
+      "verified": true
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.html",
+      "bytes": 43844,
+      "source_sha256": "7b495a39c42f6a7d0cf4ba0da653483448e8e5cc04b563ab49237beecc9f804c",
+      "backup_sha256": "7b495a39c42f6a7d0cf4ba0da653483448e8e5cc04b563ab49237beecc9f804c",
+      "verified": true
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.md",
+      "bytes": 17125,
+      "source_sha256": "196e2c61da5b34b58f6e86bc5766f9a9cc51d97ac714888af511770fa6880b94",
+      "backup_sha256": "196e2c61da5b34b58f6e86bc5766f9a9cc51d97ac714888af511770fa6880b94",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.html",
+      "bytes": 29892,
+      "source_sha256": "0ae419bed5c8be1720790bc4e19a30f726ef5b8960291ffe13830993315c226d",
+      "backup_sha256": "0ae419bed5c8be1720790bc4e19a30f726ef5b8960291ffe13830993315c226d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-delta-review-30.html",
+      "bytes": 28196,
+      "source_sha256": "13911428683d1913ff8f915368dce198323ab42759a82736d4e07267d8ef8c09",
+      "backup_sha256": "13911428683d1913ff8f915368dce198323ab42759a82736d4e07267d8ef8c09",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.html",
+      "bytes": 35628,
+      "source_sha256": "42ecfe9516582d94fd572737cb80b6a661fad3b543529bd1fca7233cab600c3d",
+      "backup_sha256": "42ecfe9516582d94fd572737cb80b6a661fad3b543529bd1fca7233cab600c3d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.html",
+      "bytes": 24433,
+      "source_sha256": "47009a504f780f61920e041d54cf11ff00546cfe5fb9b0dad5c0de06139d58a6",
+      "backup_sha256": "47009a504f780f61920e041d54cf11ff00546cfe5fb9b0dad5c0de06139d58a6",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/SHA256SUMS",
+      "bytes": 173,
+      "source_sha256": "6ae0124e2ba99a0b8426a0a559a04cad19621d068a1696673e3c6b75a998a944",
+      "backup_sha256": "6ae0124e2ba99a0b8426a0a559a04cad19621d068a1696673e3c6b75a998a944",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/implementation-review-20.html",
+      "bytes": 29268,
+      "source_sha256": "6b931e98e429ca3419aaa910f4f9f47beab70c373afbe880f925973086f6ef44",
+      "backup_sha256": "6b931e98e429ca3419aaa910f4f9f47beab70c373afbe880f925973086f6ef44",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/pr-delta-review-30.html",
+      "bytes": 34009,
+      "source_sha256": "7ec53df60da0e2336b4be5886a76acf1937a04a33f2bc0bd49abc0211c6100d9",
+      "backup_sha256": "7ec53df60da0e2336b4be5886a76acf1937a04a33f2bc0bd49abc0211c6100d9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/README.html",
+      "bytes": 25930,
+      "source_sha256": "b5f01f8a818d64bdf5c15c284800bb4ca26b62f63f61113c10adafd7f6f6e548",
+      "backup_sha256": "b5f01f8a818d64bdf5c15c284800bb4ca26b62f63f61113c10adafd7f6f6e548",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 46792,
+      "source_sha256": "222003db5a85e96aa06e85d43bed225e27d60cc712e36aeb96e92915340c03df",
+      "backup_sha256": "222003db5a85e96aa06e85d43bed225e27d60cc712e36aeb96e92915340c03df",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 19408,
+      "source_sha256": "90c3f81af6ef63d52cfb5ad7572c42b8a329c9fd1940ea53cffba64f68951c71",
+      "backup_sha256": "90c3f81af6ef63d52cfb5ad7572c42b8a329c9fd1940ea53cffba64f68951c71",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "bytes": 55465,
+      "source_sha256": "2053257f5f91ba3084252eb62fee4a6a50d314540b491ad867bf81cc4fd3355a",
+      "backup_sha256": "2053257f5f91ba3084252eb62fee4a6a50d314540b491ad867bf81cc4fd3355a",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 380996,
+      "source_sha256": "60d7cc7592d86c9696d3fd3bd675fdb98ee682b29b8bae3dd62508fb963751ff",
+      "backup_sha256": "60d7cc7592d86c9696d3fd3bd675fdb98ee682b29b8bae3dd62508fb963751ff",
+      "verified": true
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 293296,
+      "source_sha256": "46d97abb50d47f352de78877ff249fadd512d4320d722036a54a3686e98aa18b",
+      "backup_sha256": "46d97abb50d47f352de78877ff249fadd512d4320d722036a54a3686e98aa18b",
+      "verified": true
+    }
+  ]
+}
