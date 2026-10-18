@@ -1,0 +1,11 @@
+{
+  "tool": "agent-browser",
+  "version": "0.31.1",
+  "session": "spinon-tailnet-c1123",
+  "closeCommand": "agent-browser close",
+  "closeOutput": "Browser closed",
+  "postCloseProcessCheck": "ps query for agent-browser, spinon-tailnet-c1123, and agent-browser Chrome process matches",
+  "matchingProcesses": 0,
+  "previewListenerRestarted": false,
+  "tmuxSpinonTouched": false
+}

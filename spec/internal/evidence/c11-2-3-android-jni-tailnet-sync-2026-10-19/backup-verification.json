@@ -1,0 +1,32 @@
+{
+  "sourceCommit": "d50c6cc73317050fe078299ce0f63618b83869bc",
+  "backupRoot": "[local backup root redacted]",
+  "backups": 4,
+  "allVerified": true,
+  "items": [
+    {
+      "path": "roadmap.html",
+      "bytes": 141102,
+      "sha256": "f4ef6ed387371a723be2f11d3e5556535b95ae0f996b61fade34430922acba63",
+      "verified": true
+    },
+    {
+      "path": "spec/STATUS.md",
+      "bytes": 287179,
+      "sha256": "21355e692cf993b162f12f0ed899b9f61bc2c7b5d37f825ecf36f2856af127d8",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 378265,
+      "sha256": "713b5435e1ebd3f01f66768014ead5c1a33f82962ccb552455e357e67c363d8c",
+      "verified": true
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 289728,
+      "sha256": "56d3cb0b0b0a333744d5d4cb771db38a68df11e5adee9ac99949570c29d647e2",
+      "verified": true
+    }
+  ]
+}

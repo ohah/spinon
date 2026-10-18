@@ -1,0 +1,45 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+info    Rendering pages...
+success Pages rendered in 65 ms.
+ready   built in 0.47s (web)
+ready   built in 0.47s (node)
+
+File (web)                                                                                                   Size        Gzip
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/static/js/async/z.359c0d78fa.js                    0.10 kB     0.09 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/static/js/styles.7ba84b30fd.js                     0.47 kB     0.24 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/icon.svg                                           0.64 kB     0.42 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/static/js/async/route-6ca4bf781376.64c0568774.js   5.3 kB      2.1 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/static/js/async/route-38f5e75c7b1e.2730924eb9.js   7.6 kB      2.4 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/static/js/async/route-f8d9bcdbb080.2b0082433e.js   7.6 kB      2.4 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/static/js/async/route-9d13888e95ba.ed3ddf968d.js   8.6 kB      2.8 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/static/js/async/route-65290b4438ce.4f7a2566ed.js   8.6 kB      2.8 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/static/js/async/route-85a4d78ff4f9.0dca50e079.js   12.4 kB     3.2 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/static/js/async/route-fe092328e3e0.2e42f9573a.js   12.4 kB     3.2 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/static/js/async/route-ca9b0bf4c0a9.f8da0b45be.js   12.6 kB     3.4 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/static/js/async/route-6a0bccb5aed9.3d7b5c4c0e.js   12.6 kB     3.4 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/static/js/index.c34f8de0a9.js                      19.7 kB     6.7 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/static/js/lib-router.f115cf67cf.js                 35.4 kB     12.7 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/static/js/6.cb8b86b995.js                          217.1 kB    72.0 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/static/js/lib-react.382571d6aa.js                  218.4 kB    68.8 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/static/search_index.ko.052d40d0.json               260.5 kB    80.6 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/static/js/async/route-6c33a3943990.0450a3a98c.js   397.7 kB    93.1 kB
+
+                                                                                                    Total:   1311.5 kB   374.5 kB
+
+File (node)                                                                                                                                       Size       Gzip
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/404.html                                                                                8.5 kB     2.6 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/internal/evidence/c11-2-3-android-jni-feature-gate-plan-review-2026-10-19.html          24.5 kB    5.5 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/plan/c11-2-3-android-jni-feature-gate.html                                              24.5 kB    5.2 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/spec/internal/evidence/c11-2-3-android-jni-feature-gate-plan-review-2026-10-19.html     25.0 kB    5.5 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/internal/evidence/c11-2-3-android-jni-gate-implementation-review-2026-10-19.html        26.0 kB    5.9 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/spec/internal/evidence/c11-2-3-android-jni-gate-implementation-review-2026-10-19.html   26.0 kB    5.9 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/spec/internal/evidence/c11-2-3-android-jni-gate-pr-review-2026-10-19.html               28.2 kB    6.5 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/internal/evidence/c11-2-3-android-jni-gate-pr-review-2026-10-19.html                    28.2 kB    6.5 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/internal/evidence/c11-2-3-android-jni-gate-2026-10-19/README.html                       31.1 kB    6.7 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/spec/internal/evidence/c11-2-3-android-jni-gate-2026-10-19/README.html                  31.1 kB    6.7 kB
+packages/docs/build/tailnet-selected-output-2026-10-19-r2/STATUS.html                                                                             377.8 kB   95.0 kB
+
+                                                                                                                                         Total:   631.0 kB   152.0 kB
