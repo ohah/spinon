@@ -4,7 +4,7 @@
 
 ## 고정 입력과 oracle
 
-- HTML: [`tests/fixtures/html/c14-1-root-html-image.html`](../../../../tests/fixtures/html/c14-1-root-html-image.html), SHA-256 `56fc0d9c5a444550866eba7ee65fbe3960b27631830294093107c8c20d77b386`.
+- HTML: [`tests/fixtures/html/c14-1-root-html-image.html`](https://github.com/ohah/spinon/blob/main/tests/fixtures/html/c14-1-root-html-image.html), SHA-256 `56fc0d9c5a444550866eba7ee65fbe3960b27631830294093107c8c20d77b386`.
 - PNG: 97 bytes, SHA-256 `5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2`.
 - Oracle: Headless Chrome 155, viewport `120×80 CSS px`, DPR 1; natural size `24×16 CSS px`, expected frame `(0,0,24,16)`, tolerance `0.5 CSS px` per component.
 - V8: pinned revision `7b50b62cb18f28617959e8452e2cd18195b38bcf`; HTML source scripts are not run.
