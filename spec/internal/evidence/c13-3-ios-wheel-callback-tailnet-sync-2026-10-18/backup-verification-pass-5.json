@@ -1,0 +1,13 @@
+{
+  "verified_backups": 1,
+  "all_verified": true,
+  "items": [
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-callback-tailnet-sync-2026-10-18/render-build.log",
+      "bytes": 6851,
+      "original_sha256": "ad2468a0fbf0ede536903237c5cf1eec3a4b88f224948f40bd5cb3468fc2bd69",
+      "backup_sha256": "ad2468a0fbf0ede536903237c5cf1eec3a4b88f224948f40bd5cb3468fc2bd69",
+      "verified": true
+    }
+  ]
+}

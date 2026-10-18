@@ -1,0 +1,66 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: <repository>/packages/docs
+warn    Current dist path: <selected-build-root>
+info    Rendering pages...
+success Pages rendered in 87 ms.
+ready   built in 0.59s (node)
+ready   built in 0.59s (web)
+
+File (web)                                                                                                                  Size        Gzip
+<selected-build-root>/static/js/async/i.25208e7c92.js                                         0.10 kB     0.09 kB
+<selected-build-root>/static/js/styles.2da0941fcb.js                                          0.47 kB     0.23 kB
+<selected-build-root>/icon.svg                                                                0.64 kB     0.41 kB
+<selected-build-root>/static/js/async/route-65afb1b851aa.a999f7ba07.js                        2.3 kB      1.3 kB
+<selected-build-root>/static/js/async/route-ca0d5e9eeecb.efe2791115.js                        2.4 kB      1.3 kB
+<selected-build-root>/static/js/async/route-6ee67f7cb018.d706558e07.js                        6.5 kB      2.7 kB
+<selected-build-root>/static/js/async/route-f81c875d0f90.22dba986af.js                        6.5 kB      2.6 kB
+<selected-build-root>/static/js/async/route-b8c358974333.8caeaca8a4.js                        7.5 kB      3.0 kB
+<selected-build-root>/static/js/async/route-ddd49e1af8e3.f88794ee61.js                        7.9 kB      3.0 kB
+<selected-build-root>/static/js/async/route-aa8c6a7ee9ac.77ec5b6e88.js                        11.5 kB     3.8 kB
+<selected-build-root>/static/js/async/route-83440355568a.6df3d1e44f.js                        12.2 kB     3.9 kB
+<selected-build-root>/static/js/async/route-13eb63fed035.6f40198cce.js                        13.0 kB     4.0 kB
+<selected-build-root>/static/js/async/route-cee50dc27f45.6d22bbbd94.js                        13.1 kB     3.6 kB
+<selected-build-root>/static/js/async/route-dbe5897a5d63.bd33b155e1.js                        24.9 kB     6.7 kB
+<selected-build-root>/static/js/lib-router.1e14e568cb.js                                      35.4 kB     12.7 kB
+<selected-build-root>/static/js/async/route-abeecded38c6.25349374df.js                        42.9 kB     12.3 kB
+<selected-build-root>/static/js/index.5ea29fb98b.js                                           49.6 kB     16.2 kB
+<selected-build-root>/static/js/async/route-f5e1f6055c05.61828c175b.js                        55.4 kB     15.4 kB
+<selected-build-root>/static/css/styles.8d918fd78e.css                                        74.0 kB     14.2 kB
+<selected-build-root>/static/image/ios-simulator-scene-horizontal-positive-x.c4bb687ddf.png   122.0 kB
+<selected-build-root>/static/image/ios-simulator-scene.16d907afbc.png                         122.1 kB
+<selected-build-root>/static/image/tailnet-roadmap-agent-browser.b7334d2322.png               174.8 kB
+<selected-build-root>/static/js/async/route-a1017bdf23ca.66b99abe3f.js                        176.6 kB    36.9 kB
+<selected-build-root>/static/image/tailnet-plan-agent-browser.a431f1a9fa.png                  203.8 kB
+<selected-build-root>/static/image/tailnet-plan-agent-browser.ade49245e7.png                  209.9 kB
+<selected-build-root>/static/image/tailnet-status-agent-browser.10930ae4dd.png                210.9 kB
+<selected-build-root>/static/js/a.388fe8a1b1.js                                               217.1 kB    71.7 kB
+<selected-build-root>/static/js/lib-react.9cdf8f49ce.js                                       218.4 kB    68.9 kB
+<selected-build-root>/static/image/tailnet-roadmap-agent-browser.9a625682cf.png               218.5 kB
+<selected-build-root>/static/js/async/route-6c33a3943990.124f14d9fb.js                        380.0 kB    88.4 kB
+<selected-build-root>/static/search_index.ko.173b03c0.json                                    437.2 kB    135.9 kB
+
+                                                                                                                   Total:   3057.4 kB   1771.2 kB
+
+File (node)                                                                                                                                                   Size       Gzip
+<selected-build-root>/404.html                                                                                                  6.2 kB     2.0 kB
+<selected-build-root>/internal/evidence/c13-3-ios-wheel-callback-tailnet-sync-2026-10-18/render-build-result.html               21.6 kB    4.2 kB
+<selected-build-root>/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/render-build-result.html         21.6 kB    4.2 kB
+<selected-build-root>/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/README.html                      24.7 kB    5.6 kB
+<selected-build-root>/internal/evidence/c13-3-ios-wheel-callback-tailnet-sync-2026-10-18/README.html                            24.8 kB    5.6 kB
+<selected-build-root>/internal/evidence/c13-3-ios-native-wheel-adapter-implementation-review-20-2026-10-18.html                 27.4 kB    6.5 kB
+<selected-build-root>/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/pr-delta-review-30-2026-10-18-followup.html   27.5 kB    6.2 kB
+<selected-build-root>/internal/evidence/c13-3-ios-native-wheel-adapter-pr-delta-review-30-2026-10-18.html                       27.8 kB    6.6 kB
+<selected-build-root>/internal/evidence/c13-3-ios-wheel-callback-tailnet-sync-2026-10-18/pr-delta-review-30.html                30.9 kB    5.7 kB
+<selected-build-root>/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/pr-delta-review-30.html          30.9 kB    5.6 kB
+<selected-build-root>/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.html                                   37.8 kB    9.1 kB
+<selected-build-root>/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/pr-delta-review-30-2026-10-18.html            37.9 kB    7.0 kB
+<selected-build-root>/plan/c13-3-native-wheel-input.html                                                                        57.9 kB    15.0 kB
+<selected-build-root>/internal/0063-c13-3-scroll-gestures.html                                                                  68.8 kB    18.0 kB
+<selected-build-root>/internal/README.html                                                                                      166.2 kB   38.8 kB
+<selected-build-root>/STATUS.html                                                                                               356.5 kB   89.2 kB
+
+                                                                                                                                                     Total:   968.4 kB   229.4 kB

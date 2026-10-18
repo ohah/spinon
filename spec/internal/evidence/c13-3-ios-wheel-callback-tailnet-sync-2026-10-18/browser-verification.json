@@ -1,0 +1,66 @@
+{
+  "tool": "Agent Browser",
+  "terminalBrowserUsed": false,
+  "tailnet": {
+    "roadmap": {
+      "path": "/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "counter": "207개 표시 · 공식 완료 74/207",
+      "counterVisible": true,
+      "c13NoteHasRun04OffsetZeroNoConsume": true,
+      "c13NoteHasRun05Positive5of5Negative3of5": true,
+      "c13NoteExcludesRun06Unknown": true,
+      "c13MarkedIncomplete": true,
+      "links": [
+        "/spinon/plan/c13-3-native-wheel-input.html",
+        "/spinon/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.html",
+        "/spinon/internal/evidence/c13-3-ios-wheel-callback-tailnet-sync-2026-10-18/README.html",
+        "/ohah/spinon/pull/302"
+      ]
+    },
+    "status": {
+      "path": "/spinon/STATUS.html",
+      "c13FollowupVisible": true,
+      "lineContainsIncompleteBoundary": true
+    },
+    "plan": {
+      "path": "/spinon/plan/c13-3-native-wheel-input.html",
+      "run04CallbackAndProcess3of3Visible": true,
+      "run05Negative3of5Visible": true,
+      "run06UnknownExcludedVisible": true,
+      "incompleteVisible": true
+    },
+    "adapterEvidence": {
+      "path": "/spinon/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.html",
+      "run04AndRun05Visible": true,
+      "simulatorImages": [
+        { "complete": true, "width": 2752, "height": 2064 },
+        { "complete": true, "width": 2752, "height": 2064 }
+      ]
+    },
+    "run05RawSummary": {
+      "path": "/spinon/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-05-horizontal-roundtrip-repeat/run-summary.json",
+      "contentType": "application/json",
+      "xctestPassed": 5,
+      "negativeXCallbacks": 3,
+      "missingRepetitions": [1, 5]
+    },
+    "syncReport": {
+      "path": "/spinon/internal/evidence/c13-3-ios-wheel-callback-tailnet-sync-2026-10-18/README.html",
+      "run04Run05AndRun06BoundaryVisible": true,
+      "officialCount74of207Visible": true,
+      "c13MarkedIncomplete": true,
+      "embeddedBrowserImages": 3,
+      "allEmbeddedImagesComplete": true,
+      "embeddedImageDimensions": "1280x633"
+    }
+  },
+  "screenshots": [
+    "tailnet-roadmap-final-agent-browser.png",
+    "tailnet-status-final-agent-browser.png",
+    "tailnet-plan-final-agent-browser.png",
+    "tailnet-adapter-final-agent-browser.png",
+    "tailnet-report-final-agent-browser.png"
+  ],
+  "privateTailnetHostnameRedacted": true
+}
