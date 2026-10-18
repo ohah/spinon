@@ -1,0 +1,67 @@
+{
+  "schema": "spinon-c12-4-repeated-session-lifecycle/v1",
+  "status": "passed",
+  "runId": "c124-lifecycle-20261012T021505113Z-8a0a1ca8",
+  "pid": "26657",
+  "serial": "emulator-5554",
+  "model": "sdk_gphone16k_arm64",
+  "release": "17",
+  "apiLevel": 37,
+  "apkSha256": "c4b0e8ab3191c1e4ab0f7a513887a0a96a77e47110f879eaf03048abf746b745",
+  "target": "avd",
+  "targetClassification": "Android API 37 AVD · 시뮬레이터 표면 결과",
+  "cycles": 16,
+  "sessionsPerCycle": 8,
+  "totalSessionsCreated": 128,
+  "ownerThreadCreateAndExitChecks": 16,
+  "workerThreadCreateAndExitChecks": 16,
+  "memorySamples": [
+    {
+      "phase": "baseline",
+      "pssKiB": 51858,
+      "rssKiB": 175472,
+      "vmRssKiB": 178672,
+      "vmSizeKiB": 16619136,
+      "vmDataKiB": 2857872
+    },
+    {
+      "phase": "cycle-1-peak",
+      "pssKiB": 72741,
+      "rssKiB": 200112,
+      "vmRssKiB": 200096,
+      "vmSizeKiB": 38006304,
+      "vmDataKiB": 5056080
+    },
+    {
+      "phase": "cycle-8-peak",
+      "pssKiB": 73283,
+      "rssKiB": 200992,
+      "vmRssKiB": 200800,
+      "vmSizeKiB": 38006928,
+      "vmDataKiB": 5056544
+    },
+    {
+      "phase": "cycle-16-peak",
+      "pssKiB": 73347,
+      "rssKiB": 201056,
+      "vmRssKiB": 200816,
+      "vmSizeKiB": 38006928,
+      "vmDataKiB": 5056544
+    },
+    {
+      "phase": "final",
+      "pssKiB": 65859,
+      "rssKiB": 193568,
+      "vmRssKiB": 193552,
+      "vmSizeKiB": 33443040,
+      "vmDataKiB": 2871808
+    }
+  ],
+  "interpretation": "process-wide memory snapshots are observational only; TID absence and repeated create/free are the lifecycle gates.",
+  "limitations": [
+    "single Android API 37 AVD with ANGLE/SwiftShader; not hardware GPU evidence",
+    "no renderer, GPU surface, layout evaluation, or WPT conformance test",
+    "process PSS/RSS changes do not prove or disprove a memory leak",
+    "stack-only commit/high-water and global allocator OOM recovery remain unmeasured"
+  ]
+}

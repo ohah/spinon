@@ -123,7 +123,8 @@
     "css:compare:c12-2-absolute-block": "node tools/css-reference/compare-c12-2-absolute-block-runtime.mjs",
     "css:reference:c12-3-fixed-positioning": "node tools/css-reference/capture-c12-3-fixed-positioning.mjs",
     "css:reference:c12-4-stacking-context": "node tools/css-reference/capture-c12-4-stacking-context.mjs",
-    "css:verify:c12-4-ios-runtime-matrix": "node tools/css-reference/capture-c12-4-ios-runtime-matrix.mjs"
+    "css:verify:c12-4-ios-runtime-matrix": "node tools/css-reference/capture-c12-4-ios-runtime-matrix.mjs",
+    "css:verify:c12-4-session-lifecycle": "node tools/css-reference/capture-c12-4-repeated-session-lifecycle.mjs"
   },
   "devDependencies": {
     "parse5": "7.3.0"

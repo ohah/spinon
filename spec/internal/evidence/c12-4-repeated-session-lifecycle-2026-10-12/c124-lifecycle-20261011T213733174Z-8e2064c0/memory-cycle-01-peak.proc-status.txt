@@ -1,0 +1,52 @@
+Name:	pinon.bootstrap
+Umask:	0077
+State:	S (sleeping)
+Tgid:	2842
+Ngid:	0
+Pid:	2842
+PPid:	1027
+TracerPid:	0
+Uid:	10453	10453	10453	10453
+Gid:	10453	10453	10453	10453
+FDSize:	256
+Groups:	9997 20453 50453 
+VmPeak:	69490644 kB
+VmSize:	40441348 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	  169332 kB
+VmRSS:	  168588 kB
+RssAnon:	   62364 kB
+RssFile:	   93048 kB
+RssShmem:	   13176 kB
+VmData:	 5280976 kB
+VmStk:	    8192 kB
+VmExe:	       4 kB
+VmLib:	  242952 kB
+VmPTE:	    1820 kB
+VmSwap:	   22524 kB
+CoreDumping:	0
+THP_enabled:	1
+Threads:	51
+SigQ:	0/19569
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000080001204
+SigIgn:	0000000000000001
+SigCgt:	0000006e400084f8
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	0000000000000000
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	2
+Seccomp_filters:	1
+Speculation_Store_Bypass:	thread vulnerable
+SpeculationIndirectBranch:	unknown
+Cpus_allowed:	3ff
+Cpus_allowed_list:	0-9
+Mems_allowed:	1
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	96
+nonvoluntary_ctxt_switches:	11
