@@ -12,7 +12,24 @@
     "xcodebuild-default.log.gz": "d41a375fc089bd49b97775a90ecfc8038ad4f1dc076179aaf10f7240816c63be",
     "xctest-four-directions.log": "b95e90422f299d16a16209febf0820b98a145032c65033f5d8b68e62cb51eb9c",
     "runtime-callbacks-sanitized.log": "b73606644918916f81500118a4b30cf5d949aac16818b002a8e34f3e0319a006",
-    "ios-simulator-scene.png": "4cddc3a1bd188b1b49a87b4be1a569e6e3d407aae3d74d7d4ae7f0075e43306e"
+    "ios-simulator-scene.png": "4cddc3a1bd188b1b49a87b4be1a569e6e3d407aae3d74d7d4ae7f0075e43306e",
+    "inner-target-reruns/runtime-followup-summary.json": "7bfde7d787c7ad1f38956888486232704820821fe5112949c0868a19e0ad43a0",
+    "inner-target-reruns/run-01-horizontal-events.log": "f87d9c8ec5105913eb246553a1a4e0876b2799dd0e3ba3ca03833247e8fabdad",
+    "inner-target-reruns/run-01-vertical-events.log": "1959e90ef78a527c44f3fc0ad915af375cba4bcebae8ad75e88f4b7986eb1e6a",
+    "inner-target-reruns/run-01-horizontal-xcresult-summary.json": "d20a28c6b0a00b804c4c430ee545bc6f323af54776a99dda5d92188edad1e99c",
+    "inner-target-reruns/run-01-vertical-xcresult-summary.json": "cc376dbfc32c5812bd77495c93690a9f60263ceef0bbc509aa469d1f816ddd5f",
+    "inner-target-reruns/run-02-events.log": "e91c3694a90fd9baefc309c015faaedee48964b412219672cb5edde2511ea67d",
+    "inner-target-reruns/run-02-xcresult-summary.json": "1501bfcfba1b60ea7a38da7e3ed7bbb4d8e27609e4d643c98510d75053f64e5b",
+    "inner-target-reruns/run-02-xctest-steps.log": "d8c04a6a0a604ddc88f8519ebd66192d2bdd6c613a034fcc50d8a221b0dc1793",
+    "inner-target-reruns/run-03-horizontal-events.log": "8eaff64743dac1324bd440842cdcd37246ff4cffdcb3f57bf9e1e5fda3cb424b",
+    "inner-target-reruns/run-03-horizontal-xcresult-summary.json": "14f9c5e01c5ebe7a9ef7829e4bd39209cf969e080a0bf6351b4f07c725e4225e",
+    "inner-target-reruns/ios-simulator-scene-horizontal-positive-x.png": "6a7ff7c1c2dcc042ec023acb26c2862c4f0bbdbfe2c8b03a41639388d9b1ecd4",
+    "inner-target-reruns/run-03-horizontal-xctest-steps.log": "ddaa286e3309de29ce06865ec6da96fd97933f8966cb6fb294cb1be06746f925",
+    "inner-target-reruns/xctest-harness/README.md": "f8e217d90ffa0908811f85b57cde87af99fb06e41d889cb618699642738acb32",
+    "inner-target-reruns/xctest-harness/C133WheelProbe.xcodeproj/project.pbxproj": "aa599d02f56f8195b3c38d5d86834c17c4d39251b1e6c3d86a1610a3eff44b02",
+    "inner-target-reruns/xctest-harness/Sources/C133WheelProbeApp.swift": "d88b43a293d8fc56d1f9a2ecc2a1f0dab1999d03d317f3faf0696c63c25dce1f",
+    "inner-target-reruns/xctest-harness/Tests/C133WheelProbeUITests.swift": "ff6e07545416163891027d5c2157eb9257d7132fd165fe8a5de88e4482151e3d",
+    "pr-delta-review-30-2026-10-18.md": "501ce4b36b55870c29aa16a38dc87026aa5f929cd9810d864b8a38d8b55d4d8c"
   },
   "platform": "iPad Pro 13-inch (M5), iOS Simulator 26.2, arm64",
   "simulator_udid": "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
@@ -42,6 +59,24 @@
   },
   "source_files": [
     "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
-    "tools/css-reference/c13-3-ios-native-wheel-adapter.test.mjs"
+    "tools/css-reference/c13-3-ios-native-wheel-adapter.test.mjs",
+    "inner-target-reruns/xctest-harness/C133WheelProbe.xcodeproj/project.pbxproj",
+    "inner-target-reruns/xctest-harness/Sources/C133WheelProbeApp.swift",
+    "inner-target-reruns/xctest-harness/Tests/C133WheelProbeUITests.swift"
+  ],
+  "runtime_test_followup": {
+    "summary": "inner-target-reruns/runtime-followup-summary.json",
+    "xctest_harness": "inner-target-reruns/xctest-harness/README.md",
+    "callback_logs": [
+      "inner-target-reruns/run-01-horizontal-events.log",
+      "inner-target-reruns/run-01-vertical-events.log",
+      "inner-target-reruns/run-02-events.log",
+      "inner-target-reruns/run-03-horizontal-events.log"
+    ]
+  },
+  "harness_source_files": [
+    "inner-target-reruns/xctest-harness/C133WheelProbe.xcodeproj/project.pbxproj",
+    "inner-target-reruns/xctest-harness/Sources/C133WheelProbeApp.swift",
+    "inner-target-reruns/xctest-harness/Tests/C133WheelProbeUITests.swift"
   ]
 }

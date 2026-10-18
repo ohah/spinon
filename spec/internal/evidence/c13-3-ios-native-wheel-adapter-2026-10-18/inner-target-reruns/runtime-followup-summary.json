@@ -1,0 +1,63 @@
+{
+  "platform": "iPad Pro 13-inch (M5), iOS Simulator 26.2, arm64",
+  "simulator_udid": "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+  "host_os": "macOS 26.5.1",
+  "tested_app_source_commit": "35663dcd26a0c3995db6d3ec8479d9beb949428d",
+  "tested_app_executable_sha256": "46c19b1070ce41ff14084c5c33abf30603c2c6fc1143a213b6da72df91c49f6e",
+  "runtime_input": {
+    "source": "continuous-trackpad",
+    "unit": "UIKitPoints",
+    "points_per_css_px": 1.0,
+    "momentum_phase": "None",
+    "normalized_modifiers": 0
+  },
+  "runs": [
+    {
+      "id": "run-01-inner-target-x-y-roundtrips",
+      "xctest_methods_passed": 2,
+      "xctest_methods_failed": 0,
+      "native_callbacks_observed": 4,
+      "native_callbacks_processed": 4,
+      "target_ids": [7, 7, 7, 7],
+      "roundtrip_offsets_returned_to_zero": {
+        "x": true,
+        "y": true
+      },
+      "result": "all four samples observed once"
+    },
+    {
+      "id": "run-02-inner-target-x-y-repeat",
+      "xctest_methods_passed": 2,
+      "xctest_methods_failed": 0,
+      "native_callbacks_observed": 3,
+      "native_callbacks_processed": 3,
+      "target_ids": [7, 7, 7],
+      "roundtrip_offsets_returned_to_zero": {
+        "x": false,
+        "y": true
+      },
+      "missing_callback": "negative-x",
+      "result": "repetition incomplete; do not count the missing sample as pass"
+    },
+    {
+      "id": "run-03-inner-target-x-repeat",
+      "xctest_methods_passed": 1,
+      "xctest_methods_failed": 0,
+      "native_callbacks_observed": 2,
+      "native_callbacks_processed": 2,
+      "target_ids": [7, 7],
+      "roundtrip_offsets_returned_to_zero": {
+        "x": true
+      },
+      "result": "horizontal roundtrip observed again"
+    }
+  ],
+  "interpretation": "The coordinate-anchored adapter path processed all four directions once and horizontal roundtrip twice, but one of three horizontal repetitions had no negative-x app callback. XCTest method success is not callback success. The cause of the missing callback was not isolated.",
+  "scope_limits": [
+    "iOS Simulator event synthesis only",
+    "discrete mouse not tested",
+    "Control-wheel not tested",
+    "physical trackpad and physical device not tested",
+    "C13.3 remains incomplete"
+  ]
+}

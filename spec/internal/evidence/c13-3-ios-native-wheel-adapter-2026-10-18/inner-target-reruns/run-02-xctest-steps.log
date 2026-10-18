@@ -1,0 +1,10 @@
+2:    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test -project /tmp/spinon-c13-ios-wheel-coordinate-xctest-20261018/C133WheelProbe.xcodeproj -scheme C133WheelProbe -destination "platform=iOS Simulator,id=9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF" -derivedDataPath /tmp/spinon-c13-ios-wheel-coordinate-xctest-20261018/derived-roundtrip-repeat-02 -resultBundlePath /tmp/spinon-c13-ios-wheel-coordinate-xctest-20261018/results-roundtrip-repeat-02.xcresult -parallel-testing-enabled NO "-only-testing:C133WheelProbeUITests/C133WheelProbeUITests/testHorizontalRoundTripAtInnerTarget" "-only-testing:C133WheelProbeUITests/C133WheelProbeUITests/testVerticalRoundTripAtInnerTarget" CODE_SIGNING_ALLOWED=NO
+556:Test Case '-[C133WheelProbeUITests.C133WheelProbeUITests testHorizontalRoundTripAtInnerTarget]' started.
+583:    t =    13.51s Scroll "C13.3 iOS UIPanGestureRecognizer nested scroll gesture WGPU Metal 장면" Other[0.33, 0.47] by dx: 38.00, dy: 0.00
+593:2026-10-18 10:41:34.509182+0900 C133WheelProbeUITests-Runner[56108:78121090] SPINON_C133_XCTEST_ADAPTER case=inner-target positive-x
+606:    t =    24.96s Scroll "C13.3 iOS UIPanGestureRecognizer nested scroll gesture WGPU Metal 장면" Other[0.33, 0.47] by dx: -38.00, dy: 0.00
+616:2026-10-18 10:41:45.946084+0900 C133WheelProbeUITests-Runner[56108:78121090] SPINON_C133_XCTEST_ADAPTER case=inner-target negative-x
+621:Test Case '-[C133WheelProbeUITests.C133WheelProbeUITests testHorizontalRoundTripAtInnerTarget]' passed (32.104 seconds).
+690:	 Executed 2 tests, with 0 failures (0 unexpected) in 66.174 (66.175) seconds
+692:	 Executed 2 tests, with 0 failures (0 unexpected) in 66.174 (66.176) seconds
+694:	 Executed 2 tests, with 0 failures (0 unexpected) in 66.174 (66.177) seconds
