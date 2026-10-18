@@ -1,0 +1,14 @@
+{
+  "closedAt": "2026-10-18T02:12:57TUTC",
+  "sessionLabel": "PR #301 review",
+  "closeCommand": "agent-browser --session <PR301-review-session> close --all",
+  "closeSucceeded": true,
+  "activeBeforeClose": true,
+  "sessionInfoActiveAfterClose": false,
+  "activeSessionCountAfterClose": 0,
+  "agentBrowserProcessDetectedAfterClose": false,
+  "processProbe": "pgrep -x agent-browser",
+  "terminalBrowserUsed": false,
+  "physicalDeviceUsed": false,
+  "tmuxTouched": false
+}
