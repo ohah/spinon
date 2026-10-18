@@ -12,7 +12,8 @@
 - [고정 JSON](../../../../tests/fixtures/css/references/c01-selector-at-rule-surface-v1-macos-arm64-macos-26.5.1-25f80-155.0.8059.85-node-v24.20.0-revision-0e66b94549a8-binary-6e156f2271ce-fixture-4783ff01e663-inventory-970e9f0aab81-tools-31f2a4987fd8/selector-at-rule-surface.json) SHA-256: `fa4858444eee80e6cc69cebc8f939c2a8de4923eac5e0da1f98c70a9bbff858e`
 - fixture SHA-256: `4783ff01e66382874c74027543dcd659eb2af23bc85a04d928330f190b03b435`; inventory SHA-256: `970e9f0aab8134b603e6e4f4c790ad2c4b59709beb7eee927b276fa728ece7f8`
 - 관찰 digest: `3d7805660433e80d0a33e7e4983e993b286e3ef1b772bbdc049a476fd26e5de5`
-- 전체 CSS reference suite 원본 출력(공백 정규화): 72,446 bytes, SHA-256 `358225d3e9fea5856955d8dfaa15ec1fdcf0b910b9210642c652302a380ea720`
+- PR branch 전체 CSS reference suite 출력(끝 공백 정규화): 72,446 bytes, SHA-256 `358225d3e9fea5856955d8dfaa15ec1fdcf0b910b9210642c652302a380ea720`
+- clean `origin/main` baseline `539fbfbc1d4b59692ea0786728d77529301ff953` 출력(끝 공백 정규화): 72,413 bytes, SHA-256 `bac301acbd90331676171756f1585ef5c5a83588d7ee73a8f7c697c847a9c4a3`
 
 재현 명령:
 
@@ -36,6 +37,6 @@ mise exec -- node --test tools/css-reference/selector-at-rule-surface.test.mjs
 
 - `selector-at-rule-surface.test.mjs`: **24 passed, 0 failed**.
 - 구현 실패 관점 20개와 [PR diff 검토 30개](./pr-diff-review-30.md)를 별도 기록한다.
-- 전체 `tools/css-reference/*.test.mjs`: **실패**, C04 runtime viewport 1개, C11 Grid 13개, C13.3 tap 2개 등 16개 assertion이 실패했다. 원본 출력은 trailing whitespace만 정리해 [전체 실행 로그](./full-css-reference-suite.log)에 보존한다. 변경 목록과 겹치는 C04/C11/C13 구현 소스·기존 테스트는 없지만, clean `origin/main` worktree에서 baseline 재실행하지 않았으므로 이를 upstream baseline이라고 단정하지 않는다.
+- 전체 `tools/css-reference/*.test.mjs`: PR branch와 clean `origin/main` `539fbfbc`에서 각각 **16개 실패 표식**이 똑같은 16개 C04 runtime viewport·C11 Grid·C13.3 tap case에 나타났다. [PR branch 로그](./full-css-reference-suite.log)와 [clean baseline 로그](./full-css-reference-suite-origin-main-baseline.log)는 끝 공백만 정리해 보존한다. 이 실패 집합은 기준 브랜치에서도 재현되며 이번 PR diff와 겹치는 구현 파일은 없다.
 - 이 비교에는 Android/iOS 앱 또는 simulator 검증이 없다. 화면·geometry·computed value·paint·WPT·Spinon의 selector/cascade 동작을 검사하지 않는다.
 - inventory는 명시된 selector와 at-rule의 부분 표본이다. C01 전체, 전체 CSS 지원 또는 출시 호환성 판정은 미완료다.
