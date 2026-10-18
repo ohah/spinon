@@ -60,6 +60,26 @@ Run 01에서 horizontal은 CSS `+4.680664`, 이어서 `−17.822418`을 전달�
 
 이 스크린샷은 세 번째 수평 왕복 run에서 첫 입력 뒤 캡처한 fixture scene이다. pixel 변화나 callback은 화면만으로 판정할 수 없으며 위 Simulator log가 native 처리 근거다.
 
+## 2026-10-18 iOS negative-X 반복 및 입력 target 후속
+
+같은 opt-in app executable SHA-256 `46c19b1070ce41ff14084c5c33abf30603c2c6fc1143a213b6da72df91c49f6e`를 iPad Pro 13-inch (M5), iOS 26.2 Simulator에서 실행했다.
+
+| Run | XCTest | UIKit callback / queue 처리 | 판정 |
+| --- | --- | --- | --- |
+| 04, inner-target negative-only | 3/3 pass | 3/3 | 매번 target 7·negative delta였으나 시작 offset 0 경계에서 `published=false`; 소비·offset 변화 없음 |
+| 05, inner-target 왕복 5회 | 5/5 pass | positive 5/5, negative 3/5 | negative callback 누락은 반복 1·5; 전달된 세 negative sample은 모두 target 7이고 offset 0 복귀는 없었음 |
+| 06, 중심점 왕복 대조 | 결과 판정 불가 | partial log의 app process 4개 | `No space left on device`로 xcresult가 `result=unknown`, `totalTestCount=0`; gate에서 제외 |
+
+Run 04의 observed CSS X delta는 `−5.1843414`, `−2.1793213`, `−20.7473`이었다. 이 테스트는 negative callback이 들어올 수 있음을 보였지만 inner offset이 이미 0이라 세 sample 모두 scroll state revision 0과 offset 0을 유지했다.
+
+Run 05의 XCTest activity는 매 repetition에서 `+38`, `−38` 요청을 기록한다. 앱 callback의 실제 CSS delta는 positive `+7.907501`, `+19.50438`, `+20.234985`, `+4.2195435`, `+9.195129`, negative `−15.970673`, `−4.989746`, `−2.3658447`이었다. 따라서 실제 positive/negative 크기가 서로 같지 않았고 final inner X offset은 반복 순서대로 `7.907501`, `3.5337067`, `15.245239`, `1.8536987`, `9.195129 CSS px`였다. XCTest method 5/5 pass를 native callback pass와 혼동하지 않으며, 요청 delta `±38`을 app이 받은 UIKit delta로 간주하지 않는다.
+
+Run 06의 부분 callback 좌표는 center variant의 target 한계를 추가로 드러냈다. 첫 app process는 positive-X `target=7`에서 CSS `+11.60434`, 후속 negative-X는 `target=5`에서 `−18.205032`를 기록했다. 다른 partial process도 negative sample에서 target 5를 선택했다. 다만 결과 번들이 정상 완성되지 않았으므로 callback 반복률이나 XCTest 성공률로 세지 않는다.
+
+이 결과만으로 누락 callback 원인을 특정할 수 없다. Run 05의 누락 반복에는 app native callback, queue process, adapter reject가 모두 기록되지 않았고, Run 04의 단독 negative 입력은 3/3 전달됐다. 따라서 adapter 방향 정규화나 queue 거부가 원인이라고 결론 낼 근거가 없다. XCTest synthesis, Simulator event delivery와 UIKit recognizer를 분리하는 추가 계측이 필요하다. app 코드 수정이나 C13.3 완료 판정은 하지 않는다.
+
+원본: [Run 04 summary](./inner-target-reruns/run-04-negative-x-repeat/run-summary.json) · [Run 04 XCTest summary](./inner-target-reruns/run-04-negative-x-repeat/xctest-summary.json) · [Run 04 app log](./inner-target-reruns/run-04-negative-x-repeat/app-events.log) · [Run 05 summary](./inner-target-reruns/run-05-horizontal-roundtrip-repeat/run-summary.json) · [Run 05 XCTest summary](./inner-target-reruns/run-05-horizontal-roundtrip-repeat/xctest-summary.json) · [Run 05 actions](./inner-target-reruns/run-05-horizontal-roundtrip-repeat/xctest-scroll-actions.json) · [Run 05 app log](./inner-target-reruns/run-05-horizontal-roundtrip-repeat/app-events.log) · [Run 06 partial summary](./inner-target-reruns/run-06-center-roundtrip-repeat/run-summary.json) · [Run 06 partial app log](./inner-target-reruns/run-06-center-roundtrip-repeat/app-events.log) · [입력 harness와 재현 조건](./inner-target-reruns/xctest-harness/README.md) · [이번 diff 30개 검토](./pr-delta-review-30-2026-10-18-followup.md) · [재실행 artifact SHA-256](./inner-target-reruns/SHA256SUMS).
+
 ## 미완료 범위
 
-Discrete mouse callback, iOS Control-wheel runtime rejection, pinch/magnification, 실제 trackpad/device, surface resize/background runtime negative injection, 다른 points/CSS scale, 반복 가능한 전체 ±X/±Y matrix, screenshot pixel-diff와 compositor 이후 출력, public DOM event 및 S04.10 displayed-frame targeting을 확인하지 않았다. Inner-target X/Y roundtrip은 한 번 네 방향이 모두 관찰됐지만 수평 반복 세 번 중 한 번 negative-X app callback이 누락됐다. C13.3 체크 및 공식 완료 집계는 그대로 미완료다.
+Discrete mouse callback, iOS Control-wheel runtime rejection, pinch/magnification, 실제 trackpad/device, surface resize/background runtime negative injection, 다른 points/CSS scale, 반복 가능한 전체 ±X/±Y matrix, screenshot pixel-diff와 compositor 이후 출력, public DOM event 및 S04.10 displayed-frame targeting을 확인하지 않았다. 앞선 inner-target 수평 반복 세 번 중 한 번은 negative-X app callback이 누락됐고, 이번 다섯 회 재현에서도 두 번 누락됐다. C13.3 체크 및 공식 완료 집계는 그대로 미완료다.

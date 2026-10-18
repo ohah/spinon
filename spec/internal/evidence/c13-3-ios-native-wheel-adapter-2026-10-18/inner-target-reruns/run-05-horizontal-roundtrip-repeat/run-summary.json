@@ -1,0 +1,73 @@
+{
+  "run_id": "run-05-inner-target-horizontal-roundtrip-repeat",
+  "simulator": {
+    "device": "iPad Pro 13-inch (M5)",
+    "udid": "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+    "os": "iOS 26.2",
+    "kind": "Simulator"
+  },
+  "app_executable_sha256": "46c19b1070ce41ff14084c5c33abf30603c2c6fc1143a213b6da72df91c49f6e",
+  "xctest": {
+    "test": "testHorizontalRoundTripAtInnerTarget",
+    "iterations": 5,
+    "passed": 5,
+    "failed": 0,
+    "result": "Passed",
+    "relaunch_each_iteration": true,
+    "requested_delta_points_x": [
+      38,
+      -38
+    ]
+  },
+  "observations": {
+    "positive_x": {
+      "callbacks": 5,
+      "processed": 5,
+      "targets": [
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "delta_css_px": [
+        7.907501,
+        19.50438,
+        20.234985,
+        4.2195435,
+        9.195129
+      ]
+    },
+    "negative_x": {
+      "requested": 5,
+      "callbacks": 3,
+      "processed": 3,
+      "missing_repetitions": [
+        1,
+        5
+      ],
+      "targets": [
+        7,
+        7,
+        7
+      ],
+      "delta_css_px": [
+        -15.970673,
+        -4.989746,
+        -2.3658447
+      ]
+    },
+    "final_inner_offset_x_by_repetition": [
+      7.907501,
+      3.5337067,
+      15.245239,
+      1.8536987,
+      9.195129
+    ],
+    "return_to_zero_repetitions": 0,
+    "source": "continuous-trackpad",
+    "unit": "UIKitPoints",
+    "points_per_css_px": 1
+  },
+  "interpretation": "XCTest 5/5 통과와 app callback 8/10은 분리한다. 입력 API의 요청 ±38과 UIKit이 보고한 translation 차분은 같지 않았고, negative 2회는 app callback/process가 없었다. 나머지 3회도 실제 normalized delta가 앞선 positive sample을 상쇄하지 않아 offset이 0으로 돌아오지 않았다."
+}

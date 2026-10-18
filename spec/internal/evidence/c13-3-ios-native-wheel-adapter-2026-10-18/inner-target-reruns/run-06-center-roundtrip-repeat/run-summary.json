@@ -1,0 +1,79 @@
+{
+  "run_id": "run-06-center-roundtrip-no-hover-partial",
+  "simulator": {
+    "device": "iPad Pro 13-inch (M5)",
+    "udid": "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+    "os": "iOS 26.2",
+    "kind": "Simulator"
+  },
+  "app_executable_sha256": "46c19b1070ce41ff14084c5c33abf30603c2c6fc1143a213b6da72df91c49f6e",
+  "xctest": {
+    "test": "testHorizontalRoundTrip",
+    "iterations_requested": 5,
+    "result": "Unknown",
+    "completed_test_count": 0,
+    "xcresult_total_test_count": 0,
+    "complete": false,
+    "reason": "Xcode result-bundle write failed: FileBackedCASDatabase rename failed, no space left on device"
+  },
+  "observed_app_processes": 4,
+  "observations": [
+    {
+      "partial_repetition": 1,
+      "samples": [
+        {
+          "direction": "positive-x",
+          "location_x": 178.39566,
+          "target": 7,
+          "delta_css_px": 11.60434
+        }
+      ]
+    },
+    {
+      "partial_repetition": 2,
+      "samples": [
+        {
+          "direction": "negative-x",
+          "location_x": 228.20503,
+          "target": 5,
+          "delta_css_px": -18.205032
+        }
+      ]
+    },
+    {
+      "partial_repetition": 3,
+      "samples": [
+        {
+          "direction": "positive-x",
+          "location_x": 177.05472,
+          "target": 7,
+          "delta_css_px": 12.945282
+        },
+        {
+          "direction": "negative-x",
+          "location_x": 230.74718,
+          "target": 5,
+          "delta_css_px": -20.747177
+        }
+      ]
+    },
+    {
+      "partial_repetition": 4,
+      "samples": [
+        {
+          "direction": "positive-x",
+          "location_x": 176.36681,
+          "target": 7,
+          "delta_css_px": 13.633194
+        },
+        {
+          "direction": "negative-x",
+          "location_x": 227.79837,
+          "target": 5,
+          "delta_css_px": -17.79837
+        }
+      ]
+    }
+  ],
+  "interpretation": "결과 번들이 불완전하므로 pass/fail matrix에는 포함하지 않는다. 저장된 app log에서는 center variant의 일부 negative sample이 target 5로 향해 inner target 7 reverse test 근거가 될 수 없었다."
+}

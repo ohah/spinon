@@ -40,4 +40,4 @@ xcrun simctl spawn 9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF log stream \
 
 ## 판정 경계
 
-이 harness는 iOS Simulator의 XCTest event synthesis를 재현한다. Simulator에 실제 외장 trackpad를 연결한 시험이 아니며, XCTest 성공만으로 native callback 성공을 표시하지 않는다. 앱 로그의 callback이 빠지거나 target이 7이 아니면 해당 방향은 통과가 아니다. screenshot은 장면 확인용으로만 쓰고 queue 처리 증거로 쓰지 않는다.
+이 harness는 iOS Simulator의 XCTest event synthesis를 재현한다. Simulator에 실제 외장 trackpad를 연결한 시험이 아니며, XCTest 성공만으로 native callback 성공을 표시하지 않는다. `scroll(byDeltaX:)`에 기록된 요청량과 `UIPanGestureRecognizer.translation(in:)`에서 관찰한 실제 delta는 같다고 가정하지 않는다. Run 05에서 ±38 요청 뒤 실제 sample 크기는 서로 달랐고, 중심점 대조에서는 negative sample의 reported location이 target 5를 선택했다. 앱 로그의 callback이 빠지거나 target이 7이 아니면 해당 방향은 통과가 아니다. screenshot은 장면 확인용으로만 쓰고 queue 처리 증거로 쓰지 않는다. 누락 callback은 앱에 reject 로그도 남기지 않아 XCTest synthesis, Simulator delivery, UIKit recognition 중 단계가 확인되지 않았다.

@@ -1,0 +1,38 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "4F3059A2-1C92-477A-8B30-5D98740E9FFB.png",
+        "isAssociatedWithFailure" : false,
+        "repetitionNumber" : 1,
+        "suggestedHumanReadableName" : "C13.3 iOS native adapter negative-x inner target_0_08E4DD29-F82E-41E8-A0D5-C118803619BA.png",
+        "timestamp" : 1792290102.426
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "FB4935AB-EC5C-4B2B-8939-E6A468D34ADD.png",
+        "isAssociatedWithFailure" : false,
+        "repetitionNumber" : 2,
+        "suggestedHumanReadableName" : "C13.3 iOS native adapter negative-x inner target_0_CEDC2EFA-9DDD-459C-9950-C60CDCAFA0A9.png",
+        "timestamp" : 1792290124.424
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "05896FF1-E700-4C52-AA19-57D55F47B18B.png",
+        "isAssociatedWithFailure" : false,
+        "repetitionNumber" : 3,
+        "suggestedHumanReadableName" : "C13.3 iOS native adapter negative-x inner target_0_7838C218-4EA2-464C-9D44-FBD275D897CC.png",
+        "timestamp" : 1792290146.6
+      }
+    ],
+    "testIdentifier" : "C133WheelProbeUITests/testNegativeXAtInnerTarget()",
+    "testIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testNegativeXAtInnerTarget"
+  }
+]
