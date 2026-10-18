@@ -2,7 +2,7 @@
 
 ## 판정
 
-일반 root HTML GPU host 경로가 같은 parsed document의 computed Block layout, system-font text shaping/raster, light/dark 색과 WGPU scene을 연결하는 것을 확인했다. 이 실행은 제한 지원 subset의 근거다. 기본/fixture-test archive 경계, 독립 구현 실패 관점 20개, 최종 PR diff 실패 관점 30개 검토를 통과했다. PR 병합 전 필수 CI를 확인해야 하며 이 결과는 C04.12/C15/C16/C19 완료 근거가 아니다.
+일반 root HTML GPU host 경로가 같은 parsed document의 computed Block layout, system-font text shaping/raster, light/dark 색과 WGPU scene을 연결하는 것을 확인했다. 이 실행은 제한 지원 subset의 근거다. 기본/fixture-test archive 경계, 독립 구현 실패 관점 20개, 최종 PR diff 실패 관점 30개 검토를 통과했다. PR #324는 2026-10-18 UTC에 병합했다. 저장소에는 PR CI workflow와 `main` required status check가 없어서 PR check rollup은 비어 있었다. 이 결과는 C04.12/C15/C16/C19 완료 근거가 아니다.
 
 작업 branch `feat/c04-12-root-html-default-runtime-20261018`은 `8769891a`에서 시작했다. 구현은 이 worktree에서 진행했고 기존 Spinon checkout은 수정하지 않았다. 물리 기기는 연결하거나 사용하지 않았다.
 
