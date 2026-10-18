@@ -1,0 +1,15 @@
+{
+  "tool": "Agent Browser",
+  "terminalBrowserUsed": false,
+  "privateTailnetHostnameRedacted": true,
+  "prDeltaReviewPage": {
+    "path": "/spinon/internal/evidence/c13-3-ios-scroll-type-mask-classification-2026-10-18/pr-delta-review-30.html",
+    "pass3PathCountVisible": true,
+    "copyAndBackupCountsVisible": true,
+    "httpAndHashCountsVisible": true,
+    "agentBrowserChecksVisible": true,
+    "sameOriginLinks": 7,
+    "sameOriginLinksHttp200": 7,
+    "screenshot": "pr-review-agent-browser-final.png"
+  }
+}

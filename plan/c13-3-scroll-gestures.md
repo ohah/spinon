@@ -141,3 +141,9 @@ Android API 37 ARM64 AVD `spinon_api37_1_compat16k`에서 `/dev/input/event1`의
 직전 standalone UIKit callback oracle의 원인 계층을 좁히기 위해 scroll view가 없는 같은 `UIView` host에 direct touch 전용 `UIPanGestureRecognizer`를 붙였다. iPad Pro 13-inch (M5)/iOS 26.2 Simulator에서 `XCUICoordinate.press(forDuration:thenDragTo:)`로 3회 fresh launch, 각 10 gesture를 실행했다. 30/30 callback과 30/30 누적 translation 방향 일치를 확인했다. 같은 실행의 기존 `.continuous` scroll input은 plain UIView callback 4/10이었다(positive-X 2/5, negative-X 2/5). 별도 직전 Run 03의 7/10과 비율이 달라 간접 입력 누락률을 안정적으로 추정할 수 없다.
 
 이 결과는 direct touch가 독립 UIKit recognizer까지 도달하는 positive control이다. direct touch와 trackpad continuous scroll은 다른 입력 source라, 누락 위치가 XCTest synthesis, Simulator delivery, UIKit scroll recognition 중 어디인지 아직 분리하지 못한다. 제품 코드는 바꾸지 않았고 C13.3는 미완료다. [실행·첨부물·해시·검토](../spec/internal/evidence/c13-3-ios-direct-touch-delivery-2026-10-18/README.md).
+
+## 실행 후속 기록 · 2026-10-18 iOS scroll type mask 분류
+
+독립 UIKit 일반 UIView에 `.continuous`, `.discrete`, union `allowedScrollTypesMask`를 가진 recognizer 셋을 동시 연결했다. iPad Pro 13-inch (M5)/iOS 26.2 Simulator의 XCUITest scroll 30회 중 20회는 continuous와 union recognizer 양쪽에 callback이 도달했고 10회는 셋 모두 변화가 없었다. discrete callback은 0회였으며 typed/union invariant 위반도 없었다. positive/negative X는 각각 10/15 action callback이었다. 별도 direct-touch control은 callback 및 translation sign 30/30이었다. [계획·실행 근거·screenshots·log·hash](../spec/internal/evidence/c13-3-ios-scroll-type-mask-classification-2026-10-18/README.md).
+
+이 결과는 observed XCTest scroll이 `.discrete`로 잘못 분류돼 발생한 누락이라는 가설을 지지하지 않는다. callback이 없었던 action의 소실 계층은 XCTest synthesis, Simulator delivery, UIKit recognition 중 미확정이다. 제품 코드는 변경하지 않았으며 실제 trackpad, discrete mouse, 실기기 및 C13.3는 미완료다.

@@ -1,0 +1,74 @@
+{
+  "devices" : [
+    {
+      "architecture" : "arm64",
+      "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+      "deviceName" : "iPad Pro 13-inch (M5)",
+      "modelName" : "iPad Pro 13-inch (M5)",
+      "osBuildNumber" : "23C54",
+      "osVersion" : "26.2",
+      "platform" : "iOS Simulator"
+    }
+  ],
+  "testNodes" : [
+    {
+      "children" : [
+        {
+          "children" : [
+            {
+              "children" : [
+                {
+                  "children" : [
+                    {
+                      "name" : "Update the Info.plist: 1) Support for all orientations will soon be required. 2) Launch screens will soon be required.",
+                      "nodeType" : "Runtime Warning"
+                    }
+                  ],
+                  "duration" : "1분 11초",
+                  "durationInSeconds" : 71.29819989204407,
+                  "name" : "testDirectTouchRecognizerDeliveryControl()",
+                  "nodeIdentifier" : "C133WheelProbeUITests/testDirectTouchRecognizerDeliveryControl()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testDirectTouchRecognizerDeliveryControl",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "children" : [
+                    {
+                      "name" : "Update the Info.plist: 1) Support for all orientations will soon be required. 2) Launch screens will soon be required.",
+                      "nodeType" : "Runtime Warning"
+                    }
+                  ],
+                  "duration" : "3분 25초",
+                  "durationInSeconds" : 205.03468799591064,
+                  "name" : "testScrollTypeMaskDeliveryClassification()",
+                  "nodeIdentifier" : "C133WheelProbeUITests/testScrollTypeMaskDeliveryClassification()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testScrollTypeMaskDeliveryClassification",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "C133WheelProbeUITests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            }
+          ],
+          "name" : "C133WheelProbeUITests",
+          "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests",
+          "nodeType" : "UI test bundle",
+          "result" : "Passed"
+        }
+      ],
+      "name" : "C133WheelProbe",
+      "nodeType" : "Test Plan",
+      "result" : "Passed"
+    }
+  ],
+  "testPlanConfigurations" : [
+    {
+      "configurationId" : "1",
+      "configurationName" : "Test Scheme Action"
+    }
+  ]
+}

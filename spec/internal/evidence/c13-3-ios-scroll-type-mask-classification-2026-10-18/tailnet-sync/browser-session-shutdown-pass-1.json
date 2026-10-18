@@ -1,0 +1,14 @@
+{
+  "tool": "Agent Browser",
+  "session": "spinon-c13-3-scroll-mask-e6ef404e4b0a",
+  "closeCommandSucceeded": true,
+  "sessionListEmptyAfterClose": true,
+  "sessionPidAfterClose": null,
+  "agentBrowserProcessCountAfterClose": 0,
+  "browserRuntimeProcessCountAfterClose": 0,
+  "terminalBrowserUsed": false,
+  "tmuxTouched": false,
+  "tailnetPreviewListenerRestarted": false,
+  "privateProcessIdsRedacted": true,
+  "privateTailnetHostnameRedacted": true
+}

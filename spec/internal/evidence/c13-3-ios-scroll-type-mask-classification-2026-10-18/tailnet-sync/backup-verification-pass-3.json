@@ -1,0 +1,249 @@
+{
+  "pass": "pass-3",
+  "backup_root": "dedicated pass-3 backup (redacted)",
+  "checked_backup_files": 40,
+  "verified": 40,
+  "failures": [],
+  "items": [
+    {
+      "path": "404.html",
+      "sha256": "5db50ccb29e0d456bf988dbfcd6b669dcff346b348898cbd76ae55699de3abab",
+      "expected_sha256": "5db50ccb29e0d456bf988dbfcd6b669dcff346b348898cbd76ae55699de3abab",
+      "matches": true
+    },
+    {
+      "path": "internal/0063-c13-3-scroll-gestures.html",
+      "sha256": "fd2b0f7e3e303214842cb2e147c0a6961b616bdaf776bfae7d2b916209d44dea",
+      "expected_sha256": "fd2b0f7e3e303214842cb2e147c0a6961b616bdaf776bfae7d2b916209d44dea",
+      "matches": true
+    },
+    {
+      "path": "internal/0077-c04-12-root-html-document.html",
+      "sha256": "40795fc3cda0d09dfae66ab155ab82448ea0da5f297071022987a40d4f1ae31a",
+      "expected_sha256": "40795fc3cda0d09dfae66ab155ab82448ea0da5f297071022987a40d4f1ae31a",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-plan-review-20.html",
+      "sha256": "4609c319f1640cc03caf54f8ff9fa21e53e5fe5f037c96480e21899966b5488a",
+      "expected_sha256": "4609c319f1640cc03caf54f8ff9fa21e53e5fe5f037c96480e21899966b5488a",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-review-20.html",
+      "sha256": "ecd70b2c02b3082c25f95856455bbcb429159d1643062f54034d479567595528",
+      "expected_sha256": "ecd70b2c02b3082c25f95856455bbcb429159d1643062f54034d479567595528",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/pr-delta-review-30.html",
+      "sha256": "2d72ca65008c15595df305c3acd4b512de0186ea1e9de517bd489b51a30925ab",
+      "expected_sha256": "2d72ca65008c15595df305c3acd4b512de0186ea1e9de517bd489b51a30925ab",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/README.html",
+      "sha256": "101d14ed88366e6d7bffd4ce2abecbe1b895821a612fbd83cf0fac5a5f85ba51",
+      "expected_sha256": "101d14ed88366e6d7bffd4ce2abecbe1b895821a612fbd83cf0fac5a5f85ba51",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "sha256": "401c7f7de743cca416e6e00d27cb267ee6888674939b11b7f2e02b6391f1fe00",
+      "expected_sha256": "401c7f7de743cca416e6e00d27cb267ee6888674939b11b7f2e02b6391f1fe00",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/README.html",
+      "sha256": "010221f50d7ebe08becd29b1033531823e3c153d76a27c0f7d939f77bbf4762a",
+      "expected_sha256": "010221f50d7ebe08becd29b1033531823e3c153d76a27c0f7d939f77bbf4762a",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/render-build-result.html",
+      "sha256": "a4a6413a6d549cedc9e41099145c4e1257fb1dfbb27294b529acc2c4b6544c9d",
+      "expected_sha256": "a4a6413a6d549cedc9e41099145c4e1257fb1dfbb27294b529acc2c4b6544c9d",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-direct-touch-delivery-2026-10-18/implementation-review-20.html",
+      "sha256": "42bd50ea51990f70bbb8d5d497d11ed04ab64f3838185f31b1c3e6c9aa0c1229",
+      "expected_sha256": "42bd50ea51990f70bbb8d5d497d11ed04ab64f3838185f31b1c3e6c9aa0c1229",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-direct-touch-delivery-2026-10-18/pr-delta-review-30.html",
+      "sha256": "36aab340e4708f2425752cae59465bba60430e9d10a57fd72dc3b18a57eaf7a9",
+      "expected_sha256": "36aab340e4708f2425752cae59465bba60430e9d10a57fd72dc3b18a57eaf7a9",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-direct-touch-delivery-2026-10-18/README.html",
+      "sha256": "5ca55fd1571e0873ad8ebc3e8cbaf0f7101480db4b8cccdf576874a2620567a5",
+      "expected_sha256": "5ca55fd1571e0873ad8ebc3e8cbaf0f7101480db4b8cccdf576874a2620567a5",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-direct-touch-delivery-2026-10-18/tailnet-sync/render-build-result.html",
+      "sha256": "d0d7ad25141f625d57ef9c0ddb4ce076da32373c586ab7e0f5a3640e0a53900d",
+      "expected_sha256": "d0d7ad25141f625d57ef9c0ddb4ce076da32373c586ab7e0f5a3640e0a53900d",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/pr-delta-review-20.html",
+      "sha256": "c58b3243d16401fc45a15fd207f70b4594cbcc1948c96df6188f586ee3bde3cf",
+      "expected_sha256": "c58b3243d16401fc45a15fd207f70b4594cbcc1948c96df6188f586ee3bde3cf",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/README.html",
+      "sha256": "554de58c4bc332067323d304f6affcf1852ba44a2a5e4c224eb801e6f88c04c5",
+      "expected_sha256": "554de58c4bc332067323d304f6affcf1852ba44a2a5e4c224eb801e6f88c04c5",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "sha256": "f84aab411a86a58e74e367d59b84f4476b92e3e6250ee5dfb03f49fba2c78187",
+      "expected_sha256": "f84aab411a86a58e74e367d59b84f4476b92e3e6250ee5dfb03f49fba2c78187",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/README.html",
+      "sha256": "3b6c2f0de676a645118d65c6fbfaa5ad774248f88aa068962bace80e493d3ee4",
+      "expected_sha256": "3b6c2f0de676a645118d65c6fbfaa5ad774248f88aa068962bace80e493d3ee4",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/render-build-result.html",
+      "sha256": "a05d015bcf0ac198cebed0202d77162c6a7cdf674f6cbb739c4b9e8122dcd63c",
+      "expected_sha256": "a05d015bcf0ac198cebed0202d77162c6a7cdf674f6cbb739c4b9e8122dcd63c",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-scroll-type-mask-classification-2026-10-18/implementation-review-20.html",
+      "sha256": "c3e267660e65f6c8970924687e0f54452c1b14c2b5bec1e2e0dbac1d5eb37df0",
+      "expected_sha256": "c3e267660e65f6c8970924687e0f54452c1b14c2b5bec1e2e0dbac1d5eb37df0",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-scroll-type-mask-classification-2026-10-18/pr-delta-review-30.html",
+      "sha256": "fa3ce129d576bbec620832c3869c0ef90fe3b7d9f621d1198379d5fe05b3e486",
+      "expected_sha256": "fa3ce129d576bbec620832c3869c0ef90fe3b7d9f621d1198379d5fe05b3e486",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-scroll-type-mask-classification-2026-10-18/README.html",
+      "sha256": "556694708c35749b934440b3fa686f91b9db7c83b8ec215d24b1a8101241c7a2",
+      "expected_sha256": "556694708c35749b934440b3fa686f91b9db7c83b8ec215d24b1a8101241c7a2",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-scroll-type-mask-classification-2026-10-18/README.md",
+      "sha256": "c60896d1b5e6ea5ab80e005fb78c7dc04ebf57ec2759ecab4d7f7d6b9336e15f",
+      "expected_sha256": "c60896d1b5e6ea5ab80e005fb78c7dc04ebf57ec2759ecab4d7f7d6b9336e15f",
+      "matches": true
+    },
+    {
+      "path": "internal/README.html",
+      "sha256": "3ac68ec85de3d641ffbc0962161db5a0fbacb85501b9c8e7c6263c65186d9b24",
+      "expected_sha256": "3ac68ec85de3d641ffbc0962161db5a0fbacb85501b9c8e7c6263c65186d9b24",
+      "matches": true
+    },
+    {
+      "path": "plan/c04-12-page-scale-rendering.html",
+      "sha256": "bef3c36dd6d3227740fb099340bd17f575d6c53f27727d057178fdfc8ba35c7d",
+      "expected_sha256": "bef3c36dd6d3227740fb099340bd17f575d6c53f27727d057178fdfc8ba35c7d",
+      "matches": true
+    },
+    {
+      "path": "plan/c04-12-root-canvas-color-scheme.html",
+      "sha256": "c36a06f662571e2e61bc8b0c574ea01c88788d27195477ad30df9d3fa1f3b4e8",
+      "expected_sha256": "c36a06f662571e2e61bc8b0c574ea01c88788d27195477ad30df9d3fa1f3b4e8",
+      "matches": true
+    },
+    {
+      "path": "plan/c04-12-visual-viewport.html",
+      "sha256": "fabae8d7132e4155ac81bf0bff7e02947816e352310874f8139fe1f893b9ee20",
+      "expected_sha256": "fabae8d7132e4155ac81bf0bff7e02947816e352310874f8139fe1f893b9ee20",
+      "matches": true
+    },
+    {
+      "path": "plan/c04-root-html-document-environment.html",
+      "sha256": "7122b09754fd313feeb8edb552302eaa6eb58255d53d563069fa374c5f0a9dee",
+      "expected_sha256": "7122b09754fd313feeb8edb552302eaa6eb58255d53d563069fa374c5f0a9dee",
+      "matches": true
+    },
+    {
+      "path": "plan/c13-3-android-avd-touchpad-point.html",
+      "sha256": "1e74d3b46e1eb58c228cb37004c69e83c32dcf28233d001cc6fa524d5e7b5e64",
+      "expected_sha256": "1e74d3b46e1eb58c228cb37004c69e83c32dcf28233d001cc6fa524d5e7b5e64",
+      "matches": true
+    },
+    {
+      "path": "plan/c13-3-ios-direct-touch-delivery-control-plan-review-20.html",
+      "sha256": "0d646220d125c854185f94e09111d835d3533d1c0412a000f9704cfb7358e174",
+      "expected_sha256": "0d646220d125c854185f94e09111d835d3533d1c0412a000f9704cfb7358e174",
+      "matches": true
+    },
+    {
+      "path": "plan/c13-3-ios-direct-touch-delivery-control.html",
+      "sha256": "79f74c44cffccaf615b0ffbd34e35e42399d3d46e4869f2062c1ced724719072",
+      "expected_sha256": "79f74c44cffccaf615b0ffbd34e35e42399d3d46e4869f2062c1ced724719072",
+      "matches": true
+    },
+    {
+      "path": "plan/c13-3-ios-scroll-type-mask-classification-plan-review-20.html",
+      "sha256": "a929447a80cb74da1ebb61783f66f7fe97e86c2fbcbebae1cd324f12a012cf72",
+      "expected_sha256": "a929447a80cb74da1ebb61783f66f7fe97e86c2fbcbebae1cd324f12a012cf72",
+      "matches": true
+    },
+    {
+      "path": "plan/c13-3-ios-scroll-type-mask-classification.html",
+      "sha256": "68e00c2a0b6761cb4c827b05fbf7d921a935d8a15b213d126a0b3bcf0f15d24f",
+      "expected_sha256": "68e00c2a0b6761cb4c827b05fbf7d921a935d8a15b213d126a0b3bcf0f15d24f",
+      "matches": true
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.html",
+      "sha256": "0ae88873adc6bb0b64204b4a6ecbb4f04f41a5a7a5968a7d25860e56315d93c3",
+      "expected_sha256": "0ae88873adc6bb0b64204b4a6ecbb4f04f41a5a7a5968a7d25860e56315d93c3",
+      "matches": true
+    },
+    {
+      "path": "plan/c13-3-policy-simulator-matrix.html",
+      "sha256": "7dfb828344c8e0c2498805dc403064e5773ecc428ecd496d0bea061bb782c0aa",
+      "expected_sha256": "7dfb828344c8e0c2498805dc403064e5773ecc428ecd496d0bea061bb782c0aa",
+      "matches": true
+    },
+    {
+      "path": "plan/c13-3-scroll-gestures.html",
+      "sha256": "2fcacfa4bba917814343f2a2d9e9fbb050e813c5d08e41071a3bfebf3fff3c55",
+      "expected_sha256": "2fcacfa4bba917814343f2a2d9e9fbb050e813c5d08e41071a3bfebf3fff3c55",
+      "matches": true
+    },
+    {
+      "path": "plan/c13-3-style-invalidation.html",
+      "sha256": "5544d843597ddfcfe6e2269e55c6be890e073abbd625c09dc852d5a108b12173",
+      "expected_sha256": "5544d843597ddfcfe6e2269e55c6be890e073abbd625c09dc852d5a108b12173",
+      "matches": true
+    },
+    {
+      "path": "plan/c13-3-wheel-delta-routing.html",
+      "sha256": "418f674979c2f1bf3d8b09a0b877ea7742609f54c43839c8596692e8800a8918",
+      "expected_sha256": "418f674979c2f1bf3d8b09a0b877ea7742609f54c43839c8596692e8800a8918",
+      "matches": true
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-ios-scroll-type-mask-classification-2026-10-18/README.md",
+      "sha256": "c60896d1b5e6ea5ab80e005fb78c7dc04ebf57ec2759ecab4d7f7d6b9336e15f",
+      "expected_sha256": "c60896d1b5e6ea5ab80e005fb78c7dc04ebf57ec2759ecab4d7f7d6b9336e15f",
+      "matches": true
+    },
+    {
+      "path": "STATUS.html",
+      "sha256": "53f5e2c732602f2e8316f6e96e28b30a9cdb04f3930d296003e7387f7a6edaa5",
+      "expected_sha256": "53f5e2c732602f2e8316f6e96e28b30a9cdb04f3930d296003e7387f7a6edaa5",
+      "matches": true
+    }
+  ]
+}

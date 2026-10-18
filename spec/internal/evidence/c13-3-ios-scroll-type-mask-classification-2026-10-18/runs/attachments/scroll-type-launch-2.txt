@@ -1,0 +1,11 @@
+launch=2 baseline=continuous=0 discrete=0 union=0 zero=true
+launch=2 repetition=1 direction=positive requested_delta_x=38.0 before=continuous=0 discrete=0 union=0 after=continuous=0 discrete=0 union=0 deltas=continuous:0,discrete:0,union:0 category=none
+launch=2 repetition=1 direction=negative requested_delta_x=-38.0 before=continuous=0 discrete=0 union=0 after=continuous=2 discrete=0 union=2 deltas=continuous:2,discrete:0,union:2 category=continuous-only
+launch=2 repetition=2 direction=positive requested_delta_x=38.0 before=continuous=2 discrete=0 union=2 after=continuous=2 discrete=0 union=2 deltas=continuous:0,discrete:0,union:0 category=none
+launch=2 repetition=2 direction=negative requested_delta_x=-38.0 before=continuous=2 discrete=0 union=2 after=continuous=2 discrete=0 union=2 deltas=continuous:0,discrete:0,union:0 category=none
+launch=2 repetition=3 direction=positive requested_delta_x=38.0 before=continuous=2 discrete=0 union=2 after=continuous=4 discrete=0 union=4 deltas=continuous:2,discrete:0,union:2 category=continuous-only
+launch=2 repetition=3 direction=negative requested_delta_x=-38.0 before=continuous=4 discrete=0 union=4 after=continuous=6 discrete=0 union=6 deltas=continuous:2,discrete:0,union:2 category=continuous-only
+launch=2 repetition=4 direction=positive requested_delta_x=38.0 before=continuous=6 discrete=0 union=6 after=continuous=8 discrete=0 union=8 deltas=continuous:2,discrete:0,union:2 category=continuous-only
+launch=2 repetition=4 direction=negative requested_delta_x=-38.0 before=continuous=8 discrete=0 union=8 after=continuous=11 discrete=0 union=11 deltas=continuous:3,discrete:0,union:3 category=continuous-only
+launch=2 repetition=5 direction=positive requested_delta_x=38.0 before=continuous=11 discrete=0 union=11 after=continuous=13 discrete=0 union=13 deltas=continuous:2,discrete:0,union:2 category=continuous-only
+launch=2 repetition=5 direction=negative requested_delta_x=-38.0 before=continuous=13 discrete=0 union=13 after=continuous=13 discrete=0 union=13 deltas=continuous:0,discrete:0,union:0 category=none

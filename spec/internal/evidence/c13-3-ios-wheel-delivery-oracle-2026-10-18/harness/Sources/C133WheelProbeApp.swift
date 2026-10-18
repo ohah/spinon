@@ -9,13 +9,20 @@ final class C133WheelOracleViewController: UIViewController, UIScrollViewDelegat
     private var previousWheelTranslation = CGPoint.zero
     private var plainPanOracleRequested = false
     private var plainDirectTouchOracleRequested = false
+    private var scrollTypeMaskOracleRequested = false
     private var plainPanOracleOffsetX: CGFloat = 0
+    private var scrollTypeMaskNameByRecognizer: [ObjectIdentifier: String] = [:]
+    private var scrollTypeMaskCallbackCounts: [String: Int] = [:]
+    private var scrollTypeMaskPreviousTranslations: [ObjectIdentifier: CGPoint] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         plainPanOracleRequested = ProcessInfo.processInfo.arguments.contains("--plain-pan-oracle")
         plainDirectTouchOracleRequested = ProcessInfo.processInfo.arguments.contains("--plain-direct-touch-oracle")
-        plainPanOracleRequested = plainPanOracleRequested || plainDirectTouchOracleRequested
+        scrollTypeMaskOracleRequested = ProcessInfo.processInfo.arguments.contains("--plain-scroll-type-mask-oracle")
+        plainPanOracleRequested = plainPanOracleRequested
+            || plainDirectTouchOracleRequested
+            || scrollTypeMaskOracleRequested
         view.backgroundColor = .systemBackground
         offsetLabel.translatesAutoresizingMaskIntoConstraints = false
         offsetLabel.accessibilityIdentifier = "scroll-offset"
@@ -52,26 +59,49 @@ final class C133WheelOracleViewController: UIViewController, UIScrollViewDelegat
             view.addSubview(scrollView)
         }
 
-        let continuousScrollRecognizer = UIPanGestureRecognizer(
-            target: self,
-            action: #selector(handleContinuousScroll(_:))
-        )
-        if plainDirectTouchOracleRequested {
-            continuousScrollRecognizer.allowedScrollTypesMask = []
-            continuousScrollRecognizer.allowedTouchTypes = [
-                NSNumber(value: UITouch.TouchType.direct.rawValue),
+        if scrollTypeMaskOracleRequested {
+            let masks: [(name: String, mask: UIScrollTypeMask)] = [
+                ("continuous", .continuous),
+                ("discrete", .discrete),
+                ("union", [.continuous, .discrete]),
             ]
+            for entry in masks {
+                let recognizer = UIPanGestureRecognizer(
+                    target: self,
+                    action: #selector(handleContinuousScroll(_:))
+                )
+                recognizer.allowedScrollTypesMask = entry.mask
+                recognizer.allowedTouchTypes = []
+                recognizer.cancelsTouchesInView = false
+                recognizer.delaysTouchesBegan = false
+                recognizer.delegate = self
+                scrollTypeMaskNameByRecognizer[ObjectIdentifier(recognizer)] = entry.name
+                scrollTypeMaskCallbackCounts[entry.name] = 0
+                plainTarget.addGestureRecognizer(recognizer)
+            }
+            updateScrollTypeMaskLabel()
         } else {
-            continuousScrollRecognizer.allowedScrollTypesMask = .continuous
-            continuousScrollRecognizer.allowedTouchTypes = []
-        }
-        continuousScrollRecognizer.cancelsTouchesInView = false
-        continuousScrollRecognizer.delaysTouchesBegan = false
-        if plainPanOracleRequested {
-            plainTarget.addGestureRecognizer(continuousScrollRecognizer)
-        } else {
-            continuousScrollRecognizer.delegate = self
-            view.addGestureRecognizer(continuousScrollRecognizer)
+            let continuousScrollRecognizer = UIPanGestureRecognizer(
+                target: self,
+                action: #selector(handleContinuousScroll(_:))
+            )
+            if plainDirectTouchOracleRequested {
+                continuousScrollRecognizer.allowedScrollTypesMask = []
+                continuousScrollRecognizer.allowedTouchTypes = [
+                    NSNumber(value: UITouch.TouchType.direct.rawValue),
+                ]
+            } else {
+                continuousScrollRecognizer.allowedScrollTypesMask = .continuous
+                continuousScrollRecognizer.allowedTouchTypes = []
+            }
+            continuousScrollRecognizer.cancelsTouchesInView = false
+            continuousScrollRecognizer.delaysTouchesBegan = false
+            if plainPanOracleRequested {
+                plainTarget.addGestureRecognizer(continuousScrollRecognizer)
+            } else {
+                continuousScrollRecognizer.delegate = self
+                view.addGestureRecognizer(continuousScrollRecognizer)
+            }
         }
 
         var constraints = [
@@ -120,6 +150,10 @@ final class C133WheelOracleViewController: UIViewController, UIScrollViewDelegat
     }
 
     @objc private func handleContinuousScroll(_ recognizer: UIPanGestureRecognizer) {
+        if scrollTypeMaskOracleRequested {
+            handleScrollTypeMaskOracle(recognizer)
+            return
+        }
         if recognizer.state == .began {
             previousWheelTranslation = .zero
         }
@@ -142,6 +176,42 @@ final class C133WheelOracleViewController: UIViewController, UIScrollViewDelegat
         if recognizer.state == .ended || recognizer.state == .cancelled || recognizer.state == .failed {
             previousWheelTranslation = .zero
         }
+    }
+
+    private func handleScrollTypeMaskOracle(_ recognizer: UIPanGestureRecognizer) {
+        let identity = ObjectIdentifier(recognizer)
+        let name = scrollTypeMaskNameByRecognizer[identity] ?? "unmapped"
+        if recognizer.state == .began {
+            scrollTypeMaskPreviousTranslations[identity] = .zero
+        }
+        let translation = recognizer.translation(in: view)
+        let previous = scrollTypeMaskPreviousTranslations[identity] ?? .zero
+        let delta = CGPoint(x: translation.x - previous.x, y: translation.y - previous.y)
+        scrollTypeMaskPreviousTranslations[identity] = translation
+        scrollTypeMaskCallbackCounts[name, default: 0] += 1
+        updateScrollTypeMaskLabel()
+        NSLog(
+            "SPINON_C133_SCROLL_TYPE name=%@ state=%ld translation_points=%.3f,%.3f delta_points=%.3f,%.3f count=%ld",
+            name,
+            recognizer.state.rawValue,
+            translation.x,
+            translation.y,
+            delta.x,
+            delta.y,
+            scrollTypeMaskCallbackCounts[name, default: 0]
+        )
+        if recognizer.state == .ended || recognizer.state == .cancelled || recognizer.state == .failed {
+            scrollTypeMaskPreviousTranslations.removeValue(forKey: identity)
+        }
+    }
+
+    private func updateScrollTypeMaskLabel() {
+        let continuous = scrollTypeMaskCallbackCounts["continuous", default: 0]
+        let discrete = scrollTypeMaskCallbackCounts["discrete", default: 0]
+        let union = scrollTypeMaskCallbackCounts["union", default: 0]
+        let payload = "continuous=\(continuous) discrete=\(discrete) union=\(union)"
+        wheelCallbackLabel.text = payload
+        wheelCallbackLabel.accessibilityValue = payload
     }
 
     private func updateOffsetLabel() {

@@ -1,0 +1,21 @@
+{
+  "tool": "Agent Browser",
+  "terminalBrowserUsed": false,
+  "privateTailnetHostnameRedacted": true,
+  "roadmap": {
+    "path": "/spinon/roadmap.html",
+    "title": "스피논 구현 로드맵",
+    "officialCount": "74/207",
+    "c13MarkedIncomplete": true,
+    "screenshot": "roadmap-agent-browser.png"
+  },
+  "status": {
+    "path": "/spinon/STATUS.html",
+    "title": "스피논 문서",
+    "officialCountVisible": true,
+    "scrollTypeMaskEntryVisible": true,
+    "c13MarkedIncomplete": true,
+    "evidenceLinksVisible": 4,
+    "screenshot": "status-agent-browser.png"
+  }
+}
