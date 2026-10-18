@@ -50,5 +50,19 @@
     "tailnet-evidence-callbacks-agent-browser.png",
     "tailnet-plan-agent-browser.png"
   ],
-  "privateTailnetHostnameRedacted": true
+  "privateTailnetHostnameRedacted": true,
+  "pr301": {
+    "path": "/ohah/spinon/pull/301",
+    "title": "docs: Tailnet 로드맵 동기화 증거 보관",
+    "officialCounterVisible": true,
+    "fullDocsFailureVisible": true,
+    "c13IncompleteVisible": true,
+    "bodyImage": {
+      "alt": "Tailnet 로드맵 C13.3 동기화 확인",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/docs/c13-3-tailnet-sync-audit-20261018/spec/internal/evidence/c13-3-ios-wheel-callback-recheck-tailnet-sync-2026-10-18/tailnet-roadmap-c133-agent-browser.png",
+      "complete": true,
+      "width": 1280,
+      "height": 633
+    }
+  }
 }

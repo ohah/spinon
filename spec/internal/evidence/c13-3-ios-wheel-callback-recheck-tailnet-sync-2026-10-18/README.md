@@ -39,4 +39,4 @@ Agent Browser에서 `/spinon/roadmap.html`, `/spinon/STATUS.html`, C13.3 plan/ev
 
 ![동기화 뒤 C13.3 계획 페이지](./tailnet-plan-agent-browser.png)
 
-GitHub Pages를 배포하지 않았고 물리 기기를 사용하지 않았다. 터미널 브라우저를 실행하지 않았으며 tmux 세션을 건드리지 않았다. Agent Browser는 최종 PR 이미지 확인 뒤 닫고 프로세스 종료 상태를 기록한다. [세션 종료 확인](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c13-3-ios-wheel-callback-recheck-tailnet-sync-2026-10-18/browser-session-shutdown.json).
+GitHub Pages를 배포하지 않았고 물리 기기를 사용하지 않았다. 터미널 브라우저를 실행하지 않았으며 tmux 세션을 건드리지 않았다. PR #301 본문 screenshot의 실제 로드와 표시를 Agent Browser에서 확인한 뒤 세션을 종료했다. 종료 뒤 세션은 비활성, 활성 세션 수는 0, `agent-browser` 프로세스 검출은 없었다. [세션 종료 확인](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c13-3-ios-wheel-callback-recheck-tailnet-sync-2026-10-18/browser-session-shutdown.json).
