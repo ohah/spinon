@@ -31,4 +31,6 @@
 
 검토에서 고친 추가 결함은 찾지 못했다. 이전 raw-input 구현 검토에서 확인한 leaf provenance와 metadata 통합 수정은 최종 diff에 반영되어 있다. `spinon-layout` 161개 테스트, scoped Clippy, workspace 테스트, rustfmt 및 `git diff --check`가 통과한 기록을 대조했다. 전체 문서 빌드는 현재 저장소의 다수 기존 evidence/plan dead link 때문에 실패한다. 실패 목록에 변경한 raw-input review 링크는 없고, 이 변경에서 문서 빌드 전체 통과를 주장하지 않는다.
 
+PR #340 생성 뒤 추가한 `spec/STATUS.md`의 PR·검토 자료 링크와 C11.4 미완료 상태를 20번 관점에서 다시 확인했다.
+
 이 PR은 Rust layout 입력 수집만 추가한다. 계산된 CSS contribution, padding/border 조정, span/automatic minimum, track sizing, anonymous text item, non-leaf aggregate, FFI, Android/iOS runtime, simulator 또는 WPT 검증을 포함하지 않는다.
