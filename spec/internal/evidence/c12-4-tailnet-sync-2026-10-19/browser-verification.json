@@ -1,0 +1,27 @@
+{
+  "schema": "spinon.c12-4-tailnet-agent-browser-verification.v1",
+  "browser": "Agent Browser",
+  "private_host": "intentionally omitted",
+  "routes": [
+    {
+      "path": "/spinon/roadmap.html",
+      "verified_text": "2026-10-19 repeated session lifecycle check; 16 cycles x 8 sessions = 128; C12.4 remains incomplete",
+      "screenshot": "tailnet-roadmap-note-agent-browser-v4.png"
+    },
+    {
+      "path": "/spinon/STATUS.html",
+      "verified_text": "C12.4 status and PR #330 evidence link",
+      "screenshot": "tailnet-status-c124-agent-browser-v2.png"
+    },
+    {
+      "path": "/spinon/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/README.html",
+      "verified_text": "C12.4 Android AVD repeated session lifecycle evidence",
+      "image": {
+        "alt": "C12.4 AVD lifecycle result",
+        "loaded": true,
+        "natural_width": 1080,
+        "natural_height": 2400
+      }
+    }
+  ]
+}

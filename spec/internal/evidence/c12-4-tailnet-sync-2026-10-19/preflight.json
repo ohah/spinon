@@ -1,0 +1,859 @@
+{
+  "schema": "spinon-tailnet-sync-preflight/v1",
+  "created_utc": "2026-10-18T20:09:12.490Z",
+  "source_commit": "63cfe6ed1adeecac29c63bde4e31c6154c20d4c3",
+  "listener_pid": 1191,
+  "listener_address": "127.0.0.1:8768",
+  "preview_root": "user-local SpinonPreview (path omitted)",
+  "backup_root": "SpinonPreviewBackups/c12-4-tailnet-sync-20261019",
+  "candidate_count": 92,
+  "counts": {
+    "add": 57,
+    "replace": 6,
+    "same": 29
+  },
+  "deletions": 0,
+  "files": [
+    {
+      "path": "404.html",
+      "source": "selected-build/404.html",
+      "bytes": 8512,
+      "sha256": "196adb1db1771b1982d3f1bf8a38d398f84541a8f4bc3188dee0ed1a1d0c1e58",
+      "action": "replace",
+      "targetBefore": {
+        "bytes": 8512,
+        "sha256": "3e2364cde4ae928220701e5c338792f54eca0198ec686d7e306e2bc0e2a6841e"
+      }
+    },
+    {
+      "path": "c10-3-3-android-physical-2026-10-11.png",
+      "source": "selected-build/c10-3-3-android-physical-2026-10-11.png",
+      "bytes": 194109,
+      "sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 194109,
+        "sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775"
+      }
+    },
+    {
+      "path": "c12-4-android-api37-depth-safety-2026-10-11.png",
+      "source": "selected-build/c12-4-android-api37-depth-safety-2026-10-11.png",
+      "bytes": 72745,
+      "sha256": "33704756e2d8758d73165b63d9fa67977e2c73965d057263d45821c7a416fdae",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 72745,
+        "sha256": "33704756e2d8758d73165b63d9fa67977e2c73965d057263d45821c7a416fdae"
+      }
+    },
+    {
+      "path": "c12-4-android-api37-depth-safety-matrix-2026-10-11.png",
+      "source": "selected-build/c12-4-android-api37-depth-safety-matrix-2026-10-11.png",
+      "bytes": 71213,
+      "sha256": "db8f307c59f677cde715075c0efad8ff9056bd7d39a424b5f912da326a1f06cc",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 71213,
+        "sha256": "db8f307c59f677cde715075c0efad8ff9056bd7d39a424b5f912da326a1f06cc"
+      }
+    },
+    {
+      "path": "c12-4-android-api37-emulator-2026-10-11.log",
+      "source": "selected-build/c12-4-android-api37-emulator-2026-10-11.log",
+      "bytes": 6079,
+      "sha256": "77adad2002dbeb251d90ce58ba3778e16fd4571601c90b4de407ba9db22b8259",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 6079,
+        "sha256": "77adad2002dbeb251d90ce58ba3778e16fd4571601c90b4de407ba9db22b8259"
+      }
+    },
+    {
+      "path": "c12-4-android-api37-emulator.png",
+      "source": "selected-build/c12-4-android-api37-emulator.png",
+      "bytes": 79987,
+      "sha256": "86d8840dc425d99b7cf7e161ef17089d68bc148da8bb7cafe892cf654201f8e5",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 79987,
+        "sha256": "86d8840dc425d99b7cf7e161ef17089d68bc148da8bb7cafe892cf654201f8e5"
+      }
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.json",
+      "source": "selected-build/c12-4-android-api37-matrix-2026-10-11.json",
+      "bytes": 926,
+      "sha256": "4b0f514d3f6b40cdb2dad06a089641c8cd0af8512669265ad9d5f5b9c2a16be2",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 926,
+        "sha256": "4b0f514d3f6b40cdb2dad06a089641c8cd0af8512669265ad9d5f5b9c2a16be2"
+      }
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.log",
+      "source": "selected-build/c12-4-android-api37-matrix-2026-10-11.log",
+      "bytes": 45719,
+      "sha256": "b8f1ed1a8f1bae6d08202e44ee5e24e4c3befa916c5262a5915f6cdf664f6eca",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 45719,
+        "sha256": "b8f1ed1a8f1bae6d08202e44ee5e24e4c3befa916c5262a5915f6cdf664f6eca"
+      }
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.png",
+      "source": "selected-build/c12-4-android-api37-matrix-2026-10-11.png",
+      "bytes": 71121,
+      "sha256": "a56c210a9b45f2289e4595b86430a496cfabc8177f21499ee5d63405ca45b23f",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 71121,
+        "sha256": "a56c210a9b45f2289e4595b86430a496cfabc8177f21499ee5d63405ca45b23f"
+      }
+    },
+    {
+      "path": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.log",
+      "source": "selected-build/c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.log",
+      "bytes": 43037,
+      "sha256": "23920b6b1a2a274e609d028b4be8c50cb3811f82a414a95a7820b556390e7bf0",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 43037,
+        "sha256": "23920b6b1a2a274e609d028b4be8c50cb3811f82a414a95a7820b556390e7bf0"
+      }
+    },
+    {
+      "path": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.png",
+      "source": "selected-build/c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.png",
+      "bytes": 70563,
+      "sha256": "dc5b919381d4fe3f71e564a1f24953a99446fd92d6902a4de0f8ee79eb9c2aa6",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 70563,
+        "sha256": "dc5b919381d4fe3f71e564a1f24953a99446fd92d6902a4de0f8ee79eb9c2aa6"
+      }
+    },
+    {
+      "path": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.log",
+      "source": "selected-build/c12-4-android-api37-matrix-reserve-rerun-2026-10-11.log",
+      "bytes": 42930,
+      "sha256": "967b0572b40411b115e9a7ddf02f424a2e69948ec24d9ea5dda3158650b5269b",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 42930,
+        "sha256": "967b0572b40411b115e9a7ddf02f424a2e69948ec24d9ea5dda3158650b5269b"
+      }
+    },
+    {
+      "path": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.png",
+      "source": "selected-build/c12-4-android-api37-matrix-reserve-rerun-2026-10-11.png",
+      "bytes": 71247,
+      "sha256": "183b3e38acf0bdd449a2d8613b2ce361afff558a8fec62a8c7a6aeb7deed28f5",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 71247,
+        "sha256": "183b3e38acf0bdd449a2d8613b2ce361afff558a8fec62a8c7a6aeb7deed28f5"
+      }
+    },
+    {
+      "path": "c12-4-android-sm-s731n-android16-vulkan.png",
+      "source": "selected-build/c12-4-android-sm-s731n-android16-vulkan.png",
+      "bytes": 110882,
+      "sha256": "a60c2db2fa7ad194c9a210147c3827ed0ee11e831bf168da5297eb3df8a60dd4",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 110882,
+        "sha256": "a60c2db2fa7ad194c9a210147c3827ed0ee11e831bf168da5297eb3df8a60dd4"
+      }
+    },
+    {
+      "path": "c12-4-ios-iphone-17-pro-depth-safety-2026-10-11.png",
+      "source": "selected-build/c12-4-ios-iphone-17-pro-depth-safety-2026-10-11.png",
+      "bytes": 142385,
+      "sha256": "bef6d91b248a580d120d0b47df26800b2ed218addd94674409deaecfc2eaf814",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 142385,
+        "sha256": "bef6d91b248a580d120d0b47df26800b2ed218addd94674409deaecfc2eaf814"
+      }
+    },
+    {
+      "path": "c12-4-ios-iphone-17-pro-simulator.png",
+      "source": "selected-build/c12-4-ios-iphone-17-pro-simulator.png",
+      "bytes": 143083,
+      "sha256": "650f17bb3edda780d32f53f3980f417b7c5b340d862865ef5e0b4250091e372b",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 143083,
+        "sha256": "650f17bb3edda780d32f53f3980f417b7c5b340d862865ef5e0b4250091e372b"
+      }
+    },
+    {
+      "path": "c12-4-runtime-evidence.html",
+      "source": "selected-build/c12-4-runtime-evidence.html",
+      "bytes": 14589,
+      "sha256": "64b118c6a84e690b4722d1e75d8b4e6d31588919e5b4a51a229e96808698aee7",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 14589,
+        "sha256": "64b118c6a84e690b4722d1e75d8b4e6d31588919e5b4a51a229e96808698aee7"
+      }
+    },
+    {
+      "path": "c12-4-wpt-official-run-2026-10-11.log",
+      "source": "selected-build/c12-4-wpt-official-run-2026-10-11.log",
+      "bytes": 356,
+      "sha256": "9f9b4bf38f27fef6cb27d720726389f1bae382e88a383919e26dcb18cbfe6fab",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 356,
+        "sha256": "9f9b4bf38f27fef6cb27d720726389f1bae382e88a383919e26dcb18cbfe6fab"
+      }
+    },
+    {
+      "path": "icon.svg",
+      "source": "selected-build/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 638,
+        "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+      }
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T190325038Z-6475bae2/failure.txt",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T190325038Z-6475bae2/failure.txt",
+      "bytes": 1058,
+      "sha256": "05f6de6d6b7f14ac9b20567c9458084b23e6c1070a477d9940f4de7022dc6bbf",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T190325038Z-6475bae2/logcat-failure.txt",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T190325038Z-6475bae2/logcat-failure.txt",
+      "bytes": 6225,
+      "sha256": "7fdebf4875deaed8f4db4e8afd3a5f9b45933c3fac92fb63ef8fa47cb246f62a",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T190355067Z-01aab0ce/failure.txt",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T190355067Z-01aab0ce/failure.txt",
+      "bytes": 12719,
+      "sha256": "a7563c328d336fb9b542ffb7f88374a81456cbc1ee8d3d19804994826ee6cd59",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T190355067Z-01aab0ce/logcat-failure.txt",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T190355067Z-01aab0ce/logcat-failure.txt",
+      "bytes": 6225,
+      "sha256": "7fdebf4875deaed8f4db4e8afd3a5f9b45933c3fac92fb63ef8fa47cb246f62a",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/build.log",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/build.log",
+      "bytes": 4642,
+      "sha256": "414ff0c96dddb2ca3a6ba9412cc47d071fb4219d7014989e3c2594b09feaebe2",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-01-threads.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-01-threads.json",
+      "bytes": 285,
+      "sha256": "48788b9e25475768465858a8ffc63a625510259e9959c714557abc84f9634d2d",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-02-threads.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-02-threads.json",
+      "bytes": 285,
+      "sha256": "ab10953a836c7167f98160d410e008bbd00ea288773f6849db5a1c77712715bf",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-03-threads.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-03-threads.json",
+      "bytes": 285,
+      "sha256": "75835554af1a4fe2a1f6449311b1875b0bdd0f3c74d58fecbe7ab1aa7e7952bd",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-04-threads.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-04-threads.json",
+      "bytes": 285,
+      "sha256": "3bfd239f7fc8b8b3bce418629672d00ce7cd70d9f6f2ce4e765e8a7ed46894da",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-05-threads.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-05-threads.json",
+      "bytes": 285,
+      "sha256": "4b0ebd4579a7065241ec826c53ace21c06e5bc976459951d1d26a36d93ae30ca",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-06-threads.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-06-threads.json",
+      "bytes": 285,
+      "sha256": "7a3bab801d703b22a435442a96d8ea1918cee8d52f830bc6011b6d797fe8bbe9",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-07-threads.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-07-threads.json",
+      "bytes": 285,
+      "sha256": "3daf6c4d674300886c26e38688f14b910a9170f204a8c2c9724b7549fe98e02a",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-08-threads.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-08-threads.json",
+      "bytes": 285,
+      "sha256": "b6077ea57c30d22bb775e0850df6c5e4680b876f8654c0843c3f529dd0489b1c",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-09-threads.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-09-threads.json",
+      "bytes": 285,
+      "sha256": "033d262c23af6b7f587650076f211f8a54c582b9c6738df8173016b28c9c5c9b",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-10-threads.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-10-threads.json",
+      "bytes": 286,
+      "sha256": "5e7cc403adae7b0b31678f3d14b033526c680dc4fd612cd558101816aa2f60c1",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-11-threads.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-11-threads.json",
+      "bytes": 286,
+      "sha256": "334eb97a49b2a1876c50655edca6dd86e317a3164b3132b1c1b7a9ebee8edd44",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-12-threads.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-12-threads.json",
+      "bytes": 286,
+      "sha256": "fa1b01683886663ed5194eb548165d1664c8dcee4097cece4120bb187a70880d",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-13-threads.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-13-threads.json",
+      "bytes": 286,
+      "sha256": "fc79ed69cf7c25deba9f57c834c892e0686d316c31b44725c4a176969cf08b13",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-14-threads.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-14-threads.json",
+      "bytes": 286,
+      "sha256": "be1d18c99927b86857bee727d88f5bda5536ed85fa79cde42e3efaf769585d9b",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-15-threads.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-15-threads.json",
+      "bytes": 286,
+      "sha256": "e4afeeb0064f6cba914ef01d831979e26a84d5d9b3e7cf88c18c169e98866152",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-16-threads.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/cycle-16-threads.json",
+      "bytes": 286,
+      "sha256": "1d9b143b2edf854b154f8f2bead857c9aeef046e7e73e8c23da72c08df47644a",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/device.txt",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/device.txt",
+      "bytes": 369,
+      "sha256": "b8894c9b488ae5a3a18f7154fc1f65dfb35c38f48b2cc7796c684403e78c8700",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/lifecycle-result.png",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/lifecycle-result.png",
+      "bytes": 39653,
+      "sha256": "33d86d5600b77a442e8d0994daa5e913d7f7c82f9b2cd830f16a1ea4cdab59d1",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/logcat.txt",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/logcat.txt",
+      "bytes": 154924,
+      "sha256": "0aef34fc37913c610c921b212a707fd0c795e1cd4ecefc0b31d1b0e4d21507e5",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-baseline.dumpsys-meminfo.txt",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-baseline.dumpsys-meminfo.txt",
+      "bytes": 3483,
+      "sha256": "493d3bc99bd92d65336e7ede704141a98904e4fd99d1191b07e53657a55f5afb",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-baseline.proc-status.txt",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-baseline.proc-status.txt",
+      "bytes": 1095,
+      "sha256": "00421fab473a1260cb4278c06adab8ff349db851df131fd935b5acfa6315df51",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-cycle-01-peak.dumpsys-meminfo.txt",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-cycle-01-peak.dumpsys-meminfo.txt",
+      "bytes": 3483,
+      "sha256": "4eef5e243581b0dd574cd21f0244d2c9a4a885e89fec15748871c91ec0ba9d20",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-cycle-01-peak.proc-status.txt",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-cycle-01-peak.proc-status.txt",
+      "bytes": 1095,
+      "sha256": "7ef8165b3190d81eb1f360d3b3248cfbc7c3ea83c8666ded3f06b1babfe3a276",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-cycle-08-peak.dumpsys-meminfo.txt",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-cycle-08-peak.dumpsys-meminfo.txt",
+      "bytes": 3483,
+      "sha256": "9c82957188d60044afb362b845d23e2eece59a393654e893b443c05d0fc53bd5",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-cycle-08-peak.proc-status.txt",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-cycle-08-peak.proc-status.txt",
+      "bytes": 1096,
+      "sha256": "68dbc7103e1ab82538215e16c0cee0116b8e508ee5d3df99697fffe04a029183",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-cycle-16-peak.dumpsys-meminfo.txt",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-cycle-16-peak.dumpsys-meminfo.txt",
+      "bytes": 3483,
+      "sha256": "c22f29f328275b5b227fb97bcc3c06d6602a13516db0ece41eca5562da9c7c0f",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-cycle-16-peak.proc-status.txt",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-cycle-16-peak.proc-status.txt",
+      "bytes": 1096,
+      "sha256": "595f997f48412d3c5535bcbb6ebcbf4c899844a6ff6e80e08b86bf78b653f8f1",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-final.dumpsys-meminfo.txt",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-final.dumpsys-meminfo.txt",
+      "bytes": 3483,
+      "sha256": "772e50adfd9fd5757cfdfcac3cb775b2235bd3b7e3b2a893c539fc1516b53ff7",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-final.proc-status.txt",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-final.proc-status.txt",
+      "bytes": 1096,
+      "sha256": "e415d66d036650316134c163b1bc9f7259274d3985a68e5952abb4c3cecf7bbc",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-samples.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/memory-samples.json",
+      "bytes": 778,
+      "sha256": "44b0dabc5798be7735d6f41f148d70135a6a47dc41727e58e420a97fb0a906cc",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/README.html",
+      "source": "selected-build/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/README.html",
+      "bytes": 19311,
+      "sha256": "7347c4a4be9bc4e3bccf0abeed0aa640085c9c7b4d8a886159b68c09a7cbbc3f",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/README.md",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/README.md",
+      "bytes": 1027,
+      "sha256": "a54270f339382ef60ccc2bdee195c99dc63521446a416a0952ad0c9629de0743",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/summary.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/summary.json",
+      "bytes": 2095,
+      "sha256": "779969c5dbb71f56c4c7c15d79cbe809befa10fe548bc76ed37812e4b5035c41",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/thread-lifecycle-checks.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/thread-lifecycle-checks.json",
+      "bytes": 9873,
+      "sha256": "aece3b9acfff9c39d4b91506ffb9e886abc9d33916b135b0ce5b96e713bc7689",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/focused-tests.log",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/focused-tests.log",
+      "bytes": 83,
+      "sha256": "5914eb9f2c74b2d4a40b7166e80d46ebbddf05a2a6df2397e5ad52527c8cdb62",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/post-run-process-check.json",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/post-run-process-check.json",
+      "bytes": 336,
+      "sha256": "c73876f26e84c15297032eb86f23de89ddfa1275125d291eea3b80043baab593",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/README.html",
+      "source": "selected-build/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/README.html",
+      "bytes": 23514,
+      "sha256": "4d077ef044b0516ffb86d6315837afdd60233eac97c557f15150aa25068fdba9",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/README.md",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/README.md",
+      "bytes": 4999,
+      "sha256": "c1139e1a8509a9ba1a8fcfb8f3aac80c575b1a834221a40ee913c8981a547d2e",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/SHA256SUMS",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/SHA256SUMS",
+      "bytes": 5337,
+      "sha256": "7415e5ffbe12b8b4e171ca5fcf0a79be3edabd8858d605e58b74a76b1fd6a50b",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-implementation-review-2026-10-19.html",
+      "source": "selected-build/internal/evidence/c12-4-repeated-session-lifecycle-implementation-review-2026-10-19.html",
+      "bytes": 25926,
+      "sha256": "8ce54815053eb692d159abe486717f124515850c44f57d361f314582efe02b04",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-implementation-review-2026-10-19.md",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-implementation-review-2026-10-19.md",
+      "bytes": 3140,
+      "sha256": "13f6e4b402bf8dc80e52a08fdcfa22db8021091aae55b376dc53071178385b0c",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-pr-review-2026-10-19.html",
+      "source": "selected-build/internal/evidence/c12-4-repeated-session-lifecycle-pr-review-2026-10-19.html",
+      "bytes": 29422,
+      "sha256": "314579b6366081af89beba1d59cb7e62bdc483a2747e19ef0109832479c17d09",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "internal/evidence/c12-4-repeated-session-lifecycle-pr-review-2026-10-19.md",
+      "source": "repo/spec/internal/evidence/c12-4-repeated-session-lifecycle-pr-review-2026-10-19.md",
+      "bytes": 4664,
+      "sha256": "dcffc5f1d68f2f9301fd45b6f1b20cbd436c1d70440336ee51912427789204fe",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "logo.svg",
+      "source": "selected-build/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 568,
+        "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+      }
+    },
+    {
+      "path": "plan/c12-4-repeated-session-lifecycle.html",
+      "source": "selected-build/plan/c12-4-repeated-session-lifecycle.html",
+      "bytes": 25872,
+      "sha256": "f8cd899efc905fd8212980f5abad37fbb760f6b562567a86787457a29af4c8b7",
+      "action": "replace",
+      "targetBefore": {
+        "bytes": 8749,
+        "sha256": "c1450096567027574b02cc6866ac577afe80732138a2c0acde8c8f72cd0f7701"
+      }
+    },
+    {
+      "path": "plan/c12-4-repeated-session-lifecycle.md",
+      "source": "repo/plan/c12-4-repeated-session-lifecycle.md",
+      "bytes": 6583,
+      "sha256": "050a6c1a87f227a898b6c751712d345e489c634b6e0b0b5ea8ef012ba7b9ab40",
+      "action": "replace",
+      "targetBefore": {
+        "bytes": 5601,
+        "sha256": "41f6ab10dc69475a6f3ffc427b8c3609dbdcb590e5cb0e9b18b651f0f70e552b"
+      }
+    },
+    {
+      "path": "roadmap.html",
+      "source": "selected-build/roadmap.html",
+      "bytes": 142666,
+      "sha256": "2f092e6b79a5c56680d241817f9f6ffae1924426982ed5da1aac352ed01b5acd",
+      "action": "replace",
+      "targetBefore": {
+        "bytes": 141982,
+        "sha256": "b7210361591b9fda199d086c3c8d5fbf0833879a171021af6cf37e9e613746ce"
+      }
+    },
+    {
+      "path": "roadmap.svg",
+      "source": "selected-build/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 4835,
+        "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+      }
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "selected-build/static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 73952,
+        "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+      }
+    },
+    {
+      "path": "static/image/lifecycle-result.a8c057cbfa.png",
+      "source": "selected-build/static/image/lifecycle-result.a8c057cbfa.png",
+      "bytes": 39653,
+      "sha256": "33d86d5600b77a442e8d0994daa5e913d7f7c82f9b2cd830f16a1ea4cdab59d1",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "static/js/2.1aa8a93d31.js",
+      "source": "selected-build/static/js/2.1aa8a93d31.js",
+      "bytes": 217072,
+      "sha256": "b21acdce969ebad569ff75b046d68b6edf0130a56631a440fb2d22a9258a65fb",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 217072,
+        "sha256": "b21acdce969ebad569ff75b046d68b6edf0130a56631a440fb2d22a9258a65fb"
+      }
+    },
+    {
+      "path": "static/js/2.1aa8a93d31.js.LICENSE.txt",
+      "source": "selected-build/static/js/2.1aa8a93d31.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 384,
+        "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+      }
+    },
+    {
+      "path": "static/js/async/1.9d6d094526.js",
+      "source": "selected-build/static/js/async/1.9d6d094526.js",
+      "bytes": 98,
+      "sha256": "d6f6b4dbea1173cbf7c99162893e587afc13cda01fd4e1405d5b780a918b5a72",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 98,
+        "sha256": "d6f6b4dbea1173cbf7c99162893e587afc13cda01fd4e1405d5b780a918b5a72"
+      }
+    },
+    {
+      "path": "static/js/async/route-0a5444e0aa95.d5c71e8d25.js",
+      "source": "selected-build/static/js/async/route-0a5444e0aa95.d5c71e8d25.js",
+      "bytes": 8653,
+      "sha256": "6bb56dff99887988ef09c8e6e9360f93e75148bbb99585613b47630dfbfed46b",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "static/js/async/route-371b00d37d8e.c526f2df42.js",
+      "source": "selected-build/static/js/async/route-371b00d37d8e.c526f2df42.js",
+      "bytes": 9021,
+      "sha256": "e8bf119a81a9cc2cb6e1413df6ba3b17240e3438f4e5b599db4a23ff983e7d6e",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "static/js/async/route-4d0284188b1d.0562b86d15.js",
+      "source": "selected-build/static/js/async/route-4d0284188b1d.0562b86d15.js",
+      "bytes": 6208,
+      "sha256": "6a2ae18dc45608ced53116247b98374b388f23500b09f414cd35f4b0ed6117f9",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.65bdc49328.js",
+      "source": "selected-build/static/js/async/route-6c33a3943990.65bdc49328.js",
+      "bytes": 398142,
+      "sha256": "de51cebd4b4c381d3032c40aacd8a0b69acfc5c30b43590d17ce8194060f8b9b",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "static/js/async/route-7a5782c541bb.e11ed7d1a7.js",
+      "source": "selected-build/static/js/async/route-7a5782c541bb.e11ed7d1a7.js",
+      "bytes": 2673,
+      "sha256": "86310bcb3c4b2a376629247b444aee1e3a3876348028bd30b21fec2d1e9b9e0d",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "static/js/async/route-f4aa817077ca.a81200fb81.js",
+      "source": "selected-build/static/js/async/route-f4aa817077ca.a81200fb81.js",
+      "bytes": 11221,
+      "sha256": "a817b74c32ca307348db322c48063efe02541aa975427421a044b7b3401ce577",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "static/js/index.6de801c3cf.js",
+      "source": "selected-build/static/js/index.6de801c3cf.js",
+      "bytes": 23962,
+      "sha256": "abea03538c91a9275efe2ba0a525843650681eb623ca40425b035caf4d37fd55",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "static/js/lib-react.d9aa10f4b0.js",
+      "source": "selected-build/static/js/lib-react.d9aa10f4b0.js",
+      "bytes": 218369,
+      "sha256": "ad3b1fffada69190b9d14bfd2e16a62d31865b2d3de8a5044cb200fa67961cc8",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 218369,
+        "sha256": "ad3b1fffada69190b9d14bfd2e16a62d31865b2d3de8a5044cb200fa67961cc8"
+      }
+    },
+    {
+      "path": "static/js/lib-react.d9aa10f4b0.js.LICENSE.txt",
+      "source": "selected-build/static/js/lib-react.d9aa10f4b0.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 1209,
+        "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+      }
+    },
+    {
+      "path": "static/js/lib-router.95ea184a3c.js",
+      "source": "selected-build/static/js/lib-router.95ea184a3c.js",
+      "bytes": 35369,
+      "sha256": "71a8993452741417ebd7ac492fa9420ba9172794d33d650e50b8ab5fa71c327e",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 35369,
+        "sha256": "71a8993452741417ebd7ac492fa9420ba9172794d33d650e50b8ab5fa71c327e"
+      }
+    },
+    {
+      "path": "static/js/lib-router.95ea184a3c.js.LICENSE.txt",
+      "source": "selected-build/static/js/lib-router.95ea184a3c.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 222,
+        "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+      }
+    },
+    {
+      "path": "static/js/styles.7b0c5651b6.js",
+      "source": "selected-build/static/js/styles.7b0c5651b6.js",
+      "bytes": 468,
+      "sha256": "4a90f3ba024b9eb4ad9a48173029ba9ca3eae3c00a7741aa19aaad0d828f6749",
+      "action": "same",
+      "targetBefore": {
+        "bytes": 468,
+        "sha256": "4a90f3ba024b9eb4ad9a48173029ba9ca3eae3c00a7741aa19aaad0d828f6749"
+      }
+    },
+    {
+      "path": "static/search_index.ko.1067cc17.json",
+      "source": "selected-build/static/search_index.ko.1067cc17.json",
+      "bytes": 250528,
+      "sha256": "1067cc1760cccba2e83c77affd911e2d6e214f05ab6e2a5015fc5f6a15856727",
+      "action": "add",
+      "targetBefore": null
+    },
+    {
+      "path": "STATUS.html",
+      "source": "selected-build/STATUS.html",
+      "bytes": 371124,
+      "sha256": "612bad6aa72745bf13954c39899a6e94fe2eedcbaf156e360bd406b0168bd145",
+      "action": "replace",
+      "targetBefore": {
+        "bytes": 377758,
+        "sha256": "e558cee1fa9147e407bb48c420edded0a05d4b02893e89bc0ddf0c706b84ed8f"
+      }
+    },
+    {
+      "path": "STATUS.md",
+      "source": "repo/spec/STATUS.md",
+      "bytes": 290819,
+      "sha256": "474d9f5a07edca5b84e0d35ff25afa3f9dd419bc65f11d3087dfdcbdf782b2a6",
+      "action": "replace",
+      "targetBefore": {
+        "bytes": 290648,
+        "sha256": "4fbd14dccece89b9afb18af8d402e288db0a245693e07cf95a289d4a596f5ca0"
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: <temporary-worktree>/packages/docs
+warn    Current dist path: $SELECTED_DOCS_ROOT/out
+info    Rendering pages...
+success Pages rendered in 50 ms.
+ready   built in 0.44s (web)
+ready   built in 0.44s (node)
+
+File (web)                                                                                                                                                   Size        Gzip
+../../../../..$SELECTED_DOCS_ROOT/out/static/js/async/1.9d6d094526.js                    0.10 kB     0.09 kB
+../../../../..$SELECTED_DOCS_ROOT/out/static/js/styles.7b0c5651b6.js                     0.47 kB     0.23 kB
+../../../../..$SELECTED_DOCS_ROOT/out/icon.svg                                           0.64 kB     0.42 kB
+../../../../..$SELECTED_DOCS_ROOT/out/static/js/async/route-7a5782c541bb.e11ed7d1a7.js   2.7 kB      1.4 kB
+../../../../..$SELECTED_DOCS_ROOT/out/static/js/async/route-4d0284188b1d.0562b86d15.js   6.2 kB      2.5 kB
+../../../../..$SELECTED_DOCS_ROOT/out/static/js/async/route-0a5444e0aa95.d5c71e8d25.js   8.7 kB      2.7 kB
+../../../../..$SELECTED_DOCS_ROOT/out/static/js/async/route-371b00d37d8e.c526f2df42.js   9.0 kB      3.3 kB
+../../../../..$SELECTED_DOCS_ROOT/out/static/js/async/route-f4aa817077ca.a81200fb81.js   11.2 kB     4.1 kB
+../../../../..$SELECTED_DOCS_ROOT/out/static/js/index.6de801c3cf.js                      24.0 kB     9.7 kB
+../../../../..$SELECTED_DOCS_ROOT/out/static/js/lib-router.95ea184a3c.js                 35.4 kB     12.7 kB
+../../../../..$SELECTED_DOCS_ROOT/out/static/image/lifecycle-result.a8c057cbfa.png       39.7 kB
+../../../../..$SELECTED_DOCS_ROOT/out/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+../../../../..$SELECTED_DOCS_ROOT/out/static/js/2.1aa8a93d31.js                          217.1 kB    72.0 kB
+../../../../..$SELECTED_DOCS_ROOT/out/static/js/lib-react.d9aa10f4b0.js                  218.4 kB    68.8 kB
+../../../../..$SELECTED_DOCS_ROOT/out/static/search_index.ko.1067cc17.json               250.5 kB    80.8 kB
+../../../../..$SELECTED_DOCS_ROOT/out/static/js/async/route-6c33a3943990.65bdc49328.js   398.1 kB    93.3 kB
+
+                                                                                                                                                    Total:   1296.0 kB   405.8 kB
+
+File (node)                                                                                                                                                                                                                       Size       Gzip
+../../../../..$SELECTED_DOCS_ROOT/out/404.html                                                                                                                8.5 kB     2.6 kB
+../../../../..$SELECTED_DOCS_ROOT/out/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/c124-lifecycle-20261018T194837821Z-5af75d12/README.html   19.3 kB    4.5 kB
+../../../../..$SELECTED_DOCS_ROOT/out/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/README.html                                               23.5 kB    5.5 kB
+../../../../..$SELECTED_DOCS_ROOT/out/plan/c12-4-repeated-session-lifecycle.html                                                                              25.9 kB    7.0 kB
+../../../../..$SELECTED_DOCS_ROOT/out/internal/evidence/c12-4-repeated-session-lifecycle-implementation-review-2026-10-19.html                                25.9 kB    5.8 kB
+../../../../..$SELECTED_DOCS_ROOT/out/internal/evidence/c12-4-repeated-session-lifecycle-pr-review-2026-10-19.html                                            29.4 kB    6.6 kB
+../../../../..$SELECTED_DOCS_ROOT/out/STATUS.html                                                                                                             371.1 kB   94.4 kB
+
+                                                                                                                                                                                                                         Total:   503.7 kB   126.4 kB
