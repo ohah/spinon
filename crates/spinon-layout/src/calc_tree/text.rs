@@ -120,30 +120,134 @@ impl CalcLayoutTree {
         let Some(paragraph) = self.text_paragraphs.get(&node_id).cloned() else {
             return Ok(Size::ZERO);
         };
-        let AvailableSpace::Definite(width) = available_width else {
-            return Err(LayoutError::IndefiniteTextAvailableWidth(paragraph.node));
-        };
-        let width = normalize_zero(width);
         let engine = self
             .text_layout_engine
             .as_ref()
             .ok_or(LayoutError::MissingTextLayoutEngine(paragraph.node))?;
-        let snapshot = engine
-            .borrow_mut()
-            .layout_paragraph(&paragraph, width)
-            .map_err(LayoutError::TextLayout)?;
-        self.text_layouts
-            .borrow_mut()
-            .entry(node_id)
-            .or_default()
-            .insert(width.to_bits(), snapshot.clone());
-        Ok(Size {
-            width: snapshot.width,
-            height: snapshot.height,
-        })
+        match available_width {
+            AvailableSpace::Definite(width) => {
+                let width = normalize_zero(width);
+                let snapshot = engine
+                    .borrow_mut()
+                    .layout_paragraph(&paragraph, width)
+                    .map_err(LayoutError::TextLayout)?;
+                self.text_layouts
+                    .borrow_mut()
+                    .entry(node_id)
+                    .or_default()
+                    .insert(width.to_bits(), snapshot.clone());
+                Ok(Size {
+                    width: snapshot.width,
+                    height: snapshot.height,
+                })
+            }
+            AvailableSpace::MinContent | AvailableSpace::MaxContent => {
+                let cached = self.text_intrinsic_layouts.borrow().get(&node_id).copied();
+                let sizes = if let Some(sizes) = cached {
+                    sizes
+                } else {
+                    let sizes = engine
+                        .borrow_mut()
+                        .intrinsic_inline_sizes(&paragraph)
+                        .map_err(LayoutError::TextLayout)?;
+                    self.text_intrinsic_layouts
+                        .borrow_mut()
+                        .insert(node_id, sizes);
+                    sizes
+                };
+                Ok(match available_width {
+                    AvailableSpace::MinContent => Size {
+                        width: sizes.min_content(),
+                        height: sizes.min_content_height(),
+                    },
+                    AvailableSpace::MaxContent => Size {
+                        width: sizes.max_content(),
+                        height: sizes.max_content_height(),
+                    },
+                    AvailableSpace::Definite(_) => unreachable!("matched intrinsic width"),
+                })
+            }
+        }
     }
 }
 
 fn normalize_zero(value: f32) -> f32 {
     if value == 0.0 { 0.0 } else { value }
+}
+
+#[cfg(test)]
+mod tests {
+    use std::{
+        cell::RefCell,
+        collections::{BTreeMap, HashMap},
+    };
+
+    use spinon_core::NodeId;
+    use spinon_text_layout::{
+        ParagraphInput, ParagraphStyle, TextLayoutEngine, TextSource, WhiteSpaceMode, WordBreakMode,
+    };
+    use taffy::{AvailableSpace, Style, TaffyTree};
+
+    use super::CalcLayoutTree;
+
+    const AHEM: &[u8] = include_bytes!("../../../../tests/fixtures/resources/c15/Ahem.ttf");
+
+    #[test]
+    fn intrinsic_measurement_returns_both_axes_and_keeps_definite_snapshot_separate() {
+        let spinon_node = NodeId::new(10).unwrap();
+        let mut text_engine = TextLayoutEngine::new_without_system_fonts();
+        text_engine.register_font("Ahem", AHEM).unwrap();
+        let paragraph = ParagraphInput {
+            node: spinon_node,
+            sources: vec![TextSource {
+                node: NodeId::new(11).unwrap(),
+                inline_ancestors: Vec::new(),
+                text: "XX XXXXXXX".to_owned(),
+            }],
+            style: ParagraphStyle {
+                font_family: "Ahem".to_owned(),
+                font_size: 10.0,
+                line_height: 10.0,
+                white_space: WhiteSpaceMode::Normal,
+                word_break: WordBreakMode::Normal,
+                ..ParagraphStyle::default()
+            },
+            inline_styles: BTreeMap::new(),
+            inline_run_styles: BTreeMap::new(),
+        };
+        let mut taffy = TaffyTree::<()>::new();
+        let taffy_node = taffy.new_leaf(Style::default()).unwrap();
+        let tree = CalcLayoutTree {
+            nodes: Vec::new(),
+            engine_ids: BTreeMap::new(),
+            layout_children: BTreeMap::new(),
+            viewport_children: Vec::new(),
+            viewport_root: None,
+            calc_values: HashMap::new(),
+            calc_error: RefCell::new(None),
+            text_layout_engine: Some(RefCell::new(text_engine)),
+            text_paragraphs: HashMap::from([(taffy_node, paragraph)]),
+            text_flow_nodes: BTreeMap::new(),
+            text_layouts: RefCell::new(HashMap::new()),
+            text_intrinsic_layouts: RefCell::new(HashMap::new()),
+        };
+
+        let min_content = tree
+            .measure_text(taffy_node, AvailableSpace::MinContent)
+            .unwrap();
+        let max_content = tree
+            .measure_text(taffy_node, AvailableSpace::MaxContent)
+            .unwrap();
+        assert_eq!((min_content.width, min_content.height), (70.0, 20.0));
+        assert_eq!((max_content.width, max_content.height), (100.0, 10.0));
+        assert!(tree.text_layouts.borrow().is_empty());
+        assert_eq!(tree.text_intrinsic_layouts.borrow().len(), 1);
+
+        let definite = tree
+            .measure_text(taffy_node, AvailableSpace::Definite(30.0))
+            .unwrap();
+        assert_eq!(definite.width, 70.0);
+        assert!(tree.text_layouts.borrow()[&taffy_node].contains_key(&30.0_f32.to_bits()));
+        assert_eq!(tree.text_intrinsic_layouts.borrow().len(), 1);
+    }
 }

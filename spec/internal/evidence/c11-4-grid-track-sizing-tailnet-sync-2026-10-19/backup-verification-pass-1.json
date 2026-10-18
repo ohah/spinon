@@ -1,0 +1,245 @@
+{
+  "backups_verified": 7,
+  "new_files_no_backup": 27,
+  "all_match": true,
+  "items": [
+    {
+      "path": "0001-conformance.html",
+      "backup_path": "pass-1/0001-conformance.html",
+      "bytes": 33137,
+      "sha256": "acb8ee69aa6a4b7166a9d2c1a248e9eb960b029bbf76eb31fb1a2a28e8f164ec",
+      "previous_sha256": "acb8ee69aa6a4b7166a9d2c1a248e9eb960b029bbf76eb31fb1a2a28e8f164ec"
+    },
+    {
+      "path": "404.html",
+      "backup_path": "pass-1/404.html",
+      "bytes": 8512,
+      "sha256": "196adb1db1771b1982d3f1bf8a38d398f84541a8f4bc3188dee0ed1a1d0c1e58",
+      "previous_sha256": "196adb1db1771b1982d3f1bf8a38d398f84541a8f4bc3188dee0ed1a1d0c1e58"
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "pass-1/STATUS.html",
+      "bytes": 371124,
+      "sha256": "612bad6aa72745bf13954c39899a6e94fe2eedcbaf156e360bd406b0168bd145",
+      "previous_sha256": "612bad6aa72745bf13954c39899a6e94fe2eedcbaf156e360bd406b0168bd145"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.html",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.html",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-delta-review-30.html",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "backup_path": "pass-1/plan/c11-css-grid.html",
+      "bytes": 32252,
+      "sha256": "a0923d50196a028a194f50f4fc0734416e566d61c8cffa72f5ba3c3b2172718b",
+      "previous_sha256": "a0923d50196a028a194f50f4fc0734416e566d61c8cffa72f5ba3c3b2172718b"
+    },
+    {
+      "path": "static/js/a.355c4fffa2.js",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/a.355c4fffa2.js.LICENSE.txt",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.02f19e0048.js",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.a07e6ad4b4.js",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/async/route-6f303538b8de.2ad632dd51.js",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/async/route-9eef814e3864.15f4a0bcb7.js",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.d046f76532.js",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/async/route-c412d9e72a16.8432f7c678.js",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.381824a8a0.js",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/async/route-ecf129b09e78.11061b063b.js",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "static/js/index.7e46f68329.js",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "static/search_index.ko.005d2a8d.json",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "STATUS.md",
+      "backup_path": "pass-1/STATUS.md",
+      "bytes": 290819,
+      "sha256": "474d9f5a07edca5b84e0d35ff25afa3f9dd419bc65f11d3087dfdcbdf782b2a6",
+      "previous_sha256": "474d9f5a07edca5b84e0d35ff25afa3f9dd419bc65f11d3087dfdcbdf782b2a6"
+    },
+    {
+      "path": "0001-conformance.md",
+      "backup_path": "pass-1/0001-conformance.md",
+      "bytes": 13381,
+      "sha256": "3a1f6477f68d9842577b14ad4180415c1b843a565e6b830925fb2e7c39c1656e",
+      "previous_sha256": "3a1f6477f68d9842577b14ad4180415c1b843a565e6b830925fb2e7c39c1656e"
+    },
+    {
+      "path": "plan/c11-css-grid.md",
+      "backup_path": "pass-1/plan/c11-css-grid.md",
+      "bytes": 26391,
+      "sha256": "5f0b002128a8dcdea1d6b977adf595a77447473ea0d6a01bdd99d782ea389d79",
+      "previous_sha256": "5f0b002128a8dcdea1d6b977adf595a77447473ea0d6a01bdd99d782ea389d79"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.md",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/browser-metadata.json",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-agent-browser-eval.raw.txt",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-agent-browser-metadata.raw.txt",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-dpr1.png",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-observation.json",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.md",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-delta-review-30.md",
+      "backup_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "previous_sha256": null
+    }
+  ]
+}

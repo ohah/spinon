@@ -14,6 +14,8 @@
 3. 호출자는 명시적으로 등록한 폰트와 `TextLayoutEngine`을 `TaffyLayoutEngine::compute_with_text_layout_engine(...)`에 전달한다. Taffy measure callback은 definite content width에서 실제 shaping을 수행한다.
 4. 최종 Block content width가 measure width와 bit-exact하게 같을 때만 같은 계산의 snapshot을 `LayoutOutput.text_layouts`에 넣는다. width가 다르거나, auto-height가 snapshot 높이와 `0.05 CSS px` 이상 다르면 layout 계산은 실패한다.
 
+Grid intrinsic track sizing 준비 단계는 같은 `ParagraphInput`·font registry revision에서 `TextLayoutEngine::intrinsic_inline_sizes(...)`를 호출한다. Parley는 한 번 shape한 layout을 0px와 무제한 폭으로 다시 줄바꿈하며, 결과는 min-content/max-content inline advance와 각 line-break 폭의 block height를 보존한다. definite-width `TextLayoutSnapshot`과 별도 값이고, `CalcLayoutTree`는 입력 node마다 한 번 계산한 결과를 해당 tree 계산 동안 캐시한다. 이 측정 primitive가 Grid track sizing을 활성화하거나 text rendering을 추가하지는 않는다.
+
 `LayoutTextSnapshot`은 `LayoutInputRevision`, 원본 `ParagraphInput`, shaped `TextLayoutSnapshot`을 함께 소유한다. `LayoutInputRevision`은 HostDocument generation/document/render-tree, `StyleRevision`, `EnvironmentRevision`을 보존한다. 안쪽 text snapshot은 `FontRegistryRevision`, exact available width, normalized text와 source map, line/run/glyph metrics, line별 inline fragment geometry를 보존한다. `LayoutOutput`과 각 text entry는 같은 revision이어야 한다.
 
 `TextLayoutEngine::new_without_system_fonts()`는 system font discovery를 끈 registry를 만든다. `register_font(family, bytes)`는 호출자가 제공한 폰트 데이터를 소유형 Blob으로 복사하고 성공할 때마다 checked `FontRegistryRevision`을 증가시킨다. 비동기 font loading, system fallback, CSS font matching은 없다. layout 계산은 engine clone의 독립 `LayoutContext`를 사용하며 결과는 호출자에게 소유권을 넘기는 immutable snapshot이다.
@@ -48,7 +50,8 @@
 - glyph ID `0`은 `.notdef`로 취급해 `MissingGlyphCoverage { paragraph, text_range }`를 반환한다. fixture는 `new_without_system_fonts()` registry에 해당 테스트 글꼴 하나만 등록하며, 시스템 폰트나 다른 fixture family fallback을 허용하지 않는다.
 - 구현 근거는 고정 글꼴 Hangul, strict CJK punctuation wrapping, combining mark, common ligature on/off, Arabic RTL와 European digits, Noto Emoji ZWJ sequence를 검사한다. UTF-8 cluster 범위와 DOM UTF-16 source range를 함께 assertion한다.
 - locked ICU4X data에는 Chinese/Japanese word segmentation model이 없어 CJK fixture 실행에서 경고가 출력된다. strict line-break punctuation fixture는 통과하지만 한자 어휘 분절·일반 CJK wrapping은 확인하지 않았다.
-- 이 slice는 pure Rust shaping snapshot만 만든다. WGPU glyph raster/pipeline, runtime text-node admission, Block/Flex/Grid intrinsic sizing, overflow/scroll, paint order, clip, hit-test, Android/iOS Simulator text ink는 아직 제공하거나 확인하지 않는다.
+- C11.4 text intrinsic input slice는 Parley 0.12.0에서 한 번 shape한 paragraph를 0 CSS px와 무제한 폭으로 다시 줄바꿈해 min/max-content advance 및 두 결과의 line height를 반환한다. Ahem oracle은 normal `70/100px`, `break-all` `10/80px`, nowrap `100/100px`이다. C15 inline span의 start/end edge는 각 text boundary가 속한 첫/마지막 min-content line에 한 번씩 반영한다. edge만 놓인 Parley line은 contribution width와 block height에서 중복 계산하지 않는다. Chrome 155 supplemental oracle은 normal `75×20px`, nowrap `110×10px`, break-all `15×80px`, pre-line `45×20px`이다. definite C15 snapshot map은 이 과정에서 읽거나 덮어쓰지 않는다. 일반 CJK 분절, 임의 overflow-wrap, CSS font cascade는 보장하지 않는다. [inline edge oracle](./evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.md)
+- 이 slice는 pure Rust shaping snapshot과 Grid가 소비할 intrinsic text measurement 입력만 만든다. WGPU glyph raster/pipeline, runtime text-node admission, Block/Flex/Grid intrinsic track sizing 결과, overflow/scroll, paint order, clip, hit-test, Android/iOS Simulator text ink는 아직 제공하거나 확인하지 않는다.
 
 ## 실패 계약
 
@@ -62,7 +65,7 @@
 | invalid DOM UTF-16 | `InvalidTextEncoding(node)` |
 | available width가 음수이거나 유한하지 않음 | `TextLayout(InvalidWidth)` · 0px는 유효한 definite width이며 글자 advance overflow를 보존 |
 | text input이 있는데 text engine이 없음 | `MissingTextLayoutEngine(node)` |
-| Taffy가 definite width를 주지 않음 | `IndefiniteTextAvailableWidth(node)` |
+| Taffy가 intrinsic min/max-content width를 요청함 | 별도 `TextIntrinsicInlineSizes` 결과를 반환하고 definite-width snapshot에는 넣지 않음 |
 | final content width와 measure key가 다름 | `TextLayoutWidthMismatch(node)` |
 | auto-height 결과가 shaped height와 다름 | `TextLayoutHeightMismatch(node)` |
 | width/style/font data/glyph mapping이 유효하지 않음 | `TextLayout(TextLayoutError)`의 구체 variant |

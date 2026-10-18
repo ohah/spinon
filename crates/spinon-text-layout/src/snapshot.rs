@@ -131,6 +131,61 @@ pub struct InlineFragment {
     pub rect: TextRect,
 }
 
+/// 같은 paragraph와 font registry에서 계산한 CSS intrinsic inline sizes입니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct TextIntrinsicInlineSizes {
+    paragraph: NodeId,
+    font_registry_revision: FontRegistryRevision,
+    min_content: f32,
+    max_content: f32,
+    min_content_height: f32,
+    max_content_height: f32,
+}
+
+impl TextIntrinsicInlineSizes {
+    pub(crate) const fn new(
+        paragraph: NodeId,
+        font_registry_revision: FontRegistryRevision,
+        min_content: f32,
+        max_content: f32,
+        min_content_height: f32,
+        max_content_height: f32,
+    ) -> Self {
+        Self {
+            paragraph,
+            font_registry_revision,
+            min_content,
+            max_content,
+            min_content_height,
+            max_content_height,
+        }
+    }
+
+    pub const fn paragraph(self) -> NodeId {
+        self.paragraph
+    }
+
+    pub const fn font_registry_revision(self) -> FontRegistryRevision {
+        self.font_registry_revision
+    }
+
+    pub const fn min_content(self) -> f32 {
+        self.min_content
+    }
+
+    pub const fn max_content(self) -> f32 {
+        self.max_content
+    }
+
+    pub const fn min_content_height(self) -> f32 {
+        self.min_content_height
+    }
+
+    pub const fn max_content_height(self) -> f32 {
+        self.max_content_height
+    }
+}
+
 /// Taffy measure와 최종 layout이 같은 width에서 사용해야 하는 immutable 결과입니다.
 #[derive(Clone, Debug)]
 pub struct TextLayoutSnapshot {

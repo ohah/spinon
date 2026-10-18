@@ -1,0 +1,50 @@
+{
+  "tool": "Agent Browser",
+  "version": "0.31.1",
+  "terminalBrowserUsed": false,
+  "tailnet": {
+    "roadmap": {
+      "path": "/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "counter": "212개 표시 · 공식 완료 72/212",
+      "counterVisible": true,
+      "containsC114": true,
+      "directC114PlanLinkOnRoadmap": false
+    },
+    "status": {
+      "path": "/spinon/STATUS.html",
+      "c114Label": "C11.4 intrinsic track sizing 계획",
+      "c114Checked": false,
+      "linksToPlan": true,
+      "linksToOracleEvidence": true
+    },
+    "plan": {
+      "path": "/spinon/plan/c11-4-grid-track-sizing.html",
+      "title": "C11.4 · CSS Grid track sizing 계획 - 스피논 문서",
+      "chrome155ReferenceVisible": true,
+      "phaseAVisible": true,
+      "linksToOracleEvidence": true
+    },
+    "oracleEvidence": {
+      "path": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.html",
+      "title": "C11.4 Grid track sizing 사전 비교 - 스피논 문서",
+      "chrome155Visible": true,
+      "26CasesVisible": true
+    },
+    "mergedPRImage": {
+      "path": "https://github.com/ohah/spinon/pull/334",
+      "alt": "Chrome 155 C11.4 사전 비교 oracle 전체 화면 (Spinon 출력 아님)",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/430038d94e1453832b425b62d7cf7f42c97aea6b/spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-dpr1.png",
+      "complete": true,
+      "width": 1280,
+      "height": 1363
+    }
+  },
+  "screenshots": [
+    "tailnet-roadmap-agent-browser.png",
+    "tailnet-status-agent-browser.png",
+    "tailnet-plan-agent-browser.png",
+    "tailnet-evidence-agent-browser.png"
+  ],
+  "privateTailnetHostnameRedacted": true
+}

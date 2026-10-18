@@ -1,0 +1,13 @@
+{
+  "tool": "Agent Browser",
+  "session": "spinon-c114-sync19",
+  "closeCommandSucceeded": true,
+  "pageCountAfterClose": 0,
+  "browserLaunchedAfterClose": false,
+  "agentBrowserProcessExited": true,
+  "browserChildProcessesExited": true,
+  "terminalBrowserUsed": false,
+  "tmuxTouched": false,
+  "tailnetPreviewListenerRestarted": false,
+  "privateProcessIdsRedacted": true
+}

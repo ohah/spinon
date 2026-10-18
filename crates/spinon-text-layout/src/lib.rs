@@ -15,6 +15,6 @@ pub use model::{
 };
 pub use raster::{GlyphBitmap, GlyphBitmapContent, TextGlyphRaster, TextGlyphRasterSnapshot};
 pub use snapshot::{
-    FontMetricsSnapshot, FontRegistryRevision, InlineFragment, TextGlyph, TextLayoutSnapshot,
-    TextLine, TextRect, TextRun, TextSourceRange,
+    FontMetricsSnapshot, FontRegistryRevision, InlineFragment, TextGlyph, TextIntrinsicInlineSizes,
+    TextLayoutSnapshot, TextLine, TextRect, TextRun, TextSourceRange,
 };

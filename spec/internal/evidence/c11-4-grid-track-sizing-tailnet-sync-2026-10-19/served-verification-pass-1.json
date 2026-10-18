@@ -1,0 +1,370 @@
+{
+  "tool": "Node fetch served-byte verification",
+  "served_prefix": "/spinon/",
+  "checked_paths": 45,
+  "http_200": 45,
+  "hash_matches": 45,
+  "all_match": true,
+  "items": [
+    {
+      "path": "0001-conformance.html",
+      "status": 200,
+      "served_bytes": 34051,
+      "served_sha256": "05875624de52468f76ac4c96cfcd074df24ecc605d6ce3f5ab17985c2544f4f0",
+      "expected_sha256": "05875624de52468f76ac4c96cfcd074df24ecc605d6ce3f5ab17985c2544f4f0",
+      "matches": true
+    },
+    {
+      "path": "404.html",
+      "status": 200,
+      "served_bytes": 8512,
+      "served_sha256": "a4d975d8a42d9f20965d5f52ffa65253ae0c4f24f672d3588b4e76169ad74609",
+      "expected_sha256": "a4d975d8a42d9f20965d5f52ffa65253ae0c4f24f672d3588b4e76169ad74609",
+      "matches": true
+    },
+    {
+      "path": "STATUS.html",
+      "status": 200,
+      "served_bytes": 377380,
+      "served_sha256": "1a07041be3af9d233923c81d9b28033088f128bdf3d4a9100899337c0f5be7f7",
+      "expected_sha256": "1a07041be3af9d233923c81d9b28033088f128bdf3d4a9100899337c0f5be7f7",
+      "matches": true
+    },
+    {
+      "path": "icon.svg",
+      "status": 200,
+      "served_bytes": 638,
+      "served_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "matches": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "served_bytes": 65090,
+      "served_sha256": "1e0818a43b1a996ede4a4f149cbfdfb789105775ff48118cc8741b6a093b3c2b",
+      "expected_sha256": "1e0818a43b1a996ede4a4f149cbfdfb789105775ff48118cc8741b6a093b3c2b",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.html",
+      "status": 200,
+      "served_bytes": 32047,
+      "served_sha256": "8949013ad408b3b2629f911330ad8b11f6958682cb3910b8be02868e0e9b96cd",
+      "expected_sha256": "8949013ad408b3b2629f911330ad8b11f6958682cb3910b8be02868e0e9b96cd",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.html",
+      "status": 200,
+      "served_bytes": 26571,
+      "served_sha256": "910ed03dbee6b4f83cc04cf2c06a97a713eded5bea77f79fc5947d4dfe0233a7",
+      "expected_sha256": "910ed03dbee6b4f83cc04cf2c06a97a713eded5bea77f79fc5947d4dfe0233a7",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-delta-review-30.html",
+      "status": 200,
+      "served_bytes": 24878,
+      "served_sha256": "92b433ac616b9041eeee448ceb3c4dcee71e0b27162a481afdf910da374a545e",
+      "expected_sha256": "92b433ac616b9041eeee448ceb3c4dcee71e0b27162a481afdf910da374a545e",
+      "matches": true
+    },
+    {
+      "path": "logo.svg",
+      "status": 200,
+      "served_bytes": 568,
+      "served_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "matches": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "status": 200,
+      "served_bytes": 42265,
+      "served_sha256": "e505f6deed9a0aef7939344a2c6b635bbb7e6eb95130dfa0bc8da5bdc3097911",
+      "expected_sha256": "e505f6deed9a0aef7939344a2c6b635bbb7e6eb95130dfa0bc8da5bdc3097911",
+      "matches": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "status": 200,
+      "served_bytes": 52218,
+      "served_sha256": "5ef88d527908a91c6bbf23cdbdc5d99bc0f86e6ec76bf79a69e15de8428f8dad",
+      "expected_sha256": "5ef88d527908a91c6bbf23cdbdc5d99bc0f86e6ec76bf79a69e15de8428f8dad",
+      "matches": true
+    },
+    {
+      "path": "roadmap.html",
+      "status": 200,
+      "served_bytes": 143352,
+      "served_sha256": "8cdf5fbb8a2f8ff296effa949dbba07388fe54f648c8e8132dcba697bb6607fd",
+      "expected_sha256": "8cdf5fbb8a2f8ff296effa949dbba07388fe54f648c8e8132dcba697bb6607fd",
+      "matches": true
+    },
+    {
+      "path": "roadmap.svg",
+      "status": 200,
+      "served_bytes": 4835,
+      "served_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "matches": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": 200,
+      "served_bytes": 73952,
+      "served_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "expected_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "matches": true
+    },
+    {
+      "path": "static/js/a.355c4fffa2.js",
+      "status": 200,
+      "served_bytes": 217102,
+      "served_sha256": "0fdf3292fe58646eb59c40d33323893317c80ba04b549a8f66793443021febbe",
+      "expected_sha256": "0fdf3292fe58646eb59c40d33323893317c80ba04b549a8f66793443021febbe",
+      "matches": true
+    },
+    {
+      "path": "static/js/a.355c4fffa2.js.LICENSE.txt",
+      "status": 200,
+      "served_bytes": 384,
+      "served_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "expected_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "status": 200,
+      "served_bytes": 100,
+      "served_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "expected_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.02f19e0048.js",
+      "status": 200,
+      "served_bytes": 29598,
+      "served_sha256": "fcc3805097d65a69984027dc41a2d3eb786a18bf9763fb37b3750095f1ab461a",
+      "expected_sha256": "fcc3805097d65a69984027dc41a2d3eb786a18bf9763fb37b3750095f1ab461a",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.a07e6ad4b4.js",
+      "status": 200,
+      "served_bytes": 401201,
+      "served_sha256": "1babf6dc50157f7e2774d5b01a19bae613a248f9debfbb2fc7c185ed96196223",
+      "expected_sha256": "1babf6dc50157f7e2774d5b01a19bae613a248f9debfbb2fc7c185ed96196223",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-6f303538b8de.2ad632dd51.js",
+      "status": 200,
+      "served_bytes": 22249,
+      "served_sha256": "2ed80bd092e810fd739b8e19d0e641fed52333fc2250c4291f156083530b4761",
+      "expected_sha256": "2ed80bd092e810fd739b8e19d0e641fed52333fc2250c4291f156083530b4761",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-9eef814e3864.15f4a0bcb7.js",
+      "status": 200,
+      "served_bytes": 12863,
+      "served_sha256": "2670542e1b4e0b83ccba03c91145b7456cf0efeb14135ddd9cfa603c2412da5c",
+      "expected_sha256": "2670542e1b4e0b83ccba03c91145b7456cf0efeb14135ddd9cfa603c2412da5c",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.d046f76532.js",
+      "status": 200,
+      "served_bytes": 38565,
+      "served_sha256": "6b48069799af184eb4c320f85e963f61ccf7380178c7b64006d8ab1087a9c1e6",
+      "expected_sha256": "6b48069799af184eb4c320f85e963f61ccf7380178c7b64006d8ab1087a9c1e6",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-c412d9e72a16.8432f7c678.js",
+      "status": 200,
+      "served_bytes": 11576,
+      "served_sha256": "55b5ae0608197f34d23e93457ed6eb79ebd6f95501621fe0d872a4769656da60",
+      "expected_sha256": "55b5ae0608197f34d23e93457ed6eb79ebd6f95501621fe0d872a4769656da60",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.381824a8a0.js",
+      "status": 200,
+      "served_bytes": 47918,
+      "served_sha256": "7909bc9f36e518f7a9c1c3bf69a0d35e3b31fbd1df475982ba0aaadef5101f51",
+      "expected_sha256": "7909bc9f36e518f7a9c1c3bf69a0d35e3b31fbd1df475982ba0aaadef5101f51",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-ecf129b09e78.11061b063b.js",
+      "status": 200,
+      "served_bytes": 20535,
+      "served_sha256": "3e83309017c2510508a79fdbf9b5dee43c1a771bbe2878f2675cca8695c6447e",
+      "expected_sha256": "3e83309017c2510508a79fdbf9b5dee43c1a771bbe2878f2675cca8695c6447e",
+      "matches": true
+    },
+    {
+      "path": "static/js/index.7e46f68329.js",
+      "status": 200,
+      "served_bytes": 24847,
+      "served_sha256": "87c680f1be209d0df8a15448756628619d213f198e0fd1f74f11d8458f8a2ae2",
+      "expected_sha256": "87c680f1be209d0df8a15448756628619d213f198e0fd1f74f11d8458f8a2ae2",
+      "matches": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "status": 200,
+      "served_bytes": 218364,
+      "served_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "expected_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "matches": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "status": 200,
+      "served_bytes": 1209,
+      "served_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "expected_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "matches": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "status": 200,
+      "served_bytes": 35370,
+      "served_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "expected_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "matches": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "status": 200,
+      "served_bytes": 222,
+      "served_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "expected_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "matches": true
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "status": 200,
+      "served_bytes": 472,
+      "served_sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "expected_sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "matches": true
+    },
+    {
+      "path": "static/search_index.ko.005d2a8d.json",
+      "status": 200,
+      "served_bytes": 334453,
+      "served_sha256": "005d2a8d9eba055fd63be8bee6934a66876ab13fe91a39967aa14dd9bdac6632",
+      "expected_sha256": "005d2a8d9eba055fd63be8bee6934a66876ab13fe91a39967aa14dd9bdac6632",
+      "matches": true
+    },
+    {
+      "path": "STATUS.md",
+      "status": 200,
+      "served_bytes": 293016,
+      "served_sha256": "9cf946c647472f4ffdb17cc499e17b114aa976bf33c7512b96f3dd87a7b1f289",
+      "expected_sha256": "9cf946c647472f4ffdb17cc499e17b114aa976bf33c7512b96f3dd87a7b1f289",
+      "matches": true
+    },
+    {
+      "path": "0001-conformance.md",
+      "status": 200,
+      "served_bytes": 13862,
+      "served_sha256": "ea4f83a36e2e72539e600a429755e70c5a4d563df58a120cf538d6fa4a3d625b",
+      "expected_sha256": "ea4f83a36e2e72539e600a429755e70c5a4d563df58a120cf538d6fa4a3d625b",
+      "matches": true
+    },
+    {
+      "path": "plan/c11-css-grid.md",
+      "status": 200,
+      "served_bytes": 26504,
+      "served_sha256": "abcb0859a7d95672ad711f2b6e870e90264fd4e38153a20aa9837f701decfeec",
+      "expected_sha256": "abcb0859a7d95672ad711f2b6e870e90264fd4e38153a20aa9837f701decfeec",
+      "matches": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "status": 200,
+      "served_bytes": 18715,
+      "served_sha256": "1ba4e6f353399dfcac1f65fe2292d77d3350d9311f7b2690580ddf5074c4fa41",
+      "expected_sha256": "1ba4e6f353399dfcac1f65fe2292d77d3350d9311f7b2690580ddf5074c4fa41",
+      "matches": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "status": 200,
+      "served_bytes": 33926,
+      "served_sha256": "a08dcc9d9dab6d37df72429305a2fa3ea84c7f21b5c726a5e1b6cc8af9267475",
+      "expected_sha256": "a08dcc9d9dab6d37df72429305a2fa3ea84c7f21b5c726a5e1b6cc8af9267475",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.md",
+      "status": 200,
+      "served_bytes": 8445,
+      "served_sha256": "d478660bbbc8c00a6634bcec15ac4f5c68eb35fe5d3678d969b57a7120fed094",
+      "expected_sha256": "d478660bbbc8c00a6634bcec15ac4f5c68eb35fe5d3678d969b57a7120fed094",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/browser-metadata.json",
+      "status": 200,
+      "served_bytes": 564,
+      "served_sha256": "6d1f44c5ad3a769726234fe4899e1ff91a647cf7dfa26c9cb6e8aa054aa00c8e",
+      "expected_sha256": "6d1f44c5ad3a769726234fe4899e1ff91a647cf7dfa26c9cb6e8aa054aa00c8e",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-agent-browser-eval.raw.txt",
+      "status": 200,
+      "served_bytes": 16155,
+      "served_sha256": "c7453b69936c734d110671d9fcb2525c733f0ac42be1c91b0c783084d7f498ce",
+      "expected_sha256": "c7453b69936c734d110671d9fcb2525c733f0ac42be1c91b0c783084d7f498ce",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-agent-browser-metadata.raw.txt",
+      "status": 200,
+      "served_bytes": 564,
+      "served_sha256": "6d1f44c5ad3a769726234fe4899e1ff91a647cf7dfa26c9cb6e8aa054aa00c8e",
+      "expected_sha256": "6d1f44c5ad3a769726234fe4899e1ff91a647cf7dfa26c9cb6e8aa054aa00c8e",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-dpr1.png",
+      "status": 200,
+      "served_bytes": 62568,
+      "served_sha256": "f1cadfd00aeb934e58205d4cd21d4341b8ec48111a6f808d24df1a80ea3a5662",
+      "expected_sha256": "f1cadfd00aeb934e58205d4cd21d4341b8ec48111a6f808d24df1a80ea3a5662",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-observation.json",
+      "status": 200,
+      "served_bytes": 16155,
+      "served_sha256": "c7453b69936c734d110671d9fcb2525c733f0ac42be1c91b0c783084d7f498ce",
+      "expected_sha256": "c7453b69936c734d110671d9fcb2525c733f0ac42be1c91b0c783084d7f498ce",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.md",
+      "status": 200,
+      "served_bytes": 6629,
+      "served_sha256": "146c8c2a1f17eb7ff7f3172e11c451b8b8e64638df00aec5edfd5d83315b457c",
+      "expected_sha256": "146c8c2a1f17eb7ff7f3172e11c451b8b8e64638df00aec5edfd5d83315b457c",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-delta-review-30.md",
+      "status": 200,
+      "served_bytes": 5318,
+      "served_sha256": "93d0ea822ad7aa155de45f97bb7d1202ae68866f3dc2825687205a937e6b3001",
+      "expected_sha256": "93d0ea822ad7aa155de45f97bb7d1202ae68866f3dc2825687205a937e6b3001",
+      "matches": true
+    }
+  ]
+}
