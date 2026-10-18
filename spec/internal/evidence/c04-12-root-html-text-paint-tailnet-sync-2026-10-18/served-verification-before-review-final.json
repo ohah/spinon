@@ -1,0 +1,1789 @@
+{
+  "created_utc": "2026-10-18T13:29:15.930193+00:00",
+  "listener_pid": 1191,
+  "request_count": 176,
+  "files_verified_per_origin": 88,
+  "origins": {
+    "local": {
+      "base": "http://127.0.0.1:8768/spinon/",
+      "request_count": 88,
+      "http_200_count": 88,
+      "hash_match_count": 88,
+      "all_match": true
+    },
+    "tailnet": {
+      "base": "https://macstudio.tailed42f2.ts.net/spinon/",
+      "request_count": 88,
+      "http_200_count": 88,
+      "hash_match_count": 88,
+      "all_match": true
+    }
+  },
+  "all_match": true,
+  "responses": {
+    "local": [
+      {
+        "path": "404.html",
+        "url": "http://127.0.0.1:8768/spinon/404.html",
+        "status": 200,
+        "bytes": 8512,
+        "expected_bytes": 8512,
+        "sha256": "0662cff27b1b0e4461e911d91563c5eb2fcc277daec658ba96cf1f6ff495c35e",
+        "expected_sha256": "0662cff27b1b0e4461e911d91563c5eb2fcc277daec658ba96cf1f6ff495c35e",
+        "matches": true
+      },
+      {
+        "path": "STATUS.html",
+        "url": "http://127.0.0.1:8768/spinon/STATUS.html",
+        "status": 200,
+        "bytes": 372900,
+        "expected_bytes": 372900,
+        "sha256": "9e6777e1bd648b7d735530df9fd594e16b650c6bd47cd351a4b242d0d2140b5d",
+        "expected_sha256": "9e6777e1bd648b7d735530df9fd594e16b650c6bd47cd351a4b242d0d2140b5d",
+        "matches": true
+      },
+      {
+        "path": "c10-3-3-android-physical-2026-10-11.png",
+        "url": "http://127.0.0.1:8768/spinon/c10-3-3-android-physical-2026-10-11.png",
+        "status": 200,
+        "bytes": 194109,
+        "expected_bytes": 194109,
+        "sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775",
+        "expected_sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-depth-safety-2026-10-11.png",
+        "url": "http://127.0.0.1:8768/spinon/c12-4-android-api37-depth-safety-2026-10-11.png",
+        "status": 200,
+        "bytes": 72745,
+        "expected_bytes": 72745,
+        "sha256": "33704756e2d8758d73165b63d9fa67977e2c73965d057263d45821c7a416fdae",
+        "expected_sha256": "33704756e2d8758d73165b63d9fa67977e2c73965d057263d45821c7a416fdae",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-depth-safety-matrix-2026-10-11.png",
+        "url": "http://127.0.0.1:8768/spinon/c12-4-android-api37-depth-safety-matrix-2026-10-11.png",
+        "status": 200,
+        "bytes": 71213,
+        "expected_bytes": 71213,
+        "sha256": "db8f307c59f677cde715075c0efad8ff9056bd7d39a424b5f912da326a1f06cc",
+        "expected_sha256": "db8f307c59f677cde715075c0efad8ff9056bd7d39a424b5f912da326a1f06cc",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-emulator-2026-10-11.log",
+        "url": "http://127.0.0.1:8768/spinon/c12-4-android-api37-emulator-2026-10-11.log",
+        "status": 200,
+        "bytes": 6079,
+        "expected_bytes": 6079,
+        "sha256": "77adad2002dbeb251d90ce58ba3778e16fd4571601c90b4de407ba9db22b8259",
+        "expected_sha256": "77adad2002dbeb251d90ce58ba3778e16fd4571601c90b4de407ba9db22b8259",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-emulator.png",
+        "url": "http://127.0.0.1:8768/spinon/c12-4-android-api37-emulator.png",
+        "status": 200,
+        "bytes": 79987,
+        "expected_bytes": 79987,
+        "sha256": "86d8840dc425d99b7cf7e161ef17089d68bc148da8bb7cafe892cf654201f8e5",
+        "expected_sha256": "86d8840dc425d99b7cf7e161ef17089d68bc148da8bb7cafe892cf654201f8e5",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-matrix-2026-10-11.json",
+        "url": "http://127.0.0.1:8768/spinon/c12-4-android-api37-matrix-2026-10-11.json",
+        "status": 200,
+        "bytes": 926,
+        "expected_bytes": 926,
+        "sha256": "4b0f514d3f6b40cdb2dad06a089641c8cd0af8512669265ad9d5f5b9c2a16be2",
+        "expected_sha256": "4b0f514d3f6b40cdb2dad06a089641c8cd0af8512669265ad9d5f5b9c2a16be2",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-matrix-2026-10-11.log",
+        "url": "http://127.0.0.1:8768/spinon/c12-4-android-api37-matrix-2026-10-11.log",
+        "status": 200,
+        "bytes": 45719,
+        "expected_bytes": 45719,
+        "sha256": "b8f1ed1a8f1bae6d08202e44ee5e24e4c3befa916c5262a5915f6cdf664f6eca",
+        "expected_sha256": "b8f1ed1a8f1bae6d08202e44ee5e24e4c3befa916c5262a5915f6cdf664f6eca",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-matrix-2026-10-11.png",
+        "url": "http://127.0.0.1:8768/spinon/c12-4-android-api37-matrix-2026-10-11.png",
+        "status": 200,
+        "bytes": 71121,
+        "expected_bytes": 71121,
+        "sha256": "a56c210a9b45f2289e4595b86430a496cfabc8177f21499ee5d63405ca45b23f",
+        "expected_sha256": "a56c210a9b45f2289e4595b86430a496cfabc8177f21499ee5d63405ca45b23f",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.log",
+        "url": "http://127.0.0.1:8768/spinon/c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.log",
+        "status": 200,
+        "bytes": 43037,
+        "expected_bytes": 43037,
+        "sha256": "23920b6b1a2a274e609d028b4be8c50cb3811f82a414a95a7820b556390e7bf0",
+        "expected_sha256": "23920b6b1a2a274e609d028b4be8c50cb3811f82a414a95a7820b556390e7bf0",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.png",
+        "url": "http://127.0.0.1:8768/spinon/c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.png",
+        "status": 200,
+        "bytes": 70563,
+        "expected_bytes": 70563,
+        "sha256": "dc5b919381d4fe3f71e564a1f24953a99446fd92d6902a4de0f8ee79eb9c2aa6",
+        "expected_sha256": "dc5b919381d4fe3f71e564a1f24953a99446fd92d6902a4de0f8ee79eb9c2aa6",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.log",
+        "url": "http://127.0.0.1:8768/spinon/c12-4-android-api37-matrix-reserve-rerun-2026-10-11.log",
+        "status": 200,
+        "bytes": 42930,
+        "expected_bytes": 42930,
+        "sha256": "967b0572b40411b115e9a7ddf02f424a2e69948ec24d9ea5dda3158650b5269b",
+        "expected_sha256": "967b0572b40411b115e9a7ddf02f424a2e69948ec24d9ea5dda3158650b5269b",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.png",
+        "url": "http://127.0.0.1:8768/spinon/c12-4-android-api37-matrix-reserve-rerun-2026-10-11.png",
+        "status": 200,
+        "bytes": 71247,
+        "expected_bytes": 71247,
+        "sha256": "183b3e38acf0bdd449a2d8613b2ce361afff558a8fec62a8c7a6aeb7deed28f5",
+        "expected_sha256": "183b3e38acf0bdd449a2d8613b2ce361afff558a8fec62a8c7a6aeb7deed28f5",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-sm-s731n-android16-vulkan.png",
+        "url": "http://127.0.0.1:8768/spinon/c12-4-android-sm-s731n-android16-vulkan.png",
+        "status": 200,
+        "bytes": 110882,
+        "expected_bytes": 110882,
+        "sha256": "a60c2db2fa7ad194c9a210147c3827ed0ee11e831bf168da5297eb3df8a60dd4",
+        "expected_sha256": "a60c2db2fa7ad194c9a210147c3827ed0ee11e831bf168da5297eb3df8a60dd4",
+        "matches": true
+      },
+      {
+        "path": "c12-4-ios-iphone-17-pro-depth-safety-2026-10-11.png",
+        "url": "http://127.0.0.1:8768/spinon/c12-4-ios-iphone-17-pro-depth-safety-2026-10-11.png",
+        "status": 200,
+        "bytes": 142385,
+        "expected_bytes": 142385,
+        "sha256": "bef6d91b248a580d120d0b47df26800b2ed218addd94674409deaecfc2eaf814",
+        "expected_sha256": "bef6d91b248a580d120d0b47df26800b2ed218addd94674409deaecfc2eaf814",
+        "matches": true
+      },
+      {
+        "path": "c12-4-ios-iphone-17-pro-simulator.png",
+        "url": "http://127.0.0.1:8768/spinon/c12-4-ios-iphone-17-pro-simulator.png",
+        "status": 200,
+        "bytes": 143083,
+        "expected_bytes": 143083,
+        "sha256": "650f17bb3edda780d32f53f3980f417b7c5b340d862865ef5e0b4250091e372b",
+        "expected_sha256": "650f17bb3edda780d32f53f3980f417b7c5b340d862865ef5e0b4250091e372b",
+        "matches": true
+      },
+      {
+        "path": "c12-4-runtime-evidence.html",
+        "url": "http://127.0.0.1:8768/spinon/c12-4-runtime-evidence.html",
+        "status": 200,
+        "bytes": 14589,
+        "expected_bytes": 14589,
+        "sha256": "64b118c6a84e690b4722d1e75d8b4e6d31588919e5b4a51a229e96808698aee7",
+        "expected_sha256": "64b118c6a84e690b4722d1e75d8b4e6d31588919e5b4a51a229e96808698aee7",
+        "matches": true
+      },
+      {
+        "path": "c12-4-wpt-official-run-2026-10-11.log",
+        "url": "http://127.0.0.1:8768/spinon/c12-4-wpt-official-run-2026-10-11.log",
+        "status": 200,
+        "bytes": 356,
+        "expected_bytes": 356,
+        "sha256": "9f9b4bf38f27fef6cb27d720726389f1bae382e88a383919e26dcb18cbfe6fab",
+        "expected_sha256": "9f9b4bf38f27fef6cb27d720726389f1bae382e88a383919e26dcb18cbfe6fab",
+        "matches": true
+      },
+      {
+        "path": "icon.svg",
+        "url": "http://127.0.0.1:8768/spinon/icon.svg",
+        "status": 200,
+        "bytes": 638,
+        "expected_bytes": 638,
+        "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+        "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+        "matches": true
+      },
+      {
+        "path": "internal/0077-c04-12-root-html-document.html",
+        "url": "http://127.0.0.1:8768/spinon/internal/0077-c04-12-root-html-document.html",
+        "status": 200,
+        "bytes": 47254,
+        "expected_bytes": 47254,
+        "sha256": "a48dbb96b28d4a8347868089334116ba9eba144559f88917432fdc35466b048e",
+        "expected_sha256": "a48dbb96b28d4a8347868089334116ba9eba144559f88917432fdc35466b048e",
+        "matches": true
+      },
+      {
+        "path": "internal/0080-c04-12-root-html-direct-text-paint.html",
+        "url": "http://127.0.0.1:8768/spinon/internal/0080-c04-12-root-html-direct-text-paint.html",
+        "status": 200,
+        "bytes": 39010,
+        "expected_bytes": 39010,
+        "sha256": "f2ecca51444e67f54fec6d5f16d78748a8a7b99106e643adce4fd7c514fd4c71",
+        "expected_sha256": "f2ecca51444e67f54fec6d5f16d78748a8a7b99106e643adce4fd7c514fd4c71",
+        "matches": true
+      },
+      {
+        "path": "internal/README.html",
+        "url": "http://127.0.0.1:8768/spinon/internal/README.html",
+        "status": 200,
+        "bytes": 172316,
+        "expected_bytes": 172316,
+        "sha256": "8c2c81294620497932441c97c04e9142a860096d9b9fd5980929896cc63ebe1e",
+        "expected_sha256": "8c2c81294620497932441c97c04e9142a860096d9b9fd5980929896cc63ebe1e",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/README.html",
+        "url": "http://127.0.0.1:8768/spinon/internal/evidence/c04-12-page-scale-rendering-2026-10-17/README.html",
+        "status": 200,
+        "bytes": 32698,
+        "expected_bytes": 32698,
+        "sha256": "7d6df2cff2d5670f52e6ef3dfc1059f29c7c09c71b3b6704cbc9a1a31719618a",
+        "expected_sha256": "7d6df2cff2d5670f52e6ef3dfc1059f29c7c09c71b3b6704cbc9a1a31719618a",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-plan-review-20.html",
+        "url": "http://127.0.0.1:8768/spinon/internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-plan-review-20.html",
+        "status": 200,
+        "bytes": 30013,
+        "expected_bytes": 30013,
+        "sha256": "ce7a5dc8c1eff4a5d59dc49df3c2b4729beadb1c7ed56a996c5fabe68633f923",
+        "expected_sha256": "ce7a5dc8c1eff4a5d59dc49df3c2b4729beadb1c7ed56a996c5fabe68633f923",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-review-20.html",
+        "url": "http://127.0.0.1:8768/spinon/internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-review-20.html",
+        "status": 200,
+        "bytes": 30179,
+        "expected_bytes": 30179,
+        "sha256": "ce4e9315c9eae373f7bb33149042c1f1f9cbe1b1b546715463dd56a1e5d3a1c9",
+        "expected_sha256": "ce4e9315c9eae373f7bb33149042c1f1f9cbe1b1b546715463dd56a1e5d3a1c9",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/pr-delta-review-30.html",
+        "url": "http://127.0.0.1:8768/spinon/internal/evidence/c04-12-page-scale-rendering-2026-10-17/pr-delta-review-30.html",
+        "status": 200,
+        "bytes": 31846,
+        "expected_bytes": 31846,
+        "sha256": "d15b89e10c5ddf95e7f5a394c642523ca9173eff2cde33cbfba3ec1aa97ed91d",
+        "expected_sha256": "d15b89e10c5ddf95e7f5a394c642523ca9173eff2cde33cbfba3ec1aa97ed91d",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/README.html",
+        "url": "http://127.0.0.1:8768/spinon/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/README.html",
+        "status": 200,
+        "bytes": 31089,
+        "expected_bytes": 31089,
+        "sha256": "fa4cb9acdcfac290ea4ce9904501074105b686c58a08c90685a099430efbdb55",
+        "expected_sha256": "fa4cb9acdcfac290ea4ce9904501074105b686c58a08c90685a099430efbdb55",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+        "url": "http://127.0.0.1:8768/spinon/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+        "status": 200,
+        "bytes": 35644,
+        "expected_bytes": 35644,
+        "sha256": "6c1765c9611476d589acfdadc990aa131c3081525e768a2795ffc78b63a4002a",
+        "expected_sha256": "6c1765c9611476d589acfdadc990aa131c3081525e768a2795ffc78b63a4002a",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/render-build-result.html",
+        "url": "http://127.0.0.1:8768/spinon/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/render-build-result.html",
+        "status": 200,
+        "bytes": 26209,
+        "expected_bytes": 26209,
+        "sha256": "ece268a2d495f5ba3b91fabab8472cea63b57ece5bf118c8c93a6be35f6d8232",
+        "expected_sha256": "ece268a2d495f5ba3b91fabab8472cea63b57ece5bf118c8c93a6be35f6d8232",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-root-html-text-paint-2026-10-18/README.html",
+        "url": "http://127.0.0.1:8768/spinon/internal/evidence/c04-12-root-html-text-paint-2026-10-18/README.html",
+        "status": 200,
+        "bytes": 36727,
+        "expected_bytes": 36727,
+        "sha256": "1215341b4b54fe098c9813375bec94d76c9b1beafbda7ccd16729d0b3d89425d",
+        "expected_sha256": "1215341b4b54fe098c9813375bec94d76c9b1beafbda7ccd16729d0b3d89425d",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-root-html-text-paint-2026-10-18/implementation-review-20.html",
+        "url": "http://127.0.0.1:8768/spinon/internal/evidence/c04-12-root-html-text-paint-2026-10-18/implementation-review-20.html",
+        "status": 200,
+        "bytes": 32052,
+        "expected_bytes": 32052,
+        "sha256": "2b3cb6f2e4f16775ff94c918711b13a03ffc5d0405e0d1e2438996103d4c46df",
+        "expected_sha256": "2b3cb6f2e4f16775ff94c918711b13a03ffc5d0405e0d1e2438996103d4c46df",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-root-html-text-paint-2026-10-18/pr-delta-review-30.html",
+        "url": "http://127.0.0.1:8768/spinon/internal/evidence/c04-12-root-html-text-paint-2026-10-18/pr-delta-review-30.html",
+        "status": 200,
+        "bytes": 32715,
+        "expected_bytes": 32715,
+        "sha256": "50e3f423333aea0af0acae48159fc05e7f25c5263f2dc80456bae299bd303e0c",
+        "expected_sha256": "50e3f423333aea0af0acae48159fc05e7f25c5263f2dc80456bae299bd303e0c",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-root-html-text-paint-tailnet-sync-2026-10-18/README.html",
+        "url": "http://127.0.0.1:8768/spinon/internal/evidence/c04-12-root-html-text-paint-tailnet-sync-2026-10-18/README.html",
+        "status": 200,
+        "bytes": 28896,
+        "expected_bytes": 28896,
+        "sha256": "2acbf6c2069586df5a439464904dc2152adc232c8618c9244ee4d3f2c9c4268b",
+        "expected_sha256": "2acbf6c2069586df5a439464904dc2152adc232c8618c9244ee4d3f2c9c4268b",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-root-html-text-paint-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+        "url": "http://127.0.0.1:8768/spinon/internal/evidence/c04-12-root-html-text-paint-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+        "status": 200,
+        "bytes": 30954,
+        "expected_bytes": 30954,
+        "sha256": "ba75b73c413d2418e77fb0480b5d703aaeaea9385faea246a1e2baf95838e9c3",
+        "expected_sha256": "ba75b73c413d2418e77fb0480b5d703aaeaea9385faea246a1e2baf95838e9c3",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-root-html-text-paint-tailnet-sync-2026-10-18/render-build-result.html",
+        "url": "http://127.0.0.1:8768/spinon/internal/evidence/c04-12-root-html-text-paint-tailnet-sync-2026-10-18/render-build-result.html",
+        "status": 200,
+        "bytes": 25595,
+        "expected_bytes": 25595,
+        "sha256": "9e48c5a2980555709c09f13cb2dd694550f42059ca268774140f79a92e44e2d9",
+        "expected_sha256": "9e48c5a2980555709c09f13cb2dd694550f42059ca268774140f79a92e44e2d9",
+        "matches": true
+      },
+      {
+        "path": "logo.svg",
+        "url": "http://127.0.0.1:8768/spinon/logo.svg",
+        "status": 200,
+        "bytes": 568,
+        "expected_bytes": 568,
+        "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+        "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+        "matches": true
+      },
+      {
+        "path": "plan/c04-12-page-scale-rendering.html",
+        "url": "http://127.0.0.1:8768/spinon/plan/c04-12-page-scale-rendering.html",
+        "status": 200,
+        "bytes": 30754,
+        "expected_bytes": 30754,
+        "sha256": "a8b379e6a2d1c40d7a98ec06ae5828074e730b464f85b09ab589e1efe05f2521",
+        "expected_sha256": "a8b379e6a2d1c40d7a98ec06ae5828074e730b464f85b09ab589e1efe05f2521",
+        "matches": true
+      },
+      {
+        "path": "plan/c04-12-root-canvas-color-scheme.html",
+        "url": "http://127.0.0.1:8768/spinon/plan/c04-12-root-canvas-color-scheme.html",
+        "status": 200,
+        "bytes": 31846,
+        "expected_bytes": 31846,
+        "sha256": "aed8b896d74c013fee01721ed469fc4c7da008d8b1ba6ff1b5967aba57a0af5d",
+        "expected_sha256": "aed8b896d74c013fee01721ed469fc4c7da008d8b1ba6ff1b5967aba57a0af5d",
+        "matches": true
+      },
+      {
+        "path": "plan/c04-12-root-html-text-paint.html",
+        "url": "http://127.0.0.1:8768/spinon/plan/c04-12-root-html-text-paint.html",
+        "status": 200,
+        "bytes": 39838,
+        "expected_bytes": 39838,
+        "sha256": "c4c6a2f021b4f36f4c20b3b3a8aee908c36cf8c9ef14bf0556acd3e2b7636fd6",
+        "expected_sha256": "c4c6a2f021b4f36f4c20b3b3a8aee908c36cf8c9ef14bf0556acd3e2b7636fd6",
+        "matches": true
+      },
+      {
+        "path": "plan/c04-12-visual-viewport.html",
+        "url": "http://127.0.0.1:8768/spinon/plan/c04-12-visual-viewport.html",
+        "status": 200,
+        "bytes": 30080,
+        "expected_bytes": 30080,
+        "sha256": "1d0e7ceb70aa09e89b8ccdde06fb0263c1c62d99a706507504a35cc9fd881fce",
+        "expected_sha256": "1d0e7ceb70aa09e89b8ccdde06fb0263c1c62d99a706507504a35cc9fd881fce",
+        "matches": true
+      },
+      {
+        "path": "plan/c04-root-html-document-environment.html",
+        "url": "http://127.0.0.1:8768/spinon/plan/c04-root-html-document-environment.html",
+        "status": 200,
+        "bytes": 46237,
+        "expected_bytes": 46237,
+        "sha256": "6f7be69ac35949131fc1b2109bf858fa459b5a857ec4ffa192c6df4d1f955615",
+        "expected_sha256": "6f7be69ac35949131fc1b2109bf858fa459b5a857ec4ffa192c6df4d1f955615",
+        "matches": true
+      },
+      {
+        "path": "roadmap.html",
+        "url": "http://127.0.0.1:8768/spinon/roadmap.html",
+        "status": 200,
+        "bytes": 137261,
+        "expected_bytes": 137261,
+        "sha256": "f5a5e6dbc7a9e34bdb7d8942a2a59a0fdc8e0440b26d4bdf17be03209b190f06",
+        "expected_sha256": "f5a5e6dbc7a9e34bdb7d8942a2a59a0fdc8e0440b26d4bdf17be03209b190f06",
+        "matches": true
+      },
+      {
+        "path": "roadmap.svg",
+        "url": "http://127.0.0.1:8768/spinon/roadmap.svg",
+        "status": 200,
+        "bytes": 4835,
+        "expected_bytes": 4835,
+        "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+        "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+        "matches": true
+      },
+      {
+        "path": "static/css/styles.8d918fd78e.css",
+        "url": "http://127.0.0.1:8768/spinon/static/css/styles.8d918fd78e.css",
+        "status": 200,
+        "bytes": 73952,
+        "expected_bytes": 73952,
+        "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+        "expected_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+        "matches": true
+      },
+      {
+        "path": "static/image/android-api37.f4e4045570.png",
+        "url": "http://127.0.0.1:8768/spinon/static/image/android-api37.f4e4045570.png",
+        "status": 200,
+        "bytes": 87663,
+        "expected_bytes": 87663,
+        "sha256": "4ac824a3729425bb34f3dc4c1fbecd1eae0e1e55ef2a4b5ed2e29132c7fd7a50",
+        "expected_sha256": "4ac824a3729425bb34f3dc4c1fbecd1eae0e1e55ef2a4b5ed2e29132c7fd7a50",
+        "matches": true
+      },
+      {
+        "path": "static/image/chrome-agent-browser-iphone12-scale-half.43db41fdbd.png",
+        "url": "http://127.0.0.1:8768/spinon/static/image/chrome-agent-browser-iphone12-scale-half.43db41fdbd.png",
+        "status": 200,
+        "bytes": 25048,
+        "expected_bytes": 25048,
+        "sha256": "43b3ff2baf260e9b76467a0970f57e17a362de4b29e07fef6cb2c569ede15d7a",
+        "expected_sha256": "43b3ff2baf260e9b76467a0970f57e17a362de4b29e07fef6cb2c569ede15d7a",
+        "matches": true
+      },
+      {
+        "path": "static/image/chrome-agent-browser-iphone12-scale-two.6c05045e76.png",
+        "url": "http://127.0.0.1:8768/spinon/static/image/chrome-agent-browser-iphone12-scale-two.6c05045e76.png",
+        "status": 200,
+        "bytes": 28975,
+        "expected_bytes": 28975,
+        "sha256": "c2973c24ba6a47c68400497086707efa60a819d2e9e81775b03e5a9b0296428b",
+        "expected_sha256": "c2973c24ba6a47c68400497086707efa60a819d2e9e81775b03e5a9b0296428b",
+        "matches": true
+      },
+      {
+        "path": "static/image/chrome-agent-browser-iphone12-width-500-scale-one.4109664d55.png",
+        "url": "http://127.0.0.1:8768/spinon/static/image/chrome-agent-browser-iphone12-width-500-scale-one.4109664d55.png",
+        "status": 200,
+        "bytes": 26478,
+        "expected_bytes": 26478,
+        "sha256": "851635058cf167320f35ebc83d9673d5aaf7eb2497cc429a7a4a2a09673701c1",
+        "expected_sha256": "851635058cf167320f35ebc83d9673d5aaf7eb2497cc429a7a4a2a09673701c1",
+        "matches": true
+      },
+      {
+        "path": "static/image/ios-26.2-iphone17pro.a73b7bf27b.png",
+        "url": "http://127.0.0.1:8768/spinon/static/image/ios-26.2-iphone17pro.a73b7bf27b.png",
+        "status": 200,
+        "bytes": 127457,
+        "expected_bytes": 127457,
+        "sha256": "d02e2d04d7034b4d8ee1cd02e120a3d1335d9e299c24fc7838cce33cd5bb252e",
+        "expected_sha256": "d02e2d04d7034b4d8ee1cd02e120a3d1335d9e299c24fc7838cce33cd5bb252e",
+        "matches": true
+      },
+      {
+        "path": "static/image/ios-iphone17pro-simulator.362c471bc8.png",
+        "url": "http://127.0.0.1:8768/spinon/static/image/ios-iphone17pro-simulator.362c471bc8.png",
+        "status": 200,
+        "bytes": 138932,
+        "expected_bytes": 138932,
+        "sha256": "2bd2083b4e9cbc6d2dc0b5996bd445f5e87c7dc12378ed7a090ff6ae8d297555",
+        "expected_sha256": "2bd2083b4e9cbc6d2dc0b5996bd445f5e87c7dc12378ed7a090ff6ae8d297555",
+        "matches": true
+      },
+      {
+        "path": "static/image/tailnet-counter-agent-browser.82c1d88bfa.png",
+        "url": "http://127.0.0.1:8768/spinon/static/image/tailnet-counter-agent-browser.82c1d88bfa.png",
+        "status": 200,
+        "bytes": 114827,
+        "expected_bytes": 114827,
+        "sha256": "1be2471df1cdb41c685c9cb9fce0c3a30d65c57b399701763d3fe408c6b25c96",
+        "expected_sha256": "1be2471df1cdb41c685c9cb9fce0c3a30d65c57b399701763d3fe408c6b25c96",
+        "matches": true
+      },
+      {
+        "path": "static/image/tailnet-page-scale-evidence-agent-browser.23a6fbeeda.png",
+        "url": "http://127.0.0.1:8768/spinon/static/image/tailnet-page-scale-evidence-agent-browser.23a6fbeeda.png",
+        "status": 200,
+        "bytes": 723767,
+        "expected_bytes": 723767,
+        "sha256": "86ae503212fb268c58d65d69c2802824cc544d8cb616e57cfc629fe2b215d3ff",
+        "expected_sha256": "86ae503212fb268c58d65d69c2802824cc544d8cb616e57cfc629fe2b215d3ff",
+        "matches": true
+      },
+      {
+        "path": "static/image/tailnet-roadmap-agent-browser.46c8d92008.png",
+        "url": "http://127.0.0.1:8768/spinon/static/image/tailnet-roadmap-agent-browser.46c8d92008.png",
+        "status": 200,
+        "bytes": 258586,
+        "expected_bytes": 258586,
+        "sha256": "1ba883f83b04979e9cc4194a8f3ef4138bb05083af90f127d48b1f6b078e1f26",
+        "expected_sha256": "1ba883f83b04979e9cc4194a8f3ef4138bb05083af90f127d48b1f6b078e1f26",
+        "matches": true
+      },
+      {
+        "path": "static/image/tailnet-status-c04-12-agent-browser.f8a374e4bf.png",
+        "url": "http://127.0.0.1:8768/spinon/static/image/tailnet-status-c04-12-agent-browser.f8a374e4bf.png",
+        "status": 200,
+        "bytes": 213378,
+        "expected_bytes": 213378,
+        "sha256": "e9538aed0a92761b28ae46b0f0913988df4eaa38bcdea52894caa67bc7b4126e",
+        "expected_sha256": "e9538aed0a92761b28ae46b0f0913988df4eaa38bcdea52894caa67bc7b4126e",
+        "matches": true
+      },
+      {
+        "path": "static/image/tailnet-status-page-scale-agent-browser.e57e07e0de.png",
+        "url": "http://127.0.0.1:8768/spinon/static/image/tailnet-status-page-scale-agent-browser.e57e07e0de.png",
+        "status": 200,
+        "bytes": 208026,
+        "expected_bytes": 208026,
+        "sha256": "4e6f0c6e763dcf37818d14c1a9fcb59075c43149e6b1041f5b78b5127ee9bc0b",
+        "expected_sha256": "4e6f0c6e763dcf37818d14c1a9fcb59075c43149e6b1041f5b78b5127ee9bc0b",
+        "matches": true
+      },
+      {
+        "path": "static/js/a.877e354479.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/a.877e354479.js",
+        "status": 200,
+        "bytes": 217085,
+        "expected_bytes": 217085,
+        "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+        "expected_sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+        "matches": true
+      },
+      {
+        "path": "static/js/a.877e354479.js.LICENSE.txt",
+        "url": "http://127.0.0.1:8768/spinon/static/js/a.877e354479.js.LICENSE.txt",
+        "status": 200,
+        "bytes": 384,
+        "expected_bytes": 384,
+        "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+        "expected_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/i.25208e7c92.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/i.25208e7c92.js",
+        "status": 200,
+        "bytes": 100,
+        "expected_bytes": 100,
+        "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+        "expected_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-059bac22a6b5.0f217f69b1.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-059bac22a6b5.0f217f69b1.js",
+        "status": 200,
+        "bytes": 9276,
+        "expected_bytes": 9276,
+        "sha256": "951ad83c9432196ec9ffd08420ee1a15b2b7ea1c3048aa902edcda3550208246",
+        "expected_sha256": "951ad83c9432196ec9ffd08420ee1a15b2b7ea1c3048aa902edcda3550208246",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-094ebbcc351a.8f8ff21c5c.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-094ebbcc351a.8f8ff21c5c.js",
+        "status": 200,
+        "bytes": 11676,
+        "expected_bytes": 11676,
+        "sha256": "0fb8f48c7b67c2bb0fb4ccf5a15c00034eb1ec4332855f89d1aee3e9b01b8bc6",
+        "expected_sha256": "0fb8f48c7b67c2bb0fb4ccf5a15c00034eb1ec4332855f89d1aee3e9b01b8bc6",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-10c6e6a69971.d084ba4503.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-10c6e6a69971.d084ba4503.js",
+        "status": 200,
+        "bytes": 12025,
+        "expected_bytes": 12025,
+        "sha256": "458d6244015f831a51a368e6e87d12301d852d9ae2f470e174335e73fdad601d",
+        "expected_sha256": "458d6244015f831a51a368e6e87d12301d852d9ae2f470e174335e73fdad601d",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-4ad8775d68c3.1fae072d2f.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-4ad8775d68c3.1fae072d2f.js",
+        "status": 200,
+        "bytes": 7138,
+        "expected_bytes": 7138,
+        "sha256": "52958de7edf390ea70bbd45cab1733a104fb9ffd6fba7e006b0b5cf62e4fff01",
+        "expected_sha256": "52958de7edf390ea70bbd45cab1733a104fb9ffd6fba7e006b0b5cf62e4fff01",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-500edb8f83ad.124b7812d9.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-500edb8f83ad.124b7812d9.js",
+        "status": 200,
+        "bytes": 7170,
+        "expected_bytes": 7170,
+        "sha256": "028003e664a3dffda81515a61ad135c8b0ea01df10f4c442d1977be5ca0a7b8b",
+        "expected_sha256": "028003e664a3dffda81515a61ad135c8b0ea01df10f4c442d1977be5ca0a7b8b",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-62564aea649f.4e56bc404e.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-62564aea649f.4e56bc404e.js",
+        "status": 200,
+        "bytes": 18984,
+        "expected_bytes": 18984,
+        "sha256": "0cfd0b84417ea5b3db83182a6eeab5b31b686b112d1e18e210a7d642c969683b",
+        "expected_sha256": "0cfd0b84417ea5b3db83182a6eeab5b31b686b112d1e18e210a7d642c969683b",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-6c33a3943990.723fec19b9.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-6c33a3943990.723fec19b9.js",
+        "status": 200,
+        "bytes": 392442,
+        "expected_bytes": 392442,
+        "sha256": "501cc40cea16f7f7c3d7f8c09b3b46853ff725d96d29cc1dbf47cbd5ab7bb638",
+        "expected_sha256": "501cc40cea16f7f7c3d7f8c09b3b46853ff725d96d29cc1dbf47cbd5ab7bb638",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-77edbaf2cd75.43f5966a7a.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-77edbaf2cd75.43f5966a7a.js",
+        "status": 200,
+        "bytes": 10678,
+        "expected_bytes": 10678,
+        "sha256": "1db9c90df31adc3ea008750be24200c0b3918f0da01c4b39fe62fecb63c484ad",
+        "expected_sha256": "1db9c90df31adc3ea008750be24200c0b3918f0da01c4b39fe62fecb63c484ad",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-7ff1bc4fef68.36cf849ba0.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-7ff1bc4fef68.36cf849ba0.js",
+        "status": 200,
+        "bytes": 30217,
+        "expected_bytes": 30217,
+        "sha256": "b909da73e4f27efe06181cb4513e8bccab6ecb6452402c6854b55e2c55cf2309",
+        "expected_sha256": "b909da73e4f27efe06181cb4513e8bccab6ecb6452402c6854b55e2c55cf2309",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-894aa0843f49.04dfc831bd.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-894aa0843f49.04dfc831bd.js",
+        "status": 200,
+        "bytes": 16887,
+        "expected_bytes": 16887,
+        "sha256": "9bce7ae83f98cf7b651e7a7edaf9849962ca65c479e7759d788498a2c658f3d1",
+        "expected_sha256": "9bce7ae83f98cf7b651e7a7edaf9849962ca65c479e7759d788498a2c658f3d1",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-8a23293a317b.c1612c2695.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-8a23293a317b.c1612c2695.js",
+        "status": 200,
+        "bytes": 9368,
+        "expected_bytes": 9368,
+        "sha256": "723eb06715ff6f57b3c3115f7d0809adff997be25de62240f98de4beed8ef6b8",
+        "expected_sha256": "723eb06715ff6f57b3c3115f7d0809adff997be25de62240f98de4beed8ef6b8",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-a07f3c9d45d8.0f9bfd0827.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-a07f3c9d45d8.0f9bfd0827.js",
+        "status": 200,
+        "bytes": 10642,
+        "expected_bytes": 10642,
+        "sha256": "efcc2e978a1447a4e14001427481601d21e6970eafc7f6e9b50e908f6a84ea50",
+        "expected_sha256": "efcc2e978a1447a4e14001427481601d21e6970eafc7f6e9b50e908f6a84ea50",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-a1017bdf23ca.6fae7e484e.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-a1017bdf23ca.6fae7e484e.js",
+        "status": 200,
+        "bytes": 177745,
+        "expected_bytes": 177745,
+        "sha256": "22a5aca9747ba4255e06b07a907c3359ba87ab51859e1334c28578a11b906bec",
+        "expected_sha256": "22a5aca9747ba4255e06b07a907c3359ba87ab51859e1334c28578a11b906bec",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-b8496d571851.0baf963269.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-b8496d571851.0baf963269.js",
+        "status": 200,
+        "bytes": 19445,
+        "expected_bytes": 19445,
+        "sha256": "08daa98043df3b66a1a9c71501a9bd407473bf19de10e65a29065eb2b4475ef6",
+        "expected_sha256": "08daa98043df3b66a1a9c71501a9bd407473bf19de10e65a29065eb2b4475ef6",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-bb23d30ce055.08a36e4486.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-bb23d30ce055.08a36e4486.js",
+        "status": 200,
+        "bytes": 2041,
+        "expected_bytes": 2041,
+        "sha256": "2d2e5da56c854a5dfe28ab08a34a8a34816f6ca215059d84d1e1d4609266c6fb",
+        "expected_sha256": "2d2e5da56c854a5dfe28ab08a34a8a34816f6ca215059d84d1e1d4609266c6fb",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-bf1bdca76546.2e328828fe.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-bf1bdca76546.2e328828fe.js",
+        "status": 200,
+        "bytes": 2218,
+        "expected_bytes": 2218,
+        "sha256": "f0b451d73142368599429114b6f3eb03cd67ff56cb05460f357504aadfc608e6",
+        "expected_sha256": "f0b451d73142368599429114b6f3eb03cd67ff56cb05460f357504aadfc608e6",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-d0d2337d7d4c.dcab42854f.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-d0d2337d7d4c.dcab42854f.js",
+        "status": 200,
+        "bytes": 9787,
+        "expected_bytes": 9787,
+        "sha256": "1b6334d3058afcba08a0480c4b977d7840e7d15926f56e290c80a9bf92b092dd",
+        "expected_sha256": "1b6334d3058afcba08a0480c4b977d7840e7d15926f56e290c80a9bf92b092dd",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-dfe593960693.b79e4aa33e.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-dfe593960693.b79e4aa33e.js",
+        "status": 200,
+        "bytes": 9217,
+        "expected_bytes": 9217,
+        "sha256": "6df91b2b292896c54defb633235876426b2854518adf0e725a52be7e882c0405",
+        "expected_sha256": "6df91b2b292896c54defb633235876426b2854518adf0e725a52be7e882c0405",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-ea34262d0652.aed3194ae3.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-ea34262d0652.aed3194ae3.js",
+        "status": 200,
+        "bytes": 25698,
+        "expected_bytes": 25698,
+        "sha256": "dc6492d9a73fbaa8169131f5dc0b092eef3c19c1968ad767e80cb574c2059416",
+        "expected_sha256": "dc6492d9a73fbaa8169131f5dc0b092eef3c19c1968ad767e80cb574c2059416",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-f008be36a2c6.f917e53c85.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-f008be36a2c6.f917e53c85.js",
+        "status": 200,
+        "bytes": 12179,
+        "expected_bytes": 12179,
+        "sha256": "fd0422df70b9da8c0b4e11962cf4895a07c5d6fb066bf08a2efd0e08dc419fde",
+        "expected_sha256": "fd0422df70b9da8c0b4e11962cf4895a07c5d6fb066bf08a2efd0e08dc419fde",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-f7ef4ddf795f.5fd9d26af5.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-f7ef4ddf795f.5fd9d26af5.js",
+        "status": 200,
+        "bytes": 9229,
+        "expected_bytes": 9229,
+        "sha256": "6b5052fdaf3e2c791b1f802d96c0db3cc2f51866a346640be17f2f510c4c24cd",
+        "expected_sha256": "6b5052fdaf3e2c791b1f802d96c0db3cc2f51866a346640be17f2f510c4c24cd",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-faffa23ad0bd.1ff37a0a2c.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/async/route-faffa23ad0bd.1ff37a0a2c.js",
+        "status": 200,
+        "bytes": 10256,
+        "expected_bytes": 10256,
+        "sha256": "9cd8bd38aedfc2bf6bfb0610e31b0282c3ecfb39344728c9b92e037a1719b847",
+        "expected_sha256": "9cd8bd38aedfc2bf6bfb0610e31b0282c3ecfb39344728c9b92e037a1719b847",
+        "matches": true
+      },
+      {
+        "path": "static/js/index.5a6bee2a19.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/index.5a6bee2a19.js",
+        "status": 200,
+        "bytes": 44280,
+        "expected_bytes": 44280,
+        "sha256": "81c0fb6b1aa89ff7ae701ae96f543b3e4eba1812ce8ac629b865febf7cbc6832",
+        "expected_sha256": "81c0fb6b1aa89ff7ae701ae96f543b3e4eba1812ce8ac629b865febf7cbc6832",
+        "matches": true
+      },
+      {
+        "path": "static/js/lib-react.9cdf8f49ce.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/lib-react.9cdf8f49ce.js",
+        "status": 200,
+        "bytes": 218364,
+        "expected_bytes": 218364,
+        "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+        "expected_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+        "matches": true
+      },
+      {
+        "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+        "url": "http://127.0.0.1:8768/spinon/static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+        "status": 200,
+        "bytes": 1209,
+        "expected_bytes": 1209,
+        "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+        "expected_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+        "matches": true
+      },
+      {
+        "path": "static/js/lib-router.1e14e568cb.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/lib-router.1e14e568cb.js",
+        "status": 200,
+        "bytes": 35370,
+        "expected_bytes": 35370,
+        "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+        "expected_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+        "matches": true
+      },
+      {
+        "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+        "url": "http://127.0.0.1:8768/spinon/static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+        "status": 200,
+        "bytes": 222,
+        "expected_bytes": 222,
+        "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+        "expected_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+        "matches": true
+      },
+      {
+        "path": "static/js/styles.2da0941fcb.js",
+        "url": "http://127.0.0.1:8768/spinon/static/js/styles.2da0941fcb.js",
+        "status": 200,
+        "bytes": 472,
+        "expected_bytes": 472,
+        "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+        "expected_sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+        "matches": true
+      },
+      {
+        "path": "static/search_index.ko.467d49a8.json",
+        "url": "http://127.0.0.1:8768/spinon/static/search_index.ko.467d49a8.json",
+        "status": 200,
+        "bytes": 438490,
+        "expected_bytes": 438490,
+        "sha256": "467d49a8b27474102612906a5a004706f4e10123835bb8661ca89508cb6b8f14",
+        "expected_sha256": "467d49a8b27474102612906a5a004706f4e10123835bb8661ca89508cb6b8f14",
+        "matches": true
+      }
+    ],
+    "tailnet": [
+      {
+        "path": "404.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/404.html",
+        "status": 200,
+        "bytes": 8512,
+        "expected_bytes": 8512,
+        "sha256": "0662cff27b1b0e4461e911d91563c5eb2fcc277daec658ba96cf1f6ff495c35e",
+        "expected_sha256": "0662cff27b1b0e4461e911d91563c5eb2fcc277daec658ba96cf1f6ff495c35e",
+        "matches": true
+      },
+      {
+        "path": "STATUS.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+        "status": 200,
+        "bytes": 372900,
+        "expected_bytes": 372900,
+        "sha256": "9e6777e1bd648b7d735530df9fd594e16b650c6bd47cd351a4b242d0d2140b5d",
+        "expected_sha256": "9e6777e1bd648b7d735530df9fd594e16b650c6bd47cd351a4b242d0d2140b5d",
+        "matches": true
+      },
+      {
+        "path": "c10-3-3-android-physical-2026-10-11.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/c10-3-3-android-physical-2026-10-11.png",
+        "status": 200,
+        "bytes": 194109,
+        "expected_bytes": 194109,
+        "sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775",
+        "expected_sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-depth-safety-2026-10-11.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/c12-4-android-api37-depth-safety-2026-10-11.png",
+        "status": 200,
+        "bytes": 72745,
+        "expected_bytes": 72745,
+        "sha256": "33704756e2d8758d73165b63d9fa67977e2c73965d057263d45821c7a416fdae",
+        "expected_sha256": "33704756e2d8758d73165b63d9fa67977e2c73965d057263d45821c7a416fdae",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-depth-safety-matrix-2026-10-11.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/c12-4-android-api37-depth-safety-matrix-2026-10-11.png",
+        "status": 200,
+        "bytes": 71213,
+        "expected_bytes": 71213,
+        "sha256": "db8f307c59f677cde715075c0efad8ff9056bd7d39a424b5f912da326a1f06cc",
+        "expected_sha256": "db8f307c59f677cde715075c0efad8ff9056bd7d39a424b5f912da326a1f06cc",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-emulator-2026-10-11.log",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/c12-4-android-api37-emulator-2026-10-11.log",
+        "status": 200,
+        "bytes": 6079,
+        "expected_bytes": 6079,
+        "sha256": "77adad2002dbeb251d90ce58ba3778e16fd4571601c90b4de407ba9db22b8259",
+        "expected_sha256": "77adad2002dbeb251d90ce58ba3778e16fd4571601c90b4de407ba9db22b8259",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-emulator.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/c12-4-android-api37-emulator.png",
+        "status": 200,
+        "bytes": 79987,
+        "expected_bytes": 79987,
+        "sha256": "86d8840dc425d99b7cf7e161ef17089d68bc148da8bb7cafe892cf654201f8e5",
+        "expected_sha256": "86d8840dc425d99b7cf7e161ef17089d68bc148da8bb7cafe892cf654201f8e5",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-matrix-2026-10-11.json",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/c12-4-android-api37-matrix-2026-10-11.json",
+        "status": 200,
+        "bytes": 926,
+        "expected_bytes": 926,
+        "sha256": "4b0f514d3f6b40cdb2dad06a089641c8cd0af8512669265ad9d5f5b9c2a16be2",
+        "expected_sha256": "4b0f514d3f6b40cdb2dad06a089641c8cd0af8512669265ad9d5f5b9c2a16be2",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-matrix-2026-10-11.log",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/c12-4-android-api37-matrix-2026-10-11.log",
+        "status": 200,
+        "bytes": 45719,
+        "expected_bytes": 45719,
+        "sha256": "b8f1ed1a8f1bae6d08202e44ee5e24e4c3befa916c5262a5915f6cdf664f6eca",
+        "expected_sha256": "b8f1ed1a8f1bae6d08202e44ee5e24e4c3befa916c5262a5915f6cdf664f6eca",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-matrix-2026-10-11.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/c12-4-android-api37-matrix-2026-10-11.png",
+        "status": 200,
+        "bytes": 71121,
+        "expected_bytes": 71121,
+        "sha256": "a56c210a9b45f2289e4595b86430a496cfabc8177f21499ee5d63405ca45b23f",
+        "expected_sha256": "a56c210a9b45f2289e4595b86430a496cfabc8177f21499ee5d63405ca45b23f",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.log",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.log",
+        "status": 200,
+        "bytes": 43037,
+        "expected_bytes": 43037,
+        "sha256": "23920b6b1a2a274e609d028b4be8c50cb3811f82a414a95a7820b556390e7bf0",
+        "expected_sha256": "23920b6b1a2a274e609d028b4be8c50cb3811f82a414a95a7820b556390e7bf0",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.png",
+        "status": 200,
+        "bytes": 70563,
+        "expected_bytes": 70563,
+        "sha256": "dc5b919381d4fe3f71e564a1f24953a99446fd92d6902a4de0f8ee79eb9c2aa6",
+        "expected_sha256": "dc5b919381d4fe3f71e564a1f24953a99446fd92d6902a4de0f8ee79eb9c2aa6",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.log",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/c12-4-android-api37-matrix-reserve-rerun-2026-10-11.log",
+        "status": 200,
+        "bytes": 42930,
+        "expected_bytes": 42930,
+        "sha256": "967b0572b40411b115e9a7ddf02f424a2e69948ec24d9ea5dda3158650b5269b",
+        "expected_sha256": "967b0572b40411b115e9a7ddf02f424a2e69948ec24d9ea5dda3158650b5269b",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/c12-4-android-api37-matrix-reserve-rerun-2026-10-11.png",
+        "status": 200,
+        "bytes": 71247,
+        "expected_bytes": 71247,
+        "sha256": "183b3e38acf0bdd449a2d8613b2ce361afff558a8fec62a8c7a6aeb7deed28f5",
+        "expected_sha256": "183b3e38acf0bdd449a2d8613b2ce361afff558a8fec62a8c7a6aeb7deed28f5",
+        "matches": true
+      },
+      {
+        "path": "c12-4-android-sm-s731n-android16-vulkan.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/c12-4-android-sm-s731n-android16-vulkan.png",
+        "status": 200,
+        "bytes": 110882,
+        "expected_bytes": 110882,
+        "sha256": "a60c2db2fa7ad194c9a210147c3827ed0ee11e831bf168da5297eb3df8a60dd4",
+        "expected_sha256": "a60c2db2fa7ad194c9a210147c3827ed0ee11e831bf168da5297eb3df8a60dd4",
+        "matches": true
+      },
+      {
+        "path": "c12-4-ios-iphone-17-pro-depth-safety-2026-10-11.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/c12-4-ios-iphone-17-pro-depth-safety-2026-10-11.png",
+        "status": 200,
+        "bytes": 142385,
+        "expected_bytes": 142385,
+        "sha256": "bef6d91b248a580d120d0b47df26800b2ed218addd94674409deaecfc2eaf814",
+        "expected_sha256": "bef6d91b248a580d120d0b47df26800b2ed218addd94674409deaecfc2eaf814",
+        "matches": true
+      },
+      {
+        "path": "c12-4-ios-iphone-17-pro-simulator.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/c12-4-ios-iphone-17-pro-simulator.png",
+        "status": 200,
+        "bytes": 143083,
+        "expected_bytes": 143083,
+        "sha256": "650f17bb3edda780d32f53f3980f417b7c5b340d862865ef5e0b4250091e372b",
+        "expected_sha256": "650f17bb3edda780d32f53f3980f417b7c5b340d862865ef5e0b4250091e372b",
+        "matches": true
+      },
+      {
+        "path": "c12-4-runtime-evidence.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/c12-4-runtime-evidence.html",
+        "status": 200,
+        "bytes": 14589,
+        "expected_bytes": 14589,
+        "sha256": "64b118c6a84e690b4722d1e75d8b4e6d31588919e5b4a51a229e96808698aee7",
+        "expected_sha256": "64b118c6a84e690b4722d1e75d8b4e6d31588919e5b4a51a229e96808698aee7",
+        "matches": true
+      },
+      {
+        "path": "c12-4-wpt-official-run-2026-10-11.log",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/c12-4-wpt-official-run-2026-10-11.log",
+        "status": 200,
+        "bytes": 356,
+        "expected_bytes": 356,
+        "sha256": "9f9b4bf38f27fef6cb27d720726389f1bae382e88a383919e26dcb18cbfe6fab",
+        "expected_sha256": "9f9b4bf38f27fef6cb27d720726389f1bae382e88a383919e26dcb18cbfe6fab",
+        "matches": true
+      },
+      {
+        "path": "icon.svg",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/icon.svg",
+        "status": 200,
+        "bytes": 638,
+        "expected_bytes": 638,
+        "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+        "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+        "matches": true
+      },
+      {
+        "path": "internal/0077-c04-12-root-html-document.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/0077-c04-12-root-html-document.html",
+        "status": 200,
+        "bytes": 47254,
+        "expected_bytes": 47254,
+        "sha256": "a48dbb96b28d4a8347868089334116ba9eba144559f88917432fdc35466b048e",
+        "expected_sha256": "a48dbb96b28d4a8347868089334116ba9eba144559f88917432fdc35466b048e",
+        "matches": true
+      },
+      {
+        "path": "internal/0080-c04-12-root-html-direct-text-paint.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/0080-c04-12-root-html-direct-text-paint.html",
+        "status": 200,
+        "bytes": 39010,
+        "expected_bytes": 39010,
+        "sha256": "f2ecca51444e67f54fec6d5f16d78748a8a7b99106e643adce4fd7c514fd4c71",
+        "expected_sha256": "f2ecca51444e67f54fec6d5f16d78748a8a7b99106e643adce4fd7c514fd4c71",
+        "matches": true
+      },
+      {
+        "path": "internal/README.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/README.html",
+        "status": 200,
+        "bytes": 172316,
+        "expected_bytes": 172316,
+        "sha256": "8c2c81294620497932441c97c04e9142a860096d9b9fd5980929896cc63ebe1e",
+        "expected_sha256": "8c2c81294620497932441c97c04e9142a860096d9b9fd5980929896cc63ebe1e",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/README.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-page-scale-rendering-2026-10-17/README.html",
+        "status": 200,
+        "bytes": 32698,
+        "expected_bytes": 32698,
+        "sha256": "7d6df2cff2d5670f52e6ef3dfc1059f29c7c09c71b3b6704cbc9a1a31719618a",
+        "expected_sha256": "7d6df2cff2d5670f52e6ef3dfc1059f29c7c09c71b3b6704cbc9a1a31719618a",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-plan-review-20.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-plan-review-20.html",
+        "status": 200,
+        "bytes": 30013,
+        "expected_bytes": 30013,
+        "sha256": "ce7a5dc8c1eff4a5d59dc49df3c2b4729beadb1c7ed56a996c5fabe68633f923",
+        "expected_sha256": "ce7a5dc8c1eff4a5d59dc49df3c2b4729beadb1c7ed56a996c5fabe68633f923",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-review-20.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-review-20.html",
+        "status": 200,
+        "bytes": 30179,
+        "expected_bytes": 30179,
+        "sha256": "ce4e9315c9eae373f7bb33149042c1f1f9cbe1b1b546715463dd56a1e5d3a1c9",
+        "expected_sha256": "ce4e9315c9eae373f7bb33149042c1f1f9cbe1b1b546715463dd56a1e5d3a1c9",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/pr-delta-review-30.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-page-scale-rendering-2026-10-17/pr-delta-review-30.html",
+        "status": 200,
+        "bytes": 31846,
+        "expected_bytes": 31846,
+        "sha256": "d15b89e10c5ddf95e7f5a394c642523ca9173eff2cde33cbfba3ec1aa97ed91d",
+        "expected_sha256": "d15b89e10c5ddf95e7f5a394c642523ca9173eff2cde33cbfba3ec1aa97ed91d",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/README.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/README.html",
+        "status": 200,
+        "bytes": 31089,
+        "expected_bytes": 31089,
+        "sha256": "fa4cb9acdcfac290ea4ce9904501074105b686c58a08c90685a099430efbdb55",
+        "expected_sha256": "fa4cb9acdcfac290ea4ce9904501074105b686c58a08c90685a099430efbdb55",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+        "status": 200,
+        "bytes": 35644,
+        "expected_bytes": 35644,
+        "sha256": "6c1765c9611476d589acfdadc990aa131c3081525e768a2795ffc78b63a4002a",
+        "expected_sha256": "6c1765c9611476d589acfdadc990aa131c3081525e768a2795ffc78b63a4002a",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/render-build-result.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/render-build-result.html",
+        "status": 200,
+        "bytes": 26209,
+        "expected_bytes": 26209,
+        "sha256": "ece268a2d495f5ba3b91fabab8472cea63b57ece5bf118c8c93a6be35f6d8232",
+        "expected_sha256": "ece268a2d495f5ba3b91fabab8472cea63b57ece5bf118c8c93a6be35f6d8232",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-root-html-text-paint-2026-10-18/README.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-root-html-text-paint-2026-10-18/README.html",
+        "status": 200,
+        "bytes": 36727,
+        "expected_bytes": 36727,
+        "sha256": "1215341b4b54fe098c9813375bec94d76c9b1beafbda7ccd16729d0b3d89425d",
+        "expected_sha256": "1215341b4b54fe098c9813375bec94d76c9b1beafbda7ccd16729d0b3d89425d",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-root-html-text-paint-2026-10-18/implementation-review-20.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-root-html-text-paint-2026-10-18/implementation-review-20.html",
+        "status": 200,
+        "bytes": 32052,
+        "expected_bytes": 32052,
+        "sha256": "2b3cb6f2e4f16775ff94c918711b13a03ffc5d0405e0d1e2438996103d4c46df",
+        "expected_sha256": "2b3cb6f2e4f16775ff94c918711b13a03ffc5d0405e0d1e2438996103d4c46df",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-root-html-text-paint-2026-10-18/pr-delta-review-30.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-root-html-text-paint-2026-10-18/pr-delta-review-30.html",
+        "status": 200,
+        "bytes": 32715,
+        "expected_bytes": 32715,
+        "sha256": "50e3f423333aea0af0acae48159fc05e7f25c5263f2dc80456bae299bd303e0c",
+        "expected_sha256": "50e3f423333aea0af0acae48159fc05e7f25c5263f2dc80456bae299bd303e0c",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-root-html-text-paint-tailnet-sync-2026-10-18/README.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-root-html-text-paint-tailnet-sync-2026-10-18/README.html",
+        "status": 200,
+        "bytes": 28896,
+        "expected_bytes": 28896,
+        "sha256": "2acbf6c2069586df5a439464904dc2152adc232c8618c9244ee4d3f2c9c4268b",
+        "expected_sha256": "2acbf6c2069586df5a439464904dc2152adc232c8618c9244ee4d3f2c9c4268b",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-root-html-text-paint-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-root-html-text-paint-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+        "status": 200,
+        "bytes": 30954,
+        "expected_bytes": 30954,
+        "sha256": "ba75b73c413d2418e77fb0480b5d703aaeaea9385faea246a1e2baf95838e9c3",
+        "expected_sha256": "ba75b73c413d2418e77fb0480b5d703aaeaea9385faea246a1e2baf95838e9c3",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c04-12-root-html-text-paint-tailnet-sync-2026-10-18/render-build-result.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-root-html-text-paint-tailnet-sync-2026-10-18/render-build-result.html",
+        "status": 200,
+        "bytes": 25595,
+        "expected_bytes": 25595,
+        "sha256": "9e48c5a2980555709c09f13cb2dd694550f42059ca268774140f79a92e44e2d9",
+        "expected_sha256": "9e48c5a2980555709c09f13cb2dd694550f42059ca268774140f79a92e44e2d9",
+        "matches": true
+      },
+      {
+        "path": "logo.svg",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/logo.svg",
+        "status": 200,
+        "bytes": 568,
+        "expected_bytes": 568,
+        "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+        "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+        "matches": true
+      },
+      {
+        "path": "plan/c04-12-page-scale-rendering.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c04-12-page-scale-rendering.html",
+        "status": 200,
+        "bytes": 30754,
+        "expected_bytes": 30754,
+        "sha256": "a8b379e6a2d1c40d7a98ec06ae5828074e730b464f85b09ab589e1efe05f2521",
+        "expected_sha256": "a8b379e6a2d1c40d7a98ec06ae5828074e730b464f85b09ab589e1efe05f2521",
+        "matches": true
+      },
+      {
+        "path": "plan/c04-12-root-canvas-color-scheme.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c04-12-root-canvas-color-scheme.html",
+        "status": 200,
+        "bytes": 31846,
+        "expected_bytes": 31846,
+        "sha256": "aed8b896d74c013fee01721ed469fc4c7da008d8b1ba6ff1b5967aba57a0af5d",
+        "expected_sha256": "aed8b896d74c013fee01721ed469fc4c7da008d8b1ba6ff1b5967aba57a0af5d",
+        "matches": true
+      },
+      {
+        "path": "plan/c04-12-root-html-text-paint.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c04-12-root-html-text-paint.html",
+        "status": 200,
+        "bytes": 39838,
+        "expected_bytes": 39838,
+        "sha256": "c4c6a2f021b4f36f4c20b3b3a8aee908c36cf8c9ef14bf0556acd3e2b7636fd6",
+        "expected_sha256": "c4c6a2f021b4f36f4c20b3b3a8aee908c36cf8c9ef14bf0556acd3e2b7636fd6",
+        "matches": true
+      },
+      {
+        "path": "plan/c04-12-visual-viewport.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c04-12-visual-viewport.html",
+        "status": 200,
+        "bytes": 30080,
+        "expected_bytes": 30080,
+        "sha256": "1d0e7ceb70aa09e89b8ccdde06fb0263c1c62d99a706507504a35cc9fd881fce",
+        "expected_sha256": "1d0e7ceb70aa09e89b8ccdde06fb0263c1c62d99a706507504a35cc9fd881fce",
+        "matches": true
+      },
+      {
+        "path": "plan/c04-root-html-document-environment.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c04-root-html-document-environment.html",
+        "status": 200,
+        "bytes": 46237,
+        "expected_bytes": 46237,
+        "sha256": "6f7be69ac35949131fc1b2109bf858fa459b5a857ec4ffa192c6df4d1f955615",
+        "expected_sha256": "6f7be69ac35949131fc1b2109bf858fa459b5a857ec4ffa192c6df4d1f955615",
+        "matches": true
+      },
+      {
+        "path": "roadmap.html",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+        "status": 200,
+        "bytes": 137261,
+        "expected_bytes": 137261,
+        "sha256": "f5a5e6dbc7a9e34bdb7d8942a2a59a0fdc8e0440b26d4bdf17be03209b190f06",
+        "expected_sha256": "f5a5e6dbc7a9e34bdb7d8942a2a59a0fdc8e0440b26d4bdf17be03209b190f06",
+        "matches": true
+      },
+      {
+        "path": "roadmap.svg",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.svg",
+        "status": 200,
+        "bytes": 4835,
+        "expected_bytes": 4835,
+        "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+        "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+        "matches": true
+      },
+      {
+        "path": "static/css/styles.8d918fd78e.css",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/css/styles.8d918fd78e.css",
+        "status": 200,
+        "bytes": 73952,
+        "expected_bytes": 73952,
+        "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+        "expected_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+        "matches": true
+      },
+      {
+        "path": "static/image/android-api37.f4e4045570.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/android-api37.f4e4045570.png",
+        "status": 200,
+        "bytes": 87663,
+        "expected_bytes": 87663,
+        "sha256": "4ac824a3729425bb34f3dc4c1fbecd1eae0e1e55ef2a4b5ed2e29132c7fd7a50",
+        "expected_sha256": "4ac824a3729425bb34f3dc4c1fbecd1eae0e1e55ef2a4b5ed2e29132c7fd7a50",
+        "matches": true
+      },
+      {
+        "path": "static/image/chrome-agent-browser-iphone12-scale-half.43db41fdbd.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/chrome-agent-browser-iphone12-scale-half.43db41fdbd.png",
+        "status": 200,
+        "bytes": 25048,
+        "expected_bytes": 25048,
+        "sha256": "43b3ff2baf260e9b76467a0970f57e17a362de4b29e07fef6cb2c569ede15d7a",
+        "expected_sha256": "43b3ff2baf260e9b76467a0970f57e17a362de4b29e07fef6cb2c569ede15d7a",
+        "matches": true
+      },
+      {
+        "path": "static/image/chrome-agent-browser-iphone12-scale-two.6c05045e76.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/chrome-agent-browser-iphone12-scale-two.6c05045e76.png",
+        "status": 200,
+        "bytes": 28975,
+        "expected_bytes": 28975,
+        "sha256": "c2973c24ba6a47c68400497086707efa60a819d2e9e81775b03e5a9b0296428b",
+        "expected_sha256": "c2973c24ba6a47c68400497086707efa60a819d2e9e81775b03e5a9b0296428b",
+        "matches": true
+      },
+      {
+        "path": "static/image/chrome-agent-browser-iphone12-width-500-scale-one.4109664d55.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/chrome-agent-browser-iphone12-width-500-scale-one.4109664d55.png",
+        "status": 200,
+        "bytes": 26478,
+        "expected_bytes": 26478,
+        "sha256": "851635058cf167320f35ebc83d9673d5aaf7eb2497cc429a7a4a2a09673701c1",
+        "expected_sha256": "851635058cf167320f35ebc83d9673d5aaf7eb2497cc429a7a4a2a09673701c1",
+        "matches": true
+      },
+      {
+        "path": "static/image/ios-26.2-iphone17pro.a73b7bf27b.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/ios-26.2-iphone17pro.a73b7bf27b.png",
+        "status": 200,
+        "bytes": 127457,
+        "expected_bytes": 127457,
+        "sha256": "d02e2d04d7034b4d8ee1cd02e120a3d1335d9e299c24fc7838cce33cd5bb252e",
+        "expected_sha256": "d02e2d04d7034b4d8ee1cd02e120a3d1335d9e299c24fc7838cce33cd5bb252e",
+        "matches": true
+      },
+      {
+        "path": "static/image/ios-iphone17pro-simulator.362c471bc8.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/ios-iphone17pro-simulator.362c471bc8.png",
+        "status": 200,
+        "bytes": 138932,
+        "expected_bytes": 138932,
+        "sha256": "2bd2083b4e9cbc6d2dc0b5996bd445f5e87c7dc12378ed7a090ff6ae8d297555",
+        "expected_sha256": "2bd2083b4e9cbc6d2dc0b5996bd445f5e87c7dc12378ed7a090ff6ae8d297555",
+        "matches": true
+      },
+      {
+        "path": "static/image/tailnet-counter-agent-browser.82c1d88bfa.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/tailnet-counter-agent-browser.82c1d88bfa.png",
+        "status": 200,
+        "bytes": 114827,
+        "expected_bytes": 114827,
+        "sha256": "1be2471df1cdb41c685c9cb9fce0c3a30d65c57b399701763d3fe408c6b25c96",
+        "expected_sha256": "1be2471df1cdb41c685c9cb9fce0c3a30d65c57b399701763d3fe408c6b25c96",
+        "matches": true
+      },
+      {
+        "path": "static/image/tailnet-page-scale-evidence-agent-browser.23a6fbeeda.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/tailnet-page-scale-evidence-agent-browser.23a6fbeeda.png",
+        "status": 200,
+        "bytes": 723767,
+        "expected_bytes": 723767,
+        "sha256": "86ae503212fb268c58d65d69c2802824cc544d8cb616e57cfc629fe2b215d3ff",
+        "expected_sha256": "86ae503212fb268c58d65d69c2802824cc544d8cb616e57cfc629fe2b215d3ff",
+        "matches": true
+      },
+      {
+        "path": "static/image/tailnet-roadmap-agent-browser.46c8d92008.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/tailnet-roadmap-agent-browser.46c8d92008.png",
+        "status": 200,
+        "bytes": 258586,
+        "expected_bytes": 258586,
+        "sha256": "1ba883f83b04979e9cc4194a8f3ef4138bb05083af90f127d48b1f6b078e1f26",
+        "expected_sha256": "1ba883f83b04979e9cc4194a8f3ef4138bb05083af90f127d48b1f6b078e1f26",
+        "matches": true
+      },
+      {
+        "path": "static/image/tailnet-status-c04-12-agent-browser.f8a374e4bf.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/tailnet-status-c04-12-agent-browser.f8a374e4bf.png",
+        "status": 200,
+        "bytes": 213378,
+        "expected_bytes": 213378,
+        "sha256": "e9538aed0a92761b28ae46b0f0913988df4eaa38bcdea52894caa67bc7b4126e",
+        "expected_sha256": "e9538aed0a92761b28ae46b0f0913988df4eaa38bcdea52894caa67bc7b4126e",
+        "matches": true
+      },
+      {
+        "path": "static/image/tailnet-status-page-scale-agent-browser.e57e07e0de.png",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/tailnet-status-page-scale-agent-browser.e57e07e0de.png",
+        "status": 200,
+        "bytes": 208026,
+        "expected_bytes": 208026,
+        "sha256": "4e6f0c6e763dcf37818d14c1a9fcb59075c43149e6b1041f5b78b5127ee9bc0b",
+        "expected_sha256": "4e6f0c6e763dcf37818d14c1a9fcb59075c43149e6b1041f5b78b5127ee9bc0b",
+        "matches": true
+      },
+      {
+        "path": "static/js/a.877e354479.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/a.877e354479.js",
+        "status": 200,
+        "bytes": 217085,
+        "expected_bytes": 217085,
+        "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+        "expected_sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+        "matches": true
+      },
+      {
+        "path": "static/js/a.877e354479.js.LICENSE.txt",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/a.877e354479.js.LICENSE.txt",
+        "status": 200,
+        "bytes": 384,
+        "expected_bytes": 384,
+        "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+        "expected_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/i.25208e7c92.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/i.25208e7c92.js",
+        "status": 200,
+        "bytes": 100,
+        "expected_bytes": 100,
+        "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+        "expected_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-059bac22a6b5.0f217f69b1.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-059bac22a6b5.0f217f69b1.js",
+        "status": 200,
+        "bytes": 9276,
+        "expected_bytes": 9276,
+        "sha256": "951ad83c9432196ec9ffd08420ee1a15b2b7ea1c3048aa902edcda3550208246",
+        "expected_sha256": "951ad83c9432196ec9ffd08420ee1a15b2b7ea1c3048aa902edcda3550208246",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-094ebbcc351a.8f8ff21c5c.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-094ebbcc351a.8f8ff21c5c.js",
+        "status": 200,
+        "bytes": 11676,
+        "expected_bytes": 11676,
+        "sha256": "0fb8f48c7b67c2bb0fb4ccf5a15c00034eb1ec4332855f89d1aee3e9b01b8bc6",
+        "expected_sha256": "0fb8f48c7b67c2bb0fb4ccf5a15c00034eb1ec4332855f89d1aee3e9b01b8bc6",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-10c6e6a69971.d084ba4503.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-10c6e6a69971.d084ba4503.js",
+        "status": 200,
+        "bytes": 12025,
+        "expected_bytes": 12025,
+        "sha256": "458d6244015f831a51a368e6e87d12301d852d9ae2f470e174335e73fdad601d",
+        "expected_sha256": "458d6244015f831a51a368e6e87d12301d852d9ae2f470e174335e73fdad601d",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-4ad8775d68c3.1fae072d2f.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-4ad8775d68c3.1fae072d2f.js",
+        "status": 200,
+        "bytes": 7138,
+        "expected_bytes": 7138,
+        "sha256": "52958de7edf390ea70bbd45cab1733a104fb9ffd6fba7e006b0b5cf62e4fff01",
+        "expected_sha256": "52958de7edf390ea70bbd45cab1733a104fb9ffd6fba7e006b0b5cf62e4fff01",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-500edb8f83ad.124b7812d9.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-500edb8f83ad.124b7812d9.js",
+        "status": 200,
+        "bytes": 7170,
+        "expected_bytes": 7170,
+        "sha256": "028003e664a3dffda81515a61ad135c8b0ea01df10f4c442d1977be5ca0a7b8b",
+        "expected_sha256": "028003e664a3dffda81515a61ad135c8b0ea01df10f4c442d1977be5ca0a7b8b",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-62564aea649f.4e56bc404e.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-62564aea649f.4e56bc404e.js",
+        "status": 200,
+        "bytes": 18984,
+        "expected_bytes": 18984,
+        "sha256": "0cfd0b84417ea5b3db83182a6eeab5b31b686b112d1e18e210a7d642c969683b",
+        "expected_sha256": "0cfd0b84417ea5b3db83182a6eeab5b31b686b112d1e18e210a7d642c969683b",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-6c33a3943990.723fec19b9.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-6c33a3943990.723fec19b9.js",
+        "status": 200,
+        "bytes": 392442,
+        "expected_bytes": 392442,
+        "sha256": "501cc40cea16f7f7c3d7f8c09b3b46853ff725d96d29cc1dbf47cbd5ab7bb638",
+        "expected_sha256": "501cc40cea16f7f7c3d7f8c09b3b46853ff725d96d29cc1dbf47cbd5ab7bb638",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-77edbaf2cd75.43f5966a7a.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-77edbaf2cd75.43f5966a7a.js",
+        "status": 200,
+        "bytes": 10678,
+        "expected_bytes": 10678,
+        "sha256": "1db9c90df31adc3ea008750be24200c0b3918f0da01c4b39fe62fecb63c484ad",
+        "expected_sha256": "1db9c90df31adc3ea008750be24200c0b3918f0da01c4b39fe62fecb63c484ad",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-7ff1bc4fef68.36cf849ba0.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-7ff1bc4fef68.36cf849ba0.js",
+        "status": 200,
+        "bytes": 30217,
+        "expected_bytes": 30217,
+        "sha256": "b909da73e4f27efe06181cb4513e8bccab6ecb6452402c6854b55e2c55cf2309",
+        "expected_sha256": "b909da73e4f27efe06181cb4513e8bccab6ecb6452402c6854b55e2c55cf2309",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-894aa0843f49.04dfc831bd.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-894aa0843f49.04dfc831bd.js",
+        "status": 200,
+        "bytes": 16887,
+        "expected_bytes": 16887,
+        "sha256": "9bce7ae83f98cf7b651e7a7edaf9849962ca65c479e7759d788498a2c658f3d1",
+        "expected_sha256": "9bce7ae83f98cf7b651e7a7edaf9849962ca65c479e7759d788498a2c658f3d1",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-8a23293a317b.c1612c2695.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-8a23293a317b.c1612c2695.js",
+        "status": 200,
+        "bytes": 9368,
+        "expected_bytes": 9368,
+        "sha256": "723eb06715ff6f57b3c3115f7d0809adff997be25de62240f98de4beed8ef6b8",
+        "expected_sha256": "723eb06715ff6f57b3c3115f7d0809adff997be25de62240f98de4beed8ef6b8",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-a07f3c9d45d8.0f9bfd0827.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-a07f3c9d45d8.0f9bfd0827.js",
+        "status": 200,
+        "bytes": 10642,
+        "expected_bytes": 10642,
+        "sha256": "efcc2e978a1447a4e14001427481601d21e6970eafc7f6e9b50e908f6a84ea50",
+        "expected_sha256": "efcc2e978a1447a4e14001427481601d21e6970eafc7f6e9b50e908f6a84ea50",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-a1017bdf23ca.6fae7e484e.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-a1017bdf23ca.6fae7e484e.js",
+        "status": 200,
+        "bytes": 177745,
+        "expected_bytes": 177745,
+        "sha256": "22a5aca9747ba4255e06b07a907c3359ba87ab51859e1334c28578a11b906bec",
+        "expected_sha256": "22a5aca9747ba4255e06b07a907c3359ba87ab51859e1334c28578a11b906bec",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-b8496d571851.0baf963269.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-b8496d571851.0baf963269.js",
+        "status": 200,
+        "bytes": 19445,
+        "expected_bytes": 19445,
+        "sha256": "08daa98043df3b66a1a9c71501a9bd407473bf19de10e65a29065eb2b4475ef6",
+        "expected_sha256": "08daa98043df3b66a1a9c71501a9bd407473bf19de10e65a29065eb2b4475ef6",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-bb23d30ce055.08a36e4486.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-bb23d30ce055.08a36e4486.js",
+        "status": 200,
+        "bytes": 2041,
+        "expected_bytes": 2041,
+        "sha256": "2d2e5da56c854a5dfe28ab08a34a8a34816f6ca215059d84d1e1d4609266c6fb",
+        "expected_sha256": "2d2e5da56c854a5dfe28ab08a34a8a34816f6ca215059d84d1e1d4609266c6fb",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-bf1bdca76546.2e328828fe.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-bf1bdca76546.2e328828fe.js",
+        "status": 200,
+        "bytes": 2218,
+        "expected_bytes": 2218,
+        "sha256": "f0b451d73142368599429114b6f3eb03cd67ff56cb05460f357504aadfc608e6",
+        "expected_sha256": "f0b451d73142368599429114b6f3eb03cd67ff56cb05460f357504aadfc608e6",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-d0d2337d7d4c.dcab42854f.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-d0d2337d7d4c.dcab42854f.js",
+        "status": 200,
+        "bytes": 9787,
+        "expected_bytes": 9787,
+        "sha256": "1b6334d3058afcba08a0480c4b977d7840e7d15926f56e290c80a9bf92b092dd",
+        "expected_sha256": "1b6334d3058afcba08a0480c4b977d7840e7d15926f56e290c80a9bf92b092dd",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-dfe593960693.b79e4aa33e.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-dfe593960693.b79e4aa33e.js",
+        "status": 200,
+        "bytes": 9217,
+        "expected_bytes": 9217,
+        "sha256": "6df91b2b292896c54defb633235876426b2854518adf0e725a52be7e882c0405",
+        "expected_sha256": "6df91b2b292896c54defb633235876426b2854518adf0e725a52be7e882c0405",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-ea34262d0652.aed3194ae3.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-ea34262d0652.aed3194ae3.js",
+        "status": 200,
+        "bytes": 25698,
+        "expected_bytes": 25698,
+        "sha256": "dc6492d9a73fbaa8169131f5dc0b092eef3c19c1968ad767e80cb574c2059416",
+        "expected_sha256": "dc6492d9a73fbaa8169131f5dc0b092eef3c19c1968ad767e80cb574c2059416",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-f008be36a2c6.f917e53c85.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-f008be36a2c6.f917e53c85.js",
+        "status": 200,
+        "bytes": 12179,
+        "expected_bytes": 12179,
+        "sha256": "fd0422df70b9da8c0b4e11962cf4895a07c5d6fb066bf08a2efd0e08dc419fde",
+        "expected_sha256": "fd0422df70b9da8c0b4e11962cf4895a07c5d6fb066bf08a2efd0e08dc419fde",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-f7ef4ddf795f.5fd9d26af5.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-f7ef4ddf795f.5fd9d26af5.js",
+        "status": 200,
+        "bytes": 9229,
+        "expected_bytes": 9229,
+        "sha256": "6b5052fdaf3e2c791b1f802d96c0db3cc2f51866a346640be17f2f510c4c24cd",
+        "expected_sha256": "6b5052fdaf3e2c791b1f802d96c0db3cc2f51866a346640be17f2f510c4c24cd",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-faffa23ad0bd.1ff37a0a2c.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-faffa23ad0bd.1ff37a0a2c.js",
+        "status": 200,
+        "bytes": 10256,
+        "expected_bytes": 10256,
+        "sha256": "9cd8bd38aedfc2bf6bfb0610e31b0282c3ecfb39344728c9b92e037a1719b847",
+        "expected_sha256": "9cd8bd38aedfc2bf6bfb0610e31b0282c3ecfb39344728c9b92e037a1719b847",
+        "matches": true
+      },
+      {
+        "path": "static/js/index.5a6bee2a19.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/index.5a6bee2a19.js",
+        "status": 200,
+        "bytes": 44280,
+        "expected_bytes": 44280,
+        "sha256": "81c0fb6b1aa89ff7ae701ae96f543b3e4eba1812ce8ac629b865febf7cbc6832",
+        "expected_sha256": "81c0fb6b1aa89ff7ae701ae96f543b3e4eba1812ce8ac629b865febf7cbc6832",
+        "matches": true
+      },
+      {
+        "path": "static/js/lib-react.9cdf8f49ce.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/lib-react.9cdf8f49ce.js",
+        "status": 200,
+        "bytes": 218364,
+        "expected_bytes": 218364,
+        "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+        "expected_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+        "matches": true
+      },
+      {
+        "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+        "status": 200,
+        "bytes": 1209,
+        "expected_bytes": 1209,
+        "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+        "expected_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+        "matches": true
+      },
+      {
+        "path": "static/js/lib-router.1e14e568cb.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/lib-router.1e14e568cb.js",
+        "status": 200,
+        "bytes": 35370,
+        "expected_bytes": 35370,
+        "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+        "expected_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+        "matches": true
+      },
+      {
+        "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+        "status": 200,
+        "bytes": 222,
+        "expected_bytes": 222,
+        "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+        "expected_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+        "matches": true
+      },
+      {
+        "path": "static/js/styles.2da0941fcb.js",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/styles.2da0941fcb.js",
+        "status": 200,
+        "bytes": 472,
+        "expected_bytes": 472,
+        "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+        "expected_sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+        "matches": true
+      },
+      {
+        "path": "static/search_index.ko.467d49a8.json",
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/static/search_index.ko.467d49a8.json",
+        "status": 200,
+        "bytes": 438490,
+        "expected_bytes": 438490,
+        "sha256": "467d49a8b27474102612906a5a004706f4e10123835bb8661ca89508cb6b8f14",
+        "expected_sha256": "467d49a8b27474102612906a5a004706f4e10123835bb8661ca89508cb6b8f14",
+        "matches": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "captured_utc": "2026-10-18T13:41:57.378681+00:00",
+  "browser": "Agent Browser CLI / namespace spinon-c04-12 / session spinon-pr317-138060237e7c",
+  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+  "preview_listener_pid": 1191,
+  "roadmap_url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "observed_counter": "209개 표시 · 공식 완료 76/209",
+  "official_status_sync_note": "상위 78개 + 세부 ID 129개 + ID 없는 하위 체크 2개 · 완료 76/209개",
+  "roadmap_checks": {
+    "text_paint_note_present": true,
+    "tailnet_evidence_link_present": true,
+    "obsolete_general_text_unsupported_claim_present": false,
+    "direct_simulator_png_anchor_count": 0,
+    "top_level_c04_12_unchecked": true,
+    "counter_screenshot_shows_76_of_209": true
+  },
+  "routes": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "counter_loaded": true,
+      "text_paint_note_present": true
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/README.html",
+      "title": "스피논 문서",
+      "tailnet_evidence_indexed": true
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-root-html-text-paint-tailnet-sync-2026-10-18/README.html",
+      "title": "스피논 문서",
+      "review_link_present": true,
+      "plan_link_present": true
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-root-html-text-paint-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "title": "스피논 문서",
+      "review_rows": 30,
+      "row27": "최종 88개 파일 모두 두 origin에서 바이트와 SHA-256가 일치했다.",
+      "row28": "기존 64개를 백업·대조하고 신규 24개 경로를 추가했으며 삭제는 0개다."
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c04-12-root-html-text-paint.html",
+      "title": "스피논 문서",
+      "merge_status_present": true,
+      "scope_limit_present": true
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/0080-c04-12-root-html-direct-text-paint.html",
+      "title": "스피논 문서",
+      "contract_loaded": true
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-root-html-text-paint-2026-10-18/README.html",
+      "title": "스피논 문서",
+      "images": [
+        {
+          "alt": "Android API 37 AVD PixelCopy 표면",
+          "complete": true,
+          "naturalWidth": 840,
+          "naturalHeight": 630
+        },
+        {
+          "alt": "iPhone 17 Pro Simulator 실행 화면",
+          "complete": true,
+          "naturalWidth": 1206,
+          "naturalHeight": 2622
+        }
+      ]
+    }
+  ],
+  "corrected_link_check": {
+    "prior_direct_android_png_http_status": 404,
+    "prior_direct_ios_png_http_status": 404,
+    "final_roadmap_direct_png_anchor_count": 0,
+    "embedded_evidence_page_images_loaded": true
+  },
+  "screenshots": [
+    {
+      "path": "tailnet-counter-agent-browser.png",
+      "bytes": 115560,
+      "sha256": "ef7122dfbde795ef49fdd028cc0b60758f8b6c683c9f55e25c62b966555bb08d",
+      "pixel_width": 1280,
+      "pixel_height": 633
+    },
+    {
+      "path": "tailnet-text-paint-note-agent-browser.png",
+      "bytes": 286903,
+      "sha256": "df42def5a0ceaaa6245f83e7847d959abe2a6c73a7f928c07020d0f8a19a745b",
+      "pixel_width": 1280,
+      "pixel_height": 633
+    }
+  ],
+  "final_tailnet_sync": {
+    "artifact_count": 88,
+    "html_files_including_404": 25,
+    "existing_paths_backed_up_and_replaced": 64,
+    "new_paths_added": 24,
+    "deletions": 0,
+    "preview_files_before": 19481,
+    "preview_files_after": 19505,
+    "local_http_and_tailnet_https_requests": 176,
+    "exact_sha256_matches": 176,
+    "all_match": true,
+    "backup_root": "/private/tmp/spinon-c04-12-text-paint-preview-backup-20261018-final.zZrLvo"
+  }
+}
