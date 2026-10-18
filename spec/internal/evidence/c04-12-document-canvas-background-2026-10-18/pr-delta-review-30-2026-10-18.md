@@ -1,8 +1,9 @@
 # C04.12 문서 Canvas 배경 PR diff 적대 검토
 
 **PR:** [#309](https://github.com/ohah/spinon/pull/309)
-**검토 범위:** `0e9194f548ea1eb073bb0abde4bf499cc4f8c36c..995435763909e8da8165abca57a804bedfe0ef1b`
-**최종 diff:** 구현·명세·증거·PR 본문과 라벨.
+**핵심 diff 검토 기준:** `0e9194f548ea1eb073bb0abde4bf499cc4f8c36c..995435763909e8da8165abca57a804bedfe0ef1b`
+**후속 문서 검토 기준:** `995435763909e8da8165abca57a804bedfe0ef1b..ea46dce6`
+**범위:** 구현·명세·증거·PR 본문과 라벨.
 
 | # | 독립 실패 관점 | 최종 확인 |
 |---:|---|---|
@@ -40,3 +41,12 @@
 ## 판정
 
 30개 실패 관점을 확인했다. 처음 실제 PR diff에서 FFI 주석 중복 단어를 발견해 수정했고, 수정된 최종 head `99543576`에서 다시 확인했다. 다른 blocker는 남지 않았다. 검증은 이 제한 Canvas/background slice에만 해당하며 C04.12 전체 HTML rendering·body box paint·system UI palette·compositor pixel equivalence 또는 실기기 증거가 아니다.
+
+## 후속 문서 diff 확인
+
+- `ea46dce6`의 추가분은 PR 검토 링크, 구현 계획·계약·상태 문서의 해당 링크, SHA manifest 및 이 검토 기록이다. 제품 코드와 플랫폼 소스는 바뀌지 않았다.
+- README·계획·0077·STATUS에 새로 추가한 PR review 상대 링크가 파일로 해석되고, C04.12 상위 체크는 미완료이며 내부 계약 숫자 버전은 `0.1.0-draft`로 유지됨을 확인했다.
+- SHA manifest는 plan review를 포함해 30개 증거 파일을 검증하며 manifest 자신은 포함하지 않는다.
+- PR 본문에는 이 검토 기록 링크가 추가됐고, 두 raw screenshot URL은 그대로다. 직전 Agent Browser 화면에서 두 이미지가 렌더되는 것을 확인했다.
+- PR status rollup과 branch protection의 required checks는 비어 있다. 로컬 runtime/style 테스트, 두 integration target, Clippy는 통과했다. 병합 방식은 repository의 선형 이력 규칙에 따라 Rebase and merge다.
+- 이 기록 정리와 checksum 재생성 뒤 `30`개 numbered review 관점, 30개 manifest 경로 및 네 신규 상대 링크를 재검증했다. 이 마지막 후속 diff에는 제품 코드나 캡처 변경이 없다.
