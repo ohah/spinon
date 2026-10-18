@@ -22,6 +22,7 @@
 
 - `spinon-style`: 180 통과, 실패 0. 새 `root_html_block_paint_rejects_partial_alpha_and_non_srgb_backgrounds` 회귀 테스트는 부분 alpha와 Display-P3 배경을 모두 `UnsupportedComputedBackgroundColor`로 거부한다.
 - `spinon-runtime` opt-in C04.12 slice: 2 통과, 실패 0. light/dark frame과 root HTML의 visible text·SVG 거부 및 `display:none` 아래 text 처리를 확인한다.
+- Unicode whitespace 보강 뒤 core 판정 테스트 1/1과 opt-in runtime C04.12 focused tests 2/2가 통과했다. 원본 실행 로그: [`cargo-test-core-whitespace.log`](./cargo-test-core-whitespace.log), [`cargo-test-runtime-whitespace.log`](./cargo-test-runtime-whitespace.log). runtime test는 `CARGO_PROFILE_TEST_DEBUG=0`으로 실행했다.
 - `spinon-ffi` readback 좌표 단위 테스트: 2 통과, 실패 0. 해당 실행은 색 경계 보강 전이며 FFI/readback 코드는 그 뒤 바뀌지 않았다.
 - Android fixture source set의 현재 Java 코드는 최종 reflection 오류 처리 뒤 `compileDebugJavaWithJavac`가 통과했다. `prepareSpinonBootstrap`은 제외한 Java compile이며 최신 Rust static library 재빌드를 뜻하지 않는다: [android-java-build.log](../c04-12-root-html-block-paint-android-simulator-2026-10-18/android-java-build.log).
 - [`cargo-test-style.log`](../c04-12-root-html-block-paint-ios-simulator-2026-10-18/cargo-test-style.log), [`cargo-test-runtime.log`](../c04-12-root-html-block-paint-ios-simulator-2026-10-18/cargo-test-runtime.log), [`cargo-test-ffi.log`](../c04-12-root-html-block-paint-ios-simulator-2026-10-18/cargo-test-ffi.log)
@@ -57,4 +58,4 @@ iPhone 17 Pro Simulator (`iPhone18,1`), WGPU Metal `Bgra8Unorm`, 표면 `960×72
 
 위 Android/iOS opt-in 앱 빌드와 네 Simulator 캡처는 마지막 Rust 색상 경계 보강 전에 생성했다. 수정은 새 profile을 기존 root HTML 색 공간 변환기에 연결하고 부분 alpha를 거부한다. 고정 fixture는 불투명 8-bit sRGB만 사용하므로 캡처의 성공 경로 입력은 그대로다. 수정 뒤 `spinon-style` 180개 전체 테스트와 `spinon-runtime` 집중 테스트 2개가 통과했다. 수정 후 Android/iOS native 재빌드와 재캡처는 하지 않았다.
 
-구현 검토는 [서로 다른 실패 관점 20개](../c04-12-root-html-block-paint-implementation-review-20-2026-10-18.md)다. 별도 [PR diff 검토](../c04-12-root-html-block-paint-pr-diff-review-30-2026-10-18.md)에서 Unicode whitespace 누락을 찾아 수정했다. core 단위 테스트는 통과했지만 수정 후 runtime 회귀 테스트는 디스크 여유 부족으로 완료하지 못했다. C04.12 전체, 일반 HTML layout/paint, text rendering, 실기기, hardware GPU, compositor 이후 픽셀은 범위 밖이다.
+구현 검토는 [서로 다른 실패 관점 20개](../c04-12-root-html-block-paint-implementation-review-20-2026-10-18.md)다. 별도 [PR diff 검토](../c04-12-root-html-block-paint-pr-diff-review-30-2026-10-18.md)에서 Unicode whitespace 누락을 찾아 수정했다. 수정 뒤 core 단위 테스트 1/1과 opt-in runtime 집중 테스트 2/2가 통과했다. C04.12 전체, 일반 HTML layout/paint, text rendering, 실기기, hardware GPU, compositor 이후 픽셀은 범위 밖이다.

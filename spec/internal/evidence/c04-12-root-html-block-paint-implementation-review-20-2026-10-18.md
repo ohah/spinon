@@ -31,4 +31,4 @@
 
 ### PR diff에서 발견한 whitespace 경계 재확인
 
-이후 별도 PR diff 검토에서 `str::trim()`이 CSS에서 접히지 않는 U+00A0/U+2003까지 제거할 수 있음을 찾았다. 입력 판정을 `DomString::is_only_collapsible_html_whitespace`로 바꾸고 hidden-text 처리, HostDocument layout 입력, render 순서, tree validator의 관점을 다시 확인했다. core 단위 테스트는 ASCII 접이 공백을 허용하고 NBSP·U+2003를 구분해 1/1 통과했다. 새 runtime 통합 회귀 테스트는 추가했으나 수정 뒤 실행은 디스크 여유 공간 문제로 완료하지 못했다. PR diff review 근거는 [별도 기록](c04-12-root-html-block-paint-pr-diff-review-30-2026-10-18.md)에 있다.
+이후 별도 PR diff 검토에서 `str::trim()`이 CSS에서 접히지 않는 U+00A0/U+2003까지 제거할 수 있음을 찾았다. 입력 판정을 `DomString::is_only_collapsible_html_whitespace`로 바꾸고 hidden-text 처리, HostDocument layout 입력, render 순서, tree validator의 관점을 다시 확인했다. core 단위 테스트는 ASCII 접이 공백을 허용하고 NBSP·U+2003를 구분해 1/1 통과했다. runtime fixture의 ASCII 공백 성공과 U+2003 visible-text 거부를 포함한 집중 테스트도 2/2 통과했다. PR diff review 근거는 [별도 기록](c04-12-root-html-block-paint-pr-diff-review-30-2026-10-18.md)에 있다.
