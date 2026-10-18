@@ -32,7 +32,7 @@
 | 26 | 같은 reference 경로 재실행이나 경쟁 생성이 기존 JSON을 덮는가 | 통과. 임시 경로 검증 후 no-clobber `link()`로 publish하며 충돌 negative control에서 기존 내용을 보존했다. |
 | 27 | 캡처 실패 때 기존 Chromium까지 종료하거나 임시 profile을 남기는가 | 통과. repository guarded session helper의 process-group 소유·종료 확인과 profile cleanup을 사용한다. |
 | 28 | 재현 비교가 timestamp 말고 다른 차이를 무시하는가 | 통과. `capturedAtUtc`만 제외하며 binary, tools, environment, observation의 차이는 실패한다. |
-| 29 | 코드와 실행 기록이 성공·실패를 과장하는가 | 통과. 집중 검사 24개 통과, 전체 reference suite 16개 C04/C11/C13.3 assertion 실패를 함께 기록하고 clean-main baseline으로 오인하지 않는다. |
+| 29 | 코드와 실행 기록이 성공·실패를 과장하는가 | 통과. 집중 검사 24개 통과를 기록하고, 전체 reference suite의 같은 16개 C04/C11/C13.3 실패 marker가 clean `origin/main` `539fbfbc`에서도 재현됨을 별도 로그로 확인했다. |
 | 30 | screenshot, status, docs 링크가 제품/모바일 검증을 과장하거나 stale reference를 가리키는가 | 통과. Agent Browser fixture 화면만 표시한다고 명시하고 앱·simulator 증거로 주장하지 않는다. C01 부모는 미완료이며 C01.4 문서 링크는 최종 reference로 연결된다. |
 
 **판정:** diff에서 추가 수정이 필요한 항목은 발견하지 못했다. 실제 통합 CI 및 GitHub merge gate 결과는 PR 생성 뒤 따로 확인한다.
