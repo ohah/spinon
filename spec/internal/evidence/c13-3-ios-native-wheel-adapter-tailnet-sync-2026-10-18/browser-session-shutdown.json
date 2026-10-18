@@ -1,0 +1,9 @@
+{
+  "browser": "Agent Browser",
+  "close_command_succeeded": true,
+  "session_active_after_close": false,
+  "session_pid_after_close": null,
+  "agent_browser_process_found_after_close": false,
+  "tmux_sessions_touched": false,
+  "preview_listener_restarted": false
+}

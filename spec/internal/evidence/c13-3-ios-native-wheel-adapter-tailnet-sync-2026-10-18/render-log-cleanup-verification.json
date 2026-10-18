@@ -1,0 +1,27 @@
+{
+  "operation": "trailing whitespace normalization of sanitized Rspress build log",
+  "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/render-build.log",
+  "served_report_target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/served-verification-final.json",
+  "no_deletes": true,
+  "all_replacements_backed_up_and_verified": true,
+  "replacements": [
+    {
+      "path": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/render-build.log",
+      "backup": "SpinonPreviewBackups/c13-3-ios-native-wheel-adapter-tailnet-sync-20261018/pass-6-formatting/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/render-build.log",
+      "before_sha256": "e670c97cf64d5498a16c55332fd73757ea2ade9ccf121bc2382e17c43eb92591",
+      "backup_sha256": "e670c97cf64d5498a16c55332fd73757ea2ade9ccf121bc2382e17c43eb92591",
+      "source_sha256": "0f0709323980928ae8833bc3bff6d755d492c92aa76222335ef454d175c4c7be",
+      "served_file_sha256": "0f0709323980928ae8833bc3bff6d755d492c92aa76222335ef454d175c4c7be",
+      "verified": true
+    },
+    {
+      "path": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/served-verification-final.json",
+      "backup": "SpinonPreviewBackups/c13-3-ios-native-wheel-adapter-tailnet-sync-20261018/pass-6-formatting/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/served-verification-final.json",
+      "before_sha256": "e5dc592428a74dc342940604bf339b69600c0c8c0595ff8f6cd7e6d85bef3328",
+      "backup_sha256": "e5dc592428a74dc342940604bf339b69600c0c8c0595ff8f6cd7e6d85bef3328",
+      "source_sha256": "7a6aee76b284cb27dd93a4d09b89d8eccf4ace39cda6da15225152856f54939b",
+      "served_file_sha256": "7a6aee76b284cb27dd93a4d09b89d8eccf4ace39cda6da15225152856f54939b",
+      "verified": true
+    }
+  ]
+}

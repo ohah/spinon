@@ -1,0 +1,16 @@
+Agent Browser · Tailnet critical request summary · 2026-10-18
+
+GET /spinon/roadmap.html (Document) 200
+GET GitHub main spec/STATUS.md (Fetch) 200
+GET /spinon/plan/c13-3-native-wheel-input.html (Document) 200
+GET /spinon/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/README.html (Document) 200
+GET /spinon/static/image/tailnet-roadmap-agent-browser.9a625682cf.png (Image) 200
+GET /spinon/static/image/tailnet-plan-agent-browser.ade49245e7.png (Image) 200
+GET /spinon/static/search_index.ko.1ce58afb.json (Fetch) 200
+GET /spinon/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/preflight-final.json (Fetch) 200
+GET /spinon/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/backup-verification-final.json (Fetch) 200
+GET /spinon/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/copy-verification-final.json (Fetch) 200
+GET /spinon/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/render-build-result.html (Fetch) 200
+GET /spinon/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/pr-delta-review-30.html (Fetch) 200
+
+The GitHub status response and selected search index loaded successfully. The screenshot page displays documentation state only.

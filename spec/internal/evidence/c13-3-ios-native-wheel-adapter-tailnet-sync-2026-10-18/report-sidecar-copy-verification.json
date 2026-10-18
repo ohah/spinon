@@ -1,0 +1,33 @@
+{
+  "count": 3,
+  "backup_and_copy_hashes_match": true,
+  "rows": [
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/preflight-final.json",
+      "backup": "SpinonPreviewBackups/c13-3-ios-native-wheel-adapter-tailnet-sync-20261018/pass-5-final/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/preflight-final.json",
+      "prior_sha256": "0565f7af14f26ae334a13395b27eadb0a9e80703e79508f89560d1ffa4b7cebb",
+      "backup_sha256": "0565f7af14f26ae334a13395b27eadb0a9e80703e79508f89560d1ffa4b7cebb",
+      "source_sha256": "a51b3d47db8965d670474b21170718a33e1e8400fc7b03e586f9307e9f782739",
+      "served_file_sha256": "a51b3d47db8965d670474b21170718a33e1e8400fc7b03e586f9307e9f782739",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/backup-verification-final.json",
+      "backup": "SpinonPreviewBackups/c13-3-ios-native-wheel-adapter-tailnet-sync-20261018/pass-5-final/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/backup-verification-final.json",
+      "prior_sha256": "c497b60819886b41754b2d3bff8564fd1753cfa994a953986cc5f1d8239ea891",
+      "backup_sha256": "c497b60819886b41754b2d3bff8564fd1753cfa994a953986cc5f1d8239ea891",
+      "source_sha256": "869fc2fa40f0553bdc364861eca4bc2ac4fda954dc83c7ebfba8805ae415cac4",
+      "served_file_sha256": "869fc2fa40f0553bdc364861eca4bc2ac4fda954dc83c7ebfba8805ae415cac4",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/copy-verification-final.json",
+      "backup": "SpinonPreviewBackups/c13-3-ios-native-wheel-adapter-tailnet-sync-20261018/pass-5-final/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/copy-verification-final.json",
+      "prior_sha256": "d8fc63bf957292824b7c68ca0c32a1472ea8874c141a3723a24d1b1516b86147",
+      "backup_sha256": "d8fc63bf957292824b7c68ca0c32a1472ea8874c141a3723a24d1b1516b86147",
+      "source_sha256": "84acce94812c532bc1f8b84502e93ded9388bbdb0fcc4b15d18a0ddfd529ec48",
+      "served_file_sha256": "84acce94812c532bc1f8b84502e93ded9388bbdb0fcc4b15d18a0ddfd529ec48",
+      "verified": true
+    }
+  ]
+}

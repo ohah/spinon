@@ -1,0 +1,54 @@
+{
+  "copy_count": 6,
+  "all_verified": true,
+  "rows": [
+    {
+      "path": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/preflight-final.json",
+      "bytes": 29732,
+      "sha256": "0565f7af14f26ae334a13395b27eadb0a9e80703e79508f89560d1ffa4b7cebb",
+      "expected_sha256": "0565f7af14f26ae334a13395b27eadb0a9e80703e79508f89560d1ffa4b7cebb",
+      "verified": true,
+      "target_before": null
+    },
+    {
+      "path": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/backup-verification-final.json",
+      "bytes": 4894,
+      "sha256": "c497b60819886b41754b2d3bff8564fd1753cfa994a953986cc5f1d8239ea891",
+      "expected_sha256": "c497b60819886b41754b2d3bff8564fd1753cfa994a953986cc5f1d8239ea891",
+      "verified": true,
+      "target_before": null
+    },
+    {
+      "path": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/copy-verification-final.json",
+      "bytes": 21229,
+      "sha256": "d8fc63bf957292824b7c68ca0c32a1472ea8874c141a3723a24d1b1516b86147",
+      "expected_sha256": "d8fc63bf957292824b7c68ca0c32a1472ea8874c141a3723a24d1b1516b86147",
+      "verified": true,
+      "target_before": null
+    },
+    {
+      "path": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/browser-verification.json",
+      "bytes": 1977,
+      "sha256": "8e0c7bb3fb76f47ad868f9d1460426be88cefb7b85f0664acba8e5c839e12335",
+      "expected_sha256": "8e0c7bb3fb76f47ad868f9d1460426be88cefb7b85f0664acba8e5c839e12335",
+      "target_before": null,
+      "verified": true
+    },
+    {
+      "path": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/agent-browser-network-final.log",
+      "bytes": 1289,
+      "sha256": "2e43a6ded21edccb834048fc0a1ce336cab5aefe568091ff34481af4561523be",
+      "expected_sha256": "2e43a6ded21edccb834048fc0a1ce336cab5aefe568091ff34481af4561523be",
+      "target_before": null,
+      "verified": true
+    },
+    {
+      "path": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/browser-session-shutdown.json",
+      "bytes": 267,
+      "sha256": "b93f6cfdf995314da1a16921af584d8394f5ab57b3012590d08fd79f52a381a4",
+      "expected_sha256": "b93f6cfdf995314da1a16921af584d8394f5ab57b3012590d08fd79f52a381a4",
+      "target_before": null,
+      "verified": true
+    }
+  ]
+}
