@@ -104,6 +104,8 @@ impl TaffyLayoutEngine {
                 .with_intrinsic_size_revision(snapshot.revision());
         }
         output.intrinsic_measurements = visual_tree.take_intrinsic_measurements(output.revision);
+        output.grid_item_intrinsic_inputs =
+            visual_tree.collect_grid_item_intrinsic_inputs(output.revision)?;
         Ok(output)
     }
 }
@@ -489,6 +491,7 @@ fn collect_frames(
         text_layouts: BTreeMap::new(),
         text_flow_layouts: BTreeMap::new(),
         intrinsic_measurements: Vec::new(),
+        grid_item_intrinsic_inputs: Vec::new(),
         frames,
     })
 }

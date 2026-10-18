@@ -2,9 +2,9 @@
 
 **상위 원본:** [C11 상태와 범위](../spec/STATUS.md) · [C11 Grid 계획](c11-css-grid.md) · [CSS 적합성 계약](../spec/0001-conformance.md) · [Grid 내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획·Chrome 155 사전 비교 완료. 구현 후보는 단계 A 중 Parley text intrinsic 측정 API 연결과 in-flow direct Grid text/replaced leaf의 Taffy inherent-size callback 기록까지다. `LayoutOutput.intrinsic_measurements`는 요청·source·item style·revision을 보존하는 관찰 trace이며 CSS min/max-content contribution 계산이 아니다. anonymous Grid text item, nested non-leaf item의 aggregate measurement/provenance, contribution의 box-edge 조정, automatic minimum, B의 Grid track 입력·단계별 sizing, C의 auto-repeat, D의 Android/iOS 앱 경로는 아직 구현·검증하지 않았다. C11.4와 C11 상위는 미완료다.
+**상태:** 계획·Chrome 155 사전 비교 완료. 구현 후보는 단계 A 중 Parley text intrinsic 측정 API 연결, in-flow direct Grid text/replaced leaf의 Taffy inherent-size callback trace, callback과 독립된 raw intrinsic source input까지다. `LayoutOutput.intrinsic_measurements`는 callback 관찰값이며 CSS contribution이 아니다. `LayoutOutput.grid_item_intrinsic_inputs`는 원본 순서·item style·layout revision과 text min/max-content 또는 image natural size를 보존하지만 CSS contribution 정규화가 아니다. anonymous Grid text item, nested non-leaf item의 aggregate measurement/provenance, contribution의 box-edge 조정, automatic minimum, B의 Grid track 입력·단계별 sizing, C의 auto-repeat, D의 Android/iOS 앱 경로는 아직 구현·검증하지 않았다. C11.4와 C11 상위는 미완료다.
 
-**고정 사전 자료:** [20 case Chrome 155 oracle와 hash 목록](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.md) · [inline span edge supplemental oracle](../spec/internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.md) · [계획 적대 검토 20개](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.md) · [현재 구현 적대 검토 20개](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/implementation-review-20.md) · [PR diff 적대 검토 30개](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-diff-review-30.md) · [Taffy 0.14.0 automatic minimum 소스 감사](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-0.14-automatic-minimum-audit.md) · [감사 반영 계획 재검토 20개](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-audit-plan-review-20.md) · [fixture](../tests/fixtures/css/c11/grid-track-sizing-c114-precomparison.html)
+**고정 사전 자료:** [20 case Chrome 155 oracle와 hash 목록](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.md) · [inline span edge supplemental oracle](../spec/internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.md) · [계획 적대 검토 20개](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.md) · [기존 callback trace 구현 검토 20개](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/implementation-review-20.md) · [raw intrinsic input 구현 검토 20개](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/grid-item-intrinsic-input-review-20.md) · [기존 PR diff 적대 검토 30개](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-diff-review-30.md) · [Taffy 0.14.0 automatic minimum 소스 감사](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-0.14-automatic-minimum-audit.md) · [감사 반영 계획 재검토 20개](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-audit-plan-review-20.md) · [fixture](../tests/fixtures/css/c11/grid-track-sizing-c114-precomparison.html)
 
 ## 목표와 닫을 범위
 
@@ -91,7 +91,7 @@ C15 inline span edge는 Grid item box의 padding/border oracle와 분리해 [추
 4. Runtime: Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 V8-authored HostDocument → 같은 document/style/environment revision → typed profile → Rust layout → WGPU scene/surface를 확인한다. 두 플랫폼의 성공 case, 기대 진단, frame count, surface 표본과 submit 부재를 각각 기록한다. 실기기·hardware GPU 근거라고 쓰지 않는다.
 5. surface: non-clipped frame과 실제 paint는 분리한다. 12px track을 넘는 24px item, min-content line의 세로 overflow, parent/grid border 바깥이지만 viewport 안인 위치를 포함해 Android PixelCopy와 iOS Simulator Metal drawable에서 sample한다. 색/coordinate mapping을 manifest로 보존하며 sample 위치가 border 안으로만 이동하면 실패다.
 6. artifact: fixture adapter/FFI를 opt-in runtime fixture feature에 둔다. 기본·제품 artifact에서 fixture FFI symbol, CSS, payload가 빠지는지와 opt-in positive control을 각각 확인한다.
-7. 검토 관문: 계획은 구현 전에 별도 실패 관점 20개, 구현 뒤 새 실패 관점 20개, PR 변경은 다시 별도 적대 관점 30개로 검토한다. 수정된 관점은 재실행한다. PR에는 검토 횟수를 장식처럼 적지 말고 실제 발견·수정·남은 한계를 쓴다.
+7. 검토 관문: 계획은 구현 전에 별도 실패 관점 20개, 구현 뒤 새 실패 관점 20개, PR 변경은 다시 별도 적대 관점 20개로 검토한다. 수정된 관점은 재실행한다. PR에는 검토 횟수를 장식처럼 적지 말고 실제 발견·수정·남은 한계를 쓴다.
 
 시뮬레이터는 사용자가 이전에 요청한 Android/iOS 교차 검증의 허용 실행 경로다. 실제 기기나 OS compositor 이후 결과를 시뮬레이터 자료에서 추론하지 않는다. 구현 실행 후 Agent Browser는 닫고 관련 preview server/browser process가 남지 않았는지 확인한다. Terminal Browser는 사용하지 않는다.
 
@@ -109,6 +109,6 @@ C15 inline span edge는 Grid item box의 padding/border oracle와 분리해 [추
 4. Rust 계산기의 track sizing stages와 error atomicity를 구현하고, 독립 20 관점으로 새 코드를 hostile review한다.
 5. C 단계 auto-repeat을 구현한다. A/B review 표를 재사용하지 않고 auto-repeat 자체의 새로운 실패 관점도 따로 검토한다.
 6. Android API 37 AVD, iOS 26.2 Simulator, artifact boundary를 각각 실행한다. 실패한 SDK/app 경로는 source log의 첫 실제 오류부터 수정하고 재실행한다.
-7. 내부 계약·C11 plan·conformance·status·fixture README를 일치시키고, 새 PR diff를 별도 30 관점으로 검토한다. 요구 CI와 재검증이 통과한 뒤 Rebase and merge한다.
+7. 내부 계약·C11 plan·conformance·status·fixture README를 일치시키고, 새 PR diff를 별도 20 관점으로 검토한다. 요구 CI와 재검증이 통과한 뒤 Rebase and merge한다.
 
 계획 PR 병합은 코드 구현이나 C11.4 완료를 뜻하지 않는다. Auto-repeat, text intrinsic measurement 또는 simulator 범위가 남아 있으면 goal을 계속 진행한다.

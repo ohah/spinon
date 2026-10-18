@@ -1,5 +1,5 @@
 use spinon_core::NodeId;
-use spinon_text_layout::FontRegistryRevision;
+use spinon_text_layout::{FontRegistryRevision, TextIntrinsicInlineSizes};
 
 use crate::{LayoutInputRevision, LayoutIntrinsicSize, LayoutStyle};
 
@@ -48,6 +48,29 @@ pub enum LayoutIntrinsicMeasurementSource {
     Replaced {
         natural: LayoutIntrinsicSize,
     },
+}
+
+/// Grid item leaf에서 계산한 원본 intrinsic content-size 입력입니다.
+#[derive(Clone, Debug, PartialEq)]
+pub enum LayoutGridItemIntrinsicSource {
+    Text { sizes: TextIntrinsicInlineSizes },
+    Replaced { natural: LayoutIntrinsicSize },
+}
+
+/// 직접 Grid leaf의 intrinsic sizing 후속 계산에 사용할 원본 입력입니다.
+///
+/// Text source는 같은 font registry identity/revision의 min/max-content 결과를 보존합니다.
+/// Replaced source의 natural size는 content-box CSS px이며, 지정 크기·aspect ratio·외곽 edge
+/// 적용은 `item_style`과 함께 다음 contribution 단계에서 결정합니다.
+#[derive(Clone, Debug, PartialEq)]
+pub struct LayoutGridItemIntrinsicInput {
+    pub grid_container: NodeId,
+    pub node: NodeId,
+    /// 원본 child list에서의 순서입니다. 이후 `order` 정렬의 안정 순서로 사용합니다.
+    pub source_order: usize,
+    pub revision: LayoutInputRevision,
+    pub source: LayoutGridItemIntrinsicSource,
+    pub item_style: LayoutStyle,
 }
 
 /// Grid item의 measure callback 한 번에 대한 source-bound 관찰값입니다.

@@ -1,16 +1,93 @@
+use std::collections::{BTreeMap, BTreeSet};
+
+use spinon_core::NodeId as SpinonNodeId;
 use taffy::{AvailableSpace, NodeId as TaffyNodeId, Size};
 
 use crate::{
-    LayoutError, LayoutInputRevision, LayoutIntrinsicMeasureAvailableSpace,
+    LayoutDisplay, LayoutError, LayoutGridItemIntrinsicInput, LayoutGridItemIntrinsicSource,
+    LayoutInput, LayoutInputRevision, LayoutIntrinsicMeasureAvailableSpace,
     LayoutIntrinsicMeasureKnownDimensions, LayoutIntrinsicMeasureParentSize,
     LayoutIntrinsicMeasureSize, LayoutIntrinsicMeasurement, LayoutIntrinsicMeasurementSource,
+    LayoutPosition, LayoutStyle,
 };
 
 use super::CalcLayoutTree;
 
+#[derive(Clone, Copy)]
+pub(super) struct GridItemIntrinsicMetadata {
+    pub(super) container: SpinonNodeId,
+    pub(super) source_order: usize,
+    pub(super) is_leaf: bool,
+    pub(super) style: LayoutStyle,
+}
+
+pub(super) fn grid_item_metadata(
+    input: &LayoutInput,
+    index: &BTreeMap<SpinonNodeId, usize>,
+    flow_only: bool,
+) -> BTreeMap<SpinonNodeId, GridItemIntrinsicMetadata> {
+    if flow_only {
+        return BTreeMap::new();
+    }
+
+    let hidden = hidden_layout_nodes(input, index);
+    input
+        .nodes
+        .iter()
+        .filter(|node| node.style.display == LayoutDisplay::Grid)
+        .filter(|container| !hidden.contains(&container.id))
+        .flat_map(|container| {
+            container
+                .children
+                .iter()
+                .copied()
+                .enumerate()
+                .filter(|(_, child)| {
+                    !hidden.contains(child)
+                        && !input.positioning.get(child).is_some_and(|positioning| {
+                            matches!(
+                                positioning.position,
+                                LayoutPosition::Absolute | LayoutPosition::Fixed
+                            )
+                        })
+                })
+                .map(|(source_order, child)| {
+                    let child_node = &input.nodes[index[&child]];
+                    (
+                        child,
+                        GridItemIntrinsicMetadata {
+                            container: container.id,
+                            source_order,
+                            is_leaf: child_node.children.is_empty(),
+                            style: child_node.style,
+                        },
+                    )
+                })
+        })
+        .collect()
+}
+
+fn hidden_layout_nodes(
+    input: &LayoutInput,
+    index: &BTreeMap<SpinonNodeId, usize>,
+) -> BTreeSet<SpinonNodeId> {
+    let mut hidden_nodes = BTreeSet::new();
+    let mut pending = vec![(input.root(), false)];
+    while let Some((node_id, ancestor_hidden)) = pending.pop() {
+        let node = &input.nodes[index[&node_id]];
+        let hidden = ancestor_hidden || node.style.display == LayoutDisplay::None;
+        if hidden {
+            hidden_nodes.insert(node_id);
+        }
+        pending.extend(node.children.iter().map(|child| (*child, hidden)));
+    }
+    hidden_nodes
+}
+
 #[cfg(test)]
 thread_local! {
     static FAIL_NEXT_INTRINSIC_MEASUREMENT_RESERVATION: std::cell::Cell<bool> = const { std::cell::Cell::new(false) };
+    static FAIL_NEXT_GRID_ITEM_INTRINSIC_INPUT_RESERVATION: std::cell::Cell<bool> = const { std::cell::Cell::new(false) };
 }
 
 #[cfg(test)]
@@ -36,6 +113,29 @@ pub(crate) fn fail_next_intrinsic_measurement_reservation() -> impl Drop {
     IntrinsicMeasurementReservationFailureGuard
 }
 
+#[cfg(test)]
+struct GridItemIntrinsicInputReservationFailureGuard;
+
+#[cfg(test)]
+impl Drop for GridItemIntrinsicInputReservationFailureGuard {
+    fn drop(&mut self) {
+        FAIL_NEXT_GRID_ITEM_INTRINSIC_INPUT_RESERVATION.with(|armed| armed.set(false));
+        crate::test_allocator::reset();
+    }
+}
+
+#[cfg(test)]
+pub(crate) fn fail_next_grid_item_intrinsic_input_reservation() -> impl Drop {
+    crate::test_allocator::reset();
+    FAIL_NEXT_GRID_ITEM_INTRINSIC_INPUT_RESERVATION.with(|armed| {
+        assert!(
+            !armed.replace(true),
+            "Grid item intrinsic input failpoint은 중첩할 수 없습니다"
+        );
+    });
+    GridItemIntrinsicInputReservationFailureGuard
+}
+
 impl CalcLayoutTree {
     pub(super) fn record_intrinsic_measurement(
         &self,
@@ -52,10 +152,10 @@ impl CalcLayoutTree {
         let Some(node) = self.node(taffy_node).spinon_node else {
             return;
         };
-        if !self.grid_item_nodes.contains(&node) {
+        let Some(item_metadata) = self.grid_item_intrinsic_metadata.get(&node) else {
             return;
-        }
-        let item_style = self.grid_item_styles[&node];
+        };
+        let item_style = item_metadata.style;
 
         let mut measurements = self.intrinsic_measurements.borrow_mut();
         #[cfg(test)]
@@ -101,6 +201,51 @@ impl CalcLayoutTree {
             measurement.revision = revision;
         }
         measurements
+    }
+
+    pub(crate) fn collect_grid_item_intrinsic_inputs(
+        &self,
+        revision: LayoutInputRevision,
+    ) -> Result<Vec<LayoutGridItemIntrinsicInput>, LayoutError> {
+        let mut inputs = Vec::new();
+        for (&node, item_metadata) in &self.grid_item_intrinsic_metadata {
+            if !item_metadata.is_leaf {
+                continue;
+            }
+            let engine_id = self.engine_ids[&node];
+            let calc_node = self.node(engine_id);
+            let source = if self.text_paragraphs.contains_key(&engine_id) {
+                LayoutGridItemIntrinsicSource::Text {
+                    sizes: self.text_intrinsic_inline_sizes(engine_id, node)?,
+                }
+            } else if let Some(replaced) = calc_node.replaced_sizing {
+                LayoutGridItemIntrinsicSource::Replaced {
+                    natural: replaced.natural,
+                }
+            } else {
+                continue;
+            };
+
+            #[cfg(test)]
+            FAIL_NEXT_GRID_ITEM_INTRINSIC_INPUT_RESERVATION.with(|armed| {
+                if armed.replace(false) {
+                    crate::test_allocator::fail_next_allocation();
+                }
+            });
+            if inputs.try_reserve(1).is_err() {
+                return Err(LayoutError::IntrinsicMeasurementAllocationFailure { node });
+            }
+            inputs.push(LayoutGridItemIntrinsicInput {
+                grid_container: item_metadata.container,
+                node,
+                source_order: item_metadata.source_order,
+                revision,
+                source,
+                item_style: item_metadata.style,
+            });
+        }
+        inputs.sort_unstable_by_key(|input| (input.grid_container, input.source_order));
+        Ok(inputs)
     }
 }
 

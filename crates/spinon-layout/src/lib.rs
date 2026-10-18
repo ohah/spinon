@@ -43,6 +43,7 @@ pub use grid::{
 pub use grid_placement::{GridItemInput, GridPlacementInput};
 pub use host_document::HostTextStyleProfile;
 pub use intrinsic_measurement::{
+    LayoutGridItemIntrinsicInput, LayoutGridItemIntrinsicSource,
     LayoutIntrinsicMeasureAvailableSpace, LayoutIntrinsicMeasureKnownDimensions,
     LayoutIntrinsicMeasureParentSize, LayoutIntrinsicMeasureSize, LayoutIntrinsicMeasureSpace,
     LayoutIntrinsicMeasurement, LayoutIntrinsicMeasurementSource,
@@ -188,6 +189,9 @@ pub struct LayoutOutput {
     pub text_flow_layouts: BTreeMap<NodeId, Vec<LayoutTextFlowSegment>>,
     /// Grid item의 intrinsic measure 요청과 source/revision을 Taffy callback 순서로 보존합니다.
     pub intrinsic_measurements: Vec<LayoutIntrinsicMeasurement>,
+    /// 직접 in-flow Grid leaf text/replaced의 callback-independent intrinsic 원본 입력입니다.
+    /// 최종 CSS contribution 또는 item span/automatic minimum 계산은 포함하지 않습니다.
+    pub grid_item_intrinsic_inputs: Vec<LayoutGridItemIntrinsicInput>,
 }
 
 /// 하나의 layout 계산 입력 revision에 결속한 shaping 결과입니다.
