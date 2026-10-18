@@ -1,0 +1,25 @@
+{
+  "phase": "post-verification-shutdown",
+  "close_command_result": "Browser closed",
+  "sessions": [
+    {
+      "session": "spinon-c13-3-direct-touch-20261018",
+      "active": false,
+      "pid": null
+    },
+    {
+      "session": "spinon-c13-3-final-check-20261018",
+      "active": false,
+      "pid": null
+    }
+  ],
+  "process_name_scan": {
+    "matched_process_count": 0,
+    "names_checked": [
+      "agent-browser",
+      "Google Chrome",
+      "Chromium",
+      "playwright"
+    ]
+  }
+}

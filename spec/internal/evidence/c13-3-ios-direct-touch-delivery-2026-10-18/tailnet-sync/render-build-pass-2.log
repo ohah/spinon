@@ -1,0 +1,107 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: /private/tmp/spinon-c13-3-ios-direct-touch-control-20261018/packages/docs
+warn    Current dist path: /tmp/spinon-c13-3-ios-direct-touch-render-20261018
+info    Rendering pages...
+success Pages rendered in 120 ms.
+ready   built in 0.83s (web)
+ready   built in 0.83s (node)
+
+File (web)                                                                                                                                       Size        Gzip
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/1.9d6d094526.js                                                 0.10 kB     0.09 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/styles.c7fefdd456.js                                                  0.47 kB     0.23 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/icon.svg                                                                        0.64 kB     0.41 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-bf1bdca76546.54a5241c8b.js                                2.2 kB      1.2 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-358147aaab3f.5f8286f52c.js                                2.6 kB      1.3 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-6dd6fea916db.558a61e516.js                                3.5 kB      1.6 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-b04ace891db2.0aade1bae0.js                                6.5 kB      2.6 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-ea617034d51a.86fffb1f8d.js                                6.5 kB      2.6 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-1f47bc9ee4e3.975aba4442.js                                6.7 kB      2.6 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-6d36d09bb7b0.54953302c8.js                                6.9 kB      2.7 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-4ad8775d68c3.6d9d0a8740.js                                7.1 kB      2.5 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-87492bc0a054.b75a6d911e.js                                8.6 kB      3.1 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-fd781c6569db.fc4f9a4586.js                                9.1 kB      3.4 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-dfe593960693.67adc9dd81.js                                9.2 kB      3.1 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-f7ef4ddf795f.5812e7441b.js                                9.2 kB      3.3 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-059bac22a6b5.10029b31e2.js                                9.3 kB      3.2 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-8a23293a317b.9dba6c7443.js                                9.4 kB      3.1 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-cff9d369f6a7.a0757fb237.js                                9.7 kB      3.7 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-18884b8b396b.4eb93fa004.js                                10.1 kB     3.9 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-faffa23ad0bd.ab9294b900.js                                10.3 kB     3.5 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-ef2940073a71.dc818775e1.js                                10.6 kB     4.0 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-a07f3c9d45d8.0c6409dfb2.js                                10.6 kB     3.7 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-10c6e6a69971.6e1f3a4be4.js                                12.0 kB     3.7 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-f008be36a2c6.f33490ef65.js                                12.2 kB     3.9 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-1051aa86ca75.1b5270e250.js                                12.9 kB     4.5 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-cf6e162f6fb7.eaa24c4313.js                                15.8 kB     4.9 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-efbe6e268fd4.acdd9d21b8.js                                16.6 kB     5.5 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-bb07f493e183.bd594e6395.js                                18.6 kB     5.5 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/image/chrome-agent-browser-iphone12-scale-half.43db41fdbd.png            25.0 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-ea34262d0652.34f9094aa5.js                                25.7 kB     7.8 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/image/chrome-agent-browser-iphone12-width-500-scale-one.4109664d55.png   26.5 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/image/chrome-agent-browser-iphone12-scale-two.6c05045e76.png             29.0 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-7ff1bc4fef68.b6fa0fb964.js                                30.2 kB     8.6 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-abeecded38c6.b99e44d1df.js                                31.2 kB     9.2 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/lib-router.95ea184a3c.js                                              35.4 kB     12.7 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-f5e1f6055c05.43965b031c.js                                55.4 kB     15.4 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-d138c5df840a.a2bad2a01b.js                                61.8 kB     16.9 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/css/styles.8d918fd78e.css                                                74.0 kB     14.2 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/image/android-api37.f4e4045570.png                                       87.7 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/index.7b0fe22ced.js                                                   87.7 kB     27.1 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/image/7B137B17-B73F-4A4E-AE84-22A2E1E48DD5.6ba9a4a261.png                94.1 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/image/tailnet-counter-agent-browser.82c1d88bfa.png                       114.8 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/image/ios-26.2-iphone17pro.a73b7bf27b.png                                127.5 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-a1017bdf23ca.327b890285.js                                173.0 kB    36.2 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/image/tailnet-search-agent-browser.e594141a4d.png                        190.1 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/image/tailnet-status-page-scale-agent-browser.e57e07e0de.png             208.0 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/image/tailnet-plan-agent-browser.db4e196fca.png                          208.3 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/image/tailnet-status-c04-12-agent-browser.f8a374e4bf.png                 213.4 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/2.ae1dca203c.js                                                       217.1 kB    71.7 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/lib-react.d9aa10f4b0.js                                               218.4 kB    68.9 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/image/tailnet-roadmap-agent-browser.46c8d92008.png                       258.6 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/js/async/route-6c33a3943990.abcca57be6.js                                382.8 kB    89.1 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/image/tailnet-preflight-agent-browser.96d4a82657.png                     386.0 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/search_index.ko.7d20e0eb.json                                            594.5 kB    182.5 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/static/image/tailnet-page-scale-evidence-agent-browser.23a6fbeeda.png           723.8 kB
+
+                                                                                                                                        Total:   4917.3 kB   3336.8 kB
+
+File (node)                                                                                                                                                           Size        Gzip
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/404.html                                                                                             8.5 kB      2.5 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/render-build-result.html            30.8 kB     5.5 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/render-build-result.html                 31.2 kB     5.2 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/internal/evidence/c13-3-ios-direct-touch-delivery-2026-10-18/tailnet-sync/render-build-result.html   31.7 kB     5.3 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/README.html                            33.2 kB     6.4 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-plan-review-20.html          35.0 kB     6.9 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/plan/c04-12-visual-viewport.html                                                                     35.0 kB     7.0 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-review-20.html               35.1 kB     6.8 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/README.html                         35.4 kB     6.8 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/plan/c04-12-page-scale-rendering.html                                                                35.7 kB     7.3 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/README.html                              36.0 kB     6.9 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/plan/c13-3-ios-direct-touch-delivery-control.html                                                    36.2 kB     7.5 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/plan/c13-3-wheel-delta-routing.html                                                                  36.4 kB     7.7 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/plan/c04-12-root-canvas-color-scheme.html                                                            36.8 kB     7.4 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/internal/evidence/c04-12-page-scale-rendering-2026-10-17/pr-delta-review-30.html                     36.8 kB     7.5 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/internal/evidence/c04-12-page-scale-rendering-2026-10-17/README.html                                 37.7 kB     7.6 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/plan/c13-3-android-avd-touchpad-point.html                                                           39.3 kB     8.2 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/pr-delta-review-20.html                39.5 kB     6.9 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/plan/c13-3-ios-direct-touch-delivery-control-plan-review-20.html                                     40.2 kB     6.8 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/internal/evidence/c13-3-ios-direct-touch-delivery-2026-10-18/implementation-review-20.html           40.3 kB     6.8 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/pr-delta-review-30.html                  40.6 kB     6.7 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/plan/c13-3-policy-simulator-matrix.html                                                              42.1 kB     9.1 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/internal/evidence/c13-3-ios-direct-touch-delivery-2026-10-18/README.html                             42.3 kB     9.0 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/plan/c13-3-style-invalidation.html                                                                   42.4 kB     9.2 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/pr-delta-review-30.html             45.1 kB     7.6 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/internal/evidence/c13-3-ios-direct-touch-delivery-2026-10-18/pr-delta-review-30.html                 48.6 kB     8.2 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/plan/c04-root-html-document-environment.html                                                         51.2 kB     11.6 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/internal/0077-c04-12-root-html-document.html                                                         52.7 kB     12.3 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/plan/c13-3-native-wheel-input.html                                                                   57.1 kB     13.0 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/internal/0063-c13-3-scroll-gestures.html                                                             78.8 kB     19.1 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/plan/c13-3-scroll-gestures.html                                                                      88.1 kB     20.9 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/internal/README.html                                                                                 173.1 kB    39.2 kB
+../../../../../tmp/spinon-c13-3-ios-direct-touch-render-20261018/STATUS.html                                                                                          369.1 kB    91.0 kB
+
+                                                                                                                                                             Total:   1822.1 kB   390.1 kB

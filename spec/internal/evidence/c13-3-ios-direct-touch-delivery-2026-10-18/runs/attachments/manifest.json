@@ -1,0 +1,77 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "899A3F19-3F40-491D-86E6-AD0575B5D528.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 plain UIView delivery oracle observations_0_7D7D78C1-939B-4D69-95FF-36B4D98F67CC.txt",
+        "timestamp" : 1792295443.016
+      }
+    ],
+    "testIdentifier" : "C133WheelProbeUITests/testContinuousScrollRecognizerWithoutScrollView()",
+    "testIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testContinuousScrollRecognizerWithoutScrollView"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "6DEBE747-92C9-4B12-98FC-6BF361DCBEA6.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 direct touch aggregate_0_6FF6C1D4-771B-4042-9D64-2C94AD988A22.txt",
+        "timestamp" : 1792295511.813
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "E86993B0-D62F-47FA-BA40-D736F4BE0D67.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 direct touch all launch observations_0_70C0EBCA-60C9-4511-BFC6-E389D4D6EE3D.txt",
+        "timestamp" : 1792295511.812
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "09861BD5-FC63-466E-9214-FED543A75248.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 direct touch launch 3 observations_0_79193524-8491-47FD-A614-A8F6C595CDA3.txt",
+        "timestamp" : 1792295510.745
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "2AB57670-D369-4044-BE5A-935F86EFAFA6.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 direct touch launch 2 observations_0_CECEF1C3-EC9D-47AF-924B-BE5692F61B36.txt",
+        "timestamp" : 1792295488.244
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "7B137B17-B73F-4A4E-AE84-22A2E1E48DD5.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 direct touch final screen_0_90B1D8EE-00DB-4559-899A-8587C1C0CF6C.png",
+        "timestamp" : 1792295465.709
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "94F01679-1AA8-4827-BCAA-473D82D21F27.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 direct touch launch 1 observations_0_BAB924B2-DE0E-4F87-B492-70A30DE0A0D5.txt",
+        "timestamp" : 1792295465.64
+      }
+    ],
+    "testIdentifier" : "C133WheelProbeUITests/testDirectTouchRecognizerDeliveryControl()",
+    "testIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testDirectTouchRecognizerDeliveryControl"
+  }
+]

@@ -103,8 +103,132 @@ final class C133WheelProbeUITests: XCTestCase {
         add(attachment)
     }
 
+    func testDirectTouchRecognizerDeliveryControl() {
+        var observations: [String] = []
+        var callbacksObserved = 0
+        var signedOffsetsObserved = 0
+        var validLaunches = 0
+        var validBaselines = 0
+        for launch in 1...3 {
+            let app = XCUIApplication(bundleIdentifier: "dev.spinon.probe.oracle.host")
+            app.launchArguments = ["--plain-direct-touch-oracle"]
+            app.launch()
+
+            let target = app.descendants(matching: .any)
+                .matching(identifier: "plain-oracle-target")
+                .firstMatch
+            let offsetLabel = app.descendants(matching: .any)
+                .matching(identifier: "scroll-offset")
+                .firstMatch
+            let callbackLabel = app.descendants(matching: .any)
+                .matching(identifier: "wheel-callbacks")
+                .firstMatch
+            let targetExists = target.waitForExistence(timeout: 10)
+            let labelsExist = offsetLabel.waitForExistence(timeout: 10)
+                && callbackLabel.waitForExistence(timeout: 10)
+            let targetIsHittable = targetExists && target.isHittable
+            guard targetExists && labelsExist && targetIsHittable else {
+                observations.append(
+                    "launch=\(launch) setup_failed target_exists=\(targetExists) labels_exist=\(labelsExist) target_hittable=\(targetIsHittable)"
+                )
+                app.terminate()
+                continue
+            }
+            validLaunches += 1
+
+            let initialCallbackCount = callbackCount(callbackLabel)
+            let initialOffset = offsetX(offsetLabel)
+            validBaselines += initialCallbackCount == 0 && initialOffset == 0 ? 1 : 0
+            observations.append(
+                "launch=\(launch) initial_callback_count=\(initialCallbackCount) initial_offset_x=\(initialOffset)"
+            )
+            for repetition in 1...5 {
+                for direction in ["left", "right"] {
+                    let originX: CGFloat = direction == "left" ? 0.8 : 0.2
+                    let destinationX: CGFloat = direction == "left" ? 0.2 : 0.8
+                    let callbackBefore = callbackCount(callbackLabel)
+                    let offsetBefore = offsetX(offsetLabel)
+                    let origin = target.coordinate(
+                        withNormalizedOffset: CGVector(dx: originX, dy: 0.5)
+                    )
+                    let destination = target.coordinate(
+                        withNormalizedOffset: CGVector(dx: destinationX, dy: 0.5)
+                    )
+                    origin.press(forDuration: 0.05, thenDragTo: destination)
+
+                    let expectedSign: CGFloat = direction == "left" ? -1 : 1
+                    let deadline = Date().addingTimeInterval(2.0)
+                    var callbackAfter = callbackCount(callbackLabel)
+                    var offsetAfter = offsetX(offsetLabel)
+                    while Date() < deadline {
+                        callbackAfter = callbackCount(callbackLabel)
+                        offsetAfter = offsetX(offsetLabel)
+                        let offsetDelta = offsetAfter - offsetBefore
+                        if callbackAfter > callbackBefore && offsetDelta * expectedSign > 0 {
+                            break
+                        }
+                        Thread.sleep(forTimeInterval: 0.05)
+                    }
+
+                    let offsetDelta = offsetAfter - offsetBefore
+                    let callbackObserved = callbackAfter > callbackBefore
+                    let signedOffsetObserved = offsetDelta * expectedSign > 0
+                    callbacksObserved += callbackObserved ? 1 : 0
+                    signedOffsetsObserved += signedOffsetObserved ? 1 : 0
+                    observations.append(
+                        "launch=\(launch) repetition=\(repetition) direction=\(direction) callback_before=\(callbackBefore) callback_after=\(callbackAfter) offset_before=\(offsetBefore) offset_after=\(offsetAfter) offset_delta=\(offsetDelta) callback_observed=\(callbackObserved) signed_offset_observed=\(signedOffsetObserved)"
+                    )
+                }
+            }
+
+            let attachment = XCTAttachment(string: observations.suffix(11).joined(separator: "\n"))
+            attachment.name = "C13.3 direct touch launch \(launch) observations"
+            attachment.lifetime = .keepAlways
+            add(attachment)
+            if launch == 1 {
+                XCTContext.runActivity(named: "C13.3 direct touch final screen") { activity in
+                    let screenshot = XCTAttachment(screenshot: app.screenshot())
+                    screenshot.name = "C13.3 direct touch final screen"
+                    screenshot.lifetime = .keepAlways
+                    activity.add(screenshot)
+                }
+            }
+            app.terminate()
+        }
+
+        let allObservations = XCTAttachment(string: observations.joined(separator: "\n"))
+        allObservations.name = "C13.3 direct touch all launch observations"
+        allObservations.lifetime = .keepAlways
+        add(allObservations)
+        let summary = XCTAttachment(
+            string: "valid_fresh_launches=\(validLaunches)/3 valid_zero_baselines=\(validBaselines)/3 callbacks_observed=\(callbacksObserved)/30 signed_offsets_observed=\(signedOffsetsObserved)/30"
+        )
+        summary.name = "C13.3 direct touch aggregate"
+        summary.lifetime = .keepAlways
+        add(summary)
+
+        XCTAssertEqual(validLaunches, 3, "direct touch 앱 fresh launch 수")
+        XCTAssertEqual(validBaselines, 3, "direct touch zero baseline 수")
+        XCTAssertEqual(callbacksObserved, 30, "직접 touch gesture의 UIKit callback 관찰 수")
+        XCTAssertEqual(signedOffsetsObserved, 30, "직접 touch gesture의 부호 일치 offset 관찰 수")
+    }
+
     private func value(_ element: XCUIElement) -> String {
         (element.value as? String) ?? element.label
+    }
+
+    private func callbackCount(_ element: XCUIElement) -> Int {
+        let text = value(element)
+        guard let token = text.split(separator: " ").first(where: { $0.hasPrefix("callbacks=") }) else {
+            return -1
+        }
+        return Int(token.split(separator: "=").last ?? "") ?? -1
+    }
+
+    private func offsetX(_ element: XCUIElement) -> CGFloat {
+        let text = value(element)
+        guard let first = text.split(separator: ",").first else { return .nan }
+        return CGFloat(Double(first.replacingOccurrences(of: "offset=", with: "")) ?? .nan)
     }
 
     private func launchApp() -> (XCUIApplication, XCUIElement) {
