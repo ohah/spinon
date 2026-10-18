@@ -1,6 +1,6 @@
 # C11.4 계획·사전 oracle PR 변경 적대 검토 · 30개 관점
 
-**대상:** 이 PR의 변경 전체, PR 본문 이미지 미리보기, [C11.4 계획](../../../../plan/c11-4-grid-track-sizing.md).
+**대상:** 이 PR의 변경 전체, PR 본문 이미지 미리보기, [C11.4 계획](https://github.com/ohah/spinon/blob/main/plan/c11-4-grid-track-sizing.md).
 **검토 기준:** PR 생성 뒤 diff와 표시된 Chrome 캡처를 병합 전에 다시 확인한다. 이 계획 PR은 제품 구현 PR의 20관점 검토와 별도다.
 
 | # | 독립 실패 관점 | 확인 결과 |

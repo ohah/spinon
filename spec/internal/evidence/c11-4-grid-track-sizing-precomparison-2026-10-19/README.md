@@ -5,11 +5,11 @@
 
 ## 입력과 실행 환경
 
-- Fixture: [`grid-track-sizing-c114-precomparison.html`](../../../../tests/fixtures/css/c11/grid-track-sizing-c114-precomparison.html), SHA-256 `f2bfd4fc295988c9550026627c8d83f9b2daa04c52633e4a4c10d2dc2e9bc8a6`.
+- Fixture: [`grid-track-sizing-c114-precomparison.html`](https://github.com/ohah/spinon/blob/main/tests/fixtures/css/c11/grid-track-sizing-c114-precomparison.html), SHA-256 `f2bfd4fc295988c9550026627c8d83f9b2daa04c52633e4a4c10d2dc2e9bc8a6`.
 - 기준 구현: Agent Browser를 통한 Google Chrome `155.0.8059.85`, HeadlessChrome reduced UA `155.0.0.0`, macOS `26.5.1` ARM, locale `ko-KR`, DPR 1. Full/high-entropy UA와 platform metadata는 [`browser-metadata.json`](chrome/browser-metadata.json)에 있다.
 - Browser metadata SHA-256: `6d1f44c5ad3a769726234fe4899e1ff91a647cf7dfa26c9cb6e8aa054aa00c8e`.
-- Image 입력: [`c14-1-png-basic.png`](../../../../tests/fixtures/resources/c14-1-png-basic.png), 137 bytes, SHA-256 `5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2`, natural `24×16 CSS px`.
-- Text 입력: [`Ahem.ttf`](../../../../tests/fixtures/resources/c15/Ahem.ttf), SHA-256 `b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448`; `document.fonts.check("10px Ahem")` true. Text/image collection awaited `document.images[].decode()` and font readiness before reading geometry.
+- Image 입력: [`c14-1-png-basic.png`](https://github.com/ohah/spinon/blob/main/tests/fixtures/resources/c14-1-png-basic.png), 137 bytes, SHA-256 `5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2`, natural `24×16 CSS px`.
+- Text 입력: [`Ahem.ttf`](https://github.com/ohah/spinon/blob/main/tests/fixtures/resources/c15/Ahem.ttf), SHA-256 `b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448`; `document.fonts.check("10px Ahem")` true. Text/image collection awaited `document.images[].decode()` and font readiness before reading geometry.
 - 첫 image decode와 경합해 나온 0×0 측정은 폐기했다. 아래 JSON은 완전히 decode된 이미지·로드된 font에서 수집한 값이다.
 
 ## 고정 oracle
@@ -72,4 +72,4 @@ Chromium에서 fixture가 관찰값을 낸 것은 upstream WPT pass도, Spinon W
 - 이 26개는 계획 전 비교 집합이다. implementation-only controls, full WPT, CSS Grid 전체, 글리프 픽셀 동등성, Android/iOS runtime 및 실기기 결과를 포함하지 않는다.
 - Agent Browser session 및 localhost fixture server를 종료했다. 후속 확인에서도 Agent Browser·Terminal Browser process나 fixture server listener가 남아 있지 않았다.
 
-이 구현 계획은 [C11.4 세부 계획](../../../../plan/c11-4-grid-track-sizing.md), 계획 검토는 [20개 실패 관점](plan-review-20.md), 계획 PR 변경 검토는 [30개 관점](pr-delta-review-30.md)에 있다.
+이 구현 계획은 [C11.4 세부 계획](https://github.com/ohah/spinon/blob/main/plan/c11-4-grid-track-sizing.md), 계획 검토는 [20개 실패 관점](plan-review-20.md), 계획 PR 변경 검토는 [30개 관점](pr-delta-review-30.md)에 있다.

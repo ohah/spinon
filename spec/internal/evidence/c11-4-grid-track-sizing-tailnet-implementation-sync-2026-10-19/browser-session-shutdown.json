@@ -1,0 +1,21 @@
+{
+  "tool": "Agent Browser",
+  "version": "0.31.1",
+  "session": "spinon-c114-tailnet-post-20261019",
+  "close_result": "success",
+  "before_close": {
+    "active": true,
+    "pid": 35025,
+    "page_count": 1
+  },
+  "after_close": {
+    "active": false,
+    "pid": null
+  },
+  "process_check": {
+    "session_pid_exists": false,
+    "related_agent_browser_or_chrome_processes": [],
+    "related_browser_listeners": []
+  },
+  "existing_tailnet_preview_server": "left running"
+}

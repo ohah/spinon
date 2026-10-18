@@ -1,0 +1,61 @@
+{
+  "tool": "Agent Browser",
+  "version": "0.31.1",
+  "verified_date": "2026-10-19",
+  "served_prefix": "/spinon/",
+  "pages": [
+    {
+      "path": "/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "official_counter": "72/212",
+      "counter_visible_in_screenshot": true,
+      "screenshot": "tailnet-roadmap-agent-browser.png"
+    },
+    {
+      "path": "/spinon/STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "c114_checked": false,
+      "scope_excerpt": "text intrinsic 측정 API와 Taffy measure callback까지. image/automatic minimum contribution 연결, Grid track sizing 단계, auto-repeat, Android/iOS runtime은 미구현·미검증. C11.4와 C11은 미완료.",
+      "plan_link": "https://github.com/ohah/spinon/blob/main/plan/c11-4-grid-track-sizing.md",
+      "screenshot": "tailnet-status-agent-browser.png"
+    },
+    {
+      "path": "/spinon/plan/c11-4-grid-track-sizing.html",
+      "title": "C11.4 · CSS Grid track sizing 계획 - 스피논 문서",
+      "bad_local_links": [],
+      "screenshot": "tailnet-plan-agent-browser.png"
+    },
+    {
+      "path": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.html",
+      "title": "C11.4 Grid track sizing 사전 비교 - 스피논 문서",
+      "case_count": 26,
+      "bad_local_links": [],
+      "fixture_font_plan_links": "canonical GitHub URLs",
+      "screenshot": "tailnet-precomparison-agent-browser.png"
+    },
+    {
+      "path": "/spinon/internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.html",
+      "title": "C11.4 · inline text edge 사전 oracle - 스피논 문서",
+      "observed_min_content_widths_px": [
+        75,
+        110,
+        15,
+        45
+      ],
+      "font_ready_record": true,
+      "screenshot": "tailnet-inline-edge-agent-browser.png"
+    },
+    {
+      "path": "/spinon/internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/README.html",
+      "title": "C11.4 text intrinsic measure 구현 slice · 2026-10-19 - 스피논 문서",
+      "scope_visible": true,
+      "pr_review_route": "/spinon/internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/pr-delta-review-30.html",
+      "screenshot": "tailnet-evidence-agent-browser.png"
+    }
+  ],
+  "limits": [
+    "선택한 Tailnet 문서 route만 확인",
+    "앱·iOS/Android Simulator·실기기 동작은 검증하지 않음",
+    "전체 문서 링크 검사를 의미하지 않음"
+  ]
+}
