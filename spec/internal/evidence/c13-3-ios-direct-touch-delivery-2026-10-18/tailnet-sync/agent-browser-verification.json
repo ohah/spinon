@@ -1,9 +1,19 @@
 {
   "phase": "agent-browser-render-verification",
-  "session": "spinon-c13-3-direct-touch-20261018",
   "routes": [
     {
+      "path": "/ohah/spinon/pull/305",
+      "session": "spinon-c13-3-pr-check-20261018",
+      "loaded": true,
+      "dom_assertions": [
+        "test: iOS direct-touch 전달 대조 근거 추가"
+      ],
+      "images_loaded": 2,
+      "images_failed": 0
+    },
+    {
       "path": "/spinon/internal/evidence/c13-3-ios-direct-touch-delivery-2026-10-18/README.html",
+      "session": "spinon-c13-3-final-check-20261018",
       "loaded": true,
       "dom_assertions": [
         "C13.3 iOS direct-touch positive control",
@@ -14,6 +24,7 @@
     },
     {
       "path": "/spinon/roadmap.html",
+      "session": "spinon-c13-3-direct-touch-20261018",
       "loaded": true,
       "dom_assertions": [
         "완료 74/207개",
@@ -23,6 +34,7 @@
     },
     {
       "path": "/spinon/STATUS.html",
+      "session": "spinon-c13-3-direct-touch-20261018",
       "loaded": true,
       "dom_assertions": [
         "C13.3 iOS direct-touch delivery positive control",
