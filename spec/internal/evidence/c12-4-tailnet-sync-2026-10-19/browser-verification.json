@@ -2,6 +2,25 @@
   "schema": "spinon.c12-4-tailnet-agent-browser-verification.v1",
   "browser": "Agent Browser",
   "private_host": "intentionally omitted",
+  "github_pr": {
+    "url": "https://github.com/ohah/spinon/pull/331",
+    "body_images": [
+      {
+        "alt": "Tailnet roadmap의 2026-10-19 반복 session 검증 항목",
+        "loaded": true,
+        "natural_width": 1280,
+        "natural_height": 633
+      },
+      {
+        "alt": "Tailnet 상태 대장의 C12.4 및 PR #330 근거",
+        "loaded": true,
+        "natural_width": 1280,
+        "natural_height": 633
+      }
+    ],
+    "browser_session_closed": true,
+    "remaining_agent_browser_daemons": 0
+  },
   "routes": [
     {
       "path": "/spinon/roadmap.html",
