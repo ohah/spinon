@@ -1,0 +1,19 @@
+{
+  "result": "failed at repository-wide dead-link validation",
+  "diagnosticCount": 569,
+  "examples": [
+    "spec/internal/evidence/c13-1-full-surface-pixel-centers-2026-10-14/implementation-review-20.md:",
+    "spec/internal/evidence/c18-1-image-paint-ios-simulator-2026-10-16/README.md:",
+    "spec/internal/0066-c18-3-object-fit-position.md:",
+    "spec/internal/evidence/c11-2-1-grid-placement-android-runtime-matrix-2026-10-13/c1121-android-20261012T155731980Z-404da76d/README.md:",
+    "spec/internal/0046-c08-block-paint.md:",
+    "spec/internal/evidence/c05-runtime-incremental-restyle-plan-review-2026-10-10.md:",
+    "spec/internal/evidence/c14-2-image-ratio-precomparison-2026-10-14/README.md:",
+    "spec/internal/evidence/r06-priority-fairness-simulators-2026-10-08.md:",
+    "spec/internal/evidence/c11-grid-android-physical-device-2026-10-12/c11-grid-android-matrix-20261011T201500690Z-be1c7d50/README.md:",
+    "spec/internal/evidence/c06-2-spacing-plan-review-2026-10-10.md:",
+    "spec/internal/evidence/r06-priority-fairness-android-2026-10-08.md:",
+    "spec/internal/evidence/c11-2-1-grid-placement-pixels-2026-10-12/README.md:"
+  ],
+  "note": "Raw bundler trace omitted because it contained machine-specific absolute paths; selected build and Tailnet copy evidence are retained separately."
+}

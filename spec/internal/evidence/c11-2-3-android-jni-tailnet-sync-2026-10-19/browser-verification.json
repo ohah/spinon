@@ -1,0 +1,46 @@
+{
+  "tool": "agent-browser",
+  "version": "0.31.1",
+  "session": "spinon-tailnet-c1123",
+  "sourceCommit": "d50c6cc73317050fe078299ce0f63618b83869bc",
+  "pages": [
+    {
+      "path": "/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "checks": [
+        "C11.2.3 Android 기본 빌드 gate note rendered",
+        "PR #328 link rendered in the note",
+        "note states that limited-profile completion and public CSS Grid scope are unchanged"
+      ],
+      "screenshot": "tailnet-roadmap-agent-browser.png",
+      "screenshotPixels": "1280x633"
+    },
+    {
+      "path": "/spinon/plan/c11-2-3-android-jni-feature-gate.html",
+      "title": "C11.2.3 Android JNI feature gate 정합성 - 스피논 문서",
+      "checks": [
+        "fixture gate identifier rendered",
+        "completion-scope text rendered",
+        "execution-evidence link rendered"
+      ]
+    },
+    {
+      "path": "/spinon/spec/internal/evidence/c11-2-3-android-jni-gate-2026-10-19/README.html",
+      "title": "C11.2.3 Android JNI feature gate · 2026-10-19 - 스피논 문서",
+      "checks": [
+        "build logs and ELF reports linked",
+        "API 37 default-route screenshot link opened in Agent Browser",
+        "opened PNG natural size 1080x2400"
+      ]
+    },
+    {
+      "path": "/spinon/STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "checks": [
+        "PR #328 evidence note rendered",
+        "C11.2.3 limited-profile completion statement remains unchanged"
+      ]
+    }
+  ],
+  "coverageLimit": "These routes and the linked PNG were checked; this was not a browser audit of every site link."
+}
