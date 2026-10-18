@@ -1,0 +1,7 @@
+{
+  "command": "mise exec -- bun run docs:build",
+  "exitCode": 1,
+  "deadLinkErrorPages": 540,
+  "changedC13EvidenceReadmeDeadLinkGroup": 0,
+  "interpretation": "전체 문서 빌드는 저장소 전반의 dead-link 오류로 실패했다. 선택 C13.3 실행 근거 README는 artifact/plan 링크를 GitHub blob으로 바꾼 뒤 별도 dead-link 그룹이 없었다. 성공한 selected build는 8개 Markdown route만 렌더했고 dead-link/image 검사를 끈 부분 빌드이며 전체 적합성 증거가 아니다."
+}
