@@ -4,7 +4,7 @@
 
 **상태:** 계획·Chrome 155 사전 비교 완료. 구현은 단계 A 중 Parley text intrinsic 측정 API와 Taffy measure callback 연결까지다. A의 image/automatic-minimum contribution 연결, B의 Grid track 입력·단계별 sizing, C의 auto-repeat, D의 Android/iOS 앱 경로는 아직 구현·검증하지 않았다. C11.4와 C11 상위는 미완료다.
 
-**고정 사전 자료:** [20 case Chrome 155 oracle와 hash 목록](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.md) · [inline span edge supplemental oracle](../spec/internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.md) · [계획 적대 검토 20개](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.md) · [fixture](../tests/fixtures/css/c11/grid-track-sizing-c114-precomparison.html)
+**고정 사전 자료:** [20 case Chrome 155 oracle와 hash 목록](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.md) · [inline span edge supplemental oracle](../spec/internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.md) · [계획 적대 검토 20개](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.md) · [Taffy 0.14.0 automatic minimum 소스 감사](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-0.14-automatic-minimum-audit.md) · [감사 반영 계획 재검토 20개](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-audit-plan-review-20.md) · [fixture](../tests/fixtures/css/c11/grid-track-sizing-c114-precomparison.html)
 
 ## 목표와 닫을 범위
 
@@ -19,7 +19,7 @@ CSS Grid Level 1 §7.2.2–§7.2.3.2와 §11.3–§11.8을 normative algorithm�
 - `GridTrackSize`는 현재 `LengthPx`, `Percentage`, `Fraction`만 담는다. Stylo→layout projection은 이 세 유형만 옮기며 track repetition을 펼쳐 단일 track 배열로 만든다.
 - `GridAutoRows`·`GridAutoColumns`는 `auto` 또는 단일 고정 px뿐이다. `CompactTaffyStyle`은 grid auto-track 목록을 비워 반환한다.
 - 현재 C11 placement/template profile 외에 intrinsic track sizing용 별도 runtime profile은 없다. C11.3 이름·area 의미를 앞선 profile에 암묵적으로 열지 않는다.
-- C14.3 image natural-size contribution은 immutable replaced-size 입력과 Taffy measure callback으로 연결되지만 현재 Grid validation은 fixed track에 한정된다. natural `24×16` image가 C11.4에서 자동 최소·min/max-content 입력이 되어야 한다.
+- C14.3 image natural-size contribution은 immutable replaced-size 입력과 Taffy measure callback으로 연결되지만 현재 Grid validation은 fixed track에 한정된다. natural `24×16` image의 min/max-content 측정은 기존 경로를 재사용하고, track span에 따른 automatic minimum은 B단계의 typed track·placement 입력이 준비된 뒤 계산한다. Taffy 후보의 자동 최소 span 검사 한계는 [0.14.0 소스 감사](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-0.14-automatic-minimum-audit.md)에 기록했다.
 - C15 text callback은 definite width만 받아 Parley layout을 호출한다. `MinContent`·`MaxContent` available space는 `IndefiniteTextAvailableWidth` 오류가 된다. 누락된 텍스트 기여를 0으로 삼지 말고 동일 font registry·revision의 intrinsic width 결과를 추가해야 한다.
 - Grid에는 축별 10,000 track 상한, fallible `Vec` 예약, 계산 오류 전파 경계가 있다. auto-repeat 확장도 같은 상한과 output atomicity를 보장해야 한다.
 
@@ -29,8 +29,8 @@ CSS Grid Level 1 §7.2.2–§7.2.3.2와 §11.3–§11.8을 normative algorithm�
 
 | 단계 | 구현 범위 | 진입/완료 조건 |
 | --- | --- | --- |
-| A · intrinsic contribution 입력 | Parley 기반 text min-content/max-content advance를 같은 shaping/font/revision 입력에서 계산한다. Ahem 기준의 `normal`, `word-break:break-all`, `white-space:nowrap`를 먼저 수치화하고, C15에서 계산할 수 없는 shaping·line-break mode는 거부한다. C14.3 image natural min/max contribution과 `min-width`/`max-width`, aspect-ratio 기반 축 전달을 재사용한다. Grid item의 automatic minimum에 필요한 specified/transferred/content size suggestion, max constraint, item span과 flex track 예외를 계산하고 padding/border/box sizing은 외곽 contribution에 정확히 한 번 반영한다. typed C13 overflow state가 없는 조합은 fail closed한다. | text/image item마다 min, max, preferred contribution의 출처·축·revision이 남는다. definite-width C15 snapshot은 유지하고 intrinsic measure 과정에서 덮어쓰지 않는다. |
-| B · intrinsic track algorithm | typed track 모델과 전용 `RuntimeBlockFlexGridTrackSizingV1` profile을 추가한다. fixed/percent/`fr`와 intrinsic min/max track, `auto`, `minmax(min,max)`, `fit-content(length-percentage)`를 명시·positive implicit track에 연결한다. §11.3–§11.8의 초기화, base size/growth limit, 단일 span 및 span별 기여 배분, max-content 단계, flex 확장, auto-track stretch를 각각 기록한다. rows와 columns 양쪽에서 실행한다. | Chrome fixture 및 표준 control이 각 단계·최종 frame에서 맞고, unsupported item/style은 전 계산을 실패시킨다. C14/C15와 기존 C11.1–3 runtime 회귀를 유지한다. |
+| A · intrinsic contribution 입력 | Parley 기반 text min-content/max-content advance를 같은 shaping/font/revision 입력에서 계산한다. Ahem 기준의 `normal`, `word-break:break-all`, `white-space:nowrap`를 먼저 수치화하고, C15에서 계산할 수 없는 shaping·line-break mode는 거부한다. C14.3 image natural min/max contribution과 `min-width`/`max-width`, aspect-ratio 기반 축 전달을 재사용한다. Contribution source·axis·revision과 padding/border/box sizing의 외곽 반영을 기록한다. Track span, track minimum 함수, flex 예외가 필요한 automatic minimum은 B단계에서 계산한다. typed C13 overflow state가 없는 조합은 fail closed한다. | text/image item마다 min, max, preferred contribution 입력의 출처·축·revision이 남는다. definite-width C15 snapshot은 유지하고 intrinsic measure 과정에서 덮어쓰지 않는다. |
+| B · intrinsic track algorithm | typed track 모델과 전용 `RuntimeBlockFlexGridTrackSizingV1` profile을 추가한다. fixed/percent/`fr`와 intrinsic min/max track, `auto`, `minmax(min,max)`, `fit-content(length-percentage)`를 명시·positive implicit track에 연결한다. §6.6 automatic minimum의 item별 track-span 조건과 specified/transferred/content size suggestion을 이 단계에서 계산한다. track 함수를 축 전체에서 찾지 말고 해당 item이 실제로 걸친 track 범위에서만 찾는다. §11.3–§11.8의 초기화, base size/growth limit, 단일 span 및 span별 기여 배분, max-content 단계, flex 확장, auto-track stretch를 각각 기록한다. 행과 열 양쪽에서 실행한다. | Chrome fixture 및 표준 control이 각 단계·최종 frame에서 맞고, automatic minimum이 그 item의 span 이외 track에 영향받지 않으며, unsupported item/style은 전 계산을 실패시킨다. C14/C15와 기존 C11.1–3 runtime 회귀를 유지한다. |
 | C · auto-repeat | typed projection에서 auto-repeat pattern을 보존한다. 각 track list에서 한 곳만 허용하고, 반복 가능한 fixed-size track만 받는다. 반복 수는 definite preferred/max axis를 우선하고, 없으면 definite minimum axis를 만족하는 가장 작은 양의 횟수를 고르며, 세 basis가 모두 indefinite일 때 한 번 반복한다. `auto-fill` 유지, `auto-fit`의 배치 후 빈 track 및 인접 gutter collapse를 구현한다. repeated named line은 기존 C11.3 병합 규칙과 결합한다. | §7.2.3.2 기대값, 반복 직전/직후 placement, 빈 track·span 점유·gutter, overflow/10,000 상한을 독립 검사한다. B가 통과하지 않으면 이 단계의 구현·완료 판정에 들어가지 않는다. |
 | D · 교차·회귀 종결 | hidden/empty item, `display:none`, span, fixed/min/max constraints, baseline-free text, image, mixed Block/Flex/Grid ancestor, revisions, 계산/예약 실패를 두 축으로 닫는다. 표준 및 WPT 후보 각 파일을 case별로 분류해 실행 결과를 연결한다. | 전체 matrix의 성공·기대 거부가 고정되어 있고, runtime frame과 surface 표본이 계산 출력과 일치한다. 모든 남은 차이·미지원 범위가 error/계약에 보인다. |
 
@@ -105,7 +105,7 @@ C15 inline span edge는 Grid item box의 padding/border oracle와 분리해 [추
 
 1. 계획 자체의 서로 다른 실패 관점 20개를 통과시킨다. 계획 검토에서 발견한 누락은 이 문서와 oracle을 먼저 수정한다.
 2. 계획 PR을 `Rebase and merge`로 병합하고 최신 `origin/main`에서 구현 브랜치를 만든다.
-3. B단계 코드를 바꾸기 전에 A 입력 contract와 부족한 Chrome oracle을 확장한다. C15 measure API 구현 전 별도 Chrome text oracle 추가가 필요하면 새 fixture/hash를 보존한다.
+3. B단계 코드를 바꾸기 전에 A 입력 contract와 부족한 Chrome oracle을 확장한다. Automatic minimum은 track model과 item span을 알아야 하므로 A에서 독립 계산하지 않고 B의 placed-item 단계에서 해결한다. C15 measure API 구현 전 별도 Chrome text oracle 추가가 필요하면 새 fixture/hash를 보존한다.
 4. Rust 계산기의 track sizing stages와 error atomicity를 구현하고, 독립 20 관점으로 새 코드를 hostile review한다.
 5. C 단계 auto-repeat을 구현한다. A/B review 표를 재사용하지 않고 auto-repeat 자체의 새로운 실패 관점도 따로 검토한다.
 6. Android API 37 AVD, iOS 26.2 Simulator, artifact boundary를 각각 실행한다. 실패한 SDK/app 경로는 source log의 첫 실제 오류부터 수정하고 재실행한다.
