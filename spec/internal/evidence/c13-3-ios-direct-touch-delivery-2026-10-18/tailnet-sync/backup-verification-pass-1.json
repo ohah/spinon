@@ -1,0 +1,177 @@
+{
+  "pass": 1,
+  "phase": "backup-verification",
+  "generated_at_utc": "2026-10-18T04:03:50.989Z",
+  "backup_count": 28,
+  "backups_matching": 28,
+  "files": [
+    {
+      "path": "404.html",
+      "expected_sha256": "737964864205d7368dc458a3f772eb92682fcf5a6c2a871bdb95fc7a0851b439",
+      "backup_sha256": "737964864205d7368dc458a3f772eb92682fcf5a6c2a871bdb95fc7a0851b439",
+      "backup_matches": true
+    },
+    {
+      "path": "internal/0063-c13-3-scroll-gestures.html",
+      "expected_sha256": "6f8824350c37bc2b6b835deffbfde1514bc1345ae4a38a7a0996656eb997a113",
+      "backup_sha256": "6f8824350c37bc2b6b835deffbfde1514bc1345ae4a38a7a0996656eb997a113",
+      "backup_matches": true
+    },
+    {
+      "path": "internal/0077-c04-12-root-html-document.html",
+      "expected_sha256": "0afe7eae3c61c6dea4a94865c6f40f4073d1ebcf22372088e883b51522bd2a9b",
+      "backup_sha256": "0afe7eae3c61c6dea4a94865c6f40f4073d1ebcf22372088e883b51522bd2a9b",
+      "backup_matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-plan-review-20.html",
+      "expected_sha256": "c0ee6b88ed6bc0dfbde1ea10a00831ee92fea3769392ffa1e745b33ae1233986",
+      "backup_sha256": "c0ee6b88ed6bc0dfbde1ea10a00831ee92fea3769392ffa1e745b33ae1233986",
+      "backup_matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-review-20.html",
+      "expected_sha256": "3d4c2e07aba6b0874def410d08a762dbde5732d4135247fb746ef211b505c513",
+      "backup_sha256": "3d4c2e07aba6b0874def410d08a762dbde5732d4135247fb746ef211b505c513",
+      "backup_matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/pr-delta-review-30.html",
+      "expected_sha256": "d1216c4a2204c299fa37e3489a6acb20526afd0353b222ee6f8dd21dbc537447",
+      "backup_sha256": "d1216c4a2204c299fa37e3489a6acb20526afd0353b222ee6f8dd21dbc537447",
+      "backup_matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/README.html",
+      "expected_sha256": "f3a25f3072bf9bb9dc234defde6b6c2966d4b35a384ddaa3450c0f57887c5fb2",
+      "backup_sha256": "f3a25f3072bf9bb9dc234defde6b6c2966d4b35a384ddaa3450c0f57887c5fb2",
+      "backup_matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "expected_sha256": "11720cb3f62de9ff89e1a0cea001e2462ab431227e4453cc8747e5aecdd841c3",
+      "backup_sha256": "11720cb3f62de9ff89e1a0cea001e2462ab431227e4453cc8747e5aecdd841c3",
+      "backup_matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/README.html",
+      "expected_sha256": "b808683692cde48842da602b7f28e3080be5854229123114e4ec55fa2f137b13",
+      "backup_sha256": "b808683692cde48842da602b7f28e3080be5854229123114e4ec55fa2f137b13",
+      "backup_matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/render-build-result.html",
+      "expected_sha256": "4398720934db0fb10bb5d9e99da33da6231bdd73882d462624b99b8f806fde62",
+      "backup_sha256": "4398720934db0fb10bb5d9e99da33da6231bdd73882d462624b99b8f806fde62",
+      "backup_matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/pr-delta-review-20.html",
+      "expected_sha256": "7f73e658f6f18787dfcdc4b68737f5a654cb179bafec6c49473913e81528ded0",
+      "backup_sha256": "7f73e658f6f18787dfcdc4b68737f5a654cb179bafec6c49473913e81528ded0",
+      "backup_matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-preflight-2026-10-18/README.html",
+      "expected_sha256": "e56473b5b8240215f5577e7db822ca099f01f8b6de9cbc1c1b44ffa1fe602aa4",
+      "backup_sha256": "e56473b5b8240215f5577e7db822ca099f01f8b6de9cbc1c1b44ffa1fe602aa4",
+      "backup_matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "expected_sha256": "ae940760f4c70f2610a93d92fb5a5f3daa9f6d364a527dd55dabc4ad4bb08246",
+      "backup_sha256": "ae940760f4c70f2610a93d92fb5a5f3daa9f6d364a527dd55dabc4ad4bb08246",
+      "backup_matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/README.html",
+      "expected_sha256": "65335580064cd2609d23c4ce56905a91cb3fa4265d406750c118e9debd377aee",
+      "backup_sha256": "65335580064cd2609d23c4ce56905a91cb3fa4265d406750c118e9debd377aee",
+      "backup_matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-tailnet-sync-2026-10-18/render-build-result.html",
+      "expected_sha256": "13676f4e771e27548c964d37fe2181c5ae5561549705642901b177c45f92b2d5",
+      "backup_sha256": "13676f4e771e27548c964d37fe2181c5ae5561549705642901b177c45f92b2d5",
+      "backup_matches": true
+    },
+    {
+      "path": "internal/README.html",
+      "expected_sha256": "99960f908831387be7af5982b7712c718a257b08340a0122f70e6f8884c5a590",
+      "backup_sha256": "99960f908831387be7af5982b7712c718a257b08340a0122f70e6f8884c5a590",
+      "backup_matches": true
+    },
+    {
+      "path": "plan/c04-12-page-scale-rendering.html",
+      "expected_sha256": "10db9e4279befa185df8bcb6132cc1ba2002f24443e49ee73aa1dda8be178e36",
+      "backup_sha256": "10db9e4279befa185df8bcb6132cc1ba2002f24443e49ee73aa1dda8be178e36",
+      "backup_matches": true
+    },
+    {
+      "path": "plan/c04-12-root-canvas-color-scheme.html",
+      "expected_sha256": "5c150a9bf1b88dbd65ffb8e6b2910a5bbfcc9e591c6faf8c36ccca343ef843bc",
+      "backup_sha256": "5c150a9bf1b88dbd65ffb8e6b2910a5bbfcc9e591c6faf8c36ccca343ef843bc",
+      "backup_matches": true
+    },
+    {
+      "path": "plan/c04-12-visual-viewport.html",
+      "expected_sha256": "73760f1fd340917a5b052c1d532120201b0ea732560b78367a762ad07a327011",
+      "backup_sha256": "73760f1fd340917a5b052c1d532120201b0ea732560b78367a762ad07a327011",
+      "backup_matches": true
+    },
+    {
+      "path": "plan/c04-root-html-document-environment.html",
+      "expected_sha256": "3f7faf82ba874496109ea83f175b2484122a88006c816c5ffc3bbad3499fe8e3",
+      "backup_sha256": "3f7faf82ba874496109ea83f175b2484122a88006c816c5ffc3bbad3499fe8e3",
+      "backup_matches": true
+    },
+    {
+      "path": "plan/c13-3-android-avd-touchpad-point.html",
+      "expected_sha256": "83264d73ea5a59515ed609c3d72941a6b848309cdfbac084508121a2f83cd924",
+      "backup_sha256": "83264d73ea5a59515ed609c3d72941a6b848309cdfbac084508121a2f83cd924",
+      "backup_matches": true
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.html",
+      "expected_sha256": "7598d1a089720aeddb6cdca31012b80ae4c368da2b9f5ca6d553743f3af1dd5f",
+      "backup_sha256": "7598d1a089720aeddb6cdca31012b80ae4c368da2b9f5ca6d553743f3af1dd5f",
+      "backup_matches": true
+    },
+    {
+      "path": "plan/c13-3-policy-simulator-matrix.html",
+      "expected_sha256": "f19bb1bd3980a0cfdaf244ebb10050b5634a32968478a8a02a22de1daf8ddccd",
+      "backup_sha256": "f19bb1bd3980a0cfdaf244ebb10050b5634a32968478a8a02a22de1daf8ddccd",
+      "backup_matches": true
+    },
+    {
+      "path": "plan/c13-3-scroll-gestures.html",
+      "expected_sha256": "7cf8c59c9880cdbb8a8523bb7c780e17d24b8ef16d9a78ff57683ca957087e7c",
+      "backup_sha256": "7cf8c59c9880cdbb8a8523bb7c780e17d24b8ef16d9a78ff57683ca957087e7c",
+      "backup_matches": true
+    },
+    {
+      "path": "plan/c13-3-style-invalidation.html",
+      "expected_sha256": "8cb8e7287c3db5b13224c4918fd18438e6309a1239a9eab44ba13dd859a7f97d",
+      "backup_sha256": "8cb8e7287c3db5b13224c4918fd18438e6309a1239a9eab44ba13dd859a7f97d",
+      "backup_matches": true
+    },
+    {
+      "path": "plan/c13-3-wheel-delta-routing.html",
+      "expected_sha256": "19c41dd1f9bd5924ba29f8ad0a7e64a95e7b26da7e1d31ea5025fc432f08513f",
+      "backup_sha256": "19c41dd1f9bd5924ba29f8ad0a7e64a95e7b26da7e1d31ea5025fc432f08513f",
+      "backup_matches": true
+    },
+    {
+      "path": "roadmap.html",
+      "expected_sha256": "b8d801c441523c0c0924b605699b945fc98cf7ffbb0e477d0e182bfb8bd6a014",
+      "backup_sha256": "b8d801c441523c0c0924b605699b945fc98cf7ffbb0e477d0e182bfb8bd6a014",
+      "backup_matches": true
+    },
+    {
+      "path": "STATUS.html",
+      "expected_sha256": "2f4fb21a440a4ba401af29451d3d96f15b354799e2e9bc7f4b4860300547cf42",
+      "backup_sha256": "2f4fb21a440a4ba401af29451d3d96f15b354799e2e9bc7f4b4860300547cf42",
+      "backup_matches": true
+    }
+  ]
+}

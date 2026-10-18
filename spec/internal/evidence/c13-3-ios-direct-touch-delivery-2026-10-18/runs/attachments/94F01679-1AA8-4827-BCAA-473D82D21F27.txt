@@ -1,0 +1,11 @@
+launch=1 initial_callback_count=0 initial_offset_x=0.0
+launch=1 repetition=1 direction=left callback_before=0 callback_after=68 offset_before=0.0 offset_after=-422.3 offset_delta=-422.3 callback_observed=true signed_offset_observed=true
+launch=1 repetition=1 direction=right callback_before=68 callback_after=138 offset_before=-422.3 offset_after=9.0 offset_delta=431.3 callback_observed=true signed_offset_observed=true
+launch=1 repetition=2 direction=left callback_before=138 callback_after=209 offset_before=9.0 offset_after=-422.3 offset_delta=-431.3 callback_observed=true signed_offset_observed=true
+launch=1 repetition=2 direction=right callback_before=209 callback_after=277 offset_before=-422.3 offset_after=9.0 offset_delta=431.3 callback_observed=true signed_offset_observed=true
+launch=1 repetition=3 direction=left callback_before=277 callback_after=348 offset_before=9.0 offset_after=-422.3 offset_delta=-431.3 callback_observed=true signed_offset_observed=true
+launch=1 repetition=3 direction=right callback_before=348 callback_after=416 offset_before=-422.3 offset_after=9.0 offset_delta=431.3 callback_observed=true signed_offset_observed=true
+launch=1 repetition=4 direction=left callback_before=416 callback_after=487 offset_before=9.0 offset_after=-422.3 offset_delta=-431.3 callback_observed=true signed_offset_observed=true
+launch=1 repetition=4 direction=right callback_before=487 callback_after=558 offset_before=-422.3 offset_after=9.0 offset_delta=431.3 callback_observed=true signed_offset_observed=true
+launch=1 repetition=5 direction=left callback_before=558 callback_after=629 offset_before=9.0 offset_after=-422.3 offset_delta=-431.3 callback_observed=true signed_offset_observed=true
+launch=1 repetition=5 direction=right callback_before=629 callback_after=699 offset_before=-422.3 offset_after=9.0 offset_delta=431.3 callback_observed=true signed_offset_observed=true

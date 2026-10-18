@@ -8,11 +8,14 @@ final class C133WheelOracleViewController: UIViewController, UIScrollViewDelegat
     private var wheelCallbackCount = 0
     private var previousWheelTranslation = CGPoint.zero
     private var plainPanOracleRequested = false
+    private var plainDirectTouchOracleRequested = false
     private var plainPanOracleOffsetX: CGFloat = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         plainPanOracleRequested = ProcessInfo.processInfo.arguments.contains("--plain-pan-oracle")
+        plainDirectTouchOracleRequested = ProcessInfo.processInfo.arguments.contains("--plain-direct-touch-oracle")
+        plainPanOracleRequested = plainPanOracleRequested || plainDirectTouchOracleRequested
         view.backgroundColor = .systemBackground
         offsetLabel.translatesAutoresizingMaskIntoConstraints = false
         offsetLabel.accessibilityIdentifier = "scroll-offset"
@@ -53,8 +56,15 @@ final class C133WheelOracleViewController: UIViewController, UIScrollViewDelegat
             target: self,
             action: #selector(handleContinuousScroll(_:))
         )
-        continuousScrollRecognizer.allowedScrollTypesMask = .continuous
-        continuousScrollRecognizer.allowedTouchTypes = []
+        if plainDirectTouchOracleRequested {
+            continuousScrollRecognizer.allowedScrollTypesMask = []
+            continuousScrollRecognizer.allowedTouchTypes = [
+                NSNumber(value: UITouch.TouchType.direct.rawValue),
+            ]
+        } else {
+            continuousScrollRecognizer.allowedScrollTypesMask = .continuous
+            continuousScrollRecognizer.allowedTouchTypes = []
+        }
         continuousScrollRecognizer.cancelsTouchesInView = false
         continuousScrollRecognizer.delaysTouchesBegan = false
         if plainPanOracleRequested {
