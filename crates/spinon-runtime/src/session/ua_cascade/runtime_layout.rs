@@ -317,7 +317,7 @@ fn validate_root_html_block_paint_tree(
             .node(handle)
             .ok_or_else(|| layout_failure("missing_node", Some(handle.id().get()), None))?;
         if let spinon_core::HostNodeKind::Text(text) = node.kind() {
-            if !ancestor_hidden && !text.to_string_lossy().trim().is_empty() {
+            if !ancestor_hidden && !text.is_only_collapsible_html_whitespace() {
                 return Err(layout_failure(
                     "visible_root_html_text",
                     Some(node.id().get()),

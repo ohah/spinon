@@ -265,7 +265,8 @@ impl LayoutInput {
                 if ancestor_hidden {
                     continue;
                 }
-                if ignore_collapsible_whitespace_text && text.to_string_lossy().trim().is_empty() {
+                if ignore_collapsible_whitespace_text && text.is_only_collapsible_html_whitespace()
+                {
                     continue;
                 }
                 return Err(LayoutError::UnsupportedTextNode(handle.id()));
@@ -292,7 +293,7 @@ impl LayoutInput {
                 if let HostNodeKind::Text(text) = child_node.kind() {
                     if !hidden && !text_source_nodes.contains(&child.id()) {
                         if ignore_collapsible_whitespace_text
-                            && text.to_string_lossy().trim().is_empty()
+                            && text.is_only_collapsible_html_whitespace()
                         {
                             continue;
                         }
