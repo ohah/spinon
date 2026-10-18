@@ -1,0 +1,134 @@
+{
+  "pass": "pass-1",
+  "checked_paths": 18,
+  "backup_sha256_matches": 18,
+  "failures": [],
+  "items": [
+    {
+      "path": "0001-conformance.html",
+      "bytes": 32549,
+      "sha256": "70f3d677351f4d7116cfe6e0b24ec9b96acfc4e1d9ad3ba7f1ae8849f0b3aa90",
+      "expected_previous_sha256": "70f3d677351f4d7116cfe6e0b24ec9b96acfc4e1d9ad3ba7f1ae8849f0b3aa90",
+      "matches": true
+    },
+    {
+      "path": "0002-ui-tree-events.html",
+      "bytes": 31148,
+      "sha256": "6f5662ba06eac42de054cddf5b9a9243a5ef33acfd1a8d1ffe9189a295bacd20",
+      "expected_previous_sha256": "6f5662ba06eac42de054cddf5b9a9243a5ef33acfd1a8d1ffe9189a295bacd20",
+      "matches": true
+    },
+    {
+      "path": "0003-web-surface.html",
+      "bytes": 40701,
+      "sha256": "8193472f172ede182f66f651790b93a39dce20b55b373eb1a83afe94a1ca50a5",
+      "expected_previous_sha256": "8193472f172ede182f66f651790b93a39dce20b55b373eb1a83afe94a1ca50a5",
+      "matches": true
+    },
+    {
+      "path": "0004-runtime-build.html",
+      "bytes": 30114,
+      "sha256": "068d4ac6ed2a550267a0f15bdf56cf1ddcc1264fbb6f04b948d107c06d554152",
+      "expected_previous_sha256": "068d4ac6ed2a550267a0f15bdf56cf1ddcc1264fbb6f04b948d107c06d554152",
+      "matches": true
+    },
+    {
+      "path": "0005-developer-tools.html",
+      "bytes": 20267,
+      "sha256": "1f5ff4b444a6038e2c037f9cf56a72fe3862bfdc2fd5e521a4e7eee481af5ab1",
+      "expected_previous_sha256": "1f5ff4b444a6038e2c037f9cf56a72fe3862bfdc2fd5e521a4e7eee481af5ab1",
+      "matches": true
+    },
+    {
+      "path": "0006-routing.html",
+      "bytes": 25110,
+      "sha256": "d76a7a4841e7349c6b93f71dc598bafb4e90dcba3bc72393e6c3d873bf4e8975",
+      "expected_previous_sha256": "d76a7a4841e7349c6b93f71dc598bafb4e90dcba3bc72393e6c3d873bf4e8975",
+      "matches": true
+    },
+    {
+      "path": "0007-dom-compatibility.html",
+      "bytes": 36684,
+      "sha256": "b7083c894cf66d9e8b7a536f6ace13e64ee6dfbda5c8fc5612c8f3cd3f723031",
+      "expected_previous_sha256": "b7083c894cf66d9e8b7a536f6ace13e64ee6dfbda5c8fc5612c8f3cd3f723031",
+      "matches": true
+    },
+    {
+      "path": "404.html",
+      "bytes": 6226,
+      "sha256": "d30700f8617fc32261d5df46e82b1fec35151a54dcc3b47cbb1664f31e527959",
+      "expected_previous_sha256": "d30700f8617fc32261d5df46e82b1fec35151a54dcc3b47cbb1664f31e527959",
+      "matches": true
+    },
+    {
+      "path": "api/index.html",
+      "bytes": 17554,
+      "sha256": "c0a0c362f4db763829bca6029da06fd3bec81b575f7979eb1ecce85e20ca0ece",
+      "expected_previous_sha256": "c0a0c362f4db763829bca6029da06fd3bec81b575f7979eb1ecce85e20ca0ece",
+      "matches": true
+    },
+    {
+      "path": "api/README.html",
+      "bytes": 16631,
+      "sha256": "59a8cb5a86fce63f0eb49c01314ffacaf7836303958410fc2c0293b80306983f",
+      "expected_previous_sha256": "59a8cb5a86fce63f0eb49c01314ffacaf7836303958410fc2c0293b80306983f",
+      "matches": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 12425,
+      "sha256": "1568e028fac97104a669674da834eea44007567c832a62384d261febf417a952",
+      "expected_previous_sha256": "1568e028fac97104a669674da834eea44007567c832a62384d261febf417a952",
+      "matches": true
+    },
+    {
+      "path": "internal/0063-c13-3-scroll-gestures.html",
+      "bytes": 68774,
+      "sha256": "ccd74e1413b812b8e2c950ef72af9d5dd05f8c41b5c4d8ecf5ec5db0a1b544be",
+      "expected_previous_sha256": "ccd74e1413b812b8e2c950ef72af9d5dd05f8c41b5c4d8ecf5ec5db0a1b544be",
+      "matches": true
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.html",
+      "bytes": 57899,
+      "sha256": "febb731ff5fb8c0758e9918b05a0fa763d36fc046f155bfeb80f344aad688680",
+      "expected_previous_sha256": "febb731ff5fb8c0758e9918b05a0fa763d36fc046f155bfeb80f344aad688680",
+      "matches": true
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.md",
+      "bytes": 29870,
+      "sha256": "667de82b7dcf8c4ddf832b6827e36b55adc0a4e9ab071da964c1399d6f1ca44c",
+      "expected_previous_sha256": "667de82b7dcf8c4ddf832b6827e36b55adc0a4e9ab071da964c1399d6f1ca44c",
+      "matches": true
+    },
+    {
+      "path": "README.html",
+      "bytes": 24886,
+      "sha256": "79bfc769d6c6f85383614229d099e3d42618b19f65c08a7394d6cc17c4020f5a",
+      "expected_previous_sha256": "79bfc769d6c6f85383614229d099e3d42618b19f65c08a7394d6cc17c4020f5a",
+      "matches": true
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 129968,
+      "sha256": "f39d1d109318da1c665704009119b515b35a9505b6a55164feafc6a7191dab53",
+      "expected_previous_sha256": "f39d1d109318da1c665704009119b515b35a9505b6a55164feafc6a7191dab53",
+      "matches": true
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 356488,
+      "sha256": "ac24c5161942fa7eb6595d9ddd970206e6aa305d09b9d942a349fb41b37185e1",
+      "expected_previous_sha256": "ac24c5161942fa7eb6595d9ddd970206e6aa305d09b9d942a349fb41b37185e1",
+      "matches": true
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 276793,
+      "sha256": "b456c36543123e7707f282d3d72e12f76beb5baad38ecb5f12e0103741a8e806",
+      "expected_previous_sha256": "b456c36543123e7707f282d3d72e12f76beb5baad38ecb5f12e0103741a8e806",
+      "matches": true
+    }
+  ]
+}

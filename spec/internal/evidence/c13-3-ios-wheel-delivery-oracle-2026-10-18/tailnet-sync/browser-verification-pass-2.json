@@ -1,0 +1,29 @@
+{
+  "tool": "Agent Browser",
+  "terminalBrowserUsed": false,
+  "tailnet": {
+    "roadmap": {
+      "path": "/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "officialCount": "74/207",
+      "standaloneUIKitNoteVisible": true,
+      "scrollViewCallbacks": "8/10",
+      "plainUIViewCallbacks": "7/10",
+      "c13MarkedIncomplete": true
+    },
+    "experimentEvidence": {
+      "path": "/spinon/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/README.html",
+      "title": "C13.3 iOS standalone UIKit wheel callback 대조 · 2026-10-18 - 스피논 문서",
+      "run02Visible": true,
+      "run03Visible": true,
+      "pass1Copy95of95Visible": true,
+      "pass1Backup18of18Visible": true,
+      "pass1HttpAndSha95of95Visible": true,
+      "embeddedRoadmapScreenshotComplete": true,
+      "embeddedRoadmapScreenshotDimensions": "1280x633"
+    }
+  },
+  "capturedScreenshot": "tailnet-roadmap-agent-browser.png",
+  "screenshotWasCapturedWithAgentBrowser": true,
+  "privateTailnetHostnameRedacted": true
+}

@@ -1,0 +1,15 @@
+{
+  "pass": "pass-3",
+  "checked_backup_files": 1,
+  "verified_against_preflight": 1,
+  "failures": [],
+  "items": [
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/render-build.log",
+      "bytes": 9522,
+      "sha256": "ad4b65816808ce7bcb67197641450f34d90ab2704101574250fb1db1f46d96b5",
+      "expected_sha256": "ad4b65816808ce7bcb67197641450f34d90ab2704101574250fb1db1f46d96b5",
+      "matches": true
+    }
+  ]
+}

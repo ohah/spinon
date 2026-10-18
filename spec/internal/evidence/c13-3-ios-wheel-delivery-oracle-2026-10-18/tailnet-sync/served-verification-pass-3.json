@@ -1,0 +1,19 @@
+{
+  "pass": "pass-3",
+  "origin": "configured Tailnet preview (redacted)",
+  "base_path": "/spinon/",
+  "checked_paths": 1,
+  "http_200": 1,
+  "exact_body_sha256_matches": 1,
+  "failures": [],
+  "items": [
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/render-build.log",
+      "status": 200,
+      "bytes": 6787,
+      "sha256": "e971664b7b758286fcaccddfbf891a51d38522ecb4723aca2172b2abb405ac50",
+      "expected_sha256": "e971664b7b758286fcaccddfbf891a51d38522ecb4723aca2172b2abb405ac50",
+      "matches": true
+    }
+  ]
+}

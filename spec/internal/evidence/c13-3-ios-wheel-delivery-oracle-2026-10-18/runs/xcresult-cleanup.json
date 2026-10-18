@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-18",
+  "action": "removed only task-generated temporary XCTest result bundles after exporting summaries, test trees, activity trees, logs, and per-action attachments",
+  "temporaryRunRoot": "task-generated /tmp directory (redacted)",
+  "activeXcodebuildProcessBeforeRemoval": false,
+  "removedBundles": [
+    {
+      "name": "C133WheelProbe.xcresult",
+      "fileCount": 1090,
+      "bytes": 55213995,
+      "treeSha256": "f6dcb9579ad5740e87c26166d98055758c970a2f80dd6e68d7e1c3c0c4d0156b"
+    },
+    {
+      "name": "C133WheelProbe-run02.xcresult",
+      "fileCount": 1088,
+      "bytes": 55341658,
+      "treeSha256": "f21840152ccccf3c1c65cb25ba3ddaf8851bbcbe9cd9257dba4a71a0c649ac27"
+    },
+    {
+      "name": "C133WheelProbe-run03.xcresult",
+      "fileCount": 1088,
+      "bytes": 55788337,
+      "treeSha256": "c99e8086b0aac225f188e8da301a8a799c6f0cb260e2093073914905ef05bce2"
+    }
+  ],
+  "preservedInRepository": [
+    "runs/01/summary.json",
+    "runs/01/tests.json",
+    "runs/01/activities.json",
+    "runs/01/xcodebuild.log",
+    "runs/02/summary.json",
+    "runs/02/tests.json",
+    "runs/02/activities.json",
+    "runs/02/xcodebuild.log",
+    "runs/02/attachments/manifest.json",
+    "runs/02/attachments/FDC0DF0F-B23A-4894-BFDA-FFF8F84E07F3.txt",
+    "runs/03/summary.json",
+    "runs/03/tests.json",
+    "runs/03/activities.json",
+    "runs/03/xcodebuild.log",
+    "runs/03/attachments/manifest.json",
+    "runs/03/attachments/79E9A7D6-2B9A-4ED4-A572-F678D5A6F1B3.txt"
+  ]
+}

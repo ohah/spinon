@@ -1,0 +1,32 @@
+{
+  "pass": "pass-4",
+  "checked_paths": 4,
+  "exact_body_sha256_matches": 4,
+  "failures": [],
+  "items": [
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/render-build.log",
+      "source_sha256": "9e762632c8bc1339dc02239944ce0c142cfe145db673d62f8837740ef66a3d2d",
+      "target_sha256": "9e762632c8bc1339dc02239944ce0c142cfe145db673d62f8837740ef66a3d2d",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/runs/01/xcodebuild.log",
+      "source_sha256": "c8af826c51020a352ece09051fded10f66b575bbbdd7b9467d5f5d3da969d91c",
+      "target_sha256": "c8af826c51020a352ece09051fded10f66b575bbbdd7b9467d5f5d3da969d91c",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/runs/02/xcodebuild.log",
+      "source_sha256": "a03ee71c76892b62352742c32ffc83d80049f7284ac8259a100c45c04a494e0a",
+      "target_sha256": "a03ee71c76892b62352742c32ffc83d80049f7284ac8259a100c45c04a494e0a",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/runs/03/xcodebuild.log",
+      "source_sha256": "69a862d39c173e48ad9ed9b1a3b5039bdca4a930d72af931b73bb871001444ea",
+      "target_sha256": "69a862d39c173e48ad9ed9b1a3b5039bdca4a930d72af931b73bb871001444ea",
+      "matches": true
+    }
+  ]
+}

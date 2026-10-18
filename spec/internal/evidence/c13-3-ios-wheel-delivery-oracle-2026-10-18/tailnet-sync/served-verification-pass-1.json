@@ -1,0 +1,771 @@
+{
+  "pass": "pass-1",
+  "origin": "configured Tailnet preview (redacted)",
+  "base_path": "/spinon/",
+  "checked_paths": 95,
+  "http_200": 95,
+  "exact_body_sha256_matches": 95,
+  "failures": [],
+  "items": [
+    {
+      "path": "0001-conformance.html",
+      "status": 200,
+      "bytes": 33137,
+      "sha256": "44ce6f6a2458ad20e31dc82c4662b98bdc26e41394f63560d77a7aac0beffc0d",
+      "expected_sha256": "44ce6f6a2458ad20e31dc82c4662b98bdc26e41394f63560d77a7aac0beffc0d",
+      "matches": true
+    },
+    {
+      "path": "0002-ui-tree-events.html",
+      "status": 200,
+      "bytes": 31746,
+      "sha256": "d865dc556d458bbdc19adba439238e93262e710fdf257835545e193793243eb8",
+      "expected_sha256": "d865dc556d458bbdc19adba439238e93262e710fdf257835545e193793243eb8",
+      "matches": true
+    },
+    {
+      "path": "0003-web-surface.html",
+      "status": 200,
+      "bytes": 41299,
+      "sha256": "7873ad9666b30c7f448ba25faa8ebcac4e362ea6d8859b7dd2247bdefce0c6cc",
+      "expected_sha256": "7873ad9666b30c7f448ba25faa8ebcac4e362ea6d8859b7dd2247bdefce0c6cc",
+      "matches": true
+    },
+    {
+      "path": "0004-runtime-build.html",
+      "status": 200,
+      "bytes": 30712,
+      "sha256": "19c2f80c53022dc27cf15e9bfe9435610e790539ebd7eba8a03e5c091f6932d0",
+      "expected_sha256": "19c2f80c53022dc27cf15e9bfe9435610e790539ebd7eba8a03e5c091f6932d0",
+      "matches": true
+    },
+    {
+      "path": "0005-developer-tools.html",
+      "status": 200,
+      "bytes": 20865,
+      "sha256": "f900582be5c325df25de8881b06a125eefdfda5ea484ce45aaf6d249e7ccedba",
+      "expected_sha256": "f900582be5c325df25de8881b06a125eefdfda5ea484ce45aaf6d249e7ccedba",
+      "matches": true
+    },
+    {
+      "path": "0006-routing.html",
+      "status": 200,
+      "bytes": 25708,
+      "sha256": "53140e53899a955c0733f2046a5c9d42410b6460fe1622c5a5f5cf2bf14fbdce",
+      "expected_sha256": "53140e53899a955c0733f2046a5c9d42410b6460fe1622c5a5f5cf2bf14fbdce",
+      "matches": true
+    },
+    {
+      "path": "0007-dom-compatibility.html",
+      "status": 200,
+      "bytes": 37282,
+      "sha256": "52296b50287337babf065868bddc0bf536630030b261809d2451790b7d83883d",
+      "expected_sha256": "52296b50287337babf065868bddc0bf536630030b261809d2451790b7d83883d",
+      "matches": true
+    },
+    {
+      "path": "404.html",
+      "status": 200,
+      "bytes": 9110,
+      "sha256": "98284fea159652a790b012b18cad9d1616fe0f3af2f1c39048f457bddb3ef4fc",
+      "expected_sha256": "98284fea159652a790b012b18cad9d1616fe0f3af2f1c39048f457bddb3ef4fc",
+      "matches": true
+    },
+    {
+      "path": "api/index.html",
+      "status": 200,
+      "bytes": 19406,
+      "sha256": "09fb2cd74fcf0c3c1cec4ef1cf64300f6cd6085feb6cf45c64eb33e5d950e421",
+      "expected_sha256": "09fb2cd74fcf0c3c1cec4ef1cf64300f6cd6085feb6cf45c64eb33e5d950e421",
+      "matches": true
+    },
+    {
+      "path": "api/README.html",
+      "status": 200,
+      "bytes": 18455,
+      "sha256": "c9993d468da1a6544e3c9c04b0b6d6fdb423ec6e6312d3c2006e89da891802bf",
+      "expected_sha256": "c9993d468da1a6544e3c9c04b0b6d6fdb423ec6e6312d3c2006e89da891802bf",
+      "matches": true
+    },
+    {
+      "path": "c10-3-3-android-physical-2026-10-11.png",
+      "status": 200,
+      "bytes": 194109,
+      "sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775",
+      "expected_sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-depth-safety-2026-10-11.png",
+      "status": 200,
+      "bytes": 72745,
+      "sha256": "33704756e2d8758d73165b63d9fa67977e2c73965d057263d45821c7a416fdae",
+      "expected_sha256": "33704756e2d8758d73165b63d9fa67977e2c73965d057263d45821c7a416fdae",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-depth-safety-matrix-2026-10-11.png",
+      "status": 200,
+      "bytes": 71213,
+      "sha256": "db8f307c59f677cde715075c0efad8ff9056bd7d39a424b5f912da326a1f06cc",
+      "expected_sha256": "db8f307c59f677cde715075c0efad8ff9056bd7d39a424b5f912da326a1f06cc",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-emulator-2026-10-11.log",
+      "status": 200,
+      "bytes": 6079,
+      "sha256": "77adad2002dbeb251d90ce58ba3778e16fd4571601c90b4de407ba9db22b8259",
+      "expected_sha256": "77adad2002dbeb251d90ce58ba3778e16fd4571601c90b4de407ba9db22b8259",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-emulator.png",
+      "status": 200,
+      "bytes": 79987,
+      "sha256": "86d8840dc425d99b7cf7e161ef17089d68bc148da8bb7cafe892cf654201f8e5",
+      "expected_sha256": "86d8840dc425d99b7cf7e161ef17089d68bc148da8bb7cafe892cf654201f8e5",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.json",
+      "status": 200,
+      "bytes": 926,
+      "sha256": "4b0f514d3f6b40cdb2dad06a089641c8cd0af8512669265ad9d5f5b9c2a16be2",
+      "expected_sha256": "4b0f514d3f6b40cdb2dad06a089641c8cd0af8512669265ad9d5f5b9c2a16be2",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.log",
+      "status": 200,
+      "bytes": 45719,
+      "sha256": "b8f1ed1a8f1bae6d08202e44ee5e24e4c3befa916c5262a5915f6cdf664f6eca",
+      "expected_sha256": "b8f1ed1a8f1bae6d08202e44ee5e24e4c3befa916c5262a5915f6cdf664f6eca",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.png",
+      "status": 200,
+      "bytes": 71121,
+      "sha256": "a56c210a9b45f2289e4595b86430a496cfabc8177f21499ee5d63405ca45b23f",
+      "expected_sha256": "a56c210a9b45f2289e4595b86430a496cfabc8177f21499ee5d63405ca45b23f",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.log",
+      "status": 200,
+      "bytes": 43037,
+      "sha256": "23920b6b1a2a274e609d028b4be8c50cb3811f82a414a95a7820b556390e7bf0",
+      "expected_sha256": "23920b6b1a2a274e609d028b4be8c50cb3811f82a414a95a7820b556390e7bf0",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.png",
+      "status": 200,
+      "bytes": 70563,
+      "sha256": "dc5b919381d4fe3f71e564a1f24953a99446fd92d6902a4de0f8ee79eb9c2aa6",
+      "expected_sha256": "dc5b919381d4fe3f71e564a1f24953a99446fd92d6902a4de0f8ee79eb9c2aa6",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.log",
+      "status": 200,
+      "bytes": 42930,
+      "sha256": "967b0572b40411b115e9a7ddf02f424a2e69948ec24d9ea5dda3158650b5269b",
+      "expected_sha256": "967b0572b40411b115e9a7ddf02f424a2e69948ec24d9ea5dda3158650b5269b",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.png",
+      "status": 200,
+      "bytes": 71247,
+      "sha256": "183b3e38acf0bdd449a2d8613b2ce361afff558a8fec62a8c7a6aeb7deed28f5",
+      "expected_sha256": "183b3e38acf0bdd449a2d8613b2ce361afff558a8fec62a8c7a6aeb7deed28f5",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-sm-s731n-android16-vulkan.png",
+      "status": 200,
+      "bytes": 110882,
+      "sha256": "a60c2db2fa7ad194c9a210147c3827ed0ee11e831bf168da5297eb3df8a60dd4",
+      "expected_sha256": "a60c2db2fa7ad194c9a210147c3827ed0ee11e831bf168da5297eb3df8a60dd4",
+      "matches": true
+    },
+    {
+      "path": "c12-4-ios-iphone-17-pro-depth-safety-2026-10-11.png",
+      "status": 200,
+      "bytes": 142385,
+      "sha256": "bef6d91b248a580d120d0b47df26800b2ed218addd94674409deaecfc2eaf814",
+      "expected_sha256": "bef6d91b248a580d120d0b47df26800b2ed218addd94674409deaecfc2eaf814",
+      "matches": true
+    },
+    {
+      "path": "c12-4-ios-iphone-17-pro-simulator.png",
+      "status": 200,
+      "bytes": 143083,
+      "sha256": "650f17bb3edda780d32f53f3980f417b7c5b340d862865ef5e0b4250091e372b",
+      "expected_sha256": "650f17bb3edda780d32f53f3980f417b7c5b340d862865ef5e0b4250091e372b",
+      "matches": true
+    },
+    {
+      "path": "c12-4-runtime-evidence.html",
+      "status": 200,
+      "bytes": 14589,
+      "sha256": "64b118c6a84e690b4722d1e75d8b4e6d31588919e5b4a51a229e96808698aee7",
+      "expected_sha256": "64b118c6a84e690b4722d1e75d8b4e6d31588919e5b4a51a229e96808698aee7",
+      "matches": true
+    },
+    {
+      "path": "c12-4-wpt-official-run-2026-10-11.log",
+      "status": 200,
+      "bytes": 356,
+      "sha256": "9f9b4bf38f27fef6cb27d720726389f1bae382e88a383919e26dcb18cbfe6fab",
+      "expected_sha256": "9f9b4bf38f27fef6cb27d720726389f1bae382e88a383919e26dcb18cbfe6fab",
+      "matches": true
+    },
+    {
+      "path": "icon.svg",
+      "status": 200,
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "matches": true
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "bytes": 12425,
+      "sha256": "04b35663b211411f688d4503a336e07123777a352948337e1b1b215521e5accf",
+      "expected_sha256": "04b35663b211411f688d4503a336e07123777a352948337e1b1b215521e5accf",
+      "matches": true
+    },
+    {
+      "path": "internal/0063-c13-3-scroll-gestures.html",
+      "status": 200,
+      "bytes": 69469,
+      "sha256": "774c6265a8d060a4acc8a13d8de81e5f13a240ef10a299a2e3932dce28daee4d",
+      "expected_sha256": "774c6265a8d060a4acc8a13d8de81e5f13a240ef10a299a2e3932dce28daee4d",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/harness/C133WheelProbe.xcodeproj/project.pbxproj",
+      "status": 200,
+      "bytes": 13386,
+      "sha256": "e26248893493961f4730a3423554d12ada59ffab91bfb2b92f6794e8651e3960",
+      "expected_sha256": "e26248893493961f4730a3423554d12ada59ffab91bfb2b92f6794e8651e3960",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/harness/README.md",
+      "status": 200,
+      "bytes": 3391,
+      "sha256": "d1a3c2ed061dd1a4293420c97b57ca477af9ea625180a2041858532f983f61bf",
+      "expected_sha256": "d1a3c2ed061dd1a4293420c97b57ca477af9ea625180a2041858532f983f61bf",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/harness/Sources/C133WheelProbeApp.swift",
+      "status": 200,
+      "bytes": 7254,
+      "sha256": "3173cc6ca3a90250388d2829485f7adf0be8adbe91ddc0d721ffbd34c3e67e9f",
+      "expected_sha256": "3173cc6ca3a90250388d2829485f7adf0be8adbe91ddc0d721ffbd34c3e67e9f",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/harness/Tests/C133WheelProbeUITests.swift",
+      "status": 200,
+      "bytes": 10740,
+      "sha256": "b22ab872768d70e53d82a4e7ca86dfd297b1c8be3f7d4ae389239ce09868b267",
+      "expected_sha256": "b22ab872768d70e53d82a4e7ca86dfd297b1c8be3f7d4ae389239ce09868b267",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/implementation-review-20.html",
+      "status": 200,
+      "bytes": 25095,
+      "sha256": "1880633522d63c4013190c112145c15c98d1cba5b21910282f8d9678eaf3b447",
+      "expected_sha256": "1880633522d63c4013190c112145c15c98d1cba5b21910282f8d9678eaf3b447",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/implementation-review-20.md",
+      "status": 200,
+      "bytes": 3272,
+      "sha256": "e104f51110809620634fbdfa99a035e08f59d4edfa4d53a2e5f8fbe1e9fc27f4",
+      "expected_sha256": "e104f51110809620634fbdfa99a035e08f59d4edfa4d53a2e5f8fbe1e9fc27f4",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/probe-design-review-20.html",
+      "status": 200,
+      "bytes": 25756,
+      "sha256": "f43723c4e539a2c66e3dae7ad4d49bbb3798388b60f0ef3f4e15b24e6fb04559",
+      "expected_sha256": "f43723c4e539a2c66e3dae7ad4d49bbb3798388b60f0ef3f4e15b24e6fb04559",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/probe-design-review-20.md",
+      "status": 200,
+      "bytes": 3497,
+      "sha256": "ab6d2fc711a0790a7ddd41a5dedb0d160c0b9a3ab46566468f86934615927ea1",
+      "expected_sha256": "ab6d2fc711a0790a7ddd41a5dedb0d160c0b9a3ab46566468f86934615927ea1",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/README.html",
+      "status": 200,
+      "bytes": 28320,
+      "sha256": "8b5f31f8851c647866bb25aed085fc6590caf00f61ea434926e5442d92fa43f4",
+      "expected_sha256": "8b5f31f8851c647866bb25aed085fc6590caf00f61ea434926e5442d92fa43f4",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/README.md",
+      "status": 200,
+      "bytes": 6313,
+      "sha256": "519dc63c666e62a8ab420fd3ca1e44c9ada1ce55bbe7b032b8e31eb9dc0a71ba",
+      "expected_sha256": "519dc63c666e62a8ab420fd3ca1e44c9ada1ce55bbe7b032b8e31eb9dc0a71ba",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/render-build-result.md",
+      "status": 200,
+      "bytes": 1581,
+      "sha256": "0c0c5df36b99860c728301f27c15b29f2cf2fb29548bf17cb5eb72ee32cd9f5a",
+      "expected_sha256": "0c0c5df36b99860c728301f27c15b29f2cf2fb29548bf17cb5eb72ee32cd9f5a",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/render-build.log",
+      "status": 200,
+      "bytes": 5851,
+      "sha256": "ba1b443c56b264662097ba55b228929321a9a5ccaaf85c84d622a2caf891fa77",
+      "expected_sha256": "ba1b443c56b264662097ba55b228929321a9a5ccaaf85c84d622a2caf891fa77",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/route-manifest.json",
+      "status": 200,
+      "bytes": 948,
+      "sha256": "cc66fad76757af6cff4d549fffd985cc0647475a589139f4d4ba1c6d50f8ba40",
+      "expected_sha256": "cc66fad76757af6cff4d549fffd985cc0647475a589139f4d4ba1c6d50f8ba40",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/runs/01/activities.json",
+      "status": 200,
+      "bytes": 32794,
+      "sha256": "b4673750f691bd10e64b9c4bbec45f94818e3a10aba40c365b9a1f8a79850d15",
+      "expected_sha256": "b4673750f691bd10e64b9c4bbec45f94818e3a10aba40c365b9a1f8a79850d15",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/runs/01/summary.json",
+      "status": 200,
+      "bytes": 995,
+      "sha256": "c95397515640f559f169e8ffa34ee017e3c4a7ac4075ac41c345e24fb9d6d6c4",
+      "expected_sha256": "c95397515640f559f169e8ffa34ee017e3c4a7ac4075ac41c345e24fb9d6d6c4",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/runs/01/tests.json",
+      "status": 200,
+      "bytes": 2066,
+      "sha256": "71af6070b0db4a2a4b9619e1dbebdd488c4be3bba289262c82e0aecd06ee4ca5",
+      "expected_sha256": "71af6070b0db4a2a4b9619e1dbebdd488c4be3bba289262c82e0aecd06ee4ca5",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/runs/01/xcodebuild.log",
+      "status": 200,
+      "bytes": 137961,
+      "sha256": "1d20020b7bf070abbd4f2df85146eff78c01093bf662e934e240ec6ee45eebc8",
+      "expected_sha256": "1d20020b7bf070abbd4f2df85146eff78c01093bf662e934e240ec6ee45eebc8",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/runs/02/activities.json",
+      "status": 200,
+      "bytes": 33663,
+      "sha256": "00d297eb29128a7c1c4ea207e8450ec2a15a5b4b3a5df7fc562ce25adf63ba69",
+      "expected_sha256": "00d297eb29128a7c1c4ea207e8450ec2a15a5b4b3a5df7fc562ce25adf63ba69",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/runs/02/attachments/FDC0DF0F-B23A-4894-BFDA-FFF8F84E07F3.txt",
+      "status": 200,
+      "bytes": 2923,
+      "sha256": "0e2c64af2003c7036ee5c057a74b7c07de3ca715e5ccc1bdebf0c57bbe5e13a2",
+      "expected_sha256": "0e2c64af2003c7036ee5c057a74b7c07de3ca715e5ccc1bdebf0c57bbe5e13a2",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/runs/02/attachments/manifest.json",
+      "status": 200,
+      "bytes": 746,
+      "sha256": "b5441633377ff32f0b616f3aca33790ca6e5f542eb5f0b924ee1287e858df015",
+      "expected_sha256": "b5441633377ff32f0b616f3aca33790ca6e5f542eb5f0b924ee1287e858df015",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/runs/02/summary.json",
+      "status": 200,
+      "bytes": 995,
+      "sha256": "70e9a0beaeb6a6221e0bf816231b7906b168d79446f4fb862238dd6dc551a885",
+      "expected_sha256": "70e9a0beaeb6a6221e0bf816231b7906b168d79446f4fb862238dd6dc551a885",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/runs/02/tests.json",
+      "status": 200,
+      "bytes": 2066,
+      "sha256": "b409f7412047d0e9c2348451a7400508c559aea911c31dbe13fffbcb2a8a08dd",
+      "expected_sha256": "b409f7412047d0e9c2348451a7400508c559aea911c31dbe13fffbcb2a8a08dd",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/runs/02/xcodebuild.log",
+      "status": 200,
+      "bytes": 79481,
+      "sha256": "c0eff00f45e43d2a3cb269d985065d5f26d2117f415fdd2c2ca1ce8ffbe0f308",
+      "expected_sha256": "c0eff00f45e43d2a3cb269d985065d5f26d2117f415fdd2c2ca1ce8ffbe0f308",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/runs/03/activities.json",
+      "status": 200,
+      "bytes": 33815,
+      "sha256": "7ace0cd61dbe93ea6b0238b2bf400674be04ff1c8c5b55872879632fd5e5a7b9",
+      "expected_sha256": "7ace0cd61dbe93ea6b0238b2bf400674be04ff1c8c5b55872879632fd5e5a7b9",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/runs/03/attachments/79E9A7D6-2B9A-4ED4-A572-F678D5A6F1B3.txt",
+      "status": 200,
+      "bytes": 2854,
+      "sha256": "cb851eb02b66993e8636755a69a7a392a6bc77d7005dc3c5085653373e7d2344",
+      "expected_sha256": "cb851eb02b66993e8636755a69a7a392a6bc77d7005dc3c5085653373e7d2344",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/runs/03/attachments/manifest.json",
+      "status": 200,
+      "bytes": 759,
+      "sha256": "e519424f9568d8f4f1769fcf4df2d6434c7d44ffeaff0726ed26fc8043ef1a85",
+      "expected_sha256": "e519424f9568d8f4f1769fcf4df2d6434c7d44ffeaff0726ed26fc8043ef1a85",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/runs/03/summary.json",
+      "status": 200,
+      "bytes": 996,
+      "sha256": "4d93d64f80e0ec64342d611ebc0a24ac5ac247d8864378fb1ceffa59e16ad931",
+      "expected_sha256": "4d93d64f80e0ec64342d611ebc0a24ac5ac247d8864378fb1ceffa59e16ad931",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/runs/03/tests.json",
+      "status": 200,
+      "bytes": 2075,
+      "sha256": "c6f7134fa266ab09d1bdc0a9550ab4e4c32e524894f47a39601abafef0c6b2f4",
+      "expected_sha256": "c6f7134fa266ab09d1bdc0a9550ab4e4c32e524894f47a39601abafef0c6b2f4",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/runs/03/xcodebuild.log",
+      "status": 200,
+      "bytes": 81810,
+      "sha256": "fff85198f0fa9b3e386ab328a96da3a2a4da87291212cbd6d9d9de26cc1aa909",
+      "expected_sha256": "fff85198f0fa9b3e386ab328a96da3a2a4da87291212cbd6d9d9de26cc1aa909",
+      "matches": true
+    },
+    {
+      "path": "logo.svg",
+      "status": 200,
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "matches": true
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.html",
+      "status": 200,
+      "bytes": 61887,
+      "sha256": "447b00a82aaea4f9ce3e499890738b4ef126714efd828071569a0016317f1ef8",
+      "expected_sha256": "447b00a82aaea4f9ce3e499890738b4ef126714efd828071569a0016317f1ef8",
+      "matches": true
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.md",
+      "status": 200,
+      "bytes": 32166,
+      "sha256": "664a4d4710ba2e60be829ff44226d460bb0041d5c6a8075575a11d9763825548",
+      "expected_sha256": "664a4d4710ba2e60be829ff44226d460bb0041d5c6a8075575a11d9763825548",
+      "matches": true
+    },
+    {
+      "path": "README.html",
+      "status": 200,
+      "bytes": 23641,
+      "sha256": "21cefd013cf5d3f0ac6ba9d0c9b7aa14a1ea9a72595ced0385551e8076156016",
+      "expected_sha256": "21cefd013cf5d3f0ac6ba9d0c9b7aa14a1ea9a72595ced0385551e8076156016",
+      "matches": true
+    },
+    {
+      "path": "roadmap.html",
+      "status": 200,
+      "bytes": 130841,
+      "sha256": "b8d801c441523c0c0924b605699b945fc98cf7ffbb0e477d0e182bfb8bd6a014",
+      "expected_sha256": "b8d801c441523c0c0924b605699b945fc98cf7ffbb0e477d0e182bfb8bd6a014",
+      "matches": true
+    },
+    {
+      "path": "roadmap.svg",
+      "status": 200,
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "matches": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": 200,
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "expected_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "matches": true
+    },
+    {
+      "path": "static/js/3.73a17bc1f3.js",
+      "status": 200,
+      "bytes": 217082,
+      "sha256": "8db85b9dd5fe96244c3ee2243710d6623ced02b7d43254fb662164eb3e6098d1",
+      "expected_sha256": "8db85b9dd5fe96244c3ee2243710d6623ced02b7d43254fb662164eb3e6098d1",
+      "matches": true
+    },
+    {
+      "path": "static/js/3.73a17bc1f3.js.LICENSE.txt",
+      "status": 200,
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "expected_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "status": 200,
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "expected_sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-009725493014.61d194a78d.js",
+      "status": 200,
+      "bytes": 16069,
+      "sha256": "af0bd52b956d89a1d1b263f0f57f39a6d93a4eaf9b4e70bf9e0ff7d75973f3c0",
+      "expected_sha256": "af0bd52b956d89a1d1b263f0f57f39a6d93a4eaf9b4e70bf9e0ff7d75973f3c0",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-04ba7e07c84a.522ca1074a.js",
+      "status": 200,
+      "bytes": 12123,
+      "sha256": "e2c3c608caa3d83ad9b2ea2a1ca6d6d1474d03e83b7f811cbb5f53584a494203",
+      "expected_sha256": "e2c3c608caa3d83ad9b2ea2a1ca6d6d1474d03e83b7f811cbb5f53584a494203",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-2308615ee227.d8cd212f90.js",
+      "status": 200,
+      "bytes": 5397,
+      "sha256": "4b101e8eb8fdec27da6402a95964558d2d8617c01e68a00e41cb7694029697a6",
+      "expected_sha256": "4b101e8eb8fdec27da6402a95964558d2d8617c01e68a00e41cb7694029697a6",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-367f2927ddca.96d912cd39.js",
+      "status": 200,
+      "bytes": 25673,
+      "sha256": "dceab19e9cd46df7b5144281481f5ad37d7e14db1e294d7110785f454768b187",
+      "expected_sha256": "dceab19e9cd46df7b5144281481f5ad37d7e14db1e294d7110785f454768b187",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-4901aab2491b.554c39144d.js",
+      "status": 200,
+      "bytes": 5992,
+      "sha256": "1dc19f6d17bd802d1cd70265481ebd355ba6943cab08c6dfc51c6a96e8e737e0",
+      "expected_sha256": "1dc19f6d17bd802d1cd70265481ebd355ba6943cab08c6dfc51c6a96e8e737e0",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-60cbaa231bd4.e043cdb1da.js",
+      "status": 200,
+      "bytes": 18332,
+      "sha256": "df391ee02d7a34e0522cf0617b27e0896dfe70eee068eb9ba70f4aa20d63584c",
+      "expected_sha256": "df391ee02d7a34e0522cf0617b27e0896dfe70eee068eb9ba70f4aa20d63584c",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-66a872ecfa71.3cb95ea4ad.js",
+      "status": 200,
+      "bytes": 14112,
+      "sha256": "1df320e7c2e1908a667f5b3178ea23b299a929b04025cf01302c8fb3cf7c013d",
+      "expected_sha256": "1df320e7c2e1908a667f5b3178ea23b299a929b04025cf01302c8fb3cf7c013d",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.c3951d603d.js",
+      "status": 200,
+      "bytes": 381411,
+      "sha256": "16a65a572eea47c8aed4055959da36722a2f1717a22db9777cfa90b05218187a",
+      "expected_sha256": "16a65a572eea47c8aed4055959da36722a2f1717a22db9777cfa90b05218187a",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-6fe650616266.01ad8bfdd8.js",
+      "status": 200,
+      "bytes": 5019,
+      "sha256": "ad00f63ed53d846b86bac012f9da2dd5b42d793d825eb39c9223345cc50b35ff",
+      "expected_sha256": "ad00f63ed53d846b86bac012f9da2dd5b42d793d825eb39c9223345cc50b35ff",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-90640b20d2b3.379da65a91.js",
+      "status": 200,
+      "bytes": 45768,
+      "sha256": "0ae8ca2c4e165053a9b39a4ade2f02176f197919a3e90ca55d98bf5ec911e98e",
+      "expected_sha256": "0ae8ca2c4e165053a9b39a4ade2f02176f197919a3e90ca55d98bf5ec911e98e",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-ae0c2744db1a.89698b7d35.js",
+      "status": 200,
+      "bytes": 5799,
+      "sha256": "2b4baf75ec10167c67912a4838fb1a96108c20c655839bca7a0358f2cdc25a83",
+      "expected_sha256": "2b4baf75ec10167c67912a4838fb1a96108c20c655839bca7a0358f2cdc25a83",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-b33563055168.848ad7c2ed.js",
+      "status": 200,
+      "bytes": 7935,
+      "sha256": "e3fc76d24db0c2e7e82b5b76148d68d95acd84e8c53591fa991e0723c24bdd38",
+      "expected_sha256": "e3fc76d24db0c2e7e82b5b76148d68d95acd84e8c53591fa991e0723c24bdd38",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-c7b1c23e00a1.719fba36ca.js",
+      "status": 200,
+      "bytes": 3077,
+      "sha256": "e9a1bc0cde4306de66cb39f0baec8838f8990cf2c1f5a5c9ff85b39403d580dd",
+      "expected_sha256": "e9a1bc0cde4306de66cb39f0baec8838f8990cf2c1f5a5c9ff85b39403d580dd",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-e3e67500d82d.dfeaa068dc.js",
+      "status": 200,
+      "bytes": 32275,
+      "sha256": "db7799bdcdcf4db0393000641b8cad79c7c52f813185585fcb3f30f1cafcdf91",
+      "expected_sha256": "db7799bdcdcf4db0393000641b8cad79c7c52f813185585fcb3f30f1cafcdf91",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-ecf129b09e78.3c02cc848a.js",
+      "status": 200,
+      "bytes": 19984,
+      "sha256": "ce2eef10e587d5af93f22d90baafe1da0f583d1cf9a13d37213f862d8b840e52",
+      "expected_sha256": "ce2eef10e587d5af93f22d90baafe1da0f583d1cf9a13d37213f862d8b840e52",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-eeac1d534988.3ef2582038.js",
+      "status": 200,
+      "bytes": 5743,
+      "sha256": "8b2e24916e82ce17042089f43b21c430e060057ab7d2b838c7cdb811a95284e5",
+      "expected_sha256": "8b2e24916e82ce17042089f43b21c430e060057ab7d2b838c7cdb811a95284e5",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-f5e1f6055c05.060dd17177.js",
+      "status": 200,
+      "bytes": 55316,
+      "sha256": "ac6c4d5b865395a1595ff60270c7b34c1e121522a8dc194c72ffdfbd4c41acef",
+      "expected_sha256": "ac6c4d5b865395a1595ff60270c7b34c1e121522a8dc194c72ffdfbd4c41acef",
+      "matches": true
+    },
+    {
+      "path": "static/js/index.9029ffe84c.js",
+      "status": 200,
+      "bytes": 129471,
+      "sha256": "7f66a3497b238414cd73a04091275f97ef41712742e9d6cefb9e0f8807f5bdab",
+      "expected_sha256": "7f66a3497b238414cd73a04091275f97ef41712742e9d6cefb9e0f8807f5bdab",
+      "matches": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "status": 200,
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "expected_sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "matches": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "status": 200,
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "expected_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "matches": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "status": 200,
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "expected_sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "matches": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "status": 200,
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "expected_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "matches": true
+    },
+    {
+      "path": "static/js/styles.aba03c5c90.js",
+      "status": 200,
+      "bytes": 472,
+      "sha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5",
+      "expected_sha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5",
+      "matches": true
+    },
+    {
+      "path": "static/search_index.ko.f279d021.json",
+      "status": 200,
+      "bytes": 393081,
+      "sha256": "f279d0217b6382aacdc015e9510c630f8eeb15baf4c0717e7061db502df7a0b8",
+      "expected_sha256": "f279d0217b6382aacdc015e9510c630f8eeb15baf4c0717e7061db502df7a0b8",
+      "matches": true
+    },
+    {
+      "path": "STATUS.html",
+      "status": 200,
+      "bytes": 359589,
+      "sha256": "b9a912dc9974f498f215edae5b3880a8dfb60b8529aba126a59f72a78adeef15",
+      "expected_sha256": "b9a912dc9974f498f215edae5b3880a8dfb60b8529aba126a59f72a78adeef15",
+      "matches": true
+    },
+    {
+      "path": "STATUS.md",
+      "status": 200,
+      "bytes": 277842,
+      "sha256": "f2098dad4cc87f06bced93eaa7adac8cf2dad1936f2600caeb7abc3df1d19fac",
+      "expected_sha256": "f2098dad4cc87f06bced93eaa7adac8cf2dad1936f2600caeb7abc3df1d19fac",
+      "matches": true
+    }
+  ]
+}

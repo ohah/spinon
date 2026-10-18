@@ -1,0 +1,33 @@
+{
+  "rspress": "2.0.22",
+  "selectedMarkdownRoutes": [
+    "/0001-conformance.html",
+    "/0002-ui-tree-events.html",
+    "/0003-web-surface.html",
+    "/0004-runtime-build.html",
+    "/0005-developer-tools.html",
+    "/0006-routing.html",
+    "/0007-dom-compatibility.html",
+    "/README.html",
+    "/STATUS.html",
+    "/api/README.html",
+    "/api/index.html",
+    "/",
+    "/internal/0063-c13-3-scroll-gestures.html",
+    "/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/README.html",
+    "/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/implementation-review-20.html",
+    "/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/pr-delta-review-30.html",
+    "/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/probe-design-review-20.html",
+    "/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/render-build-result.html",
+    "/plan/c13-3-native-wheel-input.html"
+  ],
+  "staticRoutes": [
+    "/roadmap.html",
+    "/c12-4-runtime-evidence.html"
+  ],
+  "htmlFileCountIncluding404": 22,
+  "totalFileCount": 72,
+  "selectedBuildRootIsFresh": true,
+  "outputBytes": 4235740,
+  "screenshotAsset": "static/image/tailnet-roadmap-agent-browser.dd048363b3.png"
+}

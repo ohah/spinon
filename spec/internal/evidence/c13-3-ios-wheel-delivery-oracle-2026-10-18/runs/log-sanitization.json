@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-18",
+  "purpose": "make added diagnostic logs pass git diff --check without changing event text",
+  "files": [
+    {
+      "path": "render-build.log",
+      "original_bytes": 6787,
+      "original_sha256": "e971664b7b758286fcaccddfbf891a51d38522ecb4723aca2172b2abb405ac50",
+      "removed_trailing_whitespace_lines": 3,
+      "original_line_breaks": 70,
+      "normalized_bytes": 6779,
+      "normalized_sha256": "9e762632c8bc1339dc02239944ce0c142cfe145db673d62f8837740ef66a3d2d",
+      "only_trailing_whitespace_and_final_blank_lines_changed": true
+    },
+    {
+      "path": "runs/01/xcodebuild.log",
+      "original_bytes": 137961,
+      "original_sha256": "1d20020b7bf070abbd4f2df85146eff78c01093bf662e934e240ec6ee45eebc8",
+      "removed_trailing_whitespace_lines": 4,
+      "original_line_breaks": 672,
+      "normalized_bytes": 137945,
+      "normalized_sha256": "c8af826c51020a352ece09051fded10f66b575bbbdd7b9467d5f5d3da969d91c",
+      "only_trailing_whitespace_and_final_blank_lines_changed": true
+    },
+    {
+      "path": "runs/02/xcodebuild.log",
+      "original_bytes": 79481,
+      "original_sha256": "c0eff00f45e43d2a3cb269d985065d5f26d2117f415fdd2c2ca1ce8ffbe0f308",
+      "removed_trailing_whitespace_lines": 4,
+      "original_line_breaks": 342,
+      "normalized_bytes": 79465,
+      "normalized_sha256": "a03ee71c76892b62352742c32ffc83d80049f7284ac8259a100c45c04a494e0a",
+      "only_trailing_whitespace_and_final_blank_lines_changed": true
+    },
+    {
+      "path": "runs/03/xcodebuild.log",
+      "original_bytes": 81810,
+      "original_sha256": "fff85198f0fa9b3e386ab328a96da3a2a4da87291212cbd6d9d9de26cc1aa909",
+      "removed_trailing_whitespace_lines": 4,
+      "original_line_breaks": 351,
+      "normalized_bytes": 81794,
+      "normalized_sha256": "69a862d39c173e48ad9ed9b1a3b5039bdca4a930d72af931b73bb871001444ea",
+      "only_trailing_whitespace_and_final_blank_lines_changed": true
+    }
+  ],
+  "other_log_content_changed": false
+}

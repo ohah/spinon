@@ -1,0 +1,913 @@
+{
+  "testIdentifier" : "C133WheelProbeUITests/testContinuousScrollRecognizerWithoutScrollView()",
+  "testIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testContinuousScrollRecognizerWithoutScrollView",
+  "testName" : "testContinuousScrollRecognizerWithoutScrollView()",
+  "testRuns" : [
+    {
+      "activities" : [
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293261.511,
+          "title" : "Start Test at 2026-10-18 12:14:21.511"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293261.524,
+          "title" : "Set Up"
+        },
+        {
+          "childActivities" : [
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293261.933,
+                  "title" : "Setting up automation session"
+                },
+                {
+                  "childActivities" : [
+                    {
+                      "isAssociatedWithFailure" : false,
+                      "startTime" : 1792293262.483,
+                      "title" : "Update the Info.plist: 1) Support for all orientations will soon be required. 2) Launch screens will soon be required."
+                    }
+                  ],
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293262.456,
+                  "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293261.526,
+              "title" : "Launch dev.spinon.probe.oracle.host"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293261.526,
+          "title" : "Open dev.spinon.probe.oracle.host"
+        },
+        {
+          "childActivities" : [
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293264.628,
+                  "title" : "Checking existence of `\"plain-oracle-target\" Any`"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293264.627,
+              "title" : "Checking `Expect predicate `existsNoRetry == 1` for object \"plain-oracle-target\" Any`"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293263.563,
+          "title" : "Waiting 10.0s for \"plain-oracle-target\" Any to exist"
+        },
+        {
+          "childActivities" : [
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293265.715,
+                  "title" : "Checking existence of `\"scroll-offset\" Any`"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293265.714,
+              "title" : "Checking `Expect predicate `existsNoRetry == 1` for object \"scroll-offset\" Any`"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293264.653,
+          "title" : "Waiting 10.0s for \"scroll-offset\" Any to exist"
+        },
+        {
+          "childActivities" : [
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293266.782,
+                  "title" : "Checking existence of `\"wheel-callbacks\" Any`"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293266.781,
+              "title" : "Checking `Expect predicate `existsNoRetry == 1` for object \"wheel-callbacks\" Any`"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293265.73,
+          "title" : "Waiting 10.0s for \"wheel-callbacks\" Any to exist"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293266.795,
+          "title" : "Find the \"scroll-offset\" Any"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293266.803,
+          "title" : "Find the \"wheel-callbacks\" Any"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293266.812,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293266.814,
+              "title" : "Find the \"plain-oracle-target\" Any"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293266.834,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293266.823,
+              "title" : "Check for interrupting elements affecting \"plain-oracle-target\" Button"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293266.856,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293266.868,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293266.881,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293266.856,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293272.251,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293266.812,
+          "title" : "Scroll \"plain-oracle-target\" Any[0.50, 0.50] by dx: 38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293272.512,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293272.526,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293272.534,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293272.542,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293272.551,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293272.553,
+              "title" : "Find the \"plain-oracle-target\" Button"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293272.569,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293272.561,
+              "title" : "Check for interrupting elements affecting \"plain-oracle-target\" Button"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293272.588,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293272.599,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293272.61,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293272.588,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293277.974,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293272.551,
+          "title" : "Scroll \"plain-oracle-target\" Button[0.50, 0.50] by dx: -38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293278.229,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293278.241,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293278.25,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293278.257,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293278.266,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293278.267,
+              "title" : "Find the \"plain-oracle-target\" Button"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293278.283,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293278.276,
+              "title" : "Check for interrupting elements affecting \"plain-oracle-target\" Button"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293278.302,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293278.313,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293278.325,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293278.302,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293283.687,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293278.266,
+          "title" : "Scroll \"plain-oracle-target\" Button[0.50, 0.50] by dx: 38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293283.949,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293283.962,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293283.971,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293283.978,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293283.987,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293283.989,
+              "title" : "Find the \"plain-oracle-target\" Button"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293284.005,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293283.998,
+              "title" : "Check for interrupting elements affecting \"plain-oracle-target\" Button"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293284.025,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293284.036,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293284.047,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293284.024,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293289.414,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293283.987,
+          "title" : "Scroll \"plain-oracle-target\" Button[0.50, 0.50] by dx: -38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293289.676,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293289.689,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293289.698,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293289.706,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293289.714,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293289.716,
+              "title" : "Find the \"plain-oracle-target\" Button"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293289.734,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293289.725,
+              "title" : "Check for interrupting elements affecting \"plain-oracle-target\" Button"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293289.754,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293289.765,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293289.778,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293289.753,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293295.148,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293289.714,
+          "title" : "Scroll \"plain-oracle-target\" Button[0.50, 0.50] by dx: 38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293295.407,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293295.418,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293295.427,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293295.434,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293295.443,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293295.444,
+              "title" : "Find the \"plain-oracle-target\" Button"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293295.46,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293295.453,
+              "title" : "Check for interrupting elements affecting \"plain-oracle-target\" Button"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293295.48,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293295.49,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293295.501,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293295.479,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293300.863,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293295.443,
+          "title" : "Scroll \"plain-oracle-target\" Button[0.50, 0.50] by dx: -38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293301.126,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293301.138,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293301.146,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293301.153,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293301.162,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293301.163,
+              "title" : "Find the \"plain-oracle-target\" Button"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293301.179,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293301.171,
+              "title" : "Check for interrupting elements affecting \"plain-oracle-target\" Button"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293301.199,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293301.21,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293301.222,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293301.198,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293306.589,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293301.161,
+          "title" : "Scroll \"plain-oracle-target\" Button[0.50, 0.50] by dx: 38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293306.843,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293306.855,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293306.863,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293306.871,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293306.879,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293306.881,
+              "title" : "Find the \"plain-oracle-target\" Button"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293306.897,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293306.89,
+              "title" : "Check for interrupting elements affecting \"plain-oracle-target\" Button"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293306.916,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293306.927,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293306.939,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293306.916,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293312.313,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293306.879,
+          "title" : "Scroll \"plain-oracle-target\" Button[0.50, 0.50] by dx: -38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293312.576,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293312.588,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293312.596,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293312.604,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293312.613,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293312.615,
+              "title" : "Find the \"plain-oracle-target\" Button"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293312.632,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293312.624,
+              "title" : "Check for interrupting elements affecting \"plain-oracle-target\" Button"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293312.652,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293312.664,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293312.677,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293312.652,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293318.048,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293312.613,
+          "title" : "Scroll \"plain-oracle-target\" Button[0.50, 0.50] by dx: 38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293318.309,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293318.321,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293318.33,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293318.337,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293318.346,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293318.347,
+              "title" : "Find the \"plain-oracle-target\" Button"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293318.365,
+                  "title" : "Wait for com.apple.springboard to idle"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293318.356,
+              "title" : "Check for interrupting elements affecting \"plain-oracle-target\" Button"
+            },
+            {
+              "childActivities" : [
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293318.384,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293318.395,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                },
+                {
+                  "isAssociatedWithFailure" : false,
+                  "startTime" : 1792293318.407,
+                  "title" : "Find the \"plain-oracle-target\" Button"
+                }
+              ],
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293318.383,
+              "title" : "Synthesize event"
+            },
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293323.766,
+              "title" : "Wait for dev.spinon.probe.oracle.host to idle"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293318.346,
+          "title" : "Scroll \"plain-oracle-target\" Button[0.50, 0.50] by dx: -38.00, dy: 0.00"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293324.026,
+          "title" : "Find the \"scroll-offset\" StaticText"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293324.038,
+          "title" : "Find the \"wheel-callbacks\" StaticText"
+        },
+        {
+          "attachments" : [
+            {
+              "lifetime" : "keepAlways",
+              "name" : "C13.3 plain UIView delivery oracle observations_0_D40A4F73-213F-4570-8BE4-94AD119D730B.txt",
+              "payloadId" : "0~-py9oyHRydChIaMGz_TjZq0PdPGVRKXUIeJmT444oGCCF7olUIh8KYr6H_T6fEjBSO1ioNsN-QmRxNptT2dZjQ==",
+              "timestamp" : 1792293324.047,
+              "uuid" : "79E9A7D6-2B9A-4ED4-A572-F678D5A6F1B3"
+            }
+          ],
+          "childActivities" : [
+            {
+              "isAssociatedWithFailure" : false,
+              "startTime" : 1792293324.047,
+              "title" : "C13.3 plain UIView delivery oracle observations"
+            }
+          ],
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293324.047,
+          "title" : "Added attachment named 'C13.3 plain UIView delivery oracle observations'"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293324.047,
+          "title" : "Terminate dev.spinon.probe.oracle.host:51896"
+        },
+        {
+          "isAssociatedWithFailure" : false,
+          "startTime" : 1792293325.125,
+          "title" : "Tear Down"
+        }
+      ],
+      "device" : {
+        "architecture" : "arm64",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "modelName" : "iPad Pro 13-inch (M5)",
+        "osBuildNumber" : "23C54",
+        "osVersion" : "26.2",
+        "platform" : "iOS Simulator"
+      },
+      "testPlanConfiguration" : {
+        "configurationId" : "1",
+        "configurationName" : "Test Scheme Action"
+      }
+    }
+  ]
+}

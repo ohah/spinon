@@ -1,0 +1,234 @@
+{
+  "action": "removed only exact task-created wrong-prefix preview subtree after source-hash audit",
+  "preview_path": "redacted task-created wrong-prefix subtree",
+  "file_count": 32,
+  "total_bytes": 856716,
+  "source_matched_files": 31,
+  "partial_temp_files": 1,
+  "items": [
+    {
+      "path": "README.md",
+      "bytes": 7511,
+      "sha256": "c6749ebddd62d00730cf8b8f8dc4d4d2e1137e66ed5ddee46a8732feaa226b1f",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "copy-preflight-pass-1.json",
+      "bytes": 43477,
+      "sha256": "5bbd4d005d502847acb1268ea6bc114b229489d96c889cd58893afdeffb10e35",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "harness/C133WheelProbe.xcodeproj/project.pbxproj",
+      "bytes": 13386,
+      "sha256": "e26248893493961f4730a3423554d12ada59ffab91bfb2b92f6794e8651e3960",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "harness/README.md",
+      "bytes": 3391,
+      "sha256": "d1a3c2ed061dd1a4293420c97b57ca477af9ea625180a2041858532f983f61bf",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "harness/Sources/C133WheelProbeApp.swift",
+      "bytes": 7254,
+      "sha256": "3173cc6ca3a90250388d2829485f7adf0be8adbe91ddc0d721ffbd34c3e67e9f",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "harness/Tests/C133WheelProbeUITests.swift",
+      "bytes": 10740,
+      "sha256": "b22ab872768d70e53d82a4e7ca86dfd297b1c8be3f7d4ae389239ce09868b267",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "implementation-review-20.md",
+      "bytes": 3272,
+      "sha256": "e104f51110809620634fbdfa99a035e08f59d4edfa4d53a2e5f8fbe1e9fc27f4",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "pr-delta-review-30.md",
+      "bytes": 4933,
+      "sha256": "02225fef1ce8f5662f74232c090d68a4a2ac30c5bd46db4728a6b6d87fc93c77",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "probe-design-review-20.md",
+      "bytes": 3497,
+      "sha256": "ab6d2fc711a0790a7ddd41a5dedb0d160c0b9a3ab46566468f86934615927ea1",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "render-build-result.md",
+      "bytes": 1439,
+      "sha256": "b24072f97dca77cbe589d75b198b818815d234ae22377442bbf35dab329162fe",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "render-build.log",
+      "bytes": 9522,
+      "sha256": "ad4b65816808ce7bcb67197641450f34d90ab2704101574250fb1db1f46d96b5",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "route-manifest.json",
+      "bytes": 1217,
+      "sha256": "40e9917588c598012368cf39c4b38e1aaf4c5f1e5978d0f711a7212d9be4e6e0",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "runs/01/activities.json",
+      "bytes": 32794,
+      "sha256": "b4673750f691bd10e64b9c4bbec45f94818e3a10aba40c365b9a1f8a79850d15",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "runs/01/summary.json",
+      "bytes": 995,
+      "sha256": "c95397515640f559f169e8ffa34ee017e3c4a7ac4075ac41c345e24fb9d6d6c4",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "runs/01/tests.json",
+      "bytes": 2066,
+      "sha256": "71af6070b0db4a2a4b9619e1dbebdd488c4be3bba289262c82e0aecd06ee4ca5",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "runs/01/xcodebuild.log",
+      "bytes": 137961,
+      "sha256": "1d20020b7bf070abbd4f2df85146eff78c01093bf662e934e240ec6ee45eebc8",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "runs/02/activities.json",
+      "bytes": 33663,
+      "sha256": "00d297eb29128a7c1c4ea207e8450ec2a15a5b4b3a5df7fc562ce25adf63ba69",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "runs/02/attachments/FDC0DF0F-B23A-4894-BFDA-FFF8F84E07F3.txt",
+      "bytes": 2923,
+      "sha256": "0e2c64af2003c7036ee5c057a74b7c07de3ca715e5ccc1bdebf0c57bbe5e13a2",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "runs/02/attachments/manifest.json",
+      "bytes": 746,
+      "sha256": "b5441633377ff32f0b616f3aca33790ca6e5f542eb5f0b924ee1287e858df015",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "runs/02/summary.json",
+      "bytes": 995,
+      "sha256": "70e9a0beaeb6a6221e0bf816231b7906b168d79446f4fb862238dd6dc551a885",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "runs/02/tests.json",
+      "bytes": 2066,
+      "sha256": "b409f7412047d0e9c2348451a7400508c559aea911c31dbe13fffbcb2a8a08dd",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "runs/02/xcodebuild.log",
+      "bytes": 79481,
+      "sha256": "c0eff00f45e43d2a3cb269d985065d5f26d2117f415fdd2c2ca1ce8ffbe0f308",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "runs/03/activities.json",
+      "bytes": 33815,
+      "sha256": "7ace0cd61dbe93ea6b0238b2bf400674be04ff1c8c5b55872879632fd5e5a7b9",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "runs/03/attachments/79E9A7D6-2B9A-4ED4-A572-F678D5A6F1B3.txt",
+      "bytes": 2854,
+      "sha256": "cb851eb02b66993e8636755a69a7a392a6bc77d7005dc3c5085653373e7d2344",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "runs/03/attachments/manifest.json",
+      "bytes": 759,
+      "sha256": "e519424f9568d8f4f1769fcf4df2d6434c7d44ffeaff0726ed26fc8043ef1a85",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "runs/03/summary.json",
+      "bytes": 996,
+      "sha256": "4d93d64f80e0ec64342d611ebc0a24ac5ac247d8864378fb1ceffa59e16ad931",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "runs/03/tests.json",
+      "bytes": 2075,
+      "sha256": "c6f7134fa266ab09d1bdc0a9550ab4e4c32e524894f47a39601abafef0c6b2f4",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "runs/03/xcodebuild.log",
+      "bytes": 81810,
+      "sha256": "fff85198f0fa9b3e386ab328a96da3a2a4da87291212cbd6d9d9de26cc1aa909",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "tailnet-roadmap-agent-browser.png",
+      "bytes": 228272,
+      "sha256": "c2a308ebde3ac1af90562f4cb114314da1caf4c7a17667afe6125b08102bd91e",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "tailnet-sync/backup-verification-pass-1.json",
+      "bytes": 5166,
+      "sha256": "ceceedb255cf21a06873a5e3aea6677a6d15e9b1c6d25b9af707659234409bbd",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "tailnet-sync/copy-verification-pass-1.json",
+      "bytes": 32742,
+      "sha256": "2b09548c51d2ee7de01ed9c7a660718d296d98c798a3ccd72675c315913cc78b",
+      "matches_source": true,
+      "partial_temp": false
+    },
+    {
+      "path": "tailnet-sync/preflight-pass-2.json.c13-3-pass-2-75400",
+      "bytes": 64898,
+      "sha256": "0b765aa0df65b0f0aba6384a817861af09f8b0fef4a8ee2c7dba845734d0bf4f",
+      "matches_source": null,
+      "partial_temp": true
+    }
+  ]
+}
