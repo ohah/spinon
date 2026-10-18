@@ -1,0 +1,78 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: /Users/yoonhb/Documents/workspace/spinon/packages/docs
+warn    Current dist path: /tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out
+info    Rendering pages...
+success Pages rendered in 105 ms.
+ready   built in 1.25s (node)
+ready   built in 1.25s (web)
+
+File (web)                                                                                                                                                   Size        Gzip
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/i.25208e7c92.js                                                 0.10 kB     0.09 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/styles.2da0941fcb.js                                                  0.47 kB     0.23 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/icon.svg                                                                        0.64 kB     0.42 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/route-bf1bdca76546.4b59991af1.js                                2.2 kB      1.2 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/route-4ad8775d68c3.9098de982a.js                                7.1 kB      2.6 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/route-dfe593960693.cb8af05498.js                                9.2 kB      3.2 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/route-f7ef4ddf795f.8f90df39cd.js                                9.2 kB      3.3 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/route-059bac22a6b5.f4f097d0db.js                                9.3 kB      3.3 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/route-8a23293a317b.897d031d49.js                                9.4 kB      3.1 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/route-d0d2337d7d4c.27fa4c1b2b.js                                9.8 kB      3.4 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/route-faffa23ad0bd.e99cf60771.js                                10.3 kB     3.6 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/route-a07f3c9d45d8.a211bc144d.js                                10.6 kB     3.7 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/route-094ebbcc351a.aab4a76461.js                                11.7 kB     3.6 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/route-10c6e6a69971.6df92d29b8.js                                12.0 kB     3.8 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/route-f008be36a2c6.7002fe104e.js                                12.2 kB     3.9 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/route-894aa0843f49.82f5dfd232.js                                16.9 kB     4.6 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/route-62564aea649f.234df52c9c.js                                19.0 kB     4.9 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/route-b8496d571851.eadfc2d3d1.js                                19.4 kB     6.7 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/image/chrome-agent-browser-iphone12-scale-half.43db41fdbd.png            25.0 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/route-ea34262d0652.2d06e9eae3.js                                25.7 kB     7.9 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/image/chrome-agent-browser-iphone12-width-500-scale-one.4109664d55.png   26.5 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/image/chrome-agent-browser-iphone12-scale-two.6c05045e76.png             29.0 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/route-7ff1bc4fef68.2af52ea356.js                                30.2 kB     8.7 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/lib-router.1e14e568cb.js                                              35.4 kB     12.7 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/index.29f5906353.js                                                   40.1 kB     13.1 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/css/styles.8d918fd78e.css                                                74.0 kB     14.2 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/image/android-api37.f4e4045570.png                                       87.7 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/image/tailnet-counter-agent-browser.82c1d88bfa.png                       114.8 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/image/ios-26.2-iphone17pro.a73b7bf27b.png                                127.5 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/image/ios-iphone17pro-simulator.362c471bc8.png                           138.9 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/route-a1017bdf23ca.c9ad73b984.js                                177.6 kB    37.3 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/image/tailnet-status-page-scale-agent-browser.e57e07e0de.png             208.0 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/image/tailnet-status-c04-12-agent-browser.f8a374e4bf.png                 213.4 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/a.877e354479.js                                                       217.1 kB    72.0 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/lib-react.9cdf8f49ce.js                                               218.4 kB    68.8 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/image/tailnet-roadmap-agent-browser.46c8d92008.png                       258.6 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/js/async/route-6c33a3943990.6f60d4051f.js                                392.4 kB    91.9 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/search_index.ko.0876a225.json                                            428.0 kB    137.7 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/static/image/tailnet-page-scale-evidence-agent-browser.23a6fbeeda.png           723.8 kB
+
+                                                                                                                                                    Total:   3761.4 kB   2472.9 kB
+
+File (node)                                                                                                                                                                Size        Gzip
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/404.html                                                                                      8.5 kB      2.6 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/render-build-result.html          24.4 kB     4.7 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-plan-review-20.html   28.2 kB     6.5 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/plan/c04-12-visual-viewport.html                                                              28.2 kB     6.6 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-review-20.html        28.3 kB     6.4 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/plan/c04-12-page-scale-rendering.html                                                         28.9 kB     6.8 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/README.html                       29.3 kB     6.5 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/plan/c04-12-root-canvas-color-scheme.html                                                     30.0 kB     6.9 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/internal/evidence/c04-12-page-scale-rendering-2026-10-17/pr-delta-review-30.html              30.0 kB     7.1 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/internal/evidence/c04-12-root-html-text-paint-2026-10-18/implementation-review-20.html        30.2 kB     6.8 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/internal/evidence/c04-12-page-scale-rendering-2026-10-17/README.html                          30.9 kB     7.1 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/internal/evidence/c04-12-root-html-text-paint-2026-10-18/pr-delta-review-30.html              30.9 kB     7.0 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/pr-delta-review-30.html           33.8 kB     6.3 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/internal/evidence/c04-12-root-html-text-paint-2026-10-18/README.html                          34.8 kB     7.9 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/internal/0080-c04-12-root-html-direct-text-paint.html                                         37.2 kB     8.5 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/plan/c04-12-root-html-text-paint.html                                                         38.0 kB     9.9 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/plan/c04-root-html-document-environment.html                                                  44.4 kB     11.3 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/internal/0077-c04-12-root-html-document.html                                                  45.4 kB     11.9 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/internal/README.html                                                                          170.3 kB    39.9 kB
+../../../../../../../tmp/spinon-c04-12-text-paint-tailnet-final-20261018/out/STATUS.html                                                                                   371.1 kB    93.4 kB
+
+                                                                                                                                                                  Total:   1102.9 kB   264.0 kB

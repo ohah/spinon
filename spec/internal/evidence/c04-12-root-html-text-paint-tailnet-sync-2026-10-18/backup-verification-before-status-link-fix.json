@@ -1,0 +1,456 @@
+{
+  "created_utc": "2026-10-18T13:30:39.654725+00:00",
+  "backup_root": "/private/tmp/spinon-c04-12-text-paint-preview-backup-20261018-004",
+  "entry_count": 64,
+  "all_match_preflight": true,
+  "entries": [
+    {
+      "path": "404.html",
+      "bytes": 8512,
+      "source_sha256": "0662cff27b1b0e4461e911d91563c5eb2fcc277daec658ba96cf1f6ff495c35e",
+      "backup_sha256": "0662cff27b1b0e4461e911d91563c5eb2fcc277daec658ba96cf1f6ff495c35e",
+      "matches": true
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 372900,
+      "source_sha256": "9e6777e1bd648b7d735530df9fd594e16b650c6bd47cd351a4b242d0d2140b5d",
+      "backup_sha256": "9e6777e1bd648b7d735530df9fd594e16b650c6bd47cd351a4b242d0d2140b5d",
+      "matches": true
+    },
+    {
+      "path": "c10-3-3-android-physical-2026-10-11.png",
+      "bytes": 194109,
+      "source_sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775",
+      "backup_sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-depth-safety-2026-10-11.png",
+      "bytes": 72745,
+      "source_sha256": "33704756e2d8758d73165b63d9fa67977e2c73965d057263d45821c7a416fdae",
+      "backup_sha256": "33704756e2d8758d73165b63d9fa67977e2c73965d057263d45821c7a416fdae",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-depth-safety-matrix-2026-10-11.png",
+      "bytes": 71213,
+      "source_sha256": "db8f307c59f677cde715075c0efad8ff9056bd7d39a424b5f912da326a1f06cc",
+      "backup_sha256": "db8f307c59f677cde715075c0efad8ff9056bd7d39a424b5f912da326a1f06cc",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-emulator-2026-10-11.log",
+      "bytes": 6079,
+      "source_sha256": "77adad2002dbeb251d90ce58ba3778e16fd4571601c90b4de407ba9db22b8259",
+      "backup_sha256": "77adad2002dbeb251d90ce58ba3778e16fd4571601c90b4de407ba9db22b8259",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-emulator.png",
+      "bytes": 79987,
+      "source_sha256": "86d8840dc425d99b7cf7e161ef17089d68bc148da8bb7cafe892cf654201f8e5",
+      "backup_sha256": "86d8840dc425d99b7cf7e161ef17089d68bc148da8bb7cafe892cf654201f8e5",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.json",
+      "bytes": 926,
+      "source_sha256": "4b0f514d3f6b40cdb2dad06a089641c8cd0af8512669265ad9d5f5b9c2a16be2",
+      "backup_sha256": "4b0f514d3f6b40cdb2dad06a089641c8cd0af8512669265ad9d5f5b9c2a16be2",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.log",
+      "bytes": 45719,
+      "source_sha256": "b8f1ed1a8f1bae6d08202e44ee5e24e4c3befa916c5262a5915f6cdf664f6eca",
+      "backup_sha256": "b8f1ed1a8f1bae6d08202e44ee5e24e4c3befa916c5262a5915f6cdf664f6eca",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.png",
+      "bytes": 71121,
+      "source_sha256": "a56c210a9b45f2289e4595b86430a496cfabc8177f21499ee5d63405ca45b23f",
+      "backup_sha256": "a56c210a9b45f2289e4595b86430a496cfabc8177f21499ee5d63405ca45b23f",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.log",
+      "bytes": 43037,
+      "source_sha256": "23920b6b1a2a274e609d028b4be8c50cb3811f82a414a95a7820b556390e7bf0",
+      "backup_sha256": "23920b6b1a2a274e609d028b4be8c50cb3811f82a414a95a7820b556390e7bf0",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.png",
+      "bytes": 70563,
+      "source_sha256": "dc5b919381d4fe3f71e564a1f24953a99446fd92d6902a4de0f8ee79eb9c2aa6",
+      "backup_sha256": "dc5b919381d4fe3f71e564a1f24953a99446fd92d6902a4de0f8ee79eb9c2aa6",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.log",
+      "bytes": 42930,
+      "source_sha256": "967b0572b40411b115e9a7ddf02f424a2e69948ec24d9ea5dda3158650b5269b",
+      "backup_sha256": "967b0572b40411b115e9a7ddf02f424a2e69948ec24d9ea5dda3158650b5269b",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.png",
+      "bytes": 71247,
+      "source_sha256": "183b3e38acf0bdd449a2d8613b2ce361afff558a8fec62a8c7a6aeb7deed28f5",
+      "backup_sha256": "183b3e38acf0bdd449a2d8613b2ce361afff558a8fec62a8c7a6aeb7deed28f5",
+      "matches": true
+    },
+    {
+      "path": "c12-4-android-sm-s731n-android16-vulkan.png",
+      "bytes": 110882,
+      "source_sha256": "a60c2db2fa7ad194c9a210147c3827ed0ee11e831bf168da5297eb3df8a60dd4",
+      "backup_sha256": "a60c2db2fa7ad194c9a210147c3827ed0ee11e831bf168da5297eb3df8a60dd4",
+      "matches": true
+    },
+    {
+      "path": "c12-4-ios-iphone-17-pro-depth-safety-2026-10-11.png",
+      "bytes": 142385,
+      "source_sha256": "bef6d91b248a580d120d0b47df26800b2ed218addd94674409deaecfc2eaf814",
+      "backup_sha256": "bef6d91b248a580d120d0b47df26800b2ed218addd94674409deaecfc2eaf814",
+      "matches": true
+    },
+    {
+      "path": "c12-4-ios-iphone-17-pro-simulator.png",
+      "bytes": 143083,
+      "source_sha256": "650f17bb3edda780d32f53f3980f417b7c5b340d862865ef5e0b4250091e372b",
+      "backup_sha256": "650f17bb3edda780d32f53f3980f417b7c5b340d862865ef5e0b4250091e372b",
+      "matches": true
+    },
+    {
+      "path": "c12-4-runtime-evidence.html",
+      "bytes": 14589,
+      "source_sha256": "64b118c6a84e690b4722d1e75d8b4e6d31588919e5b4a51a229e96808698aee7",
+      "backup_sha256": "64b118c6a84e690b4722d1e75d8b4e6d31588919e5b4a51a229e96808698aee7",
+      "matches": true
+    },
+    {
+      "path": "c12-4-wpt-official-run-2026-10-11.log",
+      "bytes": 356,
+      "source_sha256": "9f9b4bf38f27fef6cb27d720726389f1bae382e88a383919e26dcb18cbfe6fab",
+      "backup_sha256": "9f9b4bf38f27fef6cb27d720726389f1bae382e88a383919e26dcb18cbfe6fab",
+      "matches": true
+    },
+    {
+      "path": "icon.svg",
+      "bytes": 638,
+      "source_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "backup_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "matches": true
+    },
+    {
+      "path": "internal/0077-c04-12-root-html-document.html",
+      "bytes": 47254,
+      "source_sha256": "a48dbb96b28d4a8347868089334116ba9eba144559f88917432fdc35466b048e",
+      "backup_sha256": "a48dbb96b28d4a8347868089334116ba9eba144559f88917432fdc35466b048e",
+      "matches": true
+    },
+    {
+      "path": "internal/0080-c04-12-root-html-direct-text-paint.html",
+      "bytes": 39010,
+      "source_sha256": "f2ecca51444e67f54fec6d5f16d78748a8a7b99106e643adce4fd7c514fd4c71",
+      "backup_sha256": "f2ecca51444e67f54fec6d5f16d78748a8a7b99106e643adce4fd7c514fd4c71",
+      "matches": true
+    },
+    {
+      "path": "internal/README.html",
+      "bytes": 172316,
+      "source_sha256": "8c2c81294620497932441c97c04e9142a860096d9b9fd5980929896cc63ebe1e",
+      "backup_sha256": "8c2c81294620497932441c97c04e9142a860096d9b9fd5980929896cc63ebe1e",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/README.html",
+      "bytes": 32698,
+      "source_sha256": "7d6df2cff2d5670f52e6ef3dfc1059f29c7c09c71b3b6704cbc9a1a31719618a",
+      "backup_sha256": "7d6df2cff2d5670f52e6ef3dfc1059f29c7c09c71b3b6704cbc9a1a31719618a",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-plan-review-20.html",
+      "bytes": 30013,
+      "source_sha256": "ce7a5dc8c1eff4a5d59dc49df3c2b4729beadb1c7ed56a996c5fabe68633f923",
+      "backup_sha256": "ce7a5dc8c1eff4a5d59dc49df3c2b4729beadb1c7ed56a996c5fabe68633f923",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/implementation-review-20.html",
+      "bytes": 30179,
+      "source_sha256": "ce4e9315c9eae373f7bb33149042c1f1f9cbe1b1b546715463dd56a1e5d3a1c9",
+      "backup_sha256": "ce4e9315c9eae373f7bb33149042c1f1f9cbe1b1b546715463dd56a1e5d3a1c9",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/pr-delta-review-30.html",
+      "bytes": 31846,
+      "source_sha256": "d15b89e10c5ddf95e7f5a394c642523ca9173eff2cde33cbfba3ec1aa97ed91d",
+      "backup_sha256": "d15b89e10c5ddf95e7f5a394c642523ca9173eff2cde33cbfba3ec1aa97ed91d",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/README.html",
+      "bytes": 31089,
+      "source_sha256": "fa4cb9acdcfac290ea4ce9904501074105b686c58a08c90685a099430efbdb55",
+      "backup_sha256": "fa4cb9acdcfac290ea4ce9904501074105b686c58a08c90685a099430efbdb55",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "bytes": 35644,
+      "source_sha256": "6c1765c9611476d589acfdadc990aa131c3081525e768a2795ffc78b63a4002a",
+      "backup_sha256": "6c1765c9611476d589acfdadc990aa131c3081525e768a2795ffc78b63a4002a",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-page-scale-tailnet-sync-2026-10-18/render-build-result.html",
+      "bytes": 26209,
+      "source_sha256": "ece268a2d495f5ba3b91fabab8472cea63b57ece5bf118c8c93a6be35f6d8232",
+      "backup_sha256": "ece268a2d495f5ba3b91fabab8472cea63b57ece5bf118c8c93a6be35f6d8232",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-text-paint-2026-10-18/README.html",
+      "bytes": 36727,
+      "source_sha256": "1215341b4b54fe098c9813375bec94d76c9b1beafbda7ccd16729d0b3d89425d",
+      "backup_sha256": "1215341b4b54fe098c9813375bec94d76c9b1beafbda7ccd16729d0b3d89425d",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-text-paint-2026-10-18/implementation-review-20.html",
+      "bytes": 32052,
+      "source_sha256": "2b3cb6f2e4f16775ff94c918711b13a03ffc5d0405e0d1e2438996103d4c46df",
+      "backup_sha256": "2b3cb6f2e4f16775ff94c918711b13a03ffc5d0405e0d1e2438996103d4c46df",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-text-paint-2026-10-18/pr-delta-review-30.html",
+      "bytes": 32715,
+      "source_sha256": "50e3f423333aea0af0acae48159fc05e7f25c5263f2dc80456bae299bd303e0c",
+      "backup_sha256": "50e3f423333aea0af0acae48159fc05e7f25c5263f2dc80456bae299bd303e0c",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-text-paint-tailnet-sync-2026-10-18/README.html",
+      "bytes": 28896,
+      "source_sha256": "2acbf6c2069586df5a439464904dc2152adc232c8618c9244ee4d3f2c9c4268b",
+      "backup_sha256": "2acbf6c2069586df5a439464904dc2152adc232c8618c9244ee4d3f2c9c4268b",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-text-paint-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "bytes": 30954,
+      "source_sha256": "ba75b73c413d2418e77fb0480b5d703aaeaea9385faea246a1e2baf95838e9c3",
+      "backup_sha256": "ba75b73c413d2418e77fb0480b5d703aaeaea9385faea246a1e2baf95838e9c3",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c04-12-root-html-text-paint-tailnet-sync-2026-10-18/render-build-result.html",
+      "bytes": 25595,
+      "source_sha256": "9e48c5a2980555709c09f13cb2dd694550f42059ca268774140f79a92e44e2d9",
+      "backup_sha256": "9e48c5a2980555709c09f13cb2dd694550f42059ca268774140f79a92e44e2d9",
+      "matches": true
+    },
+    {
+      "path": "logo.svg",
+      "bytes": 568,
+      "source_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "backup_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "matches": true
+    },
+    {
+      "path": "plan/c04-12-page-scale-rendering.html",
+      "bytes": 30754,
+      "source_sha256": "a8b379e6a2d1c40d7a98ec06ae5828074e730b464f85b09ab589e1efe05f2521",
+      "backup_sha256": "a8b379e6a2d1c40d7a98ec06ae5828074e730b464f85b09ab589e1efe05f2521",
+      "matches": true
+    },
+    {
+      "path": "plan/c04-12-root-canvas-color-scheme.html",
+      "bytes": 31846,
+      "source_sha256": "aed8b896d74c013fee01721ed469fc4c7da008d8b1ba6ff1b5967aba57a0af5d",
+      "backup_sha256": "aed8b896d74c013fee01721ed469fc4c7da008d8b1ba6ff1b5967aba57a0af5d",
+      "matches": true
+    },
+    {
+      "path": "plan/c04-12-root-html-text-paint.html",
+      "bytes": 39838,
+      "source_sha256": "c4c6a2f021b4f36f4c20b3b3a8aee908c36cf8c9ef14bf0556acd3e2b7636fd6",
+      "backup_sha256": "c4c6a2f021b4f36f4c20b3b3a8aee908c36cf8c9ef14bf0556acd3e2b7636fd6",
+      "matches": true
+    },
+    {
+      "path": "plan/c04-12-visual-viewport.html",
+      "bytes": 30080,
+      "source_sha256": "1d0e7ceb70aa09e89b8ccdde06fb0263c1c62d99a706507504a35cc9fd881fce",
+      "backup_sha256": "1d0e7ceb70aa09e89b8ccdde06fb0263c1c62d99a706507504a35cc9fd881fce",
+      "matches": true
+    },
+    {
+      "path": "plan/c04-root-html-document-environment.html",
+      "bytes": 46237,
+      "source_sha256": "6f7be69ac35949131fc1b2109bf858fa459b5a857ec4ffa192c6df4d1f955615",
+      "backup_sha256": "6f7be69ac35949131fc1b2109bf858fa459b5a857ec4ffa192c6df4d1f955615",
+      "matches": true
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 137261,
+      "source_sha256": "f5a5e6dbc7a9e34bdb7d8942a2a59a0fdc8e0440b26d4bdf17be03209b190f06",
+      "backup_sha256": "f5a5e6dbc7a9e34bdb7d8942a2a59a0fdc8e0440b26d4bdf17be03209b190f06",
+      "matches": true
+    },
+    {
+      "path": "roadmap.svg",
+      "bytes": 4835,
+      "source_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "backup_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "matches": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "source_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "backup_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "matches": true
+    },
+    {
+      "path": "static/image/android-api37.f4e4045570.png",
+      "bytes": 87663,
+      "source_sha256": "4ac824a3729425bb34f3dc4c1fbecd1eae0e1e55ef2a4b5ed2e29132c7fd7a50",
+      "backup_sha256": "4ac824a3729425bb34f3dc4c1fbecd1eae0e1e55ef2a4b5ed2e29132c7fd7a50",
+      "matches": true
+    },
+    {
+      "path": "static/image/chrome-agent-browser-iphone12-scale-half.43db41fdbd.png",
+      "bytes": 25048,
+      "source_sha256": "43b3ff2baf260e9b76467a0970f57e17a362de4b29e07fef6cb2c569ede15d7a",
+      "backup_sha256": "43b3ff2baf260e9b76467a0970f57e17a362de4b29e07fef6cb2c569ede15d7a",
+      "matches": true
+    },
+    {
+      "path": "static/image/chrome-agent-browser-iphone12-scale-two.6c05045e76.png",
+      "bytes": 28975,
+      "source_sha256": "c2973c24ba6a47c68400497086707efa60a819d2e9e81775b03e5a9b0296428b",
+      "backup_sha256": "c2973c24ba6a47c68400497086707efa60a819d2e9e81775b03e5a9b0296428b",
+      "matches": true
+    },
+    {
+      "path": "static/image/chrome-agent-browser-iphone12-width-500-scale-one.4109664d55.png",
+      "bytes": 26478,
+      "source_sha256": "851635058cf167320f35ebc83d9673d5aaf7eb2497cc429a7a4a2a09673701c1",
+      "backup_sha256": "851635058cf167320f35ebc83d9673d5aaf7eb2497cc429a7a4a2a09673701c1",
+      "matches": true
+    },
+    {
+      "path": "static/image/ios-26.2-iphone17pro.a73b7bf27b.png",
+      "bytes": 127457,
+      "source_sha256": "d02e2d04d7034b4d8ee1cd02e120a3d1335d9e299c24fc7838cce33cd5bb252e",
+      "backup_sha256": "d02e2d04d7034b4d8ee1cd02e120a3d1335d9e299c24fc7838cce33cd5bb252e",
+      "matches": true
+    },
+    {
+      "path": "static/image/ios-iphone17pro-simulator.362c471bc8.png",
+      "bytes": 138932,
+      "source_sha256": "2bd2083b4e9cbc6d2dc0b5996bd445f5e87c7dc12378ed7a090ff6ae8d297555",
+      "backup_sha256": "2bd2083b4e9cbc6d2dc0b5996bd445f5e87c7dc12378ed7a090ff6ae8d297555",
+      "matches": true
+    },
+    {
+      "path": "static/image/tailnet-counter-agent-browser.82c1d88bfa.png",
+      "bytes": 114827,
+      "source_sha256": "1be2471df1cdb41c685c9cb9fce0c3a30d65c57b399701763d3fe408c6b25c96",
+      "backup_sha256": "1be2471df1cdb41c685c9cb9fce0c3a30d65c57b399701763d3fe408c6b25c96",
+      "matches": true
+    },
+    {
+      "path": "static/image/tailnet-page-scale-evidence-agent-browser.23a6fbeeda.png",
+      "bytes": 723767,
+      "source_sha256": "86ae503212fb268c58d65d69c2802824cc544d8cb616e57cfc629fe2b215d3ff",
+      "backup_sha256": "86ae503212fb268c58d65d69c2802824cc544d8cb616e57cfc629fe2b215d3ff",
+      "matches": true
+    },
+    {
+      "path": "static/image/tailnet-roadmap-agent-browser.46c8d92008.png",
+      "bytes": 258586,
+      "source_sha256": "1ba883f83b04979e9cc4194a8f3ef4138bb05083af90f127d48b1f6b078e1f26",
+      "backup_sha256": "1ba883f83b04979e9cc4194a8f3ef4138bb05083af90f127d48b1f6b078e1f26",
+      "matches": true
+    },
+    {
+      "path": "static/image/tailnet-status-c04-12-agent-browser.f8a374e4bf.png",
+      "bytes": 213378,
+      "source_sha256": "e9538aed0a92761b28ae46b0f0913988df4eaa38bcdea52894caa67bc7b4126e",
+      "backup_sha256": "e9538aed0a92761b28ae46b0f0913988df4eaa38bcdea52894caa67bc7b4126e",
+      "matches": true
+    },
+    {
+      "path": "static/image/tailnet-status-page-scale-agent-browser.e57e07e0de.png",
+      "bytes": 208026,
+      "source_sha256": "4e6f0c6e763dcf37818d14c1a9fcb59075c43149e6b1041f5b78b5127ee9bc0b",
+      "backup_sha256": "4e6f0c6e763dcf37818d14c1a9fcb59075c43149e6b1041f5b78b5127ee9bc0b",
+      "matches": true
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "bytes": 217085,
+      "source_sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "backup_sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "matches": true
+    },
+    {
+      "path": "static/js/a.877e354479.js.LICENSE.txt",
+      "bytes": 384,
+      "source_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "backup_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "bytes": 100,
+      "source_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "backup_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "matches": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "source_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "backup_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "matches": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "source_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "backup_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "matches": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "source_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "backup_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "matches": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "source_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "backup_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "matches": true
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "bytes": 472,
+      "source_sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "backup_sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "matches": true
+    }
+  ]
+}
