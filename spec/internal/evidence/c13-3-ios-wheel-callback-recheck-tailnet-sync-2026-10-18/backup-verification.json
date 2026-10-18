@@ -1,0 +1,91 @@
+{
+  "createdAt": "2026-10-18T02:04:09.126369+00:00",
+  "backupRoot": "SpinonPreviewBackups/c13-3-ios-wheel-callback-recheck-tailnet-sync-20261018",
+  "files": [
+    {
+      "targetRelative": "404.html",
+      "bytes": 8512,
+      "sha256Before": "9c083def0a8e7c37130ce909c1002cda38df8a40a836da10fb619f9d9870a399",
+      "backupSha256": "9c083def0a8e7c37130ce909c1002cda38df8a40a836da10fb619f9d9870a399",
+      "matches": true
+    },
+    {
+      "targetRelative": "README.html",
+      "bytes": 21371,
+      "sha256Before": "07a5dcdca1f3c720697f78640686bfe9b5cd3e617591ea09c024884e67c2d17f",
+      "backupSha256": "07a5dcdca1f3c720697f78640686bfe9b5cd3e617591ea09c024884e67c2d17f",
+      "matches": true
+    },
+    {
+      "targetRelative": "STATUS.html",
+      "bytes": 358924,
+      "sha256Before": "3e061d814c3469e551b0b73147ed29f28ce693143370e3c25941cf011fa085dd",
+      "backupSha256": "3e061d814c3469e551b0b73147ed29f28ce693143370e3c25941cf011fa085dd",
+      "matches": true
+    },
+    {
+      "targetRelative": "internal/0063-c13-3-scroll-gestures.html",
+      "bytes": 72036,
+      "sha256Before": "cec7a2a8ddf8df64c4cab5d7aaa1063c8d4c6a24df0f2525fa0d3cb6e69e4acd",
+      "backupSha256": "cec7a2a8ddf8df64c4cab5d7aaa1063c8d4c6a24df0f2525fa0d3cb6e69e4acd",
+      "matches": true
+    },
+    {
+      "targetRelative": "internal/README.html",
+      "bytes": 167316,
+      "sha256Before": "f32740b96b9d0fa75cd48b68435ab440e6e4d6972121d2fc55ec3c0d44d5c7f6",
+      "backupSha256": "f32740b96b9d0fa75cd48b68435ab440e6e4d6972121d2fc55ec3c0d44d5c7f6",
+      "matches": true
+    },
+    {
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.html",
+      "bytes": 26840,
+      "sha256Before": "6142d54d52f1429d34c1e06515f2dd9c8c6e8bfd6347c12729224b76341ddcfe",
+      "backupSha256": "6142d54d52f1429d34c1e06515f2dd9c8c6e8bfd6347c12729224b76341ddcfe",
+      "matches": true
+    },
+    {
+      "targetRelative": "plan/c13-3-native-wheel-input.html",
+      "bytes": 53140,
+      "sha256Before": "a2f96656be874d80c672a796dd723ed5755646652bd7a18167249164ea75fb6d",
+      "backupSha256": "a2f96656be874d80c672a796dd723ed5755646652bd7a18167249164ea75fb6d",
+      "matches": true
+    },
+    {
+      "targetRelative": "roadmap.html",
+      "bytes": 129442,
+      "sha256Before": "cdcd2160ad2c59ddbf5e41ee01cd8300969af94bc48466172132cf155dea8e46",
+      "backupSha256": "cdcd2160ad2c59ddbf5e41ee01cd8300969af94bc48466172132cf155dea8e46",
+      "matches": true
+    },
+    {
+      "targetRelative": "STATUS.md",
+      "bytes": 275982,
+      "sha256Before": "789cfd08262f043dec04cc0cade0afc233df0e911e3ddb09d58433570fcd9eea",
+      "backupSha256": "789cfd08262f043dec04cc0cade0afc233df0e911e3ddb09d58433570fcd9eea",
+      "matches": true
+    },
+    {
+      "targetRelative": "plan/c13-3-native-wheel-input.md",
+      "bytes": 24198,
+      "sha256Before": "3b8ff7c743c1860950eb34d0d82e3a4a03785c8819c81dcfac7f97e0004798cb",
+      "backupSha256": "3b8ff7c743c1860950eb34d0d82e3a4a03785c8819c81dcfac7f97e0004798cb",
+      "matches": true
+    },
+    {
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.md",
+      "bytes": 5379,
+      "sha256Before": "365eed39dc879cbf05438cb3778687fc20bc527e297351676cb828a927620029",
+      "backupSha256": "365eed39dc879cbf05438cb3778687fc20bc527e297351676cb828a927620029",
+      "matches": true
+    },
+    {
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/source-revision.json",
+      "bytes": 2344,
+      "sha256Before": "df5fd326b9eba5666aea7caaac118a230705da3119e2cbeaaa470fa4dc12dafc",
+      "backupSha256": "df5fd326b9eba5666aea7caaac118a230705da3119e2cbeaaa470fa4dc12dafc",
+      "matches": true
+    }
+  ],
+  "allHashesMatch": true
+}

@@ -1,0 +1,766 @@
+{
+  "createdAt": "2026-10-18T02:04:09.150845+00:00",
+  "baseCommit": "5b80933639a375a4db138d80ee95416f4720af42",
+  "previewRoot": "SpinonPreview",
+  "backupRoot": "SpinonPreviewBackups/c13-3-ios-wheel-callback-recheck-tailnet-sync-20261018",
+  "deletions": 0,
+  "summary": {
+    "total": 75,
+    "add": 32,
+    "backup-and-replace": 12,
+    "skip-identical": 31
+  },
+  "allHashesMatch": true,
+  "files": [
+    {
+      "kind": "selected-build",
+      "source": "selected-build/404.html",
+      "targetRelative": "404.html",
+      "bytes": 8512,
+      "sha256": "3f985ff767d7b7360fa89ad071600a50bbb9beba9c3a953431cc0e2b6442428f",
+      "targetSha256": "3f985ff767d7b7360fa89ad071600a50bbb9beba9c3a953431cc0e2b6442428f",
+      "action": "backup-and-replace",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/README.html",
+      "targetRelative": "README.html",
+      "bytes": 24886,
+      "sha256": "79bfc769d6c6f85383614229d099e3d42618b19f65c08a7394d6cc17c4020f5a",
+      "targetSha256": "79bfc769d6c6f85383614229d099e3d42618b19f65c08a7394d6cc17c4020f5a",
+      "action": "backup-and-replace",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/STATUS.html",
+      "targetRelative": "STATUS.html",
+      "bytes": 355158,
+      "sha256": "c7e1b58a157530d81538b6adada1e4027224d9f7b12b428c9443f46fadc6ba3e",
+      "targetSha256": "c7e1b58a157530d81538b6adada1e4027224d9f7b12b428c9443f46fadc6ba3e",
+      "action": "backup-and-replace",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/c10-3-3-android-physical-2026-10-11.png",
+      "targetRelative": "c10-3-3-android-physical-2026-10-11.png",
+      "bytes": 194109,
+      "sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775",
+      "targetSha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/c12-4-android-api37-depth-safety-2026-10-11.png",
+      "targetRelative": "c12-4-android-api37-depth-safety-2026-10-11.png",
+      "bytes": 72745,
+      "sha256": "33704756e2d8758d73165b63d9fa67977e2c73965d057263d45821c7a416fdae",
+      "targetSha256": "33704756e2d8758d73165b63d9fa67977e2c73965d057263d45821c7a416fdae",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/c12-4-android-api37-depth-safety-matrix-2026-10-11.png",
+      "targetRelative": "c12-4-android-api37-depth-safety-matrix-2026-10-11.png",
+      "bytes": 71213,
+      "sha256": "db8f307c59f677cde715075c0efad8ff9056bd7d39a424b5f912da326a1f06cc",
+      "targetSha256": "db8f307c59f677cde715075c0efad8ff9056bd7d39a424b5f912da326a1f06cc",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/c12-4-android-api37-emulator-2026-10-11.log",
+      "targetRelative": "c12-4-android-api37-emulator-2026-10-11.log",
+      "bytes": 6079,
+      "sha256": "77adad2002dbeb251d90ce58ba3778e16fd4571601c90b4de407ba9db22b8259",
+      "targetSha256": "77adad2002dbeb251d90ce58ba3778e16fd4571601c90b4de407ba9db22b8259",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/c12-4-android-api37-emulator.png",
+      "targetRelative": "c12-4-android-api37-emulator.png",
+      "bytes": 79987,
+      "sha256": "86d8840dc425d99b7cf7e161ef17089d68bc148da8bb7cafe892cf654201f8e5",
+      "targetSha256": "86d8840dc425d99b7cf7e161ef17089d68bc148da8bb7cafe892cf654201f8e5",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/c12-4-android-api37-matrix-2026-10-11.json",
+      "targetRelative": "c12-4-android-api37-matrix-2026-10-11.json",
+      "bytes": 926,
+      "sha256": "4b0f514d3f6b40cdb2dad06a089641c8cd0af8512669265ad9d5f5b9c2a16be2",
+      "targetSha256": "4b0f514d3f6b40cdb2dad06a089641c8cd0af8512669265ad9d5f5b9c2a16be2",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/c12-4-android-api37-matrix-2026-10-11.log",
+      "targetRelative": "c12-4-android-api37-matrix-2026-10-11.log",
+      "bytes": 45719,
+      "sha256": "b8f1ed1a8f1bae6d08202e44ee5e24e4c3befa916c5262a5915f6cdf664f6eca",
+      "targetSha256": "b8f1ed1a8f1bae6d08202e44ee5e24e4c3befa916c5262a5915f6cdf664f6eca",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/c12-4-android-api37-matrix-2026-10-11.png",
+      "targetRelative": "c12-4-android-api37-matrix-2026-10-11.png",
+      "bytes": 71121,
+      "sha256": "a56c210a9b45f2289e4595b86430a496cfabc8177f21499ee5d63405ca45b23f",
+      "targetSha256": "a56c210a9b45f2289e4595b86430a496cfabc8177f21499ee5d63405ca45b23f",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.log",
+      "targetRelative": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.log",
+      "bytes": 43037,
+      "sha256": "23920b6b1a2a274e609d028b4be8c50cb3811f82a414a95a7820b556390e7bf0",
+      "targetSha256": "23920b6b1a2a274e609d028b4be8c50cb3811f82a414a95a7820b556390e7bf0",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.png",
+      "targetRelative": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.png",
+      "bytes": 70563,
+      "sha256": "dc5b919381d4fe3f71e564a1f24953a99446fd92d6902a4de0f8ee79eb9c2aa6",
+      "targetSha256": "dc5b919381d4fe3f71e564a1f24953a99446fd92d6902a4de0f8ee79eb9c2aa6",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/c12-4-android-api37-matrix-reserve-rerun-2026-10-11.log",
+      "targetRelative": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.log",
+      "bytes": 42930,
+      "sha256": "967b0572b40411b115e9a7ddf02f424a2e69948ec24d9ea5dda3158650b5269b",
+      "targetSha256": "967b0572b40411b115e9a7ddf02f424a2e69948ec24d9ea5dda3158650b5269b",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/c12-4-android-api37-matrix-reserve-rerun-2026-10-11.png",
+      "targetRelative": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.png",
+      "bytes": 71247,
+      "sha256": "183b3e38acf0bdd449a2d8613b2ce361afff558a8fec62a8c7a6aeb7deed28f5",
+      "targetSha256": "183b3e38acf0bdd449a2d8613b2ce361afff558a8fec62a8c7a6aeb7deed28f5",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/c12-4-android-sm-s731n-android16-vulkan.png",
+      "targetRelative": "c12-4-android-sm-s731n-android16-vulkan.png",
+      "bytes": 110882,
+      "sha256": "a60c2db2fa7ad194c9a210147c3827ed0ee11e831bf168da5297eb3df8a60dd4",
+      "targetSha256": "a60c2db2fa7ad194c9a210147c3827ed0ee11e831bf168da5297eb3df8a60dd4",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/c12-4-ios-iphone-17-pro-depth-safety-2026-10-11.png",
+      "targetRelative": "c12-4-ios-iphone-17-pro-depth-safety-2026-10-11.png",
+      "bytes": 142385,
+      "sha256": "bef6d91b248a580d120d0b47df26800b2ed218addd94674409deaecfc2eaf814",
+      "targetSha256": "bef6d91b248a580d120d0b47df26800b2ed218addd94674409deaecfc2eaf814",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/c12-4-ios-iphone-17-pro-simulator.png",
+      "targetRelative": "c12-4-ios-iphone-17-pro-simulator.png",
+      "bytes": 143083,
+      "sha256": "650f17bb3edda780d32f53f3980f417b7c5b340d862865ef5e0b4250091e372b",
+      "targetSha256": "650f17bb3edda780d32f53f3980f417b7c5b340d862865ef5e0b4250091e372b",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/c12-4-runtime-evidence.html",
+      "targetRelative": "c12-4-runtime-evidence.html",
+      "bytes": 14589,
+      "sha256": "64b118c6a84e690b4722d1e75d8b4e6d31588919e5b4a51a229e96808698aee7",
+      "targetSha256": "64b118c6a84e690b4722d1e75d8b4e6d31588919e5b4a51a229e96808698aee7",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/c12-4-wpt-official-run-2026-10-11.log",
+      "targetRelative": "c12-4-wpt-official-run-2026-10-11.log",
+      "bytes": 356,
+      "sha256": "9f9b4bf38f27fef6cb27d720726389f1bae382e88a383919e26dcb18cbfe6fab",
+      "targetSha256": "9f9b4bf38f27fef6cb27d720726389f1bae382e88a383919e26dcb18cbfe6fab",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/icon.svg",
+      "targetRelative": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/internal/0063-c13-3-scroll-gestures.html",
+      "targetRelative": "internal/0063-c13-3-scroll-gestures.html",
+      "bytes": 68024,
+      "sha256": "ff8b69e44bf1d77bd14d8e95e71fb1e5117932a3f01cedc460cc850b46e4dc8c",
+      "targetSha256": "ff8b69e44bf1d77bd14d8e95e71fb1e5117932a3f01cedc460cc850b46e4dc8c",
+      "action": "backup-and-replace",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/internal/README.html",
+      "targetRelative": "internal/README.html",
+      "bytes": 165453,
+      "sha256": "8fcb14803c591f8246fe2e82a694c8dfa0f341f411398d74ba647b34102dd468",
+      "targetSha256": "8fcb14803c591f8246fe2e82a694c8dfa0f341f411398d74ba647b34102dd468",
+      "action": "backup-and-replace",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.html",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.html",
+      "bytes": 31805,
+      "sha256": "de332a265ca4e13277a273fff44c937ea678af120747ceff45daa734667f528e",
+      "targetSha256": "de332a265ca4e13277a273fff44c937ea678af120747ceff45daa734667f528e",
+      "action": "backup-and-replace",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/xctest-harness/README.html",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/xctest-harness/README.html",
+      "bytes": 30330,
+      "sha256": "c2a0e7a1e4a9dc4468b4a10ecccf9f3d43ea37007913c217e90c5e35fb6ffc06",
+      "targetSha256": "c2a0e7a1e4a9dc4468b4a10ecccf9f3d43ea37007913c217e90c5e35fb6ffc06",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/pr-delta-review-30-2026-10-18.html",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/pr-delta-review-30-2026-10-18.html",
+      "bytes": 37172,
+      "sha256": "7d79f9e5dcd793876cdcb5f6092cea9ad424cc66eb2cbeae9182d1534ee0167f",
+      "targetSha256": "7d79f9e5dcd793876cdcb5f6092cea9ad424cc66eb2cbeae9182d1534ee0167f",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/logo.svg",
+      "targetRelative": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/plan/c13-3-native-wheel-input.html",
+      "targetRelative": "plan/c13-3-native-wheel-input.html",
+      "bytes": 52636,
+      "sha256": "21a4c5319000ab44c9208abc26512d77301e9a00c3bcbc4f0e278a4a773267d7",
+      "targetSha256": "21a4c5319000ab44c9208abc26512d77301e9a00c3bcbc4f0e278a4a773267d7",
+      "action": "backup-and-replace",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/roadmap.html",
+      "targetRelative": "roadmap.html",
+      "bytes": 129866,
+      "sha256": "7e0698b40c0eca1bb1f4e01d7ef146de5235e2a397e35229a9dfed867d87a31c",
+      "targetSha256": "7e0698b40c0eca1bb1f4e01d7ef146de5235e2a397e35229a9dfed867d87a31c",
+      "action": "backup-and-replace",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/roadmap.svg",
+      "targetRelative": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/css/styles.8d918fd78e.css",
+      "targetRelative": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "targetSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/image/ios-simulator-scene-horizontal-positive-x.c4bb687ddf.png",
+      "targetRelative": "static/image/ios-simulator-scene-horizontal-positive-x.c4bb687ddf.png",
+      "bytes": 122007,
+      "sha256": "6a7ff7c1c2dcc042ec023acb26c2862c4f0bbdbfe2c8b03a41639388d9b1ecd4",
+      "targetSha256": "6a7ff7c1c2dcc042ec023acb26c2862c4f0bbdbfe2c8b03a41639388d9b1ecd4",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/image/ios-simulator-scene.16d907afbc.png",
+      "targetRelative": "static/image/ios-simulator-scene.16d907afbc.png",
+      "bytes": 122109,
+      "sha256": "4cddc3a1bd188b1b49a87b4be1a569e6e3d407aae3d74d7d4ae7f0075e43306e",
+      "targetSha256": "4cddc3a1bd188b1b49a87b4be1a569e6e3d407aae3d74d7d4ae7f0075e43306e",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/js/a.388fe8a1b1.js",
+      "targetRelative": "static/js/a.388fe8a1b1.js",
+      "bytes": 217106,
+      "sha256": "44123c20260418f71d6102f6a66522eceb8ec601e62f2d2978bbfe3205681775",
+      "targetSha256": "44123c20260418f71d6102f6a66522eceb8ec601e62f2d2978bbfe3205681775",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/js/a.388fe8a1b1.js.LICENSE.txt",
+      "targetRelative": "static/js/a.388fe8a1b1.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "targetSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/js/async/i.25208e7c92.js",
+      "targetRelative": "static/js/async/i.25208e7c92.js",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "targetSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/js/async/route-38366bf42f10.30f554ddcc.js",
+      "targetRelative": "static/js/async/route-38366bf42f10.30f554ddcc.js",
+      "bytes": 10121,
+      "sha256": "d6b0b4b9a67d1547fb324e45d393c402d6124d89dfc3da754d7a63bedbeea3a7",
+      "targetSha256": "d6b0b4b9a67d1547fb324e45d393c402d6124d89dfc3da754d7a63bedbeea3a7",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/js/async/route-6c33a3943990.436172ec23.js",
+      "targetRelative": "static/js/async/route-6c33a3943990.436172ec23.js",
+      "bytes": 379500,
+      "sha256": "01d2d1210930bdc7cbc6539005401e9f6185cc9d2fc81e611b36e3e256ec6996",
+      "targetSha256": "01d2d1210930bdc7cbc6539005401e9f6185cc9d2fc81e611b36e3e256ec6996",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/js/async/route-a1017bdf23ca.77e4234837.js",
+      "targetRelative": "static/js/async/route-a1017bdf23ca.77e4234837.js",
+      "bytes": 176597,
+      "sha256": "1b345adcc516b0daa49dee4a096526acd2c59009c4d14bd8e2d60f30613498f1",
+      "targetSha256": "1b345adcc516b0daa49dee4a096526acd2c59009c4d14bd8e2d60f30613498f1",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/js/async/route-aa8c6a7ee9ac.505b4a0eec.js",
+      "targetRelative": "static/js/async/route-aa8c6a7ee9ac.505b4a0eec.js",
+      "bytes": 11484,
+      "sha256": "886757b608dc663ecc6a5c9f65e41caa2e29556b6e7b7f790d1f5f97dc93c79a",
+      "targetSha256": "886757b608dc663ecc6a5c9f65e41caa2e29556b6e7b7f790d1f5f97dc93c79a",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/js/async/route-abeecded38c6.1fc4b7d61d.js",
+      "targetRelative": "static/js/async/route-abeecded38c6.1fc4b7d61d.js",
+      "bytes": 38686,
+      "sha256": "09967ee4ca8975a504a9eb2179a88d8206d8ccb8e81774bcf99aaa6cd0e36429",
+      "targetSha256": "09967ee4ca8975a504a9eb2179a88d8206d8ccb8e81774bcf99aaa6cd0e36429",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/js/async/route-b33563055168.227313721e.js",
+      "targetRelative": "static/js/async/route-b33563055168.227313721e.js",
+      "bytes": 7974,
+      "sha256": "b044248e28928a342438b75fe070cb1ae65a84e7ad7f386171a95544c910da87",
+      "targetSha256": "b044248e28928a342438b75fe070cb1ae65a84e7ad7f386171a95544c910da87",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/js/async/route-dbe5897a5d63.2eed74577b.js",
+      "targetRelative": "static/js/async/route-dbe5897a5d63.2eed74577b.js",
+      "bytes": 18320,
+      "sha256": "6c80d5151190b05871da6c0672c86b741c2acdeaf5e2bf91d4077e0db8ec67f4",
+      "targetSha256": "6c80d5151190b05871da6c0672c86b741c2acdeaf5e2bf91d4077e0db8ec67f4",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/js/async/route-f5e1f6055c05.19428fd6ec.js",
+      "targetRelative": "static/js/async/route-f5e1f6055c05.19428fd6ec.js",
+      "bytes": 55385,
+      "sha256": "72e5b712946be502343e0faf9e919486afa4bb0e4a6ca6a3c4f1d6a327abf36b",
+      "targetSha256": "72e5b712946be502343e0faf9e919486afa4bb0e4a6ca6a3c4f1d6a327abf36b",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/js/index.de97f7ae0d.js",
+      "targetRelative": "static/js/index.de97f7ae0d.js",
+      "bytes": 32521,
+      "sha256": "794b3bd24cab8395d62b367b70fd585a6278957742c7e61836f589c187e4beee",
+      "targetSha256": "794b3bd24cab8395d62b367b70fd585a6278957742c7e61836f589c187e4beee",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/js/lib-react.9cdf8f49ce.js",
+      "targetRelative": "static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "targetSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "targetRelative": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "targetSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/js/lib-router.1e14e568cb.js",
+      "targetRelative": "static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "targetSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "targetRelative": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "targetSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/js/styles.2da0941fcb.js",
+      "targetRelative": "static/js/styles.2da0941fcb.js",
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "targetSha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "selected-build",
+      "source": "selected-build/static/search_index.ko.fd20d66c.json",
+      "targetRelative": "static/search_index.ko.fd20d66c.json",
+      "bytes": 390471,
+      "sha256": "fd20d66c6b75fedb2791b3b50b9d1a0d31c8d53e66b1c351178ca8ffc4102f08",
+      "targetSha256": "fd20d66c6b75fedb2791b3b50b9d1a0d31c8d53e66b1c351178ca8ffc4102f08",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "source-doc",
+      "source": "worktree/spec/README.md",
+      "targetRelative": "README.md",
+      "bytes": 3721,
+      "sha256": "9ba0f43d492f7826b0d4e4669545fd832f41411a45d571368adea46bb7caa705",
+      "targetSha256": "9ba0f43d492f7826b0d4e4669545fd832f41411a45d571368adea46bb7caa705",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "source-doc",
+      "source": "worktree/spec/STATUS.md",
+      "targetRelative": "STATUS.md",
+      "bytes": 276291,
+      "sha256": "da58680a4ed3b32b1f44953cdad828be56ec376db6db6708521337858517fa22",
+      "targetSha256": "da58680a4ed3b32b1f44953cdad828be56ec376db6db6708521337858517fa22",
+      "action": "backup-and-replace",
+      "matches": true
+    },
+    {
+      "kind": "source-doc",
+      "source": "worktree/spec/internal/README.md",
+      "targetRelative": "internal/README.md",
+      "bytes": 120735,
+      "sha256": "5ece16b71ccc6222581dc683f82376297fc06ae8ced83e8fd84764429f08491a",
+      "targetSha256": "5ece16b71ccc6222581dc683f82376297fc06ae8ced83e8fd84764429f08491a",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "source-doc",
+      "source": "worktree/spec/internal/0063-c13-3-scroll-gestures.md",
+      "targetRelative": "internal/0063-c13-3-scroll-gestures.md",
+      "bytes": 37769,
+      "sha256": "45abb53a7343a9025ae6e1781bd9306ddbbafd458bb25e19211671c453138d37",
+      "targetSha256": "45abb53a7343a9025ae6e1781bd9306ddbbafd458bb25e19211671c453138d37",
+      "action": "skip-identical",
+      "matches": true
+    },
+    {
+      "kind": "source-doc",
+      "source": "worktree/plan/c13-3-native-wheel-input.md",
+      "targetRelative": "plan/c13-3-native-wheel-input.md",
+      "bytes": 26400,
+      "sha256": "e232a6000e6e6b005bc0814c707489bc0c63480d332a0ba8d1a34c53befe1bf6",
+      "targetSha256": "e232a6000e6e6b005bc0814c707489bc0c63480d332a0ba8d1a34c53befe1bf6",
+      "action": "backup-and-replace",
+      "matches": true
+    },
+    {
+      "kind": "source-doc",
+      "source": "worktree/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.md",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.md",
+      "bytes": 10311,
+      "sha256": "af985ccc9d217405c05d3a778881655f7e8d508cab74f354055bb487b8adb0f9",
+      "targetSha256": "af985ccc9d217405c05d3a778881655f7e8d508cab74f354055bb487b8adb0f9",
+      "action": "backup-and-replace",
+      "matches": true
+    },
+    {
+      "kind": "source-doc",
+      "source": "worktree/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/pr-delta-review-30-2026-10-18.md",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/pr-delta-review-30-2026-10-18.md",
+      "bytes": 6436,
+      "sha256": "501ce4b36b55870c29aa16a38dc87026aa5f929cd9810d864b8a38d8b55d4d8c",
+      "targetSha256": "501ce4b36b55870c29aa16a38dc87026aa5f929cd9810d864b8a38d8b55d4d8c",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "source-evidence",
+      "source": "worktree/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/source-revision.json",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/source-revision.json",
+      "bytes": 5451,
+      "sha256": "e5b859d03068d8db157da64fef3f393b86f09c62a1c045ec7bcf54a09d55fa30",
+      "targetSha256": "e5b859d03068d8db157da64fef3f393b86f09c62a1c045ec7bcf54a09d55fa30",
+      "action": "backup-and-replace",
+      "matches": true
+    },
+    {
+      "kind": "source-evidence",
+      "source": "worktree/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/ios-simulator-scene-horizontal-positive-x.png",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/ios-simulator-scene-horizontal-positive-x.png",
+      "bytes": 122007,
+      "sha256": "6a7ff7c1c2dcc042ec023acb26c2862c4f0bbdbfe2c8b03a41639388d9b1ecd4",
+      "targetSha256": "6a7ff7c1c2dcc042ec023acb26c2862c4f0bbdbfe2c8b03a41639388d9b1ecd4",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "source-evidence",
+      "source": "worktree/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-01-horizontal-events.log",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-01-horizontal-events.log",
+      "bytes": 3831,
+      "sha256": "f87d9c8ec5105913eb246553a1a4e0876b2799dd0e3ba3ca03833247e8fabdad",
+      "targetSha256": "f87d9c8ec5105913eb246553a1a4e0876b2799dd0e3ba3ca03833247e8fabdad",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "source-evidence",
+      "source": "worktree/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-01-horizontal-xcresult-summary.json",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-01-horizontal-xcresult-summary.json",
+      "bytes": 996,
+      "sha256": "d20a28c6b0a00b804c4c430ee545bc6f323af54776a99dda5d92188edad1e99c",
+      "targetSha256": "d20a28c6b0a00b804c4c430ee545bc6f323af54776a99dda5d92188edad1e99c",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "source-evidence",
+      "source": "worktree/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-01-vertical-events.log",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-01-vertical-events.log",
+      "bytes": 3788,
+      "sha256": "1959e90ef78a527c44f3fc0ad915af375cba4bcebae8ad75e88f4b7986eb1e6a",
+      "targetSha256": "1959e90ef78a527c44f3fc0ad915af375cba4bcebae8ad75e88f4b7986eb1e6a",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "source-evidence",
+      "source": "worktree/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-01-vertical-xcresult-summary.json",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-01-vertical-xcresult-summary.json",
+      "bytes": 995,
+      "sha256": "cc376dbfc32c5812bd77495c93690a9f60263ceef0bbc509aa469d1f816ddd5f",
+      "targetSha256": "cc376dbfc32c5812bd77495c93690a9f60263ceef0bbc509aa469d1f816ddd5f",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "source-evidence",
+      "source": "worktree/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-02-events.log",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-02-events.log",
+      "bytes": 5586,
+      "sha256": "e91c3694a90fd9baefc309c015faaedee48964b412219672cb5edde2511ea67d",
+      "targetSha256": "e91c3694a90fd9baefc309c015faaedee48964b412219672cb5edde2511ea67d",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "source-evidence",
+      "source": "worktree/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-02-xcresult-summary.json",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-02-xcresult-summary.json",
+      "bytes": 996,
+      "sha256": "1501bfcfba1b60ea7a38da7e3ed7bbb4d8e27609e4d643c98510d75053f64e5b",
+      "targetSha256": "1501bfcfba1b60ea7a38da7e3ed7bbb4d8e27609e4d643c98510d75053f64e5b",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "source-evidence",
+      "source": "worktree/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-02-xctest-steps.log",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-02-xctest-steps.log",
+      "bytes": 1757,
+      "sha256": "d8c04a6a0a604ddc88f8519ebd66192d2bdd6c613a034fcc50d8a221b0dc1793",
+      "targetSha256": "d8c04a6a0a604ddc88f8519ebd66192d2bdd6c613a034fcc50d8a221b0dc1793",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "source-evidence",
+      "source": "worktree/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-03-horizontal-events.log",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-03-horizontal-events.log",
+      "bytes": 3832,
+      "sha256": "8eaff64743dac1324bd440842cdcd37246ff4cffdcb3f57bf9e1e5fda3cb424b",
+      "targetSha256": "8eaff64743dac1324bd440842cdcd37246ff4cffdcb3f57bf9e1e5fda3cb424b",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "source-evidence",
+      "source": "worktree/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-03-horizontal-xcresult-summary.json",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-03-horizontal-xcresult-summary.json",
+      "bytes": 996,
+      "sha256": "14f9c5e01c5ebe7a9ef7829e4bd39209cf969e080a0bf6351b4f07c725e4225e",
+      "targetSha256": "14f9c5e01c5ebe7a9ef7829e4bd39209cf969e080a0bf6351b4f07c725e4225e",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "source-evidence",
+      "source": "worktree/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-03-horizontal-xctest-steps.log",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/run-03-horizontal-xctest-steps.log",
+      "bytes": 996,
+      "sha256": "ddaa286e3309de29ce06865ec6da96fd97933f8966cb6fb294cb1be06746f925",
+      "targetSha256": "ddaa286e3309de29ce06865ec6da96fd97933f8966cb6fb294cb1be06746f925",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "source-evidence",
+      "source": "worktree/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/runtime-followup-summary.json",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/runtime-followup-summary.json",
+      "bytes": 2236,
+      "sha256": "7bfde7d787c7ad1f38956888486232704820821fe5112949c0868a19e0ad43a0",
+      "targetSha256": "7bfde7d787c7ad1f38956888486232704820821fe5112949c0868a19e0ad43a0",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "source-evidence",
+      "source": "worktree/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/xctest-harness/C133WheelProbe.xcodeproj/project.pbxproj",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/xctest-harness/C133WheelProbe.xcodeproj/project.pbxproj",
+      "bytes": 13358,
+      "sha256": "aa599d02f56f8195b3c38d5d86834c17c4d39251b1e6c3d86a1610a3eff44b02",
+      "targetSha256": "aa599d02f56f8195b3c38d5d86834c17c4d39251b1e6c3d86a1610a3eff44b02",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "source-evidence",
+      "source": "worktree/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/xctest-harness/README.md",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/xctest-harness/README.md",
+      "bytes": 2920,
+      "sha256": "f8e217d90ffa0908811f85b57cde87af99fb06e41d889cb618699642738acb32",
+      "targetSha256": "f8e217d90ffa0908811f85b57cde87af99fb06e41d889cb618699642738acb32",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "source-evidence",
+      "source": "worktree/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/xctest-harness/Sources/C133WheelProbeApp.swift",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/xctest-harness/Sources/C133WheelProbeApp.swift",
+      "bytes": 2698,
+      "sha256": "d88b43a293d8fc56d1f9a2ecc2a1f0dab1999d03d317f3faf0696c63c25dce1f",
+      "targetSha256": "d88b43a293d8fc56d1f9a2ecc2a1f0dab1999d03d317f3faf0696c63c25dce1f",
+      "action": "add",
+      "matches": true
+    },
+    {
+      "kind": "source-evidence",
+      "source": "worktree/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/xctest-harness/Tests/C133WheelProbeUITests.swift",
+      "targetRelative": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/xctest-harness/Tests/C133WheelProbeUITests.swift",
+      "bytes": 5749,
+      "sha256": "ff6e07545416163891027d5c2157eb9257d7132fd165fe8a5de88e4482151e3d",
+      "targetSha256": "ff6e07545416163891027d5c2157eb9257d7132fd165fe8a5de88e4482151e3d",
+      "action": "add",
+      "matches": true
+    }
+  ]
+}

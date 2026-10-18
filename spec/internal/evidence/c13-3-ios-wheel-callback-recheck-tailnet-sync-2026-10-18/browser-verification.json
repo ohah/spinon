@@ -1,0 +1,54 @@
+{
+  "tool": "Agent Browser",
+  "terminalBrowserUsed": false,
+  "pr300": {
+    "path": "/pull/300",
+    "screenshotImage": {
+      "src": "https://raw.githubusercontent.com/ohah/spinon/main/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/inner-target-reruns/ios-simulator-scene-horizontal-positive-x.png",
+      "complete": true,
+      "width": 2752,
+      "height": 2064,
+      "runCountsVisible": true,
+      "incompleteBoundaryVisible": true
+    }
+  },
+  "tailnet": {
+    "roadmap": {
+      "path": "/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "counter": "207개 표시 · 공식 완료 74/207",
+      "statusNote": "상위 78개 + 세부 ID 127개 + ID 없는 하위 체크 2개 · 완료 74/207개",
+      "c13NoteHasInnerTargetResults": true,
+      "c13NoteSaysIncomplete": true
+    },
+    "status": {
+      "path": "/spinon/STATUS.html",
+      "c13FollowupVisible": true,
+      "c13ParentChecked": false
+    },
+    "evidence": {
+      "path": "/spinon/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.html",
+      "run01Visible": true,
+      "run02Visible": true,
+      "newScreenshot": {
+        "complete": true,
+        "width": 2752,
+        "height": 2064
+      }
+    },
+    "plan": {
+      "path": "/spinon/plan/c13-3-native-wheel-input.html",
+      "innerTargetTextVisible": true,
+      "incompleteTextVisible": true
+    }
+  },
+  "screenshots": [
+    "tailnet-roadmap-before-agent-browser.png",
+    "tailnet-roadmap-counter-agent-browser.png",
+    "tailnet-roadmap-c133-agent-browser.png",
+    "tailnet-status-c13-agent-browser.png",
+    "tailnet-evidence-callbacks-agent-browser.png",
+    "tailnet-plan-agent-browser.png"
+  ],
+  "privateTailnetHostnameRedacted": true
+}
