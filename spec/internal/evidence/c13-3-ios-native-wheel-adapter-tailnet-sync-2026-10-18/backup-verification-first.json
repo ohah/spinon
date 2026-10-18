@@ -1,0 +1,54 @@
+{
+  "backup_count": 6,
+  "all_verified": true,
+  "backups": [
+    {
+      "target": "SpinonPreview/STATUS.html",
+      "backup": "SpinonPreviewBackups/c13-3-ios-native-wheel-adapter-tailnet-sync-20261018/pass-1/STATUS.html",
+      "bytes": 353279,
+      "sha256": "62371b2baec742d41ad77a483aeb472320d38211857abf5b7797c885424bac5e",
+      "expected_sha256": "62371b2baec742d41ad77a483aeb472320d38211857abf5b7797c885424bac5e",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/plan/c13-3-native-wheel-input.html",
+      "backup": "SpinonPreviewBackups/c13-3-ios-native-wheel-adapter-tailnet-sync-20261018/pass-1/plan/c13-3-native-wheel-input.html",
+      "bytes": 53503,
+      "sha256": "5b178353ff2e3f1f74e5364e1596593552a0f46c280094f3da90bb41ad4b9310",
+      "expected_sha256": "5b178353ff2e3f1f74e5364e1596593552a0f46c280094f3da90bb41ad4b9310",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/README.html",
+      "backup": "SpinonPreviewBackups/c13-3-ios-native-wheel-adapter-tailnet-sync-20261018/pass-1/internal/README.html",
+      "bytes": 161628,
+      "sha256": "309f670d8e31ff9efafe020554f115d26cbabb8a907afe82a78d8b88936a52a4",
+      "expected_sha256": "309f670d8e31ff9efafe020554f115d26cbabb8a907afe82a78d8b88936a52a4",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/STATUS.md",
+      "backup": "SpinonPreviewBackups/c13-3-ios-native-wheel-adapter-tailnet-sync-20261018/pass-1/STATUS.md",
+      "bytes": 274523,
+      "sha256": "a483c103ce1338b3ada9f403391fcb2771ee8495eaece1a8c95bc2c21254663c",
+      "expected_sha256": "a483c103ce1338b3ada9f403391fcb2771ee8495eaece1a8c95bc2c21254663c",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/plan/c13-3-native-wheel-input.md",
+      "backup": "SpinonPreviewBackups/c13-3-ios-native-wheel-adapter-tailnet-sync-20261018/pass-1/plan/c13-3-native-wheel-input.md",
+      "bytes": 20930,
+      "sha256": "d22f5b61e4f2c6ff8d7c49016e452c60aaa099acfee191d5c8c43f3361c219ee",
+      "expected_sha256": "d22f5b61e4f2c6ff8d7c49016e452c60aaa099acfee191d5c8c43f3361c219ee",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/README.md",
+      "backup": "SpinonPreviewBackups/c13-3-ios-native-wheel-adapter-tailnet-sync-20261018/pass-1/internal/README.md",
+      "bytes": 119716,
+      "sha256": "96318e88e90b374087459db15c33592321c91ffc684c33884ae9a27929fcc43a",
+      "expected_sha256": "96318e88e90b374087459db15c33592321c91ffc684c33884ae9a27929fcc43a",
+      "verified": true
+    }
+  ]
+}

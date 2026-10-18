@@ -1,0 +1,493 @@
+{
+  "copy_count": 69,
+  "added": 1,
+  "replaced": 1,
+  "unchanged": 67,
+  "deletes": 0,
+  "all_verified": true,
+  "copies": [
+    {
+      "target": "SpinonPreview/STATUS.html",
+      "bytes": 358924,
+      "sha256": "3e061d814c3469e551b0b73147ed29f28ce693143370e3c25941cf011fa085dd",
+      "expected_sha256": "3e061d814c3469e551b0b73147ed29f28ce693143370e3c25941cf011fa085dd",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/plan/c13-3-native-wheel-input.html",
+      "bytes": 53140,
+      "sha256": "a2f96656be874d80c672a796dd723ed5755646652bd7a18167249164ea75fb6d",
+      "expected_sha256": "a2f96656be874d80c672a796dd723ed5755646652bd7a18167249164ea75fb6d",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/README.html",
+      "bytes": 167316,
+      "sha256": "f32740b96b9d0fa75cd48b68435ab440e6e4d6972121d2fc55ec3c0d44d5c7f6",
+      "expected_sha256": "f32740b96b9d0fa75cd48b68435ab440e6e4d6972121d2fc55ec3c0d44d5c7f6",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/0063-c13-3-scroll-gestures.html",
+      "bytes": 72036,
+      "sha256": "cec7a2a8ddf8df64c4cab5d7aaa1063c8d4c6a24df0f2525fa0d3cb6e69e4acd",
+      "expected_sha256": "cec7a2a8ddf8df64c4cab5d7aaa1063c8d4c6a24df0f2525fa0d3cb6e69e4acd",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.html",
+      "bytes": 26840,
+      "sha256": "6142d54d52f1429d34c1e06515f2dd9c8c6e8bfd6347c12729224b76341ddcfe",
+      "expected_sha256": "6142d54d52f1429d34c1e06515f2dd9c8c6e8bfd6347c12729224b76341ddcfe",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-implementation-review-20-2026-10-18.html",
+      "bytes": 27523,
+      "sha256": "dd3482d17b6c491e2bfc0b3919f3abe69c45f9132f31bee0945dd252fc63bc00",
+      "expected_sha256": "dd3482d17b6c491e2bfc0b3919f3abe69c45f9132f31bee0945dd252fc63bc00",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-pr-delta-review-30-2026-10-18.html",
+      "bytes": 27948,
+      "sha256": "f009e71cf33b70c4ae667f1f06b5ccf4a991cd7a2aa71406ce9b691e422ea061",
+      "expected_sha256": "f009e71cf33b70c4ae667f1f06b5ccf4a991cd7a2aa71406ce9b691e422ea061",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/README.html",
+      "bytes": 25628,
+      "sha256": "145ee9b78851238b14707df502fa414196c19ee1bc9ba9b4322b4d8a26d724df",
+      "expected_sha256": "145ee9b78851238b14707df502fa414196c19ee1bc9ba9b4322b4d8a26d724df",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/render-build-result.html",
+      "bytes": 21166,
+      "sha256": "e3edfbf0cedf492119afe556149bfb219f176cd2faa0ae5355be2a48b6439b10",
+      "expected_sha256": "e3edfbf0cedf492119afe556149bfb219f176cd2faa0ae5355be2a48b6439b10",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/pr-delta-review-30.html",
+      "bytes": 30675,
+      "sha256": "8953a043d540022b0079396684ccda0a0ef2ef305543a1e50ae2ec38eb657e91",
+      "expected_sha256": "8953a043d540022b0079396684ccda0a0ef2ef305543a1e50ae2ec38eb657e91",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "expected_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/image/ios-simulator-scene.16d907afbc.png",
+      "bytes": 122109,
+      "sha256": "4cddc3a1bd188b1b49a87b4be1a569e6e3d407aae3d74d7d4ae7f0075e43306e",
+      "expected_sha256": "4cddc3a1bd188b1b49a87b4be1a569e6e3d407aae3d74d7d4ae7f0075e43306e",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/image/tailnet-plan-agent-browser.ade49245e7.png",
+      "bytes": 209862,
+      "sha256": "29bfe6e063c925c1df259711e7ce02693a6544f53178b3b5d8e75e61660f2558",
+      "expected_sha256": "29bfe6e063c925c1df259711e7ce02693a6544f53178b3b5d8e75e61660f2558",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/image/tailnet-roadmap-agent-browser.9a625682cf.png",
+      "bytes": 218549,
+      "sha256": "f86505d3198f08ee2826279f283dbf94640a389564094933fa668a45c29c7c68",
+      "expected_sha256": "f86505d3198f08ee2826279f283dbf94640a389564094933fa668a45c29c7c68",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/js/2.1aa8a93d31.js",
+      "bytes": 217072,
+      "sha256": "b21acdce969ebad569ff75b046d68b6edf0130a56631a440fb2d22a9258a65fb",
+      "expected_sha256": "b21acdce969ebad569ff75b046d68b6edf0130a56631a440fb2d22a9258a65fb",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/js/2.1aa8a93d31.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "expected_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/js/async/1.9d6d094526.js",
+      "bytes": 98,
+      "sha256": "d6f6b4dbea1173cbf7c99162893e587afc13cda01fd4e1405d5b780a918b5a72",
+      "expected_sha256": "d6f6b4dbea1173cbf7c99162893e587afc13cda01fd4e1405d5b780a918b5a72",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/js/async/route-13eb63fed035.f15e24e184.js",
+      "bytes": 12953,
+      "sha256": "9e0b88d42f23d2e11da05f7826f5bfffd5dee7f87fb4bf4c07311e74577e373a",
+      "expected_sha256": "9e0b88d42f23d2e11da05f7826f5bfffd5dee7f87fb4bf4c07311e74577e373a",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/js/async/route-65afb1b851aa.6d1d509fd8.js",
+      "bytes": 2234,
+      "sha256": "842e09d814beb1ad2594026231843128a1ae3a6b4330693cbb99071d563f8e92",
+      "expected_sha256": "842e09d814beb1ad2594026231843128a1ae3a6b4330693cbb99071d563f8e92",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/js/async/route-6c33a3943990.750bd1bb38.js",
+      "bytes": 379141,
+      "sha256": "85358328fa2ba75f08ec175928e944d78611f2ab483473f017d0c53134d7673a",
+      "expected_sha256": "85358328fa2ba75f08ec175928e944d78611f2ab483473f017d0c53134d7673a",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/js/async/route-83440355568a.0a4adb7357.js",
+      "bytes": 12187,
+      "sha256": "613234c0b3060eaf210e9c8bbc15f9c2eb2d61f33a18af75f32a85696798e5c2",
+      "expected_sha256": "613234c0b3060eaf210e9c8bbc15f9c2eb2d61f33a18af75f32a85696798e5c2",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/js/async/route-a1017bdf23ca.214fdaf68d.js",
+      "bytes": 176603,
+      "sha256": "0fd68e349075de5c53561a4b855dde8f52cdac3a82499e3614456908b09adf18",
+      "expected_sha256": "0fd68e349075de5c53561a4b855dde8f52cdac3a82499e3614456908b09adf18",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/js/async/route-abeecded38c6.15ee25625d.js",
+      "bytes": 35513,
+      "sha256": "172dcf6e49ec147f3cd7695812dab84dd487665e4dee06dcba99c0e0d21f7039",
+      "expected_sha256": "172dcf6e49ec147f3cd7695812dab84dd487665e4dee06dcba99c0e0d21f7039",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/js/async/route-dbe5897a5d63.3565a371a7.js",
+      "bytes": 10571,
+      "sha256": "b4ee398fc181c4241a4b4757dc9e1dc64fddd3b32187f4af633ed1fb72466612",
+      "expected_sha256": "b4ee398fc181c4241a4b4757dc9e1dc64fddd3b32187f4af633ed1fb72466612",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/js/async/route-ddd49e1af8e3.b6281bbd58.js",
+      "bytes": 8055,
+      "sha256": "9604d7892fe1ef7813d7118a3504ec0d5564a1b405adc9b79f2e7d121ee8101c",
+      "expected_sha256": "9604d7892fe1ef7813d7118a3504ec0d5564a1b405adc9b79f2e7d121ee8101c",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/js/async/route-f5e1f6055c05.5b0bd84b02.js",
+      "bytes": 55320,
+      "sha256": "4d619b23240e693badf1e1a99f3c9111d7ef844ebf978c1cc50f89ace86470c7",
+      "expected_sha256": "4d619b23240e693badf1e1a99f3c9111d7ef844ebf978c1cc50f89ace86470c7",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/js/async/route-f81c875d0f90.625dc6d004.js",
+      "bytes": 6438,
+      "sha256": "56d1a0c322e4c81ecf791a66f32a02bd96ad4909b6c4ab4783bad81863b20f87",
+      "expected_sha256": "56d1a0c322e4c81ecf791a66f32a02bd96ad4909b6c4ab4783bad81863b20f87",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/js/index.a0536698fe.js",
+      "bytes": 32885,
+      "sha256": "be16a0335caa67d8dea8da39ba96fa56989c738c61a16d08290c268f748fd359",
+      "expected_sha256": "be16a0335caa67d8dea8da39ba96fa56989c738c61a16d08290c268f748fd359",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/js/lib-react.d9aa10f4b0.js",
+      "bytes": 218369,
+      "sha256": "ad3b1fffada69190b9d14bfd2e16a62d31865b2d3de8a5044cb200fa67961cc8",
+      "expected_sha256": "ad3b1fffada69190b9d14bfd2e16a62d31865b2d3de8a5044cb200fa67961cc8",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/js/lib-react.d9aa10f4b0.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "expected_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/js/lib-router.95ea184a3c.js",
+      "bytes": 35369,
+      "sha256": "71a8993452741417ebd7ac492fa9420ba9172794d33d650e50b8ab5fa71c327e",
+      "expected_sha256": "71a8993452741417ebd7ac492fa9420ba9172794d33d650e50b8ab5fa71c327e",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/js/lib-router.95ea184a3c.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "expected_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/js/styles.5d83ba9b29.js",
+      "bytes": 467,
+      "sha256": "e8f2f06443d080ac10e044e7cd4321b692305552147b72ddacf9eed41a354aba",
+      "expected_sha256": "e8f2f06443d080ac10e044e7cd4321b692305552147b72ddacf9eed41a354aba",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/static/search_index.ko.1ce58afb.json",
+      "bytes": 392880,
+      "sha256": "1ce58afb45877969ccb04a54476ce2c4b228e910c1eadf209e8429ad7418f08c",
+      "expected_sha256": "1ce58afb45877969ccb04a54476ce2c4b228e910c1eadf209e8429ad7418f08c",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/STATUS.md",
+      "bytes": 275982,
+      "sha256": "789cfd08262f043dec04cc0cade0afc233df0e911e3ddb09d58433570fcd9eea",
+      "expected_sha256": "789cfd08262f043dec04cc0cade0afc233df0e911e3ddb09d58433570fcd9eea",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/plan/c13-3-native-wheel-input.md",
+      "bytes": 24198,
+      "sha256": "3b8ff7c743c1860950eb34d0d82e3a4a03785c8819c81dcfac7f97e0004798cb",
+      "expected_sha256": "3b8ff7c743c1860950eb34d0d82e3a4a03785c8819c81dcfac7f97e0004798cb",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/README.md",
+      "bytes": 120735,
+      "sha256": "5ece16b71ccc6222581dc683f82376297fc06ae8ced83e8fd84764429f08491a",
+      "expected_sha256": "5ece16b71ccc6222581dc683f82376297fc06ae8ced83e8fd84764429f08491a",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/0063-c13-3-scroll-gestures.md",
+      "bytes": 37769,
+      "sha256": "45abb53a7343a9025ae6e1781bd9306ddbbafd458bb25e19211671c453138d37",
+      "expected_sha256": "45abb53a7343a9025ae6e1781bd9306ddbbafd458bb25e19211671c453138d37",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/roadmap.html",
+      "bytes": 129442,
+      "sha256": "cdcd2160ad2c59ddbf5e41ee01cd8300969af94bc48466172132cf155dea8e46",
+      "expected_sha256": "cdcd2160ad2c59ddbf5e41ee01cd8300969af94bc48466172132cf155dea8e46",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.md",
+      "bytes": 5379,
+      "sha256": "365eed39dc879cbf05438cb3778687fc20bc527e297351676cb828a927620029",
+      "expected_sha256": "365eed39dc879cbf05438cb3778687fc20bc527e297351676cb828a927620029",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/ios-simulator-scene.png",
+      "bytes": 122109,
+      "sha256": "4cddc3a1bd188b1b49a87b4be1a569e6e3d407aae3d74d7d4ae7f0075e43306e",
+      "expected_sha256": "4cddc3a1bd188b1b49a87b4be1a569e6e3d407aae3d74d7d4ae7f0075e43306e",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/runtime-callbacks-sanitized.log",
+      "bytes": 3467,
+      "sha256": "b73606644918916f81500118a4b30cf5d949aac16818b002a8e34f3e0319a006",
+      "expected_sha256": "b73606644918916f81500118a4b30cf5d949aac16818b002a8e34f3e0319a006",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/source-revision.json",
+      "bytes": 2344,
+      "sha256": "df5fd326b9eba5666aea7caaac118a230705da3119e2cbeaaa470fa4dc12dafc",
+      "expected_sha256": "df5fd326b9eba5666aea7caaac118a230705da3119e2cbeaaa470fa4dc12dafc",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/xcodebuild-default.log.gz",
+      "bytes": 17079,
+      "sha256": "d41a375fc089bd49b97775a90ecfc8038ad4f1dc076179aaf10f7240816c63be",
+      "expected_sha256": "d41a375fc089bd49b97775a90ecfc8038ad4f1dc076179aaf10f7240816c63be",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/xcodebuild-opt-in.log.gz",
+      "bytes": 13276,
+      "sha256": "3c9aed998f234c5d89b6901aa58726cb456eaa557e59bc0a58bd2fafcee3ff1b",
+      "expected_sha256": "3c9aed998f234c5d89b6901aa58726cb456eaa557e59bc0a58bd2fafcee3ff1b",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/xctest-four-directions.log",
+      "bytes": 19300,
+      "sha256": "b95e90422f299d16a16209febf0820b98a145032c65033f5d8b68e62cb51eb9c",
+      "expected_sha256": "b95e90422f299d16a16209febf0820b98a145032c65033f5d8b68e62cb51eb9c",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-implementation-review-20-2026-10-18.md",
+      "bytes": 6018,
+      "sha256": "7869e1edcbfae53689c5a3a5e1385fc755827bebc025ecc956efdfda99f41b5c",
+      "expected_sha256": "7869e1edcbfae53689c5a3a5e1385fc755827bebc025ecc956efdfda99f41b5c",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-pr-delta-review-30-2026-10-18.md",
+      "bytes": 6293,
+      "sha256": "7fe51a96d2605df2d501204f296680229d2d5d6d7f0a1f2caf33847cf8bc5fc9",
+      "expected_sha256": "7fe51a96d2605df2d501204f296680229d2d5d6d7f0a1f2caf33847cf8bc5fc9",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/README.md",
+      "bytes": 4378,
+      "sha256": "7f8f6659ca89b765260b983c30c2c3d83f7442da3796825d38f748828007aed0",
+      "expected_sha256": "7f8f6659ca89b765260b983c30c2c3d83f7442da3796825d38f748828007aed0",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/backup-verification-first.json",
+      "bytes": 2539,
+      "sha256": "8bf00b252fc5dcbc27ec5232ee5eb05e7c17f2f44cc9240a07aa942950297e4f",
+      "expected_sha256": "8bf00b252fc5dcbc27ec5232ee5eb05e7c17f2f44cc9240a07aa942950297e4f",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/copy-verification-first.json",
+      "bytes": 15551,
+      "sha256": "1578d42b324a5b13819757df29b5eca7c9636f03a0953ae4402255b535fda6f5",
+      "expected_sha256": "1578d42b324a5b13819757df29b5eca7c9636f03a0953ae4402255b535fda6f5",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/pr-delta-review-30.md",
+      "bytes": 4144,
+      "sha256": "37e538914a3e3686fb65fb065f819decc937f347846e7799565f2990b868d711",
+      "expected_sha256": "37e538914a3e3686fb65fb065f819decc937f347846e7799565f2990b868d711",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/preflight-first.json",
+      "bytes": 20015,
+      "sha256": "e932ab81e572911d0e7d523b24e0e6a210a501c71812ded5d4b37a7d61fae28f",
+      "expected_sha256": "e932ab81e572911d0e7d523b24e0e6a210a501c71812ded5d4b37a7d61fae28f",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/render-build-result.md",
+      "bytes": 1011,
+      "sha256": "3a028c5446ebae39dfa4bb021510d96b0a8fa6d83966c9c62ca379014d4d9685",
+      "expected_sha256": "3a028c5446ebae39dfa4bb021510d96b0a8fa6d83966c9c62ca379014d4d9685",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/render-build.log",
+      "bytes": 4947,
+      "sha256": "e670c97cf64d5498a16c55332fd73757ea2ade9ccf121bc2382e17c43eb92591",
+      "expected_sha256": "e670c97cf64d5498a16c55332fd73757ea2ade9ccf121bc2382e17c43eb92591",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/roadmap-sync.json",
+      "bytes": 555,
+      "sha256": "3fe8970ddb649d8dac990e4c2dd8a07de32c352630b70ba0620b68e837738fd5",
+      "expected_sha256": "3fe8970ddb649d8dac990e4c2dd8a07de32c352630b70ba0620b68e837738fd5",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/served-verification-first.json",
+      "bytes": 25182,
+      "sha256": "5d559e65a0501f252a609cf2ca059157d3a13e753cbd851468bb6707ae08d685",
+      "expected_sha256": "5d559e65a0501f252a609cf2ca059157d3a13e753cbd851468bb6707ae08d685",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/tailnet-plan-agent-browser.png",
+      "bytes": 209862,
+      "sha256": "29bfe6e063c925c1df259711e7ce02693a6544f53178b3b5d8e75e61660f2558",
+      "expected_sha256": "29bfe6e063c925c1df259711e7ce02693a6544f53178b3b5d8e75e61660f2558",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/tailnet-roadmap-agent-browser.png",
+      "bytes": 218549,
+      "sha256": "f86505d3198f08ee2826279f283dbf94640a389564094933fa668a45c29c7c68",
+      "expected_sha256": "f86505d3198f08ee2826279f283dbf94640a389564094933fa668a45c29c7c68",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/browser-verification.json",
+      "bytes": 1977,
+      "sha256": "8e0c7bb3fb76f47ad868f9d1460426be88cefb7b85f0664acba8e5c839e12335",
+      "expected_sha256": "8e0c7bb3fb76f47ad868f9d1460426be88cefb7b85f0664acba8e5c839e12335",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/agent-browser-network-final.log",
+      "bytes": 1289,
+      "sha256": "2e43a6ded21edccb834048fc0a1ce336cab5aefe568091ff34481af4561523be",
+      "expected_sha256": "2e43a6ded21edccb834048fc0a1ce336cab5aefe568091ff34481af4561523be",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/browser-session-shutdown.json",
+      "bytes": 267,
+      "sha256": "b93f6cfdf995314da1a16921af584d8394f5ab57b3012590d08fd79f52a381a4",
+      "expected_sha256": "b93f6cfdf995314da1a16921af584d8394f5ab57b3012590d08fd79f52a381a4",
+      "verified": true
+    },
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/sidecar-copy-verification.json",
+      "bytes": 2434,
+      "sha256": "d01422bcdcd893692defbb315e2dc1e5d646f629d75083a1a9321e1df7481ed7",
+      "expected_sha256": "d01422bcdcd893692defbb315e2dc1e5d646f629d75083a1a9321e1df7481ed7",
+      "verified": true
+    }
+  ]
+}

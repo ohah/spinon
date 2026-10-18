@@ -1,0 +1,745 @@
+{
+  "requests": 98,
+  "files": 49,
+  "local_all_200_hash_match": true,
+  "tailnet_all_200_hash_match": true,
+  "all_verified": true,
+  "failed": [],
+  "files_detail": [
+    {
+      "path": "STATUS.html",
+      "local": {
+        "status": 200,
+        "bytes": 358124,
+        "sha256": "ad3b96853a15738587bc1f21a4fba36022adf844251e4830a43ff88b2e1ae25a"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 358124,
+        "sha256": "ad3b96853a15738587bc1f21a4fba36022adf844251e4830a43ff88b2e1ae25a"
+      },
+      "expected_sha256": "ad3b96853a15738587bc1f21a4fba36022adf844251e4830a43ff88b2e1ae25a",
+      "verified": true
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.html",
+      "local": {
+        "status": 200,
+        "bytes": 52340,
+        "sha256": "00e6020feba3902b11d0dcd018736ba34d34ec36eebaa1b439d315f072b05047"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 52340,
+        "sha256": "00e6020feba3902b11d0dcd018736ba34d34ec36eebaa1b439d315f072b05047"
+      },
+      "expected_sha256": "00e6020feba3902b11d0dcd018736ba34d34ec36eebaa1b439d315f072b05047",
+      "verified": true
+    },
+    {
+      "path": "internal/README.html",
+      "local": {
+        "status": 200,
+        "bytes": 166372,
+        "sha256": "77084dc4fb62576aca35bc622a468577486101f86b3c5868cec38550778254cd"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 166372,
+        "sha256": "77084dc4fb62576aca35bc622a468577486101f86b3c5868cec38550778254cd"
+      },
+      "expected_sha256": "77084dc4fb62576aca35bc622a468577486101f86b3c5868cec38550778254cd",
+      "verified": true
+    },
+    {
+      "path": "internal/0063-c13-3-scroll-gestures.html",
+      "local": {
+        "status": 200,
+        "bytes": 71236,
+        "sha256": "2083c9af489c5e883b11d5fd19de952584aaec1f7afb4baba6b1672211ded034"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 71236,
+        "sha256": "2083c9af489c5e883b11d5fd19de952584aaec1f7afb4baba6b1672211ded034"
+      },
+      "expected_sha256": "2083c9af489c5e883b11d5fd19de952584aaec1f7afb4baba6b1672211ded034",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.html",
+      "local": {
+        "status": 200,
+        "bytes": 26040,
+        "sha256": "dcf8ef1bc4dc287155c27542ed4ae95e076ab0cc4e883dcd8308c5d1eef33937"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 26040,
+        "sha256": "dcf8ef1bc4dc287155c27542ed4ae95e076ab0cc4e883dcd8308c5d1eef33937"
+      },
+      "expected_sha256": "dcf8ef1bc4dc287155c27542ed4ae95e076ab0cc4e883dcd8308c5d1eef33937",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-implementation-review-20-2026-10-18.html",
+      "local": {
+        "status": 200,
+        "bytes": 26723,
+        "sha256": "1d8f7a70dad7b438dcfa69cddb097f64feb33ae95296b0bdc256cffc421b6b2f"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 26723,
+        "sha256": "1d8f7a70dad7b438dcfa69cddb097f64feb33ae95296b0bdc256cffc421b6b2f"
+      },
+      "expected_sha256": "1d8f7a70dad7b438dcfa69cddb097f64feb33ae95296b0bdc256cffc421b6b2f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-pr-delta-review-30-2026-10-18.html",
+      "local": {
+        "status": 200,
+        "bytes": 27122,
+        "sha256": "6b244bce2b86d296abdbe736492f11c949ef3d281be6f1b3218b876fd87867ab"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 27122,
+        "sha256": "6b244bce2b86d296abdbe736492f11c949ef3d281be6f1b3218b876fd87867ab"
+      },
+      "expected_sha256": "6b244bce2b86d296abdbe736492f11c949ef3d281be6f1b3218b876fd87867ab",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/README.html",
+      "local": {
+        "status": 200,
+        "bytes": 23212,
+        "sha256": "810a9ea984bcb4e2588fbb150df3bb6649f3cd6741c929dd17e264bc436bacfb"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 23212,
+        "sha256": "810a9ea984bcb4e2588fbb150df3bb6649f3cd6741c929dd17e264bc436bacfb"
+      },
+      "expected_sha256": "810a9ea984bcb4e2588fbb150df3bb6649f3cd6741c929dd17e264bc436bacfb",
+      "verified": true
+    },
+    {
+      "path": "icon.svg",
+      "local": {
+        "status": 200,
+        "bytes": 638,
+        "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 638,
+        "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+      },
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "path": "logo.svg",
+      "local": {
+        "status": 200,
+        "bytes": 568,
+        "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 568,
+        "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+      },
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "path": "roadmap.svg",
+      "local": {
+        "status": 200,
+        "bytes": 4835,
+        "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 4835,
+        "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+      },
+      "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "verified": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "local": {
+        "status": 200,
+        "bytes": 73952,
+        "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 73952,
+        "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+      },
+      "expected_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "verified": true
+    },
+    {
+      "path": "static/image/ios-simulator-scene.16d907afbc.png",
+      "local": {
+        "status": 200,
+        "bytes": 122109,
+        "sha256": "4cddc3a1bd188b1b49a87b4be1a569e6e3d407aae3d74d7d4ae7f0075e43306e"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 122109,
+        "sha256": "4cddc3a1bd188b1b49a87b4be1a569e6e3d407aae3d74d7d4ae7f0075e43306e"
+      },
+      "expected_sha256": "4cddc3a1bd188b1b49a87b4be1a569e6e3d407aae3d74d7d4ae7f0075e43306e",
+      "verified": true
+    },
+    {
+      "path": "static/js/2.1aa8a93d31.js",
+      "local": {
+        "status": 200,
+        "bytes": 217072,
+        "sha256": "b21acdce969ebad569ff75b046d68b6edf0130a56631a440fb2d22a9258a65fb"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 217072,
+        "sha256": "b21acdce969ebad569ff75b046d68b6edf0130a56631a440fb2d22a9258a65fb"
+      },
+      "expected_sha256": "b21acdce969ebad569ff75b046d68b6edf0130a56631a440fb2d22a9258a65fb",
+      "verified": true
+    },
+    {
+      "path": "static/js/2.1aa8a93d31.js.LICENSE.txt",
+      "local": {
+        "status": 200,
+        "bytes": 384,
+        "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 384,
+        "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+      },
+      "expected_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/1.9d6d094526.js",
+      "local": {
+        "status": 200,
+        "bytes": 98,
+        "sha256": "d6f6b4dbea1173cbf7c99162893e587afc13cda01fd4e1405d5b780a918b5a72"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 98,
+        "sha256": "d6f6b4dbea1173cbf7c99162893e587afc13cda01fd4e1405d5b780a918b5a72"
+      },
+      "expected_sha256": "d6f6b4dbea1173cbf7c99162893e587afc13cda01fd4e1405d5b780a918b5a72",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-13eb63fed035.f15e24e184.js",
+      "local": {
+        "status": 200,
+        "bytes": 12953,
+        "sha256": "9e0b88d42f23d2e11da05f7826f5bfffd5dee7f87fb4bf4c07311e74577e373a"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 12953,
+        "sha256": "9e0b88d42f23d2e11da05f7826f5bfffd5dee7f87fb4bf4c07311e74577e373a"
+      },
+      "expected_sha256": "9e0b88d42f23d2e11da05f7826f5bfffd5dee7f87fb4bf4c07311e74577e373a",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.750bd1bb38.js",
+      "local": {
+        "status": 200,
+        "bytes": 379141,
+        "sha256": "85358328fa2ba75f08ec175928e944d78611f2ab483473f017d0c53134d7673a"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 379141,
+        "sha256": "85358328fa2ba75f08ec175928e944d78611f2ab483473f017d0c53134d7673a"
+      },
+      "expected_sha256": "85358328fa2ba75f08ec175928e944d78611f2ab483473f017d0c53134d7673a",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-83440355568a.0a4adb7357.js",
+      "local": {
+        "status": 200,
+        "bytes": 12187,
+        "sha256": "613234c0b3060eaf210e9c8bbc15f9c2eb2d61f33a18af75f32a85696798e5c2"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 12187,
+        "sha256": "613234c0b3060eaf210e9c8bbc15f9c2eb2d61f33a18af75f32a85696798e5c2"
+      },
+      "expected_sha256": "613234c0b3060eaf210e9c8bbc15f9c2eb2d61f33a18af75f32a85696798e5c2",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.7b680e8a5b.js",
+      "local": {
+        "status": 200,
+        "bytes": 176435,
+        "sha256": "b2341460abb16180bf71d4dc824f696799b3be0de08afca7b18c47d628a7d9ca"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 176435,
+        "sha256": "b2341460abb16180bf71d4dc824f696799b3be0de08afca7b18c47d628a7d9ca"
+      },
+      "expected_sha256": "b2341460abb16180bf71d4dc824f696799b3be0de08afca7b18c47d628a7d9ca",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-abeecded38c6.15ee25625d.js",
+      "local": {
+        "status": 200,
+        "bytes": 35513,
+        "sha256": "172dcf6e49ec147f3cd7695812dab84dd487665e4dee06dcba99c0e0d21f7039"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 35513,
+        "sha256": "172dcf6e49ec147f3cd7695812dab84dd487665e4dee06dcba99c0e0d21f7039"
+      },
+      "expected_sha256": "172dcf6e49ec147f3cd7695812dab84dd487665e4dee06dcba99c0e0d21f7039",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-dbe5897a5d63.3565a371a7.js",
+      "local": {
+        "status": 200,
+        "bytes": 10571,
+        "sha256": "b4ee398fc181c4241a4b4757dc9e1dc64fddd3b32187f4af633ed1fb72466612"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 10571,
+        "sha256": "b4ee398fc181c4241a4b4757dc9e1dc64fddd3b32187f4af633ed1fb72466612"
+      },
+      "expected_sha256": "b4ee398fc181c4241a4b4757dc9e1dc64fddd3b32187f4af633ed1fb72466612",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-ddd49e1af8e3.99687838dc.js",
+      "local": {
+        "status": 200,
+        "bytes": 6573,
+        "sha256": "8ac908666e00c673b05f1361acc9b31dfa38d3b33b072933a04b090ae204298b"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 6573,
+        "sha256": "8ac908666e00c673b05f1361acc9b31dfa38d3b33b072933a04b090ae204298b"
+      },
+      "expected_sha256": "8ac908666e00c673b05f1361acc9b31dfa38d3b33b072933a04b090ae204298b",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-f5e1f6055c05.5b0bd84b02.js",
+      "local": {
+        "status": 200,
+        "bytes": 55320,
+        "sha256": "4d619b23240e693badf1e1a99f3c9111d7ef844ebf978c1cc50f89ace86470c7"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 55320,
+        "sha256": "4d619b23240e693badf1e1a99f3c9111d7ef844ebf978c1cc50f89ace86470c7"
+      },
+      "expected_sha256": "4d619b23240e693badf1e1a99f3c9111d7ef844ebf978c1cc50f89ace86470c7",
+      "verified": true
+    },
+    {
+      "path": "static/js/index.04cdd06227.js",
+      "local": {
+        "status": 200,
+        "bytes": 26049,
+        "sha256": "9d5cc3171780e95aa9324dbb1b92a14f59c65241db7982aca91b10c2dbcc8185"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 26049,
+        "sha256": "9d5cc3171780e95aa9324dbb1b92a14f59c65241db7982aca91b10c2dbcc8185"
+      },
+      "expected_sha256": "9d5cc3171780e95aa9324dbb1b92a14f59c65241db7982aca91b10c2dbcc8185",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.d9aa10f4b0.js",
+      "local": {
+        "status": 200,
+        "bytes": 218369,
+        "sha256": "ad3b1fffada69190b9d14bfd2e16a62d31865b2d3de8a5044cb200fa67961cc8"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 218369,
+        "sha256": "ad3b1fffada69190b9d14bfd2e16a62d31865b2d3de8a5044cb200fa67961cc8"
+      },
+      "expected_sha256": "ad3b1fffada69190b9d14bfd2e16a62d31865b2d3de8a5044cb200fa67961cc8",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.d9aa10f4b0.js.LICENSE.txt",
+      "local": {
+        "status": 200,
+        "bytes": 1209,
+        "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 1209,
+        "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+      },
+      "expected_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.95ea184a3c.js",
+      "local": {
+        "status": 200,
+        "bytes": 35369,
+        "sha256": "71a8993452741417ebd7ac492fa9420ba9172794d33d650e50b8ab5fa71c327e"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 35369,
+        "sha256": "71a8993452741417ebd7ac492fa9420ba9172794d33d650e50b8ab5fa71c327e"
+      },
+      "expected_sha256": "71a8993452741417ebd7ac492fa9420ba9172794d33d650e50b8ab5fa71c327e",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.95ea184a3c.js.LICENSE.txt",
+      "local": {
+        "status": 200,
+        "bytes": 222,
+        "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 222,
+        "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+      },
+      "expected_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "verified": true
+    },
+    {
+      "path": "static/js/styles.5d83ba9b29.js",
+      "local": {
+        "status": 200,
+        "bytes": 467,
+        "sha256": "e8f2f06443d080ac10e044e7cd4321b692305552147b72ddacf9eed41a354aba"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 467,
+        "sha256": "e8f2f06443d080ac10e044e7cd4321b692305552147b72ddacf9eed41a354aba"
+      },
+      "expected_sha256": "e8f2f06443d080ac10e044e7cd4321b692305552147b72ddacf9eed41a354aba",
+      "verified": true
+    },
+    {
+      "path": "static/search_index.ko.4300982f.json",
+      "local": {
+        "status": 200,
+        "bytes": 381795,
+        "sha256": "4300982f022a89835478552ff2bf47a5758c62c12596b7866e49e5d7b35ad0e7"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 381795,
+        "sha256": "4300982f022a89835478552ff2bf47a5758c62c12596b7866e49e5d7b35ad0e7"
+      },
+      "expected_sha256": "4300982f022a89835478552ff2bf47a5758c62c12596b7866e49e5d7b35ad0e7",
+      "verified": true
+    },
+    {
+      "path": "STATUS.md",
+      "local": {
+        "status": 200,
+        "bytes": 275982,
+        "sha256": "789cfd08262f043dec04cc0cade0afc233df0e911e3ddb09d58433570fcd9eea"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 275982,
+        "sha256": "789cfd08262f043dec04cc0cade0afc233df0e911e3ddb09d58433570fcd9eea"
+      },
+      "expected_sha256": "789cfd08262f043dec04cc0cade0afc233df0e911e3ddb09d58433570fcd9eea",
+      "verified": true
+    },
+    {
+      "path": "plan/c13-3-native-wheel-input.md",
+      "local": {
+        "status": 200,
+        "bytes": 24198,
+        "sha256": "3b8ff7c743c1860950eb34d0d82e3a4a03785c8819c81dcfac7f97e0004798cb"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 24198,
+        "sha256": "3b8ff7c743c1860950eb34d0d82e3a4a03785c8819c81dcfac7f97e0004798cb"
+      },
+      "expected_sha256": "3b8ff7c743c1860950eb34d0d82e3a4a03785c8819c81dcfac7f97e0004798cb",
+      "verified": true
+    },
+    {
+      "path": "internal/README.md",
+      "local": {
+        "status": 200,
+        "bytes": 120613,
+        "sha256": "3a1c641baec862959eaff932b304e5dcd07b283a99a3897ad24ccbbffd9cbcd9"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 120613,
+        "sha256": "3a1c641baec862959eaff932b304e5dcd07b283a99a3897ad24ccbbffd9cbcd9"
+      },
+      "expected_sha256": "3a1c641baec862959eaff932b304e5dcd07b283a99a3897ad24ccbbffd9cbcd9",
+      "verified": true
+    },
+    {
+      "path": "internal/0063-c13-3-scroll-gestures.md",
+      "local": {
+        "status": 200,
+        "bytes": 37769,
+        "sha256": "45abb53a7343a9025ae6e1781bd9306ddbbafd458bb25e19211671c453138d37"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 37769,
+        "sha256": "45abb53a7343a9025ae6e1781bd9306ddbbafd458bb25e19211671c453138d37"
+      },
+      "expected_sha256": "45abb53a7343a9025ae6e1781bd9306ddbbafd458bb25e19211671c453138d37",
+      "verified": true
+    },
+    {
+      "path": "roadmap.html",
+      "local": {
+        "status": 200,
+        "bytes": 128352,
+        "sha256": "430eb0dcd022b6497d82af7bf0cd5df71b6c8b36733edc84eb6fb4d0354aafef"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 128352,
+        "sha256": "430eb0dcd022b6497d82af7bf0cd5df71b6c8b36733edc84eb6fb4d0354aafef"
+      },
+      "expected_sha256": "430eb0dcd022b6497d82af7bf0cd5df71b6c8b36733edc84eb6fb4d0354aafef",
+      "verified": true
+    },
+    {
+      "path": "public/roadmap.svg",
+      "local": {
+        "status": 200,
+        "bytes": 4835,
+        "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 4835,
+        "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+      },
+      "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "verified": true
+    },
+    {
+      "path": "public/icon.svg",
+      "local": {
+        "status": 200,
+        "bytes": 638,
+        "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 638,
+        "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+      },
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "path": "public/logo.svg",
+      "local": {
+        "status": 200,
+        "bytes": 568,
+        "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 568,
+        "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+      },
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.md",
+      "local": {
+        "status": 200,
+        "bytes": 5379,
+        "sha256": "365eed39dc879cbf05438cb3778687fc20bc527e297351676cb828a927620029"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 5379,
+        "sha256": "365eed39dc879cbf05438cb3778687fc20bc527e297351676cb828a927620029"
+      },
+      "expected_sha256": "365eed39dc879cbf05438cb3778687fc20bc527e297351676cb828a927620029",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/ios-simulator-scene.png",
+      "local": {
+        "status": 200,
+        "bytes": 122109,
+        "sha256": "4cddc3a1bd188b1b49a87b4be1a569e6e3d407aae3d74d7d4ae7f0075e43306e"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 122109,
+        "sha256": "4cddc3a1bd188b1b49a87b4be1a569e6e3d407aae3d74d7d4ae7f0075e43306e"
+      },
+      "expected_sha256": "4cddc3a1bd188b1b49a87b4be1a569e6e3d407aae3d74d7d4ae7f0075e43306e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/runtime-callbacks-sanitized.log",
+      "local": {
+        "status": 200,
+        "bytes": 3467,
+        "sha256": "b73606644918916f81500118a4b30cf5d949aac16818b002a8e34f3e0319a006"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 3467,
+        "sha256": "b73606644918916f81500118a4b30cf5d949aac16818b002a8e34f3e0319a006"
+      },
+      "expected_sha256": "b73606644918916f81500118a4b30cf5d949aac16818b002a8e34f3e0319a006",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/source-revision.json",
+      "local": {
+        "status": 200,
+        "bytes": 2344,
+        "sha256": "df5fd326b9eba5666aea7caaac118a230705da3119e2cbeaaa470fa4dc12dafc"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 2344,
+        "sha256": "df5fd326b9eba5666aea7caaac118a230705da3119e2cbeaaa470fa4dc12dafc"
+      },
+      "expected_sha256": "df5fd326b9eba5666aea7caaac118a230705da3119e2cbeaaa470fa4dc12dafc",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/xcodebuild-default.log.gz",
+      "local": {
+        "status": 200,
+        "bytes": 17079,
+        "sha256": "d41a375fc089bd49b97775a90ecfc8038ad4f1dc076179aaf10f7240816c63be"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 17079,
+        "sha256": "d41a375fc089bd49b97775a90ecfc8038ad4f1dc076179aaf10f7240816c63be"
+      },
+      "expected_sha256": "d41a375fc089bd49b97775a90ecfc8038ad4f1dc076179aaf10f7240816c63be",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/xcodebuild-opt-in.log.gz",
+      "local": {
+        "status": 200,
+        "bytes": 13276,
+        "sha256": "3c9aed998f234c5d89b6901aa58726cb456eaa557e59bc0a58bd2fafcee3ff1b"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 13276,
+        "sha256": "3c9aed998f234c5d89b6901aa58726cb456eaa557e59bc0a58bd2fafcee3ff1b"
+      },
+      "expected_sha256": "3c9aed998f234c5d89b6901aa58726cb456eaa557e59bc0a58bd2fafcee3ff1b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/xctest-four-directions.log",
+      "local": {
+        "status": 200,
+        "bytes": 19300,
+        "sha256": "b95e90422f299d16a16209febf0820b98a145032c65033f5d8b68e62cb51eb9c"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 19300,
+        "sha256": "b95e90422f299d16a16209febf0820b98a145032c65033f5d8b68e62cb51eb9c"
+      },
+      "expected_sha256": "b95e90422f299d16a16209febf0820b98a145032c65033f5d8b68e62cb51eb9c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-implementation-review-20-2026-10-18.md",
+      "local": {
+        "status": 200,
+        "bytes": 6018,
+        "sha256": "7869e1edcbfae53689c5a3a5e1385fc755827bebc025ecc956efdfda99f41b5c"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 6018,
+        "sha256": "7869e1edcbfae53689c5a3a5e1385fc755827bebc025ecc956efdfda99f41b5c"
+      },
+      "expected_sha256": "7869e1edcbfae53689c5a3a5e1385fc755827bebc025ecc956efdfda99f41b5c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-pr-delta-review-30-2026-10-18.md",
+      "local": {
+        "status": 200,
+        "bytes": 6293,
+        "sha256": "7fe51a96d2605df2d501204f296680229d2d5d6d7f0a1f2caf33847cf8bc5fc9"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 6293,
+        "sha256": "7fe51a96d2605df2d501204f296680229d2d5d6d7f0a1f2caf33847cf8bc5fc9"
+      },
+      "expected_sha256": "7fe51a96d2605df2d501204f296680229d2d5d6d7f0a1f2caf33847cf8bc5fc9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/README.md",
+      "local": {
+        "status": 200,
+        "bytes": 3575,
+        "sha256": "fbe86f2b7ee1caacb46a5c3e3163d8e2a63a68b89b1db5c4c1a66431626cb356"
+      },
+      "tailnet": {
+        "status": 200,
+        "bytes": 3575,
+        "sha256": "fbe86f2b7ee1caacb46a5c3e3163d8e2a63a68b89b1db5c4c1a66431626cb356"
+      },
+      "expected_sha256": "fbe86f2b7ee1caacb46a5c3e3163d8e2a63a68b89b1db5c4c1a66431626cb356",
+      "verified": true
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "backup_count": 1,
+  "all_verified": true,
+  "backups": [
+    {
+      "target": "SpinonPreview/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/render-build.log",
+      "backup": "SpinonPreviewBackups/c13-3-ios-native-wheel-adapter-tailnet-sync-20261018/pass-5-final/internal/evidence/c13-3-ios-native-wheel-adapter-tailnet-sync-2026-10-18/render-build.log",
+      "bytes": 6201,
+      "sha256": "0c1a20204fe8d7ab2d2b45efdd44f242dd930667aad2dc37b1f3eff2fb9fc279",
+      "expected_sha256": "0c1a20204fe8d7ab2d2b45efdd44f242dd930667aad2dc37b1f3eff2fb9fc279",
+      "verified": true
+    }
+  ]
+}

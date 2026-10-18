@@ -1,0 +1,57 @@
+{
+  "browser": "Agent Browser",
+  "observation": "2026-10-18 · Tailnet 미리보기",
+  "roadmap": {
+    "title": "스피논 구현 로드맵",
+    "observed_official_status": "공식 상태 동기화 완료 · 상위 78개 + 세부 ID 127개 + ID 없는 하위 체크 2개 · 완료 74/207개",
+    "c13_3_note_visible": true,
+    "note_summary": "PR #298 부분 병합, XCTest UI method 4/4와 UIKit continuous callback 2/4를 구분; boundary no-op과 positive-X 표본; C13.3 미완료",
+    "completed_count_changed_by_pr_298": false
+  },
+  "plan": {
+    "title": "C13.3 · 네이티브 wheel·trackpad 입력 수집과 정규화",
+    "route_http_status": 200,
+    "visible_summary": "iOS callback은 최신 4방향 XCTest에서 2/4 case만 관찰; discrete mouse와 반복 가능한 ±X/±Y, 실기기 trackpad 미검증; C13.3 미완료"
+  },
+  "evidence_page": {
+    "title": "C13.3 iOS native wheel adapter Tailnet 동기화 · 2026-10-18",
+    "route_http_status": 200,
+    "images": [
+      {
+        "alt": "Tailnet C13.3 로드맵",
+        "width": 1280,
+        "height": 633,
+        "loaded": true
+      },
+      {
+        "alt": "Tailnet C13.3 iOS 계획",
+        "width": 1280,
+        "height": 633,
+        "loaded": true
+      }
+    ],
+    "json_and_review_routes_http_200": true
+  },
+  "search": {
+    "asset": "/spinon/static/search_index.ko.1ce58afb.json",
+    "http_status": 200,
+    "contains_c13_3": true,
+    "contains_native_wheel_adapter": true
+  },
+  "network": {
+    "critical_routes_http_200": true,
+    "filtered_critical_requests_with_4xx_or_5xx": 0,
+    "checked": [
+      "roadmap HTML",
+      "GitHub main STATUS.md fetch",
+      "C13.3 plan HTML",
+      "sync evidence HTML",
+      "two screenshot assets",
+      "selected build report",
+      "PR delta review",
+      "preflight/backup/copy JSON",
+      "search index"
+    ]
+  },
+  "limitation": "화면·문서 확인은 adapter callback 실행 근거를 대신하지 않는다."
+}
