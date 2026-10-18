@@ -117,6 +117,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
                 | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+                | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 | ComputedStyleProfile::RuntimeBlockImageV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
@@ -141,6 +142,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
                 | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+                | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 | ComputedStyleProfile::RuntimeBlockImageV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
@@ -345,6 +347,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::FlexAlignmentCascadeLayersV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
                 | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+                | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 | ComputedStyleProfile::RuntimeBlockImageV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1 => {
@@ -370,6 +373,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::FlexAlignmentCascadeLayersV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
                 | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+                | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 | ComputedStyleProfile::RuntimeBlockImageV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1 => {
@@ -426,6 +430,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
                 | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+                | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 | ComputedStyleProfile::RuntimeBlockImageV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
@@ -487,6 +492,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
                 | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+                | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 | ComputedStyleProfile::RuntimeBlockImageV1
                 | ComputedStyleProfile::RuntimeBlockFormattingV1
                 | ComputedStyleProfile::RuntimeBlockPositioningV1
@@ -772,6 +778,7 @@ fn supports_positioning(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
             | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+            | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
             | ComputedStyleProfile::RuntimeBlockImageV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1

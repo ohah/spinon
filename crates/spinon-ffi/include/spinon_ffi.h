@@ -578,6 +578,15 @@ int32_t spinon_runtime_gpu_host_eval_root_html_block_paint_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);
 #endif
+#if defined(SPINON_ENABLE_C04_12_ROOT_HTML_TEXT_PAINT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_12_ROOT_HTML_TEXT_PAINT_FIXTURE_TEST
+/* 실제 parsed HostDocument의 direct Text node를 C15 layout·glyph paint에 연결합니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_root_html_text_paint_fixture(
+    char *output, size_t output_capacity);
+int32_t spinon_runtime_gpu_host_eval_root_html_text_paint_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+#endif
 /* C09.1 actual V8 fixture; 보고에는 DOM preorder node별 CSS frame이 포함됩니다. */
 int32_t spinon_runtime_gpu_host_eval_block_formatting_fixture(
     SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,

@@ -501,6 +501,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c08-block-paint")
     private let rootHtmlBlockPaintProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c0412-root-html-block-paint")
+    private let rootHtmlTextPaintProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c0412-root-html-text-paint")
+    private var rootHtmlTextPaintReadbackFinished = false
     private let marginCollapseProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c092-margin-collapse")
     private let flowRootProbeRequested = ProcessInfo.processInfo.arguments
@@ -742,6 +745,76 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c153-glyph-paint")
     private let c153HostDocumentTextPaintArgumentRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c153-hostdocument-text-paint")
+    private func verifyC0412RootHtmlTextPaintReadback(
+        result: String,
+        generation: UInt64
+    ) throws {
+        let expectedSamples: [([UInt32], [Int])] = [
+            ([1, 1], [9, 33, 112, 255]),
+            ([16, 1], [9, 33, 112, 255]),
+            ([1, 11], [9, 33, 112, 255]),
+            ([16, 11], [247, 249, 252, 255]),
+            ([100, 100], [247, 249, 252, 255]),
+        ]
+        func fail(_ reason: String) -> C0410LatestTaskLaneError {
+            rootHtmlTextPaintReadbackFinished = true
+            log("SPINON_C0412_TEXT_METAL_PIXEL status=error generation=\(generation) reason=\(reason) report=\(result)")
+            postStatus("실패 · C04.12 iOS glyph Metal 표면 표본 \(reason)")
+            return .operationFailed("C04.12 iOS Metal text readback \(reason)")
+        }
+        guard result.contains("runtime_text_count=2"),
+              result.contains("glyph_batch_draw_count=2") else {
+            throw fail("sample-report-incomplete")
+        }
+        let coordinatePairs = reportField(result, "root_html_text_sample_surface_xy=")
+            .split(separator: ";")
+        guard coordinatePairs.count == expectedSamples.count else {
+            throw fail("sample-coordinates-missing")
+        }
+        var encodedCoordinates: [[UInt32]] = []
+        for pair in coordinatePairs {
+            let values = pair.split(separator: ",")
+            guard values.count == 2,
+                  let x = UInt32(values[0]), let y = UInt32(values[1]) else {
+                throw fail("sample-coordinates-invalid")
+            }
+            encodedCoordinates.append([x, y])
+        }
+        guard let encodedSamples = reportField(result, "surface_pixel_samples_json=")
+                .data(using: .utf8),
+              let samples = try? JSONSerialization.jsonObject(with: encodedSamples)
+                as? [[String: Any]], samples.count == expectedSamples.count else {
+            throw fail("sample-pixels-missing")
+        }
+        stateLock.lock()
+        let surface = c111MetalDrawableSize
+        stateLock.unlock()
+        guard isCurrentSurfaceGeneration(generation), surface.width > 0, surface.height > 0 else {
+            throw fail("surface-generation-or-size")
+        }
+        var matched = 0
+        for index in expectedSamples.indices {
+            let sample = samples[index]
+            guard let x = sample["x"] as? NSNumber,
+                  let y = sample["y"] as? NSNumber,
+                  let rgba = sample["rgba"] as? [NSNumber], rgba.count == 4,
+                  index < encodedCoordinates.count else {
+                throw fail("sample-value-invalid-\(index)")
+            }
+            let expectedPoint = encodedCoordinates[index]
+            let actualPoint = [x.uint32Value, y.uint32Value]
+            let coordinateMatch = actualPoint == expectedPoint
+            let color = rgba.map(\.intValue)
+            let colorMatch = color == expectedSamples[index].1
+            if coordinateMatch && colorMatch { matched += 1 }
+            log("SPINON_C0412_TEXT_METAL_PIXEL_SAMPLE generation=\(generation) index=\(index) xy=\(actualPoint[0]),\(actualPoint[1]) rgba=\(color) expected_xy=\(expectedPoint) expected_rgba=\(expectedSamples[index].1) coordinate_match=\(coordinateMatch) expected_match=\(colorMatch)")
+        }
+        rootHtmlTextPaintReadbackFinished = true
+        guard matched == expectedSamples.count else { throw fail("pixel-mismatch-\(matched)-of-\(expectedSamples.count)") }
+        log("SPINON_C0412_TEXT_METAL_PIXEL_SUMMARY status=matched generation=\(generation) samples=\(matched)/\(expectedSamples.count) drawable=\(surface.width)x\(surface.height) renderer=metal-surface")
+        postStatus("완료 · C04.12 iOS glyph Metal surface pixel · 5/5")
+    }
+
 #if SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST_1
     private var c153GlyphPaintProbeRequested: Bool {
         c153GlyphPaintArgumentRequested || c153HostDocumentTextPaintArgumentRequested
@@ -928,7 +1001,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || c131StackingDescendantClipProbeRequested || c131BorderStripProbeRequested
             || c132ScrollFixtureRequested
             || c133GestureFixtureRequested || c11GridFixtureRequested
-            || rootHtmlBlockPaintProbeRequested
+            || rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
         var selectedWithImagePaint = selected
 #if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         selectedWithImagePaint = selectedWithImagePaint || imagePaintProbeRequested
@@ -1028,6 +1101,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "SPINON · C09.1 Block formatting"
             : viewportUnitsProbeRequested
             ? "SPINON · C06.6 viewport units"
+            : rootHtmlTextPaintProbeRequested
+            ? "SPINON · C04.12 root HTML text paint"
             : rootHtmlBlockPaintProbeRequested
             ? "SPINON · C04.12 root HTML Block paint"
             : blockPaintProbeRequested
@@ -1136,6 +1211,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "V8 DOM Block·auto margin → Stylo → Taffy → WGPU · 320×240 CSS px"
             : viewportUnitsProbeRequested
             ? "V8 vw/svw/lvw/dvw → Stylo CSS px → Taffy → WGPU"
+            : rootHtmlTextPaintProbeRequested
+            ? "V8 parsed direct text → Stylo → HostDocument → glyph layout → WGPU · 320×240 CSS px"
             : rootHtmlBlockPaintProbeRequested
             ? "V8 parsed root HTML → meta viewport/color-scheme → Stylo → Taffy → WGPU · 320×240 CSS px"
             : blockPaintProbeRequested
@@ -1241,6 +1318,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "C06.6 viewport units WGPU 장면"
             : blockFormattingProbeRequested
             ? "C09.1 일반 Block 흐름·auto margin WGPU 장면"
+            : rootHtmlTextPaintProbeRequested
+            ? "C04.12 parsed root HTML direct text · Ahem glyphs · owner overflow clip WGPU scene"
             : rootHtmlBlockPaintProbeRequested
             ? "C04.12 실제 html/head/body Block 배경 페인트 WGPU 장면"
             : blockPaintProbeRequested
@@ -2745,6 +2824,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? SpinonRunner.createRuntimeGpuHostWithC12_1PositionFixture()
             : blockFormattingProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithBlockFormattingFixture()
+            : rootHtmlTextPaintProbeRequested
+            ? SpinonRunner.createRuntimeGpuHostWithRootHtmlTextPaintFixture()
             : rootHtmlBlockPaintProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithRootHtmlBlockPaintFixture()
             : blockPaintProbeRequested
@@ -2844,8 +2925,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 || c1132GridNamedLinesProbeRequested || c1131GridRepeatProbeRequested
                 || fixedSizeCssFixtureRequested ? 240 : environmentInputs.height
         log("SPINON_C0410_ENVIRONMENT_REQUEST width=\(viewportWidth) height=\(viewportHeight)")
-        let environmentScale = rootHtmlBlockPaintProbeRequested
-            ? environmentInputs.scale
+        let environmentScale = rootHtmlTextPaintProbeRequested
+            ? 1
+            : rootHtmlBlockPaintProbeRequested ? environmentInputs.scale
             : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested
                 || c123FixedPositionProbeRequested || c1132GridNamedLinesProbeRequested
                 || c1133GridTemplateAreasProbeRequested || c132ScrollFixtureRequested
@@ -2853,9 +2935,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 ? 1 : environmentInputs.scale
         let environment = SpinonRunner.setRuntimeGpuEnvironment(
             handle,
-            width: rootHtmlBlockPaintProbeRequested
+            width: rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
                 ? viewportWidth * environmentScale : viewportWidth,
-            height: rootHtmlBlockPaintProbeRequested
+            height: rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
                 ? viewportHeight * environmentScale : viewportHeight,
             scale: environmentScale,
             dark: environmentInputs.dark
@@ -3030,6 +3112,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             result = SpinonRunner.evalRuntimeGpuViewportUnitsFixture(handle)
         } else if blockFormattingProbeRequested {
             result = SpinonRunner.evalRuntimeGpuBlockFormattingFixture(handle)
+        } else if rootHtmlTextPaintProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuRootHtmlTextPaintFixture(handle)
         } else if rootHtmlBlockPaintProbeRequested {
             result = SpinonRunner.evalRuntimeGpuRootHtmlBlockPaintFixture(handle)
         } else if blockPaintProbeRequested {
@@ -4107,12 +4191,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || c1132GridNamedLinesProbeRequested || c1133GridTemplateAreasProbeRequested
             || c132ScrollFixtureRequested || c133GestureFixtureRequested
         environmentInputs = (
-            rootHtmlBlockPaintProbeRequested ? 320
+            rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested ? 320
                 : c153HostDocumentTextPaintArgumentRequested ? 320
                 : c153GlyphPaintProbeRequested ? 360 : viewportWidthCssPx,
-            rootHtmlBlockPaintProbeRequested || c153GlyphPaintProbeRequested
+            rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
+                || c153GlyphPaintProbeRequested
                 ? 240 : viewportHeightCssPx,
-            rootHtmlBlockPaintProbeRequested ? displayScale
+            rootHtmlTextPaintProbeRequested ? 1
+                : rootHtmlBlockPaintProbeRequested ? displayScale
                 : fixedCssScaleRoute ? 1 : displayScale, darkMode
         )
         stateLock.unlock()
@@ -4138,9 +4224,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 #endif
         let report = SpinonRunner.setRuntimeGpuEnvironment(
             handle,
-            width: rootHtmlBlockPaintProbeRequested
+            width: rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
                 ? environmentInputs.width * environmentInputs.scale : environmentInputs.width,
-            height: rootHtmlBlockPaintProbeRequested
+            height: rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
                 ? environmentInputs.height * environmentInputs.scale : environmentInputs.height,
             scale: environmentInputs.scale, dark: environmentInputs.dark
         )
@@ -5484,6 +5570,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             )
         }
 #endif
+        if rootHtmlTextPaintProbeRequested && !rootHtmlTextPaintReadbackFinished {
+            try verifyC0412RootHtmlTextPaintReadback(result: result ?? "", generation: generation)
+        }
 #if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         if imagePaintProbeRequested && imagePaintMetalPixelRequestIssued
             && !imagePaintMetalPixelReadbackFinished {

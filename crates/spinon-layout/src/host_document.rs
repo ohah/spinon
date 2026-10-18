@@ -119,6 +119,33 @@ impl LayoutInput {
         )
     }
 
+    /// Root HTML text profile에서 block 사이 collapsible whitespace를 제외해 문단을 계산합니다.
+    pub fn from_host_document_with_viewport_containing_block_and_text_paragraphs_ignoring_collapsible_whitespace(
+        snapshot: &HostDocumentSnapshot,
+        root: HostNodeHandle,
+        viewport: Viewport,
+        styles: &BTreeMap<NodeId, LayoutStyle>,
+        paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
+        style_revision: StyleRevision,
+        environment_revision: EnvironmentRevision,
+    ) -> Result<Self, LayoutError> {
+        let inline_run_styles = BTreeMap::new();
+        Self::from_host_document_with_text_profile(
+            snapshot,
+            root,
+            viewport,
+            styles,
+            style_revision,
+            environment_revision,
+            HostDocumentLayoutProfile {
+                root_sizing: RootSizingPolicy::ResolveWithin,
+                paragraph_styles: Some(paragraph_styles),
+                inline_run_styles: Some(&inline_run_styles),
+                ignore_collapsible_whitespace_text: true,
+            },
+        )
+    }
+
     /// 제한된 C15 text profile에서 inline 글꼴·크기·line-height를 명시합니다.
     pub(crate) fn from_host_document_with_text_paragraphs_and_run_styles(
         snapshot: &HostDocumentSnapshot,

@@ -707,6 +707,163 @@ fn c04_12_root_html_block_paint_rejects_visible_text_and_svg_but_ignores_hidden_
     );
 }
 
+#[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+#[test]
+fn c04_12_root_html_text_paint_fixture_uses_parsed_text_and_owner_clips() {
+    const SOURCE: &str =
+        include_str!("../../../../tests/fixtures/css/c04/root-html-text-paint-runtime.html");
+    let (session, _) = RuntimeSession::new_runtime_gpu_root_html_text_paint_fixture(SOURCE)
+        .expect("C04.12 text fixture should initialize from parsed HTML");
+    let mut media = spinon_style::CssMediaEnvironment::MOBILE;
+    media.color_scheme = spinon_style::CssColorScheme::Light;
+    session
+        .set_root_html_environment(320.0, 240.0, 1.0, media)
+        .expect("fixture metadata should resolve the intended viewport");
+
+    let layout = session.wait_for_layout_snapshot(Duration::from_secs(5));
+    assert_eq!(
+        layout.state,
+        super::RuntimeLayoutState::Ready,
+        "{layout:?}; cascade={:?}",
+        session.ua_cascade_snapshot()
+    );
+    let completed = layout.completed.expect("fixture layout should complete");
+    let scene = completed
+        .render_snapshot
+        .as_ref()
+        .expect("fixture should publish its runtime paint scene");
+    assert_eq!(scene.viewport_css_px().width(), 320.0);
+    assert_eq!(scene.viewport_css_px().height(), 240.0);
+    assert_eq!(scene.texts().len(), 2);
+    assert!(scene.texts().iter().all(|text| {
+        text.glyphs().len() == 2
+            && text.source().generation().get() == completed.key.generation
+            && text.source().document_revision().get() == completed.key.document_revision
+            && text.source().render_tree_revision().get() == completed.key.render_tree_revision
+            && text.source().style_revision() == completed.key.style_revision
+            && text.source().environment_revision().get() == completed.key.environment_revision
+    }));
+    let visible = &scene.texts()[0];
+    let hidden = &scene.texts()[1];
+    assert_ne!(visible.node_id(), hidden.node_id());
+    for text in scene.texts() {
+        let draw_box = scene
+            .boxes()
+            .iter()
+            .position(|render_box| render_box.node_id() == text.node_id())
+            .expect("text owner box should exist");
+        let text_index = scene
+            .texts()
+            .iter()
+            .position(|candidate| candidate.node_id() == text.node_id())
+            .expect("text should be present in scene");
+        let command_index = scene
+            .paint_commands()
+            .iter()
+            .position(|command| matches!(command, spinon_render::RuntimePaintCommand::DrawText { index } if *index == text_index))
+            .expect("text draw command should exist");
+        assert!(matches!(
+            scene.paint_commands().get(command_index.wrapping_sub(1)),
+            Some(spinon_render::RuntimePaintCommand::DrawBox { index }) if *index == draw_box
+        ));
+        assert_eq!(
+            text.clip_css_px(),
+            scene.boxes()[draw_box].clip_css_px(),
+            "text should inherit its owner overflow clip"
+        );
+    }
+    assert_eq!(visible.color().red(), 9.0 / 255.0);
+    assert_eq!(visible.color().green(), 33.0 / 255.0);
+    assert_eq!(visible.color().blue(), 112.0 / 255.0);
+    assert_eq!(visible.color(), hidden.color());
+}
+
+#[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+#[test]
+fn c04_12_root_html_text_paint_rejects_source_tree_and_style_mutations() {
+    const SOURCE: &str =
+        include_str!("../../../../tests/fixtures/css/c04/root-html-text-paint-runtime.html");
+
+    fn run(source: &str) -> super::RuntimeLayoutSnapshot {
+        let (session, _) = RuntimeSession::new_runtime_gpu_root_html_text_paint_fixture(source)
+            .expect("mutated fixture should still parse as HTML");
+        let mut media = spinon_style::CssMediaEnvironment::MOBILE;
+        media.color_scheme = spinon_style::CssColorScheme::Light;
+        session
+            .set_root_html_environment(320.0, 240.0, 1.0, media)
+            .expect("fixture metadata should resolve before profile rejection");
+        session.wait_for_layout_snapshot(Duration::from_secs(5))
+    }
+
+    let cases = [
+        (
+            "changed-text-source",
+            SOURCE.replace(
+                "id=\"visible\" class=\"sample\">XX",
+                "id=\"visible\" class=\"sample\">XY",
+            ),
+            "root_html_text_source_mismatch",
+        ),
+        (
+            "split-direct-text",
+            SOURCE.replace(
+                "id=\"visible\" class=\"sample\">XX</div>",
+                "id=\"visible\" class=\"sample\">X<span>Y</span></div>",
+            ),
+            "root_html_text_direct_child_count",
+        ),
+        (
+            "empty-direct-text",
+            SOURCE.replace(
+                "id=\"visible\" class=\"sample\">XX</div>",
+                "id=\"visible\" class=\"sample\"></div>",
+            ),
+            "root_html_text_direct_child_count",
+        ),
+        (
+            "wrong-font",
+            SOURCE.replace("font-family: Ahem;", "font-family: sans-serif;"),
+            "unsupported_root_html_text_style",
+        ),
+        (
+            "wrong-color",
+            SOURCE.replace("color: #092170;", "color: #ff0000;"),
+            "unsupported_root_html_text_color",
+        ),
+        (
+            "visible-owner-clipped",
+            SOURCE.replace("overflow: visible;", "overflow: hidden;"),
+            "unsupported_root_html_text_owner_style",
+        ),
+        (
+            "hidden-control-made-visible",
+            SOURCE.replace(
+                "#not-rendered {\n      display: none;",
+                "#not-rendered {\n      display: block;",
+            ),
+            "unsupported_visible_root_html_text",
+        ),
+    ];
+
+    for (name, source, expected_code) in cases {
+        let result = run(&source);
+        assert_eq!(
+            result.state,
+            super::RuntimeLayoutState::Failed,
+            "case={name}; result={result:?}"
+        );
+        assert_eq!(
+            result.error.as_ref().map(|error| error.code),
+            Some(expected_code),
+            "case={name}; result={result:?}"
+        );
+        assert!(
+            result.completed.is_none(),
+            "case={name} published a partial scene"
+        );
+    }
+}
+
 fn eval(session: &RuntimeSession, source: &str) -> super::OperationResponse {
     session.eval(source, TaskPriority::UserVisible)
 }

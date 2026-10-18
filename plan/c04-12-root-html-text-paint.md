@@ -2,9 +2,9 @@
 
 - **문서 유형:** 구현 계획 · 공식 상태는 [`spec/STATUS.md`](../spec/STATUS.md)에서 관리
 - **상위:** [C04.12 앱 루트 HTML과 문서 환경 metadata](c04-root-html-document-environment.md) · [C15 인라인 텍스트 shaping과 줄 상자](c15-inline-text-layout.md) · [C08 첫 화면 Block·기본 페인트](c08-first-screen-block-paint.md)
-- **상태:** Agent Browser Chrome 155 사전 기준과 고정 fixture를 추가했다. [계획 실패 관점 검토](../spec/internal/evidence/c04-12-root-html-text-paint-precomparison-2026-10-18/plan-review-20.md) 20개를 마친 뒤 계획 PR을 제출한다. 제품 구현은 시작하지 않았다.
+- **상태:** Chrome 155 사전 기준, 계획 실패 관점 20개, opt-in runtime/FFI/native fixture 구현과 Android/iOS Simulator pixel readback을 마쳤다. 내부 계약 `0080`과 [구현 실패 관점 검토](../spec/internal/evidence/c04-12-root-html-text-paint-2026-10-18/implementation-review-20.md), [PR 변경 검토](../spec/internal/evidence/c04-12-root-html-text-paint-2026-10-18/pr-delta-review-30.md)를 갱신했다. 현재 구현 PR 준비 단계이며 C04.12/C15 전체 구현이 아니다.
 - **기준:** [Chrome 155 관찰·geometry·pixel 표본](../spec/internal/evidence/c04-12-root-html-text-paint-precomparison-2026-10-18/README.md)
-- **내부 계약:** 구현 PR에서 다음 ID `0080`, 숫자 버전 `0.1.0`으로 작성한다.
+- **내부 계약:** [0080](../spec/internal/0080-c04-12-root-html-direct-text-paint.md), 숫자 버전 `0.1.0`.
 
 ## 목표와 현재 경계
 

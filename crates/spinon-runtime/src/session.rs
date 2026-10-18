@@ -145,6 +145,8 @@ enum RuntimeCssProfile {
     BlockPaintFixture,
     #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
     RootHtmlBlockPaintFixture,
+    #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+    RootHtmlTextPaintFixture,
     BlockImageFixture,
     BlockFormattingFixture,
     BlockPositioningFixture,
@@ -349,6 +351,20 @@ impl RuntimeSession {
         )
     }
 
+    /// 실제 HTML5 HostDocument에서 direct-text glyph paint를 실행하는 opt-in fixture runtime입니다.
+    #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+    pub fn new_runtime_gpu_root_html_text_paint_fixture(
+        source: &str,
+    ) -> Result<(Self, String), String> {
+        let parsed = ParsedRootHtml::parse(source)?;
+        let environment = RootHtmlEnvironmentMetadata::from_document(&parsed);
+        Self::new_with_css_profile_and_root_html(
+            RuntimeCssProfile::RootHtmlTextPaintFixture,
+            Some(parsed),
+            Some(environment),
+        )
+    }
+
     /// C04.10 내부 GPU renderer 전용 Flex paint profile로 런타임을 만듭니다.
     pub fn new_runtime_gpu() -> Result<(Self, String), String> {
         Self::new_with_css_profile(RuntimeCssProfile::RuntimeGpu)
@@ -453,6 +469,10 @@ impl RuntimeSession {
             #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
             RuntimeCssProfile::RootHtmlBlockPaintFixture => {
                 RuntimeUaCascadeCoordinator::new_runtime_gpu_root_html_block_paint()?
+            }
+            #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+            RuntimeCssProfile::RootHtmlTextPaintFixture => {
+                RuntimeUaCascadeCoordinator::new_runtime_gpu_root_html_text_paint()?
             }
             RuntimeCssProfile::BlockImageFixture => {
                 RuntimeUaCascadeCoordinator::new_runtime_gpu_block_image()?

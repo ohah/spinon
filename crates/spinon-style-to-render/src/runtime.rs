@@ -1,10 +1,10 @@
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, NodeId};
 use spinon_layout::{LayoutFrame, LayoutSourceRevision};
 use spinon_render::{
-    CssRect, CssSize, OpaqueCssSrgb, RuntimePaint, RuntimeRenderBox, RuntimeRenderKey,
-    RuntimeRenderSnapshot, RuntimeSrgbColor,
+    CssAxisClip, CssClip, CssRect, CssSize, OpaqueCssSrgb, RuntimePaint, RuntimeRenderBox,
+    RuntimeRenderKey, RuntimeRenderSnapshot, RuntimeSrgbColor,
 };
-use spinon_style::{ComputedBackgroundPaint, ComputedStyleProfile};
+use spinon_style::{ComputedBackgroundPaint, ComputedCssOverflow, ComputedStyleProfile};
 
 use crate::adapter::{
     indexed_styles, validate_layout_node_set, validate_revisions, validate_style_node_set,
@@ -32,6 +32,7 @@ pub fn build_runtime_render_snapshot(
             | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
             | ComputedStyleProfile::RuntimeBlockPaintV1
             | ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+            | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
             | ComputedStyleProfile::RuntimeBlockImageV1
             | ComputedStyleProfile::RuntimeBlockFormattingV1
             | ComputedStyleProfile::RuntimeBlockPositioningV1
@@ -89,12 +90,11 @@ pub fn build_runtime_render_snapshot(
         };
         let paint_order =
             u32::try_from(boxes.len()).map_err(|_| StyleRenderError::PaintOrderOverflow)?;
-        boxes.push(RuntimeRenderBox::new(
-            node_id,
-            frame_css_px,
-            paint,
-            paint_order,
-        ));
+        let mut render_box = RuntimeRenderBox::new(node_id, frame_css_px, paint, paint_order);
+        if styles.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+            render_box = render_box.with_clip(root_html_text_paint_clip(style, frame)?);
+        }
+        boxes.push(render_box);
     }
 
     let current_source = current.revision.source();
@@ -184,8 +184,12 @@ fn runtime_document_order(
         let node = document.node(handle).ok_or(StyleRenderError::InvalidRoot)?;
         if let spinon_core::HostNodeKind::Text(text) = node.kind() {
             if ancestor_hidden
-                || (profile == ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
-                    && text.is_only_collapsible_html_whitespace())
+                || (matches!(
+                    profile,
+                    ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
+                        | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                ) && text.is_only_collapsible_html_whitespace())
+                || profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
             {
                 continue;
             }
@@ -230,6 +234,45 @@ fn runtime_document_order(
         document_nodes,
         paint_nodes,
     })
+}
+
+fn root_html_text_paint_clip(
+    style: &spinon_style::ComputedElementStyle,
+    frame: LayoutFrame,
+) -> Result<CssClip, StyleRenderError> {
+    let overflow_x = style
+        .layout_overflow_x
+        .ok_or(StyleRenderError::MissingComputedProperty {
+            node: style.node_id,
+            property: "overflow-x",
+        })?;
+    let overflow_y = style
+        .layout_overflow_y
+        .ok_or(StyleRenderError::MissingComputedProperty {
+            node: style.node_id,
+            property: "overflow-y",
+        })?;
+    if !matches!(
+        overflow_x,
+        ComputedCssOverflow::Visible | ComputedCssOverflow::Hidden
+    ) || !matches!(
+        overflow_y,
+        ComputedCssOverflow::Visible | ComputedCssOverflow::Hidden
+    ) {
+        return Err(StyleRenderError::UnsupportedComputedValue {
+            node: style.node_id,
+            property: "overflow",
+            value: format!("{overflow_x:?}/{overflow_y:?}"),
+        });
+    }
+    let mut clip = CssClip::unconstrained();
+    if overflow_x == ComputedCssOverflow::Hidden {
+        clip = clip.with_x(CssAxisClip::new(frame.x, frame.x + frame.width)?);
+    }
+    if overflow_y == ComputedCssOverflow::Hidden {
+        clip = clip.with_y(CssAxisClip::new(frame.y, frame.y + frame.height)?);
+    }
+    Ok(clip)
 }
 
 fn flow_paint_preorder(

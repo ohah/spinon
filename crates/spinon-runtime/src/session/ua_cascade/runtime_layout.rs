@@ -24,6 +24,10 @@ use spinon_style_to_render::{CurrentLayoutInputs, StyleRenderError};
 use std::sync::Arc;
 use std::time::{Duration, Instant};
 
+#[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+#[path = "runtime_layout/root_html_text_paint.rs"]
+mod root_html_text_paint;
+
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum RuntimeLayoutState {
     NotConfigured,
@@ -186,6 +190,10 @@ where
         super::calculation::RuntimeCalculationProfile::RootHtmlBlockPaint => {
             spinon_style::first_unsupported_runtime_root_html_block_paint_inline_property(&view)
         }
+        #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+        super::calculation::RuntimeCalculationProfile::RootHtmlTextPaint => {
+            spinon_style::first_unsupported_runtime_root_html_text_paint_inline_property(&view)
+        }
         super::calculation::RuntimeCalculationProfile::BlockImage => {
             spinon_style::first_unsupported_runtime_block_image_inline_property(&view)
         }
@@ -245,6 +253,17 @@ where
     if profile == super::calculation::RuntimeCalculationProfile::RootHtmlBlockPaint {
         validate_root_html_block_paint_tree(&request.snapshot, root, &styles)?;
     }
+    #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+    let root_html_text_input =
+        if profile == super::calculation::RuntimeCalculationProfile::RootHtmlTextPaint {
+            Some(root_html_text_paint::prepare(
+                &request.snapshot,
+                root,
+                &styles,
+            )?)
+        } else {
+            None
+        };
     let projection_started = Instant::now();
     if runtime_paint_enabled && let Some(diagnostic) = styles.diagnostics.first() {
         return Err(layout_failure(
@@ -259,6 +278,21 @@ where
             )),
         ));
     }
+    #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+    let output = if let Some(text_input) = &root_html_text_input {
+        spinon_style_to_layout::compute_runtime_style_layout_with_text_paragraphs(
+            &request.snapshot,
+            root,
+            styles.clone(),
+            request.viewport,
+            &text_input.paragraph_styles,
+            &text_input.engine,
+        )
+    } else {
+        compute_runtime_style_layout(&request.snapshot, root, styles.clone(), request.viewport)
+    }
+    .map_err(layout_failure_from_error)?;
+    #[cfg(not(feature = "c04-12-root-html-text-paint-fixture-test"))]
     let output =
         compute_runtime_style_layout(&request.snapshot, root, styles.clone(), request.viewport)
             .map_err(layout_failure_from_error)?;
@@ -269,10 +303,15 @@ where
             styles.style_revision,
             request.viewport,
         );
-        Some(
-            render_snapshot_builder(&request.snapshot, root, &output, current)
-                .map_err(layout_failure_from_render_error)?,
-        )
+        let scene = render_snapshot_builder(&request.snapshot, root, &output, current)
+            .map_err(layout_failure_from_render_error)?;
+        #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+        let scene = if let Some(text_input) = &root_html_text_input {
+            root_html_text_paint::attach(&request.snapshot, root, &output, text_input, scene)?
+        } else {
+            scene
+        };
+        Some(scene)
     } else {
         None
     };
