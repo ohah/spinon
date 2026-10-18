@@ -47,6 +47,8 @@ R06 큐 포화·복구 검증의 구현 전 기준과 사전 판정값은 [큐 �
 
 C13.3 normalized wheel runtime의 고정 입력, Chrome 155 oracle, 축별 사전 판정값과 Simulator 검증 경계는 [wheel delta routing 계획](../plan/c13-3-wheel-delta-routing.md)에 기록한다. 입력은 opt-in fixture가 CSS px로 정규화한 sample이며 OS native wheel/trackpad adapter 또는 공개 `WheelEvent`를 검증하지 않는다.
 
+C11.4 Grid track sizing의 구현 전 Chrome 155 oracle 26개, Ahem/image resource hash, fixed WPT source revision·file hash와 미검증 경계는 [사전 비교 기록](internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.md)에 둔다. 현재 C14.3 image 입력은 재사용 후보이며 C15 text intrinsic measure와 Grid track-sizing runtime은 아직 미구현이다. 이 비교 자료는 Spinon 구현·WPT 적합성·Android/iOS 결과가 아니다.
+
 C14.1 live V8 image measurement의 고정 Chrome 155 PNG oracle, V8 JS 생성 입력, actor-owned HostDocument snapshot, source/revision identity와 CSS px frame 판정은 `plan/c14-1-live-v8-image-measurement.md`에 기록한다. Android/iOS Simulator opt-in report는 실제 V8 변경 문서 snapshot을 기존 decoder/layout adapter에 연결하는 내부 evidence이며, product resource loader·async replacement·image paint 또는 공개 CSS 지원을 판정하지 않는다.
 
 C18.1은 같은 제한 PNG fixture를 live V8→WGPU 실제 image paint로 연결해 Android API 37 AVD PixelCopy와 iPhone 17 Pro/iOS 26.2 Simulator Metal drawable에서 visible border-overpaint/overflow 및 hidden padding-edge clip 표본을 검사한다. 이는 고정 opaque natural-size PNG 하나의 opt-in 내부 profile이며, 제품 image loader·공개 HTML/CSS 지원·C14/C18/U05 전체를 완료로 표시하지 않는다. 계약은 [0064](internal/0064-c18-1-image-paint.md), 실행·artifact 근거는 [C18.1 evidence](internal/evidence/c18-1-image-paint-artifact-boundary-2026-10-16/README.md)에 둔다.
