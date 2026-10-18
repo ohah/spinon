@@ -1,0 +1,7 @@
+xcodebuild test-without-building -quiet \
+  -project spec/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/harness/C133WheelProbe.xcodeproj \
+  -scheme C133WheelProbe \
+  -destination 'platform=iOS Simulator,id=9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF' \
+  -derivedDataPath /tmp/spinon-c13-3-ios-app-event-boundary-run-20261018/DerivedData \
+  -resultBundlePath /tmp/spinon-c13-3-ios-app-event-boundary-run-20261018/AppEventBoundary-full-suite.xcresult \
+  -parallel-testing-enabled NO -collect-test-diagnostics never CODE_SIGNING_ALLOWED=NO

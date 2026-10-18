@@ -1,0 +1,5 @@
+2026-10-18 15:07:09.499 xcodebuild: Failed to construct test run summaries and write them to the result bundle: fileSystemFailure(reason: "mkstemp: No space left on device")
+2026-10-18 15:07:09.499 xcodebuild: IDETestOperationsObserverDebug: 857.610 elapsed -- Testing started completed.
+The xcodebuild process exited 0, but xcresulttool reported result=unknown, totalTestCount=0, passedTests=0. This attempt is not counted as a successful test run.
+Command: [final-full-suite-attempt-command.txt](./final-full-suite-attempt-command.txt)
+The source and built app/test products for this revision are hashed in [source-revision.json](./source-revision.json).

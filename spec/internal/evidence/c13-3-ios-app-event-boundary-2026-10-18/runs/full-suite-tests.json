@@ -1,0 +1,215 @@
+{
+  "devices" : [
+    {
+      "architecture" : "arm64",
+      "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+      "deviceName" : "iPad Pro 13-inch (M5)",
+      "modelName" : "iPad Pro 13-inch (M5)",
+      "osBuildNumber" : "23C54",
+      "osVersion" : "26.2",
+      "platform" : "iOS Simulator"
+    }
+  ],
+  "testNodes" : [
+    {
+      "children" : [
+        {
+          "children" : [
+            {
+              "children" : [
+                {
+                  "duration" : "3분 8초",
+                  "durationInSeconds" : 188.565691947937,
+                  "name" : "testApplicationEventBoundaryForScrollTypeMasks()",
+                  "nodeIdentifier" : "C133WheelProbeUITests/testApplicationEventBoundaryForScrollTypeMasks()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testApplicationEventBoundaryForScrollTypeMasks",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "1분 3초",
+                  "durationInSeconds" : 63.268483996391296,
+                  "name" : "testContinuousScrollRecognizerDeliveryOracle()",
+                  "nodeIdentifier" : "C133WheelProbeUITests/testContinuousScrollRecognizerDeliveryOracle()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testContinuousScrollRecognizerDeliveryOracle",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "children" : [
+                    {
+                      "name" : "Multiple Runtime Warnings",
+                      "nodeType" : "Runtime Warning"
+                    }
+                  ],
+                  "duration" : "1분 3초",
+                  "durationInSeconds" : 63.4682559967041,
+                  "name" : "testContinuousScrollRecognizerWithoutScrollView()",
+                  "nodeIdentifier" : "C133WheelProbeUITests/testContinuousScrollRecognizerWithoutScrollView()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testContinuousScrollRecognizerWithoutScrollView",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "26초",
+                  "durationInSeconds" : 26.143712997436523,
+                  "name" : "testControlPositiveXScroll()",
+                  "nodeIdentifier" : "C133WheelProbeUITests/testControlPositiveXScroll()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testControlPositiveXScroll",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "children" : [
+                    {
+                      "name" : "Multiple Runtime Warnings",
+                      "nodeType" : "Runtime Warning"
+                    }
+                  ],
+                  "duration" : "1분 17초",
+                  "durationInSeconds" : 77.01384401321411,
+                  "name" : "testDirectTouchRecognizerDeliveryControl()",
+                  "nodeIdentifier" : "C133WheelProbeUITests/testDirectTouchRecognizerDeliveryControl()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testDirectTouchRecognizerDeliveryControl",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "22초",
+                  "durationInSeconds" : 22.173748016357422,
+                  "name" : "testHorizontalRoundTrip()",
+                  "nodeIdentifier" : "C133WheelProbeUITests/testHorizontalRoundTrip()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testHorizontalRoundTrip",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "31초",
+                  "durationInSeconds" : 31.96840000152588,
+                  "name" : "testHorizontalRoundTripAtInnerTarget()",
+                  "nodeIdentifier" : "C133WheelProbeUITests/testHorizontalRoundTripAtInnerTarget()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testHorizontalRoundTripAtInnerTarget",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "21초",
+                  "durationInSeconds" : 21.07314097881317,
+                  "name" : "testNegativeXAtInnerTarget()",
+                  "nodeIdentifier" : "C133WheelProbeUITests/testNegativeXAtInnerTarget()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testNegativeXAtInnerTarget",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "15초",
+                  "durationInSeconds" : 15.689190983772278,
+                  "name" : "testNegativeXLargeScroll()",
+                  "nodeIdentifier" : "C133WheelProbeUITests/testNegativeXLargeScroll()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testNegativeXLargeScroll",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "15초",
+                  "durationInSeconds" : 15.686468005180359,
+                  "name" : "testNegativeXScroll()",
+                  "nodeIdentifier" : "C133WheelProbeUITests/testNegativeXScroll()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testNegativeXScroll",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "15초",
+                  "durationInSeconds" : 15.710693001747131,
+                  "name" : "testNegativeYScroll()",
+                  "nodeIdentifier" : "C133WheelProbeUITests/testNegativeYScroll()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testNegativeYScroll",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "15초",
+                  "durationInSeconds" : 15.718654990196228,
+                  "name" : "testOrdinaryPositiveXScroll()",
+                  "nodeIdentifier" : "C133WheelProbeUITests/testOrdinaryPositiveXScroll()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testOrdinaryPositiveXScroll",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "15초",
+                  "durationInSeconds" : 15.709498047828674,
+                  "name" : "testPositiveXScroll()",
+                  "nodeIdentifier" : "C133WheelProbeUITests/testPositiveXScroll()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testPositiveXScroll",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "15초",
+                  "durationInSeconds" : 15.718522071838379,
+                  "name" : "testPositiveYScroll()",
+                  "nodeIdentifier" : "C133WheelProbeUITests/testPositiveYScroll()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testPositiveYScroll",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "children" : [
+                    {
+                      "name" : "Update the Info.plist: 1) Support for all orientations will soon be required. 2) Launch screens will soon be required.",
+                      "nodeType" : "Runtime Warning"
+                    }
+                  ],
+                  "duration" : "3분 30초",
+                  "durationInSeconds" : 210.43851804733276,
+                  "name" : "testScrollTypeMaskDeliveryClassification()",
+                  "nodeIdentifier" : "C133WheelProbeUITests/testScrollTypeMaskDeliveryClassification()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testScrollTypeMaskDeliveryClassification",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "22초",
+                  "durationInSeconds" : 22.257848978042603,
+                  "name" : "testVerticalRoundTrip()",
+                  "nodeIdentifier" : "C133WheelProbeUITests/testVerticalRoundTrip()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testVerticalRoundTrip",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "32초",
+                  "durationInSeconds" : 32.02706205844879,
+                  "name" : "testVerticalRoundTripAtInnerTarget()",
+                  "nodeIdentifier" : "C133WheelProbeUITests/testVerticalRoundTripAtInnerTarget()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testVerticalRoundTripAtInnerTarget",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "C133WheelProbeUITests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            }
+          ],
+          "name" : "C133WheelProbeUITests",
+          "nodeIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests",
+          "nodeType" : "UI test bundle",
+          "result" : "Passed"
+        }
+      ],
+      "name" : "C133WheelProbe",
+      "nodeType" : "Test Plan",
+      "result" : "Passed"
+    }
+  ],
+  "testPlanConfigurations" : [
+    {
+      "configurationId" : "1",
+      "configurationName" : "Test Scheme Action"
+    }
+  ]
+}
