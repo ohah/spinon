@@ -1,0 +1,64 @@
+{
+  "checked_at_utc": "2026-10-19T14:03:21.707Z",
+  "browser": "Agent Browser",
+  "session_name": "spinon-c114-span-tailnet-20261019",
+  "base_url": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "pages": {
+    "roadmap": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "official_counter": "72/212",
+      "counter_source": "live read-only status sync from spec/STATUS.md on GitHub main",
+      "pr354_note_visible": true,
+      "c11_4_checkbox_checked": false,
+      "links": [
+        "/spinon/internal/evidence/c11-4-image-ratio-span-2026-10-19/README.html",
+        "/spinon/plan/c11-4-grid-track-sizing.html",
+        "https://github.com/ohah/spinon/pull/354"
+      ]
+    },
+    "status": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "span_follow_up_present": true,
+      "c11_4_checkbox_checked": false,
+      "evidence_links_resolve": true
+    },
+    "plan": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-grid-track-sizing.html",
+      "title": "C11.4 · CSS Grid track sizing 계획 - 스피논 문서",
+      "fixed_max_track_follow_up_present": true,
+      "limitations_present": true,
+      "evidence_link_present": true
+    },
+    "evidence": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-ratio-span-2026-10-19/README.html",
+      "title": "C11.4 이미지 비율 전이 입력의 고정 트랙 제한 - 스피논 문서",
+      "crd_date_visible": true,
+      "remaining_limits_visible": true,
+      "images": [
+        {
+          "src": "/spinon/static/image/screenshot-row-transfer-input-capped-by-fixed-column-span.4836ee4be9.png",
+          "complete": true,
+          "width": 1080,
+          "height": 2400
+        },
+        {
+          "src": "/spinon/static/image/screenshot-column-transfer-input-capped-by-fixed-row-span.ea4da4db59.png",
+          "complete": true,
+          "width": 1206,
+          "height": 2622
+        }
+      ]
+    }
+  },
+  "screenshots": [
+    "tailnet-roadmap-count-agent-browser.png",
+    "tailnet-roadmap-agent-browser.png",
+    "tailnet-status-agent-browser.png",
+    "tailnet-status-checkbox-agent-browser.png",
+    "tailnet-plan-agent-browser.png",
+    "tailnet-evidence-agent-browser.png",
+    "tailnet-evidence-simulator-agent-browser.png"
+  ]
+}

@@ -1,0 +1,2426 @@
+{
+  "source_base_commit": "08caa59b42f75eb2939104fffa527995eb1d4f51",
+  "source_overrides": [
+    "spec/public/roadmap.html"
+  ],
+  "preview_root_relative": "SpinonPreview",
+  "served_prefix": "/spinon/",
+  "file_count": 345,
+  "files": [
+    {
+      "path": "0001-conformance.html",
+      "bytes": 39556,
+      "sha256": "dea6ad089a37f28f532c5616c0b9bcfb87fd93cda842c3fe994de93fc4eafb1a",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/0001-conformance.html",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "0001-conformance.md",
+      "bytes": 14265,
+      "sha256": "ff74477a4ce90e9c858b73cbd8e5c3b9e7524148ab14a7c27e373a26ef518403",
+      "source": "spec/0001-conformance.md",
+      "kind": "markdown-route"
+    },
+    {
+      "path": "404.html",
+      "bytes": 8512,
+      "sha256": "01dedf45e3a5362f209e2b8a28e22be2a70938eb549dc68ea7f8d667d2640cb8",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/404.html",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "c10-3-3-android-physical-2026-10-11.png",
+      "bytes": 194109,
+      "sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/c10-3-3-android-physical-2026-10-11.png",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "c12-4-android-api37-depth-safety-2026-10-11.png",
+      "bytes": 72745,
+      "sha256": "33704756e2d8758d73165b63d9fa67977e2c73965d057263d45821c7a416fdae",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/c12-4-android-api37-depth-safety-2026-10-11.png",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "c12-4-android-api37-depth-safety-matrix-2026-10-11.png",
+      "bytes": 71213,
+      "sha256": "db8f307c59f677cde715075c0efad8ff9056bd7d39a424b5f912da326a1f06cc",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/c12-4-android-api37-depth-safety-matrix-2026-10-11.png",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "c12-4-android-api37-emulator-2026-10-11.log",
+      "bytes": 6079,
+      "sha256": "77adad2002dbeb251d90ce58ba3778e16fd4571601c90b4de407ba9db22b8259",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/c12-4-android-api37-emulator-2026-10-11.log",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "c12-4-android-api37-emulator.png",
+      "bytes": 79987,
+      "sha256": "86d8840dc425d99b7cf7e161ef17089d68bc148da8bb7cafe892cf654201f8e5",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/c12-4-android-api37-emulator.png",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.json",
+      "bytes": 926,
+      "sha256": "4b0f514d3f6b40cdb2dad06a089641c8cd0af8512669265ad9d5f5b9c2a16be2",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/c12-4-android-api37-matrix-2026-10-11.json",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.log",
+      "bytes": 45719,
+      "sha256": "b8f1ed1a8f1bae6d08202e44ee5e24e4c3befa916c5262a5915f6cdf664f6eca",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/c12-4-android-api37-matrix-2026-10-11.log",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.png",
+      "bytes": 71121,
+      "sha256": "a56c210a9b45f2289e4595b86430a496cfabc8177f21499ee5d63405ca45b23f",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/c12-4-android-api37-matrix-2026-10-11.png",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.log",
+      "bytes": 43037,
+      "sha256": "23920b6b1a2a274e609d028b4be8c50cb3811f82a414a95a7820b556390e7bf0",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.log",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.png",
+      "bytes": 70563,
+      "sha256": "dc5b919381d4fe3f71e564a1f24953a99446fd92d6902a4de0f8ee79eb9c2aa6",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.png",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.log",
+      "bytes": 42930,
+      "sha256": "967b0572b40411b115e9a7ddf02f424a2e69948ec24d9ea5dda3158650b5269b",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/c12-4-android-api37-matrix-reserve-rerun-2026-10-11.log",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.png",
+      "bytes": 71247,
+      "sha256": "183b3e38acf0bdd449a2d8613b2ce361afff558a8fec62a8c7a6aeb7deed28f5",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/c12-4-android-api37-matrix-reserve-rerun-2026-10-11.png",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "c12-4-android-sm-s731n-android16-vulkan.png",
+      "bytes": 110882,
+      "sha256": "a60c2db2fa7ad194c9a210147c3827ed0ee11e831bf168da5297eb3df8a60dd4",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/c12-4-android-sm-s731n-android16-vulkan.png",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "c12-4-ios-iphone-17-pro-depth-safety-2026-10-11.png",
+      "bytes": 142385,
+      "sha256": "bef6d91b248a580d120d0b47df26800b2ed218addd94674409deaecfc2eaf814",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/c12-4-ios-iphone-17-pro-depth-safety-2026-10-11.png",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "c12-4-ios-iphone-17-pro-simulator.png",
+      "bytes": 143083,
+      "sha256": "650f17bb3edda780d32f53f3980f417b7c5b340d862865ef5e0b4250091e372b",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/c12-4-ios-iphone-17-pro-simulator.png",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "c12-4-runtime-evidence.html",
+      "bytes": 14589,
+      "sha256": "64b118c6a84e690b4722d1e75d8b4e6d31588919e5b4a51a229e96808698aee7",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/c12-4-runtime-evidence.html",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "c12-4-wpt-official-run-2026-10-11.log",
+      "bytes": 356,
+      "sha256": "9f9b4bf38f27fef6cb27d720726389f1bae382e88a383919e26dcb18cbfe6fab",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/c12-4-wpt-official-run-2026-10-11.log",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/icon.svg",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "bytes": 94941,
+      "sha256": "2833b172e7be7ad114259e36ac93d14668248110fe2805eab9b285fdcac0734e",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/internal/0059-c11-grid-layout.html",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "bytes": 53734,
+      "sha256": "2c736d011e54b7e8b16ab448ab0b788a44fbf3328e282d3dd583024802baf14a",
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "kind": "markdown-route"
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.html",
+      "bytes": 45765,
+      "sha256": "72ce68663f4a96d51516e6e797682ec6b896d23e1db22d21d0575788c1112edf",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/internal/0070-c15-1-inline-text-layout.html",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.md",
+      "bytes": 17249,
+      "sha256": "70c5dd4c57f244999616f48e939bc3b0e58145cb93b4df154824fb00845c3fde",
+      "source": "spec/internal/0070-c15-1-inline-text-layout.md",
+      "kind": "markdown-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/browser-metadata.json",
+      "bytes": 564,
+      "sha256": "6d1f44c5ad3a769726234fe4899e1ff91a647cf7dfa26c9cb6e8aa054aa00c8e",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/browser-metadata.json",
+      "kind": "previous-preview-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-agent-browser-eval.raw.txt",
+      "bytes": 16155,
+      "sha256": "c7453b69936c734d110671d9fcb2525c733f0ac42be1c91b0c783084d7f498ce",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-agent-browser-eval.raw.txt",
+      "kind": "previous-preview-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-agent-browser-metadata.raw.txt",
+      "bytes": 564,
+      "sha256": "6d1f44c5ad3a769726234fe4899e1ff91a647cf7dfa26c9cb6e8aa054aa00c8e",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-agent-browser-metadata.raw.txt",
+      "kind": "previous-preview-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-dpr1.png",
+      "bytes": 62568,
+      "sha256": "f1cadfd00aeb934e58205d4cd21d4341b8ec48111a6f808d24df1a80ea3a5662",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-dpr1.png",
+      "kind": "previous-preview-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-observation.json",
+      "bytes": 16155,
+      "sha256": "c7453b69936c734d110671d9fcb2525c733f0ac42be1c91b0c783084d7f498ce",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-observation.json",
+      "kind": "previous-preview-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.html",
+      "bytes": 31689,
+      "sha256": "3540aaed038330e1a84f8d4c03b5cfbe69ebbb257d40cbb1ebcb547c4c68feb3",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.html",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.md",
+      "bytes": 6658,
+      "sha256": "ba8b325dc3c6f3f17b849b8d408f7ea09a0a98da5a2a341726555e888940175c",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.md",
+      "kind": "markdown-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-delta-review-30.html",
+      "bytes": 29993,
+      "sha256": "0b36c05156255ec089c16866582a463ec6e70ec483d1cbecf8bc495fa1ee8735",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-delta-review-30.html",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-delta-review-30.md",
+      "bytes": 5347,
+      "sha256": "522c345a98a4f76530f2c000679021ec08c1775a7391ba4b141fcad0c1f85093",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-delta-review-30.md",
+      "kind": "markdown-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.html",
+      "bytes": 37425,
+      "sha256": "57c444653dc9bb1c8bc1e1346903c77458d8d5e66979335ee9fc952cc8bda27e",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.html",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.md",
+      "bytes": 8561,
+      "sha256": "d3ad3f3655904e3f58872938e6e9e0493a94b359b80e6ae011443c85c3498c6d",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.md",
+      "kind": "markdown-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/chrome155-observation.json",
+      "bytes": 1481,
+      "sha256": "3e034385f2abac97fe470be596988e88c56f815d175b4d4cc36370809301ae08",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/chrome155-observation.json",
+      "kind": "previous-preview-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.html",
+      "bytes": 26230,
+      "sha256": "cdcabe568e5303a66b8df589c6eb7f6b972c96c2363efc5002a5bfc4a6c9300c",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.html",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.md",
+      "bytes": 2146,
+      "sha256": "d7e53160359406987d068ebc357e393006c32066eca48e78c559ccbfaadc9e8c",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.md",
+      "kind": "markdown-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/SHA256SUMS",
+      "bytes": 169,
+      "sha256": "b0263af8035911b609035e68d6a7e58ab7587152201a043e7aac7ee603521d92",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/SHA256SUMS",
+      "kind": "previous-preview-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/cargo-tests.log",
+      "bytes": 19636,
+      "sha256": "283883fb5e4c676428ad45e94aaa5b3f3a87780d08c4c8751e0bbe4fab599410",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/cargo-tests.log",
+      "kind": "previous-preview-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/clippy-text-strict.log",
+      "bytes": 214,
+      "sha256": "b2cdf02368c3b039054f43202705e8ca2efb7b34557aa0439142a518719af5dd",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/clippy-text-strict.log",
+      "kind": "previous-preview-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/clippy.log",
+      "bytes": 282,
+      "sha256": "7e500d683c07296243b0dce3a64986526b4f9397dcbefa387dd8a23adfb7b8c7",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/clippy.log",
+      "kind": "previous-preview-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/diff-check.log",
+      "kind": "previous-preview-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/implementation-review-20.html",
+      "bytes": 31065,
+      "sha256": "7060ed3d0ffd4a87394fde62701884402955c9d9127d8192785c945a68866114",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/implementation-review-20.html",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/implementation-review-20.md",
+      "bytes": 6201,
+      "sha256": "4d3714d4050db035b19239c00742ff9816263035a3491ee28795de4beefc4033",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/implementation-review-20.md",
+      "kind": "markdown-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/pr-delta-review-30.html",
+      "bytes": 35806,
+      "sha256": "5ade4327a085a993425d0b50661ee93b54970fb7cf3c87cdeb39e4fcb71f16f5",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/pr-delta-review-30.html",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/pr-delta-review-30.md",
+      "bytes": 10152,
+      "sha256": "212a1e4863f5fc93260de498ca8603d885d916c5c75dfb63048f732338befd99",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/pr-delta-review-30.md",
+      "kind": "markdown-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/README.html",
+      "bytes": 27798,
+      "sha256": "804e4c2617666530eb188725d273a8468244be6581afcea8da1bf93c0cc2b641",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/README.html",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/README.md",
+      "bytes": 3174,
+      "sha256": "1218fd1c45070ec0818d7801c2783ee9673c2f7ef589125fc3c9fd614ad5036b",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/README.md",
+      "kind": "markdown-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/rustfmt.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/rustfmt.log",
+      "kind": "previous-preview-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/SHA256SUMS",
+      "bytes": 665,
+      "sha256": "47104e2b5d11b8175f1c5d4ba6be6f1626796ce598b5ab601763f37d3b74cc3d",
+      "source": "spec/internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/SHA256SUMS",
+      "kind": "previous-preview-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/android-build-after-verifier-fix.raw.log.gz",
+      "bytes": 1787,
+      "sha256": "5cf2c476bf25ee1597e824491a8ccbc3e138b21269a40ab25a16394c6dc01dd7",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/android-build-after-verifier-fix.raw.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/android-build-final.raw.log.gz",
+      "bytes": 1787,
+      "sha256": "e9d344292affaadeafefe9b5fc5420cdd0d6ae2b36c27fce56a829e32269343f",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/android-build-final.raw.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/android-build-pixel-fixture.raw.log.gz",
+      "bytes": 1787,
+      "sha256": "481ded3bbc7e1779d396d581cec64be1de97b6577f108ca8af2980d24d99aa30",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/android-build-pixel-fixture.raw.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/android-build.raw.log.gz",
+      "bytes": 4173,
+      "sha256": "a8648895581445606349122ef2122b2543c6d95c422ba894d88d5eaec292049c",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/android-build.raw.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/benchmark-test.raw.log.gz",
+      "bytes": 1870,
+      "sha256": "aeb1a10495ea6554e68b103c2d21ca877d23988eda13a2cc4466436bd7258fdc",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/benchmark-test.raw.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/chrome155-agent-browser-observation.raw.json",
+      "bytes": 9206,
+      "sha256": "d8d4c534db64217ceb56a02c8e1c07cbf8fc3e39d13e7ae3e61ce0f27745ce51",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/chrome155-agent-browser-observation.raw.json",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/chrome155-image-ratio-span.png",
+      "bytes": 50133,
+      "sha256": "94c5ac305d7b1ec6948dd6a89722b157fd6d266af8aab34020eb7e1a4993f5db",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/chrome155-image-ratio-span.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/clippy.raw.log.gz",
+      "bytes": 91,
+      "sha256": "8053c8f35e523667e56f8d3d3bd927260b7b98b5d9570adde032d6ca61124371",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/clippy.raw.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/docs-build.raw.log.gz",
+      "bytes": 75108,
+      "sha256": "310ea321afe16a466ea66d0f99012a797f80ec0bda6223c80e5a9561aebe54d6",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/docs-build.raw.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/full-test.raw.log.gz",
+      "bytes": 21867,
+      "sha256": "5b2e0481dccd012dc8a398d83388e28677ac24724b11071b9208dbb8f7d66037",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/full-test.raw.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/implementation-review-20.html",
+      "bytes": 30047,
+      "sha256": "ef432004de0b612a517aa2ab75a5ab2b7dc684ca5e10ec0f6b096d54ac6af83d",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/internal/evidence/c11-4-image-ratio-span-2026-10-19/implementation-review-20.html",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/implementation-review-20.md",
+      "bytes": 5842,
+      "sha256": "b7bbe6ed61cf73ce13e8d6fb395ea3b837ba5d97721aded39b4b7ebd91cfc469",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/implementation-review-20.md",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/ios-build-after-verifier-fix.raw.log.gz",
+      "bytes": 13344,
+      "sha256": "1b7e0d28f51fe4cf90635b44b45b798a41a85b9f390a0016a37929fb95e630f1",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/ios-build-after-verifier-fix.raw.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/ios-build-final.raw.log.gz",
+      "bytes": 13343,
+      "sha256": "ee26e02ed36ab9d2956142ad09d0b050bbcc433d3bda67e1ad16b9dc4a25e82a",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/ios-build-final.raw.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/ios-build-pixel-fixture.raw.log.gz",
+      "bytes": 13401,
+      "sha256": "11cf9bb2fa72e204fae0147d3bc26eb39aa7659207060269f97299c66dbd78c1",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/ios-build-pixel-fixture.raw.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/ios-build.raw.log.gz",
+      "bytes": 19715,
+      "sha256": "434748082786c206488b7a94faaacbca4a44ba00fab3f051b84f1a265eb6515a",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/ios-build.raw.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/javascript-test.raw.log.gz",
+      "bytes": 136,
+      "sha256": "db9dfdf61ced8d5c6edad5807b6cd4aba7c7ea29d892ebcb12fae9ae15721005",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/javascript-test.raw.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/pr-diff-review-30.html",
+      "bytes": 30635,
+      "sha256": "ec3b97156dc50dc2f9337c6ef3b32733bee57277e166899e2d4808f025e2257a",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/internal/evidence/c11-4-image-ratio-span-2026-10-19/pr-diff-review-30.html",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/pr-diff-review-30.md",
+      "bytes": 6277,
+      "sha256": "a51b15c4f63d47d3a389dd76ae808a3012e8272a633252ed69cf2a4f85436391",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/pr-diff-review-30.md",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/README.html",
+      "bytes": 33683,
+      "sha256": "31e0e9a92356790cf4859fc88e45217b20901e0355cdc5a02faea66ceb37f3d4",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/internal/evidence/c11-4-image-ratio-span-2026-10-19/README.html",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/README.md",
+      "bytes": 7874,
+      "sha256": "d487a0aada28dd51de1f9629c2a5973ceb5b05b1fc25077a107cc7e2d665686f",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/README.md",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/run-simulator-matrix.sh",
+      "bytes": 6811,
+      "sha256": "32d269c3eb0b4362a646a4ee57d9d27f82a63b36194dfd6b15037ff6164dfa47",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/run-simulator-matrix.sh",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/android-avd/abi.txt.gz",
+      "bytes": 30,
+      "sha256": "30aa619b52044eecd1300ec0226b5c4d4ce602199ba02d0225f1f0f726c89810",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/android-avd/abi.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/android-avd/api-level.txt.gz",
+      "bytes": 23,
+      "sha256": "d2a231776fdba21f66e8e179f5b41db7646b6ce39c379d4af87a81f206184623",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/android-avd/api-level.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/android-avd/install.log.gz",
+      "bytes": 56,
+      "sha256": "0647b39acf6d84032cdee52112efecf58cadb6c211781eb8aa3285878a8eb6c2",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/android-avd/install.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/android-avd/launch-column-auto-natural-ratio.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/android-avd/launch-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/android-avd/launch-column-target-max-width-clamp.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/android-avd/launch-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/android-avd/runtime-column-auto-natural-ratio.log.gz",
+      "bytes": 2314,
+      "sha256": "2c8336d051fbc2c28f19380ca9b3d944b4d216b677260b7efe0ae6144901a559",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/android-avd/runtime-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/android-avd/runtime-column-target-max-width-clamp.log.gz",
+      "bytes": 2404,
+      "sha256": "edb5282e11d6e96a64b68575a78c27a17368082045550a07779676daf9674a61",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/android-avd/runtime-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/android-avd/screenshot-column-auto-natural-ratio.png",
+      "bytes": 77893,
+      "sha256": "abe93433e158e626c416bb2770ac9bd024562aed6f72ba11be9e5ef93ce95d3e",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/android-avd/screenshot-column-auto-natural-ratio.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/ios-simulator/booted-devices.txt.gz",
+      "bytes": 156,
+      "sha256": "1b612e848d7b9544f6979316dda87caef76bbce3c8ab00a6db9bb587ab267418",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/ios-simulator/booted-devices.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/ios-simulator/install.log.gz",
+      "bytes": 20,
+      "sha256": "59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/ios-simulator/install.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/ios-simulator/launch-column-auto-natural-ratio.log.gz",
+      "bytes": 48,
+      "sha256": "c3e84a99afbea416b3f4f4ae3263aaa4cf36bbf57895e6b04541bba112d8bbe6",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/ios-simulator/launch-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/ios-simulator/model-identifier.txt.gz",
+      "bytes": 31,
+      "sha256": "d8d3da5efcdeda737a6bed4198d4a8732b6e41d8d4067d5ac8c919482428c909",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/ios-simulator/model-identifier.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/ios-simulator/runtime-column-auto-natural-ratio.log.gz",
+      "bytes": 1164,
+      "sha256": "ae706cabd6f0f883c2ed085ca9d8032efe6f7018d92c1b0d7db5dbc03d4cb308",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/ios-simulator/runtime-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/ios-simulator/screenshot-column-auto-natural-ratio.log.gz",
+      "bytes": 195,
+      "sha256": "2352fbb6adf5ffbeed1d7c23bae49d04085a0f6a455aa7d9ab29c4669d449d56",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/ios-simulator/screenshot-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/ios-simulator/screenshot-column-auto-natural-ratio.png",
+      "bytes": 144635,
+      "sha256": "9140a8e040f8cd35282f1ba6c67b7e9afae0df096f6f881c2622ec90e20da828",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132247Z/ios-simulator/screenshot-column-auto-natural-ratio.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/abi.txt.gz",
+      "bytes": 30,
+      "sha256": "30aa619b52044eecd1300ec0226b5c4d4ce602199ba02d0225f1f0f726c89810",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/abi.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/api-level.txt.gz",
+      "bytes": 23,
+      "sha256": "d2a231776fdba21f66e8e179f5b41db7646b6ce39c379d4af87a81f206184623",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/api-level.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/install.log.gz",
+      "bytes": 56,
+      "sha256": "0647b39acf6d84032cdee52112efecf58cadb6c211781eb8aa3285878a8eb6c2",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/install.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/launch-column-auto-natural-ratio.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/launch-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/launch-column-opposite-min-over-max.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/launch-column-opposite-min-over-max.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/launch-column-target-max-width-clamp.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/launch-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/launch-row-target-max-height-clamp.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/launch-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/runtime-column-auto-natural-ratio.log.gz",
+      "bytes": 2308,
+      "sha256": "e184a4702705dff9da8ba765be69b6517891495f2ec83dbabad4034f97e34288",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/runtime-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/runtime-column-opposite-min-over-max.log.gz",
+      "bytes": 2472,
+      "sha256": "d5ebc6e47d26066beac0e312e25e4203b5b1aa66add98093abeba8f143e0e98c",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/runtime-column-opposite-min-over-max.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/runtime-column-target-max-width-clamp.log.gz",
+      "bytes": 2385,
+      "sha256": "abd2bdf9d57ef9d1f4f0e330f9c09cd67f773a88df8f55db444efd6511217404",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/runtime-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/runtime-row-target-max-height-clamp.log.gz",
+      "bytes": 2325,
+      "sha256": "d8938f65f08a565a5c838f46a00e91551cab11ed6f1014d263e52686bbe6a361",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/runtime-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/screenshot-column-auto-natural-ratio.png",
+      "bytes": 77978,
+      "sha256": "59dc96110162e78a5a97579f28fc8de541d23fa13fb1ea17c08728e4f30c2cfb",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/screenshot-column-auto-natural-ratio.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/screenshot-column-target-max-width-clamp.png",
+      "bytes": 77987,
+      "sha256": "cf18e26cb0208e34c14a7c158cc726066d4add2cb7db7b55964a112ea680d6cb",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/screenshot-column-target-max-width-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/screenshot-row-target-max-height-clamp.png",
+      "bytes": 77987,
+      "sha256": "f86bd2847128587727d043e0e3650fa05ac7b390c61e329b47da6fd78fd3f0ed",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/android-avd/screenshot-row-target-max-height-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/booted-devices.txt.gz",
+      "bytes": 156,
+      "sha256": "1b612e848d7b9544f6979316dda87caef76bbce3c8ab00a6db9bb587ab267418",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/booted-devices.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/install.log.gz",
+      "bytes": 20,
+      "sha256": "59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/install.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/launch-column-auto-natural-ratio.log.gz",
+      "bytes": 48,
+      "sha256": "b9234be7d208000188746b6b2fdb1d4a022b29dfa92603cff671103de5967741",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/launch-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/launch-column-target-max-width-clamp.log.gz",
+      "bytes": 48,
+      "sha256": "ecd879b4c2a2bca087ed142fdc34ac42a61583b820e540fdaa2465714e914239",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/launch-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/launch-row-target-max-height-clamp.log.gz",
+      "bytes": 48,
+      "sha256": "615b14353b0ab7b6583bcf552a4de74e6d85f28328c0de6dee9f69e87ab207ec",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/launch-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/model-identifier.txt.gz",
+      "bytes": 31,
+      "sha256": "d8d3da5efcdeda737a6bed4198d4a8732b6e41d8d4067d5ac8c919482428c909",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/model-identifier.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/runtime-column-auto-natural-ratio.log.gz",
+      "bytes": 1164,
+      "sha256": "f1d401b5c8f05fffd0cc8057852677bb9ee0d553cfcacf041765ac949a74fc4c",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/runtime-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/runtime-column-target-max-width-clamp.log.gz",
+      "bytes": 1241,
+      "sha256": "ffe74d5ec9d960ac7413ae1563ef2d0d9ac1b521a1505a927d08713f526e0aa5",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/runtime-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/runtime-row-target-max-height-clamp.log.gz",
+      "bytes": 1171,
+      "sha256": "22bb426952511d6b681926a4feb049792a655b19aa938c19ff13a16ee5043c04",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/runtime-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/screenshot-column-auto-natural-ratio.log.gz",
+      "bytes": 194,
+      "sha256": "2fb6f7261099910af3cb2d6e06fab27d539ad0a3e6df83fe4f6608bc498044d5",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/screenshot-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/screenshot-column-auto-natural-ratio.png",
+      "bytes": 144885,
+      "sha256": "99e3187b4fcf5d6b2a3e4963e0f7e2c67912ec4f87a01c03cb98515c9efc4b84",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/screenshot-column-auto-natural-ratio.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/screenshot-column-target-max-width-clamp.log.gz",
+      "bytes": 199,
+      "sha256": "cb8aeaa5be91f60e5bd51cae40202bfa97a703bc078b57caeb67f5ac7485007b",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/screenshot-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/screenshot-column-target-max-width-clamp.png",
+      "bytes": 144828,
+      "sha256": "f401941fd5dd306109430f6cc05529b73ab5e179e77c2f35b9617ed0d46b7652",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/screenshot-column-target-max-width-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/screenshot-row-target-max-height-clamp.log.gz",
+      "bytes": 197,
+      "sha256": "c5e21c74fe7dc395ef0085d5a1e8c52a4d6c5c51f93c6ad5e885fe90393a78b2",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/screenshot-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/screenshot-row-target-max-height-clamp.png",
+      "bytes": 145010,
+      "sha256": "c9bd3481e3c889de4bbf45310ae965c6ca668307f952829dfc1dcf6c176b64ca",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132430Z/ios-simulator/screenshot-row-target-max-height-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/abi.txt.gz",
+      "bytes": 30,
+      "sha256": "30aa619b52044eecd1300ec0226b5c4d4ce602199ba02d0225f1f0f726c89810",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/abi.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/api-level.txt.gz",
+      "bytes": 23,
+      "sha256": "d2a231776fdba21f66e8e179f5b41db7646b6ce39c379d4af87a81f206184623",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/api-level.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/install.log.gz",
+      "bytes": 56,
+      "sha256": "0647b39acf6d84032cdee52112efecf58cadb6c211781eb8aa3285878a8eb6c2",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/install.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/launch-column-auto-natural-ratio.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/launch-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/launch-column-border-box-transfer.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/launch-column-border-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/launch-column-content-box-transfer.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/launch-column-content-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/launch-column-opposite-min-over-max.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/launch-column-opposite-min-over-max.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/launch-column-target-max-width-clamp.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/launch-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/launch-column-target-min-width-clamp.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/launch-column-target-min-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/launch-row-target-max-height-clamp.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/launch-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/launch-row-transfer-input-capped-by-fixed-column-span.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/launch-row-transfer-input-capped-by-fixed-column-span.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/runtime-column-auto-natural-ratio.log.gz",
+      "bytes": 2441,
+      "sha256": "cc1c8be8375dd9bd152db81bbff66f2b252852dacc9f71f8bc8b42634579659c",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/runtime-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/runtime-column-border-box-transfer.log.gz",
+      "bytes": 2521,
+      "sha256": "96a3be679b6a73c8ca95ec9f95147ba57568ad655d6751692009e32cff110201",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/runtime-column-border-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/runtime-column-content-box-transfer.log.gz",
+      "bytes": 2524,
+      "sha256": "0cedcee85bbf604a05680dd2448fda8202fa11fca8e3bb0fd6b75cfabbdd8c1d",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/runtime-column-content-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/runtime-column-opposite-min-over-max.log.gz",
+      "bytes": 2382,
+      "sha256": "4cd4163e58de59f9d28e75965394dd77fdd0ca282479200b864a46959c4fb1c3",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/runtime-column-opposite-min-over-max.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/runtime-column-target-max-width-clamp.log.gz",
+      "bytes": 2516,
+      "sha256": "9db4a8578ddc01388e728bbf1d975aba80d81ce1cd7541733f09b129b0cbc68d",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/runtime-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/runtime-column-target-min-width-clamp.log.gz",
+      "bytes": 2293,
+      "sha256": "0ef7350873ffb8ea75785db2b9db297fb4b0665a00df0449fcee06120885560d",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/runtime-column-target-min-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/runtime-row-target-max-height-clamp.log.gz",
+      "bytes": 2315,
+      "sha256": "d452e36bac93f8cfe618b7c6eac2e073844639103c0226e9f99c1c915cf4952c",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/runtime-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/runtime-row-transfer-input-capped-by-fixed-column-span.log.gz",
+      "bytes": 291,
+      "sha256": "3a9602eeb23c95b0196f98233a9fa391e811898ad993c89e811776d7063f482c",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/runtime-row-transfer-input-capped-by-fixed-column-span.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/screenshot-column-auto-natural-ratio.png",
+      "bytes": 78216,
+      "sha256": "fa824d12aa4d16aa381238c7df7e8fe8a848674c4f05b0dee6536eb33df7ea96",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/screenshot-column-auto-natural-ratio.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/screenshot-column-border-box-transfer.png",
+      "bytes": 78357,
+      "sha256": "09b31233ad2f48e2e41ecf9e1b62a6945d60775347ea076c4965bdf328c4d52a",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/screenshot-column-border-box-transfer.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/screenshot-column-content-box-transfer.png",
+      "bytes": 78342,
+      "sha256": "68afbf4692fb84d136195ff27220964a4e81b077a8a2e6eefb28974bbffb3c22",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/screenshot-column-content-box-transfer.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/screenshot-column-opposite-min-over-max.png",
+      "bytes": 78356,
+      "sha256": "547bf62cc1700f94d3bf94eaab0832af2ac5084e783f9ae4603d4601e5ee6a13",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/screenshot-column-opposite-min-over-max.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/screenshot-column-target-max-width-clamp.png",
+      "bytes": 78356,
+      "sha256": "1f71d8f6def7e07b81a2cce2f9ac4e17f2722e9aea877e7a564f700dce540427",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/screenshot-column-target-max-width-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/screenshot-column-target-min-width-clamp.png",
+      "bytes": 78341,
+      "sha256": "00f356aa39df611a95a1074364299b2ff520c8f980bdefde7fdc34bff702904c",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/screenshot-column-target-min-width-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/screenshot-row-target-max-height-clamp.png",
+      "bytes": 78356,
+      "sha256": "db9f85e41e4346db055913c01b50423234078efc5a3416d88b7709939f0f8e5a",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/android-avd/screenshot-row-target-max-height-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/booted-devices.txt.gz",
+      "bytes": 156,
+      "sha256": "1b612e848d7b9544f6979316dda87caef76bbce3c8ab00a6db9bb587ab267418",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/booted-devices.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/install.log.gz",
+      "bytes": 20,
+      "sha256": "59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/install.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/launch-column-auto-natural-ratio.log.gz",
+      "bytes": 48,
+      "sha256": "6eca522c60887842477f2c00e9f2f814430bae50caab27f9292ca0c8d4b746ef",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/launch-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/launch-column-border-box-transfer.log.gz",
+      "bytes": 48,
+      "sha256": "d0a027433402c248ddfcd12cffb9b7233e323c725ccd2ff5e3e17414877824fc",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/launch-column-border-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/launch-column-content-box-transfer.log.gz",
+      "bytes": 48,
+      "sha256": "0064817807aa8d1f74eb037b747107449b975169562a0bcc1a39d166f4796635",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/launch-column-content-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/launch-column-opposite-min-over-max.log.gz",
+      "bytes": 48,
+      "sha256": "82a43d2c5e90467fcadc4c13c7c80dd78fe930975021c8771df40d0e3b2b9028",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/launch-column-opposite-min-over-max.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/launch-column-target-max-width-clamp.log.gz",
+      "bytes": 48,
+      "sha256": "dd495983793b134c7c389bcbc8849155b25904905aba666ad84c48a61eea2185",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/launch-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/launch-column-target-min-width-clamp.log.gz",
+      "bytes": 48,
+      "sha256": "700111e8572e23d875c70ef139085cb48ff5701b3b4c6559ab0c26273c438728",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/launch-column-target-min-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/launch-row-target-max-height-clamp.log.gz",
+      "bytes": 48,
+      "sha256": "489c501545dee5dec25b85beb904877af6f000e63aa89f54cffa501d5ec84f2b",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/launch-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/model-identifier.txt.gz",
+      "bytes": 31,
+      "sha256": "d8d3da5efcdeda737a6bed4198d4a8732b6e41d8d4067d5ac8c919482428c909",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/model-identifier.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/runtime-column-auto-natural-ratio.log.gz",
+      "bytes": 1164,
+      "sha256": "42e0b2f1a5032a8afd271c50ee9c090b9f537f5bc2f65d62ec85fb148a93e431",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/runtime-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/runtime-column-border-box-transfer.log.gz",
+      "bytes": 1248,
+      "sha256": "a0f53461362b4755c4ddff140a7a436ce093315669e147fc51b5a4b476136ea3",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/runtime-column-border-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/runtime-column-content-box-transfer.log.gz",
+      "bytes": 1247,
+      "sha256": "b23e8e423e849a1845a2a87dd4fa9d0833742b140f4ffabefb12feace37a4658",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/runtime-column-content-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/runtime-column-opposite-min-over-max.log.gz",
+      "bytes": 1239,
+      "sha256": "19a74e100c50520d475b2c2f20386d2f30f8d39d1cb698fd2347814c2b3f0f54",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/runtime-column-opposite-min-over-max.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/runtime-column-target-max-width-clamp.log.gz",
+      "bytes": 1243,
+      "sha256": "2084d0a22ea1f85a9a75712f9ad0689ba6f6c2697d3f135db8779cc95d21681c",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/runtime-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/runtime-column-target-min-width-clamp.log.gz",
+      "bytes": 1155,
+      "sha256": "b33a47962d31d3603011a1b0c284b39465659544e044f89cdf20a161ef5eabd0",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/runtime-column-target-min-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/runtime-row-target-max-height-clamp.log.gz",
+      "bytes": 1168,
+      "sha256": "80cb9fbf24c12e570e411cad80e8afffa6d7ee61a21d0eb915861dcb6a4f7e97",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/runtime-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-auto-natural-ratio.log.gz",
+      "bytes": 195,
+      "sha256": "d4d98e37bd9154c5dc4d5291f969123967ed6b803124fa46fc0cd700b7bbd67c",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-auto-natural-ratio.png",
+      "bytes": 145630,
+      "sha256": "774a231c628e66e05f21e7e39341e5c5cafca8c5ec0dfc1fd39699c9cd749946",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-auto-natural-ratio.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-border-box-transfer.log.gz",
+      "bytes": 197,
+      "sha256": "a7a0dbf004ffa78aec29d510b7ff2e0c54452c6f79dc8ed37b4640db921472f0",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-border-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-border-box-transfer.png",
+      "bytes": 145630,
+      "sha256": "774a231c628e66e05f21e7e39341e5c5cafca8c5ec0dfc1fd39699c9cd749946",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-border-box-transfer.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-content-box-transfer.log.gz",
+      "bytes": 197,
+      "sha256": "b6692bbe9c11fe7f303ab767520222d350383b083a49611a8d7fdff2adf31aa4",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-content-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-content-box-transfer.png",
+      "bytes": 145665,
+      "sha256": "8d873595151d276586c4e42951cb2f6c9659596943d47335dd1dcb5e405abcdb",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-content-box-transfer.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-opposite-min-over-max.log.gz",
+      "bytes": 197,
+      "sha256": "cc3f239e8f3f0195313866eea124b79f0339e7ba50fb8d1f7abee6d0e706921b",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-opposite-min-over-max.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-opposite-min-over-max.png",
+      "bytes": 145842,
+      "sha256": "254ea7587ef7acb42d99d0ac5592131b718d783ecdd5d4662bb1fcdd7cc1794c",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-opposite-min-over-max.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-target-max-width-clamp.log.gz",
+      "bytes": 199,
+      "sha256": "20b529b3b85447aa62b3bc928ed57986683542b0d9f1ee23e89706796dc8d6ab",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-target-max-width-clamp.png",
+      "bytes": 145556,
+      "sha256": "c387042e226816ba0342dffa89109d99ce9379b185435798086f13e890a5b2ac",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-target-max-width-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-target-min-width-clamp.log.gz",
+      "bytes": 199,
+      "sha256": "6301a0bd090021d2dedf26ebf5f3904ed3b4642b4daca5f9e959deaa3216ad38",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-target-min-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-target-min-width-clamp.png",
+      "bytes": 145843,
+      "sha256": "29e1b871dbee91e17af3f8ac68cad0502630d9bb8ccdc86eb727aac22bbfe01b",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-column-target-min-width-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-row-target-max-height-clamp.log.gz",
+      "bytes": 198,
+      "sha256": "48cbbaa90536a66258eba7e5022c1b3bc946e971d4c97cc71fa9d6a4bcc801aa",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-row-target-max-height-clamp.png",
+      "bytes": 145760,
+      "sha256": "137fb7e184c08ef50ebdf8e7c080b33267d3ddf00ab7a047cfb53b36ff7ca5df",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132556Z/ios-simulator/screenshot-row-target-max-height-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/abi.txt.gz",
+      "bytes": 30,
+      "sha256": "30aa619b52044eecd1300ec0226b5c4d4ce602199ba02d0225f1f0f726c89810",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/abi.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/api-level.txt.gz",
+      "bytes": 23,
+      "sha256": "d2a231776fdba21f66e8e179f5b41db7646b6ce39c379d4af87a81f206184623",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/api-level.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/install.log.gz",
+      "bytes": 56,
+      "sha256": "0647b39acf6d84032cdee52112efecf58cadb6c211781eb8aa3285878a8eb6c2",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/install.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/launch-column-auto-natural-ratio.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/launch-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/launch-column-border-box-transfer.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/launch-column-border-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/launch-column-content-box-transfer.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/launch-column-content-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/launch-column-opposite-min-over-max.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/launch-column-opposite-min-over-max.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/launch-column-target-max-width-clamp.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/launch-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/launch-column-target-min-width-clamp.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/launch-column-target-min-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/launch-row-target-max-height-clamp.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/launch-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/launch-row-transfer-input-capped-by-fixed-column-span.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/launch-row-transfer-input-capped-by-fixed-column-span.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/runtime-column-auto-natural-ratio.log.gz",
+      "bytes": 2315,
+      "sha256": "b86dcad078d0c9f0a8e8786c05f98e79ebd1e32d8f9088eebba8ecb9d0651161",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/runtime-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/runtime-column-border-box-transfer.log.gz",
+      "bytes": 2523,
+      "sha256": "5a3b42db5e867869e2267c6af58578ba2d11d769342d389543d9fda688ebdee0",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/runtime-column-border-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/runtime-column-content-box-transfer.log.gz",
+      "bytes": 2378,
+      "sha256": "1c11f6b3fadff16c18b696d3af090cc27e6e5c4762abbf8117858b225fcc019a",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/runtime-column-content-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/runtime-column-opposite-min-over-max.log.gz",
+      "bytes": 2384,
+      "sha256": "8e1b408ab74a466bebd9990c9ea2e7c9f2872759a102a929810a118aa3e21186",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/runtime-column-opposite-min-over-max.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/runtime-column-target-max-width-clamp.log.gz",
+      "bytes": 2372,
+      "sha256": "e261ffeeedd406b1a398a86d488d9a1e318b897fceb8b9bbc31e9633d86c7159",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/runtime-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/runtime-column-target-min-width-clamp.log.gz",
+      "bytes": 2289,
+      "sha256": "df888bbcad170d2cecc47d75a403c764f2b15635d364226143b60cf5a6289324",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/runtime-column-target-min-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/runtime-row-target-max-height-clamp.log.gz",
+      "bytes": 2327,
+      "sha256": "33f90c61455d7fad4657bc506733cdd4ca215dbced281c8c5d1e8c4f82375bf8",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/runtime-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/runtime-row-transfer-input-capped-by-fixed-column-span.log.gz",
+      "bytes": 2919,
+      "sha256": "b94daacb8ae43f631263a645a148fc4df4364a76efcb50e883c06f9078c7e305",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/runtime-row-transfer-input-capped-by-fixed-column-span.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/screenshot-column-auto-natural-ratio.png",
+      "bytes": 78494,
+      "sha256": "d360c2b314d295b19e22b0515d1a46549792bf934e9b53672f4a8b248d988d20",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/screenshot-column-auto-natural-ratio.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/screenshot-column-border-box-transfer.png",
+      "bytes": 78387,
+      "sha256": "32d1e755eae576b76bde90128bbac09bd3afa0360d4fd313d07de026e274f65c",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/screenshot-column-border-box-transfer.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/screenshot-column-content-box-transfer.png",
+      "bytes": 78387,
+      "sha256": "3a780a43168ad7cffcded52640805da4c3b2054e31759331903f13cafa02ac15",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/screenshot-column-content-box-transfer.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/screenshot-column-opposite-min-over-max.png",
+      "bytes": 78513,
+      "sha256": "660dfa449771abb0623cc526f7994a9d2f21d63f82934b0fffe9b66254b3fd53",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/screenshot-column-opposite-min-over-max.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/screenshot-column-target-max-width-clamp.png",
+      "bytes": 78511,
+      "sha256": "3f4900a711c0f4a00f5107a676c9b3131bd623e474a8b3b4ff372ccd18305941",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/screenshot-column-target-max-width-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/screenshot-column-target-min-width-clamp.png",
+      "bytes": 78386,
+      "sha256": "559578053e20ead929b9f2e0d78aeaa0fd5a13d497e97a222579161536548657",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/screenshot-column-target-min-width-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/screenshot-row-target-max-height-clamp.png",
+      "bytes": 78512,
+      "sha256": "9e05e6f96207b437dd736a93faa19c0e6e49bfce78613ce5e43c897ed3383ba3",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/android-avd/screenshot-row-target-max-height-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/booted-devices.txt.gz",
+      "bytes": 156,
+      "sha256": "1b612e848d7b9544f6979316dda87caef76bbce3c8ab00a6db9bb587ab267418",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/booted-devices.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/install.log.gz",
+      "bytes": 20,
+      "sha256": "59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/install.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/launch-column-auto-natural-ratio.log.gz",
+      "bytes": 48,
+      "sha256": "10a6c835b9a3dfdec42ddb2efb263c127e05a495a8ea272ea30b100b50693820",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/launch-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/launch-column-border-box-transfer.log.gz",
+      "bytes": 48,
+      "sha256": "ca5572e5f03ca5b897c0b8298600531945037effad3621e8d6e31af8087f016a",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/launch-column-border-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/launch-column-content-box-transfer.log.gz",
+      "bytes": 48,
+      "sha256": "54bf9d466a995b7cc15cbf5db512b45891f83b35ed72507c4fcd66413551eb1e",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/launch-column-content-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/launch-column-opposite-min-over-max.log.gz",
+      "bytes": 48,
+      "sha256": "9db1bac9b20456f9f3691b5547bf92919591ca9ffb948e55858a598266dbcfa3",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/launch-column-opposite-min-over-max.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/launch-column-target-max-width-clamp.log.gz",
+      "bytes": 48,
+      "sha256": "c4e441b60ceaf49c87161bde1d13c423b22c7cf56616112058a616e7fbf4d7fb",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/launch-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/launch-column-target-min-width-clamp.log.gz",
+      "bytes": 48,
+      "sha256": "238f0c3a94a19b4c7cdb4125c98abb6d062a303920341427cfeb7ecb11f4fa74",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/launch-column-target-min-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/launch-row-target-max-height-clamp.log.gz",
+      "bytes": 48,
+      "sha256": "ade8c450129a5b9b8597859996fa931b1e09dff062d57b3efd595d9e4949226c",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/launch-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/model-identifier.txt.gz",
+      "bytes": 31,
+      "sha256": "d8d3da5efcdeda737a6bed4198d4a8732b6e41d8d4067d5ac8c919482428c909",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/model-identifier.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/runtime-column-auto-natural-ratio.log.gz",
+      "bytes": 1164,
+      "sha256": "d2e5082b3d8e917e79f0a6a2a5aebaa1217c2d4a3c355deef5e6a36b0540b000",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/runtime-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/runtime-column-border-box-transfer.log.gz",
+      "bytes": 1247,
+      "sha256": "af95b8b4de01a8e7c787ad1c75c4f532bc783776cd16f15bf4a85e3933263e91",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/runtime-column-border-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/runtime-column-content-box-transfer.log.gz",
+      "bytes": 1246,
+      "sha256": "684fb90c87cf9c770dd42ffdfdda651f4c0bc598cc381d8da2eb973bc8003031",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/runtime-column-content-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/runtime-column-opposite-min-over-max.log.gz",
+      "bytes": 1245,
+      "sha256": "2607c10bfa9682d316e15d192bb7bb208f02afbef905e57deec2ea0178b0ed36",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/runtime-column-opposite-min-over-max.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/runtime-column-target-max-width-clamp.log.gz",
+      "bytes": 1238,
+      "sha256": "dadaf4d5b675f20581a12e4c3b34f57cf768f91185d4ec31df1c068d4fca0d6a",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/runtime-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/runtime-column-target-min-width-clamp.log.gz",
+      "bytes": 1159,
+      "sha256": "d75c3972ca6761a40fb5af74042c78dcd84a8c781e3aa4d430df98f8cdfdfd6b",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/runtime-column-target-min-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/runtime-row-target-max-height-clamp.log.gz",
+      "bytes": 1172,
+      "sha256": "6d3672952b0d96d9f52946a772234b30f8b88171f2cf3e1b0c125786ab936d15",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/runtime-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-auto-natural-ratio.log.gz",
+      "bytes": 195,
+      "sha256": "828b3a24435cf8c0b07147df6400206fc0fe3860e3afd84b22539f5a80909250",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-auto-natural-ratio.png",
+      "bytes": 145572,
+      "sha256": "542d602fc97f2691ad81aa49e5d2ebfaf515bf3368e6476466e4fd539eadef7c",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-auto-natural-ratio.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-border-box-transfer.log.gz",
+      "bytes": 198,
+      "sha256": "349a978da3c938e80118b613004216bbb7d2f3f2896920da570ffe404892c74b",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-border-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-border-box-transfer.png",
+      "bytes": 145551,
+      "sha256": "270d1e6781c62f8b42728efcf97edbea518c9d69f13cba98ea769051b6cf341c",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-border-box-transfer.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-content-box-transfer.log.gz",
+      "bytes": 197,
+      "sha256": "43ba5bb680159e8d751239073a87a8f455b0972a2b37f473ab30832d90b4bd16",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-content-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-content-box-transfer.png",
+      "bytes": 145585,
+      "sha256": "0accdf15193c50b33af72375518bdedf508ff737be9a6e0bf06e5f9e768d0f05",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-content-box-transfer.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-opposite-min-over-max.log.gz",
+      "bytes": 197,
+      "sha256": "8ee1c3e0204e0e238785c461fdd9346fc795f3ead97c86cc4610bd632de8a6b2",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-opposite-min-over-max.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-opposite-min-over-max.png",
+      "bytes": 145758,
+      "sha256": "05163285090eb62413b40eac173824025f19dcaa85ff0e1bdd94d588f80aeee9",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-opposite-min-over-max.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-target-max-width-clamp.log.gz",
+      "bytes": 199,
+      "sha256": "801d68be0c03521a8e3ca1cc9bf69260f90a058b07ae1374699f025c3b34068e",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-target-max-width-clamp.png",
+      "bytes": 145509,
+      "sha256": "f8c55022e8620c2614aa13a927c4ff48c7c26719294b61fbe650dd7a78aa05cc",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-target-max-width-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-target-min-width-clamp.log.gz",
+      "bytes": 198,
+      "sha256": "fefbd529b6c7ec673429abb4f90348aad94a33e58e6a8fd205bf18f345834012",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-target-min-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-target-min-width-clamp.png",
+      "bytes": 145760,
+      "sha256": "3b7f47dfbf03734c701d265195fc13b97dae097c6873f296baab70278ae31e0b",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-column-target-min-width-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-row-target-max-height-clamp.log.gz",
+      "bytes": 198,
+      "sha256": "6df6f3de91e1a08c420d2b1da7c02f5a212b52b6e1d79e75fc1d41c329e7071c",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-row-target-max-height-clamp.png",
+      "bytes": 145696,
+      "sha256": "a2ac6bef3d1aac01ba064067fdf20b2d33938e9fe8ce291103785a9682259acd",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132837Z/ios-simulator/screenshot-row-target-max-height-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/abi.txt.gz",
+      "bytes": 30,
+      "sha256": "30aa619b52044eecd1300ec0226b5c4d4ce602199ba02d0225f1f0f726c89810",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/abi.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/api-level.txt.gz",
+      "bytes": 23,
+      "sha256": "d2a231776fdba21f66e8e179f5b41db7646b6ce39c379d4af87a81f206184623",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/api-level.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/install.log.gz",
+      "bytes": 56,
+      "sha256": "0647b39acf6d84032cdee52112efecf58cadb6c211781eb8aa3285878a8eb6c2",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/install.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/launch-column-auto-natural-ratio.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/launch-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/launch-column-border-box-transfer.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/launch-column-border-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/launch-column-content-box-transfer.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/launch-column-content-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/launch-column-opposite-min-over-max.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/launch-column-opposite-min-over-max.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/launch-column-target-max-width-clamp.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/launch-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/launch-column-target-min-width-clamp.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/launch-column-target-min-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/launch-column-transfer-input-capped-by-fixed-row-span.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/launch-column-transfer-input-capped-by-fixed-row-span.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/launch-row-target-max-height-clamp.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/launch-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/launch-row-transfer-input-capped-by-fixed-column-span.log.gz",
+      "bytes": 92,
+      "sha256": "cb7d15e258bc6144eae3ce0f992855ce3418ace24a5bb59f32170d91717d6e88",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/launch-row-transfer-input-capped-by-fixed-column-span.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/runtime-column-auto-natural-ratio.log.gz",
+      "bytes": 2456,
+      "sha256": "b085590e36d362480dbf2ffb87160d7840ae392dc696f25769392c31617cbb55",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/runtime-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/runtime-column-border-box-transfer.log.gz",
+      "bytes": 2528,
+      "sha256": "8b0259105a9b3e54abf417ee74c5e2e38f979785a46c80469ecd74126b2a1a00",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/runtime-column-border-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/runtime-column-content-box-transfer.log.gz",
+      "bytes": 2379,
+      "sha256": "6f2969d73acc15bfdc259197d688fb215f83358bb81eb372b62a5e96823f354f",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/runtime-column-content-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/runtime-column-opposite-min-over-max.log.gz",
+      "bytes": 2377,
+      "sha256": "f6dfb96f34c1bfe7adab5b6bc3386cf320004fe2321be23ff1a4a966b758a990",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/runtime-column-opposite-min-over-max.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/runtime-column-target-max-width-clamp.log.gz",
+      "bytes": 2532,
+      "sha256": "be0e75e0ed70d6c542e2c56a7c6b426b3488176c73a3a63723213d822486ad2d",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/runtime-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/runtime-column-target-min-width-clamp.log.gz",
+      "bytes": 2439,
+      "sha256": "0d65780c377de60435ec329d29c270994bc80b3b643a94e12a45e4d35f270d43",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/runtime-column-target-min-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/runtime-column-transfer-input-capped-by-fixed-row-span.log.gz",
+      "bytes": 2834,
+      "sha256": "976e152c0f7be4ea1fc8d605f00a5b37b437db79c7d6e1e2b11fa684baf91de7",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/runtime-column-transfer-input-capped-by-fixed-row-span.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/runtime-row-target-max-height-clamp.log.gz",
+      "bytes": 2321,
+      "sha256": "7ab654836bdcf64d1115679aff9f90d7ea87d787492714dc01620dedf446464a",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/runtime-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/runtime-row-transfer-input-capped-by-fixed-column-span.log.gz",
+      "bytes": 2783,
+      "sha256": "17ccaf56320ee262fd5e2de305d6b9f29f9d2b5a7e77e89a89efc6aca93979d6",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/runtime-row-transfer-input-capped-by-fixed-column-span.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/screenshot-column-auto-natural-ratio.png",
+      "bytes": 78266,
+      "sha256": "54233866123c404ef808adf27beb02927ce09af2a82a2bf2424bc61cba7800e2",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/screenshot-column-auto-natural-ratio.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/screenshot-column-border-box-transfer.png",
+      "bytes": 78168,
+      "sha256": "f80b91c4c2bdd3b6559d823529e7f64ae83e3657b33eaf2744a137fc40b317e2",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/screenshot-column-border-box-transfer.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/screenshot-column-content-box-transfer.png",
+      "bytes": 78163,
+      "sha256": "deb10df8d06f1a43b0967c31b5345fc61e5af0dbf4471f2e1193c60b18d5f218",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/screenshot-column-content-box-transfer.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/screenshot-column-opposite-min-over-max.png",
+      "bytes": 78167,
+      "sha256": "7f6e22e9d06e36028108d32a3323ba8cfa7bbeb8fed31acd7c685e332a121dd3",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/screenshot-column-opposite-min-over-max.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/screenshot-column-target-max-width-clamp.png",
+      "bytes": 78284,
+      "sha256": "3660afa4105a56122678f7c0d83991834b9e5856dbf2a0a8032d9837fdbd5d72",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/screenshot-column-target-max-width-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/screenshot-column-target-min-width-clamp.png",
+      "bytes": 78163,
+      "sha256": "f713b2a17143b48fb85b3ca18ec89caf5e1b4938209ce633467fb2ae77acf28e",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/screenshot-column-target-min-width-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/screenshot-column-transfer-input-capped-by-fixed-row-span.png",
+      "bytes": 78139,
+      "sha256": "f948abc873c0f4bf04b57b695b832ad3ba2f8c2594756af6ef258718f6cafa05",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/screenshot-column-transfer-input-capped-by-fixed-row-span.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/screenshot-row-target-max-height-clamp.png",
+      "bytes": 78166,
+      "sha256": "6e1623971107f22c1a6560bfc0f53db7c93f90a692bfc559caaec8ae862bcc7c",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/screenshot-row-target-max-height-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/screenshot-row-transfer-input-capped-by-fixed-column-span.png",
+      "bytes": 78140,
+      "sha256": "f83314c65747ef30c1cd9a87444450e4fb8f22dad7c964101d9fe25a64a39459",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/android-avd/screenshot-row-transfer-input-capped-by-fixed-column-span.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/booted-devices.txt.gz",
+      "bytes": 156,
+      "sha256": "1b612e848d7b9544f6979316dda87caef76bbce3c8ab00a6db9bb587ab267418",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/booted-devices.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/install.log.gz",
+      "bytes": 20,
+      "sha256": "59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/install.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/launch-column-auto-natural-ratio.log.gz",
+      "bytes": 48,
+      "sha256": "241b9fc27fcd855fa22159cfcd5a3bad57a375938c9990b504b6ec41156cf665",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/launch-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/launch-column-border-box-transfer.log.gz",
+      "bytes": 48,
+      "sha256": "a6f42b7d57bd6dc48f8140b7cab5d276883d3f44beca62a11b154daeff2668e0",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/launch-column-border-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/launch-column-content-box-transfer.log.gz",
+      "bytes": 48,
+      "sha256": "006270b0b90fb08b58a56f35d44394edeb90c9b63940169ced7255028ccf8b5a",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/launch-column-content-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/launch-column-opposite-min-over-max.log.gz",
+      "bytes": 48,
+      "sha256": "78ac950b76bce7fd69e574ee616b6d109f94a664682b9cdfe9aade372d3ff7e6",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/launch-column-opposite-min-over-max.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/launch-column-target-max-width-clamp.log.gz",
+      "bytes": 48,
+      "sha256": "0f9c72b27f0e79fce65b5040f318db89e82789eabac6eb8fddead9c7853c7a90",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/launch-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/launch-column-target-min-width-clamp.log.gz",
+      "bytes": 48,
+      "sha256": "d152141881b7ec56f1917b1bfefa73a1c8f3cc9d703c635573bce84142a2ad2c",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/launch-column-target-min-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/launch-column-transfer-input-capped-by-fixed-row-span.log.gz",
+      "bytes": 48,
+      "sha256": "70be3a57733d622e9b11257a0f1766e272499d0297897de589b5ec8f9fa4f6c0",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/launch-column-transfer-input-capped-by-fixed-row-span.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/launch-row-target-max-height-clamp.log.gz",
+      "bytes": 48,
+      "sha256": "af901fe20acd9cd7475fc7f4b0b232f55a07329561e49b4ff4026c93ed001490",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/launch-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/launch-row-transfer-input-capped-by-fixed-column-span.log.gz",
+      "bytes": 48,
+      "sha256": "e2b8210419ad26a2b015949865358d488d559ebdec28d013ba91e1b6d240f4a2",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/launch-row-transfer-input-capped-by-fixed-column-span.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/model-identifier.txt.gz",
+      "bytes": 31,
+      "sha256": "d8d3da5efcdeda737a6bed4198d4a8732b6e41d8d4067d5ac8c919482428c909",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/model-identifier.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/runtime-column-auto-natural-ratio.log.gz",
+      "bytes": 1161,
+      "sha256": "a4a8b8c82b22a117873aa9a98816355ef1776aeacd7cb2ddb716dc1d63a4c4de",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/runtime-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/runtime-column-border-box-transfer.log.gz",
+      "bytes": 1244,
+      "sha256": "2575df99267db28fccca3db5e460dd684d683ee53af2b3796d18b40d3645f486",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/runtime-column-border-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/runtime-column-content-box-transfer.log.gz",
+      "bytes": 1247,
+      "sha256": "3569a8b4d1739c52f5432568d488c6f70a3a26e77ce3b5e5803ba14349de3d6e",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/runtime-column-content-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/runtime-column-opposite-min-over-max.log.gz",
+      "bytes": 1241,
+      "sha256": "3419f33ba84c2db4d03520758ac0748122bf5139499d91cdf0da0d69e67b63f1",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/runtime-column-opposite-min-over-max.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/runtime-column-target-max-width-clamp.log.gz",
+      "bytes": 1242,
+      "sha256": "e0d9e3da5c61892ec15b20b928af2fca09a2add08aa3fa4dec3933d5754d5d6f",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/runtime-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/runtime-column-target-min-width-clamp.log.gz",
+      "bytes": 1158,
+      "sha256": "415014822a7ae3c48e9dd123d30723c8d1aca8f2793258a03afc77318d4559a0",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/runtime-column-target-min-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/runtime-column-transfer-input-capped-by-fixed-row-span.log.gz",
+      "bytes": 1607,
+      "sha256": "f87e983f6fdad5ce6308b1951add89eacb755f7699936a3fc97136c7203981b3",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/runtime-column-transfer-input-capped-by-fixed-row-span.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/runtime-row-target-max-height-clamp.log.gz",
+      "bytes": 1170,
+      "sha256": "ff139513278021aa372773d643358d9ef959432b6e7f2b3c4a953a9cdc5c28b7",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/runtime-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/runtime-row-transfer-input-capped-by-fixed-column-span.log.gz",
+      "bytes": 1535,
+      "sha256": "21f9ddec53542b7497d1b4bf97c5d4290486acce1406310231a5c2cc613b9600",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/runtime-row-transfer-input-capped-by-fixed-column-span.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-auto-natural-ratio.log.gz",
+      "bytes": 195,
+      "sha256": "e2ba8621f4cabe59833675e7cf363bd8ad542001f23a861ff38cfe59691570c2",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-auto-natural-ratio.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-auto-natural-ratio.png",
+      "bytes": 145551,
+      "sha256": "270d1e6781c62f8b42728efcf97edbea518c9d69f13cba98ea769051b6cf341c",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-auto-natural-ratio.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-border-box-transfer.log.gz",
+      "bytes": 197,
+      "sha256": "b3ba4cbcca3102d1be5c78ac9cfdc530e29aaed5a03cfbf8f7011e97ee9301fd",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-border-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-border-box-transfer.png",
+      "bytes": 144728,
+      "sha256": "060814271a890357cab83eea64d5ef43edeb3965a84075b1fb403190c682abe6",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-border-box-transfer.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-content-box-transfer.log.gz",
+      "bytes": 197,
+      "sha256": "265fd545c25df2b4b7abc0c68a48284d2c8bc28d4c7ded8a83a341168b82fb56",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-content-box-transfer.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-content-box-transfer.png",
+      "bytes": 144764,
+      "sha256": "b00ac5539723d97e7b0d962a754c3da3695da957698ecf0f0c32d4bb57f3f97f",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-content-box-transfer.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-opposite-min-over-max.log.gz",
+      "bytes": 197,
+      "sha256": "bb6f687312c2ea8c4f8897560ad0bd16f5feef7ff49ebd328edf7135b3969165",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-opposite-min-over-max.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-opposite-min-over-max.png",
+      "bytes": 144937,
+      "sha256": "f528d14bda239030017f0e2678ea45f00d95e0996ae83bd75ab5e225c75f2f4c",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-opposite-min-over-max.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-target-max-width-clamp.log.gz",
+      "bytes": 199,
+      "sha256": "e20791cb3187c04f50443e1dcf771ff69d020b9bf18027b2e6b33cca321f7ec5",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-target-max-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-target-max-width-clamp.png",
+      "bytes": 144671,
+      "sha256": "4936a88275c5b4b4523471bec483bbfc6c288166958d7bdf0a1cdcf10168e483",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-target-max-width-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-target-min-width-clamp.log.gz",
+      "bytes": 198,
+      "sha256": "0c32b1350236eee2542889ee6de725bf70c7f51d16173752b79ab25c260c2ba8",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-target-min-width-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-target-min-width-clamp.png",
+      "bytes": 144933,
+      "sha256": "bdc5f0ee847253b53b93367c50f0ea4f313f0f36144ba3ce637855698339f642",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-target-min-width-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-transfer-input-capped-by-fixed-row-span.log.gz",
+      "bytes": 209,
+      "sha256": "5dac715e7c6d51facb379ced0b972c19d51b4405f510ccd7fc4ea79d4abde440",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-transfer-input-capped-by-fixed-row-span.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-transfer-input-capped-by-fixed-row-span.png",
+      "bytes": 130946,
+      "sha256": "846eeb17159986b93da565781c2684f5746859a0da572b322d0992ee2e1a816a",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-column-transfer-input-capped-by-fixed-row-span.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-row-target-max-height-clamp.log.gz",
+      "bytes": 197,
+      "sha256": "ef2b969e2bbbe5cd6254aa95b994aaa02e1d85e1c5c5c28f82f1036aac7b68b2",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-row-target-max-height-clamp.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-row-target-max-height-clamp.png",
+      "bytes": 144854,
+      "sha256": "e3b6f6d294c5a0d9b96434926948cf56ff2f784130ddce404263d0596401bc86",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-row-target-max-height-clamp.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-row-transfer-input-capped-by-fixed-column-span.log.gz",
+      "bytes": 210,
+      "sha256": "ba7fc2d46bd3a8839ba6736db26f94a62f761a2e49f833e40a6e01b2907c594e",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-row-transfer-input-capped-by-fixed-column-span.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-row-transfer-input-capped-by-fixed-column-span.png",
+      "bytes": 131132,
+      "sha256": "89afa37bbd516b7134d4942006570460df7b318d12357b7801cc8203922491f4",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/ios-simulator/screenshot-row-transfer-input-capped-by-fixed-column-span.png",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/run-id.txt.gz",
+      "bytes": 47,
+      "sha256": "3b4f032593ce91c4ac34a8d152159419763ef6ae1fa8b5069451572d97ffcc9f",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/runs/c114-span-20261019T132948Z/run-id.txt.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/rust-workspace-test.raw.log.gz",
+      "bytes": 26686,
+      "sha256": "a03aa193a9ba6ed808cc077b673c6fac27dac6001074b931032a7f0c5c423ca1",
+      "source": "spec/internal/evidence/c11-4-image-ratio-span-2026-10-19/rust-workspace-test.raw.log.gz",
+      "kind": "c11-4-image-ratio-span-evidence"
+    },
+    {
+      "path": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/logo.svg",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 78811,
+      "sha256": "b079402ef78f94205a45bb202c8e12f278dcd9628725786593545ee7edd8f5e3",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/plan/c11-4-grid-track-sizing.html",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 33979,
+      "sha256": "e51ed61b85cc5aff9db0c78f0f15eb0b04c7749ac0acac8cbafe99628565d139",
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "kind": "markdown-route"
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "bytes": 57913,
+      "sha256": "5372b8170f777e506bc61f5127842b637d62e6c6cb21168f7a1a289d95d8eef3",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/plan/c11-css-grid.html",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "plan/c11-css-grid.md",
+      "bytes": 27100,
+      "sha256": "554949ae7f3462e41144bc95b16b6ab19b32238a1ffd73fbe826357ea2ef8026",
+      "source": "plan/c11-css-grid.md",
+      "kind": "markdown-route"
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 149257,
+      "sha256": "d9bb5987c2deb8cf52dcc283719ba177be9b8a2ac6a6491a9c40b6df3e396101",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/roadmap.html",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/roadmap.svg",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/css/styles.8d918fd78e.css",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/image/screenshot-column-transfer-input-capped-by-fixed-row-span.ea4da4db59.png",
+      "bytes": 130946,
+      "sha256": "846eeb17159986b93da565781c2684f5746859a0da572b322d0992ee2e1a816a",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/image/screenshot-column-transfer-input-capped-by-fixed-row-span.ea4da4db59.png",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/image/screenshot-row-transfer-input-capped-by-fixed-column-span.4836ee4be9.png",
+      "bytes": 78140,
+      "sha256": "f83314c65747ef30c1cd9a87444450e4fb8f22dad7c964101d9fe25a64a39459",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/image/screenshot-row-transfer-input-capped-by-fixed-column-span.4836ee4be9.png",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/a.97f73b52c7.js",
+      "bytes": 217109,
+      "sha256": "cdaa100845a0feae737aea6f0812bf70aac9afb26205325386f24cc2047dba9e",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/a.97f73b52c7.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/a.97f73b52c7.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/a.97f73b52c7.js.LICENSE.txt",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/async/i.25208e7c92.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.5b70abb3c5.js",
+      "bytes": 48027,
+      "sha256": "2ca5efab0fa39ab64b4fe1513f6bfb8d111c5db1910d0c7289eddd8ef0dc5634",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/async/route-04cbcabea10a.5b70abb3c5.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/async/route-170783843519.4ca2a1191c.js",
+      "bytes": 13028,
+      "sha256": "1e0f44feaa4cda70713818927499f630e0fcac7b7acd11a04cff960dbf8ecf80",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/async/route-170783843519.4ca2a1191c.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/async/route-181e2939e759.9cd69975e8.js",
+      "bytes": 11022,
+      "sha256": "c4c60dffe075a07eab19e05e44fb3f4b3a2472e78dece17709a332f216a91e4d",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/async/route-181e2939e759.9cd69975e8.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/async/route-19eb62f182e6.3d5af55cd0.js",
+      "bytes": 12547,
+      "sha256": "c40c350c29aac116a363aaa6a2da93cca71fb28c10a212ddd33a137d0ae16554",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/async/route-19eb62f182e6.3d5af55cd0.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/async/route-547629791443.476f4bb1b7.js",
+      "bytes": 7762,
+      "sha256": "8924847c3ce1ff0787ee5121359a152b4d259824966b408048611fb3760b475f",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/async/route-547629791443.476f4bb1b7.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.84acdf2b68.js",
+      "bytes": 410124,
+      "sha256": "67f0c2ee7e12587245db854b0552b3ea0448c8495a2bfed04a811912a15b2b48",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/async/route-6c33a3943990.84acdf2b68.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/async/route-6f303538b8de.a16b61352c.js",
+      "bytes": 22534,
+      "sha256": "c0bb5d0fb1a41ee12708719f52dae88227c3978bf376060fd8b1681a62fc0f28",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/async/route-6f303538b8de.a16b61352c.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/async/route-9eef814e3864.28fb1cb1c5.js",
+      "bytes": 12934,
+      "sha256": "690b016bf2eb0e8eab062e33e9a6d797b02610b74a3af293fea9b01f92cd6220",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/async/route-9eef814e3864.28fb1cb1c5.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/async/route-acf9bf8a5ef1.5779fb2d10.js",
+      "bytes": 28689,
+      "sha256": "54e6b14cbcee905cba701c88dbddfae8b0f204b3d3579bf7cf515e81aab147f4",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/async/route-acf9bf8a5ef1.5779fb2d10.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/async/route-bb40dcf56893.87b3ca1f39.js",
+      "bytes": 14039,
+      "sha256": "9e2127006b15ff1fb87c4ce4b781d6cceeb00dad74482fcc2a237076d6465114",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/async/route-bb40dcf56893.87b3ca1f39.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.49b40e0cb3.js",
+      "bytes": 39326,
+      "sha256": "b1a963de004949b2c09623df17bbc17fbedaf30d3f63ecece1cd02cfdd721671",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/async/route-c2801b21f038.49b40e0cb3.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/async/route-c412d9e72a16.8fb9c86a0c.js",
+      "bytes": 11647,
+      "sha256": "f07aa5a6c9e012beee42580f8776f3d4a1e52cefc49d5f2c5b970b077d5355be",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/async/route-c412d9e72a16.8fb9c86a0c.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.e6075a5f6a.js",
+      "bytes": 75020,
+      "sha256": "e3671cb551079cc5697d02ae86b861e1c57f199cd7ba9f067f46d05cb434fff0",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/async/route-c4dae6800800.e6075a5f6a.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/async/route-e2283f1cc7bd.704fd97ca2.js",
+      "bytes": 5902,
+      "sha256": "13d5ec6a8c49c852fcb814ac40bf00223f95802556333cacff0600e14cba4fcf",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/async/route-e2283f1cc7bd.704fd97ca2.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/async/route-ecf129b09e78.2f5fba96e3.js",
+      "bytes": 21013,
+      "sha256": "054684637ecf6426859f6f4c57f47fe2d0d2498256b83ca2dda90753ac5acfe8",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/async/route-ecf129b09e78.2f5fba96e3.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/async/route-fc1d6113b2ad.9aaac04bf4.js",
+      "bytes": 18312,
+      "sha256": "ff5ea53595590afdd8ea8bfefddff63fdcc9b81fec3c0688cb2358f640d762ce",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/async/route-fc1d6113b2ad.9aaac04bf4.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/index.6b8cbab4b2.js",
+      "bytes": 45172,
+      "sha256": "dceb06c8575ced116cb629ab07de3df921bdac34ffe0309eacd579dc90ca8a70",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/index.6b8cbab4b2.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/lib-react.9cdf8f49ce.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/lib-router.1e14e568cb.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/js/styles.2da0941fcb.js",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "static/search_index.ko.25afee31.json",
+      "bytes": 440997,
+      "sha256": "25afee319201be1b70355ae4889b992ff882a5d6c22806bbf080db3b62c57e71",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/static/search_index.ko.25afee31.json",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 390701,
+      "sha256": "8b7d8e1491669cd15a18ca44f0da4d63ab5edb08310d5ce61992bfa208cd3161",
+      "source": "build/spinon/c11-4-image-ratio-span-tailnet-site-pass-2-20261019/STATUS.html",
+      "kind": "rendered-output"
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 300345,
+      "sha256": "e2f438f6eee5bd86f8b9c1e311d6c94cf0117ca9d294dc7a630e7b788cb6ba7e",
+      "source": "spec/STATUS.md",
+      "kind": "markdown-route"
+    },
+    {
+      "path": "styles.css",
+      "bytes": 8407,
+      "sha256": "b347e5dd44b25313a0fa6536fecc6af852e8ff171e1f7bb6ea7af2b03177bb83",
+      "source": "spec/styles.css",
+      "kind": "previous-preview-asset"
+    },
+    {
+      "path": "tests/fixtures/css/c11/grid-track-sizing-c114-inline-span-edges.html",
+      "bytes": 1024,
+      "sha256": "1dfb6c4f1eb6c4309daf97c1bdc416214874f2f44e337e88293cb13167eeed9e",
+      "source": "tests/fixtures/css/c11/grid-track-sizing-c114-inline-span-edges.html",
+      "kind": "previous-preview-asset"
+    },
+    {
+      "path": "tests/fixtures/css/c11/grid-track-sizing-c114-precomparison.html",
+      "bytes": 13599,
+      "sha256": "f2bfd4fc295988c9550026627c8d83f9b2daa04c52633e4a4c10d2dc2e9bc8a6",
+      "source": "tests/fixtures/css/c11/grid-track-sizing-c114-precomparison.html",
+      "kind": "previous-preview-asset"
+    },
+    {
+      "path": "tests/fixtures/resources/c15/Ahem.ttf",
+      "bytes": 21768,
+      "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+      "source": "tests/fixtures/resources/c15/Ahem.ttf",
+      "kind": "previous-preview-asset"
+    }
+  ]
+}

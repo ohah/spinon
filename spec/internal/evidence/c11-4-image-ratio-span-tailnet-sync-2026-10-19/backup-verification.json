@@ -1,0 +1,17 @@
+{
+  "created_at_utc": "2026-10-19T14:00:40.948Z",
+  "preview_root_relative": "SpinonPreview",
+  "backup_root_relative": "SpinonPreviewBackups/c11-4-image-ratio-span-tailnet-sync-2026-10-19/pass-2",
+  "changed_existing_files": 1,
+  "verified_backups": 1,
+  "entries": [
+    {
+      "path": "roadmap.html",
+      "previous_bytes": 148318,
+      "previous_sha256": "9978eb6edc6950edc5bef923e2ed5ec39357d97db86a32a62a6502accad3a283",
+      "backup_bytes": 148318,
+      "backup_sha256": "9978eb6edc6950edc5bef923e2ed5ec39357d97db86a32a62a6502accad3a283",
+      "matches": true
+    }
+  ]
+}
