@@ -86,6 +86,9 @@ pub enum LayoutGridTrackSizingContributionKind {
 pub enum LayoutGridTrackSizingMinimumContributionSource {
     PreferredSize {
         clamped_by_min_or_max: bool,
+        fixed_track_sum: Option<f64>,
+        fixed_gutter_sum: Option<f64>,
+        fixed_track_limit: Option<f64>,
     },
     SizingKeywordUsesMinContent,
     SpecifiedMinimum,
@@ -96,7 +99,9 @@ pub enum LayoutGridTrackSizingMinimumContributionSource {
         spans_flexible_max_track: bool,
         content_based: bool,
         is_compressible_replaced: bool,
-        fixed_track_limit: Option<f32>,
+        fixed_track_sum: Option<f64>,
+        fixed_gutter_sum: Option<f64>,
+        fixed_track_limit: Option<f64>,
     },
 }
 

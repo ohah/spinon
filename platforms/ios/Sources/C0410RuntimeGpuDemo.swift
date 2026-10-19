@@ -31,6 +31,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "column-target-min-width-clamp",
     "row-transfer-input-capped-by-fixed-column-span",
     "column-transfer-input-capped-by-fixed-row-span",
+    "fixed-gutter-column-suggestion-clamp",
+    "fixed-gutter-row-suggestion-clamp",
 ]
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
@@ -45,6 +47,10 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
         return "width=8,height=4"
     case "column-transfer-input-capped-by-fixed-row-span":
         return "width=4,height=8"
+    case "fixed-gutter-column-suggestion-clamp":
+        return "width=12,height=6"
+    case "fixed-gutter-row-suggestion-clamp":
+        return "width=6,height=12"
     case "spanning-auto-tracks", "spanning-min-content-items":
         return "width=100,height=30"
     case "fixed-small-track-overflow":
@@ -83,6 +89,10 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         return "width=18,height=12"
     case "column-transfer-input-capped-by-fixed-row-span":
         return "width=27,height=18"
+    case "fixed-gutter-column-suggestion-clamp":
+        return "width=36,height=24"
+    case "fixed-gutter-row-suggestion-clamp":
+        return "width=54,height=36"
     case "spanning-auto-tracks":
         return "width=70,height=10"
     case "auto-fill-repeat":
@@ -193,6 +203,8 @@ private func c114ExpectedImageIntrinsicInputs(_ sceneID: String, report: String)
         "column-content-box-transfer", "column-target-min-width-clamp",
         "row-transfer-input-capped-by-fixed-column-span",
         "column-transfer-input-capped-by-fixed-row-span",
+        "fixed-gutter-column-suggestion-clamp",
+        "fixed-gutter-row-suggestion-clamp",
     ]
     guard imageScenes.contains(sceneID) else { return true }
     guard let marker = report.range(of: "grid_track_sizing_diagnostics=") else { return false }
@@ -256,8 +268,24 @@ private func c114ImageTrackSizingTraceMatches(
     var expectedRows: [(size: Double, gutter: Bool)] = [(16, false)]
     var expectedRowContribution: Double? = 16
     var expectedRowContributionKind = "MinContent"
-    let expectedColumnSpan = sceneID == "spanning-min-content-items" ? 2 : 1
+    let expectedColumnSpan = sceneID == "spanning-min-content-items"
+        || sceneID == "fixed-gutter-column-suggestion-clamp" ? 2 : 1
+    let expectedRowSpan = sceneID == "fixed-gutter-row-suggestion-clamp" ? 2 : 1
     switch sceneID {
+    case "fixed-gutter-column-suggestion-clamp":
+        expectedColumns = [(3, false), (3, true), (4, false)]
+        expectedColumnContribution = 10
+        expectedColumnContributionKind = "Minimum"
+        expectedRows = [(10.0 / 1.5, false)]
+        expectedRowContribution = 10.0 / 1.5
+        expectedRowContributionKind = "Minimum"
+    case "fixed-gutter-row-suggestion-clamp":
+        expectedColumns = [(15, false)]
+        expectedColumnContribution = 15
+        expectedColumnContributionKind = "Minimum"
+        expectedRows = [(3, false), (3, true), (4, false)]
+        expectedRowContribution = 10
+        expectedRowContributionKind = "Minimum"
     case "row-transfer-input-capped-by-fixed-column-span":
         expectedColumns = [(18, false)]
         expectedColumnContribution = 18
@@ -334,13 +362,17 @@ private func c114ImageTrackSizingTraceMatches(
         "column-border-box-transfer",
         "column-content-box-transfer",
         "column-transfer-input-capped-by-fixed-row-span",
+        "fixed-gutter-column-suggestion-clamp",
+        "fixed-gutter-row-suggestion-clamp",
     ].contains(sceneID)
+    let repeatedRowSizing = sceneID == "fixed-gutter-column-suggestion-clamp"
+        || sceneID == "fixed-gutter-row-suggestion-clamp"
     guard let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
           traces.count == 1,
           let trace = traces.first,
           let grid = trace["grid"] as? Int, grid == 1,
           let passes = trace["passes"] as? [[String: Any]],
-          passes.count == (repeatedColumnSizing ? 3 : 2),
+          passes.count == (repeatedRowSizing ? 4 : repeatedColumnSizing ? 3 : 2),
           c114ImageTrackPassMatches(passes[0], axis: "Columns",
                                     expectedTracks: expectedColumns,
                                     minContentContribution: expectedColumnContribution,
@@ -349,7 +381,7 @@ private func c114ImageTrackSizingTraceMatches(
           c114ImageTrackPassMatches(passes[1], axis: "Rows",
                                     expectedTracks: expectedRows,
                                     minContentContribution: expectedRowContribution,
-                                    span: 1,
+                                    span: expectedRowSpan,
                                     minContentContributionKind: expectedRowContributionKind) else {
         return false
     }
@@ -360,7 +392,37 @@ private func c114ImageTrackSizingTraceMatches(
     ) {
         return false
     }
-    return true
+    if repeatedRowSizing && !c114ImageTrackPassMatches(
+        passes[3], axis: "Rows", expectedTracks: expectedRows,
+        minContentContribution: expectedRowContribution, span: expectedRowSpan,
+        minContentContributionKind: expectedRowContributionKind
+    ) {
+        return false
+    }
+    return c114FixedGutterSuggestionTraceMatches(sceneID, passes: passes)
+}
+
+private func c114FixedGutterSuggestionTraceMatches(
+    _ sceneID: String, passes: [[String: Any]]
+) -> Bool {
+    let passIndex: Int
+    switch sceneID {
+    case "fixed-gutter-column-suggestion-clamp": passIndex = 0
+    case "fixed-gutter-row-suggestion-clamp": passIndex = 1
+    default: return true
+    }
+    guard passes.indices.contains(passIndex),
+          let contributions = passes[passIndex]["contributions"] as? [[String: Any]],
+          let contribution = contributions.first(where: {
+              ($0["item"] as? Int) == 2 && ($0["kind"] as? String) == "Minimum"
+          }),
+          let source = contribution["minimumSource"] as? String else {
+        return false
+    }
+    return source.contains("PreferredSize")
+        && source.contains("fixed_track_sum: Some(7.0)")
+        && source.contains("fixed_gutter_sum: Some(3.0)")
+        && source.contains("fixed_track_limit: Some(10.0)")
 }
 
 private func c114ImageTrackPassMatches(
@@ -418,9 +480,12 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
          "column-border-box-transfer", "column-content-box-transfer",
          "column-target-min-width-clamp",
          "row-transfer-input-capped-by-fixed-column-span",
-         "column-transfer-input-capped-by-fixed-row-span":
+         "column-transfer-input-capped-by-fixed-row-span",
+         "fixed-gutter-column-suggestion-clamp",
+         "fixed-gutter-row-suggestion-clamp":
+        let itemOrigin = sceneID.hasPrefix("fixed-gutter-") ? "x=1,y=1," : "x=0,y=0,"
         return "node_frames_css_px=[0:node=1,x=0,y=0,\(c114ExpectedRootFrame(sceneID));"
-            + "1:node=2,x=0,y=0,\(c114ExpectedItemFrame(sceneID))]"
+            + "1:node=2,\(itemOrigin)\(c114ExpectedItemFrame(sceneID))]"
     default:
         return nil
     }
@@ -585,6 +650,18 @@ private struct C111MetalPixelRun {
         ("right-of-grid", "c114-column-transfer-fixed-row-item", 8, 2, [229, 72, 77, 255]),
         ("below-grid", "c114-column-transfer-fixed-row-item", 2, 12, [229, 72, 77, 255]),
     ]
+    private static let c114FixedGutterColumnPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+        ("grid-border", "c114-fixed-gutter-column-grid", 0, 2, [34, 197, 94, 255]),
+        ("inside-item", "c114-fixed-gutter-column-item", 2, 2, [229, 72, 77, 255]),
+        ("right-of-grid", "c114-fixed-gutter-column-item", 12, 2, [229, 72, 77, 255]),
+        ("below-grid", "c114-fixed-gutter-column-item", 2, 6, [229, 72, 77, 255]),
+    ]
+    private static let c114FixedGutterRowPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+        ("grid-border", "c114-fixed-gutter-row-grid", 0, 2, [34, 197, 94, 255]),
+        ("inside-item", "c114-fixed-gutter-row-item", 2, 2, [229, 72, 77, 255]),
+        ("right-of-grid", "c114-fixed-gutter-row-item", 6, 2, [229, 72, 77, 255]),
+        ("below-grid", "c114-fixed-gutter-row-item", 2, 12, [229, 72, 77, 255]),
+    ]
 
     private static func hasFixedC1131RepeatSamples(_ samples: [C111MetalPixelSample]) -> Bool {
         guard samples.count == c1131RepeatPixelSamples.count else { return false }
@@ -632,6 +709,10 @@ private struct C111MetalPixelRun {
             expectedSamples = c114RowTransferOverflowPixelSamples
         case "column-transfer-input-capped-by-fixed-row-span":
             expectedSamples = c114ColumnTransferOverflowPixelSamples
+        case "fixed-gutter-column-suggestion-clamp":
+            expectedSamples = c114FixedGutterColumnPixelSamples
+        case "fixed-gutter-row-suggestion-clamp":
+            expectedSamples = c114FixedGutterRowPixelSamples
         default:
             expectedSamples = c114TextOverflowPixelSamples
         }
@@ -717,7 +798,9 @@ private struct C111MetalPixelRun {
                       || c114Scene == "fixed-small-track-overflow"
                       || c114Scene == "column-auto-natural-ratio"
                       || c114Scene == "row-transfer-input-capped-by-fixed-column-span"
-                      || c114Scene == "column-transfer-input-capped-by-fixed-row-span",
+                      || c114Scene == "column-transfer-input-capped-by-fixed-row-span"
+                      || c114Scene == "fixed-gutter-column-suggestion-clamp"
+                      || c114Scene == "fixed-gutter-row-suggestion-clamp",
                   c114Scene == sceneID, c114RunID == runID,
                   arguments.contains("--spinon-c114-grid-track-sizing"),
                   !isC1131Repeat, !isC1132NamedLine, !isC1133TemplateAreas,
@@ -3326,12 +3409,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             return
         }
         if c111MetalPixelArgumentRequested && c111MetalPixelRun == nil {
-            let markerPrefix = c1133GridTemplateAreasProbeRequested ? "SPINON_C1133"
+            let markerPrefix = c114GridTrackSizingProbeRequested ? "SPINON_C114"
+                : c1133GridTemplateAreasProbeRequested ? "SPINON_C1133"
                 : c1132GridNamedLinesProbeRequested ? "SPINON_C1132"
                 : c1131GridRepeatProbeRequested ? "SPINON_C1131"
                 : c1123GridAutoPlacementProbeRequested ? "SPINON_C1123"
                 : c1122GridAutoPlacementProbeRequested ? "SPINON_C1122" : "SPINON_C111"
-            let invalidSceneID = c1133GridTemplateAreasProbeRequested
+            let invalidSceneID = c114GridTrackSizingProbeRequested
+                ? c114GridTrackSizingSceneID
+                : c1133GridTemplateAreasProbeRequested
                 ? c1133GridTemplateAreasSceneID
                 : c1131GridRepeatProbeRequested
                 ? c1131GridRepeatSceneArgument

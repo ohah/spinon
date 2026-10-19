@@ -525,6 +525,50 @@ const C11_4_IMAGE_TRACK_SCENES: [ImageScene; 18] = [
     },
 ];
 
+struct ImageSceneWithRowGap {
+    scene: ImageScene,
+    row_gap: u32,
+    grid_border: u32,
+    grid_background: &'static str,
+}
+
+const C11_4_IMAGE_FIXED_GUTTER_SCENES: [ImageSceneWithRowGap; 2] = [
+    ImageSceneWithRowGap {
+        scene: ImageScene {
+            scene_id: "fixed-gutter-column-suggestion-clamp",
+            root_id: "c114-fixed-gutter-column-grid",
+            item_id: "c114-fixed-gutter-column-item",
+            width: 12,
+            height: 6,
+            columns: "minmax(auto, 3px) 4px",
+            rows: "minmax(auto, 1fr)",
+            column_gap: 3,
+            item_placement: ";grid-column:1 / span 2",
+            item_style: ";width:36px;aspect-ratio:3 / 2",
+        },
+        row_gap: 0,
+        grid_border: 1,
+        grid_background: "#22c55e",
+    },
+    ImageSceneWithRowGap {
+        scene: ImageScene {
+            scene_id: "fixed-gutter-row-suggestion-clamp",
+            root_id: "c114-fixed-gutter-row-grid",
+            item_id: "c114-fixed-gutter-row-item",
+            width: 6,
+            height: 12,
+            columns: "minmax(auto, 1fr)",
+            rows: "minmax(auto, 3px) 4px",
+            column_gap: 0,
+            item_placement: ";grid-row:1 / span 2",
+            item_style: ";height:36px;aspect-ratio:3 / 2",
+        },
+        row_gap: 3,
+        grid_border: 1,
+        grid_background: "#22c55e",
+    },
+];
+
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     scene_id: &str,
 ) -> Result<Cow<'static, str>, String> {
@@ -540,16 +584,36 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     {
         return Ok(Cow::Owned(image_scene_source(*scene)));
     }
+    if let Some(scene) = C11_4_IMAGE_FIXED_GUTTER_SCENES
+        .iter()
+        .find(|scene| scene.scene.scene_id == scene_id)
+    {
+        return Ok(Cow::Owned(image_scene_source_with_row_gap(
+            scene.scene,
+            scene.row_gap,
+            scene.grid_border,
+            scene.grid_background,
+        )));
+    }
     Err(format!("알 수 없는 C11.4 scene ID: {scene_id}"))
 }
 
 fn image_scene_source(scene: ImageScene) -> String {
+    image_scene_source_with_row_gap(scene, 0, 0, "#101820")
+}
+
+fn image_scene_source_with_row_gap(
+    scene: ImageScene,
+    row_gap: u32,
+    grid_border: u32,
+    grid_background: &str,
+) -> String {
     format!(
         r#"(() => {{
 const root = document.createElement('div');
 root.setAttribute('id', {:?});
 root.setAttribute('data-node', '');
-root.setAttribute('style', 'box-sizing:border-box;display:grid;width:{}px;height:{}px;margin:0;padding:0;border:0;gap:0;align-items:start;align-content:start;justify-content:start;grid-template-columns:{};grid-template-rows:{};column-gap:{}px;row-gap:0;background-color:#101820');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:{}px;height:{}px;margin:0;padding:0;border:{}px solid #22c55e;gap:0;align-items:start;align-content:start;justify-content:start;grid-template-columns:{};grid-template-rows:{};column-gap:{}px;row-gap:{}px;background-color:{}');
 document.appendChild(root);
 const item = document.createElement('img');
 item.setAttribute('id', {:?});
@@ -563,9 +627,12 @@ return {{ sceneId:{:?}, rootId:{:?}, nodeIds:[{:?}, {:?}] }};
         scene.root_id,
         scene.width,
         scene.height,
+        grid_border,
         scene.columns,
         scene.rows,
         scene.column_gap,
+        row_gap,
+        grid_background,
         scene.item_id,
         scene.item_placement,
         scene.item_style,
@@ -579,7 +646,7 @@ return {{ sceneId:{:?}, rootId:{:?}, nodeIds:[{:?}, {:?}] }};
 #[cfg(test)]
 mod tests {
     use super::{
-        C11_4_GRID_TRACK_SIZING_SCENES, C11_4_IMAGE_TRACK_SCENES,
+        C11_4_GRID_TRACK_SIZING_SCENES, C11_4_IMAGE_FIXED_GUTTER_SCENES, C11_4_IMAGE_TRACK_SCENES,
         c11_4_grid_track_sizing_runtime_source,
     };
 
@@ -587,6 +654,7 @@ mod tests {
     fn exposes_only_bounded_intrinsic_track_sizing_scenes() {
         assert_eq!(C11_4_GRID_TRACK_SIZING_SCENES.len(), 17);
         assert_eq!(C11_4_IMAGE_TRACK_SCENES.len(), 18);
+        assert_eq!(C11_4_IMAGE_FIXED_GUTTER_SCENES.len(), 2);
         assert_eq!(
             C11_4_GRID_TRACK_SIZING_SCENES
                 .iter()
@@ -606,6 +674,17 @@ mod tests {
             assert!(source.contains("document.createElement('img')"));
             assert!(source.contains("https://spinon.invalid/c14-1-png-basic.png"));
             assert!(source.contains(&format!("sceneId:{:?}", scene.scene_id)));
+        }
+        for scene in C11_4_IMAGE_FIXED_GUTTER_SCENES {
+            let source = c11_4_grid_track_sizing_runtime_source(scene.scene.scene_id).unwrap();
+            assert!(source.len() < 4 * 1024);
+            assert!(source.contains(&format!("sceneId:{:?}", scene.scene.scene_id)));
+            assert!(source.contains(&format!("row-gap:{}px", scene.row_gap)));
+            assert!(source.contains(&format!("border:{}px solid #22c55e", scene.grid_border)));
+            assert!(source.contains("background-color:#22c55e"));
+            assert!(
+                source.contains("grid-column:1 / span 2") || source.contains("grid-row:1 / span 2")
+            );
         }
         assert!(c11_4_grid_track_sizing_runtime_source("unknown;throw 1").is_err());
     }
