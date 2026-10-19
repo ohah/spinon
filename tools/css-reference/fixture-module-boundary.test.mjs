@@ -284,7 +284,13 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
   );
   assert.match(runtimeSource, /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*mod fixtures;/);
   assert.match(ffiSource, /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*mod fixtures;/);
-  assert.match(cargoManifest, /c04-runtime-gpu-fixture-test\s*=\s*\["c04-runtime-gpu"\]/);
+  assert.match(cargoManifest, /c04-runtime-gpu\s*=\s*\["dep:spinon-render-wgpu"\]/);
+  const runtimeGpuFixtureFeature = cargoManifest.match(
+    /^c04-runtime-gpu-fixture-test\s*=\s*\[([\s\S]*?)^\]/m,
+  );
+  assert.ok(runtimeGpuFixtureFeature, 'Runtime GPU fixtures stay behind the fixture-test feature');
+  assert.match(runtimeGpuFixtureFeature[1], /"c04-runtime-gpu"/);
+  assert.match(runtimeGpuFixtureFeature[1], /"spinon-runtime\/c11-4-grid-track-sizing-fixture-test"/);
   assert.match(runtimeFixtureSource,
     /#\[cfg\(feature = "c13-1-overflow-clip-fixture-test"\)\]\s*pub\(crate\) mod c13_1;/);
   assert.match(ffiFixtureSource,

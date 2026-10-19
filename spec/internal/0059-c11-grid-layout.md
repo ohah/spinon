@@ -146,6 +146,14 @@ Template area 행·열 수와 explicit track 수가 다르면 `grid-template-are
 
 고정 Chrome 155 관찰은 27개(직접 replaced image 26, non-replaced control 1)다. pure Rust matrix는 직접 image 23개, scrollable-overflow control, content-/border-box decoration 두 건과 non-replaced control을 비교한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 앱은 7개 장면 모두의 frame·trace·screenshot을 통과했고 grid 바깥 PixelCopy/Metal 색 표본은 overflow 장면에서만 읽었다. 원본과 정확한 적용 범위는 [Chrome oracle·구현 실패 관점 검토](./evidence/c11-4-image-ratio-transfer-2026-10-19/README.md) · [구현 검토 20개](./evidence/c11-4-image-ratio-transfer-2026-10-19/implementation-review-20.md) · [Simulator 실행 근거](./evidence/c11-4-image-ratio-transfer-simulator-2026-10-19/README.md)에 둔다. dynamic replacement/cache invalidation, 다른 Grid contribution 조합, anonymous/nested/multiple item, WPT 및 전체 표준 단계 비교는 미검증이다. 제한 fixture 후보이며 공개 이미지/Grid 지원이나 C11.4 완료를 뜻하지 않는다.
 
+## C11.4 cross-axis fixed max track clamp 후속 후보
+
+2026-10-19 후속 구현은 direct HTML `img` item의 transferred-size suggestion 입력이 반대 축에서 item이 span한 모든 track의 max sizing function이 fixed인 경우 그 합계로 제한되도록 한다. Taffy의 GridTrack slice는 gutter를 sizing function이 있는 항목으로 포함한다. content-box item은 반대 축 track border-box 한도에서 padding/border를 빼고 0 아래를 막은 뒤 ratio 변환을 한다. 새 양방향 fixture는 현재 단일 8px fixed track만 사용한다. 여러 fixed track과 gutter의 합산 동작은 코드 경계에 있으나 직접 oracle로 검증하지 않았다.
+
+기준은 [CSS Grid Level 1 §6.6 · 2025-03-26 Candidate Recommendation Draft](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#min-size-auto)이다. 이 문서는 작업 중 초안이며 구현 차이를 Chrome 오류로 확정하지 않는다. 고정 Chrome 155 관찰에서 row transfer는 8px column 및 12px item height, column transfer는 27px columns로 관찰됐고, CRD에서 도출한 track 기대값은 각각 5.333333px row 및 12px columns다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator는 두 장면의 CSS expectation에 맞는 frame·trace를 각 9-scene matrix에서 통과했다. root 바깥 item background 표본은 platform별 3/3 exact다. [Chrome·Simulator·build·test 근거](./evidence/c11-4-image-ratio-span-2026-10-19/README.md) · [구현 검토 20개](./evidence/c11-4-image-ratio-span-2026-10-19/implementation-review-20.md) · [PR diff 검토 30개](./evidence/c11-4-image-ratio-span-2026-10-19/pr-diff-review-30.md).
+
+이 후속은 한 track의 fixed max clamp만 고정한 후보이며 multi-track/gutter, vertical writing mode, percentage/calc basis, cross-cap content-box, WPT, 일반 CSS 조합을 닫지 않는다. C11.4·C11은 미완료이고 공개 API나 제품 CSS 지원 선언이 아니다.
+
 ## C11.4 typed track input 및 단계 관찰 후보
 
 초기 2026-10-19 앱 후속은 `min-content-text-normal` 한 장면에서 direct-leaf text를 C11.4 runtime Grid 계산에 연결했다. Ahem 10px `XX XXXXXXX`, `grid-template-columns:min-content`, 120×40px root 및 `align-items:start`를 사용해 column 70px, item 70×20px, min-content 70×20px 및 max-content 100×10px을 확인했다. 이 결과는 위의 10-scene matrix로 확장되었으며 초기 실행의 자료는 [single-scene evidence](./evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/README.md)에 남아 있다.
