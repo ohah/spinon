@@ -1,7 +1,9 @@
 use spinon_core::NodeId;
 use spinon_text_layout::{FontRegistryRevision, TextIntrinsicInlineSizes};
 
-use crate::{LayoutInputRevision, LayoutIntrinsicSize, LayoutStyle};
+use crate::{
+    LayoutDimension, LayoutInputRevision, LayoutIntrinsicSize, LayoutLengthPercentage, LayoutStyle,
+};
 
 /// Intrinsic measure callback이 각 축에 전달한 available space입니다.
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -71,6 +73,162 @@ pub struct LayoutGridItemIntrinsicInput {
     pub revision: LayoutInputRevision,
     pub source: LayoutGridItemIntrinsicSource,
     pub item_style: LayoutStyle,
+}
+
+/// Grid item 한 축의 CSS contribution 계산에 필요한 후보와 box 입력입니다.
+///
+/// `min_content`·`max_content`는 padding/border 바깥의 content-box CSS px입니다.
+/// 지정·최소·최대 크기와 margin/padding은 계산 전 typed 값으로 보존하고, border는 used px입니다.
+/// 이 입력은 최종 CSS contribution이나 track span·automatic minimum을 뜻하지 않습니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct LayoutGridItemIntrinsicAxisContributionInput {
+    pub min_content: Option<f32>,
+    pub max_content: Option<f32>,
+    pub preferred_size: LayoutDimension,
+    pub min_size: LayoutDimension,
+    pub max_size: LayoutDimension,
+    pub margin_start: LayoutLengthPercentage,
+    pub margin_end: LayoutLengthPercentage,
+    pub padding_start: LayoutLengthPercentage,
+    pub padding_end: LayoutLengthPercentage,
+    pub border_start: f32,
+    pub border_end: f32,
+}
+
+impl LayoutGridItemIntrinsicAxisContributionInput {
+    /// 고정 edge profile에서 content-box 후보를 margin-box 크기로 바꿉니다.
+    ///
+    /// 백분율·calc edge는 basis가 연결되는 다음 단계 전까지 명시적으로 거부합니다.
+    pub fn outer_size(
+        self,
+        content_size: Option<f32>,
+        node: NodeId,
+        axis: &'static str,
+    ) -> Result<Option<f32>, crate::LayoutError> {
+        let Some(content_size) = content_size else {
+            return Ok(None);
+        };
+        if !content_size.is_finite() || content_size < 0.0 {
+            return Err(crate::LayoutError::InvalidIntrinsicSize { node, axis });
+        }
+
+        let margin_start = fixed_margin(self.margin_start, node)?;
+        let margin_end = fixed_margin(self.margin_end, node)?;
+        let padding_start = fixed_padding(self.padding_start, node)?;
+        let padding_end = fixed_padding(self.padding_end, node)?;
+        if !self.border_start.is_finite()
+            || self.border_start < 0.0
+            || !self.border_end.is_finite()
+            || self.border_end < 0.0
+        {
+            return Err(crate::LayoutError::InvalidIntrinsicSize { node, axis });
+        }
+
+        let outer_size = content_size
+            + margin_start
+            + margin_end
+            + padding_start
+            + padding_end
+            + self.border_start
+            + self.border_end;
+        if !outer_size.is_finite() {
+            return Err(crate::LayoutError::InvalidIntrinsicSize { node, axis });
+        }
+        Ok(Some(outer_size))
+    }
+}
+
+fn fixed_margin(value: LayoutLengthPercentage, node: NodeId) -> Result<f32, crate::LayoutError> {
+    match value {
+        LayoutLengthPercentage::Auto => Ok(0.0),
+        LayoutLengthPercentage::LengthPx(value) if value.is_finite() => Ok(value),
+        _ => Err(crate::LayoutError::UnsupportedIntrinsicSizing {
+            node,
+            reason: "Grid item 외곽 크기 후보에는 고정 여백 값이 필요합니다",
+        }),
+    }
+}
+
+fn fixed_padding(value: LayoutLengthPercentage, node: NodeId) -> Result<f32, crate::LayoutError> {
+    match value {
+        LayoutLengthPercentage::LengthPx(value) if value.is_finite() && value >= 0.0 => Ok(value),
+        _ => Err(crate::LayoutError::UnsupportedIntrinsicSizing {
+            node,
+            reason: "Grid item 외곽 크기 후보에는 0 이상의 고정 padding 값이 필요합니다",
+        }),
+    }
+}
+
+/// CSS Grid contribution 계산용 direct-leaf 입력을 같은 layout source에 결속합니다.
+///
+/// `width`와 `height`는 현재 제한 profile의 물리 축입니다. `source`는 text font registry
+/// revision 또는 replaced natural metadata를 보존합니다. 전체 `item_style`도 함께 보존해
+/// aspect ratio, overflow, order처럼 축 후보와 함께 해석할 값을 잃지 않습니다.
+#[derive(Clone, Debug, PartialEq)]
+pub struct LayoutGridItemIntrinsicContributionInput {
+    pub grid_container: NodeId,
+    pub node: NodeId,
+    pub source_order: usize,
+    pub revision: LayoutInputRevision,
+    pub source: LayoutGridItemIntrinsicSource,
+    pub item_style: LayoutStyle,
+    pub width: LayoutGridItemIntrinsicAxisContributionInput,
+    pub height: LayoutGridItemIntrinsicAxisContributionInput,
+}
+
+impl LayoutGridItemIntrinsicInput {
+    /// 원본 source/style에서 CSS Grid 후보 입력을 필요할 때 생성합니다.
+    ///
+    /// output에 별도 벡터를 만들지 않으므로 layout 계산의 할당·실패 경로는 바뀌지 않습니다.
+    pub fn contribution_input(&self) -> LayoutGridItemIntrinsicContributionInput {
+        let (min_width, max_width, min_height, max_height) = match &self.source {
+            LayoutGridItemIntrinsicSource::Text { sizes } => (
+                Some(sizes.min_content()),
+                Some(sizes.max_content()),
+                Some(sizes.min_content_height()),
+                Some(sizes.max_content_height()),
+            ),
+            LayoutGridItemIntrinsicSource::Replaced { natural } => {
+                (natural.width, natural.width, natural.height, natural.height)
+            }
+        };
+        let style = self.item_style;
+
+        LayoutGridItemIntrinsicContributionInput {
+            grid_container: self.grid_container,
+            node: self.node,
+            source_order: self.source_order,
+            revision: self.revision,
+            source: self.source.clone(),
+            item_style: style,
+            width: LayoutGridItemIntrinsicAxisContributionInput {
+                min_content: min_width,
+                max_content: max_width,
+                preferred_size: style.width,
+                min_size: style.min_width,
+                max_size: style.max_width,
+                margin_start: style.margin.left,
+                margin_end: style.margin.right,
+                padding_start: style.padding.left,
+                padding_end: style.padding.right,
+                border_start: style.border.left,
+                border_end: style.border.right,
+            },
+            height: LayoutGridItemIntrinsicAxisContributionInput {
+                min_content: min_height,
+                max_content: max_height,
+                preferred_size: style.height,
+                min_size: style.min_height,
+                max_size: style.max_height,
+                margin_start: style.margin.top,
+                margin_end: style.margin.bottom,
+                padding_start: style.padding.top,
+                padding_end: style.padding.bottom,
+                border_start: style.border.top,
+                border_end: style.border.bottom,
+            },
+        }
+    }
 }
 
 /// Grid item의 measure callback 한 번에 대한 source-bound 관찰값입니다.

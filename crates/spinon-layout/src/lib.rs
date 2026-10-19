@@ -43,6 +43,7 @@ pub use grid::{
 pub use grid_placement::{GridItemInput, GridPlacementInput};
 pub use host_document::HostTextStyleProfile;
 pub use intrinsic_measurement::{
+    LayoutGridItemIntrinsicAxisContributionInput, LayoutGridItemIntrinsicContributionInput,
     LayoutGridItemIntrinsicInput, LayoutGridItemIntrinsicSource,
     LayoutIntrinsicMeasureAvailableSpace, LayoutIntrinsicMeasureKnownDimensions,
     LayoutIntrinsicMeasureParentSize, LayoutIntrinsicMeasureSize, LayoutIntrinsicMeasureSpace,
