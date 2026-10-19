@@ -1,0 +1,7 @@
+{
+  "session": "spinon-tailnet-pass10",
+  "close_command_succeeded": true,
+  "session_active_after_close": false,
+  "agent_browser_processes_after_close": 0,
+  "verification": "fresh pgrep -laf '[a]gent-browser' returned no process"
+}
