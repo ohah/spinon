@@ -22,7 +22,7 @@ const NATURAL_HEIGHT: u32 = 16;
 
 #[path = "c11_4_image/cases.rs"]
 mod cases;
-use cases::{IMAGE_CASES, ImageCase, ImageSizing, Track};
+use cases::{IMAGE_CASES, ImageCase, ImageSizing, Placement, Track};
 
 pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     snapshot: &HostDocumentSnapshot,
@@ -262,9 +262,15 @@ fn validate_grid_style(
         || style.layout_dimensions.height != ComputedCssDimension::LengthPx(case.grid_height)
         || !zero_edges(style.layout_spacing.margin)
         || !zero_edges(style.layout_spacing.padding)
-        || !spacing_is(style.layout_spacing.row_gap, 0.0)
+        || !spacing_is(style.layout_spacing.row_gap, case.row_gap)
         || !spacing_is(style.layout_spacing.column_gap, case.column_gap)
-        || style.layout_border != Default::default()
+        || style.layout_border
+            != (spinon_style::ComputedLayoutBorder {
+                top: case.grid_border,
+                right: case.grid_border,
+                bottom: case.grid_border,
+                left: case.grid_border,
+            })
     {
         return Err(unsupported_case(
             style.node_id.get(),
@@ -279,13 +285,18 @@ fn validate_grid_style(
             Some(case.scene_id.to_owned()),
         )
     })?;
-    if grid.columns.len() != case.column_count
+    if grid.columns.len() != case.columns.len()
         || !grid
             .columns
             .iter()
-            .all(|track| track_matches(track, case.columns))
-        || grid.rows.len() != 1
-        || !track_matches(&grid.rows[0], case.rows)
+            .zip(case.columns)
+            .all(|(actual, expected)| track_matches(actual, *expected))
+        || grid.rows.len() != case.rows.len()
+        || !grid
+            .rows
+            .iter()
+            .zip(case.rows)
+            .all(|(actual, expected)| track_matches(actual, *expected))
         || grid.columns_auto_repeat.is_some()
         || grid.rows_auto_repeat.is_some()
         || grid.template_areas.is_some()
@@ -444,6 +455,30 @@ fn validate_item_style(
             0.0,
             "border-box",
         ),
+        ImageSizing::FixedGutterColumnSuggestionClamp => (
+            ComputedCssDimension::LengthPx(36.0),
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::Auto,
+            ComputedCssMaxSize::None,
+            ComputedCssMaxSize::None,
+            Some(1.5),
+            0.0,
+            0.0,
+            "border-box",
+        ),
+        ImageSizing::FixedGutterRowSuggestionClamp => (
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::LengthPx(36.0),
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::Auto,
+            ComputedCssMaxSize::None,
+            ComputedCssMaxSize::None,
+            Some(1.5),
+            0.0,
+            0.0,
+            "border-box",
+        ),
     };
     require_property(style, "box-sizing", box_sizing)?;
     if style.layout_dimensions.width != width
@@ -463,7 +498,7 @@ fn validate_item_style(
                 left: border,
             })
         || style.layout_position != spinon_style::ComputedCssPosition::Static
-        || !placement_matches(style.grid_item_placement.as_ref(), case.spanning)
+        || !placement_matches(style.grid_item_placement.as_ref(), case.placement)
     {
         return Err(unsupported_case(
             style.node_id.get(),
@@ -474,22 +509,31 @@ fn validate_item_style(
     Ok(())
 }
 
-fn placement_matches(placement: Option<&ComputedCssGridItemPlacement>, spanning: bool) -> bool {
-    match (placement, spanning) {
-        (None, false) => true,
-        (Some(value), false) => {
+fn placement_matches(
+    placement: Option<&ComputedCssGridItemPlacement>,
+    expected: Placement,
+) -> bool {
+    match (placement, expected) {
+        (None, Placement::Auto) => true,
+        (Some(value), Placement::Auto) => {
             value.row_start == ComputedCssGridPlacement::Auto
                 && value.row_end == ComputedCssGridPlacement::Auto
                 && value.column_start == ComputedCssGridPlacement::Auto
                 && value.column_end == ComputedCssGridPlacement::Auto
         }
-        (Some(value), true) => {
+        (Some(value), Placement::ColumnSpan2) => {
             value.row_start == ComputedCssGridPlacement::Auto
                 && value.row_end == ComputedCssGridPlacement::Auto
                 && value.column_start == ComputedCssGridPlacement::Line(1)
                 && value.column_end == ComputedCssGridPlacement::Span(2)
         }
-        (None, true) => false,
+        (Some(value), Placement::RowSpan2) => {
+            value.row_start == ComputedCssGridPlacement::Line(1)
+                && value.row_end == ComputedCssGridPlacement::Span(2)
+                && value.column_start == ComputedCssGridPlacement::Auto
+                && value.column_end == ComputedCssGridPlacement::Auto
+        }
+        (None, Placement::ColumnSpan2 | Placement::RowSpan2) => false,
     }
 }
 
@@ -550,12 +594,20 @@ fn track_matches(actual: &ComputedCssGridTrackSize, expected: Track) -> bool {
             },
             Track::FixedEight,
         ) => approximately(*max, 8.0),
+        (
+            ComputedCssGridTrackSize::MinMax {
+                min: ComputedCssGridTrackBreadth::Auto,
+                max: ComputedCssGridTrackBreadth::LengthPx(max),
+            },
+            Track::MinMaxAuto3,
+        ) => approximately(*max, 3.0),
         (ComputedCssGridTrackSize::LengthPx(actual), Track::Length100) => {
             approximately(*actual, 100.0)
         }
         (ComputedCssGridTrackSize::LengthPx(actual), Track::Length20) => {
             approximately(*actual, 20.0)
         }
+        (ComputedCssGridTrackSize::LengthPx(actual), Track::Length4) => approximately(*actual, 4.0),
         _ => false,
     }
 }

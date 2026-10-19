@@ -3,7 +3,7 @@ use super::{maybe_apply_aspect_ratio_to_constraint_size, GridTrack};
 use crate::compute::common::sizing_keyword::{resolve_sizing_keyword, SizingKeywordResolution};
 use crate::compute::grid::OriginZeroLine;
 use crate::compute::grid::{
-    GridTrackSizingMinimumContribution, GridTrackSizingMinimumContributionSource,
+    GridTrackKind, GridTrackSizingMinimumContribution, GridTrackSizingMinimumContributionSource,
 };
 use crate::geometry::AbstractAxis;
 use crate::geometry::{Line, Point, Rect, Size};
@@ -15,6 +15,23 @@ use crate::util::sys::f32_max;
 use crate::util::{MaybeMath, MaybeResolve, ResolveOrZero};
 use crate::{AlignItemsKeyword, BoxSizing, GridItemStyle, LengthPercentage};
 use core::ops::Range;
+
+#[derive(Debug, Clone, Copy)]
+pub(super) struct FixedAreaLimit {
+    track_sum: f64,
+    gutter_sum: f64,
+}
+
+impl FixedAreaLimit {
+    fn total(self) -> f64 {
+        self.track_sum + self.gutter_sum
+    }
+
+    fn as_f32_limit(self) -> Option<f32> {
+        let total = self.total();
+        (total <= f32::MAX as f64).then_some(total as f32)
+    }
+}
 
 /// The known_dimensions computed for a grid item for a given grid area size
 #[derive(Debug, Clone, Copy)]
@@ -286,36 +303,34 @@ impl GridItem {
         }
     }
 
-    /// Similar to the spanned_track_limit, but excludes FitContent arguments from the limit.
-    /// Used to clamp the automatic minimum contributions of an item
-    pub fn spanned_fixed_track_limit(
+    /// Returns the definite maximum sizing-function sum and internal gutter sum for this span.
+    /// The span range already includes internal gutter entries, so callers must not add them again.
+    /// Used for the preferred-size suggestion, automatic minimum, and transferred-size input clamps.
+    pub(super) fn spanned_fixed_track_limit(
         &self,
         axis: AbstractAxis,
         axis_tracks: &[GridTrack],
         axis_parent_size: Option<f32>,
         resolve_calc_value: &dyn Fn(*const (), f32) -> f32,
-    ) -> Option<f32> {
+    ) -> Option<FixedAreaLimit> {
         let spanned_tracks = &axis_tracks[self.track_range_excluding_lines(axis)];
-        let tracks_all_fixed = spanned_tracks.iter().all(|track| {
-            track
+        let mut limit = FixedAreaLimit {
+            track_sum: 0.0,
+            gutter_sum: 0.0,
+        };
+        for track in spanned_tracks {
+            let value = track
                 .max_track_sizing_function
-                .definite_value(axis_parent_size, resolve_calc_value)
-                .is_some()
-        });
-        if tracks_all_fixed {
-            let limit: f32 = spanned_tracks
-                .iter()
-                .map(|track| {
-                    track
-                        .max_track_sizing_function
-                        .definite_value(axis_parent_size, resolve_calc_value)
-                        .unwrap()
-                })
-                .sum();
-            Some(limit)
-        } else {
-            None
+                .definite_value(axis_parent_size, resolve_calc_value)?;
+            if !value.is_finite() {
+                return None;
+            }
+            match track.kind {
+                GridTrackKind::Track => limit.track_sum += value as f64,
+                GridTrackKind::Gutter => limit.gutter_sum += value as f64,
+            }
         }
+        Some(limit)
     }
 
     /// Retrieve the known_dimensions for the given grid area size from the cache or compute them.
@@ -828,10 +843,25 @@ impl GridItem {
             } else {
                 size
             };
+            // CSS Grid 1 §6.6 caps the specified size suggestion at the all-fixed grid-area maximum.
+            let fixed_track_limit = self.spanned_fixed_track_limit(
+                axis,
+                axis_tracks,
+                inner_node_size.get(axis),
+                &|val, basis| tree.resolve_calc_value(val, basis),
+            );
+            let value = value.maybe_min(
+                fixed_track_limit
+                    .and_then(FixedAreaLimit::as_f32_limit)
+                    .map(|limit| f32_max(limit, padding_border_size.get(axis))),
+            );
             return GridTrackSizingMinimumContribution {
                 value,
                 source: GridTrackSizingMinimumContributionSource::PreferredSize {
                     clamped_by_min_or_max,
+                    fixed_track_limit: fixed_track_limit.map(FixedAreaLimit::total),
+                    fixed_track_sum: fixed_track_limit.map(|limit| limit.track_sum),
+                    fixed_gutter_sum: fixed_track_limit.map(|limit| limit.gutter_sum),
                 },
             };
         }
@@ -925,7 +955,9 @@ impl GridItem {
             );
             (
                 minimum_contribution.maybe_min(
-                    fixed_track_limit.map(|limit| f32_max(limit, padding_border_size.get(axis))),
+                    fixed_track_limit
+                        .and_then(FixedAreaLimit::as_f32_limit)
+                        .map(|limit| f32_max(limit, padding_border_size.get(axis))),
                 ),
                 fixed_track_limit,
             )
@@ -940,7 +972,9 @@ impl GridItem {
                 spans_flexible_max_track,
                 content_based,
                 is_compressible_replaced: self.is_compressible_replaced,
-                fixed_track_limit,
+                fixed_track_limit: fixed_track_limit.map(FixedAreaLimit::total),
+                fixed_track_sum: fixed_track_limit.map(|limit| limit.track_sum),
+                fixed_gutter_sum: fixed_track_limit.map(|limit| limit.gutter_sum),
             },
         }
     }
@@ -990,7 +1024,8 @@ impl GridItem {
             )
             // Track sizing functions limit the item's border box, while the transferred input
             // is the preferred content-box size for content-box items.
-            .map(|limit| f32_max(limit - box_sizing_adjustment.get(opposite_axis), 0.0));
+            .map(|limit| (limit.total() - box_sizing_adjustment.get(opposite_axis) as f64).max(0.0))
+            .and_then(|limit| (limit <= f32::MAX as f64).then_some(limit as f32));
         let opposite_size = opposite_size.maybe_min(opposite_fixed_track_limit);
 
         let transferred = match axis {

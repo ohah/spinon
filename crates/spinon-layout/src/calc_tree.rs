@@ -522,8 +522,14 @@ impl CalcLayoutTree {
                         minimum_source: contribution.minimum_source.map(|source| match source {
                             taffy::GridTrackSizingMinimumContributionSource::PreferredSize {
                                 clamped_by_min_or_max,
+                                fixed_track_sum,
+                                fixed_gutter_sum,
+                                fixed_track_limit,
                             } => crate::LayoutGridTrackSizingMinimumContributionSource::PreferredSize {
                                 clamped_by_min_or_max,
+                                fixed_track_sum,
+                                fixed_gutter_sum,
+                                fixed_track_limit,
                             },
                             taffy::GridTrackSizingMinimumContributionSource::SizingKeywordUsesMinContent => {
                                 crate::LayoutGridTrackSizingMinimumContributionSource::SizingKeywordUsesMinContent
@@ -540,6 +546,8 @@ impl CalcLayoutTree {
                                 spans_flexible_max_track,
                                 content_based,
                                 is_compressible_replaced,
+                                fixed_track_sum,
+                                fixed_gutter_sum,
                                 fixed_track_limit,
                             } => crate::LayoutGridTrackSizingMinimumContributionSource::AutomaticMinimum {
                                 spans_auto_min_track,
@@ -547,6 +555,8 @@ impl CalcLayoutTree {
                                 spans_flexible_max_track,
                                 content_based,
                                 is_compressible_replaced,
+                                fixed_track_sum,
+                                fixed_gutter_sum,
                                 fixed_track_limit,
                             },
                         }),

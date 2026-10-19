@@ -1278,6 +1278,12 @@ pub enum GridTrackSizingMinimumContributionSource {
     PreferredSize {
         /// 명시된 최소 또는 최대 크기가 preferred size를 제한했는지 나타냅니다.
         clamped_by_min_or_max: bool,
+        /// fixed max track sizing functions의 span 합입니다.
+        fixed_track_sum: Option<f64>,
+        /// span 안쪽의 fixed gutter 합입니다.
+        fixed_gutter_sum: Option<f64>,
+        /// `fixed_track_sum + fixed_gutter_sum`입니다.
+        fixed_track_limit: Option<f64>,
     },
     /// sizing keyword에 따라 min-content contribution을 사용했습니다.
     SizingKeywordUsesMinContent,
@@ -1297,8 +1303,12 @@ pub enum GridTrackSizingMinimumContributionSource {
         content_based: bool,
         /// replaced element의 size suggestion을 고려했는지 나타냅니다.
         is_compressible_replaced: bool,
-        /// content 기반 automatic minimum에 적용한 fixed maximum-size 제한값입니다.
-        fixed_track_limit: Option<f32>,
+        /// fixed max track sizing functions의 span 합입니다.
+        fixed_track_sum: Option<f64>,
+        /// span 안쪽의 fixed gutter 합입니다.
+        fixed_gutter_sum: Option<f64>,
+        /// `fixed_track_sum + fixed_gutter_sum`입니다.
+        fixed_track_limit: Option<f64>,
     },
 }
 

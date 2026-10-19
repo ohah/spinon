@@ -8,7 +8,7 @@ use std::sync::Arc;
 
 #[test]
 fn image_matrix_has_unique_ids_and_bounded_geometry() {
-    assert_eq!(IMAGE_CASES.len(), 18);
+    assert_eq!(IMAGE_CASES.len(), 20);
     for (index, case) in IMAGE_CASES.iter().enumerate() {
         assert!(
             IMAGE_CASES[..index]
@@ -17,7 +17,11 @@ fn image_matrix_has_unique_ids_and_bounded_geometry() {
         );
         assert!(case.grid_width.is_finite() && case.grid_width > 0.0);
         assert!(case.grid_height.is_finite() && case.grid_height > 0.0);
-        assert!(matches!(case.column_count, 1 | 2));
+        assert!(matches!(case.columns.len(), 1 | 2));
+        assert!(matches!(case.rows.len(), 1 | 2));
+        assert!(case.column_gap.is_finite() && case.column_gap >= 0.0);
+        assert!(case.row_gap.is_finite() && case.row_gap >= 0.0);
+        assert!(case.grid_border.is_finite() && case.grid_border >= 0.0);
     }
 }
 

@@ -141,6 +141,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "column-content-box-transfer", "column-target-min-width-clamp",
             "row-transfer-input-capped-by-fixed-column-span",
             "column-transfer-input-capped-by-fixed-row-span",
+            "fixed-gutter-column-suggestion-clamp",
+            "fixed-gutter-row-suggestion-clamp",
     };
     private static final String[] C131_COMPACT_SURFACE_CASE_IDS = {
             "visible", "clip-x", "clip-y", "clip-both", "clip-margin-padding",
@@ -235,6 +237,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return "width=8,height=4";
             case "column-transfer-input-capped-by-fixed-row-span":
                 return "width=4,height=8";
+            case "fixed-gutter-column-suggestion-clamp":
+                return "width=12,height=6";
+            case "fixed-gutter-row-suggestion-clamp":
+                return "width=6,height=12";
             case "spanning-auto-tracks":
                 return "width=100,height=30";
             case "spanning-min-content-items":
@@ -281,6 +287,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return "width=18,height=12";
             case "column-transfer-input-capped-by-fixed-row-span":
                 return "width=27,height=18";
+            case "fixed-gutter-column-suggestion-clamp":
+                return "width=36,height=24";
+            case "fixed-gutter-row-suggestion-clamp":
+                return "width=54,height=36";
             case "spanning-auto-tracks":
                 return "width=70,height=10";
             case "auto-fill-repeat":
@@ -392,6 +402,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "column-target-min-width-clamp":
             case "row-transfer-input-capped-by-fixed-column-span":
             case "column-transfer-input-capped-by-fixed-row-span":
+            case "fixed-gutter-column-suggestion-clamp":
+            case "fixed-gutter-row-suggestion-clamp":
                 break;
             default:
                 return true;
@@ -434,8 +446,27 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         double expectedRowContribution = 16.0;
         String expectedColumnContributionKind = "MinContent";
         String expectedRowContributionKind = "MinContent";
-        int expectedColumnSpan = "spanning-min-content-items".equals(sceneId) ? 2 : 1;
-        if ("row-transfer-input-capped-by-fixed-column-span".equals(sceneId)) {
+        int expectedColumnSpan = "spanning-min-content-items".equals(sceneId)
+                || "fixed-gutter-column-suggestion-clamp".equals(sceneId) ? 2 : 1;
+        int expectedRowSpan = "fixed-gutter-row-suggestion-clamp".equals(sceneId) ? 2 : 1;
+        if ("fixed-gutter-column-suggestion-clamp".equals(sceneId)) {
+            expectedColumns = new double[] {3.0, 3.0, 4.0};
+            expectedColumnGutters = new boolean[] {false, true, false};
+            expectedColumnContribution = 10.0;
+            expectedColumnContributionKind = "Minimum";
+            expectedRows = new double[] {10.0 / 1.5};
+            expectedRowContribution = 10.0 / 1.5;
+            expectedRowContributionKind = "Minimum";
+        } else if ("fixed-gutter-row-suggestion-clamp".equals(sceneId)) {
+            expectedColumns = new double[] {15.0};
+            expectedColumnGutters = new boolean[] {false};
+            expectedColumnContribution = 15.0;
+            expectedColumnContributionKind = "Minimum";
+            expectedRows = new double[] {3.0, 3.0, 4.0};
+            expectedRowGutters = new boolean[] {false, true, false};
+            expectedRowContribution = 10.0;
+            expectedRowContributionKind = "Minimum";
+        } else if ("row-transfer-input-capped-by-fixed-column-span".equals(sceneId)) {
             expectedColumns = new double[] {18.0};
             expectedColumnGutters = new boolean[] {false};
             expectedColumnContribution = 18.0;
@@ -527,18 +558,56 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || "column-opposite-min-over-max".equals(sceneId)
                 || "column-border-box-transfer".equals(sceneId)
                 || "column-content-box-transfer".equals(sceneId)
-                || "column-transfer-input-capped-by-fixed-row-span".equals(sceneId);
-        if (passes == null || passes.length() != (repeatedColumnSizing ? 3 : 2)) return false;
+                || "column-transfer-input-capped-by-fixed-row-span".equals(sceneId)
+                || "fixed-gutter-column-suggestion-clamp".equals(sceneId)
+                || "fixed-gutter-row-suggestion-clamp".equals(sceneId);
+        boolean repeatedRowSizing = "fixed-gutter-column-suggestion-clamp".equals(sceneId)
+                || "fixed-gutter-row-suggestion-clamp".equals(sceneId);
+        int expectedPassCount = repeatedRowSizing ? 4 : repeatedColumnSizing ? 3 : 2;
+        if (passes == null || passes.length() != expectedPassCount) return false;
         boolean firstColumnAndRowsMatch = c114ImageTrackPassMatches(passes.optJSONObject(0), "Columns",
                         expectedColumns, expectedColumnGutters, expectedColumnContribution,
                         expectedColumnSpan, expectedColumnContributionKind)
                 && c114ImageTrackPassMatches(passes.optJSONObject(1), "Rows",
-                        expectedRows, expectedRowGutters, expectedRowContribution, 1,
+                        expectedRows, expectedRowGutters, expectedRowContribution, expectedRowSpan,
                         expectedRowContributionKind);
-        return firstColumnAndRowsMatch && (!repeatedColumnSizing
+        boolean passesMatch = firstColumnAndRowsMatch && (!repeatedColumnSizing
                 || c114ImageTrackPassMatches(passes.optJSONObject(2), "Columns",
                         expectedColumns, expectedColumnGutters, expectedColumnContribution,
                         expectedColumnSpan, expectedColumnContributionKind));
+        if (repeatedRowSizing) {
+            passesMatch = passesMatch && c114ImageTrackPassMatches(passes.optJSONObject(3), "Rows",
+                    expectedRows, expectedRowGutters, expectedRowContribution, expectedRowSpan,
+                    expectedRowContributionKind);
+        }
+        return passesMatch && c114FixedGutterSuggestionTraceMatches(sceneId, passes);
+    }
+
+    private static boolean c114FixedGutterSuggestionTraceMatches(
+            String sceneId, org.json.JSONArray passes
+    ) throws org.json.JSONException {
+        int passIndex;
+        if ("fixed-gutter-column-suggestion-clamp".equals(sceneId)) {
+            passIndex = 0;
+        } else if ("fixed-gutter-row-suggestion-clamp".equals(sceneId)) {
+            passIndex = 1;
+        } else {
+            return true;
+        }
+        org.json.JSONObject pass = passes.optJSONObject(passIndex);
+        org.json.JSONArray contributions = pass == null ? null : pass.optJSONArray("contributions");
+        if (contributions == null) return false;
+        for (int index = 0; index < contributions.length(); index++) {
+            org.json.JSONObject contribution = contributions.optJSONObject(index);
+            if (contribution == null || contribution.optInt("item", -1) != 2
+                    || !"Minimum".equals(contribution.optString("kind"))) continue;
+            String source = contribution.optString("minimumSource");
+            return source.contains("PreferredSize")
+                    && source.contains("fixed_track_sum: Some(7.0)")
+                    && source.contains("fixed_gutter_sum: Some(3.0)")
+                    && source.contains("fixed_track_limit: Some(10.0)");
+        }
+        return false;
     }
     private static boolean c114ImageTrackPassMatches(
             org.json.JSONObject pass,
@@ -614,8 +683,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "column-target-min-width-clamp":
             case "row-transfer-input-capped-by-fixed-column-span":
             case "column-transfer-input-capped-by-fixed-row-span":
+            case "fixed-gutter-column-suggestion-clamp":
+            case "fixed-gutter-row-suggestion-clamp":
+                String imageXy = sceneId.startsWith("fixed-gutter-") ? "x=1,y=1," : "x=0,y=0,";
                 return "node_frames_css_px=[0:node=1,x=0,y=0," + c114ExpectedRootFrame(sceneId)
-                        + ";1:node=2,x=0,y=0," + c114ExpectedItemFrame(sceneId) + "]";
+                        + ";1:node=2," + imageXy + c114ExpectedItemFrame(sceneId) + "]";
             default:
                 return null;
         }
@@ -625,6 +697,40 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        boolean fixedGutterColumn = "fixed-gutter-column-suggestion-clamp".equals(sceneId);
+        boolean fixedGutterRow = "fixed-gutter-row-suggestion-clamp".equals(sceneId);
+        if (fixedGutterColumn || fixedGutterRow) {
+            if (samples.size() != 4) return false;
+            boolean border = false;
+            boolean inside = false;
+            boolean right = false;
+            boolean below = false;
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                switch (sample.id) {
+                    case "grid-border":
+                        border = sample.xCssPx == 0 && sample.yCssPx == 2;
+                        if (!border) return false;
+                        break;
+                    case "inside-item":
+                        inside = sample.xCssPx == 2 && sample.yCssPx == 2;
+                        if (!inside) return false;
+                        break;
+                    case "right-of-grid":
+                        right = sample.xCssPx == (fixedGutterColumn ? 12 : 6)
+                                && sample.yCssPx == 2;
+                        if (!right) return false;
+                        break;
+                    case "below-grid":
+                        below = sample.xCssPx == 2
+                                && sample.yCssPx == (fixedGutterColumn ? 6 : 12);
+                        if (!below) return false;
+                        break;
+                    default:
+                        return false;
+                }
+            }
+            return border && inside && right && below;
+        }
         if (samples.size() != 3) return false;
         boolean itemInsideRoot = false;
         boolean itemOutsideRoot = false;
@@ -1487,7 +1593,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "fixed-small-track-overflow".equals(pixelMatrixSceneId)
                         || "column-auto-natural-ratio".equals(pixelMatrixSceneId)
                         || "row-transfer-input-capped-by-fixed-column-span".equals(pixelMatrixSceneId)
-                        || "column-transfer-input-capped-by-fixed-row-span".equals(pixelMatrixSceneId))
+                        || "column-transfer-input-capped-by-fixed-row-span".equals(pixelMatrixSceneId)
+                        || "fixed-gutter-column-suggestion-clamp".equals(pixelMatrixSceneId)
+                        || "fixed-gutter-row-suggestion-clamp".equals(pixelMatrixSceneId))
                         && c114GridTrackSizingRunId.equals(pixelMatrixRunId)
                 : c1133GridTemplateAreasRequested
                 ? C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(pixelMatrixSceneId)
@@ -4925,6 +5033,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int[] c114GridExpectedRgb(String sampleId) {
         switch (sampleId) {
+            case "grid-border":
+                return new int[] {34, 197, 94};
             case "item-inside-root":
             case "item-overflow-beyond-root":
             case "inside-item":

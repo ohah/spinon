@@ -612,6 +612,8 @@ mod fixed_position_tests;
 #[cfg(test)]
 mod grid_chrome_oracle_tests;
 #[cfg(test)]
+mod grid_image_ratio_fixed_gutter_tests;
+#[cfg(test)]
 mod grid_image_ratio_oracle_tests;
 #[cfg(test)]
 #[path = "intrinsic_size_tests.rs"]
