@@ -1,0 +1,38 @@
+{
+  "pass": "pass12",
+  "browser": {
+    "tool": "Agent Browser",
+    "version": "0.31.1",
+    "namespace": "spint12",
+    "session": "c114t12"
+  },
+  "close_command": {
+    "command": "agent-browser --session c114t12 --namespace spint12 close",
+    "exit_code": 0,
+    "browser_closed": true
+  },
+  "before_close": {
+    "daemon_pid": 94273,
+    "chrome_pid": 94274,
+    "launched_browser": true
+  },
+  "after_close": {
+    "session_active": false,
+    "session_pid": null,
+    "browser_launched": false,
+    "page_count": 0,
+    "owned_daemon_process_absent": true,
+    "owned_chrome_process_tree_absent": true
+  },
+  "preserved_processes": [
+    {
+      "pid": 74457,
+      "reason": "기존 타 작업 Agent Browser daemon; 이 작업에서 시작하지 않음"
+    },
+    {
+      "pid": 1191,
+      "reason": "기존 Tailnet preview server; 127.0.0.1:8768에서 계속 listen"
+    }
+  ],
+  "note": "전용 session과 Chrome을 닫은 뒤 전용 daemon도 종료됐다. 후속 session info는 active=false/pid=null을 반환했다."
+}

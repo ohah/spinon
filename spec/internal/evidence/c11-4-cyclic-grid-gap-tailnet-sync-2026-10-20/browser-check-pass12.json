@@ -1,0 +1,107 @@
+{
+  "pass": "pass12",
+  "browser": {
+    "tool": "Agent Browser",
+    "version": "0.31.1",
+    "namespace": "spint12",
+    "session": "c114t12",
+    "temporary_headless_chrome": "Chrome 155.0.8059.85"
+  },
+  "preview": {
+    "origin": "https://macstudio.tailed42f2.ts.net",
+    "base_path": "/spinon/"
+  },
+  "pages": [
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/README.html",
+      "title": "C11.4 percentage/calc gap 병합 뒤 Tailnet 미리보기 갱신 - 스피논 문서",
+      "observed": "공백이 포함된 host path 대신 일반적인 미리보기 루트 설명이 표시된다. 잘린 host-path-redacted 문구와 절대 사용자 경로는 보이지 않는다. C11.4 미완료 범위와 pass10/pass11 결과가 보이고, pass10 캡처 4장이 모두 로드된다.",
+      "screenshot": "final-tailnet-sync-agent-browser-pass12.png",
+      "screenshot_px": [
+        1280,
+        633
+      ],
+      "screenshot_bytes": 127815
+    },
+    {
+      "path": "roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "observed": "PR #359 링크 1개, cyclic gap 요약 및 전체 C11.4/WPT/실기기 한계 문구가 보인다."
+    },
+    {
+      "path": "STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "observed": "Tailnet 갱신 항목이 보이고 C11.4 checkbox는 checked=false다."
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "title": "C11.4 · CSS Grid track sizing 계획 - 스피논 문서",
+      "observed": "cyclic gap 관련 근거 및 Tailnet 보고서 링크가 /spinon/ 안의 올바른 route다."
+    }
+  ],
+  "correction": {
+    "generic_preview_description_visible": true,
+    "broken_redaction_visible": false,
+    "absolute_user_path_visible": false
+  },
+  "embedded_screenshots": {
+    "count": 4,
+    "all_loaded": true,
+    "each_px": [
+      1280,
+      633
+    ]
+  },
+  "html_routes": {
+    "route_count": 36,
+    "same_origin_out_of_base_count": 0,
+    "all_routes_in_base": true,
+    "routes": [
+      "0001-conformance.html",
+      "404.html",
+      "STATUS.html",
+      "internal/0059-c11-grid-layout.html",
+      "internal/README.html",
+      "internal/evidence/c11-4-cyclic-grid-gap-precomparison-2026-10-20/README.html",
+      "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/README.html",
+      "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pr-diff-review-20.html",
+      "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/sync-review-20.html",
+      "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+      "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html",
+      "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.html",
+      "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.html",
+      "plan/c11-4-grid-track-sizing.html",
+      "plan/c11-4-image-ratio-fixed-gutter.html",
+      "plan/c11-css-grid.html",
+      "roadmap.html",
+      "spec/internal/0059-c11-grid-layout.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html"
+    ],
+    "outside_same_origin_links": [],
+    "all_selected_responses_200_and_hash_matched": true,
+    "selected_file_count": 306,
+    "selected_files_200_sha256_match": 306
+  },
+  "browser_page_errors": [],
+  "limitations": [
+    "문서 미리보기만 확인했다. pass12는 앱 실행이나 simulator/실기기 검증이 아니다.",
+    "C11.4 checkbox와 완료 수는 그대로 미완료 상태다."
+  ]
+}
