@@ -314,7 +314,7 @@ pub(super) fn attach(
                 Some(error.to_string()),
             )
         })?;
-    for (&owner, _) in &text_indices {
+    for &owner in text_indices.keys() {
         let render_box = scene
             .boxes()
             .iter()

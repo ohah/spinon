@@ -346,6 +346,93 @@ fn grid_text_intrinsic_input_preserves_minmax_beyond_definite_callback_trace() {
 }
 
 #[test]
+fn out_of_span_auto_track_does_not_change_text_item_minimum() {
+    fn layout(
+        columns: Vec<GridTrackSize>,
+        column_start: i32,
+        column_end: i32,
+    ) -> crate::LayoutOutput {
+        let mut grid_input = input(100.0, "XXXXXXXX", WhiteSpaceMode::NoWrap);
+        grid_input.nodes[0].style.display = LayoutDisplay::Grid;
+        grid_input.nodes[1].style.width = LayoutDimension::Auto;
+        grid_input.nodes[1].style.height = LayoutDimension::Auto;
+        grid_input.grid_containers.insert(
+            node(1),
+            GridContainerInput {
+                columns,
+                rows: vec![GridTrackSize::LengthPx(10.0)],
+                placement_mode: GridPlacementMode::TrackSizing,
+                ..GridContainerInput::default()
+            },
+        );
+        grid_input.grid_items.insert(
+            node(2),
+            GridItemInput {
+                row_start: GridPlacementInput::Line(1),
+                row_end: GridPlacementInput::Line(2),
+                column_start: GridPlacementInput::Line(column_start),
+                column_end: GridPlacementInput::Line(column_end),
+            },
+        );
+
+        TaffyLayoutEngine
+            .compute_with_text_layout_engine(&grid_input, &text_engine())
+            .unwrap()
+    }
+
+    fn item_width(columns: Vec<GridTrackSize>, column_start: i32, column_end: i32) -> f32 {
+        layout(columns, column_start, column_end).frames[&node(2)].width
+    }
+
+    let fixed_only = item_width(vec![GridTrackSize::LengthPx(20.0)], 1, 2);
+    let auto_outside_span = item_width(
+        vec![GridTrackSize::LengthPx(20.0), GridTrackSize::Auto],
+        1,
+        2,
+    );
+    let flex_outside_span = item_width(
+        vec![GridTrackSize::LengthPx(20.0), GridTrackSize::Fraction(1.0)],
+        1,
+        2,
+    );
+    let auto_inside_layout = layout(
+        vec![GridTrackSize::Auto, GridTrackSize::LengthPx(20.0)],
+        1,
+        2,
+    );
+    let auto_inside_span = auto_inside_layout.frames[&node(2)].width;
+
+    assert_eq!(fixed_only, 20.0);
+    assert_eq!(auto_outside_span, fixed_only);
+    assert_eq!(flex_outside_span, fixed_only);
+    assert_eq!(auto_inside_span, 80.0);
+
+    let auto_minimum = auto_inside_layout
+        .grid_track_sizing_traces
+        .iter()
+        .flat_map(|trace| trace.passes.iter())
+        .flat_map(|pass| pass.contributions.iter())
+        .find(|contribution| {
+            contribution.item == node(2)
+                && contribution.kind == crate::LayoutGridTrackSizingContributionKind::Minimum
+        })
+        .expect("the auto track should request a minimum contribution");
+    assert_eq!(auto_minimum.value, 80.0);
+    assert!(matches!(
+        auto_minimum.minimum_source,
+        Some(
+            crate::LayoutGridTrackSizingMinimumContributionSource::AutomaticMinimum {
+                spans_auto_min_track: true,
+                spans_multiple_tracks: false,
+                spans_flexible_max_track: false,
+                content_based: true,
+                ..
+            }
+        )
+    ));
+}
+
+#[test]
 fn zero_width_block_keeps_text_advance_outside_its_box() {
     let zero_input = input(0.0, "X", WhiteSpaceMode::Normal);
     let output = TaffyLayoutEngine
@@ -421,3 +508,6 @@ mod c15_2;
 
 #[path = "c15_text_layout_tests/c15_2b.rs"]
 mod c15_2b;
+
+#[path = "c15_text_layout_tests/grid_chrome_oracle.rs"]
+mod grid_chrome_oracle;

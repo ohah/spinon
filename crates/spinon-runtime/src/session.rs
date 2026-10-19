@@ -162,6 +162,7 @@ enum RuntimeCssProfile {
     BlockFlexGridAutoPlacementFixture,
     BlockFlexGridDenseAutoPlacementFixture,
     BlockFlexGridTemplateFixture,
+    BlockFlexGridTrackSizingFixture,
 }
 
 enum Command {
@@ -456,6 +457,12 @@ impl RuntimeSession {
         Self::new_with_css_profile(RuntimeCssProfile::BlockFlexGridTemplateFixture)
     }
 
+    /// C11.4 Grid intrinsic track-sizing fixture 전용 runtime을 만듭니다.
+    pub fn new_runtime_gpu_block_flex_grid_track_sizing_fixture() -> Result<(Self, String), String>
+    {
+        Self::new_with_css_profile(RuntimeCssProfile::BlockFlexGridTrackSizingFixture)
+    }
+
     fn new_with_css_profile(profile: RuntimeCssProfile) -> Result<(Self, String), String> {
         Self::new_with_css_profile_and_root_html(profile, None, None)
     }
@@ -526,6 +533,9 @@ impl RuntimeSession {
             }
             RuntimeCssProfile::BlockFlexGridTemplateFixture => {
                 RuntimeUaCascadeCoordinator::new_runtime_gpu_block_flex_grid_template()?
+            }
+            RuntimeCssProfile::BlockFlexGridTrackSizingFixture => {
+                RuntimeUaCascadeCoordinator::new_runtime_gpu_block_flex_grid_track_sizing()?
             }
         };
         let css_worker_ready_us = ua_cascade.startup_duration_us();

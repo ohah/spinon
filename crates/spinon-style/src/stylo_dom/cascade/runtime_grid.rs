@@ -116,6 +116,18 @@ pub(super) fn runtime_block_flex_grid_template_properties() -> Vec<(&'static str
     properties
 }
 
+pub(super) fn runtime_block_flex_grid_track_sizing_author_properties() -> Vec<&'static str> {
+    let mut properties = runtime_block_flex_grid_template_author_properties();
+    if !properties.contains(&"aspect-ratio") {
+        properties.push("aspect-ratio");
+    }
+    properties
+}
+
+pub(super) fn runtime_block_flex_grid_track_sizing_properties() -> Vec<(&'static str, LonghandId)> {
+    runtime_block_flex_grid_template_properties()
+}
+
 /// C11.1 explicit Grid tracks와 기존 Block/Flex 입력을 같은 cascade에서 계산합니다.
 pub fn compute_runtime_block_flex_grid_cascade_with_stylesheets(
     view: &StyloDocumentView,
@@ -201,6 +213,23 @@ pub fn compute_runtime_block_flex_grid_template_cascade_with_stylesheets(
     )
 }
 
+/// C11.4 intrinsic track-sizing 입력을 포함하는 누적 Grid profile입니다.
+pub fn compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
+    compute_cascade(
+        view,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        &runtime_block_flex_grid_track_sizing_properties(),
+        ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+    )
+}
+
 /// C11.1 inline Grid cascade 밖 선언을 찾습니다.
 pub fn first_unsupported_runtime_block_flex_grid_inline_property(
     view: &StyloDocumentView,
@@ -246,6 +275,16 @@ pub fn first_unsupported_runtime_block_flex_grid_template_inline_property(
     view: &StyloDocumentView,
 ) -> Option<(NodeId, String)> {
     let allowed = runtime_block_flex_grid_template_author_properties();
+    super::runtime_layout::first_unsupported_inline_property(view, |property| {
+        allowed.contains(&property)
+    })
+}
+
+/// C11.4 inline cascade에서 지원하지 않는 author 속성을 찾습니다.
+pub fn first_unsupported_runtime_block_flex_grid_track_sizing_inline_property(
+    view: &StyloDocumentView,
+) -> Option<(NodeId, String)> {
+    let allowed = runtime_block_flex_grid_track_sizing_author_properties();
     super::runtime_layout::first_unsupported_inline_property(view, |property| {
         allowed.contains(&property)
     })

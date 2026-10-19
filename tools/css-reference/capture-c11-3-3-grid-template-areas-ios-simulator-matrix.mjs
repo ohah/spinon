@@ -143,12 +143,14 @@ async function captureMatrix(simulator) {
   const build = command('mise', ['exec', '--', 'env',
     'SPINON_V8_DIR=' + (process.env.SPINON_V8_DIR ?? resolve(repositoryRoot, 'build/v8-source/v8')),
     'SPINON_ENABLE_C04_RUNTIME_GPU=1', 'SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1',
+    'SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST=1',
     'SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=1',
     'bun', 'run', 'build:ios-sim'], { timeout: 900_000 });
   await saveLog('build.log', build);
   const buildOutput = '' + build.stdout + build.stderr;
   const buildFlags = buildOutput.match(/^SPINON_IOS_SIM_BUILD_FLAGS (.*)$/m)?.[1];
   assert.ok(buildFlags?.includes('c04_runtime_gpu=1'), 'iOS runtime GPU fixture feature가 없습니다.');
+  assert.ok(buildFlags?.includes('c11_2_3_grid_fixture=1'), 'C11.2.3 Objective-C++ wrapper feature가 없습니다.');
   assert.ok(buildFlags?.includes('c11_grid_metal_surface_pixels=1'), 'iOS Metal pixel test feature가 없습니다.');
   const appSha256 = sha256(await readFile(iosBinaryPath));
   await saveLog('install.log', command('xcrun', ['simctl', 'install', simulator.udid, iosAppPath]));

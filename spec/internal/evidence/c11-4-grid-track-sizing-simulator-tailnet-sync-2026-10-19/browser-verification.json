@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-19",
+  "browser": "Agent Browser 0.31.1",
+  "routes": [
+    {
+      "path": "/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "checks": {
+        "c114Visible": true,
+        "taffy015Visible": true,
+        "simulatorEvidenceVisible": true
+      },
+      "screenshot": "tailnet-roadmap-agent-browser.png"
+    },
+    {
+      "path": "/spinon/STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "checks": {
+        "c114RowPresent": true,
+        "c114Incomplete": true,
+        "referenceDate": "2026-10-19"
+      },
+      "screenshot": "tailnet-status-agent-browser.png"
+    },
+    {
+      "path": "/spinon/plan/c11-4-grid-track-sizing.html",
+      "title": "C11.4 · CSS Grid track sizing 계획 - 스피논 문서",
+      "checks": {
+        "trackSizingReviewLinkPresent": true,
+        "currentInputBoundaryPresent": true
+      },
+      "screenshot": "tailnet-plan-agent-browser.png"
+    },
+    {
+      "path": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/track-sizing-pr-diff-review-30-2026-10-19.html",
+      "title": "C11.4 track sizing PR 변경 적대 검토 30개 - 스피논 문서",
+      "checks": {
+        "reviewTableRows": 30,
+        "incompleteConclusionPresent": true
+      },
+      "screenshot": "tailnet-review-agent-browser.png"
+    },
+    {
+      "path": "/spinon/internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/auto-repeat/README.html",
+      "title": "C11.4 CSS auto-repeat·Grid overflow Simulator 후속 - 스피논 문서",
+      "images": [
+        { "file": "auto-fill-track-overflow.b849cb8a10.png", "complete": true, "width": 1080, "height": 2400 },
+        { "file": "auto-fill-track-overflow.f06c4ca7e8.png", "complete": true, "width": 1206, "height": 2622 }
+      ],
+      "screenshot": "tailnet-auto-repeat-agent-browser.png"
+    }
+  ],
+  "javascriptErrors": [],
+  "browserClosed": true,
+  "agentBrowserSessionsAfterClose": [],
+  "previewServerPid1191Retained": true
+}

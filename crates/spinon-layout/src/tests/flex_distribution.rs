@@ -326,12 +326,21 @@ fn assert_case_matches_chromium(case: &CapturedCase) {
             .compute(&input)
             .unwrap_or_else(|error| panic!("{} Taffy layout 실패: {error}", case.id));
         let root_reference = root.rect;
+        let actual_root = actual.frames[&ids[&root.id]];
         for node in subtree {
             let actual_frame = actual.frames[&ids[&node.id]];
             let expected_frame = node.rect;
             for (field, actual_value, expected_value) in [
-                ("x", actual_frame.x, expected_frame.x - root_reference.x),
-                ("y", actual_frame.y, expected_frame.y - root_reference.y),
+                (
+                    "x",
+                    actual_frame.x - actual_root.x,
+                    expected_frame.x - root_reference.x,
+                ),
+                (
+                    "y",
+                    actual_frame.y - actual_root.y,
+                    expected_frame.y - root_reference.y,
+                ),
                 ("width", actual_frame.width, expected_frame.width),
                 ("height", actual_frame.height, expected_frame.height),
             ] {

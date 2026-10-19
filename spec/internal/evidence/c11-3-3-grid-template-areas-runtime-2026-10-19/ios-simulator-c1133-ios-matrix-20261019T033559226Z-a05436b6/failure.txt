@@ -1,0 +1,13 @@
+Error: mise exec -- env SPINON_V8_DIR=/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8 SPINON_ENABLE_C04_RUNTIME_GPU=1 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=1 bun run build:ios-sim 실패: $ bash tools/build-ios-sim.sh
+** BUILD FAILED **
+
+
+The following build commands failed:
+	CompileC /tmp/spinon-c11-4-grid-item-contribution-inputs-20261019/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/Objects-normal/arm64/SpinonRunner.o /tmp/spinon-c11-4-grid-item-contribution-inputs-20261019/platforms/ios/Sources/SpinonRunner.mm normal arm64 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler (in target 'SpinonBootstrap' from project 'SpinonBootstrap')
+	Building project SpinonBootstrap with scheme SpinonBootstrap
+(2 failures)
+error: script "build:ios-sim" exited with code 65
+
+    at command (file:///private/tmp/spinon-c11-4-grid-item-contribution-inputs-20261019/tools/css-reference/capture-c11-3-3-grid-template-areas-ios-simulator-matrix.mjs:50:19)
+    at captureMatrix (file:///private/tmp/spinon-c11-4-grid-item-contribution-inputs-20261019/tools/css-reference/capture-c11-3-3-grid-template-areas-ios-simulator-matrix.mjs:143:17)
+    at file:///private/tmp/spinon-c11-4-grid-item-contribution-inputs-20261019/tools/css-reference/capture-c11-3-3-grid-template-areas-ios-simulator-matrix.mjs:307:26

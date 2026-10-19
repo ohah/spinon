@@ -21,12 +21,14 @@ use spinon_style::{
     compute_runtime_block_flex_grid_dense_auto_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_template_cascade_with_stylesheets,
+    compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets,
     compute_runtime_flex_paint_cascade, compute_s04_flex_paint_cascade,
     first_unsupported_runtime_block_flex_grid_auto_placement_inline_property,
     first_unsupported_runtime_block_flex_grid_dense_auto_placement_inline_property,
     first_unsupported_runtime_block_flex_grid_inline_property,
     first_unsupported_runtime_block_flex_grid_placement_inline_property,
     first_unsupported_runtime_block_flex_grid_template_inline_property,
+    first_unsupported_runtime_block_flex_grid_track_sizing_inline_property,
 };
 
 use crate::StyleLayoutError;
@@ -185,6 +187,33 @@ pub fn compute_runtime_block_flex_grid_template_style_layout(
     compute_runtime_style_layout(snapshot, root, computed_styles, viewport)
 }
 
+/// C11.4 intrinsic Grid track sizing profile을 cascade부터 Taffy까지 연결합니다.
+pub fn compute_runtime_block_flex_grid_track_sizing_style_layout(
+    snapshot: &HostDocumentSnapshot,
+    view: &StyloDocumentView,
+    root: HostNodeHandle,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    assert_view_matches_snapshot(snapshot, view)?;
+    if view.mount_root_element().handle() != Some(root) {
+        return Err(StyleLayoutError::SnapshotMismatch { field: "root" });
+    }
+    if let Some((node, property)) =
+        first_unsupported_runtime_block_flex_grid_track_sizing_inline_property(view)
+    {
+        return Err(StyleLayoutError::UnsupportedInlineProperty { node, property });
+    }
+    let computed_styles = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+        view,
+        author_stylesheets,
+        viewport,
+        style_revision,
+    )?;
+    compute_runtime_style_layout(snapshot, root, computed_styles, viewport)
+}
+
 /// C04.2 profile로 Stylo cascade를 계산하고 HostDocument subtree를 Taffy에 전달합니다.
 pub fn compute_style_layout(
     snapshot: &HostDocumentSnapshot,
@@ -304,6 +333,7 @@ pub fn compute_runtime_style_layout(
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     );
     compute_layout_from_styles(
         snapshot,
@@ -386,6 +416,7 @@ pub fn compute_runtime_style_layout_with_intrinsic_size_snapshot(
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     );
     compute_layout_from_styles(
         snapshot,
@@ -459,7 +490,8 @@ fn compute_profile_layout(
         | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
         | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
         | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
-        | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1 => {
+        | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+        | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 => {
             return Err(StyleLayoutError::UnsupportedProfile {
                 profile: format!("{profile:?}"),
             });
@@ -519,6 +551,7 @@ fn compute_layout_from_styles_with_text(
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     ) {
         for element in computed_styles.elements.iter() {
             let display = element.properties.get("display").ok_or(
@@ -547,7 +580,8 @@ fn compute_layout_from_styles_with_text(
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
-                | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1 => {
+                | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 => {
                     matches!(
                         display.as_str(),
                         "block" | "flow-root" | "flex" | "grid" | "none"
@@ -568,6 +602,7 @@ fn compute_layout_from_styles_with_text(
                             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
                             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
                             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                            | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
                     ) {
                         StyleLayoutError::UnsupportedComputedValue {
                             node: element.node_id,
@@ -678,6 +713,7 @@ fn compute_layout_from_styles_with_text(
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     ) {
         LayoutInput::from_host_document_with_viewport_containing_block(
             snapshot,
@@ -741,6 +777,7 @@ fn compute_layout_from_styles_with_text(
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     ) {
         zero_display_none_frames(snapshot, root, &styles, &mut layout);
     }

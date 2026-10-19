@@ -122,6 +122,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     };
     private static final String C1133_GRID_TEMPLATE_AREAS_REJECT_SCENE_ID =
             "area-track-count-mismatch";
+    private static final String[] C114_GRID_TRACK_SIZING_SCENE_IDS = {
+            "auto-fixed-width-item", "minmax-auto-fixed-width-item",
+            "fit-content-below-item-size", "spanning-auto-tracks",
+            "auto-fill-repeat", "auto-fit-collapse", "auto-fill-track-overflow",
+    };
     private static final String[] C131_COMPACT_SURFACE_CASE_IDS = {
             "visible", "clip-x", "clip-y", "clip-both", "clip-margin-padding",
             "clip-margin-content", "clip-margin-border", "clip-margin-hidden",
@@ -192,6 +197,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             if (candidate.equals(sceneId)) return true;
         }
         return "revision-reuse".equals(sceneId);
+    }
+    static boolean isC114GridTrackSizingScene(String sceneId) {
+        for (String candidate : C114_GRID_TRACK_SIZING_SCENE_IDS) {
+            if (candidate.equals(sceneId)) return true;
+        }
+        return false;
     }
     private static boolean isC1133GridTemplateAreasPixelSamples(
             List<SurfaceViewPixelCapture.Sample> samples
@@ -305,6 +316,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native long nativeCreateC1131GridRepeatHost();
     private static native long nativeCreateC1132GridNamedLinesHost();
     private static native long nativeCreateC1133GridTemplateAreasHost();
+    private static native long nativeCreateC114GridTrackSizingHost();
     private static native byte[] nativeC124WorkerStackResidencySample(long host);
     private static native long nativeCreateC1035PositionedFlexHost();
     private static native long nativeBeginPresentationUpdate(long host);
@@ -376,6 +388,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalC1132GridNamedLinesFixture(
             long host, String sceneId, String runId);
     private static native byte[] nativeEvalC1133GridTemplateAreasFixture(
+            long host, String sceneId, String runId);
+    private static native byte[] nativeEvalC114GridTrackSizingFixture(
             long host, String sceneId, String runId);
     private static native byte[] nativeEvalC124Source(long host, String source);
     private static native byte[] nativeEvalC1035PositionedFlexFixture(long host);
@@ -587,6 +601,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean c1132GridNamedLinesRequested;
     private final boolean c1133GridTemplateAreasRequested;
     private final String c1133GridTemplateAreasSceneId;
+    private final boolean c114GridTrackSizingRequested;
+    private final String c114GridTrackSizingSceneId;
+    private final String c114GridTrackSizingRunId;
     private final String c1121GridSceneId;
     private final String c1121GridRunId;
     private final String c1122GridSceneId;
@@ -944,9 +961,26 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || c1121GridPlacementRequested)) {
             throw new IllegalArgumentException("C11.3.3 Grid fixture 또는 profile 선택이 올바르지 않습니다");
         }
+        c114GridTrackSizingRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c114_grid_track_sizing", false);
+        String c114SceneId = activity.getIntent().getStringExtra("spinon_c114_grid_scene");
+        c114GridTrackSizingSceneId = c114SceneId == null
+                ? C114_GRID_TRACK_SIZING_SCENE_IDS[0] : c114SceneId;
+        String c114RunId = activity.getIntent().getStringExtra("spinon_c114_grid_run_id");
+        c114GridTrackSizingRunId = c114RunId == null ? "manual" : c114RunId;
+        if (c114GridTrackSizingRequested
+                && (!c114GridTrackSizingRunId.matches("[A-Za-z0-9_-]{1,80}")
+                        || !java.util.Arrays.asList(C114_GRID_TRACK_SIZING_SCENE_IDS)
+                                .contains(c114GridTrackSizingSceneId)
+                        || c1131GridRepeatRequested || c1132GridNamedLinesRequested
+                        || c1133GridTemplateAreasRequested || c1123GridAutoPlacementRequested
+                        || c1122GridAutoPlacementRequested || c1121GridPlacementRequested)) {
+            throw new IllegalArgumentException("C11.4 Grid fixture 또는 profile 선택이 올바르지 않습니다");
+        }
         c11GridFixtureRequested = c1121GridPlacementRequested || c1122GridAutoPlacementRequested
                 || c1123GridAutoPlacementRequested || c1131GridRepeatRequested
                 || c1132GridNamedLinesRequested || c1133GridTemplateAreasRequested
+                || c114GridTrackSizingRequested
                 || activity.getIntent()
                 .getBooleanExtra("spinon_c11_grid_fixture", false)
                 || activity.getIntent().getStringExtra("spinon_c11_grid_case") != null;
@@ -1049,7 +1083,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || flexOrderProbeRequested || flexAlignmentProbeRequested
                 || flexBaselineProbeRequested || c1035PositionedFlexProbeRequested;
         if (!c1131GridRepeatRequested && !c1132GridNamedLinesRequested
-                && !c1133GridTemplateAreasRequested
+                && !c1133GridTemplateAreasRequested && !c114GridTrackSizingRequested
                 && (c11GridSceneIndex < 0 || c11GridSceneIndex >= 10)) {
             throw new IllegalArgumentException("C11.1 scene index가 허용 범위 밖입니다");
         }
@@ -1087,6 +1121,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         : "SPINON · C15.3 WGPU glyph paint"
                 : c192BoxPaintOpacityProbeRequested
                 ? "SPINON · C19.2 box paint·opacity"
+                : c114GridTrackSizingRequested
+                ? "SPINON · C11.4 Grid track sizing"
                 : c1133GridTemplateAreasRequested
                 ? "SPINON · C11.3.3 Grid template areas"
                 : c1132GridNamedLinesRequested
@@ -1219,6 +1255,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "static/absolute clip border-strip oracle → WGPU · 400×160 CSS px"
                 : c131OverflowClipProbeRequested
                 ? "overflow clip·clip margin·positioned escape → WGPU"
+                : c114GridTrackSizingRequested
+                ? "V8 intrinsic Grid track sizing → Stylo → Taffy → WGPU · 320×240 CSS px"
                 : c1133GridTemplateAreasRequested
                 ? "V8 Grid template area placement → Stylo → Taffy → WGPU · 320×240 CSS px"
                 : c1132GridNamedLinesRequested
@@ -1751,7 +1789,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("C04.12 root HTML text paint fixture-test 옵션을 켜서 빌드해야 합니다.");
             return;
         }
-        long host = c1133GridTemplateAreasRequested
+        long host = c114GridTrackSizingRequested
+                ? nativeCreateC114GridTrackSizingHost()
+                : c1133GridTemplateAreasRequested
                 ? nativeCreateC1133GridTemplateAreasHost()
                 : c1132GridNamedLinesRequested
                 ? nativeCreateC1132GridNamedLinesHost()
@@ -1845,7 +1885,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     : c131CompactSurfaceMatrixProbeRequested ? 300
                     : c131BorderStripProbeRequested ? 400
                     : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 400
-                    : c1133GridTemplateAreasRequested
+                    : c114GridTrackSizingRequested || c1133GridTemplateAreasRequested
                     || c1132GridNamedLinesRequested || c1131GridRepeatRequested ? 320
                     : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                     || c1122GridAutoPlacementRequested || c1123GridAutoPlacementRequested
@@ -1869,6 +1909,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || rootHtmlTextPaintProbeRequested
                 || c123FixedPositionProbeRequested || c1131GridRepeatRequested
                 || c1132GridNamedLinesRequested || c1133GridTemplateAreasRequested
+                || c114GridTrackSizingRequested
                 ? 1.0f : density;
         String environment = decode(nativeSetEnvironment(
                 host,
@@ -1901,7 +1942,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     : !secondRevisionResult.startsWith("status=0 ") ? secondRevisionResult
                     : "status=-11 C11.3.3 same-host revision reuse assertion failed";
         } else {
-            result = c1133GridTemplateAreasRequested
+            result = c114GridTrackSizingRequested
+                ? decode(nativeEvalC114GridTrackSizingFixture(
+                        host, c114GridTrackSizingSceneId, c114GridTrackSizingRunId))
+                : c1133GridTemplateAreasRequested
                 ? decode(nativeEvalC1133GridTemplateAreasFixture(
                         host, c1133GridTemplateAreasSceneId,
                         c1133GridTemplateAreasRunId))
@@ -2109,7 +2153,44 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return;
             }
         }
-        if (c1133GridTemplateAreasRequested) {
+        if (c114GridTrackSizingRequested) {
+            String expectedRootFrame = "spanning-auto-tracks".equals(c114GridTrackSizingSceneId)
+                    ? "width=100,height=30" : "width=100,height=40";
+            String expectedItemFrame;
+            switch (c114GridTrackSizingSceneId) {
+                case "spanning-auto-tracks":
+                    expectedItemFrame = "width=70,height=10";
+                    break;
+                case "auto-fill-repeat":
+                    expectedItemFrame = "width=24,height=16";
+                    break;
+                case "auto-fit-collapse":
+                    expectedItemFrame = "width=96,height=16";
+                    break;
+                case "auto-fill-track-overflow":
+                    expectedItemFrame = "width=120,height=16";
+                    break;
+                default:
+                    expectedItemFrame = "width=24,height=16";
+                    break;
+            }
+            if (!result.startsWith("status=0 ") || !result.contains("layout=ready boxes=2")
+                    || !result.contains(expectedRootFrame)
+                    || !result.contains(expectedItemFrame)) {
+                Log.e(TAG, "SPINON_C114_GRID_ASSERTION_ERROR run_id="
+                        + c114GridTrackSizingRunId + " scene_id=" + c114GridTrackSizingSceneId
+                        + " expected_root_frame=" + expectedRootFrame
+                        + " expected_item_frame=" + expectedItemFrame + " report=" + result);
+                postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치");
+                return;
+            }
+            Log.i(TAG, "SPINON_C114_GRID_SUMMARY run_id=" + c114GridTrackSizingRunId
+                    + " scene_id=" + c114GridTrackSizingSceneId + " "
+                    + "expected_root_frame=" + expectedRootFrame + " "
+                    + "expected_item_frame=" + expectedItemFrame + " "
+                    + runtimeStatusSummary(result));
+            logNodeFrames("C114", c114GridTrackSizingSceneId, result);
+        } else if (c1133GridTemplateAreasRequested) {
             Log.i(TAG, "SPINON_C1133_GRID_EVAL_RUN run_id=" + c1133GridTemplateAreasRunId
                     + " scene_id=" + c1133GridTemplateAreasSceneId + " "
                     + runtimeStatusSummary(result));
@@ -2342,7 +2423,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "SPINON_C131_COMPACT_EVAL_RUN run_id=" + c131CompactSurfaceMatrixRunId + " "
                 : c131BorderStripProbeRequested
                 ? "SPINON_C131_BORDER_EVAL_RUN " : c131OverflowClipProbeRequested
-                ? "SPINON_C131_EVAL_RUN " : c1133GridTemplateAreasRequested
+                ? "SPINON_C131_EVAL_RUN " : c114GridTrackSizingRequested
+                ? "SPINON_C114_GRID_EVAL run_id=" + c114GridTrackSizingRunId
+                        + " scene_id=" + c114GridTrackSizingSceneId + " "
+                : c1133GridTemplateAreasRequested
                 ? "SPINON_C1133_GRID_EVAL run_id=" + c1133GridTemplateAreasRunId
                         + " scene_id=" + c1133GridTemplateAreasSceneId + " "
                 : c1132GridNamedLinesRequested
@@ -5117,6 +5201,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 && !c1122GridAutoPlacementRequested
                 && !c1123GridAutoPlacementRequested
                 && !c1131GridRepeatRequested
+                && !c1132GridNamedLinesRequested
+                && !c1133GridTemplateAreasRequested
+                && !c114GridTrackSizingRequested
                 && c11GridSceneIndex == 0) {
             requestC11GridSurfaceCapture(renderer, generation);
         }

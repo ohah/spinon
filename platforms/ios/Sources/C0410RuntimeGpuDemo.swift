@@ -12,6 +12,11 @@ private let c1133GridTemplateAreasSceneIDs: Set<String> = [
     "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",
     "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",
 ]
+private let c114GridTrackSizingSceneIDs: Set<String> = [
+    "auto-fixed-width-item", "minmax-auto-fixed-width-item",
+    "fit-content-below-item-size", "spanning-auto-tracks",
+    "auto-fill-repeat", "auto-fit-collapse", "auto-fill-track-overflow",
+]
 
 private struct C124MetalPixelCase {
     let direction: String
@@ -632,6 +637,19 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             $0.hasPrefix("--spinon-c1133-grid-run-id=")
         }).map { String($0.dropFirst("--spinon-c1133-grid-run-id=".count)) } ?? "manual"
     }
+    private var c114GridTrackSizingSceneID: String {
+        ProcessInfo.processInfo.arguments.first(where: {
+            $0.hasPrefix("--spinon-c114-grid-scene=")
+        }).map { String($0.dropFirst("--spinon-c114-grid-scene=".count)) }
+            ?? "auto-fixed-width-item"
+    }
+    private let c114GridTrackSizingProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c114-grid-track-sizing")
+    private var c114GridTrackSizingRunID: String {
+        ProcessInfo.processInfo.arguments.first(where: {
+            $0.hasPrefix("--spinon-c114-grid-run-id=")
+        }).map { String($0.dropFirst("--spinon-c114-grid-run-id=".count)) } ?? "manual"
+    }
     private var c11GridMetalPixelStatusName: String {
         c1133GridTemplateAreasProbeRequested ? "C11.3.3"
             : c1132GridNamedLinesProbeRequested ? "C11.3.2"
@@ -675,6 +693,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         c1121GridPlacementProbeRequested || c1122GridAutoPlacementProbeRequested
             || c1123GridAutoPlacementProbeRequested || c1131GridRepeatProbeRequested
             || c1132GridNamedLinesProbeRequested || c1133GridTemplateAreasProbeRequested
+            || c114GridTrackSizingProbeRequested
             || ProcessInfo.processInfo.arguments.contains("--spinon-c11-grid")
             || c11GridSceneArgument != nil || c111MetalPixelRun != nil
     }
@@ -1066,6 +1085,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "SPINON · C13.3 wheel fixture"
             : c133GestureFixtureRequested
             ? "SPINON · C13.3 iOS touch adapter"
+            : c114GridTrackSizingProbeRequested
+            ? "SPINON · C11.4 Grid track sizing"
             : c1133GridTemplateAreasProbeRequested
             ? "SPINON · C11.3.3 Grid template areas"
             : c1132GridNamedLinesProbeRequested
@@ -1179,6 +1200,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "Synthetic CSS px delta → Rust queue → scroll router → WGPU Metal"
             : c133GestureFixtureRequested
             ? "UIPanGestureRecognizer · bounded Rust queue/session → WGPU Metal · 400×240 CSS px"
+            : c114GridTrackSizingProbeRequested
+            ? "Intrinsic Grid track sizing → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
             : c1133GridTemplateAreasProbeRequested
             ? "Grid template area placement → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
             : c1132GridNamedLinesProbeRequested
@@ -2745,6 +2768,17 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             postStatus("실패 · C11.3.3 Grid fixture 또는 profile 선택이 올바르지 않습니다")
             return
         }
+        if c114GridTrackSizingProbeRequested
+            && (c114GridTrackSizingRunID.range(
+                of: "^[A-Za-z0-9_-]{1,80}$", options: .regularExpression) == nil
+                || !c114GridTrackSizingSceneIDs.contains(c114GridTrackSizingSceneID)
+                || c1131GridRepeatProbeRequested || c1132GridNamedLinesProbeRequested
+                || c1133GridTemplateAreasProbeRequested || c1123GridAutoPlacementProbeRequested
+                || c1122GridAutoPlacementProbeRequested || c1121GridPlacementProbeRequested) {
+            log("SPINON_C114_GRID_ARGUMENT_ERROR rejected=true")
+            postStatus("실패 · C11.4 Grid fixture 또는 profile 선택이 올바르지 않습니다")
+            return
+        }
         if c1123GridAutoPlacementProbeRequested
             && (!c1123GridAutoPlacementSceneIDs.contains(c1123GridSceneID)
                 || c1123GridRunID.range(
@@ -2766,6 +2800,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             && !c1131GridRepeatProbeRequested
             && !c1132GridNamedLinesProbeRequested
             && !c1133GridTemplateAreasProbeRequested
+            && !c114GridTrackSizingProbeRequested
             && c11GridSceneIndex == nil {
             log("SPINON_C111_GRID_ARGUMENT_ERROR rejected=true")
             postStatus("실패 · 알 수 없는 C11.1 Grid scene")
@@ -2890,6 +2925,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? c133GestureHostHandle
             : c132ScrollFixtureRequested
             ? SpinonRunner.createRuntimeGpuHostWithC13_2ScrollFixture()
+            : c114GridTrackSizingProbeRequested
+            ? SpinonRunner.createRuntimeGpuHostWithC11_4GridTrackSizingFixture()
             : c1133GridTemplateAreasProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC11_3_3GridTemplateAreasFixture()
             : c1132GridNamedLinesProbeRequested
@@ -3009,7 +3046,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || c123FixedPositionProbeRequested
             || c1122GridAutoPlacementProbeRequested
             || c1123GridAutoPlacementProbeRequested
-            ? 360 : c1131GridRepeatProbeRequested || fixedSizeCssFixtureRequested ? 320 : environmentInputs.width
+            ? 360 : c114GridTrackSizingProbeRequested || c1131GridRepeatProbeRequested
+                || fixedSizeCssFixtureRequested ? 320 : environmentInputs.width
         let viewportHeight: Float = imagePaintProbeRequested
             ? imageAsyncReplacementProbeRequested ? 88
             : imageObjectFitPositionProbeRequested ? 72 : 40
@@ -3021,7 +3059,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || c123FixedPositionProbeRequested
             || c1122GridAutoPlacementProbeRequested
             || c1123GridAutoPlacementProbeRequested
-            ? 800 : c1133GridTemplateAreasProbeRequested
+            ? 800 : c114GridTrackSizingProbeRequested || c1133GridTemplateAreasProbeRequested
                 || c1132GridNamedLinesProbeRequested || c1131GridRepeatProbeRequested
                 || fixedSizeCssFixtureRequested ? 240 : environmentInputs.height
         log("SPINON_C0410_ENVIRONMENT_REQUEST width=\(viewportWidth) height=\(viewportHeight)")
@@ -3031,7 +3069,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 ? environmentInputs.scale
             : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested
                 || c123FixedPositionProbeRequested || c1132GridNamedLinesProbeRequested
-                || c1133GridTemplateAreasProbeRequested || c132ScrollFixtureRequested
+                || c1133GridTemplateAreasProbeRequested || c114GridTrackSizingProbeRequested
+                || c132ScrollFixtureRequested
                 || c133GestureFixtureRequested || imagePaintProbeRequested
                 ? 1 : environmentInputs.scale
         let environment = SpinonRunner.setRuntimeGpuEnvironment(
@@ -3180,6 +3219,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 #if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
             result = SpinonRunner.evalRuntimeGpuC13_3GestureFixture(handle)
 #endif
+        } else if c114GridTrackSizingProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuC11_4GridTrackSizingFixture(
+                handle, sceneID: c114GridTrackSizingSceneID,
+                runID: c114GridTrackSizingRunID)
         } else if c1133GridTemplateAreasProbeRequested {
             result = SpinonRunner.evalRuntimeGpuC11_3_3GridTemplateAreasFixture(
                 handle, sceneID: c1133GridTemplateAreasSceneID,
@@ -3488,6 +3531,31 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 postStatus("실패 · C13.1 frame·hit-test 검증 결과 불일치")
                 return
             }
+        } else if c114GridTrackSizingProbeRequested {
+            let report = result ?? "status=-1 missing-report"
+            let rootFrame = c114GridTrackSizingSceneID == "spanning-auto-tracks"
+                ? "width=100,height=30" : "width=100,height=40"
+            let itemFrame: String
+            switch c114GridTrackSizingSceneID {
+            case "spanning-auto-tracks":
+                itemFrame = "width=70,height=10"
+            case "auto-fill-repeat":
+                itemFrame = "width=24,height=16"
+            case "auto-fit-collapse":
+                itemFrame = "width=96,height=16"
+            case "auto-fill-track-overflow":
+                itemFrame = "width=120,height=16"
+            default:
+                itemFrame = "width=24,height=16"
+            }
+            log("SPINON_C114_GRID_EVAL_RUN run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) \(runtimeStatusSummary(report))")
+            guard report.hasPrefix("status=0 "), report.contains("layout=ready boxes=2"),
+                  report.contains(rootFrame), report.contains(itemFrame) else {
+                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) report=\(report)")
+                postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치")
+                return
+            }
+            log("SPINON_C114_GRID_SUMMARY run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) \(runtimeStatusSummary(report))")
         } else if c1133GridTemplateAreasProbeRequested {
             log("SPINON_C1133_GRID_EVAL_RUN run_id=\(c1133GridTemplateAreasRunID) scene_id=\(c1133GridTemplateAreasSceneID) \(runtimeStatusSummary(result ?? "status=-1 missing-report"))")
             if let result, result.hasPrefix("status=0 ") {

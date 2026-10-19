@@ -1,0 +1,8 @@
+{
+  "session": "c114-tailnet-followup-20261019",
+  "close_command_result": "Browser closed",
+  "active_after_close": false,
+  "session_process_pid_after_close": null,
+  "chrome_or_chromium_processes_after_close": 0,
+  "verification": "agent-browser session info reported active=false and the named browser process was absent from the process table. The process scan found no Chrome or Chromium browser process; it saw only the short-lived verification commands themselves."
+}

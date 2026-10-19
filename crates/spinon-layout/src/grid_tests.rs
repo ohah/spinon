@@ -65,6 +65,8 @@ fn grid_input(
             GridContainerInput {
                 columns,
                 rows,
+                columns_auto_repeat: None,
+                rows_auto_repeat: None,
                 columns_line_names: Vec::new(),
                 rows_line_names: Vec::new(),
                 auto_flow: GridAutoFlow::Row,
@@ -100,6 +102,7 @@ fn definite_length_fraction_and_gap_tracks_auto_place_in_source_order() {
     assert_eq!(output.frames[&id(4)].y, 90.0);
     assert_eq!(output.frames[&id(5)].x, 105.0);
     assert_eq!(output.frames[&id(5)].y, 90.0);
+    assert!(output.grid_track_sizing_traces.is_empty());
 }
 
 #[test]
@@ -219,6 +222,109 @@ fn template_area_mode_stretches_definite_auto_sized_items_without_widening_dense
 }
 
 #[test]
+fn track_sizing_profile_honors_explicit_item_min_size() {
+    let mut input = grid_input(
+        vec![GridTrackSize::LengthPx(100.0)],
+        vec![GridTrackSize::LengthPx(80.0)],
+        1,
+        LayoutGap::default(),
+    );
+    input
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode = GridPlacementMode::TrackSizing;
+    input.nodes[1].style.width = LayoutDimension::Fixed(20.0);
+    input.nodes[1].style.height = LayoutDimension::Fixed(10.0);
+    input.nodes[1].style.min_width = LayoutDimension::Fixed(90.0);
+
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+    let frame = output.frames[&id(2)];
+
+    assert_eq!(frame.width, 90.0);
+}
+
+#[test]
+fn track_sizing_profile_accepts_zero_fraction_tracks() {
+    let mut input = grid_input(
+        vec![GridTrackSize::Fraction(0.0), GridTrackSize::Fraction(1.0)],
+        vec![GridTrackSize::LengthPx(80.0)],
+        2,
+        LayoutGap::default(),
+    );
+    input
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode = GridPlacementMode::TrackSizing;
+    input.nodes[1].style.width = LayoutDimension::Fixed(0.0);
+    input.nodes[2].style.width = LayoutDimension::Fixed(20.0);
+
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+
+    assert_eq!(output.frames[&id(3)].x, 0.0);
+    let trace = &output.grid_track_sizing_traces[0];
+    assert_eq!(trace.node, id(1));
+    assert!(trace.passes.iter().any(|pass| {
+        pass.axis == LayoutGridTrackSizingAxis::Columns
+            && pass.stages.iter().any(|stage| {
+                stage.stage == LayoutGridTrackSizingStageKind::Initialize
+                    && !stage.tracks.is_empty()
+            })
+            && pass
+                .stages
+                .iter()
+                .any(|stage| stage.stage == LayoutGridTrackSizingStageKind::ExpandFlexibleTracks)
+    }));
+    assert!(trace.passes.iter().any(|pass| {
+        pass.axis == LayoutGridTrackSizingAxis::Rows
+            && pass
+                .stages
+                .iter()
+                .any(|stage| stage.stage == LayoutGridTrackSizingStageKind::Initialize)
+    }));
+}
+
+#[test]
+fn auto_repeat_rejects_named_lines_through_the_layout_api() {
+    let mut columns = grid_input(
+        vec![GridTrackSize::LengthPx(80.0)],
+        vec![GridTrackSize::LengthPx(80.0)],
+        1,
+        LayoutGap::default(),
+    );
+    let container = columns.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::TrackSizing;
+    container.columns_auto_repeat = Some(GridAutoRepeatMode::AutoFill);
+    container.columns_line_names = vec![vec!["start".into()], vec!["end".into()]];
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&columns),
+        Err(LayoutError::InvalidGridTrackList {
+            node,
+            property: "grid-template-columns",
+        }) if node == id(1)
+    ));
+
+    let mut rows = grid_input(
+        vec![GridTrackSize::LengthPx(80.0)],
+        vec![GridTrackSize::LengthPx(80.0)],
+        1,
+        LayoutGap::default(),
+    );
+    let container = rows.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::TrackSizing;
+    container.rows_auto_repeat = Some(GridAutoRepeatMode::AutoFit);
+    container.rows_line_names = vec![vec!["top".into()], vec!["bottom".into()]];
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&rows),
+        Err(LayoutError::InvalidGridTrackList {
+            node,
+            property: "grid-template-rows",
+        }) if node == id(1)
+    ));
+}
+
+#[test]
 fn nested_grid_containers_classify_auto_and_explicit_items_independently() {
     let mut input = grid_input(
         vec![
@@ -256,6 +362,8 @@ fn nested_grid_containers_classify_auto_and_explicit_items_independently() {
         GridContainerInput {
             columns: vec![GridTrackSize::LengthPx(160.0)],
             rows: vec![GridTrackSize::LengthPx(120.0)],
+            columns_auto_repeat: None,
+            rows_auto_repeat: None,
             columns_line_names: Vec::new(),
             rows_line_names: Vec::new(),
             auto_flow: GridAutoFlow::Row,

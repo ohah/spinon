@@ -238,6 +238,11 @@ where
         super::calculation::RuntimeCalculationProfile::BlockFlexGridTemplate => {
             spinon_style::first_unsupported_runtime_block_flex_grid_template_inline_property(&view)
         }
+        super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing => {
+            spinon_style::first_unsupported_runtime_block_flex_grid_track_sizing_inline_property(
+                &view,
+            )
+        }
         super::calculation::RuntimeCalculationProfile::FlexPaint
         | super::calculation::RuntimeCalculationProfile::RegisteredPropertiesPaint => {
             first_unsupported_runtime_custom_properties_paint_inline_property(&view)

@@ -150,6 +150,68 @@ fn integer_repeat_accepts_author_stylesheet_declarations() {
 }
 
 #[test]
+fn track_sizing_profile_preserves_fixed_minimum_auto_repeat_modes() {
+    for (keyword, expected) in [
+        ("auto-fill", ComputedCssGridAutoRepeatMode::AutoFill),
+        ("auto-fit", ComputedCssGridAutoRepeatMode::AutoFit),
+    ] {
+        let fixture = fixture(&format!(
+            "display:grid;box-sizing:border-box;width:300px;height:200px;grid-template-columns:repeat({keyword},minmax(24px,1fr));grid-template-rows:40px;margin:0;padding:0"
+        ));
+        let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+            &fixture.view,
+            &[],
+            viewport(),
+            Default::default(),
+        )
+        .unwrap_or_else(|error| panic!("{keyword} cascade: {error:?}"));
+        let grid = snapshot.elements[0].grid_layout.as_ref().unwrap();
+
+        assert_eq!(grid.columns_auto_repeat, Some(expected), "{keyword}");
+        assert_eq!(grid.rows_auto_repeat, None, "{keyword}");
+        assert_eq!(grid.columns.len(), 1, "{keyword} retains one pattern track");
+        assert_eq!(grid.columns_line_names, Vec::<Vec<String>>::new());
+        assert_eq!(grid.rows, [ComputedCssGridTrackSize::LengthPx(40.0)]);
+    }
+}
+
+#[test]
+fn auto_repeat_rejects_profiles_and_shapes_outside_the_supported_subset() {
+    let template_fixture = fixture(
+        "display:grid;box-sizing:border-box;width:300px;height:200px;grid-template-columns:repeat(auto-fill,minmax(24px,1fr));grid-template-rows:40px;margin:0;padding:0",
+    );
+    assert!(
+        compute_runtime_block_flex_grid_template_cascade_with_stylesheets(
+            &template_fixture.view,
+            &[],
+            viewport(),
+            Default::default(),
+        )
+        .is_err()
+    );
+
+    for style in [
+        "grid-template-columns:20px repeat(auto-fill,minmax(24px,1fr))",
+        "grid-template-columns:repeat(auto-fit,[named] minmax(24px,1fr))",
+        "grid-template-columns:repeat(auto-fill,minmax(24px,1fr));grid-template-rows:repeat(auto-fit,minmax(24px,1fr))",
+    ] {
+        let fixture = fixture(&format!(
+            "display:grid;box-sizing:border-box;width:300px;height:200px;{style};margin:0;padding:0"
+        ));
+        assert!(
+            compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+                &fixture.view,
+                &[],
+                viewport(),
+                Default::default(),
+            )
+            .is_err(),
+            "accepted out-of-subset style: {style}"
+        );
+    }
+}
+
+#[test]
 fn integer_repeat_retains_duplicate_names_on_a_single_line() {
     let fixture = fixture(
         "display:grid;box-sizing:border-box;width:300px;height:200px;grid-template-columns:[same] repeat(2,[same] 30px [same]) [same] 30px [end];grid-template-rows:40px;margin:0;padding:0",

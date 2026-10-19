@@ -1,0 +1,54 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: /private/tmp/spinon-c11-4-grid-item-contribution-inputs-20261019
+warn    Current dist path: /private/tmp/spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final
+info    Rendering pages...
+success Pages rendered in 76 ms.
+ready   built in 0.57s (node)
+ready   built in 0.57s (web)
+
+File (web)                                                                                                                  Size        Gzip   
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/js/async/z.359c0d78fa.js                        0.10 kB     0.09 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/js/styles.6b76c4bafc.js                         0.47 kB     0.24 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/icon.svg                                               0.64 kB     0.42 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/js/async/route-a48746cae70c.6e1ea153ae.js       0.97 kB     0.54 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/js/async/route-7ba69fdd5843.31b56cd72d.js       7.8 kB      2.6 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/js/async/route-88dd13ea797a.86a35edb48.js       7.9 kB      2.9 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/js/async/route-8a8f8989207e.c8705ad685.js       10.5 kB     3.2 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/js/async/route-944b77bb8d60.4342e0d940.js       10.7 kB     3.7 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/js/async/route-7c1929efdede.9696b5cf4f.js       11.2 kB     3.9 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/js/async/route-129a98b9f115.2c06375db2.js       15.1 kB     5.0 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/js/index.1d69ac0921.js                          34.0 kB     12.2 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/js/lib-router.f115cf67cf.js                     35.4 kB     12.7 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/js/async/route-c2801b21f038.1e4c8d5388.js       39.3 kB     11.7 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/js/async/route-04cbcabea10a.c5b896ee0f.js       39.6 kB     11.8 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/js/async/route-c4dae6800800.e3924cfea5.js       62.2 kB     17.0 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/css/styles.8d918fd78e.css                       74.0 kB     14.2 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/image/auto-fill-track-overflow.b849cb8a10.png   77.3 kB  
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/image/auto-fill-track-overflow.f06c4ca7e8.png   144.7 kB 
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/js/6.cb8b86b995.js                              217.1 kB    72.0 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/js/lib-react.382571d6aa.js                      218.4 kB    68.8 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/search_index.ko.62e80a87.json                   358.1 kB    115.5 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/static/js/async/route-6c33a3943990.291619c7ad.js       404.0 kB    94.8 kB
+
+                                                                                                                   Total:   1769.3 kB   675.2 kB
+
+File (node)                                                                                                                                                                                Size       Gzip   
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/404.html                                                                                                              8.5 kB     2.6 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/index.html                                                                                                            19.4 kB    4.0 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/internal/evidence/c11-4-grid-track-sizing-trace-2026-10-19/README.html                                                26.6 kB    6.2 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/auto-repeat/README.html                                26.6 kB    5.9 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/current-implementation-review-20-2026-10-19.html   29.0 kB    7.2 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-015-existing-grid-regression.html            29.1 kB    7.0 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/README.html                                            29.8 kB    6.5 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/track-sizing-pr-diff-review-30-2026-10-19.html     31.8 kB    8.2 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/plan/c11-css-grid.html                                                                                                56.0 kB    15.1 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/plan/c11-4-grid-track-sizing.html                                                                                     59.5 kB    15.3 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/internal/0059-c11-grid-layout.html                                                                                    81.1 kB    20.6 kB
+../spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final/STATUS.html                                                                                                           383.1 kB   96.8 kB
+
+                                                                                                                                                                                  Total:   780.5 kB   195.4 kB
+

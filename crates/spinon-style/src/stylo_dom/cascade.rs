@@ -36,11 +36,13 @@ pub use runtime_grid::{
     compute_runtime_block_flex_grid_dense_auto_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_template_cascade_with_stylesheets,
+    compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets,
     first_unsupported_runtime_block_flex_grid_auto_placement_inline_property,
     first_unsupported_runtime_block_flex_grid_dense_auto_placement_inline_property,
     first_unsupported_runtime_block_flex_grid_inline_property,
     first_unsupported_runtime_block_flex_grid_placement_inline_property,
     first_unsupported_runtime_block_flex_grid_template_inline_property,
+    first_unsupported_runtime_block_flex_grid_track_sizing_inline_property,
 };
 pub use runtime_layout::{
     compute_runtime_flex_custom_properties_cascade,
@@ -128,8 +130,9 @@ pub use margin::compute_flex_media_environment_cascade;
 pub use snapshot::{
     CascadeDiagnostic, ComputedBorderPaint, ComputedCssDimension, ComputedCssEdges,
     ComputedCssGridArea, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
-    ComputedCssGridAutoRows, ComputedCssGridItemPlacement, ComputedCssGridLayout,
-    ComputedCssGridPlacement, ComputedCssGridTemplateAreas, ComputedCssGridTrackSize,
+    ComputedCssGridAutoRepeatMode, ComputedCssGridAutoRows, ComputedCssGridItemPlacement,
+    ComputedCssGridLayout, ComputedCssGridPlacement, ComputedCssGridTemplateAreas,
+    ComputedCssGridTrackBreadth, ComputedCssGridTrackLengthPercentage, ComputedCssGridTrackSize,
     ComputedCssMath, ComputedCssMaxSize, ComputedCssOpacity, ComputedCssOverflow,
     ComputedCssOverflowClipMargin, ComputedCssOverflowVisualBox, ComputedCssOverscrollBehavior,
     ComputedCssPosition, ComputedCssSpacingValue, ComputedCssTouchAction, ComputedCssVisibility,
@@ -571,7 +574,7 @@ fn compute_cascade_with_additional_user_agent_stylesheets(
     properties: &[(&str, LonghandId)],
     profile: ComputedStyleProfile,
 ) -> Result<ComputedStyleSnapshot, CssCascadeError> {
-    incremental::compute_cascade_with_reuse(
+    incremental::compute_cascade_with_reuse(incremental::CascadeComputeRequest {
         view,
         additional_user_agent_stylesheets,
         author_stylesheets,
@@ -579,8 +582,8 @@ fn compute_cascade_with_additional_user_agent_stylesheets(
         style_revision,
         properties,
         profile,
-        None,
-    )
+        reuse: None,
+    })
     .and_then(|result| match result {
         Some((snapshot, _)) => Ok(snapshot),
         None => Err(CssCascadeError::IncrementalReuseUnavailable),

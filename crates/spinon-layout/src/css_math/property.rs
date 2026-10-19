@@ -26,6 +26,8 @@ pub enum LayoutCssMathProperty {
     PaddingLeft,
     RowGap,
     ColumnGap,
+    GridTemplateColumns,
+    GridTemplateRows,
 }
 
 impl LayoutCssMathProperty {
@@ -52,6 +54,8 @@ impl LayoutCssMathProperty {
             Self::PaddingLeft => "padding-left",
             Self::RowGap => "row-gap",
             Self::ColumnGap => "column-gap",
+            Self::GridTemplateColumns => "grid-template-columns",
+            Self::GridTemplateRows => "grid-template-rows",
         }
     }
 

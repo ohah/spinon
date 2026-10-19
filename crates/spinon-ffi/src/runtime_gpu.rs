@@ -38,6 +38,8 @@ pub(crate) use fixtures::c11_3_2::c11_3_2_grid_named_line_runtime_source;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
 pub(crate) use fixtures::c11_3_3::c11_3_3_grid_template_areas_runtime_source;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
+pub(crate) use fixtures::c11_4::c11_4_grid_track_sizing_runtime_source;
+#[cfg(feature = "c04-runtime-gpu-fixture-test")]
 pub(crate) use fixtures::data::*;
 
 const ERR_ARGUMENT: i32 = -1;

@@ -1,0 +1,65 @@
+{
+  "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1123-i-mvepifpk-43cc2435-auto-span-at-track-limit",
+  "processId": 42671,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 12,
+    "renderTree": 3,
+    "environment": 1
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 2,
+  "matchedSamples": 2,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "item-c1123-auto-span-at-track-limit-span-at-maximum",
+      "css": [
+        319,
+        20
+      ],
+      "drawable": [
+        958,
+        61
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "surface-c1123-auto-span-at-track-limit-grid",
+      "css": [
+        199,
+        29
+      ],
+      "drawable": [
+        598,
+        88
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

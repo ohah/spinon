@@ -1,0 +1,1529 @@
+{
+  "schema": "spinon-c11-3-3-grid-template-areas-runtime-matrix-result/v1",
+  "status": "matched",
+  "runID": "c1133-matrix-20261019T033459682Z-49847934",
+  "target": "android-avd",
+  "metadata": {
+    "serial": "emulator-5554",
+    "model": "sdk_gphone16k_arm64",
+    "release": "17",
+    "sdk": 37,
+    "qemu": true,
+    "fingerprint": "google/sdk_gphone16k_arm64/emu64a16k:17/CP31.260623.012/16064790:userdebug/dev-keys",
+    "renderer": "GLES: Google (Google Inc. (Google)), Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)), OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))"
+  },
+  "fixture": {
+    "path": "tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json",
+    "sha256": "da0c3a09bbf2b2794dd46a57594d384c3fa02b4c046c8e5df47c40632c32306e"
+  },
+  "oracle": {
+    "product": "Chrome/154.0.8037.92",
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-bace2c635c76-953bb95b881a-6efbd2b256d1",
+    "referenceSha256": "e92cb8fc33c9c55a20871d4455f4d67f6179aae239b94d0ac12afdfc337e3913",
+    "dpr": 1,
+    "viewportCssPx": {
+      "width": 320,
+      "height": 240
+    }
+  },
+  "matrix": {
+    "sceneCount": 26,
+    "nodeCount": 65,
+    "outcomeCounts": {
+      "success": 19,
+      "cascade-fallback": 5,
+      "expected-rejection": 2
+    },
+    "comparedVisibleNodes": 61,
+    "maximumGeometryErrorCssPx": 0
+  },
+  "platform": {
+    "appSha256": "cf6a5e4f4134c449a67a94365963bfd9b6672eee6076a2bfbd1d5fb3bab6c94f",
+    "pixelComparison": {
+      "status": "matched",
+      "scene": "basic-rectangles",
+      "runID": "c1133-matrix-20261019T033459682Z-49847934-00-basic-rectangles",
+      "processId": 9419,
+      "markerPrefix": "C1133",
+      "surfaceGeneration": 2,
+      "density": 2.625,
+      "surface": [
+        840,
+        630
+      ],
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "scale": [
+        2.625,
+        2.625
+      ],
+      "expectedSamples": 2,
+      "matchedSamples": 2,
+      "maximumChannelError": 0,
+      "pngSha256": "f693605ae4b5d0b7d2c64f4c770bc1326cac508a2125c24b29f7ef2377b4cec0",
+      "samples": [
+        {
+          "id": "grid-background",
+          "css": [
+            150,
+            10
+          ],
+          "pixel": [
+            395,
+            27
+          ],
+          "rgba": [
+            16,
+            24,
+            32,
+            255
+          ]
+        },
+        {
+          "id": "item-blue",
+          "css": [
+            100,
+            50
+          ],
+          "pixel": [
+            263,
+            132
+          ],
+          "rgba": [
+            62,
+            99,
+            221,
+            255
+          ]
+        }
+      ]
+    },
+    "screenSha256": "d8e842ea9678b74cd64065c400d1fe2b9f34f0d227aab32b9e813ac9ee431b63"
+  },
+  "negative": {
+    "pixelSamples": {
+      "status": "rejected-before-readback",
+      "runID": "c1133-matrix-20261019T033459682Z-49847934-bad-samples"
+    },
+    "sceneRoute": {
+      "status": "rejected-before-runtime-draw",
+      "runID": "c1133-matrix-20261019T033459682Z-49847934-bad-scene"
+    }
+  },
+  "observations": [
+    {
+      "index": 0,
+      "sceneId": "basic-rectangles",
+      "outcome": "success",
+      "boxes": 4,
+      "frames": 4,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "basic-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "basic-head",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "basic-main",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "basic-foot",
+          "expected": {
+            "x": 0,
+            "y": 80,
+            "width": 160,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 80,
+            "width": 160,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "status": "matched",
+        "scene": "basic-rectangles",
+        "runID": "c1133-matrix-20261019T033459682Z-49847934-00-basic-rectangles",
+        "processId": 9419,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 2,
+        "matchedSamples": 2,
+        "maximumChannelError": 0,
+        "pngSha256": "f693605ae4b5d0b7d2c64f4c770bc1326cac508a2125c24b29f7ef2377b4cec0",
+        "samples": [
+          {
+            "id": "grid-background",
+            "css": [
+              150,
+              10
+            ],
+            "pixel": [
+              395,
+              27
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "item-blue",
+            "css": [
+              100,
+              50
+            ],
+            "pixel": [
+              263,
+              132
+            ],
+            "rgba": [
+              62,
+              99,
+              221,
+              255
+            ]
+          }
+        ]
+      },
+      "logPath": "runtime-00-basic-rectangles.log"
+    },
+    {
+      "index": 1,
+      "sceneId": "null-cell-dot-runs",
+      "outcome": "success",
+      "boxes": 4,
+      "frames": 4,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "null-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "null-hero",
+          "expected": {
+            "x": 40,
+            "y": 0,
+            "width": 60,
+            "height": 120
+          },
+          "actual": {
+            "x": 40,
+            "y": 0,
+            "width": 60,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "null-left",
+          "expected": {
+            "x": 0,
+            "y": 60,
+            "width": 40,
+            "height": 60
+          },
+          "actual": {
+            "x": 0,
+            "y": 60,
+            "width": 40,
+            "height": 60
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "null-right",
+          "expected": {
+            "x": 100,
+            "y": 60,
+            "width": 60,
+            "height": 60
+          },
+          "actual": {
+            "x": 100,
+            "y": 60,
+            "width": 60,
+            "height": 60
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-01-null-cell-dot-runs.log"
+    },
+    {
+      "index": 2,
+      "sceneId": "all-null-cells",
+      "outcome": "success",
+      "boxes": 1,
+      "frames": 1,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "empty-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-02-all-null-cells.log"
+    },
+    {
+      "index": 3,
+      "sceneId": "single-cell-area",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "single-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "single-item",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-03-single-cell-area.log"
+    },
+    {
+      "index": 4,
+      "sceneId": "bare-area-edge-aliases",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "alias-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "alias-area",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-04-bare-area-edge-aliases.log"
+    },
+    {
+      "index": 5,
+      "sceneId": "grid-area-one-value",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-one-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-one-item",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-05-grid-area-one-value.log"
+    },
+    {
+      "index": 6,
+      "sceneId": "grid-area-two-values",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-two-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-two-item",
+          "expected": {
+            "x": 40,
+            "y": 0,
+            "width": 60,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 0,
+            "width": 60,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-06-grid-area-two-values.log"
+    },
+    {
+      "index": 7,
+      "sceneId": "grid-area-three-values",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-three-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-three-item",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 60,
+            "height": 80
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 60,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-07-grid-area-three-values.log"
+    },
+    {
+      "index": 8,
+      "sceneId": "grid-area-four-values",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-four-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-four-item",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-08-grid-area-four-values.log"
+    },
+    {
+      "index": 9,
+      "sceneId": "row-column-longhands-area",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "longhand-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "longhand-item",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-09-row-column-longhands-area.log"
+    },
+    {
+      "index": 10,
+      "sceneId": "grid-template-shorthand",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "template-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "template-item",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-10-grid-template-shorthand.log"
+    },
+    {
+      "index": 11,
+      "sceneId": "grid-shorthand",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "grid-shorthand-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "grid-shorthand-item",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-11-grid-shorthand.log"
+    },
+    {
+      "index": 12,
+      "sceneId": "bare-area-vs-explicit-one-name",
+      "outcome": "success",
+      "boxes": 3,
+      "frames": 3,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "bare-vs-number-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "bare-area-name",
+          "expected": {
+            "x": 40,
+            "y": 0,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 0,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "explicit-one-name",
+          "expected": {
+            "x": 0,
+            "y": 40,
+            "width": 40,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 40,
+            "width": 40,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-12-bare-area-vs-explicit-one-name.log"
+    },
+    {
+      "index": 13,
+      "sceneId": "explicit-line-before-area",
+      "outcome": "success",
+      "boxes": 4,
+      "frames": 4,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "line-before-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "line-before-area",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "line-before-name",
+          "expected": {
+            "x": 0,
+            "y": 40,
+            "width": 40,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 40,
+            "width": 40,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "line-before-grid-area",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-13-explicit-line-before-area.log"
+    },
+    {
+      "index": 14,
+      "sceneId": "explicit-line-after-area",
+      "outcome": "success",
+      "boxes": 3,
+      "frames": 3,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "line-after-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "line-after-area",
+          "expected": {
+            "x": 40,
+            "y": 0,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 0,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "line-after-name",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 60,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 60,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-14-explicit-line-after-area.log"
+    },
+    {
+      "index": 15,
+      "sceneId": "area-names-ending-start-or-end",
+      "outcome": "success",
+      "boxes": 3,
+      "frames": 3,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "suffix-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "suffix-area-name",
+          "expected": {
+            "x": 40,
+            "y": 0,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 0,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "suffix-area-end-name",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-15-area-names-ending-start-or-end.log"
+    },
+    {
+      "index": 16,
+      "sceneId": "implicit-area-from-explicit-lines",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "implicit-area-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "implicit-area-item",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-16-implicit-area-from-explicit-lines.log"
+    },
+    {
+      "index": 17,
+      "sceneId": "escaped-and-unicode-identifiers",
+      "outcome": "success",
+      "boxes": 3,
+      "frames": 3,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "unicode-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "unicode-escaped-item",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 40,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 40,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "unicode-asian-item",
+          "expected": {
+            "x": 100,
+            "y": 0,
+            "width": 60,
+            "height": 120
+          },
+          "actual": {
+            "x": 100,
+            "y": 0,
+            "width": 60,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-17-escaped-and-unicode-identifiers.log"
+    },
+    {
+      "index": 18,
+      "sceneId": "invalid-l-shape-fallback",
+      "outcome": "cascade-fallback",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "invalid-l-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "invalid-l-fallback",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-18-invalid-l-shape-fallback.log"
+    },
+    {
+      "index": 19,
+      "sceneId": "invalid-disconnected-area-fallback",
+      "outcome": "cascade-fallback",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "invalid-disconnected-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "invalid-disconnected-fallback",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-19-invalid-disconnected-area-fallback.log"
+    },
+    {
+      "index": 20,
+      "sceneId": "invalid-row-width-fallback",
+      "outcome": "cascade-fallback",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "invalid-row-width-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "invalid-row-width-fallback",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-20-invalid-row-width-fallback.log"
+    },
+    {
+      "index": 21,
+      "sceneId": "invalid-trash-token-fallback",
+      "outcome": "cascade-fallback",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "invalid-trash-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "invalid-trash-fallback",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-21-invalid-trash-token-fallback.log"
+    },
+    {
+      "index": 22,
+      "sceneId": "empty-string-fallback",
+      "outcome": "cascade-fallback",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "invalid-empty-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "invalid-empty-fallback",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-22-empty-string-fallback.log"
+    },
+    {
+      "index": 23,
+      "sceneId": "area-track-count-mismatch",
+      "outcome": "expected-rejection",
+      "rejection": {
+        "status": "expected-rejection",
+        "code": "unsupported_computed_value",
+        "property": "grid-template-areas",
+        "nodeId": "mismatch-grid",
+        "runtimeNodeId": 1
+      },
+      "logPath": "runtime-23-area-track-count-mismatch.log"
+    },
+    {
+      "index": 24,
+      "sceneId": "unknown-area-implicit-tracks",
+      "outcome": "expected-rejection",
+      "rejection": {
+        "status": "expected-rejection",
+        "code": "unsupported_named_grid_line",
+        "property": "grid-row-start",
+        "nodeId": "unknown-area-item",
+        "runtimeNodeId": 2
+      },
+      "logPath": "runtime-24-unknown-area-implicit-tracks.log"
+    },
+    {
+      "index": 25,
+      "sceneId": "nested-hidden-source-order",
+      "outcome": "success",
+      "boxes": 5,
+      "frames": 6,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "nested-outer-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "nested-outer-item",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "nested-inner-grid",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "nested-inner-item",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 5,
+          "nodeName": "nested-bottom-item",
+          "expected": {
+            "x": 40,
+            "y": 80,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 80,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 6,
+          "nodeName": "nested-hidden-item",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-25-nested-hidden-source-order.log"
+    }
+  ],
+  "interpretation": "Android API 37 AVD, SwiftShader software renderer; this is fixture runtime evidence and does not establish physical-device, hardware-GPU, WPT, or general CSS Grid support."
+}

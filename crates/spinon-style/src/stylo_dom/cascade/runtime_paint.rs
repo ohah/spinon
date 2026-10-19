@@ -405,7 +405,8 @@ pub(super) fn computed_background_for_profile(
         | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
         | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
         | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
-        | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1 => {
+        | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+        | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 => {
             let paint = match profile {
                 ComputedStyleProfile::C19BoxPaintOpacityV1 => {
                     computed_c19_runtime_background_paint(computed, node)?

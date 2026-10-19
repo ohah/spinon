@@ -26,7 +26,7 @@ use flex_values::{
     parse_runtime_align_items, parse_runtime_align_self, parse_runtime_justify_content,
 };
 use grid_placement_values::project_grid_item_placement;
-use grid_values::project_grid_layout;
+use grid_values::project_grid_layout_with_math;
 use positioning_values::parse_positioning;
 use primitive_values::{
     max_size_as_dimension, parse_box_sizing, parse_dimension, parse_display, required,
@@ -67,6 +67,7 @@ pub(super) fn project_styles(
             snapshot.profile,
             ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
         ) {
             if grid_nodes
                 .as_ref()
@@ -130,6 +131,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
         );
         let supports_border_layout = matches!(
             snapshot.profile,
@@ -155,6 +157,7 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
         );
         let supports_runtime_flex = supports_runtime_flex(snapshot.profile);
         let supports_auto_margin = runtime_flex_items.contains(&node)
@@ -171,6 +174,7 @@ pub(super) fn project_styles(
                     | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
                     | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
                     | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                    | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
             );
         let flex_direction = parse_flex_direction(
             node,
@@ -212,6 +216,7 @@ pub(super) fn project_styles(
                         | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
                         | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
                         | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                        | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
                 ),
                 matches!(
                     snapshot.profile,
@@ -220,6 +225,7 @@ pub(super) fn project_styles(
                         | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
                         | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
                         | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                        | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
                 ),
                 snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
             )?,
@@ -341,7 +347,8 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1 => {
                     parse_runtime_align_items(node, required(element, "align-items")?, false)?
                 }
-                ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1 => {
+                ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 => {
                     parse_runtime_align_items(node, required(element, "align-items")?, true)?
                 }
                 ComputedStyleProfile::FlexAlignmentV1
@@ -395,7 +402,8 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
-                | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1 => {
+                | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 => {
                     parse_runtime_justify_content(node, required(element, "justify-content")?)?
                 }
                 _ => LayoutStyle::default().justify_content,
@@ -443,7 +451,8 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
-                | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1 => LayoutEdges {
+                | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 => LayoutEdges {
                     top: parse_margin(
                         node,
                         "margin-top",
@@ -505,7 +514,8 @@ pub(super) fn project_styles(
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
-                | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1 => LayoutEdges {
+                | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 => LayoutEdges {
                     top: parse_nonnegative_spacing(
                         node,
                         "padding-top",
@@ -579,7 +589,10 @@ pub(super) fn project_styles(
                 }
             })?;
             grid_styles.insert(node, grid);
-            grid_containers.insert(node, project_grid_layout(node, grid, snapshot.profile)?);
+            grid_containers.insert(
+                node,
+                project_grid_layout_with_math(node, grid, snapshot.profile, &mut math)?,
+            );
         }
         if supports_positioning(snapshot.profile) {
             positioning.insert(
@@ -599,6 +612,8 @@ pub(super) fn project_styles(
                         || snapshot.profile
                             == ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
                         || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                        || snapshot.profile
+                            == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
                         || supports_runtime_flex,
                     snapshot.profile == ComputedStyleProfile::RuntimeBlockPositioningV1
                         || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexStackingV1
@@ -610,7 +625,9 @@ pub(super) fn project_styles(
                             == ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
                         || snapshot.profile
                             == ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
-                        || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1,
+                        || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                        || snapshot.profile
+                            == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
                 )?,
             );
         }
@@ -624,6 +641,7 @@ pub(super) fn project_styles(
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     ) {
         let grid_item_nodes = grid_nodes
             .as_ref()
@@ -688,6 +706,7 @@ fn is_grid_profile(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     )
 }
 
@@ -792,6 +811,7 @@ fn supports_positioning(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     )
 }
 
@@ -838,6 +858,7 @@ fn supports_runtime_flex(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     )
 }
 
