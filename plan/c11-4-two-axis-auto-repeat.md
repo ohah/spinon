@@ -36,7 +36,7 @@
 2. **Typed projection/layout:** 각 axis의 `GridAutoRepeat` range를 독립 투영한다. layout validator는 각 axis를 따로 검증하고 두 auto-repeat이 모두 있어도 각각 valid하면 허용한다. 반복 track range 오류, 잘못된 `placement_mode`, repeated-axis line names, 잘못된 gap/track 입력은 기존 구체 오류로 거부한다. Taffy 0.15.0의 두 track-list 알고리즘은 축별 repetition count를 읽지만, 프로젝트 adapter와 실제 runtime 결과를 독립 검증한다.
 3. **Rust regression:** cascade·projection·layout 경계에서 one-axis auto-fill/fit, two-axis fill/fill, fit/fit, fill/fit, fit/fill, 축별 반복 횟수 차이, 두 번째 repeat placement, one-/two-track `auto-fit` occupancy를 검사한다. 기존 두 축 거부 테스트는 valid acceptance와 malformed/unsupported rejection으로 나눈다.
 4. **App fixture:** oracle의 12개 ID를 Rust scene source와 Android/iOS allowlist에 1:1로 연결하고, 기존 21 scene을 유지한다. 플랫폼별 기대값 검사는 기존 33개 ID의 중복 없는 정확한 집합과 일치해야 한다. 기대 node frame·used track·gap/collapse·axis별 trace 비교를 모두 수행하고, 성공 로그에 scene count, per-axis tracks, draw/present marker가 있어야 한다.
-5. **플랫폼:** Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator에서 각각 33/33 scene을 실행한다. 실기기 대신 simulator 사용을 허용한다. app 화면은 Agent Browser가 지원하는 실행 산출물/route가 있으면 Agent Browser로 확인한다. Terminal Browser와 tmux는 사용하지 않으며 각 browser 실행은 종료하고 남은 agent-browser process를 확인한다.
+5. **플랫폼:** Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator에서 각각 33/33 scene을 실행한다. 실기기 대신 simulator 사용을 허용한다. Native app 화면은 각 simulator의 실행 결과와 surface 캡처로 검사한다. Chrome oracle과 Tailnet preview 렌더링은 Agent Browser로 확인하며, Terminal Browser와 tmux는 사용하지 않는다. 각 Agent Browser 실행은 종료하고 남은 agent-browser process를 확인한다.
 6. **오류·기본 산출물:** unsupported 문법의 기존 오류 동작과 기본 artifact의 fixture 경계를 확인한다. fixture 전용 코드·FFI에 변경이 있을 때는 기본 artifact negative와 fixture-test positive control을 각각 확인한다.
 7. **기록·PR:** 내부 계약 0059, 적합성 요약, C11.4 상세 계획과 실행 근거를 실제 결과에 맞춘다. 전체 C11.4/WPT/공개 CSS 완료를 주장하지 않고 `spec/STATUS.md` 체크 및 완료 수를 유지한다. 구현 후 새로운 실패 경로 20개를 code/runtime 대상으로 검토한다. PR 본문에 Android/iOS 동작 캡처를 이미지로 붙일 수 있으면 실제 simulator 캡처를 첨부한다.
 8. **Tailnet roadmap:** 구현 병합 뒤 사용자 요청에 따라 공개 preview roadmap을 동기화한다. 변경된 경로와 SHA를 검증하고 Agent Browser로 렌더링된 C11.4 항목과 count를 확인한 뒤 세션/daemon을 종료한다. 이를 위한 sync PR은 구현 PR 리뷰와 별도로 diff 적대 검토 30개를 수행한다.
@@ -49,7 +49,7 @@
 ## 관문 상태
 
 - [x] Chrome 사전 비교 fixture와 원 관찰 기록
-- [ ] 서로 다른 실패 관점 20개 계획 검토
+- [x] 서로 다른 실패 관점 20개 계획 검토 ([검토 표](../spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/plan-review-20.md))
 - [ ] 계획 PR 검토·Rebase and merge
 - [ ] 새 코드/runtime 실패 관점 20개 검토
 - [ ] Android/iOS Simulator 33-scene 행렬
