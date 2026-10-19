@@ -1,0 +1,115 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11.4 two-track auto-repeat with definite minimum size</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 20px; color: #152033; background: #f4f6fa; font: 13px/1.4 system-ui, sans-serif; }
+  h1 { margin: 0 0 6px; font-size: 20px; }
+  p { margin: 0 0 16px; max-width: 78ch; }
+  #cases { display: grid; grid-template-columns: repeat(3, max-content); gap: 18px 20px; align-items: start; }
+  figure { margin: 0; min-width: 0; }
+  figcaption { margin-bottom: 5px; font-weight: 650; }
+  .grid { display: grid; width: max-content; height: max-content; align-content: start; justify-content: start; background: #dce5f2; }
+  .grid.columns { column-gap: 8px; row-gap: 0; grid-template-rows: 16px; }
+  .grid.rows { column-gap: 0; row-gap: 8px; grid-template-columns: 16px; }
+  .item { width: 12px; height: 12px; min-width: 0; min-height: 0; background: #e5484d; }
+  .track-strip { display: flex; align-items: stretch; gap: 2px; margin-top: 5px; }
+  .track { display: grid; place-items: center; min-width: 18px; height: 18px; padding: 0 2px; overflow: hidden; border: 1px solid #70809a; color: #102033; background: #b8c9e2; font: 9px/1 ui-monospace, monospace; }
+  .track:nth-child(even) { background: #f0c987; }
+  #observations { margin-top: 20px; padding: 12px; max-height: 210px; overflow: auto; color: #d7e2f2; background: #101820; font: 10px/1.35 ui-monospace, monospace; white-space: pre-wrap; }
+</style>
+<h1>C11.4 · definite min-size + two-track auto-repeat</h1>
+<p>Chrome 155 oracle. Each grid has a definite minimum size, max-content preferred sizing, 20px/10px explicit neighbors, an 8px gap, and a repeated <code>minmax(40px, 1fr) 20px</code> fragment unless its caption says otherwise.</p>
+<main id="cases"></main>
+<pre id="observations"></pre>
+<script>
+  const pattern = 'minmax(40px, 1fr) 20px';
+  const definitions = [
+    { id: 'columns-fill-both-min-190', axis: 'columns', mode: 'auto-fill', minSize: 190, position: 'both' },
+    { id: 'columns-fill-both-min-200', axis: 'columns', mode: 'auto-fill', minSize: 200, position: 'both' },
+    { id: 'columns-fill-fixed-min-200', axis: 'columns', mode: 'auto-fill', minSize: 200, position: 'both', pattern: 'fixed' },
+    { id: 'columns-fill-both-min-342', axis: 'columns', mode: 'auto-fill', minSize: 342, position: 'both' },
+    { id: 'columns-fill-prefix-min-200', axis: 'columns', mode: 'auto-fill', minSize: 200, position: 'prefix' },
+    { id: 'columns-fill-suffix-min-200', axis: 'columns', mode: 'auto-fill', minSize: 200, position: 'suffix' },
+    { id: 'columns-fit-empty-min-200', axis: 'columns', mode: 'auto-fit', minSize: 200, position: 'both' },
+    { id: 'columns-fit-fixed-empty-min-200', axis: 'columns', mode: 'auto-fit', minSize: 200, position: 'both', pattern: 'fixed' },
+    { id: 'columns-fit-span-two-min-200', axis: 'columns', mode: 'auto-fit', minSize: 200, position: 'both', span: 2 },
+    { id: 'rows-fill-both-min-190', axis: 'rows', mode: 'auto-fill', minSize: 190, position: 'both' },
+    { id: 'rows-fill-both-min-200', axis: 'rows', mode: 'auto-fill', minSize: 200, position: 'both' },
+    { id: 'rows-fill-fixed-min-200', axis: 'rows', mode: 'auto-fill', minSize: 200, position: 'both', pattern: 'fixed' },
+    { id: 'rows-fill-both-min-342', axis: 'rows', mode: 'auto-fill', minSize: 342, position: 'both' },
+    { id: 'rows-fit-empty-min-200', axis: 'rows', mode: 'auto-fit', minSize: 200, position: 'both' },
+    { id: 'rows-fit-fixed-empty-min-200', axis: 'rows', mode: 'auto-fit', minSize: 200, position: 'both', pattern: 'fixed' },
+    { id: 'rows-fit-span-two-min-200', axis: 'rows', mode: 'auto-fit', minSize: 200, position: 'both', span: 2 },
+  ];
+  const cases = [];
+  const trackNumbers = (value) => value.match(/[0-9.]+px/g)?.map((track) => Number.parseFloat(track)) ?? [];
+  for (const definition of definitions) {
+    const figure = document.createElement('figure');
+    const caption = document.createElement('figcaption');
+    caption.textContent = definition.id;
+    const grid = document.createElement('div');
+    grid.id = definition.id;
+    grid.className = `grid ${definition.axis}`;
+    const repeatedPattern = definition.pattern === 'fixed' ? '40px 20px' : pattern;
+    const repeat = `repeat(${definition.mode}, ${repeatedPattern})`;
+    const tracks = definition.position === 'both'
+      ? `20px ${repeat} 10px`
+      : definition.position === 'prefix' ? `20px ${repeat}` : `${repeat} 10px`;
+    if (definition.axis === 'columns') {
+      grid.style.gridTemplateColumns = tracks;
+      grid.style.minWidth = `${definition.minSize}px`;
+    } else {
+      grid.style.gridTemplateRows = tracks;
+      grid.style.minHeight = `${definition.minSize}px`;
+    }
+    if (definition.span) {
+      const item = document.createElement('div');
+      item.className = 'item';
+      item.style[definition.axis === 'columns' ? 'gridColumn' : 'gridRow'] = `2 / span ${definition.span}`;
+      grid.append(item);
+    }
+    figure.append(caption, grid);
+    document.querySelector('#cases').append(figure);
+    const style = getComputedStyle(grid);
+    const rect = grid.getBoundingClientRect();
+    const itemRect = grid.firstElementChild?.getBoundingClientRect();
+    const usedTrackText = definition.axis === 'columns' ? style.gridTemplateColumns : style.gridTemplateRows;
+    const usedTracks = trackNumbers(usedTrackText);
+    const strip = document.createElement('div');
+    strip.className = 'track-strip';
+    for (const size of usedTracks) {
+      const track = document.createElement('span');
+      track.className = 'track';
+      track.style.width = definition.axis === 'columns' ? `${Math.max(size, 18)}px` : '20px';
+      track.style.height = '18px';
+      track.textContent = `${size}`;
+      strip.append(track);
+    }
+    figure.append(strip);
+    cases.push({
+      id: definition.id,
+      axis: definition.axis,
+      mode: definition.mode,
+      minSize: definition.minSize,
+      width: rect.width,
+      height: rect.height,
+      gridTemplateColumns: style.gridTemplateColumns,
+      gridTemplateRows: style.gridTemplateRows,
+      columnGap: style.columnGap,
+      rowGap: style.rowGap,
+      item: itemRect ? {
+        x: itemRect.x - rect.x,
+        y: itemRect.y - rect.y,
+        width: itemRect.width,
+        height: itemRect.height,
+      } : null,
+    });
+  }
+  document.querySelector('#observations').textContent = JSON.stringify({
+    userAgent: navigator.userAgent,
+    viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+    cases,
+  }, null, 2);
+</script>
