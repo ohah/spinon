@@ -1,0 +1,51 @@
+{
+  "tool": "targeted-markdown-relative-link-audit",
+  "base_commit": "78eb8fb",
+  "source_commit": "0d35a10b1e720993a247dcc84ad3c46179e2940d",
+  "files": [
+    "spec/STATUS.md",
+    "plan/c11-4-grid-track-sizing.md",
+    "spec/internal/0059-c11-grid-layout.md",
+    "spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/grid-item-intrinsic-contribution-pr-diff-review-30.md"
+  ],
+  "local_relative_links_checked": 1045,
+  "resolved": 1038,
+  "missing": 7,
+  "missing_links": [
+    {
+      "file": "spec/STATUS.md",
+      "target": "internal/evidence/c12-4-follow-up-verification-2026-10-12/current-source-rerun-20261012-04/full-test.log",
+      "existed_at_base_78eb8fb": true
+    },
+    {
+      "file": "spec/STATUS.md",
+      "target": "internal/evidence/c12-4-follow-up-verification-2026-10-12/current-source-rerun-20261012-04/clippy.log",
+      "existed_at_base_78eb8fb": true
+    },
+    {
+      "file": "spec/STATUS.md",
+      "target": "internal/evidence/c11-3-1-grid-repeat-pixels-2026-10-13/android-avd-c1131-android-avd-20261013T140115888Z-551001c8/README.md",
+      "existed_at_base_78eb8fb": true
+    },
+    {
+      "file": "spec/STATUS.md",
+      "target": "internal/evidence/c11-3-1-grid-repeat-pixels-2026-10-13/ios-simulator-c1131-ios-simulator-20261013T140129522Z-48646be4/README.md",
+      "existed_at_base_78eb8fb": true
+    },
+    {
+      "file": "spec/STATUS.md",
+      "target": "0078-c13-1-stacking-full-viewport-hit-identity.md",
+      "existed_at_base_78eb8fb": true
+    },
+    {
+      "file": "spec/internal/0059-c11-grid-layout.md",
+      "target": "./evidence/c11-2-2-sparse-row-placement-android-runtime-matrix-2026-10-13/c1122-a-mv5u4e11-5cb5aa3d/README.md",
+      "existed_at_base_78eb8fb": true
+    },
+    {
+      "file": "spec/internal/0059-c11-grid-layout.md",
+      "target": "./evidence/c11-2-2-sparse-row-placement-ios-simulator-runtime-matrix-2026-10-13/c1122-i-mv5u5ax2-1ff58f57/README.md",
+      "existed_at_base_78eb8fb": true
+    }
+  ]
+}

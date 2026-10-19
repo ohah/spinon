@@ -1,0 +1,583 @@
+{
+  "tool": "spinon-tailnet-preview-copy-verification",
+  "date": "2026-10-19",
+  "verified": 80,
+  "mismatches": 0,
+  "deletions": 0,
+  "counts": {
+    "total": 80,
+    "replaced": 18,
+    "added": 22,
+    "same": 40,
+    "skipped_open_reader": 0
+  },
+  "skipped_active_reader": [
+    {
+      "path": "404.html",
+      "access": "read-only open file descriptor",
+      "action": "left unchanged"
+    }
+  ],
+  "items": [
+    {
+      "path": "0001-conformance.html",
+      "action": "replace",
+      "bytes": 39013,
+      "sha256": "3bdd767712a59c7144063eccb9c9a3050e1cfc1eb263297832753a87a08de028",
+      "matches_source": true
+    },
+    {
+      "path": "0001-conformance.md",
+      "action": "same",
+      "bytes": 14265,
+      "sha256": "ff74477a4ce90e9c858b73cbd8e5c3b9e7524148ab14a7c27e373a26ef518403",
+      "matches_source": true
+    },
+    {
+      "path": "icon.svg",
+      "action": "same",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "matches_source": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "action": "replace",
+      "bytes": 76898,
+      "sha256": "4fb3d4f5f5006aa58b409639d37af1272e42aa3219356cd80df20a3a105fabaa",
+      "matches_source": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "action": "replace",
+      "bytes": 40108,
+      "sha256": "b30359af4b709b5a52c7561e613c77c90cfd02efe2c783173ecf6745c3d2d13f",
+      "matches_source": true
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.html",
+      "action": "replace",
+      "bytes": 45256,
+      "sha256": "2663c73e576c46a893d71645ee03679bdc1257ee361ad233ee4540f535f29c6c",
+      "matches_source": true
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.md",
+      "action": "same",
+      "bytes": 17249,
+      "sha256": "70c5dd4c57f244999616f48e939bc3b0e58145cb93b4df154824fb00845c3fde",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/browser-metadata.json",
+      "action": "same",
+      "bytes": 564,
+      "sha256": "6d1f44c5ad3a769726234fe4899e1ff91a647cf7dfa26c9cb6e8aa054aa00c8e",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-agent-browser-eval.raw.txt",
+      "action": "same",
+      "bytes": 16155,
+      "sha256": "c7453b69936c734d110671d9fcb2525c733f0ac42be1c91b0c783084d7f498ce",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-agent-browser-metadata.raw.txt",
+      "action": "same",
+      "bytes": 564,
+      "sha256": "6d1f44c5ad3a769726234fe4899e1ff91a647cf7dfa26c9cb6e8aa054aa00c8e",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-dpr1.png",
+      "action": "same",
+      "bytes": 62568,
+      "sha256": "f1cadfd00aeb934e58205d4cd21d4341b8ec48111a6f808d24df1a80ea3a5662",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-observation.json",
+      "action": "same",
+      "bytes": 16155,
+      "sha256": "c7453b69936c734d110671d9fcb2525c733f0ac42be1c91b0c783084d7f498ce",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/grid-item-intrinsic-contribution-pr-diff-review-30.html",
+      "action": "add",
+      "bytes": 32209,
+      "sha256": "777b043d2fc1722238f736053abbe596fffdaec2fcdef9497e68f5a9d83761e0",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/grid-item-intrinsic-contribution-pr-diff-review-30.md",
+      "action": "add",
+      "bytes": 7385,
+      "sha256": "f7e5f9143feb03aff0b3de3922f6f1508d43761d41ffed0f84fb4aa4cb0346d8",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/grid-item-intrinsic-input-review-20.html",
+      "action": "replace",
+      "bytes": 31348,
+      "sha256": "0823983cf9d1f968c2128a65715908667e52478771240843a862a3521be1c8ed",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/grid-item-intrinsic-input-review-20.md",
+      "action": "same",
+      "bytes": 7735,
+      "sha256": "093c80c3057da6644476b144898a4fb5fa8c00e1a4cbdea743d4e36ce3c50262",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/grid-item-intrinsic-pr-diff-review-20.html",
+      "action": "replace",
+      "bytes": 30600,
+      "sha256": "cc35060175d048bf99ec2f8ca2c5b6dc9eaf3e94bdd6be337663437dbc1775c4",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/grid-item-intrinsic-pr-diff-review-20.md",
+      "action": "same",
+      "bytes": 6931,
+      "sha256": "68c60237a3b1ce776d9c71c22f9ccb97419af778798afd937f6b00fac9efbb73",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.html",
+      "action": "replace",
+      "bytes": 31232,
+      "sha256": "75f7ce0a2cbd3c84ded9ea692309323ee9dc4ce3aeb0d59c404c65ae5ef66d32",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.md",
+      "action": "same",
+      "bytes": 6658,
+      "sha256": "ba8b325dc3c6f3f17b849b8d408f7ea09a0a98da5a2a341726555e888940175c",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-delta-review-30.html",
+      "action": "replace",
+      "bytes": 29450,
+      "sha256": "1692ffbacc1c9d51e107aafc8edc3606f414472af302817e172843737de74ac9",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-delta-review-30.md",
+      "action": "same",
+      "bytes": 5347,
+      "sha256": "522c345a98a4f76530f2c000679021ec08c1775a7391ba4b141fcad0c1f85093",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.html",
+      "action": "replace",
+      "bytes": 36882,
+      "sha256": "e7c15a355a1371bd6732bfd88773515a665c18e2efd169848ec715238414d7ab",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.md",
+      "action": "same",
+      "bytes": 8561,
+      "sha256": "d3ad3f3655904e3f58872938e6e9e0493a94b359b80e6ae011443c85c3498c6d",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/chrome155-observation.json",
+      "action": "same",
+      "bytes": 1481,
+      "sha256": "3e034385f2abac97fe470be596988e88c56f815d175b4d4cc36370809301ae08",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.html",
+      "action": "replace",
+      "bytes": 25687,
+      "sha256": "50b2c512c7e8ef2ad6c9b5ae530d479a9d6376b31a857cdbc7fb969005a0ce8c",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.md",
+      "action": "same",
+      "bytes": 2146,
+      "sha256": "d7e53160359406987d068ebc357e393006c32066eca48e78c559ccbfaadc9e8c",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/SHA256SUMS",
+      "action": "same",
+      "bytes": 169,
+      "sha256": "b0263af8035911b609035e68d6a7e58ab7587152201a043e7aac7ee603521d92",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/cargo-tests.log",
+      "action": "same",
+      "bytes": 19636,
+      "sha256": "283883fb5e4c676428ad45e94aaa5b3f3a87780d08c4c8751e0bbe4fab599410",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/clippy-text-strict.log",
+      "action": "same",
+      "bytes": 214,
+      "sha256": "b2cdf02368c3b039054f43202705e8ca2efb7b34557aa0439142a518719af5dd",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/clippy.log",
+      "action": "same",
+      "bytes": 282,
+      "sha256": "7e500d683c07296243b0dce3a64986526b4f9397dcbefa387dd8a23adfb7b8c7",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/diff-check.log",
+      "action": "same",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/implementation-review-20.html",
+      "action": "replace",
+      "bytes": 30522,
+      "sha256": "82b2474c766c5842ba00851deef1cd2df33f234e114c799b201ed67c36fadbef",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/implementation-review-20.md",
+      "action": "same",
+      "bytes": 6201,
+      "sha256": "4d3714d4050db035b19239c00742ff9816263035a3491ee28795de4beefc4033",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/pr-delta-review-30.html",
+      "action": "replace",
+      "bytes": 35263,
+      "sha256": "a0244000944d2de13b6769e037e9a3cfb5d118db6da354488a7c7c5a76caf720",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/pr-delta-review-30.md",
+      "action": "same",
+      "bytes": 10152,
+      "sha256": "212a1e4863f5fc93260de498ca8603d885d916c5c75dfb63048f732338befd99",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/README.html",
+      "action": "replace",
+      "bytes": 27184,
+      "sha256": "c4cf41a1d0e002cf26ba5713ba274777db8328bc06c4e7b64a0ea90f9a094137",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/README.md",
+      "action": "same",
+      "bytes": 3174,
+      "sha256": "1218fd1c45070ec0818d7801c2783ee9673c2f7ef589125fc3c9fd614ad5036b",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/rustfmt.log",
+      "action": "same",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches_source": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/SHA256SUMS",
+      "action": "same",
+      "bytes": 665,
+      "sha256": "47104e2b5d11b8175f1c5d4ba6be6f1626796ce598b5ab601763f37d3b74cc3d",
+      "matches_source": true
+    },
+    {
+      "path": "logo.svg",
+      "action": "same",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "matches_source": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "action": "replace",
+      "bytes": 53344,
+      "sha256": "f2e88f62f3b586c8530a86fe7d9f1e3f34e9d7bbba05ed2df7c18bca7f791cbe",
+      "matches_source": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "action": "replace",
+      "bytes": 22140,
+      "sha256": "15c4fa4f400faf56c566a9fb2bce7bf2c3bbc66f8543030af04b2c5adb168e59",
+      "matches_source": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "action": "replace",
+      "bytes": 56719,
+      "sha256": "2c323556896d2acaebc54e5fade31c911fab183af0cf85a7cf291a522b1c79f6",
+      "matches_source": true
+    },
+    {
+      "path": "plan/c11-css-grid.md",
+      "action": "same",
+      "bytes": 26504,
+      "sha256": "abcb0859a7d95672ad711f2b6e870e90264fd4e38153a20aa9837f701decfeec",
+      "matches_source": true
+    },
+    {
+      "path": "roadmap.html",
+      "action": "same",
+      "bytes": 143352,
+      "sha256": "8cdf5fbb8a2f8ff296effa949dbba07388fe54f648c8e8132dcba697bb6607fd",
+      "matches_source": true
+    },
+    {
+      "path": "roadmap.svg",
+      "action": "same",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "matches_source": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "action": "same",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/3.804cdd1ced.js",
+      "action": "add",
+      "bytes": 217074,
+      "sha256": "35b9de6f9e0c510a805b585611d2cd48c32037dfc3a12593974cf1470451d4da",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/3.804cdd1ced.js.LICENSE.txt",
+      "action": "add",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "action": "same",
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.ecfc76f1c3.js",
+      "action": "add",
+      "bytes": 33548,
+      "sha256": "d0f0b885c431f61cc89cd69b283c9ad8764effcc3baaa620c61015d770913b20",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/async/route-19eb62f182e6.7236029705.js",
+      "action": "add",
+      "bytes": 12545,
+      "sha256": "b46bd587a61c6aaebbf5b54dde2dd8ff3238fd2e7a5e60d822ec8eb19d7d9393",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/async/route-547629791443.bacf7d2e55.js",
+      "action": "add",
+      "bytes": 7760,
+      "sha256": "270d02763be3583339c4d5afe5a410eda133757e056679c3b2ba9221289ebc5b",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.915eab1c61.js",
+      "action": "add",
+      "bytes": 403933,
+      "sha256": "b12205d2643f5b1940f3774994577afce2c3dd32a1d20191cc15ce9b6540d9a6",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/async/route-6f303538b8de.c349dde13c.js",
+      "action": "add",
+      "bytes": 22533,
+      "sha256": "e76f276561a723254e846de80067da1bc1b772c6d31bd18305c94b1a4b97b9ef",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/async/route-91cee1156571.07c7497422.js",
+      "action": "add",
+      "bytes": 11564,
+      "sha256": "036b07f0c84dffb6ebbe57009eac9f7d7a8daa855ef20f5d46f18e87f51e5961",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/async/route-9eef814e3864.37ccc164ba.js",
+      "action": "add",
+      "bytes": 12932,
+      "sha256": "d332c5aad75c167d409b1d7cb659aba0b6a6266ced55a0d42fa02c434a60005f",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/async/route-a21fa5d91cc3.5e044e0a9a.js",
+      "action": "add",
+      "bytes": 10975,
+      "sha256": "4e5b3ff9321684c8ccb32beae5c28851cc4d59abef0f0bdab2a586683ed7947f",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/async/route-acf9bf8a5ef1.48a32b84fe.js",
+      "action": "add",
+      "bytes": 28687,
+      "sha256": "0cb9a25f173aa23a2a0b272e680805bb802234f921edca55f72d6924ddb9ed38",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/async/route-b399d739b779.119139f32c.js",
+      "action": "add",
+      "bytes": 15312,
+      "sha256": "2372bda392617dc54764626e04253349584d38bb75568e7947cfed05ddccff18",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.b7893c58c8.js",
+      "action": "add",
+      "bytes": 38563,
+      "sha256": "08f38348f843ba45db15af3227a7b552ac7e55d419227e3608b731abd205f853",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/async/route-c412d9e72a16.27ad5ffac1.js",
+      "action": "add",
+      "bytes": 11645,
+      "sha256": "ffa2e2d7d6245abf21ffd8a2f37a9c81cceed8d3b77c5e46681bb413a5984fdc",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.928f31e803.js",
+      "action": "add",
+      "bytes": 56122,
+      "sha256": "309d818e69701dc5fb500fd4af4fd4796fa669855717cea23680c5895189b800",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/async/route-e2283f1cc7bd.a9c3415f05.js",
+      "action": "add",
+      "bytes": 5900,
+      "sha256": "4d91e883500f90d84dde62164d776fbbeee1034a9437ce9dd4e6b65758ec905c",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/async/route-ecf129b09e78.a0906f379b.js",
+      "action": "add",
+      "bytes": 21011,
+      "sha256": "311342423f03216541b324ae13e965d0d46a4948dfa3f5a3ec9f6fd3d986062a",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/async/route-fc1d6113b2ad.77890cf840.js",
+      "action": "add",
+      "bytes": 18310,
+      "sha256": "e0f46041627a3a800bdcf5ec0ef559b909a056dcec55686342bea24d28b88151",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/index.eb7364d45b.js",
+      "action": "add",
+      "bytes": 38816,
+      "sha256": "49af7a085253f919c0517a80612d34fc8c3562891cc1b4278cedca4d151bdc88",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "action": "same",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "action": "same",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "action": "same",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "action": "same",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "matches_source": true
+    },
+    {
+      "path": "static/js/styles.b5d9a69293.js",
+      "action": "same",
+      "bytes": 471,
+      "sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "matches_source": true
+    },
+    {
+      "path": "static/search_index.ko.37deaf71.json",
+      "action": "add",
+      "bytes": 410186,
+      "sha256": "37deaf715c17d90fdd1e9768bec558487ce4f0846c882652842d76ffdff6b7b2",
+      "matches_source": true
+    },
+    {
+      "path": "STATUS.html",
+      "action": "replace",
+      "bytes": 384510,
+      "sha256": "dc3382dd564724f3610c1ed3e887ab7bc1cb279109816f7010880eb6a1a4f6dc",
+      "matches_source": true
+    },
+    {
+      "path": "STATUS.md",
+      "action": "replace",
+      "bytes": 295225,
+      "sha256": "b7059f9a68f0937c22f0d0439a41389e7ec0f751c2fe9d7071a3cf3925f99149",
+      "matches_source": true
+    },
+    {
+      "path": "styles.css",
+      "action": "same",
+      "bytes": 8407,
+      "sha256": "b347e5dd44b25313a0fa6536fecc6af852e8ff171e1f7bb6ea7af2b03177bb83",
+      "matches_source": true
+    },
+    {
+      "path": "tests/fixtures/css/c11/grid-track-sizing-c114-inline-span-edges.html",
+      "action": "same",
+      "bytes": 1024,
+      "sha256": "1dfb6c4f1eb6c4309daf97c1bdc416214874f2f44e337e88293cb13167eeed9e",
+      "matches_source": true
+    },
+    {
+      "path": "tests/fixtures/css/c11/grid-track-sizing-c114-precomparison.html",
+      "action": "same",
+      "bytes": 13599,
+      "sha256": "f2bfd4fc295988c9550026627c8d83f9b2daa04c52633e4a4c10d2dc2e9bc8a6",
+      "matches_source": true
+    },
+    {
+      "path": "tests/fixtures/resources/c15/Ahem.ttf",
+      "action": "same",
+      "bytes": 21768,
+      "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+      "matches_source": true
+    }
+  ]
+}

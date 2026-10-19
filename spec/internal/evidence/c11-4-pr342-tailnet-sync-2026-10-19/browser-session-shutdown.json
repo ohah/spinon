@@ -1,0 +1,21 @@
+{
+  "tool": "Agent Browser",
+  "session": "redacted",
+  "close_command_succeeded": true,
+  "before_close": {
+    "active": true,
+    "browser_launched": true,
+    "page_count": 1
+  },
+  "after_close": {
+    "browser_launched": false,
+    "page_count": 0
+  },
+  "final_session_list": [],
+  "final_process_check": {
+    "agent_browser": false,
+    "chrome": false,
+    "chromium": false
+  },
+  "note": "close 직후 daemon은 비어 있는 세션 상태였고, 최종 process 확인 때는 daemon과 브라우저 프로세스가 모두 종료되어 있었다."
+}

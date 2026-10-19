@@ -1,0 +1,47 @@
+{
+  "tool": "Agent Browser",
+  "version": "0.31.1",
+  "source_commit": "0d35a10b1e720993a247dcc84ad3c46179e2940d",
+  "results": [
+    {
+      "route": "roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "observed": [
+        "공식 완료 72/212",
+        "C11.4 intrinsic track sizing 행이 미완료 체크 상태",
+        "C11.4 contribution input, 남은 제약과 PR #340/#342 링크"
+      ],
+      "screenshot": "tailnet-roadmap-agent-browser.png",
+      "viewport": "1280x633"
+    },
+    {
+      "route": "STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장",
+      "observed": [
+        "C11.4 미완료",
+        "C11.4 contribution input PR 변경 검토 30개 링크"
+      ],
+      "screenshot": "tailnet-status-agent-browser.png",
+      "viewport": "1280x633"
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.html",
+      "title": "C11.4 · CSS Grid track sizing 계획 - 스피논 문서",
+      "observed": [
+        "C11.4 contribution input과 미지원 범위 표시"
+      ],
+      "screenshot": "tailnet-plan-agent-browser.png",
+      "viewport": "1280x633"
+    },
+    {
+      "route": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/grid-item-intrinsic-contribution-pr-diff-review-30.html",
+      "title": "C11.4 contribution input PR 변경 검토 30개 - 스피논 문서",
+      "observed": [
+        "검토 표와 발견·수정 설명 렌더링"
+      ],
+      "screenshot": "tailnet-pr-review-agent-browser.png",
+      "viewport": "1280x633"
+    }
+  ],
+  "terminal_browser_used": false
+}
