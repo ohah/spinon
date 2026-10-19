@@ -14,7 +14,7 @@
 
 ## C11.4 direct image ratio transfer 후보
 
-[27-case Chrome 155 observation과 판정 기준](./evidence/c11-4-image-ratio-transfer-2026-10-19/README.md) · [구현 실패 관점 20개](./evidence/c11-4-image-ratio-transfer-2026-10-19/implementation-review-20.md) · [Android API 37 AVD·iPhone 17 Pro iOS 26.2 Simulator 7-scene 실행·표면 표본](./evidence/c11-4-image-ratio-transfer-simulator-2026-10-19/README.md). 제한된 direct HTML `img` Grid item fixture 결과이며 공개 CSS 지원이나 C11.4 완료가 아니다.
+[구현 PR #353](https://github.com/ohah/spinon/pull/353) · [27-case Chrome 155 observation과 판정 기준](./evidence/c11-4-image-ratio-transfer-2026-10-19/README.md) · [구현 실패 관점 20개](./evidence/c11-4-image-ratio-transfer-2026-10-19/implementation-review-20.md) · [Android API 37 AVD·iPhone 17 Pro iOS 26.2 Simulator 7-scene 실행·표면 표본](./evidence/c11-4-image-ratio-transfer-simulator-2026-10-19/README.md). 제한된 direct HTML `img` Grid item fixture 결과이며 공개 CSS 지원이나 C11.4 완료가 아니다.
 
 ## C11.4 PR #349 뒤 Tailnet 미리보기 동기화
 
