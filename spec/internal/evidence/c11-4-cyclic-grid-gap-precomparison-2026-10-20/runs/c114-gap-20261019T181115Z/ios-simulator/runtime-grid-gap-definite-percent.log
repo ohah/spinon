@@ -1,0 +1,3 @@
+getpwuid_r did not find a match for uid 501
+Timestamp               Ty Process[PID:TID]
+2026-10-20 03:11:20.416 Df SpinonBootstrap[49485:5652059] (Foundation) SPINON_C114_METAL_PIXEL_ERROR run_id=c114-gap-20261019T181115Z-grid-gap-definite-percent scene_id=grid-gap-definite-percent reason=invalid-run-scene-or-samples

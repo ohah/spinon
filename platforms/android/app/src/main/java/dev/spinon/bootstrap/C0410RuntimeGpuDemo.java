@@ -143,6 +143,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "column-transfer-input-capped-by-fixed-row-span",
             "fixed-gutter-column-suggestion-clamp",
             "fixed-gutter-row-suggestion-clamp",
+            "grid-gap-definite-percent", "grid-gap-cyclic-percent",
+            "grid-gap-definite-calc", "grid-gap-cyclic-calc",
+            "grid-gap-cyclic-percent-min-basis", "grid-gap-cyclic-calc-min-basis",
     };
     private static final String[] C131_COMPACT_SURFACE_CASE_IDS = {
             "visible", "clip-x", "clip-y", "clip-both", "clip-margin-padding",
@@ -241,6 +244,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return "width=12,height=6";
             case "fixed-gutter-row-suggestion-clamp":
                 return "width=6,height=12";
+            case "grid-gap-definite-percent":
+            case "grid-gap-definite-calc":
+                return "width=100,height=40";
+            case "grid-gap-cyclic-percent":
+                return "width=100,height=20";
+            case "grid-gap-cyclic-calc":
+                return "width=105,height=25";
+            case "grid-gap-cyclic-percent-min-basis":
+            case "grid-gap-cyclic-calc-min-basis":
+                return "width=120,height=30";
             case "spanning-auto-tracks":
                 return "width=100,height=30";
             case "spanning-min-content-items":
@@ -291,6 +304,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return "width=36,height=24";
             case "fixed-gutter-row-suggestion-clamp":
                 return "width=54,height=36";
+            case "grid-gap-definite-percent":
+            case "grid-gap-cyclic-percent":
+            case "grid-gap-definite-calc":
+            case "grid-gap-cyclic-calc":
+            case "grid-gap-cyclic-percent-min-basis":
+            case "grid-gap-cyclic-calc-min-basis":
+                return "width=40,height=10";
             case "spanning-auto-tracks":
                 return "width=70,height=10";
             case "auto-fill-repeat":
@@ -655,6 +675,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
         switch (sceneId) {
+            case "grid-gap-definite-percent":
+                return c114GapNodeFrames("100", "40", "50", "20");
+            case "grid-gap-cyclic-percent":
+                return c114GapNodeFrames("100", "20", "50", "15");
+            case "grid-gap-definite-calc":
+                return c114GapNodeFrames("100", "40", "55", "25");
+            case "grid-gap-cyclic-calc":
+                return c114GapNodeFrames("105", "25", "55.5", "21.25");
+            case "grid-gap-cyclic-percent-min-basis":
+                return c114GapNodeFrames("120", "30", "52", "17.5");
+            case "grid-gap-cyclic-calc-min-basis":
+                return c114GapNodeFrames("120", "30", "57", "22.5");
             case "auto-text-max-content":
             case "min-content-text-normal":
             case "max-content-text-normal":
@@ -693,10 +725,117 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
     }
 
+    private static String c114GapNodeFrames(
+            String gridWidth, String gridHeight, String secondColumnX, String secondRowY
+    ) {
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=" + gridWidth + ",height="
+                + gridHeight + ";1:node=2,x=0,y=0,width=40,height=10;2:node=3,x="
+                + secondColumnX + ",y=0,width=60,height=10;3:node=4,x=0,y=" + secondRowY
+                + ",width=40,height=10;4:node=5,x=" + secondColumnX + ",y=" + secondRowY
+                + ",width=60,height=10]";
+    }
+
+    private static int c114ExpectedBoxCount(String sceneId) {
+        return sceneId.startsWith("grid-gap-") ? 5 : 2;
+    }
+
     private static boolean isC114GridTrackSizingPixelSamples(
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (sceneId.endsWith("-min-basis")) {
+            boolean calc = sceneId.equals("grid-gap-cyclic-calc-min-basis");
+            if (samples.size() != (calc ? 6 : 5)) return false;
+            boolean gapBackground = false;
+            boolean rowGapBackground = false;
+            boolean insideItem = false;
+            boolean secondColumn = false;
+            boolean secondRow = false;
+            boolean belowGrid = !calc;
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                switch (sample.id) {
+                    case "gap-background":
+                        gapBackground = sample.targetNodeId.equals(sceneId + "-grid")
+                                && sample.xCssPx == 45 && sample.yCssPx == 5;
+                        if (!gapBackground) return false;
+                        break;
+                    case "row-gap-background":
+                        rowGapBackground = sample.targetNodeId.equals(sceneId + "-grid")
+                                && sample.xCssPx == 5 && sample.yCssPx == 12;
+                        if (!rowGapBackground) return false;
+                        break;
+                    case "inside-item":
+                        insideItem = sample.targetNodeId.equals(sceneId + "-item-1")
+                                && sample.xCssPx == 5 && sample.yCssPx == 5;
+                        if (!insideItem) return false;
+                        break;
+                    case "second-column":
+                        secondColumn = sample.targetNodeId.equals(sceneId + "-item-2")
+                                && sample.xCssPx == 60 && sample.yCssPx == 5;
+                        if (!secondColumn) return false;
+                        break;
+                    case "second-row":
+                        secondRow = sample.targetNodeId.equals(sceneId + "-item-3")
+                                && sample.xCssPx == 5 && sample.yCssPx == (calc ? 25 : 20);
+                        if (!secondRow) return false;
+                        break;
+                    case "below-grid":
+                        belowGrid = calc && sample.targetNodeId.equals(sceneId + "-item-3")
+                                && sample.xCssPx == 5 && sample.yCssPx == 31;
+                        if (!belowGrid) return false;
+                        break;
+                    default:
+                        return false;
+                }
+            }
+            return gapBackground && rowGapBackground && insideItem && secondColumn
+                    && secondRow && belowGrid;
+        }
+        if (sceneId.startsWith("grid-gap-")) {
+            boolean cyclic = sceneId.equals("grid-gap-cyclic-percent")
+                    || sceneId.equals("grid-gap-cyclic-calc");
+            boolean calc = sceneId.endsWith("-calc");
+            int rightX = calc ? (cyclic ? 111 : 110) : 105;
+            int belowY = sceneId.equals("grid-gap-cyclic-calc") ? 28 : 22;
+            if (samples.size() != (cyclic ? 5 : 4)) return false;
+            boolean gapBackground = false;
+            boolean rowGapBackground = false;
+            boolean insideItem = false;
+            boolean rightOfGrid = false;
+            boolean belowGrid = !cyclic;
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                switch (sample.id) {
+                    case "gap-background":
+                        gapBackground = sample.targetNodeId.equals(sceneId + "-grid")
+                                && sample.xCssPx == 45 && sample.yCssPx == 5;
+                        if (!gapBackground) return false;
+                        break;
+                    case "row-gap-background":
+                        rowGapBackground = sample.targetNodeId.equals(sceneId + "-grid")
+                                && sample.xCssPx == 5 && sample.yCssPx == 12;
+                        if (!rowGapBackground) return false;
+                        break;
+                    case "inside-item":
+                        insideItem = sample.targetNodeId.equals(sceneId + "-item-1")
+                                && sample.xCssPx == 5 && sample.yCssPx == 5;
+                        if (!insideItem) return false;
+                        break;
+                    case "right-of-grid":
+                        rightOfGrid = sample.targetNodeId.equals(sceneId + "-item-2")
+                                && sample.xCssPx == rightX && sample.yCssPx == 5;
+                        if (!rightOfGrid) return false;
+                        break;
+                    case "below-grid":
+                        belowGrid = cyclic && sample.targetNodeId.equals(sceneId + "-item-4")
+                                && sample.xCssPx == 5 && sample.yCssPx == belowY;
+                        if (!belowGrid) return false;
+                        break;
+                    default:
+                        return false;
+                }
+            }
+            return gapBackground && rowGapBackground && insideItem && rightOfGrid && belowGrid;
+        }
         boolean fixedGutterColumn = "fixed-gutter-column-suggestion-clamp".equals(sceneId);
         boolean fixedGutterRow = "fixed-gutter-row-suggestion-clamp".equals(sceneId);
         if (fixedGutterColumn || fixedGutterRow) {
@@ -1595,7 +1734,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "row-transfer-input-capped-by-fixed-column-span".equals(pixelMatrixSceneId)
                         || "column-transfer-input-capped-by-fixed-row-span".equals(pixelMatrixSceneId)
                         || "fixed-gutter-column-suggestion-clamp".equals(pixelMatrixSceneId)
-                        || "fixed-gutter-row-suggestion-clamp".equals(pixelMatrixSceneId))
+                        || "fixed-gutter-row-suggestion-clamp".equals(pixelMatrixSceneId)
+                        || "grid-gap-definite-percent".equals(pixelMatrixSceneId)
+                        || "grid-gap-cyclic-percent".equals(pixelMatrixSceneId)
+                        || "grid-gap-definite-calc".equals(pixelMatrixSceneId)
+                        || "grid-gap-cyclic-calc".equals(pixelMatrixSceneId)
+                        || "grid-gap-cyclic-percent-min-basis".equals(pixelMatrixSceneId)
+                        || "grid-gap-cyclic-calc-min-basis".equals(pixelMatrixSceneId))
                         && c114GridTrackSizingRunId.equals(pixelMatrixRunId)
                 : c1133GridTemplateAreasRequested
                 ? C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(pixelMatrixSceneId)
@@ -2773,7 +2918,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String expectedNodeFrames = c114ExpectedNodeFrames(c114GridTrackSizingSceneId);
             boolean c114GridTrackSizingTraceAvailable =
                     logC114GridTrackSizingTraceChunks(c114GridTrackSizingRunId, result);
-            if (!result.startsWith("status=0 ") || !result.contains("layout=ready boxes=2")
+            if (!result.startsWith("status=0 ") || !result.contains(
+                    "layout=ready boxes=" + c114ExpectedBoxCount(c114GridTrackSizingSceneId))
                     || !result.contains(expectedRootFrame)
                     || !result.contains(expectedItemFrame)
                     || (expectedNodeFrames != null && !result.contains(expectedNodeFrames))
@@ -4790,6 +4936,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         for (int index = 0; index < records.length(); index++) {
             JSONObject record = records.getJSONObject(index);
             String id = record.getString("id");
+            String targetNodeId = "";
+            if (record.has("nodeId")) {
+                Object nodeIdValue = record.get("nodeId");
+                if (!(nodeIdValue instanceof String)) return List.of();
+                targetNodeId = (String) nodeIdValue;
+                if (!targetNodeId.matches("[a-z0-9-]{1,80}")) return List.of();
+            }
             Object xValue = record.get("xCssPx");
             Object yValue = record.get("yCssPx");
             if (!(xValue instanceof Number) || !(yValue instanceof Number)) {
@@ -4805,7 +4958,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || !ids.add(id) || !coordinates.add((int) x + "," + (int) y)) {
                 return List.of();
             }
-            samples.add(new SurfaceViewPixelCapture.Sample(id, x, y));
+            samples.add(new SurfaceViewPixelCapture.Sample(id, targetNodeId, x, y));
         }
         return samples;
     }
@@ -4993,6 +5146,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                                 + " pid=" + android.os.Process.myPid() + " scene=" + sceneId
                                 + " generation=" + generation + " sample=" + pixel.id
                                 + " css_x=" + sample.xCssPx + " css_y=" + sample.yCssPx
+                                + (sample.targetNodeId.isEmpty() ? ""
+                                        : " target_node_id=" + sample.targetNodeId)
                                 + " x=" + pixel.x + " y=" + pixel.y
                                 + " rgba=" + pixel.red + "," + pixel.green + ","
                                 + pixel.blue + "," + pixel.alpha
@@ -5040,7 +5195,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "inside-item":
             case "right-of-grid":
             case "below-grid":
+            case "second-column":
+            case "second-row":
                 return new int[] {229, 72, 77};
+            case "gap-background":
+            case "row-gap-background":
             case "root-background-control":
                 return new int[] {16, 24, 32};
             default:

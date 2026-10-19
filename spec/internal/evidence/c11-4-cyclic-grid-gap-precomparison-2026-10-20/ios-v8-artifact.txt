@@ -1,0 +1,7 @@
+build: SPINON_V8_JOBS=4 bash tools/v8/build-ios-iphonesimulator.sh
+log: v8-ios-build.log
+status: exit 0; ninja completed 2701/2701 tasks
+expected V8 revision: 7b50b62cb18f28617959e8452e2cd18195b38bcf
+actual V8 revision: 7b50b62cb18f28617959e8452e2cd18195b38bcf
+archive: build/v8-source/v8/out/boson-ios-sim/obj/libv8_monolith.a
+archive sha256: 7a3e24607ea7b419d3fd858c35c094a566660f9d3112015487fa010d99e99815

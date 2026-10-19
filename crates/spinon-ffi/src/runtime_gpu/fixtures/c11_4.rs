@@ -293,6 +293,111 @@ return { sceneId:'min-content-text-nowrap', rootId:'c114-nowrap-grid', nodeIds:[
 ];
 
 #[derive(Clone, Copy)]
+struct PercentageGapScene {
+    scene_id: &'static str,
+    width: &'static str,
+    height: &'static str,
+    min_constraints: &'static str,
+    column_gap: &'static str,
+    row_gap: &'static str,
+}
+
+const C11_4_PERCENTAGE_GAP_SCENES: [PercentageGapScene; 6] = [
+    PercentageGapScene {
+        scene_id: "grid-gap-definite-percent",
+        width: "100px",
+        height: "40px",
+        min_constraints: "",
+        column_gap: "10%",
+        row_gap: "25%",
+    },
+    PercentageGapScene {
+        scene_id: "grid-gap-cyclic-percent",
+        width: "max-content",
+        height: "max-content",
+        min_constraints: "",
+        column_gap: "10%",
+        row_gap: "25%",
+    },
+    PercentageGapScene {
+        scene_id: "grid-gap-definite-calc",
+        width: "100px",
+        height: "40px",
+        min_constraints: "",
+        column_gap: "calc(5px + 10%)",
+        row_gap: "calc(5px + 25%)",
+    },
+    PercentageGapScene {
+        scene_id: "grid-gap-cyclic-calc",
+        width: "max-content",
+        height: "max-content",
+        min_constraints: "",
+        column_gap: "calc(5px + 10%)",
+        row_gap: "calc(5px + 25%)",
+    },
+    PercentageGapScene {
+        scene_id: "grid-gap-cyclic-percent-min-basis",
+        width: "max-content",
+        height: "max-content",
+        min_constraints: "min-width:120px;min-height:30px;",
+        column_gap: "10%",
+        row_gap: "25%",
+    },
+    PercentageGapScene {
+        scene_id: "grid-gap-cyclic-calc-min-basis",
+        width: "max-content",
+        height: "max-content",
+        min_constraints: "min-width:120px;min-height:30px;",
+        column_gap: "calc(5px + 10%)",
+        row_gap: "calc(5px + 25%)",
+    },
+];
+
+fn percentage_gap_scene_source(scene: PercentageGapScene) -> String {
+    let root_id = format!("{}-grid", scene.scene_id);
+    let item_ids = (1..=4)
+        .map(|index| format!("{}-item-{index}", scene.scene_id))
+        .collect::<Vec<_>>();
+    format!(
+        r#"(() => {{
+const root = document.createElement('div');
+root.setAttribute('id', {:?});
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:{};height:{};{}margin:0;padding:0;border:0;grid-template-columns:40px 60px;grid-template-rows:10px 10px;column-gap:{};row-gap:{};background-color:#101820');
+document.appendChild(root);
+const placements = [[1, 1], [1, 2], [2, 1], [2, 2]];
+const nodeIds = [{:?}, {:?}, {:?}, {:?}];
+for (let index = 0; index < placements.length; index += 1) {{
+  const [row, column] = placements[index];
+  const item = document.createElement('div');
+  item.setAttribute('id', nodeIds[index]);
+  item.setAttribute('data-node', '');
+  item.setAttribute('style', `box-sizing:border-box;width:100%;height:100%;margin:0;padding:0;border:0;grid-row:${{row}} / ${{row + 1}};grid-column:${{column}} / ${{column + 1}};background-color:#e5484d`);
+  root.appendChild(item);
+}}
+return {{ sceneId:{:?}, rootId:{:?}, nodeIds:[{:?}, {:?}, {:?}, {:?}, {:?}] }};
+}})()"#,
+        root_id,
+        scene.width,
+        scene.height,
+        scene.min_constraints,
+        scene.column_gap,
+        scene.row_gap,
+        item_ids[0],
+        item_ids[1],
+        item_ids[2],
+        item_ids[3],
+        scene.scene_id,
+        root_id,
+        root_id,
+        item_ids[0],
+        item_ids[1],
+        item_ids[2],
+        item_ids[3],
+    )
+}
+
+#[derive(Clone, Copy)]
 struct ImageScene {
     scene_id: &'static str,
     root_id: &'static str,
@@ -578,6 +683,12 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     {
         return Ok(Cow::Borrowed(source));
     }
+    if let Some(scene) = C11_4_PERCENTAGE_GAP_SCENES
+        .iter()
+        .find(|scene| scene.scene_id == scene_id)
+    {
+        return Ok(Cow::Owned(percentage_gap_scene_source(*scene)));
+    }
     if let Some(scene) = C11_4_IMAGE_TRACK_SCENES
         .iter()
         .find(|scene| scene.scene_id == scene_id)
@@ -647,7 +758,7 @@ return {{ sceneId:{:?}, rootId:{:?}, nodeIds:[{:?}, {:?}] }};
 mod tests {
     use super::{
         C11_4_GRID_TRACK_SIZING_SCENES, C11_4_IMAGE_FIXED_GUTTER_SCENES, C11_4_IMAGE_TRACK_SCENES,
-        c11_4_grid_track_sizing_runtime_source,
+        C11_4_PERCENTAGE_GAP_SCENES, c11_4_grid_track_sizing_runtime_source,
     };
 
     #[test]
@@ -655,6 +766,7 @@ mod tests {
         assert_eq!(C11_4_GRID_TRACK_SIZING_SCENES.len(), 17);
         assert_eq!(C11_4_IMAGE_TRACK_SCENES.len(), 18);
         assert_eq!(C11_4_IMAGE_FIXED_GUTTER_SCENES.len(), 2);
+        assert_eq!(C11_4_PERCENTAGE_GAP_SCENES.len(), 6);
         assert_eq!(
             C11_4_GRID_TRACK_SIZING_SCENES
                 .iter()
@@ -684,6 +796,26 @@ mod tests {
             assert!(source.contains("background-color:#22c55e"));
             assert!(
                 source.contains("grid-column:1 / span 2") || source.contains("grid-row:1 / span 2")
+            );
+        }
+        for scene in C11_4_PERCENTAGE_GAP_SCENES {
+            let source = c11_4_grid_track_sizing_runtime_source(scene.scene_id).unwrap();
+            assert!(source.len() < 4 * 1024);
+            assert!(source.contains(&format!("sceneId:{:?}", scene.scene_id)));
+            assert!(source.contains(&format!(
+                "const nodeIds = [{:?}, {:?}, {:?}, {:?}]",
+                format!("{}-item-1", scene.scene_id),
+                format!("{}-item-2", scene.scene_id),
+                format!("{}-item-3", scene.scene_id),
+                format!("{}-item-4", scene.scene_id),
+            )));
+            assert!(source.contains(&format!(
+                "column-gap:{};row-gap:{}",
+                scene.column_gap, scene.row_gap
+            )));
+            assert!(source.contains(&format!("{}margin:0", scene.min_constraints)));
+            assert!(
+                source.contains("grid-template-columns:40px 60px;grid-template-rows:10px 10px")
             );
         }
         assert!(c11_4_grid_track_sizing_runtime_source("unknown;throw 1").is_err());

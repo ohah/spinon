@@ -1,0 +1,14 @@
+ M crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs
+ M crates/spinon-layout/src/lib.rs
+ M crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests.rs
+ M crates/spinon-style-to-layout/src/projection.rs
+ M plan/c11-4-grid-track-sizing.md
+ M platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java
+ M platforms/android/app/src/main/java/dev/spinon/bootstrap/SurfaceViewPixelCapture.java
+ M platforms/ios/Sources/C0410RuntimeGpuDemo.swift
+ M spec/internal/0059-c11-grid-layout.md
+ M vendor/taffy/src/compute/grid/track_sizing.rs
+?? crates/spinon-layout/src/grid_cyclic_percentage_gap_tests.rs
+?? spec/internal/evidence/c11-4-cyclic-grid-gap-precomparison-2026-10-20/
+?? spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/pr-334-agent-browser.png
+?? tests/fixtures/css/c11/grid-track-sizing-c114-percentage-gaps.html

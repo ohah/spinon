@@ -169,3 +169,11 @@ Taffy 0.15.0 전환 후 기존 C11.3.3 Android API 37 AVD·iOS Simulator 26 scen
 제한 runtime fixture 두 장면은 3px + 3px gutter + 4px span의 preferred contribution 10px을 확인한다. column 장면은 반대 축 transferred minimum 10/1.5와 item frame 36×24px, row 장면은 transferred minimum 10×1.5와 frame 54×36px을 확인한다. Rust focused tests 8/8, runtime fixture tests 2/2, FFI fixture test 1/1 및 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator의 frame·trace matrix 각 2/2를 기록했다. Android PixelCopy와 iOS Metal drawable은 border·item·grid 오른쪽·아래 각 4/4 exact이며 iOS 결과는 compositor 제출 전이다. 근거는 [실행 기록과 캡처](./evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.md), [구현 검토](./evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.md)에 둔다.
 
 percentage/calc track과 gap, vertical writing mode, nested·anonymous·multiple image item, WPT, 실기기·hardware GPU 및 compositor 이후 픽셀은 이 제한 slice에서 검증하지 않았다. 이는 공개 CSS 지원 선언이나 C11.4 완료가 아니다.
+
+## C11.4 cyclic percentage/calc gap 제한 후보
+
+`RuntimeBlockFlexGridTrackSizingV1`의 2×2 explicit fixed-track fixture는 definite `100×40px`, unconstrained `max-content`, definite `min-width:120px; min-height:30px`의 여섯 gap case를 비교한다. Column·row gap은 `%` 또는 `calc(5px + %)`다. 이 제한 profile에서만 root Grid `max-content` intrinsic dimension을 style projection이 허용하며, 다른 profile이나 non-Grid root의 같은 입력은 계속 거부한다. Chrome 155 Agent Browser의 DOMRect/computed gap과 Rust frame/trace 관찰은 [실행 근거](./evidence/c11-4-cyclic-grid-gap-precomparison-2026-10-20/README.md)에 둔다.
+
+Taffy intrinsic sizing에서 cyclic percentage gutter는 0 basis를 사용하되 `calc()` absolute term은 유지한다. definite minimum size가 있어도 intrinsic gap contribution은 cyclic하며, 최종 content-box layout에서 gap percentage를 다시 resolve한다. final trace의 active gutter와 root/item frame은 Rust 회귀에서 함께 검사한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 여섯 scene frame 6/6 및 각각 29/29 PixelCopy/Metal drawable sample을 확인했다. Android는 ANGLE/SwiftShader AVD, iOS 표본은 compositor 제출 전 drawable이다. 실행 로그와 전체 screenshot은 위 evidence directory의 `runs/c114-gap-20261019T181753Z/`에 있다.
+
+이 slice는 horizontal writing mode의 explicit fixed track, definite/max-content sizing 및 이 문서의 six-case gap matrix에 한정한다. track sizing 전체 stage·intrinsic contributions·auto-repeat interaction·nested/anonymous item·WPT·실기기·compositor 이후 surface를 보장하지 않으며 C11.4 및 C11 완료 판정을 바꾸지 않는다. 내부 계약 숫자 버전은 `0.1.0` 그대로다.

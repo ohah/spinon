@@ -1,0 +1,8 @@
+build: SPINON_V8_DIR=/private/tmp/spinon-c11-4-grid-track-sizing-20261019/build/v8-source/v8 SPINON_ENABLE_C04_RUNTIME_GPU=1 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=1 mise exec -- bun run build:ios-sim
+log: ios-app-build-fix4.log
+status: ** BUILD SUCCEEDED **
+target: iPhone Simulator arm64, iOS 26.2 SDK
+V8 revision: 7b50b62cb18f28617959e8452e2cd18195b38bcf
+V8 archive sha256: 7a3e24607ea7b419d3fd858c35c094a566660f9d3112015487fa010d99e99815
+app: build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app
+executable sha256: bdb93979fa6c0c97ce772112afb00cd810f53a1870839504e914bcc998d2f612

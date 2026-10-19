@@ -655,6 +655,7 @@ fn compute_layout_from_styles_with_text(
         root,
         &mut projected.styles,
         intrinsic_sizes.as_ref(),
+        computed_styles.profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
     )?;
     let styles = projected.styles;
     let positioning = projected.positioning;
@@ -822,6 +823,7 @@ fn validate_intrinsic_image_inputs(
     root: HostNodeHandle,
     styles: &mut BTreeMap<NodeId, LayoutStyle>,
     intrinsic_sizes: Option<&LayoutIntrinsicSizeSnapshot>,
+    allow_root_grid_max_content: bool,
 ) -> Result<(), StyleLayoutError> {
     let expected_source = LayoutSourceRevision::HostDocument {
         generation: snapshot.generation(),
@@ -866,7 +868,21 @@ fn validate_intrinsic_image_inputs(
                 | spinon_layout::LayoutDimension::MaxContent
                 | spinon_layout::LayoutDimension::FitContent
         );
-        if has_intrinsic_keyword && !is_html_image {
+        // C11.4 fixture profile은 cyclic gap을 계산하는 root Grid의 max-content만 허용한다.
+        // 자식 Grid와 다른 profile은 기존 fail-closed 경계를 유지한다.
+        let root_grid_max_content = allow_root_grid_max_content
+            && handle == root
+            && style.display == spinon_layout::LayoutDisplay::Grid
+            && (style.width == spinon_layout::LayoutDimension::MaxContent
+                || style.height == spinon_layout::LayoutDimension::MaxContent)
+            && [style.width, style.height].into_iter().all(|dimension| {
+                !matches!(
+                    dimension,
+                    spinon_layout::LayoutDimension::MinContent
+                        | spinon_layout::LayoutDimension::FitContent
+                )
+            });
+        if has_intrinsic_keyword && !is_html_image && !root_grid_max_content {
             let supported_image = if style.width == spinon_layout::LayoutDimension::MinContent {
                 is_supported_cyclic_min_content_container(snapshot, handle, style, styles)
             } else {
@@ -875,7 +891,7 @@ fn validate_intrinsic_image_inputs(
             let Some((image, fraction)) = supported_image else {
                 return Err(LayoutError::UnsupportedIntrinsicSizing {
                     node: node.id(),
-                    reason: "C14.3 intrinsic sizing keyword는 HTML img와 제한된 cyclic parent만 지원합니다",
+                    reason: "intrinsic sizing은 C14.3 이미지·제한 cyclic parent 또는 C11.4 track-sizing profile의 root Grid max-content만 지원합니다",
                 }
                 .into());
             };

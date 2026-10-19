@@ -1,0 +1,13 @@
+default artifact: target/debug/deps/libspinon_ffi-0098a99528f2b0e6.a
+PASS: C11.4 percentage gap scene IDs absent from default artifact
+fixture-test artifact: target/debug/deps/libspinon_ffi-128e9f0db415ce69.a
+PASS: grid-gap-definite-percent present in fixture-test artifact
+PASS: grid-gap-cyclic-percent present in fixture-test artifact
+PASS: grid-gap-definite-calc present in fixture-test artifact
+PASS: grid-gap-cyclic-calc present in fixture-test artifact
+PASS: grid-gap-cyclic-percent-min-basis present in fixture-test artifact
+PASS: grid-gap-cyclic-calc-min-basis present in fixture-test artifact
+PASS: spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture only present in fixture-test artifact
+PASS: spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture only present in fixture-test artifact
+768391921e4cb269e7bca4b06a6f75739edc7d47363fffa6b6a3df01a2cf6c18  target/debug/deps/libspinon_ffi-0098a99528f2b0e6.a
+f936f78e0ff98ef3aa63e645ea59c1da9b521a6e4438a280fb45ab817b9eba79  target/debug/deps/libspinon_ffi-128e9f0db415ce69.a

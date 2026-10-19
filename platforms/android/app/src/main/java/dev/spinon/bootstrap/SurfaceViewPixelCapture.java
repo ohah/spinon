@@ -23,11 +23,17 @@ final class SurfaceViewPixelCapture {
 
     static final class Sample {
         final String id;
+        final String targetNodeId;
         final double xCssPx;
         final double yCssPx;
 
         Sample(String id, double xCssPx, double yCssPx) {
+            this(id, "", xCssPx, yCssPx);
+        }
+
+        Sample(String id, String targetNodeId, double xCssPx, double yCssPx) {
             this.id = id;
+            this.targetNodeId = targetNodeId;
             this.xCssPx = xCssPx;
             this.yCssPx = yCssPx;
         }
