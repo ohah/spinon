@@ -33,6 +33,6 @@
 | 27 | 전체 문서 dead-link 검사를 통과했다고 주장하는가 | 통과 — 전체 문서 적합성은 주장하지 않는다. |
 | 28 | Tailnet 확인을 Terminal Browser 결과로 표기하는가 | 통과 — Agent Browser session과 실제 Tailnet URL을 기록한다. |
 | 29 | 브라우저 screenshot의 이미지 로드가 실패했는가 | 통과 — Android 1080×2400, iOS 1206×2622 natural size로 확인했다. |
-| 30 | 작업 후 Agent Browser process가 남는가 | 통과 — 지정 session을 종료한 뒤 상태와 process를 별도로 확인한다. |
+| 30 | 작업 후 Agent Browser process가 남는가 | 통과 — 지정 session 종료 후 `active=false`, `pid=null`이며 PID가 사라졌고, active list에는 원래 `default`만 남았다. |
 
 미해결된 PR 범위 문제는 없다. 이 검토는 전체 RSPress dead-link 검사, C11.4 적합성, 실제 기기 또는 GitHub Pages 배포를 대신하지 않는다.
