@@ -51,6 +51,8 @@ Agent Browser에서 다음 네 경로의 실제 화면을 확인했다.
 
 전용 Agent Browser 세션을 닫았고, 세션 inactive 및 남은 agent-browser process 0개를 확인했다([종료 기록](./browser-close-pass10.json)).
 
+PR #363 본문에 첨부한 네 문서 화면도 Agent Browser에서 모두 로드됐고 각 이미지는 1280×633이다([PR 본문 이미지 확인](./pr-body-browser-check-363.json)). 이는 Tailnet 문서 화면 캡처이며 앱 실행 화면이 아니다.
+
 ## 검토와 범위
 
 - [동기화 실패 관점 검토 20개](./sync-review-20.md)
