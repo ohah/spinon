@@ -33,7 +33,7 @@ Agent Browser로 로드맵, 상태 대장, C11.4 계획 및 PR diff 검토 경�
 - [C11.4 계획](tailnet-plan-agent-browser.png)
 - [PR diff 검토 문서](tailnet-pr-review-agent-browser.png)
 
-확인 뒤 이 작업에서 연 Agent Browser 세션을 닫았다. 종료 후 세션 목록은 비었고 해당 Agent Browser/Chrome 프로세스도 남지 않았다. 종료 근거는 [browser-session-shutdown.json](browser-session-shutdown.json)에 있다. Terminal Browser는 사용하지 않았다.
+확인 뒤 이 작업에서 연 Agent Browser 세션을 닫았다. 도구의 세션 목록에는 닫힌 세션 이름이 비활성 기록으로 남았지만, `session info`는 `active=false`, `pid=null`을 반환했고 브라우저 프로세스 확인도 비어 있었다. 종료 근거는 [browser-session-shutdown.json](browser-session-shutdown.json)에 있다. Terminal Browser는 사용하지 않았다.
 
 ## 남은 범위
 

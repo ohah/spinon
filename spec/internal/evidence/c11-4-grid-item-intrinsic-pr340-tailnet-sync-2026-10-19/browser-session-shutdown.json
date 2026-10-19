@@ -3,7 +3,11 @@
   "tool": "Agent Browser",
   "targeted_session": "spinon-c11-4-pr340-tailnet",
   "close_result": "success",
-  "sessions_after_close": [],
-  "matching_agent_browser_or_chrome_processes_after_close": 0,
+  "sessions_after_close": ["spinon-c11-4-pr341-review"],
+  "session_info_after_close": {
+    "active": false,
+    "pid": null
+  },
+  "matching_agent_browser_or_chrome_processes_after_idle": 0,
   "other_sessions_touched": false
 }

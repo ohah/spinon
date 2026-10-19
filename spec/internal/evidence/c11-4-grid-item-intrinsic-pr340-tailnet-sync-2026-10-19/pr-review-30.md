@@ -29,7 +29,7 @@
 21. **이미지 링크 대상이 누락되는가** — README가 같은 evidence 디렉터리의 저장된 상대경로를 가리킨다. 파일 존재를 확인했다. 통과.
 22. **불필요한 대용량 화면 중복** — PR에 넣을 viewport 증거는 로드맵 수와 상태 변화에 집중하며 장문의 전체 로드맵 중복 이미지는 제외한다. 통과.
 23. **브라우저 종류가 잘못 표시되는가** — 증거는 Agent Browser라고 적고 Terminal Browser를 사용하지 않았음을 기록한다. 통과.
-24. **브라우저 프로세스가 남아 있는가** — 종료 결과 JSON은 세션 목록 빈 배열과 process count 0을 기록한다. 통과.
+24. **브라우저 프로세스가 남아 있는가** — 종료 결과 JSON은 `active=false`, `pid=null`, idle 후 process count 0을 기록한다. 도구의 session list에 남은 값은 실행 프로세스가 아닌 비활성 이름이다. 통과.
 25. **다른 브라우저 세션을 닫았는가** — 작업에서 연 이름이 붙은 세션 하나만 닫고 나머지 세션에는 손대지 않았다. 통과.
 26. **미리보기 hostname이 공개 파일에 남는가** — 증거 파일에서 host를 가렸고 README는 상대 path를 쓴다. 통과.
 27. **local absolute path나 계정 정보가 노출되는가** — build log의 worktree root를 `[worktree]`로 치환했고 추가 증거의 경로를 검색했다. 통과.
@@ -39,4 +39,4 @@
 
 ## 검토 결과와 한계
 
-이 diff에서 추가로 수정할 증거 불일치는 찾지 못했다. 검토는 공개 문서 증거와 동기화 산출물에 한정된다. PR review 시점의 GitHub checks·branch protection·mergeability는 생성 후 최신 상태로 다시 확인해야 한다. 이 문서는 전체 문서 빌드, 앱 UI 또는 simulator 통과를 주장하지 않는다.
+이 diff에서 추가로 수정할 증거 불일치는 찾지 못했다. 종료 근거를 재확인해 inactive session handle과 실행 중인 브라우저 프로세스를 구분했다. 검토는 공개 문서 증거와 동기화 산출물에 한정된다. PR review 시점의 GitHub checks·branch protection·mergeability는 생성 후 최신 상태로 다시 확인해야 한다. 이 문서는 전체 문서 빌드, 앱 UI 또는 simulator 통과를 주장하지 않는다.
