@@ -33,8 +33,8 @@
 | 27 | Android/iOS host allowlist가 불일치해 한 플랫폼만 scene을 실행하는가? | **통과.** 양쪽 route와 root/item size mapping에 같은 13개 ID가 들어 있고 simulator 결과가 모두 13/13이다. |
 | 28 | 실패한 scene의 stale log가 새 실행 결과처럼 소비될 수 있는가? | **통과.** 매 scene마다 고유 run ID와 새 process를 사용하고 process/PID 및 scene/run marker를 대조한다. |
 | 29 | PR 문서 변경이 다른 Grid/roadmap 업무 또는 사용자 변경을 포함하는가? | **통과.** 변경 경로는 C11.4 explicit-neighbor 구현·fixture·계획/상태·근거로 한정된다. 원 checkout의 미커밋 C11.3 작업은 이 worktree diff에 없다. |
-| 30 | 최종 PR에서 필요한 검토 근거, 라벨, screenshots 및 merge gate가 누락되는가? | **통과 조건 기록.** 이 diff report와 implementation report를 PR에 포함한다. PR 생성 뒤 screenshot markdown 렌더링, `enhancement`/`area:*` 라벨, live required checks와 merge state를 별도 확인한 뒤에만 merge한다. |
+| 30 | 최종 PR에서 필요한 검토 근거, 라벨, screenshots 및 merge gate가 누락되는가? | **통과.** PR [#362](https://github.com/ohah/spinon/pull/362)에 두 검토 보고서와 실행 근거를 연결했다. Agent Browser에서 Android `1080×2400`·iOS `1206×2622` 이미지가 모두 loaded임을 확인했고, 여섯 라벨도 붙었다. `main` 보호 설정의 required status checks는 미설정, PR status rollup과 `gh pr checks --required`는 결과 0개, `mergeStateStatus=CLEAN`, required approvals=0이다. 이는 CI 통과가 아니라 요구된 status check가 설정되지 않은 상태다. |
 
 ## 결과
 
-코드·문서·실행 근거 diff에서 차단 결함은 찾지 못했다. #30의 GitHub PR 렌더링, 라벨 및 live checks는 PR 생성 뒤 별도로 확인해야 하며, 이 보고서만으로 merge-ready라고 판정하지 않는다.
+코드·문서·실행 근거 및 PR #362 화면 diff에서 차단 결함은 찾지 못했다. 필수 CI가 설정되지 않아 통과로 보고하지 않으며, 저장소 규칙상 `Rebase and merge` 가능한 `CLEAN` 상태를 확인했다. 실제 병합 여부는 `mergedAt`과 merge commit을 다시 조회해 기록한다.

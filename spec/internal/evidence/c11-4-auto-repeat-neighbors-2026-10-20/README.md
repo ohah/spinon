@@ -63,7 +63,8 @@ mise exec -- node tools/css-reference/capture-c11-4-auto-repeat-neighbors-simula
 ## 적대적 검토
 
 - [구현 실패 관점 20개](./implementation-review-20.md)는 cascade, typed projection, Taffy adapter, placement, 앱 fixture, simulator capture 경계를 서로 다른 실패 경로로 다시 확인했다. 차단 결함은 찾지 못했다.
-- [PR diff 적대 검토 30개](./pr-diff-review-30.md)는 최종 pull request 변경을 대상으로 별도로 수행한다.
+- [PR #362](https://github.com/ohah/spinon/pull/362)는 Android/iOS overflow 화면을 본문에서 렌더링하며, 두 원본과 연결한 [PR diff 적대 검토 30개](./pr-diff-review-30.md)를 포함한다. Agent Browser에서 이미지 두 개가 모두 로드된 것을 확인했다.
+- 현재 `main` 보호 설정에는 required status check가 없고 PR check rollup도 비어 있다. 이를 CI 통과로 세지 않는다.
 
 ## 해시
 
