@@ -23,6 +23,10 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "auto-fill-indefinite-neighbors", "auto-fill-max-size-neighbors",
     "auto-fill-min-size-neighbors", "auto-fill-overflow-neighbors",
     "auto-fill-row-neighbors", "auto-fit-row-neighbors",
+    "auto-fill-two-track-columns-both-190", "auto-fill-two-track-columns-both-200",
+    "auto-fill-two-track-columns-both-342", "auto-fill-two-track-columns-prefix-200",
+    "auto-fill-two-track-columns-suffix-200", "auto-fill-two-track-rows-both-190",
+    "auto-fill-two-track-rows-both-200", "auto-fill-two-track-rows-both-342",
     "min-content-text-normal", "auto-text-max-content",
     "max-content-text-normal", "fit-content-text-minimum",
     "fit-content-calc-limit", "min-content-text-edge",
@@ -84,6 +88,22 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
         return "width=40,height=60"
     case "auto-fill-row-neighbors", "auto-fit-row-neighbors":
         return "width=50,height=200"
+    case "auto-fill-two-track-columns-both-190":
+        return "width=190,height=60"
+    case "auto-fill-two-track-columns-both-200":
+        return "width=266,height=60"
+    case "auto-fill-two-track-columns-both-342":
+        return "width=342,height=60"
+    case "auto-fill-two-track-columns-prefix-200":
+        return "width=248,height=60"
+    case "auto-fill-two-track-columns-suffix-200":
+        return "width=238,height=60"
+    case "auto-fill-two-track-rows-both-190":
+        return "width=50,height=190"
+    case "auto-fill-two-track-rows-both-200":
+        return "width=50,height=266"
+    case "auto-fill-two-track-rows-both-342":
+        return "width=50,height=342"
     case "spanning-auto-tracks", "spanning-min-content-items":
         return "width=100,height=30"
     case "fixed-small-track-overflow":
@@ -143,7 +163,11 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     case "auto-fit-fixed-neighbors":
         return "width=154,height=40"
     case "auto-fit-empty-neighbors", "auto-fill-max-size-neighbors",
-         "auto-fill-min-size-neighbors":
+         "auto-fill-min-size-neighbors", "auto-fill-two-track-columns-both-190",
+         "auto-fill-two-track-columns-both-200", "auto-fill-two-track-columns-both-342",
+         "auto-fill-two-track-columns-prefix-200", "auto-fill-two-track-columns-suffix-200",
+         "auto-fill-two-track-rows-both-190", "auto-fill-two-track-rows-both-200",
+         "auto-fill-two-track-rows-both-342":
         return ""
     case "auto-fit-span-neighbors", "auto-fill-prefix-neighbors",
          "auto-fill-suffix-neighbors", "auto-fill-indefinite-neighbors",
@@ -516,6 +540,11 @@ private func c114ImageTrackPassMatches(
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     switch sceneID {
+    case "auto-fill-two-track-columns-both-190", "auto-fill-two-track-columns-both-200",
+         "auto-fill-two-track-columns-both-342", "auto-fill-two-track-columns-prefix-200",
+         "auto-fill-two-track-columns-suffix-200", "auto-fill-two-track-rows-both-190",
+         "auto-fill-two-track-rows-both-200", "auto-fill-two-track-rows-both-342":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,\(c114ExpectedRootFrame(sceneID))]"
     case "auto-fill-fixed-neighbors", "auto-fill-pattern-neighbors":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;"
             + "1:node=2,x=190,y=0,width=10,height=40]"
@@ -571,7 +600,11 @@ private func c114GapNodeFrames(
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     if sceneID == "auto-fit-span-neighbors" { return 3 }
     if ["auto-fit-empty-neighbors", "auto-fill-max-size-neighbors",
-        "auto-fill-min-size-neighbors"].contains(sceneID) { return 1 }
+        "auto-fill-min-size-neighbors", "auto-fill-two-track-columns-both-190",
+        "auto-fill-two-track-columns-both-200", "auto-fill-two-track-columns-both-342",
+        "auto-fill-two-track-columns-prefix-200", "auto-fill-two-track-columns-suffix-200",
+        "auto-fill-two-track-rows-both-190", "auto-fill-two-track-rows-both-200",
+        "auto-fill-two-track-rows-both-342"].contains(sceneID) { return 1 }
     return sceneID.hasPrefix("grid-gap-") ? 5 : 2
 }
 
