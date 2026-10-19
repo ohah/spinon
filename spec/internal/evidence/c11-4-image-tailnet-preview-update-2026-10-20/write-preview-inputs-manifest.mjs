@@ -7,7 +7,7 @@ const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, '../../../..');
 const evidenceRoot = 'spec/internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20';
 const run = process.env.SPINON_TAILNET_RUN;
-if (!['pass6', 'pass7', 'pass8', 'pass9'].includes(run)) throw new Error('SPINON_TAILNET_RUN must be pass6, pass7, pass8, or pass9');
+if (!['pass6', 'pass7', 'pass8', 'pass9', 'pass11'].includes(run)) throw new Error('SPINON_TAILNET_RUN must be pass6, pass7, pass8, pass9, or pass11');
 const manifestRelative = `${evidenceRoot}/SHA256SUMS-preview-inputs.txt`;
 const selected = [
   'spec/0001-conformance.md',
@@ -73,6 +73,14 @@ if (run === 'pass9') {
     `${evidenceRoot}/final-tailnet-plan-agent-browser.png`,
     `${evidenceRoot}/final-tailnet-evidence-agent-browser.png`,
     `${evidenceRoot}/final-tailnet-sync-agent-browser.png`,
+  );
+}
+if (run === 'pass11') {
+  selected.push(
+    'plan/c11-4-auto-repeat-two-track-min-size.md',
+    'spec/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20',
+    'spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20',
+    'spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20',
   );
 }
 if (run === 'pass8') {

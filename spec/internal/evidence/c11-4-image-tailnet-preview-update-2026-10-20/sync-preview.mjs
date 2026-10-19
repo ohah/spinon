@@ -9,9 +9,9 @@ const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, '../../../..');
 const [mode, sourceArg, targetArg, backupArg, preflightArg] = process.argv.slice(2);
 const pass = process.env.SPINON_TAILNET_RUN;
-if (!['preflight', 'copy'].includes(mode) || !['pass6', 'pass7', 'pass8', 'pass9'].includes(pass)
+if (!['preflight', 'copy'].includes(mode) || !['pass6', 'pass7', 'pass8', 'pass9', 'pass11'].includes(pass)
     || !sourceArg || !targetArg || !backupArg) {
-  throw new Error('usage: SPINON_TAILNET_RUN=pass6|pass7|pass8|pass9 node sync-preview.mjs preflight|copy SOURCE TARGET BACKUP [PREFLIGHT_JSON]');
+  throw new Error('usage: SPINON_TAILNET_RUN=pass6|pass7|pass8|pass9|pass11 node sync-preview.mjs preflight|copy SOURCE TARGET BACKUP [PREFLIGHT_JSON]');
 }
 
 const sourceRoot = path.resolve(repoRoot, sourceArg);
@@ -23,9 +23,9 @@ if (sourceRootRelative !== expectedSourceRootRelative) {
   throw new Error(`source root must be the sanitized Rspress output: ${expectedSourceRootRelative}`);
 }
 const previewRootRelative = 'SpinonPreview';
-const backupRootRelative = `SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/${pass}`;
+const backupRootRelative = `SpinonPreviewBackups/c11-4-two-track-tailnet-sync-2026-10-20/${pass}`;
 const expectedTargetRoot = path.resolve(os.homedir(), 'Library/Application Support/SpinonPreview');
-const expectedBackupRoot = path.resolve(os.homedir(), `Library/Application Support/SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/${pass}`);
+const expectedBackupRoot = path.resolve(os.homedir(), `Library/Application Support/SpinonPreviewBackups/c11-4-two-track-tailnet-sync-2026-10-20/${pass}`);
 if (targetRoot !== expectedTargetRoot || backupRoot !== expectedBackupRoot) {
   throw new Error('target and backup paths must match the approved SpinonPreview locations');
 }

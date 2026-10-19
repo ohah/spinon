@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, '../../../..');
 const run = process.argv[2];
-if (!['pass6', 'pass7', 'pass8', 'pass9'].includes(run)) throw new Error('usage: node prepare-selected-root.mjs pass6|pass7|pass8|pass9');
+if (!['pass6', 'pass7', 'pass8', 'pass9', 'pass11'].includes(run)) throw new Error('usage: node prepare-selected-root.mjs pass6|pass7|pass8|pass9|pass11');
 
 const specRoot = path.join(repoRoot, 'spec');
 const outputRoot = path.join(repoRoot, 'build/spinon', `c11-4-image-tailnet-root-${run}`);
@@ -136,6 +136,19 @@ if (run === 'pass9') {
   for (const name of evidenceFiles) {
     const relative = `${evidenceRoot}/${name}`;
     selected.push([relative, `internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/${name}`]);
+  }
+}
+if (run === 'pass11') {
+  const evidence = [
+    'c11-4-auto-repeat-neighbors-2026-10-20',
+    'c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20',
+    'c11-4-auto-repeat-two-track-min-size-2026-10-20',
+  ];
+  selected.push(['plan/c11-4-auto-repeat-two-track-min-size.md', 'plan/c11-4-auto-repeat-two-track-min-size.md']);
+  for (const name of evidence) {
+    const source = `spec/internal/evidence/${name}`;
+    selected.push([source, `internal/evidence/${name}`]);
+    selected.push([source, `spec/internal/evidence/${name}`]);
   }
 }
 
