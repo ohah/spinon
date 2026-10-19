@@ -1,5 +1,9 @@
 # 내부 인터페이스 명세
 
+## C11.4 PR #351 뒤 Tailnet 미리보기 동기화
+
+[로드맵·선택 문서 빌드·Tailnet 제공 화면과 해시 근거](./evidence/c11-4-image-tailnet-sync-2026-10-19/README.md) · [동기화 실패 관점 20개](./evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.md) · [PR diff 실패 관점 30개](./evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.md). PR #351 병합 뒤 9-scene image intrinsic 결과를 Tailnet 로드맵 미리보기에 반영한다. 정적 미리보기 갱신이며 C11.4 완료나 GitHub Pages 배포가 아니다.
+
 ## C11.4 Ahem text intrinsic matrix
 
 [Chrome 155·Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 10-scene 근거](./evidence/c11-4-text-intrinsic-matrix-2026-10-19/README.md) · [frame·canonical trace 결과](./evidence/c11-4-text-intrinsic-matrix-2026-10-19/cross-platform-comparison.json) · [구현 검토 20개](./evidence/c11-4-text-intrinsic-matrix-2026-10-19/implementation-review-20.md) · [PR diff 검토 30개](./evidence/c11-4-text-intrinsic-matrix-2026-10-19/pr-diff-review-30.md). 제한 fixture 결과이며 C11.4 완료나 공개 CSS 지원이 아니다.
