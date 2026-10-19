@@ -245,8 +245,16 @@ test('C04 GPU 핵심과 fixture 검증 feature를 분리하고 앱 검증 빌드
     /SWIFT_ACTIVE_COMPILATION_CONDITIONS[^\n]*SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_\$\(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST\)/);
   assert.match(iosAppDelegate,
     /if runRuntimeGpu && !arguments\.contains\("--spinon-c0412-root-html-default-render"\)/);
-  assert.match(ffiManifest,
-    /c04-runtime-gpu-fixture-test\s*=\s*\["c04-runtime-gpu"\]/);
+  const runtimeGpuFixtureFeature = ffiManifest.match(
+    /c04-runtime-gpu-fixture-test\s*=\s*\[([\s\S]*?)\]/,
+  );
+  assert.ok(runtimeGpuFixtureFeature, 'C04 runtime GPU fixture-test feature가 있어야 합니다.');
+  assert.match(runtimeGpuFixtureFeature[1], /"c04-runtime-gpu"/);
+  assert.match(runtimeGpuFixtureFeature[1], /"dep:spinon-layout"/);
+  assert.match(
+    runtimeGpuFixtureFeature[1],
+    /"spinon-runtime\/c11-4-grid-track-sizing-fixture-test"/,
+  );
   assert.match(ffiManifest,
     /c11-2-3-grid-fixture-test\s*=\s*\["c04-runtime-gpu-fixture-test"\]/);
   assert.match(androidAppBuild,

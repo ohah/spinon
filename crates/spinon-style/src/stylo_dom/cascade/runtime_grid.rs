@@ -118,14 +118,54 @@ pub(super) fn runtime_block_flex_grid_template_properties() -> Vec<(&'static str
 
 pub(super) fn runtime_block_flex_grid_track_sizing_author_properties() -> Vec<&'static str> {
     let mut properties = runtime_block_flex_grid_template_author_properties();
-    if !properties.contains(&"aspect-ratio") {
-        properties.push("aspect-ratio");
+    for property in [
+        "aspect-ratio",
+        "font-family",
+        "font-size",
+        "font-weight",
+        "font-style",
+        "line-height",
+        "white-space-collapse",
+        "text-wrap-mode",
+        "word-break",
+        "direction",
+        "line-break",
+        "text-align",
+        "overflow-wrap",
+        "text-transform",
+        "letter-spacing",
+        "word-spacing",
+        "text-indent",
+    ] {
+        if !properties.contains(&property) {
+            properties.push(property);
+        }
     }
     properties
 }
 
 pub(super) fn runtime_block_flex_grid_track_sizing_properties() -> Vec<(&'static str, LonghandId)> {
-    runtime_block_flex_grid_template_properties()
+    let mut properties = runtime_block_flex_grid_template_properties();
+    properties.extend([
+        ("font-family", LonghandId::FontFamily),
+        ("font-size", LonghandId::FontSize),
+        ("font-weight", LonghandId::FontWeight),
+        ("font-style", LonghandId::FontStyle),
+        ("line-height", LonghandId::LineHeight),
+        ("white-space-collapse", LonghandId::WhiteSpaceCollapse),
+        ("text-wrap-mode", LonghandId::TextWrapMode),
+        ("word-break", LonghandId::WordBreak),
+        ("direction", LonghandId::Direction),
+        ("line-break", LonghandId::LineBreak),
+        ("text-align", LonghandId::TextAlign),
+        ("overflow-wrap", LonghandId::OverflowWrap),
+        ("text-transform", LonghandId::TextTransform),
+        ("writing-mode", LonghandId::WritingMode),
+        ("letter-spacing", LonghandId::LetterSpacing),
+        ("word-spacing", LonghandId::WordSpacing),
+        ("text-indent", LonghandId::TextIndent),
+    ]);
+    properties
 }
 
 /// C11.1 explicit Grid tracks와 기존 Block/Flex 입력을 같은 cascade에서 계산합니다.

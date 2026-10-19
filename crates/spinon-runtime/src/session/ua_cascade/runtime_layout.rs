@@ -25,6 +25,9 @@ use std::collections::BTreeSet;
 use std::sync::Arc;
 use std::time::{Duration, Instant};
 
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "runtime_layout/fixtures.rs"]
+mod fixtures;
 #[path = "runtime_layout/root_html_default_render.rs"]
 mod root_html_default_render;
 #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
@@ -330,6 +333,13 @@ where
         } else {
             None
         };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_text_input =
+        if profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing {
+            fixtures::prepare_c11_4_text(&request.snapshot, root, &styles)?
+        } else {
+            None
+        };
     let projection_started = Instant::now();
     if runtime_paint_enabled && let Some(diagnostic) = styles.diagnostics.first() {
         return Err(layout_failure(
@@ -355,6 +365,46 @@ where
             &text_input.engine,
         )
     } else {
+        #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+        if let Some(text_input) = &c11_4_text_input {
+            spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs(
+                &request.snapshot,
+                root,
+                styles.clone(),
+                request.viewport,
+                &text_input.paragraph_styles,
+                &text_input.engine,
+            )
+        } else {
+            #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
+            if let Some(text_input) = &root_html_text_input {
+                spinon_style_to_layout::compute_runtime_style_layout_with_text_paragraphs(
+                    &request.snapshot,
+                    root,
+                    styles.clone(),
+                    request.viewport,
+                    &text_input.paragraph_styles,
+                    &text_input.engine,
+                )
+            } else {
+                compute_runtime_style_layout(
+                    &request.snapshot,
+                    root,
+                    styles.clone(),
+                    request.viewport,
+                )
+            }
+            #[cfg(not(feature = "c04-12-root-html-text-paint-fixture-test"))]
+            {
+                compute_runtime_style_layout(
+                    &request.snapshot,
+                    root,
+                    styles.clone(),
+                    request.viewport,
+                )
+            }
+        }
+        #[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
         #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
         if let Some(text_input) = &root_html_text_input {
             spinon_style_to_layout::compute_runtime_style_layout_with_text_paragraphs(
@@ -368,6 +418,7 @@ where
         } else {
             compute_runtime_style_layout(&request.snapshot, root, styles.clone(), request.viewport)
         }
+        #[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
         #[cfg(not(feature = "c04-12-root-html-text-paint-fixture-test"))]
         {
             compute_runtime_style_layout(&request.snapshot, root, styles.clone(), request.viewport)

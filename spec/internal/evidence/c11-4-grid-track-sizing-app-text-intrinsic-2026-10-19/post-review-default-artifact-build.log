@@ -1,0 +1,164 @@
+   Compiling stable_deref_trait v1.2.1
+   Compiling smallvec v1.16.2
+   Compiling writeable v0.6.4
+   Compiling litemap v0.8.3
+   Compiling siphasher v1.0.4
+   Compiling bitflags v2.13.2
+   Compiling cfg-if v1.0.5
+   Compiling scopeguard v1.2.0
+   Compiling libc v0.2.189
+   Compiling serde_core v1.0.229
+   Compiling serde v1.0.229
+   Compiling utf8_iter v1.0.4
+   Compiling parking_lot_core v0.9.12
+   Compiling icu_properties_data v2.3.0
+   Compiling zerofrom v0.1.8
+   Compiling new_debug_unreachable v1.0.6
+   Compiling icu_normalizer_data v2.3.0
+   Compiling lock_api v0.4.14
+   Compiling precomputed-hash v0.1.1
+   Compiling num-traits v0.2.19
+   Compiling yoke v0.8.3
+   Compiling bytemuck v1.25.2
+   Compiling phf_shared v0.14.0
+   Compiling icu_locale_fallback_data v2.3.0
+   Compiling libm v0.2.16
+   Compiling itoa v1.0.18
+   Compiling dtoa v1.0.11
+   Compiling zerovec v0.11.8
+   Compiling zerotrie v0.2.5
+   Compiling phf v0.14.0
+   Compiling font-types v0.12.7
+   Compiling once_cell v1.21.4
+   Compiling foldhash v0.2.0
+   Compiling dtoa-short v0.3.5
+   Compiling icu_segmenter_data v2.3.0
+   Compiling log v0.4.34
+   Compiling hashbrown v0.17.1
+   Compiling read-fonts v0.41.0
+   Compiling crossbeam-utils v0.8.23
+   Compiling objc2 v0.6.5
+   Compiling tinystr v0.8.4
+   Compiling potential_utf v0.1.6
+   Compiling icu_locale_core v2.3.0
+   Compiling icu_collections v2.3.0
+   Compiling thin-vec v0.2.20
+   Compiling objc2-encode v4.1.0
+   Compiling smallbitvec v2.6.1
+   Compiling crossbeam-epoch v0.9.21
+   Compiling icu_provider v2.3.1
+   Compiling derive_more v2.1.1
+   Compiling objc2-core-foundation v0.3.2
+   Compiling rustc-hash v2.1.3
+   Compiling memmap2 v0.9.11
+   Compiling objc2-core-text v0.3.2
+   Compiling parking_lot v0.12.5
+   Compiling servo_arc v0.5.0
+   Compiling cssparser v0.38.0
+   Compiling rayon-core v1.13.0
+   Compiling crossbeam-deque v0.8.8
+   Compiling string_cache v0.11.0
+   Compiling web_atoms v0.3.0
+   Compiling icu_properties v2.3.0
+   Compiling to_shmem v0.6.0
+   Compiling selectors v0.41.0
+   Compiling icu_normalizer v2.3.0
+   Compiling void v1.0.2
+   Compiling parlance v0.1.1
+   Compiling icu_locale_fallback v2.3.0
+   Compiling idna_adapter v1.2.2
+   Compiling percent-encoding v2.3.2
+   Compiling linebender_resource_handle v0.1.1
+   Compiling form_urlencoded v1.2.2
+   Compiling idna v1.1.0
+   Compiling stylo_atoms v0.22.0
+   Compiling parley_data v0.12.0
+   Compiling either v1.18.0
+   Compiling spinon-core v0.1.0 (/private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/crates/spinon-core)
+   Compiling parley_emoji v0.12.0
+   Compiling url v2.5.8
+   Compiling stylo_static_prefs v0.22.0
+   Compiling core_maths v0.1.1
+   Compiling euclid v0.22.14
+   Compiling app_units v0.7.8
+   Compiling skrifa v0.44.0
+   Compiling icu_segmenter v2.3.0
+   Compiling harfrust v0.12.0
+   Compiling encoding_rs v0.8.42
+   Compiling stylo_malloc_size_of v0.22.0
+   Compiling slotmap v1.1.1
+   Compiling simdutf8 v0.1.5
+   Compiling arrayvec v0.7.8
+   Compiling equivalent v1.0.2
+   Compiling zeno v0.3.3
+   Compiling yazi v0.2.1
+   Compiling objc2-foundation v0.3.2
+   Compiling uluru v3.1.0
+   Compiling indexmap v2.14.2
+   Compiling swash v0.2.10
+   Compiling stylo v0.22.0
+   Compiling fontique v0.12.0
+   Compiling stylo_dom v0.22.0
+   Compiling num-integer v0.1.47
+   Compiling itertools v0.14.0
+   Compiling num_cpus v1.17.0
+   Compiling atomic_refcell v0.1.14
+   Compiling parley_engine v0.12.0
+   Compiling byteorder v1.5.0
+   Compiling mime v0.3.17
+   Compiling static_assertions v1.1.0
+   Compiling strum v0.28.0
+   Compiling rayon v1.12.0
+   Compiling tendril v0.5.1
+   Compiling parley v0.12.0
+   Compiling memchr v2.8.3
+   Compiling stylo_traits v0.22.0
+   Compiling zmij v1.0.23
+   Compiling spinon-render v0.1.0 (/private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/crates/spinon-render)
+   Compiling serde_json v1.0.151
+   Compiling markup5ever v0.40.0
+   Compiling html5ever v0.40.1
+   Compiling spinon-text-layout v0.1.0 (/private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/crates/spinon-text-layout)
+   Compiling taffy v0.15.0 (/private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/vendor/taffy)
+   Compiling spinon-layout v0.1.0 (/private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/crates/spinon-layout)
+error: failed to write /private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/aarch64-apple-ios-sim/release/deps/rustcgQJ0eO/lib.rmeta: No space left on device (os error 28)
+
+error: could not compile `harfrust` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: failed to write /private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/aarch64-apple-ios-sim/release/deps/rustcUBBfsT/lib.rmeta: No space left on device (os error 28)
+
+error: could not compile `read-fonts` (lib) due to 1 previous error
+error: failed to build archive at `/private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/aarch64-apple-ios-sim/release/deps/libencoding_rs-4bcfcbcd716fdfb6.rlib`: No space left on device (os error 28)
+
+error: could not compile `encoding_rs` (lib) due to 1 previous error
+error: failed to write /private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/aarch64-apple-ios-sim/release/deps/rustcMLMu5O/lib.rmeta: No space left on device (os error 28)
+
+error: could not compile `taffy` (lib) due to 1 previous error
+error: failed to write /private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/aarch64-apple-ios-sim/release/deps/rustc2NZDOY/lib.rmeta: No space left on device (os error 28)
+
+error: could not compile `serde_json` (lib) due to 1 previous error
+rustc-LLVM ERROR: IO failure on output stream: No space left on device
+rustc-LLVM ERROR: IO failure on output stream: No space left on device
+error: could not compile `skrifa` (lib)
+
+Caused by:
+  failed to create file `/private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/aarch64-apple-ios-sim/release/.fingerprint/skrifa-16fdecfd2f175fa0/output-lib-skrifa`
+
+Caused by:
+  failed to parse process output: `/Users/yoonhb/.rustup/toolchains/1.96.1-aarch64-apple-darwin/bin/rustc --crate-name skrifa --edition=2021 /Users/yoonhb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/skrifa-0.44.0/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no --cfg 'feature="std"' --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values("autohint_shaping", "default", "libm", "spec_next", "std", "traversal"))' -C metadata=21bde5a855d671c9 -C extra-filename=-16fdecfd2f175fa0 --out-dir /private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/aarch64-apple-ios-sim/release/deps --target aarch64-apple-ios-sim -C strip=debuginfo -L dependency=/private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/aarch64-apple-ios-sim/release/deps -L dependency=/private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/release/deps --extern bytemuck=/private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/aarch64-apple-ios-sim/release/deps/libbytemuck-f8dae883427ce3a0.rmeta --extern read_fonts=/private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/aarch64-apple-ios-sim/release/deps/libread_fonts-4bc47766f7256d34.rmeta --cap-lints allow` (exit status: 101)
+error: could not compile `swash` (lib)
+
+Caused by:
+  failed to create file `/private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/aarch64-apple-ios-sim/release/.fingerprint/swash-f0595d6fac4d5dd5/output-lib-swash`
+
+Caused by:
+  failed to parse process output: `/Users/yoonhb/.rustup/toolchains/1.96.1-aarch64-apple-darwin/bin/rustc --crate-name swash --edition=2021 /Users/yoonhb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swash-0.2.10/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no '--warn=clippy::semicolon_if_nothing_returned' '--warn=clippy::doc_markdown' --cfg 'feature="render"' --cfg 'feature="scale"' --cfg 'feature="std"' --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values("default", "libm", "render", "scale", "std"))' -C metadata=49b7fe3fd26188ea -C extra-filename=-f0595d6fac4d5dd5 --out-dir /private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/aarch64-apple-ios-sim/release/deps --target aarch64-apple-ios-sim -C strip=debuginfo -L dependency=/private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/aarch64-apple-ios-sim/release/deps -L dependency=/private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/release/deps --extern skrifa=/private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/aarch64-apple-ios-sim/release/deps/libskrifa-16fdecfd2f175fa0.rmeta --extern yazi=/private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/aarch64-apple-ios-sim/release/deps/libyazi-a5faa84eedb5a550.rmeta --extern zeno=/private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/aarch64-apple-ios-sim/release/deps/libzeno-19ed0a2978dada2d.rmeta --cap-lints allow` (exit status: 101)
+error: failed to write /private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/aarch64-apple-ios-sim/release/deps/rustcj7TGxX/lib.rmeta: No space left on device (os error 28)
+
+error: could not compile `spinon-text-layout` (lib) due to 1 previous error
+error: failed to write to `/private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/aarch64-apple-ios-sim/release/deps/rmetaAjHqGo/full.rmeta`: No space left on device (os error 28)
+
+error: could not compile `spinon-layout` (lib) due to 1 previous error
+error: couldn't create a temp dir: No space left on device (os error 28) at path "/private/tmp/spinon-c11-4-grid-border-overflow-pixels-20261019/target/aarch64-apple-ios-sim/release/deps/rmetaUewI3U"
+
+error: could not compile `stylo` (lib) due to 1 previous error

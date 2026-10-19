@@ -1286,7 +1286,9 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 
 + (uint64_t)createRuntimeGpuHostWithC11_2_3GridAutoPlacementFixture {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
-    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
+    defined(SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST) && \
+    SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST
   std::array<char, 1024> output{};
   SpinonRuntimeGpuHost *host =
       spinon_runtime_gpu_host_new_c11_2_3_grid_auto_placement_fixture(
@@ -1300,7 +1302,7 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
   return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
 #else
   os_log_error(OS_LOG_DEFAULT,
-               "SPINON_C1123_GRID_DISABLED rebuild with SPINON_ENABLE_C04_RUNTIME_GPU=1");
+               "SPINON_C1123_GRID_DISABLED requires C04 runtime GPU fixture-test and C11.2.3 Grid fixture");
   return 0;
 #endif
 }
@@ -2585,7 +2587,9 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
                                                     sceneID:(NSString *)sceneID
                                                       runID:(NSString *)runID {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
-    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
+    defined(SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST) && \
+    SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST
   const char *scene_id = sceneID.UTF8String;
   if (scene_id == nullptr) return @"status=-1 invalid-scene-id";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
@@ -3176,6 +3180,8 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
                                                        sampleXY:(const uint32_t *)sampleXY
                                                     sampleCount:(NSUInteger)sampleCount {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST) && \
+    SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST && \
     defined(SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST) && \
     SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
