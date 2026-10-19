@@ -59,7 +59,7 @@ CSS Grid Level 1 §7.2.2–§7.2.3.2와 §11.3–§11.8을 normative algorithm�
 3. `fit-content(limit)`은 item max-content contribution, limit, track auto-minimum을 적용한다. 이 값은 Grid item의 `min-width:auto` automatic minimum과 별개다. C14.3의 24px image와 Ahem 70px min-content word는 limit보다 큰 track auto-minimum을 보존한다. `%`/`calc()` limit은 해당 axis basis가 definite일 때만 해석한다.
 4. 여러 track에 걸친 item은 span 길이와 intrinsic 함수 종류별로 표준의 별도 단계에 포함한다. gap을 contribution에 중복 더하지 않는다. 주어진 전체 item 크기를 임의로 같은 크기의 track에 나누는 규칙으로 대체하지 않는다.
 5. intrinsic measurement 중 cyclic percentage는 해당 algorithm stage가 정한 임시 취급과 최종 layout resolution을 분리한다. max-content `24px` grid의 50% track 최종값 12px와 24px image의 overflow는 고정 oracle이다. 최종 12px을 intrinsic contribution 입력으로 재사용하지 않는다.
-6. auto-repeat은 반복 가능한 fixed-size 문법 및 단일 반복 위치를 preflight한다. definite preferred/max axis를 우선해 가능한 가장 큰 비-overflow 횟수를 선택하고, 이것이 없으면 definite minimum axis를 만족하는 최소 횟수를 선택하며, 모두 indefinite일 때 한 번 반복한다. track/gap arithmetic overflow와 0회 경계는 §7.2.3.2에 따라 판정하고 임의의 clamp를 넣지 않는다.
+6. auto-repeat은 반복 가능한 fixed-size 문법 및 단일 반복 위치를 preflight한다. 반복 횟수 계산에서는 각 repeated track의 max sizing function이 definite하면 그 크기를, 아니면 definite min sizing function의 크기를 사용한다. 양쪽이 definite하면 max 크기를 min 크기 아래로 낮추지 않는다. definite preferred/max axis에서는 이 반복 크기와 non-repeated track·모든 gap을 합쳐 content box를 넘지 않는 가장 큰 양의 반복 수를 고르고, 둘 다 없으면 한 번을 유지한다. preferred/max가 없고 definite minimum만 있으면 그 크기를 채우는 가장 작은 양의 반복 수를 고르며, 모두 indefinite이면 한 번 반복한다. track/gap arithmetic overflow와 0회 경계는 §7.2.3.2에 따라 판정하고 임의의 clamp를 넣지 않는다.
 7. auto-fit의 empty 판정은 placement 이후 이루어진다. span이 걸친 repeated track은 occupied로 유지한다. collapse는 빈 반복 track뿐 아니라 규칙에 해당하는 인접 gutter에도 적용한다.
 8. 새 profile의 어떤 항목에서 오류가 나도 이전 C11 profile의 의미, source order, revision, partial frame 부재가 유지된다. fallback이나 부분 결과를 게시하지 않는다.
 
@@ -140,3 +140,27 @@ PR #357은 2026-10-19에 rebase merge됐고 main commit은 `62c86a1c056c0cd7bcdb
 ### 2026-10-20 cyclic percentage/calc gap 후속 후보
 
 Chrome 155 Agent Browser fixture는 definite/cyclic `%`와 `calc(5px + %)`에 더해 `max-content`와 definite `min-width:120px; min-height:30px` 조합을 비교한다. Rust layout matrix 여섯 case는 root·행/열 gap·item offset·overflow와 final active-gutter trace를 각각 검사한다. 구현은 intrinsic track sizing 때 gutter percentage를 0 basis로 계산하되 `calc()`의 절대 5px은 유지하고, definite min-size를 cyclic gap intrinsic basis로 재사용하지 않는다. min-size `calc()` 대조에서 처음 관찰된 32.5px row 오류를 고쳤다. 이 opt-in profile은 root Grid에 한해 `max-content`를 projection에서 허용하며 다른 root/profile은 계속 거부한다. Chrome oracle, Rust·build 검증, Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator의 6/6 frame과 각각 29/29 표면 표본 결과는 [실행 근거](../spec/internal/evidence/c11-4-cyclic-grid-gap-precomparison-2026-10-20/README.md), [구현 적대 검토 20개](../spec/internal/evidence/c11-4-cyclic-grid-gap-precomparison-2026-10-20/implementation-review-20.md)에 기록한다. 이 후보는 C11.4의 전체 cyclic sizing, 다른 track type, WPT 또는 상위 완료를 뜻하지 않는다.
+
+### 2026-10-20 auto-repeat 앞뒤 explicit track 후속 계획
+
+**상태:** Chrome 155 사전 oracle과 계획 검토 20개를 기록했다. 이번 변경에는 아직 Spinon 코드 구현·Simulator 실행·WPT 실행이 없다. C11.4 체크와 공식 완료 수는 그대로 미완료다.
+
+**결손과 기준:** 현재 cascade의 `computed_auto_repeat_tracks()`는 track list 전체가 auto-repeat component 하나일 때만 값을 보존한다. 따라서 CSS Grid의 유효한 `fixed track + repeat(auto-fill|auto-fit, …) + fixed track` 형태가 adapter에서 거부된다. vendored Taffy 0.15.0의 explicit-grid 입력은 `Single` component 앞뒤에 `Repeat` component를 둘 수 있고, auto-repeat 횟수 계산에서 비반복 track 사용량과 전체 gutter 수를 고려한다. 이 계획은 그 순서 정보를 projection까지 전달하는 제한 확장이다. 기준 동작과 반복 수·collapse 규칙은 [CSS Grid Level 1 §7.2.3.1–7.2.3.2](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#repeat-notation)에서 도출하고 [고정 Chrome 155 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-explicit-neighbors-precomparison-2026-10-20/README.md)와 대조한다.
+
+**구현 범위:**
+
+- `RuntimeBlockFlexGridTrackSizingV1`에서 한 track axis의 한 `auto-fill` 또는 `auto-fit` component 앞·뒤에 직접 쓴 유한·0 이상 fixed `px` track을 허용한다. auto-repeat은 list의 처음·끝·중간에 올 수 있고, 앞이나 뒤 또는 둘 다 explicit track을 둘 수 있다.
+- 반복 fragment는 현재 cascade/layout이 허용하는 fixed-minimum track subset을 유지한다. 단일 track뿐 아니라 두 track pattern도 component 경계와 track 수를 보존한다. repeated named line은 이번 범위에 포함하지 않는다.
+- definite preferred/max size가 있으면 반복 fragment의 각 track에 대해 definite max sizing function, 없으면 definite min sizing function을 반복 수 산정 크기로 삼고, 양쪽이 definite하면 max를 min 아래로 내리지 않는다. 이 크기와 non-repeated fixed track·모든 axis gap을 포함해 content box를 넘지 않는 가장 큰 양의 반복 수를 고르며, 한 번도 맞지 않으면 한 번은 유지한다. preferred/max가 없고 definite minimum size만 있으면 같은 반복 수 산정 크기로 그 최소 크기를 만족하는 가장 작은 양의 반복 수를 고른다. 세 basis가 모두 indefinite면 한 번 반복한다. `auto-fit`은 placement 뒤 비어 있는 repeated track을 접고, repeated track을 span한 in-flow item은 점유로 계산한다.
+- 열과 행을 각각 검증하지만, 한 grid에서 두 축에 동시에 auto-repeat을 쓰는 것은 계속 거부한다. `grid-template-areas`, explicit/repeated line names, 한 list 안의 여러 auto-repeat, repeat fragment 밖의 integer `repeat()`, fixed `px` 이외의 explicit neighbor는 계속 fail-closed한다. 기존 track 한도와 partial-output 없는 error 동작은 바꾸지 않는다.
+- WPT source의 `grid-auto-fit-columns-001.html`은 before/after fixed track 사례를 제공하지만 line names, percentage, `minmax()` 및 named placement도 섞는다. 이번 subset은 해당 파일의 독립 pass로 세지 않고, 고정된 CSS input을 별도 Chrome fixture에서 비교한다. 파일별 SHA와 WPT revision은 evidence README에 보존한다.
+
+**고정 oracle과 판정:**
+
+- 13개 Chrome 155 case는 columns/rows, prefix-only/suffix-only/both, one- and two-track repeat fragment, definite preferred/max/min 및 indefinite size, `auto-fill`/`auto-fit`, one repeated track occupied, two-track span occupied, all repeated tracks empty, available size보다 큰 고정 track 조합을 포함한다.
+- `200px` axis, `8px` gap, prefix `20px`, suffix `10px`, `minmax(40px, 1fr)` repeat에서는 세 반복 track의 used size가 각각 `46px`이다. prefix-only에서는 `20px 52px 52px 52px`; suffix-only에서는 Chrome이 `55.3281px`씩 serialize한다. 이는 이상값 `55.333…px`의 1/64 CSS px quantization 이내여야 한다.
+- 한 repeated track만 점유한 auto-fit은 `20px 154px 0px 0px 10px`, 두 repeated track을 span한 경우는 `20px 73px 73px 0px 10px`, 모두 빈 경우는 `20px 0px 0px 0px 10px`이다. suffix item의 rect는 collapse 경계와 line index 검증에 사용한다. row case는 같은 fixed values를 block axis에 적용한다.
+- definite `max-width:200px`만 있는 max-content axis에서는 minimum 40px track 3개를 둔 grid width `182px`를 관찰했다. `min-width:200px`만 있으면 최소 크기를 충족하는 track 4개와 grid width `230px`를 관찰했다. `max-content` 86px axis의 fixed pattern은 한 번 반복하고, 40px axis에 `30px + repeat(auto-fill, 40px) + 20px`를 놓으면 over-constrained 상태에서도 repeated track 하나를 유지한다. 모든 item/root 좌표는 Chrome `getBoundingClientRect()`와 대조하고 fractional used track 비교 오차는 최대 1/64 CSS px로 둔다.
+- Chrome 결과는 구현 출력에서 기대값을 역산하지 않는 사전 비교 자료다. 구현 acceptance는 spec에서 도출한 repeat count·placement·collapse 불변식과 Rust stage/layout 결과를 함께 확인한다. 브라우저 screenshot은 Chrome fixture 화면이며 Spinon, Android/iOS, WPT pass를 증명하지 않는다.
+
+**남은 범위:** named line/area 결합, 비-px explicit neighbor, 두 축 동시 auto-repeat, auto-repeat 위치의 복수·integer repeat 혼합, definite minimum-size basis와 두-track 반복 fragment의 조합, 10,000-track 경계 matrix, 전체 placement/span/gutter 조합, WPT 실행은 이 계획 후속에서 닫지 않는다. 구현·artifact 경계·Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 증거가 없으면 이번 제한 subset도 완료로 표시하지 않는다.

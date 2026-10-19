@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 auto-repeat with explicit neighboring tracks</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      width: 640px;
+      min-height: 300px;
+      color: #172033;
+      background: #fff;
+      font: 14px/1.3 sans-serif;
+    }
+    main { display: grid; width: 640px; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px; }
+    figure { margin: 0; }
+    figcaption { height: 18px; }
+    .grid {
+      display: grid;
+      width: 200px;
+      height: 60px;
+      grid-template-rows: 40px;
+      align-content: start;
+      justify-content: start;
+      column-gap: 8px;
+      row-gap: 8px;
+      background: #edf1f7;
+    }
+    .grid.rows { width: 50px; height: 200px; grid-template-columns: 40px; }
+    .grid.indefinite { width: max-content; }
+    .grid.max-size { width: max-content; max-width: 200px; }
+    .grid.min-size { width: max-content; min-width: 200px; }
+    .item { width: 12px; height: 12px; background: #2866f6; }
+    .item.repeat { background: #e5484d; }
+    .item.suffix { background: #208060; }
+    #columns-auto-fill-both { grid-template-columns: 20px repeat(auto-fill, minmax(40px, 1fr)) 10px; }
+    #columns-auto-fit-one { grid-template-columns: 20px repeat(auto-fit, minmax(40px, 1fr)) 10px; }
+    #columns-auto-fit-span-two { grid-template-columns: 20px repeat(auto-fit, minmax(40px, 1fr)) 10px; }
+    #columns-auto-fit-empty { grid-template-columns: 20px repeat(auto-fit, minmax(40px, 1fr)) 10px; }
+    #columns-auto-fill-prefix-only { grid-template-columns: 20px repeat(auto-fill, minmax(40px, 1fr)); }
+    #columns-auto-fill-suffix-only { grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)) 10px; }
+    #columns-auto-fill-pattern { grid-template-columns: 20px repeat(auto-fill, minmax(30px, 1fr) 20px) 10px; }
+    #columns-auto-fill-indefinite { grid-template-columns: 20px repeat(auto-fill, 40px) 10px; }
+    #columns-auto-fill-max-size { grid-template-columns: 20px repeat(auto-fill, minmax(40px, 1fr)) 10px; }
+    #columns-auto-fill-min-size { grid-template-columns: 20px repeat(auto-fill, minmax(40px, 1fr)) 10px; }
+    #columns-auto-repeat-overflow { width: 40px; grid-template-columns: 30px repeat(auto-fill, 40px) 20px; }
+    #rows-auto-fill-both { grid-template-rows: 20px repeat(auto-fill, minmax(40px, 1fr)) 10px; }
+    #rows-auto-fit-one { grid-template-rows: 20px repeat(auto-fit, minmax(40px, 1fr)) 10px; }
+    #result { display: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <figure>
+      <figcaption>columns · auto-fill · fixed prefix and suffix</figcaption>
+      <div id="columns-auto-fill-both" class="grid">
+        <div id="columns-fill-prefix" class="item" style="grid-column:1;grid-row:1"></div>
+        <div id="columns-fill-repeat" class="item repeat" style="grid-column:2;grid-row:1"></div>
+        <div id="columns-fill-suffix" class="item suffix" style="grid-column:5;grid-row:1"></div>
+      </div>
+    </figure>
+    <figure>
+      <figcaption>columns · auto-fit · one repeated track occupied</figcaption>
+      <div id="columns-auto-fit-one" class="grid">
+        <div id="columns-fit-one" class="item repeat" style="grid-column:2;grid-row:1"></div>
+        <div id="columns-fit-suffix" class="item suffix" style="grid-column:5;grid-row:1"></div>
+      </div>
+    </figure>
+    <figure>
+      <figcaption>columns · auto-fit · a span occupies two repeated tracks</figcaption>
+      <div id="columns-auto-fit-span-two" class="grid">
+        <div id="columns-fit-span-two" class="item repeat" style="grid-column:2 / span 2;grid-row:1"></div>
+        <div id="columns-fit-span-suffix" class="item suffix" style="grid-column:5;grid-row:1"></div>
+      </div>
+    </figure>
+    <figure>
+      <figcaption>columns · auto-fit · all repeated tracks empty</figcaption>
+      <div id="columns-auto-fit-empty" class="grid"></div>
+    </figure>
+    <figure>
+      <figcaption>columns · auto-fill · prefix only</figcaption>
+      <div id="columns-auto-fill-prefix-only" class="grid">
+        <div id="columns-prefix-only" class="item" style="grid-column:1;grid-row:1"></div>
+        <div id="columns-prefix-only-repeat" class="item repeat" style="grid-column:2;grid-row:1"></div>
+      </div>
+    </figure>
+    <figure>
+      <figcaption>columns · auto-fill · suffix only</figcaption>
+      <div id="columns-auto-fill-suffix-only" class="grid">
+        <div id="columns-suffix-only-repeat" class="item repeat" style="grid-column:1;grid-row:1"></div>
+        <div id="columns-suffix-only" class="item suffix" style="grid-column:4;grid-row:1"></div>
+      </div>
+    </figure>
+    <figure>
+      <figcaption>columns · auto-fill · two-track repeated pattern</figcaption>
+      <div id="columns-auto-fill-pattern" class="grid">
+        <div id="columns-pattern-prefix" class="item" style="grid-column:1;grid-row:1"></div>
+        <div id="columns-pattern-repeat-one" class="item repeat" style="grid-column:2;grid-row:1"></div>
+        <div id="columns-pattern-repeat-two" class="item repeat" style="grid-column:4;grid-row:1"></div>
+        <div id="columns-pattern-suffix" class="item suffix" style="grid-column:6;grid-row:1"></div>
+      </div>
+    </figure>
+    <figure>
+      <figcaption>columns · auto-fill · indefinite max-content axis</figcaption>
+      <div id="columns-auto-fill-indefinite" class="grid indefinite">
+        <div id="columns-indefinite-prefix" class="item" style="grid-column:1;grid-row:1"></div>
+        <div id="columns-indefinite-repeat" class="item repeat" style="grid-column:2;grid-row:1"></div>
+        <div id="columns-indefinite-suffix" class="item suffix" style="grid-column:3;grid-row:1"></div>
+      </div>
+    </figure>
+    <figure>
+      <figcaption>columns · auto-fill · definite maximum width</figcaption>
+      <div id="columns-auto-fill-max-size" class="grid max-size"></div>
+    </figure>
+    <figure>
+      <figcaption>columns · auto-fill · definite minimum width</figcaption>
+      <div id="columns-auto-fill-min-size" class="grid min-size"></div>
+    </figure>
+    <figure>
+      <figcaption>columns · one repeat exceeds available width</figcaption>
+      <div id="columns-auto-repeat-overflow" class="grid">
+        <div id="columns-overflow-repeat" class="item repeat" style="grid-column:2;grid-row:1"></div>
+        <div id="columns-overflow-suffix" class="item suffix" style="grid-column:3;grid-row:1"></div>
+      </div>
+    </figure>
+    <figure>
+      <figcaption>rows · auto-fill · fixed prefix and suffix</figcaption>
+      <div id="rows-auto-fill-both" class="grid rows">
+        <div id="rows-fill-prefix" class="item" style="grid-column:1;grid-row:1"></div>
+        <div id="rows-fill-repeat" class="item repeat" style="grid-column:1;grid-row:2"></div>
+        <div id="rows-fill-suffix" class="item suffix" style="grid-column:1;grid-row:5"></div>
+      </div>
+    </figure>
+    <figure>
+      <figcaption>rows · auto-fit · one repeated track occupied</figcaption>
+      <div id="rows-auto-fit-one" class="grid rows">
+        <div id="rows-fit-one" class="item repeat" style="grid-column:1;grid-row:2"></div>
+        <div id="rows-fit-suffix" class="item suffix" style="grid-column:1;grid-row:5"></div>
+      </div>
+    </figure>
+  </main>
+  <pre id="result"></pre>
+  <script>
+    (async () => {
+      const round = value => Math.round(value * 1000) / 1000;
+      const rect = element => {
+        const value = element.getBoundingClientRect();
+        return {
+          x: round(value.x), y: round(value.y),
+          width: round(value.width), height: round(value.height),
+        };
+      };
+      const gridIds = [
+        'columns-auto-fill-both', 'columns-auto-fit-one', 'columns-auto-fit-span-two',
+        'columns-auto-fit-empty',
+        'columns-auto-fill-prefix-only', 'columns-auto-fill-suffix-only',
+        'columns-auto-fill-pattern', 'columns-auto-fill-indefinite',
+        'columns-auto-fill-max-size', 'columns-auto-fill-min-size',
+        'columns-auto-repeat-overflow', 'rows-auto-fill-both', 'rows-auto-fit-one',
+      ];
+      const itemIds = [
+        'columns-fill-prefix', 'columns-fill-repeat', 'columns-fill-suffix',
+        'columns-fit-one', 'columns-fit-suffix', 'columns-fit-span-two',
+        'columns-fit-span-suffix', 'columns-overflow-repeat',
+        'columns-prefix-only', 'columns-prefix-only-repeat',
+        'columns-suffix-only-repeat', 'columns-suffix-only',
+        'columns-pattern-prefix', 'columns-pattern-repeat-one', 'columns-pattern-repeat-two',
+        'columns-pattern-suffix', 'columns-indefinite-prefix', 'columns-indefinite-repeat',
+        'columns-indefinite-suffix', 'columns-overflow-suffix',
+        'rows-fill-prefix', 'rows-fill-repeat',
+        'rows-fill-suffix', 'rows-fit-one', 'rows-fit-suffix',
+      ];
+      const userAgentDetails = await navigator.userAgentData?.getHighEntropyValues(['fullVersionList']);
+      const result = {
+        userAgent: navigator.userAgent,
+        userAgentData: userAgentDetails?.fullVersionList ?? navigator.userAgentData?.brands ?? null,
+        devicePixelRatio: window.devicePixelRatio,
+        viewport: { width: innerWidth, height: innerHeight },
+        grids: Object.fromEntries(gridIds.map(id => {
+          const element = document.getElementById(id);
+          const style = getComputedStyle(element);
+          return [id, {
+            rect: rect(element),
+            columns: style.gridTemplateColumns,
+            rows: style.gridTemplateRows,
+            columnGap: style.columnGap,
+            rowGap: style.rowGap,
+            scrollWidth: element.scrollWidth,
+            scrollHeight: element.scrollHeight,
+          }];
+        })),
+        items: Object.fromEntries(itemIds.map(id => [id, rect(document.getElementById(id))])),
+      };
+      window.__c114AutoRepeatExplicitNeighbors = result;
+      document.getElementById('result').textContent = JSON.stringify(result, null, 2);
+    })();
+  </script>
+</body>
+</html>
