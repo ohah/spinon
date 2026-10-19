@@ -1,0 +1,138 @@
+{
+  "pass": "pass-3",
+  "source_base_commit": "7e552f2d23abeddf405c29a11060dadb19d67bb3",
+  "preview_root_relative": "SpinonPreview",
+  "backup_root_relative": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-20261019/pass-3",
+  "target_count": 13,
+  "total_bytes": 832540,
+  "counts": {
+    "created": 7,
+    "replaced": 6,
+    "same": 0
+  },
+  "no_deletes": true,
+  "files": [
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/README.html",
+      "source_path": "build/spinon/c11-4-tailnet-site-20261019/internal/evidence/c11-4-tailnet-sync-2026-10-19/README.html",
+      "bytes": 24786,
+      "sha256": "069a7bce824cd8b7a2ab21c9d41268f6e1fa1c2066a0e5737e165ea7087db385",
+      "target_exists": true,
+      "previous_bytes": 24437,
+      "previous_sha256": "e6dbbd06d268672104c5d946bf35860bc61f84af36084da965d90b18afe354e7",
+      "status": "replace",
+      "backup_path": "pass-3/internal/evidence/c11-4-tailnet-sync-2026-10-19/README.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/README.md",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/README.md",
+      "bytes": 3578,
+      "sha256": "0bb6af197ea73345f3a35efa480d149445d6782b677c03464def5f2fa9c027dd",
+      "target_exists": true,
+      "previous_bytes": 3236,
+      "previous_sha256": "2966a093da648c7642cc2745e69eb792c3da7a5371d60c7085ce60c916be0a92",
+      "status": "replace",
+      "backup_path": "pass-3/internal/evidence/c11-4-tailnet-sync-2026-10-19/README.md"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/SHA256SUMS",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/SHA256SUMS",
+      "bytes": 1276,
+      "sha256": "7b4aee133695a52879e0e91070c188f23c8e9ec72763b8bfb98e40a6ae857d6d",
+      "target_exists": true,
+      "previous_bytes": 1276,
+      "previous_sha256": "14982f77ca29b5af976324fde80e722af0359b3f2de1d2611dcf80c54ee45c4a",
+      "status": "replace",
+      "backup_path": "pass-3/internal/evidence/c11-4-tailnet-sync-2026-10-19/SHA256SUMS"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "source_path": "build/spinon/c11-4-tailnet-site-20261019/internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "bytes": 25594,
+      "sha256": "fd91083b634278b2b6595df649ee0100223b80b7bea7f04c5e91d0a0c29a9802",
+      "target_exists": true,
+      "previous_bytes": 25483,
+      "previous_sha256": "09d25323f30935f25a0eb97c5b6b8d75222b8fea6d27d7387b8b295bb3b69ea7",
+      "status": "replace",
+      "backup_path": "pass-3/internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.md",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.md",
+      "bytes": 4564,
+      "sha256": "b56f3d9010a31889a817f7aaa7c59dfb32bbdd2ad3918ab7b001a9ae6cb1775e",
+      "target_exists": true,
+      "previous_bytes": 4453,
+      "previous_sha256": "d80ed18378a818127b22918f752e59bd46d77b2fcb60ba8b5117221dca2afc54",
+      "status": "replace",
+      "backup_path": "pass-3/internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.md"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-index-followup.log",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-index-followup.log",
+      "bytes": 5454,
+      "sha256": "2255a32901b02342ad6a3eebf432c8d786a7fc2e52fca68d23b3bc2c15a466f0",
+      "target_exists": true,
+      "previous_bytes": 5454,
+      "previous_sha256": "e7ea9b1c27b876025a60a1b26d81934fe8a4ada9bec0a62b3f8766e1012444cb",
+      "status": "replace",
+      "backup_path": "pass-3/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-index-followup.log"
+    },
+    {
+      "path": "static/js/async/route-5554b59129c8.526bf3e2ed.js",
+      "source_path": "build/spinon/c11-4-tailnet-site-20261019/static/js/async/route-5554b59129c8.526bf3e2ed.js",
+      "bytes": 6798,
+      "sha256": "852868bae6c0d1b297876be228a37678885ec5ea6b6a383fb8e0f4104dafb1c3",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "static/js/async/route-62bfaa6b419f.830d053bed.js",
+      "source_path": "build/spinon/c11-4-tailnet-site-20261019/static/js/async/route-62bfaa6b419f.830d053bed.js",
+      "bytes": 10650,
+      "sha256": "f03c4c5ad9b2c6c3b8fce1343565bd53284c308e7ecbd9a404dcef0f30de3b86",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.abe10eded3.js",
+      "source_path": "build/spinon/c11-4-tailnet-site-20261019/static/js/async/route-a1017bdf23ca.abe10eded3.js",
+      "bytes": 179407,
+      "sha256": "9e70c44a554ff5ffeab6bbbc398bdb15c9f0cff4077ecb1426a2126089731135",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.2bd6d2a950.js",
+      "source_path": "build/spinon/c11-4-tailnet-site-20261019/static/js/async/route-c4dae6800800.2bd6d2a950.js",
+      "bytes": 63689,
+      "sha256": "8525d3dd2f3a1b68efd2591edbbe0d7dfda00380906b25c408e57e6c6f8e12f0",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "static/js/async/route-ecf129b09e78.3d716d6f91.js",
+      "source_path": "build/spinon/c11-4-tailnet-site-20261019/static/js/async/route-ecf129b09e78.3d716d6f91.js",
+      "bytes": 21012,
+      "sha256": "04cb75e42fe70867e6cc2d9e51cd404aea29ccdfb30053f5c6e239c08f5910db",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "static/js/index.c745bb8966.js",
+      "source_path": "build/spinon/c11-4-tailnet-site-20261019/static/js/index.c745bb8966.js",
+      "bytes": 32699,
+      "sha256": "a280c9d495533c46b1e5cc6303cd81bd5a44e73f2a93714ca27122de8609d59d",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "static/search_index.ko.ac10d475.json",
+      "source_path": "build/spinon/c11-4-tailnet-site-20261019/static/search_index.ko.ac10d475.json",
+      "bytes": 453033,
+      "sha256": "ac10d47585886a43111102b9d8d975fd749fe7f8e27da3165edbadcd812c2bf2",
+      "target_exists": false,
+      "status": "create"
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "pass": "pass-2",
+  "target_count": 21,
+  "counts": {
+    "verified": 21,
+    "failed": 0
+  },
+  "all_served_hashes_match": true,
+  "files": [
+    {
+      "path": "internal/README.html",
+      "url_path": "/spinon/internal/README.html",
+      "http_status": 200,
+      "bytes": 169922,
+      "expected_bytes": 169922,
+      "sha256": "d40c4d9825293164a5bf7e4ebeeefa45bc2e3bcbe62b4c2c22f9e8f4143c5f80",
+      "expected_sha256": "d40c4d9825293164a5bf7e4ebeeefa45bc2e3bcbe62b4c2c22f9e8f4143c5f80",
+      "matches": true
+    },
+    {
+      "path": "internal/README.md",
+      "url_path": "/spinon/internal/README.md",
+      "http_status": 200,
+      "bytes": 122587,
+      "expected_bytes": 122587,
+      "sha256": "b1982491c788409b8999da11024a11f8e5706bd0b07c68f2d92ee8c55062f5ba",
+      "expected_sha256": "b1982491c788409b8999da11024a11f8e5706bd0b07c68f2d92ee8c55062f5ba",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/README.html",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/README.html",
+      "http_status": 200,
+      "bytes": 24437,
+      "expected_bytes": 24437,
+      "sha256": "e6dbbd06d268672104c5d946bf35860bc61f84af36084da965d90b18afe354e7",
+      "expected_sha256": "e6dbbd06d268672104c5d946bf35860bc61f84af36084da965d90b18afe354e7",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/README.md",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/README.md",
+      "http_status": 200,
+      "bytes": 3236,
+      "expected_bytes": 3236,
+      "sha256": "2966a093da648c7642cc2745e69eb792c3da7a5371d60c7085ce60c916be0a92",
+      "expected_sha256": "2966a093da648c7642cc2745e69eb792c3da7a5371d60c7085ce60c916be0a92",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/SHA256SUMS",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/SHA256SUMS",
+      "http_status": 200,
+      "bytes": 1276,
+      "expected_bytes": 1276,
+      "sha256": "14982f77ca29b5af976324fde80e722af0359b3f2de1d2611dcf80c54ee45c4a",
+      "expected_sha256": "14982f77ca29b5af976324fde80e722af0359b3f2de1d2611dcf80c54ee45c4a",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/backup-verification.json",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/backup-verification.json",
+      "http_status": 200,
+      "bytes": 4303,
+      "expected_bytes": 4303,
+      "sha256": "dc8567211a88adb01897341125c30e55727ab48e7de09e3ea8c6f5ad8d98e7bc",
+      "expected_sha256": "dc8567211a88adb01897341125c30e55727ab48e7de09e3ea8c6f5ad8d98e7bc",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/copy-verification.json",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/copy-verification.json",
+      "http_status": 200,
+      "bytes": 28087,
+      "expected_bytes": 28087,
+      "sha256": "6333a85f88a1e87e5c76faee749a7a110a6490bc3cf0e380864e6a600c0b29c5",
+      "expected_sha256": "6333a85f88a1e87e5c76faee749a7a110a6490bc3cf0e380864e6a600c0b29c5",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "http_status": 200,
+      "bytes": 25483,
+      "expected_bytes": 25483,
+      "sha256": "09d25323f30935f25a0eb97c5b6b8d75222b8fea6d27d7387b8b295bb3b69ea7",
+      "expected_sha256": "09d25323f30935f25a0eb97c5b6b8d75222b8fea6d27d7387b8b295bb3b69ea7",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.md",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.md",
+      "http_status": 200,
+      "bytes": 4453,
+      "expected_bytes": 4453,
+      "sha256": "d80ed18378a818127b22918f752e59bd46d77b2fcb60ba8b5117221dca2afc54",
+      "expected_sha256": "d80ed18378a818127b22918f752e59bd46d77b2fcb60ba8b5117221dca2afc54",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/preflight.json",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/preflight.json",
+      "http_status": 200,
+      "bytes": 35594,
+      "expected_bytes": 35594,
+      "sha256": "af8ad79b7e555d4779235ac44fbeca98613ec4fbab21ac14ca69fab292fb4b80",
+      "expected_sha256": "af8ad79b7e555d4779235ac44fbeca98613ec4fbab21ac14ca69fab292fb4b80",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-final.log",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-final.log",
+      "http_status": 200,
+      "bytes": 4374,
+      "expected_bytes": 4374,
+      "sha256": "5d14f85802d15e645910b6e9c18649ab9aa06477e4302c00cab16ade18af5334",
+      "expected_sha256": "5d14f85802d15e645910b6e9c18649ab9aa06477e4302c00cab16ade18af5334",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-index-followup.log",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-index-followup.log",
+      "http_status": 200,
+      "bytes": 5454,
+      "expected_bytes": 5454,
+      "sha256": "e7ea9b1c27b876025a60a1b26d81934fe8a4ada9bec0a62b3f8766e1012444cb",
+      "expected_sha256": "e7ea9b1c27b876025a60a1b26d81934fe8a4ada9bec0a62b3f8766e1012444cb",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-retry.log",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-retry.log",
+      "http_status": 200,
+      "bytes": 4374,
+      "expected_bytes": 4374,
+      "sha256": "9454064c154d2dc4a99ac0539153f8d307483df0daf8e9de1ef37efa8d249aaa",
+      "expected_sha256": "9454064c154d2dc4a99ac0539153f8d307483df0daf8e9de1ef37efa8d249aaa",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build.log",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build.log",
+      "http_status": 200,
+      "bytes": 225,
+      "expected_bytes": 225,
+      "sha256": "288007d199e65db5ad52dcd330e14ea00b279854908a884126f5a671ae3a7a1c",
+      "expected_sha256": "288007d199e65db5ad52dcd330e14ea00b279854908a884126f5a671ae3a7a1c",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/served-verification.json",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/served-verification.json",
+      "http_status": 200,
+      "bytes": 38124,
+      "expected_bytes": 38124,
+      "sha256": "604d6cc5e2ddac49fdc38bc0c7b1799ef685ec90ff68a4801eec6695800d4c63",
+      "expected_sha256": "604d6cc5e2ddac49fdc38bc0c7b1799ef685ec90ff68a4801eec6695800d4c63",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/tailnet-plan-agent-browser.png",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/tailnet-plan-agent-browser.png",
+      "http_status": 200,
+      "bytes": 198972,
+      "expected_bytes": 198972,
+      "sha256": "09e70ed089a7999dbf8b437dbd0ff5e1c73a6a099e5688a45856c12dd4f53fbe",
+      "expected_sha256": "09e70ed089a7999dbf8b437dbd0ff5e1c73a6a099e5688a45856c12dd4f53fbe",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/tailnet-roadmap-agent-browser.png",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/tailnet-roadmap-agent-browser.png",
+      "http_status": 200,
+      "bytes": 256356,
+      "expected_bytes": 256356,
+      "sha256": "06fcdf94de3702b648fe0f67e2a01ad2ea9c7fd083f1b6548aedebf4d65fb8b2",
+      "expected_sha256": "06fcdf94de3702b648fe0f67e2a01ad2ea9c7fd083f1b6548aedebf4d65fb8b2",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/tailnet-status-agent-browser.png",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/tailnet-status-agent-browser.png",
+      "http_status": 200,
+      "bytes": 212674,
+      "expected_bytes": 212674,
+      "sha256": "2e5be0782ab42da8f4916ed0b9af74e91aebbf1878ebe4cee5c64f9426015fb0",
+      "expected_sha256": "2e5be0782ab42da8f4916ed0b9af74e91aebbf1878ebe4cee5c64f9426015fb0",
+      "matches": true
+    },
+    {
+      "path": "static/image/tailnet-plan-agent-browser.9356dec254.png",
+      "url_path": "/spinon/static/image/tailnet-plan-agent-browser.9356dec254.png",
+      "http_status": 200,
+      "bytes": 198972,
+      "expected_bytes": 198972,
+      "sha256": "09e70ed089a7999dbf8b437dbd0ff5e1c73a6a099e5688a45856c12dd4f53fbe",
+      "expected_sha256": "09e70ed089a7999dbf8b437dbd0ff5e1c73a6a099e5688a45856c12dd4f53fbe",
+      "matches": true
+    },
+    {
+      "path": "static/image/tailnet-roadmap-agent-browser.8211347bf1.png",
+      "url_path": "/spinon/static/image/tailnet-roadmap-agent-browser.8211347bf1.png",
+      "http_status": 200,
+      "bytes": 256356,
+      "expected_bytes": 256356,
+      "sha256": "06fcdf94de3702b648fe0f67e2a01ad2ea9c7fd083f1b6548aedebf4d65fb8b2",
+      "expected_sha256": "06fcdf94de3702b648fe0f67e2a01ad2ea9c7fd083f1b6548aedebf4d65fb8b2",
+      "matches": true
+    },
+    {
+      "path": "static/image/tailnet-status-agent-browser.5ccdbb9816.png",
+      "url_path": "/spinon/static/image/tailnet-status-agent-browser.5ccdbb9816.png",
+      "http_status": 200,
+      "bytes": 212674,
+      "expected_bytes": 212674,
+      "sha256": "2e5be0782ab42da8f4916ed0b9af74e91aebbf1878ebe4cee5c64f9426015fb0",
+      "expected_sha256": "2e5be0782ab42da8f4916ed0b9af74e91aebbf1878ebe4cee5c64f9426015fb0",
+      "matches": true
+    }
+  ]
+}
