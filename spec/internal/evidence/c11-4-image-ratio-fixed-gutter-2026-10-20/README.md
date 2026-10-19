@@ -1,6 +1,6 @@
 # C11.4 fixed-span size suggestion · 구현과 Simulator 근거
 
-**상태:** 제한 구현 후보. C11.4·C11 완료, 공개 CSS 지원 또는 WPT 적합성 선언이 아니다. PR diff 적대 검토 30개를 완료했으며 PR 생성·required checks·merge와 Tailnet preview 반영은 남아 있다.
+**상태:** 제한 구현 후보. C11.4·C11 완료, 공개 CSS 지원 또는 WPT 적합성 선언이 아니다. PR #357은 rebase merge됐고 Tailnet preview는 선택 문서·근거만 갱신했다. [동기화와 브라우저 근거](../c11-4-image-tailnet-preview-update-2026-10-20/README.md).
 
 ## 수정한 규칙
 
@@ -34,19 +34,19 @@ Simulator matrix의 최종 성공 run은 `c114-fg-20261019T153833Z`이다. 스�
 
 ### Android API 37 AVD · column span
 
-![Android API 37 AVD fixed gutter column scene](runs/c114-fg-20261019T153833Z/android-avd/screenshot-fixed-gutter-column-suggestion-clamp.png)
+![Android API 37 AVD fixed gutter column scene](./runs/c114-fg-20261019T153833Z/android-avd/screenshot-fixed-gutter-column-suggestion-clamp.png)
 
 ### Android API 37 AVD · row span
 
-![Android API 37 AVD fixed gutter row scene](runs/c114-fg-20261019T153833Z/android-avd/screenshot-fixed-gutter-row-suggestion-clamp.png)
+![Android API 37 AVD fixed gutter row scene](./runs/c114-fg-20261019T153833Z/android-avd/screenshot-fixed-gutter-row-suggestion-clamp.png)
 
 ### iPhone 17 Pro / iOS 26.2 Simulator · column span
 
-![iOS Simulator fixed gutter column scene](runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-column-suggestion-clamp.png)
+![iOS Simulator fixed gutter column scene](./runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-column-suggestion-clamp.png)
 
 ### iPhone 17 Pro / iOS 26.2 Simulator · row span
 
-![iOS Simulator fixed gutter row scene](runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-row-suggestion-clamp.png)
+![iOS Simulator fixed gutter row scene](./runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-row-suggestion-clamp.png)
 
 화면에는 실행 상태 footer가 보인다. screenshot은 시각적 보조 자료이며 exact 색 검사는 위 native readback 로그의 좌표별 결과다.
 

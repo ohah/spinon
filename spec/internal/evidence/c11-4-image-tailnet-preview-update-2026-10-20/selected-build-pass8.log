@@ -1,0 +1,93 @@
+@spinon/docs docs:build: 🔥 Rspress v2.0.22
+@spinon/docs docs:build:
+@spinon/docs docs:build: info    build started...
+@spinon/docs docs:build: warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+@spinon/docs docs:build: warn    Please set `output.cleanDistPath` config manually.
+@spinon/docs docs:build: warn    Current root path: [worktree-path-redacted]
+@spinon/docs docs:build: warn    Current dist path: [worktree-path-redacted]
+@spinon/docs docs:build: info    Rendering pages...
+@spinon/docs docs:build: success Pages rendered in 128 ms.
+@spinon/docs docs:build: ready   built in 0.79s (web)
+@spinon/docs docs:build: ready   built in 0.79s (node)
+@spinon/docs docs:build:
+@spinon/docs docs:build: File (web)                                                                                           Size        Gzip
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/1.9d6d094526.js                    0.10 kB     0.09 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/styles.7b0c5651b6.js                     0.47 kB     0.23 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/icon.svg                                           0.64 kB     0.42 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-812dc5c7229b.c56d88e7e6.js   4.7 kB      1.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-247859e89cb0.fdf20eba10.js   7.0 kB      2.5 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-0fc10d6029ff.833387361a.js   9.0 kB      2.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-f4e1c4792faf.cf4bf9a27a.js   9.0 kB      2.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-6b2ef7d1846c.bcd74b9533.js   9.4 kB      3.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-3de2ba0b6314.9b06a3692a.js   9.5 kB      2.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-6bc2e6fb6b31.6e21bdbeca.js   9.5 kB      2.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-a25e75c8a51f.6118aea8e5.js   9.7 kB      3.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-bfc3b19ac950.549d39ad82.js   9.8 kB      3.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-9fc08d04c766.a770ee3a4e.js   9.8 kB      3.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-02da5143c1f7.9c95fd4267.js   10.3 kB     3.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-7b9bcbddf2a4.6f778ec399.js   10.3 kB     3.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-b960e2b16ea1.cfe450fb9d.js   11.1 kB     4.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-25f826ccc1f0.1c520853e3.js   11.2 kB     3.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-d5b07898f998.cc36baeece.js   11.6 kB     4.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-d1d33ec52d43.841b4e6b87.js   11.9 kB     4.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-7a11bd1c0efc.38c536b679.js   12.7 kB     4.6 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-dc56297a2c9a.12023c1595.js   13.1 kB     3.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-69fda0c43099.bbc2511b4b.js   13.1 kB     3.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-d2e5373e859b.094b695883.js   14.7 kB     4.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-ec316c13d5f3.d64b36f212.js   14.7 kB     4.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-cde3fc5f9207.22d70a98ad.js   14.9 kB     4.5 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-8cdc035b6f64.a6b23ebf9d.js   14.9 kB     4.5 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-7290f5c1ced2.4b6c70aa03.js   17.9 kB     5.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-ecf129b09e78.5e809ac90a.js   23.6 kB     7.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/lib-router.95ea184a3c.js                 35.4 kB     12.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-c2801b21f038.fd46b65dfb.js   43.6 kB     11.9 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-04cbcabea10a.ba287f3bc4.js   51.3 kB     14.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/index.7b280a3f2b.js                      73.9 kB     18.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-c4dae6800800.5ac05aee8b.js   85.2 kB     21.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-739571cd2ae5.27b35c7c21.js   85.2 kB     21.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/2.1aa8a93d31.js                          217.1 kB    72.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/lib-react.d9aa10f4b0.js                  218.4 kB    68.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-a1017bdf23ca.207226b662.js   243.6 kB    40.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/js/async/route-6c33a3943990.a5c1a6e33b.js   495.6 kB    99.5 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/static/search_index.ko.9e634b50.json               635.6 kB    200.2 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build:                                                                                             Total:   2553.3 kB   685.6 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build: File (node)                                                                                                                                                     Size        Gzip
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/404.html                                                                                                      8.5 kB      2.6 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html                       36.9 kB     5.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html                 38.2 kB     6.6 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html            38.2 kB     6.6 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.html                                             38.4 kB     6.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html        38.6 kB     6.6 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html   38.6 kB     6.6 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.html                                     38.6 kB     7.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html              39.2 kB     7.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html         39.2 kB     7.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html                39.5 kB     7.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html                     39.5 kB     7.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.html                                 40.0 kB     7.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html                       40.3 kB     7.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/sync-review-20.html                           40.8 kB     7.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/README.html                                   40.9 kB     6.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html                                         41.1 kB     7.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html                              41.3 kB     8.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html                    41.7 kB     6.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html                         41.7 kB     6.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html                            42.5 kB     8.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html                       42.5 kB     8.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html                                       45.5 kB     8.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html                                  45.5 kB     8.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/plan/c11-4-image-ratio-fixed-gutter.html                                                                      47.2 kB     8.9 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/0001-conformance.html                                                                                         52.3 kB     11.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/plan/c11-css-grid.html                                                                                        72.4 kB     15.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/plan/c11-4-grid-track-sizing.html                                                                             92.8 kB     21.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/internal/0059-c11-grid-layout.html                                                                            115.3 kB    25.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/spec/internal/0059-c11-grid-layout.html                                                                       115.3 kB    25.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/internal/README.html                                                                                          247.9 kB    43.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-image-tailnet-site-pass8/STATUS.html                                                                                                   486.1 kB    102.1 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build:                                                                                                                                                        Total:   2166.5 kB   420.5 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build: Exited with code 0

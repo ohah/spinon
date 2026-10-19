@@ -1,0 +1,3051 @@
+{
+  "pass": "pass9",
+  "preview_root_relative": "SpinonPreview",
+  "base_path": "/spinon/",
+  "target_count": 304,
+  "matched_count": 304,
+  "mismatch_count": 0,
+  "all_verified": true,
+  "files": [
+    {
+      "path": "0001-conformance.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 52274,
+      "served_bytes": 52274,
+      "local_sha256": "575edbf1df4a94a1cdd50a6a20cc11fdf1066e0f883a9dd682a9dedc00c29624",
+      "served_sha256": "575edbf1df4a94a1cdd50a6a20cc11fdf1066e0f883a9dd682a9dedc00c29624",
+      "matched": true
+    },
+    {
+      "path": "404.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 8512,
+      "served_bytes": 8512,
+      "local_sha256": "33e16af0158a0b1f93dbbaf4e6c003d77e9b43f03420aad99bbf553387efab8f",
+      "served_sha256": "33e16af0158a0b1f93dbbaf4e6c003d77e9b43f03420aad99bbf553387efab8f",
+      "matched": true
+    },
+    {
+      "path": "icon.svg",
+      "status": 200,
+      "content_type": "image/svg+xml",
+      "local_bytes": 638,
+      "served_bytes": 638,
+      "local_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "served_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "matched": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 115261,
+      "served_bytes": 115261,
+      "local_sha256": "f7d050bdf0beb2dd8bd7cdef7cda8afef6c754368d0d157164cf9ceb421d6c89",
+      "served_sha256": "f7d050bdf0beb2dd8bd7cdef7cda8afef6c754368d0d157164cf9ceb421d6c89",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/build.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 4295,
+      "served_bytes": 4295,
+      "local_sha256": "a8573a0e4d72b7820e8e1f33de7c56681353d33863379f60bea4383cbbb85bd3",
+      "served_sha256": "a8573a0e4d72b7820e8e1f33de7c56681353d33863379f60bea4383cbbb85bd3",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/install.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 36,
+      "served_bytes": 36,
+      "local_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "served_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-auto-image-definite.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 73,
+      "served_bytes": 73,
+      "local_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "served_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-fit-content-above-intrinsic.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 73,
+      "served_bytes": 73,
+      "local_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "served_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-fit-content-below-minimum.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 73,
+      "served_bytes": 73,
+      "local_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "served_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-fit-content-percent.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 73,
+      "served_bytes": 73,
+      "local_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "served_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-fixed-small-track-overflow.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 73,
+      "served_bytes": 73,
+      "local_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "served_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-min-content-row-image.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 73,
+      "served_bytes": 73,
+      "local_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "served_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-minmax-auto-image.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 73,
+      "served_bytes": 73,
+      "local_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "served_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-minmax-min-max-image.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 73,
+      "served_bytes": 73,
+      "local_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "served_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-spanning-min-content-items.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 73,
+      "served_bytes": 73,
+      "local_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "served_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-auto-image-definite.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 21084,
+      "served_bytes": 21084,
+      "local_sha256": "29510fb87f7534cfd60418983daf115fa6cf8c83621b51653fdd9f72b02a7149",
+      "served_sha256": "29510fb87f7534cfd60418983daf115fa6cf8c83621b51653fdd9f72b02a7149",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-fit-content-above-intrinsic.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 21445,
+      "served_bytes": 21445,
+      "local_sha256": "53a3e9e1ac073c19bad52308718d19adbfce1f7c1c19d99bd5cc6bdc1a4b0f94",
+      "served_sha256": "53a3e9e1ac073c19bad52308718d19adbfce1f7c1c19d99bd5cc6bdc1a4b0f94",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-fit-content-below-minimum.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 21055,
+      "served_bytes": 21055,
+      "local_sha256": "da09f534818bcb870b221c90f7441b147d7759b907ef6e6721bb0558ccf2a9ac",
+      "served_sha256": "da09f534818bcb870b221c90f7441b147d7759b907ef6e6721bb0558ccf2a9ac",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-fit-content-percent.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 20996,
+      "served_bytes": 20996,
+      "local_sha256": "ab1d8528093d218910036dd1046a0ff618e171eb9628d2300aaaae9cb10f4b08",
+      "served_sha256": "ab1d8528093d218910036dd1046a0ff618e171eb9628d2300aaaae9cb10f4b08",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-fixed-small-track-overflow.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 22498,
+      "served_bytes": 22498,
+      "local_sha256": "4f621eb96de3057418718efc55c1295ab78fda4643ff6224b8b108a00eb03016",
+      "served_sha256": "4f621eb96de3057418718efc55c1295ab78fda4643ff6224b8b108a00eb03016",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-min-content-row-image.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 23544,
+      "served_bytes": 23544,
+      "local_sha256": "f24bf7698dc8d35a27548631a50c63b896735a1fe436e013eab68e75f9221f11",
+      "served_sha256": "f24bf7698dc8d35a27548631a50c63b896735a1fe436e013eab68e75f9221f11",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-minmax-auto-image.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 20917,
+      "served_bytes": 20917,
+      "local_sha256": "823c0787f7e47c9ea8ad9b37a3a033021a38ce9e2aa5f3cb6e211748dda51792",
+      "served_sha256": "823c0787f7e47c9ea8ad9b37a3a033021a38ce9e2aa5f3cb6e211748dda51792",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-minmax-min-max-image.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 21047,
+      "served_bytes": 21047,
+      "local_sha256": "6d2a59693c4256e917af6edc2a5843c9fa2d588afbfc736698d81c152cebb9ee",
+      "served_sha256": "6d2a59693c4256e917af6edc2a5843c9fa2d588afbfc736698d81c152cebb9ee",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-spanning-min-content-items.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 22795,
+      "served_bytes": 22795,
+      "local_sha256": "f76ce69b6d8ba75d82daec9e4aedbb82b8e222a9a2c4b157cf85213763f26259",
+      "served_sha256": "f76ce69b6d8ba75d82daec9e4aedbb82b8e222a9a2c4b157cf85213763f26259",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-auto-image-definite.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 77903,
+      "served_bytes": 77903,
+      "local_sha256": "a66ff934a7b5c17eaf162975f7e2501bea7522c00ae62232d9abcc2f7e6efd01",
+      "served_sha256": "a66ff934a7b5c17eaf162975f7e2501bea7522c00ae62232d9abcc2f7e6efd01",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-fit-content-above-intrinsic.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 77906,
+      "served_bytes": 77906,
+      "local_sha256": "18231c1bb714356658ca1af2b0e4b4e0f13ef55e2419e737996f9135587b18e1",
+      "served_sha256": "18231c1bb714356658ca1af2b0e4b4e0f13ef55e2419e737996f9135587b18e1",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-fit-content-below-minimum.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 77923,
+      "served_bytes": 77923,
+      "local_sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a",
+      "served_sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-fit-content-percent.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 77252,
+      "served_bytes": 77252,
+      "local_sha256": "afe7837bc91778d44c3013be6be25e3714287f20284a6348fb4346c14c506df5",
+      "served_sha256": "afe7837bc91778d44c3013be6be25e3714287f20284a6348fb4346c14c506df5",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-fixed-small-track-overflow.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 77255,
+      "served_bytes": 77255,
+      "local_sha256": "e704600c26096fd0330c1019ffa8532206b4b8ebdea6da0c670d39fcd3d59388",
+      "served_sha256": "e704600c26096fd0330c1019ffa8532206b4b8ebdea6da0c670d39fcd3d59388",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-min-content-row-image.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 77240,
+      "served_bytes": 77240,
+      "local_sha256": "6c2a85fbc2315e632f775df5bf0dc73a1e994db96e00ae4df3583e6fc3e89207",
+      "served_sha256": "6c2a85fbc2315e632f775df5bf0dc73a1e994db96e00ae4df3583e6fc3e89207",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-minmax-auto-image.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 77923,
+      "served_bytes": 77923,
+      "local_sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a",
+      "served_sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-minmax-min-max-image.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 77923,
+      "served_bytes": 77923,
+      "local_sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a",
+      "served_sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-spanning-min-content-items.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 77240,
+      "served_bytes": 77240,
+      "local_sha256": "ee4f42bcf799e2df0d477f36226c126eed96e7290b7cb90111b624ab6ec4b251",
+      "served_sha256": "ee4f42bcf799e2df0d477f36226c126eed96e7290b7cb90111b624ab6ec4b251",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/archive-hashes.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 315,
+      "served_bytes": 315,
+      "local_sha256": "282bd0479a42b10bf75923a6553d330d770edc7b318635eb294021189f867b92",
+      "served_sha256": "282bd0479a42b10bf75923a6553d330d770edc7b318635eb294021189f867b92",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/default-build.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 62,
+      "served_bytes": 62,
+      "local_sha256": "0b5fe2277fd2b29cc111b76604c482f8ec516047dbc0954657203c5614f4e4db",
+      "served_sha256": "0b5fe2277fd2b29cc111b76604c482f8ec516047dbc0954657203c5614f4e4db",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/fixture-build.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 62,
+      "served_bytes": 62,
+      "local_sha256": "765f1396d07f30f3a451cd3f9d9cad4e83c92c8e0aecf955ffc09061a6cf1e02",
+      "served_sha256": "765f1396d07f30f3a451cd3f9d9cad4e83c92c8e0aecf955ffc09061a6cf1e02",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/fixture-strings.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 84,
+      "served_bytes": 84,
+      "local_sha256": "06c56eb30ce53b3e6b8f1101c83c220d84562a706499e503d43cbaf91bd1fe8b",
+      "served_sha256": "06c56eb30ce53b3e6b8f1101c83c220d84562a706499e503d43cbaf91bd1fe8b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/fixture-symbol.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 81,
+      "served_bytes": 81,
+      "local_sha256": "307410503132572df9744a8a3aa60d0659f2a0ac8aa1e8d9de4a8f28e2c3e426",
+      "served_sha256": "307410503132572df9744a8a3aa60d0659f2a0ac8aa1e8d9de4a8f28e2c3e426",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/png-payload-check.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 85,
+      "served_bytes": 85,
+      "local_sha256": "1edd1553e9d6adcf775c2219a201491a1f18abc56ac0d6a3d376d596c6ba4f4b",
+      "served_sha256": "1edd1553e9d6adcf775c2219a201491a1f18abc56ac0d6a3d376d596c6ba4f4b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 36903,
+      "served_bytes": 36903,
+      "local_sha256": "a5b0cc4968f5bc891ee3a2209eb1e78689a6f476ed3a15594c927bee79525d44",
+      "served_sha256": "a5b0cc4968f5bc891ee3a2209eb1e78689a6f476ed3a15594c927bee79525d44",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/verify.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 58,
+      "served_bytes": 58,
+      "local_sha256": "7ee38fdacb01076bb76d08728d9bf6774f4492fa5872d128121121b2a25b23f9",
+      "served_sha256": "7ee38fdacb01076bb76d08728d9bf6774f4492fa5872d128121121b2a25b23f9",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/compare-platform-logs.mjs",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 15006,
+      "served_bytes": 15006,
+      "local_sha256": "781345b7564dd2b161958657336e642d95e66d831aa8273115ae5bd8a6aa9d70",
+      "served_sha256": "781345b7564dd2b161958657336e642d95e66d831aa8273115ae5bd8a6aa9d70",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/cross-platform-comparison.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 36240,
+      "served_bytes": 36240,
+      "local_sha256": "1ce02a3374e2d64841b2dbc19d4cb06e43579dba88785eb26bed2bfcae94b623",
+      "served_sha256": "1ce02a3374e2d64841b2dbc19d4cb06e43579dba88785eb26bed2bfcae94b623",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ffi-clippy.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 192,
+      "served_bytes": 192,
+      "local_sha256": "a06c5a7e95ce64317524cb83cc79b9c728432043997223724a28edfa0a8fc15c",
+      "served_sha256": "a06c5a7e95ce64317524cb83cc79b9c728432043997223724a28edfa0a8fc15c",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ffi-test.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 945,
+      "served_bytes": 945,
+      "local_sha256": "1ebcbbc9204d2ff06dbbd4daa82446d6b31c99e304d278a7b6fcfc42c02cdd5c",
+      "served_sha256": "1ebcbbc9204d2ff06dbbd4daa82446d6b31c99e304d278a7b6fcfc42c02cdd5c",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/image-fixture-unit-test.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 989,
+      "served_bytes": 989,
+      "local_sha256": "96172a95a54763b82168bf299dad1556a714c29df06735367ed5cfdf2c03dea0",
+      "served_sha256": "96172a95a54763b82168bf299dad1556a714c29df06735367ed5cfdf2c03dea0",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 40329,
+      "served_bytes": 40329,
+      "local_sha256": "e8c03b2e4dd514333175c20ed5786dd97bafb92c9ed156d7f5ab7fb04789c2df",
+      "served_sha256": "e8c03b2e4dd514333175c20ed5786dd97bafb92c9ed156d7f5ab7fb04789c2df",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/build.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 63514,
+      "served_bytes": 63514,
+      "local_sha256": "e6e529fdbf80d3704bfeefe05787f60f41d4b833c1507275c6fce06ef9a2449b",
+      "served_sha256": "e6e529fdbf80d3704bfeefe05787f60f41d4b833c1507275c6fce06ef9a2449b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/install.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 0,
+      "served_bytes": 0,
+      "local_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "served_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-auto-image-definite.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 28,
+      "served_bytes": 28,
+      "local_sha256": "efc0dcb4fad3aac0ba02c4d5b5f7b9b4e19a8247d2598b84c12e9b4c0daed475",
+      "served_sha256": "efc0dcb4fad3aac0ba02c4d5b5f7b9b4e19a8247d2598b84c12e9b4c0daed475",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-fit-content-above-intrinsic.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 28,
+      "served_bytes": 28,
+      "local_sha256": "5c0b0fad459884dcdd222efb96a53736f4bcb57ab44ac57e22477600c98f1ecc",
+      "served_sha256": "5c0b0fad459884dcdd222efb96a53736f4bcb57ab44ac57e22477600c98f1ecc",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-fit-content-below-minimum.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 28,
+      "served_bytes": 28,
+      "local_sha256": "c13a1b1710fd9933181eb5ac3de8ea124cabb2671036037208a09649bd581fa7",
+      "served_sha256": "c13a1b1710fd9933181eb5ac3de8ea124cabb2671036037208a09649bd581fa7",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-fit-content-percent.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 28,
+      "served_bytes": 28,
+      "local_sha256": "268ea91a23e0b484e611fe1b8773c034da0c67357c06c7872c3e79c1b1c4ff5a",
+      "served_sha256": "268ea91a23e0b484e611fe1b8773c034da0c67357c06c7872c3e79c1b1c4ff5a",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-fixed-small-track-overflow.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 28,
+      "served_bytes": 28,
+      "local_sha256": "0358ea0b0e634d1501d8d237d6392da7aae5f1a2861cce5864ed948366c3bb12",
+      "served_sha256": "0358ea0b0e634d1501d8d237d6392da7aae5f1a2861cce5864ed948366c3bb12",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-min-content-row-image.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 28,
+      "served_bytes": 28,
+      "local_sha256": "bd4750fa051eaa7a6335fa1877af71be600a5f49d6893c96a0b95a2602cf8edb",
+      "served_sha256": "bd4750fa051eaa7a6335fa1877af71be600a5f49d6893c96a0b95a2602cf8edb",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-minmax-auto-image.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 28,
+      "served_bytes": 28,
+      "local_sha256": "95f105a39aaddd1b0716d84ac73cabe54faf5ded3d1b59687ec589a794fa0052",
+      "served_sha256": "95f105a39aaddd1b0716d84ac73cabe54faf5ded3d1b59687ec589a794fa0052",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-minmax-min-max-image.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 28,
+      "served_bytes": 28,
+      "local_sha256": "fb51f4f7253ffd7572dc8b8e5fa0c56cc4e5077f678ee66384737e0b57546d77",
+      "served_sha256": "fb51f4f7253ffd7572dc8b8e5fa0c56cc4e5077f678ee66384737e0b57546d77",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-spanning-min-content-items.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 28,
+      "served_bytes": 28,
+      "local_sha256": "a8cf4f5858576cf6c99d0717d68aa148a01d65df878cb42a1f7bf62965eb3843",
+      "served_sha256": "a8cf4f5858576cf6c99d0717d68aa148a01d65df878cb42a1f7bf62965eb3843",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-auto-image-definite.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 8723,
+      "served_bytes": 8723,
+      "local_sha256": "9bb4ebae4c9d307aac1b7718aa07cd44e8a74a3b2d8c610ff6c86340459f4e1a",
+      "served_sha256": "9bb4ebae4c9d307aac1b7718aa07cd44e8a74a3b2d8c610ff6c86340459f4e1a",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-fit-content-above-intrinsic.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 8827,
+      "served_bytes": 8827,
+      "local_sha256": "728475a6078f69c5f4074f9201a0fed0b28cb7b7181142a84f5d45b513db3ec5",
+      "served_sha256": "728475a6078f69c5f4074f9201a0fed0b28cb7b7181142a84f5d45b513db3ec5",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-fit-content-below-minimum.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 8801,
+      "served_bytes": 8801,
+      "local_sha256": "cd18cc9eacc58ff18ff9b1793447b7fcc40bbbeeb64d95e36509d23e35e8967b",
+      "served_sha256": "cd18cc9eacc58ff18ff9b1793447b7fcc40bbbeeb64d95e36509d23e35e8967b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-fit-content-percent.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 8723,
+      "served_bytes": 8723,
+      "local_sha256": "2ae37b090b2b7a46d2a281f1ada73d45dbb83c6e6770812d9b216a1a670d0585",
+      "served_sha256": "2ae37b090b2b7a46d2a281f1ada73d45dbb83c6e6770812d9b216a1a670d0585",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-fixed-small-track-overflow.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 10023,
+      "served_bytes": 10023,
+      "local_sha256": "9fa2a3937d8db501eed87e0291a958b664ebe27c4299e0011a4f0c04468b0fe5",
+      "served_sha256": "9fa2a3937d8db501eed87e0291a958b664ebe27c4299e0011a4f0c04468b0fe5",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-min-content-row-image.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 5903,
+      "served_bytes": 5903,
+      "local_sha256": "07a73419a839a63f58e1014d271f0bd2346cc83d4f1aa5ddddddec3530819eef",
+      "served_sha256": "07a73419a839a63f58e1014d271f0bd2346cc83d4f1aa5ddddddec3530819eef",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-minmax-auto-image.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 8247,
+      "served_bytes": 8247,
+      "local_sha256": "18d7d50b6ceab6c2e6932a95ec488b8bec45f5425391a2810613c0c308c46053",
+      "served_sha256": "18d7d50b6ceab6c2e6932a95ec488b8bec45f5425391a2810613c0c308c46053",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-minmax-min-max-image.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 8388,
+      "served_bytes": 8388,
+      "local_sha256": "0e7ad7a3a93c3438023f0c15d041ab4f12bc243ba5079fe13ee2073db768465b",
+      "served_sha256": "0e7ad7a3a93c3438023f0c15d041ab4f12bc243ba5079fe13ee2073db768465b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-spanning-min-content-items.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 10357,
+      "served_bytes": 10357,
+      "local_sha256": "3ec02996da66c9467b1647363787c55f367606e553715cf3f4d7300797eca05a",
+      "served_sha256": "3ec02996da66c9467b1647363787c55f367606e553715cf3f4d7300797eca05a",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-auto-image-definite.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 86,
+      "served_bytes": 86,
+      "local_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "served_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-auto-image-definite.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 143521,
+      "served_bytes": 143521,
+      "local_sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203",
+      "served_sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-above-intrinsic.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 86,
+      "served_bytes": 86,
+      "local_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "served_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-above-intrinsic.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 142452,
+      "served_bytes": 142452,
+      "local_sha256": "ea83a7d03f3b9d940756ca6e0f272e44fd9a9af354e97172bead969ac93d596d",
+      "served_sha256": "ea83a7d03f3b9d940756ca6e0f272e44fd9a9af354e97172bead969ac93d596d",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-below-minimum.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 86,
+      "served_bytes": 86,
+      "local_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "served_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-below-minimum.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 143521,
+      "served_bytes": 143521,
+      "local_sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203",
+      "served_sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-percent.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 86,
+      "served_bytes": 86,
+      "local_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "served_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-percent.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 142452,
+      "served_bytes": 142452,
+      "local_sha256": "ea83a7d03f3b9d940756ca6e0f272e44fd9a9af354e97172bead969ac93d596d",
+      "served_sha256": "ea83a7d03f3b9d940756ca6e0f272e44fd9a9af354e97172bead969ac93d596d",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fixed-small-track-overflow.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 86,
+      "served_bytes": 86,
+      "local_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "served_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fixed-small-track-overflow.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 129168,
+      "served_bytes": 129168,
+      "local_sha256": "baff7e954df386aa08414b84414ea5e44cd300e7a6b19267b21b1549994fdba1",
+      "served_sha256": "baff7e954df386aa08414b84414ea5e44cd300e7a6b19267b21b1549994fdba1",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-min-content-row-image.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 86,
+      "served_bytes": 86,
+      "local_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "served_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-min-content-row-image.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 142368,
+      "served_bytes": 142368,
+      "local_sha256": "ecd8d108e2ea35cba7038b7b7bafef77ea981c7552cfcd541936b46c58dc2fd3",
+      "served_sha256": "ecd8d108e2ea35cba7038b7b7bafef77ea981c7552cfcd541936b46c58dc2fd3",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-minmax-auto-image.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 86,
+      "served_bytes": 86,
+      "local_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "served_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-minmax-auto-image.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 143476,
+      "served_bytes": 143476,
+      "local_sha256": "96a8ee48535064d788226f810f6615b905bec9e9a732d1d41705a798336d495e",
+      "served_sha256": "96a8ee48535064d788226f810f6615b905bec9e9a732d1d41705a798336d495e",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-minmax-min-max-image.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 86,
+      "served_bytes": 86,
+      "local_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "served_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-minmax-min-max-image.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 143521,
+      "served_bytes": 143521,
+      "local_sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203",
+      "served_sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-spanning-min-content-items.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 86,
+      "served_bytes": 86,
+      "local_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "served_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-spanning-min-content-items.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 142465,
+      "served_bytes": 142465,
+      "local_sha256": "2c46756708e31ef5b5c72a3eedc6b3b6f80d2b87e84ed790ecd4a86ce31599b9",
+      "served_sha256": "2c46756708e31ef5b5c72a3eedc6b3b6f80d2b87e84ed790ecd4a86ce31599b9",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/matrix-run.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 0,
+      "served_bytes": 0,
+      "local_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "served_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/namespace-negative-test.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 860,
+      "served_bytes": 860,
+      "local_sha256": "aa78c9f233d6e6bc094dd78d156aed5274378851f6006b6814994fa0546a186e",
+      "served_sha256": "aa78c9f233d6e6bc094dd78d156aed5274378851f6006b6814994fa0546a186e",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/platform-compare.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 115,
+      "served_bytes": 115,
+      "local_sha256": "789c7cdf8cbc7abf2cf70f91915286548af1ba9b95f92044aa66686342dcbbe9",
+      "served_sha256": "789c7cdf8cbc7abf2cf70f91915286548af1ba9b95f92044aa66686342dcbbe9",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 41308,
+      "served_bytes": 41308,
+      "local_sha256": "df5a1f50c99a1880305ae9c0d71dc8537510ad4ca4c1b067530712f258abf3f2",
+      "served_sha256": "df5a1f50c99a1880305ae9c0d71dc8537510ad4ca4c1b067530712f258abf3f2",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 41143,
+      "served_bytes": 41143,
+      "local_sha256": "ec2d8a0a6be736c8d47c9877bcdccda2f02da910e5e9af1a6a629f134d81193e",
+      "served_sha256": "ec2d8a0a6be736c8d47c9877bcdccda2f02da910e5e9af1a6a629f134d81193e",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/run-simulator-matrix.sh",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 5099,
+      "served_bytes": 5099,
+      "local_sha256": "1830bc42efddca6659a80ea06456615897bc5c24f550b283870f7fcefbf408ef",
+      "served_sha256": "1830bc42efddca6659a80ea06456615897bc5c24f550b283870f7fcefbf408ef",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/runtime-clippy.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 134,
+      "served_bytes": 134,
+      "local_sha256": "7a38d702d5791aa4e1123d057f4b5c9a71b381b6094e4063b72dab22a7e27610",
+      "served_sha256": "7a38d702d5791aa4e1123d057f4b5c9a71b381b6094e4063b72dab22a7e27610",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/runtime-test.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 1241,
+      "served_bytes": 1241,
+      "local_sha256": "e49a16f5b4fe6cc2b904c3a63f20b7f344eef761b073af7a879f9bfe4604f8bc",
+      "served_sha256": "e49a16f5b4fe6cc2b904c3a63f20b7f344eef761b073af7a879f9bfe4604f8bc",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/rustfmt-check.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 0,
+      "served_bytes": 0,
+      "local_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "served_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/SHA256SUMS.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 10007,
+      "served_bytes": 10007,
+      "local_sha256": "cfaa23873e66076edc6808ea9e29cc4be10fd84e64d28bbddfe811dbdbcf2557",
+      "served_sha256": "cfaa23873e66076edc6808ea9e29cc4be10fd84e64d28bbddfe811dbdbcf2557",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/verify-artifact-boundary.sh",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 2846,
+      "served_bytes": 2846,
+      "local_sha256": "252892ac5f5aafef45a05d07bba27f4cc51c4bc9393540ba3513cb83c0296c62",
+      "served_sha256": "252892ac5f5aafef45a05d07bba27f4cc51c4bc9393540ba3513cb83c0296c62",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/workspace-clippy.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 72,
+      "served_bytes": 72,
+      "local_sha256": "a5f4c585ee974ca44916ac30a98bbc189e067a7e0a6bc6d2e8d6bc525be724af",
+      "served_sha256": "a5f4c585ee974ca44916ac30a98bbc189e067a7e0a6bc6d2e8d6bc525be724af",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/workspace-test.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 123608,
+      "served_bytes": 123608,
+      "local_sha256": "daebc5d37a0d862a40461bf6dbca37664bced646b4c97412abe671fe5f06ed60",
+      "served_sha256": "daebc5d37a0d862a40461bf6dbca37664bced646b4c97412abe671fe5f06ed60",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/android-build.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 4344,
+      "served_bytes": 4344,
+      "local_sha256": "201a5107253dfff69f39a10db3a089192e59783b7bbe6517906e8507c48c505b",
+      "served_sha256": "201a5107253dfff69f39a10db3a089192e59783b7bbe6517906e8507c48c505b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 39479,
+      "served_bytes": 39479,
+      "local_sha256": "d4d7f74448d7a648ae8b35bcb3f7f669f96f802a8cd1b4530b33fc1f9e2c8c4a",
+      "served_sha256": "d4d7f74448d7a648ae8b35bcb3f7f669f96f802a8cd1b4530b33fc1f9e2c8c4a",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/ios-build.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 85746,
+      "served_bytes": 85746,
+      "local_sha256": "f47129f3d793f9672bf2cc9b98c8d51be8ec4670c54ce57a92fe0f05dbc09a6e",
+      "served_sha256": "f47129f3d793f9672bf2cc9b98c8d51be8ec4670c54ce57a92fe0f05dbc09a6e",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 42463,
+      "served_bytes": 42463,
+      "local_sha256": "fc2a7b5e142934278b550905e73ad4c3c3c8ee19962e1059db11c7cc262a9e5a",
+      "served_sha256": "fc2a7b5e142934278b550905e73ad4c3c3c8ee19962e1059db11c7cc262a9e5a",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 45499,
+      "served_bytes": 45499,
+      "local_sha256": "f32e90ce6284ed8d8d5ae4ef2811ef29b5ac833c89d97ff7014225dbc498d6e4",
+      "served_sha256": "f32e90ce6284ed8d8d5ae4ef2811ef29b5ac833c89d97ff7014225dbc498d6e4",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/run-simulator-matrix.sh",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 9017,
+      "served_bytes": 9017,
+      "local_sha256": "1d61753433ffca653ec5372496284197e8686f9523a53402ac8b20cca86e24c4",
+      "served_sha256": "1d61753433ffca653ec5372496284197e8686f9523a53402ac8b20cca86e24c4",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/abi.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 10,
+      "served_bytes": 10,
+      "local_sha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90",
+      "served_sha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/api-level.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 3,
+      "served_bytes": 3,
+      "local_sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "served_sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/avd-name.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 28,
+      "served_bytes": 28,
+      "local_sha256": "6b155c3bed6bef87b3f93560e239c1286ed38bcca6a05db907fe05280e34d58e",
+      "served_sha256": "6b155c3bed6bef87b3f93560e239c1286ed38bcca6a05db907fe05280e34d58e",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/install.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 36,
+      "served_bytes": 36,
+      "local_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "served_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/launch-fixed-gutter-column-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 73,
+      "served_bytes": 73,
+      "local_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "served_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/launch-fixed-gutter-row-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 73,
+      "served_bytes": 73,
+      "local_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "served_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/runtime-fixed-gutter-column-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 23930,
+      "served_bytes": 23930,
+      "local_sha256": "e98d059ff1eafc0bd8529be3bd9547486213e2878d478e4b9d22eaf06f157b80",
+      "served_sha256": "e98d059ff1eafc0bd8529be3bd9547486213e2878d478e4b9d22eaf06f157b80",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/runtime-fixed-gutter-row-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 23412,
+      "served_bytes": 23412,
+      "local_sha256": "a58a20ddd5fb41349899829338a98fc2856689d7c9b9ad17d0ad3ab89b99760c",
+      "served_sha256": "a58a20ddd5fb41349899829338a98fc2856689d7c9b9ad17d0ad3ab89b99760c",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/screenshot-fixed-gutter-column-suggestion-clamp.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 78568,
+      "served_bytes": 78568,
+      "local_sha256": "5ed7da99beebea2388a6387a4ecdd0901b50b01823004a9b2f0887fe07b092c6",
+      "served_sha256": "5ed7da99beebea2388a6387a4ecdd0901b50b01823004a9b2f0887fe07b092c6",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/screenshot-fixed-gutter-row-suggestion-clamp.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 78562,
+      "served_bytes": 78562,
+      "local_sha256": "9edba366dfc342729d75fb4cbbe87265cbe01e1500c72199484278cf12b579db",
+      "served_sha256": "9edba366dfc342729d75fb4cbbe87265cbe01e1500c72199484278cf12b579db",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/booted-devices.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 169,
+      "served_bytes": 169,
+      "local_sha256": "687ad5cab6f3b16a1f66677bd516f500066992e2bf97c7921045c214841bc103",
+      "served_sha256": "687ad5cab6f3b16a1f66677bd516f500066992e2bf97c7921045c214841bc103",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/install.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 1,
+      "served_bytes": 1,
+      "local_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "served_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/launch-fixed-gutter-column-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 28,
+      "served_bytes": 28,
+      "local_sha256": "132a28ad23333b0e3c5822fc1470c9a6dfa735baaf4a09e53140f274ab59b209",
+      "served_sha256": "132a28ad23333b0e3c5822fc1470c9a6dfa735baaf4a09e53140f274ab59b209",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/launch-fixed-gutter-row-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 28,
+      "served_bytes": 28,
+      "local_sha256": "7dde8588390713caad06a641e6dae4b71fad1b182e3dd55f17a05c7cca25afee",
+      "served_sha256": "7dde8588390713caad06a641e6dae4b71fad1b182e3dd55f17a05c7cca25afee",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/model-identifier.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 11,
+      "served_bytes": 11,
+      "local_sha256": "e40be96841131f523dac012c3a28136b55643c89d96e7c20e7b5834a9ef6153a",
+      "served_sha256": "e40be96841131f523dac012c3a28136b55643c89d96e7c20e7b5834a9ef6153a",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/runtime-fixed-gutter-column-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 20809,
+      "served_bytes": 20809,
+      "local_sha256": "894324d279dd36d3a665bf776a7fd23c2e7b37ac0540aadc19ea9435b5bbb1f1",
+      "served_sha256": "894324d279dd36d3a665bf776a7fd23c2e7b37ac0540aadc19ea9435b5bbb1f1",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/runtime-fixed-gutter-row-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 20259,
+      "served_bytes": 20259,
+      "local_sha256": "fe89fb511c673db23bfffa563cafcbb4fb5e3b07b58ba93a9bc9f86a6f018fd6",
+      "served_sha256": "fe89fb511c673db23bfffa563cafcbb4fb5e3b07b58ba93a9bc9f86a6f018fd6",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-column-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 86,
+      "served_bytes": 86,
+      "local_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "served_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-column-suggestion-clamp.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 131372,
+      "served_bytes": 131372,
+      "local_sha256": "5b4e8e6039f64ecf9d67fcf5be410bdea4bea8be299b712fe4b3e9a1f60df501",
+      "served_sha256": "5b4e8e6039f64ecf9d67fcf5be410bdea4bea8be299b712fe4b3e9a1f60df501",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-row-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 86,
+      "served_bytes": 86,
+      "local_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "served_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-row-suggestion-clamp.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 131386,
+      "served_bytes": 131386,
+      "local_sha256": "9a8c87d19ddf7ac4ff0446f5e757d9a796c12ac4e5e20608fc4b194924b52847",
+      "served_sha256": "9a8c87d19ddf7ac4ff0446f5e757d9a796c12ac4e5e20608fc4b194924b52847",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/run-id.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 25,
+      "served_bytes": 25,
+      "local_sha256": "6e7b84ee863d235baab718000e08e83bfb3e0ac7f87bced6110ce466b36094cb",
+      "served_sha256": "6e7b84ee863d235baab718000e08e83bfb3e0ac7f87bced6110ce466b36094cb",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/source-head.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 41,
+      "served_bytes": 41,
+      "local_sha256": "b2b9b9854a8d43a4989c20c7f9c993899bca268d0b83a3aeafd21904c132081e",
+      "served_sha256": "b2b9b9854a8d43a4989c20c7f9c993899bca268d0b83a3aeafd21904c132081e",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/verification.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 22797,
+      "served_bytes": 22797,
+      "local_sha256": "43d43a7c7394540ff154c155a4076421fc3ad29ff2267ecda585a880e36c6822",
+      "served_sha256": "43d43a7c7394540ff154c155a4076421fc3ad29ff2267ecda585a880e36c6822",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-agent-browser-observation.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 4729,
+      "served_bytes": 4729,
+      "local_sha256": "a26c9ce559d881cc55437c5893f89b6a9aa12b3cc0d331464a16a4976499833c",
+      "served_sha256": "a26c9ce559d881cc55437c5893f89b6a9aa12b3cc0d331464a16a4976499833c",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-agent-browser-observation.raw.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 5516,
+      "served_bytes": 5516,
+      "local_sha256": "9e17e55d467fb966c8a1cb49064e499c5c8d338b9ae11c20ec407a64e437dce2",
+      "served_sha256": "9e17e55d467fb966c8a1cb49064e499c5c8d338b9ae11c20ec407a64e437dce2",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-fixed-gutter.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 39087,
+      "served_bytes": 39087,
+      "local_sha256": "0f3786508d9b63e18260396d7e8992daf236dc9c0773e2ea525178e43e36d102",
+      "served_sha256": "0f3786508d9b63e18260396d7e8992daf236dc9c0773e2ea525178e43e36d102",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 38196,
+      "served_bytes": 38196,
+      "local_sha256": "63fdbb57038b0a8af1460e693ed3066535127dbb9e6bdffe5061f0cd11a1671d",
+      "served_sha256": "63fdbb57038b0a8af1460e693ed3066535127dbb9e6bdffe5061f0cd11a1671d",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 38576,
+      "served_bytes": 38576,
+      "local_sha256": "95e8e20af6ffbc1bc6857b937398aaa9f02efe546491b40862fde5fbe95e04eb",
+      "served_sha256": "95e8e20af6ffbc1bc6857b937398aaa9f02efe546491b40862fde5fbe95e04eb",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 39187,
+      "served_bytes": 39187,
+      "local_sha256": "28cf70eca97815d5ab7aa571e341a7817b96bb4cef67352b70f32a2f81fa0f25",
+      "served_sha256": "28cf70eca97815d5ab7aa571e341a7817b96bb4cef67352b70f32a2f81fa0f25",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 41748,
+      "served_bytes": 41748,
+      "local_sha256": "944f378ec9308994376a6416b756f3358da99de2379a1e9e51fd93121ad65556",
+      "served_sha256": "944f378ec9308994376a6416b756f3358da99de2379a1e9e51fd93121ad65556",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/browser-check-pass7.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 1707,
+      "served_bytes": 1707,
+      "local_sha256": "c73b9cbb10c9d8ddd4007c357c60d76bb23c9e01a59293debb9df0a9a6984f90",
+      "served_sha256": "c73b9cbb10c9d8ddd4007c357c60d76bb23c9e01a59293debb9df0a9a6984f90",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/browser-check-pass8.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 14597,
+      "served_bytes": 14597,
+      "local_sha256": "b8d1eaea51852e33cc67c5a7288f24f9583779fbda8a1f30ad2125358ab8cf48",
+      "served_sha256": "b8d1eaea51852e33cc67c5a7288f24f9583779fbda8a1f30ad2125358ab8cf48",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/browser-close-pass8.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 446,
+      "served_bytes": 446,
+      "local_sha256": "c22d324c96a3f9c09957d55ec7bd71aeafa51faed133fd58468565d98ecbe74c",
+      "served_sha256": "c22d324c96a3f9c09957d55ec7bd71aeafa51faed133fd58468565d98ecbe74c",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/cleanup-wrong-staging-root-pass8.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 100177,
+      "served_bytes": 100177,
+      "local_sha256": "ba25c09b93ab08e7b52c25cf653c8593a0963af4d424e7020299b3378d4deb53",
+      "served_sha256": "ba25c09b93ab08e7b52c25cf653c8593a0963af4d424e7020299b3378d4deb53",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/copy-and-backup-pass6.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 130656,
+      "served_bytes": 130656,
+      "local_sha256": "8fd74af8de0d3f79bcabab49610d74364608c01c1ad12a565ae9110a0890ad75",
+      "served_sha256": "8fd74af8de0d3f79bcabab49610d74364608c01c1ad12a565ae9110a0890ad75",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/copy-and-backup-pass7.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 131640,
+      "served_bytes": 131640,
+      "local_sha256": "6579cdaf2968171e04c57c1fe2bce937a2b6f25a32d67e01cecd82aa8c652492",
+      "served_sha256": "6579cdaf2968171e04c57c1fe2bce937a2b6f25a32d67e01cecd82aa8c652492",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/copy-and-backup-pass8-wrong-staging-root.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 133663,
+      "served_bytes": 133663,
+      "local_sha256": "738b3943fcba5ff61072d6b3757c7af02535e1bdb2bf37de19fe55c2963cb21b",
+      "served_sha256": "738b3943fcba5ff61072d6b3757c7af02535e1bdb2bf37de19fe55c2963cb21b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/copy-and-backup-pass8.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 138970,
+      "served_bytes": 138970,
+      "local_sha256": "17d0c802cfc7bbc9c16702cb7e4b0bc7f82aa251195ab3c849691cea2a382a30",
+      "served_sha256": "17d0c802cfc7bbc9c16702cb7e4b0bc7f82aa251195ab3c849691cea2a382a30",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/final-tailnet-evidence-agent-browser.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 155022,
+      "served_bytes": 155022,
+      "local_sha256": "e7f8a8a3de8a82ccc904df88563450f3be6775b819b88bfbb90a0c868316d40b",
+      "served_sha256": "e7f8a8a3de8a82ccc904df88563450f3be6775b819b88bfbb90a0c868316d40b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/final-tailnet-plan-agent-browser.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 139483,
+      "served_bytes": 139483,
+      "local_sha256": "8ed24ecdaa3c3583c58d21b180dd9bf39c18a4f72a310d7fc221fc50add4337a",
+      "served_sha256": "8ed24ecdaa3c3583c58d21b180dd9bf39c18a4f72a310d7fc221fc50add4337a",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/final-tailnet-roadmap-agent-browser.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 284094,
+      "served_bytes": 284094,
+      "local_sha256": "8f92f76b3c20597acbb106ef5e98592ecbe07081f9b18a2aa24c45e901afc37d",
+      "served_sha256": "8f92f76b3c20597acbb106ef5e98592ecbe07081f9b18a2aa24c45e901afc37d",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/final-tailnet-status-agent-browser.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 155116,
+      "served_bytes": 155116,
+      "local_sha256": "7cd7cd6e03ac5747777b4f4d273945b8f328a76191ec286498d8a085290ac359",
+      "served_sha256": "7cd7cd6e03ac5747777b4f4d273945b8f328a76191ec286498d8a085290ac359",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/final-tailnet-sync-agent-browser.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 125546,
+      "served_bytes": 125546,
+      "local_sha256": "43b0ecd0cb8faa04f8e19886fcfdb3f0cb8c1d9ce1c31fa84a7211c377701528",
+      "served_sha256": "43b0ecd0cb8faa04f8e19886fcfdb3f0cb8c1d9ce1c31fa84a7211c377701528",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/open-handles-pass6.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 1185,
+      "served_bytes": 1185,
+      "local_sha256": "9ceb332cb869d6452cd07bc296e08b3e6dcc8dde7d0e2d0e69119a9b750df4eb",
+      "served_sha256": "9ceb332cb869d6452cd07bc296e08b3e6dcc8dde7d0e2d0e69119a9b750df4eb",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/open-handles-pass7.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 308,
+      "served_bytes": 308,
+      "local_sha256": "c48431e0cd8f6d2950108d2c1b6b0fd5830f1dda11ae7375c282cb3a9354de1c",
+      "served_sha256": "c48431e0cd8f6d2950108d2c1b6b0fd5830f1dda11ae7375c282cb3a9354de1c",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/open-handles-pass8.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 308,
+      "served_bytes": 308,
+      "local_sha256": "211240295a0901a1169762794bfd8b578f75a139d4786ec1a7f44715ffcf9b82",
+      "served_sha256": "211240295a0901a1169762794bfd8b578f75a139d4786ec1a7f44715ffcf9b82",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/pass6-tailnet-evidence-agent-browser.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 260466,
+      "served_bytes": 260466,
+      "local_sha256": "a07053d4ee47638e605f7f93f7dd9c6401e49f79200c22f467018a67c8b7ccf0",
+      "served_sha256": "a07053d4ee47638e605f7f93f7dd9c6401e49f79200c22f467018a67c8b7ccf0",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/pass6-tailnet-plan-agent-browser.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 338517,
+      "served_bytes": 338517,
+      "local_sha256": "0544066108605a335bbd729fd17bce6f963962aa7f2188277a624102e8aaee2a",
+      "served_sha256": "0544066108605a335bbd729fd17bce6f963962aa7f2188277a624102e8aaee2a",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/pass6-tailnet-roadmap-agent-browser.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 507863,
+      "served_bytes": 507863,
+      "local_sha256": "2467b7b221746b5e49f994222edd522d74e2518d731137597cc715ce503cf65a",
+      "served_sha256": "2467b7b221746b5e49f994222edd522d74e2518d731137597cc715ce503cf65a",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/pass7-tailnet-evidence-agent-browser.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 260442,
+      "served_bytes": 260442,
+      "local_sha256": "fb523e724f425672dd0940dacc146c06d966eac6715f8f704db897bedfdfed95",
+      "served_sha256": "fb523e724f425672dd0940dacc146c06d966eac6715f8f704db897bedfdfed95",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/pass7-tailnet-plan-agent-browser.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 338491,
+      "served_bytes": 338491,
+      "local_sha256": "1da0b8f81063c27b72a4be3d9fb5c07c4e2a71c88d5b45e425765cbfc2b2eaa9",
+      "served_sha256": "1da0b8f81063c27b72a4be3d9fb5c07c4e2a71c88d5b45e425765cbfc2b2eaa9",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/pass7-tailnet-roadmap-agent-browser.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 516440,
+      "served_bytes": 516440,
+      "local_sha256": "527b30dcf0faee51c2950d51cec40f7f6596b675616b4ac40fe3848a2f2af2e8",
+      "served_sha256": "527b30dcf0faee51c2950d51cec40f7f6596b675616b4ac40fe3848a2f2af2e8",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/pass7-tailnet-status-agent-browser.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 437317,
+      "served_bytes": 437317,
+      "local_sha256": "697a96971b4e7b3f71ded0c26abfc1570d36bc2b549be2ebd2d9e0a4332244ec",
+      "served_sha256": "697a96971b4e7b3f71ded0c26abfc1570d36bc2b549be2ebd2d9e0a4332244ec",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/preflight-pass6.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 119035,
+      "served_bytes": 119035,
+      "local_sha256": "84ddd1305cc845f8eb5afd5f01bea048105f55b718cbec6e175471dfa89cec2b",
+      "served_sha256": "84ddd1305cc845f8eb5afd5f01bea048105f55b718cbec6e175471dfa89cec2b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/preflight-pass7.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 123845,
+      "served_bytes": 123845,
+      "local_sha256": "a1c172db5a1afe71c126451e96baf67ec10e5af911075f86e17427a8bd1d9ca4",
+      "served_sha256": "a1c172db5a1afe71c126451e96baf67ec10e5af911075f86e17427a8bd1d9ca4",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/preflight-pass8-wrong-staging-root.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 120007,
+      "served_bytes": 120007,
+      "local_sha256": "602e670795aa17b0130edc1191a3fe799c8ac1071887e6716b3a5d8831b5beca",
+      "served_sha256": "602e670795aa17b0130edc1191a3fe799c8ac1071887e6716b3a5d8831b5beca",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/preflight-pass8.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 130222,
+      "served_bytes": 130222,
+      "local_sha256": "b87b948a0198009ee64e787a0a213eb22314786e551d36aec3b0482c87dd831f",
+      "served_sha256": "b87b948a0198009ee64e787a0a213eb22314786e551d36aec3b0482c87dd831f",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/README.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 42962,
+      "served_bytes": 42962,
+      "local_sha256": "0b1e9f824b8b4f6192c65fa87b0ebbfe7cc082ff7fbf771ed3818e3cbfeddf21",
+      "served_sha256": "0b1e9f824b8b4f6192c65fa87b0ebbfe7cc082ff7fbf771ed3818e3cbfeddf21",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/served-verification-pass6.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 123063,
+      "served_bytes": 123063,
+      "local_sha256": "d824d16ae51ecc49b1ad8f410635668695efec5a097042777cbbab24bd76c578",
+      "served_sha256": "d824d16ae51ecc49b1ad8f410635668695efec5a097042777cbbab24bd76c578",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/served-verification-pass7.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 123063,
+      "served_bytes": 123063,
+      "local_sha256": "85fa1e24c5708e80dc1d8c1a47f176843fd638e028780d5a74d3fc1c925f4f3c",
+      "served_sha256": "85fa1e24c5708e80dc1d8c1a47f176843fd638e028780d5a74d3fc1c925f4f3c",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/served-verification-pass8.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 130429,
+      "served_bytes": 130429,
+      "local_sha256": "57dd51ab726883b973b1ac4ecbf9791e8816fe9d193280713c824292792ba1ee",
+      "served_sha256": "57dd51ab726883b973b1ac4ecbf9791e8816fe9d193280713c824292792ba1ee",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/SHA256SUMS-preview-inputs.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 36890,
+      "served_bytes": 36890,
+      "local_sha256": "c132509e5edda24765c81a1a2228a539ee8877fd5c0318a4bdf0e9fea22b3a87",
+      "served_sha256": "c132509e5edda24765c81a1a2228a539ee8877fd5c0318a4bdf0e9fea22b3a87",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/sync-review-20.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 41609,
+      "served_bytes": 41609,
+      "local_sha256": "6abdf18815d6c0076479e6cbb077536a0061b2a8c0e2f3524d628716c288e325",
+      "served_sha256": "6abdf18815d6c0076479e6cbb077536a0061b2a8c0e2f3524d628716c288e325",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/backup-verification-pass3.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 3620,
+      "served_bytes": 3620,
+      "local_sha256": "ef304ae37aaaf86929e9720f65944350ab24f06ce9cac0a19404a24369e5f639",
+      "served_sha256": "ef304ae37aaaf86929e9720f65944350ab24f06ce9cac0a19404a24369e5f639",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/backup-verification-pass4.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 7814,
+      "served_bytes": 7814,
+      "local_sha256": "3bff5be9b0fe88ab652111253ab5cccaf0a15007fb71168739aa3b733b7204e5",
+      "served_sha256": "3bff5be9b0fe88ab652111253ab5cccaf0a15007fb71168739aa3b733b7204e5",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/backup-verification-pass5.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 683,
+      "served_bytes": 683,
+      "local_sha256": "8de40d1824bf90984b0b7c61f94cee7e566183a6fd5a1b3a292e40116870ae63",
+      "served_sha256": "8de40d1824bf90984b0b7c61f94cee7e566183a6fd5a1b3a292e40116870ae63",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/copy-and-backup-pass3.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 62026,
+      "served_bytes": 62026,
+      "local_sha256": "d06889ddbad56240a10014e05ac85f553bf3418a5363c935d45b9808cf85778b",
+      "served_sha256": "d06889ddbad56240a10014e05ac85f553bf3418a5363c935d45b9808cf85778b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/copy-and-backup-pass4.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 71174,
+      "served_bytes": 71174,
+      "local_sha256": "10ef35ebb526097a6dcf288bc01f106687f709766bec45aeeb43c1a97adcad5e",
+      "served_sha256": "10ef35ebb526097a6dcf288bc01f106687f709766bec45aeeb43c1a97adcad5e",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/copy-and-backup-pass5.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 70255,
+      "served_bytes": 70255,
+      "local_sha256": "c03a0df04bc310d0aecfcebeb8e2ecfaf97976138d0873dde0776321d1b51831",
+      "served_sha256": "c03a0df04bc310d0aecfcebeb8e2ecfaf97976138d0873dde0776321d1b51831",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/copy-verification-pass3.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 55665,
+      "served_bytes": 55665,
+      "local_sha256": "309ea0e2e6ce9c3e1aa933bb8de54061931645762d5505cfe8267389a05e2815",
+      "served_sha256": "309ea0e2e6ce9c3e1aa933bb8de54061931645762d5505cfe8267389a05e2815",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/copy-verification-pass4.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 60275,
+      "served_bytes": 60275,
+      "local_sha256": "899c7d5fc45fed4d0e3acbea5eba47ae4bb8e8dc84a527e02260a92b8cd153cf",
+      "served_sha256": "899c7d5fc45fed4d0e3acbea5eba47ae4bb8e8dc84a527e02260a92b8cd153cf",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/copy-verification-pass5.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 66455,
+      "served_bytes": 66455,
+      "local_sha256": "323fd1e9c65bd808af550db07fe8b326e1db57c1eaaeb9bc272e7b502830e4f5",
+      "served_sha256": "323fd1e9c65bd808af550db07fe8b326e1db57c1eaaeb9bc272e7b502830e4f5",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/open-handles-pass3.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 344,
+      "served_bytes": 344,
+      "local_sha256": "1efa23ac032982b809dad10723356713785e78c2a5cb713fd3b266c4a5cf8a3d",
+      "served_sha256": "1efa23ac032982b809dad10723356713785e78c2a5cb713fd3b266c4a5cf8a3d",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/open-handles-pass4.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 214,
+      "served_bytes": 214,
+      "local_sha256": "663b6ef48f802f436205e54a3f3542f9c85a81f3decd0f1054c5d3670abc364c",
+      "served_sha256": "663b6ef48f802f436205e54a3f3542f9c85a81f3decd0f1054c5d3670abc364c",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/open-handles-pass5.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 240,
+      "served_bytes": 240,
+      "local_sha256": "9f65c5745d28ae9fb0dbf86fe28f14e7a9f56ae52f12848d76718410f1fbf81d",
+      "served_sha256": "9f65c5745d28ae9fb0dbf86fe28f14e7a9f56ae52f12848d76718410f1fbf81d",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 40040,
+      "served_bytes": 40040,
+      "local_sha256": "f7a803294de23c4df1f59b2e84743544cdd41e1a597fe40f870284083c5f37f8",
+      "served_sha256": "f7a803294de23c4df1f59b2e84743544cdd41e1a597fe40f870284083c5f37f8",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/preflight-pass3.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 54442,
+      "served_bytes": 54442,
+      "local_sha256": "67b7151f8a4a66372efbe3607dda3767d7809334cac7b7c426ec51a687ee8e00",
+      "served_sha256": "67b7151f8a4a66372efbe3607dda3767d7809334cac7b7c426ec51a687ee8e00",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/preflight-pass4.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 66453,
+      "served_bytes": 66453,
+      "local_sha256": "07699f31179c00293ae0aef551e85778afbc8327618b8039b64d6a6b3992d073",
+      "served_sha256": "07699f31179c00293ae0aef551e85778afbc8327618b8039b64d6a6b3992d073",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/preflight-pass5.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 72927,
+      "served_bytes": 72927,
+      "local_sha256": "1b08b8390a4ee33454f8015dd21e952634df9f6cb34d2099006907a8616fb5da",
+      "served_sha256": "1b08b8390a4ee33454f8015dd21e952634df9f6cb34d2099006907a8616fb5da",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass1.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 0,
+      "served_bytes": 0,
+      "local_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "served_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass1b.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 14016,
+      "served_bytes": 14016,
+      "local_sha256": "646000708a68bbb45c18c5b040ba7759d28da22e0fefab89612c1e9a2d598a1d",
+      "served_sha256": "646000708a68bbb45c18c5b040ba7759d28da22e0fefab89612c1e9a2d598a1d",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass2.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 14669,
+      "served_bytes": 14669,
+      "local_sha256": "40ad1cffcfab8684152117ef67d820dc63aad5fad68ccc91f86abc97bf1f0666",
+      "served_sha256": "40ad1cffcfab8684152117ef67d820dc63aad5fad68ccc91f86abc97bf1f0666",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass3.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 15730,
+      "served_bytes": 15730,
+      "local_sha256": "6366a05182f2187dcf987e8736b596abda7172de57fb9192a16b05cbc67946e7",
+      "served_sha256": "6366a05182f2187dcf987e8736b596abda7172de57fb9192a16b05cbc67946e7",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass4.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 16870,
+      "served_bytes": 16870,
+      "local_sha256": "1cbecfb331927126b45dcf8a0fc4bd6e6205d56a53d531e52c0c13cc2505015a",
+      "served_sha256": "1cbecfb331927126b45dcf8a0fc4bd6e6205d56a53d531e52c0c13cc2505015a",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass5.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 18200,
+      "served_bytes": 18200,
+      "local_sha256": "b7bc70a391b846349b34b299db106c8392e636fe5cdfa94ad96946c83541b4d4",
+      "served_sha256": "b7bc70a391b846349b34b299db106c8392e636fe5cdfa94ad96946c83541b4d4",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-selected-root.mjs",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 4871,
+      "served_bytes": 4871,
+      "local_sha256": "1b930502007fb7b3118b51ddb33d3d37ff9e3f7086f4aa08b8a11543ddda91bf",
+      "served_sha256": "1b930502007fb7b3118b51ddb33d3d37ff9e3f7086f4aa08b8a11543ddda91bf",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 38423,
+      "served_bytes": 38423,
+      "local_sha256": "a8316826935f96c868a061b4beef5d5bedf8b1d7389549058bf29f549a36c627",
+      "served_sha256": "a8316826935f96c868a061b4beef5d5bedf8b1d7389549058bf29f549a36c627",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/rspress.tailnet-sync.config.ts",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 672,
+      "served_bytes": 672,
+      "local_sha256": "1b0b02d48b0a332ad3bebe4f7910a02fcee19441ca8df7a6e6bb51a36a5815c5",
+      "served_sha256": "1b0b02d48b0a332ad3bebe4f7910a02fcee19441ca8df7a6e6bb51a36a5815c5",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sanitize-built-site.mjs",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 1888,
+      "served_bytes": 1888,
+      "local_sha256": "9cb4018c42664ec79349c0129c7c51a287f4d5145ef5798887bd1dc0f6cede54",
+      "served_sha256": "9cb4018c42664ec79349c0129c7c51a287f4d5145ef5798887bd1dc0f6cede54",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sanitize-pass3.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 216,
+      "served_bytes": 216,
+      "local_sha256": "c7e105eb49af483406476f1f524d988b159bacec379dc5f2e09b07f6158132fc",
+      "served_sha256": "c7e105eb49af483406476f1f524d988b159bacec379dc5f2e09b07f6158132fc",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sanitize-pass4.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 216,
+      "served_bytes": 216,
+      "local_sha256": "45391addefff0b0d483b258af3858176f30a13bebfd5186571ff9229775924ee",
+      "served_sha256": "45391addefff0b0d483b258af3858176f30a13bebfd5186571ff9229775924ee",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sanitize-pass5.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 216,
+      "served_bytes": 216,
+      "local_sha256": "43ffacc09fd175066ee0c067a3b892de8596167ebc7d551eb9be1f7265731879",
+      "served_sha256": "43ffacc09fd175066ee0c067a3b892de8596167ebc7d551eb9be1f7265731879",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass1.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 208,
+      "served_bytes": 208,
+      "local_sha256": "1bf5ae58c5e7702cbd65fa3d2cede11952f29617530059d315f543e8cf24d2d8",
+      "served_sha256": "1bf5ae58c5e7702cbd65fa3d2cede11952f29617530059d315f543e8cf24d2d8",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass1b.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 3395,
+      "served_bytes": 3395,
+      "local_sha256": "49f92dc67af854f2f5c0e7aa04080dd19ed7eaf384cb57952e0c44a26fc87734",
+      "served_sha256": "49f92dc67af854f2f5c0e7aa04080dd19ed7eaf384cb57952e0c44a26fc87734",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass2.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 4834,
+      "served_bytes": 4834,
+      "local_sha256": "eb7c2ef9c889f73487a59430f5e99a991250ee04babd97a479cfdb01267bd497",
+      "served_sha256": "eb7c2ef9c889f73487a59430f5e99a991250ee04babd97a479cfdb01267bd497",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass3.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 4834,
+      "served_bytes": 4834,
+      "local_sha256": "c527599a6ccd17f67906dc3fe338315f2b51c7f0ffcf530ea4cf0e1e7a6163f2",
+      "served_sha256": "c527599a6ccd17f67906dc3fe338315f2b51c7f0ffcf530ea4cf0e1e7a6163f2",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass4.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 4834,
+      "served_bytes": 4834,
+      "local_sha256": "cd2127d55885daf2e7dcf3b16f97cb24c72941dd8dc80ebaa7e2c9eae7d083e7",
+      "served_sha256": "cd2127d55885daf2e7dcf3b16f97cb24c72941dd8dc80ebaa7e2c9eae7d083e7",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass5-final.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 5382,
+      "served_bytes": 5382,
+      "local_sha256": "3217ca00dfcbe96d1e4eb8057355baaf13a47281d772f102bf69e6a73c30540f",
+      "served_sha256": "3217ca00dfcbe96d1e4eb8057355baaf13a47281d772f102bf69e6a73c30540f",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/served-verification-pass3.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 61307,
+      "served_bytes": 61307,
+      "local_sha256": "c748c761ce062a13cca313af3d8d35555360a6438fd221d239eb5ac6c9e7bb0a",
+      "served_sha256": "c748c761ce062a13cca313af3d8d35555360a6438fd221d239eb5ac6c9e7bb0a",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/served-verification-pass4.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 66615,
+      "served_bytes": 66615,
+      "local_sha256": "eeaad0067e4c63c4c50e7fe8ecfad2c0858489d8a8495407015bfb642246206c",
+      "served_sha256": "eeaad0067e4c63c4c50e7fe8ecfad2c0858489d8a8495407015bfb642246206c",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/served-verification-pass5.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 73666,
+      "served_bytes": 73666,
+      "local_sha256": "4e6b2ee8534b72aa27b4cf5e24a4dffa500a5045782993bf7cfc68ff856cefd1",
+      "served_sha256": "4e6b2ee8534b72aa27b4cf5e24a4dffa500a5045782993bf7cfc68ff856cefd1",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/SHA256SUMS-preview-inputs.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 22327,
+      "served_bytes": 22327,
+      "local_sha256": "17bca91466c02f677fb4067a62fd037e274b2ea5c5e7bc3797e42537a12667a4",
+      "served_sha256": "17bca91466c02f677fb4067a62fd037e274b2ea5c5e7bc3797e42537a12667a4",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/SHA256SUMS.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 4215,
+      "served_bytes": 4215,
+      "local_sha256": "89611133ff5d8c1b133850acc327f78b3e71940e7957c56ae26950be4552dd70",
+      "served_sha256": "89611133ff5d8c1b133850acc327f78b3e71940e7957c56ae26950be4552dd70",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-preview.mjs",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 9055,
+      "served_bytes": 9055,
+      "local_sha256": "ce235fdd332f7fda029513087a6d1e5723ab36a7d3030ca7a02f26cb0e8f2ec9",
+      "served_sha256": "ce235fdd332f7fda029513087a6d1e5723ab36a7d3030ca7a02f26cb0e8f2ec9",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 38629,
+      "served_bytes": 38629,
+      "local_sha256": "14ba52092b48d0b7bcb8618780ffb5c1fc725d66329300d817a5ab6f25447440",
+      "served_sha256": "14ba52092b48d0b7bcb8618780ffb5c1fc725d66329300d817a5ab6f25447440",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/tailnet-plan-agent-browser.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 184140,
+      "served_bytes": 184140,
+      "local_sha256": "1cc4f17edf5fa8470230cc5275b8a4f751aa0175b345d18b2c7317aec8f1232f",
+      "served_sha256": "1cc4f17edf5fa8470230cc5275b8a4f751aa0175b345d18b2c7317aec8f1232f",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/tailnet-roadmap-agent-browser.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 238757,
+      "served_bytes": 238757,
+      "local_sha256": "910cd5d206073fa35cbfa3ef5a4674f48c5ced853e1276b4050db37b4f27ac1d",
+      "served_sha256": "910cd5d206073fa35cbfa3ef5a4674f48c5ced853e1276b4050db37b4f27ac1d",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/tailnet-status-agent-browser.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 206545,
+      "served_bytes": 206545,
+      "local_sha256": "658e0c27ceb89395ee9b57317a55b3bcd7195f8d359298d2bc35318b3811c964",
+      "served_sha256": "658e0c27ceb89395ee9b57317a55b3bcd7195f8d359298d2bc35318b3811c964",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/verify-served.mjs",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 2594,
+      "served_bytes": 2594,
+      "local_sha256": "5c0d9f17fb31ea1298de4d2c45e7dfd5017ddb9d4ae57d2cb65024635456c968",
+      "served_sha256": "5c0d9f17fb31ea1298de4d2c45e7dfd5017ddb9d4ae57d2cb65024635456c968",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/write-preview-inputs-manifest.mjs",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 2444,
+      "served_bytes": 2444,
+      "local_sha256": "242bb57edb09d67ea3a59c1f032f6245e03f08422f1165f1fd52c6bb55028830",
+      "served_sha256": "242bb57edb09d67ea3a59c1f032f6245e03f08422f1165f1fd52c6bb55028830",
+      "matched": true
+    },
+    {
+      "path": "internal/README.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 247915,
+      "served_bytes": 247915,
+      "local_sha256": "0ef19f78b22d888dfe07659d861f726b88011152454d34001f63952603f6ab11",
+      "served_sha256": "0ef19f78b22d888dfe07659d861f726b88011152454d34001f63952603f6ab11",
+      "matched": true
+    },
+    {
+      "path": "logo.svg",
+      "status": 200,
+      "content_type": "image/svg+xml",
+      "local_bytes": 568,
+      "served_bytes": 568,
+      "local_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "served_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "matched": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 92818,
+      "served_bytes": 92818,
+      "local_sha256": "1b62af93749a2bc08cc00f2c6f24155abdf86daa04c62c32ca9f0e8c8f1c8c80",
+      "served_sha256": "1b62af93749a2bc08cc00f2c6f24155abdf86daa04c62c32ca9f0e8c8f1c8c80",
+      "matched": true
+    },
+    {
+      "path": "plan/c11-4-image-ratio-fixed-gutter.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 47201,
+      "served_bytes": 47201,
+      "local_sha256": "0405cf30b02841a797e39ec9299a03c386d3415ccffa0245de0f8599d32fa83f",
+      "served_sha256": "0405cf30b02841a797e39ec9299a03c386d3415ccffa0245de0f8599d32fa83f",
+      "matched": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 72429,
+      "served_bytes": 72429,
+      "local_sha256": "093e0e11c2baf43cffe8fc8c3472373f4340feca2678d34240934e603730c88f",
+      "served_sha256": "093e0e11c2baf43cffe8fc8c3472373f4340feca2678d34240934e603730c88f",
+      "matched": true
+    },
+    {
+      "path": "roadmap.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 151128,
+      "served_bytes": 151128,
+      "local_sha256": "220818c7890e52b614055d587640d612929732bb4d495f369b97c658a8be2c43",
+      "served_sha256": "220818c7890e52b614055d587640d612929732bb4d495f369b97c658a8be2c43",
+      "matched": true
+    },
+    {
+      "path": "roadmap.svg",
+      "status": 200,
+      "content_type": "image/svg+xml",
+      "local_bytes": 4835,
+      "served_bytes": 4835,
+      "local_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "served_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 115313,
+      "served_bytes": 115313,
+      "local_sha256": "aa460dfbffdb3d7689640d240e849c7eae3f863d8b05af7c3649693bfe198ee8",
+      "served_sha256": "aa460dfbffdb3d7689640d240e849c7eae3f863d8b05af7c3649693bfe198ee8",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/android-build.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 4344,
+      "served_bytes": 4344,
+      "local_sha256": "201a5107253dfff69f39a10db3a089192e59783b7bbe6517906e8507c48c505b",
+      "served_sha256": "201a5107253dfff69f39a10db3a089192e59783b7bbe6517906e8507c48c505b",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 39457,
+      "served_bytes": 39457,
+      "local_sha256": "eca05026b568e200a1e4999a4969dc6905614ee6b8437b3922be505af5166680",
+      "served_sha256": "eca05026b568e200a1e4999a4969dc6905614ee6b8437b3922be505af5166680",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/ios-build.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 85746,
+      "served_bytes": 85746,
+      "local_sha256": "f47129f3d793f9672bf2cc9b98c8d51be8ec4670c54ce57a92fe0f05dbc09a6e",
+      "served_sha256": "f47129f3d793f9672bf2cc9b98c8d51be8ec4670c54ce57a92fe0f05dbc09a6e",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 42473,
+      "served_bytes": 42473,
+      "local_sha256": "199a96184c176578e06a9d02c8fc00946c37a9c451a2e4c2eb526bf5c53a371c",
+      "served_sha256": "199a96184c176578e06a9d02c8fc00946c37a9c451a2e4c2eb526bf5c53a371c",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 45509,
+      "served_bytes": 45509,
+      "local_sha256": "1a1974b2dcb23fa9262ef0164949a77574633216252167d46a1957d1c3f9f465",
+      "served_sha256": "1a1974b2dcb23fa9262ef0164949a77574633216252167d46a1957d1c3f9f465",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/run-simulator-matrix.sh",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 9017,
+      "served_bytes": 9017,
+      "local_sha256": "1d61753433ffca653ec5372496284197e8686f9523a53402ac8b20cca86e24c4",
+      "served_sha256": "1d61753433ffca653ec5372496284197e8686f9523a53402ac8b20cca86e24c4",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/abi.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 10,
+      "served_bytes": 10,
+      "local_sha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90",
+      "served_sha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/api-level.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 3,
+      "served_bytes": 3,
+      "local_sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "served_sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/avd-name.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 28,
+      "served_bytes": 28,
+      "local_sha256": "6b155c3bed6bef87b3f93560e239c1286ed38bcca6a05db907fe05280e34d58e",
+      "served_sha256": "6b155c3bed6bef87b3f93560e239c1286ed38bcca6a05db907fe05280e34d58e",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/install.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 36,
+      "served_bytes": 36,
+      "local_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "served_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/launch-fixed-gutter-column-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 73,
+      "served_bytes": 73,
+      "local_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "served_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/launch-fixed-gutter-row-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 73,
+      "served_bytes": 73,
+      "local_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "served_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/runtime-fixed-gutter-column-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 23930,
+      "served_bytes": 23930,
+      "local_sha256": "e98d059ff1eafc0bd8529be3bd9547486213e2878d478e4b9d22eaf06f157b80",
+      "served_sha256": "e98d059ff1eafc0bd8529be3bd9547486213e2878d478e4b9d22eaf06f157b80",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/runtime-fixed-gutter-row-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 23412,
+      "served_bytes": 23412,
+      "local_sha256": "a58a20ddd5fb41349899829338a98fc2856689d7c9b9ad17d0ad3ab89b99760c",
+      "served_sha256": "a58a20ddd5fb41349899829338a98fc2856689d7c9b9ad17d0ad3ab89b99760c",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/screenshot-fixed-gutter-column-suggestion-clamp.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 78568,
+      "served_bytes": 78568,
+      "local_sha256": "5ed7da99beebea2388a6387a4ecdd0901b50b01823004a9b2f0887fe07b092c6",
+      "served_sha256": "5ed7da99beebea2388a6387a4ecdd0901b50b01823004a9b2f0887fe07b092c6",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/screenshot-fixed-gutter-row-suggestion-clamp.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 78562,
+      "served_bytes": 78562,
+      "local_sha256": "9edba366dfc342729d75fb4cbbe87265cbe01e1500c72199484278cf12b579db",
+      "served_sha256": "9edba366dfc342729d75fb4cbbe87265cbe01e1500c72199484278cf12b579db",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/booted-devices.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 169,
+      "served_bytes": 169,
+      "local_sha256": "687ad5cab6f3b16a1f66677bd516f500066992e2bf97c7921045c214841bc103",
+      "served_sha256": "687ad5cab6f3b16a1f66677bd516f500066992e2bf97c7921045c214841bc103",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/install.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 1,
+      "served_bytes": 1,
+      "local_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "served_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/launch-fixed-gutter-column-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 28,
+      "served_bytes": 28,
+      "local_sha256": "132a28ad23333b0e3c5822fc1470c9a6dfa735baaf4a09e53140f274ab59b209",
+      "served_sha256": "132a28ad23333b0e3c5822fc1470c9a6dfa735baaf4a09e53140f274ab59b209",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/launch-fixed-gutter-row-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 28,
+      "served_bytes": 28,
+      "local_sha256": "7dde8588390713caad06a641e6dae4b71fad1b182e3dd55f17a05c7cca25afee",
+      "served_sha256": "7dde8588390713caad06a641e6dae4b71fad1b182e3dd55f17a05c7cca25afee",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/model-identifier.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 11,
+      "served_bytes": 11,
+      "local_sha256": "e40be96841131f523dac012c3a28136b55643c89d96e7c20e7b5834a9ef6153a",
+      "served_sha256": "e40be96841131f523dac012c3a28136b55643c89d96e7c20e7b5834a9ef6153a",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/runtime-fixed-gutter-column-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 20809,
+      "served_bytes": 20809,
+      "local_sha256": "894324d279dd36d3a665bf776a7fd23c2e7b37ac0540aadc19ea9435b5bbb1f1",
+      "served_sha256": "894324d279dd36d3a665bf776a7fd23c2e7b37ac0540aadc19ea9435b5bbb1f1",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/runtime-fixed-gutter-row-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 20259,
+      "served_bytes": 20259,
+      "local_sha256": "fe89fb511c673db23bfffa563cafcbb4fb5e3b07b58ba93a9bc9f86a6f018fd6",
+      "served_sha256": "fe89fb511c673db23bfffa563cafcbb4fb5e3b07b58ba93a9bc9f86a6f018fd6",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-column-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 86,
+      "served_bytes": 86,
+      "local_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "served_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-column-suggestion-clamp.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 131372,
+      "served_bytes": 131372,
+      "local_sha256": "5b4e8e6039f64ecf9d67fcf5be410bdea4bea8be299b712fe4b3e9a1f60df501",
+      "served_sha256": "5b4e8e6039f64ecf9d67fcf5be410bdea4bea8be299b712fe4b3e9a1f60df501",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-row-suggestion-clamp.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 86,
+      "served_bytes": 86,
+      "local_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "served_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-row-suggestion-clamp.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 131386,
+      "served_bytes": 131386,
+      "local_sha256": "9a8c87d19ddf7ac4ff0446f5e757d9a796c12ac4e5e20608fc4b194924b52847",
+      "served_sha256": "9a8c87d19ddf7ac4ff0446f5e757d9a796c12ac4e5e20608fc4b194924b52847",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/run-id.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 25,
+      "served_bytes": 25,
+      "local_sha256": "6e7b84ee863d235baab718000e08e83bfb3e0ac7f87bced6110ce466b36094cb",
+      "served_sha256": "6e7b84ee863d235baab718000e08e83bfb3e0ac7f87bced6110ce466b36094cb",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/source-head.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 41,
+      "served_bytes": 41,
+      "local_sha256": "b2b9b9854a8d43a4989c20c7f9c993899bca268d0b83a3aeafd21904c132081e",
+      "served_sha256": "b2b9b9854a8d43a4989c20c7f9c993899bca268d0b83a3aeafd21904c132081e",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/verification.log",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 22797,
+      "served_bytes": 22797,
+      "local_sha256": "43d43a7c7394540ff154c155a4076421fc3ad29ff2267ecda585a880e36c6822",
+      "served_sha256": "43d43a7c7394540ff154c155a4076421fc3ad29ff2267ecda585a880e36c6822",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-agent-browser-observation.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 4729,
+      "served_bytes": 4729,
+      "local_sha256": "a26c9ce559d881cc55437c5893f89b6a9aa12b3cc0d331464a16a4976499833c",
+      "served_sha256": "a26c9ce559d881cc55437c5893f89b6a9aa12b3cc0d331464a16a4976499833c",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-agent-browser-observation.raw.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 5516,
+      "served_bytes": 5516,
+      "local_sha256": "9e17e55d467fb966c8a1cb49064e499c5c8d338b9ae11c20ec407a64e437dce2",
+      "served_sha256": "9e17e55d467fb966c8a1cb49064e499c5c8d338b9ae11c20ec407a64e437dce2",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-fixed-gutter.png",
+      "status": 200,
+      "content_type": "image/png",
+      "local_bytes": 39087,
+      "served_bytes": 39087,
+      "local_sha256": "0f3786508d9b63e18260396d7e8992daf236dc9c0773e2ea525178e43e36d102",
+      "served_sha256": "0f3786508d9b63e18260396d7e8992daf236dc9c0773e2ea525178e43e36d102",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 38206,
+      "served_bytes": 38206,
+      "local_sha256": "375952cc0511b08c06056c763c61730d3f90404ff16adaa890b922fdd8ba8d3f",
+      "served_sha256": "375952cc0511b08c06056c763c61730d3f90404ff16adaa890b922fdd8ba8d3f",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 38586,
+      "served_bytes": 38586,
+      "local_sha256": "1422f736ee5ef757dfcce6d16a9df4428abc75a903febb8e50402e70c308044c",
+      "served_sha256": "1422f736ee5ef757dfcce6d16a9df4428abc75a903febb8e50402e70c308044c",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 39197,
+      "served_bytes": 39197,
+      "local_sha256": "3ad77ef276507e320252741fd2edfb6af933bc1ca41c84fef018e9117d3264bf",
+      "served_sha256": "3ad77ef276507e320252741fd2edfb6af933bc1ca41c84fef018e9117d3264bf",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 41678,
+      "served_bytes": 41678,
+      "local_sha256": "317fdbf858bb0b1e5264637e26429ce1aee1cbcbd90f93faaefe22b70b1c83ad",
+      "served_sha256": "317fdbf858bb0b1e5264637e26429ce1aee1cbcbd90f93faaefe22b70b1c83ad",
+      "matched": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": 200,
+      "content_type": "text/css; charset=utf-8",
+      "local_bytes": 73952,
+      "served_bytes": 73952,
+      "local_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "served_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "matched": true
+    },
+    {
+      "path": "static/js/2.1aa8a93d31.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 216952,
+      "served_bytes": 216952,
+      "local_sha256": "e21d01671a920624331596a4f1cfc7d6904705863e7a88d1e26d9dc586ebdd9b",
+      "served_sha256": "e21d01671a920624331596a4f1cfc7d6904705863e7a88d1e26d9dc586ebdd9b",
+      "matched": true
+    },
+    {
+      "path": "static/js/2.1aa8a93d31.js.LICENSE.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 384,
+      "served_bytes": 384,
+      "local_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "served_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/1.9d6d094526.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 98,
+      "served_bytes": 98,
+      "local_sha256": "d6f6b4dbea1173cbf7c99162893e587afc13cda01fd4e1405d5b780a918b5a72",
+      "served_sha256": "d6f6b4dbea1173cbf7c99162893e587afc13cda01fd4e1405d5b780a918b5a72",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-02da5143c1f7.2acbf3f5e6.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 10261,
+      "served_bytes": 10261,
+      "local_sha256": "607a845d0fc1003f1f7d32e7dc917b88223760f036f7eac68a50c317c339363c",
+      "served_sha256": "607a845d0fc1003f1f7d32e7dc917b88223760f036f7eac68a50c317c339363c",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.b5c6a5025f.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 51308,
+      "served_bytes": 51308,
+      "local_sha256": "3c8d1d1aeecd58eaf8639b250ae8747b8d182c9996cf1dfdf7b06161db947e53",
+      "served_sha256": "3c8d1d1aeecd58eaf8639b250ae8747b8d182c9996cf1dfdf7b06161db947e53",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-0fc10d6029ff.a12bb9de66.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 9002,
+      "served_bytes": 9002,
+      "local_sha256": "6b6504e6f6092d327d585d6d20c97512fccce2800d4f241125b6d5e3b57a5cd6",
+      "served_sha256": "6b6504e6f6092d327d585d6d20c97512fccce2800d4f241125b6d5e3b57a5cd6",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-247859e89cb0.71bff1291a.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 6951,
+      "served_bytes": 6951,
+      "local_sha256": "965db2215631852b38e5b75e173bf7aea6af150f9637f0ab7eb2fa7f59f41eba",
+      "served_sha256": "965db2215631852b38e5b75e173bf7aea6af150f9637f0ab7eb2fa7f59f41eba",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-25f826ccc1f0.07a0157276.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 11228,
+      "served_bytes": 11228,
+      "local_sha256": "7f88c66c98c7dba75224caf3b52d0946c45c62a13b6d0bee561163c0aa5adee7",
+      "served_sha256": "7f88c66c98c7dba75224caf3b52d0946c45c62a13b6d0bee561163c0aa5adee7",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-3de2ba0b6314.479908863e.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 9526,
+      "served_bytes": 9526,
+      "local_sha256": "22bfa84e3198dc408fc96dfaa3e117f588038a6782925594ace30f44378e71ba",
+      "served_sha256": "22bfa84e3198dc408fc96dfaa3e117f588038a6782925594ace30f44378e71ba",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-69fda0c43099.6b45364623.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 13103,
+      "served_bytes": 13103,
+      "local_sha256": "074de87382a06796d97d0cbd7afc00a54892795a8ba771ffeff15840e7ef144e",
+      "served_sha256": "074de87382a06796d97d0cbd7afc00a54892795a8ba771ffeff15840e7ef144e",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-6b2ef7d1846c.e94a834c0e.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 9407,
+      "served_bytes": 9407,
+      "local_sha256": "ebf9b66462e9cd84cc2136c5efe70be1097eb213b185ae7f009ef2ffc00ff894",
+      "served_sha256": "ebf9b66462e9cd84cc2136c5efe70be1097eb213b185ae7f009ef2ffc00ff894",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-6bc2e6fb6b31.b821980297.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 9535,
+      "served_bytes": 9535,
+      "local_sha256": "7b1da11ce0b345026acee5f46ec9e3b7e266ab8fd49379c91031077ffe86a447",
+      "served_sha256": "7b1da11ce0b345026acee5f46ec9e3b7e266ab8fd49379c91031077ffe86a447",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.e8b7801ebe.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 495576,
+      "served_bytes": 495576,
+      "local_sha256": "f9ef7f196c9bc7f294ab4467b88da3d831afca693208735508db1bc1136c0d1f",
+      "served_sha256": "f9ef7f196c9bc7f294ab4467b88da3d831afca693208735508db1bc1136c0d1f",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-7290f5c1ced2.1354e005be.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 17886,
+      "served_bytes": 17886,
+      "local_sha256": "388679ba917dcc7a51f7af8b34a38a366f8bc29b370b2dd08503601bd4aaa149",
+      "served_sha256": "388679ba917dcc7a51f7af8b34a38a366f8bc29b370b2dd08503601bd4aaa149",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-739571cd2ae5.c8b82a733d.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 85241,
+      "served_bytes": 85241,
+      "local_sha256": "0f195bdaba97e7c436eef7d58167972c6f368ad05d4fb8f346897c62f5b5d7ec",
+      "served_sha256": "0f195bdaba97e7c436eef7d58167972c6f368ad05d4fb8f346897c62f5b5d7ec",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-7a11bd1c0efc.ac632be2a0.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 12742,
+      "served_bytes": 12742,
+      "local_sha256": "c418e2d18635920f9cf40311348dab9e3af256fca34fdf261dea4890e317c2da",
+      "served_sha256": "c418e2d18635920f9cf40311348dab9e3af256fca34fdf261dea4890e317c2da",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-7b9bcbddf2a4.89cf3a1448.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 10270,
+      "served_bytes": 10270,
+      "local_sha256": "299d644d0881a0fc4929ec2e41606135041a42b3bf202b80fc5837e28c95a259",
+      "served_sha256": "299d644d0881a0fc4929ec2e41606135041a42b3bf202b80fc5837e28c95a259",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-812dc5c7229b.a10869d2e9.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 4704,
+      "served_bytes": 4704,
+      "local_sha256": "acfcf7aca53437a1797881d76b393e424222111291c10b39ae9583b76f913aa6",
+      "served_sha256": "acfcf7aca53437a1797881d76b393e424222111291c10b39ae9583b76f913aa6",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-8cdc035b6f64.7d264c5c18.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 14882,
+      "served_bytes": 14882,
+      "local_sha256": "cdd94d6c07a843ddc3b1dd62ee1bc68cf92c8591e1fbe63e1662e256b95ebd1a",
+      "served_sha256": "cdd94d6c07a843ddc3b1dd62ee1bc68cf92c8591e1fbe63e1662e256b95ebd1a",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-9fc08d04c766.29473f841c.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 9828,
+      "served_bytes": 9828,
+      "local_sha256": "c4f2b4bc31202f1274f8031a4f5615e1d488e605576e534bf7bae8021c3941a2",
+      "served_sha256": "c4f2b4bc31202f1274f8031a4f5615e1d488e605576e534bf7bae8021c3941a2",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.9b7f4a78b0.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 243585,
+      "served_bytes": 243585,
+      "local_sha256": "6417ded44a2d4fdcded3ad90e0ede5454c29811a9dd7acd4ea7eef1588045e16",
+      "served_sha256": "6417ded44a2d4fdcded3ad90e0ede5454c29811a9dd7acd4ea7eef1588045e16",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-a25e75c8a51f.c7b68601b3.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 11873,
+      "served_bytes": 11873,
+      "local_sha256": "bb3397b90ef6d716680583f42b4d57ac36dc83110fd83593cbe40eab6befdbaa",
+      "served_sha256": "bb3397b90ef6d716680583f42b4d57ac36dc83110fd83593cbe40eab6befdbaa",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-b960e2b16ea1.7825a69a1b.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 11079,
+      "served_bytes": 11079,
+      "local_sha256": "bf913474f85ce043fb85575d83c8171c378d9bbed1b5a160e7341b86e2690efa",
+      "served_sha256": "bf913474f85ce043fb85575d83c8171c378d9bbed1b5a160e7341b86e2690efa",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-bfc3b19ac950.e90b71553f.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 9822,
+      "served_bytes": 9822,
+      "local_sha256": "a0fd7862e96920c94be6e87106ea4a2c6d153ebc8b036bee37fb3f066ad62fcd",
+      "served_sha256": "a0fd7862e96920c94be6e87106ea4a2c6d153ebc8b036bee37fb3f066ad62fcd",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.020a9de409.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 43597,
+      "served_bytes": 43597,
+      "local_sha256": "48b86e2957fe0a7583242b1db89ac4496e9141016ea71a605643cf5034e1dcbf",
+      "served_sha256": "48b86e2957fe0a7583242b1db89ac4496e9141016ea71a605643cf5034e1dcbf",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.5507b9b7a2.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 85235,
+      "served_bytes": 85235,
+      "local_sha256": "52623d44973d7db5f935955103f09d0917e0801e891e2538fa9faee867803dfa",
+      "served_sha256": "52623d44973d7db5f935955103f09d0917e0801e891e2538fa9faee867803dfa",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-cde3fc5f9207.ac6c0be415.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 14876,
+      "served_bytes": 14876,
+      "local_sha256": "8b6c690a2e2866ca1393a4958fbd101afe703168baaa751c4129e80e6cf26b8c",
+      "served_sha256": "8b6c690a2e2866ca1393a4958fbd101afe703168baaa751c4129e80e6cf26b8c",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-d1d33ec52d43.58fffc18c1.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 12708,
+      "served_bytes": 12708,
+      "local_sha256": "3824ad94e18e8adea60519dc9f6660b29f3184e846aed12eca0fdfc8353c1d79",
+      "served_sha256": "3824ad94e18e8adea60519dc9f6660b29f3184e846aed12eca0fdfc8353c1d79",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-d2e5373e859b.e574eed88b.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 14656,
+      "served_bytes": 14656,
+      "local_sha256": "110b2a8af591b4d1cb3f1f75a77e646f0026bde6dd45b9506d502c3e6ad2b3d3",
+      "served_sha256": "110b2a8af591b4d1cb3f1f75a77e646f0026bde6dd45b9506d502c3e6ad2b3d3",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-d5b07898f998.8eecc500bd.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 11629,
+      "served_bytes": 11629,
+      "local_sha256": "5535866f12cd9b24c6e0ff527cf1969651edd203571c27f38e878d54b70c5cf0",
+      "served_sha256": "5535866f12cd9b24c6e0ff527cf1969651edd203571c27f38e878d54b70c5cf0",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-dc56297a2c9a.92b91909a4.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 13096,
+      "served_bytes": 13096,
+      "local_sha256": "68f0142462a71aa4ca028fffc3945c5ea42d37cca39ae5f827221a113fe017c3",
+      "served_sha256": "68f0142462a71aa4ca028fffc3945c5ea42d37cca39ae5f827221a113fe017c3",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-ec316c13d5f3.2a1184ca7f.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 14663,
+      "served_bytes": 14663,
+      "local_sha256": "4432eabde7c75b35347ffef2a468d0db296d029c664e396077bbc2773e22d07e",
+      "served_sha256": "4432eabde7c75b35347ffef2a468d0db296d029c664e396077bbc2773e22d07e",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-ecf129b09e78.eafc93a1e5.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 23554,
+      "served_bytes": 23554,
+      "local_sha256": "abd73ef0fd0604e3a7209a5f24bdf6c9141469d708a77c11d03898b3446f8b4a",
+      "served_sha256": "abd73ef0fd0604e3a7209a5f24bdf6c9141469d708a77c11d03898b3446f8b4a",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-f4e1c4792faf.1704b93049.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 9009,
+      "served_bytes": 9009,
+      "local_sha256": "b36f9ef9f1ffa5000d6f56dd5dbbe7d7332e44eaa86ce4d28a11be9a3eabf051",
+      "served_sha256": "b36f9ef9f1ffa5000d6f56dd5dbbe7d7332e44eaa86ce4d28a11be9a3eabf051",
+      "matched": true
+    },
+    {
+      "path": "static/js/index.e9782d504a.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 73941,
+      "served_bytes": 73941,
+      "local_sha256": "5edb42e87c8dae2128e074bd10e3ea2f0f7f23a2d919d9623caf7bac5d2af19e",
+      "served_sha256": "5edb42e87c8dae2128e074bd10e3ea2f0f7f23a2d919d9623caf7bac5d2af19e",
+      "matched": true
+    },
+    {
+      "path": "static/js/lib-react.d9aa10f4b0.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 218369,
+      "served_bytes": 218369,
+      "local_sha256": "ad3b1fffada69190b9d14bfd2e16a62d31865b2d3de8a5044cb200fa67961cc8",
+      "served_sha256": "ad3b1fffada69190b9d14bfd2e16a62d31865b2d3de8a5044cb200fa67961cc8",
+      "matched": true
+    },
+    {
+      "path": "static/js/lib-react.d9aa10f4b0.js.LICENSE.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 1209,
+      "served_bytes": 1209,
+      "local_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "served_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "matched": true
+    },
+    {
+      "path": "static/js/lib-router.95ea184a3c.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 35369,
+      "served_bytes": 35369,
+      "local_sha256": "71a8993452741417ebd7ac492fa9420ba9172794d33d650e50b8ab5fa71c327e",
+      "served_sha256": "71a8993452741417ebd7ac492fa9420ba9172794d33d650e50b8ab5fa71c327e",
+      "matched": true
+    },
+    {
+      "path": "static/js/lib-router.95ea184a3c.js.LICENSE.txt",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "local_bytes": 222,
+      "served_bytes": 222,
+      "local_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "served_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "matched": true
+    },
+    {
+      "path": "static/js/styles.7b0c5651b6.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "local_bytes": 468,
+      "served_bytes": 468,
+      "local_sha256": "4a90f3ba024b9eb4ad9a48173029ba9ca3eae3c00a7741aa19aaad0d828f6749",
+      "served_sha256": "4a90f3ba024b9eb4ad9a48173029ba9ca3eae3c00a7741aa19aaad0d828f6749",
+      "matched": true
+    },
+    {
+      "path": "static/search_index.ko.ce5f6023.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "local_bytes": 637622,
+      "served_bytes": 637622,
+      "local_sha256": "ce5f602355c51ef01b0d20f7a92ff50854ea6bd923c27b6db0b5cf6cc30cbbd0",
+      "served_sha256": "ce5f602355c51ef01b0d20f7a92ff50854ea6bd923c27b6db0b5cf6cc30cbbd0",
+      "matched": true
+    },
+    {
+      "path": "STATUS.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 486062,
+      "served_bytes": 486062,
+      "local_sha256": "feea7fe1fc992bd3a611bfc817e3e2197054264cee3f03d5a050e2c267a9cdcd",
+      "served_sha256": "feea7fe1fc992bd3a611bfc817e3e2197054264cee3f03d5a050e2c267a9cdcd",
+      "matched": true
+    },
+    {
+      "path": "tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 7835,
+      "served_bytes": 7835,
+      "local_sha256": "a95f69050a1c77b8d65105b04f0aa2fc21942c7d665cad86e6117cfc46daad7c",
+      "served_sha256": "a95f69050a1c77b8d65105b04f0aa2fc21942c7d665cad86e6117cfc46daad7c",
+      "matched": true
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "pass": "pass6",
+  "backup_root_relative": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6",
+  "target_count": 28,
+  "all_verified": true,
+  "files": [
+    {
+      "path": "0001-conformance.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/0001-conformance.html",
+      "bytes": 39556,
+      "sha256": "dea6ad089a37f28f532c5616c0b9bcfb87fd93cda842c3fe994de93fc4eafb1a",
+      "expected_sha256": "dea6ad089a37f28f532c5616c0b9bcfb87fd93cda842c3fe994de93fc4eafb1a",
+      "verified": true
+    },
+    {
+      "path": "404.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/404.html",
+      "bytes": 8512,
+      "sha256": "01dedf45e3a5362f209e2b8a28e22be2a70938eb549dc68ea7f8d667d2640cb8",
+      "expected_sha256": "01dedf45e3a5362f209e2b8a28e22be2a70938eb549dc68ea7f8d667d2640cb8",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/internal/0059-c11-grid-layout.html",
+      "bytes": 93366,
+      "sha256": "751df707fb887bd7919a494197364b79133087da7017536d3eab12fad97f3052",
+      "expected_sha256": "751df707fb887bd7919a494197364b79133087da7017536d3eab12fad97f3052",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html",
+      "bytes": 24115,
+      "sha256": "02ceca190068f3bffa8a8d279a5d80f878ff48e0d4f64adb53069859e4cb4bf1",
+      "expected_sha256": "02ceca190068f3bffa8a8d279a5d80f878ff48e0d4f64adb53069859e4cb4bf1",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "bytes": 28115,
+      "sha256": "0b960b17a850f9041f81d2987ebb3490d1bd7412710d04c3415cccf4120594d2",
+      "expected_sha256": "0b960b17a850f9041f81d2987ebb3490d1bd7412710d04c3415cccf4120594d2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "bytes": 29094,
+      "sha256": "d981c75d5926f34e60bc48b340254f390a59810977f2aa69611d21baf41c07e1",
+      "expected_sha256": "d981c75d5926f34e60bc48b340254f390a59810977f2aa69611d21baf41c07e1",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+      "bytes": 28026,
+      "sha256": "5ef7051e97e5296899eaf0cfa6d1fa3bb624cc994f5c13fa80a2e9e5c55743c9",
+      "expected_sha256": "5ef7051e97e5296899eaf0cfa6d1fa3bb624cc994f5c13fa80a2e9e5c55743c9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-agent-browser-observation.json",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-agent-browser-observation.json",
+      "bytes": 4843,
+      "sha256": "b0fea1a8c4d54bb745b86ee08982e6da918ccbedd4dec868c8bc2bb7527f951b",
+      "expected_sha256": "b0fea1a8c4d54bb745b86ee08982e6da918ccbedd4dec868c8bc2bb7527f951b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-agent-browser-observation.raw.json",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-agent-browser-observation.raw.json",
+      "bytes": 5631,
+      "sha256": "7d8aaee65ad0c1e6e1e982dc9191bfcab4f3c9028cd1594289ad093a299606f3",
+      "expected_sha256": "7d8aaee65ad0c1e6e1e982dc9191bfcab4f3c9028cd1594289ad093a299606f3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "bytes": 26761,
+      "sha256": "b951c159b6711ccb97ca96dff15d1e0cfe87867b6bc29b7be1e74d4a094470a7",
+      "expected_sha256": "b951c159b6711ccb97ca96dff15d1e0cfe87867b6bc29b7be1e74d4a094470a7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "bytes": 27797,
+      "sha256": "6fe9f948a8e35b525a0f8d0ce4311b76d31c74f8b910c6ed7fa63e38c13efb69",
+      "expected_sha256": "6fe9f948a8e35b525a0f8d0ce4311b76d31c74f8b910c6ed7fa63e38c13efb69",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "bytes": 29552,
+      "sha256": "93a54bf856d11703b1d1152ab53d061e0b379f4b77f3326f2611a1680b6df848",
+      "expected_sha256": "93a54bf856d11703b1d1152ab53d061e0b379f4b77f3326f2611a1680b6df848",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "bytes": 27789,
+      "sha256": "08874e722eec6cd75e68f5ec55fc8471c5f659058b638e6b83148d0bc182f6d3",
+      "expected_sha256": "08874e722eec6cd75e68f5ec55fc8471c5f659058b638e6b83148d0bc182f6d3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.html",
+      "bytes": 25429,
+      "sha256": "446dbb433bd36aca3505b6a9a22a6086c5c354a573c4b1688bac382a8634a38b",
+      "expected_sha256": "446dbb433bd36aca3505b6a9a22a6086c5c354a573c4b1688bac382a8634a38b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.html",
+      "bytes": 26415,
+      "sha256": "b0ff326eca205253532ed933698456f2cdba1f1f4d1f61e2aded9441dba26e56",
+      "expected_sha256": "b0ff326eca205253532ed933698456f2cdba1f1f4d1f61e2aded9441dba26e56",
+      "verified": true
+    },
+    {
+      "path": "internal/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/internal/README.html",
+      "bytes": 175123,
+      "sha256": "b65bde838066222736c9fd5d2666c0886f449432f60bc0a2dcef97b7bc977378",
+      "expected_sha256": "b65bde838066222736c9fd5d2666c0886f449432f60bc0a2dcef97b7bc977378",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/plan/c11-4-grid-track-sizing.html",
+      "bytes": 79003,
+      "sha256": "f0af347616042466e7b76dde0fb7472dddac96b73c02b6917d483ff13bcba9f5",
+      "expected_sha256": "f0af347616042466e7b76dde0fb7472dddac96b73c02b6917d483ff13bcba9f5",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-image-ratio-fixed-gutter.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/plan/c11-4-image-ratio-fixed-gutter.html",
+      "bytes": 32590,
+      "sha256": "4d7bcae2d3073fac4f17e412f9370fcfbec1fec18150709e8f2d31eeb1c067ec",
+      "expected_sha256": "4d7bcae2d3073fac4f17e412f9370fcfbec1fec18150709e8f2d31eeb1c067ec",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/plan/c11-css-grid.html",
+      "bytes": 57913,
+      "sha256": "5372b8170f777e506bc61f5127842b637d62e6c6cb21168f7a1a289d95d8eef3",
+      "expected_sha256": "5372b8170f777e506bc61f5127842b637d62e6c6cb21168f7a1a289d95d8eef3",
+      "verified": true
+    },
+    {
+      "path": "roadmap.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/roadmap.html",
+      "bytes": 149914,
+      "sha256": "db13f66275de84fd5773e4ea5d9aa62b21a1ea5cea5fbcc53da387814aa69ec8",
+      "expected_sha256": "db13f66275de84fd5773e4ea5d9aa62b21a1ea5cea5fbcc53da387814aa69ec8",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/spec/internal/0059-c11-grid-layout.html",
+      "bytes": 93835,
+      "sha256": "2d16a36c8a05870791f3e441eb440266a7e3b46f4e968c15032ee6cae4d65beb",
+      "expected_sha256": "2d16a36c8a05870791f3e441eb440266a7e3b46f4e968c15032ee6cae4d65beb",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-agent-browser-observation.json",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-agent-browser-observation.json",
+      "bytes": 4843,
+      "sha256": "b0fea1a8c4d54bb745b86ee08982e6da918ccbedd4dec868c8bc2bb7527f951b",
+      "expected_sha256": "b0fea1a8c4d54bb745b86ee08982e6da918ccbedd4dec868c8bc2bb7527f951b",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-agent-browser-observation.raw.json",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-agent-browser-observation.raw.json",
+      "bytes": 5631,
+      "sha256": "7d8aaee65ad0c1e6e1e982dc9191bfcab4f3c9028cd1594289ad093a299606f3",
+      "expected_sha256": "7d8aaee65ad0c1e6e1e982dc9191bfcab4f3c9028cd1594289ad093a299606f3",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "bytes": 26771,
+      "sha256": "163963a386c0d329dcc7db7395d182dd68fe8512ede3c7170653c9198ebc0326",
+      "expected_sha256": "163963a386c0d329dcc7db7395d182dd68fe8512ede3c7170653c9198ebc0326",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "bytes": 27807,
+      "sha256": "613e8065b14b9ffc8723b2c4eb421bbb17495200ef84c0e99cbddcc04d4d3e37",
+      "expected_sha256": "613e8065b14b9ffc8723b2c4eb421bbb17495200ef84c0e99cbddcc04d4d3e37",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "bytes": 29542,
+      "sha256": "b4f62edb6afde9e0f9b86756d281d5d472c37142b4ba7e7001a42ab1ea67ad75",
+      "expected_sha256": "b4f62edb6afde9e0f9b86756d281d5d472c37142b4ba7e7001a42ab1ea67ad75",
+      "verified": true
+    },
+    {
+      "path": "static/js/2.1aa8a93d31.js",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/static/js/2.1aa8a93d31.js",
+      "bytes": 217072,
+      "sha256": "b21acdce969ebad569ff75b046d68b6edf0130a56631a440fb2d22a9258a65fb",
+      "expected_sha256": "b21acdce969ebad569ff75b046d68b6edf0130a56631a440fb2d22a9258a65fb",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass6/STATUS.html",
+      "bytes": 390558,
+      "sha256": "a5a04dd43949f282ca6892c42ccc82ce127e7ba140e9d7c3bd3aebe9a18c9ecf",
+      "expected_sha256": "a5a04dd43949f282ca6892c42ccc82ce127e7ba140e9d7c3bd3aebe9a18c9ecf",
+      "verified": true
+    }
+  ]
+}
