@@ -1,5 +1,9 @@
 # 내부 인터페이스 명세
 
+## C11.4 auto-repeat explicit neighbor 후속
+
+[Chrome 155 13-case와 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 각 13/13 scene 실행·화면·해시](./evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.md) · [구현 실패 관점 20개](./evidence/c11-4-auto-repeat-neighbors-2026-10-20/implementation-review-20.md) · [PR diff 적대 검토 30개](./evidence/c11-4-auto-repeat-neighbors-2026-10-20/pr-diff-review-30.md). 한 축의 단일 auto-repeat 앞뒤 fixed `px` neighbor 지원 subset이며 C11.4와 공개 CSS 지원은 미완료다.
+
 ## C11.4 PR #351 뒤 Tailnet 미리보기 동기화
 
 [로드맵·선택 문서 빌드·Tailnet 제공 화면과 해시 근거](./evidence/c11-4-image-tailnet-sync-2026-10-19/README.md) · [동기화 실패 관점 20개](./evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.md) · [PR diff 실패 관점 30개](./evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.md). PR #351 병합 뒤 9-scene image intrinsic 결과를 Tailnet 로드맵 미리보기에 반영한다. 정적 미리보기 갱신이며 C11.4 완료나 GitHub Pages 배포가 아니다.

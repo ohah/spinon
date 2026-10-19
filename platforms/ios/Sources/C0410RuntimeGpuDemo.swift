@@ -16,6 +16,13 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "auto-fixed-width-item", "minmax-auto-fixed-width-item",
     "fit-content-below-item-size", "spanning-auto-tracks",
     "auto-fill-repeat", "auto-fit-collapse", "auto-fill-track-overflow",
+    "auto-fill-fixed-neighbors", "auto-fit-fixed-neighbors",
+    "auto-fill-pattern-neighbors",
+    "auto-fit-span-neighbors", "auto-fit-empty-neighbors",
+    "auto-fill-prefix-neighbors", "auto-fill-suffix-neighbors",
+    "auto-fill-indefinite-neighbors", "auto-fill-max-size-neighbors",
+    "auto-fill-min-size-neighbors", "auto-fill-overflow-neighbors",
+    "auto-fill-row-neighbors", "auto-fit-row-neighbors",
     "min-content-text-normal", "auto-text-max-content",
     "max-content-text-normal", "fit-content-text-minimum",
     "fit-content-calc-limit", "min-content-text-edge",
@@ -62,6 +69,21 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
         return "width=105,height=25"
     case "grid-gap-cyclic-percent-min-basis", "grid-gap-cyclic-calc-min-basis":
         return "width=120,height=30"
+    case "auto-fill-fixed-neighbors", "auto-fit-fixed-neighbors",
+         "auto-fill-pattern-neighbors":
+        return "width=200,height=60"
+    case "auto-fit-span-neighbors",
+         "auto-fill-prefix-neighbors", "auto-fill-suffix-neighbors":
+        return "width=200,height=60"
+    case "auto-fit-empty-neighbors", "auto-fill-max-size-neighbors",
+         "auto-fill-min-size-neighbors":
+        return ""
+    case "auto-fill-indefinite-neighbors":
+        return "width=86,height=60"
+    case "auto-fill-overflow-neighbors":
+        return "width=40,height=60"
+    case "auto-fill-row-neighbors", "auto-fit-row-neighbors":
+        return "width=50,height=200"
     case "spanning-auto-tracks", "spanning-min-content-items":
         return "width=100,height=30"
     case "fixed-small-track-overflow":
@@ -116,6 +138,18 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         return "width=96,height=16"
     case "auto-fill-track-overflow":
         return "width=120,height=16"
+    case "auto-fill-fixed-neighbors", "auto-fill-pattern-neighbors":
+        return "width=10,height=40"
+    case "auto-fit-fixed-neighbors":
+        return "width=154,height=40"
+    case "auto-fit-empty-neighbors", "auto-fill-max-size-neighbors",
+         "auto-fill-min-size-neighbors":
+        return ""
+    case "auto-fit-span-neighbors", "auto-fill-prefix-neighbors",
+         "auto-fill-suffix-neighbors", "auto-fill-indefinite-neighbors",
+         "auto-fill-overflow-neighbors", "auto-fill-row-neighbors",
+         "auto-fit-row-neighbors":
+        return "width=12,height=12"
     case "min-content-text-normal", "fit-content-text-minimum":
         return "width=70,height=20"
     case "auto-text-max-content", "max-content-text-normal", "min-content-text-nowrap":
@@ -482,6 +516,12 @@ private func c114ImageTrackPassMatches(
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     switch sceneID {
+    case "auto-fill-fixed-neighbors", "auto-fill-pattern-neighbors":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;"
+            + "1:node=2,x=190,y=0,width=10,height=40]"
+    case "auto-fit-fixed-neighbors":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;"
+            + "1:node=2,x=28,y=0,width=154,height=40]"
     case "grid-gap-definite-percent":
         return c114GapNodeFrames("100", "40", "50", "20")
     case "grid-gap-cyclic-percent":
@@ -529,7 +569,10 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
-    sceneID.hasPrefix("grid-gap-") ? 5 : 2
+    if sceneID == "auto-fit-span-neighbors" { return 3 }
+    if ["auto-fit-empty-neighbors", "auto-fill-max-size-neighbors",
+        "auto-fill-min-size-neighbors"].contains(sceneID) { return 1 }
+    return sceneID.hasPrefix("grid-gap-") ? 5 : 2
 }
 
 private struct C124MetalPixelCase {
@@ -4246,11 +4289,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let expectedImageInputs = c114ExpectedImageIntrinsicInputs(
                 c114GridTrackSizingSceneID, report: report)
             let expectedNodeFramesMatch = expectedNodeFrames.map(report.contains) ?? true
+            let expectedRootFrameMatches = rootFrame.isEmpty || report.contains(rootFrame)
+            let expectedItemFrameMatches = itemFrame.isEmpty || report.contains(itemFrame)
             log("SPINON_C114_GRID_EVAL_RUN run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) \(runtimeStatusSummary(report))")
             let gridTrackSizingTraceAvailable = logC114GridTrackSizingTraceChunks(report)
             guard report.hasPrefix("status=0 "),
                   report.contains("layout=ready boxes=\(c114ExpectedBoxCount(c114GridTrackSizingSceneID))"),
-                  report.contains(rootFrame), report.contains(itemFrame), expectedTextInputs,
+                  expectedRootFrameMatches, expectedItemFrameMatches, expectedTextInputs,
                   expectedImageInputs, expectedNodeFramesMatch else {
                 log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) report=\(report)")
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치")

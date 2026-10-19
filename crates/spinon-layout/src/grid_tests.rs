@@ -295,7 +295,11 @@ fn auto_repeat_rejects_named_lines_through_the_layout_api() {
     );
     let container = columns.grid_containers.get_mut(&id(1)).unwrap();
     container.placement_mode = GridPlacementMode::TrackSizing;
-    container.columns_auto_repeat = Some(GridAutoRepeatMode::AutoFill);
+    container.columns_auto_repeat = Some(GridAutoRepeat {
+        mode: GridAutoRepeatMode::AutoFill,
+        start: 0,
+        end: container.columns.len(),
+    });
     container.columns_line_names = vec![vec!["start".into()], vec!["end".into()]];
     assert!(matches!(
         TaffyLayoutEngine.compute(&columns),
@@ -313,7 +317,11 @@ fn auto_repeat_rejects_named_lines_through_the_layout_api() {
     );
     let container = rows.grid_containers.get_mut(&id(1)).unwrap();
     container.placement_mode = GridPlacementMode::TrackSizing;
-    container.rows_auto_repeat = Some(GridAutoRepeatMode::AutoFit);
+    container.rows_auto_repeat = Some(GridAutoRepeat {
+        mode: GridAutoRepeatMode::AutoFit,
+        start: 0,
+        end: container.rows.len(),
+    });
     container.rows_line_names = vec![vec!["top".into()], vec!["bottom".into()]];
     assert!(matches!(
         TaffyLayoutEngine.compute(&rows),

@@ -8,7 +8,9 @@ use crate::grid_auto_placement::{
     occupancy::Occupancy,
     reservation::{GridReservationSite, reserve_exact},
 };
-use crate::{GridAutoFlow, GridContainerInput, GridTrackSize, LayoutError, LayoutInput};
+use crate::{
+    GridAutoFlow, GridContainerInput, GridPlacementInput, GridTrackSize, LayoutError, LayoutInput,
+};
 
 pub(crate) struct DenseGridPlacement {
     pub(crate) item_placements: BTreeMap<NodeId, crate::GridItemInput>,
@@ -32,6 +34,12 @@ pub(crate) fn normalize_dense_grid_container(
     let node = container_node.id;
     validate_count(node, "grid-template-columns", container.columns.len())?;
     validate_count(node, "grid-template-rows", container.rows.len())?;
+
+    if container.placement_mode == crate::GridPlacementMode::TrackSizing
+        && (container.columns_auto_repeat.is_some() || container.rows_auto_repeat.is_some())
+    {
+        return normalize_auto_repeat_grid_items(input, hidden, container_node, container);
+    }
 
     let row_flow = matches!(
         container.auto_flow,
@@ -371,6 +379,136 @@ pub(crate) fn normalize_dense_grid_container(
         false,
     )?;
     Ok(output)
+}
+
+fn normalize_auto_repeat_grid_items(
+    input: &LayoutInput,
+    hidden: &BTreeMap<NodeId, bool>,
+    container_node: &crate::LayoutNode,
+    container: &GridContainerInput,
+) -> Result<DenseGridPlacement, LayoutError> {
+    let node = container_node.id;
+    let repeat_columns = container.columns_auto_repeat.is_some();
+    let mut output = DenseGridPlacement {
+        item_placements: BTreeMap::new(),
+        expanded_rows: None,
+        expanded_columns: None,
+        auto_placed_items: BTreeSet::new(),
+    };
+
+    for child in container_node
+        .children
+        .iter()
+        .copied()
+        .filter(|child| !hidden[child])
+    {
+        let placement = input.grid_items.get(&child).copied().unwrap_or_default();
+        let (
+            repeat_start,
+            repeat_end,
+            fixed_start,
+            fixed_end,
+            fixed_count,
+            repeat_start_property,
+            repeat_end_property,
+        ) = if repeat_columns {
+            (
+                placement.column_start,
+                placement.column_end,
+                placement.row_start,
+                placement.row_end,
+                container.rows.len(),
+                "grid-column-start",
+                "grid-column-end",
+            )
+        } else {
+            (
+                placement.row_start,
+                placement.row_end,
+                placement.column_start,
+                placement.column_end,
+                container.columns.len(),
+                "grid-row-start",
+                "grid-row-end",
+            )
+        };
+        validate_auto_repeat_placement(
+            node,
+            repeat_start_property,
+            repeat_end_property,
+            repeat_start,
+            repeat_end,
+        )?;
+        let fixed_placement = resolve_axis(
+            child,
+            if repeat_columns {
+                "grid-row-start"
+            } else {
+                "grid-column-start"
+            },
+            if repeat_columns {
+                "grid-row-end"
+            } else {
+                "grid-column-end"
+            },
+            fixed_start,
+            fixed_end,
+            fixed_count,
+        )?;
+
+        if fixed_placement.start.is_none() || !has_definite_grid_axis(repeat_start, repeat_end) {
+            output.auto_placed_items.insert(child);
+        }
+        output.item_placements.insert(child, placement);
+    }
+    Ok(output)
+}
+
+fn validate_auto_repeat_placement(
+    node: NodeId,
+    start_property: &'static str,
+    end_property: &'static str,
+    start: GridPlacementInput,
+    end: GridPlacementInput,
+) -> Result<(), LayoutError> {
+    if matches!(
+        (start, end),
+        (GridPlacementInput::Span(_), GridPlacementInput::Span(_))
+    ) {
+        return Err(LayoutError::InvalidGridPlacement {
+            node,
+            property: start_property,
+            reason: "auto-repeat 축에서 양 끝점을 모두 span으로 지정할 수 없습니다",
+        });
+    }
+    for (placement, property) in [(start, start_property), (end, end_property)] {
+        match placement {
+            GridPlacementInput::Auto => {}
+            GridPlacementInput::Line(line) => {
+                if line == 0 || i16::try_from(line).is_err() {
+                    return Err(LayoutError::InvalidGridPlacement {
+                        node,
+                        property,
+                        reason: "auto-repeat line은 0이 아니고 Taffy의 정수 범위 안이어야 합니다",
+                    });
+                }
+            }
+            GridPlacementInput::Span(span) => {
+                if span == 0 || u16::try_from(span).is_err() {
+                    return Err(LayoutError::InvalidGridPlacement {
+                        node,
+                        property,
+                        reason: "auto-repeat span은 양수이고 Taffy의 정수 범위 안이어야 합니다",
+                    });
+                }
+            }
+        }
+    }
+    Ok(())
+}
+
+fn has_definite_grid_axis(start: GridPlacementInput, end: GridPlacementInput) -> bool {
+    matches!(start, GridPlacementInput::Line(_)) || matches!(end, GridPlacementInput::Line(_))
 }
 
 fn expand_tracks(

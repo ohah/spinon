@@ -12,7 +12,7 @@ use taffy::style_helpers::{
 };
 
 use crate::{
-    GridAutoFlow, GridAutoRepeatMode, GridContainerInput, GridPlacementInput,
+    GridAutoFlow, GridAutoRepeat, GridAutoRepeatMode, GridContainerInput, GridPlacementInput,
     GridTrackLengthPercentage, GridTrackMaxSizingFunction, GridTrackMinSizingFunction,
     GridTrackSize, LayoutCalcId, LayoutCssMathProperty, LayoutError, LayoutLengthPercentage,
 };
@@ -33,19 +33,27 @@ pub(super) fn taffy_grid_placement_line(
 ) -> Result<taffy::style::GridPlacement<String>, LayoutError> {
     match placement {
         GridPlacementInput::Auto => Ok(taffy::style::GridPlacement::Auto),
-        GridPlacementInput::Line(line) if line > 0 => {
+        GridPlacementInput::Line(line) if line != 0 => {
             let line = i16::try_from(line).map_err(|_| LayoutError::InvalidGridPlacement {
                 node,
                 property,
-                reason: "정규화한 line이 Taffy 범위를 넘었습니다",
+                reason: "line이 Taffy의 정수 범위를 넘었습니다",
             })?;
             Ok(taffy::style::GridPlacement::from_line_index(line))
+        }
+        GridPlacementInput::Span(span) if span > 0 => {
+            let span = u16::try_from(span).map_err(|_| LayoutError::InvalidGridPlacement {
+                node,
+                property,
+                reason: "span이 Taffy의 정수 범위를 넘었습니다",
+            })?;
+            Ok(taffy::style::GridPlacement::Span(span))
         }
         GridPlacementInput::Line(_) | GridPlacementInput::Span(_) => {
             Err(LayoutError::InvalidGridPlacement {
                 node,
                 property,
-                reason: "Taffy 입력은 양수 explicit line으로 정규화되어야 합니다",
+                reason: "line은 0이 아니고 span은 양수여야 합니다",
             })
         }
     }
@@ -64,19 +72,35 @@ pub(super) fn to_taffy_grid_tracks_with_auto_repeat(
     node: NodeId,
     property: &'static str,
     tracks: &[GridTrackSize],
-    auto_repeat: Option<GridAutoRepeatMode>,
+    auto_repeat: Option<GridAutoRepeat>,
     calc_handles: &BTreeMap<LayoutCalcId, *const ()>,
 ) -> Result<Vec<TaffyGridTemplateComponent<String>>, LayoutError> {
     let mut output = Vec::new();
     if let Some(auto_repeat) = auto_repeat {
-        if tracks.is_empty() {
+        if auto_repeat.start >= auto_repeat.end || auto_repeat.end > tracks.len() {
             return Err(LayoutError::InvalidGridTrackList { node, property });
         }
+        let repeat_len = auto_repeat.end - auto_repeat.start;
+        let component_count = tracks
+            .len()
+            .checked_sub(repeat_len)
+            .and_then(|count| count.checked_add(1))
+            .ok_or(LayoutError::InvalidGridTrackList { node, property })?;
+        output
+            .try_reserve_exact(component_count)
+            .map_err(|_| LayoutError::GridAllocationFailure { node, property })?;
+
+        for track in &tracks[..auto_repeat.start] {
+            output.push(TaffyGridTemplateComponent::Single(
+                to_taffy_track_sizing_function(node, property, *track, calc_handles)?,
+            ));
+        }
+
         let mut repeated_tracks = Vec::new();
         repeated_tracks
-            .try_reserve_exact(tracks.len())
+            .try_reserve_exact(repeat_len)
             .map_err(|_| LayoutError::GridAllocationFailure { node, property })?;
-        for track in tracks {
+        for track in &tracks[auto_repeat.start..auto_repeat.end] {
             repeated_tracks.push(to_taffy_track_sizing_function(
                 node,
                 property,
@@ -84,20 +108,23 @@ pub(super) fn to_taffy_grid_tracks_with_auto_repeat(
                 calc_handles,
             )?);
         }
-        output
-            .try_reserve_exact(1)
-            .map_err(|_| LayoutError::GridAllocationFailure { node, property })?;
         output.push(TaffyGridTemplateComponent::Repeat(GridTemplateRepetition {
-            count: match auto_repeat {
+            count: match auto_repeat.mode {
                 GridAutoRepeatMode::AutoFill => RepetitionCount::AutoFill,
                 GridAutoRepeatMode::AutoFit => RepetitionCount::AutoFit,
             },
             tracks: repeated_tracks,
             line_names: Vec::new(),
         }));
+
+        for track in &tracks[auto_repeat.end..] {
+            output.push(TaffyGridTemplateComponent::Single(
+                to_taffy_track_sizing_function(node, property, *track, calc_handles)?,
+            ));
+        }
     } else {
         output
-            .try_reserve(tracks.len())
+            .try_reserve_exact(tracks.len())
             .map_err(|_| LayoutError::GridAllocationFailure { node, property })?;
         for track in tracks {
             let sizing = to_taffy_track_sizing_function(node, property, *track, calc_handles)?;
