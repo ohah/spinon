@@ -213,6 +213,11 @@ fn grid_text_intrinsic_input_preserves_minmax_beyond_definite_callback_trace() {
             },
         },
     );
+    grid_input.nodes[2].style.box_sizing = crate::LayoutBoxSizing::ContentBox;
+    grid_input.nodes[2].style.padding.left = crate::LayoutLengthPercentage::length(4.0);
+    grid_input.nodes[2].style.padding.right = crate::LayoutLengthPercentage::length(4.0);
+    grid_input.nodes[2].style.border.left = 1.0;
+    grid_input.nodes[2].style.border.right = 1.0;
     grid_input.nodes[0].style.display = LayoutDisplay::Grid;
     grid_input.nodes[0].style.height = LayoutDimension::Fixed(80.0);
     grid_input.nodes[1].style.height = LayoutDimension::Fixed(10.0);
@@ -281,6 +286,63 @@ fn grid_text_intrinsic_input_preserves_minmax_beyond_definite_callback_trace() {
         (100.0, 10.0)
     );
     assert_eq!(sizes.font_registry_revision().0, 1);
+
+    let contribution = item.contribution_input();
+    assert_eq!(contribution.grid_container, node(1));
+    assert_eq!(contribution.source_order, 1);
+    assert_eq!(contribution.revision, output.revision);
+    assert_eq!(contribution.item_style, grid_input.nodes[2].style);
+    assert_eq!(
+        contribution.item_style.box_sizing,
+        crate::LayoutBoxSizing::ContentBox
+    );
+    assert_eq!(contribution.width.min_content, Some(70.0));
+    assert_eq!(contribution.width.max_content, Some(100.0));
+    assert_eq!(contribution.width.min_size, crate::LayoutDimension::Auto);
+    assert_eq!(
+        contribution.width.padding_start,
+        crate::LayoutLengthPercentage::length(4.0)
+    );
+    assert_eq!(
+        contribution.width.padding_end,
+        crate::LayoutLengthPercentage::length(4.0)
+    );
+    assert_eq!(
+        (
+            contribution.width.border_start,
+            contribution.width.border_end
+        ),
+        (1.0, 1.0)
+    );
+    assert_eq!(
+        contribution
+            .width
+            .outer_size(contribution.width.min_content, node(2), "width")
+            .unwrap(),
+        Some(80.0)
+    );
+    assert_eq!(
+        contribution
+            .width
+            .outer_size(contribution.width.max_content, node(2), "width")
+            .unwrap(),
+        Some(110.0)
+    );
+    let mut unresolved = contribution.width;
+    unresolved.padding_start = crate::LayoutLengthPercentage::percent(0.25);
+    assert!(matches!(
+        unresolved.outer_size(Some(70.0), node(2), "width"),
+        Err(crate::LayoutError::UnsupportedIntrinsicSizing { node: actual, .. })
+            if actual == node(2)
+    ));
+    unresolved.padding_start = crate::LayoutLengthPercentage::length(4.0);
+    unresolved.margin_start = crate::LayoutLengthPercentage::Auto;
+    assert_eq!(
+        unresolved.outer_size(Some(70.0), node(2), "width").unwrap(),
+        Some(80.0)
+    );
+    assert_eq!(contribution.height.min_content, Some(20.0));
+    assert_eq!(contribution.height.max_content, Some(10.0));
 }
 
 #[test]

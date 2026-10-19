@@ -182,6 +182,20 @@ fn grid_image_intrinsic_measurement_keeps_style_source_and_both_revisions() {
         crate::LayoutGridItemIntrinsicSource::Replaced { natural }
             if natural == LayoutIntrinsicSize::new(24.0, 16.0)
     ));
+
+    let contribution = intrinsic_input.contribution_input();
+    assert_eq!(contribution.grid_container, root.id());
+    assert_eq!(contribution.revision, output.revision);
+    assert_eq!(contribution.width.min_content, Some(24.0));
+    assert_eq!(contribution.width.max_content, Some(24.0));
+    assert_eq!(contribution.height.min_content, Some(16.0));
+    assert_eq!(contribution.height.max_content, Some(16.0));
+    assert_eq!(contribution.item_style, intrinsic_input.item_style);
+    assert_eq!(
+        contribution.width.preferred_size,
+        LayoutDimension::MinContent
+    );
+    assert_eq!(contribution.source, intrinsic_input.source.clone());
 }
 
 #[test]
