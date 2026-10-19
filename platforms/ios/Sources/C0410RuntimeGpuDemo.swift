@@ -3570,13 +3570,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 itemFrame = "width=24,height=16"
             }
             log("SPINON_C114_GRID_EVAL_RUN run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) \(runtimeStatusSummary(report))")
+            let gridTrackSizingTraceAvailable = logC114GridTrackSizingTraceChunks(report)
             guard report.hasPrefix("status=0 "), report.contains("layout=ready boxes=2"),
                   report.contains(rootFrame), report.contains(itemFrame) else {
                 log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) report=\(report)")
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치")
                 return
             }
-            guard logC114GridTrackSizingTraceChunks(report) else {
+            guard gridTrackSizingTraceAvailable else {
                 postStatus("실패 · C11.4 track-sizing trace가 없습니다")
                 return
             }
