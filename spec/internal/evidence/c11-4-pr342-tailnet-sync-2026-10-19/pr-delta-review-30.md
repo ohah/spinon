@@ -4,7 +4,7 @@
 
 1. PR 제목과 브랜치 이름이 문서 배포 범위를 정확히 말하는가 — Tailnet preview sync만 다루도록 `docs:` 범위를 쓴다.
 2. PR body의 source revision이 main에 실제 병합된 커밋인가 — 0d35a10...를 README·manifest에 고정했다.
-3. PR body screenshot이 올바른 branch 경로를 가리키는가 — push 뒤 raw branch URL에서 PNG 존재를 점검한다.
+3. PR body screenshot의 raw branch URL이 유효한가 — branch push 뒤 HTTP 응답을 받고 다운로드 이미지와 commit PNG의 SHA-256이 같음을 확인했다.
 4. screenshot을 앱 실행 결과로 오해할 수 있는가 — roadmap/문서 페이지 캡처라고 명시하고 simulator 근거와 분리한다.
 5. screenshot이 로드맵 변경을 보여주는가 — C11.4 행과 72/212 카운터가 함께 보이는 Agent Browser 화면을 선택했다.
 6. PNG가 빈 페이지나 이전 scroll 위치를 담는가 — 이미지 자체를 열어 텍스트와 체크 상태를 육안 확인했다.
