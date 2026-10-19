@@ -28,6 +28,7 @@ pub(crate) mod c11_2_3;
 pub(crate) mod c11_3_1;
 pub(crate) mod c11_3_2;
 pub(crate) mod c11_3_3;
+pub(crate) mod c11_4;
 #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
 pub(crate) mod c13_1;
 #[cfg(feature = "c13-1-overflow-clip-fixture-test")]

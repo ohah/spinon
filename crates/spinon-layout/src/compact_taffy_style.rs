@@ -6,7 +6,8 @@ use taffy::style::{
     BoxSizing, Contain, Direction, Display, FlexDirection, FlexWrap, FlexboxContainerStyle,
     FlexboxItemStyle, GenericGridTemplateComponent, GridAutoFlow, GridContainerStyle,
     GridItemStyle, GridPlacement, GridTemplateArea, GridTemplateRepetition, JustifyContent,
-    LengthPercentage, LengthPercentageAuto, Overflow, Position, TemplateLineNames, TextAlign,
+    LengthPercentage, LengthPercentageAuto, OofItemStyle, Overflow, Position, TemplateLineNames,
+    TextAlign,
 };
 use taffy::{CoreStyle, Dimension, GridTemplateComponent, TrackSizingFunction};
 
@@ -71,11 +72,11 @@ pub(super) struct CompactTaffyStyle {
     padding: Rect<LengthPercentage>,
     border: Rect<LengthPercentage>,
     contain: Contain,
-    align_content: Option<AlignContent>,
-    align_items: Option<AlignItems>,
+    align_content: AlignContent,
+    align_items: AlignItems,
     align_self: Option<AlignSelf>,
-    justify_content: Option<JustifyContent>,
-    justify_items: Option<AlignItems>,
+    justify_content: JustifyContent,
+    justify_items: AlignItems,
     justify_self: Option<AlignSelf>,
     gap: Size<LengthPercentage>,
     text_align: TextAlign,
@@ -87,6 +88,7 @@ pub(super) struct CompactTaffyStyle {
     grid_template_rows: Vec<GridTemplateComponent<String>>,
     grid_template_columns: Vec<GridTemplateComponent<String>>,
     grid_auto_flow: GridAutoFlow,
+    track_sizing_trace_enabled: bool,
     grid_row: Line<GridPlacement<String>>,
     grid_column: Line<GridPlacement<String>>,
 }
@@ -102,6 +104,10 @@ impl CompactTaffyStyle {
 
     pub(super) fn disable_aspect_ratio(&mut self) {
         self.aspect_ratio = None;
+    }
+
+    pub(super) fn set_track_sizing_trace_enabled(&mut self, enabled: bool) {
+        self.track_sizing_trace_enabled = enabled;
     }
 
     pub(super) fn set_used_replaced_border_box_size(&mut self, width: f32, height: f32) {
@@ -171,6 +177,7 @@ impl From<taffy::Style> for CompactTaffyStyle {
             grid_template_rows: style.grid_template_rows,
             grid_template_columns: style.grid_template_columns,
             grid_auto_flow: style.grid_auto_flow,
+            track_sizing_trace_enabled: false,
             grid_row: Line {
                 start: GridPlacement::Auto,
                 end: GridPlacement::Auto,
@@ -264,7 +271,7 @@ impl BlockContainerStyle for CompactTaffyStyle {
         self.text_align
     }
 
-    fn align_content(&self) -> Option<AlignContent> {
+    fn align_content(&self) -> AlignContent {
         self.align_content
     }
 }
@@ -284,15 +291,15 @@ impl FlexboxContainerStyle for CompactTaffyStyle {
         self.gap
     }
 
-    fn align_content(&self) -> Option<AlignContent> {
+    fn align_content(&self) -> AlignContent {
         self.align_content
     }
 
-    fn align_items(&self) -> Option<AlignItems> {
+    fn align_items(&self) -> AlignItems {
         self.align_items
     }
 
-    fn justify_content(&self) -> Option<JustifyContent> {
+    fn justify_content(&self) -> JustifyContent {
         self.justify_content
     }
 }
@@ -366,20 +373,24 @@ impl GridContainerStyle for CompactTaffyStyle {
         self.gap
     }
 
-    fn align_content(&self) -> Option<AlignContent> {
+    fn align_content(&self) -> AlignContent {
         self.align_content
     }
 
-    fn justify_content(&self) -> Option<JustifyContent> {
+    fn justify_content(&self) -> JustifyContent {
         self.justify_content
     }
 
-    fn align_items(&self) -> Option<AlignItems> {
+    fn align_items(&self) -> AlignItems {
         self.align_items
     }
 
-    fn justify_items(&self) -> Option<AlignItems> {
+    fn justify_items(&self) -> AlignItems {
         self.justify_items
+    }
+
+    fn track_sizing_trace_enabled(&self) -> bool {
+        self.track_sizing_trace_enabled
     }
 }
 
@@ -398,6 +409,24 @@ impl GridItemStyle for CompactTaffyStyle {
 
     fn justify_self(&self) -> Option<AlignSelf> {
         self.justify_self
+    }
+}
+
+impl OofItemStyle for CompactTaffyStyle {
+    fn align_self(&self) -> Option<AlignSelf> {
+        self.align_self
+    }
+
+    fn justify_self(&self) -> Option<AlignSelf> {
+        self.justify_self
+    }
+
+    fn grid_row(&self) -> Line<GridPlacement<String>> {
+        self.grid_row.clone()
+    }
+
+    fn grid_column(&self) -> Line<GridPlacement<String>> {
+        self.grid_column.clone()
     }
 }
 

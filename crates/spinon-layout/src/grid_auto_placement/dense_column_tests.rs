@@ -87,6 +87,8 @@ fn grid(
                     .copied()
                     .map(GridTrackSize::LengthPx)
                     .collect(),
+                columns_auto_repeat: None,
+                rows_auto_repeat: None,
                 columns_line_names: Vec::new(),
                 rows_line_names: Vec::new(),
                 auto_flow: flow,

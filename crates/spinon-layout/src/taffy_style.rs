@@ -41,21 +41,35 @@ pub(super) fn to_taffy_style(
     grid_input: GridTaffyStyleInput<'_>,
 ) -> Result<CompactTaffyStyle, LayoutError> {
     let grid_columns = match grid_input.expanded_columns {
-        Some(columns) => grid::to_taffy_grid_tracks(node, "grid-template-columns", columns)?,
+        Some(columns) => {
+            grid::to_taffy_grid_tracks(node, "grid-template-columns", columns, calc_handles)?
+        }
         None => grid_input
             .container
             .map(|container| {
-                grid::to_taffy_grid_tracks(node, "grid-template-columns", &container.columns)
+                grid::to_taffy_grid_tracks_with_auto_repeat(
+                    node,
+                    "grid-template-columns",
+                    &container.columns,
+                    container.columns_auto_repeat,
+                    calc_handles,
+                )
             })
             .transpose()?
             .unwrap_or_default(),
     };
     let grid_rows = match grid_input.expanded_rows {
-        Some(rows) => grid::to_taffy_grid_tracks(node, "grid-template-rows", rows)?,
+        Some(rows) => grid::to_taffy_grid_tracks(node, "grid-template-rows", rows, calc_handles)?,
         None => grid_input
             .container
             .map(|container| {
-                grid::to_taffy_grid_tracks(node, "grid-template-rows", &container.rows)
+                grid::to_taffy_grid_tracks_with_auto_repeat(
+                    node,
+                    "grid-template-rows",
+                    &container.rows,
+                    container.rows_auto_repeat,
+                    calc_handles,
+                )
             })
             .transpose()?
             .unwrap_or_default(),
@@ -213,15 +227,18 @@ pub(super) fn to_taffy_style(
                 calc_handles,
             )?,
         },
-        align_items: Some(to_taffy_align_items(style.align_items)),
+        align_items: to_taffy_align_items(style.align_items),
         align_self: to_taffy_align_self(style.align_self),
-        align_content: style.align_content.map(to_taffy_align_content),
+        align_content: style
+            .align_content
+            .map(to_taffy_align_content)
+            .unwrap_or(AlignContent::NORMAL),
         justify_self: item_is_replaced.then_some(AlignSelf::START),
-        justify_content: Some(to_taffy_justify_content(
+        justify_content: to_taffy_justify_content(
             style.justify_content,
             style.flex_direction,
             style.direction,
-        )),
+        ),
         margin: Rect {
             top: to_taffy_length_percentage_auto(
                 node,
@@ -273,6 +290,12 @@ pub(super) fn to_taffy_style(
         ..Default::default()
     };
     let mut compact = CompactTaffyStyle::from(style);
+    // The auxiliary normal-flow pass is not returned as final layout diagnostics.
+    let trace_enabled = !flow_only
+        && grid_input.container.is_some_and(|container| {
+            container.placement_mode == crate::GridPlacementMode::TrackSizing
+        });
+    compact.set_track_sizing_trace_enabled(trace_enabled);
     if let Some(item) = grid_input.item {
         compact.set_grid_item_placement(
             grid::taffy_grid_placement_line(node, "grid-row-start", item.row_start)?,
@@ -321,7 +344,7 @@ fn to_taffy_align_items(value: LayoutAlignItems) -> AlignItems {
         LayoutAlignItems::FlexStart => AlignItems::FLEX_START,
         LayoutAlignItems::FlexEnd => AlignItems::FLEX_END,
         LayoutAlignItems::Center => AlignItems::CENTER,
-        // Taffy 0.14는 row first-baseline 알고리즘을 제공합니다. 레이아웃 후 어댑터에서
+        // Taffy 0.15는 row first-baseline 알고리즘을 제공합니다. 레이아웃 후 어댑터에서
         // first/last 그룹을 분리하고 last baseline 위치를 보정합니다.
         LayoutAlignItems::FirstBaseline | LayoutAlignItems::LastBaseline => AlignItems::BASELINE,
         LayoutAlignItems::Position { position, safety } => AlignItems {

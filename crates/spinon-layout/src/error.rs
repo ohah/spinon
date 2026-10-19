@@ -160,6 +160,16 @@ pub enum LayoutError {
         node: NodeId,
         property: &'static str,
     },
+    GridTrackSizingTraceAllocationFailure {
+        node: NodeId,
+    },
+    GridTrackSizingTraceLimitExceeded {
+        node: NodeId,
+    },
+    GridTrackSizingTraceItemMissing {
+        node: NodeId,
+        item_engine_id: u64,
+    },
     UnknownCssMathHandle,
     TooManyNodes,
     Taffy(String),
@@ -385,7 +395,7 @@ impl fmt::Display for LayoutError {
                 maximum,
             } => write!(
                 formatter,
-                "노드 {node}의 {property} track 수 {count}가 Taffy 0.14.0 한계 {maximum}을 초과합니다"
+                "노드 {node}의 {property} track 수 {count}가 Taffy 0.15.0 한계 {maximum}을 초과합니다"
             ),
             Self::GridTrackExpansionOverflow(id) => {
                 write!(
@@ -461,6 +471,21 @@ impl fmt::Display for LayoutError {
                     "노드 {node}의 {property} track 공간을 예약하지 못했습니다"
                 )
             }
+            Self::GridTrackSizingTraceAllocationFailure { node } => write!(
+                formatter,
+                "노드 {node}의 Grid track-sizing 추적 공간을 예약하지 못했습니다"
+            ),
+            Self::GridTrackSizingTraceLimitExceeded { node } => write!(
+                formatter,
+                "노드 {node}의 Grid track-sizing 추적이 안전 한계를 초과했습니다"
+            ),
+            Self::GridTrackSizingTraceItemMissing {
+                node,
+                item_engine_id,
+            } => write!(
+                formatter,
+                "노드 {node}의 Grid track-sizing 추적에서 item 엔진 ID {item_engine_id}를 찾을 수 없습니다"
+            ),
             Self::UnknownCssMathHandle => {
                 write!(
                     formatter,

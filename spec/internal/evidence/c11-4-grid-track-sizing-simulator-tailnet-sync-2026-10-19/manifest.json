@@ -1,0 +1,121 @@
+{
+  "updated_at": "2026-10-19T04:00:37.499266+00:00",
+  "preview_root": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "server_pid": 1191,
+  "build": "/private/tmp/spinon-c11-4-taffy015-regression-20261019/docs-build-staged-final",
+  "method": "selected RSPress routes and static assets; atomic file replacement after lsof preflight",
+  "files": [
+    {
+      "path": "STATUS.html",
+      "old_sha256": "65ba602daed3f7bd6177739ea5110ce2b47c6d2e241a05c25eb38dfdc5e832d1",
+      "new_sha256": "3833f98bc73b66a25df793843442aa1388af05e41f316af153d63a1467d3c5ea",
+      "size": 383076,
+      "backup": "/private/tmp/spinon-c11-4-taffy015-regression-20261019/tailnet-preview-backup-final/STATUS.html"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "old_sha256": "271930449dac241108ca41cea4fae8d0c0d14ea1a25b7a593fb2c21332e5101c",
+      "new_sha256": "532adafab44538711277bfb0ab9a0b0b5839e492550110169e590a3f390a3531",
+      "size": 81092,
+      "backup": "/private/tmp/spinon-c11-4-taffy015-regression-20261019/tailnet-preview-backup-final/internal/0059-c11-grid-layout.html"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "old_sha256": "a932d2578d34c2e0bd80b364650edacbc1111d40b9171eeae87999017ebe2318",
+      "new_sha256": "01c278ccd788db31302af7a3e6c7dd33453e7bc57c223f7ab785683dd8c9b941",
+      "size": 59523,
+      "backup": "/private/tmp/spinon-c11-4-taffy015-regression-20261019/tailnet-preview-backup-final/plan/c11-4-grid-track-sizing.html"
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "old_sha256": "7eff88e8566cf264ad404775dd872298d61bccbd4b574ddeae046e8d04837a34",
+      "new_sha256": "ab0de9b65ddf04f79ef596d42d9b56f5917940ff5498ba788ed701be5626ecd3",
+      "size": 55998,
+      "backup": "/private/tmp/spinon-c11-4-taffy015-regression-20261019/tailnet-preview-backup-final/plan/c11-css-grid.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/current-implementation-review-20-2026-10-19.html",
+      "old_sha256": null,
+      "new_sha256": "c9b9e382346ef0381d9a2daedc0c7cca172f995da9630109dc96692d20a6f95d",
+      "size": 29043,
+      "backup": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-015-existing-grid-regression.html",
+      "old_sha256": "bec2b7c2371616cfc78943206c822ee91fbcf4cff767840f013278d87a93d8f6",
+      "new_sha256": "032b6a8750410efc0b616232b67b701c11c1e2ef12256fcf896c6d38ad1b4ffa",
+      "size": 29110,
+      "backup": "/private/tmp/spinon-c11-4-taffy015-regression-20261019/tailnet-preview-backup-final/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-015-existing-grid-regression.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/track-sizing-pr-diff-review-30-2026-10-19.html",
+      "old_sha256": null,
+      "new_sha256": "cd36daf7db1f37b34cab4e08a40ac838c60954ff4e5a30935f8f7a80e963d33c",
+      "size": 31782,
+      "backup": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/README.html",
+      "old_sha256": "c33b25835210d1313b229d92eb7fa255f4fe3731ef9d2cd5f008dd178556bdfe",
+      "new_sha256": "488bf5d18b9bf659022acbd0113b58e3e7c2541ac47116c6576dd007e5e03459",
+      "size": 29785,
+      "backup": "/private/tmp/spinon-c11-4-taffy015-regression-20261019/tailnet-preview-backup-final/internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/README.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/auto-repeat/README.html",
+      "old_sha256": "8b54d7980d3b232f2cc151c246d84f959c6f0d7a844506510dcc60eec33236c0",
+      "new_sha256": "d1d48611b8b19d24313a1077c1278644841dbc0c0d72b415b5b3f0bff4a40a5a",
+      "size": 26644,
+      "backup": "/private/tmp/spinon-c11-4-taffy015-regression-20261019/tailnet-preview-backup-final/internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/auto-repeat/README.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-trace-2026-10-19/README.html",
+      "old_sha256": "42716733e1df0c0cf3453225e5df25805dbd918f66411c3bdbb2f736c72e4529",
+      "new_sha256": "adf0106e80d18c5b3e1b5d780ba9ec069322275d7bffc689180bc25164d9c6bd",
+      "size": 26564,
+      "backup": "/private/tmp/spinon-c11-4-taffy015-regression-20261019/tailnet-preview-backup-final/internal/evidence/c11-4-grid-track-sizing-trace-2026-10-19/README.html"
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.c5b896ee0f.js",
+      "old_sha256": null,
+      "new_sha256": "b346a074bf43e45882f2076c20eebff4be34cd2c3b135a44d79c8f0b877b34a9",
+      "size": 39553,
+      "backup": null
+    },
+    {
+      "path": "static/js/async/route-129a98b9f115.2c06375db2.js",
+      "old_sha256": null,
+      "new_sha256": "2f8a3b2b7ca9d924e92ab10895d12e4a985cde731898a6a3b6007e4625ee6998",
+      "size": 15118,
+      "backup": null
+    },
+    {
+      "path": "static/js/async/route-7c1929efdede.9696b5cf4f.js",
+      "old_sha256": null,
+      "new_sha256": "86b72c6422e6bf993a5be2b120357f0c1197b5a24d18546f6b8bd80345970534",
+      "size": 11248,
+      "backup": null
+    },
+    {
+      "path": "static/js/async/route-944b77bb8d60.4342e0d940.js",
+      "old_sha256": null,
+      "new_sha256": "ffd4e89dca3026d06e3a3a111bf5a5a95a464325e0edf3858cc4f69bc7c39722",
+      "size": 10701,
+      "backup": null
+    },
+    {
+      "path": "static/js/index.1d69ac0921.js",
+      "old_sha256": null,
+      "new_sha256": "13497d46b9a6e3936ebcd3444180e4092494ff34f6abd341948cc5f8d38d009f",
+      "size": 33975,
+      "backup": null
+    },
+    {
+      "path": "static/search_index.ko.62e80a87.json",
+      "old_sha256": null,
+      "new_sha256": "62e80a87811896090e93abac52a37634e047c4cdaafa350cbd566db2ee73a1c0",
+      "size": 358087,
+      "backup": null
+    }
+  ]
+}

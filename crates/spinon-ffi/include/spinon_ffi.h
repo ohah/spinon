@@ -452,6 +452,9 @@ SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_3_2_grid_named_lines_fixtu
 /* C11.3.3 grid-template-areas 장면 host는 앱 fixture-test 빌드에서만 제공합니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_3_3_grid_template_areas_fixture(
     char *output, size_t output_capacity);
+/* C11.4 intrinsic track-sizing 장면 host는 앱 fixture-test 빌드에서만 제공합니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture(
+    char *output, size_t output_capacity);
 #if defined(SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST) && \
     SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST
 /* C11.1 고정 Grid surface pixel 내부 검증 전용 host입니다. */
@@ -481,6 +484,10 @@ int32_t spinon_runtime_gpu_host_request_c11_3_2_grid_surface_pixels_for_test(
     char *output, size_t output_capacity);
 /* C11.3.3 template area Grid fixture의 WGPU surface pixel 내부 검증 전용입니다. */
 int32_t spinon_runtime_gpu_host_request_c11_3_3_grid_surface_pixels_for_test(
+    SpinonRuntimeGpuHost *host, const uint32_t *sample_xy, size_t sample_count,
+    char *output, size_t output_capacity);
+/* C11.4 track-sizing fixture의 WGPU surface pixel 내부 검증 전용입니다. */
+int32_t spinon_runtime_gpu_host_request_c11_4_grid_surface_pixels_for_test(
     SpinonRuntimeGpuHost *host, const uint32_t *sample_xy, size_t sample_count,
     char *output, size_t output_capacity);
 #endif
@@ -655,6 +662,11 @@ int32_t spinon_runtime_gpu_host_eval_c11_3_2_grid_named_lines_fixture(
     char *output, size_t output_capacity);
 /* C11.3.3 고정 template area scene ID만 허용하며 임의 JavaScript는 받지 않습니다. */
 int32_t spinon_runtime_gpu_host_eval_c11_3_3_grid_template_areas_fixture(
+    SpinonRuntimeGpuHost *host, const char *scene_id,
+    uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* C11.4 고정 track-sizing scene ID만 허용하며 임의 JavaScript는 받지 않습니다. */
+int32_t spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture(
     SpinonRuntimeGpuHost *host, const char *scene_id,
     uint64_t layout_timeout_millis,
     char *output, size_t output_capacity);

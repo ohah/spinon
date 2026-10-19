@@ -1,0 +1,2885 @@
+{
+  "schema": "spinon-c11-2-3-grid-auto-placement-mobile-runtime-matrix/v1",
+  "status": "matched",
+  "platform": "iOS Simulator (iPhone 17 Pro, iOS 26.2)",
+  "runID": "c1123-i-mvepifpk-43cc2435",
+  "target": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D · iPhone 17 Pro · iOS 26.2",
+  "device": {
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+    "lastBootedAt": "2026-10-15T13:49:33Z",
+    "dataPath": "/Users/yoonhb/Library/Developer/CoreSimulator/Devices/ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D/data",
+    "dataPathSize": 12473741312,
+    "logPath": "/Users/yoonhb/Library/Logs/CoreSimulator/ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "isAvailable": true,
+    "logPathSize": 1556480,
+    "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+    "state": "Booted",
+    "name": "iPhone 17 Pro",
+    "renderer": "WGPU Metal drawable 직접 readback"
+  },
+  "appSha256": "abbe7f5c0c3e06133f6339524efef245d56f6720701e74f7b86d3f20960164a9",
+  "inputs": {
+    "matrix": "5bd83ff5f4b06915a965e8084bbbe20dd9249e44da5a05c3490226b59153eec9",
+    "inventory": "47c845ca6c5af40d3cd80c98904e5cdb639bba61e88161ea5ca0df82d09c22c7",
+    "html": "3e252f64565d1b9819f6afd964e981117359b6f59ecf2c67fad8b9c537f9dfdd",
+    "reference": "16b411cc08d9fb3ef77481bdd004d8a925ea8c72af760cc6d503a8a8f90407f9"
+  },
+  "summary": {
+    "scenes": 25,
+    "successfulScenes": 19,
+    "rejectedScenes": 6,
+    "nodes": 107,
+    "maximumAbsoluteErrorCssPx": 0,
+    "geometryToleranceCssPx": 0.5,
+    "freshProcessPerScene": true,
+    "screenshotsArePixelParity": false,
+    "surfacePixelReadback": {
+      "status": "matched",
+      "matrixSha256": "7e57c8fedf662882242307f998298df2355c6a63e7eb537f15f3a59a5b0fb489",
+      "sceneCount": 19,
+      "sampleCount": 99,
+      "maximumChannelError": 0
+    }
+  },
+  "observations": [
+    {
+      "sceneId": "row-sparse-baseline",
+      "outcome": "matched",
+      "nodeCount": 5,
+      "frameCount": 6,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "screenshot": "row-sparse-baseline-ios-simulator.png",
+      "screenshotSha256": "0277c0cbc58dfe827baf9beb7257ae277ba81cb3f0c047fbc6765b701c4a31d0",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1123-i-mvepifpk-43cc2435-row-sparse-baseline",
+        "processId": 39599,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 24,
+          "renderTree": 6,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 5,
+        "matchedSamples": 5,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1123-row-sparse-baseline-auto-a",
+            "css": [
+              28,
+              28
+            ],
+            "drawable": [
+              85,
+              85
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-row-sparse-baseline-span-two",
+            "css": [
+              61,
+              52
+            ],
+            "drawable": [
+              184,
+              157
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-row-sparse-baseline-fixed-cell",
+            "css": [
+              72,
+              28
+            ],
+            "drawable": [
+              217,
+              85
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-row-sparse-baseline-auto-b",
+            "css": [
+              116,
+              52
+            ],
+            "drawable": [
+              349,
+              157
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-column-c1123-row-sparse-baseline-grid",
+            "css": [
+              61,
+              29
+            ],
+            "drawable": [
+              184,
+              88
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1123-i-mvepifpk-43cc2435-row-sparse-baseline",
+      "processId": 39599
+    },
+    {
+      "sceneId": "row-dense-hole-fill",
+      "outcome": "matched",
+      "nodeCount": 4,
+      "frameCount": 5,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "screenshot": "row-dense-hole-fill-ios-simulator.png",
+      "screenshotSha256": "ecec44532924f7c58d32793538a75fc7ca0b7cbc45ef496a6d46761b63bec7b2",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1123-i-mvepifpk-43cc2435-row-dense-hole-fill",
+        "processId": 39656,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 20,
+          "renderTree": 5,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1123-row-dense-hole-fill-span-a",
+            "css": [
+              61,
+              28
+            ],
+            "drawable": [
+              184,
+              85
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-row-dense-hole-fill-span-b",
+            "css": [
+              61,
+              52
+            ],
+            "drawable": [
+              184,
+              157
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-row-dense-hole-fill-small-c",
+            "css": [
+              116,
+              28
+            ],
+            "drawable": [
+              349,
+              85
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-row-c1123-row-dense-hole-fill-grid",
+            "css": [
+              39,
+              41
+            ],
+            "drawable": [
+              118,
+              124
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1123-i-mvepifpk-43cc2435-row-dense-hole-fill",
+      "processId": 39656
+    },
+    {
+      "sceneId": "row-dense-span-collision",
+      "outcome": "matched",
+      "nodeCount": 5,
+      "frameCount": 6,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "screenshot": "row-dense-span-collision-ios-simulator.png",
+      "screenshotSha256": "5b3dedf69d9ba9d585a4faa9ed0a59bb36e318b1e4eb4ff65eb621a7e1e54a41",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1123-i-mvepifpk-43cc2435-row-dense-span-collision",
+        "processId": 39701,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 24,
+          "renderTree": 6,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 5,
+        "matchedSamples": 5,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1123-row-dense-span-collision-span-a",
+            "css": [
+              61,
+              28
+            ],
+            "drawable": [
+              184,
+              85
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-row-dense-span-collision-fixed-c",
+            "css": [
+              116,
+              28
+            ],
+            "drawable": [
+              349,
+              85
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-row-dense-span-collision-span-b",
+            "css": [
+              61,
+              52
+            ],
+            "drawable": [
+              184,
+              157
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-row-dense-span-collision-small-d",
+            "css": [
+              116,
+              52
+            ],
+            "drawable": [
+              349,
+              157
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-row-c1123-row-dense-span-collision-grid",
+            "css": [
+              39,
+              41
+            ],
+            "drawable": [
+              118,
+              124
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1123-i-mvepifpk-43cc2435-row-dense-span-collision",
+      "processId": 39701
+    },
+    {
+      "sceneId": "row-sparse-hole-control",
+      "outcome": "matched",
+      "nodeCount": 4,
+      "frameCount": 5,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "screenshot": "row-sparse-hole-control-ios-simulator.png",
+      "screenshotSha256": "853eeffb8ccf9e1560d7ad30114893832e7814acc49a9f5d6b7d6adce7181389",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1123-i-mvepifpk-43cc2435-row-sparse-hole-control",
+        "processId": 39784,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 20,
+          "renderTree": 5,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1123-row-sparse-hole-control-span-a",
+            "css": [
+              61,
+              28
+            ],
+            "drawable": [
+              184,
+              85
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-row-sparse-hole-control-span-b",
+            "css": [
+              61,
+              52
+            ],
+            "drawable": [
+              184,
+              157
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-row-sparse-hole-control-small-c",
+            "css": [
+              116,
+              52
+            ],
+            "drawable": [
+              349,
+              157
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-row-c1123-row-sparse-hole-control-grid",
+            "css": [
+              39,
+              41
+            ],
+            "drawable": [
+              118,
+              124
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1123-i-mvepifpk-43cc2435-row-sparse-hole-control",
+      "processId": 39784
+    },
+    {
+      "sceneId": "row-dense-fixed-row",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "unsupported_grid_auto_columns",
+        "runtimeNodeId": 2,
+        "fixtureNodeId": "c1123-row-dense-fixed-row-grid",
+        "property": "grid-auto-columns"
+      },
+      "nodeCount": 4,
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "screenshot": "row-dense-fixed-row-ios-simulator.png",
+      "screenshotSha256": "b167a6c6ff12d0bfb039178dc4e0a3db24dd666066dc7ad915e7d4a3e4bde905",
+      "runID": "c1123-i-mvepifpk-43cc2435-row-dense-fixed-row",
+      "processId": 39827
+    },
+    {
+      "sceneId": "row-dense-fixed-column",
+      "outcome": "matched",
+      "nodeCount": 4,
+      "frameCount": 5,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "screenshot": "row-dense-fixed-column-ios-simulator.png",
+      "screenshotSha256": "321a57b1cd196be37b94f1e66ec42fe8b3c11a484c52fc6ce51d6395ad8115d1",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1123-i-mvepifpk-43cc2435-row-dense-fixed-column",
+        "processId": 39878,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 20,
+          "renderTree": 5,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 5,
+        "matchedSamples": 5,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1123-row-dense-fixed-column-locked-a",
+            "css": [
+              72,
+              28
+            ],
+            "drawable": [
+              217,
+              85
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-row-dense-fixed-column-locked-b",
+            "css": [
+              72,
+              52
+            ],
+            "drawable": [
+              217,
+              157
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-row-dense-fixed-column-locked-c",
+            "css": [
+              72,
+              76
+            ],
+            "drawable": [
+              217,
+              229
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-column-c1123-row-dense-fixed-column-grid",
+            "css": [
+              61,
+              29
+            ],
+            "drawable": [
+              184,
+              88
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-row-c1123-row-dense-fixed-column-grid",
+            "css": [
+              39,
+              41
+            ],
+            "drawable": [
+              118,
+              124
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1123-i-mvepifpk-43cc2435-row-dense-fixed-column",
+      "processId": 39878
+    },
+    {
+      "sceneId": "row-dense-positive-implicit-row",
+      "outcome": "matched",
+      "nodeCount": 6,
+      "frameCount": 7,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "screenshot": "row-dense-positive-implicit-row-ios-simulator.png",
+      "screenshotSha256": "54c88ac3249d5d5470e68bf90aae06cae328650dbe7a9e37e17ae2ac5571e4b5",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1123-i-mvepifpk-43cc2435-row-dense-positive-implicit-row",
+        "processId": 39923,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 28,
+          "renderTree": 7,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 7,
+        "matchedSamples": 7,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1123-row-dense-positive-implicit-row-item-a",
+            "css": [
+              28,
+              28
+            ],
+            "drawable": [
+              85,
+              85
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-row-dense-positive-implicit-row-item-b",
+            "css": [
+              76,
+              28
+            ],
+            "drawable": [
+              229,
+              85
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-row-dense-positive-implicit-row-item-c",
+            "css": [
+              28,
+              56
+            ],
+            "drawable": [
+              85,
+              169
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-row-dense-positive-implicit-row-item-d",
+            "css": [
+              76,
+              56
+            ],
+            "drawable": [
+              229,
+              169
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-row-dense-positive-implicit-row-item-e",
+            "css": [
+              28,
+              89
+            ],
+            "drawable": [
+              85,
+              268
+            ],
+            "rgba": [
+              249,
+              115,
+              22,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-column-c1123-row-dense-positive-implicit-row-grid",
+            "css": [
+              63,
+              29
+            ],
+            "drawable": [
+              190,
+              88
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-row-c1123-row-dense-positive-implicit-row-grid",
+            "css": [
+              39,
+              43
+            ],
+            "drawable": [
+              118,
+              130
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1123-i-mvepifpk-43cc2435-row-dense-positive-implicit-row",
+      "processId": 39923
+    },
+    {
+      "sceneId": "column-sparse-explicit-fill",
+      "outcome": "matched",
+      "nodeCount": 5,
+      "frameCount": 6,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "screenshot": "column-sparse-explicit-fill-ios-simulator.png",
+      "screenshotSha256": "0e5e1d664604f34d50329aa83ffdbba9d2f7217e85e592025131d7fbab1f8fb0",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1123-i-mvepifpk-43cc2435-column-sparse-explicit-fill",
+        "processId": 39966,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 24,
+          "renderTree": 6,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 6,
+        "matchedSamples": 6,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1123-column-sparse-explicit-fill-item-a",
+            "css": [
+              28,
+              28
+            ],
+            "drawable": [
+              85,
+              85
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-sparse-explicit-fill-item-b",
+            "css": [
+              28,
+              56
+            ],
+            "drawable": [
+              85,
+              169
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-sparse-explicit-fill-item-c",
+            "css": [
+              28,
+              84
+            ],
+            "drawable": [
+              85,
+              253
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-sparse-explicit-fill-item-d",
+            "css": [
+              76,
+              28
+            ],
+            "drawable": [
+              229,
+              85
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-column-c1123-column-sparse-explicit-fill-grid",
+            "css": [
+              63,
+              29
+            ],
+            "drawable": [
+              190,
+              88
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-row-c1123-column-sparse-explicit-fill-grid",
+            "css": [
+              39,
+              43
+            ],
+            "drawable": [
+              118,
+              130
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1123-i-mvepifpk-43cc2435-column-sparse-explicit-fill",
+      "processId": 39966
+    },
+    {
+      "sceneId": "column-sparse-positive-implicit-column",
+      "outcome": "matched",
+      "nodeCount": 6,
+      "frameCount": 7,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "screenshot": "column-sparse-positive-implicit-column-ios-simulator.png",
+      "screenshotSha256": "af6f1e435baa88f0673b0e42958a4da15a65b83def41970acb81b3a8b71be665",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1123-i-mvepifpk-43cc2435-column-sparse-positive-implicit-column",
+        "processId": 40242,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 28,
+          "renderTree": 7,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 7,
+        "matchedSamples": 7,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1123-column-sparse-positive-implicit-column-item-a",
+            "css": [
+              28,
+              28
+            ],
+            "drawable": [
+              85,
+              85
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-sparse-positive-implicit-column-item-b",
+            "css": [
+              28,
+              56
+            ],
+            "drawable": [
+              85,
+              169
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-sparse-positive-implicit-column-item-c",
+            "css": [
+              76,
+              28
+            ],
+            "drawable": [
+              229,
+              85
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-sparse-positive-implicit-column-item-d",
+            "css": [
+              76,
+              56
+            ],
+            "drawable": [
+              229,
+              169
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-sparse-positive-implicit-column-item-e",
+            "css": [
+              112,
+              28
+            ],
+            "drawable": [
+              337,
+              85
+            ],
+            "rgba": [
+              249,
+              115,
+              22,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-column-c1123-column-sparse-positive-implicit-column-grid",
+            "css": [
+              63,
+              29
+            ],
+            "drawable": [
+              190,
+              88
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-row-c1123-column-sparse-positive-implicit-column-grid",
+            "css": [
+              39,
+              43
+            ],
+            "drawable": [
+              118,
+              130
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1123-i-mvepifpk-43cc2435-column-sparse-positive-implicit-column",
+      "processId": 40242
+    },
+    {
+      "sceneId": "column-sparse-fixed-row",
+      "outcome": "matched",
+      "nodeCount": 4,
+      "frameCount": 5,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "screenshot": "column-sparse-fixed-row-ios-simulator.png",
+      "screenshotSha256": "fa0d8328eec1def728bccd645699448c8f29c05cc68aaa1c990ec035077c1570",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1123-i-mvepifpk-43cc2435-column-sparse-fixed-row",
+        "processId": 40537,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 20,
+          "renderTree": 5,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 5,
+        "matchedSamples": 5,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1123-column-sparse-fixed-row-locked-a",
+            "css": [
+              28,
+              56
+            ],
+            "drawable": [
+              85,
+              169
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-sparse-fixed-row-locked-b",
+            "css": [
+              76,
+              56
+            ],
+            "drawable": [
+              229,
+              169
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-sparse-fixed-row-locked-c",
+            "css": [
+              124,
+              56
+            ],
+            "drawable": [
+              373,
+              169
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-column-c1123-column-sparse-fixed-row-grid",
+            "css": [
+              63,
+              29
+            ],
+            "drawable": [
+              190,
+              88
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-row-c1123-column-sparse-fixed-row-grid",
+            "css": [
+              39,
+              43
+            ],
+            "drawable": [
+              118,
+              130
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1123-i-mvepifpk-43cc2435-column-sparse-fixed-row",
+      "processId": 40537
+    },
+    {
+      "sceneId": "column-sparse-fixed-column",
+      "outcome": "matched",
+      "nodeCount": 4,
+      "frameCount": 5,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "screenshot": "column-sparse-fixed-column-ios-simulator.png",
+      "screenshotSha256": "6706b81741973d71673d0a1b43ba24192eb5e0b23d2b158f4210f2938d7fd0e5",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1123-i-mvepifpk-43cc2435-column-sparse-fixed-column",
+        "processId": 40584,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 20,
+          "renderTree": 5,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 5,
+        "matchedSamples": 5,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1123-column-sparse-fixed-column-locked-a",
+            "css": [
+              28,
+              28
+            ],
+            "drawable": [
+              85,
+              85
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-sparse-fixed-column-locked-b",
+            "css": [
+              28,
+              56
+            ],
+            "drawable": [
+              85,
+              169
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-sparse-fixed-column-locked-c",
+            "css": [
+              28,
+              84
+            ],
+            "drawable": [
+              85,
+              253
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-column-c1123-column-sparse-fixed-column-grid",
+            "css": [
+              63,
+              29
+            ],
+            "drawable": [
+              190,
+              88
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-row-c1123-column-sparse-fixed-column-grid",
+            "css": [
+              39,
+              43
+            ],
+            "drawable": [
+              118,
+              130
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1123-i-mvepifpk-43cc2435-column-sparse-fixed-column",
+      "processId": 40584
+    },
+    {
+      "sceneId": "column-dense-hole-fill",
+      "outcome": "matched",
+      "nodeCount": 4,
+      "frameCount": 5,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "screenshot": "column-dense-hole-fill-ios-simulator.png",
+      "screenshotSha256": "57e49a60e6428143b6a560b50036ea09fedb9d5d81955f22b948e2c92b8acac8",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1123-i-mvepifpk-43cc2435-column-dense-hole-fill",
+        "processId": 40993,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 20,
+          "renderTree": 5,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 5,
+        "matchedSamples": 5,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1123-column-dense-hole-fill-span-a",
+            "css": [
+              28,
+              41
+            ],
+            "drawable": [
+              85,
+              124
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-dense-hole-fill-span-b",
+            "css": [
+              76,
+              41
+            ],
+            "drawable": [
+              229,
+              124
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-dense-hole-fill-small-c",
+            "css": [
+              28,
+              84
+            ],
+            "drawable": [
+              85,
+              253
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-column-c1123-column-dense-hole-fill-grid",
+            "css": [
+              63,
+              29
+            ],
+            "drawable": [
+              190,
+              88
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-row-c1123-column-dense-hole-fill-grid",
+            "css": [
+              39,
+              43
+            ],
+            "drawable": [
+              118,
+              130
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1123-i-mvepifpk-43cc2435-column-dense-hole-fill",
+      "processId": 40993
+    },
+    {
+      "sceneId": "column-sparse-hole-control",
+      "outcome": "matched",
+      "nodeCount": 4,
+      "frameCount": 5,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "screenshot": "column-sparse-hole-control-ios-simulator.png",
+      "screenshotSha256": "19ae5b70ba04b15782d29a269190811bb216f62a79612acce5f23a3c375960b7",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1123-i-mvepifpk-43cc2435-column-sparse-hole-control",
+        "processId": 41308,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 20,
+          "renderTree": 5,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 5,
+        "matchedSamples": 5,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1123-column-sparse-hole-control-span-a",
+            "css": [
+              28,
+              41
+            ],
+            "drawable": [
+              85,
+              124
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-sparse-hole-control-span-b",
+            "css": [
+              76,
+              41
+            ],
+            "drawable": [
+              229,
+              124
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-sparse-hole-control-small-c",
+            "css": [
+              76,
+              84
+            ],
+            "drawable": [
+              229,
+              253
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-column-c1123-column-sparse-hole-control-grid",
+            "css": [
+              63,
+              29
+            ],
+            "drawable": [
+              190,
+              88
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-row-c1123-column-sparse-hole-control-grid",
+            "css": [
+              39,
+              43
+            ],
+            "drawable": [
+              118,
+              130
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1123-i-mvepifpk-43cc2435-column-sparse-hole-control",
+      "processId": 41308
+    },
+    {
+      "sceneId": "column-dense-span-collision",
+      "outcome": "matched",
+      "nodeCount": 5,
+      "frameCount": 6,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "screenshot": "column-dense-span-collision-ios-simulator.png",
+      "screenshotSha256": "8cfbd9198864cfac3f288a8cdcdd63cbcebf66efde3b650b80043d7d1655e81a",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1123-i-mvepifpk-43cc2435-column-dense-span-collision",
+        "processId": 41416,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 24,
+          "renderTree": 6,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 6,
+        "matchedSamples": 6,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1123-column-dense-span-collision-span-a",
+            "css": [
+              28,
+              41
+            ],
+            "drawable": [
+              85,
+              124
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-dense-span-collision-fixed-c",
+            "css": [
+              28,
+              84
+            ],
+            "drawable": [
+              85,
+              253
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-dense-span-collision-span-b",
+            "css": [
+              76,
+              41
+            ],
+            "drawable": [
+              229,
+              124
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-dense-span-collision-small-d",
+            "css": [
+              76,
+              84
+            ],
+            "drawable": [
+              229,
+              253
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-column-c1123-column-dense-span-collision-grid",
+            "css": [
+              63,
+              29
+            ],
+            "drawable": [
+              190,
+              88
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-row-c1123-column-dense-span-collision-grid",
+            "css": [
+              39,
+              43
+            ],
+            "drawable": [
+              118,
+              130
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1123-i-mvepifpk-43cc2435-column-dense-span-collision",
+      "processId": 41416
+    },
+    {
+      "sceneId": "column-dense-positive-implicit-column",
+      "outcome": "matched",
+      "nodeCount": 6,
+      "frameCount": 7,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "screenshot": "column-dense-positive-implicit-column-ios-simulator.png",
+      "screenshotSha256": "4be4e0436d6baca897a1456fe15a92141f7e876cc6006ab46e4295781caea864",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1123-i-mvepifpk-43cc2435-column-dense-positive-implicit-column",
+        "processId": 41570,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 28,
+          "renderTree": 7,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 7,
+        "matchedSamples": 7,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1123-column-dense-positive-implicit-column-item-a",
+            "css": [
+              28,
+              28
+            ],
+            "drawable": [
+              85,
+              85
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-dense-positive-implicit-column-item-b",
+            "css": [
+              28,
+              56
+            ],
+            "drawable": [
+              85,
+              169
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-dense-positive-implicit-column-item-c",
+            "css": [
+              76,
+              28
+            ],
+            "drawable": [
+              229,
+              85
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-dense-positive-implicit-column-item-d",
+            "css": [
+              76,
+              56
+            ],
+            "drawable": [
+              229,
+              169
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-column-dense-positive-implicit-column-item-e",
+            "css": [
+              112,
+              28
+            ],
+            "drawable": [
+              337,
+              85
+            ],
+            "rgba": [
+              249,
+              115,
+              22,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-column-c1123-column-dense-positive-implicit-column-grid",
+            "css": [
+              63,
+              29
+            ],
+            "drawable": [
+              190,
+              88
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-row-c1123-column-dense-positive-implicit-column-grid",
+            "css": [
+              39,
+              43
+            ],
+            "drawable": [
+              118,
+              130
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1123-i-mvepifpk-43cc2435-column-dense-positive-implicit-column",
+      "processId": 41570
+    },
+    {
+      "sceneId": "definite-first-dense",
+      "outcome": "matched",
+      "nodeCount": 5,
+      "frameCount": 6,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "screenshot": "definite-first-dense-ios-simulator.png",
+      "screenshotSha256": "d50413e4e4d1f727079cf50badf2505b5617a6f29350795f8f9e1a0d779a4ee3",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1123-i-mvepifpk-43cc2435-definite-first-dense",
+        "processId": 41759,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 24,
+          "renderTree": 6,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 6,
+        "matchedSamples": 6,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1123-definite-first-dense-auto-a",
+            "css": [
+              72,
+              28
+            ],
+            "drawable": [
+              217,
+              85
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-definite-first-dense-fixed-late",
+            "css": [
+              28,
+              28
+            ],
+            "drawable": [
+              85,
+              85
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-definite-first-dense-span-b",
+            "css": [
+              61,
+              52
+            ],
+            "drawable": [
+              184,
+              157
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-definite-first-dense-auto-c",
+            "css": [
+              116,
+              28
+            ],
+            "drawable": [
+              349,
+              85
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-column-c1123-definite-first-dense-grid",
+            "css": [
+              61,
+              29
+            ],
+            "drawable": [
+              184,
+              88
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-row-c1123-definite-first-dense-grid",
+            "css": [
+              39,
+              41
+            ],
+            "drawable": [
+              118,
+              124
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1123-i-mvepifpk-43cc2435-definite-first-dense",
+      "processId": 41759
+    },
+    {
+      "sceneId": "hidden-item-excluded",
+      "outcome": "matched",
+      "nodeCount": 4,
+      "frameCount": 5,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        4,
+        5
+      ],
+      "screenshot": "hidden-item-excluded-ios-simulator.png",
+      "screenshotSha256": "9f570e44ce1ef18128517eb375a80752cd586e8ce2d6dd19c03de51e461853ec",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1123-i-mvepifpk-43cc2435-hidden-item-excluded",
+        "processId": 41824,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 20,
+          "renderTree": 5,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1123-hidden-item-excluded-visible-a",
+            "css": [
+              28,
+              28
+            ],
+            "drawable": [
+              85,
+              85
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-hidden-item-excluded-visible-b",
+            "css": [
+              76,
+              28
+            ],
+            "drawable": [
+              229,
+              85
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-column-c1123-hidden-item-excluded-grid",
+            "css": [
+              63,
+              29
+            ],
+            "drawable": [
+              190,
+              88
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1123-i-mvepifpk-43cc2435-hidden-item-excluded",
+      "processId": 41824
+    },
+    {
+      "sceneId": "nested-mixed-flow",
+      "outcome": "matched",
+      "nodeCount": 6,
+      "frameCount": 7,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "screenshot": "nested-mixed-flow-ios-simulator.png",
+      "screenshotSha256": "c3aaf9b6b5ff5359553e7e82265003ce1ef106f3cc83e41928f0365f81323913",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1123-i-mvepifpk-43cc2435-nested-mixed-flow",
+        "processId": 41869,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 28,
+          "renderTree": 7,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 8,
+        "matchedSamples": 8,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1123-nested-mixed-flow-nested-row",
+            "css": [
+              63,
+              39
+            ],
+            "drawable": [
+              190,
+              118
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-nested-mixed-flow-inner-span-a",
+            "css": [
+              37,
+              28
+            ],
+            "drawable": [
+              112,
+              85
+            ],
+            "rgba": [
+              255,
+              200,
+              87,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-nested-mixed-flow-inner-span-b",
+            "css": [
+              37,
+              52
+            ],
+            "drawable": [
+              112,
+              157
+            ],
+            "rgba": [
+              249,
+              115,
+              22,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-nested-mixed-flow-inner-small",
+            "css": [
+              28,
+              74
+            ],
+            "drawable": [
+              85,
+              223
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-nested-mixed-flow-outer-item",
+            "css": [
+              159,
+              39
+            ],
+            "drawable": [
+              478,
+              118
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-column-c1123-nested-mixed-flow-grid",
+            "css": [
+              111,
+              39
+            ],
+            "drawable": [
+              334,
+              118
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-column-c1123-nested-mixed-flow-nested-row",
+            "css": [
+              61,
+              29
+            ],
+            "drawable": [
+              184,
+              88
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-row-c1123-nested-mixed-flow-nested-row",
+            "css": [
+              39,
+              41
+            ],
+            "drawable": [
+              118,
+              124
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1123-i-mvepifpk-43cc2435-nested-mixed-flow",
+      "processId": 41869
+    },
+    {
+      "sceneId": "auto-track-no-implicit",
+      "outcome": "matched",
+      "nodeCount": 3,
+      "frameCount": 4,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "screenshot": "auto-track-no-implicit-ios-simulator.png",
+      "screenshotSha256": "34b0fb9de3eb7962946c84cd57537346342144707d1549c23a02727dd60c5fdd",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1123-i-mvepifpk-43cc2435-auto-track-no-implicit",
+        "processId": 42059,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 16,
+          "renderTree": 4,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1123-auto-track-no-implicit-item-a",
+            "css": [
+              28,
+              28
+            ],
+            "drawable": [
+              85,
+              85
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1123-auto-track-no-implicit-item-b",
+            "css": [
+              76,
+              28
+            ],
+            "drawable": [
+              229,
+              85
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-column-c1123-auto-track-no-implicit-grid",
+            "css": [
+              63,
+              29
+            ],
+            "drawable": [
+              190,
+              88
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "gap-row-c1123-auto-track-no-implicit-grid",
+            "css": [
+              39,
+              43
+            ],
+            "drawable": [
+              118,
+              130
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1123-i-mvepifpk-43cc2435-auto-track-no-implicit",
+      "processId": 42059
+    },
+    {
+      "sceneId": "reject-repeated-auto-track",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "unsupported_computed_value",
+        "runtimeNodeId": 2,
+        "fixtureNodeId": "c1123-reject-repeated-auto-track-grid",
+        "property": "grid-auto-rows"
+      },
+      "nodeCount": 7,
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "screenshot": "reject-repeated-auto-track-ios-simulator.png",
+      "screenshotSha256": "62db0ecca844417ed812fdfaa11c6e056f7156346cdfbcdddccc99be51270a24",
+      "runID": "c1123-i-mvepifpk-43cc2435-reject-repeated-auto-track",
+      "processId": 42101
+    },
+    {
+      "sceneId": "reject-negative-implicit-line",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "invalid_grid_placement",
+        "runtimeNodeId": 3,
+        "fixtureNodeId": "c1123-reject-negative-implicit-line-negative-line",
+        "property": "grid-column-start"
+      },
+      "nodeCount": 2,
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "screenshot": "reject-negative-implicit-line-ios-simulator.png",
+      "screenshotSha256": "8d26742981e2a549bac8a143fae75981ae0b3fda5b5ea41c5c508010c10fbe94",
+      "runID": "c1123-i-mvepifpk-43cc2435-reject-negative-implicit-line",
+      "processId": 42203
+    },
+    {
+      "sceneId": "reject-nonzero-order",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "unsupported_computed_value",
+        "runtimeNodeId": 3,
+        "fixtureNodeId": "c1123-reject-nonzero-order-order-two",
+        "property": "order"
+      },
+      "nodeCount": 3,
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "screenshot": "reject-nonzero-order-ios-simulator.png",
+      "screenshotSha256": "da061266de3670f4635b3e01a91cf9d6dc8ac3e56adf77aab2ab34a243d6fece",
+      "runID": "c1123-i-mvepifpk-43cc2435-reject-nonzero-order",
+      "processId": 42450
+    },
+    {
+      "sceneId": "reject-indefinite-axis",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "unsupported_computed_value",
+        "runtimeNodeId": 2,
+        "fixtureNodeId": "c1123-reject-indefinite-axis-grid",
+        "property": "height"
+      },
+      "nodeCount": 3,
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "screenshot": "reject-indefinite-axis-ios-simulator.png",
+      "screenshotSha256": "b8b34b3e063074efeccfccb930babd7a201279458691260e96d0ff102d23e05f",
+      "runID": "c1123-i-mvepifpk-43cc2435-reject-indefinite-axis",
+      "processId": 42493
+    },
+    {
+      "sceneId": "auto-span-at-track-limit",
+      "outcome": "matched",
+      "nodeCount": 2,
+      "frameCount": 3,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3
+      ],
+      "screenshot": "auto-span-at-track-limit-ios-simulator.png",
+      "screenshotSha256": "de308f66f9013d0538210c195ca9c1dfd2626885cb652ebb94be55076450f9e0",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1123-i-mvepifpk-43cc2435-auto-span-at-track-limit",
+        "processId": 42671,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 12,
+          "renderTree": 3,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 2,
+        "matchedSamples": 2,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1123-auto-span-at-track-limit-span-at-maximum",
+            "css": [
+              319,
+              20
+            ],
+            "drawable": [
+              958,
+              61
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "surface-c1123-auto-span-at-track-limit-grid",
+            "css": [
+              199,
+              29
+            ],
+            "drawable": [
+              598,
+              88
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1123-i-mvepifpk-43cc2435-auto-span-at-track-limit",
+      "processId": 42671
+    },
+    {
+      "sceneId": "auto-span-over-track-limit",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "grid_track_limit_exceeded",
+        "runtimeNodeId": 2,
+        "fixtureNodeId": "c1123-auto-span-over-track-limit-grid",
+        "property": "grid-template-columns"
+      },
+      "nodeCount": 2,
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "screenshot": "auto-span-over-track-limit-ios-simulator.png",
+      "screenshotSha256": "4571bec2dfeda950c2d48b99890d802add8142a58fb939e058ac002a7e30974a",
+      "runID": "c1123-i-mvepifpk-43cc2435-auto-span-over-track-limit",
+      "processId": 42856
+    }
+  ],
+  "limitations": [
+    "고정 C11.2.3 Chromium fixture의 runtime geometry 비교이며 Spinon WPT 적합성이나 전체 CSS Grid 지원을 뜻하지 않는다.",
+    "화면 PNG는 실행 상태 확인용이며 GPU surface 또는 OS compositor pixel parity를 증명하지 않는다.",
+    "이 결과는 기록된 Android 기기 또는 지정 iOS Simulator 한 대에서만 유효하다.",
+    "표면 pixel은 기록된 Android 실기기 PixelCopy 또는 iOS Simulator drawable readback에서만 비교했다.",
+    "iOS drawable 결과는 OS compositor 제출 전이며 최종 화면 pixel을 뜻하지 않는다.",
+    "oracle-only 4 scene은 runtime 성공으로 요구하지 않고 계약된 오류 동작을 확인한다."
+  ]
+}

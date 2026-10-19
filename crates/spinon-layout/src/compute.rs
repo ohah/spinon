@@ -62,7 +62,7 @@ impl TaffyLayoutEngine {
         } else {
             None
         };
-        let visual_tree = compute_tree(
+        let mut visual_tree = compute_tree(
             input,
             &index,
             &postorder,
@@ -106,6 +106,7 @@ impl TaffyLayoutEngine {
         output.intrinsic_measurements = visual_tree.take_intrinsic_measurements(output.revision);
         output.grid_item_intrinsic_inputs =
             visual_tree.collect_grid_item_intrinsic_inputs(output.revision)?;
+        output.grid_track_sizing_traces = visual_tree.take_grid_track_sizing_traces()?;
         Ok(output)
     }
 }
@@ -492,6 +493,7 @@ fn collect_frames(
         text_flow_layouts: BTreeMap::new(),
         intrinsic_measurements: Vec::new(),
         grid_item_intrinsic_inputs: Vec::new(),
+        grid_track_sizing_traces: Vec::new(),
         frames,
     })
 }

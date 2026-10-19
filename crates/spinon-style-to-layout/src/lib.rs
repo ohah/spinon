@@ -32,6 +32,8 @@ mod c11_3_2_grid_named_line_tests;
 #[cfg(test)]
 mod c11_3_3_grid_template_areas_tests;
 #[cfg(test)]
+mod c11_4_track_sizing_areas_tests;
+#[cfg(test)]
 mod c11_grid_tests;
 #[cfg(test)]
 mod c12_1_position_tests;
@@ -83,7 +85,8 @@ pub use projection::{
     compute_runtime_block_flex_grid_dense_auto_placement_style_layout,
     compute_runtime_block_flex_grid_placement_style_layout,
     compute_runtime_block_flex_grid_style_layout,
-    compute_runtime_block_flex_grid_template_style_layout, compute_runtime_style_layout,
+    compute_runtime_block_flex_grid_template_style_layout,
+    compute_runtime_block_flex_grid_track_sizing_style_layout, compute_runtime_style_layout,
     compute_runtime_style_layout_with_intrinsic_size_snapshot, compute_s04_style_layout,
     compute_style_layout,
 };

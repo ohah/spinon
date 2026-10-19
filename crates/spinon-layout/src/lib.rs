@@ -37,8 +37,13 @@ pub const MAX_LAYOUT_TREE_DEPTH: usize = 1_024;
 pub use css_math::{LayoutCalcId, LayoutCssMath, LayoutCssMathProperty, LayoutCssMathValue};
 pub use error::LayoutError;
 pub use grid::{
-    GridAutoColumns, GridAutoFlow, GridAutoRows, GridAutoTrackSize, GridContainerInput,
-    GridPlacementMode, GridTrackSize,
+    GridAutoColumns, GridAutoFlow, GridAutoRepeatMode, GridAutoRows, GridAutoTrackSize,
+    GridContainerInput, GridPlacementMode, GridTrackLengthPercentage, GridTrackMaxSizingFunction,
+    GridTrackMinSizingFunction, GridTrackSize, LayoutGridTrackSizingAxis,
+    LayoutGridTrackSizingContributionKind, LayoutGridTrackSizingContributionTrace,
+    LayoutGridTrackSizingMinimumContributionSource, LayoutGridTrackSizingPassTrace,
+    LayoutGridTrackSizingStageKind, LayoutGridTrackSizingStageTrace, LayoutGridTrackSizingTrace,
+    LayoutGridTrackSizingTrackState,
 };
 pub use grid_placement::{GridItemInput, GridPlacementInput};
 pub use host_document::HostTextStyleProfile;
@@ -193,6 +198,8 @@ pub struct LayoutOutput {
     /// 직접 in-flow Grid leaf text/replaced의 callback-independent intrinsic 원본 입력입니다.
     /// 최종 CSS contribution 또는 item span/automatic minimum 계산은 포함하지 않습니다.
     pub grid_item_intrinsic_inputs: Vec<LayoutGridItemIntrinsicInput>,
+    /// C11.4 후보 profile이 기록한 Taffy track-sizing 단계와 base size/growth limit입니다.
+    pub grid_track_sizing_traces: Vec<LayoutGridTrackSizingTrace>,
 }
 
 /// 하나의 layout 계산 입력 revision에 결속한 shaping 결과입니다.
@@ -514,6 +521,51 @@ fn validate_css_math_bindings(input: &LayoutInput) -> Result<(), LayoutError> {
             }
         }
     }
+    for (&node, container) in &input.grid_containers {
+        for (property, tracks) in [
+            (
+                LayoutCssMathProperty::GridTemplateColumns,
+                &container.columns,
+            ),
+            (LayoutCssMathProperty::GridTemplateRows, &container.rows),
+        ] {
+            for track in tracks {
+                let ids = match track {
+                    GridTrackSize::Calc(id) => [Some(*id), None],
+                    GridTrackSize::MinMax { min, max } => [
+                        match min {
+                            grid::GridTrackMinSizingFunction::Calc(id) => Some(*id),
+                            _ => None,
+                        },
+                        match max {
+                            grid::GridTrackMaxSizingFunction::Calc(id) => Some(*id),
+                            _ => None,
+                        },
+                    ],
+                    GridTrackSize::FitContent(GridTrackLengthPercentage::Calc(id)) => {
+                        [Some(*id), None]
+                    }
+                    _ => [None, None],
+                };
+                for id in ids.into_iter().flatten() {
+                    let Some(value) = by_id.get(&id) else {
+                        return Err(LayoutError::MissingCssMath {
+                            node,
+                            property: property.name(),
+                            id,
+                        });
+                    };
+                    if value.node_id != node || value.property != property {
+                        return Err(LayoutError::CssMathBindingMismatch {
+                            node,
+                            property: property.name(),
+                            id,
+                        });
+                    }
+                }
+            }
+        }
+    }
     Ok(())
 }
 
@@ -557,6 +609,8 @@ mod absolute_position_tests;
 mod depth_tests;
 #[cfg(test)]
 mod fixed_position_tests;
+#[cfg(test)]
+mod grid_chrome_oracle_tests;
 #[cfg(test)]
 #[path = "intrinsic_size_tests.rs"]
 mod intrinsic_size_tests;

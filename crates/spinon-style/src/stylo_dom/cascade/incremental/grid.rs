@@ -3,6 +3,7 @@ use std::collections::BTreeMap;
 use spinon_core::NodeId;
 use style::{
     properties::ComputedValues,
+    typed_om::{ToTyped, TypedValue},
     values::computed::{
         GridTemplateComponent, TrackBreadth, TrackSize,
         length_percentage::Unpacked as LengthPercentageValue, position::GridAutoFlow,
@@ -11,13 +12,20 @@ use style::{
 };
 
 use super::super::{
-    ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRows,
-    ComputedCssGridItemPlacement, ComputedCssGridLayout, ComputedCssGridPlacement,
+    ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRepeatMode,
+    ComputedCssGridAutoRows, ComputedCssGridItemPlacement, ComputedCssGridLayout,
+    ComputedCssGridPlacement, ComputedCssGridTrackBreadth, ComputedCssGridTrackLengthPercentage,
     ComputedCssGridTrackSize, CssCascadeError,
 };
 
 const MAX_COMPUTED_GRID_TRACKS: usize = 10_000;
 const MAX_COMPUTED_GRID_LINE_METADATA_BYTES: usize = 1024 * 1024;
+
+struct ComputedGridTracks {
+    tracks: Vec<ComputedCssGridTrackSize>,
+    line_names: Vec<Vec<String>>,
+    auto_repeat: Option<ComputedCssGridAutoRepeatMode>,
+}
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub(in crate::stylo_dom::cascade) enum IntegerRepeatReservationSite {
@@ -60,6 +68,8 @@ pub(super) fn computed_grid_layout(
     node: NodeId,
     properties: &BTreeMap<String, String>,
     allow_integer_repeat: bool,
+    allow_intrinsic_tracks: bool,
+    allow_auto_repeat: bool,
 ) -> Result<ComputedCssGridLayout, CssCascadeError> {
     let template_areas = if allow_integer_repeat {
         super::grid_areas::computed_grid_template_areas(
@@ -72,20 +82,54 @@ pub(super) fn computed_grid_layout(
     };
     let columns_value = property_value(properties, "grid-template-columns");
     let rows_value = property_value(properties, "grid-template-rows");
-    let (columns, columns_line_names) = computed_grid_tracks(
+    let ComputedGridTracks {
+        tracks: columns,
+        line_names: columns_line_names,
+        auto_repeat: columns_auto_repeat,
+    } = computed_grid_tracks(
         computed.clone_grid_template_columns(),
         node,
         "grid-template-columns",
         columns_value,
         allow_integer_repeat,
+        allow_intrinsic_tracks,
+        allow_auto_repeat,
     )?;
-    let (rows, rows_line_names) = computed_grid_tracks(
+    let ComputedGridTracks {
+        tracks: rows,
+        line_names: rows_line_names,
+        auto_repeat: rows_auto_repeat,
+    } = computed_grid_tracks(
         computed.clone_grid_template_rows(),
         node,
         "grid-template-rows",
         rows_value,
         allow_integer_repeat,
+        allow_intrinsic_tracks,
+        allow_auto_repeat,
     )?;
+    if columns_auto_repeat.is_some() && rows_auto_repeat.is_some() {
+        return Err(unsupported_grid_value(
+            node,
+            "grid-template-rows",
+            rows_value,
+        ));
+    }
+    if template_areas.is_some() && (columns_auto_repeat.is_some() || rows_auto_repeat.is_some()) {
+        return Err(unsupported_grid_value(
+            node,
+            if columns_auto_repeat.is_some() {
+                "grid-template-columns"
+            } else {
+                "grid-template-rows"
+            },
+            if columns_auto_repeat.is_some() {
+                columns_value
+            } else {
+                rows_value
+            },
+        ));
+    }
     let auto_rows = computed_grid_auto_rows(
         computed.clone_grid_auto_rows(),
         property_value(properties, "grid-auto-rows"),
@@ -108,6 +152,8 @@ pub(super) fn computed_grid_layout(
     Ok(ComputedCssGridLayout {
         columns,
         rows,
+        columns_auto_repeat,
+        rows_auto_repeat,
         columns_line_names,
         rows_line_names,
         template_areas,
@@ -242,12 +288,24 @@ fn computed_grid_tracks(
     property: &'static str,
     serialized: &str,
     allow_integer_repeat: bool,
-) -> Result<(Vec<ComputedCssGridTrackSize>, Vec<Vec<String>>), CssCascadeError> {
+    allow_intrinsic_tracks: bool,
+    allow_auto_repeat: bool,
+) -> Result<ComputedGridTracks, CssCascadeError> {
     let GridTemplateComponent::TrackList(list) = component else {
         return Err(unsupported_grid_value(node, property, serialized));
     };
-    if list.values.is_empty() || list.has_auto_repeat() {
+    if list.values.is_empty() {
         return Err(unsupported_grid_value(node, property, serialized));
+    }
+    if list.has_auto_repeat() {
+        return computed_auto_repeat_tracks(
+            &list,
+            node,
+            property,
+            serialized,
+            allow_intrinsic_tracks,
+            allow_auto_repeat,
+        );
     }
 
     if !allow_integer_repeat {
@@ -273,14 +331,80 @@ fn computed_grid_tracks(
                 return Err(unsupported_grid_value(node, property, serialized));
             };
             tracks.push(
-                track_size(size)
+                track_size(size, allow_intrinsic_tracks)
                     .ok_or_else(|| unsupported_grid_value(node, property, serialized))?,
             );
         }
-        return Ok((tracks, Vec::new()));
+        return Ok(ComputedGridTracks {
+            tracks,
+            line_names: Vec::new(),
+            auto_repeat: None,
+        });
     }
 
-    expand_integer_repeats(&list, node, property, serialized)
+    expand_integer_repeats(&list, node, property, serialized, allow_intrinsic_tracks).map(
+        |(tracks, line_names)| ComputedGridTracks {
+            tracks,
+            line_names,
+            auto_repeat: None,
+        },
+    )
+}
+
+fn computed_auto_repeat_tracks(
+    list: &style::values::computed::TrackList,
+    node: NodeId,
+    property: &'static str,
+    serialized: &str,
+    allow_intrinsic_tracks: bool,
+    allow_auto_repeat: bool,
+) -> Result<ComputedGridTracks, CssCascadeError> {
+    if !allow_auto_repeat
+        || list.values.len() != 1
+        || list.line_names.len() != 2
+        || list.line_names.iter().any(|names| !names.is_empty())
+    {
+        return Err(unsupported_grid_value(node, property, serialized));
+    }
+    let TrackListValue::TrackRepeat(repeat) = &list.values[0] else {
+        return Err(unsupported_grid_value(node, property, serialized));
+    };
+    let mode = match repeat.count {
+        RepeatCount::AutoFill => ComputedCssGridAutoRepeatMode::AutoFill,
+        RepeatCount::AutoFit => ComputedCssGridAutoRepeatMode::AutoFit,
+        RepeatCount::Number(_) => return Err(unsupported_grid_value(node, property, serialized)),
+    };
+    if repeat.track_sizes.is_empty()
+        || repeat.track_sizes.len() > MAX_COMPUTED_GRID_TRACKS
+        || repeat.track_sizes.len().checked_add(1) != Some(repeat.line_names.len())
+        || repeat.line_names.iter().any(|names| !names.is_empty())
+        || !allow_intrinsic_tracks
+    {
+        return Err(unsupported_grid_value(node, property, serialized));
+    }
+
+    let mut tracks = Vec::new();
+    reserve_computed_tracks(
+        &mut tracks,
+        repeat.track_sizes.len(),
+        node,
+        property,
+        |tracks, count| tracks.try_reserve_exact(count).map_err(|_| ()),
+    )?;
+    for size in repeat.track_sizes.iter() {
+        let track = track_size(size, allow_intrinsic_tracks)
+            .filter(track_size_is_valid)
+            .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+        if !auto_repeat_track_has_fixed_minimum(&track) {
+            return Err(unsupported_grid_value(node, property, serialized));
+        }
+        tracks.push(track);
+    }
+    Ok(ComputedGridTracks {
+        tracks,
+        line_names: Vec::new(),
+        auto_repeat: Some(mode),
+    })
 }
 
 fn expand_integer_repeats(
@@ -288,6 +412,7 @@ fn expand_integer_repeats(
     node: NodeId,
     property: &'static str,
     serialized: &str,
+    allow_intrinsic_tracks: bool,
 ) -> Result<(Vec<ComputedCssGridTrackSize>, Vec<Vec<String>>), CssCascadeError> {
     let outer_line_name_count = list
         .values
@@ -328,7 +453,7 @@ fn expand_integer_repeats(
                     || repeat
                         .track_sizes
                         .iter()
-                        .any(|size| track_size(size).is_none())
+                        .any(|size| track_size(size, allow_intrinsic_tracks).is_none())
                 {
                     return Err(unsupported_grid_value(node, property, serialized));
                 }
@@ -394,7 +519,7 @@ fn expand_integer_repeats(
         match value {
             TrackListValue::TrackSize(size) => {
                 tracks.push(
-                    track_size(size)
+                    track_size(size, allow_intrinsic_tracks)
                         .ok_or_else(|| unsupported_grid_value(node, property, serialized))?,
                 );
                 line_names.push(Vec::new());
@@ -416,7 +541,7 @@ fn expand_integer_repeats(
                             property,
                         )?;
                         tracks.push(
-                            track_size(size).ok_or_else(|| {
+                            track_size(size, allow_intrinsic_tracks).ok_or_else(|| {
                                 unsupported_grid_value(node, property, serialized)
                             })?,
                         );
@@ -562,33 +687,135 @@ fn reserve_computed_tracks(
     reserve(tracks, count).map_err(|_| CssCascadeError::GridAllocationFailure { node, property })
 }
 
-fn track_size(size: &TrackSize) -> Option<ComputedCssGridTrackSize> {
+fn track_size(size: &TrackSize, allow_intrinsic: bool) -> Option<ComputedCssGridTrackSize> {
     let track = match size {
-        TrackSize::Breadth(TrackBreadth::Breadth(value)) => match value.unpack() {
+        TrackSize::Breadth(breadth) => match track_breadth(breadth)? {
+            ComputedCssGridTrackBreadth::LengthPx(value) => {
+                ComputedCssGridTrackSize::LengthPx(value)
+            }
+            ComputedCssGridTrackBreadth::Percentage(value) => {
+                ComputedCssGridTrackSize::Percentage(value)
+            }
+            ComputedCssGridTrackBreadth::Calc(value) => ComputedCssGridTrackSize::Calc(value),
+            ComputedCssGridTrackBreadth::Fraction(value) => {
+                ComputedCssGridTrackSize::Fraction(value)
+            }
+            ComputedCssGridTrackBreadth::Auto if allow_intrinsic => ComputedCssGridTrackSize::Auto,
+            ComputedCssGridTrackBreadth::MinContent if allow_intrinsic => {
+                ComputedCssGridTrackSize::MinContent
+            }
+            ComputedCssGridTrackBreadth::MaxContent if allow_intrinsic => {
+                ComputedCssGridTrackSize::MaxContent
+            }
+            _ => return None,
+        },
+        TrackSize::Minmax(min, max) if allow_intrinsic => {
+            let min = track_breadth(min)?;
+            if matches!(min, ComputedCssGridTrackBreadth::Fraction(_)) {
+                return None;
+            }
+            ComputedCssGridTrackSize::MinMax {
+                min,
+                max: track_breadth(max)?,
+            }
+        }
+        TrackSize::FitContent(value) if allow_intrinsic => {
+            let TrackBreadth::Breadth(value) = value else {
+                return None;
+            };
+            ComputedCssGridTrackSize::FitContent(track_length_percentage(value)?)
+        }
+        TrackSize::Minmax(_, _) | TrackSize::FitContent(_) => return None,
+    };
+    track_size_is_valid(&track).then_some(track)
+}
+
+fn track_breadth(value: &TrackBreadth) -> Option<ComputedCssGridTrackBreadth> {
+    match value {
+        TrackBreadth::Breadth(value) => match value.unpack() {
             LengthPercentageValue::Length(length) => {
-                ComputedCssGridTrackSize::LengthPx(length.px())
+                Some(ComputedCssGridTrackBreadth::LengthPx(length.px()))
             }
             LengthPercentageValue::Percentage(percentage) => {
-                ComputedCssGridTrackSize::Percentage(percentage.0)
+                Some(ComputedCssGridTrackBreadth::Percentage(percentage.0))
             }
-            LengthPercentageValue::Calc(_) => return None,
+            LengthPercentageValue::Calc(calc) => {
+                Some(ComputedCssGridTrackBreadth::Calc(computed_grid_calc(calc)?))
+            }
         },
-        TrackSize::Breadth(TrackBreadth::Flex(value)) => {
-            ComputedCssGridTrackSize::Fraction(value.0)
+        TrackBreadth::Flex(value) => Some(ComputedCssGridTrackBreadth::Fraction(value.0)),
+        TrackBreadth::Auto => Some(ComputedCssGridTrackBreadth::Auto),
+        TrackBreadth::MinContent => Some(ComputedCssGridTrackBreadth::MinContent),
+        TrackBreadth::MaxContent => Some(ComputedCssGridTrackBreadth::MaxContent),
+    }
+}
+
+fn track_length_percentage(
+    value: &style::values::computed::LengthPercentage,
+) -> Option<ComputedCssGridTrackLengthPercentage> {
+    match value.unpack() {
+        LengthPercentageValue::Length(length) => {
+            Some(ComputedCssGridTrackLengthPercentage::LengthPx(length.px()))
         }
-        TrackSize::Breadth(
-            TrackBreadth::Auto | TrackBreadth::MinContent | TrackBreadth::MaxContent,
-        )
-        | TrackSize::Minmax(_, _)
-        | TrackSize::FitContent(_) => return None,
+        LengthPercentageValue::Percentage(percentage) => Some(
+            ComputedCssGridTrackLengthPercentage::Percentage(percentage.0),
+        ),
+        LengthPercentageValue::Calc(calc) => Some(ComputedCssGridTrackLengthPercentage::Calc(
+            computed_grid_calc(calc)?,
+        )),
+    }
+}
+
+fn computed_grid_calc(calc: &impl ToTyped) -> Option<super::super::ComputedCssMath> {
+    let TypedValue::Numeric(value) = calc.to_typed_value()? else {
+        return None;
     };
-    let valid = match track {
+    super::dimensions::computed_math(&value, 0, &mut 256)
+}
+
+fn track_size_is_valid(track: &ComputedCssGridTrackSize) -> bool {
+    fn breadth_is_valid(value: &ComputedCssGridTrackBreadth) -> bool {
+        match value {
+            ComputedCssGridTrackBreadth::LengthPx(value)
+            | ComputedCssGridTrackBreadth::Percentage(value) => value.is_finite() && *value >= 0.0,
+            ComputedCssGridTrackBreadth::Fraction(value) => value.is_finite() && *value >= 0.0,
+            ComputedCssGridTrackBreadth::Calc(_) => true,
+            ComputedCssGridTrackBreadth::Auto
+            | ComputedCssGridTrackBreadth::MinContent
+            | ComputedCssGridTrackBreadth::MaxContent => true,
+        }
+    }
+    match track {
         ComputedCssGridTrackSize::LengthPx(value) | ComputedCssGridTrackSize::Percentage(value) => {
-            value.is_finite() && value >= 0.0
+            value.is_finite() && *value >= 0.0
         }
-        ComputedCssGridTrackSize::Fraction(value) => value.is_finite() && value > 0.0,
-    };
-    valid.then_some(track)
+        ComputedCssGridTrackSize::Fraction(value) => value.is_finite() && *value >= 0.0,
+        ComputedCssGridTrackSize::Calc(_) => true,
+        ComputedCssGridTrackSize::Auto
+        | ComputedCssGridTrackSize::MinContent
+        | ComputedCssGridTrackSize::MaxContent => true,
+        ComputedCssGridTrackSize::MinMax { min, max } => {
+            breadth_is_valid(min) && breadth_is_valid(max)
+        }
+        ComputedCssGridTrackSize::FitContent(value) => match value {
+            ComputedCssGridTrackLengthPercentage::LengthPx(value)
+            | ComputedCssGridTrackLengthPercentage::Percentage(value) => {
+                value.is_finite() && *value >= 0.0
+            }
+            ComputedCssGridTrackLengthPercentage::Calc(_) => true,
+        },
+    }
+}
+
+fn auto_repeat_track_has_fixed_minimum(track: &ComputedCssGridTrackSize) -> bool {
+    match track {
+        ComputedCssGridTrackSize::LengthPx(value) => value.is_finite() && *value >= 0.0,
+        ComputedCssGridTrackSize::MinMax {
+            min: ComputedCssGridTrackBreadth::LengthPx(value),
+            max: ComputedCssGridTrackBreadth::LengthPx(_) | ComputedCssGridTrackBreadth::Fraction(_),
+        } => value.is_finite() && *value >= 0.0,
+        _ => false,
+    }
 }
 
 fn property_value<'a>(properties: &'a BTreeMap<String, String>, property: &str) -> &'a str {

@@ -1,0 +1,3 @@
+Timestamp               Ty Process[PID:TID]
+2026-10-19 10:56:08.483 Df SpinonBootstrap[78934:517a0f9] (Foundation) SPINON_C114_GRID_EVAL_RUN run_id=c114-ios-20261019-r2-3 scene_id=spanning-auto-tracks status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0
+2026-10-19 10:56:08.483 Df SpinonBootstrap[78934:517a0f9] (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-20261019-r2-3 scene_id=spanning-auto-tracks expected_root_frame=width=100,height=30 expected_item_frame=width=70,height=10 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0

@@ -111,7 +111,7 @@ mod source_math;
 mod spacing;
 pub(super) use aspect_ratio::computed_layout_aspect_ratio;
 pub(super) use border::computed_layout_border;
-pub(super) use compute::compute_cascade_with_reuse;
+pub(super) use compute::{CascadeComputeRequest, compute_cascade_with_reuse};
 #[cfg(test)]
 pub(super) use grid::{IntegerRepeatReservationSite, inject_integer_repeat_reservation_failure};
 
@@ -142,16 +142,16 @@ pub fn compute_runtime_incremental_cascade_with_stylesheets(
         return Ok(None);
     }
 
-    compute_cascade_with_reuse(
+    compute_cascade_with_reuse(CascadeComputeRequest {
         view,
-        &[],
+        additional_user_agent_stylesheets: &[],
         author_stylesheets,
         viewport,
         style_revision,
-        &properties,
+        properties: &properties,
         profile,
-        Some((previous, dirty_root_ids)),
-    )
+        reuse: Some((previous, dirty_root_ids)),
+    })
 }
 
 #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
@@ -206,6 +206,9 @@ fn runtime_properties_for_profile(
     }
     if profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1 {
         return Some(runtime_grid::runtime_block_flex_grid_template_properties());
+    }
+    if profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
+        return Some(runtime_grid::runtime_block_flex_grid_track_sizing_properties());
     }
     let has_paint = matches!(
         profile,
@@ -270,5 +273,6 @@ fn is_runtime_layout_profile(profile: ComputedStyleProfile) -> bool {
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     )
 }

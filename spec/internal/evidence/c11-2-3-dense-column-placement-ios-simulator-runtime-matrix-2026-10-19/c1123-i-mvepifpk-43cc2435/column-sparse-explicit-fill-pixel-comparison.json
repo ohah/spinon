@@ -1,0 +1,137 @@
+{
+  "schema": "spinon-c11-2-3-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1123-i-mvepifpk-43cc2435-column-sparse-explicit-fill",
+  "processId": 39966,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 24,
+    "renderTree": 6,
+    "environment": 1
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 6,
+  "matchedSamples": 6,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "item-c1123-column-sparse-explicit-fill-item-a",
+      "css": [
+        28,
+        28
+      ],
+      "drawable": [
+        85,
+        85
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1123-column-sparse-explicit-fill-item-b",
+      "css": [
+        28,
+        56
+      ],
+      "drawable": [
+        85,
+        169
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1123-column-sparse-explicit-fill-item-c",
+      "css": [
+        28,
+        84
+      ],
+      "drawable": [
+        85,
+        253
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1123-column-sparse-explicit-fill-item-d",
+      "css": [
+        76,
+        28
+      ],
+      "drawable": [
+        229,
+        85
+      ],
+      "rgba": [
+        135,
+        88,
+        255,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "gap-column-c1123-column-sparse-explicit-fill-grid",
+      "css": [
+        63,
+        29
+      ],
+      "drawable": [
+        190,
+        88
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "gap-row-c1123-column-sparse-explicit-fill-grid",
+      "css": [
+        39,
+        43
+      ],
+      "drawable": [
+        118,
+        130
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

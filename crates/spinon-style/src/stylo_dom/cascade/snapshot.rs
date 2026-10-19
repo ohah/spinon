@@ -169,12 +169,41 @@ pub enum ComputedCssSpacingValue {
     Unsupported,
 }
 
-/// C11.1 layout profile이 Stylo computed value에서 복사한 고정 Grid track입니다.
-#[derive(Clone, Copy, Debug, PartialEq)]
+/// `minmax()`에서 보존하는 computed track breadth입니다.
+#[derive(Clone, Debug, PartialEq)]
+pub enum ComputedCssGridTrackBreadth {
+    LengthPx(f32),
+    Percentage(f32),
+    Calc(ComputedCssMath),
+    Fraction(f32),
+    Auto,
+    MinContent,
+    MaxContent,
+}
+
+/// `fit-content()` 인자의 computed `<length-percentage>`입니다.
+#[derive(Clone, Debug, PartialEq)]
+pub enum ComputedCssGridTrackLengthPercentage {
+    LengthPx(f32),
+    Percentage(f32),
+    Calc(ComputedCssMath),
+}
+
+/// 제한 Grid profile이 Stylo computed value에서 복사하는 track 함수입니다.
+#[derive(Clone, Debug, PartialEq)]
 pub enum ComputedCssGridTrackSize {
     LengthPx(f32),
     Percentage(f32),
     Fraction(f32),
+    Calc(ComputedCssMath),
+    Auto,
+    MinContent,
+    MaxContent,
+    MinMax {
+        min: ComputedCssGridTrackBreadth,
+        max: ComputedCssGridTrackBreadth,
+    },
+    FitContent(ComputedCssGridTrackLengthPercentage),
 }
 
 /// Stylo computed `grid-auto-flow` 값입니다.
@@ -184,6 +213,13 @@ pub enum ComputedCssGridAutoFlow {
     Column,
     RowDense,
     ColumnDense,
+}
+
+/// 제한 Grid profile이 보존하는 CSS auto-repeat 방식입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum ComputedCssGridAutoRepeatMode {
+    AutoFill,
+    AutoFit,
 }
 
 /// Stylo computed `grid-auto-rows` 값 중 제한 profile이 해석할 수 있는 형태입니다.
@@ -207,6 +243,8 @@ pub enum ComputedCssGridAutoColumns {
 pub struct ComputedCssGridLayout {
     pub columns: Vec<ComputedCssGridTrackSize>,
     pub rows: Vec<ComputedCssGridTrackSize>,
+    pub columns_auto_repeat: Option<ComputedCssGridAutoRepeatMode>,
+    pub rows_auto_repeat: Option<ComputedCssGridAutoRepeatMode>,
     /// 각 explicit column 경계의 authored line-name 목록입니다. C11.3부터 N+1개입니다.
     pub columns_line_names: Vec<Vec<String>>,
     /// 각 explicit row 경계의 authored line-name 목록입니다. C11.3부터 N+1개입니다.
@@ -594,4 +632,6 @@ pub enum ComputedStyleProfile {
     RuntimeBlockFlexGridAutoPlacementDenseV1,
     /// C11.3.1의 정수 repeat 확장과 line-name metadata를 포함하는 누적 Grid profile입니다.
     RuntimeBlockFlexGridTemplateV1,
+    /// C11.4의 intrinsic track-sizing 입력을 포함하는 누적 Grid profile입니다.
+    RuntimeBlockFlexGridTrackSizingV1,
 }

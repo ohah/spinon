@@ -1,0 +1,207 @@
+{
+  "method": "Exact RGB bounding boxes for #101820 Grid background and #e5484d item in device screenshots",
+  "pillow_version": "11.3.0",
+  "expected_css_item_widths": {
+    "auto-fill-repeat": 24,
+    "auto-fit-collapse": 96,
+    "auto-fill-track-overflow": 120
+  },
+  "runs": {
+    "android-avd": {
+      "auto-fill-repeat": {
+        "screenshot": "android-avd/auto-fill-repeat.png",
+        "image_size_px": [
+          1080,
+          2400
+        ],
+        "grid_background_bbox_px": [
+          120,
+          996,
+          381,
+          1100
+        ],
+        "grid_background_pixel_count": 24864,
+        "grid_size_css_px_from_pixels": [
+          99.81,
+          40.0
+        ],
+        "item_bbox_px": [
+          125,
+          1001,
+          187,
+          1042
+        ],
+        "item_pixel_count": 2646,
+        "item_size_css_px_from_pixels": [
+          24.0,
+          16.0
+        ],
+        "item_left_offset_css_px_from_pixels": 1.905,
+        "item_right_outset_px": -194,
+        "item_right_outset_css_px": -73.905
+      },
+      "auto-fit-collapse": {
+        "screenshot": "android-avd/auto-fit-collapse.png",
+        "image_size_px": [
+          1080,
+          2400
+        ],
+        "grid_background_bbox_px": [
+          120,
+          996,
+          381,
+          1100
+        ],
+        "grid_background_pixel_count": 16926,
+        "grid_size_css_px_from_pixels": [
+          99.81,
+          40.0
+        ],
+        "item_bbox_px": [
+          125,
+          1001,
+          376,
+          1042
+        ],
+        "item_pixel_count": 10584,
+        "item_size_css_px_from_pixels": [
+          96.0,
+          16.0
+        ],
+        "item_left_offset_css_px_from_pixels": 1.905,
+        "item_right_outset_px": -5,
+        "item_right_outset_css_px": -1.905
+      },
+      "auto-fill-track-overflow": {
+        "screenshot": "android-avd/auto-fill-track-overflow.png",
+        "image_size_px": [
+          1080,
+          2400
+        ],
+        "grid_background_bbox_px": [
+          120,
+          996,
+          381,
+          1100
+        ],
+        "grid_background_pixel_count": 16716,
+        "grid_size_css_px_from_pixels": [
+          99.81,
+          40.0
+        ],
+        "item_bbox_px": [
+          125,
+          1001,
+          439,
+          1042
+        ],
+        "item_pixel_count": 13230,
+        "item_size_css_px_from_pixels": [
+          120.0,
+          16.0
+        ],
+        "item_left_offset_css_px_from_pixels": 1.905,
+        "item_right_outset_px": 58,
+        "item_right_outset_css_px": 22.095
+      }
+    },
+    "ios-simulator": {
+      "auto-fill-repeat": {
+        "screenshot": "ios-simulator/auto-fill-repeat.png",
+        "image_size_px": [
+          1206,
+          2622
+        ],
+        "grid_background_bbox_px": [
+          123,
+          951,
+          422,
+          1070
+        ],
+        "grid_background_pixel_count": 32544,
+        "grid_size_css_px_from_pixels": [
+          100.0,
+          40.0
+        ],
+        "item_bbox_px": [
+          129,
+          957,
+          200,
+          1004
+        ],
+        "item_pixel_count": 3456,
+        "item_size_css_px_from_pixels": [
+          24.0,
+          16.0
+        ],
+        "item_left_offset_css_px_from_pixels": 2.0,
+        "item_right_outset_px": -222,
+        "item_right_outset_css_px": -74.0
+      },
+      "auto-fit-collapse": {
+        "screenshot": "ios-simulator/auto-fit-collapse.png",
+        "image_size_px": [
+          1206,
+          2622
+        ],
+        "grid_background_bbox_px": [
+          123,
+          951,
+          422,
+          1070
+        ],
+        "grid_background_pixel_count": 22176,
+        "grid_size_css_px_from_pixels": [
+          100.0,
+          40.0
+        ],
+        "item_bbox_px": [
+          129,
+          957,
+          416,
+          1004
+        ],
+        "item_pixel_count": 13824,
+        "item_size_css_px_from_pixels": [
+          96.0,
+          16.0
+        ],
+        "item_left_offset_css_px_from_pixels": 2.0,
+        "item_right_outset_px": -6,
+        "item_right_outset_css_px": -2.0
+      },
+      "auto-fill-track-overflow": {
+        "screenshot": "ios-simulator/auto-fill-track-overflow.png",
+        "image_size_px": [
+          1206,
+          2622
+        ],
+        "grid_background_bbox_px": [
+          123,
+          951,
+          422,
+          1070
+        ],
+        "grid_background_pixel_count": 21888,
+        "grid_size_css_px_from_pixels": [
+          100.0,
+          40.0
+        ],
+        "item_bbox_px": [
+          129,
+          957,
+          488,
+          1004
+        ],
+        "item_pixel_count": 17280,
+        "item_size_css_px_from_pixels": [
+          120.0,
+          16.0
+        ],
+        "item_left_offset_css_px_from_pixels": 2.0,
+        "item_right_outset_px": 66,
+        "item_right_outset_css_px": 22.0
+      }
+    }
+  }
+}

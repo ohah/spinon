@@ -19,6 +19,7 @@ use spinon_style::{
     compute_runtime_block_flex_grid_dense_auto_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_placement_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_template_cascade_with_stylesheets,
+    compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets,
     compute_runtime_block_flex_overflow_clip_cascade_with_stylesheets,
     compute_runtime_block_flex_stacking_cascade_with_stylesheets,
     compute_runtime_block_formatting_cascade_with_stylesheets,
@@ -58,6 +59,7 @@ pub(super) enum RuntimeCalculationProfile {
     BlockFlexGridAutoPlacement,
     BlockFlexGridDenseAutoPlacement,
     BlockFlexGridTemplate,
+    BlockFlexGridTrackSizing,
 }
 
 impl RuntimeCalculationProfile {
@@ -299,6 +301,12 @@ pub(super) fn compute_request_for_block_flex_grid_template(
     request: &WorkRequest,
 ) -> Result<RuntimeCalculation, String> {
     compute_request_with_profile(request, RuntimeCalculationProfile::BlockFlexGridTemplate)
+}
+
+pub(super) fn compute_request_for_block_flex_grid_track_sizing(
+    request: &WorkRequest,
+) -> Result<RuntimeCalculation, String> {
+    compute_request_with_profile(request, RuntimeCalculationProfile::BlockFlexGridTrackSizing)
 }
 
 fn compute_request_with_profile(
@@ -552,6 +560,9 @@ fn compute_root(
         RuntimeCalculationProfile::BlockFlexGridTemplate => {
             ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
         }
+        RuntimeCalculationProfile::BlockFlexGridTrackSizing => {
+            ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+        }
     };
     let previous_style_root = request
         .previous_styles
@@ -750,6 +761,14 @@ fn compute_root(
             }
             RuntimeCalculationProfile::BlockFlexGridTemplate => {
                 compute_runtime_block_flex_grid_template_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    request.key.style_revision,
+                )
+            }
+            RuntimeCalculationProfile::BlockFlexGridTrackSizing => {
+                compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
                     &view,
                     author_stylesheets,
                     request.viewport,

@@ -52,6 +52,7 @@ pub(super) fn computed_element_output(
             | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
             | ComputedStyleProfile::C19BoxPaintOpacityV1
             | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     );
     let layout_border_paint = has_overflow
         .then(|| {
@@ -154,6 +155,7 @@ pub(super) fn computed_element_output(
             | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
             | ComputedStyleProfile::C19BoxPaintOpacityV1
             | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     ) {
         computed_layout_aspect_ratio(computed, node_id)?
     } else {
@@ -180,6 +182,7 @@ pub(super) fn computed_element_output(
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
         ) {
         if computed_properties
             .get("display")
@@ -189,7 +192,13 @@ pub(super) fn computed_element_output(
                 computed,
                 node_id,
                 &computed_properties,
-                profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1,
+                matches!(
+                    profile,
+                    ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                        | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+                ),
+                profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+                profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
             )?)
         } else {
             None
@@ -203,12 +212,17 @@ pub(super) fn computed_element_output(
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     ) && !layout_suppressed)
         .then(|| {
             super::grid::computed_grid_item_placement(
                 computed,
                 &computed_properties,
-                profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1,
+                matches!(
+                    profile,
+                    ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                        | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+                ),
             )
         });
     for (name, width) in [

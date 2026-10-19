@@ -1,0 +1,23 @@
+Error: /Users/yoonhb/.local/share/mise/installs/node/24.20.0/bin/node /private/tmp/spinon-c11-4-grid-item-contribution-inputs-20261019/tools/css-reference/build-c11-2-3-grid-auto-placement-runtime-matrix.mjs --check 실패: node:internal/modules/package_json_reader:301
+  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+        ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'parse5' imported from /private/tmp/spinon-c11-4-grid-item-contribution-inputs-20261019/tools/css-reference/build-c11-2-3-grid-auto-placement-runtime-matrix.mjs
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)
+    at packageResolve (node:internal/modules/esm/resolve:784:25)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.20.0
+
+    at command (file:///private/tmp/spinon-c11-4-grid-item-contribution-inputs-20261019/tools/css-reference/c11-2-3-grid-auto-placement-runtime-support.mjs:30:11)
+    at loadC1123Inputs (file:///private/tmp/spinon-c11-4-grid-item-contribution-inputs-20261019/tools/css-reference/c11-2-3-grid-auto-placement-runtime-support.mjs:75:26)
+    at async main (file:///private/tmp/spinon-c11-4-grid-item-contribution-inputs-20261019/tools/css-reference/capture-c11-2-3-grid-auto-placement-runtime-matrix.mjs:110:18)

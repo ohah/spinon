@@ -7,9 +7,40 @@ use crate::{
     LayoutDisplay, LayoutError, LayoutInput, LayoutPosition, percentage_basis::DefiniteAxes,
 };
 
-/// Taffy 0.14.0 Grid 코드가 축마다 내부적으로 허용하는 최대 track 수입니다.
+/// Taffy Grid 코드가 축마다 내부적으로 허용하는 최대 track 수입니다.
 /// Taffy가 넘친 template를 잘라 처리하므로 그 전에 명시적으로 거부합니다.
 pub const GRID_MAX_TRACKS: usize = 10_000;
+
+/// Grid track의 length-percentage 값입니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum GridTrackLengthPercentage {
+    LengthPx(f32),
+    Percentage(f32),
+    Calc(crate::LayoutCalcId),
+}
+
+/// `minmax()`의 최소 함수입니다. Flexible sizing function은 CSS 문법상 포함하지 않습니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum GridTrackMinSizingFunction {
+    LengthPx(f32),
+    Percentage(f32),
+    Calc(crate::LayoutCalcId),
+    Auto,
+    MinContent,
+    MaxContent,
+}
+
+/// `minmax()`의 최대 함수입니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum GridTrackMaxSizingFunction {
+    LengthPx(f32),
+    Percentage(f32),
+    Calc(crate::LayoutCalcId),
+    Fraction(f32),
+    Auto,
+    MinContent,
+    MaxContent,
+}
 
 /// 제한 Grid profile에서 사용하는 명시 track 크기입니다.
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -17,6 +48,119 @@ pub enum GridTrackSize {
     LengthPx(f32),
     Percentage(f32),
     Fraction(f32),
+    Calc(crate::LayoutCalcId),
+    Auto,
+    MinContent,
+    MaxContent,
+    MinMax {
+        min: GridTrackMinSizingFunction,
+        max: GridTrackMaxSizingFunction,
+    },
+    FitContent(GridTrackLengthPercentage),
+}
+
+/// CSS Grid의 auto-repeat 방향입니다. 해당 축의 `columns` 또는 `rows`는 반복 fragment입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum GridAutoRepeatMode {
+    AutoFill,
+    AutoFit,
+}
+
+/// C11.4 Taffy 후보 trace에 기록되는 축입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum LayoutGridTrackSizingAxis {
+    Columns,
+    Rows,
+}
+
+/// Grid item 하나에 대해 질의한 intrinsic 크기의 종류입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum LayoutGridTrackSizingContributionKind {
+    Minimum,
+    MinContent,
+    MaxContent,
+}
+
+/// Grid item의 minimum contribution을 계산할 때 선택한 규칙입니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum LayoutGridTrackSizingMinimumContributionSource {
+    PreferredSize {
+        clamped_by_min_or_max: bool,
+    },
+    SizingKeywordUsesMinContent,
+    SpecifiedMinimum,
+    OverflowAutomaticMinimum,
+    AutomaticMinimum {
+        spans_auto_min_track: bool,
+        spans_multiple_tracks: bool,
+        spans_flexible_max_track: bool,
+        content_based: bool,
+        is_compressible_replaced: bool,
+        fixed_track_limit: Option<f32>,
+    },
+}
+
+/// 한 축의 sizing pass에서 관찰한 item intrinsic-size contribution입니다.
+#[derive(Clone, Debug, PartialEq)]
+pub struct LayoutGridTrackSizingContributionTrace {
+    pub item: NodeId,
+    pub kind: LayoutGridTrackSizingContributionKind,
+    pub span: u16,
+    pub crosses_flexible_track: bool,
+    pub value: f32,
+    pub minimum_source: Option<LayoutGridTrackSizingMinimumContributionSource>,
+}
+
+/// 후보 track-sizing algorithm 실행 중 기록한 단계입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum LayoutGridTrackSizingStageKind {
+    Initialize,
+    IntrinsicItemBatch {
+        span: u16,
+        crosses_flexible_track: bool,
+    },
+    IntrinsicSizingComplete,
+    MaximizeTracks,
+    ExpandFlexibleTracks,
+    StretchAutoTracks {
+        applied: bool,
+    },
+    FixedTrackEarlyReturn,
+}
+
+/// 기록된 단계에서 internal track 또는 gutter 하나의 base size와 growth limit입니다.
+#[derive(Clone, Debug, PartialEq)]
+pub struct LayoutGridTrackSizingTrackState {
+    pub internal_index: u16,
+    pub is_gutter: bool,
+    pub is_collapsed: bool,
+    pub base_size: f32,
+    /// `None`은 후보 algorithm이 growth limit을 무한대로 보고했다는 뜻입니다.
+    pub growth_limit: Option<f32>,
+    pub infinitely_growable: bool,
+}
+
+/// Grid 한 축에서 한 단계의 snapshot입니다.
+#[derive(Clone, Debug, PartialEq)]
+pub struct LayoutGridTrackSizingStageTrace {
+    pub stage: LayoutGridTrackSizingStageKind,
+    pub tracks: Vec<LayoutGridTrackSizingTrackState>,
+}
+
+/// 한 축에서 track-sizing algorithm을 실행한 기록입니다. sequence로 재실행을 구분합니다.
+#[derive(Clone, Debug, PartialEq)]
+pub struct LayoutGridTrackSizingPassTrace {
+    pub sequence: u16,
+    pub axis: LayoutGridTrackSizingAxis,
+    pub stages: Vec<LayoutGridTrackSizingStageTrace>,
+    pub contributions: Vec<LayoutGridTrackSizingContributionTrace>,
+}
+
+/// opt-in `RuntimeBlockFlexGridTrackSizingV1` 후보가 기록한 진단 단계입니다.
+#[derive(Clone, Debug, PartialEq)]
+pub struct LayoutGridTrackSizingTrace {
+    pub node: NodeId,
+    pub passes: Vec<LayoutGridTrackSizingPassTrace>,
 }
 
 /// CSS Grid auto-placement 방향입니다. C11.1은 기본 row만 계산합니다.
@@ -43,6 +187,8 @@ pub enum GridPlacementMode {
     DenseAutoPlacement,
     /// C11.3 template profile은 dense 배치를 유지하고 definite item의 auto 크기를 허용합니다.
     TemplateGrid,
+    /// C11.4 intrinsic track sizing 후보 profile입니다.
+    TrackSizing,
 }
 
 /// 제한 profile에서 허용하는 implicit track sizing 입력입니다.
@@ -64,8 +210,14 @@ pub type GridAutoColumns = GridAutoTrackSize;
 /// 동일 revision의 계산된 Grid container 입력입니다.
 #[derive(Clone, Debug, Default, PartialEq)]
 pub struct GridContainerInput {
+    /// auto-repeat이 없으면 explicit track 목록, 있으면 반복할 fragment입니다.
     pub columns: Vec<GridTrackSize>,
+    /// auto-repeat이 없으면 explicit track 목록, 있으면 반복할 fragment입니다.
     pub rows: Vec<GridTrackSize>,
+    /// C11.4 제한 profile에서 columns 전체를 반복할 때의 종류입니다.
+    pub columns_auto_repeat: Option<GridAutoRepeatMode>,
+    /// C11.4 제한 profile에서 rows 전체를 반복할 때의 종류입니다.
+    pub rows_auto_repeat: Option<GridAutoRepeatMode>,
     /// CSS Grid의 explicit column 경계 이름입니다. 배열은 track 수보다 하나 큽니다.
     pub columns_line_names: Vec<Vec<String>>,
     /// CSS Grid의 explicit row 경계 이름입니다. 배열은 track 수보다 하나 큽니다.
@@ -101,7 +253,8 @@ pub(super) fn validate_grid_layout(
             (
                 GridPlacementMode::SparseRow
                 | GridPlacementMode::DenseAutoPlacement
-                | GridPlacementMode::TemplateGrid,
+                | GridPlacementMode::TemplateGrid
+                | GridPlacementMode::TrackSizing,
                 GridAutoRows::Auto | GridAutoRows::LengthPx(_),
             )
             | (_, GridAutoRows::Auto) => {}
@@ -114,7 +267,9 @@ pub(super) fn validate_grid_layout(
         }
         match (container.placement_mode, container.auto_columns) {
             (
-                GridPlacementMode::DenseAutoPlacement | GridPlacementMode::TemplateGrid,
+                GridPlacementMode::DenseAutoPlacement
+                | GridPlacementMode::TemplateGrid
+                | GridPlacementMode::TrackSizing,
                 GridAutoColumns::Auto | GridAutoColumns::LengthPx(_),
             )
             | (_, GridAutoColumns::Auto) => {}
@@ -182,8 +337,67 @@ pub(super) fn validate_grid_layout(
         let Some(container) = input.grid_containers.get(&node.id) else {
             return Err(LayoutError::MissingGridContainer(node.id));
         };
-        validate_tracks(node.id, "grid-template-columns", &container.columns)?;
-        validate_tracks(node.id, "grid-template-rows", &container.rows)?;
+        let allow_intrinsic_tracks = container.placement_mode == GridPlacementMode::TrackSizing;
+        validate_tracks(
+            node.id,
+            "grid-template-columns",
+            &container.columns,
+            allow_intrinsic_tracks,
+        )?;
+        validate_tracks(
+            node.id,
+            "grid-template-rows",
+            &container.rows,
+            allow_intrinsic_tracks,
+        )?;
+        if container.columns_auto_repeat.is_some() || container.rows_auto_repeat.is_some() {
+            if container.placement_mode != GridPlacementMode::TrackSizing
+                || (container.columns_auto_repeat.is_some() && container.rows_auto_repeat.is_some())
+            {
+                return Err(LayoutError::InvalidGridTrackList {
+                    node: node.id,
+                    property: if container.columns_auto_repeat.is_some() {
+                        "grid-template-columns"
+                    } else {
+                        "grid-template-rows"
+                    },
+                });
+            }
+            let repeated_axis_has_line_names = (container.columns_auto_repeat.is_some()
+                && container
+                    .columns_line_names
+                    .iter()
+                    .any(|names| !names.is_empty()))
+                || (container.rows_auto_repeat.is_some()
+                    && container
+                        .rows_line_names
+                        .iter()
+                        .any(|names| !names.is_empty()));
+            if repeated_axis_has_line_names {
+                return Err(LayoutError::InvalidGridTrackList {
+                    node: node.id,
+                    property: if container.columns_auto_repeat.is_some() {
+                        "grid-template-columns"
+                    } else {
+                        "grid-template-rows"
+                    },
+                });
+            }
+            let (property, repeat_tracks) = if container.columns_auto_repeat.is_some() {
+                ("grid-template-columns", &container.columns)
+            } else {
+                ("grid-template-rows", &container.rows)
+            };
+            if !repeat_tracks
+                .iter()
+                .all(auto_repeat_track_has_fixed_minimum)
+            {
+                return Err(LayoutError::InvalidGridTrackList {
+                    node: node.id,
+                    property,
+                });
+            }
+        }
         if (!container.columns_line_names.is_empty()
             && container.columns.len().checked_add(1) != Some(container.columns_line_names.len()))
             || (!container.rows_line_names.is_empty()
@@ -208,6 +422,7 @@ pub(super) fn validate_grid_layout(
             GridPlacementMode::SparseRow
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
+                | GridPlacementMode::TrackSizing
         ) && container.auto_flow != GridAutoFlow::Row
         {
             return Err(LayoutError::UnsupportedGridAutoFlow(node.id));
@@ -228,7 +443,9 @@ pub(super) fn validate_grid_layout(
             .ok_or(LayoutError::GridTrackExpansionOverflow(node.id))?;
         let c14_3_fixed_track_context = matches!(
             container.placement_mode,
-            GridPlacementMode::DenseAutoPlacement | GridPlacementMode::TemplateGrid
+            GridPlacementMode::DenseAutoPlacement
+                | GridPlacementMode::TemplateGrid
+                | GridPlacementMode::TrackSizing
         ) && !container.columns.is_empty()
             && !container.rows.is_empty()
             && container
@@ -285,6 +502,18 @@ pub(super) fn validate_grid_layout(
                         | crate::LayoutDimension::FitContent
                 )
             };
+            let valid_track_sizing_dimension = |size| {
+                matches!(
+                    size,
+                    crate::LayoutDimension::Auto
+                        | crate::LayoutDimension::Fixed(_)
+                        | crate::LayoutDimension::Percent(_)
+                        | crate::LayoutDimension::CyclicMinContentPercent(_)
+                        | crate::LayoutDimension::MinContent
+                        | crate::LayoutDimension::MaxContent
+                        | crate::LayoutDimension::FitContent
+                )
+            };
             let valid_item_size = |size| match container.placement_mode {
                 GridPlacementMode::SparseRow
                 | GridPlacementMode::DenseAutoPlacement
@@ -294,6 +523,11 @@ pub(super) fn validate_grid_layout(
                     matches!(size, crate::LayoutDimension::Fixed(_))
                         || (c14_3_replaced_item && valid_c14_3_dimension(size))
                 }
+                GridPlacementMode::TrackSizing
+                    if normalized_grid.auto_placed_items.contains(&child_id) =>
+                {
+                    valid_track_sizing_dimension(size)
+                }
                 GridPlacementMode::Existing | GridPlacementMode::ExplicitOnly
                     if has_explicit_placement =>
                 {
@@ -301,6 +535,12 @@ pub(super) fn validate_grid_layout(
                         size,
                         crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
                     )
+                }
+                GridPlacementMode::TrackSizing
+                    if !normalized_grid.auto_placed_items.contains(&child_id) =>
+                {
+                    valid_track_sizing_dimension(size)
+                        || (c14_3_replaced_item && valid_c14_3_dimension(size))
                 }
                 GridPlacementMode::TemplateGrid
                     if !normalized_grid.auto_placed_items.contains(&child_id) =>
@@ -326,7 +566,18 @@ pub(super) fn validate_grid_layout(
                     && !normalized_grid.auto_placed_items.contains(&child_id)
                     && matches!(property, "min-width" | "min-height")
                     && value == crate::LayoutDimension::Fixed(0.0);
-                if value != crate::LayoutDimension::Auto && !zero_minimum_on_definite_area {
+                let track_sizing_constraint = container.placement_mode
+                    == GridPlacementMode::TrackSizing
+                    && matches!(
+                        value,
+                        crate::LayoutDimension::Auto
+                            | crate::LayoutDimension::Fixed(_)
+                            | crate::LayoutDimension::Percent(_)
+                    );
+                if value != crate::LayoutDimension::Auto
+                    && !zero_minimum_on_definite_area
+                    && !track_sizing_constraint
+                {
                     return Err(LayoutError::UnsupportedGridItemConstraint {
                         node: child_id,
                         property,
@@ -342,6 +593,7 @@ pub(super) fn validate_grid_layout(
             GridPlacementMode::SparseRow
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
+                | GridPlacementMode::TrackSizing
         ) && !has_explicit_placement
             && item_count > cell_count
         {
@@ -355,6 +607,7 @@ fn validate_tracks(
     node: NodeId,
     property: &'static str,
     tracks: &[GridTrackSize],
+    allow_intrinsic: bool,
 ) -> Result<(), LayoutError> {
     if tracks.is_empty() {
         return Err(LayoutError::InvalidGridTrackList { node, property });
@@ -369,15 +622,70 @@ fn validate_tracks(
     }
     for track in tracks {
         let valid = match track {
-            GridTrackSize::LengthPx(value) => value.is_finite() && *value >= 0.0,
-            GridTrackSize::Percentage(value) => value.is_finite() && *value >= 0.0,
-            GridTrackSize::Fraction(value) => value.is_finite() && *value > 0.0,
+            GridTrackSize::LengthPx(value) | GridTrackSize::Percentage(value) => {
+                value.is_finite() && *value >= 0.0
+            }
+            GridTrackSize::Fraction(value) => value.is_finite() && *value >= 0.0,
+            GridTrackSize::Calc(_) => allow_intrinsic,
+            GridTrackSize::Auto | GridTrackSize::MinContent | GridTrackSize::MaxContent => {
+                allow_intrinsic
+            }
+            GridTrackSize::MinMax { min, max } => {
+                allow_intrinsic
+                    && valid_min_track_sizing_function(*min)
+                    && valid_max_track_sizing_function(*max)
+            }
+            GridTrackSize::FitContent(value) => {
+                allow_intrinsic && valid_grid_track_length_percentage(*value)
+            }
         };
         if !valid {
             return Err(LayoutError::InvalidGridTrack { node, property });
         }
     }
     Ok(())
+}
+
+fn valid_grid_track_length_percentage(value: GridTrackLengthPercentage) -> bool {
+    match value {
+        GridTrackLengthPercentage::LengthPx(value)
+        | GridTrackLengthPercentage::Percentage(value) => value.is_finite() && value >= 0.0,
+        GridTrackLengthPercentage::Calc(_) => true,
+    }
+}
+
+fn auto_repeat_track_has_fixed_minimum(track: &GridTrackSize) -> bool {
+    match track {
+        GridTrackSize::LengthPx(value) => value.is_finite() && *value >= 0.0,
+        GridTrackSize::MinMax {
+            min: GridTrackMinSizingFunction::LengthPx(value),
+            max: GridTrackMaxSizingFunction::LengthPx(_) | GridTrackMaxSizingFunction::Fraction(_),
+        } => value.is_finite() && *value >= 0.0,
+        _ => false,
+    }
+}
+
+fn valid_min_track_sizing_function(value: GridTrackMinSizingFunction) -> bool {
+    match value {
+        GridTrackMinSizingFunction::LengthPx(value)
+        | GridTrackMinSizingFunction::Percentage(value) => value.is_finite() && value >= 0.0,
+        GridTrackMinSizingFunction::Calc(_) => true,
+        GridTrackMinSizingFunction::Auto
+        | GridTrackMinSizingFunction::MinContent
+        | GridTrackMinSizingFunction::MaxContent => true,
+    }
+}
+
+fn valid_max_track_sizing_function(value: GridTrackMaxSizingFunction) -> bool {
+    match value {
+        GridTrackMaxSizingFunction::LengthPx(value)
+        | GridTrackMaxSizingFunction::Percentage(value) => value.is_finite() && value >= 0.0,
+        GridTrackMaxSizingFunction::Calc(_) => true,
+        GridTrackMaxSizingFunction::Fraction(value) => value.is_finite() && value >= 0.0,
+        GridTrackMaxSizingFunction::Auto
+        | GridTrackMaxSizingFunction::MinContent
+        | GridTrackMaxSizingFunction::MaxContent => true,
+    }
 }
 
 #[cfg(test)]

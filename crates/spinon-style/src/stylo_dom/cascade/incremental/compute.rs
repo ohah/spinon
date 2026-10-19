@@ -16,6 +16,7 @@ use super::super::{
         runtime_block_flex_grid_dense_auto_placement_author_properties,
         runtime_block_flex_grid_placement_author_properties,
         runtime_block_flex_grid_template_author_properties,
+        runtime_block_flex_grid_track_sizing_author_properties,
     },
     runtime_layout::RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES,
     runtime_overflow::runtime_block_flex_overflow_clip_author_properties,
@@ -40,16 +41,30 @@ use crate::{
     font_relative_units::first_font_metric_unit, s04_color_syntax::first_invalid_background_color,
 };
 
+pub(in crate::stylo_dom::cascade) struct CascadeComputeRequest<'a> {
+    pub view: &'a StyloDocumentView,
+    pub additional_user_agent_stylesheets: &'a [StylesheetSource],
+    pub author_stylesheets: &'a [StylesheetSource],
+    pub viewport: CssViewport,
+    pub style_revision: StyleRevision,
+    pub properties: &'a [(&'a str, LonghandId)],
+    pub profile: ComputedStyleProfile,
+    pub reuse: Option<(&'a ComputedStyleSnapshot, &'a [NodeId])>,
+}
+
 pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
-    view: &StyloDocumentView,
-    additional_user_agent_stylesheets: &[StylesheetSource],
-    author_stylesheets: &[StylesheetSource],
-    viewport: CssViewport,
-    style_revision: StyleRevision,
-    properties: &[(&str, LonghandId)],
-    profile: ComputedStyleProfile,
-    reuse: Option<(&ComputedStyleSnapshot, &[NodeId])>,
+    request: CascadeComputeRequest<'_>,
 ) -> Result<Option<(ComputedStyleSnapshot, RuntimeCascadeReuseStats)>, CssCascadeError> {
+    let CascadeComputeRequest {
+        view,
+        additional_user_agent_stylesheets,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        properties,
+        profile,
+        reuse,
+    } = request;
     let _preferences = acquire_stylo_preferences(profile);
     initialize_stylo_preferences();
     let reuse_plan = match reuse {
@@ -180,6 +195,8 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         runtime_block_flex_grid_dense_auto_placement_author_properties();
     let runtime_grid_template_author_properties =
         runtime_block_flex_grid_template_author_properties();
+    let runtime_grid_track_sizing_author_properties =
+        runtime_block_flex_grid_track_sizing_author_properties();
     let mut runtime_root_html_author_properties = RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES.to_vec();
     runtime_root_html_author_properties.push("color-scheme");
     runtime_root_html_author_properties.push("background-color");
@@ -245,6 +262,9 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         }
         ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1 => {
             Some(runtime_grid_template_author_properties.as_slice())
+        }
+        ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 => {
+            Some(runtime_grid_track_sizing_author_properties.as_slice())
         }
         ComputedStyleProfile::RuntimeFlexPaintV1 => None,
     };

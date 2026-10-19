@@ -1,7 +1,7 @@
 use crate::{FlexDirection, LayoutDisplay, LayoutLengthPercentage, LayoutStyle};
 use taffy::prelude::Layout;
 
-/// Taffy 0.14는 음수 교차축 여유 공간을 `auto` 시작 여백에 배정합니다.
+/// Taffy 0.15는 음수 교차축 여유 공간을 `auto` 시작 여백에 배정합니다.
 /// CSS Flexbox는 이때 시작 여백을 0으로 두고 넘치는 크기를 끝 방향으로 보냅니다.
 pub(super) fn negative_cross_axis_auto_margin_offset_correction(
     parent: LayoutStyle,

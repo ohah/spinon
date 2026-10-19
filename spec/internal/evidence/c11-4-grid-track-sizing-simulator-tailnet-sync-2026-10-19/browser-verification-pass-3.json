@@ -1,0 +1,40 @@
+{
+  "browser": "Agent Browser 0.31.1",
+  "session": "c114-tailnet-rust-case-20261019",
+  "preview_base": "http://127.0.0.1:8768/spinon/",
+  "routes": [
+    {
+      "path": "STATUS.html",
+      "checked": [
+        "C11.4 checkbox remains unchecked",
+        "auto-image-definite 1/26 Rust and Chrome comparison is visible",
+        "the remaining 25 oracle cases remain explicitly incomplete"
+      ],
+      "screenshot": "tailnet-status-rust-case-agent-browser.png"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "checked": [
+        "the one-case result and remaining 25 cases are visible",
+        "the Rust and Chrome evidence link resolves under /spinon/"
+      ],
+      "screenshot": "tailnet-plan-rust-case-agent-browser.png"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/rust-auto-image-definite-2026-10-19.html",
+      "checked": [
+        "page title and auto-image-definite oracle are visible",
+        "Rust result 1 passed; 0 failed is visible",
+        "auto-repeat and WPT limitations are visible"
+      ],
+      "screenshot": "tailnet-rust-case-agent-browser.png"
+    }
+  ],
+  "shutdown": {
+    "close_command_succeeded": true,
+    "active_session_list_empty": true,
+    "launcher_pid_absent_after_recheck": 25715,
+    "browser_process_absent_after_recheck": true,
+    "terminal_browser_used": false
+  }
+}

@@ -9,11 +9,12 @@ use spinon_text_layout::{
     ParagraphInput, TextIntrinsicInlineSizes, TextLayoutEngine, TextLayoutSnapshot,
 };
 use taffy::{
-    AvailableSpace, BlockContext, Cache, CacheTree, Display, Layout, LayoutBlockContainer,
-    LayoutFlexboxContainer, LayoutInput as TaffyLayoutInput, LayoutOutput as TaffyLayoutOutput,
-    LayoutPartialTree, MaybeResolve, NodeId as TaffyNodeId, RunMode, Size, SizingMode,
-    TraversePartialTree, compute_block_layout, compute_cached_layout, compute_flexbox_layout,
-    compute_grid_layout, compute_hidden_layout, compute_leaf_layout, compute_root_layout,
+    AvailableSpace, BlockContext, Cache, CacheTree, DetailedLayoutInfo, Display, Layout,
+    LayoutBlockContainer, LayoutContainingBlock, LayoutFlexboxContainer,
+    LayoutInput as TaffyLayoutInput, LayoutOutput as TaffyLayoutOutput, LayoutPartialTree,
+    MaybeResolve, NodeId as TaffyNodeId, RunMode, Size, SizingMode, TraversePartialTree,
+    compute_block_layout, compute_cached_layout, compute_flexbox_layout, compute_grid_layout,
+    compute_hidden_layout, compute_leaf_layout, compute_oof_layout, compute_root_layout,
 };
 
 use self::intrinsic_measurements::GridItemIntrinsicMetadata;
@@ -53,6 +54,8 @@ struct Node {
     replaced_sizing: Option<ReplacedSizingInput>,
     cache: Cache,
     layout: Layout,
+    hoisted_children: Vec<TaffyNodeId>,
+    detailed_layout_info: DetailedLayoutInfo<String>,
 }
 
 impl Node {
@@ -70,11 +73,13 @@ impl Node {
             replaced_sizing,
             cache: Cache::new(),
             layout: Layout::with_order(order),
+            hoisted_children: Vec::new(),
+            detailed_layout_info: DetailedLayoutInfo::None,
         }
     }
 }
 
-/// Taffy 0.14.0의 공개 고수준 tree resolver는 calc를 0으로 반환합니다.
+/// Taffy 0.15.0의 공개 고수준 tree resolver는 calc를 0으로 반환합니다.
 /// 이 tree는 동일한 Taffy Flex·Block 알고리즘을 사용하면서 owned expression만 해석합니다.
 pub(super) struct CalcLayoutTree {
     nodes: Vec<Node>,
@@ -391,6 +396,184 @@ impl CalcLayoutTree {
         self.calc_error.get_mut().take()
     }
 
+    pub(super) fn take_grid_track_sizing_traces(
+        &mut self,
+    ) -> Result<Vec<crate::LayoutGridTrackSizingTrace>, LayoutError> {
+        let mut traces = Vec::new();
+        for node_index in 0..self.nodes.len() {
+            let (Some(spinon_node), detailed_info) = ({
+                let node = &mut self.nodes[node_index];
+                (
+                    node.spinon_node,
+                    std::mem::replace(&mut node.detailed_layout_info, DetailedLayoutInfo::None),
+                )
+            }) else {
+                continue;
+            };
+            let DetailedLayoutInfo::Grid(mut grid_info) = detailed_info else {
+                continue;
+            };
+            let Some(trace) = grid_info.track_sizing_trace.take() else {
+                continue;
+            };
+            match trace.failure {
+                Some(taffy::GridTrackSizingTraceFailure::Allocation) => {
+                    return Err(LayoutError::GridTrackSizingTraceAllocationFailure {
+                        node: spinon_node,
+                    });
+                }
+                Some(taffy::GridTrackSizingTraceFailure::TraceLimitExceeded) => {
+                    return Err(LayoutError::GridTrackSizingTraceLimitExceeded {
+                        node: spinon_node,
+                    });
+                }
+                None => {}
+            }
+
+            traces.try_reserve(1).map_err(|_| {
+                LayoutError::GridTrackSizingTraceAllocationFailure { node: spinon_node }
+            })?;
+            let mut passes = Vec::new();
+            passes.try_reserve_exact(trace.passes.len()).map_err(|_| {
+                LayoutError::GridTrackSizingTraceAllocationFailure { node: spinon_node }
+            })?;
+            for pass in trace.passes {
+                let mut stages = Vec::new();
+                stages.try_reserve_exact(pass.stages.len()).map_err(|_| {
+                    LayoutError::GridTrackSizingTraceAllocationFailure { node: spinon_node }
+                })?;
+                for stage in pass.stages {
+                    let mut tracks = Vec::new();
+                    tracks.try_reserve_exact(stage.tracks.len()).map_err(|_| {
+                        LayoutError::GridTrackSizingTraceAllocationFailure { node: spinon_node }
+                    })?;
+                    tracks.extend(stage.tracks.into_iter().map(|track| {
+                        crate::LayoutGridTrackSizingTrackState {
+                            internal_index: track.internal_index,
+                            is_gutter: track.is_gutter,
+                            is_collapsed: track.is_collapsed,
+                            base_size: track.base_size,
+                            growth_limit: track.growth_limit,
+                            infinitely_growable: track.infinitely_growable,
+                        }
+                    }));
+                    stages.push(crate::LayoutGridTrackSizingStageTrace {
+                        stage: match stage.stage {
+                            taffy::GridTrackSizingStageKind::Initialize => {
+                                crate::LayoutGridTrackSizingStageKind::Initialize
+                            }
+                            taffy::GridTrackSizingStageKind::IntrinsicItemBatch {
+                                span,
+                                crosses_flexible_track,
+                            } => crate::LayoutGridTrackSizingStageKind::IntrinsicItemBatch {
+                                span,
+                                crosses_flexible_track,
+                            },
+                            taffy::GridTrackSizingStageKind::IntrinsicSizingComplete => {
+                                crate::LayoutGridTrackSizingStageKind::IntrinsicSizingComplete
+                            }
+                            taffy::GridTrackSizingStageKind::MaximizeTracks => {
+                                crate::LayoutGridTrackSizingStageKind::MaximizeTracks
+                            }
+                            taffy::GridTrackSizingStageKind::ExpandFlexibleTracks => {
+                                crate::LayoutGridTrackSizingStageKind::ExpandFlexibleTracks
+                            }
+                            taffy::GridTrackSizingStageKind::StretchAutoTracks { applied } => {
+                                crate::LayoutGridTrackSizingStageKind::StretchAutoTracks { applied }
+                            }
+                            taffy::GridTrackSizingStageKind::FixedTrackEarlyReturn => {
+                                crate::LayoutGridTrackSizingStageKind::FixedTrackEarlyReturn
+                            }
+                        },
+                        tracks,
+                    });
+                }
+                let mut contributions = Vec::new();
+                contributions
+                    .try_reserve_exact(pass.contributions.len())
+                    .map_err(|_| LayoutError::GridTrackSizingTraceAllocationFailure {
+                        node: spinon_node,
+                    })?;
+                for contribution in pass.contributions {
+                    let item = self
+                        .nodes
+                        .get(usize::from(contribution.item_node))
+                        .and_then(|node| node.spinon_node)
+                        .ok_or(LayoutError::GridTrackSizingTraceItemMissing {
+                            node: spinon_node,
+                            item_engine_id: u64::from(contribution.item_node),
+                        })?;
+                    contributions.push(crate::LayoutGridTrackSizingContributionTrace {
+                        item,
+                        kind: match contribution.kind {
+                            taffy::GridTrackSizingContributionKind::Minimum => {
+                                crate::LayoutGridTrackSizingContributionKind::Minimum
+                            }
+                            taffy::GridTrackSizingContributionKind::MinContent => {
+                                crate::LayoutGridTrackSizingContributionKind::MinContent
+                            }
+                            taffy::GridTrackSizingContributionKind::MaxContent => {
+                                crate::LayoutGridTrackSizingContributionKind::MaxContent
+                            }
+                        },
+                        span: contribution.span,
+                        crosses_flexible_track: contribution.crosses_flexible_track,
+                        value: contribution.value,
+                        minimum_source: contribution.minimum_source.map(|source| match source {
+                            taffy::GridTrackSizingMinimumContributionSource::PreferredSize {
+                                clamped_by_min_or_max,
+                            } => crate::LayoutGridTrackSizingMinimumContributionSource::PreferredSize {
+                                clamped_by_min_or_max,
+                            },
+                            taffy::GridTrackSizingMinimumContributionSource::SizingKeywordUsesMinContent => {
+                                crate::LayoutGridTrackSizingMinimumContributionSource::SizingKeywordUsesMinContent
+                            }
+                            taffy::GridTrackSizingMinimumContributionSource::SpecifiedMinimum => {
+                                crate::LayoutGridTrackSizingMinimumContributionSource::SpecifiedMinimum
+                            }
+                            taffy::GridTrackSizingMinimumContributionSource::OverflowAutomaticMinimum => {
+                                crate::LayoutGridTrackSizingMinimumContributionSource::OverflowAutomaticMinimum
+                            }
+                            taffy::GridTrackSizingMinimumContributionSource::AutomaticMinimum {
+                                spans_auto_min_track,
+                                spans_multiple_tracks,
+                                spans_flexible_max_track,
+                                content_based,
+                                is_compressible_replaced,
+                                fixed_track_limit,
+                            } => crate::LayoutGridTrackSizingMinimumContributionSource::AutomaticMinimum {
+                                spans_auto_min_track,
+                                spans_multiple_tracks,
+                                spans_flexible_max_track,
+                                content_based,
+                                is_compressible_replaced,
+                                fixed_track_limit,
+                            },
+                        }),
+                    });
+                }
+                passes.push(crate::LayoutGridTrackSizingPassTrace {
+                    sequence: pass.sequence,
+                    axis: match pass.axis {
+                        taffy::geometry::AbstractAxis::Inline => {
+                            crate::LayoutGridTrackSizingAxis::Columns
+                        }
+                        taffy::geometry::AbstractAxis::Block => {
+                            crate::LayoutGridTrackSizingAxis::Rows
+                        }
+                    },
+                    stages,
+                    contributions,
+                });
+            }
+            traces.push(crate::LayoutGridTrackSizingTrace {
+                node: spinon_node,
+                passes,
+            });
+        }
+        Ok(traces)
+    }
+
     pub(super) fn layout(&self, id: TaffyNodeId) -> Option<Layout> {
         self.nodes.get(usize::from(id)).map(|node| node.layout)
     }
@@ -431,14 +614,14 @@ impl CalcLayoutTree {
         compute_cached_layout(self, node_id, inputs, |tree, node_id, inputs| {
             let display = tree.node(node_id).style.display();
             let has_children = tree.child_count(node_id) > 0;
-            match (display, has_children) {
+            let mut output = match (display, has_children) {
                 (Display::None, _) => compute_hidden_layout(tree, node_id),
                 (Display::Block, true) => {
                     compute_block_layout(tree, node_id, inputs, block_context)
                 }
                 (Display::FlowRoot, true) => compute_block_layout(tree, node_id, inputs, None),
                 (Display::Flex, true) => compute_flexbox_layout(tree, node_id, inputs),
-                (Display::Grid, true) => compute_grid_layout(tree, node_id, inputs),
+                (Display::Grid, _) => compute_grid_layout(tree, node_id, inputs),
                 (_, false) => {
                     let mut inputs = inputs;
                     let mut style = tree.node(node_id).style.clone();
@@ -483,7 +666,7 @@ impl CalcLayoutTree {
                             tree.resolve_calc_value(value, basis)
                         });
                     if style_size.width.is_some() && style_size.height.is_some() {
-                        // Taffy 0.14's leaf path treats the preferred ratio as a minimum for
+                        // Taffy 0.15's leaf path treats the preferred ratio as a minimum for
                         // height even when both CSS sizes are definite. CSS leaves both sizes
                         // untouched in that case, so keep the leaf path but disable that
                         // incompatible post-measure adjustment.
@@ -554,7 +737,13 @@ impl CalcLayoutTree {
                         },
                     )
                 }
+            };
+
+            if inputs.run_mode == RunMode::PerformLayout {
+                compute_oof_layout(tree, node_id, &mut output);
             }
+
+            output
         })
     }
 
@@ -722,6 +911,31 @@ impl CacheTree for CalcLayoutTree {
 
     fn cache_clear(&mut self, node_id: TaffyNodeId) {
         self.node_mut(node_id).cache.clear();
+    }
+}
+
+impl LayoutContainingBlock for CalcLayoutTree {
+    type OofItemStyle<'a> = &'a CompactTaffyStyle;
+
+    fn get_oof_item_style(&self, node_id: TaffyNodeId) -> Self::OofItemStyle<'_> {
+        &self.node(node_id).style
+    }
+
+    fn clear_hoisted_children(&mut self, node_id: TaffyNodeId) {
+        self.node_mut(node_id).hoisted_children.clear();
+    }
+
+    fn add_hoisted_children(&mut self, node_id: TaffyNodeId, hoisted: &[TaffyNodeId]) {
+        self.node_mut(node_id)
+            .hoisted_children
+            .extend_from_slice(hoisted);
+    }
+
+    fn get_detailed_layout_info(
+        &self,
+        node_id: TaffyNodeId,
+    ) -> &DetailedLayoutInfo<Self::CustomIdent> {
+        &self.node(node_id).detailed_layout_info
     }
 }
 
