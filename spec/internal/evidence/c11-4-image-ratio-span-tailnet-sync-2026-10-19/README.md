@@ -26,7 +26,7 @@ Agent Browser로 실제 Tailnet 도메인에서 다음 페이지를 열었다.
 - [C11.4 계획](https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-grid-track-sizing.html): 5.333px/12px CRD 기대값, Chrome 155의 12px/27px 관찰, 제한 범위와 미완료 상태를 확인했다.
 - [이미지 ratio span 근거](https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-ratio-span-2026-10-19/README.html): Android 1080×2400과 iOS 1206×2622 screenshot 두 장이 모두 로드됐다.
 
-DOM 확인과 화면 캡처는 [`browser-verification.json`](browser-verification.json)에 기록했다. 캡처는 [로드맵 카운터](tailnet-roadmap-count-agent-browser.png), [PR #354 로드맵 항목](tailnet-roadmap-agent-browser.png), [상태 대장 후속](tailnet-status-agent-browser.png), [C11.4 미완료 체크](tailnet-status-checkbox-agent-browser.png), [계획](tailnet-plan-agent-browser.png), [실행 근거 페이지](tailnet-evidence-agent-browser.png), [Android/iOS Simulator 화면](tailnet-evidence-simulator-agent-browser.png)이다. 사용한 Agent Browser session은 작업 후 종료했고 결과는 [`browser-session-shutdown.json`](browser-session-shutdown.json)에 있다.
+DOM 확인과 화면 캡처는 [`browser-verification.json`](browser-verification.json)에 기록했다. [PR #355](https://github.com/ohah/spinon/pull/355) 본문도 Agent Browser로 확인했고 raw screenshot 4/4가 각각 1280×633 크기로 로드됐다. 캡처는 [로드맵 카운터](tailnet-roadmap-count-agent-browser.png), [PR #354 로드맵 항목](tailnet-roadmap-agent-browser.png), [상태 대장 후속](tailnet-status-agent-browser.png), [C11.4 미완료 체크](tailnet-status-checkbox-agent-browser.png), [계획](tailnet-plan-agent-browser.png), [실행 근거 페이지](tailnet-evidence-agent-browser.png), [Android/iOS Simulator 화면](tailnet-evidence-simulator-agent-browser.png)이다. 사용한 Agent Browser session은 작업 후 종료했고 결과는 [`browser-session-shutdown.json`](browser-session-shutdown.json)에 있다.
 
 ## 검증 범위
 

@@ -60,5 +60,39 @@
     "tailnet-plan-agent-browser.png",
     "tailnet-evidence-agent-browser.png",
     "tailnet-evidence-simulator-agent-browser.png"
-  ]
+  ],
+  "pull_request_body": {
+    "number": 355,
+    "url": "https://github.com/ohah/spinon/pull/355",
+    "title": "docs(c11.4): PR #354 이후 Tailnet 로드맵 동기화",
+    "label": "documentation",
+    "counter_visible": true,
+    "raw_images_loaded": 4,
+    "images": [
+      {
+        "file": "tailnet-roadmap-count-agent-browser.png",
+        "complete": true,
+        "width": 1280,
+        "height": 633
+      },
+      {
+        "file": "tailnet-roadmap-agent-browser.png",
+        "complete": true,
+        "width": 1280,
+        "height": 633
+      },
+      {
+        "file": "tailnet-status-checkbox-agent-browser.png",
+        "complete": true,
+        "width": 1280,
+        "height": 633
+      },
+      {
+        "file": "tailnet-evidence-simulator-agent-browser.png",
+        "complete": true,
+        "width": 1280,
+        "height": 633
+      }
+    ]
+  }
 }

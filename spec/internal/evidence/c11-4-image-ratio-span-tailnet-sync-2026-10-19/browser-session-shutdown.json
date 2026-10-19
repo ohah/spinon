@@ -1,0 +1,18 @@
+{
+  "checked_at_utc": "2026-10-19T14:09:19.206Z",
+  "session": "spinon-c114-span-tailnet-20261019",
+  "close_command": "agent-browser --session spinon-c114-span-tailnet-20261019 close",
+  "close_result": "Browser closed",
+  "session_info_after_close": {
+    "active": false,
+    "pid": null
+  },
+  "process_check": {
+    "pid": 99982,
+    "exists": false
+  },
+  "active_sessions_after_close": [
+    "default"
+  ],
+  "global_close_all_used": false
+}
