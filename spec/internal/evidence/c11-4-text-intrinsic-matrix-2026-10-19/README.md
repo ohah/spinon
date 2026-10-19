@@ -10,7 +10,7 @@
 
 ## 비교 입력과 기준
 
-Chrome oracle는 저장소의 [고정 precomparison HTML](../../../../tests/fixtures/css/c11/grid-track-sizing-c114-precomparison.html)을 Agent Browser 0.31.1과 Chrome 155.0.8059.85에서 실행했다. 브라우저는 HeadlessChrome 155, DPR 1, viewport 1280×633이었다. 기본 oracle 결과는 [chrome155-oracle.json](./chrome155-oracle.json)에 보존했다.
+Chrome oracle는 저장소의 [고정 precomparison HTML](https://github.com/ohah/spinon/blob/main/tests/fixtures/css/c11/grid-track-sizing-c114-precomparison.html)을 Agent Browser 0.31.1과 Chrome 155.0.8059.85에서 실행했다. 브라우저는 HeadlessChrome 155, DPR 1, viewport 1280×633이었다. 기본 oracle 결과는 [chrome155-oracle.json](./chrome155-oracle.json)에 보존했다.
 
 앱 fixture는 `align-items:start`를 지정하고 `align-content`를 생략한다. 앱 runtime의 computed `align-content`는 `normal`이다. 원본 Chrome precomparison의 `.grid`는 `align-content:start`를 지정하므로, runtime-equivalent Chrome 관찰에서는 10개 text root에 `align-content:normal`과 `align-items:start`를 중요한 author 선언으로 적용한 뒤 값을 수집했다. 이 조정 결과가 [chrome155-runtime-profile-oracle.json](./chrome155-runtime-profile-oracle.json)이다. 따라서 서로 다른 computed alignment를 둔 채 결과를 비교하지 않았다.
 

@@ -5,3 +5,6 @@ spec/internal/evidence/c18-2-alpha-image-*/**.log whitespace=-blank-at-eol,-blan
 spec/internal/evidence/c18-2-alpha-image-*/**.txt whitespace=-blank-at-eol,-blank-at-eof
 spec/internal/evidence/c18-2-alpha-image-*/**/*.log whitespace=-blank-at-eol,-blank-at-eof
 spec/internal/evidence/c18-2-alpha-image-*/**/*.txt whitespace=-blank-at-eol,-blank-at-eof
+
+# Preserve byte-exact generated Rspress logs with trailing spaces from tool output.
+spec/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/*.log whitespace=-blank-at-eol,-blank-at-eof

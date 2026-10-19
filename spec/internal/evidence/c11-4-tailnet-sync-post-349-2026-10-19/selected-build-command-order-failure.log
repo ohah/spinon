@@ -1,0 +1,17 @@
+🔥 Rspress v2.0.22
+
+2027 |             }
+2028 |         }
+2029 |     }
+2030 |     checkUnusedArgs() {
+2031 |         const maximumArgsCount = this.args.some((arg)=>arg.variadic) ? 1 / 0 : this.args.length;
+2032 |         if (maximumArgsCount < this.cli.args.length) throw new CACError(`Unused args: ${this.cli.args.slice(maximumArgsCount).map((arg)=>`\`${arg}\``).join(", ")}`);
+                                                                  ^
+CACError: Unused args: `build`
+      at checkUnusedArgs (<bunx-cache>/node_modules/@rspress/core/dist/o~0.js:2032:60)
+      at runMatchedCommand (<bunx-cache>/node_modules/@rspress/core/dist/o~0.js:2213:17)
+      at parse (<bunx-cache>/node_modules/@rspress/core/dist/o~0.js:2159:23)
+      at runCLI (<bunx-cache>/node_modules/@rspress/core/dist/cli/index.js:101:9)
+      at main (<bunx-cache>/node_modules/@rspress/core/bin/rspress.js:17:3)
+
+Bun v1.4.2 (macOS arm64)

@@ -1,0 +1,159 @@
+{
+  "pass": "pass-3",
+  "backup_count": 19,
+  "all_verified": true,
+  "files": [
+    {
+      "path": "0001-conformance.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-3/0001-conformance.html",
+      "bytes": 39785,
+      "sha256": "7fb6c24f7428cec07ba1eadd5c8ec83ca3d1f77a8a812c5a7fc1b485e2d1c604",
+      "expected_sha256": "7fb6c24f7428cec07ba1eadd5c8ec83ca3d1f77a8a812c5a7fc1b485e2d1c604",
+      "verified": true
+    },
+    {
+      "path": "404.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-3/404.html",
+      "bytes": 8512,
+      "sha256": "f2ae104d21e12aaecb2e8a173e21f62eee9b7ac824f4a9e125a955d460bd8f8b",
+      "expected_sha256": "f2ae104d21e12aaecb2e8a173e21f62eee9b7ac824f4a9e125a955d460bd8f8b",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-3/STATUS.html",
+      "bytes": 387818,
+      "sha256": "9a5b7fc8f623c3fde146628c74a885293b627b112965f4340d2970ea636e3753",
+      "expected_sha256": "9a5b7fc8f623c3fde146628c74a885293b627b112965f4340d2970ea636e3753",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-3/internal/0059-c11-grid-layout.html",
+      "bytes": 87104,
+      "sha256": "62f42a85b76d2b2c303964c8b548b289a0dffcc6df7b3611fe660b2daddec5d9",
+      "expected_sha256": "62f42a85b76d2b2c303964c8b548b289a0dffcc6df7b3611fe660b2daddec5d9",
+      "verified": true
+    },
+    {
+      "path": "internal/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-3/internal/README.html",
+      "bytes": 174877,
+      "sha256": "d55985c2afda9da3adce0aa77df00fd9db6835e3dce1b6297a47721e87473539",
+      "expected_sha256": "d55985c2afda9da3adce0aa77df00fd9db6835e3dce1b6297a47721e87473539",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-3/internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/README.html",
+      "bytes": 32886,
+      "sha256": "88fa2786c720e198f472cb6c0de14769b720521dd88311e41eab6cdd14e43c6b",
+      "expected_sha256": "88fa2786c720e198f472cb6c0de14769b720521dd88311e41eab6cdd14e43c6b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/implementation-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-3/internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/implementation-review-20.html",
+      "bytes": 31542,
+      "sha256": "68c9946daa618c422c13ba6c56d3d499750d986c42e716e215c43e872fff8fcd",
+      "expected_sha256": "68c9946daa618c422c13ba6c56d3d499750d986c42e716e215c43e872fff8fcd",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/pr-delta-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-3/internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/pr-delta-review-30.html",
+      "bytes": 31859,
+      "sha256": "446854cc4775da5a073ab62ba32b0fe081c7c684990ea75c10bdb2b1ea5ca433",
+      "expected_sha256": "446854cc4775da5a073ab62ba32b0fe081c7c684990ea75c10bdb2b1ea5ca433",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-3/internal/evidence/c11-4-tailnet-sync-2026-10-19/README.html",
+      "bytes": 28443,
+      "sha256": "277dff9672f44ef5228e3793ad9ad1c802924bcebbce93eac981e2a91e76a760",
+      "expected_sha256": "277dff9672f44ef5228e3793ad9ad1c802924bcebbce93eac981e2a91e76a760",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-3/internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "bytes": 29173,
+      "sha256": "b86566adfcb686dfaf7dae23ab52fdd6b31c513962eb400a4998ce7e2361d8b9",
+      "expected_sha256": "b86566adfcb686dfaf7dae23ab52fdd6b31c513962eb400a4998ce7e2361d8b9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-3/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/README.html",
+      "bytes": 27450,
+      "sha256": "90fdfe0564220ab8cc423b03b48d945da5e02870a20d941ec3a166a93e532aa0",
+      "expected_sha256": "90fdfe0564220ab8cc423b03b48d945da5e02870a20d941ec3a166a93e532aa0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/pr-delta-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-3/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/pr-delta-review-30.html",
+      "bytes": 28762,
+      "sha256": "86305d5fb9e127ef3e6978cc8d437c81810d5a0c51623a9d49a4aac702fc8593",
+      "expected_sha256": "86305d5fb9e127ef3e6978cc8d437c81810d5a0c51623a9d49a4aac702fc8593",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/rspress.tailnet-sync.config.ts",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-3/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/rspress.tailnet-sync.config.ts",
+      "bytes": 515,
+      "sha256": "5295db2a7af2669597448ecdb541ee5d16771dfebb1fa463e9689456c9bfffaa",
+      "expected_sha256": "5295db2a7af2669597448ecdb541ee5d16771dfebb1fa463e9689456c9bfffaa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/sync-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-3/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/sync-review-20.html",
+      "bytes": 27660,
+      "sha256": "dbb1613786192d5850dcf4ff93c73af9895433e9ffde10140049894a3e81b063",
+      "expected_sha256": "dbb1613786192d5850dcf4ff93c73af9895433e9ffde10140049894a3e81b063",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-3/internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/README.html",
+      "bytes": 40005,
+      "sha256": "712e527b4608c87778125588d9312037955859721a0e2ff3afb1a49a74c48f65",
+      "expected_sha256": "712e527b4608c87778125588d9312037955859721a0e2ff3afb1a49a74c48f65",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-3/internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "bytes": 31282,
+      "sha256": "9a111ae6359079289e1bacd8dc47341559eab102fe2b5025e6800f66fc327bbf",
+      "expected_sha256": "9a111ae6359079289e1bacd8dc47341559eab102fe2b5025e6800f66fc327bbf",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-3/internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "bytes": 29822,
+      "sha256": "2a34a9fad9fad1149a267f86cfc1acf48bc14cd984f1cf2a611e436f9c9a8b9c",
+      "expected_sha256": "2a34a9fad9fad1149a267f86cfc1acf48bc14cd984f1cf2a611e436f9c9a8b9c",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-3/plan/c11-4-grid-track-sizing.html",
+      "bytes": 69136,
+      "sha256": "a95a2bdc5b0a992e06a112bf5da723e648e8a21e24fe87715aa09481ae037fdf",
+      "expected_sha256": "a95a2bdc5b0a992e06a112bf5da723e648e8a21e24fe87715aa09481ae037fdf",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-3/plan/c11-css-grid.html",
+      "bytes": 58152,
+      "sha256": "58dce39c6f1a023eddfc27676b535c9f197a89e94a1cad116f0a7e25272ecead",
+      "expected_sha256": "58dce39c6f1a023eddfc27676b535c9f197a89e94a1cad116f0a7e25272ecead",
+      "verified": true
+    }
+  ]
+}
