@@ -52,4 +52,4 @@ Named lines/areas, percentage/calc neighbors, 두 axis 동시 auto-repeat, 여�
 - Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator에서 각각 21/21 기존·신규 scene을 확인했다. 신규 8개는 root frame, used tracks, 모든 active 8px gutter, collapse 상태, trace chunk 및 draw/present marker를 검사했다.
 - [구현 실패 관점 검토 20개](../spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/implementation-review-20.md)를 새로 수행했다. Chrome `auto-fit` definite minimum-size axis discrepancy, WPT, 실기기, hardware GPU와 iOS compositor-after 결과는 계속 남는다.
 
-이후 implementation PR은 final 30관점 diff 검토를 거친 다음 병합한다. C11.4 check와 공식 완료 수는 그대로 둔다.
+구현 PR [#365](https://github.com/ohah/spinon/pull/365)은 2026-10-20 KST Rebase and merge됐다(merge commit `a2c137213f72e82b3a8e3cc153e92c8b9db9a653`). 별도 구현 검토와 최종 PR diff 검토를 완료했지만 C11.4 check와 공식 완료 수는 그대로 미완료로 둔다.

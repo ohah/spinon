@@ -1,5 +1,9 @@
 # 내부 인터페이스 명세
 
+## C11.4 definite minimum-size two-track auto-fill 후속 · PR #365
+
+[집중 계획](../../plan/c11-4-auto-repeat-two-track-min-size.md) · [Chrome 155 사전 비교](./evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/README.md) · [Android/iOS Simulator 21-scene 실행·로그·캡처](./evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/README.md) · [구현 실패 관점 검토](./evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/implementation-review-20.md). 구현 PR #365는 merge commit `a2c137213f72e82b3a8e3cc153e92c8b9db9a653`로 Rebase and merge했다. C11.4와 공식 CSS 지원 상태는 미완료다.
+
 ## C11.4 auto-repeat explicit neighbor 후속
 
 [Chrome 155 13-case와 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 각 13/13 scene 실행·화면·해시](./evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.md) · [구현 실패 관점 20개](./evidence/c11-4-auto-repeat-neighbors-2026-10-20/implementation-review-20.md) · [PR diff 적대 검토 30개](./evidence/c11-4-auto-repeat-neighbors-2026-10-20/pr-diff-review-30.md). 구현 [PR #362](https://github.com/ohah/spinon/pull/362)은 merge SHA `033ea09badbf61100675df485679c6e7959d1974`로 Rebase and merge했다. 한 축의 단일 auto-repeat 앞뒤 fixed `px` neighbor 지원 subset이며 C11.4와 공개 CSS 지원은 미완료다.
