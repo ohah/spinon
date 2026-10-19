@@ -1,0 +1,12 @@
+{
+  "browser_tool": "Agent Browser",
+  "namespace": "spinon-c114-tailnet-final-20261020",
+  "session": "c11-4-tailnet-final",
+  "close_command_succeeded": true,
+  "owned_daemon_pid_before_close": 90394,
+  "owned_chrome_process_id_before_close": 90403,
+  "owned_daemon_present_after_close": false,
+  "owned_chrome_user_data_profile_present_after_close": false,
+  "preexisting_daemon_pid": 74457,
+  "preexisting_daemon_present_after_close": true
+}

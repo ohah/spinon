@@ -1,0 +1,326 @@
+{
+  "browser": {
+    "tool": "Agent Browser",
+    "version": "0.31.1",
+    "namespace": "spinon-c114-tailnet-pass9-20261020",
+    "session": "c11-4-tailnet-pass9"
+  },
+  "preview": {
+    "origin": "https://macstudio.tailed42f2.ts.net",
+    "base_path": "/spinon/"
+  },
+  "report_page": {
+    "title": "C11.4 PR #357 뒤 Tailnet 로드맵 미리보기 갱신 - 스피논 문서",
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/README.html",
+    "same_origin_outside_base_count": 0,
+    "pass8_results_visible": true
+  },
+  "html_route_count": 34,
+  "all_html_routes_return_200": true,
+  "all_html_routes_have_no_same_origin_links_outside_base": true,
+  "routes": {
+    "not200": [],
+    "routeCount": 34,
+    "routes": [
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "0001-conformance.html",
+        "status": 200,
+        "title": "0001 · 범위와 적합성 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "404.html",
+        "status": 200,
+        "title": "404 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "internal/0059-c11-grid-layout.html",
+        "status": 200,
+        "title": "0059 · C11 Grid 레이아웃 내부 계약 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html",
+        "status": 200,
+        "title": "Fixture artifact feature boundary - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+        "status": 200,
+        "title": "C11.4 image intrinsic fixture 구현 검토 20개 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+        "status": 200,
+        "title": "C11.4 이미지 intrinsic 행렬 PR diff 검토 30개 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+        "status": 200,
+        "title": "C11.4 direct-leaf image intrinsic matrix - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+        "status": 200,
+        "title": "C11.4 fixed gutter 구현 적대 검토 · 20개 실패 관점 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+        "status": 200,
+        "title": "C11.4 fixed-gutter PR diff 적대 검토 · 30개 실패 관점 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+        "status": 200,
+        "title": "C11.4 fixed-span size suggestion · 구현과 Simulator 근거 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+        "status": 200,
+        "title": "C11.4 fixed gutter 계획 검토 · 20개 실패 관점 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+        "status": 200,
+        "title": "C11.4 fixed-span 계획 수정 검토 · 20개 실패 관점 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+        "status": 200,
+        "title": "C11.4 fixed-gutter 계획 PR diff 검토 · 20개 실패 관점 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+        "status": 200,
+        "title": "C11.4 fixed max track span과 gutter의 사전 비교 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/README.html",
+        "status": 200,
+        "title": "C11.4 PR #357 뒤 Tailnet 로드맵 미리보기 갱신 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/sync-review-20.html",
+        "status": 200,
+        "title": "C11.4 fixed-gutter Tailnet 동기화 실패 관점 검토 20개 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+        "status": 200,
+        "title": "C11.4 Tailnet roadmap PR diff 검토 30개 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.html",
+        "status": 200,
+        "title": "C11.4 PR #351 뒤 Tailnet 로드맵 미리보기 갱신 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.html",
+        "status": 200,
+        "title": "C11.4 Tailnet 미리보기 동기화 검토 20개 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "internal/README.html",
+        "status": 200,
+        "title": "내부 인터페이스 명세 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "plan/c11-4-grid-track-sizing.html",
+        "status": 200,
+        "title": "C11.4 · CSS Grid track sizing 계획 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "plan/c11-4-image-ratio-fixed-gutter.html",
+        "status": 200,
+        "title": "C11.4 · fixed span size suggestion clamp와 gutter trace - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "plan/c11-css-grid.html",
+        "status": 200,
+        "title": "C11 · CSS Grid 레이아웃 구현 계획 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "roadmap.html",
+        "status": 200,
+        "title": "스피논 구현 로드맵"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "spec/internal/0059-c11-grid-layout.html",
+        "status": 200,
+        "title": "0059 · C11 Grid 레이아웃 내부 계약 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+        "status": 200,
+        "title": "C11.4 fixed gutter 구현 적대 검토 · 20개 실패 관점 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+        "status": 200,
+        "title": "C11.4 fixed-gutter PR diff 적대 검토 · 30개 실패 관점 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+        "status": 200,
+        "title": "C11.4 fixed-span size suggestion · 구현과 Simulator 근거 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+        "status": 200,
+        "title": "C11.4 fixed gutter 계획 검토 · 20개 실패 관점 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+        "status": 200,
+        "title": "C11.4 fixed-span 계획 수정 검토 · 20개 실패 관점 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+        "status": 200,
+        "title": "C11.4 fixed-gutter 계획 PR diff 검토 · 20개 실패 관점 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+        "status": 200,
+        "title": "C11.4 fixed max track span과 gutter의 사전 비교 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "STATUS.html",
+        "status": 200,
+        "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서"
+      },
+      {
+        "outsideBase": [],
+        "outsideBaseCount": 0,
+        "path": "tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html",
+        "status": 200,
+        "title": "C11.4 fixed max track span and gutter oracle"
+      }
+    ],
+    "withOutsideBase": []
+  },
+  "implementation_evidence": {
+    "title": "C11.4 fixed-span size suggestion · 구현과 Simulator 근거 - 스피논 문서",
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+    "same_origin_outside_base_count": 0,
+    "app_screenshot_count": 4,
+    "all_app_screenshots_loaded": true,
+    "app_screenshots": [
+      {
+        "src": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/screenshot-fixed-gutter-column-suggestion-clamp.png",
+        "loaded": true,
+        "width": 1080,
+        "height": 2400
+      },
+      {
+        "src": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/screenshot-fixed-gutter-row-suggestion-clamp.png",
+        "loaded": true,
+        "width": 1080,
+        "height": 2400
+      },
+      {
+        "src": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-column-suggestion-clamp.png",
+        "loaded": true,
+        "width": 1206,
+        "height": 2622
+      },
+      {
+        "src": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-row-suggestion-clamp.png",
+        "loaded": true,
+        "width": 1206,
+        "height": 2622
+      }
+    ]
+  },
+  "screenshots": [
+    {
+      "file": "final-tailnet-roadmap-agent-browser.png",
+      "bytes": 284094,
+      "sha256": "8f92f76b3c20597acbb106ef5e98592ecbe07081f9b18a2aa24c45e901afc37d"
+    },
+    {
+      "file": "final-tailnet-status-agent-browser.png",
+      "bytes": 155116,
+      "sha256": "7cd7cd6e03ac5747777b4f4d273945b8f328a76191ec286498d8a085290ac359"
+    },
+    {
+      "file": "final-tailnet-plan-agent-browser.png",
+      "bytes": 139483,
+      "sha256": "8ed24ecdaa3c3583c58d21b180dd9bf39c18a4f72a310d7fc221fc50add4337a"
+    },
+    {
+      "file": "final-tailnet-evidence-agent-browser.png",
+      "bytes": 155022,
+      "sha256": "e7f8a8a3de8a82ccc904df88563450f3be6775b819b88bfbb90a0c868316d40b"
+    },
+    {
+      "file": "pass9-tailnet-sync-agent-browser.png",
+      "bytes": 125555,
+      "sha256": "35581dd43b9c8e41093f441a70291e95027dc60b9c068f9ab567a369114f5590"
+    }
+  ]
+}

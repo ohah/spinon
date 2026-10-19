@@ -16,6 +16,10 @@
 
 [구현 PR #353](https://github.com/ohah/spinon/pull/353) · [27-case Chrome 155 observation과 판정 기준](./evidence/c11-4-image-ratio-transfer-2026-10-19/README.md) · [구현 실패 관점 20개](./evidence/c11-4-image-ratio-transfer-2026-10-19/implementation-review-20.md) · [Android API 37 AVD·iPhone 17 Pro iOS 26.2 Simulator 7-scene 실행·표면 표본](./evidence/c11-4-image-ratio-transfer-simulator-2026-10-19/README.md). 제한된 direct HTML `img` Grid item fixture 결과이며 공개 CSS 지원이나 C11.4 완료가 아니다.
 
+## C11.4 PR #357 fixed-gutter Tailnet 미리보기
+
+[집중 계획](../../plan/c11-4-image-ratio-fixed-gutter.md) · [구현·Simulator 근거](./evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.md) · [Tailnet 동기화·브라우저 확인](./evidence/c11-4-image-tailnet-preview-update-2026-10-20/README.md) · [동기화 실패 관점 20개](./evidence/c11-4-image-tailnet-preview-update-2026-10-20/sync-review-20.md). PR #357 rebase merge 뒤 제한된 선택 문서 미리보기에 새 계획과 실행 근거를 연결했다. 공식 C11.4 상태는 미완료이며, 선택 root 빌드는 GitHub Pages 전체 사이트 배포나 앱 동작 검증이 아니다.
+
 ## C11.4 PR #349 뒤 Tailnet 미리보기 동기화
 
 [선택 빌드·복사·제공 화면과 SHA-256 근거](./evidence/c11-4-tailnet-sync-post-349-2026-10-19/README.md) · [Tailnet 동기화 검토 20개](./evidence/c11-4-tailnet-sync-post-349-2026-10-19/sync-review-20.md) · [PR 변경 적대 검토 30개](./evidence/c11-4-tailnet-sync-post-349-2026-10-19/pr-delta-review-30.md). PR #349 병합 뒤 C11.4 로드맵에 10-scene Ahem text intrinsic 결과를 반영하고 새 실행 근거로 연결했다. C11.4는 미완료로 유지하며, 정적 Tailnet 미리보기 갱신은 앱 동작 검증이나 전체 문서 사이트 배포를 뜻하지 않는다.

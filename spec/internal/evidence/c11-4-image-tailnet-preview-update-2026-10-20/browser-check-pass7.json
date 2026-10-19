@@ -1,0 +1,49 @@
+{
+  "pass": "pass7",
+  "tool": "agent-browser 0.31.1",
+  "namespace": "spinon-c114-tailnet-20261020",
+  "session": "c11-4-tailnet-qa",
+  "tailnet_origin": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "routes": [
+    {
+      "route": "roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "contains_merged_pr_357_note": true,
+      "screenshot": "pass7-tailnet-roadmap-agent-browser.png"
+    },
+    {
+      "route": "STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "same_origin_links_outside_spinon_base": 0,
+      "selected_fixed_gutter_plan_link_count": 2,
+      "screenshot": "pass7-tailnet-status-agent-browser.png"
+    },
+    {
+      "route": "plan/c11-4-image-ratio-fixed-gutter.html",
+      "title": "C11.4 · fixed span size suggestion clamp와 gutter trace - 스피논 문서",
+      "same_origin_links_outside_spinon_base": 0,
+      "screenshot": "pass7-tailnet-plan-agent-browser.png"
+    },
+    {
+      "route": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "title": "C11.4 fixed-span size suggestion · 구현과 Simulator 근거 - 스피논 문서",
+      "image_count_including_logo": 5,
+      "four_simulator_images_loaded": true,
+      "same_origin_links_outside_spinon_base": 0,
+      "screenshot": "pass7-tailnet-evidence-agent-browser.png"
+    }
+  ],
+  "merged_pr_357_body": {
+    "url": "https://github.com/ohah/spinon/pull/357",
+    "title_matches": true,
+    "raw_screenshot_count": 4,
+    "all_screenshots_loaded": true,
+    "image_sizes": [
+      [1080, 2400],
+      [1080, 2400],
+      [1206, 2622],
+      [1206, 2622]
+    ]
+  },
+  "page_errors_after_final_status_check": []
+}

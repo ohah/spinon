@@ -1,0 +1,248 @@
+{
+  "pass": "pass7",
+  "backup_root_relative": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7",
+  "target_count": 30,
+  "all_verified": true,
+  "files": [
+    {
+      "path": "0001-conformance.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/0001-conformance.html",
+      "bytes": 48308,
+      "sha256": "ab43e58df4cb77b762a61fff3af9a8a3e8f5d53820807aee08ff90b4a3918f88",
+      "expected_sha256": "ab43e58df4cb77b762a61fff3af9a8a3e8f5d53820807aee08ff90b4a3918f88",
+      "verified": true
+    },
+    {
+      "path": "404.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/404.html",
+      "bytes": 8512,
+      "sha256": "39c2a48ead5b449b46fa4b20479da2e7531ea87602bece78b7ebc7f21904bca0",
+      "expected_sha256": "39c2a48ead5b449b46fa4b20479da2e7531ea87602bece78b7ebc7f21904bca0",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/internal/0059-c11-grid-layout.html",
+      "bytes": 106355,
+      "sha256": "b87c618a775371a11afb034a57b42526a67ed3f2ef5ff7d8a9fc88d947dc105e",
+      "expected_sha256": "b87c618a775371a11afb034a57b42526a67ed3f2ef5ff7d8a9fc88d947dc105e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html",
+      "bytes": 34891,
+      "sha256": "877f7e482b60c64b48a6de8d02b120699252a07d4d1ef5d6b78e79c56ff87d48",
+      "expected_sha256": "877f7e482b60c64b48a6de8d02b120699252a07d4d1ef5d6b78e79c56ff87d48",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "bytes": 38891,
+      "sha256": "271fba9ff42ef53c5faae4cf55d8a50ce5527f9c04d25d0787728f474a2988c5",
+      "expected_sha256": "271fba9ff42ef53c5faae4cf55d8a50ce5527f9c04d25d0787728f474a2988c5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "bytes": 39870,
+      "sha256": "f2d0ddef315354f4bd067cac308436d576ef706cd661fede33a7989669635df8",
+      "expected_sha256": "f2d0ddef315354f4bd067cac308436d576ef706cd661fede33a7989669635df8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+      "bytes": 38834,
+      "sha256": "6bb7b1a321a37e3d888fc1ba7ff8001976ddb88e7d0b4631bd8e6f3ac5f30408",
+      "expected_sha256": "6bb7b1a321a37e3d888fc1ba7ff8001976ddb88e7d0b4631bd8e6f3ac5f30408",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "bytes": 38041,
+      "sha256": "01524d159d5197304600cb0fe8fb6d70627a2d586739b8cf19c2dffd009ea5f7",
+      "expected_sha256": "01524d159d5197304600cb0fe8fb6d70627a2d586739b8cf19c2dffd009ea5f7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "bytes": 41025,
+      "sha256": "f5f9ccf11677b9fbd1b79d86647122fd90b89332eee665f77daee28e93d817c8",
+      "expected_sha256": "f5f9ccf11677b9fbd1b79d86647122fd90b89332eee665f77daee28e93d817c8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "bytes": 43150,
+      "sha256": "d59e6380f5dcc55c655703724495fcf8d50b6331704ecd6a3113e0bda8794781",
+      "expected_sha256": "d59e6380f5dcc55c655703724495fcf8d50b6331704ecd6a3113e0bda8794781",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "bytes": 36758,
+      "sha256": "31b994f880042f2719d9e99681af5aefd24acf46e91510c568bda5243174b022",
+      "expected_sha256": "31b994f880042f2719d9e99681af5aefd24acf46e91510c568bda5243174b022",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "bytes": 37138,
+      "sha256": "debe868aa28001552bf93328d1b782d8ac267479e86ce845b29e1e98d4287d76",
+      "expected_sha256": "debe868aa28001552bf93328d1b782d8ac267479e86ce845b29e1e98d4287d76",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "bytes": 37749,
+      "sha256": "8893812f3675331d103c0d746351a0c7f0f65405570d3aa5932502f02a009257",
+      "expected_sha256": "8893812f3675331d103c0d746351a0c7f0f65405570d3aa5932502f02a009257",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "bytes": 40199,
+      "sha256": "5ef7f9c3fed5668d0fecd3877fb4c56ed889b673392a826cb629bd761c0ffe27",
+      "expected_sha256": "5ef7f9c3fed5668d0fecd3877fb4c56ed889b673392a826cb629bd761c0ffe27",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "bytes": 38594,
+      "sha256": "606220d14c26c2b454e27f106bcc1dfcc9e59db42765300b4035345d03475f38",
+      "expected_sha256": "606220d14c26c2b454e27f106bcc1dfcc9e59db42765300b4035345d03475f38",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.html",
+      "bytes": 36205,
+      "sha256": "fadf705c6a8ec253bf8419265f3f517390263582c7671f64931f6827a541c204",
+      "expected_sha256": "fadf705c6a8ec253bf8419265f3f517390263582c7671f64931f6827a541c204",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.html",
+      "bytes": 37191,
+      "sha256": "c6adc8bbbd021841e68972c532f353fbdc2205b36497dad4702824295003821c",
+      "expected_sha256": "c6adc8bbbd021841e68972c532f353fbdc2205b36497dad4702824295003821c",
+      "verified": true
+    },
+    {
+      "path": "internal/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/internal/README.html",
+      "bytes": 187099,
+      "sha256": "05e8d2cef0f685c9347f42fc160e1d5d85806f4c919421655301a8ddaeaa9a8b",
+      "expected_sha256": "05e8d2cef0f685c9347f42fc160e1d5d85806f4c919421655301a8ddaeaa9a8b",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/plan/c11-4-grid-track-sizing.html",
+      "bytes": 90353,
+      "sha256": "a9c6efbec727a170cff17b24ba2584b3461cca23f504215e53b437eef292a4d5",
+      "expected_sha256": "a9c6efbec727a170cff17b24ba2584b3461cca23f504215e53b437eef292a4d5",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-image-ratio-fixed-gutter.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/plan/c11-4-image-ratio-fixed-gutter.html",
+      "bytes": 45687,
+      "sha256": "e2ff84c794db4fd3923720cdbf71c1190df62a7eaee4be11440b12820f744e4d",
+      "expected_sha256": "e2ff84c794db4fd3923720cdbf71c1190df62a7eaee4be11440b12820f744e4d",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/plan/c11-css-grid.html",
+      "bytes": 66736,
+      "sha256": "ac005390c4dc4c608972ce2a5b4eaa9b01228b2371546106051a7861ee1a6c49",
+      "expected_sha256": "ac005390c4dc4c608972ce2a5b4eaa9b01228b2371546106051a7861ee1a6c49",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/spec/internal/0059-c11-grid-layout.html",
+      "bytes": 106398,
+      "sha256": "31259b64936ab90dbd692fda9365e577b31d9a02ea62c826e39bcdc2dec27e97",
+      "expected_sha256": "31259b64936ab90dbd692fda9365e577b31d9a02ea62c826e39bcdc2dec27e97",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "bytes": 38019,
+      "sha256": "22b9f415ace96b4f5dfb9e14e6f042257fb3f0f528be35bcaf54f5c5d534f1ca",
+      "expected_sha256": "22b9f415ace96b4f5dfb9e14e6f042257fb3f0f528be35bcaf54f5c5d534f1ca",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "bytes": 41035,
+      "sha256": "925d6830976ff5721c7870d7e9db7ce958a9862a848becb17f9d0126d907619d",
+      "expected_sha256": "925d6830976ff5721c7870d7e9db7ce958a9862a848becb17f9d0126d907619d",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "bytes": 43170,
+      "sha256": "2fd8bea2d0ee4287b13ed61914f2710a08a224f5dc912c6a454551556fac582c",
+      "expected_sha256": "2fd8bea2d0ee4287b13ed61914f2710a08a224f5dc912c6a454551556fac582c",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "bytes": 36768,
+      "sha256": "1f0a2b2495d5f6169259c720c88210d5e526dd7571ab04eb0963b136b9f8c08b",
+      "expected_sha256": "1f0a2b2495d5f6169259c720c88210d5e526dd7571ab04eb0963b136b9f8c08b",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "bytes": 37148,
+      "sha256": "82093cb8f813ff1e4ce5af723943dbc4498f7cce214f073c46b6426d11dd1bb7",
+      "expected_sha256": "82093cb8f813ff1e4ce5af723943dbc4498f7cce214f073c46b6426d11dd1bb7",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "bytes": 37759,
+      "sha256": "0e2af8241668a696b7bd9c82825b0805cc0330399daee87adf03d7f67bea8f52",
+      "expected_sha256": "0e2af8241668a696b7bd9c82825b0805cc0330399daee87adf03d7f67bea8f52",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "bytes": 40145,
+      "sha256": "eac67a81c7052e1c71f77757b654af65a95ae524b2bea1834082a0cffbda5101",
+      "expected_sha256": "eac67a81c7052e1c71f77757b654af65a95ae524b2bea1834082a0cffbda5101",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-preview-update-2026-10-20/pass7/STATUS.html",
+      "bytes": 402456,
+      "sha256": "7b872c92c1c9dfa2a4b91987e7e68562967cb88260a1efb19eebe19ac15913a6",
+      "expected_sha256": "7b872c92c1c9dfa2a4b91987e7e68562967cb88260a1efb19eebe19ac15913a6",
+      "verified": true
+    }
+  ]
+}

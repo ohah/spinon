@@ -134,3 +134,5 @@ C15 inline span edge는 Grid item box의 padding/border oracle와 분리해 [추
 ### 2026-10-20 fixed-span 후속 후보
 
 별도 [fixed-gutter 계획](./c11-4-image-ratio-fixed-gutter.md)의 direct `img` slice는 preferred-size suggestion의 §6.6 all-fixed span clamp와 내부 gutter trace를 구현했다. 2/3-track, row/column, 0/1/2 gutter, middle span, non-fixed control, content-box edge, min/max order 및 f32 overflow를 pure Rust에서 검증했다. Android API 37 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 두 장면의 geometry·trace 및 parent 바깥 overflow 표본을 확인했다. 이 후속은 C11.4의 전체 intrinsic track sizing, percentage/calc, auto-repeat, text/image 조합 또는 WPT를 닫지 않으며 C11.4 체크와 완료 수를 올리지 않는다. [근거와 구현 검토](../spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.md).
+
+PR #357은 2026-10-19에 rebase merge됐고 main commit은 `62c86a1c056c0cd7bcdb9ba65fea35fba934d7e9`이다. Tailnet preview는 전체 C11.4 완료 표시 없이 계획·실행 근거와 상대 링크를 확인해 갱신했다. [동기화 결과와 범위](../spec/internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/README.md).
