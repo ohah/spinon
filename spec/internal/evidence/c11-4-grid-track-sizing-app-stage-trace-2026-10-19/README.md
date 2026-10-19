@@ -42,6 +42,6 @@
 
 ## 실패 경로 검토
 
-- [앱 stage trace 구현 실패 관점 검토 20개](./implementation-review-20.md)
-- [PR #345 변경 적대 검토 30개](./pr-diff-review-30.md)
-- [frame assertion 전 trace 보존 후속 simulator 검증](../c11-4-grid-track-sizing-app-trace-failure-path-followup-2026-10-19/README.md)
+- [앱 stage trace 구현 실패 관점 검토 20개](./implementation-review-20.html)
+- [PR #345 변경 적대 검토 30개](./pr-diff-review-30.html)
+- [frame assertion 전 trace 보존 후속 simulator 검증](../c11-4-grid-track-sizing-app-trace-failure-path-followup-2026-10-19/README.html)
