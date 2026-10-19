@@ -1,5 +1,9 @@
 # 내부 인터페이스 명세
 
+## C11.4 Ahem text intrinsic matrix
+
+[Chrome 155·Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 10-scene 근거](./evidence/c11-4-text-intrinsic-matrix-2026-10-19/README.md) · [frame·canonical trace 결과](./evidence/c11-4-text-intrinsic-matrix-2026-10-19/cross-platform-comparison.json) · [구현 검토 20개](./evidence/c11-4-text-intrinsic-matrix-2026-10-19/implementation-review-20.md) · [PR diff 검토 30개](./evidence/c11-4-text-intrinsic-matrix-2026-10-19/pr-diff-review-30.md). 제한 fixture 결과이며 C11.4 완료나 공개 CSS 지원이 아니다.
+
 ## C11.4 PR #347 뒤 Tailnet 미리보기 동기화
 
 [선택 빌드·복사·제공 화면과 SHA-256 근거](./evidence/c11-4-tailnet-sync-2026-10-19/README.md) · [PR 변경 적대 검토 30개](./evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.md). PR #347 병합 뒤 공식 로드맵·상태 대장·C11.4 계획의 정적 미리보기 내용을 갱신했다. C11.4는 미완료로 유지하며 앱 동작 검증이나 전체 문서 사이트 배포를 뜻하지 않는다.

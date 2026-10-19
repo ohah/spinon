@@ -1,0 +1,1 @@
+기존 시도는 Xcode 26.2 nm으로 Rust 1.96 LLVM 22 staticlib를 검사했지만, Xcode LLVM reader가 LLVM attribute kind 102/105를 알 수 없어 실패했다. 해당 nm 호출의 오류가 파이프에서 가려져 기본 artifact 부재 판정은 유효하지 않았다. 이후 Rust toolchain에 포함된 llvm-nm으로 다시 검사했다.

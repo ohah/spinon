@@ -474,6 +474,7 @@ int32_t spinon_runtime_gpu_host_request_c11_2_2_grid_surface_pixels_for_test(
 int32_t spinon_runtime_gpu_host_request_c11_2_3_grid_surface_pixels_for_test(
     SpinonRuntimeGpuHost *host, const uint32_t *sample_xy, size_t sample_count,
     char *output, size_t output_capacity);
+#endif
 /* C11.3.1 integer repeat Grid fixture WGPU surface 표본 전용 진입점입니다. */
 int32_t spinon_runtime_gpu_host_request_c11_3_1_grid_surface_pixels_for_test(
     SpinonRuntimeGpuHost *host, const uint32_t *sample_xy, size_t sample_count,
@@ -490,7 +491,6 @@ int32_t spinon_runtime_gpu_host_request_c11_3_3_grid_surface_pixels_for_test(
 int32_t spinon_runtime_gpu_host_request_c11_4_grid_surface_pixels_for_test(
     SpinonRuntimeGpuHost *host, const uint32_t *sample_xy, size_t sample_count,
     char *output, size_t output_capacity);
-#endif
 #endif
 #if defined(SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST) && \
     SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST

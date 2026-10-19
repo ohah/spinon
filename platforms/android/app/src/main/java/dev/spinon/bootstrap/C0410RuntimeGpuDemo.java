@@ -126,7 +126,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "auto-fixed-width-item", "minmax-auto-fixed-width-item",
             "fit-content-below-item-size", "spanning-auto-tracks",
             "auto-fill-repeat", "auto-fit-collapse", "auto-fill-track-overflow",
-            "min-content-text-normal",
+            "min-content-text-normal", "auto-text-max-content",
+            "max-content-text-normal", "fit-content-text-minimum",
+            "fit-content-calc-limit", "min-content-text-edge",
+            "min-content-text-min-width", "min-content-text-max-width",
+            "min-content-text-break-all", "min-content-text-nowrap",
     };
     private static final String[] C131_COMPACT_SURFACE_CASE_IDS = {
             "visible", "clip-x", "clip-y", "clip-both", "clip-margin-padding",
@@ -205,6 +209,169 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         return false;
     }
+
+    private static String c114ExpectedRootFrame(String sceneId) {
+        switch (sceneId) {
+            case "spanning-auto-tracks":
+                return "width=100,height=30";
+            case "fit-content-calc-limit":
+                return "width=100,height=120";
+            case "min-content-text-edge":
+            case "min-content-text-min-width":
+            case "min-content-text-max-width":
+                return "width=120,height=50";
+            case "min-content-text-normal":
+            case "auto-text-max-content":
+            case "max-content-text-normal":
+            case "fit-content-text-minimum":
+            case "min-content-text-break-all":
+            case "min-content-text-nowrap":
+                return "width=120,height=40";
+            default:
+                return "width=100,height=40";
+        }
+    }
+
+    private static String c114ExpectedItemFrame(String sceneId) {
+        switch (sceneId) {
+            case "spanning-auto-tracks":
+                return "width=70,height=10";
+            case "auto-fill-repeat":
+                return "width=24,height=16";
+            case "auto-fit-collapse":
+                return "width=96,height=16";
+            case "auto-fill-track-overflow":
+                return "width=120,height=16";
+            case "min-content-text-normal":
+            case "fit-content-text-minimum":
+                return "width=70,height=20";
+            case "auto-text-max-content":
+            case "max-content-text-normal":
+                return "width=100,height=10";
+            case "fit-content-calc-limit":
+                return "width=15,height=80";
+            case "min-content-text-edge":
+                return "width=80,height=20";
+            case "min-content-text-min-width":
+                return "width=90,height=20";
+            case "min-content-text-max-width":
+                return "width=40,height=20";
+            case "min-content-text-break-all":
+                return "width=10,height=80";
+            case "min-content-text-nowrap":
+                return "width=100,height=10";
+            default:
+                return "width=24,height=16";
+        }
+    }
+
+    private static boolean c114ExpectedTextIntrinsicInputs(String sceneId, String report) {
+        int minContent;
+        int minContentHeight;
+        int maxContent;
+        int maxContentHeight;
+        switch (sceneId) {
+            case "auto-text-max-content":
+            case "min-content-text-normal":
+            case "max-content-text-normal":
+            case "fit-content-text-minimum":
+            case "min-content-text-edge":
+            case "min-content-text-min-width":
+            case "min-content-text-max-width":
+                minContent = 70;
+                minContentHeight = 20;
+                maxContent = 100;
+                maxContentHeight = 10;
+                break;
+            case "fit-content-calc-limit":
+            case "min-content-text-break-all":
+                minContent = 10;
+                minContentHeight = 80;
+                maxContent = 80;
+                maxContentHeight = 10;
+                break;
+            case "min-content-text-nowrap":
+                minContent = 100;
+                minContentHeight = 10;
+                maxContent = 100;
+                maxContentHeight = 10;
+                break;
+            default:
+                return true;
+        }
+        int diagnosticsMarker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (diagnosticsMarker < 0) return false;
+        String diagnosticsJson = report.substring(
+                diagnosticsMarker + "grid_track_sizing_diagnostics=".length());
+        try {
+            Object value = new org.json.JSONTokener(diagnosticsJson).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONObject diagnostics = (org.json.JSONObject) value;
+            org.json.JSONArray inputs = diagnostics.optJSONArray("gridItemIntrinsicInputs");
+            if (inputs == null || inputs.length() != 1) return false;
+            org.json.JSONObject input = inputs.optJSONObject(0);
+            if (input == null || input.optInt("grid", -1) != 1
+                    || input.optInt("node", -1) != 2 || input.optInt("sourceOrder", -1) != 0) {
+                return false;
+            }
+            org.json.JSONObject source = input.optJSONObject("source");
+            return source != null && "text".equals(source.optString("kind"))
+                    && source.optInt("fontRegistryRevision", -1) == 1
+                    && source.optDouble("minContent", Double.NaN) == minContent
+                    && source.optDouble("minContentHeight", Double.NaN) == minContentHeight
+                    && source.optDouble("maxContent", Double.NaN) == maxContent
+                    && source.optDouble("maxContentHeight", Double.NaN) == maxContentHeight;
+        } catch (org.json.JSONException | ClassCastException error) {
+            return false;
+        }
+    }
+    private static String c114ExpectedTextNodeFrames(String sceneId) {
+        switch (sceneId) {
+            case "auto-text-max-content":
+            case "min-content-text-normal":
+            case "max-content-text-normal":
+            case "fit-content-text-minimum":
+            case "fit-content-calc-limit":
+            case "min-content-text-edge":
+            case "min-content-text-min-width":
+            case "min-content-text-max-width":
+            case "min-content-text-break-all":
+            case "min-content-text-nowrap":
+                return "node_frames_css_px=[0:node=1,x=0,y=0," + c114ExpectedRootFrame(sceneId)
+                        + ";1:node=2,x=0,y=0," + c114ExpectedItemFrame(sceneId) + "]";
+            default:
+                return null;
+        }
+    }
+
+    private static boolean isC114GridTextOverflowPixelSamples(
+            List<SurfaceViewPixelCapture.Sample> samples
+    ) {
+        if (samples.size() != 3) return false;
+        boolean itemInsideRoot = false;
+        boolean itemOutsideRoot = false;
+        boolean rootBackground = false;
+        for (SurfaceViewPixelCapture.Sample sample : samples) {
+            switch (sample.id) {
+                case "item-inside-root":
+                    itemInsideRoot = sample.xCssPx == 5 && sample.yCssPx == 20;
+                    if (!itemInsideRoot) return false;
+                    break;
+                case "item-overflow-beyond-root":
+                    itemOutsideRoot = sample.xCssPx == 5 && sample.yCssPx == 45;
+                    if (!itemOutsideRoot) return false;
+                    break;
+                case "root-background-control":
+                    rootBackground = sample.xCssPx == 15 && sample.yCssPx == 20;
+                    if (!rootBackground) return false;
+                    break;
+                default:
+                    return false;
+            }
+        }
+        return itemInsideRoot && itemOutsideRoot && rootBackground;
+    }
+
     private static boolean isC1133GridTemplateAreasPixelSamples(
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
@@ -975,7 +1142,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                                 .contains(c114GridTrackSizingSceneId)
                         || c1131GridRepeatRequested || c1132GridNamedLinesRequested
                         || c1133GridTemplateAreasRequested || c1123GridAutoPlacementRequested
-                        || c1122GridAutoPlacementRequested || c1121GridPlacementRequested)) {
+                        || c1122GridAutoPlacementRequested || c1121GridPlacementRequested
+                        || activity.getIntent().hasExtra("spinon_c11_grid_case"))) {
             throw new IllegalArgumentException("C11.4 Grid fixture 또는 profile 선택이 올바르지 않습니다");
         }
         c11GridFixtureRequested = c1121GridPlacementRequested || c1122GridAutoPlacementRequested
@@ -987,11 +1155,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || activity.getIntent().getStringExtra("spinon_c11_grid_case") != null;
         String pixelMatrixRunId = activity.getIntent()
                 .getStringExtra("spinon_c11_grid_pixel_matrix_run_id");
-        String pixelMatrixSceneId = activity.getIntent().getStringExtra("spinon_c11_grid_case");
+        String pixelMatrixSceneId = c114GridTrackSizingRequested
+                ? c114GridTrackSizingSceneId
+                : activity.getIntent().getStringExtra("spinon_c11_grid_case");
         String pixelMatrixEncodedSamples = activity.getIntent()
                 .getStringExtra("spinon_c11_grid_pixel_matrix_samples");
         boolean pixelMatrixRequested = pixelMatrixRunId != null || pixelMatrixEncodedSamples != null;
-        boolean pixelMatrixSceneMatches = c1133GridTemplateAreasRequested
+        boolean pixelMatrixSceneMatches = c114GridTrackSizingRequested
+                ? "min-content-text-break-all".equals(pixelMatrixSceneId)
+                        && c114GridTrackSizingRunId.equals(pixelMatrixRunId)
+                : c1133GridTemplateAreasRequested
                 ? C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(pixelMatrixSceneId)
                 : c1131GridRepeatRequested
                 ? pixelMatrixSceneId != null
@@ -1039,6 +1212,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             && !isC1133GridTemplateAreasPixelSamples(pixelMatrixSamples)) {
                         pixelMatrixSamples = List.of();
                         pixelMatrixConfigError = "invalid-c1133-sample-fixture";
+                    } else if (c114GridTrackSizingRequested
+                            && !isC114GridTextOverflowPixelSamples(pixelMatrixSamples)) {
+                        pixelMatrixSamples = List.of();
+                        pixelMatrixConfigError = "invalid-c114-sample-fixture";
                     }
                 } catch (Exception error) {
                     pixelMatrixConfigError = "invalid-sample-payload";
@@ -1050,7 +1227,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         c11GridPixelMatrixSamples = pixelMatrixSamples;
         c11GridPixelMatrixConfigError = pixelMatrixConfigError;
         if (!c11GridPixelMatrixConfigError.isEmpty()) {
-            String marker = c1133GridTemplateAreasRequested ? "SPINON_C1133_GRID_PIXEL_MATRIX"
+            String marker = c114GridTrackSizingRequested ? "SPINON_C114_GRID_PIXEL_MATRIX"
+                    : c1133GridTemplateAreasRequested ? "SPINON_C1133_GRID_PIXEL_MATRIX"
                     : c1131GridRepeatRequested ? "SPINON_C1131_GRID_PIXEL_MATRIX"
                     : c1132GridNamedLinesRequested ? "SPINON_C1132_GRID_PIXEL_MATRIX"
                     : c1123GridAutoPlacementRequested ? "SPINON_C1123_GRID_PIXEL_MATRIX"
@@ -1769,7 +1947,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return;
         }
         if (!c11GridPixelMatrixConfigError.isEmpty()) {
-            Log.e(TAG, (c1133GridTemplateAreasRequested ? "SPINON_C1133_GRID_PIXEL_MATRIX"
+            Log.e(TAG, (c114GridTrackSizingRequested ? "SPINON_C114_GRID_PIXEL_MATRIX"
+                    : c1133GridTemplateAreasRequested ? "SPINON_C1133_GRID_PIXEL_MATRIX"
                     : c1132GridNamedLinesRequested ? "SPINON_C1132_GRID_PIXEL_MATRIX"
                     : c1131GridRepeatRequested ? "SPINON_C1131_GRID_PIXEL_MATRIX"
                     : c1123GridAutoPlacementRequested ? "SPINON_C1123_GRID_PIXEL_MATRIX"
@@ -2155,43 +2334,22 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
         }
         if (c114GridTrackSizingRequested) {
-            String expectedRootFrame = "spanning-auto-tracks".equals(c114GridTrackSizingSceneId)
-                    ? "width=100,height=30"
-                    : "min-content-text-normal".equals(c114GridTrackSizingSceneId)
-                            ? "width=120,height=40" : "width=100,height=40";
-            String expectedItemFrame;
-            switch (c114GridTrackSizingSceneId) {
-                case "spanning-auto-tracks":
-                    expectedItemFrame = "width=70,height=10";
-                    break;
-                case "auto-fill-repeat":
-                    expectedItemFrame = "width=24,height=16";
-                    break;
-                case "auto-fit-collapse":
-                    expectedItemFrame = "width=96,height=16";
-                    break;
-                case "auto-fill-track-overflow":
-                    expectedItemFrame = "width=120,height=16";
-                    break;
-                case "min-content-text-normal":
-                    expectedItemFrame = "width=70,height=20";
-                    break;
-                default:
-                    expectedItemFrame = "width=24,height=16";
-                    break;
-            }
+            String expectedRootFrame = c114ExpectedRootFrame(c114GridTrackSizingSceneId);
+            String expectedItemFrame = c114ExpectedItemFrame(c114GridTrackSizingSceneId);
+            String expectedTextNodeFrames = c114ExpectedTextNodeFrames(c114GridTrackSizingSceneId);
             boolean c114GridTrackSizingTraceAvailable =
                     logC114GridTrackSizingTraceChunks(c114GridTrackSizingRunId, result);
             if (!result.startsWith("status=0 ") || !result.contains("layout=ready boxes=2")
                     || !result.contains(expectedRootFrame)
                     || !result.contains(expectedItemFrame)
-                    || ("min-content-text-normal".equals(c114GridTrackSizingSceneId)
-                            && (!result.contains("\"minContent\":70")
-                                    || !result.contains("\"maxContent\":100")))) {
+                    || (expectedTextNodeFrames != null && !result.contains(expectedTextNodeFrames))
+                    || !c114ExpectedTextIntrinsicInputs(c114GridTrackSizingSceneId, result)) {
                 Log.e(TAG, "SPINON_C114_GRID_ASSERTION_ERROR run_id="
                         + c114GridTrackSizingRunId + " scene_id=" + c114GridTrackSizingSceneId
                         + " expected_root_frame=" + expectedRootFrame
-                        + " expected_item_frame=" + expectedItemFrame + " report=" + result);
+                        + " expected_item_frame=" + expectedItemFrame
+                        + " expected_text_node_frames=" + expectedTextNodeFrames
+                        + " report=" + result);
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치");
                 return;
             }
@@ -4303,7 +4461,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         String runId = c11GridPixelMatrixRunId;
         String sceneId = c11GridPixelMatrixSceneId;
         List<SurfaceViewPixelCapture.Sample> samples = c11GridPixelMatrixSamples;
-        String marker = c1133GridTemplateAreasRequested ? "SPINON_C1133_GRID_PIXEL_MATRIX"
+        String marker = c114GridTrackSizingRequested ? "SPINON_C114_GRID_PIXEL_MATRIX"
+                : c1133GridTemplateAreasRequested ? "SPINON_C1133_GRID_PIXEL_MATRIX"
                 : c1132GridNamedLinesRequested ? "SPINON_C1132_GRID_PIXEL_MATRIX"
                 : c1131GridRepeatRequested ? "SPINON_C1131_GRID_PIXEL_MATRIX"
                 : c1123GridAutoPlacementRequested ? "SPINON_C1123_GRID_PIXEL_MATRIX"
@@ -4315,7 +4474,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + " reason=invalid-sample-fixture");
             return;
         }
-        String cacheDirectory = c1133GridTemplateAreasRequested
+        String cacheDirectory = c114GridTrackSizingRequested
+                ? "c114-grid-surface-pixel-matrix"
+                : c1133GridTemplateAreasRequested
                 ? "c1133-grid-surface-pixel-matrix"
                 : c1132GridNamedLinesRequested
                 ? "c1132-grid-surface-pixel-matrix"
@@ -4383,9 +4544,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         }
                         observed++;
                         boolean verifyExactColor = c1131GridRepeatRequested
-                                || c1132GridNamedLinesRequested || c1133GridTemplateAreasRequested;
-                        int[] expected = verifyExactColor
-                                ? c11GridExpectedRgb(pixel.id, c1133GridTemplateAreasRequested) : null;
+                                || c1132GridNamedLinesRequested || c1133GridTemplateAreasRequested
+                                || c114GridTrackSizingRequested;
+                        int[] expected = !verifyExactColor ? null
+                                : c114GridTrackSizingRequested
+                                ? c114GridExpectedRgb(pixel.id)
+                                : c11GridExpectedRgb(pixel.id, c1133GridTemplateAreasRequested);
                         boolean exact = !verifyExactColor
                                 || (pixel.red == expected[0] && pixel.green == expected[1]
                                         && pixel.blue == expected[2] && pixel.alpha == 255);
@@ -4406,11 +4570,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             && result.pixels.size() == samples.size();
                     boolean matched = complete
                             && (!(c1131GridRepeatRequested || c1132GridNamedLinesRequested
-                                    || c1133GridTemplateAreasRequested)
+                                    || c1133GridTemplateAreasRequested || c114GridTrackSizingRequested)
                                     || matchedSamples == samples.size());
                     String status = !complete ? "error"
                             : c1131GridRepeatRequested || c1132GridNamedLinesRequested
-                                    || c1133GridTemplateAreasRequested
+                                    || c1133GridTemplateAreasRequested || c114GridTrackSizingRequested
                             ? (matched ? "matched" : "mismatch") : "captured";
                     Log.i(TAG, marker + "_SUMMARY status="
                             + status + " run_id=" + runId
@@ -4418,9 +4582,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             + " expected_samples=" + samples.size()
                             + " observed_samples=" + result.pixels.size()
                             + (c1131GridRepeatRequested || c1132GridNamedLinesRequested
-                                    || c1133GridTemplateAreasRequested
+                                    || c1133GridTemplateAreasRequested || c114GridTrackSizingRequested
                                     ? " matched_samples=" + matchedSamples : ""));
-                    if (!matched) postStatus(c1133GridTemplateAreasRequested
+                    if (!matched) postStatus(c114GridTrackSizingRequested
+                            ? "실패 · C11.4 text overflow Grid PixelCopy 표본 불일치"
+                            : c1133GridTemplateAreasRequested
                             ? "실패 · C11.3.3 Grid PixelCopy 표본 불일치"
                             : c1132GridNamedLinesRequested
                             ? "실패 · C11.3.2 Grid PixelCopy 표본 불일치"
@@ -4428,6 +4594,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             ? "실패 · C11.3.1 Grid PixelCopy 표본 불일치"
                             : "실패 · C11 Grid PixelCopy 표본 누락");
                 });
+    }
+
+    private static int[] c114GridExpectedRgb(String sampleId) {
+        switch (sampleId) {
+            case "item-inside-root":
+            case "item-overflow-beyond-root":
+                return new int[] {229, 72, 77};
+            case "root-background-control":
+                return new int[] {16, 24, 32};
+            default:
+                return new int[] {-1, -1, -1};
+        }
     }
 
     private static int[] c11GridExpectedRgb(String sampleId, boolean c1133TemplateAreas) {

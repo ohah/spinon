@@ -181,4 +181,33 @@ mod tests {
         };
         assert_eq!(status, -1);
     }
+
+    #[cfg(feature = "c11-grid-metal-surface-pixels-test")]
+    #[test]
+    fn c11_4_surface_pixel_request_rejects_invalid_counts_and_pointers() {
+        use super::spinon_runtime_gpu_host_request_c11_4_grid_surface_pixels_for_test;
+        use std::ptr;
+
+        let mut output = [0 as std::ffi::c_char; 512];
+        let coordinates = [1_u32, 2_u32];
+        for (pointer, count) in [
+            (coordinates.as_ptr(), 0),
+            (coordinates.as_ptr(), 65),
+            (ptr::null(), 1),
+            (coordinates.as_ptr(), 1),
+        ] {
+            // SAFETY: invalid host and coordinate combinations return before reading the host;
+            // the non-null coordinate pointer provides two readable values.
+            let status = unsafe {
+                spinon_runtime_gpu_host_request_c11_4_grid_surface_pixels_for_test(
+                    ptr::null_mut(),
+                    pointer,
+                    count,
+                    output.as_mut_ptr(),
+                    output.len(),
+                )
+            };
+            assert_eq!(status, -1);
+        }
+    }
 }
