@@ -1,0 +1,102 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 fixed max track span and gutter oracle</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 720px; background: #fff; }
+  body { font: 12px/1.2 sans-serif; color: #111; }
+  .case { display: flex; align-items: flex-start; gap: 8px; min-height: 38px; border-bottom: 1px solid #ccc; }
+  .label { width: 330px; flex: none; padding-top: 4px; }
+  .grid { flex: none; display: grid; margin: 0; padding: 0; border: 0; align-content: start; justify-content: start; align-items: start; justify-items: start; overflow: visible; background: #101820; }
+  .image { display: block; margin: 0; padding: 0; border: 0; }
+</style>
+<body>
+  <section class="case" data-case="column-two-track-one-gutter">
+    <span class="label">columns: fixed max 3px + 4px, one 3px intervening gutter</span>
+    <div id="column-two-track-one-gutter" class="grid" style="width:10px;height:4px;column-gap:3px;row-gap:0;grid-template-columns:minmax(auto,3px) 4px;grid-template-rows:minmax(auto,1fr)">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="grid-column:1 / 3;width:36px;height:auto;aspect-ratio:3 / 2">
+    </div>
+  </section>
+  <section class="case" data-case="column-two-track-zero-gutter">
+    <span class="label">same two fixed max tracks with no gutter</span>
+    <div id="column-two-track-zero-gutter" class="grid" style="width:7px;height:4px;column-gap:0;row-gap:0;grid-template-columns:minmax(auto,3px) 4px;grid-template-rows:minmax(auto,1fr)">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="grid-column:1 / 3;width:36px;height:auto;aspect-ratio:3 / 2">
+    </div>
+  </section>
+  <section class="case" data-case="column-three-track-two-gutters">
+    <span class="label">three fixed max tracks and both intervening gutters</span>
+    <div id="column-three-track-two-gutters" class="grid" style="width:18px;height:4px;column-gap:3px;row-gap:0;grid-template-columns:minmax(auto,3px) 4px 5px;grid-template-rows:minmax(auto,1fr)">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="grid-column:1 / 4;width:36px;height:auto;aspect-ratio:3 / 2">
+    </div>
+  </section>
+  <section class="case" data-case="column-middle-span-excludes-outer-tracks-and-gutters">
+    <span class="label">only spanned middle tracks and their internal gutter contribute</span>
+    <div id="column-middle-span-excludes-outer-tracks-and-gutters" class="grid" style="width:200px;height:4px;column-gap:3px;row-gap:0;grid-template-columns:80px minmax(auto,3px) 4px 90px;grid-template-rows:minmax(auto,1fr)">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="grid-column:2 / 4;width:36px;height:auto;aspect-ratio:3 / 2">
+    </div>
+  </section>
+  <section class="case" data-case="column-flexible-max-is-not-fixed">
+    <span class="label">a flexible max function prevents the all-fixed-track clamp</span>
+    <div id="column-flexible-max-is-not-fixed" class="grid" style="width:20px;height:4px;column-gap:3px;row-gap:0;grid-template-columns:minmax(auto,1fr) 4px;grid-template-rows:minmax(auto,1fr)">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="grid-column:1 / 3;width:36px;height:auto;aspect-ratio:3 / 2">
+    </div>
+  </section>
+  <section class="case" data-case="column-fit-content-is-not-fixed-max">
+    <span class="label">fit-content argument does not become a fixed max track function</span>
+    <div id="column-fit-content-is-not-fixed-max" class="grid" style="width:20px;height:4px;column-gap:3px;row-gap:0;grid-template-columns:fit-content(3px) 4px;grid-template-rows:minmax(auto,1fr)">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="grid-column:1 / 3;width:36px;height:auto;aspect-ratio:3 / 2">
+    </div>
+  </section>
+  <section class="case" data-case="row-two-track-one-gutter">
+    <span class="label">rows: fixed max 3px + 4px, one 3px intervening gutter</span>
+    <div id="row-two-track-one-gutter" class="grid" style="width:4px;height:10px;column-gap:0;row-gap:3px;grid-template-columns:minmax(auto,1fr);grid-template-rows:minmax(auto,3px) 4px">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="grid-row:1 / 3;width:auto;height:36px;aspect-ratio:3 / 2">
+    </div>
+  </section>
+  <section class="case" data-case="row-three-track-two-gutters">
+    <span class="label">three fixed max rows and both intervening gutters</span>
+    <div id="row-three-track-two-gutters" class="grid" style="width:4px;height:18px;column-gap:0;row-gap:3px;grid-template-columns:minmax(auto,1fr);grid-template-rows:minmax(auto,3px) 4px 5px">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="grid-row:1 / 4;width:auto;height:36px;aspect-ratio:3 / 2">
+    </div>
+  </section>
+  <section class="case" data-case="row-middle-span-excludes-outer-tracks-and-gutters">
+    <span class="label">only spanned middle rows and their internal gutter contribute</span>
+    <div id="row-middle-span-excludes-outer-tracks-and-gutters" class="grid" style="width:4px;height:200px;column-gap:0;row-gap:3px;grid-template-columns:minmax(auto,1fr);grid-template-rows:80px minmax(auto,3px) 4px 90px">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="grid-row:2 / 4;width:auto;height:36px;aspect-ratio:3 / 2">
+    </div>
+  </section>
+  <section class="case" data-case="column-content-box-subtracts-padding-and-border">
+    <span class="label">content-box ratio input subtracts item padding and border from the gutter-inclusive limit</span>
+    <div id="column-content-box-subtracts-padding-and-border" class="grid" style="width:10px;height:4px;column-gap:3px;row-gap:0;grid-template-columns:minmax(auto,3px) 4px;grid-template-rows:minmax(auto,1fr)">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="box-sizing:content-box;grid-column:1 / 3;width:36px;height:auto;padding:1px;border:1px solid #e5484d;aspect-ratio:3 / 2">
+    </div>
+  </section>
+  <script>
+    window.c114ImageRatioFixedGutterReady = Promise.all([...document.images].map(image => image.decode()));
+    window.c114ImageRatioFixedGutterCollect = () => [...document.querySelectorAll('[data-case]')].map(section => {
+      const grid = section.querySelector('.grid');
+      const image = grid.firstElementChild;
+      const gridRect = grid.getBoundingClientRect();
+      const imageRect = image.getBoundingClientRect();
+      const style = getComputedStyle(grid);
+      return {
+        id: section.dataset.case,
+        natural: [image.naturalWidth, image.naturalHeight],
+        aspectRatio: getComputedStyle(image).aspectRatio,
+        columns: style.gridTemplateColumns,
+        rows: style.gridTemplateRows,
+        columnGap: style.columnGap,
+        rowGap: style.rowGap,
+        grid: [gridRect.x, gridRect.y, gridRect.width, gridRect.height],
+        item: [imageRect.x, imageRect.y, imageRect.width, imageRect.height],
+        itemRelativeToGrid: [imageRect.x - gridRect.x, imageRect.y - gridRect.y, imageRect.width, imageRect.height],
+        boxSizing: getComputedStyle(image).boxSizing,
+        padding: [getComputedStyle(image).paddingTop, getComputedStyle(image).paddingRight, getComputedStyle(image).paddingBottom, getComputedStyle(image).paddingLeft],
+        border: [getComputedStyle(image).borderTopWidth, getComputedStyle(image).borderRightWidth, getComputedStyle(image).borderBottomWidth, getComputedStyle(image).borderLeftWidth],
+        overflow: [imageRect.right > gridRect.right, imageRect.bottom > gridRect.bottom],
+        placement: [getComputedStyle(image).gridColumn, getComputedStyle(image).gridRow],
+        minimum: [getComputedStyle(image).minWidth, getComputedStyle(image).minHeight]
+      };
+    });
+  </script>
+</body>

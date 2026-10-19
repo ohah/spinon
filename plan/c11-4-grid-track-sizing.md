@@ -20,6 +20,8 @@
 
 **현재 구현·PR 변경 검토:** [기본 Grid sizing 구현 실패 관점 20개](/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/current-implementation-review-20-2026-10-19.html) · [앱 stage trace 후속 구현 실패 관점 20개](/spinon/internal/evidence/c11-4-grid-track-sizing-app-stage-trace-2026-10-19/implementation-review-20.html) · [PR #345 변경 적대 검토 30개](/spinon/internal/evidence/c11-4-grid-track-sizing-app-stage-trace-2026-10-19/pr-diff-review-30.html) · [track sizing PR diff 적대 검토 30개](/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/track-sizing-pr-diff-review-30.html)
 
+2026-10-19 §6.6의 fixed max track span 뒤에 놓인 fixed gutter를 포함하는 image ratio 후속은 별도 계획이다. Chrome 155 관찰과 규범적 기대값을 분리한 [집중 계획](c11-4-image-ratio-fixed-gutter.md), [사전 비교 자료](../spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.md), [fixture](https://github.com/ohah/spinon/blob/main/tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html)가 준비됐다. 계획 PR은 구현이나 C11.4 완료를 뜻하지 않는다.
+
 ## 목표와 닫을 범위
 
 C11.4는 C11.3에서 보존한 track 목록을 기반으로 CSS Grid의 intrinsic track sizing을 실행한다. 대상은 두 축의 명시·양의 암시 track, `auto`, `min-content`, `max-content`, `minmax()`, `fit-content()`, item의 min/max-content 기여, 단일·다중 track span, definite·indefinite percentage, `auto-fill`·`auto-fit` 반복과 빈 반복 track 처리다. 기존 fixed/percentage/`fr` track과 C11 배치·named line·area 입력은 그대로 연결한다.
