@@ -1,0 +1,21 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-3adf9c2ca7d6cef9)
+
+running 2 tests
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::tests::image_matrix_has_unique_ids_and_bounded_geometry ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::tests::rejects_non_html_namespace_for_allowlisted_grid_root ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 191 filtered out; finished in 0.00s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-548d63f47c79942e)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-802c5cd053e2e916)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s
+

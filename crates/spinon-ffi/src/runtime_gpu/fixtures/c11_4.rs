@@ -1,3 +1,5 @@
+use std::borrow::Cow;
+
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
 #[path = "c11_4/trace_report.rs"]
 mod trace_report;
@@ -290,22 +292,182 @@ return { sceneId:'min-content-text-nowrap', rootId:'c114-nowrap-grid', nodeIds:[
     ),
 ];
 
+#[derive(Clone, Copy)]
+struct ImageScene {
+    scene_id: &'static str,
+    root_id: &'static str,
+    item_id: &'static str,
+    width: u32,
+    height: u32,
+    columns: &'static str,
+    rows: &'static str,
+    column_gap: u32,
+    item_placement: &'static str,
+}
+
+const C11_4_IMAGE_TRACK_SCENES: [ImageScene; 9] = [
+    ImageScene {
+        scene_id: "auto-image-definite",
+        root_id: "c114-auto-image-grid",
+        item_id: "c114-auto-image-item",
+        width: 100,
+        height: 40,
+        columns: "auto",
+        rows: "auto",
+        column_gap: 0,
+        item_placement: "",
+    },
+    ImageScene {
+        scene_id: "minmax-auto-image",
+        root_id: "c114-minmax-auto-image-grid",
+        item_id: "c114-minmax-auto-image-item",
+        width: 100,
+        height: 40,
+        columns: "minmax(0, auto)",
+        rows: "auto",
+        column_gap: 0,
+        item_placement: "",
+    },
+    ImageScene {
+        scene_id: "minmax-min-max-image",
+        root_id: "c114-minmax-content-image-grid",
+        item_id: "c114-minmax-content-image-item",
+        width: 100,
+        height: 40,
+        columns: "minmax(min-content, max-content)",
+        rows: "auto",
+        column_gap: 0,
+        item_placement: "",
+    },
+    ImageScene {
+        scene_id: "fit-content-below-minimum",
+        root_id: "c114-fit-content-12-image-grid",
+        item_id: "c114-fit-content-12-image-item",
+        width: 100,
+        height: 40,
+        columns: "fit-content(12px)",
+        rows: "auto",
+        column_gap: 0,
+        item_placement: "",
+    },
+    ImageScene {
+        scene_id: "fit-content-above-intrinsic",
+        root_id: "c114-fit-content-40-image-grid",
+        item_id: "c114-fit-content-40-image-item",
+        width: 100,
+        height: 40,
+        columns: "fit-content(40px)",
+        rows: "auto",
+        column_gap: 0,
+        item_placement: "",
+    },
+    ImageScene {
+        scene_id: "fit-content-percent",
+        root_id: "c114-fit-content-percent-image-grid",
+        item_id: "c114-fit-content-percent-image-item",
+        width: 100,
+        height: 40,
+        columns: "fit-content(50%)",
+        rows: "auto",
+        column_gap: 0,
+        item_placement: "",
+    },
+    ImageScene {
+        scene_id: "fixed-small-track-overflow",
+        root_id: "c114-fixed-small-image-grid",
+        item_id: "c114-fixed-small-image-item",
+        width: 12,
+        height: 40,
+        columns: "minmax(0, 12px)",
+        rows: "auto",
+        column_gap: 0,
+        item_placement: "",
+    },
+    ImageScene {
+        scene_id: "spanning-min-content-items",
+        root_id: "c114-spanning-image-grid",
+        item_id: "c114-spanning-image-item",
+        width: 100,
+        height: 30,
+        columns: "repeat(2, min-content)",
+        rows: "auto",
+        column_gap: 4,
+        item_placement: ";grid-column:1 / span 2",
+    },
+    ImageScene {
+        scene_id: "min-content-row-image",
+        root_id: "c114-min-content-row-image-grid",
+        item_id: "c114-min-content-row-image-item",
+        width: 100,
+        height: 80,
+        columns: "100px",
+        rows: "min-content",
+        column_gap: 0,
+        item_placement: "",
+    },
+];
+
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     scene_id: &str,
-) -> Result<&'static str, String> {
-    C11_4_GRID_TRACK_SIZING_SCENES
+) -> Result<Cow<'static, str>, String> {
+    if let Some((_, source)) = C11_4_GRID_TRACK_SIZING_SCENES
         .iter()
-        .find_map(|(known_id, source)| (*known_id == scene_id).then_some(*source))
-        .ok_or_else(|| format!("알 수 없는 C11.4 scene ID: {scene_id}"))
+        .find(|(known_id, _)| *known_id == scene_id)
+    {
+        return Ok(Cow::Borrowed(source));
+    }
+    if let Some(scene) = C11_4_IMAGE_TRACK_SCENES
+        .iter()
+        .find(|scene| scene.scene_id == scene_id)
+    {
+        return Ok(Cow::Owned(image_scene_source(*scene)));
+    }
+    Err(format!("알 수 없는 C11.4 scene ID: {scene_id}"))
+}
+
+fn image_scene_source(scene: ImageScene) -> String {
+    format!(
+        r#"(() => {{
+const root = document.createElement('div');
+root.setAttribute('id', {:?});
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:{}px;height:{}px;margin:0;padding:0;border:0;gap:0;align-content:start;justify-content:start;grid-template-columns:{};grid-template-rows:{};column-gap:{}px;row-gap:0;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('img');
+item.setAttribute('id', {:?});
+item.setAttribute('data-node', '');
+item.setAttribute('src', 'https://spinon.invalid/c14-1-png-basic.png');
+item.setAttribute('alt', '');
+item.setAttribute('style', 'box-sizing:border-box;display:block;width:auto;height:auto;margin:0;padding:0;border:0;background-color:#e5484d{}');
+root.appendChild(item);
+return {{ sceneId:{:?}, rootId:{:?}, nodeIds:[{:?}, {:?}] }};
+}})()"#,
+        scene.root_id,
+        scene.width,
+        scene.height,
+        scene.columns,
+        scene.rows,
+        scene.column_gap,
+        scene.item_id,
+        scene.item_placement,
+        scene.scene_id,
+        scene.root_id,
+        scene.root_id,
+        scene.item_id,
+    )
 }
 
 #[cfg(test)]
 mod tests {
-    use super::{C11_4_GRID_TRACK_SIZING_SCENES, c11_4_grid_track_sizing_runtime_source};
+    use super::{
+        C11_4_GRID_TRACK_SIZING_SCENES, C11_4_IMAGE_TRACK_SCENES,
+        c11_4_grid_track_sizing_runtime_source,
+    };
 
     #[test]
     fn exposes_only_bounded_intrinsic_track_sizing_scenes() {
         assert_eq!(C11_4_GRID_TRACK_SIZING_SCENES.len(), 17);
+        assert_eq!(C11_4_IMAGE_TRACK_SCENES.len(), 9);
         assert_eq!(
             C11_4_GRID_TRACK_SIZING_SCENES
                 .iter()
@@ -318,6 +480,13 @@ mod tests {
             assert!(source.contains("document.createElement"));
             assert!(source.contains(&format!("sceneId:'{scene_id}'")));
             assert!(c11_4_grid_track_sizing_runtime_source(scene_id).is_ok());
+        }
+        for scene in C11_4_IMAGE_TRACK_SCENES {
+            let source = c11_4_grid_track_sizing_runtime_source(scene.scene_id).unwrap();
+            assert!(source.len() < 4 * 1024);
+            assert!(source.contains("document.createElement('img')"));
+            assert!(source.contains("https://spinon.invalid/c14-1-png-basic.png"));
+            assert!(source.contains(&format!("sceneId:{:?}", scene.scene_id)));
         }
         assert!(c11_4_grid_track_sizing_runtime_source("unknown;throw 1").is_err());
     }

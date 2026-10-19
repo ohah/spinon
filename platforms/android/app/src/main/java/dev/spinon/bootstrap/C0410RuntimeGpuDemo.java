@@ -131,6 +131,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "fit-content-calc-limit", "min-content-text-edge",
             "min-content-text-min-width", "min-content-text-max-width",
             "min-content-text-break-all", "min-content-text-nowrap",
+            "auto-image-definite", "minmax-auto-image", "minmax-min-max-image",
+            "fit-content-below-minimum", "fit-content-above-intrinsic",
+            "fit-content-percent", "fixed-small-track-overflow",
+            "spanning-min-content-items", "min-content-row-image",
     };
     private static final String[] C131_COMPACT_SURFACE_CASE_IDS = {
             "visible", "clip-x", "clip-y", "clip-both", "clip-margin-padding",
@@ -214,8 +218,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         switch (sceneId) {
             case "spanning-auto-tracks":
                 return "width=100,height=30";
+            case "spanning-min-content-items":
+                return "width=100,height=30";
             case "fit-content-calc-limit":
                 return "width=100,height=120";
+            case "fixed-small-track-overflow":
+                return "width=12,height=40";
+            case "min-content-row-image":
+                return "width=100,height=80";
             case "min-content-text-edge":
             case "min-content-text-min-width":
             case "min-content-text-max-width":
@@ -325,7 +335,127 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return false;
         }
     }
-    private static String c114ExpectedTextNodeFrames(String sceneId) {
+    private static boolean c114ExpectedImageIntrinsicInputs(String sceneId, String report) {
+        switch (sceneId) {
+            case "auto-image-definite":
+            case "minmax-auto-image":
+            case "minmax-min-max-image":
+            case "fit-content-below-minimum":
+            case "fit-content-above-intrinsic":
+            case "fit-content-percent":
+            case "fixed-small-track-overflow":
+            case "spanning-min-content-items":
+            case "min-content-row-image":
+                break;
+            default:
+                return true;
+        }
+        int diagnosticsMarker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (diagnosticsMarker < 0) return false;
+        String diagnosticsJson = report.substring(
+                diagnosticsMarker + "grid_track_sizing_diagnostics=".length());
+        try {
+            Object value = new org.json.JSONTokener(diagnosticsJson).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONObject diagnostics = (org.json.JSONObject) value;
+            org.json.JSONObject revision = diagnostics.optJSONObject("layoutInputRevision");
+            org.json.JSONArray inputs = diagnostics.optJSONArray("gridItemIntrinsicInputs");
+            if (revision == null || revision.optInt("intrinsicSize", 0) != 1
+                    || inputs == null || inputs.length() != 1) return false;
+            org.json.JSONObject input = inputs.optJSONObject(0);
+            if (input == null || input.optInt("grid", -1) != 1
+                    || input.optInt("node", -1) != 2 || input.optInt("sourceOrder", -1) != 0) {
+                return false;
+            }
+            org.json.JSONObject source = input.optJSONObject("source");
+            org.json.JSONObject natural = source == null ? null : source.optJSONObject("natural");
+            return source != null && "replaced".equals(source.optString("kind"))
+                    && natural != null && natural.optDouble("width", Double.NaN) == 24.0
+                    && natural.optDouble("height", Double.NaN) == 16.0
+                    && c114ImageTrackSizingTraceMatches(sceneId, diagnostics);
+        } catch (org.json.JSONException | ClassCastException error) {
+            return false;
+        }
+    }
+    private static boolean c114ImageTrackSizingTraceMatches(
+            String sceneId, org.json.JSONObject diagnostics
+    ) throws org.json.JSONException {
+        double[] expectedColumns;
+        boolean[] expectedColumnGutters;
+        double expectedColumnContribution;
+        int expectedColumnSpan = "spanning-min-content-items".equals(sceneId) ? 2 : 1;
+        if ("fixed-small-track-overflow".equals(sceneId)) {
+            expectedColumns = new double[] {12.0};
+            expectedColumnGutters = new boolean[] {false};
+            expectedColumnContribution = Double.NaN;
+        } else if ("spanning-min-content-items".equals(sceneId)) {
+            expectedColumns = new double[] {10.0, 4.0, 10.0};
+            expectedColumnGutters = new boolean[] {false, true, false};
+            expectedColumnContribution = 24.0;
+        } else if ("min-content-row-image".equals(sceneId)) {
+            expectedColumns = new double[] {100.0};
+            expectedColumnGutters = new boolean[] {false};
+            expectedColumnContribution = Double.NaN;
+        } else {
+            expectedColumns = new double[] {24.0};
+            expectedColumnGutters = new boolean[] {false};
+            expectedColumnContribution = 24.0;
+        }
+        org.json.JSONArray traces = diagnostics.optJSONArray("trackSizingTraces");
+        if (traces == null || traces.length() != 1) return false;
+        org.json.JSONObject trace = traces.optJSONObject(0);
+        if (trace == null || trace.optInt("grid", -1) != 1) return false;
+        org.json.JSONArray passes = trace.optJSONArray("passes");
+        if (passes == null || passes.length() != 2) return false;
+        return c114ImageTrackPassMatches(passes.optJSONObject(0), "Columns",
+                        expectedColumns, expectedColumnGutters, expectedColumnContribution,
+                        expectedColumnSpan)
+                && c114ImageTrackPassMatches(passes.optJSONObject(1), "Rows",
+                        new double[] {16.0}, new boolean[] {false}, 16.0, 1);
+    }
+    private static boolean c114ImageTrackPassMatches(
+            org.json.JSONObject pass,
+            String expectedAxis,
+            double[] expectedSizes,
+            boolean[] expectedGutters,
+            double expectedMinContentContribution,
+            int expectedSpan
+    ) throws org.json.JSONException {
+        if (pass == null || !expectedAxis.equals(pass.optString("axis"))) return false;
+        org.json.JSONArray stages = pass.optJSONArray("stages");
+        if (stages == null || stages.length() == 0) return false;
+        org.json.JSONObject finalStage = stages.optJSONObject(stages.length() - 1);
+        org.json.JSONArray tracks = finalStage == null ? null : finalStage.optJSONArray("tracks");
+        if (tracks == null) return false;
+        int observedCount = 0;
+        for (int i = 0; i < tracks.length(); i++) {
+            org.json.JSONObject track = tracks.optJSONObject(i);
+            if (track == null) return false;
+            if (track.optBoolean("collapsed", true)) continue;
+            if (observedCount >= expectedSizes.length
+                    || track.optBoolean("gutter", false) != expectedGutters[observedCount]
+                    || track.optDouble("baseSize", Double.NaN) != expectedSizes[observedCount]) {
+                return false;
+            }
+            observedCount++;
+        }
+        if (observedCount != expectedSizes.length) return false;
+        if (Double.isNaN(expectedMinContentContribution)) return true;
+        org.json.JSONArray contributions = pass.optJSONArray("contributions");
+        if (contributions == null) return false;
+        for (int i = 0; i < contributions.length(); i++) {
+            org.json.JSONObject contribution = contributions.optJSONObject(i);
+            if (contribution != null && contribution.optInt("item", -1) == 2
+                    && contribution.optInt("span", -1) == expectedSpan
+                    && "MinContent".equals(contribution.optString("kind"))
+                    && contribution.optDouble("value", Double.NaN)
+                            == expectedMinContentContribution) {
+                return true;
+            }
+        }
+        return false;
+    }
+    private static String c114ExpectedNodeFrames(String sceneId) {
         switch (sceneId) {
             case "auto-text-max-content":
             case "min-content-text-normal":
@@ -337,6 +467,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "min-content-text-max-width":
             case "min-content-text-break-all":
             case "min-content-text-nowrap":
+            case "auto-image-definite":
+            case "minmax-auto-image":
+            case "minmax-min-max-image":
+            case "fit-content-below-minimum":
+            case "fit-content-above-intrinsic":
+            case "fit-content-percent":
+            case "fixed-small-track-overflow":
+            case "spanning-min-content-items":
+            case "min-content-row-image":
                 return "node_frames_css_px=[0:node=1,x=0,y=0," + c114ExpectedRootFrame(sceneId)
                         + ";1:node=2,x=0,y=0," + c114ExpectedItemFrame(sceneId) + "]";
             default:
@@ -344,25 +483,33 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
     }
 
-    private static boolean isC114GridTextOverflowPixelSamples(
+    private static boolean isC114GridTrackSizingPixelSamples(
+            String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
         if (samples.size() != 3) return false;
         boolean itemInsideRoot = false;
         boolean itemOutsideRoot = false;
         boolean rootBackground = false;
+        boolean imageOverflow = "fixed-small-track-overflow".equals(sceneId);
         for (SurfaceViewPixelCapture.Sample sample : samples) {
             switch (sample.id) {
                 case "item-inside-root":
-                    itemInsideRoot = sample.xCssPx == 5 && sample.yCssPx == 20;
+                    itemInsideRoot = imageOverflow
+                            ? sample.xCssPx == 5 && sample.yCssPx == 8
+                            : sample.xCssPx == 5 && sample.yCssPx == 20;
                     if (!itemInsideRoot) return false;
                     break;
                 case "item-overflow-beyond-root":
-                    itemOutsideRoot = sample.xCssPx == 5 && sample.yCssPx == 45;
+                    itemOutsideRoot = imageOverflow
+                            ? sample.xCssPx == 20 && sample.yCssPx == 8
+                            : sample.xCssPx == 5 && sample.yCssPx == 45;
                     if (!itemOutsideRoot) return false;
                     break;
                 case "root-background-control":
-                    rootBackground = sample.xCssPx == 15 && sample.yCssPx == 20;
+                    rootBackground = imageOverflow
+                            ? sample.xCssPx == 6 && sample.yCssPx == 25
+                            : sample.xCssPx == 15 && sample.yCssPx == 20;
                     if (!rootBackground) return false;
                     break;
                 default:
@@ -1162,7 +1309,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getStringExtra("spinon_c11_grid_pixel_matrix_samples");
         boolean pixelMatrixRequested = pixelMatrixRunId != null || pixelMatrixEncodedSamples != null;
         boolean pixelMatrixSceneMatches = c114GridTrackSizingRequested
-                ? "min-content-text-break-all".equals(pixelMatrixSceneId)
+                ? ("min-content-text-break-all".equals(pixelMatrixSceneId)
+                        || "fixed-small-track-overflow".equals(pixelMatrixSceneId))
                         && c114GridTrackSizingRunId.equals(pixelMatrixRunId)
                 : c1133GridTemplateAreasRequested
                 ? C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(pixelMatrixSceneId)
@@ -1213,7 +1361,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         pixelMatrixSamples = List.of();
                         pixelMatrixConfigError = "invalid-c1133-sample-fixture";
                     } else if (c114GridTrackSizingRequested
-                            && !isC114GridTextOverflowPixelSamples(pixelMatrixSamples)) {
+                            && !isC114GridTrackSizingPixelSamples(
+                                    c114GridTrackSizingSceneId, pixelMatrixSamples)) {
                         pixelMatrixSamples = List.of();
                         pixelMatrixConfigError = "invalid-c114-sample-fixture";
                     }
@@ -2336,19 +2485,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (c114GridTrackSizingRequested) {
             String expectedRootFrame = c114ExpectedRootFrame(c114GridTrackSizingSceneId);
             String expectedItemFrame = c114ExpectedItemFrame(c114GridTrackSizingSceneId);
-            String expectedTextNodeFrames = c114ExpectedTextNodeFrames(c114GridTrackSizingSceneId);
+            String expectedNodeFrames = c114ExpectedNodeFrames(c114GridTrackSizingSceneId);
             boolean c114GridTrackSizingTraceAvailable =
                     logC114GridTrackSizingTraceChunks(c114GridTrackSizingRunId, result);
             if (!result.startsWith("status=0 ") || !result.contains("layout=ready boxes=2")
                     || !result.contains(expectedRootFrame)
                     || !result.contains(expectedItemFrame)
-                    || (expectedTextNodeFrames != null && !result.contains(expectedTextNodeFrames))
-                    || !c114ExpectedTextIntrinsicInputs(c114GridTrackSizingSceneId, result)) {
+                    || (expectedNodeFrames != null && !result.contains(expectedNodeFrames))
+                    || !c114ExpectedTextIntrinsicInputs(c114GridTrackSizingSceneId, result)
+                    || !c114ExpectedImageIntrinsicInputs(c114GridTrackSizingSceneId, result)) {
                 Log.e(TAG, "SPINON_C114_GRID_ASSERTION_ERROR run_id="
                         + c114GridTrackSizingRunId + " scene_id=" + c114GridTrackSizingSceneId
                         + " expected_root_frame=" + expectedRootFrame
                         + " expected_item_frame=" + expectedItemFrame
-                        + " expected_text_node_frames=" + expectedTextNodeFrames
+                        + " expected_node_frames=" + expectedNodeFrames
                         + " report=" + result);
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치");
                 return;

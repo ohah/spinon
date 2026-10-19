@@ -340,6 +340,21 @@ where
         } else {
             None
         };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_image_input =
+        if profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing {
+            fixtures::prepare_c11_4_image(&request.snapshot, root, &styles)?
+        } else {
+            None
+        };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    if c11_4_text_input.is_some() && c11_4_image_input.is_some() {
+        return Err(layout_failure(
+            "unsupported_c114_mixed_intrinsic_fixture",
+            Some(root.id().get()),
+            Some("text와 image contribution 동시 입력은 아직 지원하지 않습니다".to_owned()),
+        ));
+    }
     let projection_started = Instant::now();
     if runtime_paint_enabled && let Some(diagnostic) = styles.diagnostics.first() {
         return Err(layout_failure(
@@ -374,6 +389,14 @@ where
                 request.viewport,
                 &text_input.paragraph_styles,
                 &text_input.engine,
+            )
+        } else if let Some(image_input) = &c11_4_image_input {
+            spinon_style_to_layout::compute_runtime_style_layout_with_intrinsic_size_snapshot(
+                &request.snapshot,
+                root,
+                styles.clone(),
+                request.viewport,
+                image_input.intrinsic_sizes.clone(),
             )
         } else {
             #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
@@ -455,6 +478,12 @@ where
             styles.style_revision,
             request.viewport,
         );
+        #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+        let current = if let Some(image_input) = &c11_4_image_input {
+            current.with_intrinsic_size_revision(image_input.intrinsic_sizes.revision())
+        } else {
+            current
+        };
         let scene = render_snapshot_builder(&request.snapshot, root, &output, current)
             .map_err(layout_failure_from_render_error)?;
         #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]

@@ -10,6 +10,7 @@ c13-1-overflow-clip-worker-test = ["spinon-style-to-render/c13-1-overflow-clip-w
 c13-3-gesture-fixture-test = ["spinon-style-to-render/c13-3-gesture-fixture-test"]
 c14-1-live-v8-fixture-test = []
 c11-4-grid-track-sizing-fixture-test = [
+    "dep:spinon-image",
     "spinon-style-to-layout/c11-4-grid-track-sizing-fixture-test",
     "spinon-style-to-render/c11-4-grid-track-sizing-fixture-test",
 ]
@@ -23,6 +24,7 @@ c19-2-box-paint-opacity-fixture-test = []
 [dependencies]
 html5ever = "=0.40.1"
 spinon-core = { path = "../spinon-core" }
+spinon-image = { path = "../spinon-image", optional = true }
 spinon-layout = { path = "../spinon-layout" }
 spinon-style = { path = "../spinon-style" }
 spinon-style-to-layout = { path = "../spinon-style-to-layout" }

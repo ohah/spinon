@@ -71,7 +71,7 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fi
     let Some(host) = raw_host(host) else {
         return ERR_ARGUMENT;
     };
-    match host.eval(source, layout_timeout_millis) {
+    match host.eval(source.as_ref(), layout_timeout_millis) {
         Ok(report) => write_host_status(0, report, output, output_capacity),
         Err((status, report)) => write_host_status(status, report, output, output_capacity),
     }

@@ -132,6 +132,14 @@ Template area 행·열 수와 explicit track 수가 다르면 `grid-template-are
 
 이 matrix는 제한된 ASCII/Ahem 입력과 단일 direct leaf만 검증한다. 일반 font/script/line-break 조합, anonymous/nested text item, image contribution, glyph paint, surface pixel exactness, WPT 및 전체 C11.4를 제공하지 않는다. C11.4와 C11은 미완료다.
 
+## C11.4 direct-leaf image intrinsic app fixture matrix
+
+2026-10-19 후속 opt-in runtime fixture는 고정된 HTML `img` direct leaf 9개 scene을 추가한다. 허용 source는 `https://spinon.invalid/c14-1-png-basic.png` 하나이며 network fetch는 하지 않는다. 저장소의 `c14-1-png-basic.png`를 decode해 24×16 natural size를 만들고 `ImageResourceSnapshot`에서 layout intrinsic-size input을 구성한다. root와 item의 HTML namespace·tag·ID, 직접 자식 수, computed track/box style 및 revision을 고정 allowlist와 대조한다. 다른 source, nested/multiple image, unsupported style은 layout 결과 없이 오류로 끝난다.
+
+장면은 `auto-image-definite`, `minmax-auto-image`, `minmax-min-max-image`, `fit-content-below-minimum`, `fit-content-above-intrinsic`, `fit-content-percent`, `fixed-small-track-overflow`, `spanning-min-content-items`, `min-content-row-image`다. 고정 Chrome 155 observation의 track list·gap·root/item frame과 natural size를 0.05 CSS px 허용오차로 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 대조했다. 양 플랫폼에서 9/9 scene의 intrinsic input·revision, Columns/Rows pass, contribution query, final track/gutter 및 geometry가 일치한다. Span case는 24px contribution과 10px + 4px gutter + 10px tracks를 확인한다. fixed-small overflow는 Android PixelCopy 및 iOS Metal drawable에서 root 밖 item 배경을 포함한 표본을 각각 3/3 exact로 확인했다. [원본 실행 로그·화면·비교기](./evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.md).
+
+화면과 색 표본은 `img` element의 CSS background box를 관찰한다. PNG texel을 layout fixture로 paint하지 않으므로 실제 이미지 texel paint 증거가 아니다. dynamic image replacement/cache invalidation, aspect-ratio transfer, anonymous/nested/multiple item, 일반 CSS combination, hardware GPU·실기기, compositor 후 표면, WPT 및 전체 표준 단계 비교는 미검증이다. 이 행렬은 C11.4 direct-leaf image contribution subset의 제한 fixture이지 공개 이미지/Grid 계약이나 C11.4 완료가 아니다.
+
 ## C11.4 typed track input 및 단계 관찰 후보
 
 초기 2026-10-19 앱 후속은 `min-content-text-normal` 한 장면에서 direct-leaf text를 C11.4 runtime Grid 계산에 연결했다. Ahem 10px `XX XXXXXXX`, `grid-template-columns:min-content`, 120×40px root 및 `align-items:start`를 사용해 column 70px, item 70×20px, min-content 70×20px 및 max-content 100×10px을 확인했다. 이 결과는 위의 10-scene matrix로 확장되었으며 초기 실행의 자료는 [single-scene evidence](./evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/README.md)에 남아 있다.
