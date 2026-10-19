@@ -420,6 +420,30 @@ fn validate_item_style(
             0.0,
             "border-box",
         ),
+        ImageSizing::RowTransferInputCappedByFixedColumnSpan => (
+            ComputedCssDimension::LengthPx(18.0),
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::Auto,
+            ComputedCssMaxSize::None,
+            ComputedCssMaxSize::None,
+            Some(1.5),
+            0.0,
+            0.0,
+            "border-box",
+        ),
+        ImageSizing::ColumnTransferInputCappedByFixedRowSpan => (
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::LengthPx(18.0),
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::Auto,
+            ComputedCssMaxSize::None,
+            ComputedCssMaxSize::None,
+            Some(1.5),
+            0.0,
+            0.0,
+            "border-box",
+        ),
     };
     require_property(style, "box-sizing", box_sizing)?;
     if style.layout_dimensions.width != width
@@ -519,6 +543,13 @@ fn track_matches(actual: &ComputedCssGridTrackSize, expected: Track) -> bool {
             },
             Track::Fixed12,
         ) => approximately(*min, 0.0) && approximately(*max, 12.0),
+        (
+            ComputedCssGridTrackSize::MinMax {
+                min: ComputedCssGridTrackBreadth::Auto,
+                max: ComputedCssGridTrackBreadth::LengthPx(max),
+            },
+            Track::FixedEight,
+        ) => approximately(*max, 8.0),
         (ComputedCssGridTrackSize::LengthPx(actual), Track::Length100) => {
             approximately(*actual, 100.0)
         }

@@ -197,6 +197,7 @@ where
             self.tree,
             self.axis,
             axis_tracks,
+            self.other_axis_tracks,
             grid_area_size,
             self.inner_node_size,
         );

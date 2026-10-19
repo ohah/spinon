@@ -306,7 +306,7 @@ struct ImageScene {
     item_style: &'static str,
 }
 
-const C11_4_IMAGE_TRACK_SCENES: [ImageScene; 16] = [
+const C11_4_IMAGE_TRACK_SCENES: [ImageScene; 18] = [
     ImageScene {
         scene_id: "auto-image-definite",
         root_id: "c114-auto-image-grid",
@@ -499,6 +499,30 @@ const C11_4_IMAGE_TRACK_SCENES: [ImageScene; 16] = [
         item_placement: "",
         item_style: ";height:8px;aspect-ratio:3 / 2;min-width:18px",
     },
+    ImageScene {
+        scene_id: "row-transfer-input-capped-by-fixed-column-span",
+        root_id: "c114-row-transfer-fixed-column-grid",
+        item_id: "c114-row-transfer-fixed-column-item",
+        width: 8,
+        height: 4,
+        columns: "minmax(auto, 8px)",
+        rows: "minmax(auto, 1fr)",
+        column_gap: 0,
+        item_placement: "",
+        item_style: ";width:18px;aspect-ratio:3 / 2",
+    },
+    ImageScene {
+        scene_id: "column-transfer-input-capped-by-fixed-row-span",
+        root_id: "c114-column-transfer-fixed-row-grid",
+        item_id: "c114-column-transfer-fixed-row-item",
+        width: 4,
+        height: 8,
+        columns: "minmax(auto, 1fr)",
+        rows: "minmax(auto, 8px)",
+        column_gap: 0,
+        item_placement: "",
+        item_style: ";height:18px;aspect-ratio:3 / 2",
+    },
 ];
 
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
@@ -562,7 +586,7 @@ mod tests {
     #[test]
     fn exposes_only_bounded_intrinsic_track_sizing_scenes() {
         assert_eq!(C11_4_GRID_TRACK_SIZING_SCENES.len(), 17);
-        assert_eq!(C11_4_IMAGE_TRACK_SCENES.len(), 16);
+        assert_eq!(C11_4_IMAGE_TRACK_SCENES.len(), 18);
         assert_eq!(
             C11_4_GRID_TRACK_SIZING_SCENES
                 .iter()

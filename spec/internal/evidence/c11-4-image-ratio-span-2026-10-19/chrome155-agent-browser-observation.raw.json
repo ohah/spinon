@@ -1,0 +1,503 @@
+{
+  "browser": {
+    "devicePixelRatio": 1,
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "userAgentData": {
+      "brands": [
+        {
+          "brand": "Google Chrome",
+          "version": "155"
+        },
+        {
+          "brand": "Chromium",
+          "version": "155"
+        },
+        {
+          "brand": "Not(A:Brand",
+          "version": "24"
+        }
+      ],
+      "mobile": false,
+      "platform": "macOS"
+    },
+    "viewport": [
+      1280,
+      633
+    ]
+  },
+  "observations": [
+    {
+      "aspectRatio": "auto",
+      "columnGap": "3px",
+      "columns": "3px 4px",
+      "grid": [
+        258,
+        0,
+        7,
+        20
+      ],
+      "id": "column-fixed-span-gutter",
+      "imageSource": "file:///private/tmp/spinon-c11-4-image-ratio-span-20261019/tests/fixtures/resources/c14-1-png-basic.png",
+      "item": [
+        258,
+        0,
+        12,
+        8
+      ],
+      "itemRelativeToGrid": [
+        0,
+        0,
+        12,
+        8
+      ],
+      "minimum": [
+        "auto",
+        "auto"
+      ],
+      "natural": [
+        24,
+        16
+      ],
+      "overflow": [
+        true,
+        false
+      ],
+      "placement": [
+        "1 / 3",
+        "auto"
+      ],
+      "rowGap": "0px",
+      "rows": "20px"
+    },
+    {
+      "aspectRatio": "auto",
+      "columnGap": "0px",
+      "columns": "3px 4px",
+      "grid": [
+        258,
+        42,
+        7,
+        20
+      ],
+      "id": "column-fixed-span-no-gutter",
+      "imageSource": "file:///private/tmp/spinon-c11-4-image-ratio-span-20261019/tests/fixtures/resources/c14-1-png-basic.png",
+      "item": [
+        258,
+        42,
+        12,
+        8
+      ],
+      "itemRelativeToGrid": [
+        0,
+        0,
+        12,
+        8
+      ],
+      "minimum": [
+        "auto",
+        "auto"
+      ],
+      "natural": [
+        24,
+        16
+      ],
+      "overflow": [
+        true,
+        false
+      ],
+      "placement": [
+        "1 / 3",
+        "auto"
+      ],
+      "rowGap": "0px",
+      "rows": "20px"
+    },
+    {
+      "aspectRatio": "auto",
+      "columnGap": "3px",
+      "columns": "80px 3px 4px 90px",
+      "grid": [
+        258,
+        84,
+        200,
+        20
+      ],
+      "id": "column-fixed-span-excludes-unspanned-tracks",
+      "imageSource": "file:///private/tmp/spinon-c11-4-image-ratio-span-20261019/tests/fixtures/resources/c14-1-png-basic.png",
+      "item": [
+        341,
+        84,
+        12,
+        8
+      ],
+      "itemRelativeToGrid": [
+        83,
+        0,
+        12,
+        8
+      ],
+      "minimum": [
+        "auto",
+        "auto"
+      ],
+      "natural": [
+        24,
+        16
+      ],
+      "overflow": [
+        false,
+        false
+      ],
+      "placement": [
+        "2 / 4",
+        "auto"
+      ],
+      "rowGap": "0px",
+      "rows": "20px"
+    },
+    {
+      "aspectRatio": "auto",
+      "columnGap": "3px",
+      "columns": "5px 4px",
+      "grid": [
+        258,
+        126,
+        7,
+        20
+      ],
+      "id": "column-fit-content-does-not-limit",
+      "imageSource": "file:///private/tmp/spinon-c11-4-image-ratio-span-20261019/tests/fixtures/resources/c14-1-png-basic.png",
+      "item": [
+        258,
+        126,
+        12,
+        8
+      ],
+      "itemRelativeToGrid": [
+        0,
+        0,
+        12,
+        8
+      ],
+      "minimum": [
+        "auto",
+        "auto"
+      ],
+      "natural": [
+        24,
+        16
+      ],
+      "overflow": [
+        true,
+        false
+      ],
+      "placement": [
+        "1 / 3",
+        "auto"
+      ],
+      "rowGap": "0px",
+      "rows": "20px"
+    },
+    {
+      "aspectRatio": "auto",
+      "columnGap": "3px",
+      "columns": "0px 4px",
+      "grid": [
+        258,
+        168,
+        7,
+        20
+      ],
+      "id": "column-spans-flexible-max-zeroes-auto-minimum",
+      "imageSource": "file:///private/tmp/spinon-c11-4-image-ratio-span-20261019/tests/fixtures/resources/c14-1-png-basic.png",
+      "item": [
+        258,
+        168,
+        12,
+        8
+      ],
+      "itemRelativeToGrid": [
+        0,
+        0,
+        12,
+        8
+      ],
+      "minimum": [
+        "auto",
+        "auto"
+      ],
+      "natural": [
+        24,
+        16
+      ],
+      "overflow": [
+        true,
+        false
+      ],
+      "placement": [
+        "1 / 3",
+        "auto"
+      ],
+      "rowGap": "0px",
+      "rows": "20px"
+    },
+    {
+      "aspectRatio": "auto",
+      "columnGap": "3px",
+      "columns": "5px 4px",
+      "grid": [
+        258,
+        210,
+        7,
+        20
+      ],
+      "id": "column-content-max-has-no-fixed-limit",
+      "imageSource": "file:///private/tmp/spinon-c11-4-image-ratio-span-20261019/tests/fixtures/resources/c14-1-png-basic.png",
+      "item": [
+        258,
+        210,
+        12,
+        8
+      ],
+      "itemRelativeToGrid": [
+        0,
+        0,
+        12,
+        8
+      ],
+      "minimum": [
+        "auto",
+        "auto"
+      ],
+      "natural": [
+        24,
+        16
+      ],
+      "overflow": [
+        true,
+        false
+      ],
+      "placement": [
+        "1 / 3",
+        "auto"
+      ],
+      "rowGap": "0px",
+      "rows": "20px"
+    },
+    {
+      "aspectRatio": "auto",
+      "columnGap": "0px",
+      "columns": "20px",
+      "grid": [
+        258,
+        252,
+        20,
+        10
+      ],
+      "id": "row-fixed-span-gutter",
+      "imageSource": "file:///private/tmp/spinon-c11-4-image-ratio-span-20261019/tests/fixtures/resources/c14-1-png-basic.png",
+      "item": [
+        258,
+        252,
+        18,
+        12
+      ],
+      "itemRelativeToGrid": [
+        0,
+        0,
+        18,
+        12
+      ],
+      "minimum": [
+        "auto",
+        "auto"
+      ],
+      "natural": [
+        24,
+        16
+      ],
+      "overflow": [
+        false,
+        true
+      ],
+      "placement": [
+        "auto",
+        "1 / 3"
+      ],
+      "rowGap": "3px",
+      "rows": "3px 4px"
+    },
+    {
+      "aspectRatio": "auto",
+      "columnGap": "0px",
+      "columns": "20px",
+      "grid": [
+        258,
+        294,
+        20,
+        200
+      ],
+      "id": "row-fixed-span-excludes-unspanned-tracks",
+      "imageSource": "file:///private/tmp/spinon-c11-4-image-ratio-span-20261019/tests/fixtures/resources/c14-1-png-basic.png",
+      "item": [
+        258,
+        377,
+        18,
+        12
+      ],
+      "itemRelativeToGrid": [
+        0,
+        83,
+        18,
+        12
+      ],
+      "minimum": [
+        "auto",
+        "auto"
+      ],
+      "natural": [
+        24,
+        16
+      ],
+      "overflow": [
+        false,
+        false
+      ],
+      "placement": [
+        "auto",
+        "2 / 4"
+      ],
+      "rowGap": "3px",
+      "rows": "80px 3px 4px 90px"
+    },
+    {
+      "aspectRatio": "auto",
+      "columnGap": "0px",
+      "columns": "20px",
+      "grid": [
+        258,
+        495,
+        20,
+        7
+      ],
+      "id": "row-spans-flexible-max-zeroes-auto-minimum",
+      "imageSource": "file:///private/tmp/spinon-c11-4-image-ratio-span-20261019/tests/fixtures/resources/c14-1-png-basic.png",
+      "item": [
+        258,
+        495,
+        18,
+        12
+      ],
+      "itemRelativeToGrid": [
+        0,
+        0,
+        18,
+        12
+      ],
+      "minimum": [
+        "auto",
+        "auto"
+      ],
+      "natural": [
+        24,
+        16
+      ],
+      "overflow": [
+        false,
+        true
+      ],
+      "placement": [
+        "auto",
+        "1 / 3"
+      ],
+      "rowGap": "3px",
+      "rows": "0px 4px"
+    },
+    {
+      "aspectRatio": "1.5 / 1",
+      "columnGap": "0px",
+      "columns": "18px",
+      "grid": [
+        258,
+        537,
+        8,
+        4
+      ],
+      "id": "row-transfer-input-capped-by-fixed-column-span",
+      "imageSource": "file:///private/tmp/spinon-c11-4-image-ratio-span-20261019/tests/fixtures/resources/c14-1-png-basic.png",
+      "item": [
+        258,
+        537,
+        18,
+        12
+      ],
+      "itemRelativeToGrid": [
+        0,
+        0,
+        18,
+        12
+      ],
+      "minimum": [
+        "auto",
+        "auto"
+      ],
+      "natural": [
+        24,
+        16
+      ],
+      "overflow": [
+        true,
+        true
+      ],
+      "placement": [
+        "auto",
+        "auto"
+      ],
+      "rowGap": "0px",
+      "rows": "12px"
+    },
+    {
+      "aspectRatio": "1.5 / 1",
+      "columnGap": "0px",
+      "columns": "27px",
+      "grid": [
+        258,
+        579,
+        4,
+        8
+      ],
+      "id": "column-transfer-input-capped-by-fixed-row-span",
+      "imageSource": "file:///private/tmp/spinon-c11-4-image-ratio-span-20261019/tests/fixtures/resources/c14-1-png-basic.png",
+      "item": [
+        258,
+        579,
+        27,
+        18
+      ],
+      "itemRelativeToGrid": [
+        0,
+        0,
+        27,
+        18
+      ],
+      "minimum": [
+        "auto",
+        "auto"
+      ],
+      "natural": [
+        24,
+        16
+      ],
+      "overflow": [
+        true,
+        true
+      ],
+      "placement": [
+        "auto",
+        "auto"
+      ],
+      "rowGap": "0px",
+      "rows": "18px"
+    }
+  ]
+}

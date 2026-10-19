@@ -209,6 +209,10 @@ impl CoreStyle for CompactTaffyStyle {
         self.item_is_replaced
     }
 
+    fn is_replaced(&self) -> bool {
+        self.item_is_replaced
+    }
+
     fn box_sizing(&self) -> BoxSizing {
         self.box_sizing
     }

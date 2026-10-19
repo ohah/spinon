@@ -289,7 +289,7 @@ impl GridItem {
     /// Similar to the spanned_track_limit, but excludes FitContent arguments from the limit.
     /// Used to clamp the automatic minimum contributions of an item
     pub fn spanned_fixed_track_limit(
-        &mut self,
+        &self,
         axis: AbstractAxis,
         axis_tracks: &[GridTrack],
         axis_parent_size: Option<f32>,
@@ -783,6 +783,7 @@ impl GridItem {
         tree: &mut impl LayoutPartialTree,
         axis: AbstractAxis,
         axis_tracks: &[GridTrack],
+        opposite_axis_tracks: &[GridTrack],
         grid_area_size: Size<Option<f32>>,
         inner_node_size: Size<Option<f32>>,
     ) -> GridTrackSizingMinimumContribution {
@@ -890,8 +891,14 @@ impl GridItem {
 
         // Otherwise, the automatic minimum size is zero, as usual.
         let (value, fixed_track_limit) = if content_based {
-            let transferred_size =
-                self.transferred_size_suggestion(axis, tree, grid_area_size, box_sizing_adjustment);
+            let transferred_size = self.transferred_size_suggestion(
+                axis,
+                tree,
+                opposite_axis_tracks,
+                grid_area_size,
+                inner_node_size,
+                box_sizing_adjustment,
+            );
             let mut minimum_contribution = transferred_size.unwrap_or_else(|| {
                 self.min_content_contribution_cached(axis, tree, grid_area_size, grid_area_size)
             });
@@ -938,14 +945,16 @@ impl GridItem {
         }
     }
 
-    /// Computes Grid's transferred size suggestion for a replaced item with an authored aspect ratio.
-    /// The preferred size on the opposite axis is clamped there before conversion, then the suggestion
-    /// is capped by definite preferred/max sizes in the affected axis.
+    /// Computes Grid's transferred size suggestion for a replaced item with a preferred aspect ratio.
+    /// The opposite-axis preferred size is clamped by its own constraints and fixed spanned tracks
+    /// before conversion, then the suggestion is capped by definite preferred/max sizes in this axis.
     fn transferred_size_suggestion(
         &self,
         axis: AbstractAxis,
         tree: &mut impl LayoutPartialTree,
+        opposite_axis_tracks: &[GridTrack],
         grid_area_size: Size<Option<f32>>,
+        inner_node_size: Size<Option<f32>>,
         box_sizing_adjustment: Size<f32>,
     ) -> Option<f32> {
         if !self.is_replaced {
@@ -972,6 +981,17 @@ impl GridItem {
             .maybe_resolve(opposite_basis, |val, basis| tree.calc(val, basis));
         let opposite_size =
             opposite_preferred_size.maybe_clamp(opposite_min_size, opposite_max_size);
+        let opposite_fixed_track_limit = self
+            .spanned_fixed_track_limit(
+                opposite_axis,
+                opposite_axis_tracks,
+                inner_node_size.get(opposite_axis),
+                &|val, basis| tree.resolve_calc_value(val, basis),
+            )
+            // Track sizing functions limit the item's border box, while the transferred input
+            // is the preferred content-box size for content-box items.
+            .map(|limit| f32_max(limit - box_sizing_adjustment.get(opposite_axis), 0.0));
+        let opposite_size = opposite_size.maybe_min(opposite_fixed_track_limit);
 
         let transferred = match axis {
             AbstractAxis::Inline => opposite_size * ratio,
@@ -1004,6 +1024,7 @@ impl GridItem {
         tree: &mut impl LayoutPartialTree,
         axis: AbstractAxis,
         axis_tracks: &[GridTrack],
+        opposite_axis_tracks: &[GridTrack],
         grid_area_size: Size<Option<f32>>,
         inner_node_size: Size<Option<f32>>,
     ) -> GridTrackSizingMinimumContribution {
@@ -1014,6 +1035,7 @@ impl GridItem {
                     tree,
                     axis,
                     axis_tracks,
+                    opposite_axis_tracks,
                     grid_area_size,
                     inner_node_size,
                 );

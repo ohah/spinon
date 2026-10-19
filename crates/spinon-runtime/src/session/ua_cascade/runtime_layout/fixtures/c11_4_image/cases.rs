@@ -7,6 +7,7 @@ pub(super) enum Track {
     FitContent12,
     FitContent40,
     FitContent50Percent,
+    FixedEight,
     Fixed12,
     Length100,
     Length20,
@@ -23,6 +24,8 @@ pub(super) enum ImageSizing {
     ColumnBorderBoxTransfer,
     ColumnContentBoxTransfer,
     ColumnTargetMinWidth,
+    RowTransferInputCappedByFixedColumnSpan,
+    ColumnTransferInputCappedByFixedRowSpan,
 }
 
 #[derive(Clone, Copy, Debug)]
@@ -40,7 +43,7 @@ pub(super) struct ImageCase {
     pub(super) sizing: ImageSizing,
 }
 
-pub(super) const IMAGE_CASES: [ImageCase; 16] = [
+pub(super) const IMAGE_CASES: [ImageCase; 18] = [
     ImageCase {
         scene_id: "auto-image-definite",
         root_id: "c114-auto-image-grid",
@@ -248,5 +251,31 @@ pub(super) const IMAGE_CASES: [ImageCase; 16] = [
         column_gap: 0.0,
         spanning: false,
         sizing: ImageSizing::ColumnTargetMinWidth,
+    },
+    ImageCase {
+        scene_id: "row-transfer-input-capped-by-fixed-column-span",
+        root_id: "c114-row-transfer-fixed-column-grid",
+        item_id: "c114-row-transfer-fixed-column-item",
+        grid_width: 8.0,
+        grid_height: 4.0,
+        columns: Track::FixedEight,
+        column_count: 1,
+        rows: Track::AutoFraction,
+        column_gap: 0.0,
+        spanning: false,
+        sizing: ImageSizing::RowTransferInputCappedByFixedColumnSpan,
+    },
+    ImageCase {
+        scene_id: "column-transfer-input-capped-by-fixed-row-span",
+        root_id: "c114-column-transfer-fixed-row-grid",
+        item_id: "c114-column-transfer-fixed-row-item",
+        grid_width: 4.0,
+        grid_height: 8.0,
+        columns: Track::AutoFraction,
+        column_count: 1,
+        rows: Track::FixedEight,
+        column_gap: 0.0,
+        spanning: false,
+        sizing: ImageSizing::ColumnTransferInputCappedByFixedRowSpan,
     },
 ];

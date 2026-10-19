@@ -843,6 +843,189 @@ fn authored_ratio_constraints_are_rejected_without_a_track_sizing_grid() {
     );
 }
 
+struct CrossAxisFixedTrackLimitCase {
+    owner: u64,
+    target_axis: Axis,
+    grid_size: (f32, f32),
+    image_size: (f32, f32),
+    columns: GridTrackSize,
+    rows: GridTrackSize,
+    expected_target_track: f32,
+    expected_minimum_contribution: f32,
+    expected_image: (f32, f32),
+}
+
+fn run_cross_axis_fixed_track_limit_case(case: CrossAxisFixedTrackLimitCase) {
+    let CrossAxisFixedTrackLimitCase {
+        owner,
+        target_axis,
+        grid_size,
+        image_size,
+        columns,
+        rows,
+        expected_target_track,
+        expected_minimum_contribution,
+        expected_image,
+    } = case;
+    let (document, grid, image) = create_document(owner);
+    let snapshot = document.snapshot();
+    let intrinsic = LayoutIntrinsicSizeSnapshot::new(
+        LayoutSourceRevision::HostDocument {
+            generation: snapshot.generation(),
+            document: snapshot.document_revision(),
+            render_tree: snapshot.render_tree_revision(),
+        },
+        IntrinsicSizeRevision::INITIAL.checked_next().unwrap(),
+        BTreeMap::from([(image.id(), NATURAL_IMAGE)]),
+    )
+    .unwrap();
+    let grid_style = LayoutStyle {
+        display: crate::LayoutDisplay::Grid,
+        width: crate::LayoutDimension::Fixed(grid_size.0),
+        height: crate::LayoutDimension::Fixed(grid_size.1),
+        align_items: LayoutAlignItems::FlexStart,
+        align_content: Some(LayoutAlignContent::FlexStart),
+        justify_content: LayoutJustifyContent::FlexStart,
+        ..LayoutStyle::default()
+    };
+    let image_style = LayoutStyle {
+        display: crate::LayoutDisplay::Block,
+        width: dimension(image_size.0),
+        height: dimension(image_size.1),
+        aspect_ratio: Some(1.5),
+        ..LayoutStyle::default()
+    };
+    let input = LayoutInput::from_host_document(
+        &snapshot,
+        grid,
+        Viewport {
+            width: grid_size.0,
+            height: grid_size.1,
+        },
+        &BTreeMap::from([(grid.id(), grid_style), (image.id(), image_style)]),
+        StyleRevision::default(),
+        EnvironmentRevision::default(),
+    )
+    .unwrap()
+    .with_grid_layout(
+        BTreeMap::from([(
+            grid.id(),
+            GridContainerInput {
+                columns: vec![columns],
+                rows: vec![rows],
+                placement_mode: GridPlacementMode::TrackSizing,
+                ..GridContainerInput::default()
+            },
+        )]),
+        BTreeMap::new(),
+    );
+    let output = TaffyLayoutEngine
+        .compute_with_intrinsic_size_snapshot(&input, &intrinsic)
+        .expect("fixed-track transferred-size case should lay out");
+    let image_frame = output.frames[&image.id()];
+    close(
+        image_frame.width,
+        expected_image.0,
+        "cross-axis-fixed-limit",
+        "image.width",
+    );
+    close(
+        image_frame.height,
+        expected_image.1,
+        "cross-axis-fixed-limit",
+        "image.height",
+    );
+
+    let trace = output
+        .grid_track_sizing_traces
+        .iter()
+        .find(|trace| trace.node == grid.id())
+        .expect("the Grid should retain the track-sizing trace");
+    let target_axis = match target_axis {
+        Axis::Columns => LayoutGridTrackSizingAxis::Columns,
+        Axis::Rows => LayoutGridTrackSizingAxis::Rows,
+    };
+    let pass = trace
+        .passes
+        .iter()
+        .find(|pass| pass.axis == target_axis)
+        .expect("the target-axis track-sizing pass should exist");
+    let final_stage = pass
+        .stages
+        .last()
+        .expect("the target axis has a final stage");
+    let track = final_stage
+        .tracks
+        .iter()
+        .find(|track| !track.is_gutter && !track.is_collapsed)
+        .expect("the target axis should have one explicit track");
+    close(
+        track.base_size,
+        expected_target_track,
+        "cross-axis-fixed-limit",
+        "target track base size",
+    );
+    let minimum =
+        pass.contributions
+            .iter()
+            .find(|contribution| {
+                contribution.kind == LayoutGridTrackSizingContributionKind::Minimum
+                    && matches!(
+                    contribution.minimum_source,
+                    Some(crate::LayoutGridTrackSizingMinimumContributionSource::AutomaticMinimum {
+                        content_based: true,
+                        ..
+                    })
+                )
+            })
+            .expect("the target axis should query the content-based automatic minimum");
+    close(
+        minimum.value,
+        expected_minimum_contribution,
+        "cross-axis-fixed-limit",
+        "minimum contribution",
+    );
+}
+
+#[test]
+fn transferred_size_input_is_clamped_by_fixed_tracks_in_the_opposite_axis() {
+    let fixed_eight_pixel_track = GridTrackSize::MinMax {
+        min: GridTrackMinSizingFunction::Auto,
+        max: GridTrackMaxSizingFunction::LengthPx(8.0),
+    };
+    let auto_flexible_track = GridTrackSize::MinMax {
+        min: GridTrackMinSizingFunction::Auto,
+        max: GridTrackMaxSizingFunction::Fraction(1.0),
+    };
+
+    // CSS Grid §6.6 clamps the opposite-axis input before converting it through the authored 3:2 ratio.
+    // Width 18px therefore becomes height 8 / 1.5 = 5.333...px.
+    run_cross_axis_fixed_track_limit_case(CrossAxisFixedTrackLimitCase {
+        owner: 2_600,
+        target_axis: Axis::Rows,
+        grid_size: (8.0, 4.0),
+        image_size: (18.0, -1.0),
+        columns: fixed_eight_pixel_track,
+        rows: auto_flexible_track,
+        expected_target_track: 8.0 / 1.5,
+        expected_minimum_contribution: 8.0 / 1.5,
+        expected_image: (18.0, 12.0),
+    });
+
+    // In the other direction, an 8px fixed row limits the width input to 8 * 1.5 = 12px.
+    run_cross_axis_fixed_track_limit_case(CrossAxisFixedTrackLimitCase {
+        owner: 2_601,
+        target_axis: Axis::Columns,
+        grid_size: (4.0, 8.0),
+        image_size: (-1.0, 18.0),
+        columns: auto_flexible_track,
+        rows: fixed_eight_pixel_track,
+        expected_target_track: 12.0,
+        expected_minimum_contribution: 12.0,
+        expected_image: (27.0, 18.0),
+    });
+}
+
 #[test]
 fn non_replaced_items_keep_their_min_content_suggestion_instead_of_transfer() {
     let (document, grid, image) = create_document(2_500);
