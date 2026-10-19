@@ -1,0 +1,87 @@
+{
+  "pass": "pass13",
+  "browser": {
+    "tool": "Agent Browser",
+    "version": "0.31.1",
+    "namespace": "spint13",
+    "session": "c114t13"
+  },
+  "preview": {
+    "origin": "https://macstudio.tailed42f2.ts.net",
+    "base_path": "/spinon/"
+  },
+  "route_checks": {
+    "route_count": 36,
+    "same_origin_out_of_base_count": 0,
+    "all_routes_in_base": true,
+    "routes": [
+      "0001-conformance.html",
+      "404.html",
+      "STATUS.html",
+      "internal/0059-c11-grid-layout.html",
+      "internal/README.html",
+      "internal/evidence/c11-4-cyclic-grid-gap-precomparison-2026-10-20/README.html",
+      "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/README.html",
+      "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pr-diff-review-20.html",
+      "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/sync-review-20.html",
+      "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+      "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html",
+      "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.html",
+      "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.html",
+      "plan/c11-4-grid-track-sizing.html",
+      "plan/c11-4-image-ratio-fixed-gutter.html",
+      "plan/c11-css-grid.html",
+      "roadmap.html",
+      "spec/internal/0059-c11-grid-layout.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html"
+    ],
+    "outside_same_origin_links": [],
+    "selected_file_count": 293,
+    "selected_files_200_sha256_match": 293
+  },
+  "report_page": {
+    "title": "C11.4 percentage/calc gap 병합 뒤 Tailnet 미리보기 갱신 - 스피논 문서",
+    "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/README.html",
+    "oldBrokenRedactionVisible": false,
+    "absoluteUserPathVisible": false,
+    "c114IncompleteVisible": true
+  },
+  "image_findings": {
+    "expected_local_images": 4,
+    "loaded_local_images": 0,
+    "broken_images": [
+      "/spinon/internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass10-tailnet-roadmap-agent-browser.png",
+      "/spinon/internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass10-tailnet-status-agent-browser.png",
+      "/spinon/internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass10-tailnet-plan-agent-browser.png",
+      "/spinon/internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass10-tailnet-evidence-agent-browser.png"
+    ],
+    "actual_rewritten_src_origin": "https://github.com/ohah/spinon/blob/main/",
+    "root_cause": "pass13 selected-root 목록에 pass10 screenshot source가 빠져 링크가 GitHub main으로 rewrite됐다. Tailnet 동기화 대상에 포함되지 않았고 PR merge 전이어서 4개 모두 naturalWidth=0.",
+    "correction": "pass14 selected-root와 preview input manifest에 네 PNG source를 명시적으로 포함하고, final Agent Browser에서 4/4 로드 확인 예정."
+  },
+  "review_pages": {
+    "pr_diff_review_rows": 20,
+    "sync_review_rows": 20
+  },
+  "limitations": [
+    "HTTP/hash 검증은 선택 파일만 검사하므로 선택되지 않은 Markdown image source를 잡지 못했다. Agent Browser 화면 검토가 누락을 검출했다.",
+    "pass13은 실패 원인을 찾은 검토이며 최종 완료 실행으로 취급하지 않는다."
+  ]
+}

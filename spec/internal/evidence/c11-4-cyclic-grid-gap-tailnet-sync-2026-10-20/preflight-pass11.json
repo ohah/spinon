@@ -1,0 +1,2979 @@
+{
+  "pass": "pass11",
+  "source_root_relative": "build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass11",
+  "source_branch": "docs/c11-4-cyclic-grid-gap-tailnet-20261020",
+  "source_worktree_head": "7a364befe44ba56903be7c24df036ce89d252156",
+  "source_worktree_dirty_at_preflight": true,
+  "preview_root_relative": "SpinonPreview",
+  "backup_root_relative": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11",
+  "target_count": 296,
+  "total_bytes": 12104512,
+  "counts": {
+    "create": 49,
+    "replace": 35,
+    "same": 212
+  },
+  "no_deletes": true,
+  "files": [
+    {
+      "path": "0001-conformance.html",
+      "source_bytes": 53693,
+      "source_sha256": "fe6c535e0a3abb4cdfea0554bcb180d100154d9a83d8ad2e10ce05b46665f76b",
+      "target_exists": true,
+      "previous_bytes": 53693,
+      "previous_sha256": "5fa96d4cb00162ce2e63e4b1c4f6891bd776da88b5e2b151b045be091e978662",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/0001-conformance.html"
+    },
+    {
+      "path": "404.html",
+      "source_bytes": 8512,
+      "source_sha256": "954b660d3ba9be011cc95d182edaa72528c01ef7a6ab4ad7dce8cdb77b18d1eb",
+      "target_exists": true,
+      "previous_bytes": 8512,
+      "previous_sha256": "3f60e21abfc92d7807797c0cb2f7e1930483d60a9a548690d7c8e3aaaea9d3a5",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/404.html"
+    },
+    {
+      "path": "icon.svg",
+      "source_bytes": 638,
+      "source_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "target_exists": true,
+      "previous_bytes": 638,
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "source_bytes": 119113,
+      "source_sha256": "b8b5ffa7e79810a3a4d5ee637c6ccca36835c1d985e4fb374b841ce91a573397",
+      "target_exists": true,
+      "previous_bytes": 119113,
+      "previous_sha256": "35420731b7be7f82db79b1dc14c8138de336bb4762ff714e3bfdcf54a41cbfe9",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/0059-c11-grid-layout.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-precomparison-2026-10-20/chrome155-observation.json",
+      "source_bytes": 6758,
+      "source_sha256": "2e64dfb51b7f395fe061a34d562666b53956bd9d05aff6fd563091afe0b90765",
+      "target_exists": true,
+      "previous_bytes": 6758,
+      "previous_sha256": "2e64dfb51b7f395fe061a34d562666b53956bd9d05aff6fd563091afe0b90765",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-precomparison-2026-10-20/chrome155-percentage-gaps.png",
+      "source_bytes": 29473,
+      "source_sha256": "cf560f2f633e1db3bd6f77a9804f1a3c6653a75a29c745d246345a0549ea94ac",
+      "target_exists": true,
+      "previous_bytes": 29473,
+      "previous_sha256": "cf560f2f633e1db3bd6f77a9804f1a3c6653a75a29c745d246345a0549ea94ac",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-precomparison-2026-10-20/README.html",
+      "source_bytes": 46547,
+      "source_sha256": "1b30595d1d4b7ec81520013d2fb3aacd088dcbd0a23440878da52b303c2e0279",
+      "target_exists": true,
+      "previous_bytes": 46547,
+      "previous_sha256": "47ba68dfe9cd6cf26e140671bc470bd35e405fe7f35b434df5e28ed857e31c7d",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/evidence/c11-4-cyclic-grid-gap-precomparison-2026-10-20/README.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-precomparison-2026-10-20/runs/c114-gap-20261019T181753Z/android-avd/screenshot-grid-gap-cyclic-calc-min-basis.png",
+      "source_bytes": 78446,
+      "source_sha256": "d0a1748021016ee318f6d6f29c8e40932030709ebe01a39497f5f1c7d49b1870",
+      "target_exists": true,
+      "previous_bytes": 78446,
+      "previous_sha256": "d0a1748021016ee318f6d6f29c8e40932030709ebe01a39497f5f1c7d49b1870",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-precomparison-2026-10-20/runs/c114-gap-20261019T181753Z/ios-simulator/screenshot-grid-gap-cyclic-calc-min-basis.png",
+      "source_bytes": 130406,
+      "source_sha256": "69f80b4dab64ef3ae0bb364a456bc3db0d740f456f88255331c03b857da69a93",
+      "target_exists": true,
+      "previous_bytes": 130406,
+      "previous_sha256": "69f80b4dab64ef3ae0bb364a456bc3db0d740f456f88255331c03b857da69a93",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/browser-check-pass10.json",
+      "source_bytes": 5726,
+      "source_sha256": "4025b3c5d3eca4e569ef75017335b073d6189fea54ae855ff480a1cfe3032678",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/browser-close-pass10.json",
+      "source_bytes": 1173,
+      "source_sha256": "b261219faadd626ac735addb0ef0d3e1c923a52112881b232ce1ca98860eca73",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/build-pass10.log",
+      "source_bytes": 15492,
+      "source_sha256": "3efa55403bbd43ff46a87db3709ff5cc6a937ff894be5b8a6b52769fd84c1fd1",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/copy-and-backup-pass10.json",
+      "source_bytes": 135535,
+      "source_sha256": "2499c143711e5bf86ee7d9998053051e1cbf52d9eb1468d3b189b2e34836dcb6",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/html-route-check-pass10.json",
+      "source_bytes": 2877,
+      "source_sha256": "fbda4a38831cbd06e751db2941ab4e04004d6987e1ee7abfee0e9e791b5c4af9",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/open-handles-pass10.json",
+      "source_bytes": 309,
+      "source_sha256": "cbed1c530cd855dbecd0b4d49985687df29435724069b2b58245e41d5a1affe4",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass10-tailnet-evidence-agent-browser.png",
+      "source_bytes": 147907,
+      "source_sha256": "c8054c715d10ce32d687539bdb7992f4952447b2ecb1a9df860a3e5693b407b8",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass10-tailnet-plan-agent-browser.png",
+      "source_bytes": 184079,
+      "source_sha256": "3263ae31480395a215670f97c6e8184f2766504a83b7c36284537561c2554f9f",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass10-tailnet-roadmap-agent-browser.png",
+      "source_bytes": 304592,
+      "source_sha256": "204abe3b9b4512ecc8abe84d2eb7d4c6fafc4bbaf6857fccba39bb851aa9c935",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass10-tailnet-status-agent-browser.png",
+      "source_bytes": 204001,
+      "source_sha256": "157ec0bcaad239f51418cbff59602a1b4a0cd6c5187864f3fca10e521cd65402",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pr-diff-review-20.html",
+      "source_bytes": 40230,
+      "source_sha256": "7474737156772a7b233ac69f6279b7699dae915dd2ddea5955b5cf39fceafb31",
+      "target_exists": true,
+      "previous_bytes": 39308,
+      "previous_sha256": "91abb254bd3bb0043417ddf61a4009939923f794d453d77593bf32446182fccf",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pr-diff-review-20.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/preflight-pass10.json",
+      "source_bytes": 126599,
+      "source_sha256": "52616cb0c487b6593db4ebaf1f0af86fda1e97c66183e10aac2f93f00b63f0f7",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/prepare-root-pass10.json",
+      "source_bytes": 43382,
+      "source_sha256": "1a7f61f666a7f0644558eff43b34b9d4632d9d4142ed128a3eaeb09ccb476a26",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/README.html",
+      "source_bytes": 42321,
+      "source_sha256": "914765e5c92c213f47aea1fa04706767261ca158b124028bd0ecefeca508d44a",
+      "target_exists": true,
+      "previous_bytes": 38379,
+      "previous_sha256": "d0565e7a753dcba289be1ecb78188ae7f9eba2e29058931fe14fbaa5a3b7bce9",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/README.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/sanitize-pass10.json",
+      "source_bytes": 228,
+      "source_sha256": "2bcfed4693f20186c1091461190dbfd3c5762302a132d381a5ace98b34ef56e1",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/served-verification-pass10.json",
+      "source_bytes": 126767,
+      "source_sha256": "dc90aa82f649cd964101ba6e249859c0aa97440195bd86efee16742153037bc0",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/SHA256SUMS-preview-inputs.txt",
+      "source_bytes": 35248,
+      "source_sha256": "057968c2203afd92dc25af29358bc6df2c076d1557e5184aa6a93c63b058ad36",
+      "target_exists": true,
+      "previous_bytes": 32946,
+      "previous_sha256": "48bd1a240dc426413dc3af6f7c036b4890387e732e57fc301228b0bd8fa4984c",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/SHA256SUMS-preview-inputs.txt"
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/sync-review-20.html",
+      "source_bytes": 40884,
+      "source_sha256": "07fd76b51f2c21170db65463f73ee92c1adfcd62d3b5a42270456e95fe2cba06",
+      "target_exists": true,
+      "previous_bytes": 39896,
+      "previous_sha256": "2573e0b6073947c1e24c2d6ceadf89fa6713bd3896535f02e28f77c7be2d8a46",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/sync-review-20.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/build.log",
+      "source_bytes": 4295,
+      "source_sha256": "a8573a0e4d72b7820e8e1f33de7c56681353d33863379f60bea4383cbbb85bd3",
+      "target_exists": true,
+      "previous_bytes": 4295,
+      "previous_sha256": "a8573a0e4d72b7820e8e1f33de7c56681353d33863379f60bea4383cbbb85bd3",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/install.log",
+      "source_bytes": 36,
+      "source_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "target_exists": true,
+      "previous_bytes": 36,
+      "previous_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-auto-image-definite.log",
+      "source_bytes": 73,
+      "source_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "target_exists": true,
+      "previous_bytes": 73,
+      "previous_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-fit-content-above-intrinsic.log",
+      "source_bytes": 73,
+      "source_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "target_exists": true,
+      "previous_bytes": 73,
+      "previous_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-fit-content-below-minimum.log",
+      "source_bytes": 73,
+      "source_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "target_exists": true,
+      "previous_bytes": 73,
+      "previous_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-fit-content-percent.log",
+      "source_bytes": 73,
+      "source_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "target_exists": true,
+      "previous_bytes": 73,
+      "previous_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-fixed-small-track-overflow.log",
+      "source_bytes": 73,
+      "source_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "target_exists": true,
+      "previous_bytes": 73,
+      "previous_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-min-content-row-image.log",
+      "source_bytes": 73,
+      "source_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "target_exists": true,
+      "previous_bytes": 73,
+      "previous_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-minmax-auto-image.log",
+      "source_bytes": 73,
+      "source_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "target_exists": true,
+      "previous_bytes": 73,
+      "previous_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-minmax-min-max-image.log",
+      "source_bytes": 73,
+      "source_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "target_exists": true,
+      "previous_bytes": 73,
+      "previous_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-spanning-min-content-items.log",
+      "source_bytes": 73,
+      "source_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "target_exists": true,
+      "previous_bytes": 73,
+      "previous_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-auto-image-definite.log",
+      "source_bytes": 21084,
+      "source_sha256": "29510fb87f7534cfd60418983daf115fa6cf8c83621b51653fdd9f72b02a7149",
+      "target_exists": true,
+      "previous_bytes": 21084,
+      "previous_sha256": "29510fb87f7534cfd60418983daf115fa6cf8c83621b51653fdd9f72b02a7149",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-fit-content-above-intrinsic.log",
+      "source_bytes": 21445,
+      "source_sha256": "53a3e9e1ac073c19bad52308718d19adbfce1f7c1c19d99bd5cc6bdc1a4b0f94",
+      "target_exists": true,
+      "previous_bytes": 21445,
+      "previous_sha256": "53a3e9e1ac073c19bad52308718d19adbfce1f7c1c19d99bd5cc6bdc1a4b0f94",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-fit-content-below-minimum.log",
+      "source_bytes": 21055,
+      "source_sha256": "da09f534818bcb870b221c90f7441b147d7759b907ef6e6721bb0558ccf2a9ac",
+      "target_exists": true,
+      "previous_bytes": 21055,
+      "previous_sha256": "da09f534818bcb870b221c90f7441b147d7759b907ef6e6721bb0558ccf2a9ac",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-fit-content-percent.log",
+      "source_bytes": 20996,
+      "source_sha256": "ab1d8528093d218910036dd1046a0ff618e171eb9628d2300aaaae9cb10f4b08",
+      "target_exists": true,
+      "previous_bytes": 20996,
+      "previous_sha256": "ab1d8528093d218910036dd1046a0ff618e171eb9628d2300aaaae9cb10f4b08",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-fixed-small-track-overflow.log",
+      "source_bytes": 22498,
+      "source_sha256": "4f621eb96de3057418718efc55c1295ab78fda4643ff6224b8b108a00eb03016",
+      "target_exists": true,
+      "previous_bytes": 22498,
+      "previous_sha256": "4f621eb96de3057418718efc55c1295ab78fda4643ff6224b8b108a00eb03016",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-min-content-row-image.log",
+      "source_bytes": 23544,
+      "source_sha256": "f24bf7698dc8d35a27548631a50c63b896735a1fe436e013eab68e75f9221f11",
+      "target_exists": true,
+      "previous_bytes": 23544,
+      "previous_sha256": "f24bf7698dc8d35a27548631a50c63b896735a1fe436e013eab68e75f9221f11",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-minmax-auto-image.log",
+      "source_bytes": 20917,
+      "source_sha256": "823c0787f7e47c9ea8ad9b37a3a033021a38ce9e2aa5f3cb6e211748dda51792",
+      "target_exists": true,
+      "previous_bytes": 20917,
+      "previous_sha256": "823c0787f7e47c9ea8ad9b37a3a033021a38ce9e2aa5f3cb6e211748dda51792",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-minmax-min-max-image.log",
+      "source_bytes": 21047,
+      "source_sha256": "6d2a59693c4256e917af6edc2a5843c9fa2d588afbfc736698d81c152cebb9ee",
+      "target_exists": true,
+      "previous_bytes": 21047,
+      "previous_sha256": "6d2a59693c4256e917af6edc2a5843c9fa2d588afbfc736698d81c152cebb9ee",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-spanning-min-content-items.log",
+      "source_bytes": 22795,
+      "source_sha256": "f76ce69b6d8ba75d82daec9e4aedbb82b8e222a9a2c4b157cf85213763f26259",
+      "target_exists": true,
+      "previous_bytes": 22795,
+      "previous_sha256": "f76ce69b6d8ba75d82daec9e4aedbb82b8e222a9a2c4b157cf85213763f26259",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-auto-image-definite.png",
+      "source_bytes": 77903,
+      "source_sha256": "a66ff934a7b5c17eaf162975f7e2501bea7522c00ae62232d9abcc2f7e6efd01",
+      "target_exists": true,
+      "previous_bytes": 77903,
+      "previous_sha256": "a66ff934a7b5c17eaf162975f7e2501bea7522c00ae62232d9abcc2f7e6efd01",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-fit-content-above-intrinsic.png",
+      "source_bytes": 77906,
+      "source_sha256": "18231c1bb714356658ca1af2b0e4b4e0f13ef55e2419e737996f9135587b18e1",
+      "target_exists": true,
+      "previous_bytes": 77906,
+      "previous_sha256": "18231c1bb714356658ca1af2b0e4b4e0f13ef55e2419e737996f9135587b18e1",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-fit-content-below-minimum.png",
+      "source_bytes": 77923,
+      "source_sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a",
+      "target_exists": true,
+      "previous_bytes": 77923,
+      "previous_sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-fit-content-percent.png",
+      "source_bytes": 77252,
+      "source_sha256": "afe7837bc91778d44c3013be6be25e3714287f20284a6348fb4346c14c506df5",
+      "target_exists": true,
+      "previous_bytes": 77252,
+      "previous_sha256": "afe7837bc91778d44c3013be6be25e3714287f20284a6348fb4346c14c506df5",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-fixed-small-track-overflow.png",
+      "source_bytes": 77255,
+      "source_sha256": "e704600c26096fd0330c1019ffa8532206b4b8ebdea6da0c670d39fcd3d59388",
+      "target_exists": true,
+      "previous_bytes": 77255,
+      "previous_sha256": "e704600c26096fd0330c1019ffa8532206b4b8ebdea6da0c670d39fcd3d59388",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-min-content-row-image.png",
+      "source_bytes": 77240,
+      "source_sha256": "6c2a85fbc2315e632f775df5bf0dc73a1e994db96e00ae4df3583e6fc3e89207",
+      "target_exists": true,
+      "previous_bytes": 77240,
+      "previous_sha256": "6c2a85fbc2315e632f775df5bf0dc73a1e994db96e00ae4df3583e6fc3e89207",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-minmax-auto-image.png",
+      "source_bytes": 77923,
+      "source_sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a",
+      "target_exists": true,
+      "previous_bytes": 77923,
+      "previous_sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-minmax-min-max-image.png",
+      "source_bytes": 77923,
+      "source_sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a",
+      "target_exists": true,
+      "previous_bytes": 77923,
+      "previous_sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-spanning-min-content-items.png",
+      "source_bytes": 77240,
+      "source_sha256": "ee4f42bcf799e2df0d477f36226c126eed96e7290b7cb90111b624ab6ec4b251",
+      "target_exists": true,
+      "previous_bytes": 77240,
+      "previous_sha256": "ee4f42bcf799e2df0d477f36226c126eed96e7290b7cb90111b624ab6ec4b251",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/archive-hashes.txt",
+      "source_bytes": 315,
+      "source_sha256": "282bd0479a42b10bf75923a6553d330d770edc7b318635eb294021189f867b92",
+      "target_exists": true,
+      "previous_bytes": 315,
+      "previous_sha256": "282bd0479a42b10bf75923a6553d330d770edc7b318635eb294021189f867b92",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/default-build.log",
+      "source_bytes": 62,
+      "source_sha256": "0b5fe2277fd2b29cc111b76604c482f8ec516047dbc0954657203c5614f4e4db",
+      "target_exists": true,
+      "previous_bytes": 62,
+      "previous_sha256": "0b5fe2277fd2b29cc111b76604c482f8ec516047dbc0954657203c5614f4e4db",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/fixture-build.log",
+      "source_bytes": 62,
+      "source_sha256": "765f1396d07f30f3a451cd3f9d9cad4e83c92c8e0aecf955ffc09061a6cf1e02",
+      "target_exists": true,
+      "previous_bytes": 62,
+      "previous_sha256": "765f1396d07f30f3a451cd3f9d9cad4e83c92c8e0aecf955ffc09061a6cf1e02",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/fixture-strings.txt",
+      "source_bytes": 84,
+      "source_sha256": "06c56eb30ce53b3e6b8f1101c83c220d84562a706499e503d43cbaf91bd1fe8b",
+      "target_exists": true,
+      "previous_bytes": 84,
+      "previous_sha256": "06c56eb30ce53b3e6b8f1101c83c220d84562a706499e503d43cbaf91bd1fe8b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/fixture-symbol.txt",
+      "source_bytes": 81,
+      "source_sha256": "307410503132572df9744a8a3aa60d0659f2a0ac8aa1e8d9de4a8f28e2c3e426",
+      "target_exists": true,
+      "previous_bytes": 81,
+      "previous_sha256": "307410503132572df9744a8a3aa60d0659f2a0ac8aa1e8d9de4a8f28e2c3e426",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/png-payload-check.txt",
+      "source_bytes": 85,
+      "source_sha256": "1edd1553e9d6adcf775c2219a201491a1f18abc56ac0d6a3d376d596c6ba4f4b",
+      "target_exists": true,
+      "previous_bytes": 85,
+      "previous_sha256": "1edd1553e9d6adcf775c2219a201491a1f18abc56ac0d6a3d376d596c6ba4f4b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html",
+      "source_bytes": 38389,
+      "source_sha256": "f34b21b10b24309299b44406fb5c31bdefc1ac3482cdbb5eaaabb3955c4a2756",
+      "target_exists": true,
+      "previous_bytes": 38389,
+      "previous_sha256": "e09a2a2b49850cd000a1b5805106701915ef6ce859e95022e7429095dfd60c82",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/verify.log",
+      "source_bytes": 58,
+      "source_sha256": "7ee38fdacb01076bb76d08728d9bf6774f4492fa5872d128121121b2a25b23f9",
+      "target_exists": true,
+      "previous_bytes": 58,
+      "previous_sha256": "7ee38fdacb01076bb76d08728d9bf6774f4492fa5872d128121121b2a25b23f9",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/compare-platform-logs.mjs",
+      "source_bytes": 15006,
+      "source_sha256": "781345b7564dd2b161958657336e642d95e66d831aa8273115ae5bd8a6aa9d70",
+      "target_exists": true,
+      "previous_bytes": 15006,
+      "previous_sha256": "781345b7564dd2b161958657336e642d95e66d831aa8273115ae5bd8a6aa9d70",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/cross-platform-comparison.json",
+      "source_bytes": 36240,
+      "source_sha256": "1ce02a3374e2d64841b2dbc19d4cb06e43579dba88785eb26bed2bfcae94b623",
+      "target_exists": true,
+      "previous_bytes": 36240,
+      "previous_sha256": "1ce02a3374e2d64841b2dbc19d4cb06e43579dba88785eb26bed2bfcae94b623",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ffi-clippy.log",
+      "source_bytes": 192,
+      "source_sha256": "a06c5a7e95ce64317524cb83cc79b9c728432043997223724a28edfa0a8fc15c",
+      "target_exists": true,
+      "previous_bytes": 192,
+      "previous_sha256": "a06c5a7e95ce64317524cb83cc79b9c728432043997223724a28edfa0a8fc15c",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ffi-test.log",
+      "source_bytes": 945,
+      "source_sha256": "1ebcbbc9204d2ff06dbbd4daa82446d6b31c99e304d278a7b6fcfc42c02cdd5c",
+      "target_exists": true,
+      "previous_bytes": 945,
+      "previous_sha256": "1ebcbbc9204d2ff06dbbd4daa82446d6b31c99e304d278a7b6fcfc42c02cdd5c",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/image-fixture-unit-test.log",
+      "source_bytes": 989,
+      "source_sha256": "96172a95a54763b82168bf299dad1556a714c29df06735367ed5cfdf2c03dea0",
+      "target_exists": true,
+      "previous_bytes": 989,
+      "previous_sha256": "96172a95a54763b82168bf299dad1556a714c29df06735367ed5cfdf2c03dea0",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "source_bytes": 41748,
+      "source_sha256": "f9a0f4b8cc4151387ce9127ef847d4748d61e5a72293632e3f6f9defea399aa9",
+      "target_exists": true,
+      "previous_bytes": 41748,
+      "previous_sha256": "d50ee849395c9d821c24692212f2dcc67da7a86a89adb6da63c652bf114486b2",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/build.log",
+      "source_bytes": 63514,
+      "source_sha256": "e6e529fdbf80d3704bfeefe05787f60f41d4b833c1507275c6fce06ef9a2449b",
+      "target_exists": true,
+      "previous_bytes": 63514,
+      "previous_sha256": "e6e529fdbf80d3704bfeefe05787f60f41d4b833c1507275c6fce06ef9a2449b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/install.log",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "target_exists": true,
+      "previous_bytes": 0,
+      "previous_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-auto-image-definite.log",
+      "source_bytes": 28,
+      "source_sha256": "efc0dcb4fad3aac0ba02c4d5b5f7b9b4e19a8247d2598b84c12e9b4c0daed475",
+      "target_exists": true,
+      "previous_bytes": 28,
+      "previous_sha256": "efc0dcb4fad3aac0ba02c4d5b5f7b9b4e19a8247d2598b84c12e9b4c0daed475",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-fit-content-above-intrinsic.log",
+      "source_bytes": 28,
+      "source_sha256": "5c0b0fad459884dcdd222efb96a53736f4bcb57ab44ac57e22477600c98f1ecc",
+      "target_exists": true,
+      "previous_bytes": 28,
+      "previous_sha256": "5c0b0fad459884dcdd222efb96a53736f4bcb57ab44ac57e22477600c98f1ecc",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-fit-content-below-minimum.log",
+      "source_bytes": 28,
+      "source_sha256": "c13a1b1710fd9933181eb5ac3de8ea124cabb2671036037208a09649bd581fa7",
+      "target_exists": true,
+      "previous_bytes": 28,
+      "previous_sha256": "c13a1b1710fd9933181eb5ac3de8ea124cabb2671036037208a09649bd581fa7",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-fit-content-percent.log",
+      "source_bytes": 28,
+      "source_sha256": "268ea91a23e0b484e611fe1b8773c034da0c67357c06c7872c3e79c1b1c4ff5a",
+      "target_exists": true,
+      "previous_bytes": 28,
+      "previous_sha256": "268ea91a23e0b484e611fe1b8773c034da0c67357c06c7872c3e79c1b1c4ff5a",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-fixed-small-track-overflow.log",
+      "source_bytes": 28,
+      "source_sha256": "0358ea0b0e634d1501d8d237d6392da7aae5f1a2861cce5864ed948366c3bb12",
+      "target_exists": true,
+      "previous_bytes": 28,
+      "previous_sha256": "0358ea0b0e634d1501d8d237d6392da7aae5f1a2861cce5864ed948366c3bb12",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-min-content-row-image.log",
+      "source_bytes": 28,
+      "source_sha256": "bd4750fa051eaa7a6335fa1877af71be600a5f49d6893c96a0b95a2602cf8edb",
+      "target_exists": true,
+      "previous_bytes": 28,
+      "previous_sha256": "bd4750fa051eaa7a6335fa1877af71be600a5f49d6893c96a0b95a2602cf8edb",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-minmax-auto-image.log",
+      "source_bytes": 28,
+      "source_sha256": "95f105a39aaddd1b0716d84ac73cabe54faf5ded3d1b59687ec589a794fa0052",
+      "target_exists": true,
+      "previous_bytes": 28,
+      "previous_sha256": "95f105a39aaddd1b0716d84ac73cabe54faf5ded3d1b59687ec589a794fa0052",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-minmax-min-max-image.log",
+      "source_bytes": 28,
+      "source_sha256": "fb51f4f7253ffd7572dc8b8e5fa0c56cc4e5077f678ee66384737e0b57546d77",
+      "target_exists": true,
+      "previous_bytes": 28,
+      "previous_sha256": "fb51f4f7253ffd7572dc8b8e5fa0c56cc4e5077f678ee66384737e0b57546d77",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-spanning-min-content-items.log",
+      "source_bytes": 28,
+      "source_sha256": "a8cf4f5858576cf6c99d0717d68aa148a01d65df878cb42a1f7bf62965eb3843",
+      "target_exists": true,
+      "previous_bytes": 28,
+      "previous_sha256": "a8cf4f5858576cf6c99d0717d68aa148a01d65df878cb42a1f7bf62965eb3843",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-auto-image-definite.log",
+      "source_bytes": 8723,
+      "source_sha256": "9bb4ebae4c9d307aac1b7718aa07cd44e8a74a3b2d8c610ff6c86340459f4e1a",
+      "target_exists": true,
+      "previous_bytes": 8723,
+      "previous_sha256": "9bb4ebae4c9d307aac1b7718aa07cd44e8a74a3b2d8c610ff6c86340459f4e1a",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-fit-content-above-intrinsic.log",
+      "source_bytes": 8827,
+      "source_sha256": "728475a6078f69c5f4074f9201a0fed0b28cb7b7181142a84f5d45b513db3ec5",
+      "target_exists": true,
+      "previous_bytes": 8827,
+      "previous_sha256": "728475a6078f69c5f4074f9201a0fed0b28cb7b7181142a84f5d45b513db3ec5",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-fit-content-below-minimum.log",
+      "source_bytes": 8801,
+      "source_sha256": "cd18cc9eacc58ff18ff9b1793447b7fcc40bbbeeb64d95e36509d23e35e8967b",
+      "target_exists": true,
+      "previous_bytes": 8801,
+      "previous_sha256": "cd18cc9eacc58ff18ff9b1793447b7fcc40bbbeeb64d95e36509d23e35e8967b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-fit-content-percent.log",
+      "source_bytes": 8723,
+      "source_sha256": "2ae37b090b2b7a46d2a281f1ada73d45dbb83c6e6770812d9b216a1a670d0585",
+      "target_exists": true,
+      "previous_bytes": 8723,
+      "previous_sha256": "2ae37b090b2b7a46d2a281f1ada73d45dbb83c6e6770812d9b216a1a670d0585",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-fixed-small-track-overflow.log",
+      "source_bytes": 10023,
+      "source_sha256": "9fa2a3937d8db501eed87e0291a958b664ebe27c4299e0011a4f0c04468b0fe5",
+      "target_exists": true,
+      "previous_bytes": 10023,
+      "previous_sha256": "9fa2a3937d8db501eed87e0291a958b664ebe27c4299e0011a4f0c04468b0fe5",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-min-content-row-image.log",
+      "source_bytes": 5903,
+      "source_sha256": "07a73419a839a63f58e1014d271f0bd2346cc83d4f1aa5ddddddec3530819eef",
+      "target_exists": true,
+      "previous_bytes": 5903,
+      "previous_sha256": "07a73419a839a63f58e1014d271f0bd2346cc83d4f1aa5ddddddec3530819eef",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-minmax-auto-image.log",
+      "source_bytes": 8247,
+      "source_sha256": "18d7d50b6ceab6c2e6932a95ec488b8bec45f5425391a2810613c0c308c46053",
+      "target_exists": true,
+      "previous_bytes": 8247,
+      "previous_sha256": "18d7d50b6ceab6c2e6932a95ec488b8bec45f5425391a2810613c0c308c46053",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-minmax-min-max-image.log",
+      "source_bytes": 8388,
+      "source_sha256": "0e7ad7a3a93c3438023f0c15d041ab4f12bc243ba5079fe13ee2073db768465b",
+      "target_exists": true,
+      "previous_bytes": 8388,
+      "previous_sha256": "0e7ad7a3a93c3438023f0c15d041ab4f12bc243ba5079fe13ee2073db768465b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-spanning-min-content-items.log",
+      "source_bytes": 10357,
+      "source_sha256": "3ec02996da66c9467b1647363787c55f367606e553715cf3f4d7300797eca05a",
+      "target_exists": true,
+      "previous_bytes": 10357,
+      "previous_sha256": "3ec02996da66c9467b1647363787c55f367606e553715cf3f4d7300797eca05a",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-auto-image-definite.log",
+      "source_bytes": 86,
+      "source_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "target_exists": true,
+      "previous_bytes": 86,
+      "previous_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-auto-image-definite.png",
+      "source_bytes": 143521,
+      "source_sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203",
+      "target_exists": true,
+      "previous_bytes": 143521,
+      "previous_sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-above-intrinsic.log",
+      "source_bytes": 86,
+      "source_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "target_exists": true,
+      "previous_bytes": 86,
+      "previous_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-above-intrinsic.png",
+      "source_bytes": 142452,
+      "source_sha256": "ea83a7d03f3b9d940756ca6e0f272e44fd9a9af354e97172bead969ac93d596d",
+      "target_exists": true,
+      "previous_bytes": 142452,
+      "previous_sha256": "ea83a7d03f3b9d940756ca6e0f272e44fd9a9af354e97172bead969ac93d596d",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-below-minimum.log",
+      "source_bytes": 86,
+      "source_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "target_exists": true,
+      "previous_bytes": 86,
+      "previous_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-below-minimum.png",
+      "source_bytes": 143521,
+      "source_sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203",
+      "target_exists": true,
+      "previous_bytes": 143521,
+      "previous_sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-percent.log",
+      "source_bytes": 86,
+      "source_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "target_exists": true,
+      "previous_bytes": 86,
+      "previous_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-percent.png",
+      "source_bytes": 142452,
+      "source_sha256": "ea83a7d03f3b9d940756ca6e0f272e44fd9a9af354e97172bead969ac93d596d",
+      "target_exists": true,
+      "previous_bytes": 142452,
+      "previous_sha256": "ea83a7d03f3b9d940756ca6e0f272e44fd9a9af354e97172bead969ac93d596d",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fixed-small-track-overflow.log",
+      "source_bytes": 86,
+      "source_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "target_exists": true,
+      "previous_bytes": 86,
+      "previous_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fixed-small-track-overflow.png",
+      "source_bytes": 129168,
+      "source_sha256": "baff7e954df386aa08414b84414ea5e44cd300e7a6b19267b21b1549994fdba1",
+      "target_exists": true,
+      "previous_bytes": 129168,
+      "previous_sha256": "baff7e954df386aa08414b84414ea5e44cd300e7a6b19267b21b1549994fdba1",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-min-content-row-image.log",
+      "source_bytes": 86,
+      "source_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "target_exists": true,
+      "previous_bytes": 86,
+      "previous_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-min-content-row-image.png",
+      "source_bytes": 142368,
+      "source_sha256": "ecd8d108e2ea35cba7038b7b7bafef77ea981c7552cfcd541936b46c58dc2fd3",
+      "target_exists": true,
+      "previous_bytes": 142368,
+      "previous_sha256": "ecd8d108e2ea35cba7038b7b7bafef77ea981c7552cfcd541936b46c58dc2fd3",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-minmax-auto-image.log",
+      "source_bytes": 86,
+      "source_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "target_exists": true,
+      "previous_bytes": 86,
+      "previous_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-minmax-auto-image.png",
+      "source_bytes": 143476,
+      "source_sha256": "96a8ee48535064d788226f810f6615b905bec9e9a732d1d41705a798336d495e",
+      "target_exists": true,
+      "previous_bytes": 143476,
+      "previous_sha256": "96a8ee48535064d788226f810f6615b905bec9e9a732d1d41705a798336d495e",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-minmax-min-max-image.log",
+      "source_bytes": 86,
+      "source_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "target_exists": true,
+      "previous_bytes": 86,
+      "previous_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-minmax-min-max-image.png",
+      "source_bytes": 143521,
+      "source_sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203",
+      "target_exists": true,
+      "previous_bytes": 143521,
+      "previous_sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-spanning-min-content-items.log",
+      "source_bytes": 86,
+      "source_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "target_exists": true,
+      "previous_bytes": 86,
+      "previous_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-spanning-min-content-items.png",
+      "source_bytes": 142465,
+      "source_sha256": "2c46756708e31ef5b5c72a3eedc6b3b6f80d2b87e84ed790ecd4a86ce31599b9",
+      "target_exists": true,
+      "previous_bytes": 142465,
+      "previous_sha256": "2c46756708e31ef5b5c72a3eedc6b3b6f80d2b87e84ed790ecd4a86ce31599b9",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/matrix-run.log",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "target_exists": true,
+      "previous_bytes": 0,
+      "previous_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/namespace-negative-test.log",
+      "source_bytes": 860,
+      "source_sha256": "aa78c9f233d6e6bc094dd78d156aed5274378851f6006b6814994fa0546a186e",
+      "target_exists": true,
+      "previous_bytes": 860,
+      "previous_sha256": "aa78c9f233d6e6bc094dd78d156aed5274378851f6006b6814994fa0546a186e",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/platform-compare.log",
+      "source_bytes": 115,
+      "source_sha256": "789c7cdf8cbc7abf2cf70f91915286548af1ba9b95f92044aa66686342dcbbe9",
+      "target_exists": true,
+      "previous_bytes": 115,
+      "previous_sha256": "789c7cdf8cbc7abf2cf70f91915286548af1ba9b95f92044aa66686342dcbbe9",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "source_bytes": 42727,
+      "source_sha256": "34df4ed39a8f27351f6b553a97108c325efe661158aa0afe21a0dd28996397d8",
+      "target_exists": true,
+      "previous_bytes": 42727,
+      "previous_sha256": "347f7f5d9a151c91d01368b4703449f3c2f1f2019870843c90c264fd2b75c4da",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+      "source_bytes": 42562,
+      "source_sha256": "76018b1cb0466a887fbd6cfbe4c007dd0a193be5cdb67636bde1ca5012913c7d",
+      "target_exists": true,
+      "previous_bytes": 42562,
+      "previous_sha256": "c21c00e52ac31d1aa47f30e9f3eccaa1810b521b1fe8a3574c2caa7a000855b0",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/run-simulator-matrix.sh",
+      "source_bytes": 5099,
+      "source_sha256": "1830bc42efddca6659a80ea06456615897bc5c24f550b283870f7fcefbf408ef",
+      "target_exists": true,
+      "previous_bytes": 5099,
+      "previous_sha256": "1830bc42efddca6659a80ea06456615897bc5c24f550b283870f7fcefbf408ef",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/runtime-clippy.log",
+      "source_bytes": 134,
+      "source_sha256": "7a38d702d5791aa4e1123d057f4b5c9a71b381b6094e4063b72dab22a7e27610",
+      "target_exists": true,
+      "previous_bytes": 134,
+      "previous_sha256": "7a38d702d5791aa4e1123d057f4b5c9a71b381b6094e4063b72dab22a7e27610",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/runtime-test.log",
+      "source_bytes": 1241,
+      "source_sha256": "e49a16f5b4fe6cc2b904c3a63f20b7f344eef761b073af7a879f9bfe4604f8bc",
+      "target_exists": true,
+      "previous_bytes": 1241,
+      "previous_sha256": "e49a16f5b4fe6cc2b904c3a63f20b7f344eef761b073af7a879f9bfe4604f8bc",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/rustfmt-check.log",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "target_exists": true,
+      "previous_bytes": 0,
+      "previous_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/SHA256SUMS.txt",
+      "source_bytes": 10007,
+      "source_sha256": "cfaa23873e66076edc6808ea9e29cc4be10fd84e64d28bbddfe811dbdbcf2557",
+      "target_exists": true,
+      "previous_bytes": 10007,
+      "previous_sha256": "cfaa23873e66076edc6808ea9e29cc4be10fd84e64d28bbddfe811dbdbcf2557",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/verify-artifact-boundary.sh",
+      "source_bytes": 2846,
+      "source_sha256": "252892ac5f5aafef45a05d07bba27f4cc51c4bc9393540ba3513cb83c0296c62",
+      "target_exists": true,
+      "previous_bytes": 2846,
+      "previous_sha256": "252892ac5f5aafef45a05d07bba27f4cc51c4bc9393540ba3513cb83c0296c62",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/workspace-clippy.log",
+      "source_bytes": 72,
+      "source_sha256": "a5f4c585ee974ca44916ac30a98bbc189e067a7e0a6bc6d2e8d6bc525be724af",
+      "target_exists": true,
+      "previous_bytes": 72,
+      "previous_sha256": "a5f4c585ee974ca44916ac30a98bbc189e067a7e0a6bc6d2e8d6bc525be724af",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/workspace-test.log",
+      "source_bytes": 123608,
+      "source_sha256": "daebc5d37a0d862a40461bf6dbca37664bced646b4c97412abe671fe5f06ed60",
+      "target_exists": true,
+      "previous_bytes": 123608,
+      "previous_sha256": "daebc5d37a0d862a40461bf6dbca37664bced646b4c97412abe671fe5f06ed60",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/android-build.log",
+      "source_bytes": 4344,
+      "source_sha256": "201a5107253dfff69f39a10db3a089192e59783b7bbe6517906e8507c48c505b",
+      "target_exists": true,
+      "previous_bytes": 4344,
+      "previous_sha256": "201a5107253dfff69f39a10db3a089192e59783b7bbe6517906e8507c48c505b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "source_bytes": 40898,
+      "source_sha256": "4eedf8d9e54b997c21e48063ddf5551bca1b9b822c7c4cf52a50719d9a5f0aba",
+      "target_exists": true,
+      "previous_bytes": 40898,
+      "previous_sha256": "9dae6fefd3c865cd2e988b3cae45a1e5c9d8aa1af00f97cbf3643acefc30bb9f",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/ios-build.log",
+      "source_bytes": 85746,
+      "source_sha256": "f47129f3d793f9672bf2cc9b98c8d51be8ec4670c54ce57a92fe0f05dbc09a6e",
+      "target_exists": true,
+      "previous_bytes": 85746,
+      "previous_sha256": "f47129f3d793f9672bf2cc9b98c8d51be8ec4670c54ce57a92fe0f05dbc09a6e",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "source_bytes": 43882,
+      "source_sha256": "b8df162f795730fb79eb82b874ea35f665b172f8dae4105f65a090d3fd2cdc44",
+      "target_exists": true,
+      "previous_bytes": 43882,
+      "previous_sha256": "be90dc1542ebc6969334dc46ebbd7d149c679d95e5156009d48d52e107a7e309",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "source_bytes": 46996,
+      "source_sha256": "2393a34bf9449a00a6da6c1cc7281030b1887b8b0b5c9e94f4165cda04a771ed",
+      "target_exists": true,
+      "previous_bytes": 46996,
+      "previous_sha256": "10dd01edbef08417846be0b6f8b031892f08861b81650c745fd5478b0bca71c7",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/run-simulator-matrix.sh",
+      "source_bytes": 9017,
+      "source_sha256": "1d61753433ffca653ec5372496284197e8686f9523a53402ac8b20cca86e24c4",
+      "target_exists": true,
+      "previous_bytes": 9017,
+      "previous_sha256": "1d61753433ffca653ec5372496284197e8686f9523a53402ac8b20cca86e24c4",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/abi.txt",
+      "source_bytes": 10,
+      "source_sha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90",
+      "target_exists": true,
+      "previous_bytes": 10,
+      "previous_sha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/api-level.txt",
+      "source_bytes": 3,
+      "source_sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "target_exists": true,
+      "previous_bytes": 3,
+      "previous_sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/avd-name.txt",
+      "source_bytes": 28,
+      "source_sha256": "6b155c3bed6bef87b3f93560e239c1286ed38bcca6a05db907fe05280e34d58e",
+      "target_exists": true,
+      "previous_bytes": 28,
+      "previous_sha256": "6b155c3bed6bef87b3f93560e239c1286ed38bcca6a05db907fe05280e34d58e",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/install.log",
+      "source_bytes": 36,
+      "source_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "target_exists": true,
+      "previous_bytes": 36,
+      "previous_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/launch-fixed-gutter-column-suggestion-clamp.log",
+      "source_bytes": 73,
+      "source_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "target_exists": true,
+      "previous_bytes": 73,
+      "previous_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/launch-fixed-gutter-row-suggestion-clamp.log",
+      "source_bytes": 73,
+      "source_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "target_exists": true,
+      "previous_bytes": 73,
+      "previous_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/runtime-fixed-gutter-column-suggestion-clamp.log",
+      "source_bytes": 23930,
+      "source_sha256": "e98d059ff1eafc0bd8529be3bd9547486213e2878d478e4b9d22eaf06f157b80",
+      "target_exists": true,
+      "previous_bytes": 23930,
+      "previous_sha256": "e98d059ff1eafc0bd8529be3bd9547486213e2878d478e4b9d22eaf06f157b80",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/runtime-fixed-gutter-row-suggestion-clamp.log",
+      "source_bytes": 23412,
+      "source_sha256": "a58a20ddd5fb41349899829338a98fc2856689d7c9b9ad17d0ad3ab89b99760c",
+      "target_exists": true,
+      "previous_bytes": 23412,
+      "previous_sha256": "a58a20ddd5fb41349899829338a98fc2856689d7c9b9ad17d0ad3ab89b99760c",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/screenshot-fixed-gutter-column-suggestion-clamp.png",
+      "source_bytes": 78568,
+      "source_sha256": "5ed7da99beebea2388a6387a4ecdd0901b50b01823004a9b2f0887fe07b092c6",
+      "target_exists": true,
+      "previous_bytes": 78568,
+      "previous_sha256": "5ed7da99beebea2388a6387a4ecdd0901b50b01823004a9b2f0887fe07b092c6",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/screenshot-fixed-gutter-row-suggestion-clamp.png",
+      "source_bytes": 78562,
+      "source_sha256": "9edba366dfc342729d75fb4cbbe87265cbe01e1500c72199484278cf12b579db",
+      "target_exists": true,
+      "previous_bytes": 78562,
+      "previous_sha256": "9edba366dfc342729d75fb4cbbe87265cbe01e1500c72199484278cf12b579db",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/booted-devices.txt",
+      "source_bytes": 169,
+      "source_sha256": "687ad5cab6f3b16a1f66677bd516f500066992e2bf97c7921045c214841bc103",
+      "target_exists": true,
+      "previous_bytes": 169,
+      "previous_sha256": "687ad5cab6f3b16a1f66677bd516f500066992e2bf97c7921045c214841bc103",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/install.log",
+      "source_bytes": 1,
+      "source_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "target_exists": true,
+      "previous_bytes": 1,
+      "previous_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/launch-fixed-gutter-column-suggestion-clamp.log",
+      "source_bytes": 28,
+      "source_sha256": "132a28ad23333b0e3c5822fc1470c9a6dfa735baaf4a09e53140f274ab59b209",
+      "target_exists": true,
+      "previous_bytes": 28,
+      "previous_sha256": "132a28ad23333b0e3c5822fc1470c9a6dfa735baaf4a09e53140f274ab59b209",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/launch-fixed-gutter-row-suggestion-clamp.log",
+      "source_bytes": 28,
+      "source_sha256": "7dde8588390713caad06a641e6dae4b71fad1b182e3dd55f17a05c7cca25afee",
+      "target_exists": true,
+      "previous_bytes": 28,
+      "previous_sha256": "7dde8588390713caad06a641e6dae4b71fad1b182e3dd55f17a05c7cca25afee",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/model-identifier.txt",
+      "source_bytes": 11,
+      "source_sha256": "e40be96841131f523dac012c3a28136b55643c89d96e7c20e7b5834a9ef6153a",
+      "target_exists": true,
+      "previous_bytes": 11,
+      "previous_sha256": "e40be96841131f523dac012c3a28136b55643c89d96e7c20e7b5834a9ef6153a",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/runtime-fixed-gutter-column-suggestion-clamp.log",
+      "source_bytes": 20809,
+      "source_sha256": "894324d279dd36d3a665bf776a7fd23c2e7b37ac0540aadc19ea9435b5bbb1f1",
+      "target_exists": true,
+      "previous_bytes": 20809,
+      "previous_sha256": "894324d279dd36d3a665bf776a7fd23c2e7b37ac0540aadc19ea9435b5bbb1f1",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/runtime-fixed-gutter-row-suggestion-clamp.log",
+      "source_bytes": 20259,
+      "source_sha256": "fe89fb511c673db23bfffa563cafcbb4fb5e3b07b58ba93a9bc9f86a6f018fd6",
+      "target_exists": true,
+      "previous_bytes": 20259,
+      "previous_sha256": "fe89fb511c673db23bfffa563cafcbb4fb5e3b07b58ba93a9bc9f86a6f018fd6",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-column-suggestion-clamp.log",
+      "source_bytes": 86,
+      "source_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "target_exists": true,
+      "previous_bytes": 86,
+      "previous_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-column-suggestion-clamp.png",
+      "source_bytes": 131372,
+      "source_sha256": "5b4e8e6039f64ecf9d67fcf5be410bdea4bea8be299b712fe4b3e9a1f60df501",
+      "target_exists": true,
+      "previous_bytes": 131372,
+      "previous_sha256": "5b4e8e6039f64ecf9d67fcf5be410bdea4bea8be299b712fe4b3e9a1f60df501",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-row-suggestion-clamp.log",
+      "source_bytes": 86,
+      "source_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "target_exists": true,
+      "previous_bytes": 86,
+      "previous_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-row-suggestion-clamp.png",
+      "source_bytes": 131386,
+      "source_sha256": "9a8c87d19ddf7ac4ff0446f5e757d9a796c12ac4e5e20608fc4b194924b52847",
+      "target_exists": true,
+      "previous_bytes": 131386,
+      "previous_sha256": "9a8c87d19ddf7ac4ff0446f5e757d9a796c12ac4e5e20608fc4b194924b52847",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/run-id.txt",
+      "source_bytes": 25,
+      "source_sha256": "6e7b84ee863d235baab718000e08e83bfb3e0ac7f87bced6110ce466b36094cb",
+      "target_exists": true,
+      "previous_bytes": 25,
+      "previous_sha256": "6e7b84ee863d235baab718000e08e83bfb3e0ac7f87bced6110ce466b36094cb",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/source-head.txt",
+      "source_bytes": 41,
+      "source_sha256": "b2b9b9854a8d43a4989c20c7f9c993899bca268d0b83a3aeafd21904c132081e",
+      "target_exists": true,
+      "previous_bytes": 41,
+      "previous_sha256": "b2b9b9854a8d43a4989c20c7f9c993899bca268d0b83a3aeafd21904c132081e",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/verification.log",
+      "source_bytes": 22797,
+      "source_sha256": "43d43a7c7394540ff154c155a4076421fc3ad29ff2267ecda585a880e36c6822",
+      "target_exists": true,
+      "previous_bytes": 22797,
+      "previous_sha256": "43d43a7c7394540ff154c155a4076421fc3ad29ff2267ecda585a880e36c6822",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-agent-browser-observation.json",
+      "source_bytes": 4729,
+      "source_sha256": "a26c9ce559d881cc55437c5893f89b6a9aa12b3cc0d331464a16a4976499833c",
+      "target_exists": true,
+      "previous_bytes": 4729,
+      "previous_sha256": "a26c9ce559d881cc55437c5893f89b6a9aa12b3cc0d331464a16a4976499833c",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-agent-browser-observation.raw.json",
+      "source_bytes": 5516,
+      "source_sha256": "9e17e55d467fb966c8a1cb49064e499c5c8d338b9ae11c20ec407a64e437dce2",
+      "target_exists": true,
+      "previous_bytes": 5516,
+      "previous_sha256": "9e17e55d467fb966c8a1cb49064e499c5c8d338b9ae11c20ec407a64e437dce2",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-fixed-gutter.png",
+      "source_bytes": 39087,
+      "source_sha256": "0f3786508d9b63e18260396d7e8992daf236dc9c0773e2ea525178e43e36d102",
+      "target_exists": true,
+      "previous_bytes": 39087,
+      "previous_sha256": "0f3786508d9b63e18260396d7e8992daf236dc9c0773e2ea525178e43e36d102",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "source_bytes": 39615,
+      "source_sha256": "1e3df5fec81e146a0e40454eb7ec89bcff38e5513a91cba39d2cb91ea985ac4d",
+      "target_exists": true,
+      "previous_bytes": 39615,
+      "previous_sha256": "8551f3257b2bd03173db09089409800fcfbf1fe8a8c072c89807e2639ab4c446",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "source_bytes": 39995,
+      "source_sha256": "883e786031aa6be07fd61c53abd5d1c2ed4dfa94bb6840022c2388427743c816",
+      "target_exists": true,
+      "previous_bytes": 39995,
+      "previous_sha256": "96fb3da86edf36502290f9d52ecc76c41600e2acccda59d9d7310df5b7002a5f",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "source_bytes": 40606,
+      "source_sha256": "8f892e9e9656fe72935a88a3fd585372ad851003ccabd580dcce4794238162b3",
+      "target_exists": true,
+      "previous_bytes": 40606,
+      "previous_sha256": "ddea0f70b5e9ad57051d9c99b2cdc90752ff16ef95c533534281f3a6b83558c9",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "source_bytes": 43156,
+      "source_sha256": "9ba14e1852765c17c59b3a11ac75254bf13e525353a8ea612d83262eed43018a",
+      "target_exists": true,
+      "previous_bytes": 43156,
+      "previous_sha256": "c54f30e828fffc0a9b1e62e8271a710eaddeaebad81515df80bb24b787032c7e",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/backup-verification-pass3.json",
+      "source_bytes": 3620,
+      "source_sha256": "ef304ae37aaaf86929e9720f65944350ab24f06ce9cac0a19404a24369e5f639",
+      "target_exists": true,
+      "previous_bytes": 3620,
+      "previous_sha256": "ef304ae37aaaf86929e9720f65944350ab24f06ce9cac0a19404a24369e5f639",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/backup-verification-pass4.json",
+      "source_bytes": 7814,
+      "source_sha256": "3bff5be9b0fe88ab652111253ab5cccaf0a15007fb71168739aa3b733b7204e5",
+      "target_exists": true,
+      "previous_bytes": 7814,
+      "previous_sha256": "3bff5be9b0fe88ab652111253ab5cccaf0a15007fb71168739aa3b733b7204e5",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/backup-verification-pass5.json",
+      "source_bytes": 683,
+      "source_sha256": "8de40d1824bf90984b0b7c61f94cee7e566183a6fd5a1b3a292e40116870ae63",
+      "target_exists": true,
+      "previous_bytes": 683,
+      "previous_sha256": "8de40d1824bf90984b0b7c61f94cee7e566183a6fd5a1b3a292e40116870ae63",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/copy-and-backup-pass3.json",
+      "source_bytes": 62026,
+      "source_sha256": "d06889ddbad56240a10014e05ac85f553bf3418a5363c935d45b9808cf85778b",
+      "target_exists": true,
+      "previous_bytes": 62026,
+      "previous_sha256": "d06889ddbad56240a10014e05ac85f553bf3418a5363c935d45b9808cf85778b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/copy-and-backup-pass4.json",
+      "source_bytes": 71174,
+      "source_sha256": "10ef35ebb526097a6dcf288bc01f106687f709766bec45aeeb43c1a97adcad5e",
+      "target_exists": true,
+      "previous_bytes": 71174,
+      "previous_sha256": "10ef35ebb526097a6dcf288bc01f106687f709766bec45aeeb43c1a97adcad5e",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/copy-and-backup-pass5.json",
+      "source_bytes": 70255,
+      "source_sha256": "c03a0df04bc310d0aecfcebeb8e2ecfaf97976138d0873dde0776321d1b51831",
+      "target_exists": true,
+      "previous_bytes": 70255,
+      "previous_sha256": "c03a0df04bc310d0aecfcebeb8e2ecfaf97976138d0873dde0776321d1b51831",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/copy-verification-pass3.json",
+      "source_bytes": 55665,
+      "source_sha256": "309ea0e2e6ce9c3e1aa933bb8de54061931645762d5505cfe8267389a05e2815",
+      "target_exists": true,
+      "previous_bytes": 55665,
+      "previous_sha256": "309ea0e2e6ce9c3e1aa933bb8de54061931645762d5505cfe8267389a05e2815",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/copy-verification-pass4.json",
+      "source_bytes": 60275,
+      "source_sha256": "899c7d5fc45fed4d0e3acbea5eba47ae4bb8e8dc84a527e02260a92b8cd153cf",
+      "target_exists": true,
+      "previous_bytes": 60275,
+      "previous_sha256": "899c7d5fc45fed4d0e3acbea5eba47ae4bb8e8dc84a527e02260a92b8cd153cf",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/copy-verification-pass5.json",
+      "source_bytes": 66455,
+      "source_sha256": "323fd1e9c65bd808af550db07fe8b326e1db57c1eaaeb9bc272e7b502830e4f5",
+      "target_exists": true,
+      "previous_bytes": 66455,
+      "previous_sha256": "323fd1e9c65bd808af550db07fe8b326e1db57c1eaaeb9bc272e7b502830e4f5",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/open-handles-pass3.json",
+      "source_bytes": 344,
+      "source_sha256": "1efa23ac032982b809dad10723356713785e78c2a5cb713fd3b266c4a5cf8a3d",
+      "target_exists": true,
+      "previous_bytes": 344,
+      "previous_sha256": "1efa23ac032982b809dad10723356713785e78c2a5cb713fd3b266c4a5cf8a3d",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/open-handles-pass4.json",
+      "source_bytes": 214,
+      "source_sha256": "663b6ef48f802f436205e54a3f3542f9c85a81f3decd0f1054c5d3670abc364c",
+      "target_exists": true,
+      "previous_bytes": 214,
+      "previous_sha256": "663b6ef48f802f436205e54a3f3542f9c85a81f3decd0f1054c5d3670abc364c",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/open-handles-pass5.json",
+      "source_bytes": 240,
+      "source_sha256": "9f65c5745d28ae9fb0dbf86fe28f14e7a9f56ae52f12848d76718410f1fbf81d",
+      "target_exists": true,
+      "previous_bytes": 240,
+      "previous_sha256": "9f65c5745d28ae9fb0dbf86fe28f14e7a9f56ae52f12848d76718410f1fbf81d",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "source_bytes": 41451,
+      "source_sha256": "5ae31ec50f30683b7ebb3b47c1107348aee5fd8a3075447f151899b654f02095",
+      "target_exists": true,
+      "previous_bytes": 41451,
+      "previous_sha256": "1b33f2424a5507bb1216abc173cf4c0aa91ac45ec8c3b1a9f5ef6e43921a738c",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/preflight-pass3.json",
+      "source_bytes": 54442,
+      "source_sha256": "67b7151f8a4a66372efbe3607dda3767d7809334cac7b7c426ec51a687ee8e00",
+      "target_exists": true,
+      "previous_bytes": 54442,
+      "previous_sha256": "67b7151f8a4a66372efbe3607dda3767d7809334cac7b7c426ec51a687ee8e00",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/preflight-pass4.json",
+      "source_bytes": 66453,
+      "source_sha256": "07699f31179c00293ae0aef551e85778afbc8327618b8039b64d6a6b3992d073",
+      "target_exists": true,
+      "previous_bytes": 66453,
+      "previous_sha256": "07699f31179c00293ae0aef551e85778afbc8327618b8039b64d6a6b3992d073",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/preflight-pass5.json",
+      "source_bytes": 72927,
+      "source_sha256": "1b08b8390a4ee33454f8015dd21e952634df9f6cb34d2099006907a8616fb5da",
+      "target_exists": true,
+      "previous_bytes": 72927,
+      "previous_sha256": "1b08b8390a4ee33454f8015dd21e952634df9f6cb34d2099006907a8616fb5da",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass1.json",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "target_exists": true,
+      "previous_bytes": 0,
+      "previous_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass1b.json",
+      "source_bytes": 14016,
+      "source_sha256": "646000708a68bbb45c18c5b040ba7759d28da22e0fefab89612c1e9a2d598a1d",
+      "target_exists": true,
+      "previous_bytes": 14016,
+      "previous_sha256": "646000708a68bbb45c18c5b040ba7759d28da22e0fefab89612c1e9a2d598a1d",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass2.json",
+      "source_bytes": 14669,
+      "source_sha256": "40ad1cffcfab8684152117ef67d820dc63aad5fad68ccc91f86abc97bf1f0666",
+      "target_exists": true,
+      "previous_bytes": 14669,
+      "previous_sha256": "40ad1cffcfab8684152117ef67d820dc63aad5fad68ccc91f86abc97bf1f0666",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass3.json",
+      "source_bytes": 15730,
+      "source_sha256": "6366a05182f2187dcf987e8736b596abda7172de57fb9192a16b05cbc67946e7",
+      "target_exists": true,
+      "previous_bytes": 15730,
+      "previous_sha256": "6366a05182f2187dcf987e8736b596abda7172de57fb9192a16b05cbc67946e7",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass4.json",
+      "source_bytes": 16870,
+      "source_sha256": "1cbecfb331927126b45dcf8a0fc4bd6e6205d56a53d531e52c0c13cc2505015a",
+      "target_exists": true,
+      "previous_bytes": 16870,
+      "previous_sha256": "1cbecfb331927126b45dcf8a0fc4bd6e6205d56a53d531e52c0c13cc2505015a",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass5.json",
+      "source_bytes": 18200,
+      "source_sha256": "b7bc70a391b846349b34b299db106c8392e636fe5cdfa94ad96946c83541b4d4",
+      "target_exists": true,
+      "previous_bytes": 18200,
+      "previous_sha256": "b7bc70a391b846349b34b299db106c8392e636fe5cdfa94ad96946c83541b4d4",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-selected-root.mjs",
+      "source_bytes": 4871,
+      "source_sha256": "1b930502007fb7b3118b51ddb33d3d37ff9e3f7086f4aa08b8a11543ddda91bf",
+      "target_exists": true,
+      "previous_bytes": 4871,
+      "previous_sha256": "1b930502007fb7b3118b51ddb33d3d37ff9e3f7086f4aa08b8a11543ddda91bf",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.html",
+      "source_bytes": 39842,
+      "source_sha256": "2ac19d88c0f2f73f0e5b9851ba86a01c116d0dc7e25efc3f6fc78b1b44c5fb0e",
+      "target_exists": true,
+      "previous_bytes": 39842,
+      "previous_sha256": "2e778edabb9bfe652b6920550a6f2a74fa60e1794bc86a06319ee12e479fd36c",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/rspress.tailnet-sync.config.ts",
+      "source_bytes": 672,
+      "source_sha256": "1b0b02d48b0a332ad3bebe4f7910a02fcee19441ca8df7a6e6bb51a36a5815c5",
+      "target_exists": true,
+      "previous_bytes": 672,
+      "previous_sha256": "1b0b02d48b0a332ad3bebe4f7910a02fcee19441ca8df7a6e6bb51a36a5815c5",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sanitize-built-site.mjs",
+      "source_bytes": 1888,
+      "source_sha256": "9cb4018c42664ec79349c0129c7c51a287f4d5145ef5798887bd1dc0f6cede54",
+      "target_exists": true,
+      "previous_bytes": 1888,
+      "previous_sha256": "9cb4018c42664ec79349c0129c7c51a287f4d5145ef5798887bd1dc0f6cede54",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sanitize-pass3.json",
+      "source_bytes": 216,
+      "source_sha256": "c7e105eb49af483406476f1f524d988b159bacec379dc5f2e09b07f6158132fc",
+      "target_exists": true,
+      "previous_bytes": 216,
+      "previous_sha256": "c7e105eb49af483406476f1f524d988b159bacec379dc5f2e09b07f6158132fc",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sanitize-pass4.json",
+      "source_bytes": 216,
+      "source_sha256": "45391addefff0b0d483b258af3858176f30a13bebfd5186571ff9229775924ee",
+      "target_exists": true,
+      "previous_bytes": 216,
+      "previous_sha256": "45391addefff0b0d483b258af3858176f30a13bebfd5186571ff9229775924ee",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sanitize-pass5.json",
+      "source_bytes": 216,
+      "source_sha256": "43ffacc09fd175066ee0c067a3b892de8596167ebc7d551eb9be1f7265731879",
+      "target_exists": true,
+      "previous_bytes": 216,
+      "previous_sha256": "43ffacc09fd175066ee0c067a3b892de8596167ebc7d551eb9be1f7265731879",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass1.log",
+      "source_bytes": 208,
+      "source_sha256": "1bf5ae58c5e7702cbd65fa3d2cede11952f29617530059d315f543e8cf24d2d8",
+      "target_exists": true,
+      "previous_bytes": 208,
+      "previous_sha256": "1bf5ae58c5e7702cbd65fa3d2cede11952f29617530059d315f543e8cf24d2d8",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass1b.log",
+      "source_bytes": 3395,
+      "source_sha256": "49f92dc67af854f2f5c0e7aa04080dd19ed7eaf384cb57952e0c44a26fc87734",
+      "target_exists": true,
+      "previous_bytes": 3395,
+      "previous_sha256": "49f92dc67af854f2f5c0e7aa04080dd19ed7eaf384cb57952e0c44a26fc87734",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass2.log",
+      "source_bytes": 4834,
+      "source_sha256": "eb7c2ef9c889f73487a59430f5e99a991250ee04babd97a479cfdb01267bd497",
+      "target_exists": true,
+      "previous_bytes": 4834,
+      "previous_sha256": "eb7c2ef9c889f73487a59430f5e99a991250ee04babd97a479cfdb01267bd497",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass3.log",
+      "source_bytes": 4834,
+      "source_sha256": "c527599a6ccd17f67906dc3fe338315f2b51c7f0ffcf530ea4cf0e1e7a6163f2",
+      "target_exists": true,
+      "previous_bytes": 4834,
+      "previous_sha256": "c527599a6ccd17f67906dc3fe338315f2b51c7f0ffcf530ea4cf0e1e7a6163f2",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass4.log",
+      "source_bytes": 4834,
+      "source_sha256": "cd2127d55885daf2e7dcf3b16f97cb24c72941dd8dc80ebaa7e2c9eae7d083e7",
+      "target_exists": true,
+      "previous_bytes": 4834,
+      "previous_sha256": "cd2127d55885daf2e7dcf3b16f97cb24c72941dd8dc80ebaa7e2c9eae7d083e7",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass5-final.log",
+      "source_bytes": 5382,
+      "source_sha256": "3217ca00dfcbe96d1e4eb8057355baaf13a47281d772f102bf69e6a73c30540f",
+      "target_exists": true,
+      "previous_bytes": 5382,
+      "previous_sha256": "3217ca00dfcbe96d1e4eb8057355baaf13a47281d772f102bf69e6a73c30540f",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/served-verification-pass3.json",
+      "source_bytes": 61307,
+      "source_sha256": "c748c761ce062a13cca313af3d8d35555360a6438fd221d239eb5ac6c9e7bb0a",
+      "target_exists": true,
+      "previous_bytes": 61307,
+      "previous_sha256": "c748c761ce062a13cca313af3d8d35555360a6438fd221d239eb5ac6c9e7bb0a",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/served-verification-pass4.json",
+      "source_bytes": 66615,
+      "source_sha256": "eeaad0067e4c63c4c50e7fe8ecfad2c0858489d8a8495407015bfb642246206c",
+      "target_exists": true,
+      "previous_bytes": 66615,
+      "previous_sha256": "eeaad0067e4c63c4c50e7fe8ecfad2c0858489d8a8495407015bfb642246206c",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/served-verification-pass5.json",
+      "source_bytes": 73666,
+      "source_sha256": "4e6b2ee8534b72aa27b4cf5e24a4dffa500a5045782993bf7cfc68ff856cefd1",
+      "target_exists": true,
+      "previous_bytes": 73666,
+      "previous_sha256": "4e6b2ee8534b72aa27b4cf5e24a4dffa500a5045782993bf7cfc68ff856cefd1",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/SHA256SUMS-preview-inputs.txt",
+      "source_bytes": 22327,
+      "source_sha256": "17bca91466c02f677fb4067a62fd037e274b2ea5c5e7bc3797e42537a12667a4",
+      "target_exists": true,
+      "previous_bytes": 22327,
+      "previous_sha256": "17bca91466c02f677fb4067a62fd037e274b2ea5c5e7bc3797e42537a12667a4",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/SHA256SUMS.txt",
+      "source_bytes": 4215,
+      "source_sha256": "89611133ff5d8c1b133850acc327f78b3e71940e7957c56ae26950be4552dd70",
+      "target_exists": true,
+      "previous_bytes": 4215,
+      "previous_sha256": "89611133ff5d8c1b133850acc327f78b3e71940e7957c56ae26950be4552dd70",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-preview.mjs",
+      "source_bytes": 9055,
+      "source_sha256": "ce235fdd332f7fda029513087a6d1e5723ab36a7d3030ca7a02f26cb0e8f2ec9",
+      "target_exists": true,
+      "previous_bytes": 9055,
+      "previous_sha256": "ce235fdd332f7fda029513087a6d1e5723ab36a7d3030ca7a02f26cb0e8f2ec9",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.html",
+      "source_bytes": 40048,
+      "source_sha256": "5c3b8922296e0efeed70906d42867b8b86765cb9047e5843c922b38dc3f2d17d",
+      "target_exists": true,
+      "previous_bytes": 40048,
+      "previous_sha256": "4bd9ab490a5476d31fd1cd2c9dbb406742ea1dd90e7fb86e2bc306fab2744ede",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/tailnet-plan-agent-browser.png",
+      "source_bytes": 184140,
+      "source_sha256": "1cc4f17edf5fa8470230cc5275b8a4f751aa0175b345d18b2c7317aec8f1232f",
+      "target_exists": true,
+      "previous_bytes": 184140,
+      "previous_sha256": "1cc4f17edf5fa8470230cc5275b8a4f751aa0175b345d18b2c7317aec8f1232f",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/tailnet-roadmap-agent-browser.png",
+      "source_bytes": 238757,
+      "source_sha256": "910cd5d206073fa35cbfa3ef5a4674f48c5ced853e1276b4050db37b4f27ac1d",
+      "target_exists": true,
+      "previous_bytes": 238757,
+      "previous_sha256": "910cd5d206073fa35cbfa3ef5a4674f48c5ced853e1276b4050db37b4f27ac1d",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/tailnet-status-agent-browser.png",
+      "source_bytes": 206545,
+      "source_sha256": "658e0c27ceb89395ee9b57317a55b3bcd7195f8d359298d2bc35318b3811c964",
+      "target_exists": true,
+      "previous_bytes": 206545,
+      "previous_sha256": "658e0c27ceb89395ee9b57317a55b3bcd7195f8d359298d2bc35318b3811c964",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/verify-served.mjs",
+      "source_bytes": 2594,
+      "source_sha256": "5c0d9f17fb31ea1298de4d2c45e7dfd5017ddb9d4ae57d2cb65024635456c968",
+      "target_exists": true,
+      "previous_bytes": 2594,
+      "previous_sha256": "5c0d9f17fb31ea1298de4d2c45e7dfd5017ddb9d4ae57d2cb65024635456c968",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/write-preview-inputs-manifest.mjs",
+      "source_bytes": 2444,
+      "source_sha256": "242bb57edb09d67ea3a59c1f032f6245e03f08422f1165f1fd52c6bb55028830",
+      "target_exists": true,
+      "previous_bytes": 2444,
+      "previous_sha256": "242bb57edb09d67ea3a59c1f032f6245e03f08422f1165f1fd52c6bb55028830",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "internal/README.html",
+      "source_bytes": 249490,
+      "source_sha256": "ef3cb78eef60b6a6d26713902f745f04ffa402f6854c554746ef4db2105eac91",
+      "target_exists": true,
+      "previous_bytes": 249490,
+      "previous_sha256": "dab8949de28c32f11b7293a2b0c7b10382f70135eb48982e5ebe89d67544cb52",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/internal/README.html"
+    },
+    {
+      "path": "logo.svg",
+      "source_bytes": 568,
+      "source_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "target_exists": true,
+      "previous_bytes": 568,
+      "previous_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "source_bytes": 96404,
+      "source_sha256": "789036facbba344522e9bb289bdfd402426bca5ca9e192c210e8f537bea4bbd1",
+      "target_exists": true,
+      "previous_bytes": 96404,
+      "previous_sha256": "ef03a0e1c7dd2941a07cfeb152eccec41dfe8cf2c24d160819ba7917fdf0539d",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/plan/c11-4-grid-track-sizing.html"
+    },
+    {
+      "path": "plan/c11-4-image-ratio-fixed-gutter.html",
+      "source_bytes": 48698,
+      "source_sha256": "ceaae8bcdbfb0670c43bb484d926a16dba102b79c4ae7b8606eadaa594e18558",
+      "target_exists": true,
+      "previous_bytes": 48698,
+      "previous_sha256": "7cbb4804a5db240225a688c0132c4ed20adaec280f2e13ab4da857753ed5f00d",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/plan/c11-4-image-ratio-fixed-gutter.html"
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "source_bytes": 73848,
+      "source_sha256": "8b3d81a25f402d80d306a85784a1832138d918631130b48e3c3c8022ab77d26e",
+      "target_exists": true,
+      "previous_bytes": 73848,
+      "previous_sha256": "39c33453ab0a7d0e5b3e62340d75f1f32deedee648b0eae4c116cd2e56790f64",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/plan/c11-css-grid.html"
+    },
+    {
+      "path": "roadmap.html",
+      "source_bytes": 152301,
+      "source_sha256": "85ac992462ab810c3801415d3702a04fa8db994dab97b51a7f50cd0ddbe63c07",
+      "target_exists": true,
+      "previous_bytes": 152301,
+      "previous_sha256": "85ac992462ab810c3801415d3702a04fa8db994dab97b51a7f50cd0ddbe63c07",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "roadmap.svg",
+      "source_bytes": 4835,
+      "source_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "target_exists": true,
+      "previous_bytes": 4835,
+      "previous_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "source_bytes": 119170,
+      "source_sha256": "f4e345fecd5159ed597edb5e6e1deb76bfb256ad93c9e7fa8428a336fd8f60e6",
+      "target_exists": true,
+      "previous_bytes": 119170,
+      "previous_sha256": "ffc753c8b786985dae8ffd3e27b64e6fe35cc220dd84cfe165a7f8262be3829d",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/spec/internal/0059-c11-grid-layout.html"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/android-build.log",
+      "source_bytes": 4344,
+      "source_sha256": "201a5107253dfff69f39a10db3a089192e59783b7bbe6517906e8507c48c505b",
+      "target_exists": true,
+      "previous_bytes": 4344,
+      "previous_sha256": "201a5107253dfff69f39a10db3a089192e59783b7bbe6517906e8507c48c505b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "source_bytes": 40876,
+      "source_sha256": "840d3e1318320e3c38f5421e0774b8769257df31158ca82af01610e7cb6a033e",
+      "target_exists": true,
+      "previous_bytes": 40876,
+      "previous_sha256": "f9f87dbd2e805a45dec38f9b9cdbb99013c2531939eb40fa5182b72c4698edd8",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/ios-build.log",
+      "source_bytes": 85746,
+      "source_sha256": "f47129f3d793f9672bf2cc9b98c8d51be8ec4670c54ce57a92fe0f05dbc09a6e",
+      "target_exists": true,
+      "previous_bytes": 85746,
+      "previous_sha256": "f47129f3d793f9672bf2cc9b98c8d51be8ec4670c54ce57a92fe0f05dbc09a6e",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "source_bytes": 43892,
+      "source_sha256": "fad3d917319afded7c2bf1e213de79922cb439bb1342d5fc451ec1433304df17",
+      "target_exists": true,
+      "previous_bytes": 43892,
+      "previous_sha256": "976a763ca00b1a70beeddeb6e57482001e3b51307d0ecdf642aae89a1b5d61e4",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "source_bytes": 47006,
+      "source_sha256": "63c85e45cb4de4dbfcb4db8db00cddf1893b0a9b43433c8c13511cefc39e4279",
+      "target_exists": true,
+      "previous_bytes": 47006,
+      "previous_sha256": "d65cd9d023d8756c7294b80ff0318f17a626eeb0cb5730b7264c119164ca9c8e",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/run-simulator-matrix.sh",
+      "source_bytes": 9017,
+      "source_sha256": "1d61753433ffca653ec5372496284197e8686f9523a53402ac8b20cca86e24c4",
+      "target_exists": true,
+      "previous_bytes": 9017,
+      "previous_sha256": "1d61753433ffca653ec5372496284197e8686f9523a53402ac8b20cca86e24c4",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/abi.txt",
+      "source_bytes": 10,
+      "source_sha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90",
+      "target_exists": true,
+      "previous_bytes": 10,
+      "previous_sha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/api-level.txt",
+      "source_bytes": 3,
+      "source_sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "target_exists": true,
+      "previous_bytes": 3,
+      "previous_sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/avd-name.txt",
+      "source_bytes": 28,
+      "source_sha256": "6b155c3bed6bef87b3f93560e239c1286ed38bcca6a05db907fe05280e34d58e",
+      "target_exists": true,
+      "previous_bytes": 28,
+      "previous_sha256": "6b155c3bed6bef87b3f93560e239c1286ed38bcca6a05db907fe05280e34d58e",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/install.log",
+      "source_bytes": 36,
+      "source_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "target_exists": true,
+      "previous_bytes": 36,
+      "previous_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/launch-fixed-gutter-column-suggestion-clamp.log",
+      "source_bytes": 73,
+      "source_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "target_exists": true,
+      "previous_bytes": 73,
+      "previous_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/launch-fixed-gutter-row-suggestion-clamp.log",
+      "source_bytes": 73,
+      "source_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "target_exists": true,
+      "previous_bytes": 73,
+      "previous_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/runtime-fixed-gutter-column-suggestion-clamp.log",
+      "source_bytes": 23930,
+      "source_sha256": "e98d059ff1eafc0bd8529be3bd9547486213e2878d478e4b9d22eaf06f157b80",
+      "target_exists": true,
+      "previous_bytes": 23930,
+      "previous_sha256": "e98d059ff1eafc0bd8529be3bd9547486213e2878d478e4b9d22eaf06f157b80",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/runtime-fixed-gutter-row-suggestion-clamp.log",
+      "source_bytes": 23412,
+      "source_sha256": "a58a20ddd5fb41349899829338a98fc2856689d7c9b9ad17d0ad3ab89b99760c",
+      "target_exists": true,
+      "previous_bytes": 23412,
+      "previous_sha256": "a58a20ddd5fb41349899829338a98fc2856689d7c9b9ad17d0ad3ab89b99760c",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/screenshot-fixed-gutter-column-suggestion-clamp.png",
+      "source_bytes": 78568,
+      "source_sha256": "5ed7da99beebea2388a6387a4ecdd0901b50b01823004a9b2f0887fe07b092c6",
+      "target_exists": true,
+      "previous_bytes": 78568,
+      "previous_sha256": "5ed7da99beebea2388a6387a4ecdd0901b50b01823004a9b2f0887fe07b092c6",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/screenshot-fixed-gutter-row-suggestion-clamp.png",
+      "source_bytes": 78562,
+      "source_sha256": "9edba366dfc342729d75fb4cbbe87265cbe01e1500c72199484278cf12b579db",
+      "target_exists": true,
+      "previous_bytes": 78562,
+      "previous_sha256": "9edba366dfc342729d75fb4cbbe87265cbe01e1500c72199484278cf12b579db",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/booted-devices.txt",
+      "source_bytes": 169,
+      "source_sha256": "687ad5cab6f3b16a1f66677bd516f500066992e2bf97c7921045c214841bc103",
+      "target_exists": true,
+      "previous_bytes": 169,
+      "previous_sha256": "687ad5cab6f3b16a1f66677bd516f500066992e2bf97c7921045c214841bc103",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/install.log",
+      "source_bytes": 1,
+      "source_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "target_exists": true,
+      "previous_bytes": 1,
+      "previous_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/launch-fixed-gutter-column-suggestion-clamp.log",
+      "source_bytes": 28,
+      "source_sha256": "132a28ad23333b0e3c5822fc1470c9a6dfa735baaf4a09e53140f274ab59b209",
+      "target_exists": true,
+      "previous_bytes": 28,
+      "previous_sha256": "132a28ad23333b0e3c5822fc1470c9a6dfa735baaf4a09e53140f274ab59b209",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/launch-fixed-gutter-row-suggestion-clamp.log",
+      "source_bytes": 28,
+      "source_sha256": "7dde8588390713caad06a641e6dae4b71fad1b182e3dd55f17a05c7cca25afee",
+      "target_exists": true,
+      "previous_bytes": 28,
+      "previous_sha256": "7dde8588390713caad06a641e6dae4b71fad1b182e3dd55f17a05c7cca25afee",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/model-identifier.txt",
+      "source_bytes": 11,
+      "source_sha256": "e40be96841131f523dac012c3a28136b55643c89d96e7c20e7b5834a9ef6153a",
+      "target_exists": true,
+      "previous_bytes": 11,
+      "previous_sha256": "e40be96841131f523dac012c3a28136b55643c89d96e7c20e7b5834a9ef6153a",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/runtime-fixed-gutter-column-suggestion-clamp.log",
+      "source_bytes": 20809,
+      "source_sha256": "894324d279dd36d3a665bf776a7fd23c2e7b37ac0540aadc19ea9435b5bbb1f1",
+      "target_exists": true,
+      "previous_bytes": 20809,
+      "previous_sha256": "894324d279dd36d3a665bf776a7fd23c2e7b37ac0540aadc19ea9435b5bbb1f1",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/runtime-fixed-gutter-row-suggestion-clamp.log",
+      "source_bytes": 20259,
+      "source_sha256": "fe89fb511c673db23bfffa563cafcbb4fb5e3b07b58ba93a9bc9f86a6f018fd6",
+      "target_exists": true,
+      "previous_bytes": 20259,
+      "previous_sha256": "fe89fb511c673db23bfffa563cafcbb4fb5e3b07b58ba93a9bc9f86a6f018fd6",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-column-suggestion-clamp.log",
+      "source_bytes": 86,
+      "source_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "target_exists": true,
+      "previous_bytes": 86,
+      "previous_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-column-suggestion-clamp.png",
+      "source_bytes": 131372,
+      "source_sha256": "5b4e8e6039f64ecf9d67fcf5be410bdea4bea8be299b712fe4b3e9a1f60df501",
+      "target_exists": true,
+      "previous_bytes": 131372,
+      "previous_sha256": "5b4e8e6039f64ecf9d67fcf5be410bdea4bea8be299b712fe4b3e9a1f60df501",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-row-suggestion-clamp.log",
+      "source_bytes": 86,
+      "source_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "target_exists": true,
+      "previous_bytes": 86,
+      "previous_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-row-suggestion-clamp.png",
+      "source_bytes": 131386,
+      "source_sha256": "9a8c87d19ddf7ac4ff0446f5e757d9a796c12ac4e5e20608fc4b194924b52847",
+      "target_exists": true,
+      "previous_bytes": 131386,
+      "previous_sha256": "9a8c87d19ddf7ac4ff0446f5e757d9a796c12ac4e5e20608fc4b194924b52847",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/run-id.txt",
+      "source_bytes": 25,
+      "source_sha256": "6e7b84ee863d235baab718000e08e83bfb3e0ac7f87bced6110ce466b36094cb",
+      "target_exists": true,
+      "previous_bytes": 25,
+      "previous_sha256": "6e7b84ee863d235baab718000e08e83bfb3e0ac7f87bced6110ce466b36094cb",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/source-head.txt",
+      "source_bytes": 41,
+      "source_sha256": "b2b9b9854a8d43a4989c20c7f9c993899bca268d0b83a3aeafd21904c132081e",
+      "target_exists": true,
+      "previous_bytes": 41,
+      "previous_sha256": "b2b9b9854a8d43a4989c20c7f9c993899bca268d0b83a3aeafd21904c132081e",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/verification.log",
+      "source_bytes": 22797,
+      "source_sha256": "43d43a7c7394540ff154c155a4076421fc3ad29ff2267ecda585a880e36c6822",
+      "target_exists": true,
+      "previous_bytes": 22797,
+      "previous_sha256": "43d43a7c7394540ff154c155a4076421fc3ad29ff2267ecda585a880e36c6822",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-agent-browser-observation.json",
+      "source_bytes": 4729,
+      "source_sha256": "a26c9ce559d881cc55437c5893f89b6a9aa12b3cc0d331464a16a4976499833c",
+      "target_exists": true,
+      "previous_bytes": 4729,
+      "previous_sha256": "a26c9ce559d881cc55437c5893f89b6a9aa12b3cc0d331464a16a4976499833c",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-agent-browser-observation.raw.json",
+      "source_bytes": 5516,
+      "source_sha256": "9e17e55d467fb966c8a1cb49064e499c5c8d338b9ae11c20ec407a64e437dce2",
+      "target_exists": true,
+      "previous_bytes": 5516,
+      "previous_sha256": "9e17e55d467fb966c8a1cb49064e499c5c8d338b9ae11c20ec407a64e437dce2",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-fixed-gutter.png",
+      "source_bytes": 39087,
+      "source_sha256": "0f3786508d9b63e18260396d7e8992daf236dc9c0773e2ea525178e43e36d102",
+      "target_exists": true,
+      "previous_bytes": 39087,
+      "previous_sha256": "0f3786508d9b63e18260396d7e8992daf236dc9c0773e2ea525178e43e36d102",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "source_bytes": 39625,
+      "source_sha256": "cf5c5bc921fe4c0d63f45f346e4c2927d11b69510cda684cddd7a4225b873c4e",
+      "target_exists": true,
+      "previous_bytes": 39625,
+      "previous_sha256": "84fbd61f323a0fff38091d7bcb6d0a42c299166bbcccc5e259517d87c55e0213",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "source_bytes": 40005,
+      "source_sha256": "c708d58d7c542884eab1ca2ef3505984ad66f10adbfc0f92c21d4b82055156f7",
+      "target_exists": true,
+      "previous_bytes": 40005,
+      "previous_sha256": "75fc0a068559140bf50ec8ab2f8bd60446224f7e1402de8ba2ca1132be0fae9b",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "source_bytes": 40616,
+      "source_sha256": "6ec5d4cc90f2fbc83cb3911939e3d5dbabf4e930939937f979972e037c491454",
+      "target_exists": true,
+      "previous_bytes": 40616,
+      "previous_sha256": "99b51b40ca4471dc913acac81ef8c5199907b4bade6ce4f8a2e1cd6a1760998d",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "source_bytes": 43097,
+      "source_sha256": "e270fb7b9a531dc1f11e5772665f73295a894fa6785aa2fb71cace5b5f843bef",
+      "target_exists": true,
+      "previous_bytes": 43097,
+      "previous_sha256": "cd743e9e7d0aaed84401999a981446c0a71f6d9074cae2f343aca0d151a0828b",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source_bytes": 73952,
+      "source_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "target_exists": true,
+      "previous_bytes": 73952,
+      "previous_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.655cd397d3.js",
+      "source_bytes": 216969,
+      "source_sha256": "e938ea5c11acdcdfc4a19e8b0a29b96b20a54e35d06a56c14f13f61edae102ed",
+      "target_exists": true,
+      "previous_bytes": 216969,
+      "previous_sha256": "e938ea5c11acdcdfc4a19e8b0a29b96b20a54e35d06a56c14f13f61edae102ed",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.655cd397d3.js.LICENSE.txt",
+      "source_bytes": 384,
+      "source_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "target_exists": true,
+      "previous_bytes": 384,
+      "previous_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "source_bytes": 100,
+      "source_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "target_exists": true,
+      "previous_bytes": 100,
+      "previous_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-02da5143c1f7.97d445dc3e.js",
+      "source_bytes": 10258,
+      "source_sha256": "5fa77b260fc70cc235393773cd0a01ae2a1b9aeef167ac17636853ed14c04966",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.0a5c35f3b8.js",
+      "source_bytes": 53533,
+      "source_sha256": "4f4f862c3bf353ac08352708b702d0aadae30bbe891c2a2a440cd56d833b1ddf",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-0fc10d6029ff.8eb74a9a87.js",
+      "source_bytes": 9001,
+      "source_sha256": "9b1b160c2dcfb86b456b7395ea7526f9a8241a0bbcce94f28f91b4b11b3d2373",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-245ddaf96f86.1ea4d7ef9f.js",
+      "source_bytes": 8892,
+      "source_sha256": "544144fda049333a2cee2a13b6fefd1fbe971fffba27df63c4ba831ac9cb84f0",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-247859e89cb0.430d620e23.js",
+      "source_bytes": 6949,
+      "source_sha256": "90063705c01205d5659fecfd72199fc1e7361476aaaecc30bf891f1e55dcd178",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-25f826ccc1f0.2c08cc4e79.js",
+      "source_bytes": 11226,
+      "source_sha256": "778a89d3414e5d7cd34a98f716de66880fd06c8a1536c3c0f919ac37250624c6",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-3de2ba0b6314.246c8097b0.js",
+      "source_bytes": 9523,
+      "source_sha256": "a1274a9122152906a48726cc86d90f784f4f853799841d389eae7cc24913f47b",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-69fda0c43099.d7130411f5.js",
+      "source_bytes": 13098,
+      "source_sha256": "ace338e1a9558a86ddb4b21d3c1a4dbcfc496e45a37add7308e4266615972b9b",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6b2ef7d1846c.50b05c32bd.js",
+      "source_bytes": 9406,
+      "source_sha256": "d35821cee5ac8d35512a6ab673ff7df5855c5f86ad1900a81a5a9c3bcbc43235",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6bc2e6fb6b31.6020c8a9ee.js",
+      "source_bytes": 9533,
+      "source_sha256": "ba234378d4ba9cdbf5f61c84b1edec5e7fa5d6eb1c6a32fe8c3be8d754c1a30b",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.c1e6da8b33.js",
+      "source_bytes": 497272,
+      "source_sha256": "9b635b453a1ec0be20845ca86eedea6b9889a9707dcd4b25110172f678804f18",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-7290f5c1ced2.519d4d69a2.js",
+      "source_bytes": 17962,
+      "source_sha256": "12a98a48cdfdae855fdf08156d93a112f250718e8fd3480d9e32274ffe45bde2",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-739571cd2ae5.25aac3380b.js",
+      "source_bytes": 87856,
+      "source_sha256": "3ff0180c3e48d817bb58be01e56b04e52748048f8199998ce31e9e4ed6ad362a",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-7a11bd1c0efc.0f4495a839.js",
+      "source_bytes": 12740,
+      "source_sha256": "fa3096044d2885d1e8c1fd172679dfd48307197b0deeae7858cf2428f3124176",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-7b9bcbddf2a4.c3784d016b.js",
+      "source_bytes": 10268,
+      "source_sha256": "05263abfbd8d44b943a55d2adcab2d803bfdd9ddf6ad8137c5ef16e48ac37c88",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-812dc5c7229b.78e74ada6e.js",
+      "source_bytes": 4702,
+      "source_sha256": "3189218ac5cd99ceac1f7e08273a29e333f75fd3c3ecbd2e421342f3bc85f451",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-8cdc035b6f64.78a68f5fff.js",
+      "source_bytes": 14958,
+      "source_sha256": "d19cd592c1b3317af0887a14199dc21d9d28b571190c74b5ad2f9b124b3cef9c",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-9fc08d04c766.95f9f0ceb4.js",
+      "source_bytes": 9826,
+      "source_sha256": "c8026baed09c9492ddd601ed769d8216f8c608f6765ae6ed1c1b1448b357079d",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.4c7b17f0d6.js",
+      "source_bytes": 243739,
+      "source_sha256": "0af8d6eb325de36639fe824bc863cd60cd27f6ec33a4b5f16de048753bb876a5",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-b960e2b16ea1.5c4798ecc1.js",
+      "source_bytes": 11077,
+      "source_sha256": "9daa2e8bdcc27eca15ff02499fae2d35569781a37b569c7f0128fbb9b41b0384",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-bfc3b19ac950.8c74a2aee8.js",
+      "source_bytes": 9819,
+      "source_sha256": "33e365509acd5ce7bfffdb47d106cd6ddce97de68788450f0f97f40d06f3fa4d",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.2fe1df5331.js",
+      "source_bytes": 43595,
+      "source_sha256": "08bfab0c5e872ae99b7ee71b0b91a7446a064d5c6df7d3f5c5e02727bbaebae5",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.de54d47a63.js",
+      "source_bytes": 87850,
+      "source_sha256": "03138f28c7b08a79c9e9c6a61f9fd2f1885224f829ae0402c5001075cb03a077",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-cde3fc5f9207.c9b8700938.js",
+      "source_bytes": 14951,
+      "source_sha256": "56fec8f93c45569c506b4a3f8e7fed49e751d023ba70be9e653f90e424157f2b",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-cf3a63d264c6.e0eb48b58a.js",
+      "source_bytes": 9467,
+      "source_sha256": "2d563268c2b9ba4b40cfd59a16030a94c621b143a8d1ae338175ae0eb89a3496",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-d04f646149b9.0f12956cdc.js",
+      "source_bytes": 10372,
+      "source_sha256": "86d68f6c016ea2e22f81a7fe1c47669342f977dcc80a1c12374ba6fececce8c4",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-d2e5373e859b.03b2712b21.js",
+      "source_bytes": 14654,
+      "source_sha256": "64305381b65e6e7da8624372c83f3d48431169d5e1cba219781b0c3cac3b32ae",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-d5b07898f998.d23cef2a76.js",
+      "source_bytes": 11627,
+      "source_sha256": "55b6af3eb5ad38c66f9872acd9a9632390a59761adc9ca1b96dd5ba01fe65c40",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-dc56297a2c9a.d98e622346.js",
+      "source_bytes": 13094,
+      "source_sha256": "57991cf1d443606ec33be8042c5db91925889107c0941f24aa4c2c28ba576be4",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-e652ff592776.e35a758b61.js",
+      "source_bytes": 15347,
+      "source_sha256": "8b9524a28bb66a9609a40aadc373b9eecf815530acc59c76258915385e36f98f",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-ec316c13d5f3.913cc1d6ba.js",
+      "source_bytes": 14661,
+      "source_sha256": "e3abe3cbd5366602eb499aa24d8d57cc9344adb64b5b85935ebf7593b3050431",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-ecf129b09e78.e4b63854db.js",
+      "source_bytes": 23552,
+      "source_sha256": "9aa3a8ae6d3a83934add4eb8a1b52eb08fb85003a68732681cb307a23e55d1b9",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-f4e1c4792faf.d27a8ce310.js",
+      "source_bytes": 9006,
+      "source_sha256": "3e59c86b3abb08b6b24599edcd693e6f6032755c3a931f1c34a9bf39c2e9f077",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/index.f6e76c1119.js",
+      "source_bytes": 77265,
+      "source_sha256": "445dee3dc9325f77a2b647e87ea6008a80fb7a620d30f63cf90c428fba1e3532",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "source_bytes": 218364,
+      "source_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "target_exists": true,
+      "previous_bytes": 218364,
+      "previous_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "source_bytes": 1209,
+      "source_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "target_exists": true,
+      "previous_bytes": 1209,
+      "previous_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "source_bytes": 35370,
+      "source_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "target_exists": true,
+      "previous_bytes": 35370,
+      "previous_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "source_bytes": 222,
+      "source_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "target_exists": true,
+      "previous_bytes": 222,
+      "previous_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/styles.d2a6dfa6a0.js",
+      "source_bytes": 473,
+      "source_sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "target_exists": true,
+      "previous_bytes": 473,
+      "previous_sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "status": "same",
+      "backup_path": null
+    },
+    {
+      "path": "static/search_index.ko.882b5734.json",
+      "source_bytes": 652009,
+      "source_sha256": "882b5734b953cdcf6a1325ef4629c67868373b23615a7bbff03d2b25b886d025",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "status": "create",
+      "backup_path": null
+    },
+    {
+      "path": "STATUS.html",
+      "source_bytes": 488986,
+      "source_sha256": "f48424c6aee5d1ecaec1fecf9e4b2b101fd3f1df828b3baddf20b46a67d6a167",
+      "target_exists": true,
+      "previous_bytes": 488986,
+      "previous_sha256": "aef36b924c6878f89d8009c331ebcffc993a57fa235e519e681918afda913df5",
+      "status": "replace",
+      "backup_path": "SpinonPreviewBackups/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pass11/STATUS.html"
+    },
+    {
+      "path": "tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html",
+      "source_bytes": 7835,
+      "source_sha256": "a95f69050a1c77b8d65105b04f0aa2fc21942c7d665cad86e6117cfc46daad7c",
+      "target_exists": true,
+      "previous_bytes": 7835,
+      "previous_sha256": "a95f69050a1c77b8d65105b04f0aa2fc21942c7d665cad86e6117cfc46daad7c",
+      "status": "same",
+      "backup_path": null
+    }
+  ]
+}

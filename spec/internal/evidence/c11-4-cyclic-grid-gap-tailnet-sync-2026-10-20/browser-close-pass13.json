@@ -1,0 +1,38 @@
+{
+  "pass": "pass13",
+  "browser": {
+    "tool": "Agent Browser",
+    "version": "0.31.1",
+    "namespace": "spint13",
+    "session": "c114t13"
+  },
+  "close_command": {
+    "command": "agent-browser --session c114t13 --namespace spint13 close",
+    "exit_code": 0,
+    "browser_closed": true
+  },
+  "before_close": {
+    "daemon_pid": 97275,
+    "chrome_pid": 97276,
+    "browser_launched": true
+  },
+  "after_close": {
+    "session_active": false,
+    "session_pid": null,
+    "browser_launched": false,
+    "page_count": 0,
+    "owned_daemon_process_absent": true,
+    "owned_chrome_process_tree_absent": true
+  },
+  "preserved_processes": [
+    {
+      "pid": 74457,
+      "reason": "기존 타 작업 Agent Browser daemon; 종료하지 않음"
+    },
+    {
+      "pid": 1191,
+      "reason": "Tailnet preview server; 계속 127.0.0.1:8768에서 listen"
+    }
+  ],
+  "note": "Browser close 뒤 daemon이 종료됐고 후속 session info는 active=false/pid=null을 반환했다."
+}

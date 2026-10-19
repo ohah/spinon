@@ -1,0 +1,38 @@
+{
+  "pass": "pass14",
+  "browser": {
+    "tool": "Agent Browser",
+    "version": "0.31.1",
+    "namespace": "spint14",
+    "session": "c114t14"
+  },
+  "closeCommand": {
+    "command": "agent-browser --session c114t14 --namespace spint14 close",
+    "exitCode": 0,
+    "browserClosed": true
+  },
+  "beforeClose": {
+    "daemonPid": 99809,
+    "chromePid": 99810,
+    "browserLaunched": true
+  },
+  "afterClose": {
+    "sessionActive": false,
+    "sessionPid": null,
+    "browserLaunched": false,
+    "pageCount": 0,
+    "ownedDaemonProcessAbsent": true,
+    "ownedChromeProcessTreeAbsent": true
+  },
+  "preservedProcesses": [
+    {
+      "pid": 74457,
+      "reason": "기존 타 작업 Agent Browser daemon; 종료하지 않음"
+    },
+    {
+      "pid": 1191,
+      "reason": "Tailnet preview server; 계속 127.0.0.1:8768에서 listen"
+    }
+  ],
+  "note": "close 뒤 후속 session info에서 active=false/pid=null이었고 daemon과 Chrome pid가 사라졌다."
+}

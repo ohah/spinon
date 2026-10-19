@@ -1,0 +1,97 @@
+@spinon/docs docs:build: 🔥 Rspress v2.0.22
+@spinon/docs docs:build:
+@spinon/docs docs:build: info    build started...
+@spinon/docs docs:build: warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+@spinon/docs docs:build: warn    Please set `output.cleanDistPath` config manually.
+@spinon/docs docs:build: warn    Current root path: /private/tmp/spinon-c11-4-cyclic-grid-gap-tailnet-20261020/packages/docs
+@spinon/docs docs:build: warn    Current dist path: /private/tmp/spinon-c11-4-cyclic-grid-gap-tailnet-20261020/build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14
+@spinon/docs docs:build: info    Rendering pages...
+@spinon/docs docs:build: success Pages rendered in 195 ms.
+@spinon/docs docs:build: ready   built in 1.11s (node)
+@spinon/docs docs:build: ready   built in 1.11s (web)
+@spinon/docs docs:build:
+@spinon/docs docs:build: File (web)                                                                                                      Size        Gzip
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/i.25208e7c92.js                    0.10 kB     0.09 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/styles.d2a6dfa6a0.js                     0.47 kB     0.23 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/icon.svg                                           0.64 kB     0.42 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-812dc5c7229b.1f49a60bdc.js   4.7 kB      1.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-247859e89cb0.df68595ddb.js   6.9 kB      2.5 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-0fc10d6029ff.ad2b5bcbf2.js   9.0 kB      2.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-f4e1c4792faf.b557af8d14.js   9.0 kB      2.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-6b2ef7d1846c.6db03f2508.js   9.4 kB      3.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-3de2ba0b6314.b0f505d3d9.js   9.5 kB      2.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-6bc2e6fb6b31.d3389e124f.js   9.5 kB      2.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-cf3a63d264c6.1a184f9f80.js   9.8 kB      3.5 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-bfc3b19ac950.0007521602.js   9.8 kB      3.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-9fc08d04c766.815940120d.js   9.8 kB      3.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-245ddaf96f86.9d19eaa24b.js   9.9 kB      3.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-02da5143c1f7.9aaaa25b6a.js   10.3 kB     3.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-7b9bcbddf2a4.702660cfa9.js   10.3 kB     3.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-d04f646149b9.b6c3715098.js   10.5 kB     3.5 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-b960e2b16ea1.c4134acd49.js   11.1 kB     4.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-25f826ccc1f0.0264f34faf.js   11.2 kB     3.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-d5b07898f998.a28105a590.js   11.6 kB     4.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-7a11bd1c0efc.441bf66e70.js   12.7 kB     4.6 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-dc56297a2c9a.fe9f100841.js   13.1 kB     3.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-69fda0c43099.d4282d7893.js   13.1 kB     3.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-d2e5373e859b.70715b2c35.js   14.7 kB     4.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-ec316c13d5f3.a21aff5881.js   14.7 kB     4.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-cde3fc5f9207.722c5f86b1.js   15.0 kB     4.5 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-8cdc035b6f64.0732546dc0.js   15.0 kB     4.5 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-e652ff592776.32eb731752.js   15.3 kB     4.5 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-7290f5c1ced2.15edf3bde2.js   18.0 kB     5.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-ecf129b09e78.44cdfe6181.js   23.6 kB     7.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/lib-router.1e14e568cb.js                 35.4 kB     12.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-c2801b21f038.af2124d1d0.js   43.6 kB     11.9 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-04cbcabea10a.26fc7b22cc.js   53.5 kB     14.9 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/index.4172c4222a.js                      77.3 kB     20.5 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-c4dae6800800.0a88bb47c7.js   87.8 kB     21.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-739571cd2ae5.d221978adc.js   87.9 kB     21.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/a.655cd397d3.js                          217.1 kB    72.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/lib-react.9cdf8f49ce.js                  218.4 kB    68.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-a1017bdf23ca.6cab818da1.js   243.7 kB    40.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/js/async/route-6c33a3943990.9759212d0e.js   497.3 kB    99.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/static/search_index.ko.1c3a9548.json               653.2 kB    207.8 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build:                                                                                                        Total:   2607.7 kB   705.2 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build: File (node)                                                                                                                                                                Size        Gzip
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/404.html                                                                                                      8.5 kB      2.6 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html                       38.4 kB     5.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html                 39.6 kB     6.6 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html            39.6 kB     6.6 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.html                                             39.8 kB     6.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html        40.0 kB     6.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html   40.0 kB     6.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.html                                     40.0 kB     7.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pr-diff-review-20.html                        40.6 kB     7.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html              40.6 kB     7.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html         40.6 kB     7.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html                40.9 kB     7.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html                     40.9 kB     7.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/sync-review-20.html                           41.0 kB     7.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.html                                 41.5 kB     7.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html                       41.7 kB     7.9 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html                                         42.6 kB     7.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html                              42.7 kB     8.5 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html                    43.1 kB     6.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html                         43.2 kB     6.9 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/README.html                                   43.3 kB     7.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html                            43.9 kB     8.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html                       43.9 kB     8.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/evidence/c11-4-cyclic-grid-gap-precomparison-2026-10-20/README.html                                  46.5 kB     8.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html                                       47.0 kB     8.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html                                  47.0 kB     8.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/plan/c11-4-image-ratio-fixed-gutter.html                                                                      48.7 kB     9.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/0001-conformance.html                                                                                         53.7 kB     11.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/plan/c11-css-grid.html                                                                                        73.8 kB     16.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/plan/c11-4-grid-track-sizing.html                                                                             96.4 kB     22.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/0059-c11-grid-layout.html                                                                            119.1 kB    26.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/spec/internal/0059-c11-grid-layout.html                                                                       119.2 kB    26.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/internal/README.html                                                                                          249.5 kB    43.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-cyclic-grid-gap-tailnet-site-pass14/STATUS.html                                                                                                   489.0 kB    102.4 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build:                                                                                                                                                                   Total:   2306.4 kB   443.1 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build: Exited with code 0

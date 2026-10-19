@@ -1,0 +1,10 @@
+{
+  "pass": "pass12",
+  "preview_root_relative": "SpinonPreview",
+  "checked_path_count": 35,
+  "open_selected_path_count": 0,
+  "open_selected_paths": [],
+  "descriptors": [],
+  "lsof_exit_status": 1,
+  "replacement_method": "write a same-directory temporary file and atomically rename it over the target"
+}

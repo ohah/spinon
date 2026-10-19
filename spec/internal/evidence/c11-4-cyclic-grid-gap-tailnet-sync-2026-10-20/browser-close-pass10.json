@@ -1,0 +1,39 @@
+{
+  "pass": "pass10",
+  "browser": {
+    "tool": "Agent Browser",
+    "version": "0.31.1",
+    "namespace": "spint10",
+    "session": "c114t10"
+  },
+  "close_command": {
+    "command": "agent-browser --session c114t10 --namespace spint10 close",
+    "exit_code": 0,
+    "browser_closed": true
+  },
+  "before_close": {
+    "daemon_pid": 82921,
+    "chrome_pid": 82922,
+    "chrome_crashpad_pid": 82933,
+    "launched_browser": true
+  },
+  "after_close": {
+    "session_active": false,
+    "session_pid": null,
+    "browser_launched": false,
+    "page_count": 0,
+    "owned_daemon_process_absent": true,
+    "owned_chrome_process_tree_absent": true
+  },
+  "preserved_processes": [
+    {
+      "pid": 74457,
+      "reason": "기존 타 작업 Agent Browser daemon; 이번 session에서 시작하지 않음"
+    },
+    {
+      "pid": 1191,
+      "reason": "기존 Tailnet preview server; 계속 127.0.0.1:8768에서 listen"
+    }
+  ],
+  "note": "Browser close 직후 session info에서는 browserLaunched=false/pageCount=0이 확인됐고, 후속 session info에서 active=false/pid=null이었다. 전용 daemon이 이미 종료되어 별도 TERM은 필요하지 않았다."
+}

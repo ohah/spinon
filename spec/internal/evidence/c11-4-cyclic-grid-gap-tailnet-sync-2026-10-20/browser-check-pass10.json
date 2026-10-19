@@ -1,0 +1,126 @@
+{
+  "pass": "pass10",
+  "browser": {
+    "tool": "Agent Browser",
+    "version": "0.31.1",
+    "namespace": "spint10",
+    "session": "c114t10",
+    "temporary_headless_chrome": "Chrome 155.0.8059.85"
+  },
+  "preview": {
+    "origin": "https://macstudio.tailed42f2.ts.net",
+    "base_path": "/spinon/"
+  },
+  "pages": [
+    {
+      "path": "roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "observed": "PR #359 한 개가 보이며 cyclic percentage/calc gap 요약, profile 한계와 미완료 범위가 렌더됐다.",
+      "screenshot": "pass10-tailnet-roadmap-agent-browser.png",
+      "screenshot_px": [
+        1280,
+        633
+      ]
+    },
+    {
+      "path": "STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "observed": "Tailnet 갱신 문구와 C11.4 항목을 확인했다. C11.4 공식 checkbox는 checked=false다.",
+      "screenshot": "pass10-tailnet-status-agent-browser.png",
+      "screenshot_px": [
+        1280,
+        633
+      ]
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "title": "C11.4 · CSS Grid track sizing 계획 - 스피논 문서",
+      "observed": "cyclic gap 근거 route와 Tailnet 동기화·검토 링크가 /spinon/ 내부로 향한다.",
+      "screenshot": "pass10-tailnet-plan-agent-browser.png",
+      "screenshot_px": [
+        1280,
+        633
+      ]
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-grid-gap-precomparison-2026-10-20/README.html",
+      "title": "C11.4 percentage/calc gap 사전 비교 - 스피논 문서",
+      "observed": "Chrome 155, Android, iOS 근거 문구가 렌더됐다. Chrome image 1280x633으로 로드됐다. Android AVD PNG 1080x2400 78446 bytes, iOS Simulator PNG 1206x2622 130406 bytes를 각각 HTTP 200으로 내려받아 디코드했다.",
+      "screenshot": "pass10-tailnet-evidence-agent-browser.png",
+      "screenshot_px": [
+        1280,
+        633
+      ]
+    }
+  ],
+  "html_routes": {
+    "route_count": 36,
+    "same_origin_out_of_base_count": 0,
+    "all_routes_in_base": true,
+    "routes": [
+      "0001-conformance.html",
+      "404.html",
+      "STATUS.html",
+      "internal/0059-c11-grid-layout.html",
+      "internal/README.html",
+      "internal/evidence/c11-4-cyclic-grid-gap-precomparison-2026-10-20/README.html",
+      "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/README.html",
+      "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/pr-diff-review-20.html",
+      "internal/evidence/c11-4-cyclic-grid-gap-tailnet-sync-2026-10-20/sync-review-20.html",
+      "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+      "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html",
+      "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.html",
+      "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.html",
+      "plan/c11-4-grid-track-sizing.html",
+      "plan/c11-4-image-ratio-fixed-gutter.html",
+      "plan/c11-css-grid.html",
+      "roadmap.html",
+      "spec/internal/0059-c11-grid-layout.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html"
+    ],
+    "outside_same_origin_links": [],
+    "all_selected_responses_200_and_hash_matched": true,
+    "selected_file_count": 282,
+    "selected_files_200_sha256_match": 282
+  },
+  "assets": {
+    "chrome155": {
+      "status": 200,
+      "width": 1280,
+      "height": 633
+    },
+    "android_avd": {
+      "status": 200,
+      "width": 1080,
+      "height": 2400,
+      "bytes": 78446
+    },
+    "ios_simulator": {
+      "status": 200,
+      "width": 1206,
+      "height": 2622,
+      "bytes": 130406
+    }
+  },
+  "limitations": [
+    "이 캡처들은 Tailnet 문서 페이지다. 앱의 Android/iOS 캡처와 혼동하지 않는다.",
+    "현재 evidence README 화면은 C11.4 구현의 제한 profile/fixture 범위를 그대로 설명하며 전체 CSS Grid나 실기기 결과를 주장하지 않는다."
+  ]
+}
