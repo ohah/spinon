@@ -1,0 +1,932 @@
+{
+  "browser": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "devicePixelRatio": 1
+  },
+  "source": {
+    "fixture": "tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-transfer.html",
+    "image": "tests/fixtures/resources/c14-1-png-basic.png",
+    "naturalImageSizeCssPx": [
+      24,
+      16
+    ],
+    "comparisonToleranceCssPx": 0.05
+  },
+  "cases": [
+    {
+      "id": "column-auto-natural-ratio",
+      "aspectRatio": "auto",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "12px",
+      "gridTemplateRows": "20px",
+      "gridRectCssPx": [
+        238,
+        0,
+        8,
+        20
+      ],
+      "itemRectCssPx": [
+        238,
+        0,
+        12,
+        8
+      ],
+      "overflowsGrid": [
+        true,
+        false
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "id": "column-zero-natural-ratio",
+      "aspectRatio": "auto",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "8px",
+      "gridTemplateRows": "20px",
+      "gridRectCssPx": [
+        238,
+        44,
+        8,
+        20
+      ],
+      "itemRectCssPx": [
+        238,
+        44,
+        12,
+        8
+      ],
+      "overflowsGrid": [
+        true,
+        false
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "id": "column-min-content-natural-ratio",
+      "aspectRatio": "auto",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "12px",
+      "gridTemplateRows": "20px",
+      "gridRectCssPx": [
+        238,
+        88,
+        8,
+        20
+      ],
+      "itemRectCssPx": [
+        238,
+        88,
+        12,
+        8
+      ],
+      "overflowsGrid": [
+        true,
+        false
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "id": "column-max-height-clamp",
+      "aspectRatio": "auto",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "6px",
+      "gridTemplateRows": "20px",
+      "gridRectCssPx": [
+        238,
+        132,
+        4,
+        20
+      ],
+      "itemRectCssPx": [
+        238,
+        132,
+        6,
+        4
+      ],
+      "overflowsGrid": [
+        true,
+        false
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "4px"
+      ]
+    },
+    {
+      "id": "column-min-height-clamp",
+      "aspectRatio": "auto",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "18px",
+      "gridTemplateRows": "20px",
+      "gridRectCssPx": [
+        238,
+        176,
+        16,
+        20
+      ],
+      "itemRectCssPx": [
+        238,
+        176,
+        18,
+        12
+      ],
+      "overflowsGrid": [
+        true,
+        false
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "12px"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "id": "column-authored-ratio",
+      "aspectRatio": "3 / 2",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "12px",
+      "gridTemplateRows": "20px",
+      "gridRectCssPx": [
+        238,
+        220,
+        8,
+        20
+      ],
+      "itemRectCssPx": [
+        238,
+        220,
+        12,
+        8
+      ],
+      "overflowsGrid": [
+        true,
+        false
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "id": "column-authored-max-height-clamp",
+      "aspectRatio": "3 / 2",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "6px",
+      "gridTemplateRows": "20px",
+      "gridRectCssPx": [
+        238,
+        264,
+        4,
+        20
+      ],
+      "itemRectCssPx": [
+        238,
+        264,
+        6,
+        4
+      ],
+      "overflowsGrid": [
+        true,
+        false
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "4px"
+      ]
+    },
+    {
+      "id": "column-authored-min-height-clamp",
+      "aspectRatio": "3 / 2",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "18px",
+      "gridTemplateRows": "20px",
+      "gridRectCssPx": [
+        238,
+        308,
+        16,
+        20
+      ],
+      "itemRectCssPx": [
+        238,
+        308,
+        18,
+        12
+      ],
+      "overflowsGrid": [
+        true,
+        false
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "12px"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "id": "column-specified-size-precedes-transfer",
+      "aspectRatio": "3 / 2",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "10px",
+      "gridTemplateRows": "20px",
+      "gridRectCssPx": [
+        238,
+        352,
+        8,
+        20
+      ],
+      "itemRectCssPx": [
+        238,
+        352,
+        10,
+        8
+      ],
+      "overflowsGrid": [
+        true,
+        false
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "id": "column-target-max-width-clamp",
+      "aspectRatio": "3 / 2",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "9px",
+      "gridTemplateRows": "20px",
+      "gridRectCssPx": [
+        238,
+        396,
+        8,
+        20
+      ],
+      "itemRectCssPx": [
+        238,
+        396,
+        9,
+        8
+      ],
+      "overflowsGrid": [
+        true,
+        false
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "9px",
+        "none"
+      ]
+    },
+    {
+      "id": "column-opposite-min-over-max",
+      "aspectRatio": "3 / 2",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "18px",
+      "gridTemplateRows": "20px",
+      "gridRectCssPx": [
+        238,
+        440,
+        8,
+        20
+      ],
+      "itemRectCssPx": [
+        238,
+        440,
+        18,
+        12
+      ],
+      "overflowsGrid": [
+        true,
+        false
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "12px"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "4px"
+      ]
+    },
+    {
+      "id": "column-border-box-transfer",
+      "aspectRatio": "3 / 2",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "12px",
+      "gridTemplateRows": "20px",
+      "gridRectCssPx": [
+        238,
+        484,
+        8,
+        20
+      ],
+      "itemRectCssPx": [
+        238,
+        484,
+        12,
+        8
+      ],
+      "overflowsGrid": [
+        true,
+        false
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "id": "column-content-box-transfer",
+      "aspectRatio": "3 / 2",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "16px",
+      "gridTemplateRows": "20px",
+      "gridRectCssPx": [
+        238,
+        528,
+        8,
+        20
+      ],
+      "itemRectCssPx": [
+        238,
+        528,
+        16,
+        12
+      ],
+      "overflowsGrid": [
+        true,
+        false
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "id": "column-target-min-width-clamp",
+      "aspectRatio": "3 / 2",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "18px",
+      "gridTemplateRows": "20px",
+      "gridRectCssPx": [
+        238,
+        572,
+        8,
+        20
+      ],
+      "itemRectCssPx": [
+        238,
+        572,
+        18,
+        8
+      ],
+      "overflowsGrid": [
+        true,
+        false
+      ],
+      "minSizeCssPx": [
+        "18px",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "id": "column-authored-ratio-scrollable-overflow-min-zero",
+      "aspectRatio": "3 / 2",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "8px",
+      "gridTemplateRows": "20px",
+      "gridRectCssPx": [
+        238,
+        616,
+        8,
+        20
+      ],
+      "itemRectCssPx": [
+        238,
+        616,
+        12,
+        8
+      ],
+      "overflowsGrid": [
+        true,
+        false
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "id": "column-non-replaced-ratio-content-size",
+      "aspectRatio": "3 / 2",
+      "naturalImageSizeCssPx": null,
+      "gridTemplateColumns": "12px",
+      "gridTemplateRows": "20px",
+      "gridRectCssPx": [
+        238,
+        660,
+        8,
+        20
+      ],
+      "itemRectCssPx": [
+        238,
+        660,
+        12,
+        8
+      ],
+      "overflowsGrid": [
+        true,
+        false
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "id": "row-auto-natural-ratio",
+      "aspectRatio": "auto",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "20px",
+      "gridTemplateRows": "8px",
+      "gridRectCssPx": [
+        238,
+        704,
+        20,
+        6
+      ],
+      "itemRectCssPx": [
+        238,
+        704,
+        12,
+        8
+      ],
+      "overflowsGrid": [
+        false,
+        true
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "id": "row-zero-natural-ratio",
+      "aspectRatio": "auto",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "20px",
+      "gridTemplateRows": "6px",
+      "gridRectCssPx": [
+        238,
+        748,
+        20,
+        6
+      ],
+      "itemRectCssPx": [
+        238,
+        748,
+        12,
+        8
+      ],
+      "overflowsGrid": [
+        false,
+        true
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "id": "row-min-content-natural-ratio",
+      "aspectRatio": "auto",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "20px",
+      "gridTemplateRows": "8px",
+      "gridRectCssPx": [
+        238,
+        792,
+        20,
+        6
+      ],
+      "itemRectCssPx": [
+        238,
+        792,
+        12,
+        8
+      ],
+      "overflowsGrid": [
+        false,
+        true
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "id": "row-max-width-clamp",
+      "aspectRatio": "auto",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "20px",
+      "gridTemplateRows": "4px",
+      "gridRectCssPx": [
+        238,
+        836,
+        20,
+        3
+      ],
+      "itemRectCssPx": [
+        238,
+        836,
+        6,
+        4
+      ],
+      "overflowsGrid": [
+        false,
+        true
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "6px",
+        "none"
+      ]
+    },
+    {
+      "id": "row-min-width-clamp",
+      "aspectRatio": "auto",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "20px",
+      "gridTemplateRows": "12px",
+      "gridRectCssPx": [
+        238,
+        880,
+        20,
+        9
+      ],
+      "itemRectCssPx": [
+        238,
+        880,
+        18,
+        12
+      ],
+      "overflowsGrid": [
+        false,
+        true
+      ],
+      "minSizeCssPx": [
+        "18px",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "id": "row-authored-ratio",
+      "aspectRatio": "3 / 2",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "20px",
+      "gridTemplateRows": "8px",
+      "gridRectCssPx": [
+        238,
+        924,
+        20,
+        6
+      ],
+      "itemRectCssPx": [
+        238,
+        924,
+        12,
+        8
+      ],
+      "overflowsGrid": [
+        false,
+        true
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "id": "row-authored-max-width-clamp",
+      "aspectRatio": "3 / 2",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "20px",
+      "gridTemplateRows": "4px",
+      "gridRectCssPx": [
+        238,
+        968,
+        20,
+        3
+      ],
+      "itemRectCssPx": [
+        238,
+        968,
+        6,
+        4
+      ],
+      "overflowsGrid": [
+        false,
+        true
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "6px",
+        "none"
+      ]
+    },
+    {
+      "id": "row-authored-min-width-clamp",
+      "aspectRatio": "3 / 2",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "20px",
+      "gridTemplateRows": "12px",
+      "gridRectCssPx": [
+        238,
+        1012,
+        20,
+        9
+      ],
+      "itemRectCssPx": [
+        238,
+        1012,
+        18,
+        12
+      ],
+      "overflowsGrid": [
+        false,
+        true
+      ],
+      "minSizeCssPx": [
+        "18px",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "id": "row-specified-size-precedes-transfer",
+      "aspectRatio": "3 / 2",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "20px",
+      "gridTemplateRows": "6px",
+      "gridRectCssPx": [
+        238,
+        1056,
+        20,
+        6
+      ],
+      "itemRectCssPx": [
+        238,
+        1056,
+        12,
+        6
+      ],
+      "overflowsGrid": [
+        false,
+        false
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "none"
+      ]
+    },
+    {
+      "id": "row-target-max-height-clamp",
+      "aspectRatio": "3 / 2",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "20px",
+      "gridTemplateRows": "6px",
+      "gridRectCssPx": [
+        238,
+        1100,
+        20,
+        4
+      ],
+      "itemRectCssPx": [
+        238,
+        1100,
+        12,
+        6
+      ],
+      "overflowsGrid": [
+        false,
+        true
+      ],
+      "minSizeCssPx": [
+        "auto",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "none",
+        "6px"
+      ]
+    },
+    {
+      "id": "row-opposite-min-over-max",
+      "aspectRatio": "3 / 2",
+      "naturalImageSizeCssPx": [
+        24,
+        16
+      ],
+      "gridTemplateColumns": "20px",
+      "gridTemplateRows": "12px",
+      "gridRectCssPx": [
+        238,
+        1144,
+        20,
+        4
+      ],
+      "itemRectCssPx": [
+        238,
+        1144,
+        18,
+        12
+      ],
+      "overflowsGrid": [
+        false,
+        true
+      ],
+      "minSizeCssPx": [
+        "18px",
+        "auto"
+      ],
+      "maxSizeCssPx": [
+        "6px",
+        "none"
+      ]
+    }
+  ]
+}

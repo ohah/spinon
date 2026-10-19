@@ -12,6 +12,10 @@
 
 [Chrome 155·Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 9-scene 근거](./evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.md) · [cross-platform geometry·trace 비교](./evidence/c11-4-image-intrinsic-matrix-2026-10-19/cross-platform-comparison.json) · [구현 실패 관점 20개](./evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.md) · [Android overflow 화면](./evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-fixed-small-track-overflow.png) · [iOS overflow 화면](./evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fixed-small-track-overflow.png). CSS background box overflow 표본이며 decoded image texel paint나 C11.4 완료를 뜻하지 않는다.
 
+## C11.4 direct image ratio transfer 후보
+
+[27-case Chrome 155 observation과 판정 기준](./evidence/c11-4-image-ratio-transfer-2026-10-19/README.md) · [구현 실패 관점 20개](./evidence/c11-4-image-ratio-transfer-2026-10-19/implementation-review-20.md) · [Android API 37 AVD·iPhone 17 Pro iOS 26.2 Simulator 7-scene 실행·표면 표본](./evidence/c11-4-image-ratio-transfer-simulator-2026-10-19/README.md). 제한된 direct HTML `img` Grid item fixture 결과이며 공개 CSS 지원이나 C11.4 완료가 아니다.
+
 ## C11.4 PR #349 뒤 Tailnet 미리보기 동기화
 
 [선택 빌드·복사·제공 화면과 SHA-256 근거](./evidence/c11-4-tailnet-sync-post-349-2026-10-19/README.md) · [Tailnet 동기화 검토 20개](./evidence/c11-4-tailnet-sync-post-349-2026-10-19/sync-review-20.md) · [PR 변경 적대 검토 30개](./evidence/c11-4-tailnet-sync-post-349-2026-10-19/pr-delta-review-30.md). PR #349 병합 뒤 C11.4 로드맵에 10-scene Ahem text intrinsic 결과를 반영하고 새 실행 근거로 연결했다. C11.4는 미완료로 유지하며, 정적 Tailnet 미리보기 갱신은 앱 동작 검증이나 전체 문서 사이트 배포를 뜻하지 않는다.

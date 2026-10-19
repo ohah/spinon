@@ -1,0 +1,198 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Spinon C11.4 replaced image ratio transfer precomparison</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 420px; background: #fff; }
+  body { font: 12px/1.2 sans-serif; color: #111; }
+  .case { display: flex; align-items: flex-start; gap: 8px; min-height: 44px; border-bottom: 1px solid #ccc; }
+  .label { width: 230px; flex: none; padding-top: 4px; }
+  .grid { flex: none; display: grid; margin: 0; padding: 0; border: 0; gap: 0; align-content: start; justify-content: start; align-items: start; justify-items: start; overflow: visible; background: #101820; }
+  .image { display: block; margin: 0; padding: 0; border: 0; }
+</style>
+<body>
+  <section class="case" data-case="column-auto-natural-ratio">
+    <span class="label">column auto minimum; image height 8px; natural ratio 3:2</span>
+    <div id="column-auto-natural-ratio" class="grid" style="width:8px;height:20px;grid-template-columns:minmax(auto,1fr);grid-template-rows:20px">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:auto;height:8px">
+    </div>
+  </section>
+  <section class="case" data-case="column-zero-natural-ratio">
+    <span class="label">column zero minimum control; image height 8px</span>
+    <div id="column-zero-natural-ratio" class="grid" style="width:8px;height:20px;grid-template-columns:minmax(0,1fr);grid-template-rows:20px">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:auto;height:8px">
+    </div>
+  </section>
+  <section class="case" data-case="column-min-content-natural-ratio">
+    <span class="label">column min-content contribution control; image height 8px</span>
+    <div id="column-min-content-natural-ratio" class="grid" style="width:8px;height:20px;grid-template-columns:min-content;grid-template-rows:20px">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:auto;height:8px">
+    </div>
+  </section>
+  <section class="case" data-case="column-max-height-clamp">
+    <span class="label">column auto minimum; max-height clamps transfer</span>
+    <div id="column-max-height-clamp" class="grid" style="width:4px;height:20px;grid-template-columns:minmax(auto,1fr);grid-template-rows:20px">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:auto;height:8px;max-height:4px">
+    </div>
+  </section>
+  <section class="case" data-case="column-min-height-clamp">
+    <span class="label">column auto minimum; min-height clamps transfer</span>
+    <div id="column-min-height-clamp" class="grid" style="width:16px;height:20px;grid-template-columns:minmax(auto,1fr);grid-template-rows:20px">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:auto;height:8px;min-height:12px">
+    </div>
+  </section>
+  <section class="case" data-case="column-authored-ratio">
+    <span class="label">column auto minimum; authored aspect-ratio 3:2</span>
+    <div id="column-authored-ratio" class="grid" style="width:8px;height:20px;grid-template-columns:minmax(auto,1fr);grid-template-rows:20px">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:auto;height:8px;aspect-ratio:3 / 2">
+    </div>
+  </section>
+  <section class="case" data-case="column-authored-max-height-clamp">
+    <span class="label">column auto minimum; authored ratio and max-height 4px</span>
+    <div id="column-authored-max-height-clamp" class="grid" style="width:4px;height:20px;grid-template-columns:minmax(auto,1fr);grid-template-rows:20px">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:auto;height:8px;aspect-ratio:3 / 2;max-height:4px">
+    </div>
+  </section>
+  <section class="case" data-case="column-authored-min-height-clamp">
+    <span class="label">column auto minimum; authored ratio and min-height 12px</span>
+    <div id="column-authored-min-height-clamp" class="grid" style="width:16px;height:20px;grid-template-columns:minmax(auto,1fr);grid-template-rows:20px">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:auto;height:8px;aspect-ratio:3 / 2;min-height:12px">
+    </div>
+  </section>
+  <section class="case" data-case="column-specified-size-precedes-transfer">
+    <span class="label">column auto minimum; definite width precedes transferred suggestion</span>
+    <div id="column-specified-size-precedes-transfer" class="grid" style="width:8px;height:20px;grid-template-columns:minmax(auto,1fr);grid-template-rows:20px">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:10px;height:8px;aspect-ratio:3 / 2">
+    </div>
+  </section>
+  <section class="case" data-case="column-target-max-width-clamp">
+    <span class="label">column transfer is capped by target max-width 9px</span>
+    <div id="column-target-max-width-clamp" class="grid" style="width:8px;height:20px;grid-template-columns:minmax(auto,1fr);grid-template-rows:20px">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:auto;height:8px;aspect-ratio:3 / 2;max-width:9px">
+    </div>
+  </section>
+  <section class="case" data-case="column-opposite-min-over-max">
+    <span class="label">opposite-axis minimum wins when min-height exceeds max-height</span>
+    <div id="column-opposite-min-over-max" class="grid" style="width:8px;height:20px;grid-template-columns:minmax(auto,1fr);grid-template-rows:20px">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:auto;height:8px;aspect-ratio:3 / 2;min-height:12px;max-height:4px">
+    </div>
+  </section>
+  <section class="case" data-case="column-border-box-transfer">
+    <span class="label">border-box preferred height and ratio transfer</span>
+    <div id="column-border-box-transfer" class="grid" style="width:8px;height:20px;grid-template-columns:minmax(auto,1fr);grid-template-rows:20px">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="box-sizing:border-box;width:auto;height:8px;aspect-ratio:3 / 2;padding:1px;border:1px solid">
+    </div>
+  </section>
+  <section class="case" data-case="column-content-box-transfer">
+    <span class="label">content-box preferred height includes padding and border after transfer</span>
+    <div id="column-content-box-transfer" class="grid" style="width:8px;height:20px;grid-template-columns:minmax(auto,1fr);grid-template-rows:20px">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="box-sizing:content-box;width:auto;height:8px;aspect-ratio:3 / 2;padding:1px;border:1px solid">
+    </div>
+  </section>
+  <section class="case" data-case="column-target-min-width-clamp">
+    <span class="label">target-axis minimum clamps the automatic minimum contribution</span>
+    <div id="column-target-min-width-clamp" class="grid" style="width:8px;height:20px;grid-template-columns:minmax(auto,1fr);grid-template-rows:20px">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:auto;height:8px;aspect-ratio:3 / 2;min-width:18px">
+    </div>
+  </section>
+  <section class="case" data-case="column-authored-ratio-scrollable-overflow-min-zero">
+    <span class="label">column automatic minimum is zero for scrollable overflow</span>
+    <div id="column-authored-ratio-scrollable-overflow-min-zero" class="grid" style="width:8px;height:20px;grid-template-columns:minmax(auto,1fr);grid-template-rows:20px">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:auto;height:8px;aspect-ratio:3 / 2;overflow-x:scroll">
+    </div>
+  </section>
+  <section class="case" data-case="column-non-replaced-ratio-content-size">
+    <span class="label">non-replaced ratio uses content-size suggestion, not transfer</span>
+    <div id="column-non-replaced-ratio-content-size" class="grid" style="width:8px;height:20px;grid-template-columns:minmax(auto,1fr);grid-template-rows:20px">
+      <div class="image" style="width:auto;height:8px;aspect-ratio:3 / 2"></div>
+    </div>
+  </section>
+  <section class="case" data-case="row-auto-natural-ratio">
+    <span class="label">row auto minimum; image width 12px; natural ratio 3:2</span>
+    <div id="row-auto-natural-ratio" class="grid" style="width:20px;height:6px;grid-template-columns:20px;grid-template-rows:minmax(auto,1fr)">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:12px;height:auto">
+    </div>
+  </section>
+  <section class="case" data-case="row-zero-natural-ratio">
+    <span class="label">row zero minimum control; image width 12px</span>
+    <div id="row-zero-natural-ratio" class="grid" style="width:20px;height:6px;grid-template-columns:20px;grid-template-rows:minmax(0,1fr)">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:12px;height:auto">
+    </div>
+  </section>
+  <section class="case" data-case="row-min-content-natural-ratio">
+    <span class="label">row min-content contribution control; image width 12px</span>
+    <div id="row-min-content-natural-ratio" class="grid" style="width:20px;height:6px;grid-template-columns:20px;grid-template-rows:min-content">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:12px;height:auto">
+    </div>
+  </section>
+  <section class="case" data-case="row-max-width-clamp">
+    <span class="label">row auto minimum; max-width clamps transfer</span>
+    <div id="row-max-width-clamp" class="grid" style="width:20px;height:3px;grid-template-columns:20px;grid-template-rows:minmax(auto,1fr)">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:12px;height:auto;max-width:6px">
+    </div>
+  </section>
+  <section class="case" data-case="row-min-width-clamp">
+    <span class="label">row auto minimum; min-width clamps transfer</span>
+    <div id="row-min-width-clamp" class="grid" style="width:20px;height:9px;grid-template-columns:20px;grid-template-rows:minmax(auto,1fr)">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:12px;height:auto;min-width:18px">
+    </div>
+  </section>
+  <section class="case" data-case="row-authored-ratio">
+    <span class="label">row auto minimum; authored aspect-ratio 3:2</span>
+    <div id="row-authored-ratio" class="grid" style="width:20px;height:6px;grid-template-columns:20px;grid-template-rows:minmax(auto,1fr)">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:12px;height:auto;aspect-ratio:3 / 2">
+    </div>
+  </section>
+  <section class="case" data-case="row-authored-max-width-clamp">
+    <span class="label">row auto minimum; authored ratio and max-width 6px</span>
+    <div id="row-authored-max-width-clamp" class="grid" style="width:20px;height:3px;grid-template-columns:20px;grid-template-rows:minmax(auto,1fr)">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:12px;height:auto;aspect-ratio:3 / 2;max-width:6px">
+    </div>
+  </section>
+  <section class="case" data-case="row-authored-min-width-clamp">
+    <span class="label">row auto minimum; authored ratio and min-width 18px</span>
+    <div id="row-authored-min-width-clamp" class="grid" style="width:20px;height:9px;grid-template-columns:20px;grid-template-rows:minmax(auto,1fr)">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:12px;height:auto;aspect-ratio:3 / 2;min-width:18px">
+    </div>
+  </section>
+  <section class="case" data-case="row-specified-size-precedes-transfer">
+    <span class="label">row auto minimum; definite height precedes transferred suggestion</span>
+    <div id="row-specified-size-precedes-transfer" class="grid" style="width:20px;height:6px;grid-template-columns:20px;grid-template-rows:minmax(auto,1fr)">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:12px;height:6px;aspect-ratio:3 / 2">
+    </div>
+  </section>
+  <section class="case" data-case="row-target-max-height-clamp">
+    <span class="label">row transfer is capped by target max-height 6px</span>
+    <div id="row-target-max-height-clamp" class="grid" style="width:20px;height:4px;grid-template-columns:20px;grid-template-rows:minmax(auto,1fr)">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:12px;height:auto;aspect-ratio:3 / 2;max-height:6px">
+    </div>
+  </section>
+  <section class="case" data-case="row-opposite-min-over-max">
+    <span class="label">opposite-axis minimum wins when min-width exceeds max-width</span>
+    <div id="row-opposite-min-over-max" class="grid" style="width:20px;height:4px;grid-template-columns:20px;grid-template-rows:minmax(auto,1fr)">
+      <img class="image" src="../../resources/c14-1-png-basic.png" alt="" style="width:12px;height:auto;aspect-ratio:3 / 2;min-width:18px;max-width:6px">
+    </div>
+  </section>
+  <script>
+    window.c114ImageRatioReady = Promise.all([...document.images].map(image => image.decode()));
+    window.c114ImageRatioCollect = () => [...document.querySelectorAll('[data-case]')].map(section => {
+      const grid = section.querySelector('.grid');
+      const image = grid.firstElementChild;
+      const gridRect = grid.getBoundingClientRect();
+      const imageRect = image.getBoundingClientRect();
+      const style = getComputedStyle(grid);
+      return {
+        id: section.dataset.case,
+        natural: image instanceof HTMLImageElement ? [image.naturalWidth, image.naturalHeight] : null,
+        aspectRatio: getComputedStyle(image).aspectRatio,
+        columns: style.gridTemplateColumns,
+        rows: style.gridTemplateRows,
+        grid: [gridRect.x, gridRect.y, gridRect.width, gridRect.height],
+        item: [imageRect.x, imageRect.y, imageRect.width, imageRect.height],
+        overflow: [imageRect.right > gridRect.right, imageRect.bottom > gridRect.bottom],
+        minSize: [getComputedStyle(image).minWidth, getComputedStyle(image).minHeight],
+        maxSize: [getComputedStyle(image).maxWidth, getComputedStyle(image).maxHeight]
+      };
+    });
+  </script>
+</body>

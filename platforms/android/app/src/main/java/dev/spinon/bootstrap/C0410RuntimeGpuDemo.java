@@ -135,6 +135,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "fit-content-below-minimum", "fit-content-above-intrinsic",
             "fit-content-percent", "fixed-small-track-overflow",
             "spanning-min-content-items", "min-content-row-image",
+            "column-auto-natural-ratio", "column-target-max-width-clamp",
+            "row-target-max-height-clamp",
+            "column-opposite-min-over-max", "column-border-box-transfer",
+            "column-content-box-transfer", "column-target-min-width-clamp",
     };
     private static final String[] C131_COMPACT_SURFACE_CASE_IDS = {
             "visible", "clip-x", "clip-y", "clip-both", "clip-margin-padding",
@@ -216,6 +220,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ExpectedRootFrame(String sceneId) {
         switch (sceneId) {
+            case "column-auto-natural-ratio":
+            case "column-target-max-width-clamp":
+            case "column-opposite-min-over-max":
+            case "column-border-box-transfer":
+            case "column-content-box-transfer":
+            case "column-target-min-width-clamp":
+                return "width=8,height=20";
+            case "row-target-max-height-clamp":
+                return "width=20,height=4";
             case "spanning-auto-tracks":
                 return "width=100,height=30";
             case "spanning-min-content-items":
@@ -244,6 +257,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ExpectedItemFrame(String sceneId) {
         switch (sceneId) {
+            case "column-auto-natural-ratio":
+                return "width=12,height=8";
+            case "column-target-max-width-clamp":
+                return "width=9,height=8";
+            case "row-target-max-height-clamp":
+                return "width=12,height=6";
+            case "column-opposite-min-over-max":
+                return "width=18,height=12";
+            case "column-border-box-transfer":
+                return "width=12,height=8";
+            case "column-content-box-transfer":
+                return "width=16,height=12";
+            case "column-target-min-width-clamp":
+                return "width=18,height=8";
             case "spanning-auto-tracks":
                 return "width=70,height=10";
             case "auto-fill-repeat":
@@ -346,6 +373,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "fixed-small-track-overflow":
             case "spanning-min-content-items":
             case "min-content-row-image":
+            case "column-auto-natural-ratio":
+            case "column-target-max-width-clamp":
+            case "row-target-max-height-clamp":
+            case "column-opposite-min-over-max":
+            case "column-border-box-transfer":
+            case "column-content-box-transfer":
+            case "column-target-min-width-clamp":
                 break;
             default:
                 return true;
@@ -383,8 +417,62 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         double[] expectedColumns;
         boolean[] expectedColumnGutters;
         double expectedColumnContribution;
+        double[] expectedRows = new double[] {16.0};
+        boolean[] expectedRowGutters = new boolean[] {false};
+        double expectedRowContribution = 16.0;
+        String expectedColumnContributionKind = "MinContent";
+        String expectedRowContributionKind = "MinContent";
         int expectedColumnSpan = "spanning-min-content-items".equals(sceneId) ? 2 : 1;
-        if ("fixed-small-track-overflow".equals(sceneId)) {
+        if ("column-auto-natural-ratio".equals(sceneId)) {
+            expectedColumns = new double[] {12.0};
+            expectedColumnGutters = new boolean[] {false};
+            expectedColumnContribution = 12.0;
+            expectedColumnContributionKind = "Minimum";
+            expectedRows = new double[] {20.0};
+            expectedRowContribution = Double.NaN;
+        } else if ("column-target-max-width-clamp".equals(sceneId)) {
+            expectedColumns = new double[] {9.0};
+            expectedColumnGutters = new boolean[] {false};
+            expectedColumnContribution = 9.0;
+            expectedColumnContributionKind = "Minimum";
+            expectedRows = new double[] {20.0};
+            expectedRowContribution = Double.NaN;
+        } else if ("column-opposite-min-over-max".equals(sceneId)) {
+            expectedColumns = new double[] {18.0};
+            expectedColumnGutters = new boolean[] {false};
+            expectedColumnContribution = 18.0;
+            expectedColumnContributionKind = "Minimum";
+            expectedRows = new double[] {20.0};
+            expectedRowContribution = Double.NaN;
+        } else if ("column-border-box-transfer".equals(sceneId)) {
+            expectedColumns = new double[] {12.0};
+            expectedColumnGutters = new boolean[] {false};
+            expectedColumnContribution = 12.0;
+            expectedColumnContributionKind = "Minimum";
+            expectedRows = new double[] {20.0};
+            expectedRowContribution = Double.NaN;
+        } else if ("column-content-box-transfer".equals(sceneId)) {
+            expectedColumns = new double[] {16.0};
+            expectedColumnGutters = new boolean[] {false};
+            expectedColumnContribution = 16.0;
+            expectedColumnContributionKind = "Minimum";
+            expectedRows = new double[] {20.0};
+            expectedRowContribution = Double.NaN;
+        } else if ("column-target-min-width-clamp".equals(sceneId)) {
+            expectedColumns = new double[] {18.0};
+            expectedColumnGutters = new boolean[] {false};
+            expectedColumnContribution = 18.0;
+            expectedColumnContributionKind = "Minimum";
+            expectedRows = new double[] {20.0};
+            expectedRowContribution = Double.NaN;
+        } else if ("row-target-max-height-clamp".equals(sceneId)) {
+            expectedColumns = new double[] {20.0};
+            expectedColumnGutters = new boolean[] {false};
+            expectedColumnContribution = Double.NaN;
+            expectedRows = new double[] {6.0};
+            expectedRowContribution = 6.0;
+            expectedRowContributionKind = "Minimum";
+        } else if ("fixed-small-track-overflow".equals(sceneId)) {
             expectedColumns = new double[] {12.0};
             expectedColumnGutters = new boolean[] {false};
             expectedColumnContribution = Double.NaN;
@@ -406,12 +494,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         org.json.JSONObject trace = traces.optJSONObject(0);
         if (trace == null || trace.optInt("grid", -1) != 1) return false;
         org.json.JSONArray passes = trace.optJSONArray("passes");
-        if (passes == null || passes.length() != 2) return false;
-        return c114ImageTrackPassMatches(passes.optJSONObject(0), "Columns",
+        boolean repeatedColumnSizing = "column-target-min-width-clamp".equals(sceneId);
+        if (passes == null || passes.length() != (repeatedColumnSizing ? 3 : 2)) return false;
+        boolean firstColumnAndRowsMatch = c114ImageTrackPassMatches(passes.optJSONObject(0), "Columns",
                         expectedColumns, expectedColumnGutters, expectedColumnContribution,
-                        expectedColumnSpan)
+                        expectedColumnSpan, expectedColumnContributionKind)
                 && c114ImageTrackPassMatches(passes.optJSONObject(1), "Rows",
-                        new double[] {16.0}, new boolean[] {false}, 16.0, 1);
+                        expectedRows, expectedRowGutters, expectedRowContribution, 1,
+                        expectedRowContributionKind);
+        return firstColumnAndRowsMatch && (!repeatedColumnSizing
+                || c114ImageTrackPassMatches(passes.optJSONObject(2), "Columns",
+                        expectedColumns, expectedColumnGutters, expectedColumnContribution,
+                        expectedColumnSpan, expectedColumnContributionKind));
     }
     private static boolean c114ImageTrackPassMatches(
             org.json.JSONObject pass,
@@ -419,7 +513,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             double[] expectedSizes,
             boolean[] expectedGutters,
             double expectedMinContentContribution,
-            int expectedSpan
+            int expectedSpan,
+            String expectedContributionKind
     ) throws org.json.JSONException {
         if (pass == null || !expectedAxis.equals(pass.optString("axis"))) return false;
         org.json.JSONArray stages = pass.optJSONArray("stages");
@@ -447,7 +542,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             org.json.JSONObject contribution = contributions.optJSONObject(i);
             if (contribution != null && contribution.optInt("item", -1) == 2
                     && contribution.optInt("span", -1) == expectedSpan
-                    && "MinContent".equals(contribution.optString("kind"))
+                    && expectedContributionKind.equals(contribution.optString("kind"))
                     && contribution.optDouble("value", Double.NaN)
                             == expectedMinContentContribution) {
                 return true;
@@ -476,6 +571,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "fixed-small-track-overflow":
             case "spanning-min-content-items":
             case "min-content-row-image":
+            case "column-auto-natural-ratio":
+            case "column-target-max-width-clamp":
+            case "row-target-max-height-clamp":
+            case "column-opposite-min-over-max":
+            case "column-border-box-transfer":
+            case "column-content-box-transfer":
+            case "column-target-min-width-clamp":
                 return "node_frames_css_px=[0:node=1,x=0,y=0," + c114ExpectedRootFrame(sceneId)
                         + ";1:node=2,x=0,y=0," + c114ExpectedItemFrame(sceneId) + "]";
             default:
@@ -492,23 +594,30 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         boolean itemOutsideRoot = false;
         boolean rootBackground = false;
         boolean imageOverflow = "fixed-small-track-overflow".equals(sceneId);
+        boolean ratioOverflow = "column-auto-natural-ratio".equals(sceneId);
         for (SurfaceViewPixelCapture.Sample sample : samples) {
             switch (sample.id) {
                 case "item-inside-root":
                     itemInsideRoot = imageOverflow
                             ? sample.xCssPx == 5 && sample.yCssPx == 8
+                            : ratioOverflow
+                            ? sample.xCssPx == 5 && sample.yCssPx == 4
                             : sample.xCssPx == 5 && sample.yCssPx == 20;
                     if (!itemInsideRoot) return false;
                     break;
                 case "item-overflow-beyond-root":
                     itemOutsideRoot = imageOverflow
                             ? sample.xCssPx == 20 && sample.yCssPx == 8
+                            : ratioOverflow
+                            ? sample.xCssPx == 10 && sample.yCssPx == 4
                             : sample.xCssPx == 5 && sample.yCssPx == 45;
                     if (!itemOutsideRoot) return false;
                     break;
                 case "root-background-control":
                     rootBackground = imageOverflow
                             ? sample.xCssPx == 6 && sample.yCssPx == 25
+                            : ratioOverflow
+                            ? sample.xCssPx == 6 && sample.yCssPx == 15
                             : sample.xCssPx == 15 && sample.yCssPx == 20;
                     if (!rootBackground) return false;
                     break;
@@ -1310,7 +1419,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         boolean pixelMatrixRequested = pixelMatrixRunId != null || pixelMatrixEncodedSamples != null;
         boolean pixelMatrixSceneMatches = c114GridTrackSizingRequested
                 ? ("min-content-text-break-all".equals(pixelMatrixSceneId)
-                        || "fixed-small-track-overflow".equals(pixelMatrixSceneId))
+                        || "fixed-small-track-overflow".equals(pixelMatrixSceneId)
+                        || "column-auto-natural-ratio".equals(pixelMatrixSceneId))
                         && c114GridTrackSizingRunId.equals(pixelMatrixRunId)
                 : c1133GridTemplateAreasRequested
                 ? C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(pixelMatrixSceneId)

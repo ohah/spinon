@@ -25,10 +25,20 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "fit-content-below-minimum", "fit-content-above-intrinsic",
     "fit-content-percent", "fixed-small-track-overflow",
     "spanning-min-content-items", "min-content-row-image",
+    "column-auto-natural-ratio", "column-target-max-width-clamp",
+    "row-target-max-height-clamp", "column-opposite-min-over-max",
+    "column-border-box-transfer", "column-content-box-transfer",
+    "column-target-min-width-clamp",
 ]
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     switch sceneID {
+    case "column-auto-natural-ratio", "column-target-max-width-clamp",
+         "column-opposite-min-over-max", "column-border-box-transfer",
+         "column-content-box-transfer", "column-target-min-width-clamp":
+        return "width=8,height=20"
+    case "row-target-max-height-clamp":
+        return "width=20,height=4"
     case "spanning-auto-tracks", "spanning-min-content-items":
         return "width=100,height=30"
     case "fixed-small-track-overflow":
@@ -49,6 +59,20 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     switch sceneID {
+    case "column-auto-natural-ratio":
+        return "width=12,height=8"
+    case "column-target-max-width-clamp":
+        return "width=9,height=8"
+    case "row-target-max-height-clamp":
+        return "width=12,height=6"
+    case "column-opposite-min-over-max":
+        return "width=18,height=12"
+    case "column-border-box-transfer":
+        return "width=12,height=8"
+    case "column-content-box-transfer":
+        return "width=16,height=12"
+    case "column-target-min-width-clamp":
+        return "width=18,height=8"
     case "spanning-auto-tracks":
         return "width=70,height=10"
     case "auto-fill-repeat":
@@ -153,6 +177,10 @@ private func c114ExpectedImageIntrinsicInputs(_ sceneID: String, report: String)
         "fit-content-below-minimum", "fit-content-above-intrinsic",
         "fit-content-percent", "fixed-small-track-overflow",
         "spanning-min-content-items", "min-content-row-image",
+        "column-auto-natural-ratio", "column-target-max-width-clamp",
+        "row-target-max-height-clamp",
+        "column-opposite-min-over-max", "column-border-box-transfer",
+        "column-content-box-transfer", "column-target-min-width-clamp",
     ]
     guard imageScenes.contains(sceneID) else { return true }
     guard let marker = report.range(of: "grid_track_sizing_diagnostics=") else { return false }
@@ -212,8 +240,54 @@ private func c114ImageTrackSizingTraceMatches(
 ) -> Bool {
     let expectedColumns: [(size: Double, gutter: Bool)]
     let expectedColumnContribution: Double?
+    var expectedColumnContributionKind = "MinContent"
+    var expectedRows: [(size: Double, gutter: Bool)] = [(16, false)]
+    var expectedRowContribution: Double? = 16
+    var expectedRowContributionKind = "MinContent"
     let expectedColumnSpan = sceneID == "spanning-min-content-items" ? 2 : 1
     switch sceneID {
+    case "column-auto-natural-ratio":
+        expectedColumns = [(12, false)]
+        expectedColumnContribution = 12
+        expectedColumnContributionKind = "Minimum"
+        expectedRows = [(20, false)]
+        expectedRowContribution = nil
+    case "column-target-max-width-clamp":
+        expectedColumns = [(9, false)]
+        expectedColumnContribution = 9
+        expectedColumnContributionKind = "Minimum"
+        expectedRows = [(20, false)]
+        expectedRowContribution = nil
+    case "column-opposite-min-over-max":
+        expectedColumns = [(18, false)]
+        expectedColumnContribution = 18
+        expectedColumnContributionKind = "Minimum"
+        expectedRows = [(20, false)]
+        expectedRowContribution = nil
+    case "column-border-box-transfer":
+        expectedColumns = [(12, false)]
+        expectedColumnContribution = 12
+        expectedColumnContributionKind = "Minimum"
+        expectedRows = [(20, false)]
+        expectedRowContribution = nil
+    case "column-content-box-transfer":
+        expectedColumns = [(16, false)]
+        expectedColumnContribution = 16
+        expectedColumnContributionKind = "Minimum"
+        expectedRows = [(20, false)]
+        expectedRowContribution = nil
+    case "column-target-min-width-clamp":
+        expectedColumns = [(18, false)]
+        expectedColumnContribution = 18
+        expectedColumnContributionKind = "Minimum"
+        expectedRows = [(20, false)]
+        expectedRowContribution = nil
+    case "row-target-max-height-clamp":
+        expectedColumns = [(20, false)]
+        expectedColumnContribution = nil
+        expectedRows = [(6, false)]
+        expectedRowContribution = 6
+        expectedRowContributionKind = "Minimum"
     case "fixed-small-track-overflow":
         expectedColumns = [(12, false)]
         expectedColumnContribution = nil
@@ -227,18 +301,30 @@ private func c114ImageTrackSizingTraceMatches(
         expectedColumns = [(24, false)]
         expectedColumnContribution = 24
     }
+    let repeatedColumnSizing = sceneID == "column-target-min-width-clamp"
     guard let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
           traces.count == 1,
           let trace = traces.first,
           let grid = trace["grid"] as? Int, grid == 1,
-          let passes = trace["passes"] as? [[String: Any]], passes.count == 2,
+          let passes = trace["passes"] as? [[String: Any]],
+          passes.count == (repeatedColumnSizing ? 3 : 2),
           c114ImageTrackPassMatches(passes[0], axis: "Columns",
                                     expectedTracks: expectedColumns,
                                     minContentContribution: expectedColumnContribution,
-                                    span: expectedColumnSpan),
+                                    span: expectedColumnSpan,
+                                    minContentContributionKind: expectedColumnContributionKind),
           c114ImageTrackPassMatches(passes[1], axis: "Rows",
-                                    expectedTracks: [(16, false)],
-                                    minContentContribution: 16, span: 1) else {
+                                    expectedTracks: expectedRows,
+                                    minContentContribution: expectedRowContribution,
+                                    span: 1,
+                                    minContentContributionKind: expectedRowContributionKind) else {
+        return false
+    }
+    if repeatedColumnSizing && !c114ImageTrackPassMatches(
+        passes[2], axis: "Columns", expectedTracks: expectedColumns,
+        minContentContribution: expectedColumnContribution, span: expectedColumnSpan,
+        minContentContributionKind: expectedColumnContributionKind
+    ) {
         return false
     }
     return true
@@ -249,7 +335,8 @@ private func c114ImageTrackPassMatches(
     axis: String,
     expectedTracks: [(size: Double, gutter: Bool)],
     minContentContribution: Double?,
-    span: Int
+    span: Int,
+    minContentContributionKind: String
 ) -> Bool {
     guard let observedAxis = pass["axis"] as? String, observedAxis == axis,
           let stages = pass["stages"] as? [[String: Any]],
@@ -274,7 +361,8 @@ private func c114ImageTrackPassMatches(
     return contributions.contains { contribution in
         guard let item = contribution["item"] as? Int, item == 2,
               let observedSpan = contribution["span"] as? Int, observedSpan == span,
-              let kind = contribution["kind"] as? String, kind == "MinContent",
+              let kind = contribution["kind"] as? String,
+              kind == minContentContributionKind,
               let value = contribution["value"] as? NSNumber else {
             return false
         }
@@ -291,7 +379,11 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
          "auto-image-definite", "minmax-auto-image", "minmax-min-max-image",
          "fit-content-below-minimum", "fit-content-above-intrinsic",
          "fit-content-percent", "fixed-small-track-overflow",
-         "spanning-min-content-items", "min-content-row-image":
+         "spanning-min-content-items", "min-content-row-image",
+         "column-auto-natural-ratio", "column-target-max-width-clamp",
+         "row-target-max-height-clamp", "column-opposite-min-over-max",
+         "column-border-box-transfer", "column-content-box-transfer",
+         "column-target-min-width-clamp":
         return "node_frames_css_px=[0:node=1,x=0,y=0,\(c114ExpectedRootFrame(sceneID));"
             + "1:node=2,x=0,y=0,\(c114ExpectedItemFrame(sceneID))]"
     default:
@@ -443,6 +535,11 @@ private struct C111MetalPixelRun {
         ("item-overflow-beyond-root", "c114-fixed-small-image-item", 20, 8, [229, 72, 77, 255]),
         ("root-background-control", "c114-fixed-small-image-grid", 6, 25, [16, 24, 32, 255]),
     ]
+    private static let c114ImageRatioTransferPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+        ("item-inside-root", "c114-column-auto-natural-ratio-item", 5, 4, [229, 72, 77, 255]),
+        ("item-overflow-beyond-root", "c114-column-auto-natural-ratio-item", 10, 4, [229, 72, 77, 255]),
+        ("root-background-control", "c114-column-auto-natural-ratio-grid", 6, 15, [16, 24, 32, 255]),
+    ]
 
     private static func hasFixedC1131RepeatSamples(_ samples: [C111MetalPixelSample]) -> Bool {
         guard samples.count == c1131RepeatPixelSamples.count else { return false }
@@ -481,7 +578,9 @@ private struct C111MetalPixelRun {
         _ samples: [C111MetalPixelSample], sceneID: String
     ) -> Bool {
         let expectedSamples = sceneID == "fixed-small-track-overflow"
-            ? c114ImageOverflowPixelSamples : c114TextOverflowPixelSamples
+            ? c114ImageOverflowPixelSamples
+            : sceneID == "column-auto-natural-ratio"
+            ? c114ImageRatioTransferPixelSamples : c114TextOverflowPixelSamples
         guard samples.count == expectedSamples.count else { return false }
         return expectedSamples.allSatisfy { expected in
             samples.contains { sample in
@@ -561,7 +660,8 @@ private struct C111MetalPixelRun {
             }).map { String($0.dropFirst("--spinon-c114-grid-run-id=".count)) }
             guard let c114Scene,
                   c114Scene == "min-content-text-break-all"
-                      || c114Scene == "fixed-small-track-overflow",
+                      || c114Scene == "fixed-small-track-overflow"
+                      || c114Scene == "column-auto-natural-ratio",
                   c114Scene == sceneID, c114RunID == runID,
                   arguments.contains("--spinon-c114-grid-track-sizing"),
                   !isC1131Repeat, !isC1132NamedLine, !isC1133TemplateAreas,

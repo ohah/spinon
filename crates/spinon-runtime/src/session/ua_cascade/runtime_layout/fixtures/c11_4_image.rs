@@ -22,7 +22,7 @@ const NATURAL_HEIGHT: u32 = 16;
 
 #[path = "c11_4_image/cases.rs"]
 mod cases;
-use cases::{IMAGE_CASES, ImageCase, Track};
+use cases::{IMAGE_CASES, ImageCase, ImageSizing, Track};
 
 pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     snapshot: &HostDocumentSnapshot,
@@ -252,6 +252,7 @@ fn validate_grid_style(
     for (name, value) in [
         ("display", "grid"),
         ("box-sizing", "border-box"),
+        ("align-items", "start"),
         ("align-content", "start"),
         ("justify-content", "start"),
     ] {
@@ -310,18 +311,133 @@ fn validate_item_style(
     style: &ComputedElementStyle,
     case: &ImageCase,
 ) -> Result<(), RuntimeLayoutFailure> {
-    for (name, value) in [("display", "block"), ("box-sizing", "border-box")] {
-        require_property(style, name, value)?;
-    }
-    if style.layout_dimensions.width != ComputedCssDimension::Auto
-        || style.layout_dimensions.height != ComputedCssDimension::Auto
-        || style.layout_dimensions.min_width != ComputedCssDimension::Auto
-        || style.layout_dimensions.min_height != ComputedCssDimension::Auto
-        || style.layout_dimensions.max_width != ComputedCssMaxSize::None
-        || style.layout_dimensions.max_height != ComputedCssMaxSize::None
+    require_property(style, "display", "block")?;
+    let (
+        width,
+        height,
+        min_width,
+        min_height,
+        max_width,
+        max_height,
+        aspect_ratio,
+        padding,
+        border,
+        box_sizing,
+    ) = match case.sizing {
+        ImageSizing::Intrinsic => (
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::Auto,
+            ComputedCssMaxSize::None,
+            ComputedCssMaxSize::None,
+            None,
+            0.0,
+            0.0,
+            "border-box",
+        ),
+        ImageSizing::ColumnAutoNaturalRatio => (
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::LengthPx(8.0),
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::Auto,
+            ComputedCssMaxSize::None,
+            ComputedCssMaxSize::None,
+            None,
+            0.0,
+            0.0,
+            "border-box",
+        ),
+        ImageSizing::ColumnTargetMaxWidth => (
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::LengthPx(8.0),
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::Auto,
+            ComputedCssMaxSize::LengthPx(9.0),
+            ComputedCssMaxSize::None,
+            Some(1.5),
+            0.0,
+            0.0,
+            "border-box",
+        ),
+        ImageSizing::RowTargetMaxHeight => (
+            ComputedCssDimension::LengthPx(12.0),
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::Auto,
+            ComputedCssMaxSize::None,
+            ComputedCssMaxSize::LengthPx(6.0),
+            Some(1.5),
+            0.0,
+            0.0,
+            "border-box",
+        ),
+        ImageSizing::ColumnOppositeMinOverMax => (
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::LengthPx(8.0),
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::LengthPx(12.0),
+            ComputedCssMaxSize::None,
+            ComputedCssMaxSize::LengthPx(4.0),
+            Some(1.5),
+            0.0,
+            0.0,
+            "border-box",
+        ),
+        ImageSizing::ColumnBorderBoxTransfer => (
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::LengthPx(8.0),
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::Auto,
+            ComputedCssMaxSize::None,
+            ComputedCssMaxSize::None,
+            Some(1.5),
+            1.0,
+            1.0,
+            "border-box",
+        ),
+        ImageSizing::ColumnContentBoxTransfer => (
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::LengthPx(8.0),
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::Auto,
+            ComputedCssMaxSize::None,
+            ComputedCssMaxSize::None,
+            Some(1.5),
+            1.0,
+            1.0,
+            "content-box",
+        ),
+        ImageSizing::ColumnTargetMinWidth => (
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::LengthPx(8.0),
+            ComputedCssDimension::LengthPx(18.0),
+            ComputedCssDimension::Auto,
+            ComputedCssMaxSize::None,
+            ComputedCssMaxSize::None,
+            Some(1.5),
+            0.0,
+            0.0,
+            "border-box",
+        ),
+    };
+    require_property(style, "box-sizing", box_sizing)?;
+    if style.layout_dimensions.width != width
+        || style.layout_dimensions.height != height
+        || style.layout_dimensions.min_width != min_width
+        || style.layout_dimensions.min_height != min_height
+        || style.layout_dimensions.max_width != max_width
+        || style.layout_dimensions.max_height != max_height
+        || style.layout_aspect_ratio != aspect_ratio
         || !zero_edges(style.layout_spacing.margin)
-        || !zero_edges(style.layout_spacing.padding)
-        || style.layout_border != Default::default()
+        || !edges_are(style.layout_spacing.padding, padding)
+        || style.layout_border
+            != (spinon_style::ComputedLayoutBorder {
+                top: border,
+                right: border,
+                bottom: border,
+                left: border,
+            })
         || style.layout_position != spinon_style::ComputedCssPosition::Static
         || !placement_matches(style.grid_item_placement.as_ref(), case.spanning)
     {
@@ -366,6 +482,13 @@ fn track_matches(actual: &ComputedCssGridTrackSize, expected: Track) -> bool {
         ) => approximately(*min, 0.0),
         (
             ComputedCssGridTrackSize::MinMax {
+                min: ComputedCssGridTrackBreadth::Auto,
+                max: ComputedCssGridTrackBreadth::Fraction(fraction),
+            },
+            Track::AutoFraction,
+        ) => approximately(*fraction, 1.0),
+        (
+            ComputedCssGridTrackSize::MinMax {
                 min: ComputedCssGridTrackBreadth::MinContent,
                 max: ComputedCssGridTrackBreadth::MaxContent,
             },
@@ -399,6 +522,9 @@ fn track_matches(actual: &ComputedCssGridTrackSize, expected: Track) -> bool {
         (ComputedCssGridTrackSize::LengthPx(actual), Track::Length100) => {
             approximately(*actual, 100.0)
         }
+        (ComputedCssGridTrackSize::LengthPx(actual), Track::Length20) => {
+            approximately(*actual, 20.0)
+        }
         _ => false,
     }
 }
@@ -420,10 +546,14 @@ fn require_property(
 }
 
 fn zero_edges(edges: spinon_style::ComputedCssEdges) -> bool {
-    spacing_is(edges.top, 0.0)
-        && spacing_is(edges.right, 0.0)
-        && spacing_is(edges.bottom, 0.0)
-        && spacing_is(edges.left, 0.0)
+    edges_are(edges, 0.0)
+}
+
+fn edges_are(edges: spinon_style::ComputedCssEdges, expected: f32) -> bool {
+    spacing_is(edges.top, expected)
+        && spacing_is(edges.right, expected)
+        && spacing_is(edges.bottom, expected)
+        && spacing_is(edges.left, expected)
 }
 
 fn spacing_is(actual: ComputedCssSpacingValue, expected: f32) -> bool {
