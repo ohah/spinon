@@ -1,0 +1,144 @@
+{
+  "pass": "pass4",
+  "backup_root_relative": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass4",
+  "target_count": 17,
+  "all_verified": true,
+  "files": [
+    {
+      "path": "0001-conformance.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass4/0001-conformance.html",
+      "bytes": 36787,
+      "sha256": "c324c9d952769c7cdba182755d5a4b2a31d7fafcc1d25d3fcf70aac4a7ff6f93",
+      "expected_sha256": "c324c9d952769c7cdba182755d5a4b2a31d7fafcc1d25d3fcf70aac4a7ff6f93",
+      "verified": true
+    },
+    {
+      "path": "404.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass4/404.html",
+      "bytes": 8512,
+      "sha256": "235c1915557dac1632c89a53dfec7308037cf8cb3aa4845d53b7be4d5da6d8eb",
+      "expected_sha256": "235c1915557dac1632c89a53dfec7308037cf8cb3aa4845d53b7be4d5da6d8eb",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass4/internal/0059-c11-grid-layout.html",
+      "bytes": 86902,
+      "sha256": "93102ba7b37fbf8f3b111a3915db96f7884d30e33fe8af2855c4d65d132bd090",
+      "expected_sha256": "93102ba7b37fbf8f3b111a3915db96f7884d30e33fe8af2855c4d65d132bd090",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass4/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html",
+      "bytes": 23370,
+      "sha256": "a2dcb01869ba79055d85a78c7b4c222e8b3e2f63de940f34accb13ddcd4d0433",
+      "expected_sha256": "a2dcb01869ba79055d85a78c7b4c222e8b3e2f63de940f34accb13ddcd4d0433",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass4/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "bytes": 27370,
+      "sha256": "1681ee08a01672c9c59e3931c575cccf38aa8dd3c525a66f576c1e93c144b487",
+      "expected_sha256": "1681ee08a01672c9c59e3931c575cccf38aa8dd3c525a66f576c1e93c144b487",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass4/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "bytes": 28349,
+      "sha256": "7358182ded6b09b36f6336a7dcd978801ffe20a001571071a850efd311985512",
+      "expected_sha256": "7358182ded6b09b36f6336a7dcd978801ffe20a001571071a850efd311985512",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass4/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+      "bytes": 27282,
+      "sha256": "61e522bf5f9c23409aa55196bf1965204f0e6a8609cf5d05a13dcb134c2c4935",
+      "expected_sha256": "61e522bf5f9c23409aa55196bf1965204f0e6a8609cf5d05a13dcb134c2c4935",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass3.json",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass4/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass3.json",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-selected-root.mjs",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass4/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-selected-root.mjs",
+      "bytes": 4451,
+      "sha256": "010345e924f83a2032e74c734b7fa967c852b7b60c4ce33e24138168a524bb5a",
+      "expected_sha256": "010345e924f83a2032e74c734b7fa967c852b7b60c4ce33e24138168a524bb5a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass4/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.html",
+      "bytes": 23418,
+      "sha256": "bcf89d50788692bd748ad40bd8cf20ecb36c61e34244e675437281e8828b7d3c",
+      "expected_sha256": "bcf89d50788692bd748ad40bd8cf20ecb36c61e34244e675437281e8828b7d3c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/rspress.tailnet-sync.config.ts",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass4/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/rspress.tailnet-sync.config.ts",
+      "bytes": 656,
+      "sha256": "777994327c5ccbed549459103b6222e446aa5168394abd50f1951ba1aac3f307",
+      "expected_sha256": "777994327c5ccbed549459103b6222e446aa5168394abd50f1951ba1aac3f307",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sanitize-built-site.mjs",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass4/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sanitize-built-site.mjs",
+      "bytes": 1874,
+      "sha256": "0cbbabe5b1c8cb59dca5c0674487f44ce7404a4e3309fcd92c1a4165056b179d",
+      "expected_sha256": "0cbbabe5b1c8cb59dca5c0674487f44ce7404a4e3309fcd92c1a4165056b179d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-preview.mjs",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass4/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-preview.mjs",
+      "bytes": 8856,
+      "sha256": "1bdb1ebdaf02f9153add579cf63278357b54f526b176686dac6e356f17d219d0",
+      "expected_sha256": "1bdb1ebdaf02f9153add579cf63278357b54f526b176686dac6e356f17d219d0",
+      "verified": true
+    },
+    {
+      "path": "internal/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass4/internal/README.html",
+      "bytes": 174342,
+      "sha256": "bfc2651059011981b9947a6944b20e8455fec60c6ce3d61f88303905d4510973",
+      "expected_sha256": "bfc2651059011981b9947a6944b20e8455fec60c6ce3d61f88303905d4510973",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass4/plan/c11-4-grid-track-sizing.html",
+      "bytes": 69046,
+      "sha256": "626f6e49c0a8a954437f5587b11a5a198366021d92e34e6405099010fdec655c",
+      "expected_sha256": "626f6e49c0a8a954437f5587b11a5a198366021d92e34e6405099010fdec655c",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass4/plan/c11-css-grid.html",
+      "bytes": 55154,
+      "sha256": "6f1ce68f0c0b5c966651272122a92cb75306559830c5ab6b48f9743e375c8df3",
+      "expected_sha256": "6f1ce68f0c0b5c966651272122a92cb75306559830c5ab6b48f9743e375c8df3",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass4/STATUS.html",
+      "bytes": 385473,
+      "sha256": "b17a4bad0ec100b04dbc18eb398410b2fcfec20bce8be294d059940ec121c5bc",
+      "expected_sha256": "b17a4bad0ec100b04dbc18eb398410b2fcfec20bce8be294d059940ec121c5bc",
+      "verified": true
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "pass": "pass3",
+  "backup_root_relative": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass3",
+  "target_count": 9,
+  "all_verified": true,
+  "files": [
+    {
+      "path": "0001-conformance.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass3/0001-conformance.html",
+      "bytes": 39785,
+      "sha256": "b9f5942bfc1fbb73c03386068718c46ebb7f3cb27ccf80cd70e81f6402be8631",
+      "expected_sha256": "b9f5942bfc1fbb73c03386068718c46ebb7f3cb27ccf80cd70e81f6402be8631",
+      "verified": true
+    },
+    {
+      "path": "404.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass3/404.html",
+      "bytes": 8512,
+      "sha256": "6a6c67b9fff8548c9431c0472c1c5c0ba25313c867a995740fe6a5d41596b50e",
+      "expected_sha256": "6a6c67b9fff8548c9431c0472c1c5c0ba25313c867a995740fe6a5d41596b50e",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass3/internal/0059-c11-grid-layout.html",
+      "bytes": 87104,
+      "sha256": "2768118929181dd0de6c210ca46dd36079a62cb922b5ab6bc30b45b3a1eccecb",
+      "expected_sha256": "2768118929181dd0de6c210ca46dd36079a62cb922b5ab6bc30b45b3a1eccecb",
+      "verified": true
+    },
+    {
+      "path": "internal/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass3/internal/README.html",
+      "bytes": 174877,
+      "sha256": "56f9922748fa77c87c0c72aa658062ca6a9338023053814bce9a9589caacd0be",
+      "expected_sha256": "56f9922748fa77c87c0c72aa658062ca6a9338023053814bce9a9589caacd0be",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass3/plan/c11-4-grid-track-sizing.html",
+      "bytes": 69134,
+      "sha256": "ca505fb91ffa91aadad21c69adf88ed66ef467ea07bf47dc0fcff1e3c73e8579",
+      "expected_sha256": "ca505fb91ffa91aadad21c69adf88ed66ef467ea07bf47dc0fcff1e3c73e8579",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass3/plan/c11-css-grid.html",
+      "bytes": 58152,
+      "sha256": "4d6fdf460135903fe372878ae2da861a3a4ca6babefd0e113610e68a3bfa94e6",
+      "expected_sha256": "4d6fdf460135903fe372878ae2da861a3a4ca6babefd0e113610e68a3bfa94e6",
+      "verified": true
+    },
+    {
+      "path": "roadmap.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass3/roadmap.html",
+      "bytes": 146176,
+      "sha256": "7aa52fd67de5442b452b430ce339f055bcffbe7953eb6cf9e74a8dce9409b887",
+      "expected_sha256": "7aa52fd67de5442b452b430ce339f055bcffbe7953eb6cf9e74a8dce9409b887",
+      "verified": true
+    },
+    {
+      "path": "static/js/6.cb8b86b995.js",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass3/static/js/6.cb8b86b995.js",
+      "bytes": 217066,
+      "sha256": "04ff176de0ff37821fb18c8f9dbabb13c380c882d6f6b76145ae1cdd5f72c131",
+      "expected_sha256": "04ff176de0ff37821fb18c8f9dbabb13c380c882d6f6b76145ae1cdd5f72c131",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass3/STATUS.html",
+      "bytes": 387818,
+      "sha256": "e2a1c4328b78446bec105aae1c9020c544546c603ca2acbcda802bc0633ff397",
+      "expected_sha256": "e2a1c4328b78446bec105aae1c9020c544546c603ca2acbcda802bc0633ff397",
+      "verified": true
+    }
+  ]
+}
