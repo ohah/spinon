@@ -1,0 +1,20 @@
+{
+  "agent_browser_version": "0.31.1",
+  "session": "spinon-c114-tailnet-post-final-pass13d-20261020",
+  "reported_background_pid": 55210,
+  "close_command_succeeded": true,
+  "post_close_session_info": {
+    "active": false,
+    "pid": null,
+    "pageCount": 0
+  },
+  "final_process_scan": {
+    "agent_browser_matches": 0,
+    "terminal_browser_matches": 0,
+    "reported_by": "pgrep -fl agent-browser|terminal-browser"
+  },
+  "tailnet_preview_server_pid": 1191,
+  "tailnet_preview_server_alive": true,
+  "tmux_session_count": 13,
+  "tmux_sessions_stopped": 0
+}

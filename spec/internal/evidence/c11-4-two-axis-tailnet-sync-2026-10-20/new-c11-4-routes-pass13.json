@@ -1,0 +1,81 @@
+{
+  "pass": "pass13",
+  "origin": "https://macstudio.tailed42f2.ts.net",
+  "requested_count": 8,
+  "passed_count": 8,
+  "all_passed": true,
+  "routes": [
+    {
+      "path": "roadmap.html",
+      "status": 200,
+      "served_bytes": 156552,
+      "local_bytes": 156552,
+      "served_sha256": "0aa15bc73118f268e239d0fd812a95b08f7faebca69152fcc64a651b066795d8",
+      "local_sha256": "0aa15bc73118f268e239d0fd812a95b08f7faebca69152fcc64a651b066795d8",
+      "matched": true
+    },
+    {
+      "path": "STATUS.html",
+      "status": 200,
+      "served_bytes": 515233,
+      "local_bytes": 515233,
+      "served_sha256": "aa58b85492c83438827d75af01f64ab6c4850c93f0b8d4e4088a07abc0049ada",
+      "local_sha256": "aa58b85492c83438827d75af01f64ab6c4850c93f0b8d4e4088a07abc0049ada",
+      "matched": true
+    },
+    {
+      "path": "plan/c11-4-two-axis-auto-repeat.html",
+      "status": 200,
+      "served_bytes": 68303,
+      "local_bytes": 68303,
+      "served_sha256": "f744b03518bcc3ae4947af689dc2ed3e7eac0f8f93610891e7035e88bdcc4e39",
+      "local_sha256": "f744b03518bcc3ae4947af689dc2ed3e7eac0f8f93610891e7035e88bdcc4e39",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/README.html",
+      "status": 200,
+      "served_bytes": 63721,
+      "local_bytes": 63721,
+      "served_sha256": "cb470a5b40420fa635cac404b6150e7af47c41152ccc4019b5a91d82a180c84e",
+      "local_sha256": "cb470a5b40420fa635cac404b6150e7af47c41152ccc4019b5a91d82a180c84e",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/README.html",
+      "status": 200,
+      "served_bytes": 65087,
+      "local_bytes": 65087,
+      "served_sha256": "88d8df3cc0feba55c42ff8b52ff9132f571665b4cbf8c997bd6867e9b86bd5df",
+      "local_sha256": "88d8df3cc0feba55c42ff8b52ff9132f571665b4cbf8c997bd6867e9b86bd5df",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/implementation-review-20.html",
+      "status": 200,
+      "served_bytes": 63604,
+      "local_bytes": 63604,
+      "served_sha256": "7da623c2e7d0323eaf642dc5fd4dfdf6485b79fd3b14bab35875f74f8387cece",
+      "local_sha256": "7da623c2e7d0323eaf642dc5fd4dfdf6485b79fd3b14bab35875f74f8387cece",
+      "matched": true
+    },
+    {
+      "path": "internal/README.html",
+      "status": 200,
+      "served_bytes": 275090,
+      "local_bytes": 275090,
+      "served_sha256": "e8e986bbed1cb9eed538430ca83625bcb1a111085e20b5a636b664e206679a0e",
+      "local_sha256": "e8e986bbed1cb9eed538430ca83625bcb1a111085e20b5a636b664e206679a0e",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/README.html",
+      "status": 200,
+      "served_bytes": 66110,
+      "local_bytes": 66110,
+      "served_sha256": "e22056d5ff629d976f85302f420cd6ff82fdcc5bc492f73e1eabcce5df432478",
+      "local_sha256": "e22056d5ff629d976f85302f420cd6ff82fdcc5bc492f73e1eabcce5df432478",
+      "matched": true
+    }
+  ]
+}

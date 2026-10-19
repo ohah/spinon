@@ -1,0 +1,16 @@
+{
+  "pass": "pass12",
+  "session": "spinon-c114-tailnet-sync-20261020",
+  "closeCommandSucceeded": true,
+  "firstImmediateProcessCheck": "agent-browser CLI shutdown process appeared briefly after close",
+  "followUpProcessCheck": [],
+  "sessionInfo": {
+    "active": false,
+    "pid": null
+  },
+  "tailnetPreviewServer": {
+    "pid": 1191,
+    "running": true
+  },
+  "tmuxSession": "untouched"
+}

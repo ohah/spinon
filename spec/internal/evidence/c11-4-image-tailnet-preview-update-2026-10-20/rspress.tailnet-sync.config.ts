@@ -3,8 +3,8 @@ import { defineConfig } from '@rspress/core';
 import baseConfig from '../../../../packages/docs/rspress.config.ts';
 
 const run = process.env.SPINON_TAILNET_RUN;
-if (!['pass6', 'pass7', 'pass8', 'pass9', 'pass11'].includes(run)) {
-  throw new Error('SPINON_TAILNET_RUN must be pass6, pass7, pass8, pass9, or pass11');
+if (!['pass6', 'pass7', 'pass8', 'pass9', 'pass11', 'pass12', 'pass13'].includes(run)) {
+  throw new Error('SPINON_TAILNET_RUN must be pass6, pass7, pass8, pass9, pass11, pass12, or pass13');
 }
 
 export default defineConfig({

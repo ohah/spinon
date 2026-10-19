@@ -1,0 +1,76 @@
+{
+  "pass": "pass13",
+  "source_html_count": 71,
+  "local_target_count": 6575,
+  "same_origin_out_of_base_count": 0,
+  "missing_preview_target_count": 10,
+  "out_of_base": [],
+  "missing": [
+    {
+      "page": "internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.html",
+      "attribute": "href",
+      "href": "/spinon/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/SHA256SUMS",
+      "target": "internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/SHA256SUMS"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+      "attribute": "href",
+      "href": "/spinon/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/",
+      "target": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+      "attribute": "href",
+      "href": "/spinon/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/",
+      "target": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html",
+      "attribute": "href",
+      "href": "/spinon/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/verify-artifact-boundary.sh",
+      "target": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/verify-artifact-boundary.sh"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "attribute": "href",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/track-sizing-pr-diff-review-30.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/track-sizing-pr-diff-review-30.html"
+    },
+    {
+      "page": "roadmap.html",
+      "attribute": "href",
+      "href": "/spinon/internal/evidence/c11-4-image-ratio-transfer-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-image-ratio-transfer-2026-10-19/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "attribute": "href",
+      "href": "/spinon/internal/evidence/c11-4-image-ratio-transfer-simulator-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-image-ratio-transfer-simulator-2026-10-19/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "attribute": "href",
+      "href": "/spinon/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/README.html",
+      "target": "spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "attribute": "href",
+      "href": "/spinon/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.html",
+      "target": "spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.html",
+      "attribute": "href",
+      "href": "/spinon/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/SHA256SUMS",
+      "target": "internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/SHA256SUMS"
+    }
+  ],
+  "audit_root": "SpinonPreview (Tailnet local document root)",
+  "attributes": [
+    "href",
+    "poster",
+    "src"
+  ]
+}

@@ -2,7 +2,11 @@
 
 ## C11.4 양쪽 Grid 축 auto-repeat 후속
 
-[구현 PR #368](https://github.com/ohah/spinon/pull/368) · [집중 계획](../../plan/c11-4-two-axis-auto-repeat.md) · [Chrome 155 12-case 사전 비교](./evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/README.md) · [Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 33-scene 실행·화면·해시](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/README.md) · [구현 실패 관점 검토 20개](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/implementation-review-20.md) · [PR diff 검토 30개](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/pr-diff-review-30.md). 각 axis에 auto-repeat 하나를 독립 적용하는 제한 후보이며 C11.4 공식 상태는 미완료다.
+[구현 PR #368](https://github.com/ohah/spinon/pull/368)은 2026-10-20 KST Rebase and merge됐다(merge SHA `c8aa093981a1b0d435347d9757b1fd0146a1f7db`; GitHub required status check 미설정). [집중 계획](../../plan/c11-4-two-axis-auto-repeat.md) · [Chrome 155 12-case 사전 비교](./evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/README.md) · [Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 33-scene 실행·화면·해시](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/README.md) · [구현 실패 관점 검토 20개](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/implementation-review-20.md) · [PR diff 검토 30개](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/pr-diff-review-30.md). 각 axis에 auto-repeat 하나를 독립 적용하는 제한 구현이며 C11.4 공식 상태는 미완료다.
+
+## C11.4 PR #368 뒤 Tailnet 미리보기 갱신
+
+[공개 roadmap·상태 대장·집중 계획 및 선택된 실행 근거의 Tailnet 갱신](./evidence/c11-4-two-axis-tailnet-sync-2026-10-20/README.md) · [동기화 실패 관점 20개](./evidence/c11-4-two-axis-tailnet-sync-2026-10-20/sync-review-20.md). PR #368 병합 사실과 제한 범위를 정적 미리보기에 반영하며 C11.4 완료 상태나 GitHub Pages는 변경하지 않는다. 최종 문서·동기화 PR diff 검토는 저장소 근거 폴더에 별도 기록한다.
 
 ## C11.4 definite minimum-size two-track auto-fill 후속 · PR #365
 

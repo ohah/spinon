@@ -1,0 +1,24 @@
+{
+  "success": true,
+  "browser": {
+    "version": "0.31.1",
+    "session": "spinon-c114-tailnet-final-pass13b-20261020",
+    "pid": 95505
+  },
+  "origin": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "result": {
+    "title": "스피논 구현 로드맵",
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "readyState": "complete",
+    "counter": "212개 표시 · 공식 완료 72/212",
+    "officialStatusNote": "공식 상태 동기화 완료 · 상위 78개 + 세부 ID 132개 + ID 없는 하위 체크 2개 · 완료 72/212개",
+    "c114Checkbox": {
+      "label": "intrinsic track sizing",
+      "checked": false,
+      "disabled": true
+    },
+    "hasMergeSha": true,
+    "sameOriginOutsideBaseLinks": [],
+    "screenshot": "tailnet-roadmap-agent-browser-pass13.png"
+  }
+}

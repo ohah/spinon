@@ -1,0 +1,1449 @@
+{
+  "manifest": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/SHA256SUMS-preview-inputs-pass13.txt",
+  "entry_count": 240,
+  "matched_count": 240,
+  "mismatch_count": 0,
+  "all_matched": true,
+  "files": [
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "expected_sha256": "8631c9470dfb1ab2307cafbe029ef46bd39b080848ba5883f7c1c9e0da9558b7",
+      "actual_sha256": "8631c9470dfb1ab2307cafbe029ef46bd39b080848ba5883f7c1c9e0da9558b7",
+      "matched": true
+    },
+    {
+      "path": "plan/c11-4-image-ratio-fixed-gutter.md",
+      "expected_sha256": "b6a1d5efb1192f5534fed95dc9d18a5a48e3326b57e605cc2a74dbfda72e9752",
+      "actual_sha256": "b6a1d5efb1192f5534fed95dc9d18a5a48e3326b57e605cc2a74dbfda72e9752",
+      "matched": true
+    },
+    {
+      "path": "plan/c11-4-two-axis-auto-repeat.md",
+      "expected_sha256": "6ea2fd44daa2e935daaca5ecb247a563515acdfd46f4ecb225c6e849a3854751",
+      "actual_sha256": "6ea2fd44daa2e935daaca5ecb247a563515acdfd46f4ecb225c6e849a3854751",
+      "matched": true
+    },
+    {
+      "path": "plan/c11-css-grid.md",
+      "expected_sha256": "554949ae7f3462e41144bc95b16b6ab19b32238a1ffd73fbe826357ea2ef8026",
+      "actual_sha256": "554949ae7f3462e41144bc95b16b6ab19b32238a1ffd73fbe826357ea2ef8026",
+      "matched": true
+    },
+    {
+      "path": "spec/0001-conformance.md",
+      "expected_sha256": "d2102e950ff5f69f7032c6639ec845e5acc9a189eb7d9ce813705e8d5e568453",
+      "actual_sha256": "d2102e950ff5f69f7032c6639ec845e5acc9a189eb7d9ce813705e8d5e568453",
+      "matched": true
+    },
+    {
+      "path": "spec/STATUS.md",
+      "expected_sha256": "c9424557fb46b974582990933437bdac8c9636c96fe0fdc8a063f2634b7aa784",
+      "actual_sha256": "c9424557fb46b974582990933437bdac8c9636c96fe0fdc8a063f2634b7aa784",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "expected_sha256": "de53164a50b671e4d2060cd221acfdacf874a0a98cb6d4edcdf2be6512cdd7d4",
+      "actual_sha256": "de53164a50b671e4d2060cd221acfdacf874a0a98cb6d4edcdf2be6512cdd7d4",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/README.md",
+      "expected_sha256": "d241ce943daffc4fd8673782046cce56368f8a4051d3736da4890e7b24200b35",
+      "actual_sha256": "d241ce943daffc4fd8673782046cce56368f8a4051d3736da4890e7b24200b35",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.md",
+      "expected_sha256": "b9596ff1a4eb08341a8888c5fb8c11525c113196e6c0f43e27dbedd5948279e9",
+      "actual_sha256": "b9596ff1a4eb08341a8888c5fb8c11525c113196e6c0f43e27dbedd5948279e9",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/SHA256SUMS.txt",
+      "expected_sha256": "cfaa23873e66076edc6808ea9e29cc4be10fd84e64d28bbddfe811dbdbcf2557",
+      "actual_sha256": "cfaa23873e66076edc6808ea9e29cc4be10fd84e64d28bbddfe811dbdbcf2557",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/build.log",
+      "expected_sha256": "50364a57d106a52eae4227d21b11c9cc9761da384af10048a8c73853e216fe9e",
+      "actual_sha256": "50364a57d106a52eae4227d21b11c9cc9761da384af10048a8c73853e216fe9e",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/install.log",
+      "expected_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "actual_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-auto-image-definite.log",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "actual_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-fit-content-above-intrinsic.log",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "actual_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-fit-content-below-minimum.log",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "actual_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-fit-content-percent.log",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "actual_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-fixed-small-track-overflow.log",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "actual_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-min-content-row-image.log",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "actual_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-minmax-auto-image.log",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "actual_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-minmax-min-max-image.log",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "actual_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/launch-spanning-min-content-items.log",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "actual_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-auto-image-definite.log",
+      "expected_sha256": "29510fb87f7534cfd60418983daf115fa6cf8c83621b51653fdd9f72b02a7149",
+      "actual_sha256": "29510fb87f7534cfd60418983daf115fa6cf8c83621b51653fdd9f72b02a7149",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-fit-content-above-intrinsic.log",
+      "expected_sha256": "53a3e9e1ac073c19bad52308718d19adbfce1f7c1c19d99bd5cc6bdc1a4b0f94",
+      "actual_sha256": "53a3e9e1ac073c19bad52308718d19adbfce1f7c1c19d99bd5cc6bdc1a4b0f94",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-fit-content-below-minimum.log",
+      "expected_sha256": "da09f534818bcb870b221c90f7441b147d7759b907ef6e6721bb0558ccf2a9ac",
+      "actual_sha256": "da09f534818bcb870b221c90f7441b147d7759b907ef6e6721bb0558ccf2a9ac",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-fit-content-percent.log",
+      "expected_sha256": "ab1d8528093d218910036dd1046a0ff618e171eb9628d2300aaaae9cb10f4b08",
+      "actual_sha256": "ab1d8528093d218910036dd1046a0ff618e171eb9628d2300aaaae9cb10f4b08",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-fixed-small-track-overflow.log",
+      "expected_sha256": "4f621eb96de3057418718efc55c1295ab78fda4643ff6224b8b108a00eb03016",
+      "actual_sha256": "4f621eb96de3057418718efc55c1295ab78fda4643ff6224b8b108a00eb03016",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-min-content-row-image.log",
+      "expected_sha256": "f24bf7698dc8d35a27548631a50c63b896735a1fe436e013eab68e75f9221f11",
+      "actual_sha256": "f24bf7698dc8d35a27548631a50c63b896735a1fe436e013eab68e75f9221f11",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-minmax-auto-image.log",
+      "expected_sha256": "823c0787f7e47c9ea8ad9b37a3a033021a38ce9e2aa5f3cb6e211748dda51792",
+      "actual_sha256": "823c0787f7e47c9ea8ad9b37a3a033021a38ce9e2aa5f3cb6e211748dda51792",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-minmax-min-max-image.log",
+      "expected_sha256": "6d2a59693c4256e917af6edc2a5843c9fa2d588afbfc736698d81c152cebb9ee",
+      "actual_sha256": "6d2a59693c4256e917af6edc2a5843c9fa2d588afbfc736698d81c152cebb9ee",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/runtime-spanning-min-content-items.log",
+      "expected_sha256": "f76ce69b6d8ba75d82daec9e4aedbb82b8e222a9a2c4b157cf85213763f26259",
+      "actual_sha256": "f76ce69b6d8ba75d82daec9e4aedbb82b8e222a9a2c4b157cf85213763f26259",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-auto-image-definite.png",
+      "expected_sha256": "a66ff934a7b5c17eaf162975f7e2501bea7522c00ae62232d9abcc2f7e6efd01",
+      "actual_sha256": "a66ff934a7b5c17eaf162975f7e2501bea7522c00ae62232d9abcc2f7e6efd01",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-fit-content-above-intrinsic.png",
+      "expected_sha256": "18231c1bb714356658ca1af2b0e4b4e0f13ef55e2419e737996f9135587b18e1",
+      "actual_sha256": "18231c1bb714356658ca1af2b0e4b4e0f13ef55e2419e737996f9135587b18e1",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-fit-content-below-minimum.png",
+      "expected_sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a",
+      "actual_sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-fit-content-percent.png",
+      "expected_sha256": "afe7837bc91778d44c3013be6be25e3714287f20284a6348fb4346c14c506df5",
+      "actual_sha256": "afe7837bc91778d44c3013be6be25e3714287f20284a6348fb4346c14c506df5",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-fixed-small-track-overflow.png",
+      "expected_sha256": "e704600c26096fd0330c1019ffa8532206b4b8ebdea6da0c670d39fcd3d59388",
+      "actual_sha256": "e704600c26096fd0330c1019ffa8532206b4b8ebdea6da0c670d39fcd3d59388",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-min-content-row-image.png",
+      "expected_sha256": "6c2a85fbc2315e632f775df5bf0dc73a1e994db96e00ae4df3583e6fc3e89207",
+      "actual_sha256": "6c2a85fbc2315e632f775df5bf0dc73a1e994db96e00ae4df3583e6fc3e89207",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-minmax-auto-image.png",
+      "expected_sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a",
+      "actual_sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-minmax-min-max-image.png",
+      "expected_sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a",
+      "actual_sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-spanning-min-content-items.png",
+      "expected_sha256": "ee4f42bcf799e2df0d477f36226c126eed96e7290b7cb90111b624ab6ec4b251",
+      "actual_sha256": "ee4f42bcf799e2df0d477f36226c126eed96e7290b7cb90111b624ab6ec4b251",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.md",
+      "expected_sha256": "d94a65676d0851d4c14863fda4c559c5780a776d82faab6c09e7cd68878b0afe",
+      "actual_sha256": "d94a65676d0851d4c14863fda4c559c5780a776d82faab6c09e7cd68878b0afe",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/archive-hashes.txt",
+      "expected_sha256": "c89748d162b8a062a4a978ad0745fac86c3390e750594e0a684f3c00f2ba3362",
+      "actual_sha256": "c89748d162b8a062a4a978ad0745fac86c3390e750594e0a684f3c00f2ba3362",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/default-build.log",
+      "expected_sha256": "0b5fe2277fd2b29cc111b76604c482f8ec516047dbc0954657203c5614f4e4db",
+      "actual_sha256": "0b5fe2277fd2b29cc111b76604c482f8ec516047dbc0954657203c5614f4e4db",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/fixture-build.log",
+      "expected_sha256": "765f1396d07f30f3a451cd3f9d9cad4e83c92c8e0aecf955ffc09061a6cf1e02",
+      "actual_sha256": "765f1396d07f30f3a451cd3f9d9cad4e83c92c8e0aecf955ffc09061a6cf1e02",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/fixture-strings.txt",
+      "expected_sha256": "06c56eb30ce53b3e6b8f1101c83c220d84562a706499e503d43cbaf91bd1fe8b",
+      "actual_sha256": "06c56eb30ce53b3e6b8f1101c83c220d84562a706499e503d43cbaf91bd1fe8b",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/fixture-symbol.txt",
+      "expected_sha256": "307410503132572df9744a8a3aa60d0659f2a0ac8aa1e8d9de4a8f28e2c3e426",
+      "actual_sha256": "307410503132572df9744a8a3aa60d0659f2a0ac8aa1e8d9de4a8f28e2c3e426",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/png-payload-check.txt",
+      "expected_sha256": "1edd1553e9d6adcf775c2219a201491a1f18abc56ac0d6a3d376d596c6ba4f4b",
+      "actual_sha256": "1edd1553e9d6adcf775c2219a201491a1f18abc56ac0d6a3d376d596c6ba4f4b",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/verify.log",
+      "expected_sha256": "7ee38fdacb01076bb76d08728d9bf6774f4492fa5872d128121121b2a25b23f9",
+      "actual_sha256": "7ee38fdacb01076bb76d08728d9bf6774f4492fa5872d128121121b2a25b23f9",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/compare-platform-logs.mjs",
+      "expected_sha256": "781345b7564dd2b161958657336e642d95e66d831aa8273115ae5bd8a6aa9d70",
+      "actual_sha256": "781345b7564dd2b161958657336e642d95e66d831aa8273115ae5bd8a6aa9d70",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/cross-platform-comparison.json",
+      "expected_sha256": "1ce02a3374e2d64841b2dbc19d4cb06e43579dba88785eb26bed2bfcae94b623",
+      "actual_sha256": "1ce02a3374e2d64841b2dbc19d4cb06e43579dba88785eb26bed2bfcae94b623",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ffi-clippy.log",
+      "expected_sha256": "3fea5b6765fd5ebc6b159a2ac52233eafe1519ddcb52e1484ef3b00b2f70f7bb",
+      "actual_sha256": "3fea5b6765fd5ebc6b159a2ac52233eafe1519ddcb52e1484ef3b00b2f70f7bb",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ffi-test.log",
+      "expected_sha256": "c93f46615d78f4a1c2a8b8ad86902b0ae6fad8007436c6514b4bdda5e9b7abbf",
+      "actual_sha256": "c93f46615d78f4a1c2a8b8ad86902b0ae6fad8007436c6514b4bdda5e9b7abbf",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/image-fixture-unit-test.log",
+      "expected_sha256": "96172a95a54763b82168bf299dad1556a714c29df06735367ed5cfdf2c03dea0",
+      "actual_sha256": "96172a95a54763b82168bf299dad1556a714c29df06735367ed5cfdf2c03dea0",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.md",
+      "expected_sha256": "90dab2cf83a35bd003595236cb87ec6914abb27934bd0d380f3131cf7fcab1f9",
+      "actual_sha256": "90dab2cf83a35bd003595236cb87ec6914abb27934bd0d380f3131cf7fcab1f9",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/build.log",
+      "expected_sha256": "23516f44ed21c4be83a53d8bb0e77bb521534681afe1936c3947df2d74649386",
+      "actual_sha256": "23516f44ed21c4be83a53d8bb0e77bb521534681afe1936c3947df2d74649386",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/install.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-auto-image-definite.log",
+      "expected_sha256": "efc0dcb4fad3aac0ba02c4d5b5f7b9b4e19a8247d2598b84c12e9b4c0daed475",
+      "actual_sha256": "efc0dcb4fad3aac0ba02c4d5b5f7b9b4e19a8247d2598b84c12e9b4c0daed475",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-fit-content-above-intrinsic.log",
+      "expected_sha256": "5c0b0fad459884dcdd222efb96a53736f4bcb57ab44ac57e22477600c98f1ecc",
+      "actual_sha256": "5c0b0fad459884dcdd222efb96a53736f4bcb57ab44ac57e22477600c98f1ecc",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-fit-content-below-minimum.log",
+      "expected_sha256": "c13a1b1710fd9933181eb5ac3de8ea124cabb2671036037208a09649bd581fa7",
+      "actual_sha256": "c13a1b1710fd9933181eb5ac3de8ea124cabb2671036037208a09649bd581fa7",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-fit-content-percent.log",
+      "expected_sha256": "268ea91a23e0b484e611fe1b8773c034da0c67357c06c7872c3e79c1b1c4ff5a",
+      "actual_sha256": "268ea91a23e0b484e611fe1b8773c034da0c67357c06c7872c3e79c1b1c4ff5a",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-fixed-small-track-overflow.log",
+      "expected_sha256": "0358ea0b0e634d1501d8d237d6392da7aae5f1a2861cce5864ed948366c3bb12",
+      "actual_sha256": "0358ea0b0e634d1501d8d237d6392da7aae5f1a2861cce5864ed948366c3bb12",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-min-content-row-image.log",
+      "expected_sha256": "bd4750fa051eaa7a6335fa1877af71be600a5f49d6893c96a0b95a2602cf8edb",
+      "actual_sha256": "bd4750fa051eaa7a6335fa1877af71be600a5f49d6893c96a0b95a2602cf8edb",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-minmax-auto-image.log",
+      "expected_sha256": "95f105a39aaddd1b0716d84ac73cabe54faf5ded3d1b59687ec589a794fa0052",
+      "actual_sha256": "95f105a39aaddd1b0716d84ac73cabe54faf5ded3d1b59687ec589a794fa0052",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-minmax-min-max-image.log",
+      "expected_sha256": "fb51f4f7253ffd7572dc8b8e5fa0c56cc4e5077f678ee66384737e0b57546d77",
+      "actual_sha256": "fb51f4f7253ffd7572dc8b8e5fa0c56cc4e5077f678ee66384737e0b57546d77",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/launch-spanning-min-content-items.log",
+      "expected_sha256": "a8cf4f5858576cf6c99d0717d68aa148a01d65df878cb42a1f7bf62965eb3843",
+      "actual_sha256": "a8cf4f5858576cf6c99d0717d68aa148a01d65df878cb42a1f7bf62965eb3843",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-auto-image-definite.log",
+      "expected_sha256": "9bb4ebae4c9d307aac1b7718aa07cd44e8a74a3b2d8c610ff6c86340459f4e1a",
+      "actual_sha256": "9bb4ebae4c9d307aac1b7718aa07cd44e8a74a3b2d8c610ff6c86340459f4e1a",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-fit-content-above-intrinsic.log",
+      "expected_sha256": "728475a6078f69c5f4074f9201a0fed0b28cb7b7181142a84f5d45b513db3ec5",
+      "actual_sha256": "728475a6078f69c5f4074f9201a0fed0b28cb7b7181142a84f5d45b513db3ec5",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-fit-content-below-minimum.log",
+      "expected_sha256": "cd18cc9eacc58ff18ff9b1793447b7fcc40bbbeeb64d95e36509d23e35e8967b",
+      "actual_sha256": "cd18cc9eacc58ff18ff9b1793447b7fcc40bbbeeb64d95e36509d23e35e8967b",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-fit-content-percent.log",
+      "expected_sha256": "2ae37b090b2b7a46d2a281f1ada73d45dbb83c6e6770812d9b216a1a670d0585",
+      "actual_sha256": "2ae37b090b2b7a46d2a281f1ada73d45dbb83c6e6770812d9b216a1a670d0585",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-fixed-small-track-overflow.log",
+      "expected_sha256": "9fa2a3937d8db501eed87e0291a958b664ebe27c4299e0011a4f0c04468b0fe5",
+      "actual_sha256": "9fa2a3937d8db501eed87e0291a958b664ebe27c4299e0011a4f0c04468b0fe5",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-min-content-row-image.log",
+      "expected_sha256": "07a73419a839a63f58e1014d271f0bd2346cc83d4f1aa5ddddddec3530819eef",
+      "actual_sha256": "07a73419a839a63f58e1014d271f0bd2346cc83d4f1aa5ddddddec3530819eef",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-minmax-auto-image.log",
+      "expected_sha256": "18d7d50b6ceab6c2e6932a95ec488b8bec45f5425391a2810613c0c308c46053",
+      "actual_sha256": "18d7d50b6ceab6c2e6932a95ec488b8bec45f5425391a2810613c0c308c46053",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-minmax-min-max-image.log",
+      "expected_sha256": "0e7ad7a3a93c3438023f0c15d041ab4f12bc243ba5079fe13ee2073db768465b",
+      "actual_sha256": "0e7ad7a3a93c3438023f0c15d041ab4f12bc243ba5079fe13ee2073db768465b",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/runtime-spanning-min-content-items.log",
+      "expected_sha256": "3ec02996da66c9467b1647363787c55f367606e553715cf3f4d7300797eca05a",
+      "actual_sha256": "3ec02996da66c9467b1647363787c55f367606e553715cf3f4d7300797eca05a",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-auto-image-definite.log",
+      "expected_sha256": "1fb63a1538dce451d97babc26aa0f718c4615071632eb3e599e497f2af09fc74",
+      "actual_sha256": "1fb63a1538dce451d97babc26aa0f718c4615071632eb3e599e497f2af09fc74",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-auto-image-definite.png",
+      "expected_sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203",
+      "actual_sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-above-intrinsic.log",
+      "expected_sha256": "f43e2841124dbd6d7122cbb5b74cbad3d758e39894a5e030c4796314bcf81106",
+      "actual_sha256": "f43e2841124dbd6d7122cbb5b74cbad3d758e39894a5e030c4796314bcf81106",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-above-intrinsic.png",
+      "expected_sha256": "ea83a7d03f3b9d940756ca6e0f272e44fd9a9af354e97172bead969ac93d596d",
+      "actual_sha256": "ea83a7d03f3b9d940756ca6e0f272e44fd9a9af354e97172bead969ac93d596d",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-below-minimum.log",
+      "expected_sha256": "6b3bb5d2e7303ff32b2817bfb644350b75de8f2ae4e6394223843c775d2969d7",
+      "actual_sha256": "6b3bb5d2e7303ff32b2817bfb644350b75de8f2ae4e6394223843c775d2969d7",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-below-minimum.png",
+      "expected_sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203",
+      "actual_sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-percent.log",
+      "expected_sha256": "62266dfdadf2655dd32c7cc42d1b9d51244451302858b86959506cae64b88a44",
+      "actual_sha256": "62266dfdadf2655dd32c7cc42d1b9d51244451302858b86959506cae64b88a44",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-percent.png",
+      "expected_sha256": "ea83a7d03f3b9d940756ca6e0f272e44fd9a9af354e97172bead969ac93d596d",
+      "actual_sha256": "ea83a7d03f3b9d940756ca6e0f272e44fd9a9af354e97172bead969ac93d596d",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fixed-small-track-overflow.log",
+      "expected_sha256": "2d26d7a58f469320f99bb5300fed4033739881ca73f2b76dcbab4db8b18725b0",
+      "actual_sha256": "2d26d7a58f469320f99bb5300fed4033739881ca73f2b76dcbab4db8b18725b0",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fixed-small-track-overflow.png",
+      "expected_sha256": "baff7e954df386aa08414b84414ea5e44cd300e7a6b19267b21b1549994fdba1",
+      "actual_sha256": "baff7e954df386aa08414b84414ea5e44cd300e7a6b19267b21b1549994fdba1",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-min-content-row-image.log",
+      "expected_sha256": "ce93ba7cd6cc3d5416b14f18ea778e20006c5d209bbe31df6cb5127c2f43e0de",
+      "actual_sha256": "ce93ba7cd6cc3d5416b14f18ea778e20006c5d209bbe31df6cb5127c2f43e0de",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-min-content-row-image.png",
+      "expected_sha256": "ecd8d108e2ea35cba7038b7b7bafef77ea981c7552cfcd541936b46c58dc2fd3",
+      "actual_sha256": "ecd8d108e2ea35cba7038b7b7bafef77ea981c7552cfcd541936b46c58dc2fd3",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-minmax-auto-image.log",
+      "expected_sha256": "5a5f01ee8a7d5611cace5eabf44f7bef8e9b5a0a404067fabea861f4d874960c",
+      "actual_sha256": "5a5f01ee8a7d5611cace5eabf44f7bef8e9b5a0a404067fabea861f4d874960c",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-minmax-auto-image.png",
+      "expected_sha256": "96a8ee48535064d788226f810f6615b905bec9e9a732d1d41705a798336d495e",
+      "actual_sha256": "96a8ee48535064d788226f810f6615b905bec9e9a732d1d41705a798336d495e",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-minmax-min-max-image.log",
+      "expected_sha256": "c06044516993a37309e177e4aebcc72bb6e33f9457221cd4c8ef6e0d9f0e6fb6",
+      "actual_sha256": "c06044516993a37309e177e4aebcc72bb6e33f9457221cd4c8ef6e0d9f0e6fb6",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-minmax-min-max-image.png",
+      "expected_sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203",
+      "actual_sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-spanning-min-content-items.log",
+      "expected_sha256": "58724c03fa6fa2dae12b9a3e54da26c8c7b87650c78a3f1e3a69ed6c3a4e523f",
+      "actual_sha256": "58724c03fa6fa2dae12b9a3e54da26c8c7b87650c78a3f1e3a69ed6c3a4e523f",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-spanning-min-content-items.png",
+      "expected_sha256": "2c46756708e31ef5b5c72a3eedc6b3b6f80d2b87e84ed790ecd4a86ce31599b9",
+      "actual_sha256": "2c46756708e31ef5b5c72a3eedc6b3b6f80d2b87e84ed790ecd4a86ce31599b9",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/matrix-run.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/namespace-negative-test.log",
+      "expected_sha256": "aa78c9f233d6e6bc094dd78d156aed5274378851f6006b6814994fa0546a186e",
+      "actual_sha256": "aa78c9f233d6e6bc094dd78d156aed5274378851f6006b6814994fa0546a186e",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/platform-compare.log",
+      "expected_sha256": "bd8615e0d2ae85f3c78f0a034e336c08fa89c7c82ce84794b733336bdc077135",
+      "actual_sha256": "bd8615e0d2ae85f3c78f0a034e336c08fa89c7c82ce84794b733336bdc077135",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.md",
+      "expected_sha256": "d336632cbcc3d03518327f84d9127bf222741e5e1d6c2604a5d0c2b5c6287862",
+      "actual_sha256": "d336632cbcc3d03518327f84d9127bf222741e5e1d6c2604a5d0c2b5c6287862",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/run-simulator-matrix.sh",
+      "expected_sha256": "1830bc42efddca6659a80ea06456615897bc5c24f550b283870f7fcefbf408ef",
+      "actual_sha256": "1830bc42efddca6659a80ea06456615897bc5c24f550b283870f7fcefbf408ef",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/runtime-clippy.log",
+      "expected_sha256": "2076277333144f1cc90b8d0e3b6a80fb2f4a995bb4ed8ffec6c2c2939b90cefc",
+      "actual_sha256": "2076277333144f1cc90b8d0e3b6a80fb2f4a995bb4ed8ffec6c2c2939b90cefc",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/runtime-test.log",
+      "expected_sha256": "e1153003dd48e9d8815c82c7ab4ccc6930a9c367cdafd7d7c1fc550ed284058f",
+      "actual_sha256": "e1153003dd48e9d8815c82c7ab4ccc6930a9c367cdafd7d7c1fc550ed284058f",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/rustfmt-check.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/verify-artifact-boundary.sh",
+      "expected_sha256": "252892ac5f5aafef45a05d07bba27f4cc51c4bc9393540ba3513cb83c0296c62",
+      "actual_sha256": "252892ac5f5aafef45a05d07bba27f4cc51c4bc9393540ba3513cb83c0296c62",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/workspace-clippy.log",
+      "expected_sha256": "a5f4c585ee974ca44916ac30a98bbc189e067a7e0a6bc6d2e8d6bc525be724af",
+      "actual_sha256": "a5f4c585ee974ca44916ac30a98bbc189e067a7e0a6bc6d2e8d6bc525be724af",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/workspace-test.log",
+      "expected_sha256": "3fe298f7b80e877c4296710e403a4de9fa1175a1293660e9807be201b684572a",
+      "actual_sha256": "3fe298f7b80e877c4296710e403a4de9fa1175a1293660e9807be201b684572a",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.md",
+      "expected_sha256": "e3ff3ff79baf572643faad3a19060968f1fe0e7b463553dc91672edb3892b822",
+      "actual_sha256": "e3ff3ff79baf572643faad3a19060968f1fe0e7b463553dc91672edb3892b822",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/SHA256SUMS",
+      "expected_sha256": "f272b93c0a6fcfeba53d5535a3611aa16bd8b5d16a26e4bc3a074a5d19a3fb63",
+      "actual_sha256": "f272b93c0a6fcfeba53d5535a3611aa16bd8b5d16a26e4bc3a074a5d19a3fb63",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/android-build.log",
+      "expected_sha256": "201a5107253dfff69f39a10db3a089192e59783b7bbe6517906e8507c48c505b",
+      "actual_sha256": "201a5107253dfff69f39a10db3a089192e59783b7bbe6517906e8507c48c505b",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.md",
+      "expected_sha256": "3c22432b5e17f1ab0881195aa5a9c322705b6e0b087e99ce7b7c02da433c5d8f",
+      "actual_sha256": "3c22432b5e17f1ab0881195aa5a9c322705b6e0b087e99ce7b7c02da433c5d8f",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/ios-build.log",
+      "expected_sha256": "f47129f3d793f9672bf2cc9b98c8d51be8ec4670c54ce57a92fe0f05dbc09a6e",
+      "actual_sha256": "f47129f3d793f9672bf2cc9b98c8d51be8ec4670c54ce57a92fe0f05dbc09a6e",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.md",
+      "expected_sha256": "0df25bf3e499971da53f304aa12d4152cadffbc112ad1547a385ff87f4c93fbc",
+      "actual_sha256": "0df25bf3e499971da53f304aa12d4152cadffbc112ad1547a385ff87f4c93fbc",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/run-simulator-matrix.sh",
+      "expected_sha256": "1d61753433ffca653ec5372496284197e8686f9523a53402ac8b20cca86e24c4",
+      "actual_sha256": "1d61753433ffca653ec5372496284197e8686f9523a53402ac8b20cca86e24c4",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/abi.txt",
+      "expected_sha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90",
+      "actual_sha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/api-level.txt",
+      "expected_sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "actual_sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/avd-name.txt",
+      "expected_sha256": "6b155c3bed6bef87b3f93560e239c1286ed38bcca6a05db907fe05280e34d58e",
+      "actual_sha256": "6b155c3bed6bef87b3f93560e239c1286ed38bcca6a05db907fe05280e34d58e",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/install.log",
+      "expected_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "actual_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/launch-fixed-gutter-column-suggestion-clamp.log",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "actual_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/launch-fixed-gutter-row-suggestion-clamp.log",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "actual_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/runtime-fixed-gutter-column-suggestion-clamp.log",
+      "expected_sha256": "e98d059ff1eafc0bd8529be3bd9547486213e2878d478e4b9d22eaf06f157b80",
+      "actual_sha256": "e98d059ff1eafc0bd8529be3bd9547486213e2878d478e4b9d22eaf06f157b80",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/runtime-fixed-gutter-row-suggestion-clamp.log",
+      "expected_sha256": "a58a20ddd5fb41349899829338a98fc2856689d7c9b9ad17d0ad3ab89b99760c",
+      "actual_sha256": "a58a20ddd5fb41349899829338a98fc2856689d7c9b9ad17d0ad3ab89b99760c",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/screenshot-fixed-gutter-column-suggestion-clamp.png",
+      "expected_sha256": "5ed7da99beebea2388a6387a4ecdd0901b50b01823004a9b2f0887fe07b092c6",
+      "actual_sha256": "5ed7da99beebea2388a6387a4ecdd0901b50b01823004a9b2f0887fe07b092c6",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/android-avd/screenshot-fixed-gutter-row-suggestion-clamp.png",
+      "expected_sha256": "9edba366dfc342729d75fb4cbbe87265cbe01e1500c72199484278cf12b579db",
+      "actual_sha256": "9edba366dfc342729d75fb4cbbe87265cbe01e1500c72199484278cf12b579db",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/booted-devices.txt",
+      "expected_sha256": "687ad5cab6f3b16a1f66677bd516f500066992e2bf97c7921045c214841bc103",
+      "actual_sha256": "687ad5cab6f3b16a1f66677bd516f500066992e2bf97c7921045c214841bc103",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/install.log",
+      "expected_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "actual_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/launch-fixed-gutter-column-suggestion-clamp.log",
+      "expected_sha256": "132a28ad23333b0e3c5822fc1470c9a6dfa735baaf4a09e53140f274ab59b209",
+      "actual_sha256": "132a28ad23333b0e3c5822fc1470c9a6dfa735baaf4a09e53140f274ab59b209",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/launch-fixed-gutter-row-suggestion-clamp.log",
+      "expected_sha256": "7dde8588390713caad06a641e6dae4b71fad1b182e3dd55f17a05c7cca25afee",
+      "actual_sha256": "7dde8588390713caad06a641e6dae4b71fad1b182e3dd55f17a05c7cca25afee",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/model-identifier.txt",
+      "expected_sha256": "e40be96841131f523dac012c3a28136b55643c89d96e7c20e7b5834a9ef6153a",
+      "actual_sha256": "e40be96841131f523dac012c3a28136b55643c89d96e7c20e7b5834a9ef6153a",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/runtime-fixed-gutter-column-suggestion-clamp.log",
+      "expected_sha256": "894324d279dd36d3a665bf776a7fd23c2e7b37ac0540aadc19ea9435b5bbb1f1",
+      "actual_sha256": "894324d279dd36d3a665bf776a7fd23c2e7b37ac0540aadc19ea9435b5bbb1f1",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/runtime-fixed-gutter-row-suggestion-clamp.log",
+      "expected_sha256": "fe89fb511c673db23bfffa563cafcbb4fb5e3b07b58ba93a9bc9f86a6f018fd6",
+      "actual_sha256": "fe89fb511c673db23bfffa563cafcbb4fb5e3b07b58ba93a9bc9f86a6f018fd6",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-column-suggestion-clamp.log",
+      "expected_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "actual_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-column-suggestion-clamp.png",
+      "expected_sha256": "5b4e8e6039f64ecf9d67fcf5be410bdea4bea8be299b712fe4b3e9a1f60df501",
+      "actual_sha256": "5b4e8e6039f64ecf9d67fcf5be410bdea4bea8be299b712fe4b3e9a1f60df501",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-row-suggestion-clamp.log",
+      "expected_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "actual_sha256": "2b3248b2d684505d13e3321c71ad98e415735d176f1f66bf2a6670b8fddea12b",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/ios-simulator/screenshot-fixed-gutter-row-suggestion-clamp.png",
+      "expected_sha256": "9a8c87d19ddf7ac4ff0446f5e757d9a796c12ac4e5e20608fc4b194924b52847",
+      "actual_sha256": "9a8c87d19ddf7ac4ff0446f5e757d9a796c12ac4e5e20608fc4b194924b52847",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/run-id.txt",
+      "expected_sha256": "6e7b84ee863d235baab718000e08e83bfb3e0ac7f87bced6110ce466b36094cb",
+      "actual_sha256": "6e7b84ee863d235baab718000e08e83bfb3e0ac7f87bced6110ce466b36094cb",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/runs/c114-fg-20261019T153833Z/source-head.txt",
+      "expected_sha256": "b2b9b9854a8d43a4989c20c7f9c993899bca268d0b83a3aeafd21904c132081e",
+      "actual_sha256": "b2b9b9854a8d43a4989c20c7f9c993899bca268d0b83a3aeafd21904c132081e",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/verification.log",
+      "expected_sha256": "d5a1aae2953558aaa42ca5f7d256765ce75051d8aa66868d77827f0753571e40",
+      "actual_sha256": "d5a1aae2953558aaa42ca5f7d256765ce75051d8aa66868d77827f0753571e40",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.md",
+      "expected_sha256": "fdcf1c6d11aa394f0d2960b2dfd798b3598d99d0bf1dd92ee310efa39bb6ef11",
+      "actual_sha256": "fdcf1c6d11aa394f0d2960b2dfd798b3598d99d0bf1dd92ee310efa39bb6ef11",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/SHA256SUMS",
+      "expected_sha256": "3bd9e63231b5d090b62b0a3ff49027a405b95f1dacb7016c28eee18a196c7498",
+      "actual_sha256": "3bd9e63231b5d090b62b0a3ff49027a405b95f1dacb7016c28eee18a196c7498",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-agent-browser-observation.json",
+      "expected_sha256": "b0fea1a8c4d54bb745b86ee08982e6da918ccbedd4dec868c8bc2bb7527f951b",
+      "actual_sha256": "b0fea1a8c4d54bb745b86ee08982e6da918ccbedd4dec868c8bc2bb7527f951b",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-agent-browser-observation.raw.json",
+      "expected_sha256": "7d8aaee65ad0c1e6e1e982dc9191bfcab4f3c9028cd1594289ad093a299606f3",
+      "actual_sha256": "7d8aaee65ad0c1e6e1e982dc9191bfcab4f3c9028cd1594289ad093a299606f3",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/chrome155-fixed-gutter.png",
+      "expected_sha256": "0f3786508d9b63e18260396d7e8992daf236dc9c0773e2ea525178e43e36d102",
+      "actual_sha256": "0f3786508d9b63e18260396d7e8992daf236dc9c0773e2ea525178e43e36d102",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.md",
+      "expected_sha256": "eaa6de80f0a835d733c0f2101b87c75f34457bdad4b5b3a0d6e39d38c15b26b8",
+      "actual_sha256": "eaa6de80f0a835d733c0f2101b87c75f34457bdad4b5b3a0d6e39d38c15b26b8",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.md",
+      "expected_sha256": "932ea8d13713de151e9e232de6acfe604741c21b555494e5bf05804c7eeccef1",
+      "actual_sha256": "932ea8d13713de151e9e232de6acfe604741c21b555494e5bf05804c7eeccef1",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.md",
+      "expected_sha256": "c4e4c187a2d8c17098316ef54a939eece3dd9cbf0f6ebb0aca185e205c18fb9f",
+      "actual_sha256": "c4e4c187a2d8c17098316ef54a939eece3dd9cbf0f6ebb0aca185e205c18fb9f",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.md",
+      "expected_sha256": "eff0fdfc2a1afbd98693eb32a0547374a87a2fd82442823b359b6495bad6dde8",
+      "actual_sha256": "eff0fdfc2a1afbd98693eb32a0547374a87a2fd82442823b359b6495bad6dde8",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/SHA256SUMS-preview-inputs.txt",
+      "expected_sha256": "17bca91466c02f677fb4067a62fd037e274b2ea5c5e7bc3797e42537a12667a4",
+      "actual_sha256": "17bca91466c02f677fb4067a62fd037e274b2ea5c5e7bc3797e42537a12667a4",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/SHA256SUMS.txt",
+      "expected_sha256": "89611133ff5d8c1b133850acc327f78b3e71940e7957c56ae26950be4552dd70",
+      "actual_sha256": "89611133ff5d8c1b133850acc327f78b3e71940e7957c56ae26950be4552dd70",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/backup-verification-pass3.json",
+      "expected_sha256": "ef304ae37aaaf86929e9720f65944350ab24f06ce9cac0a19404a24369e5f639",
+      "actual_sha256": "ef304ae37aaaf86929e9720f65944350ab24f06ce9cac0a19404a24369e5f639",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/backup-verification-pass4.json",
+      "expected_sha256": "3bff5be9b0fe88ab652111253ab5cccaf0a15007fb71168739aa3b733b7204e5",
+      "actual_sha256": "3bff5be9b0fe88ab652111253ab5cccaf0a15007fb71168739aa3b733b7204e5",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/backup-verification-pass5.json",
+      "expected_sha256": "8de40d1824bf90984b0b7c61f94cee7e566183a6fd5a1b3a292e40116870ae63",
+      "actual_sha256": "8de40d1824bf90984b0b7c61f94cee7e566183a6fd5a1b3a292e40116870ae63",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/copy-and-backup-pass3.json",
+      "expected_sha256": "d06889ddbad56240a10014e05ac85f553bf3418a5363c935d45b9808cf85778b",
+      "actual_sha256": "d06889ddbad56240a10014e05ac85f553bf3418a5363c935d45b9808cf85778b",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/copy-and-backup-pass4.json",
+      "expected_sha256": "10ef35ebb526097a6dcf288bc01f106687f709766bec45aeeb43c1a97adcad5e",
+      "actual_sha256": "10ef35ebb526097a6dcf288bc01f106687f709766bec45aeeb43c1a97adcad5e",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/copy-and-backup-pass5.json",
+      "expected_sha256": "c03a0df04bc310d0aecfcebeb8e2ecfaf97976138d0873dde0776321d1b51831",
+      "actual_sha256": "c03a0df04bc310d0aecfcebeb8e2ecfaf97976138d0873dde0776321d1b51831",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/copy-verification-pass3.json",
+      "expected_sha256": "309ea0e2e6ce9c3e1aa933bb8de54061931645762d5505cfe8267389a05e2815",
+      "actual_sha256": "309ea0e2e6ce9c3e1aa933bb8de54061931645762d5505cfe8267389a05e2815",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/copy-verification-pass4.json",
+      "expected_sha256": "899c7d5fc45fed4d0e3acbea5eba47ae4bb8e8dc84a527e02260a92b8cd153cf",
+      "actual_sha256": "899c7d5fc45fed4d0e3acbea5eba47ae4bb8e8dc84a527e02260a92b8cd153cf",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/copy-verification-pass5.json",
+      "expected_sha256": "323fd1e9c65bd808af550db07fe8b326e1db57c1eaaeb9bc272e7b502830e4f5",
+      "actual_sha256": "323fd1e9c65bd808af550db07fe8b326e1db57c1eaaeb9bc272e7b502830e4f5",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/open-handles-pass3.json",
+      "expected_sha256": "1efa23ac032982b809dad10723356713785e78c2a5cb713fd3b266c4a5cf8a3d",
+      "actual_sha256": "1efa23ac032982b809dad10723356713785e78c2a5cb713fd3b266c4a5cf8a3d",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/open-handles-pass4.json",
+      "expected_sha256": "663b6ef48f802f436205e54a3f3542f9c85a81f3decd0f1054c5d3670abc364c",
+      "actual_sha256": "663b6ef48f802f436205e54a3f3542f9c85a81f3decd0f1054c5d3670abc364c",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/open-handles-pass5.json",
+      "expected_sha256": "9f65c5745d28ae9fb0dbf86fe28f14e7a9f56ae52f12848d76718410f1fbf81d",
+      "actual_sha256": "9f65c5745d28ae9fb0dbf86fe28f14e7a9f56ae52f12848d76718410f1fbf81d",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.md",
+      "expected_sha256": "2015df9b3ec1d7f40bddae61db2602d033904a4317837286a837d79dd5f2e278",
+      "actual_sha256": "2015df9b3ec1d7f40bddae61db2602d033904a4317837286a837d79dd5f2e278",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/preflight-pass3.json",
+      "expected_sha256": "67b7151f8a4a66372efbe3607dda3767d7809334cac7b7c426ec51a687ee8e00",
+      "actual_sha256": "67b7151f8a4a66372efbe3607dda3767d7809334cac7b7c426ec51a687ee8e00",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/preflight-pass4.json",
+      "expected_sha256": "07699f31179c00293ae0aef551e85778afbc8327618b8039b64d6a6b3992d073",
+      "actual_sha256": "07699f31179c00293ae0aef551e85778afbc8327618b8039b64d6a6b3992d073",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/preflight-pass5.json",
+      "expected_sha256": "1b08b8390a4ee33454f8015dd21e952634df9f6cb34d2099006907a8616fb5da",
+      "actual_sha256": "1b08b8390a4ee33454f8015dd21e952634df9f6cb34d2099006907a8616fb5da",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass1.json",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass1b.json",
+      "expected_sha256": "646000708a68bbb45c18c5b040ba7759d28da22e0fefab89612c1e9a2d598a1d",
+      "actual_sha256": "646000708a68bbb45c18c5b040ba7759d28da22e0fefab89612c1e9a2d598a1d",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass2.json",
+      "expected_sha256": "40ad1cffcfab8684152117ef67d820dc63aad5fad68ccc91f86abc97bf1f0666",
+      "actual_sha256": "40ad1cffcfab8684152117ef67d820dc63aad5fad68ccc91f86abc97bf1f0666",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass3.json",
+      "expected_sha256": "6366a05182f2187dcf987e8736b596abda7172de57fb9192a16b05cbc67946e7",
+      "actual_sha256": "6366a05182f2187dcf987e8736b596abda7172de57fb9192a16b05cbc67946e7",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass4.json",
+      "expected_sha256": "1cbecfb331927126b45dcf8a0fc4bd6e6205d56a53d531e52c0c13cc2505015a",
+      "actual_sha256": "1cbecfb331927126b45dcf8a0fc4bd6e6205d56a53d531e52c0c13cc2505015a",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-root-pass5.json",
+      "expected_sha256": "b7bc70a391b846349b34b299db106c8392e636fe5cdfa94ad96946c83541b4d4",
+      "actual_sha256": "b7bc70a391b846349b34b299db106c8392e636fe5cdfa94ad96946c83541b4d4",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/prepare-selected-root.mjs",
+      "expected_sha256": "1b930502007fb7b3118b51ddb33d3d37ff9e3f7086f4aa08b8a11543ddda91bf",
+      "actual_sha256": "1b930502007fb7b3118b51ddb33d3d37ff9e3f7086f4aa08b8a11543ddda91bf",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/rspress.tailnet-sync.config.ts",
+      "expected_sha256": "1b0b02d48b0a332ad3bebe4f7910a02fcee19441ca8df7a6e6bb51a36a5815c5",
+      "actual_sha256": "1b0b02d48b0a332ad3bebe4f7910a02fcee19441ca8df7a6e6bb51a36a5815c5",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sanitize-built-site.mjs",
+      "expected_sha256": "9cb4018c42664ec79349c0129c7c51a287f4d5145ef5798887bd1dc0f6cede54",
+      "actual_sha256": "9cb4018c42664ec79349c0129c7c51a287f4d5145ef5798887bd1dc0f6cede54",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sanitize-pass3.json",
+      "expected_sha256": "c7e105eb49af483406476f1f524d988b159bacec379dc5f2e09b07f6158132fc",
+      "actual_sha256": "c7e105eb49af483406476f1f524d988b159bacec379dc5f2e09b07f6158132fc",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sanitize-pass4.json",
+      "expected_sha256": "45391addefff0b0d483b258af3858176f30a13bebfd5186571ff9229775924ee",
+      "actual_sha256": "45391addefff0b0d483b258af3858176f30a13bebfd5186571ff9229775924ee",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sanitize-pass5.json",
+      "expected_sha256": "43ffacc09fd175066ee0c067a3b892de8596167ebc7d551eb9be1f7265731879",
+      "actual_sha256": "43ffacc09fd175066ee0c067a3b892de8596167ebc7d551eb9be1f7265731879",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass1.log",
+      "expected_sha256": "1bf5ae58c5e7702cbd65fa3d2cede11952f29617530059d315f543e8cf24d2d8",
+      "actual_sha256": "1bf5ae58c5e7702cbd65fa3d2cede11952f29617530059d315f543e8cf24d2d8",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass1b.log",
+      "expected_sha256": "49f92dc67af854f2f5c0e7aa04080dd19ed7eaf384cb57952e0c44a26fc87734",
+      "actual_sha256": "49f92dc67af854f2f5c0e7aa04080dd19ed7eaf384cb57952e0c44a26fc87734",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass2.log",
+      "expected_sha256": "eb7c2ef9c889f73487a59430f5e99a991250ee04babd97a479cfdb01267bd497",
+      "actual_sha256": "eb7c2ef9c889f73487a59430f5e99a991250ee04babd97a479cfdb01267bd497",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass3.log",
+      "expected_sha256": "c527599a6ccd17f67906dc3fe338315f2b51c7f0ffcf530ea4cf0e1e7a6163f2",
+      "actual_sha256": "c527599a6ccd17f67906dc3fe338315f2b51c7f0ffcf530ea4cf0e1e7a6163f2",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass4.log",
+      "expected_sha256": "cd2127d55885daf2e7dcf3b16f97cb24c72941dd8dc80ebaa7e2c9eae7d083e7",
+      "actual_sha256": "cd2127d55885daf2e7dcf3b16f97cb24c72941dd8dc80ebaa7e2c9eae7d083e7",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass5-final.log",
+      "expected_sha256": "3217ca00dfcbe96d1e4eb8057355baaf13a47281d772f102bf69e6a73c30540f",
+      "actual_sha256": "3217ca00dfcbe96d1e4eb8057355baaf13a47281d772f102bf69e6a73c30540f",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/served-verification-pass3.json",
+      "expected_sha256": "c748c761ce062a13cca313af3d8d35555360a6438fd221d239eb5ac6c9e7bb0a",
+      "actual_sha256": "c748c761ce062a13cca313af3d8d35555360a6438fd221d239eb5ac6c9e7bb0a",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/served-verification-pass4.json",
+      "expected_sha256": "eeaad0067e4c63c4c50e7fe8ecfad2c0858489d8a8495407015bfb642246206c",
+      "actual_sha256": "eeaad0067e4c63c4c50e7fe8ecfad2c0858489d8a8495407015bfb642246206c",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/served-verification-pass5.json",
+      "expected_sha256": "4e6b2ee8534b72aa27b4cf5e24a4dffa500a5045782993bf7cfc68ff856cefd1",
+      "actual_sha256": "4e6b2ee8534b72aa27b4cf5e24a4dffa500a5045782993bf7cfc68ff856cefd1",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-preview.mjs",
+      "expected_sha256": "ce235fdd332f7fda029513087a6d1e5723ab36a7d3030ca7a02f26cb0e8f2ec9",
+      "actual_sha256": "ce235fdd332f7fda029513087a6d1e5723ab36a7d3030ca7a02f26cb0e8f2ec9",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.md",
+      "expected_sha256": "eb0299c1b03e1d199a0a43c3c886ce53e03d77fcf460e9e6511b6ec3f25df849",
+      "actual_sha256": "eb0299c1b03e1d199a0a43c3c886ce53e03d77fcf460e9e6511b6ec3f25df849",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/tailnet-plan-agent-browser.png",
+      "expected_sha256": "1cc4f17edf5fa8470230cc5275b8a4f751aa0175b345d18b2c7317aec8f1232f",
+      "actual_sha256": "1cc4f17edf5fa8470230cc5275b8a4f751aa0175b345d18b2c7317aec8f1232f",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/tailnet-roadmap-agent-browser.png",
+      "expected_sha256": "910cd5d206073fa35cbfa3ef5a4674f48c5ced853e1276b4050db37b4f27ac1d",
+      "actual_sha256": "910cd5d206073fa35cbfa3ef5a4674f48c5ced853e1276b4050db37b4f27ac1d",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/tailnet-status-agent-browser.png",
+      "expected_sha256": "658e0c27ceb89395ee9b57317a55b3bcd7195f8d359298d2bc35318b3811c964",
+      "actual_sha256": "658e0c27ceb89395ee9b57317a55b3bcd7195f8d359298d2bc35318b3811c964",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/verify-served.mjs",
+      "expected_sha256": "5c0d9f17fb31ea1298de4d2c45e7dfd5017ddb9d4ae57d2cb65024635456c968",
+      "actual_sha256": "5c0d9f17fb31ea1298de4d2c45e7dfd5017ddb9d4ae57d2cb65024635456c968",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/write-preview-inputs-manifest.mjs",
+      "expected_sha256": "242bb57edb09d67ea3a59c1f032f6245e03f08422f1165f1fd52c6bb55028830",
+      "actual_sha256": "242bb57edb09d67ea3a59c1f032f6245e03f08422f1165f1fd52c6bb55028830",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/README.md",
+      "expected_sha256": "b63c0ca57cd7616b579915bdb00e898dfcefc31f304778798f9b60dc51c27d17",
+      "actual_sha256": "b63c0ca57cd7616b579915bdb00e898dfcefc31f304778798f9b60dc51c27d17",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/chrome155-autofit-suffix-probe.json",
+      "expected_sha256": "c2cdf12398bcff925e793396551f7b42c55f17427155cecb3e92bd44935992e3",
+      "actual_sha256": "c2cdf12398bcff925e793396551f7b42c55f17427155cecb3e92bd44935992e3",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/chrome155-autofit-suffix-probe.log",
+      "expected_sha256": "52d9de7d1321f8a3f77c0a0a2f568c3e19a0dc18ae159b7ee37e8d8cec47369a",
+      "actual_sha256": "52d9de7d1321f8a3f77c0a0a2f568c3e19a0dc18ae159b7ee37e8d8cec47369a",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/fixture-artifact-boundary.json",
+      "expected_sha256": "042b96874dd5cbddfd1caa4cb987532a2e1b1bcfbc1801e9379cd06481f4e593",
+      "actual_sha256": "042b96874dd5cbddfd1caa4cb987532a2e1b1bcfbc1801e9379cd06481f4e593",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/implementation-review-20.md",
+      "expected_sha256": "65bd318b760cd762ed7668a163c84acc6f946384e13eab10820e91a8b2e80449",
+      "actual_sha256": "65bd318b760cd762ed7668a163c84acc6f946384e13eab10820e91a8b2e80449",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/pr-diff-review-30.md",
+      "expected_sha256": "c4d771ba34b72b2e5a4c3b3cfc123edb3b3630955457bb28f2cdbd47354d6844",
+      "actual_sha256": "c4d771ba34b72b2e5a4c3b3cfc123edb3b3630955457bb28f2cdbd47354d6844",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/rust-workspace-clippy.log",
+      "expected_sha256": "f97b09a2fc0fe18bc3b2fdfb4812ff40b0a5232437220451bef5815f8cbe5058",
+      "actual_sha256": "f97b09a2fc0fe18bc3b2fdfb4812ff40b0a5232437220451bef5815f8cbe5058",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/rust-workspace-test.log",
+      "expected_sha256": "cf4999e74c9159ab0f22f7dc3696261d8eafe18385a63f4cac2362f57cdec6d9",
+      "actual_sha256": "cf4999e74c9159ab0f22f7dc3696261d8eafe18385a63f4cac2362f57cdec6d9",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/spinon-layout-test.log",
+      "expected_sha256": "66a31699d05ff0de6ba60d2b12cc57984c05ff1ffcee896d582792995e87cb19",
+      "actual_sha256": "66a31699d05ff0de6ba60d2b12cc57984c05ff1ffcee896d582792995e87cb19",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/style-to-layout-test.log",
+      "expected_sha256": "f6db98efff0ae5de4eade9578933a27c24266eb40e10a79152733c753650071d",
+      "actual_sha256": "f6db98efff0ae5de4eade9578933a27c24266eb40e10a79152733c753650071d",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/README.md",
+      "expected_sha256": "1f879f23323b6e285a6e9f05ad6066273328e113bb5ee965ff221348743994d2",
+      "actual_sha256": "1f879f23323b6e285a6e9f05ad6066273328e113bb5ee965ff221348743994d2",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/chrome/chrome155-two-axis-agent-browser.png",
+      "expected_sha256": "e856a642895f1529fd880d7309a01c18afedebdc2f576c0745fceb028fe752f9",
+      "actual_sha256": "e856a642895f1529fd880d7309a01c18afedebdc2f576c0745fceb028fe752f9",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/chrome155-observation.json",
+      "expected_sha256": "0f10d241ca27130c67183ef914fc86f1dfec9350eebb538d6f21904ac787b459",
+      "actual_sha256": "0f10d241ca27130c67183ef914fc86f1dfec9350eebb538d6f21904ac787b459",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/plan-review-20.md",
+      "expected_sha256": "69c78d96700ba26511536c240dcfcbf11f06883f119b832bc96b8de8ef531974",
+      "actual_sha256": "69c78d96700ba26511536c240dcfcbf11f06883f119b832bc96b8de8ef531974",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/pr-diff-review-30.md",
+      "expected_sha256": "e85eb536ec6304c9ba4f533ca585ee51b1e41326eb40a2e26aca57f48bf6cbd2",
+      "actual_sha256": "e85eb536ec6304c9ba4f533ca585ee51b1e41326eb40a2e26aca57f48bf6cbd2",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/README.md",
+      "expected_sha256": "c6dc4b7c79fabee3b701eb36aa9cac800b12a28d3aa7728cd8e094564391aa55",
+      "actual_sha256": "c6dc4b7c79fabee3b701eb36aa9cac800b12a28d3aa7728cd8e094564391aa55",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/SHA256SUMS-preview-inputs-pass12.txt",
+      "expected_sha256": "b306a014de93da1f65cde445279f61d1382788a1f5d278d1ecb97cae5dce1e19",
+      "actual_sha256": "b306a014de93da1f65cde445279f61d1382788a1f5d278d1ecb97cae5dce1e19",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/browser-check-pass12.json",
+      "expected_sha256": "c6f857f9acacbc00980a99c3428a452ad38ac0640ca3134730a7a455bcbe366e",
+      "actual_sha256": "c6f857f9acacbc00980a99c3428a452ad38ac0640ca3134730a7a455bcbe366e",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/browser-check-pass13.json",
+      "expected_sha256": "73e10676945d7cc4ded85f2fef89d111dc62a258ceb7752f803fccdf2078c30f",
+      "actual_sha256": "73e10676945d7cc4ded85f2fef89d111dc62a258ceb7752f803fccdf2078c30f",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/browser-close-pass12.json",
+      "expected_sha256": "65827b716f27bd886c9e543cde850b8dc35cf611128c2b1181d378cc06c23022",
+      "actual_sha256": "65827b716f27bd886c9e543cde850b8dc35cf611128c2b1181d378cc06c23022",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/copy-and-backup-pass12.json",
+      "expected_sha256": "1c7a31f3eb99d63d0c14b0f11429143df39b73bb7b5d8c1305af5856ac1607ff",
+      "actual_sha256": "1c7a31f3eb99d63d0c14b0f11429143df39b73bb7b5d8c1305af5856ac1607ff",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/evidence-check-pass12.json",
+      "expected_sha256": "5735b260278c2e682c9b5128c9a7c77589a7dc9bb6fad510d7632985f186148d",
+      "actual_sha256": "5735b260278c2e682c9b5128c9a7c77589a7dc9bb6fad510d7632985f186148d",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/html-route-check-pass12.json",
+      "expected_sha256": "42e23505797efa94e2dd2bf841d3c8ec37e83e513326fc0f3f116a42d5965997",
+      "actual_sha256": "42e23505797efa94e2dd2bf841d3c8ec37e83e513326fc0f3f116a42d5965997",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/input-manifest-write-initial-failure-pass13.json",
+      "expected_sha256": "17a9cfceadc29e81b79f35c58d75c7183acf608617bd795b23b17258e0f99365",
+      "actual_sha256": "17a9cfceadc29e81b79f35c58d75c7183acf608617bd795b23b17258e0f99365",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/new-c11-4-routes-pass12.json",
+      "expected_sha256": "9101c33a9b9b9d0e242cb14968782a377c13d6e9930b7e824f6ef75355cb5cbf",
+      "actual_sha256": "9101c33a9b9b9d0e242cb14968782a377c13d6e9930b7e824f6ef75355cb5cbf",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/open-handles-initial-pass13.json",
+      "expected_sha256": "0043152710cda1356a59f846f0389a15965f404b8bc1413958408c5e0e2b52dc",
+      "actual_sha256": "0043152710cda1356a59f846f0389a15965f404b8bc1413958408c5e0e2b52dc",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/open-handles-pass12.json",
+      "expected_sha256": "41e0ba651ca2454917cd7b38e81a903438532c3adee8f0067cac9ea1cb3c43b4",
+      "actual_sha256": "41e0ba651ca2454917cd7b38e81a903438532c3adee8f0067cac9ea1cb3c43b4",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/plan-check-pass12.json",
+      "expected_sha256": "b168b4c102a8fda79019ab90870597dffc1b7e3ff32cc4e02404e0a8411fd6ee",
+      "actual_sha256": "b168b4c102a8fda79019ab90870597dffc1b7e3ff32cc4e02404e0a8411fd6ee",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/plan-check-pass13.json",
+      "expected_sha256": "da2fa8aacaacdaf91b78672c8ead85d10bbed9010752347adb47fd0a9b3c183b",
+      "actual_sha256": "da2fa8aacaacdaf91b78672c8ead85d10bbed9010752347adb47fd0a9b3c183b",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/precomparison-check-pass12.json",
+      "expected_sha256": "dc6767458c748c47e3f9d69a2015737dfbcc749c3726c26ee48904bf7955ffe0",
+      "actual_sha256": "dc6767458c748c47e3f9d69a2015737dfbcc749c3726c26ee48904bf7955ffe0",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/preflight-pass12.json",
+      "expected_sha256": "583d854da940a2aaca31f3b60e4c180201cb234b9e5298adf657a051c677b2ac",
+      "actual_sha256": "583d854da940a2aaca31f3b60e4c180201cb234b9e5298adf657a051c677b2ac",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/prepare-root-pass12.json",
+      "expected_sha256": "9743b63e02d3a987dd5a7bf7b56d9f3c9dc63ce54e6f0d835068f38e8ebcf809",
+      "actual_sha256": "9743b63e02d3a987dd5a7bf7b56d9f3c9dc63ce54e6f0d835068f38e8ebcf809",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/preserved-open-targets-pass13.json",
+      "expected_sha256": "388d2af6b721ed9e92c559e29223edc34851aefbd83acd701b7e2a4514413c46",
+      "actual_sha256": "388d2af6b721ed9e92c559e29223edc34851aefbd83acd701b7e2a4514413c46",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/route-check-initial-overstrict-pass12.json",
+      "expected_sha256": "bfff3059cfd68d33aed7eacd78c81b207104d5ce89199d350db5f73df6295253",
+      "actual_sha256": "bfff3059cfd68d33aed7eacd78c81b207104d5ce89199d350db5f73df6295253",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/sanitize-pass12.json",
+      "expected_sha256": "734ea81aa349dc2263fe11a2524fa17505cddabe441cc5d6d575a280ea76e7fa",
+      "actual_sha256": "734ea81aa349dc2263fe11a2524fa17505cddabe441cc5d6d575a280ea76e7fa",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/selected-build-pass12.log",
+      "expected_sha256": "ed3618c34e80245aadd5f0072bdd7b3cc40be62bcaae8de551e3e86c4743f416",
+      "actual_sha256": "ed3618c34e80245aadd5f0072bdd7b3cc40be62bcaae8de551e3e86c4743f416",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/served-verification-pass12.json",
+      "expected_sha256": "99569a14936e58857173ea60d32780cbc46d7279d3e390eead2257de15747993",
+      "actual_sha256": "99569a14936e58857173ea60d32780cbc46d7279d3e390eead2257de15747993",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/status-check-pass12.json",
+      "expected_sha256": "246ec0c9e7e35233c07a20a94078e19380509d14ede9d81b2f233a8f0c15a98b",
+      "actual_sha256": "246ec0c9e7e35233c07a20a94078e19380509d14ede9d81b2f233a8f0c15a98b",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/status-check-pass13.json",
+      "expected_sha256": "6772aa50e2f15df4bcb2427efec273ea6e1d20b7704db06a5dff6a2dbfcf6c81",
+      "actual_sha256": "6772aa50e2f15df4bcb2427efec273ea6e1d20b7704db06a5dff6a2dbfcf6c81",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/sync-report-check-pass12.json",
+      "expected_sha256": "90fd3fdc09e1eed2ca758e095c16adbd4f7525d6154ba9f5b979336cd1101123",
+      "actual_sha256": "90fd3fdc09e1eed2ca758e095c16adbd4f7525d6154ba9f5b979336cd1101123",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/sync-review-20.md",
+      "expected_sha256": "5d714657379578f287a0da159d55ef86db92b93426f5fff7204891cd891a94fd",
+      "actual_sha256": "5d714657379578f287a0da159d55ef86db92b93426f5fff7204891cd891a94fd",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-evidence-agent-browser-pass12.png",
+      "expected_sha256": "b533cd569b304e6338406169b7acb6a2854f248b519e1dee200f2d8fc75483e7",
+      "actual_sha256": "b533cd569b304e6338406169b7acb6a2854f248b519e1dee200f2d8fc75483e7",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-plan-agent-browser-pass12.png",
+      "expected_sha256": "95bb9d836e06d8b670f3306e893541f6a6eaf52d63af0e9d0c25d958d27624f3",
+      "actual_sha256": "95bb9d836e06d8b670f3306e893541f6a6eaf52d63af0e9d0c25d958d27624f3",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-roadmap-agent-browser-pass12.png",
+      "expected_sha256": "ae4cf44aa158ddf442660a5d8935272efb7d0581f2b06ce7e65fccd4df58fa7e",
+      "actual_sha256": "ae4cf44aa158ddf442660a5d8935272efb7d0581f2b06ce7e65fccd4df58fa7e",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-roadmap-agent-browser-pass13.png",
+      "expected_sha256": "2ab0b3b8a9c6951ce85767a913c0747a8297814be740db72017057dfa67d089f",
+      "actual_sha256": "2ab0b3b8a9c6951ce85767a913c0747a8297814be740db72017057dfa67d089f",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-status-agent-browser-pass12.png",
+      "expected_sha256": "ddb20ac500732e688e55ca084d453709567d6bb72705b702bee0b45e7b2b3772",
+      "actual_sha256": "ddb20ac500732e688e55ca084d453709567d6bb72705b702bee0b45e7b2b3772",
+      "matched": true
+    },
+    {
+      "path": "spec/public/icon.svg",
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "actual_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "matched": true
+    },
+    {
+      "path": "spec/public/logo.svg",
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "actual_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "matched": true
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "expected_sha256": "0aa15bc73118f268e239d0fd812a95b08f7faebca69152fcc64a651b066795d8",
+      "actual_sha256": "0aa15bc73118f268e239d0fd812a95b08f7faebca69152fcc64a651b066795d8",
+      "matched": true
+    },
+    {
+      "path": "spec/public/roadmap.svg",
+      "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "actual_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "matched": true
+    },
+    {
+      "path": "tests/fixtures/css/c11/grid-auto-repeat-both-axes-c114.html",
+      "expected_sha256": "ab2a305f2e29ebfe56616125373049330807c8478672d742e079da9ed0adad0f",
+      "actual_sha256": "ab2a305f2e29ebfe56616125373049330807c8478672d742e079da9ed0adad0f",
+      "matched": true
+    },
+    {
+      "path": "tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html",
+      "expected_sha256": "a95f69050a1c77b8d65105b04f0aa2fc21942c7d665cad86e6117cfc46daad7c",
+      "actual_sha256": "a95f69050a1c77b8d65105b04f0aa2fc21942c7d665cad86e6117cfc46daad7c",
+      "matched": true
+    }
+  ]
+}

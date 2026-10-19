@@ -1,0 +1,218 @@
+{
+  "pass": "pass12",
+  "preview_root_relative": "SpinonPreview",
+  "replacement_count": 52,
+  "inspected_count": 52,
+  "open_file_count": 0,
+  "all_closed": true,
+  "files": [
+    {
+      "path": "0001-conformance.html",
+      "open_pids": []
+    },
+    {
+      "path": "404.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/implementation-review-20.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/pr-diff-review-30.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/fixture-artifact-boundary.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/implementation-review-20.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/pr-diff-review-30.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/README.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/plan-review-20.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/pr-diff-review-30.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/README.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.html",
+      "open_pids": []
+    },
+    {
+      "path": "internal/README.html",
+      "open_pids": []
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-two-track-min-size.html",
+      "open_pids": []
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "open_pids": []
+    },
+    {
+      "path": "plan/c11-4-image-ratio-fixed-gutter.html",
+      "open_pids": []
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "open_pids": []
+    },
+    {
+      "path": "roadmap.html",
+      "open_pids": []
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "open_pids": []
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/implementation-review-20.html",
+      "open_pids": []
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/pr-diff-review-30.html",
+      "open_pids": []
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.html",
+      "open_pids": []
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/fixture-artifact-boundary.html",
+      "open_pids": []
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/implementation-review-20.html",
+      "open_pids": []
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/pr-diff-review-30.html",
+      "open_pids": []
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/README.html",
+      "open_pids": []
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/plan-review-20.html",
+      "open_pids": []
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/pr-diff-review-30.html",
+      "open_pids": []
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/README.html",
+      "open_pids": []
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "open_pids": []
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "open_pids": []
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "open_pids": []
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "open_pids": []
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "open_pids": []
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "open_pids": []
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "open_pids": []
+    },
+    {
+      "path": "STATUS.html",
+      "open_pids": []
+    }
+  ]
+}

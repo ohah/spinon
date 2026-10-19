@@ -1,0 +1,112 @@
+{
+  "contains33SceneRows": true,
+  "containsAndroid": true,
+  "containsIOS": true,
+  "imageFailures": [],
+  "images": [
+    {
+      "complete": true,
+      "naturalHeight": 150,
+      "naturalWidth": 150,
+      "src": "https://macstudio.tailed42f2.ts.net/spinon/logo.svg"
+    },
+    {
+      "complete": true,
+      "naturalHeight": 2400,
+      "naturalWidth": 1080,
+      "src": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/android-avd-c114-neighbors-android-avd-20261019T221920350Z-cf547c61/both-fit-second-repeat.png"
+    },
+    {
+      "complete": true,
+      "naturalHeight": 2622,
+      "naturalWidth": 1206,
+      "src": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/ios-simulator-c114-neighbors-ios-simulator-20261019T220311971Z-4cde0c2a/both-fit-second-repeat.png"
+    }
+  ],
+  "links": [
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/",
+      "text": "스피논"
+    },
+    {
+      "href": "https://github.com/ohah/spinon",
+      "text": ""
+    },
+    {
+      "href": "https://github.com/ohah/spinon",
+      "text": ""
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/0001-conformance.html",
+      "text": "0001 · 범위와 적합성"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/0059-c11-grid-layout.html",
+      "text": "0059 · C11 Grid 레이아웃 내부 계약"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/implementation-review-20.html",
+      "text": "C11.4 explicit-neighbor auto-repeat 구현 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/pr-diff-review-30.html",
+      "text": "C11.4 explicit-neighbor auto-repeat PR diff 적대 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.html",
+      "text": "C11.4 explicit-neighbor auto-repeat 실행 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/fixture-artifact-boundary.html",
+      "text": "C11.4 fixture artifact 경계 확인"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/implementation-review-20.html",
+      "text": "C11.4 definite minimum-size two-track auto-repeat 구현 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/pr-diff-review-30.html",
+      "text": "C11.4 definite minimum-size two-track auto-repeat · PR diff 적대 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/README.html",
+      "text": "C11.4 definite minimum-size · two-track auto-repeat 구현 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/plan-review-20.html",
+      "text": "C11.4 definite min-size + two-track auto-repeat 계획 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/pr-diff-review-30.html",
+      "text": "계획 PR diff 적대 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/README.html",
+      "text": "C11.4 two-track auto-repeat · definite minimum-size 사전 비교"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html",
+      "text": "Fixture artifact feature boundary"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "text": "C11.4 image intrinsic fixture 구현 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "text": "C11.4 이미지 intrinsic 행렬 PR diff 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+      "text": "C11.4 direct-leaf image intrinsic matrix"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "text": "C11.4 fixed gutter 구현 적대 검토 · 20개 실패 관점"
+    }
+  ],
+  "readyState": "complete",
+  "sameOriginOutsideBaseLinks": [],
+  "title": "C11.4 · 양쪽 Grid 축 auto-repeat 구현 근거 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/README.html"
+}

@@ -1,0 +1,1535 @@
+{
+  "pass": "pass12",
+  "site_root": "build/spinon/c11-4-image-tailnet-site-pass12",
+  "html_route_count": 69,
+  "same_origin_out_of_base_count": 0,
+  "missing_same_origin_target_count": 305,
+  "out_of_base": [],
+  "missing": [
+    {
+      "page": "0001-conformance.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "404.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "404.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "STATUS.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "STATUS.html",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/js-api.html",
+      "target": "js-api.html"
+    },
+    {
+      "page": "STATUS.html",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c04-12-visual-viewport.html",
+      "target": "plan/c04-12-visual-viewport.html"
+    },
+    {
+      "page": "STATUS.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-app-stage-trace-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-app-stage-trace-2026-10-19/README.html"
+    },
+    {
+      "page": "STATUS.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-app-trace-failure-path-followup-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-app-trace-failure-path-followup-2026-10-19/README.html"
+    },
+    {
+      "page": "internal/0059-c11-grid-layout.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.html",
+      "href": "/spinon/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/SHA256SUMS",
+      "target": "internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/SHA256SUMS"
+    },
+    {
+      "page": "internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/implementation-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/pr-diff-review-30.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/fixture-artifact-boundary.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/implementation-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/pr-diff-review-30.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/plan-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/pr-diff-review-30.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+      "href": "/spinon/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/",
+      "target": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+      "href": "/spinon/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/",
+      "target": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html",
+      "href": "/spinon/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/verify-artifact-boundary.sh",
+      "target": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/verify-artifact-boundary.sh"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/implementation-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/pr-diff-review-30.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/plan-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/pr-diff-review-30.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "plan/c11-4-auto-repeat-two-track-min-size.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-trace-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-trace-2026-10-19/README.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/README.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/auto-repeat/README.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/auto-repeat/README.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/README.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/implementation-review-20.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/implementation-review-20.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/grid-item-intrinsic-contribution-implementation-review-20.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/grid-item-intrinsic-contribution-implementation-review-20.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/grid-item-intrinsic-contribution-pr-diff-review-30.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/grid-item-intrinsic-contribution-pr-diff-review-30.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/grid-item-intrinsic-input-review-20.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/grid-item-intrinsic-input-review-20.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-diff-review-30.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-diff-review-30.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-0.14-automatic-minimum-audit.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-0.14-automatic-minimum-audit.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-audit-plan-review-20.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-audit-plan-review-20.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/current-implementation-review-20-2026-10-19.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/current-implementation-review-20-2026-10-19.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-app-stage-trace-2026-10-19/implementation-review-20.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-app-stage-trace-2026-10-19/implementation-review-20.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-app-stage-trace-2026-10-19/pr-diff-review-30.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-app-stage-trace-2026-10-19/pr-diff-review-30.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/track-sizing-pr-diff-review-30.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/track-sizing-pr-diff-review-30.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/README.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/auto-repeat/README.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/auto-repeat/README.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-0.14-automatic-minimum-audit.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-0.14-automatic-minimum-audit.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-015-existing-grid-regression.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-015-existing-grid-regression.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-app-stage-trace-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-app-stage-trace-2026-10-19/README.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-app-trace-failure-path-followup-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-app-trace-failure-path-followup-2026-10-19/README.html"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/README.html"
+    },
+    {
+      "page": "plan/c11-4-image-ratio-fixed-gutter.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "plan/c11-4-two-axis-auto-repeat.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "plan/c11-css-grid.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c04-runtime-css-to-gpu.html",
+      "target": "plan/c04-runtime-css-to-gpu.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/compatibility.html",
+      "target": "compatibility.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/css-plan.html",
+      "target": "css-plan.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/js-api.html",
+      "target": "js-api.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/docs/",
+      "target": "docs/index.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c11-4-image-ratio-transfer-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-image-ratio-transfer-2026-10-19/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c11-4-image-ratio-transfer-simulator-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-image-ratio-transfer-simulator-2026-10-19/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c11-4-image-ratio-span-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-image-ratio-span-2026-10-19/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/README.html",
+      "target": "internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c11-4-cyclic-grid-gap-precomparison-2026-10-20/README.html",
+      "target": "internal/evidence/c11-4-cyclic-grid-gap-precomparison-2026-10-20/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c04-root-html-document-environment.html",
+      "target": "plan/c04-root-html-document-environment.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c04-12-root-canvas-color-scheme.html",
+      "target": "plan/c04-12-root-canvas-color-scheme.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-canvas-color-scheme-2026-10-17/README.html",
+      "target": "internal/evidence/c04-12-root-canvas-color-scheme-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/0077-c04-12-root-html-document.html",
+      "target": "internal/0077-c04-12-root-html-document.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-html-default-app-2026-10-17/README.html",
+      "target": "internal/evidence/c04-12-root-html-default-app-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/README.html",
+      "target": "internal/evidence/c04-12-root-html-runtime-environment-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-root-html-document-environment-2026-10-17/README.html",
+      "target": "internal/evidence/c04-root-html-document-environment-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c04-12-document-canvas-background.html",
+      "target": "plan/c04-12-document-canvas-background.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-document-canvas-background-2026-10-18/README.html",
+      "target": "internal/evidence/c04-12-document-canvas-background-2026-10-18/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c04-12-root-html-block-paint.html",
+      "target": "plan/c04-12-root-html-block-paint.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/0077-c04-12-root-html-document.html",
+      "target": "internal/0077-c04-12-root-html-document.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-html-block-paint-2026-10-18/README.html",
+      "target": "internal/evidence/c04-12-root-html-block-paint-2026-10-18/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-html-block-paint-implementation-review-20-2026-10-18.html",
+      "target": "internal/evidence/c04-12-root-html-block-paint-implementation-review-20-2026-10-18.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-html-block-paint-pr-diff-review-30-2026-10-18.html",
+      "target": "internal/evidence/c04-12-root-html-block-paint-pr-diff-review-30-2026-10-18.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-html-block-paint-android-simulator-2026-10-18/light.png",
+      "target": "internal/evidence/c04-12-root-html-block-paint-android-simulator-2026-10-18/light.png"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-html-block-paint-android-simulator-2026-10-18/dark.png",
+      "target": "internal/evidence/c04-12-root-html-block-paint-android-simulator-2026-10-18/dark.png"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-html-block-paint-ios-simulator-2026-10-18/light.png",
+      "target": "internal/evidence/c04-12-root-html-block-paint-ios-simulator-2026-10-18/light.png"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-html-block-paint-ios-simulator-2026-10-18/dark.png",
+      "target": "internal/evidence/c04-12-root-html-block-paint-ios-simulator-2026-10-18/dark.png"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c04-12-root-html-text-paint.html",
+      "target": "plan/c04-12-root-html-text-paint.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/0080-c04-12-root-html-direct-text-paint.html",
+      "target": "internal/0080-c04-12-root-html-direct-text-paint.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-html-text-paint-2026-10-18/README.html",
+      "target": "internal/evidence/c04-12-root-html-text-paint-2026-10-18/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-html-text-paint-tailnet-sync-2026-10-18/README.html",
+      "target": "internal/evidence/c04-12-root-html-text-paint-tailnet-sync-2026-10-18/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c04-12-visual-viewport.html",
+      "target": "plan/c04-12-visual-viewport.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-visual-viewport-2026-10-17/README.html",
+      "target": "internal/evidence/c04-12-visual-viewport-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c04-12-page-scale-rendering.html",
+      "target": "plan/c04-12-page-scale-rendering.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-page-scale-rendering-2026-10-17/README.html",
+      "target": "internal/evidence/c04-12-page-scale-rendering-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c14-1-root-html-image-source.html",
+      "target": "plan/c14-1-root-html-image-source.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c14-1-root-html-image-source-2026-10-18/README.html",
+      "target": "internal/evidence/c14-1-root-html-image-source-2026-10-18/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/README.html",
+      "target": "spec/internal/evidence/c19-2-runtime-simulators-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html",
+      "target": "spec/internal/evidence/c19-1-computed-color-precomparison-2026-10-16/chromium-source-analysis-2026-10-17.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-2a-inline-text-layout-2026-10-17/README.html",
+      "target": "internal/evidence/c15-2a-inline-text-layout-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-2-inline-text-precomparison-2026-10-17/README.html",
+      "target": "internal/evidence/c15-2-inline-text-precomparison-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/README.html",
+      "target": "internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/implementation-review-20.html",
+      "target": "internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/implementation-review-20.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/pr-delta-review-30.html",
+      "target": "internal/evidence/c15-2b-mixed-baseline-anonymous-flow-2026-10-17/pr-delta-review-30.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/README.html",
+      "target": "internal/evidence/c15-3-unicode-shaping-impl-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html",
+      "target": "internal/evidence/c15-3-unicode-shaping-precomparison-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/0071-c15-3-glyph-raster-snapshot.html",
+      "target": "internal/0071-c15-3-glyph-raster-snapshot.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-glyph-raster-2026-10-17/README.html",
+      "target": "internal/evidence/c15-3-glyph-raster-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/0072-c15-3-wgpu-glyph-paint.html",
+      "target": "internal/0072-c15-3-wgpu-glyph-paint.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/README.html",
+      "target": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/implementation-review-20.html",
+      "target": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/implementation-review-20.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/pr-delta-review-30.html",
+      "target": "internal/evidence/c15-3-wgpu-glyph-paint-2026-10-17/pr-delta-review-30.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-overflow-clip-precomparison-2026-10-17/README.html",
+      "target": "internal/evidence/c15-3-overflow-clip-precomparison-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-overflow-clip-precomparison-2026-10-17/implementation-review-20.html",
+      "target": "internal/evidence/c15-3-overflow-clip-precomparison-2026-10-17/implementation-review-20.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-overflow-clip-precomparison-2026-10-17/artifact-boundary.txt",
+      "target": "internal/evidence/c15-3-overflow-clip-precomparison-2026-10-17/artifact-boundary.txt"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-overflow-clip-precomparison-2026-10-17/android-screen.png",
+      "target": "internal/evidence/c15-3-overflow-clip-precomparison-2026-10-17/android-screen.png"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-overflow-clip-precomparison-2026-10-17/android-pixelcopy.png",
+      "target": "internal/evidence/c15-3-overflow-clip-precomparison-2026-10-17/android-pixelcopy.png"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-overflow-clip-precomparison-2026-10-17/ios-screen.png",
+      "target": "internal/evidence/c15-3-overflow-clip-precomparison-2026-10-17/ios-screen.png"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/0073-c15-3-overflow-text-owner-hit-test.html",
+      "target": "internal/0073-c15-3-overflow-text-owner-hit-test.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-overflow-text-hit-test-2026-10-17/README.html",
+      "target": "internal/evidence/c15-3-overflow-text-hit-test-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c15-inline-text-layout.html",
+      "target": "plan/c15-inline-text-layout.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/README.html",
+      "target": "internal/evidence/c15-3-text-scroll-transform-precomparison-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c04-12-root-html-default-rendering.html",
+      "target": "plan/c04-12-root-html-default-rendering.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/0081-c04-12-root-html-default-runtime.html",
+      "target": "internal/0081-c04-12-root-html-default-runtime.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/README.html",
+      "target": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/android/simulator-screen.png",
+      "target": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/android/simulator-screen.png"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/android/simulator-screen-dark.png",
+      "target": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/android/simulator-screen-dark.png"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/ios/simulator-screen.png",
+      "target": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/ios/simulator-screen.png"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/ios/simulator-screen-dark.png",
+      "target": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/ios/simulator-screen-dark.png"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/implementation-review-20.html",
+      "target": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/implementation-review-20.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-html-default-rendering-2026-10-19/pr-delta-review-30.html",
+      "target": "internal/evidence/c04-12-root-html-default-rendering-2026-10-19/pr-delta-review-30.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/README.html",
+      "target": "internal/evidence/c04-12-root-html-default-rendering-precomparison-2026-10-18/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c04-12-default-app-launch.html",
+      "target": "plan/c04-12-default-app-launch.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/0081-c04-12-root-html-default-runtime.html",
+      "target": "internal/0081-c04-12-root-html-default-runtime.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c04-12-default-app-launch-2026-10-19/README.html",
+      "target": "internal/evidence/c04-12-default-app-launch-2026-10-19/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c13-1-full-physical-pixel-parity.html",
+      "target": "plan/c13-1-full-physical-pixel-parity.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c13-1-full-physical-pixel-parity-2026-10-18/README.html",
+      "target": "internal/evidence/c13-1-full-physical-pixel-parity-2026-10-18/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c13-1-full-physical-pixel-parity-2026-10-18/implementation-review-20.html",
+      "target": "internal/evidence/c13-1-full-physical-pixel-parity-2026-10-18/implementation-review-20.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/0060-c13-1-overflow-clip.html",
+      "target": "internal/0060-c13-1-overflow-clip.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c13-1-stacking-descendant-clip-controls.html",
+      "target": "plan/c13-1-stacking-descendant-clip-controls.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/0060-c13-1-overflow-clip.html",
+      "target": "internal/0060-c13-1-overflow-clip.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/README.html",
+      "target": "internal/evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/android-guard-run-03-screen.png",
+      "target": "internal/evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/android-guard-run-03-screen.png"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/ios-guard-run-03-screen.png",
+      "target": "internal/evidence/c13-1-stacking-descendant-clip-runtime-2026-10-18/ios-guard-run-03-screen.png"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c13-1-stacking-app-full-viewport-hit-identity.html",
+      "target": "plan/c13-1-stacking-app-full-viewport-hit-identity.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/README.html",
+      "target": "internal/evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/chrome155-stacking-full-viewport.png",
+      "target": "internal/evidence/c13-1-stacking-app-full-viewport-hit-2026-10-18/chrome155-stacking-full-viewport.png"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/0074-c15-3-runtime-glyph-scroll-transform.html",
+      "target": "internal/0074-c15-3-runtime-glyph-scroll-transform.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-text-scroll-transform-2026-10-17/README.html",
+      "target": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-text-scroll-transform-2026-10-17/implementation-review-20.html",
+      "target": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/implementation-review-20.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-text-scroll-transform-2026-10-17/pr-delta-review-20.html",
+      "target": "internal/evidence/c15-3-text-scroll-transform-2026-10-17/pr-delta-review-20.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/0075-c15-3-hostdocument-text-paint-bridge.html",
+      "target": "internal/0075-c15-3-hostdocument-text-paint-bridge.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/README.html",
+      "target": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/implementation-review-20.html",
+      "target": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/implementation-review-20.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/pr-delta-review-30.html",
+      "target": "internal/evidence/c15-3-hostdocument-text-paint-implementation-2026-10-17/pr-delta-review-30.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c14-1-live-v8-image-measurement-2026-10-16/README.html",
+      "target": "internal/evidence/c14-1-live-v8-image-measurement-2026-10-16/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c12-4-follow-up-verification-2026-10-12/current-source-rerun-20261012-09/README.html",
+      "target": "spec/internal/evidence/c12-4-follow-up-verification-2026-10-12/current-source-rerun-20261012-09/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/c12-4-follow-up-verification.html#host-title",
+      "target": "c12-4-follow-up-verification.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c12-4-follow-up-verification-2026-10-12/current-source-rerun-20261012-10/README.html",
+      "target": "spec/internal/evidence/c12-4-follow-up-verification-2026-10-12/current-source-rerun-20261012-10/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c12-4-renderer-duration-soak-2026-10-12/android-avd-c124soak-20261012T142632962Z-75eddc/README.html",
+      "target": "spec/internal/evidence/c12-4-renderer-duration-soak-2026-10-12/android-avd-c124soak-20261012T142632962Z-75eddc/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/public/c12-4-runtime-evidence.html#renderer-duration-soak",
+      "target": "spec/public/c12-4-runtime-evidence.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c12-4-repeated-session-lifecycle.html",
+      "target": "plan/c12-4-repeated-session-lifecycle.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/README.html",
+      "target": "spec/internal/evidence/c12-4-repeated-session-lifecycle-2026-10-19/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/c12-4-follow-up-verification.html",
+      "target": "c12-4-follow-up-verification.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c13-3-native-wheel-input.html",
+      "target": "plan/c13-3-native-wheel-input.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.html",
+      "target": "spec/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/README.html",
+      "target": "spec/internal/evidence/c13-3-wheel-delta-routing-2026-10-15/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c13-3-native-wheel-input.html",
+      "target": "plan/c13-3-native-wheel-input.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c13-3-native-wheel-api29-2026-10-17/README.html",
+      "target": "internal/evidence/c13-3-native-wheel-api29-2026-10-17/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c13-3-ios-app-event-boundary.html",
+      "target": "plan/c13-3-ios-app-event-boundary.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c13-3-ios-app-event-boundary-2026-10-18/README.html",
+      "target": "internal/evidence/c13-3-ios-app-event-boundary-2026-10-18/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c13-3-ios-app-event-boundary-plan-review-20.html",
+      "target": "plan/c13-3-ios-app-event-boundary-plan-review-20.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c13-3-ios-app-event-boundary-2026-10-18/implementation-review-20.html",
+      "target": "internal/evidence/c13-3-ios-app-event-boundary-2026-10-18/implementation-review-20.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c13-3-ios-app-event-boundary-2026-10-18/pr-delta-review-30.html",
+      "target": "internal/evidence/c13-3-ios-app-event-boundary-2026-10-18/pr-delta-review-30.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c13-3-native-wheel-input.html",
+      "target": "plan/c13-3-native-wheel-input.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.html",
+      "target": "internal/evidence/c13-3-ios-native-wheel-adapter-2026-10-18/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c13-3-ios-wheel-callback-tailnet-sync-2026-10-18/README.html",
+      "target": "internal/evidence/c13-3-ios-wheel-callback-tailnet-sync-2026-10-18/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/README.html",
+      "target": "internal/evidence/c13-3-ios-wheel-delivery-oracle-2026-10-18/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/css-plan.html",
+      "target": "css-plan.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c12-positioning.html",
+      "target": "plan/c12-positioning.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/c10-3-3-android-physical-2026-10-11.png",
+      "target": "c10-3-3-android-physical-2026-10-11.png"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-present-fence-2026-10-08.html",
+      "target": "spec/internal/evidence/r05-android-present-fence-2026-10-08.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-api-compatibility-2026-10-08.html",
+      "target": "spec/internal/evidence/r05-android-api-compatibility-2026-10-08.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-callback-failure-injection-2026-10-08.html",
+      "target": "spec/internal/evidence/r05-android-callback-failure-injection-2026-10-08.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-applied-transaction-lifecycle-2026-10-08/README.html",
+      "target": "spec/internal/evidence/r05-android-applied-transaction-lifecycle-2026-10-08/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-api371-applied-transaction-2026-10-08/README.html",
+      "target": "spec/internal/evidence/r05-android-api371-applied-transaction-2026-10-08/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-api35-370-applied-transaction-2026-10-08/README.html",
+      "target": "spec/internal/evidence/r05-android-api35-370-applied-transaction-2026-10-08/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-callback-api-matrix-2026-10-08/README.html",
+      "target": "spec/internal/evidence/r05-android-callback-api-matrix-2026-10-08/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-api370-capture-2026-10-08/README.html",
+      "target": "spec/internal/evidence/r05-android-api370-capture-2026-10-08/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-physical-callback-faults-2026-10-08/README.html",
+      "target": "spec/internal/evidence/r05-android-physical-callback-faults-2026-10-08/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-physical-present-fence-2026-10-09/README.html",
+      "target": "spec/internal/evidence/r05-android-physical-present-fence-2026-10-09/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-physical-input-join-2026-10-09/device-repeat-2026-10-09/README.html",
+      "target": "spec/internal/evidence/r05-android-physical-input-join-2026-10-09/device-repeat-2026-10-09/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-direct-touch-exploration-2026-10-09/README.html",
+      "target": "spec/internal/evidence/r05-android-direct-touch-exploration-2026-10-09/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-physical-device-retest-2026-10-09/README.html",
+      "target": "spec/internal/evidence/r05-android-physical-device-retest-2026-10-09/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-api29-34-fallback-2026-10-09/README.html",
+      "target": "spec/internal/evidence/r05-android-api29-34-fallback-2026-10-09/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-physical-device-retest-2026-10-09/README.html",
+      "target": "spec/internal/evidence/r05-android-physical-device-retest-2026-10-09/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-physical-device-retest-2026-10-09/README.html",
+      "target": "spec/internal/evidence/r05-android-physical-device-retest-2026-10-09/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-api29-unwind-link-2026-10-09/README.html",
+      "target": "spec/internal/evidence/r05-android-api29-unwind-link-2026-10-09/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-release-isolation-2026-10-09/README.html",
+      "target": "spec/internal/evidence/r05-android-release-isolation-2026-10-09/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c11-2-1-explicit-grid-placement.html",
+      "target": "plan/c11-2-1-explicit-grid-placement.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c11-2-2-sparse-row-placement.html",
+      "target": "plan/c11-2-2-sparse-row-placement.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-2-2-sparse-row-placement-android-runtime-matrix-2026-10-13/c1122-avd-mv61a1sd-32a80873/README.html",
+      "target": "spec/internal/evidence/c11-2-2-sparse-row-placement-android-runtime-matrix-2026-10-13/c1122-avd-mv61a1sd-32a80873/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-2-2-sparse-row-placement-ios-simulator-runtime-matrix-2026-10-13/c1122-i-mv61i5ir-95971d40/README.html",
+      "target": "spec/internal/evidence/c11-2-2-sparse-row-placement-ios-simulator-runtime-matrix-2026-10-13/c1122-i-mv61i5ir-95971d40/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-2-2-grid-allocation-failure-2026-10-13/README.html",
+      "target": "spec/internal/evidence/c11-2-2-grid-allocation-failure-2026-10-13/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-2-3-grid-allocation-failure-2026-10-13.html",
+      "target": "spec/internal/evidence/c11-2-3-grid-allocation-failure-2026-10-13.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c11-2-3-dense-column-placement.html",
+      "target": "plan/c11-2-3-dense-column-placement.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c11-2-3-mobile-surface-pixels.html",
+      "target": "plan/c11-2-3-mobile-surface-pixels.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-2-3-dense-column-placement-precomparison-2026-10-13/README.html",
+      "target": "spec/internal/evidence/c11-2-3-dense-column-placement-precomparison-2026-10-13/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-2-3-dense-column-placement-implementation-review-2026-10-13.html",
+      "target": "spec/internal/evidence/c11-2-3-dense-column-placement-implementation-review-2026-10-13.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-2-3-mobile-surface-pixels-implementation-review-2026-10-13.html",
+      "target": "spec/internal/evidence/c11-2-3-mobile-surface-pixels-implementation-review-2026-10-13.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-2-3-dense-column-placement-android-physical-runtime-matrix-2026-10-13/c1123-a-mv5yld3e-4ded3cc6/README.html",
+      "target": "spec/internal/evidence/c11-2-3-dense-column-placement-android-physical-runtime-matrix-2026-10-13/c1123-a-mv5yld3e-4ded3cc6/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-2-3-dense-column-placement-ios-simulator-runtime-matrix-2026-10-13/c1123-i-mv5ymb0x-10eed1fb/README.html",
+      "target": "spec/internal/evidence/c11-2-3-dense-column-placement-ios-simulator-runtime-matrix-2026-10-13/c1123-i-mv5ymb0x-10eed1fb/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c11-2-3-ios-source-repair.html",
+      "target": "plan/c11-2-3-ios-source-repair.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-2-3-dense-column-placement-ios-simulator-runtime-matrix-2026-10-13/c1123-i-mv6mhrrq-785dbe7a/README.html",
+      "target": "spec/internal/evidence/c11-2-3-dense-column-placement-ios-simulator-runtime-matrix-2026-10-13/c1123-i-mv6mhrrq-785dbe7a/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-2-3-ios-source-repair-implementation-review-2026-10-13.html",
+      "target": "spec/internal/evidence/c11-2-3-ios-source-repair-implementation-review-2026-10-13.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c11-2-3-android-jni-feature-gate.html",
+      "target": "plan/c11-2-3-android-jni-feature-gate.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-2-3-android-jni-gate-2026-10-19/README.html",
+      "target": "spec/internal/evidence/c11-2-3-android-jni-gate-2026-10-19/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-015-existing-grid-regression.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/taffy-015-existing-grid-regression.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-trace-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-trace-2026-10-19/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/README.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/auto-repeat/README.html",
+      "target": "internal/evidence/c11-4-grid-track-sizing-simulator-2026-10-19/auto-repeat/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-16/README.html",
+      "target": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-16/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-14/android-avd-c1133-matrix-20261014T023829118Z-d027504f/README.html",
+      "target": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-14/android-avd-c1133-matrix-20261014T023829118Z-d027504f/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-14/ios-simulator-c1133-ios-simulator-20261014T023918758Z-45918e12/README.html",
+      "target": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-14/ios-simulator-c1133-ios-simulator-20261014T023918758Z-45918e12/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-3-3-grid-template-areas-implementation-review-2026-10-14.html",
+      "target": "spec/internal/evidence/c11-3-3-grid-template-areas-implementation-review-2026-10-14.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-3-3-post-merge-followup-2026-10-14/README.html",
+      "target": "spec/internal/evidence/c11-3-3-post-merge-followup-2026-10-14/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-3-2-grid-named-lines-runtime-2026-10-14/android-avd-c1132-android-avd-20261013T231257017Z-496b3f85/README.html",
+      "target": "spec/internal/evidence/c11-3-2-grid-named-lines-runtime-2026-10-14/android-avd-c1132-android-avd-20261013T231257017Z-496b3f85/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-3-2-grid-named-lines-runtime-2026-10-14/android-physical-c1132-android-physical-20261013T182250660Z-6c98e33d/README.html",
+      "target": "spec/internal/evidence/c11-3-2-grid-named-lines-runtime-2026-10-14/android-physical-c1132-android-physical-20261013T182250660Z-6c98e33d/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-3-2-grid-named-lines-runtime-2026-10-14/ios-simulator-c1132-ios-simulator-20261013T214737423Z-a26930a7/README.html",
+      "target": "spec/internal/evidence/c11-3-2-grid-named-lines-runtime-2026-10-14/ios-simulator-c1132-ios-simulator-20261013T214737423Z-a26930a7/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c11-3-template-repeat-named-lines-areas.html",
+      "target": "plan/c11-3-template-repeat-named-lines-areas.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-3-2-grid-named-lines-implementation-review-2026-10-14.html",
+      "target": "spec/internal/evidence/c11-3-2-grid-named-lines-implementation-review-2026-10-14.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-3-1-grid-repeat-pixels-2026-10-13/source-gate.json",
+      "target": "spec/internal/evidence/c11-3-1-grid-repeat-pixels-2026-10-13/source-gate.json"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-3-1-grid-repeat-pixels-2026-10-13/android-physical-c1131-android-physical-20261013T145150083Z-412c65a2/README.html",
+      "target": "spec/internal/evidence/c11-3-1-grid-repeat-pixels-2026-10-13/android-physical-c1131-android-physical-20261013T145150083Z-412c65a2/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-3-1-grid-repeat-pixels-2026-10-13/ios-simulator-c1131-ios-simulator-20261013T144912595Z-43f20ba7/README.html",
+      "target": "spec/internal/evidence/c11-3-1-grid-repeat-pixels-2026-10-13/ios-simulator-c1131-ios-simulator-20261013T144912595Z-43f20ba7/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/c11-3-1-grid-repeat-pixels-implementation-review-2026-10-13.html",
+      "target": "spec/internal/evidence/c11-3-1-grid-repeat-pixels-implementation-review-2026-10-13.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c11-3-template-repeat-named-lines-areas.html",
+      "target": "plan/c11-3-template-repeat-named-lines-areas.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-16kb-rebuild-2026-10-08.html",
+      "target": "spec/internal/evidence/r05-android-16kb-rebuild-2026-10-08.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-callback-failure-injection-2026-10-08.html",
+      "target": "spec/internal/evidence/r05-android-callback-failure-injection-2026-10-08.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-callback-api-matrix-2026-10-08/README.html",
+      "target": "spec/internal/evidence/r05-android-callback-api-matrix-2026-10-08/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-api-compatibility-2026-10-08.html",
+      "target": "spec/internal/evidence/r05-android-api-compatibility-2026-10-08.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-ios-present-feedback-2026-10-08.html",
+      "target": "spec/internal/evidence/r05-ios-present-feedback-2026-10-08.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/c04-runtime-css-to-gpu.html",
+      "target": "plan/c04-runtime-css-to-gpu.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/plan/s04-10-presented-frame-gate.html",
+      "target": "plan/s04-10-presented-frame-gate.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/0079-s04-10-confirmed-frame-registry.html",
+      "target": "internal/0079-s04-10-confirmed-frame-registry.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html",
+      "target": "internal/evidence/s04-10-presented-frame-gate-2026-10-18/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html",
+      "target": "internal/evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.html"
+    },
+    {
+      "page": "roadmap.html",
+      "href": "/spinon/spec/internal/evidence/r05-android-physical-input-join-2026-10-09/device-repeat-2026-10-09/README.html",
+      "target": "spec/internal/evidence/r05-android-physical-input-join-2026-10-09/device-repeat-2026-10-09/README.html"
+    },
+    {
+      "page": "spec/internal/0059-c11-grid-layout.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.html",
+      "href": "/spinon/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/SHA256SUMS",
+      "target": "internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/SHA256SUMS"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/implementation-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/pr-diff-review-30.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/fixture-artifact-boundary.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/implementation-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/pr-diff-review-30.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/plan-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/pr-diff-review-30.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/implementation-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/pr-diff-review-30.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/plan-review-20.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/pr-diff-review-30.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/README.html",
+      "href": "/spinon/",
+      "target": "index.html"
+    },
+    {
+      "page": "tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html",
+      "href": "../../resources/c14-1-png-basic.png",
+      "target": "tests/fixtures/resources/c14-1-png-basic.png"
+    },
+    {
+      "page": "tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html",
+      "href": "../../resources/c14-1-png-basic.png",
+      "target": "tests/fixtures/resources/c14-1-png-basic.png"
+    },
+    {
+      "page": "tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html",
+      "href": "../../resources/c14-1-png-basic.png",
+      "target": "tests/fixtures/resources/c14-1-png-basic.png"
+    },
+    {
+      "page": "tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html",
+      "href": "../../resources/c14-1-png-basic.png",
+      "target": "tests/fixtures/resources/c14-1-png-basic.png"
+    },
+    {
+      "page": "tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html",
+      "href": "../../resources/c14-1-png-basic.png",
+      "target": "tests/fixtures/resources/c14-1-png-basic.png"
+    },
+    {
+      "page": "tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html",
+      "href": "../../resources/c14-1-png-basic.png",
+      "target": "tests/fixtures/resources/c14-1-png-basic.png"
+    },
+    {
+      "page": "tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html",
+      "href": "../../resources/c14-1-png-basic.png",
+      "target": "tests/fixtures/resources/c14-1-png-basic.png"
+    },
+    {
+      "page": "tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html",
+      "href": "../../resources/c14-1-png-basic.png",
+      "target": "tests/fixtures/resources/c14-1-png-basic.png"
+    },
+    {
+      "page": "tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html",
+      "href": "../../resources/c14-1-png-basic.png",
+      "target": "tests/fixtures/resources/c14-1-png-basic.png"
+    },
+    {
+      "page": "tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html",
+      "href": "../../resources/c14-1-png-basic.png",
+      "target": "tests/fixtures/resources/c14-1-png-basic.png"
+    }
+  ]
+}

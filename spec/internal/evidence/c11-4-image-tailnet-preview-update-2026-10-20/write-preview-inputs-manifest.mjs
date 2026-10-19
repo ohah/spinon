@@ -7,7 +7,7 @@ const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, '../../../..');
 const evidenceRoot = 'spec/internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20';
 const run = process.env.SPINON_TAILNET_RUN;
-if (!['pass6', 'pass7', 'pass8', 'pass9', 'pass11'].includes(run)) throw new Error('SPINON_TAILNET_RUN must be pass6, pass7, pass8, pass9, or pass11');
+if (!['pass6', 'pass7', 'pass8', 'pass9', 'pass11', 'pass12', 'pass13'].includes(run)) throw new Error('SPINON_TAILNET_RUN must be pass6, pass7, pass8, pass9, pass11, pass12, or pass13');
 const manifestRelative = `${evidenceRoot}/SHA256SUMS-preview-inputs.txt`;
 const selected = [
   'spec/0001-conformance.md',
@@ -97,7 +97,57 @@ if (run === 'pass8') {
     `${evidenceRoot}/pass7-tailnet-evidence-agent-browser.png`,
   );
 }
+if (['pass12', 'pass13'].includes(run)) {
+  selected.push(
+    'plan/c11-4-two-axis-auto-repeat.md',
+    'tests/fixtures/css/c11/grid-auto-repeat-both-axes-c114.html',
+    'spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20',
+    'spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20',
+  );
+  const syncEvidence = 'spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20';
+  const publishedEvidence = [
+    'README.md',
+    'sync-review-20.md',
+    'SHA256SUMS-preview-inputs-pass12.txt',
+    'input-manifest-write-initial-failure-pass13.json',
+    'open-handles-initial-pass13.json',
+    'preserved-open-targets-pass13.json',
+    'prepare-root-pass12.json',
+    'selected-build-pass12.log',
+    'sanitize-pass12.json',
+    'preflight-pass12.json',
+    'open-handles-pass12.json',
+    'copy-and-backup-pass12.json',
+    'served-verification-pass12.json',
+    'browser-check-pass12.json',
+    'status-check-pass12.json',
+    'plan-check-pass12.json',
+    'evidence-check-pass12.json',
+    'precomparison-check-pass12.json',
+    'sync-report-check-pass12.json',
+    'html-route-check-pass12.json',
+    'route-check-initial-overstrict-pass12.json',
+    'new-c11-4-routes-pass12.json',
+    'browser-close-pass12.json',
+    'tailnet-roadmap-agent-browser-pass12.png',
+    'tailnet-status-agent-browser-pass12.png',
+    'tailnet-plan-agent-browser-pass12.png',
+    'tailnet-evidence-agent-browser-pass12.png',
+  ];
+  if (run === 'pass13') {
+    publishedEvidence.push(
+      'browser-check-pass13.json',
+      'status-check-pass13.json',
+      'plan-check-pass13.json',
+      'tailnet-roadmap-agent-browser-pass13.png',
+    );
+  }
+  selected.push(...(run === 'pass12'
+    ? [`${syncEvidence}/README.md`]
+    : publishedEvidence.map((name) => `${syncEvidence}/${name}`)));
+}
 const finalEvidenceManifest = `${evidenceRoot}/SHA256SUMS.txt`;
+const runManifestRelative = `spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/SHA256SUMS-preview-inputs-${run}.txt`;
 
 function visit(relative, files) {
   const fullPath = path.join(repoRoot, relative);
@@ -110,7 +160,7 @@ function visit(relative, files) {
     return;
   }
   if (!stat.isFile()) throw new Error(`unsupported selected input: ${relative}`);
-  if (relative === manifestRelative || relative === finalEvidenceManifest) return;
+  if (relative === manifestRelative || relative === finalEvidenceManifest || relative === runManifestRelative) return;
   files.push(relative);
 }
 
@@ -123,8 +173,10 @@ const lines = files.map((relative) => {
   return `${digest}  ${relative}`;
 });
 fs.writeFileSync(path.join(repoRoot, manifestRelative), `${lines.join('\n')}\n`);
+fs.writeFileSync(path.join(repoRoot, runManifestRelative), `${lines.join('\n')}\n`);
 process.stdout.write(`${JSON.stringify({
   manifest: manifestRelative,
+  run_manifest: runManifestRelative,
   source_file_count: files.length,
-  excluded_self_referential_inputs: [manifestRelative, finalEvidenceManifest],
+  excluded_self_referential_inputs: [manifestRelative, finalEvidenceManifest, runManifestRelative],
 }, null, 2)}\n`);

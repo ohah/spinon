@@ -9,9 +9,9 @@ const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, '../../../..');
 const [mode, sourceArg, targetArg, backupArg, preflightArg] = process.argv.slice(2);
 const pass = process.env.SPINON_TAILNET_RUN;
-if (!['preflight', 'copy'].includes(mode) || !['pass6', 'pass7', 'pass8', 'pass9', 'pass11'].includes(pass)
+if (!['preflight', 'copy'].includes(mode) || !['pass6', 'pass7', 'pass8', 'pass9', 'pass11', 'pass12', 'pass13'].includes(pass)
     || !sourceArg || !targetArg || !backupArg) {
-  throw new Error('usage: SPINON_TAILNET_RUN=pass6|pass7|pass8|pass9|pass11 node sync-preview.mjs preflight|copy SOURCE TARGET BACKUP [PREFLIGHT_JSON]');
+  throw new Error('usage: SPINON_TAILNET_RUN=pass6|pass7|pass8|pass9|pass11|pass12|pass13 node sync-preview.mjs preflight|copy SOURCE TARGET BACKUP [PREFLIGHT_JSON]');
 }
 
 const sourceRoot = path.resolve(repoRoot, sourceArg);
@@ -19,16 +19,29 @@ const targetRoot = path.resolve(targetArg);
 const backupRoot = path.resolve(backupArg);
 const sourceRootRelative = path.relative(repoRoot, sourceRoot).split(path.sep).join('/');
 const expectedSourceRootRelative = `build/spinon/c11-4-image-tailnet-site-${pass}`;
+const backupRun = process.env.SPINON_TAILNET_BACKUP_RUN ?? pass;
+const allowedBackupRun = backupRun === pass
+  || (pass === 'pass13' && [
+    'pass13-report-refresh-2026-10-20',
+    'pass13-final-review-2026-10-20',
+    'pass13-final-links-2026-10-20',
+    'pass13-final-report-wording-2026-10-20',
+  ].includes(backupRun));
 if (sourceRootRelative !== expectedSourceRootRelative) {
   throw new Error(`source root must be the sanitized Rspress output: ${expectedSourceRootRelative}`);
+}
+if (!allowedBackupRun) {
+  throw new Error('SPINON_TAILNET_BACKUP_RUN must match the pass or use an explicitly allowed pass13 refresh suffix');
 }
 const previewRootRelative = 'SpinonPreview';
 const backupOperation = pass === 'pass11'
   ? 'c11-4-two-track-tailnet-sync-2026-10-20'
-  : 'c11-4-image-tailnet-preview-update-2026-10-20';
-const backupRootRelative = `SpinonPreviewBackups/${backupOperation}/${pass}`;
+  : ['pass12', 'pass13'].includes(pass)
+    ? 'c11-4-pr368-tailnet-roadmap-sync-2026-10-20'
+    : 'c11-4-image-tailnet-preview-update-2026-10-20';
+const backupRootRelative = `SpinonPreviewBackups/${backupOperation}/${backupRun}`;
 const expectedTargetRoot = path.resolve(os.homedir(), 'Library/Application Support/SpinonPreview');
-const expectedBackupRoot = path.resolve(os.homedir(), `Library/Application Support/SpinonPreviewBackups/${backupOperation}/${pass}`);
+const expectedBackupRoot = path.resolve(os.homedir(), `Library/Application Support/SpinonPreviewBackups/${backupOperation}/${backupRun}`);
 if (targetRoot !== expectedTargetRoot || backupRoot !== expectedBackupRoot) {
   throw new Error('target and backup paths must match the approved SpinonPreview locations');
 }

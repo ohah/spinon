@@ -1,0 +1,12 @@
+{
+  "containsMergeSha": true,
+  "implementationGateChecked": true,
+  "readyState": "complete",
+  "sameOriginOutsideBaseLinks": [],
+  "stalePendingImplementationGate": false,
+  "statesRequiredChecksUnconfigured": true,
+  "title": "C11.4 · 양쪽 Grid 축의 auto-repeat 계획 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-two-axis-auto-repeat.html",
+  "implementationGateLabel": "구현 PR #368의 required-check 설정 확인 및 Rebase and merge (required check 미설정; merge SHA c8aa093981a1b0d435347d9757b1fd0146a1f7db)",
+  "implementationGateEvidence": "Agent Browser DOM에서 해당 disabled checkbox의 checked=true를 직접 확인"
+}
