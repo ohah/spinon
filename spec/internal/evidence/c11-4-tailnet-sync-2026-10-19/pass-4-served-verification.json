@@ -1,0 +1,51 @@
+{
+  "pass": "pass-4",
+  "target_count": 4,
+  "counts": {
+    "verified": 4,
+    "failed": 0
+  },
+  "all_served_hashes_match": true,
+  "files": [
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-retry.log",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-retry.log",
+      "http_status": 200,
+      "bytes": 4367,
+      "expected_bytes": 4367,
+      "sha256": "a6a7f7713938d69e6ad84bca7da5294908db39dc28eb751b1e43b0d39a20aadc",
+      "expected_sha256": "a6a7f7713938d69e6ad84bca7da5294908db39dc28eb751b1e43b0d39a20aadc",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-final.log",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-final.log",
+      "http_status": 200,
+      "bytes": 4367,
+      "expected_bytes": 4367,
+      "sha256": "b1205e01b718155851aa0a2046076842bc209702595b3c595a55bcb89085c2c3",
+      "expected_sha256": "b1205e01b718155851aa0a2046076842bc209702595b3c595a55bcb89085c2c3",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-index-followup.log",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-index-followup.log",
+      "http_status": 200,
+      "bytes": 5444,
+      "expected_bytes": 5444,
+      "sha256": "b46313133b9cb615ecad45d9deda904b84fcfb608d95741e000cbacefb613b21",
+      "expected_sha256": "b46313133b9cb615ecad45d9deda904b84fcfb608d95741e000cbacefb613b21",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/SHA256SUMS",
+      "url_path": "/spinon/internal/evidence/c11-4-tailnet-sync-2026-10-19/SHA256SUMS",
+      "http_status": 200,
+      "bytes": 1388,
+      "expected_bytes": 1388,
+      "sha256": "35c9a265cd6ae638489d9ecc5f39d1f564b690fb3c59f9b3200e1b8878556ec0",
+      "expected_sha256": "35c9a265cd6ae638489d9ecc5f39d1f564b690fb3c59f9b3200e1b8878556ec0",
+      "matches": true
+    }
+  ]
+}

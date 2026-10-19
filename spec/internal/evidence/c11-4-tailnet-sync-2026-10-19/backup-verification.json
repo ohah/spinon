@@ -1,0 +1,112 @@
+{
+  "pass": "pass-1",
+  "source_base_commit": "7e552f2d23abeddf405c29a11060dadb19d67bb3",
+  "target_count": 80,
+  "total_bytes": 4762311,
+  "counts": {
+    "created": 54,
+    "replaced": 12,
+    "same": 14
+  },
+  "no_deletes": true,
+  "backup_count": 12,
+  "all_backups_match": true,
+  "files": [
+    {
+      "path": "0001-conformance.html",
+      "backup_path": "pass-1/0001-conformance.html",
+      "bytes": 43322,
+      "expected_sha256": "40662c5446ef37c167d2f60c22033b380a884f2fb9a13e7dd9715bba93177f59",
+      "backup_sha256": "40662c5446ef37c167d2f60c22033b380a884f2fb9a13e7dd9715bba93177f59",
+      "matches": true
+    },
+    {
+      "path": "404.html",
+      "backup_path": "pass-1/404.html",
+      "bytes": 8512,
+      "expected_sha256": "ce52854abd0f062bec8c98eccd24efac49b2c56aad845c0469fca29ed782875c",
+      "backup_sha256": "ce52854abd0f062bec8c98eccd24efac49b2c56aad845c0469fca29ed782875c",
+      "matches": true
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "pass-1/STATUS.html",
+      "bytes": 387975,
+      "expected_sha256": "606dc11bc2f1e22074eab7c4229662d733b436b1067988d70f869f9bfd1149d0",
+      "backup_sha256": "606dc11bc2f1e22074eab7c4229662d733b436b1067988d70f869f9bfd1149d0",
+      "matches": true
+    },
+    {
+      "path": "STATUS.md",
+      "backup_path": "pass-1/STATUS.md",
+      "bytes": 296021,
+      "expected_sha256": "af98e97bf575192ccc02b0d583871236a40d369eb11ab9f99c306bef22a73189",
+      "backup_sha256": "af98e97bf575192ccc02b0d583871236a40d369eb11ab9f99c306bef22a73189",
+      "matches": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "backup_path": "pass-1/internal/0059-c11-grid-layout.html",
+      "bytes": 81092,
+      "expected_sha256": "532adafab44538711277bfb0ab9a0b0b5839e492550110169e590a3f390a3531",
+      "backup_sha256": "532adafab44538711277bfb0ab9a0b0b5839e492550110169e590a3f390a3531",
+      "matches": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "backup_path": "pass-1/internal/0059-c11-grid-layout.md",
+      "bytes": 42715,
+      "expected_sha256": "e8702c2507bd47eaa356f04ff2cb1dae3c102d5b901d5a13b5fb98543f0cee7e",
+      "backup_sha256": "e8702c2507bd47eaa356f04ff2cb1dae3c102d5b901d5a13b5fb98543f0cee7e",
+      "matches": true
+    },
+    {
+      "path": "internal/README.html",
+      "backup_path": "pass-1/internal/README.html",
+      "bytes": 174384,
+      "expected_sha256": "16e4bf1598cddd11bda1bc687795f0b6888fe7a177c0d6f9d18f3afb9f8dd287",
+      "backup_sha256": "16e4bf1598cddd11bda1bc687795f0b6888fe7a177c0d6f9d18f3afb9f8dd287",
+      "matches": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "backup_path": "pass-1/plan/c11-4-grid-track-sizing.html",
+      "bytes": 53802,
+      "expected_sha256": "94ef38fad65b2dc77d8485e7fc7d93c64b175df5d10caa582d4afb7fee1c5902",
+      "backup_sha256": "94ef38fad65b2dc77d8485e7fc7d93c64b175df5d10caa582d4afb7fee1c5902",
+      "matches": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "backup_path": "pass-1/plan/c11-4-grid-track-sizing.md",
+      "bytes": 27838,
+      "expected_sha256": "162e1792ae249c18f81ec34db6afb2ffbe620c136bb46530ed47d274808175e2",
+      "backup_sha256": "162e1792ae249c18f81ec34db6afb2ffbe620c136bb46530ed47d274808175e2",
+      "matches": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "backup_path": "pass-1/plan/c11-css-grid.html",
+      "bytes": 55998,
+      "expected_sha256": "ab0de9b65ddf04f79ef596d42d9b56f5917940ff5498ba788ed701be5626ecd3",
+      "backup_sha256": "ab0de9b65ddf04f79ef596d42d9b56f5917940ff5498ba788ed701be5626ecd3",
+      "matches": true
+    },
+    {
+      "path": "plan/c11-css-grid.md",
+      "backup_path": "pass-1/plan/c11-css-grid.md",
+      "bytes": 26768,
+      "expected_sha256": "e5bbb2b5e114e84df4e1c187ab8398fadd82256ec410f171dae853c0082e61c4",
+      "backup_sha256": "e5bbb2b5e114e84df4e1c187ab8398fadd82256ec410f171dae853c0082e61c4",
+      "matches": true
+    },
+    {
+      "path": "roadmap.html",
+      "backup_path": "pass-1/roadmap.html",
+      "bytes": 145200,
+      "expected_sha256": "4ef4c560434acc38a68e4880f6cc321196a2078165c96245594d054bc6b52e2d",
+      "backup_sha256": "4ef4c560434acc38a68e4880f6cc321196a2078165c96245594d054bc6b52e2d",
+      "matches": true
+    }
+  ]
+}

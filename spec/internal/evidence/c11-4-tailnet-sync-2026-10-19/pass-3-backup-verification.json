@@ -1,0 +1,55 @@
+{
+  "pass": "pass-3",
+  "backup_count": 6,
+  "all_backups_match": true,
+  "files": [
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/README.html",
+      "backup_path": "pass-3/internal/evidence/c11-4-tailnet-sync-2026-10-19/README.html",
+      "bytes": 24437,
+      "sha256": "e6dbbd06d268672104c5d946bf35860bc61f84af36084da965d90b18afe354e7",
+      "expected_sha256": "e6dbbd06d268672104c5d946bf35860bc61f84af36084da965d90b18afe354e7",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/README.md",
+      "backup_path": "pass-3/internal/evidence/c11-4-tailnet-sync-2026-10-19/README.md",
+      "bytes": 3236,
+      "sha256": "2966a093da648c7642cc2745e69eb792c3da7a5371d60c7085ce60c916be0a92",
+      "expected_sha256": "2966a093da648c7642cc2745e69eb792c3da7a5371d60c7085ce60c916be0a92",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/SHA256SUMS",
+      "backup_path": "pass-3/internal/evidence/c11-4-tailnet-sync-2026-10-19/SHA256SUMS",
+      "bytes": 1276,
+      "sha256": "14982f77ca29b5af976324fde80e722af0359b3f2de1d2611dcf80c54ee45c4a",
+      "expected_sha256": "14982f77ca29b5af976324fde80e722af0359b3f2de1d2611dcf80c54ee45c4a",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "backup_path": "pass-3/internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "bytes": 25483,
+      "sha256": "09d25323f30935f25a0eb97c5b6b8d75222b8fea6d27d7387b8b295bb3b69ea7",
+      "expected_sha256": "09d25323f30935f25a0eb97c5b6b8d75222b8fea6d27d7387b8b295bb3b69ea7",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.md",
+      "backup_path": "pass-3/internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.md",
+      "bytes": 4453,
+      "sha256": "d80ed18378a818127b22918f752e59bd46d77b2fcb60ba8b5117221dca2afc54",
+      "expected_sha256": "d80ed18378a818127b22918f752e59bd46d77b2fcb60ba8b5117221dca2afc54",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-index-followup.log",
+      "backup_path": "pass-3/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-index-followup.log",
+      "bytes": 5454,
+      "sha256": "e7ea9b1c27b876025a60a1b26d81934fe8a4ada9bec0a62b3f8766e1012444cb",
+      "expected_sha256": "e7ea9b1c27b876025a60a1b26d81934fe8a4ada9bec0a62b3f8766e1012444cb",
+      "matches": true
+    }
+  ]
+}

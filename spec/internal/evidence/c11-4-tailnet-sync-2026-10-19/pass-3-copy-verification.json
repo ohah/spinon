@@ -1,0 +1,118 @@
+{
+  "pass": "pass-3",
+  "target_count": 13,
+  "total_bytes": 832540,
+  "counts": {
+    "created": 7,
+    "replaced": 6,
+    "same": 0
+  },
+  "no_deletes": true,
+  "all_source_target_hashes_match": true,
+  "files": [
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/README.html",
+      "action": "replace",
+      "bytes": 24786,
+      "sha256": "069a7bce824cd8b7a2ab21c9d41268f6e1fa1c2066a0e5737e165ea7087db385",
+      "expected_sha256": "069a7bce824cd8b7a2ab21c9d41268f6e1fa1c2066a0e5737e165ea7087db385",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/README.md",
+      "action": "replace",
+      "bytes": 3578,
+      "sha256": "0bb6af197ea73345f3a35efa480d149445d6782b677c03464def5f2fa9c027dd",
+      "expected_sha256": "0bb6af197ea73345f3a35efa480d149445d6782b677c03464def5f2fa9c027dd",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/SHA256SUMS",
+      "action": "replace",
+      "bytes": 1276,
+      "sha256": "7b4aee133695a52879e0e91070c188f23c8e9ec72763b8bfb98e40a6ae857d6d",
+      "expected_sha256": "7b4aee133695a52879e0e91070c188f23c8e9ec72763b8bfb98e40a6ae857d6d",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "action": "replace",
+      "bytes": 25594,
+      "sha256": "fd91083b634278b2b6595df649ee0100223b80b7bea7f04c5e91d0a0c29a9802",
+      "expected_sha256": "fd91083b634278b2b6595df649ee0100223b80b7bea7f04c5e91d0a0c29a9802",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.md",
+      "action": "replace",
+      "bytes": 4564,
+      "sha256": "b56f3d9010a31889a817f7aaa7c59dfb32bbdd2ad3918ab7b001a9ae6cb1775e",
+      "expected_sha256": "b56f3d9010a31889a817f7aaa7c59dfb32bbdd2ad3918ab7b001a9ae6cb1775e",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-index-followup.log",
+      "action": "replace",
+      "bytes": 5454,
+      "sha256": "2255a32901b02342ad6a3eebf432c8d786a7fc2e52fca68d23b3bc2c15a466f0",
+      "expected_sha256": "2255a32901b02342ad6a3eebf432c8d786a7fc2e52fca68d23b3bc2c15a466f0",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-5554b59129c8.526bf3e2ed.js",
+      "action": "create",
+      "bytes": 6798,
+      "sha256": "852868bae6c0d1b297876be228a37678885ec5ea6b6a383fb8e0f4104dafb1c3",
+      "expected_sha256": "852868bae6c0d1b297876be228a37678885ec5ea6b6a383fb8e0f4104dafb1c3",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-62bfaa6b419f.830d053bed.js",
+      "action": "create",
+      "bytes": 10650,
+      "sha256": "f03c4c5ad9b2c6c3b8fce1343565bd53284c308e7ecbd9a404dcef0f30de3b86",
+      "expected_sha256": "f03c4c5ad9b2c6c3b8fce1343565bd53284c308e7ecbd9a404dcef0f30de3b86",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.abe10eded3.js",
+      "action": "create",
+      "bytes": 179407,
+      "sha256": "9e70c44a554ff5ffeab6bbbc398bdb15c9f0cff4077ecb1426a2126089731135",
+      "expected_sha256": "9e70c44a554ff5ffeab6bbbc398bdb15c9f0cff4077ecb1426a2126089731135",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.2bd6d2a950.js",
+      "action": "create",
+      "bytes": 63689,
+      "sha256": "8525d3dd2f3a1b68efd2591edbbe0d7dfda00380906b25c408e57e6c6f8e12f0",
+      "expected_sha256": "8525d3dd2f3a1b68efd2591edbbe0d7dfda00380906b25c408e57e6c6f8e12f0",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-ecf129b09e78.3d716d6f91.js",
+      "action": "create",
+      "bytes": 21012,
+      "sha256": "04cb75e42fe70867e6cc2d9e51cd404aea29ccdfb30053f5c6e239c08f5910db",
+      "expected_sha256": "04cb75e42fe70867e6cc2d9e51cd404aea29ccdfb30053f5c6e239c08f5910db",
+      "matches": true
+    },
+    {
+      "path": "static/js/index.c745bb8966.js",
+      "action": "create",
+      "bytes": 32699,
+      "sha256": "a280c9d495533c46b1e5cc6303cd81bd5a44e73f2a93714ca27122de8609d59d",
+      "expected_sha256": "a280c9d495533c46b1e5cc6303cd81bd5a44e73f2a93714ca27122de8609d59d",
+      "matches": true
+    },
+    {
+      "path": "static/search_index.ko.ac10d475.json",
+      "action": "create",
+      "bytes": 453033,
+      "sha256": "ac10d47585886a43111102b9d8d975fd749fe7f8e27da3165edbadcd812c2bf2",
+      "expected_sha256": "ac10d47585886a43111102b9d8d975fd749fe7f8e27da3165edbadcd812c2bf2",
+      "matches": true
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "pass": "pass-4",
+  "source_base_commit": "7e552f2d23abeddf405c29a11060dadb19d67bb3",
+  "preview_root_relative": "SpinonPreview",
+  "backup_root_relative": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-20261019/pass-4",
+  "target_count": 4,
+  "total_bytes": 15566,
+  "counts": {
+    "created": 0,
+    "replaced": 4,
+    "same": 0
+  },
+  "no_deletes": true,
+  "files": [
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-retry.log",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-retry.log",
+      "bytes": 4367,
+      "sha256": "a6a7f7713938d69e6ad84bca7da5294908db39dc28eb751b1e43b0d39a20aadc",
+      "target_exists": true,
+      "previous_bytes": 4374,
+      "previous_sha256": "9454064c154d2dc4a99ac0539153f8d307483df0daf8e9de1ef37efa8d249aaa",
+      "status": "replace",
+      "backup_path": "pass-4/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-retry.log"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-final.log",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-final.log",
+      "bytes": 4367,
+      "sha256": "b1205e01b718155851aa0a2046076842bc209702595b3c595a55bcb89085c2c3",
+      "target_exists": true,
+      "previous_bytes": 4374,
+      "previous_sha256": "5d14f85802d15e645910b6e9c18649ab9aa06477e4302c00cab16ade18af5334",
+      "status": "replace",
+      "backup_path": "pass-4/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-final.log"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-index-followup.log",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-index-followup.log",
+      "bytes": 5444,
+      "sha256": "b46313133b9cb615ecad45d9deda904b84fcfb608d95741e000cbacefb613b21",
+      "target_exists": true,
+      "previous_bytes": 5454,
+      "previous_sha256": "2255a32901b02342ad6a3eebf432c8d786a7fc2e52fca68d23b3bc2c15a466f0",
+      "status": "replace",
+      "backup_path": "pass-4/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-index-followup.log"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/SHA256SUMS",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/SHA256SUMS",
+      "bytes": 1388,
+      "sha256": "35c9a265cd6ae638489d9ecc5f39d1f564b690fb3c59f9b3200e1b8878556ec0",
+      "target_exists": true,
+      "previous_bytes": 1276,
+      "previous_sha256": "7b4aee133695a52879e0e91070c188f23c8e9ec72763b8bfb98e40a6ae857d6d",
+      "status": "replace",
+      "backup_path": "pass-4/internal/evidence/c11-4-tailnet-sync-2026-10-19/SHA256SUMS"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "pass": "pass-2",
+  "backup_count": 2,
+  "all_backups_match": true,
+  "files": [
+    {
+      "path": "internal/README.html",
+      "backup_path": "pass-2/internal/README.html",
+      "bytes": 167518,
+      "sha256": "dc41d51753bea5960f87a5ff174fa452dcea514423fd6918c80efa7185b2e895",
+      "expected_sha256": "dc41d51753bea5960f87a5ff174fa452dcea514423fd6918c80efa7185b2e895",
+      "matches": true
+    },
+    {
+      "path": "internal/README.md",
+      "backup_path": "pass-2/internal/README.md",
+      "bytes": 122098,
+      "sha256": "92946375f7cc2497559bb389345dd70e6c7c451e1e0f988493a756fa60ae967f",
+      "expected_sha256": "92946375f7cc2497559bb389345dd70e6c7c451e1e0f988493a756fa60ae967f",
+      "matches": true
+    }
+  ]
+}

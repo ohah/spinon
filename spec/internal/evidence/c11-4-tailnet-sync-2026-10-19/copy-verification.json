@@ -1,0 +1,641 @@
+{
+  "pass": "pass-1",
+  "source_base_commit": "7e552f2d23abeddf405c29a11060dadb19d67bb3",
+  "target_count": 80,
+  "total_bytes": 4762311,
+  "counts": {
+    "created": 54,
+    "replaced": 12,
+    "same": 14
+  },
+  "no_deletes": true,
+  "all_source_target_hashes_match": true,
+  "files": [
+    {
+      "path": "0001-conformance.html",
+      "status": "replaced",
+      "bytes": 34835,
+      "source_sha256": "fcce926c1f700159f87c2ecd6ebf86f302599fffc07398c0bbd8d9186bff0068",
+      "target_sha256": "fcce926c1f700159f87c2ecd6ebf86f302599fffc07398c0bbd8d9186bff0068",
+      "matches": true
+    },
+    {
+      "path": "0001-conformance.md",
+      "status": "same",
+      "bytes": 14265,
+      "source_sha256": "ff74477a4ce90e9c858b73cbd8e5c3b9e7524148ab14a7c27e373a26ef518403",
+      "target_sha256": "ff74477a4ce90e9c858b73cbd8e5c3b9e7524148ab14a7c27e373a26ef518403"
+    },
+    {
+      "path": "404.html",
+      "status": "replaced",
+      "bytes": 8512,
+      "source_sha256": "9b13d647abbad5b64f121cdf69eacdb55d84c03cf15dfb90592d5718217a6788",
+      "target_sha256": "9b13d647abbad5b64f121cdf69eacdb55d84c03cf15dfb90592d5718217a6788",
+      "matches": true
+    },
+    {
+      "path": "STATUS.html",
+      "status": "replaced",
+      "bytes": 382203,
+      "source_sha256": "24b18ea0a64a0514405837dbf389595d42601f6ac4c9ead44c7caaeb53c28a7d",
+      "target_sha256": "24b18ea0a64a0514405837dbf389595d42601f6ac4c9ead44c7caaeb53c28a7d",
+      "matches": true
+    },
+    {
+      "path": "STATUS.md",
+      "status": "replaced",
+      "bytes": 296967,
+      "source_sha256": "1fbda76c426e7c915fa5a4ebb85a8b0f931962d0f5e75feb8eeda08894999822",
+      "target_sha256": "1fbda76c426e7c915fa5a4ebb85a8b0f931962d0f5e75feb8eeda08894999822",
+      "matches": true
+    },
+    {
+      "path": "icon.svg",
+      "status": "same",
+      "bytes": 638,
+      "source_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "target_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "status": "replaced",
+      "bytes": 79609,
+      "source_sha256": "72011017dc64b350e8d558258f44cb6034a196b46e745235546b5eee56613c1a",
+      "target_sha256": "72011017dc64b350e8d558258f44cb6034a196b46e745235546b5eee56613c1a",
+      "matches": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "status": "replaced",
+      "bytes": 45913,
+      "source_sha256": "ceddd3fcc0c1be58dcf4e0645f3718aabcb02053c21bf61e37374e3d64d82ce9",
+      "target_sha256": "ceddd3fcc0c1be58dcf4e0645f3718aabcb02053c21bf61e37374e3d64d82ce9",
+      "matches": true
+    },
+    {
+      "path": "internal/README.html",
+      "status": "replaced",
+      "bytes": 167518,
+      "source_sha256": "dc41d51753bea5960f87a5ff174fa452dcea514423fd6918c80efa7185b2e895",
+      "target_sha256": "dc41d51753bea5960f87a5ff174fa452dcea514423fd6918c80efa7185b2e895",
+      "matches": true
+    },
+    {
+      "path": "internal/README.md",
+      "status": "same",
+      "bytes": 122098,
+      "source_sha256": "92946375f7cc2497559bb389345dd70e6c7c451e1e0f988493a756fa60ae967f",
+      "target_sha256": "92946375f7cc2497559bb389345dd70e6c7c451e1e0f988493a756fa60ae967f"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/README.html",
+      "status": "created",
+      "bytes": 27867,
+      "source_sha256": "db4684fcf063c2130f843c5505c7b2b181f1f36cf9ed667a94b4985f3480f3a9",
+      "target_sha256": "db4684fcf063c2130f843c5505c7b2b181f1f36cf9ed667a94b4985f3480f3a9",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/README.md",
+      "status": "created",
+      "bytes": 7729,
+      "source_sha256": "25b76e414127f7f8d311688ea8c29bcefe1e271b0cbbe87451d388791f23736e",
+      "target_sha256": "25b76e414127f7f8d311688ea8c29bcefe1e271b0cbbe87451d388791f23736e",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/SHA256SUMS",
+      "status": "created",
+      "bytes": 472,
+      "source_sha256": "862a113e82edf26f40b881f3abda62b1522710a49da1c0b419f2a7ea42c73bc8",
+      "target_sha256": "862a113e82edf26f40b881f3abda62b1522710a49da1c0b419f2a7ea42c73bc8",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/android-build.log",
+      "status": "created",
+      "bytes": 37422,
+      "source_sha256": "a0a67eaa2e39ac12a40f54a0cf614239305b474750e8d48a1b69f3874086e2de",
+      "target_sha256": "a0a67eaa2e39ac12a40f54a0cf614239305b474750e8d48a1b69f3874086e2de",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/android-fixture-artifact-positive.log",
+      "status": "created",
+      "bytes": 293,
+      "source_sha256": "edba47824cdc31f24dcad305e2271f0b86978e091e196aae2cbe4c56602cc869",
+      "target_sha256": "edba47824cdc31f24dcad305e2271f0b86978e091e196aae2cbe4c56602cc869",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/android-package-resume.log",
+      "status": "created",
+      "bytes": 2620,
+      "source_sha256": "8f161529bcab264b41aa7f4c71585f2a0fdac791a986fa8f436ac0daa101270e",
+      "target_sha256": "8f161529bcab264b41aa7f4c71585f2a0fdac791a986fa8f436ac0daa101270e",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/android-simulator-initial-run.log",
+      "status": "created",
+      "bytes": 13558,
+      "source_sha256": "4faa92b003fca1d46ca8e072b37ace0af1e8d79a7c23a0a2032f31a877c692a0",
+      "target_sha256": "4faa92b003fca1d46ca8e072b37ace0af1e8d79a7c23a0a2032f31a877c692a0",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/android-simulator.log",
+      "status": "created",
+      "bytes": 13648,
+      "source_sha256": "d0f3a8a678545e6604394fc65a48f148ff062f9146d407bcbdf57d29646bf9ca",
+      "target_sha256": "d0f3a8a678545e6604394fc65a48f148ff062f9146d407bcbdf57d29646bf9ca",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/android-simulator.png",
+      "status": "created",
+      "bytes": 77755,
+      "source_sha256": "14fa14af925bc10b4351ab464ef2d7d8e425fdd20f20c7e5addb3d95fadf42e7",
+      "target_sha256": "14fa14af925bc10b4351ab464ef2d7d8e425fdd20f20c7e5addb3d95fadf42e7",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/chrome155-agent-browser-observation.json",
+      "status": "created",
+      "bytes": 1459,
+      "source_sha256": "408a1f84e559a6c917a75c1b869b778f3efa63bb9e91ab43229cd8ddb7e71cde",
+      "target_sha256": "408a1f84e559a6c917a75c1b869b778f3efa63bb9e91ab43229cd8ddb7e71cde",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/clippy-changed-rust.log",
+      "status": "created",
+      "bytes": 5254,
+      "source_sha256": "2d37232537453b3abc8eb9aefb4d102960621839899aa3d9dfbe0370e65dbac3",
+      "target_sha256": "2d37232537453b3abc8eb9aefb4d102960621839899aa3d9dfbe0370e65dbac3",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/default-artifact-build.log",
+      "status": "created",
+      "bytes": 6459,
+      "source_sha256": "2a843b4da2b2bc339824728138be3cb4e8003e57627000a6051cfb4cc56f45a0",
+      "target_sha256": "2a843b4da2b2bc339824728138be3cb4e8003e57627000a6051cfb4cc56f45a0",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/default-artifact-symbol-check.log",
+      "status": "created",
+      "bytes": 176,
+      "source_sha256": "8705475ee032f92c2374615372840190000a0459fa573dcab211674b9033a226",
+      "target_sha256": "8705475ee032f92c2374615372840190000a0459fa573dcab211674b9033a226",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/implementation-review-20.html",
+      "status": "created",
+      "bytes": 26592,
+      "source_sha256": "83a63385f21b56b5e6909bcf3682c2008d6e83d182e081681df9c0c64c88148f",
+      "target_sha256": "83a63385f21b56b5e6909bcf3682c2008d6e83d182e081681df9c0c64c88148f",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/implementation-review-20.md",
+      "status": "created",
+      "bytes": 6599,
+      "source_sha256": "e9e92b5abe89b028e6310824d47e94d55dd076077929b7afc8496ee25bd5c2d1",
+      "target_sha256": "e9e92b5abe89b028e6310824d47e94d55dd076077929b7afc8496ee25bd5c2d1",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/ios-build-flags-tests.log",
+      "status": "created",
+      "bytes": 1435,
+      "source_sha256": "4ec54d26c34fb17c5476f2267ac7c888182a232ed5241c29330465b83a07b078",
+      "target_sha256": "4ec54d26c34fb17c5476f2267ac7c888182a232ed5241c29330465b83a07b078",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/ios-build-retry.log",
+      "status": "created",
+      "bytes": 99509,
+      "source_sha256": "2693d2cdf21d1393e71baca682a9e1d5b9758c4bb5bc93526d133e7c989d7b0a",
+      "target_sha256": "2693d2cdf21d1393e71baca682a9e1d5b9758c4bb5bc93526d133e7c989d7b0a",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/ios-build.log",
+      "status": "created",
+      "bytes": 127503,
+      "source_sha256": "c0c4a280fe49890e9e2b52df7fcce53670d0695f8d11fa90d79956edf3651e8b",
+      "target_sha256": "c0c4a280fe49890e9e2b52df7fcce53670d0695f8d11fa90d79956edf3651e8b",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/ios-ipad-simulator.log",
+      "status": "created",
+      "bytes": 14415,
+      "source_sha256": "23e15dbccbd7f4984b934f56657d4db341f37035c110fee9e85f5d80992a2255",
+      "target_sha256": "23e15dbccbd7f4984b934f56657d4db341f37035c110fee9e85f5d80992a2255",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/ios-ipad-simulator.png",
+      "status": "created",
+      "bytes": 166287,
+      "source_sha256": "ac16278e43c1e4c33a49ed8636ba3af8b9f0919c2506fa26eff129ab776cf881",
+      "target_sha256": "ac16278e43c1e4c33a49ed8636ba3af8b9f0919c2506fa26eff129ab776cf881",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/ios-iphone-simulator.log",
+      "status": "created",
+      "bytes": 10346,
+      "source_sha256": "0de12e5da72ce5be444295ae3124f82413ec39d13e8e35653617755dbbc4bd5e",
+      "target_sha256": "0de12e5da72ce5be444295ae3124f82413ec39d13e8e35653617755dbbc4bd5e",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/ios-iphone-simulator.png",
+      "status": "created",
+      "bytes": 144885,
+      "source_sha256": "eb7e767e9abd0704e320898ae6a89eece76946cc6c5784452b7b3c5636fa8b33",
+      "target_sha256": "eb7e767e9abd0704e320898ae6a89eece76946cc6c5784452b7b3c5636fa8b33",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/post-review-android-build-retry.log",
+      "status": "created",
+      "bytes": 35672,
+      "source_sha256": "095cd2b0f2d486dce9636c41a6eba6239f0eddcda52b15526d4b56cb1d3783c7",
+      "target_sha256": "095cd2b0f2d486dce9636c41a6eba6239f0eddcda52b15526d4b56cb1d3783c7",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/post-review-android-build.log",
+      "status": "created",
+      "bytes": 1937,
+      "source_sha256": "c4942f728a9604fe0e8259b493dc5ee07835ecd435d377cbdc821a41154c6de9",
+      "target_sha256": "c4942f728a9604fe0e8259b493dc5ee07835ecd435d377cbdc821a41154c6de9",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/post-review-android-fixture-artifact-positive.log",
+      "status": "created",
+      "bytes": 1041,
+      "source_sha256": "c5d52d490814389e808f5f1905ec7195a037f9c0db72813d1e65acf5ff46379e",
+      "target_sha256": "c5d52d490814389e808f5f1905ec7195a037f9c0db72813d1e65acf5ff46379e",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/post-review-android-package-resume.log",
+      "status": "created",
+      "bytes": 2620,
+      "source_sha256": "8f161529bcab264b41aa7f4c71585f2a0fdac791a986fa8f436ac0daa101270e",
+      "target_sha256": "8f161529bcab264b41aa7f4c71585f2a0fdac791a986fa8f436ac0daa101270e",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/post-review-clippy-changed-rust.log",
+      "status": "created",
+      "bytes": 5254,
+      "source_sha256": "43aca3a7c6b4549b2ae5d037e8d8e8a5242c5ec150f60c81d21b3fe037d225a3",
+      "target_sha256": "43aca3a7c6b4549b2ae5d037e8d8e8a5242c5ec150f60c81d21b3fe037d225a3",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/post-review-default-artifact-build-retry.log",
+      "status": "created",
+      "bytes": 5015,
+      "source_sha256": "df0b5b33760311c91aa1d2b21d39465a30b6aef76efa672bdaa47644f784b19c",
+      "target_sha256": "df0b5b33760311c91aa1d2b21d39465a30b6aef76efa672bdaa47644f784b19c",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/post-review-default-artifact-build.log",
+      "status": "created",
+      "bytes": 10064,
+      "source_sha256": "7b213aee7567a0a1083339ed4702bb8ee732b65fb008f7256540844f5bbe7948",
+      "target_sha256": "7b213aee7567a0a1083339ed4702bb8ee732b65fb008f7256540844f5bbe7948",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/post-review-default-artifact-symbol-check.log",
+      "status": "created",
+      "bytes": 89,
+      "source_sha256": "a1f05021a2161c683c17c7d8d3ea65c8b5de2b005ff65b5427302959ce9c7c27",
+      "target_sha256": "a1f05021a2161c683c17c7d8d3ea65c8b5de2b005ff65b5427302959ce9c7c27",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/post-review-ios-build-retry.log",
+      "status": "created",
+      "bytes": 125688,
+      "source_sha256": "a792c3403f0cd761adc6aee5bf0ca148eb1fa8aadad99a75485793f4d4db5204",
+      "target_sha256": "a792c3403f0cd761adc6aee5bf0ca148eb1fa8aadad99a75485793f4d4db5204",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/post-review-ios-ipad-simulator.log",
+      "status": "created",
+      "bytes": 9799,
+      "source_sha256": "7108f44e8e25fe3fef19a1f8b0d21f326b397b82da16b04a74c71af86870aec6",
+      "target_sha256": "7108f44e8e25fe3fef19a1f8b0d21f326b397b82da16b04a74c71af86870aec6",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/post-review-ios-ipad-simulator.png",
+      "status": "created",
+      "bytes": 167213,
+      "source_sha256": "39e4629c0f8c9f4f294664cb48d6e16a809a8b5ec1f8cb05f2a7ca0b7ead9e9d",
+      "target_sha256": "39e4629c0f8c9f4f294664cb48d6e16a809a8b5ec1f8cb05f2a7ca0b7ead9e9d",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/post-review-ios-iphone-simulator.log",
+      "status": "created",
+      "bytes": 9823,
+      "source_sha256": "7d2de2516ad2548683a2a9ace8ce2bfb80d43bde2bafb7dbfa986aa02e90dbd6",
+      "target_sha256": "7d2de2516ad2548683a2a9ace8ce2bfb80d43bde2bafb7dbfa986aa02e90dbd6",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/post-review-ios-iphone-simulator.png",
+      "status": "created",
+      "bytes": 144530,
+      "source_sha256": "e918d91b578397b8fc353d066fefeb136d9ccd601474bc6fda0677cfabe60445",
+      "target_sha256": "e918d91b578397b8fc353d066fefeb136d9ccd601474bc6fda0677cfabe60445",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/post-review-runtime-feature-suite.log",
+      "status": "created",
+      "bytes": 23441,
+      "source_sha256": "f9007ad55b6529bd759f459e6647cf1df870b52ed334528798989c762ca74445",
+      "target_sha256": "f9007ad55b6529bd759f459e6647cf1df870b52ed334528798989c762ca74445",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/post-review-runtime-focused-test-retry.log",
+      "status": "created",
+      "bytes": 1008,
+      "source_sha256": "a9ff0a23e03afd4f7c42a741dc63c783c516c22633dfad6895d6dc8491926128",
+      "target_sha256": "a9ff0a23e03afd4f7c42a741dc63c783c516c22633dfad6895d6dc8491926128",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/post-review-runtime-focused-test.log",
+      "status": "created",
+      "bytes": 8523,
+      "source_sha256": "449126364d7801722ce70ecafe6e56cb041eb14c7966b726fb905e890f61daba",
+      "target_sha256": "449126364d7801722ce70ecafe6e56cb041eb14c7966b726fb905e890f61daba",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/pr-delta-review-30.html",
+      "status": "created",
+      "bytes": 26909,
+      "source_sha256": "cbef4465f8749933e092902c8d7a6ac4289b3db68a3bfa2b41b292ddc6bf1796",
+      "target_sha256": "cbef4465f8749933e092902c8d7a6ac4289b3db68a3bfa2b41b292ddc6bf1796",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/pr-delta-review-30.md",
+      "status": "created",
+      "bytes": 6556,
+      "source_sha256": "05749fd0f979471922e3728544d39b1adbf76823d39280786c66bf143e5fba66",
+      "target_sha256": "05749fd0f979471922e3728544d39b1adbf76823d39280786c66bf143e5fba66",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/raw-whitespace-logs.tar.gz",
+      "status": "created",
+      "bytes": 72580,
+      "source_sha256": "f7312ddfedb4258f8ee7a75311c74bcfe189bbae5780907a1469a2e2d2e45e9b",
+      "target_sha256": "f7312ddfedb4258f8ee7a75311c74bcfe189bbae5780907a1469a2e2d2e45e9b",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/runtime-feature-suite.log",
+      "status": "created",
+      "bytes": 23441,
+      "source_sha256": "521e9dade8592c6df3af3945b669154c707d84914e5a083c72f5b0bf269455ef",
+      "target_sha256": "521e9dade8592c6df3af3945b669154c707d84914e5a083c72f5b0bf269455ef",
+      "matches": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/runtime-focused-test.log",
+      "status": "created",
+      "bytes": 7338,
+      "source_sha256": "4ba8170dac697a1af04e94c0399417f0b047d5abf91c0b707b5a5c175f0ecb71",
+      "target_sha256": "4ba8170dac697a1af04e94c0399417f0b047d5abf91c0b707b5a5c175f0ecb71",
+      "matches": true
+    },
+    {
+      "path": "logo.svg",
+      "status": "same",
+      "bytes": 568,
+      "source_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "target_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "status": "replaced",
+      "bytes": 60319,
+      "source_sha256": "03676ebd814dddc9b9a0280767b1b14fb861e7b32b162238dcf8b6892def37ff",
+      "target_sha256": "03676ebd814dddc9b9a0280767b1b14fb861e7b32b162238dcf8b6892def37ff",
+      "matches": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "status": "replaced",
+      "bytes": 28832,
+      "source_sha256": "0ac739e84ac70249f0b860029efb6ada53419ac1e54dc508e60f439ed3b359b3",
+      "target_sha256": "0ac739e84ac70249f0b860029efb6ada53419ac1e54dc508e60f439ed3b359b3",
+      "matches": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "status": "replaced",
+      "bytes": 53202,
+      "source_sha256": "80974310a45c1a760ed992a9a413d0a890b1800f3a0d379cdcb2017f861d0129",
+      "target_sha256": "80974310a45c1a760ed992a9a413d0a890b1800f3a0d379cdcb2017f861d0129",
+      "matches": true
+    },
+    {
+      "path": "plan/c11-css-grid.md",
+      "status": "replaced",
+      "bytes": 27100,
+      "source_sha256": "554949ae7f3462e41144bc95b16b6ab19b32238a1ffd73fbe826357ea2ef8026",
+      "target_sha256": "554949ae7f3462e41144bc95b16b6ab19b32238a1ffd73fbe826357ea2ef8026",
+      "matches": true
+    },
+    {
+      "path": "roadmap.html",
+      "status": "replaced",
+      "bytes": 145834,
+      "source_sha256": "7dff72421832f61cf4438ac8af616cf3c0c2d0db6e4369f75bcaf3a3a9a71a4f",
+      "target_sha256": "7dff72421832f61cf4438ac8af616cf3c0c2d0db6e4369f75bcaf3a3a9a71a4f",
+      "matches": true
+    },
+    {
+      "path": "roadmap.svg",
+      "status": "same",
+      "bytes": 4835,
+      "source_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "target_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": "same",
+      "bytes": 73952,
+      "source_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "target_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/js/6.cb8b86b995.js",
+      "status": "same",
+      "bytes": 217066,
+      "source_sha256": "04ff176de0ff37821fb18c8f9dbabb13c380c882d6f6b76145ae1cdd5f72c131",
+      "target_sha256": "04ff176de0ff37821fb18c8f9dbabb13c380c882d6f6b76145ae1cdd5f72c131"
+    },
+    {
+      "path": "static/js/6.cb8b86b995.js.LICENSE.txt",
+      "status": "same",
+      "bytes": 384,
+      "source_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "target_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.3fedc28dc3.js",
+      "status": "created",
+      "bytes": 41605,
+      "source_sha256": "23f4167e965a7c9ada29771b0892c4f0dc49bba26a04bf728dc5723d05f96d16",
+      "target_sha256": "23f4167e965a7c9ada29771b0892c4f0dc49bba26a04bf728dc5723d05f96d16",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.198efadea6.js",
+      "status": "created",
+      "bytes": 405923,
+      "source_sha256": "27862b1f2591f555c3a1805c904e8294b4c423e9bbd768c80be1eeaf58400d52",
+      "target_sha256": "27862b1f2591f555c3a1805c904e8294b4c423e9bbd768c80be1eeaf58400d52",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-76422f0fb7f3.0c0f0073fa.js",
+      "status": "created",
+      "bytes": 12938,
+      "source_sha256": "a4b5e447442792ed79a7c0086b622ccf9ac66ce362376c5d5f0b35ed3c83412a",
+      "target_sha256": "a4b5e447442792ed79a7c0086b622ccf9ac66ce362376c5d5f0b35ed3c83412a",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-7a9e85827a36.9c075dcaf4.js",
+      "status": "created",
+      "bytes": 12882,
+      "source_sha256": "fd863e539c9d00402f867e64ccfe185b4b1f09ed42b5d3af44393f0862cfffe5",
+      "target_sha256": "fd863e539c9d00402f867e64ccfe185b4b1f09ed42b5d3af44393f0862cfffe5",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.8e558b9e01.js",
+      "status": "created",
+      "bytes": 178456,
+      "source_sha256": "5fd02d3f5a73fca08d8bc68a80bd6e592fcde46a202e1a8b3b607b28a42b84af",
+      "target_sha256": "5fd02d3f5a73fca08d8bc68a80bd6e592fcde46a202e1a8b3b607b28a42b84af",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.ded3a50264.js",
+      "status": "created",
+      "bytes": 39326,
+      "source_sha256": "40c7c1be2507c9e7c8c55959baa94e789b22959bcf49cf6912ba8058ace8f6d1",
+      "target_sha256": "40c7c1be2507c9e7c8c55959baa94e789b22959bcf49cf6912ba8058ace8f6d1",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-c45bfdd468ef.96801f2c1a.js",
+      "status": "created",
+      "bytes": 11500,
+      "source_sha256": "ecbac2813dd7a500e73e237d913b0e89837e77c8c5be655119421544f3ada5d9",
+      "target_sha256": "ecbac2813dd7a500e73e237d913b0e89837e77c8c5be655119421544f3ada5d9",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.89865794e5.js",
+      "status": "created",
+      "bytes": 63686,
+      "source_sha256": "28ebf480f92997dacf393ba6e5293e707be878ff80e4d1f312d0a5bd6ac70010",
+      "target_sha256": "28ebf480f92997dacf393ba6e5293e707be878ff80e4d1f312d0a5bd6ac70010",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/route-ecf129b09e78.f720c02bdd.js",
+      "status": "created",
+      "bytes": 21009,
+      "source_sha256": "e5934da1a82d8c3ca50477a4c2b47d2284d36967ae0dad553a15d9375dd598e4",
+      "target_sha256": "e5934da1a82d8c3ca50477a4c2b47d2284d36967ae0dad553a15d9375dd598e4",
+      "matches": true
+    },
+    {
+      "path": "static/js/async/z.359c0d78fa.js",
+      "status": "same",
+      "bytes": 98,
+      "source_sha256": "90a9f89d8008264f27cfec9e490deace22fb55bea7d05b6b9ce69f7bc00f0ad8",
+      "target_sha256": "90a9f89d8008264f27cfec9e490deace22fb55bea7d05b6b9ce69f7bc00f0ad8"
+    },
+    {
+      "path": "static/js/index.6d20c3731a.js",
+      "status": "created",
+      "bytes": 29948,
+      "source_sha256": "055e7579a0df5a37d0ba4a2f537b8e00b3ab6001784eafc967fcfb9f7ee1707a",
+      "target_sha256": "055e7579a0df5a37d0ba4a2f537b8e00b3ab6001784eafc967fcfb9f7ee1707a",
+      "matches": true
+    },
+    {
+      "path": "static/js/lib-react.382571d6aa.js",
+      "status": "same",
+      "bytes": 218368,
+      "source_sha256": "5fe15e21cdbe74f3bc28adc7de37ee0c3a94d960dae748da5584f73ea000d8af",
+      "target_sha256": "5fe15e21cdbe74f3bc28adc7de37ee0c3a94d960dae748da5584f73ea000d8af"
+    },
+    {
+      "path": "static/js/lib-react.382571d6aa.js.LICENSE.txt",
+      "status": "same",
+      "bytes": 1209,
+      "source_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "target_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.f115cf67cf.js",
+      "status": "same",
+      "bytes": 35367,
+      "source_sha256": "c04d61b751534bfb3112504d05783d2e56edd1ddd52fd0b9a126d8216855007d",
+      "target_sha256": "c04d61b751534bfb3112504d05783d2e56edd1ddd52fd0b9a126d8216855007d"
+    },
+    {
+      "path": "static/js/lib-router.f115cf67cf.js.LICENSE.txt",
+      "status": "same",
+      "bytes": 222,
+      "source_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "target_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.6b76c4bafc.js",
+      "status": "same",
+      "bytes": 474,
+      "source_sha256": "4a266752409d958cea2738e5912cc5b24c4114553ef0e066040606c080ac31eb",
+      "target_sha256": "4a266752409d958cea2738e5912cc5b24c4114553ef0e066040606c080ac31eb"
+    },
+    {
+      "path": "static/search_index.ko.f3bd5c94.json",
+      "status": "created",
+      "bytes": 443826,
+      "source_sha256": "f3bd5c94385a053471bd540bac7873bba48cd004f092668db1785bf3e5e7b779",
+      "target_sha256": "f3bd5c94385a053471bd540bac7873bba48cd004f092668db1785bf3e5e7b779",
+      "matches": true
+    }
+  ]
+}

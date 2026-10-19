@@ -1,0 +1,190 @@
+{
+  "pass": "pass-2",
+  "source_base_commit": "7e552f2d23abeddf405c29a11060dadb19d67bb3",
+  "preview_root_relative": "SpinonPreview",
+  "backup_root_relative": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-20261019/pass-2",
+  "target_count": 21,
+  "total_bytes": 1807933,
+  "counts": {
+    "created": 19,
+    "replaced": 2,
+    "same": 0
+  },
+  "no_deletes": true,
+  "files": [
+    {
+      "path": "internal/README.html",
+      "source_path": "build/spinon/c11-4-tailnet-site-20261019/internal/README.html",
+      "bytes": 169922,
+      "sha256": "d40c4d9825293164a5bf7e4ebeeefa45bc2e3bcbe62b4c2c22f9e8f4143c5f80",
+      "target_exists": true,
+      "previous_bytes": 167518,
+      "previous_sha256": "dc41d51753bea5960f87a5ff174fa452dcea514423fd6918c80efa7185b2e895",
+      "status": "replace",
+      "backup_path": "pass-2/internal/README.html"
+    },
+    {
+      "path": "internal/README.md",
+      "source_path": "spec/internal/README.md",
+      "bytes": 122587,
+      "sha256": "b1982491c788409b8999da11024a11f8e5706bd0b07c68f2d92ee8c55062f5ba",
+      "target_exists": true,
+      "previous_bytes": 122098,
+      "previous_sha256": "92946375f7cc2497559bb389345dd70e6c7c451e1e0f988493a756fa60ae967f",
+      "status": "replace",
+      "backup_path": "pass-2/internal/README.md"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/README.html",
+      "source_path": "build/spinon/c11-4-tailnet-site-20261019/internal/evidence/c11-4-tailnet-sync-2026-10-19/README.html",
+      "bytes": 24437,
+      "sha256": "e6dbbd06d268672104c5d946bf35860bc61f84af36084da965d90b18afe354e7",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/README.md",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/README.md",
+      "bytes": 3236,
+      "sha256": "2966a093da648c7642cc2745e69eb792c3da7a5371d60c7085ce60c916be0a92",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/SHA256SUMS",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/SHA256SUMS",
+      "bytes": 1276,
+      "sha256": "14982f77ca29b5af976324fde80e722af0359b3f2de1d2611dcf80c54ee45c4a",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/backup-verification.json",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/backup-verification.json",
+      "bytes": 4303,
+      "sha256": "dc8567211a88adb01897341125c30e55727ab48e7de09e3ea8c6f5ad8d98e7bc",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/copy-verification.json",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/copy-verification.json",
+      "bytes": 28087,
+      "sha256": "6333a85f88a1e87e5c76faee749a7a110a6490bc3cf0e380864e6a600c0b29c5",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "source_path": "build/spinon/c11-4-tailnet-site-20261019/internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "bytes": 25483,
+      "sha256": "09d25323f30935f25a0eb97c5b6b8d75222b8fea6d27d7387b8b295bb3b69ea7",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.md",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.md",
+      "bytes": 4453,
+      "sha256": "d80ed18378a818127b22918f752e59bd46d77b2fcb60ba8b5117221dca2afc54",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/preflight.json",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/preflight.json",
+      "bytes": 35594,
+      "sha256": "af8ad79b7e555d4779235ac44fbeca98613ec4fbab21ac14ca69fab292fb4b80",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-final.log",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-final.log",
+      "bytes": 4374,
+      "sha256": "5d14f85802d15e645910b6e9c18649ab9aa06477e4302c00cab16ade18af5334",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-index-followup.log",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-index-followup.log",
+      "bytes": 5454,
+      "sha256": "e7ea9b1c27b876025a60a1b26d81934fe8a4ada9bec0a62b3f8766e1012444cb",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-retry.log",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build-retry.log",
+      "bytes": 4374,
+      "sha256": "9454064c154d2dc4a99ac0539153f8d307483df0daf8e9de1ef37efa8d249aaa",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build.log",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/selected-build.log",
+      "bytes": 225,
+      "sha256": "288007d199e65db5ad52dcd330e14ea00b279854908a884126f5a671ae3a7a1c",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/served-verification.json",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/served-verification.json",
+      "bytes": 38124,
+      "sha256": "604d6cc5e2ddac49fdc38bc0c7b1799ef685ec90ff68a4801eec6695800d4c63",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/tailnet-plan-agent-browser.png",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/tailnet-plan-agent-browser.png",
+      "bytes": 198972,
+      "sha256": "09e70ed089a7999dbf8b437dbd0ff5e1c73a6a099e5688a45856c12dd4f53fbe",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/tailnet-roadmap-agent-browser.png",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/tailnet-roadmap-agent-browser.png",
+      "bytes": 256356,
+      "sha256": "06fcdf94de3702b648fe0f67e2a01ad2ea9c7fd083f1b6548aedebf4d65fb8b2",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/tailnet-status-agent-browser.png",
+      "source_path": "spec/internal/evidence/c11-4-tailnet-sync-2026-10-19/tailnet-status-agent-browser.png",
+      "bytes": 212674,
+      "sha256": "2e5be0782ab42da8f4916ed0b9af74e91aebbf1878ebe4cee5c64f9426015fb0",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "static/image/tailnet-plan-agent-browser.9356dec254.png",
+      "source_path": "build/spinon/c11-4-tailnet-site-20261019/static/image/tailnet-plan-agent-browser.9356dec254.png",
+      "bytes": 198972,
+      "sha256": "09e70ed089a7999dbf8b437dbd0ff5e1c73a6a099e5688a45856c12dd4f53fbe",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "static/image/tailnet-roadmap-agent-browser.8211347bf1.png",
+      "source_path": "build/spinon/c11-4-tailnet-site-20261019/static/image/tailnet-roadmap-agent-browser.8211347bf1.png",
+      "bytes": 256356,
+      "sha256": "06fcdf94de3702b648fe0f67e2a01ad2ea9c7fd083f1b6548aedebf4d65fb8b2",
+      "target_exists": false,
+      "status": "create"
+    },
+    {
+      "path": "static/image/tailnet-status-agent-browser.5ccdbb9816.png",
+      "source_path": "build/spinon/c11-4-tailnet-site-20261019/static/image/tailnet-status-agent-browser.5ccdbb9816.png",
+      "bytes": 212674,
+      "sha256": "2e5be0782ab42da8f4916ed0b9af74e91aebbf1878ebe4cee5c64f9426015fb0",
+      "target_exists": false,
+      "status": "create"
+    }
+  ]
+}

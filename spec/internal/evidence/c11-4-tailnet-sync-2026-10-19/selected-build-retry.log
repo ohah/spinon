@@ -1,0 +1,43 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+info    Rendering pages...
+success Pages rendered in 77 ms.
+ready   built in 0.73s (web)
+ready   built in 0.73s (node)
+
+File (web)                                                                                  Size        Gzip
+build/spinon/c11-4-tailnet-site-20261019/static/js/async/z.359c0d78fa.js                    0.10 kB     0.09 kB
+build/spinon/c11-4-tailnet-site-20261019/static/js/styles.6b76c4bafc.js                     0.47 kB     0.24 kB
+build/spinon/c11-4-tailnet-site-20261019/icon.svg                                           0.64 kB     0.42 kB
+build/spinon/c11-4-tailnet-site-20261019/static/js/async/route-c45bfdd468ef.96801f2c1a.js   11.5 kB     4.2 kB
+build/spinon/c11-4-tailnet-site-20261019/static/js/async/route-7a9e85827a36.9c075dcaf4.js   12.9 kB     4.2 kB
+build/spinon/c11-4-tailnet-site-20261019/static/js/async/route-76422f0fb7f3.0c0f0073fa.js   12.9 kB     4.8 kB
+build/spinon/c11-4-tailnet-site-20261019/static/js/async/route-ecf129b09e78.f720c02bdd.js   21.0 kB     7.3 kB
+build/spinon/c11-4-tailnet-site-20261019/static/js/index.6d20c3731a.js                      29.9 kB     11.6 kB
+build/spinon/c11-4-tailnet-site-20261019/static/js/lib-router.f115cf67cf.js                 35.4 kB     12.7 kB
+build/spinon/c11-4-tailnet-site-20261019/static/js/async/route-c2801b21f038.ded3a50264.js   39.3 kB     11.7 kB
+build/spinon/c11-4-tailnet-site-20261019/static/js/async/route-04cbcabea10a.3fedc28dc3.js   41.6 kB     12.3 kB
+build/spinon/c11-4-tailnet-site-20261019/static/js/async/route-c4dae6800800.89865794e5.js   63.7 kB     17.5 kB
+build/spinon/c11-4-tailnet-site-20261019/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+build/spinon/c11-4-tailnet-site-20261019/static/js/async/route-a1017bdf23ca.8e558b9e01.js   178.5 kB    37.4 kB
+build/spinon/c11-4-tailnet-site-20261019/static/js/6.cb8b86b995.js                          217.1 kB    72.0 kB
+build/spinon/c11-4-tailnet-site-20261019/static/js/lib-react.382571d6aa.js                  218.4 kB    68.8 kB
+build/spinon/c11-4-tailnet-site-20261019/static/js/async/route-6c33a3943990.198efadea6.js   405.9 kB    95.3 kB
+build/spinon/c11-4-tailnet-site-20261019/static/search_index.ko.f3bd5c94.json               443.8 kB    144.1 kB
+
+                                                                                   Total:   1807.1 kB   518.9 kB
+
+File (node)                                                                                                                                      Size       Gzip
+build/spinon/c11-4-tailnet-site-20261019/404.html                                                                                                8.5 kB     2.6 kB
+build/spinon/c11-4-tailnet-site-20261019/internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/implementation-review-20.html   26.6 kB    7.3 kB
+build/spinon/c11-4-tailnet-site-20261019/internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/pr-delta-review-30.html         26.9 kB    7.3 kB
+build/spinon/c11-4-tailnet-site-20261019/internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/README.html                     27.9 kB    7.9 kB
+build/spinon/c11-4-tailnet-site-20261019/0001-conformance.html                                                                                   34.8 kB    10.3 kB
+build/spinon/c11-4-tailnet-site-20261019/plan/c11-css-grid.html                                                                                  53.2 kB    15.0 kB
+build/spinon/c11-4-tailnet-site-20261019/plan/c11-4-grid-track-sizing.html                                                                       60.3 kB    15.8 kB
+build/spinon/c11-4-tailnet-site-20261019/internal/0059-c11-grid-layout.html                                                                      79.6 kB    20.9 kB
+build/spinon/c11-4-tailnet-site-20261019/internal/README.html                                                                                    167.5 kB   40.0 kB
+build/spinon/c11-4-tailnet-site-20261019/STATUS.html                                                                                             382.2 kB   97.1 kB
+
+                                                                                                                                        Total:   867.6 kB   224.2 kB

@@ -1,5 +1,9 @@
 # 내부 인터페이스 명세
 
+## C11.4 PR #347 뒤 Tailnet 미리보기 동기화
+
+[선택 빌드·복사·제공 화면과 SHA-256 근거](./evidence/c11-4-tailnet-sync-2026-10-19/README.md) · [PR 변경 적대 검토 30개](./evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.md). PR #347 병합 뒤 공식 로드맵·상태 대장·C11.4 계획의 정적 미리보기 내용을 갱신했다. C11.4는 미완료로 유지하며 앱 동작 검증이나 전체 문서 사이트 배포를 뜻하지 않는다.
+
 ## S04.10 확인 frame 후보
 
 [순수 Rust confirmed-frame registry 내부 계약 0079](./0079-s04-10-confirmed-frame-registry.md) · [구현 전 계획](../../plan/s04-10-presented-frame-gate.md) · [구현·검증 근거](./evidence/s04-10-presented-frame-gate-2026-10-18/README.md) · [계획 검토 20개](./evidence/s04-10-presented-frame-gate-plan-review-20-2026-10-18.md) · [구현 실패 관점 20개](./evidence/s04-10-presented-frame-gate-implementation-review-20-2026-10-18.md) · [PR 변경 관점 30개](./evidence/s04-10-presented-frame-gate-pr-delta-review-30-2026-10-18.md) · [구현 PR #291 Rebase and merge](https://github.com/ohah/spinon/pull/291), merge SHA `e906aed109a7af2b9f7ccfd0cd64ba4b806f5869` · [Tailnet 미리보기 근거](./evidence/s04-10-tailnet-sync-2026-10-18/README.md) · [iOS 26.2 기기/Simulator SDK·runtime 차이](./evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/README.md) · [이번 PR 변경 관점 30개](./evidence/s04-10-ios-metal-sdk-simulator-2026-10-18/pr-delta-review-30.md). Android·iOS callback, input ordering, timestamp 대응은 미검증이며 S04.10/S05.2 완료가 아니다.
