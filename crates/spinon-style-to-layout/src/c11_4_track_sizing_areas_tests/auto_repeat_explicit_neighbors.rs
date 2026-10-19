@@ -248,8 +248,7 @@ fn chrome155_auto_repeat_explicit_neighbor_matrix_preserves_tracks_and_frames() 
         let pass = trace
             .passes
             .iter()
-            .filter(|pass| pass.axis == case.axis)
-            .last()
+            .rfind(|pass| pass.axis == case.axis)
             .unwrap_or_else(|| panic!("{}: missing {:?} pass", case.id, case.axis));
         let stage = pass
             .stages

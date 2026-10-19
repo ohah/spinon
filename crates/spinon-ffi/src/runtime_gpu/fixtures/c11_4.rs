@@ -348,7 +348,7 @@ struct AutoRepeatNeighborScene {
     items: &'static [(&'static str, &'static str)],
 }
 
-const C11_4_AUTO_REPEAT_NEIGHBOR_SCENES: [AutoRepeatNeighborScene; 18] = [
+const C11_4_AUTO_REPEAT_NEIGHBOR_SCENES: [AutoRepeatNeighborScene; 30] = [
     AutoRepeatNeighborScene {
         scene_id: "auto-fit-span-neighbors",
         root_id: "c114-auto-fit-span-neighbors-grid",
@@ -412,7 +412,7 @@ const C11_4_AUTO_REPEAT_NEIGHBOR_SCENES: [AutoRepeatNeighborScene; 18] = [
     AutoRepeatNeighborScene {
         scene_id: "auto-fill-overflow-neighbors",
         root_id: "c114-auto-fill-overflow-neighbors-grid",
-        root_style: "box-sizing:border-box;display:grid;width:40px;height:60px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:30px repeat(auto-fill,40px) 20px;grid-template-rows:40px;background-color:#101820",
+        root_style: "box-sizing:border-box;display:grid;width:40px;height:60px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:30px repeat(auto-fill,40px) 20px;grid-template-rows:40px;background-color:#22c55e",
         items: &[(
             "c114-auto-fill-overflow-neighbors-item",
             "box-sizing:border-box;width:12px;height:12px;margin:0;padding:0;border:0;grid-column:3;grid-row:1;background-color:#e5484d",
@@ -483,6 +483,105 @@ const C11_4_AUTO_REPEAT_NEIGHBOR_SCENES: [AutoRepeatNeighborScene; 18] = [
         root_id: "c114-auto-fill-two-track-rows-both-342-grid",
         root_style: "box-sizing:border-box;display:grid;width:50px;height:max-content;min-height:342px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:40px;grid-template-rows:20px repeat(auto-fill,minmax(40px,1fr) 20px) 10px;background-color:#101820",
         items: &[],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "columns-fill-control",
+        root_id: "c114-columns-fill-control-grid",
+        root_style: "box-sizing:border-box;display:grid;width:200px;height:200px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fill,minmax(40px,1fr) 20px) 10px;grid-template-rows:20px 12px;background-color:#101820",
+        items: &[(
+            "c114-columns-fill-control-item",
+            "box-sizing:border-box;width:12px;height:12px;margin:0;padding:0;border:0;grid-column:2;grid-row:2;background-color:#e5484d",
+        )],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "rows-fill-control",
+        root_id: "c114-rows-fill-control-grid",
+        root_style: "box-sizing:border-box;display:grid;width:200px;height:200px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px 12px;grid-template-rows:20px repeat(auto-fill,minmax(40px,1fr) 20px) 10px;background-color:#101820",
+        items: &[(
+            "c114-rows-fill-control-item",
+            "box-sizing:border-box;width:12px;height:12px;margin:0;padding:0;border:0;grid-column:2;grid-row:2;background-color:#e5484d",
+        )],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "both-fill-square",
+        root_id: "c114-both-fill-square-grid",
+        root_style: "box-sizing:border-box;display:grid;width:200px;height:200px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fill,minmax(40px,1fr) 20px) 10px;grid-template-rows:20px repeat(auto-fill,minmax(40px,1fr) 20px) 10px;background-color:#101820",
+        items: &[(
+            "c114-both-fill-square-item",
+            "box-sizing:border-box;width:12px;height:12px;margin:0;padding:0;border:0;grid-column:2;grid-row:2;background-color:#e5484d",
+        )],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "both-fill-asymmetric",
+        root_id: "c114-both-fill-asymmetric-grid",
+        root_style: "box-sizing:border-box;display:grid;width:200px;height:266px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fill,minmax(40px,1fr) 20px) 10px;grid-template-rows:20px repeat(auto-fill,minmax(40px,1fr) 20px) 10px;background-color:#101820",
+        items: &[(
+            "c114-both-fill-asymmetric-item",
+            "box-sizing:border-box;width:12px;height:12px;margin:0;padding:0;border:0;grid-column:2;grid-row:2;background-color:#e5484d",
+        )],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "both-fit-empty",
+        root_id: "c114-both-fit-empty-grid",
+        root_style: "box-sizing:border-box;display:grid;width:200px;height:200px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fit,minmax(40px,1fr) 20px) 10px;grid-template-rows:20px repeat(auto-fit,minmax(40px,1fr) 20px) 10px;background-color:#101820",
+        items: &[],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "both-fit-single",
+        root_id: "c114-both-fit-single-grid",
+        root_style: "box-sizing:border-box;display:grid;width:200px;height:200px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fit,minmax(40px,1fr) 20px) 10px;grid-template-rows:20px repeat(auto-fit,minmax(40px,1fr) 20px) 10px;background-color:#101820",
+        items: &[(
+            "c114-both-fit-single-item",
+            "box-sizing:border-box;width:12px;height:12px;margin:0;padding:0;border:0;grid-column:2;grid-row:2;background-color:#e5484d",
+        )],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "both-fit-span-two",
+        root_id: "c114-both-fit-span-two-grid",
+        root_style: "box-sizing:border-box;display:grid;width:200px;height:200px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fit,minmax(40px,1fr) 20px) 10px;grid-template-rows:20px repeat(auto-fit,minmax(40px,1fr) 20px) 10px;background-color:#101820",
+        items: &[(
+            "c114-both-fit-span-two-item",
+            "box-sizing:border-box;width:12px;height:12px;margin:0;padding:0;border:0;grid-column:2 / span 2;grid-row:2 / span 2;background-color:#e5484d",
+        )],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "both-fit-second-repeat",
+        root_id: "c114-both-fit-second-repeat-grid",
+        root_style: "box-sizing:border-box;display:grid;width:200px;height:200px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fit,minmax(40px,1fr) 20px) 10px;grid-template-rows:20px repeat(auto-fit,minmax(40px,1fr) 20px) 10px;background-color:#101820",
+        items: &[(
+            "c114-both-fit-second-repeat-item",
+            "box-sizing:border-box;width:12px;height:12px;margin:0;padding:0;border:0;grid-column:4;grid-row:4;background-color:#e5484d",
+        )],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "columns-fit-rows-fill-empty",
+        root_id: "c114-columns-fit-rows-fill-empty-grid",
+        root_style: "box-sizing:border-box;display:grid;width:200px;height:200px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fit,minmax(40px,1fr) 20px) 10px;grid-template-rows:20px repeat(auto-fill,minmax(40px,1fr) 20px) 10px;background-color:#101820",
+        items: &[],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "columns-fill-rows-fit-empty",
+        root_id: "c114-columns-fill-rows-fit-empty-grid",
+        root_style: "box-sizing:border-box;display:grid;width:200px;height:200px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fill,minmax(40px,1fr) 20px) 10px;grid-template-rows:20px repeat(auto-fit,minmax(40px,1fr) 20px) 10px;background-color:#101820",
+        items: &[],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "columns-fit-rows-fill-second-repeat",
+        root_id: "c114-columns-fit-rows-fill-second-repeat-grid",
+        root_style: "box-sizing:border-box;display:grid;width:200px;height:200px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fit,minmax(40px,1fr) 20px) 10px;grid-template-rows:20px repeat(auto-fill,minmax(40px,1fr) 20px) 10px;background-color:#101820",
+        items: &[(
+            "c114-columns-fit-rows-fill-second-repeat-item",
+            "box-sizing:border-box;width:12px;height:12px;margin:0;padding:0;border:0;grid-column:4;grid-row:4;background-color:#e5484d",
+        )],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "columns-fill-rows-fit-second-repeat",
+        root_id: "c114-columns-fill-rows-fit-second-repeat-grid",
+        root_style: "box-sizing:border-box;display:grid;width:200px;height:200px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fill,minmax(40px,1fr) 20px) 10px;grid-template-rows:20px repeat(auto-fit,minmax(40px,1fr) 20px) 10px;background-color:#101820",
+        items: &[(
+            "c114-columns-fill-rows-fit-second-repeat-item",
+            "box-sizing:border-box;width:12px;height:12px;margin:0;padding:0;border:0;grid-column:4;grid-row:4;background-color:#e5484d",
+        )],
     },
 ];
 
@@ -996,7 +1095,7 @@ mod tests {
     #[test]
     fn exposes_only_bounded_intrinsic_track_sizing_scenes() {
         assert_eq!(C11_4_GRID_TRACK_SIZING_SCENES.len(), 20);
-        assert_eq!(C11_4_AUTO_REPEAT_NEIGHBOR_SCENES.len(), 18);
+        assert_eq!(C11_4_AUTO_REPEAT_NEIGHBOR_SCENES.len(), 30);
         assert_eq!(C11_4_IMAGE_TRACK_SCENES.len(), 18);
         assert_eq!(C11_4_IMAGE_FIXED_GUTTER_SCENES.len(), 2);
         assert_eq!(C11_4_PERCENTAGE_GAP_SCENES.len(), 6);

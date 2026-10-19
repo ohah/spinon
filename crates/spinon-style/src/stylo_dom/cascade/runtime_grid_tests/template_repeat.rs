@@ -184,6 +184,40 @@ fn track_sizing_profile_preserves_fixed_minimum_auto_repeat_modes() {
 }
 
 #[test]
+fn track_sizing_profile_preserves_independent_auto_repeats_on_both_axes() {
+    let fixture = fixture(
+        "display:grid;box-sizing:border-box;width:200px;height:266px;grid-template-columns:20px repeat(auto-fit,minmax(40px,1fr)) 10px;grid-template-rows:20px repeat(auto-fill,minmax(40px,1fr)) 10px;margin:0;padding:0",
+    );
+    let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+        &fixture.view,
+        &[],
+        viewport(),
+        Default::default(),
+    )
+    .unwrap_or_else(|error| panic!("independent two-axis auto-repeat: {error:?}"));
+    let grid = snapshot.elements[0].grid_layout.as_ref().unwrap();
+
+    assert_eq!(
+        grid.columns_auto_repeat,
+        Some(ComputedCssGridAutoRepeat {
+            mode: ComputedCssGridAutoRepeatMode::AutoFit,
+            start: 1,
+            end: 2,
+        })
+    );
+    assert_eq!(
+        grid.rows_auto_repeat,
+        Some(ComputedCssGridAutoRepeat {
+            mode: ComputedCssGridAutoRepeatMode::AutoFill,
+            start: 1,
+            end: 2,
+        })
+    );
+    assert_eq!(grid.columns.len(), 3);
+    assert_eq!(grid.rows.len(), 3);
+}
+
+#[test]
 fn track_sizing_profile_preserves_auto_repeat_neighbors_and_fragment_order() {
     let cases = [
         (
@@ -282,7 +316,6 @@ fn auto_repeat_rejects_profiles_and_shapes_outside_the_supported_subset() {
         "grid-template-columns:20px repeat(auto-fill,minmax(24px,1fr)) repeat(auto-fit,24px)",
         "grid-template-columns:[neighbor] 20px repeat(auto-fill,minmax(24px,1fr))",
         "grid-template-columns:repeat(auto-fit,[named] minmax(24px,1fr))",
-        "grid-template-columns:repeat(auto-fill,minmax(24px,1fr));grid-template-rows:repeat(auto-fit,minmax(24px,1fr))",
         "grid-template-columns:repeat(auto-fill,minmax(24px,1fr));grid-template-rows:40px;grid-template-areas:\"area\"",
     ] {
         let fixture = fixture(&format!(

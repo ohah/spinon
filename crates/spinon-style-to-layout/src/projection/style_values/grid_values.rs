@@ -43,13 +43,12 @@ pub(super) fn project_grid_layout_with_math(
             "grid-template-rows"
         };
         if profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
-            || (grid.columns_auto_repeat.is_some() && grid.rows_auto_repeat.is_some())
             || grid.template_areas.is_some()
         {
             return Err(StyleLayoutError::UnsupportedComputedValue {
                 node,
                 property,
-                value: "auto-repeat은 단일 축의 제한 track-sizing profile에서만 지원됩니다"
+                value: "auto-repeat은 각 track list에서 하나씩만 제한 track-sizing profile로 지원됩니다"
                     .to_owned(),
             });
         }

@@ -366,9 +366,7 @@ pub(super) fn validate_grid_layout(
             allow_intrinsic_tracks,
         )?;
         if container.columns_auto_repeat.is_some() || container.rows_auto_repeat.is_some() {
-            if container.placement_mode != GridPlacementMode::TrackSizing
-                || (container.columns_auto_repeat.is_some() && container.rows_auto_repeat.is_some())
-            {
+            if container.placement_mode != GridPlacementMode::TrackSizing {
                 return Err(LayoutError::InvalidGridTrackList {
                     node: node.id,
                     property: if container.columns_auto_repeat.is_some() {
@@ -378,68 +376,20 @@ pub(super) fn validate_grid_layout(
                     },
                 });
             }
-            let repeated_axis_has_line_names = (container.columns_auto_repeat.is_some()
-                && container
-                    .columns_line_names
-                    .iter()
-                    .any(|names| !names.is_empty()))
-                || (container.rows_auto_repeat.is_some()
-                    && container
-                        .rows_line_names
-                        .iter()
-                        .any(|names| !names.is_empty()));
-            if repeated_axis_has_line_names {
-                return Err(LayoutError::InvalidGridTrackList {
-                    node: node.id,
-                    property: if container.columns_auto_repeat.is_some() {
-                        "grid-template-columns"
-                    } else {
-                        "grid-template-rows"
-                    },
-                });
-            }
-            let (property, tracks, auto_repeat) =
-                match (container.columns_auto_repeat, container.rows_auto_repeat) {
-                    (Some(auto_repeat), None) => {
-                        ("grid-template-columns", &container.columns, auto_repeat)
-                    }
-                    (None, Some(auto_repeat)) => {
-                        ("grid-template-rows", &container.rows, auto_repeat)
-                    }
-                    _ => {
-                        return Err(LayoutError::InvalidGridTrackList {
-                            node: node.id,
-                            property: "grid-template-columns",
-                        });
-                    }
-                };
-            let range_is_valid =
-                auto_repeat.start < auto_repeat.end && auto_repeat.end <= tracks.len();
-            let (prefix, repeat_tracks, suffix) = if range_is_valid {
-                (
-                    &tracks[..auto_repeat.start],
-                    &tracks[auto_repeat.start..auto_repeat.end],
-                    &tracks[auto_repeat.end..],
-                )
-            } else {
-                return Err(LayoutError::InvalidGridTrackList {
-                    node: node.id,
-                    property,
-                });
-            };
-            if !prefix
-                .iter()
-                .chain(suffix.iter())
-                .all(auto_repeat_neighbor_track_is_fixed_px)
-                || !repeat_tracks
-                    .iter()
-                    .all(auto_repeat_track_has_fixed_minimum)
-            {
-                return Err(LayoutError::InvalidGridTrackList {
-                    node: node.id,
-                    property,
-                });
-            }
+            validate_auto_repeat_axis(
+                node.id,
+                "grid-template-columns",
+                &container.columns,
+                &container.columns_line_names,
+                container.columns_auto_repeat,
+            )?;
+            validate_auto_repeat_axis(
+                node.id,
+                "grid-template-rows",
+                &container.rows,
+                &container.rows_line_names,
+                container.rows_auto_repeat,
+            )?;
         }
         if (!container.columns_line_names.is_empty()
             && container.columns.len().checked_add(1) != Some(container.columns_line_names.len()))
@@ -646,6 +596,38 @@ pub(super) fn validate_grid_layout(
     Ok(())
 }
 
+fn validate_auto_repeat_axis(
+    node: NodeId,
+    property: &'static str,
+    tracks: &[GridTrackSize],
+    line_names: &[Vec<String>],
+    auto_repeat: Option<GridAutoRepeat>,
+) -> Result<(), LayoutError> {
+    let Some(auto_repeat) = auto_repeat else {
+        return Ok(());
+    };
+    if line_names.iter().any(|names| !names.is_empty()) {
+        return Err(LayoutError::InvalidGridTrackList { node, property });
+    }
+    if auto_repeat.start >= auto_repeat.end || auto_repeat.end > tracks.len() {
+        return Err(LayoutError::InvalidGridTrackList { node, property });
+    }
+    let prefix = &tracks[..auto_repeat.start];
+    let repeat_tracks = &tracks[auto_repeat.start..auto_repeat.end];
+    let suffix = &tracks[auto_repeat.end..];
+    if !prefix
+        .iter()
+        .chain(suffix.iter())
+        .all(auto_repeat_neighbor_track_is_fixed_px)
+        || !repeat_tracks
+            .iter()
+            .all(auto_repeat_track_has_fixed_minimum)
+    {
+        return Err(LayoutError::InvalidGridTrackList { node, property });
+    }
+    Ok(())
+}
+
 fn validate_tracks(
     node: NodeId,
     property: &'static str,
@@ -738,6 +720,10 @@ fn valid_max_track_sizing_function(value: GridTrackMaxSizingFunction) -> bool {
 #[cfg(test)]
 #[path = "grid_tests.rs"]
 mod tests;
+
+#[cfg(test)]
+#[path = "grid_track_sizing_tests.rs"]
+mod track_sizing_tests;
 
 #[cfg(test)]
 #[path = "grid_auto_placement_tests.rs"]
