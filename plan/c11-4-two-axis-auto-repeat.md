@@ -16,7 +16,7 @@
 - 기존 parser subset을 유지한다: 한 list 안의 auto-repeat 하나, 제한된 fixed-minimum repeated track pattern, finite non-negative fixed `px` explicit neighbors, 반복 축의 line names 없음, `grid-template-areas` 없음. Integer repeat/auto-repeat 혼합, 여러 auto-repeat/list, 비-`px` neighbor와 다른 track grammar는 새로 허용하지 않는다.
 - Columns/rows에서 `auto-fill`과 `auto-fit`을 독립 선택한다. 혼합 mode의 빈 축 및 두 번째 반복에만 놓인 item을 포함한다.
 - Grid container에 definite 200×200px 또는 200×266px size, `8px` row/column gap, prefix `20px`, suffix `10px`, 반복 fragment `minmax(40px, 1fr) 20px`를 사용한다. Fixture는 `horizontal-tb`/LTR이고 item은 명시 line에 놓인 12×12px fixed box다. text/image contribution과 implicit track 생성을 새 범위로 끌어들이지 않는다.
-- one-axis control 2개와 dual-axis case 10개를 포함한 oracle 12개 ID를 app fixture에 연결한다. 현재 확인된 21개 C11.4 explicit-neighbor scene도 유지하여 Android/iOS에서 **33개 scene** 전체를 재실행한다.
+- one-axis control 2개와 dual-axis case 10개를 포함한 oracle 12개 ID를 app fixture에 연결한다. [기존 실행 근거](../spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/README.md)의 C11.4 explicit-neighbor scene 21개도 유지하여 Android/iOS에서 **33개 scene** 전체를 재실행한다.
 
 ## 구현 전 oracle과 판정
 
