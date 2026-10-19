@@ -1,0 +1,7 @@
+build: SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 mise exec -- bun run build:android
+log: android-build-fix6.log
+status: BUILD SUCCESSFUL
+APK: platforms/android/app/build/outputs/apk/debug/app-debug.apk
+APK sha256: a657f7133440d735f6cc9d8a628ae71de65a79969a2bd7b41a3f14660010a9fd
+V8 revision: 7b50b62cb18f28617959e8452e2cd18195b38bcf
+V8 archive sha256: e0288be05fdedd7b5bed945dc446f7ec7dc11454034d0efc3dfe297d32cd7813

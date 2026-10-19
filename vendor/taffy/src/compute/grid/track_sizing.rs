@@ -1,6 +1,6 @@
 //! Implements the track sizing algorithm
 //! <https://www.w3.org/TR/css-grid-1/#layout-algorithm>
-use super::types::{GridItem, GridTrack, TrackCounts};
+use super::types::{GridItem, GridTrack, GridTrackKind, TrackCounts};
 use super::{GridTrackSizingStageKind, GridTrackSizingTrace};
 use crate::geometry::{AbstractAxis, Line, Size};
 use crate::style::{AlignContent, AlignContentKeyword, AvailableSpace};
@@ -363,10 +363,10 @@ pub(super) fn track_sizing_algorithm<Tree: LayoutPartialTree>(
     // 11.4 Initialise Track sizes
     // Initialize each track’s base size and growth limit.
     let percentage_basis = inner_node_size.get(axis).or(axis_min_size);
-    initialize_track_sizes(tree, axis_tracks, percentage_basis);
+    let axis_inner_node_size = inner_node_size.get(axis);
+    initialize_track_sizes(tree, axis_tracks, percentage_basis, axis_inner_node_size);
 
     // Resolve fit-content() limits against the container's inner size (these are fixed for the rest of this pass)
-    let axis_inner_node_size = inner_node_size.get(axis);
     for track in axis_tracks.iter_mut() {
         track.resolve_fit_content_limit(axis_inner_node_size, |val, basis| tree.calc(val, basis));
     }
@@ -541,9 +541,20 @@ fn flush_planned_growth_limit_increases(tracks: &mut [GridTrack], set_infinitely
 fn initialize_track_sizes(
     tree: &impl LayoutPartialTree,
     axis_tracks: &mut [GridTrack],
+    percentage_basis: Option<f32>,
     axis_inner_node_size: Option<f32>,
 ) {
     for track in axis_tracks.iter_mut() {
+        // Grid 고유 크기 계산에서 순환 백분율 gap은 0으로 기여한다.
+        // 확정된 최소 크기가 다른 track의 백분율 기준으로 쓰여도 gutter에는 적용하지 않는다.
+        // 이렇게 하면 calc()의 고정 길이 항은 보존하면서 순환 백분율 항만 제외할 수 있다.
+        let track_percentage_basis =
+            if track.kind == GridTrackKind::Gutter && axis_inner_node_size.is_none() {
+                Some(0.0)
+            } else {
+                percentage_basis
+            };
+
         // For each track, if the track’s min track sizing function is:
         // - A fixed sizing function
         //     Resolve to an absolute length and use that size as the track’s initial base size.
@@ -552,7 +563,7 @@ fn initialize_track_sizes(
         //     Use an initial base size of zero.
         track.base_size = track
             .min_track_sizing_function
-            .definite_value(axis_inner_node_size, |val, basis| tree.calc(val, basis))
+            .definite_value(track_percentage_basis, |val, basis| tree.calc(val, basis))
             .unwrap_or(0.0);
 
         // For each track, if the track’s max track sizing function is:
@@ -564,7 +575,7 @@ fn initialize_track_sizes(
         //     Use an initial growth limit of infinity.
         track.growth_limit = track
             .max_track_sizing_function
-            .definite_value(axis_inner_node_size, |val, basis| tree.calc(val, basis))
+            .definite_value(track_percentage_basis, |val, basis| tree.calc(val, basis))
             .unwrap_or(f32::INFINITY);
 
         // In all cases, if the growth limit is less than the base size, increase the growth limit to match the base size.

@@ -33,6 +33,9 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "column-transfer-input-capped-by-fixed-row-span",
     "fixed-gutter-column-suggestion-clamp",
     "fixed-gutter-row-suggestion-clamp",
+    "grid-gap-definite-percent", "grid-gap-cyclic-percent",
+    "grid-gap-definite-calc", "grid-gap-cyclic-calc",
+    "grid-gap-cyclic-percent-min-basis", "grid-gap-cyclic-calc-min-basis",
 ]
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
@@ -51,6 +54,14 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
         return "width=12,height=6"
     case "fixed-gutter-row-suggestion-clamp":
         return "width=6,height=12"
+    case "grid-gap-definite-percent", "grid-gap-definite-calc":
+        return "width=100,height=40"
+    case "grid-gap-cyclic-percent":
+        return "width=100,height=20"
+    case "grid-gap-cyclic-calc":
+        return "width=105,height=25"
+    case "grid-gap-cyclic-percent-min-basis", "grid-gap-cyclic-calc-min-basis":
+        return "width=120,height=30"
     case "spanning-auto-tracks", "spanning-min-content-items":
         return "width=100,height=30"
     case "fixed-small-track-overflow":
@@ -93,6 +104,10 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         return "width=36,height=24"
     case "fixed-gutter-row-suggestion-clamp":
         return "width=54,height=36"
+    case "grid-gap-definite-percent", "grid-gap-cyclic-percent",
+         "grid-gap-definite-calc", "grid-gap-cyclic-calc",
+         "grid-gap-cyclic-percent-min-basis", "grid-gap-cyclic-calc-min-basis":
+        return "width=40,height=10"
     case "spanning-auto-tracks":
         return "width=70,height=10"
     case "auto-fill-repeat":
@@ -467,6 +482,18 @@ private func c114ImageTrackPassMatches(
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     switch sceneID {
+    case "grid-gap-definite-percent":
+        return c114GapNodeFrames("100", "40", "50", "20")
+    case "grid-gap-cyclic-percent":
+        return c114GapNodeFrames("100", "20", "50", "15")
+    case "grid-gap-definite-calc":
+        return c114GapNodeFrames("100", "40", "55", "25")
+    case "grid-gap-cyclic-calc":
+        return c114GapNodeFrames("105", "25", "55.5", "21.25")
+    case "grid-gap-cyclic-percent-min-basis":
+        return c114GapNodeFrames("120", "30", "52", "17.5")
+    case "grid-gap-cyclic-calc-min-basis":
+        return c114GapNodeFrames("120", "30", "57", "22.5")
     case "auto-text-max-content", "min-content-text-normal", "max-content-text-normal",
          "fit-content-text-minimum", "fit-content-calc-limit", "min-content-text-edge",
          "min-content-text-min-width", "min-content-text-max-width",
@@ -489,6 +516,20 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     default:
         return nil
     }
+}
+
+private func c114GapNodeFrames(
+    _ gridWidth: String, _ gridHeight: String, _ secondColumnX: String, _ secondRowY: String
+) -> String {
+    "node_frames_css_px=[0:node=1,x=0,y=0,width=\(gridWidth),height=\(gridHeight);"
+        + "1:node=2,x=0,y=0,width=40,height=10;"
+        + "2:node=3,x=\(secondColumnX),y=0,width=60,height=10;"
+        + "3:node=4,x=0,y=\(secondRowY),width=40,height=10;"
+        + "4:node=5,x=\(secondColumnX),y=\(secondRowY),width=60,height=10]"
+}
+
+private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    sceneID.hasPrefix("grid-gap-") ? 5 : 2
 }
 
 private struct C124MetalPixelCase {
@@ -662,6 +703,47 @@ private struct C111MetalPixelRun {
         ("right-of-grid", "c114-fixed-gutter-row-item", 6, 2, [229, 72, 77, 255]),
         ("below-grid", "c114-fixed-gutter-row-item", 2, 12, [229, 72, 77, 255]),
     ]
+    private static let c114GridGapDefinitePercentPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+        ("gap-background", "grid-gap-definite-percent-grid", 45, 5, [16, 24, 32, 255]),
+        ("row-gap-background", "grid-gap-definite-percent-grid", 5, 12, [16, 24, 32, 255]),
+        ("inside-item", "grid-gap-definite-percent-item-1", 5, 5, [229, 72, 77, 255]),
+        ("right-of-grid", "grid-gap-definite-percent-item-2", 105, 5, [229, 72, 77, 255]),
+    ]
+    private static let c114GridGapCyclicPercentPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+        ("gap-background", "grid-gap-cyclic-percent-grid", 45, 5, [16, 24, 32, 255]),
+        ("row-gap-background", "grid-gap-cyclic-percent-grid", 5, 12, [16, 24, 32, 255]),
+        ("inside-item", "grid-gap-cyclic-percent-item-1", 5, 5, [229, 72, 77, 255]),
+        ("right-of-grid", "grid-gap-cyclic-percent-item-2", 105, 5, [229, 72, 77, 255]),
+        ("below-grid", "grid-gap-cyclic-percent-item-4", 5, 22, [229, 72, 77, 255]),
+    ]
+    private static let c114GridGapDefiniteCalcPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+        ("gap-background", "grid-gap-definite-calc-grid", 45, 5, [16, 24, 32, 255]),
+        ("row-gap-background", "grid-gap-definite-calc-grid", 5, 12, [16, 24, 32, 255]),
+        ("inside-item", "grid-gap-definite-calc-item-1", 5, 5, [229, 72, 77, 255]),
+        ("right-of-grid", "grid-gap-definite-calc-item-2", 110, 5, [229, 72, 77, 255]),
+    ]
+    private static let c114GridGapCyclicCalcPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+        ("gap-background", "grid-gap-cyclic-calc-grid", 45, 5, [16, 24, 32, 255]),
+        ("row-gap-background", "grid-gap-cyclic-calc-grid", 5, 12, [16, 24, 32, 255]),
+        ("inside-item", "grid-gap-cyclic-calc-item-1", 5, 5, [229, 72, 77, 255]),
+        ("right-of-grid", "grid-gap-cyclic-calc-item-2", 111, 5, [229, 72, 77, 255]),
+        ("below-grid", "grid-gap-cyclic-calc-item-4", 5, 28, [229, 72, 77, 255]),
+    ]
+    private static let c114GridGapPercentMinBasisPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+        ("gap-background", "grid-gap-cyclic-percent-min-basis-grid", 45, 5, [16, 24, 32, 255]),
+        ("row-gap-background", "grid-gap-cyclic-percent-min-basis-grid", 5, 12, [16, 24, 32, 255]),
+        ("inside-item", "grid-gap-cyclic-percent-min-basis-item-1", 5, 5, [229, 72, 77, 255]),
+        ("second-column", "grid-gap-cyclic-percent-min-basis-item-2", 60, 5, [229, 72, 77, 255]),
+        ("second-row", "grid-gap-cyclic-percent-min-basis-item-3", 5, 20, [229, 72, 77, 255]),
+    ]
+    private static let c114GridGapCalcMinBasisPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+        ("gap-background", "grid-gap-cyclic-calc-min-basis-grid", 45, 5, [16, 24, 32, 255]),
+        ("row-gap-background", "grid-gap-cyclic-calc-min-basis-grid", 5, 12, [16, 24, 32, 255]),
+        ("inside-item", "grid-gap-cyclic-calc-min-basis-item-1", 5, 5, [229, 72, 77, 255]),
+        ("second-column", "grid-gap-cyclic-calc-min-basis-item-2", 60, 5, [229, 72, 77, 255]),
+        ("second-row", "grid-gap-cyclic-calc-min-basis-item-3", 5, 25, [229, 72, 77, 255]),
+        ("below-grid", "grid-gap-cyclic-calc-min-basis-item-3", 5, 31, [229, 72, 77, 255]),
+    ]
 
     private static func hasFixedC1131RepeatSamples(_ samples: [C111MetalPixelSample]) -> Bool {
         guard samples.count == c1131RepeatPixelSamples.count else { return false }
@@ -713,6 +795,18 @@ private struct C111MetalPixelRun {
             expectedSamples = c114FixedGutterColumnPixelSamples
         case "fixed-gutter-row-suggestion-clamp":
             expectedSamples = c114FixedGutterRowPixelSamples
+        case "grid-gap-definite-percent":
+            expectedSamples = c114GridGapDefinitePercentPixelSamples
+        case "grid-gap-cyclic-percent":
+            expectedSamples = c114GridGapCyclicPercentPixelSamples
+        case "grid-gap-definite-calc":
+            expectedSamples = c114GridGapDefiniteCalcPixelSamples
+        case "grid-gap-cyclic-calc":
+            expectedSamples = c114GridGapCyclicCalcPixelSamples
+        case "grid-gap-cyclic-percent-min-basis":
+            expectedSamples = c114GridGapPercentMinBasisPixelSamples
+        case "grid-gap-cyclic-calc-min-basis":
+            expectedSamples = c114GridGapCalcMinBasisPixelSamples
         default:
             expectedSamples = c114TextOverflowPixelSamples
         }
@@ -800,7 +894,13 @@ private struct C111MetalPixelRun {
                       || c114Scene == "row-transfer-input-capped-by-fixed-column-span"
                       || c114Scene == "column-transfer-input-capped-by-fixed-row-span"
                       || c114Scene == "fixed-gutter-column-suggestion-clamp"
-                      || c114Scene == "fixed-gutter-row-suggestion-clamp",
+                      || c114Scene == "fixed-gutter-row-suggestion-clamp"
+                      || c114Scene == "grid-gap-definite-percent"
+                      || c114Scene == "grid-gap-cyclic-percent"
+                      || c114Scene == "grid-gap-definite-calc"
+                      || c114Scene == "grid-gap-cyclic-calc"
+                      || c114Scene == "grid-gap-cyclic-percent-min-basis"
+                      || c114Scene == "grid-gap-cyclic-calc-min-basis",
                   c114Scene == sceneID, c114RunID == runID,
                   arguments.contains("--spinon-c114-grid-track-sizing"),
                   !isC1131Repeat, !isC1132NamedLine, !isC1133TemplateAreas,
@@ -4148,7 +4248,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let expectedNodeFramesMatch = expectedNodeFrames.map(report.contains) ?? true
             log("SPINON_C114_GRID_EVAL_RUN run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) \(runtimeStatusSummary(report))")
             let gridTrackSizingTraceAvailable = logC114GridTrackSizingTraceChunks(report)
-            guard report.hasPrefix("status=0 "), report.contains("layout=ready boxes=2"),
+            guard report.hasPrefix("status=0 "),
+                  report.contains("layout=ready boxes=\(c114ExpectedBoxCount(c114GridTrackSizingSceneID))"),
                   report.contains(rootFrame), report.contains(itemFrame), expectedTextInputs,
                   expectedImageInputs, expectedNodeFramesMatch else {
                 log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) report=\(report)")

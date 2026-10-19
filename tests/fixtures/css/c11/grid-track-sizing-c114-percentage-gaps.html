@@ -1,0 +1,72 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 percentage gap intrinsic sizing oracle</title>
+<style>
+  #result { display: none; }
+  * { box-sizing: content-box; }
+  html, body { margin: 0; padding: 0; }
+  body { width: 640px; font: 12px/16px sans-serif; color: #17212b; }
+  .case { display: grid; grid-template-columns: 180px 1fr; gap: 8px; margin: 0 0 12px; }
+  .label { grid-column: 1; }
+  .grid { grid-column: 2; display: grid; grid-template-columns: 40px 60px; grid-template-rows: 10px 10px; align-content: start; justify-content: start; margin: 0; padding: 0; border: 0; overflow: visible; background: #dce6f1; }
+  .item { width: 100%; height: 100%; min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0; background: #e5484d; }
+  .item:nth-child(4), .item:nth-child(5) { background: #2866f6; }
+  #definite-percent { width: 100px; height: 40px; column-gap: 10%; row-gap: 25%; }
+  #cyclic-percent { width: max-content; height: max-content; column-gap: 10%; row-gap: 25%; }
+  #definite-calc { width: 100px; height: 40px; column-gap: calc(5px + 10%); row-gap: calc(5px + 25%); }
+  #cyclic-calc { width: max-content; height: max-content; column-gap: calc(5px + 10%); row-gap: calc(5px + 25%); }
+  #cyclic-percent-min-basis { width: max-content; height: max-content; min-width: 120px; min-height: 30px; column-gap: 10%; row-gap: 25%; }
+  #cyclic-calc-min-basis { width: max-content; height: max-content; min-width: 120px; min-height: 30px; column-gap: calc(5px + 10%); row-gap: calc(5px + 25%); }
+</style>
+<body>
+  <section class="case" data-case="definite-percent">
+    <div class="label">Definite 100 × 40; column-gap 10%; row-gap 25%</div>
+    <div id="definite-percent" class="grid"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div></div>
+  </section>
+  <section class="case" data-case="cyclic-percent">
+    <div class="label">max-content; column-gap 10%; row-gap 25%</div>
+    <div id="cyclic-percent" class="grid"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div></div>
+  </section>
+  <section class="case" data-case="definite-calc">
+    <div class="label">Definite 100 × 40; calc(5px + 10% / 25%) gaps</div>
+    <div id="definite-calc" class="grid"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div></div>
+  </section>
+  <section class="case" data-case="cyclic-calc">
+    <div class="label">max-content; calc(5px + 10% / 25%) gaps</div>
+    <div id="cyclic-calc" class="grid"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div></div>
+  </section>
+  <section class="case" data-case="cyclic-percent-min-basis">
+    <div class="label">max-content; min 120 × 30; percentage gaps</div>
+    <div id="cyclic-percent-min-basis" class="grid"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div></div>
+  </section>
+  <section class="case" data-case="cyclic-calc-min-basis">
+    <div class="label">max-content; min 120 × 30; calc percentage gaps</div>
+    <div id="cyclic-calc-min-basis" class="grid"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div></div>
+  </section>
+  <pre id="result">pending</pre>
+  <script>
+    const rect = element => {
+      const { x, y, width, height, right, bottom } = element.getBoundingClientRect();
+      return { x, y, width, height, right, bottom };
+    };
+    const result = [...document.querySelectorAll('[data-case]')].map(section => {
+      const grid = section.querySelector('.grid');
+      const items = [...grid.children].map(rect);
+      const style = getComputedStyle(grid);
+      return {
+        id: section.dataset.case,
+        grid: rect(grid),
+        columns: style.gridTemplateColumns,
+        rows: style.gridTemplateRows,
+        columnGapComputed: style.columnGap,
+        rowGapComputed: style.rowGap,
+        usedColumnGap: items[1].x - items[0].right,
+        usedRowGap: items[2].y - items[0].bottom,
+        items,
+        overflowRight: Math.max(0, ...items.map(item => item.right - rect(grid).right)),
+        overflowBottom: Math.max(0, ...items.map(item => item.bottom - rect(grid).bottom))
+      };
+    });
+    document.querySelector('#result').textContent = JSON.stringify(result, null, 2);
+  </script>
+</body>

@@ -322,6 +322,39 @@ fn track_sizing_profile_keeps_named_area_placement() {
 }
 
 #[test]
+fn root_grid_max_content_is_scoped_to_the_track_sizing_profile() {
+    let grid_style = "display:grid;box-sizing:border-box;width:max-content;height:max-content;grid-template-columns:40px 60px;grid-template-rows:10px 10px;column-gap:10%;row-gap:25%;margin:0;padding:0;border:0";
+    let fixture = Fixture::new(grid_style, &[]);
+    let output = fixture.compute();
+
+    assert_eq!(
+        output.computed_styles.profile,
+        ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+    );
+    let frame = output.layout.frames[&fixture.root.id()];
+    assert_eq!((frame.width, frame.height), (100.0, 20.0));
+
+    let other_profile = Fixture::new(grid_style, &[]).compute_template();
+    assert!(matches!(
+        other_profile,
+        Err(StyleLayoutError::Layout(
+            spinon_layout::LayoutError::UnsupportedIntrinsicSizing { .. }
+        ))
+    ));
+
+    let block = Fixture::new(
+        "display:block;box-sizing:border-box;width:max-content;height:auto;margin:0;padding:0;border:0",
+        &[],
+    );
+    assert!(matches!(
+        block.try_compute(),
+        Err(StyleLayoutError::Layout(
+            spinon_layout::LayoutError::UnsupportedIntrinsicSizing { .. }
+        ))
+    ));
+}
+
+#[test]
 fn track_sizing_profile_lays_out_css_auto_repeat_modes() {
     for (keyword, expected_width) in [("auto-fill", 21.25), ("auto-fit", 100.0)] {
         let fixture = Fixture::new(
