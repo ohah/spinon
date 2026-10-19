@@ -23,9 +23,12 @@ if (sourceRootRelative !== expectedSourceRootRelative) {
   throw new Error(`source root must be the sanitized Rspress output: ${expectedSourceRootRelative}`);
 }
 const previewRootRelative = 'SpinonPreview';
-const backupRootRelative = `SpinonPreviewBackups/c11-4-two-track-tailnet-sync-2026-10-20/${pass}`;
+const backupOperation = pass === 'pass11'
+  ? 'c11-4-two-track-tailnet-sync-2026-10-20'
+  : 'c11-4-image-tailnet-preview-update-2026-10-20';
+const backupRootRelative = `SpinonPreviewBackups/${backupOperation}/${pass}`;
 const expectedTargetRoot = path.resolve(os.homedir(), 'Library/Application Support/SpinonPreview');
-const expectedBackupRoot = path.resolve(os.homedir(), `Library/Application Support/SpinonPreviewBackups/c11-4-two-track-tailnet-sync-2026-10-20/${pass}`);
+const expectedBackupRoot = path.resolve(os.homedir(), `Library/Application Support/SpinonPreviewBackups/${backupOperation}/${pass}`);
 if (targetRoot !== expectedTargetRoot || backupRoot !== expectedBackupRoot) {
   throw new Error('target and backup paths must match the approved SpinonPreview locations');
 }
