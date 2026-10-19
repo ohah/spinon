@@ -41,6 +41,17 @@
       ],
       "screenshot": "tailnet-pr-review-agent-browser.png",
       "viewport": "1280x633"
+    },
+    {
+      "route": "pull/343",
+      "title": "docs(evidence): PR #342 Tailnet 로드맵 동기화 근거 by ohah · Pull Request #343 · ohah/spinon",
+      "observed": [
+        "PR body screenshot loaded",
+        "img complete=true, naturalWidth=1280, naturalHeight=633",
+        "raw branch PNG SHA-256 matches the committed Agent Browser screenshot"
+      ],
+      "raw_image_path": "spec/internal/evidence/c11-4-pr342-tailnet-sync-2026-10-19/tailnet-roadmap-agent-browser.png",
+      "raw_image_sha256": "ec9dd13a4d70cd0afa0253ecbeeccb7f53c1328e1d824a93b3f7c1797a984683"
     }
   ],
   "terminal_browser_used": false

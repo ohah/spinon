@@ -37,7 +37,7 @@ Agent Browser로 아래 경로를 확인했다. 로드맵 화면에는 공식 72
 - [PR 변경 검토 30개](tailnet-pr-review-agent-browser.png)
 - [브라우저 관찰값](browser-verification.json)
 
-Terminal Browser는 사용하지 않았다. Agent Browser의 창을 닫은 뒤 세션 목록과 process를 다시 확인했고, Agent Browser·Chrome·Chromium 프로세스가 남지 않았다. [종료 확인](browser-session-shutdown.json).
+PR #343 본문도 Agent Browser로 열어 Tailnet screenshot이 `naturalWidth=1280`, `naturalHeight=633`으로 표시되는지 확인했다. Terminal Browser는 사용하지 않았다. 두 Agent Browser 실행 뒤 Chrome 창을 닫고 process 목록에서 Agent Browser·Chrome·Chromium이 사라진 것을 확인했다. [종료 확인](browser-session-shutdown.json).
 
 ## 남은 범위
 

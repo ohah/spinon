@@ -1,21 +1,35 @@
 {
   "tool": "Agent Browser",
-  "session": "redacted",
-  "close_command_succeeded": true,
-  "before_close": {
-    "active": true,
-    "browser_launched": true,
-    "page_count": 1
-  },
-  "after_close": {
-    "browser_launched": false,
-    "page_count": 0
-  },
-  "final_session_list": [],
+  "runs": [
+    {
+      "session": "redacted",
+      "purpose": "Tailnet roadmap, status, plan, and review pages",
+      "close_command_succeeded": true,
+      "after_close": {
+        "browser_launched": false,
+        "page_count": 0
+      },
+      "final_session_list": []
+    },
+    {
+      "session": "redacted",
+      "purpose": "PR #343 body image verification",
+      "close_command_succeeded": true,
+      "immediate_after_close": {
+        "browser_page_count": 0,
+        "daemon_still_exiting": true
+      },
+      "final_process_check_after_1_5_seconds": {
+        "agent_browser": false,
+        "chrome": false,
+        "chromium": false
+      }
+    }
+  ],
   "final_process_check": {
     "agent_browser": false,
     "chrome": false,
     "chromium": false
   },
-  "note": "close 직후 daemon은 비어 있는 세션 상태였고, 최종 process 확인 때는 daemon과 브라우저 프로세스가 모두 종료되어 있었다."
+  "note": "두 실행 후 Chrome 창을 닫았다. 두 번째 백그라운드 daemon은 짧은 종료 지연 뒤 OS process 목록에서 사라졌다."
 }
