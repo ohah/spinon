@@ -35,6 +35,7 @@ Chrome의 spanning 장면에서 각 min-content track은 10px이고 가운데 gu
 - [iOS 빌드·실행·Metal 표본 로그와 화면](./ios-simulator/)
 - [기본/fixture staticlib 분리 증거](./artifact-boundary/README.md)
 - [구현 실패 관점 20개](./implementation-review-20.md)
+- [PR diff 실패 관점 30개](./pr-diff-review-30.md)
 
 Rust 확인은 [workspace test](./workspace-test.log)에서 1,113 passed·4 ignored·0 failed였고, [기본 workspace Clippy](./workspace-clippy.log)와 [runtime](./runtime-clippy.log)/[FFI fixture-feature Clippy](./ffi-clippy.log)가 모두 `-D warnings`로 통과했다. Runtime C11.4 focused tests 5개(HTML namespace negative case 포함)와 [FFI C11.4 focused tests 5개](./ffi-test.log)가 통과했다. [runtime namespace-negative](./namespace-negative-test.log)·[scene table unit](./image-fixture-unit-test.log) 결과도 보존한다.
 
