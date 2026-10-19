@@ -41,4 +41,4 @@ overflow sample scene에서 root의 CSS width 40px 안/경계 밖 배경, root �
 
 초기 Android AVD run의 GLES context hang을 기록하고 AVD를 새로 시작해 최종 33-scene matrix를 통과했다. 실패 run은 보존했으며 최종 결과로 세지 않았다. [실행 로그](../c11-4-auto-repeat-two-track-min-size-2026-10-20/android-avd-c114-neighbors-android-avd-20261019T220821533Z-d963d8b6/android-avd-both-fit-span-two-renderer-hang.txt).
 
-계획 PR #367은 병합됐다. 구현 변경의 최종 PR diff 30관점 검토와 merge gate는 별도이며 아직 완료되지 않았다. Tailnet roadmap은 구현 PR 병합 뒤 별도 동기화 PR로 갱신한다. WPT, 실기기, Android hardware GPU, iOS compositor 이후 pixel equality, line names/areas, 임의 track grammar와 전체 C11.4 적합성은 이 근거에서 확인하지 않았다.
+계획 PR #367은 병합됐고 구현 PR [#368](https://github.com/ohah/spinon/pull/368)을 열었다. [최종 PR diff 실패 경로 30개](./pr-diff-review-30.md) 검토에서 병합 차단 결함은 나오지 않았다. 현재 required checks와 merge state는 GitHub에서 확인하고 병합 뒤 Tailnet roadmap을 별도 PR로 동기화한다. WPT, 실기기, Android hardware GPU, iOS compositor 이후 pixel equality, line names/areas, 임의 track grammar와 전체 C11.4 적합성은 이 근거에서 확인하지 않았다.
