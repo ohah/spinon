@@ -137,6 +137,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "auto-fill-two-track-columns-both-342", "auto-fill-two-track-columns-prefix-200",
             "auto-fill-two-track-columns-suffix-200", "auto-fill-two-track-rows-both-190",
             "auto-fill-two-track-rows-both-200", "auto-fill-two-track-rows-both-342",
+            "columns-fill-control", "rows-fill-control", "both-fill-square", "both-fill-asymmetric",
+            "both-fit-empty", "both-fit-single", "both-fit-span-two", "both-fit-second-repeat",
+            "columns-fit-rows-fill-empty", "columns-fill-rows-fit-empty",
+            "columns-fit-rows-fill-second-repeat", "columns-fill-rows-fit-second-repeat",
             "min-content-text-normal", "auto-text-max-content",
             "max-content-text-normal", "fit-content-text-minimum",
             "fit-content-calc-limit", "min-content-text-edge",
@@ -284,6 +288,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "auto-fill-row-neighbors":
             case "auto-fit-row-neighbors":
                 return "width=50,height=200";
+            case "both-fill-asymmetric":
+                return "width=200,height=266";
+            case "columns-fill-control":
+            case "rows-fill-control":
+            case "both-fill-square":
+            case "both-fit-empty":
+            case "both-fit-single":
+            case "both-fit-span-two":
+            case "both-fit-second-repeat":
+            case "columns-fit-rows-fill-empty":
+            case "columns-fill-rows-fit-empty":
+            case "columns-fit-rows-fill-second-repeat":
+            case "columns-fill-rows-fit-second-repeat":
+                return "width=200,height=200";
             case "auto-fill-two-track-columns-both-190":
                 return "width=190,height=60";
             case "auto-fill-two-track-columns-both-200":
@@ -381,7 +399,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "auto-fill-two-track-rows-both-190":
             case "auto-fill-two-track-rows-both-200":
             case "auto-fill-two-track-rows-both-342":
+            case "both-fit-empty":
+            case "columns-fit-rows-fill-empty":
+            case "columns-fill-rows-fit-empty":
                 return "";
+            case "columns-fill-control":
+            case "rows-fill-control":
+            case "both-fill-square":
+            case "both-fit-single":
+            case "both-fit-span-two":
+            case "both-fit-second-repeat":
+            case "columns-fit-rows-fill-second-repeat":
+            case "columns-fill-rows-fit-second-repeat":
+            case "both-fill-asymmetric":
+                return "width=12,height=12";
             case "auto-fit-span-neighbors":
             case "auto-fill-prefix-neighbors":
             case "auto-fill-suffix-neighbors":
@@ -746,6 +777,30 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
         switch (sceneId) {
+            case "auto-fill-overflow-neighbors":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=60;"
+                        + "1:node=2,x=86,y=0,width=12,height=12]";
+            case "both-fit-empty":
+            case "columns-fit-rows-fill-empty":
+            case "columns-fill-rows-fit-empty":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200]";
+            case "columns-fill-control":
+            case "rows-fill-control":
+            case "both-fill-square":
+            case "both-fit-single":
+            case "both-fit-span-two":
+            case "both-fit-second-repeat":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
+                        + "1:node=2,x=28,y=28,width=12,height=12]";
+            case "both-fill-asymmetric":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=266;"
+                        + "1:node=2,x=28,y=28,width=12,height=12]";
+            case "columns-fit-rows-fill-second-repeat":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
+                        + "1:node=2,x=28,y=109,width=12,height=12]";
+            case "columns-fill-rows-fit-second-repeat":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
+                        + "1:node=2,x=109,y=28,width=12,height=12]";
             case "auto-fill-two-track-columns-both-190":
             case "auto-fill-two-track-columns-both-200":
             case "auto-fill-two-track-columns-both-342":
@@ -828,6 +883,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (sceneId.equals("auto-fit-empty-neighbors")
                 || sceneId.equals("auto-fill-max-size-neighbors")
                 || sceneId.equals("auto-fill-min-size-neighbors")
+                || sceneId.equals("both-fit-empty")
+                || sceneId.equals("columns-fit-rows-fill-empty")
+                || sceneId.equals("columns-fill-rows-fit-empty")
                 || sceneId.startsWith("auto-fill-two-track-")) return 1;
         return sceneId.startsWith("grid-gap-") ? 5 : 2;
     }
@@ -836,6 +894,40 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if ("auto-fill-overflow-neighbors".equals(sceneId)) {
+            if (samples.size() != 4) return false;
+            boolean edgeInside = false;
+            boolean edgeOutside = false;
+            boolean overflow = false;
+            boolean background = false;
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                switch (sample.id) {
+                    case "overflow-root-edge-inside":
+                        edgeInside = sample.targetNodeId.equals("c114-" + sceneId + "-grid")
+                                && sample.xCssPx == 39 && sample.yCssPx == 8;
+                        if (!edgeInside) return false;
+                        break;
+                    case "overflow-root-edge-outside":
+                        edgeOutside = sample.targetNodeId.equals("c114-" + sceneId + "-grid")
+                                && sample.xCssPx == 40 && sample.yCssPx == 8;
+                        if (!edgeOutside) return false;
+                        break;
+                    case "overflow-item-outside-root":
+                        overflow = sample.targetNodeId.equals("c114-" + sceneId + "-item")
+                                && sample.xCssPx == 91 && sample.yCssPx == 8;
+                        if (!overflow) return false;
+                        break;
+                    case "overflow-root-background":
+                        background = sample.targetNodeId.equals("c114-" + sceneId + "-grid")
+                                && sample.xCssPx == 10 && sample.yCssPx == 30;
+                        if (!background) return false;
+                        break;
+                    default:
+                        return false;
+                }
+            }
+            return edgeInside && edgeOutside && overflow && background;
+        }
         if (sceneId.endsWith("-min-basis")) {
             boolean calc = sceneId.equals("grid-gap-cyclic-calc-min-basis");
             if (samples.size() != (calc ? 6 : 5)) return false;
@@ -1821,7 +1913,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getStringExtra("spinon_c11_grid_pixel_matrix_samples");
         boolean pixelMatrixRequested = pixelMatrixRunId != null || pixelMatrixEncodedSamples != null;
         boolean pixelMatrixSceneMatches = c114GridTrackSizingRequested
-                ? ("min-content-text-break-all".equals(pixelMatrixSceneId)
+                ? ("auto-fill-overflow-neighbors".equals(pixelMatrixSceneId)
+                        || "min-content-text-break-all".equals(pixelMatrixSceneId)
                         || "fixed-small-track-overflow".equals(pixelMatrixSceneId)
                         || "column-auto-natural-ratio".equals(pixelMatrixSceneId)
                         || "row-transfer-input-capped-by-fixed-column-span".equals(pixelMatrixSceneId)
@@ -5281,8 +5374,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int[] c114GridExpectedRgb(String sampleId) {
         switch (sampleId) {
+            case "overflow-root-edge-inside":
             case "grid-border":
                 return new int[] {34, 197, 94};
+            case "overflow-item-outside-root":
             case "item-inside-root":
             case "item-overflow-beyond-root":
             case "inside-item":
@@ -5291,10 +5386,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "second-column":
             case "second-row":
                 return new int[] {229, 72, 77};
+            case "overflow-root-edge-outside":
+                return new int[] {0, 0, 0};
             case "gap-background":
             case "row-gap-background":
             case "root-background-control":
                 return new int[] {16, 24, 32};
+            case "overflow-root-background":
+                return new int[] {34, 197, 94};
             default:
                 return new int[] {-1, -1, -1};
         }

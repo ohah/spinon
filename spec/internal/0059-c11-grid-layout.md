@@ -182,10 +182,18 @@ Taffy intrinsic sizing에서 cyclic percentage gutter는 0 basis를 사용하되
 
 2026-10-20 후속은 `RuntimeBlockFlexGridTrackSizingV1`에서 한 track axis의 단일 `auto-fill` 또는 `auto-fit` component 앞뒤에 직접 쓴 유한·0 이상 `px` track을 보존한다. computed track list는 authored order를 유지하고 `ComputedCssGridAutoRepeat { mode, start, end }`가 fragment의 half-open index를 전달한다. Layout projection은 같은 범위를 `GridAutoRepeat` metadata로 보존하고 Taffy explicit-grid input에 repeat 앞·뒤 `Single` component와 반복 `Repeat` component를 순서대로 전달한다. 반복 fragment는 기존 고정 최소 track subset이며 one-/two-track pattern을 지원한다.
 
-Placement는 auto-repeat expanded track을 Taffy가 처리하도록 raw numeric line/span 입력을 보존한다. 반복축 line은 0이 아니고 Taffy 정수 범위 안이어야 하며 span은 양수여야 한다. 반대 축은 기존 explicit placement resolver로 검증한다. 두 축 동시 auto-repeat, line names, `grid-template-areas`, 비-`px` neighbor, 여러 auto-repeat, repeat fragment 밖 integer `repeat()` 및 기타 unsupported sizing은 fail-closed한다. `auto-fit` empty track과 관련 gutter collapse 판정은 placement 이후 Taffy 결과 trace에서 검사한다.
+Placement는 auto-repeat expanded track을 Taffy가 처리하도록 raw numeric line/span 입력을 보존한다. 반복축 line은 0이 아니고 Taffy 정수 범위 안이어야 하며 span은 양수여야 한다. 반대 축은 기존 explicit placement resolver로 검증한다. 2026-10-20 양축 후속은 columns와 rows의 각 track list에 하나씩 auto-repeat을 함께 허용하고 mode, half-open repeat range 및 placement 결과에 따른 collapse를 독립 보존한다. line names, `grid-template-areas`, 비-`px` neighbor, 한 list 안의 여러 auto-repeat, repeat fragment 밖 integer `repeat()` 및 기타 unsupported sizing은 fail-closed한다. `auto-fit` empty track과 관련 gutter collapse 판정은 placement 이후 Taffy 결과 trace에서 검사한다.
 
 Chrome 155 Rust matrix 13/13과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 각각 13/13 scene을 확인했다. 두 앱 matrix는 row/column sizing, indefinite/min/max basis, empty·span auto-fit collapse와 overflow scene을 포함한다. overflow item frame은 양 플랫폼에서 root width 40px 안에 있지 않고 x=86px에 놓이며, screenshots에서도 root background 바깥에 표시된다. 이건 border stroke pixel 비교나 hardware GPU 검증이 아니다. [실행 로그·화면·해시](./evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.md).
 
 고정 Chrome 155 13-case matrix는 columns/rows, before/after/both explicit track, one-/two-track fragment, indefinite/min/max sizing, overflow와 auto-fit empty/span occupancy를 다룬다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 13/13 scene을 실행했다. 양쪽에서 root/item frame, 모든 expanded track base size 및 collapse flag, trace chunk 완전성, WGPU draw/present를 검사했다. [Chrome oracle·판정](./evidence/c11-4-auto-repeat-explicit-neighbors-precomparison-2026-10-20/README.md) · [Rust·Android/iOS 로그와 화면](./evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.md).
 
 이 후보는 auto-repeat의 전체 grammar, preferred/max/min basis 조합, 10,000-track 경계, 전체 placement/span/gutter matrix, WPT, 실기기·hardware GPU 및 compositor 이후 surface를 닫지 않는다. 공개 API가 아니고 C11.4·C11 완료 상태를 바꾸지 않는다. 내부 계약 숫자 버전은 `0.1.0` 그대로다.
+
+## C11.4 양쪽 Grid 축 auto-repeat 제한 후보
+
+양쪽 track list가 각각 현재 제한 grammar를 만족하면 columns와 rows의 `auto-fill` 또는 `auto-fit`을 동시에 사용할 수 있다. Cascade는 `ComputedCssGridAutoRepeat` metadata를 axis별로 유지한다. Typed projection은 각 axis의 mode와 half-open track range를 `GridAutoRepeat`에 독립 전달하고, layout validation은 columns와 rows를 별도로 확인한다. 한 axis의 range 오류가 반대 축의 valid range에 의해 가려지지 않도록 한다. auto-repeat이 없는 축의 기존 projection 동작은 별도 regression으로 보존한다.
+
+고정 Chrome 155 사전 비교 12-case와 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 각 33-scene matrix는 mixed `auto-fill`/`auto-fit`, 서로 다른 repeat count, empty/single/span/second-repeat occupancy와 suffix-line geometry를 확인한다. [양축 구현 근거·화면·해시·검증 한계](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/README.md) · [독립 구현 실패 관점 20개](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/implementation-review-20.md).
+
+이 profile은 한 track list 내 복수 auto-repeat, line names, template areas, 비-`px` neighbor, integer-repeat 혼합 또는 arbitrary track grammar를 지원하지 않는다. WPT·실기기·Android hardware GPU 및 iOS compositor 이후 pixel equality는 미검증이다. 공식 C11.4/C11 완료 판정과 내부 계약 `0.1.0`은 그대로다.

@@ -134,6 +134,12 @@ const scenes = [
     nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=60;1:node=2,x=86,y=0,width=12,height=12]',
     tracks: [30, 40, 20],
     collapsed: [false, false, false],
+    pixelSamples: [
+      { id: 'overflow-root-edge-inside', nodeId: 'c114-auto-fill-overflow-neighbors-grid', xCssPx: 39, yCssPx: 8, rgba: [34, 197, 94, 255] },
+      { id: 'overflow-root-edge-outside', nodeId: 'c114-auto-fill-overflow-neighbors-grid', xCssPx: 40, yCssPx: 8, rgba: [0, 0, 0, 255] },
+      { id: 'overflow-item-outside-root', nodeId: 'c114-auto-fill-overflow-neighbors-item', xCssPx: 91, yCssPx: 8, rgba: [229, 72, 77, 255] },
+      { id: 'overflow-root-background', nodeId: 'c114-auto-fill-overflow-neighbors-grid', xCssPx: 10, yCssPx: 30, rgba: [34, 197, 94, 255] },
+    ],
   },
   {
     id: 'auto-fill-row-neighbors',
@@ -235,7 +241,109 @@ const scenes = [
     tracks: [20, 40, 20, 40, 20, 40, 20, 40, 20, 10],
     collapsed: [false, false, false, false, false, false, false, false, false, false],
   },
+  {
+    id: 'columns-fill-control', boxCount: 2, rootFrame: 'width=200,height=200',
+    itemFrame: 'width=12,height=12',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=28,y=28,width=12,height=12]',
+    axes: { Columns: { tracks: [20, 45, 20, 45, 20, 10], collapsed: [false, false, false, false, false, false] } },
+  },
+  {
+    id: 'rows-fill-control', boxCount: 2, rootFrame: 'width=200,height=200',
+    itemFrame: 'width=12,height=12',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=28,y=28,width=12,height=12]',
+    axes: { Rows: { tracks: [20, 45, 20, 45, 20, 10], collapsed: [false, false, false, false, false, false] } },
+  },
+  {
+    id: 'both-fill-square', boxCount: 2, rootFrame: 'width=200,height=200',
+    itemFrame: 'width=12,height=12',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=28,y=28,width=12,height=12]',
+    axes: {
+      Columns: { tracks: [20, 45, 20, 45, 20, 10], collapsed: [false, false, false, false, false, false] },
+      Rows: { tracks: [20, 45, 20, 45, 20, 10], collapsed: [false, false, false, false, false, false] },
+    },
+  },
+  {
+    id: 'both-fill-asymmetric', boxCount: 2, rootFrame: 'width=200,height=266',
+    itemFrame: 'width=12,height=12',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=266;1:node=2,x=28,y=28,width=12,height=12]',
+    axes: {
+      Columns: { tracks: [20, 45, 20, 45, 20, 10], collapsed: [false, false, false, false, false, false] },
+      Rows: { tracks: [20, 40, 20, 40, 20, 40, 20, 10], collapsed: [false, false, false, false, false, false, false, false] },
+    },
+  },
+  {
+    id: 'both-fit-empty', boxCount: 1, rootFrame: 'width=200,height=200', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200]',
+    axes: {
+      Columns: { tracks: [20, 0, 0, 0, 0, 10], collapsed: [false, true, true, true, true, false] },
+      Rows: { tracks: [20, 0, 0, 0, 0, 10], collapsed: [false, true, true, true, true, false] },
+    },
+  },
+  {
+    id: 'both-fit-single', boxCount: 2, rootFrame: 'width=200,height=200',
+    itemFrame: 'width=12,height=12',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=28,y=28,width=12,height=12]',
+    axes: {
+      Columns: { tracks: [20, 154, 0, 0, 0, 10], collapsed: [false, false, true, true, true, false] },
+      Rows: { tracks: [20, 154, 0, 0, 0, 10], collapsed: [false, false, true, true, true, false] },
+    },
+  },
+  {
+    id: 'both-fit-span-two', boxCount: 2, rootFrame: 'width=200,height=200',
+    itemFrame: 'width=12,height=12',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=28,y=28,width=12,height=12]',
+    axes: {
+      Columns: { tracks: [20, 126, 20, 0, 0, 10], collapsed: [false, false, false, true, true, false] },
+      Rows: { tracks: [20, 126, 20, 0, 0, 10], collapsed: [false, false, false, true, true, false] },
+    },
+  },
+  {
+    id: 'both-fit-second-repeat', boxCount: 2, rootFrame: 'width=200,height=200',
+    itemFrame: 'width=12,height=12',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=28,y=28,width=12,height=12]',
+    axes: {
+      Columns: { tracks: [20, 0, 0, 154, 0, 10], collapsed: [false, true, true, false, true, false] },
+      Rows: { tracks: [20, 0, 0, 154, 0, 10], collapsed: [false, true, true, false, true, false] },
+    },
+  },
+  {
+    id: 'columns-fit-rows-fill-empty', boxCount: 1, rootFrame: 'width=200,height=200', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200]',
+    axes: {
+      Columns: { tracks: [20, 0, 0, 0, 0, 10], collapsed: [false, true, true, true, true, false] },
+      Rows: { tracks: [20, 45, 20, 45, 20, 10], collapsed: [false, false, false, false, false, false] },
+    },
+  },
+  {
+    id: 'columns-fill-rows-fit-empty', boxCount: 1, rootFrame: 'width=200,height=200', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200]',
+    axes: {
+      Columns: { tracks: [20, 45, 20, 45, 20, 10], collapsed: [false, false, false, false, false, false] },
+      Rows: { tracks: [20, 0, 0, 0, 0, 10], collapsed: [false, true, true, true, true, false] },
+    },
+  },
+  {
+    id: 'columns-fit-rows-fill-second-repeat', boxCount: 2, rootFrame: 'width=200,height=200',
+    itemFrame: 'width=12,height=12',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=28,y=109,width=12,height=12]',
+    axes: {
+      Columns: { tracks: [20, 0, 0, 154, 0, 10], collapsed: [false, true, true, false, true, false] },
+      Rows: { tracks: [20, 45, 20, 45, 20, 10], collapsed: [false, false, false, false, false, false] },
+    },
+  },
+  {
+    id: 'columns-fill-rows-fit-second-repeat', boxCount: 2, rootFrame: 'width=200,height=200',
+    itemFrame: 'width=12,height=12',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=109,y=28,width=12,height=12]',
+    axes: {
+      Columns: { tracks: [20, 45, 20, 45, 20, 10], collapsed: [false, false, false, false, false, false] },
+      Rows: { tracks: [20, 0, 0, 154, 0, 10], collapsed: [false, true, true, false, true, false] },
+    },
+  },
 ];
+assert.equal(scenes.length, 33, 'C11.4 explicit-neighbor simulator 행렬은 33 scene이어야 합니다.');
+assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
+  'C11.4 simulator scene ID가 중복됐습니다.');
 
 function command(binary, args, { allowFailure = false, timeout = 120_000, encoding = 'utf8' } = {}) {
   const result = spawnSync(binary, args, {
@@ -286,6 +394,7 @@ function androidLog(adb, pid) {
 
 function iosProcessLog(pid) {
   const predicate = 'process == "SpinonBootstrap" AND (eventMessage CONTAINS[c] "SPINON_C114_GRID" '
+    + 'OR eventMessage CONTAINS[c] "SPINON_C114_METAL_PIXEL" '
     + 'OR eventMessage CONTAINS[c] "SPINON_C0410_DRAW" '
     + 'OR eventMessage CONTAINS[c] "node_frames_css_px=")';
   const output = command('xcrun', ['simctl', 'spawn', simulatorUDID, 'log', 'show', '--last', '30s',
@@ -303,9 +412,16 @@ function waitForLog(readLog, scene, runID) {
     const trace = latest.includes('SPINON_C114_GRID_TRACE_CHUNK');
     const draw = latest.includes('SPINON_C0410_DRAW')
       && latest.includes(`presented boxes=${scene.boxCount}`);
-    if ((summary && trace && draw)
+    const pixelSummary = !scene.pixelSamples
+      || (target === 'ios-simulator'
+        ? latest.includes(`SPINON_C114_METAL_PIXEL_SUMMARY status=matched run_id=${runID}`)
+        : latest.includes(`SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=${runID}`));
+    if ((summary && trace && draw && pixelSummary)
         || latest.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID}`)
-        || latest.includes('SPINON_C114_GRID_ARGUMENT_ERROR')) return latest;
+        || latest.includes('SPINON_C114_GRID_ARGUMENT_ERROR')
+        || latest.includes(`SPINON_C114_GRID_PIXEL_MATRIX status=error run_id=${runID}`)
+        || latest.includes(`SPINON_C114_METAL_PIXEL_ERROR run_id=${runID}`)
+        || latest.includes(`SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=mismatch run_id=${runID}`)) return latest;
     sleep(1_000);
   }
   throw new Error(`${scene.id}: Android/iOS runtime 결과 대기 시간이 초과되었습니다.\n${latest}`);
@@ -338,35 +454,76 @@ function verifyRuntimeLog(log, scene, runID) {
   const tracePayload = traceParts.map(({ payload }) => payload).join('')
     .replace(/^grid_track_sizing_diagnostics=/, '');
   const diagnostics = JSON.parse(tracePayload);
-  const axisPass = diagnostics.trackSizingTraces[0].passes
-    .filter(({ axis }) => axis === scene.axis).at(-1);
-  assert.ok(axisPass, `${scene.id}: ${scene.axis} track-sizing pass가 없습니다.`);
-  const finalTracks = axisPass.stages.at(-1).tracks.filter(({ gutter }) => !gutter);
-  assert.deepEqual(finalTracks.map(({ collapsed }) => collapsed), scene.collapsed,
-    `${scene.id}: collapsed track 상태가 예상과 다릅니다.`);
-  assert.equal(finalTracks.length, scene.tracks.length, `${scene.id}: track 수가 다릅니다.`);
-  finalTracks.forEach(({ baseSize }, index) => assert.ok(
-    Math.abs(baseSize - scene.tracks[index]) <= 1 / 64,
-    `${scene.id}: track ${index + 1} 크기 예상 ${scene.tracks[index]}, 실제 ${baseSize}`,
-  ));
-  if (scene.id.startsWith('auto-fill-two-track-')) {
-    const activeGutters = axisPass.stages.at(-1).tracks
-      .filter(({ gutter, collapsed }) => gutter && !collapsed);
-    assert.equal(activeGutters.length, scene.tracks.length - 1,
-      `${scene.id}: 활성 gap 수가 track 사이 개수와 다릅니다.`);
-    activeGutters.forEach(({ baseSize }, index) => assert.ok(
-      Math.abs(baseSize - 8) <= 1 / 64,
-      `${scene.id}: gap ${index + 1} 크기 예상 8, 실제 ${baseSize}`,
+  const axisSpecs = scene.axes ?? {
+    [scene.axis]: { tracks: scene.tracks, collapsed: scene.collapsed },
+  };
+  const tracksByAxis = {};
+  for (const [axis, expected] of Object.entries(axisSpecs)) {
+    const axisPass = diagnostics.trackSizingTraces[0].passes
+      .filter((pass) => pass.axis === axis).at(-1);
+    assert.ok(axisPass, `${scene.id}: ${axis} track-sizing pass가 없습니다.`);
+    const finalStageTracks = axisPass.stages.at(-1).tracks;
+    const finalTracks = finalStageTracks.filter(({ gutter }) => !gutter);
+    assert.deepEqual(finalTracks.map(({ collapsed }) => collapsed), expected.collapsed,
+      `${scene.id}: ${axis} collapsed track 상태가 예상과 다릅니다.`);
+    assert.equal(finalTracks.length, expected.tracks.length,
+      `${scene.id}: ${axis} track 수가 다릅니다.`);
+    finalTracks.forEach(({ baseSize }, index) => assert.ok(
+      Math.abs(baseSize - expected.tracks[index]) <= 1 / 64,
+      `${scene.id}: ${axis} track ${index + 1} 크기 예상 ${expected.tracks[index]}, 실제 ${baseSize}`,
     ));
+    if (scene.axes || scene.id.startsWith('auto-fill-two-track-')) {
+      const allGutters = finalStageTracks.filter(({ gutter }) => gutter);
+      const internalGutters = allGutters.slice(1, -1);
+      assert.equal(internalGutters.length, finalTracks.length - 1,
+        `${scene.id}: ${axis} 내부 gap 수가 track 사이 개수와 다릅니다.`);
+      // Trace gutters follow their left track. A collapsed track keeps the
+      // coincident gutter pair's width on its preceding side and zeros the next gutter.
+      internalGutters.forEach(({ baseSize }, index) => {
+        const expectedSize = scene.axes && expected.collapsed[index] ? 0 : 8;
+        assert.ok(Math.abs(baseSize - expectedSize) <= 1 / 64,
+          `${scene.id}: ${axis} gap ${index + 1} 크기 예상 ${expectedSize}, 실제 ${baseSize}`);
+      });
+    }
+    tracksByAxis[axis] = finalTracks.map(({ baseSize, collapsed }) => ({ baseSize, collapsed }));
+  }
+  if (scene.pixelSamples) {
+    const summaryMarker = target === 'ios-simulator'
+      ? `SPINON_C114_METAL_PIXEL_SUMMARY status=matched run_id=${runID}`
+      : `SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=${runID}`;
+    assert.ok(log.includes(summaryMarker), `${scene.id}: overflow pixel 요약이 통과하지 않았습니다.`);
+    for (const sample of scene.pixelSamples) {
+      const sampleLine = log.split(/\r?\n/)
+        .find((line) => line.includes(`sample=${sample.id}`));
+      assert.ok(sampleLine?.includes('exact=true'),
+        `${scene.id}: ${sample.id} surface 표본이 정확히 일치하지 않습니다.`);
+    }
   }
   return {
     sceneId: scene.id,
     summary: log.split(/\r?\n/).find((line) => line.includes(summary)),
     nodeFrames: scene.nodeFrames,
-    tracks: finalTracks.map(({ baseSize, collapsed }) => ({ baseSize, collapsed })),
+    tracks: scene.axes ? tracksByAxis : tracksByAxis[scene.axis],
     trackTraceChunks: traceParts.length,
     drawPresented: true,
   };
+}
+
+function pixelCaptureArguments(scene, runID, platform) {
+  if (!scene.pixelSamples) return [];
+  const json = JSON.stringify(scene.pixelSamples);
+  if (platform === 'ios-simulator') {
+    const encoded = Buffer.from(json).toString('base64');
+    return [
+      `--spinon-c11-grid-metal-surface-pixels=${runID}`,
+      `--spinon-c11-grid-metal-surface-samples=${encoded}`,
+    ];
+  }
+  const encoded = Buffer.from(json).toString('base64url');
+  return [
+    '--es', 'spinon_c11_grid_pixel_matrix_run_id', runID,
+    '--es', 'spinon_c11_grid_pixel_matrix_samples', encoded,
+  ];
 }
 
 await mkdir(evidenceDirectory, { recursive: true });
@@ -386,7 +543,8 @@ if (target === 'ios-simulator') {
     const runID = `${runPrefix}-${index}`;
     const launch = command('xcrun', ['simctl', 'launch', '--terminate-running-process', simulatorUDID,
       packageName, '--spinon-c114-grid-track-sizing', `--spinon-c114-grid-run-id=${runID}`,
-      `--spinon-c114-grid-scene=${scene.id}`]);
+      `--spinon-c114-grid-scene=${scene.id}`,
+      ...pixelCaptureArguments(scene, runID, target)]);
     await saveLog(`launch-${scene.id}.log`, launch);
     const pid = Number(launch.stdout.match(/(?:^|:)\s+(\d+)\s*$/m)?.[1]);
     assert.ok(Number.isInteger(pid) && pid > 0, `${scene.id}: launch PID가 없습니다.`);
@@ -409,7 +567,8 @@ if (target === 'ios-simulator') {
     const launch = adb(['shell', 'am', 'start', '-S', '-f', '0x10008000', '-n', component,
       '--ez', 'spinon_c114_grid_track_sizing', 'true',
       '--es', 'spinon_c114_grid_scene', scene.id,
-      '--es', 'spinon_c114_grid_run_id', runID]);
+      '--es', 'spinon_c114_grid_run_id', runID,
+      ...pixelCaptureArguments(scene, runID, target)]);
     await saveLog(`launch-${scene.id}.log`, launch);
     const deadline = Date.now() + 150_000;
     let pid = null;
@@ -422,7 +581,12 @@ if (target === 'ios-simulator') {
       const trace = log.includes('SPINON_C114_GRID_TRACE_CHUNK');
       const draw = log.includes('SPINON_C0410_DRAW')
         && log.includes(`presented boxes=${scene.boxCount}`);
-      if ((summary && trace && draw)
+      const pixelSummary = !scene.pixelSamples
+        || log.includes(`SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=${runID}`);
+      const pixelError = log.includes(`SPINON_C114_GRID_PIXEL_MATRIX status=error run_id=${runID}`)
+        || log.includes(`SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=mismatch run_id=${runID}`);
+      if ((summary && trace && draw && pixelSummary)
+          || pixelError
           || log.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID}`)
           || log.includes('SPINON_C114_GRID_ARGUMENT_ERROR')) break;
       sleep(300);

@@ -2,7 +2,7 @@
 
 **상위 원본:** [CSS Grid 계획](c11-css-grid.md) · [C11.4 track sizing 계획](c11-4-grid-track-sizing.md) · [CSS 적합성 계약](../spec/0001-conformance.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** Chrome 155 사전 비교 fixture 12개를 기록했다. 계획 자체의 독립 실패 관점 20개 검토와 계획 PR 병합 전까지 구현을 시작하지 않는다. 현재 제품 cascade/layout은 두 축 동시 auto-repeat을 거부하므로 본 문서는 그 동작을 바꾸지 않는다.
+**상태:** 계획 PR [#367](https://github.com/ohah/spinon/pull/367)이 Rebase and merge됐다. 계획 자체의 독립 실패 관점 20개 검토 뒤 제한 구현을 진행했고, 구현 후 코드·런타임 20관점과 Android/iOS Simulator 33-scene 행렬을 마쳤다. 구현 PR의 최종 diff 30관점 검토와 병합은 남아 있다.
 
 ## 목적과 규범 근거
 
@@ -50,7 +50,7 @@
 
 - [x] Chrome 사전 비교 fixture와 원 관찰 기록
 - [x] 서로 다른 실패 관점 20개 계획 검토 ([검토 표](../spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/plan-review-20.md))
-- [ ] 계획 PR 검토·Rebase and merge
-- [ ] 새 코드/runtime 실패 관점 20개 검토
-- [ ] Android/iOS Simulator 33-scene 행렬
+- [x] 계획 PR #367 검토·Rebase and merge
+- [x] 새 코드/runtime 실패 관점 20개 검토 ([구현 검토](../spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/implementation-review-20.md))
+- [x] Android/iOS Simulator 33-scene 행렬 ([실행 근거](../spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/README.md))
 - [ ] 구현 PR 최종 diff 30관점 검토·Rebase and merge

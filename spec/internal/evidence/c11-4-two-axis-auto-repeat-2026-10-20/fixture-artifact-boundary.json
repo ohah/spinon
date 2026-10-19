@@ -1,0 +1,21 @@
+{
+  "scope": "spinon-ffi static rlib only",
+  "results": [
+    {
+      "variant": "default",
+      "command": "mise exec -- cargo build --locked -p spinon-ffi --lib --message-format=json-render-diagnostics",
+      "artifact": "target/debug/libspinon_ffi.rlib",
+      "sha256": "3378291ef4c46cfde0f84a4586668e0e8f1a8db11ea647792127fa3ea77a976b",
+      "sentinel": "c114-both-fit-span-two-grid",
+      "sentinel_present": false
+    },
+    {
+      "variant": "fixture-test",
+      "command": "mise exec -- cargo build --locked -p spinon-ffi --lib --message-format=json-render-diagnostics --features c04-runtime-gpu-fixture-test",
+      "artifact": "target/debug/libspinon_ffi.rlib",
+      "sha256": "49124de275c397a9f13df057d63e8eb9534426f14d053f8241b910bc0246aca2",
+      "sentinel": "c114-both-fit-span-two-grid",
+      "sentinel_present": true
+    }
+  ]
+}

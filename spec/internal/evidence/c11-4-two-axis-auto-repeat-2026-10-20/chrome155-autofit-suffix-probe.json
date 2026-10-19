@@ -1,0 +1,26 @@
+{
+  "source": "Agent Browser HeadlessChrome 155 local fixture probe",
+  "fixture": "tests/fixtures/css/c11/grid-auto-repeat-both-axes-c114.html",
+  "probe": {
+    "gridId": "both-fit-single",
+    "itemPlacement": "grid-column: -2 / -1; grid-row: -2 / -1",
+    "computedTrackSizing": "20px repeat(auto-fit, minmax(40px, 1fr) 20px) 10px; gap: 8px"
+  },
+  "observation": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "cssColumns": "20px 154px 0px 0px 0px 10px",
+    "cssRows": "20px 154px 0px 0px 0px 10px",
+    "columnGap": "8px",
+    "rowGap": "8px",
+    "grid": {
+      "width": 200,
+      "height": 200
+    },
+    "suffixItemRelative": {
+      "x": 190,
+      "y": 190,
+      "width": 12,
+      "height": 12
+    }
+  }
+}

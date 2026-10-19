@@ -27,6 +27,10 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "auto-fill-two-track-columns-both-342", "auto-fill-two-track-columns-prefix-200",
     "auto-fill-two-track-columns-suffix-200", "auto-fill-two-track-rows-both-190",
     "auto-fill-two-track-rows-both-200", "auto-fill-two-track-rows-both-342",
+    "columns-fill-control", "rows-fill-control", "both-fill-square", "both-fill-asymmetric",
+    "both-fit-empty", "both-fit-single", "both-fit-span-two", "both-fit-second-repeat",
+    "columns-fit-rows-fill-empty", "columns-fill-rows-fit-empty",
+    "columns-fit-rows-fill-second-repeat", "columns-fill-rows-fit-second-repeat",
     "min-content-text-normal", "auto-text-max-content",
     "max-content-text-normal", "fit-content-text-minimum",
     "fit-content-calc-limit", "min-content-text-edge",
@@ -88,6 +92,13 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
         return "width=40,height=60"
     case "auto-fill-row-neighbors", "auto-fit-row-neighbors":
         return "width=50,height=200"
+    case "both-fill-asymmetric":
+        return "width=200,height=266"
+    case "columns-fill-control", "rows-fill-control", "both-fill-square", "both-fit-empty",
+         "both-fit-single", "both-fit-span-two", "both-fit-second-repeat",
+         "columns-fit-rows-fill-empty", "columns-fill-rows-fit-empty",
+         "columns-fit-rows-fill-second-repeat", "columns-fill-rows-fit-second-repeat":
+        return "width=200,height=200"
     case "auto-fill-two-track-columns-both-190":
         return "width=190,height=60"
     case "auto-fill-two-track-columns-both-200":
@@ -167,8 +178,15 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
          "auto-fill-two-track-columns-both-200", "auto-fill-two-track-columns-both-342",
          "auto-fill-two-track-columns-prefix-200", "auto-fill-two-track-columns-suffix-200",
          "auto-fill-two-track-rows-both-190", "auto-fill-two-track-rows-both-200",
-         "auto-fill-two-track-rows-both-342":
+         "auto-fill-two-track-rows-both-342", "both-fit-empty",
+         "columns-fit-rows-fill-empty", "columns-fill-rows-fit-empty":
         return ""
+    case "columns-fill-control", "rows-fill-control", "both-fill-square", "both-fit-single",
+         "both-fit-span-two", "both-fit-second-repeat", "columns-fit-rows-fill-second-repeat",
+         "columns-fill-rows-fit-second-repeat":
+        return "width=12,height=12"
+    case "both-fill-asymmetric":
+        return "width=12,height=12"
     case "auto-fit-span-neighbors", "auto-fill-prefix-neighbors",
          "auto-fill-suffix-neighbors", "auto-fill-indefinite-neighbors",
          "auto-fill-overflow-neighbors", "auto-fill-row-neighbors",
@@ -540,6 +558,24 @@ private func c114ImageTrackPassMatches(
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     switch sceneID {
+    case "auto-fill-overflow-neighbors":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=60;"
+            + "1:node=2,x=86,y=0,width=12,height=12]"
+    case "both-fit-empty", "columns-fit-rows-fill-empty", "columns-fill-rows-fit-empty":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200]"
+    case "columns-fill-control", "rows-fill-control", "both-fill-square", "both-fit-single",
+         "both-fit-span-two", "both-fit-second-repeat":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
+            + "1:node=2,x=28,y=28,width=12,height=12]"
+    case "both-fill-asymmetric":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=266;"
+            + "1:node=2,x=28,y=28,width=12,height=12]"
+    case "columns-fit-rows-fill-second-repeat":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
+            + "1:node=2,x=28,y=109,width=12,height=12]"
+    case "columns-fill-rows-fit-second-repeat":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
+            + "1:node=2,x=109,y=28,width=12,height=12]"
     case "auto-fill-two-track-columns-both-190", "auto-fill-two-track-columns-both-200",
          "auto-fill-two-track-columns-both-342", "auto-fill-two-track-columns-prefix-200",
          "auto-fill-two-track-columns-suffix-200", "auto-fill-two-track-rows-both-190",
@@ -604,7 +640,8 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
         "auto-fill-two-track-columns-both-200", "auto-fill-two-track-columns-both-342",
         "auto-fill-two-track-columns-prefix-200", "auto-fill-two-track-columns-suffix-200",
         "auto-fill-two-track-rows-both-190", "auto-fill-two-track-rows-both-200",
-        "auto-fill-two-track-rows-both-342"].contains(sceneID) { return 1 }
+        "auto-fill-two-track-rows-both-342", "both-fit-empty",
+        "columns-fit-rows-fill-empty", "columns-fill-rows-fit-empty"].contains(sceneID) { return 1 }
     return sceneID.hasPrefix("grid-gap-") ? 5 : 2
 }
 
@@ -757,6 +794,12 @@ private struct C111MetalPixelRun {
         ("item-overflow-beyond-root", "c114-column-auto-natural-ratio-item", 10, 4, [229, 72, 77, 255]),
         ("root-background-control", "c114-column-auto-natural-ratio-grid", 6, 15, [16, 24, 32, 255]),
     ]
+    private static let c114AutoRepeatOverflowPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+        ("overflow-root-edge-inside", "c114-auto-fill-overflow-neighbors-grid", 39, 8, [34, 197, 94, 255]),
+        ("overflow-root-edge-outside", "c114-auto-fill-overflow-neighbors-grid", 40, 8, [0, 0, 0, 255]),
+        ("overflow-item-outside-root", "c114-auto-fill-overflow-neighbors-item", 91, 8, [229, 72, 77, 255]),
+        ("overflow-root-background", "c114-auto-fill-overflow-neighbors-grid", 10, 30, [34, 197, 94, 255]),
+    ]
     private static let c114RowTransferOverflowPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
         ("inside-item", "c114-row-transfer-fixed-column-item", 4, 2, [229, 72, 77, 255]),
         ("right-of-grid", "c114-row-transfer-fixed-column-item", 12, 2, [229, 72, 77, 255]),
@@ -859,6 +902,8 @@ private struct C111MetalPixelRun {
     ) -> Bool {
         let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])]
         switch sceneID {
+        case "auto-fill-overflow-neighbors":
+            expectedSamples = c114AutoRepeatOverflowPixelSamples
         case "fixed-small-track-overflow":
             expectedSamples = c114ImageOverflowPixelSamples
         case "column-auto-natural-ratio":
@@ -976,7 +1021,8 @@ private struct C111MetalPixelRun {
                       || c114Scene == "grid-gap-definite-calc"
                       || c114Scene == "grid-gap-cyclic-calc"
                       || c114Scene == "grid-gap-cyclic-percent-min-basis"
-                      || c114Scene == "grid-gap-cyclic-calc-min-basis",
+                  || c114Scene == "grid-gap-cyclic-calc-min-basis"
+                  || c114Scene == "auto-fill-overflow-neighbors",
                   c114Scene == sceneID, c114RunID == runID,
                   arguments.contains("--spinon-c114-grid-track-sizing"),
                   !isC1131Repeat, !isC1132NamedLine, !isC1133TemplateAreas,

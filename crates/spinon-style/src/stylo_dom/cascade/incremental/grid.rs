@@ -108,13 +108,6 @@ pub(super) fn computed_grid_layout(
         allow_intrinsic_tracks,
         allow_auto_repeat,
     )?;
-    if columns_auto_repeat.is_some() && rows_auto_repeat.is_some() {
-        return Err(unsupported_grid_value(
-            node,
-            "grid-template-rows",
-            rows_value,
-        ));
-    }
     if template_areas.is_some() && (columns_auto_repeat.is_some() || rows_auto_repeat.is_some()) {
         return Err(unsupported_grid_value(
             node,
