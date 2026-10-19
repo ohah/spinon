@@ -303,9 +303,10 @@ struct ImageScene {
     rows: &'static str,
     column_gap: u32,
     item_placement: &'static str,
+    item_style: &'static str,
 }
 
-const C11_4_IMAGE_TRACK_SCENES: [ImageScene; 9] = [
+const C11_4_IMAGE_TRACK_SCENES: [ImageScene; 16] = [
     ImageScene {
         scene_id: "auto-image-definite",
         root_id: "c114-auto-image-grid",
@@ -316,6 +317,7 @@ const C11_4_IMAGE_TRACK_SCENES: [ImageScene; 9] = [
         rows: "auto",
         column_gap: 0,
         item_placement: "",
+        item_style: "",
     },
     ImageScene {
         scene_id: "minmax-auto-image",
@@ -327,6 +329,7 @@ const C11_4_IMAGE_TRACK_SCENES: [ImageScene; 9] = [
         rows: "auto",
         column_gap: 0,
         item_placement: "",
+        item_style: "",
     },
     ImageScene {
         scene_id: "minmax-min-max-image",
@@ -338,6 +341,7 @@ const C11_4_IMAGE_TRACK_SCENES: [ImageScene; 9] = [
         rows: "auto",
         column_gap: 0,
         item_placement: "",
+        item_style: "",
     },
     ImageScene {
         scene_id: "fit-content-below-minimum",
@@ -349,6 +353,7 @@ const C11_4_IMAGE_TRACK_SCENES: [ImageScene; 9] = [
         rows: "auto",
         column_gap: 0,
         item_placement: "",
+        item_style: "",
     },
     ImageScene {
         scene_id: "fit-content-above-intrinsic",
@@ -360,6 +365,7 @@ const C11_4_IMAGE_TRACK_SCENES: [ImageScene; 9] = [
         rows: "auto",
         column_gap: 0,
         item_placement: "",
+        item_style: "",
     },
     ImageScene {
         scene_id: "fit-content-percent",
@@ -371,6 +377,7 @@ const C11_4_IMAGE_TRACK_SCENES: [ImageScene; 9] = [
         rows: "auto",
         column_gap: 0,
         item_placement: "",
+        item_style: "",
     },
     ImageScene {
         scene_id: "fixed-small-track-overflow",
@@ -382,6 +389,7 @@ const C11_4_IMAGE_TRACK_SCENES: [ImageScene; 9] = [
         rows: "auto",
         column_gap: 0,
         item_placement: "",
+        item_style: "",
     },
     ImageScene {
         scene_id: "spanning-min-content-items",
@@ -393,6 +401,7 @@ const C11_4_IMAGE_TRACK_SCENES: [ImageScene; 9] = [
         rows: "auto",
         column_gap: 4,
         item_placement: ";grid-column:1 / span 2",
+        item_style: "",
     },
     ImageScene {
         scene_id: "min-content-row-image",
@@ -404,6 +413,91 @@ const C11_4_IMAGE_TRACK_SCENES: [ImageScene; 9] = [
         rows: "min-content",
         column_gap: 0,
         item_placement: "",
+        item_style: "",
+    },
+    ImageScene {
+        scene_id: "column-auto-natural-ratio",
+        root_id: "c114-column-auto-natural-ratio-grid",
+        item_id: "c114-column-auto-natural-ratio-item",
+        width: 8,
+        height: 20,
+        columns: "minmax(auto, 1fr)",
+        rows: "20px",
+        column_gap: 0,
+        item_placement: "",
+        item_style: ";height:8px",
+    },
+    ImageScene {
+        scene_id: "column-target-max-width-clamp",
+        root_id: "c114-column-target-max-width-grid",
+        item_id: "c114-column-target-max-width-item",
+        width: 8,
+        height: 20,
+        columns: "minmax(auto, 1fr)",
+        rows: "20px",
+        column_gap: 0,
+        item_placement: "",
+        item_style: ";height:8px;aspect-ratio:3 / 2;max-width:9px",
+    },
+    ImageScene {
+        scene_id: "row-target-max-height-clamp",
+        root_id: "c114-row-target-max-height-grid",
+        item_id: "c114-row-target-max-height-item",
+        width: 20,
+        height: 4,
+        columns: "20px",
+        rows: "minmax(auto, 1fr)",
+        column_gap: 0,
+        item_placement: "",
+        item_style: ";width:12px;aspect-ratio:3 / 2;max-height:6px",
+    },
+    ImageScene {
+        scene_id: "column-opposite-min-over-max",
+        root_id: "c114-column-min-over-max-grid",
+        item_id: "c114-column-min-over-max-item",
+        width: 8,
+        height: 20,
+        columns: "minmax(auto, 1fr)",
+        rows: "20px",
+        column_gap: 0,
+        item_placement: "",
+        item_style: ";height:8px;aspect-ratio:3 / 2;min-height:12px;max-height:4px",
+    },
+    ImageScene {
+        scene_id: "column-border-box-transfer",
+        root_id: "c114-column-border-box-grid",
+        item_id: "c114-column-border-box-item",
+        width: 8,
+        height: 20,
+        columns: "minmax(auto, 1fr)",
+        rows: "20px",
+        column_gap: 0,
+        item_placement: "",
+        item_style: ";height:8px;aspect-ratio:3 / 2;padding:1px;border:1px solid",
+    },
+    ImageScene {
+        scene_id: "column-content-box-transfer",
+        root_id: "c114-column-content-box-grid",
+        item_id: "c114-column-content-box-item",
+        width: 8,
+        height: 20,
+        columns: "minmax(auto, 1fr)",
+        rows: "20px",
+        column_gap: 0,
+        item_placement: "",
+        item_style: ";box-sizing:content-box;height:8px;aspect-ratio:3 / 2;padding:1px;border:1px solid",
+    },
+    ImageScene {
+        scene_id: "column-target-min-width-clamp",
+        root_id: "c114-column-min-width-grid",
+        item_id: "c114-column-min-width-item",
+        width: 8,
+        height: 20,
+        columns: "minmax(auto, 1fr)",
+        rows: "20px",
+        column_gap: 0,
+        item_placement: "",
+        item_style: ";height:8px;aspect-ratio:3 / 2;min-width:18px",
     },
 ];
 
@@ -431,14 +525,14 @@ fn image_scene_source(scene: ImageScene) -> String {
 const root = document.createElement('div');
 root.setAttribute('id', {:?});
 root.setAttribute('data-node', '');
-root.setAttribute('style', 'box-sizing:border-box;display:grid;width:{}px;height:{}px;margin:0;padding:0;border:0;gap:0;align-content:start;justify-content:start;grid-template-columns:{};grid-template-rows:{};column-gap:{}px;row-gap:0;background-color:#101820');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:{}px;height:{}px;margin:0;padding:0;border:0;gap:0;align-items:start;align-content:start;justify-content:start;grid-template-columns:{};grid-template-rows:{};column-gap:{}px;row-gap:0;background-color:#101820');
 document.appendChild(root);
 const item = document.createElement('img');
 item.setAttribute('id', {:?});
 item.setAttribute('data-node', '');
 item.setAttribute('src', 'https://spinon.invalid/c14-1-png-basic.png');
 item.setAttribute('alt', '');
-item.setAttribute('style', 'box-sizing:border-box;display:block;width:auto;height:auto;margin:0;padding:0;border:0;background-color:#e5484d{}');
+item.setAttribute('style', 'box-sizing:border-box;display:block;width:auto;height:auto;margin:0;padding:0;border:0;background-color:#e5484d{}{}');
 root.appendChild(item);
 return {{ sceneId:{:?}, rootId:{:?}, nodeIds:[{:?}, {:?}] }};
 }})()"#,
@@ -450,6 +544,7 @@ return {{ sceneId:{:?}, rootId:{:?}, nodeIds:[{:?}, {:?}] }};
         scene.column_gap,
         scene.item_id,
         scene.item_placement,
+        scene.item_style,
         scene.scene_id,
         scene.root_id,
         scene.root_id,
@@ -467,7 +562,7 @@ mod tests {
     #[test]
     fn exposes_only_bounded_intrinsic_track_sizing_scenes() {
         assert_eq!(C11_4_GRID_TRACK_SIZING_SCENES.len(), 17);
-        assert_eq!(C11_4_IMAGE_TRACK_SCENES.len(), 9);
+        assert_eq!(C11_4_IMAGE_TRACK_SCENES.len(), 16);
         assert_eq!(
             C11_4_GRID_TRACK_SIZING_SCENES
                 .iter()

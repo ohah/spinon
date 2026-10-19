@@ -1,0 +1,386 @@
+$ bash tools/build-android-app.sh
+WARNING: We recommend using a newer Android Gradle plugin to use compile SDK version 37.2
+
+This Android Gradle plugin (8.13.2) was tested up to compile SDK version 36.1.
+
+You are strongly encouraged to update your project to use a newer
+Android Gradle plugin that has been tested with compile SDK version 37.2.
+
+If you are already using the latest version of the Android Gradle plugin,
+you may need to wait until a newer version with support for compile SDK version 37.2 is available.
+
+For more information refer to the compatibility table:
+https://d.android.com/r/tools/api-level-support
+
+To suppress this warning, add/update
+    android.suppressUnsupportedCompileSdk=37.2
+to this project's gradle.properties.
+
+> Task :app:prepareSpinonBootstrap
+ANDROID_NDK_HOME/ROOT가 고정 버전과 달라 무시하고 SDK의 NDK 27.1.12297006 을 사용합니다.
+SPINON_ANDROID_BUILD_FLAGS c04_runtime_gpu=1 c04_runtime_gpu_fixture_test=1 c04_12_root_html_fixture_test=0 c04_12_root_html_block_paint_fixture_test=0 c13_1_overflow_clip_fixture_test=0 c13_2_scroll_fixture_test=0 c13_3_gesture_fixture_test=0 c14_1_app_fixture_test=0 c14_2_app_fixture_test=0 c14_3_app_fixture_test=0 c18_1_image_paint_fixture_test=0 c18_2_alpha_image_fixture_test=0 c18_3_object_fit_position_fixture_test=0 c18_4_async_image_fixture_test=0 c19_2_box_paint_opacity_fixture_test=0 c15_3_wgpu_glyph_paint_fixture_test=0
+$ mkdir -p build/spinon/bootstrap && bun build examples/bootstrap/app.js --target=browser --outfile build/spinon/bootstrap/app.js && bun build examples/bootstrap/root-app.js --target=browser --outfile build/spinon/bootstrap/root-app.js && cp examples/bootstrap/index.html build/spinon/bootstrap/index.html
+Bundled 1 module in 19ms
+
+  app.js  17.59 KB  (entry point)
+
+Bundled 1 module in 4ms
+
+  root-app.js  1.65 KB  (entry point)
+
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.26
+   Compiling quote v1.0.47
+   Compiling cfg-if v1.0.5
+   Compiling libc v0.2.189
+   Compiling smallvec v1.16.2
+   Compiling stable_deref_trait v1.2.1
+   Compiling libm v0.2.16
+   Compiling siphasher v1.0.4
+   Compiling bitflags v2.13.2
+   Compiling fastrand v2.5.0
+   Compiling serde_core v1.0.229
+   Compiling foldhash v0.2.0
+   Compiling parking_lot_core v0.9.12
+   Compiling autocfg v1.5.1
+   Compiling writeable v0.6.4
+   Compiling scopeguard v1.2.0
+   Compiling serde v1.0.229
+   Compiling log v0.4.34
+   Compiling phf_shared v0.14.0
+   Compiling lock_api v0.4.14
+   Compiling once_cell v1.21.4
+   Compiling phf_generator v0.14.0
+   Compiling num-traits v0.2.19
+   Compiling hashbrown v0.17.1
+   Compiling litemap v0.8.3
+   Compiling utf8_iter v1.0.4
+   Compiling icu_properties_data v2.3.0
+   Compiling equivalent v1.0.2
+   Compiling icu_normalizer_data v2.3.0
+   Compiling new_debug_unreachable v1.0.6
+   Compiling precomputed-hash v0.1.1
+   Compiling cfg_aliases v0.2.2
+   Compiling fnv v1.0.7
+   Compiling icu_locale_fallback_data v2.3.0
+   Compiling ident_case v1.0.1
+   Compiling icu_segmenter_data v2.3.0
+   Compiling arrayvec v0.7.8
+   Compiling dtoa v1.0.11
+   Compiling itoa v1.0.18
+   Compiling thiserror v2.0.21
+   Compiling indexmap v2.14.2
+   Compiling static_assertions v1.1.0
+   Compiling memchr v2.8.3
+   Compiling dtoa-short v0.3.5
+   Compiling crossbeam-utils v0.8.23
+   Compiling phf_codegen v0.14.0
+   Compiling core_maths v0.1.1
+   Compiling libloading v0.8.9
+   Compiling smallbitvec v2.6.1
+   Compiling zerocopy v0.8.59
+   Compiling crossbeam-epoch v0.9.21
+   Compiling winnow v1.0.4
+   Compiling rustversion v1.0.23
+   Compiling thin-vec v0.2.20
+   Compiling toml_parser v1.1.3+spec-1.1.0
+   Compiling roxmltree v0.21.1
+   Compiling syn v3.0.6
+   Compiling syn v2.0.119
+   Compiling string_cache_codegen v0.11.2
+   Compiling parking_lot v0.12.5
+   Compiling web_atoms v0.3.0
+   Compiling memmap2 v0.9.11
+   Compiling darling_core v0.20.11
+   Compiling synstructure v0.14.0
+   Compiling synstructure v0.13.2
+   Compiling linebender_resource_handle v0.1.1
+   Compiling toml_writer v1.1.2+spec-1.1.0
+   Compiling spinon-core v0.1.0 (/private/tmp/spinon-c11-4-image-ratio-transfer-20261019/crates/spinon-core)
+   Compiling rayon-core v1.13.0
+   Compiling rustc-hash v2.1.3
+   Compiling parlance v0.1.1
+   Compiling version_check v0.9.5
+   Compiling crossbeam-deque v0.8.8
+   Compiling rustc-hash v1.1.0
+   Compiling slotmap v1.1.1
+   Compiling phf_macros v0.14.0
+   Compiling derive_more-impl v2.1.1
+   Compiling zerocopy-derive v0.8.59
+   Compiling zerofrom-derive v0.1.8
+   Compiling yoke-derive v0.8.4
+   Compiling zerovec-derive v0.11.6
+   Compiling displaydoc v0.2.7
+   Compiling zerofrom v0.1.8
+   Compiling bytemuck_derive v1.12.1
+   Compiling serde_derive v1.0.229
+   Compiling phf v0.14.0
+   Compiling darling_macro v0.20.11
+   Compiling cssparser-macros v0.7.1
+   Compiling thiserror-impl v2.0.21
+   Compiling darling v0.20.11
+   Compiling derive_more v2.1.1
+   Compiling bytemuck v1.25.2
+   Compiling jni-sys-macros v0.4.1
+   Compiling stylo_atoms v0.22.0
+   Compiling naga v30.0.1
+   Compiling same-file v1.0.6
+   Compiling parley_emoji v0.12.0
+   Compiling bit-vec v0.9.1
+   Compiling toml_datetime v1.1.1+spec-1.1.0
+   Compiling serde_spanned v1.1.1
+   Compiling toml v1.1.6+spec-1.1.0
+   Compiling jni-sys v0.3.1
+   Compiling unicode-width v0.2.2
+   Compiling percent-encoding v2.3.2
+   Compiling ash v0.38.0+1.3.281
+   Compiling void v1.0.2
+   Compiling pkg-config v0.3.34
+   Compiling encoding_rs v0.8.42
+   Compiling wayland-sys v0.31.11
+   Compiling codespan-reporting v0.13.1
+   Compiling stylo_static_prefs v0.22.0
+   Compiling form_urlencoded v1.2.2
+   Compiling bit-set v0.10.0
+   Compiling walkdir v2.5.0
+   Compiling jni-sys v0.4.1
+   Compiling yoke v0.8.3
+   Compiling spirv v0.4.0+sdk-1.4.341.0
+   Compiling to_shmem_derive v0.2.0
+   Compiling yazi v0.2.1
+   Compiling simd-adler32 v0.3.10
+   Compiling either v1.18.0
+   Compiling allocator-api2 v0.2.21
+   Compiling zeno v0.3.3
+   Compiling raw-window-handle v0.6.2
+   Compiling font-types v0.12.7
+   Compiling khronos-egl v6.0.0
+   Compiling stylo v0.22.0
+   Compiling read-fonts v0.41.0
+   Compiling hashbrown v0.16.1
+   Compiling naga-types v30.0.1
+   Compiling wgpu-types v30.0.1
+   Compiling malloc_size_of_derive v0.1.3
+   Compiling dlib v0.5.3
+   Compiling wgpu-hal v30.0.1
+   Compiling string_cache v0.11.0
+   Compiling servo_arc v0.5.0
+   Compiling cssparser v0.38.0
+   Compiling app_units v0.7.8
+   Compiling euclid v0.22.14
+   Compiling heck v0.5.0
+   Compiling adler2 v2.0.1
+   Compiling multiversion_no_op v1.0.0
+   Compiling crc32fast v1.5.2
+   Compiling presser v0.3.1
+   Compiling typenum v1.20.1
+   Compiling simdutf8 v0.1.5
+   Compiling hybrid-array v0.4.15
+   Compiling strum_macros v0.28.0
+   Compiling rayon v1.12.0
+   Compiling skrifa v0.44.0
+   Compiling harfrust v0.12.0
+   Compiling fontique v0.12.0
+   Compiling half v2.7.1
+   Compiling ndk-sys v0.6.0+11769913
+   Compiling taffy v0.15.0 (/private/tmp/spinon-c11-4-image-ratio-transfer-20261019/vendor/taffy)
+   Compiling zerovec v0.11.8
+   Compiling zerotrie v0.2.5
+   Compiling swash v0.2.10
+   Compiling itertools v0.14.0
+   Compiling stylo_derive v0.22.0
+   Compiling num-derive v0.4.2
+   Compiling gpu-allocator v0.28.0
+   Compiling to_shmem v0.6.0
+   Compiling selectors v0.41.0
+   Compiling num-integer v0.1.47
+   Compiling ordered-float v5.5.0
+   Compiling num_cpus v1.17.0
+   Compiling android_system_properties v0.1.6
+   Compiling uluru v3.1.0
+   Compiling renderdoc-sys v1.1.0
+   Compiling strum v0.28.0
+   Compiling atomic_refcell v0.1.14
+   Compiling mime v0.3.17
+   Compiling byteorder v1.5.0
+   Compiling glow v0.17.0
+   Compiling profiling v1.0.18
+   Compiling miniz_oxide v0.9.1
+   Compiling wgpu-core v30.0.1
+   Compiling litrs v1.0.0
+   Compiling crypto-common v0.2.2
+   Compiling flate2 v1.1.10
+   Compiling document-features v0.2.12
+   Compiling block-buffer v0.12.1
+   Compiling miniz_oxide v0.8.9
+   Compiling fdeflate v0.3.7
+   Compiling wgpu-naga-bridge v30.0.1
+   Compiling spinon-render v0.1.0 (/private/tmp/spinon-c11-4-image-ratio-transfer-20261019/crates/spinon-render)
+   Compiling wgpu v30.0.1
+   Compiling tendril v0.5.1
+   Compiling const-oid v0.10.2
+   Compiling zmij v1.0.23
+   Compiling markup5ever v0.40.0
+   Compiling digest v0.11.3
+   Compiling tinystr v0.8.4
+   Compiling potential_utf v0.1.6
+   Compiling png v0.18.1
+   Compiling icu_locale_core v2.3.0
+   Compiling icu_collections v2.3.0
+   Compiling cpufeatures v0.3.1
+   Compiling serde_json v1.0.151
+   Compiling icu_provider v2.3.1
+   Compiling icu_properties v2.3.0
+   Compiling icu_normalizer v2.3.0
+   Compiling icu_locale_fallback v2.3.0
+   Compiling stylo_malloc_size_of v0.22.0
+   Compiling icu_segmenter v2.3.0
+   Compiling stylo_dom v0.22.0
+   Compiling wgpu-core-deps-windows-linux-android v30.0.1
+   Compiling idna_adapter v1.2.2
+   Compiling parley_data v0.12.0
+   Compiling idna v1.1.0
+   Compiling parley_engine v0.12.0
+   Compiling sha2 v0.11.1
+   Compiling html5ever v0.40.1
+   Compiling url v2.5.8
+   Compiling parley v0.12.0
+   Compiling stylo_traits v0.22.0
+   Compiling pollster v0.4.0
+   Compiling spinon-text-layout v0.1.0 (/private/tmp/spinon-c11-4-image-ratio-transfer-20261019/crates/spinon-text-layout)
+   Compiling spinon-layout v0.1.0 (/private/tmp/spinon-c11-4-image-ratio-transfer-20261019/crates/spinon-layout)
+   Compiling spinon-image v0.1.0 (/private/tmp/spinon-c11-4-image-ratio-transfer-20261019/crates/spinon-image)
+   Compiling spinon-render-wgpu v0.1.0 (/private/tmp/spinon-c11-4-image-ratio-transfer-20261019/crates/spinon-render-wgpu)
+   Compiling spinon-style v0.1.0 (/private/tmp/spinon-c11-4-image-ratio-transfer-20261019/crates/spinon-style)
+   Compiling spinon-style-to-layout v0.1.0 (/private/tmp/spinon-c11-4-image-ratio-transfer-20261019/crates/spinon-style-to-layout)
+   Compiling spinon-style-to-render v0.1.0 (/private/tmp/spinon-c11-4-image-ratio-transfer-20261019/crates/spinon-style-to-render)
+   Compiling spinon-runtime v0.1.0 (/private/tmp/spinon-c11-4-image-ratio-transfer-20261019/crates/spinon-runtime)
+   Compiling spinon-ffi v0.1.0 (/private/tmp/spinon-c11-4-image-ratio-transfer-20261019/crates/spinon-ffi)
+    Finished `release` profile [optimized] target(s) in 42.02s
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.26
+   Compiling quote v1.0.47
+   Compiling cfg-if v1.0.5
+   Compiling cfg_aliases v0.2.2
+   Compiling foldhash v0.2.0
+   Compiling thiserror v2.0.21
+   Compiling equivalent v1.0.2
+   Compiling autocfg v1.5.1
+   Compiling libm v0.2.16
+   Compiling libc v0.2.189
+   Compiling zerocopy v0.8.59
+   Compiling log v0.4.34
+   Compiling rustc-hash v1.1.0
+   Compiling bitflags v2.13.2
+   Compiling unicode-width v0.2.2
+   Compiling libloading v0.8.9
+   Compiling ash v0.38.0+1.3.281
+   Compiling bit-vec v0.9.1
+   Compiling naga v30.0.1
+   Compiling hashbrown v0.17.1
+   Compiling once_cell v1.21.4
+   Compiling jni-sys v0.3.1
+   Compiling pkg-config v0.3.34
+   Compiling parking_lot_core v0.9.12
+   Compiling num-traits v0.2.19
+   Compiling bit-set v0.10.0
+   Compiling codespan-reporting v0.13.1
+   Compiling spirv v0.4.0+sdk-1.4.341.0
+   Compiling arrayvec v0.7.8
+   Compiling khronos-egl v6.0.0
+   Compiling raw-window-handle v0.6.2
+   Compiling indexmap v2.14.2
+   Compiling wayland-sys v0.31.11
+   Compiling static_assertions v1.1.0
+   Compiling smallvec v1.16.2
+   Compiling allocator-api2 v0.2.21
+   Compiling scopeguard v1.2.0
+   Compiling lock_api v0.4.14
+   Compiling hashbrown v0.16.1
+   Compiling dlib v0.5.3
+   Compiling wgpu-hal v30.0.1
+   Compiling presser v0.3.1
+   Compiling glow v0.17.0
+   Compiling profiling v1.0.18
+   Compiling renderdoc-sys v1.1.0
+   Compiling wgpu-core v30.0.1
+   Compiling litrs v1.0.0
+   Compiling document-features v0.2.12
+   Compiling wgpu v30.0.1
+   Compiling pollster v0.4.0
+   Compiling syn v3.0.6
+   Compiling syn v2.0.119
+   Compiling android_system_properties v0.1.6
+   Compiling thiserror-impl v2.0.21
+   Compiling bytemuck_derive v1.12.1
+   Compiling parking_lot v0.12.5
+   Compiling ordered-float v5.5.0
+   Compiling zerocopy-derive v0.8.59
+   Compiling jni-sys-macros v0.4.1
+   Compiling bytemuck v1.25.2
+   Compiling jni-sys v0.4.1
+   Compiling naga-types v30.0.1
+   Compiling wgpu-types v30.0.1
+   Compiling ndk-sys v0.6.0+11769913
+   Compiling gpu-allocator v0.28.0
+   Compiling half v2.7.1
+   Compiling wgpu-naga-bridge v30.0.1
+   Compiling wgpu-core-deps-windows-linux-android v30.0.1
+   Compiling spinon-wgpu-r08-spike v0.1.0 (/private/tmp/spinon-c11-4-image-ratio-transfer-20261019/spikes/wgpu-backend)
+    Finished `release` profile [optimized] target(s) in 15.31s
+C12.4 Android runtime matrix: 26 cases, 77 nodes, 21 expected ready, 5 expected rejection
+Android ARM64 unwind runtime: /Users/yoonhb/Library/Android/sdk/ndk/27.1.12297006/toolchains/llvm/prebuilt/darwin-x86_64/lib/clang/18/lib/linux/aarch64/libunwind.a
+Android ARM64 V8 smoke 라이브러리 준비 완료: /private/tmp/spinon-c11-4-image-ratio-transfer-20261019/build/spinon/android/jniLibs/arm64-v8a/libspinon_bootstrap.so
+
+> Task :app:preBuild
+> Task :app:preDebugBuild
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:generateDebugBuildConfig FROM-CACHE
+> Task :app:javaPreCompileDebug FROM-CACHE
+> Task :app:checkDebugAarMetadata
+> Task :app:processDebugNavigationResources FROM-CACHE
+> Task :app:compileDebugNavigationResources FROM-CACHE
+> Task :app:generateDebugResValues FROM-CACHE
+> Task :app:mapDebugSourceSetPaths
+> Task :app:generateDebugResources FROM-CACHE
+> Task :app:mergeDebugResources FROM-CACHE
+> Task :app:packageDebugResources FROM-CACHE
+> Task :app:parseDebugLocalResources FROM-CACHE
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug FROM-CACHE
+> Task :app:processDebugMainManifest FROM-CACHE
+> Task :app:processDebugManifest FROM-CACHE
+> Task :app:processDebugManifestForPackage FROM-CACHE
+> Task :app:processDebugResources FROM-CACHE
+
+> Task :app:compileDebugJavaWithJavac
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :app:mergeDebugShaders
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets
+> Task :app:compressDebugAssets FROM-CACHE
+> Task :app:processDebugJavaRes NO-SOURCE
+> Task :app:checkDebugDuplicateClasses
+> Task :app:mergeDebugJavaResource
+> Task :app:desugarDebugFileDependencies FROM-CACHE
+> Task :app:mergeExtDexDebug FROM-CACHE
+> Task :app:mergeLibDexDebug FROM-CACHE
+> Task :app:dexBuilderDebug
+> Task :app:mergeProjectDexDebug
+> Task :app:mergeDebugJniLibFolders
+> Task :app:validateSigningDebug
+> Task :app:writeDebugAppMetadata
+> Task :app:writeDebugSigningConfigVersions
+> Task :app:mergeDebugNativeLibs
+> Task :app:stripDebugDebugSymbols
+> Task :app:packageDebug
+> Task :app:createDebugApkListingFileRedirect
+> Task :app:assembleDebug
+
+[Incubating] Problems report is available at: file:///private/tmp/spinon-c11-4-image-ratio-transfer-20261019/platforms/android/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 1m 2s
+37 actionable tasks: 19 executed, 18 from cache

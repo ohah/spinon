@@ -1,6 +1,7 @@
 #[derive(Clone, Copy, Debug)]
 pub(super) enum Track {
     Auto,
+    AutoFraction,
     MinMaxZeroAuto,
     MinMaxMinMax,
     FitContent12,
@@ -8,7 +9,20 @@ pub(super) enum Track {
     FitContent50Percent,
     Fixed12,
     Length100,
+    Length20,
     MinContent,
+}
+
+#[derive(Clone, Copy, Debug)]
+pub(super) enum ImageSizing {
+    Intrinsic,
+    ColumnAutoNaturalRatio,
+    ColumnTargetMaxWidth,
+    RowTargetMaxHeight,
+    ColumnOppositeMinOverMax,
+    ColumnBorderBoxTransfer,
+    ColumnContentBoxTransfer,
+    ColumnTargetMinWidth,
 }
 
 #[derive(Clone, Copy, Debug)]
@@ -23,9 +37,10 @@ pub(super) struct ImageCase {
     pub(super) rows: Track,
     pub(super) column_gap: f32,
     pub(super) spanning: bool,
+    pub(super) sizing: ImageSizing,
 }
 
-pub(super) const IMAGE_CASES: [ImageCase; 9] = [
+pub(super) const IMAGE_CASES: [ImageCase; 16] = [
     ImageCase {
         scene_id: "auto-image-definite",
         root_id: "c114-auto-image-grid",
@@ -37,6 +52,7 @@ pub(super) const IMAGE_CASES: [ImageCase; 9] = [
         rows: Track::Auto,
         column_gap: 0.0,
         spanning: false,
+        sizing: ImageSizing::Intrinsic,
     },
     ImageCase {
         scene_id: "minmax-auto-image",
@@ -49,6 +65,7 @@ pub(super) const IMAGE_CASES: [ImageCase; 9] = [
         rows: Track::Auto,
         column_gap: 0.0,
         spanning: false,
+        sizing: ImageSizing::Intrinsic,
     },
     ImageCase {
         scene_id: "minmax-min-max-image",
@@ -61,6 +78,7 @@ pub(super) const IMAGE_CASES: [ImageCase; 9] = [
         rows: Track::Auto,
         column_gap: 0.0,
         spanning: false,
+        sizing: ImageSizing::Intrinsic,
     },
     ImageCase {
         scene_id: "fit-content-below-minimum",
@@ -73,6 +91,7 @@ pub(super) const IMAGE_CASES: [ImageCase; 9] = [
         rows: Track::Auto,
         column_gap: 0.0,
         spanning: false,
+        sizing: ImageSizing::Intrinsic,
     },
     ImageCase {
         scene_id: "fit-content-above-intrinsic",
@@ -85,6 +104,7 @@ pub(super) const IMAGE_CASES: [ImageCase; 9] = [
         rows: Track::Auto,
         column_gap: 0.0,
         spanning: false,
+        sizing: ImageSizing::Intrinsic,
     },
     ImageCase {
         scene_id: "fit-content-percent",
@@ -97,6 +117,7 @@ pub(super) const IMAGE_CASES: [ImageCase; 9] = [
         rows: Track::Auto,
         column_gap: 0.0,
         spanning: false,
+        sizing: ImageSizing::Intrinsic,
     },
     ImageCase {
         scene_id: "fixed-small-track-overflow",
@@ -109,6 +130,7 @@ pub(super) const IMAGE_CASES: [ImageCase; 9] = [
         rows: Track::Auto,
         column_gap: 0.0,
         spanning: false,
+        sizing: ImageSizing::Intrinsic,
     },
     ImageCase {
         scene_id: "spanning-min-content-items",
@@ -121,6 +143,7 @@ pub(super) const IMAGE_CASES: [ImageCase; 9] = [
         rows: Track::Auto,
         column_gap: 4.0,
         spanning: true,
+        sizing: ImageSizing::Intrinsic,
     },
     ImageCase {
         scene_id: "min-content-row-image",
@@ -133,5 +156,97 @@ pub(super) const IMAGE_CASES: [ImageCase; 9] = [
         rows: Track::MinContent,
         column_gap: 0.0,
         spanning: false,
+        sizing: ImageSizing::Intrinsic,
+    },
+    ImageCase {
+        scene_id: "column-auto-natural-ratio",
+        root_id: "c114-column-auto-natural-ratio-grid",
+        item_id: "c114-column-auto-natural-ratio-item",
+        grid_width: 8.0,
+        grid_height: 20.0,
+        columns: Track::AutoFraction,
+        column_count: 1,
+        rows: Track::Length20,
+        column_gap: 0.0,
+        spanning: false,
+        sizing: ImageSizing::ColumnAutoNaturalRatio,
+    },
+    ImageCase {
+        scene_id: "column-target-max-width-clamp",
+        root_id: "c114-column-target-max-width-grid",
+        item_id: "c114-column-target-max-width-item",
+        grid_width: 8.0,
+        grid_height: 20.0,
+        columns: Track::AutoFraction,
+        column_count: 1,
+        rows: Track::Length20,
+        column_gap: 0.0,
+        spanning: false,
+        sizing: ImageSizing::ColumnTargetMaxWidth,
+    },
+    ImageCase {
+        scene_id: "row-target-max-height-clamp",
+        root_id: "c114-row-target-max-height-grid",
+        item_id: "c114-row-target-max-height-item",
+        grid_width: 20.0,
+        grid_height: 4.0,
+        columns: Track::Length20,
+        column_count: 1,
+        rows: Track::AutoFraction,
+        column_gap: 0.0,
+        spanning: false,
+        sizing: ImageSizing::RowTargetMaxHeight,
+    },
+    ImageCase {
+        scene_id: "column-opposite-min-over-max",
+        root_id: "c114-column-min-over-max-grid",
+        item_id: "c114-column-min-over-max-item",
+        grid_width: 8.0,
+        grid_height: 20.0,
+        columns: Track::AutoFraction,
+        column_count: 1,
+        rows: Track::Length20,
+        column_gap: 0.0,
+        spanning: false,
+        sizing: ImageSizing::ColumnOppositeMinOverMax,
+    },
+    ImageCase {
+        scene_id: "column-border-box-transfer",
+        root_id: "c114-column-border-box-grid",
+        item_id: "c114-column-border-box-item",
+        grid_width: 8.0,
+        grid_height: 20.0,
+        columns: Track::AutoFraction,
+        column_count: 1,
+        rows: Track::Length20,
+        column_gap: 0.0,
+        spanning: false,
+        sizing: ImageSizing::ColumnBorderBoxTransfer,
+    },
+    ImageCase {
+        scene_id: "column-content-box-transfer",
+        root_id: "c114-column-content-box-grid",
+        item_id: "c114-column-content-box-item",
+        grid_width: 8.0,
+        grid_height: 20.0,
+        columns: Track::AutoFraction,
+        column_count: 1,
+        rows: Track::Length20,
+        column_gap: 0.0,
+        spanning: false,
+        sizing: ImageSizing::ColumnContentBoxTransfer,
+    },
+    ImageCase {
+        scene_id: "column-target-min-width-clamp",
+        root_id: "c114-column-min-width-grid",
+        item_id: "c114-column-min-width-item",
+        grid_width: 8.0,
+        grid_height: 20.0,
+        columns: Track::AutoFraction,
+        column_count: 1,
+        rows: Track::Length20,
+        column_gap: 0.0,
+        spanning: false,
+        sizing: ImageSizing::ColumnTargetMinWidth,
     },
 ];

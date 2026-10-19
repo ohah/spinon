@@ -1,0 +1,543 @@
+{
+  "run_id": "c114-ratio-20261019T124204Z",
+  "devices": {
+    "android": "Android API 37 ARM64 AVD, emulator-5554, SwiftShader/OpenGL ES",
+    "ios": "iPhone 17 Pro Simulator, iOS 26.2, Metal"
+  },
+  "source_revision": "worktree branch feat/c11-4-image-ratio-transfer-20261019 based on 3496a6c7d73163a8ca0ead927f4971c818ec32db",
+  "scenes": [
+    {
+      "id": "column-auto-natural-ratio",
+      "android_api37_arm64_avd": {
+        "root_frame_css_px": [
+          8.0,
+          20.0
+        ],
+        "item_frame_css_px": [
+          12.0,
+          8.0
+        ],
+        "summary": {
+          "scene_id": "column-auto-natural-ratio",
+          "root_frame_css_px": "width=8,height=20",
+          "item_frame_css_px": "width=12,height=8",
+          "status": 0,
+          "layout": "ready",
+          "boxes": 2
+        },
+        "geometry": "node-frame log plus successful runtime assertion"
+      },
+      "ios_iphone17_pro_26_2_simulator": {
+        "root_frame_css_px": [
+          8.0,
+          20.0
+        ],
+        "item_frame_css_px": [
+          12.0,
+          8.0
+        ],
+        "summary": {
+          "scene_id": "column-auto-natural-ratio",
+          "root_frame_css_px": "width=8,height=20",
+          "item_frame_css_px": "width=12,height=8",
+          "status": 0,
+          "layout": "ready",
+          "boxes": 2
+        },
+        "geometry": "runtime assertion completed before successful summary"
+      },
+      "chrome155_oracle": {
+        "grid_size_css_px": [
+          8,
+          20
+        ],
+        "item_size_css_px": [
+          12,
+          8
+        ],
+        "grid_template_columns": "12px",
+        "grid_template_rows": "20px",
+        "overflows_grid": [
+          true,
+          false
+        ]
+      },
+      "frame_match": true
+    },
+    {
+      "id": "column-target-max-width-clamp",
+      "android_api37_arm64_avd": {
+        "root_frame_css_px": [
+          8.0,
+          20.0
+        ],
+        "item_frame_css_px": [
+          9.0,
+          8.0
+        ],
+        "summary": {
+          "scene_id": "column-target-max-width-clamp",
+          "root_frame_css_px": "width=8,height=20",
+          "item_frame_css_px": "width=9,height=8",
+          "status": 0,
+          "layout": "ready",
+          "boxes": 2
+        },
+        "geometry": "node-frame log plus successful runtime assertion"
+      },
+      "ios_iphone17_pro_26_2_simulator": {
+        "root_frame_css_px": [
+          8.0,
+          20.0
+        ],
+        "item_frame_css_px": [
+          9.0,
+          8.0
+        ],
+        "summary": {
+          "scene_id": "column-target-max-width-clamp",
+          "root_frame_css_px": "width=8,height=20",
+          "item_frame_css_px": "width=9,height=8",
+          "status": 0,
+          "layout": "ready",
+          "boxes": 2
+        },
+        "geometry": "runtime assertion completed before successful summary"
+      },
+      "chrome155_oracle": {
+        "grid_size_css_px": [
+          8,
+          20
+        ],
+        "item_size_css_px": [
+          9,
+          8
+        ],
+        "grid_template_columns": "9px",
+        "grid_template_rows": "20px",
+        "overflows_grid": [
+          true,
+          false
+        ]
+      },
+      "frame_match": true
+    },
+    {
+      "id": "row-target-max-height-clamp",
+      "android_api37_arm64_avd": {
+        "root_frame_css_px": [
+          20.0,
+          4.0
+        ],
+        "item_frame_css_px": [
+          12.0,
+          6.0
+        ],
+        "summary": {
+          "scene_id": "row-target-max-height-clamp",
+          "root_frame_css_px": "width=20,height=4",
+          "item_frame_css_px": "width=12,height=6",
+          "status": 0,
+          "layout": "ready",
+          "boxes": 2
+        },
+        "geometry": "node-frame log plus successful runtime assertion"
+      },
+      "ios_iphone17_pro_26_2_simulator": {
+        "root_frame_css_px": [
+          20.0,
+          4.0
+        ],
+        "item_frame_css_px": [
+          12.0,
+          6.0
+        ],
+        "summary": {
+          "scene_id": "row-target-max-height-clamp",
+          "root_frame_css_px": "width=20,height=4",
+          "item_frame_css_px": "width=12,height=6",
+          "status": 0,
+          "layout": "ready",
+          "boxes": 2
+        },
+        "geometry": "runtime assertion completed before successful summary"
+      },
+      "chrome155_oracle": {
+        "grid_size_css_px": [
+          20,
+          4
+        ],
+        "item_size_css_px": [
+          12,
+          6
+        ],
+        "grid_template_columns": "20px",
+        "grid_template_rows": "6px",
+        "overflows_grid": [
+          false,
+          true
+        ]
+      },
+      "frame_match": true
+    },
+    {
+      "id": "column-opposite-min-over-max",
+      "android_api37_arm64_avd": {
+        "root_frame_css_px": [
+          8.0,
+          20.0
+        ],
+        "item_frame_css_px": [
+          18.0,
+          12.0
+        ],
+        "summary": {
+          "scene_id": "column-opposite-min-over-max",
+          "root_frame_css_px": "width=8,height=20",
+          "item_frame_css_px": "width=18,height=12",
+          "status": 0,
+          "layout": "ready",
+          "boxes": 2
+        },
+        "geometry": "node-frame log plus successful runtime assertion"
+      },
+      "ios_iphone17_pro_26_2_simulator": {
+        "root_frame_css_px": [
+          8.0,
+          20.0
+        ],
+        "item_frame_css_px": [
+          18.0,
+          12.0
+        ],
+        "summary": {
+          "scene_id": "column-opposite-min-over-max",
+          "root_frame_css_px": "width=8,height=20",
+          "item_frame_css_px": "width=18,height=12",
+          "status": 0,
+          "layout": "ready",
+          "boxes": 2
+        },
+        "geometry": "runtime assertion completed before successful summary"
+      },
+      "chrome155_oracle": {
+        "grid_size_css_px": [
+          8,
+          20
+        ],
+        "item_size_css_px": [
+          18,
+          12
+        ],
+        "grid_template_columns": "18px",
+        "grid_template_rows": "20px",
+        "overflows_grid": [
+          true,
+          false
+        ]
+      },
+      "frame_match": true
+    },
+    {
+      "id": "column-border-box-transfer",
+      "android_api37_arm64_avd": {
+        "root_frame_css_px": [
+          8.0,
+          20.0
+        ],
+        "item_frame_css_px": [
+          12.0,
+          8.0
+        ],
+        "summary": {
+          "scene_id": "column-border-box-transfer",
+          "root_frame_css_px": "width=8,height=20",
+          "item_frame_css_px": "width=12,height=8",
+          "status": 0,
+          "layout": "ready",
+          "boxes": 2
+        },
+        "geometry": "node-frame log plus successful runtime assertion"
+      },
+      "ios_iphone17_pro_26_2_simulator": {
+        "root_frame_css_px": [
+          8.0,
+          20.0
+        ],
+        "item_frame_css_px": [
+          12.0,
+          8.0
+        ],
+        "summary": {
+          "scene_id": "column-border-box-transfer",
+          "root_frame_css_px": "width=8,height=20",
+          "item_frame_css_px": "width=12,height=8",
+          "status": 0,
+          "layout": "ready",
+          "boxes": 2
+        },
+        "geometry": "runtime assertion completed before successful summary"
+      },
+      "chrome155_oracle": {
+        "grid_size_css_px": [
+          8,
+          20
+        ],
+        "item_size_css_px": [
+          12,
+          8
+        ],
+        "grid_template_columns": "12px",
+        "grid_template_rows": "20px",
+        "overflows_grid": [
+          true,
+          false
+        ]
+      },
+      "frame_match": true
+    },
+    {
+      "id": "column-content-box-transfer",
+      "android_api37_arm64_avd": {
+        "root_frame_css_px": [
+          8.0,
+          20.0
+        ],
+        "item_frame_css_px": [
+          16.0,
+          12.0
+        ],
+        "summary": {
+          "scene_id": "column-content-box-transfer",
+          "root_frame_css_px": "width=8,height=20",
+          "item_frame_css_px": "width=16,height=12",
+          "status": 0,
+          "layout": "ready",
+          "boxes": 2
+        },
+        "geometry": "node-frame log plus successful runtime assertion"
+      },
+      "ios_iphone17_pro_26_2_simulator": {
+        "root_frame_css_px": [
+          8.0,
+          20.0
+        ],
+        "item_frame_css_px": [
+          16.0,
+          12.0
+        ],
+        "summary": {
+          "scene_id": "column-content-box-transfer",
+          "root_frame_css_px": "width=8,height=20",
+          "item_frame_css_px": "width=16,height=12",
+          "status": 0,
+          "layout": "ready",
+          "boxes": 2
+        },
+        "geometry": "runtime assertion completed before successful summary"
+      },
+      "chrome155_oracle": {
+        "grid_size_css_px": [
+          8,
+          20
+        ],
+        "item_size_css_px": [
+          16,
+          12
+        ],
+        "grid_template_columns": "16px",
+        "grid_template_rows": "20px",
+        "overflows_grid": [
+          true,
+          false
+        ]
+      },
+      "frame_match": true
+    },
+    {
+      "id": "column-target-min-width-clamp",
+      "android_api37_arm64_avd": {
+        "root_frame_css_px": [
+          8.0,
+          20.0
+        ],
+        "item_frame_css_px": [
+          18.0,
+          8.0
+        ],
+        "summary": {
+          "scene_id": "column-target-min-width-clamp",
+          "root_frame_css_px": "width=8,height=20",
+          "item_frame_css_px": "width=18,height=8",
+          "status": 0,
+          "layout": "ready",
+          "boxes": 2
+        },
+        "geometry": "node-frame log plus successful runtime assertion"
+      },
+      "ios_iphone17_pro_26_2_simulator": {
+        "root_frame_css_px": [
+          8.0,
+          20.0
+        ],
+        "item_frame_css_px": [
+          18.0,
+          8.0
+        ],
+        "summary": {
+          "scene_id": "column-target-min-width-clamp",
+          "root_frame_css_px": "width=8,height=20",
+          "item_frame_css_px": "width=18,height=8",
+          "status": 0,
+          "layout": "ready",
+          "boxes": 2
+        },
+        "geometry": "runtime assertion completed before successful summary"
+      },
+      "chrome155_oracle": {
+        "grid_size_css_px": [
+          8,
+          20
+        ],
+        "item_size_css_px": [
+          18,
+          8
+        ],
+        "grid_template_columns": "18px",
+        "grid_template_rows": "20px",
+        "overflows_grid": [
+          true,
+          false
+        ]
+      },
+      "frame_match": true
+    }
+  ],
+  "surface_samples": {
+    "android": {
+      "status": "matched",
+      "expected": 3,
+      "observed": 3,
+      "samples": [
+        {
+          "id": "item-inside-root",
+          "css_px": [
+            5,
+            4
+          ],
+          "surface_px": [
+            14,
+            11
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "id": "item-overflow-beyond-root",
+          "css_px": [
+            10,
+            4
+          ],
+          "surface_px": [
+            27,
+            11
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "id": "root-background-control",
+          "css_px": [
+            6,
+            15
+          ],
+          "surface_px": [
+            17,
+            40
+          ],
+          "rgba": [
+            16,
+            24,
+            32,
+            255
+          ],
+          "exact": true
+        }
+      ],
+      "surface": "PixelCopy via Android emulator SurfaceView; 840x630 at 2.625 scale"
+    },
+    "ios": {
+      "status": "matched",
+      "expected": 3,
+      "observed": 3,
+      "samples": [
+        {
+          "id": "item-inside-root",
+          "css_px": [
+            5,
+            4
+          ],
+          "drawable_px": [
+            16,
+            13
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "id": "item-overflow-beyond-root",
+          "css_px": [
+            10,
+            4
+          ],
+          "drawable_px": [
+            31,
+            13
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "id": "root-background-control",
+          "css_px": [
+            6,
+            15
+          ],
+          "drawable_px": [
+            19,
+            46
+          ],
+          "rgba": [
+            16,
+            24,
+            32,
+            255
+          ],
+          "exact": true
+        }
+      ],
+      "surface": "Metal drawable readback before OS compositor; 960x720 at 3x scale"
+    }
+  },
+  "scope_note": "Pixel samples cover the natural-ratio item overflow scene. The other six scenes are frame/track-trace asserted and screenshot captured; simulator surface color samples were not taken for them."
+}

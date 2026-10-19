@@ -1,5 +1,5 @@
 //! Alignment of tracks and final positioning of items
-use super::types::GridTrack;
+use super::types::{maybe_apply_aspect_ratio_to_constraint_size, GridTrack};
 use crate::compute::common::alignment::{
     apply_alignment_fallback, compute_alignment_offset, resolve_self_alignment_safety,
 };
@@ -187,22 +187,25 @@ pub(super) fn align_and_position_item(
     };
 
     let size_style = style.size();
-    let inherent_size = size_style
-        .maybe_resolve(containing_block_size, |val, basis| tree.calc(val, basis))
+    let preferred_size =
+        size_style.maybe_resolve(containing_block_size, |val, basis| tree.calc(val, basis));
+    let inherent_size = preferred_size
         .maybe_apply_aspect_ratio(aspect_ratio)
         .maybe_add(box_sizing_adjustment);
-    let min_size = style
+    let minimum_size = style
         .min_size()
         .maybe_resolve(containing_block_size, |val, basis| tree.calc(val, basis))
-        .maybe_add(box_sizing_adjustment)
-        .or(padding_border_size.map(Some))
-        .maybe_max(padding_border_size)
-        .maybe_apply_aspect_ratio(aspect_ratio);
-    let max_size = style
-        .max_size()
-        .maybe_resolve(containing_block_size, |val, basis| tree.calc(val, basis))
-        .maybe_apply_aspect_ratio(aspect_ratio)
         .maybe_add(box_sizing_adjustment);
+    let min_size =
+        maybe_apply_aspect_ratio_to_constraint_size(minimum_size, preferred_size, aspect_ratio)
+            .or(padding_border_size.map(Some))
+            .maybe_max(padding_border_size);
+    let maximum_size = style
+        .max_size()
+        .maybe_resolve(containing_block_size, |val, basis| tree.calc(val, basis));
+    let max_size =
+        maybe_apply_aspect_ratio_to_constraint_size(maximum_size, preferred_size, aspect_ratio)
+            .maybe_add(box_sizing_adjustment);
 
     // Resolve `normal` alignment (the default if alignment is set on neither the parent or the node itself)
     // Note: if the child has a preferred aspect ratio but neither width or height are set, then the width is stretched

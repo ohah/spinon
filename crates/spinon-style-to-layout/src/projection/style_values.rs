@@ -1,6 +1,6 @@
 use std::collections::{BTreeMap, BTreeSet};
 
-use spinon_core::{HostDocumentSnapshot, HostNodeHandle, NodeId};
+use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, NodeId};
 use spinon_layout::{
     FlexDirection, GridContainerInput, GridItemInput, LayoutBorder, LayoutEdges, LayoutGap,
     LayoutOverflow, LayoutPositioning, LayoutStyle, TextDirection,
@@ -33,6 +33,8 @@ use primitive_values::{
     unsupported_value,
 };
 use spacing_values::{parse_gap, parse_margin, parse_nonnegative_spacing};
+
+const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 
 pub(super) struct ProjectedStyles {
     pub styles: BTreeMap<NodeId, LayoutStyle>,
@@ -104,7 +106,14 @@ pub(super) fn project_styles(
                 }
             }
         }
-        if let Some(property) = unsupported_aspect_ratio_constraint(element) {
+        let supports_grid_image_ratio_transfer = snapshot.profile
+            == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+            && grid_nodes
+                .as_ref()
+                .is_some_and(|nodes| nodes.html_image_grid_items.contains(&element.node_id));
+        if let Some(property) = unsupported_aspect_ratio_constraint(element)
+            && !supports_grid_image_ratio_transfer
+        {
             return Err(StyleLayoutError::UnsupportedAspectRatioConstraint { node, property });
         }
         let supports_size_constraints = matches!(
@@ -695,6 +704,7 @@ struct RuntimeGridNodes {
     hidden: BTreeSet<NodeId>,
     grid_containers: BTreeSet<NodeId>,
     grid_items: BTreeSet<NodeId>,
+    html_image_grid_items: BTreeSet<NodeId>,
     grid_item_owners: BTreeMap<NodeId, NodeId>,
 }
 
@@ -747,6 +757,12 @@ fn runtime_grid_nodes(
             {
                 nodes.grid_items.insert(child.id());
                 nodes.grid_item_owners.insert(child.id(), parent.id());
+                if tree.node(child).is_some_and(|child_node| {
+                    matches!(child_node.kind(), HostNodeKind::Element(element)
+                        if element.namespace() == HTML_NAMESPACE && element.local_name() == "img")
+                }) {
+                    nodes.html_image_grid_items.insert(child.id());
+                }
             }
             pending.push((child, hidden));
         }

@@ -2,11 +2,19 @@ use std::{collections::BTreeMap, sync::Arc};
 
 use spinon_core::{
     AttributeName, DocumentChangeBatch, DocumentOperation, HostDocument, HostNodeHandle,
-    HostParent, OwnerId, StyleRevision,
+    HostParent, IntrinsicSizeRevision, OwnerId, StyleRevision,
 };
-use spinon_style::{ComputedStyleProfile, CssMediaEnvironment, CssViewport, StyloDocumentView};
+use spinon_layout::{LayoutIntrinsicSize, LayoutIntrinsicSizeSnapshot, LayoutSourceRevision};
+use spinon_style::{
+    ComputedStyleProfile, CssMediaEnvironment, CssViewport, StyloDocumentView,
+    compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets,
+};
 
-use crate::{StyleLayoutOutput, compute_runtime_block_flex_grid_track_sizing_style_layout};
+use crate::{
+    StyleLayoutError, StyleLayoutOutput, compute_runtime_block_flex_grid_template_style_layout,
+    compute_runtime_block_flex_grid_track_sizing_style_layout,
+    compute_runtime_style_layout_with_intrinsic_size_snapshot,
+};
 
 const HTML: &str = "http://www.w3.org/1999/xhtml";
 
@@ -18,6 +26,10 @@ struct Fixture {
 
 impl Fixture {
     fn new(root_style: &str, item_styles: &[(&str, &str)]) -> Self {
+        Self::new_with_item_tag(root_style, item_styles, "div")
+    }
+
+    fn new_with_item_tag(root_style: &str, item_styles: &[(&str, &str)], item_tag: &str) -> Self {
         let mut document = HostDocument::new().unwrap();
         let root = document.reserve_node_handle().unwrap();
         let nodes = item_styles
@@ -28,7 +40,14 @@ impl Fixture {
             DocumentChangeBatch::new(OwnerId::new(11_234).unwrap(), document.document_revision());
         append_element(&mut batch, root, HostParent::Root, "grid", root_style);
         for (id, style) in item_styles {
-            append_element(&mut batch, nodes[*id], HostParent::Node(root), id, style);
+            append_element_with_tag(
+                &mut batch,
+                nodes[*id],
+                HostParent::Node(root),
+                item_tag,
+                id,
+                style,
+            );
         }
         document.commit(batch).unwrap();
         Self {
@@ -38,7 +57,42 @@ impl Fixture {
         }
     }
 
+    fn new_nested_image(root_style: &str, image_style: &str) -> Self {
+        let mut document = HostDocument::new().unwrap();
+        let root = document.reserve_node_handle().unwrap();
+        let wrapper = document.reserve_node_handle().unwrap();
+        let image = document.reserve_node_handle().unwrap();
+        let mut batch =
+            DocumentChangeBatch::new(OwnerId::new(11_235).unwrap(), document.document_revision());
+        append_element(&mut batch, root, HostParent::Root, "grid", root_style);
+        append_element(
+            &mut batch,
+            wrapper,
+            HostParent::Node(root),
+            "wrapper",
+            "margin:0;padding:0;border:0",
+        );
+        append_element_with_tag(
+            &mut batch,
+            image,
+            HostParent::Node(wrapper),
+            "img",
+            "image",
+            image_style,
+        );
+        document.commit(batch).unwrap();
+        Self {
+            document,
+            root,
+            nodes: BTreeMap::from([("wrapper".to_owned(), wrapper), ("image".to_owned(), image)]),
+        }
+    }
+
     fn compute(&self) -> StyleLayoutOutput {
+        self.try_compute().unwrap()
+    }
+
+    fn try_compute(&self) -> Result<StyleLayoutOutput, StyleLayoutError> {
         let snapshot = self.document.snapshot();
         let view =
             StyloDocumentView::new_html_runtime_mount_shared(Arc::new(snapshot.clone()), self.root)
@@ -57,7 +111,67 @@ impl Fixture {
             },
             StyleRevision::INITIAL,
         )
-        .unwrap()
+    }
+
+    fn compute_template(&self) -> Result<StyleLayoutOutput, StyleLayoutError> {
+        let snapshot = self.document.snapshot();
+        let view =
+            StyloDocumentView::new_html_runtime_mount_shared(Arc::new(snapshot.clone()), self.root)
+                .unwrap();
+        compute_runtime_block_flex_grid_template_style_layout(
+            &snapshot,
+            &view,
+            self.root,
+            &[],
+            CssViewport {
+                width_css_px: 240.0,
+                height_css_px: 80.0,
+                device_scale_factor: 1.0,
+                environment_revision: Default::default(),
+                media_environment: CssMediaEnvironment::MOBILE,
+            },
+            StyleRevision::INITIAL,
+        )
+    }
+
+    fn compute_with_image_intrinsic_size(&self) -> Result<StyleLayoutOutput, StyleLayoutError> {
+        let snapshot = self.document.snapshot();
+        let view =
+            StyloDocumentView::new_html_runtime_mount_shared(Arc::new(snapshot.clone()), self.root)
+                .unwrap();
+        let viewport = CssViewport {
+            width_css_px: 240.0,
+            height_css_px: 80.0,
+            device_scale_factor: 1.0,
+            environment_revision: Default::default(),
+            media_environment: CssMediaEnvironment::MOBILE,
+        };
+        let computed_styles =
+            compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+                &view,
+                &[],
+                viewport,
+                StyleRevision::INITIAL,
+            )?;
+        let intrinsic_sizes = LayoutIntrinsicSizeSnapshot::new(
+            LayoutSourceRevision::HostDocument {
+                generation: snapshot.generation(),
+                document: snapshot.document_revision(),
+                render_tree: snapshot.render_tree_revision(),
+            },
+            IntrinsicSizeRevision::INITIAL.checked_next().unwrap(),
+            BTreeMap::from([(
+                self.nodes["image"].id(),
+                LayoutIntrinsicSize::new(24.0, 16.0),
+            )]),
+        )?;
+        compute_runtime_style_layout_with_intrinsic_size_snapshot(
+            &snapshot,
+            self.root,
+            computed_styles,
+            viewport,
+            intrinsic_sizes,
+        )
     }
 }
 
@@ -68,10 +182,21 @@ fn append_element(
     id: &str,
     style: &str,
 ) {
+    append_element_with_tag(batch, node, parent, "div", id, style);
+}
+
+fn append_element_with_tag(
+    batch: &mut DocumentChangeBatch,
+    node: HostNodeHandle,
+    parent: HostParent,
+    tag: &str,
+    id: &str,
+    style: &str,
+) {
     batch.push(DocumentOperation::CreateElement {
         node,
         namespace: HTML.to_owned(),
-        local_name: "div".to_owned(),
+        local_name: tag.to_owned(),
     });
     batch.push(DocumentOperation::SetAttribute {
         node,
@@ -88,6 +213,73 @@ fn append_element(
         node,
         before: None,
     });
+}
+
+fn ratio_constraint_styles() -> (&'static str, &'static str) {
+    (
+        "display:grid;box-sizing:border-box;width:40px;height:20px;grid-template-columns:minmax(0,1fr);grid-template-rows:20px;align-items:start;align-content:start;justify-content:start;column-gap:0;row-gap:0;margin:0;padding:0;border:0",
+        "display:block;box-sizing:border-box;width:auto;height:8px;aspect-ratio:3/2;max-height:4px;margin:0;padding:0;border:0",
+    )
+}
+
+#[test]
+fn direct_html_image_ratio_constraints_are_scoped_to_track_sizing_profile() {
+    let (root_style, image_style) = ratio_constraint_styles();
+    let image = Fixture::new_with_item_tag(root_style, &[("image", image_style)], "img");
+    let output = image.compute_with_image_intrinsic_size().unwrap();
+    let image_frame = output.layout.frames[&image.nodes["image"].id()];
+
+    assert_eq!(
+        output.computed_styles.profile,
+        ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+    );
+    assert_eq!((image_frame.width, image_frame.height), (6.0, 4.0));
+
+    let other_grid_profile =
+        Fixture::new_with_item_tag(root_style, &[("image", image_style)], "img");
+    let other_profile_result = other_grid_profile.compute_template();
+    assert!(
+        matches!(
+            &other_profile_result,
+            Err(StyleLayoutError::UnsupportedInlineProperty {
+                property,
+                ..
+            }) if property == "aspect-ratio"
+        ),
+        "unexpected other-profile result: {other_profile_result:?}"
+    );
+}
+
+#[test]
+fn ratio_constraints_remain_rejected_for_non_image_grid_items() {
+    let (root_style, item_style) = ratio_constraint_styles();
+    let fixture = Fixture::new(root_style, &[("item", item_style)]);
+
+    assert!(matches!(
+        fixture.try_compute(),
+        Err(StyleLayoutError::UnsupportedAspectRatioConstraint {
+            property: "max-height",
+            ..
+        })
+    ));
+}
+
+#[test]
+fn ratio_constraints_remain_rejected_for_nested_html_images() {
+    let (root_style, image_style) = ratio_constraint_styles();
+    let fixture = Fixture::new_nested_image(root_style, image_style);
+    let result = fixture.try_compute();
+
+    assert!(
+        matches!(
+            &result,
+            Err(StyleLayoutError::UnsupportedAspectRatioConstraint {
+                property: "max-height",
+                ..
+            })
+        ),
+        "unexpected nested-image result: {result:?}"
+    );
 }
 
 #[test]

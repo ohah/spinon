@@ -140,6 +140,12 @@ Template area 행·열 수와 explicit track 수가 다르면 `grid-template-are
 
 화면과 색 표본은 `img` element의 CSS background box를 관찰한다. PNG texel을 layout fixture로 paint하지 않으므로 실제 이미지 texel paint 증거가 아니다. dynamic image replacement/cache invalidation, aspect-ratio transfer, anonymous/nested/multiple item, 일반 CSS combination, hardware GPU·실기기, compositor 후 표면, WPT 및 전체 표준 단계 비교는 미검증이다. 이 행렬은 C11.4 direct-leaf image contribution subset의 제한 fixture이지 공개 이미지/Grid 계약이나 C11.4 완료가 아니다.
 
+## C11.4 direct image Grid transferred-size suggestion 후보
+
+2026-10-19 현재 구현 후보는 `RuntimeBlockFlexGridTrackSizingV1`의 direct HTML `img` Grid item에 한해 replaced item의 natural 또는 authored aspect ratio와 반대 축 definite preferred size에서 transferred-size suggestion을 계산한다. 반대 축 preferred size에 authored min/max를 먼저 적용하고 ratio로 변환한 뒤, content-box인 경우 target 축 padding/border를 더하고 target 축 preferred/max size로 제한한다. border-box 크기는 장식을 다시 더하지 않는다. 이 단계는 [CSS Grid Level 1 §6.6](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#min-size-auto)의 specified-size → transferred-size → content-size 순서와 automatic minimum 분기에 연결되며, 제한 profile 밖의 authored ratio min/max 입력·non-image·nested image는 거부한다.
+
+고정 Chrome 155 관찰은 27개(직접 replaced image 26, non-replaced control 1)다. pure Rust matrix는 직접 image 23개, scrollable-overflow control, content-/border-box decoration 두 건과 non-replaced control을 비교한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 앱은 7개 장면 모두의 frame·trace·screenshot을 통과했고 grid 바깥 PixelCopy/Metal 색 표본은 overflow 장면에서만 읽었다. 원본과 정확한 적용 범위는 [Chrome oracle·구현 실패 관점 검토](./evidence/c11-4-image-ratio-transfer-2026-10-19/README.md) · [구현 검토 20개](./evidence/c11-4-image-ratio-transfer-2026-10-19/implementation-review-20.md) · [Simulator 실행 근거](./evidence/c11-4-image-ratio-transfer-simulator-2026-10-19/README.md)에 둔다. dynamic replacement/cache invalidation, 다른 Grid contribution 조합, anonymous/nested/multiple item, WPT 및 전체 표준 단계 비교는 미검증이다. 제한 fixture 후보이며 공개 이미지/Grid 지원이나 C11.4 완료를 뜻하지 않는다.
+
 ## C11.4 typed track input 및 단계 관찰 후보
 
 초기 2026-10-19 앱 후속은 `min-content-text-normal` 한 장면에서 direct-leaf text를 C11.4 runtime Grid 계산에 연결했다. Ahem 10px `XX XXXXXXX`, `grid-template-columns:min-content`, 120×40px root 및 `align-items:start`를 사용해 column 70px, item 70×20px, min-content 70×20px 및 max-content 100×10px을 확인했다. 이 결과는 위의 10-scene matrix로 확장되었으며 초기 실행의 자료는 [single-scene evidence](./evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/README.md)에 남아 있다.

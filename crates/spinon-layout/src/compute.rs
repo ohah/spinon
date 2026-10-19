@@ -5,7 +5,7 @@ use spinon_text_layout::TextLayoutEngine;
 use taffy::prelude::{AvailableSpace, Size};
 
 use super::{
-    LayoutEngine, LayoutError, LayoutFrame, LayoutInput, LayoutIntrinsicSize,
+    GridPlacementMode, LayoutEngine, LayoutError, LayoutFrame, LayoutInput, LayoutIntrinsicSize,
     LayoutIntrinsicSizeSnapshot, LayoutOutput, LayoutUsedBoxEdges, TaffyLayoutEngine, TextFlowItem,
     TextParagraphInput,
     calc_tree::CalcLayoutTree,
@@ -265,6 +265,14 @@ fn validate_intrinsic_sizes(
         }
         pending.extend(node.children.iter().map(|&child| (child, is_hidden)));
     }
+    let mut track_sizing_grid_items = BTreeSet::new();
+    for (&container, grid) in &input.grid_containers {
+        if grid.placement_mode == GridPlacementMode::TrackSizing
+            && let Some(&container_index) = index.get(&container)
+        {
+            track_sizing_grid_items.extend(input.nodes()[container_index].children.iter().copied());
+        }
+    }
     for (&id, size) in snapshot.sizes() {
         let Some(&position) = index.get(&id) else {
             return Err(LayoutError::UnknownIntrinsicSizeNode(id));
@@ -331,6 +339,7 @@ fn validate_intrinsic_sizes(
                     reason: "ratio만 있는 auto/auto intrinsic contribution은 지원하지 않습니다",
                 });
             }
+            let is_track_sizing_grid_item = track_sizing_grid_items.contains(&id);
             if node.style.aspect_ratio.is_some()
                 && [
                     node.style.min_width,
@@ -340,6 +349,7 @@ fn validate_intrinsic_sizes(
                 ]
                 .into_iter()
                 .any(|dimension| dimension != crate::LayoutDimension::Auto)
+                && !is_track_sizing_grid_item
             {
                 return Err(LayoutError::UnsupportedIntrinsicSizing {
                     node: id,

@@ -1,5 +1,5 @@
 //! Contains GridItem used to represent a single grid item during layout
-use super::GridTrack;
+use super::{maybe_apply_aspect_ratio_to_constraint_size, GridTrack};
 use crate::compute::common::sizing_keyword::{resolve_sizing_keyword, SizingKeywordResolution};
 use crate::compute::grid::OriginZeroLine;
 use crate::compute::grid::{
@@ -378,24 +378,27 @@ impl GridItem {
         } else {
             Size::ZERO
         };
-        let inherent_size = self
+        let preferred_size = self
             .size
-            .maybe_resolve(grid_area_size, |val, basis| tree.calc(val, basis))
+            .maybe_resolve(grid_area_size, |val, basis| tree.calc(val, basis));
+        let inherent_size = preferred_size
             .maybe_apply_aspect_ratio(aspect_ratio)
             .maybe_add(box_sizing_adjustment);
-        let min_size = self
+        let minimum_size = self
             .min_size
-            .maybe_resolve(grid_area_size, |val, basis| tree.calc(val, basis))
-            .maybe_apply_aspect_ratio(aspect_ratio)
-            .maybe_add(box_sizing_adjustment)
-            // The size of the item is floored by its padding and border
-            .or(padding_border_size.map(Some))
-            .maybe_max(padding_border_size);
-        let max_size = self
+            .maybe_resolve(grid_area_size, |val, basis| tree.calc(val, basis));
+        let min_size =
+            maybe_apply_aspect_ratio_to_constraint_size(minimum_size, preferred_size, aspect_ratio)
+                .maybe_add(box_sizing_adjustment)
+                // The size of the item is floored by its padding and border
+                .or(padding_border_size.map(Some))
+                .maybe_max(padding_border_size);
+        let maximum_size = self
             .max_size
-            .maybe_resolve(grid_area_size, |val, basis| tree.calc(val, basis))
-            .maybe_apply_aspect_ratio(aspect_ratio)
-            .maybe_add(box_sizing_adjustment);
+            .maybe_resolve(grid_area_size, |val, basis| tree.calc(val, basis));
+        let max_size =
+            maybe_apply_aspect_ratio_to_constraint_size(maximum_size, preferred_size, aspect_ratio)
+                .maybe_add(box_sizing_adjustment);
 
         let grid_area_minus_item_margins_size =
             grid_area_size.maybe_sub(margins).maybe_max(Size::ZERO);
@@ -798,7 +801,6 @@ impl GridItem {
         if let Some(size) = self
             .size
             .maybe_resolve(grid_area_size, |val, basis| tree.calc(val, basis))
-            .maybe_apply_aspect_ratio(self.aspect_ratio)
             .maybe_add(box_sizing_adjustment)
             .get(axis)
         {
@@ -854,7 +856,6 @@ impl GridItem {
                 grid_area_size.map(|size| size.unwrap_or(0.0)),
                 |val, basis| tree.calc(val, basis),
             )
-            .maybe_apply_aspect_ratio(self.aspect_ratio)
             .maybe_add(box_sizing_adjustment)
             .get(axis)
         {
@@ -889,8 +890,11 @@ impl GridItem {
 
         // Otherwise, the automatic minimum size is zero, as usual.
         let (value, fixed_track_limit) = if content_based {
-            let mut minimum_contribution =
-                self.min_content_contribution_cached(axis, tree, grid_area_size, grid_area_size);
+            let transferred_size =
+                self.transferred_size_suggestion(axis, tree, grid_area_size, box_sizing_adjustment);
+            let mut minimum_contribution = transferred_size.unwrap_or_else(|| {
+                self.min_content_contribution_cached(axis, tree, grid_area_size, grid_area_size)
+            });
 
             // 크기를 줄일 수 있는 replaced element라면 definite preferred·maximum size suggestion으로 결과를 제한합니다.
             if self.is_compressible_replaced {
@@ -932,6 +936,65 @@ impl GridItem {
                 fixed_track_limit,
             },
         }
+    }
+
+    /// Computes Grid's transferred size suggestion for a replaced item with an authored aspect ratio.
+    /// The preferred size on the opposite axis is clamped there before conversion, then the suggestion
+    /// is capped by definite preferred/max sizes in the affected axis.
+    fn transferred_size_suggestion(
+        &self,
+        axis: AbstractAxis,
+        tree: &mut impl LayoutPartialTree,
+        grid_area_size: Size<Option<f32>>,
+        box_sizing_adjustment: Size<f32>,
+    ) -> Option<f32> {
+        if !self.is_replaced {
+            return None;
+        }
+
+        let ratio = self.aspect_ratio?;
+        let opposite_axis = match axis {
+            AbstractAxis::Inline => AbstractAxis::Block,
+            AbstractAxis::Block => AbstractAxis::Inline,
+        };
+        let opposite_basis = grid_area_size.get(opposite_axis);
+        let opposite_preferred_size = self
+            .size
+            .get(opposite_axis)
+            .maybe_resolve(opposite_basis, |val, basis| tree.calc(val, basis))?;
+        let opposite_min_size = self
+            .min_size
+            .get(opposite_axis)
+            .maybe_resolve(opposite_basis, |val, basis| tree.calc(val, basis));
+        let opposite_max_size = self
+            .max_size
+            .get(opposite_axis)
+            .maybe_resolve(opposite_basis, |val, basis| tree.calc(val, basis));
+        let opposite_size =
+            opposite_preferred_size.maybe_clamp(opposite_min_size, opposite_max_size);
+
+        let transferred = match axis {
+            AbstractAxis::Inline => opposite_size * ratio,
+            AbstractAxis::Block => opposite_size / ratio,
+        } + box_sizing_adjustment.get(axis);
+
+        // Compressible replaced items resolve indefinite percentage preferred/max sizes against zero
+        // when capping an automatic minimum contribution.
+        let target_basis = grid_area_size.get(axis);
+        let basis = if self.is_compressible_replaced {
+            target_basis.or(Some(0.0))
+        } else {
+            target_basis
+        };
+        let preferred_size = self
+            .size
+            .get(axis)
+            .maybe_resolve(basis, |val, basis| tree.calc(val, basis));
+        let max_size = self
+            .max_size
+            .get(axis)
+            .maybe_resolve(basis, |val, basis| tree.calc(val, basis));
+        Some(transferred.maybe_min(preferred_size).maybe_min(max_size))
     }
 
     /// Retrieve the item's minimum contribution from the cache or compute it using the provided parameters
