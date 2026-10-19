@@ -6,7 +6,7 @@
 
 - 기준: [CSS Grid Layout Module Level 1 §7.2.3.1–7.2.3.2](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#repeat-notation). auto-repeat은 한 track list 안에서 최대 한 번 허용된다. columns와 rows는 별도 list이므로 각각 하나씩 둘 수 있다. definite 200px axis는 `auto-fill`의 가장 큰 non-overflow 양의 반복 수를, 266px axis는 세 번을 선택한다. `auto-fit`은 반복 수 산정 뒤 placement된 item이 없는 repeated track과 해당 gutter를 collapse한다.
 - Oracle: Agent Browser 0.31.1을 통해 띄운 HeadlessChrome `155.0.0.0` UA. Host `arm64`, viewport 1280×633 CSS px, DPR 1.
-- Fixture: [grid-auto-repeat-both-axes-c114.html](../../../../tests/fixtures/css/c11/grid-auto-repeat-both-axes-c114.html), SHA-256은 아래 해시 표를 따른다. 모든 case는 `20px repeat(auto-fill|auto-fit, minmax(40px, 1fr) 20px) 10px`, 8px row/column gap을 기본으로 한다.
+- Fixture: [grid-auto-repeat-both-axes-c114.html](../../../../tests/fixtures/css/c11/grid-auto-repeat-both-axes-c114.html), SHA-256은 아래 해시 표를 따른다. auto-repeat 축은 `20px repeat(auto-fill|auto-fit, minmax(40px, 1fr) 20px) 10px`와 8px gap을 사용한다. One-axis control의 반대 축은 명시 `20px 12px`다.
 - Observation JSON은 DOM `getComputedStyle()` resolved track list, `getBoundingClientRect()` root/item frame, UA와 viewport를 저장한다. PNG는 동일 fixture의 전체 화면을 담는다.
 
 ## 독립 반복 수 계산
@@ -17,7 +17,7 @@ Prefix/suffix 합은 30px이다. 반복 fragment의 두 track 최소 합은 60px
 
 표의 track 값은 prefix, 반복 fragment track 순서, suffix 순서로 나열한다. 원본 문자열과 item rect는 Observation JSON을 기준으로 한다.
 
-| Case | Columns | Rows | Item relative rect |
+| Case | Columns | Rows | Item 기준 사각형 |
 | --- | --- | --- | --- |
 | `columns-fill-control` | `20 45 20 45 20 10` | `20 12` (명시 track) | `(28,28) 12×12` |
 | `rows-fill-control` | `20 12` (명시 track) | `20 45 20 45 20 10` | `(28,28) 12×12` |
@@ -36,7 +36,7 @@ Square `auto-fill` axes independently choose two repetitions; the 266px row axis
 
 ## 한계와 해석
 
-Chrome computed track list and root/item rects show this browser behavior only. The screenshot does not prove Spinon or simulator rendering. Although the W3C rule permits one auto-repeat in each separate track list, implementation acceptance remains limited to the parser grammar and fixed item/grid cases named in [the focused plan](../../../../plan/c11-4-two-axis-auto-repeat.md). `auto-fit` definite minimum-size axis discrepancy, line names/areas, arbitrary track grammar, WPT, physical devices, hardware GPU and compositor-after pixels remain outside this evidence.
+Chrome의 computed track list와 root/item rect는 이 브라우저의 동작만 보여준다. screenshot은 Spinon 또는 simulator rendering을 증명하지 않는다. W3C 규칙은 별도 track list마다 auto-repeat 하나를 허용하지만, 구현 acceptance는 [집중 계획](../../../../plan/c11-4-two-axis-auto-repeat.md)의 parser grammar와 fixed item/grid 사례에 한정한다. `auto-fit` definite minimum-size 축 차이, line names/areas, 임의 track grammar, WPT, 실기기, hardware GPU와 compositor 이후 픽셀은 이 근거에 포함하지 않는다.
 
 ## 해시
 
