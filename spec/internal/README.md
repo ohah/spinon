@@ -2,7 +2,7 @@
 
 ## C11.4 양쪽 Grid 축 auto-repeat 후속
 
-[집중 계획](../../plan/c11-4-two-axis-auto-repeat.md) · [Chrome 155 12-case 사전 비교](./evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/README.md) · [Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 33-scene 실행·화면·해시](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/README.md) · [구현 실패 관점 검토 20개](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/implementation-review-20.md). 각 axis에 auto-repeat 하나를 독립 적용하는 제한 후보이며 C11.4 공식 상태는 미완료다.
+[구현 PR #368](https://github.com/ohah/spinon/pull/368) · [집중 계획](../../plan/c11-4-two-axis-auto-repeat.md) · [Chrome 155 12-case 사전 비교](./evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/README.md) · [Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 33-scene 실행·화면·해시](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/README.md) · [구현 실패 관점 검토 20개](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/implementation-review-20.md). 각 axis에 auto-repeat 하나를 독립 적용하는 제한 후보이며 C11.4 공식 상태는 미완료다.
 
 ## C11.4 definite minimum-size two-track auto-fill 후속 · PR #365
 

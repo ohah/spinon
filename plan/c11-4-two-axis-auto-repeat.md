@@ -2,7 +2,7 @@
 
 **상위 원본:** [CSS Grid 계획](c11-css-grid.md) · [C11.4 track sizing 계획](c11-4-grid-track-sizing.md) · [CSS 적합성 계약](../spec/0001-conformance.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획 PR [#367](https://github.com/ohah/spinon/pull/367)이 Rebase and merge됐다. 계획 자체의 독립 실패 관점 20개 검토 뒤 제한 구현을 진행했고, 구현 후 코드·런타임 20관점과 Android/iOS Simulator 33-scene 행렬을 마쳤다. 구현 PR의 최종 diff 30관점 검토와 병합은 남아 있다.
+**상태:** 계획 PR [#367](https://github.com/ohah/spinon/pull/367)이 Rebase and merge됐다. 계획 자체의 독립 실패 관점 20개 검토 뒤 제한 구현을 진행했고, 구현 후 코드·런타임 20관점과 Android/iOS Simulator 33-scene 행렬을 마쳤다. 구현 PR [#368](https://github.com/ohah/spinon/pull/368)을 열었으며 최종 diff 30관점 검토와 병합은 남아 있다.
 
 ## 목적과 규범 근거
 
