@@ -1,0 +1,182 @@
+[
+  {
+    "columns": "100px",
+    "fontFamily": "Ahem, sans-serif",
+    "fontSize": "10px",
+    "found": true,
+    "grid": {
+      "height": 40,
+      "width": 120
+    },
+    "item": {
+      "height": 10,
+      "width": 100
+    },
+    "sceneId": "auto-text-max-content",
+    "text": "XX XXXXXXX",
+    "whiteSpace": "normal",
+    "wordBreak": "normal"
+  },
+  {
+    "columns": "70px",
+    "fontFamily": "Ahem, sans-serif",
+    "fontSize": "10px",
+    "found": true,
+    "grid": {
+      "height": 40,
+      "width": 120
+    },
+    "item": {
+      "height": 20,
+      "width": 70
+    },
+    "sceneId": "min-content-text-normal",
+    "text": "XX XXXXXXX",
+    "whiteSpace": "normal",
+    "wordBreak": "normal"
+  },
+  {
+    "columns": "100px",
+    "fontFamily": "Ahem, sans-serif",
+    "fontSize": "10px",
+    "found": true,
+    "grid": {
+      "height": 40,
+      "width": 120
+    },
+    "item": {
+      "height": 10,
+      "width": 100
+    },
+    "sceneId": "max-content-text-normal",
+    "text": "XX XXXXXXX",
+    "whiteSpace": "normal",
+    "wordBreak": "normal"
+  },
+  {
+    "columns": "70px",
+    "fontFamily": "Ahem, sans-serif",
+    "fontSize": "10px",
+    "found": true,
+    "grid": {
+      "height": 40,
+      "width": 120
+    },
+    "item": {
+      "height": 20,
+      "width": 70
+    },
+    "sceneId": "fit-content-text-minimum",
+    "text": "XX XXXXXXX",
+    "whiteSpace": "normal",
+    "wordBreak": "normal"
+  },
+  {
+    "columns": "15px",
+    "fontFamily": "Ahem, sans-serif",
+    "fontSize": "10px",
+    "found": true,
+    "grid": {
+      "height": 120,
+      "width": 100
+    },
+    "item": {
+      "height": 80,
+      "width": 15
+    },
+    "sceneId": "fit-content-calc-limit",
+    "text": "XXXXXXXX",
+    "whiteSpace": "normal",
+    "wordBreak": "break-all"
+  },
+  {
+    "columns": "80px",
+    "fontFamily": "Ahem, sans-serif",
+    "fontSize": "10px",
+    "found": true,
+    "grid": {
+      "height": 50,
+      "width": 120
+    },
+    "item": {
+      "height": 20,
+      "width": 80
+    },
+    "sceneId": "min-content-text-edge",
+    "text": "XX XXXXXXX",
+    "whiteSpace": "normal",
+    "wordBreak": "normal"
+  },
+  {
+    "columns": "90px",
+    "fontFamily": "Ahem, sans-serif",
+    "fontSize": "10px",
+    "found": true,
+    "grid": {
+      "height": 50,
+      "width": 120
+    },
+    "item": {
+      "height": 20,
+      "width": 90
+    },
+    "sceneId": "min-content-text-min-width",
+    "text": "XX XXXXXXX",
+    "whiteSpace": "normal",
+    "wordBreak": "normal"
+  },
+  {
+    "columns": "40px",
+    "fontFamily": "Ahem, sans-serif",
+    "fontSize": "10px",
+    "found": true,
+    "grid": {
+      "height": 50,
+      "width": 120
+    },
+    "item": {
+      "height": 20,
+      "width": 40
+    },
+    "sceneId": "min-content-text-max-width",
+    "text": "XX XXXXXXX",
+    "whiteSpace": "normal",
+    "wordBreak": "normal"
+  },
+  {
+    "columns": "10px",
+    "fontFamily": "Ahem, sans-serif",
+    "fontSize": "10px",
+    "found": true,
+    "grid": {
+      "height": 40,
+      "width": 120
+    },
+    "item": {
+      "height": 80,
+      "width": 10
+    },
+    "sceneId": "min-content-text-break-all",
+    "text": "XXXXXXXX",
+    "whiteSpace": "normal",
+    "wordBreak": "break-all"
+  },
+  {
+    "columns": "100px",
+    "fontFamily": "Ahem, sans-serif",
+    "fontSize": "10px",
+    "found": true,
+    "grid": {
+      "height": 40,
+      "width": 120
+    },
+    "item": {
+      "height": 10,
+      "width": 100
+    },
+    "sceneId": "min-content-text-nowrap",
+    "text": "XX XXXXXXX",
+    "whiteSpace": "nowrap",
+    "wordBreak": "normal"
+  }
+]

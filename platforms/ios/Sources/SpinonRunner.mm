@@ -3280,6 +3280,32 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 }
 
++ (NSString *)requestRuntimeGpuC11_4GridSurfacePixelsForTest:(uint64_t)handle
+                                                     sampleXY:(const uint32_t *)sampleXY
+                                                  sampleCount:(NSUInteger)sampleCount {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
+    defined(SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST) && \
+    SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 16384> output{};
+  const int32_t status =
+      spinon_runtime_gpu_host_request_c11_4_grid_surface_pixels_for_test(
+          host, sampleXY, sampleCount, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C114_METAL_PIXEL_REQUEST", report);
+  return report;
+#else
+  (void)handle;
+  (void)sampleXY;
+  (void)sampleCount;
+  return @"status=-90 C11.4 Metal surface pixel fixture is not enabled";
+#endif
+}
+
 + (NSString *)injectNextRuntimeGpuDrawFailure:(uint64_t)handle {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
     defined(SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE) && \

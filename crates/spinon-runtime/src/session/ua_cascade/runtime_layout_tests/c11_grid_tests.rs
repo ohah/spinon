@@ -1,7 +1,8 @@
 use super::*;
-use crate::session::ua_cascade::calculation::{
-    compute_request_for_block_flex_grid_placement, compute_request_for_block_flex_grid_track_sizing,
-};
+use crate::session::ua_cascade::calculation::compute_request_for_block_flex_grid_placement;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+use crate::session::ua_cascade::calculation::compute_request_for_block_flex_grid_track_sizing;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 use spinon_core::{
     AttributeName, DocumentChangeBatch, DocumentOperation, HostDocument, HostNodeHandle,
     HostParent, OwnerId,

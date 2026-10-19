@@ -1,0 +1,1408 @@
+{
+  "chrome": {
+    "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "devicePixelRatio": 1,
+    "viewport": {
+      "height": 633,
+      "width": 1280
+    },
+    "oracleProfile": "align-content:normal; align-items:start"
+  },
+  "comparison": {
+    "sceneCount": 10,
+    "framesExactAgainstChrome": "10/10 on both simulators",
+    "canonicalTraceEquality": "10/10 after normalizing whitespace only inside Rust Debug AutomaticMinimum strings",
+    "exactTraceEquality": "8/10; remaining 2 differ only in Rust Debug AutomaticMinimum whitespace",
+    "nodeFramesExactAgainstChrome": "10/10 on both simulators including x/y, node order, and paint order",
+    "runtimeRerun": "2026-10-19, current JSON-input assertion app builds with exact frame, intrinsic input, complete Columns/Rows diagnostic trace, and native sample checks",
+    "intrinsicInputsExact": "10/10 on both simulators including min/max-content width/height and fontRegistryRevision=1",
+    "exactTraceMismatches": [
+      "auto-text-max-content",
+      "min-content-text-nowrap"
+    ]
+  },
+  "scenes": [
+    {
+      "sceneId": "auto-text-max-content",
+      "chrome155": {
+        "grid": {
+          "height": 40,
+          "width": 120
+        },
+        "columnTrack": "100px",
+        "item": {
+          "height": 10,
+          "width": 100
+        },
+        "computedAlignContent": "normal",
+        "computedAlignItems": "start"
+      },
+      "androidAvd": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 40
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 100.0,
+          "height": 10.0
+        },
+        "traceChunks": 6,
+        "runtimeRunId": "c114-android-jsoninput-auto-text-max-content-20261019",
+        "runtimeLog": "android-avd/runtime-auto-text-max-content-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 120.0,
+            "height": 40.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 100.0,
+            "height": 10.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 70.0,
+          "minContentHeight": 20.0,
+          "maxContent": 100.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "3ea24e6c1f4d5271d60db54f08e064b18482faaf37ea2dac19dfac04da9dbacc",
+        "environmentLog": "android-avd/runtime-auto-text-max-content-verified.log"
+      },
+      "iosSimulator": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 40
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 100.0,
+          "height": 10.0
+        },
+        "traceChunks": 11,
+        "runtimeRunId": "c114-ios-jsoninput-auto-text-max-content-20261019",
+        "runtimeLog": "ios-simulator/runtime-auto-text-max-content-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 120.0,
+            "height": 40.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 100.0,
+            "height": 10.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 70.0,
+          "minContentHeight": 20.0,
+          "maxContent": 100.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "ccba2b5531185b170cbf507e37907d2b3df88b8ddb7fe677b643c363eb25477e",
+        "environmentLog": "ios-simulator/runtime-auto-text-max-content-verified.log"
+      },
+      "textIntrinsicInput": {
+        "minContent": 70,
+        "minContentHeight": 20,
+        "maxContent": 100,
+        "maxContentHeight": 10,
+        "fontRegistryRevision": 1
+      },
+      "crossPlatformCanonicalTraceSha256": "81aa41d3e2e5181aa6bd2fef398eb647a7ca80bf5ca9acdcc0683f38ab55aaa9"
+    },
+    {
+      "sceneId": "min-content-text-normal",
+      "chrome155": {
+        "grid": {
+          "height": 40,
+          "width": 120
+        },
+        "columnTrack": "70px",
+        "item": {
+          "height": 20,
+          "width": 70
+        },
+        "computedAlignContent": "normal",
+        "computedAlignItems": "start"
+      },
+      "androidAvd": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 40
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 70.0,
+          "height": 20.0
+        },
+        "traceChunks": 5,
+        "runtimeRunId": "c114-android-jsoninput-min-content-text-normal-20261019",
+        "runtimeLog": "android-avd/runtime-min-content-text-normal-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 120.0,
+            "height": 40.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 70.0,
+            "height": 20.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 70.0,
+          "minContentHeight": 20.0,
+          "maxContent": 100.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "849d8ba50599c81ff4b1991272a6b697c1ea4bdfcf0ab819371ea37ca3e3f388",
+        "environmentLog": "android-avd/runtime-min-content-text-normal-verified.log"
+      },
+      "iosSimulator": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 40
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 70.0,
+          "height": 20.0
+        },
+        "traceChunks": 10,
+        "runtimeRunId": "c114-ios-jsoninput-min-content-text-normal-20261019",
+        "runtimeLog": "ios-simulator/runtime-min-content-text-normal-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 120.0,
+            "height": 40.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 70.0,
+            "height": 20.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 70.0,
+          "minContentHeight": 20.0,
+          "maxContent": 100.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "849d8ba50599c81ff4b1991272a6b697c1ea4bdfcf0ab819371ea37ca3e3f388",
+        "environmentLog": "ios-simulator/runtime-min-content-text-normal-verified.log"
+      },
+      "textIntrinsicInput": {
+        "minContent": 70,
+        "minContentHeight": 20,
+        "maxContent": 100,
+        "maxContentHeight": 10,
+        "fontRegistryRevision": 1
+      },
+      "crossPlatformCanonicalTraceSha256": "96e2f7352373bca20ddc493d009456e4b64b952cd57a9b8c23cae53f78eca174"
+    },
+    {
+      "sceneId": "max-content-text-normal",
+      "chrome155": {
+        "grid": {
+          "height": 40,
+          "width": 120
+        },
+        "columnTrack": "100px",
+        "item": {
+          "height": 10,
+          "width": 100
+        },
+        "computedAlignContent": "normal",
+        "computedAlignItems": "start"
+      },
+      "androidAvd": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 40
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 100.0,
+          "height": 10.0
+        },
+        "traceChunks": 5,
+        "runtimeRunId": "c114-android-jsoninput-max-content-text-normal-20261019",
+        "runtimeLog": "android-avd/runtime-max-content-text-normal-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 120.0,
+            "height": 40.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 100.0,
+            "height": 10.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 70.0,
+          "minContentHeight": 20.0,
+          "maxContent": 100.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "fa53bb26ecea7b338ea3344889e75b9c208d585a285237f0def79e41b7075d59",
+        "environmentLog": "android-avd/runtime-max-content-text-normal-verified.log"
+      },
+      "iosSimulator": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 40
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 100.0,
+          "height": 10.0
+        },
+        "traceChunks": 10,
+        "runtimeRunId": "c114-ios-jsoninput-max-content-text-normal-20261019",
+        "runtimeLog": "ios-simulator/runtime-max-content-text-normal-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 120.0,
+            "height": 40.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 100.0,
+            "height": 10.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 70.0,
+          "minContentHeight": 20.0,
+          "maxContent": 100.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "fa53bb26ecea7b338ea3344889e75b9c208d585a285237f0def79e41b7075d59",
+        "environmentLog": "ios-simulator/runtime-max-content-text-normal-verified.log"
+      },
+      "textIntrinsicInput": {
+        "minContent": 70,
+        "minContentHeight": 20,
+        "maxContent": 100,
+        "maxContentHeight": 10,
+        "fontRegistryRevision": 1
+      },
+      "crossPlatformCanonicalTraceSha256": "17abd4c6965defde6b32ecea8872f19181ce92f9b226211961131241a7a76f5e"
+    },
+    {
+      "sceneId": "fit-content-text-minimum",
+      "chrome155": {
+        "grid": {
+          "height": 40,
+          "width": 120
+        },
+        "columnTrack": "70px",
+        "item": {
+          "height": 20,
+          "width": 70
+        },
+        "computedAlignContent": "normal",
+        "computedAlignItems": "start"
+      },
+      "androidAvd": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 40
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 70.0,
+          "height": 20.0
+        },
+        "traceChunks": 6,
+        "runtimeRunId": "c114-android-jsoninput-fit-content-text-minimum-20261019",
+        "runtimeLog": "android-avd/runtime-fit-content-text-minimum-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 120.0,
+            "height": 40.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 70.0,
+            "height": 20.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 70.0,
+          "minContentHeight": 20.0,
+          "maxContent": 100.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "d551df46bc1205ee3940d9dfa691455a74bb6ff3fa6d727e8f5ae226c011b0a1",
+        "environmentLog": "android-avd/runtime-fit-content-text-minimum-verified.log"
+      },
+      "iosSimulator": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 40
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 70.0,
+          "height": 20.0
+        },
+        "traceChunks": 11,
+        "runtimeRunId": "c114-ios-jsoninput-fit-content-text-minimum-20261019",
+        "runtimeLog": "ios-simulator/runtime-fit-content-text-minimum-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 120.0,
+            "height": 40.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 70.0,
+            "height": 20.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 70.0,
+          "minContentHeight": 20.0,
+          "maxContent": 100.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "d551df46bc1205ee3940d9dfa691455a74bb6ff3fa6d727e8f5ae226c011b0a1",
+        "environmentLog": "ios-simulator/runtime-fit-content-text-minimum-verified.log"
+      },
+      "textIntrinsicInput": {
+        "minContent": 70,
+        "minContentHeight": 20,
+        "maxContent": 100,
+        "maxContentHeight": 10,
+        "fontRegistryRevision": 1
+      },
+      "crossPlatformCanonicalTraceSha256": "a67579ad28891e4e64d98dcd3e13561386dbb90f87702ac67617443cc11e9877"
+    },
+    {
+      "sceneId": "fit-content-calc-limit",
+      "chrome155": {
+        "grid": {
+          "height": 120,
+          "width": 100
+        },
+        "columnTrack": "15px",
+        "item": {
+          "height": 80,
+          "width": 15
+        },
+        "computedAlignContent": "normal",
+        "computedAlignItems": "start"
+      },
+      "androidAvd": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 120
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 15.0,
+          "height": 80.0
+        },
+        "traceChunks": 6,
+        "runtimeRunId": "c114-android-jsoninput-fit-content-calc-limit-20261019",
+        "runtimeLog": "android-avd/runtime-fit-content-calc-limit-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 100.0,
+            "height": 120.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 15.0,
+            "height": 80.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 10.0,
+          "minContentHeight": 80.0,
+          "maxContent": 80.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "b8c5fd80657f761ccc0191ac650391dce1c20651f2f1a65e892fc0681dd74991",
+        "environmentLog": "android-avd/runtime-fit-content-calc-limit-verified.log"
+      },
+      "iosSimulator": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 120
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 15.0,
+          "height": 80.0
+        },
+        "traceChunks": 11,
+        "runtimeRunId": "c114-ios-jsoninput-fit-content-calc-limit-20261019",
+        "runtimeLog": "ios-simulator/runtime-fit-content-calc-limit-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 100.0,
+            "height": 120.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 15.0,
+            "height": 80.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 10.0,
+          "minContentHeight": 80.0,
+          "maxContent": 80.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "b8c5fd80657f761ccc0191ac650391dce1c20651f2f1a65e892fc0681dd74991",
+        "environmentLog": "ios-simulator/runtime-fit-content-calc-limit-verified.log"
+      },
+      "textIntrinsicInput": {
+        "minContent": 10,
+        "minContentHeight": 80,
+        "maxContent": 80,
+        "maxContentHeight": 10,
+        "fontRegistryRevision": 1
+      },
+      "crossPlatformCanonicalTraceSha256": "0cdb3367fc8fcfd93d44fa9bc52675a80c690ac370d6be5502b39f16e7b3b1fc"
+    },
+    {
+      "sceneId": "min-content-text-edge",
+      "chrome155": {
+        "grid": {
+          "height": 50,
+          "width": 120
+        },
+        "columnTrack": "80px",
+        "item": {
+          "height": 20,
+          "width": 80
+        },
+        "computedAlignContent": "normal",
+        "computedAlignItems": "start"
+      },
+      "androidAvd": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 50
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 80.0,
+          "height": 20.0
+        },
+        "traceChunks": 5,
+        "runtimeRunId": "c114-android-jsoninput-min-content-text-edge-20261019",
+        "runtimeLog": "android-avd/runtime-min-content-text-edge-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 120.0,
+            "height": 50.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 80.0,
+            "height": 20.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 70.0,
+          "minContentHeight": 20.0,
+          "maxContent": 100.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "be7310c6d303d97e9c03087d4007bf41f5ceac3fde25cb36a40d9513764f951f",
+        "environmentLog": "android-avd/runtime-min-content-text-edge-verified.log"
+      },
+      "iosSimulator": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 50
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 80.0,
+          "height": 20.0
+        },
+        "traceChunks": 10,
+        "runtimeRunId": "c114-ios-jsoninput-min-content-text-edge-20261019",
+        "runtimeLog": "ios-simulator/runtime-min-content-text-edge-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 120.0,
+            "height": 50.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 80.0,
+            "height": 20.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 70.0,
+          "minContentHeight": 20.0,
+          "maxContent": 100.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "be7310c6d303d97e9c03087d4007bf41f5ceac3fde25cb36a40d9513764f951f",
+        "environmentLog": "ios-simulator/runtime-min-content-text-edge-verified.log"
+      },
+      "textIntrinsicInput": {
+        "minContent": 70,
+        "minContentHeight": 20,
+        "maxContent": 100,
+        "maxContentHeight": 10,
+        "fontRegistryRevision": 1
+      },
+      "crossPlatformCanonicalTraceSha256": "039629861de412e5757f85269564e2aa2187f1019385d4468707d3d45889a9cc"
+    },
+    {
+      "sceneId": "min-content-text-min-width",
+      "chrome155": {
+        "grid": {
+          "height": 50,
+          "width": 120
+        },
+        "columnTrack": "90px",
+        "item": {
+          "height": 20,
+          "width": 90
+        },
+        "computedAlignContent": "normal",
+        "computedAlignItems": "start"
+      },
+      "androidAvd": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 50
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 90.0,
+          "height": 20.0
+        },
+        "traceChunks": 5,
+        "runtimeRunId": "c114-android-jsoninput-min-content-text-min-width-20261019",
+        "runtimeLog": "android-avd/runtime-min-content-text-min-width-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 120.0,
+            "height": 50.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 90.0,
+            "height": 20.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 70.0,
+          "minContentHeight": 20.0,
+          "maxContent": 100.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "d669ac0172c38566d82e391a02b04759cf8606aa60dc0eb839a3bda73f1b3f9d",
+        "environmentLog": "android-avd/runtime-min-content-text-min-width-verified.log"
+      },
+      "iosSimulator": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 50
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 90.0,
+          "height": 20.0
+        },
+        "traceChunks": 10,
+        "runtimeRunId": "c114-ios-jsoninput-min-content-text-min-width-20261019",
+        "runtimeLog": "ios-simulator/runtime-min-content-text-min-width-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 120.0,
+            "height": 50.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 90.0,
+            "height": 20.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 70.0,
+          "minContentHeight": 20.0,
+          "maxContent": 100.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "d669ac0172c38566d82e391a02b04759cf8606aa60dc0eb839a3bda73f1b3f9d",
+        "environmentLog": "ios-simulator/runtime-min-content-text-min-width-verified.log"
+      },
+      "textIntrinsicInput": {
+        "minContent": 70,
+        "minContentHeight": 20,
+        "maxContent": 100,
+        "maxContentHeight": 10,
+        "fontRegistryRevision": 1
+      },
+      "crossPlatformCanonicalTraceSha256": "1d15e2e619439104d89a2beb18fe78e8adf7241948ebd819ee021b2945afcc8d"
+    },
+    {
+      "sceneId": "min-content-text-max-width",
+      "chrome155": {
+        "grid": {
+          "height": 50,
+          "width": 120
+        },
+        "columnTrack": "40px",
+        "item": {
+          "height": 20,
+          "width": 40
+        },
+        "computedAlignContent": "normal",
+        "computedAlignItems": "start"
+      },
+      "androidAvd": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 50
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 40.0,
+          "height": 20.0
+        },
+        "traceChunks": 5,
+        "runtimeRunId": "c114-android-jsoninput-min-content-text-max-width-20261019",
+        "runtimeLog": "android-avd/runtime-min-content-text-max-width-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 120.0,
+            "height": 50.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 40.0,
+            "height": 20.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 70.0,
+          "minContentHeight": 20.0,
+          "maxContent": 100.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "e45142a68e10fe0fde50c06a1c5cac3f0c189eb46ebc8cb04bf6899391ef7d05",
+        "environmentLog": "android-avd/environment-min-content-text-max-width-verified.log (prior captured environment event)"
+      },
+      "iosSimulator": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 50
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 40.0,
+          "height": 20.0
+        },
+        "traceChunks": 10,
+        "runtimeRunId": "c114-ios-jsoninput-min-content-text-max-width-20261019",
+        "runtimeLog": "ios-simulator/runtime-min-content-text-max-width-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 120.0,
+            "height": 50.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 40.0,
+            "height": 20.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 70.0,
+          "minContentHeight": 20.0,
+          "maxContent": 100.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "e45142a68e10fe0fde50c06a1c5cac3f0c189eb46ebc8cb04bf6899391ef7d05",
+        "environmentLog": "ios-simulator/runtime-min-content-text-max-width-verified.log"
+      },
+      "textIntrinsicInput": {
+        "minContent": 70,
+        "minContentHeight": 20,
+        "maxContent": 100,
+        "maxContentHeight": 10,
+        "fontRegistryRevision": 1
+      },
+      "crossPlatformCanonicalTraceSha256": "abcf28eec64cfa4d1d99804202b0ff23af0257738895b04eb6c233393f901f8e"
+    },
+    {
+      "sceneId": "min-content-text-break-all",
+      "chrome155": {
+        "grid": {
+          "height": 40,
+          "width": 120
+        },
+        "columnTrack": "10px",
+        "item": {
+          "height": 80,
+          "width": 10
+        },
+        "computedAlignContent": "normal",
+        "computedAlignItems": "start"
+      },
+      "androidAvd": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 40
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 10.0,
+          "height": 80.0
+        },
+        "traceChunks": 5,
+        "runtimeRunId": "c114-android-jsoninput-min-content-text-break-all-20261019",
+        "runtimeLog": "android-avd/runtime-min-content-text-break-all-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 120.0,
+            "height": 40.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 10.0,
+            "height": 80.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 10.0,
+          "minContentHeight": 80.0,
+          "maxContent": 80.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "ce688a540bd1d878dde5eb4522e78671a89bcd4eddf303eda1b031b7d0454e30",
+        "environmentLog": "android-avd/runtime-min-content-text-break-all-verified.log"
+      },
+      "iosSimulator": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 40
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 10.0,
+          "height": 80.0
+        },
+        "traceChunks": 10,
+        "runtimeRunId": "c114-ios-jsoninput-min-content-text-break-all-20261019",
+        "runtimeLog": "ios-simulator/runtime-min-content-text-break-all-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 120.0,
+            "height": 40.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 10.0,
+            "height": 80.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 10.0,
+          "minContentHeight": 80.0,
+          "maxContent": 80.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "ce688a540bd1d878dde5eb4522e78671a89bcd4eddf303eda1b031b7d0454e30",
+        "environmentLog": "ios-simulator/runtime-min-content-text-break-all-verified.log"
+      },
+      "textIntrinsicInput": {
+        "minContent": 10,
+        "minContentHeight": 80,
+        "maxContent": 80,
+        "maxContentHeight": 10,
+        "fontRegistryRevision": 1
+      },
+      "crossPlatformCanonicalTraceSha256": "a3742a6b3d0d1f85a3f854baa6f5674f19192cec762afcdad813a22592bee94d"
+    },
+    {
+      "sceneId": "min-content-text-nowrap",
+      "chrome155": {
+        "grid": {
+          "height": 40,
+          "width": 120
+        },
+        "columnTrack": "100px",
+        "item": {
+          "height": 10,
+          "width": 100
+        },
+        "computedAlignContent": "normal",
+        "computedAlignItems": "start"
+      },
+      "androidAvd": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 40
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 100.0,
+          "height": 10.0
+        },
+        "traceChunks": 5,
+        "runtimeRunId": "c114-android-jsoninput-min-content-text-nowrap-20261019",
+        "runtimeLog": "android-avd/runtime-min-content-text-nowrap-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 120.0,
+            "height": 40.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 100.0,
+            "height": 10.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 100.0,
+          "minContentHeight": 10.0,
+          "maxContent": 100.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "0022d2f666c645c5f733d987b5fca1b21981fcffd412a4ab2322a763b81a6e57",
+        "environmentLog": "android-avd/runtime-min-content-text-nowrap-verified.log"
+      },
+      "iosSimulator": {
+        "status": "PASS",
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 40
+        },
+        "item": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 100.0,
+          "height": 10.0
+        },
+        "traceChunks": 10,
+        "runtimeRunId": "c114-ios-jsoninput-min-content-text-nowrap-20261019",
+        "runtimeLog": "ios-simulator/runtime-min-content-text-nowrap-verified.log",
+        "nodeFrames": [
+          {
+            "index": 0,
+            "nodeId": 1,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 120.0,
+            "height": 40.0
+          },
+          {
+            "index": 1,
+            "nodeId": 2,
+            "x": 0.0,
+            "y": 0.0,
+            "width": 100.0,
+            "height": 10.0
+          }
+        ],
+        "paintNodeOrder": [
+          0,
+          1
+        ],
+        "environmentRevision": 1,
+        "intrinsicInput": {
+          "kind": "text",
+          "minContent": 100.0,
+          "minContentHeight": 10.0,
+          "maxContent": 100.0,
+          "maxContentHeight": 10.0,
+          "fontRegistryRevision": 1
+        },
+        "traceSha256": "3ce6c7a6511c5173430db86a5fdf8893d5bf4ab9c2b03c08fa447e2264869179",
+        "environmentLog": "ios-simulator/runtime-min-content-text-nowrap-verified.log"
+      },
+      "textIntrinsicInput": {
+        "minContent": 100,
+        "minContentHeight": 10,
+        "maxContent": 100,
+        "maxContentHeight": 10,
+        "fontRegistryRevision": 1
+      },
+      "crossPlatformCanonicalTraceSha256": "3789309385718c5e4537135f7aa762af4c02d59816350a45fb80092c60638898"
+    }
+  ],
+  "overflowPixelProbe": {
+    "sceneId": "min-content-text-break-all",
+    "runIds": {
+      "android": "c114-android-jsoninput-min-content-text-break-all-20261019",
+      "ios": "c114-ios-jsoninput-min-content-text-break-all-20261019"
+    },
+    "rootHeightCssPx": 40,
+    "samples": {
+      "android": {
+        "evidence": "android-avd/pixel-matrix-min-content-text-break-all.log",
+        "status": "matched",
+        "capture": "PixelCopy 840x630 @ 2.625x",
+        "png": "android-avd/pixel-matrix-min-content-text-break-all.png",
+        "exactSamples": [
+          {
+            "id": "item-inside-root",
+            "x": 14,
+            "y": 53,
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "exact": true,
+            "cssX": 5,
+            "cssY": 20
+          },
+          {
+            "id": "item-overflow-beyond-root",
+            "x": 14,
+            "y": 119,
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "exact": true,
+            "cssX": 5,
+            "cssY": 45
+          },
+          {
+            "id": "root-background-control",
+            "x": 40,
+            "y": 53,
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ],
+            "exact": true,
+            "cssX": 15,
+            "cssY": 20
+          }
+        ]
+      },
+      "ios": {
+        "evidence": "ios-simulator/metal-pixel-min-content-text-break-all.log",
+        "status": "matched",
+        "capture": "Metal drawable 960x720 @ 3x before OS compositor presentation",
+        "exactSamples": [
+          {
+            "id": "item-inside-root",
+            "x": 16,
+            "y": 61,
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "exact": true,
+            "cssX": 5,
+            "cssY": 20
+          },
+          {
+            "id": "item-overflow-beyond-root",
+            "x": 16,
+            "y": 136,
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "exact": true,
+            "cssX": 5,
+            "cssY": 45
+          },
+          {
+            "id": "root-background-control",
+            "x": 46,
+            "y": 61,
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ],
+            "exact": true,
+            "cssX": 15,
+            "cssY": 20
+          }
+        ]
+      }
+    },
+    "androidRunLog": "android-avd/runtime-min-content-text-break-all-verified.log",
+    "iosRunLog": "ios-simulator/runtime-min-content-text-break-all-verified.log",
+    "screenshots": {
+      "android": {
+        "path": "android-avd/screenshot-min-content-text-break-all.png",
+        "sha256": "f9dee82506bad4f5546c0929d5faffc49c691a3ec960eb83ae6db948b8bd8702"
+      },
+      "iosSimulator": {
+        "path": "ios-simulator/screenshot-min-content-text-break-all.png",
+        "sha256": "939404afa9e6b04e7567effa81be576e2745bef693e3fc3b47a0048512dbe042"
+      }
+    },
+    "iosSimulatorScreenshotIsCompositorOutput": false
+  }
+}

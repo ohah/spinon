@@ -439,7 +439,7 @@ public final class MainActivity extends Activity {
                     && !c114GridRunId.matches("[A-Za-z0-9_-]{1,80}"))
                     || c1131GridRepeatRequested || c1132GridNamedLinesRequested
                     || c1133GridTemplateAreasRequested || c1121GridPlacementRequested
-                    || c1122GridAutoPlacementRequested) {
+                    || c1122GridAutoPlacementRequested || c11GridCase != null) {
                 TextView unavailable = new TextView(this);
                 unavailable.setText("C11.4 Grid fixture 또는 profile 선택이 올바르지 않습니다.");
                 unavailable.setTextColor(Color.WHITE);

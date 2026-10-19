@@ -1,0 +1,3 @@
+0000000000002f98 T _spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture
+00000000000036b4 T _spinon_runtime_gpu_host_request_c11_4_grid_surface_pixels_for_test
+PASS: C11.4 host/pixel symbols and fixture payload are present.

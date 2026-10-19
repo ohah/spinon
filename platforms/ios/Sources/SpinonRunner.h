@@ -274,6 +274,9 @@
 + (NSString *)requestRuntimeGpuC11_3_3GridSurfacePixelsForTest:(uint64_t)handle
                                                      sampleXY:(const uint32_t *)sampleXY
                                                   sampleCount:(NSUInteger)sampleCount;
++ (NSString *)requestRuntimeGpuC11_4GridSurfacePixelsForTest:(uint64_t)handle
+                                                     sampleXY:(const uint32_t *)sampleXY
+                                                  sampleCount:(NSUInteger)sampleCount;
 + (NSString *)injectNextRuntimeGpuDrawFailure:(uint64_t)handle;
 + (void)destroyRuntimeGpuRenderer:(uint64_t)handle;
 + (void)freeRuntimeGpuHost:(uint64_t)handle;

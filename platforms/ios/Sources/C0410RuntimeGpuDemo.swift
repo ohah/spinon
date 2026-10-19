@@ -16,8 +16,141 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "auto-fixed-width-item", "minmax-auto-fixed-width-item",
     "fit-content-below-item-size", "spanning-auto-tracks",
     "auto-fill-repeat", "auto-fit-collapse", "auto-fill-track-overflow",
-    "min-content-text-normal",
+    "min-content-text-normal", "auto-text-max-content",
+    "max-content-text-normal", "fit-content-text-minimum",
+    "fit-content-calc-limit", "min-content-text-edge",
+    "min-content-text-min-width", "min-content-text-max-width",
+    "min-content-text-break-all", "min-content-text-nowrap",
 ]
+
+private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    switch sceneID {
+    case "spanning-auto-tracks":
+        return "width=100,height=30"
+    case "fit-content-calc-limit":
+        return "width=100,height=120"
+    case "min-content-text-edge", "min-content-text-min-width", "min-content-text-max-width":
+        return "width=120,height=50"
+    case "min-content-text-normal", "auto-text-max-content", "max-content-text-normal",
+         "fit-content-text-minimum", "min-content-text-break-all", "min-content-text-nowrap":
+        return "width=120,height=40"
+    default:
+        return "width=100,height=40"
+    }
+}
+
+private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    switch sceneID {
+    case "spanning-auto-tracks":
+        return "width=70,height=10"
+    case "auto-fill-repeat":
+        return "width=24,height=16"
+    case "auto-fit-collapse":
+        return "width=96,height=16"
+    case "auto-fill-track-overflow":
+        return "width=120,height=16"
+    case "min-content-text-normal", "fit-content-text-minimum":
+        return "width=70,height=20"
+    case "auto-text-max-content", "max-content-text-normal", "min-content-text-nowrap":
+        return "width=100,height=10"
+    case "fit-content-calc-limit":
+        return "width=15,height=80"
+    case "min-content-text-edge":
+        return "width=80,height=20"
+    case "min-content-text-min-width":
+        return "width=90,height=20"
+    case "min-content-text-max-width":
+        return "width=40,height=20"
+    case "min-content-text-break-all":
+        return "width=10,height=80"
+    default:
+        return "width=24,height=16"
+    }
+}
+
+private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
+    let expected: (minContent: Int, minContentHeight: Int, maxContent: Int, maxContentHeight: Int)?
+    switch sceneID {
+    case "auto-text-max-content", "min-content-text-normal", "max-content-text-normal",
+         "fit-content-text-minimum", "min-content-text-edge", "min-content-text-min-width",
+         "min-content-text-max-width":
+        expected = (70, 20, 100, 10)
+    case "fit-content-calc-limit", "min-content-text-break-all":
+        expected = (10, 80, 80, 10)
+    case "min-content-text-nowrap":
+        expected = (100, 10, 100, 10)
+    default:
+        expected = nil
+    }
+    guard let expected else { return true }
+    guard let marker = report.range(of: "grid_track_sizing_diagnostics=") else { return false }
+    let jsonText = report[marker.upperBound...]
+    var depth = 0
+    var inString = false
+    var escaped = false
+    var endIndex: String.Index?
+    for index in jsonText.indices {
+        let character = jsonText[index]
+        if inString {
+            if escaped {
+                escaped = false
+            } else if character == "\\" {
+                escaped = true
+            } else if character == "\"" {
+                inString = false
+            }
+            continue
+        }
+        if character == "\"" {
+            inString = true
+        } else if character == "{" {
+            depth += 1
+        } else if character == "}" {
+            depth -= 1
+            if depth == 0 {
+                endIndex = jsonText.index(after: index)
+                break
+            }
+        }
+    }
+    guard let endIndex,
+          let data = String(jsonText[..<endIndex]).data(using: .utf8),
+          let diagnostics = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
+          let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
+          inputs.count == 1,
+          let input = inputs.first,
+          let grid = input["grid"] as? Int, grid == 1,
+          let node = input["node"] as? Int, node == 2,
+          let sourceOrder = input["sourceOrder"] as? Int, sourceOrder == 0,
+          let source = input["source"] as? [String: Any],
+          let kind = source["kind"] as? String, kind == "text",
+          let fontRegistryRevision = source["fontRegistryRevision"] as? Int,
+          fontRegistryRevision == 1,
+          let minContent = source["minContent"] as? NSNumber,
+          minContent.doubleValue == Double(expected.minContent),
+          let minContentHeight = source["minContentHeight"] as? NSNumber,
+          minContentHeight.doubleValue == Double(expected.minContentHeight),
+          let maxContent = source["maxContent"] as? NSNumber,
+          maxContent.doubleValue == Double(expected.maxContent),
+          let maxContentHeight = source["maxContentHeight"] as? NSNumber,
+          maxContentHeight.doubleValue == Double(expected.maxContentHeight) else {
+        return false
+    }
+    return true
+}
+
+private func c114ExpectedTextNodeFrames(_ sceneID: String) -> String? {
+    switch sceneID {
+    case "auto-text-max-content", "min-content-text-normal", "max-content-text-normal",
+         "fit-content-text-minimum", "fit-content-calc-limit", "min-content-text-edge",
+         "min-content-text-min-width", "min-content-text-max-width",
+         "min-content-text-break-all", "min-content-text-nowrap":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,\(c114ExpectedRootFrame(sceneID));"
+            + "1:node=2,x=0,y=0,\(c114ExpectedItemFrame(sceneID))]"
+    default:
+        return nil
+    }
+}
 
 private struct C124MetalPixelCase {
     let direction: String
@@ -153,6 +286,11 @@ private struct C111MetalPixelRun {
         ("grid-background", "c1133-main-grid", 150, 10, [16, 24, 32, 255]),
         ("item-blue", "c1133-main-item", 100, 50, [62, 99, 221, 255]),
     ]
+    private static let c114TextOverflowPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+        ("item-inside-root", "c114-break-all-item", 5, 20, [229, 72, 77, 255]),
+        ("item-overflow-beyond-root", "c114-break-all-item", 5, 45, [229, 72, 77, 255]),
+        ("root-background-control", "c114-break-all-grid", 15, 20, [16, 24, 32, 255]),
+    ]
 
     private static func hasFixedC1131RepeatSamples(_ samples: [C111MetalPixelSample]) -> Bool {
         guard samples.count == c1131RepeatPixelSamples.count else { return false }
@@ -179,6 +317,17 @@ private struct C111MetalPixelRun {
     private static func hasFixedC1133TemplateAreaSamples(_ samples: [C111MetalPixelSample]) -> Bool {
         guard samples.count == c1133TemplateAreaPixelSamples.count else { return false }
         return c1133TemplateAreaPixelSamples.allSatisfy { expected in
+            samples.contains { sample in
+                sample.id == expected.0 && sample.nodeId == expected.1
+                    && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                    && sample.rgba == expected.4
+            }
+        }
+    }
+
+    private static func hasFixedC114TextOverflowSamples(_ samples: [C111MetalPixelSample]) -> Bool {
+        guard samples.count == c114TextOverflowPixelSamples.count else { return false }
+        return c114TextOverflowPixelSamples.allSatisfy { expected in
             samples.contains { sample in
                 sample.id == expected.0 && sample.nodeId == expected.1
                     && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
@@ -245,6 +394,29 @@ private struct C111MetalPixelRun {
                 return nil
             }
         }
+        let c114Scene = arguments.first(where: {
+            $0.hasPrefix("--spinon-c114-grid-scene=")
+        }).map { String($0.dropFirst("--spinon-c114-grid-scene=".count)) }
+        let isC114TrackSizing = arguments.contains("--spinon-c114-grid-track-sizing")
+            || c114Scene != nil
+        if isC114TrackSizing {
+            let c114RunID = arguments.first(where: {
+                $0.hasPrefix("--spinon-c114-grid-run-id=")
+            }).map { String($0.dropFirst("--spinon-c114-grid-run-id=".count)) }
+            guard let c114Scene, c114Scene == "min-content-text-break-all",
+                  c114Scene == sceneID, c114RunID == runID,
+                  arguments.contains("--spinon-c114-grid-track-sizing"),
+                  !isC1131Repeat, !isC1132NamedLine, !isC1133TemplateAreas,
+                  !arguments.contains("--spinon-c1123-grid-auto-placement"),
+                  !arguments.contains("--spinon-c1122-grid-auto-placement"),
+                  !arguments.contains("--spinon-c1121-grid-placement"),
+                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1131-grid-repeat-scene=") }),
+                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1132-grid-scene=") }),
+                  !arguments.contains(where: { $0.hasPrefix("--spinon-c1133-grid-scene=") }),
+                  !arguments.contains(where: { $0.hasPrefix("--spinon-c11-grid-case=") }) else {
+                return nil
+            }
+        }
         let c1123Scene = arguments.first(where: {
             $0.hasPrefix("--spinon-c1123-grid-scene=")
         }).map { String($0.dropFirst("--spinon-c1123-grid-scene=".count)) }
@@ -292,8 +464,10 @@ private struct C111MetalPixelRun {
         if isC1131Repeat && !hasFixedC1131RepeatSamples(samples) { return nil }
         if isC1132NamedLine && !hasFixedC1132NamedLineSamples(samples) { return nil }
         if isC1133TemplateAreas && !hasFixedC1133TemplateAreaSamples(samples) { return nil }
+        if isC114TrackSizing && !hasFixedC114TextOverflowSamples(samples) { return nil }
         return C111MetalPixelRun(runID: runID, sceneID: sceneID,
-                                 markerPrefix: isC1133TemplateAreas ? "C1133"
+                                 markerPrefix: isC114TrackSizing ? "C114"
+                                     : isC1133TemplateAreas ? "C1133"
                                      : isC1132NamedLine ? "C1132"
                                      : isC1131Repeat ? "C1131"
                                      : isC1123Placement ? "C1123"
@@ -303,6 +477,11 @@ private struct C111MetalPixelRun {
 }
 
 private func c11GridMetalPixelSceneID(arguments: [String]) -> String? {
+    if arguments.contains("--spinon-c114-grid-track-sizing") {
+        return arguments.first(where: {
+            $0.hasPrefix("--spinon-c114-grid-scene=")
+        }).map { String($0.dropFirst("--spinon-c114-grid-scene=".count)) }
+    }
     if arguments.contains("--spinon-c1133-grid-template-areas") {
         return arguments.first(where: {
             $0.hasPrefix("--spinon-c1133-grid-scene=")
@@ -652,7 +831,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }).map { String($0.dropFirst("--spinon-c114-grid-run-id=".count)) } ?? "manual"
     }
     private var c11GridMetalPixelStatusName: String {
-        c1133GridTemplateAreasProbeRequested ? "C11.3.3"
+        c114GridTrackSizingProbeRequested ? "C11.4"
+            : c1133GridTemplateAreasProbeRequested ? "C11.3.3"
             : c1132GridNamedLinesProbeRequested ? "C11.3.2"
             : c1131GridRepeatProbeRequested ? "C11.3.1"
             : c1123GridAutoPlacementProbeRequested ? "C11.2.3"
@@ -2796,7 +2976,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 || !c114GridTrackSizingSceneIDs.contains(c114GridTrackSizingSceneID)
                 || c1131GridRepeatProbeRequested || c1132GridNamedLinesProbeRequested
                 || c1133GridTemplateAreasProbeRequested || c1123GridAutoPlacementProbeRequested
-                || c1122GridAutoPlacementProbeRequested || c1121GridPlacementProbeRequested) {
+                || c1122GridAutoPlacementProbeRequested || c1121GridPlacementProbeRequested
+                || c11GridSceneArgument != nil) {
             log("SPINON_C114_GRID_ARGUMENT_ERROR rejected=true")
             postStatus("실패 · C11.4 Grid fixture 또는 profile 선택이 올바르지 않습니다")
             return
@@ -3555,36 +3736,17 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
         } else if c114GridTrackSizingProbeRequested {
             let report = result ?? "status=-1 missing-report"
-            let rootFrame: String
-            if c114GridTrackSizingSceneID == "spanning-auto-tracks" {
-                rootFrame = "width=100,height=30"
-            } else if c114GridTrackSizingSceneID == "min-content-text-normal" {
-                rootFrame = "width=120,height=40"
-            } else {
-                rootFrame = "width=100,height=40"
-            }
-            let itemFrame: String
-            switch c114GridTrackSizingSceneID {
-            case "spanning-auto-tracks":
-                itemFrame = "width=70,height=10"
-            case "auto-fill-repeat":
-                itemFrame = "width=24,height=16"
-            case "auto-fit-collapse":
-                itemFrame = "width=96,height=16"
-            case "auto-fill-track-overflow":
-                itemFrame = "width=120,height=16"
-            case "min-content-text-normal":
-                itemFrame = "width=70,height=20"
-            default:
-                itemFrame = "width=24,height=16"
-            }
-            let expectedTextInputs = c114GridTrackSizingSceneID == "min-content-text-normal"
-                ? report.contains("\"minContent\":70") && report.contains("\"maxContent\":100")
-                : true
+            let rootFrame = c114ExpectedRootFrame(c114GridTrackSizingSceneID)
+            let itemFrame = c114ExpectedItemFrame(c114GridTrackSizingSceneID)
+            let expectedTextNodeFrames = c114ExpectedTextNodeFrames(c114GridTrackSizingSceneID)
+            let expectedTextInputs = c114ExpectedTextIntrinsicInputs(
+                c114GridTrackSizingSceneID, report: report)
+            let expectedTextNodeFramesMatch = expectedTextNodeFrames.map(report.contains) ?? true
             log("SPINON_C114_GRID_EVAL_RUN run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) \(runtimeStatusSummary(report))")
             let gridTrackSizingTraceAvailable = logC114GridTrackSizingTraceChunks(report)
             guard report.hasPrefix("status=0 "), report.contains("layout=ready boxes=2"),
-                  report.contains(rootFrame), report.contains(itemFrame), expectedTextInputs else {
+                  report.contains(rootFrame), report.contains(itemFrame), expectedTextInputs,
+                  expectedTextNodeFramesMatch else {
                 log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) report=\(report)")
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치")
                 return
@@ -5568,7 +5730,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 coordinates.append(UInt32(y))
             }
             let request = coordinates.withUnsafeBufferPointer { buffer in
-                if pixelRun.markerPrefix == "C1133" {
+                if pixelRun.markerPrefix == "C114" {
+                    SpinonRunner.requestRuntimeGpuC11_4GridSurfacePixels(
+                        forTest: handle,
+                        sampleXY: buffer.baseAddress,
+                        sampleCount: UInt(coordinates.count / 2)
+                    )
+                } else if pixelRun.markerPrefix == "C1133" {
                     SpinonRunner.requestRuntimeGpuC11_3_3GridSurfacePixels(
                         forTest: handle,
                         sampleXY: buffer.baseAddress,

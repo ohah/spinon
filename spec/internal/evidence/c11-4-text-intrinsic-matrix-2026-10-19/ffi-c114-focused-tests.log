@@ -1,0 +1,12 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-7e71ded2a4069749)
+
+running 5 tests
+test runtime_gpu::ffi::fixtures::c11_4::tests::c11_4_surface_pixel_request_rejects_invalid_counts_and_pointers ... ok
+test runtime_gpu::ffi::fixtures::c11_4::tests::c11_4_eval_rejects_untrusted_scene_ids_and_bad_arguments ... ok
+test runtime_gpu::fixtures::c11_4::trace_report::tests::rejects_missing_grid_track_sizing_diagnostics ... ok
+test runtime_gpu::fixtures::c11_4::trace_report::tests::reports_stage_track_state_and_item_contribution_values ... ok
+test runtime_gpu::fixtures::c11_4::tests::exposes_only_bounded_intrinsic_track_sizing_scenes ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 58 filtered out; finished in 0.01s
+

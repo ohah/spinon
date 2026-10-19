@@ -5,7 +5,7 @@ mod trace_report;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
 pub(crate) use trace_report::grid_track_sizing_trace_report;
 
-const C11_4_GRID_TRACK_SIZING_SCENES: [(&str, &str); 8] = [
+const C11_4_GRID_TRACK_SIZING_SCENES: [(&str, &str); 17] = [
     (
         "auto-fixed-width-item",
         r#"(() => {
@@ -135,6 +135,159 @@ root.appendChild(item);
 return { sceneId:'min-content-text-normal', rootId:'c114-text-grid', nodeIds:['c114-text-grid', 'c114-track-text-item'] };
 })()"#,
     ),
+    (
+        "auto-text-max-content",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'c114-auto-text-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:120px;height:40px;margin:0;padding:0;border:0;gap:0;align-items:start;grid-template-columns:auto;grid-template-rows:auto;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'c114-auto-text-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;margin:0;padding:0;border:0;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;background-color:#e5484d');
+item.appendChild(document.createTextNode('XX XXXXXXX'));
+root.appendChild(item);
+return { sceneId:'auto-text-max-content', rootId:'c114-auto-text-grid', nodeIds:['c114-auto-text-grid', 'c114-auto-text-item'] };
+})()"#,
+    ),
+    (
+        "max-content-text-normal",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'c114-max-content-text-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:120px;height:40px;margin:0;padding:0;border:0;gap:0;align-items:start;grid-template-columns:max-content;grid-template-rows:auto;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'c114-max-content-text-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;margin:0;padding:0;border:0;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;background-color:#e5484d');
+item.appendChild(document.createTextNode('XX XXXXXXX'));
+root.appendChild(item);
+return { sceneId:'max-content-text-normal', rootId:'c114-max-content-text-grid', nodeIds:['c114-max-content-text-grid', 'c114-max-content-text-item'] };
+})()"#,
+    ),
+    (
+        "fit-content-text-minimum",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'c114-fit-content-text-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:120px;height:40px;margin:0;padding:0;border:0;gap:0;align-items:start;grid-template-columns:fit-content(40px);grid-template-rows:auto;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'c114-fit-content-text-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;margin:0;padding:0;border:0;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;background-color:#e5484d');
+item.appendChild(document.createTextNode('XX XXXXXXX'));
+root.appendChild(item);
+return { sceneId:'fit-content-text-minimum', rootId:'c114-fit-content-text-grid', nodeIds:['c114-fit-content-text-grid', 'c114-fit-content-text-item'] };
+})()"#,
+    ),
+    (
+        "fit-content-calc-limit",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'c114-fit-content-calc-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:100px;height:120px;margin:0;padding:0;border:0;gap:0;align-items:start;grid-template-columns:fit-content(calc(10% + 5px));grid-template-rows:auto;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'c114-fit-content-calc-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;margin:0;padding:0;border:0;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:break-all;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;background-color:#e5484d');
+item.appendChild(document.createTextNode('XXXXXXXX'));
+root.appendChild(item);
+return { sceneId:'fit-content-calc-limit', rootId:'c114-fit-content-calc-grid', nodeIds:['c114-fit-content-calc-grid', 'c114-fit-content-calc-item'] };
+})()"#,
+    ),
+    (
+        "min-content-text-edge",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'c114-text-edge-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:120px;height:50px;margin:0;padding:0;border:0;gap:0;align-items:start;grid-template-columns:min-content;grid-template-rows:auto;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'c114-text-edge-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:content-box;margin:0;padding:0 4px;border-left:1px solid #e5484d;border-right:1px solid #e5484d;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;background-color:#e5484d');
+item.appendChild(document.createTextNode('XX XXXXXXX'));
+root.appendChild(item);
+return { sceneId:'min-content-text-edge', rootId:'c114-text-edge-grid', nodeIds:['c114-text-edge-grid', 'c114-text-edge-item'] };
+})()"#,
+    ),
+    (
+        "min-content-text-min-width",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'c114-text-min-width-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:120px;height:50px;margin:0;padding:0;border:0;gap:0;align-items:start;grid-template-columns:min-content;grid-template-rows:auto;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'c114-text-min-width-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;min-width:90px;margin:0;padding:0;border:0;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;background-color:#e5484d');
+item.appendChild(document.createTextNode('XX XXXXXXX'));
+root.appendChild(item);
+return { sceneId:'min-content-text-min-width', rootId:'c114-text-min-width-grid', nodeIds:['c114-text-min-width-grid', 'c114-text-min-width-item'] };
+})()"#,
+    ),
+    (
+        "min-content-text-max-width",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'c114-text-max-width-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:120px;height:50px;margin:0;padding:0;border:0;gap:0;align-items:start;grid-template-columns:min-content;grid-template-rows:auto;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'c114-text-max-width-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;max-width:40px;margin:0;padding:0;border:0;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;background-color:#e5484d');
+item.appendChild(document.createTextNode('XX XXXXXXX'));
+root.appendChild(item);
+return { sceneId:'min-content-text-max-width', rootId:'c114-text-max-width-grid', nodeIds:['c114-text-max-width-grid', 'c114-text-max-width-item'] };
+})()"#,
+    ),
+    (
+        "min-content-text-break-all",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'c114-break-all-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:120px;height:40px;margin:0;padding:0;border:0;gap:0;align-items:start;grid-template-columns:min-content;grid-template-rows:auto;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'c114-break-all-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;margin:0;padding:0;border:0;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:break-all;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;background-color:#e5484d');
+item.appendChild(document.createTextNode('XXXXXXXX'));
+root.appendChild(item);
+return { sceneId:'min-content-text-break-all', rootId:'c114-break-all-grid', nodeIds:['c114-break-all-grid', 'c114-break-all-item'] };
+})()"#,
+    ),
+    (
+        "min-content-text-nowrap",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'c114-nowrap-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:120px;height:40px;margin:0;padding:0;border:0;gap:0;align-items:start;grid-template-columns:min-content;grid-template-rows:auto;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'c114-nowrap-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;margin:0;padding:0;border:0;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:nowrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;background-color:#e5484d');
+item.appendChild(document.createTextNode('XX XXXXXXX'));
+root.appendChild(item);
+return { sceneId:'min-content-text-nowrap', rootId:'c114-nowrap-grid', nodeIds:['c114-nowrap-grid', 'c114-nowrap-item'] };
+})()"#,
+    ),
 ];
 
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
@@ -152,7 +305,14 @@ mod tests {
 
     #[test]
     fn exposes_only_bounded_intrinsic_track_sizing_scenes() {
-        assert_eq!(C11_4_GRID_TRACK_SIZING_SCENES.len(), 8);
+        assert_eq!(C11_4_GRID_TRACK_SIZING_SCENES.len(), 17);
+        assert_eq!(
+            C11_4_GRID_TRACK_SIZING_SCENES
+                .iter()
+                .filter(|(_, source)| source.contains("document.createTextNode"))
+                .count(),
+            10
+        );
         for (scene_id, source) in C11_4_GRID_TRACK_SIZING_SCENES {
             assert!(source.len() < 4 * 1024);
             assert!(source.contains("document.createElement"));
