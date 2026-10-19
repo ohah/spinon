@@ -1,0 +1,175 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+  "viewport": {
+    "width": 1280,
+    "height": 633,
+    "dpr": 1
+  },
+  "cases": [
+    {
+      "id": "columns-fill-control",
+      "width": 200,
+      "height": 200,
+      "columnGap": "8px",
+      "rowGap": "8px",
+      "gridTemplateColumns": "20px 45px 20px 45px 20px 10px",
+      "gridTemplateRows": "20px 12px",
+      "item": {
+        "x": 28,
+        "y": 28,
+        "width": 12,
+        "height": 12
+      }
+    },
+    {
+      "id": "rows-fill-control",
+      "width": 200,
+      "height": 200,
+      "columnGap": "8px",
+      "rowGap": "8px",
+      "gridTemplateColumns": "20px 12px",
+      "gridTemplateRows": "20px 45px 20px 45px 20px 10px",
+      "item": {
+        "x": 28,
+        "y": 28,
+        "width": 12,
+        "height": 12
+      }
+    },
+    {
+      "id": "both-fill-square",
+      "width": 200,
+      "height": 200,
+      "columnGap": "8px",
+      "rowGap": "8px",
+      "gridTemplateColumns": "20px 45px 20px 45px 20px 10px",
+      "gridTemplateRows": "20px 45px 20px 45px 20px 10px",
+      "item": {
+        "x": 28,
+        "y": 28,
+        "width": 12,
+        "height": 12
+      }
+    },
+    {
+      "id": "both-fill-asymmetric",
+      "width": 200,
+      "height": 266,
+      "columnGap": "8px",
+      "rowGap": "8px",
+      "gridTemplateColumns": "20px 45px 20px 45px 20px 10px",
+      "gridTemplateRows": "20px 40px 20px 40px 20px 40px 20px 10px",
+      "item": {
+        "x": 28,
+        "y": 28,
+        "width": 12,
+        "height": 12
+      }
+    },
+    {
+      "id": "both-fit-empty",
+      "width": 200,
+      "height": 200,
+      "columnGap": "8px",
+      "rowGap": "8px",
+      "gridTemplateColumns": "20px 0px 0px 0px 0px 10px",
+      "gridTemplateRows": "20px 0px 0px 0px 0px 10px",
+      "item": null
+    },
+    {
+      "id": "both-fit-single",
+      "width": 200,
+      "height": 200,
+      "columnGap": "8px",
+      "rowGap": "8px",
+      "gridTemplateColumns": "20px 154px 0px 0px 0px 10px",
+      "gridTemplateRows": "20px 154px 0px 0px 0px 10px",
+      "item": {
+        "x": 28,
+        "y": 28,
+        "width": 12,
+        "height": 12
+      }
+    },
+    {
+      "id": "both-fit-span-two",
+      "width": 200,
+      "height": 200,
+      "columnGap": "8px",
+      "rowGap": "8px",
+      "gridTemplateColumns": "20px 126px 20px 0px 0px 10px",
+      "gridTemplateRows": "20px 126px 20px 0px 0px 10px",
+      "item": {
+        "x": 28,
+        "y": 28,
+        "width": 12,
+        "height": 12
+      }
+    },
+    {
+      "id": "both-fit-second-repeat",
+      "width": 200,
+      "height": 200,
+      "columnGap": "8px",
+      "rowGap": "8px",
+      "gridTemplateColumns": "20px 0px 0px 154px 0px 10px",
+      "gridTemplateRows": "20px 0px 0px 154px 0px 10px",
+      "item": {
+        "x": 28,
+        "y": 28,
+        "width": 12,
+        "height": 12
+      }
+    },
+    {
+      "id": "columns-fit-rows-fill-empty",
+      "width": 200,
+      "height": 200,
+      "columnGap": "8px",
+      "rowGap": "8px",
+      "gridTemplateColumns": "20px 0px 0px 0px 0px 10px",
+      "gridTemplateRows": "20px 45px 20px 45px 20px 10px",
+      "item": null
+    },
+    {
+      "id": "columns-fill-rows-fit-empty",
+      "width": 200,
+      "height": 200,
+      "columnGap": "8px",
+      "rowGap": "8px",
+      "gridTemplateColumns": "20px 45px 20px 45px 20px 10px",
+      "gridTemplateRows": "20px 0px 0px 0px 0px 10px",
+      "item": null
+    },
+    {
+      "id": "columns-fit-rows-fill-second-repeat",
+      "width": 200,
+      "height": 200,
+      "columnGap": "8px",
+      "rowGap": "8px",
+      "gridTemplateColumns": "20px 0px 0px 154px 0px 10px",
+      "gridTemplateRows": "20px 45px 20px 45px 20px 10px",
+      "item": {
+        "x": 28,
+        "y": 109,
+        "width": 12,
+        "height": 12
+      }
+    },
+    {
+      "id": "columns-fill-rows-fit-second-repeat",
+      "width": 200,
+      "height": 200,
+      "columnGap": "8px",
+      "rowGap": "8px",
+      "gridTemplateColumns": "20px 45px 20px 45px 20px 10px",
+      "gridTemplateRows": "20px 0px 0px 154px 0px 10px",
+      "item": {
+        "x": 109,
+        "y": 28,
+        "width": 12,
+        "height": 12
+      }
+    }
+  ]
+}
