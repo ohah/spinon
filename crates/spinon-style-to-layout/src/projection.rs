@@ -396,6 +396,36 @@ pub fn compute_runtime_style_layout_with_text_profiles(
     )
 }
 
+/// C11.4 fixture에서 direct-leaf text를 Ahem 기반 Grid intrinsic sizing에 연결합니다.
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
+    text_engine: &TextLayoutEngine,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    if computed_styles.profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
+        return Err(StyleLayoutError::UnsupportedProfile {
+            profile: format!("{:?}", computed_styles.profile),
+        });
+    }
+    if computed_styles.viewport != viewport {
+        return Err(StyleLayoutError::SnapshotMismatch { field: "viewport" });
+    }
+    let inline_run_styles = BTreeMap::new();
+    compute_layout_from_styles_with_text(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        true,
+        None,
+        Some((paragraph_styles, &inline_run_styles, text_engine)),
+    )
+}
+
 /// revision-stamped HTML image natural size를 runtime style/layout 계산에 연결합니다.
 pub fn compute_runtime_style_layout_with_intrinsic_size_snapshot(
     snapshot: &HostDocumentSnapshot,

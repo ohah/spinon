@@ -184,6 +184,8 @@ fn runtime_document_order(
     let mut visited = std::collections::BTreeSet::new();
     let mut pending = vec![(root, false)];
     let root_html_text_profile = profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1;
+    let c11_4_text_measurement_profile = cfg!(feature = "c11-4-grid-track-sizing-fixture-test")
+        && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1;
     while let Some((handle, ancestor_hidden)) = pending.pop() {
         if !visited.insert(handle.id()) {
             return Err(StyleRenderError::DuplicateDocumentNode(handle.id()));
@@ -197,6 +199,7 @@ fn runtime_document_order(
                         | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 ) && text.is_only_collapsible_html_whitespace())
                 || profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                || c11_4_text_measurement_profile
             {
                 continue;
             }

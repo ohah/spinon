@@ -6,6 +6,7 @@ publish = false
 
 [features]
 c04-12-root-html-text-paint-fixture-test = []
+c11-4-grid-track-sizing-fixture-test = []
 
 [dependencies]
 spinon-core = { path = "../spinon-core" }

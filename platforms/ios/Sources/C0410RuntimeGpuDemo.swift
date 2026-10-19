@@ -16,6 +16,7 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "auto-fixed-width-item", "minmax-auto-fixed-width-item",
     "fit-content-below-item-size", "spanning-auto-tracks",
     "auto-fill-repeat", "auto-fit-collapse", "auto-fill-track-overflow",
+    "min-content-text-normal",
 ]
 
 private struct C124MetalPixelCase {
@@ -3554,8 +3555,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
         } else if c114GridTrackSizingProbeRequested {
             let report = result ?? "status=-1 missing-report"
-            let rootFrame = c114GridTrackSizingSceneID == "spanning-auto-tracks"
-                ? "width=100,height=30" : "width=100,height=40"
+            let rootFrame: String
+            if c114GridTrackSizingSceneID == "spanning-auto-tracks" {
+                rootFrame = "width=100,height=30"
+            } else if c114GridTrackSizingSceneID == "min-content-text-normal" {
+                rootFrame = "width=120,height=40"
+            } else {
+                rootFrame = "width=100,height=40"
+            }
             let itemFrame: String
             switch c114GridTrackSizingSceneID {
             case "spanning-auto-tracks":
@@ -3566,13 +3573,18 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 itemFrame = "width=96,height=16"
             case "auto-fill-track-overflow":
                 itemFrame = "width=120,height=16"
+            case "min-content-text-normal":
+                itemFrame = "width=70,height=20"
             default:
                 itemFrame = "width=24,height=16"
             }
+            let expectedTextInputs = c114GridTrackSizingSceneID == "min-content-text-normal"
+                ? report.contains("\"minContent\":70") && report.contains("\"maxContent\":100")
+                : true
             log("SPINON_C114_GRID_EVAL_RUN run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) \(runtimeStatusSummary(report))")
             let gridTrackSizingTraceAvailable = logC114GridTrackSizingTraceChunks(report)
             guard report.hasPrefix("status=0 "), report.contains("layout=ready boxes=2"),
-                  report.contains(rootFrame), report.contains(itemFrame) else {
+                  report.contains(rootFrame), report.contains(itemFrame), expectedTextInputs else {
                 log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) report=\(report)")
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치")
                 return

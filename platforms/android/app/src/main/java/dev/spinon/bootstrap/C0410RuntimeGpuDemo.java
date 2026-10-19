@@ -126,6 +126,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "auto-fixed-width-item", "minmax-auto-fixed-width-item",
             "fit-content-below-item-size", "spanning-auto-tracks",
             "auto-fill-repeat", "auto-fit-collapse", "auto-fill-track-overflow",
+            "min-content-text-normal",
     };
     private static final String[] C131_COMPACT_SURFACE_CASE_IDS = {
             "visible", "clip-x", "clip-y", "clip-both", "clip-margin-padding",
@@ -2155,7 +2156,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         if (c114GridTrackSizingRequested) {
             String expectedRootFrame = "spanning-auto-tracks".equals(c114GridTrackSizingSceneId)
-                    ? "width=100,height=30" : "width=100,height=40";
+                    ? "width=100,height=30"
+                    : "min-content-text-normal".equals(c114GridTrackSizingSceneId)
+                            ? "width=120,height=40" : "width=100,height=40";
             String expectedItemFrame;
             switch (c114GridTrackSizingSceneId) {
                 case "spanning-auto-tracks":
@@ -2170,6 +2173,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 case "auto-fill-track-overflow":
                     expectedItemFrame = "width=120,height=16";
                     break;
+                case "min-content-text-normal":
+                    expectedItemFrame = "width=70,height=20";
+                    break;
                 default:
                     expectedItemFrame = "width=24,height=16";
                     break;
@@ -2178,7 +2184,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     logC114GridTrackSizingTraceChunks(c114GridTrackSizingRunId, result);
             if (!result.startsWith("status=0 ") || !result.contains("layout=ready boxes=2")
                     || !result.contains(expectedRootFrame)
-                    || !result.contains(expectedItemFrame)) {
+                    || !result.contains(expectedItemFrame)
+                    || ("min-content-text-normal".equals(c114GridTrackSizingSceneId)
+                            && (!result.contains("\"minContent\":70")
+                                    || !result.contains("\"maxContent\":100")))) {
                 Log.e(TAG, "SPINON_C114_GRID_ASSERTION_ERROR run_id="
                         + c114GridTrackSizingRunId + " scene_id=" + c114GridTrackSizingSceneId
                         + " expected_root_frame=" + expectedRootFrame

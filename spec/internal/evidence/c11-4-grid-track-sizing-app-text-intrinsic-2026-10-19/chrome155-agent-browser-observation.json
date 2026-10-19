@@ -1,0 +1,40 @@
+{
+  "browser": "Agent Browser 0.31.1 / HeadlessChrome 155.0.8059.85",
+  "fixture": "tests/fixtures/css/c11/grid-track-sizing-c114-precomparison.html",
+  "fontReady": true,
+  "precomparison": {
+    "case": "min-content-text-normal",
+    "grid": { "width": 120, "height": 40 },
+    "gridTemplateColumns": "70px",
+    "gridTemplateRows": "20px",
+    "item": { "width": 70, "height": 20 },
+    "text": "XX XXXXXXX"
+  },
+  "appSceneCss": {
+    "grid": { "width": 120, "height": 40 },
+    "gridTemplateColumns": "70px",
+    "gridTemplateRows": "40px",
+    "item": { "width": 70, "height": 20 },
+    "text": "XX XXXXXXX",
+    "computedTextStyle": {
+      "font-family": "Ahem",
+      "font-size": "10px",
+      "font-weight": "400",
+      "font-style": "normal",
+      "line-height": "10px",
+      "white-space-collapse": "collapse",
+      "text-wrap-mode": "wrap",
+      "word-break": "normal",
+      "direction": "ltr",
+      "line-break": "auto",
+      "text-align": "start",
+      "overflow-wrap": "normal",
+      "text-transform": "none",
+      "writing-mode": "horizontal-tb",
+      "letter-spacing": "normal",
+      "word-spacing": "0px",
+      "text-indent": "0px"
+    }
+  },
+  "comparison": "Both the repository fixture and the exact app-scene declarations resolve to a 70px min-content column and a 70x20px item. The app scene has a 40px auto row because the fixed 40px grid uses default align-content stretch; align-items:start keeps the item at 20px."
+}
