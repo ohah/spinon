@@ -1,0 +1,1290 @@
+{
+  "schemaVersion": 1,
+  "scope": "C11.4 direct-leaf HTML img intrinsic contribution matrix; not full CSS Grid or image paint conformance",
+  "chrome": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "devicePixelRatio": 1,
+    "observationPath": "spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-observation.json"
+  },
+  "platforms": {
+    "android": "Android API 37 ARM64 AVD emulator-5554, SwiftShader",
+    "ios": "iPhone 17 Pro Simulator, iOS 26.2, Metal drawable before compositor"
+  },
+  "toleranceCssPx": 0.05,
+  "sceneCount": 9,
+  "comparisons": [
+    {
+      "scene": "auto-image-definite",
+      "chrome": {
+        "columns": [
+          24
+        ],
+        "rows": [
+          16
+        ],
+        "columnGap": 0,
+        "root": {
+          "width": 100,
+          "height": 40
+        },
+        "item": {
+          "width": 24,
+          "height": 16
+        },
+        "naturalImage": {
+          "complete": true,
+          "height": 16,
+          "width": 24
+        },
+        "overflow": "visible"
+      },
+      "android": {
+        "runId": "c114-image-android-auto-image-definite-20261019-r4",
+        "frames": {
+          "root": {
+            "width": 100,
+            "height": 40
+          },
+          "item": {
+            "width": 24,
+            "height": 16
+          },
+          "line": "10-19 19:56:32.212 I/SpinonBootstrap(21794): SPINON_C114_GRID_SUMMARY run_id=c114-image-android-auto-image-definite-20261019-r4 scene_id=auto-image-definite expected_root_frame=width=100,height=40 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0"
+        },
+        "nodeFrames": [
+          {
+            "index": 0,
+            "node": 1,
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          {
+            "index": 1,
+            "node": 2,
+            "x": 0,
+            "y": 0,
+            "width": 24,
+            "height": 16
+          }
+        ],
+        "columns": [
+          {
+            "size": 24,
+            "gutter": false
+          }
+        ],
+        "rows": [
+          {
+            "size": 16,
+            "gutter": false
+          }
+        ],
+        "gaps": [],
+        "image": {
+          "naturalSize": {
+            "aspectRatio": null,
+            "height": 16,
+            "width": 24
+          },
+          "intrinsicRevision": 1
+        },
+        "traceChunks": 5,
+        "screenshot": {
+          "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-auto-image-definite.png",
+          "bytes": 77903,
+          "sha256": "a66ff934a7b5c17eaf162975f7e2501bea7522c00ae62232d9abcc2f7e6efd01"
+        }
+      },
+      "ios": {
+        "runId": "c114-image-ios-auto-image-definite-20261019-r4",
+        "frames": {
+          "root": {
+            "width": 100,
+            "height": 40
+          },
+          "item": {
+            "width": 24,
+            "height": 16
+          },
+          "line": "2026-10-19 19:56:34.553 Df SpinonBootstrap[60791:54139df] (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-image-ios-auto-image-definite-20261019-r4 scene_id=auto-image-definite expected_root_frame=width=100,height=40 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0"
+        },
+        "columns": [
+          {
+            "size": 24,
+            "gutter": false
+          }
+        ],
+        "rows": [
+          {
+            "size": 16,
+            "gutter": false
+          }
+        ],
+        "gaps": [],
+        "image": {
+          "naturalSize": {
+            "aspectRatio": null,
+            "height": 16,
+            "width": 24
+          },
+          "intrinsicRevision": 1
+        },
+        "traceChunks": 9,
+        "screenshot": {
+          "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-auto-image-definite.png",
+          "bytes": 143521,
+          "sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203"
+        }
+      },
+      "traceEquivalentAcrossPlatforms": true,
+      "chromeGeometryMatched": true
+    },
+    {
+      "scene": "minmax-auto-image",
+      "chrome": {
+        "columns": [
+          24
+        ],
+        "rows": [
+          16
+        ],
+        "columnGap": 0,
+        "root": {
+          "width": 100,
+          "height": 40
+        },
+        "item": {
+          "width": 24,
+          "height": 16
+        },
+        "naturalImage": {
+          "complete": true,
+          "height": 16,
+          "width": 24
+        },
+        "overflow": "visible"
+      },
+      "android": {
+        "runId": "c114-image-android-minmax-auto-image-20261019-r4",
+        "frames": {
+          "root": {
+            "width": 100,
+            "height": 40
+          },
+          "item": {
+            "width": 24,
+            "height": 16
+          },
+          "line": "10-19 19:56:38.771 I/SpinonBootstrap(21852): SPINON_C114_GRID_SUMMARY run_id=c114-image-android-minmax-auto-image-20261019-r4 scene_id=minmax-auto-image expected_root_frame=width=100,height=40 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0"
+        },
+        "nodeFrames": [
+          {
+            "index": 0,
+            "node": 1,
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          {
+            "index": 1,
+            "node": 2,
+            "x": 0,
+            "y": 0,
+            "width": 24,
+            "height": 16
+          }
+        ],
+        "columns": [
+          {
+            "size": 24,
+            "gutter": false
+          }
+        ],
+        "rows": [
+          {
+            "size": 16,
+            "gutter": false
+          }
+        ],
+        "gaps": [],
+        "image": {
+          "naturalSize": {
+            "aspectRatio": null,
+            "height": 16,
+            "width": 24
+          },
+          "intrinsicRevision": 1
+        },
+        "traceChunks": 4,
+        "screenshot": {
+          "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-minmax-auto-image.png",
+          "bytes": 77923,
+          "sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a"
+        }
+      },
+      "ios": {
+        "runId": "c114-image-ios-minmax-auto-image-20261019-r4",
+        "frames": {
+          "root": {
+            "width": 100,
+            "height": 40
+          },
+          "item": {
+            "width": 24,
+            "height": 16
+          },
+          "line": "2026-10-19 19:56:41.058 Df SpinonBootstrap[60881:5413b59] (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-image-ios-minmax-auto-image-20261019-r4 scene_id=minmax-auto-image expected_root_frame=width=100,height=40 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0"
+        },
+        "columns": [
+          {
+            "size": 24,
+            "gutter": false
+          }
+        ],
+        "rows": [
+          {
+            "size": 16,
+            "gutter": false
+          }
+        ],
+        "gaps": [],
+        "image": {
+          "naturalSize": {
+            "aspectRatio": null,
+            "height": 16,
+            "width": 24
+          },
+          "intrinsicRevision": 1
+        },
+        "traceChunks": 8,
+        "screenshot": {
+          "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-minmax-auto-image.png",
+          "bytes": 143476,
+          "sha256": "96a8ee48535064d788226f810f6615b905bec9e9a732d1d41705a798336d495e"
+        }
+      },
+      "traceEquivalentAcrossPlatforms": true,
+      "chromeGeometryMatched": true
+    },
+    {
+      "scene": "minmax-min-max-image",
+      "chrome": {
+        "columns": [
+          24
+        ],
+        "rows": [
+          16
+        ],
+        "columnGap": 0,
+        "root": {
+          "width": 100,
+          "height": 40
+        },
+        "item": {
+          "width": 24,
+          "height": 16
+        },
+        "naturalImage": {
+          "complete": true,
+          "height": 16,
+          "width": 24
+        },
+        "overflow": "visible"
+      },
+      "android": {
+        "runId": "c114-image-android-minmax-min-max-image-20261019-r4",
+        "frames": {
+          "root": {
+            "width": 100,
+            "height": 40
+          },
+          "item": {
+            "width": 24,
+            "height": 16
+          },
+          "line": "10-19 19:56:44.427 I/SpinonBootstrap(21906): SPINON_C114_GRID_SUMMARY run_id=c114-image-android-minmax-min-max-image-20261019-r4 scene_id=minmax-min-max-image expected_root_frame=width=100,height=40 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0"
+        },
+        "nodeFrames": [
+          {
+            "index": 0,
+            "node": 1,
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          {
+            "index": 1,
+            "node": 2,
+            "x": 0,
+            "y": 0,
+            "width": 24,
+            "height": 16
+          }
+        ],
+        "columns": [
+          {
+            "size": 24,
+            "gutter": false
+          }
+        ],
+        "rows": [
+          {
+            "size": 16,
+            "gutter": false
+          }
+        ],
+        "gaps": [],
+        "image": {
+          "naturalSize": {
+            "aspectRatio": null,
+            "height": 16,
+            "width": 24
+          },
+          "intrinsicRevision": 1
+        },
+        "traceChunks": 4,
+        "screenshot": {
+          "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-minmax-min-max-image.png",
+          "bytes": 77923,
+          "sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a"
+        }
+      },
+      "ios": {
+        "runId": "c114-image-ios-minmax-min-max-image-20261019-r4",
+        "frames": {
+          "root": {
+            "width": 100,
+            "height": 40
+          },
+          "item": {
+            "width": 24,
+            "height": 16
+          },
+          "line": "2026-10-19 19:56:46.761 Df SpinonBootstrap[61079:5413e05] (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-image-ios-minmax-min-max-image-20261019-r4 scene_id=minmax-min-max-image expected_root_frame=width=100,height=40 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0"
+        },
+        "columns": [
+          {
+            "size": 24,
+            "gutter": false
+          }
+        ],
+        "rows": [
+          {
+            "size": 16,
+            "gutter": false
+          }
+        ],
+        "gaps": [],
+        "image": {
+          "naturalSize": {
+            "aspectRatio": null,
+            "height": 16,
+            "width": 24
+          },
+          "intrinsicRevision": 1
+        },
+        "traceChunks": 8,
+        "screenshot": {
+          "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-minmax-min-max-image.png",
+          "bytes": 143521,
+          "sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203"
+        }
+      },
+      "traceEquivalentAcrossPlatforms": true,
+      "chromeGeometryMatched": true
+    },
+    {
+      "scene": "fit-content-below-minimum",
+      "chrome": {
+        "columns": [
+          24
+        ],
+        "rows": [
+          16
+        ],
+        "columnGap": 0,
+        "root": {
+          "width": 100,
+          "height": 40
+        },
+        "item": {
+          "width": 24,
+          "height": 16
+        },
+        "naturalImage": {
+          "complete": true,
+          "height": 16,
+          "width": 24
+        },
+        "overflow": "visible"
+      },
+      "android": {
+        "runId": "c114-image-android-fit-content-below-minimum-20261019-r4",
+        "frames": {
+          "root": {
+            "width": 100,
+            "height": 40
+          },
+          "item": {
+            "width": 24,
+            "height": 16
+          },
+          "line": "10-19 19:56:50.215 I/SpinonBootstrap(21961): SPINON_C114_GRID_SUMMARY run_id=c114-image-android-fit-content-below-minimum-20261019-r4 scene_id=fit-content-below-minimum expected_root_frame=width=100,height=40 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0"
+        },
+        "nodeFrames": [
+          {
+            "index": 0,
+            "node": 1,
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          {
+            "index": 1,
+            "node": 2,
+            "x": 0,
+            "y": 0,
+            "width": 24,
+            "height": 16
+          }
+        ],
+        "columns": [
+          {
+            "size": 24,
+            "gutter": false
+          }
+        ],
+        "rows": [
+          {
+            "size": 16,
+            "gutter": false
+          }
+        ],
+        "gaps": [],
+        "image": {
+          "naturalSize": {
+            "aspectRatio": null,
+            "height": 16,
+            "width": 24
+          },
+          "intrinsicRevision": 1
+        },
+        "traceChunks": 5,
+        "screenshot": {
+          "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-fit-content-below-minimum.png",
+          "bytes": 77923,
+          "sha256": "2aa61d84d8f28dc6f60c8212e0a3c44d0e939c6345c142b0fea93048746f052a"
+        }
+      },
+      "ios": {
+        "runId": "c114-image-ios-fit-content-below-minimum-20261019-r4",
+        "frames": {
+          "root": {
+            "width": 100,
+            "height": 40
+          },
+          "item": {
+            "width": 24,
+            "height": 16
+          },
+          "line": "2026-10-19 19:56:52.456 Df SpinonBootstrap[61156:5413f9b] (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-image-ios-fit-content-below-minimum-20261019-r4 scene_id=fit-content-below-minimum expected_root_frame=width=100,height=40 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0"
+        },
+        "columns": [
+          {
+            "size": 24,
+            "gutter": false
+          }
+        ],
+        "rows": [
+          {
+            "size": 16,
+            "gutter": false
+          }
+        ],
+        "gaps": [],
+        "image": {
+          "naturalSize": {
+            "aspectRatio": null,
+            "height": 16,
+            "width": 24
+          },
+          "intrinsicRevision": 1
+        },
+        "traceChunks": 9,
+        "screenshot": {
+          "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-below-minimum.png",
+          "bytes": 143521,
+          "sha256": "5016dfe472df76da403f282638fcfff5d00095f330b7dc3793710f52d3337203"
+        }
+      },
+      "traceEquivalentAcrossPlatforms": true,
+      "chromeGeometryMatched": true
+    },
+    {
+      "scene": "fit-content-above-intrinsic",
+      "chrome": {
+        "columns": [
+          24
+        ],
+        "rows": [
+          16
+        ],
+        "columnGap": 0,
+        "root": {
+          "width": 100,
+          "height": 40
+        },
+        "item": {
+          "width": 24,
+          "height": 16
+        },
+        "naturalImage": {
+          "complete": true,
+          "height": 16,
+          "width": 24
+        },
+        "overflow": "visible"
+      },
+      "android": {
+        "runId": "c114-image-android-fit-content-above-intrinsic-20261019-r4",
+        "frames": {
+          "root": {
+            "width": 100,
+            "height": 40
+          },
+          "item": {
+            "width": 24,
+            "height": 16
+          },
+          "line": "10-19 19:56:55.804 I/SpinonBootstrap(22016): SPINON_C114_GRID_SUMMARY run_id=c114-image-android-fit-content-above-intrinsic-20261019-r4 scene_id=fit-content-above-intrinsic expected_root_frame=width=100,height=40 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0"
+        },
+        "nodeFrames": [
+          {
+            "index": 0,
+            "node": 1,
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          {
+            "index": 1,
+            "node": 2,
+            "x": 0,
+            "y": 0,
+            "width": 24,
+            "height": 16
+          }
+        ],
+        "columns": [
+          {
+            "size": 24,
+            "gutter": false
+          }
+        ],
+        "rows": [
+          {
+            "size": 16,
+            "gutter": false
+          }
+        ],
+        "gaps": [],
+        "image": {
+          "naturalSize": {
+            "aspectRatio": null,
+            "height": 16,
+            "width": 24
+          },
+          "intrinsicRevision": 1
+        },
+        "traceChunks": 5,
+        "screenshot": {
+          "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-fit-content-above-intrinsic.png",
+          "bytes": 77906,
+          "sha256": "18231c1bb714356658ca1af2b0e4b4e0f13ef55e2419e737996f9135587b18e1"
+        }
+      },
+      "ios": {
+        "runId": "c114-image-ios-fit-content-above-intrinsic-20261019-r4",
+        "frames": {
+          "root": {
+            "width": 100,
+            "height": 40
+          },
+          "item": {
+            "width": 24,
+            "height": 16
+          },
+          "line": "2026-10-19 19:56:58.134 Df SpinonBootstrap[61223:541410d] (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-image-ios-fit-content-above-intrinsic-20261019-r4 scene_id=fit-content-above-intrinsic expected_root_frame=width=100,height=40 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0"
+        },
+        "columns": [
+          {
+            "size": 24,
+            "gutter": false
+          }
+        ],
+        "rows": [
+          {
+            "size": 16,
+            "gutter": false
+          }
+        ],
+        "gaps": [],
+        "image": {
+          "naturalSize": {
+            "aspectRatio": null,
+            "height": 16,
+            "width": 24
+          },
+          "intrinsicRevision": 1
+        },
+        "traceChunks": 9,
+        "screenshot": {
+          "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-above-intrinsic.png",
+          "bytes": 142452,
+          "sha256": "ea83a7d03f3b9d940756ca6e0f272e44fd9a9af354e97172bead969ac93d596d"
+        }
+      },
+      "traceEquivalentAcrossPlatforms": true,
+      "chromeGeometryMatched": true
+    },
+    {
+      "scene": "fit-content-percent",
+      "chrome": {
+        "columns": [
+          24
+        ],
+        "rows": [
+          16
+        ],
+        "columnGap": 0,
+        "root": {
+          "width": 100,
+          "height": 40
+        },
+        "item": {
+          "width": 24,
+          "height": 16
+        },
+        "naturalImage": {
+          "complete": true,
+          "height": 16,
+          "width": 24
+        },
+        "overflow": "visible"
+      },
+      "android": {
+        "runId": "c114-image-android-fit-content-percent-20261019-r4",
+        "frames": {
+          "root": {
+            "width": 100,
+            "height": 40
+          },
+          "item": {
+            "width": 24,
+            "height": 16
+          },
+          "line": "10-19 19:57:01.528 I/SpinonBootstrap(22071): SPINON_C114_GRID_SUMMARY run_id=c114-image-android-fit-content-percent-20261019-r4 scene_id=fit-content-percent expected_root_frame=width=100,height=40 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0"
+        },
+        "nodeFrames": [
+          {
+            "index": 0,
+            "node": 1,
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          {
+            "index": 1,
+            "node": 2,
+            "x": 0,
+            "y": 0,
+            "width": 24,
+            "height": 16
+          }
+        ],
+        "columns": [
+          {
+            "size": 24,
+            "gutter": false
+          }
+        ],
+        "rows": [
+          {
+            "size": 16,
+            "gutter": false
+          }
+        ],
+        "gaps": [],
+        "image": {
+          "naturalSize": {
+            "aspectRatio": null,
+            "height": 16,
+            "width": 24
+          },
+          "intrinsicRevision": 1
+        },
+        "traceChunks": 5,
+        "screenshot": {
+          "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-fit-content-percent.png",
+          "bytes": 77252,
+          "sha256": "afe7837bc91778d44c3013be6be25e3714287f20284a6348fb4346c14c506df5"
+        }
+      },
+      "ios": {
+        "runId": "c114-image-ios-fit-content-percent-20261019-r4",
+        "frames": {
+          "root": {
+            "width": 100,
+            "height": 40
+          },
+          "item": {
+            "width": 24,
+            "height": 16
+          },
+          "line": "2026-10-19 19:57:03.790 Df SpinonBootstrap[61321:5414266] (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-image-ios-fit-content-percent-20261019-r4 scene_id=fit-content-percent expected_root_frame=width=100,height=40 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0"
+        },
+        "columns": [
+          {
+            "size": 24,
+            "gutter": false
+          }
+        ],
+        "rows": [
+          {
+            "size": 16,
+            "gutter": false
+          }
+        ],
+        "gaps": [],
+        "image": {
+          "naturalSize": {
+            "aspectRatio": null,
+            "height": 16,
+            "width": 24
+          },
+          "intrinsicRevision": 1
+        },
+        "traceChunks": 9,
+        "screenshot": {
+          "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-percent.png",
+          "bytes": 142452,
+          "sha256": "ea83a7d03f3b9d940756ca6e0f272e44fd9a9af354e97172bead969ac93d596d"
+        }
+      },
+      "traceEquivalentAcrossPlatforms": true,
+      "chromeGeometryMatched": true
+    },
+    {
+      "scene": "fixed-small-track-overflow",
+      "chrome": {
+        "columns": [
+          12
+        ],
+        "rows": [
+          16
+        ],
+        "columnGap": 0,
+        "root": {
+          "width": 12,
+          "height": 40
+        },
+        "item": {
+          "width": 24,
+          "height": 16
+        },
+        "naturalImage": {
+          "complete": true,
+          "height": 16,
+          "width": 24
+        },
+        "overflow": "visible"
+      },
+      "android": {
+        "runId": "c114-image-android-fixed-small-track-overflow-20261019-r4",
+        "frames": {
+          "root": {
+            "width": 12,
+            "height": 40
+          },
+          "item": {
+            "width": 24,
+            "height": 16
+          },
+          "line": "10-19 19:57:07.081 I/SpinonBootstrap(22125): SPINON_C114_GRID_SUMMARY run_id=c114-image-android-fixed-small-track-overflow-20261019-r4 scene_id=fixed-small-track-overflow expected_root_frame=width=12,height=40 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0"
+        },
+        "nodeFrames": [
+          {
+            "index": 0,
+            "node": 1,
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 40
+          },
+          {
+            "index": 1,
+            "node": 2,
+            "x": 0,
+            "y": 0,
+            "width": 24,
+            "height": 16
+          }
+        ],
+        "columns": [
+          {
+            "size": 12,
+            "gutter": false
+          }
+        ],
+        "rows": [
+          {
+            "size": 16,
+            "gutter": false
+          }
+        ],
+        "gaps": [],
+        "image": {
+          "naturalSize": {
+            "aspectRatio": null,
+            "height": 16,
+            "width": 24
+          },
+          "intrinsicRevision": 1
+        },
+        "traceChunks": 4,
+        "screenshot": {
+          "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-fixed-small-track-overflow.png",
+          "bytes": 77255,
+          "sha256": "e704600c26096fd0330c1019ffa8532206b4b8ebdea6da0c670d39fcd3d59388"
+        }
+      },
+      "ios": {
+        "runId": "c114-image-ios-fixed-small-track-overflow-20261019-r4",
+        "frames": {
+          "root": {
+            "width": 12,
+            "height": 40
+          },
+          "item": {
+            "width": 24,
+            "height": 16
+          },
+          "line": "2026-10-19 19:57:09.441 Df SpinonBootstrap[61393:5414405] (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-image-ios-fixed-small-track-overflow-20261019-r4 scene_id=fixed-small-track-overflow expected_root_frame=width=12,height=40 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0"
+        },
+        "columns": [
+          {
+            "size": 12,
+            "gutter": false
+          }
+        ],
+        "rows": [
+          {
+            "size": 16,
+            "gutter": false
+          }
+        ],
+        "gaps": [],
+        "image": {
+          "naturalSize": {
+            "aspectRatio": null,
+            "height": 16,
+            "width": 24
+          },
+          "intrinsicRevision": 1
+        },
+        "traceChunks": 8,
+        "screenshot": {
+          "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fixed-small-track-overflow.png",
+          "bytes": 129168,
+          "sha256": "baff7e954df386aa08414b84414ea5e44cd300e7a6b19267b21b1549994fdba1"
+        }
+      },
+      "traceEquivalentAcrossPlatforms": true,
+      "chromeGeometryMatched": true
+    },
+    {
+      "scene": "spanning-min-content-items",
+      "chrome": {
+        "columns": [
+          10,
+          10
+        ],
+        "rows": [
+          16
+        ],
+        "columnGap": 4,
+        "root": {
+          "width": 100,
+          "height": 30
+        },
+        "item": {
+          "width": 24,
+          "height": 16
+        },
+        "naturalImage": {
+          "complete": true,
+          "height": 16,
+          "width": 24
+        },
+        "overflow": "visible"
+      },
+      "android": {
+        "runId": "c114-image-android-spanning-min-content-items-20261019-r4",
+        "frames": {
+          "root": {
+            "width": 100,
+            "height": 30
+          },
+          "item": {
+            "width": 24,
+            "height": 16
+          },
+          "line": "10-19 19:57:12.801 I/SpinonBootstrap(22178): SPINON_C114_GRID_SUMMARY run_id=c114-image-android-spanning-min-content-items-20261019-r4 scene_id=spanning-min-content-items expected_root_frame=width=100,height=30 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0"
+        },
+        "nodeFrames": [
+          {
+            "index": 0,
+            "node": 1,
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 30
+          },
+          {
+            "index": 1,
+            "node": 2,
+            "x": 0,
+            "y": 0,
+            "width": 24,
+            "height": 16
+          }
+        ],
+        "columns": [
+          {
+            "size": 10,
+            "gutter": false
+          },
+          {
+            "size": 4,
+            "gutter": true
+          },
+          {
+            "size": 10,
+            "gutter": false
+          }
+        ],
+        "rows": [
+          {
+            "size": 16,
+            "gutter": false
+          }
+        ],
+        "gaps": [
+          4
+        ],
+        "image": {
+          "naturalSize": {
+            "aspectRatio": null,
+            "height": 16,
+            "width": 24
+          },
+          "intrinsicRevision": 1
+        },
+        "traceChunks": 5,
+        "screenshot": {
+          "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-spanning-min-content-items.png",
+          "bytes": 77240,
+          "sha256": "ee4f42bcf799e2df0d477f36226c126eed96e7290b7cb90111b624ab6ec4b251"
+        }
+      },
+      "ios": {
+        "runId": "c114-image-ios-spanning-min-content-items-20261019-r4",
+        "frames": {
+          "root": {
+            "width": 100,
+            "height": 30
+          },
+          "item": {
+            "width": 24,
+            "height": 16
+          },
+          "line": "2026-10-19 19:57:15.151 Df SpinonBootstrap[61527:54146ee] (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-image-ios-spanning-min-content-items-20261019-r4 scene_id=spanning-min-content-items expected_root_frame=width=100,height=30 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0"
+        },
+        "columns": [
+          {
+            "size": 10,
+            "gutter": false
+          },
+          {
+            "size": 4,
+            "gutter": true
+          },
+          {
+            "size": 10,
+            "gutter": false
+          }
+        ],
+        "rows": [
+          {
+            "size": 16,
+            "gutter": false
+          }
+        ],
+        "gaps": [
+          4
+        ],
+        "image": {
+          "naturalSize": {
+            "aspectRatio": null,
+            "height": 16,
+            "width": 24
+          },
+          "intrinsicRevision": 1
+        },
+        "traceChunks": 10,
+        "screenshot": {
+          "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-spanning-min-content-items.png",
+          "bytes": 142465,
+          "sha256": "2c46756708e31ef5b5c72a3eedc6b3b6f80d2b87e84ed790ecd4a86ce31599b9"
+        }
+      },
+      "traceEquivalentAcrossPlatforms": true,
+      "chromeGeometryMatched": true
+    },
+    {
+      "scene": "min-content-row-image",
+      "chrome": {
+        "columns": [
+          100
+        ],
+        "rows": [
+          16
+        ],
+        "columnGap": 0,
+        "root": {
+          "width": 100,
+          "height": 80
+        },
+        "item": {
+          "width": 24,
+          "height": 16
+        },
+        "naturalImage": {
+          "complete": true,
+          "height": 16,
+          "width": 24
+        },
+        "overflow": "visible"
+      },
+      "android": {
+        "runId": "c114-image-android-min-content-row-image-20261019-r4",
+        "frames": {
+          "root": {
+            "width": 100,
+            "height": 80
+          },
+          "item": {
+            "width": 24,
+            "height": 16
+          },
+          "line": "10-19 19:57:18.532 I/SpinonBootstrap(22232): SPINON_C114_GRID_SUMMARY run_id=c114-image-android-min-content-row-image-20261019-r4 scene_id=min-content-row-image expected_root_frame=width=100,height=80 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0"
+        },
+        "nodeFrames": [
+          {
+            "index": 0,
+            "node": 1,
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          {
+            "index": 1,
+            "node": 2,
+            "x": 0,
+            "y": 0,
+            "width": 24,
+            "height": 16
+          }
+        ],
+        "columns": [
+          {
+            "size": 100,
+            "gutter": false
+          }
+        ],
+        "rows": [
+          {
+            "size": 16,
+            "gutter": false
+          }
+        ],
+        "gaps": [],
+        "image": {
+          "naturalSize": {
+            "aspectRatio": null,
+            "height": 16,
+            "width": 24
+          },
+          "intrinsicRevision": 1
+        },
+        "traceChunks": 3,
+        "screenshot": {
+          "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/android-avd/screenshot-min-content-row-image.png",
+          "bytes": 77240,
+          "sha256": "6c2a85fbc2315e632f775df5bf0dc73a1e994db96e00ae4df3583e6fc3e89207"
+        }
+      },
+      "ios": {
+        "runId": "c114-image-ios-min-content-row-image-20261019-r4",
+        "frames": {
+          "root": {
+            "width": 100,
+            "height": 80
+          },
+          "item": {
+            "width": 24,
+            "height": 16
+          },
+          "line": "2026-10-19 19:57:20.839 Df SpinonBootstrap[61626:54148fa] (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-image-ios-min-content-row-image-20261019-r4 scene_id=min-content-row-image expected_root_frame=width=100,height=80 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0"
+        },
+        "columns": [
+          {
+            "size": 100,
+            "gutter": false
+          }
+        ],
+        "rows": [
+          {
+            "size": 16,
+            "gutter": false
+          }
+        ],
+        "gaps": [],
+        "image": {
+          "naturalSize": {
+            "aspectRatio": null,
+            "height": 16,
+            "width": 24
+          },
+          "intrinsicRevision": 1
+        },
+        "traceChunks": 6,
+        "screenshot": {
+          "path": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-min-content-row-image.png",
+          "bytes": 142368,
+          "sha256": "ecd8d108e2ea35cba7038b7b7bafef77ea981c7552cfcd541936b46c58dc2fd3"
+        }
+      },
+      "traceEquivalentAcrossPlatforms": true,
+      "chromeGeometryMatched": true
+    }
+  ],
+  "overflowSurfacePixels": {
+    "android": "PixelCopy",
+    "ios": "Metal drawable before OS compositor",
+    "samples": [
+      {
+        "id": "item-inside-root",
+        "xCssPx": 5,
+        "yCssPx": 8,
+        "rgba": [
+          229,
+          72,
+          77,
+          255
+        ],
+        "beyondGridBorder": false,
+        "android": {
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        "ios": {
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        }
+      },
+      {
+        "id": "item-overflow-beyond-root",
+        "xCssPx": 20,
+        "yCssPx": 8,
+        "rgba": [
+          229,
+          72,
+          77,
+          255
+        ],
+        "beyondGridBorder": true,
+        "android": {
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        "ios": {
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        }
+      },
+      {
+        "id": "root-background-control",
+        "xCssPx": 6,
+        "yCssPx": 25,
+        "rgba": [
+          16,
+          24,
+          32,
+          255
+        ],
+        "beyondGridBorder": false,
+        "android": {
+          "rgba": [
+            16,
+            24,
+            32,
+            255
+          ],
+          "exact": true
+        },
+        "ios": {
+          "rgba": [
+            16,
+            24,
+            32,
+            255
+          ],
+          "exact": true
+        }
+      }
+    ]
+  },
+  "limitations": [
+    "The PNG is decoded for intrinsic metadata; these captures do not prove image pixel painting.",
+    "No physical device, hardware GPU, OS compositor result, WPT runner, or full C11.4 matrix is claimed."
+  ]
+}

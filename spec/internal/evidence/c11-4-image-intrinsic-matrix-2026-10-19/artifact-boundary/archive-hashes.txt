@@ -1,0 +1,5 @@
+default: 59914184 bytes
+f6780e771d059dbdaa5d3cba01befcce1c21d7440637c8acca5655da9a69d4b8  /private/tmp/spinon-c11-4-text-intrinsic-matrix-20261019/build/c11-4-artifact-boundary/libspinon_ffi-default.a
+fixture: 76303832 bytes
+80be8997446cb63f349cd5171308a5bf47b55fe804d17cf599dd839520f03dfc  /private/tmp/spinon-c11-4-text-intrinsic-matrix-20261019/build/c11-4-artifact-boundary/libspinon_ffi-fixture.a
+PASS: exact 97-byte PNG payload absent from default and present in fixture staticlib

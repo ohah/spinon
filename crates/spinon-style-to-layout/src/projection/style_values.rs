@@ -570,10 +570,10 @@ pub(super) fn project_styles(
         }
         if let Some(nodes) = grid_nodes.as_ref() {
             if nodes.grid_containers.contains(&node) {
-                reject_grid_alignment(element, true, false)?;
+                reject_grid_alignment(element, snapshot.profile, true, false)?;
             }
             if nodes.grid_items.contains(&node) {
-                reject_grid_alignment(element, false, true)?;
+                reject_grid_alignment(element, snapshot.profile, false, true)?;
             }
         }
         if style.display == spinon_layout::LayoutDisplay::Grid {
@@ -756,6 +756,7 @@ fn runtime_grid_nodes(
 
 fn reject_grid_alignment(
     element: &ComputedElementStyle,
+    profile: ComputedStyleProfile,
     is_grid_container: bool,
     is_grid_item: bool,
 ) -> Result<(), StyleLayoutError> {
@@ -775,6 +776,10 @@ fn reject_grid_alignment(
         if let Some(value) = element.properties.get(property)
             && value != initial
             && !(is_grid_container && property == "align-items" && value == "start")
+            && !(is_grid_container
+                && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+                && matches!(property, "align-content" | "justify-content")
+                && value == "start")
         {
             return Err(StyleLayoutError::UnsupportedComputedValue {
                 node: element.node_id,

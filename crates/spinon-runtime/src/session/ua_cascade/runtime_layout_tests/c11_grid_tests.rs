@@ -107,6 +107,151 @@ fn c114_text_grid_snapshot() -> (Arc<HostDocumentSnapshot>, HostNodeHandle, Host
     (Arc::new(document.snapshot()), root, item)
 }
 
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[test]
+fn c114_min_content_image_contributes_decoded_natural_size_to_grid_layout() {
+    let (snapshot, root, item) =
+        c114_image_grid_snapshot("https://spinon.invalid/c14-1-png-basic.png");
+    let request = WorkRequest {
+        key: key_for(&snapshot, EnvironmentRevision::INITIAL),
+        snapshot,
+        viewport: CssViewport {
+            width_css_px: 100.0,
+            height_css_px: 40.0,
+            device_scale_factor: 1.0,
+            environment_revision: EnvironmentRevision::INITIAL,
+            media_environment: CssMediaEnvironment::MOBILE,
+        },
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
+    };
+
+    let calculation = compute_request_for_block_flex_grid_track_sizing(&request).unwrap();
+    let layout = calculation.layout.unwrap();
+    let frame = |node: HostNodeHandle| {
+        layout
+            .frames
+            .iter()
+            .find(|frame| frame.node_id == node.id().get())
+            .unwrap()
+    };
+    assert_eq!((frame(root).width, frame(root).height), (100.0, 40.0));
+    assert_eq!((frame(item).width, frame(item).height), (24.0, 16.0));
+
+    let diagnostics = layout.grid_track_sizing_diagnostics.unwrap();
+    let input = diagnostics
+        .item_inputs
+        .iter()
+        .find(|input| input.node == item.id())
+        .unwrap();
+    let spinon_layout::LayoutGridItemIntrinsicSource::Replaced { natural } = &input.source else {
+        panic!("C11.4 image fixture must preserve a replaced intrinsic input");
+    };
+    assert_eq!((natural.width, natural.height), (Some(24.0), Some(16.0)));
+    assert_eq!(input.grid_container, root.id());
+    assert_eq!(input.revision, diagnostics.revision);
+
+    let column_pass = diagnostics.traces[0]
+        .passes
+        .iter()
+        .find(|pass| pass.axis == spinon_layout::LayoutGridTrackSizingAxis::Columns)
+        .unwrap();
+    assert!(
+        column_pass
+            .contributions
+            .iter()
+            .any(|contribution| contribution.item == item.id())
+    );
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[test]
+fn c114_image_fixture_rejects_unpinned_image_source_without_zero_fallback() {
+    let (snapshot, _, _) = c114_image_grid_snapshot("https://spinon.invalid/unpinned.png");
+    let request = WorkRequest {
+        key: key_for(&snapshot, EnvironmentRevision::INITIAL),
+        snapshot,
+        viewport: CssViewport {
+            width_css_px: 100.0,
+            height_css_px: 40.0,
+            device_scale_factor: 1.0,
+            environment_revision: EnvironmentRevision::INITIAL,
+            media_environment: CssMediaEnvironment::MOBILE,
+        },
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
+    };
+
+    let calculation = compute_request_for_block_flex_grid_track_sizing(&request).unwrap();
+    assert_eq!(
+        calculation.layout.unwrap_err().code,
+        "unsupported_c114_image_case"
+    );
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+fn c114_image_grid_snapshot(
+    source: &str,
+) -> (Arc<HostDocumentSnapshot>, HostNodeHandle, HostNodeHandle) {
+    const HTML: &str = "http://www.w3.org/1999/xhtml";
+    const ROOT_STYLE: &str = "box-sizing:border-box;display:grid;width:100px;height:40px;margin:0;padding:0;border:0;gap:0;align-content:start;justify-content:start;grid-template-columns:auto;grid-template-rows:auto;background-color:#101820";
+    const ITEM_STYLE: &str = "box-sizing:border-box;display:block;width:auto;height:auto;margin:0;padding:0;border:0;background-color:#e5484d";
+
+    let mut document = HostDocument::new().unwrap();
+    let root = document.reserve_node_handle().unwrap();
+    let item = document.reserve_node_handle().unwrap();
+    let mut batch =
+        DocumentChangeBatch::new(OwnerId::new(11_414).unwrap(), document.document_revision());
+    for (node, tag, id, parent, style) in [
+        (
+            root,
+            "div",
+            "c114-auto-image-grid",
+            HostParent::Root,
+            ROOT_STYLE,
+        ),
+        (
+            item,
+            "img",
+            "c114-auto-image-item",
+            HostParent::Node(root),
+            ITEM_STYLE,
+        ),
+    ] {
+        batch.push(DocumentOperation::CreateElement {
+            node,
+            namespace: HTML.to_owned(),
+            local_name: tag.to_owned(),
+        });
+        batch.push(DocumentOperation::SetAttribute {
+            node,
+            name: AttributeName::new(None, "id").unwrap(),
+            value: id.to_owned().into(),
+        });
+        batch.push(DocumentOperation::SetAttribute {
+            node,
+            name: AttributeName::new(None, "style").unwrap(),
+            value: style.to_owned().into(),
+        });
+        batch.push(DocumentOperation::InsertBefore {
+            parent,
+            node,
+            before: None,
+        });
+    }
+    batch.push(DocumentOperation::SetAttribute {
+        node: item,
+        name: AttributeName::new(None, "src").unwrap(),
+        value: source.to_owned().into(),
+    });
+    document.commit(batch).unwrap();
+    (Arc::new(document.snapshot()), root, item)
+}
+
 #[test]
 fn c11_grid_profile_publishes_taffy_frames_and_ordered_paint_boxes() {
     let (snapshot, root, children) = super::make_layout_snapshot(

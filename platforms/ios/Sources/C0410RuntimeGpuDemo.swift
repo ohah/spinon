@@ -21,12 +21,20 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "fit-content-calc-limit", "min-content-text-edge",
     "min-content-text-min-width", "min-content-text-max-width",
     "min-content-text-break-all", "min-content-text-nowrap",
+    "auto-image-definite", "minmax-auto-image", "minmax-min-max-image",
+    "fit-content-below-minimum", "fit-content-above-intrinsic",
+    "fit-content-percent", "fixed-small-track-overflow",
+    "spanning-min-content-items", "min-content-row-image",
 ]
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     switch sceneID {
-    case "spanning-auto-tracks":
+    case "spanning-auto-tracks", "spanning-min-content-items":
         return "width=100,height=30"
+    case "fixed-small-track-overflow":
+        return "width=12,height=40"
+    case "min-content-row-image":
+        return "width=100,height=80"
     case "fit-content-calc-limit":
         return "width=100,height=120"
     case "min-content-text-edge", "min-content-text-min-width", "min-content-text-max-width":
@@ -139,12 +147,151 @@ private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) 
     return true
 }
 
-private func c114ExpectedTextNodeFrames(_ sceneID: String) -> String? {
+private func c114ExpectedImageIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
+    let imageScenes: Set<String> = [
+        "auto-image-definite", "minmax-auto-image", "minmax-min-max-image",
+        "fit-content-below-minimum", "fit-content-above-intrinsic",
+        "fit-content-percent", "fixed-small-track-overflow",
+        "spanning-min-content-items", "min-content-row-image",
+    ]
+    guard imageScenes.contains(sceneID) else { return true }
+    guard let marker = report.range(of: "grid_track_sizing_diagnostics=") else { return false }
+    let jsonText = report[marker.upperBound...]
+    var depth = 0
+    var inString = false
+    var escaped = false
+    var endIndex: String.Index?
+    for index in jsonText.indices {
+        let character = jsonText[index]
+        if inString {
+            if escaped {
+                escaped = false
+            } else if character == "\\" {
+                escaped = true
+            } else if character == "\"" {
+                inString = false
+            }
+            continue
+        }
+        if character == "\"" {
+            inString = true
+        } else if character == "{" {
+            depth += 1
+        } else if character == "}" {
+            depth -= 1
+            if depth == 0 {
+                endIndex = jsonText.index(after: index)
+                break
+            }
+        }
+    }
+    guard let endIndex,
+          let data = String(jsonText[..<endIndex]).data(using: .utf8),
+          let diagnostics = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
+          let revision = diagnostics["layoutInputRevision"] as? [String: Any],
+          let intrinsicRevision = revision["intrinsicSize"] as? Int,
+          intrinsicRevision == 1,
+          let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
+          inputs.count == 1,
+          let input = inputs.first,
+          let grid = input["grid"] as? Int, grid == 1,
+          let node = input["node"] as? Int, node == 2,
+          let sourceOrder = input["sourceOrder"] as? Int, sourceOrder == 0,
+          let source = input["source"] as? [String: Any],
+          let kind = source["kind"] as? String, kind == "replaced",
+          let natural = source["natural"] as? [String: Any],
+          let width = natural["width"] as? NSNumber, width.doubleValue == 24,
+          let height = natural["height"] as? NSNumber, height.doubleValue == 16 else {
+        return false
+    }
+    return c114ImageTrackSizingTraceMatches(sceneID, diagnostics: diagnostics)
+}
+
+private func c114ImageTrackSizingTraceMatches(
+    _ sceneID: String, diagnostics: [String: Any]
+) -> Bool {
+    let expectedColumns: [(size: Double, gutter: Bool)]
+    let expectedColumnContribution: Double?
+    let expectedColumnSpan = sceneID == "spanning-min-content-items" ? 2 : 1
+    switch sceneID {
+    case "fixed-small-track-overflow":
+        expectedColumns = [(12, false)]
+        expectedColumnContribution = nil
+    case "spanning-min-content-items":
+        expectedColumns = [(10, false), (4, true), (10, false)]
+        expectedColumnContribution = 24
+    case "min-content-row-image":
+        expectedColumns = [(100, false)]
+        expectedColumnContribution = nil
+    default:
+        expectedColumns = [(24, false)]
+        expectedColumnContribution = 24
+    }
+    guard let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
+          traces.count == 1,
+          let trace = traces.first,
+          let grid = trace["grid"] as? Int, grid == 1,
+          let passes = trace["passes"] as? [[String: Any]], passes.count == 2,
+          c114ImageTrackPassMatches(passes[0], axis: "Columns",
+                                    expectedTracks: expectedColumns,
+                                    minContentContribution: expectedColumnContribution,
+                                    span: expectedColumnSpan),
+          c114ImageTrackPassMatches(passes[1], axis: "Rows",
+                                    expectedTracks: [(16, false)],
+                                    minContentContribution: 16, span: 1) else {
+        return false
+    }
+    return true
+}
+
+private func c114ImageTrackPassMatches(
+    _ pass: [String: Any],
+    axis: String,
+    expectedTracks: [(size: Double, gutter: Bool)],
+    minContentContribution: Double?,
+    span: Int
+) -> Bool {
+    guard let observedAxis = pass["axis"] as? String, observedAxis == axis,
+          let stages = pass["stages"] as? [[String: Any]],
+          let finalStage = stages.last,
+          let tracks = finalStage["tracks"] as? [[String: Any]] else {
+        return false
+    }
+    let activeTracks = tracks.filter { track in
+        (track["collapsed"] as? Bool) == false
+    }
+    guard activeTracks.count == expectedTracks.count else { return false }
+    for (index, expected) in expectedTracks.enumerated() {
+        guard let baseSize = activeTracks[index]["baseSize"] as? NSNumber,
+              baseSize.doubleValue == expected.size,
+              let gutter = activeTracks[index]["gutter"] as? Bool,
+              gutter == expected.gutter else {
+            return false
+        }
+    }
+    guard let minContentContribution else { return true }
+    guard let contributions = pass["contributions"] as? [[String: Any]] else { return false }
+    return contributions.contains { contribution in
+        guard let item = contribution["item"] as? Int, item == 2,
+              let observedSpan = contribution["span"] as? Int, observedSpan == span,
+              let kind = contribution["kind"] as? String, kind == "MinContent",
+              let value = contribution["value"] as? NSNumber else {
+            return false
+        }
+        return value.doubleValue == minContentContribution
+    }
+}
+
+private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     switch sceneID {
     case "auto-text-max-content", "min-content-text-normal", "max-content-text-normal",
          "fit-content-text-minimum", "fit-content-calc-limit", "min-content-text-edge",
          "min-content-text-min-width", "min-content-text-max-width",
-         "min-content-text-break-all", "min-content-text-nowrap":
+         "min-content-text-break-all", "min-content-text-nowrap",
+         "auto-image-definite", "minmax-auto-image", "minmax-min-max-image",
+         "fit-content-below-minimum", "fit-content-above-intrinsic",
+         "fit-content-percent", "fixed-small-track-overflow",
+         "spanning-min-content-items", "min-content-row-image":
         return "node_frames_css_px=[0:node=1,x=0,y=0,\(c114ExpectedRootFrame(sceneID));"
             + "1:node=2,x=0,y=0,\(c114ExpectedItemFrame(sceneID))]"
     default:
@@ -291,6 +438,11 @@ private struct C111MetalPixelRun {
         ("item-overflow-beyond-root", "c114-break-all-item", 5, 45, [229, 72, 77, 255]),
         ("root-background-control", "c114-break-all-grid", 15, 20, [16, 24, 32, 255]),
     ]
+    private static let c114ImageOverflowPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+        ("item-inside-root", "c114-fixed-small-image-item", 5, 8, [229, 72, 77, 255]),
+        ("item-overflow-beyond-root", "c114-fixed-small-image-item", 20, 8, [229, 72, 77, 255]),
+        ("root-background-control", "c114-fixed-small-image-grid", 6, 25, [16, 24, 32, 255]),
+    ]
 
     private static func hasFixedC1131RepeatSamples(_ samples: [C111MetalPixelSample]) -> Bool {
         guard samples.count == c1131RepeatPixelSamples.count else { return false }
@@ -325,9 +477,13 @@ private struct C111MetalPixelRun {
         }
     }
 
-    private static func hasFixedC114TextOverflowSamples(_ samples: [C111MetalPixelSample]) -> Bool {
-        guard samples.count == c114TextOverflowPixelSamples.count else { return false }
-        return c114TextOverflowPixelSamples.allSatisfy { expected in
+    private static func hasFixedC114TrackSizingSamples(
+        _ samples: [C111MetalPixelSample], sceneID: String
+    ) -> Bool {
+        let expectedSamples = sceneID == "fixed-small-track-overflow"
+            ? c114ImageOverflowPixelSamples : c114TextOverflowPixelSamples
+        guard samples.count == expectedSamples.count else { return false }
+        return expectedSamples.allSatisfy { expected in
             samples.contains { sample in
                 sample.id == expected.0 && sample.nodeId == expected.1
                     && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
@@ -403,7 +559,9 @@ private struct C111MetalPixelRun {
             let c114RunID = arguments.first(where: {
                 $0.hasPrefix("--spinon-c114-grid-run-id=")
             }).map { String($0.dropFirst("--spinon-c114-grid-run-id=".count)) }
-            guard let c114Scene, c114Scene == "min-content-text-break-all",
+            guard let c114Scene,
+                  c114Scene == "min-content-text-break-all"
+                      || c114Scene == "fixed-small-track-overflow",
                   c114Scene == sceneID, c114RunID == runID,
                   arguments.contains("--spinon-c114-grid-track-sizing"),
                   !isC1131Repeat, !isC1132NamedLine, !isC1133TemplateAreas,
@@ -464,7 +622,9 @@ private struct C111MetalPixelRun {
         if isC1131Repeat && !hasFixedC1131RepeatSamples(samples) { return nil }
         if isC1132NamedLine && !hasFixedC1132NamedLineSamples(samples) { return nil }
         if isC1133TemplateAreas && !hasFixedC1133TemplateAreaSamples(samples) { return nil }
-        if isC114TrackSizing && !hasFixedC114TextOverflowSamples(samples) { return nil }
+        if isC114TrackSizing && !hasFixedC114TrackSizingSamples(samples, sceneID: sceneID) {
+            return nil
+        }
         return C111MetalPixelRun(runID: runID, sceneID: sceneID,
                                  markerPrefix: isC114TrackSizing ? "C114"
                                      : isC1133TemplateAreas ? "C1133"
@@ -3738,16 +3898,18 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let report = result ?? "status=-1 missing-report"
             let rootFrame = c114ExpectedRootFrame(c114GridTrackSizingSceneID)
             let itemFrame = c114ExpectedItemFrame(c114GridTrackSizingSceneID)
-            let expectedTextNodeFrames = c114ExpectedTextNodeFrames(c114GridTrackSizingSceneID)
+            let expectedNodeFrames = c114ExpectedNodeFrames(c114GridTrackSizingSceneID)
             let expectedTextInputs = c114ExpectedTextIntrinsicInputs(
                 c114GridTrackSizingSceneID, report: report)
-            let expectedTextNodeFramesMatch = expectedTextNodeFrames.map(report.contains) ?? true
+            let expectedImageInputs = c114ExpectedImageIntrinsicInputs(
+                c114GridTrackSizingSceneID, report: report)
+            let expectedNodeFramesMatch = expectedNodeFrames.map(report.contains) ?? true
             log("SPINON_C114_GRID_EVAL_RUN run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) \(runtimeStatusSummary(report))")
             let gridTrackSizingTraceAvailable = logC114GridTrackSizingTraceChunks(report)
             guard report.hasPrefix("status=0 "), report.contains("layout=ready boxes=2"),
                   report.contains(rootFrame), report.contains(itemFrame), expectedTextInputs,
-                  expectedTextNodeFramesMatch else {
-                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) report=\(report)")
+                  expectedImageInputs, expectedNodeFramesMatch else {
+                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) report=\(report)")
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치")
                 return
             }

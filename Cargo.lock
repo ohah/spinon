@@ -1770,6 +1770,7 @@ dependencies = [
  "html5ever",
  "serde_json",
  "spinon-core",
+ "spinon-image",
  "spinon-layout",
  "spinon-render",
  "spinon-style",
