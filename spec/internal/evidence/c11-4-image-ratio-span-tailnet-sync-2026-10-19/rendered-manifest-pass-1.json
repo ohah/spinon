@@ -1,0 +1,363 @@
+{
+  "source_base_commit": "08caa59b42f75eb2939104fffa527995eb1d4f51",
+  "rspress_version": "2.0.22",
+  "markdown_route_count": 16,
+  "markdown_routes": [
+    "0001-conformance.md",
+    "STATUS.md",
+    "internal/0059-c11-grid-layout.md",
+    "internal/0070-c15-1-inline-text-layout.md",
+    "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.md",
+    "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.md",
+    "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-delta-review-30.md",
+    "internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.md",
+    "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/README.md",
+    "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/implementation-review-20.md",
+    "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/pr-delta-review-30.md",
+    "internal/evidence/c11-4-image-ratio-span-2026-10-19/README.md",
+    "internal/evidence/c11-4-image-ratio-span-2026-10-19/implementation-review-20.md",
+    "internal/evidence/c11-4-image-ratio-span-2026-10-19/pr-diff-review-30.md",
+    "plan/c11-4-grid-track-sizing.md",
+    "plan/c11-css-grid.md"
+  ],
+  "output_root_relative": "build/spinon/c11-4-image-ratio-span-tailnet-site-20261019",
+  "output_file_count": 67,
+  "output_bytes": 4360263,
+  "files": [
+    {
+      "path": "0001-conformance.html",
+      "bytes": 39556,
+      "sha256": "dea6ad089a37f28f532c5616c0b9bcfb87fd93cda842c3fe994de93fc4eafb1a"
+    },
+    {
+      "path": "404.html",
+      "bytes": 8512,
+      "sha256": "01dedf45e3a5362f209e2b8a28e22be2a70938eb549dc68ea7f8d667d2640cb8"
+    },
+    {
+      "path": "c10-3-3-android-physical-2026-10-11.png",
+      "bytes": 194109,
+      "sha256": "b80c842c193a99dd9e295e9f3a5ab82e8c684e5b0da9405d923aec8183957775"
+    },
+    {
+      "path": "c12-4-android-api37-depth-safety-2026-10-11.png",
+      "bytes": 72745,
+      "sha256": "33704756e2d8758d73165b63d9fa67977e2c73965d057263d45821c7a416fdae"
+    },
+    {
+      "path": "c12-4-android-api37-depth-safety-matrix-2026-10-11.png",
+      "bytes": 71213,
+      "sha256": "db8f307c59f677cde715075c0efad8ff9056bd7d39a424b5f912da326a1f06cc"
+    },
+    {
+      "path": "c12-4-android-api37-emulator-2026-10-11.log",
+      "bytes": 6079,
+      "sha256": "77adad2002dbeb251d90ce58ba3778e16fd4571601c90b4de407ba9db22b8259"
+    },
+    {
+      "path": "c12-4-android-api37-emulator.png",
+      "bytes": 79987,
+      "sha256": "86d8840dc425d99b7cf7e161ef17089d68bc148da8bb7cafe892cf654201f8e5"
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.json",
+      "bytes": 926,
+      "sha256": "4b0f514d3f6b40cdb2dad06a089641c8cd0af8512669265ad9d5f5b9c2a16be2"
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.log",
+      "bytes": 45719,
+      "sha256": "b8f1ed1a8f1bae6d08202e44ee5e24e4c3befa916c5262a5915f6cdf664f6eca"
+    },
+    {
+      "path": "c12-4-android-api37-matrix-2026-10-11.png",
+      "bytes": 71121,
+      "sha256": "a56c210a9b45f2289e4595b86430a496cfabc8177f21499ee5d63405ca45b23f"
+    },
+    {
+      "path": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.log",
+      "bytes": 43037,
+      "sha256": "23920b6b1a2a274e609d028b4be8c50cb3811f82a414a95a7820b556390e7bf0"
+    },
+    {
+      "path": "c12-4-android-api37-matrix-deep-graph-rerun-2026-10-11.png",
+      "bytes": 70563,
+      "sha256": "dc5b919381d4fe3f71e564a1f24953a99446fd92d6902a4de0f8ee79eb9c2aa6"
+    },
+    {
+      "path": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.log",
+      "bytes": 42930,
+      "sha256": "967b0572b40411b115e9a7ddf02f424a2e69948ec24d9ea5dda3158650b5269b"
+    },
+    {
+      "path": "c12-4-android-api37-matrix-reserve-rerun-2026-10-11.png",
+      "bytes": 71247,
+      "sha256": "183b3e38acf0bdd449a2d8613b2ce361afff558a8fec62a8c7a6aeb7deed28f5"
+    },
+    {
+      "path": "c12-4-android-sm-s731n-android16-vulkan.png",
+      "bytes": 110882,
+      "sha256": "a60c2db2fa7ad194c9a210147c3827ed0ee11e831bf168da5297eb3df8a60dd4"
+    },
+    {
+      "path": "c12-4-ios-iphone-17-pro-depth-safety-2026-10-11.png",
+      "bytes": 142385,
+      "sha256": "bef6d91b248a580d120d0b47df26800b2ed218addd94674409deaecfc2eaf814"
+    },
+    {
+      "path": "c12-4-ios-iphone-17-pro-simulator.png",
+      "bytes": 143083,
+      "sha256": "650f17bb3edda780d32f53f3980f417b7c5b340d862865ef5e0b4250091e372b"
+    },
+    {
+      "path": "c12-4-runtime-evidence.html",
+      "bytes": 14589,
+      "sha256": "64b118c6a84e690b4722d1e75d8b4e6d31588919e5b4a51a229e96808698aee7"
+    },
+    {
+      "path": "c12-4-wpt-official-run-2026-10-11.log",
+      "bytes": 356,
+      "sha256": "9f9b4bf38f27fef6cb27d720726389f1bae382e88a383919e26dcb18cbfe6fab"
+    },
+    {
+      "path": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "bytes": 94941,
+      "sha256": "2833b172e7be7ad114259e36ac93d14668248110fe2805eab9b285fdcac0734e"
+    },
+    {
+      "path": "internal/0070-c15-1-inline-text-layout.html",
+      "bytes": 45765,
+      "sha256": "72ce68663f4a96d51516e6e797682ec6b896d23e1db22d21d0575788c1112edf"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/plan-review-20.html",
+      "bytes": 31689,
+      "sha256": "3540aaed038330e1a84f8d4c03b5cfbe69ebbb257d40cbb1ebcb547c4c68feb3"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/pr-delta-review-30.html",
+      "bytes": 29993,
+      "sha256": "0b36c05156255ec089c16866582a463ec6e70ec483d1cbecf8bc495fa1ee8735"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.html",
+      "bytes": 37425,
+      "sha256": "57c444653dc9bb1c8bc1e1346903c77458d8d5e66979335ee9fc952cc8bda27e"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-inline-edge-2026-10-19/README.html",
+      "bytes": 26230,
+      "sha256": "cdcabe568e5303a66b8df589c6eb7f6b972c96c2363efc5002a5bfc4a6c9300c"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/implementation-review-20.html",
+      "bytes": 31065,
+      "sha256": "7060ed3d0ffd4a87394fde62701884402955c9d9127d8192785c945a68866114"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/pr-delta-review-30.html",
+      "bytes": 35806,
+      "sha256": "5ade4327a085a993425d0b50661ee93b54970fb7cf3c87cdeb39e4fcb71f16f5"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-text-intrinsic-2026-10-19/README.html",
+      "bytes": 27798,
+      "sha256": "804e4c2617666530eb188725d273a8468244be6581afcea8da1bf93c0cc2b641"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/implementation-review-20.html",
+      "bytes": 30047,
+      "sha256": "ef432004de0b612a517aa2ab75a5ab2b7dc684ca5e10ec0f6b096d54ac6af83d"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/pr-diff-review-30.html",
+      "bytes": 30635,
+      "sha256": "ec3b97156dc50dc2f9337c6ef3b32733bee57277e166899e2d4808f025e2257a"
+    },
+    {
+      "path": "internal/evidence/c11-4-image-ratio-span-2026-10-19/README.html",
+      "bytes": 33683,
+      "sha256": "31e0e9a92356790cf4859fc88e45217b20901e0355cdc5a02faea66ceb37f3d4"
+    },
+    {
+      "path": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 78811,
+      "sha256": "b079402ef78f94205a45bb202c8e12f278dcd9628725786593545ee7edd8f5e3"
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "bytes": 57913,
+      "sha256": "5372b8170f777e506bc61f5127842b637d62e6c6cb21168f7a1a289d95d8eef3"
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 148318,
+      "sha256": "9978eb6edc6950edc5bef923e2ed5ec39357d97db86a32a62a6502accad3a283"
+    },
+    {
+      "path": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/image/screenshot-column-transfer-input-capped-by-fixed-row-span.ea4da4db59.png",
+      "bytes": 130946,
+      "sha256": "846eeb17159986b93da565781c2684f5746859a0da572b322d0992ee2e1a816a"
+    },
+    {
+      "path": "static/image/screenshot-row-transfer-input-capped-by-fixed-column-span.4836ee4be9.png",
+      "bytes": 78140,
+      "sha256": "f83314c65747ef30c1cd9a87444450e4fb8f22dad7c964101d9fe25a64a39459"
+    },
+    {
+      "path": "static/js/a.97f73b52c7.js",
+      "bytes": 217109,
+      "sha256": "cdaa100845a0feae737aea6f0812bf70aac9afb26205325386f24cc2047dba9e"
+    },
+    {
+      "path": "static/js/a.97f73b52c7.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe"
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.5b70abb3c5.js",
+      "bytes": 48027,
+      "sha256": "2ca5efab0fa39ab64b4fe1513f6bfb8d111c5db1910d0c7289eddd8ef0dc5634"
+    },
+    {
+      "path": "static/js/async/route-170783843519.4ca2a1191c.js",
+      "bytes": 13028,
+      "sha256": "1e0f44feaa4cda70713818927499f630e0fcac7b7acd11a04cff960dbf8ecf80"
+    },
+    {
+      "path": "static/js/async/route-181e2939e759.9cd69975e8.js",
+      "bytes": 11022,
+      "sha256": "c4c60dffe075a07eab19e05e44fb3f4b3a2472e78dece17709a332f216a91e4d"
+    },
+    {
+      "path": "static/js/async/route-19eb62f182e6.3d5af55cd0.js",
+      "bytes": 12547,
+      "sha256": "c40c350c29aac116a363aaa6a2da93cca71fb28c10a212ddd33a137d0ae16554"
+    },
+    {
+      "path": "static/js/async/route-547629791443.476f4bb1b7.js",
+      "bytes": 7762,
+      "sha256": "8924847c3ce1ff0787ee5121359a152b4d259824966b408048611fb3760b475f"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.84acdf2b68.js",
+      "bytes": 410124,
+      "sha256": "67f0c2ee7e12587245db854b0552b3ea0448c8495a2bfed04a811912a15b2b48"
+    },
+    {
+      "path": "static/js/async/route-6f303538b8de.a16b61352c.js",
+      "bytes": 22534,
+      "sha256": "c0bb5d0fb1a41ee12708719f52dae88227c3978bf376060fd8b1681a62fc0f28"
+    },
+    {
+      "path": "static/js/async/route-9eef814e3864.28fb1cb1c5.js",
+      "bytes": 12934,
+      "sha256": "690b016bf2eb0e8eab062e33e9a6d797b02610b74a3af293fea9b01f92cd6220"
+    },
+    {
+      "path": "static/js/async/route-acf9bf8a5ef1.5779fb2d10.js",
+      "bytes": 28689,
+      "sha256": "54e6b14cbcee905cba701c88dbddfae8b0f204b3d3579bf7cf515e81aab147f4"
+    },
+    {
+      "path": "static/js/async/route-bb40dcf56893.87b3ca1f39.js",
+      "bytes": 14039,
+      "sha256": "9e2127006b15ff1fb87c4ce4b781d6cceeb00dad74482fcc2a237076d6465114"
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.49b40e0cb3.js",
+      "bytes": 39326,
+      "sha256": "b1a963de004949b2c09623df17bbc17fbedaf30d3f63ecece1cd02cfdd721671"
+    },
+    {
+      "path": "static/js/async/route-c412d9e72a16.8fb9c86a0c.js",
+      "bytes": 11647,
+      "sha256": "f07aa5a6c9e012beee42580f8776f3d4a1e52cefc49d5f2c5b970b077d5355be"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.e6075a5f6a.js",
+      "bytes": 75020,
+      "sha256": "e3671cb551079cc5697d02ae86b861e1c57f199cd7ba9f067f46d05cb434fff0"
+    },
+    {
+      "path": "static/js/async/route-e2283f1cc7bd.704fd97ca2.js",
+      "bytes": 5902,
+      "sha256": "13d5ec6a8c49c852fcb814ac40bf00223f95802556333cacff0600e14cba4fcf"
+    },
+    {
+      "path": "static/js/async/route-ecf129b09e78.2f5fba96e3.js",
+      "bytes": 21013,
+      "sha256": "054684637ecf6426859f6f4c57f47fe2d0d2498256b83ca2dda90753ac5acfe8"
+    },
+    {
+      "path": "static/js/async/route-fc1d6113b2ad.9aaac04bf4.js",
+      "bytes": 18312,
+      "sha256": "ff5ea53595590afdd8ea8bfefddff63fdcc9b81fec3c0688cb2358f640d762ce"
+    },
+    {
+      "path": "static/js/index.6b8cbab4b2.js",
+      "bytes": 45172,
+      "sha256": "dceb06c8575ced116cb629ab07de3df921bdac34ffe0309eacd579dc90ca8a70"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b"
+    },
+    {
+      "path": "static/search_index.ko.25afee31.json",
+      "bytes": 440997,
+      "sha256": "25afee319201be1b70355ae4889b992ff882a5d6c22806bbf080db3b62c57e71"
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 390701,
+      "sha256": "8b7d8e1491669cd15a18ca44f0da4d63ab5edb08310d5ce61992bfa208cd3161"
+    }
+  ]
+}
