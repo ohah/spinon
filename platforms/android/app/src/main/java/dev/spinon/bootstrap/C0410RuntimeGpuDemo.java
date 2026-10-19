@@ -2174,6 +2174,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     expectedItemFrame = "width=24,height=16";
                     break;
             }
+            boolean c114GridTrackSizingTraceAvailable =
+                    logC114GridTrackSizingTraceChunks(c114GridTrackSizingRunId, result);
             if (!result.startsWith("status=0 ") || !result.contains("layout=ready boxes=2")
                     || !result.contains(expectedRootFrame)
                     || !result.contains(expectedItemFrame)) {
@@ -2184,7 +2186,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치");
                 return;
             }
-            if (!logC114GridTrackSizingTraceChunks(c114GridTrackSizingRunId, result)) {
+            if (!c114GridTrackSizingTraceAvailable) {
                 postStatus("실패 · C11.4 track-sizing trace가 없습니다");
                 return;
             }

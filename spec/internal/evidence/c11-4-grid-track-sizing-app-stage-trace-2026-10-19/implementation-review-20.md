@@ -26,4 +26,8 @@
 | 19 | 플랫폼별 앱 경로가 동일 trace를 내지 않음 | Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 동일한 7 scene을 실행해 canonical trace JSON 7/7이 일치했다. 실기기나 hardware GPU 결과로 확대하지 않는다. |
 | 20 | fixture trace 확인을 C11.4 적합성 완료로 과장함 | 앱 장면의 intrinsic input/measurement 배열은 비어 있다. text/image intrinsic contribution, 전체 sizing matrix, WPT, independent normative stage oracle은 남아 있고 C11.4 상태도 미완료다. |
 
-**결론:** 이 변경에서 수정이 필요한 코드 결함은 새로 발견하지 않았다. 진단은 fixture-test opt-in 경계 안에 있고 두 simulator의 기존 7-scene trace를 일치하게 복원했다. text/image 앱 입력과 Unicode 확장 시 chunk 경계 등 명시한 한계는 C11.4 완료 판정에 포함하지 않는다.
+**당시 결론:** 이 20관점 검토 시점에서는 수정할 코드 결함을 발견하지 못했다. 후속 PR diff 검토에서 frame assertion 실패 시 trace가 남지 않는 호출 순서 문제가 별도로 발견되어 수정했다. 진단은 fixture-test opt-in 경계 안에 있고 text/image 앱 입력과 Unicode 확장 시 chunk 경계 등 명시한 한계는 C11.4 완료 판정에 포함하지 않는다.
+
+## 후속 수정과 재확인
+
+2026-10-19 PR #345 검토에서 Android/iOS 모두 frame assertion 전에 trace chunk를 기록하도록 순서를 옮겼다. 수정 버전은 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 다시 빌드하고 7개 scene을 재실행했다. 각 플랫폼 7/7 frame·trace 확인과 canonical JSON 7/7 일치를 [후속 근거](../c11-4-grid-track-sizing-app-trace-failure-path-followup-2026-10-19/README.md)에 기록했다. 별도 frame-mismatch 주입은 실행하지 않았다.

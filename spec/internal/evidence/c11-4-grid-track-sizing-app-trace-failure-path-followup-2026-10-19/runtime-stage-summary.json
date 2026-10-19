@@ -1,0 +1,123 @@
+{
+  "verification": "frame-assertion failure trace-order fix; successful C11.4 app fixture rerun",
+  "runDate": "2026-10-19",
+  "platforms": {
+    "android-avd": {
+      "auto-fixed-width-item": {
+        "sha256": "f10c04916fd1e0bfef7d9af9a3f8360df0ac05f9ead1176ed82439e8be5757c4",
+        "stageCount": 12,
+        "contributionCount": 6,
+        "chunkCount": 4,
+        "intrinsicInputCount": 0,
+        "intrinsicMeasurementCount": 0
+      },
+      "minmax-auto-fixed-width-item": {
+        "sha256": "8bf629c61b10a8b003876047d7d5dd91fecd9fa5d6f8edc07f2331b6d6303c39",
+        "stageCount": 12,
+        "contributionCount": 5,
+        "chunkCount": 4,
+        "intrinsicInputCount": 0,
+        "intrinsicMeasurementCount": 0
+      },
+      "fit-content-below-item-size": {
+        "sha256": "f10c04916fd1e0bfef7d9af9a3f8360df0ac05f9ead1176ed82439e8be5757c4",
+        "stageCount": 12,
+        "contributionCount": 6,
+        "chunkCount": 4,
+        "intrinsicInputCount": 0,
+        "intrinsicMeasurementCount": 0
+      },
+      "spanning-auto-tracks": {
+        "sha256": "752b083175595ac7388be9a5eed09a12c8a4363e16529d45474684886cc6f12a",
+        "stageCount": 12,
+        "contributionCount": 6,
+        "chunkCount": 5,
+        "intrinsicInputCount": 0,
+        "intrinsicMeasurementCount": 0
+      },
+      "auto-fill-repeat": {
+        "sha256": "549eee6a51a3dae2e4be2b9defc73f9d719307fd3c13f6688e241ec66db3056c",
+        "stageCount": 8,
+        "contributionCount": 0,
+        "chunkCount": 5,
+        "intrinsicInputCount": 0,
+        "intrinsicMeasurementCount": 0
+      },
+      "auto-fit-collapse": {
+        "sha256": "d472814bc1a469d33765b44fc6e35923342247a2b063a073a82dd8a2db9afb3c",
+        "stageCount": 8,
+        "contributionCount": 0,
+        "chunkCount": 5,
+        "intrinsicInputCount": 0,
+        "intrinsicMeasurementCount": 0
+      },
+      "auto-fill-track-overflow": {
+        "sha256": "549eee6a51a3dae2e4be2b9defc73f9d719307fd3c13f6688e241ec66db3056c",
+        "stageCount": 8,
+        "contributionCount": 0,
+        "chunkCount": 5,
+        "intrinsicInputCount": 0,
+        "intrinsicMeasurementCount": 0
+      }
+    },
+    "ios-simulator": {
+      "auto-fixed-width-item": {
+        "sha256": "f10c04916fd1e0bfef7d9af9a3f8360df0ac05f9ead1176ed82439e8be5757c4",
+        "stageCount": 12,
+        "contributionCount": 6,
+        "chunkCount": 8,
+        "intrinsicInputCount": 0,
+        "intrinsicMeasurementCount": 0
+      },
+      "minmax-auto-fixed-width-item": {
+        "sha256": "8bf629c61b10a8b003876047d7d5dd91fecd9fa5d6f8edc07f2331b6d6303c39",
+        "stageCount": 12,
+        "contributionCount": 5,
+        "chunkCount": 8,
+        "intrinsicInputCount": 0,
+        "intrinsicMeasurementCount": 0
+      },
+      "fit-content-below-item-size": {
+        "sha256": "f10c04916fd1e0bfef7d9af9a3f8360df0ac05f9ead1176ed82439e8be5757c4",
+        "stageCount": 12,
+        "contributionCount": 6,
+        "chunkCount": 8,
+        "intrinsicInputCount": 0,
+        "intrinsicMeasurementCount": 0
+      },
+      "spanning-auto-tracks": {
+        "sha256": "752b083175595ac7388be9a5eed09a12c8a4363e16529d45474684886cc6f12a",
+        "stageCount": 12,
+        "contributionCount": 6,
+        "chunkCount": 9,
+        "intrinsicInputCount": 0,
+        "intrinsicMeasurementCount": 0
+      },
+      "auto-fill-repeat": {
+        "sha256": "549eee6a51a3dae2e4be2b9defc73f9d719307fd3c13f6688e241ec66db3056c",
+        "stageCount": 8,
+        "contributionCount": 0,
+        "chunkCount": 10,
+        "intrinsicInputCount": 0,
+        "intrinsicMeasurementCount": 0
+      },
+      "auto-fit-collapse": {
+        "sha256": "d472814bc1a469d33765b44fc6e35923342247a2b063a073a82dd8a2db9afb3c",
+        "stageCount": 8,
+        "contributionCount": 0,
+        "chunkCount": 10,
+        "intrinsicInputCount": 0,
+        "intrinsicMeasurementCount": 0
+      },
+      "auto-fill-track-overflow": {
+        "sha256": "549eee6a51a3dae2e4be2b9defc73f9d719307fd3c13f6688e241ec66db3056c",
+        "stageCount": 8,
+        "contributionCount": 0,
+        "chunkCount": 10,
+        "intrinsicInputCount": 0,
+        "intrinsicMeasurementCount": 0
+      }
+    }
+  },
+  "canonicalEqualSceneCount": 7
+}
