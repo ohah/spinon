@@ -1,0 +1,52 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+info    Rendering pages...
+success Pages rendered in 84 ms.
+ready   built in 0.65s (web)
+ready   built in 0.65s (node)
+
+File (web)                                                                                     Size        Gzip   
+build/spinon/c11-4-image-tailnet-site-pass5/static/js/async/z.359c0d78fa.js                    0.10 kB     0.09 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/js/styles.6b76c4bafc.js                     0.47 kB     0.24 kB
+build/spinon/c11-4-image-tailnet-site-pass5/icon.svg                                           0.64 kB     0.42 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/js/async/route-812dc5c7229b.1cd001555f.js   4.1 kB      1.8 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/js/async/route-247859e89cb0.97c6a57609.js   6.2 kB      2.5 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/js/async/route-6b2ef7d1846c.16af28a8ba.js   9.4 kB      3.4 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/js/async/route-25f826ccc1f0.f7698cc246.js   10.3 kB     3.3 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/js/async/route-b960e2b16ea1.65035edfd9.js   11.1 kB     4.1 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/js/async/route-d5b07898f998.7f9ce0b31f.js   11.6 kB     4.0 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/js/async/route-7a11bd1c0efc.1c54004707.js   12.7 kB     4.6 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/js/async/route-ecf129b09e78.94b5753816.js   21.0 kB     7.3 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/js/lib-router.f115cf67cf.js                 35.4 kB     12.7 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/js/index.2b151e3045.js                      37.9 kB     13.6 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/js/async/route-c2801b21f038.5e867da6a3.js   39.3 kB     11.7 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/js/async/route-04cbcabea10a.8f3fc6c653.js   44.6 kB     13.0 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/js/async/route-c4dae6800800.d4c2ec3f9c.js   69.7 kB     18.9 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/js/async/route-a1017bdf23ca.8130ac7adb.js   183.1 kB    38.3 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/js/6.cb8b86b995.js                          217.1 kB    72.0 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/js/lib-react.382571d6aa.js                  218.4 kB    68.8 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/js/async/route-6c33a3943990.5cf3882030.js   407.5 kB    95.7 kB
+build/spinon/c11-4-image-tailnet-site-pass5/static/search_index.ko.56580122.json               469.9 kB    151.5 kB
+
+                                                                                      Total:   1884.5 kB   542.0 kB
+
+File (node)                                                                                                                           Size        Gzip   
+build/spinon/c11-4-image-tailnet-site-pass5/404.html                                                                                  8.5 kB      2.6 kB
+build/spinon/c11-4-image-tailnet-site-pass5/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html   24.1 kB     5.2 kB
+build/spinon/c11-4-image-tailnet-site-pass5/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.html                         25.4 kB     5.7 kB
+build/spinon/c11-4-image-tailnet-site-pass5/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.html                 26.4 kB     6.7 kB
+build/spinon/c11-4-image-tailnet-site-pass5/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.html             27.8 kB     7.2 kB
+build/spinon/c11-4-image-tailnet-site-pass5/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html                     28.0 kB     6.6 kB
+build/spinon/c11-4-image-tailnet-site-pass5/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html   28.1 kB     7.4 kB
+build/spinon/c11-4-image-tailnet-site-pass5/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html          29.1 kB     7.8 kB
+build/spinon/c11-4-image-tailnet-site-pass5/0001-conformance.html                                                                     37.5 kB     10.5 kB
+build/spinon/c11-4-image-tailnet-site-pass5/plan/c11-css-grid.html                                                                    55.9 kB     15.2 kB
+build/spinon/c11-4-image-tailnet-site-pass5/plan/c11-4-grid-track-sizing.html                                                         69.8 kB     16.8 kB
+build/spinon/c11-4-image-tailnet-site-pass5/internal/0059-c11-grid-layout.html                                                        87.6 kB     22.5 kB
+build/spinon/c11-4-image-tailnet-site-pass5/internal/README.html                                                                      175.1 kB    40.9 kB
+build/spinon/c11-4-image-tailnet-site-pass5/STATUS.html                                                                               386.2 kB    97.7 kB
+
+                                                                                                                             Total:   1009.7 kB   252.7 kB
+

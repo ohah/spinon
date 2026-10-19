@@ -1,0 +1,16 @@
+{
+  "pass": "pass5",
+  "backup_root_relative": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass5",
+  "target_count": 1,
+  "all_verified": true,
+  "files": [
+    {
+      "path": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19/SHA256SUMS-preview-inputs.txt",
+      "backup_path": "SpinonPreviewBackups/c11-4-image-tailnet-sync-2026-10-19/pass5/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/SHA256SUMS-preview-inputs.txt",
+      "bytes": 22327,
+      "sha256": "1b79154ba27b539a8055b9b184871e3f327741c7fb6d196c2bf7097b284bbb2a",
+      "expected_sha256": "1b79154ba27b539a8055b9b184871e3f327741c7fb6d196c2bf7097b284bbb2a",
+      "verified": true
+    }
+  ]
+}

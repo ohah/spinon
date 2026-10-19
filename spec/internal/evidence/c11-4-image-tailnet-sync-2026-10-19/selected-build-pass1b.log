@@ -4,10 +4,10 @@ info    build started...
 error   build failed in 0.52s (node)
 error   build failed in 0.63s (web)
 error   Build errors: 
-× [rsbuild:html] Failed to read the favicon file at /private/tmp/spinon-c11-4-image-tailnet-sync-20261019/build/spinon/c11-4-image-tailnet-root-pass1b/public/icon.svg.
+× [rsbuild:html] Failed to read the favicon file at [worktree-path-redacted]
 
 File: ./build/spinon/c11-4-image-tailnet-root-pass1b/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/rspress.tailnet-sync.config.ts:3:1-70
-  × Module not found: Can't resolve '../../../../packages/docs/rspress.config.ts' in '/private/tmp/spinon-c11-4-image-tailnet-sync-20261019/build/spinon/c11-4-image-tailnet-root-pass1b/internal/evidence/c11-4-image-tailnet-sync-2026-10-19'
+  × Module not found: Can't resolve '../../../../packages/docs/rspress.config.ts' in '[worktree-path-redacted]'
    ╭─[3:0]
  1 │ import path from 'node:path';
  2 │ import { defineConfig } from '@rspress/core';
@@ -17,8 +17,8 @@ File: ./build/spinon/c11-4-image-tailnet-root-pass1b/internal/evidence/c11-4-ima
  5 │ if (!run || !/^pass1b$|^pass2$/.test(run)) {
    ╰────
 Import traces (entry → error):
-  ../../../Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
-  ../../../Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ../../..[host-path-redacted]
+  ../../..[host-path-redacted]
   ./.rspress/runtime/virtual-routes.js
   ./build/spinon/c11-4-image-tailnet-root-pass1b/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/rspress.tailnet-sync.config.ts ×
 
@@ -29,8 +29,8 @@ File: node:path:1:1
         │ You may need an additional plugin to handle "node:" URIs.
       
 Import traces (entry → error):
-  ../../../Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
-  ../../../Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ../../..[host-path-redacted]
+  ../../..[host-path-redacted]
   ... (1 hidden)
   ./build/spinon/c11-4-image-tailnet-root-pass1b/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/rspress.tailnet-sync.config.ts
   node:path ×
@@ -42,7 +42,7 @@ Solution: Check if you need to import Node.js module.
   - If needed, use "@rsbuild/plugin-node-polyfill" to polyfill it. (See https://npmjs.com/package/@rsbuild/plugin-node-polyfill)
 
 File: ./build/spinon/c11-4-image-tailnet-root-pass1b/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/rspress.tailnet-sync.config.ts:3:1-70
-  × Module not found: Can't resolve '../../../../packages/docs/rspress.config.ts' in '/private/tmp/spinon-c11-4-image-tailnet-sync-20261019/build/spinon/c11-4-image-tailnet-root-pass1b/internal/evidence/c11-4-image-tailnet-sync-2026-10-19'
+  × Module not found: Can't resolve '../../../../packages/docs/rspress.config.ts' in '[worktree-path-redacted]'
    ╭─[3:0]
  1 │ import path from 'node:path';
  2 │ import { defineConfig } from '@rspress/core';
@@ -52,13 +52,13 @@ File: ./build/spinon/c11-4-image-tailnet-root-pass1b/internal/evidence/c11-4-ima
  5 │ if (!run || !/^pass1b$|^pass2$/.test(run)) {
    ╰────
 Import traces (entry → error):
-  ../../../Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ../../..[host-path-redacted]
   ./.rspress/runtime/virtual-routes.js
   ./build/spinon/c11-4-image-tailnet-root-pass1b/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/rspress.tailnet-sync.config.ts ×
 
 error   Rspack build failed.
-    at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/dist/m.js:4309:141
-    at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9074:31
-    at callback1 (file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9082:78)
-    at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9088:36
-    at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:12604:36
+    at file://[host-path-redacted]:4309:141
+    at file://[host-path-redacted]:9074:31
+    at callback1 (file://[host-path-redacted]:9082:78)
+    at file://[host-path-redacted]:9088:36
+    at file://[host-path-redacted]:12604:36

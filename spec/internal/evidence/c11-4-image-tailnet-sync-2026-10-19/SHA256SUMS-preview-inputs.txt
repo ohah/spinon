@@ -120,8 +120,8 @@ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  spec/internal/
 9cb4018c42664ec79349c0129c7c51a287f4d5145ef5798887bd1dc0f6cede54  spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sanitize-built-site.mjs
 c7e105eb49af483406476f1f524d988b159bacec379dc5f2e09b07f6158132fc  spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sanitize-pass3.json
 45391addefff0b0d483b258af3858176f30a13bebfd5186571ff9229775924ee  spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sanitize-pass4.json
-62150f08c8fa8c881b85bad2b0b935b36a12dcdf699256025fef0ce78ad4bf57  spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass1.log
-3cb689c8aa7315b7e4bf151b80b3b03c885efb173dffe250a45e8b4a3a669c78  spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass1b.log
+1bf5ae58c5e7702cbd65fa3d2cede11952f29617530059d315f543e8cf24d2d8  spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass1.log
+49f92dc67af854f2f5c0e7aa04080dd19ed7eaf384cb57952e0c44a26fc87734  spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass1b.log
 eb7c2ef9c889f73487a59430f5e99a991250ee04babd97a479cfdb01267bd497  spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass2.log
 c527599a6ccd17f67906dc3fe338315f2b51c7f0ffcf530ea4cf0e1e7a6163f2  spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass3.log
 cd2127d55885daf2e7dcf3b16f97cb24c72941dd8dc80ebaa7e2c9eae7d083e7  spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/selected-build-pass4.log
