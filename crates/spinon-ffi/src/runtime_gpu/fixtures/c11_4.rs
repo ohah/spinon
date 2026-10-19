@@ -7,7 +7,7 @@ mod trace_report;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
 pub(crate) use trace_report::grid_track_sizing_trace_report;
 
-const C11_4_GRID_TRACK_SIZING_SCENES: [(&str, &str); 17] = [
+const C11_4_GRID_TRACK_SIZING_SCENES: [(&str, &str); 20] = [
     (
         "auto-fixed-width-item",
         r#"(() => {
@@ -102,6 +102,54 @@ item.setAttribute('data-node', '');
 item.setAttribute('style', 'box-sizing:border-box;width:100%;height:16px;margin:0;padding:0;border:0;background-color:#e5484d');
 root.appendChild(item);
 return { sceneId:'auto-fit-collapse', rootId:'c114-auto-fit-grid', nodeIds:['c114-auto-fit-grid', 'c114-auto-fit-item'] };
+})()"#,
+    ),
+    (
+        "auto-fill-fixed-neighbors",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'c114-auto-fill-neighbors-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:200px;height:60px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fill,minmax(40px,1fr)) 10px;grid-template-rows:40px;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'c114-auto-fill-neighbors-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;width:100%;height:40px;margin:0;padding:0;border:0;grid-column:5;grid-row:1;background-color:#e5484d');
+root.appendChild(item);
+return { sceneId:'auto-fill-fixed-neighbors', rootId:'c114-auto-fill-neighbors-grid', nodeIds:['c114-auto-fill-neighbors-grid', 'c114-auto-fill-neighbors-item'] };
+})()"#,
+    ),
+    (
+        "auto-fit-fixed-neighbors",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'c114-auto-fit-neighbors-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:200px;height:60px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fit,minmax(40px,1fr)) 10px;grid-template-rows:40px;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'c114-auto-fit-neighbors-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;width:100%;height:40px;margin:0;padding:0;border:0;grid-column:2;grid-row:1;background-color:#e5484d');
+root.appendChild(item);
+return { sceneId:'auto-fit-fixed-neighbors', rootId:'c114-auto-fit-neighbors-grid', nodeIds:['c114-auto-fit-neighbors-grid', 'c114-auto-fit-neighbors-item'] };
+})()"#,
+    ),
+    (
+        "auto-fill-pattern-neighbors",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'c114-auto-fill-pattern-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:200px;height:60px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fill,minmax(30px,1fr) 20px) 10px;grid-template-rows:40px;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'c114-auto-fill-pattern-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;width:100%;height:40px;margin:0;padding:0;border:0;grid-column:6;grid-row:1;background-color:#e5484d');
+root.appendChild(item);
+return { sceneId:'auto-fill-pattern-neighbors', rootId:'c114-auto-fill-pattern-grid', nodeIds:['c114-auto-fill-pattern-grid', 'c114-auto-fill-pattern-item'] };
 })()"#,
     ),
     (
@@ -291,6 +339,134 @@ return { sceneId:'min-content-text-nowrap', rootId:'c114-nowrap-grid', nodeIds:[
 })()"#,
     ),
 ];
+
+#[derive(Clone, Copy)]
+struct AutoRepeatNeighborScene {
+    scene_id: &'static str,
+    root_id: &'static str,
+    root_style: &'static str,
+    items: &'static [(&'static str, &'static str)],
+}
+
+const C11_4_AUTO_REPEAT_NEIGHBOR_SCENES: [AutoRepeatNeighborScene; 10] = [
+    AutoRepeatNeighborScene {
+        scene_id: "auto-fit-span-neighbors",
+        root_id: "c114-auto-fit-span-neighbors-grid",
+        root_style: "box-sizing:border-box;display:grid;width:200px;height:60px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fit,minmax(40px,1fr)) 10px;grid-template-rows:40px;background-color:#101820",
+        items: &[
+            (
+                "c114-auto-fit-span-neighbors-item",
+                "box-sizing:border-box;width:12px;height:12px;margin:0;padding:0;border:0;grid-column:2 / span 2;grid-row:1;background-color:#e5484d",
+            ),
+            (
+                "c114-auto-fit-span-neighbors-suffix",
+                "box-sizing:border-box;width:12px;height:12px;margin:0;padding:0;border:0;grid-column:5;grid-row:1;background-color:#208060",
+            ),
+        ],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "auto-fit-empty-neighbors",
+        root_id: "c114-auto-fit-empty-neighbors-grid",
+        root_style: "box-sizing:border-box;display:grid;width:200px;height:60px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fit,minmax(40px,1fr)) 10px;grid-template-rows:40px;background-color:#101820",
+        items: &[],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "auto-fill-prefix-neighbors",
+        root_id: "c114-auto-fill-prefix-neighbors-grid",
+        root_style: "box-sizing:border-box;display:grid;width:200px;height:60px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fill,minmax(40px,1fr));grid-template-rows:40px;background-color:#101820",
+        items: &[(
+            "c114-auto-fill-prefix-neighbors-item",
+            "box-sizing:border-box;width:12px;height:12px;margin:0;padding:0;border:0;grid-column:2;grid-row:1;background-color:#e5484d",
+        )],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "auto-fill-suffix-neighbors",
+        root_id: "c114-auto-fill-suffix-neighbors-grid",
+        root_style: "box-sizing:border-box;display:grid;width:200px;height:60px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:repeat(auto-fill,minmax(40px,1fr)) 10px;grid-template-rows:40px;background-color:#101820",
+        items: &[(
+            "c114-auto-fill-suffix-neighbors-item",
+            "box-sizing:border-box;width:12px;height:12px;margin:0;padding:0;border:0;grid-column:4;grid-row:1;background-color:#208060",
+        )],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "auto-fill-indefinite-neighbors",
+        root_id: "c114-auto-fill-indefinite-neighbors-grid",
+        root_style: "box-sizing:border-box;display:grid;width:max-content;height:60px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fill,40px) 10px;grid-template-rows:40px;background-color:#101820",
+        items: &[(
+            "c114-auto-fill-indefinite-neighbors-item",
+            "box-sizing:border-box;width:12px;height:12px;margin:0;padding:0;border:0;grid-column:3;grid-row:1;background-color:#208060",
+        )],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "auto-fill-max-size-neighbors",
+        root_id: "c114-auto-fill-max-size-neighbors-grid",
+        root_style: "box-sizing:border-box;display:grid;width:max-content;max-width:200px;height:60px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fill,minmax(40px,1fr)) 10px;grid-template-rows:40px;background-color:#101820",
+        items: &[],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "auto-fill-min-size-neighbors",
+        root_id: "c114-auto-fill-min-size-neighbors-grid",
+        root_style: "box-sizing:border-box;display:grid;width:max-content;min-width:200px;height:60px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:20px repeat(auto-fill,minmax(40px,1fr)) 10px;grid-template-rows:40px;background-color:#101820",
+        items: &[],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "auto-fill-overflow-neighbors",
+        root_id: "c114-auto-fill-overflow-neighbors-grid",
+        root_style: "box-sizing:border-box;display:grid;width:40px;height:60px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:30px repeat(auto-fill,40px) 20px;grid-template-rows:40px;background-color:#101820",
+        items: &[(
+            "c114-auto-fill-overflow-neighbors-item",
+            "box-sizing:border-box;width:12px;height:12px;margin:0;padding:0;border:0;grid-column:3;grid-row:1;background-color:#e5484d",
+        )],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "auto-fill-row-neighbors",
+        root_id: "c114-auto-fill-row-neighbors-grid",
+        root_style: "box-sizing:border-box;display:grid;width:50px;height:200px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:40px;grid-template-rows:20px repeat(auto-fill,minmax(40px,1fr)) 10px;background-color:#101820",
+        items: &[(
+            "c114-auto-fill-row-neighbors-item",
+            "box-sizing:border-box;width:12px;height:12px;margin:0;padding:0;border:0;grid-column:1;grid-row:5;background-color:#208060",
+        )],
+    },
+    AutoRepeatNeighborScene {
+        scene_id: "auto-fit-row-neighbors",
+        root_id: "c114-auto-fit-row-neighbors-grid",
+        root_style: "box-sizing:border-box;display:grid;width:50px;height:200px;margin:0;padding:0;border:0;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;grid-template-columns:40px;grid-template-rows:20px repeat(auto-fit,minmax(40px,1fr)) 10px;background-color:#101820",
+        items: &[(
+            "c114-auto-fit-row-neighbors-item",
+            "box-sizing:border-box;width:12px;height:12px;margin:0;padding:0;border:0;grid-column:1;grid-row:2;background-color:#e5484d",
+        )],
+    },
+];
+
+fn auto_repeat_neighbor_scene_source(scene: AutoRepeatNeighborScene) -> String {
+    let item_nodes = scene
+        .items
+        .iter()
+        .enumerate()
+        .map(|(index, (item_id, item_style))| {
+            format!(
+                "const item{index}=document.createElement('div');item{index}.setAttribute('id','{item_id}');item{index}.setAttribute('data-node','');item{index}.setAttribute('style','{item_style}');root.appendChild(item{index});"
+            )
+        })
+        .collect::<String>();
+    let node_ids = scene
+        .items
+        .iter()
+        .map(|(item_id, _)| format!("'{item_id}'"))
+        .collect::<Vec<_>>()
+        .join(",");
+    let node_ids = if node_ids.is_empty() {
+        format!("'{}'", scene.root_id)
+    } else {
+        format!("'{}',{node_ids}", scene.root_id)
+    };
+    format!(
+        "(() => {{ const root=document.createElement('div');root.setAttribute('id','{root_id}');root.setAttribute('data-node','');root.setAttribute('style','{root_style}');document.appendChild(root);{item_nodes}return {{sceneId:'{scene_id}',rootId:'{root_id}',nodeIds:[{node_ids}]}}; }})()",
+        root_id = scene.root_id,
+        root_style = scene.root_style,
+        scene_id = scene.scene_id,
+    )
+}
 
 #[derive(Clone, Copy)]
 struct PercentageGapScene {
@@ -683,6 +859,13 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     {
         return Ok(Cow::Borrowed(source));
     }
+    if let Some(scene) = C11_4_AUTO_REPEAT_NEIGHBOR_SCENES
+        .iter()
+        .find(|scene| scene.scene_id == scene_id)
+        .copied()
+    {
+        return Ok(Cow::Owned(auto_repeat_neighbor_scene_source(scene)));
+    }
     if let Some(scene) = C11_4_PERCENTAGE_GAP_SCENES
         .iter()
         .find(|scene| scene.scene_id == scene_id)
@@ -757,13 +940,15 @@ return {{ sceneId:{:?}, rootId:{:?}, nodeIds:[{:?}, {:?}] }};
 #[cfg(test)]
 mod tests {
     use super::{
-        C11_4_GRID_TRACK_SIZING_SCENES, C11_4_IMAGE_FIXED_GUTTER_SCENES, C11_4_IMAGE_TRACK_SCENES,
-        C11_4_PERCENTAGE_GAP_SCENES, c11_4_grid_track_sizing_runtime_source,
+        C11_4_AUTO_REPEAT_NEIGHBOR_SCENES, C11_4_GRID_TRACK_SIZING_SCENES,
+        C11_4_IMAGE_FIXED_GUTTER_SCENES, C11_4_IMAGE_TRACK_SCENES, C11_4_PERCENTAGE_GAP_SCENES,
+        c11_4_grid_track_sizing_runtime_source,
     };
 
     #[test]
     fn exposes_only_bounded_intrinsic_track_sizing_scenes() {
-        assert_eq!(C11_4_GRID_TRACK_SIZING_SCENES.len(), 17);
+        assert_eq!(C11_4_GRID_TRACK_SIZING_SCENES.len(), 20);
+        assert_eq!(C11_4_AUTO_REPEAT_NEIGHBOR_SCENES.len(), 10);
         assert_eq!(C11_4_IMAGE_TRACK_SCENES.len(), 18);
         assert_eq!(C11_4_IMAGE_FIXED_GUTTER_SCENES.len(), 2);
         assert_eq!(C11_4_PERCENTAGE_GAP_SCENES.len(), 6);
@@ -779,6 +964,13 @@ mod tests {
             assert!(source.contains("document.createElement"));
             assert!(source.contains(&format!("sceneId:'{scene_id}'")));
             assert!(c11_4_grid_track_sizing_runtime_source(scene_id).is_ok());
+        }
+        for scene in C11_4_AUTO_REPEAT_NEIGHBOR_SCENES {
+            let source = c11_4_grid_track_sizing_runtime_source(scene.scene_id).unwrap();
+            assert!(source.len() < 4 * 1024);
+            assert!(source.contains("document.createElement('div')"));
+            assert!(source.contains(&format!("sceneId:'{}'", scene.scene_id)));
+            assert_eq!(source.matches("const item").count(), scene.items.len());
         }
         for scene in C11_4_IMAGE_TRACK_SCENES {
             let source = c11_4_grid_track_sizing_runtime_source(scene.scene_id).unwrap();

@@ -126,6 +126,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "auto-fixed-width-item", "minmax-auto-fixed-width-item",
             "fit-content-below-item-size", "spanning-auto-tracks",
             "auto-fill-repeat", "auto-fit-collapse", "auto-fill-track-overflow",
+            "auto-fill-fixed-neighbors", "auto-fit-fixed-neighbors",
+            "auto-fill-pattern-neighbors",
+            "auto-fit-span-neighbors", "auto-fit-empty-neighbors",
+            "auto-fill-prefix-neighbors", "auto-fill-suffix-neighbors",
+            "auto-fill-indefinite-neighbors", "auto-fill-max-size-neighbors",
+            "auto-fill-min-size-neighbors", "auto-fill-overflow-neighbors",
+            "auto-fill-row-neighbors", "auto-fit-row-neighbors",
             "min-content-text-normal", "auto-text-max-content",
             "max-content-text-normal", "fit-content-text-minimum",
             "fit-content-calc-limit", "min-content-text-edge",
@@ -254,6 +261,25 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "grid-gap-cyclic-percent-min-basis":
             case "grid-gap-cyclic-calc-min-basis":
                 return "width=120,height=30";
+            case "auto-fill-fixed-neighbors":
+            case "auto-fit-fixed-neighbors":
+            case "auto-fill-pattern-neighbors":
+                return "width=200,height=60";
+            case "auto-fit-span-neighbors":
+            case "auto-fill-prefix-neighbors":
+            case "auto-fill-suffix-neighbors":
+                return "width=200,height=60";
+            case "auto-fit-empty-neighbors":
+            case "auto-fill-max-size-neighbors":
+            case "auto-fill-min-size-neighbors":
+                return "";
+            case "auto-fill-indefinite-neighbors":
+                return "width=86,height=60";
+            case "auto-fill-overflow-neighbors":
+                return "width=40,height=60";
+            case "auto-fill-row-neighbors":
+            case "auto-fit-row-neighbors":
+                return "width=50,height=200";
             case "spanning-auto-tracks":
                 return "width=100,height=30";
             case "spanning-min-content-items":
@@ -319,6 +345,23 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return "width=96,height=16";
             case "auto-fill-track-overflow":
                 return "width=120,height=16";
+            case "auto-fill-fixed-neighbors":
+            case "auto-fill-pattern-neighbors":
+                return "width=10,height=40";
+            case "auto-fit-fixed-neighbors":
+                return "width=154,height=40";
+            case "auto-fit-empty-neighbors":
+            case "auto-fill-max-size-neighbors":
+            case "auto-fill-min-size-neighbors":
+                return "";
+            case "auto-fit-span-neighbors":
+            case "auto-fill-prefix-neighbors":
+            case "auto-fill-suffix-neighbors":
+            case "auto-fill-indefinite-neighbors":
+            case "auto-fill-overflow-neighbors":
+            case "auto-fill-row-neighbors":
+            case "auto-fit-row-neighbors":
+                return "width=12,height=12";
             case "min-content-text-normal":
             case "fit-content-text-minimum":
                 return "width=70,height=20";
@@ -675,6 +718,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
         switch (sceneId) {
+            case "auto-fill-fixed-neighbors":
+            case "auto-fill-pattern-neighbors":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;"
+                        + "1:node=2,x=190,y=0,width=10,height=40]";
+            case "auto-fit-fixed-neighbors":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;"
+                        + "1:node=2,x=28,y=0,width=154,height=40]";
             case "grid-gap-definite-percent":
                 return c114GapNodeFrames("100", "40", "50", "20");
             case "grid-gap-cyclic-percent":
@@ -736,6 +786,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (sceneId.equals("auto-fit-span-neighbors")) return 3;
+        if (sceneId.equals("auto-fit-empty-neighbors")
+                || sceneId.equals("auto-fill-max-size-neighbors")
+                || sceneId.equals("auto-fill-min-size-neighbors")) return 1;
         return sceneId.startsWith("grid-gap-") ? 5 : 2;
     }
 
@@ -2920,8 +2974,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     logC114GridTrackSizingTraceChunks(c114GridTrackSizingRunId, result);
             if (!result.startsWith("status=0 ") || !result.contains(
                     "layout=ready boxes=" + c114ExpectedBoxCount(c114GridTrackSizingSceneId))
-                    || !result.contains(expectedRootFrame)
-                    || !result.contains(expectedItemFrame)
+                    || (!expectedRootFrame.isEmpty() && !result.contains(expectedRootFrame))
+                    || (!expectedItemFrame.isEmpty() && !result.contains(expectedItemFrame))
                     || (expectedNodeFrames != null && !result.contains(expectedNodeFrames))
                     || !c114ExpectedTextIntrinsicInputs(c114GridTrackSizingSceneId, result)
                     || !c114ExpectedImageIntrinsicInputs(c114GridTrackSizingSceneId, result)) {

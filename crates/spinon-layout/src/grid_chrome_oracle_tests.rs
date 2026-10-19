@@ -770,7 +770,11 @@ fn chrome155_auto_repeat_track_oracle_cases_match_traces_and_frames() {
                 GridContainerInput {
                     columns: vec![case.track],
                     rows: vec![case.row_track],
-                    columns_auto_repeat: Some(case.mode),
+                    columns_auto_repeat: Some(crate::GridAutoRepeat {
+                        mode: case.mode,
+                        start: 0,
+                        end: 1,
+                    }),
                     placement_mode: GridPlacementMode::TrackSizing,
                     ..GridContainerInput::default()
                 },
@@ -892,7 +896,11 @@ fn chrome155_auto_fill_indefinite_grid_repeats_one_fixed_track() {
             GridContainerInput {
                 columns: vec![GridTrackSize::LengthPx(24.0)],
                 rows: vec![GridTrackSize::Auto],
-                columns_auto_repeat: Some(GridAutoRepeatMode::AutoFill),
+                columns_auto_repeat: Some(crate::GridAutoRepeat {
+                    mode: GridAutoRepeatMode::AutoFill,
+                    start: 0,
+                    end: 1,
+                }),
                 placement_mode: GridPlacementMode::TrackSizing,
                 ..GridContainerInput::default()
             },

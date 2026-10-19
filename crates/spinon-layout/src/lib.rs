@@ -37,13 +37,13 @@ pub const MAX_LAYOUT_TREE_DEPTH: usize = 1_024;
 pub use css_math::{LayoutCalcId, LayoutCssMath, LayoutCssMathProperty, LayoutCssMathValue};
 pub use error::LayoutError;
 pub use grid::{
-    GridAutoColumns, GridAutoFlow, GridAutoRepeatMode, GridAutoRows, GridAutoTrackSize,
-    GridContainerInput, GridPlacementMode, GridTrackLengthPercentage, GridTrackMaxSizingFunction,
-    GridTrackMinSizingFunction, GridTrackSize, LayoutGridTrackSizingAxis,
-    LayoutGridTrackSizingContributionKind, LayoutGridTrackSizingContributionTrace,
-    LayoutGridTrackSizingMinimumContributionSource, LayoutGridTrackSizingPassTrace,
-    LayoutGridTrackSizingStageKind, LayoutGridTrackSizingStageTrace, LayoutGridTrackSizingTrace,
-    LayoutGridTrackSizingTrackState,
+    GridAutoColumns, GridAutoFlow, GridAutoRepeat, GridAutoRepeatMode, GridAutoRows,
+    GridAutoTrackSize, GridContainerInput, GridPlacementMode, GridTrackLengthPercentage,
+    GridTrackMaxSizingFunction, GridTrackMinSizingFunction, GridTrackSize,
+    LayoutGridTrackSizingAxis, LayoutGridTrackSizingContributionKind,
+    LayoutGridTrackSizingContributionTrace, LayoutGridTrackSizingMinimumContributionSource,
+    LayoutGridTrackSizingPassTrace, LayoutGridTrackSizingStageKind,
+    LayoutGridTrackSizingStageTrace, LayoutGridTrackSizingTrace, LayoutGridTrackSizingTrackState,
 };
 pub use grid_placement::{GridItemInput, GridPlacementInput};
 pub use host_document::HostTextStyleProfile;

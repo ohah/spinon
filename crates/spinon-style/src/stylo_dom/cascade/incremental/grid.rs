@@ -12,10 +12,10 @@ use style::{
 };
 
 use super::super::{
-    ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRepeatMode,
-    ComputedCssGridAutoRows, ComputedCssGridItemPlacement, ComputedCssGridLayout,
-    ComputedCssGridPlacement, ComputedCssGridTrackBreadth, ComputedCssGridTrackLengthPercentage,
-    ComputedCssGridTrackSize, CssCascadeError,
+    ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRepeat,
+    ComputedCssGridAutoRepeatMode, ComputedCssGridAutoRows, ComputedCssGridItemPlacement,
+    ComputedCssGridLayout, ComputedCssGridPlacement, ComputedCssGridTrackBreadth,
+    ComputedCssGridTrackLengthPercentage, ComputedCssGridTrackSize, CssCascadeError,
 };
 
 const MAX_COMPUTED_GRID_TRACKS: usize = 10_000;
@@ -24,7 +24,7 @@ const MAX_COMPUTED_GRID_LINE_METADATA_BYTES: usize = 1024 * 1024;
 struct ComputedGridTracks {
     tracks: Vec<ComputedCssGridTrackSize>,
     line_names: Vec<Vec<String>>,
-    auto_repeat: Option<ComputedCssGridAutoRepeatMode>,
+    auto_repeat: Option<ComputedCssGridAutoRepeat>,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -359,20 +359,36 @@ fn computed_auto_repeat_tracks(
     allow_intrinsic_tracks: bool,
     allow_auto_repeat: bool,
 ) -> Result<ComputedGridTracks, CssCascadeError> {
-    if !allow_auto_repeat
-        || list.values.len() != 1
-        || list.line_names.len() != 2
-        || list.line_names.iter().any(|names| !names.is_empty())
-    {
+    let has_valid_outer_line_names = list.values.len().checked_add(1)
+        == Some(list.line_names.len())
+        && list.line_names.iter().all(|names| names.is_empty());
+    if !allow_auto_repeat || !has_valid_outer_line_names {
         return Err(unsupported_grid_value(node, property, serialized));
     }
-    let TrackListValue::TrackRepeat(repeat) = &list.values[0] else {
+
+    let mut repeat_index = None;
+    let mut mode = None;
+    for (index, value) in list.values.iter().enumerate() {
+        let TrackListValue::TrackRepeat(repeat) = value else {
+            continue;
+        };
+        let current_mode = match repeat.count {
+            RepeatCount::AutoFill => ComputedCssGridAutoRepeatMode::AutoFill,
+            RepeatCount::AutoFit => ComputedCssGridAutoRepeatMode::AutoFit,
+            RepeatCount::Number(_) => {
+                return Err(unsupported_grid_value(node, property, serialized));
+            }
+        };
+        if repeat_index.replace(index).is_some() {
+            return Err(unsupported_grid_value(node, property, serialized));
+        }
+        mode = Some(current_mode);
+    }
+    let (Some(repeat_index), Some(mode)) = (repeat_index, mode) else {
         return Err(unsupported_grid_value(node, property, serialized));
     };
-    let mode = match repeat.count {
-        RepeatCount::AutoFill => ComputedCssGridAutoRepeatMode::AutoFill,
-        RepeatCount::AutoFit => ComputedCssGridAutoRepeatMode::AutoFit,
-        RepeatCount::Number(_) => return Err(unsupported_grid_value(node, property, serialized)),
+    let Some(TrackListValue::TrackRepeat(repeat)) = list.values.get(repeat_index) else {
+        return Err(unsupported_grid_value(node, property, serialized));
     };
     if repeat.track_sizes.is_empty()
         || repeat.track_sizes.len() > MAX_COMPUTED_GRID_TRACKS
@@ -383,14 +399,33 @@ fn computed_auto_repeat_tracks(
         return Err(unsupported_grid_value(node, property, serialized));
     }
 
+    let prefix_count = repeat_index;
+    let repeat_end = prefix_count
+        .checked_add(repeat.track_sizes.len())
+        .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+    let suffix_count = list.values.len() - repeat_index - 1;
+    let total_track_count = repeat_end
+        .checked_add(suffix_count)
+        .filter(|count| *count <= MAX_COMPUTED_GRID_TRACKS)
+        .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
     let mut tracks = Vec::new();
     reserve_computed_tracks(
         &mut tracks,
-        repeat.track_sizes.len(),
+        total_track_count,
         node,
         property,
         |tracks, count| tracks.try_reserve_exact(count).map_err(|_| ()),
     )?;
+
+    for value in list.values.iter().take(prefix_count) {
+        let TrackListValue::TrackSize(size) = value else {
+            return Err(unsupported_grid_value(node, property, serialized));
+        };
+        let track = track_size(size, allow_intrinsic_tracks)
+            .filter(is_auto_repeat_neighbor_track)
+            .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+        tracks.push(track);
+    }
     for size in repeat.track_sizes.iter() {
         let track = track_size(size, allow_intrinsic_tracks)
             .filter(track_size_is_valid)
@@ -400,11 +435,28 @@ fn computed_auto_repeat_tracks(
         }
         tracks.push(track);
     }
+    for value in list.values.iter().skip(repeat_index + 1) {
+        let TrackListValue::TrackSize(size) = value else {
+            return Err(unsupported_grid_value(node, property, serialized));
+        };
+        let track = track_size(size, allow_intrinsic_tracks)
+            .filter(is_auto_repeat_neighbor_track)
+            .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+        tracks.push(track);
+    }
     Ok(ComputedGridTracks {
         tracks,
         line_names: Vec::new(),
-        auto_repeat: Some(mode),
+        auto_repeat: Some(ComputedCssGridAutoRepeat {
+            mode,
+            start: prefix_count,
+            end: repeat_end,
+        }),
     })
+}
+
+fn is_auto_repeat_neighbor_track(track: &ComputedCssGridTrackSize) -> bool {
+    matches!(track, ComputedCssGridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0)
 }
 
 fn expand_integer_repeats(

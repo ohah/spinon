@@ -1,12 +1,13 @@
 use spinon_core::NodeId;
 use spinon_layout::{
-    GridAutoColumns, GridAutoFlow, GridAutoRows, GridContainerInput, GridPlacementMode,
-    GridTrackLengthPercentage, GridTrackMaxSizingFunction, GridTrackMinSizingFunction,
-    GridTrackSize, LayoutCssMathProperty,
+    GridAutoColumns, GridAutoFlow, GridAutoRepeat, GridAutoRows, GridContainerInput,
+    GridPlacementMode, GridTrackLengthPercentage, GridTrackMaxSizingFunction,
+    GridTrackMinSizingFunction, GridTrackSize, LayoutCssMathProperty,
 };
 use spinon_style::{
-    ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRepeatMode,
-    ComputedCssGridAutoRows, ComputedCssGridLayout, ComputedCssGridTrackSize, ComputedStyleProfile,
+    ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRepeat,
+    ComputedCssGridAutoRepeatMode, ComputedCssGridAutoRows, ComputedCssGridLayout,
+    ComputedCssGridTrackSize, ComputedStyleProfile,
 };
 
 use super::super::typed_math::CssMathProjector;
@@ -189,8 +190,8 @@ fn project_grid_layout_with_reservations(
     Ok(GridContainerInput {
         columns,
         rows,
-        columns_auto_repeat: grid.columns_auto_repeat.map(project_auto_repeat_mode),
-        rows_auto_repeat: grid.rows_auto_repeat.map(project_auto_repeat_mode),
+        columns_auto_repeat: grid.columns_auto_repeat.map(project_auto_repeat),
+        rows_auto_repeat: grid.rows_auto_repeat.map(project_auto_repeat),
         columns_line_names,
         rows_line_names,
         auto_flow: match grid.auto_flow {
@@ -242,6 +243,14 @@ fn project_auto_repeat_mode(
     match mode {
         ComputedCssGridAutoRepeatMode::AutoFill => spinon_layout::GridAutoRepeatMode::AutoFill,
         ComputedCssGridAutoRepeatMode::AutoFit => spinon_layout::GridAutoRepeatMode::AutoFit,
+    }
+}
+
+fn project_auto_repeat(auto_repeat: ComputedCssGridAutoRepeat) -> GridAutoRepeat {
+    GridAutoRepeat {
+        mode: project_auto_repeat_mode(auto_repeat.mode),
+        start: auto_repeat.start,
+        end: auto_repeat.end,
     }
 }
 

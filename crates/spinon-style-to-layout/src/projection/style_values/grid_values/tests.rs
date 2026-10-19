@@ -4,11 +4,11 @@ use super::{
 };
 use crate::projection::typed_math::CssMathProjector;
 use spinon_core::NodeId;
-use spinon_layout::LayoutError;
+use spinon_layout::{GridTrackSize, LayoutError};
 use spinon_style::{
-    ComputedCssGridArea, ComputedCssGridAutoFlow, ComputedCssGridAutoRepeatMode,
-    ComputedCssGridAutoRows, ComputedCssGridLayout, ComputedCssGridTemplateAreas,
-    ComputedCssGridTrackSize, ComputedStyleProfile,
+    ComputedCssGridArea, ComputedCssGridAutoFlow, ComputedCssGridAutoRepeat,
+    ComputedCssGridAutoRepeatMode, ComputedCssGridAutoRows, ComputedCssGridLayout,
+    ComputedCssGridTemplateAreas, ComputedCssGridTrackSize, ComputedStyleProfile,
 };
 
 #[test]
@@ -339,12 +339,20 @@ fn track_sizing_profile_projects_typed_functions_and_axis_scoped_calc_ids() {
 fn track_sizing_profile_projects_auto_repeat_pattern_and_mode() {
     let node = NodeId::new(11_108).unwrap();
     let grid = ComputedCssGridLayout {
-        columns: vec![ComputedCssGridTrackSize::MinMax {
-            min: spinon_style::ComputedCssGridTrackBreadth::LengthPx(24.0),
-            max: spinon_style::ComputedCssGridTrackBreadth::Fraction(1.0),
-        }],
+        columns: vec![
+            ComputedCssGridTrackSize::LengthPx(20.0),
+            ComputedCssGridTrackSize::MinMax {
+                min: spinon_style::ComputedCssGridTrackBreadth::LengthPx(24.0),
+                max: spinon_style::ComputedCssGridTrackBreadth::Fraction(1.0),
+            },
+            ComputedCssGridTrackSize::LengthPx(10.0),
+        ],
         rows: vec![ComputedCssGridTrackSize::LengthPx(40.0)],
-        columns_auto_repeat: Some(ComputedCssGridAutoRepeatMode::AutoFill),
+        columns_auto_repeat: Some(ComputedCssGridAutoRepeat {
+            mode: ComputedCssGridAutoRepeatMode::AutoFill,
+            start: 1,
+            end: 2,
+        }),
         rows_auto_repeat: None,
         columns_line_names: Vec::new(),
         rows_line_names: vec![Vec::new(), Vec::new()],
@@ -363,9 +371,15 @@ fn track_sizing_profile_projects_auto_repeat_pattern_and_mode() {
 
     assert_eq!(
         projected.columns_auto_repeat,
-        Some(spinon_layout::GridAutoRepeatMode::AutoFill)
+        Some(spinon_layout::GridAutoRepeat {
+            mode: spinon_layout::GridAutoRepeatMode::AutoFill,
+            start: 1,
+            end: 2,
+        })
     );
     assert_eq!(projected.rows_auto_repeat, None);
     assert!(projected.columns_line_names.is_empty());
-    assert_eq!(projected.columns.len(), 1);
+    assert_eq!(projected.columns.len(), 3);
+    assert_eq!(projected.columns[0], GridTrackSize::LengthPx(20.0));
+    assert_eq!(projected.columns[2], GridTrackSize::LengthPx(10.0));
 }

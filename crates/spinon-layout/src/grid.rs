@@ -59,11 +59,21 @@ pub enum GridTrackSize {
     FitContent(GridTrackLengthPercentage),
 }
 
-/// CSS Grid의 auto-repeat 방향입니다. 해당 축의 `columns` 또는 `rows`는 반복 fragment입니다.
+/// CSS Grid auto-repeat의 `auto-fill`/`auto-fit` 방식입니다.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum GridAutoRepeatMode {
     AutoFill,
     AutoFit,
+}
+
+/// Explicit track 목록에서 auto-repeat fragment의 위치와 repetition 방식을 보존합니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub struct GridAutoRepeat {
+    pub mode: GridAutoRepeatMode,
+    /// `columns` 또는 `rows`에서 반복 fragment가 시작하는 inclusive track index입니다.
+    pub start: usize,
+    /// `columns` 또는 `rows`에서 반복 fragment가 끝나는 exclusive track index입니다.
+    pub end: usize,
 }
 
 /// C11.4 Taffy 후보 trace에 기록되는 축입니다.
@@ -215,14 +225,14 @@ pub type GridAutoColumns = GridAutoTrackSize;
 /// 동일 revision의 계산된 Grid container 입력입니다.
 #[derive(Clone, Debug, Default, PartialEq)]
 pub struct GridContainerInput {
-    /// auto-repeat이 없으면 explicit track 목록, 있으면 반복할 fragment입니다.
+    /// Auto-repeat이 있으면 반복 fragment를 authored 순서로 한 번 포함하는 explicit track 목록입니다.
     pub columns: Vec<GridTrackSize>,
-    /// auto-repeat이 없으면 explicit track 목록, 있으면 반복할 fragment입니다.
+    /// Auto-repeat이 있으면 반복 fragment를 authored 순서로 한 번 포함하는 explicit track 목록입니다.
     pub rows: Vec<GridTrackSize>,
-    /// C11.4 제한 profile에서 columns 전체를 반복할 때의 종류입니다.
-    pub columns_auto_repeat: Option<GridAutoRepeatMode>,
-    /// C11.4 제한 profile에서 rows 전체를 반복할 때의 종류입니다.
-    pub rows_auto_repeat: Option<GridAutoRepeatMode>,
+    /// C11.4 제한 profile에서 반복할 columns fragment와 방식입니다.
+    pub columns_auto_repeat: Option<GridAutoRepeat>,
+    /// C11.4 제한 profile에서 반복할 rows fragment와 방식입니다.
+    pub rows_auto_repeat: Option<GridAutoRepeat>,
     /// CSS Grid의 explicit column 경계 이름입니다. 배열은 track 수보다 하나 큽니다.
     pub columns_line_names: Vec<Vec<String>>,
     /// CSS Grid의 explicit row 경계 이름입니다. 배열은 track 수보다 하나 큽니다.
@@ -388,14 +398,42 @@ pub(super) fn validate_grid_layout(
                     },
                 });
             }
-            let (property, repeat_tracks) = if container.columns_auto_repeat.is_some() {
-                ("grid-template-columns", &container.columns)
+            let (property, tracks, auto_repeat) =
+                match (container.columns_auto_repeat, container.rows_auto_repeat) {
+                    (Some(auto_repeat), None) => {
+                        ("grid-template-columns", &container.columns, auto_repeat)
+                    }
+                    (None, Some(auto_repeat)) => {
+                        ("grid-template-rows", &container.rows, auto_repeat)
+                    }
+                    _ => {
+                        return Err(LayoutError::InvalidGridTrackList {
+                            node: node.id,
+                            property: "grid-template-columns",
+                        });
+                    }
+                };
+            let range_is_valid =
+                auto_repeat.start < auto_repeat.end && auto_repeat.end <= tracks.len();
+            let (prefix, repeat_tracks, suffix) = if range_is_valid {
+                (
+                    &tracks[..auto_repeat.start],
+                    &tracks[auto_repeat.start..auto_repeat.end],
+                    &tracks[auto_repeat.end..],
+                )
             } else {
-                ("grid-template-rows", &container.rows)
+                return Err(LayoutError::InvalidGridTrackList {
+                    node: node.id,
+                    property,
+                });
             };
-            if !repeat_tracks
+            if !prefix
                 .iter()
-                .all(auto_repeat_track_has_fixed_minimum)
+                .chain(suffix.iter())
+                .all(auto_repeat_neighbor_track_is_fixed_px)
+                || !repeat_tracks
+                    .iter()
+                    .all(auto_repeat_track_has_fixed_minimum)
             {
                 return Err(LayoutError::InvalidGridTrackList {
                     node: node.id,
@@ -668,6 +706,10 @@ fn auto_repeat_track_has_fixed_minimum(track: &GridTrackSize) -> bool {
         } => value.is_finite() && *value >= 0.0,
         _ => false,
     }
+}
+
+fn auto_repeat_neighbor_track_is_fixed_px(track: &GridTrackSize) -> bool {
+    matches!(track, GridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0)
 }
 
 fn valid_min_track_sizing_function(value: GridTrackMinSizingFunction) -> bool {

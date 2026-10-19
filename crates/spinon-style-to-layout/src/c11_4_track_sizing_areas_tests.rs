@@ -373,3 +373,6 @@ fn track_sizing_profile_lays_out_css_auto_repeat_modes() {
         assert_eq!(frame.height, 20.0, "{keyword}");
     }
 }
+
+#[path = "c11_4_track_sizing_areas_tests/auto_repeat_explicit_neighbors.rs"]
+mod auto_repeat_explicit_neighbors;

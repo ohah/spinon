@@ -167,11 +167,96 @@ fn track_sizing_profile_preserves_fixed_minimum_auto_repeat_modes() {
         .unwrap_or_else(|error| panic!("{keyword} cascade: {error:?}"));
         let grid = snapshot.elements[0].grid_layout.as_ref().unwrap();
 
-        assert_eq!(grid.columns_auto_repeat, Some(expected), "{keyword}");
+        assert_eq!(
+            grid.columns_auto_repeat,
+            Some(ComputedCssGridAutoRepeat {
+                mode: expected,
+                start: 0,
+                end: 1,
+            }),
+            "{keyword}"
+        );
         assert_eq!(grid.rows_auto_repeat, None, "{keyword}");
         assert_eq!(grid.columns.len(), 1, "{keyword} retains one pattern track");
         assert_eq!(grid.columns_line_names, Vec::<Vec<String>>::new());
         assert_eq!(grid.rows, [ComputedCssGridTrackSize::LengthPx(40.0)]);
+    }
+}
+
+#[test]
+fn track_sizing_profile_preserves_auto_repeat_neighbors_and_fragment_order() {
+    let cases = [
+        (
+            "20px repeat(auto-fill,minmax(24px,1fr)) 10px",
+            vec![
+                ComputedCssGridTrackSize::LengthPx(20.0),
+                ComputedCssGridTrackSize::MinMax {
+                    min: ComputedCssGridTrackBreadth::LengthPx(24.0),
+                    max: ComputedCssGridTrackBreadth::Fraction(1.0),
+                },
+                ComputedCssGridTrackSize::LengthPx(10.0),
+            ],
+            (1, 2),
+        ),
+        (
+            "repeat(auto-fit,40px) 10px",
+            vec![
+                ComputedCssGridTrackSize::LengthPx(40.0),
+                ComputedCssGridTrackSize::LengthPx(10.0),
+            ],
+            (0, 1),
+        ),
+        (
+            "20px repeat(auto-fill,40px)",
+            vec![
+                ComputedCssGridTrackSize::LengthPx(20.0),
+                ComputedCssGridTrackSize::LengthPx(40.0),
+            ],
+            (1, 2),
+        ),
+        (
+            "20px repeat(auto-fill,minmax(30px,1fr) 20px) 10px",
+            vec![
+                ComputedCssGridTrackSize::LengthPx(20.0),
+                ComputedCssGridTrackSize::MinMax {
+                    min: ComputedCssGridTrackBreadth::LengthPx(30.0),
+                    max: ComputedCssGridTrackBreadth::Fraction(1.0),
+                },
+                ComputedCssGridTrackSize::LengthPx(20.0),
+                ComputedCssGridTrackSize::LengthPx(10.0),
+            ],
+            (1, 3),
+        ),
+    ];
+
+    for (columns, expected_tracks, (start, end)) in cases {
+        let fixture = fixture(&format!(
+            "display:grid;box-sizing:border-box;width:200px;height:200px;grid-template-columns:{columns};grid-template-rows:40px;margin:0;padding:0"
+        ));
+        let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+            &fixture.view,
+            &[],
+            viewport(),
+            Default::default(),
+        )
+        .unwrap_or_else(|error| panic!("{columns}: {error:?}"));
+        let grid = snapshot.elements[0].grid_layout.as_ref().unwrap();
+
+        assert_eq!(grid.columns, expected_tracks, "{columns}");
+        assert_eq!(
+            grid.columns_auto_repeat,
+            Some(ComputedCssGridAutoRepeat {
+                mode: if columns.contains("auto-fit") {
+                    ComputedCssGridAutoRepeatMode::AutoFit
+                } else {
+                    ComputedCssGridAutoRepeatMode::AutoFill
+                },
+                start,
+                end,
+            }),
+            "{columns}"
+        );
+        assert_eq!(grid.columns_line_names, Vec::<Vec<String>>::new());
     }
 }
 
@@ -191,9 +276,14 @@ fn auto_repeat_rejects_profiles_and_shapes_outside_the_supported_subset() {
     );
 
     for style in [
-        "grid-template-columns:20px repeat(auto-fill,minmax(24px,1fr))",
+        "grid-template-columns:20% repeat(auto-fill,minmax(24px,1fr))",
+        "grid-template-columns:minmax(10px,20px) repeat(auto-fill,minmax(24px,1fr))",
+        "grid-template-columns:repeat(2,20px) repeat(auto-fill,minmax(24px,1fr))",
+        "grid-template-columns:20px repeat(auto-fill,minmax(24px,1fr)) repeat(auto-fit,24px)",
+        "grid-template-columns:[neighbor] 20px repeat(auto-fill,minmax(24px,1fr))",
         "grid-template-columns:repeat(auto-fit,[named] minmax(24px,1fr))",
         "grid-template-columns:repeat(auto-fill,minmax(24px,1fr));grid-template-rows:repeat(auto-fit,minmax(24px,1fr))",
+        "grid-template-columns:repeat(auto-fill,minmax(24px,1fr));grid-template-rows:40px;grid-template-areas:\"area\"",
     ] {
         let fixture = fixture(&format!(
             "display:grid;box-sizing:border-box;width:300px;height:200px;{style};margin:0;padding:0"
