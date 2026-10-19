@@ -1,0 +1,65 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+error   build failed in 0.48s (node)
+error   build failed in 0.59s (web)
+error   Build errors: 
+File: ./build/spinon/c11-4-tailnet-root-post349-20261019/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/rspress.tailnet-sync.config.ts:3:1-70
+  × Module not found: Can't resolve '../../../../packages/docs/rspress.config.ts' in '<worktree>/build/spinon/c11-4-tailnet-root-post349-20261019/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19'
+   ╭─[3:0]
+ 1 │ import path from 'node:path';
+ 2 │ import { defineConfig } from '@rspress/core';
+ 3 │ import baseConfig from '../../../../packages/docs/rspress.config.ts';
+   · ─────────────────────────────────────────────────────────────────────
+ 4 │ export default defineConfig({
+ 5 │     ...baseConfig,
+   ╰────
+Import traces (entry → error):
+  ../../var/folders/51/mr5cjhg13v324f1vgg9m237c0000gn/T/bunx-501-@rspress/core@2.0.22/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../var/folders/51/mr5cjhg13v324f1vgg9m237c0000gn/T/bunx-501-@rspress/core@2.0.22/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ./build/spinon/c11-4-tailnet-root-post349-20261019/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/rspress.tailnet-sync.config.ts ×
+
+File: node:path:1:1
+  × Module build failed:
+  ╰─▶   × Reading from "node:path" is not handled by plugins (Unhandled scheme).
+        │ Rspack supports "data:" and "file:" URIs by default.
+        │ You may need an additional plugin to handle "node:" URIs.
+      
+Import traces (entry → error):
+  ../../var/folders/51/mr5cjhg13v324f1vgg9m237c0000gn/T/bunx-501-@rspress/core@2.0.22/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../var/folders/51/mr5cjhg13v324f1vgg9m237c0000gn/T/bunx-501-@rspress/core@2.0.22/node_modules/@rspress/core/dist/runtime/route.js
+  ... (1 hidden)
+  ./build/spinon/c11-4-tailnet-root-post349-20261019/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/rspress.tailnet-sync.config.ts
+  node:path ×
+
+Error: "node:*" is a built-in Node.js module and cannot be imported in client-side code.
+
+Solution: Check if you need to import Node.js module.
+  - If not needed, remove the import.
+  - If needed, use "@rsbuild/plugin-node-polyfill" to polyfill it. (See https://npmjs.com/package/@rsbuild/plugin-node-polyfill)
+
+File: ./build/spinon/c11-4-tailnet-root-post349-20261019/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/rspress.tailnet-sync.config.ts:3:1-70
+  × Module not found: Can't resolve '../../../../packages/docs/rspress.config.ts' in '<worktree>/build/spinon/c11-4-tailnet-root-post349-20261019/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19'
+   ╭─[3:0]
+ 1 │ import path from 'node:path';
+ 2 │ import { defineConfig } from '@rspress/core';
+ 3 │ import baseConfig from '../../../../packages/docs/rspress.config.ts';
+   · ─────────────────────────────────────────────────────────────────────
+ 4 │ export default defineConfig({
+ 5 │     ...baseConfig,
+   ╰────
+Import traces (entry → error):
+  ../../var/folders/51/mr5cjhg13v324f1vgg9m237c0000gn/T/bunx-501-@rspress/core@2.0.22/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ./build/spinon/c11-4-tailnet-root-post349-20261019/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/rspress.tailnet-sync.config.ts ×
+
+error   Rspack build failed.
+    at <anonymous> (<bunx-cache>/node_modules/@rsbuild/core/dist/m.js:4321:141)
+    at <anonymous> (<bunx-cache>/node_modules/@rspack/core/dist/index.js:9285:31)
+    at callback1 (<bunx-cache>/node_modules/@rspack/core/dist/index.js:9293:78)
+    at <anonymous> (<bunx-cache>/node_modules/@rspack/core/dist/index.js:9299:36)
+    at processTicksAndRejections (native:7:39)
+ObjectRef is not unref, it considered as a memory leak
+ObjectRef is not unref, it considered as a memory leak
+ObjectRef is not unref, it considered as a memory leak

@@ -1,0 +1,247 @@
+{
+  "pass": "pass-4",
+  "backup_count": 30,
+  "all_verified": true,
+  "files": [
+    {
+      "path": "0001-conformance.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/0001-conformance.html",
+      "bytes": 39785,
+      "sha256": "ba0c0668f4cbcd147c68b63851c811ee310a629d5d2ac205e12c76cfcd28ff9c",
+      "expected_sha256": "ba0c0668f4cbcd147c68b63851c811ee310a629d5d2ac205e12c76cfcd28ff9c",
+      "verified": true
+    },
+    {
+      "path": "404.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/404.html",
+      "bytes": 8512,
+      "sha256": "656610808c6e2dc3ba57771487292c68dafed4b9bfed98ec7babc8d74984a4e6",
+      "expected_sha256": "656610808c6e2dc3ba57771487292c68dafed4b9bfed98ec7babc8d74984a4e6",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/STATUS.html",
+      "bytes": 387818,
+      "sha256": "ef601b26fe193cc60ea8419876a68608918d68edf306b5bb7882c939bfc8601a",
+      "expected_sha256": "ef601b26fe193cc60ea8419876a68608918d68edf306b5bb7882c939bfc8601a",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/0059-c11-grid-layout.html",
+      "bytes": 87104,
+      "sha256": "8500ee64e6fb22c56b55649153c4d8f6be9920eab3c1d80d351ada086ee7a032",
+      "expected_sha256": "8500ee64e6fb22c56b55649153c4d8f6be9920eab3c1d80d351ada086ee7a032",
+      "verified": true
+    },
+    {
+      "path": "internal/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/README.html",
+      "bytes": 174877,
+      "sha256": "baa636c634fd60b62e9926278e5b7bea7968cc41a0014388c4f21e2af5816c86",
+      "expected_sha256": "baa636c634fd60b62e9926278e5b7bea7968cc41a0014388c4f21e2af5816c86",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/README.html",
+      "bytes": 32886,
+      "sha256": "f911afa5ced35112f94bf1475351bcca8c576b8cc60079a273faf25274af7498",
+      "expected_sha256": "f911afa5ced35112f94bf1475351bcca8c576b8cc60079a273faf25274af7498",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/implementation-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/implementation-review-20.html",
+      "bytes": 31542,
+      "sha256": "19bb44b08356a7a5d0698a4ac317c4e462156c485b22f480e239b1ca64e7c652",
+      "expected_sha256": "19bb44b08356a7a5d0698a4ac317c4e462156c485b22f480e239b1ca64e7c652",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/pr-delta-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/pr-delta-review-30.html",
+      "bytes": 31859,
+      "sha256": "2b9c94048e7ff3d8b4130fb6e1644956a71bb17a604320846c18c110aa860694",
+      "expected_sha256": "2b9c94048e7ff3d8b4130fb6e1644956a71bb17a604320846c18c110aa860694",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-tailnet-sync-2026-10-19/README.html",
+      "bytes": 28443,
+      "sha256": "6e57396bfb43819b2a0f266de750983b746a59e6ad021a7cfaa91b23069fa67d",
+      "expected_sha256": "6e57396bfb43819b2a0f266de750983b746a59e6ad021a7cfaa91b23069fa67d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "bytes": 29173,
+      "sha256": "228080ac5c9b3803e177713b25d834262f56b56e167aa23f2cc54d787487f6d3",
+      "expected_sha256": "228080ac5c9b3803e177713b25d834262f56b56e167aa23f2cc54d787487f6d3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/README.html",
+      "bytes": 27619,
+      "sha256": "29fb8d448e139a047979cf08c3a030c2461702c5f43b27596c0bf86ec96f47ca",
+      "expected_sha256": "29fb8d448e139a047979cf08c3a030c2461702c5f43b27596c0bf86ec96f47ca",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/backup-verification-pass3.json",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/backup-verification-pass3.json",
+      "bytes": 9889,
+      "sha256": "dc75ffd2bab336f289287e80b3d37e403865f83a484437f4b5991f721347d2e7",
+      "expected_sha256": "dc75ffd2bab336f289287e80b3d37e403865f83a484437f4b5991f721347d2e7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/backup-verification.json",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/backup-verification.json",
+      "bytes": 8777,
+      "sha256": "2dd4d4628367fcf0cacad8b3951a17f602b64dc2a18928296e5a82974aca856e",
+      "expected_sha256": "2dd4d4628367fcf0cacad8b3951a17f602b64dc2a18928296e5a82974aca856e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/pr-delta-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/pr-delta-review-30.html",
+      "bytes": 28762,
+      "sha256": "6eb08319905d7bd5b272aed6a44b123444b4a6713d80c1c0f760393a1f3229b4",
+      "expected_sha256": "6eb08319905d7bd5b272aed6a44b123444b4a6713d80c1c0f760393a1f3229b4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/preflight-pass3.json",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/preflight-pass3.json",
+      "bytes": 137540,
+      "sha256": "144f71d4215a706efc8da55ee5b661ccf3ccfb41f25bd0ddb517a1b3d9c09936",
+      "expected_sha256": "144f71d4215a706efc8da55ee5b661ccf3ccfb41f25bd0ddb517a1b3d9c09936",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/preflight.json",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/preflight.json",
+      "bytes": 136680,
+      "sha256": "b95d8839561f272ff59e080aa6895cba211e35969c61abd2c5127f1950b391a7",
+      "expected_sha256": "b95d8839561f272ff59e080aa6895cba211e35969c61abd2c5127f1950b391a7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/rspress.tailnet-sync.config.ts",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/rspress.tailnet-sync.config.ts",
+      "bytes": 515,
+      "sha256": "df181167d816eca3aa905772fbc210d9e06ff3d26ee844956ff3bda3398d9616",
+      "expected_sha256": "df181167d816eca3aa905772fbc210d9e06ff3d26ee844956ff3bda3398d9616",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/selected-build-command-order-failure.log",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/selected-build-command-order-failure.log",
+      "bytes": 1287,
+      "sha256": "41a9aa1f237b286a8af84cd348b737ad3cef3ecddb815affea495956f53d003f",
+      "expected_sha256": "41a9aa1f237b286a8af84cd348b737ad3cef3ecddb815affea495956f53d003f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/selected-build-config-bundling-failure.log",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/selected-build-config-bundling-failure.log",
+      "bytes": 4709,
+      "sha256": "66a6efabc35abec02b0a21bbd0082606986d1811269ac8628b1d61cbd97cadce",
+      "expected_sha256": "66a6efabc35abec02b0a21bbd0082606986d1811269ac8628b1d61cbd97cadce",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/sync-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/sync-review-20.html",
+      "bytes": 27660,
+      "sha256": "ce80d0ab94cc54affb0ae1327505169db020f075b2d61ac812d61459e21790f0",
+      "expected_sha256": "ce80d0ab94cc54affb0ae1327505169db020f075b2d61ac812d61459e21790f0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/README.html",
+      "bytes": 40005,
+      "sha256": "bdbc3573ac1d525f234745d3a8b2fc6256999a0d2eb93ca787ccd31e0c7f1ad9",
+      "expected_sha256": "bdbc3573ac1d525f234745d3a8b2fc6256999a0d2eb93ca787ccd31e0c7f1ad9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/build-initial-header-guard-failure.log",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/build-initial-header-guard-failure.log",
+      "bytes": 3015,
+      "sha256": "2ab3381367f9140215b4e5f02b600ae56ddb14ec2bdd211b7da7cff033fbcad8",
+      "expected_sha256": "2ab3381367f9140215b4e5f02b600ae56ddb14ec2bdd211b7da7cff033fbcad8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/build.log",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/build.log",
+      "bytes": 4645,
+      "sha256": "0f47625a4849da340a460260d25e63a2408fd9ddf0d00e9b0ffce95c00a666f0",
+      "expected_sha256": "0f47625a4849da340a460260d25e63a2408fd9ddf0d00e9b0ffce95c00a666f0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "bytes": 31282,
+      "sha256": "0c4862b0562e0ae64e6d7883bad9f9fae690a3d15d7857a3de55de3736611775",
+      "expected_sha256": "0c4862b0562e0ae64e6d7883bad9f9fae690a3d15d7857a3de55de3736611775",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/build-initial-swift-selector-failure.log",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/build-initial-swift-selector-failure.log",
+      "bytes": 107954,
+      "sha256": "629e4f893b6469435643b5c9876b6e6e43b5def75e302b00dc40a08ce867382b",
+      "expected_sha256": "629e4f893b6469435643b5c9876b6e6e43b5def75e302b00dc40a08ce867382b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/build.log",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/build.log",
+      "bytes": 93466,
+      "sha256": "db48867a71ad9c91f03449489ccf91bb897701bff9dc3e7a9aabe22dd5a1d332",
+      "expected_sha256": "db48867a71ad9c91f03449489ccf91bb897701bff9dc3e7a9aabe22dd5a1d332",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "bytes": 29822,
+      "sha256": "739a3c150694644b39519ff72433680be668c343fdc57f070edc96b9f470a8dd",
+      "expected_sha256": "739a3c150694644b39519ff72433680be668c343fdc57f070edc96b9f470a8dd",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/plan/c11-4-grid-track-sizing.html",
+      "bytes": 69136,
+      "sha256": "79e412a36d5d8d62427e6001d2e5391ebaa12479c77f32dcdf0aaaa10406d30e",
+      "expected_sha256": "79e412a36d5d8d62427e6001d2e5391ebaa12479c77f32dcdf0aaaa10406d30e",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/plan/c11-css-grid.html",
+      "bytes": 58152,
+      "sha256": "a9f50c5d3e6c0a25ec17127d4e1f4fe1fb35910b6c8279e4df01373b286e4977",
+      "expected_sha256": "a9f50c5d3e6c0a25ec17127d4e1f4fe1fb35910b6c8279e4df01373b286e4977",
+      "verified": true
+    },
+    {
+      "path": "static/js/6.a1647de10f.js",
+      "backup_path": "SpinonPreviewBackups/c11-4-text-intrinsic-tailnet-sync-post-349-20261019/pass-4/static/js/6.a1647de10f.js",
+      "bytes": 217064,
+      "sha256": "205944cdaf71222962feb4ee4d4d0c92c782eecda5d892a18f72c3b456ce37ac",
+      "expected_sha256": "205944cdaf71222962feb4ee4d4d0c92c782eecda5d892a18f72c3b456ce37ac",
+      "verified": true
+    }
+  ]
+}

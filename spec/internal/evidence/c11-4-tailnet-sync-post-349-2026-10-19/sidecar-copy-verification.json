@@ -1,0 +1,31 @@
+{
+  "pass": "pass-2",
+  "sidecar_count": 4,
+  "all_verified": true,
+  "files": [
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/preflight.json",
+      "bytes": 136680,
+      "sha256": "b95d8839561f272ff59e080aa6895cba211e35969c61abd2c5127f1950b391a7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/backup-verification.json",
+      "bytes": 8777,
+      "sha256": "2dd4d4628367fcf0cacad8b3951a17f602b64dc2a18928296e5a82974aca856e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/copy-verification.json",
+      "bytes": 82352,
+      "sha256": "bc3950c36ceb88662024ec981a1211a92fdfaefe9f98e7bdb44f5b72ded4d508",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/selected-build-final.log",
+      "bytes": 7886,
+      "sha256": "7cdd1b2b31c51c221bb1e4b77de099663d3f85469526f694fa7a7f6e2fe6c91f",
+      "verified": true
+    }
+  ]
+}

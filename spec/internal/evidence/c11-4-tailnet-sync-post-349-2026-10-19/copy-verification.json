@@ -1,0 +1,1791 @@
+{
+  "pass": "pass-2",
+  "file_count": 223,
+  "all_verified": true,
+  "files": [
+    {
+      "path": "0001-conformance.html",
+      "status": "replace",
+      "bytes": 39785,
+      "sha256": "7fb6c24f7428cec07ba1eadd5c8ec83ca3d1f77a8a812c5a7fc1b485e2d1c604",
+      "expected_sha256": "7fb6c24f7428cec07ba1eadd5c8ec83ca3d1f77a8a812c5a7fc1b485e2d1c604",
+      "verified": true
+    },
+    {
+      "path": "404.html",
+      "status": "replace",
+      "bytes": 8512,
+      "sha256": "f2ae104d21e12aaecb2e8a173e21f62eee9b7ac824f4a9e125a955d460bd8f8b",
+      "expected_sha256": "f2ae104d21e12aaecb2e8a173e21f62eee9b7ac824f4a9e125a955d460bd8f8b",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "status": "replace",
+      "bytes": 387818,
+      "sha256": "9a5b7fc8f623c3fde146628c74a885293b627b112965f4340d2970ea636e3753",
+      "expected_sha256": "9a5b7fc8f623c3fde146628c74a885293b627b112965f4340d2970ea636e3753",
+      "verified": true
+    },
+    {
+      "path": "icon.svg",
+      "status": "same",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "status": "replace",
+      "bytes": 87104,
+      "sha256": "62f42a85b76d2b2c303964c8b548b289a0dffcc6df7b3611fe660b2daddec5d9",
+      "expected_sha256": "62f42a85b76d2b2c303964c8b548b289a0dffcc6df7b3611fe660b2daddec5d9",
+      "verified": true
+    },
+    {
+      "path": "internal/README.html",
+      "status": "replace",
+      "bytes": 174877,
+      "sha256": "d55985c2afda9da3adce0aa77df00fd9db6835e3dce1b6297a47721e87473539",
+      "expected_sha256": "d55985c2afda9da3adce0aa77df00fd9db6835e3dce1b6297a47721e87473539",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/README.html",
+      "status": "replace",
+      "bytes": 32886,
+      "sha256": "88fa2786c720e198f472cb6c0de14769b720521dd88311e41eab6cdd14e43c6b",
+      "expected_sha256": "88fa2786c720e198f472cb6c0de14769b720521dd88311e41eab6cdd14e43c6b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/implementation-review-20.html",
+      "status": "replace",
+      "bytes": 31542,
+      "sha256": "68c9946daa618c422c13ba6c56d3d499750d986c42e716e215c43e872fff8fcd",
+      "expected_sha256": "68c9946daa618c422c13ba6c56d3d499750d986c42e716e215c43e872fff8fcd",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-track-sizing-app-text-intrinsic-2026-10-19/pr-delta-review-30.html",
+      "status": "replace",
+      "bytes": 31859,
+      "sha256": "446854cc4775da5a073ab62ba32b0fe081c7c684990ea75c10bdb2b1ea5ca433",
+      "expected_sha256": "446854cc4775da5a073ab62ba32b0fe081c7c684990ea75c10bdb2b1ea5ca433",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/README.html",
+      "status": "replace",
+      "bytes": 28443,
+      "sha256": "277dff9672f44ef5228e3793ad9ad1c802924bcebbce93eac981e2a91e76a760",
+      "expected_sha256": "277dff9672f44ef5228e3793ad9ad1c802924bcebbce93eac981e2a91e76a760",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "status": "replace",
+      "bytes": 29173,
+      "sha256": "b86566adfcb686dfaf7dae23ab52fdd6b31c513962eb400a4998ce7e2361d8b9",
+      "expected_sha256": "b86566adfcb686dfaf7dae23ab52fdd6b31c513962eb400a4998ce7e2361d8b9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/README.html",
+      "status": "replace",
+      "bytes": 27450,
+      "sha256": "90fdfe0564220ab8cc423b03b48d945da5e02870a20d941ec3a166a93e532aa0",
+      "expected_sha256": "90fdfe0564220ab8cc423b03b48d945da5e02870a20d941ec3a166a93e532aa0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/pr-delta-review-30.html",
+      "status": "create",
+      "bytes": 28762,
+      "sha256": "86305d5fb9e127ef3e6978cc8d437c81810d5a0c51623a9d49a4aac702fc8593",
+      "expected_sha256": "86305d5fb9e127ef3e6978cc8d437c81810d5a0c51623a9d49a4aac702fc8593",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/rspress.tailnet-sync.config.ts",
+      "status": "replace",
+      "bytes": 515,
+      "sha256": "5295db2a7af2669597448ecdb541ee5d16771dfebb1fa463e9689456c9bfffaa",
+      "expected_sha256": "5295db2a7af2669597448ecdb541ee5d16771dfebb1fa463e9689456c9bfffaa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/selected-build-command-order-failure.log",
+      "status": "same",
+      "bytes": 1287,
+      "sha256": "41a9aa1f237b286a8af84cd348b737ad3cef3ecddb815affea495956f53d003f",
+      "expected_sha256": "41a9aa1f237b286a8af84cd348b737ad3cef3ecddb815affea495956f53d003f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/selected-build-config-bundling-failure.log",
+      "status": "same",
+      "bytes": 4709,
+      "sha256": "66a6efabc35abec02b0a21bbd0082606986d1811269ac8628b1d61cbd97cadce",
+      "expected_sha256": "66a6efabc35abec02b0a21bbd0082606986d1811269ac8628b1d61cbd97cadce",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/selected-build.log",
+      "status": "same",
+      "bytes": 7310,
+      "sha256": "8553fb38fc6fa0bf671c4db25221bbf54d0566c7632c2e441606a894a138432f",
+      "expected_sha256": "8553fb38fc6fa0bf671c4db25221bbf54d0566c7632c2e441606a894a138432f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/sync-review-20.html",
+      "status": "create",
+      "bytes": 27660,
+      "sha256": "dbb1613786192d5850dcf4ff93c73af9895433e9ffde10140049894a3e81b063",
+      "expected_sha256": "dbb1613786192d5850dcf4ff93c73af9895433e9ffde10140049894a3e81b063",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/tailnet-plan-agent-browser.png",
+      "status": "create",
+      "bytes": 200526,
+      "sha256": "3f55b7fe952226864db370317ec2f65df59a25300b5b6faa6ca1a1086f0ddf70",
+      "expected_sha256": "3f55b7fe952226864db370317ec2f65df59a25300b5b6faa6ca1a1086f0ddf70",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/tailnet-roadmap-agent-browser.png",
+      "status": "create",
+      "bytes": 256029,
+      "sha256": "90eb7ba3a1ead3ddbd49534f3a1d9bf96629fc113a46dc9350828d32886052a1",
+      "expected_sha256": "90eb7ba3a1ead3ddbd49534f3a1d9bf96629fc113a46dc9350828d32886052a1",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/tailnet-status-agent-browser.png",
+      "status": "create",
+      "bytes": 204572,
+      "sha256": "ff981c9dc1e7ca19645c14ad4764dcb743aee12f56ebd360530f6c63a31cd780",
+      "expected_sha256": "ff981c9dc1e7ca19645c14ad4764dcb743aee12f56ebd360530f6c63a31cd780",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/README.html",
+      "status": "replace",
+      "bytes": 40005,
+      "sha256": "712e527b4608c87778125588d9312037955859721a0e2ff3afb1a49a74c48f65",
+      "expected_sha256": "712e527b4608c87778125588d9312037955859721a0e2ff3afb1a49a74c48f65",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/SHA256SUMS.txt",
+      "status": "same",
+      "bytes": 19535,
+      "sha256": "b083a1b5e8b5f273ed809e5ceff022a5baa99e4c5eb0f37879739ba7ce13f420",
+      "expected_sha256": "b083a1b5e8b5f273ed809e5ceff022a5baa99e4c5eb0f37879739ba7ce13f420",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/build-initial-header-guard-failure.log",
+      "status": "same",
+      "bytes": 3015,
+      "sha256": "2ab3381367f9140215b4e5f02b600ae56ddb14ec2bdd211b7da7cff033fbcad8",
+      "expected_sha256": "2ab3381367f9140215b4e5f02b600ae56ddb14ec2bdd211b7da7cff033fbcad8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/build.log",
+      "status": "same",
+      "bytes": 4645,
+      "sha256": "0f47625a4849da340a460260d25e63a2408fd9ddf0d00e9b0ffce95c00a666f0",
+      "expected_sha256": "0f47625a4849da340a460260d25e63a2408fd9ddf0d00e9b0ffce95c00a666f0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-auto-text-max-content-verified.log",
+      "status": "same",
+      "bytes": 5181,
+      "sha256": "25bba677b7ac2315a795f91d93e1ee3548a8a6212c37a6a1805f5eaf8af32f73",
+      "expected_sha256": "25bba677b7ac2315a795f91d93e1ee3548a8a6212c37a6a1805f5eaf8af32f73",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-auto-text-max-content.log",
+      "status": "same",
+      "bytes": 5165,
+      "sha256": "0e1413c5b296065b00e8480829e8698261e4127751b74671c24544e6099954d4",
+      "expected_sha256": "0e1413c5b296065b00e8480829e8698261e4127751b74671c24544e6099954d4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-fit-content-calc-limit-verified.log",
+      "status": "same",
+      "bytes": 5181,
+      "sha256": "f9c2ee21c5bd4a2000605f84847f63be526c00f56c67fbed8c0c7e4272935dc4",
+      "expected_sha256": "f9c2ee21c5bd4a2000605f84847f63be526c00f56c67fbed8c0c7e4272935dc4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-fit-content-calc-limit.log",
+      "status": "same",
+      "bytes": 5165,
+      "sha256": "761d746d810125e64ae7a23e9f4342067cfb55561fb8734da91b13ce13b22a75",
+      "expected_sha256": "761d746d810125e64ae7a23e9f4342067cfb55561fb8734da91b13ce13b22a75",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-fit-content-text-minimum-verified.log",
+      "status": "same",
+      "bytes": 5181,
+      "sha256": "7a7877d4893124847608db0fdaae854be65e3b63b723359b180b248fa230a2b8",
+      "expected_sha256": "7a7877d4893124847608db0fdaae854be65e3b63b723359b180b248fa230a2b8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-fit-content-text-minimum.log",
+      "status": "same",
+      "bytes": 5165,
+      "sha256": "39d5509fcc1b008d6c619a9c636d99bafd70ff7b38d26b6c5eb5b9f1dee670a1",
+      "expected_sha256": "39d5509fcc1b008d6c619a9c636d99bafd70ff7b38d26b6c5eb5b9f1dee670a1",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-max-content-text-normal-verified.log",
+      "status": "same",
+      "bytes": 5181,
+      "sha256": "e6ed99e90fa42d55d3ba09f234960aaa2536129ecdc64cca3f0abe30bff4fe42",
+      "expected_sha256": "e6ed99e90fa42d55d3ba09f234960aaa2536129ecdc64cca3f0abe30bff4fe42",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-max-content-text-normal.log",
+      "status": "same",
+      "bytes": 5165,
+      "sha256": "7f219af566f100266a2a74fce4800f1922d053388a9e4f9a6cb6195fa26a36ba",
+      "expected_sha256": "7f219af566f100266a2a74fce4800f1922d053388a9e4f9a6cb6195fa26a36ba",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-min-content-text-break-all-verified.log",
+      "status": "same",
+      "bytes": 5181,
+      "sha256": "e4f064183be68ae2755c55215082fae166d0114b40387b0892e8a112f5d085b5",
+      "expected_sha256": "e4f064183be68ae2755c55215082fae166d0114b40387b0892e8a112f5d085b5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-min-content-text-break-all.log",
+      "status": "same",
+      "bytes": 5165,
+      "sha256": "aa60cce9450fd4316d08f8ef32a245eb571cdc624c66200271b8453332f779d6",
+      "expected_sha256": "aa60cce9450fd4316d08f8ef32a245eb571cdc624c66200271b8453332f779d6",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-min-content-text-edge-verified.log",
+      "status": "same",
+      "bytes": 5181,
+      "sha256": "8feb7bf450c2e76b4897e245809f518c70e0504162cad211ad3b30e2661e96c2",
+      "expected_sha256": "8feb7bf450c2e76b4897e245809f518c70e0504162cad211ad3b30e2661e96c2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-min-content-text-edge.log",
+      "status": "same",
+      "bytes": 5165,
+      "sha256": "acae9aeb915028f56c85fae95c8dd87838c68e96d579fc0970a8c1bc4caea671",
+      "expected_sha256": "acae9aeb915028f56c85fae95c8dd87838c68e96d579fc0970a8c1bc4caea671",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-min-content-text-max-width-verified.log",
+      "status": "same",
+      "bytes": 5181,
+      "sha256": "906cde13bb04bcc28427a685bb1ca67ab1625b6415203e94b18eaa6d3d474ca2",
+      "expected_sha256": "906cde13bb04bcc28427a685bb1ca67ab1625b6415203e94b18eaa6d3d474ca2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-min-content-text-max-width.log",
+      "status": "same",
+      "bytes": 5165,
+      "sha256": "2a1a62e5799395ffa79a97248ceb60dbdd5b18631fa0e8ccecece274fce00394",
+      "expected_sha256": "2a1a62e5799395ffa79a97248ceb60dbdd5b18631fa0e8ccecece274fce00394",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-min-content-text-min-width-verified.log",
+      "status": "same",
+      "bytes": 5181,
+      "sha256": "d786c796db3b8798a2aee6a0889c1c76607ff6ed2bfb3e2f978a4d1cc999f2e7",
+      "expected_sha256": "d786c796db3b8798a2aee6a0889c1c76607ff6ed2bfb3e2f978a4d1cc999f2e7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-min-content-text-min-width.log",
+      "status": "same",
+      "bytes": 5165,
+      "sha256": "3a3b51165b2d8894fa2bd4cb16ebef7937c17d6265bf5c2ec2e0a0aeba0ef363",
+      "expected_sha256": "3a3b51165b2d8894fa2bd4cb16ebef7937c17d6265bf5c2ec2e0a0aeba0ef363",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-min-content-text-normal-verified.log",
+      "status": "same",
+      "bytes": 5181,
+      "sha256": "faefb3e3457a75fb19c934ab379edcd5abd1d6c04f262e8f5d90e724adbc4292",
+      "expected_sha256": "faefb3e3457a75fb19c934ab379edcd5abd1d6c04f262e8f5d90e724adbc4292",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-min-content-text-normal.log",
+      "status": "same",
+      "bytes": 5165,
+      "sha256": "4d3dc0112089c646a68e850ebcfd28ed688e9234354e2367453cd656a0912626",
+      "expected_sha256": "4d3dc0112089c646a68e850ebcfd28ed688e9234354e2367453cd656a0912626",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-min-content-text-nowrap-verified.log",
+      "status": "same",
+      "bytes": 5181,
+      "sha256": "86546ead43e64092473fe81a7c274f6bdff53c44d8fffb92e3c847bd2dae2998",
+      "expected_sha256": "86546ead43e64092473fe81a7c274f6bdff53c44d8fffb92e3c847bd2dae2998",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/environment-min-content-text-nowrap.log",
+      "status": "same",
+      "bytes": 5165,
+      "sha256": "7567c1f78c9b294fd1fa1c6db4663540b5a2829d2afa240c27d971d6e29e4857",
+      "expected_sha256": "7567c1f78c9b294fd1fa1c6db4663540b5a2829d2afa240c27d971d6e29e4857",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/failure-align-content-style.log",
+      "status": "same",
+      "bytes": 2603,
+      "sha256": "9a847eaf022bd04b279767fcd41e592bad670331cd99b1ffe7213d2f2a1e0711",
+      "expected_sha256": "9a847eaf022bd04b279767fcd41e592bad670331cd99b1ffe7213d2f2a1e0711",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/failure-align-content-unsupported.log",
+      "status": "same",
+      "bytes": 2581,
+      "sha256": "ec2e41e17910695f039b888468ebbfd5f3ceae01d4519bc18f0249553a3988c8",
+      "expected_sha256": "ec2e41e17910695f039b888468ebbfd5f3ceae01d4519bc18f0249553a3988c8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-auto-text-max-content-verified.log",
+      "status": "same",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-fit-content-calc-limit-verified.log",
+      "status": "same",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-fit-content-text-minimum-verified.log",
+      "status": "same",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-max-content-text-normal-verified.log",
+      "status": "same",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-min-content-text-break-all-verified.log",
+      "status": "same",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-min-content-text-edge-verified.log",
+      "status": "same",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-min-content-text-max-width-verified.log",
+      "status": "same",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-min-content-text-min-width-verified.log",
+      "status": "same",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-min-content-text-normal-verified.log",
+      "status": "same",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-min-content-text-nowrap-verified.log",
+      "status": "same",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "expected_sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-screen-auto-text-max-content.log",
+      "status": "same",
+      "bytes": 185,
+      "sha256": "6c9b16d2f4292421f143bb2dbd07801bc0e1722caa5dbbec1e2f6ff2abc162cb",
+      "expected_sha256": "6c9b16d2f4292421f143bb2dbd07801bc0e1722caa5dbbec1e2f6ff2abc162cb",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-screen-fit-content-calc-limit.log",
+      "status": "same",
+      "bytes": 185,
+      "sha256": "a0f930156b5a9783d7feb5b7f0a44626cae59923b10bc537cba1c4bf65bada30",
+      "expected_sha256": "a0f930156b5a9783d7feb5b7f0a44626cae59923b10bc537cba1c4bf65bada30",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-screen-fit-content-text-minimum.log",
+      "status": "same",
+      "bytes": 185,
+      "sha256": "5f5f19c3543f6c41b2caa0affe2cc360b8919f324e614097b1bbee9ccef52be5",
+      "expected_sha256": "5f5f19c3543f6c41b2caa0affe2cc360b8919f324e614097b1bbee9ccef52be5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-screen-max-content-text-normal.log",
+      "status": "same",
+      "bytes": 185,
+      "sha256": "f1c629bf7a31290c365acb37f66fefe991c064eeecd4cd315b681964dc1cfdd6",
+      "expected_sha256": "f1c629bf7a31290c365acb37f66fefe991c064eeecd4cd315b681964dc1cfdd6",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-screen-min-content-text-break-all.log",
+      "status": "same",
+      "bytes": 185,
+      "sha256": "b992044ca83008496f0e4076727c15d45c0e319cb6da7bf22c8d5a351d2031c5",
+      "expected_sha256": "b992044ca83008496f0e4076727c15d45c0e319cb6da7bf22c8d5a351d2031c5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-screen-min-content-text-edge.log",
+      "status": "same",
+      "bytes": 185,
+      "sha256": "a5001837d62d63f52ed3710b6028a03fcf2a7d1706f65c447d53e71c038c9661",
+      "expected_sha256": "a5001837d62d63f52ed3710b6028a03fcf2a7d1706f65c447d53e71c038c9661",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-screen-min-content-text-max-width.log",
+      "status": "same",
+      "bytes": 185,
+      "sha256": "fc73c11d7719844d653d004f5bd739f5dffdfb96156a885a1a313aa5aea8d8bc",
+      "expected_sha256": "fc73c11d7719844d653d004f5bd739f5dffdfb96156a885a1a313aa5aea8d8bc",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-screen-min-content-text-min-width.log",
+      "status": "same",
+      "bytes": 185,
+      "sha256": "64279e9559bdabb562da95b11c9a95de43f2c7909b5fe2772bbe7d25f080451b",
+      "expected_sha256": "64279e9559bdabb562da95b11c9a95de43f2c7909b5fe2772bbe7d25f080451b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-screen-min-content-text-normal.log",
+      "status": "same",
+      "bytes": 185,
+      "sha256": "dd24b3a98559d4e156599fbcf5d1c5b2a619c4296e67f7a41b9018d56b82c427",
+      "expected_sha256": "dd24b3a98559d4e156599fbcf5d1c5b2a619c4296e67f7a41b9018d56b82c427",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/launch-screen-min-content-text-nowrap.log",
+      "status": "same",
+      "bytes": 185,
+      "sha256": "5d9a1c0ef498d5504004b16847450eb8b5aa20b42a1f7f8c8bcddbce6c453476",
+      "expected_sha256": "5d9a1c0ef498d5504004b16847450eb8b5aa20b42a1f7f8c8bcddbce6c453476",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/pixel-matrix-min-content-text-break-all.log",
+      "status": "same",
+      "bytes": 2118,
+      "sha256": "c42d4d77abb579bb2b3d8d62c97b29f540bec15f0f7e3e5e0b5406300d048033",
+      "expected_sha256": "c42d4d77abb579bb2b3d8d62c97b29f540bec15f0f7e3e5e0b5406300d048033",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/pixel-matrix-min-content-text-break-all.png",
+      "status": "same",
+      "bytes": 3311,
+      "sha256": "36ba2110bb6d87a460e0023070f657e1170517ba628c131c351820d9ab923ae3",
+      "expected_sha256": "36ba2110bb6d87a460e0023070f657e1170517ba628c131c351820d9ab923ae3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-auto-text-max-content-verified.log",
+      "status": "same",
+      "bytes": 32040,
+      "sha256": "c258225164f146438eb7709e58759d287216557758bf0b2d2979e265caf40468",
+      "expected_sha256": "c258225164f146438eb7709e58759d287216557758bf0b2d2979e265caf40468",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-auto-text-max-content.log",
+      "status": "same",
+      "bytes": 14341,
+      "sha256": "3e80fb08886e831441528092f080cf2a7ca1001f402ed30ebb60d56734472b38",
+      "expected_sha256": "3e80fb08886e831441528092f080cf2a7ca1001f402ed30ebb60d56734472b38",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-fit-content-calc-limit-verified.log",
+      "status": "same",
+      "bytes": 32416,
+      "sha256": "4245c309051fcdf1f72b1772e6caf07c28f82b91ae8c93e458104f1f2fb96165",
+      "expected_sha256": "4245c309051fcdf1f72b1772e6caf07c28f82b91ae8c93e458104f1f2fb96165",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-fit-content-calc-limit.log",
+      "status": "same",
+      "bytes": 14332,
+      "sha256": "a879da7ebe3a43ad98a2925f32cf6436674a827ae66f7c4323c34a4d2732d36e",
+      "expected_sha256": "a879da7ebe3a43ad98a2925f32cf6436674a827ae66f7c4323c34a4d2732d36e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-fit-content-text-minimum-verified.log",
+      "status": "same",
+      "bytes": 32614,
+      "sha256": "2854ede9a6424c2b0901db7f203bc33c75c0c7ff802ee08ef505d28c6aa1c5ed",
+      "expected_sha256": "2854ede9a6424c2b0901db7f203bc33c75c0c7ff802ee08ef505d28c6aa1c5ed",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-fit-content-text-minimum.log",
+      "status": "same",
+      "bytes": 14345,
+      "sha256": "93cd7032e7bb84f49eefb42044c071e265d062e907e6f32f54c92596550bf4c8",
+      "expected_sha256": "93cd7032e7bb84f49eefb42044c071e265d062e907e6f32f54c92596550bf4c8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-max-content-text-normal-verified.log",
+      "status": "same",
+      "bytes": 31638,
+      "sha256": "afd21f815aa71eb43e9d7eb0e2e88344261698677259bc5d35b4207c9359ec7b",
+      "expected_sha256": "afd21f815aa71eb43e9d7eb0e2e88344261698677259bc5d35b4207c9359ec7b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-max-content-text-normal.log",
+      "status": "same",
+      "bytes": 14039,
+      "sha256": "1fa4f7837b71bcf72623d4e618e052f3a152ab225f0415b41177b134b234ec5e",
+      "expected_sha256": "1fa4f7837b71bcf72623d4e618e052f3a152ab225f0415b41177b134b234ec5e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-min-content-text-break-all-verified.log",
+      "status": "same",
+      "bytes": 34947,
+      "sha256": "dd21922bc74488a6c7be0d0daadcab075928f245168e9984759ec50f43e882b7",
+      "expected_sha256": "dd21922bc74488a6c7be0d0daadcab075928f245168e9984759ec50f43e882b7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-min-content-text-break-all.log",
+      "status": "same",
+      "bytes": 13640,
+      "sha256": "13bed626cb823b7c041088581044438a67344b5c44d55b95b422e0cc3ca77ca0",
+      "expected_sha256": "13bed626cb823b7c041088581044438a67344b5c44d55b95b422e0cc3ca77ca0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-min-content-text-edge-verified.log",
+      "status": "same",
+      "bytes": 31471,
+      "sha256": "ab398ba0336cde2a55b54dfb8d5349306173e242aadaa42dd8ff42820cb93563",
+      "expected_sha256": "ab398ba0336cde2a55b54dfb8d5349306173e242aadaa42dd8ff42820cb93563",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-min-content-text-edge.log",
+      "status": "same",
+      "bytes": 13606,
+      "sha256": "fe81440ad5aee6903854ea1460ffbdfba676f1ef3bcb663d6b6a8bacce5ec87a",
+      "expected_sha256": "fe81440ad5aee6903854ea1460ffbdfba676f1ef3bcb663d6b6a8bacce5ec87a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-min-content-text-max-width-verified.log",
+      "status": "same",
+      "bytes": 18740,
+      "sha256": "91f8e0362d0bff7c277765bcdebd339115b4863e4c0f6ab1ff42b83217a26011",
+      "expected_sha256": "91f8e0362d0bff7c277765bcdebd339115b4863e4c0f6ab1ff42b83217a26011",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-min-content-text-max-width.log",
+      "status": "same",
+      "bytes": 13641,
+      "sha256": "c8a74199146cc0cf7e38cfaee0b37d12540c6b130a013c6d4afa0a237bc05502",
+      "expected_sha256": "c8a74199146cc0cf7e38cfaee0b37d12540c6b130a013c6d4afa0a237bc05502",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-min-content-text-min-width-verified.log",
+      "status": "same",
+      "bytes": 31719,
+      "sha256": "9c76b01c9d5df19addcdeeac39a82d9b75251c41db7b617f179f57f4eb0713e2",
+      "expected_sha256": "9c76b01c9d5df19addcdeeac39a82d9b75251c41db7b617f179f57f4eb0713e2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-min-content-text-min-width.log",
+      "status": "same",
+      "bytes": 13641,
+      "sha256": "1ca852f1480f78bd4cd41f9ede0979a5c113455ba051d8d327a4e6c312323a55",
+      "expected_sha256": "1ca852f1480f78bd4cd41f9ede0979a5c113455ba051d8d327a4e6c312323a55",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-min-content-text-normal-verified.log",
+      "status": "same",
+      "bytes": 31309,
+      "sha256": "19f49c6aa7a2aa69850dfb78c01fd2612ad24f27de8abc4b3f7548a21e82e1ba",
+      "expected_sha256": "19f49c6aa7a2aa69850dfb78c01fd2612ad24f27de8abc4b3f7548a21e82e1ba",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-min-content-text-normal.log",
+      "status": "same",
+      "bytes": 13620,
+      "sha256": "22fe23bc45d1189d58001dc6a5c816555e6acfce6a8c96182307de08c519f10e",
+      "expected_sha256": "22fe23bc45d1189d58001dc6a5c816555e6acfce6a8c96182307de08c519f10e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-min-content-text-nowrap-verified.log",
+      "status": "same",
+      "bytes": 31340,
+      "sha256": "b369205e627b504064a30c8fe38cc6d2066b54dda7b3a106e8a61e47f935e8ef",
+      "expected_sha256": "b369205e627b504064a30c8fe38cc6d2066b54dda7b3a106e8a61e47f935e8ef",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/runtime-min-content-text-nowrap.log",
+      "status": "same",
+      "bytes": 13647,
+      "sha256": "ae3646cf17d9a8e9f105615b9118cfaa59dbe80952d16b7350bc96601022cd9c",
+      "expected_sha256": "ae3646cf17d9a8e9f105615b9118cfaa59dbe80952d16b7350bc96601022cd9c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/screenshot-auto-text-max-content.png",
+      "status": "same",
+      "bytes": 77728,
+      "sha256": "c0b9de18ec6db21ddccd240bc4804f43bd3368e02fb55a0af2606bf0547255aa",
+      "expected_sha256": "c0b9de18ec6db21ddccd240bc4804f43bd3368e02fb55a0af2606bf0547255aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/screenshot-fit-content-calc-limit.png",
+      "status": "same",
+      "bytes": 77729,
+      "sha256": "8eb89d2bcd7efeb77646a47e1a1b72bea30347468fbd1e1d4211693c6af0f26b",
+      "expected_sha256": "8eb89d2bcd7efeb77646a47e1a1b72bea30347468fbd1e1d4211693c6af0f26b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/screenshot-fit-content-text-minimum.png",
+      "status": "same",
+      "bytes": 77726,
+      "sha256": "ba4c21c53c0a641532b3435ec4e4910284a8131976f39f7a61b3d0e2af953840",
+      "expected_sha256": "ba4c21c53c0a641532b3435ec4e4910284a8131976f39f7a61b3d0e2af953840",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/screenshot-max-content-text-normal.png",
+      "status": "same",
+      "bytes": 77728,
+      "sha256": "c0b9de18ec6db21ddccd240bc4804f43bd3368e02fb55a0af2606bf0547255aa",
+      "expected_sha256": "c0b9de18ec6db21ddccd240bc4804f43bd3368e02fb55a0af2606bf0547255aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/screenshot-min-content-text-break-all.png",
+      "status": "same",
+      "bytes": 77719,
+      "sha256": "f9dee82506bad4f5546c0929d5faffc49c691a3ec960eb83ae6db948b8bd8702",
+      "expected_sha256": "f9dee82506bad4f5546c0929d5faffc49c691a3ec960eb83ae6db948b8bd8702",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/screenshot-min-content-text-edge.png",
+      "status": "same",
+      "bytes": 77693,
+      "sha256": "5ef5656309f07f34426dfad7b190dcad6d4a0c85b9dd7c7006b25c491684c0f0",
+      "expected_sha256": "5ef5656309f07f34426dfad7b190dcad6d4a0c85b9dd7c7006b25c491684c0f0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/screenshot-min-content-text-max-width.png",
+      "status": "same",
+      "bytes": 77713,
+      "sha256": "9ccaf85f1183b78935f6b9beca5554878d36a8e4683944ba93cb30ca82d815d8",
+      "expected_sha256": "9ccaf85f1183b78935f6b9beca5554878d36a8e4683944ba93cb30ca82d815d8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/screenshot-min-content-text-min-width.png",
+      "status": "same",
+      "bytes": 77713,
+      "sha256": "1f66eaa9bf824b455ec8048002369942c85ae845b5e1f8e075ab9c3593b0f4ff",
+      "expected_sha256": "1f66eaa9bf824b455ec8048002369942c85ae845b5e1f8e075ab9c3593b0f4ff",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/screenshot-min-content-text-normal.png",
+      "status": "same",
+      "bytes": 77726,
+      "sha256": "ba4c21c53c0a641532b3435ec4e4910284a8131976f39f7a61b3d0e2af953840",
+      "expected_sha256": "ba4c21c53c0a641532b3435ec4e4910284a8131976f39f7a61b3d0e2af953840",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/android-avd/screenshot-min-content-text-nowrap.png",
+      "status": "same",
+      "bytes": 77714,
+      "sha256": "f4af67fb8e13da100f4d12099faed43618e469af4f8c40115bc57804dbeb4036",
+      "expected_sha256": "f4af67fb8e13da100f4d12099faed43618e469af4f8c40115bc57804dbeb4036",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/artifact-boundary/default-build.log",
+      "status": "same",
+      "bytes": 62,
+      "sha256": "64d0cbd4b7e4c6329fde55978dd3d261407b55f34c21add0feebf7e0575ee531",
+      "expected_sha256": "64d0cbd4b7e4c6329fde55978dd3d261407b55f34c21add0feebf7e0575ee531",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/artifact-boundary/default-nm-stderr.log",
+      "status": "same",
+      "bytes": 873,
+      "sha256": "16f161352699b207b8ec95a55824c09a49d7e8b2b9c7e4e9b6bf2a0779663358",
+      "expected_sha256": "16f161352699b207b8ec95a55824c09a49d7e8b2b9c7e4e9b6bf2a0779663358",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/artifact-boundary/default-payload-matches.log",
+      "status": "same",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/artifact-boundary/default-symbol-check.log",
+      "status": "same",
+      "bytes": 63,
+      "sha256": "546cd2ceba9eac1288853dd18678e916c6343a6ae437b2293dc8f40f47dc5f96",
+      "expected_sha256": "546cd2ceba9eac1288853dd18678e916c6343a6ae437b2293dc8f40f47dc5f96",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/artifact-boundary/default-symbol-matches.log",
+      "status": "same",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/artifact-boundary/default-symbols.txt",
+      "status": "same",
+      "bytes": 4904675,
+      "sha256": "edd3bb1480219a61eccf1439ba69f7b6aa9ff6073abe495ca0799a939638cd8c",
+      "expected_sha256": "edd3bb1480219a61eccf1439ba69f7b6aa9ff6073abe495ca0799a939638cd8c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/artifact-boundary/fixture-build.log",
+      "status": "same",
+      "bytes": 62,
+      "sha256": "7a7bb64a28cdda9b91e6e27f41be455104d929b5d7ad6dd5beca75fc5a47f1f4",
+      "expected_sha256": "7a7bb64a28cdda9b91e6e27f41be455104d929b5d7ad6dd5beca75fc5a47f1f4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/artifact-boundary/fixture-nm-stderr.log",
+      "status": "same",
+      "bytes": 873,
+      "sha256": "16f161352699b207b8ec95a55824c09a49d7e8b2b9c7e4e9b6bf2a0779663358",
+      "expected_sha256": "16f161352699b207b8ec95a55824c09a49d7e8b2b9c7e4e9b6bf2a0779663358",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/artifact-boundary/fixture-payload-matches.log",
+      "status": "same",
+      "bytes": 1257,
+      "sha256": "f5eca33bca810c2fe4a14adff4ddc09e1595a1556caa58849ad2fca7dffde391",
+      "expected_sha256": "f5eca33bca810c2fe4a14adff4ddc09e1595a1556caa58849ad2fca7dffde391",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/artifact-boundary/fixture-symbol-check.log",
+      "status": "same",
+      "bytes": 231,
+      "sha256": "be19987d78bc29e15af54413766403b6337e19cdd7b50cefe76452af946ef0ec",
+      "expected_sha256": "be19987d78bc29e15af54413766403b6337e19cdd7b50cefe76452af946ef0ec",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/artifact-boundary/fixture-symbols.txt",
+      "status": "same",
+      "bytes": 6769946,
+      "sha256": "eda23fe4a6399a084441e1082cf3ab3b2a68b87546176489760b3fb4ece8c27f",
+      "expected_sha256": "eda23fe4a6399a084441e1082cf3ab3b2a68b87546176489760b3fb4ece8c27f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/artifact-boundary/initial-xcode-nm-failure.log",
+      "status": "same",
+      "bytes": 349,
+      "sha256": "02d02c3f8689a430a600c555d3d8bc284f33cfef936c557b8531fc63b540bc50",
+      "expected_sha256": "02d02c3f8689a430a600c555d3d8bc284f33cfef936c557b8531fc63b540bc50",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/chrome155-oracle.json",
+      "status": "same",
+      "bytes": 3557,
+      "sha256": "c24023b96f4fe5ead6e86cee961b82d0d0a97374669712a31670fe52aa7b3e49",
+      "expected_sha256": "c24023b96f4fe5ead6e86cee961b82d0d0a97374669712a31670fe52aa7b3e49",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/chrome155-runtime-profile-oracle.json",
+      "status": "same",
+      "bytes": 4770,
+      "sha256": "dc921dbaad5ecb6d399c4393b948de60cce743ac2e23321fe3a374cec5002a15",
+      "expected_sha256": "dc921dbaad5ecb6d399c4393b948de60cce743ac2e23321fe3a374cec5002a15",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/cross-platform-comparison.json",
+      "status": "same",
+      "bytes": 38331,
+      "sha256": "c9d5696f894df471efbc2f8327587ae974a3653985120984e40c11a0e1fbbdb2",
+      "expected_sha256": "c9d5696f894df471efbc2f8327587ae974a3653985120984e40c11a0e1fbbdb2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ffi-c114-focused-tests.log",
+      "status": "same",
+      "bytes": 825,
+      "sha256": "81582fc0544dc576b48b0cc6836cff8028da8a819686c318086dfbe6922e0364",
+      "expected_sha256": "81582fc0544dc576b48b0cc6836cff8028da8a819686c318086dfbe6922e0364",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ffi-feature-clippy.log",
+      "status": "same",
+      "bytes": 72,
+      "sha256": "c92508a29848820f033cd2ea015c85dde0953c88b07cc967ce34b7c08f610549",
+      "expected_sha256": "c92508a29848820f033cd2ea015c85dde0953c88b07cc967ce34b7c08f610549",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ffi-feature-pixel-request-test.log",
+      "status": "same",
+      "bytes": 386,
+      "sha256": "362333e69c62fa393a99a4cef8bab409574bc96adc5fa5ed953ab88603dcdf72",
+      "expected_sha256": "362333e69c62fa393a99a4cef8bab409574bc96adc5fa5ed953ab88603dcdf72",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "status": "replace",
+      "bytes": 31282,
+      "sha256": "9a111ae6359079289e1bacd8dc47341559eab102fe2b5025e6800f66fc327bbf",
+      "expected_sha256": "9a111ae6359079289e1bacd8dc47341559eab102fe2b5025e6800f66fc327bbf",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/build-initial-swift-selector-failure.log",
+      "status": "same",
+      "bytes": 107954,
+      "sha256": "629e4f893b6469435643b5c9876b6e6e43b5def75e302b00dc40a08ce867382b",
+      "expected_sha256": "629e4f893b6469435643b5c9876b6e6e43b5def75e302b00dc40a08ce867382b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/build.log",
+      "status": "same",
+      "bytes": 93466,
+      "sha256": "db48867a71ad9c91f03449489ccf91bb897701bff9dc3e7a9aabe22dd5a1d332",
+      "expected_sha256": "db48867a71ad9c91f03449489ccf91bb897701bff9dc3e7a9aabe22dd5a1d332",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-auto-text-max-content-verified.log",
+      "status": "same",
+      "bytes": 4342,
+      "sha256": "c92bfae48a5acc482ea12100b68ebb8569bf2b7b2b8a99824fabed813af5c857",
+      "expected_sha256": "c92bfae48a5acc482ea12100b68ebb8569bf2b7b2b8a99824fabed813af5c857",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-auto-text-max-content.log",
+      "status": "same",
+      "bytes": 2184,
+      "sha256": "907be12ca9d0acbe927457b676001733ae8af2e1517f87c9dcb4595261ff468b",
+      "expected_sha256": "907be12ca9d0acbe927457b676001733ae8af2e1517f87c9dcb4595261ff468b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-fit-content-calc-limit-verified.log",
+      "status": "same",
+      "bytes": 4342,
+      "sha256": "8d230eb6199633bd295633542c9a9613419c6cfe380b731e56e451e05e1e84bf",
+      "expected_sha256": "8d230eb6199633bd295633542c9a9613419c6cfe380b731e56e451e05e1e84bf",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-fit-content-calc-limit.log",
+      "status": "same",
+      "bytes": 2184,
+      "sha256": "7089db46b0639ac8484c6c7132ed3988f7c816817619421f19c7badfe849fb9a",
+      "expected_sha256": "7089db46b0639ac8484c6c7132ed3988f7c816817619421f19c7badfe849fb9a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-fit-content-text-minimum-verified.log",
+      "status": "same",
+      "bytes": 4342,
+      "sha256": "8a4c09e8b271f458ac529da211df53ff1ffe9f03c9e105929dbbe26b974ebb0c",
+      "expected_sha256": "8a4c09e8b271f458ac529da211df53ff1ffe9f03c9e105929dbbe26b974ebb0c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-fit-content-text-minimum.log",
+      "status": "same",
+      "bytes": 2184,
+      "sha256": "00b917f99ceb13d5e1428af3ef406d90c77340a15d30c3bba6968d1ab5b640aa",
+      "expected_sha256": "00b917f99ceb13d5e1428af3ef406d90c77340a15d30c3bba6968d1ab5b640aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-max-content-text-normal-verified.log",
+      "status": "same",
+      "bytes": 4342,
+      "sha256": "716cbeafdd0910ead3dc806008124d9027fdb102bec1c4986eebff02e85e491f",
+      "expected_sha256": "716cbeafdd0910ead3dc806008124d9027fdb102bec1c4986eebff02e85e491f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-max-content-text-normal.log",
+      "status": "same",
+      "bytes": 2184,
+      "sha256": "5e4a82c5fad0383ce8283ef29e279a515536f2a230ee944ce7c79dcc83932a83",
+      "expected_sha256": "5e4a82c5fad0383ce8283ef29e279a515536f2a230ee944ce7c79dcc83932a83",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-min-content-text-break-all-verified.log",
+      "status": "same",
+      "bytes": 4342,
+      "sha256": "6518e022d86b7decda96a6fba173ec4e8b085f028555ca0fc97555b867ffe50c",
+      "expected_sha256": "6518e022d86b7decda96a6fba173ec4e8b085f028555ca0fc97555b867ffe50c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-min-content-text-break-all.log",
+      "status": "same",
+      "bytes": 2184,
+      "sha256": "10b26f53102c87e74d6536c656552cbf215045848ba703848d02d553cda8aed9",
+      "expected_sha256": "10b26f53102c87e74d6536c656552cbf215045848ba703848d02d553cda8aed9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-min-content-text-edge-verified.log",
+      "status": "same",
+      "bytes": 4342,
+      "sha256": "a3558f56651cbd23975bbb6e5c571326e68f25b56bd50bf08a3ede03a1b9ad10",
+      "expected_sha256": "a3558f56651cbd23975bbb6e5c571326e68f25b56bd50bf08a3ede03a1b9ad10",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-min-content-text-edge.log",
+      "status": "same",
+      "bytes": 2184,
+      "sha256": "367a7e3c10818a1fe9d876144e94c63373fd4ecc4bdceca5f69bfdfd874545e7",
+      "expected_sha256": "367a7e3c10818a1fe9d876144e94c63373fd4ecc4bdceca5f69bfdfd874545e7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-min-content-text-max-width-verified.log",
+      "status": "same",
+      "bytes": 4342,
+      "sha256": "e3b4c801c0347e421913f8c5135133f67c86edd579d337f6b01b83f5c027fae8",
+      "expected_sha256": "e3b4c801c0347e421913f8c5135133f67c86edd579d337f6b01b83f5c027fae8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-min-content-text-max-width.log",
+      "status": "same",
+      "bytes": 2184,
+      "sha256": "91dd34dab8ed6584c7841412b073c3758e3b2edd15faf5a29aaa34238bbc84c7",
+      "expected_sha256": "91dd34dab8ed6584c7841412b073c3758e3b2edd15faf5a29aaa34238bbc84c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-min-content-text-min-width-verified.log",
+      "status": "same",
+      "bytes": 4342,
+      "sha256": "05bc84c0d4310273dfa0a5932819f77741178c0ce14aa1b24ffd457377c7ff8a",
+      "expected_sha256": "05bc84c0d4310273dfa0a5932819f77741178c0ce14aa1b24ffd457377c7ff8a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-min-content-text-min-width.log",
+      "status": "same",
+      "bytes": 2184,
+      "sha256": "e13e028fa95831706a1b04788db7f97cd7644ddbd0c6d3b705413e4ba5f3b326",
+      "expected_sha256": "e13e028fa95831706a1b04788db7f97cd7644ddbd0c6d3b705413e4ba5f3b326",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-min-content-text-normal-verified.log",
+      "status": "same",
+      "bytes": 4342,
+      "sha256": "2a3806fe2808d9b05acc9857d5def864b7a0ecf98fc3797e091a69ccde834ce3",
+      "expected_sha256": "2a3806fe2808d9b05acc9857d5def864b7a0ecf98fc3797e091a69ccde834ce3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-min-content-text-normal.log",
+      "status": "same",
+      "bytes": 2184,
+      "sha256": "fb1726a06c5208801e5d7f58dd0b27b4f77c4b3d1a1a78b5e6f433ea7be389ce",
+      "expected_sha256": "fb1726a06c5208801e5d7f58dd0b27b4f77c4b3d1a1a78b5e6f433ea7be389ce",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-min-content-text-nowrap-verified.log",
+      "status": "same",
+      "bytes": 4342,
+      "sha256": "9492102e16c56302b5f180d98b4e76370654478dd9c579923a68bb17dcc518ea",
+      "expected_sha256": "9492102e16c56302b5f180d98b4e76370654478dd9c579923a68bb17dcc518ea",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/environment-min-content-text-nowrap.log",
+      "status": "same",
+      "bytes": 2184,
+      "sha256": "6bb9fc677c53ce754d3d6ef56858609c98838c80733637d3883a5b5161e45278",
+      "expected_sha256": "6bb9fc677c53ce754d3d6ef56858609c98838c80733637d3883a5b5161e45278",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/launch-auto-text-max-content-verified.log",
+      "status": "same",
+      "bytes": 28,
+      "sha256": "143fd71eb9eb00818b172f75354ddad21534d71a143949bcbfd6a2f0c9e45dbc",
+      "expected_sha256": "143fd71eb9eb00818b172f75354ddad21534d71a143949bcbfd6a2f0c9e45dbc",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/launch-fit-content-calc-limit-verified.log",
+      "status": "same",
+      "bytes": 28,
+      "sha256": "8c2dc1500435850e560cc934448698b748ecb5ed3f78addd05dc5c543c59a17d",
+      "expected_sha256": "8c2dc1500435850e560cc934448698b748ecb5ed3f78addd05dc5c543c59a17d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/launch-fit-content-text-minimum-verified.log",
+      "status": "same",
+      "bytes": 28,
+      "sha256": "7ada7f9e434bbe85b62f548e6d7d59311aaf0e99d0a56f354f996ccb51554db5",
+      "expected_sha256": "7ada7f9e434bbe85b62f548e6d7d59311aaf0e99d0a56f354f996ccb51554db5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/launch-max-content-text-normal-verified.log",
+      "status": "same",
+      "bytes": 28,
+      "sha256": "717f40ecccc1a244a8a84010d46e354dff17c1f2093a6081525aea49d83fee63",
+      "expected_sha256": "717f40ecccc1a244a8a84010d46e354dff17c1f2093a6081525aea49d83fee63",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/launch-min-content-text-break-all-verified.log",
+      "status": "same",
+      "bytes": 28,
+      "sha256": "331af23d0078c4411f62912727a7b37359ca3e5839784e15fbf534dfa71f2ba2",
+      "expected_sha256": "331af23d0078c4411f62912727a7b37359ca3e5839784e15fbf534dfa71f2ba2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/launch-min-content-text-edge-verified.log",
+      "status": "same",
+      "bytes": 28,
+      "sha256": "164d1bc40e9a66e321b30023321252855395492ca59ab34ad4c793d1a5f3ed4c",
+      "expected_sha256": "164d1bc40e9a66e321b30023321252855395492ca59ab34ad4c793d1a5f3ed4c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/launch-min-content-text-max-width-verified.log",
+      "status": "same",
+      "bytes": 28,
+      "sha256": "2994f49b19f403b1cbbf1175a18be16205e46e5c90155857b216ae3024ce5aac",
+      "expected_sha256": "2994f49b19f403b1cbbf1175a18be16205e46e5c90155857b216ae3024ce5aac",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/launch-min-content-text-min-width-verified.log",
+      "status": "same",
+      "bytes": 28,
+      "sha256": "8db6f0aa88e8621cbf12d6c19078585fe3e88437fa2f6432ae91ac66153faf1f",
+      "expected_sha256": "8db6f0aa88e8621cbf12d6c19078585fe3e88437fa2f6432ae91ac66153faf1f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/launch-min-content-text-normal-verified.log",
+      "status": "same",
+      "bytes": 28,
+      "sha256": "0b3b120d61b06b2176be61d8b65e4d6c2ad75ce523c8fe30c9c495a717b6bb00",
+      "expected_sha256": "0b3b120d61b06b2176be61d8b65e4d6c2ad75ce523c8fe30c9c495a717b6bb00",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/launch-min-content-text-nowrap-verified.log",
+      "status": "same",
+      "bytes": 28,
+      "sha256": "1cb78343c984839c07be6755f34305c45630548efbd612aa3d0f384192c52093",
+      "expected_sha256": "1cb78343c984839c07be6755f34305c45630548efbd612aa3d0f384192c52093",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/metal-pixel-min-content-text-break-all.log",
+      "status": "same",
+      "bytes": 1925,
+      "sha256": "31a45fb0c684580f96c5f25f5a17ebad9814fa4207aeaf112d2af4d8aca2a000",
+      "expected_sha256": "31a45fb0c684580f96c5f25f5a17ebad9814fa4207aeaf112d2af4d8aca2a000",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-auto-text-max-content-verified.log",
+      "status": "same",
+      "bytes": 18126,
+      "sha256": "bfc7fcaaf5aac5c008649fa20589f26cf8e81d32ab59842e694d1009546a402d",
+      "expected_sha256": "bfc7fcaaf5aac5c008649fa20589f26cf8e81d32ab59842e694d1009546a402d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-auto-text-max-content.log",
+      "status": "same",
+      "bytes": 10433,
+      "sha256": "6187622efaa0165c9ca4fafb504f3234a64515a3c76eb627f4f029f56dfe0d4d",
+      "expected_sha256": "6187622efaa0165c9ca4fafb504f3234a64515a3c76eb627f4f029f56dfe0d4d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-fit-content-calc-limit-verified.log",
+      "status": "same",
+      "bytes": 18123,
+      "sha256": "ca1766a482c8f8477f2907ade52aaeb81216d21ae682cc741414dd32ff21e059",
+      "expected_sha256": "ca1766a482c8f8477f2907ade52aaeb81216d21ae682cc741414dd32ff21e059",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-fit-content-calc-limit.log",
+      "status": "same",
+      "bytes": 10432,
+      "sha256": "f3a93c42ddf69ad74c09c1c18b25bfe4499df623896b8fe51d99f13dbc03b91a",
+      "expected_sha256": "f3a93c42ddf69ad74c09c1c18b25bfe4499df623896b8fe51d99f13dbc03b91a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-fit-content-text-minimum-verified.log",
+      "status": "same",
+      "bytes": 18149,
+      "sha256": "557f4f7b15b84fbd92b91c7e6baa0defc8a1b8b7c77cc7d119647e0b69bdeb7e",
+      "expected_sha256": "557f4f7b15b84fbd92b91c7e6baa0defc8a1b8b7c77cc7d119647e0b69bdeb7e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-fit-content-text-minimum.log",
+      "status": "same",
+      "bytes": 10459,
+      "sha256": "85849d8a06d348d0dfd71eb697c681f29793fd6a4f322a39d7000d010a4d45c4",
+      "expected_sha256": "85849d8a06d348d0dfd71eb697c681f29793fd6a4f322a39d7000d010a4d45c4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-max-content-text-normal-verified.log",
+      "status": "same",
+      "bytes": 17803,
+      "sha256": "11ac21d903bc0346ca0bbc5fdf3b798868d062ad0a22f46442b8626721dc4e4d",
+      "expected_sha256": "11ac21d903bc0346ca0bbc5fdf3b798868d062ad0a22f46442b8626721dc4e4d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-max-content-text-normal.log",
+      "status": "same",
+      "bytes": 10122,
+      "sha256": "3a11d33656de394156695ef54155342510a86c36316200c2c07b51566b6dc2d1",
+      "expected_sha256": "3a11d33656de394156695ef54155342510a86c36316200c2c07b51566b6dc2d1",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-min-content-text-break-all-verified.log",
+      "status": "same",
+      "bytes": 17424,
+      "sha256": "cbe195f4cff50d47b9b5f8b31f7cb2fd173ff57a1ead8e0ef1daca13ae509330",
+      "expected_sha256": "cbe195f4cff50d47b9b5f8b31f7cb2fd173ff57a1ead8e0ef1daca13ae509330",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-min-content-text-break-all.log",
+      "status": "same",
+      "bytes": 9744,
+      "sha256": "5ea49dcf82c73bc82102c1f0c1c7116ba33c53cbcb8ff4a68bb9898a5654bfaf",
+      "expected_sha256": "5ea49dcf82c73bc82102c1f0c1c7116ba33c53cbcb8ff4a68bb9898a5654bfaf",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-min-content-text-edge-verified.log",
+      "status": "same",
+      "bytes": 17355,
+      "sha256": "65688183a562b41a169f6003ae9aafaca5a6e2c3a65772629d9f3eae8e6bda48",
+      "expected_sha256": "65688183a562b41a169f6003ae9aafaca5a6e2c3a65772629d9f3eae8e6bda48",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-min-content-text-edge.log",
+      "status": "same",
+      "bytes": 9675,
+      "sha256": "a9923e92ce4524532bae114f45df426a1618cbf45f0cdadbeb7a690b3e8c8375",
+      "expected_sha256": "a9923e92ce4524532bae114f45df426a1618cbf45f0cdadbeb7a690b3e8c8375",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-min-content-text-max-width-verified.log",
+      "status": "same",
+      "bytes": 17425,
+      "sha256": "975fadc590d05b49cd01e638ae8e458e1bfb49ad3d1e567efd1fcc26b17a5515",
+      "expected_sha256": "975fadc590d05b49cd01e638ae8e458e1bfb49ad3d1e567efd1fcc26b17a5515",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-min-content-text-max-width.log",
+      "status": "same",
+      "bytes": 9745,
+      "sha256": "1926e1a54608a1ca71b1a3d001542e45cd614ea54f08949873d48e3fd32edc51",
+      "expected_sha256": "1926e1a54608a1ca71b1a3d001542e45cd614ea54f08949873d48e3fd32edc51",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-min-content-text-min-width-verified.log",
+      "status": "same",
+      "bytes": 17425,
+      "sha256": "1438a5fd226042f1a5aefa41143974b3a6346f45ea08bb5db729d5236d5bd567",
+      "expected_sha256": "1438a5fd226042f1a5aefa41143974b3a6346f45ea08bb5db729d5236d5bd567",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-min-content-text-min-width.log",
+      "status": "same",
+      "bytes": 9745,
+      "sha256": "4b3eb1160702f548c6fcd15d89393aad4fe6fb26e7bac6b314f7ac21de8d2c30",
+      "expected_sha256": "4b3eb1160702f548c6fcd15d89393aad4fe6fb26e7bac6b314f7ac21de8d2c30",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-min-content-text-normal-verified.log",
+      "status": "same",
+      "bytes": 17383,
+      "sha256": "ff8e512cb4a081fb8967b3fde7962d030aa7373c0fc77458ae7a21385c69abfb",
+      "expected_sha256": "ff8e512cb4a081fb8967b3fde7962d030aa7373c0fc77458ae7a21385c69abfb",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-min-content-text-normal.log",
+      "status": "same",
+      "bytes": 19362,
+      "sha256": "38f525fc4ef324d0c54e64461977c2ae8134feaca699860752a06a9d7d78354e",
+      "expected_sha256": "38f525fc4ef324d0c54e64461977c2ae8134feaca699860752a06a9d7d78354e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-min-content-text-nowrap-verified.log",
+      "status": "same",
+      "bytes": 17410,
+      "sha256": "91efaa642596fcd751f14311f55b465138b6b3dc0447fb378d5b0822b3256c6d",
+      "expected_sha256": "91efaa642596fcd751f14311f55b465138b6b3dc0447fb378d5b0822b3256c6d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/runtime-min-content-text-nowrap.log",
+      "status": "same",
+      "bytes": 9729,
+      "sha256": "e45ac4da43a770436639cec5241f523da37cd2110aca484d7a4cebf10758e24f",
+      "expected_sha256": "e45ac4da43a770436639cec5241f523da37cd2110aca484d7a4cebf10758e24f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-auto-text-max-content.png",
+      "status": "same",
+      "bytes": 145058,
+      "sha256": "e8c39d5a6832054befb8876195cdfb726a927834de724abbbba970e13e88e297",
+      "expected_sha256": "e8c39d5a6832054befb8876195cdfb726a927834de724abbbba970e13e88e297",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-calc-limit.png",
+      "status": "same",
+      "bytes": 145147,
+      "sha256": "b308b7406d3dccc3ba224ec648fa16f7f4f55fa19f04d4772a4f6f75981cbd0d",
+      "expected_sha256": "b308b7406d3dccc3ba224ec648fa16f7f4f55fa19f04d4772a4f6f75981cbd0d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-fit-content-text-minimum.png",
+      "status": "same",
+      "bytes": 145295,
+      "sha256": "71c58f425764bc1ad99fa5d833d426fa6b311bd3fe6f313fb95cecffb27d41cf",
+      "expected_sha256": "71c58f425764bc1ad99fa5d833d426fa6b311bd3fe6f313fb95cecffb27d41cf",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-max-content-text-normal.png",
+      "status": "same",
+      "bytes": 145080,
+      "sha256": "330bfa39b0ea59dbe3e74e625c9cd817a723b739219bb94354cbc1fa50841eae",
+      "expected_sha256": "330bfa39b0ea59dbe3e74e625c9cd817a723b739219bb94354cbc1fa50841eae",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-min-content-text-break-all.png",
+      "status": "same",
+      "bytes": 131653,
+      "sha256": "939404afa9e6b04e7567effa81be576e2745bef693e3fc3b47a0048512dbe042",
+      "expected_sha256": "939404afa9e6b04e7567effa81be576e2745bef693e3fc3b47a0048512dbe042",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-min-content-text-edge.png",
+      "status": "same",
+      "bytes": 145403,
+      "sha256": "8f1a91e34a72fb084c246367285986d0130d0311d19d5c8b8a6e150bebd4cfa9",
+      "expected_sha256": "8f1a91e34a72fb084c246367285986d0130d0311d19d5c8b8a6e150bebd4cfa9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-min-content-text-max-width.png",
+      "status": "same",
+      "bytes": 145054,
+      "sha256": "9296a503b2b2fe25bce80177c27cd4d8744afc557dc5913eb3c755733fc258d5",
+      "expected_sha256": "9296a503b2b2fe25bce80177c27cd4d8744afc557dc5913eb3c755733fc258d5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-min-content-text-min-width.png",
+      "status": "same",
+      "bytes": 145293,
+      "sha256": "df9007455bcfddd6773c9952142a8e51d0084ab0026941cfffd8317db592c757",
+      "expected_sha256": "df9007455bcfddd6773c9952142a8e51d0084ab0026941cfffd8317db592c757",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-min-content-text-normal.png",
+      "status": "same",
+      "bytes": 145295,
+      "sha256": "71c58f425764bc1ad99fa5d833d426fa6b311bd3fe6f313fb95cecffb27d41cf",
+      "expected_sha256": "71c58f425764bc1ad99fa5d833d426fa6b311bd3fe6f313fb95cecffb27d41cf",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/ios-simulator/screenshot-min-content-text-nowrap.png",
+      "status": "same",
+      "bytes": 144144,
+      "sha256": "0a55bbdb67d46b53f0217b7b560894c3fff0a3cd35b8b3e66563bd7ba3f1e6c7",
+      "expected_sha256": "0a55bbdb67d46b53f0217b7b560894c3fff0a3cd35b8b3e66563bd7ba3f1e6c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "status": "replace",
+      "bytes": 29822,
+      "sha256": "2a34a9fad9fad1149a267f86cfc1acf48bc14cd984f1cf2a611e436f9c9a8b9c",
+      "expected_sha256": "2a34a9fad9fad1149a267f86cfc1acf48bc14cd984f1cf2a611e436f9c9a8b9c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/runtime-c114-focused-test.log",
+      "status": "same",
+      "bytes": 880,
+      "sha256": "589a42cd35cd4eb20107f1dc5363d50b241d3053ca0b355e44a578a356040895",
+      "expected_sha256": "589a42cd35cd4eb20107f1dc5363d50b241d3053ca0b355e44a578a356040895",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/rustfmt-check.log",
+      "status": "same",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/workspace-clippy.log",
+      "status": "same",
+      "bytes": 72,
+      "sha256": "c92508a29848820f033cd2ea015c85dde0953c88b07cc967ce34b7c08f610549",
+      "expected_sha256": "c92508a29848820f033cd2ea015c85dde0953c88b07cc967ce34b7c08f610549",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-text-intrinsic-matrix-2026-10-19/workspace-test.log",
+      "status": "same",
+      "bytes": 122915,
+      "sha256": "7c8e064fbebf06a227f492a335a923d42447b2404157c6ff7394b3e9488cbc07",
+      "expected_sha256": "7c8e064fbebf06a227f492a335a923d42447b2404157c6ff7394b3e9488cbc07",
+      "verified": true
+    },
+    {
+      "path": "logo.svg",
+      "status": "same",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "status": "replace",
+      "bytes": 69136,
+      "sha256": "a95a2bdc5b0a992e06a112bf5da723e648e8a21e24fe87715aa09481ae037fdf",
+      "expected_sha256": "a95a2bdc5b0a992e06a112bf5da723e648e8a21e24fe87715aa09481ae037fdf",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "status": "replace",
+      "bytes": 58152,
+      "sha256": "58dce39c6f1a023eddfc27676b535c9f197a89e94a1cad116f0a7e25272ecead",
+      "expected_sha256": "58dce39c6f1a023eddfc27676b535c9f197a89e94a1cad116f0a7e25272ecead",
+      "verified": true
+    },
+    {
+      "path": "roadmap.html",
+      "status": "same",
+      "bytes": 146176,
+      "sha256": "7aa52fd67de5442b452b430ce339f055bcffbe7953eb6cf9e74a8dce9409b887",
+      "expected_sha256": "7aa52fd67de5442b452b430ce339f055bcffbe7953eb6cf9e74a8dce9409b887",
+      "verified": true
+    },
+    {
+      "path": "roadmap.svg",
+      "status": "same",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "verified": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": "same",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "expected_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "verified": true
+    },
+    {
+      "path": "static/image/tailnet-plan-agent-browser.9356dec254.png",
+      "status": "same",
+      "bytes": 198972,
+      "sha256": "09e70ed089a7999dbf8b437dbd0ff5e1c73a6a099e5688a45856c12dd4f53fbe",
+      "expected_sha256": "09e70ed089a7999dbf8b437dbd0ff5e1c73a6a099e5688a45856c12dd4f53fbe",
+      "verified": true
+    },
+    {
+      "path": "static/image/tailnet-roadmap-agent-browser.8211347bf1.png",
+      "status": "same",
+      "bytes": 256356,
+      "sha256": "06fcdf94de3702b648fe0f67e2a01ad2ea9c7fd083f1b6548aedebf4d65fb8b2",
+      "expected_sha256": "06fcdf94de3702b648fe0f67e2a01ad2ea9c7fd083f1b6548aedebf4d65fb8b2",
+      "verified": true
+    },
+    {
+      "path": "static/image/tailnet-status-agent-browser.5ccdbb9816.png",
+      "status": "same",
+      "bytes": 212674,
+      "sha256": "2e5be0782ab42da8f4916ed0b9af74e91aebbf1878ebe4cee5c64f9426015fb0",
+      "expected_sha256": "2e5be0782ab42da8f4916ed0b9af74e91aebbf1878ebe4cee5c64f9426015fb0",
+      "verified": true
+    },
+    {
+      "path": "static/js/6.a1647de10f.js",
+      "status": "same",
+      "bytes": 217064,
+      "sha256": "205944cdaf71222962feb4ee4d4d0c92c782eecda5d892a18f72c3b456ce37ac",
+      "expected_sha256": "205944cdaf71222962feb4ee4d4d0c92c782eecda5d892a18f72c3b456ce37ac",
+      "verified": true
+    },
+    {
+      "path": "static/js/6.a1647de10f.js.LICENSE.txt",
+      "status": "same",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "expected_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/5.87b02f6535.js",
+      "status": "same",
+      "bytes": 96,
+      "sha256": "8636cde1e86aac81e8edf4fc9365041180defb86f34e8b0b4ce42fd367a6fc3a",
+      "expected_sha256": "8636cde1e86aac81e8edf4fc9365041180defb86f34e8b0b4ce42fd367a6fc3a",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.57c9838217.js",
+      "status": "same",
+      "bytes": 43436,
+      "sha256": "57beab9c9bfb61765a35e0f57c3cc02cce6cfeff88d068d7de4bfdb4d68e7caa",
+      "expected_sha256": "57beab9c9bfb61765a35e0f57c3cc02cce6cfeff88d068d7de4bfdb4d68e7caa",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-0a9b4dc0a861.7f1a87233c.js",
+      "status": "same",
+      "bytes": 9924,
+      "sha256": "9c5bb09957b7a96fe26a97af97165882927cd95befc02caf429678c13467100d",
+      "expected_sha256": "9c5bb09957b7a96fe26a97af97165882927cd95befc02caf429678c13467100d",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-5554b59129c8.8af6fd9a20.js",
+      "status": "same",
+      "bytes": 6802,
+      "sha256": "f0f21439a4c4c30fd17c2540e9acf94e2e6c9d50607771c47685fd56ecc9feb9",
+      "expected_sha256": "f0f21439a4c4c30fd17c2540e9acf94e2e6c9d50607771c47685fd56ecc9feb9",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-62bfaa6b419f.935512e606.js",
+      "status": "same",
+      "bytes": 10650,
+      "sha256": "dd0047d83a5380c85bbbc3051ee357571d4a4b97034435d036c742fcafe9e3bd",
+      "expected_sha256": "dd0047d83a5380c85bbbc3051ee357571d4a4b97034435d036c742fcafe9e3bd",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.688637b43e.js",
+      "status": "same",
+      "bytes": 406764,
+      "sha256": "2b9417953355c1e02703606579513958d197b30aa39f6206360a5c19a9d81188",
+      "expected_sha256": "2b9417953355c1e02703606579513958d197b30aa39f6206360a5c19a9d81188",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-7139fbd4f36e.cc5b16bae1.js",
+      "status": "create",
+      "bytes": 10193,
+      "sha256": "2b33185826e9018e9c99c9d09252d1512bb87bd74515499c4f8e95991b7d7496",
+      "expected_sha256": "2b33185826e9018e9c99c9d09252d1512bb87bd74515499c4f8e95991b7d7496",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-76422f0fb7f3.0d0bd51d58.js",
+      "status": "same",
+      "bytes": 12938,
+      "sha256": "3052d809cdc50ba5a272ea827e7e9ed37efb7b1c3257bf9fd705cbe3564e9f28",
+      "expected_sha256": "3052d809cdc50ba5a272ea827e7e9ed37efb7b1c3257bf9fd705cbe3564e9f28",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-7a9e85827a36.7211a0401a.js",
+      "status": "same",
+      "bytes": 12882,
+      "sha256": "0e05da8702f64e92fd1c1948c8b4e0ead854c78ca65e2b95a7c926066bcef3b6",
+      "expected_sha256": "0e05da8702f64e92fd1c1948c8b4e0ead854c78ca65e2b95a7c926066bcef3b6",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.afecd87a6d.js",
+      "status": "create",
+      "bytes": 180689,
+      "sha256": "4beb5c7f7a7cf049dc614773778710b9f519f96b0afa67e907c67119905e4af6",
+      "expected_sha256": "4beb5c7f7a7cf049dc614773778710b9f519f96b0afa67e907c67119905e4af6",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-b46d57c5d055.09e669f88e.js",
+      "status": "same",
+      "bytes": 11232,
+      "sha256": "d8b042d455b9dcce4c0deab870f68cc55a47163649ce1b2ced481c17a5b1cabf",
+      "expected_sha256": "d8b042d455b9dcce4c0deab870f68cc55a47163649ce1b2ced481c17a5b1cabf",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-bfea83e77170.4501db4208.js",
+      "status": "create",
+      "bytes": 22536,
+      "sha256": "b2a40a4caa1999e94e28b5fb52062cc771628298f9e55d0e129386749bc69c2e",
+      "expected_sha256": "b2a40a4caa1999e94e28b5fb52062cc771628298f9e55d0e129386749bc69c2e",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.c88da6607e.js",
+      "status": "same",
+      "bytes": 39325,
+      "sha256": "55806faa405d8fd3a2c339742a450d06eb0ec27c36e9070cb6329d07c3a1f63b",
+      "expected_sha256": "55806faa405d8fd3a2c339742a450d06eb0ec27c36e9070cb6329d07c3a1f63b",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-c45bfdd468ef.ae1e6c96a4.js",
+      "status": "same",
+      "bytes": 11500,
+      "sha256": "73f290721749886dfd7ed2ea440798a61d04dbea4fe41a042bd761f27153a32a",
+      "expected_sha256": "73f290721749886dfd7ed2ea440798a61d04dbea4fe41a042bd761f27153a32a",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.efcc6a1f64.js",
+      "status": "same",
+      "bytes": 66621,
+      "sha256": "a0b36f49f2be673b96d0e62eff9ee5a86f2904c05b97ea972509eddb7e65150c",
+      "expected_sha256": "a0b36f49f2be673b96d0e62eff9ee5a86f2904c05b97ea972509eddb7e65150c",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-dd40d9d88b0c.1bfb269a4e.js",
+      "status": "create",
+      "bytes": 8065,
+      "sha256": "9dbd593e0487182faf326a3787f920c46a6dde093b6595ca147649cbc992f71f",
+      "expected_sha256": "9dbd593e0487182faf326a3787f920c46a6dde093b6595ca147649cbc992f71f",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-ecf129b09e78.cb7acbca5f.js",
+      "status": "same",
+      "bytes": 21012,
+      "sha256": "94d87abe4b563c6ddcef8bd9a6210e9382af71d6cb43427a16ea41952d507d7f",
+      "expected_sha256": "94d87abe4b563c6ddcef8bd9a6210e9382af71d6cb43427a16ea41952d507d7f",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-f7e5b84816f9.632474eb1b.js",
+      "status": "create",
+      "bytes": 5847,
+      "sha256": "2a13e12396e7ba58b0d0216500fdb9266dc7488d54958a035e803fdac7cc83b6",
+      "expected_sha256": "2a13e12396e7ba58b0d0216500fdb9266dc7488d54958a035e803fdac7cc83b6",
+      "verified": true
+    },
+    {
+      "path": "static/js/index.78b9952e6f.js",
+      "status": "create",
+      "bytes": 42203,
+      "sha256": "b07b0e6ddfa625efec430ddeaf3c18a4fe500a68f30decb0ed7eb374d22d06fb",
+      "expected_sha256": "b07b0e6ddfa625efec430ddeaf3c18a4fe500a68f30decb0ed7eb374d22d06fb",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.e896641821.js",
+      "status": "same",
+      "bytes": 218365,
+      "sha256": "ad5168ad4f3231fb7c4bd51a4502e12afdabedeb57f79103cad877494cbaf020",
+      "expected_sha256": "ad5168ad4f3231fb7c4bd51a4502e12afdabedeb57f79103cad877494cbaf020",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.e896641821.js.LICENSE.txt",
+      "status": "same",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "expected_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.d3e0ac5ced.js",
+      "status": "same",
+      "bytes": 35366,
+      "sha256": "ab239edf754b3b36b3e42b2f49e5aeb8c1ada44fbc6cc2fd4a12b7925231ae74",
+      "expected_sha256": "ab239edf754b3b36b3e42b2f49e5aeb8c1ada44fbc6cc2fd4a12b7925231ae74",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.d3e0ac5ced.js.LICENSE.txt",
+      "status": "same",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "expected_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "verified": true
+    },
+    {
+      "path": "static/js/styles.10bab1556c.js",
+      "status": "same",
+      "bytes": 467,
+      "sha256": "01b84b8949e668c45232e2b970b8e48184ad91070637b52093d9e5bfd5065656",
+      "expected_sha256": "01b84b8949e668c45232e2b970b8e48184ad91070637b52093d9e5bfd5065656",
+      "verified": true
+    },
+    {
+      "path": "static/search_index.ko.f1f2ac13.json",
+      "status": "create",
+      "bytes": 492395,
+      "sha256": "f1f2ac132dba73daf5d5dd8ca8de73982abd135b51097131bd8ecb51a7509cba",
+      "expected_sha256": "f1f2ac132dba73daf5d5dd8ca8de73982abd135b51097131bd8ecb51a7509cba",
+      "verified": true
+    },
+    {
+      "path": "tests/fixtures/css/c11/grid-track-sizing-c114-precomparison.html",
+      "status": "same",
+      "bytes": 13599,
+      "sha256": "f2bfd4fc295988c9550026627c8d83f9b2daa04c52633e4a4c10d2dc2e9bc8a6",
+      "expected_sha256": "f2bfd4fc295988c9550026627c8d83f9b2daa04c52633e4a4c10d2dc2e9bc8a6",
+      "verified": true
+    }
+  ]
+}
