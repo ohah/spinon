@@ -1,0 +1,41 @@
+{
+  "pass": "pass10",
+  "date_kst": "2026-10-20",
+  "browser": "Agent Browser",
+  "origin": "Tailnet HTTPS origin omitted from committed evidence",
+  "routes": [
+    {
+      "path": "/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "checks": ["PR #362 Rebase and merge link is visible", "C11.4 remains incomplete", "overflow limitation is visible"],
+      "screenshot": "pass10-tailnet-roadmap-agent-browser.png"
+    },
+    {
+      "path": "/spinon/STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "checks": ["PR #362 merge SHA 033ea09badbf61100675df485679c6e7959d1974 is visible", "required status checks are not configured", "no CI pass is claimed", "C11.4 remains incomplete"],
+      "screenshot": "pass10-tailnet-status-agent-browser.png"
+    },
+    {
+      "path": "/spinon/plan/c11-4-grid-track-sizing.html#2026-10-20-auto-repeat-앞뒤-explicit-track-후속-계획",
+      "title": "C11.4 · CSS Grid track sizing 계획 - 스피논 문서",
+      "checks": ["PR #362 merge SHA is visible", "C11.4 completion count remains unchanged"],
+      "screenshot": "pass10-tailnet-plan-agent-browser.png"
+    },
+    {
+      "path": "/spinon/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.html",
+      "title": "C11.4 explicit-neighbor auto-repeat 실행 근거 - 스피논 문서",
+      "checks": ["all six Android and iOS scene screenshots have complete=true and nonzero natural dimensions"],
+      "evidence_screenshot_count": 6,
+      "evidence_screenshots": [
+        { "scene": "auto-fill-fixed-neighbors", "platform": "Android AVD", "width": 1080, "height": 2400, "loaded": true },
+        { "scene": "auto-fill-fixed-neighbors", "platform": "iOS Simulator", "width": 1206, "height": 2622, "loaded": true },
+        { "scene": "auto-fit-fixed-neighbors", "platform": "Android AVD", "width": 1080, "height": 2400, "loaded": true },
+        { "scene": "auto-fit-fixed-neighbors", "platform": "iOS Simulator", "width": 1206, "height": 2622, "loaded": true },
+        { "scene": "auto-fill-overflow-neighbors", "platform": "Android AVD", "width": 1080, "height": 2400, "loaded": true },
+        { "scene": "auto-fill-overflow-neighbors", "platform": "iOS Simulator", "width": 1206, "height": 2622, "loaded": true }
+      ],
+      "screenshot": "pass10-tailnet-evidence-agent-browser.png"
+    }
+  ]
+}

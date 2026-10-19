@@ -2,7 +2,7 @@
 
 **날짜:** 2026-10-20
 **범위:** 한 track axis의 단일 `auto-fill`/`auto-fit` 반복 component 앞뒤에 유한·0 이상 `px` track을 둔 제한 후보
-**상태:** 부분 구현·시뮬레이터 검증 완료. C11.4와 C11 상위는 미완료.
+**상태:** 제한 구현·시뮬레이터 검증 완료. [구현 PR #362](https://github.com/ohah/spinon/pull/362)은 2026-10-20 KST Rebase and merge됐다(merge SHA `033ea09badbf61100675df485679c6e7959d1974`). C11.4와 C11 상위는 미완료.
 
 ## 고정 Chrome oracle과 Rust 비교
 

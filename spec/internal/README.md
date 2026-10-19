@@ -2,7 +2,7 @@
 
 ## C11.4 auto-repeat explicit neighbor 후속
 
-[Chrome 155 13-case와 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 각 13/13 scene 실행·화면·해시](./evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.md) · [구현 실패 관점 20개](./evidence/c11-4-auto-repeat-neighbors-2026-10-20/implementation-review-20.md) · [PR diff 적대 검토 30개](./evidence/c11-4-auto-repeat-neighbors-2026-10-20/pr-diff-review-30.md). 한 축의 단일 auto-repeat 앞뒤 fixed `px` neighbor 지원 subset이며 C11.4와 공개 CSS 지원은 미완료다.
+[Chrome 155 13-case와 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 각 13/13 scene 실행·화면·해시](./evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.md) · [구현 실패 관점 20개](./evidence/c11-4-auto-repeat-neighbors-2026-10-20/implementation-review-20.md) · [PR diff 적대 검토 30개](./evidence/c11-4-auto-repeat-neighbors-2026-10-20/pr-diff-review-30.md). 구현 [PR #362](https://github.com/ohah/spinon/pull/362)은 merge SHA `033ea09badbf61100675df485679c6e7959d1974`로 Rebase and merge했다. 한 축의 단일 auto-repeat 앞뒤 fixed `px` neighbor 지원 subset이며 C11.4와 공개 CSS 지원은 미완료다.
 
 ## C11.4 PR #351 뒤 Tailnet 미리보기 동기화
 
