@@ -1,3 +1,10 @@
+#[cfg(feature = "c04-runtime-gpu-fixture-test")]
+#[path = "c11_4/trace_report.rs"]
+mod trace_report;
+
+#[cfg(feature = "c04-runtime-gpu-fixture-test")]
+pub(crate) use trace_report::grid_track_sizing_trace_report;
+
 const C11_4_GRID_TRACK_SIZING_SCENES: [(&str, &str); 7] = [
     (
         "auto-fixed-width-item",

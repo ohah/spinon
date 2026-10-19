@@ -75,6 +75,49 @@ pub struct RuntimeLayoutCompleted {
     pub render_snapshot: Option<RuntimeRenderSnapshot>,
     pub projection_duration_us: u128,
     pub cache_hit: bool,
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub grid_track_sizing_diagnostics: Option<Arc<RuntimeGridTrackSizingDiagnostics>>,
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[derive(Clone, Debug, PartialEq)]
+pub struct RuntimeGridTrackSizingDiagnostics {
+    pub revision: spinon_layout::LayoutInputRevision,
+    pub intrinsic_measurements: Arc<[spinon_layout::LayoutIntrinsicMeasurement]>,
+    pub item_inputs: Arc<[spinon_layout::LayoutGridItemIntrinsicInput]>,
+    pub traces: Arc<[spinon_layout::LayoutGridTrackSizingTrace]>,
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+impl RuntimeGridTrackSizingDiagnostics {
+    pub(crate) fn with_revision(&self, revision: spinon_layout::LayoutInputRevision) -> Self {
+        let intrinsic_measurements = self
+            .intrinsic_measurements
+            .iter()
+            .copied()
+            .map(|mut measurement| {
+                measurement.revision = revision;
+                measurement
+            })
+            .collect::<Vec<_>>()
+            .into();
+        let item_inputs = self
+            .item_inputs
+            .iter()
+            .cloned()
+            .map(|mut input| {
+                input.revision = revision;
+                input
+            })
+            .collect::<Vec<_>>()
+            .into();
+        Self {
+            revision,
+            intrinsic_measurements,
+            item_inputs,
+            traces: Arc::clone(&self.traces),
+        }
+    }
 }
 
 #[derive(Clone, Debug, PartialEq)]
@@ -158,6 +201,8 @@ where
             render_snapshot,
             projection_duration_us: 0,
             cache_hit: false,
+            #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+            grid_track_sizing_diagnostics: None,
         });
     }
     if root_count > 1 {
@@ -376,12 +421,34 @@ where
     } else {
         None
     };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let grid_track_sizing_diagnostics = {
+        let intrinsic_measurements = std::mem::take(&mut output.layout.intrinsic_measurements);
+        let item_inputs = std::mem::take(&mut output.layout.grid_item_intrinsic_inputs);
+        let traces = std::mem::take(&mut output.layout.grid_track_sizing_traces);
+        if profile != super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
+            && intrinsic_measurements.is_empty()
+            && item_inputs.is_empty()
+            && traces.is_empty()
+        {
+            None
+        } else {
+            Some(Arc::new(RuntimeGridTrackSizingDiagnostics {
+                revision: output.layout.revision,
+                intrinsic_measurements: intrinsic_measurements.into(),
+                item_inputs: item_inputs.into(),
+                traces: traces.into(),
+            }))
+        }
+    };
     Ok(RuntimeLayoutCompleted {
         key: request.key,
         frames: frames.into(),
         render_snapshot,
         projection_duration_us: elapsed_microseconds(projection_started),
         cache_hit: false,
+        #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+        grid_track_sizing_diagnostics,
     })
 }
 

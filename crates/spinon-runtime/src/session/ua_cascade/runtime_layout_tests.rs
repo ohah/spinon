@@ -409,6 +409,8 @@ fn stale_completion_cannot_replace_a_newer_requested_key() {
                 render_snapshot: None,
                 projection_duration_us: 0,
                 cache_hit: false,
+                #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+                grid_track_sizing_diagnostics: None,
             }),
             layout_diagnostics: Vec::new(),
         }),

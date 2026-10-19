@@ -1,0 +1,540 @@
+{
+  "schema": "spinon.c11_4.app-stage-trace.v1",
+  "platforms": {
+    "android": {
+      "auto-fill-repeat": {
+        "chunkCount": 5,
+        "traceSha256": "549eee6a51a3dae2e4be2b9defc73f9d719307fd3c13f6688e241ec66db3056c",
+        "layoutInputRevision": {
+          "environment": 0,
+          "intrinsicSize": 0,
+          "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(10), render_tree: RenderTreeRevision(2) }",
+          "style": 0
+        },
+        "passes": [
+          {
+            "axis": "Columns",
+            "stageCount": 6,
+            "contributionCount": 0,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: true }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: false }"
+            ]
+          },
+          {
+            "axis": "Rows",
+            "stageCount": 2,
+            "contributionCount": 0,
+            "stageNames": [
+              "Initialize",
+              "FixedTrackEarlyReturn"
+            ]
+          }
+        ]
+      },
+      "auto-fill-track-overflow": {
+        "chunkCount": 5,
+        "traceSha256": "549eee6a51a3dae2e4be2b9defc73f9d719307fd3c13f6688e241ec66db3056c",
+        "layoutInputRevision": {
+          "environment": 0,
+          "intrinsicSize": 0,
+          "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(10), render_tree: RenderTreeRevision(2) }",
+          "style": 0
+        },
+        "passes": [
+          {
+            "axis": "Columns",
+            "stageCount": 6,
+            "contributionCount": 0,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: true }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: false }"
+            ]
+          },
+          {
+            "axis": "Rows",
+            "stageCount": 2,
+            "contributionCount": 0,
+            "stageNames": [
+              "Initialize",
+              "FixedTrackEarlyReturn"
+            ]
+          }
+        ]
+      },
+      "auto-fit-collapse": {
+        "chunkCount": 5,
+        "traceSha256": "d472814bc1a469d33765b44fc6e35923342247a2b063a073a82dd8a2db9afb3c",
+        "layoutInputRevision": {
+          "environment": 0,
+          "intrinsicSize": 0,
+          "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(10), render_tree: RenderTreeRevision(2) }",
+          "style": 0
+        },
+        "passes": [
+          {
+            "axis": "Columns",
+            "stageCount": 6,
+            "contributionCount": 0,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: true }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: false }"
+            ]
+          },
+          {
+            "axis": "Rows",
+            "stageCount": 2,
+            "contributionCount": 0,
+            "stageNames": [
+              "Initialize",
+              "FixedTrackEarlyReturn"
+            ]
+          }
+        ]
+      },
+      "auto-fixed-width-item": {
+        "chunkCount": 4,
+        "traceSha256": "f10c04916fd1e0bfef7d9af9a3f8360df0ac05f9ead1176ed82439e8be5757c4",
+        "layoutInputRevision": {
+          "environment": 0,
+          "intrinsicSize": 0,
+          "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(10), render_tree: RenderTreeRevision(2) }",
+          "style": 0
+        },
+        "passes": [
+          {
+            "axis": "Columns",
+            "stageCount": 6,
+            "contributionCount": 3,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: false }"
+            ]
+          },
+          {
+            "axis": "Rows",
+            "stageCount": 6,
+            "contributionCount": 3,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: true }"
+            ]
+          }
+        ]
+      },
+      "fit-content-below-item-size": {
+        "chunkCount": 4,
+        "traceSha256": "f10c04916fd1e0bfef7d9af9a3f8360df0ac05f9ead1176ed82439e8be5757c4",
+        "layoutInputRevision": {
+          "environment": 0,
+          "intrinsicSize": 0,
+          "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(10), render_tree: RenderTreeRevision(2) }",
+          "style": 0
+        },
+        "passes": [
+          {
+            "axis": "Columns",
+            "stageCount": 6,
+            "contributionCount": 3,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: false }"
+            ]
+          },
+          {
+            "axis": "Rows",
+            "stageCount": 6,
+            "contributionCount": 3,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: true }"
+            ]
+          }
+        ]
+      },
+      "minmax-auto-fixed-width-item": {
+        "chunkCount": 4,
+        "traceSha256": "8bf629c61b10a8b003876047d7d5dd91fecd9fa5d6f8edc07f2331b6d6303c39",
+        "layoutInputRevision": {
+          "environment": 0,
+          "intrinsicSize": 0,
+          "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(10), render_tree: RenderTreeRevision(2) }",
+          "style": 0
+        },
+        "passes": [
+          {
+            "axis": "Columns",
+            "stageCount": 6,
+            "contributionCount": 2,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: false }"
+            ]
+          },
+          {
+            "axis": "Rows",
+            "stageCount": 6,
+            "contributionCount": 3,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: true }"
+            ]
+          }
+        ]
+      },
+      "spanning-auto-tracks": {
+        "chunkCount": 5,
+        "traceSha256": "752b083175595ac7388be9a5eed09a12c8a4363e16529d45474684886cc6f12a",
+        "layoutInputRevision": {
+          "environment": 0,
+          "intrinsicSize": 0,
+          "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(10), render_tree: RenderTreeRevision(2) }",
+          "style": 0
+        },
+        "passes": [
+          {
+            "axis": "Columns",
+            "stageCount": 6,
+            "contributionCount": 3,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 2, crosses_flexible_track: false }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: false }"
+            ]
+          },
+          {
+            "axis": "Rows",
+            "stageCount": 6,
+            "contributionCount": 3,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: true }"
+            ]
+          }
+        ]
+      }
+    },
+    "ios": {
+      "auto-fill-repeat": {
+        "chunkCount": 10,
+        "traceSha256": "549eee6a51a3dae2e4be2b9defc73f9d719307fd3c13f6688e241ec66db3056c",
+        "layoutInputRevision": {
+          "environment": 0,
+          "intrinsicSize": 0,
+          "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(10), render_tree: RenderTreeRevision(2) }",
+          "style": 0
+        },
+        "passes": [
+          {
+            "axis": "Columns",
+            "stageCount": 6,
+            "contributionCount": 0,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: true }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: false }"
+            ]
+          },
+          {
+            "axis": "Rows",
+            "stageCount": 2,
+            "contributionCount": 0,
+            "stageNames": [
+              "Initialize",
+              "FixedTrackEarlyReturn"
+            ]
+          }
+        ]
+      },
+      "auto-fill-track-overflow": {
+        "chunkCount": 10,
+        "traceSha256": "549eee6a51a3dae2e4be2b9defc73f9d719307fd3c13f6688e241ec66db3056c",
+        "layoutInputRevision": {
+          "environment": 0,
+          "intrinsicSize": 0,
+          "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(10), render_tree: RenderTreeRevision(2) }",
+          "style": 0
+        },
+        "passes": [
+          {
+            "axis": "Columns",
+            "stageCount": 6,
+            "contributionCount": 0,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: true }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: false }"
+            ]
+          },
+          {
+            "axis": "Rows",
+            "stageCount": 2,
+            "contributionCount": 0,
+            "stageNames": [
+              "Initialize",
+              "FixedTrackEarlyReturn"
+            ]
+          }
+        ]
+      },
+      "auto-fit-collapse": {
+        "chunkCount": 10,
+        "traceSha256": "d472814bc1a469d33765b44fc6e35923342247a2b063a073a82dd8a2db9afb3c",
+        "layoutInputRevision": {
+          "environment": 0,
+          "intrinsicSize": 0,
+          "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(10), render_tree: RenderTreeRevision(2) }",
+          "style": 0
+        },
+        "passes": [
+          {
+            "axis": "Columns",
+            "stageCount": 6,
+            "contributionCount": 0,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: true }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: false }"
+            ]
+          },
+          {
+            "axis": "Rows",
+            "stageCount": 2,
+            "contributionCount": 0,
+            "stageNames": [
+              "Initialize",
+              "FixedTrackEarlyReturn"
+            ]
+          }
+        ]
+      },
+      "auto-fixed-width-item": {
+        "chunkCount": 8,
+        "traceSha256": "f10c04916fd1e0bfef7d9af9a3f8360df0ac05f9ead1176ed82439e8be5757c4",
+        "layoutInputRevision": {
+          "environment": 0,
+          "intrinsicSize": 0,
+          "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(10), render_tree: RenderTreeRevision(2) }",
+          "style": 0
+        },
+        "passes": [
+          {
+            "axis": "Columns",
+            "stageCount": 6,
+            "contributionCount": 3,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: false }"
+            ]
+          },
+          {
+            "axis": "Rows",
+            "stageCount": 6,
+            "contributionCount": 3,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: true }"
+            ]
+          }
+        ]
+      },
+      "fit-content-below-item-size": {
+        "chunkCount": 8,
+        "traceSha256": "f10c04916fd1e0bfef7d9af9a3f8360df0ac05f9ead1176ed82439e8be5757c4",
+        "layoutInputRevision": {
+          "environment": 0,
+          "intrinsicSize": 0,
+          "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(10), render_tree: RenderTreeRevision(2) }",
+          "style": 0
+        },
+        "passes": [
+          {
+            "axis": "Columns",
+            "stageCount": 6,
+            "contributionCount": 3,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: false }"
+            ]
+          },
+          {
+            "axis": "Rows",
+            "stageCount": 6,
+            "contributionCount": 3,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: true }"
+            ]
+          }
+        ]
+      },
+      "minmax-auto-fixed-width-item": {
+        "chunkCount": 8,
+        "traceSha256": "8bf629c61b10a8b003876047d7d5dd91fecd9fa5d6f8edc07f2331b6d6303c39",
+        "layoutInputRevision": {
+          "environment": 0,
+          "intrinsicSize": 0,
+          "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(10), render_tree: RenderTreeRevision(2) }",
+          "style": 0
+        },
+        "passes": [
+          {
+            "axis": "Columns",
+            "stageCount": 6,
+            "contributionCount": 2,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: false }"
+            ]
+          },
+          {
+            "axis": "Rows",
+            "stageCount": 6,
+            "contributionCount": 3,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: true }"
+            ]
+          }
+        ]
+      },
+      "spanning-auto-tracks": {
+        "chunkCount": 9,
+        "traceSha256": "752b083175595ac7388be9a5eed09a12c8a4363e16529d45474684886cc6f12a",
+        "layoutInputRevision": {
+          "environment": 0,
+          "intrinsicSize": 0,
+          "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(10), render_tree: RenderTreeRevision(2) }",
+          "style": 0
+        },
+        "passes": [
+          {
+            "axis": "Columns",
+            "stageCount": 6,
+            "contributionCount": 3,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 2, crosses_flexible_track: false }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: false }"
+            ]
+          },
+          {
+            "axis": "Rows",
+            "stageCount": 6,
+            "contributionCount": 3,
+            "stageNames": [
+              "Initialize",
+              "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+              "IntrinsicSizingComplete",
+              "MaximizeTracks",
+              "ExpandFlexibleTracks",
+              "StretchAutoTracks { applied: true }"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "scenes": {
+    "auto-fill-repeat": {
+      "androidIosTraceJsonEqual": true
+    },
+    "auto-fill-track-overflow": {
+      "androidIosTraceJsonEqual": true
+    },
+    "auto-fit-collapse": {
+      "androidIosTraceJsonEqual": true
+    },
+    "auto-fixed-width-item": {
+      "androidIosTraceJsonEqual": true
+    },
+    "fit-content-below-item-size": {
+      "androidIosTraceJsonEqual": true
+    },
+    "minmax-auto-fixed-width-item": {
+      "androidIosTraceJsonEqual": true
+    },
+    "spanning-auto-tracks": {
+      "androidIosTraceJsonEqual": true
+    }
+  }
+}

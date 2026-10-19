@@ -2184,6 +2184,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치");
                 return;
             }
+            if (!logC114GridTrackSizingTraceChunks(c114GridTrackSizingRunId, result)) {
+                postStatus("실패 · C11.4 track-sizing trace가 없습니다");
+                return;
+            }
             Log.i(TAG, "SPINON_C114_GRID_SUMMARY run_id=" + c114GridTrackSizingRunId
                     + " scene_id=" + c114GridTrackSizingSceneId + " "
                     + "expected_root_frame=" + expectedRootFrame + " "
@@ -4641,6 +4645,26 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + " environment_revision=" + reportField(report, "environment_revision=");
         }
         return report.length() <= 180 ? report : report.substring(0, 180) + "…";
+    }
+
+    private static boolean logC114GridTrackSizingTraceChunks(String runId, String report) {
+        String marker = "grid_track_sizing_diagnostics=";
+        int traceStart = report.indexOf(marker);
+        if (traceStart < 0) {
+            Log.e(TAG, "SPINON_C114_GRID_TRACE_MISSING run_id=" + runId);
+            return false;
+        }
+        String trace = report.substring(traceStart);
+        int chunkSize = 1600;
+        int chunkCount = (trace.length() + chunkSize - 1) / chunkSize;
+        for (int chunkIndex = 0; chunkIndex < chunkCount; chunkIndex++) {
+            int start = chunkIndex * chunkSize;
+            int end = Math.min(trace.length(), start + chunkSize);
+            Log.i(TAG, "SPINON_C114_GRID_TRACE_CHUNK run_id=" + runId
+                    + " part=" + (chunkIndex + 1) + "/" + chunkCount + " "
+                    + trace.substring(start, end));
+        }
+        return true;
     }
 
     private static boolean c1133GridRevisionReusePassed(
