@@ -2,7 +2,7 @@
 
 **상위 원본:** [CSS Grid 계획](c11-css-grid.md) · [C11.4 track sizing 계획](c11-4-grid-track-sizing.md) · [CSS 적합성 계약](../spec/0001-conformance.md)
 
-**상태:** 계획·Chrome 155 사전 비교 완료. Spinon 구현 및 Android/iOS Simulator 실행 전이다. 이 계획이나 아래 제한 matrix는 C11.4 또는 C11 완료 판정을 바꾸지 않는다.
+**상태:** 계획 검토·Chrome 155 사전 비교·제한 scene/harness 구현과 Android/iOS Simulator 21-scene 검증을 마쳤다. generic grid track-sizing 제품 경로는 수정할 필요가 없었고, app fixture gate·검증 표만 확장했다. 이 slice는 C11.4 또는 C11 완료 판정을 바꾸지 않는다. [실행 근거](../spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/README.md).
 
 ## 목적
 
@@ -44,3 +44,12 @@ Named lines/areas, percentage/calc neighbors, 두 axis 동시 auto-repeat, 여�
 - 계획 자체의 서로 다른 실패 관점 20개 검토를 [plan-review-20.md](../spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/plan-review-20.md)에 기록하고 계획 PR을 병합한 뒤 구현한다.
 - 구현 후 새로운 runtime/code 실패 관점 20개를 같은 작업 evidence에 별도 파일로 둔다.
 - plan review와 구현 review를 섞거나 PR diff review를 대체하지 않는다.
+
+## 구현 결과 2026-10-20
+
+- Rust scene source, Android Java 및 iOS Swift app fixture의 scene allowlist와 expected root/item/node frame, box-count 판정을 8개 case에 맞췄다. product track-sizing algorithm은 수정하지 않았다.
+- 첫 iOS 실행은 추가된 scene ID가 app allowlist에 없어 명시적 argument error를 냈다. 두 platform gate를 고친 뒤 같은 전체 matrix를 재실행했다. [초기 오류·수정 후 결과](../spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/README.md).
+- Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator에서 각각 21/21 기존·신규 scene을 확인했다. 신규 8개는 root frame, used tracks, 모든 active 8px gutter, collapse 상태, trace chunk 및 draw/present marker를 검사했다.
+- [구현 실패 관점 검토 20개](../spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/implementation-review-20.md)를 새로 수행했다. Chrome `auto-fit` definite minimum-size axis discrepancy, WPT, 실기기, hardware GPU와 iOS compositor-after 결과는 계속 남는다.
+
+이후 implementation PR은 final 30관점 diff 검토를 거친 다음 병합한다. C11.4 check와 공식 완료 수는 그대로 둔다.

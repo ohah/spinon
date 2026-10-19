@@ -20,7 +20,7 @@ const apkPath = resolve(repositoryRoot, 'platforms/android/app/build/outputs/apk
 const runPrefix = `c114-neighbors-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot,
-  `spec/internal/evidence/c11-4-auto-repeat-neighbors-${date}`, `${target}-${runPrefix}`);
+  `spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-${date}`, `${target}-${runPrefix}`);
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const sleep = (milliseconds) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, milliseconds);
 
@@ -155,6 +155,86 @@ const scenes = [
     tracks: [20, 154, 0, 0, 10],
     collapsed: [false, false, true, true, false],
   },
+  {
+    id: 'auto-fill-two-track-columns-both-190',
+    axis: 'Columns',
+    boxCount: 1,
+    rootFrame: 'width=190,height=60',
+    itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=190,height=60]',
+    tracks: [20, 40, 20, 40, 20, 10],
+    collapsed: [false, false, false, false, false, false],
+  },
+  {
+    id: 'auto-fill-two-track-columns-both-200',
+    axis: 'Columns',
+    boxCount: 1,
+    rootFrame: 'width=266,height=60',
+    itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=266,height=60]',
+    tracks: [20, 40, 20, 40, 20, 40, 20, 10],
+    collapsed: [false, false, false, false, false, false, false, false],
+  },
+  {
+    id: 'auto-fill-two-track-columns-both-342',
+    axis: 'Columns',
+    boxCount: 1,
+    rootFrame: 'width=342,height=60',
+    itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=342,height=60]',
+    tracks: [20, 40, 20, 40, 20, 40, 20, 40, 20, 10],
+    collapsed: [false, false, false, false, false, false, false, false, false, false],
+  },
+  {
+    id: 'auto-fill-two-track-columns-prefix-200',
+    axis: 'Columns',
+    boxCount: 1,
+    rootFrame: 'width=248,height=60',
+    itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=248,height=60]',
+    tracks: [20, 40, 20, 40, 20, 40, 20],
+    collapsed: [false, false, false, false, false, false, false],
+  },
+  {
+    id: 'auto-fill-two-track-columns-suffix-200',
+    axis: 'Columns',
+    boxCount: 1,
+    rootFrame: 'width=238,height=60',
+    itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=238,height=60]',
+    tracks: [40, 20, 40, 20, 40, 20, 10],
+    collapsed: [false, false, false, false, false, false, false],
+  },
+  {
+    id: 'auto-fill-two-track-rows-both-190',
+    axis: 'Rows',
+    boxCount: 1,
+    rootFrame: 'width=50,height=190',
+    itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=50,height=190]',
+    tracks: [20, 40, 20, 40, 20, 10],
+    collapsed: [false, false, false, false, false, false],
+  },
+  {
+    id: 'auto-fill-two-track-rows-both-200',
+    axis: 'Rows',
+    boxCount: 1,
+    rootFrame: 'width=50,height=266',
+    itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=50,height=266]',
+    tracks: [20, 40, 20, 40, 20, 40, 20, 10],
+    collapsed: [false, false, false, false, false, false, false, false],
+  },
+  {
+    id: 'auto-fill-two-track-rows-both-342',
+    axis: 'Rows',
+    boxCount: 1,
+    rootFrame: 'width=50,height=342',
+    itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=50,height=342]',
+    tracks: [20, 40, 20, 40, 20, 40, 20, 40, 20, 10],
+    collapsed: [false, false, false, false, false, false, false, false, false, false],
+  },
 ];
 
 function command(binary, args, { allowFailure = false, timeout = 120_000, encoding = 'utf8' } = {}) {
@@ -182,11 +262,14 @@ function currentAndroidDevice() {
     '대상이 Android Emulator가 아닙니다. 실기기는 사용하지 않습니다.');
   const apiLevel = Number(adb(['shell', 'getprop', 'ro.build.version.sdk']).stdout.trim());
   assert.equal(apiLevel, 37, `고정 Android API 37 AVD가 아닙니다: ${apiLevel}`);
+  const abi = adb(['shell', 'getprop', 'ro.product.cpu.abi']).stdout.trim();
+  assert.equal(abi, 'arm64-v8a', `ARM64 Android AVD가 아닙니다: ${abi}`);
   return {
     adb,
     metadata: {
       serial,
       apiLevel,
+      abi,
       model: adb(['shell', 'getprop', 'ro.product.model']).stdout.trim(),
       fingerprint: adb(['shell', 'getprop', 'ro.build.fingerprint']).stdout.trim(),
     },
@@ -266,6 +349,16 @@ function verifyRuntimeLog(log, scene, runID) {
     Math.abs(baseSize - scene.tracks[index]) <= 1 / 64,
     `${scene.id}: track ${index + 1} 크기 예상 ${scene.tracks[index]}, 실제 ${baseSize}`,
   ));
+  if (scene.id.startsWith('auto-fill-two-track-')) {
+    const activeGutters = axisPass.stages.at(-1).tracks
+      .filter(({ gutter, collapsed }) => gutter && !collapsed);
+    assert.equal(activeGutters.length, scene.tracks.length - 1,
+      `${scene.id}: 활성 gap 수가 track 사이 개수와 다릅니다.`);
+    activeGutters.forEach(({ baseSize }, index) => assert.ok(
+      Math.abs(baseSize - 8) <= 1 / 64,
+      `${scene.id}: gap ${index + 1} 크기 예상 8, 실제 ${baseSize}`,
+    ));
+  }
   return {
     sceneId: scene.id,
     summary: log.split(/\r?\n/).find((line) => line.includes(summary)),
