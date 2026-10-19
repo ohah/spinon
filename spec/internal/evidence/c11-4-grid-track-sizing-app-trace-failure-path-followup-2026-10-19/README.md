@@ -12,6 +12,6 @@
 
 두 플랫폼에서 수정한 앱을 다시 빌드한 뒤 기존 C11.4 7개 scene을 실행했다. 각 scene의 frame assertion과 trace chunk 전체 복원이 통과했고, canonical trace JSON SHA-256은 7/7 scene에서 양 플랫폼이 같았다. [run summary](runtime-stage-summary.json), [Android logs](android-avd/), [iOS logs](ios-simulator/).
 
-이 재실행은 성공 scene의 회귀 확인이다. frame mismatch를 주입하는 별도 simulator 실행은 하지 않았다. 실패 시 trace가 먼저 남는 사실은 두 앱의 제어 흐름에서 호출 순서를 확인했다. 기존 화면은 바뀌지 않아 screenshots는 [앞선 7-scene evidence](../c11-4-grid-track-sizing-app-stage-trace-2026-10-19/README.md)를 참조한다.
+이 재실행은 성공 scene의 회귀 확인이다. frame mismatch를 주입하는 별도 simulator 실행은 하지 않았다. 실패 시 trace가 먼저 남는 사실은 두 앱의 제어 흐름에서 호출 순서를 확인했다. 기존 화면은 바뀌지 않아 screenshots는 [앞선 7-scene evidence](/spinon/internal/evidence/c11-4-grid-track-sizing-app-stage-trace-2026-10-19/README.html)를 참조한다.
 
 일부 생성 로그에는 줄 끝 공백이 있다. 읽기용 text 파일은 끝 공백을 정리하고 정확한 원본은 대응하는 `.raw.log.gz`에 보존했다. `SHA256SUMS`는 이 디렉터리에서 검증할 수 있다.

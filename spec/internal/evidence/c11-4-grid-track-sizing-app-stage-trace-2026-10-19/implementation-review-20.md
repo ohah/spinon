@@ -30,4 +30,4 @@
 
 ## 후속 수정과 재확인
 
-2026-10-19 PR #345 검토에서 Android/iOS 모두 frame assertion 전에 trace chunk를 기록하도록 순서를 옮겼다. 수정 버전은 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 다시 빌드하고 7개 scene을 재실행했다. 각 플랫폼 7/7 frame·trace 확인과 canonical JSON 7/7 일치를 [후속 근거](../c11-4-grid-track-sizing-app-trace-failure-path-followup-2026-10-19/README.md)에 기록했다. 별도 frame-mismatch 주입은 실행하지 않았다.
+2026-10-19 PR #345 검토에서 Android/iOS 모두 frame assertion 전에 trace chunk를 기록하도록 순서를 옮겼다. 수정 버전은 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 다시 빌드하고 7개 scene을 재실행했다. 각 플랫폼 7/7 frame·trace 확인과 canonical JSON 7/7 일치를 [후속 근거](/spinon/internal/evidence/c11-4-grid-track-sizing-app-trace-failure-path-followup-2026-10-19/README.html)에 기록했다. 별도 frame-mismatch 주입은 실행하지 않았다.
