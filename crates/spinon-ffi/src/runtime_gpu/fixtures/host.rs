@@ -270,6 +270,7 @@ impl RuntimeGpuHost {
             RuntimeSession::new_runtime_gpu_block_flex_grid_track_sizing_fixture()?;
         let mut host = Self::from_session_with_frame_report(session);
         host.include_paint_order_report = true;
+        host.include_c11_4_grid_track_sizing_report = true;
         #[cfg(feature = "c11-grid-metal-surface-pixels-test")]
         {
             host.surface_pixel_readback_test = true;

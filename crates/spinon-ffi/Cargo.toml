@@ -23,7 +23,11 @@ c04-12-root-html-text-paint-fixture-test = [
     "c04-12-root-html-block-paint-fixture-test",
     "spinon-runtime/c04-12-root-html-text-paint-fixture-test",
 ]
-c04-runtime-gpu-fixture-test = ["c04-runtime-gpu"]
+c04-runtime-gpu-fixture-test = [
+    "c04-runtime-gpu",
+    "dep:spinon-layout",
+    "spinon-runtime/c11-4-grid-track-sizing-fixture-test",
+]
 c11-2-3-grid-fixture-test = ["c04-runtime-gpu-fixture-test"]
 c04-runtime-gpu-test-hooks = ["c04-runtime-gpu-fixture-test", "spinon-render-wgpu/test-hooks"]
 c12-4-metal-surface-readback-test = ["c04-runtime-gpu-fixture-test"]

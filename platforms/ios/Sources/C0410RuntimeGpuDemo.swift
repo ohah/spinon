@@ -1784,6 +1784,27 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         ].joined(separator: " ")
     }
 
+    private func logC114GridTrackSizingTraceChunks(_ report: String) -> Bool {
+        let marker = "grid_track_sizing_diagnostics="
+        guard let range = report.range(of: marker) else {
+            log("SPINON_C114_GRID_TRACE_MISSING run_id=\(c114GridTrackSizingRunID)")
+            return false
+        }
+        let trace = String(report[range.lowerBound...])
+        let chunkSize = 800
+        let chunkCount = (trace.utf8.count + chunkSize - 1) / chunkSize
+        var start = trace.startIndex
+        var chunkIndex = 0
+        while start < trace.endIndex {
+            let end = trace.index(start, offsetBy: chunkSize, limitedBy: trace.endIndex)
+                ?? trace.endIndex
+            chunkIndex += 1
+            log("SPINON_C114_GRID_TRACE_CHUNK run_id=\(c114GridTrackSizingRunID) part=\(chunkIndex)/\(chunkCount) \(trace[start..<end])")
+            start = end
+        }
+        return true
+    }
+
     private func logC131FixtureReport(_ report: String) -> Bool {
         let expectedHitIDs = [
             "visible-target", "clip-inside", "clip-outside", "clip-margin-expanded",
@@ -3553,6 +3574,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                   report.contains(rootFrame), report.contains(itemFrame) else {
                 log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) report=\(report)")
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치")
+                return
+            }
+            guard logC114GridTrackSizingTraceChunks(report) else {
+                postStatus("실패 · C11.4 track-sizing trace가 없습니다")
                 return
             }
             log("SPINON_C114_GRID_SUMMARY run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) \(runtimeStatusSummary(report))")

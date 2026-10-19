@@ -64,6 +64,8 @@ struct RuntimeGpuHost {
     include_node_frame_report: bool,
     include_paint_order_report: bool,
     root_html_default_render: bool,
+    #[cfg(feature = "c04-runtime-gpu-fixture-test")]
+    include_c11_4_grid_track_sizing_report: bool,
     #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
     root_html_block_paint_fixture: bool,
     #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
@@ -177,6 +179,8 @@ impl RuntimeGpuHost {
             include_node_frame_report,
             include_paint_order_report: false,
             root_html_default_render: false,
+            #[cfg(feature = "c04-runtime-gpu-fixture-test")]
+            include_c11_4_grid_track_sizing_report: false,
             #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
             root_html_block_paint_fixture: false,
             #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
@@ -554,8 +558,22 @@ impl RuntimeGpuHost {
         } else {
             String::new()
         };
+        #[cfg(feature = "c04-runtime-gpu-fixture-test")]
+        let c11_4_grid_track_sizing_report = if self.include_c11_4_grid_track_sizing_report
+            && completed
+                .grid_track_sizing_diagnostics
+                .as_ref()
+                .is_some_and(|diagnostics| !diagnostics.traces.is_empty())
+        {
+            fixtures::c11_4::grid_track_sizing_trace_report(&completed)
+                .map_err(|error| (ERR_LAYOUT, error))?
+        } else {
+            String::new()
+        };
+        #[cfg(not(feature = "c04-runtime-gpu-fixture-test"))]
+        let c11_4_grid_track_sizing_report = String::new();
         Ok(format!(
-            "layout={} boxes={} generation={} document_revision={} render_tree_revision={} style_revision={} environment_revision={} cacheHit={} cascadeRecomputedStyleElements={} cascadeReusedStyleElements={} cascadeContextStyleElements={}{}{}{}{}{}{}{}{}{}{}",
+            "layout={} boxes={} generation={} document_revision={} render_tree_revision={} style_revision={} environment_revision={} cacheHit={} cascadeRecomputedStyleElements={} cascadeReusedStyleElements={} cascadeContextStyleElements={}{}{}{}{}{}{}{}{}{}{}{}",
             snapshot.state.as_str(),
             box_count,
             completed.key.generation,
@@ -577,6 +595,7 @@ impl RuntimeGpuHost {
             c18_3_image_report,
             c18_4_image_report,
             c15_3_glyph_paint_report,
+            c11_4_grid_track_sizing_report,
         ))
     }
 
@@ -790,6 +809,19 @@ impl RuntimeGpuHost {
                 attach_c18_4_images: self.c18_4_async_image_fixture,
             },
         );
+        let ready = if self.include_c11_4_grid_track_sizing_report
+            && response.status == 0
+            && ready
+                .as_ref()
+                .is_ok_and(|report| !report.contains("grid_track_sizing_diagnostics="))
+        {
+            Err((
+                ERR_LAYOUT,
+                "C11.4 eval에서 track-sizing trace를 받지 못했습니다".to_owned(),
+            ))
+        } else {
+            ready
+        };
         match (response.status, ready) {
             (0, Ok(ready)) => Ok(format!("{} {ready}", response.report)),
             (0, Err((status, error))) => Err((status, format!("{} {error}", response.report))),

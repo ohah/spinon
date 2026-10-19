@@ -155,6 +155,8 @@ mod tests {
             render_snapshot: None,
             projection_duration_us: 12,
             cache_hit: true,
+            #[cfg(feature = "c04-runtime-gpu-fixture-test")]
+            grid_track_sizing_diagnostics: None,
         });
         assert_eq!(json["unit"], "css-px");
         assert_eq!(json["projectionDurationUs"], 12);

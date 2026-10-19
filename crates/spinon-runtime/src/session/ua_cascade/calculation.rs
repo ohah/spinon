@@ -148,12 +148,31 @@ impl RuntimeCalculation {
             Some(snapshot) => Some(snapshot.with_document_snapshot_revision(&request.snapshot)?),
             None => None,
         };
+        #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+        let grid_track_sizing_diagnostics = previous_layout
+            .grid_track_sizing_diagnostics
+            .as_ref()
+            .map(|diagnostics| {
+                let revision = spinon_layout::LayoutInputRevision::new(
+                    spinon_layout::LayoutSourceRevision::HostDocument {
+                        generation: request.snapshot.generation(),
+                        document: request.snapshot.document_revision(),
+                        render_tree: request.snapshot.render_tree_revision(),
+                    },
+                    request.key.style_revision,
+                    request.viewport.environment_revision,
+                )
+                .with_intrinsic_size_revision(diagnostics.revision.intrinsic_size());
+                Arc::new(diagnostics.with_revision(revision))
+            });
         let layout = Ok(RuntimeLayoutCompleted {
             key: request.key,
             frames: Arc::clone(&previous_layout.frames),
             render_snapshot,
             projection_duration_us: 0,
             cache_hit: true,
+            #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+            grid_track_sizing_diagnostics,
         });
         Some(Self {
             roots,
