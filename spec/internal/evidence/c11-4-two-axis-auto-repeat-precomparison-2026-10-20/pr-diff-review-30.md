@@ -36,4 +36,4 @@
 | 29 | 시뮬레이터 scene 수만 맞고 기존 regression 누락 또는 ID 중복이 발생하는 문제. | 계획은 저장된 기존 21 ID와 새 12 ID의 33개 exact unique set을 Android/iOS 양쪽에서 요구한다. |
 | 30 | 문서 계획을 구현 완료/공개 지원으로 오인하거나 이후 roadmap이 고정되는 문제. | C11.4 check/count는 유지하고 구현 후 계약 갱신, 별도 Tailnet sync, 각 PR의 독립 20/30 review와 Rebase and merge를 gate로 둔다. |
 
-사전 검토에서 발견한 계획 checklist의 미표시된 완료 상태와 one-axis control axis 설명을 수정한 뒤 이 최종 diff를 검토했다. 이 검토 파일 추가 후에도 전체 PR diff를 다시 확인했으며 변경은 이 검토 기록뿐이다. 30개 항목은 계획 자체의 20개 표를 복사하지 않고 실제 최종 PR 파일·관찰값을 서로 다른 실패 경로로 확인한다.
+사전 검토에서 발견한 계획 checklist의 미표시된 완료 상태와 one-axis control axis 설명을 수정했다. 이 30개 표를 작성한 뒤 기존 21-scene 실행 근거 링크를 계획에 추가해 #29의 근거 경로를 보강했고, 해당 경로·33 ID acceptance·최종 changed-file set을 다시 대조했다. 표는 계획 자체의 20개 검토를 복사하지 않고 실제 PR 파일·관찰값을 서로 다른 실패 경로로 확인한다.
