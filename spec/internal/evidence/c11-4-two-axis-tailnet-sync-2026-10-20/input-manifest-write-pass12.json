@@ -1,0 +1,8 @@
+{
+  "manifest": "spec/internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/SHA256SUMS-preview-inputs.txt",
+  "source_file_count": 210,
+  "excluded_self_referential_inputs": [
+    "spec/internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/SHA256SUMS-preview-inputs.txt",
+    "spec/internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/SHA256SUMS.txt"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "pass": "pass12",
+  "origin": "https://macstudio.tailed42f2.ts.net",
+  "route_count": 8,
+  "verified_count": 8,
+  "failed_count": 0,
+  "routes": [
+    {
+      "path": "/spinon/roadmap.html",
+      "status": 200,
+      "bytes": 156476,
+      "title": "스피논 구현 로드맵",
+      "verified": true
+    },
+    {
+      "path": "/spinon/STATUS.html",
+      "status": 200,
+      "bytes": 514406,
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "verified": true
+    },
+    {
+      "path": "/spinon/plan/c11-4-two-axis-auto-repeat.html",
+      "status": 200,
+      "bytes": 67500,
+      "title": "C11.4 · 양쪽 Grid 축의 auto-repeat 계획 - 스피논 문서",
+      "verified": true
+    },
+    {
+      "path": "/spinon/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/README.html",
+      "status": 200,
+      "bytes": 62918,
+      "title": "C11.4 양쪽 축 auto-repeat 사전 비교 - 스피논 문서",
+      "verified": true
+    },
+    {
+      "path": "/spinon/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/README.html",
+      "status": 200,
+      "bytes": 64284,
+      "title": "C11.4 · 양쪽 Grid 축 auto-repeat 구현 근거 - 스피논 문서",
+      "verified": true
+    },
+    {
+      "path": "/spinon/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/implementation-review-20.html",
+      "status": 200,
+      "bytes": 62801,
+      "title": "C11.4 양쪽 축 auto-repeat 구현 후 20개 실패 관점 검토 - 스피논 문서",
+      "verified": true
+    },
+    {
+      "path": "/spinon/spec/internal/README.html",
+      "status": 200,
+      "bytes": 161702,
+      "title": "내부 인터페이스 명세 - 스피논 문서",
+      "verified": true
+    },
+    {
+      "path": "/spinon/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/README.html",
+      "status": 200,
+      "bytes": 55706,
+      "title": "C11.4 PR #368 뒤 Tailnet 로드맵 미리보기 갱신 - 스피논 문서",
+      "verified": true
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "agent_browser_version": "0.31.1",
+  "session": "spinon-c114-tailnet-post-final-pass13d-20261020",
+  "checks": [
+    {
+      "route": "/spinon/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/README.html",
+      "title": "C11.4 PR #368 뒤 Tailnet 로드맵 미리보기 갱신 - 스피논 문서",
+      "readyState": "complete",
+      "mergeShaPresent": true,
+      "images": 6,
+      "failedImages": 0
+    },
+    {
+      "route": "/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "counter": "212개 표시 · 공식 완료 72/212",
+      "c114Checkbox": false,
+      "mergeShaPresent": true,
+      "sameOriginOutsideBase": 0
+    },
+    {
+      "route": "/spinon/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/sync-review-20.html",
+      "title": "C11.4 PR #368 Tailnet 미리보기 동기화 실패 관점 검토 22개 - 스피논 문서",
+      "readyState": "complete",
+      "finalTargetCountPresent": true,
+      "openHandlesLink": "https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/open-handles-pass13.json"
+    }
+  ],
+  "closed_after_checks": true,
+  "post_close_session_active": false,
+  "process_scan_zero": true
+}

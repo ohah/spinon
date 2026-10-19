@@ -2,7 +2,7 @@
 
 **상위 원본:** [CSS Grid 계획](c11-css-grid.md) · [C11.4 track sizing 계획](c11-4-grid-track-sizing.md) · [CSS 적합성 계약](../spec/0001-conformance.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획 PR [#367](https://github.com/ohah/spinon/pull/367)이 Rebase and merge됐다. 계획 자체의 독립 실패 관점 20개 검토 뒤 제한 구현을 진행했고, 구현 후 코드·런타임 20관점과 Android/iOS Simulator 33-scene 행렬을 마쳤다. 구현 PR [#368](https://github.com/ohah/spinon/pull/368)의 최종 diff 실패 경로 30개 검토를 마쳤다. required checks 확인 및 병합은 남아 있다.
+**상태:** 계획 PR [#367](https://github.com/ohah/spinon/pull/367)이 Rebase and merge됐다. 계획 자체의 독립 실패 관점 20개 검토 뒤 제한 구현을 진행했고, 구현 후 코드·런타임 20관점과 Android/iOS Simulator 33-scene 행렬을 마쳤다. 구현 PR [#368](https://github.com/ohah/spinon/pull/368)의 최종 diff 실패 경로 30개 검토 뒤 2026-10-20 KST Rebase and merge됐다(merge SHA `c8aa093981a1b0d435347d9757b1fd0146a1f7db`). GitHub에 required status check는 설정되어 있지 않아 CI 통과로 기록하지 않는다.
 
 ## 목적과 규범 근거
 
@@ -53,4 +53,4 @@
 - [x] 계획 PR #367 검토·Rebase and merge
 - [x] 새 코드/runtime 실패 관점 20개 검토 ([구현 검토](../spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/implementation-review-20.md))
 - [x] Android/iOS Simulator 33-scene 행렬 ([실행 근거](../spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/README.md))
-- [ ] 구현 PR #368의 required checks 및 Rebase and merge
+- [x] 구현 PR #368의 required-check 설정 확인 및 Rebase and merge (required check 미설정; merge SHA `c8aa093981a1b0d435347d9757b1fd0146a1f7db`)

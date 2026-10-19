@@ -1,0 +1,77 @@
+{
+  "run": "pass13",
+  "preservation_rounds": [
+    {
+      "round": "initial-pass13-sync",
+      "reason": "Tailnet server PID 1191 held read handles; copied current target bytes into staging so its live files are not replaced.",
+      "replacement_count_preserved": 2,
+      "files": [
+        {
+          "path": "spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/pr-diff-review-30.html",
+          "open_pids": [
+            "1191"
+          ],
+          "prior_preflight_status": "replace",
+          "bytes": 63486,
+          "preview_sha256": "0c1db94b38d7a8bf2ad06a43426400b8a5a9f391888b32a33594592f29b4795d",
+          "staging_sha256": "0c1db94b38d7a8bf2ad06a43426400b8a5a9f391888b32a33594592f29b4795d",
+          "staging_matches_preview": true
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/README.html",
+          "open_pids": [
+            "1191"
+          ],
+          "prior_preflight_status": "replace",
+          "bytes": 62928,
+          "preview_sha256": "b91801151a3806af1ef7deb583fb882de4e792180825ceb104cde0a90fd87408",
+          "staging_sha256": "b91801151a3806af1ef7deb583fb882de4e792180825ceb104cde0a90fd87408",
+          "staging_matches_preview": true
+        }
+      ]
+    },
+    {
+      "round": "report-refresh-resync",
+      "reason": "Tailnet server PID 1191 held read handles; copied current target bytes into staging so its live files are not replaced.",
+      "replacement_count_preserved": 3,
+      "files": [
+        {
+          "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+          "open_pids": [
+            "1191"
+          ],
+          "prior_preflight_status": "replace",
+          "bytes": 67057,
+          "preview_sha256": "54346791b4598ac7ca81f003efd9a1a015da84faa23e71e2263ed41565f92745",
+          "staging_sha256": "54346791b4598ac7ca81f003efd9a1a015da84faa23e71e2263ed41565f92745",
+          "staging_matches_preview": true
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/pr-diff-review-30.html",
+          "open_pids": [
+            "1191"
+          ],
+          "prior_preflight_status": "replace",
+          "bytes": 63486,
+          "preview_sha256": "0c1db94b38d7a8bf2ad06a43426400b8a5a9f391888b32a33594592f29b4795d",
+          "staging_sha256": "0c1db94b38d7a8bf2ad06a43426400b8a5a9f391888b32a33594592f29b4795d",
+          "staging_matches_preview": true
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/README.html",
+          "open_pids": [
+            "1191"
+          ],
+          "prior_preflight_status": "replace",
+          "bytes": 62928,
+          "preview_sha256": "b91801151a3806af1ef7deb583fb882de4e792180825ceb104cde0a90fd87408",
+          "staging_sha256": "b91801151a3806af1ef7deb583fb882de4e792180825ceb104cde0a90fd87408",
+          "staging_matches_preview": true
+        }
+      ]
+    }
+  ],
+  "total_preserved_file_observations": 5,
+  "all_staged_bytes_match_preview": true,
+  "no_target_writes": true
+}

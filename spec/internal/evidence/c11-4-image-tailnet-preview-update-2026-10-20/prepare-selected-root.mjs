@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, '../../../..');
 const run = process.argv[2];
-if (!['pass6', 'pass7', 'pass8', 'pass9', 'pass11'].includes(run)) throw new Error('usage: node prepare-selected-root.mjs pass6|pass7|pass8|pass9|pass11');
+if (!['pass6', 'pass7', 'pass8', 'pass9', 'pass11', 'pass12', 'pass13'].includes(run)) throw new Error('usage: node prepare-selected-root.mjs pass6|pass7|pass8|pass9|pass11|pass12|pass13');
 
 const specRoot = path.join(repoRoot, 'spec');
 const outputRoot = path.join(repoRoot, 'build/spinon', `c11-4-image-tailnet-root-${run}`);
@@ -138,7 +138,7 @@ if (run === 'pass9') {
     selected.push([relative, `internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/${name}`]);
   }
 }
-if (run === 'pass11') {
+if (['pass11', 'pass12', 'pass13'].includes(run)) {
   const evidence = [
     'c11-4-auto-repeat-neighbors-2026-10-20',
     'c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20',
@@ -149,6 +149,66 @@ if (run === 'pass11') {
     const source = `spec/internal/evidence/${name}`;
     selected.push([source, `internal/evidence/${name}`]);
     selected.push([source, `spec/internal/evidence/${name}`]);
+  }
+}
+if (['pass12', 'pass13'].includes(run)) {
+  selected.push(
+    ['plan/c11-4-two-axis-auto-repeat.md', 'plan/c11-4-two-axis-auto-repeat.md'],
+    ['tests/fixtures/css/c11/grid-auto-repeat-both-axes-c114.html', 'public/tests/fixtures/css/c11/grid-auto-repeat-both-axes-c114.html'],
+  );
+  for (const name of ['c11-4-two-axis-auto-repeat-precomparison-2026-10-20', 'c11-4-two-axis-auto-repeat-2026-10-20']) {
+    const source = `spec/internal/evidence/${name}`;
+    selected.push([source, `internal/evidence/${name}`]);
+    selected.push([source, `spec/internal/evidence/${name}`]);
+  }
+  const syncEvidence = 'spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20';
+  if (run === 'pass12') {
+    selected.push(
+      [`${syncEvidence}/README.md`, 'internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/README.md'],
+      [`${syncEvidence}/README.md`, 'spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/README.md'],
+    );
+  } else {
+    const publishedEvidence = [
+      'README.md',
+      'sync-review-20.md',
+      'SHA256SUMS-preview-inputs-pass12.txt',
+      'SHA256SUMS-preview-inputs-pass13.txt',
+      'input-manifest-write-initial-failure-pass13.json',
+      'open-handles-initial-pass13.json',
+      'preserved-open-targets-pass13.json',
+      'prepare-root-pass12.json',
+      'selected-build-pass12.log',
+      'sanitize-pass12.json',
+      'preflight-pass12.json',
+      'open-handles-pass12.json',
+      'copy-and-backup-pass12.json',
+      'served-verification-pass12.json',
+      'browser-check-pass12.json',
+      'status-check-pass12.json',
+      'plan-check-pass12.json',
+      'evidence-check-pass12.json',
+      'precomparison-check-pass12.json',
+      'sync-report-check-pass12.json',
+      'html-route-check-pass12.json',
+      'route-check-initial-overstrict-pass12.json',
+      'new-c11-4-routes-pass12.json',
+      'browser-close-pass12.json',
+      'tailnet-roadmap-agent-browser-pass12.png',
+      'tailnet-status-agent-browser-pass12.png',
+      'tailnet-plan-agent-browser-pass12.png',
+      'tailnet-evidence-agent-browser-pass12.png',
+      'browser-check-pass13.json',
+      'status-check-pass13.json',
+      'plan-check-pass13.json',
+      'tailnet-roadmap-agent-browser-pass13.png',
+    ];
+    for (const name of publishedEvidence) {
+      const source = `${syncEvidence}/${name}`;
+      selected.push(
+        [source, `internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/${name}`],
+        [source, `spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/${name}`],
+      );
+    }
   }
 }
 

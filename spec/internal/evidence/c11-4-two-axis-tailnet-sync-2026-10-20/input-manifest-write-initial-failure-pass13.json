@@ -1,0 +1,8 @@
+{
+  "command": "SPINON_TAILNET_RUN=pass13 mise exec -- node spec/internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/write-preview-inputs-manifest.mjs",
+  "exit_code": 1,
+  "error": "ENOENT while lstat of sync evidence SHA256SUMS-preview-inputs-pass12.txt",
+  "cause": "The selector referenced per-pass manifests that were not yet copied into the sync evidence folder; the generic pass12 input manifest existed in the preview-update evidence folder.",
+  "correction": "Preserved that pass12 manifest at the referenced evidence path, removed the pass13 self-reference from the selected list, and made the writer emit a run-specific manifest.",
+  "recorded_at": "2026-10-20"
+}

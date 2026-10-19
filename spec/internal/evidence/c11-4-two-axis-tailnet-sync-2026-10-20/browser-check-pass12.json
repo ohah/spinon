@@ -1,0 +1,38 @@
+{
+  "c114Checkbox": {
+    "ariaLabel": "intrinsic track sizing 공식 미완료",
+    "checked": false
+  },
+  "documentReadyState": "complete",
+  "renderedCounter": "212개 표시 · 공식 완료 72/212",
+  "sameOriginOutsideBaseLinks": [],
+  "title": "스피논 구현 로드맵",
+  "twoAxisLinks": [
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-two-axis-auto-repeat.html",
+      "text": "집중 계획"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/README.html",
+      "text": "Chrome 사전 비교"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/README.html",
+      "text": "Simulator 실행 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/implementation-review-20.html",
+      "text": "구현 검토 20개"
+    },
+    {
+      "href": "https://github.com/ohah/spinon/pull/368",
+      "text": "PR #368"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "text": "공식 상태 대장"
+    }
+  ],
+  "twoAxisNote": "2026-10-20 C11.4 양쪽 Grid 축 auto-repeat · PR #368 병합: columns와 rows의 각 track list에 auto-repeat 하나씩을 독립 적용하고 두 축의 auto-fill/auto-fit, 반복 수, line range와 collapse를 분리해 확인했습니다. Chrome 155 12-case 사전 oracle과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator의 33-scene 행렬을 마쳤습니다. PR #368은 Rebase and merge됐으며 required status check는 설정되어 있지 않습니다. C11.4 체크와 공식 완료 집계는 그대로이고, auto-fit 축 차이·전체 repeat grammar·WPT·실기기·hardware GPU·iOS compositor-after 픽셀은 남습니다. 집중 계획 · Chrome 사전 비교 · Simulator 실행 근거 · 구현 검토 20개 · PR #368 · 공식 상태 대장",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html"
+}
