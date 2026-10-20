@@ -1,0 +1,68 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "95043727-36D2-451F-8C50-2AA54AA0328B.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 direct-touch per-event ledger aggregate_0_98716357-5D4C-4583-A44E-3838180A1A38.txt",
+        "timestamp" : 1792525897.039
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "22B7421A-588E-4A8C-9166-99FAB4087E34.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 direct-touch per-event ledger observations_0_B29F7347-F3FC-4A47-986D-6ECF4F4F5B2D.txt",
+        "timestamp" : 1792525897.038
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "F2D0C913-8223-40B5-B78F-F3E68809FD7D.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 direct-touch event pairing exported screen_0_9FF4FE48-0E61-4ECD-B3BC-A7BCC3FEE48A.png",
+        "timestamp" : 1792525837.253
+      }
+    ],
+    "testIdentifier" : "C133WheelProbeUITests/testPerEventRecognizerRowsForDirectTouchControls()",
+    "testIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testPerEventRecognizerRowsForDirectTouchControls"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "124D26B1-48CA-41A4-AF40-9EB92BADE5A3.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 scroll per-event ledger aggregate_0_7AA39770-3EA5-4892-8956-1F0E355314B3.txt",
+        "timestamp" : 1792526100.773
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "4AB89AA7-38A0-435D-BB28-BD5CB43E3830.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 scroll per-event ledger observations_0_84284F92-74F3-4DA2-A149-767D60F825E5.txt",
+        "timestamp" : 1792526100.772
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF",
+        "deviceName" : "iPad Pro 13-inch (M5)",
+        "exportedFileName" : "A3BBF2EC-B7B1-4B4C-9262-580BA984D255.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "C13.3 scroll event pairing exported screen_0_95BAACA1-23F5-49FB-B594-7CA59CC66D09.png",
+        "timestamp" : 1792525964.015
+      }
+    ],
+    "testIdentifier" : "C133WheelProbeUITests/testPerEventRecognizerRowsForScrollTypeMasks()",
+    "testIdentifierURL" : "test://com.apple.xcode/C133WheelProbe/C133WheelProbeUITests/C133WheelProbeUITests/testPerEventRecognizerRowsForScrollTypeMasks"
+  }
+]

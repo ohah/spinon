@@ -1,0 +1,262 @@
+{
+  "schema": "spinon-c133-recognizer-event-pairing-analysis-v1",
+  "runIDs": {
+    "scroll": "6c307b8e-1ad2-4ab6-88b7-6ee4013644e6",
+    "direct-touch": "79ca17bc-eae3-436d-a9ef-4571fd3eaf0f"
+  },
+  "inputFiles": [
+    "c133-recognizer-ledger-direct-touch-79ca17bc-eae3-436d-a9ef-4571fd3eaf0f-direct-touch-1.json",
+    "c133-recognizer-ledger-direct-touch-79ca17bc-eae3-436d-a9ef-4571fd3eaf0f-direct-touch-2.json",
+    "c133-recognizer-ledger-direct-touch-79ca17bc-eae3-436d-a9ef-4571fd3eaf0f-direct-touch-3.json",
+    "c133-recognizer-ledger-scroll-6c307b8e-1ad2-4ab6-88b7-6ee4013644e6-scroll-1.json",
+    "c133-recognizer-ledger-scroll-6c307b8e-1ad2-4ab6-88b7-6ee4013644e6-scroll-2.json",
+    "c133-recognizer-ledger-scroll-6c307b8e-1ad2-4ab6-88b7-6ee4013644e6-scroll-3.json"
+  ],
+  "ledgerCount": 6,
+  "valid": true,
+  "errors": [],
+  "totals": {
+    "rows": 2384,
+    "eventTypes": {
+      "0": 2051,
+      "10": 90,
+      "11": 243
+    }
+  },
+  "ledgers": [
+    {
+      "file": "c133-recognizer-ledger-scroll-6c307b8e-1ad2-4ab6-88b7-6ee4013644e6-scroll-1.json",
+      "mode": "scroll",
+      "runID": "6c307b8e-1ad2-4ab6-88b7-6ee4013644e6",
+      "launchID": "scroll-1",
+      "rows": 112,
+      "eventTypeCounts": {
+        "0": 2,
+        "10": 29,
+        "11": 81
+      },
+      "callbackRowsByEventType": {
+        "10": 14
+      },
+      "callbackDeltaTotalsByEventType": {
+        "0": 0,
+        "10": 28,
+        "11": 0
+      },
+      "mainThreadRows": 112,
+      "completeSnapshotRows": 112,
+      "callbackRows": {
+        "continuous": 14,
+        "discrete": 0,
+        "union": 14
+      },
+      "callbackDeltaTotals": {
+        "continuous": 14,
+        "discrete": 0,
+        "union": 14
+      },
+      "sameStateCallbackRows": {
+        "continuous": 0,
+        "discrete": 0,
+        "union": 0
+      },
+      "stateChangedWithoutCallbackRows": {
+        "continuous": 0,
+        "discrete": 0,
+        "union": 0
+      },
+      "unionInvariantViolations": 0,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "file": "c133-recognizer-ledger-scroll-6c307b8e-1ad2-4ab6-88b7-6ee4013644e6-scroll-2.json",
+      "mode": "scroll",
+      "runID": "6c307b8e-1ad2-4ab6-88b7-6ee4013644e6",
+      "launchID": "scroll-2",
+      "rows": 115,
+      "eventTypeCounts": {
+        "0": 2,
+        "10": 31,
+        "11": 82
+      },
+      "callbackRowsByEventType": {
+        "10": 6
+      },
+      "callbackDeltaTotalsByEventType": {
+        "0": 0,
+        "10": 12,
+        "11": 0
+      },
+      "mainThreadRows": 115,
+      "completeSnapshotRows": 115,
+      "callbackRows": {
+        "continuous": 6,
+        "discrete": 0,
+        "union": 6
+      },
+      "callbackDeltaTotals": {
+        "continuous": 6,
+        "discrete": 0,
+        "union": 6
+      },
+      "sameStateCallbackRows": {
+        "continuous": 0,
+        "discrete": 0,
+        "union": 0
+      },
+      "stateChangedWithoutCallbackRows": {
+        "continuous": 0,
+        "discrete": 0,
+        "union": 0
+      },
+      "unionInvariantViolations": 0,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "file": "c133-recognizer-ledger-scroll-6c307b8e-1ad2-4ab6-88b7-6ee4013644e6-scroll-3.json",
+      "mode": "scroll",
+      "runID": "6c307b8e-1ad2-4ab6-88b7-6ee4013644e6",
+      "launchID": "scroll-3",
+      "rows": 112,
+      "eventTypeCounts": {
+        "0": 2,
+        "10": 30,
+        "11": 80
+      },
+      "callbackRowsByEventType": {
+        "10": 10
+      },
+      "callbackDeltaTotalsByEventType": {
+        "0": 0,
+        "10": 20,
+        "11": 0
+      },
+      "mainThreadRows": 112,
+      "completeSnapshotRows": 112,
+      "callbackRows": {
+        "continuous": 10,
+        "discrete": 0,
+        "union": 10
+      },
+      "callbackDeltaTotals": {
+        "continuous": 10,
+        "discrete": 0,
+        "union": 10
+      },
+      "sameStateCallbackRows": {
+        "continuous": 0,
+        "discrete": 0,
+        "union": 0
+      },
+      "stateChangedWithoutCallbackRows": {
+        "continuous": 0,
+        "discrete": 0,
+        "union": 0
+      },
+      "unionInvariantViolations": 0,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "file": "c133-recognizer-ledger-direct-touch-79ca17bc-eae3-436d-a9ef-4571fd3eaf0f-direct-touch-1.json",
+      "mode": "direct-touch",
+      "runID": "79ca17bc-eae3-436d-a9ef-4571fd3eaf0f",
+      "launchID": "direct-touch-1",
+      "rows": 678,
+      "eventTypeCounts": {
+        "0": 678
+      },
+      "callbackRowsByEventType": {
+        "0": 648
+      },
+      "callbackDeltaTotalsByEventType": {
+        "0": 648
+      },
+      "mainThreadRows": 678,
+      "completeSnapshotRows": 678,
+      "callbackRows": {
+        "direct-touch": 648
+      },
+      "callbackDeltaTotals": {
+        "direct-touch": 648
+      },
+      "sameStateCallbackRows": {
+        "direct-touch": 620
+      },
+      "stateChangedWithoutCallbackRows": {
+        "direct-touch": 2
+      },
+      "unionInvariantViolations": 0,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "file": "c133-recognizer-ledger-direct-touch-79ca17bc-eae3-436d-a9ef-4571fd3eaf0f-direct-touch-2.json",
+      "mode": "direct-touch",
+      "runID": "79ca17bc-eae3-436d-a9ef-4571fd3eaf0f",
+      "launchID": "direct-touch-2",
+      "rows": 669,
+      "eventTypeCounts": {
+        "0": 669
+      },
+      "callbackRowsByEventType": {
+        "0": 637
+      },
+      "callbackDeltaTotalsByEventType": {
+        "0": 637
+      },
+      "mainThreadRows": 669,
+      "completeSnapshotRows": 669,
+      "callbackRows": {
+        "direct-touch": 637
+      },
+      "callbackDeltaTotals": {
+        "direct-touch": 637
+      },
+      "sameStateCallbackRows": {
+        "direct-touch": 608
+      },
+      "stateChangedWithoutCallbackRows": {
+        "direct-touch": 1
+      },
+      "unionInvariantViolations": 0,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "file": "c133-recognizer-ledger-direct-touch-79ca17bc-eae3-436d-a9ef-4571fd3eaf0f-direct-touch-3.json",
+      "mode": "direct-touch",
+      "runID": "79ca17bc-eae3-436d-a9ef-4571fd3eaf0f",
+      "launchID": "direct-touch-3",
+      "rows": 698,
+      "eventTypeCounts": {
+        "0": 698
+      },
+      "callbackRowsByEventType": {
+        "0": 666
+      },
+      "callbackDeltaTotalsByEventType": {
+        "0": 666
+      },
+      "mainThreadRows": 698,
+      "completeSnapshotRows": 698,
+      "callbackRows": {
+        "direct-touch": 666
+      },
+      "callbackDeltaTotals": {
+        "direct-touch": 666
+      },
+      "sameStateCallbackRows": {
+        "direct-touch": 637
+      },
+      "stateChangedWithoutCallbackRows": {
+        "direct-touch": 1
+      },
+      "unionInvariantViolations": 0,
+      "valid": true,
+      "errors": []
+    }
+  ]
+}

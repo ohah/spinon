@@ -427,6 +427,14 @@ final class C133WheelProbeUITests: XCTestCase {
         XCTAssertEqual(recognizersWithoutScrollEvents, 0, "recognizer callback은 app의 scroll event 진입 뒤에 관찰돼야 함")
     }
 
+    func testPerEventRecognizerRowsForScrollTypeMasks() {
+        exercisePerEventRecognizerLedger(mode: "scroll")
+    }
+
+    func testPerEventRecognizerRowsForDirectTouchControls() {
+        exercisePerEventRecognizerLedger(mode: "direct-touch")
+    }
+
     func testDirectTouchRecognizerDeliveryControl() {
         var observations: [String] = []
         var callbacksObserved = 0
@@ -583,6 +591,234 @@ final class C133WheelProbeUITests: XCTestCase {
 
     private func value(_ element: XCUIElement) -> String {
         (element.value as? String) ?? element.label
+    }
+
+    private func exercisePerEventRecognizerLedger(mode: String) {
+        let runID = UUID().uuidString.lowercased()
+        var observations: [String] = []
+        var validLaunches = 0
+        var validBaselines = 0
+        var validActionWindows = 0
+        var invalidActionWindows = 0
+        var successfulExports = 0
+        var exportedRows = 0
+        var scrollEventWindows = 0
+        var callbackWindows = 0
+        var directTouchRows = 0
+        var directTouchCallbackWindows = 0
+        var signedDirectTouchOffsets = 0
+        var unionInvariantViolations = 0
+
+        for launch in 1...3 {
+            let launchID = "\(mode)-\(launch)"
+            let app = XCUIApplication(bundleIdentifier: "dev.spinon.probe.oracle.host")
+            app.launchArguments = [
+                "--recognizer-event-pairing-oracle",
+                "--event-ledger-mode=\(mode)",
+                "--event-ledger-run-id=\(runID)",
+                "--event-ledger-launch-id=\(launchID)",
+            ]
+            app.launch()
+
+            let target = app.descendants(matching: .any)
+                .matching(identifier: "plain-oracle-target")
+                .firstMatch
+            let offsetLabel = app.descendants(matching: .any)
+                .matching(identifier: "scroll-offset")
+                .firstMatch
+            let callbackLabel = app.descendants(matching: .any)
+                .matching(identifier: "wheel-callbacks")
+                .firstMatch
+            let eventLabel = app.descendants(matching: .any)
+                .matching(identifier: "app-event-counters")
+                .firstMatch
+            let readyLabel = app.descendants(matching: .any)
+                .matching(identifier: "event-ledger-ready")
+                .firstMatch
+            let exportButton = app.buttons.matching(identifier: "event-ledger-export").firstMatch
+            let exportStatus = app.descendants(matching: .any)
+                .matching(identifier: "event-ledger-status")
+                .firstMatch
+            let controlsExist = target.waitForExistence(timeout: 10)
+                && callbackLabel.waitForExistence(timeout: 10)
+                && eventLabel.waitForExistence(timeout: 10)
+                && readyLabel.waitForExistence(timeout: 10)
+                && exportButton.waitForExistence(timeout: 10)
+                && exportStatus.waitForExistence(timeout: 10)
+                && offsetLabel.waitForExistence(timeout: 10)
+            let readyDeadline = Date().addingTimeInterval(10)
+            while controlsExist && Date() < readyDeadline
+                && !value(readyLabel).contains("ready=true mode=\(mode)") {
+                Thread.sleep(forTimeInterval: 0.05)
+            }
+            let targetIsHittable = controlsExist && target.isHittable
+            let isReady = value(readyLabel).contains("ready=true mode=\(mode)")
+            guard controlsExist && targetIsHittable && isReady else {
+                observations.append(
+                    "launch=\(launch) setup_failed controls_exist=\(controlsExist) target_hittable=\(targetIsHittable) ready=\(value(readyLabel))"
+                )
+                app.terminate()
+                continue
+            }
+            validLaunches += 1
+
+            let initialEvents = applicationEventSnapshot(eventLabel)
+            let initialCallbacks = mode == "scroll"
+                ? scrollTypeMaskCounts(callbackLabel)
+                : ["direct-touch": callbackCount(callbackLabel)]
+            let initialOffset = offsetX(offsetLabel)
+            let hasZeroRecognizerBaseline = initialCallbacks.values.allSatisfy { $0 == 0 }
+            let hasZeroEventBaseline = initialEvents.counts.values.allSatisfy { $0 == 0 }
+            let hasZeroBaseline = initialEvents.application == "C133ProbeApplication"
+                && hasZeroRecognizerBaseline
+                && hasZeroEventBaseline
+                && initialOffset == 0
+            validBaselines += hasZeroBaseline ? 1 : 0
+            observations.append(
+                "launch=\(launch) run_id=\(runID) launch_id=\(launchID) ready=\(value(readyLabel)) app_events=\(formatApplicationEventSnapshot(initialEvents)) recognizers=\(initialCallbacks) offset_x=\(initialOffset) zero=\(hasZeroBaseline)"
+            )
+
+            for repetition in 1...5 {
+                for direction in ["positive", "negative"] {
+                    let deltaX: CGFloat = direction == "positive" ? 38 : -38
+                    let expectedSign: CGFloat = direction == "positive" ? 1 : -1
+                    let eventsBefore = applicationEventSnapshot(eventLabel)
+                    let callbacksBefore = mode == "scroll"
+                        ? scrollTypeMaskCounts(callbackLabel)
+                        : ["direct-touch": callbackCount(callbackLabel)]
+                    let offsetBefore = offsetX(offsetLabel)
+
+                    if mode == "scroll" {
+                        target.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
+                            .scroll(byDeltaX: deltaX, deltaY: 0)
+                    } else {
+                        let originX: CGFloat = direction == "positive" ? 0.2 : 0.8
+                        let destinationX: CGFloat = direction == "positive" ? 0.8 : 0.2
+                        let origin = target.coordinate(
+                            withNormalizedOffset: CGVector(dx: originX, dy: 0.5)
+                        )
+                        let destination = target.coordinate(
+                            withNormalizedOffset: CGVector(dx: destinationX, dy: 0.5)
+                        )
+                        origin.press(forDuration: 0.05, thenDragTo: destination)
+                    }
+
+                    let deadline = Date().addingTimeInterval(2.0)
+                    while Date() < deadline {
+                        let currentEvents = applicationEventSnapshot(eventLabel)
+                        let currentCallbacks = mode == "scroll"
+                            ? scrollTypeMaskCounts(callbackLabel)
+                            : ["direct-touch": callbackCount(callbackLabel)]
+                        let eventChanged = currentEvents.counts.contains { key, current in
+                            current > eventsBefore.counts[key, default: -1]
+                        }
+                        let callbackChanged = currentCallbacks.contains { key, current in
+                            current > callbacksBefore[key, default: -1]
+                        }
+                        if eventChanged || callbackChanged { break }
+                        Thread.sleep(forTimeInterval: 0.05)
+                    }
+                    Thread.sleep(forTimeInterval: 0.15)
+
+                    let eventsAfter = applicationEventSnapshot(eventLabel)
+                    let callbacksAfter = mode == "scroll"
+                        ? scrollTypeMaskCounts(callbackLabel)
+                        : ["direct-touch": callbackCount(callbackLabel)]
+                    let offsetAfter = offsetX(offsetLabel)
+                    let validEvents = applicationEventWindowIsValid(before: eventsBefore, after: eventsAfter)
+                    let validRecognizers = mode == "scroll"
+                        ? recognizerCountWindowIsValid(before: callbacksBefore, after: callbacksAfter)
+                        : callbacksBefore["direct-touch", default: -1] >= 0
+                            && callbacksAfter["direct-touch", default: -1] >= callbacksBefore["direct-touch", default: -1]
+                    let validWindow = validEvents && validRecognizers && offsetBefore.isFinite && offsetAfter.isFinite
+                    validActionWindows += validWindow ? 1 : 0
+                    invalidActionWindows += validWindow ? 0 : 1
+
+                    let eventDeltas = Dictionary(uniqueKeysWithValues: eventsAfter.counts.map { entry in
+                        (entry.key, entry.value - eventsBefore.counts[entry.key, default: -1])
+                    })
+                    let callbackDeltas = Dictionary(uniqueKeysWithValues: callbacksAfter.map { entry in
+                        (entry.key, entry.value - callbacksBefore[entry.key, default: -1])
+                    })
+                    let scrollDelta = eventDeltas["scroll", default: -1]
+                    let touchDelta = eventDeltas["touches", default: -1]
+                    let callbackChanged = callbackDeltas.values.contains { $0 > 0 }
+                    scrollEventWindows += mode == "scroll" && scrollDelta > 0 ? 1 : 0
+                    callbackWindows += mode == "scroll" && callbackChanged ? 1 : 0
+                    directTouchRows += mode == "direct-touch" && touchDelta > 0 && scrollDelta == 0 ? 1 : 0
+                    directTouchCallbackWindows += mode == "direct-touch" && callbackChanged ? 1 : 0
+                    let offsetDelta = offsetAfter - offsetBefore
+                    let signedOffset = mode == "direct-touch" && offsetDelta * expectedSign > 0
+                    signedDirectTouchOffsets += signedOffset ? 1 : 0
+                    if mode == "scroll" {
+                        let continuousDelta = callbackDeltas["continuous", default: 0]
+                        let discreteDelta = callbackDeltas["discrete", default: 0]
+                        let unionDelta = callbackDeltas["union", default: 0]
+                        if (continuousDelta > 0 && unionDelta != continuousDelta)
+                            || (discreteDelta > 0 && unionDelta == 0) {
+                            unionInvariantViolations += 1
+                        }
+                    }
+                    observations.append(
+                        "launch=\(launch) repetition=\(repetition) direction=\(direction) valid_window=\(validWindow) event_before=\(formatApplicationEventSnapshot(eventsBefore)) event_after=\(formatApplicationEventSnapshot(eventsAfter)) event_delta=\(eventDeltas) recognizer_before=\(callbacksBefore) recognizer_after=\(callbacksAfter) recognizer_delta=\(callbackDeltas) offset_before=\(offsetBefore) offset_after=\(offsetAfter) offset_delta=\(offsetDelta)"
+                    )
+                }
+            }
+
+            exportButton.tap()
+            let exportDeadline = Date().addingTimeInterval(10)
+            while Date() < exportDeadline && !value(exportStatus).contains("status=complete") {
+                Thread.sleep(forTimeInterval: 0.05)
+            }
+            let exportValue = value(exportStatus)
+            let fileName = "file=c133-recognizer-ledger-\(mode)-\(runID)-\(launchID).json"
+            let rowCount = Int(exportValue
+                .split(separator: " ")
+                .first(where: { $0.hasPrefix("rows=") })?
+                .dropFirst("rows=".count) ?? "") ?? 0
+            let exportSucceeded = exportValue.contains("status=complete")
+                && exportValue.contains(fileName)
+                && rowCount > 0
+            successfulExports += exportSucceeded ? 1 : 0
+            exportedRows += rowCount
+            observations.append(
+                "launch=\(launch) export=\(exportValue) expected_file=\(fileName) successful=\(exportSucceeded)"
+            )
+            if launch == 1 {
+                XCTContext.runActivity(named: "C13.3 \(mode) event pairing exported screen") { activity in
+                    let screenshot = XCTAttachment(screenshot: app.screenshot())
+                    screenshot.name = "C13.3 \(mode) event pairing exported screen"
+                    screenshot.lifetime = .keepAlways
+                    activity.add(screenshot)
+                }
+            }
+            app.terminate()
+        }
+
+        let allObservations = XCTAttachment(string: observations.joined(separator: "\n"))
+        allObservations.name = "C13.3 \(mode) per-event ledger observations"
+        allObservations.lifetime = .keepAlways
+        add(allObservations)
+        let summary = XCTAttachment(
+            string: "mode=\(mode) run_id=\(runID) fresh_launches=\(validLaunches)/3 zero_baselines=\(validBaselines)/3 valid_action_windows=\(validActionWindows)/30 invalid_action_windows=\(invalidActionWindows) successful_exports=\(successfulExports)/3 exported_rows=\(exportedRows) scroll_event_windows=\(scrollEventWindows) callback_windows=\(callbackWindows) direct_touch_event_rows=\(directTouchRows) direct_touch_callback_windows=\(directTouchCallbackWindows) signed_direct_touch_offsets=\(signedDirectTouchOffsets) union_invariant_violations=\(unionInvariantViolations)"
+        )
+        summary.name = "C13.3 \(mode) per-event ledger aggregate"
+        summary.lifetime = .keepAlways
+        add(summary)
+
+        XCTAssertEqual(validLaunches, 3, "\(mode) fresh launch 수")
+        XCTAssertEqual(validBaselines, 3, "\(mode) reset-zero baseline 수")
+        XCTAssertEqual(validActionWindows, 30, "\(mode) action counter window 유효 수")
+        XCTAssertEqual(invalidActionWindows, 0, "\(mode) action counter window 무효 수")
+        XCTAssertEqual(successfulExports, 3, "\(mode) export 성공 수")
+        XCTAssertEqual(unionInvariantViolations, 0, "scroll union recognizer invariant 위반 수")
+        if mode == "scroll" {
+            XCTAssertEqual(scrollEventWindows, 30, "각 scroll action window의 UIApplication scroll event 관찰 수")
+        } else {
+            XCTAssertEqual(directTouchRows, 30, "direct touch UIEventType.touches 양성 대조 수")
+            XCTAssertEqual(directTouchCallbackWindows, 30, "direct touch recognizer callback 양성 대조 수")
+            XCTAssertEqual(signedDirectTouchOffsets, 30, "direct touch 방향 일치 offset 양성 대조 수")
+        }
     }
 
     private func callbackCount(_ element: XCUIElement) -> Int {
