@@ -11,25 +11,40 @@ const serial = process.argv[3] ?? 'emulator-5554';
 const simulatorUDID = process.argv[3] ?? 'ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D';
 const requestedSceneIDs = process.argv.find((argument) => argument.startsWith('--scene-id='))
   ?.slice('--scene-id='.length).split(',').filter(Boolean);
+const requestedRunKind = process.argv.find((argument) => argument.startsWith('--run-kind='))
+  ?.slice('--run-kind='.length);
+const evidenceGroup = process.argv.find((argument) => argument.startsWith('--evidence-group='))
+  ?.slice('--evidence-group='.length);
 const multiSpanSceneIDs = new Set([
   'competing-span2-forward', 'competing-span2-reversed',
   'span2-before-span3', 'span3-before-span2',
 ]);
 const isMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID));
-assert.ok(['android-avd', 'ios-simulator'].includes(target),
-  '사용법: node capture-c11-4-auto-repeat-neighbors-simulator.mjs android-avd|ios-simulator [AVD serial|iOS Simulator UDID]');
+const runKind = requestedRunKind ?? (isMultiSpanRun ? 'multispan-ordering' : 'negative-implicit');
+assert.match(runKind, /^[a-z0-9-]{1,80}$/, 'run-kind는 소문자·숫자·하이픈만 허용합니다.');
+assert.ok(['android-avd', 'android-device', 'ios-simulator'].includes(target),
+  '사용법: node capture-c11-4-auto-repeat-neighbors-simulator.mjs android-avd|android-device|ios-simulator [ADB serial|iOS Simulator UDID] [--scene-id=...] [--run-kind=...] [--evidence-group=...]');
+if (target === 'android-device') {
+  assert.ok(process.argv[3], 'android-device 모드에는 ADB serial이 필요합니다.');
+}
+if (evidenceGroup !== undefined) {
+  assert.match(evidenceGroup, /^[a-z0-9][a-z0-9-]{0,79}$/,
+    'evidence-group은 소문자·숫자·하이픈만 허용합니다.');
+}
 
 const packageName = 'dev.spinon.bootstrap';
 const component = `${packageName}/.MainActivity`;
 const appPath = resolve(repositoryRoot,
   'build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app');
 const apkPath = resolve(repositoryRoot, 'platforms/android/app/build/outputs/apk/debug/app-debug.apk');
-const runPrefix = `c114-${isMultiSpanRun ? 'multispan-ordering' : 'negative-implicit'}-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
+const runPrefix = `c114-${runKind}-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
-const evidenceDirectory = resolve(repositoryRoot, isMultiSpanRun
-  ? `spec/internal/evidence/c11-4-multispan-ordering-physical-android-${date}/${target}-${runPrefix}`
-  : `spec/internal/evidence/c11-4-negative-implicit-track-sizing-${date}/${target}-${runPrefix}`);
+const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
+  ? `spec/internal/evidence/${evidenceGroup}-${date}/${target}-${runPrefix}`
+  : isMultiSpanRun
+    ? `spec/internal/evidence/c11-4-multispan-ordering-physical-android-${date}/${target}-${runPrefix}`
+    : `spec/internal/evidence/c11-4-negative-implicit-track-sizing-${date}/${target}-${runPrefix}`);
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const sleep = (milliseconds) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, milliseconds);
 
@@ -1268,22 +1283,46 @@ async function saveLog(path, result) {
 function currentAndroidDevice() {
   const connected = command('adb', ['devices', '-l']).stdout.split(/\r?\n/)
     .filter((line) => line.startsWith(`${serial} `) && line.includes(' device '));
-  assert.equal(connected.length, 1, `Android AVD가 연결되어 있지 않습니다: ${serial}`);
+  assert.equal(connected.length, 1, `Android 대상 기기가 연결되어 있지 않습니다: ${serial}`);
   const adb = (args, options) => command('adb', ['-s', serial, ...args], options);
-  assert.equal(adb(['shell', 'getprop', 'ro.kernel.qemu']).stdout.trim(), '1',
-    '대상이 Android Emulator가 아닙니다. 실기기는 사용하지 않습니다.');
+  const qemu = adb(['shell', 'getprop', 'ro.kernel.qemu']).stdout.trim();
+  const model = adb(['shell', 'getprop', 'ro.product.model']).stdout.trim();
   const apiLevel = Number(adb(['shell', 'getprop', 'ro.build.version.sdk']).stdout.trim());
-  assert.equal(apiLevel, 37, `고정 Android API 37 AVD가 아닙니다: ${apiLevel}`);
   const abi = adb(['shell', 'getprop', 'ro.product.cpu.abi']).stdout.trim();
-  assert.equal(abi, 'arm64-v8a', `ARM64 Android AVD가 아닙니다: ${abi}`);
+  if (target === 'android-avd') {
+    assert.equal(qemu, '1', 'android-avd 모드에는 Android Emulator가 필요합니다.');
+    assert.equal(apiLevel, 37, `고정 Android API 37 AVD가 아닙니다: ${apiLevel}`);
+  } else {
+    assert.equal(qemu, '0', 'android-device 모드에는 실기기가 필요합니다.');
+    assert.equal(model, 'SM-S731N', `검증 대상 Samsung SM-S731N이 아닙니다: ${model}`);
+    assert.ok(apiLevel >= 36, `Android API 36 이상이 필요합니다: ${apiLevel}`);
+  }
+  assert.equal(abi, 'arm64-v8a', `ARM64 Android 대상이 아닙니다: ${abi}`);
+  let deviceMetadata = {};
+  if (target === 'android-device') {
+    const surfaceFlinger = adb(['shell', 'dumpsys', 'SurfaceFlinger']).stdout.replaceAll('\0', '');
+    const gpuRenderer = surfaceFlinger.match(/(?:^|\r?\n)GLES:\s*([^\r\n]+)/)?.[1]?.trim() ?? '';
+    assert.ok(gpuRenderer, 'SurfaceFlinger에서 실기기 GLES renderer를 읽지 못했습니다.');
+    deviceMetadata = {
+      manufacturer: adb(['shell', 'getprop', 'ro.product.manufacturer']).stdout.trim(),
+      androidRelease: adb(['shell', 'getprop', 'ro.build.version.release']).stdout.trim(),
+      boardPlatform: adb(['shell', 'getprop', 'ro.board.platform']).stdout.trim(),
+      physicalSize: adb(['shell', 'wm', 'size']).stdout.trim(),
+      physicalDensity: adb(['shell', 'wm', 'density']).stdout.trim(),
+      gpuRenderer,
+    };
+  }
   return {
     adb,
     metadata: {
       serial,
+      target,
+      qemu,
       apiLevel,
       abi,
-      model: adb(['shell', 'getprop', 'ro.product.model']).stdout.trim(),
+      model,
       fingerprint: adb(['shell', 'getprop', 'ro.build.fingerprint']).stdout.trim(),
+      ...deviceMetadata,
     },
   };
 }
@@ -1464,6 +1503,7 @@ function verifyRuntimeLog(log, scene, runID) {
     sceneId: scene.id,
     summary: log.split(/\r?\n/).find((line) => line.includes(summary)),
     nodeFrames: scene.nodeFrames,
+    observedNodeFrames: actualNodeFrames,
     tracks: scene.axes ? tracksByAxis : tracksByAxis[scene.axis],
     ...(scene.intrinsicSpans ? { intrinsicSpans: observedIntrinsicSpans } : {}),
     trackTraceChunks: traceParts.length,
@@ -1559,9 +1599,28 @@ if (target === 'ios-simulator') {
   }, null, 2)}\n`);
 } else {
   const { adb, metadata } = currentAndroidDevice();
-  await writeFile(resolve(evidenceDirectory, 'simulator.json'), `${JSON.stringify(metadata, null, 2)}\n`);
   const apkBytes = await readFile(apkPath);
+  const localApkSha256 = sha256(apkBytes);
   await saveLog('install.log', adb(['install', '-r', apkPath]));
+  const packagePaths = adb(['shell', 'pm', 'path', packageName]).stdout
+    .split(/\r?\n/).map((line) => line.replace(/^package:/, '').trim()).filter(Boolean);
+  const installedBaseApk = packagePaths.find((path) => path.endsWith('/base.apk'));
+  assert.ok(installedBaseApk, `설치된 ${packageName}의 base.apk 경로를 찾지 못했습니다.`);
+  const installedApkSha256 = adb(['shell', 'sha256sum', installedBaseApk]).stdout
+    .trim().split(/\s+/)[0];
+  assert.equal(installedApkSha256, localApkSha256,
+    '실기기에 설치된 base.apk와 로컬 APK의 SHA-256이 다릅니다.');
+  metadata.apkSha256 = localApkSha256;
+  metadata.installedApkSha256 = installedApkSha256;
+  await writeFile(resolve(evidenceDirectory,
+    target === 'android-device' ? 'device.json' : 'simulator.json'), `${JSON.stringify(metadata, null, 2)}\n`);
+  await writeFile(resolve(evidenceDirectory, 'installed-apk-verification.json'), `${JSON.stringify({
+    packageName,
+    installedBaseApk,
+    localApkSha256,
+    installedApkSha256,
+    matched: installedApkSha256 === localApkSha256,
+  }, null, 2)}\n`);
   for (const [index, scene] of runScenes.entries()) {
     let runID = `${runPrefix}-${index}`;
     let log = '';
@@ -1610,9 +1669,6 @@ if (target === 'ios-simulator') {
     const screenshot = adb(['exec-out', 'screencap', '-p'], { encoding: null }).stdout;
     await writeFile(resolve(evidenceDirectory, `${scene.id}.png`), screenshot);
   }
-  await writeFile(resolve(evidenceDirectory, 'simulator.json'), `${JSON.stringify({
-    ...metadata, target, apkSha256: sha256(apkBytes),
-  }, null, 2)}\n`);
 }
 
 await writeFile(resolve(evidenceDirectory, 'result.json'), `${JSON.stringify({

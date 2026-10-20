@@ -1,0 +1,454 @@
+{
+  "schemaVersion": 1,
+  "baseline": "/Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-auto-fit-min-size-axis-2026-10-20/android-avd-c114-autofit-minsize-android-avd-20261020T010237848Z-6e767f6f",
+  "physicalResult": "/Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-auto-fit-min-size-axis-physical-android-2026-10-21/android-device-c114-auto-fit-min-size-axis-android-device-20261020T203145959Z-6d7d1d53/result.json",
+  "device": {
+    "serial": "R5KYB06SMPE",
+    "target": "android-device",
+    "qemu": "0",
+    "manufacturer": "samsung",
+    "apiLevel": 36,
+    "androidRelease": "16",
+    "abi": "arm64-v8a",
+    "model": "SM-S731N",
+    "boardPlatform": "erd9945",
+    "physicalSize": "Physical size: 1080x2340",
+    "physicalDensity": "Physical density: 450",
+    "gpuRenderer": "Samsung Electronics Co., Ltd., ANGLE ((Samsung Xclipse 940) on Vulkan 1.3.279), OpenGL ES 3.2 Driver version: 24.1.307 git hash: 86f99cfe6317",
+    "fingerprint": "samsung/r13sksx/r13s:16/BP4A.251205.006/S731NKSS9BZH2_OKR9BZH2:user/release-keys",
+    "apkSha256": "77e2ff1cb2f81cb80339e06743cbf6b3b05aa0de1204e004454b09237a91be86",
+    "installedApkSha256": "77e2ff1cb2f81cb80339e06743cbf6b3b05aa0de1204e004454b09237a91be86"
+  },
+  "sceneCount": 53,
+  "toleranceCssPx": 0.015625,
+  "maxTrackDeltaCssPx": 0,
+  "maxFrameDeltaCssPx": 0,
+  "surfacePixelSampleCount": 4,
+  "surfacePixelSamplesExact": true,
+  "scenes": [
+    {
+      "sceneId": "auto-fill-fixed-neighbors",
+      "trackCount": 5,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-fixed-neighbors",
+      "trackCount": 5,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fill-pattern-neighbors",
+      "trackCount": 6,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-span-neighbors",
+      "trackCount": 5,
+      "frameCount": 3,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-empty-neighbors",
+      "trackCount": 5,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fill-prefix-neighbors",
+      "trackCount": 4,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fill-suffix-neighbors",
+      "trackCount": 4,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fill-indefinite-neighbors",
+      "trackCount": 3,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fill-max-size-neighbors",
+      "trackCount": 5,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fill-min-size-neighbors",
+      "trackCount": 6,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fill-overflow-neighbors",
+      "trackCount": 3,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 4
+    },
+    {
+      "sceneId": "auto-fill-row-neighbors",
+      "trackCount": 5,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-row-neighbors",
+      "trackCount": 5,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fill-two-track-columns-both-190",
+      "trackCount": 6,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fill-two-track-columns-both-200",
+      "trackCount": 8,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fill-two-track-columns-both-342",
+      "trackCount": 10,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fill-two-track-columns-prefix-200",
+      "trackCount": 7,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fill-two-track-columns-suffix-200",
+      "trackCount": 7,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fill-two-track-rows-both-190",
+      "trackCount": 6,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fill-two-track-rows-both-200",
+      "trackCount": 8,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fill-two-track-rows-both-342",
+      "trackCount": 10,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "columns-fill-control",
+      "trackCount": 6,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "rows-fill-control",
+      "trackCount": 6,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "both-fill-square",
+      "trackCount": 12,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "both-fill-asymmetric",
+      "trackCount": 14,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "both-fit-empty",
+      "trackCount": 12,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "both-fit-single",
+      "trackCount": 12,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "both-fit-span-two",
+      "trackCount": 12,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "both-fit-second-repeat",
+      "trackCount": 12,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "columns-fit-rows-fill-empty",
+      "trackCount": 12,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "columns-fill-rows-fit-empty",
+      "trackCount": 12,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "columns-fit-rows-fill-second-repeat",
+      "trackCount": 12,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "columns-fill-rows-fit-second-repeat",
+      "trackCount": 12,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-columns-both-190",
+      "trackCount": 6,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-columns-both-200",
+      "trackCount": 8,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-columns-both-342",
+      "trackCount": 10,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-columns-prefix-200",
+      "trackCount": 7,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-columns-suffix-200",
+      "trackCount": 7,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-columns-none-200",
+      "trackCount": 6,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-columns-single-200",
+      "trackCount": 8,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-columns-span-two-200",
+      "trackCount": 8,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-columns-second-repeat-200",
+      "trackCount": 8,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-columns-fixed-pattern-200",
+      "trackCount": 8,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-rows-both-190",
+      "trackCount": 6,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-rows-both-200",
+      "trackCount": 8,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-rows-both-342",
+      "trackCount": 10,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-rows-prefix-200",
+      "trackCount": 7,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-rows-suffix-200",
+      "trackCount": 7,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-rows-none-200",
+      "trackCount": 6,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-rows-single-200",
+      "trackCount": 8,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-rows-span-two-200",
+      "trackCount": 8,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-rows-second-repeat-200",
+      "trackCount": 8,
+      "frameCount": 2,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    },
+    {
+      "sceneId": "auto-fit-min-rows-fixed-pattern-200",
+      "trackCount": 8,
+      "frameCount": 1,
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "pixelSampleCount": 0
+    }
+  ]
+}
