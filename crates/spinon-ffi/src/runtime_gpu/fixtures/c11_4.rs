@@ -2,6 +2,8 @@ use std::borrow::Cow;
 
 #[path = "c11_4/auto_repeat_negative_lines.rs"]
 mod auto_repeat_negative_lines;
+#[path = "c11_4/image_multispan.rs"]
+mod image_multispan;
 #[path = "c11_4/implicit_intrinsic_tracks.rs"]
 mod implicit_intrinsic_tracks;
 #[path = "c11_4/multispan_ordering.rs"]
@@ -1011,6 +1013,9 @@ const C11_4_IMAGE_FIXED_GUTTER_SCENES: [ImageSceneWithRowGap; 2] = [
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     scene_id: &str,
 ) -> Result<Cow<'static, str>, String> {
+    if let Some(source) = image_multispan::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = text_multispan::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
@@ -1199,6 +1204,24 @@ mod tests {
             assert!(source.contains("grid-template-rows:repeat(3,20px)"));
             assert_eq!(
                 source.matches("document.createTextNode(").count(),
+                expected_items
+            );
+            assert_eq!(source.matches("nodeIds.push(").count(), expected_items);
+        }
+        for (scene_id, expected_items) in [
+            ("image-span2-forward", 2),
+            ("image-span2-reversed", 2),
+            ("image-span2-before-span3", 3),
+            ("image-span3-before-span2", 3),
+        ] {
+            let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
+            assert!(source.len() < 4 * 1024);
+            assert!(source.contains(&format!("sceneId:{scene_id:?}")));
+            assert!(source.contains("grid-template-columns:repeat(4,min-content)"));
+            assert!(source.contains("grid-template-rows:repeat(3,20px)"));
+            assert!(source.contains("padding:1px;border:0"));
+            assert_eq!(
+                source.matches("document.createElement('img')").count(),
                 expected_items
             );
             assert_eq!(source.matches("nodeIds.push(").count(), expected_items);

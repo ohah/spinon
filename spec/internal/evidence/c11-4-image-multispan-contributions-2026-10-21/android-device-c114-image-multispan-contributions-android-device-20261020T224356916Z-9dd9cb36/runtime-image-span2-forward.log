@@ -1,0 +1,4 @@
+10-21 07:44:03.418 32029 32029 E SpinonBootstrap: SPINON_C114_GRID_PIXEL_MATRIX status=error run_id=c114-image-multispan-contributions-android-device-20261020T224356916Z-9dd9cb36-0 scene=image-span2-forward reason=scene-index-mismatch
+10-21 07:44:03.424 32029 32050 E SpinonBootstrap: SPINON_C114_GRID_PIXEL_MATRIX status=error reason=scene-index-mismatch
+10-21 07:44:03.462 32029 32029 I SpinonBootstrap: SPINON_C0410_SURFACE_CREATED generation=1
+10-21 07:44:03.462 32029 32029 I SpinonBootstrap: SPINON_C0410_SURFACE_CHANGED generation=2 size=900x675 changed=true

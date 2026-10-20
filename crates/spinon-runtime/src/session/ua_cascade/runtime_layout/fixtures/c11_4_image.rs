@@ -22,6 +22,8 @@ const NATURAL_HEIGHT: u32 = 16;
 
 #[path = "c11_4_image/cases.rs"]
 mod cases;
+#[path = "c11_4_image/multispan.rs"]
+mod multispan;
 use cases::{IMAGE_CASES, ImageCase, ImageSizing, Placement, Track};
 
 pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
@@ -35,6 +37,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
             Some(root.id().get()),
             None,
         ));
+    }
+    if let Some(input) = multispan::prepare(snapshot, root, styles)? {
+        return Ok(Some(input));
     }
 
     let image_nodes = images_in_subtree(snapshot, root)?;

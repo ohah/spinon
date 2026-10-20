@@ -1,0 +1,17 @@
+{
+  "serial": "R5KYB06SMPE",
+  "target": "android-device",
+  "qemu": "0",
+  "apiLevel": 36,
+  "abi": "arm64-v8a",
+  "model": "SM-S731N",
+  "fingerprint": "samsung/r13sksx/r13s:16/BP4A.251205.006/S731NKSS9BZH2_OKR9BZH2:user/release-keys",
+  "manufacturer": "samsung",
+  "androidRelease": "16",
+  "boardPlatform": "erd9945",
+  "physicalSize": "Physical size: 1080x2340",
+  "physicalDensity": "Physical density: 450",
+  "gpuRenderer": "Samsung Electronics Co., Ltd., ANGLE ((Samsung Xclipse 940) on Vulkan 1.3.279), OpenGL ES 3.2 Driver version: 24.1.307 git hash: 86f99cfe6317",
+  "apkSha256": "b688556da5c153c6c998c5b61b165cc103f5acdbb3fbb949478cb0e90e405688",
+  "installedApkSha256": "b688556da5c153c6c998c5b61b165cc103f5acdbb3fbb949478cb0e90e405688"
+}

@@ -167,6 +167,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "span2-before-span3", "span3-before-span2",
             "text-span2-forward", "text-span2-reversed",
             "text-span2-before-span3", "text-span3-before-span2",
+            "image-span2-forward", "image-span2-reversed",
+            "image-span2-before-span3", "image-span3-before-span2",
             "column-auto-natural-ratio", "column-target-max-width-clamp",
             "row-target-max-height-clamp",
             "column-opposite-min-over-max", "column-border-box-transfer",
@@ -401,6 +403,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "text-span2-before-span3":
             case "text-span3-before-span2":
                 return "width=220,height=60";
+            case "image-span2-forward":
+            case "image-span2-reversed":
+            case "image-span2-before-span3":
+            case "image-span3-before-span2":
+                return "width=40,height=60";
             case "grid-gap-definite-percent":
             case "grid-gap-definite-calc":
                 return "width=100,height=40";
@@ -492,7 +499,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
-        if (c114IsTextMultiSpanScene(sceneId)
+        if (c114IsImageMultiSpanScene(sceneId) || c114IsTextMultiSpanScene(sceneId)
                 || sceneId.startsWith("competing-span2-")
                 || sceneId.startsWith("span2-before-")
                 || sceneId.startsWith("span3-before-")) return "";
@@ -742,6 +749,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
     }
     private static boolean c114ExpectedImageIntrinsicInputs(String sceneId, String report) {
+        if (c114IsImageMultiSpanScene(sceneId)) {
+            return c114ExpectedImageMultiSpanInputs(sceneId, report);
+        }
         switch (sceneId) {
             case "auto-image-definite":
             case "minmax-auto-image":
@@ -793,6 +803,156 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         } catch (org.json.JSONException | ClassCastException error) {
             return false;
         }
+    }
+
+    private static boolean c114ExpectedImageMultiSpanInputs(String sceneId, String report) {
+        int expectedCount = sceneId.endsWith("before-span3")
+                || sceneId.startsWith("image-span3-") ? 3 : 2;
+        int[][] spansAndWidths;
+        switch (sceneId) {
+            case "image-span2-forward":
+                spansAndWidths = new int[][] {{2, 24}, {2, 48}};
+                break;
+            case "image-span2-reversed":
+                spansAndWidths = new int[][] {{2, 48}, {2, 24}};
+                break;
+            case "image-span2-before-span3":
+                spansAndWidths = new int[][] {{2, 24}, {2, 48}, {3, 72}};
+                break;
+            case "image-span3-before-span2":
+                spansAndWidths = new int[][] {{3, 72}, {2, 48}, {2, 24}};
+                break;
+            default:
+                return false;
+        }
+        if (spansAndWidths.length != expectedCount) return false;
+        int diagnosticsMarker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (diagnosticsMarker < 0) return false;
+        String diagnosticsJson = report.substring(
+                diagnosticsMarker + "grid_track_sizing_diagnostics=".length());
+        try {
+            Object value = new org.json.JSONTokener(diagnosticsJson).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONObject diagnostics = (org.json.JSONObject) value;
+            org.json.JSONObject revision = diagnostics.optJSONObject("layoutInputRevision");
+            org.json.JSONArray inputs = diagnostics.optJSONArray("gridItemIntrinsicInputs");
+            if (revision == null || revision.optInt("intrinsicSize", 0) != 1
+                    || inputs == null || inputs.length() != expectedCount) return false;
+            for (int index = 0; index < expectedCount; index++) {
+                org.json.JSONObject input = inputs.optJSONObject(index);
+                if (input == null || input.optInt("grid", -1) != 1
+                        || input.optInt("node", -1) != index + 2
+                        || input.optInt("sourceOrder", -1) != index) return false;
+                org.json.JSONObject source = input.optJSONObject("source");
+                org.json.JSONObject natural = source == null ? null : source.optJSONObject("natural");
+                if (source == null || !"replaced".equals(source.optString("kind"))
+                        || natural == null || natural.optDouble("width", Double.NaN) != 24.0
+                        || natural.optDouble("height", Double.NaN) != 16.0
+                        || !natural.has("aspectRatio") || !natural.isNull("aspectRatio")) {
+                    return false;
+                }
+            }
+            return c114ImageMultiSpanTraceMatches(sceneId, spansAndWidths, diagnostics);
+        } catch (org.json.JSONException | ClassCastException error) {
+            return false;
+        }
+    }
+
+    private static boolean c114ImageMultiSpanTraceMatches(
+            String sceneId, int[][] spansAndWidths, org.json.JSONObject diagnostics
+    ) throws org.json.JSONException {
+        double[] expectedColumns = sceneId.endsWith("before-span3")
+                || sceneId.startsWith("image-span3-")
+                ? new double[] {16.0, 28.0, 28.0, 0.0}
+                : new double[] {12.0, 24.0, 24.0, 0.0};
+        double[][] expectedContributions = c114ExpectedImageMultiSpanContributions(
+                spansAndWidths);
+        org.json.JSONArray traces = diagnostics.optJSONArray("trackSizingTraces");
+        if (traces == null || traces.length() != 1) return false;
+        org.json.JSONObject trace = traces.optJSONObject(0);
+        org.json.JSONArray passes = trace == null ? null : trace.optJSONArray("passes");
+        if (trace == null || trace.optInt("grid", -1) != 1
+                || passes == null || passes.length() != 2) return false;
+        org.json.JSONObject columns = passes.optJSONObject(0);
+        org.json.JSONObject rows = passes.optJSONObject(1);
+        if (columns == null || rows == null
+                || !"Columns".equals(columns.optString("axis"))
+                || !"Rows".equals(rows.optString("axis"))) return false;
+        if (!c114ImageMultiSpanTracksMatch(columns, expectedColumns)
+                || !c114ImageMultiSpanTracksMatch(rows, new double[] {20.0, 20.0, 20.0})) {
+            return false;
+        }
+        org.json.JSONArray stages = columns.optJSONArray("stages");
+        if (stages == null) return false;
+        java.util.ArrayList<Integer> observedSpans = new java.util.ArrayList<>();
+        for (int index = 0; index < stages.length(); index++) {
+            org.json.JSONObject stage = stages.optJSONObject(index);
+            if (stage == null) return false;
+            java.util.regex.Matcher matcher = java.util.regex.Pattern
+                    .compile("^IntrinsicItemBatch \\{ span: (\\d+),")
+                    .matcher(stage.optString("stage"));
+            if (matcher.find()) observedSpans.add(Integer.parseInt(matcher.group(1)));
+        }
+        java.util.List<Integer> expectedSpans = spansAndWidths.length == 2
+                ? java.util.List.of(2) : java.util.List.of(2, 3);
+        if (!observedSpans.equals(expectedSpans)) return false;
+        org.json.JSONArray contributions = columns.optJSONArray("contributions");
+        if (contributions == null || contributions.length() != expectedContributions.length) {
+            return false;
+        }
+        for (int index = 0; index < expectedContributions.length; index++) {
+            org.json.JSONObject contribution = contributions.optJSONObject(index);
+            double[] expected = expectedContributions[index];
+            if (contribution == null || contribution.optInt("item", -1) != (int) expected[0]
+                    || !((expected[1] == 0.0 && "Minimum".equals(contribution.optString("kind")))
+                            || (expected[1] == 1.0
+                                    && "MinContent".equals(contribution.optString("kind"))))
+                    || contribution.optInt("span", -1) != (int) expected[2]
+                    || Math.abs(contribution.optDouble("value", Double.NaN) - expected[3]) > 0.0001) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static double[][] c114ExpectedImageMultiSpanContributions(int[][] spansAndWidths) {
+        java.util.ArrayList<double[]> expected = new java.util.ArrayList<>();
+        for (int span : new int[] {2, 3}) {
+            for (int kind = 0; kind < 2; kind++) {
+                int repetitions = kind == 0 ? 1 : 2;
+                for (int repetition = 0; repetition < repetitions; repetition++) {
+                    for (int index = 0; index < spansAndWidths.length; index++) {
+                        if (spansAndWidths[index][0] == span) {
+                            expected.add(new double[] {
+                                index + 2, kind, span, kind == 0 ? 0 : spansAndWidths[index][1],
+                            });
+                        }
+                    }
+                }
+            }
+        }
+        return expected.toArray(new double[0][]);
+    }
+
+    private static boolean c114ImageMultiSpanTracksMatch(
+            org.json.JSONObject pass, double[] expectedSizes
+    ) throws org.json.JSONException {
+        org.json.JSONArray stages = pass.optJSONArray("stages");
+        if (stages == null || stages.length() == 0) return false;
+        org.json.JSONObject finalStage = stages.optJSONObject(stages.length() - 1);
+        org.json.JSONArray tracks = finalStage == null ? null : finalStage.optJSONArray("tracks");
+        if (tracks == null) return false;
+        int observedCount = 0;
+        for (int index = 0; index < tracks.length(); index++) {
+            org.json.JSONObject track = tracks.optJSONObject(index);
+            if (track == null) return false;
+            if (track.optBoolean("gutter", false) || track.optBoolean("collapsed", false)) continue;
+            if (observedCount >= expectedSizes.length
+                    || Math.abs(track.optDouble("baseSize", Double.NaN)
+                            - expectedSizes[observedCount]) > 0.0001) return false;
+            observedCount++;
+        }
+        return observedCount == expectedSizes.length;
     }
     private static boolean c114ImageTrackSizingTraceMatches(
             String sceneId, org.json.JSONObject diagnostics
@@ -1127,6 +1287,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || "text-span3-before-span2".equals(sceneId);
     }
 
+    private static boolean c114IsImageMultiSpanScene(String sceneId) {
+        return "image-span2-forward".equals(sceneId)
+                || "image-span2-reversed".equals(sceneId)
+                || "image-span2-before-span3".equals(sceneId)
+                || "image-span3-before-span2".equals(sceneId);
+    }
+
     private static boolean c114ExpectedMultiSpanFramesMatch(String sceneId, String report) {
         double[][] expected;
         switch (sceneId) {
@@ -1172,6 +1339,26 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 expected = new double[][] {
                     {0, 0, 220, 60}, {0, 40, 180, 10},
                     {53.3333333333, 20, 126.6666666667, 10}, {0, 0, 116.6666666667, 10},
+                };
+                break;
+            case "image-span2-forward":
+                expected = new double[][] {
+                    {0, 0, 40, 60}, {1, 1, 24, 16}, {13, 21, 48, 32},
+                };
+                break;
+            case "image-span2-reversed":
+                expected = new double[][] {
+                    {0, 0, 40, 60}, {13, 21, 48, 32}, {1, 1, 24, 16},
+                };
+                break;
+            case "image-span2-before-span3":
+                expected = new double[][] {
+                    {0, 0, 40, 60}, {1, 1, 24, 16}, {17, 21, 48, 32}, {1, 41, 72, 48},
+                };
+                break;
+            case "image-span3-before-span2":
+                expected = new double[][] {
+                    {0, 0, 40, 60}, {1, 41, 72, 48}, {17, 21, 48, 32}, {1, 1, 24, 16},
                 };
                 break;
             default:
@@ -1223,6 +1410,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (sceneId.equals("image-span2-forward")
+                || sceneId.equals("image-span2-reversed")) return 3;
+        if (sceneId.equals("image-span2-before-span3")
+                || sceneId.equals("image-span3-before-span2")) return 4;
         if (sceneId.equals("competing-span2-forward")
                 || sceneId.equals("competing-span2-reversed")) return 3;
         if (sceneId.equals("span2-before-span3")
@@ -1366,6 +1557,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (c114IsImageMultiSpanScene(sceneId)) {
+            return c114ImageMultiSpanPixelSamplesMatch(sceneId, samples);
+        }
         if ("columns-fill-negative-positive-cycle".equals(sceneId)) {
             if (samples.size() != 5) return false;
             String rootId = "c114-" + sceneId + "-grid";
@@ -1724,6 +1918,59 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return rowTransferOverflow || columnTransferOverflow
                 ? itemInsideRoot && fixedSpanRightOfGrid && fixedSpanBelowGrid
                 : itemInsideRoot && itemOutsideRoot && rootBackground;
+    }
+
+    private static boolean c114ImageMultiSpanPixelSamplesMatch(
+            String sceneId, List<SurfaceViewPixelCapture.Sample> samples
+    ) {
+        boolean threeImages = sceneId.endsWith("before-span3")
+                || sceneId.startsWith("image-span3-");
+        if (samples.size() != (threeImages ? 5 : 4)) return false;
+        String rootId = "c114-" + sceneId + "-grid";
+        String overflowImageId = sceneId.equals("image-span2-reversed")
+                ? "image-b-reversed" : sceneId.equals("image-span2-forward")
+                ? "image-b-forward" : sceneId.equals("image-span3-before-span2")
+                ? "image-r-c" : "image-c-c";
+        boolean background = false;
+        boolean outside = false;
+        boolean overflow = false;
+        boolean below = !threeImages;
+        boolean after = false;
+        for (SurfaceViewPixelCapture.Sample sample : samples) {
+            switch (sample.id) {
+                case "image-multispan-root-background":
+                    background = sample.targetNodeId.equals(rootId)
+                            && sample.xCssPx == (threeImages ? 35 : 30)
+                            && sample.yCssPx == 10;
+                    if (!background) return false;
+                    break;
+                case "image-multispan-outside-root":
+                    outside = sample.targetNodeId.equals(rootId)
+                            && sample.xCssPx == 40 && sample.yCssPx == 10;
+                    if (!outside) return false;
+                    break;
+                case "image-multispan-item-overflow":
+                    overflow = sample.targetNodeId.equals(overflowImageId)
+                            && sample.xCssPx == (threeImages ? 65 : 45)
+                            && sample.yCssPx == (threeImages ? 45 : 30);
+                    if (!overflow) return false;
+                    break;
+                case "image-multispan-item-below-root":
+                    below = threeImages && sample.targetNodeId.equals(overflowImageId)
+                            && sample.xCssPx == 10 && sample.yCssPx == 70;
+                    if (!below) return false;
+                    break;
+                case "image-multispan-after-item":
+                    after = sample.targetNodeId.equals(rootId)
+                            && sample.xCssPx == (threeImages ? 75 : 62)
+                            && sample.yCssPx == (threeImages ? 70 : 30);
+                    if (!after) return false;
+                    break;
+                default:
+                    return false;
+            }
+        }
+        return background && outside && overflow && below && after;
     }
 
     private static boolean isC1133GridTemplateAreasPixelSamples(
@@ -2563,6 +2810,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "column-transfer-input-capped-by-fixed-row-span".equals(pixelMatrixSceneId)
                         || "fixed-gutter-column-suggestion-clamp".equals(pixelMatrixSceneId)
                         || "fixed-gutter-row-suggestion-clamp".equals(pixelMatrixSceneId)
+                        || c114IsImageMultiSpanScene(pixelMatrixSceneId)
                         || "grid-gap-definite-percent".equals(pixelMatrixSceneId)
                         || "grid-gap-cyclic-percent".equals(pixelMatrixSceneId)
                         || "grid-gap-definite-calc".equals(pixelMatrixSceneId)
@@ -6091,7 +6339,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "gap-background":
             case "row-gap-background":
             case "root-background-control":
+            case "image-multispan-root-background":
                 return new int[] {16, 24, 32};
+            case "image-multispan-item-overflow":
+            case "image-multispan-item-below-root":
+                return new int[] {229, 72, 77};
+            case "image-multispan-outside-root":
+            case "image-multispan-after-item":
+                return new int[] {0, 0, 0};
             case "overflow-root-background":
                 return new int[] {34, 197, 94};
             case "negative-root-interior":

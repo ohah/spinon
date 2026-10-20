@@ -106,6 +106,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "span2-before-span3", "span3-before-span2",
     "text-span2-forward", "text-span2-reversed",
     "text-span2-before-span3", "text-span3-before-span2",
+    "image-span2-forward", "image-span2-reversed",
+    "image-span2-before-span3", "image-span3-before-span2",
 ]
 private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -187,6 +189,9 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     case "text-span2-forward", "text-span2-reversed",
          "text-span2-before-span3", "text-span3-before-span2":
         return "width=220,height=60"
+    case "image-span2-forward", "image-span2-reversed",
+         "image-span2-before-span3", "image-span3-before-span2":
+        return "width=40,height=60"
     case "column-auto-natural-ratio", "column-target-max-width-clamp",
          "column-opposite-min-over-max", "column-border-box-transfer",
          "column-content-box-transfer", "column-target-min-width-clamp":
@@ -269,7 +274,7 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
-    if c114IsTextMultiSpanScene(sceneID) { return "" }
+    if c114IsTextMultiSpanScene(sceneID) || c114IsImageMultiSpanScene(sceneID) { return "" }
     if c114AutoRepeatNegativeLineSceneIDs.contains(sceneID) { return "" }
     if c114IsImplicitTextScene(sceneID) { return "" }
     if let expectation = c114NegativeTrackExpectation(sceneID) {
@@ -447,6 +452,9 @@ private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) 
 }
 
 private func c114ExpectedImageIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
+    if c114IsImageMultiSpanScene(sceneID) {
+        return c114ExpectedImageMultiSpanInputs(sceneID, report: report)
+    }
     let imageScenes: Set<String> = [
         "auto-image-definite", "minmax-auto-image", "minmax-min-max-image",
         "fit-content-below-minimum", "fit-content-above-intrinsic",
@@ -514,9 +522,161 @@ private func c114ExpectedImageIntrinsicInputs(_ sceneID: String, report: String)
     return c114ImageTrackSizingTraceMatches(sceneID, diagnostics: diagnostics)
 }
 
+private func c114IsImageMultiSpanScene(_ sceneID: String) -> Bool {
+    ["image-span2-forward", "image-span2-reversed",
+     "image-span2-before-span3", "image-span3-before-span2"].contains(sceneID)
+}
+
+private func c114ExpectedImageMultiSpanInputs(_ sceneID: String, report: String) -> Bool {
+    let spansAndWidths: [[Int]]
+    switch sceneID {
+    case "image-span2-forward": spansAndWidths = [[2, 24], [2, 48]]
+    case "image-span2-reversed": spansAndWidths = [[2, 48], [2, 24]]
+    case "image-span2-before-span3": spansAndWidths = [[2, 24], [2, 48], [3, 72]]
+    case "image-span3-before-span2": spansAndWidths = [[3, 72], [2, 48], [2, 24]]
+    default: return false
+    }
+    guard let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let revision = diagnostics["layoutInputRevision"] as? [String: Any],
+          (revision["intrinsicSize"] as? Int) == 1,
+          let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
+          inputs.count == spansAndWidths.count else { return false }
+    for (index, input) in inputs.enumerated() {
+        guard (input["grid"] as? Int) == 1,
+              (input["node"] as? Int) == index + 2,
+              (input["sourceOrder"] as? Int) == index,
+              let source = input["source"] as? [String: Any],
+              (source["kind"] as? String) == "replaced",
+              let natural = source["natural"] as? [String: Any],
+              (natural["width"] as? NSNumber)?.doubleValue == 24,
+              (natural["height"] as? NSNumber)?.doubleValue == 16,
+              natural.keys.contains("aspectRatio"), natural["aspectRatio"] is NSNull else {
+            return false
+        }
+    }
+    return c114ImageMultiSpanTraceMatches(sceneID, spansAndWidths, diagnostics: diagnostics)
+}
+
+private func c114GridTrackSizingDiagnostics(_ report: String) -> [String: Any]? {
+    guard let marker = report.range(of: "grid_track_sizing_diagnostics=") else { return nil }
+    let jsonText = report[marker.upperBound...]
+    var depth = 0
+    var inString = false
+    var escaped = false
+    var endIndex: String.Index?
+    for index in jsonText.indices {
+        let character = jsonText[index]
+        if inString {
+            if escaped {
+                escaped = false
+            } else if character == "\\" {
+                escaped = true
+            } else if character == "\"" {
+                inString = false
+            }
+            continue
+        }
+        if character == "\"" {
+            inString = true
+        } else if character == "{" {
+            depth += 1
+        } else if character == "}" {
+            depth -= 1
+            if depth == 0 {
+                endIndex = jsonText.index(after: index)
+                break
+            }
+        }
+    }
+    guard let endIndex,
+          let data = String(jsonText[..<endIndex]).data(using: .utf8),
+          let diagnostics = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] else {
+        return nil
+    }
+    return diagnostics
+}
+
+private func c114ImageMultiSpanTraceMatches(
+    _ sceneID: String, _ spansAndWidths: [[Int]], diagnostics: [String: Any]
+) -> Bool {
+    let expectedColumns = sceneID == "image-span2-before-span3"
+        || sceneID == "image-span3-before-span2"
+        ? [16.0, 28.0, 28.0, 0.0] : [12.0, 24.0, 24.0, 0.0]
+    guard let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
+          traces.count == 1,
+          (traces[0]["grid"] as? Int) == 1,
+          let passes = traces[0]["passes"] as? [[String: Any]],
+          passes.count == 2,
+          (passes[0]["axis"] as? String) == "Columns",
+          (passes[1]["axis"] as? String) == "Rows",
+          c114ImageMultiSpanTracksMatch(passes[0], expected: expectedColumns),
+          c114ImageMultiSpanTracksMatch(passes[1], expected: [20, 20, 20]),
+          let stages = passes[0]["stages"] as? [[String: Any]] else { return false }
+    let observedSpans = stages.compactMap { stage -> Int? in
+        guard let name = stage["stage"] as? String,
+              name.hasPrefix("IntrinsicItemBatch { span: ") else { return nil }
+        let suffix = name.dropFirst("IntrinsicItemBatch { span: ".count)
+        guard let rawSpan = suffix.split(separator: ",").first else { return nil }
+        return Int(rawSpan)
+    }
+    guard observedSpans == (spansAndWidths.count == 2 ? [2] : [2, 3]),
+          let contributions = passes[0]["contributions"] as? [[String: Any]] else { return false }
+    var expectedContributions: [(node: Int, kind: String, span: Int, value: Double)] = []
+    for span in [2, 3] {
+        for kind in ["Minimum", "MinContent"] {
+            let repetitions = kind == "Minimum" ? 1 : 2
+            for _ in 0..<repetitions {
+                for (index, entry) in spansAndWidths.enumerated() where entry[0] == span {
+                    expectedContributions.append((
+                        node: index + 2, kind: kind, span: span,
+                        value: kind == "Minimum" ? 0 : Double(entry[1])
+                    ))
+                }
+            }
+        }
+    }
+    guard contributions.count == expectedContributions.count else { return false }
+    for (index, contribution) in contributions.enumerated() {
+        let expected = expectedContributions[index]
+        guard (contribution["item"] as? Int) == expected.node,
+              (contribution["kind"] as? String) == expected.kind,
+              (contribution["span"] as? Int) == expected.span,
+              let value = contribution["value"] as? NSNumber,
+              abs(value.doubleValue - expected.value) <= 0.0001 else { return false }
+    }
+    return true
+}
+
+private func c114ImageMultiSpanTracksMatch(
+    _ pass: [String: Any], expected: [Double]
+) -> Bool {
+    guard let stages = pass["stages"] as? [[String: Any]],
+          let finalStage = stages.last,
+          let tracks = finalStage["tracks"] as? [[String: Any]] else { return false }
+    let sizes = tracks.compactMap { track -> Double? in
+        guard let gutter = track["gutter"] as? Bool, !gutter,
+              let collapsed = track["collapsed"] as? Bool, !collapsed,
+              let size = track["baseSize"] as? NSNumber else { return nil }
+        return size.doubleValue
+    }
+    return sizes.count == expected.count
+        && zip(sizes, expected).allSatisfy { abs($0.0 - $0.1) <= 0.0001 }
+}
+
 private func c114ImageTrackSizingTraceMatches(
     _ sceneID: String, diagnostics: [String: Any]
 ) -> Bool {
+    if c114IsImageMultiSpanScene(sceneID) {
+        let spansAndWidths: [[Int]]
+        switch sceneID {
+        case "image-span2-forward": spansAndWidths = [[2, 24], [2, 48]]
+        case "image-span2-reversed": spansAndWidths = [[2, 48], [2, 24]]
+        case "image-span2-before-span3": spansAndWidths = [[2, 24], [2, 48], [3, 72]]
+        case "image-span3-before-span2": spansAndWidths = [[3, 72], [2, 48], [2, 24]]
+        default: return false
+        }
+        return c114ImageMultiSpanTraceMatches(sceneID, spansAndWidths, diagnostics: diagnostics)
+    }
     let expectedColumns: [(size: Double, gutter: Bool)]
     let expectedColumnContribution: Double?
     var expectedColumnContributionKind = "MinContent"
@@ -722,7 +882,7 @@ private func c114ImageTrackPassMatches(
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     if c114IsImplicitTextScene(sceneID) { return nil }
-    if c114IsTextMultiSpanScene(sceneID) { return nil }
+    if c114IsTextMultiSpanScene(sceneID) || c114IsImageMultiSpanScene(sceneID) { return nil }
     if c114NegativeTrackExpectation(sceneID) != nil {
         return nil
     }
@@ -819,6 +979,47 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
 private func c114IsTextMultiSpanScene(_ sceneID: String) -> Bool {
     ["text-span2-forward", "text-span2-reversed", "text-span2-before-span3",
      "text-span3-before-span2"].contains(sceneID)
+}
+
+private func c114ExpectedImageMultiSpanFramesMatch(_ sceneID: String, report: String) -> Bool {
+    guard c114IsImageMultiSpanScene(sceneID) else { return true }
+    let expected: [[Double]]
+    switch sceneID {
+    case "image-span2-forward":
+        expected = [[0, 0, 40, 60], [1, 1, 24, 16], [13, 21, 48, 32]]
+    case "image-span2-reversed":
+        expected = [[0, 0, 40, 60], [13, 21, 48, 32], [1, 1, 24, 16]]
+    case "image-span2-before-span3":
+        expected = [[0, 0, 40, 60], [1, 1, 24, 16], [17, 21, 48, 32], [1, 41, 72, 48]]
+    case "image-span3-before-span2":
+        expected = [[0, 0, 40, 60], [1, 41, 72, 48], [17, 21, 48, 32], [1, 1, 24, 16]]
+    default:
+        return false
+    }
+    guard let marker = report.range(of: "node_frames_css_px=["),
+          let end = report[marker.upperBound...].firstIndex(of: "]") else { return false }
+    let frames = report[marker.upperBound..<end].split(separator: ";")
+    guard frames.count == expected.count else { return false }
+    for (index, frame) in frames.enumerated() {
+        let fields = frame.split(separator: ",")
+        guard fields.count == 5,
+              let identity = fields[0].range(of: #"^\d+:node=\d+$"#, options: .regularExpression) else {
+            return false
+        }
+        let identityParts = fields[0].split(separator: ":node=")
+        guard identity.lowerBound == fields[0].startIndex,
+              identityParts.count == 2,
+              Int(identityParts[0]) == index,
+              Int(identityParts[1]) == (index == 0 ? 1 : index + 1) else { return false }
+        let prefixes = ["x=", "y=", "width=", "height="]
+        for property in 0..<prefixes.count {
+            guard fields[property + 1].hasPrefix(prefixes[property]),
+                  let actual = Double(fields[property + 1].dropFirst(prefixes[property].count)),
+                  actual.isFinite,
+                  abs(actual - expected[index][property]) <= 1.0 / 64.0 else { return false }
+        }
+    }
+    return true
 }
 
 private func c114ExpectedTextMultiSpanIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
@@ -947,6 +1148,10 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if sceneID == "image-span2-forward" || sceneID == "image-span2-reversed" { return 3 }
+    if sceneID == "image-span2-before-span3" || sceneID == "image-span3-before-span2" {
+        return 4
+    }
     if sceneID == "competing-span2-forward" || sceneID == "competing-span2-reversed" {
         return 3
     }
@@ -1330,6 +1535,9 @@ private struct C111MetalPixelRun {
     ) -> Bool {
         let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])]
         switch sceneID {
+        case "image-span2-forward", "image-span2-reversed",
+             "image-span2-before-span3", "image-span3-before-span2":
+            expectedSamples = c114ImageMultiSpanPixelSamples(sceneID)
         case "auto-fill-overflow-neighbors":
             expectedSamples = c114AutoRepeatOverflowPixelSamples
         case "implicit-min-content-overflow-border":
@@ -1375,6 +1583,31 @@ private struct C111MetalPixelRun {
                     && sample.rgba == expected.4
             }
         }
+    }
+
+    private static func c114ImageMultiSpanPixelSamples(
+        _ sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])] {
+        let threeImages = sceneID == "image-span2-before-span3"
+            || sceneID == "image-span3-before-span2"
+        let rootID = "c114-\(sceneID)-grid"
+        let overflowImageID = sceneID == "image-span2-forward" ? "image-b-forward"
+            : sceneID == "image-span2-reversed" ? "image-b-reversed"
+            : sceneID == "image-span3-before-span2" ? "image-r-c" : "image-c-c"
+        var samples: [(String, String, UInt32, UInt32, [UInt32])] = [
+            ("image-multispan-root-background", rootID, threeImages ? 35 : 30, 10,
+             [16, 24, 32, 255]),
+            ("image-multispan-outside-root", rootID, 40, 10, [0, 0, 0, 255]),
+            ("image-multispan-item-overflow", overflowImageID,
+             threeImages ? 65 : 45, threeImages ? 45 : 30, [229, 72, 77, 255]),
+        ]
+        if threeImages {
+            samples.append(("image-multispan-item-below-root", overflowImageID,
+                            10, 70, [229, 72, 77, 255]))
+        }
+        samples.append(("image-multispan-after-item", rootID,
+                        threeImages ? 75 : 62, threeImages ? 70 : 30, [0, 0, 0, 255]))
+        return samples
     }
 
     private static func c114NegativeImplicitOverflowPixelSamples(
@@ -4896,6 +5129,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let expectedNodeFramesMatch = expectedNodeFrames.map(report.contains) ?? true
             let expectedTextMultiSpanFramesMatch = c114ExpectedTextMultiSpanFramesMatch(
                 c114GridTrackSizingSceneID, report: report)
+            let expectedImageMultiSpanFramesMatch = c114ExpectedImageMultiSpanFramesMatch(
+                c114GridTrackSizingSceneID, report: report)
             let expectedRootFrameMatches = rootFrame.isEmpty || report.contains(rootFrame)
             let expectedItemFrameMatches = itemFrame.isEmpty || report.contains(itemFrame)
             log("SPINON_C114_GRID_EVAL_RUN run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) \(runtimeStatusSummary(report))")
@@ -4904,7 +5139,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                   report.contains("layout=ready boxes=\(c114ExpectedBoxCount(c114GridTrackSizingSceneID))"),
                   expectedRootFrameMatches, expectedItemFrameMatches, expectedTextInputs,
                   expectedImageInputs, expectedNodeFramesMatch,
-                  expectedTextMultiSpanFramesMatch else {
+                  expectedTextMultiSpanFramesMatch, expectedImageMultiSpanFramesMatch else {
                 log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) report=\(report)")
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치")
                 return
