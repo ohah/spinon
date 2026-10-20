@@ -74,6 +74,15 @@ pub(super) fn to_taffy_style(
             .transpose()?
             .unwrap_or_default(),
     };
+    let (grid_auto_rows, grid_auto_columns) = match grid_input.container.filter(|container| {
+        container.columns_auto_repeat.is_some() || container.rows_auto_repeat.is_some()
+    }) {
+        Some(container) => (
+            grid::to_taffy_grid_auto_tracks(node, "grid-auto-rows", &container.auto_rows)?,
+            grid::to_taffy_grid_auto_tracks(node, "grid-auto-columns", &container.auto_columns)?,
+        ),
+        None => (Vec::new(), Vec::new()),
+    };
     let grid_auto_flow = grid::to_taffy_grid_auto_flow(grid_input.container);
     let inset = if !flow_only && positioning.position != LayoutPosition::Static {
         positioning.inset
@@ -286,6 +295,8 @@ pub(super) fn to_taffy_style(
         flex_shrink: style.flex_shrink,
         grid_template_columns: grid_columns,
         grid_template_rows: grid_rows,
+        grid_auto_rows,
+        grid_auto_columns,
         grid_auto_flow,
         ..Default::default()
     };

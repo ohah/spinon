@@ -12,9 +12,10 @@ use taffy::style_helpers::{
 };
 
 use crate::{
-    GridAutoFlow, GridAutoRepeat, GridAutoRepeatMode, GridContainerInput, GridPlacementInput,
-    GridTrackLengthPercentage, GridTrackMaxSizingFunction, GridTrackMinSizingFunction,
-    GridTrackSize, LayoutCalcId, LayoutCssMathProperty, LayoutError, LayoutLengthPercentage,
+    GridAutoFlow, GridAutoRepeat, GridAutoRepeatMode, GridAutoTrackSize, GridContainerInput,
+    GridPlacementInput, GridTrackLengthPercentage, GridTrackMaxSizingFunction,
+    GridTrackMinSizingFunction, GridTrackSize, LayoutCalcId, LayoutCssMathProperty, LayoutError,
+    LayoutLengthPercentage,
 };
 
 pub(super) fn to_taffy_grid_auto_flow(container: Option<&GridContainerInput>) -> TaffyGridAutoFlow {
@@ -66,6 +67,54 @@ pub(super) fn to_taffy_grid_tracks(
     calc_handles: &BTreeMap<LayoutCalcId, *const ()>,
 ) -> Result<Vec<TaffyGridTemplateComponent<String>>, LayoutError> {
     to_taffy_grid_tracks_with_auto_repeat(node, property, tracks, None, calc_handles)
+}
+
+pub(super) fn to_taffy_grid_auto_tracks(
+    node: NodeId,
+    property: &'static str,
+    auto_tracks: &GridAutoTrackSize,
+) -> Result<Vec<TrackSizingFunction>, LayoutError> {
+    let count = match auto_tracks {
+        GridAutoTrackSize::Auto => 0,
+        GridAutoTrackSize::LengthPx(_) => 1,
+        GridAutoTrackSize::TrackList(tracks) => tracks.len(),
+    };
+    let mut output = Vec::new();
+    output
+        .try_reserve_exact(count)
+        .map_err(|_| LayoutError::GridAllocationFailure { node, property })?;
+    match auto_tracks {
+        GridAutoTrackSize::Auto => {}
+        GridAutoTrackSize::LengthPx(value) => {
+            output.push(TrackSizingFunction::from_length(*value));
+        }
+        GridAutoTrackSize::TrackList(tracks) => {
+            for track in tracks {
+                let GridTrackSize::LengthPx(value) = track else {
+                    return Err(unsupported_auto_track_list(node, property));
+                };
+                if !value.is_finite() || *value < 0.0 {
+                    return Err(LayoutError::InvalidGridTrack { node, property });
+                }
+                output.push(TrackSizingFunction::from_length(*value));
+            }
+        }
+    }
+    Ok(output)
+}
+
+fn unsupported_auto_track_list(node: NodeId, property: &'static str) -> LayoutError {
+    if property == "grid-auto-rows" {
+        LayoutError::UnsupportedGridAutoRows {
+            node,
+            reason: "auto-repeat 결합은 fixed px grid-auto-rows 목록만 지원합니다",
+        }
+    } else {
+        LayoutError::UnsupportedGridAutoColumns {
+            node,
+            reason: "auto-repeat 결합은 fixed px grid-auto-columns 목록만 지원합니다",
+        }
+    }
 }
 
 pub(super) fn to_taffy_grid_tracks_with_auto_repeat(

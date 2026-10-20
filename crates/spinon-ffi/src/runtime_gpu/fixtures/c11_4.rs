@@ -1,5 +1,7 @@
 use std::borrow::Cow;
 
+#[path = "c11_4/auto_repeat_negative_lines.rs"]
+mod auto_repeat_negative_lines;
 #[path = "c11_4/implicit_intrinsic_tracks.rs"]
 mod implicit_intrinsic_tracks;
 #[path = "c11_4/negative_implicit_tracks.rs"]
@@ -1005,6 +1007,9 @@ const C11_4_IMAGE_FIXED_GUTTER_SCENES: [ImageSceneWithRowGap; 2] = [
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     scene_id: &str,
 ) -> Result<Cow<'static, str>, String> {
+    if let Some(source) = auto_repeat_negative_lines::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = negative_implicit_tracks::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }

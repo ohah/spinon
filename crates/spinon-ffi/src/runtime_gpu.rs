@@ -809,6 +809,7 @@ impl RuntimeGpuHost {
                 attach_c18_4_images: self.c18_4_async_image_fixture,
             },
         );
+        #[cfg(feature = "c04-runtime-gpu-fixture-test")]
         let ready = if self.include_c11_4_grid_track_sizing_report
             && response.status == 0
             && ready

@@ -1,0 +1,134 @@
+[
+  {
+    "id": "columns-fill-one-leading",
+    "columns": "20px repeat(auto-fill, minmax(40px, 1fr)) 10px",
+    "rows": "24px", "width": "200px", "height": "24px",
+    "autoColumns": "31px 47px", "autoRows": "17px 29px",
+    "columnGap": "8px", "rowGap": "6px", "items": [{ "c": "-7 / -6" }]
+  },
+  {
+    "id": "columns-fill-two-repetitions",
+    "columns": "20px repeat(auto-fill, minmax(40px, 1fr)) 10px",
+    "rows": "24px", "width": "134px", "height": "24px",
+    "autoColumns": "31px 47px", "autoRows": "17px 29px",
+    "columnGap": "8px", "rowGap": "6px", "items": [{ "c": "-6 / -5" }]
+  },
+  {
+    "id": "columns-fill-four-repetitions",
+    "columns": "20px repeat(auto-fill, minmax(40px, 1fr)) 10px",
+    "rows": "24px", "width": "230px", "height": "24px",
+    "autoColumns": "31px 47px", "autoRows": "17px 29px",
+    "columnGap": "8px", "rowGap": "6px", "items": [{ "c": "-8 / -7" }]
+  },
+  {
+    "id": "columns-fit-one-leading-empty-repeat",
+    "columns": "20px repeat(auto-fit, minmax(40px, 1fr)) 10px",
+    "rows": "24px", "width": "200px", "height": "24px",
+    "autoColumns": "31px 47px", "autoRows": "17px 29px",
+    "columnGap": "8px", "rowGap": "6px", "items": [{ "c": "-7 / -6" }]
+  },
+  {
+    "id": "columns-fill-two-leading-cycle",
+    "columns": "20px repeat(auto-fill, minmax(40px, 1fr)) 10px",
+    "rows": "24px", "width": "200px", "height": "24px",
+    "autoColumns": "31px 47px", "autoRows": "17px 29px",
+    "columnGap": "8px", "rowGap": "6px", "items": [{ "c": "-8 / -6" }]
+  },
+  {
+    "id": "columns-fill-leading-span-prefix",
+    "columns": "20px repeat(auto-fill, minmax(40px, 1fr)) 10px",
+    "rows": "24px", "width": "200px", "height": "24px",
+    "autoColumns": "31px 47px", "autoRows": "17px 29px",
+    "columnGap": "8px", "rowGap": "6px", "items": [{ "c": "-8 / -5" }]
+  },
+  {
+    "id": "columns-fit-negative-and-repeat-occupied",
+    "columns": "20px repeat(auto-fit, minmax(40px, 1fr)) 10px",
+    "rows": "24px", "width": "200px", "height": "24px",
+    "autoColumns": "31px 47px", "autoRows": "17px 29px",
+    "columnGap": "8px", "rowGap": "6px",
+    "items": [{ "c": "-7 / -6" }, { "c": "-3 / -2" }]
+  },
+  {
+    "id": "columns-fit-third-repeat-only",
+    "columns": "20px repeat(auto-fit, minmax(40px, 1fr)) 10px",
+    "rows": "24px", "width": "200px", "height": "24px",
+    "autoColumns": "31px 47px", "autoRows": "17px 29px",
+    "columnGap": "8px", "rowGap": "6px", "items": [{ "c": "-3 / -2" }]
+  },
+  {
+    "id": "columns-fill-negative-positive-cycle",
+    "columns": "20px repeat(auto-fill, minmax(40px, 1fr)) 10px",
+    "rows": "24px", "width": "200px", "height": "24px",
+    "autoColumns": "31px 47px", "autoRows": "17px 29px",
+    "columnGap": "8px", "rowGap": "6px",
+    "items": [{ "c": "-8 / -7" }, { "c": "6 / 7" }]
+  },
+  {
+    "id": "columns-fill-reversed-negative-lines",
+    "columns": "20px repeat(auto-fill, minmax(40px, 1fr)) 10px",
+    "rows": "24px", "width": "200px", "height": "24px",
+    "autoColumns": "31px 47px", "autoRows": "17px 29px",
+    "columnGap": "8px", "rowGap": "6px", "items": [{ "c": "-5 / -7" }]
+  },
+  {
+    "id": "columns-fill-repeat-only-leading",
+    "columns": "repeat(auto-fill, minmax(40px, 1fr))",
+    "rows": "24px", "width": "200px", "height": "24px",
+    "autoColumns": "31px 47px", "autoRows": "17px 29px",
+    "columnGap": "8px", "rowGap": "6px", "items": [{ "c": "-6 / -5" }]
+  },
+  {
+    "id": "rows-fill-one-leading",
+    "columns": "24px", "rows": "14px repeat(auto-fill, minmax(30px, 1fr)) 6px",
+    "width": "24px", "height": "180px",
+    "autoColumns": "31px 47px", "autoRows": "17px 29px",
+    "columnGap": "8px", "rowGap": "6px", "items": [{ "r": "-8 / -7" }]
+  },
+  {
+    "id": "rows-fill-three-repetitions",
+    "columns": "24px", "rows": "14px repeat(auto-fill, minmax(30px, 1fr)) 6px",
+    "width": "24px", "height": "134px",
+    "autoColumns": "31px 47px", "autoRows": "17px 29px",
+    "columnGap": "8px", "rowGap": "6px", "items": [{ "r": "-7 / -6" }]
+  },
+  {
+    "id": "rows-fill-five-repetitions",
+    "columns": "24px", "rows": "14px repeat(auto-fill, minmax(30px, 1fr)) 6px",
+    "width": "24px", "height": "206px",
+    "autoColumns": "31px 47px", "autoRows": "17px 29px",
+    "columnGap": "8px", "rowGap": "6px", "items": [{ "r": "-9 / -8" }]
+  },
+  {
+    "id": "rows-fit-one-leading-empty-repeat",
+    "columns": "24px", "rows": "14px repeat(auto-fit, minmax(30px, 1fr)) 6px",
+    "width": "24px", "height": "180px",
+    "autoColumns": "31px 47px", "autoRows": "17px 29px",
+    "columnGap": "8px", "rowGap": "6px", "items": [{ "r": "-8 / -7" }]
+  },
+  {
+    "id": "rows-fill-two-leading-cycle",
+    "columns": "24px", "rows": "14px repeat(auto-fill, minmax(30px, 1fr)) 6px",
+    "width": "24px", "height": "180px",
+    "autoColumns": "31px 47px", "autoRows": "17px 29px",
+    "columnGap": "8px", "rowGap": "6px", "items": [{ "r": "-9 / -7" }]
+  },
+  {
+    "id": "both-axes-fit-negative-leading",
+    "columns": "20px repeat(auto-fit, minmax(40px, 1fr)) 10px",
+    "rows": "14px repeat(auto-fit, minmax(30px, 1fr)) 6px",
+    "width": "200px", "height": "180px",
+    "autoColumns": "31px 47px", "autoRows": "17px 29px",
+    "columnGap": "8px", "rowGap": "6px",
+    "items": [{ "c": "-7 / -6", "r": "-8 / -7" }]
+  },
+  {
+    "id": "both-axes-fill-independent-cycles",
+    "columns": "20px repeat(auto-fill, minmax(40px, 1fr)) 10px",
+    "rows": "14px repeat(auto-fill, minmax(30px, 1fr)) 6px",
+    "width": "200px", "height": "180px",
+    "autoColumns": "31px 47px", "autoRows": "17px 29px",
+    "columnGap": "8px", "rowGap": "6px",
+    "items": [{ "c": "-8 / -6", "r": "-9 / -7" }]
+  }
+]

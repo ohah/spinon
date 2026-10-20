@@ -1,5 +1,7 @@
 # C11.4 negative implicit track sizing implementation review
 
+> This review records the earlier negative-track implementation baseline and its 106-scene evidence. The later auto-repeat delta, collapsed-gutter behavior, and 124-scene evidence are reviewed in [auto-repeat-implementation-review-20.md](./auto-repeat-implementation-review-20.md).
+
 2026-10-20 구현 후보를 계획 검토표와 분리한 20개 실패 관점으로 검토했다. 검토 기준은 base `70877fff99306033ae38b2d7e347d34d7b76c429`와 현재 implementation worktree의 Rust normalizer, CSS projection, fixture route, simulator evidence다.
 
 | # | 실패 관점 | 확인 결과 |

@@ -407,7 +407,7 @@ fn track_sizing_supports_negative_implicit_lines_and_ignores_hidden_positive_ite
 }
 
 #[test]
-fn track_sizing_rejects_auto_track_lists_with_auto_repeat() {
+fn track_sizing_accepts_fixed_px_auto_track_lists_with_auto_repeat() {
     let mut columns = grid_input(
         vec![GridTrackSize::LengthPx(80.0)],
         vec![GridTrackSize::LengthPx(12.0)],
@@ -422,10 +422,7 @@ fn track_sizing_rejects_auto_track_lists_with_auto_repeat() {
         end: 1,
     });
     container.auto_columns = crate::GridAutoColumns::TrackList(vec![GridTrackSize::LengthPx(10.0)]);
-    assert!(matches!(
-        TaffyLayoutEngine.compute(&columns),
-        Err(LayoutError::UnsupportedGridAutoColumns { node, .. }) if node == id(1)
-    ));
+    assert!(TaffyLayoutEngine.compute(&columns).is_ok());
 
     let mut rows = grid_input(
         vec![GridTrackSize::LengthPx(40.0)],
@@ -441,10 +438,7 @@ fn track_sizing_rejects_auto_track_lists_with_auto_repeat() {
         end: 1,
     });
     container.auto_rows = GridAutoRows::TrackList(vec![GridTrackSize::LengthPx(10.0)]);
-    assert!(matches!(
-        TaffyLayoutEngine.compute(&rows),
-        Err(LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
-    ));
+    assert!(TaffyLayoutEngine.compute(&rows).is_ok());
 }
 
 #[test]
@@ -595,3 +589,6 @@ fn axis_track_sizes_at_stage(
         .map(|track| track.base_size)
         .collect()
 }
+
+#[path = "grid_auto_track_sizing_tests/auto_repeat.rs"]
+mod auto_repeat;
