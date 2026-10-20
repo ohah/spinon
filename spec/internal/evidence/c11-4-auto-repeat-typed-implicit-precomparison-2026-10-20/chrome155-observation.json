@@ -1,0 +1,417 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+  "viewport": {
+    "width": 1280,
+    "height": 1800,
+    "devicePixelRatio": 1
+  },
+  "cases": [
+    {
+      "id": "fixed-cycle",
+      "autoRepeatMode": "auto-fill",
+      "authoredAutoColumns": "24px 36px",
+      "authoredAutoRows": "24px 36px",
+      "usedGap": "0px",
+      "computedColumns": "24px 36px 20px 20px 20px 20px 20px",
+      "computedRows": "24px 36px 20px 20px 20px 20px 20px",
+      "grid": {
+        "x": 25,
+        "y": 154.5625,
+        "width": 110,
+        "height": 110
+      },
+      "item": {
+        "x": 25,
+        "y": 154.5625,
+        "width": 24,
+        "height": 24
+      },
+      "control": {
+        "x": 85,
+        "y": 214.5625,
+        "width": 20,
+        "height": 20
+      },
+      "trailing": null
+    },
+    {
+      "id": "fixed-cycle-three-leading-trailing",
+      "autoRepeatMode": "auto-fill",
+      "authoredAutoColumns": "24px 36px",
+      "authoredAutoRows": "24px 36px",
+      "usedGap": "0px",
+      "computedColumns": "36px 24px 36px 20px 20px 20px 20px 20px 24px 36px 24px",
+      "computedRows": "36px 24px 36px 20px 20px 20px 20px 20px 24px 36px 24px",
+      "grid": {
+        "x": 315,
+        "y": 174.15625,
+        "width": 110,
+        "height": 110
+      },
+      "item": {
+        "x": 315,
+        "y": 174.15625,
+        "width": 36,
+        "height": 36
+      },
+      "control": {
+        "x": 411,
+        "y": 270.15625,
+        "width": 20,
+        "height": 20
+      },
+      "trailing": {
+        "x": 571,
+        "y": 430.15625,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "mixed-typed-cycle",
+      "autoRepeatMode": "auto-fill",
+      "authoredAutoColumns": "min-content 25%",
+      "authoredAutoRows": "fit-content(24px) calc(5px + 10%)",
+      "usedGap": "0px",
+      "computedColumns": "27.5px 0px 27.5px 20px 20px 20px 20px 20px 0px 27.5px 0px",
+      "computedRows": "16px 0px 16px 20px 20px 20px 20px 20px 0px 16px 0px",
+      "grid": {
+        "x": 25,
+        "y": 378.9375,
+        "width": 110,
+        "height": 110
+      },
+      "item": {
+        "x": 25,
+        "y": 378.9375,
+        "width": 27.5,
+        "height": 16
+      },
+      "control": {
+        "x": 80,
+        "y": 410.9375,
+        "width": 20,
+        "height": 20
+      },
+      "trailing": {
+        "x": 207.5,
+        "y": 526.9375,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "id": "auto",
+      "autoRepeatMode": "auto-fill",
+      "authoredAutoColumns": "auto",
+      "authoredAutoRows": "auto",
+      "usedGap": "0px",
+      "computedColumns": "38.5312px 0px 20px 20px 20px 20px 20px",
+      "computedRows": "60px 0px 20px 20px 20px 20px 20px",
+      "grid": {
+        "x": 315,
+        "y": 359.34375,
+        "width": 110,
+        "height": 110
+      },
+      "item": {
+        "x": 315,
+        "y": 359.34375,
+        "width": 38.53125,
+        "height": 60
+      },
+      "control": {
+        "x": 353.53125,
+        "y": 419.34375,
+        "width": 20,
+        "height": 20
+      },
+      "trailing": null
+    },
+    {
+      "id": "min-content",
+      "autoRepeatMode": "auto-fill",
+      "authoredAutoColumns": "min-content",
+      "authoredAutoRows": "min-content",
+      "usedGap": "0px",
+      "computedColumns": "38.5312px 0px 20px 20px 20px 20px 20px",
+      "computedRows": "60px 0px 20px 20px 20px 20px 20px",
+      "grid": {
+        "x": 25,
+        "y": 564.125,
+        "width": 110,
+        "height": 110
+      },
+      "item": {
+        "x": 25,
+        "y": 564.125,
+        "width": 38.53125,
+        "height": 60
+      },
+      "control": {
+        "x": 63.53125,
+        "y": 624.125,
+        "width": 20,
+        "height": 20
+      },
+      "trailing": null
+    },
+    {
+      "id": "max-content",
+      "autoRepeatMode": "auto-fill",
+      "authoredAutoColumns": "max-content",
+      "authoredAutoRows": "max-content",
+      "usedGap": "0px",
+      "computedColumns": "86.7031px 0px 20px 20px 20px 20px 20px",
+      "computedRows": "20px 0px 20px 20px 20px 20px 20px",
+      "grid": {
+        "x": 315,
+        "y": 564.125,
+        "width": 110,
+        "height": 110
+      },
+      "item": {
+        "x": 315,
+        "y": 564.125,
+        "width": 86.703125,
+        "height": 20
+      },
+      "control": {
+        "x": 401.703125,
+        "y": 584.125,
+        "width": 20,
+        "height": 20
+      },
+      "trailing": null
+    },
+    {
+      "id": "minmax-max-content",
+      "autoRepeatMode": "auto-fill",
+      "authoredAutoColumns": "minmax(12px, max-content)",
+      "authoredAutoRows": "minmax(12px, max-content)",
+      "usedGap": "0px",
+      "computedColumns": "12px 12px 20px 20px 20px 20px 20px",
+      "computedRows": "12px 12px 20px 20px 20px 20px 20px",
+      "grid": {
+        "x": 25,
+        "y": 769.71875,
+        "width": 110,
+        "height": 110
+      },
+      "item": {
+        "x": 25,
+        "y": 769.71875,
+        "width": 12,
+        "height": 12
+      },
+      "control": {
+        "x": 49,
+        "y": 793.71875,
+        "width": 20,
+        "height": 20
+      },
+      "trailing": null
+    },
+    {
+      "id": "fit-content",
+      "autoRepeatMode": "auto-fill",
+      "authoredAutoColumns": "fit-content(24px)",
+      "authoredAutoRows": "fit-content(24px)",
+      "usedGap": "0px",
+      "computedColumns": "38.5312px 0px 20px 20px 20px 20px 20px",
+      "computedRows": "60px 0px 20px 20px 20px 20px 20px",
+      "grid": {
+        "x": 315,
+        "y": 769.71875,
+        "width": 110,
+        "height": 110
+      },
+      "item": {
+        "x": 315,
+        "y": 769.71875,
+        "width": 38.53125,
+        "height": 60
+      },
+      "control": {
+        "x": 353.53125,
+        "y": 829.71875,
+        "width": 20,
+        "height": 20
+      },
+      "trailing": null
+    },
+    {
+      "id": "fraction",
+      "autoRepeatMode": "auto-fill",
+      "authoredAutoColumns": "minmax(8px, 1fr)",
+      "authoredAutoRows": "minmax(8px, 1fr)",
+      "usedGap": "0px",
+      "computedColumns": "8px 8px 20px 20px 20px 20px 20px",
+      "computedRows": "8px 8px 20px 20px 20px 20px 20px",
+      "grid": {
+        "x": 25,
+        "y": 954.90625,
+        "width": 110,
+        "height": 110
+      },
+      "item": {
+        "x": 25,
+        "y": 954.90625,
+        "width": 8,
+        "height": 8
+      },
+      "control": {
+        "x": 41,
+        "y": 970.90625,
+        "width": 20,
+        "height": 20
+      },
+      "trailing": null
+    },
+    {
+      "id": "percentage",
+      "autoRepeatMode": "auto-fill",
+      "authoredAutoColumns": "25%",
+      "authoredAutoRows": "25%",
+      "usedGap": "0px",
+      "computedColumns": "27.5px 27.5px 20px 20px 20px 20px 20px",
+      "computedRows": "27.5px 27.5px 20px 20px 20px 20px 20px",
+      "grid": {
+        "x": 315,
+        "y": 954.90625,
+        "width": 110,
+        "height": 110
+      },
+      "item": {
+        "x": 315,
+        "y": 954.90625,
+        "width": 27.5,
+        "height": 27.5
+      },
+      "control": {
+        "x": 370,
+        "y": 1009.90625,
+        "width": 20,
+        "height": 20
+      },
+      "trailing": null
+    },
+    {
+      "id": "calc",
+      "autoRepeatMode": "auto-fill",
+      "authoredAutoColumns": "calc(5px + 10%)",
+      "authoredAutoRows": "calc(5px + 10%)",
+      "usedGap": "0px",
+      "computedColumns": "16px 16px 20px 20px 20px 20px 20px",
+      "computedRows": "16px 16px 20px 20px 20px 20px 20px",
+      "grid": {
+        "x": 25,
+        "y": 1140.90625,
+        "width": 110,
+        "height": 110
+      },
+      "item": {
+        "x": 25,
+        "y": 1140.90625,
+        "width": 16,
+        "height": 16
+      },
+      "control": {
+        "x": 57,
+        "y": 1172.90625,
+        "width": 20,
+        "height": 20
+      },
+      "trailing": null
+    },
+    {
+      "id": "auto-fit-typed-occupied",
+      "autoRepeatMode": "auto-fit",
+      "authoredAutoColumns": "min-content 25%",
+      "authoredAutoRows": "fit-content(24px) calc(5px + 10%)",
+      "usedGap": "0px",
+      "computedColumns": "38.5312px 27.5px 20px 0px 0px 0px 0px 0px 27.5px 0px",
+      "computedRows": "60px 16px 20px 0px 0px 0px 0px 0px 16px 0px",
+      "grid": {
+        "x": 315,
+        "y": 1180.09375,
+        "width": 110,
+        "height": 110
+      },
+      "item": {
+        "x": 315,
+        "y": 1180.09375,
+        "width": 38.53125,
+        "height": 60
+      },
+      "control": {
+        "x": 381.03125,
+        "y": 1256.09375,
+        "width": 20,
+        "height": 20
+      },
+      "trailing": {
+        "x": 428.53125,
+        "y": 1292.09375,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "id": "auto-fit-typed-empty",
+      "autoRepeatMode": "auto-fit",
+      "authoredAutoColumns": "minmax(8px, 1fr)",
+      "authoredAutoRows": "minmax(8px, 1fr)",
+      "usedGap": "0px",
+      "computedColumns": "55px 55px 0px 0px 0px 0px 0px",
+      "computedRows": "55px 55px 0px 0px 0px 0px 0px",
+      "grid": {
+        "x": 25,
+        "y": 1384.875,
+        "width": 110,
+        "height": 110
+      },
+      "item": {
+        "x": 25,
+        "y": 1384.875,
+        "width": 55,
+        "height": 55
+      },
+      "control": null,
+      "trailing": null
+    },
+    {
+      "id": "auto-fit-typed-gutter",
+      "autoRepeatMode": "auto-fit",
+      "authoredAutoColumns": "min-content 25%",
+      "authoredAutoRows": "fit-content(24px) calc(5px + 10%)",
+      "usedGap": "8px",
+      "computedColumns": "38.5312px 33px 20px 0px 0px 0px 0px 0px 33px 0px",
+      "computedRows": "60px 18.1875px 20px 0px 0px 0px 0px 0px 18.1875px 0px",
+      "grid": {
+        "x": 315,
+        "y": 1384.875,
+        "width": 132,
+        "height": 132
+      },
+      "item": {
+        "x": 315,
+        "y": 1384.875,
+        "width": 38.53125,
+        "height": 60
+      },
+      "control": {
+        "x": 402.53125,
+        "y": 1479.0625,
+        "width": 20,
+        "height": 20
+      },
+      "trailing": {
+        "x": 479.53125,
+        "y": 1541.25,
+        "width": 0,
+        "height": 0
+      }
+    }
+  ]
+}
