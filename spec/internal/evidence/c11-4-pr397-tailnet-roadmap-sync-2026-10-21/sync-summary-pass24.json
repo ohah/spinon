@@ -1,0 +1,45 @@
+{
+  "pass": "pass24",
+  "source_root": "build/spinon/c11-4-text-intrinsic-physical-tailnet-site-pass24",
+  "preview_root": "SpinonPreview",
+  "backup_root": "SpinonPreviewBackups/c11-4-pr397-tailnet-roadmap-sync-2026-10-21/pass24",
+  "source_bytes_total": 72945136,
+  "preflight_counts": {
+    "create": 92,
+    "replace": 91,
+    "same": 1537
+  },
+  "no_deletes": true,
+  "local": {
+    "file_count": 1720,
+    "all_targets_verified": true,
+    "backup_count": 91,
+    "all_backups_verified": true
+  },
+  "resumed_copy": {
+    "counts": {
+      "create": 92,
+      "replace": 3,
+      "same": 1625
+    },
+    "all_verified": true,
+    "all_backups_verified": true,
+    "open_handle_observations": [
+      {
+        "path": "spec/plan/c11-4-grid-track-sizing.html",
+        "pid": "1191",
+        "command": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+        "network_handles": [
+          "node    1191 yoonhb   12u  IPv4 0xfe1fd4984bc78c8b      0t0  TCP 127.0.0.1:8768 (LISTEN)"
+        ],
+        "disposition": "atomic rename is safe: only the idle listener process holds the old inode; backup is verified and no client socket is active"
+      }
+    ]
+  },
+  "tailnet": {
+    "file_count": 1720,
+    "http_200_and_sha256_matches": 1720,
+    "mismatches": 0,
+    "all_verified": true
+  }
+}
