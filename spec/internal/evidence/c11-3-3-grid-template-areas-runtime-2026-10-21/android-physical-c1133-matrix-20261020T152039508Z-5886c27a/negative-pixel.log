@@ -1,0 +1,4 @@
+10-21 00:30:31.321 21808 21808 E SpinonBootstrap: SPINON_C1133_GRID_PIXEL_MATRIX status=error run_id=c1133-matrix-20261020T152039508Z-5886c27a-bad-samples scene=basic-rectangles reason=invalid-c1133-sample-fixture
+10-21 00:30:31.362 21808 21808 I SpinonBootstrap: SPINON_C0410_SURFACE_CREATED generation=1
+10-21 00:30:31.362 21808 21808 I SpinonBootstrap: SPINON_C0410_SURFACE_CHANGED generation=2 size=900x675 changed=true
+10-21 00:30:31.363 21808 21838 E SpinonBootstrap: SPINON_C1133_GRID_PIXEL_MATRIX status=error reason=invalid-c1133-sample-fixture

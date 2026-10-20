@@ -87,8 +87,10 @@ pub use projection::{
     compute_runtime_block_flex_grid_dense_auto_placement_style_layout,
     compute_runtime_block_flex_grid_placement_style_layout,
     compute_runtime_block_flex_grid_style_layout,
+    compute_runtime_block_flex_grid_template_implicit_named_lines_style_layout,
     compute_runtime_block_flex_grid_template_style_layout,
     compute_runtime_block_flex_grid_track_sizing_style_layout, compute_runtime_style_layout,
+    compute_runtime_style_layout_with_implicit_named_lines,
     compute_runtime_style_layout_with_intrinsic_size_snapshot, compute_s04_style_layout,
     compute_style_layout,
 };

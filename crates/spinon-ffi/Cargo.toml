@@ -27,6 +27,7 @@ c04-runtime-gpu-fixture-test = [
     "c04-runtime-gpu",
     "dep:spinon-layout",
     "spinon-runtime/c11-4-grid-track-sizing-fixture-test",
+    "spinon-runtime/c11-3-3-grid-implicit-named-lines-fixture-test",
 ]
 c11-2-3-grid-fixture-test = ["c04-runtime-gpu-fixture-test"]
 c04-runtime-gpu-test-hooks = ["c04-runtime-gpu-fixture-test", "spinon-render-wgpu/test-hooks"]

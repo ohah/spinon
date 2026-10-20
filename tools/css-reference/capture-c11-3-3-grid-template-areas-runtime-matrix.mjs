@@ -6,7 +6,10 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 import { compareC11AndroidPixelCopyScene } from './compare-c11-android-surface-pixel-matrix.mjs';
-import { selectAndroidAVDSerial } from './c11-3-3-grid-template-areas-runtime-device.mjs';
+import {
+  selectAndroidAVDSerial,
+  selectAndroidPhysicalSerial,
+} from './c11-3-3-grid-template-areas-runtime-device.mjs';
 
 const repositoryRoot = resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const runtimePath = 'tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json';
@@ -15,19 +18,42 @@ const runtime = JSON.parse(await readFile(resolve(repositoryRoot, runtimePath), 
 const mobile = JSON.parse(await readFile(resolve(repositoryRoot, mobilePath), 'utf8'));
 const reference = JSON.parse(await readFile(resolve(repositoryRoot, mobile.oracle.referencePath), 'utf8'));
 const observation = reference.observations.find(({ deviceScaleFactor }) => deviceScaleFactor === 1);
+const unknownAreaPixelsPath = 'tests/fixtures/css/c11/unknown-area-fixed-implicit-tracks-mobile-pixels-v1.json';
+const unknownAreaPixels = JSON.parse(await readFile(resolve(repositoryRoot, unknownAreaPixelsPath), 'utf8'));
+const unknownAreaReferenceBytes = await readFile(resolve(repositoryRoot, unknownAreaPixels.inputs.reference.path));
+const unknownAreaReference = JSON.parse(unknownAreaReferenceBytes.toString('utf8'));
+const unknownAreaObservation = unknownAreaReference.observations.find(({ deviceScaleFactor }) =>
+  deviceScaleFactor === 1);
+const unknownAreaChromeSourceCase = unknownAreaObservation.cases.find(({ id }) =>
+  id === 'unknown-template-area-with-sibling');
 const target = process.argv[2];
-assert.equal(target, 'android-avd',
-  '사용법: node capture-c11-3-3-grid-template-areas-runtime-matrix.mjs android-avd [emulator serial]');
+assert.ok(['android-avd', 'android-physical'].includes(target),
+  '사용법: node capture-c11-3-3-grid-template-areas-runtime-matrix.mjs android-avd|android-physical [ADB serial]');
 
 const packageName = 'dev.spinon.bootstrap';
 const component = `${packageName}/.MainActivity`;
-const serialHint = process.argv[3] ?? process.env.SPINON_ANDROID_EMULATOR_SERIAL ?? 'emulator-5554';
+const serialHint = process.argv[3] ?? (target === 'android-avd'
+  ? process.env.SPINON_ANDROID_EMULATOR_SERIAL ?? 'emulator-5554'
+  : process.env.ANDROID_SERIAL);
 const runID = `c1133-matrix-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot,
-  `spec/internal/evidence/c11-3-3-grid-template-areas-runtime-${date}`, `android-avd-${runID}`);
+  `spec/internal/evidence/c11-3-3-grid-template-areas-runtime-${date}`, `${target}-${runID}`);
 const apkPath = resolve(repositoryRoot, 'platforms/android/app/build/outputs/apk/debug/app-debug.apk');
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
+const unknownAreaScene = {
+  id: unknownAreaPixels.sceneId,
+  index: runtime.summary.sceneCount,
+  nodeIds: ['fixed-implicit-grid', 'fixed-known-area', 'fixed-unknown-area'],
+  expected: { outcome: 'success' },
+};
+const unknownAreaChromeCase = {
+  id: unknownAreaScene.id,
+  nodes: unknownAreaChromeSourceCase.nodes.map((node, index) => ({
+    ...node,
+    id: unknownAreaScene.nodeIds[index],
+  })),
+};
 const sleep = (milliseconds) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, milliseconds);
 
 function command(binary, args, { allowFailure = false, timeout = 120_000, encoding = 'utf8' } = {}) {
@@ -44,7 +70,12 @@ function command(binary, args, { allowFailure = false, timeout = 120_000, encodi
 }
 
 async function saveLog(path, result) {
-  await writeFile(resolve(evidenceDirectory, path), `${result.stdout ?? ''}${result.stderr ?? ''}`);
+  const log = `${result.stdout ?? ''}${result.stderr ?? ''}`;
+  await writeFile(resolve(evidenceDirectory, path), log.replace(/[ \t]+$/gm, ''));
+}
+
+function formatLog(log) {
+  return log.replace(/[ \t]+$/gm, '');
 }
 
 function samplePayload(samples = mobile.samples) {
@@ -98,8 +129,8 @@ function parseFrames(log, scene) {
   return frames;
 }
 
-function compareGeometry(scene, log) {
-  const chromeCase = observation.cases.find(({ id }) => id === scene.id);
+function compareGeometry(scene, log, chromeCaseOverride = null) {
+  const chromeCase = chromeCaseOverride ?? observation.cases.find(({ id }) => id === scene.id);
   assert.ok(chromeCase, `${scene.id}: Chrome DPR 1 장면이 없습니다.`);
   const frames = parseFrames(log, scene);
   const byNodeId = new Map(frames.map((frame) => [frame.nodeId, frame]));
@@ -176,22 +207,89 @@ function validateReject(scene, log, runId) {
     nodeId: expected.nodeId, runtimeNodeId: expectedNodeId };
 }
 
+async function captureUnknownAreaOverflow(adb) {
+  assert.equal(sha256(unknownAreaReferenceBytes), unknownAreaPixels.inputs.reference.sha256);
+  assert.equal(unknownAreaPixels.oracle.product, unknownAreaReference.oracle.product);
+  assert.equal(unknownAreaChromeSourceCase.nodes.length, unknownAreaScene.nodeIds.length);
+  const sceneRunID = `${runID}-unknown-area-fixed-implicit-tracks`;
+  const launch = launchScene(adb, unknownAreaScene.id, sceneRunID, { samples: unknownAreaPixels.samples });
+  await saveLog('launch-unknown-area-fixed-implicit-tracks.log', launch);
+  const pid = waitForProcess(adb);
+  const evalMarker = `SPINON_C1133_GRID_EVAL_RUN run_id=${sceneRunID} scene_id=${unknownAreaScene.id} `;
+  let log = waitForLog(() => currentProcessLog(adb, pid), (value) =>
+    value.includes(evalMarker) || value.includes('SPINON_C1133_GRID_ARGUMENT_ERROR'),
+  'unknown-area-fixed-implicit-tracks runtime 결과');
+  assert.ok(!log.includes('SPINON_C1133_GRID_ARGUMENT_ERROR'),
+    '고정 unknown-area overflow scene이 앱 route에서 거부되었습니다.');
+  assert.ok(log.includes(`${evalMarker}status=0 layout=ready`),
+    '고정 unknown-area overflow scene의 layout 계산이 성공하지 않았습니다.');
+  log = waitForLog(() => currentProcessLog(adb, pid), (value) =>
+    value.includes('SPINON_C0410_DRAW status=0 presented boxes=')
+      && (value.includes(`SPINON_C1133_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=${sceneRunID}`)
+        || value.includes(`SPINON_C1133_GRID_PIXEL_MATRIX_SUMMARY status=mismatch run_id=${sceneRunID}`)
+        || value.includes(`SPINON_C1133_GRID_PIXEL_MATRIX_CAPTURE status=error run_id=${sceneRunID}`)
+        || value.includes(`SPINON_C1133_GRID_PIXEL_MATRIX status=error run_id=${sceneRunID}`)),
+  'unknown-area-fixed-implicit-tracks draw / PixelCopy 결과', 60_000);
+  await writeFile(resolve(evidenceDirectory, 'runtime-unknown-area-fixed-implicit-tracks.log'), `${formatLog(log)}\n`);
+  const geometry = compareGeometry(unknownAreaScene, log, unknownAreaChromeCase);
+  const capture = log.split(/\r?\n/).find((line) => line.includes(
+    `SPINON_C1133_GRID_PIXEL_MATRIX_CAPTURE status=ok run_id=${sceneRunID}`));
+  assert.ok(capture, 'unknown-area overflow PixelCopy capture marker가 없습니다.');
+  const devicePng = capture.match(/\bpng=(\S+)/)?.[1];
+  assert.ok(devicePng?.startsWith('/data/user/0/dev.spinon.bootstrap/cache/c1133-grid-surface-pixel-matrix/'),
+    'unknown-area PixelCopy 경로가 C11.3.3 전용 cache 경로가 아닙니다.');
+  const pngBytes = adb(['exec-out', 'run-as', packageName, 'cat',
+    `cache/c1133-grid-surface-pixel-matrix/${devicePng.split('/').at(-1)}`], { encoding: null }).stdout;
+  const pixel = compareC11AndroidPixelCopyScene(log, {
+    scene: { id: unknownAreaPixels.sceneId, samples: unknownAreaPixels.samples },
+    runID: sceneRunID,
+    pngBytes,
+    viewportCssPx: unknownAreaPixels.runtime.viewportCssPx,
+    markerPrefix: 'C1133',
+    cacheDirectory: 'c1133-grid-surface-pixel-matrix',
+  });
+  await writeFile(resolve(evidenceDirectory, 'unknown-area-overflow-pixelcopy.png'), pngBytes);
+  return {
+    sceneId: unknownAreaScene.id,
+    outcome: 'success',
+    boxes: geometry.boxes,
+    frames: geometry.frames.length,
+    comparisons: geometry.comparisons,
+    maximumGeometryErrorCssPx: Math.max(0, ...geometry.comparisons
+      .map(({ maximumErrorCssPx }) => maximumErrorCssPx)),
+    pixel,
+    logPath: 'runtime-unknown-area-fixed-implicit-tracks.log',
+  };
+}
+
 function androidDevice() {
   const devices = command('adb', ['devices', '-l']).stdout;
-  const serial = selectAndroidAVDSerial(devices, serialHint);
+  const serial = target === 'android-avd'
+    ? selectAndroidAVDSerial(devices, serialHint)
+    : selectAndroidPhysicalSerial(devices, serialHint);
   const adb = (args, options) => command('adb', ['-s', serial, ...args], options);
   const getprop = (name) => adb(['shell', 'getprop', name]).stdout.trim();
   const sdk = Number(getprop('ro.build.version.sdk'));
-  assert.equal(getprop('ro.kernel.qemu'), '1', '선택한 Android 대상이 AVD가 아닙니다.');
-  assert.equal(sdk, 37, `고정 Android API 37 AVD가 아닙니다: API ${sdk}`);
+  const qemu = getprop('ro.kernel.qemu') === '1';
+  assert.equal(qemu, target === 'android-avd', `선택한 Android 대상 종류가 요청과 다릅니다: ${serial}`);
+  if (target === 'android-avd') {
+    assert.equal(sdk, 37, `고정 Android API 37 AVD가 아닙니다: API ${sdk}`);
+  } else {
+    assert.equal(getprop('ro.product.model'), 'SM-S731N', '고정 Android 실기기 모델이 아닙니다.');
+    assert.equal(sdk, 36, `고정 Android 16/API 36 실기기가 아닙니다: API ${sdk}`);
+  }
   const renderer = adb(['shell', 'dumpsys', 'SurfaceFlinger']).stdout.split(/\r?\n/)
     .find((line) => /^GLES:/i.test(line)) ?? 'SurfaceFlinger GLES 정보 없음';
-  assert.match(renderer, /SwiftShader/i, `Android AVD가 SwiftShader를 사용하지 않습니다: ${renderer}`);
+  if (target === 'android-avd') {
+    assert.match(renderer, /SwiftShader/i, `Android AVD가 SwiftShader를 사용하지 않습니다: ${renderer}`);
+  }
   return {
     adb,
     metadata: {
-      serial, model: getprop('ro.product.model'), release: getprop('ro.build.version.release'),
-      sdk, qemu: true, fingerprint: getprop('ro.build.fingerprint'), renderer,
+      serial: '[REDACTED]', model: getprop('ro.product.model'), product: getprop('ro.product.name'),
+      device: getprop('ro.product.device'), manufacturer: getprop('ro.product.manufacturer'),
+      release: getprop('ro.build.version.release'), sdk, qemu,
+      fingerprint: getprop('ro.build.fingerprint'), renderer,
     },
   };
 }
@@ -233,7 +331,7 @@ async function captureMatrix(adb) {
         || value.includes(`SPINON_C1133_GRID_ARGUMENT_ERROR`),
     `${scene.id}: runtime 결과`);
     const logPath = `runtime-${scene.index.toString().padStart(2, '0')}-${scene.id}.log`;
-    await writeFile(resolve(evidenceDirectory, logPath), `${log}\n`);
+    await writeFile(resolve(evidenceDirectory, logPath), `${formatLog(log)}\n`);
     if (!expectedReject) {
       const evalLine = log.split(/\r?\n/).find((line) => line.includes(evalMarker));
       assert.ok(evalLine?.includes('status=0 layout=ready'),
@@ -246,7 +344,7 @@ async function captureMatrix(adb) {
             || value.includes(`SPINON_C1133_GRID_PIXEL_MATRIX_CAPTURE status=error run_id=${sceneRunID}`)
             || value.includes(`SPINON_C1133_GRID_PIXEL_MATRIX status=error run_id=${sceneRunID}`)),
       `${scene.id}: GPU presentation / PixelCopy 결과`, 60_000);
-      await writeFile(resolve(evidenceDirectory, logPath), `${log}\n`);
+      await writeFile(resolve(evidenceDirectory, logPath), `${formatLog(log)}\n`);
     }
     if (expectedReject) {
       observations.push({ index: scene.index, sceneId: scene.id,
@@ -280,9 +378,15 @@ async function captureMatrix(adb) {
       pixel, logPath,
     });
   }
-  const screen = adb(['exec-out', 'screencap', '-p'], { encoding: null }).stdout;
-  await writeFile(resolve(evidenceDirectory, 'android-screen.png'), screen);
-  return { appSha256, observations, pixelComparison, screenSha256: sha256(screen) };
+  const unknownAreaOverflow = await captureUnknownAreaOverflow(adb);
+  let screenSha256 = null;
+  if (target === 'android-avd') {
+    const screen = adb(['exec-out', 'screencap', '-p'], { encoding: null }).stdout;
+    await writeFile(resolve(evidenceDirectory, 'android-screen.png'), screen);
+    screenSha256 = sha256(screen);
+  }
+  return { appSha256, observations, pixelComparison, unknownAreaOverflow,
+    screenSha256 };
 }
 
 async function runNegativeControls(adb) {
@@ -300,7 +404,7 @@ async function runNegativeControls(adb) {
     'Android가 변경된 표본 좌표를 거부하지 않았습니다.');
   assert.equal(pixelLog.includes(`SPINON_C1133_GRID_PIXEL_MATRIX_BEGIN run_id=${basicRunID}`), false,
     'Android가 좌표 거부 전에 PixelCopy를 시작했습니다.');
-  await writeFile(resolve(evidenceDirectory, 'negative-pixel.log'), `${pixelLog}\n`);
+  await writeFile(resolve(evidenceDirectory, 'negative-pixel.log'), `${formatLog(pixelLog)}\n`);
 
   const badSceneRunID = `${runID}-bad-scene`;
   const routeLaunch = launchScene(adb, 'unknown-c1133-scene', badSceneRunID, { samples: mobile.samples });
@@ -319,7 +423,7 @@ async function runNegativeControls(adb) {
     '알 수 없는 scene이 GPU draw를 제출했습니다.');
   assert.equal(routeLog.includes('SPINON_C1133_GRID_PIXEL_MATRIX_BEGIN'), false,
     '알 수 없는 scene이 PixelCopy를 시작했습니다.');
-  await writeFile(resolve(evidenceDirectory, 'negative-scene.log'), `${routeLog}\n`);
+  await writeFile(resolve(evidenceDirectory, 'negative-scene.log'), `${formatLog(routeLog)}\n`);
   return {
     pixelSamples: { status: 'rejected-before-readback', runID: basicRunID },
     sceneRoute: { status: 'rejected-before-runtime-draw', runID: badSceneRunID },
@@ -344,6 +448,12 @@ try {
     schema: 'spinon-c11-3-3-grid-template-areas-runtime-matrix-result/v1',
     status: 'matched', runID, target, metadata,
     fixture: { path: runtimePath, sha256: sha256(await readFile(resolve(repositoryRoot, runtimePath))) },
+    unknownAreaOverflowFixture: {
+      path: unknownAreaPixelsPath,
+      sha256: sha256(await readFile(resolve(repositoryRoot, unknownAreaPixelsPath))),
+      referencePath: unknownAreaPixels.inputs.reference.path,
+      referenceSha256: sha256(unknownAreaReferenceBytes),
+    },
     oracle: {
       product: reference.oracle.product, referenceId: reference.referenceId,
       referenceSha256: sha256(await readFile(resolve(repositoryRoot, mobile.oracle.referencePath))),
@@ -353,23 +463,32 @@ try {
       maximumGeometryErrorCssPx: Math.max(0, ...platform.observations
         .map(({ maximumGeometryErrorCssPx = 0 }) => maximumGeometryErrorCssPx)) },
     platform: { appSha256: platform.appSha256, pixelComparison: platform.pixelComparison,
+      unknownAreaOverflow: platform.unknownAreaOverflow,
       screenSha256: platform.screenSha256 },
     negative, observations: platform.observations,
-    interpretation: 'Android API 37 AVD, SwiftShader software renderer; this is fixture runtime evidence and does not establish physical-device, hardware-GPU, WPT, or general CSS Grid support.',
+    interpretation: target === 'android-physical'
+      ? 'Android SM-S731N physical-device fixture runtime evidence; SurfaceFlinger renderer is recorded verbatim and this does not establish other devices or drivers, WPT, or general CSS Grid support.'
+      : 'Android API 37 AVD, SwiftShader software renderer; this is fixture runtime evidence and does not establish physical-device, hardware-GPU, WPT, or general CSS Grid support.',
   };
   await writeFile(resolve(evidenceDirectory, 'result.json'), `${JSON.stringify(result, null, 2)}\n`);
   await writeFile(resolve(evidenceDirectory, 'README.md'), [
     '# C11.3.3 Grid template areas Android runtime matrix', '',
-    `- Run: \`${runID}\``, '- Target: Android API 37 AVD with SwiftShader',
+    `- Run: \`${runID}\``, `- Target: ${target === 'android-physical'
+      ? `Android 실기기 ${metadata.model} / Android ${metadata.release} (API ${metadata.sdk}); renderer: ${metadata.renderer}`
+      : 'Android API 37 AVD with SwiftShader'}`,
     '- Runtime matrix: 26 scenes / 65 nodes; 19 success, 5 cascade fallback, 2 expected rejection.',
     `- Chrome DPR 1 geometry: ${totalComparisons} visible node frames compared; maximum error ${result.matrix.maximumGeometryErrorCssPx} CSS px.`,
     `- Basic scene PixelCopy: ${platform.pixelComparison.matchedSamples}/${platform.pixelComparison.expectedSamples} exact; max channel error 0.`,
+    `- Fixed unknown-area overflow: ${platform.unknownAreaOverflow.comparisons.length} Chrome geometry nodes; ${platform.unknownAreaOverflow.pixel.matchedSamples}/${platform.unknownAreaOverflow.pixel.expectedSamples} exact PixelCopy samples, including the red item outside the grid root.`,
     `- Negative controls: pixel samples ${negative.pixelSamples.status}; unknown scene ${negative.sceneRoute.status}.`,
-    '- AVD evidence does not establish physical-device or hardware-GPU behavior, WPT conformance, or general CSS Grid support.',
+    target === 'android-physical'
+      ? '- 이 결과는 기록한 단일 실기기·OS·renderer에 한정되며 다른 실기기·driver, WPT 적합성, 일반 CSS Grid 지원을 입증하지 않습니다.'
+      : '- AVD evidence does not establish physical-device or hardware-GPU behavior, WPT conformance, or general CSS Grid support.',
     '', '## Files', '', '- `runtime-*.log`: per-scene runtime, geometry, rejection and draw evidence',
     '- `result.json`: aggregate fixture, geometry and negative-control result',
     '- `pixelcopy.png`: basic scene Android SurfaceView PixelCopy',
-    '- `android-screen.png`: final AVD screen capture', '',
+    '- `unknown-area-overflow-pixelcopy.png`: fixed implicit-track overflow SurfaceView PixelCopy',
+    ...(target === 'android-avd' ? ['- `android-screen.png`: final AVD screen capture'] : []),
   ].join('\n') + '\n');
   process.stdout.write(`${JSON.stringify({ ...result, evidenceDirectory }, null, 2)}\n`);
 } catch (error) {

@@ -164,6 +164,8 @@ enum RuntimeCssProfile {
     BlockFlexGridAutoPlacementFixture,
     BlockFlexGridDenseAutoPlacementFixture,
     BlockFlexGridTemplateFixture,
+    #[cfg(feature = "c11-3-3-grid-implicit-named-lines-fixture-test")]
+    BlockFlexGridTemplateImplicitNamedLinesFixture,
     BlockFlexGridTrackSizingFixture,
 }
 
@@ -459,6 +461,14 @@ impl RuntimeSession {
         Self::new_with_css_profile(RuntimeCssProfile::BlockFlexGridTemplateFixture)
     }
 
+    #[cfg(feature = "c11-3-3-grid-implicit-named-lines-fixture-test")]
+    pub fn new_runtime_gpu_block_flex_grid_template_implicit_named_lines_fixture()
+    -> Result<(Self, String), String> {
+        Self::new_with_css_profile(
+            RuntimeCssProfile::BlockFlexGridTemplateImplicitNamedLinesFixture,
+        )
+    }
+
     /// C11.4 Grid intrinsic track-sizing fixture 전용 runtime을 만듭니다.
     pub fn new_runtime_gpu_block_flex_grid_track_sizing_fixture() -> Result<(Self, String), String>
     {
@@ -535,6 +545,11 @@ impl RuntimeSession {
             }
             RuntimeCssProfile::BlockFlexGridTemplateFixture => {
                 RuntimeUaCascadeCoordinator::new_runtime_gpu_block_flex_grid_template()?
+            }
+            #[cfg(feature = "c11-3-3-grid-implicit-named-lines-fixture-test")]
+            RuntimeCssProfile::BlockFlexGridTemplateImplicitNamedLinesFixture => {
+                RuntimeUaCascadeCoordinator::
+                    new_runtime_gpu_block_flex_grid_template_implicit_named_lines()?
             }
             RuntimeCssProfile::BlockFlexGridTrackSizingFixture => {
                 RuntimeUaCascadeCoordinator::new_runtime_gpu_block_flex_grid_track_sizing()?

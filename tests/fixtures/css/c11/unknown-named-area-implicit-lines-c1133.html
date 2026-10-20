@@ -1,0 +1,58 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Spinon C11.3.3 unknown named area implicit lines</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 320px; height: 240px; overflow: hidden; }
+  body { font: 10px/1 sans-serif; direction: ltr; writing-mode: horizontal-tb; }
+  .scene { display: none; }
+  .scene.active { display: block; }
+  .grid {
+    display: grid;
+    width: 160px;
+    height: 120px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    gap: 0;
+    grid-auto-flow: row;
+    align-content: start;
+    justify-content: start;
+    background: #101820;
+  }
+  [data-node] { min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0; }
+  .item { background: #e5484d; width: 100%; height: 100%; }
+  .item.control { background: #30a46c; }
+</style>
+<body>
+  <div class="scene" data-scene="unknown-both-named-row">
+    <div class="grid" data-node id="both-row-grid" style="grid-template-columns:30px 40px;grid-template-rows:10px 20px;grid-auto-rows:5px;grid-auto-columns:15px">
+      <div class="item control" data-node id="both-row-control" style="grid-row:1;grid-column:1"></div>
+      <div class="item" data-node id="both-row-item" style="grid-row:nonExistentArea / nonExistentArea;grid-column:1"></div>
+    </div>
+  </div>
+  <div class="scene" data-scene="unknown-column-named-span">
+    <div class="grid" data-node id="column-span-grid" style="grid-template-columns:30px 40px;grid-template-rows:10px 20px;grid-auto-rows:5px;grid-auto-columns:15px">
+      <div class="item control" data-node id="column-span-control" style="grid-row:1;grid-column:1"></div>
+      <div class="item" data-node id="column-span-item" style="grid-row:1;grid-column:nonExistentArea / span 3"></div>
+    </div>
+  </div>
+  <div class="scene" data-scene="unknown-row-named-span">
+    <div class="grid" data-node id="row-span-grid" style="grid-template-columns:30px 40px;grid-template-rows:10px 20px;grid-auto-rows:5px;grid-auto-columns:15px">
+      <div class="item control" data-node id="row-span-control" style="grid-row:1;grid-column:1"></div>
+      <div class="item" data-node id="row-span-item" style="grid-row:nonExistentArea / span 5 firstRow;grid-column:1"></div>
+    </div>
+  </div>
+  <div class="scene" data-scene="unknown-column-span-one">
+    <div class="grid" data-node id="column-span-one-grid" style="grid-template-columns:30px 40px;grid-template-rows:10px 20px;grid-auto-rows:5px;grid-auto-columns:15px">
+      <div class="item control" data-node id="column-span-one-control" style="grid-row:1;grid-column:1"></div>
+      <div class="item" data-node id="column-span-one-item" style="grid-row:1;grid-column:nonExistentArea / span 1"></div>
+    </div>
+  </div>
+  <div class="scene" data-scene="unknown-template-area-with-sibling">
+    <div class="grid" data-node id="template-area-grid" style="grid-template-columns:80px 80px;grid-template-rows:60px 60px;grid-template-areas:'known .' '. .';grid-auto-rows:5px;grid-auto-columns:15px">
+      <div class="item control" data-node id="known-area-item" style="grid-area:known"></div>
+      <div class="item" data-node id="unknown-template-area-item" style="grid-area:not-authored"></div>
+    </div>
+  </div>
+</body>

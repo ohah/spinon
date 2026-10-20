@@ -48,6 +48,7 @@ pub(super) fn project_styles(
     tree: &HostDocumentSnapshot,
     root: HostNodeHandle,
     snapshot: &ComputedStyleSnapshot,
+    allow_implicit_named_lines: bool,
 ) -> Result<ProjectedStyles, StyleLayoutError> {
     validate_fixed_ancestor_effects(tree, root, snapshot)?;
     let mut output = BTreeMap::new();
@@ -674,18 +675,30 @@ pub(super) fn project_styles(
                 .ok_or(crate::StyleLayoutError::MissingComputedElement(
                     element.node_id,
                 ))?;
-            let container = grid_containers
-                .get(&owner)
-                .ok_or(crate::StyleLayoutError::MissingComputedElement(owner))?;
             let grid_style = grid_styles
                 .get(&owner)
                 .ok_or(crate::StyleLayoutError::MissingComputedElement(owner))?;
-            if let Some(placement) = project_grid_item_placement(
-                element.node_id,
-                placement,
-                container,
-                grid_style.template_areas.as_ref(),
-            )? {
+            let (placement, used_implicit_named_line) = {
+                let container = grid_containers
+                    .get(&owner)
+                    .ok_or(crate::StyleLayoutError::MissingComputedElement(owner))?;
+                project_grid_item_placement(
+                    element.node_id,
+                    placement,
+                    container,
+                    grid_style.template_areas.as_ref(),
+                    allow_implicit_named_lines
+                        && snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1,
+                )?
+            };
+            if used_implicit_named_line {
+                let container = grid_containers
+                    .get_mut(&owner)
+                    .ok_or(crate::StyleLayoutError::MissingComputedElement(owner))?;
+                container.placement_mode =
+                    spinon_layout::GridPlacementMode::TemplateGridImplicitTracks;
+            }
+            if let Some(placement) = placement {
                 grid_items.insert(element.node_id, placement);
             }
         }

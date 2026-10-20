@@ -142,7 +142,7 @@ const expectedRejections = new Map([
     code: 'unsupported_computed_value', property: 'grid-template-areas', nodeId: 'mismatch-grid',
   }],
   ['unknown-area-implicit-tracks', {
-    code: 'unsupported_named_grid_line', property: 'grid-row-start', nodeId: 'unknown-area-item',
+    code: 'unsupported_grid_auto_rows', property: 'grid-auto-rows', nodeId: 'unknown-area-grid',
   }],
 ]);
 const allNodeIds = new Set();

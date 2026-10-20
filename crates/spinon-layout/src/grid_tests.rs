@@ -222,6 +222,46 @@ fn template_area_mode_stretches_definite_auto_sized_items_without_widening_dense
 }
 
 #[test]
+fn implicit_named_line_mode_requires_fixed_auto_tracks_on_both_axes() {
+    let mut input = grid_input(
+        vec![GridTrackSize::LengthPx(40.0), GridTrackSize::LengthPx(40.0)],
+        vec![GridTrackSize::LengthPx(30.0)],
+        1,
+        LayoutGap::default(),
+    );
+    input
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode = GridPlacementMode::TemplateGridImplicitTracks;
+    input.grid_items.insert(
+        id(2),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(1),
+            row_end: GridPlacementInput::Line(2),
+            column_start: GridPlacementInput::Line(1),
+            column_end: GridPlacementInput::Line(2),
+        },
+    );
+
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
+    ));
+
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.auto_rows = GridAutoRows::LengthPx(10.0);
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(LayoutError::UnsupportedGridAutoColumns { node, .. }) if node == id(1)
+    ));
+
+    input.grid_containers.get_mut(&id(1)).unwrap().auto_columns =
+        crate::GridAutoColumns::LengthPx(10.0);
+    assert!(TaffyLayoutEngine.compute(&input).is_ok());
+}
+
+#[test]
 fn nested_grid_containers_classify_auto_and_explicit_items_independently() {
     let mut input = grid_input(
         vec![

@@ -67,6 +67,11 @@ pub(crate) fn normalize_dense_grid_container(
         GridReservationSite::VisibleItemList,
     )?;
     let mut auto_placed_items = BTreeSet::new();
+    let allow_positive_implicit = matches!(
+        container.placement_mode,
+        crate::GridPlacementMode::TrackSizing
+            | crate::GridPlacementMode::TemplateGridImplicitTracks
+    );
     for child in children {
         let placement = input.grid_items.get(&child).copied().unwrap_or_default();
         let row = resolve_axis(
@@ -76,7 +81,7 @@ pub(crate) fn normalize_dense_grid_container(
             placement.row_start,
             placement.row_end,
             container.rows.len(),
-            container.placement_mode == crate::GridPlacementMode::TrackSizing,
+            allow_positive_implicit,
         )?;
         let column = resolve_axis(
             child,
@@ -85,8 +90,13 @@ pub(crate) fn normalize_dense_grid_container(
             placement.column_start,
             placement.column_end,
             container.columns.len(),
-            container.placement_mode == crate::GridPlacementMode::TrackSizing,
+            allow_positive_implicit,
         )?;
+        if container.placement_mode == crate::GridPlacementMode::TemplateGridImplicitTracks
+            && (row.start.is_none() || column.start.is_none())
+        {
+            return Err(LayoutError::GridImplicitTrackRequired(node));
+        }
         if row.start.is_none() || column.start.is_none() {
             auto_placed_items.insert(child);
         }
@@ -99,7 +109,11 @@ pub(crate) fn normalize_dense_grid_container(
 
     let mut row_count = container.rows.len();
     let mut column_count = container.columns.len();
-    if container.placement_mode == crate::GridPlacementMode::TrackSizing {
+    if matches!(
+        container.placement_mode,
+        crate::GridPlacementMode::TrackSizing
+            | crate::GridPlacementMode::TemplateGridImplicitTracks
+    ) {
         for item in &items {
             if let Some(row_start) = item.row.start {
                 row_count = row_count.max(track_end(
@@ -163,7 +177,11 @@ pub(crate) fn normalize_dense_grid_container(
             item.column.span,
         )?;
         occupancy.occupy(item.node, row_start, row_end, column_start, column_end)?;
-        if container.placement_mode == crate::GridPlacementMode::TrackSizing {
+        if matches!(
+            container.placement_mode,
+            crate::GridPlacementMode::TrackSizing
+                | crate::GridPlacementMode::TemplateGridImplicitTracks
+        ) {
             row_count = row_count.max(row_end);
             column_count = column_count.max(column_end);
         }

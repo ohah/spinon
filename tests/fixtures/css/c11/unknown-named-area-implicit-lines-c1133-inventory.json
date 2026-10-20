@@ -1,0 +1,94 @@
+{
+  "schema": "spinon-css-c11-3-3-unknown-named-area-implicit-lines-inventory/v1",
+  "fixtureId": "C11.3.3-unknown-named-area-implicit-lines-precomparison-v1",
+  "viewport": {
+    "width": 320,
+    "height": 240,
+    "deviceScaleFactors": [1, 2]
+  },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "America/Los_Angeles",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "fine",
+    "hover": "hover",
+    "direction": "ltr",
+    "writingMode": "horizontal-tb"
+  },
+  "wpt": {
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "cases": [
+      {
+        "path": "css/css-grid/placement/grid-placement-unknown-named-area-001.html",
+        "sha256": "7fa795ad262e74399487fa817da1e99a75bbcce2e46b5f4547d55959e2e9ebd4",
+        "mappedCases": [
+          "unknown-both-named-row",
+          "unknown-column-named-span",
+          "unknown-row-named-span",
+          "unknown-column-span-one"
+        ],
+        "execution": "oracle-derived-fixture; WPT runner not used"
+      }
+    ]
+  },
+  "comparison": {
+    "computedProperties": [
+      "grid-template-columns",
+      "grid-template-rows",
+      "grid-template-areas",
+      "grid-auto-columns",
+      "grid-auto-rows",
+      "grid-row-start",
+      "grid-row-end",
+      "grid-column-start",
+      "grid-column-end"
+    ],
+    "rectFields": ["x", "y", "width", "height"],
+    "geometryToleranceCssPx": 0.5,
+    "coordinates": "root-relative"
+  },
+  "cases": [
+    {
+      "id": "unknown-both-named-row",
+      "rootId": "both-row-grid",
+      "nodeIds": ["both-row-grid", "both-row-control", "both-row-item"],
+      "expectedRect": { "x": 0, "y": 35, "width": 30, "height": 5 },
+      "expectedRows": [10, 20, 5, 5],
+      "expectedColumns": [30, 40]
+    },
+    {
+      "id": "unknown-column-named-span",
+      "rootId": "column-span-grid",
+      "nodeIds": ["column-span-grid", "column-span-control", "column-span-item"],
+      "expectedRect": { "x": 85, "y": 0, "width": 45, "height": 10 },
+      "expectedRows": [10, 20],
+      "expectedColumns": [30, 40, 15, 15, 15, 15]
+    },
+    {
+      "id": "unknown-row-named-span",
+      "rootId": "row-span-grid",
+      "nodeIds": ["row-span-grid", "row-span-control", "row-span-item"],
+      "expectedRect": { "x": 0, "y": 35, "width": 30, "height": 25 },
+      "expectedRows": [10, 20, 5, 5, 5, 5, 5, 5],
+      "expectedColumns": [30, 40]
+    },
+    {
+      "id": "unknown-column-span-one",
+      "rootId": "column-span-one-grid",
+      "nodeIds": ["column-span-one-grid", "column-span-one-control", "column-span-one-item"],
+      "expectedRect": { "x": 85, "y": 0, "width": 15, "height": 10 },
+      "expectedRows": [10, 20],
+      "expectedColumns": [30, 40, 15, 15]
+    },
+    {
+      "id": "unknown-template-area-with-sibling",
+      "rootId": "template-area-grid",
+      "nodeIds": ["template-area-grid", "known-area-item", "unknown-template-area-item"],
+      "expectedRect": { "x": 175, "y": 125, "width": 15, "height": 5 },
+      "expectedRows": [60, 60, 5, 5],
+      "expectedColumns": [80, 80, 15, 15],
+      "derivedFrom": "C11.3.3 area inventory unknown-area-implicit-tracks with fixed grid-auto tracks"
+    }
+  ]
+}

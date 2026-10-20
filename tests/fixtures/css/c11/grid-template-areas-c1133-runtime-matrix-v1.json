@@ -462,9 +462,9 @@
       "id": "unknown-area-implicit-tracks",
       "expected": {
         "outcome": "expected-rejection",
-        "code": "unsupported_named_grid_line",
-        "property": "grid-row-start",
-        "nodeId": "unknown-area-item"
+        "code": "unsupported_grid_auto_rows",
+        "property": "grid-auto-rows",
+        "nodeId": "unknown-area-grid"
       },
       "rootId": "unknown-area-grid",
       "nodeIds": [

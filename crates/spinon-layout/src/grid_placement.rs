@@ -34,6 +34,7 @@ pub(super) fn normalize_grid_layout(
                 GridPlacementMode::SparseRow
                     | GridPlacementMode::DenseAutoPlacement
                     | GridPlacementMode::TemplateGrid
+                    | GridPlacementMode::TemplateGridImplicitTracks
                     | GridPlacementMode::TrackSizing
             )
         {
@@ -119,6 +120,7 @@ pub(super) fn normalize_grid_item_placements(
             GridPlacementMode::SparseRow
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
+                | GridPlacementMode::TemplateGridImplicitTracks
                 | GridPlacementMode::TrackSizing
         ) {
             continue;
