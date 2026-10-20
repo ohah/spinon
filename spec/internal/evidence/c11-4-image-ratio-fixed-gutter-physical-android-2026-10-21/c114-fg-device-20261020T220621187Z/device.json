@@ -1,0 +1,15 @@
+{
+  "serial": "R5KYB06SMPE",
+  "manufacturer": "samsung",
+  "model": "SM-S731N",
+  "release": "16",
+  "apiLevel": 36,
+  "abi": "arm64-v8a",
+  "qemu": "0",
+  "eglDriver": "samsung",
+  "vulkanDriver": "samsung",
+  "displaySize": "Physical size: 1080x2340",
+  "displayDensity": "Physical density: 450",
+  "sourceHead": "34786672f2c805d72ba94022b7074a588e08e768",
+  "gpuRenderer": "Samsung Electronics Co., Ltd., ANGLE ((Samsung Xclipse 940) on Vulkan 1.3.279), OpenGL ES 3.2 Driver version: 24.1.307 git hash: 86f99cfe6317"
+}
