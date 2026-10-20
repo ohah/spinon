@@ -1,0 +1,8 @@
+{
+  "branch": "docs/tailnet-c11-4-physical-android-20261021",
+  "commit": "8cadad67ba3ce0801446c76da8df2017f7cc167d",
+  "tree": "c5f1dc19902e9923e06e4823b74fb3a0711c2123",
+  "trackedWorkingTreeClean": true,
+  "buildCommand": "mise exec -- env SPINON_ENABLE_C04_RUNTIME_GPU=1 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 bun run build:android",
+  "fixtureFeature": "c04-runtime-gpu-fixture-test"
+}

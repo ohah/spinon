@@ -195,3 +195,8 @@ PR #375에는 negative implicit line과 auto-repeat의 결합이 포함되지 �
 ### 2026-10-20 auto-repeat 뒤 negative line 결합 계획
 
 Negative implicit placement와 auto-repeat 및 leading auto-track list의 제한 결합은 [집중 계획](./c11-4-auto-repeat-negative-lines.md)에 따라 구현 PR [#385](https://github.com/ohah/spinon/pull/385)로 2026-10-20 Rebase and merge했다(merge SHA `078f5708a5c13d956150b311d392490cc4faa311`). 18-case Chrome 155·독립 규범 기대를 고정했고 기존 106 IDs와 합친 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 각 124/124 scene을 확인했다. 이는 expanded repeat count 기준 numeric placement와 supported fixed-px `grid-auto-*` cycle을 닫는 제한 slice다. named lines/areas, non-px neighbor, 여러 repeat, 전체 placement/gutter matrix, WPT와 전체 C11.4는 남아 있고 C11.4 checkbox/완료 수는 바꾸지 않는다. [실행 근거·화면](../spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/README.md).
+
+
+### 2026-10-21 typed implicit track Android 실기기 후속
+
+기존 typed implicit `grid-auto-columns`·`grid-auto-rows` 14-scene fixture를 Samsung SM-S731N Android 16/API 36에서 다시 실행했다. scene별 Columns/Rows 최종 track과 node frame을 oracle-검증 Android API 37 ARM64 AVD 결과에 대조했으며, 1/64 CSS px 기준 14/14 통과했다(최대 track 차이 0 CSS px, 최대 frame 차이 0.000006 CSS px). trace chunk 14/14 완전성, frame marker와 draw/present도 확인했다. 별도 `implicit-min-content-overflow-border` 장면에서는 Android 표면 PixelCopy 경계 표본 5/5가 기대 RGBA와 일치했다. 상세 기기·APK 정보, 전체 trace와 실기기 화면은 [실기기 evidence](../spec/internal/evidence/c11-4-typed-implicit-physical-android-2026-10-21/README.md)에 있다. 이 후속은 기존 typed track 제한 범위의 실기기 확인이며 C11.4 전체, WPT, 모든 border stroke 또는 공개 CSS 지원 완료를 뜻하지 않는다.
