@@ -9,9 +9,9 @@ const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, '../../../..');
 const [mode, sourceArg, targetArg, backupArg, preflightArg] = process.argv.slice(2);
 const pass = process.env.SPINON_TAILNET_RUN;
-if (!['preflight', 'copy'].includes(mode) || !['pass6', 'pass7', 'pass8', 'pass9', 'pass11', 'pass12', 'pass13', 'pass14'].includes(pass)
+if (!['preflight', 'copy'].includes(mode) || !['pass6', 'pass7', 'pass8', 'pass9', 'pass11', 'pass12', 'pass13', 'pass14', 'pass15', 'pass16'].includes(pass)
     || !sourceArg || !targetArg || !backupArg) {
-  throw new Error('usage: SPINON_TAILNET_RUN=pass6|pass7|pass8|pass9|pass11|pass12|pass13|pass14 node sync-preview.mjs preflight|copy SOURCE TARGET BACKUP [PREFLIGHT_JSON]');
+  throw new Error('usage: SPINON_TAILNET_RUN=pass6|pass7|pass8|pass9|pass11|pass12|pass13|pass14|pass15|pass16 node sync-preview.mjs preflight|copy SOURCE TARGET BACKUP [PREFLIGHT_JSON]');
 }
 
 const sourceRoot = path.resolve(repoRoot, sourceArg);
@@ -40,6 +40,8 @@ const backupOperation = pass === 'pass11'
     ? 'c11-4-pr368-tailnet-roadmap-sync-2026-10-20'
     : pass === 'pass14'
       ? 'c11-4-pr370-tailnet-roadmap-sync-2026-10-20'
+      : ['pass15', 'pass16'].includes(pass)
+        ? 'c11-4-pr395-tailnet-roadmap-sync-2026-10-21'
     : 'c11-4-image-tailnet-preview-update-2026-10-20';
 const backupRootRelative = `SpinonPreviewBackups/${backupOperation}/${backupRun}`;
 const expectedTargetRoot = path.resolve(os.homedir(), 'Library/Application Support/SpinonPreview');

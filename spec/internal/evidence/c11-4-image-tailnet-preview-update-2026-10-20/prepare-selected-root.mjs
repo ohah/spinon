@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, '../../../..');
 const run = process.argv[2];
-if (!['pass6', 'pass7', 'pass8', 'pass9', 'pass11', 'pass12', 'pass13', 'pass14'].includes(run)) throw new Error('usage: node prepare-selected-root.mjs pass6|pass7|pass8|pass9|pass11|pass12|pass13|pass14');
+if (!['pass6', 'pass7', 'pass8', 'pass9', 'pass11', 'pass12', 'pass13', 'pass14', 'pass15', 'pass16'].includes(run)) throw new Error('usage: node prepare-selected-root.mjs pass6|pass7|pass8|pass9|pass11|pass12|pass13|pass14|pass15|pass16');
 
 const specRoot = path.join(repoRoot, 'spec');
 const outputRoot = path.join(repoRoot, 'build/spinon', `c11-4-image-tailnet-root-${run}`);
@@ -138,7 +138,7 @@ if (run === 'pass9') {
     selected.push([relative, `internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/${name}`]);
   }
 }
-if (['pass11', 'pass12', 'pass13', 'pass14'].includes(run)) {
+if (['pass11', 'pass12', 'pass13', 'pass14', 'pass15', 'pass16'].includes(run)) {
   const evidence = [
     'c11-4-auto-repeat-neighbors-2026-10-20',
     'c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20',
@@ -151,7 +151,7 @@ if (['pass11', 'pass12', 'pass13', 'pass14'].includes(run)) {
     selected.push([source, `spec/internal/evidence/${name}`]);
   }
 }
-if (['pass12', 'pass13', 'pass14'].includes(run)) {
+if (['pass12', 'pass13', 'pass14', 'pass15', 'pass16'].includes(run)) {
   selected.push(
     ['plan/c11-4-two-axis-auto-repeat.md', 'plan/c11-4-two-axis-auto-repeat.md'],
     ['tests/fixtures/css/c11/grid-auto-repeat-both-axes-c114.html', 'public/tests/fixtures/css/c11/grid-auto-repeat-both-axes-c114.html'],
@@ -212,7 +212,7 @@ if (['pass12', 'pass13', 'pass14'].includes(run)) {
   }
 }
 
-if (run === 'pass14') {
+if (['pass14', 'pass15', 'pass16'].includes(run)) {
   const autoFitEvidence = 'spec/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20';
   selected.push(
     ['plan/c11-4-auto-fit-min-size-axis.md', 'plan/c11-4-auto-fit-min-size-axis.md'],
@@ -220,6 +220,45 @@ if (run === 'pass14') {
     [autoFitEvidence, 'internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20'],
     [autoFitEvidence, 'spec/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20'],
   );
+}
+
+if (['pass15', 'pass16'].includes(run)) {
+  const multispanEvidence = 'spec/internal/evidence/c11-4-multispan-ordering-physical-android-2026-10-21';
+  const files = [
+    'README.md',
+    'chrome155-observation.json',
+    'chrome155-multispan-precomparison.png',
+    'implementation-review-20.md',
+    'ios-simulator-review-20.md',
+    'pr-diff-review-30.md',
+    'physical-multispan-observation.json',
+    'physical-final-span3-before-span2-app-view.png',
+    'physical-final-auto-fill-overflow-neighbors-pixelcopy.png',
+    'runtime-physc114-final-rebuild-20261021-01-competing-span2-forward.log',
+    'runtime-physc114-final-rebuild-20261021-02-competing-span2-reversed.log',
+    'runtime-physc114-final-rebuild-20261021-03-span2-before-span3.log',
+    'runtime-physc114-final-rebuild-20261021-04-span3-before-span2.log',
+    'runtime-physc114-final-rebuild-20261021-overflow-02-auto-fill-overflow-neighbors-pixelcopy.log',
+    'runtime-span2-before-span3-validator-prerun.log',
+    'runtime-span3-before-span2-validator-prerun.log',
+  ];
+  selected.push([
+    'tests/fixtures/css/c11/grid-track-sizing-c114-multispan-ordering.html',
+    'public/tests/fixtures/css/c11/grid-track-sizing-c114-multispan-ordering.html',
+  ]);
+  for (const name of files) {
+    const source = `${multispanEvidence}/${name}`;
+    selected.push([source, `internal/evidence/c11-4-multispan-ordering-physical-android-2026-10-21/${name}`]);
+    selected.push([source, `spec/internal/evidence/c11-4-multispan-ordering-physical-android-2026-10-21/${name}`]);
+  }
+  for (const name of [
+    'android-connected-2026-10-21',
+    'ios-simulator-c114-multispan-ordering-ios-simulator-20261020T165531254Z-8ec3cd96',
+  ]) {
+    const source = `${multispanEvidence}/${name}`;
+    selected.push([source, `internal/evidence/c11-4-multispan-ordering-physical-android-2026-10-21/${name}`]);
+    selected.push([source, `spec/internal/evidence/c11-4-multispan-ordering-physical-android-2026-10-21/${name}`]);
+  }
 }
 
 const staticEvidenceExtensions = new Set([

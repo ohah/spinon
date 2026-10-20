@@ -6,9 +6,12 @@ import { fileURLToPath } from 'node:url';
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, '../../../..');
 const evidenceRoot = 'spec/internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20';
+const operationEvidenceRoot = 'spec/internal/evidence/c11-4-pr395-tailnet-roadmap-sync-2026-10-21';
 const run = process.env.SPINON_TAILNET_RUN;
-if (!['pass6', 'pass7', 'pass8', 'pass9', 'pass11', 'pass12', 'pass13'].includes(run)) throw new Error('SPINON_TAILNET_RUN must be pass6, pass7, pass8, pass9, pass11, pass12, or pass13');
-const manifestRelative = `${evidenceRoot}/SHA256SUMS-preview-inputs.txt`;
+if (!['pass6', 'pass7', 'pass8', 'pass9', 'pass11', 'pass12', 'pass13', 'pass15', 'pass16'].includes(run)) throw new Error('SPINON_TAILNET_RUN must be pass6, pass7, pass8, pass9, pass11, pass12, pass13, pass15, or pass16');
+const manifestRelative = ['pass15', 'pass16'].includes(run)
+  ? `${operationEvidenceRoot}/SHA256SUMS-preview-inputs.txt`
+  : `${evidenceRoot}/SHA256SUMS-preview-inputs.txt`;
 const selected = [
   'spec/0001-conformance.md',
   'spec/STATUS.md',
@@ -97,7 +100,15 @@ if (run === 'pass8') {
     `${evidenceRoot}/pass7-tailnet-evidence-agent-browser.png`,
   );
 }
-if (['pass12', 'pass13'].includes(run)) {
+if (['pass15', 'pass16'].includes(run)) {
+  selected.push(
+    'plan/c11-4-auto-fit-min-size-axis.md',
+    'tests/fixtures/css/c11/grid-auto-fit-min-size-axis-c114.html',
+    'spec/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20',
+    'tests/fixtures/css/c11/grid-track-sizing-c114-multispan-ordering.html',
+  );
+}
+if (['pass12', 'pass13', 'pass15', 'pass16'].includes(run)) {
   selected.push(
     'plan/c11-4-two-axis-auto-repeat.md',
     'tests/fixtures/css/c11/grid-auto-repeat-both-axes-c114.html',
@@ -146,8 +157,33 @@ if (['pass12', 'pass13'].includes(run)) {
     ? [`${syncEvidence}/README.md`]
     : publishedEvidence.map((name) => `${syncEvidence}/${name}`)));
 }
+if (['pass15', 'pass16'].includes(run)) {
+  const multispanEvidence = 'spec/internal/evidence/c11-4-multispan-ordering-physical-android-2026-10-21';
+  selected.push(
+    `${multispanEvidence}/README.md`,
+    `${multispanEvidence}/chrome155-observation.json`,
+    `${multispanEvidence}/chrome155-multispan-precomparison.png`,
+    `${multispanEvidence}/implementation-review-20.md`,
+    `${multispanEvidence}/ios-simulator-review-20.md`,
+    `${multispanEvidence}/pr-diff-review-30.md`,
+    `${multispanEvidence}/physical-multispan-observation.json`,
+    `${multispanEvidence}/physical-final-span3-before-span2-app-view.png`,
+    `${multispanEvidence}/physical-final-auto-fill-overflow-neighbors-pixelcopy.png`,
+    `${multispanEvidence}/runtime-physc114-final-rebuild-20261021-01-competing-span2-forward.log`,
+    `${multispanEvidence}/runtime-physc114-final-rebuild-20261021-02-competing-span2-reversed.log`,
+    `${multispanEvidence}/runtime-physc114-final-rebuild-20261021-03-span2-before-span3.log`,
+    `${multispanEvidence}/runtime-physc114-final-rebuild-20261021-04-span3-before-span2.log`,
+    `${multispanEvidence}/runtime-physc114-final-rebuild-20261021-overflow-02-auto-fill-overflow-neighbors-pixelcopy.log`,
+    `${multispanEvidence}/runtime-span2-before-span3-validator-prerun.log`,
+    `${multispanEvidence}/runtime-span3-before-span2-validator-prerun.log`,
+    `${multispanEvidence}/android-connected-2026-10-21`,
+    `${multispanEvidence}/ios-simulator-c114-multispan-ordering-ios-simulator-20261020T165531254Z-8ec3cd96`,
+  );
+}
 const finalEvidenceManifest = `${evidenceRoot}/SHA256SUMS.txt`;
-const runManifestRelative = `spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/SHA256SUMS-preview-inputs-${run}.txt`;
+const runManifestRelative = ['pass15', 'pass16'].includes(run)
+  ? `${operationEvidenceRoot}/SHA256SUMS-preview-inputs-${run}.txt`
+  : `spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/SHA256SUMS-preview-inputs-${run}.txt`;
 
 function visit(relative, files) {
   const fullPath = path.join(repoRoot, relative);
@@ -172,6 +208,7 @@ const lines = files.map((relative) => {
   const digest = createHash('sha256').update(bytes).digest('hex');
   return `${digest}  ${relative}`;
 });
+fs.mkdirSync(path.dirname(path.join(repoRoot, manifestRelative)), { recursive: true });
 fs.writeFileSync(path.join(repoRoot, manifestRelative), `${lines.join('\n')}\n`);
 fs.writeFileSync(path.join(repoRoot, runManifestRelative), `${lines.join('\n')}\n`);
 process.stdout.write(`${JSON.stringify({
