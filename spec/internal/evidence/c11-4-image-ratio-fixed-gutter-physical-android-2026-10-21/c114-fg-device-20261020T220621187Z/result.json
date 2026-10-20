@@ -1,0 +1,56 @@
+{
+  "schema": "spinon-c11-4-image-ratio-fixed-gutter-android-device/v1",
+  "runID": "c114-fg-device-20261020T220621187Z",
+  "status": "passed",
+  "scope": "Samsung SM-S731N physical Android device; fixed-gutter image ratio contribution scenes and four native surface samples per scene.",
+  "device": {
+    "serial": "R5KYB06SMPE",
+    "manufacturer": "samsung",
+    "model": "SM-S731N",
+    "release": "16",
+    "apiLevel": 36,
+    "abi": "arm64-v8a",
+    "qemu": "0",
+    "eglDriver": "samsung",
+    "vulkanDriver": "samsung",
+    "displaySize": "Physical size: 1080x2340",
+    "displayDensity": "Physical density: 450",
+    "sourceHead": "34786672f2c805d72ba94022b7074a588e08e768",
+    "gpuRenderer": "Samsung Electronics Co., Ltd., ANGLE ((Samsung Xclipse 940) on Vulkan 1.3.279), OpenGL ES 3.2 Driver version: 24.1.307 git hash: 86f99cfe6317"
+  },
+  "apk": {
+    "localApkSha256": "700db4024be649037da902c67370587ec80ee543145caee2fb16278bf8e2439c",
+    "installedApkSha256": "700db4024be649037da902c67370587ec80ee543145caee2fb16278bf8e2439c",
+    "matched": true
+  },
+  "scenes": [
+    {
+      "sceneID": "fixed-gutter-column-suggestion-clamp",
+      "runID": "c114-fg-device-20261020T220621187Z-fixed-gutter-column-suggestion-clamp",
+      "status": "passed",
+      "summary": "10-21 07:06:22.843 I/SpinonBootstrap(27426): SPINON_C114_GRID_SUMMARY run_id=c114-fg-device-20261020T220621187Z-fixed-gutter-column-suggestion-clamp scene_id=fixed-gutter-column-suggestion-clamp expected_root_frame=width=12,height=6 expected_item_frame=width=36,height=24 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "pixelSummary": "10-21 07:06:23.016 I/SpinonBootstrap(27426): SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=c114-fg-device-20261020T220621187Z-fixed-gutter-column-suggestion-clamp scene=fixed-gutter-column-suggestion-clamp generation=2 expected_samples=4 observed_samples=4 matched_samples=4",
+      "runtimeLogSha256": "10af6a342ecbe4c8602509e2202d8f337e72089457d0648187a75c49a5d11c98",
+      "screenSha256": "5fd59e219f5db0492942ec63aae9b5bbc72398c9ebba537f3f71281b66946473",
+      "surfacePixelCopySha256": "be19c1dae7e9378deb1e0fba487b78cb83fd6749ce50489f7c9735afb37e8edf",
+      "expectedSamples": 4,
+      "exactSamples": 4
+    },
+    {
+      "sceneID": "fixed-gutter-row-suggestion-clamp",
+      "runID": "c114-fg-device-20261020T220621187Z-fixed-gutter-row-suggestion-clamp",
+      "status": "passed",
+      "summary": "10-21 07:06:33.865 I/SpinonBootstrap(27604): SPINON_C114_GRID_SUMMARY run_id=c114-fg-device-20261020T220621187Z-fixed-gutter-row-suggestion-clamp scene_id=fixed-gutter-row-suggestion-clamp expected_root_frame=width=6,height=12 expected_item_frame=width=54,height=36 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "pixelSummary": "10-21 07:06:34.012 I/SpinonBootstrap(27604): SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=c114-fg-device-20261020T220621187Z-fixed-gutter-row-suggestion-clamp scene=fixed-gutter-row-suggestion-clamp generation=2 expected_samples=4 observed_samples=4 matched_samples=4",
+      "runtimeLogSha256": "c773294a2ce0d16469c26a728c4ffcfb98219036db165d7887d752cb4d37302f",
+      "screenSha256": "19a3b34b992b3fe931dae2d8d40acd657735ee7b243db37dd4625f697e9be652",
+      "surfacePixelCopySha256": "0dc70be2faec1794b6b049e61cf370368ba71e22fde061c5d6902f48e0ac0cf2",
+      "expectedSamples": 4,
+      "exactSamples": 4
+    }
+  ],
+  "limits": [
+    "One Android device and one build only.",
+    "PixelCopy samples validate selected surface colors, not PNG texels or post-compositor output."
+  ]
+}
