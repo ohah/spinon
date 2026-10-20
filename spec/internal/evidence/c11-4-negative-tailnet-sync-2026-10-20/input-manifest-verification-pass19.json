@@ -1,0 +1,18 @@
+{
+  "input_manifest_checked": 1447,
+  "input_manifest_mismatches": [],
+  "json_files_valid": 15,
+  "review_rows": [
+    {
+      "file": "sync-review-20.md",
+      "rows": 20,
+      "expected": 20
+    },
+    {
+      "file": "pr-diff-review-30.md",
+      "rows": 30,
+      "expected": 30
+    }
+  ],
+  "missing_readme_local_links": []
+}
