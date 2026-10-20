@@ -1,0 +1,26 @@
+{
+  "pass": "pass07",
+  "preview_root_relative": "SpinonPreview",
+  "checked_path_count": 119,
+  "open_selected_path_count": 2,
+  "open_selected_paths": [
+    "internal/evidence/c04-12-root-html-page-scale-tailnet-sync-2026-10-20/sync-review-20.html",
+    "internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/README.html"
+  ],
+  "descriptors": [
+    {
+      "pid": "1191",
+      "command": "node",
+      "fd": "701",
+      "path": "internal/evidence/c04-12-root-html-page-scale-tailnet-sync-2026-10-20/sync-review-20.html"
+    },
+    {
+      "pid": "1191",
+      "command": "node",
+      "fd": "719",
+      "path": "internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/README.html"
+    }
+  ],
+  "lsof_exit_status": 1,
+  "replacement_method": "write a same-directory temporary file and atomically rename it over the target"
+}

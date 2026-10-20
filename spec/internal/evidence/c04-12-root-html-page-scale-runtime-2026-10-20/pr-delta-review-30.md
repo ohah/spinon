@@ -38,4 +38,4 @@
 
 ## 판정
 
-이 diff 검토에서 새 동작 결함은 발견되지 않았다. plan review 20개 및 구현 review 20개와 별도인 PR diff 관점 30개를 모두 기록했다. 외부 PR의 required checks와 merge 조건은 실제 PR을 연 뒤 다시 조회한다.
+이 diff 검토에서 새 동작 결함은 발견되지 않았다. plan review 20개 및 구현 review 20개와 별도인 PR diff 관점 30개를 모두 기록했다. PR #388은 `CLEAN` 상태였고 branch protection에는 PR 경유와 선형 이력이 요구됐으며 필수 승인 수는 0이었다. PR check rollup은 비어 있었고 필수 status check도 설정되어 있지 않았다. PR #388은 2026-10-20 11:17:38 UTC에 Rebase and merge 됐으며 merge SHA는 `6c70bdda6270721f06c0374722211480a948878b`다.

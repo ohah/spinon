@@ -1,0 +1,51 @@
+{
+  "agent_browser_version": "0.31.1",
+  "session": "spinon-c04-12-page-scale-final-20261020",
+  "base_path": "/spinon/",
+  "routes": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "http_status": 200,
+      "checks": {
+        "pr_388_merge_sha_visible": true,
+        "tailnet_sync_report_link_visible": true,
+        "linked_internal_routes_http_200": 5
+      }
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "http_status": 200,
+      "checks": {
+        "c04_12_parent_checked": false,
+        "page_scale_mapping_subtask_checked": true,
+        "default_root_html_runtime_subtask_checked": false
+      }
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c04-12-root-html-page-scale-runtime.html",
+      "http_status": 200,
+      "checks": {
+        "merge_sha_visible": true,
+        "stale_pending_text_absent": true,
+        "parent_incomplete_boundary_visible": true,
+        "tailnet_evidence_link_visible": true
+      }
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-root-html-page-scale-tailnet-sync-2026-10-20/README.html",
+      "http_status": 200,
+      "checks": {
+        "pass03_summary_visible": true,
+        "document_image_count": 7,
+        "document_images_loaded": 7,
+        "embedded_evidence_image_count": 6,
+        "embedded_evidence_images_loaded": 6,
+        "pass03_local_evidence_links_http_200": 8
+      }
+    }
+  ],
+  "after_close": {
+    "session_list_empty": true,
+    "agent_browser_process_found": false
+  }
+}

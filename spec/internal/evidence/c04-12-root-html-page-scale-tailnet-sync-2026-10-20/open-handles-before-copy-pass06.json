@@ -1,0 +1,26 @@
+{
+  "pass": "pass06",
+  "preview_root_relative": "SpinonPreview",
+  "checked_path_count": 120,
+  "open_selected_path_count": 2,
+  "open_selected_paths": [
+    "internal/evidence/c04-12-root-html-page-scale-tailnet-sync-2026-10-20/browser-check-final-pass04.json",
+    "plan/c04-12-root-html-page-scale-runtime.html"
+  ],
+  "descriptors": [
+    {
+      "pid": "1191",
+      "command": "node",
+      "fd": "703",
+      "path": "plan/c04-12-root-html-page-scale-runtime.html"
+    },
+    {
+      "pid": "1191",
+      "command": "node",
+      "fd": "720",
+      "path": "internal/evidence/c04-12-root-html-page-scale-tailnet-sync-2026-10-20/browser-check-final-pass04.json"
+    }
+  ],
+  "lsof_exit_status": 1,
+  "replacement_method": "write a same-directory temporary file and atomically rename it over the target"
+}

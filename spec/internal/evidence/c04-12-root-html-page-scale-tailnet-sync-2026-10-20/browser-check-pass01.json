@@ -1,0 +1,57 @@
+{
+  "agent_browser_version": "0.31.1",
+  "session": "spinon-c04-12-page-scale-tailnet-20261020",
+  "base_path": "/spinon/",
+  "routes": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "http_status": 200,
+      "checks": {
+        "pr_388_merge_sha_visible": true,
+        "parent_incomplete_boundary_visible": true
+      },
+      "screenshot": "tailnet-roadmap-agent-browser.png",
+      "screenshot_dimensions": "1280x633"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "http_status": 200,
+      "checks": {
+        "c04_12_parent_checked": false,
+        "page_scale_mapping_subtask_checked": true,
+        "default_root_html_runtime_subtask_checked": false
+      },
+      "screenshot": "tailnet-status-agent-browser.png",
+      "screenshot_dimensions": "1280x633"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c04-12-root-html-page-scale-runtime.html",
+      "title": "C04.12 후속 · 기본 root HTML runtime의 초기 page scale - 스피논 문서",
+      "http_status": 200,
+      "checks": {
+        "merge_sha_visible": true,
+        "pending_merge_text_absent": true,
+        "parent_incomplete_boundary_visible": true
+      },
+      "screenshot": "tailnet-plan-agent-browser.png",
+      "screenshot_dimensions": "1280x633"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c04-12-root-html-page-scale-runtime-2026-10-20/simulator-pixel-analysis.html",
+      "title": "C04.12 root HTML page scale simulator pixel analysis - 스피논 문서",
+      "http_status": 200,
+      "checks": {
+        "android_default_image_http_200": true,
+        "android_scale_two_image_http_200": true,
+        "ios_default_image_http_200": true,
+        "ios_scale_two_image_http_200": true
+      },
+      "screenshot": "tailnet-evidence-agent-browser.png",
+      "screenshot_dimensions": "1280x633"
+    }
+  ],
+  "browser_session_closed": true,
+  "browser_process_found_after_close": false
+}
