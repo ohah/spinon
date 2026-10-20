@@ -1,0 +1,87 @@
+{
+  "heading": "#\nC11.4 · 양의 implicit track의 intrinsic sizing과 목록 순환 계획",
+  "key_lines": [
+    "c11-4-auto-repeat-neighbors-2026-10-20",
+    "C11.4 explicit-neighbor auto-repeat 구현 실패 관점 검토 20개",
+    "C11.4 explicit-neighbor auto-repeat PR diff 적대 검토 30개",
+    "C11.4 explicit-neighbor auto-repeat 실행 근거",
+    "c11-4-auto-repeat-two-track-min-size-2026-10-20",
+    "C11.4 definite minimum-size two-track auto-repeat 구현 실패 관점 검토 20개",
+    "C11.4 definite minimum-size two-track auto-repeat · PR diff 적대 검토 30개",
+    "C11.4 definite minimum-size · two-track auto-repeat 구현 근거",
+    "c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20",
+    "C11.4 definite min-size + two-track auto-repeat 계획 검토 20개",
+    "C11.4 two-track auto-repeat · definite minimum-size 사전 비교",
+    "C11.4 PR #375 후속 roadmap 문서 diff 검토 30관점",
+    "c11-4-two-axis-auto-repeat-2026-10-20",
+    "C11.4 양쪽 축 auto-repeat 구현 후 20개 실패 관점 검토",
+    "C11.4 · 양쪽 Grid 축 auto-repeat 구현 근거",
+    "c11-4-two-axis-auto-repeat-precomparison-2026-10-20",
+    "C11.4 양쪽 축 auto-repeat 계획 적대 검토 20개",
+    "C11.4 양쪽 축 auto-repeat 계획 PR 변경 적대 검토 30개"
+  ],
+  "links": [
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/android-avd-c114-implicit-intrinsic-android-avd-20261020T030912380Z-910071e2/failure-diagnosis.html",
+      "text": "Android AVD partial capture: ADB logcat timeout"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/ffi-artifact-boundary.html",
+      "text": "C11.4 fixture artifact boundary"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/implementation-review-20.html",
+      "text": "C11.4 implicit intrinsic auto-track 구현·runtime 적대 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/pr-diff-review-30.html",
+      "text": "C11.4 implicit intrinsic auto-track PR diff 적대 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/README.html",
+      "text": "C11.4 implicit intrinsic auto-track 구현 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/roadmap-pr-diff-review-30.html",
+      "text": "C11.4 PR #375 후속 roadmap 문서 diff 검토 30관점"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/android-avd-c114-implicit-intrinsic-android-avd-20261020T030912380Z-910071e2/failure-diagnosis.html",
+      "text": "Android AVD partial capture: ADB logcat timeout"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/ffi-artifact-boundary.html",
+      "text": "C11.4 fixture artifact boundary"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/implementation-review-20.html",
+      "text": "C11.4 implicit intrinsic auto-track 구현·runtime 적대 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/pr-diff-review-30.html",
+      "text": "C11.4 implicit intrinsic auto-track PR diff 적대 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/README.html",
+      "text": "C11.4 implicit intrinsic auto-track 구현 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/roadmap-pr-diff-review-30.html",
+      "text": "C11.4 PR #375 후속 roadmap 문서 diff 검토 30관점"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/README.html",
+      "text": "구현·Simulator 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/implementation-review-20.html",
+      "text": "구현 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/pr-diff-review-30.html",
+      "text": "PR diff 검토 30개"
+    }
+  ],
+  "title": "C11.4 · 양의 implicit track의 intrinsic sizing과 목록 순환 계획 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-positive-implicit-track-sizing.html"
+}

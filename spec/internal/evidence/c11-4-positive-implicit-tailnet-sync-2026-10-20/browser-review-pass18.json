@@ -1,0 +1,7 @@
+{
+  "confirms_pass17_anchor": true,
+  "heading": "#\nC11.4 PR #375 후속 roadmap 문서 diff 검토 30관점",
+  "row_27": "27\tcontract fragment anchor가 일치하지 않음\tAgent Browser 사전 확인에서 grid-auto-*의 *가 heading id에 추가 하이픈으로 반영된 점을 찾아 roadmap fragment를 실제 DOM id c114-positive-implicit-grid-auto--track-size-lists에 맞췄다. Tailnet pass17 Agent Browser에서 해당 fragment의 anchor_found=true를 확인했다.",
+  "title": "C11.4 PR #375 후속 roadmap 문서 diff 검토 30관점 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/roadmap-pr-diff-review-30.html"
+}

@@ -1,0 +1,26 @@
+{
+  "c11_4_checkboxes": [
+    {
+      "aria": null,
+      "checked": false,
+      "text": " C11.4 intrinsic track sizing — auto, minmax(), fit-content(), item intrinsic contribution, spans, cyclic percentage와 auto-repeat의 전체 CSS Grid 단계는 미완료다. 병합된 PR #338은 Taffy inherent-size callback trace를, PR #340은 callback과 분리된 direct-leaf text/image intrinsic input 및 outer-size contribution 후보를 보존한다. 현재 후보는 vendored Taf"
+    }
+  ],
+  "c11_4_lines": [
+    "C11.4 auto-fit definite minimum-size 구현 검토",
+    "C11.4 auto-fit definite minimum-size 최종 PR diff 검토",
+    "C11.4 definite minimum-size auto-fit 구현 근거",
+    "C11.4 definite minimum-size auto-fit 축별 반복 계획 적대 검토 20개",
+    "C11.4 auto-fit 축 차이 계획 PR diff 적대 검토 30개",
+    "C11.4 definite minimum-size auto-fit 축 차이 사전 비교",
+    "C11.4 auto-fit 조사 계획 Tailnet 로드맵 동기화",
+    "C11.4 explicit-neighbor auto-repeat 구현 실패 관점 검토 20개",
+    "C11.4 explicit-neighbor auto-repeat PR diff 적대 검토 30개",
+    "C11.4 explicit-neighbor auto-repeat 실행 근거",
+    "C11.4 fixture artifact 경계 확인",
+    "C11.4 definite minimum-size two-track auto-repeat 구현 실패 관점 검토 20개"
+  ],
+  "page_heading": "#\n스피논 구현 상태와 API 명세 대장",
+  "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html"
+}

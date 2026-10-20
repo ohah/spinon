@@ -1,0 +1,15 @@
+{
+  "has_merge_sha": true,
+  "has_pr_375": true,
+  "heading": "#\nC11.4 · 양의 implicit track의 intrinsic sizing과 목록 순환 계획",
+  "remaining_scope": [
+    "상태: positive implicit track sizing slice를 구현해 PR #375로 Rebase and merge했다. main merge commit은 e01f0dfc386e5d77ad0cdf8fb3e3b11df40696f8이다. Chrome 155 사전 비교 20/20, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 각각 73/73, 기본/opt-in FFI artifact 경계를 확인했다. GitHub required status check은 설정되지 않았다. 전체 workspace 테스트에서 기준선 실패 1건과 CSS reference source-shape 실패 4건은 실행 근거에 분리 기록했다. C11.4 체크와 완료 수는 올리지 않았다. negative implicit track, nested/anonymous item, auto-repeat과 typed 목록 결합, WPT 및 전체 C11.4는 남아 있다. 구현·Simulator 근거 · 구현 검토 20개 · PR diff 검토 30개.",
+    "explicit grid 앞쪽의 negative implicit tracks와 규범의 역방향 목록 순환은 현재 placement model의 표현 범위 밖이며 구체적인 오류로 거부한다.",
+    "vertical writing mode, WPT full-suite, 실기기, hardware GPU 및 iOS compositor 이후 surface equality는 이 계획의 완료 기준이 아니다.",
+    "Rust/style projection matrix에서 20개 oracle 및 zero/invalid/negative implicit, hidden item, cross-boundary span, pattern boundary, track cap과 allocation failure controls를 검증한다. unsupported grammar가 여전히 fail-closed인지 확인한다.",
+    "병합 후 spec/STATUS.md, spec/internal/0059-c11-grid-layout.md, spec/public/roadmap.html을 실제 결과·미해결 범위와 맞춘다. C11.4 완료 체크와 완료 수는 전체 B/C/D 관문이 닫히기 전까지 유지한다. Tailnet 정적 미리보기는 최신 main 산출물 sync·served SHA·Agent Browser 화면을 검증하고 별도 PR로 기록한다. Tailnet sync PR은 새 독립 diff 실패 관점 30개를 수행한다.",
+    "이 slice의 완료는 계획된 positive implicit track list profile만 의미한다. Chrome 20개, Rust/profile/artifact 검사, Android와 iOS의 73/73 행렬, border 안팎 surface sample, trace·draw/present, 서로 분리한 code/runtime·PR diff 적대 검토를 모두 통과해야 한다. C11.4 intrinsic contribution matrix, negative implicit track, nested/anonymous item, full auto-repeat placement, WPT 및 C11 상위 전체 완료를 주장하지 않는다."
+  ],
+  "title": "C11.4 · 양의 implicit track의 intrinsic sizing과 목록 순환 계획 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-positive-implicit-track-sizing.html"
+}

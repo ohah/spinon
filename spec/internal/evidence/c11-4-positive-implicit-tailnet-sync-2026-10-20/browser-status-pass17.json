@@ -1,0 +1,12 @@
+{
+  "c11_4_checkboxes": [
+    {
+      "aria": null,
+      "checked": false,
+      "text": " C11.4 intrinsic track sizing — auto, minmax(), fit-content(), item intrinsic contribution, spans, cyclic percentage와 auto-repeat의 전체 CSS Grid 단계는 미완료다. 병합된 PR #338은 Taffy inherent-size callback trace를, PR #340은 callback과 분리된 direct-leaf text/image intrinsic input 및 outer-size contribution 후보를 보존한다. 현재 후보는 vendored Taffy 0.15.0 기반 RuntimeBlockFlexGridTrackSi"
+    }
+  ],
+  "heading": "#\n스피논 구현 상태와 API 명세 대장",
+  "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html"
+}

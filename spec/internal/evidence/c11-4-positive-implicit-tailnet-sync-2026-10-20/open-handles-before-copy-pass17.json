@@ -1,0 +1,19 @@
+{
+  "pass": "pass17",
+  "preview_root_relative": "SpinonPreview",
+  "checked_path_count": 103,
+  "open_selected_path_count": 1,
+  "open_selected_paths": [
+    "internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/android-avd-c114-implicit-intrinsic-android-avd-20261020T030912380Z-910071e2/failure-diagnosis.html"
+  ],
+  "descriptors": [
+    {
+      "pid": "1191",
+      "command": "node",
+      "fd": "535",
+      "path": "internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/android-avd-c114-implicit-intrinsic-android-avd-20261020T030912380Z-910071e2/failure-diagnosis.html"
+    }
+  ],
+  "lsof_exit_status": 1,
+  "replacement_method": "write a same-directory temporary file and atomically rename it over the target"
+}

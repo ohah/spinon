@@ -1,0 +1,23 @@
+{
+  "heading": "#\nC11.4 implicit intrinsic auto-track 구현 근거",
+  "image_links_found": 2,
+  "opening_text": "스피논\n0.1.0-draft\n검색\n⌘K\n0001 · 범위와 적합성\ninternal\n0059 · C11 Grid 레이아웃 내부 계약\nevidence\nc11-4-auto-fit-min-size-axis-implementation-2026-10-20\nC11.4 auto-fit definite minimum-size 구현 검토\nC11.4 auto-fit definite minimum-size 최종 PR diff 검토\nC11.4 definite minimum-size auto-fit 구현 근거\nc11-4-auto-fit-min-size-axis-precomparison-2026-10-20\nC11.4 definite minimum-size auto-fit 축별 반복 계획 적대 검토 20개\nC11.4 auto-fit 축 차이 계획 PR diff 적대 검토 30개\nC11.4 definite minimum-size auto-fit 축 차이 사전 비교\nc11-4-auto-fit-tailnet-sync-2026-10-20\nC11.4 auto-fit 조사 계획 Tailnet 로드맵 동기화\nc11-4-auto-repeat-neighbors-2026-10-20\nC11.4 explicit-neighbor auto-repeat 구현 실패 관점 검토 20개\nC11.4 explicit-neighbor auto-repeat PR diff 적대 검토 30개\nC11.4 explicit-neighbor auto-repeat 실행 근거\nc11-4-auto-repeat-two-track-min-size-2026-10-20\nC11.4 fixture artifact 경계 확인\nC11.4 definite minimum-size two-track auto-repeat 구현 실패 관점 검토 20개\nC11.4 definite minimum-size two-track auto-repeat · PR diff 적대 검토 30개\nC11.4 definite minimum-size · two-track auto-repeat",
+  "overflow_images": [
+    {
+      "height": 2400,
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/android-avd-c114-implicit-intrinsic-android-avd-20261020T032916132Z-bdce45bc/implicit-min-content-overflow-border.png",
+      "loaded": true,
+      "text": "Android",
+      "width": 1080
+    },
+    {
+      "height": 2622,
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/ios-simulator-c114-implicit-intrinsic-ios-simulator-20261020T033027363Z-dd058ebc/implicit-min-content-overflow-border.png",
+      "loaded": true,
+      "text": "iOS",
+      "width": 1206
+    }
+  ],
+  "title": "C11.4 implicit intrinsic auto-track 구현 근거 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/README.html"
+}
