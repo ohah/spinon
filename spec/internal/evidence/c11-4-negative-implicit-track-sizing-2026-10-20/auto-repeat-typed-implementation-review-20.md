@@ -40,4 +40,4 @@
 - `cargo test --locked --workspace --quiet`: 1,182 passed, 0 failed, 4 ignored.
 - `cargo test --locked -p spinon-runtime --features c11-4-grid-track-sizing-fixture-test`: 209 passed, 0 failed, 3 ignored.
 - focused layout auto-repeat 13/13, style-to-layout projection 1/1, FFI scene registry 1/1, fixture module boundary 6/6, workspace Clippy, rustfmt와 opt-in artifact negative/positive control 통과.
-- Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 각각 138/138 scene. 전체 summary와 한계는 [실행 evidence](./README.md), frame/track 교차비교는 [JSON](./cross-platform-comparison-20261020.json)을 따른다.
+- Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 각각 138/138 scene. 전체 summary와 한계는 [실행 evidence](./README.md), frame/track 교차비교는 [JSON](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/cross-platform-comparison-20261020.json)을 따른다.
