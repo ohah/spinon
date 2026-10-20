@@ -33,7 +33,7 @@ Chrome 155 사전 oracle에서 고정한 네 direct-leaf text 장면을 `Runtime
 - 구현/runtime의 독립 실패 관점 20개를 검토했다. `row_end == Auto` 검증, root min/max/flex 제약, auto-flow/implicit track 검증 누락을 발견해 보완했다. 보완 후 Rust test와 세 플랫폼 앱을 다시 빌드하고 4/4 matrix를 재실행했다. [구현/runtime 검토 20개](./implementation-review-20.md).
 - 초기 캡처는 MinContent contribution 질의가 한 번이라고 예상해 runner assertion에서 실패했다. 런타임 로그에는 sizing의 두 phase에서 같은 item 질의가 두 번 기록되어 있었다. 비교기를 실제 trace에 맞게 고친 후 네 scene을 재실행했다. 실패 실행은 아래 `20261020T212122714Z-8c79a563` 디렉터리에 보존했다. 이는 런타임 layout 실패가 아니며, 성공 결과로 계산하지 않았다.
 - 구현 전 계획 검토 20개와 계획 PR diff 검토 30개는 [Chrome 사전 비교 evidence](../c11-4-text-multispan-precomparison-2026-10-21/README.md)에 있다. 작업 계획 PR #407은 병합되어 base commit `23b9db30c7d71db881c315e2f2110893380c2f29`에 포함됐다. 그 PR에는 check rollup이 없었으므로 CI 통과로 주장하지 않는다.
-- 구현 PR #408의 diff 적대 검토 30개를 별도 기록했다: [PR diff 검토 30개](./pr-diff-review-30.md). GitHub check와 병합 상태는 PR에서 확인한다.
+- 구현 PR #408의 diff 적대 검토 30개를 [기록](./pr-diff-review-30.md)했고 rebase merge SHA `4b7282116c0aeab12ba10edeae51fcf7f7bb3a33`으로 병합했다. GitHub PR 화면과 `gh pr checks --required`에 check 결과가 없어 CI 통과로 주장하지 않는다.
 
 ## 한계와 공식 상태
 
