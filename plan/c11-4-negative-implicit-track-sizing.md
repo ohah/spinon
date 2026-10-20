@@ -26,8 +26,8 @@
 
 ## 명시적 미지원 범위
 
-- `grid-auto-*` typed list와 `grid-template-*` auto-repeat의 결합은 기존처럼 명시 거부한다. auto-repeat의 track expansion과 leading negative origin 교차 지원은 별도 후속이다.
-- TrackSizing container에 auto-repeat이 있으면 기존 auto-repeat placement 경로를 사용하며 signed normalizer에는 연결하지 않는다. 이 경로의 negative line과 leading implicit track 상호작용은 이 slice에서 지원이나 거부를 단정하지 않고 별도 검증 대상으로 남긴다.
+- 이 PR #379 slice는 `grid-auto-*` typed list와 `grid-template-*` auto-repeat의 결합을 다루지 않았다. 지원되는 finite non-negative px sizing list와 제한 auto-repeat grammar의 결합은 후속 [PR #385 계획·구현](./c11-4-auto-repeat-negative-lines.md)에서 추가했다. 비-px/unsupported sizing은 계속 fail-closed한다.
+- 이 PR #379 slice에서는 TrackSizing auto-repeat의 negative line·leading implicit interaction을 미검증으로 남겼다. 그 교차 범위는 [PR #385](https://github.com/ohah/spinon/pull/385)에서 18개의 추가 case와 양 플랫폼 124-scene matrix로 검증했다. 전체 auto-repeat grammar 및 WPT는 여전히 미완료다.
 - named line, named area, `grid-template-areas`, nested/subgrid, anonymous item, out-of-flow item, unsupported computed track value와 일반 CSS math는 현재 C11.4 converter의 오류 경계를 유지한다.
 - orthogonal writing mode, 전체 WPT suite 및 전체 CSS Grid 적합성은 이 조각의 완료 조건이 아니다. 이 구현은 C11.4나 C11 전체 완료를 뜻하지 않는다.
 - 물리 Android/iOS 기기는 연결하지 않는다. 시뮬레이터 근거는 지정된 AVD와 iOS Simulator에 한정하며 hardware GPU와 iOS OS compositor 이후의 화면 일치를 주장하지 않는다.
@@ -43,7 +43,7 @@
 ## 구현 및 검증 순서
 
 1. 이 계획을 구현과 별개인 실패 관점 20개로 검토하고, 발견 사항을 계획·oracle·합격 기준에 반영한다.
-2. 계획 PR을 현재 `main`에 `Rebase and merge`한 다음 새 implementation worktree를 만들고 merge commit을 확인한다.
+2. 계획 PR을 현재 `main`에 `Rebase and merge`한 뒤 기본 `spinon` checkout에서 구현 branch로 전환한다. 동시 작업의 실제 파일 충돌이 확인된 경우에만 별도 worktree를 사용하고, 순차 작업에서는 새 worktree를 만들지 않는다. merge commit을 확인한다.
 3. layout placement input을 signed coordinate 또는 동등한 checked origin-relative 표현으로 변경한다. Taffy로 넘기기 전까지 CSS line resolution, negative/positive extent, item occupancy, row/column flow cursor의 좌표계를 섞지 않는다.
 4. 두 축의 leading pattern과 origin shift를 구현한다. C11.4 existing typed converter, fallible reservations, total track cap 및 no-partial-output 정책을 재사용하고 profile gate를 유지한다.
 5. 33개 browser case를 Rust projection/layout fixture로 각각 옮기고, additional adversarial controls로 numeric line zero, 9,999/10,000/10,001 total-track 경계, extreme signed line/span, repeated/overlapping placements, sparse/dense cursor rewind, placement-order independence, hidden items, allocation-failure injection, auto-repeat/error route와 unsupported input을 검증한다. 기대값은 Chrome capture와 W3C 규칙에 고정한다.
@@ -56,4 +56,4 @@
 
 ## 이 조각의 완료 판정
 
-33/33 Chrome oracle, 독립 expectation validator, Rust/style/layout·cap·allocation·profile 회귀, 기본/opt-in artifact 경계, Android 106/106과 iOS 106/106 Simulator scene, 양 플랫폼 root interior/edge background와 root 바깥 item/tail surface sample, trace/draw/present, 구현 실패 관점 20개 review와 PR diff 30개 review가 모두 있어야 이 signed negative-origin slice를 완료로 기록한다. total-track 10,000 cap의 checked extent arithmetic은 경계 단위 시험으로 검증한다. 전체 Taffy trace는 더 낮은 track 수에서도 100,000 track-state 예산에 도달해 실패할 수 있으므로 10,000-track 전체 layout 성공은 약속하지 않는다. CSS border stroke, WPT full suite, auto-repeat과 negative origin 조합, nested/anonymous/out-of-flow, 실기기, hardware GPU와 iOS compositor-after는 명시된 후속/한계로 남는다.
+33/33 Chrome oracle, 독립 expectation validator, Rust/style/layout·cap·allocation·profile 회귀, 기본/opt-in artifact 경계, Android 106/106과 iOS 106/106 Simulator scene, 양 플랫폼 root interior/edge background와 root 바깥 item/tail surface sample, trace/draw/present, 구현 실패 관점 20개 review와 PR diff 30개 review가 이 signed negative-origin PR #379 slice의 근거다. total-track 10,000 cap의 checked extent arithmetic은 경계 단위 시험으로 검증한다. 전체 Taffy trace는 더 낮은 수에서도 100,000 track-state 예산으로 fail-closed할 수 있어 10,000-track layout 성공을 약속하지 않는다. auto-repeat과 negative origin의 제한 결합은 후속 [PR #385](./c11-4-auto-repeat-negative-lines.md)에서 별도 확인했다. CSS border stroke, WPT full suite, nested/anonymous/out-of-flow, 실기기, hardware GPU와 iOS compositor-after는 미완료다.

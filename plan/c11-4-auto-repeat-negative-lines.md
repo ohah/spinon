@@ -2,13 +2,17 @@
 
 **상위 원본:** [C11 상태 대장](../spec/STATUS.md#c11-css-grid) · [C11.4 전체 track sizing 계획](./c11-4-grid-track-sizing.md) · [양축 auto-repeat 계획](./c11-4-two-axis-auto-repeat.md) · [negative implicit track 계획](./c11-4-negative-implicit-track-sizing.md) · [CSS Grid Layout Module Level 1 · 2025 CRD §7.2.3.2, §7.5–§7.6, §8.3–§8.5](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 18-case Chrome 155 사전 비교를 고정했다. 초기 계획과 첫 정정 계획의 검토가 auto-repeat 양축 dispatch에서 secondary axis를 authored track count로 푸는 실제 경로를 놓쳐 무효화됐다. 현재 경계는 [20 관점 재검토](../spec/internal/evidence/c11-4-auto-repeat-negative-lines-precomparison-2026-10-20/plan-axis-classification-review-20.md)와 [30 관점 PR diff 검토](../spec/internal/evidence/c11-4-auto-repeat-negative-lines-precomparison-2026-10-20/pr-axis-classification-diff-review-30.md)로 다시 확인했다. 임시 Rust 회귀에서 한 축 negative placement는 통과하고 두 축 negative placement는 `grid-row-start`의 explicit-range error로 실패했다. 정식 회귀와 수정, simulator 검증은 아직 끝나지 않았다. 이 조각만으로 C11.4 상태나 공식 완료 수를 올리지 않는다.
+**상태:** 구현 PR [#385](https://github.com/ohah/spinon/pull/385)이 2026-10-20 Rebase and merge됐다(merge SHA `078f5708a5c13d956150b311d392490cc4faa311`). 이 계획의 18개 auto-repeat/negative-line case를 기존 106-scene matrix에 추가해 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 124/124 scene, draw/present, overflow 표본을 확인했다. [실행 근거](../spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/README.md) · [구현 실패 관점 20개](../spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/auto-repeat-implementation-review-20.md) · [최종 PR diff 30개](../spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/implementation-pr-diff-review-30.md). GitHub required status check은 설정되어 있지 않아 CI green으로 표시하지 않았다. 이 제한 slice는 C11.4 상태나 공식 완료 수를 올리지 않는다.
+
+## PR #385 구현 결과
+
+양쪽 축 각각 한 개까지의 제한 auto-repeat에서 numeric positive/negative line 배치가 Taffy의 expanded repeat count를 기준으로 처리된다. leading implicit track의 `grid-auto-columns`/`grid-auto-rows`는 지원되는 유한·0 이상 px scalar/list를 역방향으로 순환한다. `auto-fit`은 반복 수를 유지하며 placement 뒤 빈 반복 track과 규범상 인접 gutter를 접는다. 새 18 IDs는 독립 W3C 기대값과 Chrome 155 관찰에 연결되고, 기존 106 IDs와 합친 124-scene Android/iOS 행렬에서 모두 통과했다. 전체 grammar, WPT, 실기기, hardware GPU, compositor 이후 픽셀 검증과 C11.4 전체 완료는 남는다.
 
 ## 목적
 
 `RuntimeBlockFlexGridTrackSizingV1`의 이미 제한 지원된 auto-repeat과 negative implicit placement를 결합한다. numeric negative line은 auto-repeat의 실제 repetition count가 포함된 explicit grid 끝에서 계산되어야 한다. 그 결과 explicit grid 앞에 생기는 track에는 `grid-auto-columns`·`grid-auto-rows` 목록을 역방향으로 반복한다. `auto-fit`은 같은 count를 유지하고 placement 뒤 빈 repeated track만 collapse한다.
 
-## 현재 코드 경계
+## 구현 전 관찰된 코드 경계
 
 - Stylo typed projection은 authored track pattern과 축별 `GridAutoRepeat { start, end, mode }`를 함께 보존한다. CSS list의 auto-repeat 영역은 authored track vector에서 한 번 나타난다.
 - `grid_auto_placement/dense_column.rs::normalize_dense_grid_container`는 TrackSizing과 auto-repeat 조합에서 별도 `normalize_auto_repeat_grid_items` 경로로 분기한다. 열 repeat을 선택하면 열 placement는 raw input으로 보존하지만, row placement는 `resolve_axis(..., container.rows.len(), false)`로 authored row pattern 수에 맞춰 먼저 푼다. 양축 repeat에서는 leading negative row line이 Taffy에 도달하기 전에 `explicit track range` 오류를 낸다. authored 범위를 넘지만 expanded repeat grid 안에 놓이는 positive line도 같은 이유로 거부될 수 있다. row repeat 선택 시에는 같은 문제가 columns에 생긴다.
@@ -16,7 +20,7 @@
 - auto-repeat 분기는 `GridAutoRows/Columns::TrackList`를 명시적으로 거부하고, `to_taffy_style`도 `grid_auto_rows/columns` 값을 Taffy Style로 전달하지 않는다. 이 두 adapter 제한은 negative implicit leading track에 typed sizing을 결합하지 못하게 한다.
 - Taffy `initialize_grid_tracks`는 negative implicit track을 만들 때 auto track list의 cycle offset을 사용한다. 계획은 `[31,47]`의 leading 방향, 양축, scalar `LengthPx` control 및 `TrackList`를 검증하고, auto-repeat axis는 원본 line을 Taffy까지 보존하는 범위만 연결한다.
 
-## 지원 후보
+## 구현된 제한 범위
 
 다음 조건을 모두 만족하는 `RuntimeBlockFlexGridTrackSizingV1`만 대상으로 한다.
 
@@ -64,4 +68,4 @@
 
 line names/named spans, template areas, integer repeat와 auto-repeat 혼합, 한 axis의 여러 auto-repeat, non-px neighbor, intrinsic/indefinite repeat sizing, cyclic percentage, orthogonal writing mode, subgrid, nested/anonymous/out-of-flow items, 전체 WPT, physical device, hardware GPU 및 iOS compositor-after pixel equality는 이번 slice로 닫지 않는다.
 
-이 조각을 후보 완료로 기록하려면 독립 18-case oracle와 validator, count/line/collapse/projection/layout/cap/error/profile 회귀, 기존 C11.4 106 및 auto-repeat 33 regression, 새 app case 양 플랫폼 실행, overflow surface 표본, trace/draw/present, implementation review 20개, implementation PR diff review 30개와 실제 화면 evidence가 모두 있어야 한다. 전체 C11.4와 C11은 그 뒤에도 미완료다.
+이 제한 slice는 PR #385에서 구현·병합됐다. 독립 18-case oracle/validator, count·line·collapse·projection·layout·cap·error/profile 회귀, 기존 106 IDs를 포함한 124/124 Android 및 iOS scene, overflow surface 표본, trace/draw/present, 구현 실패 관점 20개, 최종 PR diff 30개와 실제 Simulator 화면을 [실행 근거](../spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/README.md)에서 확인할 수 있다. 이 결과는 C11.4 또는 C11 전체 완료가 아니다.
