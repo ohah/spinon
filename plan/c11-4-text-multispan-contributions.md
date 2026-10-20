@@ -1,6 +1,6 @@
 # C11.4 직접 텍스트 다중 span 기여 계획
 
-**상태:** Chrome 155 사전 비교와 계획 실패 관점 20개 검토를 마쳤고 계획 PR #407을 머지했다. 직접 텍스트 4개 장면의 Rust·Android 실기기·Android API 37 AVD·iOS 26.2 Simulator 검증을 모두 마쳤다. 구현/runtime 실패 관점 20개 검토와 fixture artifact 경계 확인도 마쳤으며, PR diff 적대 검토·PR 생성·필수 CI 확인·병합이 남아 있다. C11.4 체크와 공식 완료 수는 그대로 둔다.
+**상태:** Chrome 155 사전 비교와 계획 실패 관점 20개 검토를 마쳤고 계획 PR #407을 머지했다. 직접 텍스트 4개 장면의 Rust·Android 실기기·Android API 37 AVD·iOS 26.2 Simulator 검증을 마쳤다. 사용자가 연결한 Android 실기기에서 최신 fixture APK로 4/4를 재실행했다. 구현/runtime 실패 관점 20개, PR #408 diff 적대 검토 30개, fixture artifact 경계 확인을 마쳤다. PR #408의 required check 확인과 병합이 남아 있다. C11.4 체크와 공식 완료 수는 그대로 둔다.
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
@@ -60,4 +60,4 @@ Chrome 155의 used-track 문자열은 같은 네 장면에서 `[25,35,35,0]` 또
 - [Android 실기기·API 37 AVD·iOS Simulator 실행, 화면, 빌드·검사 결과](../spec/internal/evidence/c11-4-text-multispan-contributions-2026-10-21/README.md)
 - [구현/runtime 적대 검토 20개](../spec/internal/evidence/c11-4-text-multispan-contributions-2026-10-21/implementation-review-20.md)
 - [기본/fixture artifact 경계](../spec/internal/evidence/c11-4-text-multispan-contributions-2026-10-21/artifact-boundary.md)
-- PR diff 30개 검토, required CI 확인, PR 병합은 아직 남아 있다. C11.4 checkbox와 공식 완료 수는 그대로다.
+- PR #408 diff 30개 검토는 완료했고 근거는 [PR diff 검토](../spec/internal/evidence/c11-4-text-multispan-contributions-2026-10-21/pr-diff-review-30.md)에 기록했다. required check 확인과 PR 병합은 남아 있다. C11.4 checkbox와 공식 완료 수는 그대로다.
