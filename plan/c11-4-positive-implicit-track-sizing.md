@@ -4,6 +4,8 @@
 
 **상태:** positive implicit track sizing slice를 구현해 [PR #375](https://github.com/ohah/spinon/pull/375)로 Rebase and merge했다. main merge commit은 `e01f0dfc386e5d77ad0cdf8fb3e3b11df40696f8`이다. Chrome 155 사전 비교 20/20, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 각각 73/73, 기본/opt-in FFI artifact 경계를 확인했다. GitHub required status check은 설정되지 않았다. 전체 workspace 테스트에서 기준선 실패 1건과 CSS reference source-shape 실패 4건은 실행 근거에 분리 기록했다. C11.4 체크와 완료 수는 올리지 않았다. negative implicit track, nested/anonymous item, auto-repeat과 typed 목록 결합, WPT 및 전체 C11.4는 남아 있다. [구현·Simulator 근거](../spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/README.md) · [구현 검토 20개](../spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/implementation-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/pr-diff-review-30.md).
 
+**다음 focused slice:** [음수 implicit track과 역방향 목록 순환 계획](./c11-4-negative-implicit-track-sizing.md). 이 slice가 merge되어도 전체 C11.4는 아직 완료되지 않는다.
+
 ## 목적
 
 `RuntimeBlockFlexGridTrackSizingV1`은 explicit grid 뒤에 생기는 양의 implicit track을 현재 intrinsic track sizing 계산에 연결하지 못한다. CSS의 `grid-auto-rows`와 `grid-auto-columns`는 하나 이상의 track-size 목록이며, positive implicit track에 목록을 순서대로 반복 적용한다. 현재 cascade는 단일 고정 px 외의 목록을 보존하지 않고, layout normalizer는 implicit track이 필요할 때 `auto`를 거부한다. 이 계획은 기존 C11.4 track-size 계산기를 양 축의 positive implicit tracks에 연결하고 property의 authored list 순서를 유지한다.
