@@ -5,6 +5,7 @@
 #include <cstring>
 #include <memory>
 #include <new>
+#include <vector>
 
 #include "spinon_ffi.h"
 #include "spinon_wgpu_r08.h"
@@ -73,11 +74,15 @@ extern "C" int spinon_c124_sample_stack_residency(
 
 namespace {
 
-template <std::size_t N>
-NSString *C0410Report(int32_t status, const std::array<char, N> &output) {
-  NSString *detail = [NSString stringWithUTF8String:output.data()];
+NSString *C0410Report(int32_t status, const char *output) {
+  NSString *detail = [NSString stringWithUTF8String:output];
   if (detail == nil) detail = @"C ABI 보고가 유효한 UTF-8이 아닙니다";
   return [NSString stringWithFormat:@"status=%d %@", status, detail];
+}
+
+template <std::size_t N>
+NSString *C0410Report(int32_t status, const std::array<char, N> &output) {
+  return C0410Report(status, output.data());
 }
 
 void C0410LogReport(os_log_type_t type, const char *label, NSString *report) {
@@ -1504,14 +1509,14 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
-  std::array<char, 32768> output{};
+  std::vector<char> output(1024 * 1024);
   os_log(OS_LOG_DEFAULT,
          "SPINON_C0410_ENVIRONMENT_FFI_BEGIN width=%{public}.1f height=%{public}.1f",
          width, height);
   const int32_t status = spinon_runtime_gpu_host_set_environment(
       host, width, height, scale, dark ? 1 : 0, 10000, output.data(),
       output.size());
-  NSString *report = C0410Report(status, output);
+  NSString *report = C0410Report(status, output.data());
   C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
                  "SPINON_C0410_ENVIRONMENT", report);
   return report;
@@ -2710,11 +2715,11 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
   if (scene_id == nullptr) return @"status=-1 invalid-scene-id";
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(handle));
-  std::array<char, 32768> output{};
+  std::vector<char> output(1024 * 1024);
   const int32_t status =
       spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture(
           host, scene_id, 10000, output.data(), output.size());
-  NSString *report = C0410Report(status, output);
+  NSString *report = C0410Report(status, output.data());
   NSString *runReport = [NSString stringWithFormat:@"run_id=%@ scene_id=%@ %@",
                                                    runID ?: @"missing", sceneID, report];
   C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,

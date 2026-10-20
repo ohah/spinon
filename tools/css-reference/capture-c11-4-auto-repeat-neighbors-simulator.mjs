@@ -374,6 +374,25 @@ scenes.push(...await autoRepeatNegativeLineScenes());
 assert.equal(scenes.length, 124, 'C11.4 auto-repeat negative line simulator 행렬은 124 scene이어야 합니다.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 simulator scene ID가 중복됐습니다.');
+scenes.push(...await autoRepeatTypedImplicitScenes());
+assert.equal(scenes.length, 138,
+  'C11.4 typed implicit auto-repeat simulator 행렬은 138 scene이어야 합니다.');
+assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
+  'C11.4 simulator scene ID가 중복됐습니다.');
+const requestedSceneIDs = process.argv.find((argument) => argument.startsWith('--scene-id='))
+  ?.slice('--scene-id='.length).split(',').filter(Boolean);
+const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
+const runScenes = requestedSceneIDSet
+  ? scenes.filter(({ id }) => requestedSceneIDSet.has(id))
+  : scenes;
+assert.ok(runScenes.length > 0,
+  requestedSceneIDs ? `C11.4 scene ID를 찾지 못했습니다: ${requestedSceneIDs.join(',')}` : '실행할 scene이 없습니다.');
+if (requestedSceneIDs) {
+  assert.equal(requestedSceneIDSet.size, requestedSceneIDs.length,
+    'C11.4 선택 scene ID가 중복됐습니다.');
+  assert.equal(runScenes.length, requestedSceneIDs.length,
+    'C11.4 선택 scene ID 중 일부가 없습니다.');
+}
 
 async function negativeImplicitTrackScenes() {
   const evidence = resolve(repositoryRoot,
@@ -464,15 +483,17 @@ async function autoRepeatNegativeLineScenes() {
     'spec/internal/evidence/c11-4-auto-repeat-negative-lines-precomparison-2026-10-20');
   const fixturePath = resolve(repositoryRoot,
     'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_negative_line_scenes.json');
-  const [fixtures, expectations, observations] = await Promise.all([
+  const [allFixtures, expectations, observations] = await Promise.all([
     readFile(fixturePath, 'utf8').then(JSON.parse),
     readFile(resolve(evidence, 'spec-derived-expectations.json'), 'utf8').then(JSON.parse),
     readFile(resolve(evidence, 'chrome155-observation.json'), 'utf8').then(JSON.parse),
   ]);
+  const fixtures = allFixtures.filter(({ id }) => !id.startsWith('typed-'));
   const expectationsByID = new Map(expectations.cases.map((entry) => [entry.id, entry]));
   const observationsByID = new Map(observations.cases.map((entry) => [entry.id, entry]));
   const fixtureIDs = fixtures.map(({ id }) => id);
-  assert.equal(fixtures.length, 18, 'auto-repeat negative line fixture는 18 case여야 합니다.');
+  assert.equal(allFixtures.length, 32, 'auto-repeat fixture의 기존·typed case 수가 달라졌습니다.');
+  assert.equal(fixtures.length, 18, '기존 auto-repeat negative line fixture는 18 case여야 합니다.');
   assert.equal(expectationsByID.size, 18, '독립 auto-repeat 기대값은 18 case여야 합니다.');
   assert.equal(observationsByID.size, 18, 'Chrome 관찰은 18 case여야 합니다.');
   assert.deepEqual(new Set(fixtureIDs), new Set(expectationsByID.keys()),
@@ -624,6 +645,354 @@ async function autoRepeatNegativeLineScenes() {
       ];
     }
     return scene;
+  });
+}
+
+async function autoRepeatTypedImplicitScenes() {
+  const evidence = resolve(repositoryRoot,
+    'spec/internal/evidence/c11-4-auto-repeat-typed-implicit-precomparison-2026-10-20');
+  const fixturePath = resolve(repositoryRoot,
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_negative_line_scenes.json');
+  const [allFixtures, expectations, observations, androidSource, iosSource] = await Promise.all([
+    readFile(fixturePath, 'utf8').then(JSON.parse),
+    readFile(resolve(evidence, 'spec-derived-expectations.json'), 'utf8').then(JSON.parse),
+    readFile(resolve(evidence, 'chrome155-observation.json'), 'utf8').then(JSON.parse),
+    readFile(resolve(repositoryRoot,
+      'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java'), 'utf8'),
+    readFile(resolve(repositoryRoot, 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift'), 'utf8'),
+  ]);
+  const fixtures = allFixtures.filter(({ id }) => id.startsWith('typed-'));
+  const expectationID = new Map([
+    ['typed-mixed-cycle', 'mixed-typed-cycle'],
+    ['typed-auto-fit-occupied', 'auto-fit-typed-occupied'],
+    ['typed-auto-fit-empty', 'auto-fit-typed-empty'],
+    ['typed-auto-fit-gutter', 'auto-fit-typed-gutter'],
+  ]);
+  const expectedByID = new Map(expectations.expectations.map((entry) => [entry.id, entry]));
+  const observationByID = new Map(observations.cases.map((entry) => [entry.id, entry]));
+  assert.equal(fixtures.length, 14, 'typed implicit auto-repeat fixture는 14 case여야 합니다.');
+  assert.equal(expectedByID.size, 14, '규범-derived typed expectation은 14 case여야 합니다.');
+  assert.equal(observationByID.size, 14, 'Chrome typed 관찰은 14 case여야 합니다.');
+
+  const extractIDs = (source, name, opening, closing) => {
+    const nameOffset = source.indexOf(name);
+    assert.ok(nameOffset >= 0, `${name} allowlist가 없습니다.`);
+    const openOffset = source.indexOf(opening, nameOffset + name.length);
+    assert.ok(openOffset >= 0, `${name} allowlist 시작을 읽을 수 없습니다.`);
+    const closeOffset = source.indexOf(closing, openOffset + opening.length);
+    assert.ok(closeOffset >= 0, `${name} allowlist 끝을 읽을 수 없습니다.`);
+    return new Set([...source.slice(openOffset + 1, closeOffset).matchAll(/"([^"]+)"/g)]
+      .map((match) => match[1]));
+  };
+  const androidSceneIDs = extractIDs(androidSource, 'C114_GRID_TRACK_SIZING_SCENE_IDS', '{', '};');
+  const androidAutoRepeatIDs = extractIDs(
+    androidSource, 'C114_AUTO_REPEAT_NEGATIVE_LINE_SCENE_IDS', '{', '};');
+  const iosSceneIDs = extractIDs(iosSource, 'c114GridTrackSizingSceneIDs', '[', ']');
+  const iosAutoRepeatIDs = extractIDs(iosSource, 'c114AutoRepeatNegativeLineSceneIDs', '[', ']');
+  for (const { id } of fixtures) {
+    assert.ok(androidSceneIDs.has(id), `Android Grid allowlist에 ${id}가 없습니다.`);
+    assert.ok(androidAutoRepeatIDs.has(id), `Android auto-repeat allowlist에 ${id}가 없습니다.`);
+    assert.ok(iosSceneIDs.has(id), `iOS Grid allowlist에 ${id}가 없습니다.`);
+    assert.ok(iosAutoRepeatIDs.has(id), `iOS auto-repeat allowlist에 ${id}가 없습니다.`);
+    const expectedID = expectationID.get(id) ?? id.slice('typed-'.length);
+    assert.ok(expectedByID.has(expectedID), `${id}: 독립 규범 expectation이 없습니다.`);
+    assert.ok(observationByID.has(expectedID), `${id}: Chrome 관찰이 없습니다.`);
+  }
+
+  const fixedCycle = expectedByID.get('fixed-cycle');
+  const fixedThree = expectedByID.get('fixed-cycle-three-leading-trailing');
+  const mixedCycle = expectedByID.get('mixed-typed-cycle');
+  const autoFitEmpty = expectedByID.get('auto-fit-typed-empty');
+  const ahem = { minContentInline: 48, maxContentInline: 108, minContentBlock: 36, maxContentBlock: 12 };
+  const repeatCount = expectations.fixture.repeatCountPerAxis;
+  const repeatTrackSizes = Array(repeatCount).fill(expectations.fixture.fixedTrackUsedSizeCssPx);
+  const percentAt110 = 110 * 0.25;
+  const percentAt132 = 132 * 0.25;
+  const calcAt110 = 5 + 110 * 0.1;
+  const calcAt132 = 5 + 132 * 0.1;
+  const specs = {
+    'typed-fixed-cycle': {
+      Columns: { leading: fixedCycle.leadingTrackSizesCssPxLeftToRight, trailing: [] },
+      Rows: { leading: fixedCycle.leadingTrackSizesCssPxLeftToRight, trailing: [] },
+    },
+    'typed-fixed-cycle-three-leading-trailing': {
+      Columns: {
+        leading: fixedThree.leadingTrackSizesCssPxLeftToRight,
+        trailing: fixedThree.trailingTrackSizesCssPxLeftToRight,
+      },
+      Rows: {
+        leading: fixedThree.leadingTrackSizesCssPxLeftToRight,
+        trailing: fixedThree.trailingTrackSizesCssPxLeftToRight,
+      },
+    },
+    'typed-mixed-cycle': {
+      Columns: {
+        leading: mixedCycle.leadingTrackSizesCssPxLeftToRight.columns,
+        trailing: mixedCycle.trailingTrackSizesCssPxLeftToRight.columns,
+      },
+      Rows: {
+        leading: mixedCycle.leadingTrackSizesCssPxLeftToRight.rows,
+        trailing: mixedCycle.trailingTrackSizesCssPxLeftToRight.rows,
+      },
+    },
+    'typed-auto': {
+      Columns: { leading: [ahem.minContentInline, 0], trailing: [] },
+      Rows: { leading: [ahem.minContentBlock, 0], trailing: [] },
+    },
+    'typed-min-content': {
+      Columns: { leading: [ahem.minContentInline, 0], trailing: [] },
+      Rows: { leading: [ahem.minContentBlock, 0], trailing: [] },
+    },
+    'typed-max-content': {
+      Columns: { leading: [ahem.maxContentInline, 0], trailing: [] },
+      Rows: { leading: [ahem.maxContentBlock, 0], trailing: [] },
+    },
+    'typed-minmax-max-content': {
+      Columns: { leading: expectedByID.get('minmax-max-content').expectedTrackSizesCssPx, trailing: [] },
+      Rows: { leading: expectedByID.get('minmax-max-content').expectedTrackSizesCssPx, trailing: [] },
+    },
+    'typed-fit-content': {
+      Columns: {
+        leading: [Math.max(ahem.minContentInline, Math.min(24, ahem.maxContentInline)), 0],
+        trailing: [],
+      },
+      Rows: {
+        leading: [Math.max(ahem.minContentBlock, Math.min(24, ahem.maxContentBlock)), 0],
+        trailing: [],
+      },
+    },
+    'typed-fraction': {
+      Columns: { leading: expectedByID.get('fraction').expectedTrackSizesCssPx, trailing: [] },
+      Rows: { leading: expectedByID.get('fraction').expectedTrackSizesCssPx, trailing: [] },
+    },
+    'typed-percentage': {
+      Columns: { leading: expectedByID.get('percentage').expectedTrackSizesCssPx, trailing: [] },
+      Rows: { leading: expectedByID.get('percentage').expectedTrackSizesCssPx, trailing: [] },
+    },
+    'typed-calc': {
+      Columns: { leading: expectedByID.get('calc').expectedTrackSizesCssPx, trailing: [] },
+      Rows: { leading: expectedByID.get('calc').expectedTrackSizesCssPx, trailing: [] },
+    },
+    'typed-auto-fit-occupied': {
+      Columns: {
+        leading: [ahem.minContentInline, percentAt110],
+        trailing: mixedCycle.trailingTrackSizesCssPxLeftToRight.columns,
+      },
+      Rows: {
+        leading: [ahem.minContentBlock, calcAt110],
+        trailing: mixedCycle.trailingTrackSizesCssPxLeftToRight.rows,
+      },
+    },
+    'typed-auto-fit-empty': {
+      Columns: { leading: autoFitEmpty.expectedLeadingTrackSizesCssPx, trailing: [] },
+      Rows: { leading: autoFitEmpty.expectedLeadingTrackSizesCssPx, trailing: [] },
+    },
+    'typed-auto-fit-gutter': {
+      Columns: { leading: [ahem.minContentInline, percentAt132], trailing: [0, percentAt132, 0] },
+      Rows: { leading: [ahem.minContentBlock, calcAt132], trailing: [0, calcAt132, 0] },
+    },
+  };
+  const exactChromeFrames = new Set([
+    'typed-fixed-cycle', 'typed-fixed-cycle-three-leading-trailing', 'typed-mixed-cycle',
+    'typed-minmax-max-content', 'typed-fraction', 'typed-percentage', 'typed-calc',
+    'typed-auto-fit-empty',
+  ]);
+  const fontSensitiveChromeGeometry = new Set([
+    'typed-auto-fit-occupied', 'typed-auto-fit-gutter',
+  ]);
+  const chromeFontSensitiveTrackIndices = {
+    'typed-auto': { Columns: [0], Rows: [0] },
+    'typed-min-content': { Columns: [0], Rows: [0] },
+    'typed-max-content': { Columns: [0], Rows: [0] },
+    'typed-fit-content': { Columns: [0], Rows: [0] },
+    'typed-auto-fit-occupied': { Columns: [0], Rows: [0] },
+    'typed-auto-fit-gutter': { Columns: [0], Rows: [0] },
+  };
+  const close = (actual, expected, label) => assert.ok(
+    Math.abs(actual - expected) <= 1 / 64,
+    `${label}: Chrome=${actual}, 규범/Ahem 기대=${expected}`,
+  );
+  const parseLinePair = (value, label) => {
+    const match = value?.match(/^\s*(-?\d+)\s*\/\s*(-?\d+)\s*$/);
+    assert.ok(match, `${label}: numeric line placement가 없습니다.`);
+    return [Number(match[1]), Number(match[2])];
+  };
+  const leadingCountFor = (items, key) => Math.max(0, ...items.flatMap((item) =>
+    parseLinePair(item[key], key).filter((line) => line < 0).map((line) => -line - 6)));
+  const trailingCountFor = (items, key) => Math.max(0, ...items.flatMap((item) =>
+    parseLinePair(item[key], key).filter((line) => line > 6).map((line) => line - 6)));
+  const boundaryFor = (line, leading) => leading + (line > 0 ? line - 1 : 6 + line);
+
+  return fixtures.map((fixture) => {
+    const expectedID = expectationID.get(fixture.id) ?? fixture.id.slice('typed-'.length);
+    const expectation = expectedByID.get(expectedID);
+    const observation = observationByID.get(expectedID);
+    const mode = fixture.columns.includes('auto-fit') ? 'auto-fit' : 'auto-fill';
+    const cssLines = { Columns: 'c', Rows: 'r' };
+    const gaps = { Columns: Number.parseFloat(fixture.columnGap), Rows: Number.parseFloat(fixture.rowGap) };
+    const axes = {};
+    const itemFrames = fixture.items.map(() => ({ x: 0, y: 0, width: 0, height: 0 }));
+    let nextItemNodeId = 2;
+    const itemNodeIds = fixture.items.map((item) => {
+      const nodeId = nextItemNodeId;
+      nextItemNodeId += 1 + (item.text ? 1 : 0);
+      return nodeId;
+    });
+
+    for (const axis of ['Columns', 'Rows']) {
+      const key = cssLines[axis];
+      const leading = leadingCountFor(fixture.items, key);
+      const trailing = trailingCountFor(fixture.items, key);
+      const spec = specs[fixture.id][axis];
+      assert.equal(spec.leading.length, leading, `${fixture.id} ${axis}: leading cycle 길이가 다릅니다.`);
+      assert.equal(spec.trailing.length, trailing, `${fixture.id} ${axis}: trailing cycle 길이가 다릅니다.`);
+      let tracks = [...spec.leading, ...repeatTrackSizes, ...spec.trailing];
+      const collapsed = tracks.map(() => false);
+      if (mode === 'auto-fit') {
+        const repeatedStart = leading;
+        const repeatedEnd = repeatedStart + repeatCount;
+        const occupied = new Set();
+        for (const item of fixture.items) {
+          const [first, second] = parseLinePair(item[key], `${fixture.id} ${axis}`);
+          const start = Math.min(boundaryFor(first, leading), boundaryFor(second, leading));
+          const end = Math.max(boundaryFor(first, leading), boundaryFor(second, leading));
+          for (let index = Math.max(start, repeatedStart); index < Math.min(end, repeatedEnd); index += 1) {
+            occupied.add(index);
+          }
+        }
+        for (let index = repeatedStart; index < repeatedEnd; index += 1) {
+          if (!occupied.has(index)) {
+            collapsed[index] = true;
+            tracks[index] = 0;
+          }
+        }
+      }
+      axes[axis] = { tracks, collapsed };
+
+      for (const [itemIndex, item] of fixture.items.entries()) {
+        const [first, second] = parseLinePair(item[key], `${fixture.id} ${axis}`);
+        const start = Math.min(boundaryFor(first, leading), boundaryFor(second, leading));
+        const end = Math.max(boundaryFor(first, leading), boundaryFor(second, leading));
+        assert.ok(start >= 0 && end <= tracks.length,
+          `${fixture.id} ${axis}: placement가 사용 track 범위를 벗어납니다.`);
+        let offset = 0;
+        for (let index = 0; index < start; index += 1) {
+          offset += tracks[index];
+          if (index + 1 < tracks.length) {
+            offset += gaps[axis] * (!collapsed[index] && !collapsed[index + 1] ? 1 : 0);
+          }
+        }
+        let extent = 0;
+        for (let index = start; index < end; index += 1) {
+          extent += tracks[index];
+          if (index + 1 < end) {
+            extent += gaps[axis] * (!collapsed[index] && !collapsed[index + 1] ? 1 : 0);
+          }
+        }
+        itemFrames[itemIndex][axis === 'Columns' ? 'x' : 'y'] = offset;
+        itemFrames[itemIndex][axis === 'Columns' ? 'width' : 'height'] = extent;
+      }
+
+      const computed = observation[axis === 'Columns' ? 'computedColumns' : 'computedRows'];
+      const chromeTracks = [...computed.matchAll(/(-?\d+(?:\.\d+)?)px/g)]
+        .map((match) => Number(match[1]));
+      assert.equal(chromeTracks.length, tracks.length,
+        `${fixture.id} ${axis}: Chrome과 규범 기대의 expanded track 수가 다릅니다.`);
+      const fontSensitive = new Set(chromeFontSensitiveTrackIndices[fixture.id]?.[axis] ?? []);
+      tracks.forEach((size, index) => {
+        if (!fontSensitive.has(index)) close(chromeTracks[index], size,
+          `${fixture.id} ${axis} track ${index + 1}`);
+      });
+      assert.deepEqual(collapsed, chromeTracks.map((size, index) => mode === 'auto-fit'
+        && index >= leading && index < leading + repeatCount && size === 0),
+      `${fixture.id} ${axis}: auto-fit collapse 상태가 Chrome 관찰과 다릅니다.`);
+    }
+
+    const rootWidth = Number.parseFloat(fixture.width);
+    const rootHeight = Number.parseFloat(fixture.height);
+    const rootFrame = `width=${rootWidth},height=${rootHeight}`;
+    const nodeFrames = `node_frames_css_px=[0:node=1,x=0,y=0,${rootFrame};`
+      + itemFrames.map((frame, index) => `${index + 1}:node=${itemNodeIds[index]},x=${frame.x},y=${frame.y},`
+        + `width=${frame.width},height=${frame.height}`).join(';') + ']';
+    const boxCount = itemFrames.filter((frame) => frame.width > 0 && frame.height > 0).length + 1;
+    const placedIndex = fixture.items.findIndex((item) =>
+      parseLinePair(item.c, `${fixture.id} placed item`).some((line) => line < 0)
+        && parseLinePair(item.r, `${fixture.id} placed item`).some((line) => line < 0));
+    assert.ok(placedIndex >= 0, `${fixture.id}: negative-line placed item이 없습니다.`);
+    const placedFrame = itemFrames[placedIndex];
+
+    if (exactChromeFrames.has(fixture.id)
+        || fixture.id === 'typed-auto-fit-occupied' || fixture.id === 'typed-auto-fit-gutter') {
+      close(observation.item.x - observation.grid.x, placedFrame.x,
+        `${fixture.id}: Chrome item x`);
+      close(observation.item.y - observation.grid.y, placedFrame.y,
+        `${fixture.id}: Chrome item y`);
+      if (exactChromeFrames.has(fixture.id)) {
+        close(observation.item.width, placedFrame.width, `${fixture.id}: Chrome item width`);
+        close(observation.item.height, placedFrame.height, `${fixture.id}: Chrome item height`);
+      }
+      if (fixture.items.length > 1 && observation.control) {
+        const controlIndex = fixture.items.findIndex((item) => item.c === '1 / 2' && item.r === '1 / 2');
+        if (controlIndex >= 0) {
+          const control = itemFrames[controlIndex];
+          if (!fontSensitiveChromeGeometry.has(fixture.id)) {
+            close(observation.control.x - observation.grid.x, control.x,
+              `${fixture.id}: Chrome control x`);
+            close(observation.control.y - observation.grid.y, control.y,
+              `${fixture.id}: Chrome control y`);
+          }
+          close(observation.control.width, control.width, `${fixture.id}: Chrome control width`);
+          close(observation.control.height, control.height, `${fixture.id}: Chrome control height`);
+        }
+      }
+      if (fixture.items.length > 1 && observation.trailing) {
+        const trailingIndex = fixture.items.findIndex((item) => item.c === '8 / 9' && item.r === '8 / 9');
+        if (trailingIndex >= 0) {
+          const trailingFrame = itemFrames[trailingIndex];
+          if (!fontSensitiveChromeGeometry.has(fixture.id)) {
+            close(observation.trailing.x - observation.grid.x, trailingFrame.x,
+              `${fixture.id}: Chrome trailing x`);
+            close(observation.trailing.y - observation.grid.y, trailingFrame.y,
+              `${fixture.id}: Chrome trailing y`);
+          }
+          close(observation.trailing.width, trailingFrame.width,
+            `${fixture.id}: Chrome trailing width`);
+          close(observation.trailing.height, trailingFrame.height,
+            `${fixture.id}: Chrome trailing height`);
+        }
+      }
+    }
+
+    const intrinsicItemIndex = fixture.items.findIndex(({ text }) => Boolean(text));
+    const intrinsicInputs = intrinsicItemIndex < 0 ? undefined : [{
+      grid: 1,
+      node: intrinsicItemIndex + 2,
+      sourceOrder: intrinsicItemIndex,
+      kind: 'text',
+      fontRegistryRevision: 1,
+      ...ahem,
+    }].map(({ grid, node, sourceOrder, kind, fontRegistryRevision }) => ({
+      grid, node, sourceOrder, kind, fontRegistryRevision,
+      minContent: ahem.minContentInline,
+      minContentHeight: ahem.minContentBlock,
+      maxContent: ahem.maxContentInline,
+      maxContentHeight: ahem.maxContentBlock,
+    }));
+    const expectedRepeatCount = mode === 'auto-fit'
+      ? expectations.fixture.autoFitRepeatCountBeforeCollapsePerAxis : repeatCount;
+    assert.equal(expectedRepeatCount, repeatCount,
+      `${fixture.id}: 독립 repeat count 기대와 고정 fixture가 다릅니다.`);
+
+    return {
+      id: fixture.id,
+      boxCount,
+      rootFrame,
+      itemFrame: null,
+      nodeFrames,
+      axes,
+      gaps,
+      ...(intrinsicInputs ? { intrinsicInputs } : {}),
+    };
   });
 }
 
@@ -931,10 +1300,26 @@ function verifyRuntimeLog(log, scene, runID) {
   assert.ok(log.includes(summary), `${scene.id}: runtime summary가 없습니다.`);
   assert.ok(log.includes(`layout=ready boxes=${scene.boxCount}`),
     `${scene.id}: visible box 수가 예상과 다릅니다.`);
+  const expectedNodeFramesMatch = parseNodeFrames(scene.nodeFrames, scene.id);
+  const actualNodeFrames = log.split(/\r?\n/).flatMap((line) => {
+    const marker = 'SPINON_C114_GRID_NODE_FRAME ';
+    const markerOffset = line.indexOf(marker);
+    return markerOffset < 0 ? [] : [line.slice(markerOffset + marker.length)];
+  }).map((frame) => parseNodeFrame(frame, scene.id));
+  assert.equal(actualNodeFrames.length, expectedNodeFramesMatch.length,
+    `${scene.id}: 전체 node frame 개수가 다릅니다.`);
+  for (const [index, expected] of expectedNodeFramesMatch.entries()) {
+    const actual = actualNodeFrames[index];
+    assert.equal(actual.order, expected.order, `${scene.id}: node frame ${index} 순서가 다릅니다.`);
+    assert.equal(actual.node, expected.node, `${scene.id}: node frame ${index} ID가 다릅니다.`);
+    for (const property of ['x', 'y', 'width', 'height']) {
+      assert.ok(Math.abs(actual[property] - expected[property]) <= 1 / 64,
+        `${scene.id}: node ${actual.node} ${property} 예상 ${expected[property]}, 실제 ${actual[property]}`);
+    }
+  }
   assert.ok(log.includes(scene.rootFrame)
     && (scene.itemFrame === null || log.includes(scene.itemFrame)),
     `${scene.id}: root/item frame이 예상과 다릅니다.`);
-  assert.ok(log.includes(scene.nodeFrames), `${scene.id}: 전체 node frame이 예상과 다릅니다.`);
   assert.ok(log.includes('SPINON_C114_GRID_TRACE_CHUNK'), `${scene.id}: track-sizing trace가 없습니다.`);
   assert.ok(log.includes('SPINON_C0410_DRAW')
     && log.includes(`presented boxes=${scene.boxCount}`),
@@ -1029,6 +1414,25 @@ function verifyRuntimeLog(log, scene, runID) {
   };
 }
 
+function parseNodeFrames(value, sceneID) {
+  const match = value.match(/node_frames_css_px=\[([^\]]+)\]/);
+  assert.ok(match, `${sceneID}: 독립 node frame 기대값이 없습니다.`);
+  return match[1].split(';').map((frame) => parseNodeFrame(frame, sceneID));
+}
+
+function parseNodeFrame(value, sceneID) {
+  const match = value.match(/^(\d+):node=(\d+),x=(-?\d+(?:\.\d+)?),y=(-?\d+(?:\.\d+)?),width=(\d+(?:\.\d+)?),height=(\d+(?:\.\d+)?)$/);
+  assert.ok(match, `${sceneID}: node frame을 읽을 수 없습니다: ${value}`);
+  return {
+    order: Number(match[1]),
+    node: Number(match[2]),
+    x: Number(match[3]),
+    y: Number(match[4]),
+    width: Number(match[5]),
+    height: Number(match[6]),
+  };
+}
+
 function pixelCaptureArguments(scene, runID, platform) {
   if (!scene.pixelSamples) return [];
   const json = JSON.stringify(scene.pixelSamples);
@@ -1064,7 +1468,7 @@ if (target === 'ios-simulator') {
   assert.equal(simulator[0].name, 'iPhone 17 Pro');
   await saveLog('install.log', command('xcrun', ['simctl', 'install', simulatorUDID, appPath]));
   const appSha256 = sha256(await readFile(resolve(appPath, 'SpinonBootstrap')));
-  for (const [index, scene] of scenes.entries()) {
+  for (const [index, scene] of runScenes.entries()) {
     let runID = `${runPrefix}-${index}`;
     let log = '';
     let supersededAttempts = 0;
@@ -1089,7 +1493,7 @@ if (target === 'ios-simulator') {
     const observation = verifyRuntimeLog(log, scene, runID);
     observation.supersededRetries = supersededAttempts;
     observations.push(observation);
-    console.log(`${target} C11.4 scene ${index + 1}/${scenes.length}: ${scene.id} passed`);
+    console.log(`${target} C11.4 scene ${index + 1}/${runScenes.length}: ${scene.id} passed`);
     await saveLog(`screenshot-${scene.id}.log`, command('xcrun', ['simctl', 'io', simulatorUDID,
       'screenshot', resolve(evidenceDirectory, `${scene.id}.png`)]));
   }
@@ -1101,7 +1505,7 @@ if (target === 'ios-simulator') {
   await writeFile(resolve(evidenceDirectory, 'simulator.json'), `${JSON.stringify(metadata, null, 2)}\n`);
   const apkBytes = await readFile(apkPath);
   await saveLog('install.log', adb(['install', '-r', apkPath]));
-  for (const [index, scene] of scenes.entries()) {
+  for (const [index, scene] of runScenes.entries()) {
     let runID = `${runPrefix}-${index}`;
     let log = '';
     let supersededAttempts = 0;
@@ -1145,7 +1549,7 @@ if (target === 'ios-simulator') {
     const observation = verifyRuntimeLog(log, scene, runID);
     observation.supersededRetries = supersededAttempts;
     observations.push(observation);
-    console.log(`${target} C11.4 scene ${index + 1}/${scenes.length}: ${scene.id} passed`);
+    console.log(`${target} C11.4 scene ${index + 1}/${runScenes.length}: ${scene.id} passed`);
     const screenshot = adb(['exec-out', 'screencap', '-p'], { encoding: null }).stdout;
     await writeFile(resolve(evidenceDirectory, `${scene.id}.png`), screenshot);
   }
@@ -1155,6 +1559,6 @@ if (target === 'ios-simulator') {
 }
 
 await writeFile(resolve(evidenceDirectory, 'result.json'), `${JSON.stringify({
-  schemaVersion: 1, target, runPrefix, sceneCount: scenes.length, observations,
+  schemaVersion: 1, target, runPrefix, sceneCount: runScenes.length, observations,
 }, null, 2)}\n`);
 console.log(JSON.stringify({ evidenceDirectory, target, observations }, null, 2));

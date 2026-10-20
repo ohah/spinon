@@ -4,6 +4,38 @@ These simulator captures exercise negative and positive implicit Grid tracks,
 track-list cycling, intrinsic track contributions, auto placement, auto-repeat
 boundaries, auto-fit collapsing, root overflow, and the rendered sample matrix.
 
+## 2026-10-20 typed implicit track follow-up: 138 scenes per platform
+
+The 14 typed auto-track scenes extend the previously recorded 124-scene matrix.
+The current Android API 37 ARM64 AVD and iPhone 17 Pro/iOS 26.2 Simulator runs
+passed every scene, emitted a complete track-sizing trace and presented draw for
+each scene, and saved one screenshot per scene.
+
+| Platform | Run | Device | Scenes | Trace chunks | Draw/present | Surface samples |
+| --- | --- | --- | ---: | ---: | --- | --- |
+| Android | [`android-avd-c114-negative-implicit-android-avd-20261020T125416760Z-ef57f92f`](https://github.com/ohah/spinon/tree/main/spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/android-avd-c114-negative-implicit-android-avd-20261020T125416760Z-ef57f92f) | API 37 ARM64 AVD, `sdk_gphone16k_arm64` | 138 | 867 | 138/138 | 5 scenes, 24/24 exact |
+| iOS | [`ios-simulator-c114-negative-implicit-ios-simulator-20261020T130111829Z-d5866712`](https://github.com/ohah/spinon/tree/main/spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/ios-simulator-c114-negative-implicit-ios-simulator-20261020T130111829Z-d5866712) | iPhone 17 Pro, iOS 26.2 | 138 | 1,659 | 138/138 | 5 scenes, 24/24 exact |
+
+The shared scene IDs, 960 frame scalars, 1,019 used-track sizes, and auto-fit
+collapse states were compared across platforms. Frame and track size maximum
+difference was 0 CSS px. Four overflow scenes used five samples each; the
+existing `auto-fill-overflow-neighbors` case used four. Full details are in
+[`cross-platform-comparison-20261020.json`](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/cross-platform-comparison-20261020.json).
+The Android manifest records APK SHA-256
+`40fcb1ddcde64c14bb9ef550cf4d81438a85beed5349fa14565b891c2ece0605`; the iOS
+app SHA-256 is `90fe143b34984efdce4f6390726491a7537cc8ed71f3802e45cac1bf27765395`.
+The typed implicit track sizing change has a separate [20-perspective
+implementation review](./auto-repeat-typed-implementation-review-20.md).
+Trailing horizontal whitespace was removed from `.log` files in these two run
+directories; recorded values and log content are unchanged.
+
+The captured surface cases are `auto-fill-overflow-neighbors` (4/4),
+`columns-fill-negative-positive-cycle` (5/5),
+`columns-negative-fixed-root-overflow` (5/5),
+`implicit-min-content-overflow-border` (5/5), and
+`rows-negative-fixed-root-overflow` (5/5). The edge sample reads the root
+background; it does not measure CSS border stroke.
+
 ## C11.4 auto-repeat and negative-line implementation matrix
 
 The 124-scene combined matrix preserves the previous 106 runtime cases and adds
@@ -13,8 +45,8 @@ per scene.
 
 | Platform | Run | Device | Scenes | Trace chunks | Draw/present | Overflow surface samples |
 | --- | --- | --- | ---: | ---: | --- | --- |
-| Android | [`android-avd-c114-negative-implicit-android-avd-20261020T095145525Z-5509ee32`](android-avd-c114-negative-implicit-android-avd-20261020T095145525Z-5509ee32/) | API 37 ARM64, `sdk_gphone16k_arm64` | 124 | 676 | 124/124 | 3 scenes, 5/5 each |
-| iOS | [`ios-simulator-c114-negative-implicit-ios-simulator-20261020T095512614Z-dbf401be`](ios-simulator-c114-negative-implicit-ios-simulator-20261020T095512614Z-dbf401be/) | iPhone 17 Pro, iOS 26.2 | 124 | 1,284 | 124/124 | 3 scenes, 5/5 each |
+| Android | [`android-avd-c114-negative-implicit-android-avd-20261020T095145525Z-5509ee32`](https://github.com/ohah/spinon/tree/main/spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/android-avd-c114-negative-implicit-android-avd-20261020T095145525Z-5509ee32) | API 37 ARM64, `sdk_gphone16k_arm64` | 124 | 676 | 124/124 | 3 scenes, 5/5 each |
+| iOS | [`ios-simulator-c114-negative-implicit-ios-simulator-20261020T095512614Z-dbf401be`](https://github.com/ohah/spinon/tree/main/spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/ios-simulator-c114-negative-implicit-ios-simulator-20261020T095512614Z-dbf401be) | iPhone 17 Pro, iOS 26.2 | 124 | 1,284 | 124/124 | 3 scenes, 5/5 each |
 
 Both runs needed no superseded host retries. The two fixed-root negative-track
 overflow scenes and `columns-fill-negative-positive-cycle` each record exact
@@ -28,8 +60,8 @@ GPU fixture flags so the Metal readback route is present.
 
 | Platform | Run | Device | Scenes | Trace chunks | Draw/present | Pixel sample matrix |
 | --- | --- | --- | ---: | ---: | --- | --- |
-| Android | [`android-avd-c114-negative-implicit-android-avd-20261020T071538016Z-47d39cb4`](android-avd-c114-negative-implicit-android-avd-20261020T071538016Z-47d39cb4/) | API 37, `sdk_gphone16k_arm64` | 106 | 544 | 106/106 | matched |
-| iOS | [`ios-simulator-c114-negative-implicit-ios-simulator-20261020T071834448Z-c69e61d9`](ios-simulator-c114-negative-implicit-ios-simulator-20261020T071834448Z-c69e61d9/) | iPhone 17 Pro, iOS 26.2 | 106 | 1,033 | 106/106 | matched |
+| Android | [`android-avd-c114-negative-implicit-android-avd-20261020T071538016Z-47d39cb4`](https://github.com/ohah/spinon/tree/main/spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/android-avd-c114-negative-implicit-android-avd-20261020T071538016Z-47d39cb4) | API 37, `sdk_gphone16k_arm64` | 106 | 544 | 106/106 | matched |
+| iOS | [`ios-simulator-c114-negative-implicit-ios-simulator-20261020T071834448Z-c69e61d9`](https://github.com/ohah/spinon/tree/main/spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/ios-simulator-c114-negative-implicit-ios-simulator-20261020T071834448Z-c69e61d9) | iPhone 17 Pro, iOS 26.2 | 106 | 1,033 | 106/106 | matched |
 
 Each run directory contains `simulator.json`, `result.json`, per-scene runtime
 logs, and screenshots. `result.json` records every scene's layout summary,
@@ -48,7 +80,21 @@ The simulator manifests record the built artifacts:
 The Android run used emulator serial `emulator-5554`. The iOS run used
 Simulator UDID `ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D`.
 
-## Local checks
+## Typed implicit follow-up local checks
+
+- `mise exec -- cargo fmt --all -- --check` — passed.
+- `mise exec -- cargo test --locked --workspace --quiet` — 1,182 passed, 0 failed, 4 ignored.
+- `mise exec -- cargo test --locked -p spinon-runtime --features c11-4-grid-track-sizing-fixture-test` — 209 passed, 0 failed, 3 ignored (190 unit tests and 19 integration tests passed).
+- `mise exec -- cargo clippy --locked --workspace --all-targets -- -D warnings` — passed.
+- `mise exec -- node --test tools/css-reference/fixture-module-boundary.test.mjs` — 6 passed.
+- `mise exec -- node --check tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs` — passed.
+- Default `spinon-ffi` static library did not contain either C11.4 fixture FFI symbol; building with `c04-runtime-gpu-fixture-test` included both symbols.
+- Android build passed with `SPINON_ENABLE_C04_RUNTIME_GPU=1` and `SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1`.
+- iOS Simulator build passed with those flags plus `SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=1`.
+- `git diff --check` — passed.
+- `mise exec -- bun run docs:build` — failed because the repository has hundreds of existing dead-link groups across evidence pages. The new plan and JSON references use GitHub links; the added sections introduce no new dead-link report. Full output is in the ignored build log `build/c114-typed-implicit-docs-build-rerun-20261020.log`.
+
+## Previous 124-scene run local checks
 
 - `mise exec -- cargo fmt --all -- --check` — passed.
 - `mise exec -- cargo test --locked --workspace` — 1,178 passed, 0 failed, 4 ignored across 26 targets.
@@ -62,25 +108,31 @@ Simulator UDID `ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D`.
 
 ## Representative runtime screens
 
-![Android auto-fill negative and positive implicit tracks outside the root](android-avd-c114-negative-implicit-android-avd-20261020T095145525Z-5509ee32/columns-fill-negative-positive-cycle.png)
+![Android auto-fill negative and positive implicit tracks outside the root](android-avd-c114-negative-implicit-android-avd-20261020T125416760Z-ef57f92f/columns-fill-negative-positive-cycle.png)
 
-![iOS auto-fill negative and positive implicit tracks outside the root](ios-simulator-c114-negative-implicit-ios-simulator-20261020T095512614Z-dbf401be/columns-fill-negative-positive-cycle.png)
+![iOS auto-fill negative and positive implicit tracks outside the root](ios-simulator-c114-negative-implicit-ios-simulator-20261020T130111829Z-d5866712/columns-fill-negative-positive-cycle.png)
+
+![iOS typed intrinsic track and text sample](ios-simulator-c114-negative-implicit-ios-simulator-20261020T130111829Z-d5866712/typed-auto.png)
 
 ## Evidence limits
 
-The two fixed-root overflow scenes assert layout frames and sample the root
-interior background, root-edge background, overflow item, and overflow tail.
-These five samples per scene matched exactly on Android PixelCopy and the iOS
-Simulator Metal drawable. The edge sample reads the root background; CSS border
-stroke is not implemented on this path and is not tested. The Android AVD uses
-software rendering, and the iOS samples precede OS compositor submission. These
-captures do not establish physical-device, hardware GPU, compositor, or full
-CSS Grid conformance.
+The current 138-scene run samples five overflow cases: four cases have five
+samples each and `auto-fill-overflow-neighbors` has four. All 24 samples matched
+exactly on both platforms. The root-edge sample reads the root background; CSS
+border stroke is not implemented on this path and is not tested. The Android
+AVD uses software rendering, and iOS Metal values precede OS compositor
+submission. These captures do not establish physical-device, hardware GPU,
+compositor-after pixel, or full CSS Grid conformance.
+
+The earlier 124-scene run sampled three overflow cases with five samples each.
+Those records remain in the older run directories and are summarized above.
 
 The earlier negative-track review is in
 [implementation-review-20.md](./implementation-review-20.md). The current
 auto-repeat delta has a separate
 [20-perspective implementation review](./auto-repeat-implementation-review-20.md).
+The typed implicit sizing follow-up has its own
+[20-perspective implementation review](./auto-repeat-typed-implementation-review-20.md).
 The prior 106-scene PR review is in [pr-diff-review-30.md](./pr-diff-review-30.md);
 the current implementation PR diff has its own
 [30-perspective review](./implementation-pr-diff-review-30.md).

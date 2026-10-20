@@ -198,7 +198,7 @@ fn c114_image_grid_snapshot(
     source: &str,
 ) -> (Arc<HostDocumentSnapshot>, HostNodeHandle, HostNodeHandle) {
     const HTML: &str = "http://www.w3.org/1999/xhtml";
-    const ROOT_STYLE: &str = "box-sizing:border-box;display:grid;width:100px;height:40px;margin:0;padding:0;border:0;gap:0;align-content:start;justify-content:start;grid-template-columns:auto;grid-template-rows:auto;background-color:#101820";
+    const ROOT_STYLE: &str = "box-sizing:border-box;display:grid;width:100px;height:40px;margin:0;padding:0;border:0;gap:0;align-items:start;align-content:start;justify-content:start;grid-template-columns:auto;grid-template-rows:auto;background-color:#101820";
     const ITEM_STYLE: &str = "box-sizing:border-box;display:block;width:auto;height:auto;margin:0;padding:0;border:0;background-color:#e5484d";
 
     let mut document = HostDocument::new().unwrap();

@@ -1,6 +1,6 @@
 const SCENES_JSON: &str = include_str!("auto_repeat_negative_line_scenes.json");
 
-const SCENE_IDS: [&str; 18] = [
+const SCENE_IDS: [&str; 32] = [
     "columns-fill-one-leading",
     "columns-fill-two-repetitions",
     "columns-fill-four-repetitions",
@@ -19,6 +19,20 @@ const SCENE_IDS: [&str; 18] = [
     "rows-fill-two-leading-cycle",
     "both-axes-fit-negative-leading",
     "both-axes-fill-independent-cycles",
+    "typed-fixed-cycle",
+    "typed-fixed-cycle-three-leading-trailing",
+    "typed-mixed-cycle",
+    "typed-auto",
+    "typed-min-content",
+    "typed-max-content",
+    "typed-minmax-max-content",
+    "typed-fit-content",
+    "typed-fraction",
+    "typed-percentage",
+    "typed-calc",
+    "typed-auto-fit-occupied",
+    "typed-auto-fit-empty",
+    "typed-auto-fit-gutter",
 ];
 
 pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
@@ -53,12 +67,25 @@ for (const [index, placement] of scene.items.entries()) {{
   item.setAttribute('style', [
     'box-sizing:border-box', 'display:block', 'width:auto', 'height:auto',
     'min-width:0', 'min-height:0', 'margin:0', 'padding:0', 'border:0',
+    ...(placement.text ? [
+      'font-family:Ahem', 'font-size:12px', 'font-weight:400', 'font-style:normal',
+      'line-height:12px', 'white-space-collapse:collapse', 'text-wrap-mode:wrap',
+      'word-break:normal', 'direction:ltr', 'line-break:auto', 'text-align:start',
+      'overflow-wrap:normal', 'text-transform:none', 'letter-spacing:normal',
+      'word-spacing:0px', 'text-indent:0px',
+    ] : []),
+    placement.minAuto ? 'min-width:auto' : '',
+    placement.minAuto ? 'min-height:auto' : '',
+    placement.minHeightZero ? 'min-height:0' : '',
     `background-color:${{itemColors[index % itemColors.length]}}`,
     placement.c ? `grid-column:${{placement.c}}` : '',
     placement.r ? `grid-row:${{placement.r}}` : '',
   ].filter(Boolean).join(';'));
+  if (placement.text) item.appendChild(document.createTextNode(placement.text));
   root.appendChild(item);
-  if (!firstVisibleItemRecorded) {{
+  if (scene.captureAllItems) {{
+    nodeIds.push(itemId);
+  }} else if (!firstVisibleItemRecorded) {{
     nodeIds.push(itemId);
     firstVisibleItemRecorded = true;
   }}
@@ -76,9 +103,9 @@ mod tests {
     use super::{SCENE_IDS, SCENES_JSON, runtime_source};
 
     #[test]
-    fn exposes_all_auto_repeat_negative_line_runtime_scenes() {
+    fn exposes_all_auto_repeat_negative_line_and_typed_track_runtime_scenes() {
         let unique_ids: BTreeSet<_> = SCENE_IDS.into_iter().collect();
-        assert_eq!(SCENE_IDS.len(), 18);
+        assert_eq!(SCENE_IDS.len(), 32);
         assert_eq!(unique_ids.len(), SCENE_IDS.len());
         for scene_id in SCENE_IDS {
             assert!(SCENES_JSON.contains(&format!("\"id\": \"{scene_id}\"")));

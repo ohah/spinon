@@ -78,8 +78,18 @@ pub(super) fn to_taffy_style(
         container.columns_auto_repeat.is_some() || container.rows_auto_repeat.is_some()
     }) {
         Some(container) => (
-            grid::to_taffy_grid_auto_tracks(node, "grid-auto-rows", &container.auto_rows)?,
-            grid::to_taffy_grid_auto_tracks(node, "grid-auto-columns", &container.auto_columns)?,
+            grid::to_taffy_grid_auto_tracks(
+                node,
+                "grid-auto-rows",
+                &container.auto_rows,
+                calc_handles,
+            )?,
+            grid::to_taffy_grid_auto_tracks(
+                node,
+                "grid-auto-columns",
+                &container.auto_columns,
+                calc_handles,
+            )?,
         ),
         None => (Vec::new(), Vec::new()),
     };

@@ -2,7 +2,7 @@
 
 **상위 원본:** [C11 상태 대장](../spec/STATUS.md#c11-css-grid) · [C11.4 전체 track sizing 계획](./c11-4-grid-track-sizing.md) · [CSS Grid Level 1 2025 CRD §7.5–§7.6, §8.3, §11.3–§11.8](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획과 Chrome 155 사전 비교만 완료했다. fixture는 14개의 auto-fill/auto-fit case를 사용한다. [구현 전 계획 실패 관점 20개](./c11-4-auto-repeat-typed-implicit-plan-review-20.md)와 [계획 PR diff 30개](./c11-4-auto-repeat-typed-implicit-pr-diff-review-30.md)를 별도로 검토한다. 이 계획 PR은 구현을 포함하지 않는다.
+**상태:** typed implicit track sizing 14개 fixture를 구현했고 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 124개를 합친 138개 장면을 각각 통과했다. 구현 전 계획은 [실패 관점 20개](./c11-4-auto-repeat-typed-implicit-plan-review-20.md)와 [계획 PR diff 30개](./c11-4-auto-repeat-typed-implicit-pr-diff-review-30.md)로 별도 검토했고, 구현 코드는 [새 실패 관점 20개](../spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/auto-repeat-typed-implementation-review-20.md)로 검토했다. 최종 PR diff 30개 검토와 PR 병합은 남아 있다. 이 제한 구현은 C11.4/C11 완료를 뜻하지 않는다.
 
 ## 목적
 
@@ -43,10 +43,18 @@ PR #385는 `RuntimeBlockFlexGridTrackSizingV1`에서 현재 제한 grammar의 au
 4. 기존 C11.4 124-scene 기준과 신규 14개 typed-list route를 합친 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator 각각 138-scene matrix를 실행한다. 각 ID의 input, revision, expanded track count, used track list, item/root frame, axis trace, draw/present 응답을 검증한다.
 5. overflow면 Android PixelCopy와 iOS Simulator Metal drawable에서 root 안·경계·바깥 item 위치를 고정해 표본 비교한다. 이 결과는 AVD software renderer 및 iOS compositor 전 readback으로 표시하며 physical device, hardware GPU 또는 compositor 이후 pixel 근거로 일반화하지 않는다.
 6. 변경 범위에 맞는 focused layout/style/runtime 테스트, `cargo fmt --all -- --check`, workspace tests, all-target Clippy, Android/iOS Simulator build gate와 fixture artifact negative/positive control을 실행한다. 이전 C11.2/C11.3 및 C11.4 profile matrix의 기존 실패는 변경 전 baseline과 분리해 보고한다.
-7. 구현 뒤 코드와 simulator 동작을 새 실패 관점 20개로 검토한다. 계획 표는 재사용하지 않는다. 최종 implementation PR diff는 저장소 규칙대로 30개의 별도 관점으로 검토하고 수정된 관점은 새 revision에서 재검증한다.
+7. 구현 뒤 코드와 simulator 동작은 계획 표를 재사용하지 않은 [새 실패 관점 20개](../spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/auto-repeat-typed-implementation-review-20.md)로 검토했다. 최종 implementation PR diff는 저장소 규칙대로 30개의 별도 관점으로 검토하고 수정된 관점은 새 revision에서 재검증한다.
 8. 계획 PR 병합 뒤 같은 `/Users/yoonhb/Documents/workspace/spinon` 체크아웃에서 `origin/main`으로 전환해 구현 branch를 만든다. 새 worktree는 만들지 않으며 미추적 simulator evidence를 보존한다. 구현 PR 본문에 Android/iOS Simulator 화면을 raw image link로 첨부할 수 있으면 첨부한다. 병합 직전 `gh pr checks --required` 및 merge state를 새로 확인한다. required checks가 없으면 없다고 기록하고 CI 통과로 쓰지 않는다. 승인된 작업 PR은 `Rebase and merge`한다.
 9. 실제 구현 범위와 남은 제한을 내부 계약 0059, `plan/c11-4-grid-track-sizing.md`, `spec/STATUS.md`에 기록한다. C11.4 및 C11 완료 체크·완료 수는 올리지 않는다. 최신 `main` 문서 산출물의 Tailnet preview sync는 별도 PR로 처리하고 served hash와 Agent Browser 렌더링을 검증한다.
 
 ## 범위 밖
 
 이 slice는 full CSS Grid track sizing, arbitrary `grid-auto-*`/repeat grammar, line names·template areas, indefinite/cyclic percentage, orthogonal writing mode, subgrid, nested/anonymous/out-of-flow item, 전체 WPT, physical devices, Android hardware GPU와 iOS compositor-after pixels를 완료하지 않는다. auto-repeat과 typed implicit sizing profile을 구현하더라도 C11.4, C11 또는 공개 CSS 지원 완료로 승격하지 않는다.
+
+## 2026-10-20 구현 결과
+
+- `RuntimeBlockFlexGridTrackSizingV1`의 auto-repeat 결합 `grid-auto-rows`·`grid-auto-columns` 목록에 기존 typed converter를 연결했다. percentage·fraction·`auto`·intrinsic sizing·`minmax()`·`fit-content()`·`calc()`와 양·음 implicit cycle을 유지하고, Calc ID는 기존 columns/rows math identity와 node에 묶어 검증한다. 다른 placement profile에는 허용 범위를 넓히지 않았다.
+- Chrome 155 사전 비교의 14개 typed case를 기존 124개 runtime case와 합쳤다. Android AVD와 iOS Simulator 각각 138/138 장면에서 node frame·expanded used tracks·collapse state·trace completeness·draw/present를 확인했다. 두 실행의 960개 frame scalar와 1,019개 track size가 모두 정확히 일치했다.
+- 두 플랫폼에서 overflow 5개 장면의 표면 표본도 맞았다. `auto-fill-overflow-neighbors`는 4/4, 나머지 네 장면은 각각 5/5 exact다. [실행 자료 및 화면](../spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/README.md).
+- `cargo test --locked --workspace --quiet` 1,182 passed·4 ignored, C11.4 runtime fixture package 209 passed·3 ignored, workspace all-target Clippy와 rustfmt, fixture-module-boundary 6/6, opt-in FFI artifact 경계를 확인했다. 상세 수치는 evidence README를 따른다.
+- 구현 실패 관점 20개 검토는 [실행 근거](../spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/auto-repeat-typed-implementation-review-20.md)에 기록했다. 이 implementation PR diff의 별도 30개 검토는 PR 변경사항이 고정된 뒤 기록한다. WPT, 실기기, hardware GPU, iOS compositor 이후 표면 픽셀, 전체 CSS Grid와 C11.4/C11은 범위 밖이다.

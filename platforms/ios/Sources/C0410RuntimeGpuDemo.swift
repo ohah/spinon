@@ -96,6 +96,11 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "rows-fill-three-repetitions", "rows-fill-five-repetitions",
     "rows-fit-one-leading-empty-repeat", "rows-fill-two-leading-cycle",
     "both-axes-fit-negative-leading", "both-axes-fill-independent-cycles",
+    "typed-fixed-cycle", "typed-fixed-cycle-three-leading-trailing",
+    "typed-mixed-cycle", "typed-auto", "typed-min-content", "typed-max-content",
+    "typed-minmax-max-content", "typed-fit-content", "typed-fraction",
+    "typed-percentage", "typed-calc", "typed-auto-fit-occupied",
+    "typed-auto-fit-empty", "typed-auto-fit-gutter",
 ]
 private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -107,6 +112,11 @@ private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "rows-fill-three-repetitions", "rows-fill-five-repetitions",
     "rows-fit-one-leading-empty-repeat", "rows-fill-two-leading-cycle",
     "both-axes-fit-negative-leading", "both-axes-fill-independent-cycles",
+    "typed-fixed-cycle", "typed-fixed-cycle-three-leading-trailing",
+    "typed-mixed-cycle", "typed-auto", "typed-min-content", "typed-max-content",
+    "typed-minmax-max-content", "typed-fit-content", "typed-fraction",
+    "typed-percentage", "typed-calc", "typed-auto-fit-occupied",
+    "typed-auto-fit-empty", "typed-auto-fit-gutter",
 ]
 
 private struct C114NegativeTrackExpectation {
@@ -337,6 +347,8 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
 
 private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
     let expected: (minContent: Int, minContentHeight: Int, maxContent: Int, maxContentHeight: Int)?
+    var expectedNode = 2
+    var expectedSourceOrder = 0
     switch sceneID {
     case "auto-text-max-content", "min-content-text-normal", "max-content-text-normal",
          "fit-content-text-minimum", "min-content-text-edge", "min-content-text-min-width",
@@ -346,6 +358,13 @@ private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) 
         expected = (10, 80, 80, 10)
     case "min-content-text-nowrap":
         expected = (100, 10, 100, 10)
+    case "typed-mixed-cycle", "typed-auto", "typed-min-content", "typed-max-content",
+         "typed-minmax-max-content", "typed-fit-content":
+        expected = (48, 36, 108, 12)
+    case "typed-auto-fit-occupied", "typed-auto-fit-gutter":
+        expected = (48, 36, 108, 12)
+        expectedNode = 3
+        expectedSourceOrder = 1
     default:
         expected = nil
     }
@@ -387,8 +406,8 @@ private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) 
           inputs.count == 1,
           let input = inputs.first,
           let grid = input["grid"] as? Int, grid == 1,
-          let node = input["node"] as? Int, node == 2,
-          let sourceOrder = input["sourceOrder"] as? Int, sourceOrder == 0,
+          let node = input["node"] as? Int, node == expectedNode,
+          let sourceOrder = input["sourceOrder"] as? Int, sourceOrder == expectedSourceOrder,
           let source = input["source"] as? [String: Any],
           let kind = source["kind"] as? String, kind == "text",
           let fontRegistryRevision = source["fontRegistryRevision"] as? Int,
@@ -768,6 +787,9 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if sceneID == "typed-fixed-cycle-three-leading-trailing" { return 4 }
+    if ["typed-mixed-cycle", "typed-auto-fit-occupied", "typed-auto-fit-gutter"]
+        .contains(sceneID) { return 3 }
     if sceneID == "columns-fit-negative-and-repeat-occupied"
         || sceneID == "columns-fill-negative-positive-cycle" { return 3 }
     if c114AutoRepeatNegativeLineSceneIDs.contains(sceneID) { return 2 }
@@ -3486,6 +3508,19 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         log("SPINON_C1133_GRID_PAINT_ORDER_RUN run_id=\(c1133GridTemplateAreasRunID) scene_id=\(c1133GridTemplateAreasSceneID) \(report[paintStart.lowerBound...paintEnd])")
     }
 
+    private func logC114GridNodeFrames(_ report: String) {
+        guard let marker = report.range(of: "node_frames_css_px=["),
+              let closing = report[marker.upperBound...].firstIndex(of: "]") else {
+            log("SPINON_C114_GRID_FRAME_SUMMARY run_id=\(c114GridTrackSizingRunID) marker=missing")
+            return
+        }
+        let frames = report[marker.upperBound..<closing].split(separator: ";")
+        for frame in frames {
+            log("SPINON_C114_GRID_NODE_FRAME \(frame)")
+        }
+        log("SPINON_C114_GRID_FRAME_SUMMARY run_id=\(c114GridTrackSizingRunID) count=\(frames.count) marker=present")
+    }
+
     private func logGridAutoPlacementReadySummaryIfNeeded(
         _ report: String,
         profile: String,
@@ -4697,6 +4732,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 return
             }
             log("SPINON_C114_GRID_SUMMARY run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) \(runtimeStatusSummary(report))")
+            logC114GridNodeFrames(report)
         } else if c1133GridTemplateAreasProbeRequested {
             log("SPINON_C1133_GRID_EVAL_RUN run_id=\(c1133GridTemplateAreasRunID) scene_id=\(c1133GridTemplateAreasSceneID) \(runtimeStatusSummary(result ?? "status=-1 missing-report"))")
             if let result, result.hasPrefix("status=0 ") {

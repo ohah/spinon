@@ -5,8 +5,8 @@ use crate::projection::typed_math::CssMathProjector;
 use spinon_core::NodeId;
 use spinon_layout::{GridTrackSize, LayoutError};
 use spinon_style::{
-    ComputedCssGridAutoFlow, ComputedCssGridAutoRows, ComputedCssGridLayout,
-    ComputedCssGridTrackSize, ComputedStyleProfile,
+    ComputedCssGridAutoFlow, ComputedCssGridAutoRepeat, ComputedCssGridAutoRepeatMode,
+    ComputedCssGridAutoRows, ComputedCssGridLayout, ComputedCssGridTrackSize, ComputedStyleProfile,
 };
 
 #[test]
@@ -19,10 +19,18 @@ fn track_sizing_projects_axis_specific_auto_track_lists_and_math() {
     let grid = ComputedCssGridLayout {
         columns: vec![ComputedCssGridTrackSize::LengthPx(24.0)],
         rows: vec![ComputedCssGridTrackSize::LengthPx(12.0)],
-        columns_auto_repeat: None,
-        rows_auto_repeat: None,
-        columns_line_names: vec![Vec::new(), Vec::new()],
-        rows_line_names: vec![Vec::new(), Vec::new()],
+        columns_auto_repeat: Some(ComputedCssGridAutoRepeat {
+            mode: ComputedCssGridAutoRepeatMode::AutoFill,
+            start: 0,
+            end: 1,
+        }),
+        rows_auto_repeat: Some(ComputedCssGridAutoRepeat {
+            mode: ComputedCssGridAutoRepeatMode::AutoFit,
+            start: 0,
+            end: 1,
+        }),
+        columns_line_names: Vec::new(),
+        rows_line_names: Vec::new(),
         template_areas: None,
         auto_flow: ComputedCssGridAutoFlow::Row,
         auto_rows: ComputedCssGridAutoRows::TrackList(vec![
@@ -42,6 +50,23 @@ fn track_sizing_projects_axis_specific_auto_track_lists_and_math() {
         &mut math,
     )
     .unwrap();
+
+    assert_eq!(
+        projected.columns_auto_repeat,
+        Some(spinon_layout::GridAutoRepeat {
+            mode: spinon_layout::GridAutoRepeatMode::AutoFill,
+            start: 0,
+            end: 1,
+        })
+    );
+    assert_eq!(
+        projected.rows_auto_repeat,
+        Some(spinon_layout::GridAutoRepeat {
+            mode: spinon_layout::GridAutoRepeatMode::AutoFit,
+            start: 0,
+            end: 1,
+        })
+    );
 
     assert_eq!(
         projected.auto_rows,

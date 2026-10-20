@@ -526,47 +526,69 @@ fn validate_css_math_bindings(input: &LayoutInput) -> Result<(), LayoutError> {
         }
     }
     for (&node, container) in &input.grid_containers {
-        for (property, tracks) in [
+        for (property, math_property, tracks) in [
             (
+                "grid-template-columns",
                 LayoutCssMathProperty::GridTemplateColumns,
-                &container.columns,
+                container.columns.as_slice(),
             ),
-            (LayoutCssMathProperty::GridTemplateRows, &container.rows),
+            (
+                "grid-template-rows",
+                LayoutCssMathProperty::GridTemplateRows,
+                container.rows.as_slice(),
+            ),
         ] {
-            for track in tracks {
-                let ids = match track {
-                    GridTrackSize::Calc(id) => [Some(*id), None],
-                    GridTrackSize::MinMax { min, max } => [
-                        match min {
-                            grid::GridTrackMinSizingFunction::Calc(id) => Some(*id),
-                            _ => None,
-                        },
-                        match max {
-                            grid::GridTrackMaxSizingFunction::Calc(id) => Some(*id),
-                            _ => None,
-                        },
-                    ],
-                    GridTrackSize::FitContent(GridTrackLengthPercentage::Calc(id)) => {
-                        [Some(*id), None]
-                    }
-                    _ => [None, None],
-                };
-                for id in ids.into_iter().flatten() {
-                    let Some(value) = by_id.get(&id) else {
-                        return Err(LayoutError::MissingCssMath {
-                            node,
-                            property: property.name(),
-                            id,
-                        });
-                    };
-                    if value.node_id != node || value.property != property {
-                        return Err(LayoutError::CssMathBindingMismatch {
-                            node,
-                            property: property.name(),
-                            id,
-                        });
-                    }
-                }
+            validate_grid_track_math_references(node, property, math_property, tracks, &by_id)?;
+        }
+        for (property, math_property, auto_tracks) in [
+            (
+                "grid-auto-columns",
+                LayoutCssMathProperty::GridTemplateColumns,
+                &container.auto_columns,
+            ),
+            (
+                "grid-auto-rows",
+                LayoutCssMathProperty::GridTemplateRows,
+                &container.auto_rows,
+            ),
+        ] {
+            if let GridAutoTrackSize::TrackList(tracks) = auto_tracks {
+                validate_grid_track_math_references(node, property, math_property, tracks, &by_id)?;
+            }
+        }
+    }
+    Ok(())
+}
+
+fn validate_grid_track_math_references(
+    node: NodeId,
+    property: &'static str,
+    math_property: LayoutCssMathProperty,
+    tracks: &[GridTrackSize],
+    by_id: &BTreeMap<LayoutCalcId, &LayoutCssMathValue>,
+) -> Result<(), LayoutError> {
+    for track in tracks {
+        let ids = match track {
+            GridTrackSize::Calc(id) => [Some(*id), None],
+            GridTrackSize::MinMax { min, max } => [
+                match min {
+                    grid::GridTrackMinSizingFunction::Calc(id) => Some(*id),
+                    _ => None,
+                },
+                match max {
+                    grid::GridTrackMaxSizingFunction::Calc(id) => Some(*id),
+                    _ => None,
+                },
+            ],
+            GridTrackSize::FitContent(GridTrackLengthPercentage::Calc(id)) => [Some(*id), None],
+            _ => [None, None],
+        };
+        for id in ids.into_iter().flatten() {
+            let Some(value) = by_id.get(&id) else {
+                return Err(LayoutError::MissingCssMath { node, property, id });
+            };
+            if value.node_id != node || value.property != math_property {
+                return Err(LayoutError::CssMathBindingMismatch { node, property, id });
             }
         }
     }

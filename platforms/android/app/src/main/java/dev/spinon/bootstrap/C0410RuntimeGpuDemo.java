@@ -207,6 +207,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "rows-fill-three-repetitions", "rows-fill-five-repetitions",
             "rows-fit-one-leading-empty-repeat", "rows-fill-two-leading-cycle",
             "both-axes-fit-negative-leading", "both-axes-fill-independent-cycles",
+            "typed-fixed-cycle", "typed-fixed-cycle-three-leading-trailing",
+            "typed-mixed-cycle", "typed-auto", "typed-min-content", "typed-max-content",
+            "typed-minmax-max-content", "typed-fit-content", "typed-fraction",
+            "typed-percentage", "typed-calc", "typed-auto-fit-occupied",
+            "typed-auto-fit-empty", "typed-auto-fit-gutter",
     };
     private static final String[] C114_AUTO_REPEAT_NEGATIVE_LINE_SCENE_IDS = {
             "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -218,6 +223,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "rows-fill-three-repetitions", "rows-fill-five-repetitions",
             "rows-fit-one-leading-empty-repeat", "rows-fill-two-leading-cycle",
             "both-axes-fit-negative-leading", "both-axes-fill-independent-cycles",
+            "typed-fixed-cycle", "typed-fixed-cycle-three-leading-trailing",
+            "typed-mixed-cycle", "typed-auto", "typed-min-content", "typed-max-content",
+            "typed-minmax-max-content", "typed-fit-content", "typed-fraction",
+            "typed-percentage", "typed-calc", "typed-auto-fit-occupied",
+            "typed-auto-fit-empty", "typed-auto-fit-gutter",
     };
     private static final String[][] C114_NEGATIVE_TRACK_EXPECTATIONS = {
             {"columns-one-negative", "189", "22", "47", "20", "4"},
@@ -577,6 +587,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         int minContentHeight;
         int maxContent;
         int maxContentHeight;
+        int expectedNode = 2;
+        int expectedSourceOrder = 0;
         switch (sceneId) {
             case "auto-text-max-content":
             case "min-content-text-normal":
@@ -603,6 +615,26 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 maxContent = 100;
                 maxContentHeight = 10;
                 break;
+            case "typed-mixed-cycle":
+            case "typed-auto":
+            case "typed-min-content":
+            case "typed-max-content":
+            case "typed-minmax-max-content":
+            case "typed-fit-content":
+                minContent = 48;
+                minContentHeight = 36;
+                maxContent = 108;
+                maxContentHeight = 12;
+                break;
+            case "typed-auto-fit-occupied":
+            case "typed-auto-fit-gutter":
+                minContent = 48;
+                minContentHeight = 36;
+                maxContent = 108;
+                maxContentHeight = 12;
+                expectedNode = 3;
+                expectedSourceOrder = 1;
+                break;
             default:
                 return true;
         }
@@ -618,7 +650,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             if (inputs == null || inputs.length() != 1) return false;
             org.json.JSONObject input = inputs.optJSONObject(0);
             if (input == null || input.optInt("grid", -1) != 1
-                    || input.optInt("node", -1) != 2 || input.optInt("sourceOrder", -1) != 0) {
+                    || input.optInt("node", -1) != expectedNode
+                    || input.optInt("sourceOrder", -1) != expectedSourceOrder) {
                 return false;
             }
             org.json.JSONObject source = input.optJSONObject("source");
@@ -1014,6 +1047,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (sceneId.equals("typed-fixed-cycle-three-leading-trailing")) return 4;
+        if (sceneId.equals("typed-mixed-cycle")
+                || sceneId.equals("typed-auto-fit-occupied")
+                || sceneId.equals("typed-auto-fit-gutter")) return 3;
         if (sceneId.equals("columns-fit-negative-and-repeat-occupied")
                 || sceneId.equals("columns-fill-negative-positive-cycle")) return 3;
         if (c114IsAutoRepeatNegativeLineScene(sceneId)) return 2;
