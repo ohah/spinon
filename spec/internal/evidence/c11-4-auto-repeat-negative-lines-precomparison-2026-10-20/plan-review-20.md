@@ -2,6 +2,8 @@
 
 **대상:** `plan/c11-4-auto-repeat-negative-lines.md`와 고정 사전 fixture/oracle. 코드 구현 후 검토와 PR 최종 diff 검토를 대신하지 않는다.
 
+**정정:** 이 초기 검토는 auto-repeat 분기 dispatch를 놓쳐 `track_sizing::normalize_track_sizing_grid_container`가 numeric negative line을 확장 전 길이로 해석한다는 잘못된 구현 가설을 통과시켰다. 해당 결론은 무효이며 [정정 계획 재검토 20개](./plan-correction-review-20.md) 및 [정정 PR diff 검토 30개](./pr-correction-diff-review-30.md)로 대체한다.
+
 | # | 독립 실패 관점 | 검토와 반영 |
 | ---: | --- | --- |
 | 1 | fixed column size에서 repeat count 산식이 gap을 한 번 빼먹는 경우 | 고정 prefix/suffix와 repeat gap 수를 따로 전개했다. `38 + 48n`이며 134/200/230px은 2/3/4회다. 기대값 JSON validator가 동일 모델을 독립 계산한다. 통과. |
