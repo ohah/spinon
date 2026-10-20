@@ -33,7 +33,7 @@
 | 27 | V8→Stylo runtime에서 다른 DOM/text로 계산 | runtime adapter는 scene ID, root tag/style/size, grid track counts, direct child identity/order, text node ownership/content/style 및 Ahem font를 확인한다. |
 | 28 | Android/iOS host에서 기대값 또는 scene route 불일치 | 두 host의 scene allowlist, root box count/frame, overflow samples를 추가했고 73 scene 양쪽 runtime 결과가 ready/draw-present로 끝났다. |
 | 29 | oracle/surface screenshot이 잘못된 source나 stale run을 가리킴 | Chrome 입력/관찰/화면/규범 기대값 SHA 6개를 검증했다. Android logcat은 앱 PID와 최근 1,000줄만 읽으며, 최종 run ID가 각 log와 result에 일치한다. |
-| 30 | 문서가 실기기·WPT·완료 수를 과장하거나 PR image를 제공하지 않음 | evidence는 Android API 37 AVD와 iOS 26.2 Simulator라고 한정한다. 5+5 surface 표본은 OS compositor 전이며 WPT·negative implicit·full auto-repeat을 미완료로 남긴다. 공식 STATUS/count 및 Tailnet aggregate는 merge/docs gate 전까지 그대로 둔다. |
+| 30 | 문서가 실기기·WPT·완료 수를 과장하거나 PR image를 제공하지 않음 | PR #375에 Android/iOS 화면을 직접 연결했다. evidence는 API 37 AVD와 iOS 26.2 Simulator라고 한정하며 5+5 surface 표본은 OS compositor 전이다. STATUS와 내부 계약 0059는 positive implicit slice만 기록하고 C11.4/C11 check와 완료 수는 그대로 둔다. WPT·negative implicit·full auto-repeat은 미완료다. Tailnet aggregate는 merge 뒤 동기화한다. |
 
 ## 검토 결론
 

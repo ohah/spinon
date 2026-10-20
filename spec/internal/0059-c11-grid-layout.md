@@ -197,3 +197,15 @@ Chrome 155 Rust matrix 13/13과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2
 고정 Chrome 155 사전 비교 12-case와 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 각 33-scene matrix는 mixed `auto-fill`/`auto-fit`, 서로 다른 repeat count, empty/single/span/second-repeat occupancy와 suffix-line geometry를 확인한다. [양축 구현 근거·화면·해시·검증 한계](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/README.md) · [독립 구현 실패 관점 20개](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/implementation-review-20.md) · [PR diff 검토 30개](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/pr-diff-review-30.md).
 
 이 profile은 한 track list 내 복수 auto-repeat, line names, template areas, 비-`px` neighbor, integer-repeat 혼합 또는 arbitrary track grammar를 지원하지 않는다. WPT·실기기·Android hardware GPU 및 iOS compositor 이후 pixel equality는 미검증이다. 공식 C11.4/C11 완료 판정과 내부 계약 `0.1.0`은 그대로다.
+
+## C11.4 positive implicit `grid-auto-*` track-size lists
+
+2026-10-20 구현 slice는 `RuntimeBlockFlexGridTrackSizingV1` profile의 `grid-auto-rows`와 `grid-auto-columns`에 비어 있지 않은 typed `<track-size>+` 목록을 보존한다. 항목은 `grid-template-rows/columns` projection이 이미 지원하는 `GridTrackSize` 및 CSS math 문법을 따른다. 새 값 parser나 다른 runtime profile을 열지 않는다.
+
+Grid 축의 zero-based normalized track index를 `i`라 할 때, `i >= explicit_track_count`인 양의 implicit track에는 해당 축의 `auto_tracks[(i - explicit_track_count) % auto_tracks.len()]`을 적용한다. 명시적 positive line placement 또는 auto-placement로 늘어난 양의 implicit tracks를 sizing하며 rows와 columns는 각자 authored order와 목록 길이를 사용한다. 현재 10,000-track 제한, fallible Spinon-owned allocation, 오류 시 부분 `LayoutOutput` 미게시 계약을 유지한다.
+
+explicit grid 앞의 negative implicit tracks와 역방향 목록 순환은 지원하지 않고 구체 오류로 거부한다. `grid-template-*` auto-repeat이 있는 container에서 C11.4 typed `grid-auto-*` 목록을 함께 사용하면 해당 조합도 fail-closed한다. `grid-auto-*`의 line names, `repeat()`, unsupported projected values, nested/anonymous/out-of-flow item, full placement/span matrix, WPT 및 전체 C11.4 단계 적합성은 포함하지 않는다.
+
+Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 고정 73-scene app matrix를 실행했고, Chrome 155 Agent Browser의 20-case precomparison과 비교했다. overflow surface 표본은 각각 5/5 exact이나 OS compositor 뒤의 pixel equality 증거가 아니다. [구현 계획](../../plan/c11-4-positive-implicit-track-sizing.md) · [실행·artifact 근거와 화면](./evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/README.md) · [PR #375](https://github.com/ohah/spinon/pull/375).
+
+앱 검증용 fixture FFI와 고정 scene payload는 opt-in fixture-test Cargo feature에만 들어간다. [기본/opt-in static library artifact 검사](./evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/ffi-artifact-boundary.md)에서 기본 artifact는 20개 scene ID와 C11.4 FFI symbol이 없고 positive control에는 모두 있음을 확인했다. 내부 계약 숫자 버전 `0.1.0`을 유지한다. C11.4와 C11 상위는 미완료다.
