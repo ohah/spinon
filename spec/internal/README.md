@@ -1,8 +1,8 @@
 # 내부 인터페이스 명세
 
-## C11.3.3 unknown-area trailing implicit named-line 후속 · PR 준비 중
+## C11.3.3 unknown-area trailing implicit named-line 후속 · PR #393
 
-[계획](../../plan/c11-3-3-unknown-named-area-implicit-lines.md) · [Chrome 154 기준·SM-S731N 실기기·Android AVD·iOS Simulator 실행, overflow 화면·hash·한계](./evidence/c11-3-3-unknown-area-implicit-lines-followup-2026-10-21/README.md) · [구현 실패 관점 20개](./evidence/c11-3-3-unknown-area-implicit-lines-followup-2026-10-21/implementation-review-20.md) · [최종 PR diff 실패 관점 20개](./evidence/c11-3-3-unknown-area-implicit-lines-followup-2026-10-21/pr-diff-review-20.md). 미구현 area bare-ident 및 named-span shortage의 양의 trailing implicit line, 두 축의 고정 px `grid-auto-*` subset만 후보로 연결한다. 일반 numeric/leading/negative implicit line과 자동·intrinsic track은 계속 거부하며 공식 C11.3.3 상태·완료 수는 미완료로 유지한다.
+[계획](../../plan/c11-3-3-unknown-named-area-implicit-lines.md) · [Chrome 154 기준·SM-S731N 실기기·Android AVD·iOS Simulator 실행, overflow 화면·hash·한계](./evidence/c11-3-3-unknown-area-implicit-lines-followup-2026-10-21/README.md) · [구현 실패 관점 20개](./evidence/c11-3-3-unknown-area-implicit-lines-followup-2026-10-21/implementation-review-20.md) · [최종 PR diff 실패 관점 30개](./evidence/c11-3-3-unknown-area-implicit-lines-followup-2026-10-21/pr-diff-review-30.md) · [사전 PR diff 검토 20개](./evidence/c11-3-3-unknown-area-implicit-lines-followup-2026-10-21/pr-diff-review-20.md) · [PR #393](https://github.com/ohah/spinon/pull/393). 미구현 area bare-ident 및 named-span shortage의 양의 trailing implicit line, 두 축의 고정 px `grid-auto-*` subset만 후보로 연결한다. 일반 numeric/leading/negative implicit line과 자동·intrinsic track은 계속 거부하며 공식 C11.3.3 상태·완료 수는 미완료로 유지한다.
 
 ## C11.4 positive implicit auto-track 목록 · PR #375
 

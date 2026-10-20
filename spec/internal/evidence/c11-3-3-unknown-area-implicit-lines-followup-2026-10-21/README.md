@@ -24,6 +24,7 @@ C11.3.3 전용 opt-in runtime 경로에서 explicit template area 및 named line
 
 ## 원본
 
+- 후보 PR: [#393](https://github.com/ohah/spinon/pull/393)
 - 계획: [`plan/c11-3-3-unknown-named-area-implicit-lines.md`](../../../../plan/c11-3-3-unknown-named-area-implicit-lines.md)
 - Android 실행: [`android-avd-c1133-matrix-20261020T150911869Z-7abbeeff`](../c11-3-3-grid-template-areas-runtime-2026-10-21/android-avd-c1133-matrix-20261020T150911869Z-7abbeeff/README.md)
 - Android 실기기 실행: [`android-physical-c1133-matrix-20261020T152039508Z-5886c27a`](../c11-3-3-grid-template-areas-runtime-2026-10-21/android-physical-c1133-matrix-20261020T152039508Z-5886c27a/README.md)
