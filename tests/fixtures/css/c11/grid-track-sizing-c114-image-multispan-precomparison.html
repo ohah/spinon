@@ -1,0 +1,72 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Spinon C11.4 direct image multi-span precomparison</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 320px; background: #fff; }
+  body { font: 10px/1 sans-serif; color: #111; }
+  .case { min-height: 74px; border-bottom: 1px solid #ccc; padding: 4px; }
+  .label { display: block; margin-bottom: 2px; }
+  .grid { display: grid; width: 40px; height: 60px; grid-template-columns: repeat(4, min-content); grid-template-rows: repeat(3, 20px); gap: 0; align-items: start; align-content: start; justify-content: start; overflow: visible; padding: 1px; background: #101820; }
+  .item { display: block; width: auto; margin: 0; padding: 0; border: 0; justify-self: auto; align-self: auto; background: #e5484d; }
+  #result { display: none; }
+</style>
+<body>
+  <section class="case" data-case="image-span2-forward">
+    <span class="label">overlapping span-2 replaced-image contributions, forward DOM order</span>
+    <div class="grid" id="image-span2-forward">
+      <img class="item" id="image-a-forward" src="../../resources/c14-1-png-basic.png" alt="" style="height:16px;grid-column:1 / span 2;grid-row:1">
+      <img class="item" id="image-b-forward" src="../../resources/c14-1-png-basic.png" alt="" style="height:32px;grid-column:2 / span 2;grid-row:2">
+    </div>
+  </section>
+  <section class="case" data-case="image-span2-reversed">
+    <span class="label">same overlapping replaced-image spans, reversed DOM order</span>
+    <div class="grid" id="image-span2-reversed">
+      <img class="item" id="image-b-reversed" src="../../resources/c14-1-png-basic.png" alt="" style="height:32px;grid-column:2 / span 2;grid-row:2">
+      <img class="item" id="image-a-reversed" src="../../resources/c14-1-png-basic.png" alt="" style="height:16px;grid-column:1 / span 2;grid-row:1">
+    </div>
+  </section>
+  <section class="case" data-case="image-span2-before-span3">
+    <span class="label">span-2 replaced-image contributions followed by span-3 image</span>
+    <div class="grid" id="image-span2-before-span3">
+      <img class="item" id="image-c-a" src="../../resources/c14-1-png-basic.png" alt="" style="height:16px;grid-column:1 / span 2;grid-row:1">
+      <img class="item" id="image-c-b" src="../../resources/c14-1-png-basic.png" alt="" style="height:32px;grid-column:2 / span 2;grid-row:2">
+      <img class="item" id="image-c-c" src="../../resources/c14-1-png-basic.png" alt="" style="height:48px;grid-column:1 / span 3;grid-row:3">
+    </div>
+  </section>
+  <section class="case" data-case="image-span3-before-span2">
+    <span class="label">same image spans, span-3 first in DOM</span>
+    <div class="grid" id="image-span3-before-span2">
+      <img class="item" id="image-r-c" src="../../resources/c14-1-png-basic.png" alt="" style="height:48px;grid-column:1 / span 3;grid-row:3">
+      <img class="item" id="image-r-b" src="../../resources/c14-1-png-basic.png" alt="" style="height:32px;grid-column:2 / span 2;grid-row:2">
+      <img class="item" id="image-r-a" src="../../resources/c14-1-png-basic.png" alt="" style="height:16px;grid-column:1 / span 2;grid-row:1">
+    </div>
+  </section>
+  <pre id="result"></pre>
+  <script>
+    Promise.all(Array.from(document.querySelectorAll('img'), (image) => image.decode())).then(() => {
+      const rect = (node) => {
+        const value = node.getBoundingClientRect();
+        return {x:value.x, y:value.y, width:value.width, height:value.height};
+      };
+      const cases = Array.from(document.querySelectorAll('.case')).map((section) => {
+        const grid = section.querySelector('.grid');
+        return {
+          id: section.dataset.case,
+          columns: getComputedStyle(grid).gridTemplateColumns,
+          rows: getComputedStyle(grid).gridTemplateRows,
+          grid: rect(grid),
+          items: Array.from(grid.children, (item) => ({id:item.id, naturalWidth:item.naturalWidth, naturalHeight:item.naturalHeight, frame:rect(item)})),
+        };
+      });
+      window.__C114_IMAGE_MULTISPAN_OBSERVATION__ = {
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        devicePixelRatio,
+        imageDecodeComplete: Array.from(document.querySelectorAll('img'), (image) => image.complete && image.naturalWidth === 24 && image.naturalHeight === 16).every(Boolean),
+        cases,
+      };
+      document.querySelector('#result').textContent = JSON.stringify(window.__C114_IMAGE_MULTISPAN_OBSERVATION__, null, 2);
+    });
+  </script>
+</body>

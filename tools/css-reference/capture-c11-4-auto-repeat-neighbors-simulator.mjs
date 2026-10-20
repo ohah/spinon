@@ -23,11 +23,18 @@ const textMultiSpanSceneIDs = new Set([
   'text-span2-forward', 'text-span2-reversed',
   'text-span2-before-span3', 'text-span3-before-span2',
 ]);
+const imageMultiSpanSceneIDs = new Set([
+  'image-span2-forward', 'image-span2-reversed',
+  'image-span2-before-span3', 'image-span3-before-span2',
+]);
 const isTextMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => textMultiSpanSceneIDs.has(sceneID));
+const isImageMultiSpanRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => imageMultiSpanSceneIDs.has(sceneID));
 const isMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID) || textMultiSpanSceneIDs.has(sceneID));
-const runKind = requestedRunKind ?? (isTextMultiSpanRun ? 'text-multispan-contributions'
+const runKind = requestedRunKind ?? (isImageMultiSpanRun ? 'image-multispan-contributions'
+  : isTextMultiSpanRun ? 'text-multispan-contributions'
   : isMultiSpanRun ? 'multispan-ordering' : 'negative-implicit');
 assert.match(runKind, /^[a-z0-9-]{1,80}$/, 'run-kind는 소문자·숫자·하이픈만 허용합니다.');
 assert.ok(['android-avd', 'android-device', 'ios-simulator'].includes(target),
@@ -49,6 +56,8 @@ const runPrefix = `c114-${runKind}-${target}-${new Date().toISOString().replaceA
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
   ? `spec/internal/evidence/${evidenceGroup}-${date}/${target}-${runPrefix}`
+  : isImageMultiSpanRun
+    ? `spec/internal/evidence/c11-4-image-multispan-contributions-${date}/${target}-${runPrefix}`
   : isTextMultiSpanRun
     ? `spec/internal/evidence/c11-4-text-multispan-contributions-${date}/${target}-${runPrefix}`
   : isMultiSpanRun
@@ -516,6 +525,91 @@ scenes.push(
   },
 );
 assert.equal(scenes.length, 146, 'C11.4 text multi-span simulator 행렬은 146 scene이어야 합니다.');
+scenes.push(
+  {
+    id: 'image-span2-forward', axis: 'Columns', boxCount: 3,
+    rootFrame: 'width=40,height=60', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=60;'
+      + '1:node=2,x=1,y=1,width=24,height=16;2:node=3,x=13,y=21,width=48,height=32]',
+    tracks: [12, 24, 24, 0], collapsed: [false, false, false, false],
+    intrinsicSpans: [2], imageIntrinsicContributions: true,
+    imageItemSpans: [2, 2], imageMinContentWidths: [24, 48],
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+      { grid: 1, node: 3, sourceOrder: 1, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+    ],
+    pixelSamples: [
+      { id: 'image-multispan-root-background', nodeId: 'c114-image-span2-forward-grid', xCssPx: 30, yCssPx: 10, rgba: [16, 24, 32, 255] },
+      { id: 'image-multispan-outside-root', nodeId: 'c114-image-span2-forward-grid', xCssPx: 40, yCssPx: 10, rgba: [0, 0, 0, 255] },
+      { id: 'image-multispan-item-overflow', nodeId: 'image-b-forward', xCssPx: 45, yCssPx: 30, rgba: [229, 72, 77, 255] },
+      { id: 'image-multispan-after-item', nodeId: 'c114-image-span2-forward-grid', xCssPx: 62, yCssPx: 30, rgba: [0, 0, 0, 255] },
+    ],
+  },
+  {
+    id: 'image-span2-reversed', axis: 'Columns', boxCount: 3,
+    rootFrame: 'width=40,height=60', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=60;'
+      + '1:node=2,x=13,y=21,width=48,height=32;2:node=3,x=1,y=1,width=24,height=16]',
+    tracks: [12, 24, 24, 0], collapsed: [false, false, false, false],
+    intrinsicSpans: [2], imageIntrinsicContributions: true,
+    imageItemSpans: [2, 2], imageMinContentWidths: [48, 24],
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+      { grid: 1, node: 3, sourceOrder: 1, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+    ],
+    pixelSamples: [
+      { id: 'image-multispan-root-background', nodeId: 'c114-image-span2-reversed-grid', xCssPx: 30, yCssPx: 10, rgba: [16, 24, 32, 255] },
+      { id: 'image-multispan-outside-root', nodeId: 'c114-image-span2-reversed-grid', xCssPx: 40, yCssPx: 10, rgba: [0, 0, 0, 255] },
+      { id: 'image-multispan-item-overflow', nodeId: 'image-b-reversed', xCssPx: 45, yCssPx: 30, rgba: [229, 72, 77, 255] },
+      { id: 'image-multispan-after-item', nodeId: 'c114-image-span2-reversed-grid', xCssPx: 62, yCssPx: 30, rgba: [0, 0, 0, 255] },
+    ],
+  },
+  {
+    id: 'image-span2-before-span3', axis: 'Columns', boxCount: 4,
+    rootFrame: 'width=40,height=60', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=60;'
+      + '1:node=2,x=1,y=1,width=24,height=16;2:node=3,x=17,y=21,width=48,height=32;'
+      + '3:node=4,x=1,y=41,width=72,height=48]',
+    tracks: [16, 28, 28, 0], collapsed: [false, false, false, false],
+    intrinsicSpans: [2, 3], imageIntrinsicContributions: true,
+    imageItemSpans: [2, 2, 3], imageMinContentWidths: [24, 48, 72],
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+      { grid: 1, node: 3, sourceOrder: 1, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+      { grid: 1, node: 4, sourceOrder: 2, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+    ],
+    pixelSamples: [
+      { id: 'image-multispan-root-background', nodeId: 'c114-image-span2-before-span3-grid', xCssPx: 35, yCssPx: 10, rgba: [16, 24, 32, 255] },
+      { id: 'image-multispan-outside-root', nodeId: 'c114-image-span2-before-span3-grid', xCssPx: 40, yCssPx: 10, rgba: [0, 0, 0, 255] },
+      { id: 'image-multispan-item-overflow', nodeId: 'image-c-c', xCssPx: 65, yCssPx: 45, rgba: [229, 72, 77, 255] },
+      { id: 'image-multispan-item-below-root', nodeId: 'image-c-c', xCssPx: 10, yCssPx: 70, rgba: [229, 72, 77, 255] },
+      { id: 'image-multispan-after-item', nodeId: 'c114-image-span2-before-span3-grid', xCssPx: 75, yCssPx: 70, rgba: [0, 0, 0, 255] },
+    ],
+  },
+  {
+    id: 'image-span3-before-span2', axis: 'Columns', boxCount: 4,
+    rootFrame: 'width=40,height=60', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=60;'
+      + '1:node=2,x=1,y=41,width=72,height=48;2:node=3,x=17,y=21,width=48,height=32;'
+      + '3:node=4,x=1,y=1,width=24,height=16]',
+    tracks: [16, 28, 28, 0], collapsed: [false, false, false, false],
+    intrinsicSpans: [2, 3], imageIntrinsicContributions: true,
+    imageItemSpans: [3, 2, 2], imageMinContentWidths: [72, 48, 24],
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+      { grid: 1, node: 3, sourceOrder: 1, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+      { grid: 1, node: 4, sourceOrder: 2, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+    ],
+    pixelSamples: [
+      { id: 'image-multispan-root-background', nodeId: 'c114-image-span3-before-span2-grid', xCssPx: 35, yCssPx: 10, rgba: [16, 24, 32, 255] },
+      { id: 'image-multispan-outside-root', nodeId: 'c114-image-span3-before-span2-grid', xCssPx: 40, yCssPx: 10, rgba: [0, 0, 0, 255] },
+      { id: 'image-multispan-item-overflow', nodeId: 'image-r-c', xCssPx: 65, yCssPx: 45, rgba: [229, 72, 77, 255] },
+      { id: 'image-multispan-item-below-root', nodeId: 'image-r-c', xCssPx: 10, yCssPx: 70, rgba: [229, 72, 77, 255] },
+      { id: 'image-multispan-after-item', nodeId: 'c114-image-span3-before-span2-grid', xCssPx: 75, yCssPx: 70, rgba: [0, 0, 0, 255] },
+    ],
+  },
+);
+assert.equal(scenes.length, 150, 'C11.4 image multi-span simulator 행렬은 150 scene이어야 합니다.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 simulator scene ID가 중복됐습니다.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -1499,7 +1593,21 @@ function verifyRuntimeLog(log, scene, runID) {
   const tracePayload = traceParts.map(({ payload }) => payload).join('')
     .replace(/^grid_track_sizing_diagnostics=/, '');
   const diagnostics = JSON.parse(tracePayload);
-  if (scene.intrinsicInputs) {
+  if (scene.intrinsicInputs && scene.imageIntrinsicContributions) {
+    const intrinsicInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => ({
+      grid: input.grid,
+      node: input.node,
+      sourceOrder: input.sourceOrder,
+      kind: input.source?.kind,
+      aspectRatio: input.source?.natural?.aspectRatio ?? null,
+      width: input.source?.natural?.width,
+      height: input.source?.natural?.height,
+    }));
+    assert.deepEqual(intrinsicInputs, scene.intrinsicInputs,
+      `${scene.id}: replaced image intrinsic input matrix differs from PNG oracle`);
+    assert.equal(diagnostics.layoutInputRevision?.intrinsicSize, 1,
+      `${scene.id}: intrinsic resource revision is not the fixed fixture revision`);
+  } else if (scene.intrinsicInputs) {
     const intrinsicInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => ({
       grid: input.grid,
       node: input.node,
@@ -1563,6 +1671,35 @@ function verifyRuntimeLog(log, scene, runID) {
       }));
       assert.deepEqual(observedContributions, expectedContributions,
         `${scene.id}: Minimum/MinContent trace contribution mapping differs`);
+    }
+    if (scene.imageIntrinsicContributions) {
+      const expectedContributions = [];
+      for (const span of scene.intrinsicSpans) {
+        const spanItems = scene.intrinsicInputs.flatMap((input, itemIndex) => (
+          scene.imageItemSpans[itemIndex] === span ? [{ input, itemIndex }] : []
+        ));
+        for (const kind of ['Minimum', 'MinContent']) {
+          const repetitions = kind === 'MinContent' ? 2 : 1;
+          for (let repetition = 0; repetition < repetitions; repetition++) {
+            for (const { input, itemIndex } of spanItems) {
+              expectedContributions.push({
+                item: input.node,
+                kind,
+                span,
+                value: kind === 'Minimum' ? 0 : scene.imageMinContentWidths[itemIndex],
+              });
+            }
+          }
+        }
+      }
+      const observedContributions = axisPass.contributions.map((contribution) => ({
+        item: contribution.item,
+        kind: contribution.kind,
+        span: contribution.span,
+        value: contribution.value,
+      }));
+      assert.deepEqual(observedContributions, expectedContributions,
+        `${scene.id}: replaced Minimum/MinContent contribution mapping differs`);
     }
     if (axis === scene.axis) observedIntrinsicSpans = intrinsicSpans;
     const finalStageTracks = axisPass.stages.at(-1).tracks;
