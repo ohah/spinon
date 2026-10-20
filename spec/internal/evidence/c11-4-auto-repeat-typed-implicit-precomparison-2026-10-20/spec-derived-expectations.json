@@ -1,0 +1,137 @@
+{
+  "source": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/",
+  "sections": ["7.5", "7.6", "8.3", "11.3", "11.4", "11.5", "11.6", "11.7", "11.8"],
+  "fixture": {
+    "containerContentSizeCssPx": { "columns": 110, "rows": 110 },
+    "explicitTrackList": "repeat(auto-fill, 20px)",
+    "repeatCountPerAxis": 5,
+    "fixedTrackUsedSizeCssPx": 20,
+    "defaultNegativePlacement": { "start": -8, "end": -7, "leadingImplicitTracksPerAxis": 2 },
+    "cycleNegativePlacement": { "start": -9, "end": -8, "leadingImplicitTracksPerAxis": 3 },
+    "trailingPlacement": { "start": 8, "end": 9, "trailingImplicitTracksPerAxis": 3 },
+    "autoFitRepeatCountBeforeCollapsePerAxis": 5,
+    "gutterCase": {
+      "containerContentSizeCssPx": { "columns": 132, "rows": 132 },
+      "gapCssPx": { "columns": 8, "rows": 8 },
+      "fixedRepeatedTrackBreadthCssPx": 20,
+      "repeatCountPerAxis": 5,
+      "repeatCountFormula": "floor((132 + 8) / (20 + 8))"
+    }
+  },
+  "expectations": [
+    {
+      "id": "fixed-cycle",
+      "autoTrackList": [24, 36],
+      "leadingTrackSizesCssPxLeftToRight": [24, 36],
+      "explicitTrackSizesCssPx": [20, 20, 20, 20, 20],
+      "reason": "The last implicit track before the explicit grid receives the last list value (36px); the preceding track receives 24px."
+    },
+    {
+      "id": "fixed-cycle-three-leading-trailing",
+      "autoTrackList": [24, 36],
+      "leadingTrackSizesCssPxLeftToRight": [36, 24, 36],
+      "explicitTrackSizesCssPx": [20, 20, 20, 20, 20],
+      "trailingTrackSizesCssPxLeftToRight": [24, 36, 24],
+      "reason": "Leading tracks cycle backwards from the explicit boundary; trailing tracks cycle forwards from the first value."
+    },
+    {
+      "id": "mixed-typed-cycle",
+      "autoTrackLists": {
+        "columns": ["min-content", "25%"],
+        "rows": ["fit-content(24px)", "calc(5px + 10%)"]
+      },
+      "leadingTrackSizesCssPxLeftToRight": {
+        "columns": [27.5, 0, 27.5],
+        "rows": [16, 0, 16]
+      },
+      "trailingTrackSizesCssPxLeftToRight": {
+        "columns": [0, 27.5, 0],
+        "rows": [0, 16, 0]
+      },
+      "reason": "Leading cycles walk backwards from the explicit boundary and trailing cycles walk forwards; the empty intrinsic tracks receive zero contribution."
+    },
+    {
+      "id": "auto",
+      "autoTrackSize": "auto",
+      "expectedBehavior": "Use the auto intrinsic minimum/maximum rules for the item contribution in each axis; the empty second leading track receives no content contribution."
+    },
+    {
+      "id": "min-content",
+      "autoTrackSize": "min-content",
+      "expectedBehavior": "The occupied leading track base is the largest min-content contribution of its item, floored at zero; the empty adjacent leading track remains zero."
+    },
+    {
+      "id": "max-content",
+      "autoTrackSize": "max-content",
+      "expectedBehavior": "The occupied leading track uses the item's max-content contribution; the empty adjacent leading track remains zero."
+    },
+    {
+      "id": "minmax-max-content",
+      "autoTrackSize": "minmax(12px, max-content)",
+      "expectedTrackSizesCssPx": [12, 12],
+      "reason": "Both implicit bases start at 12px. With five fixed 20px repeat tracks, total bases exceed the definite 110px content size, so there is no positive free space to maximize the max-content track."
+    },
+    {
+      "id": "fit-content",
+      "autoTrackSize": "fit-content(24px)",
+      "expectedBehavior": "Apply the fit-content formula max(auto minimum, min(24px, max-content)); the argument does not reduce an auto minimum that is already larger."
+    },
+    {
+      "id": "fraction",
+      "autoTrackSize": "minmax(8px, 1fr)",
+      "expectedTrackSizesCssPx": [8, 8],
+      "reason": "The two leading bases plus five fixed repeat tracks total 116px, exceeding the definite 110px size; flexible expansion has no positive leftover space."
+    },
+    {
+      "id": "percentage",
+      "autoTrackSize": "25%",
+      "expectedTrackSizesCssPx": [27.5, 27.5],
+      "reason": "Each percentage resolves against its definite 110px grid content size."
+    },
+    {
+      "id": "calc",
+      "autoTrackSize": "calc(5px + 10%)",
+      "expectedTrackSizesCssPx": [16, 16],
+      "reason": "The absolute 5px plus 10% of the definite 110px content size resolves to 16px."
+    },
+    {
+      "id": "auto-fit-typed-occupied",
+      "autoRepeatMode": "auto-fit",
+      "repeatCountBeforeCollapse": 5,
+      "occupiedRepeatedTracks": 1,
+      "collapsedRepeatedTracks": 4,
+      "reason": "The blue item occupies one repeated track; the other four empty tracks collapse after placement while typed leading/trailing tracks remain."
+    },
+    {
+      "id": "auto-fit-typed-empty",
+      "autoRepeatMode": "auto-fit",
+      "repeatCountBeforeCollapse": 5,
+      "occupiedRepeatedTracks": 0,
+      "collapsedRepeatedTracks": 5,
+      "expectedLeadingTrackSizesCssPx": [55, 55],
+      "reason": "All five empty auto-fit tracks collapse after placement; the two leading 1fr implicit tracks share the definite 110px size."
+    },
+    {
+      "id": "auto-fit-typed-gutter",
+      "autoRepeatMode": "auto-fit",
+      "containerContentSizeCssPx": { "columns": 132, "rows": 132 },
+      "gapCssPx": { "columns": 8, "rows": 8 },
+      "autoTrackLists": {
+        "columns": ["min-content", "25%"],
+        "rows": ["fit-content(24px)", "calc(5px + 10%)"]
+      },
+      "repeatCountBeforeCollapsePerAxis": 5,
+      "implicitTrackCountsPerAxis": { "leading": 2, "trailing": 3 },
+      "occupiedRepeatedTracks": 1,
+      "collapsedRepeatedTracks": 4,
+      "expectedBehavior": "Resolve percentage tracks against the definite 132px axis; apply 8px gaps to the repeat-count and track-sizing algorithms; preserve leading reverse-cycle and trailing forward-cycle order; collapse the four empty auto-fit repeat tracks and their applicable gutters after placement.",
+      "reason": "The blue control occupies the first repeated track. The negative-line item occupies leading implicit tracks and the green item creates three trailing tracks; neither trailing implicit tracks nor the typed implicit sizing cycle are part of the repeat collapse."
+    }
+  ],
+  "comparisonRules": {
+    "repeatCountAndIntegerPxTracks": "exact",
+    "integerItemFrames": "exact",
+    "fractionalTracksAndFrames": "within 1/64 CSS px per value",
+    "chromeObservationIsNormativeAuthority": false
+  }
+}

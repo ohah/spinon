@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>C11.4 auto-repeat with typed implicit tracks</title>
+    <style>
+      :root { color-scheme: light; font: 13px/1.4 system-ui, sans-serif; }
+      body { margin: 16px; color: #1b1b1b; }
+      h1 { margin: 0 0 8px; font-size: 20px; }
+      p { margin: 0 0 12px; }
+      #cases { display: grid; grid-template-columns: repeat(2, max-content); gap: 12px; }
+      .case { width: 260px; min-height: 156px; padding: 8px; border: 1px solid #9aa0a6; }
+      .case h2 { margin: 0 0 6px; font-size: 14px; }
+      .grid {
+        display: grid;
+        width: 110px;
+        height: 110px;
+        grid-template-columns: repeat(auto-fill, 20px);
+        grid-template-rows: repeat(auto-fill, 20px);
+        column-gap: 0;
+        row-gap: 0;
+        align-content: start;
+        justify-content: start;
+        background: #e8eaed;
+        overflow: visible;
+      }
+      .control { grid-column: 1 / 2; grid-row: 1 / 2; background: #4285f4; }
+      .placed {
+        grid-column: -8 / -7;
+        grid-row: -8 / -7;
+        box-sizing: border-box;
+        min-width: auto;
+        min-height: auto;
+        padding: 0;
+        border: 0;
+        background: #ea4335;
+        color: #111;
+        font: 16px/20px monospace;
+        overflow: visible;
+      }
+      .trailing { grid-column: 8 / 9; grid-row: 8 / 9; background: #34a853; }
+      pre { display: none; max-width: 540px; white-space: pre-wrap; overflow-wrap: anywhere; }
+    </style>
+  </head>
+  <body>
+    <h1>Auto-repeat with negative implicit tracks</h1>
+    <p>Each auto-repeat grid has five 20px tracks. Most grids are 110×110 CSS px; the gutter case is 132×132px with 8px gaps. Red items use lines -8/-7 for two leading implicit tracks, except the cycle cases (-9/-8); green items create three trailing tracks. Blue items anchor the first explicit cell. The last three cases use auto-fit.</p>
+    <main id="cases"></main>
+    <h2>Captured computed geometry</h2>
+    <pre id="observations">waiting</pre>
+    <script>
+      const cases = [
+        { id: "fixed-cycle", columns: "24px 36px", rows: "24px 36px" },
+        { id: "fixed-cycle-three-leading-trailing", columns: "24px 36px", rows: "24px 36px", columnStart: -9, columnEnd: -8, rowStart: -9, rowEnd: -8, trailing: true },
+        { id: "mixed-typed-cycle", columns: "min-content 25%", rows: "fit-content(24px) calc(5px + 10%)", columnStart: -9, columnEnd: -8, rowStart: -9, rowEnd: -8, trailing: true },
+        { id: "auto", columns: "auto", rows: "auto" },
+        { id: "min-content", columns: "min-content", rows: "min-content" },
+        { id: "max-content", columns: "max-content", rows: "max-content" },
+        { id: "minmax-max-content", columns: "minmax(12px, max-content)", rows: "minmax(12px, max-content)" },
+        { id: "fit-content", columns: "fit-content(24px)", rows: "fit-content(24px)" },
+        { id: "fraction", columns: "minmax(8px, 1fr)", rows: "minmax(8px, 1fr)" },
+        { id: "percentage", columns: "25%", rows: "25%" },
+        { id: "calc", columns: "calc(5px + 10%)", rows: "calc(5px + 10%)" },
+        { id: "auto-fit-typed-occupied", mode: "auto-fit", columns: "min-content 25%", rows: "fit-content(24px) calc(5px + 10%)", trailing: true },
+        { id: "auto-fit-typed-empty", mode: "auto-fit", columns: "minmax(8px, 1fr)", rows: "minmax(8px, 1fr)", occupyRepeat: false },
+        { id: "auto-fit-typed-gutter", mode: "auto-fit", columns: "min-content 25%", rows: "fit-content(24px) calc(5px + 10%)", width: 132, height: 132, gap: 8, trailing: true },
+      ];
+      const root = document.querySelector("#cases");
+      for (const test of cases) {
+        const section = document.createElement("section");
+        section.className = "case";
+        section.dataset.case = test.id;
+        const heading = document.createElement("h2");
+        heading.textContent = `${test.id}: auto-columns ${test.columns}; auto-rows ${test.rows}`;
+        const grid = document.createElement("div");
+        grid.className = "grid";
+        grid.style.width = `${test.width ?? 110}px`;
+        grid.style.height = `${test.height ?? 110}px`;
+        grid.style.columnGap = `${test.gap ?? 0}px`;
+        grid.style.rowGap = `${test.gap ?? 0}px`;
+        const mode = test.mode ?? "auto-fill";
+        grid.style.gridTemplateColumns = `repeat(${mode}, 20px)`;
+        grid.style.gridTemplateRows = `repeat(${mode}, 20px)`;
+        grid.style.gridAutoColumns = test.columns;
+        grid.style.gridAutoRows = test.rows;
+        const control = document.createElement("div");
+        control.className = "control";
+        const placed = document.createElement("div");
+        placed.className = "placed";
+        placed.textContent = "aa bbbb c";
+        placed.style.gridColumn = `${test.columnStart ?? -8} / ${test.columnEnd ?? -7}`;
+        placed.style.gridRow = `${test.rowStart ?? -8} / ${test.rowEnd ?? -7}`;
+        if (test.occupyRepeat !== false) grid.append(control);
+        grid.append(placed);
+        if (test.trailing) {
+          const trailing = document.createElement("div");
+          trailing.className = "trailing";
+          grid.append(trailing);
+        }
+        section.append(heading, grid);
+        root.append(section);
+      }
+      const observations = cases.map((test) => {
+        const section = document.querySelector(`[data-case="${test.id}"]`);
+        const grid = section.querySelector(".grid");
+        const item = section.querySelector(".placed");
+        const rect = (element) => {
+          const { x, y, width, height } = element.getBoundingClientRect();
+          return { x, y, width, height };
+        };
+        const style = getComputedStyle(grid);
+        return {
+          id: test.id,
+          autoRepeatMode: test.mode ?? "auto-fill",
+          authoredAutoColumns: test.columns,
+          authoredAutoRows: test.rows,
+          usedGap: style.columnGap,
+          computedColumns: style.gridTemplateColumns,
+          computedRows: style.gridTemplateRows,
+          grid: rect(grid),
+          item: rect(item),
+          control: section.querySelector(".control") ? rect(section.querySelector(".control")) : null,
+          trailing: section.querySelector(".trailing") ? rect(section.querySelector(".trailing")) : null,
+        };
+      });
+      window.chromeObservation = {
+        userAgent: navigator.userAgent,
+        viewport: { width: innerWidth, height: innerHeight, devicePixelRatio },
+        cases: observations,
+      };
+      document.querySelector("#observations").textContent = JSON.stringify(window.chromeObservation, null, 2);
+    </script>
+  </body>
+</html>
