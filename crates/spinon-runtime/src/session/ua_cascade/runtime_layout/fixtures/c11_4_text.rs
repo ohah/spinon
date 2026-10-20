@@ -3,7 +3,7 @@ use std::collections::BTreeMap;
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent};
 use spinon_layout::{
     FontStyleMode, LigatureMode, LineBreakMode, ParagraphStyle, TextLayoutEngine,
-    TextParagraphDirection,
+    TextParagraphDirection, WhiteSpaceMode, WordBreakMode,
 };
 use spinon_style::{
     ComputedCssDimension, ComputedCssGridTrackLengthPercentage, ComputedCssGridTrackSize,
@@ -33,6 +33,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
             Some(root.id().get()),
             None,
         ));
+    }
+    if let Some(input) = prepare_typed_auto_repeat_text(snapshot, root, styles)? {
+        return Ok(Some(input));
     }
 
     let mut pending = vec![root];
@@ -169,6 +172,214 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         paragraph_styles: BTreeMap::from([(item.id(), ahem_paragraph_style(case))]),
         engine,
     }))
+}
+
+fn prepare_typed_auto_repeat_text(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    styles: &ComputedStyleSnapshot,
+) -> Result<Option<super::C11_4TextInput>, RuntimeLayoutFailure> {
+    let (root_tag, root_id) = element_identity(snapshot, root)?;
+    let Some(scene_id) = root_id
+        .strip_prefix("c114-")
+        .and_then(|id| id.strip_suffix("-grid"))
+    else {
+        return Ok(None);
+    };
+    let Some((expected_item_count, text_item_index)) = typed_auto_repeat_text_case(scene_id) else {
+        return Ok(None);
+    };
+    if root_tag != "div" {
+        return Err(layout_failure(
+            "unsupported_c114_typed_auto_repeat_root",
+            Some(root.id().get()),
+            Some(root_tag),
+        ));
+    }
+
+    let item_handles = snapshot
+        .children(root)
+        .ok_or_else(|| layout_failure("missing_node", Some(root.id().get()), None))?
+        .collect::<Vec<_>>();
+    if item_handles.len() != expected_item_count {
+        return Err(layout_failure(
+            "unsupported_c114_typed_auto_repeat_items",
+            Some(root.id().get()),
+            Some(format!(
+                "expected={expected_item_count} actual={}",
+                item_handles.len()
+            )),
+        ));
+    }
+
+    let mut text_owner = None;
+    for (index, item) in item_handles.iter().enumerate() {
+        let (tag, item_id) = element_identity(snapshot, *item)?;
+        let expected_id = format!("c114-{scene_id}-item-{}", index + 1);
+        if tag != "div"
+            || item_id != expected_id
+            || snapshot.parent(*item) != Some(HostParent::Node(root))
+        {
+            return Err(layout_failure(
+                "unsupported_c114_typed_auto_repeat_item",
+                Some(item.id().get()),
+                Some(format!("expected={expected_id} actual={tag}#{item_id}")),
+            ));
+        }
+
+        let children = snapshot
+            .children(*item)
+            .ok_or_else(|| layout_failure("missing_node", Some(item.id().get()), None))?
+            .collect::<Vec<_>>();
+        if index == text_item_index {
+            if children.len() != 1 {
+                return Err(layout_failure(
+                    "unsupported_c114_typed_auto_repeat_text_node",
+                    Some(item.id().get()),
+                    Some(format!(
+                        "expected one direct text node, got {}",
+                        children.len()
+                    )),
+                ));
+            }
+            let text_handle = children[0];
+            let text = snapshot
+                .node(text_handle)
+                .and_then(|node| match node.kind() {
+                    HostNodeKind::Text(text) => Some(text.to_string_lossy()),
+                    HostNodeKind::Element(_) => None,
+                });
+            if snapshot.parent(text_handle) != Some(HostParent::Node(*item))
+                || text.as_deref() != Some("aa bbbb c")
+            {
+                return Err(layout_failure(
+                    "unsupported_c114_typed_auto_repeat_text_content",
+                    Some(text_handle.id().get()),
+                    Some(text.unwrap_or_else(|| "not a text node".to_owned())),
+                ));
+            }
+            let item_style = styles
+                .elements
+                .iter()
+                .find(|style| style.node_id == item.id())
+                .ok_or_else(|| {
+                    layout_failure("missing_computed_style", Some(item.id().get()), None)
+                })?;
+            validate_typed_auto_repeat_text_style(
+                item_style,
+                !matches!(scene_id, "typed-mixed-cycle" | "typed-minmax-max-content"),
+            )?;
+            text_owner = Some(*item);
+        } else if !children.is_empty() {
+            return Err(layout_failure(
+                "unsupported_c114_typed_auto_repeat_text_owner",
+                Some(item.id().get()),
+                Some("unexpected child under non-text item".to_owned()),
+            ));
+        }
+    }
+
+    let text_owner = text_owner.ok_or_else(|| {
+        layout_failure(
+            "missing_c114_typed_auto_repeat_text_owner",
+            Some(root.id().get()),
+            Some(scene_id.to_owned()),
+        )
+    })?;
+    let mut engine = TextLayoutEngine::new_without_system_fonts();
+    engine.register_font("Ahem", AHEM).map_err(|error| {
+        layout_failure(
+            "c114_typed_auto_repeat_font_registration",
+            Some(text_owner.id().get()),
+            Some(error.to_string()),
+        )
+    })?;
+    Ok(Some(super::C11_4TextInput {
+        paragraph_styles: BTreeMap::from([(text_owner.id(), typed_auto_repeat_paragraph_style())]),
+        engine,
+    }))
+}
+
+fn typed_auto_repeat_text_case(scene_id: &str) -> Option<(usize, usize)> {
+    match scene_id {
+        "typed-mixed-cycle" => Some((3, 0)),
+        "typed-auto"
+        | "typed-min-content"
+        | "typed-max-content"
+        | "typed-minmax-max-content"
+        | "typed-fit-content" => Some((1, 0)),
+        "typed-auto-fit-occupied" | "typed-auto-fit-gutter" => Some((3, 1)),
+        _ => None,
+    }
+}
+
+fn validate_typed_auto_repeat_text_style(
+    style: &ComputedElementStyle,
+    min_height_auto: bool,
+) -> Result<(), RuntimeLayoutFailure> {
+    if (style.font_size_css_px - 12.0).abs() > f32::EPSILON {
+        return unsupported_text_style(style.node_id.get(), "typed auto-repeat font-size");
+    }
+    for (name, expected) in [
+        ("display", "block"),
+        ("box-sizing", "border-box"),
+        ("font-family", "Ahem"),
+        ("font-size", "12px"),
+        ("font-weight", "400"),
+        ("font-style", "normal"),
+        ("line-height", "12px"),
+        ("white-space-collapse", "collapse"),
+        ("text-wrap-mode", "wrap"),
+        ("word-break", "normal"),
+        ("direction", "ltr"),
+        ("line-break", "auto"),
+        ("text-align", "start"),
+        ("overflow-wrap", "normal"),
+        ("text-transform", "none"),
+        ("writing-mode", "horizontal-tb"),
+        ("letter-spacing", "normal"),
+        ("word-spacing", "0px"),
+        ("text-indent", "0px"),
+    ] {
+        require_property(style, name, expected)?;
+    }
+    if style.layout_dimensions.width != ComputedCssDimension::Auto
+        || style.layout_dimensions.height != ComputedCssDimension::Auto
+        || style.layout_dimensions.min_width != ComputedCssDimension::Auto
+        || style.layout_dimensions.min_height
+            != if min_height_auto {
+                ComputedCssDimension::Auto
+            } else {
+                ComputedCssDimension::LengthPx(0.0)
+            }
+        || style.layout_dimensions.max_width != ComputedCssMaxSize::None
+        || style.layout_dimensions.max_height != ComputedCssMaxSize::None
+        || !zero_edges(style.layout_spacing.margin)
+        || !zero_edges(style.layout_spacing.padding)
+        || style.layout_border.top != 0.0
+        || style.layout_border.right != 0.0
+        || style.layout_border.bottom != 0.0
+        || style.layout_border.left != 0.0
+    {
+        return unsupported_text_style(style.node_id.get(), "typed auto-repeat text box geometry");
+    }
+    Ok(())
+}
+
+fn typed_auto_repeat_paragraph_style() -> ParagraphStyle {
+    ParagraphStyle {
+        font_family: "Ahem".to_owned(),
+        font_size: 12.0,
+        line_height: 12.0,
+        line_height_is_normal: false,
+        font_weight: 400.0,
+        font_style: FontStyleMode::Normal,
+        white_space: WhiteSpaceMode::Normal,
+        word_break: WordBreakMode::Normal,
+        direction: TextParagraphDirection::Ltr,
+        line_break: LineBreakMode::Strict,
+        ligatures: LigatureMode::Normal,
+    }
 }
 
 fn element_identity(

@@ -73,6 +73,7 @@ pub(super) fn to_taffy_grid_auto_tracks(
     node: NodeId,
     property: &'static str,
     auto_tracks: &GridAutoTrackSize,
+    calc_handles: &BTreeMap<LayoutCalcId, *const ()>,
 ) -> Result<Vec<TrackSizingFunction>, LayoutError> {
     let count = match auto_tracks {
         GridAutoTrackSize::Auto => 0,
@@ -90,31 +91,16 @@ pub(super) fn to_taffy_grid_auto_tracks(
         }
         GridAutoTrackSize::TrackList(tracks) => {
             for track in tracks {
-                let GridTrackSize::LengthPx(value) = track else {
-                    return Err(unsupported_auto_track_list(node, property));
-                };
-                if !value.is_finite() || *value < 0.0 {
-                    return Err(LayoutError::InvalidGridTrack { node, property });
-                }
-                output.push(TrackSizingFunction::from_length(*value));
+                output.push(to_taffy_track_sizing_function(
+                    node,
+                    property,
+                    *track,
+                    calc_handles,
+                )?);
             }
         }
     }
     Ok(output)
-}
-
-fn unsupported_auto_track_list(node: NodeId, property: &'static str) -> LayoutError {
-    if property == "grid-auto-rows" {
-        LayoutError::UnsupportedGridAutoRows {
-            node,
-            reason: "auto-repeat 결합은 fixed px grid-auto-rows 목록만 지원합니다",
-        }
-    } else {
-        LayoutError::UnsupportedGridAutoColumns {
-            node,
-            reason: "auto-repeat 결합은 fixed px grid-auto-columns 목록만 지원합니다",
-        }
-    }
 }
 
 pub(super) fn to_taffy_grid_tracks_with_auto_repeat(
@@ -266,8 +252,8 @@ fn to_taffy_length_percentage(
 
 fn grid_math_property(property: &'static str) -> LayoutCssMathProperty {
     match property {
-        "grid-template-columns" => LayoutCssMathProperty::GridTemplateColumns,
-        "grid-template-rows" => LayoutCssMathProperty::GridTemplateRows,
+        "grid-template-columns" | "grid-auto-columns" => LayoutCssMathProperty::GridTemplateColumns,
+        "grid-template-rows" | "grid-auto-rows" => LayoutCssMathProperty::GridTemplateRows,
         _ => unreachable!("Taffy Grid tracks have a fixed columns/rows property name"),
     }
 }

@@ -1,4 +1,5 @@
 use super::*;
+use crate::{LayoutCalcId, LayoutCssMath, LayoutCssMathProperty, LayoutCssMathValue};
 
 fn two_axis_auto_repeat_grid(
     mode: crate::GridAutoRepeatMode,
@@ -335,23 +336,179 @@ fn zero_secondary_line_fails_before_layout() {
 }
 
 #[test]
-fn auto_repeat_rejects_non_px_implicit_track_lists() {
+fn auto_repeat_implicit_lists_convert_supported_track_sizing_functions() {
+    let tracks = [
+        GridTrackSize::Percentage(0.25),
+        GridTrackSize::Fraction(0.5),
+        GridTrackSize::Auto,
+        GridTrackSize::MinContent,
+        GridTrackSize::MaxContent,
+        GridTrackSize::MinMax {
+            min: crate::GridTrackMinSizingFunction::LengthPx(8.0),
+            max: crate::GridTrackMaxSizingFunction::Fraction(1.0),
+        },
+        GridTrackSize::FitContent(crate::GridTrackLengthPercentage::LengthPx(24.0)),
+    ];
+    for track in tracks {
+        let mut input = two_axis_auto_repeat_grid(
+            crate::GridAutoRepeatMode::AutoFill,
+            GridAutoRows::TrackList(vec![track]),
+            crate::GridAutoColumns::TrackList(vec![track]),
+        );
+        set_two_axis_leading_span(&mut input, 1, 1);
+
+        let output = TaffyLayoutEngine.compute(&input).unwrap_or_else(|error| {
+            panic!("typed auto track {track:?} must convert on both axes: {error:?}")
+        });
+
+        for axis in [
+            LayoutGridTrackSizingAxis::Columns,
+            LayoutGridTrackSizingAxis::Rows,
+        ] {
+            let sizes = final_axis_track_sizes(&output, axis);
+            assert!(!sizes.is_empty(), "{track:?} produced no {axis:?} tracks");
+            assert!(
+                sizes.iter().all(|size| size.is_finite()),
+                "{track:?} produced a non-finite {axis:?} track: {sizes:?}"
+            );
+        }
+    }
+}
+
+#[test]
+fn auto_repeat_calc_implicit_tracks_use_axis_math_bindings() {
     let mut input = two_axis_auto_repeat_grid(
         crate::GridAutoRepeatMode::AutoFill,
-        GridAutoRows::Auto,
-        crate::GridAutoColumns::TrackList(vec![GridTrackSize::MinContent]),
+        GridAutoRows::TrackList(vec![GridTrackSize::Calc(LayoutCalcId(7_002))]),
+        crate::GridAutoColumns::TrackList(vec![GridTrackSize::Calc(LayoutCalcId(7_001))]),
     );
+    set_two_axis_leading_span(&mut input, 1, 1);
+    input = input.with_css_math(vec![
+        LayoutCssMathValue {
+            id: LayoutCalcId(7_001),
+            node_id: id(1),
+            property: LayoutCssMathProperty::GridTemplateColumns,
+            expression: LayoutCssMath::Sum(vec![
+                LayoutCssMath::LengthPx(5.0),
+                LayoutCssMath::Percentage(0.1),
+            ]),
+        },
+        LayoutCssMathValue {
+            id: LayoutCalcId(7_002),
+            node_id: id(1),
+            property: LayoutCssMathProperty::GridTemplateRows,
+            expression: LayoutCssMath::Sum(vec![
+                LayoutCssMath::LengthPx(5.0),
+                LayoutCssMath::Percentage(0.1),
+            ]),
+        },
+    ]);
+
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+
+    assert_eq!(
+        &final_axis_track_sizes(&output, LayoutGridTrackSizingAxis::Columns)[..1],
+        [25.0]
+    );
+    assert_eq!(
+        &final_axis_track_sizes(&output, LayoutGridTrackSizingAxis::Rows)[..1],
+        [23.0]
+    );
+}
+
+#[test]
+fn auto_repeat_nested_calc_tracks_validate_axis_and_node_binding() {
+    let mut input = two_axis_auto_repeat_grid(
+        crate::GridAutoRepeatMode::AutoFill,
+        GridAutoRows::TrackList(vec![GridTrackSize::FitContent(
+            crate::GridTrackLengthPercentage::Calc(LayoutCalcId(7_003)),
+        )]),
+        crate::GridAutoColumns::TrackList(vec![GridTrackSize::MinMax {
+            min: crate::GridTrackMinSizingFunction::Calc(LayoutCalcId(7_001)),
+            max: crate::GridTrackMaxSizingFunction::MaxContent,
+        }]),
+    );
+    set_two_axis_leading_span(&mut input, 1, 1);
+    input = input.with_css_math(vec![
+        LayoutCssMathValue {
+            id: LayoutCalcId(7_001),
+            node_id: id(1),
+            property: LayoutCssMathProperty::GridTemplateColumns,
+            expression: LayoutCssMath::LengthPx(8.0),
+        },
+        LayoutCssMathValue {
+            id: LayoutCalcId(7_003),
+            node_id: id(1),
+            property: LayoutCssMathProperty::GridTemplateRows,
+            expression: LayoutCssMath::LengthPx(12.0),
+        },
+    ]);
+
+    TaffyLayoutEngine.compute(&input).unwrap();
+
+    let mut mismatched = two_axis_auto_repeat_grid(
+        crate::GridAutoRepeatMode::AutoFill,
+        GridAutoRows::Auto,
+        crate::GridAutoColumns::TrackList(vec![GridTrackSize::Calc(LayoutCalcId(7_004))]),
+    );
+    mismatched = mismatched.with_css_math(vec![LayoutCssMathValue {
+        id: LayoutCalcId(7_004),
+        node_id: id(2),
+        property: LayoutCssMathProperty::GridTemplateColumns,
+        expression: LayoutCssMath::LengthPx(8.0),
+    }]);
+
+    assert_eq!(
+        TaffyLayoutEngine.compute(&mismatched),
+        Err(LayoutError::CssMathBindingMismatch {
+            node: id(1),
+            property: "grid-auto-columns",
+            id: LayoutCalcId(7_004),
+        })
+    );
+}
+
+#[test]
+fn auto_repeat_calc_implicit_track_rejects_missing_axis_binding() {
+    let input = two_axis_auto_repeat_grid(
+        crate::GridAutoRepeatMode::AutoFill,
+        GridAutoRows::Auto,
+        crate::GridAutoColumns::TrackList(vec![GridTrackSize::Calc(LayoutCalcId(7_005))]),
+    );
+
+    assert_eq!(
+        TaffyLayoutEngine.compute(&input),
+        Err(LayoutError::MissingCssMath {
+            node: id(1),
+            property: "grid-auto-columns",
+            id: LayoutCalcId(7_005),
+        })
+    );
+}
+
+#[test]
+fn typed_auto_track_lists_remain_rejected_outside_track_sizing_profile() {
+    let mut input = two_axis_auto_repeat_grid(
+        crate::GridAutoRepeatMode::AutoFill,
+        GridAutoRows::TrackList(vec![GridTrackSize::MinContent]),
+        crate::GridAutoColumns::Auto,
+    );
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::DenseAutoPlacement;
+    container.columns_auto_repeat = None;
+    container.rows_auto_repeat = None;
+
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
+    ));
+
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.auto_rows = GridAutoRows::Auto;
+    container.auto_columns = crate::GridAutoColumns::TrackList(vec![GridTrackSize::MaxContent]);
 
     assert!(matches!(
         TaffyLayoutEngine.compute(&input),
         Err(LayoutError::UnsupportedGridAutoColumns { node, .. }) if node == id(1)
-    ));
-
-    input.grid_containers.get_mut(&id(1)).unwrap().auto_columns = crate::GridAutoColumns::Auto;
-    input.grid_containers.get_mut(&id(1)).unwrap().auto_rows =
-        GridAutoRows::TrackList(vec![GridTrackSize::MinContent]);
-    assert!(matches!(
-        TaffyLayoutEngine.compute(&input),
-        Err(LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
     ));
 }

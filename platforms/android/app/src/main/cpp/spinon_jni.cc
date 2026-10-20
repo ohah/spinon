@@ -12,6 +12,7 @@
 #include "spinon_ffi.h"
 #include "spinon_wgpu_r08.h"
 
+#include <algorithm>
 #include <array>
 #include <cstdint>
 #include <cstdio>
@@ -903,7 +904,7 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeSetEnvironment(
     jfloat height_css_px, jfloat scale, jboolean dark) {
   auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
       static_cast<uintptr_t>(host_handle));
-  std::array<char, 32768> output{};
+  std::vector<char> output(1024 * 1024);
   const int32_t status = spinon_runtime_gpu_host_set_environment(
       host, width_css_px, height_css_px, scale, dark == JNI_TRUE ? 1 : 0,
       10000, output.data(), output.size());
@@ -1869,7 +1870,7 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC114GridTrackSizingFixtu
     if (scene_id != nullptr) env->ReleaseStringUTFChars(scene_id_value, scene_id);
     return nullptr;
   }
-  std::array<char, 32768> output{};
+  std::vector<char> output(1024 * 1024);
   const int32_t status = spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture(
       host, scene_id, 10000, output.data(), output.size());
   const std::string report = "status=" + std::to_string(status) + " " + output.data();
@@ -1879,6 +1880,21 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC114GridTrackSizingFixtu
   __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
                       kTag, "SPINON_C114_GRID_EVAL %s", log_report.c_str());
   if (status == 0) LogC10NodeFrames(report, "SPINON_C114_GRID_NODE_FRAME");
+  else {
+    constexpr size_t kC114ErrorLogChunkBytes = 700;
+    const size_t chunk_count =
+        (report.size() + kC114ErrorLogChunkBytes - 1) / kC114ErrorLogChunkBytes;
+    for (size_t part = 0; part < chunk_count; ++part) {
+      const size_t offset = part * kC114ErrorLogChunkBytes;
+      const size_t length = std::min(kC114ErrorLogChunkBytes, report.size() - offset);
+      __android_log_print(ANDROID_LOG_ERROR, kTag,
+                          "SPINON_C114_GRID_EVAL_DETAIL run_id=%s scene_id=%s part=%zu/%zu %.*s",
+                          run_id == nullptr ? "missing" : run_id,
+                          scene_id == nullptr ? "missing" : scene_id,
+                          part + 1, chunk_count, static_cast<int>(length),
+                          report.data() + offset);
+    }
+  }
   if (scene_id != nullptr) env->ReleaseStringUTFChars(scene_id_value, scene_id);
   if (run_id != nullptr) env->ReleaseStringUTFChars(run_id_value, run_id);
   return ToByteArray(env, report);

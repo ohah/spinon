@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "androidRun": "android-avd-c114-negative-implicit-android-avd-20261020T125416760Z-ef57f92f",
+  "iosRun": "ios-simulator-c114-negative-implicit-ios-simulator-20261020T130111829Z-d5866712",
+  "scenes": 138,
+  "sharedSceneIDs": true,
+  "framesCompared": 960,
+  "maxFrameDeltaCssPx": 0,
+  "frameToleranceCssPx": 0.015625,
+  "tracksCompared": 1019,
+  "maxTrackDeltaCssPx": 0,
+  "trackToleranceCssPx": 0.015625,
+  "autoFitCollapseStatesMatched": true,
+  "drawPresented": "138/138 per platform",
+  "pixelScenes": [
+    {
+      "scene": "auto-fill-overflow-neighbors",
+      "samples": 4
+    },
+    {
+      "scene": "columns-fill-negative-positive-cycle",
+      "samples": 5
+    },
+    {
+      "scene": "columns-negative-fixed-root-overflow",
+      "samples": 5
+    },
+    {
+      "scene": "implicit-min-content-overflow-border",
+      "samples": 5
+    },
+    {
+      "scene": "rows-negative-fixed-root-overflow",
+      "samples": 5
+    }
+  ]
+}

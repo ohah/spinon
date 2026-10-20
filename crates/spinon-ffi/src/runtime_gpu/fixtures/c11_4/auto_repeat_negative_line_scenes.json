@@ -130,5 +130,132 @@
     "autoColumns": "31px 47px", "autoRows": "17px 29px",
     "columnGap": "8px", "rowGap": "6px",
     "items": [{ "c": "-8 / -6", "r": "-9 / -7" }]
+  },
+  {
+    "id": "typed-fixed-cycle",
+    "columns": "repeat(auto-fill, 20px)", "rows": "repeat(auto-fill, 20px)",
+    "width": "110px", "height": "110px",
+    "autoColumns": "24px 36px", "autoRows": "24px 36px",
+    "columnGap": "0px", "rowGap": "0px",
+    "items": [{ "c": "-8 / -7", "r": "-8 / -7" }]
+  },
+  {
+    "id": "typed-fixed-cycle-three-leading-trailing",
+    "columns": "repeat(auto-fill, 20px)", "rows": "repeat(auto-fill, 20px)",
+    "width": "110px", "height": "110px",
+    "autoColumns": "24px 36px", "autoRows": "24px 36px",
+    "columnGap": "0px", "rowGap": "0px", "captureAllItems": true,
+    "items": [
+      { "c": "1 / 2", "r": "1 / 2" },
+      { "c": "-9 / -8", "r": "-9 / -8" },
+      { "c": "8 / 9", "r": "8 / 9" }
+    ]
+  },
+  {
+    "id": "typed-mixed-cycle",
+    "columns": "repeat(auto-fill, 20px)", "rows": "repeat(auto-fill, 20px)",
+    "width": "110px", "height": "110px",
+    "autoColumns": "min-content 25%", "autoRows": "fit-content(24px) calc(5px + 10%)",
+    "columnGap": "0px", "rowGap": "0px", "captureAllItems": true,
+    "items": [
+      { "c": "-9 / -8", "r": "-9 / -8", "text": "aa bbbb c", "minAuto": true, "minHeightZero": true },
+      { "c": "1 / 2", "r": "1 / 2" },
+      { "c": "8 / 9", "r": "8 / 9" }
+    ]
+  },
+  {
+    "id": "typed-auto",
+    "columns": "repeat(auto-fill, 20px)", "rows": "repeat(auto-fill, 20px)",
+    "width": "110px", "height": "110px", "autoColumns": "auto", "autoRows": "auto",
+    "columnGap": "0px", "rowGap": "0px",
+    "items": [{ "c": "-8 / -7", "r": "-8 / -7", "text": "aa bbbb c", "minAuto": true }]
+  },
+  {
+    "id": "typed-min-content",
+    "columns": "repeat(auto-fill, 20px)", "rows": "repeat(auto-fill, 20px)",
+    "width": "110px", "height": "110px",
+    "autoColumns": "min-content", "autoRows": "min-content",
+    "columnGap": "0px", "rowGap": "0px",
+    "items": [{ "c": "-8 / -7", "r": "-8 / -7", "text": "aa bbbb c", "minAuto": true }]
+  },
+  {
+    "id": "typed-max-content",
+    "columns": "repeat(auto-fill, 20px)", "rows": "repeat(auto-fill, 20px)",
+    "width": "110px", "height": "110px",
+    "autoColumns": "max-content", "autoRows": "max-content",
+    "columnGap": "0px", "rowGap": "0px",
+    "items": [{ "c": "-8 / -7", "r": "-8 / -7", "text": "aa bbbb c", "minAuto": true }]
+  },
+  {
+    "id": "typed-minmax-max-content",
+    "columns": "repeat(auto-fill, 20px)", "rows": "repeat(auto-fill, 20px)",
+    "width": "110px", "height": "110px",
+    "autoColumns": "minmax(12px, max-content)", "autoRows": "minmax(12px, max-content)",
+    "columnGap": "0px", "rowGap": "0px",
+    "items": [{ "c": "-8 / -7", "r": "-8 / -7", "text": "aa bbbb c", "minAuto": true, "minHeightZero": true }]
+  },
+  {
+    "id": "typed-fit-content",
+    "columns": "repeat(auto-fill, 20px)", "rows": "repeat(auto-fill, 20px)",
+    "width": "110px", "height": "110px",
+    "autoColumns": "fit-content(24px)", "autoRows": "fit-content(24px)",
+    "columnGap": "0px", "rowGap": "0px",
+    "items": [{ "c": "-8 / -7", "r": "-8 / -7", "text": "aa bbbb c", "minAuto": true }]
+  },
+  {
+    "id": "typed-fraction",
+    "columns": "repeat(auto-fill, 20px)", "rows": "repeat(auto-fill, 20px)",
+    "width": "110px", "height": "110px",
+    "autoColumns": "minmax(8px, 1fr)", "autoRows": "minmax(8px, 1fr)",
+    "columnGap": "0px", "rowGap": "0px",
+    "items": [{ "c": "-8 / -7", "r": "-8 / -7" }]
+  },
+  {
+    "id": "typed-percentage",
+    "columns": "repeat(auto-fill, 20px)", "rows": "repeat(auto-fill, 20px)",
+    "width": "110px", "height": "110px",
+    "autoColumns": "25%", "autoRows": "25%",
+    "columnGap": "0px", "rowGap": "0px",
+    "items": [{ "c": "-8 / -7", "r": "-8 / -7" }]
+  },
+  {
+    "id": "typed-calc",
+    "columns": "repeat(auto-fill, 20px)", "rows": "repeat(auto-fill, 20px)",
+    "width": "110px", "height": "110px",
+    "autoColumns": "calc(5px + 10%)", "autoRows": "calc(5px + 10%)",
+    "columnGap": "0px", "rowGap": "0px",
+    "items": [{ "c": "-8 / -7", "r": "-8 / -7" }]
+  },
+  {
+    "id": "typed-auto-fit-occupied",
+    "columns": "repeat(auto-fit, 20px)", "rows": "repeat(auto-fit, 20px)",
+    "width": "110px", "height": "110px",
+    "autoColumns": "min-content 25%", "autoRows": "fit-content(24px) calc(5px + 10%)",
+    "columnGap": "0px", "rowGap": "0px", "captureAllItems": true,
+    "items": [
+      { "c": "1 / 2", "r": "1 / 2" },
+      { "c": "-8 / -7", "r": "-8 / -7", "text": "aa bbbb c", "minAuto": true },
+      { "c": "8 / 9", "r": "8 / 9" }
+    ]
+  },
+  {
+    "id": "typed-auto-fit-empty",
+    "columns": "repeat(auto-fit, 20px)", "rows": "repeat(auto-fit, 20px)",
+    "width": "110px", "height": "110px",
+    "autoColumns": "minmax(8px, 1fr)", "autoRows": "minmax(8px, 1fr)",
+    "columnGap": "0px", "rowGap": "0px",
+    "items": [{ "c": "-8 / -7", "r": "-8 / -7" }]
+  },
+  {
+    "id": "typed-auto-fit-gutter",
+    "columns": "repeat(auto-fit, 20px)", "rows": "repeat(auto-fit, 20px)",
+    "width": "132px", "height": "132px",
+    "autoColumns": "min-content 25%", "autoRows": "fit-content(24px) calc(5px + 10%)",
+    "columnGap": "8px", "rowGap": "8px", "captureAllItems": true,
+    "items": [
+      { "c": "1 / 2", "r": "1 / 2" },
+      { "c": "-8 / -7", "r": "-8 / -7", "text": "aa bbbb c", "minAuto": true },
+      { "c": "8 / 9", "r": "8 / 9" }
+    ]
   }
 ]
