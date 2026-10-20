@@ -1,0 +1,37 @@
+7.6. Implicit Track Sizing: the grid-auto-rows and grid-auto-columns properties
+Name:	grid-auto-columns, grid-auto-rows
+Value:	<track-size>+
+Initial:	auto
+Applies to:	grid containers
+Inherited:	no
+Percentages:	see Track Sizing
+Computed value:	see Track Sizing
+Canonical order:	per grammar
+Animation type:	if the list lengths match, by computed value type per item; discrete otherwise
+
+The grid-auto-columns and grid-auto-rows properties specify the size of tracks not assigned a size by grid-template-rows or grid-template-columns. If multiple track sizes are given, the pattern is repeated as necessary to find the size of the affected tracks. The first track after the last explicitly-sized track receives the first specified size, and so on forwards; and the last implicit grid track before the explicit grid receives the last specified size, and so on backwards.
+
+NOTE: If a grid item is positioned into a row or column that is not explicitly declared by grid-template-rows/grid-template-columns and/or grid-template-areas, implicit grid tracks are created to hold it. This can happen either by explicitly positioning into a row or column that is out of range, or by the auto-placement algorithm creating additional rows or columns.
+
+<style>
+  #grid {
+    display: grid;
+    grid-template-columns: 20px;
+    grid-auto-columns: 40px;
+    grid-template-rows: 20px;
+    grid-auto-rows: 40px;
+  }
+  #A { grid-column: 1; grid-row: 1; }
+  #B { grid-column: 2; grid-row: 1; }
+  #C { grid-column: 1; grid-row: 2; }
+  #D { grid-column: 2; grid-row: 2; }
+</style>
+
+<div id="grid">
+  <div id="A">A</div>
+  <div id="B">B</div>
+  <div id="C">C</div>
+  <div id="D">D</div>
+</div>
+
+A 2×2 grid with one explicit 20px×20px grid cell in the first row+column and three additional cells resulting from the implicit 40px column and row generated to hold the additional grid items.

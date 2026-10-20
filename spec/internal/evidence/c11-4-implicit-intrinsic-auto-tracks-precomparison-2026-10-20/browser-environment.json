@@ -1,0 +1,21 @@
+{
+  "browser": "HeadlessChrome",
+  "browserVersion": "155.0.8059.85",
+  "agentBrowserVersion": "0.31.1",
+  "host": "macOS 26.5.1",
+  "viewportCssPx": {
+    "width": 1280,
+    "height": 633
+  },
+  "devicePixelRatio": 1,
+  "font": {
+    "name": "Ahem",
+    "loaded": true,
+    "fixturePath": "tests/fixtures/resources/c15/Ahem.ttf",
+    "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448"
+  },
+  "fixturePath": "tests/fixtures/css/c11/grid-auto-intrinsic-implicit-tracks-c114.html",
+  "fixtureSha256": "9b6914be90a969cfdd6ff944586da2c00791f655b15862dd6a5d6ebee49dec01",
+  "standardSource": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#auto-tracks",
+  "standardSectionCapture": "css-grid-1-2025-crd-section-7-6.txt"
+}
