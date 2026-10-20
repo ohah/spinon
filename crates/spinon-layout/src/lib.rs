@@ -644,6 +644,8 @@ mod grid_image_ratio_fixed_gutter_tests;
 #[cfg(test)]
 mod grid_image_ratio_oracle_tests;
 #[cfg(test)]
+mod grid_multispan_chrome_oracle_tests;
+#[cfg(test)]
 #[path = "intrinsic_size_tests.rs"]
 mod intrinsic_size_tests;
 #[cfg(test)]

@@ -1,0 +1,583 @@
+{
+  "capturedAtLocal": "2026-10-21 Asia/Seoul",
+  "device": {
+    "model": "SM-S731N",
+    "androidVersion": "16",
+    "apiLevel": 36,
+    "buildFingerprint": "samsung/r13sksx/r13s:16/BP4A.251205.006/S731NKSS9BZH2_OKR9BZH2:user/release-keys",
+    "physicalSize": "1080x2340",
+    "densityDpi": 450,
+    "eglHardware": "samsung",
+    "gpuRenderer": "Samsung Xclipse 940"
+  },
+  "apkSha256": "191f7457528f8691c3d0d03b1d8b28887a7172939a077b80e4d4b79fe4625224",
+  "comparisonToleranceCssPx": 0.015625,
+  "cases": [
+    {
+      "id": "competing-span2-forward",
+      "runId": "physc114-final-rebuild-20261021-01",
+      "runtime": {
+        "status": "ready",
+        "boxes": 3,
+        "drawPresented": true
+      },
+      "runtimeFramesCssPx": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 220,
+          "height": 40
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 80,
+          "height": 10
+        },
+        {
+          "index": 2,
+          "node": 3,
+          "x": 40,
+          "y": 10,
+          "width": 120,
+          "height": 10
+        }
+      ],
+      "chromeFramesRelativeToGridCssPx": [
+        {
+          "id": "span2-a-forward",
+          "x": 0,
+          "y": 0,
+          "width": 80,
+          "height": 10
+        },
+        {
+          "id": "span2-b-forward",
+          "x": 40,
+          "y": 10,
+          "width": 120,
+          "height": 10
+        }
+      ],
+      "chromeFrameMaxAbsoluteDeltaCssPx": 0,
+      "runtimeColumnTracksCssPx": [
+        40,
+        60,
+        60,
+        0
+      ],
+      "chrome155ColumnTracksCssPx": [
+        40,
+        60,
+        60,
+        0
+      ],
+      "trackMaxAbsoluteDeltaCssPx": 0,
+      "intrinsicSpanStageOrder": [
+        2
+      ],
+      "columnContributions": [
+        {
+          "item": 2,
+          "kind": "Minimum",
+          "span": 2,
+          "value": 80
+        },
+        {
+          "item": 3,
+          "kind": "Minimum",
+          "span": 2,
+          "value": 120
+        },
+        {
+          "item": 2,
+          "kind": "MinContent",
+          "span": 2,
+          "value": 80
+        },
+        {
+          "item": 3,
+          "kind": "MinContent",
+          "span": 2,
+          "value": 120
+        },
+        {
+          "item": 2,
+          "kind": "MaxContent",
+          "span": 2,
+          "value": 80
+        },
+        {
+          "item": 3,
+          "kind": "MaxContent",
+          "span": 2,
+          "value": 120
+        }
+      ]
+    },
+    {
+      "id": "competing-span2-reversed",
+      "runId": "physc114-final-rebuild-20261021-02",
+      "runtime": {
+        "status": "ready",
+        "boxes": 3,
+        "drawPresented": true
+      },
+      "runtimeFramesCssPx": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 220,
+          "height": 40
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 40,
+          "y": 0,
+          "width": 120,
+          "height": 10
+        },
+        {
+          "index": 2,
+          "node": 3,
+          "x": 0,
+          "y": 10,
+          "width": 80,
+          "height": 10
+        }
+      ],
+      "chromeFramesRelativeToGridCssPx": [
+        {
+          "id": "span2-b-reversed",
+          "x": 40,
+          "y": 0,
+          "width": 120,
+          "height": 10
+        },
+        {
+          "id": "span2-a-reversed",
+          "x": 0,
+          "y": 10,
+          "width": 80,
+          "height": 10
+        }
+      ],
+      "chromeFrameMaxAbsoluteDeltaCssPx": 0,
+      "runtimeColumnTracksCssPx": [
+        40,
+        60,
+        60,
+        0
+      ],
+      "chrome155ColumnTracksCssPx": [
+        40,
+        60,
+        60,
+        0
+      ],
+      "trackMaxAbsoluteDeltaCssPx": 0,
+      "intrinsicSpanStageOrder": [
+        2
+      ],
+      "columnContributions": [
+        {
+          "item": 2,
+          "kind": "Minimum",
+          "span": 2,
+          "value": 120
+        },
+        {
+          "item": 3,
+          "kind": "Minimum",
+          "span": 2,
+          "value": 80
+        },
+        {
+          "item": 2,
+          "kind": "MinContent",
+          "span": 2,
+          "value": 120
+        },
+        {
+          "item": 3,
+          "kind": "MinContent",
+          "span": 2,
+          "value": 80
+        },
+        {
+          "item": 2,
+          "kind": "MaxContent",
+          "span": 2,
+          "value": 120
+        },
+        {
+          "item": 3,
+          "kind": "MaxContent",
+          "span": 2,
+          "value": 80
+        }
+      ]
+    },
+    {
+      "id": "span2-before-span3",
+      "runId": "physc114-final-rebuild-20261021-03",
+      "runtime": {
+        "status": "ready",
+        "boxes": 4,
+        "drawPresented": true
+      },
+      "runtimeFramesCssPx": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 220,
+          "height": 40
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 80,
+          "height": 10
+        },
+        {
+          "index": 2,
+          "node": 3,
+          "x": 53.333332,
+          "y": 10,
+          "width": 120,
+          "height": 10
+        },
+        {
+          "index": 3,
+          "node": 4,
+          "x": 0,
+          "y": 20,
+          "width": 200,
+          "height": 10
+        }
+      ],
+      "chromeFramesRelativeToGridCssPx": [
+        {
+          "id": "span3-a",
+          "x": 0,
+          "y": 0,
+          "width": 80,
+          "height": 10
+        },
+        {
+          "id": "span3-b",
+          "x": 53.328125,
+          "y": 10,
+          "width": 120,
+          "height": 10
+        },
+        {
+          "id": "span3-c",
+          "x": 0,
+          "y": 20,
+          "width": 200,
+          "height": 10
+        }
+      ],
+      "chromeFrameMaxAbsoluteDeltaCssPx": 0.005206999999998629,
+      "runtimeColumnTracksCssPx": [
+        53.33333206176758,
+        73.33333587646484,
+        73.33333587646484,
+        0
+      ],
+      "chrome155ColumnTracksCssPx": [
+        53.328125,
+        73.328125,
+        73.34375,
+        0
+      ],
+      "trackMaxAbsoluteDeltaCssPx": 0.01041412353515625,
+      "intrinsicSpanStageOrder": [
+        2,
+        3
+      ],
+      "columnContributions": [
+        {
+          "item": 2,
+          "kind": "Minimum",
+          "span": 2,
+          "value": 80
+        },
+        {
+          "item": 3,
+          "kind": "Minimum",
+          "span": 2,
+          "value": 120
+        },
+        {
+          "item": 2,
+          "kind": "MinContent",
+          "span": 2,
+          "value": 80
+        },
+        {
+          "item": 3,
+          "kind": "MinContent",
+          "span": 2,
+          "value": 120
+        },
+        {
+          "item": 2,
+          "kind": "MaxContent",
+          "span": 2,
+          "value": 80
+        },
+        {
+          "item": 3,
+          "kind": "MaxContent",
+          "span": 2,
+          "value": 120
+        },
+        {
+          "item": 4,
+          "kind": "Minimum",
+          "span": 3,
+          "value": 200
+        },
+        {
+          "item": 4,
+          "kind": "MinContent",
+          "span": 3,
+          "value": 200
+        },
+        {
+          "item": 4,
+          "kind": "MaxContent",
+          "span": 3,
+          "value": 200
+        }
+      ]
+    },
+    {
+      "id": "span3-before-span2",
+      "runId": "physc114-final-rebuild-20261021-04",
+      "runtime": {
+        "status": "ready",
+        "boxes": 4,
+        "drawPresented": true
+      },
+      "runtimeFramesCssPx": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 220,
+          "height": 40
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 200,
+          "height": 10
+        },
+        {
+          "index": 2,
+          "node": 3,
+          "x": 53.333332,
+          "y": 10,
+          "width": 120,
+          "height": 10
+        },
+        {
+          "index": 3,
+          "node": 4,
+          "x": 0,
+          "y": 20,
+          "width": 80,
+          "height": 10
+        }
+      ],
+      "chromeFramesRelativeToGridCssPx": [
+        {
+          "id": "span3-c-reversed",
+          "x": 0,
+          "y": 0,
+          "width": 200,
+          "height": 10
+        },
+        {
+          "id": "span3-b-reversed",
+          "x": 53.328125,
+          "y": 10,
+          "width": 120,
+          "height": 10
+        },
+        {
+          "id": "span3-a-reversed",
+          "x": 0,
+          "y": 20,
+          "width": 80,
+          "height": 10
+        }
+      ],
+      "chromeFrameMaxAbsoluteDeltaCssPx": 0.005206999999998629,
+      "runtimeColumnTracksCssPx": [
+        53.33333206176758,
+        73.33333587646484,
+        73.33333587646484,
+        0
+      ],
+      "chrome155ColumnTracksCssPx": [
+        53.328125,
+        73.328125,
+        73.34375,
+        0
+      ],
+      "trackMaxAbsoluteDeltaCssPx": 0.01041412353515625,
+      "intrinsicSpanStageOrder": [
+        2,
+        3
+      ],
+      "columnContributions": [
+        {
+          "item": 3,
+          "kind": "Minimum",
+          "span": 2,
+          "value": 120
+        },
+        {
+          "item": 4,
+          "kind": "Minimum",
+          "span": 2,
+          "value": 80
+        },
+        {
+          "item": 3,
+          "kind": "MinContent",
+          "span": 2,
+          "value": 120
+        },
+        {
+          "item": 4,
+          "kind": "MinContent",
+          "span": 2,
+          "value": 80
+        },
+        {
+          "item": 3,
+          "kind": "MaxContent",
+          "span": 2,
+          "value": 120
+        },
+        {
+          "item": 4,
+          "kind": "MaxContent",
+          "span": 2,
+          "value": 80
+        },
+        {
+          "item": 2,
+          "kind": "Minimum",
+          "span": 3,
+          "value": 200
+        },
+        {
+          "item": 2,
+          "kind": "MinContent",
+          "span": 3,
+          "value": 200
+        },
+        {
+          "item": 2,
+          "kind": "MaxContent",
+          "span": 3,
+          "value": 200
+        }
+      ]
+    }
+  ],
+  "overflowPixelCopy": {
+    "sceneId": "auto-fill-overflow-neighbors",
+    "runId": "physc114-final-rebuild-20261021-overflow-02",
+    "status": "matched",
+    "surfacePx": [
+      900,
+      675
+    ],
+    "viewportCssPx": [
+      320,
+      240
+    ],
+    "scale": 2.8125,
+    "matchedSamples": 4,
+    "sha256": "796301f45cf347492a2b21a1534804beacb86cc378dc2a202b06c549c404030c",
+    "samples": [
+      {
+        "id": "overflow-root-edge-inside",
+        "css": [
+          39,
+          8
+        ],
+        "rgba": [
+          34,
+          197,
+          94,
+          255
+        ],
+        "exact": true
+      },
+      {
+        "id": "overflow-root-edge-outside",
+        "css": [
+          40,
+          8
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          255
+        ],
+        "exact": true
+      },
+      {
+        "id": "overflow-item-outside-root",
+        "css": [
+          91,
+          8
+        ],
+        "rgba": [
+          229,
+          72,
+          77,
+          255
+        ],
+        "exact": true
+      },
+      {
+        "id": "overflow-root-background",
+        "css": [
+          10,
+          30
+        ],
+        "rgba": [
+          34,
+          197,
+          94,
+          255
+        ],
+        "exact": true
+      }
+    ]
+  }
+}
