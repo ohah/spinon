@@ -171,6 +171,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "grid-gap-definite-percent", "grid-gap-cyclic-percent",
             "grid-gap-definite-calc", "grid-gap-cyclic-calc",
             "grid-gap-cyclic-percent-min-basis", "grid-gap-cyclic-calc-min-basis",
+            "row-min-content", "row-max-content", "column-min-content", "column-max-content",
+            "row-auto-placement-min-content", "column-auto-placement-max-content",
+            "row-auto-placement-auto", "column-auto-placement-auto",
+            "two-implicit-columns-min-content", "cycled-intrinsic-columns",
+            "cycled-fixed-max-rows", "implicit-percentage-column", "implicit-fraction-column",
+            "implicit-minmax-column", "implicit-fit-content-column",
+            "implicit-min-content-overflow-border", "implicit-calc-column",
+            "explicit-track-control", "row-positive-implicit-locked-item",
+            "column-positive-implicit-locked-item",
     };
     private static final String[] C131_COMPACT_SURFACE_CASE_IDS = {
             "visible", "clip-x", "clip-y", "clip-both", "clip-margin-padding",
@@ -251,6 +260,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        String implicitTrackFrame = c114ImplicitTextRootFrame(sceneId);
+        if (implicitTrackFrame != null) return implicitTrackFrame;
         String autoFitMinimumSizeFrame = c114AutoFitMinimumSizeRootFrame(sceneId);
         if (autoFitMinimumSizeFrame != null) return autoFitMinimumSizeFrame;
         switch (sceneId) {
@@ -357,6 +368,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        if (c114IsImplicitTextScene(sceneId)) return "";
         String autoFitMinimumSizeItemFrame = c114AutoFitMinimumSizeItemFrame(sceneId);
         if (autoFitMinimumSizeItemFrame != null) return autoFitMinimumSizeItemFrame;
         switch (sceneId) {
@@ -790,6 +802,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
+        if (c114IsImplicitTextScene(sceneId)) return null;
         String autoFitMinimumSizeNodeFrames = c114AutoFitMinimumSizeNodeFrames(sceneId);
         if (autoFitMinimumSizeNodeFrames != null) return autoFitMinimumSizeNodeFrames;
         switch (sceneId) {
@@ -897,6 +910,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        int implicitTrackBoxCount = c114ImplicitTextBoxCount(sceneId);
+        if (implicitTrackBoxCount != 0) return implicitTrackBoxCount;
         String autoFitMinimumSizeItemFrame = c114AutoFitMinimumSizeItemFrame(sceneId);
         if (autoFitMinimumSizeItemFrame != null) return autoFitMinimumSizeItemFrame.isEmpty() ? 1 : 2;
         if (sceneId.equals("auto-fit-span-neighbors")) return 3;
@@ -908,6 +923,73 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("columns-fill-rows-fit-empty")
                 || sceneId.startsWith("auto-fill-two-track-")) return 1;
         return sceneId.startsWith("grid-gap-") ? 5 : 2;
+    }
+
+    private static boolean c114IsImplicitTextScene(String sceneId) {
+        return c114ImplicitTextRootFrame(sceneId) != null;
+    }
+
+    private static String c114ImplicitTextRootFrame(String sceneId) {
+        switch (sceneId) {
+            case "row-min-content":
+            case "row-max-content":
+            case "row-auto-placement-min-content":
+            case "row-auto-placement-auto":
+            case "row-positive-implicit-locked-item":
+                return "width=40,height=80";
+            case "column-min-content":
+            case "column-max-content":
+            case "column-auto-placement-max-content":
+            case "column-auto-placement-auto":
+            case "implicit-percentage-column":
+            case "implicit-fraction-column":
+            case "implicit-minmax-column":
+            case "implicit-fit-content-column":
+            case "implicit-calc-column":
+            case "column-positive-implicit-locked-item":
+                return "width=160,height=40";
+            case "two-implicit-columns-min-content":
+            case "cycled-intrinsic-columns":
+                return "width=240,height=40";
+            case "cycled-fixed-max-rows":
+                return "width=40,height=100";
+            case "implicit-min-content-overflow-border":
+                return "width=44,height=44";
+            case "explicit-track-control":
+                return "width=40,height=24";
+            default:
+                return null;
+        }
+    }
+
+    private static int c114ImplicitTextBoxCount(String sceneId) {
+        switch (sceneId) {
+            case "row-min-content":
+            case "row-max-content":
+            case "column-min-content":
+            case "column-max-content":
+            case "row-positive-implicit-locked-item":
+            case "column-positive-implicit-locked-item":
+            case "explicit-track-control":
+                return 2;
+            case "row-auto-placement-min-content":
+            case "column-auto-placement-max-content":
+            case "row-auto-placement-auto":
+            case "column-auto-placement-auto":
+            case "two-implicit-columns-min-content":
+            case "implicit-percentage-column":
+            case "implicit-fraction-column":
+            case "implicit-minmax-column":
+            case "implicit-fit-content-column":
+            case "implicit-min-content-overflow-border":
+            case "implicit-calc-column":
+                return 3;
+            case "cycled-intrinsic-columns":
+            case "cycled-fixed-max-rows":
+                return 5;
+            default:
+                return 0;
+        }
     }
 
     private static boolean c114IsAutoFitMinimumSizeScene(String sceneId) {
@@ -947,6 +1029,46 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if ("implicit-min-content-overflow-border".equals(sceneId)) {
+            if (samples.size() != 5) return false;
+            boolean edgeInside = false;
+            boolean borderCovered = false;
+            boolean edgeOutside = false;
+            boolean overflow = false;
+            boolean afterItem = false;
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                switch (sample.id) {
+                    case "overflow-root-border-inside":
+                        edgeInside = sample.targetNodeId.equals("c114-" + sceneId + "-grid")
+                                && sample.xCssPx == 0 && sample.yCssPx == 8;
+                        if (!edgeInside) return false;
+                        break;
+                    case "overflow-root-border-covered":
+                        borderCovered = sample.targetNodeId.equals("c114-" + sceneId + "-grid")
+                                && sample.xCssPx == 43 && sample.yCssPx == 8;
+                        if (!borderCovered) return false;
+                        break;
+                    case "overflow-root-border-outside":
+                        edgeOutside = sample.targetNodeId.equals("c114-" + sceneId + "-grid")
+                                && sample.xCssPx == 44 && sample.yCssPx == 8;
+                        if (!edgeOutside) return false;
+                        break;
+                    case "overflow-item-outside-root":
+                        overflow = sample.targetNodeId.equals("c114-" + sceneId + "-item-2")
+                                && sample.xCssPx == 91 && sample.yCssPx == 8;
+                        if (!overflow) return false;
+                        break;
+                    case "overflow-after-item":
+                        afterItem = sample.targetNodeId.equals("c114-" + sceneId + "-grid")
+                                && sample.xCssPx == 92 && sample.yCssPx == 8;
+                        if (!afterItem) return false;
+                        break;
+                    default:
+                        return false;
+                }
+            }
+            return edgeInside && borderCovered && edgeOutside && overflow && afterItem;
+        }
         if ("auto-fill-overflow-neighbors".equals(sceneId)) {
             if (samples.size() != 4) return false;
             boolean edgeInside = false;
@@ -1967,6 +2089,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         boolean pixelMatrixRequested = pixelMatrixRunId != null || pixelMatrixEncodedSamples != null;
         boolean pixelMatrixSceneMatches = c114GridTrackSizingRequested
                 ? ("auto-fill-overflow-neighbors".equals(pixelMatrixSceneId)
+                        || "implicit-min-content-overflow-border".equals(pixelMatrixSceneId)
                         || "min-content-text-break-all".equals(pixelMatrixSceneId)
                         || "fixed-small-track-overflow".equals(pixelMatrixSceneId)
                         || "column-auto-natural-ratio".equals(pixelMatrixSceneId)
@@ -5427,6 +5550,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int[] c114GridExpectedRgb(String sampleId) {
         switch (sampleId) {
+            case "overflow-root-border-inside":
+                return new int[] {16, 24, 32};
+            case "overflow-root-border-covered":
+            case "overflow-root-border-outside":
+                return new int[] {229, 72, 77};
+            case "overflow-after-item":
+                return new int[] {0, 0, 0};
             case "overflow-root-edge-inside":
             case "grid-border":
                 return new int[] {34, 197, 94};

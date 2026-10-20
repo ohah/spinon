@@ -237,6 +237,7 @@ pub struct ComputedCssGridAutoRepeat {
 pub enum ComputedCssGridAutoRows {
     Auto,
     LengthPx(f32),
+    TrackList(Vec<ComputedCssGridTrackSize>),
     Unsupported(String),
 }
 
@@ -245,6 +246,7 @@ pub enum ComputedCssGridAutoRows {
 pub enum ComputedCssGridAutoColumns {
     Auto,
     LengthPx(f32),
+    TrackList(Vec<ComputedCssGridTrackSize>),
     Unsupported(String),
 }
 

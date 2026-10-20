@@ -207,13 +207,15 @@ pub enum GridPlacementMode {
 }
 
 /// 제한 profile에서 허용하는 implicit track sizing 입력입니다.
-#[derive(Clone, Copy, Debug, Default, PartialEq)]
+#[derive(Clone, Debug, Default, PartialEq)]
 pub enum GridAutoTrackSize {
-    /// `auto`; 해당 축에서 implicit track이 필요하지 않을 때만 사용할 수 있습니다.
+    /// 기본 `auto` track입니다. intrinsic sizing은 TrackSizing profile에서 지원합니다.
     #[default]
     Auto,
     /// 모든 positive implicit track에 반복할 하나의 고정 CSS px track입니다.
     LengthPx(f32),
+    /// C11.4 TrackSizing profile에서 positive implicit track마다 순환할 목록입니다.
+    TrackList(Vec<GridTrackSize>),
 }
 
 /// 제한 profile에서 허용하는 implicit row sizing 입력입니다.
@@ -264,52 +266,67 @@ pub(super) fn validate_grid_layout(
     }
 
     for (&id, container) in &input.grid_containers {
-        match (container.placement_mode, container.auto_rows) {
+        match (container.placement_mode, &container.auto_rows) {
+            (GridPlacementMode::TrackSizing, _) => {}
             (
                 GridPlacementMode::SparseRow
                 | GridPlacementMode::DenseAutoPlacement
-                | GridPlacementMode::TemplateGrid
-                | GridPlacementMode::TrackSizing,
+                | GridPlacementMode::TemplateGrid,
                 GridAutoRows::Auto | GridAutoRows::LengthPx(_),
             )
             | (_, GridAutoRows::Auto) => {}
-            (_, GridAutoRows::LengthPx(_)) => {
+            (_, GridAutoRows::LengthPx(_)) | (_, GridAutoRows::TrackList(_)) => {
                 return Err(LayoutError::UnsupportedGridAutoRows {
                     node: id,
                     reason: "grid-auto-rows는 자동 배치 profile에서만 사용할 수 있습니다",
                 });
             }
         }
-        match (container.placement_mode, container.auto_columns) {
+        match (container.placement_mode, &container.auto_columns) {
+            (GridPlacementMode::TrackSizing, _) => {}
             (
-                GridPlacementMode::DenseAutoPlacement
-                | GridPlacementMode::TemplateGrid
-                | GridPlacementMode::TrackSizing,
+                GridPlacementMode::DenseAutoPlacement | GridPlacementMode::TemplateGrid,
                 GridAutoColumns::Auto | GridAutoColumns::LengthPx(_),
             )
             | (_, GridAutoColumns::Auto) => {}
-            (_, GridAutoColumns::LengthPx(_)) => {
+            (_, GridAutoColumns::LengthPx(_)) | (_, GridAutoColumns::TrackList(_)) => {
                 return Err(LayoutError::UnsupportedGridAutoColumns {
                     node: id,
                     reason: "grid-auto-columns는 C11.2.3 profile에서만 사용할 수 있습니다",
                 });
             }
         }
-        if let GridAutoRows::LengthPx(value) = container.auto_rows
-            && (!value.is_finite() || value < 0.0)
+        if let GridAutoRows::LengthPx(value) = &container.auto_rows
+            && (!value.is_finite() || *value < 0.0)
         {
             return Err(LayoutError::InvalidGridTrack {
                 node: id,
                 property: "grid-auto-rows",
             });
         }
-        if let GridAutoColumns::LengthPx(value) = container.auto_columns
-            && (!value.is_finite() || value < 0.0)
+        if let GridAutoColumns::LengthPx(value) = &container.auto_columns
+            && (!value.is_finite() || *value < 0.0)
         {
             return Err(LayoutError::InvalidGridTrack {
                 node: id,
                 property: "grid-auto-columns",
             });
+        }
+        if let GridAutoRows::TrackList(tracks) = &container.auto_rows {
+            validate_tracks(
+                id,
+                "grid-auto-rows",
+                tracks,
+                container.placement_mode == GridPlacementMode::TrackSizing,
+            )?;
+        }
+        if let GridAutoColumns::TrackList(tracks) = &container.auto_columns {
+            validate_tracks(
+                id,
+                "grid-auto-columns",
+                tracks,
+                container.placement_mode == GridPlacementMode::TrackSizing,
+            )?;
         }
     }
 
@@ -724,6 +741,10 @@ mod tests;
 #[cfg(test)]
 #[path = "grid_track_sizing_tests.rs"]
 mod track_sizing_tests;
+
+#[cfg(test)]
+#[path = "grid_auto_track_sizing_tests.rs"]
+mod auto_track_sizing_tests;
 
 #[cfg(test)]
 #[path = "grid_auto_placement_tests.rs"]

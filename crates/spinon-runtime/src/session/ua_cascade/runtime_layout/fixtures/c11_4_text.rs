@@ -24,6 +24,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     root: HostNodeHandle,
     styles: &ComputedStyleSnapshot,
 ) -> Result<Option<super::C11_4TextInput>, RuntimeLayoutFailure> {
+    if let Some(input) = super::c11_4_implicit_intrinsic_text::prepare(snapshot, root, styles)? {
+        return Ok(Some(input));
+    }
     if styles.profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
         return Err(layout_failure(
             "c114_text_profile_mismatch",

@@ -8,6 +8,9 @@ mod flex_baseline;
 mod grid;
 mod grid_auto_placement;
 mod grid_placement;
+#[cfg(test)]
+#[path = "grid_text_stretch_tests.rs"]
+mod grid_text_stretch_tests;
 mod host_document;
 mod intrinsic_measurement;
 mod intrinsic_size;
@@ -16,6 +19,7 @@ mod positioning;
 mod revision;
 mod style;
 mod taffy_style;
+
 #[cfg(test)]
 mod test_allocator;
 mod text_flow;

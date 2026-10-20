@@ -61,9 +61,21 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "grid-gap-definite-percent", "grid-gap-cyclic-percent",
     "grid-gap-definite-calc", "grid-gap-cyclic-calc",
     "grid-gap-cyclic-percent-min-basis", "grid-gap-cyclic-calc-min-basis",
+    "row-min-content", "row-max-content", "column-min-content", "column-max-content",
+    "row-auto-placement-min-content", "column-auto-placement-max-content",
+    "row-auto-placement-auto", "column-auto-placement-auto",
+    "two-implicit-columns-min-content", "cycled-intrinsic-columns",
+    "cycled-fixed-max-rows", "implicit-percentage-column", "implicit-fraction-column",
+    "implicit-minmax-column", "implicit-fit-content-column",
+    "implicit-min-content-overflow-border", "implicit-calc-column",
+    "explicit-track-control", "row-positive-implicit-locked-item",
+    "column-positive-implicit-locked-item",
 ]
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    if let implicitTrackFrame = c114ImplicitTextRootFrame(sceneID) {
+        return implicitTrackFrame
+    }
     if let autoFitMinimumSizeFrame = c114AutoFitMinimumSizeRootFrame(sceneID) {
         return autoFitMinimumSizeFrame
     }
@@ -147,6 +159,7 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if c114IsImplicitTextScene(sceneID) { return "" }
     if let autoFitMinimumSizeItemFrame = c114AutoFitMinimumSizeItemFrame(sceneID) {
         return autoFitMinimumSizeItemFrame
     }
@@ -575,6 +588,7 @@ private func c114ImageTrackPassMatches(
 }
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+    if c114IsImplicitTextScene(sceneID) { return nil }
     if let autoFitMinimumSizeNodeFrames = c114AutoFitMinimumSizeNodeFrames(sceneID) {
         return autoFitMinimumSizeNodeFrames
     }
@@ -658,6 +672,8 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    let implicitTrackBoxCount = c114ImplicitTextBoxCount(sceneID)
+    if implicitTrackBoxCount != 0 { return implicitTrackBoxCount }
     if let autoFitMinimumSizeItemFrame = c114AutoFitMinimumSizeItemFrame(sceneID) {
         return autoFitMinimumSizeItemFrame.isEmpty ? 1 : 2
     }
@@ -670,6 +686,52 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
         "auto-fill-two-track-rows-both-342", "both-fit-empty",
         "columns-fit-rows-fill-empty", "columns-fill-rows-fit-empty"].contains(sceneID) { return 1 }
     return sceneID.hasPrefix("grid-gap-") ? 5 : 2
+}
+
+private func c114IsImplicitTextScene(_ sceneID: String) -> Bool {
+    c114ImplicitTextRootFrame(sceneID) != nil
+}
+
+private func c114ImplicitTextRootFrame(_ sceneID: String) -> String? {
+    switch sceneID {
+    case "row-min-content", "row-max-content", "row-auto-placement-min-content",
+         "row-auto-placement-auto", "row-positive-implicit-locked-item":
+        return "width=40,height=80"
+    case "column-min-content", "column-max-content", "column-auto-placement-max-content",
+         "column-auto-placement-auto", "implicit-percentage-column",
+         "implicit-fraction-column", "implicit-minmax-column", "implicit-fit-content-column",
+         "implicit-calc-column", "column-positive-implicit-locked-item":
+        return "width=160,height=40"
+    case "two-implicit-columns-min-content", "cycled-intrinsic-columns":
+        return "width=240,height=40"
+    case "cycled-fixed-max-rows":
+        return "width=40,height=100"
+    case "implicit-min-content-overflow-border":
+        return "width=44,height=44"
+    case "explicit-track-control":
+        return "width=40,height=24"
+    default:
+        return nil
+    }
+}
+
+private func c114ImplicitTextBoxCount(_ sceneID: String) -> Int {
+    switch sceneID {
+    case "row-min-content", "row-max-content", "column-min-content", "column-max-content",
+         "explicit-track-control", "row-positive-implicit-locked-item",
+         "column-positive-implicit-locked-item":
+        return 2
+    case "row-auto-placement-min-content", "column-auto-placement-max-content",
+         "row-auto-placement-auto", "column-auto-placement-auto",
+         "two-implicit-columns-min-content", "implicit-percentage-column",
+         "implicit-fraction-column", "implicit-minmax-column", "implicit-fit-content-column",
+         "implicit-min-content-overflow-border", "implicit-calc-column":
+        return 3
+    case "cycled-intrinsic-columns", "cycled-fixed-max-rows":
+        return 5
+    default:
+        return 0
+    }
 }
 
 private func c114AutoFitMinimumSizeRootFrame(_ sceneID: String) -> String? {
@@ -860,6 +922,13 @@ private struct C111MetalPixelRun {
         ("overflow-item-outside-root", "c114-auto-fill-overflow-neighbors-item", 91, 8, [229, 72, 77, 255]),
         ("overflow-root-background", "c114-auto-fill-overflow-neighbors-grid", 10, 30, [34, 197, 94, 255]),
     ]
+    private static let c114ImplicitTrackOverflowPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+        ("overflow-root-border-inside", "c114-implicit-min-content-overflow-border-grid", 0, 8, [16, 24, 32, 255]),
+        ("overflow-root-border-covered", "c114-implicit-min-content-overflow-border-grid", 43, 8, [229, 72, 77, 255]),
+        ("overflow-root-border-outside", "c114-implicit-min-content-overflow-border-grid", 44, 8, [229, 72, 77, 255]),
+        ("overflow-item-outside-root", "c114-implicit-min-content-overflow-border-item-2", 91, 8, [229, 72, 77, 255]),
+        ("overflow-after-item", "c114-implicit-min-content-overflow-border-grid", 92, 8, [0, 0, 0, 255]),
+    ]
     private static let c114RowTransferOverflowPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
         ("inside-item", "c114-row-transfer-fixed-column-item", 4, 2, [229, 72, 77, 255]),
         ("right-of-grid", "c114-row-transfer-fixed-column-item", 12, 2, [229, 72, 77, 255]),
@@ -964,6 +1033,8 @@ private struct C111MetalPixelRun {
         switch sceneID {
         case "auto-fill-overflow-neighbors":
             expectedSamples = c114AutoRepeatOverflowPixelSamples
+        case "implicit-min-content-overflow-border":
+            expectedSamples = c114ImplicitTrackOverflowPixelSamples
         case "fixed-small-track-overflow":
             expectedSamples = c114ImageOverflowPixelSamples
         case "column-auto-natural-ratio":
@@ -1069,20 +1140,7 @@ private struct C111MetalPixelRun {
                 $0.hasPrefix("--spinon-c114-grid-run-id=")
             }).map { String($0.dropFirst("--spinon-c114-grid-run-id=".count)) }
             guard let c114Scene,
-                  c114Scene == "min-content-text-break-all"
-                      || c114Scene == "fixed-small-track-overflow"
-                      || c114Scene == "column-auto-natural-ratio"
-                      || c114Scene == "row-transfer-input-capped-by-fixed-column-span"
-                      || c114Scene == "column-transfer-input-capped-by-fixed-row-span"
-                      || c114Scene == "fixed-gutter-column-suggestion-clamp"
-                      || c114Scene == "fixed-gutter-row-suggestion-clamp"
-                      || c114Scene == "grid-gap-definite-percent"
-                      || c114Scene == "grid-gap-cyclic-percent"
-                      || c114Scene == "grid-gap-definite-calc"
-                      || c114Scene == "grid-gap-cyclic-calc"
-                      || c114Scene == "grid-gap-cyclic-percent-min-basis"
-                  || c114Scene == "grid-gap-cyclic-calc-min-basis"
-                  || c114Scene == "auto-fill-overflow-neighbors",
+                  c114GridTrackSizingSceneIDs.contains(c114Scene),
                   c114Scene == sceneID, c114RunID == runID,
                   arguments.contains("--spinon-c114-grid-track-sizing"),
                   !isC1131Repeat, !isC1132NamedLine, !isC1133TemplateAreas,

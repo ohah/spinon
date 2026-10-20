@@ -17,10 +17,10 @@ const component = `${packageName}/.MainActivity`;
 const appPath = resolve(repositoryRoot,
   'build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app');
 const apkPath = resolve(repositoryRoot, 'platforms/android/app/build/outputs/apk/debug/app-debug.apk');
-const runPrefix = `c114-autofit-minsize-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
+const runPrefix = `c114-implicit-intrinsic-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot,
-  `spec/internal/evidence/c11-4-auto-fit-min-size-axis-${date}`, `${target}-${runPrefix}`);
+  `spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-${date}`, `${target}-${runPrefix}`);
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const sleep = (milliseconds) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, milliseconds);
 
@@ -345,6 +345,10 @@ scenes.push(...autoFitMinimumSizeScenes());
 assert.equal(scenes.length, 53, 'C11.4 auto-fit minimum-size simulator 행렬은 53 scene이어야 합니다.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 simulator scene ID가 중복됐습니다.');
+scenes.push(...implicitIntrinsicTrackScenes());
+assert.equal(scenes.length, 73, 'C11.4 intrinsic implicit track simulator 행렬은 73 scene이어야 합니다.');
+assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
+  'C11.4 simulator scene ID가 중복됐습니다.');
 
 function autoFitMinimumSizeScenes() {
   const result = [];
@@ -434,6 +438,117 @@ function autoFitMinimumSizeScenes() {
   return result;
 }
 
+function implicitIntrinsicTrackScenes() {
+  const metrics = {
+    XX: { minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+    XXXX: { minContent: 40, minContentHeight: 10, maxContent: 40, maxContentHeight: 10 },
+    'XX XXXXXXX': { minContent: 70, minContentHeight: 20, maxContent: 100, maxContentHeight: 10 },
+  };
+  const scene = ({ id, axis, width, height, tracks, items, texts, pixelSamples }) => {
+    const rootFrame = `width=${width},height=${height}`;
+    const nodeFrames = `node_frames_css_px=[0:node=1,x=0,y=0,${rootFrame};`
+      + items.map((item, index) => `${index + 1}:node=${index * 2 + 2},x=${item.x},y=${item.y},`
+        + `width=${item.width},height=${item.height}`).join(';') + ']';
+    return {
+      id,
+      axis,
+      boxCount: items.length + 1,
+      rootFrame,
+      itemFrame: null,
+      nodeFrames,
+      tracks,
+      collapsed: tracks.map(() => false),
+      intrinsicInputs: texts.map((text, index) => ({
+        grid: 1,
+        node: index * 2 + 2,
+        sourceOrder: index,
+        kind: 'text',
+        fontRegistryRevision: 1,
+        ...metrics[text],
+      })),
+      ...(pixelSamples ? { pixelSamples } : {}),
+    };
+  };
+  const overflowRoot = 'c114-implicit-min-content-overflow-border-grid';
+  const overflowSamples = [
+    { id: 'overflow-root-border-inside', nodeId: overflowRoot,
+      xCssPx: 0, yCssPx: 8, rgba: [16, 24, 32, 255] },
+    { id: 'overflow-root-border-covered', nodeId: overflowRoot,
+      xCssPx: 43, yCssPx: 8, rgba: [229, 72, 77, 255] },
+    { id: 'overflow-root-border-outside', nodeId: overflowRoot,
+      xCssPx: 44, yCssPx: 8, rgba: [229, 72, 77, 255] },
+    { id: 'overflow-item-outside-root', nodeId: 'c114-implicit-min-content-overflow-border-item-2',
+      xCssPx: 91, yCssPx: 8, rgba: [229, 72, 77, 255] },
+    { id: 'overflow-after-item', nodeId: overflowRoot,
+      xCssPx: 92, yCssPx: 8, rgba: [0, 0, 0, 255] },
+  ];
+  return [
+    scene({ id: 'row-min-content', axis: 'Rows', width: 40, height: 80,
+      tracks: [12, 20], texts: ['XX XXXXXXX'],
+      items: [{ x: 0, y: 12, width: 40, height: 20 }] }),
+    scene({ id: 'row-max-content', axis: 'Rows', width: 40, height: 80,
+      tracks: [12, 20], texts: ['XX XXXXXXX'],
+      items: [{ x: 0, y: 12, width: 40, height: 20 }] }),
+    scene({ id: 'column-min-content', axis: 'Columns', width: 160, height: 40,
+      tracks: [24, 70], texts: ['XX XXXXXXX'],
+      items: [{ x: 24, y: 0, width: 70, height: 40 }] }),
+    scene({ id: 'column-max-content', axis: 'Columns', width: 160, height: 40,
+      tracks: [24, 100], texts: ['XX XXXXXXX'],
+      items: [{ x: 24, y: 0, width: 100, height: 40 }] }),
+    scene({ id: 'row-auto-placement-min-content', axis: 'Rows', width: 40, height: 80,
+      tracks: [12, 20], texts: ['XX', 'XX XXXXXXX'],
+      items: [{ x: 0, y: 0, width: 40, height: 12 }, { x: 0, y: 12, width: 40, height: 20 }] }),
+    scene({ id: 'column-auto-placement-max-content', axis: 'Columns', width: 160, height: 40,
+      tracks: [24, 100], texts: ['XX', 'XX XXXXXXX'],
+      items: [{ x: 0, y: 0, width: 24, height: 40 }, { x: 24, y: 0, width: 100, height: 40 }] }),
+    scene({ id: 'row-auto-placement-auto', axis: 'Rows', width: 40, height: 80,
+      tracks: [12, 20], texts: ['XX', 'XX XXXXXXX'],
+      items: [{ x: 0, y: 0, width: 40, height: 12 }, { x: 0, y: 12, width: 40, height: 20 }] }),
+    scene({ id: 'column-auto-placement-auto', axis: 'Columns', width: 160, height: 40,
+      tracks: [24, 100], texts: ['XX', 'XX XXXXXXX'],
+      items: [{ x: 0, y: 0, width: 24, height: 40 }, { x: 24, y: 0, width: 100, height: 40 }] }),
+    scene({ id: 'two-implicit-columns-min-content', axis: 'Columns', width: 240, height: 40,
+      tracks: [24, 20, 40], texts: ['XX', 'XXXX'],
+      items: [{ x: 24, y: 0, width: 20, height: 40 }, { x: 44, y: 0, width: 40, height: 40 }] }),
+    scene({ id: 'cycled-intrinsic-columns', axis: 'Columns', width: 240, height: 40,
+      tracks: [24, 20, 100, 40], texts: ['XX', 'XX', 'XX XXXXXXX', 'XXXX'],
+      items: [{ x: 0, y: 0, width: 24, height: 40 }, { x: 24, y: 0, width: 20, height: 40 },
+        { x: 44, y: 0, width: 100, height: 40 }, { x: 144, y: 0, width: 40, height: 40 }] }),
+    scene({ id: 'cycled-fixed-max-rows', axis: 'Rows', width: 40, height: 100,
+      tracks: [12, 10, 20, 10], texts: ['XX', 'XX', 'XX XXXXXXX', 'XXXX'],
+      items: [{ x: 0, y: 0, width: 40, height: 12 }, { x: 0, y: 12, width: 40, height: 10 },
+        { x: 0, y: 22, width: 40, height: 20 }, { x: 0, y: 42, width: 40, height: 10 }] }),
+    scene({ id: 'implicit-percentage-column', axis: 'Columns', width: 160, height: 40,
+      tracks: [24, 40], texts: ['XX', 'XX'],
+      items: [{ x: 0, y: 0, width: 24, height: 40 }, { x: 24, y: 0, width: 40, height: 40 }] }),
+    scene({ id: 'implicit-fraction-column', axis: 'Columns', width: 160, height: 40,
+      tracks: [24, 136], texts: ['XX', 'XX'],
+      items: [{ x: 0, y: 0, width: 24, height: 40 }, { x: 24, y: 0, width: 136, height: 40 }] }),
+    scene({ id: 'implicit-minmax-column', axis: 'Columns', width: 160, height: 40,
+      tracks: [24, 40], texts: ['XX', 'XX'],
+      items: [{ x: 0, y: 0, width: 24, height: 40 }, { x: 24, y: 0, width: 40, height: 40 }] }),
+    scene({ id: 'implicit-fit-content-column', axis: 'Columns', width: 160, height: 40,
+      tracks: [24, 70], texts: ['XX', 'XX XXXXXXX'],
+      items: [{ x: 0, y: 0, width: 24, height: 40 }, { x: 24, y: 0, width: 70, height: 40 }] }),
+    scene({ id: 'implicit-min-content-overflow-border', axis: 'Columns', width: 44, height: 44,
+      tracks: [20, 70], texts: ['XX', 'XX XXXXXXX'],
+      items: [{ x: 2, y: 2, width: 20, height: 40 }, { x: 22, y: 2, width: 70, height: 40 }],
+      pixelSamples: overflowSamples }),
+    scene({ id: 'implicit-calc-column', axis: 'Columns', width: 160, height: 40,
+      tracks: [24, 21], texts: ['XX', 'XX'],
+      items: [{ x: 0, y: 0, width: 24, height: 40 }, { x: 24, y: 0, width: 21, height: 40 }] }),
+    scene({ id: 'explicit-track-control', axis: 'Columns', width: 40, height: 24,
+      tracks: [40], texts: ['XX'],
+      items: [{ x: 0, y: 0, width: 40, height: 24 }] }),
+    scene({ id: 'row-positive-implicit-locked-item', axis: 'Rows', width: 40, height: 80,
+      tracks: [12, 20], texts: ['XX XXXXXXX'],
+      items: [{ x: 0, y: 12, width: 40, height: 20 }] }),
+    scene({ id: 'column-positive-implicit-locked-item', axis: 'Columns', width: 160, height: 40,
+      tracks: [24, 70], texts: ['XX XXXXXXX'],
+      items: [{ x: 24, y: 0, width: 70, height: 40 }] }),
+  ];
+}
+
 function command(binary, args, { allowFailure = false, timeout = 120_000, encoding = 'utf8' } = {}) {
   const result = spawnSync(binary, args, {
     cwd: repositoryRoot, encoding, timeout, maxBuffer: 96 * 1024 * 1024,
@@ -474,7 +589,10 @@ function currentAndroidDevice() {
 }
 
 function androidLog(adb, pid) {
-  const output = adb(['logcat', '-d', '-v', 'threadtime', 'SpinonBootstrap:V', '*:S']).stdout;
+  const output = adb([
+    'logcat', '-d', '-T', '1000', '-v', 'threadtime', `--pid=${pid}`,
+    'SpinonBootstrap:V', '*:S',
+  ], { timeout: 30_000 }).stdout;
   return output.split(/\r?\n/).filter((line) => {
     const match = line.match(/^\d{2}-\d{2}\s+\S+\s+(\d+)\s+\d+\s+[VDIWEF]\s+SpinonBootstrap:/);
     return match && Number(match[1]) === pid;
@@ -543,6 +661,21 @@ function verifyRuntimeLog(log, scene, runID) {
   const tracePayload = traceParts.map(({ payload }) => payload).join('')
     .replace(/^grid_track_sizing_diagnostics=/, '');
   const diagnostics = JSON.parse(tracePayload);
+  if (scene.intrinsicInputs) {
+    const intrinsicInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => ({
+      grid: input.grid,
+      node: input.node,
+      sourceOrder: input.sourceOrder,
+      kind: input.source?.kind,
+      fontRegistryRevision: input.source?.fontRegistryRevision,
+      minContent: input.source?.minContent,
+      minContentHeight: input.source?.minContentHeight,
+      maxContent: input.source?.maxContent,
+      maxContentHeight: input.source?.maxContentHeight,
+    }));
+    assert.deepEqual(intrinsicInputs, scene.intrinsicInputs,
+      `${scene.id}: text intrinsic input matrix differs from Ahem oracle`);
+  }
   const axisSpecs = scene.axes ?? {
     [scene.axis]: { tracks: scene.tracks, collapsed: scene.collapsed },
   };

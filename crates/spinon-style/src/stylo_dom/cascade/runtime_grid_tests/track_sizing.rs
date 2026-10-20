@@ -55,6 +55,92 @@ fn track_sizing_profile_preserves_intrinsic_track_functions_and_calc_values() {
 }
 
 #[test]
+fn track_sizing_profile_preserves_grid_auto_track_lists_on_both_axes() {
+    let fixture = fixture(
+        "display:grid;box-sizing:border-box;width:160px;height:80px;grid-template-columns:24px;grid-template-rows:12px;grid-auto-columns:min-content max-content 25% 1fr minmax(20px,40px) fit-content(30px) calc(10% + 5px);grid-auto-rows:max-content 10px min-content;margin:0;padding:0",
+    );
+    let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+        &fixture.view,
+        &[],
+        viewport(),
+        Default::default(),
+    )
+    .unwrap();
+    let grid = snapshot.elements[0].grid_layout.as_ref().unwrap();
+
+    assert_eq!(
+        grid.auto_columns,
+        crate::ComputedCssGridAutoColumns::TrackList(vec![
+            ComputedCssGridTrackSize::MinContent,
+            ComputedCssGridTrackSize::MaxContent,
+            ComputedCssGridTrackSize::Percentage(0.25),
+            ComputedCssGridTrackSize::Fraction(1.0),
+            ComputedCssGridTrackSize::MinMax {
+                min: ComputedCssGridTrackBreadth::LengthPx(20.0),
+                max: ComputedCssGridTrackBreadth::LengthPx(40.0),
+            },
+            ComputedCssGridTrackSize::FitContent(ComputedCssGridTrackLengthPercentage::LengthPx(
+                30.0
+            ),),
+            ComputedCssGridTrackSize::Calc(ComputedCssMath::Sum(vec![
+                ComputedCssMath::Percentage(0.1),
+                ComputedCssMath::LengthPx(5.0),
+            ])),
+        ])
+    );
+    assert_eq!(
+        grid.auto_rows,
+        ComputedCssGridAutoRows::TrackList(vec![
+            ComputedCssGridTrackSize::MaxContent,
+            ComputedCssGridTrackSize::LengthPx(10.0),
+            ComputedCssGridTrackSize::MinContent,
+        ])
+    );
+    assert!(snapshot.diagnostics.is_empty());
+}
+
+#[test]
+fn track_sizing_auto_track_list_reservation_failures_keep_axis_context() {
+    use super::super::incremental::{
+        IntegerRepeatReservationSite, inject_integer_repeat_reservation_failure,
+    };
+
+    for (property, site, declaration) in [
+        (
+            "grid-auto-rows",
+            IntegerRepeatReservationSite::AutoRows,
+            "grid-auto-rows:10px max-content",
+        ),
+        (
+            "grid-auto-columns",
+            IntegerRepeatReservationSite::AutoColumns,
+            "grid-auto-columns:min-content max-content",
+        ),
+    ] {
+        let fixture = fixture(&format!(
+            "display:grid;grid-template-columns:40px;grid-template-rows:20px;{declaration}"
+        ));
+        let error = {
+            let _guard = inject_integer_repeat_reservation_failure(site);
+            compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+                &fixture.view,
+                &[],
+                viewport(),
+                Default::default(),
+            )
+            .unwrap_err()
+        };
+        assert!(matches!(
+            error,
+            crate::CssCascadeError::GridAllocationFailure {
+                node,
+                property: error_property,
+            } if node == fixture.root && error_property == property
+        ));
+    }
+}
+
+#[test]
 fn previous_template_profile_rejects_intrinsic_track_functions() {
     let fixture = fixture(
         "display:grid;box-sizing:border-box;width:300px;height:200px;grid-template-columns:minmax(20px,1fr);grid-template-rows:40px;margin:0;padding:0",

@@ -58,7 +58,7 @@ impl CalcLayoutTree {
                 - layout.padding.top
                 - layout.padding.bottom;
             if node_style.is_some_and(|node| node.style.height == crate::LayoutDimension::Auto)
-                && (content_height - snapshot.height).abs() > 0.05
+                && text_measure_exceeds_content_height(content_height, snapshot.height)
             {
                 return Err(LayoutError::TextLayoutHeightMismatch(paragraph.node));
             }
@@ -96,7 +96,7 @@ impl CalcLayoutTree {
                     - layout.border.bottom
                     - layout.padding.top
                     - layout.padding.bottom;
-                if (content_height - snapshot.height).abs() > 0.05 {
+                if text_measure_exceeds_content_height(content_height, snapshot.height) {
                     return Err(LayoutError::TextLayoutHeightMismatch(owner));
                 }
                 owner_segments.push(LayoutTextFlowSegment {
@@ -203,6 +203,10 @@ impl CalcLayoutTree {
             .insert(node_id, sizes.clone());
         Ok(sizes)
     }
+}
+
+fn text_measure_exceeds_content_height(content_height: f32, measured_height: f32) -> bool {
+    content_height + 0.05 < measured_height
 }
 
 fn normalize_zero(value: f32) -> f32 {

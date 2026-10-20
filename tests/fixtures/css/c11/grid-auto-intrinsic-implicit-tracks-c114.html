@@ -138,6 +138,18 @@
       <div class="text-item" style="grid-row:1 / 2;grid-column:1 / 2">XX</div>
     </div>
   </section>
+  <section class="case" data-case="row-positive-implicit-locked-item">
+    <span class="label">positive implicit locked row with auto column</span>
+    <div class="grid" id="row-positive-implicit-locked-item" style="width:40px;height:80px;grid-template-columns:40px;grid-template-rows:12px;grid-auto-rows:min-content;grid-auto-flow:row">
+      <div class="text-item" style="grid-row:2 / 3">XX XXXXXXX</div>
+    </div>
+  </section>
+  <section class="case" data-case="column-positive-implicit-locked-item">
+    <span class="label">positive implicit locked column with auto row</span>
+    <div class="grid" id="column-positive-implicit-locked-item" style="width:160px;height:40px;grid-template-columns:24px;grid-template-rows:40px;grid-auto-columns:min-content;grid-auto-flow:column">
+      <div class="text-item" style="grid-column:2 / 3">XX XXXXXXX</div>
+    </div>
+  </section>
   <pre class="result" id="result"></pre>
   <script>
     const rect = (node) => {

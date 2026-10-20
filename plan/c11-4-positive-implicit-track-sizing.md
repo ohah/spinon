@@ -2,7 +2,7 @@
 
 **상위 원본:** [C11 상태](../spec/STATUS.md#c11-css-grid) · [C11.4 track sizing 계획](./c11-4-grid-track-sizing.md) · [CSS Grid Level 1 2025 CRD §7.5–§7.6, §8.5, §11.3–§11.8](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#auto-tracks) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획과 Chrome 155 18-case 사전 비교를 준비했다. 구현 전 계획 자체를 독립 실패 관점 20개로 검토한다. 구현 전용 브랜치와 후속 PR은 계획 PR이 main에 병합된 뒤 최신 `origin/main`에서 시작한다. 이 계획만으로 C11.4 체크나 완료 수를 바꾸지 않는다.
+**상태:** 계획과 Chrome 155 20-case 사전 비교를 준비했다. 구현 전 계획 자체를 독립 실패 관점 20개로 검토한다. 구현 전용 브랜치와 후속 PR은 계획 PR이 main에 병합된 뒤 최신 `origin/main`에서 시작한다. 이 계획만으로 C11.4 체크나 완료 수를 바꾸지 않는다.
 
 ## 목적
 
@@ -29,12 +29,12 @@
 
 - explicit grid 앞쪽의 negative implicit tracks와 규범의 역방향 목록 순환은 현재 placement model의 표현 범위 밖이며 구체적인 오류로 거부한다.
 - `grid-auto-*`의 line names, `repeat()` 함수, template areas, out-of-flow item, 일반적인 item order, arbitrary CSS math 및 현재 `GridTrackSize` projection이 거부하는 computed value는 지원하지 않는다.
-- `grid-template-*`에 auto-repeat이 있는 container와 positive implicit track의 결합은 이 slice에서 검증하지 않는다. auto-repeat expansion을 거치는 별도 placement path와의 교차 행렬은 C11.4 후속으로 남긴다. `grid-auto-*` 자체에는 `repeat()` 문법이 없고, 해당 입력은 거부한다. `grid-template-*`의 auto-repeat·line placement·placement/spanning 전체 matrix는 계속 별도 미완료다.
+- `grid-template-*`에 auto-repeat이 있는 container와 positive implicit track의 결합은 이 slice에서 검증하지 않는다. auto-repeat expansion을 거치는 별도 placement path와의 교차 행렬은 C11.4 후속으로 남긴다. auto-repeat container와 C11.4 `grid-auto-rows`·`grid-auto-columns` typed 목록을 함께 주면 지원하지 않는 조합으로 명시 거부한다. `grid-auto-*` 자체에는 `repeat()` 문법이 없고, 해당 입력은 거부한다. `grid-template-*`의 auto-repeat·line placement·placement/spanning 전체 matrix는 계속 별도 미완료다.
 - vertical writing mode, WPT full-suite, 실기기, hardware GPU 및 iOS compositor 이후 surface equality는 이 계획의 완료 기준이 아니다.
 
 ## 사전 oracle과 판정
 
-[사전 비교 자료](../spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-precomparison-2026-10-20/README.md)는 W3C 규범과 Chrome 관찰을 별도 파일로 고정한다. 18개 case는 direct intrinsic sizing, row/column auto-placement, list cycling, `auto`·fixed·percentage·fraction·`minmax()`·`fit-content()`·`calc()` 및 border 밖 overflow를 포함한다.
+[사전 비교 자료](../spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-precomparison-2026-10-20/README.md)는 W3C 규범과 Chrome 관찰을 별도 파일로 고정한다. 20개 case는 direct intrinsic sizing, row/column auto-placement, positive implicit row·column에 한 축만 고정된 배치, list cycling, `auto`·fixed·percentage·fraction·`minmax()`·`fit-content()`·`calc()` 및 border 밖 overflow를 포함한다.
 
 - 규범 원본: CSS Grid Level 1 2025 CRD §7.5–§7.6, §8.5, §11.3–§11.8.
 - Chrome oracle: Agent Browser 0.31.1의 HeadlessChrome 155.0.8059.85, macOS 26.5.1, viewport 1280×633 CSS px, DPR 1, Ahem fixture font loaded.
@@ -49,8 +49,8 @@
 2. 계획 PR을 `Rebase and merge`한 뒤 latest `origin/main`에서 구현 branch를 만든다.
 3. Cascade snapshot에서 auto-track list의 순서·길이·축을 보존하고 typed projection은 기존 track converter와 fallible reservation을 재사용한다. unsupported values가 property/node 진단을 유지하는지 확인한다.
 4. Layout container input이 track-size 목록을 소유하게 하고 positive implicit track expansion에서 pattern을 축별로 반복한다. explicit prefix를 건너뛰거나 columns/rows list를 섞지 않는다. allocation과 track cap에서 partial output을 금지한다.
-5. Rust/style projection matrix에서 18개 oracle 및 zero/invalid/negative implicit, hidden item, cross-boundary span, pattern boundary, track cap과 allocation failure controls를 검증한다. unsupported grammar가 여전히 fail-closed인지 확인한다.
-6. C11.4 opt-in app fixture에 oracle 18개 route를 연결한다. 기존 PR #372 기준 53-scene matrix와 새 route를 합쳐 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator에서 각각 71/71 scene을 실행한다. root/item frame, used track list, axis trace, revision, draw/present를 검사한다. overflow case에서는 border 내부·stroke·바깥 PixelCopy/Metal 좌표를 고정한다. 실기기를 연결하지 않는다.
+5. Rust/style projection matrix에서 20개 oracle 및 zero/invalid/negative implicit, hidden item, cross-boundary span, pattern boundary, track cap과 allocation failure controls를 검증한다. unsupported grammar가 여전히 fail-closed인지 확인한다.
+6. C11.4 opt-in app fixture에 oracle 20개 route를 연결한다. 기존 PR #372 기준 53-scene matrix와 신규 route를 합쳐 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator에서 각각 73/73 scene을 실행한다. root/item frame, used track list, axis trace, revision, draw/present를 검사한다. overflow case에서는 border 내부·stroke·바깥 PixelCopy/Metal 좌표를 고정한다. 실기기를 연결하지 않는다.
 7. `cargo test --locked --workspace`, workspace all-target Clippy `-D warnings`, `cargo fmt --all -- --check`, focused CSS reference/runtime tests, Android/iOS build gates와 기본/fixture artifact 경계를 실행한다. 변경이 fixture-only라면 기본 artifact negative와 opt-in positive control을 둘 다 남긴다.
 8. 구현 코드와 실제 runtime 동작을 새 실패 관점 20개로 적대 검토하고, PR diff는 저장소 규칙에 따라 별도 30개 관점으로 검토한다. 결함을 수정하면 영향받은 관점을 새 revision에서 재검토한다. 계획 표를 재사용하지 않는다.
 9. PR 본문에 Android/iOS 화면을 가능한 경우 raw image link로 첨부한다. 현재 required checks와 merge state를 새로 확인해 `Rebase and merge`한다. required checks가 없으면 이를 적고 CI 통과로 말하지 않는다.
@@ -58,4 +58,4 @@
 
 ## 완료 판정
 
-이 slice의 완료는 계획된 positive implicit track list profile만 의미한다. Chrome 18개, Rust/profile/artifact 검사, Android와 iOS의 71/71 행렬, border 안팎 surface sample, trace·draw/present, 서로 분리한 code/runtime·PR diff 적대 검토를 모두 통과해야 한다. C11.4 intrinsic contribution matrix, negative implicit track, nested/anonymous item, full auto-repeat placement, WPT 및 C11 상위 전체 완료를 주장하지 않는다.
+이 slice의 완료는 계획된 positive implicit track list profile만 의미한다. Chrome 20개, Rust/profile/artifact 검사, Android와 iOS의 73/73 행렬, border 안팎 surface sample, trace·draw/present, 서로 분리한 code/runtime·PR diff 적대 검토를 모두 통과해야 한다. C11.4 intrinsic contribution matrix, negative implicit track, nested/anonymous item, full auto-repeat placement, WPT 및 C11 상위 전체 완료를 주장하지 않는다.

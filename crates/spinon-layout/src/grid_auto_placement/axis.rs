@@ -31,9 +31,22 @@ pub(super) fn resolve_axis(
     start: GridPlacementInput,
     end: GridPlacementInput,
     track_count: usize,
+    allow_positive_implicit: bool,
 ) -> Result<AxisPlacement, LayoutError> {
-    let mut start = endpoint(node, start_property, start, track_count)?;
-    let mut end = endpoint(node, end_property, end, track_count)?;
+    let mut start = endpoint(
+        node,
+        start_property,
+        start,
+        track_count,
+        allow_positive_implicit,
+    )?;
+    let mut end = endpoint(
+        node,
+        end_property,
+        end,
+        track_count,
+        allow_positive_implicit,
+    )?;
     match (start, end) {
         (Endpoint::Line(start_line), Endpoint::Line(end_line)) if start_line > end_line => {
             start = Endpoint::Line(end_line);
@@ -89,7 +102,7 @@ pub(super) fn resolve_axis(
     let last_line = i64::try_from(track_count)
         .unwrap_or(i64::MAX - 1)
         .saturating_add(1);
-    if start_line < 1 || end_line > last_line {
+    if start_line < 1 || (!allow_positive_implicit && end_line > last_line) {
         return Err(invalid_placement(
             node,
             start_property,
@@ -114,9 +127,13 @@ fn endpoint(
     property: &'static str,
     placement: GridPlacementInput,
     track_count: usize,
+    allow_positive_implicit: bool,
 ) -> Result<Endpoint, LayoutError> {
     match placement {
         GridPlacementInput::Auto => Ok(Endpoint::Auto),
+        GridPlacementInput::Line(line) if allow_positive_implicit && line > 0 => {
+            Ok(Endpoint::Line(i64::from(line)))
+        }
         GridPlacementInput::Line(line) => {
             explicit_line(node, property, line, track_count).map(Endpoint::Line)
         }

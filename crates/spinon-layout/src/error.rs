@@ -226,7 +226,7 @@ impl fmt::Display for LayoutError {
             ),
             Self::TextLayoutHeightMismatch(id) => write!(
                 formatter,
-                "노드 {id}의 최종 content height와 text measure height가 다릅니다"
+                "노드 {id}의 최종 content height가 text measure height보다 작습니다"
             ),
             Self::TextLayout(error) => error.fmt(formatter),
             Self::IntrinsicSizeSourceMismatch { expected, actual } => write!(
