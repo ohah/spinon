@@ -51,4 +51,4 @@ SPINON_V8_DIR=/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8 SPINON
 ## 남은 범위
 
 - C11.4 intrinsic contribution matrix, negative implicit track, nested/anonymous item, full auto-repeat placement, WPT 적합성은 이 근거에서 다루지 않는다.
-- 별도 PR diff 검토 30개, 필수 CI, PR 병합 및 Tailnet 미리보기 동기화가 끝날 때까지 공식 C11.4 완료 체크와 Tailnet 완료 집계는 그대로 유지한다.
+- [내부 계약 0059](../../0059-c11-grid-layout.md)와 [상태 대장](../../STATUS.md)에 부분 slice와 미완료 범위를 연결했다. C11.4/C11 체크와 완료 수는 그대로다. PR #375 필수 CI·병합 및 Tailnet 미리보기 동기화는 남아 있다.
