@@ -1,6 +1,6 @@
 # C11.4 직접 텍스트 다중 span 기여 계획
 
-**상태:** Chrome 155 사전 비교와 계획 실패 관점 20개 검토를 마쳤고 계획 PR #407을 머지했다. 직접 텍스트 4개 장면의 Rust·Android 실기기·Android API 37 AVD·iOS 26.2 Simulator 검증을 마쳤다. 사용자가 연결한 Android 실기기에서 최신 fixture APK로 4/4를 재실행했다. 구현/runtime 실패 관점 20개, PR #408 diff 적대 검토 30개, fixture artifact 경계 확인을 마쳤다. 구현 PR [#408](https://github.com/ohah/spinon/pull/408)은 rebase merge SHA `4b7282116c0aeab12ba10edeae51fcf7f7bb3a33`으로 병합됐다. PR 화면과 `gh pr checks --required`에는 check 결과가 없어 CI 통과로 표기하지 않는다. C11.4 체크와 공식 완료 수는 그대로 둔다.
+**상태:** Chrome 155 사전 비교와 계획 실패 관점 20개 검토를 마쳤고 계획 PR #407을 머지했다. 직접 텍스트 4개 장면의 Rust·Android 실기기·Android API 37 AVD·iOS 26.2 Simulator 검증을 마쳤다. 사용자가 연결한 Android 실기기에서 최신 fixture APK로 4/4를 재실행했다([실행 결과](../spec/internal/evidence/c11-4-text-multispan-contributions-2026-10-21/android-device-c114-text-multispan-contributions-android-device-20261020T215102621Z-daee998f/result.json)). 구현/runtime 실패 관점 20개, PR #408 diff 적대 검토 30개, fixture artifact 경계 확인을 마쳤다. 구현 PR [#408](https://github.com/ohah/spinon/pull/408)은 rebase merge SHA `4b7282116c0aeab12ba10edeae51fcf7f7bb3a33`으로 병합됐다. PR 화면과 `gh pr checks --required`에는 check 결과가 없어 CI 통과로 표기하지 않는다. C11.4 체크와 공식 완료 수는 그대로 둔다.
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
