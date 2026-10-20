@@ -180,3 +180,9 @@ Chrome 155 Agent Browser fixture는 definite/cyclic `%`와 `calc(5px + %)`에 �
 Chrome 155 고정 30-case fixture에서 definite minimum-size 200px의 `auto-fill`은 columns/rows 모두 3회 반복하지만 `auto-fit`은 columns 2회·rows 3회로 관찰됐다. `vertical-rl`, fixed `40px 20px` control, prefix/suffix/no-neighbor 및 item occupancy controls에서도 차이가 logical columns/rows 축을 따라 유지된다. CSS Grid §7.2.3.2의 반복 수 동일 규칙과 다른 관찰이며 Blink private available-size 입력은 미측정이다. Chrome count를 규범 기대값으로 채택하지 않는다. [집중 계획](./c11-4-auto-fit-min-size-axis.md) · [Chrome 155 사전 비교](https://github.com/ohah/spinon/blob/plan/c11-4-autofit-min-size-axis-20261020/spec/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20/README.md).
 
 계획 PR 전에는 계획 자체의 독립 실패 관점 20개를 완료했다. 구현은 plan PR 병합 후 최신 `main`에서 시작한다. C11.4 공식 check, CSS 지원 및 완료 수는 변경하지 않는다.
+
+### 2026-10-20 positive implicit auto-track list 후속 · PR #375
+
+별도 [positive implicit track 계획](./c11-4-positive-implicit-track-sizing.md)은 `RuntimeBlockFlexGridTrackSizingV1`에서 `grid-auto-rows/columns` typed 목록을 positive implicit track에 순환 적용한다. [PR #375](https://github.com/ohah/spinon/pull/375)은 merge SHA `e01f0dfc386e5d77ad0cdf8fb3e3b11df40696f8`로 Rebase and merge했다. Chrome 155 20-case, Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 각 73-scene matrix와 기본/opt-in fixture artifact 경계를 근거에 기록했다.
+
+negative implicit line, auto-repeat과 typed 목록 결합, nested/anonymous/out-of-flow item, 전체 auto-repeat placement, WPT 및 전체 C11.4는 미완료다. C11.4 checkbox와 공식 완료 수를 바꾸지 않는다. GitHub required status check은 설정되지 않았고, 제한 C11.4 profile 외의 CSS 지원을 주장하지 않는다.

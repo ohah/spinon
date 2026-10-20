@@ -2,7 +2,7 @@
 
 **상위 원본:** [C11 상태](../spec/STATUS.md#c11-css-grid) · [C11.4 track sizing 계획](./c11-4-grid-track-sizing.md) · [CSS Grid Level 1 2025 CRD §7.5–§7.6, §8.5, §11.3–§11.8](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#auto-tracks) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획과 Chrome 155 20-case 사전 비교를 준비했다. 구현 전 계획 자체를 독립 실패 관점 20개로 검토한다. 구현 전용 브랜치와 후속 PR은 계획 PR이 main에 병합된 뒤 최신 `origin/main`에서 시작한다. 이 계획만으로 C11.4 체크나 완료 수를 바꾸지 않는다.
+**상태:** positive implicit track sizing slice를 구현해 [PR #375](https://github.com/ohah/spinon/pull/375)로 Rebase and merge했다. main merge commit은 `e01f0dfc386e5d77ad0cdf8fb3e3b11df40696f8`이다. Chrome 155 사전 비교 20/20, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 각각 73/73, 기본/opt-in FFI artifact 경계를 확인했다. GitHub required status check은 설정되지 않았다. 전체 workspace 테스트에서 기준선 실패 1건과 CSS reference source-shape 실패 4건은 실행 근거에 분리 기록했다. C11.4 체크와 완료 수는 올리지 않았다. negative implicit track, nested/anonymous item, auto-repeat과 typed 목록 결합, WPT 및 전체 C11.4는 남아 있다. [구현·Simulator 근거](../spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/README.md) · [구현 검토 20개](../spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/implementation-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/pr-diff-review-30.md).
 
 ## 목적
 
