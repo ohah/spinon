@@ -1,0 +1,54 @@
+{
+  "pass": "pass25",
+  "source_revision": "4d69a05e316685497ea3950bb325c81a79608819",
+  "source_root": "build/spinon/c11-4-typed-implicit-tailnet-site-pass25",
+  "preview_root": "SpinonPreview",
+  "backup_root": "SpinonPreviewBackups/c11-4-typed-implicit-tailnet-sync-2026-10-21/pass25",
+  "selected_build": {
+    "file_count": 1732,
+    "bytes": 74275364
+  },
+  "preflight": {
+    "counts": {
+      "create": 102,
+      "replace": 93,
+      "same": 1537
+    },
+    "no_deletes": true
+  },
+  "copy": {
+    "counts": {
+      "create": 102,
+      "replace": 93,
+      "same": 1537
+    },
+    "all_verified": true,
+    "backup_count": 93,
+    "all_backups_verified": true,
+    "open_handle_observations": 6
+  },
+  "local": {
+    "file_count": 1732,
+    "all_targets_verified": true,
+    "backup_count": 93,
+    "all_backups_verified": true,
+    "no_deletes": true
+  },
+  "tailnet": {
+    "file_count": 1732,
+    "matched_count": 1732,
+    "mismatch_count": 0,
+    "all_verified": true
+  },
+  "agent_browser": {
+    "page_count": 4,
+    "c11_4_checked": false,
+    "evidence_images_loaded": true
+  },
+  "preview_server": {
+    "pid": 1191,
+    "port": "127.0.0.1:8768",
+    "kept_running": true
+  },
+  "pages_deployment_run": false
+}

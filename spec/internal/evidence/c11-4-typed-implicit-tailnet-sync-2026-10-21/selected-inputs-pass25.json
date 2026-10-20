@@ -1,0 +1,96 @@
+{
+  "previous_root": "build/spinon/c11-4-text-intrinsic-physical-tailnet-root-pass24",
+  "selected_root": "build/spinon/c11-4-typed-implicit-tailnet-root-pass25",
+  "source_revision": "4d69a05e316685497ea3950bb325c81a79608819",
+  "overlays": [
+    {
+      "source": "spec/STATUS.md",
+      "targets": [
+        "STATUS.md",
+        "spec/STATUS.md"
+      ],
+      "bytes": 322366,
+      "sha256": "07935498cd5e9bc611e5a76c7f2e0b9f54fe98b561d01ad53c0919ba303906ff"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "targets": [
+        "plan/c11-4-grid-track-sizing.md",
+        "spec/plan/c11-4-grid-track-sizing.md"
+      ],
+      "bytes": 53143,
+      "sha256": "d2ad9328763c910671286d437fb89c088756a913d6940f4b35c5474cfe3bb30b"
+    },
+    {
+      "source": "spec/internal/README.md",
+      "targets": [
+        "internal/README.md",
+        "spec/internal/README.md"
+      ],
+      "bytes": 133745,
+      "sha256": "98bcecfbd1cd4f537c1025a75e04aebcb79e4f9bb7a0f7f4449ace978e948175"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "targets": [
+        "public/roadmap.html"
+      ],
+      "bytes": 170893,
+      "sha256": "69710aab855da2271bd2bf688b2f5baef2c84695cdd567720b92d4868a5700ac"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-typed-implicit-physical-android-2026-10-21",
+      "targets": [
+        "internal/evidence/c11-4-typed-implicit-physical-android-2026-10-21",
+        "spec/internal/evidence/c11-4-typed-implicit-physical-android-2026-10-21"
+      ],
+      "file_count": 44,
+      "files": [
+        "apk-sha256.txt",
+        "build.log",
+        "device.json",
+        "install.log",
+        "pr-diff-review-30.md",
+        "README.md",
+        "run-20261021/batch-1-result.json",
+        "run-20261021/batch-2-result.json",
+        "run-20261021/physical-vs-avd-comparison.json",
+        "run-20261021/result.json",
+        "run-20261021/runtime-implicit-min-content-overflow-border-surface-pixels.log",
+        "run-20261021/runtime-typed-auto-fit-empty.log",
+        "run-20261021/runtime-typed-auto-fit-gutter.log",
+        "run-20261021/runtime-typed-auto-fit-occupied.log",
+        "run-20261021/runtime-typed-auto.log",
+        "run-20261021/runtime-typed-calc.log",
+        "run-20261021/runtime-typed-fit-content.log",
+        "run-20261021/runtime-typed-fixed-cycle-three-leading-trailing.log",
+        "run-20261021/runtime-typed-fixed-cycle.log",
+        "run-20261021/runtime-typed-fraction.log",
+        "run-20261021/runtime-typed-max-content.log",
+        "run-20261021/runtime-typed-min-content.log",
+        "run-20261021/runtime-typed-minmax-max-content.log",
+        "run-20261021/runtime-typed-mixed-cycle.log",
+        "run-20261021/runtime-typed-percentage.log",
+        "run-20261021/screen-implicit-min-content-overflow-border.png",
+        "run-20261021/screen-typed-auto-fit-empty.png",
+        "run-20261021/screen-typed-auto-fit-gutter.png",
+        "run-20261021/screen-typed-auto-fit-occupied.png",
+        "run-20261021/screen-typed-auto.png",
+        "run-20261021/screen-typed-calc.png",
+        "run-20261021/screen-typed-fit-content.png",
+        "run-20261021/screen-typed-fixed-cycle-three-leading-trailing.png",
+        "run-20261021/screen-typed-fixed-cycle.png",
+        "run-20261021/screen-typed-fraction.png",
+        "run-20261021/screen-typed-max-content.png",
+        "run-20261021/screen-typed-min-content.png",
+        "run-20261021/screen-typed-minmax-max-content.png",
+        "run-20261021/screen-typed-mixed-cycle.png",
+        "run-20261021/screen-typed-percentage.png",
+        "runtime-typed-fixed-cycle.log",
+        "screen-typed-fixed-cycle.png",
+        "SHA256SUMS.txt",
+        "source-revision.json"
+      ]
+    }
+  ]
+}
