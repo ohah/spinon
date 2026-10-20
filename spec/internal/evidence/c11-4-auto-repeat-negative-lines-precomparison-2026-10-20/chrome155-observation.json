@@ -1,0 +1,684 @@
+{
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "platform": "MacIntel",
+    "dpr": 1,
+    "viewport": {
+      "width": 1280,
+      "height": 633
+    },
+    "colorScheme": "light"
+  },
+  "cases": [
+    {
+      "id": "columns-fill-one-leading",
+      "input": {
+        "gridTemplateColumns": "20px repeat(auto-fill, minmax(40px, 1fr)) 10px",
+        "gridTemplateRows": "24px",
+        "width": "200px",
+        "height": "24px",
+        "gridAutoColumns": "31px 47px",
+        "gridAutoRows": "17px 29px"
+      },
+      "grid": {
+        "x": 19,
+        "y": 67.1875,
+        "width": 200,
+        "height": 24
+      },
+      "gridTemplateColumns": "47px 20px 40px 40px 40px 10px",
+      "gridTemplateRows": "24px",
+      "gridAutoColumns": "31px 47px",
+      "gridAutoRows": "17px 29px",
+      "columnGap": "8px",
+      "rowGap": "6px",
+      "items": [
+        {
+          "id": "columns-fill-one-leading-1",
+          "gridColumn": "-7 / -6",
+          "gridRow": "auto",
+          "rect": {
+            "x": 19,
+            "y": 67.1875,
+            "width": 47,
+            "height": 24
+          }
+        }
+      ]
+    },
+    {
+      "id": "columns-fill-two-repetitions",
+      "input": {
+        "gridTemplateColumns": "20px repeat(auto-fill, minmax(40px, 1fr)) 10px",
+        "gridTemplateRows": "24px",
+        "width": "134px",
+        "height": "24px",
+        "gridAutoColumns": "31px 47px",
+        "gridAutoRows": "17px 29px"
+      },
+      "grid": {
+        "x": 653,
+        "y": 67.1875,
+        "width": 134,
+        "height": 24
+      },
+      "gridTemplateColumns": "47px 20px 40px 40px 10px",
+      "gridTemplateRows": "24px",
+      "gridAutoColumns": "31px 47px",
+      "gridAutoRows": "17px 29px",
+      "columnGap": "8px",
+      "rowGap": "6px",
+      "items": [
+        {
+          "id": "columns-fill-two-repetitions-1",
+          "gridColumn": "-6 / -5",
+          "gridRow": "auto",
+          "rect": {
+            "x": 653,
+            "y": 67.1875,
+            "width": 47,
+            "height": 24
+          }
+        }
+      ]
+    },
+    {
+      "id": "columns-fill-four-repetitions",
+      "input": {
+        "gridTemplateColumns": "20px repeat(auto-fill, minmax(40px, 1fr)) 10px",
+        "gridTemplateRows": "24px",
+        "width": "230px",
+        "height": "24px",
+        "gridAutoColumns": "31px 47px",
+        "gridAutoRows": "17px 29px"
+      },
+      "grid": {
+        "x": 19,
+        "y": 134.1875,
+        "width": 230,
+        "height": 24
+      },
+      "gridTemplateColumns": "47px 20px 40px 40px 40px 40px 10px",
+      "gridTemplateRows": "24px",
+      "gridAutoColumns": "31px 47px",
+      "gridAutoRows": "17px 29px",
+      "columnGap": "8px",
+      "rowGap": "6px",
+      "items": [
+        {
+          "id": "columns-fill-four-repetitions-1",
+          "gridColumn": "-8 / -7",
+          "gridRow": "auto",
+          "rect": {
+            "x": 19,
+            "y": 134.1875,
+            "width": 47,
+            "height": 24
+          }
+        }
+      ]
+    },
+    {
+      "id": "columns-fit-one-leading-empty-repeat",
+      "input": {
+        "gridTemplateColumns": "20px repeat(auto-fit, minmax(40px, 1fr)) 10px",
+        "gridTemplateRows": "24px",
+        "width": "200px",
+        "height": "24px",
+        "gridAutoColumns": "31px 47px",
+        "gridAutoRows": "17px 29px"
+      },
+      "grid": {
+        "x": 653,
+        "y": 134.1875,
+        "width": 200,
+        "height": 24
+      },
+      "gridTemplateColumns": "47px 20px 0px 0px 0px 10px",
+      "gridTemplateRows": "24px",
+      "gridAutoColumns": "31px 47px",
+      "gridAutoRows": "17px 29px",
+      "columnGap": "8px",
+      "rowGap": "6px",
+      "items": [
+        {
+          "id": "columns-fit-one-leading-empty-repeat-1",
+          "gridColumn": "-7 / -6",
+          "gridRow": "auto",
+          "rect": {
+            "x": 653,
+            "y": 134.1875,
+            "width": 47,
+            "height": 24
+          }
+        }
+      ]
+    },
+    {
+      "id": "columns-fill-two-leading-cycle",
+      "input": {
+        "gridTemplateColumns": "20px repeat(auto-fill, minmax(40px, 1fr)) 10px",
+        "gridTemplateRows": "24px",
+        "width": "200px",
+        "height": "24px",
+        "gridAutoColumns": "31px 47px",
+        "gridAutoRows": "17px 29px"
+      },
+      "grid": {
+        "x": 19,
+        "y": 201.1875,
+        "width": 200,
+        "height": 24
+      },
+      "gridTemplateColumns": "31px 47px 20px 40px 40px 40px 10px",
+      "gridTemplateRows": "24px",
+      "gridAutoColumns": "31px 47px",
+      "gridAutoRows": "17px 29px",
+      "columnGap": "8px",
+      "rowGap": "6px",
+      "items": [
+        {
+          "id": "columns-fill-two-leading-cycle-1",
+          "gridColumn": "-8 / -6",
+          "gridRow": "auto",
+          "rect": {
+            "x": 19,
+            "y": 201.1875,
+            "width": 86,
+            "height": 24
+          }
+        }
+      ]
+    },
+    {
+      "id": "columns-fill-leading-span-prefix",
+      "input": {
+        "gridTemplateColumns": "20px repeat(auto-fill, minmax(40px, 1fr)) 10px",
+        "gridTemplateRows": "24px",
+        "width": "200px",
+        "height": "24px",
+        "gridAutoColumns": "31px 47px",
+        "gridAutoRows": "17px 29px"
+      },
+      "grid": {
+        "x": 653,
+        "y": 201.1875,
+        "width": 200,
+        "height": 24
+      },
+      "gridTemplateColumns": "31px 47px 20px 40px 40px 40px 10px",
+      "gridTemplateRows": "24px",
+      "gridAutoColumns": "31px 47px",
+      "gridAutoRows": "17px 29px",
+      "columnGap": "8px",
+      "rowGap": "6px",
+      "items": [
+        {
+          "id": "columns-fill-leading-span-prefix-1",
+          "gridColumn": "-8 / -5",
+          "gridRow": "auto",
+          "rect": {
+            "x": 653,
+            "y": 201.1875,
+            "width": 114,
+            "height": 24
+          }
+        }
+      ]
+    },
+    {
+      "id": "columns-fit-negative-and-repeat-occupied",
+      "input": {
+        "gridTemplateColumns": "20px repeat(auto-fit, minmax(40px, 1fr)) 10px",
+        "gridTemplateRows": "24px",
+        "width": "200px",
+        "height": "24px",
+        "gridAutoColumns": "31px 47px",
+        "gridAutoRows": "17px 29px"
+      },
+      "grid": {
+        "x": 19,
+        "y": 268.1875,
+        "width": 200,
+        "height": 24
+      },
+      "gridTemplateColumns": "47px 20px 0px 0px 99px 10px",
+      "gridTemplateRows": "24px",
+      "gridAutoColumns": "31px 47px",
+      "gridAutoRows": "17px 29px",
+      "columnGap": "8px",
+      "rowGap": "6px",
+      "items": [
+        {
+          "id": "columns-fit-negative-and-repeat-occupied-1",
+          "gridColumn": "-7 / -6",
+          "gridRow": "auto",
+          "rect": {
+            "x": 19,
+            "y": 268.1875,
+            "width": 47,
+            "height": 24
+          }
+        },
+        {
+          "id": "columns-fit-negative-and-repeat-occupied-2",
+          "gridColumn": "-3 / -2",
+          "gridRow": "auto",
+          "rect": {
+            "x": 102,
+            "y": 268.1875,
+            "width": 99,
+            "height": 24
+          }
+        }
+      ]
+    },
+    {
+      "id": "columns-fit-third-repeat-only",
+      "input": {
+        "gridTemplateColumns": "20px repeat(auto-fit, minmax(40px, 1fr)) 10px",
+        "gridTemplateRows": "24px",
+        "width": "200px",
+        "height": "24px",
+        "gridAutoColumns": "31px 47px",
+        "gridAutoRows": "17px 29px"
+      },
+      "grid": {
+        "x": 653,
+        "y": 268.1875,
+        "width": 200,
+        "height": 24
+      },
+      "gridTemplateColumns": "20px 0px 0px 154px 10px",
+      "gridTemplateRows": "24px",
+      "gridAutoColumns": "31px 47px",
+      "gridAutoRows": "17px 29px",
+      "columnGap": "8px",
+      "rowGap": "6px",
+      "items": [
+        {
+          "id": "columns-fit-third-repeat-only-1",
+          "gridColumn": "-3 / -2",
+          "gridRow": "auto",
+          "rect": {
+            "x": 681,
+            "y": 268.1875,
+            "width": 154,
+            "height": 24
+          }
+        }
+      ]
+    },
+    {
+      "id": "columns-fill-negative-positive-cycle",
+      "input": {
+        "gridTemplateColumns": "20px repeat(auto-fill, minmax(40px, 1fr)) 10px",
+        "gridTemplateRows": "24px",
+        "width": "200px",
+        "height": "24px",
+        "gridAutoColumns": "31px 47px",
+        "gridAutoRows": "17px 29px"
+      },
+      "grid": {
+        "x": 19,
+        "y": 335.1875,
+        "width": 200,
+        "height": 24
+      },
+      "gridTemplateColumns": "31px 47px 20px 40px 40px 40px 10px 31px",
+      "gridTemplateRows": "24px",
+      "gridAutoColumns": "31px 47px",
+      "gridAutoRows": "17px 29px",
+      "columnGap": "8px",
+      "rowGap": "6px",
+      "items": [
+        {
+          "id": "columns-fill-negative-positive-cycle-1",
+          "gridColumn": "-8 / -7",
+          "gridRow": "auto",
+          "rect": {
+            "x": 19,
+            "y": 335.1875,
+            "width": 31,
+            "height": 24
+          }
+        },
+        {
+          "id": "columns-fill-negative-positive-cycle-2",
+          "gridColumn": "6 / 7",
+          "gridRow": "auto",
+          "rect": {
+            "x": 303,
+            "y": 335.1875,
+            "width": 31,
+            "height": 24
+          }
+        }
+      ]
+    },
+    {
+      "id": "columns-fill-reversed-negative-lines",
+      "input": {
+        "gridTemplateColumns": "20px repeat(auto-fill, minmax(40px, 1fr)) 10px",
+        "gridTemplateRows": "24px",
+        "width": "200px",
+        "height": "24px",
+        "gridAutoColumns": "31px 47px",
+        "gridAutoRows": "17px 29px"
+      },
+      "grid": {
+        "x": 653,
+        "y": 335.1875,
+        "width": 200,
+        "height": 24
+      },
+      "gridTemplateColumns": "47px 20px 40px 40px 40px 10px",
+      "gridTemplateRows": "24px",
+      "gridAutoColumns": "31px 47px",
+      "gridAutoRows": "17px 29px",
+      "columnGap": "8px",
+      "rowGap": "6px",
+      "items": [
+        {
+          "id": "columns-fill-reversed-negative-lines-1",
+          "gridColumn": "-5 / -7",
+          "gridRow": "auto",
+          "rect": {
+            "x": 653,
+            "y": 335.1875,
+            "width": 75,
+            "height": 24
+          }
+        }
+      ]
+    },
+    {
+      "id": "columns-fill-repeat-only-leading",
+      "input": {
+        "gridTemplateColumns": "repeat(auto-fill, minmax(40px, 1fr))",
+        "gridTemplateRows": "24px",
+        "width": "200px",
+        "height": "24px",
+        "gridAutoColumns": "31px 47px",
+        "gridAutoRows": "17px 29px"
+      },
+      "grid": {
+        "x": 19,
+        "y": 402.1875,
+        "width": 200,
+        "height": 24
+      },
+      "gridTemplateColumns": "47px 40px 40px 40px 40px",
+      "gridTemplateRows": "24px",
+      "gridAutoColumns": "31px 47px",
+      "gridAutoRows": "17px 29px",
+      "columnGap": "8px",
+      "rowGap": "6px",
+      "items": [
+        {
+          "id": "columns-fill-repeat-only-leading-1",
+          "gridColumn": "-6 / -5",
+          "gridRow": "auto",
+          "rect": {
+            "x": 19,
+            "y": 402.1875,
+            "width": 47,
+            "height": 24
+          }
+        }
+      ]
+    },
+    {
+      "id": "rows-fill-one-leading",
+      "input": {
+        "gridTemplateColumns": "24px",
+        "gridTemplateRows": "14px repeat(auto-fill, minmax(30px, 1fr)) 6px",
+        "width": "24px",
+        "height": "180px",
+        "gridAutoColumns": "31px 47px",
+        "gridAutoRows": "17px 29px"
+      },
+      "grid": {
+        "x": 653,
+        "y": 402.1875,
+        "width": 24,
+        "height": 180
+      },
+      "gridTemplateColumns": "24px",
+      "gridTemplateRows": "29px 14px 30px 30px 30px 30px 6px",
+      "gridAutoColumns": "31px 47px",
+      "gridAutoRows": "17px 29px",
+      "columnGap": "8px",
+      "rowGap": "6px",
+      "items": [
+        {
+          "id": "rows-fill-one-leading-1",
+          "gridColumn": "auto",
+          "gridRow": "-8 / -7",
+          "rect": {
+            "x": 653,
+            "y": 402.1875,
+            "width": 24,
+            "height": 29
+          }
+        }
+      ]
+    },
+    {
+      "id": "rows-fill-three-repetitions",
+      "input": {
+        "gridTemplateColumns": "24px",
+        "gridTemplateRows": "14px repeat(auto-fill, minmax(30px, 1fr)) 6px",
+        "width": "24px",
+        "height": "134px",
+        "gridAutoColumns": "31px 47px",
+        "gridAutoRows": "17px 29px"
+      },
+      "grid": {
+        "x": 19,
+        "y": 625.1875,
+        "width": 24,
+        "height": 134
+      },
+      "gridTemplateColumns": "24px",
+      "gridTemplateRows": "29px 14px 30px 30px 30px 6px",
+      "gridAutoColumns": "31px 47px",
+      "gridAutoRows": "17px 29px",
+      "columnGap": "8px",
+      "rowGap": "6px",
+      "items": [
+        {
+          "id": "rows-fill-three-repetitions-1",
+          "gridColumn": "auto",
+          "gridRow": "-7 / -6",
+          "rect": {
+            "x": 19,
+            "y": 625.1875,
+            "width": 24,
+            "height": 29
+          }
+        }
+      ]
+    },
+    {
+      "id": "rows-fill-five-repetitions",
+      "input": {
+        "gridTemplateColumns": "24px",
+        "gridTemplateRows": "14px repeat(auto-fill, minmax(30px, 1fr)) 6px",
+        "width": "24px",
+        "height": "206px",
+        "gridAutoColumns": "31px 47px",
+        "gridAutoRows": "17px 29px"
+      },
+      "grid": {
+        "x": 653,
+        "y": 625.1875,
+        "width": 24,
+        "height": 206
+      },
+      "gridTemplateColumns": "24px",
+      "gridTemplateRows": "29px 14px 30px 30px 30px 30px 30px 6px",
+      "gridAutoColumns": "31px 47px",
+      "gridAutoRows": "17px 29px",
+      "columnGap": "8px",
+      "rowGap": "6px",
+      "items": [
+        {
+          "id": "rows-fill-five-repetitions-1",
+          "gridColumn": "auto",
+          "gridRow": "-9 / -8",
+          "rect": {
+            "x": 653,
+            "y": 625.1875,
+            "width": 24,
+            "height": 29
+          }
+        }
+      ]
+    },
+    {
+      "id": "rows-fit-one-leading-empty-repeat",
+      "input": {
+        "gridTemplateColumns": "24px",
+        "gridTemplateRows": "14px repeat(auto-fit, minmax(30px, 1fr)) 6px",
+        "width": "24px",
+        "height": "180px",
+        "gridAutoColumns": "31px 47px",
+        "gridAutoRows": "17px 29px"
+      },
+      "grid": {
+        "x": 19,
+        "y": 874.1875,
+        "width": 24,
+        "height": 180
+      },
+      "gridTemplateColumns": "24px",
+      "gridTemplateRows": "29px 14px 0px 0px 0px 0px 6px",
+      "gridAutoColumns": "31px 47px",
+      "gridAutoRows": "17px 29px",
+      "columnGap": "8px",
+      "rowGap": "6px",
+      "items": [
+        {
+          "id": "rows-fit-one-leading-empty-repeat-1",
+          "gridColumn": "auto",
+          "gridRow": "-8 / -7",
+          "rect": {
+            "x": 19,
+            "y": 874.1875,
+            "width": 24,
+            "height": 29
+          }
+        }
+      ]
+    },
+    {
+      "id": "rows-fill-two-leading-cycle",
+      "input": {
+        "gridTemplateColumns": "24px",
+        "gridTemplateRows": "14px repeat(auto-fill, minmax(30px, 1fr)) 6px",
+        "width": "24px",
+        "height": "180px",
+        "gridAutoColumns": "31px 47px",
+        "gridAutoRows": "17px 29px"
+      },
+      "grid": {
+        "x": 653,
+        "y": 874.1875,
+        "width": 24,
+        "height": 180
+      },
+      "gridTemplateColumns": "24px",
+      "gridTemplateRows": "17px 29px 14px 30px 30px 30px 30px 6px",
+      "gridAutoColumns": "31px 47px",
+      "gridAutoRows": "17px 29px",
+      "columnGap": "8px",
+      "rowGap": "6px",
+      "items": [
+        {
+          "id": "rows-fill-two-leading-cycle-1",
+          "gridColumn": "auto",
+          "gridRow": "-9 / -7",
+          "rect": {
+            "x": 653,
+            "y": 874.1875,
+            "width": 24,
+            "height": 52
+          }
+        }
+      ]
+    },
+    {
+      "id": "both-axes-fit-negative-leading",
+      "input": {
+        "gridTemplateColumns": "20px repeat(auto-fit, minmax(40px, 1fr)) 10px",
+        "gridTemplateRows": "14px repeat(auto-fit, minmax(30px, 1fr)) 6px",
+        "width": "200px",
+        "height": "180px",
+        "gridAutoColumns": "31px 47px",
+        "gridAutoRows": "17px 29px"
+      },
+      "grid": {
+        "x": 19,
+        "y": 1109.1875,
+        "width": 200,
+        "height": 180
+      },
+      "gridTemplateColumns": "47px 20px 0px 0px 0px 10px",
+      "gridTemplateRows": "29px 14px 0px 0px 0px 0px 6px",
+      "gridAutoColumns": "31px 47px",
+      "gridAutoRows": "17px 29px",
+      "columnGap": "8px",
+      "rowGap": "6px",
+      "items": [
+        {
+          "id": "both-axes-fit-negative-leading-1",
+          "gridColumn": "-7 / -6",
+          "gridRow": "-8 / -7",
+          "rect": {
+            "x": 19,
+            "y": 1109.1875,
+            "width": 47,
+            "height": 29
+          }
+        }
+      ]
+    },
+    {
+      "id": "both-axes-fill-independent-cycles",
+      "input": {
+        "gridTemplateColumns": "20px repeat(auto-fill, minmax(40px, 1fr)) 10px",
+        "gridTemplateRows": "14px repeat(auto-fill, minmax(30px, 1fr)) 6px",
+        "width": "200px",
+        "height": "180px",
+        "gridAutoColumns": "31px 47px",
+        "gridAutoRows": "17px 29px"
+      },
+      "grid": {
+        "x": 653,
+        "y": 1109.1875,
+        "width": 200,
+        "height": 180
+      },
+      "gridTemplateColumns": "31px 47px 20px 40px 40px 40px 10px",
+      "gridTemplateRows": "17px 29px 14px 30px 30px 30px 30px 6px",
+      "gridAutoColumns": "31px 47px",
+      "gridAutoRows": "17px 29px",
+      "columnGap": "8px",
+      "rowGap": "6px",
+      "items": [
+        {
+          "id": "both-axes-fill-independent-cycles-1",
+          "gridColumn": "-8 / -6",
+          "gridRow": "-9 / -7",
+          "rect": {
+            "x": 653,
+            "y": 1109.1875,
+            "width": 86,
+            "height": 52
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "source": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/",
+  "crossCheckSource": "https://www.w3.org/TR/css-grid-2/",
+  "sourceSections": [
+    "7.2.3.2 Repeat-to-fill: auto-fill and auto-fit repetitions",
+    "7.5 The Implicit Grid",
+    "7.6 Implicit Track Sizing",
+    "8.3 Line-based Placement",
+    "8.5 Grid Item Placement Algorithm"
+  ],
+  "repeatCountFormula": {
+    "columns": "20 + 10 + 40*n + 8*(n+1) = 38 + 48*n",
+    "rows": "14 + 6 + 30*n + 6*(n+1) = 26 + 36*n",
+    "negativeLineBoundary": "expandedExplicitTrackCount + 1 + negativeCssLine",
+    "autoFit": "same repeat count as auto-fill; only empty repeated tracks and their gutters collapse after placement"
+  },
+  "repeatCountModel": {
+    "columns": { "minimumTrack": 40, "gap": 8, "prefixTrack": 20, "suffixTrack": 10 },
+    "rows": { "minimumTrack": 30, "gap": 6, "prefixTrack": 14, "suffixTrack": 6 }
+  },
+  "cases": [
+    { "id": "columns-fill-one-leading", "columns": { "mode": "auto-fill", "available": 200, "repeatCount": 3, "prefix": 1, "suffix": 1, "leading": 1, "trailing": 0, "leadingSizes": [47], "lines": [[-7, -6, -1, 0]] } },
+    { "id": "columns-fill-two-repetitions", "columns": { "mode": "auto-fill", "available": 134, "repeatCount": 2, "prefix": 1, "suffix": 1, "leading": 1, "trailing": 0, "leadingSizes": [47], "lines": [[-6, -5, -1, 0]] } },
+    { "id": "columns-fill-four-repetitions", "columns": { "mode": "auto-fill", "available": 230, "repeatCount": 4, "prefix": 1, "suffix": 1, "leading": 1, "trailing": 0, "leadingSizes": [47], "lines": [[-8, -7, -1, 0]] } },
+    { "id": "columns-fit-one-leading-empty-repeat", "columns": { "mode": "auto-fit", "available": 200, "repeatCount": 3, "prefix": 1, "suffix": 1, "leading": 1, "trailing": 0, "leadingSizes": [47], "collapsed": [0, 1, 2], "lines": [[-7, -6, -1, 0]] } },
+    { "id": "columns-fill-two-leading-cycle", "columns": { "mode": "auto-fill", "available": 200, "repeatCount": 3, "prefix": 1, "suffix": 1, "leading": 2, "trailing": 0, "leadingSizes": [31, 47], "lines": [[-8, -6, -2, 0]] } },
+    { "id": "columns-fill-leading-span-prefix", "columns": { "mode": "auto-fill", "available": 200, "repeatCount": 3, "prefix": 1, "suffix": 1, "leading": 2, "trailing": 0, "leadingSizes": [31, 47], "lines": [[-8, -5, -2, 1]] } },
+    { "id": "columns-fit-negative-and-repeat-occupied", "columns": { "mode": "auto-fit", "available": 200, "repeatCount": 3, "prefix": 1, "suffix": 1, "leading": 1, "trailing": 0, "leadingSizes": [47], "collapsed": [0, 1], "lines": [[-7, -6, -1, 0], [-3, -2, 3, 4]] } },
+    { "id": "columns-fit-third-repeat-only", "columns": { "mode": "auto-fit", "available": 200, "repeatCount": 3, "prefix": 1, "suffix": 1, "leading": 0, "trailing": 0, "leadingSizes": [], "collapsed": [0, 1], "lines": [[-3, -2, 3, 4]] } },
+    { "id": "columns-fill-negative-positive-cycle", "columns": { "mode": "auto-fill", "available": 200, "repeatCount": 3, "prefix": 1, "suffix": 1, "leading": 2, "trailing": 1, "leadingSizes": [31, 47], "trailingSizes": [31], "lines": [[-8, -7, -2, -1], [6, 7, 5, 6]] } },
+    { "id": "columns-fill-reversed-negative-lines", "columns": { "mode": "auto-fill", "available": 200, "repeatCount": 3, "prefix": 1, "suffix": 1, "leading": 1, "trailing": 0, "leadingSizes": [47], "lines": [[-5, -7, 1, -1]] } },
+    { "id": "columns-fill-repeat-only-leading", "columns": { "mode": "auto-fill", "available": 200, "repeatCount": 4, "prefix": 0, "suffix": 0, "leading": 1, "trailing": 0, "leadingSizes": [47], "lines": [[-6, -5, -1, 0]] } },
+    { "id": "rows-fill-one-leading", "rows": { "mode": "auto-fill", "available": 180, "repeatCount": 4, "prefix": 1, "suffix": 1, "leading": 1, "trailing": 0, "leadingSizes": [29], "lines": [[-8, -7, -1, 0]] } },
+    { "id": "rows-fill-three-repetitions", "rows": { "mode": "auto-fill", "available": 134, "repeatCount": 3, "prefix": 1, "suffix": 1, "leading": 1, "trailing": 0, "leadingSizes": [29], "lines": [[-7, -6, -1, 0]] } },
+    { "id": "rows-fill-five-repetitions", "rows": { "mode": "auto-fill", "available": 206, "repeatCount": 5, "prefix": 1, "suffix": 1, "leading": 1, "trailing": 0, "leadingSizes": [29], "lines": [[-9, -8, -1, 0]] } },
+    { "id": "rows-fit-one-leading-empty-repeat", "rows": { "mode": "auto-fit", "available": 180, "repeatCount": 4, "prefix": 1, "suffix": 1, "leading": 1, "trailing": 0, "leadingSizes": [29], "collapsed": [0, 1, 2, 3], "lines": [[-8, -7, -1, 0]] } },
+    { "id": "rows-fill-two-leading-cycle", "rows": { "mode": "auto-fill", "available": 180, "repeatCount": 4, "prefix": 1, "suffix": 1, "leading": 2, "trailing": 0, "leadingSizes": [17, 29], "lines": [[-9, -7, -2, 0]] } },
+    { "id": "both-axes-fit-negative-leading", "columns": { "mode": "auto-fit", "available": 200, "repeatCount": 3, "prefix": 1, "suffix": 1, "leading": 1, "trailing": 0, "leadingSizes": [47], "collapsed": [0, 1, 2], "lines": [[-7, -6, -1, 0]] }, "rows": { "mode": "auto-fit", "available": 180, "repeatCount": 4, "prefix": 1, "suffix": 1, "leading": 1, "trailing": 0, "leadingSizes": [29], "collapsed": [0, 1, 2, 3], "lines": [[-8, -7, -1, 0]] } },
+    { "id": "both-axes-fill-independent-cycles", "columns": { "mode": "auto-fill", "available": 200, "repeatCount": 3, "prefix": 1, "suffix": 1, "leading": 2, "trailing": 0, "leadingSizes": [31, 47], "lines": [[-8, -6, -2, 0]] }, "rows": { "mode": "auto-fill", "available": 180, "repeatCount": 4, "prefix": 1, "suffix": 1, "leading": 2, "trailing": 0, "leadingSizes": [17, 29], "lines": [[-9, -7, -2, 0]] } }
+  ]
+}
