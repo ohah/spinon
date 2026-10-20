@@ -1,0 +1,169 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11.4 auto-fit definite minimum-size axis comparison</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 20px; color: #152033; background: #f4f6fa; font: 13px/1.4 system-ui, sans-serif; }
+  h1 { margin: 0 0 6px; font-size: 20px; }
+  p { margin: 0 0 16px; max-width: 100ch; }
+  #cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  figure { min-width: 0; margin: 0; padding: 10px; border: 1px solid #c5d0df; border-radius: 8px; background: #fff; }
+  figcaption { margin-bottom: 6px; font-weight: 650; }
+  .grid { display: grid; width: max-content; height: max-content; align-content: start; justify-content: start; background: #dce5f2; }
+  .grid.columns { column-gap: 8px; row-gap: 0; grid-template-rows: 16px; }
+  .grid.rows { column-gap: 0; row-gap: 8px; grid-template-columns: 16px; }
+  .item { width: 12px; height: 12px; min-width: 0; min-height: 0; background: #e5484d; }
+  .track-strip { display: flex; align-items: stretch; gap: 2px; margin-top: 5px; }
+  .track { display: grid; place-items: center; min-width: 18px; height: 18px; padding: 0 2px; overflow: hidden; border: 1px solid #70809a; color: #102033; background: #b8c9e2; font: 9px/1 ui-monospace, monospace; }
+  .track:nth-child(even) { background: #f0c987; }
+  .result { margin-top: 5px; color: #45566d; font: 10px/1.35 ui-monospace, monospace; overflow-wrap: anywhere; }
+  #observations { margin-top: 18px; padding: 12px; max-height: 260px; overflow: auto; color: #d7e2f2; background: #101820; font: 10px/1.35 ui-monospace, monospace; white-space: pre-wrap; }
+</style>
+<h1>C11.4 · auto-fit + definite minimum-size</h1>
+<p>This is a Chrome 155 observation fixture, not a normative pass/fail oracle. It compares auto-fill and auto-fit in columns and rows, then varies sizing basis, occupancy, repeat pattern, and fixed neighbors. The normative expectation is recorded separately in the C11.4 plan.</p>
+<main id="cases"></main>
+<pre id="observations"></pre>
+<script>
+  const minmaxPattern = 'minmax(40px, 1fr) 20px';
+  const cases = [];
+  for (const axis of ['columns', 'rows']) {
+    cases.push({ id: `${axis}-fill-both-min-200`, axis, mode: 'auto-fill', minSize: 200, basis: 'minimum', position: 'both', pattern: 'minmax', item: 'empty' });
+    cases.push({ id: `${axis}-fit-both-min-200`, axis, mode: 'auto-fit', minSize: 200, basis: 'minimum', position: 'both', pattern: 'minmax', item: 'empty' });
+  }
+  for (const axis of ['columns', 'rows']) {
+    for (const minSize of [190, 342]) cases.push({ id: `${axis}-fit-both-min-${minSize}`, axis, mode: 'auto-fit', minSize, basis: 'minimum', position: 'both', pattern: 'minmax', item: 'empty' });
+  }
+  for (const axis of ['columns', 'rows']) {
+    for (const item of ['single', 'span-two']) cases.push({ id: `${axis}-fit-${item}-min-200`, axis, mode: 'auto-fit', minSize: 200, basis: 'minimum', position: 'both', pattern: 'minmax', item });
+  }
+  for (const axis of ['columns', 'rows']) cases.push({ id: `${axis}-fit-absolute-span-two-min-200`, axis, mode: 'auto-fit', minSize: 200, basis: 'minimum', position: 'both', pattern: 'minmax', item: 'out-of-flow' });
+  for (const axis of ['columns', 'rows']) cases.push({ id: `${axis}-fit-fixed-pattern-min-200`, axis, mode: 'auto-fit', minSize: 200, basis: 'minimum', position: 'both', pattern: 'fixed', item: 'empty' });
+  for (const axis of ['columns', 'rows']) {
+    for (const position of ['prefix', 'suffix', 'none']) cases.push({ id: `${axis}-fit-${position}-min-200`, axis, mode: 'auto-fit', minSize: 200, basis: 'minimum', position, pattern: 'minmax', item: 'empty' });
+  }
+  for (const axis of ['columns', 'rows']) {
+    for (const mode of ['auto-fill', 'auto-fit']) cases.push({ id: `${axis}-${mode}-both-definite-200`, axis, mode, minSize: 200, basis: 'preferred', position: 'both', pattern: 'minmax', item: 'empty' });
+  }
+  for (const axis of ['columns', 'rows']) {
+    for (const mode of ['auto-fill', 'auto-fit']) cases.push({ id: `${axis}-${mode}-both-min-200-vertical-writing`, axis, mode, minSize: 200, basis: 'minimum', position: 'both', pattern: 'minmax', item: 'empty', writingMode: 'vertical-rl' });
+  }
+
+  const fixedNeighborCount = (position) => position === 'both' ? 2 : (position === 'none' ? 0 : 1);
+  const figures = [];
+  for (const definition of cases) {
+    const figure = document.createElement('figure');
+    const caption = document.createElement('figcaption');
+    caption.textContent = definition.id;
+    const grid = document.createElement('div');
+    grid.id = definition.id;
+    grid.className = `grid ${definition.axis}`;
+    if (definition.writingMode) {
+      grid.style.writingMode = definition.writingMode;
+      grid.style.width = 'auto';
+      grid.style.height = 'auto';
+    }
+    const repeatedPattern = definition.pattern === 'fixed' ? '40px 20px' : minmaxPattern;
+    const repeat = `repeat(${definition.mode}, ${repeatedPattern})`;
+    const template = definition.position === 'both'
+      ? `20px ${repeat} 10px`
+      : definition.position === 'prefix' ? `20px ${repeat}`
+        : definition.position === 'suffix' ? `${repeat} 10px` : repeat;
+    if (definition.axis === 'columns') {
+      grid.style.gridTemplateColumns = template;
+      if (definition.writingMode) {
+        grid.style.blockSize = '16px';
+        if (definition.basis === 'minimum') {
+          grid.style.inlineSize = 'max-content';
+          grid.style.minInlineSize = `${definition.minSize}px`;
+        } else {
+          grid.style.inlineSize = `${definition.minSize}px`;
+        }
+      } else {
+        grid.style.height = '16px';
+        if (definition.basis === 'minimum') {
+          grid.style.width = 'max-content';
+          grid.style.minWidth = `${definition.minSize}px`;
+        } else {
+          grid.style.width = `${definition.minSize}px`;
+        }
+      }
+    } else {
+      grid.style.gridTemplateRows = template;
+      if (definition.writingMode) {
+        grid.style.inlineSize = '16px';
+        if (definition.basis === 'minimum') {
+          grid.style.blockSize = 'max-content';
+          grid.style.minBlockSize = `${definition.minSize}px`;
+        } else {
+          grid.style.blockSize = `${definition.minSize}px`;
+        }
+      } else {
+        grid.style.width = '16px';
+        if (definition.basis === 'minimum') {
+          grid.style.height = 'max-content';
+          grid.style.minHeight = `${definition.minSize}px`;
+        } else {
+          grid.style.height = `${definition.minSize}px`;
+        }
+      }
+    }
+    if (definition.item !== 'empty') {
+      const item = document.createElement('div');
+      item.className = 'item';
+      if (definition.item === 'out-of-flow') {
+        grid.style.position = 'relative';
+        item.style.position = 'absolute';
+      }
+      item.style[definition.axis === 'columns' ? 'gridColumn' : 'gridRow'] = definition.item === 'single' ? '2 / span 1' : '2 / span 2';
+      grid.append(item);
+    }
+    figure.append(caption, grid);
+    document.querySelector('#cases').append(figure);
+    const style = getComputedStyle(grid);
+    const rect = grid.getBoundingClientRect();
+    const itemRect = grid.firstElementChild?.getBoundingClientRect();
+    const resolved = definition.axis === 'columns' ? style.gridTemplateColumns : style.gridTemplateRows;
+    const trackSizes = resolved.match(/[0-9.]+px/g)?.map((track) => Number.parseFloat(track)) ?? [];
+    const repeatedTrackCount = trackSizes.length - fixedNeighborCount(definition.position);
+    const strip = document.createElement('div');
+    strip.className = 'track-strip';
+    for (const size of trackSizes) {
+      const track = document.createElement('span');
+      track.className = 'track';
+      track.style.width = definition.axis === 'columns' ? `${Math.max(size, 18)}px` : '20px';
+      track.style.height = '18px';
+      track.textContent = `${size}`;
+      strip.append(track);
+    }
+    const result = document.createElement('div');
+    result.className = 'result';
+    result.textContent = `${definition.mode}; ${definition.axis}; ${definition.writingMode ?? 'horizontal-tb'}; ${trackSizes.length} tracks; ${(repeatedTrackCount / 2).toFixed(0)} repeats; root ${rect.width}×${rect.height}px; item ${itemRect ? `${itemRect.width}×${itemRect.height}px @ ${itemRect.x - rect.x},${itemRect.y - rect.y}` : 'none'}`;
+    figure.append(strip, result);
+    figures.push({
+      id: definition.id,
+      axis: definition.axis,
+      mode: definition.mode,
+      basis: definition.basis,
+      minSize: definition.minSize,
+      position: definition.position,
+      pattern: repeatedPattern,
+      item: definition.item,
+      writingMode: definition.writingMode ?? 'horizontal-tb',
+      width: rect.width,
+      height: rect.height,
+      resolvedTracks: resolved,
+      trackSizes,
+      repeatedTrackCount,
+      repeatCount: repeatedTrackCount / 2,
+      columnGap: style.columnGap,
+      rowGap: style.rowGap,
+      itemRect: itemRect ? { x: itemRect.x - rect.x, y: itemRect.y - rect.y, width: itemRect.width, height: itemRect.height } : null,
+    });
+  }
+  document.querySelector('#observations').textContent = JSON.stringify({
+    userAgent: navigator.userAgent,
+    viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+    cases: figures,
+  }, null, 2);
+</script>
