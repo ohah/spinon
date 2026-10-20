@@ -1,0 +1,56 @@
+{
+  "pass": "pass25",
+  "browser": "Agent Browser",
+  "pages": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "ready_state": "complete",
+      "checks": {
+        "typed_implicit_physical_android_note_visible": true,
+        "note_reports_14_scenes_and_pixelcopy_5_of_5": true
+      },
+      "screenshot": "tailnet-roadmap-agent-browser-pass25.png"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "ready_state": "complete",
+      "checks": {
+        "c11_4_row_found": true,
+        "c11_4_checked": false,
+        "typed_implicit_evidence_link_visible": true
+      },
+      "screenshot": "tailnet-status-agent-browser-pass25.png"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-grid-track-sizing.html",
+      "title": "C11.4 · CSS Grid track sizing 계획 - 스피논 문서",
+      "ready_state": "complete",
+      "checks": {
+        "typed_implicit_android_follow_up_visible": true,
+        "14_of_14_and_5_of_5_visible": true,
+        "logo_loaded": true
+      },
+      "screenshot": "tailnet-plan-agent-browser-pass25.png"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-typed-implicit-physical-android-2026-10-21/README.html",
+      "title": "C11.4 typed implicit track 실기기 Android 검증 - 스피논 문서",
+      "ready_state": "complete",
+      "checks": {
+        "14_of_14_visible": true,
+        "pixelcopy_5_of_5_visible": true,
+        "all_images_loaded": true,
+        "image_dimensions": [
+          [150, 150],
+          [1080, 2340],
+          [1080, 2340]
+        ]
+      },
+      "screenshot": "tailnet-evidence-agent-browser-pass25.png"
+    }
+  ],
+  "terminal_browser_used": false,
+  "pages_deployment_run": false
+}
