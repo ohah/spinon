@@ -1,0 +1,55 @@
+{
+  "schema": "spinon-css-c11-3-3-unknown-area-overflow-mobile-pixels/v1",
+  "sceneId": "unknown-area-fixed-implicit-tracks",
+  "runtime": {
+    "viewportCssPx": {
+      "width": 320,
+      "height": 240
+    },
+    "deviceScaleFactor": 1
+  },
+  "inputs": {
+    "reference": {
+      "path": "tests/fixtures/css/references/c11-3-3-unknown-named-area-implicit-lines-precomparison-v1.json",
+      "sha256": "3f0f3fa8afead05c0bc1d77041b1ebe81c93208d48031e03b1758245fc9f9e20"
+    }
+  },
+  "oracle": {
+    "name": "Google Chrome for Testing",
+    "product": "Chrome/154.0.8037.92",
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-0e8dd8be1151-222b2938c432-dd8f435afbc0",
+    "deviceScaleFactor": 1,
+    "screenshotPath": "spec/internal/evidence/c11-3-3-unknown-named-area-precomparison-2026-10-20/c1133-unknown-name-chrome-20261020T141317806Z-791f700e/unknown-template-area-with-sibling-dpr1.png",
+    "screenshotSha256": "948dcf78299f42177d9a905f3b0a30cc2e96a04005872e224ff188d54f1bb941"
+  },
+  "samples": [
+    {
+      "id": "grid-interior",
+      "nodeId": "fixed-implicit-grid",
+      "xCssPx": 150,
+      "yCssPx": 110,
+      "rgba": [16, 24, 32, 255]
+    },
+    {
+      "id": "known-area",
+      "nodeId": "fixed-known-area",
+      "xCssPx": 10,
+      "yCssPx": 10,
+      "rgba": [48, 164, 108, 255]
+    },
+    {
+      "id": "unknown-area-overflow",
+      "nodeId": "fixed-unknown-area",
+      "xCssPx": 182,
+      "yCssPx": 127,
+      "rgba": [229, 72, 77, 255]
+    }
+  ],
+  "excludedReferenceSamples": [
+    {
+      "id": "outside-root-background",
+      "referenceRgba": [255, 255, 255, 255],
+      "reason": "Chrome paints the uncovered viewport white while the native runtime surface backdrop is host-owned. This C11.3.3 comparison isolates the Grid root and its visible overflow item; page backdrop color is tracked separately."
+    }
+  ]
+}

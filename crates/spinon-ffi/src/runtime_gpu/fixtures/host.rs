@@ -254,7 +254,9 @@ impl RuntimeGpuHost {
 
     pub(in crate::runtime_gpu) fn new_c11_3_3_grid_template_areas_fixture()
     -> Result<(Self, String), String> {
-        let (session, report) = RuntimeSession::new_runtime_gpu_block_flex_grid_template_fixture()?;
+        let (session, report) =
+            RuntimeSession::new_runtime_gpu_block_flex_grid_template_implicit_named_lines_fixture(
+            )?;
         let mut host = Self::from_session_with_frame_report(session);
         host.include_paint_order_report = true;
         #[cfg(feature = "c11-grid-metal-surface-pixels-test")]

@@ -8,6 +8,7 @@ import {
   selectAndroidAVDSerial,
   selectAndroidPhysicalSerial,
 } from './c11-3-3-grid-template-areas-runtime-device.mjs';
+import { decodeRgbaPng } from './read-png-rgba.mjs';
 
 const repositoryRoot = resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const evidenceRoot = 'spec/internal/evidence/c11-3-3-grid-template-areas-precomparison-2026-10-14';
@@ -278,8 +279,9 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
   assert.equal(trackMismatch.expected.property, 'grid-template-areas');
   assert.equal(trackMismatch.expected.nodeId, trackMismatch.rootId);
   const unknownArea = runtime.cases.find(({ id }) => id === 'unknown-area-implicit-tracks');
-  assert.equal(unknownArea.expected.code, 'unsupported_named_grid_line');
-  assert.equal(unknownArea.expected.property, 'grid-row-start');
+  assert.equal(unknownArea.expected.code, 'unsupported_grid_auto_rows');
+  assert.equal(unknownArea.expected.property, 'grid-auto-rows');
+  assert.equal(unknownArea.expected.nodeId, unknownArea.rootId);
   assert.ok(unknownArea.nodeIds.includes(unknownArea.expected.nodeId));
   const builder = builderBytes.toString('utf8');
   assert.ok(builder.includes("from 'parse5'"));
@@ -310,6 +312,8 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
   assert.ok(deviceHelperBytes.toString('utf8').includes("model === 'SM-S731N'"));
   assert.ok(capture.includes("'emulator-5554'"));
   const scripts = JSON.parse((await read('package.json')).toString('utf8')).scripts;
+  assert.equal(scripts['css:capture:c11-3-3-grid-template-areas:android-physical-matrix'],
+    'node tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs android-physical');
   assert.equal(scripts['css:capture:c11-3-3-grid-template-areas:android-avd'],
     'node tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs android-avd');
   assert.equal(scripts['css:capture:c11-3-3-grid-template-areas:android-avd:single'],
@@ -317,7 +321,13 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
   assert.equal(scripts['css:capture:c11-3-3-grid-template-areas:android-avd:revision-reuse'],
     'node tools/css-reference/capture-c11-3-3-grid-template-areas-revision-reuse.mjs android-avd');
   const matrixCapture = matrixCaptureBytes.toString('utf8');
-  assert.ok(matrixCapture.includes('assert.equal(target, \'android-avd\''));
+  assert.ok(matrixCapture.includes("['android-avd', 'android-physical'].includes(target)"));
+  assert.ok(matrixCapture.includes('selectAndroidPhysicalSerial'));
+  assert.ok(matrixCapture.includes("serial: '[REDACTED]'"));
+  assert.ok(matrixCapture.includes('assert.equal(sdk, 36'));
+  assert.ok(matrixCapture.includes("if (target === 'android-avd')"));
+  assert.ok(matrixCapture.includes('screenSha256 = null'));
+  assert.ok(matrixCapture.includes('function formatLog(log)'));
   assert.ok(matrixCapture.includes('observation.cases.find(({ id }) => id === scene.id)'));
   assert.ok(matrixCapture.includes('maximumGeometryErrorCssPx'));
   assert.ok(matrixCapture.includes('paint_node_order'));
@@ -339,18 +349,86 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
   assert.ok(androidMainActivity.includes('|| c1133GridTemplateAreasRequested'));
   assert.ok(androidMainActivity.includes('SPINON_C1133_GRID_ARGUMENT_ERROR'));
   const sceneIds = runtime.cases.map(({ id }) => id);
+  const runtimeSceneIds = [...sceneIds, 'unknown-area-fixed-implicit-tracks'];
+  const mainActivityAllowlist = androidMainActivity.match(
+    /C1133_GRID_TEMPLATE_AREAS_SCENE_IDS = \{([\s\S]*?)\};/,
+  )?.[1];
+  assert.ok(mainActivityAllowlist);
+  assert.deepEqual([...mainActivityAllowlist.matchAll(/"([^"]+)"/g)].map(([, id]) => id),
+    runtimeSceneIds);
   const androidDemo = androidDemoBytes.toString('utf8');
   const androidAllowlist = androidDemo.match(/C1133_GRID_TEMPLATE_AREAS_SCENE_IDS = \{([\s\S]*?)\};/)?.[1];
   assert.ok(androidAllowlist);
-  assert.deepEqual([...androidAllowlist.matchAll(/"([^"]+)"/g)].map(([, id]) => id), sceneIds);
+  assert.deepEqual([...androidAllowlist.matchAll(/"([^"]+)"/g)].map(([, id]) => id), runtimeSceneIds);
   assert.ok(androidDemo.includes('host, c1133GridTemplateAreasSceneId'));
   assert.ok(androidDemo.includes('scheduleRuntimeInitializationForReadySurface'));
   const iosDemo = iosDemoBytes.toString('utf8');
   const iosAllowlist = iosDemo.match(/c1133GridTemplateAreasSceneIDs: Set<String> = \[([\s\S]*?)\]/)?.[1];
   assert.ok(iosAllowlist);
-  assert.deepEqual([...iosAllowlist.matchAll(/"([^"]+)"/g)].map(([, id]) => id), sceneIds);
+  assert.deepEqual([...iosAllowlist.matchAll(/"([^"]+)"/g)].map(([, id]) => id), runtimeSceneIds);
   assert.ok(iosDemo.includes('--spinon-c1133-grid-scene='));
   assert.ok(iosDemo.includes('sceneID: c1133GridTemplateAreasSceneID'));
+});
+
+test('unknown-area fixed implicit tracks root 바깥 paint가 Chrome geometry와 pixel에 고정된다', async () => {
+  const fixturePath = 'tests/fixtures/css/c11/unknown-area-fixed-implicit-tracks-mobile-pixels-v1.json';
+  const referencePath = 'tests/fixtures/css/references/c11-3-3-unknown-named-area-implicit-lines-precomparison-v1.json';
+  const [fixtureBytes, referenceBytes, androidDemoBytes, iosDemoBytes,
+    androidCaptureBytes, iosCaptureBytes] = await Promise.all([
+    read(fixturePath), read(referencePath),
+    read('platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java'),
+    read('platforms/ios/Sources/C0410RuntimeGpuDemo.swift'),
+    read('tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs'),
+    read('tools/css-reference/capture-c11-3-3-grid-template-areas-ios-simulator-matrix.mjs'),
+  ]);
+  const fixture = JSON.parse(fixtureBytes.toString('utf8'));
+  const fixedReference = JSON.parse(referenceBytes.toString('utf8'));
+  assert.equal(fixture.schema, 'spinon-css-c11-3-3-unknown-area-overflow-mobile-pixels/v1');
+  assert.equal(fixture.sceneId, 'unknown-area-fixed-implicit-tracks');
+  assert.equal(fixture.inputs.reference.sha256, sha256(referenceBytes));
+  assert.deepEqual(fixture.runtime.viewportCssPx, { width: 320, height: 240 });
+  assert.equal(fixture.oracle.referenceId, fixedReference.referenceId);
+  assert.equal(fixture.oracle.product, 'Chrome/154.0.8037.92');
+  assert.deepEqual(fixture.samples.map(({ id }) => id), [
+    'grid-interior', 'known-area', 'unknown-area-overflow',
+  ]);
+  assert.deepEqual(fixture.excludedReferenceSamples, [{
+    id: 'outside-root-background',
+    referenceRgba: [255, 255, 255, 255],
+    reason: 'Chrome paints the uncovered viewport white while the native runtime surface backdrop is host-owned. This C11.3.3 comparison isolates the Grid root and its visible overflow item; page backdrop color is tracked separately.',
+  }]);
+
+  const observation = fixedReference.observations.find(({ deviceScaleFactor }) => deviceScaleFactor === 1);
+  const chromeCase = caseAt(observation, 'unknown-template-area-with-sibling');
+  assert.deepEqual(chromeCase.nodes.map(({ rect }) => rect), [
+    { x: 0, y: 0, width: 160, height: 120 },
+    { x: 0, y: 0, width: 80, height: 60 },
+    { x: 175, y: 125, width: 15, height: 5 },
+  ]);
+  const screenshot = await read(fixture.oracle.screenshotPath);
+  assert.equal(sha256(screenshot), fixture.oracle.screenshotSha256);
+  const png = decodeRgbaPng(screenshot);
+  assert.deepEqual([png.width, png.height], [320, 240]);
+  for (const sample of fixture.samples) {
+    assert.deepEqual(png.getPixel(sample.xCssPx, sample.yCssPx), sample.rgba, sample.id);
+  }
+  assert.deepEqual(fixture.samples.find(({ id }) => id === 'unknown-area-overflow').rgba,
+    [229, 72, 77, 255]);
+  assert.deepEqual(png.getPixel(170, 127), [255, 255, 255, 255],
+    'Chrome page backdrop reference sample');
+
+  const android = androidDemoBytes.toString('utf8');
+  const ios = iosDemoBytes.toString('utf8');
+  assert.ok(android.includes('unknown-area-fixed-implicit-tracks'));
+  assert.ok(android.includes('unknown-area-overflow'));
+  assert.ok(android.includes('case "unknown-area-overflow"'));
+  assert.ok(android.includes('unsupported_grid_auto_rows'));
+  assert.ok(ios.includes('unknown-area-fixed-implicit-tracks'));
+  assert.ok(ios.includes('unknown-area-overflow'));
+  assert.ok(ios.includes('unknown-area-overflow'));
+  assert.ok(ios.includes('unsupported_grid_auto_rows'));
+  assert.ok(androidCaptureBytes.toString('utf8').includes('captureUnknownAreaOverflow'));
+  assert.ok(iosCaptureBytes.toString('utf8').includes('unknownAreaOverflow'));
 });
 
 test('Android capture는 고정 실기기를 자동 선택하고 명시 대상·중복·AVD를 분리한다', () => {

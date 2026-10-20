@@ -1,0 +1,1300 @@
+{
+  "schema": "spinon-css-c11-3-3-unknown-named-area-implicit-lines-precomparison/v1",
+  "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-0e8dd8be1151-222b2938c432-dd8f435afbc0",
+  "runId": "c1133-unknown-name-chrome-20261020T141317806Z-791f700e",
+  "fixture": {
+    "id": "C11.3.3-unknown-named-area-implicit-lines-precomparison-v1",
+    "inventoryPath": "tests/fixtures/css/c11/unknown-named-area-implicit-lines-c1133-inventory.json",
+    "inventorySha256": "0e8dd8be115120f3eaee4b51f0f8194933b161c5490ac8042fa38a92cc2616c2",
+    "htmlPath": "tests/fixtures/css/c11/unknown-named-area-implicit-lines-c1133.html",
+    "htmlSha256": "222b2938c432b6f433a127dac21d0183bd98021f6b1c40b8410050656c11367d"
+  },
+  "captureTool": {
+    "path": "tools/css-reference/capture-c11-3-3-unknown-named-area-precomparison.mjs",
+    "sha256": "dd8f435afbc0720deffc5e6c383cac3b9ab31dde5376503f39e33f76e44a657b",
+    "dependencies": [
+      {
+        "path": "tools/css-reference/chromium-session.mjs",
+        "sha256": "b010ada41ed75dc2d67ee25abd4266b17930f1de95fc683eebc5cdab6ad2cdc1"
+      }
+    ]
+  },
+  "oracle": {
+    "name": "Google Chrome for Testing",
+    "product": "Chrome/154.0.8037.92",
+    "revision": "@334b65d254ccc35df4fca82706d1753227b01039",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "executablePath": "/Users/yoonhb/Documents/workspace/spinon/build/chrome-for-testing-154.0.8037.92/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "executableSha256": "ce0c09ea98a7592e7799e54c1867797ccf99d4d6e821a11067c332e454732349",
+    "host": {
+      "platform": "darwin",
+      "architecture": "arm64",
+      "release": "25.5.0",
+      "node": "v24.19.0"
+    },
+    "flags": [
+      "--headless=new",
+      "--no-first-run",
+      "--no-default-browser-check",
+      "--disable-background-networking",
+      "--lang=en-US",
+      "--remote-debugging-port=0",
+      "--user-data-dir=<temporary-profile>"
+    ]
+  },
+  "environment": {
+    "viewportCssPx": {
+      "width": 320,
+      "height": 240,
+      "deviceScaleFactors": [
+        1,
+        2
+      ]
+    },
+    "deviceScaleFactors": [
+      1,
+      2
+    ],
+    "locale": "en-US",
+    "timeZone": "America/Los_Angeles",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "fine",
+    "hover": "hover",
+    "direction": "ltr",
+    "writingMode": "horizontal-tb"
+  },
+  "wpt": {
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "cases": [
+      {
+        "path": "css/css-grid/placement/grid-placement-unknown-named-area-001.html",
+        "sha256": "7fa795ad262e74399487fa817da1e99a75bbcce2e46b5f4547d55959e2e9ebd4",
+        "mappedCases": [
+          "unknown-both-named-row",
+          "unknown-column-named-span",
+          "unknown-row-named-span",
+          "unknown-column-span-one"
+        ],
+        "execution": "oracle-derived-fixture; WPT runner not used"
+      }
+    ]
+  },
+  "comparison": {
+    "computedProperties": [
+      "grid-template-columns",
+      "grid-template-rows",
+      "grid-template-areas",
+      "grid-auto-columns",
+      "grid-auto-rows",
+      "grid-row-start",
+      "grid-row-end",
+      "grid-column-start",
+      "grid-column-end"
+    ],
+    "rectFields": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "geometryToleranceCssPx": 0.5,
+    "coordinates": "root-relative"
+  },
+  "cases": [
+    {
+      "id": "unknown-both-named-row",
+      "rootId": "both-row-grid",
+      "nodeIds": [
+        "both-row-grid",
+        "both-row-control",
+        "both-row-item"
+      ],
+      "expectedRect": {
+        "x": 0,
+        "y": 35,
+        "width": 30,
+        "height": 5
+      },
+      "expectedRows": [
+        10,
+        20,
+        5,
+        5
+      ],
+      "expectedColumns": [
+        30,
+        40
+      ]
+    },
+    {
+      "id": "unknown-column-named-span",
+      "rootId": "column-span-grid",
+      "nodeIds": [
+        "column-span-grid",
+        "column-span-control",
+        "column-span-item"
+      ],
+      "expectedRect": {
+        "x": 85,
+        "y": 0,
+        "width": 45,
+        "height": 10
+      },
+      "expectedRows": [
+        10,
+        20
+      ],
+      "expectedColumns": [
+        30,
+        40,
+        15,
+        15,
+        15,
+        15
+      ]
+    },
+    {
+      "id": "unknown-row-named-span",
+      "rootId": "row-span-grid",
+      "nodeIds": [
+        "row-span-grid",
+        "row-span-control",
+        "row-span-item"
+      ],
+      "expectedRect": {
+        "x": 0,
+        "y": 35,
+        "width": 30,
+        "height": 25
+      },
+      "expectedRows": [
+        10,
+        20,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "expectedColumns": [
+        30,
+        40
+      ]
+    },
+    {
+      "id": "unknown-column-span-one",
+      "rootId": "column-span-one-grid",
+      "nodeIds": [
+        "column-span-one-grid",
+        "column-span-one-control",
+        "column-span-one-item"
+      ],
+      "expectedRect": {
+        "x": 85,
+        "y": 0,
+        "width": 15,
+        "height": 10
+      },
+      "expectedRows": [
+        10,
+        20
+      ],
+      "expectedColumns": [
+        30,
+        40,
+        15,
+        15
+      ]
+    },
+    {
+      "id": "unknown-template-area-with-sibling",
+      "rootId": "template-area-grid",
+      "nodeIds": [
+        "template-area-grid",
+        "known-area-item",
+        "unknown-template-area-item"
+      ],
+      "expectedRect": {
+        "x": 175,
+        "y": 125,
+        "width": 15,
+        "height": 5
+      },
+      "expectedRows": [
+        60,
+        60,
+        5,
+        5
+      ],
+      "expectedColumns": [
+        80,
+        80,
+        15,
+        15
+      ],
+      "derivedFrom": "C11.3.3 area inventory unknown-area-implicit-tracks with fixed grid-auto tracks"
+    }
+  ],
+  "observations": [
+    {
+      "deviceScaleFactor": 1,
+      "cases": [
+        {
+          "id": "unknown-both-named-row",
+          "rootId": "both-row-grid",
+          "viewport": {
+            "width": 320,
+            "height": 240,
+            "deviceScaleFactor": 1
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "nodes": [
+            {
+              "id": "both-row-grid",
+              "parentId": null,
+              "properties": {
+                "grid-template-columns": "30px 40px",
+                "grid-template-rows": "10px 20px 5px 5px",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "15px",
+                "grid-auto-rows": "5px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 120
+              }
+            },
+            {
+              "id": "both-row-control",
+              "parentId": "both-row-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "1",
+                "grid-row-end": "auto",
+                "grid-column-start": "1",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 30,
+                "height": 10
+              }
+            },
+            {
+              "id": "both-row-item",
+              "parentId": "both-row-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "nonExistentArea",
+                "grid-row-end": "nonExistentArea",
+                "grid-column-start": "1",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 35,
+                "width": 30,
+                "height": 5
+              }
+            }
+          ],
+          "resolvedGrid": {
+            "columns": [
+              30,
+              40
+            ],
+            "rows": [
+              10,
+              20,
+              5,
+              5
+            ],
+            "derivedFromCssomResolvedValues": true
+          }
+        },
+        {
+          "id": "unknown-column-named-span",
+          "rootId": "column-span-grid",
+          "viewport": {
+            "width": 320,
+            "height": 240,
+            "deviceScaleFactor": 1
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "nodes": [
+            {
+              "id": "column-span-grid",
+              "parentId": null,
+              "properties": {
+                "grid-template-columns": "30px 40px 15px 15px 15px 15px",
+                "grid-template-rows": "10px 20px",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "15px",
+                "grid-auto-rows": "5px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 120
+              }
+            },
+            {
+              "id": "column-span-control",
+              "parentId": "column-span-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "1",
+                "grid-row-end": "auto",
+                "grid-column-start": "1",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 30,
+                "height": 10
+              }
+            },
+            {
+              "id": "column-span-item",
+              "parentId": "column-span-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "1",
+                "grid-row-end": "auto",
+                "grid-column-start": "nonExistentArea",
+                "grid-column-end": "span 3"
+              },
+              "rect": {
+                "x": 85,
+                "y": 0,
+                "width": 45,
+                "height": 10
+              }
+            }
+          ],
+          "resolvedGrid": {
+            "columns": [
+              30,
+              40,
+              15,
+              15,
+              15,
+              15
+            ],
+            "rows": [
+              10,
+              20
+            ],
+            "derivedFromCssomResolvedValues": true
+          }
+        },
+        {
+          "id": "unknown-row-named-span",
+          "rootId": "row-span-grid",
+          "viewport": {
+            "width": 320,
+            "height": 240,
+            "deviceScaleFactor": 1
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "nodes": [
+            {
+              "id": "row-span-grid",
+              "parentId": null,
+              "properties": {
+                "grid-template-columns": "30px 40px",
+                "grid-template-rows": "10px 20px 5px 5px 5px 5px 5px 5px",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "15px",
+                "grid-auto-rows": "5px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 120
+              }
+            },
+            {
+              "id": "row-span-control",
+              "parentId": "row-span-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "1",
+                "grid-row-end": "auto",
+                "grid-column-start": "1",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 30,
+                "height": 10
+              }
+            },
+            {
+              "id": "row-span-item",
+              "parentId": "row-span-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "nonExistentArea",
+                "grid-row-end": "span 5 firstRow",
+                "grid-column-start": "1",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 35,
+                "width": 30,
+                "height": 25
+              }
+            }
+          ],
+          "resolvedGrid": {
+            "columns": [
+              30,
+              40
+            ],
+            "rows": [
+              10,
+              20,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            "derivedFromCssomResolvedValues": true
+          }
+        },
+        {
+          "id": "unknown-column-span-one",
+          "rootId": "column-span-one-grid",
+          "viewport": {
+            "width": 320,
+            "height": 240,
+            "deviceScaleFactor": 1
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "nodes": [
+            {
+              "id": "column-span-one-grid",
+              "parentId": null,
+              "properties": {
+                "grid-template-columns": "30px 40px 15px 15px",
+                "grid-template-rows": "10px 20px",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "15px",
+                "grid-auto-rows": "5px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 120
+              }
+            },
+            {
+              "id": "column-span-one-control",
+              "parentId": "column-span-one-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "1",
+                "grid-row-end": "auto",
+                "grid-column-start": "1",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 30,
+                "height": 10
+              }
+            },
+            {
+              "id": "column-span-one-item",
+              "parentId": "column-span-one-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "1",
+                "grid-row-end": "auto",
+                "grid-column-start": "nonExistentArea",
+                "grid-column-end": "span 1"
+              },
+              "rect": {
+                "x": 85,
+                "y": 0,
+                "width": 15,
+                "height": 10
+              }
+            }
+          ],
+          "resolvedGrid": {
+            "columns": [
+              30,
+              40,
+              15,
+              15
+            ],
+            "rows": [
+              10,
+              20
+            ],
+            "derivedFromCssomResolvedValues": true
+          }
+        },
+        {
+          "id": "unknown-template-area-with-sibling",
+          "rootId": "template-area-grid",
+          "viewport": {
+            "width": 320,
+            "height": 240,
+            "deviceScaleFactor": 1
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "nodes": [
+            {
+              "id": "template-area-grid",
+              "parentId": null,
+              "properties": {
+                "grid-template-columns": "80px 80px 15px 15px",
+                "grid-template-rows": "60px 60px 5px 5px",
+                "grid-template-areas": "\"known .\" \". .\"",
+                "grid-auto-columns": "15px",
+                "grid-auto-rows": "5px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 120
+              }
+            },
+            {
+              "id": "known-area-item",
+              "parentId": "template-area-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "known",
+                "grid-row-end": "known",
+                "grid-column-start": "known",
+                "grid-column-end": "known"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 80,
+                "height": 60
+              }
+            },
+            {
+              "id": "unknown-template-area-item",
+              "parentId": "template-area-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "not-authored",
+                "grid-row-end": "not-authored",
+                "grid-column-start": "not-authored",
+                "grid-column-end": "not-authored"
+              },
+              "rect": {
+                "x": 175,
+                "y": 125,
+                "width": 15,
+                "height": 5
+              }
+            }
+          ],
+          "resolvedGrid": {
+            "columns": [
+              80,
+              80,
+              15,
+              15
+            ],
+            "rows": [
+              60,
+              60,
+              5,
+              5
+            ],
+            "derivedFromCssomResolvedValues": true
+          }
+        }
+      ]
+    },
+    {
+      "deviceScaleFactor": 2,
+      "cases": [
+        {
+          "id": "unknown-both-named-row",
+          "rootId": "both-row-grid",
+          "viewport": {
+            "width": 320,
+            "height": 240,
+            "deviceScaleFactor": 2
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "nodes": [
+            {
+              "id": "both-row-grid",
+              "parentId": null,
+              "properties": {
+                "grid-template-columns": "30px 40px",
+                "grid-template-rows": "10px 20px 5px 5px",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "15px",
+                "grid-auto-rows": "5px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 120
+              }
+            },
+            {
+              "id": "both-row-control",
+              "parentId": "both-row-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "1",
+                "grid-row-end": "auto",
+                "grid-column-start": "1",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 30,
+                "height": 10
+              }
+            },
+            {
+              "id": "both-row-item",
+              "parentId": "both-row-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "nonExistentArea",
+                "grid-row-end": "nonExistentArea",
+                "grid-column-start": "1",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 35,
+                "width": 30,
+                "height": 5
+              }
+            }
+          ],
+          "resolvedGrid": {
+            "columns": [
+              30,
+              40
+            ],
+            "rows": [
+              10,
+              20,
+              5,
+              5
+            ],
+            "derivedFromCssomResolvedValues": true
+          }
+        },
+        {
+          "id": "unknown-column-named-span",
+          "rootId": "column-span-grid",
+          "viewport": {
+            "width": 320,
+            "height": 240,
+            "deviceScaleFactor": 2
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "nodes": [
+            {
+              "id": "column-span-grid",
+              "parentId": null,
+              "properties": {
+                "grid-template-columns": "30px 40px 15px 15px 15px 15px",
+                "grid-template-rows": "10px 20px",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "15px",
+                "grid-auto-rows": "5px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 120
+              }
+            },
+            {
+              "id": "column-span-control",
+              "parentId": "column-span-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "1",
+                "grid-row-end": "auto",
+                "grid-column-start": "1",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 30,
+                "height": 10
+              }
+            },
+            {
+              "id": "column-span-item",
+              "parentId": "column-span-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "1",
+                "grid-row-end": "auto",
+                "grid-column-start": "nonExistentArea",
+                "grid-column-end": "span 3"
+              },
+              "rect": {
+                "x": 85,
+                "y": 0,
+                "width": 45,
+                "height": 10
+              }
+            }
+          ],
+          "resolvedGrid": {
+            "columns": [
+              30,
+              40,
+              15,
+              15,
+              15,
+              15
+            ],
+            "rows": [
+              10,
+              20
+            ],
+            "derivedFromCssomResolvedValues": true
+          }
+        },
+        {
+          "id": "unknown-row-named-span",
+          "rootId": "row-span-grid",
+          "viewport": {
+            "width": 320,
+            "height": 240,
+            "deviceScaleFactor": 2
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "nodes": [
+            {
+              "id": "row-span-grid",
+              "parentId": null,
+              "properties": {
+                "grid-template-columns": "30px 40px",
+                "grid-template-rows": "10px 20px 5px 5px 5px 5px 5px 5px",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "15px",
+                "grid-auto-rows": "5px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 120
+              }
+            },
+            {
+              "id": "row-span-control",
+              "parentId": "row-span-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "1",
+                "grid-row-end": "auto",
+                "grid-column-start": "1",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 30,
+                "height": 10
+              }
+            },
+            {
+              "id": "row-span-item",
+              "parentId": "row-span-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "nonExistentArea",
+                "grid-row-end": "span 5 firstRow",
+                "grid-column-start": "1",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 35,
+                "width": 30,
+                "height": 25
+              }
+            }
+          ],
+          "resolvedGrid": {
+            "columns": [
+              30,
+              40
+            ],
+            "rows": [
+              10,
+              20,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            "derivedFromCssomResolvedValues": true
+          }
+        },
+        {
+          "id": "unknown-column-span-one",
+          "rootId": "column-span-one-grid",
+          "viewport": {
+            "width": 320,
+            "height": 240,
+            "deviceScaleFactor": 2
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "nodes": [
+            {
+              "id": "column-span-one-grid",
+              "parentId": null,
+              "properties": {
+                "grid-template-columns": "30px 40px 15px 15px",
+                "grid-template-rows": "10px 20px",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "15px",
+                "grid-auto-rows": "5px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 120
+              }
+            },
+            {
+              "id": "column-span-one-control",
+              "parentId": "column-span-one-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "1",
+                "grid-row-end": "auto",
+                "grid-column-start": "1",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 30,
+                "height": 10
+              }
+            },
+            {
+              "id": "column-span-one-item",
+              "parentId": "column-span-one-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "1",
+                "grid-row-end": "auto",
+                "grid-column-start": "nonExistentArea",
+                "grid-column-end": "span 1"
+              },
+              "rect": {
+                "x": 85,
+                "y": 0,
+                "width": 15,
+                "height": 10
+              }
+            }
+          ],
+          "resolvedGrid": {
+            "columns": [
+              30,
+              40,
+              15,
+              15
+            ],
+            "rows": [
+              10,
+              20
+            ],
+            "derivedFromCssomResolvedValues": true
+          }
+        },
+        {
+          "id": "unknown-template-area-with-sibling",
+          "rootId": "template-area-grid",
+          "viewport": {
+            "width": 320,
+            "height": 240,
+            "deviceScaleFactor": 2
+          },
+          "environment": {
+            "direction": "ltr",
+            "writingMode": "horizontal-tb"
+          },
+          "rootRect": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "nodes": [
+            {
+              "id": "template-area-grid",
+              "parentId": null,
+              "properties": {
+                "grid-template-columns": "80px 80px 15px 15px",
+                "grid-template-rows": "60px 60px 5px 5px",
+                "grid-template-areas": "\"known .\" \". .\"",
+                "grid-auto-columns": "15px",
+                "grid-auto-rows": "5px",
+                "grid-row-start": "auto",
+                "grid-row-end": "auto",
+                "grid-column-start": "auto",
+                "grid-column-end": "auto"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 160,
+                "height": 120
+              }
+            },
+            {
+              "id": "known-area-item",
+              "parentId": "template-area-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "known",
+                "grid-row-end": "known",
+                "grid-column-start": "known",
+                "grid-column-end": "known"
+              },
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 80,
+                "height": 60
+              }
+            },
+            {
+              "id": "unknown-template-area-item",
+              "parentId": "template-area-grid",
+              "properties": {
+                "grid-template-columns": "none",
+                "grid-template-rows": "none",
+                "grid-template-areas": "none",
+                "grid-auto-columns": "auto",
+                "grid-auto-rows": "auto",
+                "grid-row-start": "not-authored",
+                "grid-row-end": "not-authored",
+                "grid-column-start": "not-authored",
+                "grid-column-end": "not-authored"
+              },
+              "rect": {
+                "x": 175,
+                "y": 125,
+                "width": 15,
+                "height": 5
+              }
+            }
+          ],
+          "resolvedGrid": {
+            "columns": [
+              80,
+              80,
+              15,
+              15
+            ],
+            "rows": [
+              60,
+              60,
+              5,
+              5
+            ],
+            "derivedFromCssomResolvedValues": true
+          }
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "caseId": "unknown-both-named-row",
+      "deviceScaleFactor": 1,
+      "path": "spec/internal/evidence/c11-3-3-unknown-named-area-precomparison-2026-10-20/c1133-unknown-name-chrome-20261020T141317806Z-791f700e/unknown-both-named-row-dpr1.png",
+      "sha256": "7665ed96097b97e43735b993b0ff56c4ff1f8af553bb65abfd292f69c9effcef"
+    },
+    {
+      "caseId": "unknown-column-named-span",
+      "deviceScaleFactor": 1,
+      "path": "spec/internal/evidence/c11-3-3-unknown-named-area-precomparison-2026-10-20/c1133-unknown-name-chrome-20261020T141317806Z-791f700e/unknown-column-named-span-dpr1.png",
+      "sha256": "afd34dc32ffab8c45b99550345132f3b992542fe719c237a090fe0e39f65aa96"
+    },
+    {
+      "caseId": "unknown-row-named-span",
+      "deviceScaleFactor": 1,
+      "path": "spec/internal/evidence/c11-3-3-unknown-named-area-precomparison-2026-10-20/c1133-unknown-name-chrome-20261020T141317806Z-791f700e/unknown-row-named-span-dpr1.png",
+      "sha256": "6104e4bfe8122a20d41df0ad874791fdec2c33a1915aba2720a84480ffd71eec"
+    },
+    {
+      "caseId": "unknown-column-span-one",
+      "deviceScaleFactor": 1,
+      "path": "spec/internal/evidence/c11-3-3-unknown-named-area-precomparison-2026-10-20/c1133-unknown-name-chrome-20261020T141317806Z-791f700e/unknown-column-span-one-dpr1.png",
+      "sha256": "fa7d5139772c19d6b81f7e7d07a9129474cac426f25df135d99401bf92ca9d9d"
+    },
+    {
+      "caseId": "unknown-template-area-with-sibling",
+      "deviceScaleFactor": 1,
+      "path": "spec/internal/evidence/c11-3-3-unknown-named-area-precomparison-2026-10-20/c1133-unknown-name-chrome-20261020T141317806Z-791f700e/unknown-template-area-with-sibling-dpr1.png",
+      "sha256": "948dcf78299f42177d9a905f3b0a30cc2e96a04005872e224ff188d54f1bb941"
+    },
+    {
+      "caseId": "unknown-both-named-row",
+      "deviceScaleFactor": 2,
+      "path": "spec/internal/evidence/c11-3-3-unknown-named-area-precomparison-2026-10-20/c1133-unknown-name-chrome-20261020T141317806Z-791f700e/unknown-both-named-row-dpr2.png",
+      "sha256": "0766dd7214a6bd8ff6ec64d5805caff7b8cb61bb522997832d7c8bd0a36bf6c5"
+    },
+    {
+      "caseId": "unknown-column-named-span",
+      "deviceScaleFactor": 2,
+      "path": "spec/internal/evidence/c11-3-3-unknown-named-area-precomparison-2026-10-20/c1133-unknown-name-chrome-20261020T141317806Z-791f700e/unknown-column-named-span-dpr2.png",
+      "sha256": "cf744d6145561635def45d6629e0b29de75066e26245e87522b5e43977ceea90"
+    },
+    {
+      "caseId": "unknown-row-named-span",
+      "deviceScaleFactor": 2,
+      "path": "spec/internal/evidence/c11-3-3-unknown-named-area-precomparison-2026-10-20/c1133-unknown-name-chrome-20261020T141317806Z-791f700e/unknown-row-named-span-dpr2.png",
+      "sha256": "47ee3435571f1b4b16e58baf8c33e2ca0be2595998d34c695b4eac84e8b68983"
+    },
+    {
+      "caseId": "unknown-column-span-one",
+      "deviceScaleFactor": 2,
+      "path": "spec/internal/evidence/c11-3-3-unknown-named-area-precomparison-2026-10-20/c1133-unknown-name-chrome-20261020T141317806Z-791f700e/unknown-column-span-one-dpr2.png",
+      "sha256": "b19de2b75c1bbbd56254b4be7876093a8ccfdd2688cd8c533f0a33212b5c9e68"
+    },
+    {
+      "caseId": "unknown-template-area-with-sibling",
+      "deviceScaleFactor": 2,
+      "path": "spec/internal/evidence/c11-3-3-unknown-named-area-precomparison-2026-10-20/c1133-unknown-name-chrome-20261020T141317806Z-791f700e/unknown-template-area-with-sibling-dpr2.png",
+      "sha256": "3b93068235357f844d22ba5717bb67b878450a91c1101c4ccca916407400bda6"
+    }
+  ]
+}

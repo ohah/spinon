@@ -1,5 +1,7 @@
 #[path = "named_line/area.rs"]
 mod area;
+#[path = "named_line/implicit.rs"]
+mod implicit;
 
 use spinon_core::NodeId;
 use spinon_layout::GridPlacementInput;
@@ -62,6 +64,7 @@ pub(super) fn project_axis(
     )
 }
 
+#[cfg(test)]
 pub(super) fn project_axis_with_areas(
     node: NodeId,
     start_property: &'static str,
@@ -70,19 +73,42 @@ pub(super) fn project_axis_with_areas(
     end: &ComputedCssGridPlacement,
     line_metadata: LineMetadata<'_>,
 ) -> Result<(GridPlacementInput, GridPlacementInput), StyleLayoutError> {
+    let (start, end, _) = project_axis_with_areas_and_implicit_named_lines(
+        node,
+        start_property,
+        end_property,
+        start,
+        end,
+        line_metadata,
+        false,
+    )?;
+    Ok((start, end))
+}
+
+pub(super) fn project_axis_with_areas_and_implicit_named_lines(
+    node: NodeId,
+    start_property: &'static str,
+    end_property: &'static str,
+    start: &ComputedCssGridPlacement,
+    end: &ComputedCssGridPlacement,
+    line_metadata: LineMetadata<'_>,
+    allow_implicit_named_lines: bool,
+) -> Result<(GridPlacementInput, GridPlacementInput, bool), StyleLayoutError> {
     let start = decode(node, start_property, start)?;
     let end = decode(node, end_property, end)?;
-    let (start, end) = resolve_named_placements(
+    let (start, end, used_implicit_named_line) = implicit::resolve_named_placements(
         node,
         start_property,
         end_property,
         start,
         end,
         &line_metadata,
+        allow_implicit_named_lines,
     )?;
     Ok((
         to_layout(node, start_property, start)?,
         to_layout(node, end_property, end)?,
+        used_implicit_named_line,
     ))
 }
 
@@ -121,176 +147,172 @@ fn decode<'a>(
     }
 }
 
-fn resolve_named_placements<'a>(
-    node: NodeId,
-    start_property: &'static str,
-    end_property: &'static str,
-    mut start: Placement<'a>,
-    mut end: Placement<'a>,
-    line_metadata: &LineMetadata<'_>,
-) -> Result<(Placement<'a>, Placement<'a>), StyleLayoutError> {
-    if matches!(start, Placement::NamedLine { .. }) {
-        start = resolve_named_endpoint(node, start_property, start, true, line_metadata)?;
-    }
-    if matches!(end, Placement::NamedLine { .. }) {
-        end = resolve_named_endpoint(node, end_property, end, false, line_metadata)?;
-    }
-
-    match (start, end) {
-        (
-            Placement::SpanNamed { name: _, .. },
-            Placement::Span(_) | Placement::SpanNamed { .. },
-        ) => {
-            // CSS Grid 충돌 규칙은 끝쪽 span을 버립니다. 남은 named span의 반대쪽에
-            // 확정된 line이 없으면 기본 1 track span으로 처리합니다.
-            start = Placement::Span(1);
-            end = Placement::Auto;
-        }
-        (Placement::Span(_), Placement::SpanNamed { .. }) => {
-            // 끝쪽 span은 충돌로 버리므로 named line 검색도 하지 않습니다.
-            end = Placement::Auto;
-        }
-        _ => {}
-    }
-
-    if let Placement::SpanNamed { name, count } = start {
-        start = match end {
-            Placement::Line(line) => Placement::Line(resolve_named_span_line(
-                node,
-                start_property,
-                name,
-                count,
-                line,
-                SearchDirection::Backward,
-                line_metadata,
-            )?),
-            Placement::Auto | Placement::Span(_) | Placement::SpanNamed { .. } => {
-                Placement::Span(1)
-            }
-            Placement::NamedLine { name, .. } => {
-                return Err(unsupported_named_line(
-                    node,
-                    start_property,
-                    name,
-                    "named placement was not resolved before span projection",
-                ));
-            }
-        };
-    }
-    if let Placement::SpanNamed { name, count } = end {
-        end = match start {
-            Placement::Line(line) => Placement::Line(resolve_named_span_line(
-                node,
-                end_property,
-                name,
-                count,
-                line,
-                SearchDirection::Forward,
-                line_metadata,
-            )?),
-            Placement::Auto | Placement::Span(_) | Placement::SpanNamed { .. } => {
-                Placement::Span(1)
-            }
-            Placement::NamedLine { name, .. } => {
-                return Err(unsupported_named_line(
-                    node,
-                    end_property,
-                    name,
-                    "named placement was not resolved before span projection",
-                ));
-            }
-        };
-    }
-
-    Ok((start, end))
-}
-
 fn resolve_named_endpoint<'a>(
     node: NodeId,
     property: &'static str,
     placement: Placement<'a>,
     is_start: bool,
     line_metadata: &LineMetadata<'_>,
-) -> Result<Placement<'a>, StyleLayoutError> {
+    allow_implicit_named_lines: bool,
+) -> Result<(Placement<'a>, bool), StyleLayoutError> {
     let Placement::NamedLine { name, occurrence } = placement else {
-        return Ok(placement);
+        return Ok((placement, false));
     };
-    let line = if let Some(occurrence) = occurrence {
-        find_named_occurrence(node, property, name, occurrence, line_metadata)?
+    let (line, is_implicit_named_line) = if let Some(occurrence) = occurrence {
+        (
+            find_named_occurrence(node, property, name, occurrence, line_metadata)?,
+            false,
+        )
     } else {
-        area::resolve_bare_custom_ident(node, property, name, is_start, line_metadata)?
+        area::resolve_bare_custom_ident(
+            node,
+            property,
+            name,
+            is_start,
+            line_metadata,
+            allow_implicit_named_lines,
+        )?
     };
-    Ok(Placement::Line(line))
+    Ok((Placement::Line(line), is_implicit_named_line))
 }
 
 #[derive(Clone, Copy)]
-enum SearchDirection {
+pub(super) enum SearchDirection {
     Forward,
     Backward,
 }
 
-fn resolve_named_span_line(
+pub(super) struct ImplicitNamedLineResolver<'a, 'b> {
     node: NodeId,
-    property: &'static str,
-    name: &str,
-    count: u32,
-    opposite_line: i32,
-    direction: SearchDirection,
-    line_metadata: &LineMetadata<'_>,
-) -> Result<i32, StyleLayoutError> {
-    validate_line_metadata(node, property, name, line_metadata)?;
-    let opposite_line = normalize_explicit_line(opposite_line, line_metadata.track_count)
-        .map_err(|reason| unsupported_named_line(node, property, name, reason))?;
-    let opposite_index = usize::try_from(opposite_line - 1).map_err(|_| {
-        unsupported_named_line(
+    line_metadata: &'a LineMetadata<'b>,
+    allow_implicit_named_lines: bool,
+}
+
+impl<'a, 'b> ImplicitNamedLineResolver<'a, 'b> {
+    pub(super) fn new(
+        node: NodeId,
+        line_metadata: &'a LineMetadata<'b>,
+        allow_implicit_named_lines: bool,
+    ) -> Self {
+        Self {
             node,
-            property,
-            name,
-            "opposite definite line exceeds the supported range",
-        )
-    })?;
-    let mut remaining = count;
-    let mut found = None;
-    match direction {
-        SearchDirection::Forward => {
-            for index in (opposite_index + 1)..line_metadata.names.len() {
-                if area::line_has_name(line_metadata, index, name) {
-                    remaining -= 1;
-                    if remaining == 0 {
-                        found = Some(index);
-                        break;
-                    }
-                }
-            }
-        }
-        SearchDirection::Backward => {
-            for index in (0..opposite_index).rev() {
-                if area::line_has_name(line_metadata, index, name) {
-                    remaining -= 1;
-                    if remaining == 0 {
-                        found = Some(index);
-                        break;
-                    }
-                }
-            }
+            line_metadata,
+            allow_implicit_named_lines,
         }
     }
-    if let Some(index) = found {
-        return i32::try_from(index + 1).map_err(|_| {
+
+    pub(super) fn resolve_span_line(
+        &self,
+        property: &'static str,
+        name: &str,
+        count: u32,
+        opposite_line: i32,
+        direction: SearchDirection,
+        opposite_is_implicit_named_line: bool,
+    ) -> Result<(i32, bool), StyleLayoutError> {
+        let node = self.node;
+        let line_metadata = self.line_metadata;
+        validate_line_metadata(node, property, name, line_metadata)?;
+        let explicit_line_count = line_metadata
+            .track_count
+            .checked_add(1)
+            .and_then(|count| i64::try_from(count).ok())
+            .ok_or_else(|| {
+                unsupported_named_line(
+                    node,
+                    property,
+                    name,
+                    "track count exceeds the supported range",
+                )
+            })?;
+        let opposite_line = match (direction, opposite_is_implicit_named_line, opposite_line) {
+            (SearchDirection::Forward, true, line) if i64::from(line) > explicit_line_count => {
+                i64::from(line)
+            }
+            (_, true, _) => {
+                return Err(unsupported_named_line(
+                    node,
+                    property,
+                    name,
+                    "named span requires a leading implicit grid line outside the explicit grid",
+                ));
+            }
+            (_, false, line) => normalize_explicit_line(line, line_metadata.track_count)
+                .map_err(|reason| unsupported_named_line(node, property, name, reason))?,
+        };
+        let opposite_index = usize::try_from(opposite_line - 1).map_err(|_| {
             unsupported_named_line(
                 node,
                 property,
                 name,
-                "resolved line exceeds the supported range",
+                "opposite definite line exceeds the supported range",
             )
-        });
+        })?;
+        let mut remaining = count;
+        let mut found = None;
+        let mut last_forward_match_line = None;
+        match direction {
+            SearchDirection::Forward => {
+                for index in (opposite_index + 1)..line_metadata.names.len() {
+                    if area::line_has_name(line_metadata, index, name) {
+                        last_forward_match_line = Some(index + 1);
+                        remaining -= 1;
+                        if remaining == 0 {
+                            found = Some(index);
+                            break;
+                        }
+                    }
+                }
+            }
+            SearchDirection::Backward => {
+                for index in (0..opposite_index).rev() {
+                    if area::line_has_name(line_metadata, index, name) {
+                        remaining -= 1;
+                        if remaining == 0 {
+                            found = Some(index);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        if let Some(index) = found {
+            let line = i32::try_from(index + 1).map_err(|_| {
+                unsupported_named_line(
+                    node,
+                    property,
+                    name,
+                    "resolved line exceeds the supported range",
+                )
+            })?;
+            return Ok((line, false));
+        }
+        if self.allow_implicit_named_lines && matches!(direction, SearchDirection::Forward) {
+            let base_line = last_forward_match_line
+                .and_then(|line| i64::try_from(line).ok())
+                .unwrap_or(explicit_line_count)
+                .max(explicit_line_count)
+                .max(opposite_line);
+            let implicit_line = base_line
+                .checked_add(i64::from(remaining))
+                .and_then(|line| i32::try_from(line).ok())
+                .ok_or_else(|| {
+                    unsupported_named_line(
+                        node,
+                        property,
+                        name,
+                        "generated named span line exceeds the supported range",
+                    )
+                })?;
+            return Ok((implicit_line, true));
+        }
+        Err(unsupported_named_line(
+            node,
+            property,
+            name,
+            "named span requires an implicit grid line outside the explicit grid",
+        ))
     }
-    Err(unsupported_named_line(
-        node,
-        property,
-        name,
-        "named span requires an implicit grid line outside the explicit grid",
-    ))
 }
 
 fn find_named_occurrence(
@@ -344,6 +366,31 @@ fn find_named_occurrence(
         )
     })?;
     i32::try_from(selected + 1).map_err(|_| {
+        unsupported_named_line(
+            node,
+            property,
+            name,
+            "resolved line exceeds the supported range",
+        )
+    })
+}
+
+fn find_first_named_occurrence_if_present(
+    node: NodeId,
+    property: &'static str,
+    name: &str,
+    line_metadata: &LineMetadata<'_>,
+) -> Result<Option<i32>, StyleLayoutError> {
+    validate_line_metadata(node, property, name, line_metadata)?;
+    let Some((index, _)) = line_metadata
+        .names
+        .iter()
+        .enumerate()
+        .find(|(index, _)| area::line_has_name(line_metadata, *index, name))
+    else {
+        return Ok(None);
+    };
+    i32::try_from(index + 1).map(Some).map_err(|_| {
         unsupported_named_line(
             node,
             property,

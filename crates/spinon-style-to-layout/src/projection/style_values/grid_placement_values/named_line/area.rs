@@ -16,7 +16,8 @@ pub(super) fn resolve_bare_custom_ident(
     name: &str,
     is_start: bool,
     line_metadata: &LineMetadata<'_>,
-) -> Result<i32, StyleLayoutError> {
+    allow_implicit_named_lines: bool,
+) -> Result<(i32, bool), StyleLayoutError> {
     let start_exists = has_area_edge_on_axis(line_metadata.names, name, AreaEdge::Start);
     let end_exists = has_area_edge_on_axis(line_metadata.names, name, AreaEdge::End);
     let opposite_start_exists =
@@ -28,7 +29,28 @@ pub(super) fn resolve_bare_custom_ident(
         .is_some_and(|areas| areas.areas.iter().any(|area| area.name == name));
     let implicit_area = start_exists && end_exists && opposite_start_exists && opposite_end_exists;
     if !explicit_area && !implicit_area {
-        return super::find_named_occurrence(node, property, name, 1, line_metadata);
+        if !allow_implicit_named_lines {
+            return super::find_named_occurrence(node, property, name, 1, line_metadata)
+                .map(|line| (line, false));
+        }
+        if let Some(line) =
+            super::find_first_named_occurrence_if_present(node, property, name, line_metadata)?
+        {
+            return Ok((line, false));
+        }
+        let line = line_metadata
+            .track_count
+            .checked_add(2)
+            .and_then(|line| i32::try_from(line).ok())
+            .ok_or_else(|| {
+                unsupported_named_line(
+                    node,
+                    property,
+                    name,
+                    "generated implicit named line exceeds the supported range",
+                )
+            })?;
+        return Ok((line, true));
     }
 
     validate_area_line_metadata(node, property, name, line_metadata)?;
@@ -47,14 +69,15 @@ pub(super) fn resolve_bare_custom_ident(
             })
         });
         if authored_alias || generated_alias {
-            return i32::try_from(index + 1).map_err(|_| {
+            let line = i32::try_from(index + 1).map_err(|_| {
                 unsupported_named_line(
                     node,
                     property,
                     name,
                     "resolved area line exceeds the supported range",
                 )
-            });
+            })?;
+            return Ok((line, false));
         }
     }
     Err(unsupported_named_line(

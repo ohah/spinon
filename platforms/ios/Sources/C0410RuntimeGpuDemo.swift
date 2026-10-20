@@ -12,6 +12,7 @@ private let c1133GridTemplateAreasSceneIDs: Set<String> = [
     "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",
     "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",
     "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",
+    "unknown-area-fixed-implicit-tracks",
 ]
 private let c114GridTrackSizingSceneIDs: Set<String> = [
     "auto-fixed-width-item", "minmax-auto-fixed-width-item",
@@ -1023,6 +1024,11 @@ private struct C111MetalPixelRun {
         ("grid-background", "c1133-main-grid", 150, 10, [16, 24, 32, 255]),
         ("item-blue", "c1133-main-item", 100, 50, [62, 99, 221, 255]),
     ]
+    private static let c1133UnknownAreaOverflowPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+        ("grid-interior", "fixed-implicit-grid", 150, 110, [16, 24, 32, 255]),
+        ("known-area", "fixed-known-area", 10, 10, [48, 164, 108, 255]),
+        ("unknown-area-overflow", "fixed-unknown-area", 182, 127, [229, 72, 77, 255]),
+    ]
     private static let c114TextOverflowPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
         ("item-inside-root", "c114-break-all-item", 5, 20, [229, 72, 77, 255]),
         ("item-overflow-beyond-root", "c114-break-all-item", 5, 45, [229, 72, 77, 255]),
@@ -1137,9 +1143,15 @@ private struct C111MetalPixelRun {
         }
     }
 
-    private static func hasFixedC1133TemplateAreaSamples(_ samples: [C111MetalPixelSample]) -> Bool {
-        guard samples.count == c1133TemplateAreaPixelSamples.count else { return false }
-        return c1133TemplateAreaPixelSamples.allSatisfy { expected in
+    private static func hasFixedC1133TemplateAreaSamples(
+        _ samples: [C111MetalPixelSample], sceneID: String
+    ) -> Bool {
+        let expectedSamples = sceneID == "basic-rectangles"
+            ? c1133TemplateAreaPixelSamples
+            : sceneID == "unknown-area-fixed-implicit-tracks"
+                ? c1133UnknownAreaOverflowPixelSamples : []
+        guard samples.count == expectedSamples.count else { return false }
+        return expectedSamples.allSatisfy { expected in
             samples.contains { sample in
                 sample.id == expected.0 && sample.nodeId == expected.1
                     && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
@@ -1285,7 +1297,8 @@ private struct C111MetalPixelRun {
                 $0.hasPrefix("--spinon-c1133-grid-scene=")
             }).map { String($0.dropFirst("--spinon-c1133-grid-scene=".count)) }
                 ?? "basic-rectangles"
-            guard sceneID == c1133SceneID, sceneID == "basic-rectangles",
+            guard sceneID == c1133SceneID,
+                  sceneID == "basic-rectangles" || sceneID == "unknown-area-fixed-implicit-tracks",
                   c1133GridTemplateAreasSceneIDs.contains(c1133SceneID), c1133RunID == runID,
                   !isC1131Repeat, !isC1132NamedLine,
                   !arguments.contains("--spinon-c1123-grid-auto-placement"),
@@ -1364,7 +1377,8 @@ private struct C111MetalPixelRun {
               }) else { return nil }
         if isC1131Repeat && !hasFixedC1131RepeatSamples(samples) { return nil }
         if isC1132NamedLine && !hasFixedC1132NamedLineSamples(samples) { return nil }
-        if isC1133TemplateAreas && !hasFixedC1133TemplateAreaSamples(samples) { return nil }
+        if isC1133TemplateAreas
+            && !hasFixedC1133TemplateAreaSamples(samples, sceneID: sceneID) { return nil }
         if isC114TrackSizing && !hasFixedC114TrackSizingSamples(samples, sceneID: sceneID) {
             return nil
         }
@@ -4741,25 +4755,29 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             } else if let result {
                 let code = result.contains("unsupported_computed_value")
                     ? "unsupported_computed_value"
+                    : result.contains("unsupported_grid_auto_rows")
+                        ? "unsupported_grid_auto_rows"
                     : result.contains("unsupported_named_grid_line")
                         ? "unsupported_named_grid_line" : "missing"
                 let property = result.contains("property=Some(\"grid-template-areas\")")
                     ? "grid-template-areas"
+                    : result.contains("property=Some(\"grid-auto-rows\")")
+                        ? "grid-auto-rows"
                     : result.contains("property=Some(\"grid-row-start\")")
                         ? "grid-row-start" : "missing"
                 let nodeID = result.range(of: #"node=Some\(\d+\)"#, options: .regularExpression).map {
                     String(result[$0].dropFirst("node=Some(".count).dropLast())
                 } ?? "missing"
                 let expectedNodeID = c1133GridTemplateAreasSceneID == "area-track-count-mismatch"
-                    ? "1" : c1133GridTemplateAreasSceneID == "unknown-area-implicit-tracks"
-                        ? "2" : "missing"
+                    || c1133GridTemplateAreasSceneID == "unknown-area-implicit-tracks"
+                    ? "1" : "missing"
                 let status = String(result.split(separator: " ", maxSplits: 1).first ?? "status=-1")
                 let expected = status == "status=-11"
                     && ((c1133GridTemplateAreasSceneID == "area-track-count-mismatch"
                         && code == "unsupported_computed_value" && property == "grid-template-areas"
                         && nodeID == expectedNodeID)
                     || (c1133GridTemplateAreasSceneID == "unknown-area-implicit-tracks"
-                        && code == "unsupported_named_grid_line" && property == "grid-row-start"
+                        && code == "unsupported_grid_auto_rows" && property == "grid-auto-rows"
                         && nodeID == expectedNodeID))
                 let frames = result.contains("node_frames_css_px=[") ? "present" : "absent"
                 log("SPINON_C1133_GRID_REJECTION_SUMMARY run_id=\(c1133GridTemplateAreasRunID) scene_id=\(c1133GridTemplateAreasSceneID) expected=\(expected) \(status) code=\(code) property=\(property) node_id=\(nodeID) frames=\(frames)")

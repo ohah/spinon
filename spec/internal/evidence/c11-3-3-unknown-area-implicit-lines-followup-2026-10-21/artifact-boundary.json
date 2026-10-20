@@ -1,0 +1,31 @@
+{
+  "schema": "spinon-c11-3-3-fixture-artifact-boundary/v1",
+  "scope": "spinon-ffi release static archive only; this is not a final Android APK or iOS app bundle size audit",
+  "default": {
+    "command": "mise exec -- cargo build --locked --release --no-default-features -p spinon-ffi --lib",
+    "artifact": "target/release/libspinon_ffi.a",
+    "sha256": "7efd2c749f3a3089f9c7880457fc6926b1801ca75c3cfa1f0ad528dfa82337ba",
+    "bytes": 59985552,
+    "c1133SymbolsPresent": [],
+    "c1133MarkersPresent": []
+  },
+  "optIn": {
+    "command": "mise exec -- cargo build --locked --release --no-default-features -p spinon-ffi --lib --features c11-grid-metal-surface-pixels-test",
+    "artifact": "target/release/libspinon_ffi.a",
+    "sha256": "0b1888fc4e9cb972bf7e17f15a0d34a53246a1c3506eec2515cdf3a6d4d565e3",
+    "bytes": 76553360,
+    "c1133SymbolsPresent": [
+      "spinon_runtime_gpu_host_new_c11_3_3_grid_template_areas_fixture",
+      "spinon_runtime_gpu_host_eval_c11_3_3_grid_template_areas_fixture",
+      "spinon_runtime_gpu_host_request_c11_3_3_grid_surface_pixels_for_test"
+    ],
+    "c1133MarkersPresent": [
+      "unknown-area-fixed-implicit-tracks",
+      "fixed-implicit-grid",
+      "fixed-known-area",
+      "fixed-unknown-area",
+      "basic-rectangles"
+    ]
+  },
+  "interpretation": "The default archive excludes the C11.3.3 fixture ABI and payload markers. The opt-in archive contains the fixture positive control. This does not establish release app bundle size or product ABI behavior."
+}

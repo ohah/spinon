@@ -113,14 +113,14 @@ test('기대 rejection은 정확한 error·property·node와 frame/draw/readback
   assert.throws(() => validateC1133IOSRejection(scene, log + '\nSPINON_C0410_DRAW status=0 presented boxes=1', 'ios-run'));
 });
 
-test('두 번째 기대 rejection은 grid-row-start와 item node 2를 정확히 기록한다', () => {
+test('unknown area auto-track rejection은 grid-auto-rows와 root node 1을 정확히 기록한다', () => {
   const scene = runtime.cases.find(({ id }) => id === 'unknown-area-implicit-tracks');
   const log = 'SPINON_C1133_GRID_REJECTION_SUMMARY run_id=ios-run scene_id=' + scene.id
     + ' expected=true status=-11 code=' + scene.expected.code
-    + ' property=' + scene.expected.property + ' node_id=2 frames=absent';
-  assert.equal(validateC1133IOSRejection(scene, log, 'ios-run').runtimeNodeId, 2);
+    + ' property=' + scene.expected.property + ' node_id=1 frames=absent';
+  assert.equal(validateC1133IOSRejection(scene, log, 'ios-run').runtimeNodeId, 1);
   assert.throws(() => validateC1133IOSRejection(scene,
-    log.replace('grid-row-start', 'grid-column-start'), 'ios-run'));
+    log.replace('grid-auto-rows', 'grid-auto-columns'), 'ios-run'));
 });
 
 test('한 번의 -12 superseded 응답만 같은 iOS scene 재실행 조건으로 잡는다', () => {

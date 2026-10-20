@@ -286,6 +286,10 @@ where
         super::calculation::RuntimeCalculationProfile::BlockFlexGridTemplate => {
             spinon_style::first_unsupported_runtime_block_flex_grid_template_inline_property(&view)
         }
+        #[cfg(feature = "c11-3-3-grid-implicit-named-lines-fixture-test")]
+        super::calculation::RuntimeCalculationProfile::BlockFlexGridTemplateImplicitNamedLines => {
+            spinon_style::first_unsupported_runtime_block_flex_grid_template_inline_property(&view)
+        }
         super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing => {
             spinon_style::first_unsupported_runtime_block_flex_grid_track_sizing_inline_property(
                 &view,
@@ -410,20 +414,22 @@ where
                     &text_input.engine,
                 )
             } else {
-                compute_runtime_style_layout(
+                compute_runtime_style_layout_for_profile(
                     &request.snapshot,
                     root,
-                    styles.clone(),
+                    &styles,
                     request.viewport,
+                    profile,
                 )
             }
             #[cfg(not(feature = "c04-12-root-html-text-paint-fixture-test"))]
             {
-                compute_runtime_style_layout(
+                compute_runtime_style_layout_for_profile(
                     &request.snapshot,
                     root,
-                    styles.clone(),
+                    &styles,
                     request.viewport,
+                    profile,
                 )
             }
         }
@@ -439,12 +445,24 @@ where
                 &text_input.engine,
             )
         } else {
-            compute_runtime_style_layout(&request.snapshot, root, styles.clone(), request.viewport)
+            compute_runtime_style_layout_for_profile(
+                &request.snapshot,
+                root,
+                &styles,
+                request.viewport,
+                profile,
+            )
         }
         #[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
         #[cfg(not(feature = "c04-12-root-html-text-paint-fixture-test"))]
         {
-            compute_runtime_style_layout(&request.snapshot, root, styles.clone(), request.viewport)
+            compute_runtime_style_layout_for_profile(
+                &request.snapshot,
+                root,
+                &styles,
+                request.viewport,
+                profile,
+            )
         }
     }
     .map_err(layout_failure_from_error)?;
@@ -796,6 +814,29 @@ fn valid_frame(frame: LayoutFrame) -> bool {
         && frame.height.is_finite()
         && frame.width >= 0.0
         && frame.height >= 0.0
+}
+
+fn compute_runtime_style_layout_for_profile(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    styles: &ComputedStyleSnapshot,
+    viewport: spinon_style::CssViewport,
+    profile: super::calculation::RuntimeCalculationProfile,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    #[cfg(feature = "c11-3-3-grid-implicit-named-lines-fixture-test")]
+    if profile
+        == super::calculation::RuntimeCalculationProfile::BlockFlexGridTemplateImplicitNamedLines
+    {
+        return spinon_style_to_layout::compute_runtime_style_layout_with_implicit_named_lines(
+            snapshot,
+            root,
+            styles.clone(),
+            viewport,
+            true,
+        );
+    }
+    let _ = profile;
+    compute_runtime_style_layout(snapshot, root, styles.clone(), viewport)
 }
 
 fn layout_failure_from_error(error: StyleLayoutError) -> RuntimeLayoutFailure {

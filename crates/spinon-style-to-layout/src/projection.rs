@@ -169,6 +169,46 @@ pub fn compute_runtime_block_flex_grid_template_style_layout(
     viewport: CssViewport,
     style_revision: StyleRevision,
 ) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    compute_runtime_block_flex_grid_template_style_layout_with_options(
+        snapshot,
+        view,
+        root,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        false,
+    )
+}
+
+/// C11.3.3에서만 trailing implicit named line 생성을 opt-in 합니다.
+pub fn compute_runtime_block_flex_grid_template_implicit_named_lines_style_layout(
+    snapshot: &HostDocumentSnapshot,
+    view: &StyloDocumentView,
+    root: HostNodeHandle,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    compute_runtime_block_flex_grid_template_style_layout_with_options(
+        snapshot,
+        view,
+        root,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        true,
+    )
+}
+
+fn compute_runtime_block_flex_grid_template_style_layout_with_options(
+    snapshot: &HostDocumentSnapshot,
+    view: &StyloDocumentView,
+    root: HostNodeHandle,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+    allow_implicit_named_lines: bool,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
     assert_view_matches_snapshot(snapshot, view)?;
     if view.mount_root_element().handle() != Some(root) {
         return Err(StyleLayoutError::SnapshotMismatch { field: "root" });
@@ -184,7 +224,13 @@ pub fn compute_runtime_block_flex_grid_template_style_layout(
         viewport,
         style_revision,
     )?;
-    compute_runtime_style_layout(snapshot, root, computed_styles, viewport)
+    compute_runtime_style_layout_with_implicit_named_lines(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        allow_implicit_named_lines,
+    )
 }
 
 /// C11.4 intrinsic Grid track sizing profile을 cascade부터 Taffy까지 연결합니다.
@@ -321,6 +367,30 @@ pub fn compute_runtime_style_layout(
     computed_styles: ComputedStyleSnapshot,
     viewport: CssViewport,
 ) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    compute_runtime_style_layout_with_implicit_named_lines(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        false,
+    )
+}
+
+/// 동일한 computed-style profile에서 C11.3.3 trailing implicit named line subset을 opt-in 합니다.
+pub fn compute_runtime_style_layout_with_implicit_named_lines(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    allow_implicit_named_lines: bool,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    if allow_implicit_named_lines
+        && computed_styles.profile != ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+    {
+        return Err(StyleLayoutError::UnsupportedProfile {
+            profile: format!("{:?}", computed_styles.profile),
+        });
+    }
     let reject_cascade_diagnostics = matches!(
         computed_styles.profile,
         ComputedStyleProfile::RuntimeBlockPositioningV1
@@ -335,13 +405,14 @@ pub fn compute_runtime_style_layout(
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     );
-    compute_layout_from_styles(
+    compute_layout_from_styles_with_grid_options(
         snapshot,
         root,
         computed_styles,
         viewport,
         reject_cascade_diagnostics,
         None,
+        allow_implicit_named_lines,
     )
 }
 
@@ -538,14 +609,37 @@ fn compute_layout_from_styles(
     reject_cascade_diagnostics: bool,
     intrinsic_sizes: Option<LayoutIntrinsicSizeSnapshot>,
 ) -> Result<StyleLayoutOutput, StyleLayoutError> {
-    compute_layout_from_styles_with_text(
+    compute_layout_from_styles_with_grid_options(
         snapshot,
         root,
         computed_styles,
         viewport,
         reject_cascade_diagnostics,
         intrinsic_sizes,
+        false,
+    )
+}
+
+fn compute_layout_from_styles_with_grid_options(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    reject_cascade_diagnostics: bool,
+    intrinsic_sizes: Option<LayoutIntrinsicSizeSnapshot>,
+    allow_implicit_named_lines: bool,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    compute_layout_from_styles_with_text_and_grid_options(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        intrinsic_sizes,
         None,
+        StyleLayoutProjectionOptions {
+            reject_cascade_diagnostics,
+            allow_implicit_named_lines,
+        },
     )
 }
 
@@ -558,8 +652,37 @@ fn compute_layout_from_styles_with_text(
     intrinsic_sizes: Option<LayoutIntrinsicSizeSnapshot>,
     text_profile: Option<TextProjectionProfile<'_>>,
 ) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    compute_layout_from_styles_with_text_and_grid_options(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        intrinsic_sizes,
+        text_profile,
+        StyleLayoutProjectionOptions {
+            reject_cascade_diagnostics,
+            allow_implicit_named_lines: false,
+        },
+    )
+}
+
+#[derive(Clone, Copy)]
+struct StyleLayoutProjectionOptions {
+    reject_cascade_diagnostics: bool,
+    allow_implicit_named_lines: bool,
+}
+
+fn compute_layout_from_styles_with_text_and_grid_options(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    intrinsic_sizes: Option<LayoutIntrinsicSizeSnapshot>,
+    text_profile: Option<TextProjectionProfile<'_>>,
+    options: StyleLayoutProjectionOptions,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
     assert_matching_revision(snapshot, &computed_styles, computed_styles.profile)?;
-    if reject_cascade_diagnostics
+    if options.reject_cascade_diagnostics
         && let Some(diagnostic) = computed_styles.diagnostics.first().cloned()
     {
         return Err(StyleLayoutError::CascadeDiagnostic(diagnostic));
@@ -649,7 +772,12 @@ fn compute_layout_from_styles_with_text(
             }
         }
     }
-    let mut projected = project_styles(snapshot, root, &computed_styles)?;
+    let mut projected = project_styles(
+        snapshot,
+        root,
+        &computed_styles,
+        options.allow_implicit_named_lines,
+    )?;
     validate_intrinsic_image_inputs(
         snapshot,
         root,

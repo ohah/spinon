@@ -4,10 +4,13 @@ use spinon_core::{
     AttributeName, DocumentChangeBatch, DocumentOperation, HostDocument, HostNodeHandle,
     HostParent, OwnerId, StyleRevision,
 };
+use spinon_layout::LayoutError;
 use spinon_style::{CssMediaEnvironment, CssViewport, StyloDocumentView};
 
 use crate::{
-    StyleLayoutError, StyleLayoutOutput, compute_runtime_block_flex_grid_template_style_layout,
+    StyleLayoutError, StyleLayoutOutput,
+    compute_runtime_block_flex_grid_template_implicit_named_lines_style_layout,
+    compute_runtime_block_flex_grid_template_style_layout,
 };
 
 const HTML: &str = "http://www.w3.org/1999/xhtml";
@@ -41,24 +44,43 @@ impl Fixture {
     }
 
     fn compute(&self) -> Result<StyleLayoutOutput, StyleLayoutError> {
+        self.compute_with_implicit_named_lines(false)
+    }
+
+    fn compute_with_implicit_named_lines(
+        &self,
+        allow_implicit_named_lines: bool,
+    ) -> Result<StyleLayoutOutput, StyleLayoutError> {
         let snapshot = self.document.snapshot();
         let view =
             StyloDocumentView::new_html_runtime_mount_shared(Arc::new(snapshot.clone()), self.root)
                 .unwrap();
-        compute_runtime_block_flex_grid_template_style_layout(
-            &snapshot,
-            &view,
-            self.root,
-            &[],
-            CssViewport {
-                width_css_px: 240.0,
-                height_css_px: 100.0,
-                device_scale_factor: 1.0,
-                environment_revision: Default::default(),
-                media_environment: CssMediaEnvironment::MOBILE,
-            },
-            StyleRevision::INITIAL,
-        )
+        let viewport = CssViewport {
+            width_css_px: 240.0,
+            height_css_px: 100.0,
+            device_scale_factor: 1.0,
+            environment_revision: Default::default(),
+            media_environment: CssMediaEnvironment::MOBILE,
+        };
+        if allow_implicit_named_lines {
+            compute_runtime_block_flex_grid_template_implicit_named_lines_style_layout(
+                &snapshot,
+                &view,
+                self.root,
+                &[],
+                viewport,
+                StyleRevision::INITIAL,
+            )
+        } else {
+            compute_runtime_block_flex_grid_template_style_layout(
+                &snapshot,
+                &view,
+                self.root,
+                &[],
+                viewport,
+                StyleRevision::INITIAL,
+            )
+        }
     }
 }
 
@@ -221,4 +243,265 @@ fn mismatched_area_dimensions_are_rejected_before_layout_output() {
             "{areas}: {error}"
         );
     }
+}
+
+#[test]
+fn unknown_bare_names_and_forward_named_spans_extend_fixed_tracks() {
+    let grid = "display:grid;box-sizing:border-box;width:160px;height:120px;grid-template-columns:30px 40px;grid-template-rows:10px 20px;grid-auto-rows:5px;grid-auto-columns:15px;grid-auto-flow:row;margin:0;padding:0;border:0";
+    let cases = [
+        (
+            "both-row",
+            "box-sizing:border-box;width:30px;height:5px;grid-row:nonExistentArea / nonExistentArea;grid-column:1;margin:0;padding:0;border:0",
+            (0.0, 35.0, 30.0, 5.0),
+        ),
+        (
+            "column-span",
+            "box-sizing:border-box;width:45px;height:10px;grid-row:1;grid-column:nonExistentArea / span 3;margin:0;padding:0;border:0",
+            (85.0, 0.0, 45.0, 10.0),
+        ),
+        (
+            "row-named-span",
+            "box-sizing:border-box;width:30px;height:25px;grid-row:nonExistentArea / span 5 firstRow;grid-column:1;margin:0;padding:0;border:0",
+            (0.0, 35.0, 30.0, 25.0),
+        ),
+        (
+            "column-span-one",
+            "box-sizing:border-box;width:15px;height:10px;grid-row:1;grid-column:nonExistentArea / span 1;margin:0;padding:0;border:0",
+            (85.0, 0.0, 15.0, 10.0),
+        ),
+    ];
+
+    for (id, item_style, expected) in cases {
+        let fixture = Fixture::new(grid, &[(id, item_style)]);
+        let output = fixture.compute_with_implicit_named_lines(true).unwrap();
+        let frame = output.layout.frames[&fixture.nodes[id].id()];
+        assert_eq!(
+            (frame.x, frame.y, frame.width, frame.height),
+            expected,
+            "{id}"
+        );
+    }
+}
+
+#[test]
+fn forward_named_span_counts_explicit_matches_before_adding_trailing_tracks() {
+    let fixture = Fixture::new(
+        "display:grid;box-sizing:border-box;width:120px;height:30px;grid-template-columns:[edge] 10px [edge] 20px [edge] 30px;grid-template-rows:30px;grid-auto-columns:7px;grid-auto-rows:10px;grid-auto-flow:row;margin:0;padding:0;border:0",
+        &[(
+            "span",
+            "box-sizing:border-box;width:74px;height:30px;grid-row:1;grid-column:1 / span 4 edge;margin:0;padding:0;border:0",
+        )],
+    );
+
+    let output = fixture.compute_with_implicit_named_lines(true).unwrap();
+    let frame = output.layout.frames[&fixture.nodes["span"].id()];
+
+    assert_eq!((frame.x, frame.width), (0.0, 74.0));
+}
+
+#[test]
+fn backward_named_span_does_not_create_leading_implicit_lines() {
+    let fixture = Fixture::new(
+        "display:grid;box-sizing:border-box;width:30px;height:20px;grid-template-columns:[edge] 10px [edge] 10px [edge] 10px;grid-template-rows:20px;grid-auto-columns:7px;grid-auto-rows:10px;grid-auto-flow:row;margin:0;padding:0;border:0",
+        &[(
+            "span",
+            "width:10px;height:20px;grid-row:1;grid-column:span 4 edge / 3;margin:0;padding:0;border:0",
+        )],
+    );
+
+    let error = fixture.compute_with_implicit_named_lines(true).unwrap_err();
+
+    assert!(matches!(
+        error,
+        StyleLayoutError::UnsupportedNamedGridLine {
+            node,
+            property: "grid-column-start",
+            ..
+        } if node == fixture.nodes["span"].id()
+    ));
+}
+
+#[test]
+fn opt_in_does_not_accept_unmarked_numeric_implicit_lines() {
+    let fixture = Fixture::new(
+        "display:grid;box-sizing:border-box;width:80px;height:30px;grid-template-columns:40px 40px;grid-template-rows:30px;grid-auto-columns:10px;grid-auto-rows:10px;margin:0;padding:0;border:0",
+        &[(
+            "numeric",
+            "width:10px;height:10px;grid-row:1;grid-column:1 / 5;margin:0;padding:0;border:0",
+        )],
+    );
+
+    let error = fixture.compute_with_implicit_named_lines(true).unwrap_err();
+
+    assert!(matches!(
+        error,
+        StyleLayoutError::Layout(LayoutError::InvalidGridPlacement {
+            node,
+            property: "grid-column-end",
+            ..
+        }) if node == fixture.nodes["numeric"].id()
+    ));
+}
+
+#[test]
+fn opt_in_does_not_accept_unmarked_numeric_span_extent_in_a_sibling() {
+    let fixture = Fixture::new(
+        "display:grid;box-sizing:border-box;width:80px;height:30px;grid-template-columns:40px 40px;grid-template-rows:30px;grid-auto-columns:10px;grid-auto-rows:10px;margin:0;padding:0;border:0",
+        &[
+            (
+                "implicit",
+                "width:10px;height:10px;grid-row:missing / missing;grid-column:1;margin:0;padding:0;border:0",
+            ),
+            (
+                "numeric-span",
+                "width:10px;height:10px;grid-row:1;grid-column:1 / span 5;margin:0;padding:0;border:0",
+            ),
+        ],
+    );
+
+    assert!(matches!(
+        fixture.compute_with_implicit_named_lines(true),
+        Err(StyleLayoutError::Layout(LayoutError::InvalidGridPlacement {
+            node,
+            property: "grid-column-end",
+            ..
+        })) if node == fixture.nodes["numeric-span"].id()
+    ));
+}
+
+#[test]
+fn opt_in_does_not_accept_unmarked_leading_span_extent() {
+    let fixture = Fixture::new(
+        "display:grid;box-sizing:border-box;width:80px;height:30px;grid-template-columns:40px 40px;grid-template-rows:30px;grid-auto-columns:10px;grid-auto-rows:10px;margin:0;padding:0;border:0",
+        &[
+            (
+                "implicit",
+                "width:10px;height:10px;grid-row:missing / missing;grid-column:1;margin:0;padding:0;border:0",
+            ),
+            (
+                "numeric-span",
+                "width:10px;height:10px;grid-row:1;grid-column:span 5 / -1;margin:0;padding:0;border:0",
+            ),
+        ],
+    );
+
+    assert!(matches!(
+        fixture.compute_with_implicit_named_lines(true),
+        Err(StyleLayoutError::Layout(LayoutError::InvalidGridPlacement {
+            node,
+            property: "grid-column-start",
+            ..
+        })) if node == fixture.nodes["numeric-span"].id()
+    ));
+}
+
+#[test]
+fn opt_in_does_not_accept_unmarked_last_line_auto_extent() {
+    let fixture = Fixture::new(
+        "display:grid;box-sizing:border-box;width:80px;height:30px;grid-template-columns:40px 40px;grid-template-rows:30px;grid-auto-columns:10px;grid-auto-rows:10px;margin:0;padding:0;border:0",
+        &[
+            (
+                "implicit",
+                "width:10px;height:10px;grid-row:missing / missing;grid-column:1;margin:0;padding:0;border:0",
+            ),
+            (
+                "numeric-auto",
+                "width:10px;height:10px;grid-row:1;grid-column:3 / auto;margin:0;padding:0;border:0",
+            ),
+        ],
+    );
+
+    assert!(matches!(
+        fixture.compute_with_implicit_named_lines(true),
+        Err(StyleLayoutError::Layout(LayoutError::InvalidGridPlacement {
+            node,
+            property: "grid-column-end",
+            ..
+        })) if node == fixture.nodes["numeric-auto"].id()
+    ));
+}
+
+#[test]
+fn implicit_track_profile_requires_fixed_tracks_and_definite_item_placement() {
+    let auto_track = Fixture::new(
+        "display:grid;box-sizing:border-box;width:80px;height:30px;grid-template-columns:40px 40px;grid-template-rows:30px;grid-auto-columns:10px;grid-auto-rows:auto;margin:0;padding:0;border:0",
+        &[(
+            "implicit",
+            "width:10px;height:10px;grid-row:missing / missing;grid-column:1;margin:0;padding:0;border:0",
+        )],
+    );
+    assert!(matches!(
+        auto_track.compute_with_implicit_named_lines(true),
+        Err(StyleLayoutError::Layout(LayoutError::UnsupportedGridAutoRows {
+            node,
+            ..
+        })) if node == auto_track.root.id()
+    ));
+
+    let auto_item = Fixture::new(
+        "display:grid;box-sizing:border-box;width:80px;height:30px;grid-template-columns:40px 40px;grid-template-rows:30px;grid-auto-columns:10px;grid-auto-rows:10px;margin:0;padding:0;border:0",
+        &[
+            (
+                "implicit",
+                "width:10px;height:10px;grid-row:missing / missing;grid-column:1;margin:0;padding:0;border:0",
+            ),
+            (
+                "auto",
+                "width:10px;height:10px;grid-column:1;margin:0;padding:0;border:0",
+            ),
+        ],
+    );
+    assert!(matches!(
+        auto_item.compute_with_implicit_named_lines(true),
+        Err(StyleLayoutError::Layout(LayoutError::GridImplicitTrackRequired(node)))
+            if node == auto_item.root.id()
+    ));
+}
+
+#[test]
+fn unknown_template_area_preserves_known_area_sibling_and_overflows_root() {
+    let fixture = Fixture::new(
+        "display:grid;box-sizing:border-box;width:160px;height:120px;grid-template-columns:80px 80px;grid-template-rows:60px 60px;grid-template-areas:'known .' '. .';grid-auto-rows:5px;grid-auto-columns:15px;grid-auto-flow:row;margin:0;padding:0;border:0",
+        &[
+            (
+                "known-area",
+                "grid-area:known;width:80px;height:60px;margin:0;padding:0;border:0",
+            ),
+            (
+                "unknown-area",
+                "grid-area:not-authored;width:15px;height:5px;margin:0;padding:0;border:0",
+            ),
+        ],
+    );
+    let output = fixture.compute_with_implicit_named_lines(true).unwrap();
+    let known = output.layout.frames[&fixture.nodes["known-area"].id()];
+    let unknown = output.layout.frames[&fixture.nodes["unknown-area"].id()];
+
+    assert_eq!(
+        (known.x, known.y, known.width, known.height),
+        (0.0, 0.0, 80.0, 60.0)
+    );
+    assert_eq!(
+        (unknown.x, unknown.y, unknown.width, unknown.height),
+        (175.0, 125.0, 15.0, 5.0)
+    );
+}
+
+#[test]
+fn existing_template_wrapper_still_rejects_unknown_bare_names() {
+    let fixture = Fixture::new(
+        "display:grid;box-sizing:border-box;width:160px;height:120px;grid-template-columns:30px 40px;grid-template-rows:10px 20px;grid-auto-rows:5px;grid-auto-columns:15px;margin:0;padding:0;border:0",
+        &[(
+            "unknown",
+            "width:30px;height:5px;grid-row:missing / missing;grid-column:1;margin:0;padding:0;border:0",
+        )],
+    );
+
+    let error = fixture.compute().unwrap_err();
+    assert!(matches!(
+        error,
+        StyleLayoutError::UnsupportedNamedGridLine { node, .. }
+            if node == fixture.nodes["unknown"].id()
+    ));
+    assert!(fixture.compute_with_implicit_named_lines(true).is_ok());
 }

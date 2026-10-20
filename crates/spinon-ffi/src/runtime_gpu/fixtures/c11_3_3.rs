@@ -27,6 +27,24 @@ if (!state) {
 }
 return { sceneId:'revision-reuse', rootId:'revision-grid', nodeIds:['revision-grid', 'revision-item'], phase:state.phase };
 })()"#;
+const C11_3_3_UNKNOWN_AREA_FIXED_IMPLICIT_TRACKS_SOURCE: &str = r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'fixed-implicit-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', "box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;background-color:#101820;grid-template-columns:80px 80px;grid-template-rows:60px 60px;grid-template-areas:'known .' '. .';grid-auto-rows:5px;grid-auto-columns:15px;grid-auto-flow:row");
+document.appendChild(root);
+const known = document.createElement('div');
+known.setAttribute('id', 'fixed-known-area');
+known.setAttribute('data-node', '');
+known.setAttribute('style', 'box-sizing:border-box;width:80px;height:60px;margin:0;padding:0;border:0;background-color:#30a46c;grid-area:known');
+root.appendChild(known);
+const item = document.createElement('div');
+item.setAttribute('id', 'fixed-unknown-area');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;width:15px;height:5px;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:not-authored');
+root.appendChild(item);
+return { sceneId:'unknown-area-fixed-implicit-tracks', rootId:'fixed-implicit-grid', nodeIds:['fixed-implicit-grid', 'fixed-known-area', 'fixed-unknown-area'] };
+})()"#;
 const C11_3_3_GRID_TEMPLATE_AREAS_SCENE_IDS: [&str; 26] = [
     "basic-rectangles",
     "null-cell-dot-runs",
@@ -61,6 +79,9 @@ pub(crate) fn c11_3_3_grid_template_areas_runtime_source(
 ) -> Result<&'static str, String> {
     if scene_id == "revision-reuse" {
         return Ok(C11_3_3_GRID_TEMPLATE_AREAS_REVISION_REUSE_SOURCE);
+    }
+    if scene_id == "unknown-area-fixed-implicit-tracks" {
+        return Ok(C11_3_3_UNKNOWN_AREA_FIXED_IMPLICIT_TRACKS_SOURCE);
     }
     static MATRIX: OnceLock<Result<Value, String>> = OnceLock::new();
     let matrix = MATRIX
@@ -119,7 +140,7 @@ pub(crate) fn c11_3_3_grid_template_areas_runtime_source(
                                 Some(("unsupported_computed_value", "grid-template-areas"))
                             }
                             "unknown-area-implicit-tracks" => {
-                                Some(("unsupported_named_grid_line", "grid-row-start"))
+                                Some(("unsupported_grid_auto_rows", "grid-auto-rows"))
                             }
                             _ => None,
                         };
@@ -241,5 +262,17 @@ mod tests {
         assert!(source.contains("grid-template-areas:'item .' '. .'"));
         assert!(source.contains("grid-template-areas:'. item' '. .'"));
         assert!(source.contains("revision-item"));
+    }
+
+    #[test]
+    fn fixed_implicit_area_scene_keeps_area_sibling_and_overflow_target() {
+        let source =
+            c11_3_3_grid_template_areas_runtime_source("unknown-area-fixed-implicit-tracks")
+                .unwrap();
+        assert!(source.contains("grid-auto-rows:5px"));
+        assert!(source.contains("grid-auto-columns:15px"));
+        assert!(source.contains("grid-area:not-authored"));
+        assert!(source.contains("fixed-known-area"));
+        assert!(source.contains("fixed-unknown-area"));
     }
 }

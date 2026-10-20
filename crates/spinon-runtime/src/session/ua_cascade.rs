@@ -45,6 +45,8 @@ use cache::RuntimeCalculationCacheEntry;
 #[cfg(test)]
 use cache::RuntimeCalculationCacheKey;
 use cache::RuntimeStyleCacheEntry;
+#[cfg(feature = "c11-3-3-grid-implicit-named-lines-fixture-test")]
+use calculation::compute_request_for_block_flex_grid_template_implicit_named_lines;
 #[cfg(feature = "c13-3-gesture-fixture-test")]
 use calculation::compute_request_for_block_flex_scroll_gesture;
 #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
@@ -310,6 +312,14 @@ impl RuntimeUaCascadeCoordinator {
 
     pub(super) fn new_runtime_gpu_block_flex_grid_template() -> Result<Self, String> {
         Self::new_with_computer(Arc::new(compute_request_for_block_flex_grid_template))
+    }
+
+    #[cfg(feature = "c11-3-3-grid-implicit-named-lines-fixture-test")]
+    pub(super) fn new_runtime_gpu_block_flex_grid_template_implicit_named_lines()
+    -> Result<Self, String> {
+        Self::new_with_computer(Arc::new(
+            compute_request_for_block_flex_grid_template_implicit_named_lines,
+        ))
     }
 
     pub(super) fn new_runtime_gpu_block_flex_grid_track_sizing() -> Result<Self, String> {

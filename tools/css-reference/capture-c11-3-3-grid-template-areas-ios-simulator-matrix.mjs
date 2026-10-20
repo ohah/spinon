@@ -25,6 +25,27 @@ const runtime = JSON.parse(await readFile(resolve(repositoryRoot, runtimePath), 
 const mobile = JSON.parse(await readFile(resolve(repositoryRoot, mobilePath), 'utf8'));
 const reference = JSON.parse(await readFile(resolve(repositoryRoot, mobile.oracle.referencePath), 'utf8'));
 const observation = validateC1133IOSMatrixInputs(runtime, reference);
+const unknownAreaPixelsPath = 'tests/fixtures/css/c11/unknown-area-fixed-implicit-tracks-mobile-pixels-v1.json';
+const unknownAreaPixels = JSON.parse(await readFile(resolve(repositoryRoot, unknownAreaPixelsPath), 'utf8'));
+const unknownAreaReferenceBytes = await readFile(resolve(repositoryRoot, unknownAreaPixels.inputs.reference.path));
+const unknownAreaReference = JSON.parse(unknownAreaReferenceBytes.toString('utf8'));
+const unknownAreaObservation = unknownAreaReference.observations.find(({ deviceScaleFactor }) =>
+  deviceScaleFactor === 1);
+const unknownAreaChromeSourceCase = unknownAreaObservation.cases.find(({ id }) =>
+  id === 'unknown-template-area-with-sibling');
+const unknownAreaScene = {
+  id: unknownAreaPixels.sceneId,
+  index: runtime.summary.sceneCount,
+  nodeIds: ['fixed-implicit-grid', 'fixed-known-area', 'fixed-unknown-area'],
+  expected: { outcome: 'success' },
+};
+const unknownAreaChromeCase = {
+  id: unknownAreaScene.id,
+  nodes: unknownAreaChromeSourceCase.nodes.map((node, index) => ({
+    ...node,
+    id: unknownAreaScene.nodeIds[index],
+  })),
+};
 const simulatorUDID = process.argv[2] ?? 'ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D';
 assert.match(simulatorUDID, /^[A-F0-9-]{36}$/i, '사용법: node capture-c11-3-3-grid-template-areas-ios-simulator-matrix.mjs [iOS Simulator UDID]');
 
@@ -56,7 +77,12 @@ function command(binary, args, { allowFailure = false, timeout = 120_000, encodi
 }
 
 async function saveLog(path, result) {
-  await writeFile(resolve(evidenceDirectory, path), '' + (result.stdout ?? '') + (result.stderr ?? ''));
+  const log = '' + (result.stdout ?? '') + (result.stderr ?? '');
+  await writeFile(resolve(evidenceDirectory, path), log.replace(/[ \t]+$/gm, ''));
+}
+
+function formatLog(log) {
+  return log.replace(/[ \t]+$/gm, '');
 }
 
 function bootedSimulator() {
@@ -181,7 +207,7 @@ async function captureMatrix(simulator) {
       scene.id + ': iOS runtime 결과', 45_000);
       logPath = 'runtime-' + String(scene.index).padStart(2, '0') + '-' + scene.id
         + (attempt === 0 ? '' : '-retry-' + attempt) + '.log';
-      await writeFile(resolve(evidenceDirectory, logPath), log + '\n');
+      await writeFile(resolve(evidenceDirectory, logPath), formatLog(log) + '\n');
       const completed = isReject
         ? log.includes('SPINON_C1133_GRID_REJECTION_SUMMARY run_id=' + effectiveRunID + ' scene_id=' + scene.id + ' ')
         : c1133SuccessLogsComplete(log, scene.id, effectiveRunID, scene.id === mobile.sceneId);
@@ -244,6 +270,79 @@ async function captureMatrix(simulator) {
     command('xcrun', ['simctl', 'terminate', simulator.udid, packageName], { allowFailure: true });
   }
 
+  assert.equal(sha256(unknownAreaReferenceBytes), unknownAreaPixels.inputs.reference.sha256);
+  assert.equal(unknownAreaPixels.oracle.product, unknownAreaReference.oracle.product);
+  assert.equal(unknownAreaChromeSourceCase.nodes.length, unknownAreaScene.nodeIds.length);
+  let unknownAreaRunID = '';
+  let unknownAreaLog = '';
+  let unknownAreaLogPath = '';
+  const unknownAreaAttempts = [];
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    unknownAreaRunID = c1133IOSSceneRunID(appRunIDPrefix, unknownAreaScene.index, attempt);
+    const launch = launchIOSScene(simulator, unknownAreaScene.id, unknownAreaRunID,
+      unknownAreaPixels.samples);
+    const launchName = 'launch-unknown-area-fixed-implicit-tracks'
+      + (attempt === 0 ? '' : '-retry-' + attempt) + '.log';
+    await saveLog(launchName, launch);
+    const pid = launchedPID(launch, 'unknown-area-fixed-implicit-tracks');
+    unknownAreaLog = waitForLog(() => iosProcessLog(simulator.udid, pid), (value) =>
+      c1133SuccessLogsComplete(value, unknownAreaScene.id, unknownAreaRunID, true)
+        || c1133SupersededAttemptComplete(value, unknownAreaScene.id, unknownAreaRunID, true)
+        || value.includes('SPINON_C1133_GRID_ARGUMENT_ERROR rejected=true'),
+    'unknown-area-fixed-implicit-tracks iOS runtime 결과', 45_000);
+    unknownAreaLogPath = 'runtime-unknown-area-fixed-implicit-tracks'
+      + (attempt === 0 ? '' : '-retry-' + attempt) + '.log';
+    await writeFile(resolve(evidenceDirectory, unknownAreaLogPath), formatLog(unknownAreaLog) + '\n');
+    assert.equal(unknownAreaLog.includes('SPINON_C1133_GRID_ARGUMENT_ERROR rejected=true'), false,
+      '고정 unknown-area overflow scene이 iOS route에서 거부되었습니다.');
+    const completed = c1133SuccessLogsComplete(
+      unknownAreaLog, unknownAreaScene.id, unknownAreaRunID, true);
+    const superseded = !completed && isC1133IOSGridRuntimeSuperseded(
+      unknownAreaLog, unknownAreaRunID, unknownAreaScene.id);
+    unknownAreaAttempts.push({
+      runID: unknownAreaRunID,
+      status: completed ? 'matched' : 'superseded-retried',
+      logPath: unknownAreaLogPath,
+    });
+    if (completed) break;
+    assert.ok(superseded && attempt === 0,
+      'unknown-area overflow scene은 성공하거나 첫 실행의 superseded 응답만 재시도할 수 있습니다.');
+    command('xcrun', ['simctl', 'terminate', simulator.udid, packageName], { allowFailure: true });
+  }
+  const unknownAreaGeometry = compareC1133IOSSceneGeometry(
+    unknownAreaScene, unknownAreaLog, unknownAreaChromeCase, unknownAreaRunID);
+  const unknownAreaPixel = compareC11IOSMetalPixelLogs(unknownAreaLog, {
+    fixture: unknownAreaPixels,
+    runID: unknownAreaRunID,
+    markerPrefix: 'C1133',
+  });
+  assert.equal(unknownAreaPixel.status, 'matched');
+  assert.equal(unknownAreaPixel.matchedSamples, unknownAreaPixels.samples.length);
+  assert.equal(unknownAreaPixel.maximumChannelError, 0);
+  await writeFile(resolve(evidenceDirectory, 'unknown-area-overflow-metal-comparison.json'),
+    JSON.stringify(unknownAreaPixel, null, 2) + '\n');
+  const unknownAreaScreenshotPath = resolve(evidenceDirectory, 'ios-unknown-area-overflow-screen.png');
+  await saveLog('unknown-area-overflow-screenshot.log', command('xcrun', ['simctl', 'io',
+    simulator.udid, 'screenshot', unknownAreaScreenshotPath]));
+  const unknownAreaScreenshotBytes = await readFile(unknownAreaScreenshotPath);
+  assert.equal(unknownAreaScreenshotBytes.toString('hex', 0, 8), '89504e470d0a1a0a',
+    'unknown-area overflow Simulator screenshot이 PNG가 아닙니다.');
+  const unknownAreaOverflow = {
+    sceneId: unknownAreaScene.id,
+    outcome: 'success',
+    attempts: unknownAreaAttempts,
+    boxes: unknownAreaGeometry.boxes,
+    frames: unknownAreaGeometry.frames.length,
+    comparisons: unknownAreaGeometry.comparisons,
+    maximumGeometryErrorCssPx: Math.max(0, ...unknownAreaGeometry.comparisons
+      .map(({ maximumErrorCssPx }) => maximumErrorCssPx)),
+    pixel: unknownAreaPixel,
+    screenshotSha256: sha256(unknownAreaScreenshotBytes),
+    logPath: unknownAreaLogPath,
+  };
+  await writeFile(resolve(evidenceDirectory, unknownAreaLogPath), formatLog(unknownAreaLog) + '\n');
+  command('xcrun', ['simctl', 'terminate', simulator.udid, packageName], { allowFailure: true });
+
   assert.ok(pixelComparison, '기본 scene Metal 표면 비교가 실행되지 않았습니다.');
   const negative = await runNegativeControls(simulator);
   const routeNegative = await runUnknownSceneNegative(simulator);
@@ -251,6 +350,7 @@ async function captureMatrix(simulator) {
     metadata: { name: simulator.name, udid: simulator.udid, runtime: simulator.runtime },
     appSha256,
     observations,
+    unknownAreaOverflow,
     pixelComparison,
     screenshotSha256,
     negative,
@@ -269,7 +369,7 @@ async function runNegativeControls(simulator) {
     value.includes('SPINON_C1133_METAL_PIXEL_ERROR run_id=' + negativeRunID)
       || value.includes('SPINON_C1133_METAL_PIXEL_BEGIN run_id=' + negativeRunID),
   'iOS Metal pixel allowlist negative control', 30_000);
-  await writeFile(resolve(evidenceDirectory, 'negative-pixel-control.log'), log + '\n');
+  await writeFile(resolve(evidenceDirectory, 'negative-pixel-control.log'), formatLog(log) + '\n');
   assert.ok(log.includes('SPINON_C1133_METAL_PIXEL_ERROR run_id=' + negativeRunID),
     'iOS가 변경된 sample 좌표를 거부하지 않았습니다.');
   assert.equal(log.includes('SPINON_C1133_METAL_PIXEL_BEGIN run_id=' + negativeRunID), false,
@@ -288,7 +388,7 @@ async function runUnknownSceneNegative(simulator) {
       || value.includes('SPINON_C1133_GRID_EVAL_RUN run_id=' + negativeRunID)
       || value.includes('SPINON_C0410_DRAW'),
   'iOS unknown scene route negative control', 30_000);
-  await writeFile(resolve(evidenceDirectory, 'negative-scene-control.log'), log + '\n');
+  await writeFile(resolve(evidenceDirectory, 'negative-scene-control.log'), formatLog(log) + '\n');
   const result = validateC1133IOSUnknownScene(log, negativeRunID);
   command('xcrun', ['simctl', 'terminate', simulator.udid, packageName], { allowFailure: true });
   return result;
@@ -300,6 +400,7 @@ try {
   const fixtureBytes = await readFile(resolve(repositoryRoot, runtimePath));
   const mobileBytes = await readFile(resolve(repositoryRoot, mobilePath));
   const referenceBytes = await readFile(resolve(repositoryRoot, mobile.oracle.referencePath));
+  const unknownAreaPixelsBytes = await readFile(resolve(repositoryRoot, unknownAreaPixelsPath));
   const screenshotBytes = await readFile(resolve(repositoryRoot, mobile.oracle.screenshotPath));
   const oracleComparison = validateC11IOSChromeOracle({
     fixture: mobile,
@@ -339,6 +440,8 @@ try {
       runtimeMatrixSha256: sha256(fixtureBytes),
       mobileFixtureSha256: sha256(mobileBytes),
       chromeReferenceSha256: sha256(referenceBytes),
+      unknownAreaPixelFixtureSha256: sha256(unknownAreaPixelsBytes),
+      unknownAreaReferenceSha256: sha256(unknownAreaReferenceBytes),
       captureScriptSha256: sha256(await readFile(fileURLToPath(import.meta.url))),
       matrixValidationSha256: sha256(await readFile(resolve(repositoryRoot,
         'tools/css-reference/c11-3-3-grid-template-areas-ios-matrix.mjs'))),
@@ -364,6 +467,7 @@ try {
       startupSupersededRetryCount,
       pixelComparison: platform.pixelComparison,
       screenshotSha256: platform.screenshotSha256,
+      unknownAreaOverflow: platform.unknownAreaOverflow,
       negative: platform.negative,
       routeNegative: platform.routeNegative,
     },
@@ -383,6 +487,10 @@ try {
     '- 초기 runtime 평가 `status=-12` 재실행: ' + startupSupersededRetryCount + '회 (최초 로그와 재실행 로그 모두 보존)',
     '- basic-rectangles Metal drawable 표본: ' + platform.pixelComparison.matchedSamples + '/'
       + platform.pixelComparison.expectedSamples + ' RGBA exact; 최대 채널 오차 0',
+    '- unknown-area overflow: ' + platform.unknownAreaOverflow.comparisons.length
+      + '개 Chrome geometry node, ' + platform.unknownAreaOverflow.pixel.matchedSamples + '/'
+      + platform.unknownAreaOverflow.pixel.expectedSamples
+      + '개 Metal 표본 exact; grid root 밖 item 포함',
     '- negative controls: sample 좌표 ' + platform.negative.status + ', unknown scene '
       + platform.routeNegative.status,
     '- Metal drawable은 OS compositor 제출 전이다. 실기기·hardware GPU·WPT 적합성·전체 CSS Grid 지원은 이 실행에 포함하지 않는다.',
@@ -391,6 +499,7 @@ try {
     '',
     '- runtime-*.log: scene별 평가, frame, 거부 결과',
     '- ios-screen.png: basic-rectangles UI 화면 캡처',
+    '- ios-unknown-area-overflow-screen.png: fixed implicit-track overflow 장면 화면 캡처',
     '- metal-surface-comparison.json: Chrome 고정 sample과 Metal drawable 비교',
     '- result.json: fixture hash, geometry, pixel 및 negative-control 결과',
   ].join('\n') + '\n');

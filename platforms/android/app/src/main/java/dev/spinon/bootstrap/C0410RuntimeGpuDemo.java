@@ -121,6 +121,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",
             "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",
             "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",
+            "unknown-area-fixed-implicit-tracks",
     };
     private static final String C1133_GRID_TEMPLATE_AREAS_REJECT_SCENE_ID =
             "area-track-count-mismatch";
@@ -1543,26 +1544,58 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static boolean isC1133GridTemplateAreasPixelSamples(
-            List<SurfaceViewPixelCapture.Sample> samples
+            String sceneId, List<SurfaceViewPixelCapture.Sample> samples
     ) {
-        if (samples.size() != 2) return false;
+        if (C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(sceneId)) {
+            if (samples.size() != 2) return false;
+            boolean background = false;
+            boolean blue = false;
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                switch (sample.id) {
+                    case "grid-background":
+                        background = "c1133-main-grid".equals(sample.targetNodeId)
+                                && sample.xCssPx == 150 && sample.yCssPx == 10;
+                        if (!background) return false;
+                        break;
+                    case "item-blue":
+                        blue = "c1133-main-item".equals(sample.targetNodeId)
+                                && sample.xCssPx == 100 && sample.yCssPx == 50;
+                        if (!blue) return false;
+                        break;
+                    default:
+                        return false;
+                }
+            }
+            return background && blue;
+        }
+        if (!"unknown-area-fixed-implicit-tracks".equals(sceneId) || samples.size() != 3) {
+            return false;
+        }
         boolean background = false;
-        boolean blue = false;
+        boolean knownArea = false;
+        boolean overflow = false;
         for (SurfaceViewPixelCapture.Sample sample : samples) {
             switch (sample.id) {
-                case "grid-background":
-                    background = sample.xCssPx == 150 && sample.yCssPx == 10;
+                case "grid-interior":
+                    background = "fixed-implicit-grid".equals(sample.targetNodeId)
+                            && sample.xCssPx == 150 && sample.yCssPx == 110;
                     if (!background) return false;
                     break;
-                case "item-blue":
-                    blue = sample.xCssPx == 100 && sample.yCssPx == 50;
-                    if (!blue) return false;
+                case "known-area":
+                    knownArea = "fixed-known-area".equals(sample.targetNodeId)
+                            && sample.xCssPx == 10 && sample.yCssPx == 10;
+                    if (!knownArea) return false;
+                    break;
+                case "unknown-area-overflow":
+                    overflow = "fixed-unknown-area".equals(sample.targetNodeId)
+                            && sample.xCssPx == 182 && sample.yCssPx == 127;
+                    if (!overflow) return false;
                     break;
                 default:
                     return false;
             }
         }
-        return background && blue;
+        return background && knownArea && overflow;
     }
     private static boolean isC1121PixelScene(String sceneId) {
         for (String candidate : C1121_GRID_PIXEL_SCENE_IDS) {
@@ -2355,7 +2388,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "grid-gap-cyclic-calc-min-basis".equals(pixelMatrixSceneId))
                         && c114GridTrackSizingRunId.equals(pixelMatrixRunId)
                 : c1133GridTemplateAreasRequested
-                ? C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(pixelMatrixSceneId)
+                ? (C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(pixelMatrixSceneId)
+                        || "unknown-area-fixed-implicit-tracks".equals(pixelMatrixSceneId))
                 : c1131GridRepeatRequested
                 ? pixelMatrixSceneId != null
                         && C1131_GRID_REPEAT_SCENE_ID.equals(pixelMatrixSceneId)
@@ -2399,7 +2433,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         pixelMatrixSamples = List.of();
                         pixelMatrixConfigError = "invalid-c1132-sample-fixture";
                     } else if (c1133GridTemplateAreasRequested
-                            && !isC1133GridTemplateAreasPixelSamples(pixelMatrixSamples)) {
+                            && !isC1133GridTemplateAreasPixelSamples(
+                                    pixelMatrixSceneId, pixelMatrixSamples)) {
                         pixelMatrixSamples = List.of();
                         pixelMatrixConfigError = "invalid-c1133-sample-fixture";
                     } else if (c114GridTrackSizingRequested
@@ -3600,10 +3635,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                                 ? diagnostic : diagnostic.substring(0, 768) + " [truncated]"));
                 String code = result.contains("unsupported_computed_value")
                         ? "unsupported_computed_value"
+                        : result.contains("unsupported_grid_auto_rows")
+                                ? "unsupported_grid_auto_rows"
                         : result.contains("unsupported_named_grid_line")
                                 ? "unsupported_named_grid_line" : "missing";
                 String property = result.contains("property=Some(\"grid-template-areas\")")
                         ? "grid-template-areas"
+                        : result.contains("property=Some(\"grid-auto-rows\")")
+                                ? "grid-auto-rows"
                         : result.contains("property=Some(\"grid-column-start\")")
                                 ? "grid-column-start"
                                 : result.contains("property=Some(\"grid-row-start\")")
@@ -3612,16 +3651,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         .compile("node=Some\\((\\d+)\\)").matcher(result);
                 String nodeId = nodeMatcher.find() ? nodeMatcher.group(1) : "missing";
                 String expectedNodeId = "area-track-count-mismatch".equals(c1133GridTemplateAreasSceneId)
-                        ? "1" : "unknown-area-implicit-tracks".equals(c1133GridTemplateAreasSceneId)
-                                ? "2" : "missing";
+                        || "unknown-area-implicit-tracks".equals(c1133GridTemplateAreasSceneId)
+                        ? "1" : "missing";
                 boolean expected = result.startsWith("status=-11 ")
                         && (("area-track-count-mismatch".equals(c1133GridTemplateAreasSceneId)
                                 && "unsupported_computed_value".equals(code)
                                 && "grid-template-areas".equals(property)
                                 && expectedNodeId.equals(nodeId))
                         || ("unknown-area-implicit-tracks".equals(c1133GridTemplateAreasSceneId)
-                                && "unsupported_named_grid_line".equals(code)
-                                && "grid-row-start".equals(property)
+                                && "unsupported_grid_auto_rows".equals(code)
+                                && "grid-auto-rows".equals(property)
                                 && expectedNodeId.equals(nodeId)));
                 String rejectionStatus = result.split(" ", 2)[0];
                 Log.i(TAG, "SPINON_C1133_GRID_REJECTION_SUMMARY run_id="
@@ -5893,6 +5932,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c11GridExpectedRgb(String sampleId, boolean c1133TemplateAreas) {
+        if (c1133TemplateAreas) {
+            switch (sampleId) {
+                case "grid-interior":
+                    return new int[] {16, 24, 32};
+                case "known-area":
+                    return new int[] {48, 164, 108};
+                case "unknown-area-overflow":
+                    return new int[] {229, 72, 77};
+                default:
+                    break;
+            }
+        }
         if (c1133TemplateAreas && "grid-background".equals(sampleId)) {
             return new int[] {16, 24, 32};
         }

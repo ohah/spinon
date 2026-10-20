@@ -202,6 +202,8 @@ pub enum GridPlacementMode {
     DenseAutoPlacement,
     /// C11.3 template profile은 dense 배치를 유지하고 definite item의 auto 크기를 허용합니다.
     TemplateGrid,
+    /// C11.3.3 opt-in 경로의 explicit placement와 trailing fixed implicit tracks입니다.
+    TemplateGridImplicitTracks,
     /// C11.4 intrinsic track sizing 후보 profile입니다.
     TrackSizing,
 }
@@ -268,10 +270,17 @@ pub(super) fn validate_grid_layout(
     for (&id, container) in &input.grid_containers {
         match (container.placement_mode, &container.auto_rows) {
             (GridPlacementMode::TrackSizing, _) => {}
+            (GridPlacementMode::TemplateGridImplicitTracks, GridAutoRows::Auto) => {
+                return Err(LayoutError::UnsupportedGridAutoRows {
+                    node: id,
+                    reason: "C11.3.3 implicit named-line mode requires fixed px grid-auto-rows",
+                });
+            }
             (
                 GridPlacementMode::SparseRow
                 | GridPlacementMode::DenseAutoPlacement
-                | GridPlacementMode::TemplateGrid,
+                | GridPlacementMode::TemplateGrid
+                | GridPlacementMode::TemplateGridImplicitTracks,
                 GridAutoRows::Auto | GridAutoRows::LengthPx(_),
             )
             | (_, GridAutoRows::Auto) => {}
@@ -284,8 +293,16 @@ pub(super) fn validate_grid_layout(
         }
         match (container.placement_mode, &container.auto_columns) {
             (GridPlacementMode::TrackSizing, _) => {}
+            (GridPlacementMode::TemplateGridImplicitTracks, GridAutoColumns::Auto) => {
+                return Err(LayoutError::UnsupportedGridAutoColumns {
+                    node: id,
+                    reason: "C11.3.3 implicit named-line mode requires fixed px grid-auto-columns",
+                });
+            }
             (
-                GridPlacementMode::DenseAutoPlacement | GridPlacementMode::TemplateGrid,
+                GridPlacementMode::DenseAutoPlacement
+                | GridPlacementMode::TemplateGrid
+                | GridPlacementMode::TemplateGridImplicitTracks,
                 GridAutoColumns::Auto | GridAutoColumns::LengthPx(_),
             )
             | (_, GridAutoColumns::Auto) => {}
@@ -540,6 +557,7 @@ pub(super) fn validate_grid_layout(
                 GridPlacementMode::SparseRow
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
+                | GridPlacementMode::TemplateGridImplicitTracks
                     if normalized_grid.auto_placed_items.contains(&child_id) =>
                 {
                     matches!(size, crate::LayoutDimension::Fixed(_))
@@ -572,6 +590,14 @@ pub(super) fn validate_grid_layout(
                         crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
                     ) || (c14_3_replaced_item && valid_c14_3_dimension(size))
                 }
+                GridPlacementMode::TemplateGridImplicitTracks
+                    if !normalized_grid.auto_placed_items.contains(&child_id) =>
+                {
+                    matches!(
+                        size,
+                        crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
+                    )
+                }
                 _ => matches!(size, crate::LayoutDimension::Fixed(_)),
             };
             if !valid_item_size(child.style.width) || !valid_item_size(child.style.height) {
@@ -583,9 +609,12 @@ pub(super) fn validate_grid_layout(
                 ("min-height", child.style.min_height),
                 ("max-height", child.style.max_height),
             ] {
-                let zero_minimum_on_definite_area = container.placement_mode
-                    == GridPlacementMode::TemplateGrid
-                    && !normalized_grid.auto_placed_items.contains(&child_id)
+                let zero_minimum_on_definite_area = matches!(
+                    container.placement_mode,
+                    GridPlacementMode::TemplateGrid | GridPlacementMode::TemplateGridImplicitTracks
+                ) && !normalized_grid
+                    .auto_placed_items
+                    .contains(&child_id)
                     && matches!(property, "min-width" | "min-height")
                     && value == crate::LayoutDimension::Fixed(0.0);
                 let track_sizing_constraint = container.placement_mode
@@ -615,6 +644,7 @@ pub(super) fn validate_grid_layout(
             GridPlacementMode::SparseRow
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
+                | GridPlacementMode::TemplateGridImplicitTracks
                 | GridPlacementMode::TrackSizing
         ) && !has_explicit_placement
             && item_count > cell_count

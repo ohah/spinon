@@ -59,6 +59,8 @@ pub(super) enum RuntimeCalculationProfile {
     BlockFlexGridAutoPlacement,
     BlockFlexGridDenseAutoPlacement,
     BlockFlexGridTemplate,
+    #[cfg(feature = "c11-3-3-grid-implicit-named-lines-fixture-test")]
+    BlockFlexGridTemplateImplicitNamedLines,
     BlockFlexGridTrackSizing,
 }
 
@@ -322,6 +324,16 @@ pub(super) fn compute_request_for_block_flex_grid_template(
     compute_request_with_profile(request, RuntimeCalculationProfile::BlockFlexGridTemplate)
 }
 
+#[cfg(feature = "c11-3-3-grid-implicit-named-lines-fixture-test")]
+pub(super) fn compute_request_for_block_flex_grid_template_implicit_named_lines(
+    request: &WorkRequest,
+) -> Result<RuntimeCalculation, String> {
+    compute_request_with_profile(
+        request,
+        RuntimeCalculationProfile::BlockFlexGridTemplateImplicitNamedLines,
+    )
+}
+
 pub(super) fn compute_request_for_block_flex_grid_track_sizing(
     request: &WorkRequest,
 ) -> Result<RuntimeCalculation, String> {
@@ -579,6 +591,10 @@ fn compute_root(
         RuntimeCalculationProfile::BlockFlexGridTemplate => {
             ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
         }
+        #[cfg(feature = "c11-3-3-grid-implicit-named-lines-fixture-test")]
+        RuntimeCalculationProfile::BlockFlexGridTemplateImplicitNamedLines => {
+            ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+        }
         RuntimeCalculationProfile::BlockFlexGridTrackSizing => {
             ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
         }
@@ -779,6 +795,15 @@ fn compute_root(
                 )
             }
             RuntimeCalculationProfile::BlockFlexGridTemplate => {
+                compute_runtime_block_flex_grid_template_cascade_with_stylesheets(
+                    &view,
+                    author_stylesheets,
+                    request.viewport,
+                    request.key.style_revision,
+                )
+            }
+            #[cfg(feature = "c11-3-3-grid-implicit-named-lines-fixture-test")]
+            RuntimeCalculationProfile::BlockFlexGridTemplateImplicitNamedLines => {
                 compute_runtime_block_flex_grid_template_cascade_with_stylesheets(
                     &view,
                     author_stylesheets,

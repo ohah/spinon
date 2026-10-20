@@ -79,6 +79,7 @@ public final class MainActivity extends Activity {
             "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",
             "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",
             "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",
+            "unknown-area-fixed-implicit-tracks",
     };
     private static final int RUNTIME_QUEUE_CAPACITY = 64;
     private static final String LIFECYCLE_FIXTURE_ASSET = "s03-lifecycle-probe.js";
