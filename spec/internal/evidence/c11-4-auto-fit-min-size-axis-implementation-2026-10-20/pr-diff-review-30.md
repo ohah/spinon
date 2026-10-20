@@ -33,8 +33,8 @@
 | 27 | 기존 single/span-two/fixed-neighbor assertions가 새 규범 값과 불일치하는가 | Android, Swift, simulator runner 모두 162px/134px 및 updated node coordinates를 같은 값으로 기대하며 53 scene 실행이 맞음. |
 | 28 | capture runner가 collapsed track만 보고 gutter 폭을 오판하는가 | auto-fit minimum-size scene은 collapsed track 양옆 gutter를 모두 0px, 양쪽이 occupied인 gutter는 8px로 확인한다. |
 | 29 | 플랫폼 capture 성공 표기가 실제 draw/present나 표면 경계 검증 없이 생성되는가 | runner는 scene별 `drawPresented`, 완전한 trace chunk, frame 및 track 검사를 요구한다. overflow 장면은 각 플랫폼 pixel summary와 4개 exact 표본도 요구함. |
-| 30 | evidence/roadmap 문구가 제한 slice를 전체 C11.4 완료로 과장하거나 실패 run을 숨기는가 | status checkbox와 완료 수는 그대로며 WPT, out-of-flow, physical device, hardware GPU, iOS compositor-after 한계를 기록한다. README는 오래된 154px expectation, C11.1 out-of-flow 거부, 비활성 Metal fixture, 잘못된 simulator UDID 시도와 최종 53-scene 결과를 각각 구분한다. device ID·hash·screenshots가 연결됨. |
+| 30 | evidence/roadmap 문구가 제한 slice를 전체 C11.4 완료로 과장하거나 실패 run을 숨기는가 | status checkbox와 완료 수는 그대로며 WPT, out-of-flow, physical device, hardware GPU, iOS compositor-after 한계를 기록한다. README는 오래된 154px expectation, C11.1 out-of-flow 거부, 비활성 Metal fixture, 잘못된 simulator UDID 시도와 최종 53-scene 결과를 각각 구분한다. status와 plan은 PR #372를 연결하고 device ID·hash·screenshots가 근거에 있다. |
 
 ## 판정
 
-최종 diff 관점 30개에서 수정이 필요한 결함을 발견하지 못했다. Android APK의 ZIP 검증 및 AVD에 설치한 APK SHA-256, iOS simulator app executable SHA-256은 각 실행 `simulator.json`의 hash와 일치한다. required GitHub checks와 merge state는 PR 생성 뒤 live 조회한다.
+최종 diff 관점 30개에서 수정이 필요한 결함을 발견하지 못했다. Android APK의 ZIP 검증 및 AVD에 설치한 APK SHA-256, iOS simulator app executable SHA-256은 각 실행 `simulator.json`의 hash와 일치한다. PR #372 검토 시점의 live `mergeStateStatus`는 `CLEAN`, status check 목록은 비어 있고 `gh pr checks --required`는 branch에서 보고된 check가 없다고 반환했다. 이를 CI 통과로 표현하지 않는다.
