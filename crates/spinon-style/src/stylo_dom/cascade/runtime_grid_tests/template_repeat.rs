@@ -313,7 +313,6 @@ fn auto_repeat_rejects_profiles_and_shapes_outside_the_supported_subset() {
         "grid-template-columns:20% repeat(auto-fill,minmax(24px,1fr))",
         "grid-template-columns:minmax(10px,20px) repeat(auto-fill,minmax(24px,1fr))",
         "grid-template-columns:repeat(2,20px) repeat(auto-fill,minmax(24px,1fr))",
-        "grid-template-columns:20px repeat(auto-fill,minmax(24px,1fr)) repeat(auto-fit,24px)",
         "grid-template-columns:[neighbor] 20px repeat(auto-fill,minmax(24px,1fr))",
         "grid-template-columns:repeat(auto-fit,[named] minmax(24px,1fr))",
         "grid-template-columns:repeat(auto-fill,minmax(24px,1fr));grid-template-rows:40px;grid-template-areas:\"area\"",
@@ -332,6 +331,27 @@ fn auto_repeat_rejects_profiles_and_shapes_outside_the_supported_subset() {
             "accepted out-of-subset style: {style}"
         );
     }
+
+    // CSS discards a declaration with two auto-repeat functions, leaving the
+    // computed `none` value that the track-sizing profile now supports.
+    let invalid_repeat = fixture(
+        "display:grid;box-sizing:border-box;width:300px;height:200px;grid-template-columns:20px repeat(auto-fill,minmax(24px,1fr)) repeat(auto-fit,24px);grid-template-rows:40px;margin:0;padding:0",
+    );
+    let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+        &invalid_repeat.view,
+        &[],
+        viewport(),
+        Default::default(),
+    )
+    .unwrap();
+    assert!(
+        snapshot.elements[0]
+            .grid_layout
+            .as_ref()
+            .unwrap()
+            .columns
+            .is_empty()
+    );
 }
 
 #[test]

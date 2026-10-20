@@ -9,11 +9,20 @@ const [expected, observed, environment] = await Promise.all([
   readJson("chrome155-observation.json"),
   readJson("browser-environment.json"),
 ]);
+const runtimeScenes = JSON.parse(await readFile(new URL(
+  "../../../../crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/negative_implicit_track_scenes.json",
+  import.meta.url,
+), "utf8"));
 const tolerance = expected.cssPixelTolerance;
 const actualById = new Map(observed.map(row => [row.id, row]));
 
 assert.equal(observed.length, expected.trackExpectations.length, "관찰 case 수가 기대 case 수와 다릅니다.");
 assert.equal(actualById.size, observed.length, "관찰 결과에 중복 case id가 있습니다.");
+assert.equal(runtimeScenes.length, expected.trackExpectations.length, "runtime scene 수가 기대 case 수와 다릅니다.");
+assert.deepEqual(new Set(runtimeScenes.map(({ id }) => id)), new Set(expected.trackExpectations.map(({ id }) => id)),
+  "runtime scene과 track expectation ID가 다릅니다.");
+assert.deepEqual(new Set(runtimeScenes.map(({ id }) => id)), new Set(observed.map(({ id }) => id)),
+  "runtime scene과 Chrome 관찰 ID가 다릅니다.");
 assert.equal(environment.caseCount, expected.trackExpectations.length, "브라우저에 열린 fixture case 수가 다릅니다.");
 assert.match(environment.userAgent, /HeadlessChrome\/155\./, "Chrome 155 외 환경의 관찰값입니다.");
 assert.equal(environment.devicePixelRatio, 1, "DPR 1 기준 관찰이 아닙니다.");
@@ -69,4 +78,4 @@ for (const want of expected.geometryExpectations) {
   if (want.display) assert.equal(got.items[want.hiddenItemIndex].display, want.display, `${want.id} hidden item`);
 }
 
-console.log(`통과: Chrome 155 관찰 ${observed.length}/${expected.trackExpectations.length}, 트랙·자동배치·overflow 기대값 일치 (±${tolerance} CSS px).`);
+console.log(`통과: Chrome 155 관찰/runtime scene ${observed.length}/${expected.trackExpectations.length}, 트랙·자동배치·overflow 기대값 일치 (±${tolerance} CSS px).`);

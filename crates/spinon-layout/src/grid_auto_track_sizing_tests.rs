@@ -341,7 +341,7 @@ fn track_sizing_keeps_auto_track_pattern_aligned_across_explicit_boundary_spans(
 }
 
 #[test]
-fn track_sizing_rejects_negative_implicit_lines_and_ignores_hidden_positive_items() {
+fn track_sizing_supports_negative_implicit_lines_and_ignores_hidden_positive_items() {
     let mut negative = grid_input(
         vec![GridTrackSize::LengthPx(40.0)],
         vec![GridTrackSize::LengthPx(12.0)],
@@ -360,10 +360,12 @@ fn track_sizing_rejects_negative_implicit_lines_and_ignores_hidden_positive_item
             column_end: GridPlacementInput::Line(2),
         },
     );
-    assert!(matches!(
-        TaffyLayoutEngine.compute(&negative),
-        Err(LayoutError::InvalidGridPlacement { node, .. }) if node == id(2)
-    ));
+    let negative_output = TaffyLayoutEngine.compute(&negative).unwrap();
+    assert_eq!(
+        final_axis_track_sizes(&negative_output, LayoutGridTrackSizingAxis::Rows),
+        [30.0, 12.0]
+    );
+    assert_eq!(negative_output.frames[&id(2)].y, 0.0);
 
     let mut hidden = grid_input(
         vec![GridTrackSize::LengthPx(40.0)],

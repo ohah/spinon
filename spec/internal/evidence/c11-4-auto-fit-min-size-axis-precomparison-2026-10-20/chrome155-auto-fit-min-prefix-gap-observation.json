@@ -1,0 +1,29 @@
+{
+  "browser": "HeadlessChrome/155.0.0.0",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+  "agentBrowser": "0.31.1",
+  "date": "2026-10-20",
+  "viewport": { "width": 1280, "height": 633 },
+  "devicePixelRatio": 1,
+  "source": "auto-fit-min-prefix-gap-probe.html",
+  "gap": 8,
+  "cases": [
+    {
+      "id": "columns-prefix-empty-implicit-item",
+      "axis": "columns",
+      "sizeBasis": "width:max-content; min-width:200px",
+      "gridRect": { "x": 0, "y": 0, "width": 200, "height": 40 },
+      "resolvedColumns": "20px 0px 0px 0px 0px 12px",
+      "itemRectRelativeToGrid": { "x": 28, "y": 0, "width": 12, "height": 12 }
+    },
+    {
+      "id": "rows-prefix-empty-implicit-item",
+      "axis": "rows",
+      "sizeBasis": "height:max-content; min-height:200px",
+      "gridRect": { "x": 0, "y": 40, "width": 40, "height": 200 },
+      "resolvedRows": "20px 0px 0px 0px 0px 0px 0px 12px",
+      "itemRectRelativeToGrid": { "x": 0, "y": 28, "width": 12, "height": 12 }
+    }
+  ],
+  "observation": "The item in the implicit track after the empty auto-fit range starts 28 CSS px after the grid origin on both axes: the 20px prefix plus the 8px leading gutter. This holds for the min-size-only repeat-count path."
+}

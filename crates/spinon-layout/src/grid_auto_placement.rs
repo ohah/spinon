@@ -16,11 +16,20 @@ mod dense_column;
 mod occupancy;
 #[path = "grid_auto_placement/reservation.rs"]
 mod reservation;
+#[path = "grid_auto_placement/track_sizing.rs"]
+mod track_sizing;
 
 use axis::{AxisPlacement, resolve_axis};
 pub(crate) use dense_column::normalize_dense_grid_container;
 use occupancy::Occupancy;
 use reservation::{GridReservationSite, reserve_exact};
+
+pub(crate) struct DenseGridPlacement {
+    pub(crate) item_placements: BTreeMap<NodeId, GridItemInput>,
+    pub(crate) expanded_rows: Option<Vec<GridTrackSize>>,
+    pub(crate) expanded_columns: Option<Vec<GridTrackSize>>,
+    pub(crate) auto_placed_items: BTreeSet<NodeId>,
+}
 
 #[cfg(test)]
 pub(crate) use reservation::{GridReservationSite as TestGridReservationSite, inject_failure_once};

@@ -374,5 +374,75 @@ fn track_sizing_profile_lays_out_css_auto_repeat_modes() {
     }
 }
 
+#[test]
+fn track_sizing_profile_projects_negative_lines_and_reverse_auto_track_lists() {
+    let fixture = Fixture::new(
+        "display:grid;box-sizing:border-box;width:240px;height:20px;grid-template-columns:10px 20px;grid-template-rows:10px;grid-auto-columns:30px 40px 50px;column-gap:0;row-gap:0;align-items:start;align-content:start;justify-content:start;margin:0;padding:0;border:0",
+        &[
+            (
+                "leading",
+                "width:1px;height:1px;grid-row:1 / 2;grid-column:-5 / -2;margin:0;padding:0;border:0",
+            ),
+            (
+                "explicit",
+                "width:1px;height:1px;grid-row:1 / 2;grid-column:1 / 2;margin:0;padding:0;border:0",
+            ),
+            (
+                "trailing",
+                "width:1px;height:1px;grid-row:1 / 2;grid-column:5 / 6;margin:0;padding:0;border:0",
+            ),
+        ],
+    );
+    let output = fixture.compute();
+
+    assert_eq!(
+        output.computed_styles.profile,
+        ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+    );
+    for (id, expected_x) in [("leading", 0.0), ("explicit", 90.0), ("trailing", 190.0)] {
+        let frame = output.layout.frames[&fixture.nodes[id].id()];
+        assert_eq!(frame.x, expected_x, "{id}");
+    }
+}
+
+#[test]
+fn track_sizing_profile_anchors_negative_lines_when_template_is_none() {
+    let grid_style = "display:grid;box-sizing:border-box;width:240px;height:20px;grid-template-columns:none;grid-template-rows:10px;grid-auto-columns:30px 40px 50px;column-gap:0;row-gap:0;align-items:start;align-content:start;justify-content:start;margin:0;padding:0;border:0";
+    let fixture = Fixture::new(
+        grid_style,
+        &[
+            (
+                "leading",
+                "width:1px;height:1px;grid-row:1 / 2;grid-column:-2 / 1;margin:0;padding:0;border:0",
+            ),
+            (
+                "trailing",
+                "width:1px;height:1px;grid-row:1 / 2;grid-column:1 / 2;margin:0;padding:0;border:0",
+            ),
+        ],
+    );
+    let output = fixture.compute();
+
+    assert_eq!(
+        output.computed_styles.profile,
+        ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+    );
+    assert_eq!(output.layout.frames[&fixture.nodes["leading"].id()].x, 0.0);
+    assert_eq!(
+        output.layout.frames[&fixture.nodes["trailing"].id()].x,
+        50.0
+    );
+
+    assert!(matches!(
+        Fixture::new(grid_style, &[]).compute_template(),
+        Err(StyleLayoutError::Cascade(
+            spinon_style::CssCascadeError::UnsupportedComputedGridValue {
+                property: "grid-template-columns",
+                ..
+            }
+        ))
+    ));
+}
+
 #[path = "c11_4_track_sizing_areas_tests/auto_repeat_explicit_neighbors.rs"]
 mod auto_repeat_explicit_neighbors;

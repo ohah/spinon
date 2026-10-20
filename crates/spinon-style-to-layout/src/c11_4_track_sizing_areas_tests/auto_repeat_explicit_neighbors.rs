@@ -22,6 +22,18 @@ const FIT_ONE_ITEMS: &[(&str, &str)] = &[
     ("repeat", "width:12px;height:12px;grid-column:2;grid-row:1"),
     ("suffix", "width:12px;height:12px;grid-column:5;grid-row:1"),
 ];
+const FIT_MIDDLE_ITEMS: &[(&str, &str)] = &[
+    ("repeat", "width:12px;height:12px;grid-column:3;grid-row:1"),
+    ("suffix", "width:12px;height:12px;grid-column:5;grid-row:1"),
+];
+const FIT_LAST_ITEMS: &[(&str, &str)] = &[
+    ("repeat", "width:12px;height:12px;grid-column:4;grid-row:1"),
+    ("suffix", "width:12px;height:12px;grid-column:5;grid-row:1"),
+];
+const FIT_SUFFIX_ONLY_ITEMS: &[(&str, &str)] =
+    &[("suffix", "width:12px;height:12px;grid-column:5;grid-row:1")];
+const FIT_REPEAT_ONLY_ITEMS: &[(&str, &str)] =
+    &[("repeat", "width:12px;height:12px;grid-column:2;grid-row:1")];
 const FIT_SPAN_ITEMS: &[(&str, &str)] = &[
     (
         "span",
@@ -98,6 +110,46 @@ fn chrome155_auto_repeat_explicit_neighbor_matrix_preserves_tracks_and_frames() 
             collapsed: FIT_ONE_COLLAPSED,
             root_size: (200.0, 60.0),
             item_positions: &[("repeat", 28.0, 0.0), ("suffix", 190.0, 0.0)],
+        },
+        Case {
+            id: "columns-auto-fit-middle",
+            root_style: "display:grid;box-sizing:border-box;width:200px;height:60px;grid-template-columns:20px repeat(auto-fit,minmax(40px,1fr)) 10px;grid-template-rows:40px;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;margin:0;padding:0;border:0",
+            items: FIT_MIDDLE_ITEMS,
+            axis: LayoutGridTrackSizingAxis::Columns,
+            tracks: &[20.0, 0.0, 154.0, 0.0, 10.0],
+            collapsed: &[false, true, false, true, false],
+            root_size: (200.0, 60.0),
+            item_positions: &[("repeat", 28.0, 0.0), ("suffix", 190.0, 0.0)],
+        },
+        Case {
+            id: "columns-auto-fit-last",
+            root_style: "display:grid;box-sizing:border-box;width:200px;height:60px;grid-template-columns:20px repeat(auto-fit,minmax(40px,1fr)) 10px;grid-template-rows:40px;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;margin:0;padding:0;border:0",
+            items: FIT_LAST_ITEMS,
+            axis: LayoutGridTrackSizingAxis::Columns,
+            tracks: &[20.0, 0.0, 0.0, 154.0, 10.0],
+            collapsed: &[false, true, true, false, false],
+            root_size: (200.0, 60.0),
+            item_positions: &[("repeat", 28.0, 0.0), ("suffix", 190.0, 0.0)],
+        },
+        Case {
+            id: "columns-auto-fit-suffix-only",
+            root_style: "display:grid;box-sizing:border-box;width:200px;height:60px;grid-template-columns:20px repeat(auto-fit,minmax(40px,1fr)) 10px;grid-template-rows:40px;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;margin:0;padding:0;border:0",
+            items: FIT_SUFFIX_ONLY_ITEMS,
+            axis: LayoutGridTrackSizingAxis::Columns,
+            tracks: &[20.0, 0.0, 0.0, 0.0, 10.0],
+            collapsed: &[false, true, true, true, false],
+            root_size: (200.0, 60.0),
+            item_positions: &[("suffix", 28.0, 0.0)],
+        },
+        Case {
+            id: "columns-auto-fit-repeat-only",
+            root_style: "display:grid;box-sizing:border-box;width:200px;height:60px;grid-template-columns:20px repeat(auto-fit,minmax(40px,1fr)) 10px;grid-template-rows:40px;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;margin:0;padding:0;border:0",
+            items: FIT_REPEAT_ONLY_ITEMS,
+            axis: LayoutGridTrackSizingAxis::Columns,
+            tracks: &[20.0, 154.0, 0.0, 0.0, 10.0],
+            collapsed: &[false, false, true, true, false],
+            root_size: (200.0, 60.0),
+            item_positions: &[("repeat", 28.0, 0.0)],
         },
         Case {
             id: "columns-auto-fit-span-two",

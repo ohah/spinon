@@ -11,7 +11,7 @@ CSS Grid Level 2 §7.1은 numeric negative line을 explicit grid 끝에서 해�
 ## Chrome 관찰 환경
 
 - Agent Browser의 격리 headless Chrome 155, UA `HeadlessChrome/155.0.0.0`, macOS arm64 호스트, DPR 1, viewport 1280×633.
-- `tests/fixtures/resources/c15/Ahem.ttf`를 fixture에서 로드하고 `document.fonts.check('12px Ahem')`가 `true`인 상태에서 capture했다. 최초 작성에서 Ahem URL이 한 단계 잘못된 것을 발견해 수정한 뒤 전체 25개 case를 다시 관찰했다.
+- `tests/fixtures/resources/c15/Ahem.ttf`를 fixture에서 로드하고 `document.fonts.check('12px Ahem')`가 `true`인 상태에서 capture했다. 최초 작성에서 Ahem URL이 한 단계 잘못된 것을 발견해 수정한 뒤 전체 33개 case를 다시 관찰했다.
 - 입력은 [`../../../../tests/fixtures/css/c11/grid-negative-implicit-track-sizing-c114-precomparison.html`](../../../../tests/fixtures/css/c11/grid-negative-implicit-track-sizing-c114-precomparison.html)이고 관찰 DOMRect는 CSS pixel이다. track 목록은 computed `gridTemplateColumns/Rows`이며, `spec-derived-expectations.json`은 Chrome 결과와 별도로 규범/입력에서 수기로 도출했다.
 - 수치 비교 허용치는 CSS px `1/64`이다. Ahem intrinsic size는 정수 결과여야 하고, 브라우저의 일반 geometry fractional rounding만 이 오차를 허용한다.
 
@@ -20,7 +20,8 @@ CSS Grid Level 2 §7.1은 numeric negative line을 explicit grid 끝에서 해�
 - [Chrome 155 computed tracks와 각 item DOMRect](./chrome155-observation.json)
 - [브라우저·DPR·글꼴 환경](./browser-environment.json)
 - [W3C에서 별도로 도출한 기대값](./spec-derived-expectations.json)
-- [고정 기대값 비교 validator](./validate-precomparison.mjs)
+- [고정 기대값 비교 validator](./validate-precomparison.mjs)는 Chrome 관찰·규범-derived track 기대값·런타임 scene 입력 ID가 33개 모두 같은지 확인한다.
+- [C11.4 런타임 scene 입력](../../../../crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/negative_implicit_track_scenes.json)은 같은 33개 browser case를 simulator runtime에 전달한다.
 - [Agent Browser 전체 화면](./chrome155-agent-browser-full.png)
 - [계획 적대 검토 20개](../c11-4-negative-implicit-track-sizing-plan-review-20-2026-10-20.md)
 

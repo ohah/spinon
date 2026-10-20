@@ -4,6 +4,7 @@ use spinon_core::NodeId;
 
 use crate::grid::GRID_MAX_TRACKS;
 use crate::grid_auto_placement::{
+    DenseGridPlacement,
     axis::{AxisPlacement, resolve_axis},
     occupancy::Occupancy,
     reservation::{GridReservationSite, reserve_exact},
@@ -11,13 +12,6 @@ use crate::grid_auto_placement::{
 use crate::{
     GridAutoFlow, GridContainerInput, GridPlacementInput, GridTrackSize, LayoutError, LayoutInput,
 };
-
-pub(crate) struct DenseGridPlacement {
-    pub(crate) item_placements: BTreeMap<NodeId, crate::GridItemInput>,
-    pub(crate) expanded_rows: Option<Vec<GridTrackSize>>,
-    pub(crate) expanded_columns: Option<Vec<GridTrackSize>>,
-    pub(crate) auto_placed_items: BTreeSet<NodeId>,
-}
 
 struct Item {
     node: NodeId,
@@ -54,6 +48,15 @@ pub(crate) fn normalize_dense_grid_container(
             });
         }
         return normalize_auto_repeat_grid_items(input, hidden, container_node, container);
+    }
+
+    if container.placement_mode == crate::GridPlacementMode::TrackSizing {
+        return super::track_sizing::normalize_track_sizing_grid_container(
+            input,
+            hidden,
+            container_node,
+            container,
+        );
     }
 
     let row_flow = matches!(

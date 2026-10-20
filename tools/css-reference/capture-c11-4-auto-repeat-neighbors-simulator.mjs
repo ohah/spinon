@@ -17,10 +17,10 @@ const component = `${packageName}/.MainActivity`;
 const appPath = resolve(repositoryRoot,
   'build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app');
 const apkPath = resolve(repositoryRoot, 'platforms/android/app/build/outputs/apk/debug/app-debug.apk');
-const runPrefix = `c114-implicit-intrinsic-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
+const runPrefix = `c114-negative-implicit-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot,
-  `spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-${date}`, `${target}-${runPrefix}`);
+  `spec/internal/evidence/c11-4-negative-implicit-track-sizing-${date}`, `${target}-${runPrefix}`);
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const sleep = (milliseconds) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, milliseconds);
 
@@ -40,9 +40,9 @@ const scenes = [
     axis: 'Columns',
     boxCount: 2,
     rootFrame: 'width=200,height=60',
-    itemFrame: 'width=162,height=40',
-    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;1:node=2,x=28,y=0,width=162,height=40]',
-    tracks: [20, 162, 0, 0, 10],
+    itemFrame: 'width=154,height=40',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;1:node=2,x=28,y=0,width=154,height=40]',
+    tracks: [20, 154, 0, 0, 10],
     collapsed: [false, false, true, true, false],
   },
   {
@@ -62,7 +62,7 @@ const scenes = [
     rootFrame: 'width=200,height=60',
     itemFrame: 'width=12,height=12',
     nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;1:node=2,x=28,y=0,width=12,height=12;2:node=3,x=190,y=0,width=12,height=12]',
-    tracks: [20, 77, 77, 0, 10],
+    tracks: [20, 73, 73, 0, 10],
     collapsed: [false, false, false, true, false],
   },
   {
@@ -158,7 +158,7 @@ const scenes = [
     rootFrame: 'width=50,height=200',
     itemFrame: 'width=12,height=12',
     nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=50,height=200;1:node=2,x=0,y=28,width=12,height=12]',
-    tracks: [20, 162, 0, 0, 10],
+    tracks: [20, 154, 0, 0, 10],
     collapsed: [false, false, true, true, false],
   },
   {
@@ -284,8 +284,8 @@ const scenes = [
     itemFrame: 'width=12,height=12',
     nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=28,y=28,width=12,height=12]',
     axes: {
-      Columns: { tracks: [20, 162, 0, 0, 0, 10], collapsed: [false, false, true, true, true, false] },
-      Rows: { tracks: [20, 162, 0, 0, 0, 10], collapsed: [false, false, true, true, true, false] },
+      Columns: { tracks: [20, 154, 0, 0, 0, 10], collapsed: [false, false, true, true, true, false] },
+      Rows: { tracks: [20, 154, 0, 0, 0, 10], collapsed: [false, false, true, true, true, false] },
     },
   },
   {
@@ -293,17 +293,17 @@ const scenes = [
     itemFrame: 'width=12,height=12',
     nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=28,y=28,width=12,height=12]',
     axes: {
-      Columns: { tracks: [20, 134, 20, 0, 0, 10], collapsed: [false, false, false, true, true, false] },
-      Rows: { tracks: [20, 134, 20, 0, 0, 10], collapsed: [false, false, false, true, true, false] },
+      Columns: { tracks: [20, 126, 20, 0, 0, 10], collapsed: [false, false, false, true, true, false] },
+      Rows: { tracks: [20, 126, 20, 0, 0, 10], collapsed: [false, false, false, true, true, false] },
     },
   },
   {
     id: 'both-fit-second-repeat', boxCount: 2, rootFrame: 'width=200,height=200',
     itemFrame: 'width=12,height=12',
-    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=20,y=20,width=12,height=12]',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=28,y=28,width=12,height=12]',
     axes: {
-      Columns: { tracks: [20, 0, 0, 170, 0, 10], collapsed: [false, true, true, false, true, false] },
-      Rows: { tracks: [20, 0, 0, 170, 0, 10], collapsed: [false, true, true, false, true, false] },
+      Columns: { tracks: [20, 0, 0, 154, 0, 10], collapsed: [false, true, true, false, true, false] },
+      Rows: { tracks: [20, 0, 0, 154, 0, 10], collapsed: [false, true, true, false, true, false] },
     },
   },
   {
@@ -325,19 +325,19 @@ const scenes = [
   {
     id: 'columns-fit-rows-fill-second-repeat', boxCount: 2, rootFrame: 'width=200,height=200',
     itemFrame: 'width=12,height=12',
-    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=20,y=109,width=12,height=12]',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=28,y=109,width=12,height=12]',
     axes: {
-      Columns: { tracks: [20, 0, 0, 170, 0, 10], collapsed: [false, true, true, false, true, false] },
+      Columns: { tracks: [20, 0, 0, 154, 0, 10], collapsed: [false, true, true, false, true, false] },
       Rows: { tracks: [20, 45, 20, 45, 20, 10], collapsed: [false, false, false, false, false, false] },
     },
   },
   {
     id: 'columns-fill-rows-fit-second-repeat', boxCount: 2, rootFrame: 'width=200,height=200',
     itemFrame: 'width=12,height=12',
-    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=109,y=20,width=12,height=12]',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=109,y=28,width=12,height=12]',
     axes: {
       Columns: { tracks: [20, 45, 20, 45, 20, 10], collapsed: [false, false, false, false, false, false] },
-      Rows: { tracks: [20, 0, 0, 170, 0, 10], collapsed: [false, true, true, false, true, false] },
+      Rows: { tracks: [20, 0, 0, 154, 0, 10], collapsed: [false, true, true, false, true, false] },
     },
   },
 ];
@@ -349,6 +349,94 @@ scenes.push(...implicitIntrinsicTrackScenes());
 assert.equal(scenes.length, 73, 'C11.4 intrinsic implicit track simulator 행렬은 73 scene이어야 합니다.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 simulator scene ID가 중복됐습니다.');
+scenes.push(...await negativeImplicitTrackScenes());
+assert.equal(scenes.length, 106, 'C11.4 negative implicit track simulator 행렬은 106 scene이어야 합니다.');
+assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
+  'C11.4 simulator scene ID가 중복됐습니다.');
+
+async function negativeImplicitTrackScenes() {
+  const evidence = resolve(repositoryRoot,
+    'spec/internal/evidence/c11-4-negative-implicit-track-sizing-precomparison-2026-10-20');
+  const fixturePath = resolve(repositoryRoot,
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/negative_implicit_track_scenes.json');
+  const [fixtures, expectations, observations] = await Promise.all([
+    readFile(fixturePath, 'utf8').then(JSON.parse),
+    readFile(resolve(evidence, 'spec-derived-expectations.json'), 'utf8').then(JSON.parse),
+    readFile(resolve(evidence, 'chrome155-observation.json'), 'utf8').then(JSON.parse),
+  ]);
+  const tracksByID = new Map(expectations.trackExpectations.map((entry) => [entry.id, entry]));
+  const observationsByID = new Map(observations.map((entry) => [entry.id, entry]));
+  const fixtureIDs = fixtures.map(({ id }) => id);
+  assert.equal(fixtures.length, 33, 'negative implicit track fixture는 33 case여야 합니다.');
+  assert.equal(tracksByID.size, 33, 'negative implicit track expectation은 33 case여야 합니다.');
+  assert.equal(observationsByID.size, 33, 'Chrome 관찰은 33 case여야 합니다.');
+  assert.deepEqual(new Set(fixtureIDs), new Set(tracksByID.keys()),
+    'runtime fixture와 규범-derived track expectation scene이 다릅니다.');
+  assert.deepEqual(new Set(fixtureIDs), new Set(observationsByID.keys()),
+    'runtime fixture와 Chrome 관찰 scene이 다릅니다.');
+
+  return fixtures.map(({ id, items: fixtureItems }) => {
+    const trackExpectation = tracksByID.get(id);
+    const observation = observationsByID.get(id);
+    const visibleItems = observation.items.filter((item) => item.display !== 'none');
+    const firstVisibleItem = visibleItems[0];
+    assert.ok(firstVisibleItem, `${id}: visible first item이 없습니다.`);
+    const rootFrame = `width=${observation.grid.width},height=${observation.grid.height}`;
+    const itemFrame = `width=${firstVisibleItem.rect.width},height=${firstVisibleItem.rect.height}`;
+    const itemNodeFrames = observation.items.map((item, itemIndex) => {
+      const sourceIndex = observation.items.indexOf(item);
+      assert.ok(sourceIndex >= 0, `${id}: Chrome item ${item.id}를 runtime fixture에서 못 찾았습니다.`);
+      const precedingTextNodes = fixtureItems.slice(0, sourceIndex)
+        .filter((fixtureItem, index) => Boolean(fixtureItem.text)
+          && observation.items[index]?.display !== 'none').length;
+      const x = item.display === 'none' ? 0 : item.rect.x - observation.grid.x;
+      const y = item.display === 'none' ? 0 : item.rect.y - observation.grid.y;
+      return `${itemIndex + 1}:node=${sourceIndex + precedingTextNodes + 2},x=${x},y=${y},`
+        + `width=${item.rect.width},height=${item.rect.height}`;
+    });
+    const nodeFrames = `node_frames_css_px=[0:node=1,x=0,y=0,${rootFrame};`
+      + `${itemNodeFrames.join(';')}]`;
+    const scene = {
+      id,
+      boxCount: visibleItems.filter((item) => item.rect.width > 0 && item.rect.height > 0).length + 1,
+      rootFrame,
+      itemFrame,
+      nodeFrames,
+      axes: {
+        Columns: {
+          tracks: trackExpectation.columns,
+          collapsed: trackExpectation.columns.map(() => false),
+        },
+        Rows: {
+          tracks: trackExpectation.rows,
+          collapsed: trackExpectation.rows.map(() => false),
+        },
+      },
+      gaps: {
+        Columns: Number.parseFloat(observation.columnGap),
+        Rows: Number.parseFloat(observation.rowGap),
+      },
+    };
+    if (id === 'columns-negative-fixed-root-overflow') {
+      scene.pixelSamples = [
+        { id: 'negative-root-interior', nodeId: `c114-${id}-grid`, xCssPx: 33, yCssPx: 10, rgba: [226, 232, 240, 255] },
+        { id: 'negative-root-edge', nodeId: `c114-${id}-grid`, xCssPx: 0, yCssPx: 10, rgba: [226, 232, 240, 255] },
+        { id: 'negative-root-exterior', nodeId: `c114-${id}-grid`, xCssPx: 150, yCssPx: 10, rgba: [0, 0, 0, 255] },
+        { id: 'negative-overflow-item', nodeId: `c114-${id}-item-${observation.items.length}`, xCssPx: 250, yCssPx: 10, rgba: [141, 95, 211, 255] },
+        { id: 'negative-overflow-tail', nodeId: `c114-${id}-grid`, xCssPx: 273, yCssPx: 10, rgba: [0, 0, 0, 255] },
+      ];
+    } else if (id === 'rows-negative-fixed-root-overflow') {
+      scene.pixelSamples = [
+        { id: 'negative-root-interior', nodeId: `c114-${id}-grid`, xCssPx: 10, yCssPx: 19, rgba: [226, 232, 240, 255] },
+        { id: 'negative-root-edge', nodeId: `c114-${id}-grid`, xCssPx: 10, yCssPx: 0, rgba: [226, 232, 240, 255] },
+        { id: 'negative-root-exterior', nodeId: `c114-${id}-grid`, xCssPx: 10, yCssPx: 100, rgba: [0, 0, 0, 255] },
+        { id: 'negative-overflow-item', nodeId: `c114-${id}-item-${observation.items.length}`, xCssPx: 10, yCssPx: 195, rgba: [141, 95, 211, 255] },
+        { id: 'negative-overflow-tail', nodeId: `c114-${id}-grid`, xCssPx: 10, yCssPx: 209, rgba: [0, 0, 0, 255] },
+      ];
+    }
+    return scene;
+  });
+}
 
 function autoFitMinimumSizeScenes() {
   const result = [];
@@ -379,16 +467,16 @@ function autoFitMinimumSizeScenes() {
     }
     for (let index = 0; index < repeatedTrackCount; index += 1) {
       if (placement === 'single' && index === 0) {
-        tracks.push(162);
+        tracks.push(154);
         collapsed.push(false);
       } else if (placement === 'span-two' && index === 0) {
-        tracks.push(134);
+        tracks.push(126);
         collapsed.push(false);
       } else if (placement === 'span-two' && index === 1) {
         tracks.push(20);
         collapsed.push(false);
       } else if (placement === 'second-repeat' && index === 2) {
-        tracks.push(170);
+        tracks.push(154);
         collapsed.push(false);
       } else {
         tracks.push(0);
@@ -405,7 +493,7 @@ function autoFitMinimumSizeScenes() {
     const hasItem = ['single', 'span-two', 'second-repeat'].includes(placement);
     const itemFrame = hasItem ? 'width=12,height=12' : null;
     const itemPosition = placement === 'second-repeat'
-      ? axis === 'Columns' ? 'x=20,y=0' : 'x=0,y=20'
+      ? axis === 'Columns' ? 'x=28,y=0' : 'x=0,y=28'
       : axis === 'Columns' ? 'x=28,y=0' : 'x=0,y=28';
     const nodeFrames = hasItem
       ? `node_frames_css_px=[0:node=1,x=0,y=0,${rootFrame};1:node=2,${itemPosition},width=12,height=12]`
@@ -561,6 +649,19 @@ function command(binary, args, { allowFailure = false, timeout = 120_000, encodi
   return result;
 }
 
+function autoFitBoundaryGutters(scene, expected) {
+  if (!scene.id.includes('fit') || !expected.collapsed.includes(true)) return null;
+  const hasPrefix = expected.tracks[0] === 20 && !expected.collapsed[0];
+  const hasSuffix = expected.tracks.at(-1) === 10 && !expected.collapsed.at(-1);
+  const repeatStart = hasPrefix ? 1 : 0;
+  const repeatEnd = hasSuffix ? expected.tracks.length - 1 : expected.tracks.length;
+  const repeatedTracks = expected.collapsed.slice(repeatStart, repeatEnd);
+  return {
+    leading: hasPrefix,
+    trailing: hasSuffix && repeatedTracks.some((collapsed) => !collapsed),
+  };
+}
+
 async function saveLog(path, result) {
   await writeFile(resolve(evidenceDirectory, path), `${result.stdout ?? ''}${result.stderr ?? ''}`);
 }
@@ -634,6 +735,13 @@ function waitForLog(readLog, scene, runID) {
   throw new Error(`${scene.id}: Android/iOS runtime 결과 대기 시간이 초과되었습니다.\n${latest}`);
 }
 
+function supersededC114Result(log, runID) {
+  const assertion = log.split(/\r?\n/).find((line) =>
+    line.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID} `));
+  return assertion?.includes('report=status=-12 ')
+    && assertion.includes('op=eval status=0 ');
+}
+
 function verifyRuntimeLog(log, scene, runID) {
   const summary = `SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${scene.id} `;
   assert.ok(log.includes(summary), `${scene.id}: runtime summary가 없습니다.`);
@@ -686,6 +794,7 @@ function verifyRuntimeLog(log, scene, runID) {
     assert.ok(axisPass, `${scene.id}: ${axis} track-sizing pass가 없습니다.`);
     const finalStageTracks = axisPass.stages.at(-1).tracks;
     const finalTracks = finalStageTracks.filter(({ gutter }) => !gutter);
+    const boundaryGutters = autoFitBoundaryGutters(scene, expected);
     assert.deepEqual(finalTracks.map(({ collapsed }) => collapsed), expected.collapsed,
       `${scene.id}: ${axis} collapsed track 상태가 예상과 다릅니다.`);
     assert.equal(finalTracks.length, expected.tracks.length,
@@ -695,14 +804,19 @@ function verifyRuntimeLog(log, scene, runID) {
       `${scene.id}: ${axis} track ${index + 1} 크기 예상 ${expected.tracks[index]}, 실제 ${baseSize}`,
     ));
     if (scene.axes || scene.id.startsWith('auto-fill-two-track-')
-        || scene.id.startsWith('auto-fit-min-')) {
+        || scene.id.startsWith('auto-fit-min-') || boundaryGutters) {
       const allGutters = finalStageTracks.filter(({ gutter }) => gutter);
       const internalGutters = allGutters.slice(1, -1);
       assert.equal(internalGutters.length, finalTracks.length - 1,
         `${scene.id}: ${axis} 내부 gap 수가 track 사이 개수와 다릅니다.`);
       // A collapsed track collapses the gutters on both of its sides.
       internalGutters.forEach(({ baseSize }, index) => {
-        const expectedSize = expected.collapsed[index] || expected.collapsed[index + 1] ? 0 : 8;
+        const preservedBoundary = (index === 0 && boundaryGutters?.leading)
+          || (index === internalGutters.length - 1 && boundaryGutters?.trailing);
+        const expectedSize = preservedBoundary
+          ? (scene.gaps?.[axis] ?? 8)
+          : expected.collapsed[index] || expected.collapsed[index + 1]
+            ? 0 : (scene.gaps?.[axis] ?? 8);
         assert.ok(Math.abs(baseSize - expectedSize) <= 1 / 64,
           `${scene.id}: ${axis} gap ${index + 1} 크기 예상 ${expectedSize}, 실제 ${baseSize}`);
       });
@@ -748,6 +862,11 @@ function pixelCaptureArguments(scene, runID, platform) {
   ];
 }
 
+if (process.argv.includes('--list-scenes')) {
+  console.log(JSON.stringify({ sceneCount: scenes.length, sceneIDs: scenes.map(({ id }) => id) }, null, 2));
+  process.exit(0);
+}
+
 await mkdir(evidenceDirectory, { recursive: true });
 const observations = [];
 
@@ -762,17 +881,30 @@ if (target === 'ios-simulator') {
   await saveLog('install.log', command('xcrun', ['simctl', 'install', simulatorUDID, appPath]));
   const appSha256 = sha256(await readFile(resolve(appPath, 'SpinonBootstrap')));
   for (const [index, scene] of scenes.entries()) {
-    const runID = `${runPrefix}-${index}`;
-    const launch = command('xcrun', ['simctl', 'launch', '--terminate-running-process', simulatorUDID,
-      packageName, '--spinon-c114-grid-track-sizing', `--spinon-c114-grid-run-id=${runID}`,
-      `--spinon-c114-grid-scene=${scene.id}`,
-      ...pixelCaptureArguments(scene, runID, target)]);
-    await saveLog(`launch-${scene.id}.log`, launch);
-    const pid = Number(launch.stdout.match(/(?:^|:)\s+(\d+)\s*$/m)?.[1]);
-    assert.ok(Number.isInteger(pid) && pid > 0, `${scene.id}: launch PID가 없습니다.`);
-    const log = waitForLog(() => iosProcessLog(pid), scene, runID);
+    let runID = `${runPrefix}-${index}`;
+    let log = '';
+    let supersededAttempts = 0;
+    for (let attempt = 0; attempt <= 3; attempt++) {
+      runID = attempt === 0 ? `${runPrefix}-${index}` : `${runPrefix}-${index}-retry-${attempt}`;
+      const launch = command('xcrun', ['simctl', 'launch', '--terminate-running-process', simulatorUDID,
+        packageName, '--spinon-c114-grid-track-sizing', `--spinon-c114-grid-run-id=${runID}`,
+        `--spinon-c114-grid-scene=${scene.id}`,
+        ...pixelCaptureArguments(scene, runID, target)]);
+      await saveLog(`launch-${scene.id}${attempt === 0 ? '' : `-retry-${attempt}`}.log`, launch);
+      const pid = Number(launch.stdout.match(/(?:^|:)\s+(\d+)\s*$/m)?.[1]);
+      assert.ok(Number.isInteger(pid) && pid > 0, `${scene.id}: launch PID가 없습니다.`);
+      log = waitForLog(() => iosProcessLog(pid), scene, runID);
+      if (!supersededC114Result(log, runID)) break;
+      supersededAttempts++;
+      await writeFile(resolve(evidenceDirectory,
+        `runtime-${scene.id}-superseded-${attempt + 1}.log`), `${log}\n`);
+    }
+    assert.ok(!supersededC114Result(log, runID),
+      `${scene.id}: 새 host 재시도 후에도 eval 결과가 superseded 상태입니다.`);
     await writeFile(resolve(evidenceDirectory, `runtime-${scene.id}.log`), `${log}\n`);
-    observations.push(verifyRuntimeLog(log, scene, runID));
+    const observation = verifyRuntimeLog(log, scene, runID);
+    observation.supersededRetries = supersededAttempts;
+    observations.push(observation);
     await saveLog(`screenshot-${scene.id}.log`, command('xcrun', ['simctl', 'io', simulatorUDID,
       'screenshot', resolve(evidenceDirectory, `${scene.id}.png`)]));
   }
@@ -785,36 +917,49 @@ if (target === 'ios-simulator') {
   const apkBytes = await readFile(apkPath);
   await saveLog('install.log', adb(['install', '-r', apkPath]));
   for (const [index, scene] of scenes.entries()) {
-    const runID = `${runPrefix}-${index}`;
-    const launch = adb(['shell', 'am', 'start', '-S', '-f', '0x10008000', '-n', component,
-      '--ez', 'spinon_c114_grid_track_sizing', 'true',
-      '--es', 'spinon_c114_grid_scene', scene.id,
-      '--es', 'spinon_c114_grid_run_id', runID,
-      ...pixelCaptureArguments(scene, runID, target)]);
-    await saveLog(`launch-${scene.id}.log`, launch);
-    const deadline = Date.now() + 150_000;
-    let pid = null;
+    let runID = `${runPrefix}-${index}`;
     let log = '';
-    while (Date.now() < deadline) {
-      pid = Number(adb(['shell', 'pidof', packageName], { allowFailure: true })
-        .stdout.trim().split(/\s+/)[0]) || null;
-      if (pid) log = androidLog(adb, pid);
-      const summary = log.includes(`SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${scene.id} `);
-      const trace = log.includes('SPINON_C114_GRID_TRACE_CHUNK');
-      const draw = log.includes('SPINON_C0410_DRAW')
-        && log.includes(`presented boxes=${scene.boxCount}`);
-      const pixelSummary = !scene.pixelSamples
-        || log.includes(`SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=${runID}`);
-      const pixelError = log.includes(`SPINON_C114_GRID_PIXEL_MATRIX status=error run_id=${runID}`)
-        || log.includes(`SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=mismatch run_id=${runID}`);
-      if ((summary && trace && draw && pixelSummary)
-          || pixelError
-          || log.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID}`)
-          || log.includes('SPINON_C114_GRID_ARGUMENT_ERROR')) break;
-      sleep(300);
+    let supersededAttempts = 0;
+    for (let attempt = 0; attempt <= 3; attempt++) {
+      runID = attempt === 0 ? `${runPrefix}-${index}` : `${runPrefix}-${index}-retry-${attempt}`;
+      const launch = adb(['shell', 'am', 'start', '-S', '-f', '0x10008000', '-n', component,
+        '--ez', 'spinon_c114_grid_track_sizing', 'true',
+        '--es', 'spinon_c114_grid_scene', scene.id,
+        '--es', 'spinon_c114_grid_run_id', runID,
+        ...pixelCaptureArguments(scene, runID, target)]);
+      await saveLog(`launch-${scene.id}${attempt === 0 ? '' : `-retry-${attempt}`}.log`, launch);
+      const deadline = Date.now() + 150_000;
+      let pid = null;
+      log = '';
+      while (Date.now() < deadline) {
+        pid = Number(adb(['shell', 'pidof', packageName], { allowFailure: true })
+          .stdout.trim().split(/\s+/)[0]) || null;
+        if (pid) log = androidLog(adb, pid);
+        const summary = log.includes(`SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${scene.id} `);
+        const trace = log.includes('SPINON_C114_GRID_TRACE_CHUNK');
+        const draw = log.includes('SPINON_C0410_DRAW')
+          && log.includes(`presented boxes=${scene.boxCount}`);
+        const pixelSummary = !scene.pixelSamples
+          || log.includes(`SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=${runID}`);
+        const pixelError = log.includes(`SPINON_C114_GRID_PIXEL_MATRIX status=error run_id=${runID}`)
+          || log.includes(`SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=mismatch run_id=${runID}`);
+        if ((summary && trace && draw && pixelSummary)
+            || pixelError
+            || log.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID}`)
+            || log.includes('SPINON_C114_GRID_ARGUMENT_ERROR')) break;
+        sleep(300);
+      }
+      if (!supersededC114Result(log, runID)) break;
+      supersededAttempts++;
+      await writeFile(resolve(evidenceDirectory,
+        `runtime-${scene.id}-superseded-${attempt + 1}.log`), `${log}\n`);
     }
+    assert.ok(!supersededC114Result(log, runID),
+      `${scene.id}: 새 host 재시도 후에도 eval 결과가 superseded 상태입니다.`);
     await writeFile(resolve(evidenceDirectory, `runtime-${scene.id}.log`), `${log}\n`);
-    observations.push(verifyRuntimeLog(log, scene, runID));
+    const observation = verifyRuntimeLog(log, scene, runID);
+    observation.supersededRetries = supersededAttempts;
+    observations.push(observation);
     const screenshot = adb(['exec-out', 'screencap', '-p'], { encoding: null }).stdout;
     await writeFile(resolve(evidenceDirectory, `${scene.id}.png`), screenshot);
   }

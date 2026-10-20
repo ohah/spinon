@@ -22,6 +22,8 @@ For the same `minmax(40px, 1fr) 20px` fragment, 8px gap, `20px` prefix and `10px
 
 The same column/row split remains with fixed `40px 20px` pattern, prefix-only, suffix-only, no neighbor, empty/single/span-two/out-of-flow items, and `vertical-rl` writing mode. For the minimum-size boundaries 190px and 342px both axes report 2 and 4 repeats. A definite 200px preferred-size control reports 2 for `auto-fill` and `auto-fit` on both axes. Per-case values, including the actual empty/occupied tracks and item rectangles, are in the JSON.
 
+An additional Agent Browser probe places an item in the implicit track after the empty repeat range. At the same min-size-only inputs, Chrome reports `x=28px` for the prefix-only columns case and `y=28px` for rows: the leading gutter remains `8px` after the `20px` prefix. The [probe](./auto-fit-min-prefix-gap-probe.html), [observation JSON](./chrome155-auto-fit-min-prefix-gap-observation.json), and [screenshot](./chrome155-auto-fit-min-prefix-gap-probe.png) preserve this detail for the simulator gutter assertion.
+
 ## Normative comparison
 
 [CSS Grid Layout Module Level 1 §7.2.3.2](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#repeat-notation) says `auto-fit` uses the same repeat count as `auto-fill`; it collapses empty repeated tracks only after item placement. With the fixture's minimum-size basis and both explicit neighbors, the repeated minimum contribution is `38 + 76n`: 190px needs 2 repeats, 200px needs 3, and 342px needs 4. Thus the columns `auto-fit` result at 200px differs from both the paired `auto-fill` observation and the independent normative calculation.
