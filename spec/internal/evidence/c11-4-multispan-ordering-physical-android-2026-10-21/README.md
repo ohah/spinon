@@ -33,11 +33,30 @@ Chrome 155 Agent Browser 사전 관찰 입력은 [HTML fixture](../../../../test
 
 이 PixelCopy는 Spinon SurfaceView 출력 관찰이며 Android OS compositor 이후 화면 검증은 아니다. Overflow 장면은 border stroke를 그리지 않으므로 border 선 색을 비교하지 않는다.
 
+### 연결 후 재검증
+
+2026-10-21 사용자가 연결한 같은 `SM-S731N`에 현재 branch의 fixture APK를 다시 빌드·설치하고 네 장면을 재실행했다. Run ID는 `physc114-connected-1792515035407-01`부터 `-04`이며 4/4에서 frame assertion, 전체 node frame 수, track trace, intrinsic span stage, draw/present가 통과했다. 빌드 APK와 설치 APK SHA-256은 모두 `191f7457528f8691c3d0d03b1d8b28887a7172939a077b80e4d4b79fe4625224`다. [재실행 요약](android-connected-2026-10-21/result.json) · [기기·APK 정보](android-connected-2026-10-21/device.json) · 원본 log: [forward](android-connected-2026-10-21/runtime-competing-span2-forward.log), [reversed](android-connected-2026-10-21/runtime-competing-span2-reversed.log), [span-2 → 3](android-connected-2026-10-21/runtime-span2-before-span3.log), [span-3 → 2](android-connected-2026-10-21/runtime-span3-before-span2.log).
+
+## iOS Simulator
+
+fixture-test flag를 켠 현재 source build를 iPhone 17 Pro / iOS 26.2 Simulator(UDID `ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D`)에 설치해 네 장면을 실행했다. App executable SHA-256은 `e3b3ec01118a7f8901043061e11db96900a140c46ab7890c95262823fe87a47b`다. 런타임 전체 node frame과 draw/present가 4/4 통과했고 trace에서 span stage가 `[2]` 또는 `[2,3]` 순서로 처리됐다.
+
+| 장면 | 최종 Columns tracks (CSS px) | Span stage | 결과·원본 근거 |
+| --- | --- | --- | --- |
+| `competing-span2-forward` | `40, 60, 60, 0` | `[2]` | 통과 · [log](ios-simulator-c114-multispan-ordering-ios-simulator-20261020T165531254Z-8ec3cd96/runtime-competing-span2-forward.log) |
+| `competing-span2-reversed` | `40, 60, 60, 0` | `[2]` | 통과 · [log](ios-simulator-c114-multispan-ordering-ios-simulator-20261020T165531254Z-8ec3cd96/runtime-competing-span2-reversed.log) |
+| `span2-before-span3` | `53.333332, 73.333336, 73.333336, 0` | `[2,3]` | 통과 · [log](ios-simulator-c114-multispan-ordering-ios-simulator-20261020T165531254Z-8ec3cd96/runtime-span2-before-span3.log) |
+| `span3-before-span2` | `53.333332, 73.333336, 73.333336, 0` | `[2,3]` | 통과 · [log](ios-simulator-c114-multispan-ordering-ios-simulator-20261020T165531254Z-8ec3cd96/runtime-span3-before-span2.log) |
+
+Chrome 155의 used-track 기대값은 1/64 CSS px 양자화 수치와 비교했다. 최대 track 차이는 `0.010415 CSS px`, 최대 item-frame 차이는 `0.005207 CSS px`다. runner가 전체 node frame, track 수·크기, collapse, intrinsic span stage, trace chunk completeness, draw/present를 확인했다. [Simulator metadata와 앱 hash](ios-simulator-c114-multispan-ordering-ios-simulator-20261020T165531254Z-8ec3cd96/simulator.json) · [검증 결과 JSON](ios-simulator-c114-multispan-ordering-ios-simulator-20261020T165531254Z-8ec3cd96/result.json) · [화면 캡처](ios-simulator-c114-multispan-ordering-ios-simulator-20261020T165531254Z-8ec3cd96/span3-before-span2.png).
+
+이 실행은 iOS Simulator 근거이며 iPhone 실기기 또는 OS compositor 이후 표시 검증은 아니다.
+
 ## 구현 및 판정 범위
 
-고정 Chrome oracle은 `spinon-layout` 순수 layout 회귀와 Android 앱 fixture에서 사용한다. Rust test는 최종 used tracks, 모든 item의 Minimum/MinContent/MaxContent contribution, contribution item/span, span stage 순서, 각 item frame을 검사한다. Android 앱 fixture는 node frame과 1/64 CSS px tolerance를 확인하고 전체 trace를 원본 로그에 보존한다.
+고정 Chrome oracle은 `spinon-layout` 순수 layout 회귀와 Android/iOS 앱 fixture에서 사용한다. Rust test는 최종 used tracks, 모든 item의 Minimum/MinContent/MaxContent contribution, contribution item/span, span stage 순서, 각 item frame을 검사한다. Android 실기기 앱 fixture는 node frame과 1/64 CSS px tolerance를 확인하고 전체 trace를 보존한다. iOS Simulator runner는 전체 frame·track·collapse와 intrinsic span stage 순서, trace completeness, draw/present를 검사한다.
 
-이 결과는 제한된 고정 크기 direct Grid item의 multi-span ordering만 확인한다. mixed intrinsic/flexible/fixed track 조합, empty/hidden/nested/anonymous item, 다른 automatic minimum, cyclic percentage, arbitrary track grammar, WPT, 전체 CSS Grid 적합성은 검증하지 않았다. C11.4와 C11 상태는 미완료로 유지한다. 별도 [구현 검토](implementation-review-20.md)와 [최종 diff 검토](pr-diff-review-30.md)를 기록했다.
+이 결과는 제한된 고정 크기 direct Grid item의 multi-span ordering만 확인한다. mixed intrinsic/flexible/fixed track 조합, empty/hidden/nested/anonymous item, 다른 automatic minimum, cyclic percentage, arbitrary track grammar, WPT, 전체 CSS Grid 적합성은 검증하지 않았다. C11.4와 C11 상태는 미완료로 유지한다. [Rust/Android 구현 검토](implementation-review-20.md), [iOS fixture/Simulator 검토](ios-simulator-review-20.md), [최종 diff 검토](pr-diff-review-30.md)를 각각 기록했다.
 
 ## Fixture 빌드 경계
 
@@ -49,6 +68,8 @@ Chrome 155 Agent Browser 사전 관찰 입력은 [HTML fixture](../../../../test
 mise exec -- cargo test --locked -p spinon-layout grid_multispan_chrome_oracle_tests::chrome155_multi_span_contributions_are_independent_of_item_source_order
 mise exec -- cargo test --locked -p spinon-ffi --features c04-runtime-gpu-fixture-test multispan_ordering::tests::exposes_fixed_multispan_source_order_cases
 mise exec -- env SPINON_ENABLE_C04_RUNTIME_GPU=1 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 bun run build:android
+mise exec -- env SPINON_ENABLE_C04_RUNTIME_GPU=1 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 bun run build:ios-sim
+node tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs ios-simulator ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D --scene-id=competing-span2-forward,competing-span2-reversed,span2-before-span3,span3-before-span2
 ```
 
 기기 실행 때는 `adb -s <physical-device-serial>`로 대상 기기를 명시한다.
