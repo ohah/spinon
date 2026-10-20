@@ -1,0 +1,28 @@
+{
+  "commitImages": [
+    {
+      "alt": "Tailnet roadmap with PR #379 and C11.4 incomplete status",
+      "complete": true,
+      "naturalHeight": 633,
+      "naturalWidth": 1280,
+      "src": "https://raw.githubusercontent.com/ohah/spinon/3d29837892dd45c309fa73602290cea0066bedc6/spec/internal/evidence/c11-4-negative-tailnet-sync-2026-10-20/tailnet-roadmap-agent-browser-pass19.png"
+    },
+    {
+      "alt": "Android API 37 AVD negative tracks and root overflow",
+      "complete": true,
+      "naturalHeight": 2400,
+      "naturalWidth": 1080,
+      "src": "https://raw.githubusercontent.com/ohah/spinon/3d29837892dd45c309fa73602290cea0066bedc6/spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/android-avd-c114-negative-implicit-android-avd-20261020T071538016Z-47d39cb4/columns-negative-fixed-root-overflow.png"
+    },
+    {
+      "alt": "iPhone 17 Pro iOS 26.2 Simulator negative tracks and root overflow",
+      "complete": true,
+      "naturalHeight": 2622,
+      "naturalWidth": 1206,
+      "src": "https://raw.githubusercontent.com/ohah/spinon/3d29837892dd45c309fa73602290cea0066bedc6/spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/ios-simulator-c114-negative-implicit-ios-simulator-20261020T071834448Z-c69e61d9/columns-negative-fixed-root-overflow.png"
+    }
+  ],
+  "expectedImageCount": 3,
+  "title": "docs: record C11.4 negative Tailnet sync by ohah · Pull Request #381 · ohah/spinon",
+  "url": "https://github.com/ohah/spinon/pull/381"
+}

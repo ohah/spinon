@@ -31,8 +31,8 @@
 | 25 | contract fragment가 다른 heading으로 이동 | rendered internal contract에서 exact ID가 H2를 가리킨다. |
 | 26 | 공식 완료 수를 implementation slice 수로 오해 | rendered roadmap counter는 72/212이며 61/212가 아니다. |
 | 27 | 제한 implementation이 완료로 체크됨 | rendered STATUS C11.4 checkbox의 `checked=false`를 확인했다. |
-| 28 | screenshot URL이 있어도 image는 로드되지 않음 | Android 1080×2400 및 iOS 1206×2622 이미지의 `complete`와 natural size를 확인했다. |
+| 28 | screenshot URL이 있어도 image는 로드되지 않음 | Tailnet evidence의 Android 1080×2400/iOS 1206×2622와 PR 본문 3개 image의 `complete`/natural size를 확인했다. |
 | 29 | 30관점 review route가 생성되지 않음 | Agent Browser가 rendered review table 30행을 확인했다. |
-| 30 | browser cleanup이 다른 user session/process를 종료 | pass19 isolated session은 inactive/PID null, process match 0이며 shared PID 67317은 유지됐다. |
+| 30 | browser cleanup이 다른 user session/process를 종료 | Tailnet과 PR 확인용 isolated session 모두 inactive/PID null, process match 0이며 shared PID 67317은 유지됐다. |
 
 Tailnet 문서 화면과 simulator capture는 별개다. runtime 결과의 hardware-device, full WPT, border stroke 또는 compositor-after 범위는 이번 sync로 확대하지 않는다.
