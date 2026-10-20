@@ -1,0 +1,47 @@
+{
+  "pass": "pass24",
+  "browser": "Agent Browser",
+  "session": "spinon-tailnet-c114-pass24",
+  "terminal_browser_used": false,
+  "pages": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "verified": [
+        "C11.4 Ahem text intrinsic 실기기 확인 note rendered",
+        "note states C11.4 and WPT remain incomplete"
+      ],
+      "screenshot": "tailnet-roadmap-agent-browser-pass24.png"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "sidebar_links": 105,
+      "c114_intrinsic_track_sizing_checked": false,
+      "screenshot": "tailnet-status-agent-browser-pass24.png"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-grid-track-sizing.html",
+      "title": "C11.4 · CSS Grid track sizing 계획 - 스피논 문서",
+      "sidebar_links": 108,
+      "physical_android_followup_rendered": true,
+      "screenshot": "tailnet-plan-agent-browser-pass24.png"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-text-intrinsic-physical-android-2026-10-21/README.html",
+      "title": "C11.4 text intrinsic matrix · Android 실기기 - 스피논 문서",
+      "sidebar_links": 95,
+      "text_matrix_10_of_10_rendered": true,
+      "images_loaded": [
+        { "alt": "Samsung 실기기 min-content text scene", "natural_width": 1080 },
+        { "alt": "Samsung 실기기 break-all overflow scene", "natural_width": 1080 }
+      ],
+      "screenshot": "tailnet-evidence-agent-browser-pass24.png"
+    }
+  ],
+  "console_errors": [],
+  "closed_after_verification": true,
+  "session_active_after_close": false,
+  "agent_browser_or_chrome_browser_process_after_close": false,
+  "tailnet_server_pid_1191_still_listening": true
+}
