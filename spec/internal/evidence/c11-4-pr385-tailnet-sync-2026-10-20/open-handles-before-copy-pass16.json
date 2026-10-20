@@ -1,0 +1,19 @@
+{
+  "pass": "pass16",
+  "preview_root_relative": "SpinonPreview",
+  "checked_path_count": 90,
+  "open_selected_path_count": 1,
+  "open_selected_paths": [
+    "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/fixture-artifact-boundary.html"
+  ],
+  "descriptors": [
+    {
+      "pid": "1191",
+      "command": "node",
+      "fd": "633",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/fixture-artifact-boundary.html"
+    }
+  ],
+  "lsof_exit_status": 1,
+  "replacement_method": "write a same-directory temporary file and atomically rename it over the target"
+}
