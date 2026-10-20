@@ -186,3 +186,7 @@ Chrome 155 고정 30-case fixture에서 definite minimum-size 200px의 `auto-fil
 별도 [positive implicit track 계획](./c11-4-positive-implicit-track-sizing.md)은 `RuntimeBlockFlexGridTrackSizingV1`에서 `grid-auto-rows/columns` typed 목록을 positive implicit track에 순환 적용한다. [PR #375](https://github.com/ohah/spinon/pull/375)은 merge SHA `e01f0dfc386e5d77ad0cdf8fb3e3b11df40696f8`로 Rebase and merge했다. Chrome 155 20-case, Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 각 73-scene matrix와 기본/opt-in fixture artifact 경계를 근거에 기록했다.
 
 negative implicit line, auto-repeat과 typed 목록 결합, nested/anonymous/out-of-flow item, 전체 auto-repeat placement, WPT 및 전체 C11.4는 미완료다. C11.4 checkbox와 공식 완료 수를 바꾸지 않는다. GitHub required status check은 설정되지 않았고, 제한 C11.4 profile 외의 CSS 지원을 주장하지 않는다.
+
+### 2026-10-20 auto-repeat 뒤 negative line 결합 계획
+
+Negative implicit track을 확장된 auto-repeat explicit grid와 결합하는 단계는 별도 [집중 계획](./c11-4-auto-repeat-negative-lines.md)과 [18-case Chrome 155·독립 규범 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-negative-lines-precomparison-2026-10-20/README.md)로 추적한다. 구현 후보는 repeat count 계산 전 `container.*.len()`으로 negative line을 normalize하는 순서 경계다. 아직 앱/runtime 결합 검증 전이며 C11.4 check와 완료 수를 변경하지 않는다.

@@ -1,0 +1,119 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 auto-repeat with negative grid lines precomparison</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 12px; color: #152238; background: #f7f9fc; font: 12px/1.2 system-ui, sans-serif; }
+  h1 { margin: 0 0 12px; font-size: 16px; }
+  #matrix { display: grid; grid-template-columns: repeat(2, minmax(240px, max-content)); gap: 12px; align-items: start; }
+  .case { padding: 6px; border: 1px solid #94a3b8; background: white; }
+  .label { margin-bottom: 5px; font-size: 10px; }
+  .grid { display: grid; outline: 1px solid #111827; background: #e2e8f0; }
+  .item { min-width: 0; min-height: 0; align-self: stretch; justify-self: stretch; overflow: hidden; }
+  .item:nth-child(1) { background: #e63946; }
+  .item:nth-child(2) { background: #2a9d8f; }
+  .item:nth-child(3) { background: #457b9d; }
+  .item:nth-child(4) { background: #f4a261; }
+  .item:nth-child(5) { background: #8d5fd3; }
+  .item:nth-child(6) { background: #e76f51; }
+</style>
+<h1>C11.4 auto-repeat and negative line interaction</h1>
+<main id="matrix"></main>
+<script>
+  const columnFill = "20px repeat(auto-fill, minmax(40px, 1fr)) 10px";
+  const columnFit = "20px repeat(auto-fit, minmax(40px, 1fr)) 10px";
+  const rowFill = "14px repeat(auto-fill, minmax(30px, 1fr)) 6px";
+  const rowFit = "14px repeat(auto-fit, minmax(30px, 1fr)) 6px";
+  const cases = [
+    { id: "columns-fill-one-leading", columns: columnFill, rows: "24px", width: "200px", height: "24px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ c: "-7 / -6" }] },
+    { id: "columns-fill-two-repetitions", columns: columnFill, rows: "24px", width: "134px", height: "24px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ c: "-6 / -5" }] },
+    { id: "columns-fill-four-repetitions", columns: columnFill, rows: "24px", width: "230px", height: "24px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ c: "-8 / -7" }] },
+    { id: "columns-fit-one-leading-empty-repeat", columns: columnFit, rows: "24px", width: "200px", height: "24px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ c: "-7 / -6" }] },
+    { id: "columns-fill-two-leading-cycle", columns: columnFill, rows: "24px", width: "200px", height: "24px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ c: "-8 / -6" }] },
+    { id: "columns-fill-leading-span-prefix", columns: columnFill, rows: "24px", width: "200px", height: "24px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ c: "-8 / -5" }] },
+    { id: "columns-fit-negative-and-repeat-occupied", columns: columnFit, rows: "24px", width: "200px", height: "24px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ c: "-7 / -6" }, { c: "-3 / -2" }] },
+    { id: "columns-fit-third-repeat-only", columns: columnFit, rows: "24px", width: "200px", height: "24px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ c: "-3 / -2" }] },
+    { id: "columns-fill-negative-positive-cycle", columns: columnFill, rows: "24px", width: "200px", height: "24px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ c: "-8 / -7" }, { c: "6 / 7" }] },
+    { id: "columns-fill-reversed-negative-lines", columns: columnFill, rows: "24px", width: "200px", height: "24px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ c: "-5 / -7" }] },
+    { id: "columns-fill-repeat-only-leading", columns: "repeat(auto-fill, minmax(40px, 1fr))", rows: "24px", width: "200px", height: "24px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ c: "-6 / -5" }] },
+    { id: "rows-fill-one-leading", columns: "24px", rows: rowFill, width: "24px", height: "180px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ r: "-8 / -7" }] },
+    { id: "rows-fill-three-repetitions", columns: "24px", rows: rowFill, width: "24px", height: "134px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ r: "-7 / -6" }] },
+    { id: "rows-fill-five-repetitions", columns: "24px", rows: rowFill, width: "24px", height: "206px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ r: "-9 / -8" }] },
+    { id: "rows-fit-one-leading-empty-repeat", columns: "24px", rows: rowFit, width: "24px", height: "180px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ r: "-8 / -7" }] },
+    { id: "rows-fill-two-leading-cycle", columns: "24px", rows: rowFill, width: "24px", height: "180px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ r: "-9 / -7" }] },
+    { id: "both-axes-fit-negative-leading", columns: columnFit, rows: rowFit, width: "200px", height: "180px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ c: "-7 / -6", r: "-8 / -7" }] },
+    { id: "both-axes-fill-independent-cycles", columns: columnFill, rows: rowFill, width: "200px", height: "180px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ c: "-8 / -6", r: "-9 / -7" }] },
+  ];
+
+  const matrix = document.querySelector("#matrix");
+  for (const testCase of cases) {
+    const section = document.createElement("section");
+    section.className = "case";
+    section.dataset.case = testCase.id;
+    section.dataset.columnsTemplate = testCase.columns;
+    section.dataset.rowsTemplate = testCase.rows;
+    section.dataset.width = testCase.width;
+    section.dataset.height = testCase.height;
+    section.dataset.autoColumns = testCase.autoColumns;
+    section.dataset.autoRows = testCase.autoRows;
+    const label = document.createElement("div");
+    label.className = "label";
+    label.textContent = `${testCase.id} · columns=${testCase.columns} · rows=${testCase.rows}`;
+    const grid = document.createElement("div");
+    grid.className = "grid";
+    grid.dataset.grid = testCase.id;
+    grid.style.gridTemplateColumns = testCase.columns;
+    grid.style.gridTemplateRows = testCase.rows;
+    grid.style.gridAutoColumns = testCase.autoColumns;
+    grid.style.gridAutoRows = testCase.autoRows;
+    grid.style.width = testCase.width;
+    grid.style.height = testCase.height;
+    grid.style.columnGap = "8px";
+    grid.style.rowGap = "6px";
+    section.append(label);
+    for (const [index, placement] of testCase.items.entries()) {
+      const item = document.createElement("div");
+      item.className = "item";
+      item.dataset.item = `${testCase.id}-${index + 1}`;
+      item.textContent = "X";
+      if (placement.c) item.style.gridColumn = placement.c;
+      if (placement.r) item.style.gridRow = placement.r;
+      grid.append(item);
+    }
+    section.append(grid);
+    matrix.append(section);
+  }
+
+  window.collectAutoRepeatNegativeLineCases = () => [...document.querySelectorAll(".case")].map(section => {
+    const grid = section.querySelector(".grid");
+    const rect = element => {
+      const box = element.getBoundingClientRect();
+      return { x: box.x, y: box.y, width: box.width, height: box.height };
+    };
+    const style = getComputedStyle(grid);
+    return {
+      id: section.dataset.case,
+      input: {
+        gridTemplateColumns: section.dataset.columnsTemplate,
+        gridTemplateRows: section.dataset.rowsTemplate,
+        width: section.dataset.width,
+        height: section.dataset.height,
+        gridAutoColumns: section.dataset.autoColumns,
+        gridAutoRows: section.dataset.autoRows,
+      },
+      grid: rect(grid),
+      gridTemplateColumns: style.gridTemplateColumns,
+      gridTemplateRows: style.gridTemplateRows,
+      gridAutoColumns: style.gridAutoColumns,
+      gridAutoRows: style.gridAutoRows,
+      columnGap: style.columnGap,
+      rowGap: style.rowGap,
+      items: [...grid.querySelectorAll(".item")].map(item => ({
+        id: item.dataset.item,
+        gridColumn: getComputedStyle(item).gridColumn,
+        gridRow: getComputedStyle(item).gridRow,
+        rect: rect(item),
+      })),
+    };
+  });
+</script>
