@@ -43,7 +43,7 @@ selected root는 142개 source/destination mapping, staging file 3,434개다. in
 
 ![Tailnet 공식 상태에서 C11.4 미완료 확인](./tailnet-status-agent-browser-pass19.png)
 
-Agent Browser 격리 session을 닫은 뒤 `active=false`, `pid=null`, session/profile process match 0을 확인했다. 기존 공유 Agent Browser PID 67317과 preview server PID 1191은 유지했다. session 결과는 [browser close](./browser-close-pass19.json)에 있다. 추가 DOM 결과: [roadmap](./browser-roadmap-pass19.json), [counter](./browser-roadmap-count-pass19.json), [STATUS](./browser-status-pass19.json), [plan](./browser-plan-pass19.json), [contract fragment](./browser-contract-pass19.json), [evidence image loads](./browser-evidence-pass19.json), [30-row review](./browser-review-pass19.json).
+PR #381 본문에는 Tailnet roadmap screenshot과 Android/iOS Simulator scene을 첨부했다. 별도 Agent Browser session에서 세 이미지가 모두 로드됐고 크기는 각각 1280×633, 1080×2400, 1206×2622다([PR image check](./pr381-image-check-pass19.json)). 그 session도 종료해 `active=false`, `pid=null`, process match 0을 확인했다([PR browser close](./browser-close-pr381-pass19.json)). 두 세션 종료 후 기존 공유 Agent Browser PID 67317과 preview server PID 1191은 유지됐다. 첫 session 결과는 [browser close](./browser-close-pass19.json)에 있다. 추가 DOM 결과: [roadmap](./browser-roadmap-pass19.json), [counter](./browser-roadmap-count-pass19.json), [STATUS](./browser-status-pass19.json), [plan](./browser-plan-pass19.json), [contract fragment](./browser-contract-pass19.json), [evidence image loads](./browser-evidence-pass19.json), [30-row review](./browser-review-pass19.json).
 
 ## 남은 범위
 

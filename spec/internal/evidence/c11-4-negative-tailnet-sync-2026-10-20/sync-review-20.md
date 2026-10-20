@@ -23,6 +23,6 @@
 | 17 | 파일이 target에 있으나 HTTPS server가 구버전을 제공 | Tailnet HTTP 200·bytes·SHA-256이 2,841/2,841 일치한다. |
 | 18 | roadmap link 또는 contract fragment가 틀림 | Agent Browser에서 계획/계약/evidence route를 열고 negative contract `anchor_found=true`를 확인했다. |
 | 19 | 문서 screenshot이 경로만 있고 image는 404 | Android 1080×2400 및 iOS 1206×2622 PNG가 `complete=true`로 로드됐다. |
-| 20 | browser/preview/tmux 정리로 기존 사용자 상태 손실 | 격리 Agent Browser session만 종료했다. 공유 PID 67317, preview PID 1191은 유지했고 tmux를 건드리지 않았다. |
+| 20 | browser/preview/tmux 정리로 기존 사용자 상태 손실 | 두 격리 Agent Browser session을 각각 닫고 process match 0을 확인했다. 공유 PID 67317, preview PID 1191은 유지했고 tmux를 건드리지 않았다. |
 
 이 검토는 pass19 선택 동기화 근거에 한정한다. status counter는 72/212이고 C11.4는 미완료이며 sync는 GitHub Pages 배포가 아니다.
