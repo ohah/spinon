@@ -6,9 +6,10 @@ use spinon_layout::{
     TextParagraphDirection, WhiteSpaceMode, WordBreakMode,
 };
 use spinon_style::{
-    ComputedCssDimension, ComputedCssGridTrackLengthPercentage, ComputedCssGridTrackSize,
-    ComputedCssMath, ComputedCssMaxSize, ComputedCssSpacingValue, ComputedElementStyle,
-    ComputedStyleProfile, ComputedStyleSnapshot,
+    ComputedCssDimension, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
+    ComputedCssGridAutoRows, ComputedCssGridPlacement, ComputedCssGridTrackLengthPercentage,
+    ComputedCssGridTrackSize, ComputedCssMath, ComputedCssMaxSize, ComputedCssSpacingValue,
+    ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
 };
 
 use super::super::{RuntimeLayoutFailure, layout_failure};
@@ -35,6 +36,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         ));
     }
     if let Some(input) = prepare_typed_auto_repeat_text(snapshot, root, styles)? {
+        return Ok(Some(input));
+    }
+    if let Some(input) = prepare_multispan_text(snapshot, root, styles)? {
         return Ok(Some(input));
     }
 
@@ -172,6 +176,304 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         paragraph_styles: BTreeMap::from([(item.id(), ahem_paragraph_style(case))]),
         engine,
     }))
+}
+
+#[derive(Clone, Copy)]
+struct MultispanTextItem {
+    text: &'static str,
+    column_start: u8,
+    column_span: u8,
+    row: u8,
+}
+
+#[derive(Clone, Copy)]
+struct MultispanTextScene {
+    id: &'static str,
+    items: &'static [MultispanTextItem],
+}
+
+const MULTISPAN_TEXT_A: MultispanTextItem = MultispanTextItem {
+    text: "XX XXXXX",
+    column_start: 1,
+    column_span: 2,
+    row: 1,
+};
+const MULTISPAN_TEXT_B: MultispanTextItem = MultispanTextItem {
+    text: "XXXX XXXXXXX",
+    column_start: 2,
+    column_span: 2,
+    row: 2,
+};
+const MULTISPAN_TEXT_C: MultispanTextItem = MultispanTextItem {
+    text: "XXXXXXXXXXXXXXXXXX",
+    column_start: 1,
+    column_span: 3,
+    row: 3,
+};
+
+const MULTISPAN_TEXT_SCENES: [MultispanTextScene; 4] = [
+    MultispanTextScene {
+        id: "text-span2-forward",
+        items: &[MULTISPAN_TEXT_A, MULTISPAN_TEXT_B],
+    },
+    MultispanTextScene {
+        id: "text-span2-reversed",
+        items: &[MULTISPAN_TEXT_B, MULTISPAN_TEXT_A],
+    },
+    MultispanTextScene {
+        id: "text-span2-before-span3",
+        items: &[MULTISPAN_TEXT_A, MULTISPAN_TEXT_B, MULTISPAN_TEXT_C],
+    },
+    MultispanTextScene {
+        id: "text-span3-before-span2",
+        items: &[MULTISPAN_TEXT_C, MULTISPAN_TEXT_B, MULTISPAN_TEXT_A],
+    },
+];
+
+fn prepare_multispan_text(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    styles: &ComputedStyleSnapshot,
+) -> Result<Option<super::C11_4TextInput>, RuntimeLayoutFailure> {
+    let (root_tag, root_id) = element_identity(snapshot, root)?;
+    let Some(scene_id) = root_id
+        .strip_prefix("c114-")
+        .and_then(|id| id.strip_suffix("-grid"))
+    else {
+        return Ok(None);
+    };
+    let Some(scene) = MULTISPAN_TEXT_SCENES
+        .iter()
+        .find(|scene| scene.id == scene_id)
+        .copied()
+    else {
+        return Ok(None);
+    };
+    if root_tag != "div" {
+        return Err(layout_failure(
+            "unsupported_c114_text_multispan_root",
+            Some(root.id().get()),
+            Some(root_tag),
+        ));
+    }
+
+    let item_handles = snapshot
+        .children(root)
+        .ok_or_else(|| layout_failure("missing_node", Some(root.id().get()), None))?
+        .collect::<Vec<_>>();
+    if item_handles.len() != scene.items.len() {
+        return Err(layout_failure(
+            "unsupported_c114_text_multispan_items",
+            Some(root.id().get()),
+            Some(format!(
+                "expected={} actual={}",
+                scene.items.len(),
+                item_handles.len()
+            )),
+        ));
+    }
+
+    let grid_style = styles
+        .elements
+        .iter()
+        .find(|style| style.node_id == root.id())
+        .ok_or_else(|| layout_failure("missing_computed_style", Some(root.id().get()), None))?;
+    validate_multispan_text_grid_style(grid_style, scene.id)?;
+
+    let mut paragraph_styles = BTreeMap::new();
+    for (index, (item, expected)) in item_handles.iter().zip(scene.items).enumerate() {
+        let (item_tag, item_id) = element_identity(snapshot, *item)?;
+        let expected_item_id = format!("c114-{scene_id}-item-{}", index + 1);
+        if item_tag != "div"
+            || item_id != expected_item_id
+            || snapshot.parent(*item) != Some(HostParent::Node(root))
+        {
+            return Err(layout_failure(
+                "unsupported_c114_text_multispan_item",
+                Some(item.id().get()),
+                Some(format!(
+                    "expected={expected_item_id} actual={item_tag}#{item_id}"
+                )),
+            ));
+        }
+
+        let text_nodes = snapshot
+            .children(*item)
+            .ok_or_else(|| layout_failure("missing_node", Some(item.id().get()), None))?
+            .collect::<Vec<_>>();
+        if text_nodes.len() != 1 {
+            return Err(layout_failure(
+                "unsupported_c114_text_multispan_topology",
+                Some(item.id().get()),
+                Some(format!(
+                    "expected one direct text child, got {}",
+                    text_nodes.len()
+                )),
+            ));
+        }
+        let text_node = text_nodes[0];
+        let text = snapshot
+            .node(text_node)
+            .and_then(|node| match node.kind() {
+                HostNodeKind::Text(text) => Some(text.to_string_lossy()),
+                HostNodeKind::Element(_) => None,
+            })
+            .ok_or_else(|| {
+                layout_failure(
+                    "unsupported_c114_text_multispan_topology",
+                    Some(text_node.id().get()),
+                    Some("direct text child required".to_owned()),
+                )
+            })?;
+        let item_style = styles
+            .elements
+            .iter()
+            .find(|style| style.node_id == item.id())
+            .ok_or_else(|| layout_failure("missing_computed_style", Some(item.id().get()), None))?;
+        let Some(placement) = item_style.grid_item_placement.as_ref() else {
+            return Err(layout_failure(
+                "unsupported_c114_text_multispan_case",
+                Some(item.id().get()),
+                Some("computed grid placement required".to_owned()),
+            ));
+        };
+        if text != expected.text
+            || snapshot.parent(text_node) != Some(HostParent::Node(*item))
+            || placement.column_start
+                != ComputedCssGridPlacement::Line(expected.column_start as i32)
+            || placement.column_end != ComputedCssGridPlacement::Span(expected.column_span as i32)
+            || placement.row_start != ComputedCssGridPlacement::Line(expected.row as i32)
+            || placement.row_end != ComputedCssGridPlacement::Auto
+        {
+            return Err(layout_failure(
+                "unsupported_c114_text_multispan_case",
+                Some(item.id().get()),
+                Some(format!(
+                    "{} item {} topology, text, or placement differs",
+                    scene.id,
+                    index + 1
+                )),
+            ));
+        }
+        validate_multispan_text_item_style(item_style)?;
+        paragraph_styles.insert(item.id(), ahem_paragraph_style(&TEXT_CASES[0]));
+    }
+
+    let mut engine = TextLayoutEngine::new_without_system_fonts();
+    engine.register_font("Ahem", AHEM).map_err(|error| {
+        layout_failure(
+            "c114_text_multispan_font_registration",
+            Some(root.id().get()),
+            Some(error.to_string()),
+        )
+    })?;
+    Ok(Some(super::C11_4TextInput {
+        paragraph_styles,
+        engine,
+    }))
+}
+
+fn validate_multispan_text_grid_style(
+    style: &ComputedElementStyle,
+    scene_id: &str,
+) -> Result<(), RuntimeLayoutFailure> {
+    for (name, expected) in [
+        ("display", "grid"),
+        ("box-sizing", "border-box"),
+        ("align-items", "start"),
+        ("align-content", "start"),
+        ("justify-content", "start"),
+    ] {
+        require_property(style, name, expected)?;
+    }
+    let grid = style.grid_layout.as_ref().ok_or_else(|| {
+        layout_failure(
+            "missing_c114_text_grid_layout",
+            Some(style.node_id.get()),
+            Some(scene_id.to_owned()),
+        )
+    })?;
+    if style.layout_dimensions.width != ComputedCssDimension::LengthPx(220.0)
+        || style.layout_dimensions.height != ComputedCssDimension::LengthPx(60.0)
+        || style.layout_dimensions.min_width != ComputedCssDimension::Auto
+        || style.layout_dimensions.min_height != ComputedCssDimension::Auto
+        || style.layout_dimensions.max_width != ComputedCssMaxSize::None
+        || style.layout_dimensions.max_height != ComputedCssMaxSize::None
+        || style.layout_dimensions.flex_basis != ComputedCssDimension::Auto
+        || !zero_edges(style.layout_spacing.margin)
+        || !zero_edges(style.layout_spacing.padding)
+        || !zero_spacing(style.layout_spacing.row_gap)
+        || !zero_spacing(style.layout_spacing.column_gap)
+        || style.layout_border != Default::default()
+        || grid.columns != vec![ComputedCssGridTrackSize::MinContent; 4]
+        || grid.rows != vec![ComputedCssGridTrackSize::LengthPx(20.0); 3]
+        || grid.columns_auto_repeat.is_some()
+        || grid.rows_auto_repeat.is_some()
+        || grid.template_areas.is_some()
+        || grid.auto_flow != ComputedCssGridAutoFlow::Row
+        || grid.auto_rows != ComputedCssGridAutoRows::Auto
+        || grid.auto_columns != ComputedCssGridAutoColumns::Auto
+        || grid.columns_line_names.len() != 5
+        || grid.rows_line_names.len() != 4
+        || grid
+            .columns_line_names
+            .iter()
+            .any(|names| !names.is_empty())
+        || grid.rows_line_names.iter().any(|names| !names.is_empty())
+    {
+        return Err(layout_failure(
+            "unsupported_c114_text_grid_style",
+            Some(style.node_id.get()),
+            Some(format!(
+                "{scene_id}: fixed 4x3 min-content text matrix required"
+            )),
+        ));
+    }
+    Ok(())
+}
+
+fn validate_multispan_text_item_style(
+    style: &ComputedElementStyle,
+) -> Result<(), RuntimeLayoutFailure> {
+    if (style.font_size_css_px - 10.0).abs() > f32::EPSILON {
+        return unsupported_text_style(style.node_id.get(), "multi-span font-size");
+    }
+    for (name, expected) in [
+        ("display", "block"),
+        ("box-sizing", "border-box"),
+        ("font-family", "Ahem"),
+        ("font-size", "10px"),
+        ("font-weight", "400"),
+        ("font-style", "normal"),
+        ("line-height", "10px"),
+        ("white-space-collapse", "collapse"),
+        ("text-wrap-mode", "wrap"),
+        ("word-break", "normal"),
+        ("direction", "ltr"),
+        ("line-break", "auto"),
+        ("text-align", "start"),
+        ("overflow-wrap", "normal"),
+        ("text-transform", "none"),
+        ("writing-mode", "horizontal-tb"),
+        ("letter-spacing", "normal"),
+        ("word-spacing", "0px"),
+        ("text-indent", "0px"),
+    ] {
+        require_property(style, name, expected)?;
+    }
+    if style.layout_dimensions.width != ComputedCssDimension::Auto
+        || style.layout_dimensions.height != ComputedCssDimension::Auto
+        || style.layout_dimensions.min_width != ComputedCssDimension::Auto
+        || style.layout_dimensions.min_height != ComputedCssDimension::Auto
+        || style.layout_dimensions.max_width != ComputedCssMaxSize::None
+        || style.layout_dimensions.max_height != ComputedCssMaxSize::None
+        || !zero_edges(style.layout_spacing.margin)
+        || !zero_edges(style.layout_spacing.padding)
+        || style.layout_border != Default::default()
+    {
+        return unsupported_text_style(style.node_id.get(), "multi-span item box geometry");
+    }
+    Ok(())
 }
 
 fn prepare_typed_auto_repeat_text(

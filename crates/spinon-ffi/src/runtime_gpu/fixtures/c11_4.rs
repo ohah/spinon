@@ -8,6 +8,8 @@ mod implicit_intrinsic_tracks;
 mod multispan_ordering;
 #[path = "c11_4/negative_implicit_tracks.rs"]
 mod negative_implicit_tracks;
+#[path = "c11_4/text_multispan.rs"]
+mod text_multispan;
 
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
 #[path = "c11_4/trace_report.rs"]
@@ -1009,6 +1011,9 @@ const C11_4_IMAGE_FIXED_GUTTER_SCENES: [ImageSceneWithRowGap; 2] = [
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     scene_id: &str,
 ) -> Result<Cow<'static, str>, String> {
+    if let Some(source) = text_multispan::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = multispan_ordering::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
@@ -1180,6 +1185,23 @@ mod tests {
             assert!(
                 source.contains("grid-template-columns:40px 60px;grid-template-rows:10px 10px")
             );
+        }
+        for (scene_id, expected_items) in [
+            ("text-span2-forward", 2),
+            ("text-span2-reversed", 2),
+            ("text-span2-before-span3", 3),
+            ("text-span3-before-span2", 3),
+        ] {
+            let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
+            assert!(source.len() < 4 * 1024);
+            assert!(source.contains(&format!("sceneId:{scene_id:?}")));
+            assert!(source.contains("grid-template-columns:repeat(4,min-content)"));
+            assert!(source.contains("grid-template-rows:repeat(3,20px)"));
+            assert_eq!(
+                source.matches("document.createTextNode(").count(),
+                expected_items
+            );
+            assert_eq!(source.matches("nodeIds.push(").count(), expected_items);
         }
         assert!(c11_4_grid_track_sizing_runtime_source("unknown;throw 1").is_err());
     }
