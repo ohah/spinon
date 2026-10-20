@@ -1,0 +1,25 @@
+{
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "target_found": true,
+  "text": "2026-10-20 C11.4 negative implicit track sizing · PR #379 병합: RuntimeBlockFlexGridTrackSizingV1에서 두 축의 numeric negative line과 leading implicit track, 역방향 grid-auto-rows/columns list cycle, signed sparse/dense auto-placement를 제한 지원합니다. Chrome 155 Agent Browser와 W3C 규범 기반 기대값 33/33, Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator 각 106/106 scene의 frame·trace·draw/present를 확인했습니다. Overflow surface는 root interior/edge background와 바깥 item/tail을 각 5/5 exact로 읽었으며 CSS border stroke는 검사하지 않았습니다. auto-repeat과 negative line의 결합, 전체 WPT/CSS Grid, 실기기 및 compositor 이후 검증은 남아 있습니다. C11.4 checkbox와 공식 완료 수는 바꾸지 않습니다. 계획 · 내부 계약 · 실행 근거 · PR #379.",
+  "links": [
+    {
+      "text": "계획",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-negative-implicit-track-sizing.html"
+    },
+    {
+      "text": "내부 계약",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/0059-c11-grid-layout.html#c114-negative-implicit-track-sizing"
+    },
+    {
+      "text": "실행 근거",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/README.html"
+    },
+    {
+      "text": "PR #379",
+      "href": "https://github.com/ohah/spinon/pull/379"
+    }
+  ],
+  "c114CheckboxUnchecked": false
+}
