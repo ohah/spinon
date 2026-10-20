@@ -9,7 +9,7 @@ crate-type = ["staticlib", "rlib"]
 
 [features]
 r10-experiment = ["dep:spinon-style-layout-spike"]
-c04-runtime-gpu = ["dep:spinon-render-wgpu"]
+c04-runtime-gpu = ["dep:spinon-core", "dep:spinon-render-wgpu"]
 c04-runtime-ua-cascade-fixture-test = []
 c04-12-root-html-fixture-test = ["dep:spinon-core", "dep:spinon-render-wgpu"]
 c04-12-root-html-block-paint-fixture-test = [

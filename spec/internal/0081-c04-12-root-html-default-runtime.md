@@ -1,7 +1,7 @@
 # 0081 · C04.12 기본 root HTML runtime 렌더링
 
 **계약 버전:** `0.1.0-draft` · 출시 전 숫자 버전 고정<br>
-**상태:** 일반 root HTML GPU runtime의 제한 Block/inline-text slice 구현 중 · C04.12/C15/C16/C19 미완료 · 공개 API 아님
+**상태:** 일반 root HTML GPU runtime의 제한 Block/inline-text 및 초기 page-scale mapping slice 구현 중 · C04.12/C15/C16/C19 미완료 · 공개 API 아님
 
 ## 목적과 경계
 
@@ -14,6 +14,7 @@
 - C ABI 입력은 NUL 종료가 필요 없는 UTF-8 bytes이며 최대 길이는 1,048,576 bytes다. malformed UTF-8, 빈/과대 입력, HTML parse/session 생성 실패는 host 생성 실패로 반환한다. source는 호출 중 읽히며 parsed document가 입력 buffer 수명에 의존하지 않는다.
 - root element는 HTML namespace의 `html`이어야 하며 HostDocument의 generation/document/render-tree revision이 cascade, layout, raster, scene key와 일치해야 한다.
 - viewport와 device scale factor는 runtime environment API로 전달한다. Android/iOS 데모는 `320×240 CSS px`를 사용하고, OS light/dark scheme 변경 때 환경 revision과 계산 scene을 갱신한다. 캡처한 화면은 meta viewport, meta color-scheme, CSS `color-scheme` 및 `prefers-color-scheme` cascade를 같은 parsed source에서 확인한다.
+- `<meta name="viewport">`에서 얻은 layout viewport와 visual viewport를 분리해 유지한다. 이 기본 root HTML GPU host는 환경 snapshot의 `device_scale_factor`와 초기 `page_scale`을 environment revision에 묶어 root HTML render scene에 적용한다. scene revision이 snapshot과 다르거나 mapping이 없으면 scene publish를 거부한다. CSS layout, media query, scene CSS viewport와 hit-test frame은 CSS px로 남는다.
 - 화면 text는 Parley/Fontique Android system-font 또는 Apple CoreText backend를 사용한다. 테스트 fixture의 Ahem/Noto payload를 기본 artifact로 복사하지 않는다. 실제 선택 family와 glyph metrics는 대상 OS/font database에 따라 달라진다.
 
 ## 지원 subset
@@ -29,6 +30,13 @@
 visible foreign namespace·form/control/media/canvas/SVG 요소, inline allowlist 밖의 visible inline tag, unsupported display/property/color, 비유한 frame, source-range/glyph 불일치는 구체 node/property/stage 오류로 거부한다. 넓은 text 지원을 위해 값을 조용히 바꾸지 않는다.
 
 이 slice는 JavaScript/script 실행, CSSOM, 외부 stylesheet·font fetch, `@font-face`, 임의 font 다운로드, 모든 Unicode fallback, 모든 line breaking/line-height 표현식, text selection/caret/accessibility, inline decoration·ruby·vertical writing, full Block/Flex/Grid 조합, wide-gamut paint, pinch/scroll input mapping, full WPT/Chromium conformance를 제공하지 않는다. Android API 37 AVD/SwiftShader와 iOS 26.2 Simulator Metal drawable 결과는 실기기·hardware GPU·iOS compositor 제출 이후 픽셀 증거가 아니다.
+
+### 기본 root HTML 초기 page scale
+
+- 이 host만 `RootHtmlEnvironmentSnapshot`의 `environment_revision`, `device_scale_factor`, 초기 `page_scale`으로 `RuntimePageScaleTransform`을 만든다. 물리 투영 scale은 `DPR × page_scale`이며 곱셈이 유한한 양수가 아니면 실패한다.
+- environment 갱신을 시작할 때 이전 Canvas/page-scale mapping을 비우고, 새 snapshot 검증과 Canvas resolve가 끝난 뒤 mapping을 보관한다. layout 결과 scene의 environment revision이 mapping과 같을 때, image/glyph attachment 이후 publication 전에 transform을 한 번 적용한다. revision 불일치·mapping 누락·중복 transform·overflow는 새 scene publication을 거부한다.
+- transform 없는 JavaScript-only GPU host 및 다른 renderer scene은 기존 동작을 유지한다. CSS layout/media-query viewport, `RuntimeRenderSnapshot` CSS frame, hit-test 좌표, Canvas clear와 physical surface size는 변하지 않는다. scene paint geometry만 CSS 원점 기준으로 scale 되고 surface edge에서 clip된다. pointer/touch coordinate mapping, visual viewport 이동, pinch/pan/scroll zoom과 text rerasterization은 포함하지 않는다.
+- Android API 37 ARM64 AVD와 iPhone 17 Pro Max/iOS 26.2 Simulator의 default, scale 0.5, scale 2, fixed width 500 화면·pixel bounds·environment log는 [실행 기록](./evidence/c04-12-root-html-page-scale-runtime-2026-10-20/simulator-pixel-analysis.md)에 둔다. iOS 첫 surface 구성에서 이전 environment 요청이 stale(-12)로 취소된 로그와 그 뒤 성공한 최신 draw를 함께 보존한다.
 
 ## 실행 근거
 

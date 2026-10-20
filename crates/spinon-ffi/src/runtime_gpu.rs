@@ -1,10 +1,13 @@
 #[cfg(feature = "c13-3-gesture-fixture-test")]
 use fixtures::c13_3_scroll_gesture_host::C13_3GestureState;
+use spinon_core::EnvironmentRevision;
 use spinon_render::RuntimeRenderSnapshot;
 use spinon_render_wgpu::{PendingRuntimeSurface, RuntimeRenderer, RuntimeRendererError};
 #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
 use spinon_runtime::RuntimeLayoutFrame;
-use spinon_runtime::{RuntimeLayoutState, RuntimeSession, TaskPriority};
+use spinon_runtime::{
+    RootHtmlEnvironmentSnapshot, RuntimeLayoutState, RuntimeSession, TaskPriority,
+};
 use spinon_style::{CssColorScheme, CssMediaEnvironment};
 #[cfg(feature = "c13-3-gesture-fixture-test")]
 use std::sync::Arc;
@@ -125,7 +128,86 @@ struct RuntimeGpuHost {
     presentation: PresentationScenes,
     renderer: Mutex<Option<RuntimeRenderer>>,
     root_html_canvas_color: Mutex<Option<[u8; 4]>>,
+    root_html_page_scale: Mutex<Option<RootHtmlPageScaleMapping>>,
     pending_uikit_surface: Mutex<Option<PendingRuntimeSurface>>,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq)]
+struct RootHtmlPageScaleMapping {
+    environment_revision: EnvironmentRevision,
+    device_scale_factor: f32,
+    page_scale: f32,
+}
+
+impl RootHtmlPageScaleMapping {
+    fn from_environment(
+        environment: RootHtmlEnvironmentSnapshot,
+    ) -> Result<Self, spinon_render::RuntimeRenderError> {
+        spinon_render::RuntimePageScaleTransform::new(
+            environment.device_scale_factor,
+            environment.page_scale,
+        )?;
+        Ok(Self {
+            environment_revision: environment.environment_revision,
+            device_scale_factor: environment.device_scale_factor,
+            page_scale: environment.page_scale,
+        })
+    }
+}
+
+fn apply_root_html_page_scale(
+    scene: RuntimeRenderSnapshot,
+    is_root_html_default_render: bool,
+    mapping: Option<RootHtmlPageScaleMapping>,
+) -> Result<(RuntimeRenderSnapshot, String), (i32, String)> {
+    if !is_root_html_default_render {
+        return Ok((scene, String::new()));
+    }
+    let Some(mapping) = mapping else {
+        return Err((
+            ERR_LAYOUT,
+            "root HTML 장면에 사용할 환경 page-scale mapping이 없습니다".to_owned(),
+        ));
+    };
+    if scene.key().environment_revision() != mapping.environment_revision {
+        return Err((
+            ERR_STALE,
+            format!(
+                "root HTML page-scale revision 불일치: scene={} mapping={}",
+                scene.key().environment_revision().get(),
+                mapping.environment_revision.get(),
+            ),
+        ));
+    }
+    if scene.page_scale_transform().is_some() {
+        return Err((
+            ERR_LAYOUT,
+            "root HTML page-scale mapping이 scene에 중복 적용되었습니다".to_owned(),
+        ));
+    }
+    let transformed = scene
+        .with_page_scale_transform(mapping.device_scale_factor, mapping.page_scale)
+        .map_err(|error| {
+            (
+                ERR_LAYOUT,
+                format!("root HTML page-scale mapping 생성 실패: {error:?}"),
+            )
+        })?;
+    let transform = transformed.page_scale_transform().ok_or_else(|| {
+        (
+            ERR_LAYOUT,
+            "root HTML page-scale mapping이 없습니다".to_owned(),
+        )
+    })?;
+    Ok((
+        transformed,
+        format!(
+            " page_scale_mapping=true device_scale_factor={} page_scale={} physical_scale={}",
+            transform.device_scale_factor(),
+            transform.page_scale(),
+            transform.physical_scale(),
+        ),
+    ))
 }
 
 struct WaitAndPublishOptions {
@@ -240,6 +322,7 @@ impl RuntimeGpuHost {
             presentation: PresentationScenes::new(),
             renderer: Mutex::new(None),
             root_html_canvas_color: Mutex::new(None),
+            root_html_page_scale: Mutex::new(None),
             pending_uikit_surface: Mutex::new(None),
         }
     }
@@ -420,6 +503,11 @@ impl RuntimeGpuHost {
             };
         #[cfg(not(feature = "c15-3-wgpu-glyph-paint-fixture-test"))]
         let (scene, c15_3_glyph_paint_report) = (scene, String::new());
+        let (scene, root_html_page_scale_report) = apply_root_html_page_scale(
+            scene,
+            self.root_html_default_render,
+            *lock(&self.root_html_page_scale),
+        )?;
         if !scene_matches_layout_key(&scene, completed.key) {
             return Err((
                 ERR_STALE,
@@ -541,6 +629,7 @@ impl RuntimeGpuHost {
             .first()
             .map(|frame| format!(" root_frame_css_px={}x{}", frame.width, frame.height))
             .unwrap_or_default();
+        let root_frame = format!("{root_html_page_scale_report}{root_frame}");
         let node_frame_report = if options.include_node_frame_report {
             let frames = completed
                 .frames
@@ -626,6 +715,7 @@ impl RuntimeGpuHost {
             .map_err(|error| (ERR_STALE, error))?;
         if self.root_html_default_render {
             *lock(&self.root_html_canvas_color) = None;
+            *lock(&self.root_html_page_scale) = None;
         }
         let mut environment = CssMediaEnvironment::MOBILE;
         environment.color_scheme = if dark {
@@ -696,6 +786,13 @@ impl RuntimeGpuHost {
         if self.root_html_default_render
             && let Some(environment) = root_html_environment
         {
+            let page_scale_mapping = RootHtmlPageScaleMapping::from_environment(environment)
+                .map_err(|error| {
+                    (
+                        ERR_LAYOUT,
+                        format!("root HTML page-scale 환경 검증 실패: {error:?}"),
+                    )
+                })?;
             let canvas = self
                 .session
                 .resolve_root_html_canvas_for_environment(
@@ -709,6 +806,7 @@ impl RuntimeGpuHost {
                     )
                 })?;
             *lock(&self.root_html_canvas_color) = Some(canvas.color_rgba);
+            *lock(&self.root_html_page_scale) = Some(page_scale_mapping);
         }
         #[cfg(feature = "c18-1-image-paint-fixture-test")]
         let attach_c18_1_images = self.c18_1_image_paint_fixture

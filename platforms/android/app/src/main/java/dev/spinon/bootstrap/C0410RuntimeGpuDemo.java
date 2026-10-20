@@ -33,6 +33,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -1884,6 +1886,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean rootHtmlBlockPaintProbeRequested;
     private final boolean rootHtmlTextPaintProbeRequested;
     private final boolean rootHtmlDefaultRenderRequested;
+    private final String rootHtmlPageScaleCase;
     private final boolean rootHtmlApplicationRequested;
     private String rootHtmlApplicationSource;
     private String rootHtmlApplicationScript;
@@ -2079,6 +2082,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c0412_root_html_text_paint", false);
         rootHtmlDefaultRenderRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c0412_root_html_default_render", false);
+        rootHtmlPageScaleCase = activity.getIntent()
+                .getStringExtra("spinon_c0412_root_html_page_scale_case");
         this.rootHtmlApplicationRequested = rootHtmlApplicationRequested;
         marginCollapseProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c092_margin_collapse", false);
@@ -3076,12 +3081,24 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private void initializeRuntime() {
+        if (rootHtmlPageScaleCase != null
+                && (!rootHtmlDefaultRenderRequested
+                        || !(rootHtmlPageScaleCase.equals("half")
+                                || rootHtmlPageScaleCase.equals("double")
+                                || rootHtmlPageScaleCase.equals("fixed-width")))) {
+            Log.e(TAG, "SPINON_C0412_ROOT_HTML_PAGE_SCALE_ARGUMENT_ERROR rejected=true case="
+                    + rootHtmlPageScaleCase + " root_html_default="
+                    + rootHtmlDefaultRenderRequested);
+            postStatus("실패 · page scale case는 root HTML 기본 렌더 route에서만 사용할 수 있습니다");
+            return;
+        }
         if (rootHtmlDefaultRenderRequested) {
             android.os.Bundle extras = activity.getIntent().getExtras();
             if (extras != null) {
                 for (String key : extras.keySet()) {
                     if (!key.startsWith("spinon_c")
                             || key.equals("spinon_c0412_root_html_default_render")
+                            || key.equals("spinon_c0412_root_html_page_scale_case")
                             || key.equals("spinon_c0410_runtime_gpu")) continue;
                     Object value = extras.get(key);
                     if (Boolean.FALSE.equals(value)) continue;
@@ -4113,9 +4130,30 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private long nativeCreateRootHtmlDefaultRenderHost() {
         try {
-            byte[] source = readAsset("root-html-default-rendering.html")
-                    .getBytes(StandardCharsets.UTF_8);
-            Log.i(TAG, "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_SOURCE bytes=" + source.length);
+            String html = rootHtmlPageScaleCase == null
+                    ? readAsset("root-html-default-rendering.html")
+                    : readAsset("root-html-page-scale-runtime.html");
+            if (rootHtmlPageScaleCase != null) {
+                String originalViewport = "content=\"width=device-width, initial-scale=1\"";
+                String replacementViewport = rootHtmlPageScaleCase.equals("half")
+                        ? "content=\"width=device-width, initial-scale=0.5\""
+                        : rootHtmlPageScaleCase.equals("double")
+                        ? "content=\"width=device-width, initial-scale=2\""
+                        : "content=\"width=500, initial-scale=1\"";
+                int marker = html.indexOf(originalViewport);
+                if (marker < 0 || html.indexOf(originalViewport,
+                        marker + originalViewport.length()) >= 0) {
+                    throw new IOException("viewport meta marker count must equal one");
+                }
+                html = html.substring(0, marker) + replacementViewport
+                        + html.substring(marker + originalViewport.length());
+                Log.i(TAG, "SPINON_C0412_ROOT_HTML_PAGE_SCALE_SOURCE case="
+                        + rootHtmlPageScaleCase + " viewport=" + replacementViewport);
+            }
+            byte[] source = html.getBytes(StandardCharsets.UTF_8);
+            Log.i(TAG, "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_SOURCE case="
+                    + (rootHtmlPageScaleCase == null ? "default" : rootHtmlPageScaleCase)
+                    + " bytes=" + source.length + " sha256=" + sha256Hex(source));
             return nativeCreateHostWithRootHtml(source);
         } catch (IOException error) {
             Log.e(TAG, "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_ASSET_ERROR", error);
@@ -4130,6 +4168,17 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             int count;
             while ((count = input.read(buffer)) != -1) output.write(buffer, 0, count);
             return output.toString(StandardCharsets.UTF_8.name());
+        }
+    }
+
+    private static String sha256Hex(byte[] value) {
+        try {
+            byte[] digest = MessageDigest.getInstance("SHA-256").digest(value);
+            StringBuilder result = new StringBuilder(digest.length * 2);
+            for (byte octet : digest) result.append(String.format("%02x", octet & 0xff));
+            return result.toString();
+        } catch (NoSuchAlgorithmException error) {
+            throw new IllegalStateException("SHA-256 is unavailable", error);
         }
     }
 

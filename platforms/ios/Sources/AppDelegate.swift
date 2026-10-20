@@ -53,6 +53,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.hasPrefix("--spinon-c124-run-id=")
         }?.components(separatedBy: "=").last
         let runRuntimeGpuBase = arguments.contains("--spinon-c0410-runtime-gpu")
+            || arguments.contains(where: { $0.hasPrefix("--spinon-c0412-page-scale-case=") })
             || arguments.contains("--spinon-c131-compact-surface-matrix")
             || arguments.contains("--spinon-c131-compact-hit-identity-grid")
             || arguments.contains("--spinon-c131-compact-metal-pixel-centers")

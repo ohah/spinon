@@ -1,3 +1,4 @@
+import CryptoKit
 import MetalKit
 import UIKit
 
@@ -1573,6 +1574,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c0412-root-html-text-paint")
     private let rootHtmlDefaultRenderRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c0412-root-html-default-render")
+    private var rootHtmlPageScaleArguments: [String] {
+        ProcessInfo.processInfo.arguments.filter {
+            $0.hasPrefix("--spinon-c0412-page-scale-case=")
+        }
+    }
+    private var rootHtmlPageScaleCase: String? {
+        guard let argument = rootHtmlPageScaleArguments.first else { return nil }
+        return String(argument.dropFirst("--spinon-c0412-page-scale-case=".count))
+    }
     private var rootHtmlTextPaintReadbackFinished = false
     private let marginCollapseProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c092-margin-collapse")
@@ -3624,15 +3634,44 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     }
 
     private func createRootHtmlDefaultRuntimeHost() -> UInt64 {
+        let pageScaleCase = rootHtmlPageScaleCase
+        let resourceName = pageScaleCase == nil
+            ? "root-html-default-rendering" : "root-html-page-scale-runtime"
         guard let url = Bundle.main.url(
-            forResource: "root-html-default-rendering", withExtension: "html"
+            forResource: resourceName, withExtension: "html"
         ) else {
             log("SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_ASSET_ERROR missing=true")
             return 0
         }
         do {
-            let source = try String(contentsOf: url, encoding: .utf8)
-            log("SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_SOURCE bytes=\(source.utf8.count)")
+            var source = try String(contentsOf: url, encoding: .utf8)
+            if let pageScaleCase {
+                let originalViewport = "content=\"width=device-width, initial-scale=1\""
+                let replacementViewport: String
+                switch pageScaleCase {
+                case "half":
+                    replacementViewport = "content=\"width=device-width, initial-scale=0.5\""
+                case "double":
+                    replacementViewport = "content=\"width=device-width, initial-scale=2\""
+                case "fixed-width":
+                    replacementViewport = "content=\"width=500, initial-scale=1\""
+                default:
+                    log("SPINON_C0412_ROOT_HTML_PAGE_SCALE_ARGUMENT_ERROR rejected=true case=\(pageScaleCase)")
+                    return 0
+                }
+                guard source.components(separatedBy: originalViewport).count == 2 else {
+                    log("SPINON_C0412_ROOT_HTML_PAGE_SCALE_ASSET_ERROR viewport_marker_count_invalid=true")
+                    return 0
+                }
+                source = source.replacingOccurrences(
+                    of: originalViewport, with: replacementViewport
+                )
+                log("SPINON_C0412_ROOT_HTML_PAGE_SCALE_SOURCE case=\(pageScaleCase) viewport=\(replacementViewport)")
+            }
+            let sourceDigest = SHA256.hash(data: Data(source.utf8))
+                .map { String(format: "%02x", $0) }
+                .joined()
+            log("SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_SOURCE case=\(pageScaleCase ?? "default") bytes=\(source.utf8.count) sha256=\(sourceDigest)")
             return SpinonRunner.createRuntimeGpuHost(withRootHTML: source)
         } catch {
             log("SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_ASSET_ERROR reason=\(error)")
@@ -3665,16 +3704,30 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private func initializeRuntime() {
         guard !isClosing else { return }
         if rootHtmlDefaultRenderRequested {
+            let pageScaleArguments = rootHtmlPageScaleArguments
+            let validPageScaleCase = rootHtmlPageScaleCase.map {
+                ["half", "double", "fixed-width"].contains($0)
+            } ?? true
+            if pageScaleArguments.count > 1 || !validPageScaleCase {
+                log("SPINON_C0412_ROOT_HTML_PAGE_SCALE_ARGUMENT_ERROR rejected=true arguments=\(pageScaleArguments.joined(separator: ","))")
+                postStatus("실패 · root HTML page scale case는 half, double, fixed-width 중 하나만 허용합니다")
+                return
+            }
             let conflicts = ProcessInfo.processInfo.arguments.filter {
                 $0.hasPrefix("--spinon-c")
                     && $0 != "--spinon-c0412-root-html-default-render"
                     && $0 != "--spinon-c0410-runtime-gpu"
+                    && !$0.hasPrefix("--spinon-c0412-page-scale-case=")
             }
             if !conflicts.isEmpty {
                 log("SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_ARGUMENT_ERROR conflicting=\(conflicts.joined(separator: ","))")
                 postStatus("실패 · root HTML 기본 렌더와 다른 CSS route를 함께 선택했습니다")
                 return
             }
+        } else if !rootHtmlPageScaleArguments.isEmpty {
+            log("SPINON_C0412_ROOT_HTML_PAGE_SCALE_ARGUMENT_ERROR rejected=true reason=root-html-route-required")
+            postStatus("실패 · page scale case에는 root HTML 기본 렌더 route가 필요합니다")
+            return
         }
 #if !SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST_1
         if c192BoxPaintOpacityArgumentRequested {
