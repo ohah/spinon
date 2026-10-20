@@ -17,10 +17,10 @@ const component = `${packageName}/.MainActivity`;
 const appPath = resolve(repositoryRoot,
   'build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app');
 const apkPath = resolve(repositoryRoot, 'platforms/android/app/build/outputs/apk/debug/app-debug.apk');
-const runPrefix = `c114-neighbors-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
+const runPrefix = `c114-autofit-minsize-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot,
-  `spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-${date}`, `${target}-${runPrefix}`);
+  `spec/internal/evidence/c11-4-auto-fit-min-size-axis-${date}`, `${target}-${runPrefix}`);
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const sleep = (milliseconds) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, milliseconds);
 
@@ -40,9 +40,9 @@ const scenes = [
     axis: 'Columns',
     boxCount: 2,
     rootFrame: 'width=200,height=60',
-    itemFrame: 'width=154,height=40',
-    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;1:node=2,x=28,y=0,width=154,height=40]',
-    tracks: [20, 154, 0, 0, 10],
+    itemFrame: 'width=162,height=40',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;1:node=2,x=28,y=0,width=162,height=40]',
+    tracks: [20, 162, 0, 0, 10],
     collapsed: [false, false, true, true, false],
   },
   {
@@ -62,7 +62,7 @@ const scenes = [
     rootFrame: 'width=200,height=60',
     itemFrame: 'width=12,height=12',
     nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;1:node=2,x=28,y=0,width=12,height=12;2:node=3,x=190,y=0,width=12,height=12]',
-    tracks: [20, 73, 73, 0, 10],
+    tracks: [20, 77, 77, 0, 10],
     collapsed: [false, false, false, true, false],
   },
   {
@@ -158,7 +158,7 @@ const scenes = [
     rootFrame: 'width=50,height=200',
     itemFrame: 'width=12,height=12',
     nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=50,height=200;1:node=2,x=0,y=28,width=12,height=12]',
-    tracks: [20, 154, 0, 0, 10],
+    tracks: [20, 162, 0, 0, 10],
     collapsed: [false, false, true, true, false],
   },
   {
@@ -284,8 +284,8 @@ const scenes = [
     itemFrame: 'width=12,height=12',
     nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=28,y=28,width=12,height=12]',
     axes: {
-      Columns: { tracks: [20, 154, 0, 0, 0, 10], collapsed: [false, false, true, true, true, false] },
-      Rows: { tracks: [20, 154, 0, 0, 0, 10], collapsed: [false, false, true, true, true, false] },
+      Columns: { tracks: [20, 162, 0, 0, 0, 10], collapsed: [false, false, true, true, true, false] },
+      Rows: { tracks: [20, 162, 0, 0, 0, 10], collapsed: [false, false, true, true, true, false] },
     },
   },
   {
@@ -293,17 +293,17 @@ const scenes = [
     itemFrame: 'width=12,height=12',
     nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=28,y=28,width=12,height=12]',
     axes: {
-      Columns: { tracks: [20, 126, 20, 0, 0, 10], collapsed: [false, false, false, true, true, false] },
-      Rows: { tracks: [20, 126, 20, 0, 0, 10], collapsed: [false, false, false, true, true, false] },
+      Columns: { tracks: [20, 134, 20, 0, 0, 10], collapsed: [false, false, false, true, true, false] },
+      Rows: { tracks: [20, 134, 20, 0, 0, 10], collapsed: [false, false, false, true, true, false] },
     },
   },
   {
     id: 'both-fit-second-repeat', boxCount: 2, rootFrame: 'width=200,height=200',
     itemFrame: 'width=12,height=12',
-    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=28,y=28,width=12,height=12]',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=20,y=20,width=12,height=12]',
     axes: {
-      Columns: { tracks: [20, 0, 0, 154, 0, 10], collapsed: [false, true, true, false, true, false] },
-      Rows: { tracks: [20, 0, 0, 154, 0, 10], collapsed: [false, true, true, false, true, false] },
+      Columns: { tracks: [20, 0, 0, 170, 0, 10], collapsed: [false, true, true, false, true, false] },
+      Rows: { tracks: [20, 0, 0, 170, 0, 10], collapsed: [false, true, true, false, true, false] },
     },
   },
   {
@@ -325,25 +325,114 @@ const scenes = [
   {
     id: 'columns-fit-rows-fill-second-repeat', boxCount: 2, rootFrame: 'width=200,height=200',
     itemFrame: 'width=12,height=12',
-    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=28,y=109,width=12,height=12]',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=20,y=109,width=12,height=12]',
     axes: {
-      Columns: { tracks: [20, 0, 0, 154, 0, 10], collapsed: [false, true, true, false, true, false] },
+      Columns: { tracks: [20, 0, 0, 170, 0, 10], collapsed: [false, true, true, false, true, false] },
       Rows: { tracks: [20, 45, 20, 45, 20, 10], collapsed: [false, false, false, false, false, false] },
     },
   },
   {
     id: 'columns-fill-rows-fit-second-repeat', boxCount: 2, rootFrame: 'width=200,height=200',
     itemFrame: 'width=12,height=12',
-    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=109,y=28,width=12,height=12]',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=109,y=20,width=12,height=12]',
     axes: {
       Columns: { tracks: [20, 45, 20, 45, 20, 10], collapsed: [false, false, false, false, false, false] },
-      Rows: { tracks: [20, 0, 0, 154, 0, 10], collapsed: [false, true, true, false, true, false] },
+      Rows: { tracks: [20, 0, 0, 170, 0, 10], collapsed: [false, true, true, false, true, false] },
     },
   },
 ];
-assert.equal(scenes.length, 33, 'C11.4 explicit-neighbor simulator 행렬은 33 scene이어야 합니다.');
+scenes.push(...autoFitMinimumSizeScenes());
+assert.equal(scenes.length, 53, 'C11.4 auto-fit minimum-size simulator 행렬은 53 scene이어야 합니다.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 simulator scene ID가 중복됐습니다.');
+
+function autoFitMinimumSizeScenes() {
+  const result = [];
+  const repeatCount = (minSize, position) => {
+    const prefix = position === 'both' || position === 'prefix' ? 20 : 0;
+    const suffix = position === 'both' || position === 'suffix' ? 10 : 0;
+    let count = 1;
+    const usedSpace = (repetitions) => {
+      const tracks = 2 * repetitions + Number(prefix > 0) + Number(suffix > 0);
+      return prefix + suffix + 60 * repetitions + Math.max(0, tracks - 1) * 8;
+    };
+    while (usedSpace(count) < minSize) count += 1;
+    return count;
+  };
+  const makeScene = ({ axis, minSize, position = 'both', placement = 'empty', pattern = 'minmax' }) => {
+    const label = pattern === 'fixed' ? 'fixed-pattern'
+      : placement === 'empty' ? position : placement;
+    const id = `auto-fit-min-${axis.toLowerCase()}-${label}-${minSize}`;
+    const repetitions = repeatCount(minSize, position);
+    const repeatedTrackCount = repetitions * 2;
+    const tracks = [];
+    const collapsed = [];
+    const prefix = position === 'both' || position === 'prefix';
+    const suffix = position === 'both' || position === 'suffix';
+    if (prefix) {
+      tracks.push(20);
+      collapsed.push(false);
+    }
+    for (let index = 0; index < repeatedTrackCount; index += 1) {
+      if (placement === 'single' && index === 0) {
+        tracks.push(162);
+        collapsed.push(false);
+      } else if (placement === 'span-two' && index === 0) {
+        tracks.push(134);
+        collapsed.push(false);
+      } else if (placement === 'span-two' && index === 1) {
+        tracks.push(20);
+        collapsed.push(false);
+      } else if (placement === 'second-repeat' && index === 2) {
+        tracks.push(170);
+        collapsed.push(false);
+      } else {
+        tracks.push(0);
+        collapsed.push(true);
+      }
+    }
+    if (suffix) {
+      tracks.push(10);
+      collapsed.push(false);
+    }
+    const rootFrame = axis === 'Columns'
+      ? `width=${minSize},height=60`
+      : `width=50,height=${minSize}`;
+    const hasItem = ['single', 'span-two', 'second-repeat'].includes(placement);
+    const itemFrame = hasItem ? 'width=12,height=12' : null;
+    const itemPosition = placement === 'second-repeat'
+      ? axis === 'Columns' ? 'x=20,y=0' : 'x=0,y=20'
+      : axis === 'Columns' ? 'x=28,y=0' : 'x=0,y=28';
+    const nodeFrames = hasItem
+      ? `node_frames_css_px=[0:node=1,x=0,y=0,${rootFrame};1:node=2,${itemPosition},width=12,height=12]`
+      : `node_frames_css_px=[0:node=1,x=0,y=0,${rootFrame}]`;
+    return {
+      id,
+      axis,
+      boxCount: hasItem ? 2 : 1,
+      rootFrame,
+      itemFrame,
+      nodeFrames,
+      tracks,
+      collapsed,
+      pattern,
+    };
+  };
+
+  for (const axis of ['Columns', 'Rows']) {
+    for (const minSize of [190, 200, 342]) {
+      result.push(makeScene({ axis, minSize }));
+    }
+    for (const position of ['prefix', 'suffix', 'none']) {
+      result.push(makeScene({ axis, minSize: 200, position }));
+    }
+    for (const placement of ['single', 'span-two', 'second-repeat']) {
+      result.push(makeScene({ axis, minSize: 200, placement }));
+    }
+    result.push(makeScene({ axis, minSize: 200, pattern: 'fixed' }));
+  }
+  return result;
+}
 
 function command(binary, args, { allowFailure = false, timeout = 120_000, encoding = 'utf8' } = {}) {
   const result = spawnSync(binary, args, {
@@ -472,15 +561,15 @@ function verifyRuntimeLog(log, scene, runID) {
       Math.abs(baseSize - expected.tracks[index]) <= 1 / 64,
       `${scene.id}: ${axis} track ${index + 1} 크기 예상 ${expected.tracks[index]}, 실제 ${baseSize}`,
     ));
-    if (scene.axes || scene.id.startsWith('auto-fill-two-track-')) {
+    if (scene.axes || scene.id.startsWith('auto-fill-two-track-')
+        || scene.id.startsWith('auto-fit-min-')) {
       const allGutters = finalStageTracks.filter(({ gutter }) => gutter);
       const internalGutters = allGutters.slice(1, -1);
       assert.equal(internalGutters.length, finalTracks.length - 1,
         `${scene.id}: ${axis} 내부 gap 수가 track 사이 개수와 다릅니다.`);
-      // Trace gutters follow their left track. A collapsed track keeps the
-      // coincident gutter pair's width on its preceding side and zeros the next gutter.
+      // A collapsed track collapses the gutters on both of its sides.
       internalGutters.forEach(({ baseSize }, index) => {
-        const expectedSize = scene.axes && expected.collapsed[index] ? 0 : 8;
+        const expectedSize = expected.collapsed[index] || expected.collapsed[index + 1] ? 0 : 8;
         assert.ok(Math.abs(baseSize - expectedSize) <= 1 / 64,
           `${scene.id}: ${axis} gap ${index + 1} 크기 예상 ${expectedSize}, 실제 ${baseSize}`);
       });

@@ -2,7 +2,7 @@
 
 **상위 원본:** [C11 상태](../spec/STATUS.md#c11-css-grid) · [C11.4 track sizing 계획](./c11-4-grid-track-sizing.md) · [CSS Grid Level 1 §7.2.3.2](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#repeat-notation) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획과 Chrome 155 사전 관찰을 고정했다. 계획 검토 20개를 마쳤으며, 구현 검토는 구현 변경 뒤 별도 수행한다. 이 계획은 C11.4 체크와 공식 완료 수를 바꾸지 않는다.
+**상태:** 계획과 Chrome 155 사전 관찰을 고정했고 계획 검토 20개를 마쳤다. 2026-10-20 definite minimum-size 후속 구현은 별도 20개 실패 관점 검토와 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator의 53-scene 행렬을 통과했다. 실행·화면 근거는 [구현 evidence](../spec/internal/evidence/c11-4-auto-fit-min-size-axis-implementation-2026-10-20/README.md)에 둔다. 이 제한 slice는 C11.4 체크와 공식 완료 수를 바꾸지 않는다.
 
 **계획 PR diff 검토:** [독립 30개 관점 기록](https://github.com/ohah/spinon/blob/plan/c11-4-autofit-min-size-axis-20261020/spec/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20/pr-diff-review-30.md).
 
@@ -33,7 +33,11 @@ C11.4의 제한 auto-repeat 경로에서 definite minimum-size만 반복 수의 
 | `20px` prefix + `10px` suffix | `38 + 76n` | 2회 | 3회 | 4회 |
 | `20px` prefix만 | `20 + 76n` | — | 3회 | — |
 | `10px` suffix만 | `10 + 76n` | — | 3회 | — |
-| neighbor 없음 | `68n - 8` | — | 4회 | — |
+| neighbor 없음 | `76n - 8` | — | 3회 | — |
+
+### 2026-10-20 계산 정정
+
+초기 계획 검토의 8번 관점은 neighbor가 없는 반복 pattern에서 반복마다 gutter 하나만 더한다고 계산해 `68n - 8`과 4회를 기록했다. `repeat(auto-fit, minmax(40px, 1fr) 20px)`는 반복마다 두 track과 그 사이 두 gutter를 더하므로, 첫 반복의 `60 + 8 = 68px` 뒤 각 반복은 `60 + 16 = 76px`를 더한다. 따라서 전체 사용량은 `68 + 76(n - 1) = 76n - 8`이고, 200px minimum-size에는 3회가 필요하다. 이를 반영해 아래 표와 runtime 기대값을 정정했다. Chrome 관찰값은 그대로 별도 보존한다.
 
 두 fixed neighbor가 있는 definite 200px preferred-size 대조는 content box를 넘지 않는 최대 양의 반복 수를 선택해 2회가 되어야 한다. 이는 minimum-size 경로의 3회와 구별한다.
 
@@ -41,9 +45,15 @@ C11.4의 제한 auto-repeat 경로에서 definite minimum-size만 반복 수의 
 
 1. 같은 axis·sizing basis·track list의 `auto-fill`과 `auto-fit`은 placement 전 반복 track 수가 같다.
 2. 빈 `auto-fit`은 모든 repeated track을 접고 repeat 밖의 explicit track은 보존한다.
-3. 첫 repeated track에 놓인 in-flow item은 그 track만 비어 있지 않게 한다. 두 repeated track을 span하는 in-flow item은 두 track을 점유 상태로 남긴다. out-of-flow item은 track을 점유한 것으로 계산하지 않는다. 남은 빈 반복 track과 해당 gutter만 접는다.
+3. 첫 repeated track에 놓인 in-flow item은 그 track만 비어 있지 않게 한다. 두 repeated track을 span하는 in-flow item은 두 track을 점유 상태로 남긴다. 두 번째 반복에 놓인 in-flow item도 앞선 빈 반복을 접고 해당 item track을 보존한다. out-of-flow item은 규범상 track을 점유한 것으로 계산하지 않는다.
 4. `auto-fill` 반복 track은 item 부재만으로 접히지 않는다.
 5. Chrome 관찰과 규범 기대가 계속 다르면 둘을 별도 열로 보고한다. 제품 acceptance는 규범 계산과 명시된 제한 subset을 기준으로 하고, Chrome 호환 완료나 WPT 통과로 표현하지 않는다.
+
+### 2026-10-20 gutter와 fixture 경계 정정
+
+CSS Grid §7.2.3.2는 collapsed track을 0px로 취급하고 그 track 양쪽 gutter도 접는다. 따라서 in-flow item이 첫 repeat에 있을 때 prefix-to-item gap만 남아 flexible track은 162px이고, item이 두 번째 repeat에 있을 때 앞·뒤 repeat가 모두 접혀 gap 없이 flexible track은 170px이다. Chrome 155 사전 fixture는 각각 154px 및 162px를 관찰했다. 이는 collapsed repeat 영역을 사이에 둔 비collapsed track 사이 gap을 유지하는 Chromium 구현 동작으로 [8059 branch source](https://chromium.googlesource.com/chromium/src/+/refs/branch-heads/8059/third_party/blink/renderer/core/layout/grid/grid_track_collection.cc#321)를 확인했으며, 규범 기대와 별도로 보고한다.
+
+Chrome 비교 fixture에는 out-of-flow item case를 유지한다. 앱 runtime matrix에서는 이를 실행하자 C11.1이 `위치 지정 Grid item ... 지원하지 않습니다`로 명시 거부했으므로 positive case로 취급하지 않는다. 이 제한된 범위에서 같은 두 번째 반복 위치에 in-flow item을 두는 case로 대체해 collapse 경로를 검증한다. C11.4 결과는 out-of-flow grid item 지원을 뜻하지 않는다.
 
 ## 사전 oracle과 실행 행렬
 
@@ -60,7 +70,7 @@ C11.4의 제한 auto-repeat 경로에서 definite minimum-size만 반복 수의 
 3. Rust layout·style projection 시험을 추가해 columns·rows 양쪽의 expected repeat count, half-open range, fixed neighbor 순서, placement occupancy, collapse/gutter 불변식을 확인한다. 코드가 이미 규범대로 동작하면 제품 경로를 불필요하게 바꾸지 않고 앱 fixture와 증거를 보강한다. 불일치가 재현되면 책임 있는 projection/layout 단계만 고친다.
 4. opt-in app fixture에서 minimum-size 190/200/342 경계, prefix/suffix/both/neighbors 없음, empty/single/span-two, fixed-pattern control과 definite-size positive control을 검증한다. Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator에서 root/item frame, 모든 used track, active/collapsed gutter, axis trace, trace chunk completeness와 draw/present를 확인한다. 실기기 연결은 하지 않는다.
 5. Rust workspace·Clippy·rustfmt와 기본/fixture FFI artifact 경계를 검증한다. 이 fixture는 검증 전용 opt-in 경로이며 공개 API가 아니다.
-6. 코드나 runtime 변경 뒤에는 새 코드·동작 관점 20개, 최종 PR diff에는 별도의 독립 관점 20개를 수행한다. 계획 검토를 재사용하지 않는다. 결함을 찾으면 수정 후 영향을 받은 관점을 다시 실행한다.
+6. 코드나 runtime 변경 뒤에는 새 코드·동작 관점 20개, 최종 PR diff에는 별도의 독립 관점 30개를 수행한다. 계획 검토를 재사용하지 않는다. 결함을 찾으면 수정 후 영향을 받은 관점을 다시 실행한다.
 7. PR 병합 전 현재 required checks와 merge state를 조회한다. required check가 설정되지 않았다면 그 사실을 그대로 기록하고 CI 통과로 표현하지 않는다. 병합은 Rebase and merge를 사용한다.
 
 ## 범위 밖과 상태

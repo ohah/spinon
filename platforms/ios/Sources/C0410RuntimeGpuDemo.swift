@@ -27,6 +27,16 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "auto-fill-two-track-columns-both-342", "auto-fill-two-track-columns-prefix-200",
     "auto-fill-two-track-columns-suffix-200", "auto-fill-two-track-rows-both-190",
     "auto-fill-two-track-rows-both-200", "auto-fill-two-track-rows-both-342",
+    "auto-fit-min-columns-both-190", "auto-fit-min-columns-both-200",
+    "auto-fit-min-columns-both-342", "auto-fit-min-rows-both-190",
+    "auto-fit-min-rows-both-200", "auto-fit-min-rows-both-342",
+    "auto-fit-min-columns-prefix-200", "auto-fit-min-columns-suffix-200",
+    "auto-fit-min-columns-none-200", "auto-fit-min-rows-prefix-200",
+    "auto-fit-min-rows-suffix-200", "auto-fit-min-rows-none-200",
+    "auto-fit-min-columns-single-200", "auto-fit-min-rows-single-200",
+    "auto-fit-min-columns-span-two-200", "auto-fit-min-rows-span-two-200",
+    "auto-fit-min-columns-second-repeat-200", "auto-fit-min-rows-second-repeat-200",
+    "auto-fit-min-columns-fixed-pattern-200", "auto-fit-min-rows-fixed-pattern-200",
     "columns-fill-control", "rows-fill-control", "both-fill-square", "both-fill-asymmetric",
     "both-fit-empty", "both-fit-single", "both-fit-span-two", "both-fit-second-repeat",
     "columns-fit-rows-fill-empty", "columns-fill-rows-fit-empty",
@@ -54,6 +64,9 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
 ]
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    if let autoFitMinimumSizeFrame = c114AutoFitMinimumSizeRootFrame(sceneID) {
+        return autoFitMinimumSizeFrame
+    }
     switch sceneID {
     case "column-auto-natural-ratio", "column-target-max-width-clamp",
          "column-opposite-min-over-max", "column-border-box-transfer",
@@ -134,6 +147,9 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if let autoFitMinimumSizeItemFrame = c114AutoFitMinimumSizeItemFrame(sceneID) {
+        return autoFitMinimumSizeItemFrame
+    }
     switch sceneID {
     case "column-auto-natural-ratio":
         return "width=12,height=8"
@@ -172,7 +188,7 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     case "auto-fill-fixed-neighbors", "auto-fill-pattern-neighbors":
         return "width=10,height=40"
     case "auto-fit-fixed-neighbors":
-        return "width=154,height=40"
+        return "width=162,height=40"
     case "auto-fit-empty-neighbors", "auto-fill-max-size-neighbors",
          "auto-fill-min-size-neighbors", "auto-fill-two-track-columns-both-190",
          "auto-fill-two-track-columns-both-200", "auto-fill-two-track-columns-both-342",
@@ -182,8 +198,10 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
          "columns-fit-rows-fill-empty", "columns-fill-rows-fit-empty":
         return ""
     case "columns-fill-control", "rows-fill-control", "both-fill-square", "both-fit-single",
-         "both-fit-span-two", "both-fit-second-repeat", "columns-fit-rows-fill-second-repeat",
+         "both-fit-span-two", "columns-fit-rows-fill-second-repeat",
          "columns-fill-rows-fit-second-repeat":
+        return "width=12,height=12"
+    case "both-fit-second-repeat":
         return "width=12,height=12"
     case "both-fill-asymmetric":
         return "width=12,height=12"
@@ -557,6 +575,9 @@ private func c114ImageTrackPassMatches(
 }
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+    if let autoFitMinimumSizeNodeFrames = c114AutoFitMinimumSizeNodeFrames(sceneID) {
+        return autoFitMinimumSizeNodeFrames
+    }
     switch sceneID {
     case "auto-fill-overflow-neighbors":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=60;"
@@ -564,18 +585,21 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     case "both-fit-empty", "columns-fit-rows-fill-empty", "columns-fill-rows-fit-empty":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200]"
     case "columns-fill-control", "rows-fill-control", "both-fill-square", "both-fit-single",
-         "both-fit-span-two", "both-fit-second-repeat":
+         "both-fit-span-two":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
             + "1:node=2,x=28,y=28,width=12,height=12]"
+    case "both-fit-second-repeat":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
+            + "1:node=2,x=20,y=20,width=12,height=12]"
     case "both-fill-asymmetric":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=266;"
             + "1:node=2,x=28,y=28,width=12,height=12]"
     case "columns-fit-rows-fill-second-repeat":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
-            + "1:node=2,x=28,y=109,width=12,height=12]"
+            + "1:node=2,x=20,y=109,width=12,height=12]"
     case "columns-fill-rows-fit-second-repeat":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
-            + "1:node=2,x=109,y=28,width=12,height=12]"
+            + "1:node=2,x=109,y=20,width=12,height=12]"
     case "auto-fill-two-track-columns-both-190", "auto-fill-two-track-columns-both-200",
          "auto-fill-two-track-columns-both-342", "auto-fill-two-track-columns-prefix-200",
          "auto-fill-two-track-columns-suffix-200", "auto-fill-two-track-rows-both-190",
@@ -586,7 +610,7 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "1:node=2,x=190,y=0,width=10,height=40]"
     case "auto-fit-fixed-neighbors":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;"
-            + "1:node=2,x=28,y=0,width=154,height=40]"
+            + "1:node=2,x=28,y=0,width=162,height=40]"
     case "grid-gap-definite-percent":
         return c114GapNodeFrames("100", "40", "50", "20")
     case "grid-gap-cyclic-percent":
@@ -634,6 +658,9 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if let autoFitMinimumSizeItemFrame = c114AutoFitMinimumSizeItemFrame(sceneID) {
+        return autoFitMinimumSizeItemFrame.isEmpty ? 1 : 2
+    }
     if sceneID == "auto-fit-span-neighbors" { return 3 }
     if ["auto-fit-empty-neighbors", "auto-fill-max-size-neighbors",
         "auto-fill-min-size-neighbors", "auto-fill-two-track-columns-both-190",
@@ -643,6 +670,39 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
         "auto-fill-two-track-rows-both-342", "both-fit-empty",
         "columns-fit-rows-fill-empty", "columns-fill-rows-fit-empty"].contains(sceneID) { return 1 }
     return sceneID.hasPrefix("grid-gap-") ? 5 : 2
+}
+
+private func c114AutoFitMinimumSizeRootFrame(_ sceneID: String) -> String? {
+    guard sceneID.hasPrefix("auto-fit-min-"),
+          let size = sceneID.split(separator: "-").last,
+          sceneID.contains("-columns-") || sceneID.contains("-rows-") else {
+        return nil
+    }
+    guard let minSize = Int(size) else { return nil }
+    return sceneID.contains("-columns-")
+        ? "width=\(minSize),height=60"
+        : "width=50,height=\(minSize)"
+}
+
+private func c114AutoFitMinimumSizeItemFrame(_ sceneID: String) -> String? {
+    guard sceneID.hasPrefix("auto-fit-min-") else { return nil }
+    return sceneID.contains("-single-") || sceneID.contains("-span-two-")
+        || sceneID.contains("-second-repeat-") ? "width=12,height=12" : ""
+}
+
+private func c114AutoFitMinimumSizeNodeFrames(_ sceneID: String) -> String? {
+    guard let rootFrame = c114AutoFitMinimumSizeRootFrame(sceneID),
+          let itemFrame = c114AutoFitMinimumSizeItemFrame(sceneID) else {
+        return nil
+    }
+    guard !itemFrame.isEmpty else {
+        return "node_frames_css_px=[0:node=1,x=0,y=0,\(rootFrame)]"
+    }
+    let position = sceneID.contains("-second-repeat-")
+        ? sceneID.contains("-columns-") ? "x=20,y=0" : "x=0,y=20"
+        : sceneID.contains("-columns-") ? "x=28,y=0" : "x=0,y=28"
+    return "node_frames_css_px=[0:node=1,x=0,y=0,\(rootFrame);"
+        + "1:node=2,\(position),width=12,height=12]"
 }
 
 private struct C124MetalPixelCase {

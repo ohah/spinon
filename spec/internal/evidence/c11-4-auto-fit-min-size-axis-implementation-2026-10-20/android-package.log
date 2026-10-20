@@ -1,0 +1,14 @@
+Archive:  platforms/android/app/build/outputs/apk/debug/app-debug.apk
+    testing: META-INF/com/android/build/gradle/app-metadata.properties   OK
+    testing: classes.dex              OK
+    testing: assets/app.js            OK
+    testing: assets/c12-4-runtime-matrix.json   OK
+    testing: assets/index.html        OK
+    testing: assets/root-app.js       OK
+    testing: assets/root-html-default-rendering.html   OK
+    testing: AndroidManifest.xml      OK
+    testing: resources.arsc           OK
+    testing: classes2.dex             OK
+    testing: lib/arm64-v8a/libspinon_bootstrap.so   OK
+No errors detected in compressed data of platforms/android/app/build/outputs/apk/debug/app-debug.apk.
+469a98c2ca5426afaf6f47f6772d2f1c8b909072ff7470414b42f0a1ecd02466  platforms/android/app/build/outputs/apk/debug/app-debug.apk

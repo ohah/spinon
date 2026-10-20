@@ -137,6 +137,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "auto-fill-two-track-columns-both-342", "auto-fill-two-track-columns-prefix-200",
             "auto-fill-two-track-columns-suffix-200", "auto-fill-two-track-rows-both-190",
             "auto-fill-two-track-rows-both-200", "auto-fill-two-track-rows-both-342",
+            "auto-fit-min-columns-both-190", "auto-fit-min-columns-both-200",
+            "auto-fit-min-columns-both-342", "auto-fit-min-rows-both-190",
+            "auto-fit-min-rows-both-200", "auto-fit-min-rows-both-342",
+            "auto-fit-min-columns-prefix-200", "auto-fit-min-columns-suffix-200",
+            "auto-fit-min-columns-none-200", "auto-fit-min-rows-prefix-200",
+            "auto-fit-min-rows-suffix-200", "auto-fit-min-rows-none-200",
+            "auto-fit-min-columns-single-200", "auto-fit-min-rows-single-200",
+            "auto-fit-min-columns-span-two-200", "auto-fit-min-rows-span-two-200",
+            "auto-fit-min-columns-second-repeat-200", "auto-fit-min-rows-second-repeat-200",
+            "auto-fit-min-columns-fixed-pattern-200", "auto-fit-min-rows-fixed-pattern-200",
             "columns-fill-control", "rows-fill-control", "both-fill-square", "both-fill-asymmetric",
             "both-fit-empty", "both-fit-single", "both-fit-span-two", "both-fit-second-repeat",
             "columns-fit-rows-fill-empty", "columns-fill-rows-fit-empty",
@@ -241,6 +251,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        String autoFitMinimumSizeFrame = c114AutoFitMinimumSizeRootFrame(sceneId);
+        if (autoFitMinimumSizeFrame != null) return autoFitMinimumSizeFrame;
         switch (sceneId) {
             case "column-auto-natural-ratio":
             case "column-target-max-width-clamp":
@@ -345,6 +357,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        String autoFitMinimumSizeItemFrame = c114AutoFitMinimumSizeItemFrame(sceneId);
+        if (autoFitMinimumSizeItemFrame != null) return autoFitMinimumSizeItemFrame;
         switch (sceneId) {
             case "column-auto-natural-ratio":
                 return "width=12,height=8";
@@ -387,7 +401,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "auto-fill-pattern-neighbors":
                 return "width=10,height=40";
             case "auto-fit-fixed-neighbors":
-                return "width=154,height=40";
+                return "width=162,height=40";
             case "auto-fit-empty-neighbors":
             case "auto-fill-max-size-neighbors":
             case "auto-fill-min-size-neighbors":
@@ -776,6 +790,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
+        String autoFitMinimumSizeNodeFrames = c114AutoFitMinimumSizeNodeFrames(sceneId);
+        if (autoFitMinimumSizeNodeFrames != null) return autoFitMinimumSizeNodeFrames;
         switch (sceneId) {
             case "auto-fill-overflow-neighbors":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=60;"
@@ -789,18 +805,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "both-fill-square":
             case "both-fit-single":
             case "both-fit-span-two":
-            case "both-fit-second-repeat":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
                         + "1:node=2,x=28,y=28,width=12,height=12]";
+            case "both-fit-second-repeat":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
+                        + "1:node=2,x=20,y=20,width=12,height=12]";
             case "both-fill-asymmetric":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=266;"
                         + "1:node=2,x=28,y=28,width=12,height=12]";
             case "columns-fit-rows-fill-second-repeat":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
-                        + "1:node=2,x=28,y=109,width=12,height=12]";
+                        + "1:node=2,x=20,y=109,width=12,height=12]";
             case "columns-fill-rows-fit-second-repeat":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
-                        + "1:node=2,x=109,y=28,width=12,height=12]";
+                        + "1:node=2,x=109,y=20,width=12,height=12]";
             case "auto-fill-two-track-columns-both-190":
             case "auto-fill-two-track-columns-both-200":
             case "auto-fill-two-track-columns-both-342":
@@ -817,7 +835,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + "1:node=2,x=190,y=0,width=10,height=40]";
             case "auto-fit-fixed-neighbors":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;"
-                        + "1:node=2,x=28,y=0,width=154,height=40]";
+                        + "1:node=2,x=28,y=0,width=162,height=40]";
             case "grid-gap-definite-percent":
                 return c114GapNodeFrames("100", "40", "50", "20");
             case "grid-gap-cyclic-percent":
@@ -879,6 +897,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        String autoFitMinimumSizeItemFrame = c114AutoFitMinimumSizeItemFrame(sceneId);
+        if (autoFitMinimumSizeItemFrame != null) return autoFitMinimumSizeItemFrame.isEmpty() ? 1 : 2;
         if (sceneId.equals("auto-fit-span-neighbors")) return 3;
         if (sceneId.equals("auto-fit-empty-neighbors")
                 || sceneId.equals("auto-fill-max-size-neighbors")
@@ -888,6 +908,39 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("columns-fill-rows-fit-empty")
                 || sceneId.startsWith("auto-fill-two-track-")) return 1;
         return sceneId.startsWith("grid-gap-") ? 5 : 2;
+    }
+
+    private static boolean c114IsAutoFitMinimumSizeScene(String sceneId) {
+        return sceneId.startsWith("auto-fit-min-");
+    }
+
+    private static String c114AutoFitMinimumSizeRootFrame(String sceneId) {
+        if (!c114IsAutoFitMinimumSizeScene(sceneId)) return null;
+        String[] parts = sceneId.split("-");
+        int size = Integer.parseInt(parts[parts.length - 1]);
+        return sceneId.contains("-columns-")
+                ? "width=" + size + ",height=60"
+                : "width=50,height=" + size;
+    }
+
+    private static String c114AutoFitMinimumSizeItemFrame(String sceneId) {
+        if (!c114IsAutoFitMinimumSizeScene(sceneId)) return null;
+        return sceneId.contains("-single-") || sceneId.contains("-span-two-")
+                || sceneId.contains("-second-repeat-") ? "width=12,height=12" : "";
+    }
+
+    private static String c114AutoFitMinimumSizeNodeFrames(String sceneId) {
+        String rootFrame = c114AutoFitMinimumSizeRootFrame(sceneId);
+        if (rootFrame == null) return null;
+        String itemFrame = c114AutoFitMinimumSizeItemFrame(sceneId);
+        if (itemFrame.isEmpty()) {
+            return "node_frames_css_px=[0:node=1,x=0,y=0," + rootFrame + "]";
+        }
+        String position = sceneId.contains("-second-repeat-")
+                ? sceneId.contains("-columns-") ? "x=20,y=0" : "x=0,y=20"
+                : sceneId.contains("-columns-") ? "x=28,y=0" : "x=0,y=28";
+        return "node_frames_css_px=[0:node=1,x=0,y=0," + rootFrame
+                + ";1:node=2," + position + ",width=12,height=12]";
     }
 
     private static boolean isC114GridTrackSizingPixelSamples(

@@ -11,7 +11,7 @@
 | 5 | 2-track fragment의 두 번째 fixed `20px`을 반복 기여에서 빠뜨리는가? | **통과.** 반복당 기여는 `40px + 20px`으로 명시하고 resolved track list 전체를 저장한다. |
 | 6 | 마지막 gutter를 중복 포함하거나 prefix/suffix 사이 gap 하나를 빼는가? | **통과.** both-neighbor 식 `38 + 76n`에 repeat 밖 고정 track, fragment 내부/경계 gap을 포함한다. |
 | 7 | prefix-only와 suffix-only의 neighbor 순서를 바꾸거나 양쪽을 같은 값으로 간주하는가? | **통과.** `20 + 76n`과 `10 + 76n`을 별도로 두고 각 축을 관찰한다. |
-| 8 | neighbor가 없는 list의 첫/마지막 gutter 개수를 잘못 세는가? | **통과.** 식 `68n - 8`과 양축 no-neighbor controls가 포함돼 있다. |
+| 8 | neighbor가 없는 list의 첫/마지막 gutter 개수를 잘못 세는가? | **사후 정정 필요.** 초기 검토는 반복 fragment의 두 번째 gutter와 반복 사이 경계 gutter를 하나로 잘못 셌다. 첫 반복은 `68px`, 다음 반복마다 `76px`이므로 전체 식은 `76n - 8`; 200px minimum-size의 기대 반복 수는 3회다. 계획의 계산 정정 절과 implementation matrix가 이 값을 사용한다. |
 | 9 | 190/200/342 boundary에서 ceil/minimum과 floor/preferred-size 선택을 뒤섞는가? | **통과.** minimum 경계 2/3/4와 definite preferred-size 2를 별도로 비교한다. |
 | 10 | repeated track 수를 repeat component 횟수로 잘못 나누거나 explicit track을 포함하는가? | **통과.** JSON에는 전체 track list와 repeat 밖 고정 track 수가 남고 count를 fragment track 수에서 산출한다. |
 | 11 | row matrix를 column 기대값에 재사용해 axis별 오류를 숨기는가? | **통과.** 각 sizing basis·mode·scene을 columns와 rows에 독립 생성하고 모든 JSON record가 axis를 보유한다. |
