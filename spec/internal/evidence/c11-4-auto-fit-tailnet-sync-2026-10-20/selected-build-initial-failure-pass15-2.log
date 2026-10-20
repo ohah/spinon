@@ -1,0 +1,17 @@
+Resolving dependencies
+Resolved, downloaded and extracted [2]
+🔥 Rspress v1.47.2
+
+error   Failed to load file with jiti: [worktree]/spec/internal/evidence/c11-4-auto-fit-tailnet-sync-2026-10-20/rspress.tailnet-sync-pass15.config.ts
+[worktree]/spec/internal/evidence/c11-4-auto-fit-tailnet-sync-2026-10-20/rspress.tailnet-sync-pass15.config.ts:7
+  throw new Error('SPINON_TAILNET_RUN must be pass6, pass7, pass8, or pass9');
+        ^
+
+Error: SPINON_TAILNET_RUN must be pass6, pass7, pass8, or pass9
+    at [worktree]/spec/internal/evidence/c11-4-auto-fit-tailnet-sync-2026-10-20/rspress.tailnet-sync-pass15.config.ts:7:9
+    at async Function.import ([temporary-build-path]:1:187718)
+    at async loadConfig_loadConfig (file://[temporary-build-path]:4878:28)
+    at async loadConfigFile (file://[temporary-build-path]:24:25)
+    at async CAC.<anonymous> (file://[temporary-build-path]:164:20)
+
+Node.js v24.20.0

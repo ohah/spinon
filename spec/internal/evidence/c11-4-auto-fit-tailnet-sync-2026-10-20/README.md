@@ -1,5 +1,27 @@
 # C11.4 auto-fit 조사 계획 Tailnet 로드맵 동기화
 
+## PR #372 병합 후 갱신 · pass15
+
+PR [#372](https://github.com/ohah/spinon/pull/372)은 2026-10-20 Rebase and merge로 병합됐다(merge SHA 9996ee2089eaa4c0e86506af7fcea8f0cec3491c). GitHub required status check는 설정되어 있지 않아 CI 통과로 표시하지 않는다. C11.4 체크는 미완료로 유지하며 공개 완료 집계도 올리지 않았다.
+
+Tailnet /spinon/에 병합된 [공식 상태](../../../../spec/STATUS.md), [C11.4 계획](../../../../plan/c11-4-auto-fit-min-size-axis.md), [공개 로드맵](../../../public/roadmap.html)을 동기화한다. 아래 네 장은 PR #372의 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 고른 overflow와 second-repeat 장면이다. 전체 53-scene 행렬과 실행 로그는 [구현 근거](../c11-4-auto-fit-min-size-axis-implementation-2026-10-20/README.md)에 연결했다.
+
+### Android API 37 ARM64 AVD
+
+![root 경계 밖으로 넘치는 Grid item](./pass15-android-api37-overflow.png)
+
+![auto-fit 두 번째 반복에 놓인 item](./pass15-android-api37-second-repeat.png)
+
+### iPhone 17 Pro · iOS 26.2 Simulator
+
+![root 경계 밖으로 넘치는 Grid item](./pass15-iphone17pro-overflow.png)
+
+![auto-fit 두 번째 반복에 놓인 item](./pass15-iphone17pro-second-repeat.png)
+
+이 화면은 Simulator/AVD 결과다. 실기기, Android hardware GPU, iOS compositor 이후 픽셀, WPT, 전체 CSS Grid 지원 완료를 주장하지 않는다.
+
+---
+
 **기준:** PR [#370](https://github.com/ohah/spinon/pull/370) Rebase and merge, merge SHA `b7a2f495fbae7722166f5c5454bfa471eef4b286`.<br>
 **범위:** PR #370에서 추가한 auto-fit 조사 계획, Chrome 사전 관찰, 공식 상태 대장 및 공개 로드맵을 기존 Tailnet 정적 미리보기 `/spinon/`에 반영했다. GitHub Pages와 앱은 실행하지 않았다.
 

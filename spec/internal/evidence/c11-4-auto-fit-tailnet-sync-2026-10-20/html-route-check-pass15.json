@@ -1,0 +1,46 @@
+{
+  "pass": "pass15",
+  "origin": "https://macstudio.tailed42f2.ts.net",
+  "base_path": "/spinon/",
+  "route_count": 5,
+  "all_opened": true,
+  "all_images_loaded": true,
+  "no_same_origin_links_outside_base": true,
+  "routes": [
+    {
+      "path": "/spinon/roadmap.html",
+      "opened": true,
+      "broken_images": 0,
+      "same_origin_links_outside_base": 0,
+      "screenshot": "tailnet-roadmap-agent-browser-pass15.png"
+    },
+    {
+      "path": "/spinon/STATUS.html",
+      "opened": true,
+      "broken_images": 0,
+      "same_origin_links_outside_base": 0,
+      "screenshot": "tailnet-status-agent-browser-pass15.png"
+    },
+    {
+      "path": "/spinon/plan/c11-4-auto-fit-min-size-axis.html",
+      "opened": true,
+      "broken_images": 0,
+      "same_origin_links_outside_base": 0,
+      "screenshot": "tailnet-plan-agent-browser-pass15.png"
+    },
+    {
+      "path": "/spinon/internal/evidence/c11-4-auto-fit-tailnet-sync-2026-10-20/README.html",
+      "opened": true,
+      "broken_images": 0,
+      "same_origin_links_outside_base": 0,
+      "screenshot": "tailnet-sync-evidence-agent-browser-pass15.png"
+    },
+    {
+      "path": "/spinon/internal/evidence/c11-4-auto-fit-min-size-axis-implementation-2026-10-20/README.html",
+      "opened": true,
+      "broken_images": 0,
+      "same_origin_links_outside_base": 0,
+      "screenshot": "tailnet-implementation-evidence-agent-browser-pass15.png"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "pass": "pass15",
+  "failed_attempts": [
+    {
+      "file": "selected-build-initial-failure-pass15.log",
+      "cause": "bunx resolved temporary Rspress 1.47.2 and could not resolve the workspace @rspress/core module.",
+      "correction": "Reused the already installed workspace dependency and CLI pinned at Rspress 2.0.22."
+    },
+    {
+      "file": "selected-build-initial-failure-pass15-2.log",
+      "cause": "The copied Tailnet config retained its original pass6-pass9 guard.",
+      "correction": "Changed the config guard to pass15 and ran the pinned workspace CLI."
+    }
+  ],
+  "final_build": {
+    "file": "selected-build-pass15.log",
+    "version": "2.0.22",
+    "success": true,
+    "command": "SPINON_TAILNET_RUN=pass15 mise exec -- ./node_modules/.bin/rspress build --config ../../spec/internal/evidence/c11-4-auto-fit-tailnet-sync-2026-10-20/rspress.tailnet-sync-pass15.config.ts",
+    "dependency_source": "Reused the existing installed workspace dependency through temporary local symlinks; no dependency installation or lockfile change."
+  }
+}

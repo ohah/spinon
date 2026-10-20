@@ -1,0 +1,103 @@
+{
+  "pass": "pass15",
+  "tool": "Agent Browser",
+  "version": "0.31.1",
+  "origin": "https://macstudio.tailed42f2.ts.net",
+  "completion_count": 72,
+  "completion_count_source": "Roadmap SVG kanban rendered from official spec/STATUS.md task state",
+  "official_status_checkbox_c11_4": false,
+  "merged_pr_372_sha_visible": true,
+  "routes": [
+    {
+      "path": "/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "same_origin_links_outside_base": 0,
+      "broken_images": 0,
+      "screenshot": "tailnet-roadmap-agent-browser-pass15.png",
+      "viewport": [
+        1280,
+        633
+      ]
+    },
+    {
+      "path": "/spinon/STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "c11_4_checkbox_checked": false,
+      "merge_sha_visible": true,
+      "ci_not_claimed": true,
+      "same_origin_links_outside_base": 0,
+      "broken_images": 0,
+      "screenshot": "tailnet-status-agent-browser-pass15.png",
+      "viewport": [
+        1280,
+        633
+      ]
+    },
+    {
+      "path": "/spinon/plan/c11-4-auto-fit-min-size-axis.html",
+      "merge_sha_visible": true,
+      "completion_unchanged": true,
+      "same_origin_links_outside_base": 0,
+      "broken_images": 0,
+      "screenshot": "tailnet-plan-agent-browser-pass15.png",
+      "viewport": [
+        1280,
+        633
+      ]
+    },
+    {
+      "path": "/spinon/internal/evidence/c11-4-auto-fit-tailnet-sync-2026-10-20/README.html",
+      "images_loaded": 4,
+      "broken_images": 0,
+      "image_dimensions": [
+        [
+          1080,
+          2400
+        ],
+        [
+          1080,
+          2400
+        ],
+        [
+          1206,
+          2622
+        ],
+        [
+          1206,
+          2622
+        ]
+      ],
+      "same_origin_links_outside_base": 0,
+      "screenshot": "tailnet-sync-evidence-agent-browser-pass15.png",
+      "viewport": [
+        1280,
+        633
+      ]
+    },
+    {
+      "path": "/spinon/internal/evidence/c11-4-auto-fit-min-size-axis-implementation-2026-10-20/README.html",
+      "images_loaded": 2,
+      "broken_images": 0,
+      "image_dimensions": [
+        [
+          1080,
+          2400
+        ],
+        [
+          1206,
+          2622
+        ]
+      ],
+      "same_origin_links_outside_base": 0,
+      "screenshot": "tailnet-implementation-evidence-agent-browser-pass15.png",
+      "viewport": [
+        1280,
+        633
+      ]
+    }
+  ],
+  "session": "spinon-c11-4-tailnet-pass15-a03b37e04ced",
+  "session_closed": true,
+  "browser_process_pid": null,
+  "existing_default_session_left_untouched": true
+}
