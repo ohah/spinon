@@ -99,12 +99,61 @@ test('수집기 인자는 필수 provenance와 화면 확인을 요구한다', (
   assert.throws(() => parseOptions(invalidEvent), /eventN/);
   assert.throws(() => parseOptions([...base, '--confirm-r05-screen', '--app-id', 'not-a-package']), /패키지 이름/);
   assert.equal(parseOptions([...base, '--confirm-r05-screen']).contactLimit, 30);
+  assert.equal(parseOptions([...base, '--confirm-r05-screen']).allowExtraEmulators, false);
+  assert.equal(parseOptions([...base, '--confirm-r05-screen', '--allow-extra-emulators']).allowExtraEmulators, true);
+  assert.throws(() => parseOptions([...base, '--confirm-r05-screen', '--allow-extra-emulators', '--allow-extra-emulators']), /두 번/);
+  assert.throws(() => parseOptions([...base, '--confirm-r05-screen', '--allow-extra-emulators', 'true']), /알 수 없는 옵션/);
 });
 
-test('ADB 기기 목록에 지정된 online 기기 하나만 허용한다', () => {
+test('기본값은 지정된 단일 online 기기만 허용한다', () => {
   validateDeviceList('List of devices attached\ndevice-1\tdevice product:x\n', 'device-1');
+  validateDeviceList('List of devices attached\r\ndevice-1\tdevice product:x\r\n', 'device-1');
   assert.throws(() => validateDeviceList('List of devices attached\ndevice-1\tdevice\ndevice-2\tdevice\n', 'device-1'), /일치하지 않습니다/);
+  assert.throws(() => validateDeviceList(
+    'List of devices attached\ndevice-physical-1\tdevice\nemulator-5554\tdevice product:sdk\n',
+    'device-physical-1',
+  ), /일치하지 않습니다/);
   assert.throws(() => validateDeviceList('List of devices attached\ndevice-1\toffline\n', 'device-1'), /일치하지 않습니다/);
+  assert.throws(() => validateDeviceList('List of devices attached\ndevice-1\tunauthorized\n', 'device-1'), /일치하지 않습니다/);
+  assert.throws(() => validateDeviceList('List of devices attached\ndevice-2\tdevice\n', 'device-1'), /일치하지 않습니다/);
+  assert.throws(() => validateDeviceList('device-physical-1\tdevice\n', 'device-physical-1'), /header/);
+  assert.throws(() => validateDeviceList('List of devices attached\nemulator-5554\tdevice\n', 'emulator-5554'), /실기기/);
+});
+
+test('opt-in은 지정 serial을 유지하면서 online AVD 추가 연결만 허용한다', () => {
+  validateDeviceList(
+    'List of devices attached\ndevice-physical-1\tdevice usb:0-1\nemulator-5554\tdevice product:sdk\nemulator-5556\tdevice product:sdk\n',
+    'device-physical-1',
+    true,
+  );
+});
+
+test('AVD opt-in도 추가 physical·offline·중복 serial을 허용하지 않는다', () => {
+  assert.throws(() => validateDeviceList(
+    'List of devices attached\ndevice-physical-1\tdevice\nother-phone\tdevice\n',
+    'device-physical-1',
+    true,
+  ), /online AVD만 허용/);
+  assert.throws(() => validateDeviceList(
+    'List of devices attached\ndevice-physical-1\tdevice\nemulator-5554\toffline\n',
+    'device-physical-1',
+    true,
+  ), /online AVD만 허용/);
+  assert.throws(() => validateDeviceList(
+    'List of devices attached\ndevice-physical-1\tdevice\nemulator-5554\tunauthorized\n',
+    'device-physical-1',
+    true,
+  ), /online AVD만 허용/);
+  assert.throws(() => validateDeviceList(
+    'List of devices attached\ndevice-physical-1\tdevice\nemulator-test\tdevice\n',
+    'device-physical-1',
+    true,
+  ), /online AVD만 허용/);
+  assert.throws(() => validateDeviceList(
+    'List of devices attached\ndevice-physical-1\tdevice\ndevice-physical-1\tdevice\n',
+    'device-physical-1',
+    true,
+  ), /online AVD만 허용/);
 });
 
 test('입력 노드 경로·이름·direct 속성과 MT tracking capability를 모두 확인한다', () => {
