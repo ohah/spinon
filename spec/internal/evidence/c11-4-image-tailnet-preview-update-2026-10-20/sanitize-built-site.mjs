@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, '../../../..');
 const run = process.argv[2];
-if (!['pass6', 'pass7', 'pass8', 'pass9', 'pass11', 'pass12', 'pass13'].includes(run)) throw new Error('usage: node sanitize-built-site.mjs pass6|pass7|pass8|pass9|pass11|pass12|pass13');
+if (!['pass6', 'pass7', 'pass8', 'pass9', 'pass11', 'pass12', 'pass13', 'pass14'].includes(run)) throw new Error('usage: node sanitize-built-site.mjs pass6|pass7|pass8|pass9|pass11|pass12|pass13|pass14');
 
 const outputRoot = path.join(repoRoot, 'build/spinon', `c11-4-image-tailnet-site-${run}`);
 const textExtensions = new Set(['.css', '.html', '.js', '.json', '.map', '.svg', '.txt']);
