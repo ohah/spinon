@@ -4,7 +4,7 @@
 **요청:** 2026-10-21 사용자가 Android 실기기 연결을 알리고 Android 실기기 검증을 요청했다.
 **범위:** 기존 53-scene 기대값을 Samsung SM-S731N에서 다시 실행하는 보충 검증이다. C11.4 구현 완료 판정이나 공개 지원 범위를 넓히지 않는다.
 
-**실행 결과:** 계획 실패 관점 20개를 기록했고, SM-S731N Android 16/API 36에서 53/53 scene을 통과했다. API 37 ARM64 AVD 대비 used track과 관측 node frame의 최대 차이는 모두 0 CSS px, overflow SurfaceView 표본은 4/4 exact다. [기기·로그·화면과 한계](../spec/internal/evidence/c11-4-auto-fit-min-size-axis-physical-android-2026-10-21/README.md).
+**실행 결과:** 계획 실패 관점 20개를 기록했고, SM-S731N Android 16/API 36에서 53/53 scene을 통과했다. API 37 ARM64 AVD 대비 used track과 관측 node frame의 최대 차이는 모두 0 CSS px, overflow SurfaceView 표본은 4/4 exact다. 결과는 [PR #405](https://github.com/ohah/spinon/pull/405)에서 검토 중이다. [기기·로그·화면과 한계](../spec/internal/evidence/c11-4-auto-fit-min-size-axis-physical-android-2026-10-21/README.md).
 
 계획 사전 검토: [서로 다른 실패 관점 20개](../spec/internal/evidence/c11-4-auto-fit-min-size-axis-physical-android-2026-10-21/plan-review-20.md).
 

@@ -27,11 +27,11 @@
 22. **layout ready를 paint 완료로 표현** — 53/53 box count가 맞는 draw/present marker가 별도 확인됐다.
 23. **표면 PixelCopy를 compositor 이후 정확도로 확장** — README와 roadmap에서 앱 SurfaceView 한계와 4/4 sample만 말한다.
 24. **PR 화면이 다른 장면의 이미지** — README/PR image path는 실제 SM-S731N에서 캡처한 second-repeat 및 overflow scene이다.
-25. **이미지 URL이 branch 파일과 어긋남** — PR body는 해당 branch의 raw GitHub image URL을 사용하고 Agent Browser에서 로드를 확인한다.
+25. **이미지 URL이 branch 파일과 어긋남** — PR #405의 raw GitHub image URL 두 개를 Agent Browser로 열어 1080×2340 natural dimensions를 확인했다.
 26. **PR 첨부 때문에 이미지가 변형됨** — PNG 원본을 그대로 커밋하고 각 파일 SHA-256을 manifest에 기록한다.
 27. **빌드 warning을 숨김** — compile SDK 37.2와 AGP 8.13.2 검증 범위 경고를 README에 남겼다.
 28. **증거가 재현 불가능** — 고정 AVD 결과, serial, run ID, build command, runner, comparator, raw logs, screenshots와 hash가 연결된다.
 29. **무관한 미추적 evidence가 PR에 들어감** — stage는 새 후속 evidence 디렉터리와 정확히 열거한 계획/status/roadmap/harness만 포함한다.
-30. **CI 또는 PR gate를 사전 통과로 주장** — PR 생성 뒤 현재 required checks와 merge state를 조회하고 실제 값만 보고한다.
+30. **CI 또는 PR gate를 사전 통과로 주장** — PR #405는 mergeStateStatus=CLEAN, mergeable=MERGEABLE이며 `gh pr checks --required`는 checks 없음으로 응답했다. CI 통과라고 보고하지 않는다.
 
 이 검토는 최종 diff와 수집된 Android 실기기 자료를 기준으로 했다. PR 본문의 두 image URL은 게시 후 Agent Browser로 실제 로드를 확인하고 해당 browser process를 닫는다.
