@@ -1,0 +1,434 @@
+$ RSPRESS_PERSISTENT_CACHE=false rspress build --config "/Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-pr405-tailnet-roadmap-sync-2026-10-21/rspress-pass26.config.ts"
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: /Users/yoonhb/Documents/workspace/spinon/packages/docs
+warn    Current dist path: /Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-site-pass26
+error   build failed in 1.58s (node)
+error   build failed in 1.70s (web)
+error   Build errors:
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c13-3-android-physical-2026-10-21/README.md:3:1-49
+  × Module not found: Can't resolve 'gesture-positive-after.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c13-3-android-physical-2026-10-21'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "gesture-positive-after.png";
+   · ────────────────────────────────────────────────
+ 4 │ function _createMdxContent(props) {
+ 5 │     const _components = {
+   ╰────
+  help: Did you mean './gesture-positive-after.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c13-3-android-physical-2026-10-21/README.md ×
+
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.md:3:1-60
+  × Module not found: Can't resolve 'screenshots/direct-touch-controls.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "screenshots/direct-touch-controls.png";
+   · ───────────────────────────────────────────────────────────
+ 4 │ import image1 from "screenshots/scroll-type-masks.png";
+ 5 │ function _createMdxContent(props) {
+   ╰────
+  help: Did you mean './screenshots/direct-touch-controls.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.md ×
+
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.md:4:1-56
+  × Module not found: Can't resolve 'screenshots/scroll-type-masks.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "screenshots/direct-touch-controls.png";
+ 4 │ import image1 from "screenshots/scroll-type-masks.png";
+   · ───────────────────────────────────────────────────────
+ 5 │ function _createMdxContent(props) {
+ 6 │     const _components = {
+   ╰────
+  help: Did you mean './screenshots/scroll-type-masks.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.md ×
+
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c13-3-android-physical-2026-10-21/README.md:3:1-49
+  × Module not found: Can't resolve 'gesture-positive-after.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c13-3-android-physical-2026-10-21'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "gesture-positive-after.png";
+   · ────────────────────────────────────────────────
+ 4 │ function _createMdxContent(props) {
+ 5 │     const _components = {
+   ╰────
+  help: Did you mean './gesture-positive-after.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c13-3-android-physical-2026-10-21/README.md ×
+
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.md:3:1-60
+  × Module not found: Can't resolve 'screenshots/direct-touch-controls.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "screenshots/direct-touch-controls.png";
+   · ───────────────────────────────────────────────────────────
+ 4 │ import image1 from "screenshots/scroll-type-masks.png";
+ 5 │ function _createMdxContent(props) {
+   ╰────
+  help: Did you mean './screenshots/direct-touch-controls.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.md ×
+
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.md:4:1-56
+  × Module not found: Can't resolve 'screenshots/scroll-type-masks.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "screenshots/direct-touch-controls.png";
+ 4 │ import image1 from "screenshots/scroll-type-masks.png";
+   · ───────────────────────────────────────────────────────
+ 5 │ function _createMdxContent(props) {
+ 6 │     const _components = {
+   ╰────
+  help: Did you mean './screenshots/scroll-type-masks.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.md ×
+
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c11-4-pr397-tailnet-roadmap-sync-2026-10-21/rspress-pass24.config.ts:1:1-70
+  × Module not found: Can't resolve '../../../../packages/docs/rspress.config.ts' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c11-4-pr397-tailnet-roadmap-sync-2026-10-21'
+   ╭─[1:0]
+ 1 │ import baseConfig from '../../../../packages/docs/rspress.config.ts';
+   · ─────────────────────────────────────────────────────────────────────
+ 2 │ import path from 'node:path';
+ 3 │ import { fileURLToPath } from 'node:url';
+   ╰────
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c11-4-pr397-tailnet-roadmap-sync-2026-10-21/rspress-pass24.config.ts ×
+
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c11-4-typed-implicit-tailnet-sync-2026-10-21/rspress-pass25.config.ts:1:1-70
+  × Module not found: Can't resolve '../../../../packages/docs/rspress.config.ts' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c11-4-typed-implicit-tailnet-sync-2026-10-21'
+   ╭─[1:0]
+ 1 │ import baseConfig from '../../../../packages/docs/rspress.config.ts';
+   · ─────────────────────────────────────────────────────────────────────
+ 2 │ import path from 'node:path';
+ 3 │ import { fileURLToPath } from 'node:url';
+   ╰────
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c11-4-typed-implicit-tailnet-sync-2026-10-21/rspress-pass25.config.ts ×
+
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c11-4-pr397-tailnet-roadmap-sync-2026-10-21/rspress-pass24.config.ts:1:1-70
+  × Module not found: Can't resolve '../../../../packages/docs/rspress.config.ts' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c11-4-pr397-tailnet-roadmap-sync-2026-10-21'
+   ╭─[1:0]
+ 1 │ import baseConfig from '../../../../packages/docs/rspress.config.ts';
+   · ─────────────────────────────────────────────────────────────────────
+ 2 │ import path from 'node:path';
+ 3 │ import { fileURLToPath } from 'node:url';
+   ╰────
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c11-4-pr397-tailnet-roadmap-sync-2026-10-21/rspress-pass24.config.ts ×
+
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c11-4-typed-implicit-tailnet-sync-2026-10-21/rspress-pass25.config.ts:1:1-70
+  × Module not found: Can't resolve '../../../../packages/docs/rspress.config.ts' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c11-4-typed-implicit-tailnet-sync-2026-10-21'
+   ╭─[1:0]
+ 1 │ import baseConfig from '../../../../packages/docs/rspress.config.ts';
+   · ─────────────────────────────────────────────────────────────────────
+ 2 │ import path from 'node:path';
+ 3 │ import { fileURLToPath } from 'node:url';
+   ╰────
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c11-4-typed-implicit-tailnet-sync-2026-10-21/rspress-pass25.config.ts ×
+
+File: node:path:1:1
+  × Module build failed:
+  ╰─▶   × Reading from "node:path" is not handled by plugins (Unhandled scheme).
+        │ Rspack supports "data:" and "file:" URIs by default.
+        │ You may need an additional plugin to handle "node:" URIs.
+
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ... (1 hidden)
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c11-4-typed-implicit-tailnet-sync-2026-10-21/rspress-pass25.config.ts
+  node:path ×
+
+Error: "node:*" is a built-in Node.js module and cannot be imported in client-side code.
+
+Solution: Check if you need to import Node.js module.
+  - If not needed, remove the import.
+  - If needed, use "@rsbuild/plugin-node-polyfill" to polyfill it. (See https://npmjs.com/package/@rsbuild/plugin-node-polyfill)
+
+File: node:url:1:1
+  × Module build failed:
+  ╰─▶   × Reading from "node:url" is not handled by plugins (Unhandled scheme).
+        │ Rspack supports "data:" and "file:" URIs by default.
+        │ You may need an additional plugin to handle "node:" URIs.
+
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ... (1 hidden)
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c11-4-typed-implicit-tailnet-sync-2026-10-21/rspress-pass25.config.ts
+  node:url ×
+
+Error: "node:*" is a built-in Node.js module and cannot be imported in client-side code.
+
+Solution: Check if you need to import Node.js module.
+  - If not needed, remove the import.
+  - If needed, use "@rsbuild/plugin-node-polyfill" to polyfill it. (See https://npmjs.com/package/@rsbuild/plugin-node-polyfill)
+
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c13-3-android-physical-2026-10-21/README.md:3:1-49
+  × Module not found: Can't resolve 'gesture-positive-after.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c13-3-android-physical-2026-10-21'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "gesture-positive-after.png";
+   · ────────────────────────────────────────────────
+ 4 │ function _createMdxContent(props) {
+ 5 │     const _components = {
+   ╰────
+  help: Did you mean './gesture-positive-after.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c13-3-android-physical-2026-10-21/README.md ×
+
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.md:3:1-60
+  × Module not found: Can't resolve 'screenshots/direct-touch-controls.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "screenshots/direct-touch-controls.png";
+   · ───────────────────────────────────────────────────────────
+ 4 │ import image1 from "screenshots/scroll-type-masks.png";
+ 5 │ function _createMdxContent(props) {
+   ╰────
+  help: Did you mean './screenshots/direct-touch-controls.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.md ×
+
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.md:4:1-56
+  × Module not found: Can't resolve 'screenshots/scroll-type-masks.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "screenshots/direct-touch-controls.png";
+ 4 │ import image1 from "screenshots/scroll-type-masks.png";
+   · ───────────────────────────────────────────────────────
+ 5 │ function _createMdxContent(props) {
+ 6 │     const _components = {
+   ╰────
+  help: Did you mean './screenshots/scroll-type-masks.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.md ×
+
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c13-3-android-physical-2026-10-21/README.md:3:1-49
+  × Module not found: Can't resolve 'gesture-positive-after.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c13-3-android-physical-2026-10-21'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "gesture-positive-after.png";
+   · ────────────────────────────────────────────────
+ 4 │ function _createMdxContent(props) {
+ 5 │     const _components = {
+   ╰────
+  help: Did you mean './gesture-positive-after.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c13-3-android-physical-2026-10-21/README.md ×
+
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.md:3:1-60
+  × Module not found: Can't resolve 'screenshots/direct-touch-controls.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "screenshots/direct-touch-controls.png";
+   · ───────────────────────────────────────────────────────────
+ 4 │ import image1 from "screenshots/scroll-type-masks.png";
+ 5 │ function _createMdxContent(props) {
+   ╰────
+  help: Did you mean './screenshots/direct-touch-controls.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.md ×
+
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.md:4:1-56
+  × Module not found: Can't resolve 'screenshots/scroll-type-masks.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "screenshots/direct-touch-controls.png";
+ 4 │ import image1 from "screenshots/scroll-type-masks.png";
+   · ───────────────────────────────────────────────────────
+ 5 │ function _createMdxContent(props) {
+ 6 │     const _components = {
+   ╰────
+  help: Did you mean './screenshots/scroll-type-masks.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.md ×
+
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c11-4-pr397-tailnet-roadmap-sync-2026-10-21/rspress-pass24.config.ts:1:1-70
+  × Module not found: Can't resolve '../../../../packages/docs/rspress.config.ts' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c11-4-pr397-tailnet-roadmap-sync-2026-10-21'
+   ╭─[1:0]
+ 1 │ import baseConfig from '../../../../packages/docs/rspress.config.ts';
+   · ─────────────────────────────────────────────────────────────────────
+ 2 │ import path from 'node:path';
+ 3 │ import { fileURLToPath } from 'node:url';
+   ╰────
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c11-4-pr397-tailnet-roadmap-sync-2026-10-21/rspress-pass24.config.ts ×
+
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c11-4-typed-implicit-tailnet-sync-2026-10-21/rspress-pass25.config.ts:1:1-70
+  × Module not found: Can't resolve '../../../../packages/docs/rspress.config.ts' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c11-4-typed-implicit-tailnet-sync-2026-10-21'
+   ╭─[1:0]
+ 1 │ import baseConfig from '../../../../packages/docs/rspress.config.ts';
+   · ─────────────────────────────────────────────────────────────────────
+ 2 │ import path from 'node:path';
+ 3 │ import { fileURLToPath } from 'node:url';
+   ╰────
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/internal/evidence/c11-4-typed-implicit-tailnet-sync-2026-10-21/rspress-pass25.config.ts ×
+
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c11-4-pr397-tailnet-roadmap-sync-2026-10-21/rspress-pass24.config.ts:1:1-70
+  × Module not found: Can't resolve '../../../../packages/docs/rspress.config.ts' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c11-4-pr397-tailnet-roadmap-sync-2026-10-21'
+   ╭─[1:0]
+ 1 │ import baseConfig from '../../../../packages/docs/rspress.config.ts';
+   · ─────────────────────────────────────────────────────────────────────
+ 2 │ import path from 'node:path';
+ 3 │ import { fileURLToPath } from 'node:url';
+   ╰────
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c11-4-pr397-tailnet-roadmap-sync-2026-10-21/rspress-pass24.config.ts ×
+
+File: ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c11-4-typed-implicit-tailnet-sync-2026-10-21/rspress-pass25.config.ts:1:1-70
+  × Module not found: Can't resolve '../../../../packages/docs/rspress.config.ts' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c11-4-typed-implicit-tailnet-sync-2026-10-21'
+   ╭─[1:0]
+ 1 │ import baseConfig from '../../../../packages/docs/rspress.config.ts';
+   · ─────────────────────────────────────────────────────────────────────
+ 2 │ import path from 'node:path';
+ 3 │ import { fileURLToPath } from 'node:url';
+   ╰────
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-pr405-tailnet-root-pass26/spec/internal/evidence/c11-4-typed-implicit-tailnet-sync-2026-10-21/rspress-pass25.config.ts ×
+
+error   Rspack build failed.
+    at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/dist/m.js:4309:141
+    at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9074:31
+    at callback1 (file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9082:78)
+    at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9088:36
+    at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:12604:36
+error: script "docs:build" exited with code 1

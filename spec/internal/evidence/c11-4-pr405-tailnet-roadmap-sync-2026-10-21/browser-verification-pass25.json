@@ -1,0 +1,29 @@
+{
+  "browser": "Agent Browser",
+  "terminal_browser_used": false,
+  "session": "spinon-tailnet-pass25",
+  "checked_pages": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "visible_pr_405": true
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-fit-min-size-axis-physical-android-2026-10-21/README.html",
+      "title": "C11.4 definite minimum-size auto-fit 축별 Android 실기기 보충 검증 - 스피논 문서",
+      "visible_53_of_53": true,
+      "physical_screenshot_loaded": {
+        "complete": true,
+        "natural_width": 1080,
+        "natural_height": 2340
+      }
+    }
+  ],
+  "screenshots": [
+    "tailnet-roadmap-agent-browser-pass25.png",
+    "tailnet-evidence-agent-browser-pass25.png"
+  ],
+  "closed_after_use": true,
+  "browser_processes_after_close": [],
+  "preview_server_pid_1191_left_running": true
+}
