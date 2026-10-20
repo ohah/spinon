@@ -1,6 +1,6 @@
 # C11.4 직접 텍스트 다중 span 기여 계획
 
-**상태:** Chrome 155 사전 비교와 계획 실패 관점 20개 검토를 마쳤다. 구현은 시작하지 않았다. C11.4 체크와 공식 완료 수는 그대로 둔다.
+**상태:** Chrome 155 사전 비교와 계획 실패 관점 20개 검토를 마쳤고 계획 PR #407을 머지했다. 직접 텍스트 4개 장면의 Rust·Android 실기기·Android API 37 AVD·iOS 26.2 Simulator 검증을 모두 마쳤다. 구현/runtime 실패 관점 20개 검토와 fixture artifact 경계 확인도 마쳤으며, PR diff 적대 검토·PR 생성·필수 CI 확인·병합이 남아 있다. C11.4 체크와 공식 완료 수는 그대로 둔다.
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
@@ -41,7 +41,7 @@ Chrome 155의 used-track 문자열은 같은 네 장면에서 `[25,35,35,0]` 또
 1. 계획 PR을 `Rebase and merge`한 뒤 최신 `main`에서 구현 branch를 만든다. 별도 worktree를 만들지 않는다.
 2. fixture-test 경계에 multi-text scene router를 추가한다. 각 root, child order, item ID, text string, explicit line placement, Ahem style과 font revision을 exact allowlist로 확인한다.
 3. 각 direct item node ID에 paragraph style을 각각 연결하고, 모든 item에서 text intrinsic input이 만들어지는지 검사한다. 기존 단일-item text 및 auto-repeat text fixture의 입력·실패 경계를 회귀 검사한다.
-4. Rust oracle에서 각 item의 `Minimum`, `MinContent`, `MaxContent` contribution과 span, 처리 단계 `[2]` 또는 `[2, 3]`, 최종 track, 모든 root-relative item frame을 검사한다.
+4. Rust oracle에서 각 item의 min/max-content 원본 측정값과 span을 확인하고, min-content track이 요청하는 `Minimum`·`MinContent` contribution, 처리 단계 `[2]` 또는 `[2, 3]`, 최종 track, 모든 root-relative item frame을 검사한다. 이 트랙 정의에서는 각 item의 `Minimum` contribution이 자동 최소 크기 규칙에 따라 0이며 `MaxContent`는 원본 측정 입력에 보존되지만 track pass가 별도 질의하지 않는다.
 5. Android/iOS app fixture에 네 scene을 추가한다. Android validator는 finite 수치와 1/64 CSS px 허용치, exact node ID/order, 모든 trace chunk 및 draw/present를 검사한다. iOS Simulator도 같은 scene/frame/track/stage/draw 기준을 사용한다.
 6. 기본 product artifact에 새 scene ID/fixture symbol/text가 빠지고 opt-in fixture artifact에는 포함되는지 확인한다. `cargo fmt`, focused Rust tests, workspace Clippy와 fixture app builds를 실행한다.
 7. Android API 37 ARM64 AVD, 현재 연결된 Samsung SM-S731N Android 16/API 36, iPhone 17 Pro iOS 26.2 Simulator에서 4/4 scene을 실행해 Chrome expectation과 대조한다. Android physical 기기는 serial을 명시하고 설치 APK hash, model, API, ABI, renderer, run ID를 기록한다.
@@ -54,3 +54,10 @@ Chrome 155의 used-track 문자열은 같은 네 장면에서 `[25,35,35,0]` 또
 - Android API 37 AVD, Android 실기기, iOS Simulator에서 각각 4/4 scene이 통과해야 한다. OS compositor 이후 화면, iOS 실기기, glyph paint는 이 slice의 완료 조건이 아니다.
 - 기본/fixture artifact 경계, 20개 구현/runtime review, 30개 PR diff review와 현재 required CI 상태를 분리해 기록한다.
 - 이 제한 fixture 완료는 C11.4 전체, 일반 font/script, nested/anonymous item, 전체 intrinsic stage, WPT 또는 공개 CSS Grid 지원을 의미하지 않는다. STATUS checkbox와 공식 완료 수를 올리지 않는다.
+
+## 현재 실행 근거
+
+- [Android 실기기·API 37 AVD·iOS Simulator 실행, 화면, 빌드·검사 결과](../spec/internal/evidence/c11-4-text-multispan-contributions-2026-10-21/README.md)
+- [구현/runtime 적대 검토 20개](../spec/internal/evidence/c11-4-text-multispan-contributions-2026-10-21/implementation-review-20.md)
+- [기본/fixture artifact 경계](../spec/internal/evidence/c11-4-text-multispan-contributions-2026-10-21/artifact-boundary.md)
+- PR diff 30개 검토, required CI 확인, PR 병합은 아직 남아 있다. C11.4 checkbox와 공식 완료 수는 그대로다.

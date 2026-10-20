@@ -19,9 +19,16 @@ const multiSpanSceneIDs = new Set([
   'competing-span2-forward', 'competing-span2-reversed',
   'span2-before-span3', 'span3-before-span2',
 ]);
+const textMultiSpanSceneIDs = new Set([
+  'text-span2-forward', 'text-span2-reversed',
+  'text-span2-before-span3', 'text-span3-before-span2',
+]);
+const isTextMultiSpanRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => textMultiSpanSceneIDs.has(sceneID));
 const isMultiSpanRun = requestedSceneIDs?.length > 0
-  && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID));
-const runKind = requestedRunKind ?? (isMultiSpanRun ? 'multispan-ordering' : 'negative-implicit');
+  && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID) || textMultiSpanSceneIDs.has(sceneID));
+const runKind = requestedRunKind ?? (isTextMultiSpanRun ? 'text-multispan-contributions'
+  : isMultiSpanRun ? 'multispan-ordering' : 'negative-implicit');
 assert.match(runKind, /^[a-z0-9-]{1,80}$/, 'run-kind는 소문자·숫자·하이픈만 허용합니다.');
 assert.ok(['android-avd', 'android-device', 'ios-simulator'].includes(target),
   '사용법: node capture-c11-4-auto-repeat-neighbors-simulator.mjs android-avd|android-device|ios-simulator [ADB serial|iOS Simulator UDID] [--scene-id=...] [--run-kind=...] [--evidence-group=...]');
@@ -42,6 +49,8 @@ const runPrefix = `c114-${runKind}-${target}-${new Date().toISOString().replaceA
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
   ? `spec/internal/evidence/${evidenceGroup}-${date}/${target}-${runPrefix}`
+  : isTextMultiSpanRun
+    ? `spec/internal/evidence/c11-4-text-multispan-contributions-${date}/${target}-${runPrefix}`
   : isMultiSpanRun
     ? `spec/internal/evidence/c11-4-multispan-ordering-physical-android-${date}/${target}-${runPrefix}`
     : `spec/internal/evidence/c11-4-negative-implicit-track-sizing-${date}/${target}-${runPrefix}`);
@@ -440,6 +449,73 @@ scenes.push(
   },
 );
 assert.equal(scenes.length, 142, 'C11.4 multi-span simulator 행렬은 142 scene이어야 합니다.');
+scenes.push(
+  {
+    id: 'text-span2-forward', axis: 'Columns', boxCount: 3,
+    rootFrame: 'width=220,height=60', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=60;'
+      + '1:node=2,x=0,y=0,width=60,height=20;2:node=4,x=25,y=20,width=70,height=20]',
+    tracks: [25, 35, 35, 0], collapsed: [false, false, false, false],
+    intrinsicSpans: [2], textIntrinsicContributions: true,
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+        minContent: 50, minContentHeight: 20, maxContent: 80, maxContentHeight: 10 },
+      { grid: 1, node: 4, sourceOrder: 1, kind: 'text', fontRegistryRevision: 1,
+        minContent: 70, minContentHeight: 20, maxContent: 120, maxContentHeight: 10 },
+    ],
+  },
+  {
+    id: 'text-span2-reversed', axis: 'Columns', boxCount: 3,
+    rootFrame: 'width=220,height=60', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=60;'
+      + '1:node=2,x=25,y=20,width=70,height=20;2:node=4,x=0,y=0,width=60,height=20]',
+    tracks: [25, 35, 35, 0], collapsed: [false, false, false, false],
+    intrinsicSpans: [2], textIntrinsicContributions: true,
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+        minContent: 70, minContentHeight: 20, maxContent: 120, maxContentHeight: 10 },
+      { grid: 1, node: 4, sourceOrder: 1, kind: 'text', fontRegistryRevision: 1,
+        minContent: 50, minContentHeight: 20, maxContent: 80, maxContentHeight: 10 },
+    ],
+  },
+  {
+    id: 'text-span2-before-span3', axis: 'Columns', boxCount: 4,
+    rootFrame: 'width=220,height=60', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=60;'
+      + '1:node=2,x=0,y=0,width=116.666667,height=10;'
+      + '2:node=4,x=53.333333,y=20,width=126.666667,height=10;'
+      + '3:node=6,x=0,y=40,width=180,height=10]',
+    tracks: [53.333333, 63.333333, 63.333333, 0], collapsed: [false, false, false, false],
+    intrinsicSpans: [2, 3], textIntrinsicContributions: true,
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+        minContent: 50, minContentHeight: 20, maxContent: 80, maxContentHeight: 10 },
+      { grid: 1, node: 4, sourceOrder: 1, kind: 'text', fontRegistryRevision: 1,
+        minContent: 70, minContentHeight: 20, maxContent: 120, maxContentHeight: 10 },
+      { grid: 1, node: 6, sourceOrder: 2, kind: 'text', fontRegistryRevision: 1,
+        minContent: 180, minContentHeight: 10, maxContent: 180, maxContentHeight: 10 },
+    ],
+  },
+  {
+    id: 'text-span3-before-span2', axis: 'Columns', boxCount: 4,
+    rootFrame: 'width=220,height=60', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=60;'
+      + '1:node=2,x=0,y=40,width=180,height=10;'
+      + '2:node=4,x=53.333333,y=20,width=126.666667,height=10;'
+      + '3:node=6,x=0,y=0,width=116.666667,height=10]',
+    tracks: [53.333333, 63.333333, 63.333333, 0], collapsed: [false, false, false, false],
+    intrinsicSpans: [2, 3], textIntrinsicContributions: true,
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+        minContent: 180, minContentHeight: 10, maxContent: 180, maxContentHeight: 10 },
+      { grid: 1, node: 4, sourceOrder: 1, kind: 'text', fontRegistryRevision: 1,
+        minContent: 70, minContentHeight: 20, maxContent: 120, maxContentHeight: 10 },
+      { grid: 1, node: 6, sourceOrder: 2, kind: 'text', fontRegistryRevision: 1,
+        minContent: 50, minContentHeight: 20, maxContent: 80, maxContentHeight: 10 },
+    ],
+  },
+);
+assert.equal(scenes.length, 146, 'C11.4 text multi-span simulator 행렬은 146 scene이어야 합니다.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 simulator scene ID가 중복됐습니다.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -1454,6 +1530,39 @@ function verifyRuntimeLog(log, scene, runID) {
     if (scene.intrinsicSpans) {
       assert.deepEqual(intrinsicSpans, scene.intrinsicSpans,
         `${scene.id}: intrinsic span stage 순서가 다릅니다.`);
+    }
+    if (scene.textIntrinsicContributions) {
+      const expectedContributions = [];
+      for (const span of scene.intrinsicSpans) {
+        const spanItems = scene.intrinsicInputs.filter((_, itemIndex) => {
+          const itemSpan = scene.id === 'text-span2-forward'
+            || scene.id === 'text-span2-reversed' ? 2
+            : scene.id === 'text-span2-before-span3'
+              ? [2, 2, 3][itemIndex] : [3, 2, 2][itemIndex];
+          return itemSpan === span;
+        });
+        for (const kind of ['Minimum', 'MinContent']) {
+          const repetitions = kind === 'MinContent' ? 2 : 1;
+          for (let repetition = 0; repetition < repetitions; repetition++) {
+            for (const input of spanItems) {
+            expectedContributions.push({
+              item: input.node,
+              kind,
+              span,
+              value: kind === 'Minimum' ? 0 : input.minContent,
+            });
+            }
+          }
+        }
+      }
+      const observedContributions = axisPass.contributions.map((contribution) => ({
+        item: contribution.item,
+        kind: contribution.kind,
+        span: contribution.span,
+        value: contribution.value,
+      }));
+      assert.deepEqual(observedContributions, expectedContributions,
+        `${scene.id}: Minimum/MinContent trace contribution mapping differs`);
     }
     if (axis === scene.axis) observedIntrinsicSpans = intrinsicSpans;
     const finalStageTracks = axisPass.stages.at(-1).tracks;
