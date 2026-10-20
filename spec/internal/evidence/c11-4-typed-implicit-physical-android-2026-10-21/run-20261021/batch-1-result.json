@@ -1,0 +1,79 @@
+[
+  {
+    "sceneId": "typed-fixed-cycle",
+    "runId": "physc114typed20261021b-01",
+    "processId": "17533",
+    "launchExit": 0,
+    "summary": "10-21 03:09:09.421 17533 17556 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-01 scene_id=typed-fixed-cycle expected_root_frame= expected_item_frame= status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+    "traceChunkCount": 5,
+    "drawPresentedCount": 2,
+    "screenshotBytes": 107816,
+    "ready": true
+  },
+  {
+    "sceneId": "typed-fixed-cycle-three-leading-trailing",
+    "runId": "physc114typed20261021b-02",
+    "processId": "17649",
+    "launchExit": 0,
+    "summary": "10-21 03:09:12.752 17649 17670 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-02 scene_id=typed-fixed-cycle-three-leading-trailing expected_root_frame= expected_item_frame= status=0 layout=ready boxes=4 generation=1 document_revision=20 environment_revision=0",
+    "traceChunkCount": 7,
+    "drawPresentedCount": 2,
+    "screenshotBytes": 108309,
+    "ready": true
+  },
+  {
+    "sceneId": "typed-mixed-cycle",
+    "runId": "physc114typed20261021b-03",
+    "processId": "17766",
+    "launchExit": 0,
+    "summary": "10-21 03:09:16.139 17766 17787 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-03 scene_id=typed-mixed-cycle expected_root_frame= expected_item_frame= status=0 layout=ready boxes=3 generation=1 document_revision=22 environment_revision=0",
+    "traceChunkCount": 21,
+    "drawPresentedCount": 2,
+    "screenshotBytes": 107862,
+    "ready": true
+  },
+  {
+    "sceneId": "typed-auto",
+    "runId": "physc114typed20261021b-04",
+    "processId": "17929",
+    "launchExit": 0,
+    "summary": "10-21 03:09:19.743 17929 17956 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-04 scene_id=typed-auto expected_root_frame= expected_item_frame= status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+    "traceChunkCount": 16,
+    "drawPresentedCount": 2,
+    "screenshotBytes": 107651,
+    "ready": true
+  },
+  {
+    "sceneId": "typed-min-content",
+    "runId": "physc114typed20261021b-05",
+    "processId": "18085",
+    "launchExit": 0,
+    "summary": "10-21 03:09:23.464 18085 18105 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-05 scene_id=typed-min-content expected_root_frame= expected_item_frame= status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+    "traceChunkCount": 15,
+    "drawPresentedCount": 2,
+    "screenshotBytes": 107651,
+    "ready": true
+  },
+  {
+    "sceneId": "typed-max-content",
+    "runId": "physc114typed20261021b-06",
+    "processId": "18247",
+    "launchExit": 0,
+    "summary": "10-21 03:09:27.289 18247 18268 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-06 scene_id=typed-max-content expected_root_frame= expected_item_frame= status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+    "traceChunkCount": 16,
+    "drawPresentedCount": 2,
+    "screenshotBytes": 107648,
+    "ready": true
+  },
+  {
+    "sceneId": "typed-minmax-max-content",
+    "runId": "physc114typed20261021b-07",
+    "processId": "18357",
+    "launchExit": 0,
+    "summary": "10-21 03:09:31.213 18357 18382 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-07 scene_id=typed-minmax-max-content expected_root_frame= expected_item_frame= status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+    "traceChunkCount": 15,
+    "drawPresentedCount": 2,
+    "screenshotBytes": 107650,
+    "ready": true
+  }
+]

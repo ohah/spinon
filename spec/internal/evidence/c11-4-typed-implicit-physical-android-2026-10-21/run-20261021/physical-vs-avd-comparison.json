@@ -1,0 +1,1142 @@
+{
+  "schemaVersion": 1,
+  "physicalDevice": "Samsung SM-S731N, Android 16/API 36, arm64-v8a, ro.kernel.qemu=0",
+  "sourceCommit": "8cadad67ba3ce0801446c76da8df2017f7cc167d",
+  "sourceTree": "c5f1dc19902e9923e06e4823b74fb3a0711c2123",
+  "apkSha256": "191f7457528f8691c3d0d03b1d8b28887a7172939a077b80e4d4b79fe4625224",
+  "comparison": {
+    "reference": "Android API 37 ARM64 AVD result validated against the fixed CSS expectation matrix",
+    "toleranceCssPx": 0.015625
+  },
+  "scenes": [
+    {
+      "sceneId": "typed-fixed-cycle",
+      "runId": "physc114typed20261021b-01",
+      "traceParts": 5,
+      "tracePartsExpected": 5,
+      "frames": 2,
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true
+    },
+    {
+      "sceneId": "typed-fixed-cycle-three-leading-trailing",
+      "runId": "physc114typed20261021b-02",
+      "traceParts": 7,
+      "tracePartsExpected": 7,
+      "frames": 4,
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 24,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 24,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true
+    },
+    {
+      "sceneId": "typed-mixed-cycle",
+      "runId": "physc114typed20261021b-03",
+      "traceParts": 21,
+      "tracePartsExpected": 21,
+      "frames": 4,
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true
+    },
+    {
+      "sceneId": "typed-auto",
+      "runId": "physc114typed20261021b-04",
+      "traceParts": 16,
+      "tracePartsExpected": 16,
+      "frames": 2,
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 48,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true
+    },
+    {
+      "sceneId": "typed-min-content",
+      "runId": "physc114typed20261021b-05",
+      "traceParts": 15,
+      "tracePartsExpected": 15,
+      "frames": 2,
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 48,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true
+    },
+    {
+      "sceneId": "typed-max-content",
+      "runId": "physc114typed20261021b-06",
+      "traceParts": 16,
+      "tracePartsExpected": 16,
+      "frames": 2,
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 108,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true
+    },
+    {
+      "sceneId": "typed-minmax-max-content",
+      "runId": "physc114typed20261021b-07",
+      "traceParts": 15,
+      "tracePartsExpected": 15,
+      "frames": 2,
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true
+    },
+    {
+      "sceneId": "typed-fit-content",
+      "runId": "physc114typed20261021b-08",
+      "traceParts": 16,
+      "tracePartsExpected": 16,
+      "frames": 2,
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 48,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true
+    },
+    {
+      "sceneId": "typed-fraction",
+      "runId": "physc114typed20261021b-09",
+      "traceParts": 14,
+      "tracePartsExpected": 14,
+      "frames": 2,
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 8,
+            "collapsed": false
+          },
+          {
+            "baseSize": 8,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 8,
+            "collapsed": false
+          },
+          {
+            "baseSize": 8,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true
+    },
+    {
+      "sceneId": "typed-percentage",
+      "runId": "physc114typed20261021b-10",
+      "traceParts": 5,
+      "tracePartsExpected": 5,
+      "frames": 2,
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true
+    },
+    {
+      "sceneId": "typed-calc",
+      "runId": "physc114typed20261021b-11",
+      "traceParts": 5,
+      "tracePartsExpected": 5,
+      "frames": 2,
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true
+    },
+    {
+      "sceneId": "typed-auto-fit-occupied",
+      "runId": "physc114typed20261021b-12",
+      "traceParts": 21,
+      "tracePartsExpected": 21,
+      "frames": 4,
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 48,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true
+    },
+    {
+      "sceneId": "typed-auto-fit-empty",
+      "runId": "physc114typed20261021b-13",
+      "traceParts": 14,
+      "tracePartsExpected": 14,
+      "frames": 2,
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 55,
+            "collapsed": false
+          },
+          {
+            "baseSize": 55,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 55,
+            "collapsed": false
+          },
+          {
+            "baseSize": 55,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true
+    },
+    {
+      "sceneId": "typed-auto-fit-gutter",
+      "runId": "physc114typed20261021b-14",
+      "traceParts": 21,
+      "tracePartsExpected": 21,
+      "frames": 4,
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 48,
+            "collapsed": false
+          },
+          {
+            "baseSize": 33,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 33,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 18.200000762939453,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 18.200000762939453,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0.000005999999999062311,
+      "drawPresented": true
+    }
+  ],
+  "summary": {
+    "sceneCount": 14,
+    "readyCount": 14,
+    "completeTraceCount": 14,
+    "drawPresentedCount": 14,
+    "maxTrackDeltaCssPx": 0,
+    "maxFrameDeltaCssPx": 0.000005999999999062311,
+    "failures": 0
+  }
+}

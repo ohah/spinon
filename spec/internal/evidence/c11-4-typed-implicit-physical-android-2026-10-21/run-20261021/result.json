@@ -1,0 +1,2892 @@
+{
+  "schemaVersion": 1,
+  "device": {
+    "serial": "R5KYB06SMPE",
+    "model": "SM-S731N",
+    "androidRelease": "16",
+    "apiLevel": 36,
+    "abi": "arm64-v8a",
+    "qemu": "0",
+    "boardPlatform": "erd9945",
+    "eglVendor": "samsung",
+    "renderer": "GLES: Samsung Electronics Co., Ltd., ANGLE ((Samsung Xclipse 940) on Vulkan 1.3.279), OpenGL ES 3.2 Driver version: 24.1.307 git hash: 86f99cfe6317",
+    "physicalSize": "Physical size: 1080x2340",
+    "density": "Physical density: 450",
+    "appPackage": "dev.spinon.bootstrap",
+    "appVersion": "0.1.0-bootstrap",
+    "apkSha256": "191f7457528f8691c3d0d03b1d8b28887a7172939a077b80e4d4b79fe4625224",
+    "installedApkSha256": "191f7457528f8691c3d0d03b1d8b28887a7172939a077b80e4d4b79fe4625224"
+  },
+  "source": {
+    "branch": "docs/tailnet-c11-4-physical-android-20261021",
+    "commit": "8cadad67ba3ce0801446c76da8df2017f7cc167d",
+    "tree": "c5f1dc19902e9923e06e4823b74fb3a0711c2123",
+    "trackedWorkingTreeClean": true,
+    "buildCommand": "mise exec -- env SPINON_ENABLE_C04_RUNTIME_GPU=1 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 bun run build:android",
+    "fixtureFeature": "c04-runtime-gpu-fixture-test"
+  },
+  "reference": {
+    "run": "android-avd-c114-negative-implicit-android-avd-20261020T125416760Z-ef57f92f",
+    "oracleContext": "The saved API 37 AVD matrix was previously compared against the iOS simulator and fixed CSS expectations; this run uses it as a geometry cross-check.",
+    "toleranceCssPx": 0.015625
+  },
+  "summary": {
+    "sceneCount": 14,
+    "layoutReadyCount": 14,
+    "completeTraceCount": 14,
+    "frameMarkerCount": 14,
+    "drawPresentedCount": 14,
+    "maxTrackDeltaCssPx": 0,
+    "maxFrameDeltaCssPx": 0.000005999999999062311,
+    "toleranceCssPx": 0.015625,
+    "overflowPixelSamples": 5,
+    "overflowPixelSamplesExact": 5,
+    "pixelSummary": "status=matched",
+    "failures": 0
+  },
+  "observations": [
+    {
+      "sceneId": "typed-fixed-cycle",
+      "runId": "physc114typed20261021b-01",
+      "summary": "10-21 03:09:09.421 17533 17556 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-01 scene_id=typed-fixed-cycle expected_root_frame= expected_item_frame= status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "traceParts": 5,
+      "tracePartsExpected": 5,
+      "frameSummary": "state=typed-fixed-cycle frames=2 marker=present",
+      "physicalNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 24
+        }
+      ],
+      "referenceNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 24
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "referenceTracks": {
+        "Columns": [
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true,
+      "screenshot": {
+        "path": "screen-typed-fixed-cycle.png",
+        "sha256": "75332e6c4f83c18ed75ad9ac97574540e9140cb8bbeb19f3c6667d9391aaab0d"
+      }
+    },
+    {
+      "sceneId": "typed-fixed-cycle-three-leading-trailing",
+      "runId": "physc114typed20261021b-02",
+      "summary": "10-21 03:09:12.752 17649 17670 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-02 scene_id=typed-fixed-cycle-three-leading-trailing expected_root_frame= expected_item_frame= status=0 layout=ready boxes=4 generation=1 document_revision=20 environment_revision=0",
+      "traceParts": 7,
+      "tracePartsExpected": 7,
+      "frameSummary": "state=typed-fixed-cycle-three-leading-trailing frames=4 marker=present",
+      "physicalNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 96,
+          "y": 96,
+          "width": 20,
+          "height": 20
+        },
+        {
+          "index": 2,
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 36,
+          "height": 36
+        },
+        {
+          "index": 3,
+          "node": 4,
+          "x": 256,
+          "y": 256,
+          "width": 24,
+          "height": 24
+        }
+      ],
+      "referenceNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 96,
+          "y": 96,
+          "width": 20,
+          "height": 20
+        },
+        {
+          "index": 2,
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 36,
+          "height": 36
+        },
+        {
+          "index": 3,
+          "node": 4,
+          "x": 256,
+          "y": 256,
+          "width": 24,
+          "height": 24
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 24,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 24,
+            "collapsed": false
+          }
+        ]
+      },
+      "referenceTracks": {
+        "Columns": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 24,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 24,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true,
+      "screenshot": {
+        "path": "screen-typed-fixed-cycle-three-leading-trailing.png",
+        "sha256": "c15ca6d743c4b2eea89e8f6bc79a8e56c85fff489c3d6fe43228c455e131b019"
+      }
+    },
+    {
+      "sceneId": "typed-mixed-cycle",
+      "runId": "physc114typed20261021b-03",
+      "summary": "10-21 03:09:16.139 17766 17787 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-03 scene_id=typed-mixed-cycle expected_root_frame= expected_item_frame= status=0 layout=ready boxes=3 generation=1 document_revision=22 environment_revision=0",
+      "traceParts": 21,
+      "tracePartsExpected": 21,
+      "frameSummary": "state=typed-mixed-cycle frames=4 marker=present",
+      "physicalNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 27.5,
+          "height": 16
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 55,
+          "y": 32,
+          "width": 20,
+          "height": 20
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 182.5,
+          "y": 148,
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "referenceNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 27.5,
+          "height": 16
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 55,
+          "y": 32,
+          "width": 20,
+          "height": 20
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 182.5,
+          "y": 148,
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ]
+      },
+      "referenceTracks": {
+        "Columns": [
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true,
+      "screenshot": {
+        "path": "screen-typed-mixed-cycle.png",
+        "sha256": "d68d60cec468420164adf70ded2043e6d27ef18ac2ebb32675c1603228a92bc8"
+      }
+    },
+    {
+      "sceneId": "typed-auto",
+      "runId": "physc114typed20261021b-04",
+      "summary": "10-21 03:09:19.743 17929 17956 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-04 scene_id=typed-auto expected_root_frame= expected_item_frame= status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "traceParts": 16,
+      "tracePartsExpected": 16,
+      "frameSummary": "state=typed-auto frames=2 marker=present",
+      "physicalNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 36
+        }
+      ],
+      "referenceNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 36
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 48,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "referenceTracks": {
+        "Columns": [
+          {
+            "baseSize": 48,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true,
+      "screenshot": {
+        "path": "screen-typed-auto.png",
+        "sha256": "1d4188453257c54df985ac42cb9e013e2252d8689d42ebe8ae345983395fc15d"
+      }
+    },
+    {
+      "sceneId": "typed-min-content",
+      "runId": "physc114typed20261021b-05",
+      "summary": "10-21 03:09:23.464 18085 18105 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-05 scene_id=typed-min-content expected_root_frame= expected_item_frame= status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "traceParts": 15,
+      "tracePartsExpected": 15,
+      "frameSummary": "state=typed-min-content frames=2 marker=present",
+      "physicalNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 36
+        }
+      ],
+      "referenceNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 36
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 48,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "referenceTracks": {
+        "Columns": [
+          {
+            "baseSize": 48,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true,
+      "screenshot": {
+        "path": "screen-typed-min-content.png",
+        "sha256": "1d4188453257c54df985ac42cb9e013e2252d8689d42ebe8ae345983395fc15d"
+      }
+    },
+    {
+      "sceneId": "typed-max-content",
+      "runId": "physc114typed20261021b-06",
+      "summary": "10-21 03:09:27.289 18247 18268 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-06 scene_id=typed-max-content expected_root_frame= expected_item_frame= status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "traceParts": 16,
+      "tracePartsExpected": 16,
+      "frameSummary": "state=typed-max-content frames=2 marker=present",
+      "physicalNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 108,
+          "height": 12
+        }
+      ],
+      "referenceNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 108,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 108,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "referenceTracks": {
+        "Columns": [
+          {
+            "baseSize": 108,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true,
+      "screenshot": {
+        "path": "screen-typed-max-content.png",
+        "sha256": "2ae442fb3f12010a263f2319df6d2b028f1371ded41cb9762a5b1471e46d446d"
+      }
+    },
+    {
+      "sceneId": "typed-minmax-max-content",
+      "runId": "physc114typed20261021b-07",
+      "summary": "10-21 03:09:31.213 18357 18382 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-07 scene_id=typed-minmax-max-content expected_root_frame= expected_item_frame= status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "traceParts": 15,
+      "tracePartsExpected": 15,
+      "frameSummary": "state=typed-minmax-max-content frames=2 marker=present",
+      "physicalNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "referenceNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "referenceTracks": {
+        "Columns": [
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true,
+      "screenshot": {
+        "path": "screen-typed-minmax-max-content.png",
+        "sha256": "31541ab7678a8b2d37e0999add3981b6cb3b9dc00a81661057f42154679d7c1c"
+      }
+    },
+    {
+      "sceneId": "typed-fit-content",
+      "runId": "physc114typed20261021b-08",
+      "summary": "10-21 03:09:41.916 18509 18531 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-08 scene_id=typed-fit-content expected_root_frame= expected_item_frame= status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "traceParts": 16,
+      "tracePartsExpected": 16,
+      "frameSummary": "state=typed-fit-content frames=2 marker=present",
+      "physicalNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 36
+        }
+      ],
+      "referenceNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 36
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 48,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "referenceTracks": {
+        "Columns": [
+          {
+            "baseSize": 48,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true,
+      "screenshot": {
+        "path": "screen-typed-fit-content.png",
+        "sha256": "1d4188453257c54df985ac42cb9e013e2252d8689d42ebe8ae345983395fc15d"
+      }
+    },
+    {
+      "sceneId": "typed-fraction",
+      "runId": "physc114typed20261021b-09",
+      "summary": "10-21 03:09:45.880 18628 18649 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-09 scene_id=typed-fraction expected_root_frame= expected_item_frame= status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "traceParts": 14,
+      "tracePartsExpected": 14,
+      "frameSummary": "state=typed-fraction frames=2 marker=present",
+      "physicalNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 8,
+          "height": 8
+        }
+      ],
+      "referenceNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 8,
+          "height": 8
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 8,
+            "collapsed": false
+          },
+          {
+            "baseSize": 8,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 8,
+            "collapsed": false
+          },
+          {
+            "baseSize": 8,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "referenceTracks": {
+        "Columns": [
+          {
+            "baseSize": 8,
+            "collapsed": false
+          },
+          {
+            "baseSize": 8,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 8,
+            "collapsed": false
+          },
+          {
+            "baseSize": 8,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true,
+      "screenshot": {
+        "path": "screen-typed-fraction.png",
+        "sha256": "8bef97bc85daca2ddc0562c4c2aadda6bfd354657b0cfaca44eacfcad93c0395"
+      }
+    },
+    {
+      "sceneId": "typed-percentage",
+      "runId": "physc114typed20261021b-10",
+      "summary": "10-21 03:09:50.235 18746 18766 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-10 scene_id=typed-percentage expected_root_frame= expected_item_frame= status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "traceParts": 5,
+      "tracePartsExpected": 5,
+      "frameSummary": "state=typed-percentage frames=2 marker=present",
+      "physicalNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 27.5,
+          "height": 27.5
+        }
+      ],
+      "referenceNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 27.5,
+          "height": 27.5
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "referenceTracks": {
+        "Columns": [
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true,
+      "screenshot": {
+        "path": "screen-typed-percentage.png",
+        "sha256": "0f6deb112449a235a5b6e697218ed27152c12c43c6969a3a03580a97592bba2e"
+      }
+    },
+    {
+      "sceneId": "typed-calc",
+      "runId": "physc114typed20261021b-11",
+      "summary": "10-21 03:09:54.549 18864 18897 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-11 scene_id=typed-calc expected_root_frame= expected_item_frame= status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "traceParts": 5,
+      "tracePartsExpected": 5,
+      "frameSummary": "state=typed-calc frames=2 marker=present",
+      "physicalNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 16
+        }
+      ],
+      "referenceNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 16
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "referenceTracks": {
+        "Columns": [
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true,
+      "screenshot": {
+        "path": "screen-typed-calc.png",
+        "sha256": "54df5316984aea59db87a0bfda5a372e541d7fdc7633e42f3d9081a122ba77a6"
+      }
+    },
+    {
+      "sceneId": "typed-auto-fit-occupied",
+      "runId": "physc114typed20261021b-12",
+      "summary": "10-21 03:09:58.980 18997 19019 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-12 scene_id=typed-auto-fit-occupied expected_root_frame= expected_item_frame= status=0 layout=ready boxes=3 generation=1 document_revision=22 environment_revision=0",
+      "traceParts": 21,
+      "tracePartsExpected": 21,
+      "frameSummary": "state=typed-auto-fit-occupied frames=4 marker=present",
+      "physicalNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 75.5,
+          "y": 52,
+          "width": 20,
+          "height": 20
+        },
+        {
+          "index": 2,
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 36
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 123,
+          "y": 88,
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "referenceNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 75.5,
+          "y": 52,
+          "width": 20,
+          "height": 20
+        },
+        {
+          "index": 2,
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 36
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 123,
+          "y": 88,
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 48,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ]
+      },
+      "referenceTracks": {
+        "Columns": [
+          {
+            "baseSize": 48,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true,
+      "screenshot": {
+        "path": "screen-typed-auto-fit-occupied.png",
+        "sha256": "9da8e0ad20177f38803d21fa0a0d14879d8b7fc7a2ea7a1b62d6d98a47f80d36"
+      }
+    },
+    {
+      "sceneId": "typed-auto-fit-empty",
+      "runId": "physc114typed20261021b-13",
+      "summary": "10-21 03:10:03.550 19115 19137 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-13 scene_id=typed-auto-fit-empty expected_root_frame= expected_item_frame= status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "traceParts": 14,
+      "tracePartsExpected": 14,
+      "frameSummary": "state=typed-auto-fit-empty frames=2 marker=present",
+      "physicalNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 55,
+          "height": 55
+        }
+      ],
+      "referenceNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 55,
+          "height": 55
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 55,
+            "collapsed": false
+          },
+          {
+            "baseSize": 55,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 55,
+            "collapsed": false
+          },
+          {
+            "baseSize": 55,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          }
+        ]
+      },
+      "referenceTracks": {
+        "Columns": [
+          {
+            "baseSize": 55,
+            "collapsed": false
+          },
+          {
+            "baseSize": 55,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 55,
+            "collapsed": false
+          },
+          {
+            "baseSize": 55,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0,
+      "drawPresented": true,
+      "screenshot": {
+        "path": "screen-typed-auto-fit-empty.png",
+        "sha256": "3d9e2ba941b28c053ddddc3072ee97f02a5d601b97a391c67b3598659fe6d023"
+      }
+    },
+    {
+      "sceneId": "typed-auto-fit-gutter",
+      "runId": "physc114typed20261021b-14",
+      "summary": "10-21 03:10:08.218 19241 19264 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=physc114typed20261021b-14 scene_id=typed-auto-fit-gutter expected_root_frame= expected_item_frame= status=0 layout=ready boxes=3 generation=1 document_revision=22 environment_revision=0",
+      "traceParts": 21,
+      "tracePartsExpected": 21,
+      "frameSummary": "state=typed-auto-fit-gutter frames=4 marker=present",
+      "physicalNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 132,
+          "height": 132
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 97,
+          "y": 70.2,
+          "width": 20,
+          "height": 20
+        },
+        {
+          "index": 2,
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 36
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 166,
+          "y": 124.399994,
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "referenceNodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 132,
+          "height": 132
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 97,
+          "y": 70.2,
+          "width": 20,
+          "height": 20
+        },
+        {
+          "index": 2,
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 36
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 166,
+          "y": 124.4,
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 48,
+            "collapsed": false
+          },
+          {
+            "baseSize": 33,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 33,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 18.200000762939453,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 18.200000762939453,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ]
+      },
+      "referenceTracks": {
+        "Columns": [
+          {
+            "baseSize": 48,
+            "collapsed": false
+          },
+          {
+            "baseSize": 33,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 33,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 36,
+            "collapsed": false
+          },
+          {
+            "baseSize": 18.200000762939453,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 18.200000762939453,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ]
+      },
+      "maxTrackDeltaCssPx": 0,
+      "maxFrameDeltaCssPx": 0.000005999999999062311,
+      "drawPresented": true,
+      "screenshot": {
+        "path": "screen-typed-auto-fit-gutter.png",
+        "sha256": "f034b34ef2e5a304def990ce39624b321361bf148c78950137425a54cc34a512"
+      }
+    }
+  ],
+  "overflowScene": {
+    "sceneId": "implicit-min-content-overflow-border",
+    "runId": "physc114overflow20261021-01",
+    "pixelSummary": "SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=physc114overflow20261021-01 scene=implicit-min-content-overflow-border generation=2 expected_samples=5 observed_samples=5 matched_samples=5",
+    "pixelSamples": [
+      {
+        "sample": "overflow-root-border-inside",
+        "actualRgba": "16,24,32,255",
+        "expectedRgba": "16,24,32,255",
+        "exact": true
+      },
+      {
+        "sample": "overflow-root-border-covered",
+        "actualRgba": "229,72,77,255",
+        "expectedRgba": "229,72,77,255",
+        "exact": true
+      },
+      {
+        "sample": "overflow-root-border-outside",
+        "actualRgba": "229,72,77,255",
+        "expectedRgba": "229,72,77,255",
+        "exact": true
+      },
+      {
+        "sample": "overflow-item-outside-root",
+        "actualRgba": "229,72,77,255",
+        "expectedRgba": "229,72,77,255",
+        "exact": true
+      },
+      {
+        "sample": "overflow-after-item",
+        "actualRgba": "0,0,0,255",
+        "expectedRgba": "0,0,0,255",
+        "exact": true
+      }
+    ],
+    "screenshot": {
+      "path": "screen-implicit-min-content-overflow-border.png",
+      "sha256": "7429e408c673655af7df193dd21ebc124fd0e804330b6b9a5e3b910b4e77ebf2"
+    }
+  }
+}
