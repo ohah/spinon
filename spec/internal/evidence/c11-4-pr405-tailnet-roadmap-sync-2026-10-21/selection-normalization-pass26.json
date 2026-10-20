@@ -1,0 +1,60 @@
+{
+  "selected_root_relative": "build/spinon/c11-4-pr405-tailnet-root-pass26",
+  "excluded_evidence_dirs": [
+    {
+      "path": "internal/evidence/c11-4-pr397-tailnet-roadmap-sync-2026-10-21",
+      "files": 13,
+      "bytes": 1867411,
+      "reason": "operational Tailnet build scripts are not linked from the current official status or roadmap"
+    },
+    {
+      "path": "internal/evidence/c11-4-typed-implicit-tailnet-sync-2026-10-21",
+      "files": 21,
+      "bytes": 4277005,
+      "reason": "operational Tailnet build scripts are not linked from the current official status or roadmap"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-pr397-tailnet-roadmap-sync-2026-10-21",
+      "files": 13,
+      "bytes": 1867411,
+      "reason": "operational Tailnet build scripts are not linked from the current official status or roadmap"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-typed-implicit-tailnet-sync-2026-10-21",
+      "files": 21,
+      "bytes": 4277005,
+      "reason": "operational Tailnet build scripts are not linked from the current official status or roadmap"
+    }
+  ],
+  "deleted_from_tailnet_target": false,
+  "path_repairs": [
+    {
+      "path": "internal/evidence/c13-3-android-physical-2026-10-21/README.md",
+      "source_sha256_before": "27f484a529730231814a502aeedc368d3672f92d1eb7db466844924292c4bbfc",
+      "selected_sha256_after": "01c73350e4d875e41351c892750f3ddf4da61297635fac9fc08608e6cb7fa5b9",
+      "replacement_count": 1,
+      "rationale": "RSPress treats bare markdown image paths as package imports; dot-relative paths load the tracked adjacent evidence images"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-android-physical-2026-10-21/README.md",
+      "source_sha256_before": "27f484a529730231814a502aeedc368d3672f92d1eb7db466844924292c4bbfc",
+      "selected_sha256_after": "01c73350e4d875e41351c892750f3ddf4da61297635fac9fc08608e6cb7fa5b9",
+      "replacement_count": 1,
+      "rationale": "RSPress treats bare markdown image paths as package imports; dot-relative paths load the tracked adjacent evidence images"
+    },
+    {
+      "path": "internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.md",
+      "source_sha256_before": "c8fdfdb4ae85688ec0a44bff74d33339d3192b001439a3c585d726a0980f133f",
+      "selected_sha256_after": "7b3390a680cb6ed9961d2e1b8a54cc5869bfe8267d14995ee0656d121312bea6",
+      "replacement_count": 2,
+      "rationale": "RSPress treats bare markdown image paths as package imports; dot-relative paths load the tracked adjacent evidence images"
+    },
+    {
+      "path": "spec/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.md",
+      "source_sha256_before": "c8fdfdb4ae85688ec0a44bff74d33339d3192b001439a3c585d726a0980f133f",
+      "selected_sha256_after": "7b3390a680cb6ed9961d2e1b8a54cc5869bfe8267d14995ee0656d121312bea6",
+      "replacement_count": 2,
+      "rationale": "RSPress treats bare markdown image paths as package imports; dot-relative paths load the tracked adjacent evidence images"
+    }
+  ]
+}

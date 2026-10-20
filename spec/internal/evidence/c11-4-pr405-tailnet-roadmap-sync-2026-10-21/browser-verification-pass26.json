@@ -1,0 +1,77 @@
+{
+  "browser": "Agent Browser",
+  "terminal_browser_used": false,
+  "session": "spinon-tailnet-pass26",
+  "checked_pages": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "visible_pr_405": true,
+      "visible_c11_4_physical_note": true
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-fit-min-size-axis-physical-android-2026-10-21/README.html",
+      "title": "C11.4 definite minimum-size auto-fit 축별 Android 실기기 보충 검증 - 스피논 문서",
+      "visible_53_of_53": true,
+      "images": [
+        {
+          "alt": "SM-S731N auto-fit second-repeat 장면",
+          "complete": true,
+          "natural_width": 1080,
+          "natural_height": 2340
+        }
+      ]
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c13-3-android-physical-2026-10-21/README.html",
+      "title": "C13.3 Android 실기기 입력·scroll 경계 확인 · 2026-10-21 - 스피논 문서",
+      "physical_device_text": true,
+      "images": [
+        {
+          "alt": "Android 실기기 C13.3 swipe 뒤 화면",
+          "complete": true,
+          "natural_width": 1080,
+          "natural_height": 2340
+        }
+      ]
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.html",
+      "title": "C13.3 iOS recognizer/event pairing 계측 실행 근거 - 스피논 문서",
+      "visible_ipad_simulator_scope": true,
+      "images": [
+        {
+          "alt": "iOS direct-touch positive control",
+          "complete": true,
+          "natural_width": 1536,
+          "natural_height": 2048
+        },
+        {
+          "alt": "iOS scroll type-mask event ledger",
+          "complete": true,
+          "natural_width": 1536,
+          "natural_height": 2048
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "tailnet-roadmap-agent-browser-pass26.png",
+      "width": 1440,
+      "height": 1100,
+      "sha256": "f2f40f72b62bbdc13cdf43d8acd55d7a02b7e795edb41bbc31c79b1bfe74bdd4"
+    },
+    {
+      "path": "tailnet-evidence-agent-browser-pass26.png",
+      "width": 1440,
+      "height": 2200,
+      "sha256": "11ac439273aa26a443b6804be1012096098db73e8054f84df9167ff1beb1ab64"
+    }
+  ],
+  "closed_after_use": true,
+  "daemon_pid_observed_after_close": 1555,
+  "daemon_exited_before_targeted_term": true,
+  "final_agent_browser_and_chrome_processes": [],
+  "preview_server_pid_1191_left_running": true
+}

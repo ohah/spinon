@@ -1,0 +1,265 @@
+{
+  "base_url": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "verified_route_count": 14,
+  "all_routes_verified": true,
+  "routes": [
+    {
+      "route": "roadmap.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 173191,
+      "served_bytes": 173191,
+      "local_sha256": "9605dc51cc1bda66b509d96db898fdfadbc1eab55bb86a66afaf4ec7c74e4438",
+      "served_sha256": "9605dc51cc1bda66b509d96db898fdfadbc1eab55bb86a66afaf4ec7c74e4438",
+      "matched": true,
+      "text_checks": [
+        {
+          "text": "PR #405",
+          "present": true
+        },
+        {
+          "text": "SM-S731N",
+          "present": true
+        }
+      ]
+    },
+    {
+      "route": "STATUS.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 491782,
+      "served_bytes": 491782,
+      "local_sha256": "f3f07db79141534a7fea34b4efe132f1edc619f893da11ab3af85c3e6304468f",
+      "served_sha256": "f3f07db79141534a7fea34b4efe132f1edc619f893da11ab3af85c3e6304468f",
+      "matched": true,
+      "text_checks": [
+        {
+          "text": "PR #405",
+          "present": true
+        },
+        {
+          "text": "53/53",
+          "present": true
+        }
+      ]
+    },
+    {
+      "route": "spec/STATUS.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/STATUS.html",
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 492360,
+      "served_bytes": 492360,
+      "local_sha256": "960e7ba7f2809c9a9d72350447bf01aeed5f47697ace6ac9d8cd002958523cf2",
+      "served_sha256": "960e7ba7f2809c9a9d72350447bf01aeed5f47697ace6ac9d8cd002958523cf2",
+      "matched": true,
+      "text_checks": [
+        {
+          "text": "PR #405",
+          "present": true
+        },
+        {
+          "text": "53/53",
+          "present": true
+        }
+      ]
+    },
+    {
+      "route": "plan/c11-4-auto-fit-axis-physical-android.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-auto-fit-axis-physical-android.html",
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 100292,
+      "served_bytes": 100292,
+      "local_sha256": "9ca333ae0065a964c69d066f3e9f62d58ea7602a1b1cb9992207ddcfb324cfa6",
+      "served_sha256": "9ca333ae0065a964c69d066f3e9f62d58ea7602a1b1cb9992207ddcfb324cfa6",
+      "matched": true,
+      "text_checks": [
+        {
+          "text": "PR #405",
+          "present": true
+        },
+        {
+          "text": "53/53",
+          "present": true
+        }
+      ]
+    },
+    {
+      "route": "spec/plan/c11-4-auto-fit-axis-physical-android.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/plan/c11-4-auto-fit-axis-physical-android.html",
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 100217,
+      "served_bytes": 100217,
+      "local_sha256": "ddac942ca726723b7fcc3c47c74771fad44a401f6d9fa54517874d3c013fcd9d",
+      "served_sha256": "ddac942ca726723b7fcc3c47c74771fad44a401f6d9fa54517874d3c013fcd9d",
+      "matched": true,
+      "text_checks": [
+        {
+          "text": "PR #405",
+          "present": true
+        },
+        {
+          "text": "53/53",
+          "present": true
+        }
+      ]
+    },
+    {
+      "route": "internal/evidence/c11-4-auto-fit-min-size-axis-physical-android-2026-10-21/README.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-fit-min-size-axis-physical-android-2026-10-21/README.html",
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 103027,
+      "served_bytes": 103027,
+      "local_sha256": "3fb9509c572daa730d7756dae7ac6b35de0ab31b07367e45b038df9002f46820",
+      "served_sha256": "3fb9509c572daa730d7756dae7ac6b35de0ab31b07367e45b038df9002f46820",
+      "matched": true,
+      "text_checks": [
+        {
+          "text": "53/53",
+          "present": true
+        },
+        {
+          "text": "SM-S731N",
+          "present": true
+        }
+      ]
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-auto-fit-min-size-axis-physical-android-2026-10-21/README.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-auto-fit-min-size-axis-physical-android-2026-10-21/README.html",
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 103048,
+      "served_bytes": 103048,
+      "local_sha256": "f8a1a7d8de7c0bfbe71563991bd1ef53d86fcb48872cb9e045d4ee6486c2fc04",
+      "served_sha256": "f8a1a7d8de7c0bfbe71563991bd1ef53d86fcb48872cb9e045d4ee6486c2fc04",
+      "matched": true,
+      "text_checks": [
+        {
+          "text": "53/53",
+          "present": true
+        },
+        {
+          "text": "SM-S731N",
+          "present": true
+        }
+      ]
+    },
+    {
+      "route": "plan/c13-3-ios-recognizer-event-pairing.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c13-3-ios-recognizer-event-pairing.html",
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 107240,
+      "served_bytes": 107240,
+      "local_sha256": "05d972a36f6f8354bf709b62de1876497f18feaaa3d313ca2c65e32a34920730",
+      "served_sha256": "05d972a36f6f8354bf709b62de1876497f18feaaa3d313ca2c65e32a34920730",
+      "matched": true,
+      "text_checks": [
+        {
+          "text": "recognizer",
+          "present": true
+        },
+        {
+          "text": "event",
+          "present": true
+        }
+      ]
+    },
+    {
+      "route": "internal/evidence/c13-3-android-physical-2026-10-21/README.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c13-3-android-physical-2026-10-21/README.html",
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 103208,
+      "served_bytes": 103208,
+      "local_sha256": "925d352cdfbc4f8c572bbdbe74e8959d91a859ced7d6a898483957cfa68b9d10",
+      "served_sha256": "925d352cdfbc4f8c572bbdbe74e8959d91a859ced7d6a898483957cfa68b9d10",
+      "matched": true,
+      "text_checks": [
+        {
+          "text": "SM-S731N",
+          "present": true
+        },
+        {
+          "text": "ACTION_DOWN",
+          "present": true
+        }
+      ]
+    },
+    {
+      "route": "internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.html",
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 105094,
+      "served_bytes": 105094,
+      "local_sha256": "3cd806f9c95f95661b5fe4f6fb2b2db2d53c237beba9b3b214e166cc1ae09778",
+      "served_sha256": "3cd806f9c95f95661b5fe4f6fb2b2db2d53c237beba9b3b214e166cc1ae09778",
+      "matched": true,
+      "text_checks": [
+        {
+          "text": "iPad Pro 13-inch",
+          "present": true
+        },
+        {
+          "text": "2,384",
+          "present": true
+        }
+      ]
+    },
+    {
+      "route": "static/image/auto-fit-min-columns-second-repeat-200.4a17f34d9d.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/auto-fit-min-columns-second-repeat-200.4a17f34d9d.png",
+      "content_type": "image/png",
+      "local_bytes": 107633,
+      "served_bytes": 107633,
+      "local_sha256": "8935075d093dea8b02ad4e73fa4dc3a5d0ff065273f7a38070c3fd2e81ecbc9b",
+      "served_sha256": "8935075d093dea8b02ad4e73fa4dc3a5d0ff065273f7a38070c3fd2e81ecbc9b",
+      "matched": true,
+      "text_checks": []
+    },
+    {
+      "route": "static/image/gesture-positive-after.0ce23418b5.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/gesture-positive-after.0ce23418b5.png",
+      "content_type": "image/png",
+      "local_bytes": 100333,
+      "served_bytes": 100333,
+      "local_sha256": "3142cea2bba753872ba1e8b05873d14f0248b3b50830d45df1c3f71216534201",
+      "served_sha256": "3142cea2bba753872ba1e8b05873d14f0248b3b50830d45df1c3f71216534201",
+      "matched": true,
+      "text_checks": []
+    },
+    {
+      "route": "static/image/direct-touch-controls.4b60ed5535.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/direct-touch-controls.4b60ed5535.png",
+      "content_type": "image/png",
+      "local_bytes": 139871,
+      "served_bytes": 139871,
+      "local_sha256": "17be6d61905201a2afaf934cd202fbb83cc39dd04fed6f67a23ddde042a280ef",
+      "served_sha256": "17be6d61905201a2afaf934cd202fbb83cc39dd04fed6f67a23ddde042a280ef",
+      "matched": true,
+      "text_checks": []
+    },
+    {
+      "route": "static/image/scroll-type-masks.13ac5db130.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/scroll-type-masks.13ac5db130.png",
+      "content_type": "image/png",
+      "local_bytes": 141318,
+      "served_bytes": 141318,
+      "local_sha256": "a0f1df4294214cd7e108f2e92640aeff92fb7aa26708e77f426826fdc75b4981",
+      "served_sha256": "a0f1df4294214cd7e108f2e92640aeff92fb7aa26708e77f426826fdc75b4981",
+      "matched": true,
+      "text_checks": []
+    }
+  ]
+}

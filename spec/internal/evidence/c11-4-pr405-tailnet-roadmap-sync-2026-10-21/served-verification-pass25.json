@@ -1,0 +1,166 @@
+{
+  "base_url": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "verified_route_count": 8,
+  "all_routes_verified": true,
+  "routes": [
+    {
+      "route": "roadmap.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 173191,
+      "served_bytes": 173191,
+      "local_sha256": "9605dc51cc1bda66b509d96db898fdfadbc1eab55bb86a66afaf4ec7c74e4438",
+      "served_sha256": "9605dc51cc1bda66b509d96db898fdfadbc1eab55bb86a66afaf4ec7c74e4438",
+      "matched": true,
+      "text_checks": [
+        {
+          "text": "PR #405",
+          "present": true
+        },
+        {
+          "text": "SM-S731N",
+          "present": true
+        }
+      ]
+    },
+    {
+      "route": "STATUS.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 471847,
+      "served_bytes": 471847,
+      "local_sha256": "b5890fa2a86eb739312a16b6948068a4105ac256eeb329cb3096a974db928a65",
+      "served_sha256": "b5890fa2a86eb739312a16b6948068a4105ac256eeb329cb3096a974db928a65",
+      "matched": true,
+      "text_checks": [
+        {
+          "text": "PR #405",
+          "present": true
+        },
+        {
+          "text": "53/53",
+          "present": true
+        }
+      ]
+    },
+    {
+      "route": "spec/STATUS.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/STATUS.html",
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 472354,
+      "served_bytes": 472354,
+      "local_sha256": "c9d69d9af37715357d5e899d6b1713558b6bc92f62d7fa74c3b1062b23c1fb25",
+      "served_sha256": "c9d69d9af37715357d5e899d6b1713558b6bc92f62d7fa74c3b1062b23c1fb25",
+      "matched": true,
+      "text_checks": [
+        {
+          "text": "PR #405",
+          "present": true
+        },
+        {
+          "text": "53/53",
+          "present": true
+        }
+      ]
+    },
+    {
+      "route": "plan/c11-4-auto-fit-axis-physical-android.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-auto-fit-axis-physical-android.html",
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 80437,
+      "served_bytes": 80437,
+      "local_sha256": "a461d60632468d8d31db0da8d1b9b9a27d913568924af74a7a579e8b173c4a5a",
+      "served_sha256": "a461d60632468d8d31db0da8d1b9b9a27d913568924af74a7a579e8b173c4a5a",
+      "matched": true,
+      "text_checks": [
+        {
+          "text": "PR #405",
+          "present": true
+        },
+        {
+          "text": "53/53",
+          "present": true
+        }
+      ]
+    },
+    {
+      "route": "spec/plan/c11-4-auto-fit-axis-physical-android.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/plan/c11-4-auto-fit-axis-physical-android.html",
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 80460,
+      "served_bytes": 80460,
+      "local_sha256": "80924a876c9052a13a881e88124ecf2a91da21014b776e50ac5c027e6586af44",
+      "served_sha256": "80924a876c9052a13a881e88124ecf2a91da21014b776e50ac5c027e6586af44",
+      "matched": true,
+      "text_checks": [
+        {
+          "text": "PR #405",
+          "present": true
+        },
+        {
+          "text": "53/53",
+          "present": true
+        }
+      ]
+    },
+    {
+      "route": "internal/evidence/c11-4-auto-fit-min-size-axis-physical-android-2026-10-21/README.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-fit-min-size-axis-physical-android-2026-10-21/README.html",
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 83172,
+      "served_bytes": 83172,
+      "local_sha256": "e1b17e9c8733c163792640081399fb0a77a9757eba27b9803980c23ae1a3bad5",
+      "served_sha256": "e1b17e9c8733c163792640081399fb0a77a9757eba27b9803980c23ae1a3bad5",
+      "matched": true,
+      "text_checks": [
+        {
+          "text": "53/53",
+          "present": true
+        },
+        {
+          "text": "SM-S731N",
+          "present": true
+        }
+      ]
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-auto-fit-min-size-axis-physical-android-2026-10-21/README.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-auto-fit-min-size-axis-physical-android-2026-10-21/README.html",
+      "content_type": "text/html; charset=utf-8",
+      "local_bytes": 83193,
+      "served_bytes": 83193,
+      "local_sha256": "ffda10da005d0f073e62204649bca4dfb476b53551270d7dd5d5e0601b2ddf83",
+      "served_sha256": "ffda10da005d0f073e62204649bca4dfb476b53551270d7dd5d5e0601b2ddf83",
+      "matched": true,
+      "text_checks": [
+        {
+          "text": "53/53",
+          "present": true
+        },
+        {
+          "text": "SM-S731N",
+          "present": true
+        }
+      ]
+    },
+    {
+      "route": "static/image/auto-fit-min-columns-second-repeat-200.4a17f34d9d.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/auto-fit-min-columns-second-repeat-200.4a17f34d9d.png",
+      "content_type": "image/png",
+      "local_bytes": 107633,
+      "served_bytes": 107633,
+      "local_sha256": "8935075d093dea8b02ad4e73fa4dc3a5d0ff065273f7a38070c3fd2e81ecbc9b",
+      "served_sha256": "8935075d093dea8b02ad4e73fa4dc3a5d0ff065273f7a38070c3fd2e81ecbc9b",
+      "matched": true,
+      "text_checks": []
+    }
+  ]
+}

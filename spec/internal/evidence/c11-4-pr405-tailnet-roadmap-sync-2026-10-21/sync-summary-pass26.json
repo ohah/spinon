@@ -1,0 +1,247 @@
+{
+  "final_pass": "pass26",
+  "source_revision": "3382436096fabd0ce0684d36f287cd90d4581ed9",
+  "preview_url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "preview_server": {
+    "pid": 1191,
+    "listen": "127.0.0.1:8768",
+    "kept_running": true
+  },
+  "initial_pass25_audit": {
+    "file_count": 1741,
+    "counts": {
+      "create": 113,
+      "replace": 92,
+      "same": 1536
+    },
+    "copied_and_backed_up": true,
+    "locally_verified": true,
+    "served_verified_routes": 8,
+    "superseded_by_pass26": true,
+    "reason": "a source audit found 315 documentation paths changed after the pass24 PR #397 base; pass25 had refreshed PR #405 content but not all newer linked plan/evidence pages"
+  },
+  "pass26_selection": {
+    "base_revision": "24267943981a9c7dee693155efb8607bcf8e405c",
+    "changed_source_paths": 315,
+    "overlay_destination_files": 629,
+    "selection_file_count": 2594,
+    "rendered_site_file_count": 1810,
+    "rendered_site_source_bytes": 81661358
+  },
+  "pass26_copy": {
+    "counts": {
+      "create": 162,
+      "replace": 106,
+      "same": 1542
+    },
+    "updated_files": 268,
+    "no_deletes": true,
+    "all_targets_verified": true,
+    "backups": 106,
+    "all_backups_verified": true,
+    "backup_root": "~/Library/Application Support/SpinonPreviewBackups/c11-4-pr405-tailnet-roadmap-sync-2026-10-21/pass26/",
+    "backup_bytes": 10360281
+  },
+  "served_verification": {
+    "route_count": 14,
+    "all_routes_verified": true,
+    "routes": [
+      {
+        "route": "roadmap.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "local_bytes": 173191,
+        "local_sha256": "9605dc51cc1bda66b509d96db898fdfadbc1eab55bb86a66afaf4ec7c74e4438",
+        "matched": true
+      },
+      {
+        "route": "STATUS.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "local_bytes": 491782,
+        "local_sha256": "f3f07db79141534a7fea34b4efe132f1edc619f893da11ab3af85c3e6304468f",
+        "matched": true
+      },
+      {
+        "route": "spec/STATUS.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "local_bytes": 492360,
+        "local_sha256": "960e7ba7f2809c9a9d72350447bf01aeed5f47697ace6ac9d8cd002958523cf2",
+        "matched": true
+      },
+      {
+        "route": "plan/c11-4-auto-fit-axis-physical-android.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "local_bytes": 100292,
+        "local_sha256": "9ca333ae0065a964c69d066f3e9f62d58ea7602a1b1cb9992207ddcfb324cfa6",
+        "matched": true
+      },
+      {
+        "route": "spec/plan/c11-4-auto-fit-axis-physical-android.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "local_bytes": 100217,
+        "local_sha256": "ddac942ca726723b7fcc3c47c74771fad44a401f6d9fa54517874d3c013fcd9d",
+        "matched": true
+      },
+      {
+        "route": "internal/evidence/c11-4-auto-fit-min-size-axis-physical-android-2026-10-21/README.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "local_bytes": 103027,
+        "local_sha256": "3fb9509c572daa730d7756dae7ac6b35de0ab31b07367e45b038df9002f46820",
+        "matched": true
+      },
+      {
+        "route": "spec/internal/evidence/c11-4-auto-fit-min-size-axis-physical-android-2026-10-21/README.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "local_bytes": 103048,
+        "local_sha256": "f8a1a7d8de7c0bfbe71563991bd1ef53d86fcb48872cb9e045d4ee6486c2fc04",
+        "matched": true
+      },
+      {
+        "route": "plan/c13-3-ios-recognizer-event-pairing.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "local_bytes": 107240,
+        "local_sha256": "05d972a36f6f8354bf709b62de1876497f18feaaa3d313ca2c65e32a34920730",
+        "matched": true
+      },
+      {
+        "route": "internal/evidence/c13-3-android-physical-2026-10-21/README.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "local_bytes": 103208,
+        "local_sha256": "925d352cdfbc4f8c572bbdbe74e8959d91a859ced7d6a898483957cfa68b9d10",
+        "matched": true
+      },
+      {
+        "route": "internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "local_bytes": 105094,
+        "local_sha256": "3cd806f9c95f95661b5fe4f6fb2b2db2d53c237beba9b3b214e166cc1ae09778",
+        "matched": true
+      },
+      {
+        "route": "static/image/auto-fit-min-columns-second-repeat-200.4a17f34d9d.png",
+        "status": 200,
+        "content_type": "image/png",
+        "local_bytes": 107633,
+        "local_sha256": "8935075d093dea8b02ad4e73fa4dc3a5d0ff065273f7a38070c3fd2e81ecbc9b",
+        "matched": true
+      },
+      {
+        "route": "static/image/gesture-positive-after.0ce23418b5.png",
+        "status": 200,
+        "content_type": "image/png",
+        "local_bytes": 100333,
+        "local_sha256": "3142cea2bba753872ba1e8b05873d14f0248b3b50830d45df1c3f71216534201",
+        "matched": true
+      },
+      {
+        "route": "static/image/direct-touch-controls.4b60ed5535.png",
+        "status": 200,
+        "content_type": "image/png",
+        "local_bytes": 139871,
+        "local_sha256": "17be6d61905201a2afaf934cd202fbb83cc39dd04fed6f67a23ddde042a280ef",
+        "matched": true
+      },
+      {
+        "route": "static/image/scroll-type-masks.13ac5db130.png",
+        "status": 200,
+        "content_type": "image/png",
+        "local_bytes": 141318,
+        "local_sha256": "a0f1df4294214cd7e108f2e92640aeff92fb7aa26708e77f426826fdc75b4981",
+        "matched": true
+      }
+    ]
+  },
+  "agent_browser": {
+    "browser": "Agent Browser",
+    "terminal_browser_used": false,
+    "session": "spinon-tailnet-pass26",
+    "checked_pages": [
+      {
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+        "title": "스피논 구현 로드맵",
+        "visible_pr_405": true,
+        "visible_c11_4_physical_note": true
+      },
+      {
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-fit-min-size-axis-physical-android-2026-10-21/README.html",
+        "title": "C11.4 definite minimum-size auto-fit 축별 Android 실기기 보충 검증 - 스피논 문서",
+        "visible_53_of_53": true,
+        "images": [
+          {
+            "alt": "SM-S731N auto-fit second-repeat 장면",
+            "complete": true,
+            "natural_width": 1080,
+            "natural_height": 2340
+          }
+        ]
+      },
+      {
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c13-3-android-physical-2026-10-21/README.html",
+        "title": "C13.3 Android 실기기 입력·scroll 경계 확인 · 2026-10-21 - 스피논 문서",
+        "physical_device_text": true,
+        "images": [
+          {
+            "alt": "Android 실기기 C13.3 swipe 뒤 화면",
+            "complete": true,
+            "natural_width": 1080,
+            "natural_height": 2340
+          }
+        ]
+      },
+      {
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c13-3-ios-recognizer-event-pairing-2026-10-21/README.html",
+        "title": "C13.3 iOS recognizer/event pairing 계측 실행 근거 - 스피논 문서",
+        "visible_ipad_simulator_scope": true,
+        "images": [
+          {
+            "alt": "iOS direct-touch positive control",
+            "complete": true,
+            "natural_width": 1536,
+            "natural_height": 2048
+          },
+          {
+            "alt": "iOS scroll type-mask event ledger",
+            "complete": true,
+            "natural_width": 1536,
+            "natural_height": 2048
+          }
+        ]
+      }
+    ],
+    "screenshots": [
+      {
+        "path": "tailnet-roadmap-agent-browser-pass26.png",
+        "width": 1440,
+        "height": 1100,
+        "sha256": "f2f40f72b62bbdc13cdf43d8acd55d7a02b7e795edb41bbc31c79b1bfe74bdd4"
+      },
+      {
+        "path": "tailnet-evidence-agent-browser-pass26.png",
+        "width": 1440,
+        "height": 2200,
+        "sha256": "11ac439273aa26a443b6804be1012096098db73e8054f84df9167ff1beb1ab64"
+      }
+    ],
+    "closed_after_use": true,
+    "daemon_pid_observed_after_close": 1555,
+    "daemon_exited_before_targeted_term": true,
+    "final_agent_browser_and_chrome_processes": [],
+    "preview_server_pid_1191_left_running": true
+  },
+  "limits": [
+    "The selected RSPress build passed; a full repository-wide docs build was not claimed.",
+    "The six C13.3 image path repairs exist only in the generated selection input; repository source Markdown was not edited.",
+    "Two operational Tailnet sync evidence folders containing executable Rspress config files were excluded from the selected public documentation input; no preview target files were deleted.",
+    "C11.4 remains incomplete and the official completion count is unchanged.",
+    "GitHub Pages workflow was not run and gh-pages was not changed."
+  ]
+}
