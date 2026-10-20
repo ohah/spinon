@@ -46,9 +46,9 @@ SPINON_V8_DIR=/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8 SPINON
 | `bun run test:css-reference` | C11.4 관련 검사는 통과. 변경하지 않은 runtime viewport, C11.3.2 entry, C13.3 tap route 2개 소스 검사에서 기존 실패 4개. |
 | Chrome 사전 비교 SHA-256 | 입력 fixture·폰트·환경·관찰 JSON·화면·규범 기대값 6개 모두 일치 |
 
-최종 코드의 Android APK SHA-256은 `d1861f6d60513bcca51c78e14c7bce4b69b8e27301ad740de0f26716eb60ff02`, iOS app SHA-256은 `192ae0dad69be4250d29550b4b518f1b6aa52c7a9172ab56e6111629074ace8f`다. 구현/runtime 20관점 및 PR diff 30관점 검토는 기록했다. 최종 필수 CI, PR 병합, Tailnet 미리보기 sync는 아직 남아 있다.
+최종 코드의 Android APK SHA-256은 `d1861f6d60513bcca51c78e14c7bce4b69b8e27301ad740de0f26716eb60ff02`, iOS app SHA-256은 `192ae0dad69be4250d29550b4b518f1b6aa52c7a9172ab56e6111629074ace8f`다. 구현/runtime 20관점 및 구현 PR diff 30관점 검토를 마쳤다. [PR #375](https://github.com/ohah/spinon/pull/375)은 2026-10-20 Rebase and merge됐고 merge SHA는 `e01f0dfc386e5d77ad0cdf8fb3e3b11df40696f8`다. GitHub required status check은 설정되지 않았다. 이번 상태·계약·계획·roadmap 문서 diff도 [별도 30관점 검토](roadmap-pr-diff-review-30.md)를 거쳤다. Tailnet 미리보기 동기화는 후속 문서 PR에서 다룬다.
 
 ## 남은 범위
 
 - C11.4 intrinsic contribution matrix, negative implicit track, nested/anonymous item, full auto-repeat placement, WPT 적합성은 이 근거에서 다루지 않는다.
-- [내부 계약 0059](../../0059-c11-grid-layout.md)와 [상태 대장](../../STATUS.md)에 부분 slice와 미완료 범위를 연결했다. C11.4/C11 체크와 완료 수는 그대로다. PR #375 필수 CI·병합 및 Tailnet 미리보기 동기화는 남아 있다.
+- [내부 계약 0059](../../0059-c11-grid-layout.md)와 [상태 대장](../../STATUS.md)에 부분 slice와 미완료 범위를 연결했다. PR #375는 merge됐고 C11.4/C11 체크와 완료 수는 그대로다. Tailnet 미리보기 동기화는 별도 후속 PR로 진행한다.

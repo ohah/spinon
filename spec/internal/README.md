@@ -1,5 +1,9 @@
 # 내부 인터페이스 명세
 
+## C11.4 positive implicit auto-track 목록 · PR #375
+
+[구현 계획](https://github.com/ohah/spinon/blob/main/plan/c11-4-positive-implicit-track-sizing.md) · [Chrome 155 사전 비교·Android API 37 AVD·iPhone 17 Pro iOS 26.2 Simulator 73-scene 근거](./evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/README.md) · [구현 검토 20개](./evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/implementation-review-20.md) · [구현 PR diff 검토 30개](./evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/pr-diff-review-30.md) · [roadmap 후속 문서 diff 검토 30개](./evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/roadmap-pr-diff-review-30.md) · [기본/opt-in FFI artifact 경계](./evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/ffi-artifact-boundary.md). [PR #375](https://github.com/ohah/spinon/pull/375)은 `e01f0dfc386e5d77ad0cdf8fb3e3b11df40696f8`로 Rebase and merge했다. C11.4 `RuntimeBlockFlexGridTrackSizingV1`의 `grid-auto-rows/columns` typed 목록을 positive implicit track에만 순환 적용한다. negative implicit track, auto-repeat과의 조합, WPT와 C11.4 전체는 미완료이며 공식 C11.4 check와 완료 수는 그대로다.
+
 ## C11.4 양쪽 Grid 축 auto-repeat 후속
 
 [구현 PR #368](https://github.com/ohah/spinon/pull/368)은 2026-10-20 KST Rebase and merge됐다(merge SHA `c8aa093981a1b0d435347d9757b1fd0146a1f7db`; GitHub required status check 미설정). [집중 계획](../../plan/c11-4-two-axis-auto-repeat.md) · [Chrome 155 12-case 사전 비교](./evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/README.md) · [Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 33-scene 실행·화면·해시](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/README.md) · [구현 실패 관점 검토 20개](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/implementation-review-20.md) · [PR diff 검토 30개](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/pr-diff-review-30.md). 각 axis에 auto-repeat 하나를 독립 적용하는 제한 구현이며 C11.4 공식 상태는 미완료다.
