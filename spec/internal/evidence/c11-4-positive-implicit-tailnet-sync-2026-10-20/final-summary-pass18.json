@@ -1,0 +1,78 @@
+{
+  "final_pass": "pass18",
+  "base_implementation_pr": 375,
+  "source_docs_pr": 376,
+  "source_docs_merge_sha": "98d4910539f0cc69ee8065f266038f1e996c03ce",
+  "source_branch": "docs/c11-4-positive-implicit-tailnet-sync-20261020",
+  "source_worktree_head": "f6c36038c104760487e5c34fa9911a89b98efd80",
+  "source_worktree_dirty_at_preflight": true,
+  "selected_build": {
+    "rspress_version": "2.0.22",
+    "selected_source_mappings": 131,
+    "staging_file_count": 3413,
+    "unique_selected_sources": 74,
+    "sha256_input_file_count": 1437,
+    "remaining_host_paths": 0
+  },
+  "tailnet_sync": {
+    "preview_root_relative": "SpinonPreview",
+    "target_file_count": 2815,
+    "source_bytes": 114459611,
+    "counts": {
+      "create": 103,
+      "replace": 102,
+      "same": 2610
+    },
+    "no_deletes": true,
+    "atomic_changed_paths": 205,
+    "all_copied_files_verified": true,
+    "verified_backups": 102,
+    "all_backups_verified": true,
+    "served_http_200_sha256_matches": 2815,
+    "served_mismatches": 0
+  },
+  "agent_browser": {
+    "roadmap_count": "212개 표시 · 공식 완료 72/212",
+    "c11_4_checked": false,
+    "contract_anchor_found": true,
+    "status_checkbox_checked": false,
+    "android_evidence_image": {
+      "height": 2400,
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/android-avd-c114-implicit-intrinsic-android-avd-20261020T032916132Z-bdce45bc/implicit-min-content-overflow-border.png",
+      "loaded": true,
+      "text": "Android",
+      "width": 1080
+    },
+    "ios_evidence_image": {
+      "height": 2622,
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/ios-simulator-c114-implicit-intrinsic-ios-simulator-20261020T033027363Z-dd058ebc/implicit-min-content-overflow-border.png",
+      "loaded": true,
+      "text": "iOS",
+      "width": 1206
+    },
+    "review_row_27_confirms_pass17": true,
+    "sessions_closed": {
+      "pass16": {
+        "active": false,
+        "pid": null,
+        "session": "spinon-c11-4-tailnet-pass16",
+        "namespace": "codex-spinon-c11-4-pass16"
+      },
+      "pass17": {
+        "active": false,
+        "pid": null,
+        "session": "spinon-c11-4-tailnet-pass17",
+        "namespace": "codex-spinon-c11-4-pass17"
+      },
+      "pass18": {
+        "active": false,
+        "pid": null,
+        "session": "spinon-c11-4-tailnet-pass18",
+        "namespace": "codex-spinon-c11-4-pass18"
+      }
+    },
+    "shared_agent_browser_pid_67317_touched": false
+  },
+  "preview_server_pid": 1191,
+  "github_pages_deployed": false
+}

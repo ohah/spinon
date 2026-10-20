@@ -1,0 +1,428 @@
+{
+  "run": "pass16",
+  "source_branch": "docs/c11-4-positive-implicit-tailnet-sync-20261020",
+  "source_commit": "98d4910539f0cc69ee8065f266038f1e996c03ce",
+  "output_root_relative": "build/spinon/c11-4-positive-implicit-tailnet-root-pass16",
+  "selected_sources": [
+    {
+      "source": "spec/0001-conformance.md",
+      "destination": "0001-conformance.md"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "destination": "STATUS.md"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "destination": "internal/0059-c11-grid-layout.md"
+    },
+    {
+      "source": "spec/internal/README.md",
+      "destination": "internal/README.md"
+    },
+    {
+      "source": "plan/c11-css-grid.md",
+      "destination": "plan/c11-css-grid.md"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "destination": "plan/c11-4-grid-track-sizing.md"
+    },
+    {
+      "source": "plan/c11-4-image-ratio-fixed-gutter.md",
+      "destination": "plan/c11-4-image-ratio-fixed-gutter.md"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "destination": "spec/internal/0059-c11-grid-layout.md"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19",
+      "destination": "internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19",
+      "destination": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20",
+      "destination": "internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20",
+      "destination": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20"
+    },
+    {
+      "source": "tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html",
+      "destination": "public/tests/fixtures/css/c11/grid-track-sizing-c114-image-ratio-fixed-gutter.html"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "destination": "public/icon.svg"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "destination": "public/logo.svg"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "destination": "public/roadmap.svg"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "destination": "public/roadmap.html"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19",
+      "destination": "internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-image-tailnet-sync-2026-10-19",
+      "destination": "internal/evidence/c11-4-image-tailnet-sync-2026-10-19"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-two-track-min-size.md",
+      "destination": "plan/c11-4-auto-repeat-two-track-min-size.md"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20",
+      "destination": "internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20",
+      "destination": "spec/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20",
+      "destination": "internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20",
+      "destination": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20",
+      "destination": "internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20",
+      "destination": "spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20"
+    },
+    {
+      "source": "plan/c11-4-two-axis-auto-repeat.md",
+      "destination": "plan/c11-4-two-axis-auto-repeat.md"
+    },
+    {
+      "source": "tests/fixtures/css/c11/grid-auto-repeat-both-axes-c114.html",
+      "destination": "public/tests/fixtures/css/c11/grid-auto-repeat-both-axes-c114.html"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20",
+      "destination": "internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20",
+      "destination": "spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20",
+      "destination": "internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20",
+      "destination": "spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/README.md",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/README.md"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/README.md",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/README.md"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/sync-review-20.md",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/sync-review-20.md"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/sync-review-20.md",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/sync-review-20.md"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/SHA256SUMS-preview-inputs-pass12.txt",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/SHA256SUMS-preview-inputs-pass12.txt"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/SHA256SUMS-preview-inputs-pass12.txt",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/SHA256SUMS-preview-inputs-pass12.txt"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/SHA256SUMS-preview-inputs-pass13.txt",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/SHA256SUMS-preview-inputs-pass13.txt"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/SHA256SUMS-preview-inputs-pass13.txt",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/SHA256SUMS-preview-inputs-pass13.txt"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/input-manifest-write-initial-failure-pass13.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/input-manifest-write-initial-failure-pass13.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/input-manifest-write-initial-failure-pass13.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/input-manifest-write-initial-failure-pass13.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/open-handles-initial-pass13.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/open-handles-initial-pass13.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/open-handles-initial-pass13.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/open-handles-initial-pass13.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/preserved-open-targets-pass13.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/preserved-open-targets-pass13.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/preserved-open-targets-pass13.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/preserved-open-targets-pass13.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/prepare-root-pass12.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/prepare-root-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/prepare-root-pass12.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/prepare-root-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/selected-build-pass12.log",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/selected-build-pass12.log"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/selected-build-pass12.log",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/selected-build-pass12.log"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/sanitize-pass12.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/sanitize-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/sanitize-pass12.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/sanitize-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/preflight-pass12.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/preflight-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/preflight-pass12.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/preflight-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/open-handles-pass12.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/open-handles-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/open-handles-pass12.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/open-handles-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/copy-and-backup-pass12.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/copy-and-backup-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/copy-and-backup-pass12.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/copy-and-backup-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/served-verification-pass12.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/served-verification-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/served-verification-pass12.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/served-verification-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/browser-check-pass12.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/browser-check-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/browser-check-pass12.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/browser-check-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/status-check-pass12.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/status-check-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/status-check-pass12.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/status-check-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/plan-check-pass12.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/plan-check-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/plan-check-pass12.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/plan-check-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/evidence-check-pass12.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/evidence-check-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/evidence-check-pass12.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/evidence-check-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/precomparison-check-pass12.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/precomparison-check-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/precomparison-check-pass12.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/precomparison-check-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/sync-report-check-pass12.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/sync-report-check-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/sync-report-check-pass12.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/sync-report-check-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/html-route-check-pass12.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/html-route-check-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/html-route-check-pass12.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/html-route-check-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/route-check-initial-overstrict-pass12.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/route-check-initial-overstrict-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/route-check-initial-overstrict-pass12.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/route-check-initial-overstrict-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/new-c11-4-routes-pass12.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/new-c11-4-routes-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/new-c11-4-routes-pass12.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/new-c11-4-routes-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/browser-close-pass12.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/browser-close-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/browser-close-pass12.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/browser-close-pass12.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-roadmap-agent-browser-pass12.png",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-roadmap-agent-browser-pass12.png"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-roadmap-agent-browser-pass12.png",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-roadmap-agent-browser-pass12.png"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-status-agent-browser-pass12.png",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-status-agent-browser-pass12.png"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-status-agent-browser-pass12.png",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-status-agent-browser-pass12.png"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-plan-agent-browser-pass12.png",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-plan-agent-browser-pass12.png"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-plan-agent-browser-pass12.png",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-plan-agent-browser-pass12.png"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-evidence-agent-browser-pass12.png",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-evidence-agent-browser-pass12.png"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-evidence-agent-browser-pass12.png",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-evidence-agent-browser-pass12.png"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/browser-check-pass13.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/browser-check-pass13.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/browser-check-pass13.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/browser-check-pass13.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/status-check-pass13.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/status-check-pass13.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/status-check-pass13.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/status-check-pass13.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/plan-check-pass13.json",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/plan-check-pass13.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/plan-check-pass13.json",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/plan-check-pass13.json"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-roadmap-agent-browser-pass13.png",
+      "destination": "internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-roadmap-agent-browser-pass13.png"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-roadmap-agent-browser-pass13.png",
+      "destination": "spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/tailnet-roadmap-agent-browser-pass13.png"
+    },
+    {
+      "source": "plan/c11-4-auto-fit-min-size-axis.md",
+      "destination": "plan/c11-4-auto-fit-min-size-axis.md"
+    },
+    {
+      "source": "tests/fixtures/css/c11/grid-auto-fit-min-size-axis-c114.html",
+      "destination": "public/tests/fixtures/css/c11/grid-auto-fit-min-size-axis-c114.html"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20",
+      "destination": "internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20",
+      "destination": "spec/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20"
+    },
+    {
+      "source": "plan/c11-4-positive-implicit-track-sizing.md",
+      "destination": "plan/c11-4-positive-implicit-track-sizing.md"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-precomparison-2026-10-20",
+      "destination": "internal/evidence/c11-4-implicit-intrinsic-auto-tracks-precomparison-2026-10-20"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-precomparison-2026-10-20",
+      "destination": "spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-precomparison-2026-10-20"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20",
+      "destination": "internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20",
+      "destination": "spec/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20"
+    }
+  ]
+}

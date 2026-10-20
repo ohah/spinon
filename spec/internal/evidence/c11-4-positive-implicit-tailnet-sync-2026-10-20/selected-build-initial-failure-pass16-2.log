@@ -1,0 +1,35 @@
+🔥 Rspress v2.0.22
+
+node:internal/modules/cjs/loader:1564
+  const err = new Error(message);
+              ^
+
+Error: Cannot find module '@rspress/core'
+Require stack:
+- [worktree-path-redacted]/spec/internal/evidence/c11-4-positive-implicit-tailnet-sync-2026-10-20/rspress.tailnet-sync-pass16.config.ts
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)
+    at defaultResolve (node:internal/modules/cjs/loader:1199:20)
+    at nextStep (node:internal/modules/customization_hooks:189:26)
+    at resolve (file://[worktree-path-redacted]/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/dist/freshImport.js:63:87)
+    at nextStep (node:internal/modules/customization_hooks:189:26)
+    at resolveWithHooks (node:internal/modules/customization_hooks:417:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1212:25)
+    at require.resolve (node:internal/modules/helpers:175:31)
+    at jitiResolve ([worktree-path-redacted]/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/compiled/jiti/dist/jiti.cjs:5602:40)
+    at jitiRequire ([worktree-path-redacted]/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/compiled/jiti/dist/jiti.cjs:5657:23)
+    at import ([worktree-path-redacted]/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/compiled/jiti/dist/jiti.cjs:5969:37)
+    at [worktree-path-redacted]/spec/internal/evidence/c11-4-positive-implicit-tailnet-sync-2026-10-20/rspress.tailnet-sync-pass16.config.ts:2:19
+    at async Function.import ([worktree-path-redacted]/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/compiled/jiti/dist/jiti.cjs:5969:31)
+    at async loadWithJiti (file://[worktree-path-redacted]/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/dist/m.js:10030:23)
+    at async dist_loadConfig (file://[worktree-path-redacted]/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/dist/m.js:10089:37)
+    at async loadConfig_loadConfig (file://[worktree-path-redacted]/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/dist/m.js:10126:17)
+    at async loadConfigFile (file://[worktree-path-redacted]/node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/config/loadConfigFile.js:4:20)
+    at async CAC.<anonymous> (file://[worktree-path-redacted]/node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/cli/index.js:62:30) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '[worktree-path-redacted]/spec/internal/evidence/c11-4-positive-implicit-tailnet-sync-2026-10-20/rspress.tailnet-sync-pass16.config.ts'
+  ]
+}
+
+Node.js v24.20.0

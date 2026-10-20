@@ -1,0 +1,32 @@
+{
+  "note": "2026-10-20 C11.4 positive implicit track sizing · PR #375 병합: RuntimeBlockFlexGridTrackSizingV1에서 grid-auto-rows·grid-auto-columns typed 목록을 양의 implicit track에 순환 적용합니다. Chrome 155 Agent Browser 20/20 case, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 각각 73/73 scene의 frame·track trace·draw/present를 확인했습니다. border 밖 overflow 표본은 PixelCopy와 Metal drawable에서 각각 5/5 exact이며 OS compositor 이후 화면 비교는 아닙니다. negative implicit track, auto-repeat과 typed 목록의 조합, WPT와 전체 C11.4는 미완료이고 공식 완료 수는 바꾸지 않습니다. 계획 · 내부 계약 · 실행 근거 · PR #375.",
+  "note_links": [
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-positive-implicit-track-sizing.html",
+      "text": "계획"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/0059-c11-grid-layout.html#c114-positive-implicit-grid-auto-track-size-lists",
+      "text": "내부 계약"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/README.html",
+      "text": "실행 근거"
+    },
+    {
+      "href": "https://github.com/ohah/spinon/pull/375",
+      "text": "PR #375"
+    }
+  ],
+  "page_heading": "스피논을 만드는 순서",
+  "relevant_checkboxes": [
+    {
+      "aria": "intrinsic track sizing 공식 미완료",
+      "checked": false,
+      "text": "intrinsic track sizing\nauto, minmax(), fit-content(), item intrinsic contribution, spans, cyclic percentage와 auto-repeat의 전체 CSS Grid 단계는 미완료다. 병합된 PR #338은 Taffy inherent-size callback trace를, PR #340은 callback과 분리된 direct-leaf text/image intrinsic input 및 outer-size contribution 후보를 보존한다. 현재 후보는 vendored Taffy 0.15.0 기반 RuntimeBlockFlexGridTrackSizingV1 typed track input과 제한 stage trace, opt-in "
+    }
+  ],
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "visible_count": "212개 표시 · 공식 완료 72/212"
+}

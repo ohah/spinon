@@ -1,0 +1,26 @@
+{
+  "pass": "pass18",
+  "preview_root_relative": "SpinonPreview",
+  "checked_path_count": 102,
+  "open_selected_path_count": 2,
+  "open_selected_paths": [
+    "internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/android-avd-c114-implicit-intrinsic-android-avd-20261020T030912380Z-910071e2/failure-diagnosis.html",
+    "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html"
+  ],
+  "descriptors": [
+    {
+      "pid": "1191",
+      "command": "node",
+      "fd": "561",
+      "path": "internal/evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/android-avd-c114-implicit-intrinsic-android-avd-20261020T030912380Z-910071e2/failure-diagnosis.html"
+    },
+    {
+      "pid": "1191",
+      "command": "node",
+      "fd": "574",
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html"
+    }
+  ],
+  "lsof_exit_status": 1,
+  "replacement_method": "write a same-directory temporary file and atomically rename it over the target"
+}
