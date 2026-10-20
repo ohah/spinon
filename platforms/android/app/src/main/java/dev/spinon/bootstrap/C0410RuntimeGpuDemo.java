@@ -163,6 +163,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "fit-content-below-minimum", "fit-content-above-intrinsic",
             "fit-content-percent", "fixed-small-track-overflow",
             "spanning-min-content-items", "min-content-row-image",
+            "competing-span2-forward", "competing-span2-reversed",
+            "span2-before-span3", "span3-before-span2",
             "column-auto-natural-ratio", "column-target-max-width-clamp",
             "row-target-max-height-clamp",
             "column-opposite-min-over-max", "column-border-box-transfer",
@@ -455,6 +457,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return "width=100,height=30";
             case "spanning-min-content-items":
                 return "width=100,height=30";
+            case "competing-span2-forward":
+            case "competing-span2-reversed":
+            case "span2-before-span3":
+            case "span3-before-span2":
+                return "width=220,height=40";
             case "fit-content-calc-limit":
                 return "width=100,height=120";
             case "fixed-small-track-overflow":
@@ -478,6 +485,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        if (sceneId.startsWith("competing-span2-")
+                || sceneId.startsWith("span2-before-")
+                || sceneId.startsWith("span3-before-")) return "";
         if (c114IsAutoRepeatNegativeLineScene(sceneId)) return "";
         if (c114IsImplicitTextScene(sceneId)) return "";
         String negativeTrackFrame = c114NegativeTrackItemFrame(sceneId);
@@ -939,6 +949,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
         if (c114IsImplicitTextScene(sceneId)) return null;
+        if (c114IsMultiSpanOrderingScene(sceneId)) return null;
         String negativeTrackFrames = c114NegativeTrackNodeFrames(sceneId);
         if (negativeTrackFrames != null) return negativeTrackFrames;
         String autoFitMinimumSizeNodeFrames = c114AutoFitMinimumSizeNodeFrames(sceneId);
@@ -1037,6 +1048,74 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
     }
 
+    private static boolean c114IsMultiSpanOrderingScene(String sceneId) {
+        return "competing-span2-forward".equals(sceneId)
+                || "competing-span2-reversed".equals(sceneId)
+                || "span2-before-span3".equals(sceneId)
+                || "span3-before-span2".equals(sceneId);
+    }
+
+    private static boolean c114ExpectedMultiSpanFramesMatch(String sceneId, String report) {
+        double[][] expected;
+        switch (sceneId) {
+            case "competing-span2-forward":
+                expected = new double[][] {
+                    {0, 0, 220, 40}, {0, 0, 80, 10}, {40, 10, 120, 10},
+                };
+                break;
+            case "competing-span2-reversed":
+                expected = new double[][] {
+                    {0, 0, 220, 40}, {40, 0, 120, 10}, {0, 10, 80, 10},
+                };
+                break;
+            case "span2-before-span3":
+                expected = new double[][] {
+                    {0, 0, 220, 40}, {0, 0, 80, 10}, {53.328125, 10, 120, 10},
+                    {0, 20, 200, 10},
+                };
+                break;
+            case "span3-before-span2":
+                expected = new double[][] {
+                    {0, 0, 220, 40}, {0, 0, 200, 10}, {53.328125, 10, 120, 10},
+                    {0, 20, 80, 10},
+                };
+                break;
+            default:
+                return true;
+        }
+        String marker = "node_frames_css_px=[";
+        int start = report.indexOf(marker);
+        if (start < 0) return false;
+        int end = report.indexOf(']', start + marker.length());
+        if (end < 0) return false;
+        String[] frames = report.substring(start + marker.length(), end).split(";");
+        if (frames.length != expected.length) return false;
+        String[] propertyPrefixes = {"x=", "y=", "width=", "height="};
+        double tolerance = 1.0 / 64.0;
+        for (int index = 0; index < frames.length; index++) {
+            String[] fields = frames[index].split(",");
+            if (fields.length != 5) return false;
+            String[] identity = fields[0].split(":node=");
+            if (identity.length != 2) return false;
+            try {
+                if (Integer.parseInt(identity[0]) != index
+                        || Integer.parseInt(identity[1]) != index + 1) return false;
+                for (int property = 0; property < propertyPrefixes.length; property++) {
+                    String prefix = propertyPrefixes[property];
+                    if (!fields[property + 1].startsWith(prefix)) return false;
+                    double actual = Double.parseDouble(fields[property + 1].substring(prefix.length()));
+                    if (Double.isNaN(actual) || Double.isInfinite(actual)
+                            || Math.abs(actual - expected[index][property]) > tolerance) {
+                        return false;
+                    }
+                }
+            } catch (NumberFormatException | IndexOutOfBoundsException error) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private static String c114GapNodeFrames(
             String gridWidth, String gridHeight, String secondColumnX, String secondRowY
     ) {
@@ -1048,6 +1127,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (sceneId.equals("competing-span2-forward")
+                || sceneId.equals("competing-span2-reversed")) return 3;
+        if (sceneId.equals("span2-before-span3")
+                || sceneId.equals("span3-before-span2")) return 4;
         if (sceneId.equals("typed-fixed-cycle-three-leading-trailing")) return 4;
         if (sceneId.equals("typed-mixed-cycle")
                 || sceneId.equals("typed-auto-fit-occupied")
@@ -3582,6 +3665,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || (!expectedRootFrame.isEmpty() && !result.contains(expectedRootFrame))
                     || (!expectedItemFrame.isEmpty() && !result.contains(expectedItemFrame))
                     || (expectedNodeFrames != null && !result.contains(expectedNodeFrames))
+                    || !c114ExpectedMultiSpanFramesMatch(c114GridTrackSizingSceneId, result)
                     || !c114ExpectedTextIntrinsicInputs(c114GridTrackSizingSceneId, result)
                     || !c114ExpectedImageIntrinsicInputs(c114GridTrackSizingSceneId, result)) {
                 Log.e(TAG, "SPINON_C114_GRID_ASSERTION_ERROR run_id="

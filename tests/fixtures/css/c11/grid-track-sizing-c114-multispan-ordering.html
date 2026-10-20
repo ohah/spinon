@@ -1,0 +1,63 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Spinon C11.4 multi-span ordering precomparison</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 320px; background: #fff; }
+  body { font: 10px/1 sans-serif; color: #111; }
+  .case { display: grid; grid-template-columns: 90px 1fr; column-gap: 8px; min-height: 56px; border-bottom: 1px solid #ccc; }
+  .label { padding-top: 4px; }
+  .grid { display: grid; width: 220px; height: 40px; grid-template-columns: repeat(4, minmax(0, max-content)); grid-template-rows: 10px; gap: 0; align-content: start; justify-content: start; }
+  .grid.three-columns { grid-template-columns: repeat(3, minmax(0, max-content)); }
+  .item { height: 10px; margin: 0; padding: 0; border: 0; justify-self: start; align-self: start; background: #e5484d; }
+</style>
+<body>
+  <section class="case" data-case="competing-span2-forward">
+    <span class="label">two overlapping span-2 contributions, forward DOM order</span>
+    <div class="grid" id="competing-span2-forward">
+      <div class="item" id="span2-a-forward" style="width:80px;grid-column:1 / span 2"></div>
+      <div class="item" id="span2-b-forward" style="width:120px;grid-column:2 / span 2"></div>
+    </div>
+  </section>
+  <section class="case" data-case="competing-span2-reversed">
+    <span class="label">two overlapping span-2 contributions, reversed DOM order</span>
+    <div class="grid" id="competing-span2-reversed">
+      <div class="item" id="span2-b-reversed" style="width:120px;grid-column:2 / span 2"></div>
+      <div class="item" id="span2-a-reversed" style="width:80px;grid-column:1 / span 2"></div>
+    </div>
+  </section>
+  <section class="case" data-case="span2-before-span3">
+    <span class="label">span-2 contributions followed by span-3 contribution</span>
+    <div class="grid" id="span2-before-span3">
+      <div class="item" id="span3-a" style="width:80px;grid-column:1 / span 2"></div>
+      <div class="item" id="span3-b" style="width:120px;grid-column:2 / span 2"></div>
+      <div class="item" id="span3-c" style="width:200px;grid-column:1 / span 3"></div>
+    </div>
+  </section>
+  <section class="case" data-case="span3-before-span2">
+    <span class="label">same spans, reverse source order</span>
+    <div class="grid" id="span3-before-span2">
+      <div class="item" id="span3-c-reversed" style="width:200px;grid-column:1 / span 3"></div>
+      <div class="item" id="span3-b-reversed" style="width:120px;grid-column:2 / span 2"></div>
+      <div class="item" id="span3-a-reversed" style="width:80px;grid-column:1 / span 2"></div>
+    </div>
+  </section>
+  <pre id="result" hidden></pre>
+  <script>
+    window.__C114_MULTISPAN_OBSERVATION__ = Array.from(document.querySelectorAll('.case')).map((section) => {
+      const grid = section.querySelector('.grid');
+      const rect = (node) => {
+        const value = node.getBoundingClientRect();
+        return {x:value.x, y:value.y, width:value.width, height:value.height};
+      };
+      return {
+        id: section.dataset.case,
+        columns: getComputedStyle(grid).gridTemplateColumns,
+        rows: getComputedStyle(grid).gridTemplateRows,
+        grid: rect(grid),
+        items: Array.from(grid.children, (item) => ({id:item.id, frame:rect(item)})),
+      };
+    });
+    document.querySelector('#result').textContent = JSON.stringify(window.__C114_MULTISPAN_OBSERVATION__, null, 2);
+  </script>
+</body>

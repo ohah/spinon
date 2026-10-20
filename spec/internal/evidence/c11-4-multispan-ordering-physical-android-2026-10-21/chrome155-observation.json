@@ -1,0 +1,144 @@
+[
+  {
+    "columns": "40px 60px 60px 0px",
+    "grid": {
+      "height": 40,
+      "width": 220,
+      "x": 98,
+      "y": 0
+    },
+    "id": "competing-span2-forward",
+    "items": [
+      {
+        "frame": {
+          "height": 10,
+          "width": 80,
+          "x": 98,
+          "y": 0
+        },
+        "id": "span2-a-forward"
+      },
+      {
+        "frame": {
+          "height": 10,
+          "width": 120,
+          "x": 138,
+          "y": 10
+        },
+        "id": "span2-b-forward"
+      }
+    ],
+    "rows": "10px 10px"
+  },
+  {
+    "columns": "40px 60px 60px 0px",
+    "grid": {
+      "height": 40,
+      "width": 220,
+      "x": 98,
+      "y": 56
+    },
+    "id": "competing-span2-reversed",
+    "items": [
+      {
+        "frame": {
+          "height": 10,
+          "width": 120,
+          "x": 138,
+          "y": 56
+        },
+        "id": "span2-b-reversed"
+      },
+      {
+        "frame": {
+          "height": 10,
+          "width": 80,
+          "x": 98,
+          "y": 66
+        },
+        "id": "span2-a-reversed"
+      }
+    ],
+    "rows": "10px 10px"
+  },
+  {
+    "columns": "53.3281px 73.3281px 73.3438px 0px",
+    "grid": {
+      "height": 40,
+      "width": 220,
+      "x": 98,
+      "y": 112
+    },
+    "id": "span2-before-span3",
+    "items": [
+      {
+        "frame": {
+          "height": 10,
+          "width": 80,
+          "x": 98,
+          "y": 112
+        },
+        "id": "span3-a"
+      },
+      {
+        "frame": {
+          "height": 10,
+          "width": 120,
+          "x": 151.328125,
+          "y": 122
+        },
+        "id": "span3-b"
+      },
+      {
+        "frame": {
+          "height": 10,
+          "width": 200,
+          "x": 98,
+          "y": 132
+        },
+        "id": "span3-c"
+      }
+    ],
+    "rows": "10px 10px 10px"
+  },
+  {
+    "columns": "53.3281px 73.3281px 73.3438px 0px",
+    "grid": {
+      "height": 40,
+      "width": 220,
+      "x": 98,
+      "y": 168
+    },
+    "id": "span3-before-span2",
+    "items": [
+      {
+        "frame": {
+          "height": 10,
+          "width": 200,
+          "x": 98,
+          "y": 168
+        },
+        "id": "span3-c-reversed"
+      },
+      {
+        "frame": {
+          "height": 10,
+          "width": 120,
+          "x": 151.328125,
+          "y": 178
+        },
+        "id": "span3-b-reversed"
+      },
+      {
+        "frame": {
+          "height": 10,
+          "width": 80,
+          "x": 98,
+          "y": 188
+        },
+        "id": "span3-a-reversed"
+      }
+    ],
+    "rows": "10px 10px 10px"
+  }
+]
