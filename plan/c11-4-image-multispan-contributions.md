@@ -1,6 +1,6 @@
 # C11.4 · 직접 이미지 다중 span intrinsic 기여 계획
 
-**상태:** Chrome 155 고정 사전 비교, 계획 실패 관점 20개, 구현/runtime 20개 리뷰를 마쳤다. 네 scene은 Android 실기기·AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 검증했다. 이번 제한 구현은 direct HTML `img` 세 개 이하, fixed PNG, explicit height·auto width, `min-content` column과 span 2/3 조합에 한정한다. C11.4 체크와 공식 완료 수는 변경하지 않는다.
+**상태:** Chrome 155 고정 사전 비교, 계획 실패 관점 20개, 구현/runtime 20개 리뷰를 마쳤다. 네 scene은 Android 실기기·AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 검증했다. 이번 제한 구현은 direct HTML `img` 세 개 이하, fixed PNG, explicit height·auto width, `min-content` column과 span 2/3 조합에 한정한다. C11.4 체크와 공식 완료 수는 변경하지 않는다. [PR #411](https://github.com/ohah/spinon/pull/411)에서 검토 중이다.
 
 **상위 원본:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [공식 상태](../spec/STATUS.md#c11-css-grid) · [Grid 내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
