@@ -26,6 +26,7 @@ The Android manifest records APK SHA-256
 app SHA-256 is `90fe143b34984efdce4f6390726491a7537cc8ed71f3802e45cac1bf27765395`.
 The typed implicit track sizing change has a separate [20-perspective
 implementation review](./auto-repeat-typed-implementation-review-20.md).
+Its final PR diff has a separate [30-perspective review](./auto-repeat-typed-pr-diff-review-30.md).
 Trailing horizontal whitespace was removed from `.log` files in these two run
 directories; recorded values and log content are unchanged.
 
@@ -133,6 +134,7 @@ auto-repeat delta has a separate
 [20-perspective implementation review](./auto-repeat-implementation-review-20.md).
 The typed implicit sizing follow-up has its own
 [20-perspective implementation review](./auto-repeat-typed-implementation-review-20.md).
+Its PR diff review is [recorded separately in 30 perspectives](./auto-repeat-typed-pr-diff-review-30.md).
 The prior 106-scene PR review is in [pr-diff-review-30.md](./pr-diff-review-30.md);
 the current implementation PR diff has its own
 [30-perspective review](./implementation-pr-diff-review-30.md).
