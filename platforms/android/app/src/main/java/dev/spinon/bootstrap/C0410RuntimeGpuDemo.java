@@ -196,6 +196,26 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "rows-negative-row-dense-auto-items", "rows-negative-column-flow-auto-items",
             "rows-negative-column-dense-auto-items", "columns-negative-fixed-root-overflow",
             "rows-negative-fixed-root-overflow",
+            "columns-fill-one-leading", "columns-fill-two-repetitions",
+            "columns-fill-four-repetitions", "columns-fit-one-leading-empty-repeat",
+            "columns-fill-two-leading-cycle", "columns-fill-leading-span-prefix",
+            "columns-fit-negative-and-repeat-occupied", "columns-fit-third-repeat-only",
+            "columns-fill-negative-positive-cycle", "columns-fill-reversed-negative-lines",
+            "columns-fill-repeat-only-leading", "rows-fill-one-leading",
+            "rows-fill-three-repetitions", "rows-fill-five-repetitions",
+            "rows-fit-one-leading-empty-repeat", "rows-fill-two-leading-cycle",
+            "both-axes-fit-negative-leading", "both-axes-fill-independent-cycles",
+    };
+    private static final String[] C114_AUTO_REPEAT_NEGATIVE_LINE_SCENE_IDS = {
+            "columns-fill-one-leading", "columns-fill-two-repetitions",
+            "columns-fill-four-repetitions", "columns-fit-one-leading-empty-repeat",
+            "columns-fill-two-leading-cycle", "columns-fill-leading-span-prefix",
+            "columns-fit-negative-and-repeat-occupied", "columns-fit-third-repeat-only",
+            "columns-fill-negative-positive-cycle", "columns-fill-reversed-negative-lines",
+            "columns-fill-repeat-only-leading", "rows-fill-one-leading",
+            "rows-fill-three-repetitions", "rows-fill-five-repetitions",
+            "rows-fit-one-leading-empty-repeat", "rows-fill-two-leading-cycle",
+            "both-axes-fit-negative-leading", "both-axes-fill-independent-cycles",
     };
     private static final String[][] C114_NEGATIVE_TRACK_EXPECTATIONS = {
             {"columns-one-negative", "189", "22", "47", "20", "4"},
@@ -334,6 +354,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        if (c114IsAutoRepeatNegativeLineScene(sceneId)) return "";
         String implicitTrackFrame = c114ImplicitTextRootFrame(sceneId);
         if (implicitTrackFrame != null) return implicitTrackFrame;
         String negativeTrackFrame = c114NegativeTrackRootFrame(sceneId);
@@ -444,6 +465,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        if (c114IsAutoRepeatNegativeLineScene(sceneId)) return "";
         if (c114IsImplicitTextScene(sceneId)) return "";
         String negativeTrackFrame = c114NegativeTrackItemFrame(sceneId);
         if (negativeTrackFrame != null) return negativeTrackFrame;
@@ -491,7 +513,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "auto-fill-pattern-neighbors":
                 return "width=10,height=40";
             case "auto-fit-fixed-neighbors":
-                return "width=154,height=40";
+                return "width=162,height=40";
             case "auto-fit-empty-neighbors":
             case "auto-fill-max-size-neighbors":
             case "auto-fill-min-size-neighbors":
@@ -902,16 +924,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + "1:node=2,x=28,y=28,width=12,height=12]";
             case "both-fit-second-repeat":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
-                        + "1:node=2,x=28,y=28,width=12,height=12]";
+                        + "1:node=2,x=20,y=20,width=12,height=12]";
             case "both-fill-asymmetric":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=266;"
                         + "1:node=2,x=28,y=28,width=12,height=12]";
             case "columns-fit-rows-fill-second-repeat":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
-                        + "1:node=2,x=28,y=109,width=12,height=12]";
+                        + "1:node=2,x=20,y=109,width=12,height=12]";
             case "columns-fill-rows-fit-second-repeat":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
-                        + "1:node=2,x=109,y=28,width=12,height=12]";
+                        + "1:node=2,x=109,y=20,width=12,height=12]";
             case "auto-fill-two-track-columns-both-190":
             case "auto-fill-two-track-columns-both-200":
             case "auto-fill-two-track-columns-both-342":
@@ -928,7 +950,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + "1:node=2,x=190,y=0,width=10,height=40]";
             case "auto-fit-fixed-neighbors":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;"
-                        + "1:node=2,x=28,y=0,width=154,height=40]";
+                        + "1:node=2,x=28,y=0,width=162,height=40]";
             case "grid-gap-definite-percent":
                 return c114GapNodeFrames("100", "40", "50", "20");
             case "grid-gap-cyclic-percent":
@@ -990,6 +1012,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (sceneId.equals("columns-fit-negative-and-repeat-occupied")
+                || sceneId.equals("columns-fill-negative-positive-cycle")) return 3;
+        if (c114IsAutoRepeatNegativeLineScene(sceneId)) return 2;
         int implicitTrackBoxCount = c114ImplicitTextBoxCount(sceneId);
         if (implicitTrackBoxCount != 0) return implicitTrackBoxCount;
         String[] negativeTrackExpectation = c114NegativeTrackExpectation(sceneId);
@@ -1009,6 +1034,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114IsImplicitTextScene(String sceneId) {
         return c114ImplicitTextRootFrame(sceneId) != null;
+    }
+
+    private static boolean c114IsAutoRepeatNegativeLineScene(String sceneId) {
+        for (String candidate : C114_AUTO_REPEAT_NEGATIVE_LINE_SCENE_IDS) {
+            if (candidate.equals(sceneId)) return true;
+        }
+        return false;
     }
 
     private static String c114ImplicitTextRootFrame(String sceneId) {
@@ -1100,7 +1132,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (itemFrame.isEmpty()) {
             return "node_frames_css_px=[0:node=1,x=0,y=0," + rootFrame + "]";
         }
-        String position = sceneId.contains("-columns-") ? "x=28,y=0" : "x=0,y=28";
+        String position = sceneId.contains("-second-repeat-")
+                ? sceneId.contains("-columns-") ? "x=20,y=0" : "x=0,y=20"
+                : sceneId.contains("-columns-") ? "x=28,y=0" : "x=0,y=28";
         return "node_frames_css_px=[0:node=1,x=0,y=0," + rootFrame
                 + ";1:node=2," + position + ",width=12,height=12]";
     }
@@ -1109,6 +1143,48 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if ("columns-fill-negative-positive-cycle".equals(sceneId)) {
+            if (samples.size() != 5) return false;
+            String rootId = "c114-" + sceneId + "-grid";
+            String overflowItemId = "c114-" + sceneId + "-item-2";
+            boolean interior = false;
+            boolean rootEdge = false;
+            boolean exterior = false;
+            boolean overflowItem = false;
+            boolean overflowTail = false;
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                switch (sample.id) {
+                    case "negative-cycle-root-interior":
+                        interior = sample.targetNodeId.equals(rootId)
+                                && sample.xCssPx == 100 && sample.yCssPx == 10;
+                        if (!interior) return false;
+                        break;
+                    case "negative-cycle-root-edge":
+                        rootEdge = sample.targetNodeId.equals(rootId)
+                                && sample.xCssPx == 199 && sample.yCssPx == 10;
+                        if (!rootEdge) return false;
+                        break;
+                    case "negative-cycle-root-exterior":
+                        exterior = sample.targetNodeId.equals(rootId)
+                                && sample.xCssPx == 200 && sample.yCssPx == 10;
+                        if (!exterior) return false;
+                        break;
+                    case "negative-cycle-overflow-item":
+                        overflowItem = sample.targetNodeId.equals(overflowItemId)
+                                && sample.xCssPx == 290 && sample.yCssPx == 10;
+                        if (!overflowItem) return false;
+                        break;
+                    case "negative-cycle-overflow-tail":
+                        overflowTail = sample.targetNodeId.equals(rootId)
+                                && sample.xCssPx == 319 && sample.yCssPx == 10;
+                        if (!overflowTail) return false;
+                        break;
+                    default:
+                        return false;
+                }
+            }
+            return interior && rootEdge && exterior && overflowItem && overflowTail;
+        }
         if ("implicit-min-content-overflow-border".equals(sceneId)) {
             if (samples.size() != 5) return false;
             boolean edgeInside = false;
@@ -2218,6 +2294,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         boolean pixelMatrixRequested = pixelMatrixRunId != null || pixelMatrixEncodedSamples != null;
         boolean pixelMatrixSceneMatches = c114GridTrackSizingRequested
                 ? ("auto-fill-overflow-neighbors".equals(pixelMatrixSceneId)
+                        || "columns-fill-negative-positive-cycle".equals(pixelMatrixSceneId)
                         || "implicit-min-content-overflow-border".equals(pixelMatrixSceneId)
                         || "columns-negative-fixed-root-overflow".equals(pixelMatrixSceneId)
                         || "rows-negative-fixed-root-overflow".equals(pixelMatrixSceneId)
@@ -5712,11 +5789,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return new int[] {226, 232, 240};
             case "negative-root-edge":
                 return new int[] {226, 232, 240};
+            case "negative-cycle-root-interior":
+            case "negative-cycle-root-edge":
+                return new int[] {226, 232, 240};
             case "negative-root-exterior":
             case "negative-overflow-tail":
+            case "negative-cycle-root-exterior":
+            case "negative-cycle-overflow-tail":
                 return new int[] {0, 0, 0};
             case "negative-overflow-item":
                 return new int[] {141, 95, 211};
+            case "negative-cycle-overflow-item":
+                return new int[] {42, 157, 143};
             default:
                 return new int[] {-1, -1, -1};
         }

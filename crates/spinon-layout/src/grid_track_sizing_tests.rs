@@ -334,16 +334,7 @@ fn auto_fit_definite_minimum_uses_same_repeat_count_on_both_axes() {
             !gutters[7].is_collapsed,
             "{axis} explicit suffix must remain"
         );
-        let leading_gutter = tracks
-            .iter()
-            .find(|track| track.internal_index == 2)
-            .unwrap();
-        assert!(
-            !leading_gutter.is_collapsed,
-            "{axis} leading explicit-neighbor gutter remains beside an empty auto-fit range"
-        );
-        assert_eq!(leading_gutter.base_size, 8.0);
-        for internal_index in (4..=12).step_by(2) {
+        for internal_index in (2..=14).step_by(2) {
             let gutter = tracks
                 .iter()
                 .find(|track| track.internal_index == internal_index)
@@ -354,12 +345,6 @@ fn auto_fit_definite_minimum_uses_same_repeat_count_on_both_axes() {
             );
             assert_eq!(gutter.base_size, 0.0);
         }
-        let trailing_gutter = tracks
-            .iter()
-            .find(|track| track.internal_index == 14)
-            .unwrap();
-        assert!(trailing_gutter.is_collapsed);
-        assert_eq!(trailing_gutter.base_size, 0.0);
     }
 }
 
@@ -538,7 +523,7 @@ fn auto_fit_collapsed_gutters_preserve_explicit_suffix_line_geometry() {
 }
 
 #[test]
-fn auto_fit_end_repeat_preserves_leading_gutter_after_prefix_when_all_tracks_collapse() {
+fn auto_fit_end_repeat_collapses_leading_gutter_after_prefix_when_all_tracks_collapse() {
     let repeated = GridTrackSize::MinMax {
         min: GridTrackMinSizingFunction::LengthPx(40.0),
         max: GridTrackMaxSizingFunction::Fraction(1.0),
@@ -591,11 +576,8 @@ fn auto_fit_end_repeat_preserves_leading_gutter_after_prefix_when_all_tracks_col
         .find(|track| track.internal_index == 2)
         .unwrap();
 
-    assert!(
-        !leading_gutter.is_collapsed,
-        "the leading gutter beside the explicit prefix remains when the end auto-fit range is empty"
-    );
-    assert_eq!(leading_gutter.base_size, 8.0);
+    assert!(leading_gutter.is_collapsed);
+    assert_eq!(leading_gutter.base_size, 0.0);
 }
 
 #[test]

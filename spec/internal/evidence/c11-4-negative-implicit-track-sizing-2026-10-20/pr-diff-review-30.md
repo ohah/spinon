@@ -1,5 +1,7 @@
 # C11.4 negative implicit track sizing PR diff review
 
+> This review covers the earlier 106-scene negative-track diff. The current auto-repeat implementation PR diff is reviewed in [implementation-pr-diff-review-30.md](./implementation-pr-diff-review-30.md).
+
 **기준:** `70877fff99306033ae38b2d7e347d34d7b76c429`의 main 기준 diff. 병합 전 PR diff를 서로 겹치지 않는 30개 실패 경로로 검토한다.
 
 | # | 실패 관점 | 결과 |

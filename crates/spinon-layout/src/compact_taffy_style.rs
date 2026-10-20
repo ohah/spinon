@@ -52,7 +52,7 @@ impl<'a> TemplateLineNames<'a, String> for EmptyTemplateLineNames<'a> {
         Self: 'b;
 }
 
-/// Taffy `Style`은 모든 노드에 Grid 이름 줄·영역 필드를 포함합니다.
+/// Taffy `Style`은 모든 노드에 Grid track·line·area 필드를 포함합니다.
 /// 이 투영은 현재 Spinon 레이아웃 프로필이 사용하는 값만 보존합니다.
 #[derive(Clone)]
 pub(super) struct CompactTaffyStyle {
@@ -87,6 +87,8 @@ pub(super) struct CompactTaffyStyle {
     flex_shrink: f32,
     grid_template_rows: Vec<GridTemplateComponent<String>>,
     grid_template_columns: Vec<GridTemplateComponent<String>>,
+    grid_auto_rows: Vec<TrackSizingFunction>,
+    grid_auto_columns: Vec<TrackSizingFunction>,
     grid_auto_flow: GridAutoFlow,
     track_sizing_trace_enabled: bool,
     grid_row: Line<GridPlacement<String>>,
@@ -176,6 +178,8 @@ impl From<taffy::Style> for CompactTaffyStyle {
             flex_shrink: style.flex_shrink,
             grid_template_rows: style.grid_template_rows,
             grid_template_columns: style.grid_template_columns,
+            grid_auto_rows: style.grid_auto_rows,
+            grid_auto_columns: style.grid_auto_columns,
             grid_auto_flow: style.grid_auto_flow,
             track_sizing_trace_enabled: false,
             grid_row: Line {
@@ -329,7 +333,7 @@ impl FlexboxItemStyle for CompactTaffyStyle {
 impl GridContainerStyle for CompactTaffyStyle {
     type Repetition<'a> = &'a GridTemplateRepetition<String>;
     type TemplateTrackList<'a> = GridTemplateIterator<'a>;
-    type AutoTrackList<'a> = std::iter::Empty<TrackSizingFunction>;
+    type AutoTrackList<'a> = std::iter::Copied<std::slice::Iter<'a, TrackSizingFunction>>;
     type TemplateLineNames<'a> = EmptyTemplateLineNames<'a>;
     type GridTemplateAreas<'a> = std::iter::Empty<GridTemplateArea<String>>;
 
@@ -350,11 +354,11 @@ impl GridContainerStyle for CompactTaffyStyle {
     }
 
     fn grid_auto_rows(&self) -> Self::AutoTrackList<'_> {
-        std::iter::empty()
+        self.grid_auto_rows.iter().copied()
     }
 
     fn grid_auto_columns(&self) -> Self::AutoTrackList<'_> {
-        std::iter::empty()
+        self.grid_auto_columns.iter().copied()
     }
 
     fn grid_template_areas(&self) -> Option<Self::GridTemplateAreas<'_>> {

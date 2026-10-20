@@ -212,9 +212,9 @@ pub enum GridAutoTrackSize {
     /// 기본 `auto` track입니다. intrinsic sizing은 TrackSizing profile에서 지원합니다.
     #[default]
     Auto,
-    /// 모든 positive implicit track에 반복할 하나의 고정 CSS px track입니다.
+    /// 모든 implicit track에 반복할 하나의 고정 CSS px track입니다.
     LengthPx(f32),
-    /// C11.4 TrackSizing profile에서 positive implicit track마다 순환할 목록입니다.
+    /// C11.4 TrackSizing profile에서 leading tracks는 마지막 값부터, trailing tracks는 첫 값부터 순환합니다.
     TrackList(Vec<GridTrackSize>),
 }
 
@@ -339,6 +339,14 @@ pub(super) fn validate_grid_layout(
                 tracks,
                 container.placement_mode == GridPlacementMode::TrackSizing,
             )?;
+        }
+        if container.placement_mode == GridPlacementMode::TrackSizing
+            && (container.columns_auto_repeat.is_some() || container.rows_auto_repeat.is_some())
+        {
+            // Placement normalization runs below, so reject unsupported auto-track lists before
+            // the secondary axis can fail first with a misleading line-range error.
+            validate_auto_repeat_auto_track_list(id, true, &container.auto_rows)?;
+            validate_auto_repeat_auto_track_list(id, false, &container.auto_columns)?;
         }
     }
 
@@ -655,6 +663,33 @@ fn validate_auto_repeat_axis(
         return Err(LayoutError::InvalidGridTrackList { node, property });
     }
     Ok(())
+}
+
+fn validate_auto_repeat_auto_track_list(
+    node: NodeId,
+    rows: bool,
+    auto_tracks: &GridAutoTrackSize,
+) -> Result<(), LayoutError> {
+    let GridAutoTrackSize::TrackList(tracks) = auto_tracks else {
+        return Ok(());
+    };
+    if tracks
+        .iter()
+        .all(|track| matches!(track, GridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0))
+    {
+        return Ok(());
+    }
+    if rows {
+        Err(LayoutError::UnsupportedGridAutoRows {
+            node,
+            reason: "auto-repeat 결합은 fixed px grid-auto-rows 목록만 지원합니다",
+        })
+    } else {
+        Err(LayoutError::UnsupportedGridAutoColumns {
+            node,
+            reason: "auto-repeat 결합은 fixed px grid-auto-columns 목록만 지원합니다",
+        })
+    }
 }
 
 fn validate_tracks(

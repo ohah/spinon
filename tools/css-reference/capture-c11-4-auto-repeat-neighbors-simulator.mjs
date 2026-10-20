@@ -40,9 +40,9 @@ const scenes = [
     axis: 'Columns',
     boxCount: 2,
     rootFrame: 'width=200,height=60',
-    itemFrame: 'width=154,height=40',
-    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;1:node=2,x=28,y=0,width=154,height=40]',
-    tracks: [20, 154, 0, 0, 10],
+    itemFrame: 'width=162,height=40',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;1:node=2,x=28,y=0,width=162,height=40]',
+    tracks: [20, 162, 0, 0, 10],
     collapsed: [false, false, true, true, false],
   },
   {
@@ -62,7 +62,7 @@ const scenes = [
     rootFrame: 'width=200,height=60',
     itemFrame: 'width=12,height=12',
     nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;1:node=2,x=28,y=0,width=12,height=12;2:node=3,x=190,y=0,width=12,height=12]',
-    tracks: [20, 73, 73, 0, 10],
+    tracks: [20, 77, 77, 0, 10],
     collapsed: [false, false, false, true, false],
   },
   {
@@ -158,7 +158,7 @@ const scenes = [
     rootFrame: 'width=50,height=200',
     itemFrame: 'width=12,height=12',
     nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=50,height=200;1:node=2,x=0,y=28,width=12,height=12]',
-    tracks: [20, 154, 0, 0, 10],
+    tracks: [20, 162, 0, 0, 10],
     collapsed: [false, false, true, true, false],
   },
   {
@@ -284,8 +284,8 @@ const scenes = [
     itemFrame: 'width=12,height=12',
     nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=28,y=28,width=12,height=12]',
     axes: {
-      Columns: { tracks: [20, 154, 0, 0, 0, 10], collapsed: [false, false, true, true, true, false] },
-      Rows: { tracks: [20, 154, 0, 0, 0, 10], collapsed: [false, false, true, true, true, false] },
+      Columns: { tracks: [20, 162, 0, 0, 0, 10], collapsed: [false, false, true, true, true, false] },
+      Rows: { tracks: [20, 162, 0, 0, 0, 10], collapsed: [false, false, true, true, true, false] },
     },
   },
   {
@@ -293,17 +293,17 @@ const scenes = [
     itemFrame: 'width=12,height=12',
     nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=28,y=28,width=12,height=12]',
     axes: {
-      Columns: { tracks: [20, 126, 20, 0, 0, 10], collapsed: [false, false, false, true, true, false] },
-      Rows: { tracks: [20, 126, 20, 0, 0, 10], collapsed: [false, false, false, true, true, false] },
+      Columns: { tracks: [20, 134, 20, 0, 0, 10], collapsed: [false, false, false, true, true, false] },
+      Rows: { tracks: [20, 134, 20, 0, 0, 10], collapsed: [false, false, false, true, true, false] },
     },
   },
   {
     id: 'both-fit-second-repeat', boxCount: 2, rootFrame: 'width=200,height=200',
     itemFrame: 'width=12,height=12',
-    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=28,y=28,width=12,height=12]',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=20,y=20,width=12,height=12]',
     axes: {
-      Columns: { tracks: [20, 0, 0, 154, 0, 10], collapsed: [false, true, true, false, true, false] },
-      Rows: { tracks: [20, 0, 0, 154, 0, 10], collapsed: [false, true, true, false, true, false] },
+      Columns: { tracks: [20, 0, 0, 170, 0, 10], collapsed: [false, true, true, false, true, false] },
+      Rows: { tracks: [20, 0, 0, 170, 0, 10], collapsed: [false, true, true, false, true, false] },
     },
   },
   {
@@ -325,22 +325,39 @@ const scenes = [
   {
     id: 'columns-fit-rows-fill-second-repeat', boxCount: 2, rootFrame: 'width=200,height=200',
     itemFrame: 'width=12,height=12',
-    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=28,y=109,width=12,height=12]',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=20,y=109,width=12,height=12]',
     axes: {
-      Columns: { tracks: [20, 0, 0, 154, 0, 10], collapsed: [false, true, true, false, true, false] },
+      Columns: { tracks: [20, 0, 0, 170, 0, 10], collapsed: [false, true, true, false, true, false] },
       Rows: { tracks: [20, 45, 20, 45, 20, 10], collapsed: [false, false, false, false, false, false] },
     },
   },
   {
     id: 'columns-fill-rows-fit-second-repeat', boxCount: 2, rootFrame: 'width=200,height=200',
     itemFrame: 'width=12,height=12',
-    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=109,y=28,width=12,height=12]',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;1:node=2,x=109,y=20,width=12,height=12]',
     axes: {
       Columns: { tracks: [20, 45, 20, 45, 20, 10], collapsed: [false, false, false, false, false, false] },
-      Rows: { tracks: [20, 0, 0, 154, 0, 10], collapsed: [false, true, true, false, true, false] },
+      Rows: { tracks: [20, 0, 0, 170, 0, 10], collapsed: [false, true, true, false, true, false] },
     },
   },
 ];
+const baselineAutoRepeatSceneIDs = [
+  'auto-fill-fixed-neighbors', 'auto-fit-fixed-neighbors', 'auto-fill-pattern-neighbors',
+  'auto-fit-span-neighbors', 'auto-fit-empty-neighbors', 'auto-fill-prefix-neighbors',
+  'auto-fill-suffix-neighbors', 'auto-fill-indefinite-neighbors', 'auto-fill-max-size-neighbors',
+  'auto-fill-min-size-neighbors', 'auto-fill-overflow-neighbors', 'auto-fill-row-neighbors',
+  'auto-fit-row-neighbors', 'auto-fill-two-track-columns-both-190',
+  'auto-fill-two-track-columns-both-200', 'auto-fill-two-track-columns-both-342',
+  'auto-fill-two-track-columns-prefix-200', 'auto-fill-two-track-columns-suffix-200',
+  'auto-fill-two-track-rows-both-190', 'auto-fill-two-track-rows-both-200',
+  'auto-fill-two-track-rows-both-342', 'columns-fill-control', 'rows-fill-control',
+  'both-fill-square', 'both-fill-asymmetric', 'both-fit-empty', 'both-fit-single',
+  'both-fit-span-two', 'both-fit-second-repeat', 'columns-fit-rows-fill-empty',
+  'columns-fill-rows-fit-empty', 'columns-fit-rows-fill-second-repeat',
+  'columns-fill-rows-fit-second-repeat',
+];
+assert.deepEqual(scenes.map(({ id }) => id), baselineAutoRepeatSceneIDs,
+  'C11.4 기존 auto-repeat 33 scene ID가 변경됐습니다.');
 scenes.push(...autoFitMinimumSizeScenes());
 assert.equal(scenes.length, 53, 'C11.4 auto-fit minimum-size simulator 행렬은 53 scene이어야 합니다.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
@@ -351,6 +368,10 @@ assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 simulator scene ID가 중복됐습니다.');
 scenes.push(...await negativeImplicitTrackScenes());
 assert.equal(scenes.length, 106, 'C11.4 negative implicit track simulator 행렬은 106 scene이어야 합니다.');
+assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
+  'C11.4 simulator scene ID가 중복됐습니다.');
+scenes.push(...await autoRepeatNegativeLineScenes());
+assert.equal(scenes.length, 124, 'C11.4 auto-repeat negative line simulator 행렬은 124 scene이어야 합니다.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 simulator scene ID가 중복됐습니다.');
 
@@ -438,6 +459,174 @@ async function negativeImplicitTrackScenes() {
   });
 }
 
+async function autoRepeatNegativeLineScenes() {
+  const evidence = resolve(repositoryRoot,
+    'spec/internal/evidence/c11-4-auto-repeat-negative-lines-precomparison-2026-10-20');
+  const fixturePath = resolve(repositoryRoot,
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_negative_line_scenes.json');
+  const [fixtures, expectations, observations] = await Promise.all([
+    readFile(fixturePath, 'utf8').then(JSON.parse),
+    readFile(resolve(evidence, 'spec-derived-expectations.json'), 'utf8').then(JSON.parse),
+    readFile(resolve(evidence, 'chrome155-observation.json'), 'utf8').then(JSON.parse),
+  ]);
+  const expectationsByID = new Map(expectations.cases.map((entry) => [entry.id, entry]));
+  const observationsByID = new Map(observations.cases.map((entry) => [entry.id, entry]));
+  const fixtureIDs = fixtures.map(({ id }) => id);
+  assert.equal(fixtures.length, 18, 'auto-repeat negative line fixture는 18 case여야 합니다.');
+  assert.equal(expectationsByID.size, 18, '독립 auto-repeat 기대값은 18 case여야 합니다.');
+  assert.equal(observationsByID.size, 18, 'Chrome 관찰은 18 case여야 합니다.');
+  assert.deepEqual(new Set(fixtureIDs), new Set(expectationsByID.keys()),
+    'runtime fixture와 규범-derived expectation scene이 다릅니다.');
+  assert.deepEqual(new Set(fixtureIDs), new Set(observationsByID.keys()),
+    'runtime fixture와 Chrome 관찰 scene이 다릅니다.');
+
+  const parseTrackSizes = (serialized) => {
+    const tracks = [...serialized.matchAll(/(-?\d+(?:\.\d+)?)px/g)]
+      .map((match) => Number(match[1]));
+    assert.ok(tracks.length > 0, `computed track list를 읽을 수 없습니다: ${serialized}`);
+    return tracks;
+  };
+  const gapBetween = (left, right, leftCollapsed, rightCollapsed, gap) =>
+    leftCollapsed || rightCollapsed ? 0 : gap;
+  const close = (actual, expected, label) => assert.ok(
+    Math.abs(actual - expected) <= 1 / 64,
+    `${label}: Chrome=${actual}, 규범 계산=${expected}`,
+  );
+
+  return fixtures.map(({ id, items: fixtureItems }) => {
+    const expectation = expectationsByID.get(id);
+    const observation = observationsByID.get(id);
+    assert.equal(observation.items.length, fixtureItems.length,
+      `${id}: runtime fixture와 Chrome item 수가 다릅니다.`);
+    const axes = {};
+    const itemFrames = observation.items.map((item) => ({
+      x: item.rect.x - observation.grid.x,
+      y: item.rect.y - observation.grid.y,
+      width: item.rect.width,
+      height: item.rect.height,
+    }));
+    const gaps = {
+      Columns: Number.parseFloat(observation.columnGap),
+      Rows: Number.parseFloat(observation.rowGap),
+    };
+
+    for (const [axis, key] of [['Columns', 'columns'], ['Rows', 'rows']]) {
+      const axisExpectation = expectation[key] ?? null;
+      const templateProperty = key === 'columns' ? 'gridTemplateColumns' : 'gridTemplateRows';
+      const trackSizes = parseTrackSizes(observation[templateProperty]);
+      const collapsed = trackSizes.map(() => false);
+      if (axisExpectation) {
+        const expectedTrackCount = axisExpectation.leading + axisExpectation.prefix
+          + axisExpectation.repeatCount + axisExpectation.suffix + axisExpectation.trailing;
+        assert.equal(trackSizes.length, expectedTrackCount,
+          `${id} ${axis}: explicit/implicit track count differs from the independent model`);
+        const repeatStart = axisExpectation.leading + axisExpectation.prefix;
+        for (const repeatIndex of axisExpectation.collapsed ?? []) {
+          collapsed[repeatStart + repeatIndex] = true;
+        }
+        for (const [index, size] of (axisExpectation.leadingSizes ?? []).entries()) {
+          close(trackSizes[index], size, `${id} ${axis}: leading implicit track ${index + 1}`);
+        }
+        for (const [index, size] of (axisExpectation.trailingSizes ?? []).entries()) {
+          close(trackSizes[trackSizes.length - axisExpectation.trailing + index], size,
+            `${id} ${axis}: trailing implicit track ${index + 1}`);
+        }
+
+        if (axisExpectation.mode === 'auto-fit') {
+          const flexibleRepeats = Array.from(
+            { length: axisExpectation.repeatCount }, (_, index) => repeatStart + index,
+          ).filter((index) => !collapsed[index]);
+          if (flexibleRepeats.length > 0) {
+            const minimumTrack = expectations.repeatCountModel[key].minimumTrack;
+            const fixedTrackTotal = trackSizes.reduce((sum, size, index) =>
+              sum + (flexibleRepeats.includes(index) ? 0 : size), 0);
+            let nonCollapsedGapTotal = 0;
+            for (let index = 0; index + 1 < trackSizes.length; index += 1) {
+              nonCollapsedGapTotal += gapBetween(trackSizes[index], trackSizes[index + 1],
+                collapsed[index], collapsed[index + 1], gaps[axis]);
+            }
+            const flexSpace = Math.max(0, axisExpectation.available - fixedTrackTotal
+              - nonCollapsedGapTotal - minimumTrack * flexibleRepeats.length);
+            const flexTrackSize = minimumTrack + flexSpace / flexibleRepeats.length;
+            for (const index of flexibleRepeats) trackSizes[index] = flexTrackSize;
+          }
+        }
+      }
+      axes[axis] = { tracks: trackSizes, collapsed };
+
+      if (!axisExpectation) continue;
+      const lineProperty = key === 'columns' ? 'c' : 'r';
+      const frameProperty = key === 'columns' ? 'x' : 'y';
+      const extentProperty = key === 'columns' ? 'width' : 'height';
+      for (const [itemIndex, placement] of fixtureItems.entries()) {
+        const lineMapping = axisExpectation.lines[itemIndex];
+        if (!lineMapping) continue;
+        const cssLines = placement[lineProperty]?.match(/^\s*(-?\d+)\s*\/\s*(-?\d+)\s*$/);
+        assert.ok(cssLines, `${id} ${axis}: fixture item ${itemIndex + 1} has no numeric lines`);
+        assert.deepEqual([Number(cssLines[1]), Number(cssLines[2])], lineMapping.slice(0, 2),
+          `${id} ${axis}: fixture lines differ from the independent case`);
+        const startBoundary = axisExpectation.leading + Math.min(lineMapping[2], lineMapping[3]);
+        const endBoundary = axisExpectation.leading + Math.max(lineMapping[2], lineMapping[3]);
+        assert.ok(startBoundary >= 0 && endBoundary <= trackSizes.length,
+          `${id} ${axis}: resolved placement lies outside the used tracks`);
+        let offset = 0;
+        for (let index = 0; index < startBoundary; index += 1) {
+          offset += trackSizes[index];
+          if (index + 1 < trackSizes.length) {
+            offset += gapBetween(trackSizes[index], trackSizes[index + 1],
+              collapsed[index], collapsed[index + 1], gaps[axis]);
+          }
+        }
+        let extent = 0;
+        for (let index = startBoundary; index < endBoundary; index += 1) {
+          extent += trackSizes[index];
+          if (index + 1 < endBoundary) {
+            extent += gapBetween(trackSizes[index], trackSizes[index + 1],
+              collapsed[index], collapsed[index + 1], gaps[axis]);
+          }
+        }
+        itemFrames[itemIndex][frameProperty] = offset;
+        itemFrames[itemIndex][extentProperty] = extent;
+        if (axisExpectation.mode === 'auto-fill') {
+          const chromeItem = observation.items[itemIndex];
+          close(chromeItem.rect[frameProperty] - observation.grid[frameProperty], offset,
+            `${id} ${axis}: auto-fill item start`);
+          close(chromeItem.rect[extentProperty], extent, `${id} ${axis}: auto-fill item size`);
+        }
+      }
+    }
+
+    const itemNodeFrames = itemFrames.map((frame, index) =>
+      `${index + 1}:node=${index + 2},x=${frame.x},y=${frame.y},width=${frame.width},height=${frame.height}`);
+    const rootFrame = `width=${observation.grid.width},height=${observation.grid.height}`;
+    const nodeFrames = `node_frames_css_px=[0:node=1,x=0,y=0,${rootFrame};`
+      + `${itemNodeFrames.join(';')}]`;
+    const firstItem = itemFrames[0];
+    const scene = {
+      id,
+      boxCount: itemFrames.filter((frame) => frame.width > 0 && frame.height > 0).length + 1,
+      rootFrame,
+      itemFrame: `width=${firstItem.width},height=${firstItem.height}`,
+      nodeFrames,
+      axes,
+      gaps,
+      // The pre-comparison's auto-fit geometry is kept as a browser observation. This scene
+      // uses collapsed-gutter placement derived from CSS Grid rather than Blink's boundary gap.
+      boundaryGutterOverrides: { Columns: null, Rows: null },
+    };
+    if (id === 'columns-fill-negative-positive-cycle') {
+      scene.pixelSamples = [
+        { id: 'negative-cycle-root-interior', nodeId: `c114-${id}-grid`, xCssPx: 100, yCssPx: 10, rgba: [226, 232, 240, 255] },
+        { id: 'negative-cycle-root-edge', nodeId: `c114-${id}-grid`, xCssPx: 199, yCssPx: 10, rgba: [226, 232, 240, 255] },
+        { id: 'negative-cycle-root-exterior', nodeId: `c114-${id}-grid`, xCssPx: 200, yCssPx: 10, rgba: [0, 0, 0, 255] },
+        { id: 'negative-cycle-overflow-item', nodeId: `c114-${id}-item-2`, xCssPx: 290, yCssPx: 10, rgba: [42, 157, 143, 255] },
+        { id: 'negative-cycle-overflow-tail', nodeId: `c114-${id}-grid`, xCssPx: 319, yCssPx: 10, rgba: [0, 0, 0, 255] },
+      ];
+    }
+    return scene;
+  });
+}
+
 function autoFitMinimumSizeScenes() {
   const result = [];
   const repeatCount = (minSize, position) => {
@@ -467,16 +656,16 @@ function autoFitMinimumSizeScenes() {
     }
     for (let index = 0; index < repeatedTrackCount; index += 1) {
       if (placement === 'single' && index === 0) {
-        tracks.push(154);
+        tracks.push(162);
         collapsed.push(false);
       } else if (placement === 'span-two' && index === 0) {
-        tracks.push(126);
+        tracks.push(134);
         collapsed.push(false);
       } else if (placement === 'span-two' && index === 1) {
         tracks.push(20);
         collapsed.push(false);
       } else if (placement === 'second-repeat' && index === 2) {
-        tracks.push(154);
+        tracks.push(170);
         collapsed.push(false);
       } else {
         tracks.push(0);
@@ -493,7 +682,7 @@ function autoFitMinimumSizeScenes() {
     const hasItem = ['single', 'span-two', 'second-repeat'].includes(placement);
     const itemFrame = hasItem ? 'width=12,height=12' : null;
     const itemPosition = placement === 'second-repeat'
-      ? axis === 'Columns' ? 'x=28,y=0' : 'x=0,y=28'
+      ? axis === 'Columns' ? 'x=20,y=0' : 'x=0,y=20'
       : axis === 'Columns' ? 'x=28,y=0' : 'x=0,y=28';
     const nodeFrames = hasItem
       ? `node_frames_css_px=[0:node=1,x=0,y=0,${rootFrame};1:node=2,${itemPosition},width=12,height=12]`
@@ -649,17 +838,12 @@ function command(binary, args, { allowFailure = false, timeout = 120_000, encodi
   return result;
 }
 
-function autoFitBoundaryGutters(scene, expected) {
-  if (!scene.id.includes('fit') || !expected.collapsed.includes(true)) return null;
-  const hasPrefix = expected.tracks[0] === 20 && !expected.collapsed[0];
-  const hasSuffix = expected.tracks.at(-1) === 10 && !expected.collapsed.at(-1);
-  const repeatStart = hasPrefix ? 1 : 0;
-  const repeatEnd = hasSuffix ? expected.tracks.length - 1 : expected.tracks.length;
-  const repeatedTracks = expected.collapsed.slice(repeatStart, repeatEnd);
-  return {
-    leading: hasPrefix,
-    trailing: hasSuffix && repeatedTracks.some((collapsed) => !collapsed),
-  };
+function autoFitBoundaryGutters(scene, axis) {
+  if (scene.boundaryGutterOverrides
+      && Object.hasOwn(scene.boundaryGutterOverrides, axis)) {
+    return scene.boundaryGutterOverrides[axis];
+  }
+  return null;
 }
 
 async function saveLog(path, result) {
@@ -794,7 +978,7 @@ function verifyRuntimeLog(log, scene, runID) {
     assert.ok(axisPass, `${scene.id}: ${axis} track-sizing pass가 없습니다.`);
     const finalStageTracks = axisPass.stages.at(-1).tracks;
     const finalTracks = finalStageTracks.filter(({ gutter }) => !gutter);
-    const boundaryGutters = autoFitBoundaryGutters(scene, expected);
+    const boundaryGutters = autoFitBoundaryGutters(scene, axis);
     assert.deepEqual(finalTracks.map(({ collapsed }) => collapsed), expected.collapsed,
       `${scene.id}: ${axis} collapsed track 상태가 예상과 다릅니다.`);
     assert.equal(finalTracks.length, expected.tracks.length,
@@ -905,6 +1089,7 @@ if (target === 'ios-simulator') {
     const observation = verifyRuntimeLog(log, scene, runID);
     observation.supersededRetries = supersededAttempts;
     observations.push(observation);
+    console.log(`${target} C11.4 scene ${index + 1}/${scenes.length}: ${scene.id} passed`);
     await saveLog(`screenshot-${scene.id}.log`, command('xcrun', ['simctl', 'io', simulatorUDID,
       'screenshot', resolve(evidenceDirectory, `${scene.id}.png`)]));
   }
@@ -960,6 +1145,7 @@ if (target === 'ios-simulator') {
     const observation = verifyRuntimeLog(log, scene, runID);
     observation.supersededRetries = supersededAttempts;
     observations.push(observation);
+    console.log(`${target} C11.4 scene ${index + 1}/${scenes.length}: ${scene.id} passed`);
     const screenshot = adb(['exec-out', 'screencap', '-p'], { encoding: null }).stdout;
     await writeFile(resolve(evidenceDirectory, `${scene.id}.png`), screenshot);
   }
@@ -969,6 +1155,6 @@ if (target === 'ios-simulator') {
 }
 
 await writeFile(resolve(evidenceDirectory, 'result.json'), `${JSON.stringify({
-  schemaVersion: 1, target, runPrefix, observations,
+  schemaVersion: 1, target, runPrefix, sceneCount: scenes.length, observations,
 }, null, 2)}\n`);
 console.log(JSON.stringify({ evidenceDirectory, target, observations }, null, 2));

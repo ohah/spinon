@@ -32,21 +32,6 @@ pub(crate) fn normalize_dense_grid_container(
     if container.placement_mode == crate::GridPlacementMode::TrackSizing
         && (container.columns_auto_repeat.is_some() || container.rows_auto_repeat.is_some())
     {
-        if matches!(&container.auto_rows, crate::GridAutoRows::TrackList(_)) {
-            return Err(LayoutError::UnsupportedGridAutoRows {
-                node: container_node.id,
-                reason: "auto-repeat과 grid-auto-rows track-size 목록의 결합은 지원하지 않습니다",
-            });
-        }
-        if matches!(
-            &container.auto_columns,
-            crate::GridAutoColumns::TrackList(_)
-        ) {
-            return Err(LayoutError::UnsupportedGridAutoColumns {
-                node: container_node.id,
-                reason: "auto-repeat과 grid-auto-columns track-size 목록의 결합은 지원하지 않습니다",
-            });
-        }
         return normalize_auto_repeat_grid_items(input, hidden, container_node, container);
     }
 
@@ -483,25 +468,35 @@ fn normalize_auto_repeat_grid_items(
             repeat_start,
             repeat_end,
         )?;
-        let fixed_placement = resolve_axis(
-            child,
-            if repeat_columns {
-                "grid-row-start"
+        let fixed_axis_is_definite =
+            if container.columns_auto_repeat.is_some() && container.rows_auto_repeat.is_some() {
+                // Taffy must resolve both axes against their expanded auto-repeat counts. Here we
+                // only classify automatic placement; resolving coordinates against the authored
+                // pattern length rejects valid negative and positive lines on the secondary axis.
+                has_definite_grid_axis(fixed_start, fixed_end)
             } else {
-                "grid-column-start"
-            },
-            if repeat_columns {
-                "grid-row-end"
-            } else {
-                "grid-column-end"
-            },
-            fixed_start,
-            fixed_end,
-            fixed_count,
-            false,
-        )?;
+                resolve_axis(
+                    child,
+                    if repeat_columns {
+                        "grid-row-start"
+                    } else {
+                        "grid-column-start"
+                    },
+                    if repeat_columns {
+                        "grid-row-end"
+                    } else {
+                        "grid-column-end"
+                    },
+                    fixed_start,
+                    fixed_end,
+                    fixed_count,
+                    false,
+                )?
+                .start
+                .is_some()
+            };
 
-        if fixed_placement.start.is_none() || !has_definite_grid_axis(repeat_start, repeat_end) {
+        if !fixed_axis_is_definite || !has_definite_grid_axis(repeat_start, repeat_end) {
             output.auto_placed_items.insert(child);
         }
         output.item_placements.insert(child, placement);

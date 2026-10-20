@@ -86,6 +86,26 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "rows-negative-row-dense-auto-items", "rows-negative-column-flow-auto-items",
     "rows-negative-column-dense-auto-items", "columns-negative-fixed-root-overflow",
     "rows-negative-fixed-root-overflow",
+    "columns-fill-one-leading", "columns-fill-two-repetitions",
+    "columns-fill-four-repetitions", "columns-fit-one-leading-empty-repeat",
+    "columns-fill-two-leading-cycle", "columns-fill-leading-span-prefix",
+    "columns-fit-negative-and-repeat-occupied", "columns-fit-third-repeat-only",
+    "columns-fill-negative-positive-cycle", "columns-fill-reversed-negative-lines",
+    "columns-fill-repeat-only-leading", "rows-fill-one-leading",
+    "rows-fill-three-repetitions", "rows-fill-five-repetitions",
+    "rows-fit-one-leading-empty-repeat", "rows-fill-two-leading-cycle",
+    "both-axes-fit-negative-leading", "both-axes-fill-independent-cycles",
+]
+private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
+    "columns-fill-one-leading", "columns-fill-two-repetitions",
+    "columns-fill-four-repetitions", "columns-fit-one-leading-empty-repeat",
+    "columns-fill-two-leading-cycle", "columns-fill-leading-span-prefix",
+    "columns-fit-negative-and-repeat-occupied", "columns-fit-third-repeat-only",
+    "columns-fill-negative-positive-cycle", "columns-fill-reversed-negative-lines",
+    "columns-fill-repeat-only-leading", "rows-fill-one-leading",
+    "rows-fill-three-repetitions", "rows-fill-five-repetitions",
+    "rows-fit-one-leading-empty-repeat", "rows-fill-two-leading-cycle",
+    "both-axes-fit-negative-leading", "both-axes-fill-independent-cycles",
 ]
 
 private struct C114NegativeTrackExpectation {
@@ -137,6 +157,7 @@ private func c114NegativeTrackExpectation(_ sceneID: String) -> C114NegativeTrac
 }
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    if c114AutoRepeatNegativeLineSceneIDs.contains(sceneID) { return "" }
     if let expectation = c114NegativeTrackExpectation(sceneID) {
         return "width=\(expectation.rootWidth),height=\(expectation.rootHeight)"
     }
@@ -226,6 +247,7 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if c114AutoRepeatNegativeLineSceneIDs.contains(sceneID) { return "" }
     if c114IsImplicitTextScene(sceneID) { return "" }
     if let expectation = c114NegativeTrackExpectation(sceneID) {
         return "width=\(expectation.itemWidth),height=\(expectation.itemHeight)"
@@ -271,7 +293,7 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     case "auto-fill-fixed-neighbors", "auto-fill-pattern-neighbors":
         return "width=10,height=40"
     case "auto-fit-fixed-neighbors":
-        return "width=154,height=40"
+        return "width=162,height=40"
     case "auto-fit-empty-neighbors", "auto-fill-max-size-neighbors",
          "auto-fill-min-size-neighbors", "auto-fill-two-track-columns-both-190",
          "auto-fill-two-track-columns-both-200", "auto-fill-two-track-columns-both-342",
@@ -677,16 +699,16 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "1:node=2,x=28,y=28,width=12,height=12]"
     case "both-fit-second-repeat":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
-            + "1:node=2,x=28,y=28,width=12,height=12]"
+            + "1:node=2,x=20,y=20,width=12,height=12]"
     case "both-fill-asymmetric":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=266;"
             + "1:node=2,x=28,y=28,width=12,height=12]"
     case "columns-fit-rows-fill-second-repeat":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
-            + "1:node=2,x=28,y=109,width=12,height=12]"
+            + "1:node=2,x=20,y=109,width=12,height=12]"
     case "columns-fill-rows-fit-second-repeat":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
-            + "1:node=2,x=109,y=28,width=12,height=12]"
+            + "1:node=2,x=109,y=20,width=12,height=12]"
     case "auto-fill-two-track-columns-both-190", "auto-fill-two-track-columns-both-200",
          "auto-fill-two-track-columns-both-342", "auto-fill-two-track-columns-prefix-200",
          "auto-fill-two-track-columns-suffix-200", "auto-fill-two-track-rows-both-190",
@@ -697,7 +719,7 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "1:node=2,x=190,y=0,width=10,height=40]"
     case "auto-fit-fixed-neighbors":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;"
-            + "1:node=2,x=28,y=0,width=154,height=40]"
+            + "1:node=2,x=28,y=0,width=162,height=40]"
     case "grid-gap-definite-percent":
         return c114GapNodeFrames("100", "40", "50", "20")
     case "grid-gap-cyclic-percent":
@@ -745,6 +767,9 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if sceneID == "columns-fit-negative-and-repeat-occupied"
+        || sceneID == "columns-fill-negative-positive-cycle" { return 3 }
+    if c114AutoRepeatNegativeLineSceneIDs.contains(sceneID) { return 2 }
     let implicitTrackBoxCount = c114ImplicitTextBoxCount(sceneID)
     if implicitTrackBoxCount != 0 { return implicitTrackBoxCount }
     if let expectation = c114NegativeTrackExpectation(sceneID) { return expectation.boxCount }
@@ -834,7 +859,9 @@ private func c114AutoFitMinimumSizeNodeFrames(_ sceneID: String) -> String? {
     guard !itemFrame.isEmpty else {
         return "node_frames_css_px=[0:node=1,x=0,y=0,\(rootFrame)]"
     }
-    let position = sceneID.contains("-columns-") ? "x=28,y=0" : "x=0,y=28"
+    let position = sceneID.contains("-second-repeat-")
+        ? sceneID.contains("-columns-") ? "x=20,y=0" : "x=0,y=20"
+        : sceneID.contains("-columns-") ? "x=28,y=0" : "x=0,y=28"
     return "node_frames_css_px=[0:node=1,x=0,y=0,\(rootFrame);"
         + "1:node=2,\(position),width=12,height=12]"
 }
@@ -1107,7 +1134,8 @@ private struct C111MetalPixelRun {
             expectedSamples = c114AutoRepeatOverflowPixelSamples
         case "implicit-min-content-overflow-border":
             expectedSamples = c114ImplicitTrackOverflowPixelSamples
-        case "columns-negative-fixed-root-overflow", "rows-negative-fixed-root-overflow":
+        case "columns-fill-negative-positive-cycle",
+            "columns-negative-fixed-root-overflow", "rows-negative-fixed-root-overflow":
             guard let negativeOverflowSamples = c114NegativeImplicitOverflowPixelSamples(
                 sceneID: sceneID
             ) else { return false }
@@ -1153,6 +1181,16 @@ private struct C111MetalPixelRun {
         sceneID: String
     ) -> [(String, String, UInt32, UInt32, [UInt32])]? {
         let rootNodeID = "c114-\(sceneID)-grid"
+        if sceneID == "columns-fill-negative-positive-cycle" {
+            let overflowItemNodeID = "c114-\(sceneID)-item-2"
+            return [
+                ("negative-cycle-root-interior", rootNodeID, 100, 10, [226, 232, 240, 255]),
+                ("negative-cycle-root-edge", rootNodeID, 199, 10, [226, 232, 240, 255]),
+                ("negative-cycle-root-exterior", rootNodeID, 200, 10, [0, 0, 0, 255]),
+                ("negative-cycle-overflow-item", overflowItemNodeID, 290, 10, [42, 157, 143, 255]),
+                ("negative-cycle-overflow-tail", rootNodeID, 319, 10, [0, 0, 0, 255]),
+            ]
+        }
         let itemNodeID = "c114-\(sceneID)-item-5"
         if sceneID == "columns-negative-fixed-root-overflow" {
             return [

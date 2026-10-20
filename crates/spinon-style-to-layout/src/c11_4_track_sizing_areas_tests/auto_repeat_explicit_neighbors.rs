@@ -85,7 +85,7 @@ const FIT_SPAN_COLLAPSED: &[bool] = &[false, false, false, true, false];
 const FIT_EMPTY_COLLAPSED: &[bool] = &[false, true, true, true, false];
 
 #[test]
-fn chrome155_auto_repeat_explicit_neighbor_matrix_preserves_tracks_and_frames() {
+fn auto_repeat_explicit_neighbor_matrix_uses_collapsed_auto_fit_gutters() {
     let cases = [
         Case {
             id: "columns-auto-fill-both",
@@ -106,7 +106,7 @@ fn chrome155_auto_repeat_explicit_neighbor_matrix_preserves_tracks_and_frames() 
             root_style: "display:grid;box-sizing:border-box;width:200px;height:60px;grid-template-columns:20px repeat(auto-fit,minmax(40px,1fr)) 10px;grid-template-rows:40px;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;margin:0;padding:0;border:0",
             items: FIT_ONE_ITEMS,
             axis: LayoutGridTrackSizingAxis::Columns,
-            tracks: &[20.0, 154.0, 0.0, 0.0, 10.0],
+            tracks: &[20.0, 162.0, 0.0, 0.0, 10.0],
             collapsed: FIT_ONE_COLLAPSED,
             root_size: (200.0, 60.0),
             item_positions: &[("repeat", 28.0, 0.0), ("suffix", 190.0, 0.0)],
@@ -116,20 +116,20 @@ fn chrome155_auto_repeat_explicit_neighbor_matrix_preserves_tracks_and_frames() 
             root_style: "display:grid;box-sizing:border-box;width:200px;height:60px;grid-template-columns:20px repeat(auto-fit,minmax(40px,1fr)) 10px;grid-template-rows:40px;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;margin:0;padding:0;border:0",
             items: FIT_MIDDLE_ITEMS,
             axis: LayoutGridTrackSizingAxis::Columns,
-            tracks: &[20.0, 0.0, 154.0, 0.0, 10.0],
+            tracks: &[20.0, 0.0, 170.0, 0.0, 10.0],
             collapsed: &[false, true, false, true, false],
             root_size: (200.0, 60.0),
-            item_positions: &[("repeat", 28.0, 0.0), ("suffix", 190.0, 0.0)],
+            item_positions: &[("repeat", 20.0, 0.0), ("suffix", 190.0, 0.0)],
         },
         Case {
             id: "columns-auto-fit-last",
             root_style: "display:grid;box-sizing:border-box;width:200px;height:60px;grid-template-columns:20px repeat(auto-fit,minmax(40px,1fr)) 10px;grid-template-rows:40px;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;margin:0;padding:0;border:0",
             items: FIT_LAST_ITEMS,
             axis: LayoutGridTrackSizingAxis::Columns,
-            tracks: &[20.0, 0.0, 0.0, 154.0, 10.0],
+            tracks: &[20.0, 0.0, 0.0, 162.0, 10.0],
             collapsed: &[false, true, true, false, false],
             root_size: (200.0, 60.0),
-            item_positions: &[("repeat", 28.0, 0.0), ("suffix", 190.0, 0.0)],
+            item_positions: &[("repeat", 20.0, 0.0), ("suffix", 190.0, 0.0)],
         },
         Case {
             id: "columns-auto-fit-suffix-only",
@@ -139,14 +139,14 @@ fn chrome155_auto_repeat_explicit_neighbor_matrix_preserves_tracks_and_frames() 
             tracks: &[20.0, 0.0, 0.0, 0.0, 10.0],
             collapsed: &[false, true, true, true, false],
             root_size: (200.0, 60.0),
-            item_positions: &[("suffix", 28.0, 0.0)],
+            item_positions: &[("suffix", 20.0, 0.0)],
         },
         Case {
             id: "columns-auto-fit-repeat-only",
             root_style: "display:grid;box-sizing:border-box;width:200px;height:60px;grid-template-columns:20px repeat(auto-fit,minmax(40px,1fr)) 10px;grid-template-rows:40px;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;margin:0;padding:0;border:0",
             items: FIT_REPEAT_ONLY_ITEMS,
             axis: LayoutGridTrackSizingAxis::Columns,
-            tracks: &[20.0, 154.0, 0.0, 0.0, 10.0],
+            tracks: &[20.0, 162.0, 0.0, 0.0, 10.0],
             collapsed: &[false, false, true, true, false],
             root_size: (200.0, 60.0),
             item_positions: &[("repeat", 28.0, 0.0)],
@@ -156,7 +156,7 @@ fn chrome155_auto_repeat_explicit_neighbor_matrix_preserves_tracks_and_frames() 
             root_style: "display:grid;box-sizing:border-box;width:200px;height:60px;grid-template-columns:20px repeat(auto-fit,minmax(40px,1fr)) 10px;grid-template-rows:40px;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;margin:0;padding:0;border:0",
             items: FIT_SPAN_ITEMS,
             axis: LayoutGridTrackSizingAxis::Columns,
-            tracks: &[20.0, 73.0, 73.0, 0.0, 10.0],
+            tracks: &[20.0, 77.0, 77.0, 0.0, 10.0],
             collapsed: FIT_SPAN_COLLAPSED,
             root_size: (200.0, 60.0),
             item_positions: &[("span", 28.0, 0.0), ("suffix", 190.0, 0.0)],
@@ -269,7 +269,7 @@ fn chrome155_auto_repeat_explicit_neighbor_matrix_preserves_tracks_and_frames() 
             root_style: "display:grid;box-sizing:border-box;width:50px;height:200px;grid-template-columns:40px;grid-template-rows:20px repeat(auto-fit,minmax(40px,1fr)) 10px;column-gap:8px;row-gap:8px;align-content:start;justify-content:start;margin:0;padding:0;border:0",
             items: ROW_FIT_ITEMS,
             axis: LayoutGridTrackSizingAxis::Rows,
-            tracks: &[20.0, 154.0, 0.0, 0.0, 10.0],
+            tracks: &[20.0, 162.0, 0.0, 0.0, 10.0],
             collapsed: FIT_ONE_COLLAPSED,
             root_size: (50.0, 200.0),
             item_positions: &[("repeat", 0.0, 28.0), ("suffix", 0.0, 190.0)],
