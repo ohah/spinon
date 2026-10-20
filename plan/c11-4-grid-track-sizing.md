@@ -2,7 +2,7 @@
 
 ## 2026-10-21 direct image multi-span intrinsic contribution slice
 
-직접 HTML `img` 두세 개의 span-2/3 min-content contribution을 네 장면으로 제한 구현했다. Chrome 155 기대 배열과 frame이 Android 16/API 36 SM-S731N 실기기, Android API 37 ARM64 AVD, iPhone 17 Pro/iOS 26.2 Simulator에서 네 scene 모두 일치했고 surface 표본과 draw/present도 통과했다. 이 결과는 generic image contribution matrix, PNG texel paint, CSS border paint, WPT 또는 C11.4 전체 완료를 뜻하지 않는다. C11.4 체크와 공식 완료 수는 유지한다. [slice 계획](c11-4-image-multispan-contributions.md) · [실행 결과와 화면](../spec/internal/evidence/c11-4-image-multispan-contributions-2026-10-21/README.md) · [구현/runtime 리뷰 20개](../spec/internal/evidence/c11-4-image-multispan-contributions-2026-10-21/implementation-review-20.md)
+직접 HTML `img` 두세 개의 span-2/3 min-content contribution을 네 장면으로 제한 구현했다. Chrome 155 기대 배열과 frame이 Android 16/API 36 SM-S731N 실기기, Android API 37 ARM64 AVD, iPhone 17 Pro/iOS 26.2 Simulator에서 네 scene 모두 일치했고 surface 표본과 draw/present도 통과했다. 이 결과는 generic image contribution matrix, PNG texel paint, CSS border paint, WPT 또는 C11.4 전체 완료를 뜻하지 않는다. C11.4 체크와 공식 완료 수는 유지한다. [PR #411](https://github.com/ohah/spinon/pull/411) · [slice 계획](c11-4-image-multispan-contributions.md) · [실행 결과와 화면](../spec/internal/evidence/c11-4-image-multispan-contributions-2026-10-21/README.md) · [구현/runtime 리뷰 20개](../spec/internal/evidence/c11-4-image-multispan-contributions-2026-10-21/implementation-review-20.md)
 
 **상위 원본:** [C11 상태와 범위](/spinon/STATUS.html) · [C11 Grid 계획](c11-css-grid.md) · [CSS 적합성 계약](/spinon/0001-conformance.html) · [Grid 내부 계약 0059](/spinon/internal/0059-c11-grid-layout.html)
 

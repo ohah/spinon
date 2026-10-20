@@ -43,3 +43,4 @@
 
 - [구현 및 runtime 검토 20개](./implementation-review-20.md)
 - [PR diff 적대적 검토 30개](./pr-diff-review-30.md)
+- [PR #411](https://github.com/ohah/spinon/pull/411)
