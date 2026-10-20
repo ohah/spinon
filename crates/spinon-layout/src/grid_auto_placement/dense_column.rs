@@ -38,6 +38,21 @@ pub(crate) fn normalize_dense_grid_container(
     if container.placement_mode == crate::GridPlacementMode::TrackSizing
         && (container.columns_auto_repeat.is_some() || container.rows_auto_repeat.is_some())
     {
+        if matches!(&container.auto_rows, crate::GridAutoRows::TrackList(_)) {
+            return Err(LayoutError::UnsupportedGridAutoRows {
+                node: container_node.id,
+                reason: "auto-repeat과 grid-auto-rows track-size 목록의 결합은 지원하지 않습니다",
+            });
+        }
+        if matches!(
+            &container.auto_columns,
+            crate::GridAutoColumns::TrackList(_)
+        ) {
+            return Err(LayoutError::UnsupportedGridAutoColumns {
+                node: container_node.id,
+                reason: "auto-repeat과 grid-auto-columns track-size 목록의 결합은 지원하지 않습니다",
+            });
+        }
         return normalize_auto_repeat_grid_items(input, hidden, container_node, container);
     }
 
@@ -73,6 +88,7 @@ pub(crate) fn normalize_dense_grid_container(
             placement.row_start,
             placement.row_end,
             container.rows.len(),
+            container.placement_mode == crate::GridPlacementMode::TrackSizing,
         )?;
         let column = resolve_axis(
             child,
@@ -81,6 +97,7 @@ pub(crate) fn normalize_dense_grid_container(
             placement.column_start,
             placement.column_end,
             container.columns.len(),
+            container.placement_mode == crate::GridPlacementMode::TrackSizing,
         )?;
         if row.start.is_none() || column.start.is_none() {
             auto_placed_items.insert(child);
@@ -94,6 +111,28 @@ pub(crate) fn normalize_dense_grid_container(
 
     let mut row_count = container.rows.len();
     let mut column_count = container.columns.len();
+    if container.placement_mode == crate::GridPlacementMode::TrackSizing {
+        for item in &items {
+            if let Some(row_start) = item.row.start {
+                row_count = row_count.max(track_end(
+                    node,
+                    "grid-template-rows",
+                    row_start,
+                    item.row.span,
+                )?);
+            }
+            if let Some(column_start) = item.column.start {
+                column_count = column_count.max(track_end(
+                    node,
+                    "grid-template-columns",
+                    column_start,
+                    item.column.span,
+                )?);
+            }
+        }
+        validate_count(node, "grid-template-rows", row_count)?;
+        validate_count(node, "grid-template-columns", column_count)?;
+    }
     if row_flow {
         column_count = items
             .iter()
@@ -136,6 +175,10 @@ pub(crate) fn normalize_dense_grid_container(
             item.column.span,
         )?;
         occupancy.occupy(item.node, row_start, row_end, column_start, column_end)?;
+        if container.placement_mode == crate::GridPlacementMode::TrackSizing {
+            row_count = row_count.max(row_end);
+            column_count = column_count.max(column_end);
+        }
         output.item_placements.insert(
             item.node,
             super::definite_item_lines(item.node, row_start, row_end, column_start, column_end)?,
@@ -144,11 +187,7 @@ pub(crate) fn normalize_dense_grid_container(
     }
 
     // Step 2: items locked to a row, or to a column for column flow.
-    let locked_count = if row_flow {
-        container.rows.len()
-    } else {
-        container.columns.len()
-    };
+    let locked_count = if row_flow { row_count } else { column_count };
     let mut locked_cursor = Vec::new();
     reserve_exact(
         &mut locked_cursor,
@@ -367,16 +406,18 @@ pub(crate) fn normalize_dense_grid_container(
         "grid-template-rows",
         &container.rows,
         row_count,
-        container.auto_rows,
+        &container.auto_rows,
         true,
+        container.placement_mode == crate::GridPlacementMode::TrackSizing,
     )?;
     output.expanded_columns = expand_tracks(
         node,
         "grid-template-columns",
         &container.columns,
         column_count,
-        container.auto_columns,
+        &container.auto_columns,
         false,
+        container.placement_mode == crate::GridPlacementMode::TrackSizing,
     )?;
     Ok(output)
 }
@@ -454,6 +495,7 @@ fn normalize_auto_repeat_grid_items(
             fixed_start,
             fixed_end,
             fixed_count,
+            false,
         )?;
 
         if fixed_placement.start.is_none() || !has_definite_grid_axis(repeat_start, repeat_end) {
@@ -516,32 +558,58 @@ fn expand_tracks(
     property: &'static str,
     explicit: &[GridTrackSize],
     count: usize,
-    auto_size: crate::GridAutoTrackSize,
+    auto_size: &crate::GridAutoTrackSize,
     rows: bool,
+    allow_track_sizing: bool,
 ) -> Result<Option<Vec<GridTrackSize>>, LayoutError> {
     validate_count(node, property, count)?;
     if count == explicit.len() {
         return Ok(None);
     }
-    let size = match auto_size {
+    let pattern = match auto_size {
         crate::GridAutoTrackSize::Auto => {
+            if allow_track_sizing {
+                TrackPattern::Single(GridTrackSize::Auto)
+            } else {
+                return if rows {
+                    Err(LayoutError::UnsupportedGridAutoRows {
+                        node,
+                        reason: "implicit row가 필요하지만 grid-auto-rows:auto의 content sizing은 미구현입니다",
+                    })
+                } else {
+                    Err(LayoutError::UnsupportedGridAutoColumns {
+                        node,
+                        reason: "implicit column이 필요하지만 grid-auto-columns:auto의 content sizing은 미구현입니다",
+                    })
+                };
+            }
+        }
+        crate::GridAutoTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0 => {
+            TrackPattern::Single(GridTrackSize::LengthPx(*value))
+        }
+        crate::GridAutoTrackSize::LengthPx(_) => {
+            return Err(LayoutError::InvalidGridTrack { node, property });
+        }
+        crate::GridAutoTrackSize::TrackList(tracks) if allow_track_sizing && !tracks.is_empty() => {
+            TrackPattern::List(tracks)
+        }
+        crate::GridAutoTrackSize::TrackList(_) => {
             return if rows {
                 Err(LayoutError::UnsupportedGridAutoRows {
                     node,
-                    reason: "implicit row가 필요하지만 grid-auto-rows:auto의 content sizing은 미구현입니다",
+                    reason: "grid-auto-rows track-size 목록은 C11.4 track-sizing profile에서만 지원됩니다",
                 })
             } else {
                 Err(LayoutError::UnsupportedGridAutoColumns {
                     node,
-                    reason: "implicit column이 필요하지만 grid-auto-columns:auto의 content sizing은 미구현입니다",
+                    reason: "grid-auto-columns track-size 목록은 C11.4 track-sizing profile에서만 지원됩니다",
                 })
             };
         }
-        crate::GridAutoTrackSize::LengthPx(value) if value.is_finite() && value >= 0.0 => value,
-        crate::GridAutoTrackSize::LengthPx(_) => {
-            return Err(LayoutError::InvalidGridTrack { node, property });
-        }
     };
+    let implicit_count = count
+        .checked_sub(explicit.len())
+        .ok_or(LayoutError::InvalidGridTrackList { node, property })?;
     let mut tracks = Vec::new();
     reserve_exact(
         &mut tracks,
@@ -555,11 +623,20 @@ fn expand_tracks(
         },
     )?;
     tracks.extend_from_slice(explicit);
-    tracks.extend(std::iter::repeat_n(
-        GridTrackSize::LengthPx(size),
-        count - explicit.len(),
-    ));
+    for index in 0..implicit_count {
+        let track = match pattern {
+            TrackPattern::Single(track) => track,
+            TrackPattern::List(pattern) => pattern[index % pattern.len()],
+        };
+        tracks.push(track);
+    }
     Ok(Some(tracks))
+}
+
+#[derive(Clone, Copy)]
+enum TrackPattern<'a> {
+    Single(GridTrackSize),
+    List(&'a [GridTrackSize]),
 }
 
 fn track_end(

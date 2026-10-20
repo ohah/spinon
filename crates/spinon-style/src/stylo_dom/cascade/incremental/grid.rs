@@ -33,6 +33,8 @@ pub(in crate::stylo_dom::cascade) enum IntegerRepeatReservationSite {
     LineGroups,
     LineNames,
     LineNameText,
+    AutoRows,
+    AutoColumns,
 }
 
 #[cfg(test)]
@@ -125,12 +127,16 @@ pub(super) fn computed_grid_layout(
     }
     let auto_rows = computed_grid_auto_rows(
         computed.clone_grid_auto_rows(),
+        node,
         property_value(properties, "grid-auto-rows"),
-    );
+        allow_intrinsic_tracks,
+    )?;
     let auto_columns = computed_grid_auto_columns(
         computed.clone_grid_auto_columns(),
+        node,
         property_value(properties, "grid-auto-columns"),
-    );
+        allow_intrinsic_tracks,
+    )?;
     let flow = computed.clone_grid_auto_flow();
     let auto_flow = match (
         flow.contains(GridAutoFlow::COLUMN),
@@ -158,49 +164,131 @@ pub(super) fn computed_grid_layout(
 
 fn computed_grid_auto_columns(
     value: style::values::computed::ImplicitGridTracks,
+    node: NodeId,
     serialized: &str,
-) -> ComputedCssGridAutoColumns {
-    if value.is_initial() {
-        return ComputedCssGridAutoColumns::Auto;
-    }
-    if value.0.len() != 1 {
-        return ComputedCssGridAutoColumns::Unsupported(serialized.to_owned());
-    }
-    let TrackSize::Breadth(TrackBreadth::Breadth(value)) = &value.0[0] else {
-        return ComputedCssGridAutoColumns::Unsupported(serialized.to_owned());
-    };
-    let LengthPercentageValue::Length(length) = value.unpack() else {
-        return ComputedCssGridAutoColumns::Unsupported(serialized.to_owned());
-    };
-    let pixels = length.px();
-    if pixels.is_finite() && pixels >= 0.0 {
-        ComputedCssGridAutoColumns::LengthPx(pixels)
-    } else {
-        ComputedCssGridAutoColumns::Unsupported(serialized.to_owned())
-    }
+    allow_intrinsic_tracks: bool,
+) -> Result<ComputedCssGridAutoColumns, CssCascadeError> {
+    Ok(
+        match computed_grid_auto_track_list(
+            value,
+            node,
+            "grid-auto-columns",
+            serialized,
+            allow_intrinsic_tracks,
+            IntegerRepeatReservationSite::AutoColumns,
+        )? {
+            ComputedGridAutoTrackValue::Auto => ComputedCssGridAutoColumns::Auto,
+            ComputedGridAutoTrackValue::LengthPx(value) => {
+                ComputedCssGridAutoColumns::LengthPx(value)
+            }
+            ComputedGridAutoTrackValue::TrackList(tracks) => {
+                ComputedCssGridAutoColumns::TrackList(tracks)
+            }
+            ComputedGridAutoTrackValue::Unsupported(value) => {
+                ComputedCssGridAutoColumns::Unsupported(value)
+            }
+        },
+    )
 }
 
 fn computed_grid_auto_rows(
     value: style::values::computed::ImplicitGridTracks,
+    node: NodeId,
     serialized: &str,
-) -> ComputedCssGridAutoRows {
+    allow_intrinsic_tracks: bool,
+) -> Result<ComputedCssGridAutoRows, CssCascadeError> {
+    Ok(
+        match computed_grid_auto_track_list(
+            value,
+            node,
+            "grid-auto-rows",
+            serialized,
+            allow_intrinsic_tracks,
+            IntegerRepeatReservationSite::AutoRows,
+        )? {
+            ComputedGridAutoTrackValue::Auto => ComputedCssGridAutoRows::Auto,
+            ComputedGridAutoTrackValue::LengthPx(value) => ComputedCssGridAutoRows::LengthPx(value),
+            ComputedGridAutoTrackValue::TrackList(tracks) => {
+                ComputedCssGridAutoRows::TrackList(tracks)
+            }
+            ComputedGridAutoTrackValue::Unsupported(value) => {
+                ComputedCssGridAutoRows::Unsupported(value)
+            }
+        },
+    )
+}
+
+enum ComputedGridAutoTrackValue {
+    Auto,
+    LengthPx(f32),
+    TrackList(Vec<ComputedCssGridTrackSize>),
+    Unsupported(String),
+}
+
+fn computed_grid_auto_track_list(
+    value: style::values::computed::ImplicitGridTracks,
+    node: NodeId,
+    property: &'static str,
+    serialized: &str,
+    allow_intrinsic_tracks: bool,
+    reservation_site: IntegerRepeatReservationSite,
+) -> Result<ComputedGridAutoTrackValue, CssCascadeError> {
     if value.is_initial() {
-        return ComputedCssGridAutoRows::Auto;
+        return Ok(ComputedGridAutoTrackValue::Auto);
     }
-    if value.0.len() != 1 {
-        return ComputedCssGridAutoRows::Unsupported(serialized.to_owned());
+    if value.0.is_empty() || value.0.len() > MAX_COMPUTED_GRID_TRACKS {
+        return Ok(ComputedGridAutoTrackValue::Unsupported(
+            serialized.to_owned(),
+        ));
     }
-    let TrackSize::Breadth(TrackBreadth::Breadth(value)) = &value.0[0] else {
-        return ComputedCssGridAutoRows::Unsupported(serialized.to_owned());
-    };
-    let LengthPercentageValue::Length(length) = value.unpack() else {
-        return ComputedCssGridAutoRows::Unsupported(serialized.to_owned());
-    };
-    let pixels = length.px();
-    if pixels.is_finite() && pixels >= 0.0 {
-        ComputedCssGridAutoRows::LengthPx(pixels)
+
+    if !allow_intrinsic_tracks {
+        if value.0.len() != 1 {
+            return Ok(ComputedGridAutoTrackValue::Unsupported(
+                serialized.to_owned(),
+            ));
+        }
+        let TrackSize::Breadth(TrackBreadth::Breadth(value)) = &value.0[0] else {
+            return Ok(ComputedGridAutoTrackValue::Unsupported(
+                serialized.to_owned(),
+            ));
+        };
+        let LengthPercentageValue::Length(length) = value.unpack() else {
+            return Ok(ComputedGridAutoTrackValue::Unsupported(
+                serialized.to_owned(),
+            ));
+        };
+        let pixels = length.px();
+        return Ok(if pixels.is_finite() && pixels >= 0.0 {
+            ComputedGridAutoTrackValue::LengthPx(pixels)
+        } else {
+            ComputedGridAutoTrackValue::Unsupported(serialized.to_owned())
+        });
+    }
+
+    let mut tracks = Vec::new();
+    reserve_computed_tracks(
+        &mut tracks,
+        value.0.len(),
+        node,
+        property,
+        |tracks, count| {
+            fail_integer_repeat_reservation_if_requested(reservation_site)?;
+            tracks.try_reserve_exact(count).map_err(|_| ())
+        },
+    )?;
+    for size in value.0.iter() {
+        let Some(track) = track_size(size, true) else {
+            return Ok(ComputedGridAutoTrackValue::Unsupported(
+                serialized.to_owned(),
+            ));
+        };
+        tracks.push(track);
+    }
+    if let [ComputedCssGridTrackSize::LengthPx(value)] = tracks.as_slice() {
+        Ok(ComputedGridAutoTrackValue::LengthPx(*value))
     } else {
-        ComputedCssGridAutoRows::Unsupported(serialized.to_owned())
+        Ok(ComputedGridAutoTrackValue::TrackList(tracks))
     }
 }
 

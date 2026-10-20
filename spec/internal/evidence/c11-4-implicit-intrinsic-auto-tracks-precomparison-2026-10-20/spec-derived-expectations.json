@@ -7,23 +7,106 @@
     "Intrinsic contribution is evaluated for the generated track's axis and its placed items; the Chrome observation is a separate implementation oracle."
   ],
   "cases": [
-    {"id":"row-min-content","expectedRows":"12px 20px","reason":"Ahem text wraps to two 10px lines in the definite 40px explicit column."},
-    {"id":"row-max-content","expectedRows":"12px 20px","reason":"The placed item's block-size contribution is 20px under the definite 40px inline track."},
-    {"id":"column-min-content","expectedColumns":"24px 70px","reason":"The longest unbreakable Ahem word is seven 10px glyphs."},
-    {"id":"column-max-content","expectedColumns":"24px 100px","reason":"The unwrapped Ahem text is 2 glyphs + one space + 7 glyphs."},
-    {"id":"row-auto-placement-min-content","expectedRows":"12px 20px","reason":"Row auto-placement creates one positive implicit row sized from the same two-line content."},
-    {"id":"column-auto-placement-max-content","expectedColumns":"24px 100px","reason":"Column auto-placement creates one positive implicit column for the unwrapped text."},
-    {"id":"row-auto-placement-auto","expectedRows":"12px 20px","reason":"The initial auto track uses the placed text contribution and does not become zero or disappear."},
-    {"id":"column-auto-placement-auto","expectedColumns":"24px 100px","reason":"The initial auto track uses the placed text contribution and does not become zero or disappear."},
-    {"id":"two-implicit-columns-min-content","expectedColumns":"24px 20px 40px","reason":"Each positive implicit column is min-content sized from its own placed item."},
-    {"id":"cycled-intrinsic-columns","expectedColumns":"24px 20px 100px 40px","reason":"The [min-content,max-content] pattern applies in order to three positive implicit columns and then repeats its first entry."},
-    {"id":"cycled-fixed-max-rows","expectedRows":"12px 10px 20px 10px","reason":"The [10px,max-content] pattern applies in order to three positive implicit rows and repeats its first entry."},
-    {"id":"implicit-percentage-column","expectedColumns":"24px 40px","reason":"25 percent of the definite 160px column axis is 40px."},
-    {"id":"implicit-fraction-column","expectedColumns":"24px 136px","reason":"The 1fr implicit track receives the 160px content size remaining after the 24px explicit track."},
-    {"id":"implicit-minmax-column","expectedColumns":"24px 40px","reason":"The generated track's max sizing function is the definite 40px limit."},
-    {"id":"implicit-fit-content-column","expectedColumns":"24px 70px","reason":"The 30px fit-content limit cannot reduce the 70px min-content floor."},
-    {"id":"implicit-min-content-overflow-border","expectedColumns":"20px 70px","reason":"The intrinsic track remains 70px; its item extends 48px beyond the 44px border-box without clipping."},
-    {"id":"implicit-calc-column","expectedColumns":"24px 21px","reason":"calc(10% + 5px) resolves against the definite 160px axis to 21px."},
-    {"id":"explicit-track-control","expectedColumns":"40px","expectedRows":"24px","reason":"No implicit track is generated, so grid-auto track sizes do not alter the explicit grid."}
+    {
+      "id": "row-min-content",
+      "expectedRows": "12px 20px",
+      "reason": "Ahem text wraps to two 10px lines in the definite 40px explicit column."
+    },
+    {
+      "id": "row-max-content",
+      "expectedRows": "12px 20px",
+      "reason": "The placed item's block-size contribution is 20px under the definite 40px inline track."
+    },
+    {
+      "id": "column-min-content",
+      "expectedColumns": "24px 70px",
+      "reason": "The longest unbreakable Ahem word is seven 10px glyphs."
+    },
+    {
+      "id": "column-max-content",
+      "expectedColumns": "24px 100px",
+      "reason": "The unwrapped Ahem text is 2 glyphs + one space + 7 glyphs."
+    },
+    {
+      "id": "row-auto-placement-min-content",
+      "expectedRows": "12px 20px",
+      "reason": "Row auto-placement creates one positive implicit row sized from the same two-line content."
+    },
+    {
+      "id": "column-auto-placement-max-content",
+      "expectedColumns": "24px 100px",
+      "reason": "Column auto-placement creates one positive implicit column for the unwrapped text."
+    },
+    {
+      "id": "row-auto-placement-auto",
+      "expectedRows": "12px 20px",
+      "reason": "The initial auto track uses the placed text contribution and does not become zero or disappear."
+    },
+    {
+      "id": "column-auto-placement-auto",
+      "expectedColumns": "24px 100px",
+      "reason": "The initial auto track uses the placed text contribution and does not become zero or disappear."
+    },
+    {
+      "id": "two-implicit-columns-min-content",
+      "expectedColumns": "24px 20px 40px",
+      "reason": "Each positive implicit column is min-content sized from its own placed item."
+    },
+    {
+      "id": "cycled-intrinsic-columns",
+      "expectedColumns": "24px 20px 100px 40px",
+      "reason": "The [min-content,max-content] pattern applies in order to three positive implicit columns and then repeats its first entry."
+    },
+    {
+      "id": "cycled-fixed-max-rows",
+      "expectedRows": "12px 10px 20px 10px",
+      "reason": "The [10px,max-content] pattern applies in order to three positive implicit rows and repeats its first entry."
+    },
+    {
+      "id": "implicit-percentage-column",
+      "expectedColumns": "24px 40px",
+      "reason": "25 percent of the definite 160px column axis is 40px."
+    },
+    {
+      "id": "implicit-fraction-column",
+      "expectedColumns": "24px 136px",
+      "reason": "The 1fr implicit track receives the 160px content size remaining after the 24px explicit track."
+    },
+    {
+      "id": "implicit-minmax-column",
+      "expectedColumns": "24px 40px",
+      "reason": "The generated track's max sizing function is the definite 40px limit."
+    },
+    {
+      "id": "implicit-fit-content-column",
+      "expectedColumns": "24px 70px",
+      "reason": "The 30px fit-content limit cannot reduce the 70px min-content floor."
+    },
+    {
+      "id": "implicit-min-content-overflow-border",
+      "expectedColumns": "20px 70px",
+      "reason": "The intrinsic track remains 70px; its item extends 48px beyond the 44px border-box without clipping."
+    },
+    {
+      "id": "implicit-calc-column",
+      "expectedColumns": "24px 21px",
+      "reason": "calc(10% + 5px) resolves against the definite 160px axis to 21px."
+    },
+    {
+      "id": "explicit-track-control",
+      "expectedColumns": "40px",
+      "expectedRows": "24px",
+      "reason": "No implicit track is generated, so grid-auto track sizes do not alter the explicit grid."
+    },
+    {
+      "id": "row-positive-implicit-locked-item",
+      "expectedRows": "12px 20px",
+      "reason": "The definite positive row remains locked while auto-placement chooses its column; the row track uses the same Ahem content contribution as row-min-content."
+    },
+    {
+      "id": "column-positive-implicit-locked-item",
+      "expectedColumns": "24px 70px",
+      "reason": "The definite positive column remains locked while column auto-placement chooses its row; the column track uses the same Ahem content contribution as column-min-content."
+    }
   ]
 }

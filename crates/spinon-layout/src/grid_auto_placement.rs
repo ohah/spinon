@@ -72,6 +72,7 @@ pub(super) fn normalize_sparse_grid_container(
             placement.row_start,
             placement.row_end,
             container.rows.len(),
+            false,
         )?;
         let column = resolve_axis(
             child,
@@ -80,6 +81,7 @@ pub(super) fn normalize_sparse_grid_container(
             placement.column_start,
             placement.column_end,
             container.columns.len(),
+            false,
         )?;
         if column.span > container.columns.len() {
             return Err(LayoutError::GridImplicitTrackRequired(node));
@@ -193,13 +195,13 @@ pub(super) fn normalize_sparse_grid_container(
 
     if max_rows > container.rows.len() {
         let implicit_rows = max_rows - container.rows.len();
-        let GridAutoRows::LengthPx(auto_row_size) = container.auto_rows else {
+        let GridAutoRows::LengthPx(auto_row_size) = &container.auto_rows else {
             return Err(LayoutError::UnsupportedGridAutoRows {
                 node,
                 reason: "implicit row가 필요하지만 grid-auto-rows:auto는 content sizing이 필요합니다",
             });
         };
-        if !auto_row_size.is_finite() || auto_row_size < 0.0 {
+        if !auto_row_size.is_finite() || *auto_row_size < 0.0 {
             return Err(LayoutError::InvalidGridTrack {
                 node,
                 property: "grid-auto-rows",
@@ -215,7 +217,7 @@ pub(super) fn normalize_sparse_grid_container(
         )?;
         expanded_rows.extend_from_slice(&container.rows);
         expanded_rows.extend(std::iter::repeat_n(
-            GridTrackSize::LengthPx(auto_row_size),
+            GridTrackSize::LengthPx(*auto_row_size),
             implicit_rows,
         ));
         output.expanded_rows = Some(expanded_rows);
