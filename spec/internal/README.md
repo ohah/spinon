@@ -10,7 +10,11 @@
 
 ## C11.4 auto-repeat typed implicit track sizing 후속 · PR #391
 
-[집중 계획](https://github.com/ohah/spinon/blob/main/plan/c11-4-auto-repeat-typed-implicit-tracks.md) · [Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 138-scene 실행, 화면, 해시와 로컬 검사](./evidence/c11-4-negative-implicit-track-sizing-2026-10-20/README.md) · [구현 실패 관점 20개](./evidence/c11-4-negative-implicit-track-sizing-2026-10-20/auto-repeat-typed-implementation-review-20.md) · [최종 PR diff 검토 30개](./evidence/c11-4-negative-implicit-track-sizing-2026-10-20/auto-repeat-typed-pr-diff-review-30.md). [PR #391](https://github.com/ohah/spinon/pull/391)은 열려 있고 아직 병합되지 않았다. 제한 `RuntimeBlockFlexGridTrackSizingV1`에서 auto-repeat 결합 typed implicit track list를 적용하며 C11.4 공식 상태는 미완료다.
+[집중 계획](https://github.com/ohah/spinon/blob/main/plan/c11-4-auto-repeat-typed-implicit-tracks.md) · [Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 138-scene 실행, 화면, 해시와 로컬 검사](./evidence/c11-4-negative-implicit-track-sizing-2026-10-20/README.md) · [구현 실패 관점 20개](./evidence/c11-4-negative-implicit-track-sizing-2026-10-20/auto-repeat-typed-implementation-review-20.md) · [최종 PR diff 검토 30개](./evidence/c11-4-negative-implicit-track-sizing-2026-10-20/auto-repeat-typed-pr-diff-review-30.md). [PR #391](https://github.com/ohah/spinon/pull/391)은 merge SHA `e3119ea21bdd6196f334c104edb3bb33dfe70b0c`로 Rebase and merge했다. 제한 `RuntimeBlockFlexGridTrackSizingV1`에서 auto-repeat 결합 typed implicit track list를 적용하며 C11.4 공식 상태는 미완료다.
+
+## C11.4 PR #391 Tailnet 미리보기 동기화
+
+[로드맵·상태 대장·계획·선택 실행 근거의 Tailnet 동기화](./evidence/c11-4-pr391-tailnet-sync-2026-10-20/README.md) · [동기화 실패 관점 20개](./evidence/c11-4-pr391-tailnet-sync-2026-10-20/sync-review-20.md). PR #391 병합 뒤 제한 typed implicit track sizing과 실제 merge SHA를 선택 문서 미리보기에 반영한다. C11.4 완료 상태와 공식 집계, GitHub Pages 배포는 변경하지 않는다.
 
 ## C11.4 양쪽 Grid 축 auto-repeat 후속
 
