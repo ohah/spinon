@@ -70,9 +70,76 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "implicit-min-content-overflow-border", "implicit-calc-column",
     "explicit-track-control", "row-positive-implicit-locked-item",
     "column-positive-implicit-locked-item",
+    "columns-one-negative", "columns-two-negative", "columns-three-negative",
+    "columns-four-negative", "columns-negative-and-positive-cycle",
+    "columns-negative-fixed-single", "columns-zero-track-cycle",
+    "columns-explicit-boundary-span", "columns-reversed-lines-normalize",
+    "columns-negative-line-span", "columns-no-explicit-tracks",
+    "columns-negative-minmax-track", "columns-negative-min-content-track",
+    "columns-negative-max-content-track", "rows-one-negative", "rows-two-negative",
+    "rows-three-negative", "rows-negative-and-positive-cycle",
+    "both-axes-negative-independent-patterns", "hidden-negative-does-not-expand",
+    "negative-column-auto-row-placement", "columns-negative-grid-auto-items",
+    "rows-negative-grid-auto-items", "columns-negative-row-dense-auto-items",
+    "columns-negative-row-sparse-cursor", "columns-negative-row-dense-cursor",
+    "columns-negative-column-flow-auto-items", "columns-negative-column-dense-auto-items",
+    "rows-negative-row-dense-auto-items", "rows-negative-column-flow-auto-items",
+    "rows-negative-column-dense-auto-items", "columns-negative-fixed-root-overflow",
+    "rows-negative-fixed-root-overflow",
 ]
 
+private struct C114NegativeTrackExpectation {
+    let rootWidth: String
+    let rootHeight: String
+    let itemWidth: String
+    let itemHeight: String
+    let boxCount: Int
+}
+
+private let c114NegativeTrackExpectations: [String: C114NegativeTrackExpectation] = [
+    "columns-one-negative": C114NegativeTrackExpectation(rootWidth: "189", rootHeight: "22", itemWidth: "47", itemHeight: "20", boxCount: 4),
+    "columns-two-negative": C114NegativeTrackExpectation(rootWidth: "223", rootHeight: "22", itemWidth: "31", itemHeight: "20", boxCount: 5),
+    "columns-three-negative": C114NegativeTrackExpectation(rootWidth: "273", rootHeight: "22", itemWidth: "47", itemHeight: "20", boxCount: 6),
+    "columns-four-negative": C114NegativeTrackExpectation(rootWidth: "273", rootHeight: "22", itemWidth: "31", itemHeight: "20", boxCount: 6),
+    "columns-negative-and-positive-cycle": C114NegativeTrackExpectation(rootWidth: "273", rootHeight: "22", itemWidth: "31", itemHeight: "20", boxCount: 6),
+    "columns-negative-fixed-single": C114NegativeTrackExpectation(rootWidth: "185", rootHeight: "22", itemWidth: "37", itemHeight: "20", boxCount: 4),
+    "columns-zero-track-cycle": C114NegativeTrackExpectation(rootWidth: "161", rootHeight: "22", itemWidth: "0", itemHeight: "20", boxCount: 3),
+    "columns-explicit-boundary-span": C114NegativeTrackExpectation(rootWidth: "155", rootHeight: "45", itemWidth: "90", itemHeight: "20", boxCount: 4),
+    "columns-reversed-lines-normalize": C114NegativeTrackExpectation(rootWidth: "223", rootHeight: "22", itemWidth: "81", itemHeight: "20", boxCount: 4),
+    "columns-negative-line-span": C114NegativeTrackExpectation(rootWidth: "223", rootHeight: "22", itemWidth: "81", itemHeight: "20", boxCount: 4),
+    "columns-no-explicit-tracks": C114NegativeTrackExpectation(rootWidth: "167", rootHeight: "22", itemWidth: "31", itemHeight: "20", boxCount: 5),
+    "columns-negative-minmax-track": C114NegativeTrackExpectation(rootWidth: "230", rootHeight: "22", itemWidth: "72", itemHeight: "20", boxCount: 4),
+    "columns-negative-min-content-track": C114NegativeTrackExpectation(rootWidth: "218", rootHeight: "22", itemWidth: "60", itemHeight: "20", boxCount: 4),
+    "columns-negative-max-content-track": C114NegativeTrackExpectation(rootWidth: "254", rootHeight: "22", itemWidth: "96", itemHeight: "20", boxCount: 4),
+    "rows-one-negative": C114NegativeTrackExpectation(rootWidth: "22", rootHeight: "157", itemWidth: "20", itemHeight: "29", boxCount: 4),
+    "rows-two-negative": C114NegativeTrackExpectation(rootWidth: "22", rootHeight: "177", itemWidth: "20", itemHeight: "17", boxCount: 5),
+    "rows-three-negative": C114NegativeTrackExpectation(rootWidth: "22", rootHeight: "209", itemWidth: "20", itemHeight: "29", boxCount: 6),
+    "rows-negative-and-positive-cycle": C114NegativeTrackExpectation(rootWidth: "22", rootHeight: "209", itemWidth: "20", itemHeight: "17", boxCount: 6),
+    "both-axes-negative-independent-patterns": C114NegativeTrackExpectation(rootWidth: "189", rootHeight: "137", itemWidth: "47", itemHeight: "29", boxCount: 4),
+    "hidden-negative-does-not-expand": C114NegativeTrackExpectation(rootWidth: "139", rootHeight: "22", itemWidth: "40", itemHeight: "20", boxCount: 3),
+    "negative-column-auto-row-placement": C114NegativeTrackExpectation(rootWidth: "189", rootHeight: "22", itemWidth: "47", itemHeight: "20", boxCount: 4),
+    "columns-negative-grid-auto-items": C114NegativeTrackExpectation(rootWidth: "189", rootHeight: "45", itemWidth: "31", itemHeight: "20", boxCount: 6),
+    "rows-negative-grid-auto-items": C114NegativeTrackExpectation(rootWidth: "22", rootHeight: "177", itemWidth: "20", itemHeight: "17", boxCount: 6),
+    "columns-negative-row-dense-auto-items": C114NegativeTrackExpectation(rootWidth: "189", rootHeight: "45", itemWidth: "31", itemHeight: "20", boxCount: 6),
+    "columns-negative-row-sparse-cursor": C114NegativeTrackExpectation(rootWidth: "155", rootHeight: "45", itemWidth: "47", itemHeight: "20", boxCount: 5),
+    "columns-negative-row-dense-cursor": C114NegativeTrackExpectation(rootWidth: "155", rootHeight: "45", itemWidth: "47", itemHeight: "20", boxCount: 5),
+    "columns-negative-column-flow-auto-items": C114NegativeTrackExpectation(rootWidth: "189", rootHeight: "45", itemWidth: "31", itemHeight: "20", boxCount: 6),
+    "columns-negative-column-dense-auto-items": C114NegativeTrackExpectation(rootWidth: "189", rootHeight: "45", itemWidth: "31", itemHeight: "20", boxCount: 6),
+    "rows-negative-row-dense-auto-items": C114NegativeTrackExpectation(rootWidth: "22", rootHeight: "177", itemWidth: "20", itemHeight: "17", boxCount: 6),
+    "rows-negative-column-flow-auto-items": C114NegativeTrackExpectation(rootWidth: "45", rootHeight: "157", itemWidth: "20", itemHeight: "17", boxCount: 6),
+    "rows-negative-column-dense-auto-items": C114NegativeTrackExpectation(rootWidth: "45", rootHeight: "157", itemWidth: "20", itemHeight: "17", boxCount: 6),
+    "columns-negative-fixed-root-overflow": C114NegativeTrackExpectation(rootWidth: "100", rootHeight: "22", itemWidth: "31", itemHeight: "20", boxCount: 6),
+    "rows-negative-fixed-root-overflow": C114NegativeTrackExpectation(rootWidth: "22", rootHeight: "100", itemWidth: "20", itemHeight: "17", boxCount: 6),
+]
+
+private func c114NegativeTrackExpectation(_ sceneID: String) -> C114NegativeTrackExpectation? {
+    c114NegativeTrackExpectations[sceneID]
+}
+
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    if let expectation = c114NegativeTrackExpectation(sceneID) {
+        return "width=\(expectation.rootWidth),height=\(expectation.rootHeight)"
+    }
     if let implicitTrackFrame = c114ImplicitTextRootFrame(sceneID) {
         return implicitTrackFrame
     }
@@ -160,6 +227,9 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     if c114IsImplicitTextScene(sceneID) { return "" }
+    if let expectation = c114NegativeTrackExpectation(sceneID) {
+        return "width=\(expectation.itemWidth),height=\(expectation.itemHeight)"
+    }
     if let autoFitMinimumSizeItemFrame = c114AutoFitMinimumSizeItemFrame(sceneID) {
         return autoFitMinimumSizeItemFrame
     }
@@ -201,7 +271,7 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     case "auto-fill-fixed-neighbors", "auto-fill-pattern-neighbors":
         return "width=10,height=40"
     case "auto-fit-fixed-neighbors":
-        return "width=162,height=40"
+        return "width=154,height=40"
     case "auto-fit-empty-neighbors", "auto-fill-max-size-neighbors",
          "auto-fill-min-size-neighbors", "auto-fill-two-track-columns-both-190",
          "auto-fill-two-track-columns-both-200", "auto-fill-two-track-columns-both-342",
@@ -589,6 +659,9 @@ private func c114ImageTrackPassMatches(
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     if c114IsImplicitTextScene(sceneID) { return nil }
+    if c114NegativeTrackExpectation(sceneID) != nil {
+        return nil
+    }
     if let autoFitMinimumSizeNodeFrames = c114AutoFitMinimumSizeNodeFrames(sceneID) {
         return autoFitMinimumSizeNodeFrames
     }
@@ -604,16 +677,16 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "1:node=2,x=28,y=28,width=12,height=12]"
     case "both-fit-second-repeat":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
-            + "1:node=2,x=20,y=20,width=12,height=12]"
+            + "1:node=2,x=28,y=28,width=12,height=12]"
     case "both-fill-asymmetric":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=266;"
             + "1:node=2,x=28,y=28,width=12,height=12]"
     case "columns-fit-rows-fill-second-repeat":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
-            + "1:node=2,x=20,y=109,width=12,height=12]"
+            + "1:node=2,x=28,y=109,width=12,height=12]"
     case "columns-fill-rows-fit-second-repeat":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
-            + "1:node=2,x=109,y=20,width=12,height=12]"
+            + "1:node=2,x=109,y=28,width=12,height=12]"
     case "auto-fill-two-track-columns-both-190", "auto-fill-two-track-columns-both-200",
          "auto-fill-two-track-columns-both-342", "auto-fill-two-track-columns-prefix-200",
          "auto-fill-two-track-columns-suffix-200", "auto-fill-two-track-rows-both-190",
@@ -624,7 +697,7 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "1:node=2,x=190,y=0,width=10,height=40]"
     case "auto-fit-fixed-neighbors":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;"
-            + "1:node=2,x=28,y=0,width=162,height=40]"
+            + "1:node=2,x=28,y=0,width=154,height=40]"
     case "grid-gap-definite-percent":
         return c114GapNodeFrames("100", "40", "50", "20")
     case "grid-gap-cyclic-percent":
@@ -674,6 +747,7 @@ private func c114GapNodeFrames(
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     let implicitTrackBoxCount = c114ImplicitTextBoxCount(sceneID)
     if implicitTrackBoxCount != 0 { return implicitTrackBoxCount }
+    if let expectation = c114NegativeTrackExpectation(sceneID) { return expectation.boxCount }
     if let autoFitMinimumSizeItemFrame = c114AutoFitMinimumSizeItemFrame(sceneID) {
         return autoFitMinimumSizeItemFrame.isEmpty ? 1 : 2
     }
@@ -760,9 +834,7 @@ private func c114AutoFitMinimumSizeNodeFrames(_ sceneID: String) -> String? {
     guard !itemFrame.isEmpty else {
         return "node_frames_css_px=[0:node=1,x=0,y=0,\(rootFrame)]"
     }
-    let position = sceneID.contains("-second-repeat-")
-        ? sceneID.contains("-columns-") ? "x=20,y=0" : "x=0,y=20"
-        : sceneID.contains("-columns-") ? "x=28,y=0" : "x=0,y=28"
+    let position = sceneID.contains("-columns-") ? "x=28,y=0" : "x=0,y=28"
     return "node_frames_css_px=[0:node=1,x=0,y=0,\(rootFrame);"
         + "1:node=2,\(position),width=12,height=12]"
 }
@@ -1035,6 +1107,11 @@ private struct C111MetalPixelRun {
             expectedSamples = c114AutoRepeatOverflowPixelSamples
         case "implicit-min-content-overflow-border":
             expectedSamples = c114ImplicitTrackOverflowPixelSamples
+        case "columns-negative-fixed-root-overflow", "rows-negative-fixed-root-overflow":
+            guard let negativeOverflowSamples = c114NegativeImplicitOverflowPixelSamples(
+                sceneID: sceneID
+            ) else { return false }
+            expectedSamples = negativeOverflowSamples
         case "fixed-small-track-overflow":
             expectedSamples = c114ImageOverflowPixelSamples
         case "column-auto-natural-ratio":
@@ -1070,6 +1147,32 @@ private struct C111MetalPixelRun {
                     && sample.rgba == expected.4
             }
         }
+    }
+
+    private static func c114NegativeImplicitOverflowPixelSamples(
+        sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])]? {
+        let rootNodeID = "c114-\(sceneID)-grid"
+        let itemNodeID = "c114-\(sceneID)-item-5"
+        if sceneID == "columns-negative-fixed-root-overflow" {
+            return [
+                ("negative-root-interior", rootNodeID, 33, 10, [226, 232, 240, 255]),
+                ("negative-root-edge", rootNodeID, 0, 10, [226, 232, 240, 255]),
+                ("negative-root-exterior", rootNodeID, 150, 10, [0, 0, 0, 255]),
+                ("negative-overflow-item", itemNodeID, 250, 10, [141, 95, 211, 255]),
+                ("negative-overflow-tail", rootNodeID, 273, 10, [0, 0, 0, 255]),
+            ]
+        }
+        if sceneID == "rows-negative-fixed-root-overflow" {
+            return [
+                ("negative-root-interior", rootNodeID, 10, 19, [226, 232, 240, 255]),
+                ("negative-root-edge", rootNodeID, 10, 0, [226, 232, 240, 255]),
+                ("negative-root-exterior", rootNodeID, 10, 100, [0, 0, 0, 255]),
+                ("negative-overflow-item", itemNodeID, 10, 195, [141, 95, 211, 255]),
+                ("negative-overflow-tail", rootNodeID, 10, 209, [0, 0, 0, 255]),
+            ]
+        }
+        return nil
     }
 
     static func parse(arguments: [String], sceneID: String?) -> C111MetalPixelRun? {

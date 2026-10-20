@@ -57,8 +57,10 @@ impl CalcLayoutTree {
                 - layout.border.bottom
                 - layout.padding.top
                 - layout.padding.bottom;
-            if node_style.is_some_and(|node| node.style.height == crate::LayoutDimension::Auto)
-                && text_measure_exceeds_content_height(content_height, snapshot.height)
+            if node_style.is_some_and(|node| {
+                node.style.height == crate::LayoutDimension::Auto
+                    && node.style.min_height != crate::LayoutDimension::Fixed(0.0)
+            }) && text_measure_exceeds_content_height(content_height, snapshot.height)
             {
                 return Err(LayoutError::TextLayoutHeightMismatch(paragraph.node));
             }

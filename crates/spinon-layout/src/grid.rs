@@ -313,6 +313,12 @@ pub(super) fn validate_grid_layout(
             });
         }
         if let GridAutoRows::TrackList(tracks) = &container.auto_rows {
+            if tracks.is_empty() {
+                return Err(LayoutError::InvalidGridTrackList {
+                    node: id,
+                    property: "grid-auto-rows",
+                });
+            }
             validate_tracks(
                 id,
                 "grid-auto-rows",
@@ -321,6 +327,12 @@ pub(super) fn validate_grid_layout(
             )?;
         }
         if let GridAutoColumns::TrackList(tracks) = &container.auto_columns {
+            if tracks.is_empty() {
+                return Err(LayoutError::InvalidGridTrackList {
+                    node: id,
+                    property: "grid-auto-columns",
+                });
+            }
             validate_tracks(
                 id,
                 "grid-auto-columns",
@@ -652,7 +664,11 @@ fn validate_tracks(
     allow_intrinsic: bool,
 ) -> Result<(), LayoutError> {
     if tracks.is_empty() {
-        return Err(LayoutError::InvalidGridTrackList { node, property });
+        return if allow_intrinsic {
+            Ok(())
+        } else {
+            Err(LayoutError::InvalidGridTrackList { node, property })
+        };
     }
     if tracks.len() > GRID_MAX_TRACKS {
         return Err(LayoutError::GridTrackLimitExceeded {
@@ -753,3 +769,7 @@ mod auto_placement_tests;
 #[cfg(test)]
 #[path = "grid_auto_placement/dense_column_tests.rs"]
 mod dense_column_tests;
+
+#[cfg(test)]
+#[path = "grid_auto_placement/track_sizing_tests.rs"]
+mod negative_track_sizing_tests;

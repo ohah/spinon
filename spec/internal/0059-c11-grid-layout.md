@@ -204,8 +204,16 @@ Chrome 155 Rust matrix 13/13과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2
 
 Grid 축의 zero-based normalized track index를 `i`라 할 때, `i >= explicit_track_count`인 양의 implicit track에는 해당 축의 `auto_tracks[(i - explicit_track_count) % auto_tracks.len()]`을 적용한다. 명시적 positive line placement 또는 auto-placement로 늘어난 양의 implicit tracks를 sizing하며 rows와 columns는 각자 authored order와 목록 길이를 사용한다. 현재 10,000-track 제한, fallible Spinon-owned allocation, 오류 시 부분 `LayoutOutput` 미게시 계약을 유지한다.
 
-explicit grid 앞의 negative implicit tracks와 역방향 목록 순환은 지원하지 않고 구체 오류로 거부한다. `grid-template-*` auto-repeat이 있는 container에서 C11.4 typed `grid-auto-*` 목록을 함께 사용하면 해당 조합도 fail-closed한다. `grid-auto-*`의 line names, `repeat()`, unsupported projected values, nested/anonymous/out-of-flow item, full placement/span matrix, WPT 및 전체 C11.4 단계 적합성은 포함하지 않는다.
+PR #375 slice는 explicit grid 앞의 negative implicit tracks와 역방향 목록 순환을 포함하지 않았다. 아래 negative implicit track sizing slice에서 제한 numeric placement를 별도로 다룬다. `grid-template-*` auto-repeat이 있는 container에서 C11.4 typed `grid-auto-*` 목록을 함께 사용하면 해당 조합은 fail-closed한다. `grid-auto-*`의 line names, `repeat()`, unsupported projected values, nested/anonymous/out-of-flow item, full placement/span matrix, WPT 및 전체 C11.4 단계 적합성은 포함하지 않는다.
 
 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 고정 73-scene app matrix를 실행했고, Chrome 155 Agent Browser의 20-case precomparison과 비교했다. overflow surface 표본은 각각 5/5 exact이나 OS compositor 뒤의 pixel equality 증거가 아니다. [구현 계획](../../plan/c11-4-positive-implicit-track-sizing.md) · [실행·artifact 근거와 화면](./evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/README.md) · [PR #375](https://github.com/ohah/spinon/pull/375).
 
 앱 검증용 fixture FFI와 고정 scene payload는 opt-in fixture-test Cargo feature에만 들어간다. [기본/opt-in static library artifact 검사](./evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/ffi-artifact-boundary.md)에서 기본 artifact는 20개 scene ID와 C11.4 FFI symbol이 없고 positive control에는 모두 있음을 확인했다. 내부 계약 숫자 버전 `0.1.0`을 유지한다. C11.4와 C11 상위는 미완료다.
+
+## C11.4 negative implicit track sizing
+
+`RuntimeBlockFlexGridTrackSizingV1`의 numeric negative line은 explicit track 수를 기준으로 signed boundary coordinate로 해석한다. TrackSizing normalizer는 signed occupancy와 row/column auto-placement cursor를 유지하고, 최종 checked extent 뒤에 origin shift를 적용해 Taffy line으로 변환한다. explicit `none`의 단일 경계선, reversed/equal line, span, hidden child 제외, 양·음 방향 `grid-auto-*` 목록 순환을 제한 구현한다. 양수 line이 만드는 positive implicit track의 기존 순환은 유지한다.
+
+축별 expanded track 수는 leading + explicit + trailing 합계 10,000으로 제한한다. 9,999·10,000·10,001 경계는 checked-extent 단위 시험으로 확인한다. Taffy stage trace의 별도 100,000 track-state 예산 때문에 더 낮은 수의 전체 layout도 fail-closed할 수 있으며 10,000-track 전체 layout 성공을 보장하지 않는다. Spinon 소유 vector reservation 실패는 오류로 전파하고 다음 계산의 같은 worker 복구를 검사한다. 이는 Taffy 내부 allocation의 일반 OOM 복구 보장이 아니다.
+
+TrackSizing container에 auto-repeat이 있으면 기존 auto-repeat placement 경로를 유지한다. 이 slice는 negative line과 해당 경로의 교차 동작을 검증하지 않으며 `grid-auto-*` typed list와 auto-repeat의 조합은 계속 거부한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 각 106-scene 실행 및 root overflow surface samples는 [실행 근거](./evidence/c11-4-negative-implicit-track-sizing-2026-10-20/README.md)에 기록한다. overflow pixel은 root interior/edge background와 바깥 item/tail을 검사하고 CSS border stroke는 검사하지 않는다. Chrome 155의 33-case 사전 비교는 이 구현의 독립 기대값 근거이며 Spinon WPT 적합성 결과가 아니다. 이 제한 slice는 공개 CSS/Grid 지원이나 C11.4 완료를 뜻하지 않고 내부 계약 숫자 버전 `0.1.0`을 유지한다.

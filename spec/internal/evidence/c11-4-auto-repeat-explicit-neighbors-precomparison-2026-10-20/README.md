@@ -36,7 +36,27 @@
 
 ![Chrome 155 Agent Browser의 13-case auto-repeat fixture](./chrome155-grid-auto-repeat-explicit-neighbors.png)
 
+![Chrome 155 Agent Browser에서 빈 auto-fit 2-track pattern의 suffix placement](./chrome155-auto-fit-empty-pattern-probe.png)
+
 이 700×920 PNG는 Chrome DOM fixture의 눈으로 확인할 수 있는 화면이다. Spinon 구현 결과나 모바일 surface pixel을 보여주지 않는다.
+
+## Auto-fit 경계 gutter 재확인
+
+2026-10-20 Agent Browser `0.31.1`의 HeadlessChrome `155.0.0.0`에서 별도 [경계 probe](./auto-fit-boundary-probe.html)를 열어 `getComputedStyle().gridTemplateColumns`와 item `getBoundingClientRect()`를 확인했다. 자세한 값은 [관찰 JSON](./chrome155-auto-fit-boundary-observation.json), 화면은 [Agent Browser 캡처](./chrome155-auto-fit-boundary-probe.png)에 보존한다.
+
+| 배치 | Chrome track list | item x 좌표 (root 기준) |
+| --- | --- | --- |
+| repeat 첫 track + suffix item | `20 154 0 0 10px` | `28, 190` |
+| repeat 가운데 track + suffix item | `20 0 154 0 10px` | `28, 190` |
+| repeat 마지막 track + suffix item | `20 0 0 154 10px` | `28, 190` |
+| repeat track만 비우고 suffix item | `20 0 0 0 10px` | `28` |
+| repeat track item만 | `20 154 0 0 10px` | `28` |
+| 2-track pattern, span 2 | `20 126 20 0 0 10px` | `28` |
+| 2-track pattern, 두 번째 repetition item | `20 0 0 154 0 10px` | `28` |
+
+반복 구간 안에 점유 track이 있으면 prefix·suffix 경계 gutter가 각각 `8px`로 남고, 비어 있는 반복 track 사이 gutter는 접힌다. 반복 구간이 모두 비면 suffix 쪽 경계 gutter가 접히지만 prefix 쪽 `8px` gutter는 남는다. 이 세부 차이 때문에 기존 앱 expectation의 `162px` track은 Chrome의 `154px`와 달랐다.
+
+2-track pattern의 완전한 빈 상태도 [추가 probe](./auto-fit-empty-pattern-probe.html)로 확인했다. 반복 track 4개가 모두 `0px`으로 접힌 상태에서 explicit suffix item은 prefix `20px` 다음 `8px` 위치(`x=28px` 또는 `y=28px`)에 놓인다. 이 값은 [관찰 JSON](./chrome155-auto-fit-empty-pattern-observation.json)과 [Agent Browser 화면](./chrome155-auto-fit-empty-pattern-probe.png)에 저장했다. 구현 캡처 검증기는 이때 prefix 쪽 첫 gap을 `8px`, suffix 쪽 경계 gap을 `0px`으로 검사한다.
 
 ## 제한
 

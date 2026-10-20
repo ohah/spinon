@@ -17,7 +17,7 @@ pub(super) struct SceneCase {
     pub(super) items: &'static [TextItemCase],
 }
 
-pub(super) const SCENES: [SceneCase; 20] = [
+pub(super) const SCENES: [SceneCase; 23] = [
     SceneCase {
         scene_id: "row-min-content",
         width: 40,
@@ -368,5 +368,63 @@ pub(super) const SCENES: [SceneCase; 20] = [
         items: &[TextItemCase {
             content: "XX XXXXXXX",
         }],
+    },
+    SceneCase {
+        scene_id: "columns-negative-minmax-track",
+        width: 0,
+        height: 0,
+        border: 1,
+        columns: "40px 60px",
+        rows: "20px",
+        auto_columns: "minmax(20px, max-content) 47px",
+        auto_rows: "20px",
+        auto_flow: "row",
+        auto_columns_count: 2,
+        auto_rows_count: 1,
+        items: &[
+            TextItemCase { content: "XXXXXX" },
+            TextItemCase { content: "X" },
+            TextItemCase { content: "X" },
+        ],
+    },
+    SceneCase {
+        scene_id: "columns-negative-min-content-track",
+        width: 0,
+        height: 0,
+        border: 1,
+        columns: "40px 60px",
+        rows: "20px",
+        auto_columns: "min-content 47px",
+        auto_rows: "20px",
+        auto_flow: "row",
+        auto_columns_count: 2,
+        auto_rows_count: 1,
+        items: &[
+            TextItemCase {
+                content: "XX XXXXX",
+            },
+            TextItemCase { content: "XXXX" },
+            TextItemCase { content: "X" },
+        ],
+    },
+    SceneCase {
+        scene_id: "columns-negative-max-content-track",
+        width: 0,
+        height: 0,
+        border: 1,
+        columns: "40px 60px",
+        rows: "20px",
+        auto_columns: "max-content 47px",
+        auto_rows: "20px",
+        auto_flow: "row",
+        auto_columns_count: 2,
+        auto_rows_count: 1,
+        items: &[
+            TextItemCase {
+                content: "XX XXXXX",
+            },
+            TextItemCase { content: "XXXX" },
+            TextItemCase { content: "X" },
+        ],
     },
 ];

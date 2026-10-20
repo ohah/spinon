@@ -334,7 +334,16 @@ fn auto_fit_definite_minimum_uses_same_repeat_count_on_both_axes() {
             !gutters[7].is_collapsed,
             "{axis} explicit suffix must remain"
         );
-        for internal_index in (2..=14).step_by(2) {
+        let leading_gutter = tracks
+            .iter()
+            .find(|track| track.internal_index == 2)
+            .unwrap();
+        assert!(
+            !leading_gutter.is_collapsed,
+            "{axis} leading explicit-neighbor gutter remains beside an empty auto-fit range"
+        );
+        assert_eq!(leading_gutter.base_size, 8.0);
+        for internal_index in (4..=12).step_by(2) {
             let gutter = tracks
                 .iter()
                 .find(|track| track.internal_index == internal_index)
@@ -345,6 +354,12 @@ fn auto_fit_definite_minimum_uses_same_repeat_count_on_both_axes() {
             );
             assert_eq!(gutter.base_size, 0.0);
         }
+        let trailing_gutter = tracks
+            .iter()
+            .find(|track| track.internal_index == 14)
+            .unwrap();
+        assert!(trailing_gutter.is_collapsed);
+        assert_eq!(trailing_gutter.base_size, 0.0);
     }
 }
 
@@ -520,6 +535,67 @@ fn auto_fit_collapsed_gutters_preserve_explicit_suffix_line_geometry() {
         (output.frames[&id(3)].x, output.frames[&id(3)].y),
         (190.0, 190.0)
     );
+}
+
+#[test]
+fn auto_fit_end_repeat_preserves_leading_gutter_after_prefix_when_all_tracks_collapse() {
+    let repeated = GridTrackSize::MinMax {
+        min: GridTrackMinSizingFunction::LengthPx(40.0),
+        max: GridTrackMaxSizingFunction::Fraction(1.0),
+    };
+    let mut input = grid_input(
+        vec![
+            GridTrackSize::LengthPx(20.0),
+            repeated,
+            GridTrackSize::LengthPx(20.0),
+        ],
+        vec![GridTrackSize::LengthPx(40.0)],
+        0,
+        LayoutGap {
+            column: LayoutLengthPercentage::length(8.0),
+            row: LayoutLengthPercentage::length(8.0),
+        },
+    );
+    input.nodes[0].style.width = LayoutDimension::MaxContent;
+    input.nodes[0].style.min_width = LayoutDimension::Fixed(200.0);
+    input.root_sizing = crate::RootSizingPolicy::ResolveWithin;
+
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::TrackSizing;
+    container.columns_auto_repeat = Some(GridAutoRepeat {
+        mode: GridAutoRepeatMode::AutoFit,
+        start: 1,
+        end: 3,
+    });
+
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+    let trace = output
+        .grid_track_sizing_traces
+        .iter()
+        .find(|trace| trace.node == id(1))
+        .unwrap();
+    let columns = trace
+        .passes
+        .iter()
+        .rev()
+        .find(|pass| pass.axis == LayoutGridTrackSizingAxis::Columns)
+        .unwrap()
+        .stages
+        .iter()
+        .find(|stage| stage.stage == LayoutGridTrackSizingStageKind::Initialize)
+        .unwrap()
+        .tracks
+        .clone();
+    let leading_gutter = columns
+        .iter()
+        .find(|track| track.internal_index == 2)
+        .unwrap();
+
+    assert!(
+        !leading_gutter.is_collapsed,
+        "the leading gutter beside the explicit prefix remains when the end auto-fit range is empty"
+    );
+    assert_eq!(leading_gutter.base_size, 8.0);
 }
 
 #[test]

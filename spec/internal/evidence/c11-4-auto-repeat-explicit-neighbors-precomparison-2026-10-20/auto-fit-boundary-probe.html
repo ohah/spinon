@@ -1,0 +1,26 @@
+<!doctype html>
+<meta charset="utf-8">
+<style>
+html, body { margin: 0; padding: 0; }
+.grid { display: grid; box-sizing: border-box; width: 200px; height: 60px; grid-template-columns: 20px repeat(auto-fit, minmax(40px, 1fr)) 10px; grid-template-rows: 40px; column-gap: 8px; row-gap: 8px; justify-content: start; align-content: start; margin: 0; padding: 0; border: 0; }
+.item { width: 12px; height: 12px; }
+</style>
+<div id="first" class="grid"><i class="item" style="grid-column:2;grid-row:1"></i><i class="item" style="grid-column:5;grid-row:1"></i></div>
+<div id="middle" class="grid"><i class="item" style="grid-column:3;grid-row:1"></i><i class="item" style="grid-column:5;grid-row:1"></i></div>
+<div id="last" class="grid"><i class="item" style="grid-column:4;grid-row:1"></i><i class="item" style="grid-column:5;grid-row:1"></i></div>
+<div id="suffixOnly" class="grid"><i class="item" style="grid-column:5;grid-row:1"></i></div>
+<div id="repeatOnly" class="grid"><i class="item" style="grid-column:2;grid-row:1"></i></div>
+<style>.multi { grid-template-columns: 20px repeat(auto-fit, minmax(40px, 1fr) 20px) 10px; }</style>
+<div id="multiRepeatOnly" class="grid multi"><i class="item" style="grid-column:2;grid-row:1"></i></div>
+<div id="multiSpanTwo" class="grid multi"><i class="item" style="grid-column:2 / span 2;grid-row:1"></i></div>
+<div id="multiSecondRepeat" class="grid multi"><i class="item" style="grid-column:4;grid-row:1"></i></div>
+<style>.multiMin { width: max-content; min-width: 200px; }</style>
+<div id="multiMinSingle" class="grid multi multiMin"><i class="item" style="grid-column:2;grid-row:1"></i></div>
+<div id="multiMinSpanTwo" class="grid multi multiMin"><i class="item" style="grid-column:2 / span 2;grid-row:1"></i></div>
+<div id="multiMinSecondRepeat" class="grid multi multiMin"><i class="item" style="grid-column:4;grid-row:1"></i></div>
+<style>
+body { padding: 8px; font: 12px/1.3 sans-serif; }
+.grid { position: relative; margin: 4px 0 12px; outline: 1px solid #334155; background: #e2e8f0; }
+.grid::after { content: attr(id); position: absolute; left: 210px; top: 2px; padding: 2px 4px; color: #0f172a; background: white; }
+.item { background: #e5484d; }
+</style>

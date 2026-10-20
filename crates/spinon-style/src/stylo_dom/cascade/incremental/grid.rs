@@ -372,8 +372,20 @@ fn computed_grid_tracks(
     allow_intrinsic_tracks: bool,
     allow_auto_repeat: bool,
 ) -> Result<ComputedGridTracks, CssCascadeError> {
-    let GridTemplateComponent::TrackList(list) = component else {
-        return Err(unsupported_grid_value(node, property, serialized));
+    let list = match component {
+        GridTemplateComponent::TrackList(list) => list,
+        GridTemplateComponent::None if allow_intrinsic_tracks => {
+            return Ok(ComputedGridTracks {
+                tracks: Vec::new(),
+                line_names: Vec::new(),
+                auto_repeat: None,
+            });
+        }
+        GridTemplateComponent::None
+        | GridTemplateComponent::Subgrid(_)
+        | GridTemplateComponent::Masonry => {
+            return Err(unsupported_grid_value(node, property, serialized));
+        }
     };
     if list.values.is_empty() {
         return Err(unsupported_grid_value(node, property, serialized));

@@ -122,8 +122,19 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
             ));
         }
 
-        validate_text_style(style_for(styles, handle.id())?, case.scene_id)?;
-        paragraph_styles.insert(handle.id(), ahem_paragraph_style());
+        let font_size = if is_negative_text_case(case.scene_id) {
+            12.0
+        } else {
+            10.0
+        };
+        let negative_text_case = is_negative_text_case(case.scene_id);
+        validate_text_style(
+            style_for(styles, handle.id())?,
+            case.scene_id,
+            font_size,
+            negative_text_case,
+        )?;
+        paragraph_styles.insert(handle.id(), ahem_paragraph_style(font_size));
     }
 
     let mut engine = TextLayoutEngine::new_without_system_fonts();
@@ -176,16 +187,36 @@ fn element_identity(
     Ok((element.local_name().to_owned(), id))
 }
 
+fn is_negative_text_case(scene_id: &str) -> bool {
+    matches!(
+        scene_id,
+        "columns-negative-minmax-track"
+            | "columns-negative-min-content-track"
+            | "columns-negative-max-content-track"
+    )
+}
+
 fn validate_grid_style(
     style: &ComputedElementStyle,
     case: &cases::SceneCase,
 ) -> Result<(), RuntimeLayoutFailure> {
+    let negative_text_case = is_negative_text_case(case.scene_id);
+    let align_content = if negative_text_case {
+        "normal"
+    } else {
+        "start"
+    };
+    let justify_content = if negative_text_case {
+        "normal"
+    } else {
+        "start"
+    };
     for (name, expected) in [
         ("display", "grid"),
         ("box-sizing", "border-box"),
         ("align-items", "normal"),
-        ("align-content", "start"),
-        ("justify-content", "start"),
+        ("align-content", align_content),
+        ("justify-content", justify_content),
         ("grid-template-columns", case.columns),
         ("grid-template-rows", case.rows),
         ("grid-auto-columns", case.auto_columns),
@@ -195,16 +226,24 @@ fn validate_grid_style(
         require_property(style, name, expected, case.scene_id)?;
     }
 
-    if style.layout_dimensions.width != ComputedCssDimension::LengthPx(case.width as f32)
-        || style.layout_dimensions.height != ComputedCssDimension::LengthPx(case.height as f32)
+    let dimensions_match = if negative_text_case {
+        style.layout_dimensions.width == ComputedCssDimension::MaxContent
+            && style.layout_dimensions.height == ComputedCssDimension::MaxContent
+    } else {
+        style.layout_dimensions.width == ComputedCssDimension::LengthPx(case.width as f32)
+            && style.layout_dimensions.height == ComputedCssDimension::LengthPx(case.height as f32)
+    };
+    let expected_gap = if negative_text_case { 3.0 } else { 0.0 };
+    let expected_border = case.border as f32;
+    if !dimensions_match
         || !zero_edges(style.layout_spacing.margin)
         || !zero_edges(style.layout_spacing.padding)
-        || !spacing_is(style.layout_spacing.row_gap, 0.0)
-        || !spacing_is(style.layout_spacing.column_gap, 0.0)
-        || !px_is(style.layout_border.top, case.border as f32)
-        || !px_is(style.layout_border.right, case.border as f32)
-        || !px_is(style.layout_border.bottom, case.border as f32)
-        || !px_is(style.layout_border.left, case.border as f32)
+        || !spacing_is(style.layout_spacing.row_gap, expected_gap)
+        || !spacing_is(style.layout_spacing.column_gap, expected_gap)
+        || !px_is(style.layout_border.top, expected_border)
+        || !px_is(style.layout_border.right, expected_border)
+        || !px_is(style.layout_border.bottom, expected_border)
+        || !px_is(style.layout_border.left, expected_border)
     {
         return Err(unsupported_scene(
             style.node_id,
@@ -227,7 +266,8 @@ fn validate_grid_style(
             ));
         }
     };
-    if grid.columns.len() != 1
+    let expected_column_count = if negative_text_case { 2 } else { 1 };
+    if grid.columns.len() != expected_column_count
         || grid.rows.len() != 1
         || grid.auto_flow != expected_flow
         || grid.columns_auto_repeat.is_some()
@@ -286,18 +326,21 @@ impl AutoTrackValue for ComputedCssGridAutoRows {
 fn validate_text_style(
     style: &ComputedElementStyle,
     scene_id: &str,
+    font_size: f32,
+    negative_text_case: bool,
 ) -> Result<(), RuntimeLayoutFailure> {
-    if (style.font_size_css_px - 10.0).abs() > f32::EPSILON {
+    if (style.font_size_css_px - font_size).abs() > f32::EPSILON {
         return Err(unsupported_scene(style.node_id, scene_id, "font-size"));
     }
+    let font_size_css = if font_size == 12.0 { "12px" } else { "10px" };
+    require_property(style, "font-size", font_size_css, scene_id)?;
+    require_property(style, "line-height", font_size_css, scene_id)?;
     for (name, expected) in [
         ("display", "block"),
         ("box-sizing", "border-box"),
         ("font-family", "Ahem"),
-        ("font-size", "10px"),
         ("font-weight", "400"),
         ("font-style", "normal"),
-        ("line-height", "10px"),
         ("white-space-collapse", "collapse"),
         ("text-wrap-mode", "wrap"),
         ("word-break", "normal"),
@@ -313,11 +356,17 @@ fn validate_text_style(
     ] {
         require_property(style, name, expected, scene_id)?;
     }
+    let min_dimensions_match = if negative_text_case {
+        style.layout_dimensions.min_width == ComputedCssDimension::LengthPx(0.0)
+            && style.layout_dimensions.min_height == ComputedCssDimension::LengthPx(0.0)
+    } else {
+        style.layout_dimensions.min_width == ComputedCssDimension::Auto
+            && style.layout_dimensions.min_height == ComputedCssDimension::Auto
+    };
     if style.layout_dimensions.width != ComputedCssDimension::Auto
         || style.layout_dimensions.height != ComputedCssDimension::Auto
-        || style.layout_dimensions.min_width != ComputedCssDimension::Auto
+        || !min_dimensions_match
         || style.layout_dimensions.max_width != ComputedCssMaxSize::None
-        || style.layout_dimensions.min_height != ComputedCssDimension::Auto
         || style.layout_dimensions.max_height != ComputedCssMaxSize::None
         || !zero_edges(style.layout_spacing.margin)
         || !zero_edges(style.layout_spacing.padding)
@@ -378,11 +427,11 @@ fn unsupported_scene(node_id: NodeId, scene_id: &str, reason: &str) -> RuntimeLa
     )
 }
 
-fn ahem_paragraph_style() -> ParagraphStyle {
+fn ahem_paragraph_style(font_size: f32) -> ParagraphStyle {
     ParagraphStyle {
         font_family: "Ahem".to_owned(),
-        font_size: 10.0,
-        line_height: 10.0,
+        font_size,
+        line_height: font_size,
         line_height_is_normal: false,
         font_weight: 400.0,
         font_style: FontStyleMode::Normal,

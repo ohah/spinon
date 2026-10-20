@@ -180,6 +180,57 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "implicit-min-content-overflow-border", "implicit-calc-column",
             "explicit-track-control", "row-positive-implicit-locked-item",
             "column-positive-implicit-locked-item",
+            "columns-one-negative", "columns-two-negative", "columns-three-negative",
+            "columns-four-negative", "columns-negative-and-positive-cycle",
+            "columns-negative-fixed-single", "columns-zero-track-cycle",
+            "columns-explicit-boundary-span", "columns-reversed-lines-normalize",
+            "columns-negative-line-span", "columns-no-explicit-tracks",
+            "columns-negative-minmax-track", "columns-negative-min-content-track",
+            "columns-negative-max-content-track", "rows-one-negative", "rows-two-negative",
+            "rows-three-negative", "rows-negative-and-positive-cycle",
+            "both-axes-negative-independent-patterns", "hidden-negative-does-not-expand",
+            "negative-column-auto-row-placement", "columns-negative-grid-auto-items",
+            "rows-negative-grid-auto-items", "columns-negative-row-dense-auto-items",
+            "columns-negative-row-sparse-cursor", "columns-negative-row-dense-cursor",
+            "columns-negative-column-flow-auto-items", "columns-negative-column-dense-auto-items",
+            "rows-negative-row-dense-auto-items", "rows-negative-column-flow-auto-items",
+            "rows-negative-column-dense-auto-items", "columns-negative-fixed-root-overflow",
+            "rows-negative-fixed-root-overflow",
+    };
+    private static final String[][] C114_NEGATIVE_TRACK_EXPECTATIONS = {
+            {"columns-one-negative", "189", "22", "47", "20", "4"},
+            {"columns-two-negative", "223", "22", "31", "20", "5"},
+            {"columns-three-negative", "273", "22", "47", "20", "6"},
+            {"columns-four-negative", "273", "22", "31", "20", "6"},
+            {"columns-negative-and-positive-cycle", "273", "22", "31", "20", "6"},
+            {"columns-negative-fixed-single", "185", "22", "37", "20", "4"},
+            {"columns-zero-track-cycle", "161", "22", "0", "20", "3"},
+            {"columns-explicit-boundary-span", "155", "45", "90", "20", "4"},
+            {"columns-reversed-lines-normalize", "223", "22", "81", "20", "4"},
+            {"columns-negative-line-span", "223", "22", "81", "20", "4"},
+            {"columns-no-explicit-tracks", "167", "22", "31", "20", "5"},
+            {"columns-negative-minmax-track", "230", "22", "72", "20", "4"},
+            {"columns-negative-min-content-track", "218", "22", "60", "20", "4"},
+            {"columns-negative-max-content-track", "254", "22", "96", "20", "4"},
+            {"rows-one-negative", "22", "157", "20", "29", "4"},
+            {"rows-two-negative", "22", "177", "20", "17", "5"},
+            {"rows-three-negative", "22", "209", "20", "29", "6"},
+            {"rows-negative-and-positive-cycle", "22", "209", "20", "17", "6"},
+            {"both-axes-negative-independent-patterns", "189", "137", "47", "29", "4"},
+            {"hidden-negative-does-not-expand", "139", "22", "40", "20", "3"},
+            {"negative-column-auto-row-placement", "189", "22", "47", "20", "4"},
+            {"columns-negative-grid-auto-items", "189", "45", "31", "20", "6"},
+            {"rows-negative-grid-auto-items", "22", "177", "20", "17", "6"},
+            {"columns-negative-row-dense-auto-items", "189", "45", "31", "20", "6"},
+            {"columns-negative-row-sparse-cursor", "155", "45", "47", "20", "5"},
+            {"columns-negative-row-dense-cursor", "155", "45", "47", "20", "5"},
+            {"columns-negative-column-flow-auto-items", "189", "45", "31", "20", "6"},
+            {"columns-negative-column-dense-auto-items", "189", "45", "31", "20", "6"},
+            {"rows-negative-row-dense-auto-items", "22", "177", "20", "17", "6"},
+            {"rows-negative-column-flow-auto-items", "45", "157", "20", "17", "6"},
+            {"rows-negative-column-dense-auto-items", "45", "157", "20", "17", "6"},
+            {"columns-negative-fixed-root-overflow", "100", "22", "31", "20", "6"},
+            {"rows-negative-fixed-root-overflow", "22", "100", "20", "17", "6"},
     };
     private static final String[] C131_COMPACT_SURFACE_CASE_IDS = {
             "visible", "clip-x", "clip-y", "clip-both", "clip-margin-padding",
@@ -259,9 +310,34 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
 
+    private static String[] c114NegativeTrackExpectation(String sceneId) {
+        for (String[] expectation : C114_NEGATIVE_TRACK_EXPECTATIONS) {
+            if (expectation[0].equals(sceneId)) return expectation;
+        }
+        return null;
+    }
+
+    private static String c114NegativeTrackRootFrame(String sceneId) {
+        String[] expectation = c114NegativeTrackExpectation(sceneId);
+        return expectation == null ? null
+                : "width=" + expectation[1] + ",height=" + expectation[2];
+    }
+
+    private static String c114NegativeTrackItemFrame(String sceneId) {
+        String[] expectation = c114NegativeTrackExpectation(sceneId);
+        return expectation == null ? null
+                : "width=" + expectation[3] + ",height=" + expectation[4];
+    }
+
+    private static String c114NegativeTrackNodeFrames(String sceneId) {
+        return null;
+    }
+
     private static String c114ExpectedRootFrame(String sceneId) {
         String implicitTrackFrame = c114ImplicitTextRootFrame(sceneId);
         if (implicitTrackFrame != null) return implicitTrackFrame;
+        String negativeTrackFrame = c114NegativeTrackRootFrame(sceneId);
+        if (negativeTrackFrame != null) return negativeTrackFrame;
         String autoFitMinimumSizeFrame = c114AutoFitMinimumSizeRootFrame(sceneId);
         if (autoFitMinimumSizeFrame != null) return autoFitMinimumSizeFrame;
         switch (sceneId) {
@@ -369,6 +445,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ExpectedItemFrame(String sceneId) {
         if (c114IsImplicitTextScene(sceneId)) return "";
+        String negativeTrackFrame = c114NegativeTrackItemFrame(sceneId);
+        if (negativeTrackFrame != null) return negativeTrackFrame;
         String autoFitMinimumSizeItemFrame = c114AutoFitMinimumSizeItemFrame(sceneId);
         if (autoFitMinimumSizeItemFrame != null) return autoFitMinimumSizeItemFrame;
         switch (sceneId) {
@@ -413,7 +491,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "auto-fill-pattern-neighbors":
                 return "width=10,height=40";
             case "auto-fit-fixed-neighbors":
-                return "width=162,height=40";
+                return "width=154,height=40";
             case "auto-fit-empty-neighbors":
             case "auto-fill-max-size-neighbors":
             case "auto-fill-min-size-neighbors":
@@ -803,6 +881,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
         if (c114IsImplicitTextScene(sceneId)) return null;
+        String negativeTrackFrames = c114NegativeTrackNodeFrames(sceneId);
+        if (negativeTrackFrames != null) return negativeTrackFrames;
         String autoFitMinimumSizeNodeFrames = c114AutoFitMinimumSizeNodeFrames(sceneId);
         if (autoFitMinimumSizeNodeFrames != null) return autoFitMinimumSizeNodeFrames;
         switch (sceneId) {
@@ -822,16 +902,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + "1:node=2,x=28,y=28,width=12,height=12]";
             case "both-fit-second-repeat":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
-                        + "1:node=2,x=20,y=20,width=12,height=12]";
+                        + "1:node=2,x=28,y=28,width=12,height=12]";
             case "both-fill-asymmetric":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=266;"
                         + "1:node=2,x=28,y=28,width=12,height=12]";
             case "columns-fit-rows-fill-second-repeat":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
-                        + "1:node=2,x=20,y=109,width=12,height=12]";
+                        + "1:node=2,x=28,y=109,width=12,height=12]";
             case "columns-fill-rows-fit-second-repeat":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=200;"
-                        + "1:node=2,x=109,y=20,width=12,height=12]";
+                        + "1:node=2,x=109,y=28,width=12,height=12]";
             case "auto-fill-two-track-columns-both-190":
             case "auto-fill-two-track-columns-both-200":
             case "auto-fill-two-track-columns-both-342":
@@ -848,7 +928,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + "1:node=2,x=190,y=0,width=10,height=40]";
             case "auto-fit-fixed-neighbors":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=200,height=60;"
-                        + "1:node=2,x=28,y=0,width=162,height=40]";
+                        + "1:node=2,x=28,y=0,width=154,height=40]";
             case "grid-gap-definite-percent":
                 return c114GapNodeFrames("100", "40", "50", "20");
             case "grid-gap-cyclic-percent":
@@ -912,6 +992,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static int c114ExpectedBoxCount(String sceneId) {
         int implicitTrackBoxCount = c114ImplicitTextBoxCount(sceneId);
         if (implicitTrackBoxCount != 0) return implicitTrackBoxCount;
+        String[] negativeTrackExpectation = c114NegativeTrackExpectation(sceneId);
+        if (negativeTrackExpectation != null) return Integer.parseInt(negativeTrackExpectation[5]);
         String autoFitMinimumSizeItemFrame = c114AutoFitMinimumSizeItemFrame(sceneId);
         if (autoFitMinimumSizeItemFrame != null) return autoFitMinimumSizeItemFrame.isEmpty() ? 1 : 2;
         if (sceneId.equals("auto-fit-span-neighbors")) return 3;
@@ -1018,9 +1100,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (itemFrame.isEmpty()) {
             return "node_frames_css_px=[0:node=1,x=0,y=0," + rootFrame + "]";
         }
-        String position = sceneId.contains("-second-repeat-")
-                ? sceneId.contains("-columns-") ? "x=20,y=0" : "x=0,y=20"
-                : sceneId.contains("-columns-") ? "x=28,y=0" : "x=0,y=28";
+        String position = sceneId.contains("-columns-") ? "x=28,y=0" : "x=0,y=28";
         return "node_frames_css_px=[0:node=1,x=0,y=0," + rootFrame
                 + ";1:node=2," + position + ",width=12,height=12]";
     }
@@ -1068,6 +1148,55 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 }
             }
             return edgeInside && borderCovered && edgeOutside && overflow && afterItem;
+        }
+        if ("columns-negative-fixed-root-overflow".equals(sceneId)
+                || "rows-negative-fixed-root-overflow".equals(sceneId)) {
+            if (samples.size() != 5) return false;
+            boolean columns = sceneId.startsWith("columns-");
+            String rootId = "c114-" + sceneId + "-grid";
+            String itemId = "c114-" + sceneId + "-item-5";
+            boolean interior = false;
+            boolean rootEdge = false;
+            boolean exterior = false;
+            boolean overflowItem = false;
+            boolean overflowTail = false;
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                switch (sample.id) {
+                    case "negative-root-interior":
+                        interior = sample.targetNodeId.equals(rootId)
+                                && sample.xCssPx == (columns ? 33 : 10)
+                                && sample.yCssPx == (columns ? 10 : 19);
+                        if (!interior) return false;
+                        break;
+                    case "negative-root-edge":
+                        rootEdge = sample.targetNodeId.equals(rootId)
+                                && sample.xCssPx == (columns ? 0 : 10)
+                                && sample.yCssPx == (columns ? 10 : 0);
+                        if (!rootEdge) return false;
+                        break;
+                    case "negative-root-exterior":
+                        exterior = sample.targetNodeId.equals(rootId)
+                                && sample.xCssPx == (columns ? 150 : 10)
+                                && sample.yCssPx == (columns ? 10 : 100);
+                        if (!exterior) return false;
+                        break;
+                    case "negative-overflow-item":
+                        overflowItem = sample.targetNodeId.equals(itemId)
+                                && sample.xCssPx == (columns ? 250 : 10)
+                                && sample.yCssPx == (columns ? 10 : 195);
+                        if (!overflowItem) return false;
+                        break;
+                    case "negative-overflow-tail":
+                        overflowTail = sample.targetNodeId.equals(rootId)
+                                && sample.xCssPx == (columns ? 273 : 10)
+                                && sample.yCssPx == (columns ? 10 : 209);
+                        if (!overflowTail) return false;
+                        break;
+                    default:
+                        return false;
+                }
+            }
+            return interior && rootEdge && exterior && overflowItem && overflowTail;
         }
         if ("auto-fill-overflow-neighbors".equals(sceneId)) {
             if (samples.size() != 4) return false;
@@ -2090,6 +2219,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         boolean pixelMatrixSceneMatches = c114GridTrackSizingRequested
                 ? ("auto-fill-overflow-neighbors".equals(pixelMatrixSceneId)
                         || "implicit-min-content-overflow-border".equals(pixelMatrixSceneId)
+                        || "columns-negative-fixed-root-overflow".equals(pixelMatrixSceneId)
+                        || "rows-negative-fixed-root-overflow".equals(pixelMatrixSceneId)
                         || "min-content-text-break-all".equals(pixelMatrixSceneId)
                         || "fixed-small-track-overflow".equals(pixelMatrixSceneId)
                         || "column-auto-natural-ratio".equals(pixelMatrixSceneId)
@@ -5577,6 +5708,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return new int[] {16, 24, 32};
             case "overflow-root-background":
                 return new int[] {34, 197, 94};
+            case "negative-root-interior":
+                return new int[] {226, 232, 240};
+            case "negative-root-edge":
+                return new int[] {226, 232, 240};
+            case "negative-root-exterior":
+            case "negative-overflow-tail":
+                return new int[] {0, 0, 0};
+            case "negative-overflow-item":
+                return new int[] {141, 95, 211};
             default:
                 return new int[] {-1, -1, -1};
         }

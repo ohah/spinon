@@ -1,0 +1,20 @@
+{
+  "browser": "HeadlessChrome/155.0.0.0",
+  "agentBrowser": "0.31.1",
+  "date": "2026-10-20",
+  "source": "auto-fit-boundary-probe.html",
+  "itemCoordinates": "CSS pixels relative to each grid border box",
+  "cases": [
+    {"id":"first","columns":"20px 154px 0px 0px 10px","items":[{"x":28,"width":12},{"x":190,"width":12}]},
+    {"id":"middle","columns":"20px 0px 154px 0px 10px","items":[{"x":28,"width":12},{"x":190,"width":12}]},
+    {"id":"last","columns":"20px 0px 0px 154px 10px","items":[{"x":28,"width":12},{"x":190,"width":12}]},
+    {"id":"suffixOnly","columns":"20px 0px 0px 0px 10px","items":[{"x":28,"width":12}]},
+    {"id":"repeatOnly","columns":"20px 154px 0px 0px 10px","items":[{"x":28,"width":12}]},
+    {"id":"multiRepeatOnly","columns":"20px 154px 0px 0px 0px 10px","items":[{"x":28,"width":12}]},
+    {"id":"multiSpanTwo","columns":"20px 126px 20px 0px 0px 10px","items":[{"x":28,"width":12}]},
+    {"id":"multiSecondRepeat","columns":"20px 0px 0px 154px 0px 10px","items":[{"x":28,"width":12}]},
+    {"id":"multiMinSingle","columns":"20px 154px 0px 0px 0px 10px","items":[{"x":28,"width":12}]},
+    {"id":"multiMinSpanTwo","columns":"20px 126px 20px 0px 0px 10px","items":[{"x":28,"width":12}]},
+    {"id":"multiMinSecondRepeat","columns":"20px 0px 0px 154px 0px 10px","items":[{"x":28,"width":12}]}
+  ]
+}

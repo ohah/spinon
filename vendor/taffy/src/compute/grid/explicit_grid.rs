@@ -333,6 +333,16 @@ pub(super) fn initialize_grid_tracks(
                             let auto_repeated_track_count = (repeat.track_count() as usize
                                 * auto_repetition_count as usize)
                                 .min(explicit_track_limit - current_track_index);
+                            let auto_repeat_end = current_track_index + auto_repeated_track_count;
+                            let has_tracks_before_auto_repeat = current_track_index > 0;
+                            let has_tracks_after_auto_repeat =
+                                auto_repeat_end < explicit_track_limit;
+                            let auto_repeat_has_items =
+                                (current_track_index..auto_repeat_end).any(&track_has_items);
+                            let leading_boundary_gutter_index = has_tracks_before_auto_repeat
+                                .then(|| tracks.len().checked_sub(1))
+                                .flatten()
+                                .filter(|index| tracks[*index].kind == GridTrackKind::Gutter);
                             let iter = repeat.tracks().cycle();
                             for track_def in iter.take(auto_repeated_track_count) {
                                 let mut track = GridTrack::new(
@@ -340,18 +350,30 @@ pub(super) fn initialize_grid_tracks(
                                     track_def.max_sizing_function(),
                                 );
                                 let mut gutter = GridTrack::gutter(gap);
+                                let is_first_auto_repeat_track = current_track_index
+                                    == auto_repeat_end - auto_repeated_track_count;
+                                let is_last_auto_repeat_track =
+                                    current_track_index + 1 == auto_repeat_end;
 
-                                // CSS Grid §7.2.3.2 collapses each empty auto-fit track and both
-                                // adjacent gutters. The preceding gutter was emitted with the
-                                // previous track, so collapse it here alongside this track's
-                                // following gutter.
+                                // CSS Grid §7.2.3.2 collapses empty auto-fit tracks and their
+                                // internal gutters. Keep the leading boundary gutter beside an
+                                // explicit prefix, and keep the trailing boundary gutter beside an
+                                // explicit suffix while any track in the repeat range is occupied.
                                 if repeat.count() == RepetitionCount::AutoFit
                                     && !track_has_items(current_track_index)
                                 {
                                     track.collapse();
-                                    gutter.collapse();
+                                    if !(is_last_auto_repeat_track
+                                        && has_tracks_after_auto_repeat
+                                        && auto_repeat_has_items)
+                                    {
+                                        gutter.collapse();
+                                    }
                                     if let Some(previous_gutter) = tracks.last_mut() {
-                                        if previous_gutter.kind == GridTrackKind::Gutter {
+                                        if previous_gutter.kind == GridTrackKind::Gutter
+                                            && !(is_first_auto_repeat_track
+                                                && has_tracks_before_auto_repeat)
+                                        {
                                             previous_gutter.collapse();
                                         }
                                     }
@@ -367,10 +389,13 @@ pub(super) fn initialize_grid_tracks(
                             let is_last = current_track_index == counts.len();
 
                             // An auto-repeat at the end has no following explicit track to absorb its
-                            // final gutter. Collapse the trailing gutter and any trailing empty
-                            // repeated tracks, stopping at the last occupied track.
+                            // final gutter. Collapse the trailing gutter and empty repeated tracks,
+                            // stopping at the last occupied track or the leading boundary gutter.
                             if repeat.count() == RepetitionCount::AutoFit && is_last {
-                                for previous_track in tracks.iter_mut().rev() {
+                                for (index, previous_track) in tracks.iter_mut().enumerate().rev() {
+                                    if Some(index) == leading_boundary_gutter_index {
+                                        break;
+                                    }
                                     if previous_track.kind == GridTrackKind::Track
                                         && !previous_track.is_collapsed
                                     {

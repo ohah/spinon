@@ -261,6 +261,9 @@ fn validate_line_name_count(
     tracks: &[ComputedCssGridTrackSize],
     names: &[Vec<String>],
 ) -> Result<(), StyleLayoutError> {
+    if tracks.is_empty() && names.is_empty() {
+        return Ok(());
+    }
     if tracks.len().checked_add(1) == Some(names.len()) {
         Ok(())
     } else {
