@@ -2,7 +2,7 @@
 
 **상위 원본:** [C11 상태](../spec/STATUS.md#c11-css-grid) · [C11.4 track sizing 계획](./c11-4-grid-track-sizing.md) · [CSS Grid Level 1 §7.2.3.2](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#repeat-notation) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획과 Chrome 155 사전 관찰을 고정했고 계획 검토 20개를 마쳤다. 2026-10-20 definite minimum-size 후속 구현은 별도 20개 실패 관점 검토와 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator의 53-scene 행렬을 통과했다. 실행·화면 근거는 [구현 evidence](../spec/internal/evidence/c11-4-auto-fit-min-size-axis-implementation-2026-10-20/README.md)에 둔다. 이 제한 slice는 C11.4 체크와 공식 완료 수를 바꾸지 않는다.
+**상태:** 계획과 Chrome 155 사전 관찰을 고정했고 계획 검토 20개를 마쳤다. 2026-10-20 definite minimum-size 후속 구현은 별도 20개 실패 관점 검토와 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator의 53-scene 행렬을 통과했다. 실행·화면 근거는 [구현 evidence](../spec/internal/evidence/c11-4-auto-fit-min-size-axis-implementation-2026-10-20/README.md)에 둔다. 구현 변경은 [PR #372](https://github.com/ohah/spinon/pull/372)에 올렸다. 이 제한 slice는 C11.4 체크와 공식 완료 수를 바꾸지 않는다.
 
 **계획 PR diff 검토:** [독립 30개 관점 기록](https://github.com/ohah/spinon/blob/plan/c11-4-autofit-min-size-axis-20261020/spec/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20/pr-diff-review-30.md).
 
