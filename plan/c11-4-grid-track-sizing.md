@@ -189,4 +189,4 @@ negative implicit line, auto-repeat과 typed 목록 결합, nested/anonymous/out
 
 ### 2026-10-20 auto-repeat 뒤 negative line 결합 계획
 
-Negative implicit track을 확장된 auto-repeat explicit grid와 결합하는 단계는 별도 [집중 계획](./c11-4-auto-repeat-negative-lines.md)과 [18-case Chrome 155·독립 규범 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-negative-lines-precomparison-2026-10-20/README.md)로 추적한다. 구현 후보는 repeat count 계산 전 `container.*.len()`으로 negative line을 normalize하는 순서 경계다. 아직 앱/runtime 결합 검증 전이며 C11.4 check와 완료 수를 변경하지 않는다.
+Negative implicit placement와 auto-repeat 및 leading auto-track list의 결합은 별도 [집중 계획](./c11-4-auto-repeat-negative-lines.md)과 [18-case Chrome 155·독립 규범 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-negative-lines-precomparison-2026-10-20/README.md)로 추적한다. 최신 코드 대조에서 일반 normalizer의 pre-expansion count 경로는 auto-repeat 분기에서 호출되지 않음을 확인했다. 현재 구현 후보는 auto-repeat branch의 `grid-auto-*` list 거부와 Taffy Style 변환 누락이며, numeric negative line은 Taffy의 post-expansion count 경로를 회귀로 확인한다. 아직 앱/runtime 결합 검증 전이며 C11.4 check와 완료 수를 변경하지 않는다.

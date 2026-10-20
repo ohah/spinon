@@ -2,6 +2,8 @@
 
 검토 대상은 C11.4 auto-repeat/negative line 집중 계획, 상위 계획 링크, 18-case Chrome oracle fixture와 관찰·validator·증거 문서다. 각 관점은 실패 경로 또는 계약 경계를 달리해 최종 staged diff에서 확인했다.
 
+**정정:** 이 첫 diff 검토는 auto-repeat 분기가 일반 track-sizing normalizer를 우회하는 사실을 놓쳤다. #26의 source-order 확인과 최종 통과 판정은 부정확하므로 이 문서를 유효한 승인 기록으로 사용하지 않는다. 수정된 diff는 [정정 PR diff 검토 30개](./pr-correction-diff-review-30.md)에서 다시 검토한다.
+
 | # | 적대적 관점 | 확인 결과 |
 |---:|---|---|
 | 1 | 계획 PR이 구현 완료나 공식 지원 범위를 암묵적으로 선언하는가 | 계획·Chrome 사전 비교만 완료로 표시하고 runtime·simulator는 미수행이라고 명시한다. C11.4 checkbox와 완료 수도 유지한다. 통과. |

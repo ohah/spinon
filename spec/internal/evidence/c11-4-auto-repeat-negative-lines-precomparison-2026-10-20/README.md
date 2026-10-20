@@ -18,8 +18,9 @@
 - 입력: [fixture](../../../../tests/fixtures/css/c11/grid-auto-repeat-negative-lines-c114-precomparison.html)
 - 환경: macOS 26.5.1 ARM64, Agent Browser 0.31.1, HeadlessChrome 155.0.0.0, viewport 1280×633 CSS px, DPR 1, light color scheme.
 - 출력: [computed tracks와 DOMRect](./chrome155-observation.json), [전체 화면](./chrome155-agent-browser-full.png), [별도 규범 기대값](./spec-derived-expectations.json).
-- [계획 적대 검토 20개](./plan-review-20.md).
-- [계획 PR 최종 diff 적대 검토 30개](./pr-diff-review-30.md).
+- [초기 계획 적대 검토 20개 — 정정으로 무효화](./plan-review-20.md).
+- [초기 계획 PR diff 검토 30개 — 정정으로 무효화](./pr-diff-review-30.md).
+- [정정 계획 재검토 20개](./plan-correction-review-20.md)와 [정정 PR diff 검토 30개](./pr-correction-diff-review-30.md).
 - `mise exec -- node spec/internal/evidence/c11-4-auto-repeat-negative-lines-precomparison-2026-10-20/validate-precomparison.mjs` (Node 24.20.0)는 18개 fixture ID, track count, leading/trailing list cycle, explicit-grid 기준 line 수식, fill mode item 좌표를 대조한다.
 - 입력·출력·validator hash: [`sha256.txt`](./sha256.txt).
 
@@ -29,9 +30,13 @@
 
 `columns-fit-third-repeat-only`에서 Chrome은 computed track을 `20px 0px 0px 154px 10px`으로 반환하고 item x를 prefix 끝에서 8px 뒤에 둔다. W3C 문장은 collapsed track 양옆 gutter도 접도록 한다. 이 관찰은 기존 [auto-fit 축별 계획](../../../../plan/c11-4-auto-fit-min-size-axis.md#2026-10-20-gutter와-fixture-경계-정정)에 기록된 Blink 동작과 일치하는 진단 차이다. validator는 이 auto-fit item frame을 규범 기대값으로 사용하지 않으며, implementation은 규범의 collapse 기준으로 판정한다.
 
-## 구현 전 경계 근거
+## 구현 전 경계 근거와 정정
 
-CSS projection은 track list와 `GridAutoRepeat { start, end, mode }`를 보존하고 [Taffy adapter](../../../../crates/spinon-layout/src/taffy_style/grid.rs)는 이를 Taffy `Repeat` component로 전달한다. 그러나 [TrackSizing placement normalizer](../../../../crates/spinon-layout/src/grid_auto_placement/track_sizing.rs)는 Taffy가 definite axis size에 따른 repetition count를 계산하기 전에 `container.columns.len()`/`container.rows.len()`으로 negative line을 해석한다. 입력 track vector에는 authored repeat pattern이 한 번 들어간다. [vendored Taffy repeat-count calculation](../../../../vendor/taffy/src/compute/grid/explicit_grid.rs)은 이후 layout에서 반복 횟수를 계산한다. 이 순서 차이가 이 후속 계획에서 고정할 구현 후보이며, 이 문서는 아직 Spinon runtime 실패를 주장하지 않는다.
+최신 코드에서 auto-repeat 입력은 [dense placement dispatcher](../../../../crates/spinon-layout/src/grid_auto_placement/dense_column.rs#L32-L59)의 전용 경로로 들어간다. `normalize_auto_repeat_grid_items`는 typed item placement를 변환하지 않고 보존하지만 `GridAutoRows/Columns::TrackList`를 명시 거부한다. 따라서 일반 [track-sizing normalizer](../../../../crates/spinon-layout/src/grid_auto_placement/track_sizing.rs#L34-L70)의 `container.*.len()` negative-line 계산은 auto-repeat 입력에 적용되지 않는다.
+
+[vendored Taffy](../../../../vendor/taffy/src/compute/grid/mod.rs#L337-L423)는 먼저 axis별 auto-repeat count와 expanded explicit track count를 계산하고, 그 count를 `into_origin_zero`에 전달한 뒤 item placement를 실행한다. 이 자료는 negative line 경로가 잘못됐다고 주장하지 않는다. 계획의 첫 가설과 원 PR 적대 검토의 해당 판정은 이 source dispatch를 놓쳐 부정확했으며, 새 [정정 계획 검토](./plan-correction-review-20.md)와 [정정 PR diff 검토](./pr-correction-diff-review-30.md)로 대체한다.
+
+현재 제한 구현 후보는 auto-repeat branch에서 auto track list가 거부되고 [Taffy Style adapter](../../../../crates/spinon-layout/src/taffy_style.rs#L43-L78)도 `grid_auto_rows/columns`를 전달하지 않는다는 점이다. CSS oracle의 18개 입력은 그대로 유효한 Chrome reference다. 후속 회귀는 negative line이 확장 count를 사용하는지 확인한 뒤, Taffy auto-track list를 통해 leading implicit track cycle과 item frame이 spec 및 oracle에 맞는지 검사한다. 아직 Spinon runtime failure는 재현하지 않았다.
 
 ## SHA-256
 
@@ -40,7 +45,9 @@ CSS projection은 track list와 `GridAutoRepeat { start, end, mode }`를 보존�
 82ad06b1afed31116e24a3ff2c995a04ad78957e0d016923ea3dfa8c93a50a72  chrome155-observation.json
 a68f58779b102990c7adb3282f7e06936137ff0e8b273219c8fddb5eb11fd907  spec-derived-expectations.json
 53308206cd197cccced36d84f9b53f42c596761b1e05e102cbb6f862ecbdde77  validate-precomparison.mjs
-685c7e44bf74cdfc6bf1a0dbe26e5f2f3c5873823d666c3d112023901fa4f7e4  plan-review-20.md
-33402b69e39cb7be12f702c52fb582b2b4f60ab94266eba30e33a7c842ee9b3a  pr-diff-review-30.md
+309694382a0c57b30077e08f1b2aab0dcea9258e50ba4c96728ac25d73cabfe0  plan-review-20.md
+03b3afb7486beaec6d63da1b221541cf77917d1e4ce285668c70308c83a17e54  pr-diff-review-30.md
+c665b5efa149ad61750639a2d27adfe0d693f453d513e1894fe3a8ed70e8fed1  plan-correction-review-20.md
+40eed0a74766a6f68d4751d7b97acced63b8ef2a1ed691b887461265b8751e0c  pr-correction-diff-review-30.md
 5327e42af042a57123ed837ac28e0e6c7e15ad8e4eac793a286a74558927aff4  chrome155-agent-browser-full.png
 ```
