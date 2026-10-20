@@ -2,7 +2,7 @@
 
 - **문서 유형:** 구현 계획 · 공식 구현 상태는 [`spec/STATUS.md`](../spec/STATUS.md)에서 관리
 - **상위:** [앱 루트 HTML과 문서 환경 metadata](c04-root-html-document-environment.md), [기본 root HTML runtime](c04-12-root-html-default-rendering.md), [초기 page scale WGPU 변환](c04-12-page-scale-rendering.md)
-- **상태:** 구현과 Android/iOS 시뮬레이터 확인 완료, PR 적대적 diff 검토와 병합 대기. C04.12와 공개 지원 상태는 미완료다.
+- **상태:** 구현·Android/iOS 시뮬레이터 확인·PR 적대적 diff 검토 완료. [PR #388](https://github.com/ohah/spinon/pull/388)은 2026-10-20 11:17:38 UTC에 Rebase and merge 됐고 merge SHA는 `6c70bdda6270721f06c0374722211480a948878b`다. 병합 시 PR check rollup은 비어 있었고 필수 status check는 설정되어 있지 않았다. C04.12와 공개 지원 상태는 미완료다. [Tailnet 미리보기 갱신 근거](../spec/internal/evidence/c04-12-root-html-page-scale-tailnet-sync-2026-10-20/README.md).
 - **계획 실패 검토:** [독립 관점 20개](../spec/internal/evidence/c04-12-root-html-page-scale-runtime-plan-review-20-2026-10-20.md)
 - **구현 실패 검토:** [새로운 독립 관점 20개](../spec/internal/evidence/c04-12-root-html-page-scale-runtime-2026-10-20/implementation-review-20.md)
 
@@ -52,7 +52,7 @@ CSS viewport 값은 root HTML environment report와 대조한다. iPhone의 정�
 
 - root HTML default GPU host가 environment snapshot의 revision·DPR·`page_scale`을 같은 revision의 render scene에 publication 전에 적용한다. CSS layout, media query, hit-test frame, Canvas clear, surface 크기는 CSS/physical 기준을 각각 유지한다.
 - Android API 37 ARM64 AVD와 iPhone 17 Pro Max/iOS 26.2 Simulator에서 default, scale 0.5, scale 2, fixed width 500 사례를 확인했다. 두 플랫폼의 화면 pixel bounds, surface clear 표본, scale 2의 surface-edge clipping과 실제 HTML source hash는 [분석 기록](../spec/internal/evidence/c04-12-root-html-page-scale-runtime-2026-10-20/simulator-pixel-analysis.md)에 있다.
-- focused Rust tests 5개, 기존 RuntimeRender page-scale test 1개, WGPU geometry/readback/glyph/image page-scale tests 6개, 제품 feature build, fixture feature Clippy, format, Android/iOS Simulator app builds가 통과했다. 구현 실패 관점 20개 검토도 끝났다. 전체 PR diff의 별도 30개 검토, PR checks, rebase merge는 남아 있다.
+- focused Rust tests 5개, 기존 RuntimeRender page-scale test 1개, WGPU geometry/readback/glyph/image page-scale tests 6개, 제품 feature build, fixture feature Clippy, format, Android/iOS Simulator app builds가 통과했다. 구현 실패 관점 20개 및 별도 PR diff 30개 검토를 마쳤다. PR #388은 2026-10-20 11:17:38 UTC에 Rebase and merge 됐고 merge SHA는 `6c70bdda6270721f06c0374722211480a948878b`다. 병합 시 PR check rollup은 비어 있었고 필수 status check는 설정되어 있지 않았다.
 
 ## 완료 판정과 한계
 

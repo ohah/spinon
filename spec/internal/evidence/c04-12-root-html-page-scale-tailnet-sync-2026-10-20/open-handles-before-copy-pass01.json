@@ -1,0 +1,40 @@
+{
+  "pass": "pass01",
+  "preview_root_relative": "SpinonPreview",
+  "checked_path_count": 105,
+  "open_selected_path_count": 4,
+  "open_selected_paths": [
+    "internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20/plan-review-20.html",
+    "internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/pr-diff-review-30.html",
+    "internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/pr-diff-review-30.html",
+    "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html"
+  ],
+  "descriptors": [
+    {
+      "pid": "1191",
+      "command": "node",
+      "fd": "584",
+      "path": "internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20/plan-review-20.html"
+    },
+    {
+      "pid": "1191",
+      "command": "node",
+      "fd": "655",
+      "path": "internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/pr-diff-review-30.html"
+    },
+    {
+      "pid": "1191",
+      "command": "node",
+      "fd": "663",
+      "path": "internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/pr-diff-review-30.html"
+    },
+    {
+      "pid": "1191",
+      "command": "node",
+      "fd": "673",
+      "path": "spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html"
+    }
+  ],
+  "lsof_exit_status": 1,
+  "replacement_method": "write a same-directory temporary file and atomically rename it over the target"
+}
