@@ -1,0 +1,11 @@
+serial=R5KYB06SMPE
+model=SM-S731N
+android_release=16
+api_level=36
+screen_size=1080x2340
+density=450
+qemu=0
+surfaceflinger_renderer=GLES: Samsung Electronics Co., Ltd., ANGLE ((Samsung Xclipse 940) on Vulkan 1.3.279), OpenGL ES 3.2 Driver version: 24.1.307 git hash: 86f99cfe6317
+apk_sha256=191f7457528f8691c3d0d03b1d8b28887a7172939a077b80e4d4b79fe4625224
+installed_base_apk_sha256=191f7457528f8691c3d0d03b1d8b28887a7172939a077b80e4d4b79fe4625224
+source_commit=f086e54519647d51fd44c205b18fb9436099218c
