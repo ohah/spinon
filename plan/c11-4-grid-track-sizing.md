@@ -200,3 +200,7 @@ Negative implicit placement와 auto-repeat 및 leading auto-track list의 제한
 ### 2026-10-21 typed implicit track Android 실기기 후속
 
 기존 typed implicit `grid-auto-columns`·`grid-auto-rows` 14-scene fixture를 Samsung SM-S731N Android 16/API 36에서 다시 실행했다. scene별 Columns/Rows 최종 track과 node frame을 oracle-검증 Android API 37 ARM64 AVD 결과에 대조했으며, 1/64 CSS px 기준 14/14 통과했다(최대 track 차이 0 CSS px, 최대 frame 차이 0.000006 CSS px). trace chunk 14/14 완전성, frame marker와 draw/present도 확인했다. 별도 `implicit-min-content-overflow-border` 장면에서는 Android 표면 PixelCopy 경계 표본 5/5가 기대 RGBA와 일치했다. 상세 기기·APK 정보, 전체 trace와 실기기 화면은 [실기기 evidence](../spec/internal/evidence/c11-4-typed-implicit-physical-android-2026-10-21/README.md)에 있다. 이 후속은 기존 typed track 제한 범위의 실기기 확인이며 C11.4 전체, WPT, 모든 border stroke 또는 공개 CSS 지원 완료를 뜻하지 않는다.
+
+### 2026-10-21 direct-leaf text multi-span 후속 계획
+
+기존 C11.4 text fixture adapter가 Grid root당 한 direct-leaf text item만 받는 범위를 좁혀, Ahem direct text item 2~3개의 겹치는 span-2와 span-2/3 contribution을 검증하는 계획을 추가했다. Chrome 155 사전 oracle 네 scene과 §11.5.1 독립 기대값은 [계획](./c11-4-text-multispan-contributions.md) 및 [precomparison evidence](../spec/internal/evidence/c11-4-text-multispan-precomparison-2026-10-21/README.md)에 고정했다. 구현과 Android physical/AVD·iOS Simulator 실행은 아직 하지 않았으며 C11.4 체크와 공식 완료 수는 그대로다.

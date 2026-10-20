@@ -8,6 +8,10 @@
 
 [Samsung SM-S731N Android 16/API 36의 14-scene track·frame 비교, 전체 trace, PixelCopy overflow 5/5, APK hash와 화면](./evidence/c11-4-typed-implicit-physical-android-2026-10-21/README.md). 기존 opt-in fixture의 실기기 재검증이며 공개 CSS 지원이나 C11.4 전체 완료는 아니다.
 
+## C11.4 direct-leaf text multi-span 후속 계획 · 2026-10-21
+
+[집중 계획](../../plan/c11-4-text-multispan-contributions.md) · [Chrome 155 네 scene·Ahem intrinsic 폭 사전 비교](./evidence/c11-4-text-multispan-precomparison-2026-10-21/README.md). 계획과 사전 oracle만 준비됐으며 구현, Android physical/AVD 및 iOS Simulator는 아직 실행하지 않았다. C11.4 체크와 공식 완료 수를 유지한다.
+
 ## C11.4 positive implicit auto-track 목록 · PR #375
 
 [구현 계획](https://github.com/ohah/spinon/blob/main/plan/c11-4-positive-implicit-track-sizing.md) · [Chrome 155 사전 비교·Android API 37 AVD·iPhone 17 Pro iOS 26.2 Simulator 73-scene 근거](./evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/README.md) · [구현 검토 20개](./evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/implementation-review-20.md) · [구현 PR diff 검토 30개](./evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/pr-diff-review-30.md) · [roadmap 후속 문서 diff 검토 30개](./evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/roadmap-pr-diff-review-30.md) · [기본/opt-in FFI artifact 경계](./evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/ffi-artifact-boundary.md). [PR #375](https://github.com/ohah/spinon/pull/375)은 `e01f0dfc386e5d77ad0cdf8fb3e3b11df40696f8`로 Rebase and merge했다. C11.4 `RuntimeBlockFlexGridTrackSizingV1`의 `grid-auto-rows/columns` typed 목록을 positive implicit track에만 순환 적용한다. negative implicit track, auto-repeat과의 조합, WPT와 C11.4 전체는 미완료이며 공식 C11.4 check와 완료 수는 그대로다.
