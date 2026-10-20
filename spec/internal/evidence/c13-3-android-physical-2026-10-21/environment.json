@@ -1,0 +1,25 @@
+{
+  "capturedUtc": "2026-10-20T20:19:09.600Z",
+  "serial": "R5KYB06SMPE",
+  "model": "SM-S731N",
+  "release": "16",
+  "sdk": "36",
+  "size": "Physical size: 1080x2340",
+  "density": "Physical density: 450",
+  "apk": {
+    "path": "/Users/yoonhb/Documents/workspace/spinon/platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+    "sha256": "50c92c4890d5b3bca69c5cf69f241950fcf261f981eca9b4855dc0ccea9922c7",
+    "installedPath": "/data/app/~~Z2d90Zu1nCgOIejDgukEog==/dev.spinon.bootstrap-h5lKE-p6kRN6CnZyvGMYnQ==/base.apk",
+    "installedSha256": "50c92c4890d5b3bca69c5cf69f241950fcf261f981eca9b4855dc0ccea9922c7"
+  },
+  "gpu": {
+    "renderer": "samsung",
+    "hardware": "s5e9945",
+    "gpu": "s5e9945"
+  },
+  "adbDevices": [
+    "R5KYB06SMPE            device usb:0-1 product:r13sksx model:SM_S731N device:r13s transport_id:12"
+  ],
+  "testMode": "Physical handset with ADB-generated input; synthetic MotionEvent, not human raw touch.",
+  "sourceHead": "ceb3ef5272b456c2ecd66a59b5ba9a5c6d3c0045"
+}

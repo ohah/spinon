@@ -1,0 +1,222 @@
+{
+  "schema": "spinon-c133-android-physical-gesture-check-v1",
+  "capturedUtc": "2026-10-20T20:19:18.300Z",
+  "sourceHead": "ceb3ef5272b456c2ecd66a59b5ba9a5c6d3c0045",
+  "serial": "R5KYB06SMPE",
+  "model": "SM-S731N",
+  "release": "16",
+  "sdk": "36",
+  "displaySize": {
+    "width": 1080,
+    "height": 2340
+  },
+  "nativeTouchSlopPx": 23,
+  "apkSha256": "50c92c4890d5b3bca69c5cf69f241950fcf261f981eca9b4855dc0ccea9922c7",
+  "mode": "ADB shell input swipe on physical handset; Android MotionEvent synthetic input, not raw touchscreen contact.",
+  "rendererEvidence": [
+    "I/SpinonBootstrap( 4783): SPINON_C0410_RENDERER=backend=Vulkan device=Samsung Xclipse 940 format=Rgba8Unorm size=1125x675 selection=auto"
+  ],
+  "pixelBoundary": {
+    "visibleSurface": {
+      "left": 0,
+      "top": 941,
+      "right": 1080,
+      "bottom": 1616
+    },
+    "rootScrollport": {
+      "left": 23,
+      "top": 986,
+      "right": 1058,
+      "bottom": 1571
+    },
+    "outsideCompared": 123525,
+    "changedInside": 87204,
+    "changedOutside": 0,
+    "changedBounds": {
+      "left": 180,
+      "top": 1087,
+      "right": 518,
+      "bottom": 1368
+    }
+  },
+  "positive": {
+    "scenario": 1,
+    "bounds": {
+      "left": -22,
+      "top": 941,
+      "width": 1125,
+      "height": 675,
+      "scale": 2.8125,
+      "line": "I/SpinonBootstrap( 4783): SPINON_C133_SURFACE_BOUNDS phase=ready screen_px=-22,941 size_px=1125x675"
+    },
+    "surfaceClippedByDisplay": true,
+    "offscreenPhysicalPixels": {
+      "left": 22,
+      "top": 0,
+      "right": 23,
+      "bottom": 0
+    },
+    "startCss": {
+      "x": 150,
+      "y": 150
+    },
+    "endCss": {
+      "x": 150,
+      "y": 60
+    },
+    "startScreen": {
+      "x": 400,
+      "y": 1363
+    },
+    "endScreen": {
+      "x": 400,
+      "y": 1110
+    },
+    "startedUtc": "2026-10-20T20:19:11.004Z",
+    "finishedUtc": "2026-10-20T20:19:11.583Z",
+    "inputCommand": [
+      "adb",
+      "-s",
+      "R5KYB06SMPE",
+      "shell",
+      "input",
+      "swipe",
+      "400",
+      "1363",
+      "400",
+      "1110",
+      "500"
+    ],
+    "initialOffsets": {
+      "revision": 1,
+      "root": [
+        0,
+        0
+      ],
+      "outer": [
+        0,
+        0
+      ],
+      "inner": [
+        86,
+        106
+      ]
+    },
+    "finalOffsets": {
+      "revision": 28,
+      "root": [
+        0,
+        0
+      ],
+      "outer": [
+        0,
+        88.42639
+      ],
+      "inner": [
+        86,
+        106
+      ]
+    },
+    "processedBatchCount": 29,
+    "downSeen": true,
+    "panBeganSeen": true,
+    "upSeen": true,
+    "drawPublishedFinalRevision": true,
+    "screenshotBeforeSha256": "da2f7d157e62c77fb31a3c5e1c7580e124535176ada6c4a9d2c0f1dd0b763462",
+    "screenshotAfterSha256": "3142cea2bba753872ba1e8b05873d14f0248b3b50830d45df1c3f71216534201"
+  },
+  "belowSlop": {
+    "scenario": 0,
+    "bounds": {
+      "left": -22,
+      "top": 941,
+      "width": 1125,
+      "height": 675,
+      "scale": 2.8125,
+      "line": "I/SpinonBootstrap( 4984): SPINON_C133_SURFACE_BOUNDS phase=ready screen_px=-22,941 size_px=1125x675"
+    },
+    "startScreen": {
+      "x": 400,
+      "y": 1363
+    },
+    "endScreen": {
+      "x": 400,
+      "y": 1358
+    },
+    "physicalPixelDistance": 5,
+    "nativeTouchSlopPx": 23,
+    "startedUtc": "2026-10-20T20:19:15.307Z",
+    "finishedUtc": "2026-10-20T20:19:15.922Z",
+    "inputCommand": [
+      "adb",
+      "-s",
+      "R5KYB06SMPE",
+      "shell",
+      "input",
+      "swipe",
+      "400",
+      "1363",
+      "400",
+      "1358",
+      "500"
+    ],
+    "initialOffsets": {
+      "revision": 0,
+      "root": [
+        0,
+        0
+      ],
+      "outer": [
+        0,
+        0
+      ],
+      "inner": [
+        0,
+        0
+      ]
+    },
+    "finalOffsets": {
+      "revision": 0,
+      "root": [
+        0,
+        0
+      ],
+      "outer": [
+        0,
+        0
+      ],
+      "inner": [
+        0,
+        0
+      ]
+    },
+    "belowSlopRejected": true,
+    "pixelBoundary": {
+      "visibleSurface": {
+        "left": 0,
+        "top": 941,
+        "right": 1080,
+        "bottom": 1616
+      },
+      "rootScrollport": {
+        "left": 23,
+        "top": 986,
+        "right": 1058,
+        "bottom": 1571
+      },
+      "outsideCompared": 123525,
+      "changedInside": 0,
+      "changedOutside": 0,
+      "changedBounds": {
+        "left": null,
+        "top": null,
+        "right": 0,
+        "bottom": 0
+      }
+    },
+    "screenshotBeforeSha256": "b22c547338eded2f69d45a848dae7901b45457d5d6d1340145b04bcf7f569c83",
+    "screenshotAfterSha256": "2c30fa229fb27d3ae367d1cb442e9a4273f90d6a6921135d91b1e17c1c34cf58"
+  },
+  "appForegroundAfterRun": true,
+  "failureMarkers": []
+}
