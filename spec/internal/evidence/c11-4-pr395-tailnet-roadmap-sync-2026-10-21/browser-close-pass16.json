@@ -1,0 +1,22 @@
+{
+  "sessions": [
+    {
+      "name": "spinon-tailnet-pr395-pass16",
+      "closed": true,
+      "result": "Browser closed"
+    },
+    {
+      "name": "spinon-tailnet-pr395-pass15",
+      "closed": true,
+      "result": "Browser closed"
+    }
+  ],
+  "agent_browser_daemon": {
+    "pid": 24907,
+    "terminated": true
+  },
+  "process_check": {
+    "pattern": "agent-browser|agent-browser-chrome|remote-debugging-port",
+    "after_close": "no Agent Browser daemon, Chrome session, or remote debugging process remains"
+  }
+}

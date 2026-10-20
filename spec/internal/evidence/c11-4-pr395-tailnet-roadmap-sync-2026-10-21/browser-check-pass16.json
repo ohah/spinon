@@ -1,0 +1,70 @@
+{
+  "success": true,
+  "browser": {
+    "tool": "Agent Browser",
+    "version": "0.31.1",
+    "sessions": [
+      "spinon-tailnet-pr395-pass16",
+      "spinon-tailnet-pr395-pass15"
+    ]
+  },
+  "origin": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "pages": [
+    {
+      "purpose": "roadmap",
+      "title": "스피논 구현 로드맵",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "ready_state": "complete",
+      "counter": "213개 표시 · 공식 완료 72/213",
+      "pr_395_note_visible": true,
+      "c114_checked": false,
+      "pr_395_link_count": 1,
+      "screenshot": "tailnet-roadmap-agent-browser-pass16.png"
+    },
+    {
+      "purpose": "official status ledger",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "ready_state": "complete",
+      "checkbox_rows": 226,
+      "checked_rows": 87,
+      "screenshot": "tailnet-status-agent-browser-pass16.png"
+    },
+    {
+      "purpose": "C11.4 plan",
+      "title": "C11.4 · CSS Grid track sizing 계획 - 스피논 문서",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-grid-track-sizing.html",
+      "ready_state": "complete",
+      "contains_physical_device_evidence": true,
+      "contains_four_of_four_results": true,
+      "contains_remaining_scope": true,
+      "screenshot": "tailnet-plan-agent-browser-pass16.png"
+    },
+    {
+      "purpose": "multi-span evidence",
+      "title": "C11.4 multi-span source-order oracle와 Android 실기기 실행 - 스피논 문서",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-multispan-ordering-physical-android-2026-10-21/README.html",
+      "ready_state": "complete",
+      "contains_android_physical_results": true,
+      "contains_ios_simulator_results": true,
+      "contains_four_of_four_results": true,
+      "android_screenshot_link": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-multispan-ordering-physical-android-2026-10-21/physical-final-span3-before-span2-app-view.png",
+      "ios_screenshot_link": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-multispan-ordering-physical-android-2026-10-21/ios-simulator-c114-multispan-ordering-ios-simulator-20261020T165531254Z-8ec3cd96/span3-before-span2.png",
+      "screenshot": "tailnet-evidence-agent-browser-pass16.png"
+    }
+  ],
+  "images": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-multispan-ordering-physical-android-2026-10-21/physical-final-span3-before-span2-app-view.png",
+      "loaded": true,
+      "width": 1080,
+      "height": 2100
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-multispan-ordering-physical-android-2026-10-21/ios-simulator-c114-multispan-ordering-ios-simulator-20261020T165531254Z-8ec3cd96/span3-before-span2.png",
+      "loaded": true,
+      "width": 1206,
+      "height": 2622
+    }
+  ]
+}
