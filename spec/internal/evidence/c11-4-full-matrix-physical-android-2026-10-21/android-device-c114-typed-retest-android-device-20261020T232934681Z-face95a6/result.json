@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "target": "android-device",
+  "runPrefix": "c114-typed-retest-android-device-20261020T232934681Z-face95a6",
+  "sceneCount": 1,
+  "observations": [
+    {
+      "sceneId": "typed-mixed-cycle",
+      "summary": "10-21 08:29:40.961 28327 28363 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-typed-retest-android-device-20261020T232934681Z-face95a6-0 scene_id=typed-mixed-cycle expected_root_frame= expected_item_frame= status=0 layout=ready boxes=3 generation=1 document_revision=22 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=110,height=110;1:node=2,x=0,y=0,width=27.5,height=16;2:node=4,x=55,y=32,width=20,height=20;3:node=5,x=182.5,y=148,width=0,height=0]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 110,
+          "height": 110
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 27.5,
+          "height": 16
+        },
+        {
+          "order": 2,
+          "node": 4,
+          "x": 55,
+          "y": 32,
+          "width": 20,
+          "height": 20
+        },
+        {
+          "order": 3,
+          "node": 5,
+          "x": 182.5,
+          "y": 148,
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 27.5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 16,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 21,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}
