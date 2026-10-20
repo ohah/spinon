@@ -1,0 +1,76 @@
+{
+  "pass": "pass16",
+  "tool": "Agent Browser",
+  "version": "0.31.1",
+  "origin": "https://macstudio.tailed42f2.ts.net",
+  "routes": [
+    {
+      "path": "/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "pr385_visible": true,
+      "plan_link": "https://github.com/ohah/spinon/blob/main/plan/c11-4-auto-repeat-negative-lines.md",
+      "pr385_local_links_http_200": 4,
+      "screenshot": "tailnet-roadmap-agent-browser-pass16.png"
+    },
+    {
+      "path": "/spinon/STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "pr385_visible": true,
+      "merge_sha_visible": true,
+      "c11_4_checkbox_checked": false,
+      "screenshot": "tailnet-status-agent-browser-pass16.png"
+    },
+    {
+      "path": "/spinon/plan/c11-4-auto-repeat-negative-lines.html",
+      "title": "C11.4 · auto-repeat 뒤 negative line과 leading implicit track 계획 - 스피논 문서",
+      "pr385_visible": true
+    },
+    {
+      "path": "/spinon/internal/0059-c11-grid-layout.html",
+      "title": "0059 · C11 Grid 레이아웃 내부 계약 - 스피논 문서",
+      "pr385_visible": true,
+      "version_0_1_0_visible": true,
+      "124_scene_result_visible": true
+    },
+    {
+      "path": "/spinon/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/README.html",
+      "title": "C11.4 Negative implicit track sizing evidence - 스피논 문서",
+      "images": [
+        {
+          "alt": "Android auto-fill negative and positive implicit tracks outside the root",
+          "loaded": true,
+          "natural_width": 1080,
+          "natural_height": 2400
+        },
+        {
+          "alt": "iOS auto-fill negative and positive implicit tracks outside the root",
+          "loaded": true,
+          "natural_width": 1206,
+          "natural_height": 2622
+        }
+      ],
+      "screenshot": "tailnet-implementation-evidence-agent-browser-pass16.png"
+    },
+    {
+      "path": "/spinon/internal/evidence/c11-4-auto-repeat-negative-lines-docs-sync-2026-10-20/README.html",
+      "title": "C11.4 PR #385 문서·로드맵 동기화 근거 - 스피논 문서",
+      "20_and_30_review_links_visible": true,
+      "screenshot": "tailnet-docs-sync-evidence-agent-browser-pass16.png"
+    },
+    {
+      "path": "https://github.com/ohah/spinon/blob/main/plan/c11-4-auto-repeat-negative-lines.md",
+      "title": "spinon/plan/c11-4-auto-repeat-negative-lines.md at main · ohah/spinon · GitHub",
+      "page_loaded": true
+    }
+  ],
+  "served_files": {
+    "http_200": 1611,
+    "sha256_matches": 1611,
+    "mismatches": 0
+  },
+  "session": "spinon-c114-tailnet-pass16-20261020",
+  "session_closed": true,
+  "close_all_requested": true,
+  "daemon_pid_before_close": 77078,
+  "agent_browser_processes_after_close": 0
+}
