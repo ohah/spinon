@@ -2,6 +2,8 @@
 
 **대상:** 수정한 auto-repeat/leading implicit auto-track 계획과 code-path 근거. 초기 계획 검토 20개의 잘못된 dispatch 가설을 재사용하지 않고, 변경된 실패 경계와 해결 방법을 검토했다.
 
+**후속 정정:** 이 검토는 Taffy의 post-expansion line 처리만 확인하고 Spinon이 양축 repeat의 secondary axis를 `resolve_axis`로 먼저 처리하는 경로를 놓쳤다. 판정은 superseded이며 [새 축 분류 계획 검토 20개](./plan-axis-classification-review-20.md)로 대체한다.
+
 | # | 새 실패 관점 | 확인 및 반영 |
 |---:|---|---|
 | 1 | 일반 track-sizing normalizer를 auto-repeat 입력의 경로로 착각하는 경우 | dense dispatcher의 auto-repeat 분기와 일반 normalizer 분기를 나눠 문서에 적었다. 초기 가설은 superseded로 표시했다. 통과. |

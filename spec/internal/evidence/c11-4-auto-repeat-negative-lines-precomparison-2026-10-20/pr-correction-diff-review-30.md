@@ -2,6 +2,8 @@
 
 **검토 범위:** 수정된 계획, 상위 계획 링크, 구현 전 code-path 근거, 초기 검토 판정의 무효화 기록, Chrome oracle의 기존 18-case 자료와 SHA index. 이번 기록은 auto-repeat branch dispatch를 다시 소스와 대조했다.
 
+**후속 정정:** 이 검토는 one-axis Taffy line path를 양축 repeat에도 일반화해 secondary-axis pre-resolution을 놓쳤다. 판정은 superseded이며 [새 축 분류 PR diff 검토 30개](./pr-axis-classification-diff-review-30.md)로 대체한다.
+
 | # | 독립 실패 관점 | 확인 결과 |
 |---:|---|---|
 | 1 | 문서가 일반 normalizer를 auto-repeat 분기에도 적용되는 것처럼 기술하는가 | 전용 `normalize_auto_repeat_grid_items` 분기를 분명히 쓰고 일반 normalizer 주장을 제거했다. 통과. |
