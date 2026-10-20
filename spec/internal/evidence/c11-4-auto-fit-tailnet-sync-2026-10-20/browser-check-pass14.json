@@ -1,0 +1,54 @@
+{
+  "pass": "pass14",
+  "origin": "https://macstudio.tailed42f2.ts.net",
+  "agent_browser_version": "0.31.1",
+  "chrome_version": "155.0.8059.85 arm64",
+  "routes": [
+    {
+      "path": "/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "auto_fit_plan_link": "/spinon/plan/c11-4-auto-fit-min-size-axis.html",
+      "precomparison_link": "/spinon/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20/README.html",
+      "same_origin_links_outside_spinon_base": 0,
+      "screenshot": "tailnet-roadmap-agent-browser-pass14.png",
+      "screenshot_size_px": [1600, 1500]
+    },
+    {
+      "path": "/spinon/STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "c11_4_checkbox_checked": false,
+      "auto_fit_plan_link_present": true,
+      "same_origin_links_outside_spinon_base": 0,
+      "screenshot": "tailnet-status-agent-browser-pass14.png",
+      "screenshot_size_px": [1600, 1500]
+    },
+    {
+      "path": "/spinon/plan/c11-4-auto-fit-min-size-axis.html",
+      "title": "C11.4 · definite minimum-size에서 축별 auto-fit 반복 수 계획 - 스피논 문서",
+      "normative_acceptance_section_present": true,
+      "same_origin_links_outside_spinon_base": 0,
+      "broken_images": 0,
+      "screenshot": "tailnet-plan-agent-browser-pass14.png",
+      "screenshot_size_px": [1600, 1500]
+    },
+    {
+      "path": "/spinon/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20/README.html",
+      "title": "C11.4 definite minimum-size auto-fit 축 차이 사전 비교 - 스피논 문서",
+      "chrome_reference_disclaimer_present": true,
+      "screenshot_links": 2,
+      "broken_images": 0,
+      "same_origin_links_outside_spinon_base": 0,
+      "screenshot": "tailnet-precomparison-agent-browser-pass14.png",
+      "screenshot_size_px": [1600, 1500]
+    }
+  ],
+  "served_file_verification": {
+    "target_count": 1543,
+    "http_200_and_byte_sha256_matched": 1543,
+    "mismatch_count": 0
+  },
+  "limits": [
+    "Tailnet document pages only; not Android or iOS app behavior",
+    "No WPT, physical device, hardware GPU, or compositor-after pixel claim"
+  ]
+}

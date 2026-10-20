@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, '../../../..');
 const run = process.argv[2];
-if (!['pass6', 'pass7', 'pass8', 'pass9', 'pass11', 'pass12', 'pass13'].includes(run)) throw new Error('usage: node prepare-selected-root.mjs pass6|pass7|pass8|pass9|pass11|pass12|pass13');
+if (!['pass6', 'pass7', 'pass8', 'pass9', 'pass11', 'pass12', 'pass13', 'pass14'].includes(run)) throw new Error('usage: node prepare-selected-root.mjs pass6|pass7|pass8|pass9|pass11|pass12|pass13|pass14');
 
 const specRoot = path.join(repoRoot, 'spec');
 const outputRoot = path.join(repoRoot, 'build/spinon', `c11-4-image-tailnet-root-${run}`);
@@ -138,7 +138,7 @@ if (run === 'pass9') {
     selected.push([relative, `internal/evidence/c11-4-image-tailnet-preview-update-2026-10-20/${name}`]);
   }
 }
-if (['pass11', 'pass12', 'pass13'].includes(run)) {
+if (['pass11', 'pass12', 'pass13', 'pass14'].includes(run)) {
   const evidence = [
     'c11-4-auto-repeat-neighbors-2026-10-20',
     'c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20',
@@ -151,7 +151,7 @@ if (['pass11', 'pass12', 'pass13'].includes(run)) {
     selected.push([source, `spec/internal/evidence/${name}`]);
   }
 }
-if (['pass12', 'pass13'].includes(run)) {
+if (['pass12', 'pass13', 'pass14'].includes(run)) {
   selected.push(
     ['plan/c11-4-two-axis-auto-repeat.md', 'plan/c11-4-two-axis-auto-repeat.md'],
     ['tests/fixtures/css/c11/grid-auto-repeat-both-axes-c114.html', 'public/tests/fixtures/css/c11/grid-auto-repeat-both-axes-c114.html'],
@@ -210,6 +210,16 @@ if (['pass12', 'pass13'].includes(run)) {
       );
     }
   }
+}
+
+if (run === 'pass14') {
+  const autoFitEvidence = 'spec/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20';
+  selected.push(
+    ['plan/c11-4-auto-fit-min-size-axis.md', 'plan/c11-4-auto-fit-min-size-axis.md'],
+    ['tests/fixtures/css/c11/grid-auto-fit-min-size-axis-c114.html', 'public/tests/fixtures/css/c11/grid-auto-fit-min-size-axis-c114.html'],
+    [autoFitEvidence, 'internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20'],
+    [autoFitEvidence, 'spec/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20'],
+  );
 }
 
 const staticEvidenceExtensions = new Set([
