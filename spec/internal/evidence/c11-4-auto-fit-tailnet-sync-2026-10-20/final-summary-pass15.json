@@ -1,0 +1,60 @@
+{
+  "pass": "pass15",
+  "implementation_pr": {
+    "number": 372,
+    "state": "MERGED",
+    "merge_sha": "9996ee2089eaa4c0e86506af7fcea8f0cec3491c",
+    "merged_at_utc": "2026-10-20T01:18:53Z",
+    "required_status_checks": []
+  },
+  "official_state": {
+    "c11_4_checkbox_checked": false,
+    "roadmap_completed_count": 72,
+    "count_changed_by_this_pr": false
+  },
+  "selected_build": {
+    "rspress": "2.0.22",
+    "selected_source_mappings": 121,
+    "staging_files": 1840,
+    "selected_input_files_sha256": 823,
+    "unique_selected_sources": 71,
+    "build_succeeded": true,
+    "remaining_host_paths": 0
+  },
+  "tailnet_sync": {
+    "origin": "https://macstudio.tailed42f2.ts.net",
+    "base_path": "/spinon/",
+    "server_pid": 1191,
+    "server_restarted": false,
+    "create": 104,
+    "replace": 76,
+    "same": 1391,
+    "backup_sha256_verified": "76/76",
+    "served_http_and_sha256_verified": "1571/1571",
+    "deletes": 0
+  },
+  "agent_browser": {
+    "version": "0.31.1",
+    "routes_opened": 5,
+    "all_content_images_loaded": true,
+    "broken_images": 0,
+    "same_origin_links_outside_base": 0,
+    "roadmap_rendered_done_count": 72,
+    "c11_4_checkbox_checked": false,
+    "own_session_closed": true,
+    "own_session_active_after_close": false,
+    "own_browser_pid_after_close": null,
+    "preexisting_default_session_preserved": true
+  },
+  "simulator_screens_in_tailnet_readme": {
+    "android_api37_arm64_avd": 2,
+    "iphone_17_pro_ios_26_2_simulator": 2,
+    "all_loaded": true
+  },
+  "scope_limits": [
+    "No mobile app build or runtime run in this documentation sync",
+    "No GitHub Pages workflow or gh-pages update",
+    "No physical-device, hardware GPU, WPT, or iOS compositor-after pixel claim"
+  ],
+  "initial_failures_recorded_and_corrected": true
+}

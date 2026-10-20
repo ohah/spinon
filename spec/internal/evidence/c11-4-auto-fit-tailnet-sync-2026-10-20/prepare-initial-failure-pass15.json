@@ -1,0 +1,21 @@
+{
+  "attempt": "initial pass15 preparation",
+  "result": "failed before Tailnet copy",
+  "error": "The four runtime screenshot mappings incorrectly assumed capture directories were nested under the implementation README directory.",
+  "correction": "Pointed the selected screenshot mappings to spec/internal/evidence/c11-4-auto-fit-min-size-axis-2026-10-20, matching the README relative links and Git tree.",
+  "partial_staging_root": "build/spinon/c11-4-auto-fit-minsize-tailnet-root-pass15",
+  "partial_staging_file_count": 1824,
+  "lsof_at_review": "no open handles reported by lsof +D before preservation rename",
+  "partial_staging_disk_kib": 100520,
+  "followup_errors": [
+    {
+      "attempt": "second source preparation",
+      "error": "The iOS runtime screenshot mapping still pointed under the implementation README directory.",
+      "correction": "Mapped Android and iOS captures to their shared sibling runtime evidence directory; final preparation then completed."
+    }
+  ],
+  "preserved_partial_staging_roots": [
+    "build/spinon/c11-4-auto-fit-minsize-tailnet-root-pass15-initial-failure",
+    "build/spinon/c11-4-auto-fit-minsize-tailnet-root-pass15-initial-failure-2"
+  ]
+}
