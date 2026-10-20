@@ -1,0 +1,135 @@
+{
+  "format": "spinon-c11-4-negative-implicit-track-sizing-expectations-v1",
+  "source": "https://www.w3.org/TR/css-grid/#implicit-grids",
+  "sourceSections": [
+    "CSS Grid §7.1 The Explicit Grid",
+    "CSS Grid §7.5 The Implicit Grid",
+    "CSS Grid §7.6 Implicit Track Sizing",
+    "CSS Grid §8.3 Grid Placement",
+    "CSS Grid §8.5 Grid Item Placement Algorithm"
+  ],
+  "rule": "CSS Grid §7.6 assigns the last grid-auto-* list size to the implicit track nearest before the explicit grid, then proceeds backwards. Tracks after the explicit grid start with the first list size and proceed forwards. The authored fixture places tracks from left to right; each negative segment is therefore the list repeated in reverse order.",
+  "cssPixelTolerance": 0.015625,
+  "trackExpectations": [
+    { "id": "columns-one-negative", "columns": [47, 40, 60, 31], "rows": [20] },
+    { "id": "columns-two-negative", "columns": [31, 47, 40, 60, 31], "rows": [20] },
+    { "id": "columns-three-negative", "columns": [47, 31, 47, 40, 60, 31], "rows": [20] },
+    { "id": "columns-four-negative", "columns": [31, 47, 31, 47, 40, 60], "rows": [20] },
+    { "id": "columns-negative-and-positive-cycle", "columns": [31, 47, 40, 60, 31, 47], "rows": [20] },
+    { "id": "columns-negative-fixed-single", "columns": [37, 40, 60, 37], "rows": [20] },
+    { "id": "columns-zero-track-cycle", "columns": [0, 47, 40, 60, 0], "rows": [20] },
+    { "id": "columns-explicit-boundary-span", "columns": [47, 40, 60], "rows": [20, 20] },
+    { "id": "columns-reversed-lines-normalize", "columns": [31, 47, 40, 60, 31], "rows": [20] },
+    { "id": "columns-negative-line-span", "columns": [31, 47, 40, 60, 31], "rows": [20] },
+    { "id": "columns-no-explicit-tracks", "columns": [31, 47, 31, 47], "rows": [20] },
+    { "id": "columns-negative-minmax-track", "columns": [72, 47, 40, 60], "rows": [20] },
+    { "id": "columns-negative-min-content-track", "columns": [60, 47, 40, 60], "rows": [20] },
+    { "id": "columns-negative-max-content-track", "columns": [96, 47, 40, 60], "rows": [20] },
+    { "id": "rows-one-negative", "columns": [20], "rows": [29, 40, 60, 17] },
+    { "id": "rows-two-negative", "columns": [20], "rows": [17, 29, 40, 60, 17] },
+    { "id": "rows-three-negative", "columns": [20], "rows": [29, 17, 29, 40, 60, 17] },
+    { "id": "rows-negative-and-positive-cycle", "columns": [20], "rows": [17, 29, 40, 60, 17, 29] },
+    { "id": "both-axes-negative-independent-patterns", "columns": [47, 40, 60, 31], "rows": [29, 30, 50, 17] },
+    { "id": "hidden-negative-does-not-expand", "columns": [40, 60, 31], "rows": [20] },
+    { "id": "negative-column-auto-row-placement", "columns": [47, 40, 60, 31], "rows": [20] },
+    { "id": "columns-negative-grid-auto-items", "columns": [31, 47, 40, 60], "rows": [20, 20] },
+    { "id": "rows-negative-grid-auto-items", "columns": [20], "rows": [17, 29, 40, 60, 17] },
+    { "id": "columns-negative-row-dense-auto-items", "columns": [31, 47, 40, 60], "rows": [20, 20] },
+    { "id": "columns-negative-row-sparse-cursor", "columns": [47, 40, 60], "rows": [20, 20] },
+    { "id": "columns-negative-row-dense-cursor", "columns": [47, 40, 60], "rows": [20, 20] },
+    { "id": "columns-negative-column-flow-auto-items", "columns": [31, 47, 40, 60], "rows": [20, 20] },
+    { "id": "columns-negative-column-dense-auto-items", "columns": [31, 47, 40, 60], "rows": [20, 20] },
+    { "id": "rows-negative-row-dense-auto-items", "columns": [20], "rows": [17, 29, 40, 60, 17] },
+    { "id": "rows-negative-column-flow-auto-items", "columns": [20, 20], "rows": [17, 29, 40, 60] },
+    { "id": "rows-negative-column-dense-auto-items", "columns": [20, 20], "rows": [17, 29, 40, 60] },
+    { "id": "columns-negative-fixed-root-overflow", "columns": [31, 47, 40, 60, 31, 47], "rows": [20] },
+    { "id": "rows-negative-fixed-root-overflow", "columns": [20], "rows": [17, 29, 40, 60, 17, 29] }
+  ],
+  "geometryExpectations": [
+    {
+      "id": "columns-negative-grid-auto-items",
+      "items": [
+        { "index": 3, "relativeRect": [128, 1, 60, 20] },
+        { "index": 4, "relativeRect": [1, 24, 31, 20] }
+      ]
+    },
+    {
+      "id": "rows-negative-grid-auto-items",
+      "items": [
+        { "index": 3, "relativeRect": [1, 96, 20, 60] },
+        { "index": 4, "relativeRect": [1, 159, 20, 17] }
+      ]
+    },
+    {
+      "id": "columns-negative-row-dense-auto-items",
+      "items": [
+        { "index": 3, "relativeRect": [128, 1, 60, 20] },
+        { "index": 4, "relativeRect": [1, 24, 31, 20] }
+      ]
+    },
+    {
+      "id": "columns-negative-row-sparse-cursor",
+      "items": [
+        { "index": 2, "relativeRect": [51, 24, 40, 20] },
+        { "index": 3, "relativeRect": [94, 24, 60, 20] }
+      ]
+    },
+    {
+      "id": "columns-negative-row-dense-cursor",
+      "items": [
+        { "index": 2, "relativeRect": [51, 1, 40, 20] },
+        { "index": 3, "relativeRect": [94, 1, 60, 20] }
+      ]
+    },
+    {
+      "id": "columns-negative-column-flow-auto-items",
+      "items": [
+        { "index": 3, "relativeRect": [1, 24, 31, 20] },
+        { "index": 4, "relativeRect": [35, 1, 47, 20] }
+      ]
+    },
+    {
+      "id": "columns-negative-column-dense-auto-items",
+      "items": [
+        { "index": 3, "relativeRect": [1, 24, 31, 20] },
+        { "index": 4, "relativeRect": [35, 1, 47, 20] }
+      ]
+    },
+    {
+      "id": "rows-negative-row-dense-auto-items",
+      "items": [
+        { "index": 3, "relativeRect": [1, 96, 20, 60] },
+        { "index": 4, "relativeRect": [1, 159, 20, 17] }
+      ]
+    },
+    {
+      "id": "rows-negative-column-flow-auto-items",
+      "items": [
+        { "index": 3, "relativeRect": [1, 21, 20, 29] },
+        { "index": 4, "relativeRect": [1, 96, 20, 60] }
+      ]
+    },
+    {
+      "id": "rows-negative-column-dense-auto-items",
+      "items": [
+        { "index": 3, "relativeRect": [1, 21, 20, 29] },
+        { "index": 4, "relativeRect": [1, 96, 20, 60] }
+      ]
+    },
+    {
+      "id": "columns-negative-fixed-root-overflow",
+      "fixedGridWidth": 100,
+      "lastItemRightBeyondGrid": 172
+    },
+    {
+      "id": "rows-negative-fixed-root-overflow",
+      "fixedGridHeight": 100,
+      "lastItemBottomBeyondGrid": 108
+    },
+    {
+      "id": "hidden-negative-does-not-expand",
+      "hiddenItemIndex": 0,
+      "display": "none"
+    }
+  ]
+}

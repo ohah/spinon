@@ -1,0 +1,12 @@
+f3fbb4ae61162404cc8ab8dc7c8b49080d353bcf2b40fb1f3c2f1e928ded9cd2  plan/c11-4-negative-implicit-track-sizing.md
+dde30ad36b5d08e65295382858cd65a37b4fbba0a37ab816b804cabe32962e85  plan/c11-4-positive-implicit-track-sizing.md
+292ff6b364319f0d74b31d2dabdfe7086560b65d79b3bc571bbe8815031d7a3e  spec/internal/evidence/c11-4-negative-implicit-track-sizing-plan-review-20-2026-10-20.md
+8acc667d42eeb0c8e675a8ed32ee4558cf1e5e7e1f69264e41bd9baa59c0417d  spec/internal/evidence/c11-4-negative-implicit-track-sizing-pr-diff-review-30-2026-10-20.md
+ec317db44580c9faa32f8d1a5309c9b40238fcfd8dccf38b1d66a346b6bf051c  tests/fixtures/css/c11/grid-negative-implicit-track-sizing-c114-precomparison.html
+b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448  tests/fixtures/resources/c15/Ahem.ttf
+0df68d3aff490e82b52071337917e3504b7964d0453315d3658eb575d2710b23  spec/internal/evidence/c11-4-negative-implicit-track-sizing-precomparison-2026-10-20/README.md
+f38059aa7d9a72d84775634540d2fc8963dcba4d13d1867c694cf0e5a322a7a5  spec/internal/evidence/c11-4-negative-implicit-track-sizing-precomparison-2026-10-20/browser-environment.json
+5691359f1403af6b977cf4585221488ceafac6463a5aa4f96b8bf129f24f95e2  spec/internal/evidence/c11-4-negative-implicit-track-sizing-precomparison-2026-10-20/chrome155-observation.json
+744614ff03edd4d5ece12ef3b06972826c983b6f5cd947a95be9473df3c70004  spec/internal/evidence/c11-4-negative-implicit-track-sizing-precomparison-2026-10-20/chrome155-agent-browser-full.png
+e6ae87a614f8256b41fef1ba790ef88e18c6a9b9f409fea352ec163f5fc12453  spec/internal/evidence/c11-4-negative-implicit-track-sizing-precomparison-2026-10-20/spec-derived-expectations.json
+35fb806c91f21e627bfe61bc76c0b23574f484c10dd37c2f1ac884bcfe8a96c1  spec/internal/evidence/c11-4-negative-implicit-track-sizing-precomparison-2026-10-20/validate-precomparison.mjs

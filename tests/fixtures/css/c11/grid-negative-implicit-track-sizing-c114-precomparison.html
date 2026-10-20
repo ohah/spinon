@@ -1,0 +1,128 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 negative implicit track sizing precomparison</title>
+<style>
+  @font-face {
+    font-family: Ahem;
+    src: url("../../resources/c15/Ahem.ttf") format("truetype");
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 12px;
+    color: #152238;
+    background: #f7f9fc;
+    font: 12px/1 Ahem, monospace;
+  }
+  h1 { margin: 0 0 12px; font: 16px/1.25 system-ui, sans-serif; }
+  #matrix { display: grid; grid-template-columns: repeat(2, max-content); gap: 12px; }
+  .case { min-width: 240px; padding: 6px; border: 1px solid #94a3b8; background: white; }
+  .label { margin-bottom: 5px; font: 10px/1.2 system-ui, sans-serif; }
+  .grid { display: grid; width: max-content; height: max-content; border: 1px solid #111827; background: #e2e8f0; }
+  .item { min-width: 0; min-height: 0; align-self: stretch; justify-self: stretch; overflow: hidden; }
+  .item:nth-child(1) { background: #e63946; }
+  .item:nth-child(2) { background: #2a9d8f; }
+  .item:nth-child(3) { background: #457b9d; }
+  .item:nth-child(4) { background: #f4a261; }
+  .item:nth-child(5) { background: #8d5fd3; }
+  .item:nth-child(6) { background: #e76f51; }
+</style>
+<h1>C11.4 negative implicit grid-auto track pattern matrix</h1>
+<main id="matrix"></main>
+<script>
+  const cases = [
+    { id: "columns-one-negative", columns: "40px 60px", rows: "20px", autoColumns: "31px 47px", autoRows: "20px", items: [{ c: "-4 / -3" }, { c: "-3 / -2" }, { c: "3 / 4" }] },
+    { id: "columns-two-negative", columns: "40px 60px", rows: "20px", autoColumns: "31px 47px", autoRows: "20px", items: [{ c: "-5 / -4" }, { c: "-4 / -3" }, { c: "-3 / -2" }, { c: "3 / 4" }] },
+    { id: "columns-three-negative", columns: "40px 60px", rows: "20px", autoColumns: "31px 47px", autoRows: "20px", items: [{ c: "-6 / -5" }, { c: "-5 / -4" }, { c: "-4 / -3" }, { c: "-3 / -2" }, { c: "3 / 4" }] },
+    { id: "columns-four-negative", columns: "40px 60px", rows: "20px", autoColumns: "31px 47px", autoRows: "20px", items: [{ c: "-7 / -6" }, { c: "-6 / -5" }, { c: "-5 / -4" }, { c: "-4 / -3" }, { c: "-3 / -2" }] },
+    { id: "columns-negative-and-positive-cycle", columns: "40px 60px", rows: "20px", autoColumns: "31px 47px", autoRows: "20px", items: [{ c: "-5 / -4" }, { c: "-4 / -3" }, { c: "-3 / -2" }, { c: "3 / 4" }, { c: "4 / 5" }] },
+    { id: "columns-negative-fixed-single", columns: "40px 60px", rows: "20px", autoColumns: "37px", autoRows: "20px", items: [{ c: "-4 / -3" }, { c: "-3 / -2" }, { c: "3 / 4" }] },
+    { id: "columns-zero-track-cycle", columns: "40px 60px", rows: "20px", autoColumns: "0px 47px", autoRows: "20px", items: [{ c: "-5 / -4" }, { c: "-4 / -3" }, { c: "-3 / -2" }, { c: "3 / 4" }] },
+    { id: "columns-explicit-boundary-span", columns: "40px 60px", rows: "20px", autoColumns: "31px 47px", autoRows: "20px", items: [{ c: "-4 / 2" }, { c: "-3 / -2" }, { c: "2 / 3" }] },
+    { id: "columns-reversed-lines-normalize", columns: "40px 60px", rows: "20px", autoColumns: "31px 47px", autoRows: "20px", items: [{ c: "-3 / -5" }, { c: "-3 / -2" }, { c: "3 / 4" }] },
+    { id: "columns-negative-line-span", columns: "40px 60px", rows: "20px", autoColumns: "31px 47px", autoRows: "20px", items: [{ c: "span 2 / -3" }, { c: "-3 / -2" }, { c: "3 / 4" }] },
+    { id: "columns-no-explicit-tracks", columns: "none", rows: "20px", autoColumns: "31px 47px", autoRows: "20px", items: [{ c: "-3 / -2" }, { c: "-2 / -1" }, { c: "1 / 2" }, { c: "2 / 3" }] },
+    { id: "columns-negative-minmax-track", columns: "40px 60px", rows: "20px", autoColumns: "minmax(20px, max-content) 47px", autoRows: "20px", items: [{ c: "-5 / -4", text: "XXXXXX" }, { c: "-4 / -3", text: "X" }, { c: "-3 / -2" }] },
+    { id: "columns-negative-min-content-track", columns: "40px 60px", rows: "20px", autoColumns: "min-content 47px", autoRows: "20px", items: [{ c: "-5 / -4", text: "XX XXXXX" }, { c: "-4 / -3", text: "XXXX" }, { c: "-3 / -2" }] },
+    { id: "columns-negative-max-content-track", columns: "40px 60px", rows: "20px", autoColumns: "max-content 47px", autoRows: "20px", items: [{ c: "-5 / -4", text: "XX XXXXX" }, { c: "-4 / -3", text: "XXXX" }, { c: "-3 / -2" }] },
+    { id: "rows-one-negative", columns: "20px", rows: "40px 60px", autoColumns: "20px", autoRows: "17px 29px", items: [{ r: "-4 / -3" }, { r: "-3 / -2" }, { r: "3 / 4" }] },
+    { id: "rows-two-negative", columns: "20px", rows: "40px 60px", autoColumns: "20px", autoRows: "17px 29px", items: [{ r: "-5 / -4" }, { r: "-4 / -3" }, { r: "-3 / -2" }, { r: "3 / 4" }] },
+    { id: "rows-three-negative", columns: "20px", rows: "40px 60px", autoColumns: "20px", autoRows: "17px 29px", items: [{ r: "-6 / -5" }, { r: "-5 / -4" }, { r: "-4 / -3" }, { r: "-3 / -2" }, { r: "3 / 4" }] },
+    { id: "rows-negative-and-positive-cycle", columns: "20px", rows: "40px 60px", autoColumns: "20px", autoRows: "17px 29px", items: [{ r: "-5 / -4" }, { r: "-4 / -3" }, { r: "-3 / -2" }, { r: "3 / 4" }, { r: "4 / 5" }] },
+    { id: "both-axes-negative-independent-patterns", columns: "40px 60px", rows: "30px 50px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ c: "-4 / -3", r: "-4 / -3" }, { c: "-3 / -2", r: "-3 / -2" }, { c: "3 / 4", r: "3 / 4" }] },
+    { id: "hidden-negative-does-not-expand", columns: "40px 60px", rows: "20px", autoColumns: "31px 47px", autoRows: "20px", items: [{ c: "-8 / -7", hidden: true }, { c: "-3 / -2" }, { c: "3 / 4" }] },
+    { id: "negative-column-auto-row-placement", columns: "40px 60px", rows: "20px", autoColumns: "31px 47px", autoRows: "17px 29px", items: [{ c: "-4 / -3" }, { c: "-3 / -2", r: "1 / 2" }, { c: "3 / 4" }] },
+    { id: "columns-negative-grid-auto-items", columns: "40px 60px", rows: "20px", autoColumns: "31px 47px", autoRows: "20px", items: [{ c: "-5 / -4" }, { c: "-4 / -3" }, { c: "-3 / -2" }, {}, {}] },
+    { id: "rows-negative-grid-auto-items", columns: "20px", rows: "40px 60px", autoColumns: "20px", autoRows: "17px 29px", items: [{ r: "-5 / -4" }, { r: "-4 / -3" }, { r: "-3 / -2" }, {}, {}] },
+    { id: "columns-negative-row-dense-auto-items", columns: "40px 60px", rows: "20px", autoColumns: "31px 47px", autoRows: "20px", autoFlow: "row dense", items: [{ c: "-5 / -4" }, { c: "-4 / -3" }, { c: "-3 / -2" }, {}, {}] },
+    { id: "columns-negative-row-sparse-cursor", columns: "40px 60px", rows: "20px", autoColumns: "31px 47px", autoRows: "20px", items: [{ c: "-4 / -3" }, { c: "-4 / -3" }, { c: "-3 / -2" }, {}] },
+    { id: "columns-negative-row-dense-cursor", columns: "40px 60px", rows: "20px", autoColumns: "31px 47px", autoRows: "20px", autoFlow: "row dense", items: [{ c: "-4 / -3" }, { c: "-4 / -3" }, { c: "-3 / -2" }, {}] },
+    { id: "columns-negative-column-flow-auto-items", columns: "40px 60px", rows: "20px 20px", autoColumns: "31px 47px", autoRows: "20px", autoFlow: "column", items: [{ c: "-5 / -4", r: "1 / 2" }, { c: "-4 / -3", r: "2 / 3" }, { c: "-3 / -2", r: "1 / 2" }, {}, {}] },
+    { id: "columns-negative-column-dense-auto-items", columns: "40px 60px", rows: "20px 20px", autoColumns: "31px 47px", autoRows: "20px", autoFlow: "column dense", items: [{ c: "-5 / -4", r: "1 / 2" }, { c: "-4 / -3", r: "2 / 3" }, { c: "-3 / -2", r: "1 / 2" }, {}, {}] },
+    { id: "rows-negative-row-dense-auto-items", columns: "20px", rows: "40px 60px", autoColumns: "20px", autoRows: "17px 29px", autoFlow: "row dense", items: [{ r: "-5 / -4" }, { r: "-4 / -3" }, { r: "-3 / -2" }, {}, {}] },
+    { id: "rows-negative-column-flow-auto-items", columns: "20px 20px", rows: "40px 60px", autoColumns: "20px", autoRows: "17px 29px", autoFlow: "column", items: [{ r: "-5 / -4", c: "1 / 2" }, { r: "-4 / -3", c: "2 / 3" }, { r: "-3 / -2", c: "1 / 2" }, {}, {}] },
+    { id: "rows-negative-column-dense-auto-items", columns: "20px 20px", rows: "40px 60px", autoColumns: "20px", autoRows: "17px 29px", autoFlow: "column dense", items: [{ r: "-5 / -4", c: "1 / 2" }, { r: "-4 / -3", c: "2 / 3" }, { r: "-3 / -2", c: "1 / 2" }, {}, {}] },
+    { id: "columns-negative-fixed-root-overflow", width: "100px", columns: "40px 60px", rows: "20px", autoColumns: "31px 47px", autoRows: "20px", items: [{ c: "-5 / -4" }, { c: "-4 / -3" }, { c: "-3 / -2" }, { c: "3 / 4" }, { c: "4 / 5" }] },
+    { id: "rows-negative-fixed-root-overflow", height: "100px", columns: "20px", rows: "40px 60px", autoColumns: "20px", autoRows: "17px 29px", items: [{ r: "-5 / -4" }, { r: "-4 / -3" }, { r: "-3 / -2" }, { r: "3 / 4" }, { r: "4 / 5" }] },
+  ];
+
+  const matrix = document.querySelector("#matrix");
+  for (const testCase of cases) {
+    const section = document.createElement("section");
+    section.className = "case";
+    section.dataset.case = testCase.id;
+    const label = document.createElement("div");
+    label.className = "label";
+    label.textContent = `${testCase.id} · columns=${testCase.columns} rows=${testCase.rows} · auto-columns=${testCase.autoColumns} auto-rows=${testCase.autoRows}`;
+    const grid = document.createElement("div");
+    grid.className = "grid";
+    grid.dataset.grid = testCase.id;
+    grid.style.gridTemplateColumns = testCase.columns;
+    grid.style.gridTemplateRows = testCase.rows;
+    grid.style.gridAutoColumns = testCase.autoColumns;
+    grid.style.gridAutoRows = testCase.autoRows;
+    if (testCase.width) grid.style.width = testCase.width;
+    if (testCase.height) grid.style.height = testCase.height;
+    grid.style.columnGap = testCase.columnGap || "3px";
+    grid.style.rowGap = testCase.rowGap || "3px";
+    grid.style.gridAutoFlow = testCase.autoFlow || "row";
+    for (const [index, placement] of testCase.items.entries()) {
+      const item = document.createElement("div");
+      item.className = "item";
+      item.dataset.item = `${testCase.id}-${index + 1}`;
+      item.textContent = placement.text || "X";
+      if (placement.c) item.style.gridColumn = placement.c;
+      if (placement.r) item.style.gridRow = placement.r;
+      if (placement.hidden) item.style.display = "none";
+      grid.append(item);
+    }
+    section.append(label, grid);
+    matrix.append(section);
+  }
+
+  window.collectNegativeImplicitCases = () => [...document.querySelectorAll(".case")].map(section => {
+    const grid = section.querySelector(".grid");
+    const rect = element => {
+      const box = element.getBoundingClientRect();
+      return { x: box.x, y: box.y, width: box.width, height: box.height };
+    };
+    const style = getComputedStyle(grid);
+    return {
+      id: section.dataset.case,
+      grid: rect(grid),
+      gridTemplateColumns: style.gridTemplateColumns,
+      gridTemplateRows: style.gridTemplateRows,
+      gridAutoColumns: style.gridAutoColumns,
+      gridAutoRows: style.gridAutoRows,
+      columnGap: style.columnGap,
+      rowGap: style.rowGap,
+      items: [...grid.querySelectorAll(".item")].map(item => ({
+        id: item.dataset.item,
+        gridColumn: getComputedStyle(item).gridColumn,
+        gridRow: getComputedStyle(item).gridRow,
+        display: getComputedStyle(item).display,
+        rect: rect(item),
+        text: item.textContent,
+      })),
+    };
+  });
+</script>
