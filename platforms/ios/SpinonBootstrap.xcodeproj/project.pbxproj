@@ -21,6 +21,7 @@
 		100000000000000000000013 /* C131MetalFullSurfacePixelCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000017 /* C131MetalFullSurfacePixelCapture.swift */; };
 		100000000000000000000014 /* C131StackingFullViewportHitGridSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000018 /* C131StackingFullViewportHitGridSummary.swift */; };
 		100000000000000000000015 /* root-html-default-rendering.html in Resources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000019 /* root-html-default-rendering.html */; };
+		100000000000000000000016 /* root-html-page-scale-runtime.html in Resources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000020 /* root-html-page-scale-runtime.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		200000000000000000000017 /* C131MetalFullSurfacePixelCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C131MetalFullSurfacePixelCapture.swift; sourceTree = "<group>"; };
 		200000000000000000000018 /* C131StackingFullViewportHitGridSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C131StackingFullViewportHitGridSummary.swift; sourceTree = "<group>"; };
 		200000000000000000000019 /* root-html-default-rendering.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "../Resources/root-html-default-rendering.html"; sourceTree = "<group>"; };
+		200000000000000000000020 /* root-html-page-scale-runtime.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "../Resources/root-html-page-scale-runtime.html"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				200000000000000000000004 /* SpinonBootstrap-Bridging-Header.h */,
 				200000000000000000000005 /* Info.plist */,
 				200000000000000000000019 /* root-html-default-rendering.html */,
+				200000000000000000000020 /* root-html-page-scale-runtime.html */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -128,7 +131,7 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		300000000000000000000002 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (100000000000000000000015 /* root-html-default-rendering.html in Resources */,); runOnlyForDeploymentPostprocessing = 0; };
+		300000000000000000000002 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (100000000000000000000015 /* root-html-default-rendering.html in Resources */, 100000000000000000000016 /* root-html-page-scale-runtime.html in Resources */,); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */

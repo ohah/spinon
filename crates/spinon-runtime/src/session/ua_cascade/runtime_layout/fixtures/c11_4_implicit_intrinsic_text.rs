@@ -151,10 +151,10 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     }))
 }
 
-fn style_for<'a>(
-    styles: &'a ComputedStyleSnapshot,
+fn style_for(
+    styles: &ComputedStyleSnapshot,
     node_id: NodeId,
-) -> Result<&'a ComputedElementStyle, RuntimeLayoutFailure> {
+) -> Result<&ComputedElementStyle, RuntimeLayoutFailure> {
     styles
         .elements
         .iter()

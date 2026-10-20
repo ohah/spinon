@@ -1,6 +1,7 @@
 use super::{
-    PresentationScenes, RUNTIME_CSS_C12_2_ABSOLUTE_BLOCK_FIXTURE_SOURCE, RuntimeGpuHost,
-    c12_3_fixed_runtime_script, c12_3_fixed_supported_nodes, scene_matches_layout_key,
+    PresentationScenes, RUNTIME_CSS_C12_2_ABSOLUTE_BLOCK_FIXTURE_SOURCE, RootHtmlPageScaleMapping,
+    RuntimeGpuHost, apply_root_html_page_scale, c12_3_fixed_runtime_script,
+    c12_3_fixed_supported_nodes, scene_matches_layout_key,
 };
 use spinon_core::{EnvironmentRevision, HostDocument, StyleRevision};
 use spinon_render::{CssSize, RuntimeRenderKey, RuntimeRenderSnapshot};
@@ -78,6 +79,88 @@ fn new_presentation_sequence_hides_the_old_scene_and_accepts_only_current_publis
 
     assert!(presentation.publish(second, empty_scene()));
     assert_eq!(presentation.sequence(), second);
+}
+
+#[test]
+fn root_html_page_scale_mapping_applies_dpr_and_initial_scale_once() {
+    for (device_scale_factor, page_scale, physical_scale) in
+        [(3.0, 0.5, 1.5), (3.0, 2.0, 6.0), (2.625, 1.0, 2.625)]
+    {
+        let mapping = RootHtmlPageScaleMapping {
+            environment_revision: EnvironmentRevision::INITIAL,
+            device_scale_factor,
+            page_scale,
+        };
+        let (scene, report) =
+            apply_root_html_page_scale(empty_scene(), true, Some(mapping)).unwrap();
+        let transform = scene.page_scale_transform().unwrap();
+        assert_eq!(transform.device_scale_factor(), device_scale_factor);
+        assert_eq!(transform.page_scale(), page_scale);
+        assert_eq!(transform.physical_scale(), physical_scale);
+        assert!(report.contains("page_scale_mapping=true"));
+    }
+}
+
+#[test]
+fn root_html_page_scale_rejects_missing_or_stale_environment_mapping() {
+    assert!(apply_root_html_page_scale(empty_scene(), true, None).is_err());
+
+    let mapping = RootHtmlPageScaleMapping {
+        environment_revision: EnvironmentRevision::INITIAL.checked_next().unwrap(),
+        device_scale_factor: 3.0,
+        page_scale: 2.0,
+    };
+    let error = apply_root_html_page_scale(empty_scene(), true, Some(mapping)).unwrap_err();
+    assert_eq!(error.0, super::ERR_STALE);
+    assert!(error.1.contains("revision 불일치"));
+}
+
+#[test]
+fn root_html_page_scale_does_not_change_legacy_scenes_or_apply_twice() {
+    let legacy = empty_scene();
+    let ignored_mapping = RootHtmlPageScaleMapping {
+        environment_revision: EnvironmentRevision::INITIAL,
+        device_scale_factor: f32::MAX,
+        page_scale: 10.0,
+    };
+    let (legacy, report) =
+        apply_root_html_page_scale(legacy, false, Some(ignored_mapping)).unwrap();
+    assert!(legacy.page_scale_transform().is_none());
+    assert!(report.is_empty());
+
+    let already_scaled = empty_scene().with_page_scale_transform(3.0, 2.0).unwrap();
+    let mapping = RootHtmlPageScaleMapping {
+        environment_revision: EnvironmentRevision::INITIAL,
+        device_scale_factor: 3.0,
+        page_scale: 2.0,
+    };
+    let error = apply_root_html_page_scale(already_scaled, true, Some(mapping)).unwrap_err();
+    assert_eq!(error.0, super::ERR_LAYOUT);
+    assert!(error.1.contains("중복 적용"));
+}
+
+#[test]
+fn root_html_page_scale_rejects_overflowing_physical_scale() {
+    let mapping = RootHtmlPageScaleMapping {
+        environment_revision: EnvironmentRevision::INITIAL,
+        device_scale_factor: f32::MAX,
+        page_scale: 10.0,
+    };
+    let error = apply_root_html_page_scale(empty_scene(), true, Some(mapping)).unwrap_err();
+    assert_eq!(error.0, super::ERR_LAYOUT);
+    assert!(error.1.contains("mapping 생성 실패"));
+}
+
+#[test]
+fn root_html_page_scale_rejects_physical_scale_underflow_to_zero() {
+    let mapping = RootHtmlPageScaleMapping {
+        environment_revision: EnvironmentRevision::INITIAL,
+        device_scale_factor: f32::MIN_POSITIVE,
+        page_scale: f32::MIN_POSITIVE,
+    };
+    let error = apply_root_html_page_scale(empty_scene(), true, Some(mapping)).unwrap_err();
+    assert_eq!(error.0, super::ERR_LAYOUT);
+    assert!(error.1.contains("mapping 생성 실패"));
 }
 
 #[test]
