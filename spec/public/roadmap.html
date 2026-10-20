@@ -269,7 +269,7 @@
     const kanbanBoard = document.getElementById('kanban-board');
     const statusNote = document.getElementById('official-status-note');
     const statusUrl = 'https://api.github.com/repos/ohah/spinon/contents/spec/STATUS.md?ref=main';
-    const execution = { nextOrder:[], inProgress:['C13'], waiting:{ R02:'iOS 실기기 JITless 검증을 위한 기기 연결', R05:'Android 직접 입력 다음 수집 block은 기기 재연결 전까지 보류', R08:'실기기 GPU·접근성·IME 검증을 위한 기기 연결' }, wipLimit:2 };
+    const execution = { nextOrder:[], inProgress:['C13'], waiting:{ R02:'iOS 실기기 JITless 검증을 위한 기기 연결', R05:'Android 실기기 직접 입력 표본을 위한 사용자 터치 입력 대기', R08:'실기기 GPU·접근성·IME 검증을 위한 기기 연결' }, wipLimit:2 };
     let officialStatuses = null;
     const baseTasks = phases.flatMap(phase => phase.tasks.map(([code, title, description]) => ({ code, title, description })));
     let boardTasks = baseTasks;

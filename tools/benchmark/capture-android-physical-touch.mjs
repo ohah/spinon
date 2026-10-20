@@ -41,6 +41,7 @@ export function parseOptions(args) {
     drainSeconds: DEFAULT_DRAIN_SECONDS,
     maxProcessAgeSeconds: DEFAULT_MAX_PROCESS_AGE_SECONDS,
     confirmR05Screen: false,
+    allowExtraEmulators: false,
   };
   const values = new Map([
     ['--adb', 'adb'], ['--serial', 'serial'], ['--pid', 'pid'], ['--event', 'event'],
@@ -53,8 +54,11 @@ export function parseOptions(args) {
 
   for (let index = 0; index < args.length; index += 1) {
     const argument = args[index];
-    if (argument === '--confirm-r05-screen') {
-      options.confirmR05Screen = true;
+    if (argument === '--confirm-r05-screen' || argument === '--allow-extra-emulators') {
+      const key = argument === '--confirm-r05-screen' ? 'confirmR05Screen' : 'allowExtraEmulators';
+      if (seen.has(key)) fail(`옵션을 두 번 지정했습니다: ${argument}`);
+      seen.add(key);
+      options[key] = true;
       continue;
     }
     if (argument === '--help' || argument === '-h') {
@@ -97,11 +101,20 @@ export function parseOptions(args) {
   return options;
 }
 
-export function validateDeviceList(output, expectedSerial) {
-  const entries = output.split(/\r?\n/).slice(1).map((line) => line.trim()).filter(Boolean);
+export function validateDeviceList(output, expectedSerial, allowExtraEmulators = false) {
+  if (/^emulator-\d+$/.test(expectedSerial)) fail('--serial은 Android 실기기여야 합니다');
+  const lines = output.split(/\r?\n/);
+  if (lines.shift()?.trim() !== 'List of devices attached') fail('ADB 기기 목록 header가 올바르지 않습니다');
+  const entries = lines.map((line) => line.trim()).filter(Boolean);
   const devices = entries.map((line) => line.split(/\s+/));
-  if (devices.length !== 1 || devices[0][0] !== expectedSerial || devices[0][1] !== 'device') {
-    fail(`ADB 대상이 하나의 지정된 online 기기와 일치하지 않습니다: ${JSON.stringify(devices.map((row) => row.slice(0, 2)))}`);
+  const selected = devices.filter((row) => row[0] === expectedSerial);
+  const unexpected = devices.filter((row) => row[0] !== expectedSerial
+    && (!allowExtraEmulators || !/^emulator-\d+$/.test(row[0]) || row[1] !== 'device'));
+  const serials = devices.map((row) => row[0]);
+  if (selected.length !== 1 || selected[0][1] !== 'device'
+      || unexpected.length > 0 || new Set(serials).size !== serials.length) {
+    const extraDevicePolicy = allowExtraEmulators ? ' (추가 연결은 online AVD만 허용)' : '';
+    fail(`ADB 대상이 하나의 지정된 online 기기와 일치하지 않습니다${extraDevicePolicy}: ${JSON.stringify(devices.map((row) => row.slice(0, 2)))}`);
   }
 }
 
@@ -263,6 +276,7 @@ async function preflight(options, directory, manifest) {
       maxProcessAgeSeconds: options.maxProcessAgeSeconds,
       hostStopEscalation: ['SIGINT', 'SIGTERM', 'SIGKILL'],
       stopStepTimeoutMs: HOST_STOP_TIMEOUT_MS,
+      allowExtraEmulators: options.allowExtraEmulators,
     },
     host: { platform: process.platform, node: process.version, parentPid: process.ppid },
     collectors: [],
@@ -272,7 +286,7 @@ async function preflight(options, directory, manifest) {
   const devices = deviceList.stdout;
   await writeFile(join(directory, 'adb-devices.txt'), devices);
   if (deviceList.stderr) await writeFile(join(directory, 'adb-devices.stderr'), deviceList.stderr);
-  validateDeviceList(devices, options.serial);
+  validateDeviceList(devices, options.serial, options.allowExtraEmulators);
   const state = await captureCommand(options.adb, options.serial, ['get-state'], directory, 'adb-state.txt');
   if (state.trim() !== 'device') fail(`ADB 기기 상태가 online이 아닙니다: ${state.trim()}`);
 
@@ -655,7 +669,7 @@ export async function captureAndroidPhysicalTouches(options) {
 }
 
 function usage() {
-  return `사용법:\n  mise exec -- node tools/benchmark/capture-android-physical-touch.mjs --serial <ADB serial> --pid <fresh 앱 PID> --event /dev/input/eventN --apk-sha256 <64자리 SHA-256> --out <새 결과 폴더> --confirm-r05-screen\n\nR05 target 화면을 눈으로 확인한 뒤 실행합니다. raw touch와 PID 한정 logcat을 동시에 저장합니다. 첫 입력 전 제한 시간은 60초, 첫 입력 뒤 제한 시간은 60초이며 raw contact ${DEFAULT_CONTACT_LIMIT}개가 완결되면 ${DEFAULT_DRAIN_SECONDS}초 drain 뒤 자동 종료합니다.\n`;
+  return `사용법:\n  mise exec -- node tools/benchmark/capture-android-physical-touch.mjs --serial <ADB serial> --pid <fresh 앱 PID> --event /dev/input/eventN --apk-sha256 <64자리 SHA-256> --out <새 결과 폴더> --confirm-r05-screen [--allow-extra-emulators]\n\nR05 target 화면을 눈으로 확인한 뒤 실행합니다. raw touch와 PID 한정 logcat을 동시에 저장합니다. 첫 입력 전 제한 시간은 60초, 첫 입력 뒤 제한 시간은 60초이며 raw contact ${DEFAULT_CONTACT_LIMIT}개가 완결되면 ${DEFAULT_DRAIN_SECONDS}초 drain 뒤 자동 종료합니다. ADB 추가 연결은 기본 거부하며, --allow-extra-emulators를 지정하면 지정 serial 외의 online emulator-<port>만 허용합니다.\n`;
 }
 
 async function main() {
