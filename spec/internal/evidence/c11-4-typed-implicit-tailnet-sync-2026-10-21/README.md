@@ -25,7 +25,7 @@ PR #399 병합 뒤 공식 상태 대장, C11.4 계획, 내부 색인, 로드맵 
 
 ## Agent Browser 확인
 
-터미널 브라우저는 사용하지 않았다. Agent Browser에서 Tailnet의 로드맵, 공식 상태 대장, C11.4 계획과 Android 실기기 근거 페이지를 열었다. 로드맵에서 14 scene 결과와 PixelCopy 5/5를 확인했고, 상태 대장에서 C11.4 체크가 미완료인 것과 새 실기기 근거 링크를 확인했다. 계획 페이지에도 14/14 결과가 표시됐다. 근거 페이지의 1080×2340 Android 캡처 2장이 모두 로드됐다. [페이지별 확인값](./browser-verification-pass25.json)
+터미널 브라우저는 사용하지 않았다. Agent Browser에서 Tailnet의 로드맵, 공식 상태 대장, C11.4 계획과 Android 실기기 근거 페이지를 열었다. 로드맵에서 14 scene 결과와 PixelCopy 5/5를 확인했고, 상태 대장에서 C11.4 체크가 미완료인 것과 새 실기기 근거 링크를 확인했다. 계획 페이지에도 14/14 결과가 표시됐다. 근거 페이지의 1080×2340 Android 캡처 2장이 모두 로드됐다. PR #400을 연 뒤 본문에 추가한 Tailnet 화면 이미지 3장도 1280×633 크기로 모두 로드되는 것을 확인했다. [페이지별 확인값](./browser-verification-pass25.json)
 
 ![Tailnet 로드맵의 C11.4 Android 실기기 기록](./tailnet-roadmap-agent-browser-pass25.png)
 

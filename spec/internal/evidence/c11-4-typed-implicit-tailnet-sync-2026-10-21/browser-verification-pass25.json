@@ -51,6 +51,30 @@
       "screenshot": "tailnet-evidence-agent-browser-pass25.png"
     }
   ],
+  "pr_body": {
+    "url": "https://github.com/ohah/spinon/pull/400",
+    "ready_state": "complete",
+    "images": [
+      {
+        "alt": "Tailnet 로드맵의 Android 실기기 기록",
+        "loaded": true,
+        "width": 1280,
+        "height": 633
+      },
+      {
+        "alt": "C11.4 미완료 상태와 Android 실기기 근거 페이지",
+        "loaded": true,
+        "width": 1280,
+        "height": 633
+      },
+      {
+        "alt": "Tailnet에서 확인한 실기기 근거와 화면 캡처",
+        "loaded": true,
+        "width": 1280,
+        "height": 633
+      }
+    ]
+  },
   "terminal_browser_used": false,
   "pages_deployment_run": false
 }
