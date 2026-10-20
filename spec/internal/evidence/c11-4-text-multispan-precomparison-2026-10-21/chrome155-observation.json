@@ -1,0 +1,187 @@
+{
+  "ahemReady": true,
+  "browserMetadata": {
+    "agentBrowserVersion": "0.31.1",
+    "browser": "Google Chrome",
+    "fullVersion": "155.0.8059.85",
+    "platform": "macOS",
+    "platformVersion": "26.5.1",
+    "architecture": "arm",
+    "bitness": "64",
+    "devicePixelRatio": 1
+  },
+  "cases": [
+    {
+      "columns": "25px 35px 35px 0px",
+      "grid": {
+        "height": 60,
+        "width": 220,
+        "x": 4,
+        "y": 16
+      },
+      "id": "text-span2-forward",
+      "items": [
+        {
+          "frame": {
+            "height": 20,
+            "width": 60,
+            "x": 4,
+            "y": 16
+          },
+          "id": "text-a-forward",
+          "text": "XX XXXXX"
+        },
+        {
+          "frame": {
+            "height": 20,
+            "width": 70,
+            "x": 29,
+            "y": 36
+          },
+          "id": "text-b-forward",
+          "text": "XXXX XXXXXXX"
+        }
+      ],
+      "rows": "20px 20px 20px"
+    },
+    {
+      "columns": "25px 35px 35px 0px",
+      "grid": {
+        "height": 60,
+        "width": 220,
+        "x": 4,
+        "y": 97
+      },
+      "id": "text-span2-reversed",
+      "items": [
+        {
+          "frame": {
+            "height": 20,
+            "width": 70,
+            "x": 29,
+            "y": 117
+          },
+          "id": "text-b-reversed",
+          "text": "XXXX XXXXXXX"
+        },
+        {
+          "frame": {
+            "height": 20,
+            "width": 60,
+            "x": 4,
+            "y": 97
+          },
+          "id": "text-a-reversed",
+          "text": "XX XXXXX"
+        }
+      ],
+      "rows": "20px 20px 20px"
+    },
+    {
+      "columns": "53.3281px 63.3281px 63.3438px 0px",
+      "grid": {
+        "height": 60,
+        "width": 220,
+        "x": 4,
+        "y": 178
+      },
+      "id": "text-span2-before-span3",
+      "items": [
+        {
+          "frame": {
+            "height": 10,
+            "width": 116.65625,
+            "x": 4,
+            "y": 178
+          },
+          "id": "text-c-a",
+          "text": "XX XXXXX"
+        },
+        {
+          "frame": {
+            "height": 10,
+            "width": 126.671875,
+            "x": 57.328125,
+            "y": 198
+          },
+          "id": "text-c-b",
+          "text": "XXXX XXXXXXX"
+        },
+        {
+          "frame": {
+            "height": 10,
+            "width": 180,
+            "x": 4,
+            "y": 218
+          },
+          "id": "text-c-c",
+          "text": "XXXXXXXXXXXXXXXXXX"
+        }
+      ],
+      "rows": "20px 20px 20px"
+    },
+    {
+      "columns": "53.3281px 63.3281px 63.3438px 0px",
+      "grid": {
+        "height": 60,
+        "width": 220,
+        "x": 4,
+        "y": 259
+      },
+      "id": "text-span3-before-span2",
+      "items": [
+        {
+          "frame": {
+            "height": 10,
+            "width": 180,
+            "x": 4,
+            "y": 299
+          },
+          "id": "text-r-c",
+          "text": "XXXXXXXXXXXXXXXXXX"
+        },
+        {
+          "frame": {
+            "height": 10,
+            "width": 126.671875,
+            "x": 57.328125,
+            "y": 279
+          },
+          "id": "text-r-b",
+          "text": "XXXX XXXXXXX"
+        },
+        {
+          "frame": {
+            "height": 10,
+            "width": 116.65625,
+            "x": 4,
+            "y": 259
+          },
+          "id": "text-r-a",
+          "text": "XX XXXXX"
+        }
+      ],
+      "rows": "20px 20px 20px"
+    }
+  ],
+  "devicePixelRatio": 1,
+  "intrinsicWidths": [
+    {
+      "maxContent": 80,
+      "minContent": 50,
+      "text": "XX XXXXX"
+    },
+    {
+      "maxContent": 120,
+      "minContent": 70,
+      "text": "XXXX XXXXXXX"
+    },
+    {
+      "maxContent": 180,
+      "minContent": 180,
+      "text": "XXXXXXXXXXXXXXXXXX"
+    }
+  ],
+  "platform": "MacIntel",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36"
+}
