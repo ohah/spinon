@@ -1,6 +1,6 @@
 # C11.4 definite minimum-size `auto-fit` 축별 Android 실기기 보충 검증
 
-2026-10-21 사용자가 Android 실기기 검증을 요청해, 기존 API 37 AVD에서 통과한 53-scene 행렬을 연결된 Samsung 기기에서 다시 실행했다. C11.4 전체 완료나 공개 CSS 지원 범위를 의미하지 않는다.
+2026-10-21 사용자가 Android 실기기 검증을 요청해, 기존 API 37 AVD에서 통과한 53-scene 행렬을 연결된 Samsung 기기에서 다시 실행했다. 작업 PR: [#405](https://github.com/ohah/spinon/pull/405). C11.4 전체 완료나 공개 CSS 지원 범위를 의미하지 않는다.
 
 ## 기준과 결과
 
