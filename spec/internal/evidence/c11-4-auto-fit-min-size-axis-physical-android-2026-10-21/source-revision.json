@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "branch": "test/c11-4-auto-fit-physical-android-20261021",
+  "baseCommit": "58eeca7ef03c552b0a10dc3f47229ba726ab88ad",
+  "baseTree": "aa580a109f7b2ea2f1b1dd76f46532f6a2cb9bed",
+  "productSourceChanged": false,
+  "testHarnessChanged": true,
+  "harnessPath": "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+  "buildCommand": "mise exec -- env SPINON_ENABLE_C04_RUNTIME_GPU=1 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 bun run build:android",
+  "fixtureFeature": "c04-runtime-gpu-fixture-test",
+  "apkSha256": "77e2ff1cb2f81cb80339e06743cbf6b3b05aa0de1204e004454b09237a91be86",
+  "trackedTreeWasDirtyForHarnessAndDocumentation": true
+}
