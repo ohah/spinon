@@ -37,6 +37,8 @@ The captured surface cases are `auto-fill-overflow-neighbors` (4/4),
 `rows-negative-fixed-root-overflow` (5/5). The edge sample reads the root
 background; it does not measure CSS border stroke.
 
+PR [#391](https://github.com/ohah/spinon/pull/391)은 2026-10-20 KST Rebase and merge됐다(merge SHA `e3119ea21bdd6196f334c104edb3bb33dfe70b0c`). GitHub에서 required status check은 보고되지 않았다. C11.4 checkbox와 공식 완료 수는 그대로 유지한다.
+
 ## C11.4 auto-repeat and negative-line implementation matrix
 
 The 124-scene combined matrix preserves the previous 106 runtime cases and adds

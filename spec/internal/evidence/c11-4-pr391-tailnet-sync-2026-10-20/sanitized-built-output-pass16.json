@@ -1,0 +1,9 @@
+{
+  "run": "pass16",
+  "worker_source_sha256": "24091cb1562b56d61bfe9e81e12bac6fa0ac6a99414eb964d7609d68564f623b",
+  "worker_destination": "static/js/flexsearch.bundle.module.min.mjs",
+  "worker_bytes": 51186,
+  "patched_files": [
+    "static/js/3.d8b550a68d.js"
+  ]
+}
