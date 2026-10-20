@@ -9,6 +9,14 @@ const repositoryRoot = resolve(fileURLToPath(new URL('../..', import.meta.url)))
 const target = process.argv[2];
 const serial = process.argv[3] ?? 'emulator-5554';
 const simulatorUDID = process.argv[3] ?? 'ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D';
+const requestedSceneIDs = process.argv.find((argument) => argument.startsWith('--scene-id='))
+  ?.slice('--scene-id='.length).split(',').filter(Boolean);
+const multiSpanSceneIDs = new Set([
+  'competing-span2-forward', 'competing-span2-reversed',
+  'span2-before-span3', 'span3-before-span2',
+]);
+const isMultiSpanRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID));
 assert.ok(['android-avd', 'ios-simulator'].includes(target),
   '사용법: node capture-c11-4-auto-repeat-neighbors-simulator.mjs android-avd|ios-simulator [AVD serial|iOS Simulator UDID]');
 
@@ -17,10 +25,11 @@ const component = `${packageName}/.MainActivity`;
 const appPath = resolve(repositoryRoot,
   'build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app');
 const apkPath = resolve(repositoryRoot, 'platforms/android/app/build/outputs/apk/debug/app-debug.apk');
-const runPrefix = `c114-negative-implicit-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
+const runPrefix = `c114-${isMultiSpanRun ? 'multispan-ordering' : 'negative-implicit'}-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
-const evidenceDirectory = resolve(repositoryRoot,
-  `spec/internal/evidence/c11-4-negative-implicit-track-sizing-${date}`, `${target}-${runPrefix}`);
+const evidenceDirectory = resolve(repositoryRoot, isMultiSpanRun
+  ? `spec/internal/evidence/c11-4-multispan-ordering-physical-android-${date}/${target}-${runPrefix}`
+  : `spec/internal/evidence/c11-4-negative-implicit-track-sizing-${date}/${target}-${runPrefix}`);
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const sleep = (milliseconds) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, milliseconds);
 
@@ -379,8 +388,45 @@ assert.equal(scenes.length, 138,
   'C11.4 typed implicit auto-repeat simulator 행렬은 138 scene이어야 합니다.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 simulator scene ID가 중복됐습니다.');
-const requestedSceneIDs = process.argv.find((argument) => argument.startsWith('--scene-id='))
-  ?.slice('--scene-id='.length).split(',').filter(Boolean);
+scenes.push(
+  {
+    id: 'competing-span2-forward', axis: 'Columns', boxCount: 3,
+    rootFrame: 'width=220,height=40', itemFrame: 'width=80,height=10',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=40;'
+      + '1:node=2,x=0,y=0,width=80,height=10;2:node=3,x=40,y=10,width=120,height=10]',
+    tracks: [40, 60, 60, 0], collapsed: [false, false, false, false], intrinsicSpans: [2],
+  },
+  {
+    id: 'competing-span2-reversed', axis: 'Columns', boxCount: 3,
+    rootFrame: 'width=220,height=40', itemFrame: 'width=120,height=10',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=40;'
+      + '1:node=2,x=40,y=0,width=120,height=10;2:node=3,x=0,y=10,width=80,height=10]',
+    tracks: [40, 60, 60, 0], collapsed: [false, false, false, false], intrinsicSpans: [2],
+  },
+  {
+    id: 'span2-before-span3', axis: 'Columns', boxCount: 4,
+    rootFrame: 'width=220,height=40', itemFrame: 'width=80,height=10',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=40;'
+      + '1:node=2,x=0,y=0,width=80,height=10;'
+      + '2:node=3,x=53.328125,y=10,width=120,height=10;'
+      + '3:node=4,x=0,y=20,width=200,height=10]',
+    tracks: [53.328125, 73.328125, 73.34375, 0],
+    collapsed: [false, false, false, false], intrinsicSpans: [2, 3],
+  },
+  {
+    id: 'span3-before-span2', axis: 'Columns', boxCount: 4,
+    rootFrame: 'width=220,height=40', itemFrame: 'width=200,height=10',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=40;'
+      + '1:node=2,x=0,y=0,width=200,height=10;'
+      + '2:node=3,x=53.328125,y=10,width=120,height=10;'
+      + '3:node=4,x=0,y=20,width=80,height=10]',
+    tracks: [53.328125, 73.328125, 73.34375, 0],
+    collapsed: [false, false, false, false], intrinsicSpans: [2, 3],
+  },
+);
+assert.equal(scenes.length, 142, 'C11.4 multi-span simulator 행렬은 142 scene이어야 합니다.');
+assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
+  'C11.4 simulator scene ID가 중복됐습니다.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
 const runScenes = requestedSceneIDSet
   ? scenes.filter(({ id }) => requestedSceneIDSet.has(id))
@@ -1357,10 +1403,20 @@ function verifyRuntimeLog(log, scene, runID) {
     [scene.axis]: { tracks: scene.tracks, collapsed: scene.collapsed },
   };
   const tracksByAxis = {};
+  let observedIntrinsicSpans = null;
   for (const [axis, expected] of Object.entries(axisSpecs)) {
     const axisPass = diagnostics.trackSizingTraces[0].passes
       .filter((pass) => pass.axis === axis).at(-1);
     assert.ok(axisPass, `${scene.id}: ${axis} track-sizing pass가 없습니다.`);
+    const intrinsicSpans = axisPass.stages.flatMap(({ stage }) => {
+      const match = stage.match(/^IntrinsicItemBatch \{ span: (\d+),/);
+      return match ? [Number(match[1])] : [];
+    });
+    if (scene.intrinsicSpans) {
+      assert.deepEqual(intrinsicSpans, scene.intrinsicSpans,
+        `${scene.id}: intrinsic span stage 순서가 다릅니다.`);
+    }
+    if (axis === scene.axis) observedIntrinsicSpans = intrinsicSpans;
     const finalStageTracks = axisPass.stages.at(-1).tracks;
     const finalTracks = finalStageTracks.filter(({ gutter }) => !gutter);
     const boundaryGutters = autoFitBoundaryGutters(scene, axis);
@@ -1409,6 +1465,7 @@ function verifyRuntimeLog(log, scene, runID) {
     summary: log.split(/\r?\n/).find((line) => line.includes(summary)),
     nodeFrames: scene.nodeFrames,
     tracks: scene.axes ? tracksByAxis : tracksByAxis[scene.axis],
+    ...(scene.intrinsicSpans ? { intrinsicSpans: observedIntrinsicSpans } : {}),
     trackTraceChunks: traceParts.length,
     drawPresented: true,
   };

@@ -1,0 +1,85 @@
+{
+  "device": {
+    "model": "SM-S731N",
+    "android": "16",
+    "api": 36,
+    "abi": "arm64-v8a",
+    "qemu": "0",
+    "physicalSize": "Physical size: 1080x2340",
+    "density": "Physical density: 450",
+    "apkSha256": "191f7457528f8691c3d0d03b1d8b28887a7172939a077b80e4d4b79fe4625224",
+    "installedApkSha256": "191f7457528f8691c3d0d03b1d8b28887a7172939a077b80e4d4b79fe4625224"
+  },
+  "observations": [
+    {
+      "sceneId": "competing-span2-forward",
+      "runId": "physc114-connected-1792515035407-01",
+      "boxes": 3,
+      "tracks": [
+        40,
+        60,
+        60,
+        0
+      ],
+      "spans": [
+        2
+      ],
+      "nodeFrameCount": 3,
+      "traceChunks": 6,
+      "drawPresented": true
+    },
+    {
+      "sceneId": "competing-span2-reversed",
+      "runId": "physc114-connected-1792515035407-02",
+      "boxes": 3,
+      "tracks": [
+        40,
+        60,
+        60,
+        0
+      ],
+      "spans": [
+        2
+      ],
+      "nodeFrameCount": 3,
+      "traceChunks": 6,
+      "drawPresented": true
+    },
+    {
+      "sceneId": "span2-before-span3",
+      "runId": "physc114-connected-1792515035407-03",
+      "boxes": 4,
+      "tracks": [
+        53.33333206176758,
+        73.33333587646484,
+        73.33333587646484,
+        0
+      ],
+      "spans": [
+        2,
+        3
+      ],
+      "nodeFrameCount": 4,
+      "traceChunks": 7,
+      "drawPresented": true
+    },
+    {
+      "sceneId": "span3-before-span2",
+      "runId": "physc114-connected-1792515035407-04",
+      "boxes": 4,
+      "tracks": [
+        53.33333206176758,
+        73.33333587646484,
+        73.33333587646484,
+        0
+      ],
+      "spans": [
+        2,
+        3
+      ],
+      "nodeFrameCount": 4,
+      "traceChunks": 7,
+      "drawPresented": true
+    }
+  ]
+}

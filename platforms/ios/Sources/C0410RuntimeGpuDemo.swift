@@ -102,6 +102,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "typed-minmax-max-content", "typed-fit-content", "typed-fraction",
     "typed-percentage", "typed-calc", "typed-auto-fit-occupied",
     "typed-auto-fit-empty", "typed-auto-fit-gutter",
+    "competing-span2-forward", "competing-span2-reversed",
+    "span2-before-span3", "span3-before-span2",
 ]
 private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -240,6 +242,9 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
         return "width=50,height=266"
     case "auto-fill-two-track-rows-both-342":
         return "width=50,height=342"
+    case "competing-span2-forward", "competing-span2-reversed",
+         "span2-before-span3", "span3-before-span2":
+        return "width=220,height=40"
     case "spanning-auto-tracks", "spanning-min-content-items":
         return "width=100,height=30"
     case "fixed-small-track-overflow":
@@ -268,6 +273,12 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         return autoFitMinimumSizeItemFrame
     }
     switch sceneID {
+    case "competing-span2-forward", "span2-before-span3":
+        return "width=80,height=10"
+    case "competing-span2-reversed":
+        return "width=120,height=10"
+    case "span3-before-span2":
+        return "width=200,height=10"
     case "column-auto-natural-ratio":
         return "width=12,height=8"
     case "column-target-max-width-clamp":
@@ -709,6 +720,24 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
         return autoFitMinimumSizeNodeFrames
     }
     switch sceneID {
+    case "competing-span2-forward":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=40;"
+            + "1:node=2,x=0,y=0,width=80,height=10;"
+            + "2:node=3,x=40,y=10,width=120,height=10]"
+    case "competing-span2-reversed":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=40;"
+            + "1:node=2,x=40,y=0,width=120,height=10;"
+            + "2:node=3,x=0,y=10,width=80,height=10]"
+    case "span2-before-span3":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=40;"
+            + "1:node=2,x=0,y=0,width=80,height=10;"
+            + "2:node=3,x=53.333332,y=10,width=120,height=10;"
+            + "3:node=4,x=0,y=20,width=200,height=10]"
+    case "span3-before-span2":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=40;"
+            + "1:node=2,x=0,y=0,width=200,height=10;"
+            + "2:node=3,x=53.333332,y=10,width=120,height=10;"
+            + "3:node=4,x=0,y=20,width=80,height=10]"
     case "auto-fill-overflow-neighbors":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=60;"
             + "1:node=2,x=86,y=0,width=12,height=12]"
@@ -788,6 +817,10 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if sceneID == "competing-span2-forward" || sceneID == "competing-span2-reversed" {
+        return 3
+    }
+    if sceneID == "span2-before-span3" || sceneID == "span3-before-span2" { return 4 }
     if sceneID == "typed-fixed-cycle-three-leading-trailing" { return 4 }
     if ["typed-mixed-cycle", "typed-auto-fit-occupied", "typed-auto-fit-gutter"]
         .contains(sceneID) { return 3 }
