@@ -30,7 +30,7 @@
 | 24 | CSS source-shape 검사 실패를 새 C11.4 회귀로 표시 | 변경 파일 밖의 기존 4개 정적 검사 실패라고 evidence에서 분리했다. |
 | 25 | internal index의 상대 링크가 저장소 root를 벗어남 | `spec/internal/README.md`에서 `../../plan`과 `./evidence`가 실제 파일을 가리킨다. |
 | 26 | Rspress HTML route 링크가 틀림 | roadmap은 `/spinon/plan/...html`, `/spinon/internal/...html`, evidence `README.html` route를 사용한다. |
-| 27 | contract fragment anchor가 일치하지 않음 | Agent Browser 사전 확인에서 `grid-auto-*`의 `*`가 heading id에 추가 하이픈으로 반영된 점을 찾아 roadmap fragment를 실제 DOM id `c114-positive-implicit-grid-auto--track-size-lists`에 맞췄다. Tailnet pass17에서 anchor target을 다시 확인한다. |
+| 27 | contract fragment anchor가 일치하지 않음 | Agent Browser 사전 확인에서 `grid-auto-*`의 `*`가 heading id에 추가 하이픈으로 반영된 점을 찾아 roadmap fragment를 실제 DOM id `c114-positive-implicit-grid-auto--track-size-lists`에 맞췄다. Tailnet pass17 Agent Browser에서 해당 fragment의 `anchor_found=true`를 확인했다. |
 | 28 | 계획/상태/evidence가 merge 상태에서 서로 어긋남 | master plan, focused plan, internal index와 evidence README가 PR #375/merge SHA를 공유한다. |
 | 29 | Tailnet 미리보기가 이미 갱신됐다고 주장 | 이 diff는 source roadmap 변경만 기록하며 Tailnet sync를 후속 PR로 분리한다. |
 | 30 | 선택 문서가 C11.4에서 남은 작업을 감춤 | negative implicit, nested/anonymous, auto-repeat 전체 조합, WPT와 상위 완료를 명시적으로 남겼다. |
