@@ -1000,6 +1000,9 @@ const C11_4_IMAGE_FIXED_GUTTER_SCENES: [ImageSceneWithRowGap; 2] = [
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     scene_id: &str,
 ) -> Result<Cow<'static, str>, String> {
+    if let Some(source) = super::c11_4_auto_fit_min_size_axis::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some((_, source)) = C11_4_GRID_TRACK_SIZING_SCENES
         .iter()
         .find(|(known_id, _)| *known_id == scene_id)

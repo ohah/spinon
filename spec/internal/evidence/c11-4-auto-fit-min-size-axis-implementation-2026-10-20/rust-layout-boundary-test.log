@@ -1,0 +1,8 @@
+   Compiling spinon-layout v0.1.0 (/private/tmp/spinon-c11-4-auto-fit-definite-minimum-20261020/crates/spinon-layout)
+    Finished `test` profile [unoptimized] target(s) in 1.93s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-e5f7a6df211fabe9)
+
+running 1 test
+test grid::track_sizing_tests::auto_repeat_minimum_size_repeat_counts_match_axis_and_fill_mode_at_boundaries ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 187 filtered out; finished in 0.00s

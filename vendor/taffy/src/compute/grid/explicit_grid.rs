@@ -341,12 +341,20 @@ pub(super) fn initialize_grid_tracks(
                                 );
                                 let mut gutter = GridTrack::gutter(gap);
 
-                                // Auto-fit tracks that don't contain should be collapsed.
+                                // CSS Grid §7.2.3.2 collapses each empty auto-fit track and both
+                                // adjacent gutters. The preceding gutter was emitted with the
+                                // previous track, so collapse it here alongside this track's
+                                // following gutter.
                                 if repeat.count() == RepetitionCount::AutoFit
                                     && !track_has_items(current_track_index)
                                 {
                                     track.collapse();
                                     gutter.collapse();
+                                    if let Some(previous_gutter) = tracks.last_mut() {
+                                        if previous_gutter.kind == GridTrackKind::Gutter {
+                                            previous_gutter.collapse();
+                                        }
+                                    }
                                 }
 
                                 tracks.push(track);
@@ -358,16 +366,9 @@ pub(super) fn initialize_grid_tracks(
                             // Is this auto-repeat at the very end of the track list?
                             let is_last = current_track_index == counts.len();
 
-                            // When collapsing auto-fit tracks (in the loop just above), we collapse the gutter after collapsed
-                            // tracks but not the gutter before. This is correct so long as there is another non-collapsed track
-                            // somewhere in the track list after the collapsed track.
-                            //
-                            // However, if the auto-fit repeat is at the very end of the track list, then there will be no such track.
-                            // In this case we need to iterate backwards through the track list until we find a non-collapsed track and
-                            // collapse the gutter just after that track.
-                            //
-                            // As all of the other tracks and gutters we find along the way will already be collapsed, we simplify the
-                            // implementation to collapsing all tracks and gutters until we find the first non-collapsed track.
+                            // An auto-repeat at the end has no following explicit track to absorb its
+                            // final gutter. Collapse the trailing gutter and any trailing empty
+                            // repeated tracks, stopping at the last occupied track.
                             if repeat.count() == RepetitionCount::AutoFit && is_last {
                                 for previous_track in tracks.iter_mut().rev() {
                                     if previous_track.kind == GridTrackKind::Track
