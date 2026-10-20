@@ -1,0 +1,19 @@
+{
+  "pass": "pass15",
+  "preview_root_relative": "SpinonPreview",
+  "checked_path_count": 76,
+  "open_selected_path_count": 1,
+  "open_selected_paths": [
+    "static/js/3.d8b550a68d.js"
+  ],
+  "descriptors": [
+    {
+      "pid": "1191",
+      "command": "node",
+      "fd": "698",
+      "path": "static/js/3.d8b550a68d.js"
+    }
+  ],
+  "lsof_exit_status": 1,
+  "replacement_method": "write a same-directory temporary file and atomically rename it over the target"
+}

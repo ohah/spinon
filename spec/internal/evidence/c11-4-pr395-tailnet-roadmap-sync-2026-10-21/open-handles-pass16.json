@@ -1,0 +1,19 @@
+{
+  "pass": "pass16",
+  "preview_root_relative": "SpinonPreview",
+  "checked_path_count": 84,
+  "open_selected_path_count": 1,
+  "open_selected_paths": [
+    "spec/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20/plan-review-20.html"
+  ],
+  "descriptors": [
+    {
+      "pid": "1191",
+      "command": "node",
+      "fd": "756",
+      "path": "spec/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20/plan-review-20.html"
+    }
+  ],
+  "lsof_exit_status": 1,
+  "replacement_method": "write a same-directory temporary file and atomically rename it over the target"
+}
