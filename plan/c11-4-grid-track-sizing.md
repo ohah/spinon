@@ -267,3 +267,7 @@ Chrome 156 Agent Browser 관측과 독립 계산 기대값을 별도 JSON으로 
 ### 2026-10-22 depth-three nested Grid anonymous text + image 후속 계획
 
 depth-three chain의 inner Grid에 anonymous Ahem text와 natural PNG item을 함께 두고, min-content/max-content 및 양쪽 DOM order 네 scene으로 contribution이 세 parent Grid 경계를 지나가는지 확인할 계획을 분리했다. CSS Grid 2025 CRD 독립 기대값과 Chrome 156 Agent Browser 결과는 min-content `94×20px`, max-content `124×16px`이며, source order는 inner track·item 위치만 바꾼다. 계획 검토 20개를 구현 전에 수행했고 구현은 아직 시작하지 않았다. [집중 계획](./c11-4-nested-depth-three-anonymous-image.md) · [Chrome 사전 비교·독립 기대값](../spec/internal/evidence/c11-4-nested-depth-three-anonymous-image-precomparison-2026-10-22/README.md). C11.4와 공식 완료 수 `72/213`은 미완료로 유지한다.
+
+### 2026-10-22 depth-three nested Grid text multi-span 후속 계획
+
+기존 direct text multi-span은 한 Grid만, depth-three nested Grid는 span 없는 text leaf만 검사한다. 새 [집중 계획](./c11-4-nested-grid-multispan.md)은 inner Grid의 겹치는 span-2와 span-2/3 text contribution을 네 source-order scene에서 계산한 뒤 세 부모 Grid 경계로 전달하는지 확인한다. 독립 Columns 기대값은 span-2 pair `[25,35,35,0]`, span-3 포함 `[160/3,190/3,190/3,0]`이며 각 ancestor 폭은 각각 95px·180px이다. Chrome 156 Agent Browser 관측과 규범 기대값은 [사전 비교 근거](../spec/internal/evidence/c11-4-nested-grid-multispan-precomparison-2026-10-22/README.md)에 분리했다. 계획 실패 관점 20개를 검토했고 구현은 아직 시작하지 않았다. C11.4 checkbox와 공식 `72/213`은 유지한다.

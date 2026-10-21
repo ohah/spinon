@@ -1,0 +1,368 @@
+{
+  "ahemReady": true,
+  "cases": [
+    {
+      "grids": [
+        {
+          "columns": "95px",
+          "frame": {
+            "height": 60,
+            "width": 95,
+            "x": 8,
+            "y": 24
+          },
+          "height": "60px",
+          "id": "nested-text-span2-forward-root",
+          "rows": "60px",
+          "width": "95px"
+        },
+        {
+          "columns": "95px",
+          "frame": {
+            "height": 60,
+            "width": 95,
+            "x": 8,
+            "y": 24
+          },
+          "height": "60px",
+          "id": "nested-text-span2-forward-middle",
+          "rows": "60px",
+          "width": "95px"
+        },
+        {
+          "columns": "95px",
+          "frame": {
+            "height": 60,
+            "width": 95,
+            "x": 8,
+            "y": 24
+          },
+          "height": "60px",
+          "id": "nested-text-span2-forward-branch",
+          "rows": "60px",
+          "width": "95px"
+        },
+        {
+          "columns": "25px 35px 35px 0px",
+          "frame": {
+            "height": 60,
+            "width": 95,
+            "x": 8,
+            "y": 24
+          },
+          "height": "60px",
+          "id": "nested-text-span2-forward-inner",
+          "rows": "20px 20px 20px",
+          "width": "95px"
+        }
+      ],
+      "id": "nested-text-span2-forward",
+      "items": [
+        {
+          "column": "1 / span 2",
+          "frame": {
+            "height": 20,
+            "width": 60,
+            "x": 8,
+            "y": 24
+          },
+          "id": "nested-text-span2-forward-item-a",
+          "row": "1",
+          "text": "XX XXXXX"
+        },
+        {
+          "column": "2 / span 2",
+          "frame": {
+            "height": 20,
+            "width": 70,
+            "x": 33,
+            "y": 44
+          },
+          "id": "nested-text-span2-forward-item-b",
+          "row": "2",
+          "text": "XXXX XXXXXXX"
+        }
+      ]
+    },
+    {
+      "grids": [
+        {
+          "columns": "95px",
+          "frame": {
+            "height": 60,
+            "width": 95,
+            "x": 8,
+            "y": 176
+          },
+          "height": "60px",
+          "id": "nested-text-span2-reversed-root",
+          "rows": "60px",
+          "width": "95px"
+        },
+        {
+          "columns": "95px",
+          "frame": {
+            "height": 60,
+            "width": 95,
+            "x": 8,
+            "y": 176
+          },
+          "height": "60px",
+          "id": "nested-text-span2-reversed-middle",
+          "rows": "60px",
+          "width": "95px"
+        },
+        {
+          "columns": "95px",
+          "frame": {
+            "height": 60,
+            "width": 95,
+            "x": 8,
+            "y": 176
+          },
+          "height": "60px",
+          "id": "nested-text-span2-reversed-branch",
+          "rows": "60px",
+          "width": "95px"
+        },
+        {
+          "columns": "25px 35px 35px 0px",
+          "frame": {
+            "height": 60,
+            "width": 95,
+            "x": 8,
+            "y": 176
+          },
+          "height": "60px",
+          "id": "nested-text-span2-reversed-inner",
+          "rows": "20px 20px 20px",
+          "width": "95px"
+        }
+      ],
+      "id": "nested-text-span2-reversed",
+      "items": [
+        {
+          "column": "2 / span 2",
+          "frame": {
+            "height": 20,
+            "width": 70,
+            "x": 33,
+            "y": 196
+          },
+          "id": "nested-text-span2-reversed-item-b",
+          "row": "2",
+          "text": "XXXX XXXXXXX"
+        },
+        {
+          "column": "1 / span 2",
+          "frame": {
+            "height": 20,
+            "width": 60,
+            "x": 8,
+            "y": 176
+          },
+          "id": "nested-text-span2-reversed-item-a",
+          "row": "1",
+          "text": "XX XXXXX"
+        }
+      ]
+    },
+    {
+      "grids": [
+        {
+          "columns": "180px",
+          "frame": {
+            "height": 60,
+            "width": 180,
+            "x": 8,
+            "y": 328
+          },
+          "height": "60px",
+          "id": "nested-text-span2-before-span3-root",
+          "rows": "60px",
+          "width": "180px"
+        },
+        {
+          "columns": "180px",
+          "frame": {
+            "height": 60,
+            "width": 180,
+            "x": 8,
+            "y": 328
+          },
+          "height": "60px",
+          "id": "nested-text-span2-before-span3-middle",
+          "rows": "60px",
+          "width": "180px"
+        },
+        {
+          "columns": "180px",
+          "frame": {
+            "height": 60,
+            "width": 180,
+            "x": 8,
+            "y": 328
+          },
+          "height": "60px",
+          "id": "nested-text-span2-before-span3-branch",
+          "rows": "60px",
+          "width": "180px"
+        },
+        {
+          "columns": "53.3281px 63.3281px 63.3438px 0px",
+          "frame": {
+            "height": 60,
+            "width": 180,
+            "x": 8,
+            "y": 328
+          },
+          "height": "60px",
+          "id": "nested-text-span2-before-span3-inner",
+          "rows": "20px 20px 20px",
+          "width": "180px"
+        }
+      ],
+      "id": "nested-text-span2-before-span3",
+      "items": [
+        {
+          "column": "1 / span 2",
+          "frame": {
+            "height": 10,
+            "width": 116.65625,
+            "x": 8,
+            "y": 328
+          },
+          "id": "nested-text-span2-before-span3-item-a",
+          "row": "1",
+          "text": "XX XXXXX"
+        },
+        {
+          "column": "2 / span 2",
+          "frame": {
+            "height": 10,
+            "width": 126.671875,
+            "x": 61.328125,
+            "y": 348
+          },
+          "id": "nested-text-span2-before-span3-item-b",
+          "row": "2",
+          "text": "XXXX XXXXXXX"
+        },
+        {
+          "column": "1 / span 3",
+          "frame": {
+            "height": 10,
+            "width": 180,
+            "x": 8,
+            "y": 368
+          },
+          "id": "nested-text-span2-before-span3-item-c",
+          "row": "3",
+          "text": "XXXXXXXXXXXXXXXXXX"
+        }
+      ]
+    },
+    {
+      "grids": [
+        {
+          "columns": "180px",
+          "frame": {
+            "height": 60,
+            "width": 180,
+            "x": 8,
+            "y": 480
+          },
+          "height": "60px",
+          "id": "nested-text-span3-before-span2-root",
+          "rows": "60px",
+          "width": "180px"
+        },
+        {
+          "columns": "180px",
+          "frame": {
+            "height": 60,
+            "width": 180,
+            "x": 8,
+            "y": 480
+          },
+          "height": "60px",
+          "id": "nested-text-span3-before-span2-middle",
+          "rows": "60px",
+          "width": "180px"
+        },
+        {
+          "columns": "180px",
+          "frame": {
+            "height": 60,
+            "width": 180,
+            "x": 8,
+            "y": 480
+          },
+          "height": "60px",
+          "id": "nested-text-span3-before-span2-branch",
+          "rows": "60px",
+          "width": "180px"
+        },
+        {
+          "columns": "53.3281px 63.3281px 63.3438px 0px",
+          "frame": {
+            "height": 60,
+            "width": 180,
+            "x": 8,
+            "y": 480
+          },
+          "height": "60px",
+          "id": "nested-text-span3-before-span2-inner",
+          "rows": "20px 20px 20px",
+          "width": "180px"
+        }
+      ],
+      "id": "nested-text-span3-before-span2",
+      "items": [
+        {
+          "column": "1 / span 3",
+          "frame": {
+            "height": 10,
+            "width": 180,
+            "x": 8,
+            "y": 520
+          },
+          "id": "nested-text-span3-before-span2-item-c",
+          "row": "3",
+          "text": "XXXXXXXXXXXXXXXXXX"
+        },
+        {
+          "column": "2 / span 2",
+          "frame": {
+            "height": 10,
+            "width": 126.671875,
+            "x": 61.328125,
+            "y": 500
+          },
+          "id": "nested-text-span3-before-span2-item-b",
+          "row": "2",
+          "text": "XXXX XXXXXXX"
+        },
+        {
+          "column": "1 / span 2",
+          "frame": {
+            "height": 10,
+            "width": 116.65625,
+            "x": 8,
+            "y": 480
+          },
+          "id": "nested-text-span3-before-span2-item-a",
+          "row": "1",
+          "text": "XX XXXXX"
+        }
+      ]
+    }
+  ],
+  "platform": "MacIntel",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "dpr": 1,
+    "height": 633,
+    "width": 1280
+  }
+}
