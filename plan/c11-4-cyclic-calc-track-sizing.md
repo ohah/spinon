@@ -46,6 +46,9 @@ CSS Grid 2025 CRD §7.2.1·§11.1에 따라 track percentage는 cyclic container
 
 ## 구현 결과 (2026-10-22)
 
+구현 PR [#480](https://github.com/ohah/spinon/pull/480)은 2026-10-21 22:54:20 UTC에 Rebase and merge됐다(SHA `e8c7eb06c66fc7424002eaca76af081ecd72a24f`). 병합 시 PR check rollup은 비어 있었고 main에는 필수 status check가 설정되어 있지 않았다.
+
+
 네 scene을 기존 opt-in C11.4 CSS→Taffy→native fixture 경로에 연결했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 `4/4` scene의 root/item frame, 양 축 track trace, draw/present와 PixelCopy·Metal drawable sample `8/8` exact를 확인했다. 공통 `-two-axis` suffix 처리에서 발견한 iOS 기대 frame 결함을 `nested-depth-*` ID로 한정해 수정하고, 기존 nested-depth min/max-content two-axis 회귀 여섯 scene을 두 플랫폼에서 각각 `6/6` 재실행했다. 기본 release `.rlib`에는 fixture symbol/scene string이 없고 fixture-test positive control에는 포함된다. 수정 전 harness 실패와 로그는 실행 evidence에 남겼다.
 
 검증하지 않은 범위는 일반 CSS author admission, `minmax(calc())`, `fit-content(calc())`, 복수 calc track, nested Grid, WPT, Android 실기기, hardware GPU, iOS compositor 이후 pixel, 전체 C11.4다.
