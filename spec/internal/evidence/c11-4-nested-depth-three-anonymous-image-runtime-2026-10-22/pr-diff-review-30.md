@@ -33,6 +33,6 @@
 | 27 | 14-scene matrix에서 기존 회귀 control을 빠뜨리는가 | 결과 JSON의 10 old + 4 new IDs를 확인했다. Android/iOS 각각 14 observations다. | PASS |
 | 28 | `drawPresented`를 compositor readback 또는 pixel equality로 과장하는가 | 문서와 PR screenshot 설명은 layout surface 제출만 말하고 text/PNG pixel, iOS compositor, physical surface 한계를 표시한다. | PASS |
 | 29 | 공개/공식 status를 C11.4 완료로 잘못 승격하는가 | `spec/STATUS.md`, plan, internal index, roadmap은 C11.4 checkbox와 `72/213` 미완료 상태를 유지한다. | PASS |
-| 30 | PR·Tailnet 정적 preview·문서 링크가 최종 증거를 놓치는가 | PR body, 내부 evidence index, public roadmap와 Tailnet served path/hash를 별도 확인한다. PR 이미지 확인은 Agent Browser 증거로 남긴다. | PASS |
+| 30 | PR body 이미지 URL 또는 내부 문서 링크가 잘못돼 근거를 볼 수 없는가 | PR #462의 두 simulator image를 Agent Browser에서 decode해 각각 1080×2400, 1206×2622와 `complete=true`를 확인했다([관측 JSON](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-4-nested-depth-three-anonymous-image-runtime-2026-10-22/agent-browser-pr-462-image-check.json)). Tailnet 제공 hash는 병합 뒤 별도 동기화에서 확인한다. | PASS |
 
-최종 구현/runtime와 Simulator 근거는 [README](./README.md), 실제 실패 경로 review는 [20-perspective report](./implementation-runtime-review-20.md)에 있다. 이 review는 PR diff가 확정된 마지막 단계에서 실제 PR 번호·merge SHA·Agent Browser 결과를 덧붙인다.
+최종 구현/runtime와 Simulator 근거는 [README](./README.md), 실제 실패 경로 review는 [20-perspective report](./implementation-runtime-review-20.md)에 있다. Tailnet preview 동기화는 PR 병합 뒤 별도 단계다.
