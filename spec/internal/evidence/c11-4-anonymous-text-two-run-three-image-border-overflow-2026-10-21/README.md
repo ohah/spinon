@@ -39,3 +39,5 @@ iOS drawable은 `960×720` pixels / `320×240` CSS px, scale `3.0`였다. Metal 
 - [Chrome 156 사전 비교](../c11-4-anonymous-text-two-run-three-image-border-overflow-precomparison-2026-10-21/README.md)는 관측 `[16,32,24,20]`과 CSS Grid 2025 CRD §11.4–§11.5.1 독립 기대값 `[18,34,20,20]`을 별도로 보존한다. Chrome 관측을 표준 expected나 전체 적합성 판정으로 승격하지 않는다.
 
 Runtime CSS profile이 `overflow-x` 선언을 지원하지 않아 앱 fixture source는 root에 명시적 `overflow:visible`을 쓰지 않고 CSS 초기값 `visible`을 사용한다. border와 image가 실제 surface에 나타나는지의 결과는 PixelCopy/Metal 표본 및 화면으로 확인했지만 `overflow` 선언 parsing 자체를 검증한 것은 아니다. 고정 Ahem `XX`, 24×16 PNG, 네 scene, opaque solid border와 한 점의 overflow 색상 표본에 한정한다. PNG 전체 texel equality, arbitrary CSS, WPT, physical device, hardware GPU, iOS compositor-after pixels와 전체 C11.4는 검증하지 않았다. C11.4 checkbox와 공식 `72/213` 완료 수는 유지한다.
+
+PR #436 본문에 포함한 네 screenshot URL은 Agent Browser의 실제 PR 화면에서 모두 `complete=true`로 로드됐고 원본 해상도도 일치했다. 확인 결과는 [Agent Browser JSON](./pr-image-agent-browser-verification.json)에 기록했다. 확인 뒤 브라우저 세션과 남은 Agent Browser process를 종료했다.

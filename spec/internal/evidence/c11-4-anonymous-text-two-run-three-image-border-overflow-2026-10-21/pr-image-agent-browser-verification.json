@@ -1,0 +1,39 @@
+{
+  "schema": "spinon.pr-image-agent-browser-verification.v1",
+  "pr": 436,
+  "commit": "382f821ef77e742f9c1404b5f79c386fe36cb71d",
+  "page": "https://github.com/ohah/spinon/pull/436",
+  "verifiedAtUtc": "2026-10-21T08:41:49Z",
+  "browser": "agent-browser",
+  "images": [
+    {
+      "alt": "Android forward scene",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/382f821ef77e742f9c1404b5f79c386fe36cb71d/spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T083242895Z-3df1ac86/two-anonymous-runs-three-images-forward.png",
+      "complete": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    },
+    {
+      "alt": "Android reversed scene",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/382f821ef77e742f9c1404b5f79c386fe36cb71d/spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T083242895Z-3df1ac86/three-images-two-anonymous-runs-reversed.png",
+      "complete": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    },
+    {
+      "alt": "iOS forward scene",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/382f821ef77e742f9c1404b5f79c386fe36cb71d/spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T083256735Z-5aeaa47a/two-anonymous-runs-three-images-forward.png",
+      "complete": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622
+    },
+    {
+      "alt": "iOS reversed scene",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/382f821ef77e742f9c1404b5f79c386fe36cb71d/spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T083256735Z-5aeaa47a/three-images-two-anonymous-runs-reversed.png",
+      "complete": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622
+    }
+  ],
+  "agentBrowserClosed": true
+}
