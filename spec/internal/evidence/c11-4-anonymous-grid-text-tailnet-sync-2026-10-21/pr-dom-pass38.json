@@ -1,0 +1,22 @@
+{
+  "url": "https://github.com/ohah/spinon/pull/422",
+  "title": "feat(c11-4): anonymous Grid text 제한 구현 by ohah · Pull Request #422 · ohah/spinon",
+  "prBody": "변경한 항목\n 작업 유형과 주요 영역에 맞는 GitHub 라벨을 지정했습니다.\n구현 상태 대장 ID: C11.4 anonymous Grid text item\nopt-in RuntimeBlockFlexGridTrackSizingV1 fixture에서 direct text run을 익명 Grid item으로 묶고 source order·원본 text node·intrinsic 측정을 layout/runtime까지 연결했습니다. 공개 @spinon/* API는 추가하지 않았습니다.\n명세와 동작 근거\n spec/STATUS.md의 C11.4 상태와 근거를 갱신했습니다. 상위 체크와 공식 완료 집계는 미완료로 유지했습니다.\n 내부 계약 0059를 갱신했습니다. 버전 있는 공개 API 변경은 없습니다.\n 성공·거부 동작, opt-in 경계와 미지원 범위를 계획 및 evidence에 기록했습니다.\n 완료로 표시한 플랫폼의 실행 근거를 연결했습니다. Android/iOS는 사용자가 선택한 Simulator 검증만 수행했습니다.\n\nAPI/인터페이스 명세 링크: 내부 계약 0059, 구현 계획\n\n동작 근거 링크: Android API 37 AVD·iOS Simulator 결과와 화면, 구현 diff 검토 기록\n\nAndroid API 37 AVD\n\niOS Simulator\n\n검증: anonymous layout 7/7, runtime fixture 3/3, hidden-frame 회귀 1/1, FFI matrix 1/1, style-to-render 회귀 2/2; 기본 workspace 및 fixture Clippy -D warnings; 기본 artifact에는 fixture symbol/payload가 없고 opt-in positive artifact에는 포함되는 것을 확인했습니다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 5개 장면이 layout·track·frame·trace·draw/present 기준 5/5 통과했습니다.\n\n남은 범위\n\nSamsung 실기기와 Android hardware GPU, iOS compositor 이후 pixel equality, glyph ink·CSS border stroke, inline/nested Grid text, 일반 font/script, WPT 및 전체 C11.4는 검증·지원 범위에 포함하지 않습니다. C11.4 공식 체크와 완료 집계는 그대로 미완료입니다.",
+  "images": [
+    {
+      "src": "https://raw.githubusercontent.com/ohah/spinon/50fad162dfce1deeaa266a6c96a2e969f872a1e8/spec/internal/evidence/c11-4-anonymous-grid-text-2026-10-21/android-avd-c114-anon-frame-fix-android-avd-20261021T035928000Z-a623a0f4/anonymous-runs-around-block.png",
+      "alt": "Android API 37 AVD anonymous Grid text 장면",
+      "complete": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    },
+    {
+      "src": "https://raw.githubusercontent.com/ohah/spinon/50fad162dfce1deeaa266a6c96a2e969f872a1e8/spec/internal/evidence/c11-4-anonymous-grid-text-2026-10-21/ios-simulator-c114-anon-frame-fix-ios-simulator-20261021T035939342Z-bdea1e72/anonymous-runs-around-block.png",
+      "alt": "iPhone 17 Pro iOS 26.2 Simulator anonymous Grid text 장면",
+      "complete": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622
+    }
+  ],
+  "labels": []
+}

@@ -1,0 +1,16 @@
+{
+  "pass": "pass38",
+  "session": "spinon-c114-anon-pass38",
+  "closeCommand": "agent-browser --session spinon-c114-anon-pass38 close",
+  "closeOutput": "Browser closed",
+  "sessionInfo": {
+    "active": false,
+    "pid": null
+  },
+  "ownedAgentBrowserProcesses": [],
+  "previewServer": {
+    "pid": 1191,
+    "retained": true,
+    "listenAddress": "127.0.0.1:8768"
+  }
+}
