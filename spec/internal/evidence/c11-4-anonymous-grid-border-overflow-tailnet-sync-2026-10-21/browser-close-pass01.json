@@ -10,6 +10,11 @@
       "id": "spinon-tailpass01-e00ea27987c0",
       "active_after_close": false,
       "pid_after_close": null
+    },
+    {
+      "id": "spinon-pr433-agent-browser-pass01",
+      "active_after_close": false,
+      "pid_after_close": null
     }
   ],
   "agent_browser_or_chrome_processes_after_close": [],

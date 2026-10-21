@@ -1,0 +1,27 @@
+{
+  "pass": "pass01",
+  "url": "https://github.com/ohah/spinon/pull/433",
+  "title": "docs: record C11.4 Tailnet preview verification by ohah · Pull Request #433 · ohah/spinon · GitHub",
+  "images": [
+    {
+      "alt": "Tailnet roadmap의 PR #431 병합 기록",
+      "complete": true,
+      "width": 1280,
+      "height": 633
+    },
+    {
+      "alt": "Tailnet에서 열린 Android AVD 캡처",
+      "complete": true,
+      "width": 1280,
+      "height": 633
+    },
+    {
+      "alt": "Tailnet에서 열린 iOS Simulator 캡처",
+      "complete": true,
+      "width": 1280,
+      "height": 633
+    }
+  ],
+  "image_count": 3,
+  "full_page_screenshot": "pr433-agent-browser-full-pass01.png"
+}
