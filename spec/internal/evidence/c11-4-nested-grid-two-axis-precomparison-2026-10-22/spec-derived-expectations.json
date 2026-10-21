@@ -1,0 +1,57 @@
+{
+  "basis": {
+    "spec": "CSS Grid Layout Module Level 1, 2025 CRD, sections 5.2 and 11.1",
+    "specUrl": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/",
+    "font": "Repository Ahem.ttf at 10px with line-height 10px",
+    "text": "XX XXXXXXX",
+    "assumptions": [
+      "Each Grid has one min-content or max-content column track and one matching row track.",
+      "Margins, padding, borders, gutters, and explicit sizing constraints are zero or absent.",
+      "Columns are sized before rows, so the inline track determines text wrapping used by row sizing.",
+      "At 70px min-content inline size the text wraps into two 10px lines; at 100px max-content inline size it occupies one 10px line."
+    ]
+  },
+  "cases": [
+    {
+      "id": "nested-depth-one-min-content",
+      "depth": 1,
+      "gridCount": 2,
+      "columnsAtEveryGrid": [70],
+      "rowsAtEveryGrid": [20],
+      "everyGridSize": {"width":70,"height":20},
+      "textSize": {"width":70,"height":20}
+    },
+    {
+      "id": "nested-depth-two-min-content",
+      "depth": 2,
+      "gridCount": 3,
+      "columnsAtEveryGrid": [70],
+      "rowsAtEveryGrid": [20],
+      "everyGridSize": {"width":70,"height":20},
+      "textSize": {"width":70,"height":20}
+    },
+    {
+      "id": "nested-depth-one-max-content",
+      "depth": 1,
+      "gridCount": 2,
+      "columnsAtEveryGrid": [100],
+      "rowsAtEveryGrid": [10],
+      "everyGridSize": {"width":100,"height":10},
+      "textSize": {"width":100,"height":10}
+    },
+    {
+      "id": "nested-depth-two-max-content",
+      "depth": 2,
+      "gridCount": 3,
+      "columnsAtEveryGrid": [100],
+      "rowsAtEveryGrid": [10],
+      "everyGridSize": {"width":100,"height":10},
+      "textSize": {"width":100,"height":10}
+    }
+  ],
+  "comparison": {
+    "sizesAndTracksToleranceCssPx": 0.015625,
+    "relativeFrameOrigin": "Each nested Grid and its text start at (0,0) relative to the root Grid.",
+    "chromePageOffsetsAreNotNormative": true
+  }
+}
