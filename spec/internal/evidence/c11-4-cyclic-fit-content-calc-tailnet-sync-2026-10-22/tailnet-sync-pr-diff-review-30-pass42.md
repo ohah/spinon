@@ -32,8 +32,8 @@
 | 26 | 열린 파일이나 활성 연결 중인 서버를 종료·교체 | server PID/단일 listen socket을 확인하고, 교체 target에 비-preview holder 또는 추가 socket이 있으면 거부한다. 서버 PID `1191`은 유지했다. |
 | 27 | local 쓰기 성공만으로 복사 정확성을 주장 | 복사 결과와 독립 local verify가 각각 3,048/3,048 target, 174/174 backup hash를 확인한다. |
 | 28 | Tailnet HTTP 200을 오래된 본문에도 성공 처리 | 요청별 final URL, status, 길이와 SHA를 비교해 3,048/3,048 HTTP 200·hash 일치, 실패 0을 기록한다. |
-| 29 | 문서/이미지 route가 HTML에만 존재하고 브라우저에서 깨짐 | Agent Browser DOM은 네 scene·overflow 설명을 확인하고 PNG route는 `complete=true`, 1280×633을 확인한다. 계획·roadmap·status·evidence 화면도 캡처했다. |
-| 30 | 확인 후 Agent Browser daemon이 남거나 다른 세션을 종료 | 전용 pass42 세션만 close하고 사후 session list/process scan은 비었다. 다른 session을 종료하지 않았고 기존 Tailnet server는 보존했다. |
+| 29 | 문서/이미지 route 또는 PR body image가 깨짐 | Agent Browser DOM은 네 scene·overflow 설명을 확인하고 Tailnet PNG 및 PR body raw screenshot 두 장이 모두 `complete=true`, 1280×633임을 확인했다. 계획·roadmap·status·evidence·PR 화면도 캡처했다. |
+| 30 | 확인 후 Agent Browser daemon이 남거나 다른 세션을 종료 | `spinon-tailnet-pass42`와 `spinon-pr484-verify`만 닫았다. 사후 session list/process scan은 비었고 다른 session은 종료하지 않았으며 기존 Tailnet server를 보존했다. |
 
 ## 판정
 

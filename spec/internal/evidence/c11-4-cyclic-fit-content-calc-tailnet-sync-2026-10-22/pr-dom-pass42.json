@@ -1,0 +1,21 @@
+{
+  "url": "https://github.com/ohah/spinon/pull/484",
+  "title": "docs(c11-4): Tailnet pass42 미리보기 검증 근거 추가 by ohah · Pull Request #484 · ohah/spinon",
+  "stateText": "Skip to content\nNavigation Menu\nPlatform\nSolutions\nResources\nOpen Source\nEnterprise\nPricing\nSign in\nSign up\nohah\nspinon\nRepository navigation\nCode\nIssues\nPull requests\n1\n (1)\nActions\nProjects\nSecurity and quality\nInsights\ndocs(c11-4): Tailnet pass42 미리보기 검증 근거 추가\n- #484\n#484\nOpen\nohah\nwants to merge 1 commit into\nmain\nfrom\ndocs/c11-4-cyclic-fit-content-calc-tailnet-pass42-20261022\n+104,840\nLines changed: 104840 additions & 0 deletions\nConversation0\n (0)\nCommits1\n (1)\nChecks0\n (0)\nFiles changed26\n (26)\nConversation\nohah\ncommented\nOwner\n변경한 항목\n 작업 유형과 주요 영역 라벨 지정: documentation, area: docs, area: testing\n구현 상태 대장 ID: C11.4 (상태 변경 없음, 공식 완료 수 72/213 유지)\n변경 내용과 지원 범위: pass42 Tailnet 개발 미리보기 동기화 스크립트·hash 기록·Agent Browser 화면과 30관점 diff 검토를 추가합니다.\n명세와 동작 근거\n 현재 spec/STATUS.md를 확인했습니다. 이 계획 전용 preview PR은 공식 상태와 public roadmap.html을 변경하지 않습니다.\n API/인터페이스 변경은 없습니다. RSPress 2.0.22 build는 3,048 files, 129,586,338 bytes를 생성했습니다. Tailnet의 3,048/3,048 파일이 HTTP 200과 SHA-256 일치이며, 교체 전 174개 파일은 별도 backup으로 확인했습니다.\n 근거와 범위: pass42 동기화 README, 복사·hash 결과, PR diff 검토.\n앱 runtime 동작이나 플랫폼 완료를 주장하지 않습니다. 아래 화면은 Tailnet 문서 preview와 계획 페이지이지 Spinon runtime 화면이 아닙니다.\nTailnet 문서 preview 화면\n\n남은 범위\n이 PR은 C11.4 fit-content(calc()) 계획을 Tailnet preview에서 제공하는 작업입니다. Spinon runtime 구현, Android/iOS Simulator 실행, Android 실기기, CSS border stroke, WPT, 전체 C11.4는 검증하지 않았습니다.\nC11.4는 미완료입니다. STATUS.md, public roadmap과 72/213은 그대로 유지합니다. production Pages 배포는 하지 않았습니다.\ndocs(evidence): Tailnet pass42 미리보기 검증 근거 추가\n6eae9c5\n ohah added documentation area: testing area: docs labels \nThis branch has not been deployed\nNo deployments\nSign up for free to join this conversation on GitHub. Already have an account? Sign in to comment\nReviewers\nNo reviews\nAssignees\nNo one assigned\nLabels\narea: docs\narea: testing\ndocumentation\nProjects\nNone yet\nMilestone\nNo milestone\nDevelopment\n\nSuccessfully merging this pull request may close these issues.\n\nNone yet\n\n1 participant\nFooter\n© 2026 GitHub, Inc.\nFooter navigation\nTerms\nPrivacy\nSecurity\nStatus\nCommunity\nDocs\nContact\nManage cookies\nDo not share my personal information",
+  "images": [
+    {
+      "alt": "Tailnet roadmap preview",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/docs/c11-4-cyclic-fit-content-calc-tailnet-pass42-20261022/spec/internal/evidence/c11-4-cyclic-fit-content-calc-tailnet-sync-2026-10-22/tailnet-roadmap-agent-browser-pass42.png",
+      "complete": true,
+      "naturalWidth": 1280,
+      "naturalHeight": 633
+    },
+    {
+      "alt": "Cyclic fit-content calc plan page",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/docs/c11-4-cyclic-fit-content-calc-tailnet-pass42-20261022/spec/internal/evidence/c11-4-cyclic-fit-content-calc-tailnet-sync-2026-10-22/tailnet-plan-agent-browser-pass42.png",
+      "complete": true,
+      "naturalWidth": 1280,
+      "naturalHeight": 633
+    }
+  ]
+}
