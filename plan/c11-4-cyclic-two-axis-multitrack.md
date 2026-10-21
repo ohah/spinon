@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 네 fixed scene 구현과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 확인을 마쳤다. 구현 PR은 이 slice와 근거를 연결한다. 이 작업은 전체 C11.4 지원이나 공식 완료 수 `72/213`을 바꾸지 않는다.
+**상태:** 네 fixed scene 구현과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 확인을 마쳤다. 구현 PR [#478](https://github.com/ohah/spinon/pull/478)이 이 slice와 근거를 연결한다. 이 작업은 전체 C11.4 지원이나 공식 완료 수 `72/213`을 바꾸지 않는다.
 
 ## 목적과 제한 범위
 
@@ -41,7 +41,7 @@ Ahem 10px/10px에서 `aa`의 min-content와 max-content inline size는 모두 20
 3. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 장면 전부 실행했다. 각 scene의 Columns/Rows trace, root/text/overflow frame, draw/present를 확인했다. Android PixelCopy와 iOS Metal drawable(제출 전)의 다섯 표본은 빨강 text-item 배경, grid 안 overflow, root의 오른쪽·아래·두 경계 바깥에 있는 초록 overflow를 검사한다. 표본 결과는 각 플랫폼 20/20 exact다. 이는 글리프 paint 증거가 아니며 Simulator 결과를 실기기로 확대하지 않는다.
 4. 기본 `spinon-ffi` debug staticlib에서 새 scene ID가 없는 것과 `c04-runtime-gpu-fixture-test` positive-control staticlib에 포함된 것을 `strings`로 확인했다. 이는 release/app bundle 전반의 바이너리 크기 검증은 아니다.
 5. 관련 Rust 단위 테스트 3개, JavaScript 구문 검사와 fixture module-boundary 검사, `cargo fmt --all -- --check`, fixture-test feature의 `spinon-ffi` all-target Clippy, Android/iOS Simulator app build가 통과했다. full-workspace test/Clippy는 실행하지 않았다. 실행 근거와 SHA-256은 [runtime evidence](../spec/internal/evidence/c11-4-cyclic-two-axis-multitrack-runtime-2026-10-22/README.md)에 기록한다.
-6. 계획 검토와 다른 관점 20개로 구현/runtime을 검토했다. PR 변경분은 별도 관점 20개로 검토해 결과를 기록한다. 발견 사항은 수정 후 해당 검토를 반복한다.
+6. 계획 검토와 다른 관점 20개로 구현/runtime을 검토했다. PR #478 변경분은 별도 관점 20개로 검토해 [PR diff review](../spec/internal/evidence/c11-4-cyclic-two-axis-multitrack-runtime-2026-10-22/pr-diff-review-20.md)에 기록했다. 발견 사항은 수정 후 해당 검토를 반복한다.
 7. PR은 fixed fixture, 두 축 동시 sizing, root 밖 item pixel evidence와 한계를 설명한다. C11.4 공식 check와 `72/213`은 그대로 둔다. 병합 직전 현재 required checks와 merge state를 조회하고 `Rebase and merge`를 사용한다.
 
 ## 범위 밖
