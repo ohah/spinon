@@ -1,6 +1,9 @@
 {
   "pass": "pass02",
-  "closedSession": "spinon-tailnet-status-check",
+  "closedSessions": [
+    "spinon-tailnet-status-check",
+    "spinon-pr441-image-verify"
+  ],
   "browserSessionsAfterClose": [],
   "browserProcessesAfterClose": [],
   "processCheck": "ps -axo pid,comm filtered for agent-browser and Google Chrome",

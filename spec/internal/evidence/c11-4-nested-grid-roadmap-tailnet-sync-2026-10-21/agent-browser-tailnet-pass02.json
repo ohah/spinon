@@ -11,5 +11,18 @@
     "screenshotHeight": 633,
     "screenshotSha256": "be2649fd4bc93c356e5830b7895a1087845a0fd33d65f5ddbd534080de41ed64"
   },
-  "scope": "Rendered Tailnet roadmap content only; no Android or iOS runtime verification."
+  "pullRequestImage": {
+    "pullRequest": "https://github.com/ohah/spinon/pull/441",
+    "initialAttempt": {
+      "result": "broken image",
+      "naturalWidth": 0,
+      "cause": "The raw URL contained a mistyped commit SHA."
+    },
+    "correctedUrl": "https://raw.githubusercontent.com/ohah/spinon/c6c27cedcdd071a20754acf6cfb8c320993a7190/spec/internal/evidence/c11-4-nested-grid-roadmap-tailnet-sync-2026-10-21/tailnet-roadmap-agent-browser-pass02.png",
+    "complete": true,
+    "rendered": true,
+    "naturalWidth": 1280,
+    "naturalHeight": 633
+  },
+  "scope": "Rendered Tailnet roadmap and PR image only; no Android or iOS runtime verification."
 }
