@@ -1,12 +1,12 @@
 # C11.4 두 anonymous text run과 세 spanning image의 bordered Grid plan
 
-**상태:** opt-in fixture 구현과 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator 검증을 마쳤다. 기존 bordered two-image 장면을 포함한 네 장면이 두 플랫폼 모두 4/4 통과했고 PixelCopy·Metal drawable 표본은 각각 8/8 exact다. Rust focused tests, workspace·fixture Clippy, 두 앱 빌드와 기본/opt-in archive boundary도 통과했다. [실행 근거](../spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/README.md) · [구현 실패 관점 20개](../spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/implementation-review-20.md). PR diff의 별도 30관점 검토는 [검토 기록](../spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/pr-diff-review-30.md)에 있다. C11.4 checkbox와 공식 완료 수는 바꾸지 않는다.
+**상태:** opt-in fixture 구현과 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator 검증을 마쳤다. 기존 bordered two-image 장면을 포함한 네 장면이 두 플랫폼 모두 4/4 통과했고 PixelCopy·Metal drawable 표본은 각각 8/8 exact다. Rust focused tests, workspace·fixture Clippy, 두 앱 빌드와 기본/opt-in archive boundary도 통과했다. [실행 근거](../spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/README.md) · [구현 실패 관점 20개](../spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/implementation-review-20.md). PR diff의 별도 30관점 검토는 [검토 기록](../spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/pr-diff-review-30.md)에 있다. [PR #436](https://github.com/ohah/spinon/pull/436)은 2026-10-21 Rebase and merge됐고 merge SHA는 `e0ac9aaf1681aeb56850bf749ec099cf1737d44f`다. C11.4 checkbox와 공식 완료 수는 바꾸지 않는다.
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [anonymous Grid text와 세 image](./c11-4-anonymous-text-multispan-images.md) · [두 anonymous text run과 두 image border/overflow](./c11-4-anonymous-grid-border-overflow.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
 ## 목적
 
-별도 제한 fixture에서 두 anonymous text run + 두 image의 border/overflow, 한 anonymous text run + 세 spanning image의 intrinsic sizing을 확인했다. 두 text run, 세 spanning image, border와 root 바깥 overflow를 한 Grid 계산에 합친 실행 근거는 없다. 이 후속은 세 조건을 같은 document/style revision에 결합하고 span-3 image의 34px border-box overflow 및 border 오른쪽 22px 밖의 실제 색 표본을 두 source order로 확인한다.
+이 제한 fixture는 이전에 따로 확인한 두 anonymous text run + 두 image의 border/overflow와 한 anonymous text run + 세 spanning image의 intrinsic sizing을 한 Grid 계산에 결합한다. 두 source order 모두 같은 document/style revision에서 span-3 image의 34px border-box overflow와 오른쪽 border보다 22px 바깥의 실제 색 표본을 확인했다. 구현은 [PR #436](https://github.com/ohah/spinon/pull/436)으로 병합됐다.
 
 ## 고정 입력과 oracle
 
