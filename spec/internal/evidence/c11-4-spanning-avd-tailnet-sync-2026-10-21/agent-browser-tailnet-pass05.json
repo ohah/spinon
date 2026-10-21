@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "browser": "Agent Browser 0.31.1",
+  "verifiedAtUTC": "2026-10-21T09:36:34Z",
+  "tailnetOrigin": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "previewServerPid": 1191,
+  "roadmap": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html?pass=05-note",
+    "title": "스피논 구현 로드맵",
+    "api37AvdNoteFound": true,
+    "officialCount72of213": true,
+    "c114StillIncomplete": true,
+    "screenshot": "tailnet-roadmap-note-agent-browser-pass05.png",
+    "viewport": { "width": 1600, "height": 900 },
+    "screenshotSha256": "a93b33baaeb0a840fc60afe8fc952af64e519db5fe47e55d86dc917078e7b4c2"
+  },
+  "evidenceReadme": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/README.html",
+    "title": "C11.4 Ahem spanning auto-minimum flex text Android AVD 재검증 - 스피논 문서",
+    "ahemGlyphLimitVisible": true,
+    "pixelCopyLimitVisible": true,
+    "captureImageComplete": true,
+    "captureImageWidth": 1080,
+    "captureImageHeight": 2400
+  },
+  "captureImage": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/spanning-auto-min-flex-tracks.png",
+    "complete": true,
+    "naturalWidth": 1080,
+    "naturalHeight": 2400
+  },
+  "remoteHttpAndSha256": { "files": 3220, "http200": 3220, "hashMatches": 3220, "failures": 0 }
+}
