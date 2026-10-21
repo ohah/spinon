@@ -1,0 +1,394 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+  "userAgentFullVersion": "155.0.8059.85",
+  "platform": "MacIntel",
+  "viewport": {
+    "width": 1280,
+    "height": 577
+  },
+  "devicePixelRatio": 1,
+  "ahemReady": true,
+  "imageDecodeComplete": true,
+  "intrinsicWidths": {
+    "shortText": 20,
+    "commentGroup": 40
+  },
+  "imageTransferredInlineSize": 72,
+  "cases": [
+    {
+      "id": "anonymous-text-image-text",
+      "directChildren": [
+        {
+          "kind": "text",
+          "text": "XX",
+          "id": null
+        },
+        {
+          "kind": "element",
+          "text": null,
+          "id": "middle-image"
+        },
+        {
+          "kind": "text",
+          "text": "XX",
+          "id": null
+        }
+      ],
+      "columns": "20px 36px 36px 20px",
+      "rows": "60px",
+      "grid": {
+        "x": 4,
+        "y": 22,
+        "width": 220,
+        "height": 60
+      },
+      "text": [
+        {
+          "text": "XX",
+          "rects": [
+            {
+              "x": 4,
+              "y": 22,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        },
+        {
+          "text": "XX",
+          "rects": [
+            {
+              "x": 96,
+              "y": 22,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        }
+      ],
+      "elements": [
+        {
+          "id": "middle-image",
+          "tag": "img",
+          "display": "block",
+          "gridColumn": "span 2",
+          "naturalSize": {
+            "width": 24,
+            "height": 16
+          },
+          "frame": {
+            "x": 24,
+            "y": 22,
+            "width": 72,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "id": "image-before-comment-group",
+      "directChildren": [
+        {
+          "kind": "element",
+          "text": null,
+          "id": "first-image"
+        },
+        {
+          "kind": "text",
+          "text": "XX",
+          "id": null
+        },
+        {
+          "kind": "node-8",
+          "text": null,
+          "id": null
+        },
+        {
+          "kind": "text",
+          "text": "XX",
+          "id": null
+        }
+      ],
+      "columns": "36px 36px 40px 0px",
+      "rows": "60px",
+      "grid": {
+        "x": 4,
+        "y": 110,
+        "width": 220,
+        "height": 60
+      },
+      "text": [
+        {
+          "text": "XX",
+          "rects": [
+            {
+              "x": 76,
+              "y": 110,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        },
+        {
+          "text": "XX",
+          "rects": [
+            {
+              "x": 96,
+              "y": 110,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        }
+      ],
+      "elements": [
+        {
+          "id": "first-image",
+          "tag": "img",
+          "display": "block",
+          "gridColumn": "span 2",
+          "naturalSize": {
+            "width": 24,
+            "height": 16
+          },
+          "frame": {
+            "x": 4,
+            "y": 110,
+            "width": 72,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "id": "comment-group-before-image",
+      "directChildren": [
+        {
+          "kind": "text",
+          "text": "XX",
+          "id": null
+        },
+        {
+          "kind": "node-8",
+          "text": null,
+          "id": null
+        },
+        {
+          "kind": "text",
+          "text": "XX",
+          "id": null
+        },
+        {
+          "kind": "element",
+          "text": null,
+          "id": "last-image"
+        }
+      ],
+      "columns": "40px 36px 36px 0px",
+      "rows": "60px",
+      "grid": {
+        "x": 4,
+        "y": 198,
+        "width": 220,
+        "height": 60
+      },
+      "text": [
+        {
+          "text": "XX",
+          "rects": [
+            {
+              "x": 4,
+              "y": 198,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        },
+        {
+          "text": "XX",
+          "rects": [
+            {
+              "x": 24,
+              "y": 198,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        }
+      ],
+      "elements": [
+        {
+          "id": "last-image",
+          "tag": "img",
+          "display": "block",
+          "gridColumn": "span 2",
+          "naturalSize": {
+            "width": 24,
+            "height": 16
+          },
+          "frame": {
+            "x": 44,
+            "y": 198,
+            "width": 72,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "id": "whitespace-around-image",
+      "directChildren": [
+        {
+          "kind": "text",
+          "text": " \t\n",
+          "id": null
+        },
+        {
+          "kind": "element",
+          "text": null,
+          "id": "whitespace-image"
+        },
+        {
+          "kind": "text",
+          "text": "\n\tXX",
+          "id": null
+        }
+      ],
+      "columns": "36px 36px 20px 0px",
+      "rows": "60px",
+      "grid": {
+        "x": 4,
+        "y": 286,
+        "width": 220,
+        "height": 60
+      },
+      "text": [
+        {
+          "text": " \t\n",
+          "rects": []
+        },
+        {
+          "text": "\n\tXX",
+          "rects": [
+            {
+              "x": 76,
+              "y": 286,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        }
+      ],
+      "elements": [
+        {
+          "id": "whitespace-image",
+          "tag": "img",
+          "display": "block",
+          "gridColumn": "span 2",
+          "naturalSize": {
+            "width": 24,
+            "height": 16
+          },
+          "frame": {
+            "x": 4,
+            "y": 286,
+            "width": 72,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "id": "hidden-child-around-image",
+      "directChildren": [
+        {
+          "kind": "text",
+          "text": "XX",
+          "id": null
+        },
+        {
+          "kind": "element",
+          "text": null,
+          "id": "hidden-grid-child"
+        },
+        {
+          "kind": "element",
+          "text": null,
+          "id": "hidden-child-image"
+        },
+        {
+          "kind": "text",
+          "text": "XX",
+          "id": null
+        }
+      ],
+      "columns": "20px 36px 36px 20px",
+      "rows": "60px",
+      "grid": {
+        "x": 4,
+        "y": 374,
+        "width": 220,
+        "height": 60
+      },
+      "text": [
+        {
+          "text": "XX",
+          "rects": [
+            {
+              "x": 4,
+              "y": 374,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        },
+        {
+          "text": "ignored",
+          "rects": []
+        },
+        {
+          "text": "XX",
+          "rects": [
+            {
+              "x": 96,
+              "y": 374,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        }
+      ],
+      "elements": [
+        {
+          "id": "hidden-grid-child",
+          "tag": "span",
+          "display": "none",
+          "gridColumn": "auto",
+          "naturalSize": null,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "id": "hidden-child-image",
+          "tag": "img",
+          "display": "block",
+          "gridColumn": "span 2",
+          "naturalSize": {
+            "width": 24,
+            "height": 16
+          },
+          "frame": {
+            "x": 24,
+            "y": 374,
+            "width": 72,
+            "height": 48
+          }
+        }
+      ]
+    }
+  ]
+}

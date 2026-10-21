@@ -1,0 +1,104 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Spinon C11.4 anonymous Grid text and replaced item precomparison</title>
+<style>
+  @font-face { font-family: Ahem; src: url("../../resources/c15/Ahem.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 520px; background: #fff; }
+  body { font: 12px/16px system-ui, sans-serif; color: #111; }
+  .case { min-height: 88px; border-bottom: 1px solid #ccc; padding: 4px; }
+  .label { display: block; margin-bottom: 2px; }
+  .grid { display: grid; width: 220px; height: 60px; grid-template-columns: repeat(4, min-content); grid-template-rows: 60px; gap: 0; align-items: start; align-content: start; justify-items: start; justify-content: start; overflow: visible; font: 10px/10px Ahem, sans-serif; white-space: normal; color: #e5484d; }
+  .grid img { width: auto; height: 48px; grid-column: span 2; }
+  #result { display: none; }
+</style>
+<body>
+  <section class="case" data-case="anonymous-text-image-text">
+    <span class="label">two anonymous text items around one spanning replaced item</span>
+    <div class="grid" id="anonymous-text-image-text">XX<img id="middle-image" src="../../resources/c14-1-png-basic.png" alt="">XX</div>
+  </section>
+  <section class="case" data-case="image-before-comment-group">
+    <span class="label">image first, then two text nodes joined by a comment</span>
+    <div class="grid" id="image-before-comment-group"><img id="first-image" src="../../resources/c14-1-png-basic.png" alt="">XX<!-- comment does not split text sequence -->XX</div>
+  </section>
+  <section class="case" data-case="comment-group-before-image">
+    <span class="label">two comment-separated text nodes form one item before the image</span>
+    <div class="grid" id="comment-group-before-image">XX<!-- comment does not split text sequence -->XX<img id="last-image" src="../../resources/c14-1-png-basic.png" alt=""></div>
+  </section>
+  <section class="case" data-case="whitespace-around-image">
+    <span class="label">collapsible whitespace around the image does not create an extra item</span>
+    <div class="grid" id="whitespace-around-image">&#32;&#9;&#10;<img id="whitespace-image" src="../../resources/c14-1-png-basic.png" alt="">&#10;&#9;XX</div>
+  </section>
+  <section class="case" data-case="hidden-child-around-image">
+    <span class="label">a hidden child is skipped while the image separates neighboring text runs</span>
+    <div class="grid" id="hidden-child-around-image">XX<span id="hidden-grid-child" style="display:none">ignored</span><img id="hidden-child-image" src="../../resources/c14-1-png-basic.png" alt="">XX</div>
+  </section>
+  <pre id="result"></pre>
+  <script>
+    const rect = (node) => {
+      const value = node.getBoundingClientRect();
+      return {x:value.x, y:value.y, width:value.width, height:value.height};
+    };
+    const textSegments = (element) => {
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+      const segments = [];
+      for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        segments.push({text:node.data, rects:Array.from(range.getClientRects(), (value) => ({x:value.x,y:value.y,width:value.width,height:value.height}))});
+      }
+      return segments;
+    };
+    const minContentWidth = (text) => {
+      const probe = document.createElement('div');
+      probe.textContent = text;
+      probe.style.cssText = 'position:fixed;left:-10000px;top:0;width:min-content;height:auto;margin:0;padding:0;border:0;font:10px/10px Ahem,sans-serif;white-space:normal;overflow-wrap:normal;word-break:normal;';
+      document.body.appendChild(probe);
+      const width = probe.getBoundingClientRect().width;
+      probe.remove();
+      return width;
+    };
+    Promise.all([
+      document.fonts.ready,
+      ...Array.from(document.querySelectorAll('img'), (image) => image.decode()),
+    ]).then(async () => {
+      const browserVersion = await navigator.userAgentData.getHighEntropyValues(['uaFullVersion']);
+      const cases = Array.from(document.querySelectorAll('.case'), (section) => {
+        const grid = section.querySelector('.grid');
+        return {
+          id:section.dataset.case,
+          directChildren:Array.from(grid.childNodes, (node) => ({
+            kind:node.nodeType === Node.TEXT_NODE ? 'text' : node.nodeType === Node.ELEMENT_NODE ? 'element' : `node-${node.nodeType}`,
+            text:node.nodeType === Node.TEXT_NODE ? node.data : null,
+            id:node.nodeType === Node.ELEMENT_NODE ? node.id || null : null,
+          })),
+          columns:getComputedStyle(grid).gridTemplateColumns,
+          rows:getComputedStyle(grid).gridTemplateRows,
+          grid:rect(grid),
+          text:textSegments(grid),
+          elements:Array.from(grid.children, (child) => ({
+            id:child.id || null,
+            tag:child.localName,
+            display:getComputedStyle(child).display,
+            gridColumn:getComputedStyle(child).gridColumn,
+            naturalSize:child instanceof HTMLImageElement ? {width:child.naturalWidth,height:child.naturalHeight} : null,
+            frame:rect(child),
+          })),
+        };
+      });
+      window.__C114_ANONYMOUS_TEXT_IMAGE_OBSERVATION__ = {
+        userAgent:navigator.userAgent,
+        userAgentFullVersion:browserVersion.uaFullVersion,
+        platform:navigator.platform,
+        viewport:{width:innerWidth,height:innerHeight},
+        devicePixelRatio,
+        ahemReady:document.fonts.check('10px Ahem'),
+        imageDecodeComplete:Array.from(document.querySelectorAll('img'), (image) => image.complete && image.naturalWidth === 24 && image.naturalHeight === 16).every(Boolean),
+        intrinsicWidths:{shortText:minContentWidth('XX'), commentGroup:minContentWidth('XXXX')},
+        imageTransferredInlineSize:48 * 24 / 16,
+        cases,
+      };
+      document.querySelector('#result').textContent = JSON.stringify(window.__C114_ANONYMOUS_TEXT_IMAGE_OBSERVATION__, null, 2);
+    });
+  </script>
+</body>
