@@ -1,5 +1,9 @@
 # 내부 인터페이스 명세
 
+## C11.4 nested Grid 양 축 intrinsic sizing · 구현 중
+
+[집중 계획](../../plan/c11-4-nested-grid-two-axis-depth-two.md) · [Chrome 156 사전 비교·독립 기대값](./evidence/c11-4-nested-grid-two-axis-precomparison-2026-10-22/README.md) · [Android/iOS Simulator 실행·archive 경계·화면](./evidence/c11-4-nested-grid-two-axis-runtime-2026-10-22/README.md) · [구현/runtime 실패 관점 20개](./evidence/c11-4-nested-grid-two-axis-runtime-2026-10-22/implementation-review-20.md) · [PR diff 적대 검토 30개](./evidence/c11-4-nested-grid-two-axis-runtime-2026-10-22/pr-diff-review-30.md). 네 fixed fixture scene만 대상으로 한다. PR과 merge는 아직 완료되지 않았으며 C11.4 체크와 공식 `72/213` 집계는 유지한다.
+
 ## C11.3.3 unknown-area trailing implicit named-line 후속 · PR #393
 
 [계획](../../plan/c11-3-3-unknown-named-area-implicit-lines.md) · [Chrome 154 기준·SM-S731N 실기기·Android AVD·iOS Simulator 실행, overflow 화면·hash·한계](./evidence/c11-3-3-unknown-area-implicit-lines-followup-2026-10-21/README.md) · [구현 실패 관점 20개](./evidence/c11-3-3-unknown-area-implicit-lines-followup-2026-10-21/implementation-review-20.md) · [최종 PR diff 실패 관점 30개](./evidence/c11-3-3-unknown-area-implicit-lines-followup-2026-10-21/pr-diff-review-30.md) · [사전 PR diff 검토 20개](./evidence/c11-3-3-unknown-area-implicit-lines-followup-2026-10-21/pr-diff-review-20.md) · [PR #393](https://github.com/ohah/spinon/pull/393). 미구현 area bare-ident 및 named-span shortage의 양의 trailing implicit line, 두 축의 고정 px `grid-auto-*` subset만 후보로 연결한다. 일반 numeric/leading/negative implicit line과 자동·intrinsic track은 계속 거부하며 공식 C11.3.3 상태·완료 수는 미완료로 유지한다.
