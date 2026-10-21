@@ -4,6 +4,8 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [CSS Grid 내부 계약](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md)
 
+**구현 PR:** [#422](https://github.com/ohah/spinon/pull/422)
+
 ## 목적과 범위
 
 현재 C11.4 intrinsic input은 `<div>`의 direct-leaf text와 direct `img`를 보존하지만, Grid container의 직접 텍스트는 `HostDocument` layout 변환에서 거부한다. CSS Grid는 in-flow direct child를 Grid item으로 만들고, 각 direct text sequence를 anonymous block Grid item으로 감싼다. collapsible whitespace만 있는 sequence는 item이 되지 않으며, 익명 item은 placement 속성을 지정할 요소가 없어 자동 배치된다. 익명 box 자체에는 선택자를 적용할 수 없지만 텍스트는 Grid container의 상속 font를 사용한다. 기준은 [CSS Grid Layout Module Level 1 §6](https://www.w3.org/TR/css-grid-1/#grid-items)이다.
