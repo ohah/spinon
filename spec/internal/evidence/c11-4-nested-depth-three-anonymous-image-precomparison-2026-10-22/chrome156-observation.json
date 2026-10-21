@@ -1,0 +1,786 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "userAgentFullVersion": "156.0.8078.48",
+  "platform": "MacIntel",
+  "viewport": {
+    "width": 1280,
+    "height": 633
+  },
+  "devicePixelRatio": 1,
+  "ahemReady": true,
+  "imagesDecoded": true,
+  "textIntrinsicWidths": {
+    "min": 70,
+    "max": 100
+  },
+  "cases": [
+    {
+      "id": "depth-three-min-content-text-before-image",
+      "grids": [
+        {
+          "id": "c114-depth-three-min-content-text-before-image-root",
+          "parentGrid": null,
+          "directChildren": [
+            {
+              "kind": "element",
+              "text": null,
+              "id": "c114-depth-three-min-content-text-before-image-middle"
+            }
+          ],
+          "columns": "94px",
+          "rows": "20px",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 94,
+            "height": 20
+          },
+          "text": [
+            {
+              "text": "XX XXXXXXX",
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 70,
+                "height": 20
+              },
+              "fragments": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 20,
+                  "height": 10
+                },
+                {
+                  "x": 0,
+                  "y": 10,
+                  "width": 70,
+                  "height": 10
+                }
+              ]
+            }
+          ],
+          "images": []
+        },
+        {
+          "id": "c114-depth-three-min-content-text-before-image-middle",
+          "parentGrid": "c114-depth-three-min-content-text-before-image-root",
+          "directChildren": [
+            {
+              "kind": "element",
+              "text": null,
+              "id": "c114-depth-three-min-content-text-before-image-branch"
+            }
+          ],
+          "columns": "94px",
+          "rows": "20px",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 94,
+            "height": 20
+          },
+          "text": [
+            {
+              "text": "XX XXXXXXX",
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 70,
+                "height": 20
+              },
+              "fragments": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 20,
+                  "height": 10
+                },
+                {
+                  "x": 0,
+                  "y": 10,
+                  "width": 70,
+                  "height": 10
+                }
+              ]
+            }
+          ],
+          "images": []
+        },
+        {
+          "id": "c114-depth-three-min-content-text-before-image-branch",
+          "parentGrid": "c114-depth-three-min-content-text-before-image-middle",
+          "directChildren": [
+            {
+              "kind": "element",
+              "text": null,
+              "id": "c114-depth-three-min-content-text-before-image-inner"
+            }
+          ],
+          "columns": "94px",
+          "rows": "20px",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 94,
+            "height": 20
+          },
+          "text": [
+            {
+              "text": "XX XXXXXXX",
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 70,
+                "height": 20
+              },
+              "fragments": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 20,
+                  "height": 10
+                },
+                {
+                  "x": 0,
+                  "y": 10,
+                  "width": 70,
+                  "height": 10
+                }
+              ]
+            }
+          ],
+          "images": []
+        },
+        {
+          "id": "c114-depth-three-min-content-text-before-image-inner",
+          "parentGrid": "c114-depth-three-min-content-text-before-image-branch",
+          "directChildren": [
+            {
+              "kind": "text",
+              "text": "XX XXXXXXX",
+              "id": null
+            },
+            {
+              "kind": "element",
+              "text": null,
+              "id": "c114-depth-three-min-content-text-before-image-image"
+            }
+          ],
+          "columns": "70px 24px",
+          "rows": "20px",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 94,
+            "height": 20
+          },
+          "text": [
+            {
+              "text": "XX XXXXXXX",
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 70,
+                "height": 20
+              },
+              "fragments": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 20,
+                  "height": 10
+                },
+                {
+                  "x": 0,
+                  "y": 10,
+                  "width": 70,
+                  "height": 10
+                }
+              ]
+            }
+          ],
+          "images": [
+            {
+              "id": "c114-depth-three-min-content-text-before-image-image",
+              "naturalSize": {
+                "width": 24,
+                "height": 16
+              },
+              "frame": {
+                "x": 70,
+                "y": 0,
+                "width": 24,
+                "height": 16
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "depth-three-min-content-image-before-text",
+      "grids": [
+        {
+          "id": "c114-depth-three-min-content-image-before-text-root",
+          "parentGrid": null,
+          "directChildren": [
+            {
+              "kind": "element",
+              "text": null,
+              "id": "c114-depth-three-min-content-image-before-text-middle"
+            }
+          ],
+          "columns": "94px",
+          "rows": "20px",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 94,
+            "height": 20
+          },
+          "text": [
+            {
+              "text": "XX XXXXXXX",
+              "bounds": {
+                "x": 24,
+                "y": 0,
+                "width": 70,
+                "height": 20
+              },
+              "fragments": [
+                {
+                  "x": 24,
+                  "y": 0,
+                  "width": 20,
+                  "height": 10
+                },
+                {
+                  "x": 24,
+                  "y": 10,
+                  "width": 70,
+                  "height": 10
+                }
+              ]
+            }
+          ],
+          "images": []
+        },
+        {
+          "id": "c114-depth-three-min-content-image-before-text-middle",
+          "parentGrid": "c114-depth-three-min-content-image-before-text-root",
+          "directChildren": [
+            {
+              "kind": "element",
+              "text": null,
+              "id": "c114-depth-three-min-content-image-before-text-branch"
+            }
+          ],
+          "columns": "94px",
+          "rows": "20px",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 94,
+            "height": 20
+          },
+          "text": [
+            {
+              "text": "XX XXXXXXX",
+              "bounds": {
+                "x": 24,
+                "y": 0,
+                "width": 70,
+                "height": 20
+              },
+              "fragments": [
+                {
+                  "x": 24,
+                  "y": 0,
+                  "width": 20,
+                  "height": 10
+                },
+                {
+                  "x": 24,
+                  "y": 10,
+                  "width": 70,
+                  "height": 10
+                }
+              ]
+            }
+          ],
+          "images": []
+        },
+        {
+          "id": "c114-depth-three-min-content-image-before-text-branch",
+          "parentGrid": "c114-depth-three-min-content-image-before-text-middle",
+          "directChildren": [
+            {
+              "kind": "element",
+              "text": null,
+              "id": "c114-depth-three-min-content-image-before-text-inner"
+            }
+          ],
+          "columns": "94px",
+          "rows": "20px",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 94,
+            "height": 20
+          },
+          "text": [
+            {
+              "text": "XX XXXXXXX",
+              "bounds": {
+                "x": 24,
+                "y": 0,
+                "width": 70,
+                "height": 20
+              },
+              "fragments": [
+                {
+                  "x": 24,
+                  "y": 0,
+                  "width": 20,
+                  "height": 10
+                },
+                {
+                  "x": 24,
+                  "y": 10,
+                  "width": 70,
+                  "height": 10
+                }
+              ]
+            }
+          ],
+          "images": []
+        },
+        {
+          "id": "c114-depth-three-min-content-image-before-text-inner",
+          "parentGrid": "c114-depth-three-min-content-image-before-text-branch",
+          "directChildren": [
+            {
+              "kind": "element",
+              "text": null,
+              "id": "c114-depth-three-min-content-image-before-text-image"
+            },
+            {
+              "kind": "text",
+              "text": "XX XXXXXXX",
+              "id": null
+            }
+          ],
+          "columns": "24px 70px",
+          "rows": "20px",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 94,
+            "height": 20
+          },
+          "text": [
+            {
+              "text": "XX XXXXXXX",
+              "bounds": {
+                "x": 24,
+                "y": 0,
+                "width": 70,
+                "height": 20
+              },
+              "fragments": [
+                {
+                  "x": 24,
+                  "y": 0,
+                  "width": 20,
+                  "height": 10
+                },
+                {
+                  "x": 24,
+                  "y": 10,
+                  "width": 70,
+                  "height": 10
+                }
+              ]
+            }
+          ],
+          "images": [
+            {
+              "id": "c114-depth-three-min-content-image-before-text-image",
+              "naturalSize": {
+                "width": 24,
+                "height": 16
+              },
+              "frame": {
+                "x": 0,
+                "y": 0,
+                "width": 24,
+                "height": 16
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "depth-three-max-content-text-before-image",
+      "grids": [
+        {
+          "id": "c114-depth-three-max-content-text-before-image-root",
+          "parentGrid": null,
+          "directChildren": [
+            {
+              "kind": "element",
+              "text": null,
+              "id": "c114-depth-three-max-content-text-before-image-middle"
+            }
+          ],
+          "columns": "124px",
+          "rows": "16px",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 124,
+            "height": 16
+          },
+          "text": [
+            {
+              "text": "XX XXXXXXX",
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 10
+              },
+              "fragments": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 10
+                }
+              ]
+            }
+          ],
+          "images": []
+        },
+        {
+          "id": "c114-depth-three-max-content-text-before-image-middle",
+          "parentGrid": "c114-depth-three-max-content-text-before-image-root",
+          "directChildren": [
+            {
+              "kind": "element",
+              "text": null,
+              "id": "c114-depth-three-max-content-text-before-image-branch"
+            }
+          ],
+          "columns": "124px",
+          "rows": "16px",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 124,
+            "height": 16
+          },
+          "text": [
+            {
+              "text": "XX XXXXXXX",
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 10
+              },
+              "fragments": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 10
+                }
+              ]
+            }
+          ],
+          "images": []
+        },
+        {
+          "id": "c114-depth-three-max-content-text-before-image-branch",
+          "parentGrid": "c114-depth-three-max-content-text-before-image-middle",
+          "directChildren": [
+            {
+              "kind": "element",
+              "text": null,
+              "id": "c114-depth-three-max-content-text-before-image-inner"
+            }
+          ],
+          "columns": "124px",
+          "rows": "16px",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 124,
+            "height": 16
+          },
+          "text": [
+            {
+              "text": "XX XXXXXXX",
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 10
+              },
+              "fragments": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 10
+                }
+              ]
+            }
+          ],
+          "images": []
+        },
+        {
+          "id": "c114-depth-three-max-content-text-before-image-inner",
+          "parentGrid": "c114-depth-three-max-content-text-before-image-branch",
+          "directChildren": [
+            {
+              "kind": "text",
+              "text": "XX XXXXXXX",
+              "id": null
+            },
+            {
+              "kind": "element",
+              "text": null,
+              "id": "c114-depth-three-max-content-text-before-image-image"
+            }
+          ],
+          "columns": "100px 24px",
+          "rows": "16px",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 124,
+            "height": 16
+          },
+          "text": [
+            {
+              "text": "XX XXXXXXX",
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 10
+              },
+              "fragments": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 10
+                }
+              ]
+            }
+          ],
+          "images": [
+            {
+              "id": "c114-depth-three-max-content-text-before-image-image",
+              "naturalSize": {
+                "width": 24,
+                "height": 16
+              },
+              "frame": {
+                "x": 100,
+                "y": 0,
+                "width": 24,
+                "height": 16
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "depth-three-max-content-image-before-text",
+      "grids": [
+        {
+          "id": "c114-depth-three-max-content-image-before-text-root",
+          "parentGrid": null,
+          "directChildren": [
+            {
+              "kind": "element",
+              "text": null,
+              "id": "c114-depth-three-max-content-image-before-text-middle"
+            }
+          ],
+          "columns": "124px",
+          "rows": "16px",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 124,
+            "height": 16
+          },
+          "text": [
+            {
+              "text": "XX XXXXXXX",
+              "bounds": {
+                "x": 24,
+                "y": 0,
+                "width": 100,
+                "height": 10
+              },
+              "fragments": [
+                {
+                  "x": 24,
+                  "y": 0,
+                  "width": 100,
+                  "height": 10
+                }
+              ]
+            }
+          ],
+          "images": []
+        },
+        {
+          "id": "c114-depth-three-max-content-image-before-text-middle",
+          "parentGrid": "c114-depth-three-max-content-image-before-text-root",
+          "directChildren": [
+            {
+              "kind": "element",
+              "text": null,
+              "id": "c114-depth-three-max-content-image-before-text-branch"
+            }
+          ],
+          "columns": "124px",
+          "rows": "16px",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 124,
+            "height": 16
+          },
+          "text": [
+            {
+              "text": "XX XXXXXXX",
+              "bounds": {
+                "x": 24,
+                "y": 0,
+                "width": 100,
+                "height": 10
+              },
+              "fragments": [
+                {
+                  "x": 24,
+                  "y": 0,
+                  "width": 100,
+                  "height": 10
+                }
+              ]
+            }
+          ],
+          "images": []
+        },
+        {
+          "id": "c114-depth-three-max-content-image-before-text-branch",
+          "parentGrid": "c114-depth-three-max-content-image-before-text-middle",
+          "directChildren": [
+            {
+              "kind": "element",
+              "text": null,
+              "id": "c114-depth-three-max-content-image-before-text-inner"
+            }
+          ],
+          "columns": "124px",
+          "rows": "16px",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 124,
+            "height": 16
+          },
+          "text": [
+            {
+              "text": "XX XXXXXXX",
+              "bounds": {
+                "x": 24,
+                "y": 0,
+                "width": 100,
+                "height": 10
+              },
+              "fragments": [
+                {
+                  "x": 24,
+                  "y": 0,
+                  "width": 100,
+                  "height": 10
+                }
+              ]
+            }
+          ],
+          "images": []
+        },
+        {
+          "id": "c114-depth-three-max-content-image-before-text-inner",
+          "parentGrid": "c114-depth-three-max-content-image-before-text-branch",
+          "directChildren": [
+            {
+              "kind": "element",
+              "text": null,
+              "id": "c114-depth-three-max-content-image-before-text-image"
+            },
+            {
+              "kind": "text",
+              "text": "XX XXXXXXX",
+              "id": null
+            }
+          ],
+          "columns": "24px 100px",
+          "rows": "16px",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 124,
+            "height": 16
+          },
+          "text": [
+            {
+              "text": "XX XXXXXXX",
+              "bounds": {
+                "x": 24,
+                "y": 0,
+                "width": 100,
+                "height": 10
+              },
+              "fragments": [
+                {
+                  "x": 24,
+                  "y": 0,
+                  "width": 100,
+                  "height": 10
+                }
+              ]
+            }
+          ],
+          "images": [
+            {
+              "id": "c114-depth-three-max-content-image-before-text-image",
+              "naturalSize": {
+                "width": 24,
+                "height": 16
+              },
+              "frame": {
+                "x": 0,
+                "y": 0,
+                "width": 24,
+                "height": 16
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

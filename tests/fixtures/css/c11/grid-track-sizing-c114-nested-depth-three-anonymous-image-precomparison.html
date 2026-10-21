@@ -1,0 +1,105 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Spinon C11.4 depth-three nested Grid anonymous text and image precomparison</title>
+<style>
+  @font-face { font-family: Ahem; src: url("../../resources/c15/Ahem.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 1280px; background: #fff; }
+  body { font: 12px/16px system-ui, sans-serif; color: #111; }
+  .case { min-height: 100px; border-bottom: 1px solid #ccc; padding: 8px; }
+  .label { display: block; margin-bottom: 4px; }
+  .grid {
+    display: grid;
+    width: var(--intrinsic);
+    height: var(--intrinsic);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    column-gap: 0;
+    row-gap: 0;
+    align-items: start;
+    justify-items: start;
+    align-content: start;
+    justify-content: start;
+    font: 10px/10px Ahem, sans-serif;
+    white-space: normal;
+    color: #e5484d;
+  }
+  .root, .middle, .branch { grid-template-columns: var(--intrinsic); grid-template-rows: var(--intrinsic); }
+  .inner { grid-template-columns: repeat(2, var(--intrinsic)); grid-template-rows: var(--intrinsic); }
+  .grid img { width: auto; height: auto; }
+  #result { display: none; }
+</style>
+<body>
+  <section class="case" data-case="depth-three-min-content-text-before-image" style="--intrinsic:min-content">
+    <span class="label">depth three, min-content, anonymous text before natural image</span>
+    <div class="grid root" id="c114-depth-three-min-content-text-before-image-root"><div class="grid middle" id="c114-depth-three-min-content-text-before-image-middle"><div class="grid branch" id="c114-depth-three-min-content-text-before-image-branch"><div class="grid inner" id="c114-depth-three-min-content-text-before-image-inner">XX XXXXXXX<img id="c114-depth-three-min-content-text-before-image-image" src="../../resources/c14-1-png-basic.png" alt=""></div></div></div></div>
+  </section>
+  <section class="case" data-case="depth-three-min-content-image-before-text" style="--intrinsic:min-content">
+    <span class="label">depth three, min-content, natural image before anonymous text</span>
+    <div class="grid root" id="c114-depth-three-min-content-image-before-text-root"><div class="grid middle" id="c114-depth-three-min-content-image-before-text-middle"><div class="grid branch" id="c114-depth-three-min-content-image-before-text-branch"><div class="grid inner" id="c114-depth-three-min-content-image-before-text-inner"><img id="c114-depth-three-min-content-image-before-text-image" src="../../resources/c14-1-png-basic.png" alt="">XX XXXXXXX</div></div></div></div>
+  </section>
+  <section class="case" data-case="depth-three-max-content-text-before-image" style="--intrinsic:max-content">
+    <span class="label">depth three, max-content, anonymous text before natural image</span>
+    <div class="grid root" id="c114-depth-three-max-content-text-before-image-root"><div class="grid middle" id="c114-depth-three-max-content-text-before-image-middle"><div class="grid branch" id="c114-depth-three-max-content-text-before-image-branch"><div class="grid inner" id="c114-depth-three-max-content-text-before-image-inner">XX XXXXXXX<img id="c114-depth-three-max-content-text-before-image-image" src="../../resources/c14-1-png-basic.png" alt=""></div></div></div></div>
+  </section>
+  <section class="case" data-case="depth-three-max-content-image-before-text" style="--intrinsic:max-content">
+    <span class="label">depth three, max-content, natural image before anonymous text</span>
+    <div class="grid root" id="c114-depth-three-max-content-image-before-text-root"><div class="grid middle" id="c114-depth-three-max-content-image-before-text-middle"><div class="grid branch" id="c114-depth-three-max-content-image-before-text-branch"><div class="grid inner" id="c114-depth-three-max-content-image-before-text-inner"><img id="c114-depth-three-max-content-image-before-text-image" src="../../resources/c14-1-png-basic.png" alt="">XX XXXXXXX</div></div></div></div>
+  </section>
+  <pre id="result"></pre>
+  <script>
+    const rect = (node, origin) => {
+      const value = node.getBoundingClientRect();
+      return {x:value.x-origin.x, y:value.y-origin.y, width:value.width, height:value.height};
+    };
+    const textRects = (grid) => {
+      const walker = document.createTreeWalker(grid, NodeFilter.SHOW_TEXT);
+      const values = [];
+      for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+        if (!node.data.trim()) continue;
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        values.push({text:node.data, bounds:rect(range, grid.getBoundingClientRect()), fragments:Array.from(range.getClientRects(), (part) => ({x:part.x-grid.getBoundingClientRect().x,y:part.y-grid.getBoundingClientRect().y,width:part.width,height:part.height}))});
+      }
+      return values;
+    };
+    Promise.all([
+      document.fonts.ready,
+      ...Array.from(document.querySelectorAll('img'), (image) => image.decode()),
+    ]).then(async () => {
+      const browserVersion = await navigator.userAgentData.getHighEntropyValues(['uaFullVersion']);
+      const cases = Array.from(document.querySelectorAll('.case'), (section) => {
+        const root = section.querySelector('.root');
+        const rootRect = root.getBoundingClientRect();
+        const grids = Array.from(section.querySelectorAll('.grid'), (grid) => ({
+          id:grid.id,
+          parentGrid:grid.parentElement.closest('.grid')?.id ?? null,
+          directChildren:Array.from(grid.childNodes, (node) => ({
+            kind:node.nodeType === Node.TEXT_NODE ? 'text' : node.nodeType === Node.ELEMENT_NODE ? 'element' : `node-${node.nodeType}`,
+            text:node.nodeType === Node.TEXT_NODE ? node.data : null,
+            id:node.nodeType === Node.ELEMENT_NODE ? node.id || null : null,
+          })),
+          columns:getComputedStyle(grid).gridTemplateColumns,
+          rows:getComputedStyle(grid).gridTemplateRows,
+          frame:rect(grid, rootRect),
+          text:textRects(grid),
+          images:Array.from(grid.querySelectorAll(':scope > img'), (image) => ({id:image.id, naturalSize:{width:image.naturalWidth,height:image.naturalHeight}, frame:rect(image, rootRect)})),
+        }));
+        return {id:section.dataset.case, grids};
+      });
+      window.__C114_NESTED_ANONYMOUS_IMAGE_OBSERVATION__ = {
+        userAgent:navigator.userAgent,
+        userAgentFullVersion:browserVersion.uaFullVersion,
+        platform:navigator.platform,
+        viewport:{width:innerWidth,height:innerHeight},
+        devicePixelRatio,
+        ahemReady:document.fonts.check('10px Ahem'),
+        imagesDecoded:Array.from(document.querySelectorAll('img'), (image) => image.complete && image.naturalWidth === 24 && image.naturalHeight === 16).every(Boolean),
+        textIntrinsicWidths:{min:70,max:100},
+        cases,
+      };
+      document.querySelector('#result').textContent = JSON.stringify(window.__C114_NESTED_ANONYMOUS_IMAGE_OBSERVATION__, null, 2);
+    });
+  </script>
+</body>
