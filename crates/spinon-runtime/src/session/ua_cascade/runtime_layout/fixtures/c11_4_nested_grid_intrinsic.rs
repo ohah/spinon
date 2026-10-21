@@ -200,6 +200,7 @@ pub(super) fn prepare(
     Ok(Some(super::C11_4TextInput {
         paragraph_styles,
         engine,
+        two_axis_nested_grid: false,
     }))
 }
 

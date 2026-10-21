@@ -504,14 +504,25 @@ where
                 &text_input.engine,
             )
         } else if let Some(text_input) = &c11_4_text_input {
-            spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs(
-                &request.snapshot,
-                root,
-                styles.clone(),
-                request.viewport,
-                &text_input.paragraph_styles,
-                &text_input.engine,
-            )
+            if text_input.two_axis_nested_grid {
+                spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_two_axis_nested_grid_text_paragraphs(
+                    &request.snapshot,
+                    root,
+                    styles.clone(),
+                    request.viewport,
+                    &text_input.paragraph_styles,
+                    &text_input.engine,
+                )
+            } else {
+                spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs(
+                    &request.snapshot,
+                    root,
+                    styles.clone(),
+                    request.viewport,
+                    &text_input.paragraph_styles,
+                    &text_input.engine,
+                )
+            }
         } else if let Some(image_input) = &c11_4_image_input {
             spinon_style_to_layout::compute_runtime_style_layout_with_intrinsic_size_snapshot(
                 &request.snapshot,

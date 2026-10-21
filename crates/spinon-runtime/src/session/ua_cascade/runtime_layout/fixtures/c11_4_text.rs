@@ -187,6 +187,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     Ok(Some(super::C11_4TextInput {
         paragraph_styles: BTreeMap::from([(item.id(), ahem_paragraph_style(case))]),
         engine,
+        two_axis_nested_grid: false,
     }))
 }
 
@@ -382,6 +383,7 @@ fn prepare_multispan_text(
     Ok(Some(super::C11_4TextInput {
         paragraph_styles,
         engine,
+        two_axis_nested_grid: false,
     }))
 }
 
@@ -611,6 +613,7 @@ fn prepare_typed_auto_repeat_text(
     Ok(Some(super::C11_4TextInput {
         paragraph_styles: BTreeMap::from([(text_owner.id(), typed_auto_repeat_paragraph_style())]),
         engine,
+        two_axis_nested_grid: false,
     }))
 }
 

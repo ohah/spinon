@@ -10,16 +10,18 @@ struct Case {
     id: &'static str,
     depth: usize,
     constraint: &'static str,
+    two_axis: bool,
     expected_width: f32,
     expected_height: f32,
     contribution: LayoutGridTrackSizingContributionKind,
 }
 
-const CASES: [Case; 4] = [
+const CASES: [Case; 8] = [
     Case {
         id: "nested-depth-one-min-content",
         depth: 1,
         constraint: "min-content",
+        two_axis: false,
         expected_width: 70.0,
         expected_height: 20.0,
         contribution: LayoutGridTrackSizingContributionKind::MinContent,
@@ -28,6 +30,7 @@ const CASES: [Case; 4] = [
         id: "nested-depth-two-min-content",
         depth: 2,
         constraint: "min-content",
+        two_axis: false,
         expected_width: 70.0,
         expected_height: 20.0,
         contribution: LayoutGridTrackSizingContributionKind::MinContent,
@@ -36,6 +39,7 @@ const CASES: [Case; 4] = [
         id: "nested-depth-one-max-content",
         depth: 1,
         constraint: "max-content",
+        two_axis: false,
         expected_width: 100.0,
         expected_height: 10.0,
         contribution: LayoutGridTrackSizingContributionKind::MaxContent,
@@ -44,6 +48,43 @@ const CASES: [Case; 4] = [
         id: "nested-depth-two-max-content",
         depth: 2,
         constraint: "max-content",
+        two_axis: false,
+        expected_width: 100.0,
+        expected_height: 10.0,
+        contribution: LayoutGridTrackSizingContributionKind::MaxContent,
+    },
+    Case {
+        id: "nested-depth-one-min-content-two-axis",
+        depth: 1,
+        constraint: "min-content",
+        two_axis: true,
+        expected_width: 70.0,
+        expected_height: 20.0,
+        contribution: LayoutGridTrackSizingContributionKind::MinContent,
+    },
+    Case {
+        id: "nested-depth-two-min-content-two-axis",
+        depth: 2,
+        constraint: "min-content",
+        two_axis: true,
+        expected_width: 70.0,
+        expected_height: 20.0,
+        contribution: LayoutGridTrackSizingContributionKind::MinContent,
+    },
+    Case {
+        id: "nested-depth-one-max-content-two-axis",
+        depth: 1,
+        constraint: "max-content",
+        two_axis: true,
+        expected_width: 100.0,
+        expected_height: 10.0,
+        contribution: LayoutGridTrackSizingContributionKind::MaxContent,
+    },
+    Case {
+        id: "nested-depth-two-max-content-two-axis",
+        depth: 2,
+        constraint: "max-content",
+        two_axis: true,
         expected_width: 100.0,
         expected_height: 10.0,
         contribution: LayoutGridTrackSizingContributionKind::MaxContent,
@@ -212,26 +253,26 @@ fn run_case(case: &Case, owner: u64) {
             .iter()
             .find(|trace| trace.node == grid.id())
             .unwrap();
-        let columns = trace
-            .passes
-            .iter()
-            .filter(|pass| pass.axis == LayoutGridTrackSizingAxis::Columns)
-            .last()
-            .unwrap();
-        assert!(
-            columns.contributions.iter().any(|contribution| {
-                contribution.item == child.id()
-                    && contribution.kind == case.contribution
-                    && contribution.span == 1
-                    && (contribution.value - case.expected_width).abs() <= 1.0 / 64.0
-            }),
-            "{}: missing {:?} contribution from Grid {} to {}: {:#?}",
-            case.id,
-            case.contribution,
-            child.id().get(),
-            grid.id().get(),
-            columns.contributions
-        );
+        for (axis, expected) in [
+            (LayoutGridTrackSizingAxis::Columns, case.expected_width),
+            (LayoutGridTrackSizingAxis::Rows, case.expected_height),
+        ] {
+            let pass = trace.passes.iter().rfind(|pass| pass.axis == axis).unwrap();
+            assert!(
+                pass.contributions.iter().any(|contribution| {
+                    contribution.item == child.id()
+                        && contribution.kind == case.contribution
+                        && contribution.span == 1
+                        && (contribution.value - expected).abs() <= 1.0 / 64.0
+                }),
+                "{}: missing {:?} {axis:?} contribution from Grid {} to {}: {:#?}",
+                case.id,
+                case.contribution,
+                child.id().get(),
+                grid.id().get(),
+                pass.contributions
+            );
+        }
     }
 }
 
@@ -305,9 +346,14 @@ fn fixture(
             format!("c114-{}-{level}", case.id)
         })
         .collect::<Vec<_>>();
+    let block_constraint = if case.two_axis {
+        case.constraint
+    } else {
+        "auto"
+    };
     let grid_style = format!(
-        "box-sizing:border-box;display:grid;width:{};height:auto;margin:0;padding:0;border:0;column-gap:0;row-gap:0;grid-template-columns:{};grid-template-rows:auto;align-items:start;background-color:#e9f1ff",
-        case.constraint, case.constraint
+        "box-sizing:border-box;display:grid;width:{};height:{};margin:0;padding:0;border:0;column-gap:0;row-gap:0;grid-template-columns:{};grid-template-rows:{};align-items:start;background-color:#e9f1ff",
+        case.constraint, block_constraint, case.constraint, block_constraint
     );
     let mut batch =
         DocumentChangeBatch::new(OwnerId::new(owner).unwrap(), document.document_revision());

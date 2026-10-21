@@ -59,6 +59,7 @@ mod c11_4_anonymous_grid_border_overflow;
 pub(super) struct C11_4TextInput {
     pub(super) paragraph_styles: BTreeMap<NodeId, ParagraphStyle>,
     pub(super) engine: TextLayoutEngine,
+    pub(super) two_axis_nested_grid: bool,
 }
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]

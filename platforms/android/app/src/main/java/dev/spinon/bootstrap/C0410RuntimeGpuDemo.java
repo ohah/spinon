@@ -185,6 +185,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "nested-grid-implicit-row-one-row",
             "nested-depth-one-min-content", "nested-depth-two-min-content",
             "nested-depth-one-max-content", "nested-depth-two-max-content",
+            "nested-depth-one-min-content-two-axis", "nested-depth-two-min-content-two-axis",
+            "nested-depth-one-max-content-two-axis", "nested-depth-two-max-content-two-axis",
             "column-auto-natural-ratio", "column-target-max-width-clamp",
             "row-target-max-height-clamp",
             "column-opposite-min-over-max", "column-border-box-transfer",
@@ -398,6 +400,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        sceneId = c114BaseNestedGridSceneId(sceneId);
         if (sceneId.equals("nested-depth-one-min-content")
                 || sceneId.equals("nested-depth-two-min-content")) {
             return "width=70,height=20";
@@ -701,6 +704,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static boolean c114ExpectedTextIntrinsicInputs(String sceneId, String report) {
+        sceneId = c114BaseNestedGridSceneId(sceneId);
         if (c114IsAnonymousTextMultiImageScene(sceneId)) {
             return c114ExpectedAnonymousTextMultiImageInputs(sceneId, report);
         }
@@ -1402,6 +1406,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
+        sceneId = c114BaseNestedGridSceneId(sceneId);
         switch (sceneId) {
             case "nested-depth-one-min-content":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=70,height=20;"
@@ -2238,6 +2243,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        sceneId = c114BaseNestedGridSceneId(sceneId);
         if (sceneId.equals("nested-depth-one-min-content")
                 || sceneId.equals("nested-depth-one-max-content")) return 3;
         if (sceneId.equals("nested-depth-two-min-content")
@@ -2303,6 +2309,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("columns-fill-rows-fit-empty")
                 || sceneId.startsWith("auto-fill-two-track-")) return 1;
         return sceneId.startsWith("grid-gap-") ? 5 : 2;
+    }
+
+    private static String c114BaseNestedGridSceneId(String sceneId) {
+        return sceneId.endsWith("-two-axis")
+                ? sceneId.substring(0, sceneId.length() - "-two-axis".length()) : sceneId;
     }
 
     private static boolean c114IsImplicitTextScene(String sceneId) {
