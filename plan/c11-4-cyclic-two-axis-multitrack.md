@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 네 fixed scene 구현과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 확인을 마쳤다. 구현 PR [#478](https://github.com/ohah/spinon/pull/478)이 이 slice와 근거를 연결한다. 이 작업은 전체 C11.4 지원이나 공식 완료 수 `72/213`을 바꾸지 않는다.
+**상태:** 네 fixed scene 구현과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 확인을 마쳤다. 구현 PR [#478](https://github.com/ohah/spinon/pull/478)은 2026-10-22 07:14:28 KST `Rebase and merge`로 병합됐다(merge SHA `907390f75e0b25b399a47b6c863a19b7e5a326e7`). 병합 당시 GitHub PR check rollup은 비어 있었고 `main` 필수 status checks는 설정되지 않았다. 이 slice는 전체 C11.4 지원이나 공식 완료 수 `72/213`을 바꾸지 않는다.
 
 ## 목적과 제한 범위
 

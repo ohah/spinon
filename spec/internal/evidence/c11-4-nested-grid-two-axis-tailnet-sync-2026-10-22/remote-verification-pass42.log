@@ -1,0 +1,28 @@
+verified 250/4505
+verified 500/4505
+verified 750/4505
+verified 1000/4505
+verified 1250/4505
+verified 1500/4505
+verified 1750/4505
+verified 2000/4505
+verified 2250/4505
+verified 2500/4505
+verified 2750/4505
+verified 3000/4505
+verified 3250/4505
+verified 3500/4505
+verified 3750/4505
+verified 4000/4505
+verified 4250/4505
+verified 4505/4505
+verified 4500/4505
+{
+  "pass": "pass42",
+  "origin": "https://macstudio.tailed42f2.ts.net",
+  "file_count": 4505,
+  "http_200_count": 4505,
+  "matching_hash_count": 4505,
+  "failure_count": 0,
+  "all_verified": true
+}
