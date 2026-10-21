@@ -16,6 +16,7 @@
 - 미리보기 경로는 `/Users/yoonhb/Library/Application Support/SpinonPreview`다. 사전 비교는 생성 251개, 교체 202개, 동일 2,816개, 삭제 0개였고 교체 전 202개 파일(30,626,812 bytes)을 별도 백업 경로에 저장했다.
 - 복사 후 로컬 대상 3,269/3,269와 백업 202/202가 SHA-256으로 확인됐다. Tailnet URL에서도 3,269/3,269 route가 HTTP 200이고 기대한 SHA-256과 일치했다.
 - Agent Browser로 `/spinon/roadmap.html`을 열어 새 안내와 `72/213` 표시를 확인했다. 캡처는 `tailnet-roadmap-agent-browser-pass02.png` (1280×633, SHA-256 `be2649fd4bc93c356e5830b7895a1087845a0fd33d65f5ddbd534080de41ed64`)이다.
+- PR #441 본문 이미지 주소에서 commit SHA 오타를 Agent Browser가 `naturalWidth=0`으로 잡아 수정했다. 고친 주소의 화면은 1280×633으로 실제 렌더링됐다.
 - 기존 미리보기 서버 PID 1191은 `127.0.0.1:8768`에서 계속 실행 중이다. Tailnet 동기화 도구는 서버 프로세스나 tmux를 종료하지 않았다. Agent Browser 세션은 이 확인 뒤 닫았다.
 
 ## 범위

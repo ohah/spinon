@@ -28,11 +28,11 @@
 24. **원격 응답 성공이나 오래된 본문** — HTTP 200 외에 각 경로의 byte 길이와 SHA-256이 선택 빌드 manifest와 맞는지 확인했다. 3,269/3,269 통과.
 25. **화면은 열리지만 새 안내 누락** — Agent Browser 렌더링 결과에서 제목, 신규 안내와 완료 수 노출을 확인하고 PNG를 저장했다. 통과.
 26. **캡처 파일이 빈 이미지/다른 크기** — PNG가 1280×633이고 SHA-256 `be2649fd…`임을 검사했다. 통과.
-27. **PR 본문 raw 이미지 경로 오류** — PR 생성 뒤 GitHub가 반환한 이미지 실제 렌더링을 Agent Browser로 확인해야 한다. 열림 상태를 증거에 기록하기 전까지 통과 판정을 보류한다.
+27. **PR 본문 raw 이미지 경로 오류** — 첫 주소의 commit SHA 오타로 Agent Browser에서 `naturalWidth=0`을 발견했다. 실제 HEAD SHA로 본문 주소를 고친 뒤 `complete=true`, `naturalWidth=1280`, `naturalHeight=633`, 표시 상태를 확인했다. 통과.
 28. **대규모 manifest에 토큰·비밀 포함** — 원격 manifest가 경로·상태·길이·해시만 담는지, 쿠키·인증 헤더·credential 필드가 없는지 확인하고 원본 JSON을 gzip으로 보존한다. 통과.
 29. **근거가 재현 입력과 분리** — README가 선택 root, 로그, preflight, 사후 검증, PNG와 원격 전체 manifest를 함께 링크할 수 있도록 파일명을 적었다. 통과.
-30. **검증 브라우저 잔류** — 브라우저 세션 종료 후 `agent-browser session list`가 빈 배열이고 Chrome/Agent Browser 프로세스가 남지 않는지 최종 확인해야 한다. 확인 후 결과를 evidence JSON에 기록한다.
+30. **검증 브라우저 잔류** — `spinon-pr441-image-verify` 종료 후 `agent-browser session list`가 빈 배열이고 `ps -axo pid,comm`에서 Agent Browser/Google Chrome 프로세스가 없는 것을 확인했다. 통과.
 
 ## 검토 결과
 
-항목 27과 30은 PR을 만든 뒤 GitHub 이미지 표시와 브라우저 종료를 재확인해야 닫힌다. 확인 결과는 본 파일과 `agent-browser-tailnet-pass02.json`, `browser-close-pass02.json`에 반영한다. 이 두 확인에서 실패가 나오면 병합 전에 고친다.
+30개 관점 모두에서 병합 전 조치를 확인했다. PR 이미지 오타는 본문에서 수정했고 브라우저 프로세스는 종료했다. 증거는 `agent-browser-tailnet-pass02.json`과 `browser-close-pass02.json`에 기록했다.
