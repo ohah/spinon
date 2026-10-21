@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "repositoryHead": "2dd8b09b662c61042f3af3796f8ccf285316015d",
+  "featurePullRequest": 415,
+  "featureMergeCommit": "0ffd31b52a6da2f20dec65e9149448ac56e47c66",
+  "generatedAtUTC": "2026-10-21T09:10:26.603Z",
+  "sceneId": "spanning-auto-min-flex-tracks",
+  "target": {
+    "kind": "android-avd",
+    "serial": "emulator-5558",
+    "apiLevel": 37,
+    "release": "17",
+    "abi": "arm64-v8a",
+    "model": "sdk_gphone64_arm64",
+    "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys"
+  },
+  "artifact": {
+    "package": "dev.spinon.bootstrap",
+    "localApkSha256": "b8f02254392a35766ff83bc50ac54479a0b54de7a857582ea7eb177b2ca6f355",
+    "installedBaseApkSha256": "b8f02254392a35766ff83bc50ac54479a0b54de7a857582ea7eb177b2ca6f355",
+    "matched": true
+  },
+  "result": {
+    "sceneCount": 1,
+    "passed": 1,
+    "columnsPx": [48, 48],
+    "rootFrameCssPx": [100, 30],
+    "itemFrameCssPx": [100, 10],
+    "trackTraceChunks": 6,
+    "drawPresented": true,
+    "supersededRetries": 0
+  }
+}
