@@ -1,0 +1,81 @@
+{
+  "pass": "pass04",
+  "verifiedAtUtc": "2026-10-21T08:56:53Z",
+  "browser": "agent-browser",
+  "screenshotSha256File": "agent-browser-screenshot-sha256-pass04.txt",
+  "pages": [
+    {
+      "name": "roadmap",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "pr436Visible": true,
+      "mergeShaVisible": true,
+      "completionCount72of213Visible": true,
+      "simulatorImageLinks": [
+        "/spinon/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T083242895Z-3df1ac86/two-anonymous-runs-three-images-forward.png",
+        "/spinon/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T083242895Z-3df1ac86/three-images-two-anonymous-runs-reversed.png",
+        "/spinon/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T083256735Z-5aeaa47a/two-anonymous-runs-three-images-forward.png",
+        "/spinon/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T083256735Z-5aeaa47a/three-images-two-anonymous-runs-reversed.png"
+      ],
+      "screenshot": "tailnet-roadmap-agent-browser-pass04.png"
+    },
+    {
+      "name": "official-status",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "pr436Visible": true,
+      "mergeShaVisible": true,
+      "completionCount72of213Visible": true,
+      "renderedCheckboxCount": 226,
+      "checkedCheckboxCount": 87,
+      "c11ParentCheckboxChecked": false,
+      "screenshot": "tailnet-status-agent-browser-pass04.png"
+    },
+    {
+      "name": "plan",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-anonymous-grid-two-run-three-image-border-overflow.html",
+      "pr436Visible": true,
+      "mergeShaVisible": true,
+      "completionCount72of213Visible": true,
+      "simulatorEvidenceLinkVisible": true,
+      "overflowDeclarationLimitationVisible": true,
+      "screenshot": "tailnet-plan-agent-browser-pass04.png"
+    },
+    {
+      "name": "simulator-evidence",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/README.html",
+      "completionCount72of213Visible": true,
+      "images": [
+        {
+          "alt": "Android AVD forward scene",
+          "url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/two-anonymous-runs-three-images-forward.6a7fa72cc1.png",
+          "complete": true,
+          "naturalWidth": 1080,
+          "naturalHeight": 2400
+        },
+        {
+          "alt": "iOS Simulator forward scene",
+          "url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/two-anonymous-runs-three-images-forward.69098a2b81.png",
+          "complete": true,
+          "naturalWidth": 1206,
+          "naturalHeight": 2622
+        },
+        {
+          "alt": "Android AVD reversed scene",
+          "url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/three-images-two-anonymous-runs-reversed.54a4b3b752.png",
+          "complete": true,
+          "naturalWidth": 1080,
+          "naturalHeight": 2400
+        },
+        {
+          "alt": "iOS Simulator reversed scene",
+          "url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/three-images-two-anonymous-runs-reversed.69098a2b81.png",
+          "complete": true,
+          "naturalWidth": 1206,
+          "naturalHeight": 2622
+        }
+      ],
+      "screenshot": "tailnet-simulator-images-agent-browser-pass04.png",
+      "initialPageScreenshot": "tailnet-evidence-readme-agent-browser-pass04.png"
+    }
+  ]
+}
