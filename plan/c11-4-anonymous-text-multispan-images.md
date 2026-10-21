@@ -1,6 +1,6 @@
 # C11.4 익명 Grid text와 복수 spanning image 결합 계획
 
-**상태:** Chrome 155 사전 비교와 계획 실패 관점 20개 검토를 보존한다. 제한 fixture 구현, Android API 37 ARM64 AVD 4/4, iPhone 17 Pro/iOS 26.2 Simulator 4/4 및 새 20개 구현 실패 관점 검토가 통과했다. PR 변경분 30개 적대 검토와 병합은 남아 있다. 구현에서는 CSS Grid 2025 CRD의 단계별 계산값을 기대값으로 사용하며, 세 이미지 장면의 Chrome 관측 차이는 해결되지 않은 호환성 차이로 기록한다. 이 제한 slice는 C11.4 또는 공식 완료 수를 승격하지 않는다.
+**상태:** Chrome 155 사전 비교와 계획 실패 관점 20개 검토를 보존한다. 제한 fixture 구현, Android API 37 ARM64 AVD 4/4, iPhone 17 Pro/iOS 26.2 Simulator 4/4 및 새 20개 구현 실패 관점 검토가 통과했다. PR 변경분 30개 교차 파일 검토를 마쳤고 구현 PR [#428](https://github.com/ohah/spinon/pull/428)은 2026-10-21 06:05:26 UTC에 Rebase and merge됐다(merge SHA `f930db59448a3adb9fafc840b6a609fe9d2181cf`). PR check rollup은 비어 있었고 main required status checks는 설정되어 있지 않았다. 구현에서는 CSS Grid 2025 CRD의 단계별 계산값을 기대값으로 사용하며, 세 이미지 장면의 Chrome 관측 차이는 해결되지 않은 호환성 차이로 기록한다. 이 제한 slice는 C11.4 또는 공식 완료 수를 승격하지 않는다.
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [anonymous Grid text](./c11-4-anonymous-grid-text-items.md) · [image multi-span](./c11-4-image-multispan-contributions.md) · [Grid 내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
