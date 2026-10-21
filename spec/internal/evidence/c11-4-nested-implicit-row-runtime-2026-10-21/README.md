@@ -65,5 +65,6 @@ Android AVD 캡처 SHA-256: span-two `c3d4cff65fc19b5db0f490f806192bf7f85282ccf6
 
 - [계획](../../../../plan/c11-4-nested-implicit-row-contribution.md)
 - [사전 비교·규범 기대값·Chrome observation](../c11-4-nested-implicit-row-precomparison-2026-10-21/README.md)
+- [Capture source revision, APK/app, source and screenshot hashes](./source-revision.json)
 - [계획 검토 20개](../../../../plan/c11-4-nested-implicit-rows-plan-review-20.md)
 - [구현/runtime 실패 관점 검토 20개](./implementation-review-20.md)
