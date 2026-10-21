@@ -1,0 +1,22 @@
+{
+  "pass": "pass01",
+  "sessions": [
+    {
+      "id": "spinon-tailnet-pass01-e00ea27987c0",
+      "active_after_close": false,
+      "pid_after_close": null
+    },
+    {
+      "id": "spinon-tailpass01-e00ea27987c0",
+      "active_after_close": false,
+      "pid_after_close": null
+    }
+  ],
+  "agent_browser_or_chrome_processes_after_close": [],
+  "tailnet_server": {
+    "pid": 1191,
+    "listen": "127.0.0.1:8768",
+    "left_running": true
+  },
+  "tmux_sessions_changed": false
+}

@@ -1,0 +1,1673 @@
+{
+  "pass": "pass01",
+  "sourceHead": "135b241e05fbf4f4e6e41e9f29c4f145a160f11d",
+  "sourceTree": "c92d41f8da22f5f42c83637a92dddf7ae711252e",
+  "baseSelectedRoot": "build/spinon/c11-4-anonymous-grid-text-tailnet-sync-root-pass40-selected",
+  "selectedRoot": "build/spinon/c11-4-anonymous-grid-border-overflow-tailnet-root-pass01-selected",
+  "baseContentCommit": "4adbdccb5af4a688f8e153c127c9892c5aaed299",
+  "changedSourceCount": 82,
+  "copiedTargetCount": 237,
+  "copiedFiles": [
+    {
+      "source": "plan/c11-4-anonymous-grid-border-overflow-implementation-review-20.md",
+      "target": "plan/c11-4-anonymous-grid-border-overflow-implementation-review-20.md",
+      "status": "create",
+      "bytes": 5566,
+      "sha256": "b43f3d200a98f018d9b097672cecbbe24f50b18b33b08ea4556bddab59358f3b"
+    },
+    {
+      "source": "plan/c11-4-anonymous-grid-border-overflow-pr-diff-review-20.md",
+      "target": "plan/c11-4-anonymous-grid-border-overflow-pr-diff-review-20.md",
+      "status": "create",
+      "bytes": 4994,
+      "sha256": "547eb39aeaffde3ef3e1c79d2b5bbba966f2ef4bdceca78ff000e4ca44fa7ec5"
+    },
+    {
+      "source": "plan/c11-4-anonymous-grid-border-overflow.md",
+      "target": "plan/c11-4-anonymous-grid-border-overflow.md",
+      "status": "create",
+      "bytes": 8255,
+      "sha256": "3b46cef43c03e4a6173620a1477693a18523cabd43f4f2c4d384228f46a4badf"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "target": "STATUS.md",
+      "status": "replace",
+      "bytes": 340381,
+      "sha256": "db5d4e535ae03a3c603e2c927f4a8810cb02b47a240f4ce87692d830dd60b9cb"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "target": "spec/STATUS.md",
+      "status": "replace",
+      "bytes": 340381,
+      "sha256": "db5d4e535ae03a3c603e2c927f4a8810cb02b47a240f4ce87692d830dd60b9cb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/README.md",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/README.md",
+      "status": "create",
+      "bytes": 5469,
+      "sha256": "18cd08e86363ad5e4d9c07e9383116dfe3caf5112f4d8cb92e7bab3e59806a0c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/README.md",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/README.md",
+      "status": "create",
+      "bytes": 5469,
+      "sha256": "18cd08e86363ad5e4d9c07e9383116dfe3caf5112f4d8cb92e7bab3e59806a0c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/README.md",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/README.md",
+      "status": "create",
+      "bytes": 5469,
+      "sha256": "18cd08e86363ad5e4d9c07e9383116dfe3caf5112f4d8cb92e7bab3e59806a0c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/anonymous-runs-two-images-forward.png",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/anonymous-runs-two-images-forward.png",
+      "status": "create",
+      "bytes": 78301,
+      "sha256": "cd8df8e09f54c2ce2b832cf98b1b95c2da2f143e0b0b8875d7c121a9285548a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/anonymous-runs-two-images-forward.png",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/anonymous-runs-two-images-forward.png",
+      "status": "create",
+      "bytes": 78301,
+      "sha256": "cd8df8e09f54c2ce2b832cf98b1b95c2da2f143e0b0b8875d7c121a9285548a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/anonymous-runs-two-images-forward.png",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/anonymous-runs-two-images-forward.png",
+      "status": "create",
+      "bytes": 78301,
+      "sha256": "cd8df8e09f54c2ce2b832cf98b1b95c2da2f143e0b0b8875d7c121a9285548a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/install.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/install.log",
+      "status": "create",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/install.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/install.log",
+      "status": "create",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/install.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/install.log",
+      "status": "create",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/installed-apk-verification.json",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/installed-apk-verification.json",
+      "status": "create",
+      "bytes": 360,
+      "sha256": "ff8eaaf8d54badb1ae4a885d67303ca4a2eb036893e7174016e43d9f2d6e949d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/installed-apk-verification.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/installed-apk-verification.json",
+      "status": "create",
+      "bytes": 360,
+      "sha256": "ff8eaaf8d54badb1ae4a885d67303ca4a2eb036893e7174016e43d9f2d6e949d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/installed-apk-verification.json",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/installed-apk-verification.json",
+      "status": "create",
+      "bytes": 360,
+      "sha256": "ff8eaaf8d54badb1ae4a885d67303ca4a2eb036893e7174016e43d9f2d6e949d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/launch-anonymous-runs-two-images-forward.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/launch-anonymous-runs-two-images-forward.log",
+      "status": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/launch-anonymous-runs-two-images-forward.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/launch-anonymous-runs-two-images-forward.log",
+      "status": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/launch-anonymous-runs-two-images-forward.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/launch-anonymous-runs-two-images-forward.log",
+      "status": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/launch-two-images-anonymous-runs-reversed.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/launch-two-images-anonymous-runs-reversed.log",
+      "status": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/launch-two-images-anonymous-runs-reversed.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/launch-two-images-anonymous-runs-reversed.log",
+      "status": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/launch-two-images-anonymous-runs-reversed.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/launch-two-images-anonymous-runs-reversed.log",
+      "status": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/result.json",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/result.json",
+      "status": "create",
+      "bytes": 3908,
+      "sha256": "c08579812a51a2c71a23f9aeffe3a4f38ead6743407c1d891a0f3f8a8557b2e9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/result.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/result.json",
+      "status": "create",
+      "bytes": 3908,
+      "sha256": "c08579812a51a2c71a23f9aeffe3a4f38ead6743407c1d891a0f3f8a8557b2e9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/result.json",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/result.json",
+      "status": "create",
+      "bytes": 3908,
+      "sha256": "c08579812a51a2c71a23f9aeffe3a4f38ead6743407c1d891a0f3f8a8557b2e9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/runtime-anonymous-runs-two-images-forward.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/runtime-anonymous-runs-two-images-forward.log",
+      "status": "create",
+      "bytes": 31115,
+      "sha256": "dae585607b235f3c5a0b43649f24752f924a0a959c2d3a62889f5868e856db0a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/runtime-anonymous-runs-two-images-forward.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/runtime-anonymous-runs-two-images-forward.log",
+      "status": "create",
+      "bytes": 31115,
+      "sha256": "dae585607b235f3c5a0b43649f24752f924a0a959c2d3a62889f5868e856db0a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/runtime-anonymous-runs-two-images-forward.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/runtime-anonymous-runs-two-images-forward.log",
+      "status": "create",
+      "bytes": 31115,
+      "sha256": "dae585607b235f3c5a0b43649f24752f924a0a959c2d3a62889f5868e856db0a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/runtime-two-images-anonymous-runs-reversed.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/runtime-two-images-anonymous-runs-reversed.log",
+      "status": "create",
+      "bytes": 31507,
+      "sha256": "aaaa82a142eb5e5860e8611882dbd7d2a32c7c84381280a6fc6c53d825419a8d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/runtime-two-images-anonymous-runs-reversed.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/runtime-two-images-anonymous-runs-reversed.log",
+      "status": "create",
+      "bytes": 31507,
+      "sha256": "aaaa82a142eb5e5860e8611882dbd7d2a32c7c84381280a6fc6c53d825419a8d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/runtime-two-images-anonymous-runs-reversed.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/runtime-two-images-anonymous-runs-reversed.log",
+      "status": "create",
+      "bytes": 31507,
+      "sha256": "aaaa82a142eb5e5860e8611882dbd7d2a32c7c84381280a6fc6c53d825419a8d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/simulator.json",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/simulator.json",
+      "status": "create",
+      "bytes": 422,
+      "sha256": "8cd3b64380ebe8ca96d3c79ddbcfc4da936be92427bd8fd9a32987448b07e8cc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/simulator.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/simulator.json",
+      "status": "create",
+      "bytes": 422,
+      "sha256": "8cd3b64380ebe8ca96d3c79ddbcfc4da936be92427bd8fd9a32987448b07e8cc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/simulator.json",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/simulator.json",
+      "status": "create",
+      "bytes": 422,
+      "sha256": "8cd3b64380ebe8ca96d3c79ddbcfc4da936be92427bd8fd9a32987448b07e8cc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/two-images-anonymous-runs-reversed.png",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/two-images-anonymous-runs-reversed.png",
+      "status": "create",
+      "bytes": 78321,
+      "sha256": "84aa8919222220e49965b632e4296cb46c324f4ccbdbd53f065d7e1d3448652a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/two-images-anonymous-runs-reversed.png",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/two-images-anonymous-runs-reversed.png",
+      "status": "create",
+      "bytes": 78321,
+      "sha256": "84aa8919222220e49965b632e4296cb46c324f4ccbdbd53f065d7e1d3448652a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/two-images-anonymous-runs-reversed.png",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/two-images-anonymous-runs-reversed.png",
+      "status": "create",
+      "bytes": 78321,
+      "sha256": "84aa8919222220e49965b632e4296cb46c324f4ccbdbd53f065d7e1d3448652a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-build.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-build.log",
+      "status": "create",
+      "bytes": 4366,
+      "sha256": "8922e4c7e24b65553493679e45a7d6e3772695543a1016b8b1972123ab0dd573"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-build.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-build.log",
+      "status": "create",
+      "bytes": 4366,
+      "sha256": "8922e4c7e24b65553493679e45a7d6e3772695543a1016b8b1972123ab0dd573"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-build.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-build.log",
+      "status": "create",
+      "bytes": 4366,
+      "sha256": "8922e4c7e24b65553493679e45a7d6e3772695543a1016b8b1972123ab0dd573"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/byte-scan.json",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/byte-scan.json",
+      "status": "create",
+      "bytes": 1075,
+      "sha256": "5b993f01cc71eec117c7c0fe5c0d5e45f47ebb95055bbc7764f51eb864ac28c2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/byte-scan.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/byte-scan.json",
+      "status": "create",
+      "bytes": 1075,
+      "sha256": "5b993f01cc71eec117c7c0fe5c0d5e45f47ebb95055bbc7764f51eb864ac28c2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/byte-scan.json",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/byte-scan.json",
+      "status": "create",
+      "bytes": 1075,
+      "sha256": "5b993f01cc71eec117c7c0fe5c0d5e45f47ebb95055bbc7764f51eb864ac28c2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/default-build.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/default-build.log",
+      "status": "create",
+      "bytes": 584,
+      "sha256": "6c6787f9c96c31c97bd8525ce32474177b9a7a7ae69ed5f6089b8756d73d9714"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/default-build.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/default-build.log",
+      "status": "create",
+      "bytes": 584,
+      "sha256": "6c6787f9c96c31c97bd8525ce32474177b9a7a7ae69ed5f6089b8756d73d9714"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/default-build.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/default-build.log",
+      "status": "create",
+      "bytes": 584,
+      "sha256": "6c6787f9c96c31c97bd8525ce32474177b9a7a7ae69ed5f6089b8756d73d9714"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/fixture-build.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/fixture-build.log",
+      "status": "create",
+      "bytes": 680,
+      "sha256": "a98234c9a9e2ceb799d6c1cc2b4621feef8442cd7fee9e6171a6ddca5de161d6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/fixture-build.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/fixture-build.log",
+      "status": "create",
+      "bytes": 680,
+      "sha256": "a98234c9a9e2ceb799d6c1cc2b4621feef8442cd7fee9e6171a6ddca5de161d6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/fixture-build.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/fixture-build.log",
+      "status": "create",
+      "bytes": 680,
+      "sha256": "a98234c9a9e2ceb799d6c1cc2b4621feef8442cd7fee9e6171a6ddca5de161d6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/fixture-symbol.txt",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/fixture-symbol.txt",
+      "status": "create",
+      "bytes": 81,
+      "sha256": "736ec842960ab4b2ab264c409e3037864829996bef45bdf89cedf12421bf3323"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/fixture-symbol.txt",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/fixture-symbol.txt",
+      "status": "create",
+      "bytes": 81,
+      "sha256": "736ec842960ab4b2ab264c409e3037864829996bef45bdf89cedf12421bf3323"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/fixture-symbol.txt",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/fixture-symbol.txt",
+      "status": "create",
+      "bytes": 81,
+      "sha256": "736ec842960ab4b2ab264c409e3037864829996bef45bdf89cedf12421bf3323"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/verify-artifact-boundary.sh",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/verify-artifact-boundary.sh",
+      "status": "create",
+      "bytes": 3268,
+      "sha256": "6ae984138d103d32705773138c56b606707f3dee10f3d1f70fe2e3f3f2166cf6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/verify-artifact-boundary.sh",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/verify-artifact-boundary.sh",
+      "status": "create",
+      "bytes": 3268,
+      "sha256": "6ae984138d103d32705773138c56b606707f3dee10f3d1f70fe2e3f3f2166cf6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/verify-artifact-boundary.sh",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary/verify-artifact-boundary.sh",
+      "status": "create",
+      "bytes": 3268,
+      "sha256": "6ae984138d103d32705773138c56b606707f3dee10f3d1f70fe2e3f3f2166cf6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ffi-fixture-clippy.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ffi-fixture-clippy.log",
+      "status": "create",
+      "bytes": 380,
+      "sha256": "30a2a2a77e824d2e95fac8ba15dea121fdd29044ac4522d2f283704fb2e211bf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ffi-fixture-clippy.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ffi-fixture-clippy.log",
+      "status": "create",
+      "bytes": 380,
+      "sha256": "30a2a2a77e824d2e95fac8ba15dea121fdd29044ac4522d2f283704fb2e211bf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ffi-fixture-clippy.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ffi-fixture-clippy.log",
+      "status": "create",
+      "bytes": 380,
+      "sha256": "30a2a2a77e824d2e95fac8ba15dea121fdd29044ac4522d2f283704fb2e211bf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ffi-focused-test.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ffi-focused-test.log",
+      "status": "create",
+      "bytes": 407,
+      "sha256": "f6bbb50d01f28cf7f0681c9e2afaeb490e7d0c4790b7c00e4e3025d96fb9178c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ffi-focused-test.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ffi-focused-test.log",
+      "status": "create",
+      "bytes": 407,
+      "sha256": "f6bbb50d01f28cf7f0681c9e2afaeb490e7d0c4790b7c00e4e3025d96fb9178c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ffi-focused-test.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ffi-focused-test.log",
+      "status": "create",
+      "bytes": 407,
+      "sha256": "f6bbb50d01f28cf7f0681c9e2afaeb490e7d0c4790b7c00e4e3025d96fb9178c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/fmt-check.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/fmt-check.log",
+      "status": "create",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/fmt-check.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/fmt-check.log",
+      "status": "create",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/fmt-check.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/fmt-check.log",
+      "status": "create",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-build.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-build.log",
+      "status": "create",
+      "bytes": 64450,
+      "sha256": "11a6c4813b91f71f48808a670be766dc5f26c053717925ffa8b3ef8d17747244"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-build.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-build.log",
+      "status": "create",
+      "bytes": 64450,
+      "sha256": "11a6c4813b91f71f48808a670be766dc5f26c053717925ffa8b3ef8d17747244"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-build.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-build.log",
+      "status": "create",
+      "bytes": 64450,
+      "sha256": "11a6c4813b91f71f48808a670be766dc5f26c053717925ffa8b3ef8d17747244"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/anonymous-runs-two-images-forward.png",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/anonymous-runs-two-images-forward.png",
+      "status": "create",
+      "bytes": 133537,
+      "sha256": "86459e5c691bba374f93d8236733e63552d98dc39919c674d16b46247e7947f1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/anonymous-runs-two-images-forward.png",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/anonymous-runs-two-images-forward.png",
+      "status": "create",
+      "bytes": 133537,
+      "sha256": "86459e5c691bba374f93d8236733e63552d98dc39919c674d16b46247e7947f1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/anonymous-runs-two-images-forward.png",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/anonymous-runs-two-images-forward.png",
+      "status": "create",
+      "bytes": 133537,
+      "sha256": "86459e5c691bba374f93d8236733e63552d98dc39919c674d16b46247e7947f1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/install.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/install.log",
+      "status": "create",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/install.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/install.log",
+      "status": "create",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/install.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/install.log",
+      "status": "create",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/launch-anonymous-runs-two-images-forward.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/launch-anonymous-runs-two-images-forward.log",
+      "status": "create",
+      "bytes": 28,
+      "sha256": "753da2388ca6e9838bc0685a51f88235942949e1bf1d0f33a891610fcdf3052b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/launch-anonymous-runs-two-images-forward.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/launch-anonymous-runs-two-images-forward.log",
+      "status": "create",
+      "bytes": 28,
+      "sha256": "753da2388ca6e9838bc0685a51f88235942949e1bf1d0f33a891610fcdf3052b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/launch-anonymous-runs-two-images-forward.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/launch-anonymous-runs-two-images-forward.log",
+      "status": "create",
+      "bytes": 28,
+      "sha256": "753da2388ca6e9838bc0685a51f88235942949e1bf1d0f33a891610fcdf3052b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/launch-two-images-anonymous-runs-reversed.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/launch-two-images-anonymous-runs-reversed.log",
+      "status": "create",
+      "bytes": 28,
+      "sha256": "c018fb9f38e4c6ca372687b503943001512fef66ee5dd0374a2738cdfa11c680"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/launch-two-images-anonymous-runs-reversed.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/launch-two-images-anonymous-runs-reversed.log",
+      "status": "create",
+      "bytes": 28,
+      "sha256": "c018fb9f38e4c6ca372687b503943001512fef66ee5dd0374a2738cdfa11c680"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/launch-two-images-anonymous-runs-reversed.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/launch-two-images-anonymous-runs-reversed.log",
+      "status": "create",
+      "bytes": 28,
+      "sha256": "c018fb9f38e4c6ca372687b503943001512fef66ee5dd0374a2738cdfa11c680"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/result.json",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/result.json",
+      "status": "create",
+      "bytes": 3978,
+      "sha256": "ce6014dd414d9dc0cee7be8112b39aa1a0d8b7c96fe2d22a85856d4b697f7223"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/result.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/result.json",
+      "status": "create",
+      "bytes": 3978,
+      "sha256": "ce6014dd414d9dc0cee7be8112b39aa1a0d8b7c96fe2d22a85856d4b697f7223"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/result.json",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/result.json",
+      "status": "create",
+      "bytes": 3978,
+      "sha256": "ce6014dd414d9dc0cee7be8112b39aa1a0d8b7c96fe2d22a85856d4b697f7223"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/runtime-anonymous-runs-two-images-forward.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/runtime-anonymous-runs-two-images-forward.log",
+      "status": "create",
+      "bytes": 23566,
+      "sha256": "544bfcf952b535b25cc383877c6d2bac330df0f26f2f28059f4fbf65d9e14c15"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/runtime-anonymous-runs-two-images-forward.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/runtime-anonymous-runs-two-images-forward.log",
+      "status": "create",
+      "bytes": 23566,
+      "sha256": "544bfcf952b535b25cc383877c6d2bac330df0f26f2f28059f4fbf65d9e14c15"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/runtime-anonymous-runs-two-images-forward.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/runtime-anonymous-runs-two-images-forward.log",
+      "status": "create",
+      "bytes": 23566,
+      "sha256": "544bfcf952b535b25cc383877c6d2bac330df0f26f2f28059f4fbf65d9e14c15"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/runtime-two-images-anonymous-runs-reversed.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/runtime-two-images-anonymous-runs-reversed.log",
+      "status": "create",
+      "bytes": 23568,
+      "sha256": "55586d4a6fd211605268cb7cf957e983274207baf1bacfe32436c73b2acc8865"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/runtime-two-images-anonymous-runs-reversed.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/runtime-two-images-anonymous-runs-reversed.log",
+      "status": "create",
+      "bytes": 23568,
+      "sha256": "55586d4a6fd211605268cb7cf957e983274207baf1bacfe32436c73b2acc8865"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/runtime-two-images-anonymous-runs-reversed.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/runtime-two-images-anonymous-runs-reversed.log",
+      "status": "create",
+      "bytes": 23568,
+      "sha256": "55586d4a6fd211605268cb7cf957e983274207baf1bacfe32436c73b2acc8865"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/screenshot-anonymous-runs-two-images-forward.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/screenshot-anonymous-runs-two-images-forward.log",
+      "status": "create",
+      "bytes": 304,
+      "sha256": "8a832047bf3fbe9d1ba66bbfabb403e0d6fa193ebafaf59f320284c40f4c7605"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/screenshot-anonymous-runs-two-images-forward.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/screenshot-anonymous-runs-two-images-forward.log",
+      "status": "create",
+      "bytes": 304,
+      "sha256": "8a832047bf3fbe9d1ba66bbfabb403e0d6fa193ebafaf59f320284c40f4c7605"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/screenshot-anonymous-runs-two-images-forward.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/screenshot-anonymous-runs-two-images-forward.log",
+      "status": "create",
+      "bytes": 304,
+      "sha256": "8a832047bf3fbe9d1ba66bbfabb403e0d6fa193ebafaf59f320284c40f4c7605"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/screenshot-two-images-anonymous-runs-reversed.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/screenshot-two-images-anonymous-runs-reversed.log",
+      "status": "create",
+      "bytes": 305,
+      "sha256": "b9a29b541000396108a7538d75972fe575c5ed47bb9be1ad20ce7aa3478d5d89"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/screenshot-two-images-anonymous-runs-reversed.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/screenshot-two-images-anonymous-runs-reversed.log",
+      "status": "create",
+      "bytes": 305,
+      "sha256": "b9a29b541000396108a7538d75972fe575c5ed47bb9be1ad20ce7aa3478d5d89"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/screenshot-two-images-anonymous-runs-reversed.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/screenshot-two-images-anonymous-runs-reversed.log",
+      "status": "create",
+      "bytes": 305,
+      "sha256": "b9a29b541000396108a7538d75972fe575c5ed47bb9be1ad20ce7aa3478d5d89"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/simulator.json",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/simulator.json",
+      "status": "create",
+      "bytes": 252,
+      "sha256": "b2c24009fd880160859b20e15aaff743ba1faf92a63ae0a80e12971f12b28f91"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/simulator.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/simulator.json",
+      "status": "create",
+      "bytes": 252,
+      "sha256": "b2c24009fd880160859b20e15aaff743ba1faf92a63ae0a80e12971f12b28f91"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/simulator.json",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/simulator.json",
+      "status": "create",
+      "bytes": 252,
+      "sha256": "b2c24009fd880160859b20e15aaff743ba1faf92a63ae0a80e12971f12b28f91"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/two-images-anonymous-runs-reversed.png",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/two-images-anonymous-runs-reversed.png",
+      "status": "create",
+      "bytes": 133537,
+      "sha256": "86459e5c691bba374f93d8236733e63552d98dc39919c674d16b46247e7947f1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/two-images-anonymous-runs-reversed.png",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/two-images-anonymous-runs-reversed.png",
+      "status": "create",
+      "bytes": 133537,
+      "sha256": "86459e5c691bba374f93d8236733e63552d98dc39919c674d16b46247e7947f1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/two-images-anonymous-runs-reversed.png",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/two-images-anonymous-runs-reversed.png",
+      "status": "create",
+      "bytes": 133537,
+      "sha256": "86459e5c691bba374f93d8236733e63552d98dc39919c674d16b46247e7947f1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/pr-images-agent-browser.json",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/pr-images-agent-browser.json",
+      "status": "create",
+      "bytes": 645,
+      "sha256": "f6ec2b6051ea48e5da4a00244c6871c333fefbd973f4ffae7cf47e5409ad261d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/pr-images-agent-browser.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/pr-images-agent-browser.json",
+      "status": "create",
+      "bytes": 645,
+      "sha256": "f6ec2b6051ea48e5da4a00244c6871c333fefbd973f4ffae7cf47e5409ad261d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/pr-images-agent-browser.json",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/pr-images-agent-browser.json",
+      "status": "create",
+      "bytes": 645,
+      "sha256": "f6ec2b6051ea48e5da4a00244c6871c333fefbd973f4ffae7cf47e5409ad261d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/runtime-focused-test.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/runtime-focused-test.log",
+      "status": "create",
+      "bytes": 932,
+      "sha256": "92b96c89a01cf27fd6991ebf46f256d82874a48329dc05218b6b280af0f250b8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/runtime-focused-test.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/runtime-focused-test.log",
+      "status": "create",
+      "bytes": 932,
+      "sha256": "92b96c89a01cf27fd6991ebf46f256d82874a48329dc05218b6b280af0f250b8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/runtime-focused-test.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/runtime-focused-test.log",
+      "status": "create",
+      "bytes": 932,
+      "sha256": "92b96c89a01cf27fd6991ebf46f256d82874a48329dc05218b6b280af0f250b8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/style-to-render-focused-test.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/style-to-render-focused-test.log",
+      "status": "create",
+      "bytes": 368,
+      "sha256": "e985727e96082077238312d2db4a665e0f203c439d2d4c2a27ff3b7aed174037"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/style-to-render-focused-test.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/style-to-render-focused-test.log",
+      "status": "create",
+      "bytes": 368,
+      "sha256": "e985727e96082077238312d2db4a665e0f203c439d2d4c2a27ff3b7aed174037"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/style-to-render-focused-test.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/style-to-render-focused-test.log",
+      "status": "create",
+      "bytes": 368,
+      "sha256": "e985727e96082077238312d2db4a665e0f203c439d2d4c2a27ff3b7aed174037"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/workspace-clippy.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/workspace-clippy.log",
+      "status": "create",
+      "bytes": 380,
+      "sha256": "a950e7e68b232c43f71f68f5620f0084aa9d60687fda190316d206517877c4c9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/workspace-clippy.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/workspace-clippy.log",
+      "status": "create",
+      "bytes": 380,
+      "sha256": "a950e7e68b232c43f71f68f5620f0084aa9d60687fda190316d206517877c4c9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/workspace-clippy.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/workspace-clippy.log",
+      "status": "create",
+      "bytes": 380,
+      "sha256": "a950e7e68b232c43f71f68f5620f0084aa9d60687fda190316d206517877c4c9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/README.md",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/README.md",
+      "status": "create",
+      "bytes": 3010,
+      "sha256": "c809ff7cd8a192e961c1ad88772474e9288c55c98ed9cfe4890a89ec875f4dde"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/README.md",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/README.md",
+      "status": "create",
+      "bytes": 3010,
+      "sha256": "c809ff7cd8a192e961c1ad88772474e9288c55c98ed9cfe4890a89ec875f4dde"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/README.md",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/README.md",
+      "status": "create",
+      "bytes": 3010,
+      "sha256": "c809ff7cd8a192e961c1ad88772474e9288c55c98ed9cfe4890a89ec875f4dde"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/SHA256SUMS",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/SHA256SUMS",
+      "status": "create",
+      "bytes": 732,
+      "sha256": "91453359bf652e1efd87bdf6263179632841eb469ea163246524d261c6e50cd7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/SHA256SUMS",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/SHA256SUMS",
+      "status": "create",
+      "bytes": 732,
+      "sha256": "91453359bf652e1efd87bdf6263179632841eb469ea163246524d261c6e50cd7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/SHA256SUMS",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/SHA256SUMS",
+      "status": "create",
+      "bytes": 732,
+      "sha256": "91453359bf652e1efd87bdf6263179632841eb469ea163246524d261c6e50cd7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/chrome155-agent-browser.png",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/chrome155-agent-browser.png",
+      "status": "create",
+      "bytes": 15820,
+      "sha256": "9379144769ac25357ffe62688f40db76b268dbecd89aa2f9a8f7bd760473f511"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/chrome155-agent-browser.png",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/chrome155-agent-browser.png",
+      "status": "create",
+      "bytes": 15820,
+      "sha256": "9379144769ac25357ffe62688f40db76b268dbecd89aa2f9a8f7bd760473f511"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/chrome155-agent-browser.png",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/chrome155-agent-browser.png",
+      "status": "create",
+      "bytes": 15820,
+      "sha256": "9379144769ac25357ffe62688f40db76b268dbecd89aa2f9a8f7bd760473f511"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/chrome155-observation.json",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/chrome155-observation.json",
+      "status": "create",
+      "bytes": 5183,
+      "sha256": "3485da4820070ade0133398f062d618a2252852cc85da67d576f1fab4a19d887"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/chrome155-observation.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/chrome155-observation.json",
+      "status": "create",
+      "bytes": 5183,
+      "sha256": "3485da4820070ade0133398f062d618a2252852cc85da67d576f1fab4a19d887"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/chrome155-observation.json",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/chrome155-observation.json",
+      "status": "create",
+      "bytes": 5183,
+      "sha256": "3485da4820070ade0133398f062d618a2252852cc85da67d576f1fab4a19d887"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-pr-diff-review-20.md",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-pr-diff-review-20.md",
+      "status": "create",
+      "bytes": 4264,
+      "sha256": "6c25c990dd7f68c052fbb6d598e883cf6891f45adb280bfd99d4869314bb9fe8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-pr-diff-review-20.md",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-pr-diff-review-20.md",
+      "status": "create",
+      "bytes": 4264,
+      "sha256": "6c25c990dd7f68c052fbb6d598e883cf6891f45adb280bfd99d4869314bb9fe8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-pr-diff-review-20.md",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-pr-diff-review-20.md",
+      "status": "create",
+      "bytes": 4264,
+      "sha256": "6c25c990dd7f68c052fbb6d598e883cf6891f45adb280bfd99d4869314bb9fe8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-review-20.md",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-review-20.md",
+      "status": "create",
+      "bytes": 4184,
+      "sha256": "dccb5173aa3ae9eac68a917073ae378038eb1ea29ddacdd7133f3b835bcb45c3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-review-20.md",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-review-20.md",
+      "status": "create",
+      "bytes": 4184,
+      "sha256": "dccb5173aa3ae9eac68a917073ae378038eb1ea29ddacdd7133f3b835bcb45c3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-review-20.md",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-review-20.md",
+      "status": "create",
+      "bytes": 4184,
+      "sha256": "dccb5173aa3ae9eac68a917073ae378038eb1ea29ddacdd7133f3b835bcb45c3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/anonymous-text-three-images-forward.png",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/anonymous-text-three-images-forward.png",
+      "status": "create",
+      "bytes": 77550,
+      "sha256": "9ee0d4b46b912883475714abab1bab6b0a01bc01a9cb6cffc70d3fc0d5ae3ffe"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/anonymous-text-three-images-forward.png",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/anonymous-text-three-images-forward.png",
+      "status": "create",
+      "bytes": 77550,
+      "sha256": "9ee0d4b46b912883475714abab1bab6b0a01bc01a9cb6cffc70d3fc0d5ae3ffe"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/anonymous-text-three-images-forward.png",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/anonymous-text-three-images-forward.png",
+      "status": "create",
+      "bytes": 77550,
+      "sha256": "9ee0d4b46b912883475714abab1bab6b0a01bc01a9cb6cffc70d3fc0d5ae3ffe"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/anonymous-text-two-images-forward.png",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/anonymous-text-two-images-forward.png",
+      "status": "create",
+      "bytes": 77495,
+      "sha256": "5e04d5d6b4490b849473c5be3e1c7ec497b9cf72c044fd77f830ce64eba2ec42"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/anonymous-text-two-images-forward.png",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/anonymous-text-two-images-forward.png",
+      "status": "create",
+      "bytes": 77495,
+      "sha256": "5e04d5d6b4490b849473c5be3e1c7ec497b9cf72c044fd77f830ce64eba2ec42"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/anonymous-text-two-images-forward.png",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/anonymous-text-two-images-forward.png",
+      "status": "create",
+      "bytes": 77495,
+      "sha256": "5e04d5d6b4490b849473c5be3e1c7ec497b9cf72c044fd77f830ce64eba2ec42"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/install.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/install.log",
+      "status": "create",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/install.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/install.log",
+      "status": "create",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/install.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/install.log",
+      "status": "create",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/installed-apk-verification.json",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/installed-apk-verification.json",
+      "status": "create",
+      "bytes": 360,
+      "sha256": "f6322b3607ffcb7708bb61e303a2a69cd9869845c78eee4c8cb09eecf2a22e44"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/installed-apk-verification.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/installed-apk-verification.json",
+      "status": "create",
+      "bytes": 360,
+      "sha256": "f6322b3607ffcb7708bb61e303a2a69cd9869845c78eee4c8cb09eecf2a22e44"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/installed-apk-verification.json",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/installed-apk-verification.json",
+      "status": "create",
+      "bytes": 360,
+      "sha256": "f6322b3607ffcb7708bb61e303a2a69cd9869845c78eee4c8cb09eecf2a22e44"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-anonymous-text-three-images-forward.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-anonymous-text-three-images-forward.log",
+      "status": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-anonymous-text-three-images-forward.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-anonymous-text-three-images-forward.log",
+      "status": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-anonymous-text-three-images-forward.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-anonymous-text-three-images-forward.log",
+      "status": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-anonymous-text-two-images-forward.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-anonymous-text-two-images-forward.log",
+      "status": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-anonymous-text-two-images-forward.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-anonymous-text-two-images-forward.log",
+      "status": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-anonymous-text-two-images-forward.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-anonymous-text-two-images-forward.log",
+      "status": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-three-images-anonymous-text-reversed.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-three-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-three-images-anonymous-text-reversed.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-three-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-three-images-anonymous-text-reversed.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-three-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-two-images-anonymous-text-reversed.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-two-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-two-images-anonymous-text-reversed.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-two-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-two-images-anonymous-text-reversed.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/launch-two-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/result.json",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/result.json",
+      "status": "create",
+      "bytes": 6673,
+      "sha256": "dead5d34fcf6b2e1ef52d1af6b4ec94cacf55c1da05283998869589c415e5120"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/result.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/result.json",
+      "status": "create",
+      "bytes": 6673,
+      "sha256": "dead5d34fcf6b2e1ef52d1af6b4ec94cacf55c1da05283998869589c415e5120"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/result.json",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/result.json",
+      "status": "create",
+      "bytes": 6673,
+      "sha256": "dead5d34fcf6b2e1ef52d1af6b4ec94cacf55c1da05283998869589c415e5120"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-anonymous-text-three-images-forward.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-anonymous-text-three-images-forward.log",
+      "status": "create",
+      "bytes": 30853,
+      "sha256": "995ddf88d1d40a37bbae965326374829677d65acabc7adb3d7eb7597286ae3ce"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-anonymous-text-three-images-forward.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-anonymous-text-three-images-forward.log",
+      "status": "create",
+      "bytes": 30853,
+      "sha256": "995ddf88d1d40a37bbae965326374829677d65acabc7adb3d7eb7597286ae3ce"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-anonymous-text-three-images-forward.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-anonymous-text-three-images-forward.log",
+      "status": "create",
+      "bytes": 30853,
+      "sha256": "995ddf88d1d40a37bbae965326374829677d65acabc7adb3d7eb7597286ae3ce"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-anonymous-text-two-images-forward.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-anonymous-text-two-images-forward.log",
+      "status": "create",
+      "bytes": 28626,
+      "sha256": "886fb78132f3319af342587317eb57ba97f25c7531c102ef94e0ef0aa1221d57"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-anonymous-text-two-images-forward.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-anonymous-text-two-images-forward.log",
+      "status": "create",
+      "bytes": 28626,
+      "sha256": "886fb78132f3319af342587317eb57ba97f25c7531c102ef94e0ef0aa1221d57"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-anonymous-text-two-images-forward.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-anonymous-text-two-images-forward.log",
+      "status": "create",
+      "bytes": 28626,
+      "sha256": "886fb78132f3319af342587317eb57ba97f25c7531c102ef94e0ef0aa1221d57"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-three-images-anonymous-text-reversed.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-three-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 31238,
+      "sha256": "e6cb495bf294da221ae87c04c86eb367a9579ebb202bc177d8dd69f32b934527"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-three-images-anonymous-text-reversed.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-three-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 31238,
+      "sha256": "e6cb495bf294da221ae87c04c86eb367a9579ebb202bc177d8dd69f32b934527"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-three-images-anonymous-text-reversed.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-three-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 31238,
+      "sha256": "e6cb495bf294da221ae87c04c86eb367a9579ebb202bc177d8dd69f32b934527"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-two-images-anonymous-text-reversed.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-two-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 28251,
+      "sha256": "1c51bcd920d67664f94aa24e9d782c2e23d72bca8da63c6fa2a912797363c867"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-two-images-anonymous-text-reversed.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-two-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 28251,
+      "sha256": "1c51bcd920d67664f94aa24e9d782c2e23d72bca8da63c6fa2a912797363c867"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-two-images-anonymous-text-reversed.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/runtime-two-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 28251,
+      "sha256": "1c51bcd920d67664f94aa24e9d782c2e23d72bca8da63c6fa2a912797363c867"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/simulator.json",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/simulator.json",
+      "status": "create",
+      "bytes": 422,
+      "sha256": "8cd3b64380ebe8ca96d3c79ddbcfc4da936be92427bd8fd9a32987448b07e8cc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/simulator.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/simulator.json",
+      "status": "create",
+      "bytes": 422,
+      "sha256": "8cd3b64380ebe8ca96d3c79ddbcfc4da936be92427bd8fd9a32987448b07e8cc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/simulator.json",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/simulator.json",
+      "status": "create",
+      "bytes": 422,
+      "sha256": "8cd3b64380ebe8ca96d3c79ddbcfc4da936be92427bd8fd9a32987448b07e8cc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/three-images-anonymous-text-reversed.png",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/three-images-anonymous-text-reversed.png",
+      "status": "create",
+      "bytes": 77493,
+      "sha256": "db5613f94806dc6d7e49f45f14fdaff132b17eee1ba60d2b8d06a7ea7d46dab3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/three-images-anonymous-text-reversed.png",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/three-images-anonymous-text-reversed.png",
+      "status": "create",
+      "bytes": 77493,
+      "sha256": "db5613f94806dc6d7e49f45f14fdaff132b17eee1ba60d2b8d06a7ea7d46dab3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/three-images-anonymous-text-reversed.png",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/three-images-anonymous-text-reversed.png",
+      "status": "create",
+      "bytes": 77493,
+      "sha256": "db5613f94806dc6d7e49f45f14fdaff132b17eee1ba60d2b8d06a7ea7d46dab3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/two-images-anonymous-text-reversed.png",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/two-images-anonymous-text-reversed.png",
+      "status": "create",
+      "bytes": 77460,
+      "sha256": "0e5815f5d03f9ba58b40b00a411b818b0fb113c212fbbfa5abfdf9a56a1a7f76"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/two-images-anonymous-text-reversed.png",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/two-images-anonymous-text-reversed.png",
+      "status": "create",
+      "bytes": 77460,
+      "sha256": "0e5815f5d03f9ba58b40b00a411b818b0fb113c212fbbfa5abfdf9a56a1a7f76"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/two-images-anonymous-text-reversed.png",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/two-images-anonymous-text-reversed.png",
+      "status": "create",
+      "bytes": 77460,
+      "sha256": "0e5815f5d03f9ba58b40b00a411b818b0fb113c212fbbfa5abfdf9a56a1a7f76"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/anonymous-text-three-images-forward.png",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/anonymous-text-three-images-forward.png",
+      "status": "create",
+      "bytes": 144223,
+      "sha256": "5331dad892d5b4f99ed01ce4a845aa7b98d396df915fc1344c35b2b2fc08e6a1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/anonymous-text-three-images-forward.png",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/anonymous-text-three-images-forward.png",
+      "status": "create",
+      "bytes": 144223,
+      "sha256": "5331dad892d5b4f99ed01ce4a845aa7b98d396df915fc1344c35b2b2fc08e6a1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/anonymous-text-three-images-forward.png",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/anonymous-text-three-images-forward.png",
+      "status": "create",
+      "bytes": 144223,
+      "sha256": "5331dad892d5b4f99ed01ce4a845aa7b98d396df915fc1344c35b2b2fc08e6a1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/anonymous-text-two-images-forward.png",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/anonymous-text-two-images-forward.png",
+      "status": "create",
+      "bytes": 142789,
+      "sha256": "4c9ccae79d1b7a70537b5f2363937b05dcbe0a7eb8d1c0e369a9bf4f8f4dfe03"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/anonymous-text-two-images-forward.png",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/anonymous-text-two-images-forward.png",
+      "status": "create",
+      "bytes": 142789,
+      "sha256": "4c9ccae79d1b7a70537b5f2363937b05dcbe0a7eb8d1c0e369a9bf4f8f4dfe03"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/anonymous-text-two-images-forward.png",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/anonymous-text-two-images-forward.png",
+      "status": "create",
+      "bytes": 142789,
+      "sha256": "4c9ccae79d1b7a70537b5f2363937b05dcbe0a7eb8d1c0e369a9bf4f8f4dfe03"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/install.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/install.log",
+      "status": "create",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/install.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/install.log",
+      "status": "create",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/install.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/install.log",
+      "status": "create",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-anonymous-text-three-images-forward.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-anonymous-text-three-images-forward.log",
+      "status": "create",
+      "bytes": 28,
+      "sha256": "883d177a6eb93d7f0fe1e6f20e0a99bec49a70a67f085b9e0e0cdd017d5bc3f6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-anonymous-text-three-images-forward.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-anonymous-text-three-images-forward.log",
+      "status": "create",
+      "bytes": 28,
+      "sha256": "883d177a6eb93d7f0fe1e6f20e0a99bec49a70a67f085b9e0e0cdd017d5bc3f6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-anonymous-text-three-images-forward.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-anonymous-text-three-images-forward.log",
+      "status": "create",
+      "bytes": 28,
+      "sha256": "883d177a6eb93d7f0fe1e6f20e0a99bec49a70a67f085b9e0e0cdd017d5bc3f6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-anonymous-text-two-images-forward.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-anonymous-text-two-images-forward.log",
+      "status": "create",
+      "bytes": 28,
+      "sha256": "145555415cedb70eb3d94a4da2e381e84af87c8d96e269d2ed0000567e6b5181"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-anonymous-text-two-images-forward.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-anonymous-text-two-images-forward.log",
+      "status": "create",
+      "bytes": 28,
+      "sha256": "145555415cedb70eb3d94a4da2e381e84af87c8d96e269d2ed0000567e6b5181"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-anonymous-text-two-images-forward.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-anonymous-text-two-images-forward.log",
+      "status": "create",
+      "bytes": 28,
+      "sha256": "145555415cedb70eb3d94a4da2e381e84af87c8d96e269d2ed0000567e6b5181"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-three-images-anonymous-text-reversed.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-three-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 28,
+      "sha256": "39a8a5ffb37d26a6a9456a53b5a9f144b3aa899c2931c6531af3b00111010767"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-three-images-anonymous-text-reversed.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-three-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 28,
+      "sha256": "39a8a5ffb37d26a6a9456a53b5a9f144b3aa899c2931c6531af3b00111010767"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-three-images-anonymous-text-reversed.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-three-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 28,
+      "sha256": "39a8a5ffb37d26a6a9456a53b5a9f144b3aa899c2931c6531af3b00111010767"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-two-images-anonymous-text-reversed.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-two-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 28,
+      "sha256": "e8586dbf9794918523e02d344da0a9bdc5b321aa62fe290a1d3aed5a75f33702"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-two-images-anonymous-text-reversed.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-two-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 28,
+      "sha256": "e8586dbf9794918523e02d344da0a9bdc5b321aa62fe290a1d3aed5a75f33702"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-two-images-anonymous-text-reversed.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/launch-two-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 28,
+      "sha256": "e8586dbf9794918523e02d344da0a9bdc5b321aa62fe290a1d3aed5a75f33702"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/result.json",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/result.json",
+      "status": "create",
+      "bytes": 6807,
+      "sha256": "ce0dd34df11b6f458e07dad1532c28a1aa56a12addce508735e5ba0f8ff4e502"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/result.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/result.json",
+      "status": "create",
+      "bytes": 6807,
+      "sha256": "ce0dd34df11b6f458e07dad1532c28a1aa56a12addce508735e5ba0f8ff4e502"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/result.json",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/result.json",
+      "status": "create",
+      "bytes": 6807,
+      "sha256": "ce0dd34df11b6f458e07dad1532c28a1aa56a12addce508735e5ba0f8ff4e502"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-anonymous-text-three-images-forward.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-anonymous-text-three-images-forward.log",
+      "status": "create",
+      "bytes": 23110,
+      "sha256": "c581793d5be45148e9779db3f7e836a211c05880775e7a2026b3848bb01f2e54"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-anonymous-text-three-images-forward.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-anonymous-text-three-images-forward.log",
+      "status": "create",
+      "bytes": 23110,
+      "sha256": "c581793d5be45148e9779db3f7e836a211c05880775e7a2026b3848bb01f2e54"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-anonymous-text-three-images-forward.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-anonymous-text-three-images-forward.log",
+      "status": "create",
+      "bytes": 23110,
+      "sha256": "c581793d5be45148e9779db3f7e836a211c05880775e7a2026b3848bb01f2e54"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-anonymous-text-two-images-forward.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-anonymous-text-two-images-forward.log",
+      "status": "create",
+      "bytes": 20434,
+      "sha256": "f93c2ca02395ba2378f8dcd366474564ef16a34670efafcb6c72ee2816360b64"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-anonymous-text-two-images-forward.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-anonymous-text-two-images-forward.log",
+      "status": "create",
+      "bytes": 20434,
+      "sha256": "f93c2ca02395ba2378f8dcd366474564ef16a34670efafcb6c72ee2816360b64"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-anonymous-text-two-images-forward.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-anonymous-text-two-images-forward.log",
+      "status": "create",
+      "bytes": 20434,
+      "sha256": "f93c2ca02395ba2378f8dcd366474564ef16a34670efafcb6c72ee2816360b64"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-three-images-anonymous-text-reversed.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-three-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 23112,
+      "sha256": "64ead1a6b535b131ccdfe094228c5af16a39e54656e988cfd00a9a0cd4bd7e41"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-three-images-anonymous-text-reversed.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-three-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 23112,
+      "sha256": "64ead1a6b535b131ccdfe094228c5af16a39e54656e988cfd00a9a0cd4bd7e41"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-three-images-anonymous-text-reversed.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-three-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 23112,
+      "sha256": "64ead1a6b535b131ccdfe094228c5af16a39e54656e988cfd00a9a0cd4bd7e41"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-two-images-anonymous-text-reversed.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-two-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 20433,
+      "sha256": "6c628131ebb22616f2ccf18c528d0afda2b80c498f6b33cedb9376513a8f56ac"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-two-images-anonymous-text-reversed.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-two-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 20433,
+      "sha256": "6c628131ebb22616f2ccf18c528d0afda2b80c498f6b33cedb9376513a8f56ac"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-two-images-anonymous-text-reversed.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/runtime-two-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 20433,
+      "sha256": "6c628131ebb22616f2ccf18c528d0afda2b80c498f6b33cedb9376513a8f56ac"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-anonymous-text-three-images-forward.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-anonymous-text-three-images-forward.log",
+      "status": "create",
+      "bytes": 309,
+      "sha256": "df9cc46f9dcffddd922e1acd0e442547a992e7be4114875ee9cddd35ef68e7d2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-anonymous-text-three-images-forward.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-anonymous-text-three-images-forward.log",
+      "status": "create",
+      "bytes": 309,
+      "sha256": "df9cc46f9dcffddd922e1acd0e442547a992e7be4114875ee9cddd35ef68e7d2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-anonymous-text-three-images-forward.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-anonymous-text-three-images-forward.log",
+      "status": "create",
+      "bytes": 309,
+      "sha256": "df9cc46f9dcffddd922e1acd0e442547a992e7be4114875ee9cddd35ef68e7d2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-anonymous-text-two-images-forward.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-anonymous-text-two-images-forward.log",
+      "status": "create",
+      "bytes": 307,
+      "sha256": "7bc3e9f67b3b879cad5dc78f399efdf27292e99ea0fd13f761bb0a0d4b1b5515"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-anonymous-text-two-images-forward.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-anonymous-text-two-images-forward.log",
+      "status": "create",
+      "bytes": 307,
+      "sha256": "7bc3e9f67b3b879cad5dc78f399efdf27292e99ea0fd13f761bb0a0d4b1b5515"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-anonymous-text-two-images-forward.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-anonymous-text-two-images-forward.log",
+      "status": "create",
+      "bytes": 307,
+      "sha256": "7bc3e9f67b3b879cad5dc78f399efdf27292e99ea0fd13f761bb0a0d4b1b5515"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-three-images-anonymous-text-reversed.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-three-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 310,
+      "sha256": "7e70d9bb9e7f0bc0f4fbe4fe5a35b9433db2d6f7e88643db6073d586587f6512"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-three-images-anonymous-text-reversed.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-three-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 310,
+      "sha256": "7e70d9bb9e7f0bc0f4fbe4fe5a35b9433db2d6f7e88643db6073d586587f6512"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-three-images-anonymous-text-reversed.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-three-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 310,
+      "sha256": "7e70d9bb9e7f0bc0f4fbe4fe5a35b9433db2d6f7e88643db6073d586587f6512"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-two-images-anonymous-text-reversed.log",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-two-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 308,
+      "sha256": "1f932c078e12606e66bd3e5d29bd0373a871db6088306746e2a28c15585d8880"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-two-images-anonymous-text-reversed.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-two-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 308,
+      "sha256": "1f932c078e12606e66bd3e5d29bd0373a871db6088306746e2a28c15585d8880"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-two-images-anonymous-text-reversed.log",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/screenshot-two-images-anonymous-text-reversed.log",
+      "status": "create",
+      "bytes": 308,
+      "sha256": "1f932c078e12606e66bd3e5d29bd0373a871db6088306746e2a28c15585d8880"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/simulator.json",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/simulator.json",
+      "status": "create",
+      "bytes": 252,
+      "sha256": "c8f72a0516ea2ae2d9d078e21296805de71ddc902486ec8d0a302d2ecca7c89e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/simulator.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/simulator.json",
+      "status": "create",
+      "bytes": 252,
+      "sha256": "c8f72a0516ea2ae2d9d078e21296805de71ddc902486ec8d0a302d2ecca7c89e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/simulator.json",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/simulator.json",
+      "status": "create",
+      "bytes": 252,
+      "sha256": "c8f72a0516ea2ae2d9d078e21296805de71ddc902486ec8d0a302d2ecca7c89e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/three-images-anonymous-text-reversed.png",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/three-images-anonymous-text-reversed.png",
+      "status": "create",
+      "bytes": 144223,
+      "sha256": "5331dad892d5b4f99ed01ce4a845aa7b98d396df915fc1344c35b2b2fc08e6a1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/three-images-anonymous-text-reversed.png",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/three-images-anonymous-text-reversed.png",
+      "status": "create",
+      "bytes": 144223,
+      "sha256": "5331dad892d5b4f99ed01ce4a845aa7b98d396df915fc1344c35b2b2fc08e6a1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/three-images-anonymous-text-reversed.png",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/three-images-anonymous-text-reversed.png",
+      "status": "create",
+      "bytes": 144223,
+      "sha256": "5331dad892d5b4f99ed01ce4a845aa7b98d396df915fc1344c35b2b2fc08e6a1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/two-images-anonymous-text-reversed.png",
+      "target": "internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/two-images-anonymous-text-reversed.png",
+      "status": "create",
+      "bytes": 144368,
+      "sha256": "459ac9a2606b7b5283edb5cb6b075f5e9a1fbd45005670946d1898d233e08910"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/two-images-anonymous-text-reversed.png",
+      "target": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/two-images-anonymous-text-reversed.png",
+      "status": "create",
+      "bytes": 144368,
+      "sha256": "459ac9a2606b7b5283edb5cb6b075f5e9a1fbd45005670946d1898d233e08910"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/two-images-anonymous-text-reversed.png",
+      "target": "public/internal/evidence/c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/two-images-anonymous-text-reversed.png",
+      "status": "create",
+      "bytes": 144368,
+      "sha256": "459ac9a2606b7b5283edb5cb6b075f5e9a1fbd45005670946d1898d233e08910"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "target": "public/roadmap.html",
+      "status": "replace",
+      "bytes": 187059,
+      "sha256": "a00e587b25705e34016db55739fa95b3c43db8b25656ae5f5c492d6c0ed8ae32"
+    }
+  ],
+  "noPreviewWrites": true,
+  "noDeletes": true
+}

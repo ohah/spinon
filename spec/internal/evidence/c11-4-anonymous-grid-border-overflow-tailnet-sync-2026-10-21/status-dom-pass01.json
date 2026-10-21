@@ -1,0 +1,24 @@
+{
+  "c11_4Checked": false,
+  "c11_4Row": " C11.4 intrinsic track sizing — auto, minmax(), fit-content(), item intrinsic contribution, spans, cyclic percentage와 auto-repeat의 전체 CSS Grid 단계는 미완료다. 병합된 PR #338은 Taffy inherent-size callback trace를, PR #340은 callback과 분리된 direct-leaf text/image intrinsic input 및 outer-size contribution 후보를 보존한다. 현재 후보는 vendored Taffy 0.15.0 기반 RuntimeBlockFlexGridTrackSizingV1 typed track input과 제한 stage trace",
+  "images": [
+    {
+      "alt": "logo",
+      "complete": true,
+      "height": 150,
+      "src": "https://macstudio.tailed42f2.ts.net/spinon/logo.svg",
+      "width": 150
+    },
+    {
+      "alt": "스피논 구현 관문 의존 관계: 기초 검증, 첫 앱, 병렬 품질 개선과 생태계, 출시",
+      "complete": true,
+      "height": 150,
+      "src": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.svg",
+      "width": 240
+    }
+  ],
+  "officialCountOccurrences": 4,
+  "pr431": "der-box 40×184, image의 22 CSS px 바깥 frame과 border/overflow 고정 PixelCopy·Metal sample을 확인했다. 기존 anonymous text + image 네 scene의 simulator 회귀, Rust focused tests, workspace/fixture Clippy, Android/iOS build와 기본 archive 제외 검사가 통과했다. 구현/PR diff 실패 관점 각 20개를 검토했다. PR #431은 2026-10-21 07:22:55 UTC에 Rebase and merge됐고 merge SHA는 420be2c40cb0a9f68023121f66ff122158494ffa다. 병합 시 PR check rollup은 비어 있었고 main required status checks는 설정되어 있지 않았다. C11.4 checkbox와 공식 72/213 집계는 유지한다. 계획 · 실행·화면·hash 근거 · 구현 실패 관점 20개 · PR diff 실패 관점 20개\n\n C12 위치 지정과 쌓임 — position, 물리 inset, containing block, out-of-flow geometry, fixed·sticky, stacking·z-index를 단계별 구현한다. C12.1–C12.2와 C10.3.5 교차 계약은 병합했다. C12.3 viewport fixed, C12.4 stacking·z-index, C12.5 sticky가 남아 있다. 전용 계획 · 계획 실패 관점 검토 · 상위: S02, U02, U03, X16.\n\n C12.1 static·",
+  "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/STATUS.html"
+}

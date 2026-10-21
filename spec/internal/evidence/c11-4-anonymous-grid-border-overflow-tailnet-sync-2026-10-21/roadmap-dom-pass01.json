@@ -1,0 +1,19 @@
+{
+  "pass": "pass01",
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "visible_2026_10_21_note": "2026-10-21 C11.4 anonymous Grid border + image overflow · PR #431 병합",
+  "visible_geometry": {
+    "columns": [12, 28, 20, 20],
+    "grid_border_box_css_px": [40, 184],
+    "image_overflow_css_px": 22
+  },
+  "visible_official_completion_count": "72/213",
+  "relevant_links": [
+    "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-anonymous-grid-border-overflow.html",
+    "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/README.html",
+    "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/anonymous-runs-two-images-forward.png",
+    "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/anonymous-runs-two-images-forward.png"
+  ],
+  "screenshot": "tailnet-roadmap-agent-browser-pass01.png"
+}

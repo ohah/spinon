@@ -1,0 +1,49 @@
+{
+  "pass": "pass01",
+  "browser": "Agent Browser 0.31.1 / Chrome 156",
+  "pages": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "checks": [
+        "PR #431 merged note visible",
+        "columns [12,28,20,20], 40x184 border box, and 22 CSS px overflow visible",
+        "official completion count 72/213 visible"
+      ],
+      "screenshot": "tailnet-roadmap-agent-browser-pass01.png"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "c11_4_checkbox_checked": false,
+      "official_count_72_of_213_occurrences": 4,
+      "pr_431_merge_sha_visible": "420be2c40cb0a9f68023121f66ff122158494ffa"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-anonymous-grid-border-overflow.html",
+      "title": "C11.4 anonymous text run과 replaced image의 bordered Grid overflow 계획 - 스피논 문서",
+      "screenshot": "tailnet-plan-agent-browser-pass01.png"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/README.html",
+      "title": "C11.4 anonymous Grid border overflow 실행 근거 - 스피논 문서",
+      "screenshot": "tailnet-evidence-readme-agent-browser-pass01.png"
+    }
+  ],
+  "images": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/anonymous-runs-two-images-forward.png",
+      "complete": true,
+      "width": 1080,
+      "height": 2400,
+      "screenshot": "tailnet-android-image-agent-browser-pass01.png"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/anonymous-runs-two-images-forward.png",
+      "complete": true,
+      "width": 1206,
+      "height": 2622,
+      "screenshot": "tailnet-ios-image-agent-browser-pass01.png"
+    }
+  ]
+}
