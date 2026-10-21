@@ -36,6 +36,11 @@ const anonymousTextSceneIDs = new Set([
   'anonymous-runs-around-block', 'anonymous-hidden-child-continuation',
   'whitespace-does-not-create-item',
 ]);
+const anonymousTextImageSceneIDs = new Set([
+  'anonymous-text-image-text', 'image-before-comment-group',
+  'comment-group-before-image', 'whitespace-around-image',
+  'hidden-child-around-image',
+]);
 const isTextMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => textMultiSpanSceneIDs.has(sceneID));
 const isImageMultiSpanRun = requestedSceneIDs?.length > 0
@@ -44,10 +49,13 @@ const isMixedMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => mixedMultiSpanSceneIDs.has(sceneID));
 const isAnonymousTextRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => anonymousTextSceneIDs.has(sceneID));
+const isAnonymousTextImageRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => anonymousTextImageSceneIDs.has(sceneID));
 const isMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID)
     || textMultiSpanSceneIDs.has(sceneID) || mixedMultiSpanSceneIDs.has(sceneID));
 const runKind = requestedRunKind ?? (isMixedMultiSpanRun ? 'mixed-multispan-contributions'
+  : isAnonymousTextImageRun ? 'anonymous-grid-text-image'
   : isAnonymousTextRun ? 'anonymous-grid-text'
   : isImageMultiSpanRun ? 'image-multispan-contributions'
   : isTextMultiSpanRun ? 'text-multispan-contributions'
@@ -68,7 +76,10 @@ const component = `${packageName}/.MainActivity`;
 const appPath = resolve(repositoryRoot,
   'build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app');
 const apkPath = resolve(repositoryRoot, 'platforms/android/app/build/outputs/apk/debug/app-debug.apk');
-const runPrefix = `c114-${runKind}-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
+const runTimestamp = new Date().toISOString().replaceAll(/[^0-9TZ]/g, '');
+const runNonce = randomUUID().slice(0, 8);
+const runPrefix = `c114-${runKind}-${target}-${runTimestamp}-${runNonce}`;
+const runIDPrefix = `c114-${target}-${runTimestamp}-${runNonce}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
   ? `spec/internal/evidence/${evidenceGroup}-${date}/${target}-${runPrefix}`
@@ -783,13 +794,145 @@ scenes.push(
 assert.equal(scenes.length, 160, 'C11.4 anonymous Grid text slice adds five scene이어야 합니다.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous Grid text scene ID는 중복되지 않아야 합니다.');
+scenes.push(
+  {
+    id: 'anonymous-text-image-text', axis: 'Columns', boxCount: 2,
+    rootFrame: 'width=220,height=60', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=60;'
+      + '1:node=3,x=20,y=0,width=72,height=48]',
+    tracks: [20, 36, 36, 20], collapsed: [false, false, false, false],
+    intrinsicSpans: [1, 2], itemSpans: [1, 2, 1], imageMinContentWidths: [null, 72, null],
+    mixedIntrinsicContributions: true, anonymousTextImageContributions: true,
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+        minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+      { grid: 1, node: 3, sourceOrder: 1, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+      { grid: 1, node: 4, sourceOrder: 2, kind: 'text', fontRegistryRevision: 1,
+        minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+    ],
+    anonymousTextImageItems: [
+      { grid: 1, node: 2, sourceOrder: 0,
+        source: { kind: 'text', fontRegistryRevision: 1, minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+        textSources: [{ node: 2, text: 'XX' }],
+        frame: { node: 2, x: 0, y: 0, width: 20, height: 10 } },
+      { grid: 1, node: 3, sourceOrder: 1,
+        source: { kind: 'replaced', aspectRatio: null, width: 24, height: 16 }, textSources: [],
+        frame: { node: 3, x: 20, y: 0, width: 72, height: 48 } },
+      { grid: 1, node: 4, sourceOrder: 2,
+        source: { kind: 'text', fontRegistryRevision: 1, minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+        textSources: [{ node: 4, text: 'XX' }],
+        frame: { node: 4, x: 92, y: 0, width: 20, height: 10 } },
+    ],
+  },
+  {
+    id: 'image-before-comment-group', axis: 'Columns', boxCount: 2,
+    rootFrame: 'width=220,height=60', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=60;'
+      + '1:node=2,x=0,y=0,width=72,height=48]',
+    tracks: [36, 36, 40, 0], collapsed: [false, false, false, false],
+    intrinsicSpans: [1, 2], itemSpans: [2, 1], imageMinContentWidths: [72, null],
+    mixedIntrinsicContributions: true, anonymousTextImageContributions: true,
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+      { grid: 1, node: 3, sourceOrder: 1, kind: 'text', fontRegistryRevision: 1,
+        minContent: 40, minContentHeight: 10, maxContent: 40, maxContentHeight: 10 },
+    ],
+    anonymousTextImageItems: [
+      { grid: 1, node: 2, sourceOrder: 0,
+        source: { kind: 'replaced', aspectRatio: null, width: 24, height: 16 }, textSources: [],
+        frame: { node: 2, x: 0, y: 0, width: 72, height: 48 } },
+      { grid: 1, node: 3, sourceOrder: 1,
+        source: { kind: 'text', fontRegistryRevision: 1, minContent: 40, minContentHeight: 10, maxContent: 40, maxContentHeight: 10 },
+        textSources: [{ node: 3, text: 'XX' }, { node: 4, text: 'XX' }],
+        frame: { node: 3, x: 72, y: 0, width: 40, height: 10 } },
+    ],
+  },
+  {
+    id: 'comment-group-before-image', axis: 'Columns', boxCount: 2,
+    rootFrame: 'width=220,height=60', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=60;'
+      + '1:node=4,x=40,y=0,width=72,height=48]',
+    tracks: [40, 36, 36, 0], collapsed: [false, false, false, false],
+    intrinsicSpans: [1, 2], itemSpans: [1, 2], imageMinContentWidths: [null, 72],
+    mixedIntrinsicContributions: true, anonymousTextImageContributions: true,
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+        minContent: 40, minContentHeight: 10, maxContent: 40, maxContentHeight: 10 },
+      { grid: 1, node: 4, sourceOrder: 1, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+    ],
+    anonymousTextImageItems: [
+      { grid: 1, node: 2, sourceOrder: 0,
+        source: { kind: 'text', fontRegistryRevision: 1, minContent: 40, minContentHeight: 10, maxContent: 40, maxContentHeight: 10 },
+        textSources: [{ node: 2, text: 'XX' }, { node: 3, text: 'XX' }],
+        frame: { node: 2, x: 0, y: 0, width: 40, height: 10 } },
+      { grid: 1, node: 4, sourceOrder: 1,
+        source: { kind: 'replaced', aspectRatio: null, width: 24, height: 16 }, textSources: [],
+        frame: { node: 4, x: 40, y: 0, width: 72, height: 48 } },
+    ],
+  },
+  {
+    id: 'whitespace-around-image', axis: 'Columns', boxCount: 2,
+    rootFrame: 'width=220,height=60', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=60;'
+      + '1:node=3,x=0,y=0,width=72,height=48]',
+    tracks: [36, 36, 20, 0], collapsed: [false, false, false, false],
+    intrinsicSpans: [1, 2], itemSpans: [2, 1], imageMinContentWidths: [72, null],
+    mixedIntrinsicContributions: true, anonymousTextImageContributions: true,
+    intrinsicInputs: [
+      { grid: 1, node: 3, sourceOrder: 0, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+      { grid: 1, node: 4, sourceOrder: 1, kind: 'text', fontRegistryRevision: 1,
+        minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+    ],
+    anonymousTextImageItems: [
+      { grid: 1, node: 3, sourceOrder: 0,
+        source: { kind: 'replaced', aspectRatio: null, width: 24, height: 16 }, textSources: [],
+        frame: { node: 3, x: 0, y: 0, width: 72, height: 48 } },
+      { grid: 1, node: 4, sourceOrder: 1,
+        source: { kind: 'text', fontRegistryRevision: 1, minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+        textSources: [{ node: 4, text: '\n\tXX' }],
+        frame: { node: 4, x: 72, y: 0, width: 20, height: 10 } },
+    ],
+  },
+  {
+    id: 'hidden-child-around-image', axis: 'Columns', boxCount: 2,
+    rootFrame: 'width=220,height=60', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=60;'
+      + '1:node=5,x=20,y=0,width=72,height=48]',
+    tracks: [20, 36, 36, 20], collapsed: [false, false, false, false],
+    intrinsicSpans: [1, 2], itemSpans: [1, 2, 1], imageMinContentWidths: [null, 72, null],
+    mixedIntrinsicContributions: true, anonymousTextImageContributions: true,
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+        minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+      { grid: 1, node: 5, sourceOrder: 1, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+      { grid: 1, node: 6, sourceOrder: 2, kind: 'text', fontRegistryRevision: 1,
+        minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+    ],
+    anonymousTextImageItems: [
+      { grid: 1, node: 2, sourceOrder: 0,
+        source: { kind: 'text', fontRegistryRevision: 1, minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+        textSources: [{ node: 2, text: 'XX' }],
+        frame: { node: 2, x: 0, y: 0, width: 20, height: 10 } },
+      { grid: 1, node: 5, sourceOrder: 1,
+        source: { kind: 'replaced', aspectRatio: null, width: 24, height: 16 }, textSources: [],
+        frame: { node: 5, x: 20, y: 0, width: 72, height: 48 } },
+      { grid: 1, node: 6, sourceOrder: 2,
+        source: { kind: 'text', fontRegistryRevision: 1, minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+        textSources: [{ node: 6, text: 'XX' }],
+        frame: { node: 6, x: 92, y: 0, width: 20, height: 10 } },
+    ],
+  },
+);
+assert.equal(scenes.length, 165, 'C11.4 anonymous text/image slice adds five scenes.');
+assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
+  'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
 const runScenes = requestedSceneIDSet
   ? scenes.filter(({ id }) => requestedSceneIDSet.has(id))
   : scenes;
 assert.ok(runScenes.length > 0,
   requestedSceneIDs ? `C11.4 scene ID를 찾지 못했습니다: ${requestedSceneIDs.join(',')}` : '실행할 scene이 없습니다.');
-const longestRunID = `${runPrefix}-${runScenes.length - 1}-retry-3`;
+const longestRunID = `${runIDPrefix}-${runScenes.length - 1}-retry-3`;
 assert.ok(longestRunID.length <= 80,
   `C11.4 run ID가 플랫폼 인수 제한 80자를 넘습니다: ${longestRunID.length}`);
 if (requestedSceneIDs) {
@@ -1799,6 +1942,38 @@ function verifyRuntimeLog(log, scene, runID) {
       scene.anonymousTextItems.map(({ frame }) => frame),
       `${scene.id}: anonymous item frame evidence differs`);
   }
+  if (scene.anonymousTextImageItems) {
+    assert.equal(diagnostics.layoutInputRevision?.intrinsicSize, 1,
+      `${scene.id}: text/image inputs do not share the stamped image revision`);
+    const framesByNode = new Map((diagnostics.gridItemFrames ?? []).map((frame) => [frame.node, frame]));
+    const actualInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => {
+      const source = input.source?.kind === 'text'
+        ? {
+          kind: 'text',
+          fontRegistryRevision: input.source.fontRegistryRevision,
+          minContent: input.source.minContent,
+          minContentHeight: input.source.minContentHeight,
+          maxContent: input.source.maxContent,
+          maxContentHeight: input.source.maxContentHeight,
+        }
+        : {
+          kind: 'replaced',
+          aspectRatio: input.source?.natural?.aspectRatio ?? null,
+          width: input.source?.natural?.width,
+          height: input.source?.natural?.height,
+        };
+      return {
+        grid: input.grid,
+        node: input.node,
+        sourceOrder: input.sourceOrder,
+        source,
+        textSources: input.textSources,
+        frame: framesByNode.get(input.node),
+      };
+    });
+    assert.deepEqual(actualInputs, scene.anonymousTextImageItems,
+      `${scene.id}: anonymous text grouping, image intrinsic input, and item frames differ`);
+  }
   if (scene.intrinsicInputs && scene.mixedIntrinsicContributions) {
     const intrinsicInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => (
       input.source?.kind === 'text' ? {
@@ -1877,17 +2052,47 @@ function verifyRuntimeLog(log, scene, runID) {
         const spanItems = scene.intrinsicInputs.flatMap((input, itemIndex) => (
           scene.itemSpans[itemIndex] === span ? [{ input, itemIndex }] : []
         ));
-        for (const kind of ['Minimum', 'MinContent']) {
-          const repetitions = kind === 'MinContent' ? 2 : 1;
-          for (let repetition = 0; repetition < repetitions; repetition++) {
-            for (const { input, itemIndex } of spanItems) {
+        if (scene.anonymousTextImageContributions) {
+          for (const { input, itemIndex } of spanItems) {
+            if (input.kind === 'text') {
+              for (let repetition = 0; repetition < 2; repetition++) {
+                expectedContributions.push({
+                  item: input.node,
+                  kind: 'MinContent',
+                  span,
+                  value: input.minContent,
+                });
+              }
+            } else {
               expectedContributions.push({
                 item: input.node,
-                kind,
+                kind: 'Minimum',
                 span,
-                value: kind === 'Minimum' ? 0
-                  : input.kind === 'text' ? input.minContent : scene.imageMinContentWidths[itemIndex],
+                value: 0,
               });
+              for (let repetition = 0; repetition < 2; repetition++) {
+                expectedContributions.push({
+                  item: input.node,
+                  kind: 'MinContent',
+                  span,
+                  value: scene.imageMinContentWidths[itemIndex],
+                });
+              }
+            }
+          }
+        } else {
+          for (const kind of ['Minimum', 'MinContent']) {
+            const repetitions = kind === 'MinContent' ? 2 : 1;
+            for (let repetition = 0; repetition < repetitions; repetition++) {
+              for (const { input, itemIndex } of spanItems) {
+                expectedContributions.push({
+                  item: input.node,
+                  kind,
+                  span,
+                  value: kind === 'Minimum' ? 0
+                    : input.kind === 'text' ? input.minContent : scene.imageMinContentWidths[itemIndex],
+                });
+              }
             }
           }
         }
@@ -2074,11 +2279,11 @@ if (target === 'ios-simulator') {
   await saveLog('install.log', command('xcrun', ['simctl', 'install', simulatorUDID, appPath]));
   const appSha256 = sha256(await readFile(resolve(appPath, 'SpinonBootstrap')));
   for (const [index, scene] of runScenes.entries()) {
-    let runID = `${runPrefix}-${index}`;
+    let runID = `${runIDPrefix}-${index}`;
     let log = '';
     let supersededAttempts = 0;
     for (let attempt = 0; attempt <= 3; attempt++) {
-      runID = attempt === 0 ? `${runPrefix}-${index}` : `${runPrefix}-${index}-retry-${attempt}`;
+      runID = attempt === 0 ? `${runIDPrefix}-${index}` : `${runIDPrefix}-${index}-retry-${attempt}`;
       const launch = command('xcrun', ['simctl', 'launch', '--terminate-running-process', simulatorUDID,
         packageName, '--spinon-c114-grid-track-sizing', `--spinon-c114-grid-run-id=${runID}`,
         `--spinon-c114-grid-scene=${scene.id}`,
@@ -2130,11 +2335,11 @@ if (target === 'ios-simulator') {
     matched: installedApkSha256 === localApkSha256,
   }, null, 2)}\n`);
   for (const [index, scene] of runScenes.entries()) {
-    let runID = `${runPrefix}-${index}`;
+    let runID = `${runIDPrefix}-${index}`;
     let log = '';
     let supersededAttempts = 0;
     for (let attempt = 0; attempt <= 3; attempt++) {
-      runID = attempt === 0 ? `${runPrefix}-${index}` : `${runPrefix}-${index}-retry-${attempt}`;
+      runID = attempt === 0 ? `${runIDPrefix}-${index}` : `${runIDPrefix}-${index}-retry-${attempt}`;
       const launch = adb(['shell', 'am', 'start', '-S', '-f', '0x10008000', '-n', component,
         '--ez', 'spinon_c114_grid_track_sizing', 'true',
         '--es', 'spinon_c114_grid_scene', scene.id,

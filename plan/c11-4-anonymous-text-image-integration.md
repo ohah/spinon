@@ -2,7 +2,7 @@
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** Chrome 155 사전 비교와 계획 실패 관점 20개 검토를 마쳤다. 계획 PR의 독립 diff 검토는 PR을 만든 뒤 별도 기록한다. C11.4와 공식 완료 수는 바꾸지 않는다.
+**상태:** 구현을 추가하고 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 다섯 장면을 각각 통과시켰다. 집중 Rust 테스트, 기본/opt-in FFI artifact 경계, 전체 workspace Clippy와 양 플랫폼 fixture 앱 빌드도 통과했다. 구현 실패 관점 20개는 [별도 검토](../spec/internal/evidence/c11-4-anonymous-grid-text-image-runtime-2026-10-21/implementation-review-20.md)에 기록한다. 구현 PR diff 검토는 PR 생성 뒤 별도 30개 관점으로 기록한다. C11.4와 공식 완료 수는 바꾸지 않는다.
 
 ## 목적과 경계
 
@@ -47,6 +47,8 @@ Agent Browser에서 Chrome for Testing `155.0.8059.85`, macOS ARM, DPR 1로 고�
 ## 근거
 
 - [Chrome 사전 비교, screenshot, observation, asset hash](../spec/internal/evidence/c11-4-anonymous-grid-text-image-precomparison-2026-10-21/README.md)
+- [구현·AVD/iOS Simulator 결과·정적 라이브러리 경계](../spec/internal/evidence/c11-4-anonymous-grid-text-image-runtime-2026-10-21/README.md)
+- [구현 실패 관점 20개](../spec/internal/evidence/c11-4-anonymous-grid-text-image-runtime-2026-10-21/implementation-review-20.md)
 - [Chrome 입력 fixture](../tests/fixtures/css/c11/grid-track-sizing-c114-anonymous-text-image-precomparison.html)
 - [계획 실패 관점 20개](./c11-4-anonymous-text-image-plan-review-20.md)
 - [계획 PR diff 실패 관점 20개](../spec/internal/evidence/c11-4-anonymous-grid-text-image-precomparison-2026-10-21/plan-pr-diff-review-20.md)

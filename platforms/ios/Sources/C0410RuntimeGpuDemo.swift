@@ -113,7 +113,9 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "mixed-text-image-span2-before-span3", "mixed-text-image-span3-before-span2",
     "anonymous-min-content-wrap", "anonymous-comment-continuation",
     "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
-    "whitespace-does-not-create-item",
+    "whitespace-does-not-create-item", "anonymous-text-image-text",
+    "image-before-comment-group", "comment-group-before-image",
+    "whitespace-around-image", "hidden-child-around-image",
 ]
 private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -183,6 +185,7 @@ private func c114NegativeTrackExpectation(_ sceneID: String) -> C114NegativeTrac
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if c114AutoRepeatNegativeLineSceneIDs.contains(sceneID) { return "" }
     if sceneID == "anonymous-min-content-wrap" { return "width=120,height=20" }
+    if c114IsAnonymousTextImageScene(sceneID) { return "width=220,height=60" }
     if ["anonymous-comment-continuation", "anonymous-runs-around-block",
         "anonymous-hidden-child-continuation",
         "whitespace-does-not-create-item"].contains(sceneID) {
@@ -290,7 +293,7 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
-    if c114IsAnonymousTextScene(sceneID) { return "" }
+    if c114IsAnonymousTextScene(sceneID) || c114IsAnonymousTextImageScene(sceneID) { return "" }
     if c114IsTextMultiSpanScene(sceneID) || c114IsImageMultiSpanScene(sceneID)
         || c114IsMixedMultiSpanScene(sceneID) { return "" }
     if c114AutoRepeatNegativeLineSceneIDs.contains(sceneID) { return "" }
@@ -389,6 +392,9 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
 }
 
 private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
+    if c114IsAnonymousTextImageScene(sceneID) {
+        return c114ExpectedAnonymousTextImageInputs(sceneID, report: report)
+    }
     if c114IsMixedMultiSpanScene(sceneID) {
         return c114ExpectedMixedIntrinsicInputs(sceneID, report: report)
     }
@@ -477,6 +483,9 @@ private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) 
 }
 
 private func c114ExpectedImageIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
+    if c114IsAnonymousTextImageScene(sceneID) {
+        return c114ExpectedAnonymousTextImageInputs(sceneID, report: report)
+    }
     if c114IsMixedMultiSpanScene(sceneID) {
         return c114ExpectedMixedIntrinsicInputs(sceneID, report: report)
     }
@@ -596,6 +605,80 @@ private func c114ExpectedMixedIntrinsicInputs(_ sceneID: String, report: String)
               (input["sourceOrder"] as? Int) == index,
               let source = input["source"] as? [String: Any],
               (source["kind"] as? String) == kinds[index] else { return false }
+        if kinds[index] == "text" {
+            guard let expected = textMetrics[index],
+                  (source["fontRegistryRevision"] as? Int) == 1 else { return false }
+            let values = ["minContent", "minContentHeight", "maxContent", "maxContentHeight"]
+                .compactMap { (source[$0] as? NSNumber)?.doubleValue }
+            guard values.count == expected.count,
+                  zip(values, expected).allSatisfy({ abs($0.0 - $0.1) <= 0.0001 }) else {
+                return false
+            }
+        } else {
+            guard let natural = source["natural"] as? [String: Any],
+                  (natural["width"] as? NSNumber)?.doubleValue == 24,
+                  (natural["height"] as? NSNumber)?.doubleValue == 16,
+                  natural.keys.contains("aspectRatio"), natural["aspectRatio"] is NSNull else {
+                return false
+            }
+        }
+    }
+    return true
+}
+
+private func c114ExpectedAnonymousTextImageInputs(_ sceneID: String, report: String) -> Bool {
+    let nodes: [Int]
+    let kinds: [String]
+    let textMetrics: [[Double]?]
+    let textSources: [[(Int, String)]]
+    switch sceneID {
+    case "anonymous-text-image-text":
+        nodes = [2, 3, 4]
+        kinds = ["text", "replaced", "text"]
+        textMetrics = [[20, 10, 20, 10], nil, [20, 10, 20, 10]]
+        textSources = [[(2, "XX")], [], [(4, "XX")]]
+    case "image-before-comment-group":
+        nodes = [2, 3]
+        kinds = ["replaced", "text"]
+        textMetrics = [nil, [40, 10, 40, 10]]
+        textSources = [[], [(3, "XX"), (4, "XX")]]
+    case "comment-group-before-image":
+        nodes = [2, 4]
+        kinds = ["text", "replaced"]
+        textMetrics = [[40, 10, 40, 10], nil]
+        textSources = [[(2, "XX"), (3, "XX")], []]
+    case "whitespace-around-image":
+        nodes = [3, 4]
+        kinds = ["replaced", "text"]
+        textMetrics = [nil, [20, 10, 20, 10]]
+        textSources = [[], [(4, "\n\tXX")]]
+    case "hidden-child-around-image":
+        nodes = [2, 5, 6]
+        kinds = ["text", "replaced", "text"]
+        textMetrics = [[20, 10, 20, 10], nil, [20, 10, 20, 10]]
+        textSources = [[(2, "XX")], [], [(6, "XX")]]
+    default:
+        return false
+    }
+    guard let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let revision = diagnostics["layoutInputRevision"] as? [String: Any],
+          (revision["intrinsicSize"] as? Int) == 1,
+          let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
+          inputs.count == nodes.count else { return false }
+    for (index, input) in inputs.enumerated() {
+        guard (input["grid"] as? Int) == 1,
+              (input["node"] as? Int) == nodes[index],
+              (input["sourceOrder"] as? Int) == index,
+              let source = input["source"] as? [String: Any],
+              (source["kind"] as? String) == kinds[index],
+              let actualTextSources = input["textSources"] as? [[String: Any]],
+              actualTextSources.count == textSources[index].count else { return false }
+        for (sourceIndex, actual) in actualTextSources.enumerated() {
+            guard (actual["node"] as? Int) == textSources[index][sourceIndex].0,
+                  (actual["text"] as? String) == textSources[index][sourceIndex].1 else {
+                return false
+            }
+        }
         if kinds[index] == "text" {
             guard let expected = textMetrics[index],
                   (source["fontRegistryRevision"] as? Int) == 1 else { return false }
@@ -972,6 +1055,21 @@ private func c114ImageTrackPassMatches(
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     switch sceneID {
+    case "anonymous-text-image-text":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=60;"
+            + "1:node=3,x=20,y=0,width=72,height=48]"
+    case "image-before-comment-group":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=60;"
+            + "1:node=2,x=0,y=0,width=72,height=48]"
+    case "comment-group-before-image":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=60;"
+            + "1:node=4,x=40,y=0,width=72,height=48]"
+    case "whitespace-around-image":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=60;"
+            + "1:node=3,x=0,y=0,width=72,height=48]"
+    case "hidden-child-around-image":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=60;"
+            + "1:node=5,x=20,y=0,width=72,height=48]"
     case "anonymous-min-content-wrap":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=20]"
     case "anonymous-comment-continuation", "anonymous-hidden-child-continuation":
@@ -1309,6 +1407,7 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if c114IsAnonymousTextImageScene(sceneID) { return 2 }
     if ["anonymous-min-content-wrap", "anonymous-comment-continuation",
         "anonymous-hidden-child-continuation"].contains(sceneID) {
         return 1
@@ -1360,6 +1459,12 @@ private func c114IsAnonymousTextScene(_ sceneID: String) -> Bool {
     ["anonymous-min-content-wrap", "anonymous-comment-continuation",
      "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
      "whitespace-does-not-create-item"].contains(sceneID)
+}
+
+private func c114IsAnonymousTextImageScene(_ sceneID: String) -> Bool {
+    ["anonymous-text-image-text", "image-before-comment-group",
+     "comment-group-before-image", "whitespace-around-image",
+     "hidden-child-around-image"].contains(sceneID)
 }
 
 private func c114ImplicitTextRootFrame(_ sceneID: String) -> String? {
