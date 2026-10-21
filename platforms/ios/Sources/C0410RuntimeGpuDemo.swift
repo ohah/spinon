@@ -20,6 +20,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "cyclic-fit-content-column", "cyclic-fit-content-row", "definite-fit-content-column",
     "cyclic-percent-two-axis-multitrack", "cyclic-percent-columns-multitrack",
     "cyclic-percent-rows-multitrack", "definite-percent-two-axis-multitrack",
+    "cyclic-calc-column", "cyclic-calc-row", "cyclic-calc-two-axis",
+    "definite-calc-control",
     "auto-fixed-width-item", "minmax-auto-fixed-width-item",
     "fit-content-below-item-size", "spanning-auto-tracks",
     "spanning-auto-min-flex-tracks",
@@ -228,6 +230,9 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
         || sceneID == "definite-percent-two-axis-multitrack" {
         return "width=40,height=20"
     }
+    if sceneID == "cyclic-calc-column" || sceneID == "cyclic-calc-row"
+        || sceneID == "cyclic-calc-two-axis" { return "width=24,height=16" }
+    if sceneID == "definite-calc-control" { return "width=40,height=20" }
     if sceneID.hasPrefix("nested-text-span") {
         return sceneID.contains("before-span3") || sceneID.contains("span3-before-span2")
             ? "width=180,height=60" : "width=95,height=60"
@@ -378,6 +383,10 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         || sceneID == "cyclic-percent-rows-multitrack"
         || sceneID == "definite-percent-two-axis-multitrack" {
         return "width=20,height=10"
+    }
+    if sceneID == "cyclic-calc-column" || sceneID == "cyclic-calc-row"
+        || sceneID == "cyclic-calc-two-axis" || sceneID == "definite-calc-control" {
+        return "width=24,height=16"
     }
     if ["nested-grid-span-two", "nested-grid-one-track",
         "nested-grid-definite-flex-control", "nested-grid-text-image-span-two",
@@ -1521,6 +1530,12 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "4:node=5,x=\(imageX),y=0,width=24,height=16]"
     }
     switch sceneID {
+    case "cyclic-calc-column", "cyclic-calc-row", "cyclic-calc-two-axis":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;"
+            + "1:node=2,x=0,y=0,width=24,height=16]"
+    case "definite-calc-control":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;"
+            + "1:node=2,x=0,y=0,width=24,height=16]"
     case "cyclic-percent-two-axis-multitrack", "cyclic-percent-columns-multitrack",
          "cyclic-percent-rows-multitrack", "definite-percent-two-axis-multitrack":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;"
@@ -2160,6 +2175,10 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
         || sceneID == "definite-percent-two-axis-multitrack" {
         return 3
     }
+    if sceneID == "cyclic-calc-column" || sceneID == "cyclic-calc-row"
+        || sceneID == "cyclic-calc-two-axis" || sceneID == "definite-calc-control" {
+        return 2
+    }
     if sceneID.hasPrefix("nested-text-span") {
         return sceneID.contains("before-span3") || sceneID.contains("span3-before-span2")
             ? 7 : 6
@@ -2230,7 +2249,10 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
 }
 
 private func c114BaseNestedGridSceneID(_ sceneID: String) -> String {
-    sceneID.hasSuffix("-two-axis") ? String(sceneID.dropLast("-two-axis".count)) : sceneID
+    guard sceneID.hasPrefix("nested-depth-"), sceneID.hasSuffix("-two-axis") else {
+        return sceneID
+    }
+    return String(sceneID.dropLast("-two-axis".count))
 }
 
 private func c114IsImplicitTextScene(_ sceneID: String) -> Bool {
@@ -2625,6 +2647,31 @@ private struct C111MetalPixelRun {
     ) -> Bool {
         let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])]
         switch sceneID {
+        case "cyclic-calc-column", "cyclic-calc-row",
+             "cyclic-calc-two-axis", "definite-calc-control":
+            let itemID = "c114-\(sceneID)-item"
+            switch sceneID {
+            case "cyclic-calc-column":
+                expectedSamples = [
+                    ("cyclic-calc-column-inside-track", itemID, 15, 8, [229, 72, 77, 255]),
+                    ("cyclic-calc-column-past-track", itemID, 16, 8, [229, 72, 77, 255]),
+                ]
+            case "cyclic-calc-row":
+                expectedSamples = [
+                    ("cyclic-calc-row-inside-track", itemID, 12, 9, [229, 72, 77, 255]),
+                    ("cyclic-calc-row-past-track", itemID, 12, 10, [229, 72, 77, 255]),
+                ]
+            case "cyclic-calc-two-axis":
+                expectedSamples = [
+                    ("cyclic-calc-two-axis-inside-tracks", itemID, 15, 9, [229, 72, 77, 255]),
+                    ("cyclic-calc-two-axis-past-both", itemID, 16, 10, [229, 72, 77, 255]),
+                ]
+            default:
+                expectedSamples = [
+                    ("definite-calc-control-inside-track", itemID, 23, 11, [229, 72, 77, 255]),
+                    ("definite-calc-control-past-row", itemID, 5, 12, [229, 72, 77, 255]),
+                ]
+            }
         case "cyclic-percent-two-axis-multitrack",
              "cyclic-percent-columns-multitrack",
              "cyclic-percent-rows-multitrack",

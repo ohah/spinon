@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "target": "android-avd",
+  "runPrefix": "c114-cyclic-calc-track-sizing-android-avd-20261021T224422209Z-5ec7de6b",
+  "sceneCount": 4,
+  "observations": [
+    {
+      "sceneId": "cyclic-calc-column",
+      "summary": "10-22 07:44:23.870 26473 26491 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261021T224422209Z-5ec7de6b-0 scene_id=cyclic-calc-column expected_root_frame=width=24,height=16 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;1:node=2,x=0,y=0,width=24,height=16]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 16,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 16,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 4,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "cyclic-calc-row",
+      "summary": "10-22 07:44:25.792 26534 26554 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261021T224422209Z-5ec7de6b-1 scene_id=cyclic-calc-row expected_root_frame=width=24,height=16 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;1:node=2,x=0,y=0,width=24,height=16]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 24,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 4,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "cyclic-calc-two-axis",
+      "summary": "10-22 07:44:27.425 26592 26611 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261021T224422209Z-5ec7de6b-2 scene_id=cyclic-calc-two-axis expected_root_frame=width=24,height=16 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;1:node=2,x=0,y=0,width=24,height=16]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 16,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 5,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "definite-calc-control",
+      "summary": "10-22 07:44:29.391 26655 26674 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261021T224422209Z-5ec7de6b-3 scene_id=definite-calc-control expected_root_frame=width=40,height=20 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;1:node=2,x=0,y=0,width=24,height=16]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 20
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 24,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 12,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 2,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}

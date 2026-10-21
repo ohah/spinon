@@ -1,0 +1,47 @@
+{
+  "normativeSource": "CSS Grid Layout Module Level 1, 2025-03-26 CRD, sections 7.2.1 and 11.1",
+  "sourceUrl": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#track-sizes",
+  "rule": "When a grid container's size depends on its tracks, track percentages act as auto while intrinsic container sizes are calculated, then resolve against the resulting inner size for final grid layout.",
+  "inputs": {
+    "item": [24, 16],
+    "columnTrack": "calc(50% + 4px)",
+    "rowTrack": "calc(50% + 2px)",
+    "boxSizing": "content-box",
+    "gap": [0, 0],
+    "borderAndPadding": [0, 0, 0, 0]
+  },
+  "derivations": [
+    {
+      "id": "cyclic-calc-column",
+      "intrinsicBasis": "max-content item inline size 24px",
+      "resolvedTrack": "50% of 24px + 4px = 16px",
+      "expected": { "grid": [24, 16], "columns": [16], "rows": [16], "item": [24, 16, 0, 0] },
+      "overflow": "item extends 8px beyond its 16px column track"
+    },
+    {
+      "id": "cyclic-calc-row",
+      "intrinsicBasis": "max-content item block size 16px",
+      "resolvedTrack": "50% of 16px + 2px = 10px",
+      "expected": { "grid": [24, 16], "columns": [24], "rows": [10], "item": [24, 16, 0, 0] },
+      "overflow": "item extends 6px beyond its 10px row track"
+    },
+    {
+      "id": "cyclic-calc-two-axis",
+      "intrinsicBasis": "item establishes max-content grid size 24×16px independently on both axes",
+      "resolvedTrack": "columns 50% of 24px + 4px = 16px; rows 50% of 16px + 2px = 10px",
+      "expected": { "grid": [24, 16], "columns": [16], "rows": [10], "item": [24, 16, 0, 0] },
+      "overflow": "item extends 8px right and 6px down beyond its tracks"
+    },
+    {
+      "id": "definite-calc-control",
+      "intrinsicBasis": "definite grid inner size 40×20px",
+      "resolvedTrack": "columns 50% of 40px + 4px = 24px; rows 50% of 20px + 2px = 12px",
+      "expected": { "grid": [40, 20], "columns": [24], "rows": [12], "item": [24, 16, 0, 0] },
+      "overflow": "item is flush with the column track and extends 4px below the row track"
+    }
+  ],
+  "limitations": [
+    "This fixed fixture does not admit general CSS track syntax.",
+    "It does not cover minmax(calc()), fit-content(calc()), nested Grid, gaps, borders, writing-mode changes, WPT, hardware GPU, physical Android, or iOS compositor-after pixels."
+  ]
+}

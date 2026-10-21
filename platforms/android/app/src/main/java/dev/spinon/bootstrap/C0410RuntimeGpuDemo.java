@@ -132,6 +132,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "definite-fit-content-column",
             "cyclic-percent-two-axis-multitrack", "cyclic-percent-columns-multitrack",
             "cyclic-percent-rows-multitrack", "definite-percent-two-axis-multitrack",
+            "cyclic-calc-column", "cyclic-calc-row", "cyclic-calc-two-axis",
+            "definite-calc-control",
             "auto-fixed-width-item", "minmax-auto-fixed-width-item",
             "fit-content-below-item-size", "spanning-auto-tracks",
             "spanning-auto-min-flex-tracks",
@@ -430,6 +432,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("definite-percent-two-axis-multitrack")) {
             return "width=40,height=20";
         }
+        if (sceneId.equals("cyclic-calc-column")
+                || sceneId.equals("cyclic-calc-row")
+                || sceneId.equals("cyclic-calc-two-axis")) return "width=24,height=16";
+        if (sceneId.equals("definite-calc-control")) return "width=40,height=20";
         if (sceneId.startsWith("nested-text-span")) {
             return sceneId.contains("before-span3") || sceneId.contains("span3-before-span2")
                     ? "width=180,height=60" : "width=95,height=60";
@@ -630,6 +636,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("definite-percent-two-axis-multitrack")) {
             return "width=20,height=10";
         }
+        if (sceneId.equals("cyclic-calc-column")
+                || sceneId.equals("cyclic-calc-row")
+                || sceneId.equals("cyclic-calc-two-axis")
+                || sceneId.equals("definite-calc-control")) return "width=24,height=16";
         if (sceneId.equals("nested-grid-span-two")
                 || sceneId.equals("nested-grid-one-track")
                 || sceneId.equals("nested-grid-definite-flex-control")
@@ -1554,6 +1564,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;"
                         + "1:node=2,x=0,y=0,width=20,height=10;"
                         + "2:node=4,x=30,y=15,width=20,height=10]";
+            case "cyclic-calc-column":
+            case "cyclic-calc-row":
+            case "cyclic-calc-two-axis":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;"
+                        + "1:node=2,x=0,y=0,width=24,height=16]";
+            case "definite-calc-control":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;"
+                        + "1:node=2,x=0,y=0,width=24,height=16]";
             case "cyclic-fit-content-column":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=50,height=20;"
                         + "1:node=2,x=0,y=0,width=25,height=20]";
@@ -2482,6 +2500,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("cyclic-percent-columns-multitrack")
                 || sceneId.equals("cyclic-percent-rows-multitrack")
                 || sceneId.equals("definite-percent-two-axis-multitrack")) return 3;
+        if (sceneId.equals("cyclic-calc-column")
+                || sceneId.equals("cyclic-calc-row")
+                || sceneId.equals("cyclic-calc-two-axis")
+                || sceneId.equals("definite-calc-control")) return 2;
         if (sceneId.startsWith("nested-text-span")) {
             return sceneId.contains("before-span3") || sceneId.contains("span3-before-span2")
                     ? 7 : 6;
@@ -2557,7 +2579,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114BaseNestedGridSceneId(String sceneId) {
-        return sceneId.endsWith("-two-axis")
+        return sceneId.startsWith("nested-depth-") && sceneId.endsWith("-two-axis")
                 ? sceneId.substring(0, sceneId.length() - "-two-axis".length()) : sceneId;
     }
 
@@ -2715,6 +2737,69 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (sceneId.equals("cyclic-calc-column")
+                || sceneId.equals("cyclic-calc-row")
+                || sceneId.equals("cyclic-calc-two-axis")
+                || sceneId.equals("definite-calc-control")) {
+            if (samples.size() != 2) return false;
+            String itemId = "c114-" + sceneId + "-item";
+            String insideId;
+            String pastId;
+            int insideX;
+            int insideY;
+            int pastX;
+            int pastY;
+            switch (sceneId) {
+                case "cyclic-calc-column":
+                    insideId = "cyclic-calc-column-inside-track";
+                    pastId = "cyclic-calc-column-past-track";
+                    insideX = 15;
+                    insideY = 8;
+                    pastX = 16;
+                    pastY = 8;
+                    break;
+                case "cyclic-calc-row":
+                    insideId = "cyclic-calc-row-inside-track";
+                    pastId = "cyclic-calc-row-past-track";
+                    insideX = 12;
+                    insideY = 9;
+                    pastX = 12;
+                    pastY = 10;
+                    break;
+                case "cyclic-calc-two-axis":
+                    insideId = "cyclic-calc-two-axis-inside-tracks";
+                    pastId = "cyclic-calc-two-axis-past-both";
+                    insideX = 15;
+                    insideY = 9;
+                    pastX = 16;
+                    pastY = 10;
+                    break;
+                default:
+                    insideId = "definite-calc-control-inside-track";
+                    pastId = "definite-calc-control-past-row";
+                    insideX = 23;
+                    insideY = 11;
+                    pastX = 5;
+                    pastY = 12;
+                    break;
+            }
+            boolean inside = false;
+            boolean past = false;
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                if (sample.id.equals(insideId)) {
+                    inside = sample.targetNodeId.equals(itemId)
+                            && sample.xCssPx == insideX && sample.yCssPx == insideY;
+                    if (!inside) return false;
+                } else if (sample.id.equals(pastId)) {
+                    past = sample.targetNodeId.equals(itemId)
+                            && sample.xCssPx == pastX && sample.yCssPx == pastY;
+                    if (!past) return false;
+                } else {
+                    return false;
+                }
+            }
+            return inside && past;
+        }
         if (sceneId.equals("cyclic-percent-two-axis-multitrack")
                 || sceneId.equals("cyclic-percent-columns-multitrack")
                 || sceneId.equals("cyclic-percent-rows-multitrack")
@@ -4198,6 +4283,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "cyclic-percent-columns-multitrack".equals(pixelMatrixSceneId)
                         || "cyclic-percent-rows-multitrack".equals(pixelMatrixSceneId)
                         || "definite-percent-two-axis-multitrack".equals(pixelMatrixSceneId)
+                        || "cyclic-calc-column".equals(pixelMatrixSceneId)
+                        || "cyclic-calc-row".equals(pixelMatrixSceneId)
+                        || "cyclic-calc-two-axis".equals(pixelMatrixSceneId)
+                        || "definite-calc-control".equals(pixelMatrixSceneId)
                         || "auto-fill-overflow-neighbors".equals(pixelMatrixSceneId)
                         || "columns-fill-negative-positive-cycle".equals(pixelMatrixSceneId)
                         || "implicit-min-content-overflow-border".equals(pixelMatrixSceneId)
@@ -7733,6 +7822,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return new int[] {32, 191, 107};
         }
         switch (sampleId) {
+            case "cyclic-calc-column-inside-track":
+            case "cyclic-calc-column-past-track":
+            case "cyclic-calc-row-inside-track":
+            case "cyclic-calc-row-past-track":
+            case "cyclic-calc-two-axis-inside-tracks":
+            case "cyclic-calc-two-axis-past-both":
+            case "definite-calc-control-inside-track":
+            case "definite-calc-control-past-row":
             case "cyclic-column-inside-track":
             case "cyclic-column-past-track":
             case "cyclic-row-inside-track":

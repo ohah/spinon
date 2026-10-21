@@ -12,6 +12,8 @@ mod anonymous_text_items;
 mod anonymous_text_multi_image;
 #[path = "c11_4/auto_repeat_negative_lines.rs"]
 mod auto_repeat_negative_lines;
+#[path = "c11_4/cyclic_calc_tracks.rs"]
+mod cyclic_calc_tracks;
 #[path = "c11_4/cyclic_percentage_fit_content.rs"]
 mod cyclic_percentage_fit_content;
 #[path = "c11_4/cyclic_percentage_minmax.rs"]
@@ -1066,6 +1068,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     if let Some(source) = cyclic_percentage_fit_content::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
+    if let Some(source) = cyclic_calc_tracks::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = cyclic_percentage_two_axis_multitrack::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
@@ -1367,6 +1372,47 @@ mod tests {
             );
         }
         assert!(c11_4_grid_track_sizing_runtime_source("cyclic-fit-content-unlisted").is_err());
+    }
+
+    #[test]
+    fn exposes_cyclic_calc_track_sizing_runtime_scenes() {
+        for (scene_id, columns, rows, root_size) in [
+            (
+                "cyclic-calc-column",
+                "calc(50% + 4px)",
+                "16px",
+                "width:max-content;height:max-content",
+            ),
+            (
+                "cyclic-calc-row",
+                "24px",
+                "calc(50% + 2px)",
+                "width:24px;height:max-content",
+            ),
+            (
+                "cyclic-calc-two-axis",
+                "calc(50% + 4px)",
+                "calc(50% + 2px)",
+                "width:max-content;height:max-content",
+            ),
+            (
+                "definite-calc-control",
+                "calc(50% + 4px)",
+                "calc(50% + 2px)",
+                "width:40px;height:20px",
+            ),
+        ] {
+            let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
+            assert!(source.len() < 3 * 1024);
+            assert!(source.contains(&format!("sceneId:{scene_id:?}")));
+            assert!(source.contains(&format!("grid-template-columns:{columns}")));
+            assert!(source.contains(&format!("grid-template-rows:{rows}")));
+            assert!(source.contains(root_size));
+            assert!(source.contains("width:24px;height:16px"));
+            assert!(source.contains("document.createTextNode('XX')"));
+            assert_eq!(source.matches("document.createElement('div')").count(), 2);
+        }
+        assert!(c11_4_grid_track_sizing_runtime_source("cyclic-calc-unlisted").is_err());
     }
 
     #[test]

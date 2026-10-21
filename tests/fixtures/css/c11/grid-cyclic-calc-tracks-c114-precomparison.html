@@ -1,0 +1,63 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 cyclic calc() track sizing precomparison</title>
+<style>
+  html, body { margin: 0; padding: 0; }
+  body { padding: 8px; background: #ffffff; }
+  .grid {
+    display: grid;
+    margin: 4px 0;
+    padding: 0;
+    border: 0;
+    gap: 0;
+    justify-content: start;
+    align-content: start;
+    background: #101820;
+  }
+  .item {
+    width: 24px;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #e5484d;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+  .probe {
+    min-width: 0;
+    min-height: 0;
+    visibility: hidden;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+</style>
+<div id="cyclic-calc-column" class="grid" style="width:max-content;grid-template-columns:calc(50% + 4px);grid-template-rows:16px"><div class="item"></div></div>
+<div id="cyclic-calc-row" class="grid" style="width:24px;height:max-content;grid-template-columns:24px;grid-template-rows:calc(50% + 2px)"><div class="item"></div></div>
+<div id="cyclic-calc-two-axis" class="grid" style="width:max-content;height:max-content;grid-template-columns:calc(50% + 4px);grid-template-rows:calc(50% + 2px)"><div class="item"></div></div>
+<div id="definite-calc-control" class="grid" style="width:40px;height:20px;grid-template-columns:calc(50% + 4px);grid-template-rows:calc(50% + 2px)"><div class="item"></div></div>
+<script>
+  window.cyclicCalcResults = {
+    userAgent: navigator.userAgent,
+    scenes: Array.from(document.querySelectorAll(".grid"), (grid) => {
+      const item = grid.firstElementChild;
+      const probe = document.createElement("div");
+      probe.className = "probe";
+      grid.append(probe);
+      const rect = (element) => {
+        const { x, y, width, height } = element.getBoundingClientRect();
+        return { x, y, width, height };
+      };
+      const style = getComputedStyle(grid);
+      return {
+        id: grid.id,
+        grid: rect(grid),
+        item: rect(item),
+        probe: rect(probe),
+        columns: style.gridTemplateColumns,
+        rows: style.gridTemplateRows,
+        scroll: { width: grid.scrollWidth, height: grid.scrollHeight },
+      };
+    }),
+  };
+</script>

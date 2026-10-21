@@ -17,6 +17,8 @@ const cyclicPercentSceneIDs = new Set([
   'cyclic-fit-content-column', 'cyclic-fit-content-row', 'definite-fit-content-column',
   'cyclic-percent-two-axis-multitrack', 'cyclic-percent-columns-multitrack',
   'cyclic-percent-rows-multitrack', 'definite-percent-two-axis-multitrack',
+  'cyclic-calc-column', 'cyclic-calc-row', 'cyclic-calc-two-axis',
+  'definite-calc-control',
 ]);
 const requestedRunKind = process.argv.find((argument) => argument.startsWith('--run-kind='))
   ?.slice('--run-kind='.length);
@@ -1878,6 +1880,84 @@ scenes.push(
     ],
   },
   ...[
+    {
+      id: 'cyclic-calc-column',
+      boxCount: 2,
+      rootFrame: 'width=24,height=16',
+      itemFrame: 'width=24,height=16',
+      nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;'
+        + '1:node=2,x=0,y=0,width=24,height=16]',
+      axes: {
+        Columns: { tracks: [16], collapsed: [false] },
+        Rows: { tracks: [16], collapsed: [false] },
+      },
+      gaps: { Columns: 0, Rows: 0 },
+      pixelSamples: [
+        { id: 'cyclic-calc-column-inside-track', nodeId: 'c114-cyclic-calc-column-item',
+          xCssPx: 15, yCssPx: 8, rgba: [229, 72, 77, 255] },
+        { id: 'cyclic-calc-column-past-track', nodeId: 'c114-cyclic-calc-column-item',
+          xCssPx: 16, yCssPx: 8, rgba: [229, 72, 77, 255] },
+      ],
+    },
+    {
+      id: 'cyclic-calc-row',
+      boxCount: 2,
+      rootFrame: 'width=24,height=16',
+      itemFrame: 'width=24,height=16',
+      nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;'
+        + '1:node=2,x=0,y=0,width=24,height=16]',
+      axes: {
+        Columns: { tracks: [24], collapsed: [false] },
+        Rows: { tracks: [10], collapsed: [false] },
+      },
+      gaps: { Columns: 0, Rows: 0 },
+      pixelSamples: [
+        { id: 'cyclic-calc-row-inside-track', nodeId: 'c114-cyclic-calc-row-item',
+          xCssPx: 12, yCssPx: 9, rgba: [229, 72, 77, 255] },
+        { id: 'cyclic-calc-row-past-track', nodeId: 'c114-cyclic-calc-row-item',
+          xCssPx: 12, yCssPx: 10, rgba: [229, 72, 77, 255] },
+      ],
+    },
+    {
+      id: 'cyclic-calc-two-axis',
+      boxCount: 2,
+      rootFrame: 'width=24,height=16',
+      itemFrame: 'width=24,height=16',
+      nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;'
+        + '1:node=2,x=0,y=0,width=24,height=16]',
+      axes: {
+        Columns: { tracks: [16], collapsed: [false] },
+        Rows: { tracks: [10], collapsed: [false] },
+      },
+      gaps: { Columns: 0, Rows: 0 },
+      pixelSamples: [
+        { id: 'cyclic-calc-two-axis-inside-tracks', nodeId: 'c114-cyclic-calc-two-axis-item',
+          xCssPx: 15, yCssPx: 9, rgba: [229, 72, 77, 255] },
+        { id: 'cyclic-calc-two-axis-past-both', nodeId: 'c114-cyclic-calc-two-axis-item',
+          xCssPx: 16, yCssPx: 10, rgba: [229, 72, 77, 255] },
+      ],
+    },
+    {
+      id: 'definite-calc-control',
+      boxCount: 2,
+      rootFrame: 'width=40,height=20',
+      itemFrame: 'width=24,height=16',
+      nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;'
+        + '1:node=2,x=0,y=0,width=24,height=16]',
+      axes: {
+        Columns: { tracks: [24], collapsed: [false] },
+        Rows: { tracks: [12], collapsed: [false] },
+      },
+      gaps: { Columns: 0, Rows: 0 },
+      pixelSamples: [
+        { id: 'definite-calc-control-inside-track', nodeId: 'c114-definite-calc-control-item',
+          xCssPx: 23, yCssPx: 11, rgba: [229, 72, 77, 255] },
+        { id: 'definite-calc-control-past-row', nodeId: 'c114-definite-calc-control-item',
+          xCssPx: 5, yCssPx: 12, rgba: [229, 72, 77, 255] },
+      ],
+    },
+  ],
+  ...[
     'cyclic-percent-two-axis-multitrack',
     'cyclic-percent-columns-multitrack',
     'cyclic-percent-rows-multitrack',
@@ -1915,7 +1995,7 @@ scenes.push(
     ],
   })),
 );
-assert.equal(scenes.length, 215, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 219, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
