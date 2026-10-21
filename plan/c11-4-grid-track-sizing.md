@@ -288,3 +288,8 @@ CSS Grid 2025 CRD §7.2.1에 따라 intrinsic container sizing에서는 cyclic p
 ### 2026-10-22 cyclic percentage `minmax()` 후속 계획
 
 직전 세 scene은 bare percentage track만 확인했다. 다음 고정 slice는 `minmax(0px, 50%)`의 percentage maximum을 같은 cyclic column·row와 definite column control에서 확인한다. CSS Grid 2025 CRD §11 Grid Layout Algorithm은 intrinsic container sizing에서 cyclic percentage in track sizes를 `auto`처럼 다루고, 결과 container size로 다시 Grid sizing할 때 percentages를 해석한다. Chrome 156 Agent Browser 관찰과 독립 계산은 cyclic columns `[12]`, cyclic rows `[8]`, definite column `[20]`이며 root/item은 각각 `24×16`, `24×16`, `40×16px`다. 세 장면, Chrome 156 observation JSON, 계획 실패 관점 20개는 [집중 계획](./c11-4-cyclic-percent-minmax.md) 및 [사전 비교](../spec/internal/evidence/c11-4-cyclic-percent-minmax-precomparison-2026-10-22/README.md)에 기록한다. `calc()`, percentage minimum, percentage `fit-content()`, 다중·동시 cyclic axis, nested Grid와 WPT는 이 slice 범위 밖이다. 계획 검토와 무관하게 C11.4 checkbox와 공식 `72/213`은 유지한다.
+
+
+### 2026-10-22 cyclic percentage fit-content() 계획
+
+기존 definite-width fit-content percentage 관찰과 percentage minmax slice는 fit-content의 intrinsic minimum 및 max-content ceiling이 cyclic percentage limit과 함께 동작하는 경우를 다루지 않았다. 새 계획은 max-content column/row 두 scene과 definite column control을 Ahem direct text로 고정한다. CSS Grid 2025 CRD sizing basis와 cyclic percentage 단계에서 columns [25], rows [20], definite columns [20]을 독립 계산했으며 Chrome 156 observation과 대조한다. root/item frames는 각각 50×20/25×20, 20×40/20×20, 40×20/20×20px다. [집중 계획](./c11-4-cyclic-percent-fit-content.md) · [계획 실패 관점 20개](./c11-4-cyclic-percent-fit-content-plan-review-20.md) · [사전 비교·화면](../spec/internal/evidence/c11-4-cyclic-fit-content-precomparison-2026-10-22/README.md). 현재는 계획 단계로 Spinon runtime과 simulator 결과가 없으며 C11.4 checkbox 및 공식 72/213은 유지한다.

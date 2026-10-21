@@ -1,0 +1,125 @@
+{
+  "browser": {
+    "product": "Chrome",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "version": "156.0.8078.48",
+    "viewport": {
+      "devicePixelRatio": 1,
+      "height": 633,
+      "width": 1280
+    }
+  },
+  "font": {
+    "family": "Ahem",
+    "loaded": true,
+    "status": "loaded"
+  },
+  "scenes": [
+    {
+      "columns": "25px",
+      "grid": {
+        "height": 20,
+        "width": 50,
+        "x": 0,
+        "y": 0
+      },
+      "id": "cyclic-fit-content-column",
+      "item": {
+        "height": 20,
+        "width": 25,
+        "x": 0,
+        "y": 0
+      },
+      "rows": "20px",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 20,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 20,
+          "x": 0,
+          "y": 10
+        }
+      ]
+    },
+    {
+      "columns": "20px",
+      "grid": {
+        "height": 40,
+        "width": 20,
+        "x": 0,
+        "y": 20
+      },
+      "id": "cyclic-fit-content-row",
+      "item": {
+        "height": 20,
+        "width": 20,
+        "x": 0,
+        "y": 20
+      },
+      "rows": "20px",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 10,
+          "x": 0,
+          "y": 20
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 0,
+          "y": 30
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 0,
+          "y": 40
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 0,
+          "y": 50
+        }
+      ]
+    },
+    {
+      "columns": "20px",
+      "grid": {
+        "height": 20,
+        "width": 40,
+        "x": 0,
+        "y": 60
+      },
+      "id": "definite-fit-content-column",
+      "item": {
+        "height": 20,
+        "width": 20,
+        "x": 0,
+        "y": 60
+      },
+      "rows": "20px",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 20,
+          "x": 0,
+          "y": 60
+        },
+        {
+          "height": 10,
+          "width": 20,
+          "x": 0,
+          "y": 70
+        }
+      ]
+    }
+  ],
+  "url": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/css/c11/grid-cyclic-fit-content-c114-precomparison.html"
+}
