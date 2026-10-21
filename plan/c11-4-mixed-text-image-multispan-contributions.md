@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** Chrome 155 사전 비교와 계획 실패 관점 20개 검토를 마쳤다. 제한된 runtime fixture 구현과 네 mixed scene의 Rust·Android API 37 AVD·Android 실기기·iOS Simulator 실행을 마치고 [구현 PR #419](https://github.com/ohah/spinon/pull/419)을 올렸다. C11.4와 공식 완료 수는 미완료로 유지한다.
+**상태:** Chrome 155 사전 비교와 계획 실패 관점 20개 검토를 마쳤다. 제한된 runtime fixture 구현과 네 mixed scene의 Rust·Android API 37 AVD·Android 실기기·iOS Simulator 실행을 마쳤다. [구현 PR #419](https://github.com/ohah/spinon/pull/419)은 2026-10-21 01:25:11 UTC에 Rebase and merge됐고 merge SHA는 `1e2c5352ff9932a776420fdf533c9d040e4a0746`이다. PR check rollup은 비어 있었고 `main`의 required status check는 설정되어 있지 않았다. C11.4와 공식 완료 수는 미완료로 유지한다.
 
 ## 목적과 범위
 
@@ -50,3 +50,5 @@ CSS Grid §11.5.1의 span별 grouping과 planned-increase 규칙을 적용한다
 - [계획 PR 변경분 적대 검토 20개](../spec/internal/evidence/c11-4-mixed-text-image-multispan-precomparison-2026-10-21/plan-pr-diff-review-20.md)
 - [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-4-mixed-text-image-multispan-2026-10-21/implementation-review-20.md)
 - [구현 PR diff 실패 관점 검토 20개](../spec/internal/evidence/c11-4-mixed-text-image-multispan-2026-10-21/pr-diff-review-20.md)
+- [구현 병합 후 roadmap 문서 PR 적대 검토 30개](../spec/internal/evidence/c11-4-mixed-text-image-multispan-2026-10-21/postmerge-docs-pr-review-30.md)
+- [roadmap Agent Browser 화면](/spinon/internal/evidence/c11-4-mixed-text-image-multispan-2026-10-21/roadmap-agent-browser-pass34.png) · [공식 완료 집계 72/213 화면](/spinon/internal/evidence/c11-4-mixed-text-image-multispan-2026-10-21/roadmap-counter-agent-browser-pass34.png)
