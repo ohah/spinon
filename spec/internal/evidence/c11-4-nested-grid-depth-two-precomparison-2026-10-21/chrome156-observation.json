@@ -1,0 +1,192 @@
+{
+  "ahemReady": true,
+  "cases": [
+    {
+      "grids": [
+        {
+          "columns": "70px",
+          "frame": {
+            "height": 20,
+            "width": 70,
+            "x": 4,
+            "y": 17
+          },
+          "id": "depth-one-min-root",
+          "width": "70px"
+        },
+        {
+          "columns": "70px",
+          "frame": {
+            "height": 20,
+            "width": 70,
+            "x": 4,
+            "y": 17
+          },
+          "id": "depth-one-min-inner",
+          "width": "70px"
+        }
+      ],
+      "id": "nested-depth-one-min-content",
+      "text": {
+        "frame": {
+          "height": 20,
+          "width": 70,
+          "x": 4,
+          "y": 17
+        },
+        "id": "depth-one-min-text"
+      }
+    },
+    {
+      "grids": [
+        {
+          "columns": "70px",
+          "frame": {
+            "height": 20,
+            "width": 70,
+            "x": 4,
+            "y": 89
+          },
+          "id": "depth-two-min-root",
+          "width": "70px"
+        },
+        {
+          "columns": "70px",
+          "frame": {
+            "height": 20,
+            "width": 70,
+            "x": 4,
+            "y": 89
+          },
+          "id": "depth-two-min-middle",
+          "width": "70px"
+        },
+        {
+          "columns": "70px",
+          "frame": {
+            "height": 20,
+            "width": 70,
+            "x": 4,
+            "y": 89
+          },
+          "id": "depth-two-min-inner",
+          "width": "70px"
+        }
+      ],
+      "id": "nested-depth-two-min-content",
+      "text": {
+        "frame": {
+          "height": 20,
+          "width": 70,
+          "x": 4,
+          "y": 89
+        },
+        "id": "depth-two-min-text"
+      }
+    },
+    {
+      "grids": [
+        {
+          "columns": "100px",
+          "frame": {
+            "height": 10,
+            "width": 100,
+            "x": 4,
+            "y": 161
+          },
+          "id": "depth-one-max-root",
+          "width": "100px"
+        },
+        {
+          "columns": "100px",
+          "frame": {
+            "height": 10,
+            "width": 100,
+            "x": 4,
+            "y": 161
+          },
+          "id": "depth-one-max-inner",
+          "width": "100px"
+        }
+      ],
+      "id": "nested-depth-one-max-content",
+      "text": {
+        "frame": {
+          "height": 10,
+          "width": 100,
+          "x": 4,
+          "y": 161
+        },
+        "id": "depth-one-max-text"
+      }
+    },
+    {
+      "grids": [
+        {
+          "columns": "100px",
+          "frame": {
+            "height": 10,
+            "width": 100,
+            "x": 4,
+            "y": 233
+          },
+          "id": "depth-two-max-root",
+          "width": "100px"
+        },
+        {
+          "columns": "100px",
+          "frame": {
+            "height": 10,
+            "width": 100,
+            "x": 4,
+            "y": 233
+          },
+          "id": "depth-two-max-middle",
+          "width": "100px"
+        },
+        {
+          "columns": "100px",
+          "frame": {
+            "height": 10,
+            "width": 100,
+            "x": 4,
+            "y": 233
+          },
+          "id": "depth-two-max-inner",
+          "width": "100px"
+        }
+      ],
+      "id": "nested-depth-two-max-content",
+      "text": {
+        "frame": {
+          "height": 10,
+          "width": 100,
+          "x": 4,
+          "y": 233
+        },
+        "id": "depth-two-max-text"
+      }
+    }
+  ],
+  "platform": "MacIntel",
+  "textIntrinsic": {
+    "maxContent": {
+      "height": 10,
+      "width": 100,
+      "x": -10000,
+      "y": 0
+    },
+    "minContent": {
+      "height": 20,
+      "width": 70,
+      "x": -10000,
+      "y": 0
+    }
+  },
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "dpr": 1,
+    "height": 633,
+    "width": 1280
+  }
+}

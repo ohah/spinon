@@ -1,0 +1,70 @@
+{
+  "source": "CSS Grid Layout Module Level 1, 2025 CRD sections 5.2 and 11.1 plus fixed Ahem metrics",
+  "independent_of_chrome_observation": true,
+  "font": {
+    "family": "Ahem",
+    "size_css_px": 10,
+    "line_height_css_px": 10,
+    "x_advance_css_px": 10,
+    "space_advance_css_px": 10,
+    "text": "XX XXXXXXX",
+    "min_content_width_css_px": 70,
+    "max_content_width_css_px": 100
+  },
+  "track_model": {
+    "columns_per_grid": 1,
+    "column_gap_css_px": 0,
+    "row_gap_css_px": 0,
+    "margin_border_padding_css_px": 0
+  },
+  "scenes": [
+    {
+      "id": "nested-depth-one-min-content",
+      "grid_depth_below_root": 1,
+      "constraint": "min-content",
+      "root_columns_css_px": [70],
+      "grid_columns_css_px": [[70], [70]],
+      "grid_widths_css_px": [70, 70],
+      "text_frame_root_relative_css_px": {"x": 0, "y": 0, "width": 70, "height": 20}
+    },
+    {
+      "id": "nested-depth-two-min-content",
+      "grid_depth_below_root": 2,
+      "constraint": "min-content",
+      "root_columns_css_px": [70],
+      "grid_columns_css_px": [[70], [70], [70]],
+      "grid_widths_css_px": [70, 70, 70],
+      "text_frame_root_relative_css_px": {"x": 0, "y": 0, "width": 70, "height": 20}
+    },
+    {
+      "id": "nested-depth-one-max-content",
+      "grid_depth_below_root": 1,
+      "constraint": "max-content",
+      "root_columns_css_px": [100],
+      "grid_columns_css_px": [[100], [100]],
+      "grid_widths_css_px": [100, 100],
+      "text_frame_root_relative_css_px": {"x": 0, "y": 0, "width": 100, "height": 10}
+    },
+    {
+      "id": "nested-depth-two-max-content",
+      "grid_depth_below_root": 2,
+      "constraint": "max-content",
+      "root_columns_css_px": [100],
+      "grid_columns_css_px": [[100], [100], [100]],
+      "grid_widths_css_px": [100, 100, 100],
+      "text_frame_root_relative_css_px": {"x": 0, "y": 0, "width": 100, "height": 10}
+    }
+  ],
+  "tolerance_css_px": 0.05,
+  "chromium_is_observation_not_normative_oracle": true,
+  "not_tested": [
+    "spinon_runtime",
+    "android_or_ios_simulator",
+    "wpt",
+    "glyph_paint",
+    "nested_depth_three_or_more",
+    "arbitrary_css",
+    "physical_android",
+    "post_compositor_pixels"
+  ]
+}
