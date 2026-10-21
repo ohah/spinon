@@ -1,8 +1,8 @@
 # 내부 인터페이스 명세
 
-## C11.4 nested Grid 양 축 intrinsic sizing · 구현 중
+## C11.4 nested Grid 양 축 intrinsic sizing · PR #453
 
-[집중 계획](../../plan/c11-4-nested-grid-two-axis-depth-two.md) · [Chrome 156 사전 비교·독립 기대값](./evidence/c11-4-nested-grid-two-axis-precomparison-2026-10-22/README.md) · [Android/iOS Simulator 실행·archive 경계·화면](./evidence/c11-4-nested-grid-two-axis-runtime-2026-10-22/README.md) · [구현/runtime 실패 관점 20개](./evidence/c11-4-nested-grid-two-axis-runtime-2026-10-22/implementation-review-20.md) · [PR diff 적대 검토 30개](./evidence/c11-4-nested-grid-two-axis-runtime-2026-10-22/pr-diff-review-30.md). 네 fixed fixture scene만 대상으로 한다. PR과 merge는 아직 완료되지 않았으며 C11.4 체크와 공식 `72/213` 집계는 유지한다.
+[PR #453](https://github.com/ohah/spinon/pull/453) · [집중 계획](../../plan/c11-4-nested-grid-two-axis-depth-two.md) · [Chrome 156 사전 비교·독립 기대값](./evidence/c11-4-nested-grid-two-axis-precomparison-2026-10-22/README.md) · [Android/iOS Simulator 실행·archive 경계·화면](./evidence/c11-4-nested-grid-two-axis-runtime-2026-10-22/README.md) · [구현/runtime 실패 관점 20개](./evidence/c11-4-nested-grid-two-axis-runtime-2026-10-22/implementation-review-20.md) · [PR diff 적대 검토 30개](./evidence/c11-4-nested-grid-two-axis-runtime-2026-10-22/pr-diff-review-30.md). 네 fixed fixture scene만 대상으로 한다. PR #453은 열려 있고 merge는 아직 완료되지 않았다. C11.4 체크와 공식 `72/213` 집계는 유지한다.
 
 ## C11.3.3 unknown-area trailing implicit named-line 후속 · PR #393
 

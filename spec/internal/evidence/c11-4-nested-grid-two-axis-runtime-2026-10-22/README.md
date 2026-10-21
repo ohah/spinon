@@ -46,3 +46,9 @@ iPhone 17 Pro, iOS 26.2 Simulator(`ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D`)에서 
 화면 캡처에는 앱 제목, 320×240 CSS px surface, 현재 scene의 단순 surface 출력과 `layout=ready` 상태가 보인다. 실제 수치 판정은 결과 JSON과 Android/iOS runtime log의 node frame·used track·trace를 사용한다. PNG는 glyph paint equality나 CSS border 색, Android hardware GPU, iOS compositor 이후 픽셀의 근거가 아니다.
 
 Android 실기기, WPT, 임의 HTML/CSS·depth, spans와 다중 item, writing mode, 전체 CSS Grid, final release archive, iOS compositor 이후 표면은 검증하지 않았다. 이 네 fixed fixture의 성공은 C11.4 전체 지원을 의미하지 않는다. 파일 해시는 [SHA256SUMS.txt](./SHA256SUMS.txt)에 기록한다.
+
+## PR #453 Agent Browser 확인
+
+Agent Browser 0.31.1로 [PR #453](https://github.com/ohah/spinon/pull/453) 본문을 렌더링하고 Android/iOS depth-two `min-content`·`max-content` 이미지 네 개를 확인했다. 네 이미지 모두 `complete=true`이며 Android 원본은 1080×2400, iOS 원본은 1206×2622다. 추출 결과는 [검증 JSON](./pr-453-agent-browser-verification.json), 페이지 화면은 [본문 개요](./pr-453-agent-browser.png)와 [이미지 행](./pr-453-image-row-agent-browser.png)이다.
+
+확인 뒤 전용 `spinon-pr-453` 세션을 닫았다. 최종 `agent-browser session list`는 비었고 Agent Browser daemon 및 Chrome remote-debugging 프로세스도 남지 않았다([종료 확인](./browser-close-pr453.json)).

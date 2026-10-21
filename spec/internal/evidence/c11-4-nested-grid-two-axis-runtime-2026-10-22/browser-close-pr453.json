@@ -1,0 +1,10 @@
+{
+  "session": "spinon-pr-453",
+  "closeCommands": [
+    "agent-browser --session spinon-pr-453 close",
+    "agent-browser close --all"
+  ],
+  "sessionListAfter": "No active sessions",
+  "agentBrowserDaemonProcessesAfter": [],
+  "chromeRemoteDebuggingProcessesAfter": []
+}
