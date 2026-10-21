@@ -3,5 +3,6 @@
   "command": "agent-browser close --all",
   "exitCode": 0,
   "closedSession": "default",
+  "checkedAfter": "PR #437 image verification",
   "remainingAgentBrowserOrHeadlessChromeProcesses": []
 }

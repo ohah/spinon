@@ -18,6 +18,7 @@
 
 - roadmap, 공식 STATUS, C11.4 계획 페이지가 PR #436과 merge SHA `e0ac9aaf1681aeb56850bf749ec099cf1737d44f`를 표시했다. 공식 완료 집계는 계속 72/213이며 C11 parent checkbox는 unchecked다.
 - simulator 실행 README의 Android API 37 AVD forward/reversed 화면은 각 1080×2400, iOS 26.2 Simulator forward/reversed 화면은 각 1206×2622로 모두 `complete=true`였다. [DOM 결과](./agent-browser-final-pass04.json)에 기록했다.
+- PR #437 본문에 넣은 Tailnet 계획·미리보기 캡처 두 장과 Android/iOS simulator 화면 네 장도 Agent Browser에서 모두 `complete=true`였다. 해상도는 Tailnet 캡처 1280×633, Android 1080×2400, iOS 1206×2622다. [PR 이미지 확인 JSON](./pr437-image-agent-browser-verification.json).
 - 확인 뒤 Agent Browser 세션을 닫았고 Agent Browser/HeadlessChrome process가 남지 않은 것을 확인했다. [종료 결과](./browser-close-pass04.json).
 - 다섯 Agent Browser page screenshot의 SHA-256은 [hash 목록](./agent-browser-screenshot-sha256-pass04.txt)에 있다.
 - GitHub Pages workflow와 `gh-pages`는 실행하거나 변경하지 않았다. tmux 세션도 변경하지 않았다.
