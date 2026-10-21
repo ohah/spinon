@@ -1,5 +1,7 @@
 # C11.4 anonymous Grid text 제한 구현 근거
 
+구현 PR: [#422](https://github.com/ohah/spinon/pull/422)
+
 2026-10-21 opt-in `c11-4-grid-track-sizing-fixture-test`에서 직접 anonymous Grid text run 다섯 장면을 구현했다. `display:none` direct child가 text run을 끊지 않는다는 Chrome 155 관찰을 반영한 최신 source 기준으로 Android API 37.0 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 5/5를 실행했다. 두 실행은 used tracks, DOM frame 목록, trace completeness, `layout=ready`, `drawPresented=true`를 확인했다. 사용자가 시뮬레이터 검증을 선택해 이번 범위에서는 Samsung 실기기 검증을 수행하지 않았다. 일반 CSS Grid 지원이나 C11.4 완료를 뜻하지 않는다.
 
 [계획 범위 보강 검토 20개](./plan-display-none-amendment-review-20.md) · [구현 실패 관점 검토 20개](./implementation-review-20.md) · [구현 PR diff 적대 검토 30개](./pr-diff-review-30.md)
