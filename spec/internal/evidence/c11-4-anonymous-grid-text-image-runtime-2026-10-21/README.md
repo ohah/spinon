@@ -35,6 +35,7 @@
 - Android: `mise exec -- env SPINON_ENABLE_C04_RUNTIME_GPU=1 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 bun run build:android` — `BUILD SUCCESSFUL`.
 - iOS: `mise exec -- env SPINON_ENABLE_C04_RUNTIME_GPU=1 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 bun run build:ios-sim` — `BUILD SUCCEEDED`.
 - [기본/opt-in 정적 라이브러리 대조](./ffi-artifact-boundary.md) — 새 scene string과 fixture ABI는 opt-in 결과에서만 확인했다.
+- [구현 PR diff 실패 관점 30개](./pr-diff-review-30.md) — 구현/runtime 20개 검토와 분리했다.
 
 캡처 도구의 첫 실행에서 발견한 두 검증기 결함도 수정했다. 장면별 Android intent run ID가 80자 제한을 넘지 않도록 run ID prefix를 evidence 폴더 이름에서 분리했고, trace 판정은 실제 Rust trace가 생략하는 0 값 text `Minimum`과 text `MinContent` 두 항목을 반영하도록 고쳤다. 수정된 도구로 Android와 iOS 다섯 scene 전체를 다시 실행했다.
 
