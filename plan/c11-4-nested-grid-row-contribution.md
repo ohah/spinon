@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획 PR [#444](https://github.com/ohah/spinon/pull/444)은 `1359f37024ad711df4b5253745d6dbf9b96af77f`로 병합됐다. 고정 runtime fixture를 구현하고 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 세 장면을 검증했다. 구현은 별도 PR 검토·병합 중이며 이 계획은 일반 nested Grid 지원이나 C11.4 완료 판정이 아니다.
+**상태:** 계획 PR [#444](https://github.com/ohah/spinon/pull/444)은 `1359f37024ad711df4b5253745d6dbf9b96af77f`로 병합됐다. 고정 runtime fixture를 구현하고 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 세 장면을 검증했다. 구현 PR [#448](https://github.com/ohah/spinon/pull/448)은 2026-10-21 13:31:43 UTC에 Rebase and merge됐다(SHA `898eea593692ded571db3c933c24d6e88081cd2f`). 이 계획은 일반 nested Grid 지원이나 C11.4 완료 판정이 아니다.
 
 ## 목적과 경계
 

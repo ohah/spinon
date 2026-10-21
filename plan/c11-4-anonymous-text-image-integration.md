@@ -2,7 +2,7 @@
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 구현을 추가하고 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 다섯 장면을 각각 통과시켰다. 집중 Rust 테스트, 기본/opt-in FFI artifact 경계, 전체 workspace Clippy와 양 플랫폼 fixture 앱 빌드도 통과했다. 구현 실패 관점 20개는 [별도 검토](../spec/internal/evidence/c11-4-anonymous-grid-text-image-runtime-2026-10-21/implementation-review-20.md)에, PR #425의 독립 diff 실패 관점 30개는 [PR 검토](../spec/internal/evidence/c11-4-anonymous-grid-text-image-runtime-2026-10-21/pr-diff-review-30.md)에 기록했다. C11.4와 공식 완료 수는 바꾸지 않는다.
+**상태:** 구현을 추가하고 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 다섯 장면을 각각 통과시켰다. 집중 Rust 테스트, 기본/opt-in FFI artifact 경계, 전체 workspace Clippy와 양 플랫폼 fixture 앱 빌드도 통과했다. 구현 실패 관점 20개는 [별도 검토](../spec/internal/evidence/c11-4-anonymous-grid-text-image-runtime-2026-10-21/implementation-review-20.md)에, PR #425의 독립 diff 실패 관점 30개는 [PR 검토](../spec/internal/evidence/c11-4-anonymous-grid-text-image-runtime-2026-10-21/pr-diff-review-30.md)에 기록했다. PR [#425](https://github.com/ohah/spinon/pull/425)은 2026-10-21 05:03:31 UTC에 Rebase and merge됐다(SHA `5ec350c20226683f2f81a89cd9a9ee5fb23a0d42`). C11.4와 공식 완료 수는 바꾸지 않는다.
 
 ## 목적과 경계
 
