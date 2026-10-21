@@ -1,0 +1,5 @@
+absent: nested-depth-one-min-content
+absent: nested-depth-two-min-content
+absent: nested-depth-one-max-content
+absent: nested-depth-two-max-content
+PASS: all four fixture scene IDs are absent from c04-runtime-gpu product archive

@@ -183,6 +183,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "nested-grid-text-image-row-definite-flex-control",
             "nested-grid-implicit-row-span-two",
             "nested-grid-implicit-row-one-row",
+            "nested-depth-one-min-content", "nested-depth-two-min-content",
+            "nested-depth-one-max-content", "nested-depth-two-max-content",
             "column-auto-natural-ratio", "column-target-max-width-clamp",
             "row-target-max-height-clamp",
             "column-opposite-min-over-max", "column-border-box-transfer",
@@ -396,6 +398,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        if (sceneId.equals("nested-depth-one-min-content")
+                || sceneId.equals("nested-depth-two-min-content")) {
+            return "width=70,height=20";
+        }
+        if (sceneId.equals("nested-depth-one-max-content")
+                || sceneId.equals("nested-depth-two-max-content")) {
+            return "width=100,height=10";
+        }
         if (sceneId.equals("nested-grid-implicit-row-span-two")) {
             return "width=24,height=40";
         }
@@ -573,7 +583,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("nested-grid-text-image-row-one-track")
                 || sceneId.equals("nested-grid-text-image-row-definite-flex-control")
                 || sceneId.equals("nested-grid-implicit-row-span-two")
-                || sceneId.equals("nested-grid-implicit-row-one-row")) return "";
+                || sceneId.equals("nested-grid-implicit-row-one-row")
+                || sceneId.startsWith("nested-depth-one-")
+                || sceneId.startsWith("nested-depth-two-")) return "";
         if (c114IsAnonymousTextScene(sceneId) || c114IsAnonymousTextImageScene(sceneId)
                 || c114IsAnonymousTextMultiImageScene(sceneId)) return "";
         if (c114IsImageMultiSpanScene(sceneId) || c114IsTextMultiSpanScene(sceneId)
@@ -705,6 +717,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         int minContentHeight;
         int maxContent;
         int maxContentHeight;
+        int expectedGrid = 1;
         int expectedNode = 2;
         int expectedSourceOrder = 0;
         switch (sceneId) {
@@ -715,10 +728,33 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "min-content-text-edge":
             case "min-content-text-min-width":
             case "min-content-text-max-width":
+            case "nested-depth-one-min-content":
+            case "nested-depth-two-min-content":
                 minContent = 70;
                 minContentHeight = 20;
                 maxContent = 100;
                 maxContentHeight = 10;
+                if (sceneId.equals("nested-depth-one-min-content")) {
+                    expectedGrid = 2;
+                    expectedNode = 3;
+                } else if (sceneId.equals("nested-depth-two-min-content")) {
+                    expectedGrid = 3;
+                    expectedNode = 4;
+                }
+                break;
+            case "nested-depth-one-max-content":
+            case "nested-depth-two-max-content":
+                minContent = 70;
+                minContentHeight = 20;
+                maxContent = 100;
+                maxContentHeight = 10;
+                if (sceneId.equals("nested-depth-one-max-content")) {
+                    expectedGrid = 2;
+                    expectedNode = 3;
+                } else {
+                    expectedGrid = 3;
+                    expectedNode = 4;
+                }
                 break;
             case "fit-content-calc-limit":
             case "min-content-text-break-all":
@@ -773,7 +809,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             org.json.JSONArray inputs = diagnostics.optJSONArray("gridItemIntrinsicInputs");
             if (inputs == null || inputs.length() != 1) return false;
             org.json.JSONObject input = inputs.optJSONObject(0);
-            if (input == null || input.optInt("grid", -1) != 1
+            if (input == null || input.optInt("grid", -1) != expectedGrid
                     || input.optInt("node", -1) != expectedNode
                     || input.optInt("sourceOrder", -1) != expectedSourceOrder) {
                 return false;
@@ -1367,6 +1403,24 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
         switch (sceneId) {
+            case "nested-depth-one-min-content":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=70,height=20;"
+                        + "1:node=2,x=0,y=0,width=70,height=20;"
+                        + "2:node=3,x=0,y=0,width=70,height=20]";
+            case "nested-depth-two-min-content":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=70,height=20;"
+                        + "1:node=2,x=0,y=0,width=70,height=20;"
+                        + "2:node=3,x=0,y=0,width=70,height=20;"
+                        + "3:node=4,x=0,y=0,width=70,height=20]";
+            case "nested-depth-one-max-content":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=10;"
+                        + "1:node=2,x=0,y=0,width=100,height=10;"
+                        + "2:node=3,x=0,y=0,width=100,height=10]";
+            case "nested-depth-two-max-content":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=10;"
+                        + "1:node=2,x=0,y=0,width=100,height=10;"
+                        + "2:node=3,x=0,y=0,width=100,height=10;"
+                        + "3:node=4,x=0,y=0,width=100,height=10]";
             case "nested-grid-span-two":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=134,height=20;"
                         + "1:node=2,x=0,y=0,width=134,height=20;"
@@ -2184,6 +2238,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (sceneId.equals("nested-depth-one-min-content")
+                || sceneId.equals("nested-depth-one-max-content")) return 3;
+        if (sceneId.equals("nested-depth-two-min-content")
+                || sceneId.equals("nested-depth-two-max-content")) return 4;
         if (sceneId.equals("nested-grid-span-two")
                 || sceneId.equals("nested-grid-one-track")
                 || sceneId.equals("nested-grid-definite-flex-control")

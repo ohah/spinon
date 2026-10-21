@@ -52,6 +52,10 @@ const anonymousGridBorderOverflowSceneIDs = new Set([
 const nestedGridImplicitRowSceneIDs = new Set([
   'nested-grid-implicit-row-span-two', 'nested-grid-implicit-row-one-row',
 ]);
+const nestedGridDepthTwoSceneIDs = new Set([
+  'nested-depth-one-min-content', 'nested-depth-two-min-content',
+  'nested-depth-one-max-content', 'nested-depth-two-max-content',
+]);
 const isTextMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => textMultiSpanSceneIDs.has(sceneID));
 const isImageMultiSpanRun = requestedSceneIDs?.length > 0
@@ -68,10 +72,13 @@ const isAnonymousGridBorderOverflowRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => anonymousGridBorderOverflowSceneIDs.has(sceneID));
 const isNestedGridImplicitRowRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => nestedGridImplicitRowSceneIDs.has(sceneID));
+const isNestedGridDepthTwoRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => nestedGridDepthTwoSceneIDs.has(sceneID));
 const isMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID)
     || textMultiSpanSceneIDs.has(sceneID) || mixedMultiSpanSceneIDs.has(sceneID));
 const runKind = requestedRunKind ?? (isMixedMultiSpanRun ? 'mixed-multispan-contributions'
+  : isNestedGridDepthTwoRun ? 'nested-grid-depth-two'
   : isNestedGridImplicitRowRun ? 'nested-implicit-rows'
   : isAnonymousGridBorderOverflowRun ? 'anonymous-grid-border-overflow'
   : isAnonymousTextMultiImageRun ? 'anonymous-text-multi-image'
@@ -1261,8 +1268,94 @@ scenes.push(
       contributionValue: 40,
     },
   },
+  {
+    id: 'nested-depth-one-min-content', axis: 'Columns', boxCount: 3,
+    rootFrame: 'width=70,height=20', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=70,height=20;'
+      + '1:node=2,x=0,y=0,width=70,height=20;'
+      + '2:node=3,x=0,y=0,width=70,height=20]',
+    tracks: [70], collapsed: [false],
+    axes: {
+      Columns: { tracks: [70], collapsed: [false] },
+      Rows: { tracks: [20], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    intrinsicInputs: [{
+      grid: 2, node: 3, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+      minContent: 70, minContentHeight: 20, maxContent: 100, maxContentHeight: 10,
+    }],
+    nestedGridDepthTwo: {
+      gridNodes: [1, 2], leafNode: 3,
+      width: 70, height: 20, contributionKind: 'MinContent',
+    },
+  },
+  {
+    id: 'nested-depth-two-min-content', axis: 'Columns', boxCount: 4,
+    rootFrame: 'width=70,height=20', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=70,height=20;'
+      + '1:node=2,x=0,y=0,width=70,height=20;'
+      + '2:node=3,x=0,y=0,width=70,height=20;'
+      + '3:node=4,x=0,y=0,width=70,height=20]',
+    tracks: [70], collapsed: [false],
+    axes: {
+      Columns: { tracks: [70], collapsed: [false] },
+      Rows: { tracks: [20], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    intrinsicInputs: [{
+      grid: 3, node: 4, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+      minContent: 70, minContentHeight: 20, maxContent: 100, maxContentHeight: 10,
+    }],
+    nestedGridDepthTwo: {
+      gridNodes: [1, 2, 3], leafNode: 4,
+      width: 70, height: 20, contributionKind: 'MinContent',
+    },
+  },
+  {
+    id: 'nested-depth-one-max-content', axis: 'Columns', boxCount: 3,
+    rootFrame: 'width=100,height=10', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=10;'
+      + '1:node=2,x=0,y=0,width=100,height=10;'
+      + '2:node=3,x=0,y=0,width=100,height=10]',
+    tracks: [100], collapsed: [false],
+    axes: {
+      Columns: { tracks: [100], collapsed: [false] },
+      Rows: { tracks: [10], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    intrinsicInputs: [{
+      grid: 2, node: 3, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+      minContent: 70, minContentHeight: 20, maxContent: 100, maxContentHeight: 10,
+    }],
+    nestedGridDepthTwo: {
+      gridNodes: [1, 2], leafNode: 3,
+      width: 100, height: 10, contributionKind: 'MaxContent',
+    },
+  },
+  {
+    id: 'nested-depth-two-max-content', axis: 'Columns', boxCount: 4,
+    rootFrame: 'width=100,height=10', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=10;'
+      + '1:node=2,x=0,y=0,width=100,height=10;'
+      + '2:node=3,x=0,y=0,width=100,height=10;'
+      + '3:node=4,x=0,y=0,width=100,height=10]',
+    tracks: [100], collapsed: [false],
+    axes: {
+      Columns: { tracks: [100], collapsed: [false] },
+      Rows: { tracks: [10], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    intrinsicInputs: [{
+      grid: 3, node: 4, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+      minContent: 70, minContentHeight: 20, maxContent: 100, maxContentHeight: 10,
+    }],
+    nestedGridDepthTwo: {
+      gridNodes: [1, 2, 3], leafNode: 4,
+      width: 100, height: 10, contributionKind: 'MaxContent',
+    },
+  },
 );
-assert.equal(scenes.length, 184, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 188, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -2526,6 +2619,51 @@ function verifyRuntimeLog(log, scene, runID) {
     assert.ok(contribution,
       `${scene.id}: nested Grid min-content row contribution differs`);
   }
+  if (scene.nestedGridDepthTwo) {
+    const expected = scene.nestedGridDepthTwo;
+    assert.equal(diagnostics.trackSizingTraces.length, expected.gridNodes.length,
+      `${scene.id}: root-to-leaf Grid trace count differs`);
+    const traces = new Map(diagnostics.trackSizingTraces.map((trace) => [trace.grid, trace]));
+    const tracksForAxis = (trace, axis) => {
+      const passes = trace.passes.filter((pass) => pass.axis === axis);
+      assert.equal(passes.length, 1,
+        `${scene.id}: Grid ${trace.grid} must have one ${axis} pass`);
+      const tracks = passes[0].stages.at(-1)?.tracks;
+      assert.ok(tracks, `${scene.id}: Grid ${trace.grid} ${axis} final tracks are missing`);
+      return tracks.filter(({ gutter, collapsed }) => !gutter && !collapsed)
+        .map(({ baseSize }) => baseSize);
+    };
+    for (const [index, grid] of expected.gridNodes.entries()) {
+      const trace = traces.get(grid);
+      assert.ok(trace, `${scene.id}: Grid ${grid} trace is missing`);
+      assert.deepEqual(tracksForAxis(trace, 'Columns'), [expected.width],
+        `${scene.id}: Grid ${grid} final Columns differ`);
+      assert.deepEqual(tracksForAxis(trace, 'Rows'), [expected.height],
+        `${scene.id}: Grid ${grid} final Rows differ`);
+      const child = expected.gridNodes[index + 1] ?? expected.leafNode;
+      const columns = trace.passes.find((pass) => pass.axis === 'Columns');
+      assert.ok(columns.contributions.some((contribution) => (
+        contribution.item === child
+          && contribution.kind === expected.contributionKind
+          && contribution.span === 1
+          && Math.abs(contribution.value - expected.width) <= 1 / 64
+      )), `${scene.id}: Grid ${grid} lacks ${expected.contributionKind} from child ${child}`);
+    }
+    assert.deepEqual((diagnostics.gridItemIntrinsicInputs ?? []).map((input) => ({
+      grid: input.grid,
+      node: input.node,
+      sourceOrder: input.sourceOrder,
+      kind: input.source?.kind,
+      fontRegistryRevision: input.source?.fontRegistryRevision,
+      minContent: input.source?.minContent,
+      minContentHeight: input.source?.minContentHeight,
+      maxContent: input.source?.maxContent,
+      maxContentHeight: input.source?.maxContentHeight,
+    })), scene.intrinsicInputs,
+    `${scene.id}: direct leaf intrinsic source or font revision differs`);
+    assert.ok(expected.leafNode !== expected.gridNodes.at(-1),
+      `${scene.id}: text leaf must be separate from the innermost Grid`);
+  }
   if (scene.anonymousTextItems) {
     const actualInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => ({
       grid: input.grid,
@@ -2651,13 +2789,15 @@ function verifyRuntimeLog(log, scene, runID) {
   const tracksByAxis = {};
   let observedIntrinsicSpans = null;
   const axisTrace = scene.nestedGridIntrinsic || scene.nestedGridTextImageIntrinsic
-    || scene.nestedGridImplicitRows
+    || scene.nestedGridImplicitRows || scene.nestedGridDepthTwo
     ? diagnostics.trackSizingTraces.find(
       (trace) => trace.grid === (scene.nestedGridIntrinsic
         ? scene.nestedGridIntrinsic.outerNode
         : scene.nestedGridTextImageIntrinsic
           ? scene.nestedGridTextImageIntrinsic.outerNode
-          : scene.nestedGridImplicitRows.outerNode))
+          : scene.nestedGridImplicitRows
+            ? scene.nestedGridImplicitRows.outerNode
+            : scene.nestedGridDepthTwo.gridNodes[0]))
     : diagnostics.trackSizingTraces[0];
   assert.ok(axisTrace, `${scene.id}: expected track-sizing Grid trace가 없습니다.`);
   for (const [axis, expected] of Object.entries(axisSpecs)) {

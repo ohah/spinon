@@ -1,0 +1,15 @@
+    Checking spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Checking spinon-ffi v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-ffi)
+error: useless use of `format!`
+  --> crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/nested_grid_depth_two.rs:86:13
+   |
+86 |             format!("document.createElement('div')")
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: consider using `.to_string()`: `"document.createElement('div')".to_string()`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#useless_format
+   = note: `-D clippy::useless-format` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::useless_format)]`
+
+error: could not compile `spinon-ffi` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `spinon-ffi` (lib test) due to 1 previous error

@@ -24,6 +24,8 @@ mod mixed_multispan;
 mod multispan_ordering;
 #[path = "c11_4/negative_implicit_tracks.rs"]
 mod negative_implicit_tracks;
+#[path = "c11_4/nested_grid_depth_two.rs"]
+mod nested_grid_depth_two;
 #[path = "c11_4/nested_grid_implicit_rows.rs"]
 mod nested_grid_implicit_rows;
 #[path = "c11_4/nested_grid_intrinsic.rs"]
@@ -1077,6 +1079,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = nested_grid_implicit_rows::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
+    if let Some(source) = nested_grid_depth_two::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = nested_grid_intrinsic::runtime_source(scene_id) {

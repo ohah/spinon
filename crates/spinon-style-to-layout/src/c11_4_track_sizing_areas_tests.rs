@@ -334,6 +334,21 @@ fn root_grid_max_content_is_scoped_to_the_track_sizing_profile() {
     let frame = output.layout.frames[&fixture.root.id()];
     assert_eq!((frame.width, frame.height), (100.0, 20.0));
 
+    let min_content = Fixture::new(
+        "display:grid;box-sizing:border-box;width:min-content;height:auto;grid-template-columns:min-content;grid-template-rows:auto;column-gap:0;row-gap:0;margin:0;padding:0;border:0",
+        &[(
+            "item",
+            "box-sizing:border-box;width:40px;height:10px;margin:0;padding:0;border:0",
+        )],
+    );
+    let min_content_output = min_content.compute();
+    let min_content_frame = min_content_output.layout.frames[&min_content.root.id()];
+    assert_eq!(
+        (min_content_frame.width, min_content_frame.height),
+        (40.0, 10.0)
+    );
+    assert!(min_content.compute_template().is_err());
+
     let other_profile = Fixture::new(grid_style, &[]).compute_template();
     assert!(matches!(
         other_profile,

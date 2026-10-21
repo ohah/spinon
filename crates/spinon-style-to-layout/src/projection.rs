@@ -1079,7 +1079,7 @@ fn validate_intrinsic_image_inputs(
     root: HostNodeHandle,
     styles: &mut BTreeMap<NodeId, LayoutStyle>,
     intrinsic_sizes: Option<&LayoutIntrinsicSizeSnapshot>,
-    allow_root_grid_max_content: bool,
+    allow_root_grid_intrinsic_content: bool,
 ) -> Result<(), StyleLayoutError> {
     let expected_source = LayoutSourceRevision::HostDocument {
         generation: snapshot.generation(),
@@ -1124,9 +1124,22 @@ fn validate_intrinsic_image_inputs(
                 | spinon_layout::LayoutDimension::MaxContent
                 | spinon_layout::LayoutDimension::FitContent
         );
-        // C11.4 fixture profile은 cyclic gap을 계산하는 root Grid의 max-content만 허용한다.
-        // 자식 Grid와 다른 profile은 기존 fail-closed 경계를 유지한다.
-        let root_grid_max_content = allow_root_grid_max_content
+        // C11.4 track-sizing profile은 Grid의 inline min/max-content width를 허용한다.
+        // intrinsic block size, non-Grid, 다른 profile은 기존 fail-closed 경계를 유지한다.
+        let c11_4_grid_intrinsic_width = allow_root_grid_intrinsic_content
+            && style.display == spinon_layout::LayoutDisplay::Grid
+            && matches!(
+                style.width,
+                spinon_layout::LayoutDimension::MinContent
+                    | spinon_layout::LayoutDimension::MaxContent
+            )
+            && !matches!(
+                style.height,
+                spinon_layout::LayoutDimension::MinContent
+                    | spinon_layout::LayoutDimension::MaxContent
+                    | spinon_layout::LayoutDimension::FitContent
+            );
+        let root_grid_max_content = allow_root_grid_intrinsic_content
             && handle == root
             && style.display == spinon_layout::LayoutDisplay::Grid
             && (style.width == spinon_layout::LayoutDimension::MaxContent
@@ -1138,7 +1151,8 @@ fn validate_intrinsic_image_inputs(
                         | spinon_layout::LayoutDimension::FitContent
                 )
             });
-        if has_intrinsic_keyword && !is_html_image && !root_grid_max_content {
+        let root_grid_intrinsic_content = c11_4_grid_intrinsic_width || root_grid_max_content;
+        if has_intrinsic_keyword && !is_html_image && !root_grid_intrinsic_content {
             let supported_image = if style.width == spinon_layout::LayoutDimension::MinContent {
                 is_supported_cyclic_min_content_container(snapshot, handle, style, styles)
             } else {
@@ -1147,7 +1161,7 @@ fn validate_intrinsic_image_inputs(
             let Some((image, fraction)) = supported_image else {
                 return Err(LayoutError::UnsupportedIntrinsicSizing {
                     node: node.id(),
-                    reason: "intrinsic sizing은 C14.3 이미지·제한 cyclic parent 또는 C11.4 track-sizing profile의 root Grid max-content만 지원합니다",
+                    reason: "intrinsic sizing은 C14.3 이미지·제한 cyclic parent 또는 C11.4 track-sizing profile의 Grid min/max-content width와 root Grid max-content만 지원합니다",
                 }
                 .into());
             };
