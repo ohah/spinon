@@ -14,7 +14,8 @@ use spinon_style::{
 
 use super::super::{RuntimeLayoutFailure, layout_failure};
 
-const AHEM: &[u8] = include_bytes!("../../../../../../../tests/fixtures/resources/c15/Ahem.ttf");
+pub(super) const AHEM: &[u8] =
+    include_bytes!("../../../../../../../tests/fixtures/resources/c15/Ahem.ttf");
 
 #[path = "c11_4_text/cases.rs"]
 mod cases;

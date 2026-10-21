@@ -338,19 +338,28 @@ where
             None
         };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-    let c11_4_text_input =
+    let c11_4_mixed_input =
         if profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing {
-            fixtures::prepare_c11_4_text(&request.snapshot, root, &styles)?
+            fixtures::prepare_c11_4_mixed(&request.snapshot, root, &styles)?
         } else {
             None
         };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-    let c11_4_image_input =
-        if profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing {
-            fixtures::prepare_c11_4_image(&request.snapshot, root, &styles)?
-        } else {
-            None
-        };
+    let c11_4_text_input = if c11_4_mixed_input.is_none()
+        && profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
+    {
+        fixtures::prepare_c11_4_text(&request.snapshot, root, &styles)?
+    } else {
+        None
+    };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_image_input = if c11_4_mixed_input.is_none()
+        && profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
+    {
+        fixtures::prepare_c11_4_image(&request.snapshot, root, &styles)?
+    } else {
+        None
+    };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     if c11_4_text_input.is_some() && c11_4_image_input.is_some() {
         return Err(layout_failure(
@@ -385,7 +394,17 @@ where
         )
     } else {
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-        if let Some(text_input) = &c11_4_text_input {
+        if let Some(mixed_input) = &c11_4_mixed_input {
+            spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_and_intrinsic_sizes(
+                &request.snapshot,
+                root,
+                styles.clone(),
+                request.viewport,
+                &mixed_input.paragraph_styles,
+                &mixed_input.engine,
+                mixed_input.intrinsic_sizes.clone(),
+            )
+        } else if let Some(text_input) = &c11_4_text_input {
             spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs(
                 &request.snapshot,
                 root,
@@ -497,7 +516,9 @@ where
             request.viewport,
         );
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-        let current = if let Some(image_input) = &c11_4_image_input {
+        let current = if let Some(mixed_input) = &c11_4_mixed_input {
+            current.with_intrinsic_size_revision(mixed_input.intrinsic_sizes.revision())
+        } else if let Some(image_input) = &c11_4_image_input {
             current.with_intrinsic_size_revision(image_input.intrinsic_sizes.revision())
         } else {
             current

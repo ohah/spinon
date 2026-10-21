@@ -4,6 +4,9 @@ version = "0.1.0"
 edition = "2024"
 publish = false
 
+[features]
+c11-4-grid-track-sizing-fixture-test = []
+
 [dependencies]
 spinon-core = { path = "../spinon-core" }
 spinon-text-layout = { path = "../spinon-text-layout" }

@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 1,
+  "target": "ios-simulator",
+  "runPrefix": "c114-mixed-multispan-contributions-ios-simulator-20261021T011541219Z-904b6842",
+  "sceneCount": 4,
+  "observations": [
+    {
+      "sceneId": "mixed-text-image-span2-forward",
+      "summary": "2026-10-21 10:15:42.054168+0900  localhost SpinonBootstrap[64680]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-mixed-multispan-contributions-ios-simulator-20261021T011541219Z-904b6842-0 scene_id=mixed-text-image-span2-forward expected_root_frame=width=220,height=180 expected_item_frame= status=0 layout=ready boxes=3 generation=1 document_revision=18 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=180;1:node=2,x=0,y=0,width=61,height=20;2:node=4,x=25,y=60,width=72,height=48]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 220,
+          "height": 180
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 61,
+          "height": 20
+        },
+        {
+          "order": 2,
+          "node": 4,
+          "x": 25,
+          "y": 60,
+          "width": 72,
+          "height": 48
+        }
+      ],
+      "tracks": [
+        {
+          "baseSize": 25,
+          "collapsed": false
+        },
+        {
+          "baseSize": 36,
+          "collapsed": false
+        },
+        {
+          "baseSize": 36,
+          "collapsed": false
+        },
+        {
+          "baseSize": 0,
+          "collapsed": false
+        }
+      ],
+      "intrinsicSpans": [
+        2
+      ],
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "mixed-text-image-span2-reversed",
+      "summary": "2026-10-21 10:15:44.316074+0900  localhost SpinonBootstrap[64727]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-mixed-multispan-contributions-ios-simulator-20261021T011541219Z-904b6842-1 scene_id=mixed-text-image-span2-reversed expected_root_frame=width=220,height=180 expected_item_frame= status=0 layout=ready boxes=3 generation=1 document_revision=18 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=180;1:node=2,x=25,y=60,width=72,height=48;2:node=3,x=0,y=0,width=61,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 220,
+          "height": 180
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 25,
+          "y": 60,
+          "width": 72,
+          "height": 48
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 61,
+          "height": 20
+        }
+      ],
+      "tracks": [
+        {
+          "baseSize": 25,
+          "collapsed": false
+        },
+        {
+          "baseSize": 36,
+          "collapsed": false
+        },
+        {
+          "baseSize": 36,
+          "collapsed": false
+        },
+        {
+          "baseSize": 0,
+          "collapsed": false
+        }
+      ],
+      "intrinsicSpans": [
+        2
+      ],
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "mixed-text-image-span2-before-span3",
+      "summary": "2026-10-21 10:15:45.590757+0900  localhost SpinonBootstrap[64765]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-mixed-multispan-contributions-ios-simulator-20261021T011541219Z-904b6842-2 scene_id=mixed-text-image-span2-before-span3 expected_root_frame=width=220,height=180 expected_item_frame= status=0 layout=ready boxes=4 generation=1 document_revision=25 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=180;1:node=2,x=0,y=0,width=116.333333,height=10;2:node=4,x=52.666667,y=60,width=72,height=48;3:node=5,x=0,y=120,width=180,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 220,
+          "height": 180
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 116.33333,
+          "height": 10
+        },
+        {
+          "order": 2,
+          "node": 4,
+          "x": 52.666664,
+          "y": 60,
+          "width": 72,
+          "height": 48
+        },
+        {
+          "order": 3,
+          "node": 5,
+          "x": 0,
+          "y": 120,
+          "width": 180,
+          "height": 10
+        }
+      ],
+      "tracks": [
+        {
+          "baseSize": 52.666664123535156,
+          "collapsed": false
+        },
+        {
+          "baseSize": 63.666664123535156,
+          "collapsed": false
+        },
+        {
+          "baseSize": 63.666664123535156,
+          "collapsed": false
+        },
+        {
+          "baseSize": 0,
+          "collapsed": false
+        }
+      ],
+      "intrinsicSpans": [
+        2,
+        3
+      ],
+      "trackTraceChunks": 18,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "mixed-text-image-span3-before-span2",
+      "summary": "2026-10-21 10:15:46.868944+0900  localhost SpinonBootstrap[64808]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-mixed-multispan-contributions-ios-simulator-20261021T011541219Z-904b6842-3 scene_id=mixed-text-image-span3-before-span2 expected_root_frame=width=220,height=180 expected_item_frame= status=0 layout=ready boxes=4 generation=1 document_revision=25 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=180;1:node=2,x=0,y=120,width=180,height=10;2:node=4,x=52.666667,y=60,width=72,height=48;3:node=5,x=0,y=0,width=116.333333,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 220,
+          "height": 180
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 120,
+          "width": 180,
+          "height": 10
+        },
+        {
+          "order": 2,
+          "node": 4,
+          "x": 52.666664,
+          "y": 60,
+          "width": 72,
+          "height": 48
+        },
+        {
+          "order": 3,
+          "node": 5,
+          "x": 0,
+          "y": 0,
+          "width": 116.33333,
+          "height": 10
+        }
+      ],
+      "tracks": [
+        {
+          "baseSize": 52.666664123535156,
+          "collapsed": false
+        },
+        {
+          "baseSize": 63.666664123535156,
+          "collapsed": false
+        },
+        {
+          "baseSize": 63.666664123535156,
+          "collapsed": false
+        },
+        {
+          "baseSize": 0,
+          "collapsed": false
+        }
+      ],
+      "intrinsicSpans": [
+        2,
+        3
+      ],
+      "trackTraceChunks": 18,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}

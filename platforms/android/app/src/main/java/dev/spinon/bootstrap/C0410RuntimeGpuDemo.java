@@ -170,6 +170,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "text-span2-before-span3", "text-span3-before-span2",
             "image-span2-forward", "image-span2-reversed",
             "image-span2-before-span3", "image-span3-before-span2",
+            "mixed-text-image-span2-forward", "mixed-text-image-span2-reversed",
+            "mixed-text-image-span2-before-span3", "mixed-text-image-span3-before-span2",
             "column-auto-natural-ratio", "column-target-max-width-clamp",
             "row-target-max-height-clamp",
             "column-opposite-min-over-max", "column-border-box-transfer",
@@ -404,6 +406,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "text-span2-before-span3":
             case "text-span3-before-span2":
                 return "width=220,height=60";
+            case "mixed-text-image-span2-forward":
+            case "mixed-text-image-span2-reversed":
+            case "mixed-text-image-span2-before-span3":
+            case "mixed-text-image-span3-before-span2":
+                return "width=220,height=180";
             case "image-span2-forward":
             case "image-span2-reversed":
             case "image-span2-before-span3":
@@ -502,6 +509,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ExpectedItemFrame(String sceneId) {
         if (c114IsImageMultiSpanScene(sceneId) || c114IsTextMultiSpanScene(sceneId)
+                || c114IsMixedMultiSpanScene(sceneId)
                 || sceneId.startsWith("competing-span2-")
                 || sceneId.startsWith("span2-before-")
                 || sceneId.startsWith("span3-before-")) return "";
@@ -613,6 +621,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static boolean c114ExpectedTextIntrinsicInputs(String sceneId, String report) {
+        if (c114IsMixedMultiSpanScene(sceneId)) {
+            return c114ExpectedMixedIntrinsicInputs(sceneId, report);
+        }
         if (c114IsTextMultiSpanScene(sceneId)) {
             return c114ExpectedTextMultiSpanIntrinsicInputs(sceneId, report);
         }
@@ -759,6 +770,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
     }
     private static boolean c114ExpectedImageIntrinsicInputs(String sceneId, String report) {
+        if (c114IsMixedMultiSpanScene(sceneId)) {
+            return c114ExpectedMixedIntrinsicInputs(sceneId, report);
+        }
         if (c114IsImageMultiSpanScene(sceneId)) {
             return c114ExpectedImageMultiSpanInputs(sceneId, report);
         }
@@ -1307,6 +1321,84 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || "image-span3-before-span2".equals(sceneId);
     }
 
+    private static boolean c114IsMixedMultiSpanScene(String sceneId) {
+        return "mixed-text-image-span2-forward".equals(sceneId)
+                || "mixed-text-image-span2-reversed".equals(sceneId)
+                || "mixed-text-image-span2-before-span3".equals(sceneId)
+                || "mixed-text-image-span3-before-span2".equals(sceneId);
+    }
+
+    private static boolean c114ExpectedMixedIntrinsicInputs(String sceneId, String report) {
+        int[] nodes;
+        String[] kinds;
+        int[][] textMetrics;
+        switch (sceneId) {
+            case "mixed-text-image-span2-forward":
+                nodes = new int[] {2, 4};
+                kinds = new String[] {"text", "replaced"};
+                textMetrics = new int[][] {{50, 20, 80, 10}, null};
+                break;
+            case "mixed-text-image-span2-reversed":
+                nodes = new int[] {2, 3};
+                kinds = new String[] {"replaced", "text"};
+                textMetrics = new int[][] {null, {50, 20, 80, 10}};
+                break;
+            case "mixed-text-image-span2-before-span3":
+                nodes = new int[] {2, 4, 5};
+                kinds = new String[] {"text", "replaced", "text"};
+                textMetrics = new int[][] {{50, 20, 80, 10}, null, {180, 10, 180, 10}};
+                break;
+            case "mixed-text-image-span3-before-span2":
+                nodes = new int[] {2, 4, 5};
+                kinds = new String[] {"text", "replaced", "text"};
+                textMetrics = new int[][] {{180, 10, 180, 10}, null, {50, 20, 80, 10}};
+                break;
+            default:
+                return false;
+        }
+        int diagnosticsMarker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (diagnosticsMarker < 0) return false;
+        String diagnosticsJson = report.substring(
+                diagnosticsMarker + "grid_track_sizing_diagnostics=".length());
+        try {
+            Object value = new org.json.JSONTokener(diagnosticsJson).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONObject diagnostics = (org.json.JSONObject) value;
+            org.json.JSONObject revision = diagnostics.optJSONObject("layoutInputRevision");
+            org.json.JSONArray inputs = diagnostics.optJSONArray("gridItemIntrinsicInputs");
+            if (revision == null || revision.optInt("intrinsicSize", 0) != 1
+                    || inputs == null || inputs.length() != nodes.length) return false;
+            for (int index = 0; index < nodes.length; index++) {
+                org.json.JSONObject input = inputs.optJSONObject(index);
+                org.json.JSONObject source = input == null ? null : input.optJSONObject("source");
+                if (input == null || input.optInt("grid", -1) != 1
+                        || input.optInt("node", -1) != nodes[index]
+                        || input.optInt("sourceOrder", -1) != index || source == null
+                        || !kinds[index].equals(source.optString("kind"))) return false;
+                if ("text".equals(kinds[index])) {
+                    int[] metrics = textMetrics[index];
+                    if (source.optInt("fontRegistryRevision", -1) != 1
+                            || source.optDouble("minContent", Double.NaN) != metrics[0]
+                            || source.optDouble("minContentHeight", Double.NaN) != metrics[1]
+                            || source.optDouble("maxContent", Double.NaN) != metrics[2]
+                            || source.optDouble("maxContentHeight", Double.NaN) != metrics[3]) {
+                        return false;
+                    }
+                } else {
+                    org.json.JSONObject natural = source.optJSONObject("natural");
+                    if (natural == null || natural.optDouble("width", Double.NaN) != 24.0
+                            || natural.optDouble("height", Double.NaN) != 16.0
+                            || !natural.has("aspectRatio") || !natural.isNull("aspectRatio")) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        } catch (org.json.JSONException | ClassCastException error) {
+            return false;
+        }
+    }
+
     private static boolean c114ExpectedMultiSpanFramesMatch(String sceneId, String report) {
         double[][] expected;
         switch (sceneId) {
@@ -1374,6 +1466,28 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     {0, 0, 40, 60}, {1, 41, 72, 48}, {17, 21, 48, 32}, {1, 1, 24, 16},
                 };
                 break;
+            case "mixed-text-image-span2-forward":
+                expected = new double[][] {
+                    {0, 0, 220, 180}, {0, 0, 61, 20}, {25, 60, 72, 48},
+                };
+                break;
+            case "mixed-text-image-span2-reversed":
+                expected = new double[][] {
+                    {0, 0, 220, 180}, {25, 60, 72, 48}, {0, 0, 61, 20},
+                };
+                break;
+            case "mixed-text-image-span2-before-span3":
+                expected = new double[][] {
+                    {0, 0, 220, 180}, {0, 0, 116.3333333333, 10},
+                    {52.6666666667, 60, 72, 48}, {0, 120, 180, 10},
+                };
+                break;
+            case "mixed-text-image-span3-before-span2":
+                expected = new double[][] {
+                    {0, 0, 220, 180}, {0, 120, 180, 10},
+                    {52.6666666667, 60, 72, 48}, {0, 0, 116.3333333333, 10},
+                };
+                break;
             default:
                 return true;
         }
@@ -1392,8 +1506,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String[] identity = fields[0].split(":node=");
             if (identity.length != 2) return false;
             try {
-                int expectedNodeId = c114IsTextMultiSpanScene(sceneId)
-                        ? (index == 0 ? 1 : index * 2) : index + 1;
+                int expectedNodeId = c114ExpectedMultiSpanNodeId(sceneId, index);
                 if (Integer.parseInt(identity[0]) != index
                         || Integer.parseInt(identity[1]) != expectedNodeId) return false;
                 for (int property = 0; property < propertyPrefixes.length; property++) {
@@ -1412,6 +1525,17 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return true;
     }
 
+    private static int c114ExpectedMultiSpanNodeId(String sceneId, int index) {
+        if (c114IsTextMultiSpanScene(sceneId)) return index == 0 ? 1 : index * 2;
+        if (c114IsMixedMultiSpanScene(sceneId)) {
+            if ("mixed-text-image-span2-reversed".equals(sceneId)) {
+                return new int[] {1, 2, 3}[index];
+            }
+            return new int[] {1, 2, 4, 5}[index];
+        }
+        return index + 1;
+    }
+
     private static String c114GapNodeFrames(
             String gridWidth, String gridHeight, String secondColumnX, String secondRowY
     ) {
@@ -1427,6 +1551,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("image-span2-reversed")) return 3;
         if (sceneId.equals("image-span2-before-span3")
                 || sceneId.equals("image-span3-before-span2")) return 4;
+        if (sceneId.equals("mixed-text-image-span2-forward")
+                || sceneId.equals("mixed-text-image-span2-reversed")) return 3;
+        if (sceneId.equals("mixed-text-image-span2-before-span3")
+                || sceneId.equals("mixed-text-image-span3-before-span2")) return 4;
         if (sceneId.equals("competing-span2-forward")
                 || sceneId.equals("competing-span2-reversed")) return 3;
         if (sceneId.equals("span2-before-span3")

@@ -76,6 +76,8 @@ mod viewport_units_tests;
 
 pub use error::StyleLayoutError;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub use projection::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_and_intrinsic_sizes;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub use projection::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs;
 #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
 pub use projection::compute_runtime_style_layout_with_text_paragraphs;

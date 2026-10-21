@@ -8,6 +8,8 @@ mod flex_spanning_text;
 mod image_multispan;
 #[path = "c11_4/implicit_intrinsic_tracks.rs"]
 mod implicit_intrinsic_tracks;
+#[path = "c11_4/mixed_multispan.rs"]
+mod mixed_multispan;
 #[path = "c11_4/multispan_ordering.rs"]
 mod multispan_ordering;
 #[path = "c11_4/negative_implicit_tracks.rs"]
@@ -1015,6 +1017,9 @@ const C11_4_IMAGE_FIXED_GUTTER_SCENES: [ImageSceneWithRowGap; 2] = [
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     scene_id: &str,
 ) -> Result<Cow<'static, str>, String> {
+    if let Some(source) = mixed_multispan::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = image_multispan::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
@@ -1230,6 +1235,30 @@ mod tests {
                 expected_items
             );
             assert_eq!(source.matches("nodeIds.push(").count(), expected_items);
+        }
+        for (scene_id, expected_items, expected_texts) in [
+            ("mixed-text-image-span2-forward", 2, 1),
+            ("mixed-text-image-span2-reversed", 2, 1),
+            ("mixed-text-image-span2-before-span3", 3, 2),
+            ("mixed-text-image-span3-before-span2", 3, 2),
+        ] {
+            let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
+            assert!(source.len() < 6 * 1024);
+            assert!(source.contains(&format!("sceneId:{scene_id:?}")));
+            assert!(source.contains("width:220px;height:180px"));
+            assert!(source.contains("grid-template-columns:repeat(4,min-content)"));
+            assert!(source.contains("grid-template-rows:repeat(3,60px)"));
+            assert_eq!(source.matches("document.createElement('img')").count(), 1);
+            assert_eq!(
+                source.matches("document.createElement('div')").count(),
+                expected_texts + 1
+            );
+            assert_eq!(
+                source.matches("document.createTextNode(").count(),
+                expected_texts
+            );
+            assert_eq!(source.matches("nodeIds.push(").count(), expected_items);
+            assert!(source.contains("https://spinon.invalid/c14-1-png-basic.png"));
         }
         assert!(c11_4_grid_track_sizing_runtime_source("unknown;throw 1").is_err());
     }

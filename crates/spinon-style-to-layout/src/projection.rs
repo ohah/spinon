@@ -497,6 +497,37 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_parag
     )
 }
 
+/// C11.4 mixed fixture에서 Ahem paragraph와 replaced-resource snapshot을 함께 연결합니다.
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_and_intrinsic_sizes(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
+    text_engine: &TextLayoutEngine,
+    intrinsic_sizes: LayoutIntrinsicSizeSnapshot,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    if computed_styles.profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
+        return Err(StyleLayoutError::UnsupportedProfile {
+            profile: format!("{:?}", computed_styles.profile),
+        });
+    }
+    if computed_styles.viewport != viewport {
+        return Err(StyleLayoutError::SnapshotMismatch { field: "viewport" });
+    }
+    let inline_run_styles = BTreeMap::new();
+    compute_layout_from_styles_with_text(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        true,
+        Some(intrinsic_sizes),
+        Some((paragraph_styles, &inline_run_styles, text_engine)),
+    )
+}
+
 /// revision-stamped HTML image natural size를 runtime style/layout 계산에 연결합니다.
 pub fn compute_runtime_style_layout_with_intrinsic_size_snapshot(
     snapshot: &HostDocumentSnapshot,
@@ -905,12 +936,33 @@ fn compute_layout_from_styles_with_text_and_grid_options(
         .with_css_math(projected.css_math)
         .with_positioning(positioning)
         .with_grid_layout(grid_containers, grid_items);
-    let mut layout = if let Some((_, _, text_engine)) = text_profile {
-        TaffyLayoutEngine.compute_with_text_layout_engine(&input, text_engine)?
-    } else if let Some(intrinsic_sizes) = intrinsic_sizes {
-        TaffyLayoutEngine.compute_with_intrinsic_size_snapshot(&input, &intrinsic_sizes)?
-    } else {
-        TaffyLayoutEngine.compute(&input)?
+    let mut layout = match (text_profile, intrinsic_sizes) {
+        (Some((_, _, text_engine)), Some(intrinsic_sizes)) => {
+            #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+            {
+                TaffyLayoutEngine.compute_with_intrinsic_size_snapshot_and_text_layout_engine(
+                    &input,
+                    &intrinsic_sizes,
+                    text_engine,
+                )?
+            }
+            #[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
+            {
+                let _ = (intrinsic_sizes, text_engine);
+                return Err(StyleLayoutError::UnsupportedProfile {
+                    profile:
+                        "mixed text and replaced intrinsic inputs require the C11.4 fixture feature"
+                            .to_owned(),
+                });
+            }
+        }
+        (Some((_, _, text_engine)), None) => {
+            TaffyLayoutEngine.compute_with_text_layout_engine(&input, text_engine)?
+        }
+        (None, Some(intrinsic_sizes)) => {
+            TaffyLayoutEngine.compute_with_intrinsic_size_snapshot(&input, &intrinsic_sizes)?
+        }
+        (None, None) => TaffyLayoutEngine.compute(&input)?,
     };
     if matches!(
         computed_styles.profile,

@@ -27,13 +27,21 @@ const imageMultiSpanSceneIDs = new Set([
   'image-span2-forward', 'image-span2-reversed',
   'image-span2-before-span3', 'image-span3-before-span2',
 ]);
+const mixedMultiSpanSceneIDs = new Set([
+  'mixed-text-image-span2-forward', 'mixed-text-image-span2-reversed',
+  'mixed-text-image-span2-before-span3', 'mixed-text-image-span3-before-span2',
+]);
 const isTextMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => textMultiSpanSceneIDs.has(sceneID));
 const isImageMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => imageMultiSpanSceneIDs.has(sceneID));
+const isMixedMultiSpanRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => mixedMultiSpanSceneIDs.has(sceneID));
 const isMultiSpanRun = requestedSceneIDs?.length > 0
-  && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID) || textMultiSpanSceneIDs.has(sceneID));
-const runKind = requestedRunKind ?? (isImageMultiSpanRun ? 'image-multispan-contributions'
+  && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID)
+    || textMultiSpanSceneIDs.has(sceneID) || mixedMultiSpanSceneIDs.has(sceneID));
+const runKind = requestedRunKind ?? (isMixedMultiSpanRun ? 'mixed-multispan-contributions'
+  : isImageMultiSpanRun ? 'image-multispan-contributions'
   : isTextMultiSpanRun ? 'text-multispan-contributions'
   : isMultiSpanRun ? 'multispan-ordering' : 'negative-implicit');
 assert.match(runKind, /^[a-z0-9-]{1,80}$/, 'run-kind는 소문자·숫자·하이픈만 허용합니다.');
@@ -56,6 +64,8 @@ const runPrefix = `c114-${runKind}-${target}-${new Date().toISOString().replaceA
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
   ? `spec/internal/evidence/${evidenceGroup}-${date}/${target}-${runPrefix}`
+  : isMixedMultiSpanRun
+    ? `spec/internal/evidence/c11-4-mixed-text-image-multispan-${date}/${target}-${runPrefix}`
   : isImageMultiSpanRun
     ? `spec/internal/evidence/c11-4-image-multispan-contributions-${date}/${target}-${runPrefix}`
   : isTextMultiSpanRun
@@ -610,6 +620,73 @@ scenes.push(
   },
 );
 assert.equal(scenes.length, 150, 'C11.4 image multi-span simulator 행렬은 150 scene이어야 합니다.');
+scenes.push(
+  {
+    id: 'mixed-text-image-span2-forward', axis: 'Columns', boxCount: 3,
+    rootFrame: 'width=220,height=180', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=180;'
+      + '1:node=2,x=0,y=0,width=61,height=20;2:node=4,x=25,y=60,width=72,height=48]',
+    tracks: [25, 36, 36, 0], collapsed: [false, false, false, false],
+    intrinsicSpans: [2], mixedIntrinsicContributions: true,
+    itemSpans: [2, 2], imageMinContentWidths: [null, 72],
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+        minContent: 50, minContentHeight: 20, maxContent: 80, maxContentHeight: 10 },
+      { grid: 1, node: 4, sourceOrder: 1, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+    ],
+  },
+  {
+    id: 'mixed-text-image-span2-reversed', axis: 'Columns', boxCount: 3,
+    rootFrame: 'width=220,height=180', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=180;'
+      + '1:node=2,x=25,y=60,width=72,height=48;2:node=3,x=0,y=0,width=61,height=20]',
+    tracks: [25, 36, 36, 0], collapsed: [false, false, false, false],
+    intrinsicSpans: [2], mixedIntrinsicContributions: true,
+    itemSpans: [2, 2], imageMinContentWidths: [72, null],
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+      { grid: 1, node: 3, sourceOrder: 1, kind: 'text', fontRegistryRevision: 1,
+        minContent: 50, minContentHeight: 20, maxContent: 80, maxContentHeight: 10 },
+    ],
+  },
+  {
+    id: 'mixed-text-image-span2-before-span3', axis: 'Columns', boxCount: 4,
+    rootFrame: 'width=220,height=180', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=180;'
+      + '1:node=2,x=0,y=0,width=116.333333,height=10;'
+      + '2:node=4,x=52.666667,y=60,width=72,height=48;'
+      + '3:node=5,x=0,y=120,width=180,height=10]',
+    tracks: [158 / 3, 191 / 3, 191 / 3, 0], collapsed: [false, false, false, false],
+    intrinsicSpans: [2, 3], mixedIntrinsicContributions: true,
+    itemSpans: [2, 2, 3], imageMinContentWidths: [null, 72, null],
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+        minContent: 50, minContentHeight: 20, maxContent: 80, maxContentHeight: 10 },
+      { grid: 1, node: 4, sourceOrder: 1, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+      { grid: 1, node: 5, sourceOrder: 2, kind: 'text', fontRegistryRevision: 1,
+        minContent: 180, minContentHeight: 10, maxContent: 180, maxContentHeight: 10 },
+    ],
+  },
+  {
+    id: 'mixed-text-image-span3-before-span2', axis: 'Columns', boxCount: 4,
+    rootFrame: 'width=220,height=180', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=180;'
+      + '1:node=2,x=0,y=120,width=180,height=10;'
+      + '2:node=4,x=52.666667,y=60,width=72,height=48;'
+      + '3:node=5,x=0,y=0,width=116.333333,height=10]',
+    tracks: [158 / 3, 191 / 3, 191 / 3, 0], collapsed: [false, false, false, false],
+    intrinsicSpans: [2, 3], mixedIntrinsicContributions: true,
+    itemSpans: [3, 2, 2], imageMinContentWidths: [null, 72, null],
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+        minContent: 180, minContentHeight: 10, maxContent: 180, maxContentHeight: 10 },
+      { grid: 1, node: 4, sourceOrder: 1, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+      { grid: 1, node: 5, sourceOrder: 2, kind: 'text', fontRegistryRevision: 1,
+        minContent: 50, minContentHeight: 20, maxContent: 80, maxContentHeight: 10 },
+    ],
+  },
+);
+assert.equal(scenes.length, 154, 'C11.4 mixed text/image multi-span simulator 행렬은 154 scene이어야 합니다.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 simulator scene ID가 중복됐습니다.');
 scenes.push({
@@ -623,7 +700,7 @@ scenes.push({
       minContent: 200, minContentHeight: 10, maxContent: 200, maxContentHeight: 10 },
   ],
 });
-assert.equal(scenes.length, 151, 'C11.4 auto-minimum flexible span 후속은 151 scene이어야 합니다.');
+assert.equal(scenes.length, 155, 'C11.4 auto-minimum flexible span 후속은 155 scene이어야 합니다.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 auto-minimum flexible span scene ID는 중복되지 않아야 합니다.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -1607,7 +1684,33 @@ function verifyRuntimeLog(log, scene, runID) {
   const tracePayload = traceParts.map(({ payload }) => payload).join('')
     .replace(/^grid_track_sizing_diagnostics=/, '');
   const diagnostics = JSON.parse(tracePayload);
-  if (scene.intrinsicInputs && scene.imageIntrinsicContributions) {
+  if (scene.intrinsicInputs && scene.mixedIntrinsicContributions) {
+    const intrinsicInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => (
+      input.source?.kind === 'text' ? {
+        grid: input.grid,
+        node: input.node,
+        sourceOrder: input.sourceOrder,
+        kind: input.source.kind,
+        fontRegistryRevision: input.source.fontRegistryRevision,
+        minContent: input.source.minContent,
+        minContentHeight: input.source.minContentHeight,
+        maxContent: input.source.maxContent,
+        maxContentHeight: input.source.maxContentHeight,
+      } : {
+        grid: input.grid,
+        node: input.node,
+        sourceOrder: input.sourceOrder,
+        kind: input.source?.kind,
+        aspectRatio: input.source?.natural?.aspectRatio ?? null,
+        width: input.source?.natural?.width,
+        height: input.source?.natural?.height,
+      }
+    ));
+    assert.deepEqual(intrinsicInputs, scene.intrinsicInputs,
+      `${scene.id}: 같은 Grid revision의 text/replaced intrinsic source mapping이 다릅니다.`);
+    assert.equal(diagnostics.layoutInputRevision?.intrinsicSize, 1,
+      `${scene.id}: mixed input의 image resource revision이 layout stamp에 없습니다.`);
+  } else if (scene.intrinsicInputs && scene.imageIntrinsicContributions) {
     const intrinsicInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => ({
       grid: input.grid,
       node: input.node,
@@ -1652,6 +1755,36 @@ function verifyRuntimeLog(log, scene, runID) {
     if (scene.intrinsicSpans) {
       assert.deepEqual(intrinsicSpans, scene.intrinsicSpans,
         `${scene.id}: intrinsic span stage 순서가 다릅니다.`);
+    }
+    if (scene.mixedIntrinsicContributions) {
+      const expectedContributions = [];
+      for (const span of scene.intrinsicSpans) {
+        const spanItems = scene.intrinsicInputs.flatMap((input, itemIndex) => (
+          scene.itemSpans[itemIndex] === span ? [{ input, itemIndex }] : []
+        ));
+        for (const kind of ['Minimum', 'MinContent']) {
+          const repetitions = kind === 'MinContent' ? 2 : 1;
+          for (let repetition = 0; repetition < repetitions; repetition++) {
+            for (const { input, itemIndex } of spanItems) {
+              expectedContributions.push({
+                item: input.node,
+                kind,
+                span,
+                value: kind === 'Minimum' ? 0
+                  : input.kind === 'text' ? input.minContent : scene.imageMinContentWidths[itemIndex],
+              });
+            }
+          }
+        }
+      }
+      const observedContributions = axisPass.contributions.map((contribution) => ({
+        item: contribution.item,
+        kind: contribution.kind,
+        span: contribution.span,
+        value: contribution.value,
+      }));
+      assert.deepEqual(observedContributions, expectedContributions,
+        `${scene.id}: 혼합 source의 span별 Minimum/MinContent trace가 다릅니다.`);
     }
     if (scene.textIntrinsicContributions) {
       const expectedContributions = [];
@@ -1926,6 +2059,8 @@ if (target === 'ios-simulator') {
     observation.supersededRetries = supersededAttempts;
     observations.push(observation);
     console.log(`${target} C11.4 scene ${index + 1}/${runScenes.length}: ${scene.id} passed`);
+    adb(['shell', 'cmd', 'statusbar', 'collapse']);
+    sleep(300);
     const screenshot = adb(['exec-out', 'screencap', '-p'], { encoding: null }).stdout;
     await writeFile(resolve(evidenceDirectory, `${scene.id}.png`), screenshot);
   }
