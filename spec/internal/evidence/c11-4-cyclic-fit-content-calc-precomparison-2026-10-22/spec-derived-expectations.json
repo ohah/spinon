@@ -1,0 +1,80 @@
+{
+  "source": "CSS Grid Layout Module Level 1, 2025-03-26 CRD, sections 7.2.1 and 11.1",
+  "source_url": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/",
+  "calculation": "During intrinsic grid container sizing a cyclic percentage in track sizing is treated as auto; final track sizing resolves it against the resulting container size. fit-content(limit) uses max(auto minimum, min(limit, max-content)).",
+  "font": {
+    "family": "Ahem",
+    "font_size_css_px": 10,
+    "line_height_css_px": 10,
+    "column_text": "aa aa",
+    "column_min_content_css_px": 20,
+    "column_max_content_css_px": 50,
+    "row_text": "a a a a",
+    "row_inline_size_css_px": 20,
+    "row_intrinsic_block_size_css_px": 40
+  },
+  "scenes": [
+    {
+      "id": "cyclic-fit-content-calc-column",
+      "axis": "columns",
+      "track": "fit-content(calc(50% + 4px))",
+      "intrinsic_container_basis_css_px": 50,
+      "final_limit_css_px": 29,
+      "expected_columns_css_px": [29],
+      "expected_rows_css_px": [20],
+      "expected_root_frame_css_px": [50, 20],
+      "expected_item_frame_css_px": [29, 20],
+      "chrome156_observed": {"columns": "29px", "rows": "20px", "root": [50, 20], "item": [29, 20]}
+    },
+    {
+      "id": "cyclic-fit-content-calc-row",
+      "axis": "rows",
+      "track": "fit-content(calc(50% + 2px))",
+      "intrinsic_container_basis_css_px": 40,
+      "final_limit_css_px": 22,
+      "expected_columns_css_px": [20],
+      "expected_rows_css_px": [22],
+      "expected_root_frame_css_px": [20, 40],
+      "expected_item_frame_css_px": [20, 22],
+      "chrome156_observed": {"columns": "20px", "rows": "22px", "root": [20, 40], "item": [20, 22]}
+    },
+    {
+      "id": "definite-fit-content-calc-column",
+      "axis": "columns",
+      "track": "fit-content(calc(50% + 4px))",
+      "definite_container_basis_css_px": 40,
+      "final_limit_css_px": 24,
+      "expected_columns_css_px": [24],
+      "expected_rows_css_px": [20],
+      "expected_root_frame_css_px": [40, 20],
+      "expected_item_frame_css_px": [24, 20],
+      "chrome156_observed": {"columns": "24px", "rows": "20px", "root": [40, 20], "item": [24, 20]}
+    },
+    {
+      "id": "definite-fit-content-calc-small-limit",
+      "axis": "columns",
+      "track": "fit-content(calc(50% + 4px))",
+      "definite_container_basis_css_px": 10,
+      "item_min_width_css_px": 0,
+      "final_limit_css_px": 9,
+      "expected_columns_css_px": [9],
+      "expected_rows_css_px": [20],
+      "expected_root_frame_css_px": [10, 20],
+      "expected_item_frame_css_px": [9, 20],
+      "chrome156_observed": {"columns": "9px", "rows": "20px", "root": [10, 20], "item": [9, 20]}
+    }
+  ],
+  "chrome156_surface_samples": [
+    {"scene": "definite-fit-content-calc-small-limit", "relative_to_root_css_px": [5, 5], "inside": "item", "rgb": [229, 72, 77]},
+    {"scene": "definite-fit-content-calc-small-limit", "relative_to_root_css_px": [15, 5], "inside": "outside-root-and-item", "rgb": [229, 72, 77]},
+    {"scene": "definite-fit-content-calc-small-limit", "relative_to_root_css_px": [25, 5], "inside": "page-background-after-text", "rgb": [255, 255, 255]}
+  ],
+  "oracle": {
+    "agent_browser_version": "0.31.1",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewport_css_px": [1280, 633],
+    "device_pixel_ratio": 1,
+    "ahem_font_loaded": true
+  },
+  "runtime_tested": false
+}

@@ -1,0 +1,13 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 cyclic calc fit-content track precomparison</title>
+<style>
+  @font-face { font-family: Ahem; src: url("../../resources/c15/Ahem.ttf") format("truetype"); }
+  html, body { margin: 0; padding: 0; }
+  .grid { display: grid; margin: 0 0 10px; padding: 0; border: 0; gap: 0; background: #101820; font: 10px/10px Ahem, sans-serif; color: #e5484d; }
+  .item { min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0; background: #e5484d; }
+</style>
+<div id="cyclic-fit-content-calc-column" class="grid" style="width:max-content;grid-template-columns:fit-content(calc(50% + 4px));grid-template-rows:auto"><div class="item">aa aa</div></div>
+<div id="cyclic-fit-content-calc-row" class="grid" style="width:20px;height:max-content;grid-template-columns:20px;grid-template-rows:fit-content(calc(50% + 2px))"><div class="item">a a a a</div></div>
+<div id="definite-fit-content-calc-column" class="grid" style="width:40px;grid-template-columns:fit-content(calc(50% + 4px));grid-template-rows:auto"><div class="item">aa aa</div></div>
+<div id="definite-fit-content-calc-small-limit" class="grid" style="width:10px;grid-template-columns:fit-content(calc(50% + 4px));grid-template-rows:auto"><div class="item">aa aa</div></div>
