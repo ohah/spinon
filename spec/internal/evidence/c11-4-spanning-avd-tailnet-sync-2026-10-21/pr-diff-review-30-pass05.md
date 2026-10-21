@@ -30,7 +30,7 @@
 | 26 | A partial write could expose truncated HTML or assets | Writes go to temporary siblings, are fsynced, then atomically renamed; local verification passed 3,220/3,220; pass. |
 | 27 | The local preview could match while Tailnet serves stale bytes | Remote HTTPS checked every file: 3,220 HTTP 200 and 3,220 matching hashes, zero failures; pass. |
 | 28 | The Tailnet route prefix could be wrong | Agent Browser opened `/spinon/roadmap.html`, the evidence README and the direct PNG route; pass. |
-| 29 | The PR screenshot could show an unrelated part of the roadmap | `tailnet-roadmap-note-agent-browser-pass05.png` visibly includes the API 37 AVD note and preserved 72/213; pass. |
-| 30 | Agent Browser could remain running after verification | `browser-close-pass05.json` records `close --all`; Agent Browser and HeadlessChrome process counts were both zero; pass. |
+| 29 | The PR screenshot could show an unrelated part of the roadmap or fail to load | The screenshot visibly includes the API 37 AVD note and 72/213; Agent Browser confirmed the PR raw image `complete=true`, 1600×900, matching its recorded SHA-256; pass. |
+| 30 | Agent Browser could remain running after verification | `browser-close-pass05.json` records `close --all` for Tailnet and PR sessions; Agent Browser and HeadlessChrome process counts were both zero; pass. |
 
 No unresolved issue was found in these 30 checks. This is a document-preview and evidence-sync review, not a product implementation or full C11.4 conformance claim.

@@ -1,8 +1,12 @@
 {
   "schemaVersion": 1,
   "closeCommand": "agent-browser close --all",
-  "closedSessions": ["spinon-tailnet-pass05"],
-  "checkedAtUTC": "2026-10-21T09:36:34Z",
+  "closedSessions": ["spinon-tailnet-pass05", "spinon-pr439"],
+  "closeEvents": [
+    { "session": "spinon-tailnet-pass05", "closedAtUTC": "2026-10-21T09:36:34Z", "agentBrowserProcesses": 0, "headlessChromeProcesses": 0 },
+    { "session": "spinon-pr439", "closedAtUTC": "2026-10-21T09:39:15Z", "agentBrowserProcesses": 0, "headlessChromeProcesses": 0 }
+  ],
+  "checkedAtUTC": "2026-10-21T09:39:15Z",
   "remainingAgentBrowserProcesses": 0,
   "remainingHeadlessChromeProcesses": 0
 }

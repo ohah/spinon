@@ -14,6 +14,7 @@
 - Preflight found 250 new files, 194 replacements and 2,776 unchanged files, with zero deletions. The 194 old files (28,613,007 bytes) were backed up to the pass05 backup root before atomic replacements.
 - Local byte/SHA verification passed for all 3,220 files and all 194 backups. Remote Tailnet HTTPS returned HTTP 200 and matching SHA-256 for all 3,220 files, with zero failures.
 - Agent Browser showed the new roadmap note and its evidence link, opened the evidence README, and loaded the AVD capture at 1080×2400. The [roadmap screenshot](./tailnet-roadmap-note-agent-browser-pass05.png) is 1600×900. Agent Browser and HeadlessChrome were closed afterward; both process counts were zero.
+- The screenshot was also included in PR #439 and loaded from its raw GitHub image URL at 1600×900; [PR image verification](./pr439-image-agent-browser-pass05.json).
 - tmux and simulator sessions were left unchanged. No physical Android device was connected for this pass.
 
 Manifests and scripts with `pass05` in the filename record root preparation, selected build, preflight, backup/copy, local verification, remote verification, browser observations and artifact hashes. The pass does not claim WPT conformance or full C11.4 completion.
