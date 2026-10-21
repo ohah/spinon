@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** Chrome 156 고정 fixture 사전 비교와 CSS Grid 2025 CRD 독립 계산을 마쳤다. 아직 Spinon runtime/trace 또는 앱 시뮬레이터 결과는 없다. 이 계획은 일반 nested Grid 지원이나 C11.4 완료 판정이 아니다.
+**상태:** 계획 PR [#444](https://github.com/ohah/spinon/pull/444)은 `1359f37024ad711df4b5253745d6dbf9b96af77f`로 병합됐다. 고정 runtime fixture를 구현하고 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 세 장면을 검증했다. 구현은 별도 PR 검토·병합 중이며 이 계획은 일반 nested Grid 지원이나 C11.4 완료 판정이 아니다.
 
 ## 목적과 경계
 
@@ -45,6 +45,18 @@ Agent Browser `HeadlessChrome/156.0.0.0` 관측은 위의 세 track 배열, root
 5. 기본 제품 archive에는 전용 fixture symbol·scene 문자열·Ahem/PNG payload가 없는지, `c04-runtime-gpu-fixture-test` archive에는 positive control로 포함되는지 각각 확인한다. Android/iOS fixture 빌드와 Rust focused tests, `cargo fmt --all -- --check`, workspace Clippy를 수행한다. 실행하지 않은 검사·플랫폼은 통과로 기록하지 않는다.
 6. 구현/runtime 결과는 이 계획 검토와 다른 실패 관점 20개로 검토한다. 최종 PR diff도 현재 사용자 지시에 따라 독립 실패 관점 20개로 검토한다. 차이를 발견하면 수정 후 영향을 받는 관점을 다시 확인한다.
 7. PR 본문에는 계획/구현 상태 ID, 남은 범위, 재현 화면과 증거 링크를 넣는다. 현재 GitHub required check 상태와 PR 상태를 새로 확인한 뒤 Rebase and merge한다. PR에 올린 screenshot image가 Agent Browser에서 실제로 로드되는지 확인하고 브라우저 프로세스를 종료한다.
+
+## Runtime 구현 결과 · 2026-10-21
+
+기존 nested Grid text/image adapter에 세 row-axis scene의 ID dispatch를 추가하고, fixture 전용 row contribution adapter를 별도 파일로 분리했다. auto block-size nested Grid는 definite inline-size를 유지하면서 bounded intrinsic row track subset만 통과한다. indefinite height에서 percentage/flexible/auto-repeat row track은 지원하지 않으며 fail-closed된다. definite-height flexible control은 기존 경로로 유지한다.
+
+Android API 37 ARM64 AVD `emulator-5558`와 iPhone 17 Pro/iOS 26.2 Simulator에서 oracle의 outer Rows tracks `[18,18]`, `[40,0]`, `[28,28]`, root heights `40/44/60px`와 네 node frames를 모두 확인했다. 세 장면 모두 각 플랫폼 3/3 `layout=ready`, draw/present가 통과했다. trace chunks는 Android 10/scene, iOS 20/scene이며 APK/app 산출물과 설치 APK hash도 일치한다. 실행 JSON, simulator metadata, 화면, logs 및 artifact hashes는 [runtime evidence](../spec/internal/evidence/c11-4-nested-grid-rows-runtime-2026-10-21/README.md)에 모았다.
+
+Rust format, focused runtime/layout/FFI tests, fixture-module boundary 검사, capture runner syntax check, workspace Clippy, Android/iOS app builds와 기본/opt-in archive 확인이 통과했다. 첫 Android launch는 app argument allowlist에서 새 IDs를 누락해 거부됐다. Android/iOS harness allowlist와 frame/box expectations를 보완해 재빌드 후 실행했다. 실패 로그는 삭제하지 않고 runtime evidence에 보존했다.
+
+이 결과는 고정 입력의 row contribution, layout trace/frame 및 draw/present만 확인한다. glyph paint, PNG texel equality, border/surface pixel, physical Android, Android hardware GPU, iOS compositor-after surface, WPT 및 전체 CSS Grid 적합성은 검증하지 않았다. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다.
+
+구현/runtime 실패 관점 검토와 최종 PR diff 실패 관점 검토는 각각 [implementation review](../spec/internal/evidence/c11-4-nested-grid-rows-runtime-2026-10-21/implementation-review-20.md) 및 [PR diff review](../spec/internal/evidence/c11-4-nested-grid-rows-runtime-2026-10-21/pr-diff-review-20.md)에 별도로 기록한다.
 
 ## 범위 한계
 

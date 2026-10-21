@@ -1,0 +1,9 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.42s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 2 tests
+test grid::auto_track_sizing_tests::track_sizing_indefinite_height_rejects_flexible_and_fit_content_rows ... ok
+test grid::auto_track_sizing_tests::track_sizing_indefinite_height_allows_bounded_intrinsic_rows_only ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 230 filtered out; finished in 0.00s

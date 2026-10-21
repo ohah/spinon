@@ -1,0 +1,5 @@
+Command: mise exec -- bun run docs:build
+Rspress: 2.0.22
+Result: failed (exit 1)
+
+The full workspace docs build reported 703 dead-link sections across the repository. Representative pre-existing failures point at raw .json/.log evidence files treated as generated .html pages in C09 and C13 evidence routes. This task's new evidence README also uses raw simulator JSON and screenshot artifacts, which the full-site checker resolves as page routes. The normal Tailnet preview procedure selects the public roadmap/status/plan/evidence routes, copies raw evidence assets into the served tree, and disables the repository-wide dead-link inspection. The failed full build is not counted as a passing validation.

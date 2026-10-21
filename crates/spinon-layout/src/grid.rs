@@ -468,7 +468,10 @@ pub(super) fn validate_grid_layout(
         }
 
         let definite = definite_axes.get(&node.id).copied().unwrap_or_default();
-        if !definite.width || !definite.height {
+        let can_size_indefinite_track_sizing_height = !definite.height
+            && container.placement_mode == GridPlacementMode::TrackSizing
+            && indefinite_track_sizing_height_is_bounded(node, container);
+        if !definite.width || (!definite.height && !can_size_indefinite_track_sizing_height) {
             return Err(LayoutError::IndefiniteGridBasis {
                 node: node.id,
                 axis: if !definite.width { "width" } else { "height" },
@@ -653,6 +656,49 @@ pub(super) fn validate_grid_layout(
         }
     }
     Ok(())
+}
+
+fn indefinite_track_sizing_height_is_bounded(
+    node: &crate::LayoutNode,
+    container: &GridContainerInput,
+) -> bool {
+    node.style.height == crate::LayoutDimension::Auto
+        && node.style.min_height == crate::LayoutDimension::Auto
+        && node.style.max_height == crate::LayoutDimension::Auto
+        && container.rows_auto_repeat.is_none()
+        && container.rows.iter().all(track_is_indefinite_height_safe)
+        && match &container.auto_rows {
+            GridAutoRows::Auto | GridAutoRows::LengthPx(_) => true,
+            GridAutoRows::TrackList(tracks) => tracks.iter().all(track_is_indefinite_height_safe),
+        }
+}
+
+fn track_is_indefinite_height_safe(track: &GridTrackSize) -> bool {
+    match track {
+        GridTrackSize::LengthPx(_)
+        | GridTrackSize::Auto
+        | GridTrackSize::MinContent
+        | GridTrackSize::MaxContent => true,
+        GridTrackSize::MinMax { min, max } => {
+            matches!(
+                min,
+                GridTrackMinSizingFunction::LengthPx(_)
+                    | GridTrackMinSizingFunction::Auto
+                    | GridTrackMinSizingFunction::MinContent
+                    | GridTrackMinSizingFunction::MaxContent
+            ) && matches!(
+                max,
+                GridTrackMaxSizingFunction::LengthPx(_)
+                    | GridTrackMaxSizingFunction::Auto
+                    | GridTrackMaxSizingFunction::MinContent
+                    | GridTrackMaxSizingFunction::MaxContent
+            )
+        }
+        GridTrackSize::Percentage(_)
+        | GridTrackSize::Fraction(_)
+        | GridTrackSize::Calc(_)
+        | GridTrackSize::FitContent(_) => false,
+    }
 }
 
 fn validate_auto_repeat_axis(

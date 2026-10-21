@@ -178,6 +178,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "anonymous-text-image-text", "image-before-comment-group",
             "comment-group-before-image", "whitespace-around-image",
             "hidden-child-around-image",
+            "nested-grid-text-image-row-span-two",
+            "nested-grid-text-image-row-one-track",
+            "nested-grid-text-image-row-definite-flex-control",
             "column-auto-natural-ratio", "column-target-max-width-clamp",
             "row-target-max-height-clamp",
             "column-opposite-min-over-max", "column-border-box-transfer",
@@ -396,6 +399,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (sceneId.equals("nested-grid-text-image-definite-flex-control")) {
             return "width=120,height=20";
         }
+        if (sceneId.equals("nested-grid-text-image-row-span-two")) {
+            return "width=98,height=40";
+        }
+        if (sceneId.equals("nested-grid-text-image-row-one-track")) {
+            return "width=98,height=44";
+        }
+        if (sceneId.equals("nested-grid-text-image-row-definite-flex-control")) {
+            return "width=98,height=60";
+        }
         if (sceneId.equals("nested-grid-span-two")) return "width=134,height=20";
         if (sceneId.equals("nested-grid-one-track")) return "width=138,height=20";
         if (sceneId.equals("nested-grid-definite-flex-control")) {
@@ -548,7 +560,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("nested-grid-definite-flex-control")
                 || sceneId.equals("nested-grid-text-image-span-two")
                 || sceneId.equals("nested-grid-text-image-one-track")
-                || sceneId.equals("nested-grid-text-image-definite-flex-control")) return "";
+                || sceneId.equals("nested-grid-text-image-definite-flex-control")
+                || sceneId.equals("nested-grid-text-image-row-span-two")
+                || sceneId.equals("nested-grid-text-image-row-one-track")
+                || sceneId.equals("nested-grid-text-image-row-definite-flex-control")) return "";
         if (c114IsAnonymousTextScene(sceneId) || c114IsAnonymousTextImageScene(sceneId)
                 || c114IsAnonymousTextMultiImageScene(sceneId)) return "";
         if (c114IsImageMultiSpanScene(sceneId) || c114IsTextMultiSpanScene(sceneId)
@@ -1287,6 +1302,21 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + "1:node=2,x=0,y=0,width=120,height=20;"
                         + "2:node=3,x=0,y=0,width=70,height=20;"
                         + "3:node=5,x=74,y=0,width=24,height=16]";
+            case "nested-grid-text-image-row-span-two":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=98,height=40;"
+                        + "1:node=2,x=0,y=0,width=98,height=40;"
+                        + "2:node=3,x=0,y=0,width=70,height=20;"
+                        + "3:node=5,x=74,y=24,width=24,height=16]";
+            case "nested-grid-text-image-row-one-track":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=98,height=44;"
+                        + "1:node=2,x=0,y=0,width=98,height=40;"
+                        + "2:node=3,x=0,y=0,width=70,height=20;"
+                        + "3:node=5,x=74,y=24,width=24,height=16]";
+            case "nested-grid-text-image-row-definite-flex-control":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=98,height=60;"
+                        + "1:node=2,x=0,y=0,width=98,height=60;"
+                        + "2:node=3,x=0,y=0,width=70,height=20;"
+                        + "3:node=5,x=74,y=24,width=24,height=16]";
             case "anonymous-runs-two-images-forward":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=184;"
                         + "1:node=3,x=2,y=2,width=24,height=16;"
@@ -2052,7 +2082,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("nested-grid-definite-flex-control")
                 || sceneId.equals("nested-grid-text-image-span-two")
                 || sceneId.equals("nested-grid-text-image-one-track")
-                || sceneId.equals("nested-grid-text-image-definite-flex-control")) return 4;
+                || sceneId.equals("nested-grid-text-image-definite-flex-control")
+                || sceneId.equals("nested-grid-text-image-row-span-two")
+                || sceneId.equals("nested-grid-text-image-row-one-track")
+                || sceneId.equals("nested-grid-text-image-row-definite-flex-control")) return 4;
         if (c114IsAnonymousGridBorderOverflowThreeImageScene(sceneId)) return 4;
         if (c114IsAnonymousGridBorderOverflowScene(sceneId)) return 3;
         if (sceneId.equals("anonymous-text-two-images-forward")
