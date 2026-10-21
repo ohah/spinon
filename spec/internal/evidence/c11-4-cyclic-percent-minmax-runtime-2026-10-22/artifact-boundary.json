@@ -1,0 +1,37 @@
+{
+  "schema": "spinon-c11-4-cyclic-percent-minmax-artifact-boundary/v1",
+  "sourceBaseCommit": "4c780be73ede3fa01637028d9e3d7696ca601162",
+  "sourcePatchSha256": "742d83d4853bd719f30f526f2fe4df129448a952361bfd5cfcb362804a8df247",
+  "fixtureSceneIds": [
+    "cyclic-minmax-column",
+    "cyclic-minmax-row",
+    "definite-minmax-column"
+  ],
+  "hostRlibComparison": {
+    "default": {
+      "artifact": "target/release/libspinon_ffi.rlib",
+      "sha256": "4a7ffcb491be785d54e8b48f62a69f9dc7585a3b73530f3ea02e8307ad33ddca",
+      "markers": "cyclic_percentage_minmax and all three new scene IDs absent"
+    },
+    "fixtureTestPositiveControl": {
+      "feature": "c04-runtime-gpu-fixture-test",
+      "artifact": "target/release/libspinon_ffi.rlib",
+      "sha256": "7776fd2486ef64925012d421a63028f2ca569f351501680f1ad04780faac42ce",
+      "markers": "module marker, all three scene IDs, and C11.4 fixture entry point present"
+    }
+  },
+  "simulatorArtifacts": {
+    "androidApi37Arm64Avd": {
+      "serial": "emulator-5558",
+      "apkSha256": "8f696038672de21828d08f517cda7bc0c5f850ee1d605e1871f2ebcfb438c8b9",
+      "installedApkSha256": "8f696038672de21828d08f517cda7bc0c5f850ee1d605e1871f2ebcfb438c8b9",
+      "result": "3/3 scenes; 6/6 PixelCopy samples exact"
+    },
+    "iosIPhone17ProSimulator26_2": {
+      "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+      "appExecutableSha256": "2b01efa171a4bd835de8e8e14d1351dfcf3d600b49b1aab1bc2a3a5578ac4996",
+      "result": "3/3 scenes; 6/6 Metal drawable samples exact before compositor submission"
+    }
+  },
+  "scope": "host static rlib feature boundary only; not final release APK or IPA exclusion/size verification"
+}

@@ -13,6 +13,7 @@ const requestedSceneIDs = process.argv.find((argument) => argument.startsWith('-
   ?.slice('--scene-id='.length).split(',').filter(Boolean);
 const cyclicPercentSceneIDs = new Set([
   'cyclic-percent-column', 'cyclic-percent-row', 'definite-percent-column',
+  'cyclic-minmax-column', 'cyclic-minmax-row', 'definite-minmax-column',
 ]);
 const requestedRunKind = process.argv.find((argument) => argument.startsWith('--run-kind='))
   ?.slice('--run-kind='.length);
@@ -1747,8 +1748,71 @@ scenes.push(
         xCssPx: 20, yCssPx: 8, rgba: [229, 72, 77, 255] },
     ],
   },
+  {
+    id: 'cyclic-minmax-column',
+    axis: 'Columns',
+    boxCount: 2,
+    rootFrame: 'width=24,height=16',
+    itemFrame: 'width=24,height=16',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;'
+      + '1:node=2,x=0,y=0,width=24,height=16]',
+    tracks: [12],
+    collapsed: [false],
+    axes: {
+      Columns: { tracks: [12], collapsed: [false] },
+      Rows: { tracks: [16], collapsed: [false] },
+    },
+    pixelSamples: [
+      { id: 'cyclic-minmax-column-inside-track', nodeId: 'c114-cyclic-minmax-column-item',
+        xCssPx: 11, yCssPx: 8, rgba: [229, 72, 77, 255] },
+      { id: 'cyclic-minmax-column-past-track', nodeId: 'c114-cyclic-minmax-column-item',
+        xCssPx: 18, yCssPx: 8, rgba: [229, 72, 77, 255] },
+    ],
+  },
+  {
+    id: 'cyclic-minmax-row',
+    axis: 'Rows',
+    boxCount: 2,
+    rootFrame: 'width=24,height=16',
+    itemFrame: 'width=24,height=16',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;'
+      + '1:node=2,x=0,y=0,width=24,height=16]',
+    tracks: [8],
+    collapsed: [false],
+    axes: {
+      Columns: { tracks: [24], collapsed: [false] },
+      Rows: { tracks: [8], collapsed: [false] },
+    },
+    pixelSamples: [
+      { id: 'cyclic-minmax-row-inside-track', nodeId: 'c114-cyclic-minmax-row-item',
+        xCssPx: 12, yCssPx: 7, rgba: [229, 72, 77, 255] },
+      { id: 'cyclic-minmax-row-past-track', nodeId: 'c114-cyclic-minmax-row-item',
+        xCssPx: 12, yCssPx: 12, rgba: [229, 72, 77, 255] },
+    ],
+  },
+  {
+    id: 'definite-minmax-column',
+    axis: 'Columns',
+    boxCount: 2,
+    rootFrame: 'width=40,height=16',
+    itemFrame: 'width=24,height=16',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=16;'
+      + '1:node=2,x=0,y=0,width=24,height=16]',
+    tracks: [20],
+    collapsed: [false],
+    axes: {
+      Columns: { tracks: [20], collapsed: [false] },
+      Rows: { tracks: [16], collapsed: [false] },
+    },
+    pixelSamples: [
+      { id: 'definite-minmax-column-inside-track', nodeId: 'c114-definite-minmax-column-item',
+        xCssPx: 19, yCssPx: 8, rgba: [229, 72, 77, 255] },
+      { id: 'definite-minmax-column-past-track', nodeId: 'c114-definite-minmax-column-item',
+        xCssPx: 22, yCssPx: 8, rgba: [229, 72, 77, 255] },
+    ],
+  },
 );
-assert.equal(scenes.length, 205, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 208, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;

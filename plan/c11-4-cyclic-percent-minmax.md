@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획과 Chrome 156 사전 관찰을 고정했다. CSS Grid 2025 CRD의 intrinsic sizing 규칙에서 독립 기대값을 도출한다. 이 plan-only slice는 구현이나 지원 선언이 아니며 C11.4 checkbox와 공식 완료 수 `72/213`을 바꾸지 않는다. [계획 검토 20개](./c11-4-cyclic-percent-minmax-plan-review-20.md) · [사전 비교](../spec/internal/evidence/c11-4-cyclic-percent-minmax-precomparison-2026-10-22/README.md)
+**상태:** 계획의 세 고정 장면을 opt-in C11.4 runtime fixture에 연결했고 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 3/3 실행했다. 이는 제한 fixture 검증이지 일반 CSS 지원 선언이나 C11.4 완료가 아니다. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다. [계획 검토 20개](./c11-4-cyclic-percent-minmax-plan-review-20.md) · [사전 비교](../spec/internal/evidence/c11-4-cyclic-percent-minmax-precomparison-2026-10-22/README.md) · [구현·simulator 결과와 검토](../spec/internal/evidence/c11-4-cyclic-percent-minmax-runtime-2026-10-22/README.md)
 
 ## 목적과 범위
 
@@ -50,3 +50,11 @@ Chrome 비교 입력은 [fixture](../tests/fixtures/css/c11/grid-cyclic-percent-
 ## 범위 밖
 
 `minmax()`의 percentage minimum, `calc()`가 포함된 percentage maximum, `fit-content(%)`, 여러 percentage track, 같은 Grid에서 columns와 rows가 동시에 cyclic인 경우, nested/anonymous/replaced item, auto-repeat 결합, writing mode 변경, WPT, Android 실기기, hardware GPU 및 iOS compositor 이후 pixel은 검증 범위가 아니다. 구현 결과는 opt-in fixed fixture의 근거일 뿐 일반 CSS admission이나 C11.4 완료를 뜻하지 않는다.
+
+## 구현 결과 · 2026-10-22
+
+- `cyclic-minmax-column`은 Columns `[12px]` / Rows `[16px]`, `cyclic-minmax-row`는 Columns `[24px]` / Rows `[8px]`, `definite-minmax-column`은 Columns `[20px]` / Rows `[16px]`였다. Root/item frame은 계획 표와 exact 일치했다.
+- Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 3/3 scene의 frame, 양 축 track trace, draw/present를 통과했다. PixelCopy는 6/6 표본, iOS Metal drawable은 compositor 제출 전 6/6 표본이 exact였다.
+- 첫 Android 실행은 새 sample ID의 기대 RGB가 Android 검증 allowlist에 없어 surface summary가 mismatch를 냈다. RGB allowlist를 수정하고 APK를 다시 빌드해 세 장면 전체를 재실행했다. 실패 로그도 evidence에 보존했다.
+- Rust focused test, fixture module 경계 검사, formatter, focused Clippy, Android/iOS Simulator fixture build를 통과했다. 기본 `spinon-ffi` release rlib에서는 새 module marker와 세 ID가 없고 `c04-runtime-gpu-fixture-test` positive control에는 모두 있었다. 이는 static archive 경계 결과이며 최종 release bundle 검증은 아니다.
+- [구현 실패 관점 20개](../spec/internal/evidence/c11-4-cyclic-percent-minmax-runtime-2026-10-22/implementation-review-20.md)와 [PR diff 실패 관점 30개](../spec/internal/evidence/c11-4-cyclic-percent-minmax-runtime-2026-10-22/pr-diff-review-30.md)는 계획 검토와 분리했다.
