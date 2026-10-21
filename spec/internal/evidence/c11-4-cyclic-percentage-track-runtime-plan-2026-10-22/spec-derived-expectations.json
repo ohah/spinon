@@ -1,0 +1,82 @@
+{
+  "normativeSource": "CSS Grid Layout Module Level 1, 2025-03-26 CRD, section 7.2.1 Track Sizes",
+  "sourceUrl": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/",
+  "rule": "When the grid container size depends on its tracks, percentages are treated as auto while calculating intrinsic container sizes, then resolved against the resulting inner size for final layout.",
+  "derivations": [
+    {
+      "id": "cyclic-percent-column",
+      "intrinsicBasis": "max-content item inline size 24px",
+      "finalBasis": "24px inner inline size",
+      "expected": {
+        "grid": [
+          24,
+          16
+        ],
+        "columns": [
+          12
+        ],
+        "rows": [
+          16
+        ],
+        "item": [
+          24,
+          16,
+          0,
+          0
+        ]
+      },
+      "overflow": "item extends 12px beyond its 12px column track"
+    },
+    {
+      "id": "cyclic-percent-row",
+      "intrinsicBasis": "max-content item block size 16px",
+      "finalBasis": "16px inner block size",
+      "expected": {
+        "grid": [
+          24,
+          16
+        ],
+        "columns": [
+          24
+        ],
+        "rows": [
+          8
+        ],
+        "item": [
+          24,
+          16,
+          0,
+          0
+        ]
+      },
+      "overflow": "item extends 8px beyond its 8px row track"
+    },
+    {
+      "id": "definite-percent-column",
+      "intrinsicBasis": "not cyclic; explicit 40px inner inline size",
+      "finalBasis": "40px inner inline size",
+      "expected": {
+        "grid": [
+          40,
+          16
+        ],
+        "columns": [
+          20
+        ],
+        "rows": [
+          16
+        ],
+        "item": [
+          24,
+          16,
+          0,
+          0
+        ]
+      },
+      "overflow": "item extends 4px beyond its 20px column track"
+    }
+  ],
+  "limitations": [
+    "No calc(), percentage minmax(), fit-content percentage, multiple percentage tracks, simultaneous cyclic columns and rows, nested Grid, writing mode variants, WPT, physical-device, or public CSS support claim."
+  ]
+}
