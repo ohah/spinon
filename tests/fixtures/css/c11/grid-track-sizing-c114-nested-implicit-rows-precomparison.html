@@ -2,13 +2,13 @@
 <meta charset="utf-8">
 <title>C11.4 nested Grid positive implicit rows precomparison</title>
 <style>
-  * { box-sizing: content-box; }
+  * { box-sizing: border-box; }
   body { margin: 20px; font: 12px sans-serif; }
   .scene { display: grid; grid-template-columns: 24px; grid-template-rows: min-content min-content; row-gap: 4px; width: 24px; outline: 1px solid #111; margin: 12px 0; }
-  .nested { display: grid; grid-template-columns: 24px; grid-template-rows: min-content; grid-auto-rows: min-content max-content; row-gap: 4px; width: 24px; align-content: start; justify-content: start; align-self: start; }
-  .explicit { grid-row: 1 / 2; width: 24px; height: 8px; background: #2a6; }
-  .implicit-min { grid-row: 2 / 3; width: 4px; height: 8px; background: #e90; }
-  .implicit-max { grid-row: 3 / 4; display: block; }
+  .nested { display: grid; grid-template-columns: 24px; grid-template-rows: min-content; grid-auto-rows: min-content max-content; row-gap: 4px; width: 24px; align-items: start; justify-items: normal; }
+  .explicit { grid-column: 1; grid-row: 1 / 2; width: 24px; height: 8px; background: #2a6; }
+  .implicit-min { grid-column: 1; grid-row: 2 / 3; width: 4px; height: 8px; background: #e90; }
+  .implicit-max { grid-column: 1; grid-row: 3 / 4; display: block; }
   #span-two-nested { grid-row: 1 / 3; }
   #one-row-nested { grid-row: 1 / 2; }
   .scene-label { font: 12px sans-serif; margin-bottom: 2px; }

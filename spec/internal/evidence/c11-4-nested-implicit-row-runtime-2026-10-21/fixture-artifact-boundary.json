@@ -1,0 +1,10 @@
+{
+  "profile": "cargo build --locked -p spinon-ffi --lib --features c04-runtime-gpu-fixture-test",
+  "artifactPath": "target/debug/libspinon_ffi.a",
+  "sha256": "b1f6d84c875d64cf38e1af60124d7229382f0d872c7fb0e80cecb38731d1716e",
+  "sceneIDs": {
+    "nested-grid-implicit-row-span-two": true,
+    "nested-grid-implicit-row-one-row": true
+  },
+  "c14PngPayload": true
+}

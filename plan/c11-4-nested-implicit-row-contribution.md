@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획과 Agent Browser Chrome 156 사전 비교만 준비했다. 기존 [nested Grid intrinsic 계획](./c11-4-nested-grid-intrinsic.md)은 nested implicit track 확장을 명시적으로 제외하고 있다. 현재 Spinon 동작은 아직 실행하지 않았고 Android/iOS Simulator 근거도 없다. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다. [사전 비교·독립 계산·화면](../spec/internal/evidence/c11-4-nested-implicit-row-precomparison-2026-10-21/README.md) · [계획 실패 관점 검토 20개](./c11-4-nested-implicit-rows-plan-review-20.md)
+**상태:** 계획 PR [#447](https://github.com/ohah/spinon/pull/447)이 2026-10-21 Rebase and merge됐다. 계획의 두 scene을 기존 C11.4 opt-in fixture 경로로 구현했고, direct-layout/runtime/FFI 검사와 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 실행을 각각 2/2 마쳤다. outer Rows `[18,18]`/`[40,0]px`, inner Rows `[8,8,16]px`, 다섯 node frame, trace, draw/present가 일치한다. 구현/runtime 실패 관점 검토를 기록했고, 구현 PR의 diff 검토·merge는 진행 중이다. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다. [사전 비교·독립 계산·화면](../spec/internal/evidence/c11-4-nested-implicit-row-precomparison-2026-10-21/README.md) · [구현·Simulator 실행 근거](../spec/internal/evidence/c11-4-nested-implicit-row-runtime-2026-10-21/README.md) · [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-4-nested-implicit-row-runtime-2026-10-21/implementation-review-20.md) · [계획 실패 관점 검토 20개](./c11-4-nested-implicit-rows-plan-review-20.md)
 
 ## 목표와 범위
 
@@ -30,15 +30,15 @@
 
 ## 구현 순서
 
-1. 이 계획을 최신 `origin/main`에서 시작하는 계획 PR로 먼저 병합한다. 계획 자체 실패 관점 20개와 계획 PR 변경 실패 관점 20개를 별도로 기록한다.
-2. 병합된 기준에서 direct-layout fixture를 먼저 실행해 현재 `LayoutInput`, Taffy track sizing, contribution query가 이미 기대값과 일치하는지 확인한다. 이미 일치하면 제품 알고리즘을 바꾸지 않고 회귀 fixture만 추가한다. 다르면 첫 divergent track/contribution stage를 보존한 뒤 CSS 규칙, pinned Taffy source와 함께 원인을 확인한다.
-3. 수정 또는 fixture 추가는 기존 C11.4 opt-in fixture 경계에 둔다. exact node topology, nested ownership, 24×16 PNG resource, 두 positive implicit row의 순서, outer item placement를 검증한다. 임의 HTML/CSS parser나 공개 API를 추가하지 않는다. 미등록 scene, 음수 행, auto-placement, 다른 auto-row grammar는 기존 실패/거부 동작을 유지한다.
-4. Rust direct-layout/runtime 검사에서 root, nested Grid, 세 child frame과 inner/outer Rows trace, contribution item ID·kind·value·span·source order를 확인한다. 기대 외 node나 부분 trace가 있는 실행은 통과로 세지 않는다.
-5. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 두 scene의 frame, used rows, trace, draw/present를 각각 2/2 확인한다. 실기기는 연결하지 않는다. 이 입력에는 border 바깥 overflow가 없으므로 beyond-border pixel 주장을 하지 않는다. 화면 표본을 추가하면 어떤 Surface/Metal readback 단계인지 분리해 쓴다.
-6. 기본 product artifact에서 새 fixture FFI symbol, scene ID, PNG payload가 제외되고 opt-in fixture-test artifact에는 포함되는지 positive/negative control로 확인한다. `cargo fmt --all -- --check`, 관련 focused tests, workspace Clippy `-D warnings`, Android/iOS fixture build 및 적용 가능한 workspace tests를 실행하고 각 결과를 구분한다.
-7. 구현/runtime은 새 실패 관점 20개로, PR diff도 독립된 실패 관점 20개로 검토한다. 발견한 결함을 고친 뒤 영향받은 관점을 새 revision에서 다시 확인한다. 계획 검토 표는 재사용하지 않는다.
-8. PR 본문에는 실제 Chrome 사전 비교 화면과 가능한 경우 Android/iOS Simulator 실행 화면을 첨부한다. live required check과 merge state를 확인한 뒤 Rebase and merge한다. 필수 check이 없거나 비어 있으면 CI 통과로 표시하지 않는다.
-9. 실제 결과가 확인된 뒤 계획, `spec/STATUS.md`, 내부 계약 0059와 `spec/public/roadmap.html`을 함께 갱신한다. 해당 시점에도 C11.4 parent checkbox와 `72/213` 집계는 전체 완료 기준이 충족될 때까지 유지한다. Tailnet 정적 preview는 최신 main source hash를 검증해 별도 문서 변경으로 반영한다.
+1. 계획 PR #447을 Rebase and merge했다. 계획 검토 20개와 계획 PR diff 검토 근거는 이 계획과 사전 비교 evidence에 보존한다.
+2. direct-layout fixture에서 기존 `LayoutInput`, Taffy track sizing, contribution 경로가 독립 기대값과 일치함을 확인했다. 제품 알고리즘 변경 없이 회귀 fixture를 추가했다.
+3. 기존 C11.4 opt-in 경계 안에 두 scene과 strict runtime adapter를 추가했다. exact HTML topology, nested ownership, allowlisted 24×16 PNG resource, 두 positive implicit row 순서, outer placement를 검증하고 미등록 scene은 거부한다.
+4. direct-layout/runtime 검사에서 root, nested Grid, 세 child frame, inner/outer Rows trace와 outer contribution item·kind·value·span을 확인했다. Android/iOS adapter는 두 Grid의 rows/columns, gap gutter 및 intrinsic source도 확인한다.
+5. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 두 scene을 실행해 frame·used rows·trace·draw/present가 각각 2/2 통과했다. 실기기는 연결하지 않았다. 이 입력에는 border 바깥 overflow가 없고 Surface/Metal pixel readback도 없어 해당 주장을 하지 않는다.
+6. 기본·fixture-test static archive를 빌드해 scene ID와 C14 PNG payload의 제외/포함을 positive/negative control로 확인했다. focused tests, workspace Clippy, fixture-module boundary 검사, Android/iOS Simulator app build가 통과했다. 전체 workspace test suite는 실행하지 않았다.
+7. 구현/runtime 실패 관점 20개를 새로 검토했다. 구현 PR의 독립 diff 검토 30개, 발견 사항 반영 뒤 최종 diff 확인과 merge가 남아 있다. 계획 검토 표는 재사용하지 않는다.
+8. PR에 Chrome 사전 비교와 가능한 Android/iOS Simulator 화면을 첨부한다. live required check과 merge state를 확인한 뒤 Rebase and merge한다. 비어 있는 status rollup을 CI 통과로 표시하지 않는다.
+9. 계획, `spec/STATUS.md`, 내부 계약 0059와 공개 roadmap을 실제 결과에 맞춰 갱신한다. C11.4 parent checkbox와 `72/213` 집계는 전체 완료 기준이 충족될 때까지 유지한다. Tailnet 정적 preview는 병합 뒤 최신 main source hash를 확인해 갱신한다.
 
 ## 명시적 제외
 

@@ -49,6 +49,9 @@ const anonymousGridBorderOverflowSceneIDs = new Set([
   'anonymous-runs-two-images-forward', 'two-images-anonymous-runs-reversed',
   'two-anonymous-runs-three-images-forward', 'three-images-two-anonymous-runs-reversed',
 ]);
+const nestedGridImplicitRowSceneIDs = new Set([
+  'nested-grid-implicit-row-span-two', 'nested-grid-implicit-row-one-row',
+]);
 const isTextMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => textMultiSpanSceneIDs.has(sceneID));
 const isImageMultiSpanRun = requestedSceneIDs?.length > 0
@@ -63,10 +66,13 @@ const isAnonymousTextMultiImageRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => anonymousTextMultiImageSceneIDs.has(sceneID));
 const isAnonymousGridBorderOverflowRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => anonymousGridBorderOverflowSceneIDs.has(sceneID));
+const isNestedGridImplicitRowRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => nestedGridImplicitRowSceneIDs.has(sceneID));
 const isMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID)
     || textMultiSpanSceneIDs.has(sceneID) || mixedMultiSpanSceneIDs.has(sceneID));
 const runKind = requestedRunKind ?? (isMixedMultiSpanRun ? 'mixed-multispan-contributions'
+  : isNestedGridImplicitRowRun ? 'nested-implicit-rows'
   : isAnonymousGridBorderOverflowRun ? 'anonymous-grid-border-overflow'
   : isAnonymousTextMultiImageRun ? 'anonymous-text-multi-image'
   : isAnonymousTextImageRun ? 'anonymous-grid-text-image'
@@ -1221,8 +1227,42 @@ scenes.push(
       contributionSpan: 2, minimumContributionValue: 0, maximumContributionValue: 60,
     },
   },
+  {
+    id: 'nested-grid-implicit-row-span-two', axis: 'Rows', boxCount: 5,
+    rootFrame: 'width=24,height=40', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=40;'
+      + '1:node=2,x=0,y=0,width=24,height=40;'
+      + '2:node=3,x=0,y=0,width=24,height=8;'
+      + '3:node=4,x=0,y=12,width=4,height=8;'
+      + '4:node=5,x=0,y=24,width=24,height=16]',
+    tracks: [18, 18], collapsed: [false, false],
+    axes: { Rows: { tracks: [18, 18], collapsed: [false, false] } },
+    gaps: { Rows: 4 }, intrinsicSpansByAxis: { Rows: [2] },
+    nestedGridImplicitRows: {
+      outerNode: 1, nestedNode: 2, imageNode: 5,
+      outerRows: [18, 18], innerRows: [8, 8, 16], contributionSpan: 2,
+      contributionValue: 40,
+    },
+  },
+  {
+    id: 'nested-grid-implicit-row-one-row', axis: 'Rows', boxCount: 5,
+    rootFrame: 'width=24,height=44', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=44;'
+      + '1:node=2,x=0,y=0,width=24,height=40;'
+      + '2:node=3,x=0,y=0,width=24,height=8;'
+      + '3:node=4,x=0,y=12,width=4,height=8;'
+      + '4:node=5,x=0,y=24,width=24,height=16]',
+    tracks: [40, 0], collapsed: [false, false],
+    axes: { Rows: { tracks: [40, 0], collapsed: [false, false] } },
+    gaps: { Rows: 4 }, intrinsicSpansByAxis: { Rows: [1] },
+    nestedGridImplicitRows: {
+      outerNode: 1, nestedNode: 2, imageNode: 5,
+      outerRows: [40, 0], innerRows: [8, 8, 16], contributionSpan: 1,
+      contributionValue: 40,
+    },
+  },
 );
-assert.equal(scenes.length, 182, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 184, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -2435,6 +2475,57 @@ function verifyRuntimeLog(log, scene, runID) {
       `${scene.id}: nested content enlarged the definite outer Grid`);
     }
   }
+  if (scene.nestedGridImplicitRows) {
+    const expected = scene.nestedGridImplicitRows;
+    const actualInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => ({
+      grid: input.grid,
+      node: input.node,
+      sourceOrder: input.sourceOrder,
+      kind: input.source?.kind,
+      width: input.source?.natural?.width,
+      height: input.source?.natural?.height,
+    }));
+    assert.deepEqual(actualInputs, [{
+      grid: expected.nestedNode, node: expected.imageNode, sourceOrder: 2,
+      kind: 'replaced', width: 24, height: 16,
+    }], `${scene.id}: nested Grid image intrinsic input differs`);
+    assert.equal(diagnostics.layoutInputRevision?.intrinsicSize, 1,
+      `${scene.id}: decoded image revision is missing from the layout stamp`);
+    assert.equal(diagnostics.trackSizingTraces.length, 2,
+      `${scene.id}: nested + outer Grid trace count differs`);
+    const outerTrace = diagnostics.trackSizingTraces.find(
+      (trace) => trace.grid === expected.outerNode);
+    const nestedTrace = diagnostics.trackSizingTraces.find(
+      (trace) => trace.grid === expected.nestedNode);
+    assert.ok(outerTrace, `${scene.id}: outer Grid trace is missing`);
+    assert.ok(nestedTrace, `${scene.id}: nested Grid trace is missing`);
+    const tracksForAxis = (trace, axis) => {
+      const matchingPasses = trace.passes.filter((pass) => pass.axis === axis);
+      assert.equal(matchingPasses.length, 1,
+        `${scene.id}: Grid ${trace.grid} must have one ${axis} pass`);
+      const tracks = matchingPasses[0].stages.at(-1)?.tracks;
+      assert.ok(tracks, `${scene.id}: Grid ${trace.grid} ${axis} final tracks are missing`);
+      return tracks.filter(({ gutter, collapsed }) => !gutter && !collapsed)
+        .map(({ baseSize }) => baseSize);
+    };
+    assert.deepEqual(tracksForAxis(outerTrace, 'Columns'), [24],
+      `${scene.id}: outer Grid columns differ`);
+    assert.deepEqual(tracksForAxis(outerTrace, 'Rows'), expected.outerRows,
+      `${scene.id}: outer Grid rows differ`);
+    assert.deepEqual(tracksForAxis(nestedTrace, 'Columns'), [24],
+      `${scene.id}: nested Grid columns differ`);
+    assert.deepEqual(tracksForAxis(nestedTrace, 'Rows'), expected.innerRows,
+      `${scene.id}: nested Grid implicit rows differ`);
+    const outerRows = outerTrace.passes.find((pass) => pass.axis === 'Rows');
+    const contribution = outerRows.contributions.find((item) => (
+      item.item === expected.nestedNode
+        && item.kind === 'MinContent'
+        && item.span === expected.contributionSpan
+        && Math.abs(item.value - expected.contributionValue) <= 1 / 64
+    ));
+    assert.ok(contribution,
+      `${scene.id}: nested Grid min-content row contribution differs`);
+  }
   if (scene.anonymousTextItems) {
     const actualInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => ({
       grid: input.grid,
@@ -2560,10 +2651,13 @@ function verifyRuntimeLog(log, scene, runID) {
   const tracksByAxis = {};
   let observedIntrinsicSpans = null;
   const axisTrace = scene.nestedGridIntrinsic || scene.nestedGridTextImageIntrinsic
+    || scene.nestedGridImplicitRows
     ? diagnostics.trackSizingTraces.find(
       (trace) => trace.grid === (scene.nestedGridIntrinsic
         ? scene.nestedGridIntrinsic.outerNode
-        : scene.nestedGridTextImageIntrinsic.outerNode))
+        : scene.nestedGridTextImageIntrinsic
+          ? scene.nestedGridTextImageIntrinsic.outerNode
+          : scene.nestedGridImplicitRows.outerNode))
     : diagnostics.trackSizingTraces[0];
   assert.ok(axisTrace, `${scene.id}: expected track-sizing Grid trace가 없습니다.`);
   for (const [axis, expected] of Object.entries(axisSpecs)) {

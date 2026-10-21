@@ -26,7 +26,7 @@ Agent Browser 0.31.1이 연 `HeadlessChrome/156.0.0.0`에서 fixture를 열고 �
 
 ## 재현 hash와 한계
 
-- Fixture SHA-256: `c6ac7bc85820e023871c5534f9dcfb1c51c7f9e18a12826e9933262c9a2fed4f`
+- Fixture SHA-256: `03be781f3d2fa2ccdbca5bf874508b40783d9f4534e54af65ba1bc2a86d0e619`
 - PNG SHA-256: `5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2`
 - Screenshot SHA-256: `9cf5b0d1dcae9742aba1ffb2e983cbcb9bcd2a105725ea96e616aca4d54f820f`
 

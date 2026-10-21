@@ -637,6 +637,7 @@ mod depth_tests;
 mod fixed_position_tests;
 #[cfg(test)]
 mod grid_chrome_oracle_tests;
+
 #[cfg(test)]
 mod grid_cyclic_percentage_gap_tests;
 #[cfg(test)]
@@ -645,6 +646,9 @@ mod grid_image_ratio_fixed_gutter_tests;
 mod grid_image_ratio_oracle_tests;
 #[cfg(test)]
 mod grid_multispan_chrome_oracle_tests;
+#[cfg(test)]
+#[path = "grid_nested_implicit_rows_tests.rs"]
+mod grid_nested_implicit_rows_tests;
 #[cfg(test)]
 mod grid_nested_intrinsic_tests;
 #[cfg(all(test, feature = "c11-4-grid-track-sizing-fixture-test"))]

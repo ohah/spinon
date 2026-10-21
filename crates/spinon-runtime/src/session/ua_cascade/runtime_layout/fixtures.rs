@@ -24,6 +24,10 @@ mod c11_4_nested_grid_replaced_item;
 mod c11_4_nested_grid_rows;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "fixtures/c11_4_nested_grid_implicit_rows.rs"]
+mod c11_4_nested_grid_implicit_rows;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "fixtures/c11_4_image.rs"]
 mod c11_4_image;
 
