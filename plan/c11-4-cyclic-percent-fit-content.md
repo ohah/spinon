@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획 및 Chrome 156 사전 비교 단계. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다. [계획 실패 관점 검토 20개](./c11-4-cyclic-percent-fit-content-plan-review-20.md) · [사전 비교](../spec/internal/evidence/c11-4-cyclic-fit-content-precomparison-2026-10-22/README.md)
+**상태:** 계획 PR 병합 후 세 고정 장면의 구현과 Android/iOS Simulator 실행을 마쳤다. 구현 실패 관점 검토 20개를 별도로 기록했다. 최종 PR 검토와 merge 전이다. 이 제한 fixture는 C11.4 일반 지원이 아니므로 공식 checkbox와 완료 수 `72/213`은 유지한다. [계획 실패 관점 검토 20개](./c11-4-cyclic-percent-fit-content-plan-review-20.md) · [사전 비교](../spec/internal/evidence/c11-4-cyclic-fit-content-precomparison-2026-10-22/README.md) · [구현·Simulator 근거](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/README.md) · [구현 실패 관점 검토 20개](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/implementation-review-20.md)
 
 ## 목적과 제한 범위
 
@@ -38,15 +38,13 @@ Intrinsic basis와 percentage limit은 Chrome 관찰값을 역산하지 않고 A
 - 시작 입력의 fixed-size item은 24px intrinsic width라 `fit-content(50%)`의 limit clamp를 드러내지 못했다. 이를 계획 acceptance에 넣지 않고, min-content와 max-content 사이에 limit이 놓이도록 Ahem text 입력으로 수정했다. Ahem 적용 후에는 column/row의 fit-content limit이 각각 25/20px이며 definite control은 20px이다.
 - Root/page y 좌표는 세 block root의 순서에 따라 달라지므로 acceptance에서는 각 root/item의 size와 root 기준 상대 위치를 비교한다. computed track list와 frame을 함께 기록한다.
 
-## 구현 및 판정 절차
+## 구현 및 판정 결과
 
-1. 이 계획은 독립 실패 관점 20개 검토를 마친 뒤 계획 PR로 병합한다. 계획 검토는 이후 runtime 검토와 별도다.
-2. Rust focused layout/projection 비교에서 typed `FitContent(50%)`, root/item frame, Columns·Rows used track과 stage trace를 확인한다. 계산 결과가 다르면 공개 CSS 입구를 늘리지 않고 고정 fixture에서 드러난 최소 layout 경계만 고친다.
-3. Runtime adapter는 세 scene ID, root/item 수와 순서, Ahem text content/style, track declaration, root sizing, revision을 고정 확인한다. 미등록 source, 잘못된 topology, style 누락 및 trace mismatch는 partial scene 없이 거부한다.
-4. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 scene의 두 축 track trace, root/item frame, draw/present를 확인한다. 표면 표본은 item/background의 box 경계만 검사하고 text glyph antialiasing, CSS border stroke와 iOS compositor-after pixel을 주장하지 않는다.
-5. 기본 product artifact에서 신규 fixture ID/module/payload가 빠지고 `c04-runtime-gpu-fixture-test` positive control에는 포함되는지 따로 확인한다. 실행한 focused test/build만 근거로 남기고 실행하지 않은 전체 CI는 통과로 표현하지 않는다.
-6. 최종 코드와 simulator 동작에는 계획 검토와 별개로 새 구현/runtime 실패 관점 20개를 검토한다. PR 최종 diff도 별도 30 관점으로 검토한 뒤 required checks와 merge state를 확인하고 Rebase and merge한다.
-7. 최종 merge 뒤 공개 roadmap과 Tailnet 미리보기를 갱신한다. 캡처 링크는 Agent Browser에서 확인한 뒤 해당 Agent Browser process를 종료한다.
+- Rust projection은 `FitContent(50%)` typed 값과 독립 기대 Columns·Rows, root/item frame을 확인한다. text runtime fixture는 정확한 세 scene ID·tree·Ahem 입력·typed track과 크기만 허용하고 미등록 입력을 거부한다.
+- Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 세 scene 모두 두 축 track trace, ordered root/item frame, draw/present가 통과했다. Android PixelCopy 경계 표본 6/6, iOS Metal drawable 표본 6/6이 exact이며 iOS 표본은 compositor 제출 전이다.
+- 기본 FFI release `.rlib`에는 새 module marker와 scene ID가 없고 `c04-runtime-gpu-fixture-test` positive control에만 포함된다. 결과와 hash는 [artifact 경계](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/artifact-boundary/README.md)에 기록했다.
+- 구현 전 계획 검토와 구분되는 [구현 실패 관점 검토 20개](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/implementation-review-20.md)를 마쳤다. 최종 PR diff 검토 30개, live required check·merge 상태 확인, Rebase and merge와 Tailnet preview 갱신은 남아 있다.
+- 고정 capture metadata의 source commit은 `9af5ee8fa29269c589a02d6f1aafe3f72d53d1d0`이다. simulator 결과는 fixture 범위에만 적용하며 일반 CSS 지원·WPT·실기기·iOS compositor 이후 pixels·C11.4 완료를 뜻하지 않는다.
 
 ## 범위 밖
 

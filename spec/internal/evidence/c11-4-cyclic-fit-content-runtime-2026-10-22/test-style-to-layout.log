@@ -1,0 +1,13 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.20s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-7f78b653f6fb953d)
+
+running 3 tests
+test projection::style_values::grid_values::tests::track_sizing_profile_preserves_cyclic_fit_content_percentage_limit ... ok
+test c14_intrinsic_contributions_tests::fit_content_function_is_rejected_for_the_image_node ... ok
+test c11_4_track_sizing_areas_tests::cyclic_fit_content::cyclic_percentage_fit_content_text_scenes_match_chrome_tracks_and_frames ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 211 filtered out; finished in 0.04s
