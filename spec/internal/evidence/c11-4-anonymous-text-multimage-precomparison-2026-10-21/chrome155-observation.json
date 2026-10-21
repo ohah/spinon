@@ -1,0 +1,369 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+  "userAgentFullVersion": "155.0.8059.85",
+  "platform": "MacIntel",
+  "viewport": {
+    "width": 1280,
+    "height": 577
+  },
+  "devicePixelRatio": 1,
+  "ahemReady": true,
+  "imageDecodeComplete": true,
+  "intrinsicWidths": {
+    "anonymousText": 20
+  },
+  "cases": [
+    {
+      "id": "anonymous-text-two-images-forward",
+      "directChildren": [
+        {
+          "kind": "text",
+          "text": "XX",
+          "id": null
+        },
+        {
+          "kind": "element",
+          "text": null,
+          "id": "image-a-forward"
+        },
+        {
+          "kind": "element",
+          "text": null,
+          "id": "image-b-forward"
+        }
+      ],
+      "columns": "12px 28px 20px 0px",
+      "rows": "60px 60px 60px",
+      "grid": {
+        "x": 4,
+        "y": 22,
+        "width": 220,
+        "height": 180
+      },
+      "text": [
+        {
+          "text": "XX",
+          "rects": [
+            {
+              "x": 44,
+              "y": 22,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        }
+      ],
+      "elements": [
+        {
+          "id": "image-a-forward",
+          "tag": "img",
+          "display": "block",
+          "gridColumn": "1 / span 2",
+          "gridRow": "1",
+          "naturalSize": {
+            "width": 24,
+            "height": 16
+          },
+          "frame": {
+            "x": 4,
+            "y": 22,
+            "width": 24,
+            "height": 16
+          }
+        },
+        {
+          "id": "image-b-forward",
+          "tag": "img",
+          "display": "block",
+          "gridColumn": "2 / span 2",
+          "gridRow": "2",
+          "naturalSize": {
+            "width": 24,
+            "height": 16
+          },
+          "frame": {
+            "x": 16,
+            "y": 82,
+            "width": 48,
+            "height": 32
+          }
+        }
+      ]
+    },
+    {
+      "id": "two-images-anonymous-text-reversed",
+      "directChildren": [
+        {
+          "kind": "element",
+          "text": null,
+          "id": "image-b-reversed"
+        },
+        {
+          "kind": "text",
+          "text": "XX",
+          "id": null
+        },
+        {
+          "kind": "element",
+          "text": null,
+          "id": "image-a-reversed"
+        }
+      ],
+      "columns": "12px 28px 20px 0px",
+      "rows": "60px 60px 60px",
+      "grid": {
+        "x": 4,
+        "y": 229,
+        "width": 220,
+        "height": 180
+      },
+      "text": [
+        {
+          "text": "XX",
+          "rects": [
+            {
+              "x": 44,
+              "y": 229,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        }
+      ],
+      "elements": [
+        {
+          "id": "image-b-reversed",
+          "tag": "img",
+          "display": "block",
+          "gridColumn": "2 / span 2",
+          "gridRow": "2",
+          "naturalSize": {
+            "width": 24,
+            "height": 16
+          },
+          "frame": {
+            "x": 16,
+            "y": 289,
+            "width": 48,
+            "height": 32
+          }
+        },
+        {
+          "id": "image-a-reversed",
+          "tag": "img",
+          "display": "block",
+          "gridColumn": "1 / span 2",
+          "gridRow": "1",
+          "naturalSize": {
+            "width": 24,
+            "height": 16
+          },
+          "frame": {
+            "x": 4,
+            "y": 229,
+            "width": 24,
+            "height": 16
+          }
+        }
+      ]
+    },
+    {
+      "id": "anonymous-text-three-images-forward",
+      "directChildren": [
+        {
+          "kind": "text",
+          "text": "XX",
+          "id": null
+        },
+        {
+          "kind": "element",
+          "text": null,
+          "id": "image-a-three-forward"
+        },
+        {
+          "kind": "element",
+          "text": null,
+          "id": "image-b-three-forward"
+        },
+        {
+          "kind": "element",
+          "text": null,
+          "id": "image-c-three-forward"
+        }
+      ],
+      "columns": "16px 32px 24px 0px",
+      "rows": "60px 60px 60px",
+      "grid": {
+        "x": 4,
+        "y": 436,
+        "width": 220,
+        "height": 180
+      },
+      "text": [
+        {
+          "text": "XX",
+          "rects": [
+            {
+              "x": 52,
+              "y": 436,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        }
+      ],
+      "elements": [
+        {
+          "id": "image-a-three-forward",
+          "tag": "img",
+          "display": "block",
+          "gridColumn": "1 / span 2",
+          "gridRow": "1",
+          "naturalSize": {
+            "width": 24,
+            "height": 16
+          },
+          "frame": {
+            "x": 4,
+            "y": 436,
+            "width": 24,
+            "height": 16
+          }
+        },
+        {
+          "id": "image-b-three-forward",
+          "tag": "img",
+          "display": "block",
+          "gridColumn": "2 / span 2",
+          "gridRow": "2",
+          "naturalSize": {
+            "width": 24,
+            "height": 16
+          },
+          "frame": {
+            "x": 20,
+            "y": 496,
+            "width": 48,
+            "height": 32
+          }
+        },
+        {
+          "id": "image-c-three-forward",
+          "tag": "img",
+          "display": "block",
+          "gridColumn": "1 / span 3",
+          "gridRow": "3",
+          "naturalSize": {
+            "width": 24,
+            "height": 16
+          },
+          "frame": {
+            "x": 4,
+            "y": 556,
+            "width": 72,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "id": "three-images-anonymous-text-reversed",
+      "directChildren": [
+        {
+          "kind": "element",
+          "text": null,
+          "id": "image-c-three-reversed"
+        },
+        {
+          "kind": "element",
+          "text": null,
+          "id": "image-b-three-reversed"
+        },
+        {
+          "kind": "text",
+          "text": "XX",
+          "id": null
+        },
+        {
+          "kind": "element",
+          "text": null,
+          "id": "image-a-three-reversed"
+        }
+      ],
+      "columns": "16px 32px 24px 0px",
+      "rows": "60px 60px 60px",
+      "grid": {
+        "x": 4,
+        "y": 643,
+        "width": 220,
+        "height": 180
+      },
+      "text": [
+        {
+          "text": "XX",
+          "rects": [
+            {
+              "x": 52,
+              "y": 643,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        }
+      ],
+      "elements": [
+        {
+          "id": "image-c-three-reversed",
+          "tag": "img",
+          "display": "block",
+          "gridColumn": "1 / span 3",
+          "gridRow": "3",
+          "naturalSize": {
+            "width": 24,
+            "height": 16
+          },
+          "frame": {
+            "x": 4,
+            "y": 763,
+            "width": 72,
+            "height": 48
+          }
+        },
+        {
+          "id": "image-b-three-reversed",
+          "tag": "img",
+          "display": "block",
+          "gridColumn": "2 / span 2",
+          "gridRow": "2",
+          "naturalSize": {
+            "width": 24,
+            "height": 16
+          },
+          "frame": {
+            "x": 20,
+            "y": 703,
+            "width": 48,
+            "height": 32
+          }
+        },
+        {
+          "id": "image-a-three-reversed",
+          "tag": "img",
+          "display": "block",
+          "gridColumn": "1 / span 2",
+          "gridRow": "1",
+          "naturalSize": {
+            "width": 24,
+            "height": 16
+          },
+          "frame": {
+            "x": 4,
+            "y": 643,
+            "width": 24,
+            "height": 16
+          }
+        }
+      ]
+    }
+  ]
+}
