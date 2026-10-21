@@ -1,0 +1,85 @@
+{
+  "sceneCount": 6,
+  "platformSceneCount": 3,
+  "allGeometryAndPresentationChecksPassed": true,
+  "observations": [
+    {
+      "target": "android-avd",
+      "sceneId": "nested-grid-text-image-row-span-two",
+      "outerRows": [
+        18,
+        18
+      ],
+      "rootHeight": 40,
+      "nestedHeight": 40,
+      "traceChunks": 10,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "target": "android-avd",
+      "sceneId": "nested-grid-text-image-row-one-track",
+      "outerRows": [
+        40,
+        0
+      ],
+      "rootHeight": 44,
+      "nestedHeight": 40,
+      "traceChunks": 10,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "target": "android-avd",
+      "sceneId": "nested-grid-text-image-row-definite-flex-control",
+      "outerRows": [
+        28,
+        28
+      ],
+      "rootHeight": 60,
+      "nestedHeight": 60,
+      "traceChunks": 10,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "target": "ios-simulator",
+      "sceneId": "nested-grid-text-image-row-span-two",
+      "outerRows": [
+        18,
+        18
+      ],
+      "rootHeight": 40,
+      "nestedHeight": 40,
+      "traceChunks": 20,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "target": "ios-simulator",
+      "sceneId": "nested-grid-text-image-row-one-track",
+      "outerRows": [
+        40,
+        0
+      ],
+      "rootHeight": 44,
+      "nestedHeight": 40,
+      "traceChunks": 20,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "target": "ios-simulator",
+      "sceneId": "nested-grid-text-image-row-definite-flex-control",
+      "outerRows": [
+        28,
+        28
+      ],
+      "rootHeight": 60,
+      "nestedHeight": 60,
+      "traceChunks": 20,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}

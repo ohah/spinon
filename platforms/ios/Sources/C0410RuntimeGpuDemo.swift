@@ -125,6 +125,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "nested-grid-definite-flex-control",
     "nested-grid-text-image-span-two", "nested-grid-text-image-one-track",
     "nested-grid-text-image-definite-flex-control",
+    "nested-grid-text-image-row-span-two", "nested-grid-text-image-row-one-track",
+    "nested-grid-text-image-row-definite-flex-control",
 ]
 private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -195,6 +197,9 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if sceneID == "nested-grid-text-image-span-two" { return "width=98,height=20" }
     if sceneID == "nested-grid-text-image-one-track" { return "width=102,height=20" }
     if sceneID == "nested-grid-text-image-definite-flex-control" { return "width=120,height=20" }
+    if sceneID == "nested-grid-text-image-row-span-two" { return "width=98,height=40" }
+    if sceneID == "nested-grid-text-image-row-one-track" { return "width=98,height=44" }
+    if sceneID == "nested-grid-text-image-row-definite-flex-control" { return "width=98,height=60" }
     if sceneID == "nested-grid-span-two" { return "width=134,height=20" }
     if sceneID == "nested-grid-one-track" { return "width=138,height=20" }
     if sceneID == "nested-grid-definite-flex-control" { return "width=120,height=20" }
@@ -313,7 +318,9 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     if ["nested-grid-span-two", "nested-grid-one-track",
         "nested-grid-definite-flex-control", "nested-grid-text-image-span-two",
         "nested-grid-text-image-one-track",
-        "nested-grid-text-image-definite-flex-control"].contains(sceneID) { return "" }
+        "nested-grid-text-image-definite-flex-control",
+        "nested-grid-text-image-row-span-two", "nested-grid-text-image-row-one-track",
+        "nested-grid-text-image-row-definite-flex-control"].contains(sceneID) { return "" }
     if c114IsAnonymousTextScene(sceneID) || c114IsAnonymousTextImageScene(sceneID)
         || c114IsAnonymousTextMultiImageScene(sceneID) { return "" }
     if c114IsTextMultiSpanScene(sceneID) || c114IsImageMultiSpanScene(sceneID)
@@ -1312,6 +1319,21 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "1:node=2,x=0,y=0,width=120,height=20;"
             + "2:node=3,x=0,y=0,width=70,height=20;"
             + "3:node=5,x=74,y=0,width=24,height=16]"
+    case "nested-grid-text-image-row-span-two":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=98,height=40;"
+            + "1:node=2,x=0,y=0,width=98,height=40;"
+            + "2:node=3,x=0,y=0,width=70,height=20;"
+            + "3:node=5,x=74,y=24,width=24,height=16]"
+    case "nested-grid-text-image-row-one-track":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=98,height=44;"
+            + "1:node=2,x=0,y=0,width=98,height=40;"
+            + "2:node=3,x=0,y=0,width=70,height=20;"
+            + "3:node=5,x=74,y=24,width=24,height=16]"
+    case "nested-grid-text-image-row-definite-flex-control":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=98,height=60;"
+            + "1:node=2,x=0,y=0,width=98,height=60;"
+            + "2:node=3,x=0,y=0,width=70,height=20;"
+            + "3:node=5,x=74,y=24,width=24,height=16]"
     case "anonymous-runs-two-images-forward":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=184;"
             + "1:node=3,x=2,y=2,width=24,height=16;"
@@ -1703,7 +1725,9 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     if ["nested-grid-span-two", "nested-grid-one-track",
         "nested-grid-definite-flex-control", "nested-grid-text-image-span-two",
         "nested-grid-text-image-one-track",
-        "nested-grid-text-image-definite-flex-control"].contains(sceneID) { return 4 }
+        "nested-grid-text-image-definite-flex-control",
+        "nested-grid-text-image-row-span-two", "nested-grid-text-image-row-one-track",
+        "nested-grid-text-image-row-definite-flex-control"].contains(sceneID) { return 4 }
     if c114IsAnonymousGridBorderOverflowThreeImageScene(sceneID) { return 4 }
     if c114IsAnonymousGridBorderOverflowScene(sceneID) { return 3 }
     if sceneID == "anonymous-text-two-images-forward"

@@ -1173,8 +1173,56 @@ scenes.push(
       minimumContributionValue: 0, maximumContributionValue: 120,
     },
   },
+  {
+    id: 'nested-grid-text-image-row-span-two', axis: 'Rows', boxCount: 4,
+    rootFrame: 'width=98,height=40', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=98,height=40;'
+      + '1:node=2,x=0,y=0,width=98,height=40;'
+      + '2:node=3,x=0,y=0,width=70,height=20;'
+      + '3:node=5,x=74,y=24,width=24,height=16]',
+    tracks: [18, 18], collapsed: [false, false],
+    axes: { Rows: { tracks: [18, 18], collapsed: [false, false] } },
+    gaps: { Rows: 4 }, intrinsicSpansByAxis: { Rows: [2] },
+    nestedGridTextImageIntrinsic: {
+      outerNode: 1, nestedNode: 2, textNode: 3, imageNode: 5,
+      innerAxis: 'Rows', contributionAxis: 'Rows', innerTracks: [20, 16],
+      contributionSpan: 2, contributionValue: 40,
+    },
+  },
+  {
+    id: 'nested-grid-text-image-row-one-track', axis: 'Rows', boxCount: 4,
+    rootFrame: 'width=98,height=44', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=98,height=44;'
+      + '1:node=2,x=0,y=0,width=98,height=40;'
+      + '2:node=3,x=0,y=0,width=70,height=20;'
+      + '3:node=5,x=74,y=24,width=24,height=16]',
+    tracks: [40, 0], collapsed: [false, false],
+    axes: { Rows: { tracks: [40, 0], collapsed: [false, false] } },
+    gaps: { Rows: 4 }, intrinsicSpansByAxis: { Rows: [1] },
+    nestedGridTextImageIntrinsic: {
+      outerNode: 1, nestedNode: 2, textNode: 3, imageNode: 5,
+      innerAxis: 'Rows', contributionAxis: 'Rows', innerTracks: [20, 16],
+      contributionSpan: 1, contributionValue: 40,
+    },
+  },
+  {
+    id: 'nested-grid-text-image-row-definite-flex-control', axis: 'Rows', boxCount: 4,
+    rootFrame: 'width=98,height=60', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=98,height=60;'
+      + '1:node=2,x=0,y=0,width=98,height=60;'
+      + '2:node=3,x=0,y=0,width=70,height=20;'
+      + '3:node=5,x=74,y=24,width=24,height=16]',
+    tracks: [28, 28], collapsed: [false, false],
+    axes: { Rows: { tracks: [28, 28], collapsed: [false, false] } },
+    gaps: { Rows: 4 }, intrinsicSpansByAxis: { Rows: [2] },
+    nestedGridTextImageIntrinsic: {
+      outerNode: 1, nestedNode: 2, textNode: 3, imageNode: 5,
+      innerAxis: 'Rows', contributionAxis: 'Rows', innerTracks: [20, 16],
+      contributionSpan: 2, minimumContributionValue: 0, maximumContributionValue: 60,
+    },
+  },
 );
-assert.equal(scenes.length, 179, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 182, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -2359,16 +2407,18 @@ function verifyRuntimeLog(log, scene, runID) {
     const nestedTrace = diagnostics.trackSizingTraces
       .find((trace) => trace.grid === expected.nestedNode);
     assert.ok(nestedTrace, `${scene.id}: nested Grid trace is missing`);
-    const nestedColumns = nestedTrace.passes.filter((pass) => pass.axis === 'Columns').at(-1);
-    const nestedTracks = nestedColumns.stages.at(-1).tracks
+    const innerAxis = expected.innerAxis ?? 'Columns';
+    const nestedPass = nestedTrace.passes.filter((pass) => pass.axis === innerAxis).at(-1);
+    const nestedTracks = nestedPass.stages.at(-1).tracks
       .filter(({ gutter }) => !gutter).map(({ baseSize }) => baseSize);
     assert.deepEqual(nestedTracks, expected.innerTracks,
-      `${scene.id}: nested Grid final columns differ`);
+      `${scene.id}: nested Grid final ${innerAxis} differ`);
     const outerTrace = diagnostics.trackSizingTraces
       .find((trace) => trace.grid === expected.outerNode);
     assert.ok(outerTrace, `${scene.id}: outer Grid trace is missing`);
-    const outerColumns = outerTrace.passes.filter((pass) => pass.axis === 'Columns').at(-1);
-    const nestedContributions = outerColumns.contributions
+    const contributionAxis = expected.contributionAxis ?? 'Columns';
+    const outerPass = outerTrace.passes.filter((pass) => pass.axis === contributionAxis).at(-1);
+    const nestedContributions = outerPass.contributions
       .filter(({ item }) => item === expected.nestedNode);
     if (expected.contributionValue !== undefined) {
       assert.ok(nestedContributions.some((contribution) => contribution.kind === 'MinContent'

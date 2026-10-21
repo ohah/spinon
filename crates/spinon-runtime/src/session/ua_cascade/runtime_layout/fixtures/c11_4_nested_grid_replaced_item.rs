@@ -21,8 +21,8 @@ use super::c11_4_image::{
 };
 use super::c11_4_text::AHEM;
 
-const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
-const TEXT: &str = "XX XXXXXXX";
+pub(super) const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
+pub(super) const TEXT: &str = "XX XXXXXXX";
 
 #[derive(Clone)]
 struct Scene {
@@ -77,6 +77,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     else {
         return Ok(None);
     };
+    if scene_id.starts_with("nested-grid-text-image-row-") {
+        return super::c11_4_nested_grid_rows::prepare(snapshot, root, styles, scene_id);
+    }
     let Some(scene) = SCENES.iter().find(|scene| scene.id == scene_id).cloned() else {
         return if scene_id.starts_with("nested-grid-text-image-") {
             Err(unsupported(root.id(), scene_id, "scene is not allowlisted"))
@@ -225,7 +228,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     }))
 }
 
-fn children(
+pub(super) fn children(
     snapshot: &HostDocumentSnapshot,
     node: HostNodeHandle,
 ) -> Result<Vec<HostNodeHandle>, RuntimeLayoutFailure> {
@@ -235,7 +238,7 @@ fn children(
         .ok_or_else(|| layout_failure("missing_node", Some(node.id().get()), None))
 }
 
-fn style_for(
+pub(super) fn style_for(
     styles: &ComputedStyleSnapshot,
     node: HostNodeHandle,
 ) -> Result<&ComputedElementStyle, RuntimeLayoutFailure> {
@@ -328,14 +331,14 @@ fn validate_grid_style(
     Ok(())
 }
 
-fn auto_min_flex_track() -> ComputedCssGridTrackSize {
+pub(super) fn auto_min_flex_track() -> ComputedCssGridTrackSize {
     ComputedCssGridTrackSize::MinMax {
         min: ComputedCssGridTrackBreadth::Auto,
         max: ComputedCssGridTrackBreadth::Fraction(1.0),
     }
 }
 
-fn validate_text_style(
+pub(super) fn validate_text_style(
     style: &ComputedElementStyle,
     scene_id: &str,
 ) -> Result<(), RuntimeLayoutFailure> {
@@ -381,7 +384,7 @@ fn validate_text_style(
     Ok(())
 }
 
-fn validate_image_style(
+pub(super) fn validate_image_style(
     style: &ComputedElementStyle,
     scene_id: &str,
 ) -> Result<(), RuntimeLayoutFailure> {
@@ -424,7 +427,7 @@ fn validate_placement(
     }
 }
 
-fn ahem_paragraph_style() -> ParagraphStyle {
+pub(super) fn ahem_paragraph_style() -> ParagraphStyle {
     ParagraphStyle {
         font_family: "Ahem".to_owned(),
         font_size: 10.0,
@@ -440,17 +443,17 @@ fn ahem_paragraph_style() -> ParagraphStyle {
     }
 }
 
-fn zero_edges(edges: spinon_style::ComputedCssEdges) -> bool {
+pub(super) fn zero_edges(edges: spinon_style::ComputedCssEdges) -> bool {
     [edges.top, edges.right, edges.bottom, edges.left]
         .into_iter()
         .all(|value| spacing_is(value, 0.0))
 }
 
-fn spacing_is(value: ComputedCssSpacingValue, expected: f32) -> bool {
+pub(super) fn spacing_is(value: ComputedCssSpacingValue, expected: f32) -> bool {
     matches!(value, ComputedCssSpacingValue::LengthPx(actual) if (actual - expected).abs() <= f32::EPSILON)
 }
 
-fn failure(
+pub(super) fn failure(
     code: &'static str,
     node: HostNodeHandle,
     scene_id: &str,
@@ -463,7 +466,11 @@ fn failure(
     )
 }
 
-fn unsupported(node: spinon_core::NodeId, scene_id: &str, detail: &str) -> RuntimeLayoutFailure {
+pub(super) fn unsupported(
+    node: spinon_core::NodeId,
+    scene_id: &str,
+    detail: &str,
+) -> RuntimeLayoutFailure {
     layout_failure(
         "unsupported_c114_nested_grid_replaced_item",
         Some(node.get()),

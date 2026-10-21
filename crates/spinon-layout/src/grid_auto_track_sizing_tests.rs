@@ -81,6 +81,75 @@ fn grid_input(
 }
 
 #[test]
+fn track_sizing_indefinite_height_allows_bounded_intrinsic_rows_only() {
+    let mut input = grid_input(
+        vec![GridTrackSize::LengthPx(98.0)],
+        vec![GridTrackSize::MinContent, GridTrackSize::MinContent],
+        1,
+        LayoutGap::default(),
+    );
+    input.nodes[0].style.height = LayoutDimension::Auto;
+    input.root_sizing = crate::RootSizingPolicy::ResolveWithin;
+    input
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode = GridPlacementMode::TrackSizing;
+
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+    assert_eq!(output.frames[&id(1)].height, 10.0);
+    assert_eq!(
+        final_axis_track_sizes(&output, LayoutGridTrackSizingAxis::Rows),
+        [10.0, 0.0]
+    );
+
+    let mut percentage = input;
+    percentage.grid_containers.get_mut(&id(1)).unwrap().rows[0] = GridTrackSize::Percentage(50.0);
+    let error = TaffyLayoutEngine.compute(&percentage).unwrap_err();
+    assert!(matches!(
+        error,
+        crate::LayoutError::IndefiniteGridBasis {
+            node: grid,
+            axis: "height"
+        } if grid == id(1)
+    ));
+}
+
+#[test]
+fn track_sizing_indefinite_height_rejects_flexible_and_fit_content_rows() {
+    for row in [
+        GridTrackSize::Fraction(1.0),
+        GridTrackSize::FitContent(crate::GridTrackLengthPercentage::LengthPx(20.0)),
+        GridTrackSize::MinMax {
+            min: crate::GridTrackMinSizingFunction::Auto,
+            max: crate::GridTrackMaxSizingFunction::Fraction(1.0),
+        },
+    ] {
+        let mut input = grid_input(
+            vec![GridTrackSize::LengthPx(98.0)],
+            vec![row],
+            0,
+            LayoutGap::default(),
+        );
+        input.nodes[0].style.height = LayoutDimension::Auto;
+        input.root_sizing = crate::RootSizingPolicy::ResolveWithin;
+        input
+            .grid_containers
+            .get_mut(&id(1))
+            .unwrap()
+            .placement_mode = GridPlacementMode::TrackSizing;
+
+        assert!(matches!(
+            TaffyLayoutEngine.compute(&input),
+            Err(crate::LayoutError::IndefiniteGridBasis {
+                node: grid,
+                axis: "height"
+            }) if grid == id(1)
+        ));
+    }
+}
+
+#[test]
 fn track_sizing_cycles_positive_implicit_auto_track_lists_per_axis() {
     let mut rows = grid_input(
         vec![GridTrackSize::LengthPx(40.0)],
