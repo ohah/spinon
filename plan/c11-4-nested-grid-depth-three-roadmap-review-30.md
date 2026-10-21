@@ -4,7 +4,7 @@
 
 | # | 독립 실패 관점 | 확인과 판정 |
 | --- | --- | --- |
-| 1 | 새 항목이 C11.4 영역 밖에 추가되는가? | PR #453 항목이 있는 C11.4 section 닫힘 바로 앞에 추가했다. 통과. |
+| 1 | 새 항목이 C11.4 영역 밖에 추가되거나 좁은 hero 열에 갇히는가? | C11.4 section 끝에 추가하고 `.hero-progress`에 `grid-column:1 / -1`을 적용했다. Agent Browser에서 hero 전체 1240px 폭으로 표시됨을 확인했다. 통과. |
 | 2 | 날짜가 PR merge 시각의 한국 시간과 맞지 않는가? | GitHub `2026-10-21T16:44:41Z`를 `2026-10-22 01:44:41 KST`로 기록했다. 통과. |
 | 3 | 계획 PR #457과 구현 PR #458을 혼동하는가? | roadmap 항목은 구현 PR #458을 연결하며 계획은 별도 plan route로 가리킨다. 통과. |
 | 4 | head SHA를 merge SHA라고 표기하는가? | merge commit `4df8d09cb2512d5198733e2eda578ba9c8936230`을 썼다. 통과. |
@@ -33,7 +33,7 @@
 | 27 | iOS screenshot 링크가 다른 task/date output을 가리키는가? | iPhone 17 Pro Simulator pass의 min-content PNG 경로가 repository에 존재한다. 통과. |
 | 28 | #458 URL이나 공식 상태 route가 잘못됐는가? | GitHub PR #458 및 `/spinon/STATUS.html#c11-css-grid`를 확인했다. 통과. |
 | 29 | 링크를 추가하면서 다른 roadmap history 항목을 제거하는가? | 기존 PR #453 항목과 section content를 유지하고 새 paragraph만 추가했다. 통과. |
-| 30 | raw HTML 구조·문자열이 깨져 새 paragraph가 페이지 전체를 망가뜨리는가? | 추가한 paragraph의 `<p>`, `<strong>`, `<code>`, `<a>` tag와 7개 href target을 검증하고, 선택 build에서 page route를 확인한 뒤 Agent Browser로 PR 화면과 병합 후 Tailnet route를 각각 확인한다. |
+| 30 | raw HTML 구조·문자열 또는 선택 build 배치가 잘못되는가? | paragraph의 `<p>`, `<strong>`, `<code>`, `<a>` tag와 7개 href target을 확인했다. 선택 build에서 route와 이미지 대상이 존재하는지 확인하고 Agent Browser로 전체 폭 배치를 검증한다. PR 이미지와 병합 후 Tailnet route는 별도 확인한다. |
 
 ## 판정
 
