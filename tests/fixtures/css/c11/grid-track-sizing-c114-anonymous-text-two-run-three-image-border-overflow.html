@@ -1,0 +1,59 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Spinon C11.4 anonymous text and three images in bordered Grid</title>
+<style>
+  @font-face { font-family: Ahem; src: url("../../resources/c15/Ahem.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 560px; background: #fff; }
+  body { font: 12px/16px system-ui, sans-serif; color: #111; }
+  .case { min-height: 260px; border-bottom: 1px solid #ccc; padding: 4px; }
+  .label { display: block; margin-bottom: 2px; }
+  .grid { display: grid; width: 40px; height: 184px; grid-template-columns: repeat(4, min-content); grid-template-rows: repeat(3, 60px); gap: 0; align-items: start; align-content: start; justify-items: start; justify-content: start; overflow: visible; border: 2px solid #f0c674; font: 10px/10px Ahem, sans-serif; white-space: normal; color: #e5484d; background: #101820; }
+  .grid img { width: auto; margin: 0; padding: 0; border: 0; }
+  #result { display: none; }
+</style>
+<body>
+  <section class="case" data-case="two-anonymous-runs-three-images-forward">
+    <span class="label">two anonymous Ahem runs, then three placed images</span>
+    <div class="grid" id="two-anonymous-runs-three-images-forward">XX<img id="image-a-forward" src="../../resources/c14-1-png-basic.png" alt="" style="height:16px;grid-column:1 / span 2;grid-row:1">XX<img id="image-b-forward" src="../../resources/c14-1-png-basic.png" alt="" style="height:32px;grid-column:2 / span 2;grid-row:2"><img id="image-c-forward" src="../../resources/c14-1-png-basic.png" alt="" style="height:48px;grid-column:1 / span 3;grid-row:3"></div>
+  </section>
+  <section class="case" data-case="three-images-two-anonymous-runs-reversed">
+    <span class="label">same two anonymous runs and image placements in reversed source order</span>
+    <div class="grid" id="three-images-two-anonymous-runs-reversed"><img id="image-c-reversed" src="../../resources/c14-1-png-basic.png" alt="" style="height:48px;grid-column:1 / span 3;grid-row:3">XX<img id="image-b-reversed" src="../../resources/c14-1-png-basic.png" alt="" style="height:32px;grid-column:2 / span 2;grid-row:2">XX<img id="image-a-reversed" src="../../resources/c14-1-png-basic.png" alt="" style="height:16px;grid-column:1 / span 2;grid-row:1"></div>
+  </section>
+  <pre id="result"></pre>
+  <script>
+    const capture = async () => {
+      await document.fonts.ready;
+      await Promise.all(Array.from(document.images, image => image.decode()));
+    const rect = (node) => {
+      const value = node.getBoundingClientRect();
+      return {x:value.x, y:value.y, width:value.width, height:value.height};
+    };
+    const textSegments = (element) => {
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+      const segments = [];
+      for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        segments.push({text:node.data, rects:Array.from(range.getClientRects(), value => ({x:value.x,y:value.y,width:value.width,height:value.height}))});
+      }
+      return segments;
+    };
+    const cases = Array.from(document.querySelectorAll('.case'), section => {
+      const grid = section.querySelector('.grid');
+      const style = getComputedStyle(grid);
+      return {
+        id: section.dataset.case,
+        root: rect(grid),
+        border: {width:style.borderTopWidth, color:style.borderTopColor},
+        tracks: style.gridTemplateColumns,
+        textRuns: textSegments(grid),
+        images: Array.from(grid.querySelectorAll('img'), image => ({id:image.id, naturalSize:[image.naturalWidth,image.naturalHeight], rect:rect(image)}))
+      };
+    });
+    document.querySelector('#result').textContent = JSON.stringify({userAgent:navigator.userAgent, fontReady:document.fonts.check('10px Ahem'), imagesLoaded:Array.from(document.images, image => [image.complete,image.naturalWidth,image.naturalHeight]), cases}, null, 2);
+    };
+    capture();
+  </script>
+</body>

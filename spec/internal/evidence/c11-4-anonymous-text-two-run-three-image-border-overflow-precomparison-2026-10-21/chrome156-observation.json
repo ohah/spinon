@@ -1,0 +1,196 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "fontReady": true,
+  "imagesLoaded": [
+    [
+      true,
+      24,
+      16
+    ],
+    [
+      true,
+      24,
+      16
+    ],
+    [
+      true,
+      24,
+      16
+    ],
+    [
+      true,
+      24,
+      16
+    ],
+    [
+      true,
+      24,
+      16
+    ],
+    [
+      true,
+      24,
+      16
+    ]
+  ],
+  "cases": [
+    {
+      "id": "two-anonymous-runs-three-images-forward",
+      "root": {
+        "x": 4,
+        "y": 22,
+        "width": 40,
+        "height": 184
+      },
+      "border": {
+        "width": "2px",
+        "color": "rgb(240, 198, 116)"
+      },
+      "tracks": "16px 32px 24px 20px",
+      "textRuns": [
+        {
+          "text": "XX",
+          "rects": [
+            {
+              "x": 54,
+              "y": 24,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        },
+        {
+          "text": "XX",
+          "rects": [
+            {
+              "x": 78,
+              "y": 24,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "id": "image-a-forward",
+          "naturalSize": [
+            24,
+            16
+          ],
+          "rect": {
+            "x": 6,
+            "y": 24,
+            "width": 24,
+            "height": 16
+          }
+        },
+        {
+          "id": "image-b-forward",
+          "naturalSize": [
+            24,
+            16
+          ],
+          "rect": {
+            "x": 22,
+            "y": 84,
+            "width": 48,
+            "height": 32
+          }
+        },
+        {
+          "id": "image-c-forward",
+          "naturalSize": [
+            24,
+            16
+          ],
+          "rect": {
+            "x": 6,
+            "y": 144,
+            "width": 72,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "id": "three-images-two-anonymous-runs-reversed",
+      "root": {
+        "x": 4,
+        "y": 282,
+        "width": 40,
+        "height": 184
+      },
+      "border": {
+        "width": "2px",
+        "color": "rgb(240, 198, 116)"
+      },
+      "tracks": "16px 32px 24px 20px",
+      "textRuns": [
+        {
+          "text": "XX",
+          "rects": [
+            {
+              "x": 54,
+              "y": 284,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        },
+        {
+          "text": "XX",
+          "rects": [
+            {
+              "x": 78,
+              "y": 284,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "id": "image-c-reversed",
+          "naturalSize": [
+            24,
+            16
+          ],
+          "rect": {
+            "x": 6,
+            "y": 404,
+            "width": 72,
+            "height": 48
+          }
+        },
+        {
+          "id": "image-b-reversed",
+          "naturalSize": [
+            24,
+            16
+          ],
+          "rect": {
+            "x": 22,
+            "y": 344,
+            "width": 48,
+            "height": 32
+          }
+        },
+        {
+          "id": "image-a-reversed",
+          "naturalSize": [
+            24,
+            16
+          ],
+          "rect": {
+            "x": 6,
+            "y": 284,
+            "width": 24,
+            "height": 16
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -224,3 +224,8 @@ Negative implicit placement와 auto-repeat 및 leading auto-track list의 제한
 ### 2026-10-21 anonymous text와 복수 spanning image 계획
 
 익명 Ahem `XX` item과 direct HTML image 2~3개의 span-2/3 contribution이 한 Grid revision에 함께 들어오는 네-scene 후속을 [계획](./c11-4-anonymous-text-multispan-images.md)으로 분리했다. Chrome 155 Agent Browser의 고정 observation은 두-image `[12,28,20,0]`, 세-image `[16,32,24,0]` track과 reverse-order 불변을 기록한다. §11.4–§11.5.1에서 독립 계산한 기대값·입력 hash·화면은 [사전 비교 근거](../spec/internal/evidence/c11-4-anonymous-text-multimage-precomparison-2026-10-21/README.md)에 보관하며 계획 자체 20관점 및 계획 PR diff 20관점 검토를 마쳤다. [계획 PR diff 검토](../spec/internal/evidence/c11-4-anonymous-text-multimage-precomparison-2026-10-21/plan-pr-diff-review-20.md). 구현은 아직 시작하지 않았고 Android API 37 AVD와 iOS Simulator 검증을 예정한다. C11.4 checkbox와 공식 완료 수는 그대로 미완료다.
+
+
+### 2026-10-21 two anonymous text run + three-image border/overflow 계획
+
+앞선 bordered fixture는 두 text run과 두 image를, multi-span fixture는 한 text run과 세 image를 따로 실행했다. 새 [후속 계획](./c11-4-anonymous-grid-two-run-three-image-border-overflow.md)은 두 anonymous run과 세 direct image, border 및 visible overflow를 같은 Grid 계산으로 결합하고 source order만 뒤집은 두 장면을 비교한다. CSS Grid 2025 CRD의 독립 기대값은 두 장면 모두 `[18,34,20,20]`이며 Chrome 156 Agent Browser CSSOM 관측 `[16,32,24,20]`과 분리했다. root border-box `40×184`, 세 번째 image의 34px overflow, border 및 오른쪽 border에서 22px 바깥의 색 표본을 고정했다. [사전 비교·화면·hash](../spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-precomparison-2026-10-21/README.md)와 계획 실패 관점 20개 검토를 보존한다. 구현은 아직 시작하지 않았고 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 실행할 예정이다. C11.4 checkbox와 공식 완료 수는 유지한다.
