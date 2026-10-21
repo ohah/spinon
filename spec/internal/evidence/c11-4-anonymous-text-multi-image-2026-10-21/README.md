@@ -28,3 +28,8 @@
 화면과 로그는 제한 fixture의 layout trace·frame과 host surface present 경로를 보여준다. PNG는 intrinsic 크기를 위해 decode했지만 texel readback/pixel equality는 검사하지 않았다. 장면에 CSS border가 없고 모든 지정 item frame은 root 안에 있으므로, border stroke나 border 바깥 overflow는 이 검증 범위가 아니다. OS compositor 이후 표시 픽셀, WPT, 일반 CSS Grid 적합성도 주장하지 않는다.
 
 첫 Android 캡처 시도는 캡처 검증기가 같은 span의 contribution을 item별로 묶어 기대한 반면 실제 trace는 sizing 단계별로 기록해 중단됐다. 검증기 기대 순서를 고친 뒤 위의 Android 4/4 최종 실행과 iOS 4/4 실행을 완료했다. 초기 중단 로그는 [보존된 실패 실행](android-avd-c114-anonymous-text-multi-image-android-avd-20261021T055203346Z-4cf81b95/runtime-anonymous-text-two-images-forward.log)에 있다.
+
+## 병합 후 문서 반영
+
+- [구현 PR diff 교차 파일 검토 30개](./pr-diff-review-30.md)
+- [병합 후 로드맵 문서 PR 검토 30개](./roadmap-update-pr-diff-review-30.md)
