@@ -1,0 +1,239 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+  "userAgentFullVersion": "155.0.8059.85",
+  "platform": "MacIntel",
+  "viewport": {
+    "width": 1280,
+    "height": 577
+  },
+  "devicePixelRatio": 1,
+  "ahemReady": true,
+  "imageDecodeComplete": true,
+  "intrinsicWidths": {
+    "anonymousText": 20
+  },
+  "cases": [
+    {
+      "id": "anonymous-runs-two-images-forward",
+      "directChildren": [
+        {
+          "kind": "text",
+          "text": "XX"
+        },
+        {
+          "kind": "element",
+          "id": "image-a-forward"
+        },
+        {
+          "kind": "text",
+          "text": "XX"
+        },
+        {
+          "kind": "element",
+          "id": "image-b-forward"
+        }
+      ],
+      "columns": "12px 28px 20px 20px",
+      "rows": "60px 60px 60px",
+      "grid": {
+        "x": 4,
+        "y": 38,
+        "width": 40,
+        "height": 184
+      },
+      "gridContentBox": {
+        "x": 6,
+        "width": 36,
+        "height": 180
+      },
+      "rightmostImage": 66,
+      "rightmostTextFragment": 86,
+      "imageOverflowRight": 22,
+      "textFragmentOverflowRight": 42,
+      "border": {
+        "top": "2px",
+        "right": "2px",
+        "bottom": "2px",
+        "left": "2px",
+        "color": "rgb(240, 198, 116)",
+        "style": "solid"
+      },
+      "overflowVisible": "visible",
+      "text": [
+        {
+          "kind": "text",
+          "text": "XX",
+          "rects": [
+            {
+              "x": 46,
+              "y": 40,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "XX",
+          "rects": [
+            {
+              "x": 66,
+              "y": 40,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        }
+      ],
+      "elements": [
+        {
+          "kind": "element",
+          "id": "image-a-forward",
+          "tag": "img",
+          "display": "block",
+          "gridColumn": "1 / span 2",
+          "gridRow": "1",
+          "naturalSize": {
+            "width": 24,
+            "height": 16
+          },
+          "frame": {
+            "x": 6,
+            "y": 40,
+            "width": 24,
+            "height": 16
+          }
+        },
+        {
+          "kind": "element",
+          "id": "image-b-forward",
+          "tag": "img",
+          "display": "block",
+          "gridColumn": "2 / span 2",
+          "gridRow": "2",
+          "naturalSize": {
+            "width": 24,
+            "height": 16
+          },
+          "frame": {
+            "x": 18,
+            "y": 100,
+            "width": 48,
+            "height": 32
+          }
+        }
+      ]
+    },
+    {
+      "id": "two-images-anonymous-runs-reversed",
+      "directChildren": [
+        {
+          "kind": "element",
+          "id": "image-b-reversed"
+        },
+        {
+          "kind": "text",
+          "text": "XX"
+        },
+        {
+          "kind": "element",
+          "id": "image-a-reversed"
+        },
+        {
+          "kind": "text",
+          "text": "XX"
+        }
+      ],
+      "columns": "12px 28px 20px 20px",
+      "rows": "60px 60px 60px",
+      "grid": {
+        "x": 4,
+        "y": 249,
+        "width": 40,
+        "height": 184
+      },
+      "gridContentBox": {
+        "x": 6,
+        "width": 36,
+        "height": 180
+      },
+      "rightmostImage": 66,
+      "rightmostTextFragment": 86,
+      "imageOverflowRight": 22,
+      "textFragmentOverflowRight": 42,
+      "border": {
+        "top": "2px",
+        "right": "2px",
+        "bottom": "2px",
+        "left": "2px",
+        "color": "rgb(240, 198, 116)",
+        "style": "solid"
+      },
+      "overflowVisible": "visible",
+      "text": [
+        {
+          "kind": "text",
+          "text": "XX",
+          "rects": [
+            {
+              "x": 46,
+              "y": 251,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "XX",
+          "rects": [
+            {
+              "x": 66,
+              "y": 251,
+              "width": 20,
+              "height": 10
+            }
+          ]
+        }
+      ],
+      "elements": [
+        {
+          "kind": "element",
+          "id": "image-b-reversed",
+          "tag": "img",
+          "display": "block",
+          "gridColumn": "2 / span 2",
+          "gridRow": "2",
+          "naturalSize": {
+            "width": 24,
+            "height": 16
+          },
+          "frame": {
+            "x": 18,
+            "y": 311,
+            "width": 48,
+            "height": 32
+          }
+        },
+        {
+          "kind": "element",
+          "id": "image-a-reversed",
+          "tag": "img",
+          "display": "block",
+          "gridColumn": "1 / span 2",
+          "gridRow": "1",
+          "naturalSize": {
+            "width": 24,
+            "height": 16
+          },
+          "frame": {
+            "x": 6,
+            "y": 251,
+            "width": 24,
+            "height": 16
+          }
+        }
+      ]
+    }
+  ]
+}
