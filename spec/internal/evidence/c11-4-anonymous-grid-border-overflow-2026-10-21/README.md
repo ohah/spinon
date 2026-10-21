@@ -23,6 +23,8 @@
 
 공유 validator 변경의 회귀 범위를 위해 기존 anonymous text + image 장면 4개도 같은 앱 빌드로 다시 실행했다. [Android AVD 결과](../c11-4-anonymous-text-multi-image-2026-10-21/android-avd-c114-anonymous-text-multi-image-regression-android-avd-20261021T071647292Z-62f7749a/result.json)와 [iOS Simulator 결과](../c11-4-anonymous-text-multi-image-2026-10-21/ios-simulator-c114-anonymous-text-multi-image-regression-ios-simulator-20261021T071647292Z-fd85173e/result.json)에서 네 장면 모두 frame, trace와 draw assertion을 통과했다.
 
+PR [#431](https://github.com/ohah/spinon/pull/431) 본문의 forward scene 이미지 두 장을 Agent Browser 0.31.1에서 확인했다. Android `1080×2400`, iOS `1206×2622` 이미지 모두 `complete=true`이고 화면에 표시됐다. [브라우저 확인 JSON](./pr-images-agent-browser.json)에 head commit과 크기를 기록했다. 확인 뒤 전용 browser session을 닫았고 Agent Browser 프로세스는 남지 않았다.
+
 ## 빌드와 검사
 
 - [Android fixture 앱 빌드](./android-build.log), [iOS Simulator fixture 앱 빌드](./ios-build.log) 성공.
