@@ -36,6 +36,8 @@ mod nested_grid_intrinsic;
 mod nested_grid_replaced_item;
 #[path = "c11_4/nested_grid_rows.rs"]
 mod nested_grid_rows;
+#[path = "c11_4/nested_grid_text_multispan.rs"]
+mod nested_grid_text_multispan;
 #[path = "c11_4/text_multispan.rs"]
 mod text_multispan;
 
@@ -1084,6 +1086,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = nested_grid_depth_two::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
+    if let Some(source) = nested_grid_text_multispan::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = nested_grid_depth_three_anonymous_image::runtime_source(scene_id) {

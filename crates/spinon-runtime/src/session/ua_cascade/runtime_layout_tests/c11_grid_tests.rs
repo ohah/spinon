@@ -29,6 +29,10 @@ mod nested_grid_intrinsic;
 mod nested_grid_depth_two;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "c11_grid_tests/nested_grid_text_multispan.rs"]
+mod nested_grid_text_multispan;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "c11_grid_tests/nested_grid_replaced_item.rs"]
 mod nested_grid_replaced_item;
 

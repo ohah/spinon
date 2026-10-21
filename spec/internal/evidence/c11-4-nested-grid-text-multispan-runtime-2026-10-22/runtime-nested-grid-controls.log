@@ -1,0 +1,25 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-09746b924432cd5c)
+
+running 7 tests
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::nested_grid_depth_two::c114_nested_grid_depth_rejects_unlisted_and_malformed_topologies ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::nested_grid_rows::c114_nested_grid_text_and_image_contribute_to_outer_rows ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::nested_grid_replaced_item::c114_nested_grid_text_and_replaced_item_share_intrinsic_layout_revision ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::nested_grid_intrinsic::c114_nested_grid_items_keep_inner_text_sources_and_parent_contributions ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::nested_grid_text_multispan::c114_nested_grid_text_multispan_rejects_unlisted_and_malformed_inputs ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::nested_grid_text_multispan::c114_nested_grid_text_multispan_matches_independent_track_and_frame_expectations ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::nested_grid_depth_two::c114_nested_grid_depth_three_preserves_leaf_intrinsics_at_each_parent ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 207 filtered out; finished in 0.03s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-ae548a92fafd5578)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-57890ee5758e6768)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s

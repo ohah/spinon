@@ -59,6 +59,10 @@ const nestedGridDepthSceneIDs = new Set([
   'nested-depth-one-max-content-two-axis', 'nested-depth-two-max-content-two-axis',
   'nested-depth-three-min-content-two-axis', 'nested-depth-three-max-content-two-axis',
 ]);
+const nestedGridTextMultiSpanSceneIDs = new Set([
+  'nested-text-span2-forward', 'nested-text-span2-reversed',
+  'nested-text-span2-before-span3', 'nested-text-span3-before-span2',
+]);
 const nestedGridDepthAnonymousImageSceneIDs = new Set([
   'depth-three-min-content-text-before-image',
   'depth-three-min-content-image-before-text',
@@ -83,12 +87,15 @@ const isNestedGridImplicitRowRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => nestedGridImplicitRowSceneIDs.has(sceneID));
 const isNestedGridDepthRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => nestedGridDepthSceneIDs.has(sceneID));
+const isNestedGridTextMultiSpanRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => nestedGridTextMultiSpanSceneIDs.has(sceneID));
 const isNestedGridDepthAnonymousImageRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => nestedGridDepthAnonymousImageSceneIDs.has(sceneID));
 const isMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID)
     || textMultiSpanSceneIDs.has(sceneID) || mixedMultiSpanSceneIDs.has(sceneID));
 const runKind = requestedRunKind ?? (isMixedMultiSpanRun ? 'mixed-multispan-contributions'
+  : isNestedGridTextMultiSpanRun ? 'nested-grid-text-multispan'
   : isNestedGridDepthAnonymousImageRun ? 'nested-depth-three-anonymous-image'
   : isNestedGridDepthRun ? 'nested-grid-depth'
   : isNestedGridImplicitRowRun ? 'nested-implicit-rows'
@@ -122,6 +129,8 @@ const runIDPrefix = `c114-${target}-${runTimestamp}-${runNonce}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
   ? `spec/internal/evidence/${evidenceGroup}-${date}/${target}-${runPrefix}`
+  : isNestedGridTextMultiSpanRun
+    ? `spec/internal/evidence/c11-4-nested-grid-text-multispan-runtime-${date}/${target}-${runPrefix}`
   : isNestedGridDepthAnonymousImageRun
     ? `spec/internal/evidence/c11-4-nested-depth-three-anonymous-image-runtime-${date}/${target}-${runPrefix}`
   : isAnonymousGridBorderOverflowRun
@@ -1606,7 +1615,67 @@ for (const imageBeforeText of [false, true]) {
     });
   }
 }
-assert.equal(scenes.length, 198, 'C11.4 fixture scene count differs.');
+const nestedTextMultiSpanItems = {
+  a: { suffix: 'a', text: 'XX XXXXX', column: 1, span: 2, row: 1, minContent: 50, maxContent: 80, minContentHeight: 20, maxContentHeight: 10 },
+  b: { suffix: 'b', text: 'XXXX XXXXXXX', column: 2, span: 2, row: 2, minContent: 70, maxContent: 120, minContentHeight: 20, maxContentHeight: 10 },
+  c: { suffix: 'c', text: 'XXXXXXXXXXXXXXXXXX', column: 1, span: 3, row: 3, minContent: 180, maxContent: 180, minContentHeight: 10, maxContentHeight: 10 },
+};
+const nestedTextMultiSpanCases = [
+  { id: 'nested-text-span2-forward', order: ['a', 'b'], columns: [25, 35, 35, 0], width: 95 },
+  { id: 'nested-text-span2-reversed', order: ['b', 'a'], columns: [25, 35, 35, 0], width: 95 },
+  { id: 'nested-text-span2-before-span3', order: ['a', 'b', 'c'], columns: [160 / 3, 190 / 3, 190 / 3, 0], width: 180 },
+  { id: 'nested-text-span3-before-span2', order: ['c', 'b', 'a'], columns: [160 / 3, 190 / 3, 190 / 3, 0], width: 180 },
+];
+for (const spec of nestedTextMultiSpanCases) {
+  const gridNodes = [1, 2, 3, 4];
+  const items = spec.order.map((suffix, index) => ({
+    ...nestedTextMultiSpanItems[suffix],
+    node: 5 + index * 2,
+    sourceOrder: index,
+  }));
+  const frames = gridNodes.map((node, order) => (
+    `${order}:node=${node},x=0,y=0,width=${spec.width},height=60`
+  ));
+  for (const item of items) {
+    const x = spec.columns.slice(0, item.column - 1).reduce((sum, track) => sum + track, 0);
+    const width = spec.columns.slice(item.column - 1, item.column + item.span - 1)
+      .reduce((sum, track) => sum + track, 0);
+    frames.push(`${frames.length}:node=${item.node},x=${x},y=${(item.row - 1) * 20},width=${width},height=${spec.width === 95 ? 20 : 10}`);
+  }
+  scenes.push({
+    id: spec.id,
+    axis: 'Columns',
+    boxCount: gridNodes.length + items.length,
+    rootFrame: `width=${spec.width},height=60`,
+    itemFrame: null,
+    nodeFrames: `node_frames_css_px=[${frames.join(';')}]`,
+    tracks: [spec.width],
+    collapsed: [false],
+    axes: {
+      Columns: { tracks: [spec.width], collapsed: [false] },
+      Rows: { tracks: [60], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    intrinsicInputs: items.map((item) => ({
+      grid: 4,
+      node: item.node,
+      sourceOrder: item.sourceOrder,
+      kind: 'text',
+      fontRegistryRevision: 1,
+      minContent: item.minContent,
+      minContentHeight: item.minContentHeight,
+      maxContent: item.maxContent,
+      maxContentHeight: item.maxContentHeight,
+    })),
+    nestedGridTextMultiSpan: {
+      gridNodes,
+      width: spec.width,
+      innerColumns: spec.columns,
+      items: items.map(({ node, span, minContent }) => ({ node, span, minContent })),
+    },
+  });
+}
+assert.equal(scenes.length, 202, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -2870,6 +2939,70 @@ function verifyRuntimeLog(log, scene, runID) {
     assert.ok(contribution,
       `${scene.id}: nested Grid min-content row contribution differs`);
   }
+  if (scene.nestedGridTextMultiSpan) {
+    const expected = scene.nestedGridTextMultiSpan;
+    assert.equal(diagnostics.trackSizingTraces.length, expected.gridNodes.length,
+      `${scene.id}: root-to-inner Grid trace count differs`);
+    const traces = new Map(diagnostics.trackSizingTraces.map((trace) => [trace.grid, trace]));
+    const tracksForAxis = (trace, axis) => {
+      const passes = trace.passes.filter((pass) => pass.axis === axis);
+      assert.equal(passes.length, 1,
+        `${scene.id}: Grid ${trace.grid} must have one ${axis} pass`);
+      const tracks = passes[0].stages.at(-1)?.tracks;
+      assert.ok(tracks, `${scene.id}: Grid ${trace.grid} ${axis} final tracks are missing`);
+      return tracks.filter(({ gutter, collapsed }) => !gutter && !collapsed)
+        .map(({ baseSize }) => baseSize);
+    };
+    const assertTracks = (trace, axis, expectedTracks) => {
+      const actual = tracksForAxis(trace, axis);
+      assert.equal(actual.length, expectedTracks.length,
+        `${scene.id}: Grid ${trace.grid} ${axis} track count differs`);
+      actual.forEach((size, index) => assert.ok(
+        Math.abs(size - expectedTracks[index]) <= 1 / 64,
+        `${scene.id}: Grid ${trace.grid} ${axis} track ${index + 1} expected ${expectedTracks[index]}, got ${size}`,
+      ));
+    };
+    for (const [index, grid] of expected.gridNodes.entries()) {
+      const trace = traces.get(grid);
+      assert.ok(trace, `${scene.id}: Grid ${grid} trace is missing`);
+      const inner = index === expected.gridNodes.length - 1;
+      assertTracks(trace, 'Columns', inner ? expected.innerColumns : [expected.width]);
+      assertTracks(trace, 'Rows', inner ? [20, 20, 20] : [60]);
+      if (!inner) {
+        const child = expected.gridNodes[index + 1];
+        const pass = trace.passes.find((candidate) => candidate.axis === 'Columns');
+        assert.ok(pass.contributions.some((contribution) => (
+          contribution.item === child
+            && contribution.kind === 'MinContent'
+            && contribution.span === 1
+            && Math.abs(contribution.value - expected.width) <= 1 / 64
+        )), `${scene.id}: parent Grid ${grid} lost nested child ${child} contribution`);
+      }
+    }
+    const innerTrace = traces.get(expected.gridNodes.at(-1));
+    const innerColumns = innerTrace.passes.find((pass) => pass.axis === 'Columns');
+    const expectedContributions = [];
+    for (const span of [...new Set(expected.items.map((item) => item.span))].sort((a, b) => a - b)) {
+      const spanItems = expected.items.filter((item) => item.span === span);
+      for (const kind of ['Minimum', 'MinContent']) {
+        const repetitions = kind === 'MinContent' ? 2 : 1;
+        for (let repetition = 0; repetition < repetitions; repetition++) {
+          for (const item of spanItems) {
+            expectedContributions.push({
+              item: item.node,
+              kind,
+              span,
+              value: kind === 'Minimum' ? 0 : item.minContent,
+            });
+          }
+        }
+      }
+    }
+    assert.deepEqual(innerColumns.contributions.map(({ item, kind, span, value }) => ({
+      item, kind, span, value,
+    })), expectedContributions,
+    `${scene.id}: inner text span contributions are duplicated, reordered, or lost`);
+  }
   if (scene.nestedGridDepth) {
     const expected = scene.nestedGridDepth;
     assert.equal(diagnostics.trackSizingTraces.length, expected.gridNodes.length,
@@ -3058,6 +3191,7 @@ function verifyRuntimeLog(log, scene, runID) {
   let observedIntrinsicSpans = null;
   const axisTrace = scene.nestedGridIntrinsic || scene.nestedGridTextImageIntrinsic
     || scene.nestedGridImplicitRows || scene.nestedGridDepth
+    || scene.nestedGridTextMultiSpan
     ? diagnostics.trackSizingTraces.find(
       (trace) => trace.grid === (scene.nestedGridIntrinsic
         ? scene.nestedGridIntrinsic.outerNode
@@ -3065,7 +3199,9 @@ function verifyRuntimeLog(log, scene, runID) {
           ? scene.nestedGridTextImageIntrinsic.outerNode
           : scene.nestedGridImplicitRows
             ? scene.nestedGridImplicitRows.outerNode
-            : scene.nestedGridDepth.gridNodes[0]))
+            : scene.nestedGridDepth
+              ? scene.nestedGridDepth.gridNodes[0]
+              : scene.nestedGridTextMultiSpan.gridNodes[0]))
     : diagnostics.trackSizingTraces[0];
   assert.ok(axisTrace, `${scene.id}: expected track-sizing Grid trace가 없습니다.`);
   for (const [axis, expected] of Object.entries(axisSpecs)) {

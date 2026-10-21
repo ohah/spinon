@@ -189,6 +189,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "nested-depth-one-max-content-two-axis", "nested-depth-two-max-content-two-axis",
             "nested-depth-three-min-content-two-axis",
             "nested-depth-three-max-content-two-axis",
+            "nested-text-span2-forward", "nested-text-span2-reversed",
+            "nested-text-span2-before-span3", "nested-text-span3-before-span2",
             "depth-three-min-content-text-before-image",
             "depth-three-min-content-image-before-text",
             "depth-three-max-content-text-before-image",
@@ -407,6 +409,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ExpectedRootFrame(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (sceneId.startsWith("nested-text-span")) {
+            return sceneId.contains("before-span3") || sceneId.contains("span3-before-span2")
+                    ? "width=180,height=60" : "width=95,height=60";
+        }
         if (c114IsNestedGridDepthAnonymousImageScene(sceneId)) {
             return sceneId.contains("-min-content-")
                     ? "width=94,height=20" : "width=124,height=16";
@@ -601,7 +607,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("nested-grid-implicit-row-one-row")
                 || sceneId.startsWith("nested-depth-one-")
                 || sceneId.startsWith("nested-depth-two-")
-                || sceneId.startsWith("nested-depth-three-")) return "";
+                || sceneId.startsWith("nested-depth-three-")
+                || sceneId.startsWith("nested-text-span")) return "";
         if (c114IsAnonymousTextScene(sceneId) || c114IsAnonymousTextImageScene(sceneId)
                 || c114IsAnonymousTextMultiImageScene(sceneId)) return "";
         if (c114IsImageMultiSpanScene(sceneId) || c114IsTextMultiSpanScene(sceneId)
@@ -718,6 +725,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114ExpectedTextIntrinsicInputs(String sceneId, String report) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (sceneId.startsWith("nested-text-span")) {
+            return c114ExpectedNestedTextMultiSpanIntrinsicInputs(sceneId, report);
+        }
         if (c114IsAnonymousTextMultiImageScene(sceneId)) {
             return c114ExpectedAnonymousTextMultiImageInputs(sceneId, report);
         }
@@ -887,6 +897,62 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 org.json.JSONObject input = inputs.optJSONObject(index);
                 if (input == null || input.optInt("grid", -1) != 1
                         || input.optInt("node", -1) != 2 + index * 2
+                        || input.optInt("sourceOrder", -1) != index) return false;
+                org.json.JSONObject source = input.optJSONObject("source");
+                int[] sizes = expected[index];
+                if (source == null || !"text".equals(source.optString("kind"))
+                        || source.optInt("fontRegistryRevision", -1) != 1
+                        || source.optDouble("minContent", Double.NaN) != sizes[0]
+                        || source.optDouble("minContentHeight", Double.NaN) != sizes[1]
+                        || source.optDouble("maxContent", Double.NaN) != sizes[2]
+                        || source.optDouble("maxContentHeight", Double.NaN) != sizes[3]) {
+                    return false;
+                }
+            }
+            return true;
+        } catch (org.json.JSONException | ClassCastException error) {
+            return false;
+        }
+    }
+
+    private static boolean c114ExpectedNestedTextMultiSpanIntrinsicInputs(
+            String sceneId, String report
+    ) {
+        int[][] expected;
+        switch (sceneId) {
+            case "nested-text-span2-forward":
+                expected = new int[][] {{50, 20, 80, 10}, {70, 20, 120, 10}};
+                break;
+            case "nested-text-span2-reversed":
+                expected = new int[][] {{70, 20, 120, 10}, {50, 20, 80, 10}};
+                break;
+            case "nested-text-span2-before-span3":
+                expected = new int[][] {
+                    {50, 20, 80, 10}, {70, 20, 120, 10}, {180, 10, 180, 10},
+                };
+                break;
+            case "nested-text-span3-before-span2":
+                expected = new int[][] {
+                    {180, 10, 180, 10}, {70, 20, 120, 10}, {50, 20, 80, 10},
+                };
+                break;
+            default:
+                return false;
+        }
+        int diagnosticsMarker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (diagnosticsMarker < 0) return false;
+        String diagnosticsJson = report.substring(
+                diagnosticsMarker + "grid_track_sizing_diagnostics=".length());
+        try {
+            Object value = new org.json.JSONTokener(diagnosticsJson).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONArray inputs = ((org.json.JSONObject) value)
+                    .optJSONArray("gridItemIntrinsicInputs");
+            if (inputs == null || inputs.length() != expected.length) return false;
+            for (int index = 0; index < expected.length; index++) {
+                org.json.JSONObject input = inputs.optJSONObject(index);
+                if (input == null || input.optInt("grid", -1) != 4
+                        || input.optInt("node", -1) != 5 + index * 2
                         || input.optInt("sourceOrder", -1) != index) return false;
                 org.json.JSONObject source = input.optJSONObject("source");
                 int[] sizes = expected[index];
@@ -1428,6 +1494,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (sceneId.startsWith("nested-text-span")) {
+            return null;
+        }
         if (c114IsNestedGridDepthAnonymousImageScene(sceneId)) {
             boolean minContent = sceneId.contains("-min-content-");
             boolean imageBeforeText = sceneId.contains("-image-before-text");
@@ -2088,6 +2157,32 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     {53.3333333333, 20, 126.6666666667, 10}, {0, 0, 116.6666666667, 10},
                 };
                 break;
+            case "nested-text-span2-forward":
+                expected = new double[][] {
+                    {0, 0, 95, 60}, {0, 0, 95, 60}, {0, 0, 95, 60}, {0, 0, 95, 60},
+                    {0, 0, 60, 20}, {25, 20, 70, 20},
+                };
+                break;
+            case "nested-text-span2-reversed":
+                expected = new double[][] {
+                    {0, 0, 95, 60}, {0, 0, 95, 60}, {0, 0, 95, 60}, {0, 0, 95, 60},
+                    {25, 20, 70, 20}, {0, 0, 60, 20},
+                };
+                break;
+            case "nested-text-span2-before-span3":
+                expected = new double[][] {
+                    {0, 0, 180, 60}, {0, 0, 180, 60}, {0, 0, 180, 60}, {0, 0, 180, 60},
+                    {0, 0, 116.6666666667, 10}, {53.3333333333, 20, 126.6666666667, 10},
+                    {0, 40, 180, 10},
+                };
+                break;
+            case "nested-text-span3-before-span2":
+                expected = new double[][] {
+                    {0, 0, 180, 60}, {0, 0, 180, 60}, {0, 0, 180, 60}, {0, 0, 180, 60},
+                    {0, 40, 180, 10}, {53.3333333333, 20, 126.6666666667, 10},
+                    {0, 0, 116.6666666667, 10},
+                };
+                break;
             case "image-span2-forward":
                 expected = new double[][] {
                     {0, 0, 40, 60}, {1, 1, 24, 16}, {13, 21, 48, 32},
@@ -2287,6 +2382,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedMultiSpanNodeId(String sceneId, int index) {
+        if (sceneId.startsWith("nested-text-span")) {
+            return index < 4 ? index + 1 : 5 + (index - 4) * 2;
+        }
         if (c114IsTextMultiSpanScene(sceneId)) return index == 0 ? 1 : index * 2;
         if (c114IsMixedMultiSpanScene(sceneId)) {
             if ("mixed-text-image-span2-reversed".equals(sceneId)) {
@@ -2309,6 +2407,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int c114ExpectedBoxCount(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (sceneId.startsWith("nested-text-span")) {
+            return sceneId.contains("before-span3") || sceneId.contains("span3-before-span2")
+                    ? 7 : 6;
+        }
         if (c114IsNestedGridDepthAnonymousImageScene(sceneId)) return 5;
         if (sceneId.equals("nested-depth-one-min-content")
                 || sceneId.equals("nested-depth-one-max-content")) return 3;

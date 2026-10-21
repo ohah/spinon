@@ -2,7 +2,7 @@
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [depth-three nested Grid 계획](./c11-4-nested-grid-depth-three.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 고정 Chrome 156 사전 관측과 독립 CSS Grid 기대값을 기록했다. 계획 실패 관점 20개 검토를 마쳤으며, 구현은 시작하지 않았다. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다.
+**상태:** fixed-scene 구현, Android/iOS Simulator 4/4 검증, direct-leaf 회귀 4/4, feature artifact 경계 검사 및 구현/runtime 실패 관점 20개 검토를 마쳤다. 구현 PR diff 검토·병합만 남아 있다. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다.
 
 ## 목적과 미구현 경계
 
@@ -23,16 +23,16 @@ HTML 재현 입력과 Chrome 관측은 [precomparison evidence](../spec/internal
 
 CSS Grid 2025 CRD §11.5.1에 따라 A와 B의 min-content 50px·70px span-2 contribution 뒤에 C의 180px span-3 contribution을 분배한다. 이상적인 분수 track과 Chrome의 1/64 CSS px quantization은 각각 다른 비교 입력이다. Chrome 관측, 독립 기대값, 모든 fixed node frame은 사전 비교 파일에 별도 저장되어 있다.
 
-## 구현 및 검증 계획
+## 구현 및 검증 결과
 
-1. 계획 PR을 main에 Rebase and merge한 뒤 같은 checkout에서 최신 `origin/main`을 기준으로 구현 branch를 만든다. worktree는 만들지 않는다.
-2. 현재 nested depth-three text adapter와 direct text multi-span adapter를 읽고, exact topology·node owner/order·text/placement·Ahem style·scene ID를 검사하는 새 fixture adapter를 opt-in fixture 경계에 추가한다. 다른 depth, 추가/누락 child, 잘못된 text·span·track·style은 부분 layout 없이 거부한다.
-3. 기존 intrinsic input/stage trace에서 각 text source의 min/max measurement, 실제 처리 span, stage 순서와 네 Grid의 `Columns`/`Rows`, root-relative node frame, source revision을 함께 검사한다. inner contribution source는 leaf text node, parent contribution source는 nested Grid node여야 하며 중복 귀속이 없어야 한다.
-4. 네 신규 scene과 기존 nested depth-one·two·three text control 및 direct text multi-span 네 scene을 focused Rust/runtime/FFI matrix에서 실행한다. 기본 product artifact에는 새 scene ID와 고정 text payload가 빠지고 opt-in fixture-test artifact에는 들어가는지 확인한다.
-5. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 네 신규 scene을 실행한다. trace completeness, frames/tracks, draw/present marker, local/installed app hash를 보존한다. 이는 Android 실기기, hardware GPU, iOS compositor 이후 화면 또는 glyph pixel equality 증거가 아니다.
-6. 관련 focused Rust·FFI fixture 검사, `cargo fmt --all -- --check`, workspace all-target Clippy `-D warnings`, Android/iOS Simulator fixture build를 실행한다. 범위 밖 전체 WPT/일반 CSS 행렬은 실행했다고 쓰지 않는다.
-7. 구현/runtime을 계획 검토와 겹치지 않는 새 실패 관점 20개로 검토한다. PR diff는 별도 30개 관점으로 검토한다. PR 본문에는 두 Simulator의 실행 화면을 링크하고 Agent Browser에서 이미지가 로드되는지 확인한 뒤 Agent Browser 프로세스를 종료한다.
-8. 현재 PR required check와 merge state를 확인하고 Rebase and merge한다. 병합 후 Tailnet 미리보기는 최신 main의 문서와 근거를 선택 build·백업·hash 대조하고 Agent Browser로 확인한다. 브라우저와 이번 작업에서 시작한 서버를 종료한다.
+1. 계획 PR #463을 Rebase and merge한 뒤 같은 checkout에서 `feat/c11-4-nested-grid-multispan` branch로 진행했다. worktree를 만들지 않았다.
+2. opt-in runtime fixture adapter와 FFI scene generator에 네 exact scene을 추가했다. 네 Grid의 HTML identity·owner·순서·track/box profile, 직접 text child, Ahem style, item placement/span을 확인하며 unlisted/malformed input은 fail closed한다. core Grid sizing algorithm과 공개 API는 변경하지 않았다.
+3. Rust와 simulator capture verifier가 모든 text intrinsic sizes/revision/order, inner Columns/Rows, 네 Grid frame, span contribution 및 세 parent contribution trace를 검사한다. 독립 분수 기대값과 Chrome 156 관측값은 사전 비교 문서에서 분리했다.
+4. 신규 runtime 정상·negative tests 2개, depth-three controls 2개, mixed span control 1개, 신규 FFI allowlist 1개와 direct-leaf FFI control 1개가 통과했다. 기존 direct-leaf text multi-span 네 scene도 Android/iOS에서 각각 4/4 통과했다.
+5. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 신규 scene 각 4/4가 통과했다. frame/track, complete trace, draw/present와 Android local/installed APK SHA를 근거에 남겼다.
+6. workspace all-target 및 runtime/FFI fixture-feature Clippy, formatter, fixture boundary 6/6, JS syntax, diff whitespace 검사, Android Gradle 및 iOS Simulator build가 통과했다. 기본 FFI archive에는 신규 scene ID가 없고 opt-in positive control에 네 ID와 payload가 있음을 확인했다.
+7. 계획 검토와 별개인 구현/runtime 실패 관점 20개를 완료했다. PR diff 검토 30개와 Agent Browser PR 이미지 확인은 merge 전에 별도로 진행한다.
+8. PR은 아직 생성·병합 전이다. 이미지가 포함된 PR을 만들고 Agent Browser에서 이미지 로드를 확인한 뒤 해당 browser process를 종료한다. 현재 required checks와 merge state를 확인하고 Rebase and merge한다. 병합 후 Tailnet roadmap 미리보기는 기존 경로와 process를 살핀 뒤 최신 main 문서 및 evidence hash를 대조해 갱신·검증하고 Agent Browser/process를 정리한다.
 
 ## 실패·범위 경계
 
