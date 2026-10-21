@@ -78,6 +78,8 @@ pub use error::StyleLayoutError;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub use projection::compute_runtime_block_flex_grid_track_sizing_style_layout_with_anonymous_text_and_intrinsic_sizes;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub use projection::compute_runtime_block_flex_grid_track_sizing_style_layout_with_anonymous_text_and_intrinsic_sizes_and_two_axis_nested_grid;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub use projection::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_and_intrinsic_sizes;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub use projection::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs;

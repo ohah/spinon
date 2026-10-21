@@ -342,7 +342,7 @@ fn style_for(
         .ok_or_else(|| layout_failure("missing_computed_style", Some(handle.id().get()), None))
 }
 
-fn anonymous_paragraph_style() -> ParagraphStyle {
+pub(super) fn anonymous_paragraph_style() -> ParagraphStyle {
     ParagraphStyle {
         font_family: "Ahem".to_owned(),
         font_size: 10.0,

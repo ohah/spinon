@@ -349,9 +349,21 @@ where
             None
         };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_nested_grid_depth_three_anonymous_image_input =
+        if profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing {
+            fixtures::prepare_c11_4_nested_grid_depth_three_anonymous_image(
+                &request.snapshot,
+                root,
+                &styles,
+            )?
+        } else {
+            None
+        };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_anonymous_text_multi_image_input = if profile
         == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
         && c11_4_nested_grid_replaced_item_input.is_none()
+        && c11_4_nested_grid_depth_three_anonymous_image_input.is_none()
     {
         if let Some(input) = fixtures::prepare_c11_4_anonymous_grid_border_overflow(
             &request.snapshot,
@@ -367,6 +379,7 @@ where
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_anonymous_text_image_input = if c11_4_nested_grid_replaced_item_input.is_none()
+        && c11_4_nested_grid_depth_three_anonymous_image_input.is_none()
         && c11_4_anonymous_text_multi_image_input.is_none()
         && profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
     {
@@ -376,6 +389,7 @@ where
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_mixed_input = if c11_4_nested_grid_replaced_item_input.is_none()
+        && c11_4_nested_grid_depth_three_anonymous_image_input.is_none()
         && c11_4_anonymous_text_multi_image_input.is_none()
         && c11_4_anonymous_text_image_input.is_none()
         && profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
@@ -386,6 +400,7 @@ where
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_anonymous_text_input = if c11_4_nested_grid_replaced_item_input.is_none()
+        && c11_4_nested_grid_depth_three_anonymous_image_input.is_none()
         && c11_4_anonymous_text_multi_image_input.is_none()
         && c11_4_anonymous_text_image_input.is_none()
         && c11_4_mixed_input.is_none()
@@ -397,6 +412,7 @@ where
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_text_input = if c11_4_nested_grid_replaced_item_input.is_none()
+        && c11_4_nested_grid_depth_three_anonymous_image_input.is_none()
         && c11_4_anonymous_text_multi_image_input.is_none()
         && c11_4_anonymous_text_image_input.is_none()
         && c11_4_mixed_input.is_none()
@@ -409,6 +425,7 @@ where
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_image_input = if c11_4_nested_grid_replaced_item_input.is_none()
+        && c11_4_nested_grid_depth_three_anonymous_image_input.is_none()
         && c11_4_anonymous_text_multi_image_input.is_none()
         && c11_4_anonymous_text_image_input.is_none()
         && c11_4_mixed_input.is_none()
@@ -419,7 +436,8 @@ where
         None
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-    if (c11_4_text_input.is_some() || c11_4_anonymous_text_input.is_some())
+    if c11_4_nested_grid_depth_three_anonymous_image_input.is_none()
+        && (c11_4_text_input.is_some() || c11_4_anonymous_text_input.is_some())
         && c11_4_image_input.is_some()
     {
         return Err(layout_failure(
@@ -456,6 +474,16 @@ where
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
         if let Some(mixed_input) = &c11_4_nested_grid_replaced_item_input {
             spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_and_intrinsic_sizes(
+                &request.snapshot,
+                root,
+                styles.clone(),
+                request.viewport,
+                &mixed_input.paragraph_styles,
+                &mixed_input.engine,
+                mixed_input.intrinsic_sizes.clone(),
+            )
+        } else if let Some(mixed_input) = &c11_4_nested_grid_depth_three_anonymous_image_input {
+            spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_anonymous_text_and_intrinsic_sizes_and_two_axis_nested_grid(
                 &request.snapshot,
                 root,
                 styles.clone(),
@@ -630,6 +658,8 @@ where
         );
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
         let current = if let Some(mixed_input) = &c11_4_nested_grid_replaced_item_input {
+            current.with_intrinsic_size_revision(mixed_input.intrinsic_sizes.revision())
+        } else if let Some(mixed_input) = &c11_4_nested_grid_depth_three_anonymous_image_input {
             current.with_intrinsic_size_revision(mixed_input.intrinsic_sizes.revision())
         } else if let Some(mixed_input) = &c11_4_anonymous_text_multi_image_input {
             current.with_intrinsic_size_revision(mixed_input.intrinsic_sizes.revision())

@@ -189,6 +189,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "nested-depth-one-max-content-two-axis", "nested-depth-two-max-content-two-axis",
             "nested-depth-three-min-content-two-axis",
             "nested-depth-three-max-content-two-axis",
+            "depth-three-min-content-text-before-image",
+            "depth-three-min-content-image-before-text",
+            "depth-three-max-content-text-before-image",
+            "depth-three-max-content-image-before-text",
             "column-auto-natural-ratio", "column-target-max-width-clamp",
             "row-target-max-height-clamp",
             "column-opposite-min-over-max", "column-border-box-transfer",
@@ -403,6 +407,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ExpectedRootFrame(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (c114IsNestedGridDepthAnonymousImageScene(sceneId)) {
+            return sceneId.contains("-min-content-")
+                    ? "width=94,height=20" : "width=124,height=16";
+        }
         if (sceneId.equals("nested-depth-one-min-content")
                 || sceneId.equals("nested-depth-two-min-content")
                 || sceneId.equals("nested-depth-three-min-content")) {
@@ -1420,6 +1428,19 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (c114IsNestedGridDepthAnonymousImageScene(sceneId)) {
+            boolean minContent = sceneId.contains("-min-content-");
+            boolean imageBeforeText = sceneId.contains("-image-before-text");
+            int width = minContent ? 94 : 124;
+            int height = minContent ? 20 : 16;
+            int textWidth = minContent ? 70 : 100;
+            int imageX = imageBeforeText ? 0 : textWidth;
+            return "node_frames_css_px=[0:node=1,x=0,y=0,width=" + width + ",height=" + height
+                    + ";1:node=2,x=0,y=0,width=" + width + ",height=" + height
+                    + ";2:node=3,x=0,y=0,width=" + width + ",height=" + height
+                    + ";3:node=4,x=0,y=0,width=" + width + ",height=" + height
+                    + ";4:node=5,x=" + imageX + ",y=0,width=24,height=16]";
+        }
         switch (sceneId) {
             case "nested-depth-one-min-content":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=70,height=20;"
@@ -2152,7 +2173,26 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         int[][] textMetrics;
         int[][] sourceNodes;
         String[][] sourceText;
+        int expectedGrid = 1;
         switch (sceneId) {
+            case "depth-three-min-content-text-before-image":
+            case "depth-three-max-content-text-before-image":
+                expectedGrid = 4;
+                nodes = new int[] {6, 5};
+                kinds = new String[] {"text", "replaced"};
+                textMetrics = new int[][] {{70, 20, 100, 10}, null};
+                sourceNodes = new int[][] {{6}, {}};
+                sourceText = new String[][] {{"XX XXXXXXX"}, {}};
+                break;
+            case "depth-three-min-content-image-before-text":
+            case "depth-three-max-content-image-before-text":
+                expectedGrid = 4;
+                nodes = new int[] {5, 6};
+                kinds = new String[] {"replaced", "text"};
+                textMetrics = new int[][] {null, {70, 20, 100, 10}};
+                sourceNodes = new int[][] {{}, {6}};
+                sourceText = new String[][] {{}, {"XX XXXXXXX"}};
+                break;
             case "anonymous-text-image-text":
                 nodes = new int[] {2, 3, 4};
                 kinds = new String[] {"text", "replaced", "text"};
@@ -2207,7 +2247,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 org.json.JSONObject input = inputs.optJSONObject(index);
                 org.json.JSONObject source = input == null ? null : input.optJSONObject("source");
                 org.json.JSONArray textSources = input == null ? null : input.optJSONArray("textSources");
-                if (input == null || input.optInt("grid", -1) != 1
+                if (input == null || input.optInt("grid", -1) != expectedGrid
                         || input.optInt("node", -1) != nodes[index]
                         || input.optInt("sourceOrder", -1) != index || source == null
                         || !kinds[index].equals(source.optString("kind"))
@@ -2269,6 +2309,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int c114ExpectedBoxCount(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (c114IsNestedGridDepthAnonymousImageScene(sceneId)) return 5;
         if (sceneId.equals("nested-depth-one-min-content")
                 || sceneId.equals("nested-depth-one-max-content")) return 3;
         if (sceneId.equals("nested-depth-two-min-content")
@@ -2356,11 +2397,19 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static boolean c114IsAnonymousTextImageScene(String sceneId) {
-        return sceneId.equals("anonymous-text-image-text")
+        return c114IsNestedGridDepthAnonymousImageScene(sceneId)
+                || sceneId.equals("anonymous-text-image-text")
                 || sceneId.equals("image-before-comment-group")
                 || sceneId.equals("comment-group-before-image")
                 || sceneId.equals("whitespace-around-image")
                 || sceneId.equals("hidden-child-around-image");
+    }
+
+    private static boolean c114IsNestedGridDepthAnonymousImageScene(String sceneId) {
+        return sceneId.equals("depth-three-min-content-text-before-image")
+                || sceneId.equals("depth-three-min-content-image-before-text")
+                || sceneId.equals("depth-three-max-content-text-before-image")
+                || sceneId.equals("depth-three-max-content-image-before-text");
     }
 
     private static boolean c114IsAnonymousTextMultiImageScene(String sceneId) {

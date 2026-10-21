@@ -59,6 +59,12 @@ const nestedGridDepthSceneIDs = new Set([
   'nested-depth-one-max-content-two-axis', 'nested-depth-two-max-content-two-axis',
   'nested-depth-three-min-content-two-axis', 'nested-depth-three-max-content-two-axis',
 ]);
+const nestedGridDepthAnonymousImageSceneIDs = new Set([
+  'depth-three-min-content-text-before-image',
+  'depth-three-min-content-image-before-text',
+  'depth-three-max-content-text-before-image',
+  'depth-three-max-content-image-before-text',
+]);
 const isTextMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => textMultiSpanSceneIDs.has(sceneID));
 const isImageMultiSpanRun = requestedSceneIDs?.length > 0
@@ -77,10 +83,13 @@ const isNestedGridImplicitRowRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => nestedGridImplicitRowSceneIDs.has(sceneID));
 const isNestedGridDepthRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => nestedGridDepthSceneIDs.has(sceneID));
+const isNestedGridDepthAnonymousImageRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => nestedGridDepthAnonymousImageSceneIDs.has(sceneID));
 const isMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID)
     || textMultiSpanSceneIDs.has(sceneID) || mixedMultiSpanSceneIDs.has(sceneID));
 const runKind = requestedRunKind ?? (isMixedMultiSpanRun ? 'mixed-multispan-contributions'
+  : isNestedGridDepthAnonymousImageRun ? 'nested-depth-three-anonymous-image'
   : isNestedGridDepthRun ? 'nested-grid-depth'
   : isNestedGridImplicitRowRun ? 'nested-implicit-rows'
   : isAnonymousGridBorderOverflowRun ? 'anonymous-grid-border-overflow'
@@ -113,6 +122,8 @@ const runIDPrefix = `c114-${target}-${runTimestamp}-${runNonce}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
   ? `spec/internal/evidence/${evidenceGroup}-${date}/${target}-${runPrefix}`
+  : isNestedGridDepthAnonymousImageRun
+    ? `spec/internal/evidence/c11-4-nested-depth-three-anonymous-image-runtime-${date}/${target}-${runPrefix}`
   : isAnonymousGridBorderOverflowRun
     ? `spec/internal/evidence/c11-4-anonymous-grid-border-overflow-${date}/${target}-${runPrefix}`
   : isAnonymousTextMultiImageRun
@@ -1504,7 +1515,98 @@ scenes.push(
     },
   },
 );
-assert.equal(scenes.length, 194, 'C11.4 fixture scene count differs.');
+for (const imageBeforeText of [false, true]) {
+  for (const minContent of [true, false]) {
+    const intrinsic = minContent ? 'min-content' : 'max-content';
+    const id = `depth-three-${intrinsic}-${imageBeforeText ? 'image-before-text' : 'text-before-image'}`;
+    const width = minContent ? 94 : 124;
+    const height = minContent ? 20 : 16;
+    const textWidth = minContent ? 70 : 100;
+    const textHeight = minContent ? 20 : 10;
+    const textNode = 6;
+    const imageNode = 5;
+    const textSourceOrder = imageBeforeText ? 1 : 0;
+    const imageSourceOrder = imageBeforeText ? 0 : 1;
+    const textX = imageBeforeText ? 24 : 0;
+    const imageX = imageBeforeText ? 0 : textWidth;
+    const gridNodes = [1, 2, 3, 4];
+    const textSource = {
+      kind: 'text', fontRegistryRevision: 1,
+      minContent: 70, minContentHeight: 20,
+      maxContent: 100, maxContentHeight: 10,
+    };
+    const imageSource = { kind: 'replaced', aspectRatio: null, width: 24, height: 16 };
+    const textFrame = { node: textNode, x: textX, y: 0, width: textWidth, height: textHeight };
+    const imageFrame = { node: imageNode, x: imageX, y: 0, width: 24, height: 16 };
+    const textItem = {
+      grid: 4, node: textNode, sourceOrder: textSourceOrder,
+      source: textSource,
+      textSources: [{ node: textNode, text: 'XX XXXXXXX' }],
+      frame: textFrame,
+    };
+    const imageItem = {
+      grid: 4, node: imageNode, sourceOrder: imageSourceOrder,
+      source: imageSource, textSources: [], frame: imageFrame,
+    };
+    const orderedItems = imageBeforeText ? [imageItem, textItem] : [textItem, imageItem];
+    const gridFrame = `width=${width},height=${height}`;
+    const allGridFrames = gridNodes.map((node, index) => (
+      `${index}:node=${node},x=0,y=0,width=${width},height=${height}`
+    ));
+    allGridFrames.push(`4:node=${imageNode},x=${imageX},y=0,width=24,height=16`);
+    const contributionKind = minContent ? 'MinContent' : 'MaxContent';
+    scenes.push({
+      id,
+      axis: 'Columns',
+      boxCount: 5,
+      rootFrame: gridFrame,
+      itemFrame: null,
+      nodeFrames: `node_frames_css_px=[${allGridFrames.join(';')}]`,
+      tracks: [width],
+      collapsed: [false],
+      axes: {
+        Columns: { tracks: [width], collapsed: [false] },
+        Rows: { tracks: [height], collapsed: [false] },
+      },
+      gaps: { Columns: 0, Rows: 0 },
+      nestedGridAnonymousTextImage: true,
+      intrinsicInputs: orderedItems.map((item) => ({
+        grid: item.grid,
+        node: item.node,
+        sourceOrder: item.sourceOrder,
+        kind: item.source.kind,
+        ...(item.source.kind === 'text'
+          ? {
+            fontRegistryRevision: item.source.fontRegistryRevision,
+            minContent: item.source.minContent,
+            minContentHeight: item.source.minContentHeight,
+            maxContent: item.source.maxContent,
+            maxContentHeight: item.source.maxContentHeight,
+          }
+          : {
+            aspectRatio: item.source.aspectRatio,
+            width: item.source.width,
+            height: item.source.height,
+          }),
+      })),
+      anonymousTextImageItems: orderedItems,
+      nestedGridDepth: {
+        gridNodes,
+        leafNode: textNode,
+        width,
+        height,
+        contributionKind,
+        twoAxis: true,
+        innerColumns: imageBeforeText ? [24, textWidth] : [textWidth, 24],
+        directItemContributions: [
+          { node: textNode, width: minContent ? 70 : 100, height: minContent ? 20 : 10 },
+          { node: imageNode, width: 24, height: 16 },
+        ],
+      },
+    });
+  }
+}
+assert.equal(scenes.length, 198, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -2785,35 +2887,47 @@ function verifyRuntimeLog(log, scene, runID) {
     for (const [index, grid] of expected.gridNodes.entries()) {
       const trace = traces.get(grid);
       assert.ok(trace, `${scene.id}: Grid ${grid} trace is missing`);
-      assert.deepEqual(tracksForAxis(trace, 'Columns'), [expected.width],
+      const expectedColumns = index === expected.gridNodes.length - 1 && expected.innerColumns
+        ? expected.innerColumns
+        : [expected.width];
+      assert.deepEqual(tracksForAxis(trace, 'Columns'), expectedColumns,
         `${scene.id}: Grid ${grid} final Columns differ`);
       assert.deepEqual(tracksForAxis(trace, 'Rows'), [expected.height],
         `${scene.id}: Grid ${grid} final Rows differ`);
       const child = expected.gridNodes[index + 1] ?? expected.leafNode;
-      const expectedContributions = [['Columns', expected.width]];
-      if (expected.twoAxis) expectedContributions.push(['Rows', expected.height]);
-      for (const [axis, value] of expectedContributions) {
+      const contributionTargets = index === expected.gridNodes.length - 1
+        && expected.directItemContributions
+        ? expected.directItemContributions
+        : [{ node: child, width: expected.width, height: expected.height }];
+      for (const target of contributionTargets) {
+        const expectedContributions = [['Columns', target.width]];
+        if (expected.twoAxis) expectedContributions.push(['Rows', target.height]);
+        for (const [axis, value] of expectedContributions) {
         const pass = trace.passes.find((candidate) => candidate.axis === axis);
         assert.ok(pass?.contributions.some((contribution) => (
-          contribution.item === child
+          contribution.item === target.node
             && contribution.kind === expected.contributionKind
             && contribution.span === 1
             && Math.abs(contribution.value - value) <= 1 / 64
-        )), `${scene.id}: Grid ${grid} ${axis} lacks ${expected.contributionKind} from child ${child}`);
+        )), `${scene.id}: Grid ${grid} ${axis} lacks ${expected.contributionKind} from child ${target.node}`);
+        }
       }
     }
-    assert.deepEqual((diagnostics.gridItemIntrinsicInputs ?? []).map((input) => ({
-      grid: input.grid,
-      node: input.node,
-      sourceOrder: input.sourceOrder,
-      kind: input.source?.kind,
-      fontRegistryRevision: input.source?.fontRegistryRevision,
-      minContent: input.source?.minContent,
-      minContentHeight: input.source?.minContentHeight,
-      maxContent: input.source?.maxContent,
-      maxContentHeight: input.source?.maxContentHeight,
-    })), scene.intrinsicInputs,
-    `${scene.id}: direct leaf intrinsic source or font revision differs`);
+    if (scene.intrinsicInputs && !scene.mixedIntrinsicContributions
+      && !scene.nestedGridAnonymousTextImage) {
+      assert.deepEqual((diagnostics.gridItemIntrinsicInputs ?? []).map((input) => ({
+        grid: input.grid,
+        node: input.node,
+        sourceOrder: input.sourceOrder,
+        kind: input.source?.kind,
+        fontRegistryRevision: input.source?.fontRegistryRevision,
+        minContent: input.source?.minContent,
+        minContentHeight: input.source?.minContentHeight,
+        maxContent: input.source?.maxContent,
+        maxContentHeight: input.source?.maxContentHeight,
+      })), scene.intrinsicInputs,
+      `${scene.id}: direct leaf intrinsic source or font revision differs`);
+    }
     assert.ok(expected.leafNode !== expected.gridNodes.at(-1),
       `${scene.id}: text leaf must be separate from the innermost Grid`);
   }
@@ -2881,7 +2995,8 @@ function verifyRuntimeLog(log, scene, runID) {
     assert.deepEqual(actualInputs, scene.anonymousTextImageItems,
       `${scene.id}: anonymous text grouping, image intrinsic input, and item frames differ`);
   }
-  if (scene.intrinsicInputs && scene.mixedIntrinsicContributions) {
+  if (scene.intrinsicInputs
+    && (scene.mixedIntrinsicContributions || scene.nestedGridAnonymousTextImage)) {
     const intrinsicInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => (
       input.source?.kind === 'text' ? {
         grid: input.grid,
