@@ -23,7 +23,7 @@
 | 17 | 재시도된 superseded 결과를 최종 결과로 쓸 수 있음 | `supersededRetries=0`이며 superseded log가 없다. 통과. |
 | 18 | result JSON이 다른 run의 log를 요약할 수 있음 | summary의 run ID와 `runPrefix`가 같은 실행 timestamp/nonce를 가리킨다. 통과. |
 | 19 | screenshot이 결과 JSON과 다른 실행에서 나올 수 있음 | PNG, runtime log, launch log, simulator metadata가 같은 run directory에 있다. 통과. |
-| 20 | screenshot이 실제 화면을 보여주지 않을 수 있음 | 로컬 PNG를 열어 Grid box와 runtime 상태 표시를 직접 확인했다. 통과. |
+| 20 | screenshot이 실제 화면을 보여주지 않을 수 있음 | 로컬 PNG와 PR #438 본문을 열어 Grid box와 runtime 상태 표시를 확인했다. Agent Browser에서 최종 이미지 `complete=true`, 1080×2400을 확인했고 최초 잘못된 raw URL은 실제 commit SHA로 고쳤다. 결과는 `pr438-image-agent-browser.json`에 남겼다. 통과. |
 | 21 | 화면을 보고 Ahem glyph paint 성공을 주장할 수 있음 | 보고서와 roadmap에 glyph paint는 미검증이라고 명시했다. 통과. |
 | 22 | Chrome의 `scrollWidth=200`을 Spinon 화면 관찰로 오인할 수 있음 | 해당 값은 Chrome oracle로 한정하고 앱의 overflow pixel 증거로 사용하지 않는다. 통과. |
 | 23 | screenshot만으로 surface pixel 정확도를 주장할 수 있음 | PixelCopy 표본은 수집하지 않았다고 명시했다. 통과. |
