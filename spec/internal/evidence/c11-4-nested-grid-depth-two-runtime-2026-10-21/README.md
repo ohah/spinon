@@ -45,6 +45,10 @@ Fixture-feature Clippy 첫 실행에서 이 feature 조합이 함께 컴파일�
 
 첫 Android 실행은 앱의 scene argument allowlist에 새 ID가 없어 거부됐다. allowlist를 갱신해 재빌드한 뒤 두 번째 실행에서 FFI CSS subset이 지원하지 않는 `writing-mode` 선언이 거부됐다. 고정 HTML에서 이 선언을 없애고 Rust 입력 검사를 갱신한 뒤 최종 AVD run을 다시 실행해 네 장면 모두 통과했다. 초기 실행 로그는 같은 evidence 디렉터리에 남겨 두었다.
 
+## PR 본문 화면과 병합
+
+PR [#450](https://github.com/ohah/spinon/pull/450)은 2026-10-21 14:38:40 UTC Rebase and merge됐고 merge SHA는 `80837bbe03542eb55ebc983964c72fd925454d28`다. 병합 당시 PR check rollup은 비었으며 `gh api`는 main required status checks가 설정되어 있지 않다고 반환했다. PR 본문은 대표 Android/iOS 화면을 이 merge SHA의 immutable GitHub raw URL로 표시한다. 병합 후 Agent Browser에서 두 이미지가 모두 로드되어 원본 크기 Android 1080×2400, iOS 1206×2622를 반환함을 확인했다. [Agent Browser PR 본문 이미지 로드 기록](./pr-body-image-verification-agent-browser.json)에 결과를 남겼다. 병합 결과를 기록한 문서 PR의 [diff 실패 관점 검토 30개](./postmerge-docs-pr-review-30.md)도 연결한다. 이 브라우저 검증은 screenshot의 기존 한계(geometry/trace/draw-present만 확인)를 넓히지 않는다.
+
 ## 한계
 
 이 fixture는 정확히 네 고정 scene만 허용한다. arbitrary HTML/CSS, 임의 nesting depth, depth 3+, subgrid, CSS cascade admission, WPT, Android physical device와 hardware GPU는 확인하지 않았다. 앱 screenshot은 box/runtime surface 관찰이며 Ahem glyph texel equality를 증명하지 않는다. iOS의 `drawPresented`는 host draw/present 경로를 확인하며 OS compositor 이후 pixel을 증명하지 않는다. C11.4 checkbox와 공식 완료 집계 `72/213`은 유지한다.
