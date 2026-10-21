@@ -44,3 +44,9 @@ PR [#474](https://github.com/ohah/spinon/pull/474)의 두 raw screenshot 링크�
 ## 한계
 
 이 결과는 세 개의 고정 opt-in fixture에 한정한다. Android 실기기와 hardware GPU, iOS compositor 이후 pixels, glyph paint/equality, border stroke, WPT, 다른 UA, 임의 HTML/CSS, `fit-content(calc(...))`, 여러 track/item, 같은 scene의 양 축 cyclic percentage, nested Grid 및 전체 C11.4는 확인하지 않았다. 일반 `fit-content()` 또는 CSS 지원 완료로 해석하지 않는다. C11.4 공식 checkbox는 미완료이며 공식 완료 수 `72/213`을 유지한다.
+
+## PR 병합 기록
+
+PR [#474](https://github.com/ohah/spinon/pull/474)은 2026-10-21 21:23:35 UTC Rebase and merge되어 merge SHA df0c607f83732081a47ceb8435f3a174289acee7를 남겼다. live 확인 당시 main 필수 status check 설정은 없었고 PR check rollup은 비어 있었다. C11.4 checkbox 및 공식 완료 수 72/213은 계속 유지한다.
+
+병합 상태를 반영한 문서 diff 검토는 [post-merge docs review 30개](./post-merge-docs-review-30.md)에 기록했다.
