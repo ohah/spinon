@@ -12,6 +12,8 @@ mod anonymous_text_items;
 mod anonymous_text_multi_image;
 #[path = "c11_4/auto_repeat_negative_lines.rs"]
 mod auto_repeat_negative_lines;
+#[path = "c11_4/cyclic_percentage_minmax.rs"]
+mod cyclic_percentage_minmax;
 #[path = "c11_4/cyclic_percentage_tracks.rs"]
 mod cyclic_percentage_tracks;
 #[path = "c11_4/flex_spanning_text.rs"]
@@ -1054,6 +1056,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     if let Some(source) = cyclic_percentage_tracks::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
+    if let Some(source) = cyclic_percentage_minmax::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = anonymous_grid_border_overflow::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
@@ -1293,6 +1298,21 @@ mod tests {
             (
                 "definite-percent-column",
                 "grid-template-columns:50%;grid-template-rows:auto",
+                "width:40px;height:auto",
+            ),
+            (
+                "cyclic-minmax-column",
+                "grid-template-columns:minmax(0px,50%);grid-template-rows:auto",
+                "width:max-content;height:auto",
+            ),
+            (
+                "cyclic-minmax-row",
+                "grid-template-columns:auto;grid-template-rows:minmax(0px,50%)",
+                "width:24px;height:max-content",
+            ),
+            (
+                "definite-minmax-column",
+                "grid-template-columns:minmax(0px,50%);grid-template-rows:auto",
                 "width:40px;height:auto",
             ),
         ] {

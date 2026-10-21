@@ -1,0 +1,22 @@
+{
+  "serial": "emulator-5558",
+  "target": "android-avd",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone64_arm64",
+  "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+  "apkSha256": "8f696038672de21828d08f517cda7bc0c5f850ee1d605e1871f2ebcfb438c8b9",
+  "installedApkSha256": "8f696038672de21828d08f517cda7bc0c5f850ee1d605e1871f2ebcfb438c8b9",
+  "sourceRevision": {
+    "commit": "4c780be73ede3fa01637028d9e3d7696ca601162",
+    "tree": "d9aa663e09a19248d631b28e4e09d08faa4d6661",
+    "trackedDiffSha256": "742d83d4853bd719f30f526f2fe4df129448a952361bfd5cfcb362804a8df247",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs"
+    ]
+  }
+}
