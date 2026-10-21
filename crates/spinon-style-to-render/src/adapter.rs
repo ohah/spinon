@@ -368,6 +368,23 @@ pub(super) fn validate_layout_node_set(
     Ok(())
 }
 
+pub(super) fn validate_runtime_layout_nodes(
+    visible_nodes: &[NodeId],
+    document_nodes: &[NodeId],
+    frames: &BTreeMap<NodeId, spinon_layout::LayoutFrame>,
+) -> Result<(), StyleRenderError> {
+    let document_nodes = document_nodes.iter().copied().collect::<BTreeSet<_>>();
+    for node in visible_nodes {
+        if !frames.contains_key(node) {
+            return Err(StyleRenderError::MissingLayoutFrame(*node));
+        }
+    }
+    if let Some(node) = frames.keys().find(|node| !document_nodes.contains(node)) {
+        return Err(StyleRenderError::UnexpectedLayoutFrame(*node));
+    }
+    Ok(())
+}
+
 fn render_color(color: ComputedCssSrgb) -> OpaqueCssSrgb {
     OpaqueCssSrgb::new(color.red, color.green, color.blue)
 }

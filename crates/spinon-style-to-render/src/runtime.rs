@@ -7,7 +7,7 @@ use spinon_render::{
 use spinon_style::{ComputedBackgroundPaint, ComputedCssOverflow, ComputedStyleProfile};
 
 use crate::adapter::{
-    indexed_styles, validate_layout_node_set, validate_revisions, validate_style_node_set,
+    indexed_styles, validate_revisions, validate_runtime_layout_nodes, validate_style_node_set,
     validate_viewport,
 };
 use crate::stacking::scroll::RuntimeScrollOffsetRequest;
@@ -55,12 +55,11 @@ pub fn build_runtime_render_snapshot(
     let styles_by_node = indexed_styles(styles)?;
     let order = runtime_document_order(document, root, &styles_by_node, styles.profile)?;
     validate_style_node_set(&order.document_nodes, &styles_by_node)?;
-    let layout_nodes = if styles.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
-        &order.paint_nodes
-    } else {
-        &order.document_nodes
-    };
-    validate_layout_node_set(layout_nodes, &output.layout.frames)?;
+    validate_runtime_layout_nodes(
+        &order.paint_nodes,
+        &order.document_nodes,
+        &output.layout.frames,
+    )?;
 
     let viewport_css_px = CssSize::new(styles.viewport.width_css_px, styles.viewport.height_css_px)
         .map_err(|_| StyleRenderError::InvalidViewport)?;

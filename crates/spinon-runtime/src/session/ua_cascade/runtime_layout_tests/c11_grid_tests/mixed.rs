@@ -335,8 +335,7 @@ fn c114_mixed_text_image_inputs_share_one_revision_and_span_sizing_pass() {
         let column_pass = trace
             .passes
             .iter()
-            .filter(|pass| pass.axis == LayoutGridTrackSizingAxis::Columns)
-            .last()
+            .rfind(|pass| pass.axis == LayoutGridTrackSizingAxis::Columns)
             .unwrap();
         let expected_spans = if scene.items.len() == 2 {
             vec![2]

@@ -44,6 +44,20 @@ pub(crate) fn grid_track_sizing_trace_report(
     {
         return Err("C11.4 intrinsic input revision이 trace revision과 다릅니다".to_owned());
     }
+    let item_frame_by_node = diagnostics
+        .item_frames
+        .iter()
+        .map(|(node, frame)| (*node, *frame))
+        .collect::<std::collections::BTreeMap<_, _>>();
+    if item_frame_by_node.len() != diagnostics.item_frames.len()
+        || diagnostics.item_inputs.len() != diagnostics.item_frames.len()
+        || diagnostics
+            .item_inputs
+            .iter()
+            .any(|input| !item_frame_by_node.contains_key(&input.node))
+    {
+        return Err("C11.4 Grid item frame 집합이 intrinsic input과 다릅니다".to_owned());
+    }
 
     let measurements = diagnostics
         .intrinsic_measurements
@@ -115,6 +129,25 @@ pub(crate) fn grid_track_sizing_trace_report(
                 "node": input.node.get(),
                 "sourceOrder": input.source_order,
                 "source": source,
+                "textSources": input.text_sources.iter().map(|source| {
+                    serde_json::json!({
+                        "node": source.node.get(),
+                        "text": source.text,
+                    })
+                }).collect::<Vec<_>>(),
+            })
+        })
+        .collect::<Vec<_>>();
+    let item_frames = diagnostics
+        .item_frames
+        .iter()
+        .map(|(node, frame)| {
+            serde_json::json!({
+                "node": node.get(),
+                "x": frame.x,
+                "y": frame.y,
+                "width": frame.width,
+                "height": frame.height,
             })
         })
         .collect::<Vec<_>>();
@@ -132,6 +165,7 @@ pub(crate) fn grid_track_sizing_trace_report(
         },
         "intrinsicMeasurements": measurements,
         "gridItemIntrinsicInputs": item_inputs,
+        "gridItemFrames": item_frames,
         "trackSizingTraces": traces,
     });
     serde_json::to_string(&report)

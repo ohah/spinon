@@ -300,6 +300,7 @@ mod tests {
                     source_order: 2,
                     is_leaf: true,
                     style: item_style,
+                    text_sources: Vec::new(),
                 },
             )]),
             record_intrinsic_measurements: true,

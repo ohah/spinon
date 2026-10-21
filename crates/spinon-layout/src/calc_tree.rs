@@ -173,6 +173,9 @@ impl CalcLayoutTree {
                 TextParagraphInput::Paragraph(paragraph) => {
                     text_paragraphs.insert(engine_ids[&owner], paragraph.clone());
                 }
+                TextParagraphInput::AnonymousGridText { paragraph, .. } => {
+                    text_paragraphs.insert(engine_ids[&owner], paragraph.clone());
+                }
                 TextParagraphInput::Flow(flow) => {
                     let mut flow_nodes = Vec::new();
                     for (item_index, item) in flow.items.iter().enumerate() {

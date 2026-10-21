@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "target": "ios-simulator",
+  "runPrefix": "c114-anonymous-grid-text-ios-simulator-20261021T024302547Z-6db72e86",
+  "sceneCount": 1,
+  "observations": [
+    {
+      "sceneId": "anonymous-min-content-wrap",
+      "summary": "2026-10-21 11:43:03.379750+0900  localhost SpinonBootstrap[86614]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-anonymous-grid-text-ios-simulator-20261021T024302547Z-6db72e86-0 scene_id=anonymous-min-content-wrap expected_root_frame=width=120,height=20 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 20
+        }
+      ],
+      "tracks": [
+        {
+          "baseSize": 20,
+          "collapsed": false
+        },
+        {
+          "baseSize": 100,
+          "collapsed": false
+        }
+      ],
+      "trackTraceChunks": 12,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}

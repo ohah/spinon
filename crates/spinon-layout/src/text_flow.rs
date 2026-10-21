@@ -1,9 +1,16 @@
 use spinon_core::NodeId;
 use spinon_text_layout::ParagraphInput;
 
+use crate::LayoutGridItemTextSource;
+
 #[derive(Clone, Debug, PartialEq)]
 pub(crate) enum TextParagraphInput {
     Paragraph(ParagraphInput),
+    AnonymousGridText {
+        grid_container: NodeId,
+        paragraph: ParagraphInput,
+        source_nodes: Vec<LayoutGridItemTextSource>,
+    },
     Flow(TextFlowInput),
 }
 
@@ -11,7 +18,9 @@ impl TextParagraphInput {
     #[cfg(test)]
     pub(crate) fn paragraph(&self) -> Option<&ParagraphInput> {
         match self {
-            Self::Paragraph(paragraph) => Some(paragraph),
+            Self::Paragraph(paragraph) | Self::AnonymousGridText { paragraph, .. } => {
+                Some(paragraph)
+            }
             Self::Flow(_) => None,
         }
     }

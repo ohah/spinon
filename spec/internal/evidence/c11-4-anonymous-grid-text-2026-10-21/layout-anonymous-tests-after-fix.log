@@ -1,0 +1,14 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-8c2b125b265ef006)
+
+running 8 tests
+test host_document::tests::c11_4_anonymous_text::non_fixture_host_document_projection_still_rejects_direct_grid_text ... ok
+test host_document::tests::c11_4_anonymous_text::collapsible_whitespace_between_blocks_does_not_create_an_item ... ok
+test host_document::tests::c11_4_anonymous_text::leading_collapsible_text_keeps_provenance_but_anchors_item_to_first_content_node ... ok
+test host_document::tests::c11_4_anonymous_text::adjacent_text_nodes_become_one_anonymous_item_with_full_provenance ... ok
+test host_document::tests::c11_4_anonymous_text::direct_display_none_child_does_not_split_anonymous_text_run ... ok
+test host_document::tests::c11_4_anonymous_text::direct_block_child_splits_anonymous_runs_without_losing_source_order ... ok
+test host_document::tests::c11_4_anonymous_text::anonymous_item_wraps_at_min_content_width ... ok
+test c15_text_layout_tests::c15_2b::anonymous_inline_blocks_keep_source_order_and_flow_geometry ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 228 filtered out; finished in 0.00s

@@ -1,0 +1,7 @@
+llvm-nm=/Users/yoonhb/.rustup/toolchains/1.96.1-aarch64-apple-darwin/lib/rustlib/aarch64-apple-darwin/bin/llvm-nm
+archive=target/debug/libspinon_ffi.a
+llvm-nm, compatible with GNU nm
+LLVM (http://llvm.org/):
+fb5ccc96708d04099f5c3da4920ea6a0b2df69b173a2a9ae41605141e1d383a0  target/debug/libspinon_ffi.a
+PASS: C11.4 fixture symbol absent from default artifact
+PASS: C11.4 scene payload absent from default artifact

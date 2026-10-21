@@ -59,6 +59,13 @@ pub enum LayoutGridItemIntrinsicSource {
     Replaced { natural: LayoutIntrinsicSize },
 }
 
+/// Anonymous Grid text item에 들어간 원본 HostDocument text node와 정확한 문자열입니다.
+#[derive(Clone, Debug, PartialEq)]
+pub struct LayoutGridItemTextSource {
+    pub node: NodeId,
+    pub text: String,
+}
+
 /// 직접 Grid leaf의 intrinsic sizing 후속 계산에 사용할 원본 입력입니다.
 ///
 /// Text source는 같은 font registry identity/revision의 min/max-content 결과를 보존합니다.
@@ -72,6 +79,8 @@ pub struct LayoutGridItemIntrinsicInput {
     pub source_order: usize,
     pub revision: LayoutInputRevision,
     pub source: LayoutGridItemIntrinsicSource,
+    /// Anonymous Grid item의 정확한 원본 text node 목록입니다. 보통 Grid item에는 비어 있습니다.
+    pub text_sources: Vec<LayoutGridItemTextSource>,
     pub item_style: LayoutStyle,
 }
 
@@ -171,6 +180,7 @@ pub struct LayoutGridItemIntrinsicContributionInput {
     pub source_order: usize,
     pub revision: LayoutInputRevision,
     pub source: LayoutGridItemIntrinsicSource,
+    pub text_sources: Vec<LayoutGridItemTextSource>,
     pub item_style: LayoutStyle,
     pub width: LayoutGridItemIntrinsicAxisContributionInput,
     pub height: LayoutGridItemIntrinsicAxisContributionInput,
@@ -200,6 +210,7 @@ impl LayoutGridItemIntrinsicInput {
             source_order: self.source_order,
             revision: self.revision,
             source: self.source.clone(),
+            text_sources: self.text_sources.clone(),
             item_style: style,
             width: LayoutGridItemIntrinsicAxisContributionInput {
                 min_content: min_width,

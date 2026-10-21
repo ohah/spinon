@@ -111,6 +111,9 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "image-span2-before-span3", "image-span3-before-span2",
     "mixed-text-image-span2-forward", "mixed-text-image-span2-reversed",
     "mixed-text-image-span2-before-span3", "mixed-text-image-span3-before-span2",
+    "anonymous-min-content-wrap", "anonymous-comment-continuation",
+    "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
+    "whitespace-does-not-create-item",
 ]
 private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -179,6 +182,12 @@ private func c114NegativeTrackExpectation(_ sceneID: String) -> C114NegativeTrac
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if c114AutoRepeatNegativeLineSceneIDs.contains(sceneID) { return "" }
+    if sceneID == "anonymous-min-content-wrap" { return "width=120,height=20" }
+    if ["anonymous-comment-continuation", "anonymous-runs-around-block",
+        "anonymous-hidden-child-continuation",
+        "whitespace-does-not-create-item"].contains(sceneID) {
+        return "width=120,height=10"
+    }
     if let expectation = c114NegativeTrackExpectation(sceneID) {
         return "width=\(expectation.rootWidth),height=\(expectation.rootHeight)"
     }
@@ -281,6 +290,7 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if c114IsAnonymousTextScene(sceneID) { return "" }
     if c114IsTextMultiSpanScene(sceneID) || c114IsImageMultiSpanScene(sceneID)
         || c114IsMixedMultiSpanScene(sceneID) { return "" }
     if c114AutoRepeatNegativeLineSceneIDs.contains(sceneID) { return "" }
@@ -961,6 +971,21 @@ private func c114ImageTrackPassMatches(
 }
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+    switch sceneID {
+    case "anonymous-min-content-wrap":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=20]"
+    case "anonymous-comment-continuation", "anonymous-hidden-child-continuation":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10]"
+    case "anonymous-runs-around-block":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10;"
+            + "1:node=3,x=20,y=0,width=30,height=10]"
+    case "whitespace-does-not-create-item":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10;"
+            + "1:node=2,x=0,y=0,width=10,height=10;"
+            + "2:node=4,x=20,y=0,width=10,height=10]"
+    default:
+        break
+    }
     if c114IsImplicitTextScene(sceneID) { return nil }
     if c114IsTextMultiSpanScene(sceneID) || c114IsImageMultiSpanScene(sceneID)
         || c114IsMixedMultiSpanScene(sceneID) { return nil }
@@ -1284,6 +1309,12 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if ["anonymous-min-content-wrap", "anonymous-comment-continuation",
+        "anonymous-hidden-child-continuation"].contains(sceneID) {
+        return 1
+    }
+    if sceneID == "anonymous-runs-around-block" { return 2 }
+    if sceneID == "whitespace-does-not-create-item" { return 3 }
     if sceneID == "mixed-text-image-span2-forward"
         || sceneID == "mixed-text-image-span2-reversed" { return 3 }
     if sceneID == "mixed-text-image-span2-before-span3"
@@ -1323,6 +1354,12 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
 
 private func c114IsImplicitTextScene(_ sceneID: String) -> Bool {
     c114ImplicitTextRootFrame(sceneID) != nil
+}
+
+private func c114IsAnonymousTextScene(_ sceneID: String) -> Bool {
+    ["anonymous-min-content-wrap", "anonymous-comment-continuation",
+     "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
+     "whitespace-does-not-create-item"].contains(sceneID)
 }
 
 private func c114ImplicitTextRootFrame(_ sceneID: String) -> String? {
@@ -5259,6 +5296,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
         } else if c114GridTrackSizingProbeRequested {
             let report = result ?? "status=-1 missing-report"
+            if !report.hasPrefix("status=0 ") {
+                log("SPINON_C114_GRID_EVAL_FAILURE_DETAIL run_id=\(c114GridTrackSizingRunID) \(report.suffix(700))")
+            }
             let rootFrame = c114ExpectedRootFrame(c114GridTrackSizingSceneID)
             let itemFrame = c114ExpectedItemFrame(c114GridTrackSizingSceneID)
             let expectedNodeFrames = c114ExpectedNodeFrames(c114GridTrackSizingSceneID)

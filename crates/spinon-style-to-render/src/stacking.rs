@@ -15,7 +15,7 @@ use spinon_style_to_layout::StyleLayoutOutput;
 
 use crate::StyleRenderError;
 use crate::adapter::{
-    CurrentLayoutInputs, indexed_styles, validate_layout_node_set, validate_revisions,
+    CurrentLayoutInputs, indexed_styles, validate_revisions, validate_runtime_layout_nodes,
     validate_style_node_set, validate_viewport,
 };
 
@@ -294,7 +294,6 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
     }
 
     validate_style_node_set(&document_nodes, &styles_by_node)?;
-    validate_layout_node_set(&document_nodes, &output.layout.frames)?;
     let mut paint_nodes = flatten_contexts(
         document_nodes.len(),
         visible_node_count,
@@ -311,6 +310,7 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
             reserve,
         )?;
     }
+    validate_runtime_layout_nodes(&paint_nodes, &document_nodes, &output.layout.frames)?;
     let hit_test_order_by_node = if uses_overflow_clip_profile(styles.profile) {
         let mut hit_render_nodes = Vec::new();
         reserve.reserve(

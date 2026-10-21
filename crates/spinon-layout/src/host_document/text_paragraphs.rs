@@ -1,14 +1,22 @@
 use std::collections::{BTreeMap, BTreeSet};
 
-use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, NodeId};
+use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, NodeId};
 use spinon_text_layout::{
     InlineBoxStyle, InlineEdges, InlineRunStyle, ParagraphInput, ParagraphStyle, TextSource,
+    WhiteSpaceMode,
 };
 
 use crate::{
-    LayoutDisplay, LayoutError, LayoutLengthPercentage, LayoutStyle, TextFlowInput, TextFlowItem,
-    TextParagraphInput,
+    LayoutDisplay, LayoutError, LayoutGridItemTextSource, LayoutLengthPercentage, LayoutStyle,
+    TextFlowInput, TextFlowItem, TextParagraphInput,
 };
+
+#[path = "text_paragraphs/anonymous_grid.rs"]
+mod anonymous_grid;
+#[path = "text_paragraphs/dom_traversal.rs"]
+mod dom_traversal;
+
+use dom_traversal::{collect_hidden_layout_nodes, collect_host_handles, is_hidden_by_ancestor};
 
 #[derive(Default)]
 pub(super) struct HostTextLayouts {
@@ -17,6 +25,14 @@ pub(super) struct HostTextLayouts {
     pub excluded_layout_nodes: BTreeSet<NodeId>,
     pub paragraphs: BTreeMap<NodeId, ParagraphInput>,
     pub flows: BTreeMap<NodeId, TextFlowInput>,
+    pub anonymous_grid_items: BTreeMap<NodeId, Vec<AnonymousGridTextItem>>,
+}
+
+pub(super) struct AnonymousGridTextItem {
+    pub(super) anchor: NodeId,
+    pub(super) source_nodes: Vec<LayoutGridItemTextSource>,
+    pub(super) paragraph: ParagraphInput,
+    pub(super) style: LayoutStyle,
 }
 
 pub(super) fn collect(
@@ -25,6 +41,7 @@ pub(super) fn collect(
     styles: &BTreeMap<NodeId, LayoutStyle>,
     paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
     inline_run_styles: &BTreeMap<NodeId, InlineRunStyle>,
+    allow_c11_4_anonymous_grid_text_items: bool,
 ) -> Result<HostTextLayouts, LayoutError> {
     let handles = collect_host_handles(snapshot, root)?;
     let mut result = HostTextLayouts {
@@ -33,6 +50,7 @@ pub(super) fn collect(
         excluded_layout_nodes: BTreeSet::new(),
         paragraphs: BTreeMap::new(),
         flows: BTreeMap::new(),
+        anonymous_grid_items: BTreeMap::new(),
     };
 
     for (&paragraph_id, paragraph_style) in paragraph_styles {
@@ -53,6 +71,37 @@ pub(super) fn collect(
             .copied()
             .ok_or(LayoutError::MissingStyle(paragraph_id))?;
         if layout_style.display == LayoutDisplay::None {
+            continue;
+        }
+        if layout_style.display == LayoutDisplay::Grid && allow_c11_4_anonymous_grid_text_items {
+            if is_hidden_by_ancestor(snapshot, paragraph_handle, root, styles)? {
+                continue;
+            }
+            if paragraph_style.white_space != WhiteSpaceMode::Normal || layout_style.order != 0 {
+                return Err(LayoutError::UnsupportedTextParagraph {
+                    node: paragraph_id,
+                    reason: "C11.4 anonymous Grid text requires white-space:normal and order:0",
+                });
+            }
+            let mut inline_styles = BTreeMap::new();
+            let mut collector = ParagraphSourceCollector {
+                snapshot,
+                styles,
+                inline_nodes: &mut result.inline_nodes,
+                text_source_nodes: &mut result.text_source_nodes,
+                excluded_layout_nodes: &mut result.excluded_layout_nodes,
+                inline_styles: &mut inline_styles,
+            };
+            let items = anonymous_grid::collect_anonymous_grid_items(
+                &mut collector,
+                paragraph_handle,
+                paragraph_id,
+                layout_style,
+                paragraph_style,
+            )?;
+            if !items.is_empty() {
+                result.anonymous_grid_items.insert(paragraph_id, items);
+            }
             continue;
         }
         if layout_style.display != LayoutDisplay::Block {
@@ -84,6 +133,12 @@ pub(super) fn collect(
             TextParagraphInput::Paragraph(paragraph) => {
                 result.paragraphs.insert(paragraph_id, paragraph);
             }
+            TextParagraphInput::AnonymousGridText { .. } => {
+                return Err(LayoutError::UnsupportedTextParagraph {
+                    node: paragraph_id,
+                    reason: "anonymous Grid text item cannot be nested in a text paragraph",
+                });
+            }
             TextParagraphInput::Flow(flow) => {
                 result.flows.insert(paragraph_id, flow);
             }
@@ -91,28 +146,6 @@ pub(super) fn collect(
     }
 
     Ok(result)
-}
-
-fn collect_host_handles(
-    snapshot: &HostDocumentSnapshot,
-    root: HostNodeHandle,
-) -> Result<BTreeMap<NodeId, HostNodeHandle>, LayoutError> {
-    let mut handles = BTreeMap::new();
-    let mut pending = vec![root];
-    while let Some(handle) = pending.pop() {
-        if handles.insert(handle.id(), handle).is_some() {
-            return Err(LayoutError::DuplicateNode(handle.id()));
-        }
-        let node = snapshot
-            .node(handle)
-            .ok_or(LayoutError::InvalidHostDocumentRoot(handle.id()))?;
-        if let Some(children) = snapshot.children(handle) {
-            pending.extend(children);
-        } else if !matches!(node.kind(), HostNodeKind::Text(_)) {
-            return Err(LayoutError::InvalidHostDocumentRoot(handle.id()));
-        }
-    }
-    Ok(handles)
 }
 
 struct ParagraphSourceCollector<'a> {
@@ -438,60 +471,4 @@ fn inline_style_is_empty(style: InlineBoxStyle) -> bool {
     ]
     .into_iter()
     .all(|edge| edge == 0.0)
-}
-
-fn collect_hidden_layout_nodes(
-    snapshot: &HostDocumentSnapshot,
-    root: HostNodeHandle,
-    styles: &BTreeMap<NodeId, LayoutStyle>,
-    excluded: &mut BTreeSet<NodeId>,
-) -> Result<(), LayoutError> {
-    let mut pending = vec![root];
-    while let Some(handle) = pending.pop() {
-        let node = snapshot
-            .node(handle)
-            .ok_or(LayoutError::InvalidHostDocumentRoot(handle.id()))?;
-        if matches!(node.kind(), HostNodeKind::Element(_)) {
-            if !styles.contains_key(&handle.id()) {
-                return Err(LayoutError::MissingStyle(handle.id()));
-            }
-            excluded.insert(handle.id());
-            pending.extend(
-                snapshot
-                    .children(handle)
-                    .ok_or(LayoutError::InvalidHostDocumentRoot(handle.id()))?
-                    .filter(|child| {
-                        snapshot
-                            .node(*child)
-                            .is_some_and(|node| matches!(node.kind(), HostNodeKind::Element(_)))
-                    }),
-            );
-        }
-    }
-    Ok(())
-}
-
-fn is_hidden_by_ancestor(
-    snapshot: &HostDocumentSnapshot,
-    handle: HostNodeHandle,
-    root: HostNodeHandle,
-    styles: &BTreeMap<NodeId, LayoutStyle>,
-) -> Result<bool, LayoutError> {
-    let mut current = handle;
-    loop {
-        let style = styles
-            .get(&current.id())
-            .copied()
-            .ok_or(LayoutError::MissingStyle(current.id()))?;
-        if style.display == LayoutDisplay::None {
-            return Ok(true);
-        }
-        if current == root {
-            return Ok(false);
-        }
-        match snapshot.parent(current) {
-            Some(HostParent::Node(parent)) => current = parent,
-            Some(HostParent::Root) | None => return Ok(false),
-        }
-    }
 }

@@ -481,3 +481,7 @@ fn host_document_input_rejects_missing_styles_text_and_non_root_elements() {
         Err(LayoutError::UnsupportedTextNode(text_id))
     );
 }
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "host_document_tests/c11_4_anonymous_text.rs"]
+mod c11_4_anonymous_text;

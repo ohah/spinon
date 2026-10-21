@@ -11,6 +11,9 @@ use crate::{
     RootSizingPolicy, Viewport,
 };
 
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "host_document/anonymous_grid_text.rs"]
+mod anonymous_grid_text;
 #[path = "host_document/text_paragraphs.rs"]
 mod text_paragraphs;
 
@@ -19,6 +22,7 @@ struct HostDocumentLayoutProfile<'a> {
     paragraph_styles: Option<&'a BTreeMap<NodeId, ParagraphStyle>>,
     inline_run_styles: Option<&'a BTreeMap<NodeId, InlineRunStyle>>,
     ignore_collapsible_whitespace_text: bool,
+    allow_c11_4_anonymous_grid_text_items: bool,
 }
 
 /// HostDocument layout에서 paragraph와 inline run 스타일 입력을 함께 전달합니다.
@@ -144,6 +148,7 @@ impl LayoutInput {
                 paragraph_styles: Some(paragraph_styles),
                 inline_run_styles: Some(&inline_run_styles),
                 ignore_collapsible_whitespace_text: true,
+                allow_c11_4_anonymous_grid_text_items: false,
             },
         )
     }
@@ -170,6 +175,7 @@ impl LayoutInput {
                 paragraph_styles: Some(text_styles.paragraphs),
                 inline_run_styles: Some(text_styles.inline_runs),
                 ignore_collapsible_whitespace_text: true,
+                allow_c11_4_anonymous_grid_text_items: false,
             },
         )
     }
@@ -196,6 +202,7 @@ impl LayoutInput {
                 paragraph_styles: Some(text_styles.paragraphs),
                 inline_run_styles: Some(text_styles.inline_runs),
                 ignore_collapsible_whitespace_text: false,
+                allow_c11_4_anonymous_grid_text_items: false,
             },
         )
     }
@@ -221,6 +228,7 @@ impl LayoutInput {
                 paragraph_styles: None,
                 inline_run_styles: None,
                 ignore_collapsible_whitespace_text: false,
+                allow_c11_4_anonymous_grid_text_items: false,
             },
         )
     }
@@ -246,6 +254,7 @@ impl LayoutInput {
                 paragraph_styles: None,
                 inline_run_styles: None,
                 ignore_collapsible_whitespace_text: true,
+                allow_c11_4_anonymous_grid_text_items: false,
             },
         )
     }
@@ -264,6 +273,7 @@ impl LayoutInput {
             paragraph_styles,
             inline_run_styles,
             ignore_collapsible_whitespace_text,
+            allow_c11_4_anonymous_grid_text_items,
         } = profile;
         let root_node = snapshot
             .node(root)
@@ -284,24 +294,65 @@ impl LayoutInput {
                     styles,
                     paragraph_styles,
                     inline_run_styles,
+                    allow_c11_4_anonymous_grid_text_items,
                 )
             })
             .transpose()?
             .unwrap_or_default();
-        let inline_nodes = collected_text.inline_nodes;
-        let text_source_nodes = collected_text.text_source_nodes;
-        let excluded_layout_nodes = collected_text.excluded_layout_nodes;
-        let mut text_paragraphs = collected_text
+        let text_paragraphs_input = collected_text;
+        let inline_nodes = text_paragraphs_input.inline_nodes;
+        let text_source_nodes = text_paragraphs_input.text_source_nodes;
+        let excluded_layout_nodes = text_paragraphs_input.excluded_layout_nodes;
+        let anonymous_grid_items = text_paragraphs_input.anonymous_grid_items;
+        let mut text_paragraphs = text_paragraphs_input
             .paragraphs
             .into_iter()
             .map(|(node, paragraph)| (node, crate::TextParagraphInput::Paragraph(paragraph)))
             .collect::<BTreeMap<_, _>>();
-        for (node, flow) in collected_text.flows {
+        for (node, flow) in text_paragraphs_input.flows {
             if text_paragraphs
                 .insert(node, crate::TextParagraphInput::Flow(flow))
                 .is_some()
             {
                 return Err(LayoutError::DuplicateTextParagraph(node));
+            }
+        }
+        let mut anonymous_grid_anchors = BTreeMap::<NodeId, BTreeMap<NodeId, NodeId>>::new();
+        let mut synthetic_grid_item_nodes = Vec::new();
+        for (&grid_container, items) in &anonymous_grid_items {
+            for item in items {
+                let Some(first_source) = item.source_nodes.first() else {
+                    return Err(LayoutError::UnsupportedTextParagraph {
+                        node: grid_container,
+                        reason: "anonymous Grid text item has no source text nodes",
+                    });
+                };
+                if anonymous_grid_anchors
+                    .entry(grid_container)
+                    .or_default()
+                    .insert(first_source.node, item.anchor)
+                    .is_some()
+                {
+                    return Err(LayoutError::DuplicateTextParagraph(first_source.node));
+                }
+                if text_paragraphs
+                    .insert(
+                        item.anchor,
+                        crate::TextParagraphInput::AnonymousGridText {
+                            grid_container,
+                            paragraph: item.paragraph.clone(),
+                            source_nodes: item.source_nodes.clone(),
+                        },
+                    )
+                    .is_some()
+                {
+                    return Err(LayoutError::DuplicateTextParagraph(item.anchor));
+                }
+                synthetic_grid_item_nodes.push(LayoutNode {
+                    id: item.anchor,
+                    children: Vec::new(),
+                    style: item.style,
+                });
             }
         }
 
@@ -354,6 +405,13 @@ impl LayoutInput {
                         }
                         return Err(LayoutError::UnsupportedTextNode(child.id()));
                     }
+                    if !hidden
+                        && let Some(anchor) = anonymous_grid_anchors
+                            .get(&handle.id())
+                            .and_then(|starts| starts.get(&child.id()))
+                    {
+                        children.push(*anchor);
+                    }
                     continue;
                 }
                 if inline_nodes.contains(&child.id()) {
@@ -400,6 +458,7 @@ impl LayoutInput {
             );
         }
 
+        nodes.extend(synthetic_grid_item_nodes);
         if let Some(id) = styles.keys().find(|id| !included.contains(*id)) {
             return Err(LayoutError::UnknownStyleNode(*id));
         }

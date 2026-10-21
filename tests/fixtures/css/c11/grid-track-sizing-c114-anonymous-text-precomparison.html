@@ -25,6 +25,10 @@
     <span class="label">two anonymous text runs separated by one block Grid item</span>
     <div class="grid" id="anonymous-runs-around-block" style="grid-template-columns:min-content min-content min-content">XX<div class="block" id="explicit-block-item"></div>XXXX</div>
   </section>
+  <section class="case" data-case="anonymous-hidden-child-continuation">
+    <span class="label">a display:none direct child does not split the anonymous text item</span>
+    <div class="grid" id="anonymous-hidden-child-continuation" style="grid-template-columns:max-content 1fr">XX<span id="hidden-grid-child" style="display:none">ignored</span>XX</div>
+  </section>
   <section class="case" data-case="whitespace-does-not-create-item">
     <span class="label">collapsible whitespace between block items does not consume auto-placement</span>
     <div class="grid" id="whitespace-does-not-create-item" style="grid-template-columns:20px 30px 40px"><div class="block" id="whitespace-first-item" style="width:10px"></div>&#32;&#9;&#10;<div class="block" id="whitespace-second-item" style="width:10px"></div></div>

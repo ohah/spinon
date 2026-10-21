@@ -172,6 +172,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "image-span2-before-span3", "image-span3-before-span2",
             "mixed-text-image-span2-forward", "mixed-text-image-span2-reversed",
             "mixed-text-image-span2-before-span3", "mixed-text-image-span3-before-span2",
+            "anonymous-min-content-wrap", "anonymous-comment-continuation",
+            "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
+            "whitespace-does-not-create-item",
             "column-auto-natural-ratio", "column-target-max-width-clamp",
             "row-target-max-height-clamp",
             "column-opposite-min-over-max", "column-border-box-transfer",
@@ -377,6 +380,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ExpectedRootFrame(String sceneId) {
         if (c114IsAutoRepeatNegativeLineScene(sceneId)) return "";
+        if (sceneId.equals("anonymous-min-content-wrap")) return "width=120,height=20";
+        if (sceneId.equals("anonymous-comment-continuation")
+                || sceneId.equals("anonymous-runs-around-block")
+                || sceneId.equals("anonymous-hidden-child-continuation")
+                || sceneId.equals("whitespace-does-not-create-item")) {
+            return "width=120,height=10";
+        }
         String implicitTrackFrame = c114ImplicitTextRootFrame(sceneId);
         if (implicitTrackFrame != null) return implicitTrackFrame;
         String negativeTrackFrame = c114NegativeTrackRootFrame(sceneId);
@@ -508,6 +518,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        if (c114IsAnonymousTextScene(sceneId)) return "";
         if (c114IsImageMultiSpanScene(sceneId) || c114IsTextMultiSpanScene(sceneId)
                 || c114IsMixedMultiSpanScene(sceneId)
                 || sceneId.startsWith("competing-span2-")
@@ -1197,6 +1208,22 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
+        switch (sceneId) {
+            case "anonymous-min-content-wrap":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=20]";
+            case "anonymous-comment-continuation":
+            case "anonymous-hidden-child-continuation":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10]";
+            case "anonymous-runs-around-block":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10;"
+                        + "1:node=3,x=20,y=0,width=30,height=10]";
+            case "whitespace-does-not-create-item":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10;"
+                        + "1:node=2,x=0,y=0,width=10,height=10;"
+                        + "2:node=4,x=20,y=0,width=10,height=10]";
+            default:
+                break;
+        }
         if (c114IsImplicitTextScene(sceneId)) return null;
         if (c114IsMultiSpanOrderingScene(sceneId) || c114IsTextMultiSpanScene(sceneId)) return null;
         String negativeTrackFrames = c114NegativeTrackNodeFrames(sceneId);
@@ -1547,6 +1574,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (sceneId.equals("anonymous-min-content-wrap")
+                || sceneId.equals("anonymous-comment-continuation")
+                || sceneId.equals("anonymous-hidden-child-continuation")) return 1;
+        if (sceneId.equals("anonymous-runs-around-block")) return 2;
+        if (sceneId.equals("whitespace-does-not-create-item")) return 3;
         if (sceneId.equals("image-span2-forward")
                 || sceneId.equals("image-span2-reversed")) return 3;
         if (sceneId.equals("image-span2-before-span3")
@@ -1589,6 +1621,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114IsImplicitTextScene(String sceneId) {
         return c114ImplicitTextRootFrame(sceneId) != null;
+    }
+
+    private static boolean c114IsAnonymousTextScene(String sceneId) {
+        return sceneId.equals("anonymous-min-content-wrap")
+                || sceneId.equals("anonymous-comment-continuation")
+                || sceneId.equals("anonymous-runs-around-block")
+                || sceneId.equals("anonymous-hidden-child-continuation")
+                || sceneId.equals("whitespace-does-not-create-item");
     }
 
     private static boolean c114IsAutoRepeatNegativeLineScene(String sceneId) {

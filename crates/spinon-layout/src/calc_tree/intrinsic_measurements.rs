@@ -8,17 +8,18 @@ use crate::{
     LayoutInput, LayoutInputRevision, LayoutIntrinsicMeasureAvailableSpace,
     LayoutIntrinsicMeasureKnownDimensions, LayoutIntrinsicMeasureParentSize,
     LayoutIntrinsicMeasureSize, LayoutIntrinsicMeasurement, LayoutIntrinsicMeasurementSource,
-    LayoutPosition, LayoutStyle,
+    LayoutPosition, LayoutStyle, TextParagraphInput,
 };
 
 use super::CalcLayoutTree;
 
-#[derive(Clone, Copy)]
+#[derive(Clone)]
 pub(super) struct GridItemIntrinsicMetadata {
     pub(super) container: SpinonNodeId,
     pub(super) source_order: usize,
     pub(super) is_leaf: bool,
     pub(super) style: LayoutStyle,
+    pub(super) text_sources: Vec<crate::LayoutGridItemTextSource>,
 }
 
 pub(super) fn grid_item_metadata(
@@ -53,6 +54,14 @@ pub(super) fn grid_item_metadata(
                 })
                 .map(|(source_order, child)| {
                     let child_node = &input.nodes[index[&child]];
+                    let text_sources = match input.text_paragraphs.get(&child) {
+                        Some(TextParagraphInput::AnonymousGridText {
+                            grid_container,
+                            source_nodes,
+                            ..
+                        }) if *grid_container == container.id => source_nodes.clone(),
+                        _ => Vec::new(),
+                    };
                     (
                         child,
                         GridItemIntrinsicMetadata {
@@ -60,6 +69,7 @@ pub(super) fn grid_item_metadata(
                             source_order,
                             is_leaf: child_node.children.is_empty(),
                             style: child_node.style,
+                            text_sources,
                         },
                     )
                 })
@@ -241,6 +251,7 @@ impl CalcLayoutTree {
                 source_order: item_metadata.source_order,
                 revision,
                 source,
+                text_sources: item_metadata.text_sources.clone(),
                 item_style: item_metadata.style,
             });
         }

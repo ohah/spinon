@@ -148,6 +148,7 @@ fn validate_text_paragraphs(
         }
         pending.extend(node.children.iter().map(|&child| (child, is_hidden)));
     }
+    let mut anonymous_grid_text_sources = BTreeSet::new();
     for (&id, paragraph_input) in &input.text_paragraphs {
         let Some(&position) = index.get(&id) else {
             return Err(LayoutError::UnknownTextParagraph(id));
@@ -177,6 +178,53 @@ fn validate_text_paragraphs(
                     return Err(LayoutError::UnsupportedTextParagraph {
                         node: id,
                         reason: "visible 자식 box가 없는 Block paragraph만 허용됩니다",
+                    });
+                }
+            }
+            TextParagraphInput::AnonymousGridText {
+                grid_container,
+                paragraph,
+                source_nodes,
+            } => {
+                let grid_is_parent = index.get(grid_container).is_some_and(|&grid_index| {
+                    input.nodes()[grid_index].style.display == crate::LayoutDisplay::Grid
+                        && input.nodes()[grid_index].children.contains(&id)
+                });
+                let first_non_whitespace_source = source_nodes
+                    .iter()
+                    .find(|source| {
+                        source.text.chars().any(|character| {
+                            !matches!(character, '\t' | '\n' | '\u{000c}' | '\r' | ' ')
+                        })
+                    })
+                    .map(|source| source.node);
+                let expected_sources = source_nodes
+                    .iter()
+                    .filter(|source| !source.text.is_empty())
+                    .map(|source| (source.node, source.text.as_str()))
+                    .collect::<Vec<_>>();
+                let actual_sources = paragraph
+                    .sources
+                    .iter()
+                    .map(|source| (source.node, source.text.as_str()))
+                    .collect::<Vec<_>>();
+                let sources_are_unique = source_nodes
+                    .iter()
+                    .all(|source| anonymous_grid_text_sources.insert(source.node));
+                if paragraph.node != id
+                    || !grid_is_parent
+                    || !node.children.is_empty()
+                    || paragraph.sources.is_empty()
+                    || paragraph.style.white_space != crate::WhiteSpaceMode::Normal
+                    || source_nodes.is_empty()
+                    || !source_nodes.iter().any(|source| source.node == id)
+                    || first_non_whitespace_source != Some(id)
+                    || !sources_are_unique
+                    || expected_sources != actual_sources
+                {
+                    return Err(LayoutError::UnsupportedTextParagraph {
+                        node: id,
+                        reason: "anonymous Grid text item provenance, owner, or text profile is invalid",
                     });
                 }
             }
