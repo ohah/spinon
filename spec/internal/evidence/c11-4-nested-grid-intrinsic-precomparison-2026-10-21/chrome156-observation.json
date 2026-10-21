@@ -1,0 +1,70 @@
+{
+  "observedOn": "2026-10-21",
+  "method": "Agent Browser rendered local fixture",
+  "browser": {
+    "product": "HeadlessChrome",
+    "version": "156.0.0.0",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+  },
+  "font": {
+    "family": "AhemFixture",
+    "css": "10px/10px",
+    "loaded": true,
+    "source": "tests/fixtures/resources/c15/Ahem.ttf",
+    "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448"
+  },
+  "cases": {
+    "span-two": {
+      "outer": { "x": 17, "y": 53, "width": 134, "height": 20 },
+      "outerTracks": [65, 65],
+      "nested": { "x": 17, "y": 53, "width": 134, "height": 20 },
+      "nestedTracks": [70, 60],
+      "nestedRows": [20],
+      "a": { "x": 17, "y": 53, "width": 70, "height": 20 },
+      "b": { "x": 91, "y": 53, "width": 60, "height": 20 },
+      "aScrollWidth": 70
+    },
+    "one-track": {
+      "outer": { "x": 17, "y": 115, "width": 138, "height": 20 },
+      "outerTracks": [134, 0],
+      "nested": { "x": 17, "y": 115, "width": 134, "height": 20 },
+      "nestedTracks": [70, 60],
+      "nestedRows": [20],
+      "a": { "x": 17, "y": 115, "width": 70, "height": 20 },
+      "b": { "x": 91, "y": 115, "width": 60, "height": 20 },
+      "aScrollWidth": 70
+    },
+    "inner-span-diagnostic": {
+      "outer": { "x": 17, "y": 177, "width": 70, "height": 34 },
+      "outerTracks": [33, 33],
+      "nested": { "x": 17, "y": 177, "width": 70, "height": 34 },
+      "nestedTracks": [60, 6],
+      "nestedRows": [20, 10],
+      "a": { "x": 17, "y": 177, "width": 70, "height": 20 },
+      "b": { "x": 17, "y": 201, "width": 60, "height": 10 },
+      "aScrollWidth": 70
+    },
+    "definite-flex-control": {
+      "outer": { "x": 17, "y": 253, "width": 120, "height": 20 },
+      "outerTracks": [58, 58],
+      "nested": { "x": 17, "y": 253, "width": 120, "height": 20 },
+      "nestedTracks": [70, 60],
+      "nestedRows": [20],
+      "a": { "x": 17, "y": 253, "width": 70, "height": 20 },
+      "b": { "x": 91, "y": 253, "width": 60, "height": 20 },
+      "aScrollWidth": 70,
+      "bRightPastOuterRight": 14
+    }
+  },
+  "screenshot": {
+    "path": "headless-chrome156-nested-grid-oracle.png",
+    "width": 1280,
+    "height": 633,
+    "sha256": "484de00d54258c72f0f2cf82d9bb82e7ae2508c6edb77638fab6bcd26e7db14f"
+  },
+  "limits": [
+    "This is browser observation, not a Spinon result or platform simulator result.",
+    "The inner-span diagnostic introduces inner-grid span and implicit-row behavior; it is excluded from acceptance.",
+    "The CSSOM observation does not prove compositor pixels, border-stroke rendering, WPT conformance, or general nested-grid support."
+  ]
+}
