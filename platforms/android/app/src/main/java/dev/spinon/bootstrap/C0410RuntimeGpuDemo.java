@@ -228,6 +228,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "typed-minmax-max-content", "typed-fit-content", "typed-fraction",
             "typed-percentage", "typed-calc", "typed-auto-fit-occupied",
             "typed-auto-fit-empty", "typed-auto-fit-gutter",
+            "anonymous-text-two-images-forward", "two-images-anonymous-text-reversed",
+            "anonymous-text-three-images-forward", "three-images-anonymous-text-reversed",
     };
     private static final String[] C114_AUTO_REPEAT_NEGATIVE_LINE_SCENE_IDS = {
             "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -384,6 +386,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static String c114ExpectedRootFrame(String sceneId) {
         if (c114IsAutoRepeatNegativeLineScene(sceneId)) return "";
         if (sceneId.equals("anonymous-min-content-wrap")) return "width=120,height=20";
+        if (c114IsAnonymousTextMultiImageScene(sceneId)) return "width=220,height=180";
         if (c114IsAnonymousTextImageScene(sceneId)) return "width=220,height=60";
         if (sceneId.equals("anonymous-comment-continuation")
                 || sceneId.equals("anonymous-runs-around-block")
@@ -522,7 +525,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
-        if (c114IsAnonymousTextScene(sceneId) || c114IsAnonymousTextImageScene(sceneId)) return "";
+        if (c114IsAnonymousTextScene(sceneId) || c114IsAnonymousTextImageScene(sceneId)
+                || c114IsAnonymousTextMultiImageScene(sceneId)) return "";
         if (c114IsImageMultiSpanScene(sceneId) || c114IsTextMultiSpanScene(sceneId)
                 || c114IsMixedMultiSpanScene(sceneId)
                 || sceneId.startsWith("competing-span2-")
@@ -636,6 +640,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static boolean c114ExpectedTextIntrinsicInputs(String sceneId, String report) {
+        if (c114IsAnonymousTextMultiImageScene(sceneId)) {
+            return c114ExpectedAnonymousTextMultiImageInputs(sceneId, report);
+        }
         if (c114IsAnonymousTextImageScene(sceneId)) {
             return c114ExpectedAnonymousTextImageInputs(sceneId, report);
         }
@@ -788,6 +795,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
     }
     private static boolean c114ExpectedImageIntrinsicInputs(String sceneId, String report) {
+        if (c114IsAnonymousTextMultiImageScene(sceneId)) {
+            return c114ExpectedAnonymousTextMultiImageInputs(sceneId, report);
+        }
         if (c114IsAnonymousTextImageScene(sceneId)) {
             return c114ExpectedAnonymousTextImageInputs(sceneId, report);
         }
@@ -991,10 +1001,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         for (int index = 0; index < tracks.length(); index++) {
             org.json.JSONObject track = tracks.optJSONObject(index);
             if (track == null) return false;
+            if (!track.has("gutter") || !track.has("collapsed") || !track.has("baseSize")) {
+                return false;
+            }
             if (track.optBoolean("gutter", false) || track.optBoolean("collapsed", false)) continue;
+            double baseSize = track.optDouble("baseSize", Double.NaN);
             if (observedCount >= expectedSizes.length
-                    || Math.abs(track.optDouble("baseSize", Double.NaN)
-                            - expectedSizes[observedCount]) > 0.0001) return false;
+                    || !Double.isFinite(baseSize)
+                    || Math.abs(baseSize - expectedSizes[observedCount]) > 0.0001) return false;
             observedCount++;
         }
         return observedCount == expectedSizes.length;
@@ -1219,6 +1233,24 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
         switch (sceneId) {
+            case "anonymous-text-two-images-forward":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=180;"
+                        + "1:node=3,x=0,y=0,width=24,height=16;"
+                        + "2:node=4,x=12,y=60,width=48,height=32]";
+            case "two-images-anonymous-text-reversed":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=180;"
+                        + "1:node=2,x=12,y=60,width=48,height=32;"
+                        + "2:node=4,x=0,y=0,width=24,height=16]";
+            case "anonymous-text-three-images-forward":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=180;"
+                        + "1:node=3,x=0,y=0,width=24,height=16;"
+                        + "2:node=4,x=18,y=60,width=48,height=32;"
+                        + "3:node=5,x=0,y=120,width=72,height=48]";
+            case "three-images-anonymous-text-reversed":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=180;"
+                        + "1:node=2,x=0,y=120,width=72,height=48;"
+                        + "2:node=3,x=18,y=60,width=48,height=32;"
+                        + "3:node=5,x=0,y=0,width=24,height=16]";
             case "anonymous-text-image-text":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=60;"
                         + "1:node=3,x=20,y=0,width=72,height=48]";
@@ -1447,6 +1479,178 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
             return true;
         } catch (org.json.JSONException | ClassCastException error) {
+            return false;
+        }
+    }
+
+    private static boolean c114ExpectedAnonymousTextMultiImageInputs(
+            String sceneId, String report
+    ) {
+        int[] nodes;
+        String[] kinds;
+        int[] spans;
+        double[] imageWidths;
+        double[][] expectedFrames;
+        int textIndex;
+        switch (sceneId) {
+            case "anonymous-text-two-images-forward":
+                nodes = new int[] {2, 3, 4};
+                kinds = new String[] {"text", "replaced", "replaced"};
+                spans = new int[] {1, 2, 2};
+                imageWidths = new double[] {0, 24, 48};
+                expectedFrames = new double[][] {
+                    {2, 40, 0, 20, 10}, {3, 0, 0, 24, 16}, {4, 12, 60, 48, 32},
+                };
+                textIndex = 0;
+                break;
+            case "two-images-anonymous-text-reversed":
+                nodes = new int[] {2, 3, 4};
+                kinds = new String[] {"replaced", "text", "replaced"};
+                spans = new int[] {2, 1, 2};
+                imageWidths = new double[] {48, 0, 24};
+                expectedFrames = new double[][] {
+                    {2, 12, 60, 48, 32}, {3, 40, 0, 20, 10}, {4, 0, 0, 24, 16},
+                };
+                textIndex = 1;
+                break;
+            case "anonymous-text-three-images-forward":
+                nodes = new int[] {2, 3, 4, 5};
+                kinds = new String[] {"text", "replaced", "replaced", "replaced"};
+                spans = new int[] {1, 2, 2, 3};
+                imageWidths = new double[] {0, 24, 48, 72};
+                expectedFrames = new double[][] {
+                    {2, 52, 0, 20, 10}, {3, 0, 0, 24, 16},
+                    {4, 18, 60, 48, 32}, {5, 0, 120, 72, 48},
+                };
+                textIndex = 0;
+                break;
+            case "three-images-anonymous-text-reversed":
+                nodes = new int[] {2, 3, 4, 5};
+                kinds = new String[] {"replaced", "replaced", "text", "replaced"};
+                spans = new int[] {3, 2, 1, 2};
+                imageWidths = new double[] {72, 48, 0, 24};
+                expectedFrames = new double[][] {
+                    {2, 0, 120, 72, 48}, {3, 18, 60, 48, 32},
+                    {4, 52, 0, 20, 10}, {5, 0, 0, 24, 16},
+                };
+                textIndex = 2;
+                break;
+            default:
+                return false;
+        }
+        int diagnosticsMarker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (diagnosticsMarker < 0) return false;
+        String diagnosticsJson = report.substring(
+                diagnosticsMarker + "grid_track_sizing_diagnostics=".length());
+        try {
+            Object value = new org.json.JSONTokener(diagnosticsJson).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONObject diagnostics = (org.json.JSONObject) value;
+            org.json.JSONObject revision = diagnostics.optJSONObject("layoutInputRevision");
+            org.json.JSONArray inputs = diagnostics.optJSONArray("gridItemIntrinsicInputs");
+            org.json.JSONArray itemFrames = diagnostics.optJSONArray("gridItemFrames");
+            if (revision == null || revision.optInt("intrinsicSize", 0) != 1
+                    || inputs == null || inputs.length() != nodes.length
+                    || itemFrames == null || itemFrames.length() != nodes.length) return false;
+            for (int index = 0; index < nodes.length; index++) {
+                org.json.JSONObject input = inputs.optJSONObject(index);
+                org.json.JSONObject source = input == null ? null : input.optJSONObject("source");
+                org.json.JSONArray textSources = input == null ? null : input.optJSONArray("textSources");
+                org.json.JSONObject frame = itemFrames.optJSONObject(index);
+                if (input == null || input.optInt("grid", -1) != 1
+                        || input.optInt("node", -1) != nodes[index]
+                        || input.optInt("sourceOrder", -1) != index || source == null
+                        || !kinds[index].equals(source.optString("kind")) || textSources == null
+                        || frame == null || frame.optInt("node", -1) != nodes[index]) return false;
+                for (int component = 0; component < 4; component++) {
+                    String[] keys = {"x", "y", "width", "height"};
+                    double actual = frame.optDouble(keys[component], Double.NaN);
+                    if (!Double.isFinite(actual)
+                            || Math.abs(actual - expectedFrames[index][component + 1])
+                                    > 1.0 / 64.0) return false;
+                }
+                if (index == textIndex) {
+                    org.json.JSONObject textSource = textSources.optJSONObject(0);
+                    if (textSources.length() != 1 || textSource == null
+                            || textSource.optInt("node", -1) != nodes[index]
+                            || !"XX".equals(textSource.optString("text"))
+                            || source.optInt("fontRegistryRevision", -1) != 1
+                            || source.optDouble("minContent", Double.NaN) != 20.0
+                            || source.optDouble("minContentHeight", Double.NaN) != 10.0
+                            || source.optDouble("maxContent", Double.NaN) != 20.0
+                            || source.optDouble("maxContentHeight", Double.NaN) != 10.0) return false;
+                } else {
+                    org.json.JSONObject natural = source.optJSONObject("natural");
+                    if (textSources.length() != 0 || natural == null
+                            || natural.optDouble("width", Double.NaN) != 24.0
+                            || natural.optDouble("height", Double.NaN) != 16.0
+                            || !natural.has("aspectRatio") || !natural.isNull("aspectRatio")) {
+                        return false;
+                    }
+                }
+            }
+            org.json.JSONArray traces = diagnostics.optJSONArray("trackSizingTraces");
+            if (traces == null || traces.length() != 1) return false;
+            org.json.JSONObject trace = traces.optJSONObject(0);
+            org.json.JSONArray passes = trace == null ? null : trace.optJSONArray("passes");
+            if (trace == null || trace.optInt("grid", -1) != 1
+                    || passes == null || passes.length() != 2) return false;
+            org.json.JSONObject columns = passes.optJSONObject(0);
+            org.json.JSONObject rows = passes.optJSONObject(1);
+            if (columns == null || rows == null
+                    || !"Columns".equals(columns.optString("axis"))
+                    || !"Rows".equals(rows.optString("axis"))) return false;
+            double[] expectedColumns = nodes.length == 3
+                    ? new double[] {12, 28, 20, 0} : new double[] {18, 34, 20, 0};
+            if (!c114ImageMultiSpanTracksMatch(columns, expectedColumns)
+                    || !c114ImageMultiSpanTracksMatch(rows, new double[] {60, 60, 60})) {
+                return false;
+            }
+            org.json.JSONArray stages = columns.optJSONArray("stages");
+            if (stages == null) return false;
+            java.util.ArrayList<Integer> observedSpans = new java.util.ArrayList<>();
+            for (int index = 0; index < stages.length(); index++) {
+                org.json.JSONObject stage = stages.optJSONObject(index);
+                String name = stage == null ? "" : stage.optString("stage");
+                java.util.regex.Matcher matcher = java.util.regex.Pattern
+                        .compile("^IntrinsicItemBatch \\{ span: (\\d+),")
+                        .matcher(name);
+                if (matcher.find()) observedSpans.add(Integer.parseInt(matcher.group(1)));
+            }
+            int[] expectedSpans = nodes.length == 3 ? new int[] {1, 2} : new int[] {1, 2, 3};
+            if (observedSpans.size() != expectedSpans.length) return false;
+            for (int index = 0; index < expectedSpans.length; index++) {
+                if (observedSpans.get(index) != expectedSpans[index]) return false;
+            }
+            org.json.JSONArray contributions = columns.optJSONArray("contributions");
+            if (contributions == null) return false;
+            java.util.ArrayList<String> expectedContributions = new java.util.ArrayList<>();
+            for (int span : expectedSpans) {
+                for (int index = 0; index < nodes.length; index++) {
+                    if (spans[index] == span && index != textIndex) {
+                        expectedContributions.add(nodes[index] + ":Minimum:" + span + ":0.0");
+                    }
+                }
+                for (int repetition = 0; repetition < 2; repetition++) {
+                    for (int index = 0; index < nodes.length; index++) {
+                        if (spans[index] != span) continue;
+                        expectedContributions.add(nodes[index] + ":MinContent:" + span + ":"
+                                + (index == textIndex ? 20.0 : imageWidths[index]));
+                    }
+                }
+            }
+            if (contributions.length() != expectedContributions.size()) return false;
+            for (int index = 0; index < contributions.length(); index++) {
+                org.json.JSONObject contribution = contributions.optJSONObject(index);
+                String expected = expectedContributions.get(index);
+                if (contribution == null || !expected.equals(
+                        contribution.optInt("item", -1) + ":"
+                                + contribution.optString("kind") + ":"
+                                + contribution.optInt("span", -1) + ":"
+                                + contribution.optDouble("value", Double.NaN))) return false;
+            }
+            return true;
+        } catch (org.json.JSONException | ClassCastException | NumberFormatException error) {
             return false;
         }
     }
@@ -1699,6 +1903,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (sceneId.equals("anonymous-text-two-images-forward")
+                || sceneId.equals("two-images-anonymous-text-reversed")) return 3;
+        if (sceneId.equals("anonymous-text-three-images-forward")
+                || sceneId.equals("three-images-anonymous-text-reversed")) return 4;
         if (c114IsAnonymousTextImageScene(sceneId)) return 2;
         if (sceneId.equals("anonymous-min-content-wrap")
                 || sceneId.equals("anonymous-comment-continuation")
@@ -1763,6 +1971,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("comment-group-before-image")
                 || sceneId.equals("whitespace-around-image")
                 || sceneId.equals("hidden-child-around-image");
+    }
+
+    private static boolean c114IsAnonymousTextMultiImageScene(String sceneId) {
+        return sceneId.equals("anonymous-text-two-images-forward")
+                || sceneId.equals("two-images-anonymous-text-reversed")
+                || sceneId.equals("anonymous-text-three-images-forward")
+                || sceneId.equals("three-images-anonymous-text-reversed");
     }
 
     private static boolean c114IsAutoRepeatNegativeLineScene(String sceneId) {

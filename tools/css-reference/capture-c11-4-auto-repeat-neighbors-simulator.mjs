@@ -41,6 +41,10 @@ const anonymousTextImageSceneIDs = new Set([
   'comment-group-before-image', 'whitespace-around-image',
   'hidden-child-around-image',
 ]);
+const anonymousTextMultiImageSceneIDs = new Set([
+  'anonymous-text-two-images-forward', 'two-images-anonymous-text-reversed',
+  'anonymous-text-three-images-forward', 'three-images-anonymous-text-reversed',
+]);
 const isTextMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => textMultiSpanSceneIDs.has(sceneID));
 const isImageMultiSpanRun = requestedSceneIDs?.length > 0
@@ -51,10 +55,13 @@ const isAnonymousTextRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => anonymousTextSceneIDs.has(sceneID));
 const isAnonymousTextImageRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => anonymousTextImageSceneIDs.has(sceneID));
+const isAnonymousTextMultiImageRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => anonymousTextMultiImageSceneIDs.has(sceneID));
 const isMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID)
     || textMultiSpanSceneIDs.has(sceneID) || mixedMultiSpanSceneIDs.has(sceneID));
 const runKind = requestedRunKind ?? (isMixedMultiSpanRun ? 'mixed-multispan-contributions'
+  : isAnonymousTextMultiImageRun ? 'anonymous-text-multi-image'
   : isAnonymousTextImageRun ? 'anonymous-grid-text-image'
   : isAnonymousTextRun ? 'anonymous-grid-text'
   : isImageMultiSpanRun ? 'image-multispan-contributions'
@@ -83,6 +90,8 @@ const runIDPrefix = `c114-${target}-${runTimestamp}-${runNonce}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
   ? `spec/internal/evidence/${evidenceGroup}-${date}/${target}-${runPrefix}`
+  : isAnonymousTextMultiImageRun
+    ? `spec/internal/evidence/c11-4-anonymous-text-multi-image-${date}/${target}-${runPrefix}`
   : isMixedMultiSpanRun
     ? `spec/internal/evidence/c11-4-mixed-text-image-multispan-${date}/${target}-${runPrefix}`
   : isAnonymousTextRun
@@ -922,8 +931,134 @@ scenes.push(
         frame: { node: 6, x: 92, y: 0, width: 20, height: 10 } },
     ],
   },
+  {
+    id: 'anonymous-text-two-images-forward', axis: 'Columns', boxCount: 3,
+    rootFrame: 'width=220,height=180', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=180;'
+      + '1:node=3,x=0,y=0,width=24,height=16;'
+      + '2:node=4,x=12,y=60,width=48,height=32]',
+    tracks: [12, 28, 20, 0], collapsed: [false, false, false, false],
+    intrinsicSpans: [1, 2], itemSpans: [1, 2, 2],
+    imageMinContentWidths: [null, 24, 48],
+    mixedIntrinsicContributions: true, anonymousTextMultiImageContributions: true,
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+        minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+      { grid: 1, node: 3, sourceOrder: 1, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+      { grid: 1, node: 4, sourceOrder: 2, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+    ],
+    anonymousTextImageItems: [
+      { grid: 1, node: 2, sourceOrder: 0,
+        source: { kind: 'text', fontRegistryRevision: 1, minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+        textSources: [{ node: 2, text: 'XX' }],
+        frame: { node: 2, x: 40, y: 0, width: 20, height: 10 } },
+      { grid: 1, node: 3, sourceOrder: 1,
+        source: { kind: 'replaced', aspectRatio: null, width: 24, height: 16 }, textSources: [],
+        frame: { node: 3, x: 0, y: 0, width: 24, height: 16 } },
+      { grid: 1, node: 4, sourceOrder: 2,
+        source: { kind: 'replaced', aspectRatio: null, width: 24, height: 16 }, textSources: [],
+        frame: { node: 4, x: 12, y: 60, width: 48, height: 32 } },
+    ],
+  },
+  {
+    id: 'two-images-anonymous-text-reversed', axis: 'Columns', boxCount: 3,
+    rootFrame: 'width=220,height=180', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=180;'
+      + '1:node=2,x=12,y=60,width=48,height=32;'
+      + '2:node=4,x=0,y=0,width=24,height=16]',
+    tracks: [12, 28, 20, 0], collapsed: [false, false, false, false],
+    intrinsicSpans: [1, 2], itemSpans: [2, 1, 2],
+    imageMinContentWidths: [48, null, 24],
+    mixedIntrinsicContributions: true, anonymousTextMultiImageContributions: true,
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+      { grid: 1, node: 3, sourceOrder: 1, kind: 'text', fontRegistryRevision: 1,
+        minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+      { grid: 1, node: 4, sourceOrder: 2, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+    ],
+    anonymousTextImageItems: [
+      { grid: 1, node: 2, sourceOrder: 0,
+        source: { kind: 'replaced', aspectRatio: null, width: 24, height: 16 }, textSources: [],
+        frame: { node: 2, x: 12, y: 60, width: 48, height: 32 } },
+      { grid: 1, node: 3, sourceOrder: 1,
+        source: { kind: 'text', fontRegistryRevision: 1, minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+        textSources: [{ node: 3, text: 'XX' }],
+        frame: { node: 3, x: 40, y: 0, width: 20, height: 10 } },
+      { grid: 1, node: 4, sourceOrder: 2,
+        source: { kind: 'replaced', aspectRatio: null, width: 24, height: 16 }, textSources: [],
+        frame: { node: 4, x: 0, y: 0, width: 24, height: 16 } },
+    ],
+  },
+  {
+    id: 'anonymous-text-three-images-forward', axis: 'Columns', boxCount: 4,
+    rootFrame: 'width=220,height=180', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=180;'
+      + '1:node=3,x=0,y=0,width=24,height=16;'
+      + '2:node=4,x=18,y=60,width=48,height=32;'
+      + '3:node=5,x=0,y=120,width=72,height=48]',
+    tracks: [18, 34, 20, 0], collapsed: [false, false, false, false],
+    intrinsicSpans: [1, 2, 3], itemSpans: [1, 2, 2, 3],
+    imageMinContentWidths: [null, 24, 48, 72],
+    mixedIntrinsicContributions: true, anonymousTextMultiImageContributions: true,
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+        minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+      { grid: 1, node: 3, sourceOrder: 1, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+      { grid: 1, node: 4, sourceOrder: 2, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+      { grid: 1, node: 5, sourceOrder: 3, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+    ],
+    anonymousTextImageItems: [
+      { grid: 1, node: 2, sourceOrder: 0,
+        source: { kind: 'text', fontRegistryRevision: 1, minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+        textSources: [{ node: 2, text: 'XX' }],
+        frame: { node: 2, x: 52, y: 0, width: 20, height: 10 } },
+      { grid: 1, node: 3, sourceOrder: 1,
+        source: { kind: 'replaced', aspectRatio: null, width: 24, height: 16 }, textSources: [],
+        frame: { node: 3, x: 0, y: 0, width: 24, height: 16 } },
+      { grid: 1, node: 4, sourceOrder: 2,
+        source: { kind: 'replaced', aspectRatio: null, width: 24, height: 16 }, textSources: [],
+        frame: { node: 4, x: 18, y: 60, width: 48, height: 32 } },
+      { grid: 1, node: 5, sourceOrder: 3,
+        source: { kind: 'replaced', aspectRatio: null, width: 24, height: 16 }, textSources: [],
+        frame: { node: 5, x: 0, y: 120, width: 72, height: 48 } },
+    ],
+  },
+  {
+    id: 'three-images-anonymous-text-reversed', axis: 'Columns', boxCount: 4,
+    rootFrame: 'width=220,height=180', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=180;'
+      + '1:node=2,x=0,y=120,width=72,height=48;'
+      + '2:node=3,x=18,y=60,width=48,height=32;'
+      + '3:node=5,x=0,y=0,width=24,height=16]',
+    tracks: [18, 34, 20, 0], collapsed: [false, false, false, false],
+    intrinsicSpans: [1, 2, 3], itemSpans: [3, 2, 1, 2],
+    imageMinContentWidths: [72, 48, null, 24],
+    mixedIntrinsicContributions: true, anonymousTextMultiImageContributions: true,
+    intrinsicInputs: [
+      { grid: 1, node: 2, sourceOrder: 0, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+      { grid: 1, node: 3, sourceOrder: 1, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+      { grid: 1, node: 4, sourceOrder: 2, kind: 'text', fontRegistryRevision: 1,
+        minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+      { grid: 1, node: 5, sourceOrder: 3, kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+    ],
+    anonymousTextImageItems: [
+      { grid: 1, node: 2, sourceOrder: 0,
+        source: { kind: 'replaced', aspectRatio: null, width: 24, height: 16 }, textSources: [],
+        frame: { node: 2, x: 0, y: 120, width: 72, height: 48 } },
+      { grid: 1, node: 3, sourceOrder: 1,
+        source: { kind: 'replaced', aspectRatio: null, width: 24, height: 16 }, textSources: [],
+        frame: { node: 3, x: 18, y: 60, width: 48, height: 32 } },
+      { grid: 1, node: 4, sourceOrder: 2,
+        source: { kind: 'text', fontRegistryRevision: 1, minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+        textSources: [{ node: 4, text: 'XX' }],
+        frame: { node: 4, x: 52, y: 0, width: 20, height: 10 } },
+      { grid: 1, node: 5, sourceOrder: 3,
+        source: { kind: 'replaced', aspectRatio: null, width: 24, height: 16 }, textSources: [],
+        frame: { node: 5, x: 0, y: 0, width: 24, height: 16 } },
+    ],
+  },
 );
-assert.equal(scenes.length, 165, 'C11.4 anonymous text/image slice adds five scenes.');
+assert.equal(scenes.length, 169, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -2052,7 +2187,29 @@ function verifyRuntimeLog(log, scene, runID) {
         const spanItems = scene.intrinsicInputs.flatMap((input, itemIndex) => (
           scene.itemSpans[itemIndex] === span ? [{ input, itemIndex }] : []
         ));
-        if (scene.anonymousTextImageContributions) {
+        if (scene.anonymousTextMultiImageContributions) {
+          for (const { input } of spanItems) {
+            if (input.kind === 'replaced') {
+              expectedContributions.push({
+                item: input.node,
+                kind: 'Minimum',
+                span,
+                value: 0,
+              });
+            }
+          }
+          for (let repetition = 0; repetition < 2; repetition++) {
+            for (const { input, itemIndex } of spanItems) {
+              expectedContributions.push({
+                item: input.node,
+                kind: 'MinContent',
+                span,
+                value: input.kind === 'text'
+                  ? input.minContent : scene.imageMinContentWidths[itemIndex],
+              });
+            }
+          }
+        } else if (scene.anonymousTextImageContributions) {
           for (const { input, itemIndex } of spanItems) {
             if (input.kind === 'text') {
               for (let repetition = 0; repetition < 2; repetition++) {

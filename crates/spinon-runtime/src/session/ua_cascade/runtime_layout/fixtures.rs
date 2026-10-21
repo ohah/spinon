@@ -28,6 +28,10 @@ mod c11_4_anonymous_text;
 mod c11_4_anonymous_text_image;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "fixtures/c11_4_anonymous_text_multi_image.rs"]
+mod c11_4_anonymous_text_multi_image;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub(super) struct C11_4TextInput {
     pub(super) paragraph_styles: BTreeMap<NodeId, ParagraphStyle>,
     pub(super) engine: TextLayoutEngine,
@@ -59,3 +63,6 @@ pub(super) use c11_4_anonymous_text::prepare as prepare_c11_4_anonymous_text;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub(super) use c11_4_anonymous_text_image::prepare as prepare_c11_4_anonymous_text_image;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) use c11_4_anonymous_text_multi_image::prepare as prepare_c11_4_anonymous_text_multi_image;
