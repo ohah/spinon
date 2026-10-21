@@ -212,3 +212,7 @@ Negative implicit placement와 auto-repeat 및 leading auto-track list의 제한
 ### 2026-10-21 direct-leaf text multi-span 후속 계획
 
 기존 C11.4 text fixture adapter가 Grid root당 한 direct-leaf text item만 받는 범위를 좁혀, Ahem direct text item 2~3개의 겹치는 span-2와 span-2/3 contribution을 검증하는 계획을 추가했다. Chrome 155 사전 oracle 네 scene과 §11.5.1 독립 기대값은 [계획](./c11-4-text-multispan-contributions.md) 및 [precomparison evidence](../spec/internal/evidence/c11-4-text-multispan-precomparison-2026-10-21/README.md)에 고정했다. 구현과 Android physical/AVD·iOS Simulator 실행은 아직 하지 않았으며 C11.4 체크와 공식 완료 수는 그대로다.
+
+### 2026-10-21 direct-leaf text/image mixed multi-span 계획
+
+기존 text와 image multi-span 실행은 서로 다른 fixture grid에 분리돼 있다. 새 [mixed contribution 계획](./c11-4-mixed-text-image-multispan-contributions.md)은 같은 grid의 text span-2, replaced-image span-2와 Ahem text span-3을 네 forward/reversed DOM 장면으로 합친다. Chrome 155 Agent Browser 사전 관찰과 §11.5.1 planned-increase 독립 기대값을 [precomparison evidence](../spec/internal/evidence/c11-4-mixed-text-image-multispan-precomparison-2026-10-21/README.md)에 고정했고 계획 실패 검토 20개를 마쳤다. 구현 PR과 runtime 검증은 계획 PR 병합 뒤 진행한다. C11.4 checkbox와 공식 완료 수는 그대로 둔다.

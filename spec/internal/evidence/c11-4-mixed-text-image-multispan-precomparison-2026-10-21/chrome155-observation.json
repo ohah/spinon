@@ -1,0 +1,195 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+  "platform": "MacIntel",
+  "devicePixelRatio": 1,
+  "ahemReady": true,
+  "imageDecodeComplete": true,
+  "intrinsicWidths": {
+    "shortTextProbe": 50,
+    "longTextProbe": 180
+  },
+  "cases": [
+    {
+      "id": "mixed-text-image-span2-forward",
+      "columns": "25px 36px 36px 0px",
+      "rows": "60px 60px 60px",
+      "grid": {
+        "x": 4,
+        "y": 16,
+        "width": 220,
+        "height": 180
+      },
+      "items": [
+        {
+          "id": "mixed-text-a-forward",
+          "text": "XX XXXXX",
+          "naturalWidth": null,
+          "naturalHeight": null,
+          "computedMinWidth": "auto",
+          "frame": {
+            "x": 4,
+            "y": 16,
+            "width": 61,
+            "height": 20
+          }
+        },
+        {
+          "id": "mixed-image-b-forward",
+          "text": "",
+          "naturalWidth": 24,
+          "naturalHeight": 16,
+          "computedMinWidth": "auto",
+          "frame": {
+            "x": 29,
+            "y": 76,
+            "width": 72,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "id": "mixed-text-image-span2-reversed",
+      "columns": "25px 36px 36px 0px",
+      "rows": "60px 60px 60px",
+      "grid": {
+        "x": 4,
+        "y": 217,
+        "width": 220,
+        "height": 180
+      },
+      "items": [
+        {
+          "id": "mixed-image-b-reversed",
+          "text": "",
+          "naturalWidth": 24,
+          "naturalHeight": 16,
+          "computedMinWidth": "auto",
+          "frame": {
+            "x": 29,
+            "y": 277,
+            "width": 72,
+            "height": 48
+          }
+        },
+        {
+          "id": "mixed-text-a-reversed",
+          "text": "XX XXXXX",
+          "naturalWidth": null,
+          "naturalHeight": null,
+          "computedMinWidth": "auto",
+          "frame": {
+            "x": 4,
+            "y": 217,
+            "width": 61,
+            "height": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "mixed-text-image-span2-before-span3",
+      "columns": "52.6562px 63.6719px 63.6719px 0px",
+      "rows": "60px 60px 60px",
+      "grid": {
+        "x": 4,
+        "y": 418,
+        "width": 220,
+        "height": 180
+      },
+      "items": [
+        {
+          "id": "mixed-text-c-a",
+          "text": "XX XXXXX",
+          "naturalWidth": null,
+          "naturalHeight": null,
+          "computedMinWidth": "auto",
+          "frame": {
+            "x": 4,
+            "y": 418,
+            "width": 116.328125,
+            "height": 10
+          }
+        },
+        {
+          "id": "mixed-image-c-b",
+          "text": "",
+          "naturalWidth": 24,
+          "naturalHeight": 16,
+          "computedMinWidth": "auto",
+          "frame": {
+            "x": 56.65625,
+            "y": 478,
+            "width": 72,
+            "height": 48
+          }
+        },
+        {
+          "id": "mixed-text-c-c",
+          "text": "XXXXXXXXXXXXXXXXXX",
+          "naturalWidth": null,
+          "naturalHeight": null,
+          "computedMinWidth": "auto",
+          "frame": {
+            "x": 4,
+            "y": 538,
+            "width": 180,
+            "height": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "mixed-text-image-span3-before-span2",
+      "columns": "52.6562px 63.6719px 63.6719px 0px",
+      "rows": "60px 60px 60px",
+      "grid": {
+        "x": 4,
+        "y": 619,
+        "width": 220,
+        "height": 180
+      },
+      "items": [
+        {
+          "id": "mixed-text-r-c",
+          "text": "XXXXXXXXXXXXXXXXXX",
+          "naturalWidth": null,
+          "naturalHeight": null,
+          "computedMinWidth": "auto",
+          "frame": {
+            "x": 4,
+            "y": 739,
+            "width": 180,
+            "height": 10
+          }
+        },
+        {
+          "id": "mixed-image-r-b",
+          "text": "",
+          "naturalWidth": 24,
+          "naturalHeight": 16,
+          "computedMinWidth": "auto",
+          "frame": {
+            "x": 56.65625,
+            "y": 679,
+            "width": 72,
+            "height": 48
+          }
+        },
+        {
+          "id": "mixed-text-r-a",
+          "text": "XX XXXXX",
+          "naturalWidth": null,
+          "naturalHeight": null,
+          "computedMinWidth": "auto",
+          "frame": {
+            "x": 4,
+            "y": 619,
+            "width": 116.328125,
+            "height": 10
+          }
+        }
+      ]
+    }
+  ]
+}
