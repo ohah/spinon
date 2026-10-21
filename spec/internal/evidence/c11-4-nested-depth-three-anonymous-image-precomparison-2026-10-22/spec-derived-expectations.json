@@ -1,0 +1,84 @@
+{
+  "basis": {
+    "specification": "CSS Grid Layout Module Level 1, 2025 Candidate Recommendation Draft",
+    "url": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/",
+    "sections": ["#grid-items", "#grid-item-display", "#auto-placement-algo", "#algo-content", "#extra-space"],
+    "method": "Derive dimensions from pinned Ahem advances, the natural PNG dimensions, Grid item formation, source-order auto-placement, and the intrinsic track sizing algorithm. Chrome observations are stored separately and are not used to calculate these values."
+  },
+  "environment": {
+    "font": "tests/fixtures/resources/c15/Ahem.ttf",
+    "font_size_css_px": 10,
+    "line_height_css_px": 10,
+    "text": "XX XXXXXXX",
+    "text_min_content_width_css_px": 70,
+    "text_max_content_width_css_px": 100,
+    "image": "tests/fixtures/resources/c14-1-png-basic.png",
+    "image_natural_size_css_px": {"width": 24, "height": 16},
+    "grid_gaps_css_px": {"column": 0, "row": 0},
+    "box_edges_css_px": {"margin": 0, "padding": 0, "border": 0},
+    "nesting": "root -> middle -> branch -> inner; each outer Grid has one child Grid; inner Grid has one anonymous text item and one natural-size image Grid item"
+  },
+  "cases": [
+    {
+      "id": "depth-three-min-content-text-before-image",
+      "constraint": "min-content",
+      "source_order": ["anonymous-text", "image"],
+      "nested_grid_count": 4,
+      "each_grid_frame_css_px": {"width": 94, "height": 20},
+      "outer_grid_tracks_css_px": {"columns": [94], "rows": [20]},
+      "inner_grid_tracks_css_px": {"columns": [70, 24], "rows": [20]},
+      "inner_items_css_px": {
+        "text_frame": {"x": 0, "y": 0, "width": 70, "height": 20},
+        "text_line_fragments": [{"x": 0, "y": 0, "width": 20, "height": 10}, {"x": 0, "y": 10, "width": 70, "height": 10}],
+        "image_frame": {"x": 70, "y": 0, "width": 24, "height": 16}
+      }
+    },
+    {
+      "id": "depth-three-min-content-image-before-text",
+      "constraint": "min-content",
+      "source_order": ["image", "anonymous-text"],
+      "nested_grid_count": 4,
+      "each_grid_frame_css_px": {"width": 94, "height": 20},
+      "outer_grid_tracks_css_px": {"columns": [94], "rows": [20]},
+      "inner_grid_tracks_css_px": {"columns": [24, 70], "rows": [20]},
+      "inner_items_css_px": {
+        "text_frame": {"x": 24, "y": 0, "width": 70, "height": 20},
+        "text_line_fragments": [{"x": 24, "y": 0, "width": 20, "height": 10}, {"x": 24, "y": 10, "width": 70, "height": 10}],
+        "image_frame": {"x": 0, "y": 0, "width": 24, "height": 16}
+      }
+    },
+    {
+      "id": "depth-three-max-content-text-before-image",
+      "constraint": "max-content",
+      "source_order": ["anonymous-text", "image"],
+      "nested_grid_count": 4,
+      "each_grid_frame_css_px": {"width": 124, "height": 16},
+      "outer_grid_tracks_css_px": {"columns": [124], "rows": [16]},
+      "inner_grid_tracks_css_px": {"columns": [100, 24], "rows": [16]},
+      "inner_items_css_px": {
+        "text_frame": {"x": 0, "y": 0, "width": 100, "height": 10},
+        "text_line_fragments": [{"x": 0, "y": 0, "width": 100, "height": 10}],
+        "image_frame": {"x": 100, "y": 0, "width": 24, "height": 16}
+      }
+    },
+    {
+      "id": "depth-three-max-content-image-before-text",
+      "constraint": "max-content",
+      "source_order": ["image", "anonymous-text"],
+      "nested_grid_count": 4,
+      "each_grid_frame_css_px": {"width": 124, "height": 16},
+      "outer_grid_tracks_css_px": {"columns": [124], "rows": [16]},
+      "inner_grid_tracks_css_px": {"columns": [24, 100], "rows": [16]},
+      "inner_items_css_px": {
+        "text_frame": {"x": 24, "y": 0, "width": 100, "height": 10},
+        "text_line_fragments": [{"x": 24, "y": 0, "width": 100, "height": 10}],
+        "image_frame": {"x": 0, "y": 0, "width": 24, "height": 16}
+      }
+    }
+  ],
+  "comparison_rule": {
+    "css_pixel_tolerance": 0.015625,
+    "required_exact_values": ["source order and direct item identity", "computed track counts and sizes", "all four Grid frames relative to the scene root", "text item frame and line fragments", "image item frame and natural size"],
+    "scope_limit": "Four fixed fixture scenes only; this does not establish general nested Grid, anonymous item, image intrinsic, or CSS Grid support."
+  }
+}

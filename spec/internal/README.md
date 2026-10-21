@@ -1,5 +1,9 @@
 # 내부 인터페이스 명세
 
+## C11.4 planned depth-three anonymous text + image 후속
+
+[집중 계획](https://github.com/ohah/spinon/blob/main/plan/c11-4-nested-depth-three-anonymous-image.md) · [계획 실패 관점 20개](https://github.com/ohah/spinon/blob/main/plan/c11-4-nested-depth-three-anonymous-image-plan-review-20.md) · [Chrome 156 사전 비교·독립 기대값](./evidence/c11-4-nested-depth-three-anonymous-image-precomparison-2026-10-22/README.md). 네 fixed scene 계획이며 구현은 아직 시작하지 않았다. C11.4 checkbox와 `72/213` 집계는 유지한다.
+
 ## C11.4 nested Grid 양 축 intrinsic sizing · PR #453
 
 [PR #453](https://github.com/ohah/spinon/pull/453)은 2026-10-22 00:46:18 KST에 Rebase and merge됐다(merge SHA `619a99209ec38d838c90428b8d153cf24a1aa0d3`; 병합 시 check rollup 없음, main required check 미설정). [집중 계획](../../plan/c11-4-nested-grid-two-axis-depth-two.md) · [Chrome 156 사전 비교·독립 기대값](./evidence/c11-4-nested-grid-two-axis-precomparison-2026-10-22/README.md) · [Android/iOS Simulator 실행·archive 경계·화면](./evidence/c11-4-nested-grid-two-axis-runtime-2026-10-22/README.md) · [구현/runtime 실패 관점 20개](./evidence/c11-4-nested-grid-two-axis-runtime-2026-10-22/implementation-review-20.md) · [PR diff 적대 검토 30개](./evidence/c11-4-nested-grid-two-axis-runtime-2026-10-22/pr-diff-review-30.md) · [병합 상태 문서 검토 30개](./evidence/c11-4-nested-grid-two-axis-runtime-2026-10-22/post-merge-docs-review-30.md). 네 fixed fixture scene만 대상으로 한다. C11.4 체크와 공식 `72/213` 집계는 유지하며 Tailnet 미리보기 pass38을 main 기준으로 갱신 중이다.
