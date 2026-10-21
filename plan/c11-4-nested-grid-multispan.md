@@ -2,7 +2,7 @@
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [depth-three nested Grid 계획](./c11-4-nested-grid-depth-three.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** fixed-scene 구현, Android/iOS Simulator 4/4 검증, direct-leaf 회귀 4/4, feature artifact 경계 검사 및 구현/runtime 실패 관점 20개 검토를 마쳤다. 구현 PR diff 검토·병합만 남아 있다. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다.
+**상태:** fixed-scene 구현, Android/iOS Simulator 4/4 검증, direct-leaf 회귀 4/4, feature artifact 경계 검사, 구현/runtime 20개 및 PR diff 30개 실패 관점 검토를 마쳤다. [PR #464](https://github.com/ohah/spinon/pull/464)가 열려 있으며 required-check policy 확인과 Rebase and merge가 남아 있다. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다.
 
 ## 목적과 미구현 경계
 
@@ -31,8 +31,8 @@ CSS Grid 2025 CRD §11.5.1에 따라 A와 B의 min-content 50px·70px span-2 con
 4. 신규 runtime 정상·negative tests 2개, depth-three controls 2개, mixed span control 1개, 신규 FFI allowlist 1개와 direct-leaf FFI control 1개가 통과했다. 기존 direct-leaf text multi-span 네 scene도 Android/iOS에서 각각 4/4 통과했다.
 5. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 신규 scene 각 4/4가 통과했다. frame/track, complete trace, draw/present와 Android local/installed APK SHA를 근거에 남겼다.
 6. workspace all-target 및 runtime/FFI fixture-feature Clippy, formatter, fixture boundary 6/6, JS syntax, diff whitespace 검사, Android Gradle 및 iOS Simulator build가 통과했다. 기본 FFI archive에는 신규 scene ID가 없고 opt-in positive control에 네 ID와 payload가 있음을 확인했다.
-7. 계획 검토와 별개인 구현/runtime 실패 관점 20개를 완료했다. PR diff 검토 30개와 Agent Browser PR 이미지 확인은 merge 전에 별도로 진행한다.
-8. PR은 아직 생성·병합 전이다. 이미지가 포함된 PR을 만들고 Agent Browser에서 이미지 로드를 확인한 뒤 해당 browser process를 종료한다. 현재 required checks와 merge state를 확인하고 Rebase and merge한다. 병합 후 Tailnet roadmap 미리보기는 기존 경로와 process를 살핀 뒤 최신 main 문서 및 evidence hash를 대조해 갱신·검증하고 Agent Browser/process를 정리한다.
+7. 계획 검토와 별개인 구현/runtime 실패 관점 20개와 PR diff 실패 관점 30개를 각각 완료했다. PR 본문의 두 raw screenshot이 Agent Browser에서 로드되고 크기가 확인됐다. browser session과 해당 Chrome/Agent Browser process는 종료했다.
+8. 구현 PR [#464](https://github.com/ohah/spinon/pull/464)는 open, `CLEAN`/`MERGEABLE`이다. `gh pr checks`는 checks 미보고를 반환했으므로 CI green으로 기록하지 않는다. required-check policy를 확인하고 Rebase and merge한 뒤 Tailnet roadmap 미리보기는 기존 경로와 process를 살펴 최신 main 문서/evidence hash를 대조해 갱신·검증하고 Agent Browser/process를 정리한다.
 
 ## 실패·범위 경계
 
