@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 고정된 세 장면의 opt-in fixture 구현과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 실행을 마쳤다. Rust regression, artifact feature 경계, formatter, workspace Clippy, 앱 fixture build도 확인했다. 구현 검토 20개와 PR diff 검토 20개를 마쳤고 [PR #443](https://github.com/ohah/spinon/pull/443)이 열려 있다. 이 제한 slice는 C11.4 완료나 공식 완료 수 증가를 뜻하지 않는다.
+**상태:** 고정된 세 장면의 opt-in fixture 구현과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 실행을 마쳤다. Rust regression, artifact feature 경계, formatter, workspace Clippy, 앱 fixture build도 확인했다. 구현 검토 20개와 PR diff 검토 20개를 마쳤고 [PR #443](https://github.com/ohah/spinon/pull/443)은 2026-10-21 Rebase and merge되어 SHA `ae1d570acf7a1a2e2799ec91a0e80c0a8520fa4b`를 가리킨다. 병합 시 status rollup은 비어 있었고 `main` required status check는 설정되어 있지 않았다. 이 제한 slice는 C11.4 완료나 공식 완료 수 증가를 뜻하지 않는다.
 
 ## 목적과 경계
 
