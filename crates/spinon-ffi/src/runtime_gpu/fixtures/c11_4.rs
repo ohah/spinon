@@ -26,6 +26,8 @@ mod multispan_ordering;
 mod negative_implicit_tracks;
 #[path = "c11_4/nested_grid_intrinsic.rs"]
 mod nested_grid_intrinsic;
+#[path = "c11_4/nested_grid_replaced_item.rs"]
+mod nested_grid_replaced_item;
 #[path = "c11_4/text_multispan.rs"]
 mod text_multispan;
 
@@ -1064,6 +1066,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     if let Some(source) = multispan_ordering::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
+    if let Some(source) = nested_grid_replaced_item::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = nested_grid_intrinsic::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
@@ -1204,6 +1209,42 @@ mod tests {
             assert_eq!(source.matches("document.createTextNode(").count(), 2);
         }
         assert!(c11_4_grid_track_sizing_runtime_source("nested-grid-unlisted").is_err());
+    }
+
+    #[test]
+    fn exposes_fixed_nested_grid_text_image_scenes() {
+        for (scene_id, columns, placement, width) in [
+            (
+                "nested-grid-text-image-span-two",
+                "min-content min-content",
+                "grid-column:1 / span 2",
+                "max-content",
+            ),
+            (
+                "nested-grid-text-image-one-track",
+                "min-content min-content",
+                "grid-column:1 / 2",
+                "max-content",
+            ),
+            (
+                "nested-grid-text-image-definite-flex-control",
+                "minmax(auto,1fr) minmax(auto,1fr)",
+                "grid-column:1 / span 2",
+                "120px",
+            ),
+        ] {
+            let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
+            assert!(source.len() < 5 * 1024);
+            assert!(source.contains(&format!("sceneId:{scene_id:?}")));
+            assert!(source.contains(&format!("width:{width};height:20px")));
+            assert!(source.contains(&format!("grid-template-columns:{columns}")));
+            assert!(source.contains(placement));
+            assert!(source.contains("grid-template-columns:min-content max-content"));
+            assert!(source.contains("document.createElement('img')"));
+            assert!(source.contains("document.createTextNode('XX XXXXXXX')"));
+            assert_eq!(source.matches("document.createElement('div')").count(), 3);
+        }
+        assert!(c11_4_grid_track_sizing_runtime_source("nested-grid-text-image-unlisted").is_err());
     }
 
     #[test]

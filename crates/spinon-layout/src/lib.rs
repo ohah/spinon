@@ -647,6 +647,9 @@ mod grid_image_ratio_oracle_tests;
 mod grid_multispan_chrome_oracle_tests;
 #[cfg(test)]
 mod grid_nested_intrinsic_tests;
+#[cfg(all(test, feature = "c11-4-grid-track-sizing-fixture-test"))]
+#[path = "grid_nested_replaced_intrinsic_tests.rs"]
+mod grid_nested_replaced_intrinsic_tests;
 #[cfg(test)]
 #[path = "intrinsic_size_tests.rs"]
 mod intrinsic_size_tests;
