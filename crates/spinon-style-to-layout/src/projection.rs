@@ -497,6 +497,7 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_parag
             reject_cascade_diagnostics: true,
             allow_implicit_named_lines: false,
             allow_c11_4_anonymous_grid_text_items: true,
+            blockify_c11_4_anonymous_grid_images: false,
         },
     )
 }
@@ -529,6 +530,42 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_and_i
         true,
         Some(intrinsic_sizes),
         Some((paragraph_styles, &inline_run_styles, text_engine)),
+    )
+}
+
+/// C11.4 opt-in fixture에서 anonymous Grid text와 replaced-resource snapshot을 함께 연결합니다.
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_anonymous_text_and_intrinsic_sizes(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
+    text_engine: &TextLayoutEngine,
+    intrinsic_sizes: LayoutIntrinsicSizeSnapshot,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    if computed_styles.profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
+        return Err(StyleLayoutError::UnsupportedProfile {
+            profile: format!("{:?}", computed_styles.profile),
+        });
+    }
+    if computed_styles.viewport != viewport {
+        return Err(StyleLayoutError::SnapshotMismatch { field: "viewport" });
+    }
+    let inline_run_styles = BTreeMap::new();
+    compute_layout_from_styles_with_text_and_grid_options(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        Some(intrinsic_sizes),
+        Some((paragraph_styles, &inline_run_styles, text_engine)),
+        StyleLayoutProjectionOptions {
+            reject_cascade_diagnostics: true,
+            allow_implicit_named_lines: false,
+            allow_c11_4_anonymous_grid_text_items: true,
+            blockify_c11_4_anonymous_grid_images: true,
+        },
     )
 }
 
@@ -675,6 +712,7 @@ fn compute_layout_from_styles_with_grid_options(
             reject_cascade_diagnostics,
             allow_implicit_named_lines,
             allow_c11_4_anonymous_grid_text_items: false,
+            blockify_c11_4_anonymous_grid_images: false,
         },
     )
 }
@@ -699,6 +737,7 @@ fn compute_layout_from_styles_with_text(
             reject_cascade_diagnostics,
             allow_implicit_named_lines: false,
             allow_c11_4_anonymous_grid_text_items: false,
+            blockify_c11_4_anonymous_grid_images: false,
         },
     )
 }
@@ -708,6 +747,7 @@ struct StyleLayoutProjectionOptions {
     reject_cascade_diagnostics: bool,
     allow_implicit_named_lines: bool,
     allow_c11_4_anonymous_grid_text_items: bool,
+    blockify_c11_4_anonymous_grid_images: bool,
 }
 
 fn compute_layout_from_styles_with_text_and_grid_options(
@@ -815,6 +855,7 @@ fn compute_layout_from_styles_with_text_and_grid_options(
         root,
         &computed_styles,
         options.allow_implicit_named_lines,
+        options.blockify_c11_4_anonymous_grid_images,
     )?;
     validate_intrinsic_image_inputs(
         snapshot,

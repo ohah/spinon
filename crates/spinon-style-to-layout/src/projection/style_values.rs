@@ -49,6 +49,7 @@ pub(super) fn project_styles(
     root: HostNodeHandle,
     snapshot: &ComputedStyleSnapshot,
     allow_implicit_named_lines: bool,
+    blockify_c11_4_anonymous_grid_images: bool,
 ) -> Result<ProjectedStyles, StyleLayoutError> {
     validate_fixed_ancestor_effects(tree, root, snapshot)?;
     let mut output = BTreeMap::new();
@@ -209,36 +210,45 @@ pub(super) fn project_styles(
                 &format!("{value} with direction:rtl"),
             ));
         }
+        let blockify_anonymous_grid_image = blockify_c11_4_anonymous_grid_images
+            && grid_nodes
+                .as_ref()
+                .is_some_and(|nodes| nodes.html_image_grid_items.contains(&node));
+        let mut display = parse_display(
+            node,
+            required(element, "display")?,
+            matches!(
+                snapshot.profile,
+                ComputedStyleProfile::RuntimeBlockFormattingV1
+                    | ComputedStyleProfile::RuntimeBlockPositioningV1
+                    | ComputedStyleProfile::RuntimeBlockFlexStackingV1
+                    | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
+                    | ComputedStyleProfile::C19BoxPaintOpacityV1
+                    | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
+                    | ComputedStyleProfile::RuntimeBlockFlexGridV1
+                    | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+                    | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
+                    | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
+                    | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                    | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+            ),
+            matches!(
+                snapshot.profile,
+                ComputedStyleProfile::RuntimeBlockFlexGridV1
+                    | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
+                    | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
+                    | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
+                    | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                    | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+            ),
+            snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                || blockify_anonymous_grid_image,
+        )?;
+        if blockify_anonymous_grid_image && display == spinon_layout::LayoutDisplay::Inline {
+            display = spinon_layout::LayoutDisplay::Block;
+        }
         let mut style = LayoutStyle {
-            display: parse_display(
-                node,
-                required(element, "display")?,
-                matches!(
-                    snapshot.profile,
-                    ComputedStyleProfile::RuntimeBlockFormattingV1
-                        | ComputedStyleProfile::RuntimeBlockPositioningV1
-                        | ComputedStyleProfile::RuntimeBlockFlexStackingV1
-                        | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
-                        | ComputedStyleProfile::C19BoxPaintOpacityV1
-                        | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
-                        | ComputedStyleProfile::RuntimeBlockFlexGridV1
-                        | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
-                        | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
-                        | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
-                        | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
-                        | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
-                ),
-                matches!(
-                    snapshot.profile,
-                    ComputedStyleProfile::RuntimeBlockFlexGridV1
-                        | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
-                        | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
-                        | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
-                        | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
-                        | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
-                ),
-                snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
-            )?,
+            display,
             overflow_x: if supports_overflow_clip(snapshot.profile) {
                 parse_overflow(node, "overflow-x", element.layout_overflow_x)?
             } else {
