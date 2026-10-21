@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C11.4 nested Grid row intrinsic contribution precomparison</title>
+    <style>
+      @font-face {
+        font-family: Ahem;
+        src: url("../../resources/c15/Ahem.ttf") format("truetype");
+        font-display: block;
+      }
+
+      html,
+      body {
+        margin: 0;
+      }
+
+      body {
+        width: 320px;
+        font-family: sans-serif;
+      }
+
+      .scene {
+        box-sizing: border-box;
+        display: grid;
+        width: 98px;
+        grid-template-columns: 98px;
+        grid-template-rows: min-content min-content;
+        column-gap: 0;
+        row-gap: 4px;
+        margin: 0 0 12px;
+        padding: 0;
+        border: 0;
+        background: #e9f1ff;
+      }
+
+      #row-definite-flex-control {
+        height: 60px;
+        grid-template-rows: minmax(auto, 1fr) minmax(auto, 1fr);
+      }
+
+      .nested {
+        box-sizing: border-box;
+        display: grid;
+        width: auto;
+        height: auto;
+        grid-template-columns: min-content max-content;
+        grid-template-rows: min-content min-content;
+        column-gap: 4px;
+        row-gap: 4px;
+        align-items: start;
+        justify-items: normal;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: #e7f6ed;
+      }
+
+      .nested > .text {
+        box-sizing: border-box;
+        display: block;
+        width: auto;
+        height: auto;
+        grid-column: 1;
+        grid-row: 1;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-family: Ahem;
+        font-size: 10px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 10px;
+        white-space-collapse: collapse;
+        text-wrap-mode: wrap;
+        word-break: normal;
+        direction: ltr;
+        letter-spacing: normal;
+        word-spacing: 0;
+        text-indent: 0;
+        background: #fff0e1;
+      }
+
+      .nested > img {
+        box-sizing: border-box;
+        display: block;
+        width: auto;
+        height: auto;
+        grid-column: 2;
+        grid-row: 2;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: #44ddee;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scene" id="row-span-two">
+      <div class="nested" id="row-span-two-nested" style="grid-row: 1 / span 2">
+        <div class="text" id="row-span-two-text">XX XXXXXXX</div>
+        <img id="row-span-two-image" src="../../resources/c14-1-png-basic.png" alt="">
+      </div>
+    </div>
+
+    <div class="scene" id="row-one-track">
+      <div class="nested" id="row-one-track-nested" style="grid-row: 1 / 2">
+        <div class="text" id="row-one-track-text">XX XXXXXXX</div>
+        <img id="row-one-track-image" src="../../resources/c14-1-png-basic.png" alt="">
+      </div>
+    </div>
+
+    <div class="scene" id="row-definite-flex-control">
+      <div class="nested" id="row-definite-flex-control-nested" style="grid-row: 1 / span 2">
+        <div class="text" id="row-definite-flex-control-text">XX XXXXXXX</div>
+        <img id="row-definite-flex-control-image" src="../../resources/c14-1-png-basic.png" alt="">
+      </div>
+    </div>
+
+    <script>
+      window.c114NestedRowsResult = (async () => {
+        await document.fonts.ready;
+        const images = [...document.images];
+        await Promise.all(images.map((image) => image.decode()));
+        const userAgentData = navigator.userAgentData
+          ? await navigator.userAgentData.getHighEntropyValues([
+            'architecture', 'fullVersionList', 'platformVersion',
+          ])
+          : null;
+        const frame = (id, rootId) => {
+          const rect = document.getElementById(id).getBoundingClientRect();
+          const root = document.getElementById(rootId).getBoundingClientRect();
+          return {
+            x: rect.x - root.x,
+            y: rect.y - root.y,
+            width: rect.width,
+            height: rect.height,
+          };
+        };
+        const tracks = (value) => value.split(/\s+/).map((size) => Number.parseFloat(size));
+        const sceneIds = [
+          'row-span-two',
+          'row-one-track',
+          'row-definite-flex-control',
+        ];
+        return {
+          userAgent: navigator.userAgent,
+          userAgentData,
+          viewport: {
+            width: window.innerWidth,
+            height: window.innerHeight,
+          },
+          devicePixelRatio: window.devicePixelRatio,
+          ahemLoaded: document.fonts.check('10px Ahem'),
+          images: images.map(({ src, complete, naturalWidth, naturalHeight }) => ({
+            src,
+            complete,
+            width: naturalWidth,
+            height: naturalHeight,
+          })),
+          scenes: sceneIds.map((id) => {
+            const root = document.getElementById(id);
+            const rootStyle = getComputedStyle(root);
+            const nestedStyle = getComputedStyle(document.getElementById(`${id}-nested`));
+            return {
+              id,
+              root: {
+                width: root.getBoundingClientRect().width,
+                height: root.getBoundingClientRect().height,
+                columns: tracks(rootStyle.gridTemplateColumns),
+                rows: tracks(rootStyle.gridTemplateRows),
+              },
+              nested: frame(`${id}-nested`, id),
+              text: frame(`${id}-text`, id),
+              image: frame(`${id}-image`, id),
+              nestedColumns: tracks(nestedStyle.gridTemplateColumns),
+              nestedRows: tracks(nestedStyle.gridTemplateRows),
+            };
+          }),
+        };
+      })();
+    </script>
+  </body>
+</html>

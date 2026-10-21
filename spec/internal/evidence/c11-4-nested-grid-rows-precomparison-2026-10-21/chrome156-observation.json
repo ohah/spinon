@@ -1,0 +1,185 @@
+{
+  "ahemLoaded": true,
+  "devicePixelRatio": 1,
+  "images": [
+    {
+      "complete": true,
+      "height": 16,
+      "src": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/resources/c14-1-png-basic.png",
+      "width": 24
+    },
+    {
+      "complete": true,
+      "height": 16,
+      "src": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/resources/c14-1-png-basic.png",
+      "width": 24
+    },
+    {
+      "complete": true,
+      "height": 16,
+      "src": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/resources/c14-1-png-basic.png",
+      "width": 24
+    }
+  ],
+  "scenes": [
+    {
+      "id": "row-span-two",
+      "image": {
+        "height": 16,
+        "width": 24,
+        "x": 74,
+        "y": 24
+      },
+      "nested": {
+        "height": 40,
+        "width": 98,
+        "x": 0,
+        "y": 0
+      },
+      "nestedColumns": [
+        70,
+        24
+      ],
+      "nestedRows": [
+        20,
+        16
+      ],
+      "root": {
+        "columns": [
+          98
+        ],
+        "height": 40,
+        "rows": [
+          18,
+          18
+        ],
+        "width": 98
+      },
+      "text": {
+        "height": 20,
+        "width": 70,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "row-one-track",
+      "image": {
+        "height": 16,
+        "width": 24,
+        "x": 74,
+        "y": 24
+      },
+      "nested": {
+        "height": 40,
+        "width": 98,
+        "x": 0,
+        "y": 0
+      },
+      "nestedColumns": [
+        70,
+        24
+      ],
+      "nestedRows": [
+        20,
+        16
+      ],
+      "root": {
+        "columns": [
+          98
+        ],
+        "height": 44,
+        "rows": [
+          40,
+          0
+        ],
+        "width": 98
+      },
+      "text": {
+        "height": 20,
+        "width": 70,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "row-definite-flex-control",
+      "image": {
+        "height": 16,
+        "width": 24,
+        "x": 74,
+        "y": 24
+      },
+      "nested": {
+        "height": 60,
+        "width": 98,
+        "x": 0,
+        "y": 0
+      },
+      "nestedColumns": [
+        70,
+        24
+      ],
+      "nestedRows": [
+        20,
+        16
+      ],
+      "root": {
+        "columns": [
+          98
+        ],
+        "height": 60,
+        "rows": [
+          28,
+          28
+        ],
+        "width": 98
+      },
+      "text": {
+        "height": 20,
+        "width": 70,
+        "x": 0,
+        "y": 0
+      }
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "userAgentData": {
+    "architecture": "arm",
+    "brands": [
+      {
+        "brand": "Not:A-Brand",
+        "version": "8"
+      },
+      {
+        "brand": "Chromium",
+        "version": "156"
+      },
+      {
+        "brand": "Google Chrome",
+        "version": "156"
+      }
+    ],
+    "fullVersionList": [
+      {
+        "brand": "Not:A-Brand",
+        "version": "8.0.0.0"
+      },
+      {
+        "brand": "Chromium",
+        "version": "156.0.8078.48"
+      },
+      {
+        "brand": "Google Chrome",
+        "version": "156.0.8078.48"
+      }
+    ],
+    "mobile": false,
+    "platform": "macOS",
+    "platformVersion": "26.5.1"
+  },
+  "viewport": {
+    "height": 633,
+    "width": 1280
+  }
+}
