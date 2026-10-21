@@ -1,0 +1,25 @@
+{
+  "prUrl": "https://github.com/ohah/spinon/pull/474",
+  "browser": "agent-browser 0.31.1",
+  "session": "spinon-c114-fit-content-20261022",
+  "images": [
+    {
+      "alt": "Android API 37 ARM64 AVD · cyclic fit-content column",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/feat/c11-4-cyclic-percent-fit-content-20261022/spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/android-avd-c114-cyclic-fit-content-android-avd-20261021T211550973Z-507a47e9/cyclic-fit-content-column.png",
+      "complete": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    },
+    {
+      "alt": "iPhone 17 Pro iOS 26.2 Simulator · cyclic fit-content column",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/feat/c11-4-cyclic-percent-fit-content-20261022/spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/ios-simulator-c114-cyclic-fit-content-ios-simulator-20261021T211557002Z-ad4d44ff/cyclic-fit-content-column.png",
+      "complete": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622
+    }
+  ],
+  "pageScreenshot": "pr-474-agent-browser.png",
+  "pageScreenshotSha256": "6aa7ba3125f71cfb202ad360470d1f571c1f65be0d1c458dc30f384570299ea0",
+  "sessionClosed": true,
+  "matchingBrowserProcessesAfterClose": 0
+}
