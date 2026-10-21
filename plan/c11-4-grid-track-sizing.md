@@ -300,4 +300,7 @@ CSS Grid 2025 CRD §7.2.1에 따라 intrinsic container sizing에서는 cyclic p
 
 ### 2026-10-22 cyclic percentage `calc()` track sizing 구현
 
+구현 PR [#480](https://github.com/ohah/spinon/pull/480)은 2026-10-21 22:54:20 UTC에 Rebase and merge되어 SHA `e8c7eb06c66fc7424002eaca76af081ecd72a24f`를 남겼다. 병합 시 PR check rollup은 비어 있었고 main 필수 status check는 설정되지 않았다.
+
+
 [`calc(percentage + length)` 집중 계획](./c11-4-cyclic-calc-track-sizing.md)의 네 고정 scene을 opt-in C11.4 runtime fixture에 연결했다. cyclic column·row 및 양축 동시 scene과 definite-size control에서 CSS Grid 2025 CRD 독립 기대값 `Columns [16]/[24]/[16]/[24]`, `Rows [16]/[10]/[10]/[12]`, root/item frame을 확인한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 네 scene 모두 통과했고, PixelCopy 및 iOS compositor 전 Metal drawable 표본은 각 `8/8` exact다. 수정한 scene/color allowlist와 `-two-axis` helper 회귀는 nested-depth 기존 six-scene matrix를 두 플랫폼에서 `6/6` 재실행했다. 기본 release `.rlib`에는 신규 fixture symbol과 scene string이 없고 fixture-test positive control에는 포함된다. [Chrome 사전 비교](../spec/internal/evidence/c11-4-cyclic-calc-track-sizing-precomparison-2026-10-22/README.md) · [실행·screenshots·artifact 결과](../spec/internal/evidence/c11-4-cyclic-calc-track-sizing-2026-10-22/README.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-cyclic-calc-track-sizing-2026-10-22/implementation-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-cyclic-calc-track-sizing-2026-10-22/pr-diff-review-30.md) · [계획 검토 20개](./c11-4-cyclic-calc-track-sizing-plan-review-20.md). 일반 author CSS admission, WPT, 실기기 및 전체 C11.4는 범위 밖이며 공식 완료 수 `72/213`은 유지한다.
