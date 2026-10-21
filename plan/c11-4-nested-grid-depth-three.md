@@ -2,7 +2,7 @@
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [depth-two 양 축 계획](./c11-4-nested-grid-two-axis-depth-two.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 구현 및 두 Simulator 검증 완료. 계획 PR [#457](https://github.com/ohah/spinon/pull/457)이 Rebase and merge된 뒤 같은 checkout의 구현 브랜치에서 고정 depth-three slice를 연결했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 8개 control을 포함한 10/10 scene을 통과했다. C11.4 checkbox와 공식 완료 수 72/213은 변경하지 않는다.
+**상태:** 구현 및 두 Simulator 검증 완료. 계획 PR [#457](https://github.com/ohah/spinon/pull/457)이 Rebase and merge된 뒤 같은 checkout의 구현 브랜치에서 고정 depth-three slice를 연결했다. 구현 PR [#458](https://github.com/ohah/spinon/pull/458)은 2026-10-21 16:44:41 UTC에 Rebase and merge됐고 merge SHA는 `4df8d09cb2512d5198733e2eda578ba9c8936230`이다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 8개 control을 포함한 10/10 scene을 통과했다. C11.4 checkbox와 공식 완료 수 72/213은 변경하지 않는다.
 
 ## 목적과 범위
 
@@ -56,4 +56,5 @@ CSS Grid Layout Module Level 1 2025 CRD의 [§5.2](https://www.w3.org/TR/2025/CR
 
 - [계획 실패 관점 20개](./c11-4-nested-grid-depth-three-plan-review-20.md)
 - [계획 PR diff 실패 관점 30개](../spec/internal/evidence/c11-4-nested-grid-depth-three-precomparison-2026-10-22/plan-pr-diff-review-30.md)
+- [구현 PR 병합 기록 문서 검토 30개](./c11-4-nested-grid-depth-three-merge-record-review-30.md)
 - [Chrome 156 사전 비교·기대값·화면·SHA-256](../spec/internal/evidence/c11-4-nested-grid-depth-three-precomparison-2026-10-22/README.md)
