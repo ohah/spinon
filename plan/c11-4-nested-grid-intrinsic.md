@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** Agent Browser `HeadlessChrome/156.0.0.0` 사전 관찰과 계획 실패 관점 20개 검토를 기록했다. 구현, Spinon 비교, 앱 fixture, Android/iOS Simulator 실행은 아직 하지 않았다. [사전 비교 evidence](../spec/internal/evidence/c11-4-nested-grid-intrinsic-precomparison-2026-10-21/README.md). C11.4 체크와 공식 완료 수는 바꾸지 않는다.
+**상태:** Agent Browser `HeadlessChrome/156.0.0.0` 사전 관찰과 계획 실패 관점 20개 검토를 바탕으로 일반 nested Grid 한 단계의 opt-in fixture·Rust trace 검증을 구현했다. Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator에서 세 acceptance scene을 다시 실행했다. 현재 구현은 고정 입력에서 독립 기대값과 Chrome 관찰을 보존하며, layout algorithm 수정은 필요하지 않았다. [사전 비교](../spec/internal/evidence/c11-4-nested-grid-intrinsic-precomparison-2026-10-21/README.md) · [Simulator 실행·화면·hash](../spec/internal/evidence/c11-4-nested-grid-intrinsic-simulator-2026-10-21/README.md) · [구현 실패 관점 20개](../spec/internal/evidence/c11-4-nested-grid-intrinsic-simulator-2026-10-21/implementation-review-20.md). 이 opt-in fixture는 일반 nested/subgrid 지원이 아니며 C11.4 checkbox와 공식 72/213 완료 수는 그대로 둔다.
 
 ## 목표
 
@@ -38,6 +38,20 @@ Acceptance에서 확인할 항목:
 6. 관련 Rust focused test, 기존 C11.4 fixture 회귀, `cargo fmt --all -- --check`, workspace all-target Clippy `-D warnings`, Android/iOS fixture-test build를 실행하고 결과를 분리 기록한다. Simulator frame 성공을 실기기, hardware GPU, WPT 또는 compositor-after 표본으로 표현하지 않는다.
 
 실제 구현 차이가 발견되면 원인과 최소 수정 경계를 먼저 좁힌다. unsupported item topology, style/profile, source revision 또는 scene ID는 부분 input/layout을 내지 않고 기존 fail-closed 오류를 유지한다. Public CSS 지원, API/내부 계약 숫자 버전, C11.4 상태를 이 제한 fixture만으로 확장하지 않는다.
+
+## 구현과 simulator 실행 (2026-10-21)
+
+세 장면을 고정 FFI scene allowlist, runtime topology/style validator, direct-layout regression 및 runtime test로 연결했다. nested Grid는 내부 text leaf input과 구분된 outer Grid item으로 남고, parent contribution trace는 item node·kind·span·value를 보존한다. 제품 layout algorithm은 바꾸지 않았다.
+
+| scene | Android AVD·iOS Simulator 결과 | outer contribution |
+| --- | --- | --- |
+| `nested-grid-span-two` | outer/nested width `134px`; outer tracks `65/65px`; inner tracks `70/60px` | `MinContent`, span 2, `134px` |
+| `nested-grid-one-track` | outer width `138px`, nested width `134px`; outer tracks `134/0px` | `MinContent`, span 1, `134px` |
+| `nested-grid-definite-flex-control` | outer/nested width `120px`; outer tracks `58/58px`; inner tracks `70/60px` | `Minimum`, span 2, `0px` |
+
+API 37 ARM64 AVD에서는 세 frame/track/trace/draw 장면과 Android PixelCopy 표본 5/5를 통과했고, APK와 설치 `base.apk` SHA-256이 같다. iPhone 17 Pro / iOS 26.2 Simulator에서도 세 장면 및 Metal drawable 표본 5/5가 정확히 일치했다. flex control 표본은 x=72의 내부 gap, x=119/120/133의 빨간 item, x=134의 검정 배경을 읽어 inner overflow가 parent track contribution에 더해지지 않음을 확인한다. Android는 SwiftShader AVD이고 iOS Metal sample은 OS compositor 제출 전이다.
+
+기본 `spinon-ffi` artifact에서는 fixture symbol과 장면 payload를 제외했고 fixture-test feature build를 positive control로 확인했다. direct-layout/runtime/FFI focused tests, `cargo fmt`, JS syntax·fixture module boundary, workspace Clippy `-D warnings`, Android 및 iOS fixture 앱 build가 통과했다. ADB에 Samsung 실기기가 나타나지 않아 사용자가 simulator를 선택했다. 일반 nested Grid 문법·다단계 nesting·subgrid·WPT·실기기·iOS compositor-after surface는 미검증이다. 전체 로그·화면·SHA-256과 첫 capture 시 검증 도구에서 발견해 수정한 allowlist/trace parser/sample-map 문제는 [실행 evidence](../spec/internal/evidence/c11-4-nested-grid-intrinsic-simulator-2026-10-21/README.md)에 기록한다.
 
 ## 제외 범위
 

@@ -24,6 +24,8 @@ mod mixed_multispan;
 mod multispan_ordering;
 #[path = "c11_4/negative_implicit_tracks.rs"]
 mod negative_implicit_tracks;
+#[path = "c11_4/nested_grid_intrinsic.rs"]
+mod nested_grid_intrinsic;
 #[path = "c11_4/text_multispan.rs"]
 mod text_multispan;
 
@@ -1062,6 +1064,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     if let Some(source) = multispan_ordering::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
+    if let Some(source) = nested_grid_intrinsic::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = auto_repeat_negative_lines::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
@@ -1165,6 +1170,41 @@ mod tests {
         C11_4_IMAGE_FIXED_GUTTER_SCENES, C11_4_IMAGE_TRACK_SCENES, C11_4_PERCENTAGE_GAP_SCENES,
         c11_4_grid_track_sizing_runtime_source,
     };
+
+    #[test]
+    fn exposes_fixed_nested_grid_intrinsic_scenes() {
+        for (scene_id, columns, placement, width) in [
+            (
+                "nested-grid-span-two",
+                "min-content min-content",
+                "grid-column:1 / span 2",
+                "max-content",
+            ),
+            (
+                "nested-grid-one-track",
+                "min-content min-content",
+                "grid-column:1 / 2",
+                "max-content",
+            ),
+            (
+                "nested-grid-definite-flex-control",
+                "minmax(auto,1fr) minmax(auto,1fr)",
+                "grid-column:1 / span 2",
+                "120px",
+            ),
+        ] {
+            let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
+            assert!(source.len() < 4 * 1024);
+            assert!(source.contains(&format!("sceneId:{scene_id:?}")));
+            assert!(source.contains(&format!("width:{width};height:20px")));
+            assert!(source.contains(&format!("grid-template-columns:{columns}")));
+            assert!(source.contains(placement));
+            assert!(source.contains("grid-template-columns:min-content max-content"));
+            assert_eq!(source.matches("document.createElement('div')").count(), 4);
+            assert_eq!(source.matches("document.createTextNode(").count(), 2);
+        }
+        assert!(c11_4_grid_track_sizing_runtime_source("nested-grid-unlisted").is_err());
+    }
 
     #[test]
     fn exposes_only_bounded_intrinsic_track_sizing_scenes() {
