@@ -1,0 +1,44 @@
+{
+  "pass": "pass35",
+  "checkedRoutes": [
+    {
+      "kind": "roadmap",
+      "path": "roadmap.html",
+      "exists": true,
+      "bytes": 178835
+    },
+    {
+      "kind": "evidence-page",
+      "path": "spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/README.html",
+      "exists": true,
+      "bytes": 99587
+    },
+    {
+      "kind": "new-android-screenshot",
+      "path": "internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/android-device-c114-phys-recheck-android-device-20261021T002429183Z-eae27b30/spanning-auto-min-flex-tracks.png",
+      "exists": true,
+      "bytes": 109837
+    },
+    {
+      "kind": "new-android-result",
+      "path": "internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/android-device-c114-phys-recheck-android-device-20261021T002429183Z-eae27b30/result.json",
+      "exists": true,
+      "bytes": 1328
+    },
+    {
+      "kind": "review-30",
+      "path": "internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/link-fix-review-30.md",
+      "exists": true,
+      "bytes": 6332
+    },
+    {
+      "kind": "ios-screenshot",
+      "path": "internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/ios-simulator-c114-spanning-flex-text-ios-simulator-20261021T000424988Z-24d91db2/spanning-auto-min-flex-tracks.png",
+      "exists": true,
+      "bytes": 145003
+    }
+  ],
+  "evidencePageAssetLinks": 21,
+  "allLocalTargetsExist": true,
+  "oldRoadmapPngRouteAbsent": true
+}

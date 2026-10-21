@@ -1,0 +1,669 @@
+{
+  "browser": "Agent Browser",
+  "containsLinkReview30": true,
+  "containsPhysicalRecheck": true,
+  "heading": "#\nC11.4 spanning auto-minimum flex track text fixture",
+  "images": [
+    {
+      "complete": true,
+      "height": 150,
+      "src": "https://macstudio.tailed42f2.ts.net/spinon/logo.svg",
+      "width": 150
+    }
+  ],
+  "internalAssetLinkCount": 21,
+  "links": [
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/",
+      "text": "스피논"
+    },
+    {
+      "href": "https://github.com/ohah/spinon",
+      "text": ""
+    },
+    {
+      "href": "https://github.com/ohah/spinon",
+      "text": ""
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/0001-conformance.html",
+      "text": "0001 · 범위와 적합성"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/0059-c11-grid-layout.html",
+      "text": "0059 · C11 Grid 레이아웃 내부 계약"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20/plan-review-20.html",
+      "text": "C11.4 definite minimum-size auto-fit 축별 반복 계획 적대 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20/pr-diff-review-30.html",
+      "text": "C11.4 auto-fit 축 차이 계획 PR diff 적대 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20/README.html",
+      "text": "C11.4 definite minimum-size auto-fit 축 차이 사전 비교"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/implementation-review-20.html",
+      "text": "C11.4 explicit-neighbor auto-repeat 구현 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/pr-diff-review-30.html",
+      "text": "C11.4 explicit-neighbor auto-repeat PR diff 적대 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.html",
+      "text": "C11.4 explicit-neighbor auto-repeat 실행 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/fixture-artifact-boundary.html",
+      "text": "C11.4 fixture artifact 경계 확인"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/implementation-review-20.html",
+      "text": "C11.4 definite minimum-size two-track auto-repeat 구현 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/pr-diff-review-30.html",
+      "text": "C11.4 definite minimum-size two-track auto-repeat · PR diff 적대 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/README.html",
+      "text": "C11.4 definite minimum-size · two-track auto-repeat 구현 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/plan-review-20.html",
+      "text": "C11.4 definite min-size + two-track auto-repeat 계획 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/pr-diff-review-30.html",
+      "text": "계획 PR diff 적대 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/README.html",
+      "text": "C11.4 two-track auto-repeat · definite minimum-size 사전 비교"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-full-matrix-physical-android-2026-10-21/pr-diff-review-30.html",
+      "text": "PR 변경 실패 관점 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-full-matrix-physical-android-2026-10-21/README.html",
+      "text": "C11.4 누적 150-scene Android 실기기 검증"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-full-matrix-physical-android-2026-10-21/roadmap-update-review-30.html",
+      "text": "PR #414 로드맵 변경 검토 30항목"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/artifact-boundary/README.html",
+      "text": "Fixture artifact feature boundary"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/implementation-review-20.html",
+      "text": "C11.4 image intrinsic fixture 구현 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/pr-diff-review-30.html",
+      "text": "C11.4 이미지 intrinsic 행렬 PR diff 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-intrinsic-matrix-2026-10-19/README.html",
+      "text": "C11.4 direct-leaf image intrinsic matrix"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-multispan-contributions-2026-10-21/implementation-review-20.html",
+      "text": "C11.4 direct image multi-span 구현·runtime 리뷰 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-multispan-contributions-2026-10-21/pr-diff-review-30.html",
+      "text": "C11.4 direct image multi-span PR diff review 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-multispan-contributions-2026-10-21/README.html",
+      "text": "C11.4 직접 이미지 multi-span contribution 실행 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-multispan-precomparison-2026-10-21/plan-review-20.html",
+      "text": "C11.4 직접 이미지 multi-span 계획 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-multispan-precomparison-2026-10-21/README.html",
+      "text": "C11.4 직접 이미지 multi-span Chrome 사전 비교"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "text": "C11.4 fixed gutter 구현 적대 검토 · 20개 실패 관점"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "text": "C11.4 fixed-gutter PR diff 적대 검토 · 30개 실패 관점"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "text": "C11.4 fixed-span size suggestion · 구현과 Simulator 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-ratio-fixed-gutter-physical-android-2026-10-21/physical-validation-review-20.html",
+      "text": "Android fixed-gutter 실기기 검증 실패 관점 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-ratio-fixed-gutter-physical-android-2026-10-21/README.html",
+      "text": "C11.4 fixed-gutter image ratio · Android 실기기 보충 검증"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "text": "C11.4 fixed gutter 계획 검토 · 20개 실패 관점"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "text": "C11.4 fixed-span 계획 수정 검토 · 20개 실패 관점"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "text": "C11.4 fixed-gutter 계획 PR diff 검토 · 20개 실패 관점"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "text": "C11.4 fixed max track span과 gutter의 사전 비교"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/pr-delta-review-30.html",
+      "text": "C11.4 Tailnet roadmap PR diff 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/README.html",
+      "text": "C11.4 PR #351 뒤 Tailnet 로드맵 미리보기 갱신"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/sync-review-20.html",
+      "text": "C11.4 Tailnet 미리보기 동기화 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-multispan-ordering-physical-android-2026-10-21/implementation-review-20.html",
+      "text": "C11.4 multi-span ordering 구현 적대 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-multispan-ordering-physical-android-2026-10-21/ios-simulator-review-20.html",
+      "text": "C11.4 multi-span iOS fixture와 Simulator 실행 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-multispan-ordering-physical-android-2026-10-21/pr-diff-review-30.html",
+      "text": "C11.4 multi-span ordering PR diff 적대 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-multispan-ordering-physical-android-2026-10-21/README.html",
+      "text": "C11.4 multi-span source-order oracle와 Android 실기기 실행"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/implementation-review-20.html",
+      "text": "구현/runtime 적대적 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/link-fix-review-30.html",
+      "text": "C11.4 실기기 근거 링크 수정 적대 검토"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/pr-diff-review-20.html",
+      "text": "PR diff 적대적 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/README.html",
+      "text": "C11.4 spanning auto-minimum flex track text fixture"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-text-intrinsic-physical-android-2026-10-21/physical-evidence-review-20.html",
+      "text": "Android 실기기 text matrix 근거 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-text-intrinsic-physical-android-2026-10-21/pr-diff-review-30.html",
+      "text": "C11.4 실기기 text matrix PR 변경 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-text-intrinsic-physical-android-2026-10-21/README.html",
+      "text": "C11.4 text intrinsic matrix · Android 실기기"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/implementation-review-20.html",
+      "text": "C11.4 양쪽 축 auto-repeat 구현 후 20개 실패 관점 검토"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/pr-diff-review-30.html",
+      "text": "PR #368 최종 diff 적대적 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/README.html",
+      "text": "C11.4 · 양쪽 Grid 축 auto-repeat 구현 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/plan-review-20.html",
+      "text": "C11.4 양쪽 축 auto-repeat 계획 적대 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/pr-diff-review-30.html",
+      "text": "C11.4 양쪽 축 auto-repeat 계획 PR 변경 적대 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/README.html",
+      "text": "C11.4 양쪽 축 auto-repeat 사전 비교"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/README.html",
+      "text": "C11.4 PR #368 뒤 Tailnet 로드맵 미리보기 갱신"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/sync-review-20.html",
+      "text": "C11.4 PR #368 Tailnet 미리보기 동기화 실패 관점 검토 22개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/README.html",
+      "text": "내부 인터페이스 명세"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-auto-fit-min-size-axis.html",
+      "text": "C11.4 · definite minimum-size에서 축별 auto-fit 반복 수 계획"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-auto-repeat-two-track-min-size.html",
+      "text": "C11.4 · definite minimum-size의 two-track auto-repeat 계획"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-grid-track-sizing.html",
+      "text": "C11.4 · CSS Grid track sizing 계획"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-image-multispan-contributions.html",
+      "text": "C11.4 · 직접 이미지 다중 span intrinsic 기여 계획"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-image-ratio-fixed-gutter.html",
+      "text": "C11.4 · fixed span size suggestion clamp와 gutter trace"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-text-multispan-contributions.html",
+      "text": "C11.4 직접 텍스트 다중 span 기여 계획"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-two-axis-auto-repeat.html",
+      "text": "C11.4 · 양쪽 Grid 축의 auto-repeat 계획"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-css-grid.html",
+      "text": "C11 · CSS Grid 레이아웃 구현 계획"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/0059-c11-grid-layout.html",
+      "text": "0059 · C11 Grid 레이아웃 내부 계약"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20/plan-review-20.html",
+      "text": "C11.4 definite minimum-size auto-fit 축별 반복 계획 적대 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20/pr-diff-review-30.html",
+      "text": "C11.4 auto-fit 축 차이 계획 PR diff 적대 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-auto-fit-min-size-axis-precomparison-2026-10-20/README.html",
+      "text": "C11.4 definite minimum-size auto-fit 축 차이 사전 비교"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/implementation-review-20.html",
+      "text": "C11.4 explicit-neighbor auto-repeat 구현 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/pr-diff-review-30.html",
+      "text": "C11.4 explicit-neighbor auto-repeat PR diff 적대 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.html",
+      "text": "C11.4 explicit-neighbor auto-repeat 실행 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/fixture-artifact-boundary.html",
+      "text": "C11.4 fixture artifact 경계 확인"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/implementation-review-20.html",
+      "text": "C11.4 definite minimum-size two-track auto-repeat 구현 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/pr-diff-review-30.html",
+      "text": "C11.4 definite minimum-size two-track auto-repeat · PR diff 적대 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-2026-10-20/README.html",
+      "text": "C11.4 definite minimum-size · two-track auto-repeat 구현 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/plan-review-20.html",
+      "text": "C11.4 definite min-size + two-track auto-repeat 계획 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/pr-diff-review-30.html",
+      "text": "계획 PR diff 적대 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20/README.html",
+      "text": "C11.4 two-track auto-repeat · definite minimum-size 사전 비교"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-full-matrix-physical-android-2026-10-21/pr-diff-review-30.html",
+      "text": "PR 변경 실패 관점 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-full-matrix-physical-android-2026-10-21/README.html",
+      "text": "C11.4 누적 150-scene Android 실기기 검증"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-full-matrix-physical-android-2026-10-21/roadmap-update-review-30.html",
+      "text": "PR #414 로드맵 변경 검토 30항목"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-image-multispan-contributions-2026-10-21/implementation-review-20.html",
+      "text": "C11.4 direct image multi-span 구현·runtime 리뷰 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-image-multispan-contributions-2026-10-21/pr-diff-review-30.html",
+      "text": "C11.4 direct image multi-span PR diff review 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-image-multispan-contributions-2026-10-21/README.html",
+      "text": "C11.4 직접 이미지 multi-span contribution 실행 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-image-multispan-precomparison-2026-10-21/plan-review-20.html",
+      "text": "C11.4 직접 이미지 multi-span 계획 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-image-multispan-precomparison-2026-10-21/README.html",
+      "text": "C11.4 직접 이미지 multi-span Chrome 사전 비교"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/implementation-review-20.html",
+      "text": "C11.4 fixed gutter 구현 적대 검토 · 20개 실패 관점"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/pr-diff-review-30.html",
+      "text": "C11.4 fixed-gutter PR diff 적대 검토 · 30개 실패 관점"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-2026-10-20/README.html",
+      "text": "C11.4 fixed-span size suggestion · 구현과 Simulator 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-physical-android-2026-10-21/physical-validation-review-20.html",
+      "text": "Android fixed-gutter 실기기 검증 실패 관점 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-physical-android-2026-10-21/README.html",
+      "text": "C11.4 fixed-gutter image ratio · Android 실기기 보충 검증"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-review-20.html",
+      "text": "C11.4 fixed gutter 계획 검토 · 20개 실패 관점"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/plan-revision-review-20.html",
+      "text": "C11.4 fixed-span 계획 수정 검토 · 20개 실패 관점"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/pr-diff-review-20.html",
+      "text": "C11.4 fixed-gutter 계획 PR diff 검토 · 20개 실패 관점"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-image-ratio-fixed-gutter-precomparison-2026-10-19/README.html",
+      "text": "C11.4 fixed max track span과 gutter의 사전 비교"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-multispan-ordering-physical-android-2026-10-21/implementation-review-20.html",
+      "text": "C11.4 multi-span ordering 구현 적대 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-multispan-ordering-physical-android-2026-10-21/ios-simulator-review-20.html",
+      "text": "C11.4 multi-span iOS fixture와 Simulator 실행 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-multispan-ordering-physical-android-2026-10-21/pr-diff-review-30.html",
+      "text": "C11.4 multi-span ordering PR diff 적대 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-multispan-ordering-physical-android-2026-10-21/README.html",
+      "text": "C11.4 multi-span source-order oracle와 Android 실기기 실행"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/implementation-review-20.html",
+      "text": "구현/runtime 적대적 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/link-fix-review-30.html",
+      "text": "C11.4 실기기 근거 링크 수정 적대 검토"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/pr-diff-review-20.html",
+      "text": "PR diff 적대적 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/README.html",
+      "text": "C11.4 spanning auto-minimum flex track text fixture"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-text-intrinsic-physical-android-2026-10-21/physical-evidence-review-20.html",
+      "text": "Android 실기기 text matrix 근거 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-text-intrinsic-physical-android-2026-10-21/pr-diff-review-30.html",
+      "text": "C11.4 실기기 text matrix PR 변경 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-text-intrinsic-physical-android-2026-10-21/README.html",
+      "text": "C11.4 text intrinsic matrix · Android 실기기"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-text-multispan-contributions-2026-10-21/artifact-boundary.html",
+      "text": "Fixture artifact 경계 검사"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-text-multispan-contributions-2026-10-21/implementation-review-20.html",
+      "text": "C11.4 direct-leaf text multi-span 구현/runtime 적대 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-text-multispan-contributions-2026-10-21/pr-diff-review-30.html",
+      "text": "C11.4 direct-leaf text multi-span PR diff 적대 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-text-multispan-contributions-2026-10-21/README.html",
+      "text": "C11.4 direct-leaf text multi-span 실행 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/implementation-review-20.html",
+      "text": "C11.4 양쪽 축 auto-repeat 구현 후 20개 실패 관점 검토"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/pr-diff-review-30.html",
+      "text": "PR #368 최종 diff 적대적 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-two-axis-auto-repeat-2026-10-20/README.html",
+      "text": "C11.4 · 양쪽 Grid 축 auto-repeat 구현 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/plan-review-20.html",
+      "text": "C11.4 양쪽 축 auto-repeat 계획 적대 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/pr-diff-review-30.html",
+      "text": "C11.4 양쪽 축 auto-repeat 계획 PR 변경 적대 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/README.html",
+      "text": "C11.4 양쪽 축 auto-repeat 사전 비교"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/README.html",
+      "text": "C11.4 PR #368 뒤 Tailnet 로드맵 미리보기 갱신"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-two-axis-tailnet-sync-2026-10-20/sync-review-20.html",
+      "text": "C11.4 PR #368 Tailnet 미리보기 동기화 실패 관점 검토 22개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/plan/c11-4-grid-track-sizing.html",
+      "text": "C11.4 · CSS Grid track sizing 계획"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/STATUS.html",
+      "text": "스피논 구현 상태와 API 명세 대장"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "text": "스피논 구현 상태와 API 명세 대장"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/README.html#c114-spanning-auto-minimum-flex-track-text-fixture",
+      "text": "#"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/README.html#%EA%B3%A0%EC%A0%95-oracle%EA%B3%BC-%EB%B2%94%EC%9C%84",
+      "text": "#"
+    },
+    {
+      "href": "https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-observation.json",
+      "text": "저장된 Chrome 관찰"
+    },
+    {
+      "href": "https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/README.md#%EA%B5%AC%ED%98%84-%EC%A0%84-%ED%8C%90%EC%A0%95-%EC%A7%91%ED%95%A9",
+      "text": "사전 비교 표와 판정"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/README.html#%EA%B5%AC%ED%98%84-%EB%B0%8F-%EC%A7%91%EC%A4%91-%EA%B2%80%EC%82%AC",
+      "text": "#"
+    },
+    {
+      "href": "https://github.com/ohah/spinon/blob/main/crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/flex_spanning_text.rs",
+      "text": "flex_spanning_text.rs"
+    },
+    {
+      "href": "https://github.com/ohah/spinon/blob/main/crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/flex_span.rs",
+      "text": "flex_span.rs"
+    },
+    {
+      "href": "https://github.com/ohah/spinon/blob/main/crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests.rs",
+      "text": "c11_grid_tests.rs"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/implementation-review-20.md",
+      "text": "구현/runtime 실패 관점 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/pr-diff-review-20.md",
+      "text": "PR diff 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/link-fix-review-30.md",
+      "text": "경로·자산·범위 실패 관점 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/README.html#android-%EC%8B%A4%EA%B8%B0%EA%B8%B0",
+      "text": "#"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/android-device-c114-spanning-flex-text-android-device-20261021T000107087Z-00e70fc2/device.json",
+      "text": "기기 정보·첫 설치 hash"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/android-device-c114-spanning-flex-text-android-device-20261021T000107087Z-00e70fc2/runtime-spanning-auto-min-flex-tracks.log",
+      "text": "실패 runtime log"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/android-device-c114-spanning-flex-text-android-device-20261021T000224674Z-96374cf5/device.json",
+      "text": "기기·APK 확인"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/android-device-c114-spanning-flex-text-android-device-20261021T000224674Z-96374cf5/installed-apk-verification.json",
+      "text": "설치 APK hash"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/android-device-c114-spanning-flex-text-android-device-20261021T000224674Z-96374cf5/result.json",
+      "text": "실행 결과"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/android-device-c114-spanning-flex-text-android-device-20261021T000224674Z-96374cf5/runtime-spanning-auto-min-flex-tracks.log",
+      "text": "로그"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/android-device-c114-spanning-flex-text-android-device-20261021T000224674Z-96374cf5/spanning-auto-min-flex-tracks.png",
+      "text": "실기기 화면"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/android-device-c114-phys-recheck-android-device-20261021T002429183Z-eae27b30/result.json",
+      "text": "실기기 재실행 결과"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/android-device-c114-phys-recheck-android-device-20261021T002429183Z-eae27b30/installed-apk-verification.json",
+      "text": "설치 APK hash"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/android-device-c114-phys-recheck-android-device-20261021T002429183Z-eae27b30/runtime-spanning-auto-min-flex-tracks.log",
+      "text": "실행 로그"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/android-device-c114-phys-recheck-android-device-20261021T002429183Z-eae27b30/spanning-auto-min-flex-tracks.png",
+      "text": "실기기 화면"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/README.html#ios-simulator",
+      "text": "#"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/ios-simulator-c114-spanning-flex-text-ios-simulator-20261021T000424988Z-24d91db2/result.json",
+      "text": "Simulator 결과"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/ios-simulator-c114-spanning-flex-text-ios-simulator-20261021T000424988Z-24d91db2/launch-spanning-auto-min-flex-tracks.log",
+      "text": "설치·실행 로그"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/ios-simulator-c114-spanning-flex-text-ios-simulator-20261021T000424988Z-24d91db2/spanning-auto-min-flex-tracks.png",
+      "text": "화면"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/README.html#%ED%95%9C%EA%B3%84%EC%99%80-%ED%8C%90%EC%A0%95",
+      "text": "#"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/pr-diff-review-20.html",
+      "text": "이전 페이지\nPR diff 적대적 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-text-intrinsic-physical-android-2026-10-21/physical-evidence-review-20.html",
+      "text": "다음 페이지\nAndroid 실기기 text matrix 근거 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/README.html#%EA%B3%A0%EC%A0%95-oracle%EA%B3%BC-%EB%B2%94%EC%9C%84",
+      "text": "고정 oracle과 범위"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/README.html#%EA%B5%AC%ED%98%84-%EB%B0%8F-%EC%A7%91%EC%A4%91-%EA%B2%80%EC%82%AC",
+      "text": "구현 및 집중 검사"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/README.html#android-%EC%8B%A4%EA%B8%B0%EA%B8%B0",
+      "text": "Android 실기기"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/README.html#ios-simulator",
+      "text": "iOS Simulator"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/README.html#%ED%95%9C%EA%B3%84%EC%99%80-%ED%8C%90%EC%A0%95",
+      "text": "한계와 판정"
+    }
+  ],
+  "oldBrokenPngLinks": [],
+  "pass": "pass35",
+  "title": "C11.4 spanning auto-minimum flex track text fixture - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/README.html"
+}

@@ -1,0 +1,19 @@
+{
+  "pass": "pass35",
+  "sourceHead": "4eaab3fa1af53b6511ded4bdb121e733af25121f",
+  "sourceTree": "5115c93a6d63610b6696c552df4d7538d8c0de82",
+  "selectedRoot": "build/spinon/c11-4-spanning-text-tailnet-sync-root-pass35-selected",
+  "outputRoot": "/Volumes/ZTSBuild/c11-4-spanning-text-tailnet-sync-site-pass35",
+  "fileCount": 2445,
+  "totalBytes": 104500510,
+  "outputTreeSha256": "f2ffc27eead28f841f8b10808c3962587d49e694dd710c4da9f4dd305a25174b",
+  "buildLogSha256": "ba6cab9b500aab11afecb0f79ccfaf7b43c093217d33db96753c0f1a577228d9",
+  "buildExitCode": 0,
+  "buildWarnings": [
+    "dist path is outside root; unique output directory was confirmed absent before build"
+  ],
+  "noTargetWrites": true,
+  "buildLogRawSha256": "8fed48737b0aa1c1eeb2045eb759e2e683888a9ac6f1087026780957bfb10783",
+  "buildLogWhitespaceNormalized": true,
+  "rawBuildLogPreservedAt": "/Volumes/ZTSBuild/c11-4-spanning-text-link-tailnet-sync-pass35-build.raw.log"
+}
