@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** Chrome 155 사전 비교와 계획 실패 관점 20개 검토를 마쳤다. 제한된 runtime fixture 구현과 네 mixed scene의 Rust·Android API 37 AVD·Android 실기기·iOS Simulator 실행을 구현 PR에 올릴 준비를 마쳤다. C11.4와 공식 완료 수는 미완료로 유지한다.
+**상태:** Chrome 155 사전 비교와 계획 실패 관점 20개 검토를 마쳤다. 제한된 runtime fixture 구현과 네 mixed scene의 Rust·Android API 37 AVD·Android 실기기·iOS Simulator 실행을 마치고 [구현 PR #419](https://github.com/ohah/spinon/pull/419)을 올렸다. C11.4와 공식 완료 수는 미완료로 유지한다.
 
 ## 목적과 범위
 
