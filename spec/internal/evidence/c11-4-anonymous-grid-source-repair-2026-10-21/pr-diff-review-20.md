@@ -21,6 +21,6 @@
 17. **숨김 조상 전파** — 중간 조상이 숨김일 때 표시 자손을 잘못 보이는가? root까지 각 parent의 style을 검사하고 첫 `None`에서 true를 반환한다.
 18. **지정 root 경계** — root 밖의 조상 상태가 하위 결과를 바꾸는가? root style을 확인한 뒤 parent 조회 전에 종료한다.
 19. **잘린 parent chain** — `HostParent::Root` 또는 parent 없음에서 무한 반복하는가? 둘 다 false로 종료한다.
-20. **숨겨진 panic·비결정성** — `unwrap`/unsafe 또는 순서에 의존하는 출력이 있는가? 오류는 `Result`로 전파하고, 인덱스 결과는 `BTreeMap`/`BTreeSet`으로 정렬된다.
+20. **공식 상태와 검증 주장** — 수정만으로 C11.4 전체 완료·실기기·GPU 호환을 과장하는가? `spec/STATUS.md`는 C11.4 미완료를 유지하고, evidence는 Android API 37 AVD만 기록한다. 새 모듈에 `unwrap`/unsafe 없이 오류를 `Result`로 전파한다.
 
-**결론:** clean checkout 빌드를 막던 파일 누락을 확인하고 이 PR에 추가했다. 포맷, 229개 layout 테스트, workspace Clippy, Android AVD의 5개 장면에서 추가 실패는 발견되지 않았다. 이 검토는 전체 CSS Grid 적합성이나 물리 GPU 렌더링 검증을 의미하지 않는다.
+**결론:** clean checkout 빌드를 막던 파일 누락을 확인하고 이 PR에 추가했다. 상태 대장과 증거 범위는 C11.4의 미완료 상태를 유지한다. 포맷, 229개 layout 테스트, workspace Clippy, Android AVD의 5개 장면에서 추가 실패는 발견되지 않았다. 이 검토는 전체 CSS Grid 적합성이나 물리 GPU 렌더링 검증을 의미하지 않는다.

@@ -8,7 +8,7 @@
 error: couldn't read `crates/spinon-layout/src/host_document/text_paragraphs/dom_traversal.rs`: No such file or directory
 ```
 
-누락된 내부 모듈을 추가했다. 이 수정은 기존 순회 로직을 정식 Rust 소스로 복구하며 공개 API나 C11.4 지원 범위를 바꾸지 않는다. 같은 깨끗한 스냅샷에 해당 파일만 추가한 뒤 동일한 `cargo check`이 통과했다.
+누락된 내부 모듈을 추가했다. 이 수정은 기존 순회 로직을 정식 Rust 소스로 복구하며 공개 API나 C11.4 지원 범위를 바꾸지 않는다. 같은 깨끗한 스냅샷에 해당 파일만 추가한 뒤 동일한 `cargo check`이 통과했다. 커밋 archive를 별도로 풀어 실행한 `cargo check --locked -p spinon-layout`도 통과했다.
 
 ## 검증
 
