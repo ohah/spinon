@@ -12,6 +12,8 @@ mod anonymous_text_items;
 mod anonymous_text_multi_image;
 #[path = "c11_4/auto_repeat_negative_lines.rs"]
 mod auto_repeat_negative_lines;
+#[path = "c11_4/cyclic_percentage_fit_content.rs"]
+mod cyclic_percentage_fit_content;
 #[path = "c11_4/cyclic_percentage_minmax.rs"]
 mod cyclic_percentage_minmax;
 #[path = "c11_4/cyclic_percentage_tracks.rs"]
@@ -1059,6 +1061,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     if let Some(source) = cyclic_percentage_minmax::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
+    if let Some(source) = cyclic_percentage_fit_content::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = anonymous_grid_border_overflow::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
@@ -1324,6 +1329,39 @@ mod tests {
             assert!(source.contains("width:24px;height:16px"));
         }
         assert!(c11_4_grid_track_sizing_runtime_source("cyclic-percent-unlisted").is_err());
+    }
+
+    #[test]
+    fn exposes_cyclic_percentage_fit_content_runtime_scenes() {
+        for (scene_id, expected_track, expected_width) in [
+            (
+                "cyclic-fit-content-column",
+                "grid-template-columns:fit-content(50%);grid-template-rows:auto",
+                "width:max-content;height:auto",
+            ),
+            (
+                "cyclic-fit-content-row",
+                "grid-template-columns:20px;grid-template-rows:fit-content(50%)",
+                "width:20px;height:max-content",
+            ),
+            (
+                "definite-fit-content-column",
+                "grid-template-columns:fit-content(50%);grid-template-rows:auto",
+                "width:40px;height:auto",
+            ),
+        ] {
+            let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
+            assert!(source.len() < 3 * 1024);
+            assert!(source.contains(&format!("sceneId:'{scene_id}'")));
+            assert!(source.contains(expected_track));
+            assert!(source.contains(expected_width));
+            assert!(source.contains("min-width:0;min-height:0"));
+            assert!(
+                source.contains("document.createTextNode('aa aa')")
+                    || source.contains("document.createTextNode('a a a a')")
+            );
+        }
+        assert!(c11_4_grid_track_sizing_runtime_source("cyclic-fit-content-unlisted").is_err());
     }
 
     #[test]

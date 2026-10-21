@@ -14,6 +14,7 @@ const requestedSceneIDs = process.argv.find((argument) => argument.startsWith('-
 const cyclicPercentSceneIDs = new Set([
   'cyclic-percent-column', 'cyclic-percent-row', 'definite-percent-column',
   'cyclic-minmax-column', 'cyclic-minmax-row', 'definite-minmax-column',
+  'cyclic-fit-content-column', 'cyclic-fit-content-row', 'definite-fit-content-column',
 ]);
 const requestedRunKind = process.argv.find((argument) => argument.startsWith('--run-kind='))
   ?.slice('--run-kind='.length);
@@ -1811,8 +1812,71 @@ scenes.push(
         xCssPx: 22, yCssPx: 8, rgba: [229, 72, 77, 255] },
     ],
   },
+  {
+    id: 'cyclic-fit-content-column',
+    axis: 'Columns',
+    boxCount: 2,
+    rootFrame: 'width=50,height=20',
+    itemFrame: 'width=25,height=20',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=50,height=20;'
+      + '1:node=2,x=0,y=0,width=25,height=20]',
+    tracks: [25],
+    collapsed: [false],
+    axes: {
+      Columns: { tracks: [25], collapsed: [false] },
+      Rows: { tracks: [20], collapsed: [false] },
+    },
+    pixelSamples: [
+      { id: 'cyclic-fit-content-column-inside-item', nodeId: 'c114-cyclic-fit-content-column-item',
+        xCssPx: 24, yCssPx: 5, rgba: [229, 72, 77, 255] },
+      { id: 'cyclic-fit-content-column-past-item', nodeId: 'c114-cyclic-fit-content-column-item',
+        xCssPx: 26, yCssPx: 5, rgba: [16, 24, 32, 255] },
+    ],
+  },
+  {
+    id: 'cyclic-fit-content-row',
+    axis: 'Rows',
+    boxCount: 2,
+    rootFrame: 'width=20,height=40',
+    itemFrame: 'width=20,height=20',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=40;'
+      + '1:node=2,x=0,y=0,width=20,height=20]',
+    tracks: [20],
+    collapsed: [false],
+    axes: {
+      Columns: { tracks: [20], collapsed: [false] },
+      Rows: { tracks: [20], collapsed: [false] },
+    },
+    pixelSamples: [
+      { id: 'cyclic-fit-content-row-inside-item', nodeId: 'c114-cyclic-fit-content-row-item',
+        xCssPx: 19, yCssPx: 19, rgba: [229, 72, 77, 255] },
+      { id: 'cyclic-fit-content-row-past-item-no-text', nodeId: 'c114-cyclic-fit-content-row-item',
+        xCssPx: 19, yCssPx: 39, rgba: [16, 24, 32, 255] },
+    ],
+  },
+  {
+    id: 'definite-fit-content-column',
+    axis: 'Columns',
+    boxCount: 2,
+    rootFrame: 'width=40,height=20',
+    itemFrame: 'width=20,height=20',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;'
+      + '1:node=2,x=0,y=0,width=20,height=20]',
+    tracks: [20],
+    collapsed: [false],
+    axes: {
+      Columns: { tracks: [20], collapsed: [false] },
+      Rows: { tracks: [20], collapsed: [false] },
+    },
+    pixelSamples: [
+      { id: 'definite-fit-content-column-inside-item', nodeId: 'c114-definite-fit-content-column-item',
+        xCssPx: 19, yCssPx: 5, rgba: [229, 72, 77, 255] },
+      { id: 'definite-fit-content-column-past-item', nodeId: 'c114-definite-fit-content-column-item',
+        xCssPx: 21, yCssPx: 5, rgba: [16, 24, 32, 255] },
+    ],
+  },
 );
-assert.equal(scenes.length, 208, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 211, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;

@@ -128,6 +128,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static final String[] C114_GRID_TRACK_SIZING_SCENE_IDS = {
             "cyclic-percent-column", "cyclic-percent-row", "definite-percent-column",
             "cyclic-minmax-column", "cyclic-minmax-row", "definite-minmax-column",
+            "cyclic-fit-content-column", "cyclic-fit-content-row",
+            "definite-fit-content-column",
             "auto-fixed-width-item", "minmax-auto-fixed-width-item",
             "fit-content-below-item-size", "spanning-auto-tracks",
             "spanning-auto-min-flex-tracks",
@@ -411,6 +413,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ExpectedRootFrame(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (sceneId.equals("cyclic-fit-content-column")) return "width=50,height=20";
+        if (sceneId.equals("cyclic-fit-content-row")) return "width=20,height=40";
+        if (sceneId.equals("definite-fit-content-column")) return "width=40,height=20";
         if (sceneId.equals("cyclic-percent-column")
                 || sceneId.equals("cyclic-percent-row")
                 || sceneId.equals("cyclic-minmax-column")
@@ -602,6 +607,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        if (sceneId.equals("cyclic-fit-content-column")) return "width=25,height=20";
+        if (sceneId.equals("cyclic-fit-content-row")
+                || sceneId.equals("definite-fit-content-column")) return "width=20,height=20";
         if (sceneId.equals("cyclic-percent-column")
                 || sceneId.equals("cyclic-percent-row")
                 || sceneId.equals("definite-percent-column")
@@ -1525,6 +1533,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + ";4:node=5,x=" + imageX + ",y=0,width=24,height=16]";
         }
         switch (sceneId) {
+            case "cyclic-fit-content-column":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=50,height=20;"
+                        + "1:node=2,x=0,y=0,width=25,height=20]";
+            case "cyclic-fit-content-row":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=40;"
+                        + "1:node=2,x=0,y=0,width=20,height=20]";
+            case "definite-fit-content-column":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;"
+                        + "1:node=2,x=0,y=0,width=20,height=20]";
             case "cyclic-percent-column":
             case "cyclic-percent-row":
             case "cyclic-minmax-column":
@@ -2436,7 +2453,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("definite-percent-column")
                 || sceneId.equals("cyclic-minmax-column")
                 || sceneId.equals("cyclic-minmax-row")
-                || sceneId.equals("definite-minmax-column")) return 2;
+                || sceneId.equals("definite-minmax-column")
+                || sceneId.equals("cyclic-fit-content-column")
+                || sceneId.equals("cyclic-fit-content-row")
+                || sceneId.equals("definite-fit-content-column")) return 2;
         if (sceneId.startsWith("nested-text-span")) {
             return sceneId.contains("before-span3") || sceneId.contains("span3-before-span2")
                     ? 7 : 6;
@@ -2675,7 +2695,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("definite-percent-column")
                 || sceneId.equals("cyclic-minmax-column")
                 || sceneId.equals("cyclic-minmax-row")
-                || sceneId.equals("definite-minmax-column")) {
+                || sceneId.equals("definite-minmax-column")
+                || sceneId.equals("cyclic-fit-content-column")
+                || sceneId.equals("cyclic-fit-content-row")
+                || sceneId.equals("definite-fit-content-column")) {
             if (samples.size() != 2) return false;
             String itemId = "c114-" + sceneId + "-item";
             String insideId;
@@ -2685,6 +2708,30 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             int outsideX;
             int outsideY;
             switch (sceneId) {
+                case "cyclic-fit-content-column":
+                    insideId = "cyclic-fit-content-column-inside-item";
+                    outsideId = "cyclic-fit-content-column-past-item";
+                    insideX = 24;
+                    insideY = 5;
+                    outsideX = 26;
+                    outsideY = 5;
+                    break;
+                case "cyclic-fit-content-row":
+                    insideId = "cyclic-fit-content-row-inside-item";
+                    outsideId = "cyclic-fit-content-row-past-item-no-text";
+                    insideX = 19;
+                    insideY = 19;
+                    outsideX = 19;
+                    outsideY = 39;
+                    break;
+                case "definite-fit-content-column":
+                    insideId = "definite-fit-content-column-inside-item";
+                    outsideId = "definite-fit-content-column-past-item";
+                    insideX = 19;
+                    insideY = 5;
+                    outsideX = 21;
+                    outsideY = 5;
+                    break;
                 case "cyclic-percent-column":
                     insideId = "cyclic-column-inside-track";
                     outsideId = "cyclic-column-past-track";
@@ -4072,6 +4119,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "cyclic-minmax-column".equals(pixelMatrixSceneId)
                         || "cyclic-minmax-row".equals(pixelMatrixSceneId)
                         || "definite-minmax-column".equals(pixelMatrixSceneId)
+                        || "cyclic-fit-content-column".equals(pixelMatrixSceneId)
+                        || "cyclic-fit-content-row".equals(pixelMatrixSceneId)
+                        || "definite-fit-content-column".equals(pixelMatrixSceneId)
                         || "auto-fill-overflow-neighbors".equals(pixelMatrixSceneId)
                         || "columns-fill-negative-positive-cycle".equals(pixelMatrixSceneId)
                         || "implicit-min-content-overflow-border".equals(pixelMatrixSceneId)
@@ -7612,7 +7662,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "cyclic-minmax-row-past-track":
             case "definite-minmax-column-inside-track":
             case "definite-minmax-column-past-track":
+            case "cyclic-fit-content-column-inside-item":
+            case "cyclic-fit-content-row-inside-item":
+            case "definite-fit-content-column-inside-item":
                 return new int[] {229, 72, 77};
+            case "cyclic-fit-content-column-past-item":
+            case "cyclic-fit-content-row-past-item-no-text":
+            case "definite-fit-content-column-past-item":
+                return new int[] {16, 24, 32};
             case "nested-grid-internal-gap":
                 return new int[] {231, 246, 237};
             case "nested-grid-inside-outer-edge":
