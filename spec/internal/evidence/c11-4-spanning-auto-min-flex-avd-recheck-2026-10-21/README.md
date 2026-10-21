@@ -19,4 +19,4 @@
 
 화면과 runtime log는 Grid/item box frame, track 결과, trace 및 draw/present를 보여준다. Ahem 문자의 glyph paint나 200px text overflow의 화면 픽셀은 확인하지 않았고 PixelCopy 표본도 수집하지 않았다. Chrome `scrollWidth=200`은 독립 oracle 값이며 Spinon 화면에서 이 overflow가 그려졌다는 주장이 아니다. 이번 실행은 Android AVD 한 대의 보충 결과로, Android 실기기·다른 AVD·WPT·전체 C11.4 검증을 대신하지 않는다.
 
-C11.4 체크와 공식 완료 수 72/213은 변경하지 않는다. 원본 실행 파일은 같은 디렉터리의 `android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/`에 있고, PR 변경분은 [적대적 검토 30개](./pr-diff-review-30.md)에 기록했다.
+C11.4 체크와 공식 완료 수 72/213은 변경하지 않는다. 원본 실행 파일은 같은 디렉터리의 `android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/`에 있고, PR 변경분은 [적대적 검토 30개](./pr-diff-review-30.md)에 기록했다. PR #438 본문 이미지 로드와 브라우저 종료는 `pr438-image-agent-browser.json`, `browser-close.json`에 기록했다.
