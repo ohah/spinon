@@ -130,6 +130,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "nested-grid-implicit-row-span-two", "nested-grid-implicit-row-one-row",
     "nested-depth-one-min-content", "nested-depth-two-min-content",
     "nested-depth-one-max-content", "nested-depth-two-max-content",
+    "nested-depth-one-min-content-two-axis", "nested-depth-two-min-content-two-axis",
+    "nested-depth-one-max-content-two-axis", "nested-depth-two-max-content-two-axis",
 ]
 private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -197,6 +199,7 @@ private func c114NegativeTrackExpectation(_ sceneID: String) -> C114NegativeTrac
 }
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    let sceneID = c114BaseNestedGridSceneID(sceneID)
     if sceneID == "nested-depth-one-min-content"
         || sceneID == "nested-depth-two-min-content" { return "width=70,height=20" }
     if sceneID == "nested-depth-one-max-content"
@@ -435,6 +438,7 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
 }
 
 private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
+    let sceneID = c114BaseNestedGridSceneID(sceneID)
     if c114IsAnonymousTextMultiImageScene(sceneID) {
         return c114ExpectedAnonymousTextMultiImageInputs(sceneID, report: report)
     }
@@ -1424,6 +1428,7 @@ private func c114ImageTrackPassMatches(
 }
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+    let sceneID = c114BaseNestedGridSceneID(sceneID)
     switch sceneID {
     case "nested-depth-one-min-content":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=70,height=20;"
@@ -1888,6 +1893,7 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    let sceneID = c114BaseNestedGridSceneID(sceneID)
     if sceneID == "nested-depth-one-min-content"
         || sceneID == "nested-depth-one-max-content" { return 3 }
     if sceneID == "nested-depth-two-min-content"
@@ -1948,6 +1954,10 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
         "auto-fill-two-track-rows-both-342", "both-fit-empty",
         "columns-fit-rows-fill-empty", "columns-fill-rows-fit-empty"].contains(sceneID) { return 1 }
     return sceneID.hasPrefix("grid-gap-") ? 5 : 2
+}
+
+private func c114BaseNestedGridSceneID(_ sceneID: String) -> String {
+    sceneID.hasSuffix("-two-axis") ? String(sceneID.dropLast("-two-axis".count)) : sceneID
 }
 
 private func c114IsImplicitTextScene(_ sceneID: String) -> Bool {

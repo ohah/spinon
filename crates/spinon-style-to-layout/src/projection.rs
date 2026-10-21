@@ -477,6 +477,48 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_parag
     paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
     text_engine: &TextLayoutEngine,
 ) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs_and_options(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        paragraph_styles,
+        text_engine,
+        false,
+    )
+}
+
+/// C11.4 고정 nested Grid fixture에서 양 축 intrinsic sizing을 opt-in 합니다.
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_two_axis_nested_grid_text_paragraphs(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
+    text_engine: &TextLayoutEngine,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs_and_options(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        paragraph_styles,
+        text_engine,
+        true,
+    )
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs_and_options(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
+    text_engine: &TextLayoutEngine,
+    allow_c11_4_nested_grid_two_axis_intrinsics: bool,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
     if computed_styles.profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
         return Err(StyleLayoutError::UnsupportedProfile {
             profile: format!("{:?}", computed_styles.profile),
@@ -498,6 +540,7 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_parag
             allow_implicit_named_lines: false,
             allow_c11_4_anonymous_grid_text_items: true,
             blockify_c11_4_anonymous_grid_images: false,
+            allow_c11_4_nested_grid_two_axis_intrinsics,
         },
     )
 }
@@ -565,6 +608,7 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_anonymous_
             allow_implicit_named_lines: false,
             allow_c11_4_anonymous_grid_text_items: true,
             blockify_c11_4_anonymous_grid_images: true,
+            allow_c11_4_nested_grid_two_axis_intrinsics: false,
         },
     )
 }
@@ -713,6 +757,7 @@ fn compute_layout_from_styles_with_grid_options(
             allow_implicit_named_lines,
             allow_c11_4_anonymous_grid_text_items: false,
             blockify_c11_4_anonymous_grid_images: false,
+            allow_c11_4_nested_grid_two_axis_intrinsics: false,
         },
     )
 }
@@ -738,6 +783,7 @@ fn compute_layout_from_styles_with_text(
             allow_implicit_named_lines: false,
             allow_c11_4_anonymous_grid_text_items: false,
             blockify_c11_4_anonymous_grid_images: false,
+            allow_c11_4_nested_grid_two_axis_intrinsics: false,
         },
     )
 }
@@ -748,6 +794,7 @@ struct StyleLayoutProjectionOptions {
     allow_implicit_named_lines: bool,
     allow_c11_4_anonymous_grid_text_items: bool,
     blockify_c11_4_anonymous_grid_images: bool,
+    allow_c11_4_nested_grid_two_axis_intrinsics: bool,
 }
 
 fn compute_layout_from_styles_with_text_and_grid_options(
@@ -863,6 +910,7 @@ fn compute_layout_from_styles_with_text_and_grid_options(
         &mut projected.styles,
         intrinsic_sizes.as_ref(),
         computed_styles.profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+        options.allow_c11_4_nested_grid_two_axis_intrinsics,
     )?;
     let styles = projected.styles;
     let positioning = projected.positioning;
@@ -1080,6 +1128,7 @@ fn validate_intrinsic_image_inputs(
     styles: &mut BTreeMap<NodeId, LayoutStyle>,
     intrinsic_sizes: Option<&LayoutIntrinsicSizeSnapshot>,
     allow_root_grid_intrinsic_content: bool,
+    allow_c11_4_nested_grid_two_axis_intrinsics: bool,
 ) -> Result<(), StyleLayoutError> {
     let expected_source = LayoutSourceRevision::HostDocument {
         generation: snapshot.generation(),
@@ -1151,7 +1200,21 @@ fn validate_intrinsic_image_inputs(
                         | spinon_layout::LayoutDimension::FitContent
                 )
             });
-        let root_grid_intrinsic_content = c11_4_grid_intrinsic_width || root_grid_max_content;
+        let c11_4_nested_grid_two_axis_intrinsics = allow_c11_4_nested_grid_two_axis_intrinsics
+            && style.display == spinon_layout::LayoutDisplay::Grid
+            && matches!(
+                (style.width, style.height),
+                (
+                    spinon_layout::LayoutDimension::MinContent,
+                    spinon_layout::LayoutDimension::MinContent
+                ) | (
+                    spinon_layout::LayoutDimension::MaxContent,
+                    spinon_layout::LayoutDimension::MaxContent
+                )
+            );
+        let root_grid_intrinsic_content = c11_4_grid_intrinsic_width
+            || root_grid_max_content
+            || c11_4_nested_grid_two_axis_intrinsics;
         if has_intrinsic_keyword && !is_html_image && !root_grid_intrinsic_content {
             let supported_image = if style.width == spinon_layout::LayoutDimension::MinContent {
                 is_supported_cyclic_min_content_container(snapshot, handle, style, styles)

@@ -19,6 +19,7 @@ struct Scene {
     id: &'static str,
     depth: usize,
     constraint: Constraint,
+    two_axis: bool,
 }
 
 #[derive(Clone, Copy)]
@@ -43,26 +44,54 @@ impl Constraint {
     }
 }
 
-const SCENES: [Scene; 4] = [
+const SCENES: [Scene; 8] = [
     Scene {
         id: "nested-depth-one-min-content",
         depth: 1,
         constraint: Constraint::MinContent,
+        two_axis: false,
     },
     Scene {
         id: "nested-depth-two-min-content",
         depth: 2,
         constraint: Constraint::MinContent,
+        two_axis: false,
     },
     Scene {
         id: "nested-depth-one-max-content",
         depth: 1,
         constraint: Constraint::MaxContent,
+        two_axis: false,
     },
     Scene {
         id: "nested-depth-two-max-content",
         depth: 2,
         constraint: Constraint::MaxContent,
+        two_axis: false,
+    },
+    Scene {
+        id: "nested-depth-one-min-content-two-axis",
+        depth: 1,
+        constraint: Constraint::MinContent,
+        two_axis: true,
+    },
+    Scene {
+        id: "nested-depth-two-min-content-two-axis",
+        depth: 2,
+        constraint: Constraint::MinContent,
+        two_axis: true,
+    },
+    Scene {
+        id: "nested-depth-one-max-content-two-axis",
+        depth: 1,
+        constraint: Constraint::MaxContent,
+        two_axis: true,
+    },
+    Scene {
+        id: "nested-depth-two-max-content-two-axis",
+        depth: 2,
+        constraint: Constraint::MaxContent,
+        two_axis: true,
     },
 ];
 
@@ -159,6 +188,7 @@ pub(super) fn prepare(
     Ok(Some(super::C11_4TextInput {
         paragraph_styles,
         engine,
+        two_axis_nested_grid: scene.two_axis,
     }))
 }
 
@@ -200,11 +230,21 @@ fn validate_grid_style(
             Some(scene.id.to_owned()),
         )
     })?;
+    let expected_height = if scene.two_axis {
+        scene.constraint.dimension()
+    } else {
+        ComputedCssDimension::Auto
+    };
+    let expected_rows = if scene.two_axis {
+        scene.constraint.track()
+    } else {
+        ComputedCssGridTrackSize::Auto
+    };
     if style.properties.get("display").map(String::as_str) != Some("grid")
         || style.properties.get("align-items").map(String::as_str) != Some("start")
         || style.properties.get("box-sizing").map(String::as_str) != Some("border-box")
         || style.layout_dimensions.width != scene.constraint.dimension()
-        || style.layout_dimensions.height != ComputedCssDimension::Auto
+        || style.layout_dimensions.height != expected_height
         || style.layout_dimensions.min_width != ComputedCssDimension::Auto
         || style.layout_dimensions.max_width != ComputedCssMaxSize::None
         || style.layout_dimensions.min_height != ComputedCssDimension::Auto
@@ -217,7 +257,7 @@ fn validate_grid_style(
         || !spacing_is(style.layout_spacing.row_gap, 0.0)
         || style.layout_border != Default::default()
         || grid.columns != [scene.constraint.track()]
-        || grid.rows != [ComputedCssGridTrackSize::Auto]
+        || grid.rows != [expected_rows]
         || grid.columns_auto_repeat.is_some()
         || grid.rows_auto_repeat.is_some()
         || grid.template_areas.is_some()
