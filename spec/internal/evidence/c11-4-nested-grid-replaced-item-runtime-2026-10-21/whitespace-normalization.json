@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "path": "spec/internal/evidence/c11-4-nested-grid-replaced-item-runtime-2026-10-21/ios-simulator-fixture-build.log",
+      "originalSha256": "e40a32464e9a0d2d1ffd68f01993b7087877dc1cd75d90f3b12c5bde74af488a",
+      "normalizedSha256": "84c84288e92e969ce1c7c725315f16c3a4770c427036cee65808bc94b983b6bd",
+      "transformation": "CRLF to LF; trim trailing ASCII spaces and tabs per line; retain one final newline"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-nested-grid-replaced-item-2026-10-21/android-avd-c114-nested-grid-replaced-item-android-avd-20261021T112756265Z-d5cf29f0/runtime-nested-grid-text-image-one-track.log",
+      "originalSha256": "60813a35b82a62d90b7c06773791e48b6869cbf94f30b227bcda51d701e4f71b",
+      "normalizedSha256": "47fbd89f5c58d0b887ab890544131897d54e247ba9ae304c9e45e613d08b2961",
+      "transformation": "CRLF to LF; trim trailing ASCII spaces and tabs per line; retain one final newline"
+    }
+  ]
+}

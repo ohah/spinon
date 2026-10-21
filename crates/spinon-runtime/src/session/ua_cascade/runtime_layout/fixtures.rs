@@ -16,6 +16,10 @@ mod c11_4_implicit_intrinsic_text;
 mod c11_4_nested_grid_intrinsic;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "fixtures/c11_4_nested_grid_replaced_item.rs"]
+mod c11_4_nested_grid_replaced_item;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "fixtures/c11_4_image.rs"]
 mod c11_4_image;
 
@@ -65,6 +69,9 @@ pub(super) struct C11_4MixedInput {
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub(super) use c11_4_mixed::prepare as prepare_c11_4_mixed;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) use c11_4_nested_grid_replaced_item::prepare as prepare_c11_4_nested_grid_replaced_item;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub(super) use c11_4_anonymous_text::prepare as prepare_c11_4_anonymous_text;

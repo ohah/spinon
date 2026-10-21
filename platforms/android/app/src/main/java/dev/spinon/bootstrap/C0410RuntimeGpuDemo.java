@@ -235,6 +235,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "three-images-two-anonymous-runs-reversed",
             "nested-grid-span-two", "nested-grid-one-track",
             "nested-grid-definite-flex-control",
+            "nested-grid-text-image-span-two", "nested-grid-text-image-one-track",
+            "nested-grid-text-image-definite-flex-control",
     };
     private static final String[] C114_AUTO_REPEAT_NEGATIVE_LINE_SCENE_IDS = {
             "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -389,6 +391,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        if (sceneId.equals("nested-grid-text-image-span-two")) return "width=98,height=20";
+        if (sceneId.equals("nested-grid-text-image-one-track")) return "width=102,height=20";
+        if (sceneId.equals("nested-grid-text-image-definite-flex-control")) {
+            return "width=120,height=20";
+        }
         if (sceneId.equals("nested-grid-span-two")) return "width=134,height=20";
         if (sceneId.equals("nested-grid-one-track")) return "width=138,height=20";
         if (sceneId.equals("nested-grid-definite-flex-control")) {
@@ -538,7 +545,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static String c114ExpectedItemFrame(String sceneId) {
         if (sceneId.equals("nested-grid-span-two")
                 || sceneId.equals("nested-grid-one-track")
-                || sceneId.equals("nested-grid-definite-flex-control")) return "";
+                || sceneId.equals("nested-grid-definite-flex-control")
+                || sceneId.equals("nested-grid-text-image-span-two")
+                || sceneId.equals("nested-grid-text-image-one-track")
+                || sceneId.equals("nested-grid-text-image-definite-flex-control")) return "";
         if (c114IsAnonymousTextScene(sceneId) || c114IsAnonymousTextImageScene(sceneId)
                 || c114IsAnonymousTextMultiImageScene(sceneId)) return "";
         if (c114IsImageMultiSpanScene(sceneId) || c114IsTextMultiSpanScene(sceneId)
@@ -1262,6 +1272,21 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + "1:node=2,x=0,y=0,width=120,height=20;"
                         + "2:node=3,x=0,y=0,width=70,height=20;"
                         + "3:node=5,x=74,y=0,width=60,height=20]";
+            case "nested-grid-text-image-span-two":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=98,height=20;"
+                        + "1:node=2,x=0,y=0,width=98,height=20;"
+                        + "2:node=3,x=0,y=0,width=70,height=20;"
+                        + "3:node=5,x=74,y=0,width=24,height=16]";
+            case "nested-grid-text-image-one-track":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=102,height=20;"
+                        + "1:node=2,x=0,y=0,width=98,height=20;"
+                        + "2:node=3,x=0,y=0,width=70,height=20;"
+                        + "3:node=5,x=74,y=0,width=24,height=16]";
+            case "nested-grid-text-image-definite-flex-control":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=20;"
+                        + "1:node=2,x=0,y=0,width=120,height=20;"
+                        + "2:node=3,x=0,y=0,width=70,height=20;"
+                        + "3:node=5,x=74,y=0,width=24,height=16]";
             case "anonymous-runs-two-images-forward":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=184;"
                         + "1:node=3,x=2,y=2,width=24,height=16;"
@@ -2024,7 +2049,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static int c114ExpectedBoxCount(String sceneId) {
         if (sceneId.equals("nested-grid-span-two")
                 || sceneId.equals("nested-grid-one-track")
-                || sceneId.equals("nested-grid-definite-flex-control")) return 4;
+                || sceneId.equals("nested-grid-definite-flex-control")
+                || sceneId.equals("nested-grid-text-image-span-two")
+                || sceneId.equals("nested-grid-text-image-one-track")
+                || sceneId.equals("nested-grid-text-image-definite-flex-control")) return 4;
         if (c114IsAnonymousGridBorderOverflowThreeImageScene(sceneId)) return 4;
         if (c114IsAnonymousGridBorderOverflowScene(sceneId)) return 3;
         if (sceneId.equals("anonymous-text-two-images-forward")
