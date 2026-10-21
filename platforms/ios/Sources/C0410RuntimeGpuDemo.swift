@@ -127,6 +127,7 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "nested-grid-text-image-definite-flex-control",
     "nested-grid-text-image-row-span-two", "nested-grid-text-image-row-one-track",
     "nested-grid-text-image-row-definite-flex-control",
+    "nested-grid-implicit-row-span-two", "nested-grid-implicit-row-one-row",
 ]
 private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -194,6 +195,8 @@ private func c114NegativeTrackExpectation(_ sceneID: String) -> C114NegativeTrac
 }
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    if sceneID == "nested-grid-implicit-row-span-two" { return "width=24,height=40" }
+    if sceneID == "nested-grid-implicit-row-one-row" { return "width=24,height=44" }
     if sceneID == "nested-grid-text-image-span-two" { return "width=98,height=20" }
     if sceneID == "nested-grid-text-image-one-track" { return "width=102,height=20" }
     if sceneID == "nested-grid-text-image-definite-flex-control" { return "width=120,height=20" }
@@ -320,7 +323,9 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         "nested-grid-text-image-one-track",
         "nested-grid-text-image-definite-flex-control",
         "nested-grid-text-image-row-span-two", "nested-grid-text-image-row-one-track",
-        "nested-grid-text-image-row-definite-flex-control"].contains(sceneID) { return "" }
+        "nested-grid-text-image-row-definite-flex-control",
+        "nested-grid-implicit-row-span-two", "nested-grid-implicit-row-one-row"]
+        .contains(sceneID) { return "" }
     if c114IsAnonymousTextScene(sceneID) || c114IsAnonymousTextImageScene(sceneID)
         || c114IsAnonymousTextMultiImageScene(sceneID) { return "" }
     if c114IsTextMultiSpanScene(sceneID) || c114IsImageMultiSpanScene(sceneID)
@@ -527,6 +532,9 @@ private func c114ExpectedImageIntrinsicInputs(_ sceneID: String, report: String)
     if c114IsImageMultiSpanScene(sceneID) {
         return c114ExpectedImageMultiSpanInputs(sceneID, report: report)
     }
+    if sceneID.hasPrefix("nested-grid-implicit-row-") {
+        return c114ExpectedNestedImplicitRowImageInputs(sceneID, report: report)
+    }
     let imageScenes: Set<String> = [
         "auto-image-definite", "minmax-auto-image", "minmax-min-max-image",
         "fit-content-below-minimum", "fit-content-above-intrinsic",
@@ -592,6 +600,114 @@ private func c114ExpectedImageIntrinsicInputs(_ sceneID: String, report: String)
         return false
     }
     return c114ImageTrackSizingTraceMatches(sceneID, diagnostics: diagnostics)
+}
+
+private func c114ExpectedNestedImplicitRowImageInputs(_ sceneID: String, report: String) -> Bool {
+    guard let marker = report.range(of: "grid_track_sizing_diagnostics=") else { return false }
+    let jsonText = report[marker.upperBound...]
+    var depth = 0
+    var inString = false
+    var escaped = false
+    var endIndex: String.Index?
+    for index in jsonText.indices {
+        let character = jsonText[index]
+        if inString {
+            if escaped {
+                escaped = false
+            } else if character == "\\" {
+                escaped = true
+            } else if character == "\"" {
+                inString = false
+            }
+            continue
+        }
+        if character == "\"" {
+            inString = true
+        } else if character == "{" {
+            depth += 1
+        } else if character == "}" {
+            depth -= 1
+            if depth == 0 {
+                endIndex = jsonText.index(after: index)
+                break
+            }
+        }
+    }
+    guard let endIndex,
+          let data = String(jsonText[..<endIndex]).data(using: .utf8),
+          let diagnostics = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
+          let revision = diagnostics["layoutInputRevision"] as? [String: Any],
+          let intrinsicRevision = revision["intrinsicSize"] as? Int, intrinsicRevision == 1,
+          let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
+          inputs.count == 1,
+          let input = inputs.first,
+          let grid = input["grid"] as? Int, grid == 2,
+          let node = input["node"] as? Int, node == 5,
+          let sourceOrder = input["sourceOrder"] as? Int, sourceOrder == 2,
+          let source = input["source"] as? [String: Any],
+          let kind = source["kind"] as? String, kind == "replaced",
+          let natural = source["natural"] as? [String: Any],
+          let width = natural["width"] as? NSNumber, width.doubleValue == 24,
+          let height = natural["height"] as? NSNumber, height.doubleValue == 16 else {
+        return false
+    }
+    return c114NestedImplicitRowTrackSizingTraceMatches(sceneID, diagnostics: diagnostics)
+}
+
+private func c114NestedImplicitRowTrackSizingTraceMatches(
+    _ sceneID: String, diagnostics: [String: Any]
+) -> Bool {
+    guard let traces = diagnostics["trackSizingTraces"] as? [[String: Any]], traces.count == 2 else {
+        return false
+    }
+    var traceByGrid: [Int: [String: Any]] = [:]
+    for trace in traces {
+        guard let grid = trace["grid"] as? Int, [1, 2].contains(grid),
+              traceByGrid[grid] == nil else { return false }
+        traceByGrid[grid] = trace
+    }
+    let outerRows: [(size: Double, gutter: Bool)]
+    let outerSpan: Int
+    if sceneID == "nested-grid-implicit-row-span-two" {
+        outerRows = [(18, false), (4, true), (18, false)]
+        outerSpan = 2
+    } else if sceneID == "nested-grid-implicit-row-one-row" {
+        outerRows = [(40, false), (4, true), (0, false)]
+        outerSpan = 1
+    } else {
+        return false
+    }
+    return c114NestedImplicitRowGridTraceMatches(
+        traceByGrid[1], columns: [(24, false)], rows: outerRows,
+        outerContribution: 40, outerSpan: outerSpan
+    ) && c114NestedImplicitRowGridTraceMatches(
+        traceByGrid[2], columns: [(24, false)],
+        rows: [(8, false), (4, true), (8, false), (4, true), (16, false)],
+        outerContribution: nil, outerSpan: 0
+    )
+}
+
+private func c114NestedImplicitRowGridTraceMatches(
+    _ trace: [String: Any]?,
+    columns expectedColumns: [(size: Double, gutter: Bool)],
+    rows expectedRows: [(size: Double, gutter: Bool)],
+    outerContribution: Double?,
+    outerSpan: Int
+) -> Bool {
+    guard let trace,
+          let passes = trace["passes"] as? [[String: Any]], passes.count == 2,
+          let columns = passes.first(where: { ($0["axis"] as? String) == "Columns" }),
+          let rows = passes.first(where: { ($0["axis"] as? String) == "Rows" }) else {
+        return false
+    }
+    return c114ImageTrackPassMatches(
+        columns, axis: "Columns", expectedTracks: expectedColumns,
+        minContentContribution: nil, span: 0, minContentContributionKind: "MinContent"
+    ) && c114ImageTrackPassMatches(
+        rows, axis: "Rows", expectedTracks: expectedRows,
+        minContentContribution: outerContribution, span: outerSpan,
+        minContentContributionKind: "MinContent"
+    )
 }
 
 private func c114IsImageMultiSpanScene(_ sceneID: String) -> Bool {
@@ -1334,6 +1450,18 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "1:node=2,x=0,y=0,width=98,height=60;"
             + "2:node=3,x=0,y=0,width=70,height=20;"
             + "3:node=5,x=74,y=24,width=24,height=16]"
+    case "nested-grid-implicit-row-span-two":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=40;"
+            + "1:node=2,x=0,y=0,width=24,height=40;"
+            + "2:node=3,x=0,y=0,width=24,height=8;"
+            + "3:node=4,x=0,y=12,width=4,height=8;"
+            + "4:node=5,x=0,y=24,width=24,height=16]"
+    case "nested-grid-implicit-row-one-row":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=44;"
+            + "1:node=2,x=0,y=0,width=24,height=40;"
+            + "2:node=3,x=0,y=0,width=24,height=8;"
+            + "3:node=4,x=0,y=12,width=4,height=8;"
+            + "4:node=5,x=0,y=24,width=24,height=16]"
     case "anonymous-runs-two-images-forward":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=184;"
             + "1:node=3,x=2,y=2,width=24,height=16;"
@@ -1728,6 +1856,8 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
         "nested-grid-text-image-definite-flex-control",
         "nested-grid-text-image-row-span-two", "nested-grid-text-image-row-one-track",
         "nested-grid-text-image-row-definite-flex-control"].contains(sceneID) { return 4 }
+    if ["nested-grid-implicit-row-span-two", "nested-grid-implicit-row-one-row"]
+        .contains(sceneID) { return 5 }
     if c114IsAnonymousGridBorderOverflowThreeImageScene(sceneID) { return 4 }
     if c114IsAnonymousGridBorderOverflowScene(sceneID) { return 3 }
     if sceneID == "anonymous-text-two-images-forward"

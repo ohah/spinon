@@ -181,6 +181,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "nested-grid-text-image-row-span-two",
             "nested-grid-text-image-row-one-track",
             "nested-grid-text-image-row-definite-flex-control",
+            "nested-grid-implicit-row-span-two",
+            "nested-grid-implicit-row-one-row",
             "column-auto-natural-ratio", "column-target-max-width-clamp",
             "row-target-max-height-clamp",
             "column-opposite-min-over-max", "column-border-box-transfer",
@@ -394,6 +396,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        if (sceneId.equals("nested-grid-implicit-row-span-two")) {
+            return "width=24,height=40";
+        }
+        if (sceneId.equals("nested-grid-implicit-row-one-row")) {
+            return "width=24,height=44";
+        }
         if (sceneId.equals("nested-grid-text-image-span-two")) return "width=98,height=20";
         if (sceneId.equals("nested-grid-text-image-one-track")) return "width=102,height=20";
         if (sceneId.equals("nested-grid-text-image-definite-flex-control")) {
@@ -563,7 +571,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("nested-grid-text-image-definite-flex-control")
                 || sceneId.equals("nested-grid-text-image-row-span-two")
                 || sceneId.equals("nested-grid-text-image-row-one-track")
-                || sceneId.equals("nested-grid-text-image-row-definite-flex-control")) return "";
+                || sceneId.equals("nested-grid-text-image-row-definite-flex-control")
+                || sceneId.equals("nested-grid-implicit-row-span-two")
+                || sceneId.equals("nested-grid-implicit-row-one-row")) return "";
         if (c114IsAnonymousTextScene(sceneId) || c114IsAnonymousTextImageScene(sceneId)
                 || c114IsAnonymousTextMultiImageScene(sceneId)) return "";
         if (c114IsImageMultiSpanScene(sceneId) || c114IsTextMultiSpanScene(sceneId)
@@ -846,6 +856,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (c114IsImageMultiSpanScene(sceneId)) {
             return c114ExpectedImageMultiSpanInputs(sceneId, report);
         }
+        if (sceneId.startsWith("nested-grid-implicit-row-")) {
+            return c114ExpectedNestedImplicitRowImageInputs(sceneId, report);
+        }
         switch (sceneId) {
             case "auto-image-definite":
             case "minmax-auto-image":
@@ -897,6 +910,88 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         } catch (org.json.JSONException | ClassCastException error) {
             return false;
         }
+    }
+
+    private static boolean c114ExpectedNestedImplicitRowImageInputs(String sceneId, String report) {
+        int diagnosticsMarker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (diagnosticsMarker < 0) return false;
+        String diagnosticsJson = report.substring(
+                diagnosticsMarker + "grid_track_sizing_diagnostics=".length());
+        try {
+            Object value = new org.json.JSONTokener(diagnosticsJson).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONObject diagnostics = (org.json.JSONObject) value;
+            org.json.JSONObject revision = diagnostics.optJSONObject("layoutInputRevision");
+            org.json.JSONArray inputs = diagnostics.optJSONArray("gridItemIntrinsicInputs");
+            if (revision == null || revision.optInt("intrinsicSize", 0) != 1
+                    || inputs == null || inputs.length() != 1) return false;
+            org.json.JSONObject input = inputs.optJSONObject(0);
+            if (input == null || input.optInt("grid", -1) != 2
+                    || input.optInt("node", -1) != 5 || input.optInt("sourceOrder", -1) != 2) {
+                return false;
+            }
+            org.json.JSONObject source = input.optJSONObject("source");
+            org.json.JSONObject natural = source == null ? null : source.optJSONObject("natural");
+            return source != null && "replaced".equals(source.optString("kind"))
+                    && natural != null && natural.optDouble("width", Double.NaN) == 24.0
+                    && natural.optDouble("height", Double.NaN) == 16.0
+                    && c114NestedImplicitRowTrackSizingTraceMatches(sceneId, diagnostics);
+        } catch (org.json.JSONException | ClassCastException error) {
+            return false;
+        }
+    }
+
+    private static boolean c114NestedImplicitRowTrackSizingTraceMatches(
+            String sceneId, org.json.JSONObject diagnostics
+    ) throws org.json.JSONException {
+        org.json.JSONArray traces = diagnostics.optJSONArray("trackSizingTraces");
+        if (traces == null || traces.length() != 2) return false;
+        org.json.JSONObject outer = null;
+        org.json.JSONObject nested = null;
+        for (int index = 0; index < traces.length(); index++) {
+            org.json.JSONObject trace = traces.optJSONObject(index);
+            if (trace == null) return false;
+            int grid = trace.optInt("grid", -1);
+            if (grid == 1 && outer == null) outer = trace;
+            else if (grid == 2 && nested == null) nested = trace;
+            else return false;
+        }
+        double[] outerRows = "nested-grid-implicit-row-span-two".equals(sceneId)
+                ? new double[] {18.0, 4.0, 18.0} : new double[] {40.0, 4.0, 0.0};
+        int outerSpan = "nested-grid-implicit-row-span-two".equals(sceneId) ? 2 : 1;
+        return c114NestedImplicitRowGridTraceMatches(outer, new double[] {24.0}, outerRows,
+                        40.0, outerSpan)
+                && c114NestedImplicitRowGridTraceMatches(
+                        nested, new double[] {24.0}, new double[] {8.0, 4.0, 8.0, 4.0, 16.0},
+                        Double.NaN, 0);
+    }
+
+    private static boolean c114NestedImplicitRowGridTraceMatches(
+            org.json.JSONObject trace,
+            double[] expectedColumns,
+            double[] expectedRows,
+            double expectedOuterContribution,
+            int expectedOuterSpan
+    ) throws org.json.JSONException {
+        org.json.JSONArray passes = trace == null ? null : trace.optJSONArray("passes");
+        if (passes == null || passes.length() != 2) return false;
+        org.json.JSONObject columns = null;
+        org.json.JSONObject rows = null;
+        for (int index = 0; index < passes.length(); index++) {
+            org.json.JSONObject pass = passes.optJSONObject(index);
+            if (pass == null) return false;
+            String axis = pass.optString("axis");
+            if ("Columns".equals(axis) && columns == null) columns = pass;
+            else if ("Rows".equals(axis) && rows == null) rows = pass;
+            else return false;
+        }
+        boolean[] columnGutters = new boolean[expectedColumns.length];
+        boolean[] rowGutters = new boolean[expectedRows.length];
+        for (int index = 1; index < rowGutters.length; index += 2) rowGutters[index] = true;
+        return c114ImageTrackPassMatches(columns, "Columns", expectedColumns,
+                        columnGutters, Double.NaN, 0, "MinContent")
+                && c114ImageTrackPassMatches(rows, "Rows", expectedRows,
+                        rowGutters, expectedOuterContribution, expectedOuterSpan, "MinContent");
     }
 
     private static boolean c114ExpectedImageMultiSpanInputs(String sceneId, String report) {
@@ -1317,6 +1412,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + "1:node=2,x=0,y=0,width=98,height=60;"
                         + "2:node=3,x=0,y=0,width=70,height=20;"
                         + "3:node=5,x=74,y=24,width=24,height=16]";
+            case "nested-grid-implicit-row-span-two":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=40;"
+                        + "1:node=2,x=0,y=0,width=24,height=40;"
+                        + "2:node=3,x=0,y=0,width=24,height=8;"
+                        + "3:node=4,x=0,y=12,width=4,height=8;"
+                        + "4:node=5,x=0,y=24,width=24,height=16]";
+            case "nested-grid-implicit-row-one-row":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=44;"
+                        + "1:node=2,x=0,y=0,width=24,height=40;"
+                        + "2:node=3,x=0,y=0,width=24,height=8;"
+                        + "3:node=4,x=0,y=12,width=4,height=8;"
+                        + "4:node=5,x=0,y=24,width=24,height=16]";
             case "anonymous-runs-two-images-forward":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=184;"
                         + "1:node=3,x=2,y=2,width=24,height=16;"
@@ -2086,6 +2193,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("nested-grid-text-image-row-span-two")
                 || sceneId.equals("nested-grid-text-image-row-one-track")
                 || sceneId.equals("nested-grid-text-image-row-definite-flex-control")) return 4;
+        if (sceneId.equals("nested-grid-implicit-row-span-two")
+                || sceneId.equals("nested-grid-implicit-row-one-row")) return 5;
         if (c114IsAnonymousGridBorderOverflowThreeImageScene(sceneId)) return 4;
         if (c114IsAnonymousGridBorderOverflowScene(sceneId)) return 3;
         if (sceneId.equals("anonymous-text-two-images-forward")

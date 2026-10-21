@@ -38,6 +38,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
             None,
         ));
     }
+    if let Some(input) = super::c11_4_nested_grid_implicit_rows::prepare(snapshot, root, styles)? {
+        return Ok(Some(input));
+    }
     if let Some(input) = multispan::prepare(snapshot, root, styles)? {
         return Ok(Some(input));
     }

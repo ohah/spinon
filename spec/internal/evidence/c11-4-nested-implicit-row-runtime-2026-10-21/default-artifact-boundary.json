@@ -1,0 +1,10 @@
+{
+  "profile": "default cargo build --locked -p spinon-ffi --lib",
+  "artifactPath": "target/debug/libspinon_ffi.a",
+  "sha256": "3340b3834ebf7069252bf48aca65001ea24738f354cd596ac7522c8553002b41",
+  "sceneIDs": {
+    "nested-grid-implicit-row-span-two": false,
+    "nested-grid-implicit-row-one-row": false
+  },
+  "c14PngPayload": false
+}
