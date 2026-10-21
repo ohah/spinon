@@ -52,11 +52,12 @@ const anonymousGridBorderOverflowSceneIDs = new Set([
 const nestedGridImplicitRowSceneIDs = new Set([
   'nested-grid-implicit-row-span-two', 'nested-grid-implicit-row-one-row',
 ]);
-const nestedGridDepthTwoSceneIDs = new Set([
+const nestedGridDepthSceneIDs = new Set([
   'nested-depth-one-min-content', 'nested-depth-two-min-content',
   'nested-depth-one-max-content', 'nested-depth-two-max-content',
   'nested-depth-one-min-content-two-axis', 'nested-depth-two-min-content-two-axis',
   'nested-depth-one-max-content-two-axis', 'nested-depth-two-max-content-two-axis',
+  'nested-depth-three-min-content-two-axis', 'nested-depth-three-max-content-two-axis',
 ]);
 const isTextMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => textMultiSpanSceneIDs.has(sceneID));
@@ -74,13 +75,13 @@ const isAnonymousGridBorderOverflowRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => anonymousGridBorderOverflowSceneIDs.has(sceneID));
 const isNestedGridImplicitRowRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => nestedGridImplicitRowSceneIDs.has(sceneID));
-const isNestedGridDepthTwoRun = requestedSceneIDs?.length > 0
-  && requestedSceneIDs.every((sceneID) => nestedGridDepthTwoSceneIDs.has(sceneID));
+const isNestedGridDepthRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => nestedGridDepthSceneIDs.has(sceneID));
 const isMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID)
     || textMultiSpanSceneIDs.has(sceneID) || mixedMultiSpanSceneIDs.has(sceneID));
 const runKind = requestedRunKind ?? (isMixedMultiSpanRun ? 'mixed-multispan-contributions'
-  : isNestedGridDepthTwoRun ? 'nested-grid-depth-two'
+  : isNestedGridDepthRun ? 'nested-grid-depth'
   : isNestedGridImplicitRowRun ? 'nested-implicit-rows'
   : isAnonymousGridBorderOverflowRun ? 'anonymous-grid-border-overflow'
   : isAnonymousTextMultiImageRun ? 'anonymous-text-multi-image'
@@ -129,6 +130,20 @@ const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
     : `spec/internal/evidence/c11-4-negative-implicit-track-sizing-${date}/${target}-${runPrefix}`);
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const sleep = (milliseconds) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, milliseconds);
+
+function sourceRevision() {
+  const commit = command('git', ['rev-parse', 'HEAD']).stdout.trim();
+  const tree = command('git', ['rev-parse', 'HEAD^{tree}']).stdout.trim();
+  const trackedDiff = command('git', ['diff', '--binary', 'HEAD']).stdout;
+  const dirtyPaths = command('git', ['diff', '--name-only', 'HEAD']).stdout
+    .split(/\r?\n/).filter(Boolean);
+  return {
+    commit,
+    tree,
+    trackedDiffSha256: sha256(trackedDiff),
+    trackedDirtyPaths: dirtyPaths,
+  };
+}
 
 const scenes = [
   {
@@ -1286,7 +1301,7 @@ scenes.push(
       grid: 2, node: 3, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
       minContent: 70, minContentHeight: 20, maxContent: 100, maxContentHeight: 10,
     }],
-    nestedGridDepthTwo: {
+    nestedGridDepth: {
       gridNodes: [1, 2], leafNode: 3,
       width: 70, height: 20, contributionKind: 'MinContent',
     },
@@ -1308,7 +1323,7 @@ scenes.push(
       grid: 3, node: 4, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
       minContent: 70, minContentHeight: 20, maxContent: 100, maxContentHeight: 10,
     }],
-    nestedGridDepthTwo: {
+    nestedGridDepth: {
       gridNodes: [1, 2, 3], leafNode: 4,
       width: 70, height: 20, contributionKind: 'MinContent',
     },
@@ -1329,7 +1344,7 @@ scenes.push(
       grid: 2, node: 3, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
       minContent: 70, minContentHeight: 20, maxContent: 100, maxContentHeight: 10,
     }],
-    nestedGridDepthTwo: {
+    nestedGridDepth: {
       gridNodes: [1, 2], leafNode: 3,
       width: 100, height: 10, contributionKind: 'MaxContent',
     },
@@ -1351,7 +1366,7 @@ scenes.push(
       grid: 3, node: 4, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
       minContent: 70, minContentHeight: 20, maxContent: 100, maxContentHeight: 10,
     }],
-    nestedGridDepthTwo: {
+    nestedGridDepth: {
       gridNodes: [1, 2, 3], leafNode: 4,
       width: 100, height: 10, contributionKind: 'MaxContent',
     },
@@ -1372,7 +1387,7 @@ scenes.push(
       grid: 2, node: 3, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
       minContent: 70, minContentHeight: 20, maxContent: 100, maxContentHeight: 10,
     }],
-    nestedGridDepthTwo: {
+    nestedGridDepth: {
       gridNodes: [1, 2], leafNode: 3,
       width: 70, height: 20, contributionKind: 'MinContent', twoAxis: true,
     },
@@ -1394,7 +1409,7 @@ scenes.push(
       grid: 3, node: 4, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
       minContent: 70, minContentHeight: 20, maxContent: 100, maxContentHeight: 10,
     }],
-    nestedGridDepthTwo: {
+    nestedGridDepth: {
       gridNodes: [1, 2, 3], leafNode: 4,
       width: 70, height: 20, contributionKind: 'MinContent', twoAxis: true,
     },
@@ -1415,7 +1430,7 @@ scenes.push(
       grid: 2, node: 3, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
       minContent: 70, minContentHeight: 20, maxContent: 100, maxContentHeight: 10,
     }],
-    nestedGridDepthTwo: {
+    nestedGridDepth: {
       gridNodes: [1, 2], leafNode: 3,
       width: 100, height: 10, contributionKind: 'MaxContent', twoAxis: true,
     },
@@ -1437,13 +1452,59 @@ scenes.push(
       grid: 3, node: 4, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
       minContent: 70, minContentHeight: 20, maxContent: 100, maxContentHeight: 10,
     }],
-    nestedGridDepthTwo: {
+    nestedGridDepth: {
       gridNodes: [1, 2, 3], leafNode: 4,
       width: 100, height: 10, contributionKind: 'MaxContent', twoAxis: true,
     },
   },
+  {
+    id: 'nested-depth-three-min-content-two-axis', axis: 'Columns', boxCount: 5,
+    rootFrame: 'width=70,height=20', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=70,height=20;'
+      + '1:node=2,x=0,y=0,width=70,height=20;'
+      + '2:node=3,x=0,y=0,width=70,height=20;'
+      + '3:node=4,x=0,y=0,width=70,height=20;'
+      + '4:node=5,x=0,y=0,width=70,height=20]',
+    tracks: [70], collapsed: [false],
+    axes: {
+      Columns: { tracks: [70], collapsed: [false] },
+      Rows: { tracks: [20], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    intrinsicInputs: [{
+      grid: 4, node: 5, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+      minContent: 70, minContentHeight: 20, maxContent: 100, maxContentHeight: 10,
+    }],
+    nestedGridDepth: {
+      gridNodes: [1, 2, 3, 4], leafNode: 5,
+      width: 70, height: 20, contributionKind: 'MinContent', twoAxis: true,
+    },
+  },
+  {
+    id: 'nested-depth-three-max-content-two-axis', axis: 'Columns', boxCount: 5,
+    rootFrame: 'width=100,height=10', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=10;'
+      + '1:node=2,x=0,y=0,width=100,height=10;'
+      + '2:node=3,x=0,y=0,width=100,height=10;'
+      + '3:node=4,x=0,y=0,width=100,height=10;'
+      + '4:node=5,x=0,y=0,width=100,height=10]',
+    tracks: [100], collapsed: [false],
+    axes: {
+      Columns: { tracks: [100], collapsed: [false] },
+      Rows: { tracks: [10], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    intrinsicInputs: [{
+      grid: 4, node: 5, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+      minContent: 70, minContentHeight: 20, maxContent: 100, maxContentHeight: 10,
+    }],
+    nestedGridDepth: {
+      gridNodes: [1, 2, 3, 4], leafNode: 5,
+      width: 100, height: 10, contributionKind: 'MaxContent', twoAxis: true,
+    },
+  },
 );
-assert.equal(scenes.length, 192, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 194, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -2707,8 +2768,8 @@ function verifyRuntimeLog(log, scene, runID) {
     assert.ok(contribution,
       `${scene.id}: nested Grid min-content row contribution differs`);
   }
-  if (scene.nestedGridDepthTwo) {
-    const expected = scene.nestedGridDepthTwo;
+  if (scene.nestedGridDepth) {
+    const expected = scene.nestedGridDepth;
     assert.equal(diagnostics.trackSizingTraces.length, expected.gridNodes.length,
       `${scene.id}: root-to-leaf Grid trace count differs`);
     const traces = new Map(diagnostics.trackSizingTraces.map((trace) => [trace.grid, trace]));
@@ -2881,7 +2942,7 @@ function verifyRuntimeLog(log, scene, runID) {
   const tracksByAxis = {};
   let observedIntrinsicSpans = null;
   const axisTrace = scene.nestedGridIntrinsic || scene.nestedGridTextImageIntrinsic
-    || scene.nestedGridImplicitRows || scene.nestedGridDepthTwo
+    || scene.nestedGridImplicitRows || scene.nestedGridDepth
     ? diagnostics.trackSizingTraces.find(
       (trace) => trace.grid === (scene.nestedGridIntrinsic
         ? scene.nestedGridIntrinsic.outerNode
@@ -2889,7 +2950,7 @@ function verifyRuntimeLog(log, scene, runID) {
           ? scene.nestedGridTextImageIntrinsic.outerNode
           : scene.nestedGridImplicitRows
             ? scene.nestedGridImplicitRows.outerNode
-            : scene.nestedGridDepthTwo.gridNodes[0]))
+            : scene.nestedGridDepth.gridNodes[0]))
     : diagnostics.trackSizingTraces[0];
   assert.ok(axisTrace, `${scene.id}: expected track-sizing Grid trace가 없습니다.`);
   for (const [axis, expected] of Object.entries(axisSpecs)) {
@@ -3203,6 +3264,7 @@ if (target === 'ios-simulator') {
   }
   await writeFile(resolve(evidenceDirectory, 'simulator.json'), `${JSON.stringify({
     target, udid: simulatorUDID, name: simulator[0].name, runtime: simulator[0].runtime, appSha256,
+    sourceRevision: sourceRevision(),
   }, null, 2)}\n`);
 } else {
   const { adb, metadata } = currentAndroidDevice();
@@ -3219,6 +3281,7 @@ if (target === 'ios-simulator') {
     '실기기에 설치된 base.apk와 로컬 APK의 SHA-256이 다릅니다.');
   metadata.apkSha256 = localApkSha256;
   metadata.installedApkSha256 = installedApkSha256;
+  metadata.sourceRevision = sourceRevision();
   await writeFile(resolve(evidenceDirectory,
     target === 'android-device' ? 'device.json' : 'simulator.json'), `${JSON.stringify(metadata, null, 2)}\n`);
   await writeFile(resolve(evidenceDirectory, 'installed-apk-verification.json'), `${JSON.stringify({

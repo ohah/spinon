@@ -132,6 +132,7 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "nested-depth-one-max-content", "nested-depth-two-max-content",
     "nested-depth-one-min-content-two-axis", "nested-depth-two-min-content-two-axis",
     "nested-depth-one-max-content-two-axis", "nested-depth-two-max-content-two-axis",
+    "nested-depth-three-min-content-two-axis", "nested-depth-three-max-content-two-axis",
 ]
 private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -201,9 +202,11 @@ private func c114NegativeTrackExpectation(_ sceneID: String) -> C114NegativeTrac
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
     if sceneID == "nested-depth-one-min-content"
-        || sceneID == "nested-depth-two-min-content" { return "width=70,height=20" }
+        || sceneID == "nested-depth-two-min-content"
+        || sceneID == "nested-depth-three-min-content" { return "width=70,height=20" }
     if sceneID == "nested-depth-one-max-content"
-        || sceneID == "nested-depth-two-max-content" { return "width=100,height=10" }
+        || sceneID == "nested-depth-two-max-content"
+        || sceneID == "nested-depth-three-max-content" { return "width=100,height=10" }
     if sceneID == "nested-grid-implicit-row-span-two" { return "width=24,height=40" }
     if sceneID == "nested-grid-implicit-row-one-row" { return "width=24,height=44" }
     if sceneID == "nested-grid-text-image-span-two" { return "width=98,height=20" }
@@ -335,7 +338,8 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         "nested-grid-text-image-row-definite-flex-control",
         "nested-grid-implicit-row-span-two", "nested-grid-implicit-row-one-row"]
         .contains(sceneID) { return "" }
-    if sceneID.hasPrefix("nested-depth-one-") || sceneID.hasPrefix("nested-depth-two-") {
+    if sceneID.hasPrefix("nested-depth-one-") || sceneID.hasPrefix("nested-depth-two-")
+        || sceneID.hasPrefix("nested-depth-three-") {
         return ""
     }
     if c114IsAnonymousTextScene(sceneID) || c114IsAnonymousTextImageScene(sceneID)
@@ -470,6 +474,10 @@ private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) 
             expectedGrid = 3
             expectedNode = 4
         }
+    case "nested-depth-three-min-content", "nested-depth-three-max-content":
+        expected = (70, 20, 100, 10)
+        expectedGrid = 4
+        expectedNode = 5
     case "fit-content-calc-limit", "min-content-text-break-all":
         expected = (10, 80, 80, 10)
     case "min-content-text-nowrap":
@@ -1439,6 +1447,12 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "1:node=2,x=0,y=0,width=70,height=20;"
             + "2:node=3,x=0,y=0,width=70,height=20;"
             + "3:node=4,x=0,y=0,width=70,height=20]"
+    case "nested-depth-three-min-content":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=70,height=20;"
+            + "1:node=2,x=0,y=0,width=70,height=20;"
+            + "2:node=3,x=0,y=0,width=70,height=20;"
+            + "3:node=4,x=0,y=0,width=70,height=20;"
+            + "4:node=5,x=0,y=0,width=70,height=20]"
     case "nested-depth-one-max-content":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=10;"
             + "1:node=2,x=0,y=0,width=100,height=10;"
@@ -1448,6 +1462,12 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "1:node=2,x=0,y=0,width=100,height=10;"
             + "2:node=3,x=0,y=0,width=100,height=10;"
             + "3:node=4,x=0,y=0,width=100,height=10]"
+    case "nested-depth-three-max-content":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=10;"
+            + "1:node=2,x=0,y=0,width=100,height=10;"
+            + "2:node=3,x=0,y=0,width=100,height=10;"
+            + "3:node=4,x=0,y=0,width=100,height=10;"
+            + "4:node=5,x=0,y=0,width=100,height=10]"
     case "nested-grid-span-two":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=134,height=20;"
             + "1:node=2,x=0,y=0,width=134,height=20;"
@@ -1898,6 +1918,8 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
         || sceneID == "nested-depth-one-max-content" { return 3 }
     if sceneID == "nested-depth-two-min-content"
         || sceneID == "nested-depth-two-max-content" { return 4 }
+    if sceneID == "nested-depth-three-min-content"
+        || sceneID == "nested-depth-three-max-content" { return 5 }
     if ["nested-grid-span-two", "nested-grid-one-track",
         "nested-grid-definite-flex-control", "nested-grid-text-image-span-two",
         "nested-grid-text-image-one-track",

@@ -16,7 +16,7 @@ struct Case {
     contribution: LayoutGridTrackSizingContributionKind,
 }
 
-const CASES: [Case; 8] = [
+const CASES: [Case; 10] = [
     Case {
         id: "nested-depth-one-min-content",
         depth: 1,
@@ -89,32 +89,68 @@ const CASES: [Case; 8] = [
         expected_height: 10.0,
         contribution: LayoutGridTrackSizingContributionKind::MaxContent,
     },
+    Case {
+        id: "nested-depth-three-min-content-two-axis",
+        depth: 3,
+        constraint: "min-content",
+        two_axis: true,
+        expected_width: 70.0,
+        expected_height: 20.0,
+        contribution: LayoutGridTrackSizingContributionKind::MinContent,
+    },
+    Case {
+        id: "nested-depth-three-max-content-two-axis",
+        depth: 3,
+        constraint: "max-content",
+        two_axis: true,
+        expected_width: 100.0,
+        expected_height: 10.0,
+        contribution: LayoutGridTrackSizingContributionKind::MaxContent,
+    },
 ];
 
+#[derive(Clone, Copy, Debug)]
+enum FixtureMutation {
+    Valid,
+    UnlistedDepthFour,
+    WrongBranchIdentity,
+    WrongIntrinsicStyle,
+    ExtraRootChild,
+}
+
 #[test]
-fn c114_nested_grid_depth_two_preserves_leaf_intrinsics_at_each_parent() {
+fn c114_nested_grid_depth_three_preserves_leaf_intrinsics_at_each_parent() {
     for (index, case) in CASES.iter().enumerate() {
         run_case(case, 11_800 + index as u64);
     }
 }
 
+#[test]
+fn c114_nested_grid_depth_rejects_unlisted_and_malformed_topologies() {
+    let case = &CASES[8];
+    for (index, mutation) in [
+        FixtureMutation::UnlistedDepthFour,
+        FixtureMutation::WrongBranchIdentity,
+        FixtureMutation::WrongIntrinsicStyle,
+        FixtureMutation::ExtraRootChild,
+    ]
+    .into_iter()
+    .enumerate()
+    {
+        let (snapshot, _, _, _) = fixture_with_mutation(case, 12_100 + index as u64, mutation);
+        let request = request(snapshot);
+        let result = compute_request_for_block_flex_grid_track_sizing(&request);
+        let rejected = match result {
+            Err(_) => true,
+            Ok(calculation) => calculation.layout.is_err(),
+        };
+        assert!(rejected, "{mutation:?} topology must fail closed");
+    }
+}
+
 fn run_case(case: &Case, owner: u64) {
     let (snapshot, grids, text_item, text_node) = fixture(case, owner);
-    let request = WorkRequest {
-        key: key_for(&snapshot, EnvironmentRevision::INITIAL),
-        snapshot,
-        viewport: CssViewport {
-            width_css_px: 400.0,
-            height_css_px: 200.0,
-            device_scale_factor: 1.0,
-            environment_revision: EnvironmentRevision::INITIAL,
-            media_environment: CssMediaEnvironment::MOBILE,
-        },
-        previous_snapshot: None,
-        force_full: true,
-        invalidation: None,
-        previous_styles: None,
-    };
+    let request = request(snapshot);
     let calculation = compute_request_for_block_flex_grid_track_sizing(&request)
         .unwrap_or_else(|error| panic!("{}: calculation failed: {error:?}", case.id));
     let layout = calculation
@@ -327,6 +363,19 @@ fn fixture(
     HostNodeHandle,
     HostNodeHandle,
 ) {
+    fixture_with_mutation(case, owner, FixtureMutation::Valid)
+}
+
+fn fixture_with_mutation(
+    case: &Case,
+    owner: u64,
+    mutation: FixtureMutation,
+) -> (
+    Arc<HostDocumentSnapshot>,
+    Vec<HostNodeHandle>,
+    HostNodeHandle,
+    HostNodeHandle,
+) {
     const HTML: &str = "http://www.w3.org/1999/xhtml";
     let mut document = HostDocument::new().unwrap();
     let grids = (0..=case.depth)
@@ -334,16 +383,28 @@ fn fixture(
         .collect::<Vec<_>>();
     let text_item = document.reserve_node_handle().unwrap();
     let text_node = document.reserve_node_handle().unwrap();
+    let scene_id = if matches!(mutation, FixtureMutation::UnlistedDepthFour) {
+        "nested-depth-four-min-content-two-axis"
+    } else {
+        case.id
+    };
     let grid_ids = (0..=case.depth)
         .map(|index| {
-            let level = if index == 0 {
-                "root"
-            } else if index < case.depth {
-                "middle"
+            let level = if matches!(mutation, FixtureMutation::WrongBranchIdentity) && index == 2 {
+                "unexpected"
             } else {
-                "inner"
+                match (case.depth, index) {
+                    (_, 0) => "root",
+                    (1, 1) | (2, 2) | (3, 3) => "inner",
+                    (2, 1) | (3, 1) => "middle",
+                    (3, 2) => "branch",
+                    _ => panic!(
+                        "unlisted nested Grid topology: depth {} index {index}",
+                        case.depth
+                    ),
+                }
             };
-            format!("c114-{}-{level}", case.id)
+            format!("c114-{scene_id}-{level}")
         })
         .collect::<Vec<_>>();
     let block_constraint = if case.two_axis {
@@ -363,10 +424,19 @@ fn fixture(
             namespace: HTML.to_owned(),
             local_name: "div".to_owned(),
         });
+        let style = if matches!(mutation, FixtureMutation::WrongIntrinsicStyle) && index == 2 {
+            if case.constraint == "min-content" {
+                grid_style.replace("min-content", "max-content")
+            } else {
+                grid_style.replace("max-content", "min-content")
+            }
+        } else {
+            grid_style.clone()
+        };
         for (name, value) in [
             ("id", id.clone()),
             ("data-node", String::new()),
-            ("style", grid_style.clone()),
+            ("style", style),
         ] {
             batch.push(DocumentOperation::SetAttribute {
                 node: *grid,
@@ -391,7 +461,7 @@ fn fixture(
         local_name: "div".to_owned(),
     });
     for (name, value) in [
-        ("id", format!("c114-{}-text", case.id)),
+        ("id", format!("c114-{scene_id}-text")),
         ("data-node", String::new()),
         ("style", text_style.to_owned()),
     ] {
@@ -415,6 +485,47 @@ fn fixture(
         node: text_node,
         before: None,
     });
+    if matches!(mutation, FixtureMutation::ExtraRootChild) {
+        let extra_child = document.reserve_node_handle().unwrap();
+        batch.push(DocumentOperation::CreateElement {
+            node: extra_child,
+            namespace: HTML.to_owned(),
+            local_name: "div".to_owned(),
+        });
+        batch.push(DocumentOperation::SetAttribute {
+            node: extra_child,
+            name: AttributeName::new(None, "id").unwrap(),
+            value: format!("c114-{scene_id}-unexpected").into(),
+        });
+        batch.push(DocumentOperation::SetAttribute {
+            node: extra_child,
+            name: AttributeName::new(None, "data-node").unwrap(),
+            value: String::new().into(),
+        });
+        batch.push(DocumentOperation::InsertBefore {
+            parent: HostParent::Node(grids[0]),
+            node: extra_child,
+            before: None,
+        });
+    }
     document.commit(batch).unwrap();
     (Arc::new(document.snapshot()), grids, text_item, text_node)
+}
+
+fn request(snapshot: Arc<HostDocumentSnapshot>) -> WorkRequest {
+    WorkRequest {
+        key: key_for(&snapshot, EnvironmentRevision::INITIAL),
+        snapshot,
+        viewport: CssViewport {
+            width_css_px: 400.0,
+            height_css_px: 200.0,
+            device_scale_factor: 1.0,
+            environment_revision: EnvironmentRevision::INITIAL,
+            media_environment: CssMediaEnvironment::MOBILE,
+        },
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
+    }
 }

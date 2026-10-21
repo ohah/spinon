@@ -44,7 +44,7 @@ impl Constraint {
     }
 }
 
-const SCENES: [Scene; 8] = [
+const SCENES: [Scene; 10] = [
     Scene {
         id: "nested-depth-one-min-content",
         depth: 1,
@@ -90,6 +90,18 @@ const SCENES: [Scene; 8] = [
     Scene {
         id: "nested-depth-two-max-content-two-axis",
         depth: 2,
+        constraint: Constraint::MaxContent,
+        two_axis: true,
+    },
+    Scene {
+        id: "nested-depth-three-min-content-two-axis",
+        depth: 3,
+        constraint: Constraint::MinContent,
+        two_axis: true,
+    },
+    Scene {
+        id: "nested-depth-three-max-content-two-axis",
+        depth: 3,
         constraint: Constraint::MaxContent,
         two_axis: true,
     },
@@ -145,11 +157,13 @@ pub(super) fn prepare(
             validate_placement(style_for(styles, child.id())?, scene.id)?;
             validate_text(snapshot, child, styles)?;
         } else {
-            let expected_id = if depth == 0 && scene.depth == 2 {
-                format!("c114-{}-middle", scene.id)
-            } else {
-                format!("c114-{}-inner", scene.id)
+            let role = match (scene.depth, depth) {
+                (1, 0) | (2, 1) | (3, 2) => "inner",
+                (2, 0) | (3, 0) => "middle",
+                (3, 1) => "branch",
+                _ => return Err(unsupported(child.id(), "unlisted nested Grid depth")),
             };
+            let expected_id = format!("c114-{}-{role}", scene.id);
             let (tag, id) = element_identity(snapshot, child)?;
             if tag != "div"
                 || id != expected_id
