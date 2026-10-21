@@ -1,0 +1,87 @@
+{
+  "pass": "pass02",
+  "format": "gzip JSON; decompress each archive to recover the exact original bytes",
+  "entries": [
+    {
+      "source": "preflight-pass02.json",
+      "archive": "preflight-pass02.json.gz",
+      "originalBytes": 1645053,
+      "originalSha256": "df1c9a313172d1d642c5834f3c67caba945d8f8fb75f02c33734af7c2bdff94a",
+      "archiveBytes": 169524,
+      "archiveSha256": "efcc26467c921109b5da97eb4372c7c0d05102543111069ecbc241b37da70b72",
+      "summary": {
+        "pass": "pass02",
+        "targetCount": 3269,
+        "sourceBytes": 161165381,
+        "backupBytes": 30626812,
+        "counts": {
+          "create": 251,
+          "replace": 202,
+          "same": 2816
+        },
+        "noDeletes": true
+      }
+    },
+    {
+      "source": "copy-and-backup-pass02.json",
+      "archive": "copy-and-backup-pass02.json.gz",
+      "originalBytes": 1172794,
+      "originalSha256": "7795b59a18f00ea63020cf066d37c7b2fe6082e1029b41643aa1b17f18080ac5",
+      "archiveBytes": 147679,
+      "archiveSha256": "ab1fe18b01f6f213f1d46539b6cf4faea6e1677f76659223ad33d2449ca4f8eb",
+      "summary": {
+        "pass": "pass02",
+        "targetCount": 3269,
+        "counts": {
+          "create": 251,
+          "replace": 202,
+          "same": 2816
+        },
+        "backupCount": 202,
+        "allVerified": true,
+        "allBackupsVerified": true,
+        "noDeletes": true
+      }
+    },
+    {
+      "source": "local-verification-pass02.json",
+      "archive": "local-verification-pass02.json.gz",
+      "originalBytes": 1101477,
+      "originalSha256": "92943ea1317c2c53e6b88dafa4274a6ed8a72ff5cc99129befdcb6ff40ec518f",
+      "archiveBytes": 147629,
+      "archiveSha256": "969587df5cb68740b3764f08155f5d903b216ce0ca0f3bf13b5a0ac6f466a9a9",
+      "summary": {
+        "pass": "pass02",
+        "targetCount": 3269,
+        "sourceCounts": {
+          "create": 251,
+          "replace": 202,
+          "same": 2816
+        },
+        "backupCount": 202,
+        "allTargetsVerified": true,
+        "allBackupsVerified": true,
+        "noDeletes": true
+      }
+    },
+    {
+      "source": "served-verification-pass02.json",
+      "archive": "served-verification-pass02.json.gz",
+      "originalBytes": 2156782,
+      "originalSha256": "713bfbe96d8e0936f544576fdac3c8e72766f06722e72100a19c6a0798c6797a",
+      "archiveBytes": 179236,
+      "archiveSha256": "cffa861058dfacd6f368ea2f4ef3b9bfc51d077012ca5fec14c1ea6d5938feaf",
+      "summary": {
+        "pass": "pass02",
+        "origin": "https://macstudio.tailed42f2.ts.net",
+        "basePath": "/spinon/",
+        "concurrency": 8,
+        "fileCount": 3269,
+        "http200Count": 3269,
+        "matchingHashCount": 3269,
+        "failures": 0,
+        "allVerified": true
+      }
+    }
+  ]
+}

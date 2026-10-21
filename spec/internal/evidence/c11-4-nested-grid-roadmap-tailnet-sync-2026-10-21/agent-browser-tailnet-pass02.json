@@ -1,0 +1,15 @@
+{
+  "pass": "pass02",
+  "browser": "Agent Browser",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "checks": {
+    "newC114NestedGridNoteVisible": true,
+    "officialCount72of213Visible": true,
+    "roadmapScreenshotLoaded": true,
+    "screenshotWidth": 1280,
+    "screenshotHeight": 633,
+    "screenshotSha256": "be2649fd4bc93c356e5830b7895a1087845a0fd33d65f5ddbd534080de41ed64"
+  },
+  "scope": "Rendered Tailnet roadmap content only; no Android or iOS runtime verification."
+}
