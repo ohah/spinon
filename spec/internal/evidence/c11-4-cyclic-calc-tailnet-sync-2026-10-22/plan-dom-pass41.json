@@ -1,0 +1,44 @@
+{
+  "hasOfficialCount": true,
+  "hasPr480": true,
+  "rows": [
+    [
+      "Scene",
+      "Root",
+      "Columns",
+      "Rows",
+      "Item"
+    ],
+    [
+      "cyclic-calc-column",
+      "24×16",
+      "16",
+      "16",
+      "24×16"
+    ],
+    [
+      "cyclic-calc-row",
+      "24×16",
+      "24",
+      "10",
+      "24×16"
+    ],
+    [
+      "cyclic-calc-two-axis",
+      "24×16",
+      "16",
+      "10",
+      "24×16"
+    ],
+    [
+      "definite-calc-control",
+      "40×20",
+      "24",
+      "12",
+      "24×16"
+    ]
+  ],
+  "sceneCount": 4,
+  "tableFound": true,
+  "title": "C11.4 · cyclic percentage가 포함된 calc() track sizing 계획 - 스피논 문서"
+}

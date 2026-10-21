@@ -1,0 +1,12 @@
+{
+  "pass": "pass41",
+  "closeCommand": "agent-browser close --all",
+  "closedSession": "spinon-tailnet-pass41",
+  "browserProcessScan": [],
+  "browserProcessScanEmpty": true,
+  "preservedPreviewServer": {
+    "pid": 1191,
+    "command": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+    "listen": "127.0.0.1:8768"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "hasFourSceneRows": true,
+  "hasLimit": true,
+  "sceneRows": [
+    "cyclic-calc-column\t[16] / [16]\t24×16 / 24×16\tframe·trace·draw 통과, PixelCopy 2/2\tframe·trace·draw 통과, Metal drawable 2/2",
+    "cyclic-calc-row\t[24] / [10]\t24×16 / 24×16\tframe·trace·draw 통과, PixelCopy 2/2\tframe·trace·draw 통과, Metal drawable 2/2",
+    "cyclic-calc-two-axis\t[16] / [10]\t24×16 / 24×16\tframe·trace·draw 통과, PixelCopy 2/2\tframe·trace·draw 통과, Metal drawable 2/2",
+    "definite-calc-control\t[24] / [12]\t40×20 / 24×16\tframe·trace·draw 통과, PixelCopy 2/2\tframe·trace·draw 통과, Metal drawable 2/2"
+  ],
+  "screenshotLinkCount": 8,
+  "screenshotLinks": [
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-calc-track-sizing-2026-10-22/android-avd-c114-cyclic-calc-track-sizing-android-avd-20261021T224422209Z-5ec7de6b/cyclic-calc-column.png",
+      "text": "column"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-calc-track-sizing-2026-10-22/android-avd-c114-cyclic-calc-track-sizing-android-avd-20261021T224422209Z-5ec7de6b/cyclic-calc-row.png",
+      "text": "row"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-calc-track-sizing-2026-10-22/android-avd-c114-cyclic-calc-track-sizing-android-avd-20261021T224422209Z-5ec7de6b/cyclic-calc-two-axis.png",
+      "text": "two axis"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-calc-track-sizing-2026-10-22/android-avd-c114-cyclic-calc-track-sizing-android-avd-20261021T224422209Z-5ec7de6b/definite-calc-control.png",
+      "text": "definite control"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-calc-track-sizing-2026-10-22/ios-simulator-c114-cyclic-calc-track-sizing-ios-simulator-20261021T224442114Z-cd934a2e/cyclic-calc-column.png",
+      "text": "column"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-calc-track-sizing-2026-10-22/ios-simulator-c114-cyclic-calc-track-sizing-ios-simulator-20261021T224442114Z-cd934a2e/cyclic-calc-row.png",
+      "text": "row"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-calc-track-sizing-2026-10-22/ios-simulator-c114-cyclic-calc-track-sizing-ios-simulator-20261021T224442114Z-cd934a2e/cyclic-calc-two-axis.png",
+      "text": "two axis"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-calc-track-sizing-2026-10-22/ios-simulator-c114-cyclic-calc-track-sizing-ios-simulator-20261021T224442114Z-cd934a2e/definite-calc-control.png",
+      "text": "definite control"
+    }
+  ],
+  "title": "C11.4 cyclic percentage calc() track sizing 실행 근거 - 스피논 문서"
+}
