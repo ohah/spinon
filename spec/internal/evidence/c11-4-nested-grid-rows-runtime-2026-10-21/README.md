@@ -1,5 +1,7 @@
 # C11.4 nested Grid 행 축 runtime 실행 근거
 
+구현 PR [#445](https://github.com/ohah/spinon/pull/445)은 2026-10-21 12:29:24 UTC에 Rebase and merge됐고 merge SHA는 `30d181e0ee80ef6e36b312fc9f34163ecd4366ed`다. 병합 때 PR check rollup은 비어 있었고 main required status checks는 설정되어 있지 않았다.
+
 ## 고정 oracle
 
 [계획 PR #444](https://github.com/ohah/spinon/pull/444)은 merge SHA `1359f37024ad711df4b5253745d6dbf9b96af77f`로 병합됐다. 독립 기대값은 [CSS Grid 2025 CRD 기준 계획](https://github.com/ohah/spinon/blob/main/plan/c11-4-nested-grid-row-contribution.md) 및 [Chrome 156 사전 비교](../c11-4-nested-grid-rows-precomparison-2026-10-21/README.md)에 기록했다. Chrome은 한 build의 비교 관찰자이고 규범 근거는 아니다.
@@ -41,9 +43,9 @@ iPhone 17 Pro / iOS 26.2 Simulator (`ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D`)에�
 
 대표 실행 화면 (원본 크기: Android 1080×2400, iOS 1206×2622):
 
-![Android API 37 ARM64 AVD nested Grid row span-two](android-row-span-two.png)
+![Android API 37 ARM64 AVD nested Grid row span-two](./android-row-span-two.png)
 
-![iPhone 17 Pro iOS 26.2 Simulator nested Grid row span-two](ios-row-span-two.png)
+![iPhone 17 Pro iOS 26.2 Simulator nested Grid row span-two](./ios-row-span-two.png)
 
 ## 화면과 범위 한계
 
