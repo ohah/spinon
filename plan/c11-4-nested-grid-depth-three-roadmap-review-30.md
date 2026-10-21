@@ -33,7 +33,7 @@
 | 27 | iOS screenshot 링크가 다른 task/date output을 가리키는가? | iPhone 17 Pro Simulator pass의 min-content PNG 경로가 repository에 존재한다. 통과. |
 | 28 | #458 URL이나 공식 상태 route가 잘못됐는가? | GitHub PR #458 및 `/spinon/STATUS.html#c11-css-grid`를 확인했다. 통과. |
 | 29 | 링크를 추가하면서 다른 roadmap history 항목을 제거하는가? | 기존 PR #453 항목과 section content를 유지하고 새 paragraph만 추가했다. 통과. |
-| 30 | raw HTML 구조·문자열 또는 선택 build 배치가 잘못되는가? | paragraph의 `<p>`, `<strong>`, `<code>`, `<a>` tag와 7개 href target을 확인했다. 선택 build에서 route와 이미지 대상이 존재하는지 확인하고 Agent Browser로 전체 폭 배치를 검증한다. PR 이미지와 병합 후 Tailnet route는 별도 확인한다. |
+| 30 | raw HTML 구조·문자열 또는 선택 build 배치가 잘못되는가? | `<p>`, `<strong>`, `<code>`, `<a>` 구조와 7개 href target을 확인했다. pass42 선택 build에서 4개 이미지가 Android 1080×2400, iOS 1206×2622로 로드됐고 Agent Browser가 card/hero 폭 1240px와 전체 폭 CSS를 확인했다. PR 본문 이미지와 병합 후 Tailnet route는 별도 확인한다. |
 
 ## 판정
 
