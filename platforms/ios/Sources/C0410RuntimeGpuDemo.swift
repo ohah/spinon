@@ -18,6 +18,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "cyclic-percent-column", "cyclic-percent-row", "definite-percent-column",
     "cyclic-minmax-column", "cyclic-minmax-row", "definite-minmax-column",
     "cyclic-fit-content-column", "cyclic-fit-content-row", "definite-fit-content-column",
+    "cyclic-percent-two-axis-multitrack", "cyclic-percent-columns-multitrack",
+    "cyclic-percent-rows-multitrack", "definite-percent-two-axis-multitrack",
     "auto-fixed-width-item", "minmax-auto-fixed-width-item",
     "fit-content-below-item-size", "spanning-auto-tracks",
     "spanning-auto-min-flex-tracks",
@@ -220,6 +222,12 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if sceneID == "definite-percent-column" || sceneID == "definite-minmax-column" {
         return "width=40,height=16"
     }
+    if sceneID == "cyclic-percent-two-axis-multitrack"
+        || sceneID == "cyclic-percent-columns-multitrack"
+        || sceneID == "cyclic-percent-rows-multitrack"
+        || sceneID == "definite-percent-two-axis-multitrack" {
+        return "width=40,height=20"
+    }
     if sceneID.hasPrefix("nested-text-span") {
         return sceneID.contains("before-span3") || sceneID.contains("span3-before-span2")
             ? "width=180,height=60" : "width=95,height=60"
@@ -364,6 +372,12 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         || sceneID == "definite-percent-column" || sceneID == "cyclic-minmax-column"
         || sceneID == "cyclic-minmax-row" || sceneID == "definite-minmax-column" {
         return "width=24,height=16"
+    }
+    if sceneID == "cyclic-percent-two-axis-multitrack"
+        || sceneID == "cyclic-percent-columns-multitrack"
+        || sceneID == "cyclic-percent-rows-multitrack"
+        || sceneID == "definite-percent-two-axis-multitrack" {
+        return "width=20,height=10"
     }
     if ["nested-grid-span-two", "nested-grid-one-track",
         "nested-grid-definite-flex-control", "nested-grid-text-image-span-two",
@@ -1507,6 +1521,11 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "4:node=5,x=\(imageX),y=0,width=24,height=16]"
     }
     switch sceneID {
+    case "cyclic-percent-two-axis-multitrack", "cyclic-percent-columns-multitrack",
+         "cyclic-percent-rows-multitrack", "definite-percent-two-axis-multitrack":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;"
+            + "1:node=2,x=0,y=0,width=20,height=10;"
+            + "2:node=4,x=30,y=15,width=20,height=10]"
     case "cyclic-fit-content-column":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=50,height=20;"
             + "1:node=2,x=0,y=0,width=25,height=20]"
@@ -2135,6 +2154,12 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
         || sceneID == "definite-fit-content-column" {
         return 2
     }
+    if sceneID == "cyclic-percent-two-axis-multitrack"
+        || sceneID == "cyclic-percent-columns-multitrack"
+        || sceneID == "cyclic-percent-rows-multitrack"
+        || sceneID == "definite-percent-two-axis-multitrack" {
+        return 3
+    }
     if sceneID.hasPrefix("nested-text-span") {
         return sceneID.contains("before-span3") || sceneID.contains("span3-before-span2")
             ? 7 : 6
@@ -2600,6 +2625,23 @@ private struct C111MetalPixelRun {
     ) -> Bool {
         let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])]
         switch sceneID {
+        case "cyclic-percent-two-axis-multitrack",
+             "cyclic-percent-columns-multitrack",
+             "cyclic-percent-rows-multitrack",
+             "definite-percent-two-axis-multitrack":
+            let textID = "c114-\(sceneID)-text"
+            let overflowID = "c114-\(sceneID)-overflow"
+            expectedSamples = [
+                ("\(sceneID)-text-red", textID, 10, 5, [229, 72, 77, 255]),
+                ("\(sceneID)-overflow-inside-grid", overflowID, 35, 17,
+                 [32, 191, 107, 255]),
+                ("\(sceneID)-overflow-past-right", overflowID, 45, 18,
+                 [32, 191, 107, 255]),
+                ("\(sceneID)-overflow-past-bottom", overflowID, 35, 22,
+                 [32, 191, 107, 255]),
+                ("\(sceneID)-overflow-past-both", overflowID, 45, 22,
+                 [32, 191, 107, 255]),
+            ]
         case "cyclic-fit-content-column":
             let itemID = "c114-\(sceneID)-item"
             expectedSamples = [

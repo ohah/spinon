@@ -19,6 +19,8 @@ pub(super) const AHEM: &[u8] =
 
 #[path = "c11_4_text/cases.rs"]
 mod cases;
+#[path = "c11_4_text/cyclic_two_axis_multitrack.rs"]
+mod cyclic_two_axis_multitrack;
 #[path = "c11_4_text/flex_span.rs"]
 mod flex_span;
 use cases::{TEXT_CASES, TextCase, TextDimension, TextTrack};
@@ -54,6 +56,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         return Ok(Some(input));
     }
     if let Some(input) = flex_span::prepare(snapshot, root, styles)? {
+        return Ok(Some(input));
+    }
+    if let Some(input) = cyclic_two_axis_multitrack::prepare(snapshot, root, styles)? {
         return Ok(Some(input));
     }
 
