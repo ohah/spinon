@@ -16,6 +16,7 @@
 | iOS `build:ios-sim`, fixture env flags enabled | `BUILD SUCCEEDED` | `ios-simulator-build.log` |
 | 신규 four-scene Android/iOS capture | 각 4/4, trace/draw checks 통과 | linked `result.json` in [README](./README.md) |
 | 기존 direct-leaf multi-span Android/iOS controls | 각 4/4 통과 | linked control `result.json` in [README](./README.md) |
+| Capture runner fixture inventory | 202 scene, 신규 ID 4개 포함 | `scene-inventory.log` |
 | 기본/fixture-test FFI archive strings boundary | default 신규 ID 0개, positive control 4개 | [artifact-boundary.md](./artifact-boundary.md) |
 
 Workspace Clippy는 신규 fixture feature를 끈 기본 workspace matrix이고, feature-specific Clippy는 신규 fixture/test cfg를 켠 matrix다. 두 결과를 대체 관계로 해석하지 않는다.

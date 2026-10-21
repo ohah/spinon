@@ -19,6 +19,7 @@ Rust tests, app harness와 capture verifier는 모든 Grid frame, Columns/Rows f
 
 - Android: API 37 ARM64 Google AVD `emulator-5558` (`qemu=1`, model `sdk_gphone64_arm64`, Android 17). Local APK SHA-256과 설치된 `base.apk` SHA-256은 모두 `8374ca2aff544a1f5ac5b7fc92acefdfe48f85a6790647e4f46b8d962d55912f`로 일치한다.
 - iOS: iPhone 17 Pro, iOS 26.2 Simulator, UDID `ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D`. App SHA-256은 `aa8ad649a2b01b13f9d1379500beb0c4b05bf3d9e2e69b03b0045e5ae418b740`이다.
+- capture runner inventory는 기존 198개에 네 scene을 추가한 총 202개를 나열하고 신규 ID 네 개를 포함한다. 전체 목록은 `scene-inventory.log`에 있다.
 - 두 앱은 `SPINON_ENABLE_C04_RUNTIME_GPU=1` 및 `SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1`로 다시 빌드했다. [Android build log](./android-simulator-build.log), [iOS build log](./ios-simulator-build.log).
 - 최종 신규 scene run은 [Android AVD](./android-avd-c114-nested-grid-text-multispan-android-avd-20261021T183127758Z-2de15bbf/result.json)와 [iPhone Simulator](./ios-simulator-c114-nested-grid-text-multispan-ios-simulator-20261021T183136986Z-31c4f687/result.json)에 있다. 두 플랫폼 모두 4/4 scene에서 expected frame/track, `drawPresented=true`, `supersededRetries=0`이다. Android box counts는 `6/6/7/7`, trace chunks는 `14/14/16/16`; iOS는 같은 box counts와 `27/27/31/31` trace chunks다.
 - 기존 direct-leaf text multi-span 네 scene도 별도 [Android controls](../c11-4-nested-grid-text-multispan-controls-2026-10-22/android-avd-c114-text-multispan-contributions-android-avd-20261021T183018815Z-88607b65/result.json)와 [iOS controls](../c11-4-nested-grid-text-multispan-controls-2026-10-22/ios-simulator-c114-text-multispan-contributions-ios-simulator-20261021T183028424Z-4c2cc2df/result.json)에서 각 4/4 통과했다. 두 순서는 `[25,35,35,0]`, span-3을 포함한 두 scene은 `[53.333335876464844,63.333335876464844,63.333335876464844,0]`을 관찰했다.
@@ -28,6 +29,8 @@ Representative screen captures:
 ![Android API 37 AVD, nested span-2 and span-3 scene](./android-avd-c114-nested-grid-text-multispan-android-avd-20261021T183127758Z-2de15bbf/nested-text-span2-before-span3.png)
 
 ![iPhone 17 Pro iOS 26.2 Simulator, nested span-2 and span-3 scene](./ios-simulator-c114-nested-grid-text-multispan-ios-simulator-20261021T183136986Z-31c4f687/nested-text-span2-before-span3.png)
+
+PR [#464](https://github.com/ohah/spinon/pull/464)의 본문에서 Agent Browser 0.31.1로 두 raw image를 열어 각각 `complete=true`, Android 1080×2400, iOS 1206×2622 intrinsic size를 확인했다. 확인 결과는 [pr-image-agent-browser-verification.json](./pr-image-agent-browser-verification.json)에 있다. 확인 후 browser 세션과 그 세션이 시작한 Chrome/Agent Browser process를 종료했다.
 
 ## 집중 검사와 fixture 분리
 
