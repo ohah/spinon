@@ -23,7 +23,7 @@
 | 17 | public roadmap·Tailnet preview·official STATUS가 서로 다른 범위를 말하는가 | public roadmap에는 부분 검증 사실과 같은 미완료 표현만 추가한다. Tailnet 갱신은 merge된 원본으로 다시 빌드해 별도 검증한다. |
 | 18 | 오래된 APK 재현 실패를 ADB 불안정으로 잘못 보고하는가 | 첫 log는 ADB transport 실패가 아닌 app allowlist argument rejection이며, build 전후 hash와 성공 run을 함께 기록한다. |
 | 19 | 이전 roadmap 문서 commit이나 기존 evidence 작업이 PR에서 빠지거나 덮이는가 | 현재 branch의 roadmap commit을 유지하고, pre-existing untracked evidence는 stage 대상에서 제외한다. |
-| 20 | check 실행 부재를 CI 통과라고 주장하는가 | PR 생성 뒤 `gh pr checks --required`의 실제 결과를 확인하고, 설정되지 않은 required gate는 통과로 보고하지 않는다. |
+| 20 | check 실행 부재를 CI 통과라고 주장하는가 | PR #415에서 `gh pr checks --required`와 전체 checks를 확인했으며 보고된 check는 없다. CI 통과로 기록하지 않는다. |
 
 ## 결론
 
