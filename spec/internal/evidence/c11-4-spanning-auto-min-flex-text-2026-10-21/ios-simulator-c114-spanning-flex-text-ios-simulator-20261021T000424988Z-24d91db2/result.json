@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "target": "ios-simulator",
+  "runPrefix": "c114-spanning-flex-text-ios-simulator-20261021T000424988Z-24d91db2",
+  "sceneCount": 1,
+  "observations": [
+    {
+      "sceneId": "spanning-auto-min-flex-tracks",
+      "summary": "2026-10-21 09:04:25.824863+0900  localhost SpinonBootstrap[77209]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-spanning-flex-text-ios-simulator-20261021T000424988Z-24d91db2-0 scene_id=spanning-auto-min-flex-tracks expected_root_frame=width=100,height=30 expected_item_frame=width=100,height=10 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=30;1:node=2,x=0,y=0,width=100,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 30
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 10
+        }
+      ],
+      "tracks": [
+        {
+          "baseSize": 48,
+          "collapsed": false
+        },
+        {
+          "baseSize": 48,
+          "collapsed": false
+        }
+      ],
+      "trackTraceChunks": 11,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}
