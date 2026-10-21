@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "target": "ios-simulator",
+  "runPrefix": "c114-cyclic-percent-tracks-ios-simulator-20261021T220642593Z-54e24c0a",
+  "sceneCount": 4,
+  "observations": [
+    {
+      "sceneId": "cyclic-percent-two-axis-multitrack",
+      "summary": "2026-10-22 07:06:43.318134+0900  localhost SpinonBootstrap[84954]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261021T220642593Z-54e24c0a-0 scene_id=cyclic-percent-two-axis-multitrack expected_root_frame=width=40,height=20 expected_item_frame=width=20,height=10 status=0 layout=ready boxes=3 generation=1 document_revision=17 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;1:node=2,x=0,y=0,width=20,height=10;2:node=4,x=30,y=15,width=20,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 20
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "order": 2,
+          "node": 4,
+          "x": 30,
+          "y": 15,
+          "width": 20,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 10,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          },
+          {
+            "baseSize": 5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 20,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "cyclic-percent-columns-multitrack",
+      "summary": "2026-10-22 07:06:45.671979+0900  localhost SpinonBootstrap[85059]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261021T220642593Z-54e24c0a-1 scene_id=cyclic-percent-columns-multitrack expected_root_frame=width=40,height=20 expected_item_frame=width=20,height=10 status=0 layout=ready boxes=3 generation=1 document_revision=17 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;1:node=2,x=0,y=0,width=20,height=10;2:node=4,x=30,y=15,width=20,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 20
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "order": 2,
+          "node": 4,
+          "x": 30,
+          "y": 15,
+          "width": 20,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 10,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          },
+          {
+            "baseSize": 5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 5,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 13,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "cyclic-percent-rows-multitrack",
+      "summary": "2026-10-22 07:06:47.014214+0900  localhost SpinonBootstrap[85142]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261021T220642593Z-54e24c0a-2 scene_id=cyclic-percent-rows-multitrack expected_root_frame=width=40,height=20 expected_item_frame=width=20,height=10 status=0 layout=ready boxes=3 generation=1 document_revision=17 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;1:node=2,x=0,y=0,width=20,height=10;2:node=4,x=30,y=15,width=20,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 20
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "order": 2,
+          "node": 4,
+          "x": 30,
+          "y": 15,
+          "width": 20,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 10,
+            "collapsed": false
+          },
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          },
+          {
+            "baseSize": 5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 13,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "definite-percent-two-axis-multitrack",
+      "summary": "2026-10-22 07:06:48.373612+0900  localhost SpinonBootstrap[85231]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261021T220642593Z-54e24c0a-3 scene_id=definite-percent-two-axis-multitrack expected_root_frame=width=40,height=20 expected_item_frame=width=20,height=10 status=0 layout=ready boxes=3 generation=1 document_revision=17 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;1:node=2,x=0,y=0,width=20,height=10;2:node=4,x=30,y=15,width=20,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 20
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "order": 2,
+          "node": 4,
+          "x": 30,
+          "y": 15,
+          "width": 20,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 10,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          },
+          {
+            "baseSize": 5,
+            "collapsed": false
+          },
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 6,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}
