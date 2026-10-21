@@ -17,11 +17,12 @@ Android surface는 `840×630` pixels / `320×240` CSS px, scale `2.625`였다. P
 
 iOS drawable은 `960×720` pixels / `320×240` CSS px, scale `3.0`였다. Metal readback도 각 scene의 동일한 root-local CSS 표본을 exact하게 읽었다. 이는 compositor 제출 전 drawable 근거이며 OS compositor 이후 출력이나 scanout 근거가 아니다. [iOS Simulator run](./ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T083256735Z-5aeaa47a/)에 결과를 보존했다.
 
-새 scene의 화면은 다음과 같다. Reverse-order screenshot은 결과 폴더에 함께 보존했다.
+새 scene의 forward/reversed screenshot을 두 simulator에서 모두 보존했다.
 
-| Android API 37 AVD | iPhone 17 Pro / iOS 26.2 Simulator |
-| --- | --- |
-| ![Android AVD forward scene](./android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T083242895Z-3df1ac86/two-anonymous-runs-three-images-forward.png) | ![iOS Simulator forward scene](./ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T083256735Z-5aeaa47a/two-anonymous-runs-three-images-forward.png) |
+| Source order | Android API 37 / Android 17 ARM64 AVD | iPhone 17 Pro / iOS 26.2 Simulator |
+| --- | --- | --- |
+| Forward | ![Android AVD forward scene](./android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T083242895Z-3df1ac86/two-anonymous-runs-three-images-forward.png) | ![iOS Simulator forward scene](./ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T083256735Z-5aeaa47a/two-anonymous-runs-three-images-forward.png) |
+| Reversed | ![Android AVD reversed scene](./android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T083242895Z-3df1ac86/three-images-two-anonymous-runs-reversed.png) | ![iOS Simulator reversed scene](./ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T083256735Z-5aeaa47a/three-images-two-anonymous-runs-reversed.png) |
 
 ## 실패 원인과 수정
 
