@@ -2,7 +2,7 @@
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [depth-three 양 축 계획](./c11-4-nested-grid-depth-three.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획 및 Chrome 156 사전 비교 완료. 구현은 시작하지 않았다. C11.4 checkbox와 공식 완료 수 `72/213`은 변경하지 않는다.
+**상태:** 제한 fixture 구현과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 검증을 완료했다. 새 네 scene과 depth-one/two/three 회귀 scene 열 개를 각 Simulator에서 14/14 확인했다. C11.4 전체와 공식 완료 수 `72/213`은 미완료로 유지한다.
 
 ## 목적과 경계
 
@@ -27,14 +27,14 @@ Chrome Headless `156.0.8078.48`은 네 scene 모두 이 독립 기대값과 일�
 
 ## 구현 및 판정 절차
 
-1. 이 계획과 네 scene의 expected JSON을 고정한 후, 별도 계획 실패 관점 20개 및 계획 PR diff 검토를 마치고 계획 PR을 Rebase and merge한다. 기존 main checkout을 쓰며 새 worktree는 만들지 않는다.
-2. 기존 nested depth scene adapter와 anonymous text/image fixture adapter 경계를 각각 추적한다. 신규 네 root ID만 명시 허용하고 정확한 `root → middle → branch → inner` ownership, inner의 direct child 두 개, text/image source order와 고정 style을 검증한다.
-3. Ahem paragraph와 image intrinsic snapshot이 같은 document/style/layout revision으로 합쳐지는지 확인한다. 두 축 nested intrinsic projection과 anonymous/replaced 입력이 별도 opt-in이 필요하면 이를 fixture 전용 typed path에만 좁게 결합한다. 알 수 없는 shape나 중복·누락 resource는 부분 `LayoutOutput` 없이 실패해야 한다.
-4. 네 신규 scene에서 각 Grid node의 parent/child order, Columns·Rows used track, width·height, root-relative frame 및 track contribution trace를 검사한다. Inner text item은 anonymous source/provenance와 Ahem line fragment, image item은 element identity·decoded natural size·intrinsic contribution source/revision을 확인한다. source-order 반전은 inner columns/item x 위치만 바꾸고 상위 크기는 유지해야 한다.
-5. 기존 depth-one·two·three ten controls와 신규 네 scene 총 14개를 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator fixture app에서 실행한다. 모두 frame·두 축 track·Grid trace·draw/present와 installed/local artifact hash를 검사한다. Android 실기기는 연결하거나 사용하지 않는다.
-6. `cargo fmt --all -- --check`, focused style-to-layout/runtime/FFI tests, workspace all-target Clippy `-D warnings`, Android/iOS fixture builds를 실행한다. 기본 product archive에서는 신규 scene id와 고정 fixture code/data가 없어야 하고 fixture-test positive control에는 포함돼야 한다. 실행하지 않은 검사는 통과로 보고하지 않는다.
-7. 코드 변경 뒤 계획 검토와 겹치지 않는 구현/runtime 실패 관점 20개를 새로 검토하고, PR diff는 별도 30개 실패 관점으로 검토한다. Simulator 동작 화면을 PR 본문에 연결하고 Agent Browser에서 이미지 표시를 확인한다. 만든 Agent Browser 세션을 닫고 session 목록과 helper/Chrome 프로세스를 확인한다.
-8. 현재 required checks와 mergeability를 다시 확인한 뒤 Rebase and merge한다. 병합 결과를 상태 대장·상위 계획에 연결하고, Tailnet 작업 미리보기 갱신 시 선택 빌드·백업·hash·Agent Browser 화면까지 확인한 후 브라우저 프로세스를 정리한다.
+1. 계획과 네 scene의 expected JSON을 고정했다. 별도 계획 실패 관점 20개 및 계획 PR diff 검토를 마쳤고 계획 PR #461은 Rebase and merge됐다. 기존 main checkout에서 이어서 구현했다.
+2. 기존 nested depth scene adapter와 anonymous text/image fixture adapter 경계를 추적했다. 신규 네 root ID만 명시 허용하고 정확한 `root → middle → branch → inner` ownership, inner의 direct child 두 개, text/image source order와 고정 style을 검증한다.
+3. Ahem paragraph와 image intrinsic snapshot을 하나의 layout input으로 결합하고 image resource revision을 결과 stamp에 기록한다. 두 축 nested intrinsic projection opt-in은 `c11-4-grid-track-sizing-fixture-test`에만 연결한다. 알 수 없는 shape·중복/누락 item·리소스 오류는 부분 결과 없이 거부한다.
+4. 네 신규 scene의 각 Grid node parent/child order, Columns·Rows used track, width·height, root-relative frame 및 track contribution trace를 확인한다. anonymous text provenance와 line metrics, image identity·decoded natural size·intrinsic contribution source/revision을 검사한다. source-order 반전은 item x 위치만 바꾸고 상위 크기를 유지한다.
+5. 기존 depth-one·two·three 열 scene과 신규 네 scene, 총 14개를 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator fixture app에서 실행해 각각 14/14 통과했다. frame·두 축 track·Grid trace·draw/present와 Android local/installed APK hash 일치를 확인했다. Android 실기기는 사용하지 않았다.
+6. `cargo fmt --all -- --check`, focused runtime/FFI tests, Clippy `-D warnings`, Android/iOS fixture builds를 실행했다. 기본 FFI archive에는 네 신규 scene ID가 없고 `c04-runtime-gpu-fixture-test` positive control에는 있다. 세부 실행·hash는 [Simulator 증거](../spec/internal/evidence/c11-4-nested-depth-three-anonymous-image-runtime-2026-10-22/README.md)에 기록한다.
+7. 구현/runtime 실패 관점 20개와 최종 PR diff 30개는 각기 새로운 관점으로 기록한다. Simulator 화면을 PR 본문에 연결하고 Agent Browser에서 이미지 표시를 확인한다. Agent Browser 세션과 helper/Chrome 프로세스는 사용 후 닫는다.
+8. 현재 required checks와 mergeability를 확인한 뒤 Rebase and merge한다. 병합 결과를 상태 대장·상위 계획에 반영하고 Tailnet 작업 미리보기 동기화 시 선택 빌드·백업·hash·Agent Browser 화면을 확인한 후 browser 프로세스를 정리한다.
 
 ## 거부 조건과 한계
 
@@ -48,4 +48,5 @@ Chrome Headless `156.0.8078.48`은 네 scene 모두 이 독립 기대값과 일�
 
 - [계획 실패 관점 20개](./c11-4-nested-depth-three-anonymous-image-plan-review-20.md)
 - 계획 PR diff 실패 관점 30개는 precomparison evidence directory에 기록한다.
-- 구현 후 독립 20-perspective review와 별도 30-perspective PR diff review를 만든다.
+- [구현/runtime 실패 관점 20개](../spec/internal/evidence/c11-4-nested-depth-three-anonymous-image-runtime-2026-10-22/implementation-runtime-review-20.md)
+- [최종 PR diff 실패 관점 30개](../spec/internal/evidence/c11-4-nested-depth-three-anonymous-image-runtime-2026-10-22/pr-diff-review-30.md)

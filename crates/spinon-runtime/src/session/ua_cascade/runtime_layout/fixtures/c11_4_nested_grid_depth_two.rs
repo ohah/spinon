@@ -11,8 +11,8 @@ use spinon_style::{
 
 use super::super::{RuntimeLayoutFailure, layout_failure};
 
-const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
-const AHEM_TEXT: &str = "XX XXXXXXX";
+pub(super) const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
+pub(super) const AHEM_TEXT: &str = "XX XXXXXXX";
 
 #[derive(Clone, Copy)]
 struct Scene {
@@ -358,7 +358,7 @@ fn validate_text_style(style: &ComputedElementStyle) -> Result<(), RuntimeLayout
     Ok(())
 }
 
-fn element_identity(
+pub(super) fn element_identity(
     snapshot: &HostDocumentSnapshot,
     handle: HostNodeHandle,
 ) -> Result<(String, String), RuntimeLayoutFailure> {
@@ -382,7 +382,7 @@ fn element_identity(
     Ok((element.local_name().to_owned(), id))
 }
 
-fn has_empty_attribute(
+pub(super) fn has_empty_attribute(
     snapshot: &HostDocumentSnapshot,
     handle: HostNodeHandle,
     attribute_name: &str,
@@ -400,7 +400,7 @@ fn has_empty_attribute(
     })
 }
 
-fn children(
+pub(super) fn children(
     snapshot: &HostDocumentSnapshot,
     node: HostNodeHandle,
 ) -> Result<Vec<HostNodeHandle>, RuntimeLayoutFailure> {
@@ -410,7 +410,7 @@ fn children(
         .ok_or_else(|| layout_failure("missing_node", Some(node.id().get()), None))
 }
 
-fn style_for(
+pub(super) fn style_for(
     styles: &ComputedStyleSnapshot,
     node_id: NodeId,
 ) -> Result<&ComputedElementStyle, RuntimeLayoutFailure> {

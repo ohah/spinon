@@ -587,6 +587,61 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_anonymous_
     text_engine: &TextLayoutEngine,
     intrinsic_sizes: LayoutIntrinsicSizeSnapshot,
 ) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    compute_runtime_block_flex_grid_track_sizing_style_layout_with_anonymous_text_and_intrinsic_sizes_and_options(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        C11_4AnonymousGridTextProjectionInput {
+            paragraph_styles,
+            text_engine,
+            intrinsic_sizes,
+            allow_two_axis_nested_grid: false,
+        },
+    )
+}
+
+/// C11.4 depth-three 고정 fixture에서 anonymous text/image와 양 축 intrinsic sizing을 함께 연결합니다.
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_anonymous_text_and_intrinsic_sizes_and_two_axis_nested_grid(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
+    text_engine: &TextLayoutEngine,
+    intrinsic_sizes: LayoutIntrinsicSizeSnapshot,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    compute_runtime_block_flex_grid_track_sizing_style_layout_with_anonymous_text_and_intrinsic_sizes_and_options(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        C11_4AnonymousGridTextProjectionInput {
+            paragraph_styles,
+            text_engine,
+            intrinsic_sizes,
+            allow_two_axis_nested_grid: true,
+        },
+    )
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+struct C11_4AnonymousGridTextProjectionInput<'a> {
+    paragraph_styles: &'a BTreeMap<NodeId, ParagraphStyle>,
+    text_engine: &'a TextLayoutEngine,
+    intrinsic_sizes: LayoutIntrinsicSizeSnapshot,
+    allow_two_axis_nested_grid: bool,
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_anonymous_text_and_intrinsic_sizes_and_options(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    projection_input: C11_4AnonymousGridTextProjectionInput<'_>,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
     if computed_styles.profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
         return Err(StyleLayoutError::UnsupportedProfile {
             profile: format!("{:?}", computed_styles.profile),
@@ -601,14 +656,19 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_anonymous_
         root,
         computed_styles,
         viewport,
-        Some(intrinsic_sizes),
-        Some((paragraph_styles, &inline_run_styles, text_engine)),
+        Some(projection_input.intrinsic_sizes),
+        Some((
+            projection_input.paragraph_styles,
+            &inline_run_styles,
+            projection_input.text_engine,
+        )),
         StyleLayoutProjectionOptions {
             reject_cascade_diagnostics: true,
             allow_implicit_named_lines: false,
             allow_c11_4_anonymous_grid_text_items: true,
             blockify_c11_4_anonymous_grid_images: true,
-            allow_c11_4_nested_grid_two_axis_intrinsics: false,
+            allow_c11_4_nested_grid_two_axis_intrinsics: projection_input
+                .allow_two_axis_nested_grid,
         },
     )
 }

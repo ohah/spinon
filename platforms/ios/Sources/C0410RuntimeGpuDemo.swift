@@ -133,6 +133,10 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "nested-depth-one-min-content-two-axis", "nested-depth-two-min-content-two-axis",
     "nested-depth-one-max-content-two-axis", "nested-depth-two-max-content-two-axis",
     "nested-depth-three-min-content-two-axis", "nested-depth-three-max-content-two-axis",
+    "depth-three-min-content-text-before-image",
+    "depth-three-min-content-image-before-text",
+    "depth-three-max-content-text-before-image",
+    "depth-three-max-content-image-before-text",
 ]
 private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -201,6 +205,9 @@ private func c114NegativeTrackExpectation(_ sceneID: String) -> C114NegativeTrac
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if c114IsNestedGridDepthAnonymousImageScene(sceneID) {
+        return sceneID.contains("-min-content-") ? "width=94,height=20" : "width=124,height=16"
+    }
     if sceneID == "nested-depth-one-min-content"
         || sceneID == "nested-depth-two-min-content"
         || sceneID == "nested-depth-three-min-content" { return "width=70,height=20" }
@@ -339,7 +346,8 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         "nested-grid-implicit-row-span-two", "nested-grid-implicit-row-one-row"]
         .contains(sceneID) { return "" }
     if sceneID.hasPrefix("nested-depth-one-") || sceneID.hasPrefix("nested-depth-two-")
-        || sceneID.hasPrefix("nested-depth-three-") {
+        || sceneID.hasPrefix("nested-depth-three-")
+        || c114IsNestedGridDepthAnonymousImageScene(sceneID) {
         return ""
     }
     if c114IsAnonymousTextScene(sceneID) || c114IsAnonymousTextImageScene(sceneID)
@@ -814,7 +822,22 @@ private func c114ExpectedAnonymousTextImageInputs(_ sceneID: String, report: Str
     let kinds: [String]
     let textMetrics: [[Double]?]
     let textSources: [[(Int, String)]]
+    var expectedGrid = 1
     switch sceneID {
+    case "depth-three-min-content-text-before-image",
+         "depth-three-max-content-text-before-image":
+        expectedGrid = 4
+        nodes = [6, 5]
+        kinds = ["text", "replaced"]
+        textMetrics = [[70, 20, 100, 10], nil]
+        textSources = [[(6, "XX XXXXXXX")], []]
+    case "depth-three-min-content-image-before-text",
+         "depth-three-max-content-image-before-text":
+        expectedGrid = 4
+        nodes = [5, 6]
+        kinds = ["replaced", "text"]
+        textMetrics = [nil, [70, 20, 100, 10]]
+        textSources = [[], [(6, "XX XXXXXXX")]]
     case "anonymous-text-image-text":
         nodes = [2, 3, 4]
         kinds = ["text", "replaced", "text"]
@@ -849,7 +872,7 @@ private func c114ExpectedAnonymousTextImageInputs(_ sceneID: String, report: Str
           let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
           inputs.count == nodes.count else { return false }
     for (index, input) in inputs.enumerated() {
-        guard (input["grid"] as? Int) == 1,
+        guard (input["grid"] as? Int) == expectedGrid,
               (input["node"] as? Int) == nodes[index],
               (input["sourceOrder"] as? Int) == index,
               let source = input["source"] as? [String: Any],
@@ -1437,6 +1460,19 @@ private func c114ImageTrackPassMatches(
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if c114IsNestedGridDepthAnonymousImageScene(sceneID) {
+        let minContent = sceneID.contains("-min-content-")
+        let imageBeforeText = sceneID.contains("-image-before-text")
+        let width = minContent ? 94 : 124
+        let height = minContent ? 20 : 16
+        let textWidth = minContent ? 70 : 100
+        let imageX = imageBeforeText ? 0 : textWidth
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=\(width),height=\(height);"
+            + "1:node=2,x=0,y=0,width=\(width),height=\(height);"
+            + "2:node=3,x=0,y=0,width=\(width),height=\(height);"
+            + "3:node=4,x=0,y=0,width=\(width),height=\(height);"
+            + "4:node=5,x=\(imageX),y=0,width=24,height=16]"
+    }
     switch sceneID {
     case "nested-depth-one-min-content":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=70,height=20;"
@@ -1914,6 +1950,7 @@ private func c114GapNodeFrames(
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if c114IsNestedGridDepthAnonymousImageScene(sceneID) { return 5 }
     if sceneID == "nested-depth-one-min-content"
         || sceneID == "nested-depth-one-max-content" { return 3 }
     if sceneID == "nested-depth-two-min-content"
@@ -1993,9 +2030,17 @@ private func c114IsAnonymousTextScene(_ sceneID: String) -> Bool {
 }
 
 private func c114IsAnonymousTextImageScene(_ sceneID: String) -> Bool {
-    ["anonymous-text-image-text", "image-before-comment-group",
+    c114IsNestedGridDepthAnonymousImageScene(sceneID)
+        || ["anonymous-text-image-text", "image-before-comment-group",
      "comment-group-before-image", "whitespace-around-image",
      "hidden-child-around-image"].contains(sceneID)
+}
+
+private func c114IsNestedGridDepthAnonymousImageScene(_ sceneID: String) -> Bool {
+    ["depth-three-min-content-text-before-image",
+     "depth-three-min-content-image-before-text",
+     "depth-three-max-content-text-before-image",
+     "depth-three-max-content-image-before-text"].contains(sceneID)
 }
 
 private func c114IsAnonymousTextMultiImageScene(_ sceneID: String) -> Bool {

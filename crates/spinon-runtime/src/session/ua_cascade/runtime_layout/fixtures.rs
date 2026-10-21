@@ -20,6 +20,10 @@ mod c11_4_nested_grid_intrinsic;
 mod c11_4_nested_grid_depth_two;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "fixtures/c11_4_nested_grid_depth_three_anonymous_image.rs"]
+mod c11_4_nested_grid_depth_three_anonymous_image;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "fixtures/c11_4_nested_grid_replaced_item.rs"]
 mod c11_4_nested_grid_replaced_item;
 
@@ -81,10 +85,20 @@ pub(super) struct C11_4MixedInput {
 }
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) struct C11_4NestedAnonymousImageInput {
+    pub(super) paragraph_styles: BTreeMap<NodeId, ParagraphStyle>,
+    pub(super) engine: TextLayoutEngine,
+    pub(super) intrinsic_sizes: spinon_layout::LayoutIntrinsicSizeSnapshot,
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub(super) use c11_4_mixed::prepare as prepare_c11_4_mixed;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub(super) use c11_4_nested_grid_replaced_item::prepare as prepare_c11_4_nested_grid_replaced_item;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) use c11_4_nested_grid_depth_three_anonymous_image::prepare as prepare_c11_4_nested_grid_depth_three_anonymous_image;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub(super) use c11_4_anonymous_text::prepare as prepare_c11_4_anonymous_text;
