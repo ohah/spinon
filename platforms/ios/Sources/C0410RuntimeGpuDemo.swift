@@ -15,6 +15,7 @@ private let c1133GridTemplateAreasSceneIDs: Set<String> = [
     "unknown-area-fixed-implicit-tracks",
 ]
 private let c114GridTrackSizingSceneIDs: Set<String> = [
+    "cyclic-percent-column", "cyclic-percent-row", "definite-percent-column",
     "auto-fixed-width-item", "minmax-auto-fixed-width-item",
     "fit-content-below-item-size", "spanning-auto-tracks",
     "spanning-auto-min-flex-tracks",
@@ -207,6 +208,10 @@ private func c114NegativeTrackExpectation(_ sceneID: String) -> C114NegativeTrac
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if sceneID == "cyclic-percent-column" || sceneID == "cyclic-percent-row" {
+        return "width=24,height=16"
+    }
+    if sceneID == "definite-percent-column" { return "width=40,height=16" }
     if sceneID.hasPrefix("nested-text-span") {
         return sceneID.contains("before-span3") || sceneID.contains("span3-before-span2")
             ? "width=180,height=60" : "width=95,height=60"
@@ -343,6 +348,8 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if sceneID == "cyclic-percent-column" || sceneID == "cyclic-percent-row"
+        || sceneID == "definite-percent-column" { return "width=24,height=16" }
     if ["nested-grid-span-two", "nested-grid-one-track",
         "nested-grid-definite-flex-control", "nested-grid-text-image-span-two",
         "nested-grid-text-image-one-track",
@@ -1485,6 +1492,12 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "4:node=5,x=\(imageX),y=0,width=24,height=16]"
     }
     switch sceneID {
+    case "cyclic-percent-column", "cyclic-percent-row":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;"
+            + "1:node=2,x=0,y=0,width=24,height=16]"
+    case "definite-percent-column":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=16;"
+            + "1:node=2,x=0,y=0,width=24,height=16]"
     case "nested-depth-one-min-content":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=70,height=20;"
             + "1:node=2,x=0,y=0,width=70,height=20;"
@@ -2090,6 +2103,8 @@ private func c114GapNodeFrames(
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if sceneID == "cyclic-percent-column" || sceneID == "cyclic-percent-row"
+        || sceneID == "definite-percent-column" { return 2 }
     if sceneID.hasPrefix("nested-text-span") {
         return sceneID.contains("before-span3") || sceneID.contains("span3-before-span2")
             ? 7 : 6
@@ -2555,6 +2570,24 @@ private struct C111MetalPixelRun {
     ) -> Bool {
         let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])]
         switch sceneID {
+        case "cyclic-percent-column":
+            let itemID = "c114-\(sceneID)-item"
+            expectedSamples = [
+                ("cyclic-column-inside-track", itemID, 11, 8, [229, 72, 77, 255]),
+                ("cyclic-column-past-track", itemID, 12, 8, [229, 72, 77, 255]),
+            ]
+        case "cyclic-percent-row":
+            let itemID = "c114-\(sceneID)-item"
+            expectedSamples = [
+                ("cyclic-row-inside-track", itemID, 12, 7, [229, 72, 77, 255]),
+                ("cyclic-row-past-track", itemID, 12, 8, [229, 72, 77, 255]),
+            ]
+        case "definite-percent-column":
+            let itemID = "c114-\(sceneID)-item"
+            expectedSamples = [
+                ("definite-column-inside-track", itemID, 19, 8, [229, 72, 77, 255]),
+                ("definite-column-past-track", itemID, 20, 8, [229, 72, 77, 255]),
+            ]
         case "nested-grid-definite-flex-control":
             let rootID = "c114-\(sceneID)-grid"
             let nestedID = "c114-\(sceneID)-nested"
