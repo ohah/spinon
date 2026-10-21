@@ -1,0 +1,53 @@
+{
+  "schema": "spinon.pr-image-agent-browser-verification.v1",
+  "pr": 437,
+  "commit": "bad7231a791210f4241ea2fd9f613cc818cbb6b6",
+  "page": "https://github.com/ohah/spinon/pull/437",
+  "verifiedAtUtc": "2026-10-21T08:59:36Z",
+  "browser": "agent-browser",
+  "images": [
+    {
+      "alt": "PR 436 병합 SHA가 보이는 Tailnet C11.4 계획",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/bad7231a791210f4241ea2fd9f613cc818cbb6b6/spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-plan-agent-browser-pass04.png",
+      "complete": true,
+      "naturalWidth": 1280,
+      "naturalHeight": 633
+    },
+    {
+      "alt": "Tailnet 실행 근거의 simulator 이미지",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/bad7231a791210f4241ea2fd9f613cc818cbb6b6/spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-simulator-images-agent-browser-pass04.png",
+      "complete": true,
+      "naturalWidth": 1280,
+      "naturalHeight": 633
+    },
+    {
+      "alt": "Android forward",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/382f821ef77e742f9c1404b5f79c386fe36cb71d/spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T083242895Z-3df1ac86/two-anonymous-runs-three-images-forward.png",
+      "complete": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    },
+    {
+      "alt": "iOS forward",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/382f821ef77e742f9c1404b5f79c386fe36cb71d/spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T083256735Z-5aeaa47a/two-anonymous-runs-three-images-forward.png",
+      "complete": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622
+    },
+    {
+      "alt": "Android reversed",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/382f821ef77e742f9c1404b5f79c386fe36cb71d/spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T083242895Z-3df1ac86/three-images-two-anonymous-runs-reversed.png",
+      "complete": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    },
+    {
+      "alt": "iOS reversed",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/382f821ef77e742f9c1404b5f79c386fe36cb71d/spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T083256735Z-5aeaa47a/three-images-two-anonymous-runs-reversed.png",
+      "complete": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622
+    }
+  ],
+  "allLoaded": true
+}
