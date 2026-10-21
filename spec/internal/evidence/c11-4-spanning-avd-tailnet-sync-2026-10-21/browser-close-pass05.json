@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "closeCommand": "agent-browser close --all",
+  "closedSessions": ["spinon-tailnet-pass05"],
+  "checkedAtUTC": "2026-10-21T09:36:34Z",
+  "remainingAgentBrowserProcesses": 0,
+  "remainingHeadlessChromeProcesses": 0
+}

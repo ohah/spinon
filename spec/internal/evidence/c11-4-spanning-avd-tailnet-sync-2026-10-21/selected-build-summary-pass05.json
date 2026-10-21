@@ -1,0 +1,27 @@
+{
+  "pass": "pass05",
+  "rspressVersion": "2.0.22",
+  "sourceHead": "44c18e61d2328753726cd120eeca3cff465a29a4",
+  "sourceTree": "66b5bd2726dfe5184ac17aad0355a787df1734e0",
+  "selectedRoot": "build/spinon/c11-4-spanning-avd-tailnet-root-pass05-selected",
+  "siteRoot": "build/spinon/c11-4-spanning-avd-tailnet-site-pass05",
+  "fileCount": 3220,
+  "bytesTotal": 151601371,
+  "siteTreeSha256": "a85d29e09605aabd4ae1d9c8f28009b3345ea8fb660593f04216433f0f5ae78c",
+  "requiredRoutes": [
+    "roadmap.html",
+    "STATUS.html",
+    "spec/STATUS.html",
+    "plan/c11-4-grid-track-sizing.html",
+    "internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/README.html",
+    "internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/pr-diff-review-30.html",
+    "internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/pr438-image-agent-browser.json",
+    "internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/spanning-auto-min-flex-tracks.png"
+  ],
+  "roadmapNotePresent": true,
+  "statusStill72of213": true,
+  "c114RemainsIncomplete": true,
+  "ahemGlyphAndOverflowPixelNotClaimed": true,
+  "noSymlinks": true,
+  "fullRepositoryDeadLinkCheck": false
+}

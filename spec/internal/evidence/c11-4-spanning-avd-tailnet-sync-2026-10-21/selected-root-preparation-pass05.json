@@ -1,0 +1,780 @@
+{
+  "pass": "pass05",
+  "sourceHead": "44c18e61d2328753726cd120eeca3cff465a29a4",
+  "sourceTree": "66b5bd2726dfe5184ac17aad0355a787df1734e0",
+  "baseCommit": "4592bd77c58c59547fc3c6740f6a8afa1e4ea7e2",
+  "baseRoot": "build/spinon/c11-4-anonymous-grid-border-overflow-tailnet-root-pass04-selected",
+  "selectedRoot": "build/spinon/c11-4-spanning-avd-tailnet-root-pass05-selected",
+  "baseFileCount": 5907,
+  "changedSourceCount": 38,
+  "copiedTargetCount": 109,
+  "selectedFileCount": 6012,
+  "selectedTreeSha256": "54e2690309eb83e1655a1918ebb7452a026321f6ebe5d331a15aeaf7bffc7d81",
+  "copiedFiles": [
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "target": "plan/c11-4-grid-track-sizing.md",
+      "action": "replace",
+      "bytes": 61816,
+      "sha256": "104b1f667edb733cfbbc7af372891b974dd2df2e9d2487f6c8c89d173a8b7555"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "target": "STATUS.md",
+      "action": "replace",
+      "bytes": 342678,
+      "sha256": "410846e42cc7df824b4de4b23d1a667525967ab13ecc6a15897ea574099e1843"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "target": "spec/STATUS.md",
+      "action": "replace",
+      "bytes": 342678,
+      "sha256": "410846e42cc7df824b4de4b23d1a667525967ab13ecc6a15897ea574099e1843"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/README-pass04.md",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/README-pass04.md",
+      "action": "create",
+      "bytes": 3777,
+      "sha256": "9375969f59a9c39de60aa17590c67219bfca58168011ba14b7bb6876728f37eb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/README-pass04.md",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/README-pass04.md",
+      "action": "create",
+      "bytes": 3777,
+      "sha256": "9375969f59a9c39de60aa17590c67219bfca58168011ba14b7bb6876728f37eb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/README-pass04.md",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/README-pass04.md",
+      "action": "create",
+      "bytes": 3777,
+      "sha256": "9375969f59a9c39de60aa17590c67219bfca58168011ba14b7bb6876728f37eb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/agent-browser-final-pass04.json",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/agent-browser-final-pass04.json",
+      "action": "create",
+      "bytes": 3923,
+      "sha256": "f3e6d33d2828f4686323401206e7ed1282534fa5733bf1704eb3754831767163"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/agent-browser-final-pass04.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/agent-browser-final-pass04.json",
+      "action": "create",
+      "bytes": 3923,
+      "sha256": "f3e6d33d2828f4686323401206e7ed1282534fa5733bf1704eb3754831767163"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/agent-browser-final-pass04.json",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/agent-browser-final-pass04.json",
+      "action": "create",
+      "bytes": 3923,
+      "sha256": "f3e6d33d2828f4686323401206e7ed1282534fa5733bf1704eb3754831767163"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/agent-browser-screenshot-sha256-pass04.txt",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/agent-browser-screenshot-sha256-pass04.txt",
+      "action": "create",
+      "bytes": 968,
+      "sha256": "07a03e6e4801bd8f2a9a34035ce6fe529db76f202dbf122b3ddbf15d983db4ff"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/agent-browser-screenshot-sha256-pass04.txt",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/agent-browser-screenshot-sha256-pass04.txt",
+      "action": "create",
+      "bytes": 968,
+      "sha256": "07a03e6e4801bd8f2a9a34035ce6fe529db76f202dbf122b3ddbf15d983db4ff"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/agent-browser-screenshot-sha256-pass04.txt",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/agent-browser-screenshot-sha256-pass04.txt",
+      "action": "create",
+      "bytes": 968,
+      "sha256": "07a03e6e4801bd8f2a9a34035ce6fe529db76f202dbf122b3ddbf15d983db4ff"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/browser-close-pass04.json",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/browser-close-pass04.json",
+      "action": "create",
+      "bytes": 216,
+      "sha256": "5de5464379dadff3ff3a68f3977aab786aad3eb43c254544e7edee48bc34bc29"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/browser-close-pass04.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/browser-close-pass04.json",
+      "action": "create",
+      "bytes": 216,
+      "sha256": "5de5464379dadff3ff3a68f3977aab786aad3eb43c254544e7edee48bc34bc29"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/browser-close-pass04.json",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/browser-close-pass04.json",
+      "action": "create",
+      "bytes": 216,
+      "sha256": "5de5464379dadff3ff3a68f3977aab786aad3eb43c254544e7edee48bc34bc29"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/copy-and-backup-pass04.json",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/copy-and-backup-pass04.json",
+      "action": "create",
+      "bytes": 1133331,
+      "sha256": "b7857312bd507c141d76acb5e86e93ccfca4fc7af546aa6ee04173c112f186f9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/copy-and-backup-pass04.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/copy-and-backup-pass04.json",
+      "action": "create",
+      "bytes": 1133331,
+      "sha256": "b7857312bd507c141d76acb5e86e93ccfca4fc7af546aa6ee04173c112f186f9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/copy-and-backup-pass04.json",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/copy-and-backup-pass04.json",
+      "action": "create",
+      "bytes": 1133331,
+      "sha256": "b7857312bd507c141d76acb5e86e93ccfca4fc7af546aa6ee04173c112f186f9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/local-verification-pass04.json",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/local-verification-pass04.json",
+      "action": "create",
+      "bytes": 1063981,
+      "sha256": "34726efff5dc1fd0dfdefb736e6ce85a22a2a25a97564d0ed6b47c1230422a29"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/local-verification-pass04.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/local-verification-pass04.json",
+      "action": "create",
+      "bytes": 1063981,
+      "sha256": "34726efff5dc1fd0dfdefb736e6ce85a22a2a25a97564d0ed6b47c1230422a29"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/local-verification-pass04.json",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/local-verification-pass04.json",
+      "action": "create",
+      "bytes": 1063981,
+      "sha256": "34726efff5dc1fd0dfdefb736e6ce85a22a2a25a97564d0ed6b47c1230422a29"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/pr-diff-review-30-pass04.md",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/pr-diff-review-30-pass04.md",
+      "action": "create",
+      "bytes": 6329,
+      "sha256": "883f701b12180f96da061b5a40b2aaa3bb80788a84dbf42c4dd9c680bb4d69cd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/pr-diff-review-30-pass04.md",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/pr-diff-review-30-pass04.md",
+      "action": "create",
+      "bytes": 6329,
+      "sha256": "883f701b12180f96da061b5a40b2aaa3bb80788a84dbf42c4dd9c680bb4d69cd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/pr-diff-review-30-pass04.md",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/pr-diff-review-30-pass04.md",
+      "action": "create",
+      "bytes": 6329,
+      "sha256": "883f701b12180f96da061b5a40b2aaa3bb80788a84dbf42c4dd9c680bb4d69cd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/pr437-image-agent-browser-verification.json",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/pr437-image-agent-browser-verification.json",
+      "action": "create",
+      "bytes": 2885,
+      "sha256": "151496361dc03934de18044e7b3c7da913148a27c6e6c9b63a977fed4c130945"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/pr437-image-agent-browser-verification.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/pr437-image-agent-browser-verification.json",
+      "action": "create",
+      "bytes": 2885,
+      "sha256": "151496361dc03934de18044e7b3c7da913148a27c6e6c9b63a977fed4c130945"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/pr437-image-agent-browser-verification.json",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/pr437-image-agent-browser-verification.json",
+      "action": "create",
+      "bytes": 2885,
+      "sha256": "151496361dc03934de18044e7b3c7da913148a27c6e6c9b63a977fed4c130945"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/preflight-pass04.json",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/preflight-pass04.json",
+      "action": "create",
+      "bytes": 1592504,
+      "sha256": "583a8ea8fb95d423ac516a75ad3887faec013e8a12d73041f57fddafdfc46f60"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/preflight-pass04.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/preflight-pass04.json",
+      "action": "create",
+      "bytes": 1592504,
+      "sha256": "583a8ea8fb95d423ac516a75ad3887faec013e8a12d73041f57fddafdfc46f60"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/preflight-pass04.json",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/preflight-pass04.json",
+      "action": "create",
+      "bytes": 1592504,
+      "sha256": "583a8ea8fb95d423ac516a75ad3887faec013e8a12d73041f57fddafdfc46f60"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/prepare-selected-root-pass04.mjs",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/prepare-selected-root-pass04.mjs",
+      "action": "create",
+      "bytes": 5716,
+      "sha256": "1fcf99ab314187048943c58d8935404f14da0ba824b0221fb64e8de36121460b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/prepare-selected-root-pass04.mjs",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/prepare-selected-root-pass04.mjs",
+      "action": "create",
+      "bytes": 5716,
+      "sha256": "1fcf99ab314187048943c58d8935404f14da0ba824b0221fb64e8de36121460b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/prepare-selected-root-pass04.mjs",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/prepare-selected-root-pass04.mjs",
+      "action": "create",
+      "bytes": 5716,
+      "sha256": "1fcf99ab314187048943c58d8935404f14da0ba824b0221fb64e8de36121460b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/selected-build-pass04.log",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/selected-build-pass04.log",
+      "action": "create",
+      "bytes": 83429,
+      "sha256": "ca9e6cca6c0942f57e9005714b5917fe80a6716e33299e04376dfcf4f973177c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/selected-build-pass04.log",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/selected-build-pass04.log",
+      "action": "create",
+      "bytes": 83429,
+      "sha256": "ca9e6cca6c0942f57e9005714b5917fe80a6716e33299e04376dfcf4f973177c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/selected-build-pass04.log",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/selected-build-pass04.log",
+      "action": "create",
+      "bytes": 83429,
+      "sha256": "ca9e6cca6c0942f57e9005714b5917fe80a6716e33299e04376dfcf4f973177c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/selected-build-summary-pass04.json",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/selected-build-summary-pass04.json",
+      "action": "create",
+      "bytes": 2851,
+      "sha256": "95bce2e3e3cebb8cfecadf662a56e99aefa705bd5078770fdb634b3bb1858ff0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/selected-build-summary-pass04.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/selected-build-summary-pass04.json",
+      "action": "create",
+      "bytes": 2851,
+      "sha256": "95bce2e3e3cebb8cfecadf662a56e99aefa705bd5078770fdb634b3bb1858ff0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/selected-build-summary-pass04.json",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/selected-build-summary-pass04.json",
+      "action": "create",
+      "bytes": 2851,
+      "sha256": "95bce2e3e3cebb8cfecadf662a56e99aefa705bd5078770fdb634b3bb1858ff0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/selected-root-preparation-pass04.json",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/selected-root-preparation-pass04.json",
+      "action": "create",
+      "bytes": 327242,
+      "sha256": "35e9a122a7b07044d1ba0743cc11d22f1578e081c0ba55d1d3d994d9d909a6d2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/selected-root-preparation-pass04.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/selected-root-preparation-pass04.json",
+      "action": "create",
+      "bytes": 327242,
+      "sha256": "35e9a122a7b07044d1ba0743cc11d22f1578e081c0ba55d1d3d994d9d909a6d2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/selected-root-preparation-pass04.json",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/selected-root-preparation-pass04.json",
+      "action": "create",
+      "bytes": 327242,
+      "sha256": "35e9a122a7b07044d1ba0743cc11d22f1578e081c0ba55d1d3d994d9d909a6d2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/served-verification-pass04.json",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/served-verification-pass04.json",
+      "action": "create",
+      "bytes": 2098411,
+      "sha256": "81b326993a4fb0a62f85c032242d289907eb5d3b4d50860867f9722ff3a15a72"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/served-verification-pass04.json",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/served-verification-pass04.json",
+      "action": "create",
+      "bytes": 2098411,
+      "sha256": "81b326993a4fb0a62f85c032242d289907eb5d3b4d50860867f9722ff3a15a72"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/served-verification-pass04.json",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/served-verification-pass04.json",
+      "action": "create",
+      "bytes": 2098411,
+      "sha256": "81b326993a4fb0a62f85c032242d289907eb5d3b4d50860867f9722ff3a15a72"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/summarize-selected-build-pass04.mjs",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/summarize-selected-build-pass04.mjs",
+      "action": "create",
+      "bytes": 6590,
+      "sha256": "8ac695fb749d77733843cd450666ef8af9043c4683d2b6cfaf69c957ab2019cd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/summarize-selected-build-pass04.mjs",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/summarize-selected-build-pass04.mjs",
+      "action": "create",
+      "bytes": 6590,
+      "sha256": "8ac695fb749d77733843cd450666ef8af9043c4683d2b6cfaf69c957ab2019cd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/summarize-selected-build-pass04.mjs",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/summarize-selected-build-pass04.mjs",
+      "action": "create",
+      "bytes": 6590,
+      "sha256": "8ac695fb749d77733843cd450666ef8af9043c4683d2b6cfaf69c957ab2019cd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/sync-tailnet-pass04.mjs",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/sync-tailnet-pass04.mjs",
+      "action": "create",
+      "bytes": 13322,
+      "sha256": "66ff28a58acc669db4a47659535ef83a8b3cdfb5bee7dd69d89d27700eeb7424"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/sync-tailnet-pass04.mjs",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/sync-tailnet-pass04.mjs",
+      "action": "create",
+      "bytes": 13322,
+      "sha256": "66ff28a58acc669db4a47659535ef83a8b3cdfb5bee7dd69d89d27700eeb7424"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/sync-tailnet-pass04.mjs",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/sync-tailnet-pass04.mjs",
+      "action": "create",
+      "bytes": 13322,
+      "sha256": "66ff28a58acc669db4a47659535ef83a8b3cdfb5bee7dd69d89d27700eeb7424"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-evidence-readme-agent-browser-pass04.png",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-evidence-readme-agent-browser-pass04.png",
+      "action": "create",
+      "bytes": 121098,
+      "sha256": "bf923ad9cbb0c39d51744b4e0d423d3b4d57373fc6e7fc7b07541613efdb745e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-evidence-readme-agent-browser-pass04.png",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-evidence-readme-agent-browser-pass04.png",
+      "action": "create",
+      "bytes": 121098,
+      "sha256": "bf923ad9cbb0c39d51744b4e0d423d3b4d57373fc6e7fc7b07541613efdb745e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-evidence-readme-agent-browser-pass04.png",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-evidence-readme-agent-browser-pass04.png",
+      "action": "create",
+      "bytes": 121098,
+      "sha256": "bf923ad9cbb0c39d51744b4e0d423d3b4d57373fc6e7fc7b07541613efdb745e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-plan-agent-browser-pass04.png",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-plan-agent-browser-pass04.png",
+      "action": "create",
+      "bytes": 163336,
+      "sha256": "1b53b10832b56902dc8e5e14adafc6e6aad284e8750548949bd7c3f783e8206c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-plan-agent-browser-pass04.png",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-plan-agent-browser-pass04.png",
+      "action": "create",
+      "bytes": 163336,
+      "sha256": "1b53b10832b56902dc8e5e14adafc6e6aad284e8750548949bd7c3f783e8206c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-plan-agent-browser-pass04.png",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-plan-agent-browser-pass04.png",
+      "action": "create",
+      "bytes": 163336,
+      "sha256": "1b53b10832b56902dc8e5e14adafc6e6aad284e8750548949bd7c3f783e8206c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-roadmap-agent-browser-pass04.png",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-roadmap-agent-browser-pass04.png",
+      "action": "create",
+      "bytes": 229479,
+      "sha256": "2dfcf2c6d40b7bfd8d2b1a0ac960f21d4df51dc37acb6bd52d24ee2a40b8bb5e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-roadmap-agent-browser-pass04.png",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-roadmap-agent-browser-pass04.png",
+      "action": "create",
+      "bytes": 229479,
+      "sha256": "2dfcf2c6d40b7bfd8d2b1a0ac960f21d4df51dc37acb6bd52d24ee2a40b8bb5e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-roadmap-agent-browser-pass04.png",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-roadmap-agent-browser-pass04.png",
+      "action": "create",
+      "bytes": 229479,
+      "sha256": "2dfcf2c6d40b7bfd8d2b1a0ac960f21d4df51dc37acb6bd52d24ee2a40b8bb5e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-simulator-images-agent-browser-pass04.png",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-simulator-images-agent-browser-pass04.png",
+      "action": "create",
+      "bytes": 106935,
+      "sha256": "bc57711b29f5605547bfbd0b7638c81386e92b4978f9e7e9f303c25464b54ceb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-simulator-images-agent-browser-pass04.png",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-simulator-images-agent-browser-pass04.png",
+      "action": "create",
+      "bytes": 106935,
+      "sha256": "bc57711b29f5605547bfbd0b7638c81386e92b4978f9e7e9f303c25464b54ceb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-simulator-images-agent-browser-pass04.png",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-simulator-images-agent-browser-pass04.png",
+      "action": "create",
+      "bytes": 106935,
+      "sha256": "bc57711b29f5605547bfbd0b7638c81386e92b4978f9e7e9f303c25464b54ceb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-status-agent-browser-pass04.png",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-status-agent-browser-pass04.png",
+      "action": "create",
+      "bytes": 162292,
+      "sha256": "fbc7e89fe96d3402380ba9544be31a90b88a08b8938a6f3633fccc8f4cfa6ff1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-status-agent-browser-pass04.png",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-status-agent-browser-pass04.png",
+      "action": "create",
+      "bytes": 162292,
+      "sha256": "fbc7e89fe96d3402380ba9544be31a90b88a08b8938a6f3633fccc8f4cfa6ff1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-status-agent-browser-pass04.png",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/tailnet-status-agent-browser-pass04.png",
+      "action": "create",
+      "bytes": 162292,
+      "sha256": "fbc7e89fe96d3402380ba9544be31a90b88a08b8938a6f3633fccc8f4cfa6ff1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/verify-tailnet-pass04.mjs",
+      "target": "internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/verify-tailnet-pass04.mjs",
+      "action": "create",
+      "bytes": 3142,
+      "sha256": "f61c70a027237b97f50826a0d252ea46f86d0c5608e8fd7d6f625b251c49cbe6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/verify-tailnet-pass04.mjs",
+      "target": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/verify-tailnet-pass04.mjs",
+      "action": "create",
+      "bytes": 3142,
+      "sha256": "f61c70a027237b97f50826a0d252ea46f86d0c5608e8fd7d6f625b251c49cbe6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/verify-tailnet-pass04.mjs",
+      "target": "public/internal/evidence/c11-4-anonymous-grid-border-overflow-tailnet-sync-2026-10-21/verify-tailnet-pass04.mjs",
+      "action": "create",
+      "bytes": 3142,
+      "sha256": "f61c70a027237b97f50826a0d252ea46f86d0c5608e8fd7d6f625b251c49cbe6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/README.md",
+      "target": "internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/README.md",
+      "action": "create",
+      "bytes": 3104,
+      "sha256": "debee4b19597fa449c0915963970954ce58cebc2462fcafe970ec5988dec87f6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/README.md",
+      "target": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/README.md",
+      "action": "create",
+      "bytes": 3104,
+      "sha256": "debee4b19597fa449c0915963970954ce58cebc2462fcafe970ec5988dec87f6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/README.md",
+      "target": "public/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/README.md",
+      "action": "create",
+      "bytes": 3104,
+      "sha256": "debee4b19597fa449c0915963970954ce58cebc2462fcafe970ec5988dec87f6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/SHA256SUMS.txt",
+      "target": "internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/SHA256SUMS.txt",
+      "action": "create",
+      "bytes": 1757,
+      "sha256": "a46d9cdcc72486e70134cec0f70cf190b1d6ce0bf7a79b7143863fc62c851ae1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/SHA256SUMS.txt",
+      "target": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/SHA256SUMS.txt",
+      "action": "create",
+      "bytes": 1757,
+      "sha256": "a46d9cdcc72486e70134cec0f70cf190b1d6ce0bf7a79b7143863fc62c851ae1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/SHA256SUMS.txt",
+      "target": "public/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/SHA256SUMS.txt",
+      "action": "create",
+      "bytes": 1757,
+      "sha256": "a46d9cdcc72486e70134cec0f70cf190b1d6ce0bf7a79b7143863fc62c851ae1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/install.log",
+      "target": "internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/install.log",
+      "action": "create",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/install.log",
+      "target": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/install.log",
+      "action": "create",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/install.log",
+      "target": "public/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/install.log",
+      "action": "create",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/installed-apk-verification.json",
+      "target": "internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/installed-apk-verification.json",
+      "action": "create",
+      "bytes": 360,
+      "sha256": "9cb2b377734fc4ff8b04d2f7a96381f266887381de8fbc7f6ac8861f8afec39d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/installed-apk-verification.json",
+      "target": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/installed-apk-verification.json",
+      "action": "create",
+      "bytes": 360,
+      "sha256": "9cb2b377734fc4ff8b04d2f7a96381f266887381de8fbc7f6ac8861f8afec39d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/installed-apk-verification.json",
+      "target": "public/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/installed-apk-verification.json",
+      "action": "create",
+      "bytes": 360,
+      "sha256": "9cb2b377734fc4ff8b04d2f7a96381f266887381de8fbc7f6ac8861f8afec39d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/launch-spanning-auto-min-flex-tracks.log",
+      "target": "internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/launch-spanning-auto-min-flex-tracks.log",
+      "action": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/launch-spanning-auto-min-flex-tracks.log",
+      "target": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/launch-spanning-auto-min-flex-tracks.log",
+      "action": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/launch-spanning-auto-min-flex-tracks.log",
+      "target": "public/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/launch-spanning-auto-min-flex-tracks.log",
+      "action": "create",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/result.json",
+      "target": "internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/result.json",
+      "action": "create",
+      "bytes": 1328,
+      "sha256": "cd80663c0977392b527cf614cd15fb5351f785102a346ee2e981b165f0981970"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/result.json",
+      "target": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/result.json",
+      "action": "create",
+      "bytes": 1328,
+      "sha256": "cd80663c0977392b527cf614cd15fb5351f785102a346ee2e981b165f0981970"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/result.json",
+      "target": "public/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/result.json",
+      "action": "create",
+      "bytes": 1328,
+      "sha256": "cd80663c0977392b527cf614cd15fb5351f785102a346ee2e981b165f0981970"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/runtime-spanning-auto-min-flex-tracks.log",
+      "target": "internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/runtime-spanning-auto-min-flex-tracks.log",
+      "action": "create",
+      "bytes": 23247,
+      "sha256": "e8f15abcc2e2d18036fe2b384d8866f3046eecff234b32e874a2201d5b55802e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/runtime-spanning-auto-min-flex-tracks.log",
+      "target": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/runtime-spanning-auto-min-flex-tracks.log",
+      "action": "create",
+      "bytes": 23247,
+      "sha256": "e8f15abcc2e2d18036fe2b384d8866f3046eecff234b32e874a2201d5b55802e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/runtime-spanning-auto-min-flex-tracks.log",
+      "target": "public/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/runtime-spanning-auto-min-flex-tracks.log",
+      "action": "create",
+      "bytes": 23247,
+      "sha256": "e8f15abcc2e2d18036fe2b384d8866f3046eecff234b32e874a2201d5b55802e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/simulator.json",
+      "target": "internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/simulator.json",
+      "action": "create",
+      "bytes": 422,
+      "sha256": "09c764e8f8e38ecf9dd8f3910cd953a64b5233f86982481df16b8e0509fbb10a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/simulator.json",
+      "target": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/simulator.json",
+      "action": "create",
+      "bytes": 422,
+      "sha256": "09c764e8f8e38ecf9dd8f3910cd953a64b5233f86982481df16b8e0509fbb10a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/simulator.json",
+      "target": "public/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/simulator.json",
+      "action": "create",
+      "bytes": 422,
+      "sha256": "09c764e8f8e38ecf9dd8f3910cd953a64b5233f86982481df16b8e0509fbb10a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/spanning-auto-min-flex-tracks.png",
+      "target": "internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/spanning-auto-min-flex-tracks.png",
+      "action": "create",
+      "bytes": 77584,
+      "sha256": "8d127bd3b71da6b0500390d34972b018d0d91d3c63606fe6fa53cb6bc273ce21"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/spanning-auto-min-flex-tracks.png",
+      "target": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/spanning-auto-min-flex-tracks.png",
+      "action": "create",
+      "bytes": 77584,
+      "sha256": "8d127bd3b71da6b0500390d34972b018d0d91d3c63606fe6fa53cb6bc273ce21"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/spanning-auto-min-flex-tracks.png",
+      "target": "public/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/android-avd-c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba/spanning-auto-min-flex-tracks.png",
+      "action": "create",
+      "bytes": 77584,
+      "sha256": "8d127bd3b71da6b0500390d34972b018d0d91d3c63606fe6fa53cb6bc273ce21"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/browser-close.json",
+      "target": "internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/browser-close.json",
+      "action": "create",
+      "bytes": 232,
+      "sha256": "5d53e953e52157e89bd3f42b4449007ef34530ad4a56e860089ced308fe92d23"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/browser-close.json",
+      "target": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/browser-close.json",
+      "action": "create",
+      "bytes": 232,
+      "sha256": "5d53e953e52157e89bd3f42b4449007ef34530ad4a56e860089ced308fe92d23"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/browser-close.json",
+      "target": "public/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/browser-close.json",
+      "action": "create",
+      "bytes": 232,
+      "sha256": "5d53e953e52157e89bd3f42b4449007ef34530ad4a56e860089ced308fe92d23"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/pr-diff-review-30.md",
+      "target": "internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/pr-diff-review-30.md",
+      "action": "create",
+      "bytes": 5737,
+      "sha256": "88418ffff370ac18c81debed44f120309332628ada1f3b638448ef28f731934c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/pr-diff-review-30.md",
+      "target": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/pr-diff-review-30.md",
+      "action": "create",
+      "bytes": 5737,
+      "sha256": "88418ffff370ac18c81debed44f120309332628ada1f3b638448ef28f731934c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/pr-diff-review-30.md",
+      "target": "public/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/pr-diff-review-30.md",
+      "action": "create",
+      "bytes": 5737,
+      "sha256": "88418ffff370ac18c81debed44f120309332628ada1f3b638448ef28f731934c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/pr438-image-agent-browser.json",
+      "target": "internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/pr438-image-agent-browser.json",
+      "action": "create",
+      "bytes": 787,
+      "sha256": "1a6ff54832335d011b515cfb7dd1f9bf28119abae326caef462935d8b4e4c064"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/pr438-image-agent-browser.json",
+      "target": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/pr438-image-agent-browser.json",
+      "action": "create",
+      "bytes": 787,
+      "sha256": "1a6ff54832335d011b515cfb7dd1f9bf28119abae326caef462935d8b4e4c064"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/pr438-image-agent-browser.json",
+      "target": "public/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/pr438-image-agent-browser.json",
+      "action": "create",
+      "bytes": 787,
+      "sha256": "1a6ff54832335d011b515cfb7dd1f9bf28119abae326caef462935d8b4e4c064"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/source-revision.json",
+      "target": "internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/source-revision.json",
+      "action": "create",
+      "bytes": 1057,
+      "sha256": "291b529d7aecee573217abad9669c7e0e0533aaa9ef711f8add3312cc6327886"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/source-revision.json",
+      "target": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/source-revision.json",
+      "action": "create",
+      "bytes": 1057,
+      "sha256": "291b529d7aecee573217abad9669c7e0e0533aaa9ef711f8add3312cc6327886"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/source-revision.json",
+      "target": "public/internal/evidence/c11-4-spanning-auto-min-flex-avd-recheck-2026-10-21/source-revision.json",
+      "action": "create",
+      "bytes": 1057,
+      "sha256": "291b529d7aecee573217abad9669c7e0e0533aaa9ef711f8add3312cc6327886"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "target": "public/roadmap.html",
+      "action": "replace",
+      "bytes": 190358,
+      "sha256": "c3bd5e5e7f1931996ea97915b2a22c653595c10209e15c1ac99f0861ccef84c8"
+    }
+  ],
+  "noPreviewWrites": true,
+  "noDeletes": true
+}
