@@ -1,0 +1,21 @@
+{
+  "selectedRoot": "build/spinon/c11-4-spanning-text-tailnet-sync-root-pass35-selected",
+  "previousRoot": "build/spinon/c11-4-spanning-text-tailnet-sync-root-pass34-selected",
+  "sourceHead": "4eaab3fa1af53b6511ded4bdb121e733af25121f",
+  "sourceTree": "5115c93a6d63610b6696c552df4d7538d8c0de82",
+  "statusCopies": [
+    "STATUS.md",
+    "spec/STATUS.md"
+  ],
+  "roadmap": "public/roadmap.html",
+  "plans": [
+    "plan/c11-4-grid-track-sizing.md",
+    "plan/c11-4-image-multispan-contributions.md"
+  ],
+  "evidenceName": "c11-4-spanning-auto-min-flex-text-2026-10-21",
+  "evidenceCopies": 3,
+  "existingEvidenceVerified": "c11-4-full-matrix-physical-android-2026-10-21",
+  "resumedExistingRoot": false,
+  "cloneMethod": "cp -cR APFS clone plus full SHA-256 comparison",
+  "noPreviewWrites": true
+}

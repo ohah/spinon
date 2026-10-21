@@ -1,0 +1,23 @@
+{
+  "browser": "Agent Browser",
+  "drawPresented": true,
+  "pass": "pass35",
+  "rootFrame": "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=30;1:node=2,x=0,y=0,width=100,height=10]",
+  "runPrefix": "c114-phys-recheck-android-device-20261021T002429183Z-eae27b30",
+  "sceneCount": 1,
+  "sceneId": "spanning-auto-min-flex-tracks",
+  "status": 200,
+  "supersededRetries": 0,
+  "trackTraceChunks": 6,
+  "tracks": [
+    {
+      "baseSize": 48,
+      "collapsed": false
+    },
+    {
+      "baseSize": 48,
+      "collapsed": false
+    }
+  ],
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/android-device-c114-phys-recheck-android-device-20261021T002429183Z-eae27b30/result.json"
+}

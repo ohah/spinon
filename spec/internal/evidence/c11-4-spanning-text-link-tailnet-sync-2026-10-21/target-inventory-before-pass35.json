@@ -1,0 +1,63 @@
+{
+  "pass": "pass35",
+  "targetRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "fileCount": 30463,
+  "directoryCount": 2065,
+  "totalBytes": 1399069301,
+  "symlinkCount": 0,
+  "targetSample": [
+    {
+      "path": ".github/pull_request_template.html",
+      "bytes": 3478
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "bytes": 860
+    },
+    {
+      "path": ".github/workflows/docs-pages.yml",
+      "bytes": 1243
+    },
+    {
+      "path": "0001-conformance.html",
+      "bytes": 108657
+    },
+    {
+      "path": "0001-conformance.md",
+      "bytes": 15595
+    },
+    {
+      "path": "0002-ui-tree-events.html",
+      "bytes": 31746
+    },
+    {
+      "path": "0002-ui-tree-events.md",
+      "bytes": 12429
+    },
+    {
+      "path": "0003-web-surface.html",
+      "bytes": 41299
+    },
+    {
+      "path": "0003-web-surface.md",
+      "bytes": 17271
+    },
+    {
+      "path": "0004-runtime-build.html",
+      "bytes": 30712
+    },
+    {
+      "path": "0004-runtime-build.md",
+      "bytes": 11551
+    },
+    {
+      "path": "0005-developer-tools.html",
+      "bytes": 20865
+    }
+  ],
+  "selectedSiteRoot": "/Volumes/ZTSBuild/c11-4-spanning-text-tailnet-sync-site-pass35",
+  "selectedSiteFileCount": 2445,
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c11-4-spanning-text-tailnet-sync-2026-10-21/pass35",
+  "backupRootExistedBefore": false,
+  "noDeletesPlanned": true
+}
