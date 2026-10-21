@@ -32,7 +32,7 @@
 | 26 | 반복 capture 중 실패 결과가 successful final run인 것처럼 선택되는가 | 두 초기 Android 실패 원인을 README에서 설명하고 최종 성공 directory와 분리해 보존한다. |
 | 27 | screenshot hash가 representative screen이 아닌 오래된 반복 실행 화면을 가리키는가 | `SHA256SUMS.txt`는 README와 PR에서 사용하는 최종 Android/iOS representative screenshot만 가리킨다. |
 | 28 | plan, internal contract, status가 opt-in profile admission을 서로 다르게 설명하는가 | 세 문서는 Grid min/max-content width, intrinsic height 배제, 전체 C11.4 미완료 범위를 같은 수준으로 적는다. |
-| 29 | PR 양식의 status ID, API/internal spec, 남은 범위와 labels 중 하나가 누락되는가 | PR body에 C11.4 slice, internal contract 0059, implementation evidence, 남은 한계와 기존 `enhancement`/`area:*` labels를 채운다. |
-| 30 | PR 화면 이미지나 Tailnet 공개 미리보기를 링크만 성공한 것으로 표시하는가 | 두 screenshot은 GitHub PR body에서 Agent Browser로 실제 로드되는지 확인한 뒤 전용 세션을 닫는다. merge 뒤 Tailnet preview만 안전 동기화하고 GitHub Pages를 배포하지 않는다. |
+| 29 | PR 양식의 status ID, API/internal spec, 남은 범위와 labels 중 하나가 누락되는가 | PR 설명에 C11.4 slice, internal contract 0059, implementation evidence와 남은 한계를 채우고 기존 `enhancement`/`area:*` labels를 PR metadata로 설정했다. |
+| 30 | PR 화면 이미지나 Tailnet 공개 미리보기를 링크만 성공한 것으로 표시하는가 | PR #450 병합 뒤 이미지 URL을 merge SHA `80837bbe03542eb55ebc983964c72fd925454d28`에 고정하고 Agent Browser에서 두 `<img>`가 complete이며 1080×2400, 1206×2622 원본 크기를 반환함을 확인했다. Tailnet preview는 병합 문서 PR 뒤 안전 동기화하며 GitHub Pages는 배포하지 않는다. |
 
-PR 생성 후 image attachment URL, required-check 설정, merge state와 Rebase and merge 결과를 검토 기록 및 상태 업데이트에 반영한다. Empty check rollup은 CI pass로 분류하지 않는다.
+PR [#450](https://github.com/ohah/spinon/pull/450)은 2026-10-21 14:38:40 UTC Rebase and merge됐으며 SHA는 `80837bbe03542eb55ebc983964c72fd925454d28`다. PR check rollup은 비었고 main required status checks도 설정되어 있지 않아 이를 CI 통과로 분류하지 않는다. PR 본문은 GitHub raw 이미지 URL을 merge SHA에 고정했으며 Agent Browser에서 두 이미지의 로드와 intrinsic dimensions를 확인했다.

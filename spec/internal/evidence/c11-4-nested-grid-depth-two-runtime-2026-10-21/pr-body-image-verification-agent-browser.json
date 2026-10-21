@@ -1,0 +1,28 @@
+{
+  "pull_request": 450,
+  "pull_request_url": "https://github.com/ohah/spinon/pull/450",
+  "verified_at": "2026-10-21",
+  "browser": "Agent Browser / Chrome",
+  "session": "spinon-c114-pr450-postmerge",
+  "merge_sha": "80837bbe03542eb55ebc983964c72fd925454d28",
+  "page": "https://github.com/ohah/spinon/pull/450",
+  "image_count": 2,
+  "all_images_loaded": true,
+  "images": [
+    {
+      "alt": "Android API 37 ARM64 AVD의 nested Grid depth-two min-content 화면",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/80837bbe03542eb55ebc983964c72fd925454d28/spec/internal/evidence/c11-4-nested-grid-depth-two-runtime-2026-10-21/android-avd-c114-nested-grid-depth-two-android-avd-20261021T142709176Z-f1ee21a4/nested-depth-two-min-content.png",
+      "complete": true,
+      "natural_width": 1080,
+      "natural_height": 2400
+    },
+    {
+      "alt": "iPhone 17 Pro iOS 26.2 Simulator의 nested Grid depth-two min-content 화면",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/80837bbe03542eb55ebc983964c72fd925454d28/spec/internal/evidence/c11-4-nested-grid-depth-two-runtime-2026-10-21/ios-simulator-c114-nested-grid-depth-two-ios-simulator-20261021T142718496Z-45a9af47/nested-depth-two-min-content.png",
+      "complete": true,
+      "natural_width": 1206,
+      "natural_height": 2622
+    }
+  ],
+  "note": "PR body uses immutable raw GitHub image URLs, not upload attachment URLs."
+}

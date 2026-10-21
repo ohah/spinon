@@ -1,6 +1,6 @@
 # C11.4 · 두 단계 nested Grid intrinsic contribution 계획
 
-**상태:** 계획 PR 병합 뒤 fixed runtime fixture와 Rust 검증을 구현했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 scene이 각각 4/4 통과했고, 기본/opt-in static archive 경계를 확인했다. 구현 실패 관점 20개와 별도 PR diff 실패 관점 30개 검토를 마쳤으며 PR 병합이 남았다. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다.
+**상태:** 계획 PR 병합 뒤 fixed runtime fixture와 Rust 검증을 구현했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 scene이 각각 4/4 통과했고, 기본/opt-in static archive 경계를 확인했다. 구현 실패 관점 20개와 별도 PR diff 실패 관점 30개 검토를 마쳤으며 PR [#450](https://github.com/ohah/spinon/pull/450)은 Rebase and merge됐고 SHA는 `80837bbe03542eb55ebc983964c72fd925454d28`다. 병합 당시 check rollup은 비었고 main required status checks는 설정되어 있지 않았다. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다.
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [일반 nested Grid 제한 계획](./c11-4-nested-grid-intrinsic.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
@@ -52,7 +52,7 @@ Scene geometry는 root-relative 좌표로 비교한다. Root absolute page offse
 
 고정 scene adapter, runtime Ahem 입력 연결, root부터 inner Grid까지의 frame·Columns/Rows trace assertion을 추가했다. 각 Grid는 직계 자식 Grid 또는 마지막 leaf text item에서 `MinContent`/`MaxContent` one-track contribution을 받아야 한다. layout projection 변경은 C11.4 fixture-test profile에만 적용되며 non-Grid intrinsic width, intrinsic height 조합과 다른 profile은 계속 거부한다. Android/iOS 실행 결과, build/test logs, screenshots, APK hash와 static archive 경계는 [runtime evidence](../spec/internal/evidence/c11-4-nested-grid-depth-two-runtime-2026-10-21/README.md)에 연결했다.
 
-화면 검증은 box frames, track/contribution trace, intrinsic text metrics, draw/present까지만 다룬다. glyph pixel equality와 iOS compositor-after pixels는 증명하지 않는다. [구현/runtime 실패 검토 20개](../spec/internal/evidence/c11-4-nested-grid-depth-two-runtime-2026-10-21/implementation-review-20.md)를 마쳤다. 구현 PR diff 실패 검토 30개와 병합 결과는 완료 후 이 문서와 상태 대장에 연결한다. 이 focused slice의 검증은 C11.4 전체 완료 판정이 아니다.
+화면 검증은 box frames, track/contribution trace, intrinsic text metrics, draw/present까지만 다룬다. glyph pixel equality와 iOS compositor-after pixels는 증명하지 않는다. [구현/runtime 실패 검토 20개](../spec/internal/evidence/c11-4-nested-grid-depth-two-runtime-2026-10-21/implementation-review-20.md)를 마쳤다. 구현 PR diff 실패 검토 30개를 마쳤고 PR [#450](https://github.com/ohah/spinon/pull/450)의 Rebase and merge 결과 `80837bbe03542eb55ebc983964c72fd925454d28`를 상태 대장과 공개 로드맵에 기록했다. 병합 당시 check rollup은 비었고 required status checks는 설정되어 있지 않았다. 이 focused slice의 검증은 C11.4 전체 완료 판정이 아니다.
 
 ## 제외와 완료 판정
 
