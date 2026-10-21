@@ -133,6 +133,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "nested-depth-one-min-content-two-axis", "nested-depth-two-min-content-two-axis",
     "nested-depth-one-max-content-two-axis", "nested-depth-two-max-content-two-axis",
     "nested-depth-three-min-content-two-axis", "nested-depth-three-max-content-two-axis",
+    "nested-text-span2-forward", "nested-text-span2-reversed",
+    "nested-text-span2-before-span3", "nested-text-span3-before-span2",
     "depth-three-min-content-text-before-image",
     "depth-three-min-content-image-before-text",
     "depth-three-max-content-text-before-image",
@@ -205,6 +207,10 @@ private func c114NegativeTrackExpectation(_ sceneID: String) -> C114NegativeTrac
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if sceneID.hasPrefix("nested-text-span") {
+        return sceneID.contains("before-span3") || sceneID.contains("span3-before-span2")
+            ? "width=180,height=60" : "width=95,height=60"
+    }
     if c114IsNestedGridDepthAnonymousImageScene(sceneID) {
         return sceneID.contains("-min-content-") ? "width=94,height=20" : "width=124,height=16"
     }
@@ -347,6 +353,7 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         .contains(sceneID) { return "" }
     if sceneID.hasPrefix("nested-depth-one-") || sceneID.hasPrefix("nested-depth-two-")
         || sceneID.hasPrefix("nested-depth-three-")
+        || sceneID.hasPrefix("nested-text-span")
         || c114IsNestedGridDepthAnonymousImageScene(sceneID) {
         return ""
     }
@@ -462,6 +469,9 @@ private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) 
     }
     if c114IsTextMultiSpanScene(sceneID) {
         return c114ExpectedTextMultiSpanIntrinsicInputs(sceneID, report: report)
+    }
+    if sceneID.hasPrefix("nested-text-span") {
+        return c114ExpectedNestedTextMultiSpanIntrinsicInputs(sceneID, report: report)
     }
     let expected: (minContent: Int, minContentHeight: Int, maxContent: Int, maxContentHeight: Int)?
     var expectedGrid = 1
@@ -1460,6 +1470,7 @@ private func c114ImageTrackPassMatches(
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if sceneID.hasPrefix("nested-text-span") { return nil }
     if c114IsNestedGridDepthAnonymousImageScene(sceneID) {
         let minContent = sceneID.contains("-min-content-")
         let imageBeforeText = sceneID.contains("-image-before-text")
@@ -1890,7 +1901,79 @@ private func c114ExpectedTextMultiSpanIntrinsicInputs(_ sceneID: String, report:
     return true
 }
 
+private func c114ExpectedNestedTextMultiSpanIntrinsicInputs(
+    _ sceneID: String, report: String
+) -> Bool {
+    let expected: [[Double]]
+    switch sceneID {
+    case "nested-text-span2-forward":
+        expected = [[50, 20, 80, 10], [70, 20, 120, 10]]
+    case "nested-text-span2-reversed":
+        expected = [[70, 20, 120, 10], [50, 20, 80, 10]]
+    case "nested-text-span2-before-span3":
+        expected = [[50, 20, 80, 10], [70, 20, 120, 10], [180, 10, 180, 10]]
+    case "nested-text-span3-before-span2":
+        expected = [[180, 10, 180, 10], [70, 20, 120, 10], [50, 20, 80, 10]]
+    default:
+        return false
+    }
+    guard let marker = report.range(of: "grid_track_sizing_diagnostics=") else { return false }
+    let jsonText = report[marker.upperBound...]
+    var depth = 0
+    var inString = false
+    var escaped = false
+    var endIndex: String.Index?
+    for index in jsonText.indices {
+        let character = jsonText[index]
+        if inString {
+            if escaped {
+                escaped = false
+            } else if character == "\\" {
+                escaped = true
+            } else if character == "\"" {
+                inString = false
+            }
+            continue
+        }
+        if character == "\"" {
+            inString = true
+        } else if character == "{" {
+            depth += 1
+        } else if character == "}" {
+            depth -= 1
+            if depth == 0 {
+                endIndex = jsonText.index(after: index)
+                break
+            }
+        }
+    }
+    guard let endIndex,
+          let data = String(jsonText[..<endIndex]).data(using: .utf8),
+          let diagnostics = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
+          let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
+          inputs.count == expected.count else { return false }
+    for (index, input) in inputs.enumerated() {
+        guard let grid = input["grid"] as? Int, grid == 4,
+              let node = input["node"] as? Int, node == 5 + index * 2,
+              let sourceOrder = input["sourceOrder"] as? Int, sourceOrder == index,
+              let source = input["source"] as? [String: Any],
+              let kind = source["kind"] as? String, kind == "text",
+              let fontRegistryRevision = source["fontRegistryRevision"] as? Int,
+              fontRegistryRevision == 1 else { return false }
+        let values = ["minContent", "minContentHeight", "maxContent", "maxContentHeight"]
+            .compactMap { (source[$0] as? NSNumber)?.doubleValue }
+        guard values.count == 4,
+              zip(values, expected[index]).allSatisfy({ abs($0.0 - $0.1) <= 0.0001 }) else {
+            return false
+        }
+    }
+    return true
+}
+
 private func c114ExpectedTextMultiSpanFramesMatch(_ sceneID: String, report: String) -> Bool {
+    if sceneID.hasPrefix("nested-text-span") {
+        return c114ExpectedNestedTextMultiSpanFramesMatch(sceneID, report: report)
+    }
     guard c114IsTextMultiSpanScene(sceneID) else { return true }
     let expected: [[Double]]
     switch sceneID {
@@ -1938,6 +2021,63 @@ private func c114ExpectedTextMultiSpanFramesMatch(_ sceneID: String, report: Str
     return true
 }
 
+private func c114ExpectedNestedTextMultiSpanFramesMatch(
+    _ sceneID: String, report: String
+) -> Bool {
+    let expected: [[Double]]
+    switch sceneID {
+    case "nested-text-span2-forward":
+        expected = [
+            [0, 0, 95, 60], [0, 0, 95, 60], [0, 0, 95, 60], [0, 0, 95, 60],
+            [0, 0, 60, 20], [25, 20, 70, 20],
+        ]
+    case "nested-text-span2-reversed":
+        expected = [
+            [0, 0, 95, 60], [0, 0, 95, 60], [0, 0, 95, 60], [0, 0, 95, 60],
+            [25, 20, 70, 20], [0, 0, 60, 20],
+        ]
+    case "nested-text-span2-before-span3":
+        expected = [
+            [0, 0, 180, 60], [0, 0, 180, 60], [0, 0, 180, 60], [0, 0, 180, 60],
+            [0, 0, 116.6666666667, 10], [53.3333333333, 20, 126.6666666667, 10],
+            [0, 40, 180, 10],
+        ]
+    case "nested-text-span3-before-span2":
+        expected = [
+            [0, 0, 180, 60], [0, 0, 180, 60], [0, 0, 180, 60], [0, 0, 180, 60],
+            [0, 40, 180, 10], [53.3333333333, 20, 126.6666666667, 10],
+            [0, 0, 116.6666666667, 10],
+        ]
+    default:
+        return false
+    }
+    guard let marker = report.range(of: "node_frames_css_px=["),
+          let end = report[marker.upperBound...].firstIndex(of: "]") else { return false }
+    let frames = report[marker.upperBound..<end].split(separator: ";")
+    guard frames.count == expected.count else { return false }
+    for (index, frame) in frames.enumerated() {
+        let fields = frame.split(separator: ",")
+        guard fields.count == 5,
+              let identity = fields[0].range(of: #"^\d+:node=\d+$"#, options: .regularExpression) else {
+            return false
+        }
+        let identityParts = fields[0].split(separator: ":node=")
+        let expectedNode = index < 4 ? index + 1 : 5 + (index - 4) * 2
+        guard identity.lowerBound == fields[0].startIndex,
+              identityParts.count == 2,
+              Int(identityParts[0]) == index,
+              Int(identityParts[1]) == expectedNode else { return false }
+        let prefixes = ["x=", "y=", "width=", "height="]
+        for property in 0..<prefixes.count {
+            guard fields[property + 1].hasPrefix(prefixes[property]),
+                  let actual = Double(fields[property + 1].dropFirst(prefixes[property].count)),
+                  actual.isFinite,
+                  abs(actual - expected[index][property]) <= 1.0 / 64.0 else { return false }
+        }
+    }
+    return true
+}
+
 private func c114GapNodeFrames(
     _ gridWidth: String, _ gridHeight: String, _ secondColumnX: String, _ secondRowY: String
 ) -> String {
@@ -1950,6 +2090,10 @@ private func c114GapNodeFrames(
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if sceneID.hasPrefix("nested-text-span") {
+        return sceneID.contains("before-span3") || sceneID.contains("span3-before-span2")
+            ? 7 : 6
+    }
     if c114IsNestedGridDepthAnonymousImageScene(sceneID) { return 5 }
     if sceneID == "nested-depth-one-min-content"
         || sceneID == "nested-depth-one-max-content" { return 3 }

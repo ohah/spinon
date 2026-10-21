@@ -1,0 +1,21 @@
+{
+  "target": "ios-simulator",
+  "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "name": "iPhone 17 Pro",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "aa8ad649a2b01b13f9d1379500beb0c4b05bf3d9e2e69b03b0045e5ae418b740",
+  "sourceRevision": {
+    "commit": "0a2245e59720b7998c033c755e4cac94083ac0db",
+    "tree": "b59a17b3b81790efcd20915fd9a7afc013c3e077",
+    "trackedDiffSha256": "f3028194ce2806ab736b9f4c3eaafd5fbff573c8ce35b0e271707ee019f7bbf6",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs"
+    ]
+  }
+}

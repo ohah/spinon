@@ -24,6 +24,10 @@ mod c11_4_nested_grid_depth_two;
 mod c11_4_nested_grid_depth_three_anonymous_image;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "fixtures/c11_4_nested_grid_text_multispan.rs"]
+mod c11_4_nested_grid_text_multispan;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "fixtures/c11_4_nested_grid_replaced_item.rs"]
 mod c11_4_nested_grid_replaced_item;
 
