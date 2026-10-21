@@ -35,6 +35,7 @@ c753ef5480c98d430c86583347df87d88270b2c90d137cd4816bb52c45b89fdc  ./artifact-fix
 e6cd29d2bf4ef3964429a152ffc16b81fcc21fa8799edae83db89155fa00874a  ./artifact-fixture-scene-strings.txt
 c27b7430edfd3bf333eb887a4434df78744f5f8f134ed1d70b7d40c7f7a30a8b  ./artifact-fixture-symbol.txt
 cd581711c1e6ebd3fa7586e03451ffd90be74b84e79a5f3e651ab613b19f0023  ./artifact-fixture.sha256
+b483311524f8f0387be81324629fa45942fd28ad7c59dbfee0fa16ecff493c99  ./browser-close-pr453.json
 dc502ea01c4ebd87e851abca6592ca6141b37fc9d7afbe3a3bff5efe3f3c5e5a  ./ffi-fixture-clippy.log
 a9488593333ee15e7068ce9faf1b37eb0fc4284a0aa94f8f8474a5a1d07ac38e  ./ffi-focused-test.log
 9359c2250995924892fd6d2410afe09143a977b46b21f65b9c7866f182053e13  ./fixture-module-boundary-test.log
@@ -59,8 +60,12 @@ b8dfa25d9b73dec0033595f83c4f1b49fc989671f0a5fb59033844ee72e6d47a  ./ios-simulato
 048c826a079ca68411c828dab99499e7035db4ff26a7d99d600ee5722e77a6b8  ./ios-simulator-c114-nested-grid-two-axis-depth-two-ios-simulator-20261021T153134714Z-a13a35fb/screenshot-nested-depth-two-max-content-two-axis.log
 0a6caba4dfb5cfde67722ce2567c1408d0fa18deaf6fcab060c65f34571372a6  ./ios-simulator-c114-nested-grid-two-axis-depth-two-ios-simulator-20261021T153134714Z-a13a35fb/screenshot-nested-depth-two-min-content-two-axis.log
 ab209891983cdf7f90ae9a727f09dc9c4c5e3d37ee662d96f8ece35ea4f8ab40  ./ios-simulator-c114-nested-grid-two-axis-depth-two-ios-simulator-20261021T153134714Z-a13a35fb/simulator.json
+40ae8baafda48fa082a1be4de71ebf7e187fde4344752baefdb8be1ed31b7a69  ./pr-453-agent-browser-verification.json
+03225be4e19da6cadd07f6ba79145e56456f2fc56fa7fe43669b3c1ea1c68a72  ./pr-453-agent-browser.png
+6fae3b9b5f418f4643d1b1160211e420939395366b8b949300072c71dc015ec6  ./pr-453-image-agent-browser.json
+fcef1ff7e4cf6029e90489ebb057bb50c06f74bd06409ab3e2224f903b3e7de1  ./pr-453-image-row-agent-browser.png
 f3953ddace2a2566d7a0d38ac3ef9b8defa86381d3a2040fde53e82f98b43e72  ./pr-diff-review-30.md
-cf9f1fcd6e8b157591a0f4ef35df021f63bcda953e5f862e9ed57f4d469abc7c  ./README.md
+120256869828446f3983b1e7238ba5dea4e5f941ef763b31681c3d730e0f1f4a  ./README.md
 8c0ff18a2105cd941dd2f0fdc0e71cbeee64361945f6396f605a71ca14e4076d  ./runtime-fixture-clippy.log
 ffd3bf7947c979e548c643452cabc39ad697d78d68e33312b0c11e58ec0cba52  ./runtime-focused-test.log
 05eb1ab6eb1ba3ee1ac5485d8d4a024f22082cd2d9f36c56a93954cac0b50c13  ./scene-list.json
