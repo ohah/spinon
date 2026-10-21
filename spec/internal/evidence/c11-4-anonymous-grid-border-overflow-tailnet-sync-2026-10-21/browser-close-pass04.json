@@ -1,0 +1,7 @@
+{
+  "pass": "pass04",
+  "command": "agent-browser close --all",
+  "exitCode": 0,
+  "closedSession": "default",
+  "remainingAgentBrowserOrHeadlessChromeProcesses": []
+}
