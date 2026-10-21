@@ -4,6 +4,8 @@ use spinon_render::{
     CssAxisClip, CssClip, CssRect, CssSize, OpaqueCssSrgb, RuntimePaint, RuntimeRenderBox,
     RuntimeRenderKey, RuntimeRenderSnapshot, RuntimeSrgbColor,
 };
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+use spinon_render::{RuntimeBorder, RuntimeBorderSide};
 use spinon_style::{ComputedBackgroundPaint, ComputedCssOverflow, ComputedStyleProfile};
 
 use crate::adapter::{
@@ -96,6 +98,31 @@ pub fn build_runtime_render_snapshot(
         let paint_order =
             u32::try_from(boxes.len()).map_err(|_| StyleRenderError::PaintOrderOverflow)?;
         let mut render_box = RuntimeRenderBox::new(node_id, frame_css_px, paint, paint_order);
+        #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+        if styles.profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
+            let border = match style.layout_border_paint {
+                Some(paint) => RuntimeBorder::new(
+                    RuntimeBorderSide::new(
+                        style.layout_border.top,
+                        computed_paint_to_runtime(paint.top)?,
+                    )?,
+                    RuntimeBorderSide::new(
+                        style.layout_border.right,
+                        computed_paint_to_runtime(paint.right)?,
+                    )?,
+                    RuntimeBorderSide::new(
+                        style.layout_border.bottom,
+                        computed_paint_to_runtime(paint.bottom)?,
+                    )?,
+                    RuntimeBorderSide::new(
+                        style.layout_border.left,
+                        computed_paint_to_runtime(paint.left)?,
+                    )?,
+                ),
+                None => RuntimeBorder::none(),
+            };
+            render_box = render_box.with_border(border);
+        }
         if styles.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
             render_box = render_box.with_clip(root_html_text_paint_clip(style, frame)?);
         }
@@ -124,6 +151,23 @@ pub fn build_runtime_render_snapshot(
     )
     .with_intrinsic_size_revision(current.revision.intrinsic_size());
     RuntimeRenderSnapshot::new(key, viewport_css_px, boxes).map_err(Into::into)
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+fn computed_paint_to_runtime(
+    paint: ComputedBackgroundPaint,
+) -> Result<RuntimePaint, StyleRenderError> {
+    match paint {
+        ComputedBackgroundPaint::Transparent => Ok(RuntimePaint::None),
+        ComputedBackgroundPaint::Opaque(color) => Ok(RuntimePaint::Opaque(OpaqueCssSrgb::new(
+            color.red,
+            color.green,
+            color.blue,
+        ))),
+        ComputedBackgroundPaint::Translucent(color) => Ok(RuntimePaint::Color(
+            RuntimeSrgbColor::new(color.red, color.green, color.blue, color.alpha)?,
+        )),
+    }
 }
 
 fn is_runtime_stacking_profile(profile: ComputedStyleProfile) -> bool {

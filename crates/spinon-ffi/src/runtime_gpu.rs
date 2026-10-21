@@ -417,6 +417,25 @@ impl RuntimeGpuHost {
                 "runtime GPU profile의 장면이 없습니다".to_owned(),
             ));
         };
+        #[cfg(feature = "c04-runtime-gpu-fixture-test")]
+        let (scene, c11_4_bordered_grid_image_report) =
+            if self.include_c11_4_grid_track_sizing_report {
+                let document =
+                    self.session
+                        .snapshot_document_for_c14_1_fixture()
+                        .map_err(|error| {
+                            (
+                                ERR_LAYOUT,
+                                format!("C11.4 bordered Grid V8 document snapshot 실패: {error}"),
+                            )
+                        })?;
+                fixtures::c11_4::attach_anonymous_grid_border_overflow_images(&document, scene)
+                    .map_err(|error| (ERR_LAYOUT, error))?
+            } else {
+                (scene, String::new())
+            };
+        #[cfg(not(feature = "c04-runtime-gpu-fixture-test"))]
+        let (scene, c11_4_bordered_grid_image_report) = (scene, String::new());
         #[cfg(feature = "c18-1-image-paint-fixture-test")]
         let (scene, c18_1_image_report) = if options.attach_c18_1_images {
             let document = self
@@ -662,7 +681,7 @@ impl RuntimeGpuHost {
         #[cfg(not(feature = "c04-runtime-gpu-fixture-test"))]
         let c11_4_grid_track_sizing_report = String::new();
         Ok(format!(
-            "layout={} boxes={} generation={} document_revision={} render_tree_revision={} style_revision={} environment_revision={} cacheHit={} cascadeRecomputedStyleElements={} cascadeReusedStyleElements={} cascadeContextStyleElements={}{}{}{}{}{}{}{}{}{}{}{}",
+            "layout={} boxes={} generation={} document_revision={} render_tree_revision={} style_revision={} environment_revision={} cacheHit={} cascadeRecomputedStyleElements={} cascadeReusedStyleElements={} cascadeContextStyleElements={}{}{}{}{}{}{}{}{}{}{}{}{}",
             snapshot.state.as_str(),
             box_count,
             completed.key.generation,
@@ -684,6 +703,7 @@ impl RuntimeGpuHost {
             c18_3_image_report,
             c18_4_image_report,
             c15_3_glyph_paint_report,
+            c11_4_bordered_grid_image_report,
             c11_4_grid_track_sizing_report,
         ))
     }

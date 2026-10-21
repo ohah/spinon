@@ -118,6 +118,7 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "whitespace-around-image", "hidden-child-around-image",
     "anonymous-text-two-images-forward", "two-images-anonymous-text-reversed",
     "anonymous-text-three-images-forward", "three-images-anonymous-text-reversed",
+    "anonymous-runs-two-images-forward", "two-images-anonymous-runs-reversed",
 ]
 private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -187,6 +188,7 @@ private func c114NegativeTrackExpectation(_ sceneID: String) -> C114NegativeTrac
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if c114AutoRepeatNegativeLineSceneIDs.contains(sceneID) { return "" }
     if sceneID == "anonymous-min-content-wrap" { return "width=120,height=20" }
+    if c114IsAnonymousGridBorderOverflowScene(sceneID) { return "width=40,height=184" }
     if c114IsAnonymousTextMultiImageScene(sceneID) { return "width=220,height=180" }
     if c114IsAnonymousTextImageScene(sceneID) { return "width=220,height=60" }
     if ["anonymous-comment-continuation", "anonymous-runs-around-block",
@@ -718,7 +720,7 @@ private func c114ExpectedAnonymousTextMultiImageInputs(
     let spans: [Int]
     let imageWidths: [Double]
     let expectedFrames: [[Double]]
-    let textIndex: Int
+    let textIndices: [Int]
     switch sceneID {
     case "anonymous-text-two-images-forward":
         nodes = [2, 3, 4]
@@ -726,14 +728,14 @@ private func c114ExpectedAnonymousTextMultiImageInputs(
         spans = [1, 2, 2]
         imageWidths = [0, 24, 48]
         expectedFrames = [[40, 0, 20, 10], [0, 0, 24, 16], [12, 60, 48, 32]]
-        textIndex = 0
+        textIndices = [0]
     case "two-images-anonymous-text-reversed":
         nodes = [2, 3, 4]
         kinds = ["replaced", "text", "replaced"]
         spans = [2, 1, 2]
         imageWidths = [48, 0, 24]
         expectedFrames = [[12, 60, 48, 32], [40, 0, 20, 10], [0, 0, 24, 16]]
-        textIndex = 1
+        textIndices = [1]
     case "anonymous-text-three-images-forward":
         nodes = [2, 3, 4, 5]
         kinds = ["text", "replaced", "replaced", "replaced"]
@@ -742,7 +744,7 @@ private func c114ExpectedAnonymousTextMultiImageInputs(
         expectedFrames = [
             [52, 0, 20, 10], [0, 0, 24, 16], [18, 60, 48, 32], [0, 120, 72, 48],
         ]
-        textIndex = 0
+        textIndices = [0]
     case "three-images-anonymous-text-reversed":
         nodes = [2, 3, 4, 5]
         kinds = ["replaced", "replaced", "text", "replaced"]
@@ -751,7 +753,25 @@ private func c114ExpectedAnonymousTextMultiImageInputs(
         expectedFrames = [
             [0, 120, 72, 48], [18, 60, 48, 32], [52, 0, 20, 10], [0, 0, 24, 16],
         ]
-        textIndex = 2
+        textIndices = [2]
+    case "anonymous-runs-two-images-forward":
+        nodes = [2, 3, 4, 5]
+        kinds = ["text", "replaced", "text", "replaced"]
+        spans = [1, 2, 1, 2]
+        imageWidths = [0, 24, 0, 48]
+        expectedFrames = [
+            [42, 2, 20, 10], [2, 2, 24, 16], [62, 2, 20, 10], [14, 62, 48, 32],
+        ]
+        textIndices = [0, 2]
+    case "two-images-anonymous-runs-reversed":
+        nodes = [2, 3, 4, 5]
+        kinds = ["replaced", "text", "replaced", "text"]
+        spans = [2, 1, 2, 1]
+        imageWidths = [48, 0, 24, 0]
+        expectedFrames = [
+            [14, 62, 48, 32], [42, 2, 20, 10], [2, 2, 24, 16], [62, 2, 20, 10],
+        ]
+        textIndices = [1, 3]
     default:
         return false
     }
@@ -779,7 +799,7 @@ private func c114ExpectedAnonymousTextMultiImageInputs(
               zip(actualFrame, expectedFrames[index]).allSatisfy({
                   abs($0.0 - $0.1) <= 1.0 / 64.0
               }) else { return false }
-        if index == textIndex {
+        if textIndices.contains(index) {
             guard textSources.count == 1,
                   (textSources[0]["node"] as? Int) == nodes[index],
                   (textSources[0]["text"] as? String) == "XX",
@@ -802,12 +822,12 @@ private func c114ExpectedAnonymousTextMultiImageInputs(
     }
     return c114AnonymousTextMultiImageTraceMatches(
         sceneID, nodes: nodes, spans: spans, imageWidths: imageWidths,
-        textIndex: textIndex, diagnostics: diagnostics)
+        textIndices: textIndices, diagnostics: diagnostics)
 }
 
 private func c114AnonymousTextMultiImageTraceMatches(
     _ sceneID: String, nodes: [Int], spans: [Int], imageWidths: [Double],
-    textIndex: Int, diagnostics: [String: Any]
+    textIndices: [Int], diagnostics: [String: Any]
 ) -> Bool {
     guard let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
           traces.count == 1,
@@ -818,11 +838,16 @@ private func c114AnonymousTextMultiImageTraceMatches(
           (passes[1]["axis"] as? String) == "Rows",
           let stages = passes[0]["stages"] as? [[String: Any]],
           let contributions = passes[0]["contributions"] as? [[String: Any]] else { return false }
-    let expectedColumns = nodes.count == 3
-        ? [12.0, 28.0, 20.0, 0.0] : [18.0, 34.0, 20.0, 0.0]
+    let expectedColumns: [Double]
+    if c114IsAnonymousGridBorderOverflowScene(sceneID) {
+        expectedColumns = [12, 28, 20, 20]
+    } else {
+        expectedColumns = nodes.count == 3 ? [12, 28, 20, 0] : [18, 34, 20, 0]
+    }
     guard c114ImageMultiSpanTracksMatch(passes[0], expected: expectedColumns),
           c114ImageMultiSpanTracksMatch(passes[1], expected: [60, 60, 60]) else { return false }
-    let expectedSpans = nodes.count == 3 ? [1, 2] : [1, 2, 3]
+    let expectedSpans = c114IsAnonymousGridBorderOverflowScene(sceneID)
+        ? [1, 2] : (nodes.count == 3 ? [1, 2] : [1, 2, 3])
     let observedSpans = stages.compactMap { stage -> Int? in
         guard let name = stage["stage"] as? String,
               name.hasPrefix("IntrinsicItemBatch { span: ") else { return nil }
@@ -833,14 +858,22 @@ private func c114AnonymousTextMultiImageTraceMatches(
     guard observedSpans == expectedSpans else { return false }
     var expectedContributions: [(node: Int, kind: String, span: Int, value: Double)] = []
     for span in expectedSpans {
-        for index in nodes.indices where spans[index] == span && index != textIndex {
+        for index in nodes.indices where spans[index] == span && !textIndices.contains(index) {
             expectedContributions.append((nodes[index], "Minimum", span, 0))
         }
-        for _ in 0..<2 {
+        if c114IsAnonymousGridBorderOverflowScene(sceneID) && span == 1 {
             for index in nodes.indices where spans[index] == span {
-                expectedContributions.append((
-                    nodes[index], "MinContent", span,
-                    index == textIndex ? 20 : imageWidths[index]))
+                for _ in 0..<2 {
+                    expectedContributions.append((nodes[index], "MinContent", span, 20))
+                }
+            }
+        } else {
+            for _ in 0..<2 {
+                for index in nodes.indices where spans[index] == span {
+                    expectedContributions.append((
+                        nodes[index], "MinContent", span,
+                        textIndices.contains(index) ? 20 : imageWidths[index]))
+                }
             }
         }
     }
@@ -1211,6 +1244,14 @@ private func c114ImageTrackPassMatches(
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     switch sceneID {
+    case "anonymous-runs-two-images-forward":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=184;"
+            + "1:node=3,x=2,y=2,width=24,height=16;"
+            + "2:node=5,x=14,y=62,width=48,height=32]"
+    case "two-images-anonymous-runs-reversed":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=184;"
+            + "1:node=2,x=14,y=62,width=48,height=32;"
+            + "2:node=4,x=2,y=2,width=24,height=16]"
     case "anonymous-text-two-images-forward":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=180;"
             + "1:node=3,x=0,y=0,width=24,height=16;"
@@ -1581,6 +1622,7 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if c114IsAnonymousGridBorderOverflowScene(sceneID) { return 3 }
     if sceneID == "anonymous-text-two-images-forward"
         || sceneID == "two-images-anonymous-text-reversed" { return 3 }
     if sceneID == "anonymous-text-three-images-forward"
@@ -1648,6 +1690,12 @@ private func c114IsAnonymousTextImageScene(_ sceneID: String) -> Bool {
 private func c114IsAnonymousTextMultiImageScene(_ sceneID: String) -> Bool {
     ["anonymous-text-two-images-forward", "two-images-anonymous-text-reversed",
      "anonymous-text-three-images-forward", "three-images-anonymous-text-reversed"]
+        .contains(sceneID)
+        || c114IsAnonymousGridBorderOverflowScene(sceneID)
+}
+
+private func c114IsAnonymousGridBorderOverflowScene(_ sceneID: String) -> Bool {
+    ["anonymous-runs-two-images-forward", "two-images-anonymous-runs-reversed"]
         .contains(sceneID)
 }
 
@@ -2004,6 +2052,12 @@ private struct C111MetalPixelRun {
         case "image-span2-forward", "image-span2-reversed",
              "image-span2-before-span3", "image-span3-before-span2":
             expectedSamples = c114ImageMultiSpanPixelSamples(sceneID)
+        case "anonymous-runs-two-images-forward", "two-images-anonymous-runs-reversed":
+            let rootID = "c114-\(sceneID)-grid"
+            expectedSamples = [
+                ("top-border-color", rootID, 10, 0, [240, 198, 116, 255]),
+                ("image-overflow-png-quadrant", rootID, 51, 71, [0, 255, 64, 255]),
+            ]
         case "auto-fill-overflow-neighbors":
             expectedSamples = c114AutoRepeatOverflowPixelSamples
         case "implicit-min-content-overflow-border":

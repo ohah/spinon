@@ -1,0 +1,45 @@
+{
+  "scope": "macOS ARM64 release spinon-ffi static archives",
+  "archives": {
+    "default": {
+      "bytes": 60093888,
+      "sha256": "7685e239eebd2ef328b8446084c4e55fdc52bf1a87c481d10f8079ea85d0ed39"
+    },
+    "fixture": {
+      "bytes": 77364136,
+      "sha256": "5f7ee0596b7d9ac242588ac8adafe12f5b2a99c27ceb660e86eded48ab21de66"
+    }
+  },
+  "symbol": "spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture",
+  "symbolPresent": {
+    "default": false,
+    "fixture": true
+  },
+  "markers": {
+    "anonymous-runs-two-images-forward": {
+      "default": false,
+      "fixture": true
+    },
+    "two-images-anonymous-runs-reversed": {
+      "default": false,
+      "fixture": true
+    },
+    "c114-overflow-image-a-forward": {
+      "default": false,
+      "fixture": true
+    },
+    "border:2px solid #f0c674": {
+      "default": false,
+      "fixture": true
+    },
+    "https://spinon.invalid/c14-1-png-basic.png": {
+      "default": false,
+      "fixture": true
+    }
+  },
+  "exactPngPayload": {
+    "bytes": 97,
+    "default": false,
+    "fixture": true
+  }
+}

@@ -18,6 +18,9 @@ const HTML: &str = "http://www.w3.org/1999/xhtml";
 mod scenes;
 use scenes::{Child, SCENES};
 
+#[path = "anonymous_text_multi_image/border_overflow.rs"]
+mod border_overflow;
+
 #[test]
 fn c114_anonymous_text_and_two_or_three_images_share_one_revision_and_track_pass() {
     for (scene_index, scene) in SCENES.iter().enumerate() {
