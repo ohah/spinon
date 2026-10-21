@@ -1,0 +1,28 @@
+{
+  "pass": "pass02",
+  "rspressVersion": "2.0.22",
+  "sourceHead": "0650281cf82c8295375e32895f8577f1e171bba3",
+  "sourceTree": "6da1d62651008ff0bc17770c8a9cd228e9e017cf",
+  "baseCommit": "44c18e61d2328753726cd120eeca3cff465a29a4",
+  "selectedRoot": "build/spinon/c11-4-nested-grid-roadmap-root-pass02-selected",
+  "siteRoot": "build/spinon/c11-4-nested-grid-roadmap-site-pass02",
+  "fileCount": 3269,
+  "bytesTotal": 161165381,
+  "siteTreeSha256": "de853d59965b881766d00216e4805bc5316e9b33a4bf181a106b31b7329f35dc",
+  "requiredRoutes": [
+    "roadmap.html",
+    "STATUS.html",
+    "spec/STATUS.html",
+    "plan/c11-4-grid-track-sizing.html",
+    "plan/c11-4-nested-grid-intrinsic.html",
+    "internal/evidence/c11-4-nested-grid-intrinsic-precomparison-2026-10-21/README.html",
+    "internal/evidence/c11-4-nested-grid-intrinsic-precomparison-2026-10-21/chrome156-observation.json",
+    "internal/evidence/c11-4-nested-grid-intrinsic-precomparison-2026-10-21/headless-chrome156-nested-grid-oracle.png"
+  ],
+  "roadmapNotePresent": true,
+  "statusStill72of213": true,
+  "c114RemainsIncomplete": true,
+  "newPlanAndPrecomparisonPresent": true,
+  "noSymlinks": true,
+  "fullRepositoryDeadLinkCheck": false
+}

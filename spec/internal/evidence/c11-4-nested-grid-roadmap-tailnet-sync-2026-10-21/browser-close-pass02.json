@@ -1,0 +1,13 @@
+{
+  "pass": "pass02",
+  "closedSession": "spinon-tailnet-status-check",
+  "browserSessionsAfterClose": [],
+  "browserProcessesAfterClose": [],
+  "processCheck": "ps -axo pid,comm filtered for agent-browser and Google Chrome",
+  "previewServer": {
+    "pid": 1191,
+    "address": "127.0.0.1:8768",
+    "keptRunning": true
+  },
+  "tmuxChanged": false
+}
