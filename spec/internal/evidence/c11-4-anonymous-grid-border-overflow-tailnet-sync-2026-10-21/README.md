@@ -30,6 +30,7 @@
 - 공식 상태에서 C11.4 checkbox는 미완료이고 완료 집계는 `72/213` 그대로였다. roadmap과 상태 페이지에서 PR #431 merge SHA `420be2c40cb0a9f68023121f66ff122158494ffa`도 확인했다.
 - 계획 문서와 실행 근거 README가 Tailnet UI에서 렌더됐다.
 - Android forward PNG가 `complete=true`, `1080×2400`; iOS forward PNG가 `complete=true`, `1206×2622`로 브라우저에 표시됐다.
+- PR #433 본문을 GitHub Agent Browser에서도 확인했다. 본문에 올린 roadmap/Android/iOS 이미지 3개가 모두 `complete=true`, `1280×633`이었다. [PR 전체 화면 캡처](pr433-agent-browser-full-pass01.png)와 [DOM 결과](pr433-agent-browser-pass01.json)를 보존했다.
 
 ![Tailnet roadmap의 PR #431 병합 항목](tailnet-roadmap-agent-browser-pass01.png)
 
