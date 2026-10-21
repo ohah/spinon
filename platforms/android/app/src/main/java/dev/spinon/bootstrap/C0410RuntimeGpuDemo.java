@@ -187,6 +187,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "nested-depth-one-max-content", "nested-depth-two-max-content",
             "nested-depth-one-min-content-two-axis", "nested-depth-two-min-content-two-axis",
             "nested-depth-one-max-content-two-axis", "nested-depth-two-max-content-two-axis",
+            "nested-depth-three-min-content-two-axis",
+            "nested-depth-three-max-content-two-axis",
             "column-auto-natural-ratio", "column-target-max-width-clamp",
             "row-target-max-height-clamp",
             "column-opposite-min-over-max", "column-border-box-transfer",
@@ -402,11 +404,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static String c114ExpectedRootFrame(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
         if (sceneId.equals("nested-depth-one-min-content")
-                || sceneId.equals("nested-depth-two-min-content")) {
+                || sceneId.equals("nested-depth-two-min-content")
+                || sceneId.equals("nested-depth-three-min-content")) {
             return "width=70,height=20";
         }
         if (sceneId.equals("nested-depth-one-max-content")
-                || sceneId.equals("nested-depth-two-max-content")) {
+                || sceneId.equals("nested-depth-two-max-content")
+                || sceneId.equals("nested-depth-three-max-content")) {
             return "width=100,height=10";
         }
         if (sceneId.equals("nested-grid-implicit-row-span-two")) {
@@ -588,7 +592,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("nested-grid-implicit-row-span-two")
                 || sceneId.equals("nested-grid-implicit-row-one-row")
                 || sceneId.startsWith("nested-depth-one-")
-                || sceneId.startsWith("nested-depth-two-")) return "";
+                || sceneId.startsWith("nested-depth-two-")
+                || sceneId.startsWith("nested-depth-three-")) return "";
         if (c114IsAnonymousTextScene(sceneId) || c114IsAnonymousTextImageScene(sceneId)
                 || c114IsAnonymousTextMultiImageScene(sceneId)) return "";
         if (c114IsImageMultiSpanScene(sceneId) || c114IsTextMultiSpanScene(sceneId)
@@ -734,6 +739,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "min-content-text-max-width":
             case "nested-depth-one-min-content":
             case "nested-depth-two-min-content":
+            case "nested-depth-three-min-content":
                 minContent = 70;
                 minContentHeight = 20;
                 maxContent = 100;
@@ -744,10 +750,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 } else if (sceneId.equals("nested-depth-two-min-content")) {
                     expectedGrid = 3;
                     expectedNode = 4;
+                } else if (sceneId.equals("nested-depth-three-min-content")) {
+                    expectedGrid = 4;
+                    expectedNode = 5;
                 }
                 break;
             case "nested-depth-one-max-content":
             case "nested-depth-two-max-content":
+            case "nested-depth-three-max-content":
                 minContent = 70;
                 minContentHeight = 20;
                 maxContent = 100;
@@ -755,9 +765,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 if (sceneId.equals("nested-depth-one-max-content")) {
                     expectedGrid = 2;
                     expectedNode = 3;
-                } else {
+                } else if (sceneId.equals("nested-depth-two-max-content")) {
                     expectedGrid = 3;
                     expectedNode = 4;
+                } else {
+                    expectedGrid = 4;
+                    expectedNode = 5;
                 }
                 break;
             case "fit-content-calc-limit":
@@ -1417,6 +1430,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + "1:node=2,x=0,y=0,width=70,height=20;"
                         + "2:node=3,x=0,y=0,width=70,height=20;"
                         + "3:node=4,x=0,y=0,width=70,height=20]";
+            case "nested-depth-three-min-content":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=70,height=20;"
+                        + "1:node=2,x=0,y=0,width=70,height=20;"
+                        + "2:node=3,x=0,y=0,width=70,height=20;"
+                        + "3:node=4,x=0,y=0,width=70,height=20;"
+                        + "4:node=5,x=0,y=0,width=70,height=20]";
             case "nested-depth-one-max-content":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=10;"
                         + "1:node=2,x=0,y=0,width=100,height=10;"
@@ -1426,6 +1445,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + "1:node=2,x=0,y=0,width=100,height=10;"
                         + "2:node=3,x=0,y=0,width=100,height=10;"
                         + "3:node=4,x=0,y=0,width=100,height=10]";
+            case "nested-depth-three-max-content":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=10;"
+                        + "1:node=2,x=0,y=0,width=100,height=10;"
+                        + "2:node=3,x=0,y=0,width=100,height=10;"
+                        + "3:node=4,x=0,y=0,width=100,height=10;"
+                        + "4:node=5,x=0,y=0,width=100,height=10]";
             case "nested-grid-span-two":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=134,height=20;"
                         + "1:node=2,x=0,y=0,width=134,height=20;"
@@ -2248,6 +2273,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("nested-depth-one-max-content")) return 3;
         if (sceneId.equals("nested-depth-two-min-content")
                 || sceneId.equals("nested-depth-two-max-content")) return 4;
+        if (sceneId.equals("nested-depth-three-min-content")
+                || sceneId.equals("nested-depth-three-max-content")) return 5;
         if (sceneId.equals("nested-grid-span-two")
                 || sceneId.equals("nested-grid-one-track")
                 || sceneId.equals("nested-grid-definite-flex-control")
