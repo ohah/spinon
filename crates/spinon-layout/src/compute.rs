@@ -35,6 +35,17 @@ impl TaffyLayoutEngine {
         self.compute_with_measurements(input, None, Some(text_layout_engine))
     }
 
+    /// C11.4 fixture에서 text paragraph와 replaced-resource snapshot을 한 계산에 연결합니다.
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub fn compute_with_intrinsic_size_snapshot_and_text_layout_engine(
+        &self,
+        input: &LayoutInput,
+        snapshot: &LayoutIntrinsicSizeSnapshot,
+        text_layout_engine: &TextLayoutEngine,
+    ) -> Result<LayoutOutput, LayoutError> {
+        self.compute_with_measurements(input, Some(snapshot), Some(text_layout_engine))
+    }
+
     fn compute_with_measurements(
         &self,
         input: &LayoutInput,

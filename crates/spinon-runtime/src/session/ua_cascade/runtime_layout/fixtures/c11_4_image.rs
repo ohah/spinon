@@ -14,11 +14,11 @@ use spinon_style::{
 use super::super::{RuntimeLayoutFailure, layout_failure};
 
 const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
-const IMAGE_URL: &str = "https://spinon.invalid/c14-1-png-basic.png";
-const PNG: &[u8] =
+pub(super) const IMAGE_URL: &str = "https://spinon.invalid/c14-1-png-basic.png";
+pub(super) const PNG: &[u8] =
     include_bytes!("../../../../../../../tests/fixtures/resources/c14-1-png-basic.png");
-const NATURAL_WIDTH: u32 = 24;
-const NATURAL_HEIGHT: u32 = 16;
+pub(super) const NATURAL_WIDTH: u32 = 24;
+pub(super) const NATURAL_HEIGHT: u32 = 16;
 
 #[path = "c11_4_image/cases.rs"]
 mod cases;
@@ -196,7 +196,7 @@ fn images_in_subtree(
     Ok(images)
 }
 
-fn element_identity(
+pub(super) fn element_identity(
     snapshot: &HostDocumentSnapshot,
     handle: HostNodeHandle,
 ) -> Result<(String, String, String), RuntimeLayoutFailure> {
@@ -229,7 +229,7 @@ fn element_identity(
     ))
 }
 
-fn image_src(
+pub(super) fn image_src(
     snapshot: &HostDocumentSnapshot,
     image: HostNodeHandle,
 ) -> Result<Option<String>, RuntimeLayoutFailure> {

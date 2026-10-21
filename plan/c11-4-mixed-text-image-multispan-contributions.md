@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** Chrome 155 사전 비교와 계획 실패 관점 20개 검토를 마쳤다. runtime 구현은 시작하지 않았다. C11.4와 공식 완료 수는 미완료로 유지한다.
+**상태:** Chrome 155 사전 비교와 계획 실패 관점 20개 검토를 마쳤다. 제한된 runtime fixture 구현과 네 mixed scene의 Rust·Android API 37 AVD·Android 실기기·iOS Simulator 실행을 구현 PR에 올릴 준비를 마쳤다. C11.4와 공식 완료 수는 미완료로 유지한다.
 
 ## 목적과 범위
 
@@ -48,3 +48,5 @@ CSS Grid §11.5.1의 span별 grouping과 planned-increase 규칙을 적용한다
 - [실행 fixture](../tests/fixtures/css/c11/grid-track-sizing-c114-mixed-multispan-precomparison.html)
 - [계획 적대 검토 20개](./c11-4-mixed-text-image-multispan-plan-review-20.md)
 - [계획 PR 변경분 적대 검토 20개](../spec/internal/evidence/c11-4-mixed-text-image-multispan-precomparison-2026-10-21/plan-pr-diff-review-20.md)
+- [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-4-mixed-text-image-multispan-2026-10-21/implementation-review-20.md)
+- [구현 PR diff 실패 관점 검토 20개](../spec/internal/evidence/c11-4-mixed-text-image-multispan-2026-10-21/pr-diff-review-20.md)
