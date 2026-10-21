@@ -1,0 +1,39 @@
+{
+  "tool": {
+    "name": "agent-browser",
+    "version": "0.31.1"
+  },
+  "browser": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "fontReady": true,
+    "decodedImageCount": 10,
+    "imageNaturalSize": [24, 16]
+  },
+  "fixture": {
+    "path": "tests/fixtures/css/c11/grid-track-sizing-c114-anonymous-text-multimage-precomparison.html",
+    "sha256": "5710b2726af62529944b21f03b35212d38d4caa90a0774a24f694e837a435c5b"
+  },
+  "cssomTrackObservations": [
+    {
+      "scene": "anonymous-text-two-images-forward",
+      "gridTemplateColumns": [12, 28, 20, 0]
+    },
+    {
+      "scene": "two-images-anonymous-text-reversed",
+      "gridTemplateColumns": [12, 28, 20, 0]
+    },
+    {
+      "scene": "anonymous-text-three-images-forward",
+      "gridTemplateColumns": [16, 32, 24, 0]
+    },
+    {
+      "scene": "three-images-anonymous-text-reversed",
+      "gridTemplateColumns": [16, 32, 24, 0]
+    }
+  ],
+  "scope": "CSSOM computed grid-template-columns. This is an Agent Browser HeadlessChrome 156 rerun, not a replacement for the pinned Chrome 155 record or proof of Chromium internal intermediate track state.",
+  "cleanup": {
+    "browserSessionClosed": true,
+    "agentBrowserAndHeadlessChromeProcessesAbsentAfterClose": true
+  }
+}
