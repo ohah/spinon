@@ -1,0 +1,94 @@
+{
+  "pass": "pass38",
+  "baseRoot": "build/spinon/c11-4-anonymous-grid-text-tailnet-sync-root-pass37-selected",
+  "selectedRoot": "build/spinon/c11-4-anonymous-grid-text-tailnet-sync-root-pass38-selected",
+  "sourceHead": "50fad162dfce1deeaa266a6c96a2e969f872a1e8",
+  "sourceTree": "87ae74e25772f53f72b9fb5e05948e71d95a4f48",
+  "selectedSourceCopies": [
+    {
+      "source": "spec/STATUS.md",
+      "target": "STATUS.md",
+      "bytes": 334383,
+      "sha256": "fda8b30ad2a7d740b72c3103d14820d9a4b5b2bf1707ba95f2c06e48f232c3d5"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "target": "spec/STATUS.md",
+      "bytes": 334383,
+      "sha256": "fda8b30ad2a7d740b72c3103d14820d9a4b5b2bf1707ba95f2c06e48f232c3d5"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "target": "public/roadmap.html",
+      "bytes": 182219,
+      "sha256": "d00d4bda5b67a90f6bd50af479d6683288ae0edfaf05f6e8ad5a2df250fc0060"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "target": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 58364,
+      "sha256": "3cf32055b2bc888d796481d53fb1f07f319d4b70dfa110172fbeeeee1d23d30b"
+    },
+    {
+      "source": "plan/c11-4-anonymous-grid-text-items.md",
+      "target": "plan/c11-4-anonymous-grid-text-items.md",
+      "bytes": 9794,
+      "sha256": "614829ca52df6d6c9c0e5c446ac8888e2194a64808d196f7e1d18445fdbb6efa"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "target": "internal/0059-c11-grid-layout.md",
+      "bytes": 76095,
+      "sha256": "f04d3e867efcb6076de1e92d46d1e504ea1dec7c12ecbab535b51dc443496214"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "target": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 76095,
+      "sha256": "f04d3e867efcb6076de1e92d46d1e504ea1dec7c12ecbab535b51dc443496214"
+    },
+    {
+      "source": "tests/fixtures/css/c11/grid-track-sizing-c114-anonymous-text-precomparison.html",
+      "target": "tests/fixtures/css/c11/grid-track-sizing-c114-anonymous-text-precomparison.html",
+      "bytes": 4711,
+      "sha256": "22d4d81cc4defb66ab0ae54447a4e00c687244c3033434d3c4e4aa0b9de47735"
+    }
+  ],
+  "evidenceDirectories": [
+    "c11-4-anonymous-grid-text-precomparison-2026-10-21",
+    "c11-4-anonymous-grid-text-2026-10-21"
+  ],
+  "evidenceDestinations": [
+    "internal/evidence",
+    "spec/internal/evidence",
+    "public/internal/evidence"
+  ],
+  "copiedEvidence": [
+    {
+      "destination": "internal/evidence/c11-4-anonymous-grid-text-precomparison-2026-10-21",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-precomparison-2026-10-21"
+    },
+    {
+      "destination": "internal/evidence/c11-4-anonymous-grid-text-2026-10-21",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-2026-10-21"
+    },
+    {
+      "destination": "spec/internal/evidence/c11-4-anonymous-grid-text-precomparison-2026-10-21",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-precomparison-2026-10-21"
+    },
+    {
+      "destination": "spec/internal/evidence/c11-4-anonymous-grid-text-2026-10-21",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-2026-10-21"
+    },
+    {
+      "destination": "public/internal/evidence/c11-4-anonymous-grid-text-precomparison-2026-10-21",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-precomparison-2026-10-21"
+    },
+    {
+      "destination": "public/internal/evidence/c11-4-anonymous-grid-text-2026-10-21",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-2026-10-21"
+    }
+  ],
+  "noPreviewWrites": true,
+  "noDeletes": true
+}

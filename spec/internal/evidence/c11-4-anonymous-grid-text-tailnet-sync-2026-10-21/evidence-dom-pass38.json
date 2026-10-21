@@ -1,0 +1,27 @@
+{
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-text-2026-10-21/README.html",
+  "title": "C11.4 anonymous Grid text 제한 구현 근거 - 스피논 문서",
+  "heading": "#\nC11.4 anonymous Grid text 제한 구현 근거",
+  "pr422": [
+    {
+      "text": "#422",
+      "href": "https://github.com/ohah/spinon/pull/422"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://macstudio.tailed42f2.ts.net/spinon/static/image/anonymous-runs-around-block.bcb34da688.png",
+      "alt": "iOS Simulator에서 anonymous text run 사이의 direct block item 장면",
+      "complete": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622
+    },
+    {
+      "src": "https://macstudio.tailed42f2.ts.net/spinon/static/image/anonymous-runs-around-block.45996f48a6.png",
+      "alt": "Android API 37 AVD에서 anonymous text run 사이의 direct block item 장면",
+      "complete": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    }
+  ]
+}

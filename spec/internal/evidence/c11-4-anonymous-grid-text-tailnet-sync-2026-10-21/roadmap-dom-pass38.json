@@ -1,0 +1,46 @@
+{
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "contexts": [
+    {
+      "needle": "72/213",
+      "context": " 호스트…\nR07 · DONE\niOS 배포·OTA 정책 …\nR09 · DONE\nTaffy 적합성 실험\nR10 · DONE\n+69개 완료 항목\nARCHIVED · DETAIL BELOW\n미완료\n외부 조건 대기\n공식 완료\n\n공식 상태 동기화 완료 · 상위 78개 + 세부 ID 133개 + ID 없는 하위 체크 2개 · 완료 72/213개 · 마지막 확인 오후 1:12:07\n\n칸반은 78개 상위 작업과 공식 상태 대장에 등록된 세부 작업을 합산해 요약합니다. 아래 목록에는 상위 작업과 CSS·JavaScript API 세부 체크리스트를 함께 표시합니다. 목록과 완료 열은 공식 상태 대장에서 ID와 체크 상태를 읽습니다. 새 ID가 대장에 추가되면 다음 새로고침 때 세부 목록에도 표시됩니다. 다음·진행 중·외부 대"
+    },
+    {
+      "needle": "72/213",
+      "context": "PI 세부 체크리스트를 함께 표시합니다. 목록과 완료 열은 공식 상태 대장에서 ID와 체크 상태를 읽습니다. 새 ID가 대장에 추가되면 다음 새로고침 때 세부 목록에도 표시됩니다. 다음·진행 중·외부 대기는 작업 순서를 보여주는 보드 메모이며, 완료 판정에는 사용하지 않습니다.\n\n전체\n미완료\n213개 표시 · 공식 완료 72/213\n단계 01\n위험 먼저 검증\n\n뒤늦게 뒤집기 어려운 선택을 작은 실험으로 확인합니다.\n\n16개 작업\n\n다음 단계 조건\n시뮬레이터에서 가능한 Taffy·GPU·생명주기 실험과 호환성 검토를 먼저 진행합니다. iOS 실기기 JIT 없는 V8(R02)과 실기기 계측(R05)은 하드웨어가 연결된 뒤 별도 완료합니다. OTA·브라우저 엔진 관련 정책 검토만으로 앱 심사 승인을 주장하지 않습"
+    },
+    {
+      "needle": "74/207",
+      "context": "니다. Chrome 155와 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 native content root 색을 확인했습니다. body box paint와 일반 HTML layout/text/paint는 아직 구현하지 않았습니다. 당시 공식 완료 집계는 74/207이었습니다. 이후 direct text 하위 slice 병합으로 현재 집계는 상태 대장에서 동적으로 읽습니다. 상위 C04.12는 계속 미완료입니다. 문서 Canvas 계획 · Chrome·simulator·Rust 근거 · PR #309.\n\n2026-10-18 C04.12 파싱 루트 HTML Block scene · 제한 하위 slice 구현: 기존 HTML5 parser가 만든"
+    },
+    {
+      "needle": "74/207",
+      "context": "가 통과했습니다. 전체 suite 17/17은 notification refresh 이동 전 revision 결과입니다. event/action ID 연결과 super.sendEvent 뒤 UIKit 내부 경로, 실제 trackpad와 실기기는 검증하지 않았으며 제품 adapter는 바꾸지 않았습니다. C13.3과 공식 74/207은 미완료입니다. 계획 · Simulator 실행 근거와 화면 · 계획 검토 · 구현 검토 · 변경 검토.\n\n2026-10-18 C13.3 iOS native wheel adapter · PR #302 후속 (부분): 같은 opt-in 앱에서 Run 04 negative-only callback/process 3/3을 확인했지만, 모두 inner offset 0 경계에서 publi"
+    },
+    {
+      "needle": "74/207",
+      "context": "lta는 XCTest 요청 ±38과 달라 전달된 reverse 세 건 중 offset 0 복귀는 없었습니다. Run 06은 결과 bundle 저장 공간 오류로 result=unknown·완료 테스트 0이라 집계에서 제외했습니다. 누락 callback 단계는 특정하지 못했습니다. C13.3은 계속 미완료이고 공식 완료 수 74/207은 바뀌지 않았습니다. 수집 계획 · iOS 실행·화면·log·hash · Tailnet 갱신 검증 · PR #302.\n\n2026-10-18 C13.3 iOS standalone UIKit callback control: 경계 없는 iPad Pro 13-inch (M5)/iOS 26.2 Simulator 독립 host에서도 XCUITest continuous scroll 10회 중"
+    },
+    {
+      "needle": "74/207",
+      "context": "요하지 않았습니다. XCTest method 1/1 통과는 callback 10/10과 다르며 누락 단계(XCTest synthesis·Simulator delivery·UIKit recognition)는 unknown입니다. Spinon 제품 adapter를 검증하거나 C13.3 완료를 뜻하지 않습니다. 공식 완료 수 74/207과 C13.3 미완료 상태는 유지합니다. 실험·10회별 log·관찰 · 로드맵·Tailnet PR #303.\n\n2026-10-21 C13.3 Android 실기기 gesture fixture (부분): Samsung SM-S731N/Android 16 API 36, Vulkan/Samsung Xclipse 940에서 지정된 실기기 APK로 합성 MotionEvent swipe를 실"
+    },
+    {
+      "needle": "74/207",
+      "context": "123,525 비교 pixel 변경 0개였다. 400 CSS px fixture surface가 가용 384 CSS px보다 넓어 좌우 22/23 physical px가 잘렸으며, 입력은 ADB 생성 합성 이벤트다. 사람 손가락·optical scanout 검증으로 확대하지 않는다. C13.3은 미완료이며 공식 완료 수 74/207을 유지한다. 실기기 실행 근거 · 실기기 화면 · 상태 대장.\n\n2026-10-21 C11.4 Ahem spanning auto-minimum flex text · Android 실기기: Chrome 155의 spanning-auto-min-flex-tracks 장면을 앱 fixture에 연결했습니다. Samsung SM-S731N Android 16/API 36 실기기에서 최신"
+    },
+    {
+      "needle": "61/197",
+      "context": "der이며 iOS 표본은 compositor 전입니다. live V8 DOM admission, CSS font projection, 일반 text wrapping/fallback, 실기기·hardware GPU와 iOS compositor 이후 화면은 검증하지 않았습니다. C15.3/C15는 미완료이고 공식 완료 수 `61/197`은 이전 스냅샷이고 현재 집계는 상태 대장의 동기화 표기를 따릅니다. 내부 계약 0075 · 실행·화면·제한 · 구현 실패 관점 20개 · PR 변경 실패 관점 30개 · 병합 PR #264.\n\n2026-10-16 C14.1 live V8 measurement: Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 V8 ev"
+    }
+  ],
+  "exact72": [],
+  "pr422": [
+    {
+      "text": "구현 PR #422",
+      "href": "https://github.com/ohah/spinon/pull/422"
+    }
+  ],
+  "note": "2026-10-21 C11.4 anonymous Grid text item 제한 구현 진행: 직접 text run 다섯 장면을 opt-in fixture에 연결했습니다. 최신 수정 source의 iPhone 17 Pro/iOS 26.2 Simulator와 API 37.0 ARM64 Android AVD에서 track·frame·trace·draw/present가 각각 5/5 통과했고 설치 APK hash도 일치합니다. 사용자가 시뮬레이터 검증을 선택해 Samsung 실기기는 이번 범위에서 실행하지 않았습니다. 화면은 box geometry를 보여주며 glyph paint·CSS border stroke를 검증하지 않습니다. WPT와 전체 C11.4는 미완료이며 공식 체크·완료 집계는 유지합니다. 제한 계획 · 실행·화면·hash 근거 · iOS Simulator 화면 · Android AVD 화면 · 구현 PR #422 · 공식 상태"
+}
