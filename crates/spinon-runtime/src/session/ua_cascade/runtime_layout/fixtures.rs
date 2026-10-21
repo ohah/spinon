@@ -12,6 +12,10 @@ mod c11_4_text;
 mod c11_4_implicit_intrinsic_text;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "fixtures/c11_4_nested_grid_intrinsic.rs"]
+mod c11_4_nested_grid_intrinsic;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "fixtures/c11_4_image.rs"]
 mod c11_4_image;
 

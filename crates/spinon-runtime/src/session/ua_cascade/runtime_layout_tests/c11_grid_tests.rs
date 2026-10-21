@@ -21,6 +21,10 @@ mod anonymous_text_image;
 mod anonymous_text_multi_image;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "c11_grid_tests/nested_grid_intrinsic.rs"]
+mod nested_grid_intrinsic;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[test]
 fn c114_min_content_text_contributes_measured_intrinsic_sizes_to_grid_layout() {
     let (snapshot, root, item) = c114_text_grid_snapshot();

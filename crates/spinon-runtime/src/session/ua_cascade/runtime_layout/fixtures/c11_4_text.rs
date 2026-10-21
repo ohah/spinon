@@ -28,6 +28,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     root: HostNodeHandle,
     styles: &ComputedStyleSnapshot,
 ) -> Result<Option<super::C11_4TextInput>, RuntimeLayoutFailure> {
+    if let Some(input) = super::c11_4_nested_grid_intrinsic::prepare(snapshot, root, styles)? {
+        return Ok(Some(input));
+    }
     if let Some(input) = super::c11_4_implicit_intrinsic_text::prepare(snapshot, root, styles)? {
         return Ok(Some(input));
     }

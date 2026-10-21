@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "target": "android-avd",
+  "runPrefix": "c114-nested-grid-intrinsic-android-avd-20261021T104035741Z-82dc6a97",
+  "sceneCount": 3,
+  "observations": [
+    {
+      "sceneId": "nested-grid-span-two",
+      "summary": "10-21 19:40:39.448 11086 11143 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261021T104035741Z-82dc6a97-0 scene_id=nested-grid-span-two expected_root_frame=width=134,height=20 expected_item_frame= status=0 layout=ready boxes=4 generation=1 document_revision=24 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=134,height=20;1:node=2,x=0,y=0,width=134,height=20;2:node=3,x=0,y=0,width=70,height=20;3:node=5,x=74,y=0,width=60,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 134,
+          "height": 20
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 134,
+          "height": 20
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 70,
+          "height": 20
+        },
+        {
+          "order": 3,
+          "node": 5,
+          "x": 74,
+          "y": 0,
+          "width": 60,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 65,
+            "collapsed": false
+          },
+          {
+            "baseSize": 65,
+            "collapsed": false
+          }
+        ]
+      },
+      "intrinsicSpans": [
+        2
+      ],
+      "trackTraceChunks": 12,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "nested-grid-one-track",
+      "summary": "10-21 19:40:41.371 11186 11207 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261021T104035741Z-82dc6a97-1 scene_id=nested-grid-one-track expected_root_frame=width=138,height=20 expected_item_frame= status=0 layout=ready boxes=4 generation=1 document_revision=24 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=138,height=20;1:node=2,x=0,y=0,width=134,height=20;2:node=3,x=0,y=0,width=70,height=20;3:node=5,x=74,y=0,width=60,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 138,
+          "height": 20
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 134,
+          "height": 20
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 70,
+          "height": 20
+        },
+        {
+          "order": 3,
+          "node": 5,
+          "x": 74,
+          "y": 0,
+          "width": 60,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 134,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ]
+      },
+      "intrinsicSpans": [
+        1
+      ],
+      "trackTraceChunks": 12,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "nested-grid-definite-flex-control",
+      "summary": "10-21 19:40:43.482 11249 11268 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261021T104035741Z-82dc6a97-2 scene_id=nested-grid-definite-flex-control expected_root_frame=width=120,height=20 expected_item_frame= status=0 layout=ready boxes=4 generation=1 document_revision=24 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=20;1:node=2,x=0,y=0,width=120,height=20;2:node=3,x=0,y=0,width=70,height=20;3:node=5,x=74,y=0,width=60,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 20
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 20
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 70,
+          "height": 20
+        },
+        {
+          "order": 3,
+          "node": 5,
+          "x": 74,
+          "y": 0,
+          "width": 60,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 58,
+            "collapsed": false
+          },
+          {
+            "baseSize": 58,
+            "collapsed": false
+          }
+        ]
+      },
+      "intrinsicSpans": [
+        2
+      ],
+      "trackTraceChunks": 15,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}

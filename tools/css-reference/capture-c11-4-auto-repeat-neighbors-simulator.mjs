@@ -1068,7 +1068,67 @@ scenes.push(
   },
 );
 scenes.push(...anonymousGridBorderOverflowScenes());
-assert.equal(scenes.length, 173, 'C11.4 fixture scene count differs.');
+scenes.push(
+  {
+    id: 'nested-grid-span-two', axis: 'Columns', boxCount: 4,
+    rootFrame: 'width=134,height=20', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=134,height=20;'
+      + '1:node=2,x=0,y=0,width=134,height=20;'
+      + '2:node=3,x=0,y=0,width=70,height=20;'
+      + '3:node=5,x=74,y=0,width=60,height=20]',
+    tracks: [65, 65], collapsed: [false, false],
+    axes: { Columns: { tracks: [65, 65], collapsed: [false, false] } },
+    gaps: { Columns: 4 }, intrinsicSpans: [2],
+    nestedGridIntrinsic: {
+      outerNode: 1, nestedNode: 2, leafNodes: [3, 5],
+      innerTracks: [70, 60], contributionSpan: 2, contributionValue: 134,
+    },
+  },
+  {
+    id: 'nested-grid-one-track', axis: 'Columns', boxCount: 4,
+    rootFrame: 'width=138,height=20', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=138,height=20;'
+      + '1:node=2,x=0,y=0,width=134,height=20;'
+      + '2:node=3,x=0,y=0,width=70,height=20;'
+      + '3:node=5,x=74,y=0,width=60,height=20]',
+    tracks: [134, 0], collapsed: [false, false],
+    axes: { Columns: { tracks: [134, 0], collapsed: [false, false] } },
+    gaps: { Columns: 4 }, intrinsicSpans: [1],
+    nestedGridIntrinsic: {
+      outerNode: 1, nestedNode: 2, leafNodes: [3, 5],
+      innerTracks: [70, 60], contributionSpan: 1, contributionValue: 134,
+    },
+  },
+  {
+    id: 'nested-grid-definite-flex-control', axis: 'Columns', boxCount: 4,
+    rootFrame: 'width=120,height=20', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=20;'
+      + '1:node=2,x=0,y=0,width=120,height=20;'
+      + '2:node=3,x=0,y=0,width=70,height=20;'
+      + '3:node=5,x=74,y=0,width=60,height=20]',
+    tracks: [58, 58], collapsed: [false, false],
+    axes: { Columns: { tracks: [58, 58], collapsed: [false, false] } },
+    gaps: { Columns: 4 }, intrinsicSpans: [2],
+    nestedGridIntrinsic: {
+      outerNode: 1, nestedNode: 2, leafNodes: [3, 5], innerTracks: [70, 60],
+      contributionSpan: 2, minimumContributionValue: 0,
+      maximumContributionValue: 120,
+    },
+    pixelSamples: [
+      { id: 'nested-grid-internal-gap', nodeId: 'c114-nested-grid-definite-flex-control-nested',
+        xCssPx: 72, yCssPx: 10, rgba: [231, 246, 237, 255] },
+      { id: 'nested-grid-inside-outer-edge', nodeId: 'c114-nested-grid-definite-flex-control-item-b',
+        xCssPx: 119, yCssPx: 10, rgba: [229, 72, 77, 255] },
+      { id: 'nested-grid-outside-outer-edge', nodeId: 'c114-nested-grid-definite-flex-control-item-b',
+        xCssPx: 120, yCssPx: 10, rgba: [229, 72, 77, 255] },
+      { id: 'nested-grid-overflow-tail', nodeId: 'c114-nested-grid-definite-flex-control-item-b',
+        xCssPx: 133, yCssPx: 10, rgba: [229, 72, 77, 255] },
+      { id: 'nested-grid-after-overflow', nodeId: 'c114-nested-grid-definite-flex-control-grid',
+        xCssPx: 134, yCssPx: 10, rgba: [0, 0, 0, 255] },
+    ],
+  },
+);
+assert.equal(scenes.length, 176, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -2168,6 +2228,56 @@ function verifyRuntimeLog(log, scene, runID) {
   const tracePayload = traceParts.map(({ payload }) => payload).join('')
     .replace(/^grid_track_sizing_diagnostics=/, '');
   const diagnostics = JSON.parse(tracePayload);
+  if (scene.nestedGridIntrinsic) {
+    const expected = scene.nestedGridIntrinsic;
+    const actualInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => ({
+      grid: input.grid,
+      node: input.node,
+      sourceOrder: input.sourceOrder,
+      kind: input.source?.kind,
+      minContent: input.source?.minContent,
+      maxContent: input.source?.maxContent,
+    }));
+    const expectedInputs = expected.leafNodes.map((node, sourceOrder) => ({
+      grid: expected.nestedNode,
+      node,
+      sourceOrder,
+      kind: 'text',
+      minContent: sourceOrder === 0 ? 70 : 60,
+      maxContent: sourceOrder === 0 ? 100 : 60,
+    }));
+    assert.deepEqual(actualInputs, expectedInputs,
+      `${scene.id}: nested grid leaf text input mapping differs`);
+    assert.ok(actualInputs.every(({ node }) => node !== expected.nestedNode),
+      `${scene.id}: nested Grid must not be represented as a leaf intrinsic input`);
+    const outerTrace = diagnostics.trackSizingTraces
+      .find((trace) => trace.grid === expected.outerNode);
+    const nestedTrace = diagnostics.trackSizingTraces
+      .find((trace) => trace.grid === expected.nestedNode);
+    assert.ok(outerTrace, `${scene.id}: outer Grid trace is missing`);
+    assert.ok(nestedTrace, `${scene.id}: nested Grid trace is missing`);
+    const nestedColumns = nestedTrace.passes.filter((pass) => pass.axis === 'Columns').at(-1);
+    const nestedTracks = nestedColumns.stages.at(-1).tracks
+      .filter(({ gutter }) => !gutter).map(({ baseSize }) => baseSize);
+    assert.deepEqual(nestedTracks, expected.innerTracks,
+      `${scene.id}: nested Grid final columns differ`);
+    const outerColumns = outerTrace.passes.filter((pass) => pass.axis === 'Columns').at(-1);
+    const nestedContributions = outerColumns.contributions.filter(({ item }) => item === expected.nestedNode);
+    if (expected.contributionValue !== undefined) {
+      assert.ok(nestedContributions.some((contribution) => contribution.kind === 'MinContent'
+        && contribution.span === expected.contributionSpan
+        && Math.abs(contribution.value - expected.contributionValue) <= 1 / 64),
+      `${scene.id}: nested Grid min-content parent contribution differs`);
+    } else {
+      assert.ok(nestedContributions.some(({ kind, span, value }) => kind === 'Minimum'
+        && span === expected.contributionSpan
+        && Math.abs(value - expected.minimumContributionValue) <= 1 / 64),
+      `${scene.id}: nested Grid minimum parent contribution differs`);
+      assert.ok(nestedContributions.every(({ value }) => Number.isFinite(value)
+        && value >= 0 && value <= expected.maximumContributionValue),
+        `${scene.id}: inner overflow enlarged the definite outer Grid`);
+    }
+  }
   if (scene.anonymousTextItems) {
     const actualInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => ({
       grid: input.grid,
@@ -2292,8 +2402,13 @@ function verifyRuntimeLog(log, scene, runID) {
   };
   const tracksByAxis = {};
   let observedIntrinsicSpans = null;
+  const axisTrace = scene.nestedGridIntrinsic
+    ? diagnostics.trackSizingTraces.find(
+      (trace) => trace.grid === scene.nestedGridIntrinsic.outerNode)
+    : diagnostics.trackSizingTraces[0];
+  assert.ok(axisTrace, `${scene.id}: expected track-sizing Grid trace가 없습니다.`);
   for (const [axis, expected] of Object.entries(axisSpecs)) {
-    const axisPass = diagnostics.trackSizingTraces[0].passes
+    const axisPass = axisTrace.passes
       .filter((pass) => pass.axis === axis).at(-1);
     assert.ok(axisPass, `${scene.id}: ${axis} track-sizing pass가 없습니다.`);
     const intrinsicSpans = axisPass.stages.flatMap(({ stage }) => {

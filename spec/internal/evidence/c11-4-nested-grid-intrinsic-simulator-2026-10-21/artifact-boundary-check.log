@@ -1,0 +1,9 @@
+Default artifact: cargo build --locked --no-default-features -p spinon-ffi --lib
+nm target/debug/libspinon_ffi.a | rg '_spinon_runtime_gpu_host_(new|eval)_c11_4_grid_track_sizing_fixture|nested_grid_intrinsic'
+Result: no match (rg exit 1)
+strings target/debug/libspinon_ffi.a | rg 'nested-grid-span-two|nested-grid-one-track|nested-grid-definite-flex-control'
+Result: no match (rg exit 1)
+
+Opt-in positive control: cargo build --locked --no-default-features -p spinon-ffi --lib --features c04-runtime-gpu-fixture-test
+nm result: _spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture and _spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture are present.
+strings result: nested-grid-span-two, nested-grid-one-track, and nested-grid-definite-flex-control are present.

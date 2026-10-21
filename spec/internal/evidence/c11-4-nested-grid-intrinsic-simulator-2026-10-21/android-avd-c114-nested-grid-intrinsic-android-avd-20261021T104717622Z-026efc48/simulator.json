@@ -1,0 +1,11 @@
+{
+  "serial": "emulator-5558",
+  "target": "android-avd",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone64_arm64",
+  "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+  "apkSha256": "f054f02ab430465cb0efd6fdf754c6f123a54b52c439525d35afd8a5ceb2f8e8",
+  "installedApkSha256": "f054f02ab430465cb0efd6fdf754c6f123a54b52c439525d35afd8a5ceb2f8e8"
+}
