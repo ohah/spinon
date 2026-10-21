@@ -336,6 +336,39 @@ fn track_sizing_profile_projects_typed_functions_and_axis_scoped_calc_ids() {
 }
 
 #[test]
+fn track_sizing_profile_preserves_cyclic_fit_content_percentage_limit() {
+    let node = NodeId::new(11_108).unwrap();
+    let grid = ComputedCssGridLayout {
+        columns: vec![ComputedCssGridTrackSize::FitContent(
+            spinon_style::ComputedCssGridTrackLengthPercentage::Percentage(0.5),
+        )],
+        rows: vec![ComputedCssGridTrackSize::Auto],
+        columns_auto_repeat: None,
+        rows_auto_repeat: None,
+        columns_line_names: vec![Vec::new(); 2],
+        rows_line_names: vec![Vec::new(); 2],
+        template_areas: None,
+        auto_flow: ComputedCssGridAutoFlow::Row,
+        auto_rows: ComputedCssGridAutoRows::Auto,
+        auto_columns: spinon_style::ComputedCssGridAutoColumns::Auto,
+    };
+
+    let projected = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+    )
+    .unwrap();
+
+    assert_eq!(
+        projected.columns,
+        [GridTrackSize::FitContent(
+            spinon_layout::GridTrackLengthPercentage::Percentage(0.5)
+        )]
+    );
+}
+
+#[test]
 fn track_sizing_profile_projects_independent_auto_repeat_modes_on_both_axes() {
     let node = NodeId::new(11_108).unwrap();
     let grid = ComputedCssGridLayout {

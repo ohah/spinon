@@ -21,7 +21,7 @@ pub(super) const AHEM: &[u8] =
 mod cases;
 #[path = "c11_4_text/flex_span.rs"]
 mod flex_span;
-use cases::{TEXT_CASES, TextCase, TextTrack};
+use cases::{TEXT_CASES, TextCase, TextDimension, TextTrack};
 
 pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     snapshot: &HostDocumentSnapshot,
@@ -733,10 +733,17 @@ fn validate_grid_style(
 ) -> Result<(), RuntimeLayoutFailure> {
     require_property(style, "display", "grid")?;
     require_property(style, "box-sizing", "border-box")?;
-    require_property(style, "align-items", "start")?;
+    let align_items = if matches!(case.columns, TextTrack::FitContentPercentage)
+        || matches!(case.rows, TextTrack::FitContentPercentage)
+    {
+        "normal"
+    } else {
+        "start"
+    };
+    require_property(style, "align-items", align_items)?;
     require_property(style, "align-content", "normal")?;
-    if style.layout_dimensions.width != ComputedCssDimension::LengthPx(case.grid_width)
-        || style.layout_dimensions.height != ComputedCssDimension::LengthPx(case.grid_height)
+    if !dimension_matches(style.layout_dimensions.width, case.grid_width)
+        || !dimension_matches(style.layout_dimensions.height, case.grid_height)
         || !zero_edges(style.layout_spacing.margin)
         || !zero_edges(style.layout_spacing.padding)
         || !zero_spacing(style.layout_spacing.row_gap)
@@ -754,8 +761,9 @@ fn validate_grid_style(
         )
     })?;
     if grid.columns.len() != 1
-        || !track_matches(&grid.columns[0], case.track)
-        || grid.rows != [ComputedCssGridTrackSize::Auto]
+        || !track_matches(&grid.columns[0], case.columns)
+        || grid.rows.len() != 1
+        || !track_matches(&grid.rows[0], case.rows)
         || grid.columns_auto_repeat.is_some()
         || grid.rows_auto_repeat.is_some()
         || grid.template_areas.is_some()
@@ -770,8 +778,22 @@ fn validate_grid_style(
     Ok(())
 }
 
+fn dimension_matches(actual: ComputedCssDimension, expected: TextDimension) -> bool {
+    match (actual, expected) {
+        (ComputedCssDimension::LengthPx(actual), TextDimension::Px(expected)) => {
+            (actual - expected).abs() <= f32::EPSILON
+        }
+        (ComputedCssDimension::Auto, TextDimension::Auto)
+        | (ComputedCssDimension::MaxContent, TextDimension::MaxContent) => true,
+        _ => false,
+    }
+}
+
 fn track_matches(track: &ComputedCssGridTrackSize, expected: TextTrack) -> bool {
     match (track, expected) {
+        (ComputedCssGridTrackSize::LengthPx(actual), TextTrack::Length20) => {
+            (*actual - 20.0).abs() <= f32::EPSILON
+        }
         (ComputedCssGridTrackSize::Auto, TextTrack::Auto)
         | (ComputedCssGridTrackSize::MinContent, TextTrack::MinContent)
         | (ComputedCssGridTrackSize::MaxContent, TextTrack::MaxContent) => true,
@@ -781,6 +803,12 @@ fn track_matches(track: &ComputedCssGridTrackSize, expected: TextTrack) -> bool 
             )),
             TextTrack::FitContent40,
         ) => (*actual - 40.0).abs() <= f32::EPSILON,
+        (
+            ComputedCssGridTrackSize::FitContent(ComputedCssGridTrackLengthPercentage::Percentage(
+                actual,
+            )),
+            TextTrack::FitContentPercentage,
+        ) => (*actual - 0.5).abs() <= f32::EPSILON,
         (
             ComputedCssGridTrackSize::FitContent(ComputedCssGridTrackLengthPercentage::Calc(
                 ComputedCssMath::Sum(terms),
@@ -838,6 +866,10 @@ fn validate_text_style(
         .min_width
         .map(ComputedCssDimension::LengthPx)
         .unwrap_or(ComputedCssDimension::Auto);
+    let expected_min_height = case
+        .min_height
+        .map(ComputedCssDimension::LengthPx)
+        .unwrap_or(ComputedCssDimension::Auto);
     let expected_max_width = case
         .max_width
         .map(ComputedCssMaxSize::LengthPx)
@@ -846,7 +878,7 @@ fn validate_text_style(
         || style.layout_dimensions.height != ComputedCssDimension::Auto
         || style.layout_dimensions.min_width != expected_min_width
         || style.layout_dimensions.max_width != expected_max_width
-        || style.layout_dimensions.min_height != ComputedCssDimension::Auto
+        || style.layout_dimensions.min_height != expected_min_height
         || style.layout_dimensions.max_height != ComputedCssMaxSize::None
         || !zero_edges(style.layout_spacing.margin)
         || !expected_padding(style, case.inline_padding)
@@ -948,7 +980,7 @@ mod tests {
     use std::collections::BTreeSet;
 
     #[test]
-    fn fixed_text_matrix_has_ten_unique_direct_leaf_cases() {
+    fn fixed_text_matrix_has_thirteen_unique_direct_leaf_cases() {
         let scene_ids = TEXT_CASES
             .iter()
             .map(|case| case.scene_id)
@@ -962,14 +994,24 @@ mod tests {
             .map(|case| case.item_id)
             .collect::<BTreeSet<_>>();
 
-        assert_eq!(TEXT_CASES.len(), 10);
+        assert_eq!(TEXT_CASES.len(), 13);
         assert_eq!(scene_ids.len(), TEXT_CASES.len());
         assert_eq!(root_ids.len(), TEXT_CASES.len());
         assert_eq!(item_ids.len(), TEXT_CASES.len());
         assert!(
             TEXT_CASES
                 .iter()
-                .any(|case| matches!(case.track, TextTrack::FitContentCalc))
+                .any(|case| matches!(case.columns, TextTrack::FitContentCalc))
+        );
+        assert!(
+            TEXT_CASES
+                .iter()
+                .any(|case| matches!(case.columns, TextTrack::FitContentPercentage))
+        );
+        assert!(
+            TEXT_CASES
+                .iter()
+                .any(|case| matches!(case.rows, TextTrack::FitContentPercentage))
         );
         assert!(TEXT_CASES.iter().any(|case| case.min_width == Some(90.0)));
         assert!(TEXT_CASES.iter().any(|case| case.max_width == Some(40.0)));

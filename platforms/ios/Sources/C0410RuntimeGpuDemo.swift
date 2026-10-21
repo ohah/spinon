@@ -17,6 +17,7 @@ private let c1133GridTemplateAreasSceneIDs: Set<String> = [
 private let c114GridTrackSizingSceneIDs: Set<String> = [
     "cyclic-percent-column", "cyclic-percent-row", "definite-percent-column",
     "cyclic-minmax-column", "cyclic-minmax-row", "definite-minmax-column",
+    "cyclic-fit-content-column", "cyclic-fit-content-row", "definite-fit-content-column",
     "auto-fixed-width-item", "minmax-auto-fixed-width-item",
     "fit-content-below-item-size", "spanning-auto-tracks",
     "spanning-auto-min-flex-tracks",
@@ -209,6 +210,9 @@ private func c114NegativeTrackExpectation(_ sceneID: String) -> C114NegativeTrac
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if sceneID == "cyclic-fit-content-column" { return "width=50,height=20" }
+    if sceneID == "cyclic-fit-content-row" { return "width=20,height=40" }
+    if sceneID == "definite-fit-content-column" { return "width=40,height=20" }
     if sceneID == "cyclic-percent-column" || sceneID == "cyclic-percent-row"
         || sceneID == "cyclic-minmax-column" || sceneID == "cyclic-minmax-row" {
         return "width=24,height=16"
@@ -352,6 +356,10 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if sceneID == "cyclic-fit-content-column" { return "width=25,height=20" }
+    if sceneID == "cyclic-fit-content-row" || sceneID == "definite-fit-content-column" {
+        return "width=20,height=20"
+    }
     if sceneID == "cyclic-percent-column" || sceneID == "cyclic-percent-row"
         || sceneID == "definite-percent-column" || sceneID == "cyclic-minmax-column"
         || sceneID == "cyclic-minmax-row" || sceneID == "definite-minmax-column" {
@@ -1499,6 +1507,15 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "4:node=5,x=\(imageX),y=0,width=24,height=16]"
     }
     switch sceneID {
+    case "cyclic-fit-content-column":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=50,height=20;"
+            + "1:node=2,x=0,y=0,width=25,height=20]"
+    case "cyclic-fit-content-row":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=40;"
+            + "1:node=2,x=0,y=0,width=20,height=20]"
+    case "definite-fit-content-column":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;"
+            + "1:node=2,x=0,y=0,width=20,height=20]"
     case "cyclic-percent-column", "cyclic-percent-row",
          "cyclic-minmax-column", "cyclic-minmax-row":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;"
@@ -2113,7 +2130,9 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
     if sceneID == "cyclic-percent-column" || sceneID == "cyclic-percent-row"
         || sceneID == "definite-percent-column" || sceneID == "cyclic-minmax-column"
-        || sceneID == "cyclic-minmax-row" || sceneID == "definite-minmax-column" {
+        || sceneID == "cyclic-minmax-row" || sceneID == "definite-minmax-column"
+        || sceneID == "cyclic-fit-content-column" || sceneID == "cyclic-fit-content-row"
+        || sceneID == "definite-fit-content-column" {
         return 2
     }
     if sceneID.hasPrefix("nested-text-span") {
@@ -2581,6 +2600,24 @@ private struct C111MetalPixelRun {
     ) -> Bool {
         let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])]
         switch sceneID {
+        case "cyclic-fit-content-column":
+            let itemID = "c114-\(sceneID)-item"
+            expectedSamples = [
+                ("cyclic-fit-content-column-inside-item", itemID, 24, 5, [229, 72, 77, 255]),
+                ("cyclic-fit-content-column-past-item", itemID, 26, 5, [16, 24, 32, 255]),
+            ]
+        case "cyclic-fit-content-row":
+            let itemID = "c114-\(sceneID)-item"
+            expectedSamples = [
+                ("cyclic-fit-content-row-inside-item", itemID, 19, 19, [229, 72, 77, 255]),
+                ("cyclic-fit-content-row-past-item-no-text", itemID, 19, 39, [16, 24, 32, 255]),
+            ]
+        case "definite-fit-content-column":
+            let itemID = "c114-\(sceneID)-item"
+            expectedSamples = [
+                ("definite-fit-content-column-inside-item", itemID, 19, 5, [229, 72, 77, 255]),
+                ("definite-fit-content-column-past-item", itemID, 21, 5, [16, 24, 32, 255]),
+            ]
         case "cyclic-percent-column":
             let itemID = "c114-\(sceneID)-item"
             expectedSamples = [
