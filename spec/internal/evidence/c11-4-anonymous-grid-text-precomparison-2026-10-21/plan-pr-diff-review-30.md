@@ -33,8 +33,8 @@
 | 27 | 한정 구현을 일반 CSS Grid 지원으로 넓혀 해석하는가 | inline element, nested/non-leaf, `pre`, 기타 placement와 WPT 한계를 계획에 열거한다. |
 | 28 | 공개 API나 내부 계약 버전을 조용히 변경하는가 | 이 PR은 계획·fixture·근거만 추가하며 API 선언이나 계약 버전을 수정하지 않는다. |
 | 29 | Android 실기기 serial과 model을 혼동하는가 | 계획에서 serial `R5KYB06SMPE`와 model `SM-S731N`을 분리했다. 현재 ADB 목록에는 emulator 둘뿐이라 실기기 실행을 주장하지 않는다. |
-| 30 | PR 화면에서 screenshot이 실제 표시되는지 확인하지 않고 병합하는가 | PR 본문에는 commit-pinned PNG를 삽입하고 Agent Browser에서 표시를 확인한 뒤, required checks와 merge state를 검사해야 한다. 이 외부 gate는 PR 생성 후 완료한다. |
+| 30 | PR 화면에서 screenshot이 실제 표시되는지 확인하지 않고 병합하는가 | PR #421의 commit-pinned PNG를 Agent Browser에서 확인했다. 이미지가 로드됐고 natural size는 1280×633이다. `gh pr checks --required`는 체크 없음, main required-status-checks API는 비활성(404), repository rulesets는 빈 목록이며 PR merge state는 `CLEAN`이다. |
 
 ## 판정
 
-계획 파일과 연결된 Chrome oracle diff에서 세 결함(README fixture 경로, 기기 serial/model 표기, 없는 상태 anchor)을 발견해 수정했다. 최종 해시·viewport·공백 입력을 다시 기록했다. PR 본문의 실제 screenshot 렌더링 및 GitHub required checks는 PR 생성 뒤 병합 전 gate로 남겨 둔다.
+계획 파일과 연결된 Chrome oracle diff에서 세 결함(README fixture 경로, 기기 serial/model 표기, 없는 상태 anchor)을 발견해 수정했다. 최종 해시·viewport·공백 입력을 다시 기록했다. PR #421 본문의 실제 screenshot 렌더링을 Agent Browser에서 확인했다. 현재 GitHub에는 이 PR의 required check이 설정되어 있지 않으며 merge state는 `CLEAN`이다.
