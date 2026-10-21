@@ -1,0 +1,17 @@
+{
+  "pass": "pass42",
+  "session": "spinon-tailnet-pass42",
+  "closeCommand": "agent-browser --session spinon-tailnet-pass42 close",
+  "closeOutput": "Browser closed",
+  "activeSessionsAfterClose": [],
+  "sessionPid": 8766,
+  "sessionPidPresentAfterClose": false,
+  "agentBrowserOrChromeProcessRowsAfterClose": [],
+  "previewServer": {
+    "pid": 1191,
+    "preserved": true,
+    "listener": "127.0.0.1:8768"
+  },
+  "tmuxTouched": false,
+  "terminalBrowserUsed": false
+}

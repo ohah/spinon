@@ -1,0 +1,59 @@
+{
+  "pass": "pass42",
+  "tool": "agent-browser",
+  "version": "0.31.1",
+  "session": "spinon-tailnet-pass42",
+  "origin": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "pages": [
+    {
+      "route": "roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "verified": [
+        "PR #478 roadmap card rendered with merge SHA 907390f75e0b25b399a47b6c863a19b7e5a326e7",
+        "official completion count 72/213 is visible",
+        "plan, precomparison, runtime evidence, Android and iOS screenshot links resolve"
+      ],
+      "screenshot": "tailnet-roadmap-agent-browser-pass42.png"
+    },
+    {
+      "route": "STATUS.html#c11-css-grid",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "c114CheckboxChecked": false,
+      "officialCompletionCountVisible": true
+    },
+    {
+      "route": "plan/c11-4-cyclic-two-axis-multitrack.html",
+      "title": "C11.4 · 동시 cyclic percentage 다중 track sizing 계획 - 스피논 문서",
+      "mergeSHAVisible": true,
+      "officialCompletionCountVisible": true
+    },
+    {
+      "route": "internal/evidence/c11-4-cyclic-two-axis-multitrack-runtime-2026-10-22/README.html",
+      "title": "C11.4 동시 cyclic percentage 다중 track runtime evidence - 스피논 문서",
+      "avdEvidenceVisible": true,
+      "iosSimulatorEvidenceVisible": true
+    }
+  ],
+  "directImages": [
+    {
+      "platform": "Android API 37 ARM64 AVD",
+      "route": "internal/evidence/c11-4-cyclic-two-axis-multitrack-runtime-2026-10-22/android-avd-c114-cyclic-percent-tracks-android-avd-20261021T220632656Z-acc26dfe/cyclic-percent-two-axis-multitrack.png",
+      "complete": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    },
+    {
+      "platform": "iPhone 17 Pro / iOS 26.2 Simulator",
+      "route": "internal/evidence/c11-4-cyclic-two-axis-multitrack-runtime-2026-10-22/ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261021T220642593Z-54e24c0a/cyclic-percent-two-axis-multitrack.png",
+      "complete": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622
+    }
+  ],
+  "roadmapScreenshot": {
+    "path": "tailnet-roadmap-agent-browser-pass42.png",
+    "width": 1280,
+    "height": 633,
+    "sha256": "64a9b7d910d2377d7aefc53387cc2f6eba854c6ebcdecdc12e08c8f06bfeeac9"
+  }
+}

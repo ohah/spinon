@@ -1,0 +1,40 @@
+{
+  "pass": "pass42",
+  "baseline": "7db827461f2b2722034b9a84d9a7710129bcb356",
+  "sourceHead": "907390f75e0b25b399a47b6c863a19b7e5a326e7",
+  "sourceTree": "cd54a5cc38c46962caba99840bc1fc45f8833592",
+  "selectedRoot": "build/spinon/c11-4-cyclic-two-axis-multitrack-tailnet-sync-root-pass42-selected",
+  "previousRoot": "build/spinon/c11-4-cyclic-fit-content-tailnet-sync-root-pass41-selected",
+  "localChanges": [
+    "plan/c11-4-cyclic-two-axis-multitrack.md",
+    "spec/public/roadmap.html"
+  ],
+  "changedPlanFiles": [
+    "plan/c11-4-cyclic-two-axis-multitrack-plan-review-20.md",
+    "plan/c11-4-cyclic-two-axis-multitrack.md",
+    "plan/c11-4-grid-track-sizing.md"
+  ],
+  "copiedDocumentFiles": 4,
+  "evidenceAliases": [
+    "internal/evidence",
+    "spec/internal/evidence",
+    "public/internal/evidence",
+    "public/spec/internal/evidence"
+  ],
+  "copiedEvidenceDirectories": [
+    {
+      "directory": "spec/internal/evidence/c11-4-cyclic-two-axis-multitrack-precomparison-2026-10-22",
+      "trackedFiles": 4
+    },
+    {
+      "directory": "spec/internal/evidence/c11-4-cyclic-two-axis-multitrack-runtime-2026-10-22",
+      "trackedFiles": 38
+    }
+  ],
+  "copiedTrackedEvidenceFiles": 42,
+  "copiedFixtureFiles": [
+    "tests/fixtures/css/c11/grid-cyclic-percent-two-axis-multitrack-c114-precomparison.html"
+  ],
+  "ignoredUntrackedWorkspaceEvidence": true,
+  "noPreviewWrites": true
+}
