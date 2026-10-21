@@ -1,0 +1,12 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 cyclic percentage fit-content track precomparison</title>
+<style>
+  @font-face { font-family: Ahem; src: url("../../resources/c15/Ahem.ttf") format("truetype"); }
+  html, body { margin: 0; padding: 0; }
+  .grid { display: grid; margin: 0; padding: 0; border: 0; gap: 0; background: #101820; font: 10px/10px Ahem, sans-serif; color: #e5484d; }
+  .item { min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0; background: #e5484d; }
+</style>
+<div id="cyclic-fit-content-column" class="grid" style="width:max-content;grid-template-columns:fit-content(50%);grid-template-rows:auto"><div class="item">aa aa</div></div>
+<div id="cyclic-fit-content-row" class="grid" style="width:20px;height:max-content;grid-template-columns:20px;grid-template-rows:fit-content(50%)"><div class="item">a a a a</div></div>
+<div id="definite-fit-content-column" class="grid" style="width:40px;grid-template-columns:fit-content(50%);grid-template-rows:auto"><div class="item">aa aa</div></div>
