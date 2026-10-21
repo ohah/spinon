@@ -11,6 +11,9 @@ const serial = process.argv[3] ?? 'emulator-5554';
 const simulatorUDID = process.argv[3] ?? 'ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D';
 const requestedSceneIDs = process.argv.find((argument) => argument.startsWith('--scene-id='))
   ?.slice('--scene-id='.length).split(',').filter(Boolean);
+const cyclicPercentSceneIDs = new Set([
+  'cyclic-percent-column', 'cyclic-percent-row', 'definite-percent-column',
+]);
 const requestedRunKind = process.argv.find((argument) => argument.startsWith('--run-kind='))
   ?.slice('--run-kind='.length);
 const evidenceGroup = process.argv.find((argument) => argument.startsWith('--evidence-group='))
@@ -91,10 +94,13 @@ const isNestedGridTextMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => nestedGridTextMultiSpanSceneIDs.has(sceneID));
 const isNestedGridDepthAnonymousImageRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => nestedGridDepthAnonymousImageSceneIDs.has(sceneID));
+const isCyclicPercentRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => cyclicPercentSceneIDs.has(sceneID));
 const isMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID)
     || textMultiSpanSceneIDs.has(sceneID) || mixedMultiSpanSceneIDs.has(sceneID));
-const runKind = requestedRunKind ?? (isMixedMultiSpanRun ? 'mixed-multispan-contributions'
+const runKind = requestedRunKind ?? (isCyclicPercentRun ? 'cyclic-percent-tracks'
+  : isMixedMultiSpanRun ? 'mixed-multispan-contributions'
   : isNestedGridTextMultiSpanRun ? 'nested-grid-text-multispan'
   : isNestedGridDepthAnonymousImageRun ? 'nested-depth-three-anonymous-image'
   : isNestedGridDepthRun ? 'nested-grid-depth'
@@ -129,6 +135,8 @@ const runIDPrefix = `c114-${target}-${runTimestamp}-${runNonce}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
   ? `spec/internal/evidence/${evidenceGroup}-${date}/${target}-${runPrefix}`
+  : isCyclicPercentRun
+    ? `spec/internal/evidence/c11-4-cyclic-percentage-track-runtime-${date}/${target}-${runPrefix}`
   : isNestedGridTextMultiSpanRun
     ? `spec/internal/evidence/c11-4-nested-grid-text-multispan-runtime-${date}/${target}-${runPrefix}`
   : isNestedGridDepthAnonymousImageRun
@@ -1675,7 +1683,72 @@ for (const spec of nestedTextMultiSpanCases) {
     },
   });
 }
-assert.equal(scenes.length, 202, 'C11.4 fixture scene count differs.');
+scenes.push(
+  {
+    id: 'cyclic-percent-column',
+    axis: 'Columns',
+    boxCount: 2,
+    rootFrame: 'width=24,height=16',
+    itemFrame: 'width=24,height=16',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;'
+      + '1:node=2,x=0,y=0,width=24,height=16]',
+    tracks: [12],
+    collapsed: [false],
+    axes: {
+      Columns: { tracks: [12], collapsed: [false] },
+      Rows: { tracks: [16], collapsed: [false] },
+    },
+    pixelSamples: [
+      { id: 'cyclic-column-inside-track', nodeId: 'c114-cyclic-percent-column-item',
+        xCssPx: 11, yCssPx: 8, rgba: [229, 72, 77, 255] },
+      { id: 'cyclic-column-past-track', nodeId: 'c114-cyclic-percent-column-item',
+        xCssPx: 12, yCssPx: 8, rgba: [229, 72, 77, 255] },
+    ],
+  },
+  {
+    id: 'cyclic-percent-row',
+    axis: 'Rows',
+    boxCount: 2,
+    rootFrame: 'width=24,height=16',
+    itemFrame: 'width=24,height=16',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;'
+      + '1:node=2,x=0,y=0,width=24,height=16]',
+    tracks: [8],
+    collapsed: [false],
+    axes: {
+      Columns: { tracks: [24], collapsed: [false] },
+      Rows: { tracks: [8], collapsed: [false] },
+    },
+    pixelSamples: [
+      { id: 'cyclic-row-inside-track', nodeId: 'c114-cyclic-percent-row-item',
+        xCssPx: 12, yCssPx: 7, rgba: [229, 72, 77, 255] },
+      { id: 'cyclic-row-past-track', nodeId: 'c114-cyclic-percent-row-item',
+        xCssPx: 12, yCssPx: 8, rgba: [229, 72, 77, 255] },
+    ],
+  },
+  {
+    id: 'definite-percent-column',
+    axis: 'Columns',
+    boxCount: 2,
+    rootFrame: 'width=40,height=16',
+    itemFrame: 'width=24,height=16',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=16;'
+      + '1:node=2,x=0,y=0,width=24,height=16]',
+    tracks: [20],
+    collapsed: [false],
+    axes: {
+      Columns: { tracks: [20], collapsed: [false] },
+      Rows: { tracks: [16], collapsed: [false] },
+    },
+    pixelSamples: [
+      { id: 'definite-column-inside-track', nodeId: 'c114-definite-percent-column-item',
+        xCssPx: 19, yCssPx: 8, rgba: [229, 72, 77, 255] },
+      { id: 'definite-column-past-track', nodeId: 'c114-definite-percent-column-item',
+        xCssPx: 20, yCssPx: 8, rgba: [229, 72, 77, 255] },
+    ],
+  },
+);
+assert.equal(scenes.length, 205, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;

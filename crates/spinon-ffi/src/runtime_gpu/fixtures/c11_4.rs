@@ -12,6 +12,8 @@ mod anonymous_text_items;
 mod anonymous_text_multi_image;
 #[path = "c11_4/auto_repeat_negative_lines.rs"]
 mod auto_repeat_negative_lines;
+#[path = "c11_4/cyclic_percentage_tracks.rs"]
+mod cyclic_percentage_tracks;
 #[path = "c11_4/flex_spanning_text.rs"]
 mod flex_spanning_text;
 #[path = "c11_4/image_multispan.rs"]
@@ -1049,6 +1051,9 @@ const C11_4_IMAGE_FIXED_GUTTER_SCENES: [ImageSceneWithRowGap; 2] = [
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     scene_id: &str,
 ) -> Result<Cow<'static, str>, String> {
+    if let Some(source) = cyclic_percentage_tracks::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = anonymous_grid_border_overflow::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
@@ -1270,6 +1275,35 @@ mod tests {
             assert_eq!(source.matches("document.createElement('div')").count(), 3);
         }
         assert!(c11_4_grid_track_sizing_runtime_source("nested-grid-text-image-unlisted").is_err());
+    }
+
+    #[test]
+    fn exposes_cyclic_percentage_track_runtime_scenes() {
+        for (scene_id, expected_track, expected_root_size) in [
+            (
+                "cyclic-percent-column",
+                "grid-template-columns:50%;grid-template-rows:auto",
+                "width:max-content;height:auto",
+            ),
+            (
+                "cyclic-percent-row",
+                "grid-template-columns:auto;grid-template-rows:50%",
+                "width:24px;height:max-content",
+            ),
+            (
+                "definite-percent-column",
+                "grid-template-columns:50%;grid-template-rows:auto",
+                "width:40px;height:auto",
+            ),
+        ] {
+            let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
+            assert!(source.len() < 3 * 1024);
+            assert!(source.contains(&format!("sceneId:'{scene_id}'")));
+            assert!(source.contains(expected_track));
+            assert!(source.contains(expected_root_size));
+            assert!(source.contains("width:24px;height:16px"));
+        }
+        assert!(c11_4_grid_track_sizing_runtime_source("cyclic-percent-unlisted").is_err());
     }
 
     #[test]

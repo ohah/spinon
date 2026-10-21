@@ -126,6 +126,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static final String C1133_GRID_TEMPLATE_AREAS_REJECT_SCENE_ID =
             "area-track-count-mismatch";
     private static final String[] C114_GRID_TRACK_SIZING_SCENE_IDS = {
+            "cyclic-percent-column", "cyclic-percent-row", "definite-percent-column",
             "auto-fixed-width-item", "minmax-auto-fixed-width-item",
             "fit-content-below-item-size", "spanning-auto-tracks",
             "spanning-auto-min-flex-tracks",
@@ -409,6 +410,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ExpectedRootFrame(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (sceneId.equals("cyclic-percent-column")
+                || sceneId.equals("cyclic-percent-row")) return "width=24,height=16";
+        if (sceneId.equals("definite-percent-column")) return "width=40,height=16";
         if (sceneId.startsWith("nested-text-span")) {
             return sceneId.contains("before-span3") || sceneId.contains("span3-before-span2")
                     ? "width=180,height=60" : "width=95,height=60";
@@ -594,6 +598,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        if (sceneId.equals("cyclic-percent-column")
+                || sceneId.equals("cyclic-percent-row")
+                || sceneId.equals("definite-percent-column")) return "width=24,height=16";
         if (sceneId.equals("nested-grid-span-two")
                 || sceneId.equals("nested-grid-one-track")
                 || sceneId.equals("nested-grid-definite-flex-control")
@@ -1511,6 +1518,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + ";4:node=5,x=" + imageX + ",y=0,width=24,height=16]";
         }
         switch (sceneId) {
+            case "cyclic-percent-column":
+            case "cyclic-percent-row":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;"
+                        + "1:node=2,x=0,y=0,width=24,height=16]";
+            case "definite-percent-column":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=16;"
+                        + "1:node=2,x=0,y=0,width=24,height=16]";
             case "nested-depth-one-min-content":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=70,height=20;"
                         + "1:node=2,x=0,y=0,width=70,height=20;"
@@ -2407,6 +2421,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int c114ExpectedBoxCount(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (sceneId.equals("cyclic-percent-column")
+                || sceneId.equals("cyclic-percent-row")
+                || sceneId.equals("definite-percent-column")) return 2;
         if (sceneId.startsWith("nested-text-span")) {
             return sceneId.contains("before-span3") || sceneId.contains("span3-before-span2")
                     ? 7 : 6;
@@ -2640,6 +2657,60 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (sceneId.equals("cyclic-percent-column")
+                || sceneId.equals("cyclic-percent-row")
+                || sceneId.equals("definite-percent-column")) {
+            if (samples.size() != 2) return false;
+            String itemId = "c114-" + sceneId + "-item";
+            String insideId;
+            String outsideId;
+            int insideX;
+            int insideY;
+            int outsideX;
+            int outsideY;
+            switch (sceneId) {
+                case "cyclic-percent-column":
+                    insideId = "cyclic-column-inside-track";
+                    outsideId = "cyclic-column-past-track";
+                    insideX = 11;
+                    insideY = 8;
+                    outsideX = 12;
+                    outsideY = 8;
+                    break;
+                case "cyclic-percent-row":
+                    insideId = "cyclic-row-inside-track";
+                    outsideId = "cyclic-row-past-track";
+                    insideX = 12;
+                    insideY = 7;
+                    outsideX = 12;
+                    outsideY = 8;
+                    break;
+                default:
+                    insideId = "definite-column-inside-track";
+                    outsideId = "definite-column-past-track";
+                    insideX = 19;
+                    insideY = 8;
+                    outsideX = 20;
+                    outsideY = 8;
+                    break;
+            }
+            boolean inside = false;
+            boolean outside = false;
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                if (sample.id.equals(insideId)) {
+                    inside = sample.targetNodeId.equals(itemId)
+                            && sample.xCssPx == insideX && sample.yCssPx == insideY;
+                    if (!inside) return false;
+                } else if (sample.id.equals(outsideId)) {
+                    outside = sample.targetNodeId.equals(itemId)
+                            && sample.xCssPx == outsideX && sample.yCssPx == outsideY;
+                    if (!outside) return false;
+                } else {
+                    return false;
+                }
+            }
+            return inside && outside;
+        }
         if (sceneId.equals("nested-grid-definite-flex-control")) {
             if (samples.size() != 5) return false;
             String rootId = "c114-" + sceneId + "-grid";
@@ -3955,7 +4026,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getStringExtra("spinon_c11_grid_pixel_matrix_samples");
         boolean pixelMatrixRequested = pixelMatrixRunId != null || pixelMatrixEncodedSamples != null;
         boolean pixelMatrixSceneMatches = c114GridTrackSizingRequested
-                ? ("auto-fill-overflow-neighbors".equals(pixelMatrixSceneId)
+                ? ("cyclic-percent-column".equals(pixelMatrixSceneId)
+                        || "cyclic-percent-row".equals(pixelMatrixSceneId)
+                        || "definite-percent-column".equals(pixelMatrixSceneId)
+                        || "auto-fill-overflow-neighbors".equals(pixelMatrixSceneId)
                         || "columns-fill-negative-positive-cycle".equals(pixelMatrixSceneId)
                         || "implicit-min-content-overflow-border".equals(pixelMatrixSceneId)
                         || "columns-negative-fixed-root-overflow".equals(pixelMatrixSceneId)
@@ -7483,6 +7557,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int[] c114GridExpectedRgb(String sampleId) {
         switch (sampleId) {
+            case "cyclic-column-inside-track":
+            case "cyclic-column-past-track":
+            case "cyclic-row-inside-track":
+            case "cyclic-row-past-track":
+            case "definite-column-inside-track":
+            case "definite-column-past-track":
+                return new int[] {229, 72, 77};
             case "nested-grid-internal-gap":
                 return new int[] {231, 246, 237};
             case "nested-grid-inside-outer-edge":
