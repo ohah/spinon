@@ -1,0 +1,29 @@
+700:__ZN10spinon_ffi11runtime_gpu8fixtures5c11_429cyclic_percentage_fit_content14runtime_source17h8747bfb1d616e6c3E
+804:_spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture
+1472:cyclic_percentage_fit_content
+7106:cyclic-fit-content-column
+7109:root.setAttribute('id', 'c114-cyclic-fit-content-column-grid');
+7114:item.setAttribute('id', 'c114-cyclic-fit-content-column-item');
+7119:return { sceneId:'cyclic-fit-content-column', rootId:'c114-cyclic-fit-content-column-grid', nodeIds:['c114-cyclic-fit-content-column-grid', 'c114-cyclic-fit-content-column-item'] };
+7121:cyclic-fit-content-row
+7124:root.setAttribute('id', 'c114-cyclic-fit-content-row-grid');
+7129:item.setAttribute('id', 'c114-cyclic-fit-content-row-item');
+7134:return { sceneId:'cyclic-fit-content-row', rootId:'c114-cyclic-fit-content-row-grid', nodeIds:['c114-cyclic-fit-content-row-grid', 'c114-cyclic-fit-content-row-item'] };
+7136:definite-fit-content-column
+7139:root.setAttribute('id', 'c114-definite-fit-content-column-grid');
+7144:item.setAttribute('id', 'c114-definite-fit-content-column-item');
+7149:return { sceneId:'definite-fit-content-column', rootId:'c114-definite-fit-content-column-grid', nodeIds:['c114-definite-fit-content-column-grid', 'c114-definite-fit-content-column-item'] };
+9376:Qcrates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/cyclic_percentage_fit_content.rs
+9378:z/Users/yoonhb/Documents/workspace/spinon/crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/cyclic_percentage_fit_content.rs
+15581:cyclic-fit-content-column(() => {
+15583:root.setAttribute('id', 'c114-cyclic-fit-content-column-grid');
+15588:item.setAttribute('id', 'c114-cyclic-fit-content-column-item');
+15593:return { sceneId:'cyclic-fit-content-column', rootId:'c114-cyclic-fit-content-column-grid', nodeIds:['c114-cyclic-fit-content-column-grid', 'c114-cyclic-fit-content-column-item'] };
+15594:})()cyclic-fit-content-row(() => {
+15596:root.setAttribute('id', 'c114-cyclic-fit-content-row-grid');
+15601:item.setAttribute('id', 'c114-cyclic-fit-content-row-item');
+15606:return { sceneId:'cyclic-fit-content-row', rootId:'c114-cyclic-fit-content-row-grid', nodeIds:['c114-cyclic-fit-content-row-grid', 'c114-cyclic-fit-content-row-item'] };
+15607:})()definite-fit-content-column(() => {
+15609:root.setAttribute('id', 'c114-definite-fit-content-column-grid');
+15614:item.setAttribute('id', 'c114-definite-fit-content-column-item');
+15619:return { sceneId:'definite-fit-content-column', rootId:'c114-definite-fit-content-column-grid', nodeIds:['c114-definite-fit-content-column-grid', 'c114-definite-fit-content-column-item'] };

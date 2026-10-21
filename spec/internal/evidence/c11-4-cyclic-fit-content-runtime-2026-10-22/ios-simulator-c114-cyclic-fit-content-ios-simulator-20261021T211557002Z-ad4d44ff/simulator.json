@@ -1,0 +1,13 @@
+{
+  "target": "ios-simulator",
+  "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "name": "iPhone 17 Pro",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "e24f792eb0458dc99158a4def2c2c02af1997cfede9b97a5ea12f2a8c67efa32",
+  "sourceRevision": {
+    "commit": "9af5ee8fa29269c589a02d6f1aafe3f72d53d1d0",
+    "tree": "3f21957dbd4dfeca6c60dd0f4427cc6a5bce79e7",
+    "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "trackedDirtyPaths": []
+  }
+}

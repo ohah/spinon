@@ -1,0 +1,16 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-7f78b653f6fb953d)
+
+running 10 tests
+test c11_4_track_sizing_areas_tests::ratio_constraints_remain_rejected_for_nested_html_images ... ok
+test c11_4_track_sizing_areas_tests::ratio_constraints_remain_rejected_for_non_image_grid_items ... ok
+test c11_4_track_sizing_areas_tests::direct_html_image_ratio_constraints_are_scoped_to_track_sizing_profile ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_profile_projects_negative_lines_and_reverse_auto_track_lists ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_profile_keeps_named_area_placement ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_profile_anchors_negative_lines_when_template_is_none ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_profile_lays_out_css_auto_repeat_modes ... ok
+test c11_4_track_sizing_areas_tests::cyclic_fit_content::cyclic_percentage_fit_content_text_scenes_match_chrome_tracks_and_frames ... ok
+test c11_4_track_sizing_areas_tests::root_grid_max_content_is_scoped_to_the_track_sizing_profile ... ok
+test c11_4_track_sizing_areas_tests::auto_repeat_explicit_neighbors::auto_repeat_explicit_neighbor_matrix_uses_collapsed_auto_fit_gutters ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 204 filtered out; finished in 0.02s
