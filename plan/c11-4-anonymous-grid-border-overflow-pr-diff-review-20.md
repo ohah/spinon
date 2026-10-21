@@ -20,7 +20,7 @@
 16. **draw assertion이 layout image 수만 검사할 수 있음** — script는 `runtime_image_count=2`와 `image_draw_count=2`가 함께 기록된 draw 행을 요구한다.
 17. **문서가 physical Android나 compositor 이후 표시를 주장할 수 있음** — evidence README는 API 37 AVD, iOS compositor 전 drawable을 구분하고 물리 기기 검증을 부인한다.
 18. **계획 문서가 구현 완료 상태와 맞지 않을 수 있음** — 계획은 simulator/구현 완료, 리뷰·PR 작업 진행으로 갱신했다. 공식 `spec/STATUS.md`와 C11.4 완료 집계는 건드리지 않았다.
-19. **PR 화면 이미지 링크가 바뀌거나 깨질 수 있음** — PR 본문은 커밋 SHA를 고정한 저장소 screenshot URL 두 개를 사용하고, 제출 후 Agent Browser에서 두 이미지 표시 상태를 확인한다.
+19. **PR 화면 이미지 링크가 바뀌거나 깨질 수 있음** — PR #431 본문은 커밋 SHA `7d014c7645f4ab3d406b83a9e5142c72f853d3cc`를 고정한 저장소 screenshot URL 두 개를 사용한다. Agent Browser에서 두 링크를 `complete=true`·화면 표시로 확인했으며 크기는 Android `1080×2400`, iOS `1206×2622`다. [확인 JSON](../spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/pr-images-agent-browser.json).
 20. **roadmap 변경이 Pages 배포나 별도 공식 완료 처리로 번질 수 있음** — 후속 반영은 기존 Tailnet preview 절차로 한정하고 Pages workflow/`gh-pages`와 공식 완료 집계는 변경하지 않는다.
 
-최종 PR 생성 뒤 19번의 실제 표시 상태를 Agent Browser로 확인하고, 20번의 Tailnet 파일 hash·HTTP 결과를 반영 근거에 추가한다. 그 확인 전까지 이 문서의 해당 두 항목은 제출 전 gate로 남긴다. 현재 diff 검토에서 코드·evidence 경로를 끊는 blocker는 발견하지 못했다.
+19번은 Agent Browser 표시 확인으로 통과했다. 20번은 PR merge 후 Tailnet 파일 hash·HTTP 결과를 추가할 때 최종 확인한다. 현재 diff 검토에서 코드·evidence 경로를 끊는 blocker는 발견하지 못했다.

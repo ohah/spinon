@@ -1,0 +1,25 @@
+{
+  "url": "https://github.com/ohah/spinon/pull/431",
+  "headCommit": "7d014c7645f4ab3d406b83a9e5142c72f853d3cc",
+  "browser": "agent-browser 0.31.1",
+  "images": [
+    {
+      "target": "android-avd",
+      "scene": "anonymous-runs-two-images-forward",
+      "complete": true,
+      "displayed": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    },
+    {
+      "target": "ios-simulator",
+      "scene": "anonymous-runs-two-images-forward",
+      "complete": true,
+      "displayed": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622
+    }
+  ],
+  "browserSessionClosed": true,
+  "agentBrowserProcessRemains": false
+}
