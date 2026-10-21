@@ -1,0 +1,374 @@
+use super::*;
+
+use spinon_layout::{
+    LayoutGridItemIntrinsicSource, LayoutGridTrackSizingAxis,
+    LayoutGridTrackSizingContributionKind, LayoutGridTrackSizingTrace,
+};
+
+#[derive(Clone, Copy)]
+struct Case {
+    id: &'static str,
+    depth: usize,
+    constraint: &'static str,
+    expected_width: f32,
+    expected_height: f32,
+    contribution: LayoutGridTrackSizingContributionKind,
+}
+
+const CASES: [Case; 4] = [
+    Case {
+        id: "nested-depth-one-min-content",
+        depth: 1,
+        constraint: "min-content",
+        expected_width: 70.0,
+        expected_height: 20.0,
+        contribution: LayoutGridTrackSizingContributionKind::MinContent,
+    },
+    Case {
+        id: "nested-depth-two-min-content",
+        depth: 2,
+        constraint: "min-content",
+        expected_width: 70.0,
+        expected_height: 20.0,
+        contribution: LayoutGridTrackSizingContributionKind::MinContent,
+    },
+    Case {
+        id: "nested-depth-one-max-content",
+        depth: 1,
+        constraint: "max-content",
+        expected_width: 100.0,
+        expected_height: 10.0,
+        contribution: LayoutGridTrackSizingContributionKind::MaxContent,
+    },
+    Case {
+        id: "nested-depth-two-max-content",
+        depth: 2,
+        constraint: "max-content",
+        expected_width: 100.0,
+        expected_height: 10.0,
+        contribution: LayoutGridTrackSizingContributionKind::MaxContent,
+    },
+];
+
+#[test]
+fn c114_nested_grid_depth_two_preserves_leaf_intrinsics_at_each_parent() {
+    for (index, case) in CASES.iter().enumerate() {
+        run_case(case, 11_800 + index as u64);
+    }
+}
+
+fn run_case(case: &Case, owner: u64) {
+    let (snapshot, grids, text_item, text_node) = fixture(case, owner);
+    let request = WorkRequest {
+        key: key_for(&snapshot, EnvironmentRevision::INITIAL),
+        snapshot,
+        viewport: CssViewport {
+            width_css_px: 400.0,
+            height_css_px: 200.0,
+            device_scale_factor: 1.0,
+            environment_revision: EnvironmentRevision::INITIAL,
+            media_environment: CssMediaEnvironment::MOBILE,
+        },
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
+    };
+    let calculation = compute_request_for_block_flex_grid_track_sizing(&request)
+        .unwrap_or_else(|error| panic!("{}: calculation failed: {error:?}", case.id));
+    let layout = calculation
+        .layout
+        .unwrap_or_else(|error| panic!("{}: layout failed: {error:?}", case.id));
+    let frame = |node: HostNodeHandle| {
+        layout
+            .frames
+            .iter()
+            .find(|frame| frame.node_id == node.id().get())
+            .unwrap_or_else(|| panic!("{}: missing frame for {}", case.id, node.id().get()))
+    };
+
+    for (index, grid) in grids.iter().enumerate() {
+        assert_close(frame(*grid).x, 0.0, case.id, &format!("Grid {index} x"));
+        assert_close(frame(*grid).y, 0.0, case.id, &format!("Grid {index} y"));
+        assert_close(
+            frame(*grid).width,
+            case.expected_width,
+            case.id,
+            &format!("Grid {index} width"),
+        );
+        assert_close(
+            frame(*grid).height,
+            case.expected_height,
+            case.id,
+            &format!("Grid {index} height"),
+        );
+    }
+    for (axis, expected) in [
+        (LayoutGridTrackSizingAxis::Columns, case.expected_width),
+        (LayoutGridTrackSizingAxis::Rows, case.expected_height),
+    ] {
+        for grid in &grids {
+            let trace = layout
+                .grid_track_sizing_diagnostics
+                .as_ref()
+                .and_then(|diagnostics| {
+                    diagnostics
+                        .traces
+                        .iter()
+                        .find(|trace| trace.node == grid.id())
+                })
+                .unwrap_or_else(|| {
+                    panic!(
+                        "{}: missing {axis:?} trace for Grid {}",
+                        case.id,
+                        grid.id().get()
+                    )
+                });
+            assert_single_track(trace, axis, expected, case.id);
+        }
+    }
+    assert_close(frame(text_item).x, 0.0, case.id, "leaf text x");
+    assert_close(frame(text_item).y, 0.0, case.id, "leaf text y");
+    assert_close(
+        frame(text_item).width,
+        case.expected_width,
+        case.id,
+        "leaf text width",
+    );
+    assert_close(
+        frame(text_item).height,
+        case.expected_height,
+        case.id,
+        "leaf text height",
+    );
+
+    let diagnostics = layout
+        .grid_track_sizing_diagnostics
+        .as_ref()
+        .unwrap_or_else(|| panic!("{}: missing track sizing diagnostics", case.id));
+    assert_eq!(
+        diagnostics.traces.len(),
+        grids.len(),
+        "{}: Grid trace count",
+        case.id
+    );
+    let leaf_inputs = diagnostics
+        .item_inputs
+        .iter()
+        .filter(|input| input.node == text_item.id())
+        .collect::<Vec<_>>();
+    assert_eq!(
+        leaf_inputs.len(),
+        1,
+        "{}: leaf text intrinsic input",
+        case.id
+    );
+    let input = leaf_inputs[0];
+    assert_eq!(input.grid_container, grids.last().unwrap().id());
+    assert_eq!(input.source_order, 0);
+    let LayoutGridItemIntrinsicSource::Text { sizes } = &input.source else {
+        panic!("{}: leaf intrinsic source must be Ahem text", case.id);
+    };
+    assert_close(sizes.min_content(), 70.0, case.id, "text min-content");
+    assert_close(
+        sizes.min_content_height(),
+        20.0,
+        case.id,
+        "text min-content height",
+    );
+    assert_close(sizes.max_content(), 100.0, case.id, "text max-content");
+    assert_close(
+        sizes.max_content_height(),
+        10.0,
+        case.id,
+        "text max-content height",
+    );
+    assert_eq!(
+        sizes.font_registry_revision().0,
+        1,
+        "{}: Ahem revision",
+        case.id
+    );
+    assert_ne!(text_node, text_item);
+
+    for (index, grid) in grids.iter().enumerate() {
+        let child = grids.get(index + 1).copied().unwrap_or(text_item);
+        if let Some(nested_grid) = grids.get(index + 1) {
+            assert_close(
+                frame(*nested_grid).x - frame(*grid).x,
+                0.0,
+                case.id,
+                "nested Grid root-relative x",
+            );
+            assert_close(
+                frame(*nested_grid).y - frame(*grid).y,
+                0.0,
+                case.id,
+                "nested Grid root-relative y",
+            );
+        }
+        let trace = diagnostics
+            .traces
+            .iter()
+            .find(|trace| trace.node == grid.id())
+            .unwrap();
+        let columns = trace
+            .passes
+            .iter()
+            .filter(|pass| pass.axis == LayoutGridTrackSizingAxis::Columns)
+            .last()
+            .unwrap();
+        assert!(
+            columns.contributions.iter().any(|contribution| {
+                contribution.item == child.id()
+                    && contribution.kind == case.contribution
+                    && contribution.span == 1
+                    && (contribution.value - case.expected_width).abs() <= 1.0 / 64.0
+            }),
+            "{}: missing {:?} contribution from Grid {} to {}: {:#?}",
+            case.id,
+            case.contribution,
+            child.id().get(),
+            grid.id().get(),
+            columns.contributions
+        );
+    }
+}
+
+fn assert_single_track(
+    trace: &LayoutGridTrackSizingTrace,
+    axis: LayoutGridTrackSizingAxis,
+    expected: f32,
+    case: &str,
+) {
+    let passes = trace
+        .passes
+        .iter()
+        .filter(|pass| pass.axis == axis)
+        .collect::<Vec<_>>();
+    assert_eq!(
+        passes.len(),
+        1,
+        "{case}: Grid {} {axis:?} pass count",
+        trace.node.get()
+    );
+    let tracks = passes[0]
+        .stages
+        .last()
+        .unwrap_or_else(|| panic!("{case}: Grid {} missing final stage", trace.node.get()))
+        .tracks
+        .iter()
+        .filter(|track| !track.is_gutter && !track.is_collapsed)
+        .map(|track| track.base_size)
+        .collect::<Vec<_>>();
+    assert_eq!(
+        tracks.len(),
+        1,
+        "{case}: Grid {} {axis:?} track count",
+        trace.node.get()
+    );
+    assert_close(tracks[0], expected, case, &format!("{axis:?} final track"));
+}
+
+fn assert_close(actual: f32, expected: f32, case: &str, property: &str) {
+    assert!(
+        (actual - expected).abs() <= 1.0 / 64.0,
+        "{case}: {property} expected {expected}, got {actual}"
+    );
+}
+
+fn fixture(
+    case: &Case,
+    owner: u64,
+) -> (
+    Arc<HostDocumentSnapshot>,
+    Vec<HostNodeHandle>,
+    HostNodeHandle,
+    HostNodeHandle,
+) {
+    const HTML: &str = "http://www.w3.org/1999/xhtml";
+    let mut document = HostDocument::new().unwrap();
+    let grids = (0..=case.depth)
+        .map(|_| document.reserve_node_handle().unwrap())
+        .collect::<Vec<_>>();
+    let text_item = document.reserve_node_handle().unwrap();
+    let text_node = document.reserve_node_handle().unwrap();
+    let grid_ids = (0..=case.depth)
+        .map(|index| {
+            let level = if index == 0 {
+                "root"
+            } else if index < case.depth {
+                "middle"
+            } else {
+                "inner"
+            };
+            format!("c114-{}-{level}", case.id)
+        })
+        .collect::<Vec<_>>();
+    let grid_style = format!(
+        "box-sizing:border-box;display:grid;width:{};height:auto;margin:0;padding:0;border:0;column-gap:0;row-gap:0;grid-template-columns:{};grid-template-rows:auto;align-items:start;background-color:#e9f1ff",
+        case.constraint, case.constraint
+    );
+    let mut batch =
+        DocumentChangeBatch::new(OwnerId::new(owner).unwrap(), document.document_revision());
+    for (index, (grid, id)) in grids.iter().zip(&grid_ids).enumerate() {
+        batch.push(DocumentOperation::CreateElement {
+            node: *grid,
+            namespace: HTML.to_owned(),
+            local_name: "div".to_owned(),
+        });
+        for (name, value) in [
+            ("id", id.clone()),
+            ("data-node", String::new()),
+            ("style", grid_style.clone()),
+        ] {
+            batch.push(DocumentOperation::SetAttribute {
+                node: *grid,
+                name: AttributeName::new(None, name).unwrap(),
+                value: value.into(),
+            });
+        }
+        batch.push(DocumentOperation::InsertBefore {
+            parent: if index == 0 {
+                HostParent::Root
+            } else {
+                HostParent::Node(grids[index - 1])
+            },
+            node: *grid,
+            before: None,
+        });
+    }
+    let text_style = "box-sizing:border-box;display:block;width:auto;height:auto;margin:0;padding:0;border:0;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;background-color:#ffffff";
+    batch.push(DocumentOperation::CreateElement {
+        node: text_item,
+        namespace: HTML.to_owned(),
+        local_name: "div".to_owned(),
+    });
+    for (name, value) in [
+        ("id", format!("c114-{}-text", case.id)),
+        ("data-node", String::new()),
+        ("style", text_style.to_owned()),
+    ] {
+        batch.push(DocumentOperation::SetAttribute {
+            node: text_item,
+            name: AttributeName::new(None, name).unwrap(),
+            value: value.into(),
+        });
+    }
+    batch.push(DocumentOperation::CreateText {
+        node: text_node,
+        data: "XX XXXXXXX".into(),
+    });
+    batch.push(DocumentOperation::InsertBefore {
+        parent: HostParent::Node(*grids.last().unwrap()),
+        node: text_item,
+        before: None,
+    });
+    batch.push(DocumentOperation::InsertBefore {
+        parent: HostParent::Node(text_item),
+        node: text_node,
+        before: None,
+    });
+    document.commit(batch).unwrap();
+    (Arc::new(document.snapshot()), grids, text_item, text_node)
+}

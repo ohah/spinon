@@ -1,6 +1,6 @@
 # C11.4 · 두 단계 nested Grid intrinsic contribution 계획
 
-**상태:** Chrome 156 Agent Browser oracle와 CSS Grid 규범에서 독립 계산한 inline-axis 결과를 고정했다. 계획 실패 관점 검토 20개를 마친 뒤 계획 PR을 Rebase and merge한다. 구현 전용 runtime fixture, Rust layout 검증, Android/iOS Simulator 실행은 하지 않았다. 계획 PR 병합 뒤 새 구현 branch에서 진행한다. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다.
+**상태:** 계획 PR 병합 뒤 fixed runtime fixture와 Rust 검증을 구현했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 scene이 각각 4/4 통과했고, 기본/opt-in static archive 경계를 확인했다. 구현 실패 관점 20개와 별도 PR diff 실패 관점 30개 검토를 마쳤으며 PR 병합이 남았다. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다.
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [일반 nested Grid 제한 계획](./c11-4-nested-grid-intrinsic.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
@@ -8,7 +8,7 @@
 
 현재 nested Grid fixture는 root Grid 아래 nested Grid 한 단계의 intrinsic contribution을 고정한다. CSS Grid Level 1은 nested Grid container의 min-content/max-content size를 그 Grid의 track sizing 결과로 정의하므로, 중간 Grid를 추가해도 leaf text의 intrinsic contribution이 각 parent sizing context를 거쳐 전달되어야 한다. 단계 B의 현재 근거는 depth 1에 머물러 있다.
 
-이번 slice는 **root Grid → middle Grid → inner Grid → direct-leaf text**의 고정 두 단계 nesting에서 `min-content`와 `max-content` inline-axis contribution이 전달되는지 확인한다. depth-one control과 나란히 두어 추가된 중간 Grid가 크기나 frame을 바꾸지 않는지 검증한다. CSS admission, 일반 nested tree traversal, 임의 nesting depth를 추가하지 않는다.
+이번 slice는 **root Grid → middle Grid → inner Grid → direct-leaf text**의 고정 두 단계 nesting에서 `min-content`와 `max-content` inline-axis contribution이 전달되는지 확인한다. depth-one control과 나란히 두어 추가된 중간 Grid가 크기나 frame을 바꾸지 않는지 검증한다. 구현에는 이 fixture-test 전용 profile에서 Grid의 `min-content`/`max-content` width를, intrinsic height를 함께 쓰지 않는 경우에 한해 허용하는 projection 경계가 필요하다. 일반 CSS admission, 일반 nested-tree traversal, 임의 nesting depth는 추가하지 않는다.
 
 ## 고정 입력과 규범 기대값
 
@@ -45,8 +45,14 @@ Scene geometry는 root-relative 좌표로 비교한다. Root absolute page offse
 3. Rust direct-layout/runtime gates에서 각 Grid의 Columns/Rows track trace, 각 Grid frame, text intrinsic min/max source·revision, leaf text frame과 depth-one control을 확인한다. `MinContent`·`MaxContent` contribution source를 표시하고 root-relative 0px offsets를 비교한다.
 4. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 scene의 node IDs/order, frame, used track, trace completeness, draw/present를 확인한다. Simulator의 화면은 box/runtime 상태만 증명하며 glyph paint 또는 OS compositor 이후 pixel을 주장하지 않는다.
 5. 기본 product artifact에서 fixture symbol·scene strings·Ahem payload가 제외되고 opt-in fixture artifact에는 들어오는지 각각 확인한다. Focused Rust tests, `cargo fmt --all -- --check`, workspace Clippy와 양 플랫폼 fixture app builds를 실행한다.
-6. 구현/runtime 코드를 새 실패 관점 20개로 검토하고 수정한 관점은 재검토한다. 구현 PR diff는 앞 표와 독립된 실패 관점 20개로 검토한다. PR에 Android/iOS Simulator 화면을 올리고 Agent Browser에서 실제 로드되는지 확인한 뒤 전용 browser session을 닫는다.
+6. 구현/runtime 코드를 계획 검토와 독립된 실패 관점 20개로 검토하고 수정한 관점은 재검토한다. 구현 PR diff는 앞 두 검토와 독립된 실패 관점 30개로 검토한다. PR에 Android/iOS Simulator 화면을 올리고 Agent Browser에서 실제 로드되는지 확인한 뒤 전용 browser session을 닫는다.
 7. Required checks 설정과 현재 결과를 확인하고, 요구 gate가 있으면 통과 후 `Rebase and merge`한다. check가 설정되지 않았거나 비어 있으면 CI 통과로 표현하지 않는다.
+
+## 구현 결과와 남은 검토
+
+고정 scene adapter, runtime Ahem 입력 연결, root부터 inner Grid까지의 frame·Columns/Rows trace assertion을 추가했다. 각 Grid는 직계 자식 Grid 또는 마지막 leaf text item에서 `MinContent`/`MaxContent` one-track contribution을 받아야 한다. layout projection 변경은 C11.4 fixture-test profile에만 적용되며 non-Grid intrinsic width, intrinsic height 조합과 다른 profile은 계속 거부한다. Android/iOS 실행 결과, build/test logs, screenshots, APK hash와 static archive 경계는 [runtime evidence](../spec/internal/evidence/c11-4-nested-grid-depth-two-runtime-2026-10-21/README.md)에 연결했다.
+
+화면 검증은 box frames, track/contribution trace, intrinsic text metrics, draw/present까지만 다룬다. glyph pixel equality와 iOS compositor-after pixels는 증명하지 않는다. [구현/runtime 실패 검토 20개](../spec/internal/evidence/c11-4-nested-grid-depth-two-runtime-2026-10-21/implementation-review-20.md)를 마쳤다. 구현 PR diff 실패 검토 30개와 병합 결과는 완료 후 이 문서와 상태 대장에 연결한다. 이 focused slice의 검증은 C11.4 전체 완료 판정이 아니다.
 
 ## 제외와 완료 판정
 
@@ -60,3 +66,6 @@ Scene geometry는 root-relative 좌표로 비교한다. Root absolute page offse
 - [계획 실패 관점 검토 20개](./c11-4-nested-grid-depth-two-plan-review-20.md)
 - [계획 PR diff 실패 관점 검토 20개](../spec/internal/evidence/c11-4-nested-grid-depth-two-precomparison-2026-10-21/plan-pr-diff-review-20.md)
 - [사전 비교 README](../spec/internal/evidence/c11-4-nested-grid-depth-two-precomparison-2026-10-21/README.md)
+- [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-4-nested-grid-depth-two-runtime-2026-10-21/implementation-review-20.md)
+- [구현 PR diff 실패 관점 검토 30개](../spec/internal/evidence/c11-4-nested-grid-depth-two-runtime-2026-10-21/pr-diff-review-30.md)
+- PR 병합 근거는 PR 진행 후 연결한다.

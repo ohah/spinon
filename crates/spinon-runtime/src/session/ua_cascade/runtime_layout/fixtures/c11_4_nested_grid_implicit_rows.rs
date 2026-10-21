@@ -23,6 +23,14 @@ struct Scene {
     nested_row_end: ComputedCssGridPlacement,
 }
 
+struct FixedBlockExpectation<'a> {
+    scene: &'a Scene,
+    suffix: &'a str,
+    dimensions: (f32, f32),
+    row_start: i32,
+    row_end: i32,
+}
+
 const SCENES: [Scene; 2] = [
     Scene {
         id: "nested-grid-implicit-row-span-two",
@@ -105,21 +113,25 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         snapshot,
         styles,
         *explicit_item,
-        &scene,
-        "explicit",
-        (24.0, 8.0),
-        1,
-        2,
+        FixedBlockExpectation {
+            scene: &scene,
+            suffix: "explicit",
+            dimensions: (24.0, 8.0),
+            row_start: 1,
+            row_end: 2,
+        },
     )?;
     validate_fixed_block(
         snapshot,
         styles,
         *first_implicit_item,
-        &scene,
-        "implicit-min",
-        (4.0, 8.0),
-        2,
-        3,
+        FixedBlockExpectation {
+            scene: &scene,
+            suffix: "implicit-min",
+            dimensions: (4.0, 8.0),
+            row_start: 2,
+            row_end: 3,
+        },
     )?;
     validate_image(snapshot, styles, *image, nested, &scene)?;
 
@@ -259,12 +271,15 @@ fn validate_fixed_block(
     snapshot: &HostDocumentSnapshot,
     styles: &ComputedStyleSnapshot,
     node: HostNodeHandle,
-    scene: &Scene,
-    suffix: &str,
-    dimensions: (f32, f32),
-    row_start: i32,
-    row_end: i32,
+    expected: FixedBlockExpectation<'_>,
 ) -> Result<(), RuntimeLayoutFailure> {
+    let FixedBlockExpectation {
+        scene,
+        suffix,
+        dimensions,
+        row_start,
+        row_end,
+    } = expected;
     let (namespace, tag, id) = element_identity(snapshot, node)?;
     if namespace != HTML_NAMESPACE
         || tag != "div"
