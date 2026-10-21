@@ -1,0 +1,6 @@
+llvm-nm=/Users/yoonhb/.rustup/toolchains/1.96.1-aarch64-apple-darwin/lib/rustlib/aarch64-apple-darwin/bin/llvm-nm
+archive=target/debug/libspinon_ffi.a
+d65047b562dc8f9d684d71e09f0a0a9e2b46b2b38767789c563b49de16d1d75f  target/debug/libspinon_ffi.a
+0000000000000000 T _spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture
+00000000000003d4 T _spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture
+PASS: C11.4 scene payload present in fixture-test artifact

@@ -1,0 +1,44 @@
+{
+  "capturedAtUtc": "2026-10-21T02:49:50.629197+00:00",
+  "adbVersion": {
+    "command": "adb version",
+    "exitCode": 0,
+    "stdout": "Android Debug Bridge version 1.0.41\nVersion 36.0.2-14143358\nInstalled as /opt/homebrew/bin/adb\nRunning on Darwin 25.5.0 (arm64)\n",
+    "stderr": ""
+  },
+  "devices": {
+    "command": "adb devices -l",
+    "exitCode": 0,
+    "stdout": "List of devices attached\nemulator-5554          device product:sdk_gphone16k_arm64 model:sdk_gphone16k_arm64 device:emu64a16k transport_id:10\nemulator-5556          device product:sdk_gphone16k_arm64 model:sdk_gphone16k_arm64 device:emu64a16k transport_id:11\n\n",
+    "stderr": ""
+  },
+  "mdns": {
+    "command": "adb mdns services",
+    "exitCode": 0,
+    "stdout": "List of discovered mdns services\n\n",
+    "stderr": ""
+  },
+  "requestedPhysicalSerial": {
+    "command": "adb -s R5KYB06SMPE get-state",
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "error: device 'R5KYB06SMPE' not found\n"
+  },
+  "usbDevices": {
+    "command": "/usr/sbin/system_profiler SPUSBDataType -json",
+    "exitCode": 0,
+    "stdout": "{\n  \"SPUSBDataType\" : [\n\n  ]\n}",
+    "stderr": ""
+  },
+  "existingAvdShellProbe": {
+    "command": "adb -s emulator-5554 shell getprop ro.product.model",
+    "timeoutSeconds": 6,
+    "stdout": "",
+    "stderr": ""
+  },
+  "apk": {
+    "path": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+    "sha256": "1d42e406a83fd0d31cfe58fc0b7f5d5efce285b0a77220568a0e6e7cd792fc2e",
+    "sizeBytes": 115263562
+  }
+}

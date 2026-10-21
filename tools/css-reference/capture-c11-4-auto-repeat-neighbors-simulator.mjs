@@ -31,16 +31,24 @@ const mixedMultiSpanSceneIDs = new Set([
   'mixed-text-image-span2-forward', 'mixed-text-image-span2-reversed',
   'mixed-text-image-span2-before-span3', 'mixed-text-image-span3-before-span2',
 ]);
+const anonymousTextSceneIDs = new Set([
+  'anonymous-min-content-wrap', 'anonymous-comment-continuation',
+  'anonymous-runs-around-block', 'anonymous-hidden-child-continuation',
+  'whitespace-does-not-create-item',
+]);
 const isTextMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => textMultiSpanSceneIDs.has(sceneID));
 const isImageMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => imageMultiSpanSceneIDs.has(sceneID));
 const isMixedMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => mixedMultiSpanSceneIDs.has(sceneID));
+const isAnonymousTextRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => anonymousTextSceneIDs.has(sceneID));
 const isMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID)
     || textMultiSpanSceneIDs.has(sceneID) || mixedMultiSpanSceneIDs.has(sceneID));
 const runKind = requestedRunKind ?? (isMixedMultiSpanRun ? 'mixed-multispan-contributions'
+  : isAnonymousTextRun ? 'anonymous-grid-text'
   : isImageMultiSpanRun ? 'image-multispan-contributions'
   : isTextMultiSpanRun ? 'text-multispan-contributions'
   : isMultiSpanRun ? 'multispan-ordering' : 'negative-implicit');
@@ -66,6 +74,8 @@ const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
   ? `spec/internal/evidence/${evidenceGroup}-${date}/${target}-${runPrefix}`
   : isMixedMultiSpanRun
     ? `spec/internal/evidence/c11-4-mixed-text-image-multispan-${date}/${target}-${runPrefix}`
+  : isAnonymousTextRun
+    ? `spec/internal/evidence/c11-4-anonymous-grid-text-${date}/${target}-${runPrefix}`
   : isImageMultiSpanRun
     ? `spec/internal/evidence/c11-4-image-multispan-contributions-${date}/${target}-${runPrefix}`
   : isTextMultiSpanRun
@@ -703,12 +713,85 @@ scenes.push({
 assert.equal(scenes.length, 155, 'C11.4 auto-minimum flexible span 후속은 155 scene이어야 합니다.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 auto-minimum flexible span scene ID는 중복되지 않아야 합니다.');
+scenes.push(
+  {
+    id: 'anonymous-min-content-wrap', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=120,height=20', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=20]',
+    tracks: [20, 100], collapsed: [false, false],
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 20, minContentHeight: 20, maxContent: 50, maxContentHeight: 10 },
+      textSources: [{ node: 2, text: 'XX XX' }],
+      frame: { node: 2, x: 0, y: 0, width: 20, height: 20 },
+    }],
+  },
+  {
+    id: 'anonymous-comment-continuation', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=120,height=10', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10]',
+    tracks: [40, 80], collapsed: [false, false],
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 40, minContentHeight: 10, maxContent: 40, maxContentHeight: 10 },
+      textSources: [{ node: 2, text: 'XX' }, { node: 3, text: 'XX' }],
+      frame: { node: 2, x: 0, y: 0, width: 40, height: 10 },
+    }],
+  },
+  {
+    id: 'anonymous-runs-around-block', axis: 'Columns', boxCount: 2,
+    rootFrame: 'width=120,height=10', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10;'
+      + '1:node=3,x=20,y=0,width=30,height=10]',
+    tracks: [20, 30, 40], collapsed: [false, false, false],
+    anonymousTextItems: [
+      {
+        grid: 1, node: 2, sourceOrder: 0,
+        source: { minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10 },
+        textSources: [{ node: 2, text: 'XX' }],
+        frame: { node: 2, x: 0, y: 0, width: 20, height: 10 },
+      },
+      {
+        grid: 1, node: 4, sourceOrder: 2,
+        source: { minContent: 40, minContentHeight: 10, maxContent: 40, maxContentHeight: 10 },
+        textSources: [{ node: 4, text: 'XXXX' }],
+        frame: { node: 4, x: 50, y: 0, width: 40, height: 10 },
+      },
+    ],
+  },
+  {
+    id: 'anonymous-hidden-child-continuation', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=120,height=10', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10]',
+    tracks: [40, 80], collapsed: [false, false],
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 40, minContentHeight: 10, maxContent: 40, maxContentHeight: 10 },
+      textSources: [{ node: 2, text: 'XX' }, { node: 5, text: 'XX' }],
+      frame: { node: 2, x: 0, y: 0, width: 40, height: 10 },
+    }],
+  },
+  {
+    id: 'whitespace-does-not-create-item', axis: 'Columns', boxCount: 3,
+    rootFrame: 'width=120,height=10', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10;'
+      + '1:node=2,x=0,y=0,width=10,height=10;2:node=4,x=20,y=0,width=10,height=10]',
+    tracks: [20, 30, 40], collapsed: [false, false, false],
+    anonymousTextItems: [],
+  },
+);
+assert.equal(scenes.length, 160, 'C11.4 anonymous Grid text slice adds five scene이어야 합니다.');
+assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
+  'C11.4 anonymous Grid text scene ID는 중복되지 않아야 합니다.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
 const runScenes = requestedSceneIDSet
   ? scenes.filter(({ id }) => requestedSceneIDSet.has(id))
   : scenes;
 assert.ok(runScenes.length > 0,
   requestedSceneIDs ? `C11.4 scene ID를 찾지 못했습니다: ${requestedSceneIDs.join(',')}` : '실행할 scene이 없습니다.');
+const longestRunID = `${runPrefix}-${runScenes.length - 1}-retry-3`;
+assert.ok(longestRunID.length <= 80,
+  `C11.4 run ID가 플랫폼 인수 제한 80자를 넘습니다: ${longestRunID.length}`);
 if (requestedSceneIDs) {
   assert.equal(requestedSceneIDSet.size, requestedSceneIDs.length,
     'C11.4 선택 scene ID가 중복됐습니다.');
@@ -1684,6 +1767,38 @@ function verifyRuntimeLog(log, scene, runID) {
   const tracePayload = traceParts.map(({ payload }) => payload).join('')
     .replace(/^grid_track_sizing_diagnostics=/, '');
   const diagnostics = JSON.parse(tracePayload);
+  if (scene.anonymousTextItems) {
+    const actualInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => ({
+      grid: input.grid,
+      node: input.node,
+      sourceOrder: input.sourceOrder,
+      source: input.source && {
+        kind: input.source.kind,
+        fontRegistryRevision: input.source.fontRegistryRevision,
+        minContent: input.source.minContent,
+        minContentHeight: input.source.minContentHeight,
+        maxContent: input.source.maxContent,
+        maxContentHeight: input.source.maxContentHeight,
+      },
+      textSources: input.textSources,
+    }));
+    const expectedInputs = scene.anonymousTextItems.map((input) => ({
+      grid: input.grid,
+      node: input.node,
+      sourceOrder: input.sourceOrder,
+      source: {
+        kind: 'text',
+        fontRegistryRevision: 1,
+        ...input.source,
+      },
+      textSources: input.textSources,
+    }));
+    assert.deepEqual(actualInputs, expectedInputs,
+      `${scene.id}: anonymous item source grouping and intrinsic sizes differ`);
+    assert.deepEqual(diagnostics.gridItemFrames ?? [],
+      scene.anonymousTextItems.map(({ frame }) => frame),
+      `${scene.id}: anonymous item frame evidence differs`);
+  }
   if (scene.intrinsicInputs && scene.mixedIntrinsicContributions) {
     const intrinsicInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => (
       input.source?.kind === 'text' ? {

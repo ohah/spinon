@@ -308,9 +308,9 @@ fn validate_item_style(
     ] {
         super::require_property(style, name, expected)?;
     }
-    let expected_row_start = i32::try_from(item.row).expect("fixed row line fits i32");
-    let expected_column_start = i32::try_from(item.column_start).expect("fixed column fits i32");
-    let expected_column_span = i32::try_from(item.column_span).expect("fixed column span fits i32");
+    let expected_row_start = item.row;
+    let expected_column_start = item.column_start;
+    let expected_column_span = item.column_span;
     let placement_matches = style.grid_item_placement.as_ref().is_some_and(|placement| {
         placement.row_start == ComputedCssGridPlacement::Line(expected_row_start)
             && placement.row_end == ComputedCssGridPlacement::Auto
@@ -346,10 +346,10 @@ fn validate_item_style(
     Ok(())
 }
 
-fn style_for<'a>(
-    styles: &'a ComputedStyleSnapshot,
+fn style_for(
+    styles: &ComputedStyleSnapshot,
     node: HostNodeHandle,
-) -> Result<&'a ComputedElementStyle, super::RuntimeLayoutFailure> {
+) -> Result<&ComputedElementStyle, super::RuntimeLayoutFailure> {
     styles
         .elements
         .iter()

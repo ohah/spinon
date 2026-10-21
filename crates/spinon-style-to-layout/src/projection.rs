@@ -486,14 +486,18 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_parag
         return Err(StyleLayoutError::SnapshotMismatch { field: "viewport" });
     }
     let inline_run_styles = BTreeMap::new();
-    compute_layout_from_styles_with_text(
+    compute_layout_from_styles_with_text_and_grid_options(
         snapshot,
         root,
         computed_styles,
         viewport,
-        true,
         None,
         Some((paragraph_styles, &inline_run_styles, text_engine)),
+        StyleLayoutProjectionOptions {
+            reject_cascade_diagnostics: true,
+            allow_implicit_named_lines: false,
+            allow_c11_4_anonymous_grid_text_items: true,
+        },
     )
 }
 
@@ -670,6 +674,7 @@ fn compute_layout_from_styles_with_grid_options(
         StyleLayoutProjectionOptions {
             reject_cascade_diagnostics,
             allow_implicit_named_lines,
+            allow_c11_4_anonymous_grid_text_items: false,
         },
     )
 }
@@ -693,6 +698,7 @@ fn compute_layout_from_styles_with_text(
         StyleLayoutProjectionOptions {
             reject_cascade_diagnostics,
             allow_implicit_named_lines: false,
+            allow_c11_4_anonymous_grid_text_items: false,
         },
     )
 }
@@ -701,6 +707,7 @@ fn compute_layout_from_styles_with_text(
 struct StyleLayoutProjectionOptions {
     reject_cascade_diagnostics: bool,
     allow_implicit_named_lines: bool,
+    allow_c11_4_anonymous_grid_text_items: bool,
 }
 
 fn compute_layout_from_styles_with_text_and_grid_options(
@@ -845,18 +852,46 @@ fn compute_layout_from_styles_with_text_and_grid_options(
         height: viewport.height_css_px,
     };
     let mut input = if let Some((paragraph_styles, inline_run_styles, _)) = text_profile {
-        LayoutInput::from_host_document_with_viewport_containing_block_and_text_paragraphs_and_run_styles_ignoring_collapsible_whitespace(
-            snapshot,
-            root,
-            layout_viewport,
-            &styles,
-            spinon_layout::HostTextStyleProfile {
-                paragraphs: paragraph_styles,
-                inline_runs: inline_run_styles,
-            },
-            computed_styles.style_revision,
-            viewport.environment_revision,
-        )?
+        let text_styles = spinon_layout::HostTextStyleProfile {
+            paragraphs: paragraph_styles,
+            inline_runs: inline_run_styles,
+        };
+        #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+        let input = if options.allow_c11_4_anonymous_grid_text_items {
+            LayoutInput::from_host_document_with_viewport_containing_block_and_c11_4_anonymous_grid_text_items(
+                snapshot,
+                root,
+                layout_viewport,
+                &styles,
+                text_styles,
+                computed_styles.style_revision,
+                viewport.environment_revision,
+            )?
+        } else {
+            LayoutInput::from_host_document_with_viewport_containing_block_and_text_paragraphs_and_run_styles_ignoring_collapsible_whitespace(
+                snapshot,
+                root,
+                layout_viewport,
+                &styles,
+                text_styles,
+                computed_styles.style_revision,
+                viewport.environment_revision,
+            )?
+        };
+        #[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
+        let input = {
+            debug_assert!(!options.allow_c11_4_anonymous_grid_text_items);
+            LayoutInput::from_host_document_with_viewport_containing_block_and_text_paragraphs_and_run_styles_ignoring_collapsible_whitespace(
+                snapshot,
+                root,
+                layout_viewport,
+                &styles,
+                text_styles,
+                computed_styles.style_revision,
+                viewport.environment_revision,
+            )?
+        };
+        input
     } else if matches!(
         computed_styles.profile,
         ComputedStyleProfile::RuntimeBlockFormattingV1

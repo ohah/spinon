@@ -711,8 +711,7 @@ fn c114_direct_text_items_preserve_multispan_intrinsic_contributions_and_order()
         let column_pass = trace
             .passes
             .iter()
-            .filter(|pass| pass.axis == LayoutGridTrackSizingAxis::Columns)
-            .last()
+            .rfind(|pass| pass.axis == LayoutGridTrackSizingAxis::Columns)
             .unwrap();
         let spans = column_pass
             .stages

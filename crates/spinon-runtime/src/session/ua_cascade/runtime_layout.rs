@@ -21,6 +21,8 @@ use spinon_style::{
 };
 use spinon_style_to_layout::{StyleLayoutError, StyleLayoutOutput, compute_runtime_style_layout};
 use spinon_style_to_render::{CurrentLayoutInputs, StyleRenderError};
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+use std::collections::BTreeMap;
 use std::collections::BTreeSet;
 use std::sync::Arc;
 use std::time::{Duration, Instant};
@@ -88,6 +90,7 @@ pub struct RuntimeGridTrackSizingDiagnostics {
     pub revision: spinon_layout::LayoutInputRevision,
     pub intrinsic_measurements: Arc<[spinon_layout::LayoutIntrinsicMeasurement]>,
     pub item_inputs: Arc<[spinon_layout::LayoutGridItemIntrinsicInput]>,
+    pub item_frames: Arc<[(spinon_core::NodeId, LayoutFrame)]>,
     pub traces: Arc<[spinon_layout::LayoutGridTrackSizingTrace]>,
 }
 
@@ -118,6 +121,7 @@ impl RuntimeGridTrackSizingDiagnostics {
             revision,
             intrinsic_measurements,
             item_inputs,
+            item_frames: Arc::clone(&self.item_frames),
             traces: Arc::clone(&self.traces),
         }
     }
@@ -345,7 +349,16 @@ where
             None
         };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_anonymous_text_input = if c11_4_mixed_input.is_none()
+        && profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
+    {
+        fixtures::prepare_c11_4_anonymous_text(&request.snapshot, root, &styles)?
+    } else {
+        None
+    };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_text_input = if c11_4_mixed_input.is_none()
+        && c11_4_anonymous_text_input.is_none()
         && profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
     {
         fixtures::prepare_c11_4_text(&request.snapshot, root, &styles)?
@@ -361,7 +374,9 @@ where
         None
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-    if c11_4_text_input.is_some() && c11_4_image_input.is_some() {
+    if (c11_4_text_input.is_some() || c11_4_anonymous_text_input.is_some())
+        && c11_4_image_input.is_some()
+    {
         return Err(layout_failure(
             "unsupported_c114_mixed_intrinsic_fixture",
             Some(root.id().get()),
@@ -403,6 +418,15 @@ where
                 &mixed_input.paragraph_styles,
                 &mixed_input.engine,
                 mixed_input.intrinsic_sizes.clone(),
+            )
+        } else if let Some(text_input) = &c11_4_anonymous_text_input {
+            spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs(
+                &request.snapshot,
+                root,
+                styles.clone(),
+                request.viewport,
+                &text_input.paragraph_styles,
+                &text_input.engine,
             )
         } else if let Some(text_input) = &c11_4_text_input {
             spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs(
@@ -486,6 +510,9 @@ where
     }
     .map_err(layout_failure_from_error)?;
     let frames = runtime_frames(&request.snapshot, root, &styles, &output.layout)?;
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let anonymous_grid_text_item_frames =
+        detach_anonymous_grid_text_item_frames(&styles, &mut output.layout)?;
     if styles.profile == spinon_style::ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
         let document_elements = host_document_element_ids(&request.snapshot, root)?;
         if let Some(node) = output
@@ -552,10 +579,26 @@ where
         {
             None
         } else {
+            let item_frames = item_inputs
+                .iter()
+                .map(|input| {
+                    output
+                        .layout
+                        .frames
+                        .get(&input.node)
+                        .copied()
+                        .or_else(|| anonymous_grid_text_item_frames.get(&input.node).copied())
+                        .map(|frame| (input.node, frame))
+                        .ok_or_else(|| {
+                            layout_failure("missing_grid_item_frame", Some(input.node.get()), None)
+                        })
+                })
+                .collect::<Result<Vec<_>, _>>()?;
             Some(Arc::new(RuntimeGridTrackSizingDiagnostics {
                 revision: output.layout.revision,
                 intrinsic_measurements: intrinsic_measurements.into(),
                 item_inputs: item_inputs.into(),
+                item_frames: item_frames.into(),
                 traces: traces.into(),
             }))
         }
@@ -727,8 +770,22 @@ fn runtime_frames(
 ) -> Result<Vec<RuntimeLayoutFrame>, RuntimeLayoutFailure> {
     let root_html_text_profile =
         styles.profile == spinon_style::ComputedStyleProfile::RuntimeRootHtmlTextPaintV1;
-    if !root_html_text_profile && output.frames.len() != styles.elements.len() {
-        return Err(layout_failure("frame_set_mismatch", None, None));
+    let anonymous_text_item_ids = anonymous_grid_text_item_ids(styles, output);
+    for node in &anonymous_text_item_ids {
+        let Some(frame) = output.frames.get(node) else {
+            return Err(layout_failure(
+                "missing_grid_item_frame",
+                Some(node.get()),
+                None,
+            ));
+        };
+        if !valid_frame(*frame) {
+            return Err(layout_failure(
+                "invalid_grid_item_frame",
+                Some(node.get()),
+                None,
+            ));
+        }
     }
     let styles_by_node = styles
         .elements
@@ -748,12 +805,17 @@ fn runtime_frames(
         if matches!(node.kind(), spinon_core::HostNodeKind::Text(_)) {
             continue;
         }
+        let style = styles_by_node.get(&handle.id()).ok_or_else(|| {
+            layout_failure("missing_computed_style", Some(handle.id().get()), None)
+        })?;
+        let display = style.properties.get("display").map(String::as_str);
+        if display == Some("none")
+            && (root_html_text_profile || !output.frames.contains_key(&handle.id()))
+        {
+            continue;
+        }
         let include_frame = if root_html_text_profile {
-            let style = styles_by_node.get(&handle.id()).ok_or_else(|| {
-                layout_failure("missing_computed_style", Some(handle.id().get()), None)
-            })?;
-            match style.properties.get("display").map(String::as_str) {
-                Some("none") => continue,
+            match display {
                 Some("inline") => false,
                 Some("block") => true,
                 Some(value) => {
@@ -802,10 +864,54 @@ fn runtime_frames(
             pending.extend(children.into_iter().rev());
         }
     }
-    if !root_html_text_profile && frames.len() != output.frames.len() {
+    if !root_html_text_profile
+        && frames.len() + anonymous_text_item_ids.len() != output.frames.len()
+    {
         return Err(layout_failure("frame_set_mismatch", None, None));
     }
     Ok(frames)
+}
+
+fn anonymous_grid_text_item_ids(
+    styles: &ComputedStyleSnapshot,
+    output: &LayoutOutput,
+) -> BTreeSet<spinon_core::NodeId> {
+    let element_ids = styles
+        .elements
+        .iter()
+        .map(|style| style.node_id)
+        .collect::<BTreeSet<_>>();
+    output
+        .grid_item_intrinsic_inputs
+        .iter()
+        .filter(|input| !input.text_sources.is_empty() && !element_ids.contains(&input.node))
+        .map(|input| input.node)
+        .collect()
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+fn detach_anonymous_grid_text_item_frames(
+    styles: &ComputedStyleSnapshot,
+    output: &mut LayoutOutput,
+) -> Result<BTreeMap<spinon_core::NodeId, LayoutFrame>, RuntimeLayoutFailure> {
+    let item_ids = anonymous_grid_text_item_ids(styles, output);
+    item_ids
+        .into_iter()
+        .map(|node| {
+            let frame = output
+                .frames
+                .remove(&node)
+                .ok_or_else(|| layout_failure("missing_grid_item_frame", Some(node.get()), None))?;
+            if !valid_frame(frame) {
+                return Err(layout_failure(
+                    "invalid_grid_item_frame",
+                    Some(node.get()),
+                    None,
+                ));
+            }
+            Ok((node, frame))
+        })
+        .collect()
 }
 
 fn host_document_element_ids(
