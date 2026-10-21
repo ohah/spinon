@@ -1,6 +1,6 @@
 # C11.4 두 anonymous text run과 세 spanning image의 bordered Grid plan
 
-**상태:** Chrome 156 Agent Browser 사전 비교와 CSS Grid 2025 CRD 독립 계산을 고정했다. 계획 실패 관점 20개 검토를 마쳤다. 다음 단계는 opt-in layout/runtime fixture 구현과 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator 검증이다. 이 계획은 C11.4 checkbox나 공식 완료 수를 바꾸지 않는다.
+**상태:** opt-in fixture 구현과 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator 검증을 마쳤다. 기존 bordered two-image 장면을 포함한 네 장면이 두 플랫폼 모두 4/4 통과했고 PixelCopy·Metal drawable 표본은 각각 8/8 exact다. Rust focused tests, workspace·fixture Clippy, 두 앱 빌드와 기본/opt-in archive boundary도 통과했다. [실행 근거](../spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/README.md) · [구현 실패 관점 20개](../spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/implementation-review-20.md). PR diff의 별도 30관점 검토는 [검토 기록](../spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/pr-diff-review-30.md)에 있다. C11.4 checkbox와 공식 완료 수는 바꾸지 않는다.
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [anonymous Grid text와 세 image](./c11-4-anonymous-text-multispan-images.md) · [두 anonymous text run과 두 image border/overflow](./c11-4-anonymous-grid-border-overflow.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
@@ -46,3 +46,6 @@ Chrome 156 observed track은 `[16,32,24,20]`이며 browser CSSOM에는 중간 gr
 - [고정 Chrome fixture](../tests/fixtures/css/c11/grid-track-sizing-c114-anonymous-text-two-run-three-image-border-overflow.html)
 - [계획 실패 관점 20개](./c11-4-anonymous-grid-two-run-three-image-border-overflow-plan-review-20.md)
 - [표준 track 계산 수정](../spec/internal/evidence/c11-4-anonymous-text-multimage-precomparison-2026-10-21/README.md#2026-10-21-표준-계산-재검토)
+- [Simulator 실행·검증 근거](../spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/README.md)
+- [구현 실패 관점 20개](../spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/implementation-review-20.md)
+- [PR diff 실패 관점 30개](../spec/internal/evidence/c11-4-anonymous-text-two-run-three-image-border-overflow-2026-10-21/pr-diff-review-30.md)

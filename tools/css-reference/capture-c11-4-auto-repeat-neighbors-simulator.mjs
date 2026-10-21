@@ -47,6 +47,7 @@ const anonymousTextMultiImageSceneIDs = new Set([
 ]);
 const anonymousGridBorderOverflowSceneIDs = new Set([
   'anonymous-runs-two-images-forward', 'two-images-anonymous-runs-reversed',
+  'two-anonymous-runs-three-images-forward', 'three-images-two-anonymous-runs-reversed',
 ]);
 const isTextMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => textMultiSpanSceneIDs.has(sceneID));
@@ -1067,7 +1068,7 @@ scenes.push(
   },
 );
 scenes.push(...anonymousGridBorderOverflowScenes());
-assert.equal(scenes.length, 171, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 173, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -1097,14 +1098,20 @@ function anonymousGridBorderOverflowScenes() {
     },
     textSources: [{ node, text: 'XX' }],
   });
-  const image = (node, x, y, width, height) => ({
+  const image = (node, x, y, width, height, columnSpan = 2) => ({
     node,
     kind: 'replaced',
     frame: { node, x, y, width, height },
     source: { kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+    columnSpan,
     textSources: [],
   });
-  const makeScene = (id, inputs) => {
+  const makeScene = (id, inputs, options = {}) => {
+    const tracks = options.tracks ?? [12, 28, 20, 20];
+    const intrinsicSpans = options.intrinsicSpans ?? [1, 2];
+    const overflowSample = options.overflowSample ?? {
+      id: 'image-overflow-png-quadrant', xCssPx: 51, yCssPx: 71,
+    };
     const rootNodeId = `c114-${id}-grid`;
     const imageFrames = inputs.filter((input) => input.kind === 'replaced');
     const nodeFrames = ['0:node=1,x=0,y=0,width=40,height=184',
@@ -1113,24 +1120,25 @@ function anonymousGridBorderOverflowScenes() {
     return {
       id,
       axis: 'Columns',
-      boxCount: 3,
+      boxCount: imageFrames.length + 1,
       rootFrame: 'width=40,height=184',
       itemFrame: null,
       nodeFrames: `node_frames_css_px=[${nodeFrames.join(';')}]`,
-      tracks: [12, 28, 20, 20],
+      tracks,
       collapsed: [false, false, false, false],
       gaps: { Columns: 0, Rows: 0 },
       axes: {
-        Columns: { tracks: [12, 28, 20, 20], collapsed: [false, false, false, false] },
+        Columns: { tracks, collapsed: [false, false, false, false] },
         Rows: { tracks: [60, 60, 60], collapsed: [false, false, false] },
       },
-      intrinsicSpans: [1, 2],
-      intrinsicSpansByAxis: { Columns: [1, 2], Rows: [] },
-      itemSpans: inputs.map((input) => input.kind === 'text' ? 1 : 2),
+      intrinsicSpans,
+      intrinsicSpansByAxis: { Columns: intrinsicSpans, Rows: [] },
+      itemSpans: inputs.map((input) => input.kind === 'text' ? 1 : input.columnSpan),
       imageMinContentWidths: inputs.map((input) => input.kind === 'text' ? null : input.frame.width),
       mixedIntrinsicContributions: true,
       anonymousGridBorderOverflowContributions: true,
       anonymousTextMultiImageContributions: true,
+      runtimeImageCount: imageFrames.length,
       intrinsicInputs: inputs.map((input, sourceOrder) => input.kind === 'text'
         ? {
           grid: 1, node: input.node, sourceOrder, kind: 'text',
@@ -1152,8 +1160,9 @@ function anonymousGridBorderOverflowScenes() {
       pixelSamples: [
         { id: 'top-border-color', nodeId: rootNodeId,
           xCssPx: 10, yCssPx: 0, rgba: [240, 198, 116, 255] },
-        { id: 'image-overflow-png-quadrant', nodeId: rootNodeId,
-          xCssPx: 51, yCssPx: 71, rgba: [0, 255, 64, 255] },
+        { id: overflowSample.id, nodeId: rootNodeId,
+          xCssPx: overflowSample.xCssPx, yCssPx: overflowSample.yCssPx,
+          rgba: [0, 255, 64, 255] },
       ],
     };
   };
@@ -1164,6 +1173,22 @@ function anonymousGridBorderOverflowScenes() {
     makeScene('two-images-anonymous-runs-reversed', [
       image(2, 14, 62, 48, 32), text(3, 42), image(4, 2, 2, 24, 16), text(5, 62),
     ]),
+    makeScene('two-anonymous-runs-three-images-forward', [
+      text(2, 54), image(3, 2, 2, 24, 16), text(4, 74),
+      image(5, 20, 62, 48, 32), image(6, 2, 122, 72, 48, 3),
+    ], {
+      tracks: [18, 34, 20, 20],
+      intrinsicSpans: [1, 2, 3],
+      overflowSample: { id: 'image-c-overflow-green-png-texel', xCssPx: 62, yCssPx: 128 },
+    }),
+    makeScene('three-images-two-anonymous-runs-reversed', [
+      image(2, 2, 122, 72, 48, 3), text(3, 54), image(4, 20, 62, 48, 32),
+      text(5, 74), image(6, 2, 2, 24, 16),
+    ], {
+      tracks: [18, 34, 20, 20],
+      intrinsicSpans: [1, 2, 3],
+      overflowSample: { id: 'image-c-overflow-green-png-texel', xCssPx: 62, yCssPx: 128 },
+    }),
   ];
 }
 
@@ -2125,11 +2150,10 @@ function verifyRuntimeLog(log, scene, runID) {
   assert.ok(log.includes('SPINON_C0410_DRAW')
     && log.includes(`presented boxes=${scene.boxCount}`),
     `${scene.id}: 화면 표시 결과가 없습니다.`);
-  if (scene.id === 'anonymous-runs-two-images-forward'
-      || scene.id === 'two-images-anonymous-runs-reversed') {
+  if (scene.runtimeImageCount !== undefined) {
     assert.ok(log.split(/\r?\n/).some((line) => line.includes('SPINON_C0410_DRAW')
-      && line.includes('runtime_image_count=2 image_draw_count=2')),
-    `${scene.id}: 두 PNG가 runtime scene과 실제 draw에 모두 포함되지 않았습니다.`);
+      && line.includes(`runtime_image_count=${scene.runtimeImageCount} image_draw_count=${scene.runtimeImageCount}`)),
+    `${scene.id}: 고정 PNG 전체가 runtime scene과 실제 draw에 포함되지 않았습니다.`);
   }
   assert.ok(!log.includes('SPINON_C114_GRID_ARGUMENT_ERROR'), `${scene.id}: 실행 인자가 거부됐습니다.`);
   const traceParts = log.split(/\r?\n/).flatMap((line) => {

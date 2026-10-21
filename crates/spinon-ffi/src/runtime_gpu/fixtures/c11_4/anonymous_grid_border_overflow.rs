@@ -3,6 +3,7 @@ struct Image {
     id: &'static str,
     height: u8,
     column: u8,
+    column_span: u8,
     row: u8,
 }
 
@@ -18,6 +19,7 @@ const FORWARD: [Child; 4] = [
         id: "c114-overflow-image-a-forward",
         height: 16,
         column: 1,
+        column_span: 2,
         row: 1,
     }),
     Child::Text,
@@ -25,6 +27,7 @@ const FORWARD: [Child; 4] = [
         id: "c114-overflow-image-b-forward",
         height: 32,
         column: 2,
+        column_span: 2,
         row: 2,
     }),
 ];
@@ -34,6 +37,7 @@ const REVERSED: [Child; 4] = [
         id: "c114-overflow-image-b-reversed",
         height: 32,
         column: 2,
+        column_span: 2,
         row: 2,
     }),
     Child::Text,
@@ -41,15 +45,70 @@ const REVERSED: [Child; 4] = [
         id: "c114-overflow-image-a-reversed",
         height: 16,
         column: 1,
+        column_span: 2,
         row: 1,
     }),
     Child::Text,
+];
+
+const FORWARD_THREE: [Child; 5] = [
+    Child::Text,
+    Child::Image(Image {
+        id: "c114-overflow-three-image-a-forward",
+        height: 16,
+        column: 1,
+        column_span: 2,
+        row: 1,
+    }),
+    Child::Text,
+    Child::Image(Image {
+        id: "c114-overflow-three-image-b-forward",
+        height: 32,
+        column: 2,
+        column_span: 2,
+        row: 2,
+    }),
+    Child::Image(Image {
+        id: "c114-overflow-three-image-c-forward",
+        height: 48,
+        column: 1,
+        column_span: 3,
+        row: 3,
+    }),
+];
+
+const REVERSED_THREE: [Child; 5] = [
+    Child::Image(Image {
+        id: "c114-overflow-three-image-c-reversed",
+        height: 48,
+        column: 1,
+        column_span: 3,
+        row: 3,
+    }),
+    Child::Text,
+    Child::Image(Image {
+        id: "c114-overflow-three-image-b-reversed",
+        height: 32,
+        column: 2,
+        column_span: 2,
+        row: 2,
+    }),
+    Child::Text,
+    Child::Image(Image {
+        id: "c114-overflow-three-image-a-reversed",
+        height: 16,
+        column: 1,
+        column_span: 2,
+        row: 1,
+    }),
 ];
 
 pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
     let children = match scene_id {
         "anonymous-runs-two-images-forward" => &FORWARD[..],
         "two-images-anonymous-runs-reversed" => &REVERSED[..],
+        "two-anonymous-runs-three-images-forward" => &FORWARD_THREE[..],
+        "three-images-two-anonymous-runs-reversed" => &REVERSED_THREE[..],
         _ => return None,
     };
     let root_id = format!("c114-{scene_id}-grid");
@@ -73,13 +132,14 @@ const nodeIds = [{root_id:?}];
 image{image_index}.setAttribute('id', {id:?});
 image{image_index}.setAttribute('data-node', '');
 image{image_index}.setAttribute('src', 'https://spinon.invalid/c14-1-png-basic.png');
-image{image_index}.setAttribute('style', 'box-sizing:border-box;width:auto;height:{height}px;margin:0;padding:0;border:0;grid-column:{column} / span 2;grid-row:{row}');
+image{image_index}.setAttribute('style', 'box-sizing:border-box;width:auto;height:{height}px;margin:0;padding:0;border:0;grid-column:{column} / span {column_span};grid-row:{row}');
 root.appendChild(image{image_index});
 nodeIds.push({id:?});
 "#,
                     id = image.id,
                     height = image.height,
                     column = image.column,
+                    column_span = image.column_span,
                     row = image.row,
                 ));
                 image_index += 1;
@@ -98,13 +158,15 @@ mod tests {
     use std::collections::BTreeSet;
 
     #[test]
-    fn two_text_runs_and_images_have_two_bordered_overflow_scenes() {
+    fn two_text_runs_and_images_have_fixed_bordered_overflow_scenes() {
         let scene_ids = [
             "anonymous-runs-two-images-forward",
             "two-images-anonymous-runs-reversed",
+            "two-anonymous-runs-three-images-forward",
+            "three-images-two-anonymous-runs-reversed",
         ];
         let unique = scene_ids.into_iter().collect::<BTreeSet<_>>();
-        assert_eq!(unique.len(), 2);
+        assert_eq!(unique.len(), 4);
         for scene_id in scene_ids {
             let source = runtime_source(scene_id).expect("known bordered Grid scene");
             assert!(source.len() < 8 * 1024);
@@ -114,10 +176,21 @@ mod tests {
             assert!(!source.contains("overflow:visible"));
             assert!(source.contains("grid-template-columns:repeat(4,min-content)"));
             assert_eq!(source.matches("document.createTextNode('XX')").count(), 2);
-            assert_eq!(source.matches("document.createElement('img')").count(), 2);
-            assert_eq!(source.matches("nodeIds.push(").count(), 2);
+            let image_count = if scene_id.contains("three-images") {
+                3
+            } else {
+                2
+            };
+            assert_eq!(
+                source.matches("document.createElement('img')").count(),
+                image_count
+            );
+            assert_eq!(source.matches("nodeIds.push(").count(), image_count);
+            if image_count == 3 {
+                assert!(source.contains("grid-column:1 / span 3;grid-row:3"));
+            }
             assert!(source.contains("https://spinon.invalid/c14-1-png-basic.png"));
         }
-        assert!(runtime_source("anonymous-runs-two-images-unknown").is_none());
+        assert!(runtime_source("two-anonymous-runs-three-images-unknown").is_none());
     }
 }

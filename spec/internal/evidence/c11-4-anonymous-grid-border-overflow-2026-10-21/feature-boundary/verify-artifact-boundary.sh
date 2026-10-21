@@ -2,8 +2,8 @@
 set -euo pipefail
 
 repo_root="$(git rev-parse --show-toplevel)"
-evidence_dir="$repo_root/spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary"
-artifact_dir="$repo_root/build/c11-4-anonymous-grid-border-overflow-artifacts"
+evidence_dir="${SPINON_C11_4_BOUNDARY_EVIDENCE_DIR:-$repo_root/spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/feature-boundary}"
+artifact_dir="${SPINON_C11_4_BOUNDARY_ARTIFACT_DIR:-$repo_root/build/c11-4-anonymous-grid-border-overflow-artifacts}"
 default_archive="$artifact_dir/libspinon_ffi-default.a"
 fixture_archive="$artifact_dir/libspinon_ffi-fixture.a"
 default_symbols="$artifact_dir/default-symbols.txt"
@@ -44,6 +44,14 @@ markers = [
     "anonymous-runs-two-images-forward",
     "two-images-anonymous-runs-reversed",
     "c114-overflow-image-a-forward",
+    "two-anonymous-runs-three-images-forward",
+    "three-images-two-anonymous-runs-reversed",
+    "c114-overflow-three-image-a-forward",
+    "c114-overflow-three-image-b-forward",
+    "c114-overflow-three-image-c-forward",
+    "c114-overflow-three-image-b-reversed",
+    "c114-overflow-three-image-a-reversed",
+    "c114-overflow-three-image-c-reversed",
     "border:2px solid #f0c674",
     "https://spinon.invalid/c14-1-png-basic.png",
 ]

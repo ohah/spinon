@@ -9,6 +9,24 @@ use spinon_render::{
 const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 const IMAGE_URL: &str = "https://spinon.invalid/c14-1-png-basic.png";
 const PNG: &[u8] = include_bytes!("../../../../../../tests/fixtures/resources/c14-1-png-basic.png");
+const FORWARD_TWO_IMAGE_IDS: &[&str] = &[
+    "c114-overflow-image-a-forward",
+    "c114-overflow-image-b-forward",
+];
+const REVERSED_TWO_IMAGE_IDS: &[&str] = &[
+    "c114-overflow-image-b-reversed",
+    "c114-overflow-image-a-reversed",
+];
+const FORWARD_THREE_IMAGE_IDS: &[&str] = &[
+    "c114-overflow-three-image-a-forward",
+    "c114-overflow-three-image-b-forward",
+    "c114-overflow-three-image-c-forward",
+];
+const REVERSED_THREE_IMAGE_IDS: &[&str] = &[
+    "c114-overflow-three-image-c-reversed",
+    "c114-overflow-three-image-b-reversed",
+    "c114-overflow-three-image-a-reversed",
+];
 
 pub(super) fn attach_images(
     document: &HostDocumentSnapshot,
@@ -19,6 +37,8 @@ pub(super) fn attach_images(
     let expected_roots = [
         "c114-anonymous-runs-two-images-forward-grid",
         "c114-two-images-anonymous-runs-reversed-grid",
+        "c114-two-anonymous-runs-three-images-forward-grid",
+        "c114-three-images-two-anonymous-runs-reversed-grid",
     ];
     let mut stack = document.root_children().collect::<Vec<_>>();
     let mut roots = Vec::new();
@@ -52,22 +72,18 @@ pub(super) fn attach_images(
         .strip_prefix("c114-")
         .and_then(|value| value.strip_suffix("-grid"))
         .ok_or_else(|| "C11.4 bordered Grid root ID가 올바르지 않습니다".to_owned())?;
-    let image_ids: [&str; 2] = match scene_id {
-        "anonymous-runs-two-images-forward" => [
-            "c114-overflow-image-a-forward",
-            "c114-overflow-image-b-forward",
-        ],
-        "two-images-anonymous-runs-reversed" => [
-            "c114-overflow-image-b-reversed",
-            "c114-overflow-image-a-reversed",
-        ],
+    let image_ids = match scene_id {
+        "anonymous-runs-two-images-forward" => FORWARD_TWO_IMAGE_IDS,
+        "two-images-anonymous-runs-reversed" => REVERSED_TWO_IMAGE_IDS,
+        "two-anonymous-runs-three-images-forward" => FORWARD_THREE_IMAGE_IDS,
+        "three-images-two-anonymous-runs-reversed" => REVERSED_THREE_IMAGE_IDS,
         _ => return Ok((scene, String::new())),
     };
     let children = document
         .children(*root)
         .ok_or_else(|| "C11.4 bordered Grid child 목록이 없습니다".to_owned())?
         .collect::<Vec<_>>();
-    if children.len() != 4 {
+    if children.len() != image_ids.len() + 2 {
         return Err("C11.4 bordered Grid direct child 구조가 다릅니다".to_owned());
     }
 
@@ -94,7 +110,7 @@ pub(super) fn attach_images(
             .attribute(&id_attribute)
             .map(|value| String::from_utf16_lossy(value.code_units()))
             .unwrap_or_default();
-        if element.local_name() != "img" || actual_id != expected_id {
+        if element.local_name() != "img" || actual_id != *expected_id {
             return Err(format!("C11.4 image order 또는 id가 다릅니다: {actual_id}"));
         }
         let request = ImageRequest::from_document(document, handle)
