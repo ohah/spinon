@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 고정된 세 장면의 opt-in fixture 구현과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 실행을 마쳤다. Rust regression, artifact feature 경계, formatter, workspace Clippy, 앱 fixture build도 확인했다. 구현 검토와 PR 검토는 별도 evidence로 남긴다. 이 제한 slice는 C11.4 완료나 공식 완료 수 증가를 뜻하지 않는다.
+**상태:** 고정된 세 장면의 opt-in fixture 구현과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 실행을 마쳤다. Rust regression, artifact feature 경계, formatter, workspace Clippy, 앱 fixture build도 확인했다. 구현 검토 20개와 PR diff 검토 20개를 마쳤고 [PR #443](https://github.com/ohah/spinon/pull/443)이 열려 있다. 이 제한 slice는 C11.4 완료나 공식 완료 수 증가를 뜻하지 않는다.
 
 ## 목적과 경계
 
@@ -58,3 +58,4 @@ Ahem text의 독립 기대 intrinsic widths는 min-content 70px, max-content 100
 - [Chrome 156 사전 비교 및 SHA-256](../spec/internal/evidence/c11-4-nested-grid-replaced-item-precomparison-2026-10-21/README.md)
 - [Android/iOS Simulator 실행, 화면 및 artifact 경계](../spec/internal/evidence/c11-4-nested-grid-replaced-item-2026-10-21/README.md)
 - [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-4-nested-grid-replaced-item-2026-10-21/implementation-review-20.md)
+- [PR diff 교차 파일 실패 관점 검토 20개](../spec/internal/evidence/c11-4-nested-grid-replaced-item-2026-10-21/pr-diff-review-20.md)

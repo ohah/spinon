@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "pullRequest": "https://github.com/ohah/spinon/pull/443",
+  "tool": "Agent Browser",
+  "toolVersion": "0.31.1",
+  "imageChecks": [
+    {
+      "alt": "Android API 37 ARM64 AVD — definite flex control scene",
+      "commit": "5a234e1b2f23c85ab4ba8ddf2caac852d2978984",
+      "complete": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400,
+      "visible": true
+    },
+    {
+      "alt": "iOS 26.2 Simulator — definite flex control scene",
+      "commit": "5a234e1b2f23c85ab4ba8ddf2caac852d2978984",
+      "complete": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622,
+      "visible": true
+    }
+  ],
+  "cleanup": {
+    "browserCloseSucceeded": true,
+    "browserLaunchedAfterClose": false,
+    "pageCountAfterClose": 0,
+    "agentBrowserDaemonTerminated": true,
+    "processLookupAfterTermination": "no process for the exact agent-browser daemon pid"
+  }
+}

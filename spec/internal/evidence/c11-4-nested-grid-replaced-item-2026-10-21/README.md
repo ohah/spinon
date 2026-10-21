@@ -6,6 +6,8 @@
 
 구현 전 입력, 계산, HeadlessChrome 156 geometry, hash와 최종 `justify-items:normal` 보정은 [사전 비교](../c11-4-nested-grid-replaced-item-precomparison-2026-10-21/README.md)에 둔다. 별도 계획 실패 관점 20개는 [plan-review-20.md](../c11-4-nested-grid-replaced-item-precomparison-2026-10-21/plan-review-20.md)에 있다.
 
+구현/runtime 실패 관점 검토 20개와 별도로 [PR diff 교차 파일 실패 관점 검토 20개](./pr-diff-review-20.md)를 마쳤다.
+
 ## 장면 결과
 
 | 장면 | Outer frame / columns | Nested frame / columns | Text frame | Image frame | Parent contribution |
@@ -36,6 +38,10 @@ The screenshots are whole-app captures that show the host surface. `drawPresente
 ![iPhone 17 Pro / iOS 26.2 Simulator, definite flex control](./ios-simulator-c114-nested-grid-replaced-item-ios-simulator-20261021T112855468Z-13b520b8/nested-grid-text-image-definite-flex-control.png)
 
 The selected Android screenshot SHA-256 is `5820533ec21e9f2bae7f72c16f4f4d4eb461878612806a40e64c5fd64596a72a`; the selected iOS screenshot SHA-256 is `f818834b17a880a2a6c155536a64f3b2e7dc959f45d91b1bf2f07272cf9212a1`.
+
+## PR image rendering and Agent Browser cleanup
+
+Agent Browser 0.31.1 opened PR [#443](https://github.com/ohah/spinon/pull/443) and inspected both markdown image elements in the PR body. The Android image loaded at 1080×2400 and the iOS image at 1206×2622; both were complete and visible. The browser tab/window closed. Its daemon reported `browserLaunched=false` and `pageCount=0`, then the exact Agent Browser daemon process was terminated and `ps` found no process for that PID. Structured result: `pr-443-agent-browser-image-check.json`.
 
 ## Build, tests, and artifact boundary
 
