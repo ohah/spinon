@@ -1,0 +1,109 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Spinon C11.4 depth-three nested Grid multi-span precomparison</title>
+<style>
+  @font-face { font-family: Ahem; src: url("../../resources/c15/Ahem.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 640px; background: #fff; }
+  body { font: 10px/1 sans-serif; color: #111; }
+  .case { min-height: 152px; border-bottom: 1px solid #ccc; padding: 8px; }
+  .label { display: block; margin-bottom: 6px; }
+  .grid { display: grid; width: min-content; height: 60px; gap: 0; align-content: start; justify-content: start; align-items: start; }
+  .outer { grid-template-columns: min-content; grid-template-rows: 60px; }
+  .inner { grid-template-columns: repeat(4, min-content); grid-template-rows: repeat(3, 20px); font: 10px/10px Ahem, sans-serif; white-space: normal; }
+  .grid-item, .text { margin: 0; padding: 0; border: 0; }
+  .text { font: 10px/10px Ahem, sans-serif; white-space: normal; color: #e5484d; }
+  #result { display: none; }
+</style>
+<body>
+  <section class="case" data-case="nested-text-span2-forward">
+    <span class="label">span-2 contributions, forward order through three nested Grid boundaries</span>
+    <div class="grid outer root" id="nested-text-span2-forward-root">
+      <div class="grid outer grid-item" id="nested-text-span2-forward-middle">
+        <div class="grid outer grid-item" id="nested-text-span2-forward-branch">
+          <div class="grid inner grid-item" id="nested-text-span2-forward-inner">
+            <div class="text" id="nested-text-span2-forward-item-a" style="grid-column:1 / span 2;grid-row:1">XX XXXXX</div>
+            <div class="text" id="nested-text-span2-forward-item-b" style="grid-column:2 / span 2;grid-row:2">XXXX XXXXXXX</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="case" data-case="nested-text-span2-reversed">
+    <span class="label">same span-2 contributions, reversed DOM order</span>
+    <div class="grid outer root" id="nested-text-span2-reversed-root">
+      <div class="grid outer grid-item" id="nested-text-span2-reversed-middle">
+        <div class="grid outer grid-item" id="nested-text-span2-reversed-branch">
+          <div class="grid inner grid-item" id="nested-text-span2-reversed-inner">
+            <div class="text" id="nested-text-span2-reversed-item-b" style="grid-column:2 / span 2;grid-row:2">XXXX XXXXXXX</div>
+            <div class="text" id="nested-text-span2-reversed-item-a" style="grid-column:1 / span 2;grid-row:1">XX XXXXX</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="case" data-case="nested-text-span2-before-span3">
+    <span class="label">span-2 contributions followed by a span-3 contribution</span>
+    <div class="grid outer root" id="nested-text-span2-before-span3-root">
+      <div class="grid outer grid-item" id="nested-text-span2-before-span3-middle">
+        <div class="grid outer grid-item" id="nested-text-span2-before-span3-branch">
+          <div class="grid inner grid-item" id="nested-text-span2-before-span3-inner">
+            <div class="text" id="nested-text-span2-before-span3-item-a" style="grid-column:1 / span 2;grid-row:1">XX XXXXX</div>
+            <div class="text" id="nested-text-span2-before-span3-item-b" style="grid-column:2 / span 2;grid-row:2">XXXX XXXXXXX</div>
+            <div class="text" id="nested-text-span2-before-span3-item-c" style="grid-column:1 / span 3;grid-row:3">XXXXXXXXXXXXXXXXXX</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="case" data-case="nested-text-span3-before-span2">
+    <span class="label">same spans, span-3 item first in DOM</span>
+    <div class="grid outer root" id="nested-text-span3-before-span2-root">
+      <div class="grid outer grid-item" id="nested-text-span3-before-span2-middle">
+        <div class="grid outer grid-item" id="nested-text-span3-before-span2-branch">
+          <div class="grid inner grid-item" id="nested-text-span3-before-span2-inner">
+            <div class="text" id="nested-text-span3-before-span2-item-c" style="grid-column:1 / span 3;grid-row:3">XXXXXXXXXXXXXXXXXX</div>
+            <div class="text" id="nested-text-span3-before-span2-item-b" style="grid-column:2 / span 2;grid-row:2">XXXX XXXXXXX</div>
+            <div class="text" id="nested-text-span3-before-span2-item-a" style="grid-column:1 / span 2;grid-row:1">XX XXXXX</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <pre id="result"></pre>
+  <script>
+    document.fonts.ready.then(() => {
+      const snap = (number) => Math.round(number * 64) / 64;
+      const rect = (element) => {
+        const value = element.getBoundingClientRect();
+        return { x: snap(value.x), y: snap(value.y), width: snap(value.width), height: snap(value.height) };
+      };
+      const cases = Array.from(document.querySelectorAll(".case"), (section) => ({
+        id: section.dataset.case,
+        grids: Array.from(section.querySelectorAll(".grid"), (grid) => ({
+          id: grid.id,
+          columns: getComputedStyle(grid).gridTemplateColumns,
+          rows: getComputedStyle(grid).gridTemplateRows,
+          width: getComputedStyle(grid).width,
+          height: getComputedStyle(grid).height,
+          frame: rect(grid),
+        })),
+        items: Array.from(section.querySelectorAll(".text"), (item) => ({
+          id: item.id,
+          text: item.textContent,
+          column: getComputedStyle(item).gridColumn,
+          row: getComputedStyle(item).gridRow,
+          frame: rect(item),
+        })),
+      }));
+      window.__C114_NESTED_GRID_MULTISPAN__ = {
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+        ahemReady: document.fonts.check("10px Ahem"),
+        cases,
+      };
+      document.querySelector("#result").textContent = JSON.stringify(window.__C114_NESTED_GRID_MULTISPAN__, null, 2);
+    });
+  </script>
+</body>
