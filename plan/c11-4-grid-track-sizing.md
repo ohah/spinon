@@ -259,3 +259,7 @@ Chrome 156 Agent Browser 관측과 독립 계산 기대값을 별도 JSON으로 
 ### 2026-10-22 두 단계 nested Grid 양 축 intrinsic sizing 계획
 
 기존 depth-two fixture의 `height:auto`·Rows `[auto]` 제한과 구분해, width/height와 단일 column/row track을 동시에 min-content 또는 max-content로 계산하는 별도 [계획](./c11-4-nested-grid-two-axis-depth-two.md)을 추가했다. depth-one control과 depth-two scene 네 개의 CSS Grid 2025 CRD 독립 기대값은 min-content `70×20px`·Columns `[70px]`·Rows `[20px]`, max-content `100×10px`·Columns `[100px]`·Rows `[10px]`다. Agent Browser Chrome 156 관측·screenshot·Ahem/input hash는 [사전 비교 evidence](../spec/internal/evidence/c11-4-nested-grid-two-axis-precomparison-2026-10-22/README.md)에 있다. 계획 실패 관점 20개를 검토했고 구현은 아직 시작하지 않았다. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다.
+
+### 2026-10-22 depth-three nested Grid 양 축 intrinsic sizing 후보
+
+depth-two 후속을 PR #453으로 병합한 뒤 다음 고정 경계로 root → middle → branch → inner 네 Grid의 min-content/max-content 양 축 전달을 제안한다. Ahem direct text 한 개, 단일 column/row, 0 gap과 depth 3 두 장면으로 제한한다. CSS Grid 2025 CRD 독립 기대값은 min-content 70×20px, max-content 100×10px이며 Chrome 156 Agent Browser 관측과 별도 JSON에 기록했다. 기존 depth-one·depth-two 여덟 scene은 회귀 controls로 유지한다. [집중 계획](./c11-4-nested-grid-depth-three.md) · [사전 비교·독립 기대값·화면](../spec/internal/evidence/c11-4-nested-grid-depth-three-precomparison-2026-10-22/README.md) · [계획 실패 관점 검토 20개](./c11-4-nested-grid-depth-three-plan-review-20.md). 계획 PR 병합 전에는 구현하지 않으며 C11.4 checkbox와 공식 72/213 집계는 바꾸지 않는다.

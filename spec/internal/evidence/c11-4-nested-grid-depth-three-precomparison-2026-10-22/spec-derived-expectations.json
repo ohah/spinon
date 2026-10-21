@@ -1,0 +1,61 @@
+{
+  "basis": {
+    "spec": "CSS Grid Layout Module Level 1, 2025 CRD, sections 5.2, 11.1, and 11.5.1",
+    "specUrl": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/",
+    "font": "저장소 Ahem.ttf, font size 10px, line-height 10px",
+    "text": "XX XXXXXXX",
+    "assumptions": [
+      "fixture는 root, middle, branch, inner 네 Grid와 각 단계의 직계 자식 하나로 구성된다.",
+      "모든 Grid는 대응하는 intrinsic column/row track 하나, gap 0이며 margin, padding, border, 명시적 min/max가 없다.",
+      "columns를 rows보다 먼저 계산하므로 inline track의 text wrapping 결과가 block-axis contribution에 반영된다.",
+      "min-content inline contribution은 가장 긴 공백 없는 단어의 70px이고 max-content advance는 100px이다.",
+      "70px에서는 Ahem text가 10px line 두 개를 차지하고 100px에서는 한 줄에 놓인다.",
+      "한 track과 in-flow child 하나만 있는 Grid에서 child의 intrinsic contribution은 parent track 및 container size로 전달된다."
+    ]
+  },
+  "cases": [
+    {
+      "id": "nested-depth-three-min-content-two-axis",
+      "depth": 3,
+      "gridCount": 4,
+      "columnsAtEveryGrid": [
+        70
+      ],
+      "rowsAtEveryGrid": [
+        20
+      ],
+      "everyGridSize": {
+        "width": 70,
+        "height": 20
+      },
+      "textSize": {
+        "width": 70,
+        "height": 20
+      }
+    },
+    {
+      "id": "nested-depth-three-max-content-two-axis",
+      "depth": 3,
+      "gridCount": 4,
+      "columnsAtEveryGrid": [
+        100
+      ],
+      "rowsAtEveryGrid": [
+        10
+      ],
+      "everyGridSize": {
+        "width": 100,
+        "height": 10
+      },
+      "textSize": {
+        "width": 100,
+        "height": 10
+      }
+    }
+  ],
+  "comparison": {
+    "sizesAndTracksToleranceCssPx": 0.015625,
+    "frameOrigin": "각 nested Grid의 위치는 root Grid를 기준으로 비교한다. local page y offset은 규범 geometry가 아니다.",
+    "pageOffsetsAreNotNormative": true
+  }
+}

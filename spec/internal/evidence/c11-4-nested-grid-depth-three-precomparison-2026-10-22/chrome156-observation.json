@@ -1,0 +1,32 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "platform": "MacIntel",
+  "viewport": {
+    "width": 1280,
+    "height": 633,
+    "dpr": 1
+  },
+  "ahemReady": true,
+  "cases": [
+    {
+      "id": "nested-depth-three-min-content-two-axis",
+      "grids": [
+        {"id": "depth-three-min-root", "columns": "70px", "rows": "20px", "width": "70px", "height": "20px", "frame": {"x": 8, "y": 24, "width": 70, "height": 20}},
+        {"id": "depth-three-min-middle", "columns": "70px", "rows": "20px", "width": "70px", "height": "20px", "frame": {"x": 8, "y": 24, "width": 70, "height": 20}},
+        {"id": "depth-three-min-branch", "columns": "70px", "rows": "20px", "width": "70px", "height": "20px", "frame": {"x": 8, "y": 24, "width": 70, "height": 20}},
+        {"id": "depth-three-min-inner", "columns": "70px", "rows": "20px", "width": "70px", "height": "20px", "frame": {"x": 8, "y": 24, "width": 70, "height": 20}}
+      ],
+      "text": {"id": "depth-three-min-text", "frame": {"x": 8, "y": 24, "width": 70, "height": 20}}
+    },
+    {
+      "id": "nested-depth-three-max-content-two-axis",
+      "grids": [
+        {"id": "depth-three-max-root", "columns": "100px", "rows": "10px", "width": "100px", "height": "10px", "frame": {"x": 8, "y": 140, "width": 100, "height": 10}},
+        {"id": "depth-three-max-middle", "columns": "100px", "rows": "10px", "width": "100px", "height": "10px", "frame": {"x": 8, "y": 140, "width": 100, "height": 10}},
+        {"id": "depth-three-max-branch", "columns": "100px", "rows": "10px", "width": "100px", "height": "10px", "frame": {"x": 8, "y": 140, "width": 100, "height": 10}},
+        {"id": "depth-three-max-inner", "columns": "100px", "rows": "10px", "width": "100px", "height": "10px", "frame": {"x": 8, "y": 140, "width": 100, "height": 10}}
+      ],
+      "text": {"id": "depth-three-max-text", "frame": {"x": 8, "y": 140, "width": 100, "height": 10}}
+    }
+  ]
+}
