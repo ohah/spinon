@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "target": "android-avd",
+  "runPrefix": "c114-spanning-auto-min-flex-avd-recheck-android-avd-20261021T091026603Z-21ddb7ba",
+  "sceneCount": 1,
+  "observations": [
+    {
+      "sceneId": "spanning-auto-min-flex-tracks",
+      "summary": "10-21 18:10:28.186  9696  9751 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261021T091026603Z-21ddb7ba-0 scene_id=spanning-auto-min-flex-tracks expected_root_frame=width=100,height=30 expected_item_frame=width=100,height=10 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=30;1:node=2,x=0,y=0,width=100,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 30
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 10
+        }
+      ],
+      "tracks": [
+        {
+          "baseSize": 48,
+          "collapsed": false
+        },
+        {
+          "baseSize": 48,
+          "collapsed": false
+        }
+      ],
+      "trackTraceChunks": 6,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}
