@@ -342,12 +342,21 @@ where
             None
         };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-    let c11_4_anonymous_text_multi_image_input =
-        if profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing {
-            fixtures::prepare_c11_4_anonymous_text_multi_image(&request.snapshot, root, &styles)?
+    let c11_4_anonymous_text_multi_image_input = if profile
+        == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
+    {
+        if let Some(input) = fixtures::prepare_c11_4_anonymous_grid_border_overflow(
+            &request.snapshot,
+            root,
+            &styles,
+        )? {
+            Some(input)
         } else {
-            None
-        };
+            fixtures::prepare_c11_4_anonymous_text_multi_image(&request.snapshot, root, &styles)?
+        }
+    } else {
+        None
+    };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_anonymous_text_image_input = if c11_4_anonymous_text_multi_image_input.is_none()
         && profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing

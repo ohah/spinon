@@ -9,6 +9,8 @@ use spinon_style::{
     ComputedBackgroundPaint, CssMediaEnvironment, CssViewport, StyloDocumentView,
     compute_runtime_flex_custom_properties_paint_cascade, compute_runtime_flex_paint_cascade,
 };
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+use spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout;
 use spinon_style_to_layout::compute_runtime_style_layout;
 
 use crate::{CurrentLayoutInputs, StyleRenderError, build_runtime_render_snapshot};
@@ -133,6 +135,41 @@ fn runtime_scene_matches_chromium_dom_order_geometry_and_paint() {
     );
     assert_eq!(render.boxes()[2].paint(), spinon_render::RuntimePaint::None);
     assert_eq!(render.boxes()[2].paint_order(), 2);
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[test]
+fn c114_runtime_scene_preserves_solid_border_geometry_and_paint() {
+    let (document, root, _) = fixture_with_root_style(
+        "box-sizing:border-box;display:grid;width:40px;height:184px;margin:0;padding:0;border:2px solid #f0c674;gap:0;grid-template-columns:repeat(4,min-content);grid-template-rows:repeat(3,60px);background-color:#101820",
+        &[],
+        false,
+    );
+    let snapshot = document.snapshot();
+    let view = StyloDocumentView::new_html_fragment_child_shared(Arc::new(snapshot.clone()), root)
+        .unwrap();
+    let viewport = viewport();
+    let output = compute_runtime_block_flex_grid_track_sizing_style_layout(
+        &snapshot,
+        &view,
+        root,
+        &[],
+        viewport,
+        Default::default(),
+    )
+    .unwrap();
+    let current = CurrentLayoutInputs::for_host_document(&snapshot, Default::default(), viewport);
+    let render = build_runtime_render_snapshot(&snapshot, root, &output, current).unwrap();
+    let border = render.boxes()[0].border();
+
+    assert_eq!(border.top().width_css_px(), 2.0);
+    assert_eq!(border.right().width_css_px(), 2.0);
+    assert_eq!(border.bottom().width_css_px(), 2.0);
+    assert_eq!(border.left().width_css_px(), 2.0);
+    assert_eq!(
+        border.top().paint(),
+        spinon_render::RuntimePaint::Opaque(spinon_render::OpaqueCssSrgb::new(240, 198, 116,))
+    );
 }
 
 #[test]

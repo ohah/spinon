@@ -45,6 +45,9 @@ const anonymousTextMultiImageSceneIDs = new Set([
   'anonymous-text-two-images-forward', 'two-images-anonymous-text-reversed',
   'anonymous-text-three-images-forward', 'three-images-anonymous-text-reversed',
 ]);
+const anonymousGridBorderOverflowSceneIDs = new Set([
+  'anonymous-runs-two-images-forward', 'two-images-anonymous-runs-reversed',
+]);
 const isTextMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => textMultiSpanSceneIDs.has(sceneID));
 const isImageMultiSpanRun = requestedSceneIDs?.length > 0
@@ -57,10 +60,13 @@ const isAnonymousTextImageRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => anonymousTextImageSceneIDs.has(sceneID));
 const isAnonymousTextMultiImageRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => anonymousTextMultiImageSceneIDs.has(sceneID));
+const isAnonymousGridBorderOverflowRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => anonymousGridBorderOverflowSceneIDs.has(sceneID));
 const isMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID)
     || textMultiSpanSceneIDs.has(sceneID) || mixedMultiSpanSceneIDs.has(sceneID));
 const runKind = requestedRunKind ?? (isMixedMultiSpanRun ? 'mixed-multispan-contributions'
+  : isAnonymousGridBorderOverflowRun ? 'anonymous-grid-border-overflow'
   : isAnonymousTextMultiImageRun ? 'anonymous-text-multi-image'
   : isAnonymousTextImageRun ? 'anonymous-grid-text-image'
   : isAnonymousTextRun ? 'anonymous-grid-text'
@@ -90,6 +96,8 @@ const runIDPrefix = `c114-${target}-${runTimestamp}-${runNonce}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
   ? `spec/internal/evidence/${evidenceGroup}-${date}/${target}-${runPrefix}`
+  : isAnonymousGridBorderOverflowRun
+    ? `spec/internal/evidence/c11-4-anonymous-grid-border-overflow-${date}/${target}-${runPrefix}`
   : isAnonymousTextMultiImageRun
     ? `spec/internal/evidence/c11-4-anonymous-text-multi-image-${date}/${target}-${runPrefix}`
   : isMixedMultiSpanRun
@@ -1058,7 +1066,8 @@ scenes.push(
     ],
   },
 );
-assert.equal(scenes.length, 169, 'C11.4 fixture scene count differs.');
+scenes.push(...anonymousGridBorderOverflowScenes());
+assert.equal(scenes.length, 171, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -1075,6 +1084,87 @@ if (requestedSceneIDs) {
     'C11.4 선택 scene ID가 중복됐습니다.');
   assert.equal(runScenes.length, requestedSceneIDs.length,
     'C11.4 선택 scene ID 중 일부가 없습니다.');
+}
+
+function anonymousGridBorderOverflowScenes() {
+  const text = (node, x) => ({
+    node,
+    kind: 'text',
+    frame: { node, x, y: 2, width: 20, height: 10 },
+    source: {
+      kind: 'text', fontRegistryRevision: 1,
+      minContent: 20, minContentHeight: 10, maxContent: 20, maxContentHeight: 10,
+    },
+    textSources: [{ node, text: 'XX' }],
+  });
+  const image = (node, x, y, width, height) => ({
+    node,
+    kind: 'replaced',
+    frame: { node, x, y, width, height },
+    source: { kind: 'replaced', aspectRatio: null, width: 24, height: 16 },
+    textSources: [],
+  });
+  const makeScene = (id, inputs) => {
+    const rootNodeId = `c114-${id}-grid`;
+    const imageFrames = inputs.filter((input) => input.kind === 'replaced');
+    const nodeFrames = ['0:node=1,x=0,y=0,width=40,height=184',
+      ...imageFrames.map((input, index) => `${index + 1}:node=${input.node},x=${input.frame.x},y=${input.frame.y},`
+        + `width=${input.frame.width},height=${input.frame.height}`)];
+    return {
+      id,
+      axis: 'Columns',
+      boxCount: 3,
+      rootFrame: 'width=40,height=184',
+      itemFrame: null,
+      nodeFrames: `node_frames_css_px=[${nodeFrames.join(';')}]`,
+      tracks: [12, 28, 20, 20],
+      collapsed: [false, false, false, false],
+      gaps: { Columns: 0, Rows: 0 },
+      axes: {
+        Columns: { tracks: [12, 28, 20, 20], collapsed: [false, false, false, false] },
+        Rows: { tracks: [60, 60, 60], collapsed: [false, false, false] },
+      },
+      intrinsicSpans: [1, 2],
+      intrinsicSpansByAxis: { Columns: [1, 2], Rows: [] },
+      itemSpans: inputs.map((input) => input.kind === 'text' ? 1 : 2),
+      imageMinContentWidths: inputs.map((input) => input.kind === 'text' ? null : input.frame.width),
+      mixedIntrinsicContributions: true,
+      anonymousGridBorderOverflowContributions: true,
+      anonymousTextMultiImageContributions: true,
+      intrinsicInputs: inputs.map((input, sourceOrder) => input.kind === 'text'
+        ? {
+          grid: 1, node: input.node, sourceOrder, kind: 'text',
+          fontRegistryRevision: 1, minContent: 20, minContentHeight: 10,
+          maxContent: 20, maxContentHeight: 10,
+        }
+        : {
+          grid: 1, node: input.node, sourceOrder, kind: 'replaced',
+          aspectRatio: null, width: 24, height: 16,
+        }),
+      anonymousTextImageItems: inputs.map((input, sourceOrder) => ({
+        grid: 1,
+        node: input.node,
+        sourceOrder,
+        source: input.source,
+        textSources: input.textSources,
+        frame: input.frame,
+      })),
+      pixelSamples: [
+        { id: 'top-border-color', nodeId: rootNodeId,
+          xCssPx: 10, yCssPx: 0, rgba: [240, 198, 116, 255] },
+        { id: 'image-overflow-png-quadrant', nodeId: rootNodeId,
+          xCssPx: 51, yCssPx: 71, rgba: [0, 255, 64, 255] },
+      ],
+    };
+  };
+  return [
+    makeScene('anonymous-runs-two-images-forward', [
+      text(2, 42), image(3, 2, 2, 24, 16), text(4, 62), image(5, 14, 62, 48, 32),
+    ]),
+    makeScene('two-images-anonymous-runs-reversed', [
+      image(2, 14, 62, 48, 32), text(3, 42), image(4, 2, 2, 24, 16), text(5, 62),
+    ]),
+  ];
 }
 
 async function negativeImplicitTrackScenes() {
@@ -2004,6 +2094,10 @@ function supersededC114Result(log, runID) {
 
 function verifyRuntimeLog(log, scene, runID) {
   const summary = `SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${scene.id} `;
+  const assertionError = log.split(/\r?\n/).find((line) =>
+    line.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID} `));
+  assert.ok(!assertionError,
+    `${scene.id}: native runtime assertion failed: ${assertionError ?? ''}`);
   assert.ok(log.includes(summary), `${scene.id}: runtime summary가 없습니다.`);
   assert.ok(log.includes(`layout=ready boxes=${scene.boxCount}`),
     `${scene.id}: visible box 수가 예상과 다릅니다.`);
@@ -2031,7 +2125,12 @@ function verifyRuntimeLog(log, scene, runID) {
   assert.ok(log.includes('SPINON_C0410_DRAW')
     && log.includes(`presented boxes=${scene.boxCount}`),
     `${scene.id}: 화면 표시 결과가 없습니다.`);
-  assert.ok(!log.includes('SPINON_C114_GRID_ASSERTION_ERROR'), `${scene.id}: frame assertion이 실패했습니다.`);
+  if (scene.id === 'anonymous-runs-two-images-forward'
+      || scene.id === 'two-images-anonymous-runs-reversed') {
+    assert.ok(log.split(/\r?\n/).some((line) => line.includes('SPINON_C0410_DRAW')
+      && line.includes('runtime_image_count=2 image_draw_count=2')),
+    `${scene.id}: 두 PNG가 runtime scene과 실제 draw에 모두 포함되지 않았습니다.`);
+  }
   assert.ok(!log.includes('SPINON_C114_GRID_ARGUMENT_ERROR'), `${scene.id}: 실행 인자가 거부됐습니다.`);
   const traceParts = log.split(/\r?\n/).flatMap((line) => {
     if (!line.includes(`SPINON_C114_GRID_TRACE_CHUNK run_id=${runID} `)) return [];
@@ -2177,11 +2276,12 @@ function verifyRuntimeLog(log, scene, runID) {
       const match = stage.match(/^IntrinsicItemBatch \{ span: (\d+),/);
       return match ? [Number(match[1])] : [];
     });
-    if (scene.intrinsicSpans) {
-      assert.deepEqual(intrinsicSpans, scene.intrinsicSpans,
+    const expectedSpans = scene.intrinsicSpansByAxis?.[axis] ?? scene.intrinsicSpans;
+    if (expectedSpans) {
+      assert.deepEqual(intrinsicSpans, expectedSpans,
         `${scene.id}: intrinsic span stage 순서가 다릅니다.`);
     }
-    if (scene.mixedIntrinsicContributions) {
+    if (scene.mixedIntrinsicContributions && axis === 'Columns') {
       const expectedContributions = [];
       for (const span of scene.intrinsicSpans) {
         const spanItems = scene.intrinsicInputs.flatMap((input, itemIndex) => (
@@ -2198,15 +2298,28 @@ function verifyRuntimeLog(log, scene, runID) {
               });
             }
           }
-          for (let repetition = 0; repetition < 2; repetition++) {
-            for (const { input, itemIndex } of spanItems) {
-              expectedContributions.push({
-                item: input.node,
-                kind: 'MinContent',
-                span,
-                value: input.kind === 'text'
-                  ? input.minContent : scene.imageMinContentWidths[itemIndex],
-              });
+          if (scene.anonymousGridBorderOverflowContributions && span === 1) {
+            for (const { input } of spanItems) {
+              for (let repetition = 0; repetition < 2; repetition++) {
+                expectedContributions.push({
+                  item: input.node,
+                  kind: 'MinContent',
+                  span,
+                  value: input.minContent,
+                });
+              }
+            }
+          } else {
+            for (let repetition = 0; repetition < 2; repetition++) {
+              for (const { input, itemIndex } of spanItems) {
+                expectedContributions.push({
+                  item: input.node,
+                  kind: 'MinContent',
+                  span,
+                  value: input.kind === 'text'
+                    ? input.minContent : scene.imageMinContentWidths[itemIndex],
+                });
+              }
             }
           }
         } else if (scene.anonymousTextImageContributions) {

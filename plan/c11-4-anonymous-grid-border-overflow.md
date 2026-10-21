@@ -2,7 +2,7 @@
 
 **상위:** [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [anonymous Grid text](./c11-4-anonymous-grid-text-items.md) · [anonymous text와 복수 image](./c11-4-anonymous-text-multispan-images.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** Chrome 155 Agent Browser 사전 비교와 독립 규범 계산을 고정했다. 두 direct text run·두 spanning image의 순서를 뒤집은 두 장면에서 used columns `[12, 28, 20, 20]`이 같고, 48px image box가 40px bordered Grid 밖으로 22 CSS px 이어지는 것을 관찰했다. 계획 실패 관점 20개 검토를 마쳤다. 구현·Android/iOS Simulator 검증·구현/PR 검토는 아직 하지 않았다. 이 후보는 C11.4 체크와 공식 완료 수를 올리지 않는다.
+**상태:** Chrome 155 Agent Browser 사전 비교와 독립 규범 계산, 계획 실패 관점 20개 검토를 마쳤다. 구현을 opt-in fixture로 추가하고 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 forward/reversed 두 장면을 각각 확인했다. 두 장면 모두 columns `[12, 28, 20, 20]`, 48×32 image의 22 CSS px overflow, border와 overflow image의 고정 pixel sample이 통과했다. 기존 anonymous text + image 4개 장면도 양쪽 simulator에서 회귀 확인했고 기본 archive 경계 검사와 Clippy가 통과했다. [구현 실패 관점 20개](./c11-4-anonymous-grid-border-overflow-implementation-review-20.md)와 [PR diff 실패 관점 20개](./c11-4-anonymous-grid-border-overflow-pr-diff-review-20.md) 검토를 마쳤다. 실행 근거는 [README](../spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/README.md)에 둔다. PR 생성·필수 검사·병합과 Tailnet preview 갱신은 남아 있다. 이 후보는 C11.4 체크와 공식 완료 수를 올리지 않는다.
 
 ## 목적
 
@@ -49,3 +49,5 @@ Chrome 155 관측은 규범 기대와 별도로 기록한다. 고정 실행에�
 - [관찰 JSON](../spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/chrome155-observation.json)
 - [Agent Browser 화면](../spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/chrome155-agent-browser.png)
 - [계획 실패 관점 20개](../spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-review-20.md)
+- [구현 실패 관점 20개](./c11-4-anonymous-grid-border-overflow-implementation-review-20.md)
+- [PR diff 실패 관점 20개](./c11-4-anonymous-grid-border-overflow-pr-diff-review-20.md)

@@ -1,5 +1,9 @@
 use std::borrow::Cow;
 
+#[path = "c11_4/anonymous_grid_border_overflow.rs"]
+mod anonymous_grid_border_overflow;
+#[path = "c11_4/anonymous_grid_border_overflow_paint.rs"]
+mod anonymous_grid_border_overflow_paint;
 #[path = "c11_4/anonymous_text_image.rs"]
 mod anonymous_text_image;
 #[path = "c11_4/anonymous_text_items.rs"]
@@ -29,6 +33,14 @@ mod trace_report;
 
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
 pub(crate) use trace_report::grid_track_sizing_trace_report;
+
+#[cfg(feature = "c04-runtime-gpu-fixture-test")]
+pub(crate) fn attach_anonymous_grid_border_overflow_images(
+    document: &spinon_core::HostDocumentSnapshot,
+    scene: spinon_render::RuntimeRenderSnapshot,
+) -> Result<(spinon_render::RuntimeRenderSnapshot, String), String> {
+    anonymous_grid_border_overflow_paint::attach_images(document, scene)
+}
 
 const C11_4_GRID_TRACK_SIZING_SCENES: [(&str, &str); 20] = [
     (
@@ -1023,6 +1035,9 @@ const C11_4_IMAGE_FIXED_GUTTER_SCENES: [ImageSceneWithRowGap; 2] = [
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     scene_id: &str,
 ) -> Result<Cow<'static, str>, String> {
+    if let Some(source) = anonymous_grid_border_overflow::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = anonymous_text_multi_image::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }

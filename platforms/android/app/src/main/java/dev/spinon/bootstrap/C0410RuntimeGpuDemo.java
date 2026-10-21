@@ -230,6 +230,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "typed-auto-fit-empty", "typed-auto-fit-gutter",
             "anonymous-text-two-images-forward", "two-images-anonymous-text-reversed",
             "anonymous-text-three-images-forward", "three-images-anonymous-text-reversed",
+            "anonymous-runs-two-images-forward", "two-images-anonymous-runs-reversed",
     };
     private static final String[] C114_AUTO_REPEAT_NEGATIVE_LINE_SCENE_IDS = {
             "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -386,6 +387,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static String c114ExpectedRootFrame(String sceneId) {
         if (c114IsAutoRepeatNegativeLineScene(sceneId)) return "";
         if (sceneId.equals("anonymous-min-content-wrap")) return "width=120,height=20";
+        if (c114IsAnonymousGridBorderOverflowScene(sceneId)) return "width=40,height=184";
         if (c114IsAnonymousTextMultiImageScene(sceneId)) return "width=220,height=180";
         if (c114IsAnonymousTextImageScene(sceneId)) return "width=220,height=60";
         if (sceneId.equals("anonymous-comment-continuation")
@@ -1233,6 +1235,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
         switch (sceneId) {
+            case "anonymous-runs-two-images-forward":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=184;"
+                        + "1:node=3,x=2,y=2,width=24,height=16;"
+                        + "2:node=5,x=14,y=62,width=48,height=32]";
+            case "two-images-anonymous-runs-reversed":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=184;"
+                        + "1:node=2,x=14,y=62,width=48,height=32;"
+                        + "2:node=4,x=2,y=2,width=24,height=16]";
             case "anonymous-text-two-images-forward":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=180;"
                         + "1:node=3,x=0,y=0,width=24,height=16;"
@@ -1491,7 +1501,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         int[] spans;
         double[] imageWidths;
         double[][] expectedFrames;
-        int textIndex;
+        int[] textIndices;
         switch (sceneId) {
             case "anonymous-text-two-images-forward":
                 nodes = new int[] {2, 3, 4};
@@ -1501,7 +1511,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 expectedFrames = new double[][] {
                     {2, 40, 0, 20, 10}, {3, 0, 0, 24, 16}, {4, 12, 60, 48, 32},
                 };
-                textIndex = 0;
+                textIndices = new int[] {0};
                 break;
             case "two-images-anonymous-text-reversed":
                 nodes = new int[] {2, 3, 4};
@@ -1511,7 +1521,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 expectedFrames = new double[][] {
                     {2, 12, 60, 48, 32}, {3, 40, 0, 20, 10}, {4, 0, 0, 24, 16},
                 };
-                textIndex = 1;
+                textIndices = new int[] {1};
                 break;
             case "anonymous-text-three-images-forward":
                 nodes = new int[] {2, 3, 4, 5};
@@ -1522,7 +1532,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     {2, 52, 0, 20, 10}, {3, 0, 0, 24, 16},
                     {4, 18, 60, 48, 32}, {5, 0, 120, 72, 48},
                 };
-                textIndex = 0;
+                textIndices = new int[] {0};
                 break;
             case "three-images-anonymous-text-reversed":
                 nodes = new int[] {2, 3, 4, 5};
@@ -1533,7 +1543,29 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     {2, 0, 120, 72, 48}, {3, 18, 60, 48, 32},
                     {4, 52, 0, 20, 10}, {5, 0, 0, 24, 16},
                 };
-                textIndex = 2;
+                textIndices = new int[] {2};
+                break;
+            case "anonymous-runs-two-images-forward":
+                nodes = new int[] {2, 3, 4, 5};
+                kinds = new String[] {"text", "replaced", "text", "replaced"};
+                spans = new int[] {1, 2, 1, 2};
+                imageWidths = new double[] {0, 24, 0, 48};
+                expectedFrames = new double[][] {
+                    {2, 42, 2, 20, 10}, {3, 2, 2, 24, 16},
+                    {4, 62, 2, 20, 10}, {5, 14, 62, 48, 32},
+                };
+                textIndices = new int[] {0, 2};
+                break;
+            case "two-images-anonymous-runs-reversed":
+                nodes = new int[] {2, 3, 4, 5};
+                kinds = new String[] {"replaced", "text", "replaced", "text"};
+                spans = new int[] {2, 1, 2, 1};
+                imageWidths = new double[] {48, 0, 24, 0};
+                expectedFrames = new double[][] {
+                    {2, 14, 62, 48, 32}, {3, 42, 2, 20, 10},
+                    {4, 2, 2, 24, 16}, {5, 62, 2, 20, 10},
+                };
+                textIndices = new int[] {1, 3};
                 break;
             default:
                 return false;
@@ -1569,7 +1601,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             || Math.abs(actual - expectedFrames[index][component + 1])
                                     > 1.0 / 64.0) return false;
                 }
-                if (index == textIndex) {
+                boolean textItem = c114IsTextInput(textIndices, index);
+                if (textItem) {
                     org.json.JSONObject textSource = textSources.optJSONObject(0);
                     if (textSources.length() != 1 || textSource == null
                             || textSource.optInt("node", -1) != nodes[index]
@@ -1600,8 +1633,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             if (columns == null || rows == null
                     || !"Columns".equals(columns.optString("axis"))
                     || !"Rows".equals(rows.optString("axis"))) return false;
-            double[] expectedColumns = nodes.length == 3
-                    ? new double[] {12, 28, 20, 0} : new double[] {18, 34, 20, 0};
+            double[] expectedColumns = c114IsAnonymousGridBorderOverflowScene(sceneId)
+                    ? new double[] {12, 28, 20, 20}
+                    : nodes.length == 3 ? new double[] {12, 28, 20, 0}
+                            : new double[] {18, 34, 20, 0};
             if (!c114ImageMultiSpanTracksMatch(columns, expectedColumns)
                     || !c114ImageMultiSpanTracksMatch(rows, new double[] {60, 60, 60})) {
                 return false;
@@ -1617,7 +1652,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         .matcher(name);
                 if (matcher.find()) observedSpans.add(Integer.parseInt(matcher.group(1)));
             }
-            int[] expectedSpans = nodes.length == 3 ? new int[] {1, 2} : new int[] {1, 2, 3};
+            int[] expectedSpans = c114IsAnonymousGridBorderOverflowScene(sceneId)
+                    ? new int[] {1, 2}
+                    : nodes.length == 3 ? new int[] {1, 2} : new int[] {1, 2, 3};
             if (observedSpans.size() != expectedSpans.length) return false;
             for (int index = 0; index < expectedSpans.length; index++) {
                 if (observedSpans.get(index) != expectedSpans[index]) return false;
@@ -1627,15 +1664,27 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             java.util.ArrayList<String> expectedContributions = new java.util.ArrayList<>();
             for (int span : expectedSpans) {
                 for (int index = 0; index < nodes.length; index++) {
-                    if (spans[index] == span && index != textIndex) {
+                    boolean textItem = c114IsTextInput(textIndices, index);
+                    if (spans[index] == span && !textItem) {
                         expectedContributions.add(nodes[index] + ":Minimum:" + span + ":0.0");
                     }
                 }
-                for (int repetition = 0; repetition < 2; repetition++) {
+                if (c114IsAnonymousGridBorderOverflowScene(sceneId) && span == 1) {
                     for (int index = 0; index < nodes.length; index++) {
                         if (spans[index] != span) continue;
-                        expectedContributions.add(nodes[index] + ":MinContent:" + span + ":"
-                                + (index == textIndex ? 20.0 : imageWidths[index]));
+                        for (int repetition = 0; repetition < 2; repetition++) {
+                            expectedContributions.add(nodes[index] + ":MinContent:" + span
+                                    + ":20.0");
+                        }
+                    }
+                } else {
+                    for (int repetition = 0; repetition < 2; repetition++) {
+                        for (int index = 0; index < nodes.length; index++) {
+                            if (spans[index] != span) continue;
+                            boolean textItem = c114IsTextInput(textIndices, index);
+                            expectedContributions.add(nodes[index] + ":MinContent:" + span + ":"
+                                    + (textItem ? 20.0 : imageWidths[index]));
+                        }
                     }
                 }
             }
@@ -1653,6 +1702,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         } catch (org.json.JSONException | ClassCastException | NumberFormatException error) {
             return false;
         }
+    }
+
+    private static boolean c114IsTextInput(int[] textIndices, int index) {
+        for (int textIndex : textIndices) {
+            if (textIndex == index) return true;
+        }
+        return false;
     }
 
     private static boolean c114ExpectedMultiSpanFramesMatch(String sceneId, String report) {
@@ -1903,6 +1959,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (c114IsAnonymousGridBorderOverflowScene(sceneId)) return 3;
         if (sceneId.equals("anonymous-text-two-images-forward")
                 || sceneId.equals("two-images-anonymous-text-reversed")) return 3;
         if (sceneId.equals("anonymous-text-three-images-forward")
@@ -1977,7 +2034,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return sceneId.equals("anonymous-text-two-images-forward")
                 || sceneId.equals("two-images-anonymous-text-reversed")
                 || sceneId.equals("anonymous-text-three-images-forward")
-                || sceneId.equals("three-images-anonymous-text-reversed");
+                || sceneId.equals("three-images-anonymous-text-reversed")
+                || c114IsAnonymousGridBorderOverflowScene(sceneId);
+    }
+
+    private static boolean c114IsAnonymousGridBorderOverflowScene(String sceneId) {
+        return sceneId.equals("anonymous-runs-two-images-forward")
+                || sceneId.equals("two-images-anonymous-runs-reversed");
     }
 
     private static boolean c114IsAutoRepeatNegativeLineScene(String sceneId) {
@@ -2087,6 +2150,29 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (c114IsAnonymousGridBorderOverflowScene(sceneId)) {
+            if (samples.size() != 2) return false;
+            String rootId = "c114-" + sceneId + "-grid";
+            boolean border = false;
+            boolean overflowImage = false;
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                switch (sample.id) {
+                    case "top-border-color":
+                        border = sample.targetNodeId.equals(rootId)
+                                && sample.xCssPx == 10 && sample.yCssPx == 0;
+                        if (!border) return false;
+                        break;
+                    case "image-overflow-png-quadrant":
+                        overflowImage = sample.targetNodeId.equals(rootId)
+                                && sample.xCssPx == 51 && sample.yCssPx == 71;
+                        if (!overflowImage) return false;
+                        break;
+                    default:
+                        return false;
+                }
+            }
+            return border && overflowImage;
+        }
         if (c114IsImageMultiSpanScene(sceneId)) {
             return c114ImageMultiSpanPixelSamplesMatch(sceneId, samples);
         }
@@ -3341,6 +3427,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "fixed-gutter-column-suggestion-clamp".equals(pixelMatrixSceneId)
                         || "fixed-gutter-row-suggestion-clamp".equals(pixelMatrixSceneId)
                         || c114IsImageMultiSpanScene(pixelMatrixSceneId)
+                        || c114IsAnonymousGridBorderOverflowScene(pixelMatrixSceneId)
                         || "grid-gap-definite-percent".equals(pixelMatrixSceneId)
                         || "grid-gap-cyclic-percent".equals(pixelMatrixSceneId)
                         || "grid-gap-definite-calc".equals(pixelMatrixSceneId)
@@ -4538,19 +4625,28 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String expectedNodeFrames = c114ExpectedNodeFrames(c114GridTrackSizingSceneId);
             boolean c114GridTrackSizingTraceAvailable =
                     logC114GridTrackSizingTraceChunks(c114GridTrackSizingRunId, result);
+            boolean c114MultiSpanFramesMatch = c114ExpectedMultiSpanFramesMatch(
+                    c114GridTrackSizingSceneId, result);
+            boolean c114TextIntrinsicInputsMatch = c114ExpectedTextIntrinsicInputs(
+                    c114GridTrackSizingSceneId, result);
+            boolean c114ImageIntrinsicInputsMatch = c114ExpectedImageIntrinsicInputs(
+                    c114GridTrackSizingSceneId, result);
             if (!result.startsWith("status=0 ") || !result.contains(
                     "layout=ready boxes=" + c114ExpectedBoxCount(c114GridTrackSizingSceneId))
                     || (!expectedRootFrame.isEmpty() && !result.contains(expectedRootFrame))
                     || (!expectedItemFrame.isEmpty() && !result.contains(expectedItemFrame))
                     || (expectedNodeFrames != null && !result.contains(expectedNodeFrames))
-                    || !c114ExpectedMultiSpanFramesMatch(c114GridTrackSizingSceneId, result)
-                    || !c114ExpectedTextIntrinsicInputs(c114GridTrackSizingSceneId, result)
-                    || !c114ExpectedImageIntrinsicInputs(c114GridTrackSizingSceneId, result)) {
+                    || !c114MultiSpanFramesMatch
+                    || !c114TextIntrinsicInputsMatch
+                    || !c114ImageIntrinsicInputsMatch) {
                 Log.e(TAG, "SPINON_C114_GRID_ASSERTION_ERROR run_id="
                         + c114GridTrackSizingRunId + " scene_id=" + c114GridTrackSizingSceneId
                         + " expected_root_frame=" + expectedRootFrame
                         + " expected_item_frame=" + expectedItemFrame
                         + " expected_node_frames=" + expectedNodeFrames
+                        + " multi_span_frames_match=" + c114MultiSpanFramesMatch
+                        + " text_intrinsic_inputs_match=" + c114TextIntrinsicInputsMatch
+                        + " image_intrinsic_inputs_match=" + c114ImageIntrinsicInputsMatch
                         + " report=" + result);
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치");
                 return;
@@ -6845,6 +6941,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int[] c114GridExpectedRgb(String sampleId) {
         switch (sampleId) {
+            case "top-border-color":
+                return new int[] {240, 198, 116};
+            case "image-overflow-png-quadrant":
+                return new int[] {0, 255, 64};
             case "overflow-root-border-inside":
                 return new int[] {16, 24, 32};
             case "overflow-root-border-covered":
