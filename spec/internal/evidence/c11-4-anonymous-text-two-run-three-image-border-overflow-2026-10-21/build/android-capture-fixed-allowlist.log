@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: two-anonymous-runs-three-images-forward: overflow pixel 요약이 통과하지 않았습니다.
+    at verifyRuntimeLog (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs:2501:12)
+    at file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs:2672:25 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.20.0

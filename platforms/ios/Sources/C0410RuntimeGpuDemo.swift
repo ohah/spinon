@@ -119,6 +119,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "anonymous-text-two-images-forward", "two-images-anonymous-text-reversed",
     "anonymous-text-three-images-forward", "three-images-anonymous-text-reversed",
     "anonymous-runs-two-images-forward", "two-images-anonymous-runs-reversed",
+    "two-anonymous-runs-three-images-forward",
+    "three-images-two-anonymous-runs-reversed",
 ]
 private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -772,6 +774,26 @@ private func c114ExpectedAnonymousTextMultiImageInputs(
             [14, 62, 48, 32], [42, 2, 20, 10], [2, 2, 24, 16], [62, 2, 20, 10],
         ]
         textIndices = [1, 3]
+    case "two-anonymous-runs-three-images-forward":
+        nodes = [2, 3, 4, 5, 6]
+        kinds = ["text", "replaced", "text", "replaced", "replaced"]
+        spans = [1, 2, 1, 2, 3]
+        imageWidths = [0, 24, 0, 48, 72]
+        expectedFrames = [
+            [54, 2, 20, 10], [2, 2, 24, 16], [74, 2, 20, 10],
+            [20, 62, 48, 32], [2, 122, 72, 48],
+        ]
+        textIndices = [0, 2]
+    case "three-images-two-anonymous-runs-reversed":
+        nodes = [2, 3, 4, 5, 6]
+        kinds = ["replaced", "text", "replaced", "text", "replaced"]
+        spans = [3, 1, 2, 1, 2]
+        imageWidths = [72, 0, 48, 0, 24]
+        expectedFrames = [
+            [2, 122, 72, 48], [54, 2, 20, 10], [20, 62, 48, 32],
+            [74, 2, 20, 10], [2, 2, 24, 16],
+        ]
+        textIndices = [1, 3]
     default:
         return false
     }
@@ -840,14 +862,16 @@ private func c114AnonymousTextMultiImageTraceMatches(
           let contributions = passes[0]["contributions"] as? [[String: Any]] else { return false }
     let expectedColumns: [Double]
     if c114IsAnonymousGridBorderOverflowScene(sceneID) {
-        expectedColumns = [12, 28, 20, 20]
+        expectedColumns = c114IsAnonymousGridBorderOverflowThreeImageScene(sceneID)
+            ? [18, 34, 20, 20] : [12, 28, 20, 20]
     } else {
         expectedColumns = nodes.count == 3 ? [12, 28, 20, 0] : [18, 34, 20, 0]
     }
     guard c114ImageMultiSpanTracksMatch(passes[0], expected: expectedColumns),
           c114ImageMultiSpanTracksMatch(passes[1], expected: [60, 60, 60]) else { return false }
     let expectedSpans = c114IsAnonymousGridBorderOverflowScene(sceneID)
-        ? [1, 2] : (nodes.count == 3 ? [1, 2] : [1, 2, 3])
+        ? (c114IsAnonymousGridBorderOverflowThreeImageScene(sceneID) ? [1, 2, 3] : [1, 2])
+        : (nodes.count == 3 ? [1, 2] : [1, 2, 3])
     let observedSpans = stages.compactMap { stage -> Int? in
         guard let name = stage["stage"] as? String,
               name.hasPrefix("IntrinsicItemBatch { span: ") else { return nil }
@@ -1252,6 +1276,16 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=184;"
             + "1:node=2,x=14,y=62,width=48,height=32;"
             + "2:node=4,x=2,y=2,width=24,height=16]"
+    case "two-anonymous-runs-three-images-forward":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=184;"
+            + "1:node=3,x=2,y=2,width=24,height=16;"
+            + "2:node=5,x=20,y=62,width=48,height=32;"
+            + "3:node=6,x=2,y=122,width=72,height=48]"
+    case "three-images-two-anonymous-runs-reversed":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=184;"
+            + "1:node=2,x=2,y=122,width=72,height=48;"
+            + "2:node=4,x=20,y=62,width=48,height=32;"
+            + "3:node=6,x=2,y=2,width=24,height=16]"
     case "anonymous-text-two-images-forward":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=180;"
             + "1:node=3,x=0,y=0,width=24,height=16;"
@@ -1622,6 +1656,7 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if c114IsAnonymousGridBorderOverflowThreeImageScene(sceneID) { return 4 }
     if c114IsAnonymousGridBorderOverflowScene(sceneID) { return 3 }
     if sceneID == "anonymous-text-two-images-forward"
         || sceneID == "two-images-anonymous-text-reversed" { return 3 }
@@ -1696,6 +1731,12 @@ private func c114IsAnonymousTextMultiImageScene(_ sceneID: String) -> Bool {
 
 private func c114IsAnonymousGridBorderOverflowScene(_ sceneID: String) -> Bool {
     ["anonymous-runs-two-images-forward", "two-images-anonymous-runs-reversed"]
+        .contains(sceneID)
+        || c114IsAnonymousGridBorderOverflowThreeImageScene(sceneID)
+}
+
+private func c114IsAnonymousGridBorderOverflowThreeImageScene(_ sceneID: String) -> Bool {
+    ["two-anonymous-runs-three-images-forward", "three-images-two-anonymous-runs-reversed"]
         .contains(sceneID)
 }
 
@@ -2052,11 +2093,16 @@ private struct C111MetalPixelRun {
         case "image-span2-forward", "image-span2-reversed",
              "image-span2-before-span3", "image-span3-before-span2":
             expectedSamples = c114ImageMultiSpanPixelSamples(sceneID)
-        case "anonymous-runs-two-images-forward", "two-images-anonymous-runs-reversed":
+        case "anonymous-runs-two-images-forward", "two-images-anonymous-runs-reversed",
+             "two-anonymous-runs-three-images-forward", "three-images-two-anonymous-runs-reversed":
             let rootID = "c114-\(sceneID)-grid"
+            let overflowSample = c114IsAnonymousGridBorderOverflowThreeImageScene(sceneID)
+                ? ("image-c-overflow-green-png-texel", rootID, UInt32(62), UInt32(128))
+                : ("image-overflow-png-quadrant", rootID, UInt32(51), UInt32(71))
             expectedSamples = [
                 ("top-border-color", rootID, 10, 0, [240, 198, 116, 255]),
-                ("image-overflow-png-quadrant", rootID, 51, 71, [0, 255, 64, 255]),
+                (overflowSample.0, overflowSample.1, overflowSample.2, overflowSample.3,
+                 [0, 255, 64, 255]),
             ]
         case "auto-fill-overflow-neighbors":
             expectedSamples = c114AutoRepeatOverflowPixelSamples

@@ -10,6 +10,7 @@ enum Child {
         id: &'static str,
         height: u8,
         column: u8,
+        column_span: u8,
         row: u8,
     },
 }
@@ -19,6 +20,10 @@ struct Scene {
     children: &'static [Child],
     input_nodes: &'static [u64],
     expected_item_frames: &'static [(u64, f32, f32, f32, f32)],
+    expected_columns: [f32; 4],
+    expected_spans: &'static [u16],
+    overflow_image_node: u64,
+    expected_overflow_px: f32,
 }
 
 const FORWARD: [Child; 4] = [
@@ -27,6 +32,7 @@ const FORWARD: [Child; 4] = [
         id: "c114-overflow-image-a-forward",
         height: 16,
         column: 1,
+        column_span: 2,
         row: 1,
     },
     Child::Text,
@@ -34,6 +40,7 @@ const FORWARD: [Child; 4] = [
         id: "c114-overflow-image-b-forward",
         height: 32,
         column: 2,
+        column_span: 2,
         row: 2,
     },
 ];
@@ -42,6 +49,7 @@ const REVERSED: [Child; 4] = [
         id: "c114-overflow-image-b-reversed",
         height: 32,
         column: 2,
+        column_span: 2,
         row: 2,
     },
     Child::Text,
@@ -49,11 +57,62 @@ const REVERSED: [Child; 4] = [
         id: "c114-overflow-image-a-reversed",
         height: 16,
         column: 1,
+        column_span: 2,
         row: 1,
     },
     Child::Text,
 ];
-const SCENES: [Scene; 2] = [
+const FORWARD_THREE: [Child; 5] = [
+    Child::Text,
+    Child::Image {
+        id: "c114-overflow-three-image-a-forward",
+        height: 16,
+        column: 1,
+        column_span: 2,
+        row: 1,
+    },
+    Child::Text,
+    Child::Image {
+        id: "c114-overflow-three-image-b-forward",
+        height: 32,
+        column: 2,
+        column_span: 2,
+        row: 2,
+    },
+    Child::Image {
+        id: "c114-overflow-three-image-c-forward",
+        height: 48,
+        column: 1,
+        column_span: 3,
+        row: 3,
+    },
+];
+const REVERSED_THREE: [Child; 5] = [
+    Child::Image {
+        id: "c114-overflow-three-image-c-reversed",
+        height: 48,
+        column: 1,
+        column_span: 3,
+        row: 3,
+    },
+    Child::Text,
+    Child::Image {
+        id: "c114-overflow-three-image-b-reversed",
+        height: 32,
+        column: 2,
+        column_span: 2,
+        row: 2,
+    },
+    Child::Text,
+    Child::Image {
+        id: "c114-overflow-three-image-a-reversed",
+        height: 16,
+        column: 1,
+        column_span: 2,
+        row: 1,
+    },
+];
+const SCENES: [Scene; 4] = [
     Scene {
         id: "anonymous-runs-two-images-forward",
         children: &FORWARD,
@@ -64,6 +123,10 @@ const SCENES: [Scene; 2] = [
             (4, 62.0, 2.0, 20.0, 10.0),
             (5, 14.0, 62.0, 48.0, 32.0),
         ],
+        expected_columns: [12.0, 28.0, 20.0, 20.0],
+        expected_spans: &[1, 2],
+        overflow_image_node: 5,
+        expected_overflow_px: 22.0,
     },
     Scene {
         id: "two-images-anonymous-runs-reversed",
@@ -75,6 +138,42 @@ const SCENES: [Scene; 2] = [
             (4, 2.0, 2.0, 24.0, 16.0),
             (5, 62.0, 2.0, 20.0, 10.0),
         ],
+        expected_columns: [12.0, 28.0, 20.0, 20.0],
+        expected_spans: &[1, 2],
+        overflow_image_node: 2,
+        expected_overflow_px: 22.0,
+    },
+    Scene {
+        id: "two-anonymous-runs-three-images-forward",
+        children: &FORWARD_THREE,
+        input_nodes: &[2, 3, 4, 5, 6],
+        expected_item_frames: &[
+            (2, 54.0, 2.0, 20.0, 10.0),
+            (3, 2.0, 2.0, 24.0, 16.0),
+            (4, 74.0, 2.0, 20.0, 10.0),
+            (5, 20.0, 62.0, 48.0, 32.0),
+            (6, 2.0, 122.0, 72.0, 48.0),
+        ],
+        expected_columns: [18.0, 34.0, 20.0, 20.0],
+        expected_spans: &[1, 2, 3],
+        overflow_image_node: 6,
+        expected_overflow_px: 34.0,
+    },
+    Scene {
+        id: "three-images-two-anonymous-runs-reversed",
+        children: &REVERSED_THREE,
+        input_nodes: &[2, 3, 4, 5, 6],
+        expected_item_frames: &[
+            (2, 2.0, 122.0, 72.0, 48.0),
+            (3, 54.0, 2.0, 20.0, 10.0),
+            (4, 20.0, 62.0, 48.0, 32.0),
+            (5, 74.0, 2.0, 20.0, 10.0),
+            (6, 2.0, 2.0, 24.0, 16.0),
+        ],
+        expected_columns: [18.0, 34.0, 20.0, 20.0],
+        expected_spans: &[1, 2, 3],
+        overflow_image_node: 2,
+        expected_overflow_px: 34.0,
     },
 ];
 
@@ -121,6 +220,7 @@ fn two_anonymous_runs_and_images_keep_border_box_and_visible_overflow_in_both_or
                     id,
                     height,
                     column,
+                    column_span,
                     row,
                 } => {
                     let node = document.reserve_node_handle().unwrap();
@@ -136,7 +236,7 @@ fn two_anonymous_runs_and_images_keep_border_box_and_visible_overflow_in_both_or
                         node,
                         "style",
                         &format!(
-                            "box-sizing:border-box;width:auto;height:{height}px;margin:0;padding:0;border:0;grid-column:{column} / span 2;grid-row:{row}"
+                            "box-sizing:border-box;width:auto;height:{height}px;margin:0;padding:0;border:0;grid-column:{column} / span {column_span};grid-row:{row}"
                         ),
                     );
                     batch.push(DocumentOperation::InsertBefore {
@@ -194,7 +294,12 @@ fn two_anonymous_runs_and_images_keep_border_box_and_visible_overflow_in_both_or
             "{}",
             scene.id
         );
-        assert_eq!(diagnostics.item_inputs.len(), 4, "{}", scene.id);
+        assert_eq!(
+            diagnostics.item_inputs.len(),
+            scene.input_nodes.len(),
+            "{}",
+            scene.id
+        );
         assert!(
             diagnostics
                 .item_inputs
@@ -251,7 +356,12 @@ fn two_anonymous_runs_and_images_keep_border_box_and_visible_overflow_in_both_or
             .iter()
             .filter(|input| matches!(input.source, LayoutGridItemIntrinsicSource::Replaced { .. }))
             .collect::<Vec<_>>();
-        assert_eq!(replaced.len(), 2, "{} image inputs", scene.id);
+        assert_eq!(
+            replaced.len(),
+            image_nodes.len(),
+            "{} image inputs",
+            scene.id
+        );
         assert_eq!(
             replaced
                 .iter()
@@ -294,13 +404,13 @@ fn two_anonymous_runs_and_images_keep_border_box_and_visible_overflow_in_both_or
                 expected
             );
         }
-        let second_image = actual_item_frames
+        let overflow_image = actual_item_frames
             .iter()
-            .find(|frame| frame.3 == 48.0 && frame.4 == 32.0)
+            .find(|frame| frame.0 == scene.overflow_image_node)
             .unwrap();
         assert_eq!(
-            second_image.1 + second_image.3 - frame(root).width,
-            22.0,
+            overflow_image.1 + overflow_image.3 - frame(root).width,
+            scene.expected_overflow_px,
             "{} overflow",
             scene.id
         );
@@ -325,8 +435,7 @@ fn two_anonymous_runs_and_images_keep_border_box_and_visible_overflow_in_both_or
             .map(|track| track.base_size)
             .collect::<Vec<_>>();
         assert_eq!(
-            column_tracks,
-            [12.0, 28.0, 20.0, 20.0],
+            column_tracks, scene.expected_columns,
             "{} column sizing",
             scene.id
         );
@@ -353,6 +462,10 @@ fn two_anonymous_runs_and_images_keep_border_box_and_visible_overflow_in_both_or
                 _ => None,
             })
             .collect::<Vec<_>>();
-        assert_eq!(spans, [1, 2], "{} intrinsic span stages", scene.id);
+        assert_eq!(
+            spans, scene.expected_spans,
+            "{} intrinsic span stages",
+            scene.id
+        );
     }
 }

@@ -1,0 +1,77 @@
+{
+  "scope": "macOS ARM64 release spinon-ffi static archives",
+  "archives": {
+    "default": {
+      "bytes": 60093888,
+      "sha256": "7685e239eebd2ef328b8446084c4e55fdc52bf1a87c481d10f8079ea85d0ed39"
+    },
+    "fixture": {
+      "bytes": 77362576,
+      "sha256": "c17a0d2cfecd919a079c155b43fc8b5c4f27819f3795f65f059b463300c7551a"
+    }
+  },
+  "symbol": "spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture",
+  "symbolPresent": {
+    "default": false,
+    "fixture": true
+  },
+  "markers": {
+    "anonymous-runs-two-images-forward": {
+      "default": false,
+      "fixture": true
+    },
+    "two-images-anonymous-runs-reversed": {
+      "default": false,
+      "fixture": true
+    },
+    "c114-overflow-image-a-forward": {
+      "default": false,
+      "fixture": true
+    },
+    "two-anonymous-runs-three-images-forward": {
+      "default": false,
+      "fixture": true
+    },
+    "three-images-two-anonymous-runs-reversed": {
+      "default": false,
+      "fixture": true
+    },
+    "c114-overflow-three-image-a-forward": {
+      "default": false,
+      "fixture": true
+    },
+    "c114-overflow-three-image-b-forward": {
+      "default": false,
+      "fixture": true
+    },
+    "c114-overflow-three-image-c-forward": {
+      "default": false,
+      "fixture": true
+    },
+    "c114-overflow-three-image-b-reversed": {
+      "default": false,
+      "fixture": true
+    },
+    "c114-overflow-three-image-a-reversed": {
+      "default": false,
+      "fixture": true
+    },
+    "c114-overflow-three-image-c-reversed": {
+      "default": false,
+      "fixture": true
+    },
+    "border:2px solid #f0c674": {
+      "default": false,
+      "fixture": true
+    },
+    "https://spinon.invalid/c14-1-png-basic.png": {
+      "default": false,
+      "fixture": true
+    }
+  },
+  "exactPngPayload": {
+    "bytes": 97,
+    "default": false,
+    "fixture": true
+  }
+}

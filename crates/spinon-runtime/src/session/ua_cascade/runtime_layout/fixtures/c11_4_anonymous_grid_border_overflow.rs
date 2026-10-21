@@ -22,9 +22,11 @@ use super::c11_4_image::{
 use super::c11_4_text::AHEM;
 
 const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
-const SCENE_IDS: [&str; 2] = [
+const SCENE_IDS: [&str; 4] = [
     "anonymous-runs-two-images-forward",
     "two-images-anonymous-runs-reversed",
+    "two-anonymous-runs-three-images-forward",
+    "three-images-two-anonymous-runs-reversed",
 ];
 
 #[derive(Clone, Copy)]
@@ -32,6 +34,7 @@ struct ImageSpec {
     id: &'static str,
     height: f32,
     column: i32,
+    column_span: i32,
     row: i32,
 }
 
@@ -45,25 +48,71 @@ const IMAGE_A_FORWARD: ExpectedChild = ExpectedChild::Image(ImageSpec {
     id: "c114-overflow-image-a-forward",
     height: 16.0,
     column: 1,
+    column_span: 2,
     row: 1,
 });
 const IMAGE_B_FORWARD: ExpectedChild = ExpectedChild::Image(ImageSpec {
     id: "c114-overflow-image-b-forward",
     height: 32.0,
     column: 2,
+    column_span: 2,
     row: 2,
 });
 const IMAGE_A_REVERSED: ExpectedChild = ExpectedChild::Image(ImageSpec {
     id: "c114-overflow-image-a-reversed",
     height: 16.0,
     column: 1,
+    column_span: 2,
     row: 1,
 });
 const IMAGE_B_REVERSED: ExpectedChild = ExpectedChild::Image(ImageSpec {
     id: "c114-overflow-image-b-reversed",
     height: 32.0,
     column: 2,
+    column_span: 2,
     row: 2,
+});
+const IMAGE_A_FORWARD_THREE: ExpectedChild = ExpectedChild::Image(ImageSpec {
+    id: "c114-overflow-three-image-a-forward",
+    height: 16.0,
+    column: 1,
+    column_span: 2,
+    row: 1,
+});
+const IMAGE_B_FORWARD_THREE: ExpectedChild = ExpectedChild::Image(ImageSpec {
+    id: "c114-overflow-three-image-b-forward",
+    height: 32.0,
+    column: 2,
+    column_span: 2,
+    row: 2,
+});
+const IMAGE_C_FORWARD_THREE: ExpectedChild = ExpectedChild::Image(ImageSpec {
+    id: "c114-overflow-three-image-c-forward",
+    height: 48.0,
+    column: 1,
+    column_span: 3,
+    row: 3,
+});
+const IMAGE_A_REVERSED_THREE: ExpectedChild = ExpectedChild::Image(ImageSpec {
+    id: "c114-overflow-three-image-a-reversed",
+    height: 16.0,
+    column: 1,
+    column_span: 2,
+    row: 1,
+});
+const IMAGE_B_REVERSED_THREE: ExpectedChild = ExpectedChild::Image(ImageSpec {
+    id: "c114-overflow-three-image-b-reversed",
+    height: 32.0,
+    column: 2,
+    column_span: 2,
+    row: 2,
+});
+const IMAGE_C_REVERSED_THREE: ExpectedChild = ExpectedChild::Image(ImageSpec {
+    id: "c114-overflow-three-image-c-reversed",
+    height: 48.0,
+    column: 1,
+    column_span: 3,
+    row: 3,
 });
 const FORWARD: [ExpectedChild; 4] = [
     ExpectedChild::Text,
@@ -76,6 +125,20 @@ const REVERSED: [ExpectedChild; 4] = [
     ExpectedChild::Text,
     IMAGE_A_REVERSED,
     ExpectedChild::Text,
+];
+const FORWARD_THREE: [ExpectedChild; 5] = [
+    ExpectedChild::Text,
+    IMAGE_A_FORWARD_THREE,
+    ExpectedChild::Text,
+    IMAGE_B_FORWARD_THREE,
+    IMAGE_C_FORWARD_THREE,
+];
+const REVERSED_THREE: [ExpectedChild; 5] = [
+    IMAGE_C_REVERSED_THREE,
+    ExpectedChild::Text,
+    IMAGE_B_REVERSED_THREE,
+    ExpectedChild::Text,
+    IMAGE_A_REVERSED_THREE,
 ];
 
 pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
@@ -93,6 +156,8 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     if !SCENE_IDS.contains(&scene_id) {
         return if scene_id.starts_with("anonymous-runs-two-images-")
             || scene_id.starts_with("two-images-anonymous-runs-")
+            || scene_id.starts_with("two-anonymous-runs-three-images-")
+            || scene_id.starts_with("three-images-two-anonymous-runs-")
         {
             Err(unsupported(
                 root.id(),
@@ -157,11 +222,11 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
             }
         }
     }
-    if text_anchors.len() != 2 || image_handles.len() != 2 {
+    if text_anchors.len() != 2 || !matches!(image_handles.len(), 2 | 3) {
         return Err(unsupported(
             root.id(),
             scene_id,
-            "two anonymous XX runs and two images are required",
+            "two anonymous XX runs and two or three images are required",
         ));
     }
     let image_ids = image_handles
@@ -228,6 +293,8 @@ fn expected_children(scene_id: &str) -> &'static [ExpectedChild] {
     match scene_id {
         "anonymous-runs-two-images-forward" => &FORWARD,
         "two-images-anonymous-runs-reversed" => &REVERSED,
+        "two-anonymous-runs-three-images-forward" => &FORWARD_THREE,
+        "three-images-two-anonymous-runs-reversed" => &REVERSED_THREE,
         _ => &[],
     }
 }
@@ -317,7 +384,7 @@ fn validate_image_style(
 ) -> Result<(), RuntimeLayoutFailure> {
     let placement = style.grid_item_placement.as_ref().is_some_and(|placement| {
         placement.column_start == ComputedCssGridPlacement::Line(expected.column)
-            && placement.column_end == ComputedCssGridPlacement::Span(2)
+            && placement.column_end == ComputedCssGridPlacement::Span(expected.column_span)
             && placement.row_start == ComputedCssGridPlacement::Line(expected.row)
             && placement.row_end == ComputedCssGridPlacement::Auto
     });
