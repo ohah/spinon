@@ -128,6 +128,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static final String[] C114_GRID_TRACK_SIZING_SCENE_IDS = {
             "auto-fixed-width-item", "minmax-auto-fixed-width-item",
             "fit-content-below-item-size", "spanning-auto-tracks",
+            "spanning-auto-min-flex-tracks",
             "auto-fill-repeat", "auto-fit-collapse", "auto-fill-track-overflow",
             "auto-fill-fixed-neighbors", "auto-fit-fixed-neighbors",
             "auto-fill-pattern-neighbors",
@@ -468,6 +469,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "auto-fill-two-track-rows-both-342":
                 return "width=50,height=342";
             case "spanning-auto-tracks":
+            case "spanning-auto-min-flex-tracks":
                 return "width=100,height=30";
             case "spanning-min-content-items":
                 return "width=100,height=30";
@@ -541,6 +543,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return "width=40,height=10";
             case "spanning-auto-tracks":
                 return "width=70,height=10";
+            case "spanning-auto-min-flex-tracks":
+                return "width=100,height=10";
             case "auto-fill-repeat":
                 return "width=24,height=16";
             case "auto-fit-collapse":
@@ -642,6 +646,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 minContent = 100;
                 minContentHeight = 10;
                 maxContent = 100;
+                maxContentHeight = 10;
+                break;
+            case "spanning-auto-min-flex-tracks":
+                minContent = 200;
+                minContentHeight = 10;
+                maxContent = 200;
                 maxContentHeight = 10;
                 break;
             case "typed-mixed-cycle":
@@ -1180,6 +1190,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         String autoFitMinimumSizeNodeFrames = c114AutoFitMinimumSizeNodeFrames(sceneId);
         if (autoFitMinimumSizeNodeFrames != null) return autoFitMinimumSizeNodeFrames;
         switch (sceneId) {
+            case "spanning-auto-min-flex-tracks":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=30;"
+                        + "1:node=2,x=0,y=0,width=100,height=10]";
             case "auto-fill-overflow-neighbors":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=60;"
                         + "1:node=2,x=86,y=0,width=12,height=12]";

@@ -2,6 +2,8 @@ use std::borrow::Cow;
 
 #[path = "c11_4/auto_repeat_negative_lines.rs"]
 mod auto_repeat_negative_lines;
+#[path = "c11_4/flex_spanning_text.rs"]
+mod flex_spanning_text;
 #[path = "c11_4/image_multispan.rs"]
 mod image_multispan;
 #[path = "c11_4/implicit_intrinsic_tracks.rs"]
@@ -1017,6 +1019,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = text_multispan::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
+    if let Some(source) = flex_spanning_text::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = multispan_ordering::runtime_source(scene_id) {

@@ -17,6 +17,7 @@ private let c1133GridTemplateAreasSceneIDs: Set<String> = [
 private let c114GridTrackSizingSceneIDs: Set<String> = [
     "auto-fixed-width-item", "minmax-auto-fixed-width-item",
     "fit-content-below-item-size", "spanning-auto-tracks",
+    "spanning-auto-min-flex-tracks",
     "auto-fill-repeat", "auto-fit-collapse", "auto-fill-track-overflow",
     "auto-fill-fixed-neighbors", "auto-fit-fixed-neighbors",
     "auto-fill-pattern-neighbors",
@@ -255,7 +256,8 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     case "competing-span2-forward", "competing-span2-reversed",
          "span2-before-span3", "span3-before-span2":
         return "width=220,height=40"
-    case "spanning-auto-tracks", "spanning-min-content-items":
+    case "spanning-auto-tracks", "spanning-min-content-items",
+         "spanning-auto-min-flex-tracks":
         return "width=100,height=30"
     case "fixed-small-track-overflow":
         return "width=12,height=40"
@@ -318,6 +320,8 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         return "width=40,height=10"
     case "spanning-auto-tracks":
         return "width=70,height=10"
+    case "spanning-auto-min-flex-tracks":
+        return "width=100,height=10"
     case "auto-fill-repeat":
         return "width=24,height=16"
     case "auto-fit-collapse":
@@ -384,6 +388,8 @@ private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) 
         expected = (10, 80, 80, 10)
     case "min-content-text-nowrap":
         expected = (100, 10, 100, 10)
+    case "spanning-auto-min-flex-tracks":
+        expected = (200, 10, 200, 10)
     case "typed-mixed-cycle", "typed-auto", "typed-min-content", "typed-max-content",
          "typed-minmax-max-content", "typed-fit-content":
         expected = (48, 36, 108, 12)
@@ -890,6 +896,9 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
         return autoFitMinimumSizeNodeFrames
     }
     switch sceneID {
+    case "spanning-auto-min-flex-tracks":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=30;"
+            + "1:node=2,x=0,y=0,width=100,height=10]"
     case "competing-span2-forward":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=220,height=40;"
             + "1:node=2,x=0,y=0,width=80,height=10;"

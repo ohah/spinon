@@ -109,6 +109,130 @@ fn c114_text_grid_snapshot() -> (Arc<HostDocumentSnapshot>, HostNodeHandle, Host
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[test]
+fn c114_spanning_auto_min_flex_text_keeps_tracks_at_half_width() {
+    let (snapshot, root, item) = c114_spanning_flex_text_grid_snapshot();
+    let request = WorkRequest {
+        key: key_for(&snapshot, EnvironmentRevision::INITIAL),
+        snapshot,
+        viewport: CssViewport {
+            width_css_px: 100.0,
+            height_css_px: 30.0,
+            device_scale_factor: 1.0,
+            environment_revision: EnvironmentRevision::INITIAL,
+            media_environment: CssMediaEnvironment::MOBILE,
+        },
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
+    };
+
+    let calculation = compute_request_for_block_flex_grid_track_sizing(&request).unwrap();
+    let layout = calculation.layout.unwrap();
+    let frame = |node: HostNodeHandle| {
+        layout
+            .frames
+            .iter()
+            .find(|frame| frame.node_id == node.id().get())
+            .unwrap()
+    };
+    assert_eq!((frame(root).width, frame(root).height), (100.0, 30.0));
+    assert_eq!(
+        (frame(item).x, frame(item).width, frame(item).height),
+        (0.0, 100.0, 10.0)
+    );
+
+    let diagnostics = layout.grid_track_sizing_diagnostics.unwrap();
+    let input = diagnostics
+        .item_inputs
+        .iter()
+        .find(|input| input.node == item.id())
+        .unwrap();
+    let spinon_layout::LayoutGridItemIntrinsicSource::Text { sizes } = &input.source else {
+        panic!("C11.4 spanning text fixture must retain its text intrinsic input");
+    };
+    assert_eq!((sizes.min_content(), sizes.max_content()), (200.0, 200.0));
+
+    let columns = diagnostics.traces[0]
+        .passes
+        .iter()
+        .find(|pass| pass.axis == spinon_layout::LayoutGridTrackSizingAxis::Columns)
+        .unwrap();
+    let final_sizes = columns
+        .stages
+        .last()
+        .unwrap()
+        .tracks
+        .iter()
+        .filter(|track| !track.is_gutter && !track.is_collapsed)
+        .map(|track| track.base_size)
+        .collect::<Vec<_>>();
+    assert_eq!(final_sizes, [48.0, 48.0]);
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+fn c114_spanning_flex_text_grid_snapshot()
+-> (Arc<HostDocumentSnapshot>, HostNodeHandle, HostNodeHandle) {
+    const HTML: &str = "http://www.w3.org/1999/xhtml";
+    const ROOT_STYLE: &str = "box-sizing:border-box;display:grid;width:100px;height:30px;margin:0;padding:0;border:0;column-gap:4px;row-gap:0;align-items:start;align-content:start;justify-content:start;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto;background-color:#101820";
+    const ITEM_STYLE: &str = "box-sizing:border-box;display:block;width:auto;height:auto;margin:0;padding:0;border:0;grid-column:1 / span 2;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:nowrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;background-color:#e5484d";
+
+    let mut document = HostDocument::new().unwrap();
+    let root = document.reserve_node_handle().unwrap();
+    let item = document.reserve_node_handle().unwrap();
+    let text = document.reserve_node_handle().unwrap();
+    let mut batch =
+        DocumentChangeBatch::new(OwnerId::new(11_414).unwrap(), document.document_revision());
+    for (node, id, parent, style) in [
+        (
+            root,
+            "c114-spanning-auto-min-flex-tracks-grid",
+            HostParent::Root,
+            ROOT_STYLE,
+        ),
+        (
+            item,
+            "c114-spanning-auto-min-flex-tracks-item",
+            HostParent::Node(root),
+            ITEM_STYLE,
+        ),
+    ] {
+        batch.push(DocumentOperation::CreateElement {
+            node,
+            namespace: HTML.to_owned(),
+            local_name: "div".to_owned(),
+        });
+        batch.push(DocumentOperation::SetAttribute {
+            node,
+            name: AttributeName::new(None, "id").unwrap(),
+            value: id.to_owned().into(),
+        });
+        batch.push(DocumentOperation::SetAttribute {
+            node,
+            name: AttributeName::new(None, "style").unwrap(),
+            value: style.to_owned().into(),
+        });
+        batch.push(DocumentOperation::InsertBefore {
+            parent,
+            node,
+            before: None,
+        });
+    }
+    batch.push(DocumentOperation::CreateText {
+        node: text,
+        data: "XXXXXXXXXXXXXXXXXXXX".into(),
+    });
+    batch.push(DocumentOperation::InsertBefore {
+        parent: HostParent::Node(item),
+        node: text,
+        before: None,
+    });
+    document.commit(batch).unwrap();
+    (Arc::new(document.snapshot()), root, item)
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[test]
 fn c114_min_content_image_contributes_decoded_natural_size_to_grid_layout() {
     let (snapshot, root, item) =
         c114_image_grid_snapshot("https://spinon.invalid/c14-1-png-basic.png");

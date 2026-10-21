@@ -612,6 +612,20 @@ scenes.push(
 assert.equal(scenes.length, 150, 'C11.4 image multi-span simulator 행렬은 150 scene이어야 합니다.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 simulator scene ID가 중복됐습니다.');
+scenes.push({
+  id: 'spanning-auto-min-flex-tracks', axis: 'Columns', boxCount: 2,
+  rootFrame: 'width=100,height=30', itemFrame: 'width=100,height=10',
+  nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=30;'
+    + '1:node=2,x=0,y=0,width=100,height=10]',
+  tracks: [48, 48], collapsed: [false, false],
+  intrinsicInputs: [
+    { grid: 1, node: 2, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+      minContent: 200, minContentHeight: 10, maxContent: 200, maxContentHeight: 10 },
+  ],
+});
+assert.equal(scenes.length, 151, 'C11.4 auto-minimum flexible span 후속은 151 scene이어야 합니다.');
+assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
+  'C11.4 auto-minimum flexible span scene ID는 중복되지 않아야 합니다.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
 const runScenes = requestedSceneIDSet
   ? scenes.filter(({ id }) => requestedSceneIDSet.has(id))

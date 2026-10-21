@@ -18,6 +18,8 @@ const AHEM: &[u8] = include_bytes!("../../../../../../../tests/fixtures/resource
 
 #[path = "c11_4_text/cases.rs"]
 mod cases;
+#[path = "c11_4_text/flex_span.rs"]
+mod flex_span;
 use cases::{TEXT_CASES, TextCase, TextTrack};
 
 pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
@@ -39,6 +41,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         return Ok(Some(input));
     }
     if let Some(input) = prepare_multispan_text(snapshot, root, styles)? {
+        return Ok(Some(input));
+    }
+    if let Some(input) = flex_span::prepare(snapshot, root, styles)? {
         return Ok(Some(input));
     }
 
