@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 세 고정 장면 구현과 Android/iOS Simulator 실행을 마치고 PR #474를 2026-10-21 21:23:35 UTC Rebase and merge로 병합했다(SHA df0c607f83732081a47ceb8435f3a174289acee7). 구현 실패 관점 20개와 PR diff 30개 검토가 끝났다. 이 제한 fixture는 C11.4 일반 지원이 아니므로 공식 checkbox와 완료 수 72/213은 유지한다. [계획 실패 관점 검토 20개](./c11-4-cyclic-percent-fit-content-plan-review-20.md) · [사전 비교](../spec/internal/evidence/c11-4-cyclic-fit-content-precomparison-2026-10-22/README.md) · [구현·Simulator 근거](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/README.md) · [구현 실패 관점 검토 20개](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/implementation-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/pr-diff-review-30.md)
+**상태:** 세 고정 장면 구현과 Android/iOS Simulator 실행을 마치고 PR #474를 2026-10-21 21:23:35 UTC Rebase and merge로 병합했다(SHA df0c607f83732081a47ceb8435f3a174289acee7). 구현 실패 관점 20개와 PR diff 30개 검토가 끝났다. 이 제한 fixture는 C11.4 일반 지원이 아니므로 공식 checkbox와 완료 수 72/213은 유지한다. [계획 실패 관점 검토 20개](./c11-4-cyclic-percent-fit-content-plan-review-20.md) · [사전 비교](../spec/internal/evidence/c11-4-cyclic-fit-content-precomparison-2026-10-22/README.md) · [구현·Simulator 근거](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/README.md) · [구현 실패 관점 검토 20개](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/implementation-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/pr-diff-review-30.md) · [병합 후 계획 상태 검토 30개](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/stale-plan-state-review-30.md)
 
 ## 목적과 제한 범위
 
@@ -43,7 +43,7 @@ Intrinsic basis와 percentage limit은 Chrome 관찰값을 역산하지 않고 A
 - Rust projection은 `FitContent(50%)` typed 값과 독립 기대 Columns·Rows, root/item frame을 확인한다. text runtime fixture는 정확한 세 scene ID·tree·Ahem 입력·typed track과 크기만 허용하고 미등록 입력을 거부한다.
 - Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 세 scene 모두 두 축 track trace, ordered root/item frame, draw/present가 통과했다. Android PixelCopy 경계 표본 6/6, iOS Metal drawable 표본 6/6이 exact이며 iOS 표본은 compositor 제출 전이다.
 - 기본 FFI release `.rlib`에는 새 module marker와 scene ID가 없고 `c04-runtime-gpu-fixture-test` positive control에만 포함된다. 결과와 hash는 [artifact 경계](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/artifact-boundary/README.md)에 기록했다.
-- 구현 전 계획 검토와 구분되는 [구현 실패 관점 검토 20개](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/implementation-review-20.md)를 마쳤다. 최종 PR diff 검토 30개, live required check·merge 상태 확인, Rebase and merge와 Tailnet preview 갱신은 남아 있다.
+- 구현 전 계획 검토와 구분되는 [구현 실패 관점 검토 20개](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/implementation-review-20.md)를 마쳤다. PR diff 검토 30개를 마친 뒤 PR #474를 Rebase and merge로 병합했고, 병합 상태·필수 check 설정·check rollup을 live 확인했다. Tailnet 미리보기는 merged main 문서를 반영하는 별도 작업이다.
 - 고정 capture metadata의 source commit은 `9af5ee8fa29269c589a02d6f1aafe3f72d53d1d0`이다. simulator 결과는 fixture 범위에만 적용하며 일반 CSS 지원·WPT·실기기·iOS compositor 이후 pixels·C11.4 완료를 뜻하지 않는다.
 
 ## 범위 밖
