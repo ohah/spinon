@@ -37,6 +37,10 @@ column scene은 Ahem `aa aa`의 min-content 20px과 max-content 50px 사이에�
 
 일부 Android runtime 및 Xcode build log에는 도구 출력의 줄끝 공백이 있었다. 링크 가능한 `.log` 사본은 끝 공백과 마지막 빈 줄만 정규화했고, 원본 byte stream은 같은 이름의 `.log.raw.gz`에 보존했다.
 
+## PR 본문 이미지 확인
+
+PR [#474](https://github.com/ohah/spinon/pull/474)의 두 raw screenshot 링크를 Agent Browser `0.31.1`에서 확인했다. Android 이미지는 1080×2400, iOS 이미지는 1206×2622로 모두 `complete=true` 및 `naturalWidth > 0`이었다. [Agent Browser가 렌더링한 PR 화면](./pr-474-agent-browser.png)과 기계 판정 [JSON](./pr-474-browser-verification.json)을 남겼다. 전용 browser session을 닫았고 확인 직후 Agent Browser/Chrome process는 0개였다.
+
 ## 한계
 
 이 결과는 세 개의 고정 opt-in fixture에 한정한다. Android 실기기와 hardware GPU, iOS compositor 이후 pixels, glyph paint/equality, border stroke, WPT, 다른 UA, 임의 HTML/CSS, `fit-content(calc(...))`, 여러 track/item, 같은 scene의 양 축 cyclic percentage, nested Grid 및 전체 C11.4는 확인하지 않았다. 일반 `fit-content()` 또는 CSS 지원 완료로 해석하지 않는다. C11.4 공식 checkbox는 미완료이며 공식 완료 수 `72/213`을 유지한다.
