@@ -4,6 +4,8 @@ use std::borrow::Cow;
 mod anonymous_text_image;
 #[path = "c11_4/anonymous_text_items.rs"]
 mod anonymous_text_items;
+#[path = "c11_4/anonymous_text_multi_image.rs"]
+mod anonymous_text_multi_image;
 #[path = "c11_4/auto_repeat_negative_lines.rs"]
 mod auto_repeat_negative_lines;
 #[path = "c11_4/flex_spanning_text.rs"]
@@ -1021,6 +1023,9 @@ const C11_4_IMAGE_FIXED_GUTTER_SCENES: [ImageSceneWithRowGap; 2] = [
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     scene_id: &str,
 ) -> Result<Cow<'static, str>, String> {
+    if let Some(source) = anonymous_text_multi_image::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = anonymous_text_image::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
