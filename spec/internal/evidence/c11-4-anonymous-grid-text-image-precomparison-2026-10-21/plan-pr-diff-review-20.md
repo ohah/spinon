@@ -1,8 +1,8 @@
 # 계획 PR #424 변경분 적대 검토 20개
 
-검토 범위는 PR #424의 실제 diff 7개 파일이다. 계획 자체의 20개 실패 관점 검토와 구분해 fixture, 고정 근거, roadmap 변경, PR 패키징을 다시 확인했다.
+최종 검토 범위는 PR #424의 실제 diff 8개 파일이다. 계획 자체의 20개 실패 관점 검토와 구분해 fixture, 고정 근거, roadmap 변경, PR 패키징과 이 검토 기록까지 다시 확인했다.
 
-1. **PR에 구현 완료가 섞였는가?** — diff는 계획·fixture·Chrome evidence만 추가하며 Android/iOS 실행을 미완료로 표기한다. 통과.
+1. **PR에 구현 완료가 섞였는가?** — 최종 8개 경로는 계획·검토·fixture·Chrome evidence와 STATUS뿐이며 Android/iOS 실행을 미완료로 표기한다. 통과.
 2. **공식 완료 수가 잘못 승격됐는가?** — `spec/STATUS.md`는 C11.4 checkbox와 완료 수를 유지한다. 통과.
 3. **현재 실패 원인을 잘못 적었는가?** — runtime entry가 anonymous text와 image input 동시 감지를 명시적으로 거부하는 코드를 확인했고 plan에 기록한다. 통과.
 4. **런타임 원본이 다른 feature profile을 쓰는가?** — 결합은 기존 `RuntimeBlockFlexGridTrackSizingV1` opt-in 경로로 제한했다. 통과.
