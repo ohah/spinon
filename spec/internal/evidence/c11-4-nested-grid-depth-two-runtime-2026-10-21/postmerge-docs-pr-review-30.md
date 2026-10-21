@@ -20,7 +20,7 @@ PR #450 병합 뒤 상태 대장, 집중 계획, 상위 C11.4 계획, 공개 로
 | 14 | 상위 Grid track-sizing 계획의 후속 상태가 이전 상태와 충돌하는가 | 상위 계획의 PR #450 병합 기록과 72/213 집계가 집중 계획과 일치한다. |
 | 15 | 공개 roadmap이 PR #450을 열린 PR처럼 표현하는가 | 공개 callout에 Rebase and merge 시각과 merge SHA를 표시한다. |
 | 16 | 공개 roadmap의 화면 링크가 잘못된 실행 폴더를 가리키는가 | Android/iOS 링크는 최종 4/4 simulator run 디렉터리의 PNG를 가리킨다. |
-| 17 | HTML 문서에서 링크의 URL 또는 특수문자 처리가 깨지는가 | roadmap의 링크는 따옴표가 닫힌 절대 preview 경로와 GitHub PR URL을 사용한다. |
+| 17 | Tailnet root route에서 계획 URL이 site root를 벗어나는가 | runtime README의 plan link는 selected RSPress root 기준 세 단계만 올라가도록 고쳤고 roadmap은 /spinon/ 절대 경로를 쓴다. |
 | 18 | 실행 README가 PR 본문 이미지 표시를 첨부 업로드로 오인하는가 | README는 merge SHA 고정 GitHub raw URL이라고 설명한다. |
 | 19 | PR 본문의 이미지 URL이 삭제될 수 있는 branch 이름을 참조하는가 | 병합 후 PR 본문과 JSON의 두 raw URL은 immutable merge SHA를 사용한다. |
 | 20 | PR 본문의 Android image URL이 저장소 artifact와 다른가 | Android URL은 최종 AVD representative nested-depth-two-min-content.png 경로다. |
@@ -35,6 +35,8 @@ PR #450 병합 뒤 상태 대장, 집중 계획, 상위 C11.4 계획, 공개 로
 | 29 | 사이트 배포가 Tailnet preview 동기화와 혼동되는가 | 이 PR은 문서 출처만 갱신하며 GitHub Pages를 실행하거나 배포하지 않는다. |
 | 30 | Tailnet preview가 병합 전에 최신 문서를 받은 것으로 주장되는가 | 이 문서 PR 병합 뒤 안전 복사·hash 검증 및 Agent Browser 확인을 별도 단계로 남긴다. |
 
-## 판정
+## 판정과 문서 빌드 한계
 
 문서 값은 PR #450과 원격 main 상태에 맞고, C11.4 공식 완료 집계는 바뀌지 않는다. Tailnet preview 결과는 이 검토 범위의 완료 근거가 아니며 실제 병합 후 별도 근거로 확인한다.
+
+일반 전체 문서 빌드 `mise exec -- bun run docs:build`는 RSPress dead-link 검사에서 실패했다. 변경하지 않은 기존 evidence README 안의 log, image, JSON 및 directory 링크도 HTML route로 잘못 해석되는 사례가 여러 개 보고됐다. 이 PR에서 추가한 JSON Markdown link 역시 같은 문제를 일으켜 README에서는 plain file name으로 바꿨고, plan 상대 링크도 selected site root 기준으로 수정했다. Tailnet selected-root build와 route 확인은 별도로 진행한다.

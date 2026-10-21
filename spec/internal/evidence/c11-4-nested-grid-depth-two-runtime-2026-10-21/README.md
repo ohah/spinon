@@ -2,7 +2,7 @@
 
 ## 범위와 독립 기대값
 
-계획 [두 단계 nested Grid inline-axis intrinsic contribution](../../../../plan/c11-4-nested-grid-depth-two.md)의 고정 fixture 네 개를 `c11-4-grid-track-sizing-fixture-test` opt-in 경로에 연결했다. 각 scene은 direct Ahem leaf `XX XXXXXXX`, `10px/10px` metrics, 한 개 column/row와 0 gap을 사용한다. CSS Grid 2025 CRD의 Grid container sizing 규칙과 Ahem advance에서 독립 계산한 `min-content=70px`, `max-content=100px`가 판정값이다.
+계획 [두 단계 nested Grid inline-axis intrinsic contribution](../../../plan/c11-4-nested-grid-depth-two.md)의 고정 fixture 네 개를 `c11-4-grid-track-sizing-fixture-test` opt-in 경로에 연결했다. 각 scene은 direct Ahem leaf `XX XXXXXXX`, `10px/10px` metrics, 한 개 column/row와 0 gap을 사용한다. CSS Grid 2025 CRD의 Grid container sizing 규칙과 Ahem advance에서 독립 계산한 `min-content=70px`, `max-content=100px`가 판정값이다.
 
 | Scene | Grid chain | 각 Grid의 frame 및 Columns/Rows | leaf text frame |
 | --- | --- | --- | --- |
@@ -47,7 +47,7 @@ Fixture-feature Clippy 첫 실행에서 이 feature 조합이 함께 컴파일�
 
 ## PR 본문 화면과 병합
 
-PR [#450](https://github.com/ohah/spinon/pull/450)은 2026-10-21 14:38:40 UTC Rebase and merge됐고 merge SHA는 `80837bbe03542eb55ebc983964c72fd925454d28`다. 병합 당시 PR check rollup은 비었으며 `gh api`는 main required status checks가 설정되어 있지 않다고 반환했다. PR 본문은 대표 Android/iOS 화면을 이 merge SHA의 immutable GitHub raw URL로 표시한다. 병합 후 Agent Browser에서 두 이미지가 모두 로드되어 원본 크기 Android 1080×2400, iOS 1206×2622를 반환함을 확인했다. [Agent Browser PR 본문 이미지 로드 기록](./pr-body-image-verification-agent-browser.json)에 결과를 남겼다. 병합 결과를 기록한 문서 PR의 [diff 실패 관점 검토 30개](./postmerge-docs-pr-review-30.md)도 연결한다. 이 브라우저 검증은 screenshot의 기존 한계(geometry/trace/draw-present만 확인)를 넓히지 않는다.
+PR [#450](https://github.com/ohah/spinon/pull/450)은 2026-10-21 14:38:40 UTC Rebase and merge됐고 merge SHA는 `80837bbe03542eb55ebc983964c72fd925454d28`다. 병합 당시 PR check rollup은 비었으며 `gh api`는 main required status checks가 설정되어 있지 않다고 반환했다. PR 본문은 대표 Android/iOS 화면을 이 merge SHA의 immutable GitHub raw URL로 표시한다. 병합 후 Agent Browser에서 두 이미지가 모두 로드되어 원본 크기 Android 1080×2400, iOS 1206×2622를 반환함을 확인했다. Agent Browser 이미지 로드 결과는 `pr-body-image-verification-agent-browser.json`에 기록했다. 병합 결과를 기록한 문서 PR의 [diff 실패 관점 검토 30개](./postmerge-docs-pr-review-30.md)도 연결한다. 이 브라우저 검증은 screenshot의 기존 한계(geometry/trace/draw-present만 확인)를 넓히지 않는다.
 
 ## 한계
 
