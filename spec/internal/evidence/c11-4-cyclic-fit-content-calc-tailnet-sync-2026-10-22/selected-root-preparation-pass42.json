@@ -1,0 +1,167 @@
+{
+  "pass": "pass42",
+  "baseRoot": "build/spinon/c11-4-cyclic-calc-tailnet-sync-root-pass41-selected",
+  "selectedRoot": "build/spinon/c11-4-cyclic-fit-content-calc-tailnet-sync-root-pass42-selected",
+  "sourceHead": "76a62a6dfb2ed334f8f1ad0909d2a9fe131d8d2a",
+  "sourceTree": "87af311336ac424fa803d26ed684ef6c9c8a5527",
+  "originMainHead": "527d57b14df5a392ddfdd9a5c24437f784e544ef",
+  "originMainTree": "87af311336ac424fa803d26ed684ef6c9c8a5527",
+  "selectedSourceCopies": [
+    {
+      "source": "spec/STATUS.md",
+      "target": "STATUS.md",
+      "bytes": 362890,
+      "sha256": "8fbb6b61236269b46e2fb62b63881d7e523fb0a7d6b231f3a86dfacc63baf1dd"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "target": "spec/STATUS.md",
+      "bytes": 362890,
+      "sha256": "8fbb6b61236269b46e2fb62b63881d7e523fb0a7d6b231f3a86dfacc63baf1dd"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "target": "public/roadmap.html",
+      "bytes": 218005,
+      "sha256": "011bfe13d5ba0becc60405d1197f20b523b5a93cb21b4fa741bf585153756514"
+    },
+    {
+      "source": "plan/c11-4-cyclic-calc-track-sizing.md",
+      "target": "plan/c11-4-cyclic-calc-track-sizing.md",
+      "bytes": 5925,
+      "sha256": "360b1444ee1e1f00ecc8c6e53f43f68bca801efa122a865429b37e2ff550982f"
+    },
+    {
+      "source": "plan/c11-4-cyclic-calc-track-sizing-plan-review-20.md",
+      "target": "plan/c11-4-cyclic-calc-track-sizing-plan-review-20.md",
+      "bytes": 3857,
+      "sha256": "8be9d560893dded1d958e4a0eecf1993b73f7b65cce4e4e83249869fc30f906c"
+    },
+    {
+      "source": "plan/c11-4-cyclic-fit-content-calc.md",
+      "target": "plan/c11-4-cyclic-fit-content-calc.md",
+      "bytes": 6703,
+      "sha256": "623a4340b3f3396a0eae57ccec3ebb3d0fbdd67b37e382ee5291fc438c5e2517"
+    },
+    {
+      "source": "plan/c11-4-cyclic-fit-content-calc-plan-review-20.md",
+      "target": "plan/c11-4-cyclic-fit-content-calc-plan-review-20.md",
+      "bytes": 3944,
+      "sha256": "db5146be66efd70587b791e9568f5ef628c4ec77446a8413e8463793084175f3"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "target": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 86043,
+      "sha256": "48d02cdb1bef44b3a4319a1f9bfd32ad74be5215b7811174023dc7fe78d751c1"
+    },
+    {
+      "source": "plan/c11-css-grid.md",
+      "target": "plan/c11-css-grid.md",
+      "bytes": 27445,
+      "sha256": "08f8f4faab8d80f174230c0d98a06abdf9a7c1cd86b188217ca54eaf5836798c"
+    },
+    {
+      "source": "tests/fixtures/css/c11/grid-cyclic-calc-tracks-c114-precomparison.html",
+      "target": "tests/fixtures/css/c11/grid-cyclic-calc-tracks-c114-precomparison.html",
+      "bytes": 2170,
+      "sha256": "94cc7f8420ad024e673c43d249546d5f19cc294395f55f1d3f37c5a9a6ad41e5"
+    },
+    {
+      "source": "tests/fixtures/css/c11/grid-cyclic-calc-tracks-c114-precomparison.html",
+      "target": "public/tests/fixtures/css/c11/grid-cyclic-calc-tracks-c114-precomparison.html",
+      "bytes": 2170,
+      "sha256": "94cc7f8420ad024e673c43d249546d5f19cc294395f55f1d3f37c5a9a6ad41e5"
+    },
+    {
+      "source": "tests/fixtures/css/c11/grid-cyclic-fit-content-calc-c114-precomparison.html",
+      "target": "tests/fixtures/css/c11/grid-cyclic-fit-content-calc-c114-precomparison.html",
+      "bytes": 1271,
+      "sha256": "ec07a7a3c441cf220f2b4f7c5c2dfd91b2cb6929a2206b86198ccc953e17fc57"
+    },
+    {
+      "source": "tests/fixtures/css/c11/grid-cyclic-fit-content-calc-c114-precomparison.html",
+      "target": "public/tests/fixtures/css/c11/grid-cyclic-fit-content-calc-c114-precomparison.html",
+      "bytes": 1271,
+      "sha256": "ec07a7a3c441cf220f2b4f7c5c2dfd91b2cb6929a2206b86198ccc953e17fc57"
+    }
+  ],
+  "evidenceDirectories": [
+    "c11-4-cyclic-calc-track-sizing-precomparison-2026-10-22",
+    "c11-4-cyclic-calc-track-sizing-2026-10-22",
+    "c11-4-cyclic-calc-track-sizing-runtime-2026-10-22-2026-10-22",
+    "c11-4-cyclic-calc-nested-depth-regression-2026-10-22",
+    "c11-4-cyclic-fit-content-calc-precomparison-2026-10-22"
+  ],
+  "evidenceDestinations": [
+    "internal/evidence",
+    "spec/internal/evidence",
+    "public/internal/evidence"
+  ],
+  "copiedEvidence": [
+    {
+      "destination": "internal/evidence/c11-4-cyclic-calc-track-sizing-precomparison-2026-10-22",
+      "source": "spec/internal/evidence/c11-4-cyclic-calc-track-sizing-precomparison-2026-10-22"
+    },
+    {
+      "destination": "internal/evidence/c11-4-cyclic-calc-track-sizing-2026-10-22",
+      "source": "spec/internal/evidence/c11-4-cyclic-calc-track-sizing-2026-10-22"
+    },
+    {
+      "destination": "internal/evidence/c11-4-cyclic-calc-track-sizing-runtime-2026-10-22-2026-10-22",
+      "source": "spec/internal/evidence/c11-4-cyclic-calc-track-sizing-runtime-2026-10-22-2026-10-22"
+    },
+    {
+      "destination": "internal/evidence/c11-4-cyclic-calc-nested-depth-regression-2026-10-22",
+      "source": "spec/internal/evidence/c11-4-cyclic-calc-nested-depth-regression-2026-10-22"
+    },
+    {
+      "destination": "internal/evidence/c11-4-cyclic-fit-content-calc-precomparison-2026-10-22",
+      "source": "spec/internal/evidence/c11-4-cyclic-fit-content-calc-precomparison-2026-10-22"
+    },
+    {
+      "destination": "spec/internal/evidence/c11-4-cyclic-calc-track-sizing-precomparison-2026-10-22",
+      "source": "spec/internal/evidence/c11-4-cyclic-calc-track-sizing-precomparison-2026-10-22"
+    },
+    {
+      "destination": "spec/internal/evidence/c11-4-cyclic-calc-track-sizing-2026-10-22",
+      "source": "spec/internal/evidence/c11-4-cyclic-calc-track-sizing-2026-10-22"
+    },
+    {
+      "destination": "spec/internal/evidence/c11-4-cyclic-calc-track-sizing-runtime-2026-10-22-2026-10-22",
+      "source": "spec/internal/evidence/c11-4-cyclic-calc-track-sizing-runtime-2026-10-22-2026-10-22"
+    },
+    {
+      "destination": "spec/internal/evidence/c11-4-cyclic-calc-nested-depth-regression-2026-10-22",
+      "source": "spec/internal/evidence/c11-4-cyclic-calc-nested-depth-regression-2026-10-22"
+    },
+    {
+      "destination": "spec/internal/evidence/c11-4-cyclic-fit-content-calc-precomparison-2026-10-22",
+      "source": "spec/internal/evidence/c11-4-cyclic-fit-content-calc-precomparison-2026-10-22"
+    },
+    {
+      "destination": "public/internal/evidence/c11-4-cyclic-calc-track-sizing-precomparison-2026-10-22",
+      "source": "spec/internal/evidence/c11-4-cyclic-calc-track-sizing-precomparison-2026-10-22"
+    },
+    {
+      "destination": "public/internal/evidence/c11-4-cyclic-calc-track-sizing-2026-10-22",
+      "source": "spec/internal/evidence/c11-4-cyclic-calc-track-sizing-2026-10-22"
+    },
+    {
+      "destination": "public/internal/evidence/c11-4-cyclic-calc-track-sizing-runtime-2026-10-22-2026-10-22",
+      "source": "spec/internal/evidence/c11-4-cyclic-calc-track-sizing-runtime-2026-10-22-2026-10-22"
+    },
+    {
+      "destination": "public/internal/evidence/c11-4-cyclic-calc-nested-depth-regression-2026-10-22",
+      "source": "spec/internal/evidence/c11-4-cyclic-calc-nested-depth-regression-2026-10-22"
+    },
+    {
+      "destination": "public/internal/evidence/c11-4-cyclic-fit-content-calc-precomparison-2026-10-22",
+      "source": "spec/internal/evidence/c11-4-cyclic-fit-content-calc-precomparison-2026-10-22"
+    }
+  ],
+  "selectedFileCount": 5655,
+  "selectedBytes": 222773082,
+  "noPreviewWrites": true,
+  "noDeletes": true
+}
