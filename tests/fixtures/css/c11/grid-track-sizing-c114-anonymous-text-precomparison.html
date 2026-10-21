@@ -1,0 +1,77 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Spinon C11.4 anonymous Grid text precomparison</title>
+<style>
+  @font-face { font-family: Ahem; src: url("../../resources/c15/Ahem.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 520px; background: #fff; }
+  body { font: 12px/16px system-ui, sans-serif; color: #111; }
+  .case { min-height: 84px; border-bottom: 1px solid #ccc; padding: 4px; }
+  .label { display: block; margin-bottom: 2px; }
+  .grid { display: grid; width: 120px; min-height: 20px; gap: 0; align-items: start; justify-items: start; align-content: start; justify-content: start; font: 10px/10px Ahem, sans-serif; white-space: normal; color: #e5484d; }
+  .block { display: block; width: 30px; height: 10px; background: #2866f6; }
+  #result { display: none; }
+</style>
+<body>
+  <section class="case" data-case="anonymous-min-content-wrap">
+    <span class="label">one direct text run: min-content column and Ahem line wrapping</span>
+    <div class="grid" id="anonymous-min-content-wrap" style="grid-template-columns:min-content 1fr">XX XX</div>
+  </section>
+  <section class="case" data-case="anonymous-comment-continuation">
+    <span class="label">a comment splits DOM text nodes but does not split the anonymous item</span>
+    <div class="grid" id="anonymous-comment-continuation" style="grid-template-columns:max-content 1fr">XX<!-- split text nodes, not inline content -->XX</div>
+  </section>
+  <section class="case" data-case="anonymous-runs-around-block">
+    <span class="label">two anonymous text runs separated by one block Grid item</span>
+    <div class="grid" id="anonymous-runs-around-block" style="grid-template-columns:min-content min-content min-content">XX<div class="block" id="explicit-block-item"></div>XXXX</div>
+  </section>
+  <section class="case" data-case="whitespace-does-not-create-item">
+    <span class="label">collapsible whitespace between block items does not consume auto-placement</span>
+    <div class="grid" id="whitespace-does-not-create-item" style="grid-template-columns:20px 30px 40px"><div class="block" id="whitespace-first-item" style="width:10px"></div>&#32;&#9;&#10;<div class="block" id="whitespace-second-item" style="width:10px"></div></div>
+  </section>
+  <pre id="result"></pre>
+  <script>
+    const frame = (value) => ({x:value.x, y:value.y, width:value.width, height:value.height});
+    const elementFrame = (element) => frame(element.getBoundingClientRect());
+    const textSegments = (element) => {
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+      const segments = [];
+      for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        segments.push({
+          text: node.data,
+          rects: Array.from(range.getClientRects(), frame),
+        });
+      }
+      return segments;
+    };
+    document.fonts.ready.then(() => {
+      const cases = Array.from(document.querySelectorAll('.case'), (section) => {
+        const grid = section.querySelector('.grid');
+        return {
+          id: section.dataset.case,
+          directChildren: Array.from(grid.childNodes, (node) => ({
+            kind: node.nodeType === Node.TEXT_NODE ? 'text' : node.nodeType === Node.ELEMENT_NODE ? 'element' : `node-${node.nodeType}`,
+            text: node.nodeType === Node.TEXT_NODE ? node.data : null,
+            id: node.nodeType === Node.ELEMENT_NODE ? node.id || null : null,
+          })),
+          columns: getComputedStyle(grid).gridTemplateColumns,
+          rows: getComputedStyle(grid).gridTemplateRows,
+          grid: elementFrame(grid),
+          text: textSegments(grid),
+          elements: Array.from(grid.children, (child) => ({id:child.id || null, frame:elementFrame(child)})),
+        };
+      });
+      window.__C114_ANONYMOUS_TEXT_OBSERVATION__ = {
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        viewport: {width: innerWidth, height: innerHeight},
+        devicePixelRatio,
+        ahemReady: document.fonts.check('10px Ahem'),
+        cases,
+      };
+      document.querySelector('#result').textContent = JSON.stringify(window.__C114_ANONYMOUS_TEXT_OBSERVATION__, null, 2);
+    });
+  </script>
+</body>

@@ -216,3 +216,7 @@ Negative implicit placement와 auto-repeat 및 leading auto-track list의 제한
 ### 2026-10-21 direct-leaf text/image mixed multi-span 계획
 
 기존 text와 image multi-span 실행은 서로 다른 fixture grid에 분리돼 있다. 새 [mixed contribution 계획](./c11-4-mixed-text-image-multispan-contributions.md)은 같은 grid의 text span-2, replaced-image span-2와 Ahem text span-3을 네 forward/reversed DOM 장면으로 합친다. Chrome 155 Agent Browser 사전 관찰과 §11.5.1 planned-increase 독립 기대값을 [precomparison evidence](../spec/internal/evidence/c11-4-mixed-text-image-multispan-precomparison-2026-10-21/README.md)에 고정했고 계획 실패 검토 20개를 마쳤다. 구현 PR과 runtime 검증은 계획 PR 병합 뒤 진행한다. C11.4 checkbox와 공식 완료 수는 그대로 둔다.
+
+### 2026-10-21 anonymous Grid text item 계획
+
+기존 C11.4 intrinsic input은 direct-leaf text/image를 보존하지만 Grid root의 직접 text sequence는 anonymous Grid item으로 구성하지 않는다. [새 계획](./c11-4-anonymous-grid-text-items.md)은 min-content wrapping, comment로 나뉜 연속 text node, block child가 분리하는 두 text run, collapsible-only whitespace 제외를 Chrome 155 Agent Browser fixture에서 고정했다. [사전 비교](../spec/internal/evidence/c11-4-anonymous-grid-text-precomparison-2026-10-21/README.md)와 [계획 실패 검토 20개](./c11-4-anonymous-grid-text-plan-review-20.md)가 준비됐다. 구현은 아직 시작하지 않았으며 anonymous/nested item, WPT 및 전체 C11.4는 미완료다.
