@@ -1,0 +1,92 @@
+{
+  "ahemFontLoaded": true,
+  "browserVersion": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "fontStatus": "loaded",
+  "scenes": [
+    {
+      "computedColumns": "29px",
+      "computedRows": "20px",
+      "id": "cyclic-fit-content-calc-column",
+      "item": {
+        "height": 20,
+        "width": 29,
+        "x": 0,
+        "y": 0
+      },
+      "overflowX": "visible",
+      "overflowY": "visible",
+      "root": {
+        "height": 20,
+        "width": 50,
+        "x": 0,
+        "y": 0
+      },
+      "text": "aa aa"
+    },
+    {
+      "computedColumns": "20px",
+      "computedRows": "22px",
+      "id": "cyclic-fit-content-calc-row",
+      "item": {
+        "height": 22,
+        "width": 20,
+        "x": 0,
+        "y": 30
+      },
+      "overflowX": "visible",
+      "overflowY": "visible",
+      "root": {
+        "height": 40,
+        "width": 20,
+        "x": 0,
+        "y": 30
+      },
+      "text": "a a a a"
+    },
+    {
+      "computedColumns": "24px",
+      "computedRows": "20px",
+      "id": "definite-fit-content-calc-column",
+      "item": {
+        "height": 20,
+        "width": 24,
+        "x": 0,
+        "y": 80
+      },
+      "overflowX": "visible",
+      "overflowY": "visible",
+      "root": {
+        "height": 20,
+        "width": 40,
+        "x": 0,
+        "y": 80
+      },
+      "text": "aa aa"
+    },
+    {
+      "computedColumns": "9px",
+      "computedRows": "20px",
+      "id": "definite-fit-content-calc-small-limit",
+      "item": {
+        "height": 20,
+        "width": 9,
+        "x": 0,
+        "y": 110
+      },
+      "overflowX": "visible",
+      "overflowY": "visible",
+      "root": {
+        "height": 20,
+        "width": 10,
+        "x": 0,
+        "y": 110
+      },
+      "text": "aa aa"
+    }
+  ],
+  "viewport": {
+    "devicePixelRatio": 1,
+    "height": 633,
+    "width": 1280
+  }
+}

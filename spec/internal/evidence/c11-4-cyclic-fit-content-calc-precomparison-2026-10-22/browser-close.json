@@ -1,0 +1,12 @@
+{
+  "session": "spinon-c11-4-fit-content-calc-oracle",
+  "closeCommand": "agent-browser --session spinon-c11-4-fit-content-calc-oracle close",
+  "sessionsAfterClose": [],
+  "agentBrowserOrOwnedChromeProcesses": [],
+  "processScanEmpty": true,
+  "tailnetPreviewServer": {
+    "pid": 1191,
+    "listen": "127.0.0.1:8768",
+    "preserved": true
+  }
+}

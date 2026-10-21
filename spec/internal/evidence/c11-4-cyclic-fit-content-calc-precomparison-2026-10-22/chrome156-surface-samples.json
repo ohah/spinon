@@ -1,0 +1,62 @@
+{
+  "scene": "definite-fit-content-calc-small-limit",
+  "screenshot_css_px": [
+    1280,
+    633
+  ],
+  "root_frame_css_px": [
+    10,
+    20
+  ],
+  "track_css_px": "9px",
+  "samples": [
+    {
+      "relative_to_root_css_px": [
+        5,
+        5
+      ],
+      "screenshot_pixel": [
+        5,
+        115
+      ],
+      "region": "inside item",
+      "rgb": [
+        229,
+        72,
+        77
+      ]
+    },
+    {
+      "relative_to_root_css_px": [
+        15,
+        5
+      ],
+      "screenshot_pixel": [
+        15,
+        115
+      ],
+      "region": "outside root and item, Ahem glyph",
+      "rgb": [
+        229,
+        72,
+        77
+      ]
+    },
+    {
+      "relative_to_root_css_px": [
+        25,
+        5
+      ],
+      "screenshot_pixel": [
+        25,
+        115
+      ],
+      "region": "outside glyph on page background",
+      "rgb": [
+        255,
+        255,
+        255
+      ]
+    }
+  ]
+}
