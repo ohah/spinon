@@ -1,0 +1,43 @@
+{
+  "source": "CSS Grid Layout Module Level 1, 2025 CRD sections 7.5-7.6 and 11.3-11.5.1",
+  "fixture": "tests/fixtures/css/c11/grid-track-sizing-c114-nested-implicit-rows-precomparison.html",
+  "inputs": {
+    "outer": {
+      "inlineSize": 24,
+      "rows": ["min-content", "min-content"],
+      "rowGap": 4
+    },
+    "nested": {
+      "inlineSize": 24,
+      "explicitRows": ["min-content"],
+      "autoRows": ["min-content", "max-content"],
+      "rowGap": 4,
+      "children": [
+        { "row": "1 / 2", "blockSize": 8 },
+        { "row": "2 / 3", "blockSize": 8 },
+        { "row": "3 / 4", "naturalSize": [24, 16] }
+      ]
+    }
+  },
+  "derived": {
+    "nestedRows": [8, 8, 16],
+    "nestedBlockContribution": 40,
+    "scenes": {
+      "spanTwo": {
+        "outerRows": [18, 18],
+        "outerRowGap": 4,
+        "rootBlockSize": 40,
+        "nestedBlockSize": 40,
+        "childOffsetsFromNested": [0, 12, 24]
+      },
+      "oneRow": {
+        "outerRows": [40, 0],
+        "outerRowGap": 4,
+        "rootBlockSize": 44,
+        "nestedBlockSize": 40,
+        "childOffsetsFromNested": [0, 12, 24]
+      }
+    }
+  },
+  "toleranceCssPx": 0
+}

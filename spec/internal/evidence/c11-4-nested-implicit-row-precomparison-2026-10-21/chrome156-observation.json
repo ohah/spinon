@@ -1,0 +1,33 @@
+{
+  "agentBrowserVersion": "0.31.1",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": { "width": 1280, "height": 633, "devicePixelRatio": 1 },
+  "images": [
+    { "complete": true, "naturalWidth": 24, "naturalHeight": 16 },
+    { "complete": true, "naturalWidth": 24, "naturalHeight": 16 }
+  ],
+  "scenes": {
+    "spanTwo": {
+      "root": { "x": 20, "y": 47, "width": 24, "height": 40 },
+      "outerRows": [18, 18],
+      "nested": { "x": 20, "y": 47, "width": 24, "height": 40 },
+      "innerRows": [8, 8, 16],
+      "children": [
+        { "id": "span-two-explicit", "box": { "x": 20, "y": 47, "width": 24, "height": 8 } },
+        { "id": "span-two-implicit-min", "box": { "x": 20, "y": 59, "width": 4, "height": 8 } },
+        { "id": "span-two-implicit-max", "box": { "x": 20, "y": 71, "width": 24, "height": 16 } }
+      ]
+    },
+    "oneRow": {
+      "root": { "x": 20, "y": 126, "width": 24, "height": 44 },
+      "outerRows": [40, 0],
+      "nested": { "x": 20, "y": 126, "width": 24, "height": 40 },
+      "innerRows": [8, 8, 16],
+      "children": [
+        { "id": "one-row-explicit", "box": { "x": 20, "y": 126, "width": 24, "height": 8 } },
+        { "id": "one-row-implicit-min", "box": { "x": 20, "y": 138, "width": 4, "height": 8 } },
+        { "id": "one-row-implicit-max", "box": { "x": 20, "y": 150, "width": 24, "height": 16 } }
+      ]
+    }
+  }
+}
