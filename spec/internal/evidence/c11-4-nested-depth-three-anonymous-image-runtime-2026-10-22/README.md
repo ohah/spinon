@@ -6,7 +6,7 @@
 
 ### 최종 Android 실행
 
-[Android API 37 ARM64 AVD 결과·로그·화면](../c11-4-depth-three-anonymous-image-final-runtime-2026-10-22/android-avd-c114-nested-depth-three-anonymous-image-regressions-android-avd-20261021T174208766Z-e42aa021/result.json) · [시뮬레이터 정보와 소스 revision](../c11-4-depth-three-anonymous-image-final-runtime-2026-10-22/android-avd-c114-nested-depth-three-anonymous-image-regressions-android-avd-20261021T174208766Z-e42aa021/simulator.json) · [설치 APK 검증](../c11-4-depth-three-anonymous-image-final-runtime-2026-10-22/android-avd-c114-nested-depth-three-anonymous-image-regressions-android-avd-20261021T174208766Z-e42aa021/installed-apk-verification.json).
+[Android API 37 ARM64 AVD 결과·로그·화면](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-4-depth-three-anonymous-image-final-runtime-2026-10-22/android-avd-c114-nested-depth-three-anonymous-image-regressions-android-avd-20261021T174208766Z-e42aa021/result.json) · [시뮬레이터 정보와 소스 revision](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-4-depth-three-anonymous-image-final-runtime-2026-10-22/android-avd-c114-nested-depth-three-anonymous-image-regressions-android-avd-20261021T174208766Z-e42aa021/simulator.json) · [설치 APK 검증](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-4-depth-three-anonymous-image-final-runtime-2026-10-22/android-avd-c114-nested-depth-three-anonymous-image-regressions-android-avd-20261021T174208766Z-e42aa021/installed-apk-verification.json).
 
 - 기기: `emulator-5558`, `sdk_gphone64_arm64`, Android API 37, `arm64-v8a`; 실기기는 연결·사용하지 않았다.
 - 네 신규 장면과 회귀 control 모두 frame, Columns/Rows final track, inner direct-item intrinsic source, track contribution trace 및 draw/present 검사를 통과했다. 14개 모두 `drawPresented=true`, `supersededRetries=0`이다.
@@ -14,15 +14,16 @@
 
 ### 최종 iOS 실행
 
-[iPhone 17 Pro/iOS 26.2 Simulator 결과·로그·화면](../c11-4-depth-three-anonymous-image-final-runtime-2026-10-22/ios-simulator-c114-nested-depth-three-anonymous-image-regressions-ios-simulator-20261021T174208766Z-6653bd89/result.json) · [시뮬레이터 정보와 소스 revision](../c11-4-depth-three-anonymous-image-final-runtime-2026-10-22/ios-simulator-c114-nested-depth-three-anonymous-image-regressions-ios-simulator-20261021T174208766Z-6653bd89/simulator.json).
+[iPhone 17 Pro/iOS 26.2 Simulator 결과·로그·화면](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-4-depth-three-anonymous-image-final-runtime-2026-10-22/ios-simulator-c114-nested-depth-three-anonymous-image-regressions-ios-simulator-20261021T174208766Z-6653bd89/result.json) · [시뮬레이터 정보와 소스 revision](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-4-depth-three-anonymous-image-final-runtime-2026-10-22/ios-simulator-c114-nested-depth-three-anonymous-image-regressions-ios-simulator-20261021T174208766Z-6653bd89/simulator.json).
 
 - 기기: iPhone 17 Pro, runtime `iOS-26-2`, UDID `ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D`; 실기기는 사용하지 않았다.
 - 같은 14개 검사를 모두 통과했고 `drawPresented=true`, `supersededRetries=0`이다.
 - 앱 실행 파일 SHA-256: `13296c1bd961e04d65b336d040dfb996c64f1a0afce47d7bf2e14eadb50f0de5`.
 
 두 manifest의 `sourceRevision.commit`은 구현 커밋 `3346d9b30d57ec7ba9d291ad2af6a47c2fc93611`, tree는 `00ce23c7b500f03bd0481e0b7de7b6176572b766`이며 캡처 당시 dirty path는 없다. Android/iOS build는 `C04 runtime GPU=1`, `C04 runtime GPU fixture-test=1`로 만들었고 그 밖의 C11.2.3/C13/C14/C15/C18/C19 fixture-test define은 껐다.
-최종 14-scene run 파일과 PNG SHA-256 목록은 [capture group manifest](../c11-4-depth-three-anonymous-image-final-runtime-2026-10-22/SHA256SUMS)에 있다.
+최종 14-scene run 파일과 PNG SHA-256 목록은 [capture group manifest](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-4-depth-three-anonymous-image-final-runtime-2026-10-22/SHA256SUMS)에 있다.
 캡처 `.log`에서 각 line 끝의 horizontal whitespace만 제거했다. 이벤트 본문과 JSON trace payload는 바꾸지 않았고 manifest는 정규화한 파일을 대상으로 생성했다.
+PR #462에 넣은 Android/iOS PNG URL은 [Agent Browser](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-4-nested-depth-three-anonymous-image-runtime-2026-10-22/agent-browser-pr-462-image-check.json)에서 각각 1080×2400과 1206×2622로 decode됐고 `complete=true`였다.
 
 ## 새 네 scene의 기대·실행값
 
