@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획·Chrome 156 사전 비교만 완료했다. Spinon runtime과 Android/iOS Simulator 결과는 없다. 이 fixed fixture slice는 전체 C11.4 지원이나 공식 완료 수 `72/213`을 바꾸지 않는다.
+**상태:** 네 fixed scene 구현과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 확인을 마쳤다. 구현 PR 검토·병합을 진행 중이다. 이 slice는 전체 C11.4 지원이나 공식 완료 수 `72/213`을 바꾸지 않으며, 공식 `spec/STATUS.md`도 수정하지 않는다.
 
 ## 목적과 제한 범위
 
@@ -20,10 +20,10 @@ Ahem 10px/10px에서 `aa`의 min-content와 max-content inline size는 모두 20
 
 | Scene | Root sizing | Columns | Rows | Root frame | Text item | Overflow item, root 기준 |
 | --- | --- | --- | --- | --- | --- | --- |
-| `cyclic-percent-multitrack-both` | `max-content × max-content` | `[20, 10, 20]px` | `[10, 5, 10]px` | `40×20px` | `(0,0) 20×10px` | `(30,15) 20×10px` |
-| `cyclic-percent-multitrack-columns` | `max-content × 20px` | `[20, 10, 20]px` | `[10, 5, 5]px` | `40×20px` | `(0,0) 20×10px` | `(30,15) 20×10px` |
-| `cyclic-percent-multitrack-rows` | `40px × max-content` | `[20, 10, 10]px` | `[10, 5, 10]px` | `40×20px` | `(0,0) 20×10px` | `(30,15) 20×10px` |
-| `definite-percent-multitrack-both` | `40px × 20px` | `[20, 10, 20]px` | `[10, 5, 10]px` | `40×20px` | `(0,0) 20×10px` | `(30,15) 20×10px` |
+| `cyclic-percent-two-axis-multitrack` | `max-content × max-content` | `[20, 10, 20]px` | `[10, 5, 10]px` | `40×20px` | `(0,0) 20×10px` | `(30,15) 20×10px` |
+| `cyclic-percent-columns-multitrack` | `max-content × 20px` | `[20, 10, 20]px` | `[10, 5, 5]px` | `40×20px` | `(0,0) 20×10px` | `(30,15) 20×10px` |
+| `cyclic-percent-rows-multitrack` | `40px × max-content` | `[20, 10, 10]px` | `[10, 5, 10]px` | `40×20px` | `(0,0) 20×10px` | `(30,15) 20×10px` |
+| `definite-percent-two-axis-multitrack` | `40px × 20px` | `[20, 10, 20]px` | `[10, 5, 10]px` | `40×20px` | `(0,0) 20×10px` | `(30,15) 20×10px` |
 
 `cyclic-percent-multitrack-columns` keeps only the inline axis intrinsic; rows are fixed. `cyclic-percent-multitrack-rows` keeps only the block axis intrinsic; columns are fixed. The final row sizing still uses the columns resolved earlier. The definite control resolves both percentages directly against fixed 40×20px inner sizes. The text child provides the intrinsic basis; the third-cell child makes track placement and visible overflow measurable. Root absolute page `y` is not compared; node positions are root-relative.
 
@@ -36,14 +36,20 @@ Ahem 10px/10px에서 `aa`의 min-content와 max-content inline size는 모두 20
 
 ## 구현 및 판정 절차
 
-1. opt-in C11.4 fixture-test 안에서 위 네 scene ID만 허용하고, tree shape, source text, intrinsic style, typed track inputs와 revision이 예상과 다르면 부분 결과 없이 거부한다.
+1. 기존 opt-in C11.4 fixture-test 경로에서 위 네 scene ID만 허용한다. runtime adapter는 DOM shape, source text, computed style과 typed track inputs가 고정 case와 맞지 않으면 fixture input을 만들지 않는다.
 2. Rust projection/layout에서 네 장면의 Columns/Rows track 개수·used sizes·root/text/overflow node frame과 stage trace를 독립 기대값에 대조한다. 두 cyclic 축이 같은 root의 containing size를 서로 잘못 참조하지 않는지 확인한다.
-3. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 장면 전부 실행한다. scene별 draw/present와 frame/track trace를 확인한다. Android PixelCopy와 iOS Metal drawable(제출 전)에서 text 색상 및 root 바깥쪽 `(root.x+45, root.y+22)`의 overflow 색상을 표본화한다. 해당 점은 green overflow box 내부이며 root content box 외부다. Simulator 결과는 실기기 결과로 표현하지 않는다.
-4. 기본 product artifact에는 신규 fixture module marker, scene ID와 고정 payload가 빠지고 전용 fixture-test positive control에는 포함되는지 각각 확인한다.
-5. focused Rust tests, fixture module boundary 검사, `cargo fmt --all -- --check`, 관련 Clippy/build와 두 Simulator 실행 결과를 실제 수행 단위로 기록한다. 실패가 나오면 원인과 첫 오류를 남기고 수정 후 영향받는 전체 matrix를 재실행한다.
+3. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 장면 전부 실행했다. 각 scene의 Columns/Rows trace, root/text/overflow frame, draw/present를 확인했다. Android PixelCopy와 iOS Metal drawable(제출 전)의 다섯 표본은 빨강 text-item 배경, grid 안 overflow, root의 오른쪽·아래·두 경계 바깥에 있는 초록 overflow를 검사한다. 표본 결과는 각 플랫폼 20/20 exact다. 이는 글리프 paint 증거가 아니며 Simulator 결과를 실기기로 확대하지 않는다.
+4. 기본 `spinon-ffi` debug staticlib에서 새 scene ID가 없는 것과 `c04-runtime-gpu-fixture-test` positive-control staticlib에 포함된 것을 `strings`로 확인했다. 이는 release/app bundle 전반의 바이너리 크기 검증은 아니다.
+5. 관련 Rust 단위 테스트 3개, JavaScript 구문 검사와 fixture module-boundary 검사, `cargo fmt --all -- --check`, fixture-test feature의 `spinon-ffi` all-target Clippy, Android/iOS Simulator app build가 통과했다. full-workspace test/Clippy는 실행하지 않았다. 실행 근거와 SHA-256은 [runtime evidence](../spec/internal/evidence/c11-4-cyclic-two-axis-multitrack-runtime-2026-10-22/README.md)에 기록한다.
 6. 계획 검토와 다른 관점 20개로 구현/runtime을 검토하고, PR 변경분은 별도 관점 20개로 다시 검토한다. 발견 사항 수정 후 해당 검토를 반복한다.
-7. PR은 fixed fixture, 두 축 동시 sizing, root 밖 item paint evidence와 한계를 설명한다. C11.4 공식 check와 `72/213`은 그대로 둔다. 병합 시점의 현재 required checks와 merge state를 조회하고 `Rebase and merge`를 사용한다.
+7. PR은 fixed fixture, 두 축 동시 sizing, root 밖 item pixel evidence와 한계를 설명한다. C11.4 공식 check와 `72/213`은 그대로 둔다. 병합 직전 현재 required checks와 merge state를 조회하고 `Rebase and merge`를 사용한다.
 
 ## 범위 밖
 
 Non-zero gap/border/padding, 다른 percentage 값이나 `calc()`, `minmax()`/`fit-content()`의 다중 track 조합, auto-repeat, implicit tracks, span contribution, nested/anonymous items, vertical writing mode, parent clipping variants, CSS author admission, WPT, Android 실기기, hardware GPU, iOS compositor 이후 pixel, glyph raster equality 및 C11.4 전체 완료는 포함하지 않는다. Chrome screenshot의 overflow는 precomparison 결과일 뿐 Spinon 결과가 아니다.
+
+## 구현 결과 (2026-10-22)
+
+네 scene 모두 AVD와 iOS Simulator에서 `40×20px` root, `(0,0) 20×10px` text item, `(30,15) 20×10px` overflow item을 관찰했다. scene별 최종 Columns/Rows는 위 표와 일치했고, Android draw/present와 PixelCopy 표본, iOS draw/present와 Metal drawable 표본이 모두 맞았다. Rust trace 테스트도 최종 세 track의 base size를 대조한다. 앱 screenshot은 box/background를 보여주며 Ahem glyph paint는 하지 않는다.
+
+최종 screenshot, PixelCopy/Metal 표본, 앱 hash, 그리고 commit으로 고정된 source revision은 [runtime evidence](../spec/internal/evidence/c11-4-cyclic-two-axis-multitrack-runtime-2026-10-22/README.md)에 기록한다.

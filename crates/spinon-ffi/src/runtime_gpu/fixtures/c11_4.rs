@@ -18,6 +18,8 @@ mod cyclic_percentage_fit_content;
 mod cyclic_percentage_minmax;
 #[path = "c11_4/cyclic_percentage_tracks.rs"]
 mod cyclic_percentage_tracks;
+#[path = "c11_4/cyclic_percentage_two_axis_multitrack.rs"]
+mod cyclic_percentage_two_axis_multitrack;
 #[path = "c11_4/flex_spanning_text.rs"]
 mod flex_spanning_text;
 #[path = "c11_4/image_multispan.rs"]
@@ -1064,6 +1066,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     if let Some(source) = cyclic_percentage_fit_content::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
+    if let Some(source) = cyclic_percentage_two_axis_multitrack::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = anonymous_grid_border_overflow::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
@@ -1362,6 +1367,50 @@ mod tests {
             );
         }
         assert!(c11_4_grid_track_sizing_runtime_source("cyclic-fit-content-unlisted").is_err());
+    }
+
+    #[test]
+    fn exposes_cyclic_percentage_two_axis_multitrack_runtime_scenes() {
+        for (scene_id, columns, rows, root_size) in [
+            (
+                "cyclic-percent-two-axis-multitrack",
+                "50% 25% 20px",
+                "50% 25% 10px",
+                "width:max-content;height:max-content",
+            ),
+            (
+                "cyclic-percent-columns-multitrack",
+                "50% 25% 20px",
+                "10px 5px 5px",
+                "width:max-content;height:20px",
+            ),
+            (
+                "cyclic-percent-rows-multitrack",
+                "20px 10px 10px",
+                "50% 25% 10px",
+                "width:40px;height:max-content",
+            ),
+            (
+                "definite-percent-two-axis-multitrack",
+                "50% 25% 20px",
+                "50% 25% 10px",
+                "width:40px;height:20px",
+            ),
+        ] {
+            let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
+            assert!(source.len() < 4 * 1024);
+            assert!(source.contains(&format!("sceneId:{scene_id:?}")));
+            assert!(source.contains(&format!("grid-template-columns:{columns}")));
+            assert!(source.contains(&format!("grid-template-rows:{rows}")));
+            assert!(source.contains(root_size));
+            assert!(source.contains("document.createTextNode('XX')"));
+            assert!(source.contains("grid-column:3;grid-row:3"));
+            assert_eq!(source.matches("document.createElement('div')").count(), 3);
+        }
+        assert!(
+            c11_4_grid_track_sizing_runtime_source("cyclic-percent-two-axis-multitrack-unlisted")
+                .is_err()
+        );
     }
 
     #[test]

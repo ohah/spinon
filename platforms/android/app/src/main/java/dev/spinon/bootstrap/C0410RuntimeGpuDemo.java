@@ -130,6 +130,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "cyclic-minmax-column", "cyclic-minmax-row", "definite-minmax-column",
             "cyclic-fit-content-column", "cyclic-fit-content-row",
             "definite-fit-content-column",
+            "cyclic-percent-two-axis-multitrack", "cyclic-percent-columns-multitrack",
+            "cyclic-percent-rows-multitrack", "definite-percent-two-axis-multitrack",
             "auto-fixed-width-item", "minmax-auto-fixed-width-item",
             "fit-content-below-item-size", "spanning-auto-tracks",
             "spanning-auto-min-flex-tracks",
@@ -422,6 +424,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("cyclic-minmax-row")) return "width=24,height=16";
         if (sceneId.equals("definite-percent-column")
                 || sceneId.equals("definite-minmax-column")) return "width=40,height=16";
+        if (sceneId.equals("cyclic-percent-two-axis-multitrack")
+                || sceneId.equals("cyclic-percent-columns-multitrack")
+                || sceneId.equals("cyclic-percent-rows-multitrack")
+                || sceneId.equals("definite-percent-two-axis-multitrack")) {
+            return "width=40,height=20";
+        }
         if (sceneId.startsWith("nested-text-span")) {
             return sceneId.contains("before-span3") || sceneId.contains("span3-before-span2")
                     ? "width=180,height=60" : "width=95,height=60";
@@ -616,6 +624,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("cyclic-minmax-column")
                 || sceneId.equals("cyclic-minmax-row")
                 || sceneId.equals("definite-minmax-column")) return "width=24,height=16";
+        if (sceneId.equals("cyclic-percent-two-axis-multitrack")
+                || sceneId.equals("cyclic-percent-columns-multitrack")
+                || sceneId.equals("cyclic-percent-rows-multitrack")
+                || sceneId.equals("definite-percent-two-axis-multitrack")) {
+            return "width=20,height=10";
+        }
         if (sceneId.equals("nested-grid-span-two")
                 || sceneId.equals("nested-grid-one-track")
                 || sceneId.equals("nested-grid-definite-flex-control")
@@ -1533,6 +1547,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + ";4:node=5,x=" + imageX + ",y=0,width=24,height=16]";
         }
         switch (sceneId) {
+            case "cyclic-percent-two-axis-multitrack":
+            case "cyclic-percent-columns-multitrack":
+            case "cyclic-percent-rows-multitrack":
+            case "definite-percent-two-axis-multitrack":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;"
+                        + "1:node=2,x=0,y=0,width=20,height=10;"
+                        + "2:node=4,x=30,y=15,width=20,height=10]";
             case "cyclic-fit-content-column":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=50,height=20;"
                         + "1:node=2,x=0,y=0,width=25,height=20]";
@@ -2457,6 +2478,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("cyclic-fit-content-column")
                 || sceneId.equals("cyclic-fit-content-row")
                 || sceneId.equals("definite-fit-content-column")) return 2;
+        if (sceneId.equals("cyclic-percent-two-axis-multitrack")
+                || sceneId.equals("cyclic-percent-columns-multitrack")
+                || sceneId.equals("cyclic-percent-rows-multitrack")
+                || sceneId.equals("definite-percent-two-axis-multitrack")) return 3;
         if (sceneId.startsWith("nested-text-span")) {
             return sceneId.contains("before-span3") || sceneId.contains("span3-before-span2")
                     ? 7 : 6;
@@ -2690,6 +2715,53 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (sceneId.equals("cyclic-percent-two-axis-multitrack")
+                || sceneId.equals("cyclic-percent-columns-multitrack")
+                || sceneId.equals("cyclic-percent-rows-multitrack")
+                || sceneId.equals("definite-percent-two-axis-multitrack")) {
+            if (samples.size() != 5) return false;
+            String prefix = sceneId + "-";
+            String textId = "c114-" + sceneId + "-text";
+            String overflowId = "c114-" + sceneId + "-overflow";
+            boolean textRed = false;
+            boolean insideGrid = false;
+            boolean pastRight = false;
+            boolean pastBottom = false;
+            boolean pastBoth = false;
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                if (!sample.id.startsWith(prefix)) return false;
+                switch (sample.id.substring(prefix.length())) {
+                    case "text-red":
+                        textRed = sample.targetNodeId.equals(textId)
+                                && sample.xCssPx == 10 && sample.yCssPx == 5;
+                        if (!textRed) return false;
+                        break;
+                    case "overflow-inside-grid":
+                        insideGrid = sample.targetNodeId.equals(overflowId)
+                                && sample.xCssPx == 35 && sample.yCssPx == 17;
+                        if (!insideGrid) return false;
+                        break;
+                    case "overflow-past-right":
+                        pastRight = sample.targetNodeId.equals(overflowId)
+                                && sample.xCssPx == 45 && sample.yCssPx == 18;
+                        if (!pastRight) return false;
+                        break;
+                    case "overflow-past-bottom":
+                        pastBottom = sample.targetNodeId.equals(overflowId)
+                                && sample.xCssPx == 35 && sample.yCssPx == 22;
+                        if (!pastBottom) return false;
+                        break;
+                    case "overflow-past-both":
+                        pastBoth = sample.targetNodeId.equals(overflowId)
+                                && sample.xCssPx == 45 && sample.yCssPx == 22;
+                        if (!pastBoth) return false;
+                        break;
+                    default:
+                        return false;
+                }
+            }
+            return textRed && insideGrid && pastRight && pastBottom && pastBoth;
+        }
         if (sceneId.equals("cyclic-percent-column")
                 || sceneId.equals("cyclic-percent-row")
                 || sceneId.equals("definite-percent-column")
@@ -4122,6 +4194,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "cyclic-fit-content-column".equals(pixelMatrixSceneId)
                         || "cyclic-fit-content-row".equals(pixelMatrixSceneId)
                         || "definite-fit-content-column".equals(pixelMatrixSceneId)
+                        || "cyclic-percent-two-axis-multitrack".equals(pixelMatrixSceneId)
+                        || "cyclic-percent-columns-multitrack".equals(pixelMatrixSceneId)
+                        || "cyclic-percent-rows-multitrack".equals(pixelMatrixSceneId)
+                        || "definite-percent-two-axis-multitrack".equals(pixelMatrixSceneId)
                         || "auto-fill-overflow-neighbors".equals(pixelMatrixSceneId)
                         || "columns-fill-negative-positive-cycle".equals(pixelMatrixSceneId)
                         || "implicit-min-content-overflow-border".equals(pixelMatrixSceneId)
@@ -7649,6 +7725,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c114GridExpectedRgb(String sampleId) {
+        if (sampleId.endsWith("-text-red")) return new int[] {229, 72, 77};
+        if (sampleId.endsWith("-overflow-inside-grid")
+                || sampleId.endsWith("-overflow-past-right")
+                || sampleId.endsWith("-overflow-past-bottom")
+                || sampleId.endsWith("-overflow-past-both")) {
+            return new int[] {32, 191, 107};
+        }
         switch (sampleId) {
             case "cyclic-column-inside-track":
             case "cyclic-column-past-track":

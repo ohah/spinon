@@ -15,6 +15,8 @@ const cyclicPercentSceneIDs = new Set([
   'cyclic-percent-column', 'cyclic-percent-row', 'definite-percent-column',
   'cyclic-minmax-column', 'cyclic-minmax-row', 'definite-minmax-column',
   'cyclic-fit-content-column', 'cyclic-fit-content-row', 'definite-fit-content-column',
+  'cyclic-percent-two-axis-multitrack', 'cyclic-percent-columns-multitrack',
+  'cyclic-percent-rows-multitrack', 'definite-percent-two-axis-multitrack',
 ]);
 const requestedRunKind = process.argv.find((argument) => argument.startsWith('--run-kind='))
   ?.slice('--run-kind='.length);
@@ -1875,8 +1877,45 @@ scenes.push(
         xCssPx: 21, yCssPx: 5, rgba: [16, 24, 32, 255] },
     ],
   },
+  ...[
+    'cyclic-percent-two-axis-multitrack',
+    'cyclic-percent-columns-multitrack',
+    'cyclic-percent-rows-multitrack',
+    'definite-percent-two-axis-multitrack',
+  ].map((id) => ({
+    id,
+    boxCount: 3,
+    rootFrame: 'width=40,height=20',
+    itemFrame: 'width=20,height=10',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;'
+      + '1:node=2,x=0,y=0,width=20,height=10;'
+      + '2:node=4,x=30,y=15,width=20,height=10]',
+    axes: {
+      Columns: {
+        tracks: id === 'cyclic-percent-rows-multitrack' ? [20, 10, 10] : [20, 10, 20],
+        collapsed: [false, false, false],
+      },
+      Rows: {
+        tracks: id === 'cyclic-percent-columns-multitrack' ? [10, 5, 5] : [10, 5, 10],
+        collapsed: [false, false, false],
+      },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    pixelSamples: [
+      { id: `${id}-text-red`, nodeId: `c114-${id}-text`,
+        xCssPx: 10, yCssPx: 5, rgba: [229, 72, 77, 255] },
+      { id: `${id}-overflow-inside-grid`, nodeId: `c114-${id}-overflow`,
+        xCssPx: 35, yCssPx: 17, rgba: [32, 191, 107, 255] },
+      { id: `${id}-overflow-past-right`, nodeId: `c114-${id}-overflow`,
+        xCssPx: 45, yCssPx: 18, rgba: [32, 191, 107, 255] },
+      { id: `${id}-overflow-past-bottom`, nodeId: `c114-${id}-overflow`,
+        xCssPx: 35, yCssPx: 22, rgba: [32, 191, 107, 255] },
+      { id: `${id}-overflow-past-both`, nodeId: `c114-${id}-overflow`,
+        xCssPx: 45, yCssPx: 22, rgba: [32, 191, 107, 255] },
+    ],
+  })),
 );
-assert.equal(scenes.length, 211, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 215, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;

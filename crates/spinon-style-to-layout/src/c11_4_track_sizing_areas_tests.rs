@@ -21,6 +21,9 @@ const HTML: &str = "http://www.w3.org/1999/xhtml";
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "c11_4_track_sizing_areas_tests/cyclic_fit_content.rs"]
 mod cyclic_fit_content;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "c11_4_track_sizing_areas_tests/cyclic_two_axis_multitrack.rs"]
+mod cyclic_two_axis_multitrack;
 
 struct Fixture {
     document: HostDocument,
