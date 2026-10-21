@@ -1,12 +1,22 @@
 {
   "pass": "pass42",
-  "session": "spinon-tailnet-pass42",
-  "close_command_succeeded": true,
+  "sessions_closed": [
+    {
+      "session": "spinon-tailnet-pass42",
+      "launch_cycles": 2,
+      "close_commands_succeeded": 2
+    },
+    {
+      "session": "spinon-pr484-verify",
+      "launch_cycles": 1,
+      "close_commands_succeeded": 1
+    }
+  ],
   "post_close_active_agent_browser_sessions": [],
   "post_close_agent_browser_or_owned_chrome_processes": [],
   "post_close_scoped_process_scan_empty": true,
+  "unrelated_sessions_closed": 0,
   "tailnet_preview_server_pid": 1191,
   "tailnet_preview_server_preserved": true,
-  "unrelated_sessions_closed": 0,
-  "verification": "agent-browser session list was empty and process scan for agent-browser or .agent-browser was empty after the session closed"
+  "verification": "Agent Browser session list and agent-browser/.agent-browser process scan were empty after both owned sessions closed"
 }

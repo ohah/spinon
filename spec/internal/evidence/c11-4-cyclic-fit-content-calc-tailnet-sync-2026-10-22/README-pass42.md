@@ -26,7 +26,8 @@ PR [#483](https://github.com/ohah/spinon/pull/483)의 계획과 Chrome 사전 �
 - [새 계획 화면](./tailnet-plan-agent-browser-pass42.png) · [plan DOM](./plan-dom-pass42.json)
 - [사전 비교 evidence 화면](./tailnet-evidence-agent-browser-pass42.png) · [evidence DOM](./evidence-dom-pass42.json)
 - [Chrome PNG route 화면](./tailnet-chrome-image-agent-browser-pass42.png) · [image DOM과 크기](./chrome-image-dom-pass42.json)
-- 확인 뒤 전용 브라우저를 닫았다. 후속 목록은 활성 Agent Browser session 0개, Agent Browser 및 소유 Chrome process 0개다. 별도 세션은 종료하지 않았고 Tailnet server PID `1191`은 유지했다. [종료 결과](./browser-close-pass42.json).
+- PR [#484](https://github.com/ohah/spinon/pull/484) body의 두 raw screenshot도 Agent Browser에서 `complete=true`, 각 `1280×633`으로 로드됐다. [PR DOM과 이미지 크기](./pr-dom-pass42.json) · [PR 페이지 화면](./pr-agent-browser-pass42.png).
+- 두 전용 브라우저 session을 확인 후 닫았다. 후속 목록은 활성 Agent Browser session 0개, Agent Browser 및 소유 Chrome process 0개다. 다른 session은 종료하지 않았고 Tailnet server PID `1191`은 유지했다. [종료 결과](./browser-close-pass42.json).
 
 ## 범위와 한계
 
