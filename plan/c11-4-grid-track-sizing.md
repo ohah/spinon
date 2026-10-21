@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-10-21 일반 nested Grid item intrinsic contribution 후속 계획
+
+바깥 Grid의 direct item인 일반 nested Grid 한 단계와 내부 direct-leaf Ahem text 두 개를 고정했다. Agent Browser `HeadlessChrome/156.0.0.0`은 nested border box 134px, outer spanning min-content tracks `65/65px`, one-track case `134/0px`, definite 120px flex control `58/58px`를 관찰했다. 이 비교는 아직 Spinon 구현 결과가 아니며 subgrid를 포함하지 않는다. [세부 계획](./c11-4-nested-grid-intrinsic.md) · [Chrome 156 사전 비교·규범 교차 확인](../spec/internal/evidence/c11-4-nested-grid-intrinsic-precomparison-2026-10-21/README.md). C11.4 checkbox와 공식 완료 수는 유지한다.
+
 ## 2026-10-21 Ahem spanning auto-minimum flex track text fixture
 
 기존 Chrome 155 사전 oracle의 spanning-auto-min-flex-tracks를 앱의 고정 C11.4 fixture 경로에 연결했다. 100px Grid의 repeat(2,minmax(0,1fr))와 4px gap, 두 track을 span하는 Ahem 10px nowrap 20자 text를 사용한다. Chrome 기대값은 tracks 48/48px, root 100×30px, item 100×10px, item scrollWidth=200px다. 기존 26-case oracle에서 재현 입력과 수치를 먼저 고정했으므로 별도 계획 review를 새로 만들지 않고 이 고정 case를 구현했다. Rust fixture/runtime, Android SM-S731N 실기기 및 iPhone 17 Pro/iOS 26.2 Simulator 한 장면에서 layout·intrinsic input/track trace·draw/present를 확인했다. Android 첫 캡처는 runner가 기존 APK를 그대로 설치해 allowlist 오류로 실패했다. fixture APK를 명시 빌드하고 local/install SHA-256 일치 후 같은 실기기에서 성공했다. 화면은 box만 확인하며 glyph paint·텍스트 overflow 픽셀, WPT, 전체 C11.4는 미검증이다. 공식 C11.4 체크와 완료 수는 그대로다. [Chrome 관찰](../spec/internal/evidence/c11-4-grid-track-sizing-precomparison-2026-10-19/chrome/chrome155-observation.json) · [실기기·Simulator 결과와 화면](../spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/README.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/implementation-review-20.md) · [PR diff 검토 20개](../spec/internal/evidence/c11-4-spanning-auto-min-flex-text-2026-10-21/pr-diff-review-20.md) · [PR #415](https://github.com/ohah/spinon/pull/415)

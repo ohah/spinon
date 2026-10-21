@@ -1,0 +1,49 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 nested Grid intrinsic contribution oracle</title>
+<style>
+@font-face { font-family: AhemFixture; src: url("../../../../tests/fixtures/resources/c15/Ahem.ttf") format("truetype"); }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 12px; font: 12px sans-serif; }
+.case { margin: 0 0 12px; padding: 4px; border: 1px solid #ccd2dd; width: 280px; }
+.case-label { margin: 0 0 4px; font: 12px/16px sans-serif; color: #34425a; }
+.outer { display: grid; gap: 4px; width: max-content; font: 10px/10px AhemFixture, monospace; outline: 1px solid #426aa5; background: #e9f1ff; }
+.nested { display: grid; gap: 4px; font: inherit; outline: 1px solid #33826a; background: #e7f6ed; }
+.text { font: inherit; white-space: normal; outline: 1px solid #bb6b36; background: #fff0e1; }
+#span-two .outer { grid-template-columns: min-content min-content; }
+#span-two .nested { grid-column: 1 / span 2; grid-template-columns: min-content max-content; }
+#span-two .a { grid-column: 1; }
+#span-two .b { grid-column: 2; }
+#one-track .outer { grid-template-columns: min-content min-content; }
+#one-track .nested { grid-column: 1; grid-template-columns: min-content max-content; }
+#one-track .a { grid-column: 1; }
+#one-track .b { grid-column: 2; }
+#inner-span .outer { grid-template-columns: min-content min-content; }
+#inner-span .nested { grid-column: 1 / span 2; grid-template-columns: min-content min-content; }
+#inner-span .a { grid-column: 1 / span 2; }
+#inner-span .b { grid-column: 1; }
+#definite .outer { width: 120px; grid-template-columns: minmax(auto, 1fr) minmax(auto, 1fr); }
+#definite .nested { grid-column: 1 / span 2; grid-template-columns: min-content max-content; }
+#definite .a { grid-column: 1; }
+#definite .b { grid-column: 2; }
+</style>
+<section class="case" id="span-two"><h3 class="case-label">nested grid item spanning two parent min-content tracks</h3><div class="outer"><div class="nested"><div class="text a">XX XXXXXXX</div><div class="text b">XXXXXX</div></div></div></section>
+<section class="case" id="one-track"><h3 class="case-label">nested grid item occupying one parent track</h3><div class="outer"><div class="nested"><div class="text a">XX XXXXXXX</div><div class="text b">XXXXXX</div></div></div></section>
+<section class="case" id="inner-span"><h3 class="case-label">inner grid child spanning two nested tracks</h3><div class="outer"><div class="nested"><div class="text a">XX XXXXXXX</div><div class="text b">XXXXXX</div></div></div></section>
+<section class="case" id="definite"><h3 class="case-label">definite parent width with spanning nested item</h3><div class="outer"><div class="nested"><div class="text a">XX XXXXXXX</div><div class="text b">XXXXXX</div></div></div></section>
+<script>
+const selectors = ['.outer', '.nested', '.a', '.b'];
+const rect = el => { const r = el.getBoundingClientRect(); return { x:r.x, y:r.y, width:r.width, height:r.height }; };
+window.oracle = () => Object.fromEntries([...document.querySelectorAll('.case')].map(section => {
+  const nodes = Object.fromEntries(selectors.map(sel => [sel.slice(1), section.querySelector(sel)]));
+  return [section.id, {
+    outer: rect(nodes.outer),
+    outerTracks: getComputedStyle(nodes.outer).gridTemplateColumns,
+    nested: rect(nodes.nested),
+    nestedTracks: getComputedStyle(nodes.nested).gridTemplateColumns,
+    nestedRows: getComputedStyle(nodes.nested).gridTemplateRows,
+    a: rect(nodes.a), b: rect(nodes.b),
+    aScrollWidth: nodes.a.scrollWidth, fontLoaded: document.fonts.check('10px AhemFixture'),
+  }];
+}));
+</script>
