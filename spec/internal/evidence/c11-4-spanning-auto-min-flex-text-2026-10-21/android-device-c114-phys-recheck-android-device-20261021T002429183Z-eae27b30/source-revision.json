@@ -1,0 +1,9 @@
+{
+  "repository": "/Users/yoonhb/Documents/workspace/spinon",
+  "gitHead": "0ffd31b52a6da2f20dec65e9149448ac56e47c66",
+  "runner": "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+  "runnerSha256": "266a1066289a0fe4680e0fb9f23ea7e6b4195fb825675d5cbb6575454621bc8a",
+  "localApkSha256": "d67d89fbdf4158460a4a376e301718d1a9b6520ba1d07277f13cdea34bee8922",
+  "invocation": "android-device R5KYB06SMPE --scene-id=spanning-auto-min-flex-tracks --run-kind=phys-recheck",
+  "runIdLimit": 80
+}
