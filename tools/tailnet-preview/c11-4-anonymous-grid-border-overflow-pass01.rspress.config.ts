@@ -1,8 +1,8 @@
-import baseConfig from '../../../../packages/docs/rspress.config.ts';
+import baseConfig from '../../packages/docs/rspress.config.ts';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../..');
+const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 
 export default {
   ...baseConfig,
