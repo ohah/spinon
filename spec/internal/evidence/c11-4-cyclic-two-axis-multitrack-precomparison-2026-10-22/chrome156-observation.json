@@ -1,0 +1,132 @@
+{
+  "ahemLoaded": true,
+  "documentFontsStatus": "loaded",
+  "scenes": [
+    {
+      "columns": "20px 10px 20px",
+      "overflow": {
+        "bottom": 44,
+        "height": 10,
+        "right": 50,
+        "width": 20,
+        "x": 30,
+        "y": 34
+      },
+      "overflowColor": "rgb(32, 191, 107)",
+      "root": {
+        "bottom": 39,
+        "height": 20,
+        "right": 40,
+        "width": 40,
+        "x": 0,
+        "y": 19
+      },
+      "rows": "10px 5px 10px",
+      "sceneId": "cyclic-percent-multitrack-both",
+      "text": {
+        "bottom": 29,
+        "height": 10,
+        "right": 20,
+        "width": 20,
+        "x": 0,
+        "y": 19
+      }
+    },
+    {
+      "columns": "20px 10px 20px",
+      "overflow": {
+        "bottom": 83,
+        "height": 10,
+        "right": 50,
+        "width": 20,
+        "x": 30,
+        "y": 73
+      },
+      "overflowColor": "rgb(32, 191, 107)",
+      "root": {
+        "bottom": 78,
+        "height": 20,
+        "right": 40,
+        "width": 40,
+        "x": 0,
+        "y": 58
+      },
+      "rows": "10px 5px 5px",
+      "sceneId": "cyclic-percent-multitrack-columns",
+      "text": {
+        "bottom": 68,
+        "height": 10,
+        "right": 20,
+        "width": 20,
+        "x": 0,
+        "y": 58
+      }
+    },
+    {
+      "columns": "20px 10px 10px",
+      "overflow": {
+        "bottom": 122,
+        "height": 10,
+        "right": 50,
+        "width": 20,
+        "x": 30,
+        "y": 112
+      },
+      "overflowColor": "rgb(32, 191, 107)",
+      "root": {
+        "bottom": 117,
+        "height": 20,
+        "right": 40,
+        "width": 40,
+        "x": 0,
+        "y": 97
+      },
+      "rows": "10px 5px 10px",
+      "sceneId": "cyclic-percent-multitrack-rows",
+      "text": {
+        "bottom": 107,
+        "height": 10,
+        "right": 20,
+        "width": 20,
+        "x": 0,
+        "y": 97
+      }
+    },
+    {
+      "columns": "20px 10px 20px",
+      "overflow": {
+        "bottom": 161,
+        "height": 10,
+        "right": 50,
+        "width": 20,
+        "x": 30,
+        "y": 151
+      },
+      "overflowColor": "rgb(32, 191, 107)",
+      "root": {
+        "bottom": 156,
+        "height": 20,
+        "right": 40,
+        "width": 40,
+        "x": 0,
+        "y": 136
+      },
+      "rows": "10px 5px 10px",
+      "sceneId": "definite-percent-multitrack-both",
+      "text": {
+        "bottom": 146,
+        "height": 10,
+        "right": 20,
+        "width": 20,
+        "x": 0,
+        "y": 136
+      }
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "devicePixelRatio": 1,
+    "innerHeight": 633,
+    "innerWidth": 1280
+  }
+}

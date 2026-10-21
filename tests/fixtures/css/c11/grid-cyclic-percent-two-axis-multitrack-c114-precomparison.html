@@ -1,0 +1,63 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 simultaneous cyclic percentage multi-track precomparison</title>
+<style>
+  @font-face { font-family: Ahem; src: url("../../resources/c15/Ahem.ttf") format("truetype"); }
+  html, body { margin: 0; padding: 0; }
+  .grid {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    gap: 0;
+    justify-content: start;
+    align-content: start;
+    background: #101820;
+    font: 10px/10px Ahem, sans-serif;
+    color: #e5484d;
+  }
+  .item {
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #e5484d;
+  }
+  .overflow {
+    width: 20px;
+    height: 10px;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    grid-column: 3;
+    grid-row: 3;
+    background: #20bf6b;
+  }
+</style>
+
+<strong>Both axes cyclic</strong>
+<div id="cyclic-percent-multitrack-both" class="grid" style="width:max-content;height:max-content;grid-template-columns:50% 25% 20px;grid-template-rows:50% 25% 10px">
+  <div id="cyclic-percent-multitrack-both-text" class="item">aa</div>
+  <div id="cyclic-percent-multitrack-both-overflow" class="overflow"></div>
+</div>
+
+<strong>Columns only cyclic</strong>
+<div id="cyclic-percent-multitrack-columns" class="grid" style="width:max-content;height:20px;grid-template-columns:50% 25% 20px;grid-template-rows:10px 5px 5px">
+  <div id="cyclic-percent-multitrack-columns-text" class="item">aa</div>
+  <div id="cyclic-percent-multitrack-columns-overflow" class="overflow"></div>
+</div>
+
+<strong>Rows only cyclic</strong>
+<div id="cyclic-percent-multitrack-rows" class="grid" style="width:40px;height:max-content;grid-template-columns:20px 10px 10px;grid-template-rows:50% 25% 10px">
+  <div id="cyclic-percent-multitrack-rows-text" class="item">aa</div>
+  <div id="cyclic-percent-multitrack-rows-overflow" class="overflow"></div>
+</div>
+
+<strong>Both axes definite control</strong>
+<div id="definite-percent-multitrack-both" class="grid" style="width:40px;height:20px;grid-template-columns:50% 25% 20px;grid-template-rows:50% 25% 10px">
+  <div id="definite-percent-multitrack-both-text" class="item">aa</div>
+  <div id="definite-percent-multitrack-both-overflow" class="overflow"></div>
+</div>
