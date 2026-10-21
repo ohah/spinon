@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획 PR 병합 후 세 고정 장면의 구현과 Android/iOS Simulator 실행을 마쳤다. 구현 실패 관점 20개와 최종 PR diff 실패 관점 30개를 별도로 기록했다. PR [#474](https://github.com/ohah/spinon/pull/474)은 열려 있고 merge 전이다. 이 제한 fixture는 C11.4 일반 지원이 아니므로 공식 checkbox와 완료 수 `72/213`은 유지한다. [계획 실패 관점 검토 20개](./c11-4-cyclic-percent-fit-content-plan-review-20.md) · [사전 비교](../spec/internal/evidence/c11-4-cyclic-fit-content-precomparison-2026-10-22/README.md) · [구현·Simulator 근거](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/README.md) · [구현 실패 관점 검토 20개](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/implementation-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/pr-diff-review-30.md)
+**상태:** 세 고정 장면 구현과 Android/iOS Simulator 실행을 마치고 PR #474를 2026-10-21 21:23:35 UTC Rebase and merge로 병합했다(SHA df0c607f83732081a47ceb8435f3a174289acee7). 구현 실패 관점 20개와 PR diff 30개 검토가 끝났다. 이 제한 fixture는 C11.4 일반 지원이 아니므로 공식 checkbox와 완료 수 72/213은 유지한다. [계획 실패 관점 검토 20개](./c11-4-cyclic-percent-fit-content-plan-review-20.md) · [사전 비교](../spec/internal/evidence/c11-4-cyclic-fit-content-precomparison-2026-10-22/README.md) · [구현·Simulator 근거](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/README.md) · [구현 실패 관점 검토 20개](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/implementation-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-cyclic-fit-content-runtime-2026-10-22/pr-diff-review-30.md)
 
 ## 목적과 제한 범위
 
