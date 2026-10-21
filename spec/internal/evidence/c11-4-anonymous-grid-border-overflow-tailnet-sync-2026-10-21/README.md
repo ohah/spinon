@@ -7,6 +7,7 @@
 - 원본 commit: `135b241e05fbf4f4e6e41e9f29c4f145a160f11d`
 - 원본 tree: `c92d41f8da22f5f42c83637a92dddf7ae711252e`
 - RSPress: `2.0.22` (프로젝트에서 고정한 버전)
+- 범위 빌드 설정은 `tools/tailnet-preview/c11-4-anonymous-grid-border-overflow-pass01.rspress.config.ts`에 보관한다. pass02 재빌드에서 문서 root 아래의 `.ts` 파일이 페이지 모듈로 수집되는 것을 확인해 root 밖으로 옮겼다.
 - 기존 pass40의 선택 source root를 바탕으로 main의 변경 82개 파일을 대조해 237개 경로를 복사했다. 각 복사 파일은 `git show origin/main:<path>` 원본과 비교했다.
 - 선택 RSPress 빌드가 성공했다. 전체 문서 빌드에서 알려진 무관한 링크·이미지 문제 때문에 이 빌드는 dead-link/dead-image 검사를 끈 범위 빌드다. 따라서 전체 문서 사이트 검증을 뜻하지 않는다.
 - 저장소 diff 검사를 위해 빌드 표의 행 끝 공백과 마지막 빈 줄만 제거해 로그를 저장했다. 명령 출력의 표 내용은 보존했다.
@@ -32,13 +33,13 @@
 - Android forward PNG가 `complete=true`, `1080×2400`; iOS forward PNG가 `complete=true`, `1206×2622`로 브라우저에 표시됐다.
 - PR #433 본문을 GitHub Agent Browser에서도 확인했다. 본문에 올린 roadmap/Android/iOS 이미지 3개가 모두 `complete=true`, `1280×633`이었다. [PR 전체 화면 캡처](pr433-agent-browser-full-pass01.png)와 [DOM 결과](pr433-agent-browser-pass01.json)를 보존했다.
 
-![Tailnet roadmap의 PR #431 병합 항목](tailnet-roadmap-agent-browser-pass01.png)
+![Tailnet roadmap의 PR #431 병합 항목](./tailnet-roadmap-agent-browser-pass01.png)
 
-![Tailnet에서 열린 Android AVD forward 캡처](tailnet-android-image-agent-browser-pass01.png)
+![Tailnet에서 열린 Android AVD forward 캡처](./tailnet-android-image-agent-browser-pass01.png)
 
-![Tailnet에서 열린 iOS Simulator forward 캡처](tailnet-ios-image-agent-browser-pass01.png)
+![Tailnet에서 열린 iOS Simulator forward 캡처](./tailnet-ios-image-agent-browser-pass01.png)
 
-다른 Agent Browser 페이지 캡처는 [계획](tailnet-plan-agent-browser-pass01.png)과 [실행 근거](tailnet-evidence-readme-agent-browser-pass01.png)에 있다. 기계 판독 결과는 `*-pass01.json`, 빌드·동기화 로그는 이름에 `pass01`이 포함된 로그 파일에 둔다.
+다른 Agent Browser 페이지 캡처는 [계획](./tailnet-plan-agent-browser-pass01.png)과 [실행 근거](./tailnet-evidence-readme-agent-browser-pass01.png)에 있다. 기계 판독 결과는 `*-pass01.json`, 빌드·동기화 로그는 이름에 `pass01`이 포함된 로그 파일에 둔다.
 
 ## 실행 한계
 
