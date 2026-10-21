@@ -1,0 +1,57 @@
+{
+  "pass": "pass01",
+  "title": "C11.4 anonymous text run과 replaced image의 bordered Grid overflow 계획 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-anonymous-grid-border-overflow.html",
+  "visible_pre_sync_status": "in required status checks도 설정되어 있지 않았다. Tailnet preview 갱신과 HTTP/hash 검증이 남아 있다.",
+  "relevant_links": [
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/README.html",
+      "text": "C11.4 anonymous Grid border overflow 실행 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-pr-diff-review-20.html",
+      "text": "C11.4 bordered Grid overflow 계획 PR 변경 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-review-20.html",
+      "text": "C11.4 anonymous Grid border overflow 계획 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/README.html",
+      "text": "C11.4 anonymous Grid border overflow 사전 비교"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-anonymous-grid-border-overflow-implementation-review-20.html",
+      "text": "C11.4 anonymous Grid border overflow 구현 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-anonymous-grid-border-overflow-pr-diff-review-20.html",
+      "text": "C11.4 anonymous Grid border overflow PR diff 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-anonymous-grid-border-overflow.html",
+      "text": "C11.4 anonymous text run과 replaced image의 bordered Grid overflow 계획"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/README.html",
+      "text": "C11.4 anonymous Grid border overflow 실행 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-pr-diff-review-20.html",
+      "text": "C11.4 bordered Grid overflow 계획 PR 변경 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-review-20.html",
+      "text": "C11.4 anonymous Grid border overflow 계획 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/README.html",
+      "text": "C11.4 anonymous Grid border overflow 사전 비교"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-anonymous-grid-border-overflow.html#c114-anonymous-text-run%EA%B3%BC-replaced-image%EC%9D%98-bordered-grid-overflow-%EA%B3%84%ED%9A%8D",
+      "text": "#"
+    }
+  ],
+  "screenshot": "tailnet-plan-agent-browser-pass01.png"
+}

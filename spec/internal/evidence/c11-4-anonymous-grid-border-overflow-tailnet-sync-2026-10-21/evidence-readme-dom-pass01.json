@@ -1,0 +1,123 @@
+{
+  "images": [
+    {
+      "alt": "logo",
+      "complete": true,
+      "height": 150,
+      "src": "https://macstudio.tailed42f2.ts.net/spinon/logo.svg",
+      "width": 150
+    }
+  ],
+  "links": [
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/README.html",
+      "text": "C11.4 anonymous Grid border overflow 실행 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-pr-diff-review-20.html",
+      "text": "C11.4 bordered Grid overflow 계획 PR 변경 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-review-20.html",
+      "text": "C11.4 anonymous Grid border overflow 계획 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/README.html",
+      "text": "C11.4 anonymous Grid border overflow 사전 비교"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-anonymous-grid-border-overflow-implementation-review-20.html",
+      "text": "C11.4 anonymous Grid border overflow 구현 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-anonymous-grid-border-overflow-pr-diff-review-20.html",
+      "text": "C11.4 anonymous Grid border overflow PR diff 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-anonymous-grid-border-overflow.html",
+      "text": "C11.4 anonymous text run과 replaced image의 bordered Grid overflow 계획"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/README.html",
+      "text": "C11.4 anonymous Grid border overflow 실행 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-pr-diff-review-20.html",
+      "text": "C11.4 bordered Grid overflow 계획 PR 변경 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/plan-review-20.html",
+      "text": "C11.4 anonymous Grid border overflow 계획 실패 관점 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-anonymous-grid-border-overflow-precomparison-2026-10-21/README.html",
+      "text": "C11.4 anonymous Grid border overflow 사전 비교"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/README.html#c114-anonymous-grid-border-overflow-%EC%8B%A4%ED%96%89-%EA%B7%BC%EA%B1%B0",
+      "text": "#"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/README.html#%EC%8B%A4%ED%96%89-%EA%B2%B0%EA%B3%BC",
+      "text": "#"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/anonymous-runs-two-images-forward.png",
+      "text": "forward"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/two-images-anonymous-runs-reversed.png",
+      "text": "reversed"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/anonymous-runs-two-images-forward.png",
+      "text": "forward"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/two-images-anonymous-runs-reversed.png",
+      "text": "reversed"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/result.json",
+      "text": "Android 결과"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/result.json",
+      "text": "iOS 결과"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/installed-apk-verification.json",
+      "text": "설치 검증"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/pr-images-agent-browser.json",
+      "text": "브라우저 확인 JSON"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/README.html#%EB%B9%8C%EB%93%9C%EC%99%80-%EA%B2%80%EC%82%AC",
+      "text": "#"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-build.log",
+      "text": "Android fixture 앱 빌드"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-build.log",
+      "text": "iOS Simulator fixture 앱 빌드"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/workspace-clippy.log",
+      "text": "기본 workspace Clippy"
+    }
+  ],
+  "opening": "스피논\n0.1.0-draft\n검색\n⌘K\n0001 · 범위와 적합성\ninternal\n0059 · C11 Grid 레이아웃 내부 계약\nevidence\nc11-4-anonymous-grid-border-overflow-2026-10-21\nC11.4 anonymous Grid border overflow 실행 근거\nc11-4-anonymous-grid-border-overflow-precomparison-2026-10-21\nC11.4 bordered Grid overflow 계획 PR 변경 실패 관점 검토 20개\nC11.4 anonymous Grid border overflow 계획 실패 관점 검토 20개\nC11.4 anonymous Grid border overflow 사전 비교\nc11-4-anonymous-grid-text-2026-10-21\nC11.4 anonymous Grid text 구현 실패 관점 검토 20개\nC11.4 anonymous Grid text 계획 범위 보강 검토 20개\nC11.4 anonymous Grid text 구현 PR diff 적대 검토 30개\nC11.4 anonymous Grid text 제한 구현 근거\nc11-4-anonymous-grid-text-image-precomparison-2026-10-21\n계획 PR #424 변경분 적대 검토 20개\nC11.4 anonymous Grid text와 replaced image 사전 비교\nc11-4-anonymous-grid-text-image-runtime-2026-10-21\nC11.4 anonymous text/image FFI artifact 경계\nC11.4 anonymous Grid text + image 구현·runtime 실패 관점 검토 20개\nC11.4 anonymous Grid text + image 구현 PR diff 실패 관점 검토 30개\nC11.4 anonymous Grid text + image runtime evidence\n로드맵 반영 PR 변경 실패 관점 검토 30개\nc11-4-anonymous-grid-text-precomparison-2026-10-21\nC11.4 anonymous Grid text 계획 PR diff 적대 검토 30개\nC11.4 anonymous Grid text item Chrome 155 사전 비교\nc11-4-anonymous-text-multi-image-2026-10-21\nC11.4 anonymous text + multiple spanning image 구현 실패 관점 검토 20개\nC11.4 anonymous text + multiple spanning image PR 변경분 검토 30개\nC11.4 anonymous text + multiple spanning image 실행 근거\nPR #429 병합 기록·공개 로드맵 변경 검토 30개\nc11-4-auto-fit-min-size-axis-precomparison-2026-10-20\nC11.4 definite minimum-size auto-fit 축별 반복 계획 적대 검토 20개\nC11.4 auto-fit 축 차이 계획 PR diff 적대 검토 30개\nC11.4 definite minimum-size auto-fit 축 차이 사전 비교\nc11-4-auto-repeat-neighbors-2026-10-20\nC11.4 explicit-neighbor auto-repeat 구현 실패 관점 검토 20개\nC11.4 explicit-neighbor auto-repeat PR diff 적대 검토 30개\nC11.4 explicit-neighbor auto-repeat 실행 근거\nc11-4-auto-repeat-two-track-min-size-2026-10-20\nC11.4 fixture artifact 경계 확인\nC11.4 definite minimum-size two-track auto-repeat 구현 실패 관점 검토 20개\nC11.4 definite minimum-size two-track auto-repeat · PR diff 적대 검토 30개\nC11.4 definite minimum-size · two-track auto-repeat 구현 근거\nc11-4-auto-repeat-two-track-min-size-precomparison-2026-10-20\nC11.4 definite min-size + two-track auto-repeat 계획 검토 20개\n계획 PR diff 적대 검토 30개\nC11.4 two-track auto-repeat · definite minimum-size 사전 비교\nc11-4-full-matrix-physical-android-2026-10-21\nPR 변경 실패 관점 검토 30개\nC11.4 누적 150-scene Android 실기기 검증\nPR #414 로드맵 변경 검토 30항목\nc11-4-image-intrinsic-",
+  "requiredClaims": {
+    "android": false,
+    "ios": true,
+    "notCompositor": true,
+    "notPhysical": true,
+    "overflow": false
+  },
+  "title": "C11.4 anonymous Grid border overflow 실행 근거 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/README.html"
+}

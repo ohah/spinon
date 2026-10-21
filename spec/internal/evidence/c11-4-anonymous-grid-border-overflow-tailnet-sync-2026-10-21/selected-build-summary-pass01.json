@@ -1,0 +1,27 @@
+{
+  "pass": "pass01",
+  "rspressVersion": "2.0.22",
+  "sourceHead": "135b241e05fbf4f4e6e41e9f29c4f145a160f11d",
+  "sourceTree": "c92d41f8da22f5f42c83637a92dddf7ae711252e",
+  "selectedRoot": "build/spinon/c11-4-anonymous-grid-border-overflow-tailnet-root-pass01-selected",
+  "siteRoot": "build/spinon/c11-4-anonymous-grid-border-overflow-tailnet-site-pass01",
+  "fileCount": 2992,
+  "bytes": 126729690,
+  "siteTreeSha256": "c923aa1a7f028590a53bea4ef905b40a0212af8ce229194ca4087c499f931304",
+  "requiredRoutes": [
+    "roadmap.html",
+    "STATUS.html",
+    "spec/STATUS.html",
+    "plan/c11-4-anonymous-grid-border-overflow.html",
+    "plan/c11-4-anonymous-grid-border-overflow-implementation-review-20.html",
+    "plan/c11-4-anonymous-grid-border-overflow-pr-diff-review-20.html",
+    "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/README.html",
+    "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/android-avd-c114-anonymous-grid-border-overflow-android-avd-20261021T070322769Z-ef7ddc0e/anonymous-runs-two-images-forward.png",
+    "internal/evidence/c11-4-anonymous-grid-border-overflow-2026-10-21/ios-simulator-c114-anonymous-grid-border-overflow-ios-simulator-20261021T070603043Z-8ea2e515/anonymous-runs-two-images-forward.png"
+  ],
+  "noSymlinks": true,
+  "roadmapNotePresent": true,
+  "statusMergeRecordPresent": true,
+  "officialCompletionCountStill72of213": true,
+  "buildLog": "selected-build-pass01.log"
+}
