@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-21T13:24:26Z",
+  "repository": "ohah/spinon",
+  "branch": "feat/c11-4-nested-implicit-row-20261021",
+  "baseRef": "origin/main",
+  "baseCommit": "fe1cab1fdf28c07e16b8922edc7cf17d1a93de2f",
+  "implementationCommit": "63d32b518475ae8c5fd02e8cb25c2f91f7b20842",
+  "sourceSha256": {
+    "crates/spinon-layout/src/grid_nested_implicit_rows_tests.rs": "623f9b74416de5a88d6985ae85c8df0c90087b44d9565735732938e3f86b172c",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_implicit_rows.rs": "1784d7e09bb2256a87db9cad30f84620f0b2929b8665e71f7262c4ac461e6add",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/nested_grid_implicit_rows.rs": "f634212e460f3e24ee4f66e8e872d7c3d3508860309a53e6197eb39127fedf69",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/nested_grid_implicit_rows.rs": "03b0c2a6087619f89a94a74cd845bad112a70c03578f603994601bdac66bcb10",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "50d15e90ac4173055adf516948a45b820a2ab732c5b693fd5499e00555fed3ee",
+    "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "e5e73234f804cc8ec64a7aa739b56625df5e4b18eb107fb6c30192d7d1856ef0",
+    "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs": "c23c932f8a918eda4d89a7f7477253c4c7ab4196beb6ff266d6bcb737a0910dc",
+    "tests/fixtures/css/c11/grid-track-sizing-c114-nested-implicit-rows-precomparison.html": "03be781f3d2fa2ccdbca5bf874508b40783d9f4534e54af65ba1bc2a86d0e619"
+  },
+  "precomparison": {
+    "fixture": {
+      "path": "tests/fixtures/css/c11/grid-track-sizing-c114-nested-implicit-rows-precomparison.html",
+      "sha256": "03be781f3d2fa2ccdbca5bf874508b40783d9f4534e54af65ba1bc2a86d0e619"
+    },
+    "chromeObservation": {
+      "path": "spec/internal/evidence/c11-4-nested-implicit-row-precomparison-2026-10-21/chrome156-observation.json",
+      "sha256": "03b209147dd9ae5edb81976a45a4f499b7e628918ec35ffd1d1f63e7a4faa801"
+    },
+    "chromeScreenshot": {
+      "path": "spec/internal/evidence/c11-4-nested-implicit-row-precomparison-2026-10-21/chrome156-nested-implicit-rows.png",
+      "sha256": "9cf5b0d1dcae9742aba1ffb2e983cbcb9bcd2a105725ea96e616aca4d54f820f"
+    },
+    "runtimeProfileObservation": {
+      "path": "spec/internal/evidence/c11-4-nested-implicit-row-precomparison-2026-10-21/chrome156-runtime-profile-observation.json",
+      "sha256": "5ad3203255ebdad742c81a711bae57372692cb1aef84c6b7a953221a2f0db809"
+    },
+    "runtimeProfileScreenshot": {
+      "path": "spec/internal/evidence/c11-4-nested-implicit-row-precomparison-2026-10-21/chrome156-runtime-profile.png",
+      "sha256": "9cf5b0d1dcae9742aba1ffb2e983cbcb9bcd2a105725ea96e616aca4d54f820f"
+    }
+  },
+  "androidAvd": {
+    "runId": "c114-nested-implicit-rows-android-avd-20261021T131027256Z-da4d5365",
+    "device": {
+      "serial": "emulator-5558",
+      "model": "sdk_gphone64_arm64",
+      "apiLevel": 37,
+      "abi": "arm64-v8a",
+      "qemu": "1"
+    },
+    "apkSha256": "48739e5e8c2c690f0cfeba902c1e9f40ec84beebf57b729138a6559c745b81c1",
+    "installedApkSha256": "48739e5e8c2c690f0cfeba902c1e9f40ec84beebf57b729138a6559c745b81c1",
+    "installedMatchesLocal": true,
+    "screenshots": {
+      "nested-grid-implicit-row-span-two.png": "c3d4cff65fc19b5db0f490f806192bf7f85282ccf610abc9ee74cbc0aee38ee5",
+      "nested-grid-implicit-row-one-row.png": "a1949505ac819a7cd0a5e5da95215ec3396ee919983b3751ce6aa8e5bfc6a6c2"
+    },
+    "scenes": [
+      {
+        "sceneId": "nested-grid-implicit-row-span-two",
+        "rows": [
+          18,
+          18
+        ],
+        "traceChunks": 8,
+        "drawPresented": true,
+        "supersededRetries": 0
+      },
+      {
+        "sceneId": "nested-grid-implicit-row-one-row",
+        "rows": [
+          40,
+          0
+        ],
+        "traceChunks": 8,
+        "drawPresented": true,
+        "supersededRetries": 0
+      }
+    ]
+  },
+  "iosSimulator": {
+    "runId": "c114-nested-implicit-rows-ios-simulator-20261021T131119319Z-a589fa3c",
+    "device": {
+      "name": "iPhone 17 Pro",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+      "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D"
+    },
+    "appSha256": "176b0cac0386f5f655d7e288084f4e49cce0917faac730a3d6730547b871e15a",
+    "screenshots": {
+      "nested-grid-implicit-row-span-two.png": "d4b8fd68dff595187d1f0cb819d4741ba83ca7cfedaea859eb79cca78cf9abf8",
+      "nested-grid-implicit-row-one-row.png": "70510bd8e7d4c23377ebf6727992712bd485d77e6db92b246cdb1bee90ad3aae"
+    },
+    "scenes": [
+      {
+        "sceneId": "nested-grid-implicit-row-span-two",
+        "rows": [
+          18,
+          18
+        ],
+        "traceChunks": 16,
+        "drawPresented": true,
+        "supersededRetries": 0
+      },
+      {
+        "sceneId": "nested-grid-implicit-row-one-row",
+        "rows": [
+          40,
+          0
+        ],
+        "traceChunks": 16,
+        "drawPresented": true,
+        "supersededRetries": 0
+      }
+    ]
+  },
+  "staticArchiveBoundary": {
+    "default": {
+      "profile": "default cargo build --locked -p spinon-ffi --lib",
+      "artifactPath": "target/debug/libspinon_ffi.a",
+      "sha256": "3340b3834ebf7069252bf48aca65001ea24738f354cd596ac7522c8553002b41",
+      "sceneIDs": {
+        "nested-grid-implicit-row-span-two": false,
+        "nested-grid-implicit-row-one-row": false
+      },
+      "c14PngPayload": false
+    },
+    "fixture": {
+      "profile": "cargo build --locked -p spinon-ffi --lib --features c04-runtime-gpu-fixture-test",
+      "artifactPath": "target/debug/libspinon_ffi.a",
+      "sha256": "b1f6d84c875d64cf38e1af60124d7229382f0d872c7fb0e80cecb38731d1716e",
+      "sceneIDs": {
+        "nested-grid-implicit-row-span-two": true,
+        "nested-grid-implicit-row-one-row": true
+      },
+      "c14PngPayload": true
+    }
+  }
+}

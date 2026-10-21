@@ -2,7 +2,7 @@
 
 ## 범위
 
-기존 [nested Grid intrinsic 계획](../../../../plan/c11-4-nested-grid-intrinsic.md)은 nested implicit track 확장을 명시적으로 제외한다. 이 fixture는 그 미포함 교차 범위를 분리해, nested Grid의 첫 explicit row 뒤에 positive implicit rows 두 개가 생기고 그 block-axis contribution이 outer Grid에 전달되는 두 장면을 고정한다. Spinon runtime 및 Simulator 검증은 아직 하지 않았다.
+기존 [nested Grid intrinsic 계획](../../../../plan/c11-4-nested-grid-intrinsic.md)은 nested implicit track 확장을 명시적으로 제외했다. 이 fixture는 그 미포함 교차 범위를 분리해 nested Grid의 첫 explicit row 뒤에 positive implicit rows 두 개가 생기고 그 block-axis contribution이 outer Grid에 전달되는 두 장면을 고정한다. 사전 oracle과 독립 기대값은 아래에, 이후 Spinon runtime·Simulator 검증은 [별도 실행 근거](../c11-4-nested-implicit-row-runtime-2026-10-21/README.md)에 분리했다.
 
 ## 독립 계산
 
@@ -14,6 +14,8 @@ Outer Grid도 `min-content min-content` 두 행과 4px gap을 가진다. nested 
 
 Agent Browser 0.31.1이 연 `HeadlessChrome/156.0.0.0`에서 fixture를 열고 이미지 decode 이후 DOM frame과 used `gridTemplateRows`를 평가했다. viewport는 1280×633 CSS px, DPR 1이다. 두 PNG 모두 `complete=true`, natural size 24×16px였다. Chrome 관찰은 두 scene에서 내부 rows `[8,8,16]`, nested height 40px, outer rows `[18,18]`/`[40,0]`, root heights 40/44px를 반환해 독립 계산과 일치했다.
 
+App runtime profile에 맞춘 fixture revision을 2026-10-21 13:24 UTC에 Agent Browser 0.31.1 / `HeadlessChrome/156.0.0.0`으로 다시 열었다. observation은 현재 fixture SHA-256과 viewport, decoded image size, 각 scene의 outer/nested/child frame, used rows를 함께 기록한다. 기존 observation과 geometry 결과가 동일하며 새 observation에서도 독립 계산과 일치했다.
+
 | scene | Chrome outer rows | Chrome root / nested height | inner rows |
 | --- | --- | --- | --- |
 | `spanTwo` | `[18,18]px` | `40px / 40px` | `[8,8,16]px` |
@@ -23,11 +25,12 @@ Agent Browser 0.31.1이 연 `HeadlessChrome/156.0.0.0`에서 fixture를 열고 �
 - 독립 계산: [spec-derived-expectations.json](./spec-derived-expectations.json)
 - Browser 관찰: [chrome156-observation.json](./chrome156-observation.json)
 - Browser screenshot: [chrome156-nested-implicit-rows.png](./chrome156-nested-implicit-rows.png)
+- 현재 fixture hash와 연결한 재관찰: [chrome156-runtime-profile-observation.json](./chrome156-runtime-profile-observation.json) · [화면](./chrome156-runtime-profile.png)
 
 ## 재현 hash와 한계
 
 - Fixture SHA-256: `03be781f3d2fa2ccdbca5bf874508b40783d9f4534e54af65ba1bc2a86d0e619`
 - PNG SHA-256: `5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2`
-- Screenshot SHA-256: `9cf5b0d1dcae9742aba1ffb2e983cbcb9bcd2a105725ea96e616aca4d54f820f`
+- Screenshot SHA-256: `9cf5b0d1dcae9742aba1ffb2e983cbcb9bcd2a105725ea96e616aca4d54f820f` (원본과 runtime-profile 재관찰 이미지가 동일)
 
-이 결과는 Chrome 한 버전의 CSSOM·geometry observation이다. 앱 렌더링, Rust layout, WPT, 다른 browser, border/overflow surface 또는 일반 CSS Grid 지원을 입증하지 않는다. fixture에는 border 밖으로 넘치는 항목이 없다. Agent Browser session을 종료했고 종료 후 `agent-browser`/`HeadlessChrome` 프로세스는 남아 있지 않았다.
+이 결과는 Chrome 한 버전의 CSSOM·geometry observation이다. 앱 렌더링, Rust layout, WPT, 다른 browser, border/overflow surface 또는 일반 CSS Grid 지원을 입증하지 않는다. fixture에는 border 밖으로 넘치는 항목이 없다.
