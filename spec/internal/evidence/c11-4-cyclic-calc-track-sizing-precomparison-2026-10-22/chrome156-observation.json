@@ -1,0 +1,113 @@
+{
+  "scenes": [
+    {
+      "columns": "16px",
+      "grid": {
+        "height": 16,
+        "width": 24,
+        "x": 8,
+        "y": 12
+      },
+      "id": "cyclic-calc-column",
+      "item": {
+        "height": 16,
+        "width": 24,
+        "x": 8,
+        "y": 12
+      },
+      "probe": {
+        "height": 16,
+        "width": 16,
+        "x": 8,
+        "y": 12
+      },
+      "rows": "16px",
+      "scroll": {
+        "height": 16,
+        "width": 24
+      }
+    },
+    {
+      "columns": "24px",
+      "grid": {
+        "height": 16,
+        "width": 24,
+        "x": 8,
+        "y": 32
+      },
+      "id": "cyclic-calc-row",
+      "item": {
+        "height": 16,
+        "width": 24,
+        "x": 8,
+        "y": 32
+      },
+      "probe": {
+        "height": 10,
+        "width": 24,
+        "x": 8,
+        "y": 32
+      },
+      "rows": "10px",
+      "scroll": {
+        "height": 16,
+        "width": 24
+      }
+    },
+    {
+      "columns": "16px",
+      "grid": {
+        "height": 16,
+        "width": 24,
+        "x": 8,
+        "y": 52
+      },
+      "id": "cyclic-calc-two-axis",
+      "item": {
+        "height": 16,
+        "width": 24,
+        "x": 8,
+        "y": 52
+      },
+      "probe": {
+        "height": 10,
+        "width": 16,
+        "x": 8,
+        "y": 52
+      },
+      "rows": "10px",
+      "scroll": {
+        "height": 16,
+        "width": 24
+      }
+    },
+    {
+      "columns": "24px",
+      "grid": {
+        "height": 20,
+        "width": 40,
+        "x": 8,
+        "y": 72
+      },
+      "id": "definite-calc-control",
+      "item": {
+        "height": 16,
+        "width": 24,
+        "x": 8,
+        "y": 72
+      },
+      "probe": {
+        "height": 12,
+        "width": 24,
+        "x": 8,
+        "y": 72
+      },
+      "rows": "12px",
+      "scroll": {
+        "height": 20,
+        "width": 40
+      }
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "scope": "Rust release rlib symbol and string scan; not a final mobile app bundle size audit",
+  "default": {
+    "command": "CARGO_TARGET_DIR=target/c11-4-calc-artifacts-default cargo build --release -p spinon-ffi --lib",
+    "ffiArtifact": "target/c11-4-calc-artifacts-default/release/deps/libspinon_ffi-4d40ecba4f9adc56.rlib",
+    "ffiSha256": "b2b95c00a589aa8ed5517da7623541e43053a9d11aa84786cc3af1763f4520ca",
+    "runtimeArtifact": "target/c11-4-calc-artifacts-default/release/deps/libspinon_runtime-e547016af4e3eeda.rlib",
+    "runtimeSha256": "6483492f6c16cab588766f6ad82ea5785142d3f40513a384f5f67883823829ea",
+    "fixtureFfiSymbolPresent": false,
+    "cyclicCalcSceneStringsPresent": false
+  },
+  "fixtureOptIn": {
+    "command": "CARGO_TARGET_DIR=target/c11-4-calc-artifacts-fixture cargo build --release -p spinon-ffi --lib --features c04-runtime-gpu-fixture-test",
+    "ffiArtifact": "target/c11-4-calc-artifacts-fixture/release/deps/libspinon_ffi-4c30e1cb2f929eca.rlib",
+    "ffiSha256": "1a332417133ddda939b58251d1655807fc79952815a88d388a4b63e1947cef7d",
+    "runtimeArtifact": "target/c11-4-calc-artifacts-fixture/release/deps/libspinon_runtime-c92f873fd95c2388.rlib",
+    "runtimeSha256": "8775c850aa2b2b2a71a26d643b76a079b4ceb433609a3537662e14894c451b2c",
+    "fixtureFfiSymbol": "_spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture",
+    "fixtureFfiSymbolPresent": true,
+    "sceneStringsPresent": [
+      "cyclic-calc-column",
+      "cyclic-calc-row",
+      "cyclic-calc-two-axis",
+      "definite-calc-control"
+    ]
+  }
+}
