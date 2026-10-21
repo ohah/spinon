@@ -363,6 +363,33 @@ fn validate_text_style(
     style: &ComputedElementStyle,
     scene_id: &str,
 ) -> Result<(), RuntimeLayoutFailure> {
+    validate_text_profile_properties(style.node_id, &style.properties, scene_id)?;
+    if style.layout_dimensions.width != ComputedCssDimension::Auto
+        || style.layout_dimensions.height != ComputedCssDimension::Auto
+        || style.layout_dimensions.min_width != ComputedCssDimension::Auto
+        || style.layout_dimensions.max_width != ComputedCssMaxSize::None
+        || style.layout_dimensions.min_height != ComputedCssDimension::Auto
+        || style.layout_dimensions.max_height != ComputedCssMaxSize::None
+        || style.layout_dimensions.flex_basis != ComputedCssDimension::Auto
+        || style.layout_position != spinon_style::ComputedCssPosition::Static
+        || !zero_edges(style.layout_spacing.margin)
+        || !zero_edges(style.layout_spacing.padding)
+        || style.layout_border != Default::default()
+    {
+        return Err(unsupported(
+            style.node_id,
+            scene_id,
+            "text item dimensions or box edges",
+        ));
+    }
+    Ok(())
+}
+
+fn validate_text_profile_properties(
+    node_id: NodeId,
+    properties: &std::collections::BTreeMap<String, String>,
+    scene_id: &str,
+) -> Result<(), RuntimeLayoutFailure> {
     for (name, expected) in [
         ("display", "block"),
         ("box-sizing", "border-box"),
@@ -375,20 +402,18 @@ fn validate_text_style(
         ("text-wrap-mode", "wrap"),
         ("word-break", "normal"),
         ("direction", "ltr"),
+        ("line-break", "auto"),
+        ("text-align", "start"),
+        ("overflow-wrap", "normal"),
+        ("text-transform", "none"),
+        ("writing-mode", "horizontal-tb"),
+        ("letter-spacing", "normal"),
+        ("word-spacing", "0px"),
+        ("text-indent", "0px"),
     ] {
-        if style.properties.get(name).map(String::as_str) != Some(expected) {
-            return Err(unsupported(style.node_id, scene_id, name));
+        if properties.get(name).map(String::as_str) != Some(expected) {
+            return Err(unsupported(node_id, scene_id, name));
         }
-    }
-    if style.layout_dimensions.width != ComputedCssDimension::Auto
-        || style.layout_dimensions.height != ComputedCssDimension::Auto
-        || style.layout_dimensions.min_width != ComputedCssDimension::Auto
-        || style.layout_dimensions.max_width != ComputedCssMaxSize::None
-        || style.layout_dimensions.min_height != ComputedCssDimension::Auto
-        || style.layout_dimensions.max_height != ComputedCssMaxSize::None
-        || style.layout_dimensions.flex_basis != ComputedCssDimension::Auto
-    {
-        return Err(unsupported(style.node_id, scene_id, "text item dimensions"));
     }
     Ok(())
 }
@@ -409,4 +434,74 @@ fn unsupported(node: NodeId, scene: &str, detail: &str) -> RuntimeLayoutFailure 
         Some(node.get()),
         Some(format!("{scene}: {detail}")),
     )
+}
+
+#[cfg(test)]
+mod tests {
+    use std::collections::BTreeMap;
+
+    use spinon_core::NodeId;
+
+    use super::validate_text_profile_properties;
+
+    fn properties() -> BTreeMap<String, String> {
+        [
+            ("display", "block"),
+            ("box-sizing", "border-box"),
+            ("font-family", "Ahem"),
+            ("font-size", "10px"),
+            ("font-weight", "400"),
+            ("font-style", "normal"),
+            ("line-height", "10px"),
+            ("white-space-collapse", "collapse"),
+            ("text-wrap-mode", "wrap"),
+            ("word-break", "normal"),
+            ("direction", "ltr"),
+            ("line-break", "auto"),
+            ("text-align", "start"),
+            ("overflow-wrap", "normal"),
+            ("text-transform", "none"),
+            ("writing-mode", "horizontal-tb"),
+            ("letter-spacing", "normal"),
+            ("word-spacing", "0px"),
+            ("text-indent", "0px"),
+        ]
+        .into_iter()
+        .map(|(name, value)| (name.to_owned(), value.to_owned()))
+        .collect()
+    }
+
+    #[test]
+    fn text_profile_requires_all_intrinsic_sizing_properties() {
+        let expected = properties();
+        let node = NodeId::new(1).unwrap();
+        assert!(validate_text_profile_properties(node, &expected, "nested-grid-span-two").is_ok());
+
+        for (name, changed) in [
+            ("font-family", "sans-serif"),
+            ("font-size", "11px"),
+            ("font-weight", "700"),
+            ("font-style", "italic"),
+            ("line-height", "normal"),
+            ("white-space-collapse", "preserve"),
+            ("text-wrap-mode", "nowrap"),
+            ("word-break", "break-all"),
+            ("direction", "rtl"),
+            ("line-break", "strict"),
+            ("text-align", "center"),
+            ("overflow-wrap", "anywhere"),
+            ("text-transform", "uppercase"),
+            ("writing-mode", "vertical-rl"),
+            ("letter-spacing", "1px"),
+            ("word-spacing", "1px"),
+            ("text-indent", "1px"),
+        ] {
+            let mut mutated = expected.clone();
+            mutated.insert(name.to_owned(), changed.to_owned());
+            assert!(
+                validate_text_profile_properties(node, &mutated, "nested-grid-span-two").is_err(),
+                "nested Grid fixture must reject changed {name}"
+            );
+        }
+    }
 }

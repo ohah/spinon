@@ -56,6 +56,10 @@ Android PixelCopy와 iOS Metal drawable 표본은 각각 5/5 exact다. 표본은
 
 이 실패들은 fixture/layout 계산 오류가 아니라 app allowlist와 검증 harness 결함이었다. 마지막 결과 JSON과 log는 앱을 재빌드한 다음 캡처한 위 두 run에 해당한다.
 
+## PR diff 검토 후 최종 재실행
+
+최종 diff 검토에서 발견한 text-style validator 누락을 보완하고 양 플랫폼 fixture 앱을 다시 빌드해 확인했다. 수정 후 결과와 해당 APK/app hash, sample log, 화면은 [최종 확인 evidence](../c11-4-nested-grid-intrinsic-final-confirmation-2026-10-21/README.md)에 기록했다. 검토 30개는 [PR diff review](./pr-diff-review-30.md)에 있다.
+
 ## 한계
 
 이 evidence는 한 단계 일반 nested Grid와 ASCII/Ahem 입력 세 장면만 다룬다. arbitrary nesting, subgrid, nested anonymous text·image 혼합, 다른 typography, WPT, Android 실기기·hardware GPU, iOS 실기기 및 compositor 이후 픽셀은 검증하지 않는다. C11.4 checkbox와 공식 `72/213` 완료 수, 내부 계약 `0.1.0`은 바뀌지 않는다.

@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "target": "ios-simulator",
+  "runPrefix": "c114-nested-grid-intrinsic-final-ios-simulator-20261021T105913166Z-1ad61a9c",
+  "sceneCount": 3,
+  "observations": [
+    {
+      "sceneId": "nested-grid-span-two",
+      "summary": "2026-10-21 19:59:13.993480+0900  localhost SpinonBootstrap[53543]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261021T105913166Z-1ad61a9c-0 scene_id=nested-grid-span-two expected_root_frame=width=134,height=20 expected_item_frame= status=0 layout=ready boxes=4 generation=1 document_revision=24 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=134,height=20;1:node=2,x=0,y=0,width=134,height=20;2:node=3,x=0,y=0,width=70,height=20;3:node=5,x=74,y=0,width=60,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 134,
+          "height": 20
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 134,
+          "height": 20
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 70,
+          "height": 20
+        },
+        {
+          "order": 3,
+          "node": 5,
+          "x": 74,
+          "y": 0,
+          "width": 60,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 65,
+            "collapsed": false
+          },
+          {
+            "baseSize": 65,
+            "collapsed": false
+          }
+        ]
+      },
+      "intrinsicSpans": [
+        2
+      ],
+      "trackTraceChunks": 24,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "nested-grid-one-track",
+      "summary": "2026-10-21 19:59:16.158863+0900  localhost SpinonBootstrap[53627]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261021T105913166Z-1ad61a9c-1 scene_id=nested-grid-one-track expected_root_frame=width=138,height=20 expected_item_frame= status=0 layout=ready boxes=4 generation=1 document_revision=24 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=138,height=20;1:node=2,x=0,y=0,width=134,height=20;2:node=3,x=0,y=0,width=70,height=20;3:node=5,x=74,y=0,width=60,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 138,
+          "height": 20
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 134,
+          "height": 20
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 70,
+          "height": 20
+        },
+        {
+          "order": 3,
+          "node": 5,
+          "x": 74,
+          "y": 0,
+          "width": 60,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 134,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ]
+      },
+      "intrinsicSpans": [
+        1
+      ],
+      "trackTraceChunks": 24,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "nested-grid-definite-flex-control",
+      "summary": "2026-10-21 19:59:17.463221+0900  localhost SpinonBootstrap[53806]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261021T105913166Z-1ad61a9c-2 scene_id=nested-grid-definite-flex-control expected_root_frame=width=120,height=20 expected_item_frame= status=0 layout=ready boxes=4 generation=1 document_revision=24 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=20;1:node=2,x=0,y=0,width=120,height=20;2:node=3,x=0,y=0,width=70,height=20;3:node=5,x=74,y=0,width=60,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 20
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 20
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 70,
+          "height": 20
+        },
+        {
+          "order": 3,
+          "node": 5,
+          "x": 74,
+          "y": 0,
+          "width": 60,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 58,
+            "collapsed": false
+          },
+          {
+            "baseSize": 58,
+            "collapsed": false
+          }
+        ]
+      },
+      "intrinsicSpans": [
+        2
+      ],
+      "trackTraceChunks": 29,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}
