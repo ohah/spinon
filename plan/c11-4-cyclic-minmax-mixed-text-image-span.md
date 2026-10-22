@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [text/image mixed-span precedent](./c11-4-mixed-text-image-multispan-contributions.md) · [cyclic replaced-image precedent](./c11-4-cyclic-minmax-replaced-image-span.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** exact scene adapter와 intrinsic trace 검증을 구현했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 장면의 frame·track·trace·draw/present가 각각 4/4 통과했고, definite 장면의 경계 PixelCopy/Metal 표본도 각 플랫폼에서 6/6 exact다. 기존 mixed text/image multispan 네 장면도 두 simulator에서 각각 4/4 통과했다. 기본/fixture artifact 경계, workspace 및 feature Clippy, Rust 회귀, 문서와 구현/runtime 20개·PR diff 30개 검토가 끝났다. PR [#522](https://github.com/ohah/spinon/pull/522)이 열려 있다. GitHub check rollup은 비어 있고 required check도 없다. Rebase and merge 뒤 Tailnet preview를 반영한다. 이 제한 slice는 C11.4 checkbox와 공식 `77/213`을 올리지 않는다.
+**상태:** exact scene adapter와 intrinsic trace 검증을 구현했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 장면의 frame·track·trace·draw/present가 각각 4/4 통과했고, definite 장면의 경계 PixelCopy/Metal 표본도 각 플랫폼에서 6/6 exact다. 기존 mixed text/image multispan 네 장면도 두 simulator에서 각각 4/4 통과했다. 기본/fixture artifact 경계, workspace 및 feature Clippy, Rust 회귀, 문서와 구현/runtime 20개·PR diff 30개 검토가 끝났다. PR [#522](https://github.com/ohah/spinon/pull/522)은 2026-10-23 03:35:19 KST Rebase and merge로 병합됐고 SHA는 `dfec460bf5d3eeeace719a3fe0b84b9dcf50cee0`이다. 병합 당시 check rollup은 비어 있었고 main에 required status check은 설정되어 있지 않았다. 이 제한 slice는 C11.4 checkbox와 공식 `77/213`을 올리지 않는다.
 
 ## 목적
 
