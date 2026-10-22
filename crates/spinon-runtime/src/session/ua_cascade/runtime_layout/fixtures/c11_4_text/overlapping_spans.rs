@@ -1,7 +1,7 @@
 use std::collections::BTreeMap;
 
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, NodeId};
-use spinon_layout::{ParagraphStyle, TextLayoutEngine, WhiteSpaceMode};
+use spinon_layout::{ParagraphStyle, TextLayoutEngine, WhiteSpaceMode, WordBreakMode};
 use spinon_render::RuntimeSrgbColor;
 use spinon_style::{
     ComputedCssDimension, ComputedCssGridPlacement, ComputedCssGridTrackBreadth,
@@ -16,9 +16,15 @@ use super::super::c11_4_nested_grid_depth_two::{
 use super::{AHEM, RuntimeLayoutFailure, layout_failure};
 
 #[derive(Clone, Copy)]
-enum Width {
+enum Dimension {
     MaxContent,
     Px(f32),
+}
+
+#[derive(Clone, Copy, PartialEq, Eq)]
+enum Axis {
+    Columns,
+    Rows,
 }
 
 #[derive(Clone, Copy)]
@@ -27,7 +33,10 @@ struct Item {
     text: &'static str,
     column_start: i32,
     column_end: i32,
+    row_start: i32,
+    row_end: i32,
     span: u16,
+    break_all: bool,
 }
 
 const LEFT: Item = Item {
@@ -35,60 +44,156 @@ const LEFT: Item = Item {
     text: "aaaaaaa",
     column_start: 1,
     column_end: 3,
+    row_start: 1,
+    row_end: 2,
     span: 2,
+    break_all: false,
 };
 const RIGHT: Item = Item {
     id: "span2-right",
     text: "aaaaaaaa",
     column_start: 2,
     column_end: 4,
+    row_start: 1,
+    row_end: 2,
     span: 2,
+    break_all: false,
 };
 const SPAN3: Item = Item {
     id: "span3",
     text: "aaaaaaaaaaaaaa",
     column_start: 1,
     column_end: 4,
+    row_start: 1,
+    row_end: 2,
     span: 3,
+    break_all: false,
+};
+
+const LEFT_ROW: Item = Item {
+    id: "span2-left",
+    text: "aaaaaaa",
+    column_start: 1,
+    column_end: 2,
+    row_start: 1,
+    row_end: 3,
+    span: 2,
+    break_all: true,
+};
+const RIGHT_ROW: Item = Item {
+    id: "span2-right",
+    text: "aaaaaaaa",
+    column_start: 1,
+    column_end: 2,
+    row_start: 2,
+    row_end: 4,
+    span: 2,
+    break_all: true,
+};
+const SPAN3_ROW: Item = Item {
+    id: "span3",
+    text: "aaaaaaaaaaaaaa",
+    column_start: 1,
+    column_end: 2,
+    row_start: 1,
+    row_end: 4,
+    span: 3,
+    break_all: true,
 };
 
 #[derive(Clone, Copy)]
 struct Scene {
     id: &'static str,
-    width: Width,
+    axis: Axis,
+    width: Dimension,
+    height: Dimension,
     items: [Item; 3],
 }
 
-const SCENES: [Scene; 6] = [
+const SCENES: [Scene; 12] = [
     Scene {
         id: "cyclic-minmax-calc-overlap-forward",
-        width: Width::MaxContent,
+        axis: Axis::Columns,
+        width: Dimension::MaxContent,
+        height: Dimension::Px(10.0),
         items: [LEFT, RIGHT, SPAN3],
     },
     Scene {
         id: "cyclic-minmax-calc-overlap-reverse",
-        width: Width::MaxContent,
+        axis: Axis::Columns,
+        width: Dimension::MaxContent,
+        height: Dimension::Px(10.0),
         items: [SPAN3, RIGHT, LEFT],
     },
     Scene {
         id: "definite-minmax-calc-overlap-forward",
-        width: Width::Px(140.0),
+        axis: Axis::Columns,
+        width: Dimension::Px(140.0),
+        height: Dimension::Px(10.0),
         items: [LEFT, RIGHT, SPAN3],
     },
     Scene {
         id: "definite-minmax-calc-overlap-reverse",
-        width: Width::Px(140.0),
+        axis: Axis::Columns,
+        width: Dimension::Px(140.0),
+        height: Dimension::Px(10.0),
         items: [SPAN3, RIGHT, LEFT],
     },
     Scene {
         id: "definite-minmax-calc-overlap-small-forward",
-        width: Width::Px(100.0),
+        axis: Axis::Columns,
+        width: Dimension::Px(100.0),
+        height: Dimension::Px(10.0),
         items: [LEFT, RIGHT, SPAN3],
     },
     Scene {
         id: "definite-minmax-calc-overlap-small-reverse",
-        width: Width::Px(100.0),
+        axis: Axis::Columns,
+        width: Dimension::Px(100.0),
+        height: Dimension::Px(10.0),
         items: [SPAN3, RIGHT, LEFT],
+    },
+    Scene {
+        id: "cyclic-minmax-calc-overlap-rows-forward",
+        axis: Axis::Rows,
+        width: Dimension::Px(10.0),
+        height: Dimension::MaxContent,
+        items: [LEFT_ROW, RIGHT_ROW, SPAN3_ROW],
+    },
+    Scene {
+        id: "cyclic-minmax-calc-overlap-rows-reverse",
+        axis: Axis::Rows,
+        width: Dimension::Px(10.0),
+        height: Dimension::MaxContent,
+        items: [SPAN3_ROW, RIGHT_ROW, LEFT_ROW],
+    },
+    Scene {
+        id: "definite-minmax-calc-overlap-rows-forward",
+        axis: Axis::Rows,
+        width: Dimension::Px(10.0),
+        height: Dimension::Px(140.0),
+        items: [LEFT_ROW, RIGHT_ROW, SPAN3_ROW],
+    },
+    Scene {
+        id: "definite-minmax-calc-overlap-rows-reverse",
+        axis: Axis::Rows,
+        width: Dimension::Px(10.0),
+        height: Dimension::Px(140.0),
+        items: [SPAN3_ROW, RIGHT_ROW, LEFT_ROW],
+    },
+    Scene {
+        id: "definite-minmax-calc-overlap-rows-small-forward",
+        axis: Axis::Rows,
+        width: Dimension::Px(10.0),
+        height: Dimension::Px(100.0),
+        items: [LEFT_ROW, RIGHT_ROW, SPAN3_ROW],
+    },
+    Scene {
+        id: "definite-minmax-calc-overlap-rows-small-reverse",
+        axis: Axis::Rows,
+        width: Dimension::Px(10.0),
+        height: Dimension::Px(100.0),
+        items: [SPAN3_ROW, RIGHT_ROW, LEFT_ROW],
     },
 ];
 
@@ -191,7 +296,7 @@ pub(super) fn prepare(
                 "item identity or DOM order differs",
             ));
         }
-        validate_item_style(style_for(styles, item_handle.id())?, scene.id, item)?;
+        validate_item_style(style_for(styles, item_handle.id())?, scene, item)?;
         let text_children = children(snapshot, item_handle)?;
         if text_children.len() != 1 {
             return Err(unsupported(
@@ -210,7 +315,7 @@ pub(super) fn prepare(
         if text != item.text || snapshot.parent(text_node) != Some(HostParent::Node(item_handle)) {
             return Err(unsupported(text_node, "Ahem text content or owner differs"));
         }
-        paragraph_styles.insert(item_handle.id(), ahem_paragraph_style());
+        paragraph_styles.insert(item_handle.id(), ahem_paragraph_style(item));
     }
 
     let mut engine = TextLayoutEngine::new_without_system_fonts();
@@ -232,10 +337,16 @@ fn validate_grid_style(
     style: &ComputedElementStyle,
     scene: Scene,
 ) -> Result<(), RuntimeLayoutFailure> {
-    let expected_width = match scene.width {
-        Width::MaxContent => ComputedCssDimension::MaxContent,
-        Width::Px(width) => ComputedCssDimension::LengthPx(width),
+    let expected_dimension = |dimension| match dimension {
+        Dimension::MaxContent => ComputedCssDimension::MaxContent,
+        Dimension::Px(value) => ComputedCssDimension::LengthPx(value),
     };
+    let expected_column_gap = if scene.axis == Axis::Columns {
+        2.0
+    } else {
+        0.0
+    };
+    let expected_row_gap = if scene.axis == Axis::Rows { 2.0 } else { 0.0 };
     let expected_border = ComputedLayoutBorder {
         top: 2.0,
         right: 2.0,
@@ -246,16 +357,16 @@ fn validate_grid_style(
         || style.properties.get("box-sizing").map(String::as_str) != Some("content-box")
         || style.properties.get("align-content").map(String::as_str) != Some("start")
         || style.properties.get("justify-content").map(String::as_str) != Some("start")
-        || style.layout_dimensions.width != expected_width
-        || style.layout_dimensions.height != ComputedCssDimension::LengthPx(10.0)
+        || style.layout_dimensions.width != expected_dimension(scene.width)
+        || style.layout_dimensions.height != expected_dimension(scene.height)
         || style.layout_dimensions.min_width != ComputedCssDimension::Auto
         || style.layout_dimensions.max_width != ComputedCssMaxSize::None
         || style.layout_dimensions.min_height != ComputedCssDimension::Auto
         || style.layout_dimensions.max_height != ComputedCssMaxSize::None
         || !zero_edges(style.layout_spacing.margin)
         || !zero_edges(style.layout_spacing.padding)
-        || !spacing_matches(style.layout_spacing.row_gap, 0.0)
-        || !spacing_matches(style.layout_spacing.column_gap, 2.0)
+        || !spacing_matches(style.layout_spacing.row_gap, expected_row_gap)
+        || !spacing_matches(style.layout_spacing.column_gap, expected_column_gap)
         || style.layout_border != expected_border
     {
         return Err(unsupported_node(
@@ -267,9 +378,14 @@ fn validate_grid_style(
         .grid_layout
         .as_ref()
         .ok_or_else(|| unsupported_node(style.node_id.get(), "computed Grid tracks are missing"))?;
-    if grid.columns.len() != 3
-        || !grid.columns.iter().all(calc_minmax_track_matches)
-        || grid.rows.as_slice() != [ComputedCssGridTrackSize::LengthPx(10.0)]
+    let (calc_tracks, fixed_tracks) = if scene.axis == Axis::Columns {
+        (&grid.columns, &grid.rows)
+    } else {
+        (&grid.rows, &grid.columns)
+    };
+    if calc_tracks.len() != 3
+        || !calc_tracks.iter().all(calc_minmax_track_matches)
+        || fixed_tracks.as_slice() != [ComputedCssGridTrackSize::LengthPx(10.0)]
         || grid.columns_auto_repeat.is_some()
         || grid.rows_auto_repeat.is_some()
         || grid.template_areas.is_some()
@@ -302,7 +418,7 @@ fn calc_minmax_track_matches(track: &ComputedCssGridTrackSize) -> bool {
 
 fn validate_item_style(
     style: &ComputedElementStyle,
-    scene_id: &str,
+    scene: Scene,
     item: Item,
 ) -> Result<(), RuntimeLayoutFailure> {
     for (name, expected) in [
@@ -314,8 +430,18 @@ fn validate_item_style(
         ("font-style", "normal"),
         ("line-height", "10px"),
         ("white-space-collapse", "collapse"),
-        ("text-wrap-mode", "nowrap"),
-        ("word-break", "normal"),
+        (
+            "text-wrap-mode",
+            if item.break_all { "wrap" } else { "nowrap" },
+        ),
+        (
+            "word-break",
+            if item.break_all {
+                "break-all"
+            } else {
+                "normal"
+            },
+        ),
         ("direction", "ltr"),
         ("line-break", "auto"),
         ("text-align", "start"),
@@ -331,18 +457,23 @@ fn validate_item_style(
             return Err(layout_failure(
                 "unsupported_c114_cyclic_calc_overlapping_span_style",
                 Some(style.node_id.get()),
-                Some(format!("{scene_id}: {name} expected {expected}")),
+                Some(format!("{}: {name} expected {expected}", scene.id)),
             ));
         }
     }
     let placement_matches = style.grid_item_placement.as_ref().is_some_and(|placement| {
         placement.column_start == ComputedCssGridPlacement::Line(item.column_start)
             && placement.column_end == ComputedCssGridPlacement::Line(item.column_end)
-            && placement.row_start == ComputedCssGridPlacement::Line(1)
-            && placement.row_end == ComputedCssGridPlacement::Line(2)
+            && placement.row_start == ComputedCssGridPlacement::Line(item.row_start)
+            && placement.row_end == ComputedCssGridPlacement::Line(item.row_end)
     });
+    let placement_span = if scene.axis == Axis::Rows {
+        item.row_end - item.row_start
+    } else {
+        item.column_end - item.column_start
+    };
     if !placement_matches
-        || (item.column_end - item.column_start) as u16 != item.span
+        || placement_span as u16 != item.span
         || (style.font_size_css_px - 10.0).abs() > f32::EPSILON
         || style.layout_dimensions.width != ComputedCssDimension::Auto
         || style.layout_dimensions.height != ComputedCssDimension::Auto
@@ -357,18 +488,30 @@ fn validate_item_style(
         return Err(layout_failure(
             "unsupported_c114_cyclic_calc_overlapping_span_item",
             Some(style.node_id.get()),
-            Some(format!("{scene_id}: {} placement or box differs", item.id)),
+            Some(format!(
+                "{}: {} placement or box differs",
+                scene.id, item.id
+            )),
         ));
     }
     Ok(())
 }
 
-fn ahem_paragraph_style() -> ParagraphStyle {
+fn ahem_paragraph_style(item: Item) -> ParagraphStyle {
     ParagraphStyle {
         font_family: "Ahem".to_owned(),
         font_size: 10.0,
         line_height: 10.0,
-        white_space: WhiteSpaceMode::NoWrap,
+        white_space: if item.break_all {
+            WhiteSpaceMode::Normal
+        } else {
+            WhiteSpaceMode::NoWrap
+        },
+        word_break: if item.break_all {
+            WordBreakMode::BreakAll
+        } else {
+            WordBreakMode::Normal
+        },
         ..ParagraphStyle::default()
     }
 }
@@ -397,18 +540,38 @@ fn unsupported_node(node: u64, detail: &str) -> RuntimeLayoutFailure {
 
 #[cfg(test)]
 mod tests {
-    use super::SCENES;
+    use super::{Axis, SCENES};
     use std::collections::BTreeSet;
 
     #[test]
     fn exposes_only_fixed_overlapping_cyclic_calc_span_scenes() {
         let unique = SCENES.iter().map(|scene| scene.id).collect::<BTreeSet<_>>();
-        assert_eq!(SCENES.len(), 6);
+        assert_eq!(SCENES.len(), 12);
         assert_eq!(unique.len(), SCENES.len());
+        assert_eq!(
+            SCENES
+                .iter()
+                .filter(|scene| scene.axis == Axis::Columns)
+                .count(),
+            6
+        );
+        assert_eq!(
+            SCENES
+                .iter()
+                .filter(|scene| scene.axis == Axis::Rows)
+                .count(),
+            6
+        );
         for scene in SCENES {
             assert_eq!(scene.items.len(), 3);
             assert!(scene.items.iter().any(|item| item.span == 2));
             assert!(scene.items.iter().any(|item| item.span == 3));
+            assert!(
+                scene
+                    .items
+                    .iter()
+                    .all(|item| item.break_all == (scene.axis == Axis::Rows))
+            );
         }
     }
 }

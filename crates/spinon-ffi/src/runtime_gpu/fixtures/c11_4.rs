@@ -22,6 +22,8 @@ mod cyclic_minmax_calc;
 mod cyclic_minmax_calc_minimum;
 #[path = "c11_4/cyclic_minmax_calc_minimum_span.rs"]
 mod cyclic_minmax_calc_minimum_span;
+#[path = "c11_4/cyclic_minmax_calc_overlapping_rows.rs"]
+mod cyclic_minmax_calc_overlapping_rows;
 #[path = "c11_4/cyclic_minmax_calc_overlapping_spans.rs"]
 mod cyclic_minmax_calc_overlapping_spans;
 #[path = "c11_4/cyclic_percentage_fit_content.rs"]
@@ -1093,6 +1095,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     if let Some(source) = cyclic_minmax_calc_overlapping_spans::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
+    if let Some(source) = cyclic_minmax_calc_overlapping_rows::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = cyclic_calc_tracks::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
@@ -1700,6 +1705,66 @@ mod tests {
         }
         assert!(
             c11_4_grid_track_sizing_runtime_source("cyclic-minmax-calc-overlap-unlisted").is_err()
+        );
+    }
+
+    #[test]
+    fn exposes_only_fixed_cyclic_minmax_calc_overlapping_row_scenes() {
+        for (scene_id, height, placements, texts) in [
+            (
+                "cyclic-minmax-calc-overlap-rows-forward",
+                "max-content",
+                ["grid-row:1 / 3", "grid-row:2 / 4", "grid-row:1 / 4"],
+                ["aaaaaaa", "aaaaaaaa", "aaaaaaaaaaaaaa"],
+            ),
+            (
+                "cyclic-minmax-calc-overlap-rows-reverse",
+                "max-content",
+                ["grid-row:1 / 4", "grid-row:2 / 4", "grid-row:1 / 3"],
+                ["aaaaaaaaaaaaaa", "aaaaaaaa", "aaaaaaa"],
+            ),
+            (
+                "definite-minmax-calc-overlap-rows-forward",
+                "140px",
+                ["grid-row:1 / 3", "grid-row:2 / 4", "grid-row:1 / 4"],
+                ["aaaaaaa", "aaaaaaaa", "aaaaaaaaaaaaaa"],
+            ),
+            (
+                "definite-minmax-calc-overlap-rows-reverse",
+                "140px",
+                ["grid-row:1 / 4", "grid-row:2 / 4", "grid-row:1 / 3"],
+                ["aaaaaaaaaaaaaa", "aaaaaaaa", "aaaaaaa"],
+            ),
+            (
+                "definite-minmax-calc-overlap-rows-small-forward",
+                "100px",
+                ["grid-row:1 / 3", "grid-row:2 / 4", "grid-row:1 / 4"],
+                ["aaaaaaa", "aaaaaaaa", "aaaaaaaaaaaaaa"],
+            ),
+            (
+                "definite-minmax-calc-overlap-rows-small-reverse",
+                "100px",
+                ["grid-row:1 / 4", "grid-row:2 / 4", "grid-row:1 / 3"],
+                ["aaaaaaaaaaaaaa", "aaaaaaaa", "aaaaaaa"],
+            ),
+        ] {
+            let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
+            assert!(source.len() < 8 * 1024);
+            assert!(source.contains(&format!("sceneId:{scene_id:?}")));
+            assert!(source.contains(&format!("width:10px;height:{height}")));
+            assert!(source.contains("grid-template-columns:10px"));
+            assert!(source.contains("row-gap:2px"));
+            assert!(source.contains("word-break:break-all"));
+            assert_eq!(source.matches("document.createElement('div')").count(), 4);
+            assert_eq!(source.matches("document.createTextNode(").count(), 3);
+            for (placement, text) in placements.into_iter().zip(texts) {
+                assert!(source.contains(placement));
+                assert!(source.contains(&format!("createTextNode({text:?})")));
+            }
+        }
+        assert!(
+            c11_4_grid_track_sizing_runtime_source("cyclic-minmax-calc-overlap-rows-unlisted")
+                .is_err()
         );
     }
 

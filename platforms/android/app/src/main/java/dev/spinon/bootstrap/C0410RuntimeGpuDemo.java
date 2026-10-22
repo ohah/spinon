@@ -142,6 +142,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "definite-minmax-calc-overlap-forward", "definite-minmax-calc-overlap-reverse",
             "definite-minmax-calc-overlap-small-forward",
             "definite-minmax-calc-overlap-small-reverse",
+            "cyclic-minmax-calc-overlap-rows-forward",
+            "cyclic-minmax-calc-overlap-rows-reverse",
+            "definite-minmax-calc-overlap-rows-forward",
+            "definite-minmax-calc-overlap-rows-reverse",
+            "definite-minmax-calc-overlap-rows-small-forward",
+            "definite-minmax-calc-overlap-rows-small-reverse",
             "cyclic-minmax-calc-min-both-axes",
             "cyclic-minmax-calc-min-column-definite-row",
             "definite-column-cyclic-minmax-calc-min-row",
@@ -459,6 +465,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("definite-minmax-calc-min-span-rows")) {
             return "width=24,height=24";
         }
+        if (c114IsOverlappingRowsScene(sceneId)) {
+            return sceneId.contains("-small-")
+                    ? "width=14,height=104" : "width=14,height=144";
+        }
         if (sceneId.startsWith("cyclic-minmax-calc-overlap-")
                 || sceneId.startsWith("definite-minmax-calc-overlap-")) {
             return sceneId.contains("-small-") ? "width=104,height=14" : "width=144,height=14";
@@ -700,6 +710,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (sceneId.equals("cyclic-minmax-calc-min-span-rows")
                 || sceneId.equals("definite-minmax-calc-min-span-rows")) {
             return "width=20,height=28";
+        }
+        if (c114IsOverlappingRowsScene(sceneId)) {
+            boolean small = sceneId.contains("-small-");
+            boolean reversed = sceneId.endsWith("-reverse");
+            int height = reversed ? (small ? 100 : 140) : (small ? 66 : 91);
+            return "width=10,height=" + height;
         }
         if (sceneId.startsWith("cyclic-minmax-calc-overlap-")
                 || sceneId.startsWith("definite-minmax-calc-overlap-")) {
@@ -1057,6 +1073,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "definite-minmax-calc-overlap-small-reverse":
                 expected = new int[][] {
                     {140, 10, 140, 10}, {80, 10, 80, 10}, {70, 10, 70, 10},
+                };
+                break;
+            case "cyclic-minmax-calc-overlap-rows-forward":
+            case "definite-minmax-calc-overlap-rows-forward":
+            case "definite-minmax-calc-overlap-rows-small-forward":
+                expected = new int[][] {
+                    {10, 70, 70, 10}, {10, 80, 80, 10}, {10, 140, 140, 10},
+                };
+                break;
+            case "cyclic-minmax-calc-overlap-rows-reverse":
+            case "definite-minmax-calc-overlap-rows-reverse":
+            case "definite-minmax-calc-overlap-rows-small-reverse":
+                expected = new int[][] {
+                    {10, 140, 140, 10}, {10, 80, 80, 10}, {10, 70, 70, 10},
                 };
                 break;
             default:
@@ -1673,6 +1703,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (c114IsOverlappingRowsScene(sceneId)) {
+            return c114ExpectedOverlappingRowSpanNodeFrames(sceneId);
+        }
         if (sceneId.startsWith("cyclic-minmax-calc-overlap-")
                 || sceneId.startsWith("definite-minmax-calc-overlap-")) {
             return c114ExpectedOverlappingSpanNodeFrames(sceneId);
@@ -2058,6 +2091,36 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             frames.append(";").append(index + 1).append(":node=").append(node)
                     .append(",x=").append(x).append(",y=2,width=").append(width)
                     .append(",height=10");
+        }
+        return frames.append(']').toString();
+    }
+
+    private static boolean c114IsOverlappingRowsScene(String sceneId) {
+        return sceneId.startsWith("cyclic-minmax-calc-overlap-rows-")
+                || sceneId.startsWith("definite-minmax-calc-overlap-rows-");
+    }
+
+    private static String c114ExpectedOverlappingRowSpanNodeFrames(String sceneId) {
+        boolean small = sceneId.contains("-small-");
+        boolean reversed = sceneId.endsWith("-reverse");
+        int rootHeight = small ? 104 : 144;
+        int leftHeight = small ? 66 : 91;
+        int rightY = small ? 36 : 46;
+        int rightHeight = small ? 66 : 96;
+        int span3Height = small ? 100 : 140;
+        String[] kinds = reversed
+                ? new String[] {"span3", "span2-right", "span2-left"}
+                : new String[] {"span2-left", "span2-right", "span3"};
+        StringBuilder frames = new StringBuilder(
+                "node_frames_css_px=[0:node=1,x=0,y=0,width=14,height=" + rootHeight);
+        for (int index = 0; index < kinds.length; index++) {
+            String kind = kinds[index];
+            int node = 2 + index * 2;
+            int y = kind.equals("span2-right") ? rightY : 2;
+            int height = kind.equals("span2-left") ? leftHeight
+                    : kind.equals("span2-right") ? rightHeight : span3Height;
+            frames.append(";").append(index + 1).append(":node=").append(node)
+                    .append(",x=2,y=").append(y).append(",width=10,height=").append(height);
         }
         return frames.append(']').toString();
     }
@@ -2974,6 +3037,38 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (sceneId.equals("definite-minmax-calc-overlap-rows-small-forward")
+                || sceneId.equals("definite-minmax-calc-overlap-rows-small-reverse")) {
+            String[] expectedIDs = {
+                sceneId + "-inside-root-text",
+                sceneId + "-red-text-outside-root",
+                sceneId + "-clear-after-text",
+            };
+            String[] expectedNodeIDs = {
+                "c114-" + sceneId + "-item-span2-left",
+                "c114-" + sceneId + "-item-span3", "c114-" + sceneId + "-grid",
+            };
+            int[][] expectedPoints = {{7, 7}, {7, 126}, {7, 150}};
+            if (samples.size() != expectedIDs.length) return false;
+            boolean[] found = new boolean[expectedIDs.length];
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                int expectedIndex = -1;
+                for (int index = 0; index < expectedIDs.length; index++) {
+                    if (expectedIDs[index].equals(sample.id)) {
+                        expectedIndex = index;
+                        break;
+                    }
+                }
+                if (expectedIndex < 0 || found[expectedIndex]
+                        || !sample.targetNodeId.equals(expectedNodeIDs[expectedIndex])
+                        || sample.xCssPx != expectedPoints[expectedIndex][0]
+                        || sample.yCssPx != expectedPoints[expectedIndex][1]) {
+                    return false;
+                }
+                found[expectedIndex] = true;
+            }
+            return found[0] && found[1] && found[2];
+        }
         if (sceneId.equals("definite-minmax-calc-overlap-small-forward")
                 || sceneId.equals("definite-minmax-calc-overlap-small-reverse")) {
             String[] expectedIDs = {
@@ -4799,6 +4894,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "definite-minmax-calc-min-span-rows".equals(pixelMatrixSceneId)
                         || "definite-minmax-calc-overlap-small-forward".equals(pixelMatrixSceneId)
                         || "definite-minmax-calc-overlap-small-reverse".equals(pixelMatrixSceneId)
+                        || "definite-minmax-calc-overlap-rows-small-forward".equals(pixelMatrixSceneId)
+                        || "definite-minmax-calc-overlap-rows-small-reverse".equals(pixelMatrixSceneId)
                         || "cyclic-minmax-calc-min-both-axes".equals(pixelMatrixSceneId)
                         || "cyclic-minmax-calc-min-column-definite-row".equals(pixelMatrixSceneId)
                         || "definite-column-cyclic-minmax-calc-min-row".equals(pixelMatrixSceneId)
