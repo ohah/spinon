@@ -70,4 +70,4 @@ Chrome의 네 scene은 예상 columns/rows와 frame에 일치했고, min-content
 ## 적대 검토
 
 - [구현/runtime 실패 관점 20개](./implementation-runtime-review-20.md)
-- PR diff 검토는 PR 내용이 확정된 뒤 별도 파일로 연결한다.
+- [구현 PR #506 변경분 실패 관점 20개](./pr-diff-review-20.md)

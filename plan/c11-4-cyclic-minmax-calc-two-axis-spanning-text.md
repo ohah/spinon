@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [겹치는 span 선행 계획](./c11-4-cyclic-minmax-calc-overlapping-rows.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** Chrome 156 사전 비교와 독립 기대값을 네 고정 장면으로 확정했다. 계획 검토 뒤 구현을 추가했고, commit `514a2ee73b807fdd2b19d57016adb976dae34d17` 기준 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 장면씩 통과했다. 기본/fixture static archive 경계와 새 구현 runtime 실패 관점 20개도 기록했다. [실행 근거](../spec/internal/evidence/c11-4-cyclic-minmax-calc-two-axis-spanning-text-runtime-2026-10-22/README.md)에 한정과 해시를 연결한다. C11.4 체크박스와 `77/213` 집계는 유지한다.
+**상태:** Chrome 156 사전 비교와 독립 기대값을 네 고정 장면으로 확정했다. 계획 검토 뒤 구현을 추가했고, commit `514a2ee73b807fdd2b19d57016adb976dae34d17` 기준 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 장면씩 통과했다. 기본/fixture static archive 경계와 새 구현 runtime 실패 관점 20개도 기록했다. 구현 변경은 [PR #506](https://github.com/ohah/spinon/pull/506), [실행 근거](../spec/internal/evidence/c11-4-cyclic-minmax-calc-two-axis-spanning-text-runtime-2026-10-22/README.md)에 연결한다. C11.4 체크박스와 `77/213` 집계는 유지한다.
 
 ## 목적과 경계
 
@@ -43,3 +43,4 @@ Each scene's item frame is root-relative `(2,2)` with the content-box dimensions
 - [Chrome 사전 관찰과 규범 계산](../spec/internal/evidence/c11-4-cyclic-minmax-calc-two-axis-spanning-text-precomparison-2026-10-22/README.md)
 - [계획 PR 변경분 실패 경로 검토](../spec/internal/evidence/c11-4-cyclic-minmax-calc-two-axis-spanning-text-precomparison-2026-10-22/plan-pr-diff-review-20.md)
 - [구현/runtime 결과, artifact 경계와 구현 실패 관점 20개](../spec/internal/evidence/c11-4-cyclic-minmax-calc-two-axis-spanning-text-runtime-2026-10-22/README.md)
+- [구현 PR #506 변경분 적대 검토 20개](../spec/internal/evidence/c11-4-cyclic-minmax-calc-two-axis-spanning-text-runtime-2026-10-22/pr-diff-review-20.md)
