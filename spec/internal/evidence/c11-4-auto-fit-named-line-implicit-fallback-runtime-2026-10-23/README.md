@@ -27,7 +27,7 @@
 | --- | --- |
 | ![Android auto-fit named-line fallback simulator 화면](./android-avd-c114-auto-fit-named-implicit-fallback-android-avd-20261022T225053720Z-747e4035/auto-fit-named-implicit-positive-missing.png) | ![iOS auto-fit named-line fallback simulator 화면](./ios-simulator-c114-auto-fit-named-implicit-fallback-ios-simulator-20261022T224801263Z-5b88c62c/auto-fit-named-implicit-positive-missing.png) |
 
-두 캡처는 고정 fixture를 앱 화면에서 실행한 simulator screenshot이다. CSS border stroke의 모양이나 OS compositor 이후 iOS 출력은 판정하지 않는다.
+PR [#537] 본문에서 Agent Browser가 두 raw PNG를 모두 `complete=true`로 읽고 자연 크기 `1080×2400`, `1206×2622`를 확인했다. DOM/browser 검증과 PR 본문 화면은 [검증 JSON](./pr-screenshot-agent-browser-verification.json) 및 [Agent Browser screenshot](./pr537-agent-browser-screenshot.png)에 보존한다. 두 캡처는 고정 fixture를 앱 화면에서 실행한 simulator screenshot이다. CSS border stroke의 모양이나 OS compositor 이후 iOS 출력은 판정하지 않는다.
 
 ## 실행 환경 및 증거
 
