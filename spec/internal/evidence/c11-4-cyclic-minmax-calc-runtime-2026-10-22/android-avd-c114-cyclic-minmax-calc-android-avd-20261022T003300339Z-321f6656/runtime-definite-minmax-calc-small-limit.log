@@ -1,0 +1,4 @@
+10-22 09:33:09.278 29616 29616 E SpinonBootstrap: SPINON_C114_GRID_PIXEL_MATRIX status=error run_id=c114-android-avd-20261022T003300339Z-321f6656-3 scene=definite-minmax-calc-small-limit reason=invalid-c114-sample-fixture
+10-22 09:33:09.286 29616 29636 E SpinonBootstrap: SPINON_C114_GRID_PIXEL_MATRIX status=error reason=invalid-c114-sample-fixture
+10-22 09:33:09.394 29616 29616 I SpinonBootstrap: SPINON_C0410_SURFACE_CREATED generation=1
+10-22 09:33:09.395 29616 29616 I SpinonBootstrap: SPINON_C0410_SURFACE_CHANGED generation=2 size=840x630 changed=true

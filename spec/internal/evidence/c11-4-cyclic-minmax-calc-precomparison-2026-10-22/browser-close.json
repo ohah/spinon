@@ -1,0 +1,21 @@
+{
+  "taskSession": "spinon-cyclic-minmax-calc-20261022",
+  "closeCommand": "agent-browser --session spinon-cyclic-minmax-calc-20261022 close",
+  "taskSessionAfterClose": {
+    "active": false,
+    "pid": null
+  },
+  "remainingSession": {
+    "name": "hwpjs-curve-page-35c54947528a",
+    "active": true,
+    "pid": 636,
+    "pageCount": 1,
+    "version": "0.31.1"
+  },
+  "remainingProcess": {
+    "agentBrowserPid": 636,
+    "chromePid": 644,
+    "reasonPreserved": "session info ties the live browser runtime to the unrelated HWPJS session; closing it would terminate that session"
+  },
+  "checkedAt": "2026-10-22T00:21:38Z"
+}

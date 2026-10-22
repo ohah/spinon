@@ -1,0 +1,17 @@
+{
+  "scope": "static Rust release archive string-marker inspection only",
+  "default": {
+    "path": "target/release/deps/libspinon_ffi-4d40ecba4f9adc56.a",
+    "sha256": "44af952c38f322c5554bd70e812fcf5f9c3484e6e25dee9708f934255c94d32e",
+    "cyclicMinmaxCalcMarker": "absent"
+  },
+  "fixtureTest": {
+    "path": "target/release/deps/libspinon_ffi-4c30e1cb2f929eca.a",
+    "sha256": "c1029d27140577abdf77ef6e513b2d4212c376c3878a26b6bec71fd820b5c6d3",
+    "cyclicMinmaxCalcMarker": "present"
+  },
+  "limits": [
+    "Feature-specific Cargo archive comparison, not a complete Android APK or iOS IPA release scan.",
+    "Does not prove release packaging size or platform FFI symbol absence."
+  ]
+}

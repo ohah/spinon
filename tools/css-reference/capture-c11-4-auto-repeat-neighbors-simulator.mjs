@@ -17,6 +17,8 @@ const cyclicPercentSceneIDs = new Set([
   'cyclic-fit-content-column', 'cyclic-fit-content-row', 'definite-fit-content-column',
   'cyclic-fit-content-calc-column', 'cyclic-fit-content-calc-row',
   'definite-fit-content-calc-column', 'definite-fit-content-calc-small-limit',
+  'cyclic-minmax-calc-column', 'cyclic-minmax-calc-row',
+  'definite-minmax-calc-column', 'definite-minmax-calc-small-limit',
   'cyclic-percent-two-axis-multitrack', 'cyclic-percent-columns-multitrack',
   'cyclic-percent-rows-multitrack', 'definite-percent-two-axis-multitrack',
   'cyclic-calc-column', 'cyclic-calc-row', 'cyclic-calc-two-axis',
@@ -1976,6 +1978,105 @@ scenes.push(
         xCssPx: 25, yCssPx: 5, rgba: [0, 0, 0, 255] },
     ],
   },
+  {
+    id: 'cyclic-minmax-calc-column',
+    axis: 'Columns',
+    boxCount: 2,
+    rootFrame: 'width=50,height=20',
+    itemFrame: 'width=29,height=20',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=50,height=20;'
+      + '1:node=2,x=0,y=0,width=29,height=20]',
+    tracks: [29],
+    collapsed: [false],
+    axes: {
+      Columns: { tracks: [29], collapsed: [false] },
+      Rows: { tracks: [20], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    pixelSamples: [
+      { id: 'cyclic-minmax-calc-column-inside-item',
+        nodeId: 'c114-cyclic-minmax-calc-column-item',
+        xCssPx: 28, yCssPx: 5, rgba: [229, 72, 77, 255] },
+      { id: 'cyclic-minmax-calc-column-past-item',
+        nodeId: 'c114-cyclic-minmax-calc-column-item',
+        xCssPx: 30, yCssPx: 5, rgba: [16, 24, 32, 255] },
+    ],
+  },
+  {
+    id: 'cyclic-minmax-calc-row',
+    axis: 'Rows',
+    boxCount: 2,
+    rootFrame: 'width=20,height=40',
+    itemFrame: 'width=20,height=22',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=40;'
+      + '1:node=2,x=0,y=0,width=20,height=22]',
+    tracks: [22],
+    collapsed: [false],
+    axes: {
+      Columns: { tracks: [20], collapsed: [false] },
+      Rows: { tracks: [22], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    pixelSamples: [
+      { id: 'cyclic-minmax-calc-row-inside-item',
+        nodeId: 'c114-cyclic-minmax-calc-row-item',
+        xCssPx: 19, yCssPx: 21, rgba: [229, 72, 77, 255] },
+      { id: 'cyclic-minmax-calc-row-past-item',
+        nodeId: 'c114-cyclic-minmax-calc-row-item',
+        xCssPx: 19, yCssPx: 23, rgba: [16, 24, 32, 255] },
+    ],
+  },
+  {
+    id: 'definite-minmax-calc-column',
+    axis: 'Columns',
+    boxCount: 2,
+    rootFrame: 'width=40,height=20',
+    itemFrame: 'width=24,height=20',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;'
+      + '1:node=2,x=0,y=0,width=24,height=20]',
+    tracks: [24],
+    collapsed: [false],
+    axes: {
+      Columns: { tracks: [24], collapsed: [false] },
+      Rows: { tracks: [20], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    pixelSamples: [
+      { id: 'definite-minmax-calc-column-inside-item',
+        nodeId: 'c114-definite-minmax-calc-column-item',
+        xCssPx: 23, yCssPx: 5, rgba: [229, 72, 77, 255] },
+      { id: 'definite-minmax-calc-column-past-item',
+        nodeId: 'c114-definite-minmax-calc-column-item',
+        xCssPx: 25, yCssPx: 5, rgba: [16, 24, 32, 255] },
+    ],
+  },
+  {
+    id: 'definite-minmax-calc-small-limit',
+    axis: 'Columns',
+    boxCount: 2,
+    rootFrame: 'width=10,height=20',
+    itemFrame: 'width=9,height=20',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=10,height=20;'
+      + '1:node=2,x=0,y=0,width=9,height=20]',
+    tracks: [9],
+    collapsed: [false],
+    axes: {
+      Columns: { tracks: [9], collapsed: [false] },
+      Rows: { tracks: [20], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    pixelSamples: [
+      { id: 'definite-minmax-calc-small-limit-inside-item',
+        nodeId: 'c114-definite-minmax-calc-small-limit-item',
+        xCssPx: 5, yCssPx: 5, rgba: [229, 72, 77, 255] },
+      { id: 'definite-minmax-calc-small-limit-text-overflow',
+        nodeId: 'c114-definite-minmax-calc-small-limit-item',
+        xCssPx: 15, yCssPx: 5, rgba: [229, 72, 77, 255] },
+      { id: 'definite-minmax-calc-small-limit-past-text',
+        nodeId: 'c114-definite-minmax-calc-small-limit-item',
+        xCssPx: 25, yCssPx: 5, rgba: [0, 0, 0, 255] },
+    ],
+  },
   ...[
     {
       id: 'cyclic-calc-column',
@@ -2092,7 +2193,7 @@ scenes.push(
     ],
   })),
 );
-assert.equal(scenes.length, 223, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 227, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;

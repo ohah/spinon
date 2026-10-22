@@ -1,0 +1,114 @@
+{
+  "font": {
+    "loaded": true,
+    "status": "loaded"
+  },
+  "scenes": [
+    {
+      "columns": "29px",
+      "grid": {
+        "height": 20,
+        "width": 50,
+        "x": 0,
+        "y": 0
+      },
+      "id": "cyclic-minmax-calc-column",
+      "item": {
+        "height": 20,
+        "width": 29,
+        "x": 0,
+        "y": 0
+      },
+      "itemMinSize": {
+        "height": "0px",
+        "width": "0px"
+      },
+      "rows": "20px",
+      "scroll": {
+        "height": 20,
+        "width": 50
+      }
+    },
+    {
+      "columns": "20px",
+      "grid": {
+        "height": 40,
+        "width": 20,
+        "x": 0,
+        "y": 30
+      },
+      "id": "cyclic-minmax-calc-row",
+      "item": {
+        "height": 22,
+        "width": 20,
+        "x": 0,
+        "y": 30
+      },
+      "itemMinSize": {
+        "height": "0px",
+        "width": "0px"
+      },
+      "rows": "22px",
+      "scroll": {
+        "height": 40,
+        "width": 20
+      }
+    },
+    {
+      "columns": "24px",
+      "grid": {
+        "height": 20,
+        "width": 40,
+        "x": 0,
+        "y": 80
+      },
+      "id": "definite-minmax-calc-column",
+      "item": {
+        "height": 20,
+        "width": 24,
+        "x": 0,
+        "y": 80
+      },
+      "itemMinSize": {
+        "height": "0px",
+        "width": "0px"
+      },
+      "rows": "20px",
+      "scroll": {
+        "height": 20,
+        "width": 40
+      }
+    },
+    {
+      "columns": "9px",
+      "grid": {
+        "height": 20,
+        "width": 10,
+        "x": 0,
+        "y": 110
+      },
+      "id": "definite-minmax-calc-small-limit",
+      "item": {
+        "height": 20,
+        "width": 9,
+        "x": 0,
+        "y": 110
+      },
+      "itemMinSize": {
+        "height": "0px",
+        "width": "0px"
+      },
+      "rows": "20px",
+      "scroll": {
+        "height": 20,
+        "width": 20
+      }
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "dpr": 1,
+    "height": 633,
+    "width": 1280
+  }
+}

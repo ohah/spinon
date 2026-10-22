@@ -1,0 +1,57 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 cyclic minmax(calc()) track sizing precomparison</title>
+<style>
+  @font-face { font-family: Ahem; src: url("../../resources/c15/Ahem.ttf") format("truetype"); }
+  html, body { margin: 0; padding: 0; }
+  body { background: #ffffff; }
+  .grid {
+    display: grid;
+    margin: 0 0 10px;
+    padding: 0;
+    border: 0;
+    gap: 0;
+    background: #101820;
+    font: 10px/10px Ahem, sans-serif;
+    color: #e5484d;
+  }
+  .item {
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #e5484d;
+  }
+</style>
+<div id="cyclic-minmax-calc-column" class="grid" style="width:max-content;grid-template-columns:minmax(0px,calc(50% + 4px));grid-template-rows:auto"><div class="item">aa aa</div></div>
+<div id="cyclic-minmax-calc-row" class="grid" style="width:20px;height:max-content;grid-template-columns:20px;grid-template-rows:minmax(0px,calc(50% + 2px))"><div class="item">a a a a</div></div>
+<div id="definite-minmax-calc-column" class="grid" style="width:40px;grid-template-columns:minmax(0px,calc(50% + 4px));grid-template-rows:auto"><div class="item">aa aa</div></div>
+<div id="definite-minmax-calc-small-limit" class="grid" style="width:10px;grid-template-columns:minmax(0px,calc(50% + 4px));grid-template-rows:auto"><div class="item">aa aa</div></div>
+<script>
+  document.fonts.ready.then(() => {
+    window.cyclicMinmaxCalcResults = {
+      userAgent: navigator.userAgent,
+      viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+      font: { status: document.fonts.status, loaded: document.fonts.check("10px Ahem") },
+      scenes: Array.from(document.querySelectorAll(".grid"), (grid) => {
+        const item = grid.firstElementChild;
+        const rect = (element) => {
+          const { x, y, width, height } = element.getBoundingClientRect();
+          return { x, y, width, height };
+        };
+        const style = getComputedStyle(grid);
+        const itemStyle = getComputedStyle(item);
+        return {
+          id: grid.id,
+          grid: rect(grid),
+          item: rect(item),
+          columns: style.gridTemplateColumns,
+          rows: style.gridTemplateRows,
+          itemMinSize: { width: itemStyle.minWidth, height: itemStyle.minHeight },
+          scroll: { width: grid.scrollWidth, height: grid.scrollHeight },
+        };
+      }),
+    };
+  });
+</script>

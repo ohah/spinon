@@ -280,3 +280,88 @@ fn cyclic_fit_content_calc_text_scenes_match_tracks_and_frames() {
         );
     }
 }
+
+#[test]
+fn cyclic_minmax_calc_text_scenes_match_independent_tracks_and_frames() {
+    let cases = [
+        (
+            "cyclic-minmax-calc-column",
+            "display:grid;box-sizing:border-box;width:max-content;height:auto;grid-template-columns:minmax(0px,calc(50% + 4px));grid-template-rows:auto;column-gap:0;row-gap:0;margin:0;padding:0;border:0",
+            "aa aa",
+            (50.0, 20.0),
+            (29.0, 20.0),
+            29.0,
+            20.0,
+        ),
+        (
+            "cyclic-minmax-calc-row",
+            "display:grid;box-sizing:border-box;width:20px;height:max-content;grid-template-columns:20px;grid-template-rows:minmax(0px,calc(50% + 2px));column-gap:0;row-gap:0;margin:0;padding:0;border:0",
+            "a a a a",
+            (20.0, 40.0),
+            (20.0, 22.0),
+            20.0,
+            22.0,
+        ),
+        (
+            "definite-minmax-calc-column",
+            "display:grid;box-sizing:border-box;width:40px;height:auto;grid-template-columns:minmax(0px,calc(50% + 4px));grid-template-rows:auto;column-gap:0;row-gap:0;margin:0;padding:0;border:0",
+            "aa aa",
+            (40.0, 20.0),
+            (24.0, 20.0),
+            24.0,
+            20.0,
+        ),
+        (
+            "definite-minmax-calc-small-limit",
+            "display:grid;box-sizing:border-box;width:10px;height:auto;grid-template-columns:minmax(0px,calc(50% + 4px));grid-template-rows:auto;column-gap:0;row-gap:0;margin:0;padding:0;border:0",
+            "aa aa",
+            (10.0, 20.0),
+            (9.0, 20.0),
+            9.0,
+            20.0,
+        ),
+    ];
+
+    for (scene, root_style, text, expected_root, expected_item, expected_columns, expected_rows) in
+        cases
+    {
+        let fixture = fixture(root_style, text);
+        let output = compute(&fixture);
+        let root = output.layout.frames[&fixture.root.id()];
+        let item = output.layout.frames[&fixture.nodes["item"].id()];
+        assert!(
+            (root.width - expected_root.0).abs() <= 0.05
+                && (root.height - expected_root.1).abs() <= 0.05,
+            "{scene}: expected root {:?}, got ({}, {})",
+            expected_root,
+            root.width,
+            root.height
+        );
+        assert!(
+            item.x.abs() <= 0.05
+                && item.y.abs() <= 0.05
+                && (item.width - expected_item.0).abs() <= 0.05
+                && (item.height - expected_item.1).abs() <= 0.05,
+            "{scene}: expected item at origin with size {:?}, got ({}, {}, {}, {})",
+            expected_item,
+            item.x,
+            item.y,
+            item.width,
+            item.height
+        );
+        assert_axis_tracks(
+            &output,
+            fixture.root.id(),
+            LayoutGridTrackSizingAxis::Columns,
+            expected_columns,
+            scene,
+        );
+        assert_axis_tracks(
+            &output,
+            fixture.root.id(),
+            LayoutGridTrackSizingAxis::Rows,
+            expected_rows,
+            scene,
+        );
+    }
+}

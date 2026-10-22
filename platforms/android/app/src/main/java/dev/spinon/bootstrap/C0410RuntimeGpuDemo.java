@@ -132,6 +132,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "definite-fit-content-column",
             "cyclic-fit-content-calc-column", "cyclic-fit-content-calc-row",
             "definite-fit-content-calc-column", "definite-fit-content-calc-small-limit",
+            "cyclic-minmax-calc-column", "cyclic-minmax-calc-row",
+            "definite-minmax-calc-column", "definite-minmax-calc-small-limit",
             "cyclic-percent-two-axis-multitrack", "cyclic-percent-columns-multitrack",
             "cyclic-percent-rows-multitrack", "definite-percent-two-axis-multitrack",
             "cyclic-calc-column", "cyclic-calc-row", "cyclic-calc-two-axis",
@@ -428,6 +430,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (sceneId.equals("definite-fit-content-calc-small-limit")) {
             return "width=10,height=20";
         }
+        if (sceneId.equals("cyclic-minmax-calc-column")) return "width=50,height=20";
+        if (sceneId.equals("cyclic-minmax-calc-row")) return "width=20,height=40";
+        if (sceneId.equals("definite-minmax-calc-column")) return "width=40,height=20";
+        if (sceneId.equals("definite-minmax-calc-small-limit")) {
+            return "width=10,height=20";
+        }
         if (sceneId.equals("cyclic-percent-column")
                 || sceneId.equals("cyclic-percent-row")
                 || sceneId.equals("cyclic-minmax-column")
@@ -636,6 +644,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (sceneId.equals("cyclic-fit-content-calc-row")) return "width=20,height=22";
         if (sceneId.equals("definite-fit-content-calc-column")) return "width=24,height=20";
         if (sceneId.equals("definite-fit-content-calc-small-limit")) {
+            return "width=9,height=20";
+        }
+        if (sceneId.equals("cyclic-minmax-calc-column")) return "width=29,height=20";
+        if (sceneId.equals("cyclic-minmax-calc-row")) return "width=20,height=22";
+        if (sceneId.equals("definite-minmax-calc-column")) return "width=24,height=20";
+        if (sceneId.equals("definite-minmax-calc-small-limit")) {
             return "width=9,height=20";
         }
         if (sceneId.equals("cyclic-percent-column")
@@ -1607,6 +1621,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "definite-fit-content-calc-small-limit":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=10,height=20;"
                         + "1:node=2,x=0,y=0,width=9,height=20]";
+            case "cyclic-minmax-calc-column":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=50,height=20;"
+                        + "1:node=2,x=0,y=0,width=29,height=20]";
+            case "cyclic-minmax-calc-row":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=40;"
+                        + "1:node=2,x=0,y=0,width=20,height=22]";
+            case "definite-minmax-calc-column":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;"
+                        + "1:node=2,x=0,y=0,width=24,height=20]";
+            case "definite-minmax-calc-small-limit":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=10,height=20;"
+                        + "1:node=2,x=0,y=0,width=9,height=20]";
             case "cyclic-percent-column":
             case "cyclic-percent-row":
             case "cyclic-minmax-column":
@@ -2525,7 +2551,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("cyclic-fit-content-calc-column")
                 || sceneId.equals("cyclic-fit-content-calc-row")
                 || sceneId.equals("definite-fit-content-calc-column")
-                || sceneId.equals("definite-fit-content-calc-small-limit")) return 2;
+                || sceneId.equals("definite-fit-content-calc-small-limit")
+                || sceneId.equals("cyclic-minmax-calc-column")
+                || sceneId.equals("cyclic-minmax-calc-row")
+                || sceneId.equals("definite-minmax-calc-column")
+                || sceneId.equals("definite-minmax-calc-small-limit")) return 2;
         if (sceneId.equals("cyclic-percent-two-axis-multitrack")
                 || sceneId.equals("cyclic-percent-columns-multitrack")
                 || sceneId.equals("cyclic-percent-rows-multitrack")
@@ -2880,7 +2910,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (sceneId.equals("cyclic-fit-content-calc-column")
                 || sceneId.equals("cyclic-fit-content-calc-row")
                 || sceneId.equals("definite-fit-content-calc-column")
-                || sceneId.equals("definite-fit-content-calc-small-limit")) {
+                || sceneId.equals("definite-fit-content-calc-small-limit")
+                || sceneId.equals("cyclic-minmax-calc-column")
+                || sceneId.equals("cyclic-minmax-calc-row")
+                || sceneId.equals("definite-minmax-calc-column")
+                || sceneId.equals("definite-minmax-calc-small-limit")) {
             String[] expectedIDs;
             int[][] expectedPoints;
             switch (sceneId) {
@@ -2905,7 +2939,28 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     };
                     expectedPoints = new int[][] {{23, 5}, {25, 5}};
                     break;
-                default:
+                case "cyclic-minmax-calc-column":
+                    expectedIDs = new String[] {
+                            "cyclic-minmax-calc-column-inside-item",
+                            "cyclic-minmax-calc-column-past-item",
+                    };
+                    expectedPoints = new int[][] {{28, 5}, {30, 5}};
+                    break;
+                case "cyclic-minmax-calc-row":
+                    expectedIDs = new String[] {
+                            "cyclic-minmax-calc-row-inside-item",
+                            "cyclic-minmax-calc-row-past-item",
+                    };
+                    expectedPoints = new int[][] {{19, 21}, {19, 23}};
+                    break;
+                case "definite-minmax-calc-column":
+                    expectedIDs = new String[] {
+                            "definite-minmax-calc-column-inside-item",
+                            "definite-minmax-calc-column-past-item",
+                    };
+                    expectedPoints = new int[][] {{23, 5}, {25, 5}};
+                    break;
+                case "definite-fit-content-calc-small-limit":
                     expectedIDs = new String[] {
                             "definite-fit-content-calc-small-limit-inside-item",
                             "definite-fit-content-calc-small-limit-text-overflow",
@@ -2913,6 +2968,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     };
                     expectedPoints = new int[][] {{5, 5}, {15, 5}, {25, 5}};
                     break;
+                case "definite-minmax-calc-small-limit":
+                    expectedIDs = new String[] {
+                            "definite-minmax-calc-small-limit-inside-item",
+                            "definite-minmax-calc-small-limit-text-overflow",
+                            "definite-minmax-calc-small-limit-past-text",
+                    };
+                    expectedPoints = new int[][] {{5, 5}, {15, 5}, {25, 5}};
+                    break;
+                default:
+                    return false;
             }
             if (samples.size() != expectedIDs.length) return false;
             boolean[] found = new boolean[expectedIDs.length];
@@ -4374,6 +4439,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "cyclic-fit-content-calc-row".equals(pixelMatrixSceneId)
                         || "definite-fit-content-calc-column".equals(pixelMatrixSceneId)
                         || "definite-fit-content-calc-small-limit".equals(pixelMatrixSceneId)
+                        || "cyclic-minmax-calc-column".equals(pixelMatrixSceneId)
+                        || "cyclic-minmax-calc-row".equals(pixelMatrixSceneId)
+                        || "definite-minmax-calc-column".equals(pixelMatrixSceneId)
+                        || "definite-minmax-calc-small-limit".equals(pixelMatrixSceneId)
                         || "cyclic-percent-two-axis-multitrack".equals(pixelMatrixSceneId)
                         || "cyclic-percent-columns-multitrack".equals(pixelMatrixSceneId)
                         || "cyclic-percent-rows-multitrack".equals(pixelMatrixSceneId)
@@ -7945,6 +8014,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "definite-fit-content-calc-column-inside-item":
             case "definite-fit-content-calc-small-limit-inside-item":
             case "definite-fit-content-calc-small-limit-text-overflow":
+            case "cyclic-minmax-calc-column-inside-item":
+            case "cyclic-minmax-calc-row-inside-item":
+            case "definite-minmax-calc-column-inside-item":
+            case "definite-minmax-calc-small-limit-inside-item":
+            case "definite-minmax-calc-small-limit-text-overflow":
                 return new int[] {229, 72, 77};
             case "cyclic-fit-content-column-past-item":
             case "cyclic-fit-content-row-past-item-no-text":
@@ -7952,8 +8026,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "cyclic-fit-content-calc-column-past-item":
             case "cyclic-fit-content-calc-row-past-item":
             case "definite-fit-content-calc-column-past-item":
+            case "cyclic-minmax-calc-column-past-item":
+            case "cyclic-minmax-calc-row-past-item":
+            case "definite-minmax-calc-column-past-item":
                 return new int[] {16, 24, 32};
             case "definite-fit-content-calc-small-limit-past-text":
+            case "definite-minmax-calc-small-limit-past-text":
                 return new int[] {0, 0, 0};
             case "nested-grid-internal-gap":
                 return new int[] {231, 246, 237};

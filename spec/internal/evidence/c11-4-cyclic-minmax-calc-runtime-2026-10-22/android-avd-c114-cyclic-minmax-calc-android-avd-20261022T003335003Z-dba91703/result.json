@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "target": "android-avd",
+  "runPrefix": "c114-cyclic-minmax-calc-android-avd-20261022T003335003Z-dba91703",
+  "sceneCount": 4,
+  "observations": [
+    {
+      "sceneId": "cyclic-minmax-calc-column",
+      "summary": "10-22 09:33:39.532 29740 29759 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261022T003335003Z-dba91703-0 scene_id=cyclic-minmax-calc-column expected_root_frame=width=50,height=20 expected_item_frame=width=29,height=20 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=50,height=20;1:node=2,x=0,y=0,width=29,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 20
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 29,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 29,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 8,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "cyclic-minmax-calc-row",
+      "summary": "10-22 09:33:41.451 29802 29821 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261022T003335003Z-dba91703-1 scene_id=cyclic-minmax-calc-row expected_root_frame=width=20,height=40 expected_item_frame=width=20,height=22 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=40;1:node=2,x=0,y=0,width=20,height=22]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 40
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 22
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 22,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 5,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "definite-minmax-calc-column",
+      "summary": "10-22 09:33:43.302 29859 29878 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261022T003335003Z-dba91703-2 scene_id=definite-minmax-calc-column expected_root_frame=width=40,height=20 expected_item_frame=width=24,height=20 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;1:node=2,x=0,y=0,width=24,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 20
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 24,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 5,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "definite-minmax-calc-small-limit",
+      "summary": "10-22 09:33:45.253 29922 29941 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261022T003335003Z-dba91703-3 scene_id=definite-minmax-calc-small-limit expected_root_frame=width=10,height=20 expected_item_frame=width=9,height=20 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=10,height=20;1:node=2,x=0,y=0,width=9,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 10,
+          "height": 20
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 9,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 9,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 5,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}
