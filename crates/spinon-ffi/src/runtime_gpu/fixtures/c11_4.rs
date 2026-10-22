@@ -22,6 +22,8 @@ mod cyclic_minmax_calc;
 mod cyclic_minmax_calc_minimum;
 #[path = "c11_4/cyclic_minmax_calc_minimum_span.rs"]
 mod cyclic_minmax_calc_minimum_span;
+#[path = "c11_4/cyclic_minmax_calc_overlapping_spans.rs"]
+mod cyclic_minmax_calc_overlapping_spans;
 #[path = "c11_4/cyclic_percentage_fit_content.rs"]
 mod cyclic_percentage_fit_content;
 #[path = "c11_4/cyclic_percentage_minmax.rs"]
@@ -1088,6 +1090,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     if let Some(source) = cyclic_minmax_calc_minimum_span::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
+    if let Some(source) = cyclic_minmax_calc_overlapping_spans::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = cyclic_calc_tracks::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
@@ -1615,6 +1620,86 @@ mod tests {
         }
         assert!(
             c11_4_grid_track_sizing_runtime_source("cyclic-minmax-calc-min-span-unlisted").is_err()
+        );
+    }
+
+    #[test]
+    fn exposes_fixed_cyclic_minmax_calc_overlapping_span_runtime_scenes() {
+        for (scene_id, width, placements, texts) in [
+            (
+                "cyclic-minmax-calc-overlap-forward",
+                "max-content",
+                [
+                    "grid-column:1 / 3",
+                    "grid-column:2 / 4",
+                    "grid-column:1 / 4",
+                ],
+                ["aaaaaaa", "aaaaaaaa", "aaaaaaaaaaaaaa"],
+            ),
+            (
+                "cyclic-minmax-calc-overlap-reverse",
+                "max-content",
+                [
+                    "grid-column:1 / 4",
+                    "grid-column:2 / 4",
+                    "grid-column:1 / 3",
+                ],
+                ["aaaaaaaaaaaaaa", "aaaaaaaa", "aaaaaaa"],
+            ),
+            (
+                "definite-minmax-calc-overlap-forward",
+                "140px",
+                [
+                    "grid-column:1 / 3",
+                    "grid-column:2 / 4",
+                    "grid-column:1 / 4",
+                ],
+                ["aaaaaaa", "aaaaaaaa", "aaaaaaaaaaaaaa"],
+            ),
+            (
+                "definite-minmax-calc-overlap-reverse",
+                "140px",
+                [
+                    "grid-column:1 / 4",
+                    "grid-column:2 / 4",
+                    "grid-column:1 / 3",
+                ],
+                ["aaaaaaaaaaaaaa", "aaaaaaaa", "aaaaaaa"],
+            ),
+            (
+                "definite-minmax-calc-overlap-small-forward",
+                "100px",
+                [
+                    "grid-column:1 / 3",
+                    "grid-column:2 / 4",
+                    "grid-column:1 / 4",
+                ],
+                ["aaaaaaa", "aaaaaaaa", "aaaaaaaaaaaaaa"],
+            ),
+            (
+                "definite-minmax-calc-overlap-small-reverse",
+                "100px",
+                [
+                    "grid-column:1 / 4",
+                    "grid-column:2 / 4",
+                    "grid-column:1 / 3",
+                ],
+                ["aaaaaaaaaaaaaa", "aaaaaaaa", "aaaaaaa"],
+            ),
+        ] {
+            let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
+            assert!(source.contains(&format!("sceneId:{scene_id:?}")));
+            assert!(source.contains(&format!("width:{width};height:10px")));
+            assert_eq!(source.matches("document.createElement('div')").count(), 4);
+            assert_eq!(source.matches("document.createTextNode(").count(), 3);
+            assert!(source.contains("minmax(calc(10% + 2px),max-content)"));
+            for (placement, text) in placements.into_iter().zip(texts) {
+                assert!(source.contains(placement));
+                assert!(source.contains(&format!("createTextNode({text:?})")));
+            }
+        }
+        assert!(
+            c11_4_grid_track_sizing_runtime_source("cyclic-minmax-calc-overlap-unlisted").is_err()
         );
     }
 

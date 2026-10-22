@@ -1,0 +1,26 @@
+{
+  "target": "ios-simulator",
+  "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "name": "iPhone 17 Pro",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "d138a8370238ba3118b92e2fbd2cafb8f6a733c446c00f01a6153a012d5f63f6",
+  "sourceRevision": {
+    "commit": "a4941f809e9515e45b71de4063d04aa1e8d676e7",
+    "tree": "6e9eddcab0bb89325a182d1686daaa85fa941884",
+    "trackedDiffSha256": "a8838c835fedf21427563d9965e90411780333fee224555da3e9b993fbc84e0f",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/cyclic_minmax_calc_overlapping_spans.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/overlapping_spans.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/root_html_default_render.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/root_html_default_render/fixture.rs",
+      "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests.rs",
+      "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/cyclic_minmax_calc_overlapping_spans.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs"
+    ]
+  }
+}

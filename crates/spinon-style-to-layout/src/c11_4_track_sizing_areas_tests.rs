@@ -34,6 +34,9 @@ mod cyclic_minmax_calc_minimum_span;
 #[path = "c11_4_track_sizing_areas_tests/cyclic_minmax_calc_minimum_two_axis.rs"]
 mod cyclic_minmax_calc_minimum_two_axis;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "c11_4_track_sizing_areas_tests/cyclic_minmax_calc_overlapping_spans.rs"]
+mod cyclic_minmax_calc_overlapping_spans;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "c11_4_track_sizing_areas_tests/cyclic_two_axis_multitrack.rs"]
 mod cyclic_two_axis_multitrack;
 

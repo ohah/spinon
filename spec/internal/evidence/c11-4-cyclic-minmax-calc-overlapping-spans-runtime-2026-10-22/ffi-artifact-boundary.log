@@ -1,0 +1,6 @@
+default: bytes=60096336 sha256=6ba9369417ae964fea08250b3371fcbf16e1861548902e573a3aee889ce30393
+fixture_opt_in: bytes=77906512 sha256=65bd0fe25a314a10a61d841bc3b425949b7b653dc063089d5b6aebf299e65e19
+
+default release archive: all six scene ids and fixture entry marker absent
+opt-in release archive: all six scene ids and fixture entry marker present
+method: strings scan of both static archives; symbol-table inspection is not claimed

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "validation": "passed",
+  "expectedSceneIds": [
+    "cyclic-minmax-calc-overlap-forward",
+    "cyclic-minmax-calc-overlap-reverse",
+    "definite-minmax-calc-overlap-forward",
+    "definite-minmax-calc-overlap-reverse",
+    "definite-minmax-calc-overlap-small-forward",
+    "definite-minmax-calc-overlap-small-reverse"
+  ],
+  "platforms": [
+    {
+      "platform": "android-avd",
+      "run": "spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377",
+      "sceneCount": 6,
+      "passedScenes": 6,
+      "pixelSamples": 6,
+      "pixelSamplesExact": 6
+    },
+    {
+      "platform": "ios-simulator",
+      "run": "spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3",
+      "sceneCount": 6,
+      "passedScenes": 6,
+      "pixelSamples": 6,
+      "pixelSamplesExact": 6
+    }
+  ],
+  "limits": [
+    "Android API 37 ARM64 AVD PixelCopy",
+    "iOS 26.2 Simulator Metal drawable before submission",
+    "CSS border stroke not asserted",
+    "iOS post-compositor pixels not asserted"
+  ]
+}

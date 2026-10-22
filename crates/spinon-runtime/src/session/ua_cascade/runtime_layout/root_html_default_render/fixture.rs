@@ -16,10 +16,22 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare_text_owner(
     engine: &TextLayoutEngine,
     color: RuntimeSrgbColor,
 ) -> Result<Input, RuntimeLayoutFailure> {
+    prepare_text_owners(snapshot, root, styles, &[owner], engine, color)
+}
+
+pub(in crate::session::ua_cascade::runtime_layout) fn prepare_text_owners(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    styles: &ComputedStyleSnapshot,
+    owners: &[NodeId],
+    engine: &TextLayoutEngine,
+    color: RuntimeSrgbColor,
+) -> Result<Input, RuntimeLayoutFailure> {
     if styles.profile != spinon_style::ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
         || !styles.viewport.device_scale_factor.is_finite()
         || styles.viewport.device_scale_factor <= 0.0
         || root.generation() != snapshot.generation()
+        || owners.is_empty()
     {
         return Err(layout_failure(
             "invalid_fixture_text_render_environment",
@@ -40,27 +52,37 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare_text_owner(
             None,
         ));
     }
-    if !style_by_node.contains_key(&owner) {
-        return Err(layout_failure(
-            "fixture_text_owner_style_missing",
-            Some(owner.get()),
-            None,
-        ));
-    }
     let node_handles = collect_handles(snapshot, root)?;
-    if !node_handles.contains_key(&owner) {
-        return Err(layout_failure(
-            "fixture_text_owner_missing",
-            Some(owner.get()),
-            None,
-        ));
+    let mut style_colors = BTreeMap::new();
+    for &owner in owners {
+        if !style_by_node.contains_key(&owner) {
+            return Err(layout_failure(
+                "fixture_text_owner_style_missing",
+                Some(owner.get()),
+                None,
+            ));
+        }
+        if !node_handles.contains_key(&owner) {
+            return Err(layout_failure(
+                "fixture_text_owner_missing",
+                Some(owner.get()),
+                None,
+            ));
+        }
+        if style_colors.insert(owner, color).is_some() {
+            return Err(layout_failure(
+                "duplicate_fixture_text_owner",
+                Some(owner.get()),
+                None,
+            ));
+        }
     }
 
     Ok(Input {
         paragraph_styles: BTreeMap::new(),
         inline_run_styles: BTreeMap::new(),
         engine: engine.clone(),
-        style_colors: BTreeMap::from([(owner, color)]),
+        style_colors,
         node_handles,
         device_scale_factor: styles.viewport.device_scale_factor,
     })

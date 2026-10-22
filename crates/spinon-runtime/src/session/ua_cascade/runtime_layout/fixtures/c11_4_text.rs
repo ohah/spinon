@@ -27,23 +27,37 @@ mod cyclic_fit_content_calc;
 mod cyclic_two_axis_multitrack;
 #[path = "c11_4_text/flex_span.rs"]
 mod flex_span;
+#[path = "c11_4_text/overlapping_spans.rs"]
+mod overlapping_spans;
 use cases::{TEXT_CASES, TextCase, TextDimension, TextTrack};
 
 pub(in crate::session::ua_cascade::runtime_layout) fn is_cyclic_fit_content_calc_scene_root(
     snapshot: &HostDocumentSnapshot,
     root: HostNodeHandle,
 ) -> Result<bool, RuntimeLayoutFailure> {
-    cyclic_fit_content_calc::is_scene_root(snapshot, root)
+    Ok(overlapping_spans::is_scene_root(snapshot, root)?
+        || cyclic_fit_content_calc::is_scene_root(snapshot, root)?)
 }
 
 pub(in crate::session::ua_cascade::runtime_layout) fn prepare_cyclic_fit_content_calc_render_input(
     snapshot: &HostDocumentSnapshot,
     root: HostNodeHandle,
     styles: &ComputedStyleSnapshot,
-    owner: spinon_core::NodeId,
+    owners: &[spinon_core::NodeId],
     engine: &TextLayoutEngine,
 ) -> Result<super::super::root_html_default_render::Input, RuntimeLayoutFailure> {
-    cyclic_fit_content_calc::prepare_render_input(snapshot, root, styles, owner, engine)
+    if overlapping_spans::is_scene_root(snapshot, root)? {
+        overlapping_spans::prepare_render_input(snapshot, root, styles, owners, engine)
+    } else {
+        let [owner] = owners else {
+            return Err(layout_failure(
+                "c114_fit_content_calc_text_owner_count",
+                Some(root.id().get()),
+                None,
+            ));
+        };
+        cyclic_fit_content_calc::prepare_render_input(snapshot, root, styles, *owner, engine)
+    }
 }
 
 pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
@@ -77,6 +91,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         return Ok(Some(input));
     }
     if let Some(input) = flex_span::prepare(snapshot, root, styles)? {
+        return Ok(Some(input));
+    }
+    if let Some(input) = overlapping_spans::prepare(snapshot, root, styles)? {
         return Ok(Some(input));
     }
     if let Some(input) = cyclic_fit_content_calc::prepare(snapshot, root, styles)? {
