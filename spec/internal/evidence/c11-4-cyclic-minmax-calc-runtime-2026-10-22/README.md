@@ -35,6 +35,7 @@ small-limit 장면의 item은 9px, root는 10px이다. root 기준 (5,5)의 item
 - iOS fixture 앱은 ios-fixture-build-final.log의 tools/build-ios-sim.sh 성공 뒤 설치했다. 이 로그의 앱 실행 파일 hash가 iOS simulator.json과 일치한다.
 - 고정 scene matrix는 독립 CSS Grid 2025 CRD 계산 및 Chrome 156 관측과 비교했다. 사전 비교 근거는 ../c11-4-cyclic-minmax-calc-precomparison-2026-10-22/README.md에 있다.
 - 통과한 focused 검사는 [style-to-layout 네 scene frame/track](./rust-style-test.log), [runtime typed scene allowlist](./rust-runtime-test.log), [FFI 네 scene allowlist](./rust-ffi-test.log), fixture module boundary, rustfmt, Node syntax, workspace Clippy 및 세 feature 대상 Clippy다. Android/iOS fixture build는 [Android APK](./android-apk-build-pass3.log)와 [최종 iOS build](./ios-fixture-build-final.log)에 기록했다.
+- PR #487 최종 diff는 별도 실패 관점 30개로 검토했고 blocking finding이 없다. [PR diff review](./pr-diff-review-30.md).
 - PR #487 screenshot 링크는 첫 검사에서 잘못 입력한 commit ref 때문에 0×0으로 깨졌다. 실제 head SHA로 고친 뒤 Agent Browser에서 Android/iOS 이미지를 각각 1080×2400, 1206×2622로 로드했다. 작업 namespace와 네 browser session을 닫았고, 사후 session/process 목록은 비어 있다. [검증 결과와 URL](./agent-browser-pr487-images.json).
 - 기본 Rust release static archive target/release/deps/libspinon_ffi-4d40ecba4f9adc56.a는 SHA-256 44af952c38f322c5554bd70e812fcf5f9c3484e6e25dee9708f934255c94d32e이며 새 scene marker가 없다. fixture-test archive target/release/deps/libspinon_ffi-4c30e1cb2f929eca.a는 SHA-256 c1029d27140577abdf77ef6e513b2d4212c376c3878a26b6bec71fd820b5c6d3이며 marker가 있다. artifact 경계 기록은 static archive의 문자열 검사다. 최종 제품 APK/IPA 전체의 fixture 제외나 배포 크기 검증으로 확대 해석하지 않는다.
 

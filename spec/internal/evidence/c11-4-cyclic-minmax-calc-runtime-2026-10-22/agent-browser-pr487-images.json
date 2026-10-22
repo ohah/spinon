@@ -15,10 +15,20 @@
       "pr487",
       "pr487-fresh",
       "android-image",
-      "ios-image"
+      "ios-image",
+      "pr487-final"
     ],
     "namespaceSessionsAfterClose": [],
     "agentBrowserProcessesAfterClose": []
+  },
+  "finalPrPageCheck": {
+    "bodySections": [
+      "변경한 항목",
+      "명세와 동작 근거",
+      "남은 범위"
+    ],
+    "checkboxStates": [true, false, true, true, true],
+    "imageNaturalSizesMatched": true
   },
   "images": [
     {
