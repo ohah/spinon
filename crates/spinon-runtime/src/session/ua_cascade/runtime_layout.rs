@@ -546,15 +546,27 @@ where
                 mixed_input.intrinsic_sizes.clone(),
             )
         } else if let Some(mixed_input) = &c11_4_mixed_input {
-            spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_and_intrinsic_sizes(
-                &request.snapshot,
-                root,
-                styles.clone(),
-                request.viewport,
-                &mixed_input.paragraph_styles,
-                &mixed_input.engine,
-                mixed_input.intrinsic_sizes.clone(),
-            )
+            if mixed_input.allow_two_axis_root_intrinsic {
+                spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_and_intrinsic_sizes_and_two_axis_grid_fixture(
+                    &request.snapshot,
+                    root,
+                    styles.clone(),
+                    request.viewport,
+                    &mixed_input.paragraph_styles,
+                    &mixed_input.engine,
+                    mixed_input.intrinsic_sizes.clone(),
+                )
+            } else {
+                spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_and_intrinsic_sizes(
+                    &request.snapshot,
+                    root,
+                    styles.clone(),
+                    request.viewport,
+                    &mixed_input.paragraph_styles,
+                    &mixed_input.engine,
+                    mixed_input.intrinsic_sizes.clone(),
+                )
+            }
         } else if let Some(text_input) = &c11_4_anonymous_text_input {
             spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs(
                 &request.snapshot,

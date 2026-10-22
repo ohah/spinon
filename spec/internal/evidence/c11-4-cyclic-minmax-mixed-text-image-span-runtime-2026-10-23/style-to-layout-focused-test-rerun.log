@@ -1,0 +1,9 @@
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.71s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-7f78b653f6fb953d)
+
+running 2 tests
+test c11_4_track_sizing_areas_tests::cyclic_minmax_mixed_text_image_span::replaced_image_start_alignment_requires_the_fixed_fixture_projection ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_mixed_text_image_span::cyclic_minmax_mixed_text_image_span_matches_fixed_geometry_and_trace ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 228 filtered out; finished in 0.02s

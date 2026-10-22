@@ -50,6 +50,7 @@ pub(super) fn project_styles(
     snapshot: &ComputedStyleSnapshot,
     allow_implicit_named_lines: bool,
     blockify_c11_4_anonymous_grid_images: bool,
+    allow_c11_4_replaced_grid_item_align_self_start: bool,
 ) -> Result<ProjectedStyles, StyleLayoutError> {
     validate_fixed_ancestor_effects(tree, root, snapshot)?;
     let mut output = BTreeMap::new();
@@ -590,10 +591,17 @@ pub(super) fn project_styles(
         }
         if let Some(nodes) = grid_nodes.as_ref() {
             if nodes.grid_containers.contains(&node) {
-                reject_grid_alignment(element, snapshot.profile, true, false)?;
+                reject_grid_alignment(element, snapshot.profile, true, false, false)?;
             }
             if nodes.grid_items.contains(&node) {
-                reject_grid_alignment(element, snapshot.profile, false, true)?;
+                reject_grid_alignment(
+                    element,
+                    snapshot.profile,
+                    false,
+                    true,
+                    supports_grid_image_ratio_transfer
+                        && allow_c11_4_replaced_grid_item_align_self_start,
+                )?;
             }
         }
         if style.display == spinon_layout::LayoutDisplay::Grid {
@@ -798,6 +806,7 @@ fn reject_grid_alignment(
     profile: ComputedStyleProfile,
     is_grid_container: bool,
     is_grid_item: bool,
+    is_replaced_grid_item: bool,
 ) -> Result<(), StyleLayoutError> {
     let mut unsupported = Vec::new();
     if is_grid_container {
@@ -818,6 +827,11 @@ fn reject_grid_alignment(
             && !(is_grid_container
                 && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
                 && matches!(property, "align-content" | "justify-content")
+                && value == "start")
+            && !(is_grid_item
+                && is_replaced_grid_item
+                && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+                && property == "align-self"
                 && value == "start")
         {
             return Err(StyleLayoutError::UnsupportedComputedValue {

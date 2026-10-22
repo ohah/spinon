@@ -4,8 +4,8 @@
 
 Chrome 156 Agent Browser에서 [고정 HTML](../../../../tests/fixtures/css/c11/grid-cyclic-minmax-mixed-text-image-span-c114-precomparison.html)을 열었다. Viewport는 1280×633 CSS px, DPR 1이다. `Ahem.ttf` loaded 및 PNG image decode 완료를 확인했다. Browser와 asset 환경은 [browser-environment.json](./browser-environment.json)에 있다.
 
-- HTML SHA-256: `e54b658f1ee5d0ed390b39b761fd0eeea70048a7a9d7e023c814800034e7b5c3`
-- Image natural size: 24×16px; CSS `width`/`min-width` 40px and `height:auto`; SHA-256 `5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2`
+- HTML SHA-256: `428eec9fdd43ea21a35cfa345c1ad9019a329dcd8a9137f4991357e899ec11d9`
+- Image natural size: 24×16px; CSS `width`/`min-width` 40px, `height:auto`, `align-self:start`; SHA-256 `5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2`
 - Ahem 400 10px/10px SHA-256: `b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448`
 - Chrome screenshot SHA-256: `7573ceea827f9916dfb6f1a0fb0cb385abdf1a9fb7970ead0f33e817e9a28819`
 
@@ -22,10 +22,10 @@ Image의 natural 24×16 ratio와 CSS width/min-width 40px는 `80/3px` block cont
 | intrinsic forward/reverse | `[15.671875,15.671875,15.65625]` | `[12.328125,12.328125]` | `55×30.65625px` | `20,30` | `40×26.65625px` | `50,50` |
 | definite forward/reverse | `[12,12,12]` | `[19,19]` | `44×44px` | `20,10,10` | `40×26.65625px` | `20,20,20,20` |
 
-전체 CSSOM observation과 node-keyed frames는 [chrome156-observation.json](./chrome156-observation.json)에 있다. Rational image/row values와 CSSOM fractional values는 1/64 CSS px 범위로 비교한다. Browser observation은 규범 기대값에 사용하지 않았다.
+전체 CSSOM observation과 node-keyed frames는 [chrome156-observation.json](./chrome156-observation.json)에 있다. HTML에 `align-self:start`를 명시한 뒤 Agent Browser에서 다시 실행했고, 새 observation은 이전 네 장면과 동일하며 viewport/font/image decode도 확인했다([재관측 JSON](./chrome156-observation-pass2.json), [console](./chrome-console-pass2.txt), [page errors](./chrome-errors-pass2.txt)). 새 screenshot의 SHA-256은 기존 screenshot과 같은 `7573ceea827f9916dfb6f1a0fb0cb385abdf1a9fb7970ead0f33e817e9a28819`이다. Rational image/row values와 CSSOM fractional values는 1/64 CSS px 범위로 비교한다. Browser observation은 규범 기대값에 사용하지 않았다.
 
-![Chrome Agent Browser 사전 비교](./chrome-agent-browser-precomparison.png)
+![Chrome Agent Browser 사전 비교](./chrome-agent-browser-precomparison-pass2.png)
 
 ## 범위
 
-이는 Chrome layout observation이다. Spinon Runtime, Android/iOS, PixelCopy, Metal drawable, artifact boundary, WPT 또는 일반 CSS admission은 아직 검증하지 않았다. 그 검증은 [집중 계획](../../../../plan/c11-4-cyclic-minmax-mixed-text-image-span.md)의 구현 단계에서 수행한다.
+이 문서는 Chrome layout precomparison만 기록한다. Runtime과 두 simulator의 검증은 [별도 실행 근거](../c11-4-cyclic-minmax-mixed-text-image-span-runtime-2026-10-23/README.md)에 두며, artifact boundary·WPT·일반 CSS admission은 그 근거가 추가되기 전까지 미검증이다.

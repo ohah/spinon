@@ -110,6 +110,10 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "cyclic-minmax-replaced-image-span-intrinsic-reverse",
     "cyclic-minmax-replaced-image-span-definite-forward",
     "cyclic-minmax-replaced-image-span-definite-reverse",
+    "cyclic-minmax-calc-mixed-text-image-span-intrinsic-forward",
+    "cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse",
+    "definite-minmax-calc-mixed-text-image-span-forward",
+    "definite-minmax-calc-mixed-text-image-span-reverse",
     "grid-gap-definite-percent", "grid-gap-cyclic-percent",
     "grid-gap-definite-calc", "grid-gap-cyclic-calc",
     "grid-gap-cyclic-percent-min-basis", "grid-gap-cyclic-calc-min-basis",
@@ -194,6 +198,12 @@ private let c114CyclicMinmaxReplacedImageSpanSceneIDs: Set<String> = [
     "cyclic-minmax-replaced-image-span-intrinsic-reverse",
     "cyclic-minmax-replaced-image-span-definite-forward",
     "cyclic-minmax-replaced-image-span-definite-reverse",
+]
+private let c114CyclicMinmaxMixedTextImageSpanSceneIDs: Set<String> = [
+    "cyclic-minmax-calc-mixed-text-image-span-intrinsic-forward",
+    "cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse",
+    "definite-minmax-calc-mixed-text-image-span-forward",
+    "definite-minmax-calc-mixed-text-image-span-reverse",
 ]
 private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -286,6 +296,7 @@ private func c114IsMixedCrossAxisSpanGroupsScene(_ sceneID: String) -> Bool {
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) { return "" }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) {
         return sceneID.contains("-intrinsic-")
             ? "width=29,height=20" : "width=84,height=84"
@@ -498,6 +509,7 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) { return "" }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) { return "" }
     if c114IsCrossAxisSpanGroupsScene(sceneID)
         || c114IsMixedCrossAxisSpanGroupsScene(sceneID) { return "" }
@@ -678,8 +690,53 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     }
 }
 
+private func c114ExpectedCyclicMinmaxMixedTextImageSpanInputs(
+    _ sceneID: String, report: String
+) -> Bool {
+    guard let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let revision = diagnostics["layoutInputRevision"] as? [String: Any],
+          (revision["intrinsicSize"] as? Int) == 1,
+          let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
+          inputs.count == 3 else { return false }
+    let reversed = sceneID.hasSuffix("-reverse")
+    let nodes = [2, 4, 5]
+    let kinds = ["text", "replaced", "text"]
+    let textMetrics = reversed
+        ? [[20, 40, 110, 10], [], [20, 30, 60, 10]]
+        : [[20, 30, 60, 10], [], [20, 40, 110, 10]]
+    for (index, input) in inputs.enumerated() {
+        guard (input["grid"] as? Int) == 1,
+              (input["node"] as? Int) == nodes[index],
+              (input["sourceOrder"] as? Int) == index,
+              let source = input["source"] as? [String: Any],
+              (source["kind"] as? String) == kinds[index] else { return false }
+        if kinds[index] == "text" {
+            let expected = textMetrics[index]
+            guard (source["fontRegistryRevision"] as? Int) == 1,
+                  (source["minContent"] as? NSNumber)?.doubleValue == Double(expected[0]),
+                  (source["minContentHeight"] as? NSNumber)?.doubleValue == Double(expected[1]),
+                  (source["maxContent"] as? NSNumber)?.doubleValue == Double(expected[2]),
+                  (source["maxContentHeight"] as? NSNumber)?.doubleValue == Double(expected[3]),
+                  let textSources = input["textSources"] as? [Any], textSources.isEmpty else {
+                return false
+            }
+        } else {
+            guard let natural = source["natural"] as? [String: Any],
+                  (natural["width"] as? NSNumber)?.doubleValue == 24,
+                  (natural["height"] as? NSNumber)?.doubleValue == 16,
+                  natural.keys.contains("aspectRatio"), natural["aspectRatio"] is NSNull else {
+                return false
+            }
+        }
+    }
+    return c114CyclicMinmaxMixedTextImageSpanTraceMatches(sceneID, diagnostics: diagnostics)
+}
+
 private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) {
+        return c114ExpectedCyclicMinmaxMixedTextImageSpanInputs(sceneID, report: report)
+    }
     if c114IsMixedCrossAxisSpanGroupsScene(sceneID) {
         return c114ExpectedMixedCrossAxisSpanGroupIntrinsicInputs(sceneID, report: report)
     }
@@ -865,6 +922,9 @@ private func c114ExpectedMixedCrossAxisSpanGroupIntrinsicInputs(
 }
 
 private func c114ExpectedImageIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
+    if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) {
+        return c114ExpectedCyclicMinmaxMixedTextImageSpanInputs(sceneID, report: report)
+    }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) {
         guard let diagnostics = c114GridTrackSizingDiagnostics(report),
               let revision = diagnostics["layoutInputRevision"] as? [String: Any],
@@ -1567,9 +1627,130 @@ private func c114ImageMultiSpanTracksMatch(
         && zip(sizes, expected).allSatisfy { abs($0.0 - $0.1) <= 0.0001 }
 }
 
+private func c114CyclicMinmaxMixedTextImageSpanTraceMatches(
+    _ sceneID: String, diagnostics: [String: Any]
+) -> Bool {
+    let intrinsic = sceneID.contains("-intrinsic-")
+    let reversed = sceneID.hasSuffix("-reverse")
+    let expectedAxes = intrinsic ? ["Columns", "Rows", "Columns", "Rows"]
+        : ["Columns", "Rows", "Rows"]
+    let columns = intrinsic ? [15.671875, 15.671875, 15.65625] : [12.0, 12.0, 12.0]
+    let rows = intrinsic ? [37.0 / 3.0, 37.0 / 3.0] : [19.0, 19.0]
+    guard let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
+          traces.count == 1,
+          (traces[0]["grid"] as? Int) == 1,
+          let passes = traces[0]["passes"] as? [[String: Any]],
+          passes.count == expectedAxes.count else { return false }
+
+    func stageSizes(_ pass: [String: Any], _ stageName: String) -> [Double]? {
+        guard let stages = pass["stages"] as? [[String: Any]],
+              let stage = stages.first(where: { ($0["stage"] as? String) == stageName }),
+              let tracks = stage["tracks"] as? [[String: Any]] else { return nil }
+        return tracks.compactMap { track in
+            guard (track["gutter"] as? Bool) == false,
+                  (track["collapsed"] as? Bool) == false,
+                  let size = track["baseSize"] as? NSNumber else { return nil }
+            return size.doubleValue
+        }
+    }
+    func matches(_ actual: [Double]?, _ expected: [Double]) -> Bool {
+        guard let actual, actual.count == expected.count else { return false }
+        return zip(actual, expected).allSatisfy { abs($0.0 - $0.1) <= 1.0 / 64.0 }
+    }
+    for (index, pass) in passes.enumerated() {
+        let axis = expectedAxes[index]
+        let expectedTracks = intrinsic && index == 0
+            ? [9.0, 19.0, 19.0]
+            : axis == "Columns" ? columns : rows
+        guard (pass["axis"] as? String) == axis,
+              let stages = pass["stages"] as? [[String: Any]],
+              let finalStage = stages.last?["stage"] as? String,
+              matches(stageSizes(pass, finalStage), expectedTracks) else { return false }
+        let spans = stages.compactMap { stage -> Int? in
+            guard let name = stage["stage"] as? String,
+                  let range = name.range(of: #"^IntrinsicItemBatch \{ span: (\d+),"#,
+                    options: .regularExpression) else { return nil }
+            let digits = name[range].split(separator: " ").last?
+                .split(separator: ",").first
+            return digits.flatMap { Int($0) }
+        }
+        let expectedSpans = axis == "Columns" ? [2, 3] : [2]
+        guard spans == expectedSpans else { return false }
+        let initial: [Double]
+        if intrinsic {
+            switch index {
+            case 0: initial = [2, 2, 2]
+            case 1: initial = [2, 2]
+            case 2: initial = [7.1, 7.1, 7.1]
+            default: initial = [14.0 / 3.0, 14.0 / 3.0]
+            }
+        } else {
+            switch index {
+            case 0: initial = [6, 6, 6]
+            case 1: initial = [2, 2]
+            default: initial = [6, 6]
+            }
+        }
+        guard matches(stageSizes(pass, "Initialize"), initial) else { return false }
+        if intrinsic && index == 0 {
+            guard matches(stageSizes(pass,
+                "IntrinsicItemBatch { span: 2, crosses_flexible_track: false }"), [9, 19, 19]),
+                  matches(stageSizes(pass,
+                "IntrinsicItemBatch { span: 3, crosses_flexible_track: false }"), [9, 19, 19]) else {
+                return false
+            }
+        }
+        if intrinsic && index == 1,
+           !matches(stageSizes(pass,
+             "IntrinsicItemBatch { span: 2, crosses_flexible_track: false }"),
+             [37.0 / 3.0, 37.0 / 3.0]) { return false }
+    }
+
+    let nodes = [2, 4, 5]
+    let itemSpans = reversed ? [3, 2, 2] : [2, 2, 3]
+    let columnMinimum = intrinsic ? [20.0, 40, 20] : [0.0, 40, 0]
+    let rowMinimum = intrinsic ? [20.0, 80.0 / 3.0, 20] : [0.0, 80.0 / 3.0, 0]
+    let columnMinContent = [20.0, 40, 20]
+    let rowMinContent = intrinsic ? [20.0, 80.0 / 3.0, 20]
+        : reversed ? [40.0, 80.0 / 3.0, 30] : [30.0, 80.0 / 3.0, 40]
+    let columnMaxContent = reversed ? [110.0, 40, 60] : [60.0, 40, 110]
+    let rowMaxContent = intrinsic ? [20.0, 80.0 / 3.0, 20]
+        : reversed ? [40.0, 80.0 / 3.0, 30] : [30.0, 80.0 / 3.0, 40]
+    for axis in ["Columns", "Rows"] {
+        let axisPasses = passes.filter { ($0["axis"] as? String) == axis }
+        let minimum = axis == "Columns" ? columnMinimum : rowMinimum
+        let minContent = axis == "Columns" ? columnMinContent : rowMinContent
+        let maxContent = axis == "Columns" ? columnMaxContent : rowMaxContent
+        for index in nodes.indices {
+            let span = axis == "Columns" ? itemSpans[index] : 2
+            for (kind, value) in [("Minimum", minimum[index]),
+                                  ("MinContent", minContent[index]),
+                                  ("MaxContent", maxContent[index])] {
+                let matched = axisPasses.contains { pass in
+                    guard let contributions = pass["contributions"] as? [[String: Any]] else {
+                        return false
+                    }
+                    return contributions.contains { contribution in
+                        let actual = (contribution["value"] as? NSNumber)?.doubleValue ?? .nan
+                        return (contribution["item"] as? Int) == nodes[index]
+                            && (contribution["span"] as? Int) == span
+                            && (contribution["kind"] as? String) == kind
+                            && abs(actual - value) <= 1.0 / 64.0
+                    }
+                }
+                if !matched { return false }
+            }
+        }
+    }
+    return true
+}
+
 private func c114ImageTrackSizingTraceMatches(
     _ sceneID: String, diagnostics: [String: Any]
 ) -> Bool {
+    if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) {
+        return c114CyclicMinmaxMixedTextImageSpanTraceMatches(sceneID, diagnostics: diagnostics)
+    }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) {
         return c114CyclicMinmaxReplacedImageSpanTraceMatches(sceneID, diagnostics: diagnostics)
     }
@@ -1854,6 +2035,7 @@ private func c114ImageTrackPassMatches(
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) { return nil }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) {
         let intrinsic = sceneID.contains("-intrinsic-")
         let width = intrinsic ? 29 : 84
@@ -2237,6 +2419,9 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
 private func c114ExpectedCrossAxisSpanGroupFramesMatch(
     _ sceneID: String, report: String
 ) -> Bool {
+    if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) {
+        return c114ExpectedCyclicMinmaxMixedTextImageSpanFramesMatch(sceneID, report: report)
+    }
     if c114IsMixedCrossAxisSpanGroupsScene(sceneID) {
         return c114ExpectedMixedCrossAxisSpanGroupFramesMatch(sceneID, report: report)
     }
@@ -2253,6 +2438,43 @@ private func c114ExpectedCrossAxisSpanGroupFramesMatch(
     let expectedItems: [(Int, [Double])] = reversed ? [(2, itemB), (4, itemA)]
         : [(2, itemA), (4, itemB)]
     let expected: [(Int, [Double])] = [(1, [0, 0, rootWidth, rootHeight])] + expectedItems
+    guard let marker = report.range(of: "node_frames_css_px=["),
+          let end = report[marker.upperBound...].firstIndex(of: "]") else { return false }
+    let frames = report[marker.upperBound..<end].split(separator: ";")
+    guard frames.count == expected.count else { return false }
+    for (index, frame) in frames.enumerated() {
+        let fields = frame.split(separator: ",")
+        guard fields.count == 5 else { return false }
+        let identity = fields[0].split(separator: ":node=")
+        guard identity.count == 2,
+              Int(identity[0]) == index,
+              Int(identity[1]) == expected[index].0 else { return false }
+        let prefixes = ["x=", "y=", "width=", "height="]
+        let values = (0..<4).compactMap { property -> Double? in
+            guard fields[property + 1].hasPrefix(prefixes[property]) else { return nil }
+            return Double(fields[property + 1].dropFirst(prefixes[property].count))
+        }
+        guard values.count == 4,
+              zip(values, expected[index].1).allSatisfy({ abs($0.0 - $0.1) <= 1.0 / 64.0 }) else {
+            return false
+        }
+    }
+    return true
+}
+
+private func c114ExpectedCyclicMinmaxMixedTextImageSpanFramesMatch(
+    _ sceneID: String, report: String
+) -> Bool {
+    let intrinsic = sceneID.contains("-intrinsic-")
+    let reversed = sceneID.hasSuffix("-reverse")
+    let root: [Double] = [0, 0, intrinsic ? 55 : 44, intrinsic ? 92.0 / 3.0 : 44]
+    let imageX = intrinsic ? 19.671875 : 16.0
+    let itemA: [Double] = [2, 2, intrinsic ? 33.34375 : 26, intrinsic ? 80.0 / 3.0 : 40]
+    let itemB: [Double] = [imageX, 2, 40, 80.0 / 3.0]
+    let itemC: [Double] = [2, 2, intrinsic ? 51 : 40, intrinsic ? 80.0 / 3.0 : 40]
+    let expected: [(Int, [Double])] = [(1, root)] + (reversed
+        ? [(2, itemC), (4, itemB), (5, itemA)]
+        : [(2, itemA), (4, itemB), (5, itemC)])
     guard let marker = report.range(of: "node_frames_css_px=["),
           let end = report[marker.upperBound...].firstIndex(of: "]") else { return false }
     let frames = report[marker.upperBound..<end].split(separator: ";")
@@ -2737,6 +2959,7 @@ private func c114GapNodeFrames(
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) { return 4 }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) { return 4 }
     if c114IsMixedCrossAxisSpanGroupsScene(sceneID) { return 4 }
     if c114IsCrossAxisSpanGroupsScene(sceneID) { return 3 }
@@ -3593,6 +3816,18 @@ private struct C111MetalPixelRun {
                 ("\(sceneID)-right-border", rootID, rootWidth - 1, borderY,
                  [240, 198, 116, 255]),
                 ("\(sceneID)-after-root", rootID, rootWidth, borderY, [0, 0, 0, 255]),
+            ]
+        case "cyclic-minmax-calc-mixed-text-image-span-intrinsic-forward",
+             "cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse":
+            return false
+        case "definite-minmax-calc-mixed-text-image-span-forward",
+             "definite-minmax-calc-mixed-text-image-span-reverse":
+            let rootID = "c114-\(sceneID)-grid"
+            expectedSamples = [
+                ("\(sceneID)-top-border", rootID, 8, 0, [240, 198, 116, 255]),
+                ("\(sceneID)-image-b-overflow", "c114-\(sceneID)-item-b", 50, 6,
+                 [0, 255, 64, 255]),
+                ("\(sceneID)-clear-past-image-b", rootID, 58, 6, [0, 0, 0, 255]),
             ]
         case "anonymous-runs-two-images-forward", "two-images-anonymous-runs-reversed",
              "two-anonymous-runs-three-images-forward", "three-images-two-anonymous-runs-reversed":

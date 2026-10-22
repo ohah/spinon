@@ -541,6 +541,7 @@ fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraph
             allow_c11_4_anonymous_grid_text_items: true,
             blockify_c11_4_anonymous_grid_images: false,
             allow_c11_4_nested_grid_two_axis_intrinsics,
+            allow_c11_4_replaced_grid_item_align_self_start: false,
         },
     )
 }
@@ -573,6 +574,44 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_and_i
         true,
         Some(intrinsic_sizes),
         Some((paragraph_styles, &inline_run_styles, text_engine)),
+    )
+}
+
+/// C11.4 고정 direct-child Grid fixture에서 text/image와 양 축 intrinsic sizing을 함께 계산합니다.
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_and_intrinsic_sizes_and_two_axis_grid_fixture(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
+    text_engine: &TextLayoutEngine,
+    intrinsic_sizes: LayoutIntrinsicSizeSnapshot,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    if computed_styles.profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
+        return Err(StyleLayoutError::UnsupportedProfile {
+            profile: format!("{:?}", computed_styles.profile),
+        });
+    }
+    if computed_styles.viewport != viewport {
+        return Err(StyleLayoutError::SnapshotMismatch { field: "viewport" });
+    }
+    let inline_run_styles = BTreeMap::new();
+    compute_layout_from_styles_with_text_and_grid_options(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        Some(intrinsic_sizes),
+        Some((paragraph_styles, &inline_run_styles, text_engine)),
+        StyleLayoutProjectionOptions {
+            reject_cascade_diagnostics: true,
+            allow_implicit_named_lines: false,
+            allow_c11_4_anonymous_grid_text_items: true,
+            blockify_c11_4_anonymous_grid_images: false,
+            allow_c11_4_nested_grid_two_axis_intrinsics: true,
+            allow_c11_4_replaced_grid_item_align_self_start: true,
+        },
     )
 }
 
@@ -669,6 +708,7 @@ fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_anonymous_text
             blockify_c11_4_anonymous_grid_images: true,
             allow_c11_4_nested_grid_two_axis_intrinsics: projection_input
                 .allow_two_axis_nested_grid,
+            allow_c11_4_replaced_grid_item_align_self_start: false,
         },
     )
 }
@@ -735,6 +775,7 @@ pub fn compute_runtime_style_layout_with_intrinsic_size_snapshot_for_c11_4_two_a
             allow_c11_4_anonymous_grid_text_items: false,
             blockify_c11_4_anonymous_grid_images: false,
             allow_c11_4_nested_grid_two_axis_intrinsics: true,
+            allow_c11_4_replaced_grid_item_align_self_start: false,
         },
     )
 }
@@ -852,6 +893,7 @@ fn compute_layout_from_styles_with_grid_options(
             allow_c11_4_anonymous_grid_text_items: false,
             blockify_c11_4_anonymous_grid_images: false,
             allow_c11_4_nested_grid_two_axis_intrinsics: false,
+            allow_c11_4_replaced_grid_item_align_self_start: false,
         },
     )
 }
@@ -878,6 +920,7 @@ fn compute_layout_from_styles_with_text(
             allow_c11_4_anonymous_grid_text_items: false,
             blockify_c11_4_anonymous_grid_images: false,
             allow_c11_4_nested_grid_two_axis_intrinsics: false,
+            allow_c11_4_replaced_grid_item_align_self_start: false,
         },
     )
 }
@@ -889,6 +932,7 @@ struct StyleLayoutProjectionOptions {
     allow_c11_4_anonymous_grid_text_items: bool,
     blockify_c11_4_anonymous_grid_images: bool,
     allow_c11_4_nested_grid_two_axis_intrinsics: bool,
+    allow_c11_4_replaced_grid_item_align_self_start: bool,
 }
 
 fn compute_layout_from_styles_with_text_and_grid_options(
@@ -997,6 +1041,7 @@ fn compute_layout_from_styles_with_text_and_grid_options(
         &computed_styles,
         options.allow_implicit_named_lines,
         options.blockify_c11_4_anonymous_grid_images,
+        options.allow_c11_4_replaced_grid_item_align_self_start,
     )?;
     validate_intrinsic_image_inputs(
         snapshot,

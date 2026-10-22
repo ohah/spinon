@@ -1,0 +1,14 @@
+✔ fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다 (0.76925ms)
+✔ CSS reference 도구가 삭제된 Rust fixture 경로를 참조하지 않는다 (25.555625ms)
+✔ 이동한 fixture 구현은 정해진 fixtures 모듈 경로에 있다 (0.179875ms)
+✔ 작업별 FFI fixture 모듈은 runtime 소스 루트에 남지 않는다 (1.2625ms)
+✔ 앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리된다 (15.3235ms)
+✔ C15.3 glyph paint 앱 adapter와 고정 글꼴은 opt-in feature 경계에 묶인다 (4.562125ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 50.981459

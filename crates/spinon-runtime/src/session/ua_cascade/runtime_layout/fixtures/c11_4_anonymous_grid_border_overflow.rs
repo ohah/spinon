@@ -286,6 +286,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         paragraph_styles: BTreeMap::from([(root.id(), anonymous_paragraph_style())]),
         engine,
         intrinsic_sizes,
+        allow_two_axis_root_intrinsic: false,
     }))
 }
 
