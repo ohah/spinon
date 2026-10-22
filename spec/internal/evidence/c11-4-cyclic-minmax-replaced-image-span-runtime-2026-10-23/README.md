@@ -51,5 +51,5 @@
 
 ## 실패 관점 검토와 상태 경계
 
-- [runtime 실패 경로 검토 20개](./runtime-code-review-20.md), [구현 diff 검토 20개](./pr-diff-review-20.md)와 [PR diff 적대적 검토 30개](./pr-review-30.md)를 계획 검토와 분리했다. 앞선 검토에서 root min/max/aspect-ratio style 검증 및 Android host 계약 누락을 찾아 fail-closed 검증을 보강했다. 필수 CI와 merge는 남아 있다.
-- 공식 `spec/STATUS.md`, C11.4 checkbox와 완료 수 `77/213`은 바꾸지 않았다. 더 넓은 C11.4 scene과 임의 CSS/image 입력, 실기기 및 전체 제품 범위는 남아 있다. 이 slice의 PR 상태는 GitHub에서 추적하며, 이 변경의 병합만으로 상위 상태를 완료 처리하지 않는다.
+- [runtime 실패 경로 검토 20개](./runtime-code-review-20.md), [구현 diff 검토 20개](./pr-diff-review-20.md)와 [PR diff 적대적 검토 30개](./pr-review-30.md)를 계획 검토와 분리했다. 앞선 검토에서 root min/max/aspect-ratio style 검증 및 Android host 계약 누락을 찾아 fail-closed 검증을 보강했다. 구현 PR [#520](https://github.com/ohah/spinon/pull/520)은 2026-10-23 02:21:48 KST Rebase and merge되어 `861f69862de34858d522b380f25b52dc5310ef5d`를 남겼다. 병합 시 PR check rollup은 비었고 main required status check은 설정되어 있지 않았다.
+- 더 넓은 C11.4 scene과 임의 CSS/image 입력, 실기기 및 전체 제품 범위는 남아 있다. 이 slice는 C11.4 checkbox와 공식 `77/213`을 변경하지 않으며 상위 상태를 완료 처리하지 않는다.

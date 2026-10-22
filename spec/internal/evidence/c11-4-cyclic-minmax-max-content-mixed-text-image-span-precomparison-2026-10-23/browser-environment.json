@@ -1,0 +1,36 @@
+{
+  "devicePixelRatio": 1,
+  "fontReady": true,
+  "image": [
+    {
+      "complete": true,
+      "currentSrc": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/resources/c14-1-png-basic.png",
+      "naturalHeight": 16,
+      "naturalWidth": 24
+    },
+    {
+      "complete": true,
+      "currentSrc": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/resources/c14-1-png-basic.png",
+      "naturalHeight": 16,
+      "naturalWidth": 24
+    },
+    {
+      "complete": true,
+      "currentSrc": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/resources/c14-1-png-basic.png",
+      "naturalHeight": 16,
+      "naturalWidth": 24
+    },
+    {
+      "complete": true,
+      "currentSrc": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/resources/c14-1-png-basic.png",
+      "naturalHeight": 16,
+      "naturalWidth": 24
+    }
+  ],
+  "url": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/css/c11/grid-cyclic-minmax-max-content-mixed-text-image-span-c114-precomparison.html",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "height": 633,
+    "width": 1280
+  }
+}

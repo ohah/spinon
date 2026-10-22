@@ -1,0 +1,94 @@
+{
+  "schema": "spinon.c11-4-cyclic-minmax-max-content-mixed-text-image-span-precomparison.v1",
+  "specification": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/",
+  "sections": ["5.2", "7.2.1", "11.3", "11.5", "11.5.1", "11.6"],
+  "oracleIndependence": "Rational expectations are derived from CSS Grid contribution sizing and the fixed Ahem/PNG inputs. Chrome measurements are separate observations.",
+  "sourceHashes": {
+    "html": "2cfc58ca7db363371d92801f4e4ded515dd48ec39872486c58a99ac9e7ceaa7d",
+    "png": "5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2",
+    "ahem": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448"
+  },
+  "inputs": {
+    "grid": {
+      "columns": 3,
+      "rows": 2,
+      "track": "minmax(calc(10% + 2px), max-content)",
+      "columnGapPx": 2,
+      "rowGapPx": 2,
+      "borderEachSidePx": 2,
+      "boxSizing": "content-box",
+      "height": "max-content"
+    },
+    "font": {"family": "Ahem", "weight": 400, "sizePx": 10, "lineHeightPx": 10, "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448"},
+    "image": {"naturalSizePx": [24, 16], "cssWidthPx": 40, "cssMinWidthPx": 40, "cssHeight": "auto", "naturalRatio": "3/2", "blockContributionPx": "80/3"},
+    "items": {
+      "A": {"kind": "direct-text", "text": "AA A A", "columns": [1, 3], "rows": [1, 3], "minContentInlinePx": 20, "maxContentInlinePx": 60},
+      "B": {"kind": "direct-replaced-image", "columns": [2, 4], "rows": [1, 3], "minContentInlinePx": 40, "maxContentInlinePx": 40},
+      "C": {"kind": "direct-text", "text": "AA AA AA AA", "columns": [1, 4], "rows": [1, 3], "minContentInlinePx": 20, "maxContentInlinePx": 110}
+    }
+  },
+  "independentDerivation": {
+    "maxContentScene": {
+      "cyclicPercentageDuringIntrinsicSizing": "Treat as auto while retaining the 2px absolute term.",
+      "span2MinContentBasesAfterSameSpanMaximumPx": [9, 19, 19],
+      "span2AndSpan3MaxContentSizing": "A and B use max-content inline contributions 60px and 40px. C contributes 110px across all three columns. The track contribution calculation is the same as the prior three-text max-content fixture because B's fixed inline contribution is 40px in either source kind.",
+      "innerContentWidthPx": 110,
+      "resolvedColumnMinimumPx": "10% * 110 + 2 = 13",
+      "finalColumnsRationalPx": ["107/3", "125/3", "86/3"],
+      "imageBlockContributionPx": "40 * 16 / 24 = 80/3",
+      "rowBaseCalculation": "Each row starts at 2px. The span-2 image contribution leaves (80/3 - 2px gutter - 4px bases) / 2 = 31/3px planned increase per row, so each row is 37/3px.",
+      "resolvedRowMinimumPx": "10% * (80/3) + 2 = 14/3",
+      "finalRowsRationalPx": ["37/3", "37/3"],
+      "innerContentSizeRationalPx": [110, "80/3"],
+      "borderBoxRationalPx": [114, "92/3"]
+    },
+    "definite40Control": {
+      "resolvedColumnMinimumPx": "10% * 40 + 2 = 6",
+      "columnsPx": [12, 12, 12],
+      "textLines": {"A": [20, 10, 10], "C": [20, 20, 20, 20]},
+      "innerContentHeightPx": 40,
+      "resolvedRowMinimumPx": "10% * 40 + 2 = 6",
+      "rowsPx": [19, 19],
+      "innerContentSizePx": [40, 40],
+      "borderBoxPx": [44, 44],
+      "imageFrameRootRelativePx": [16, 2, 40, "80/3"],
+      "imageOverflowBeyondRightBorderPx": 12
+    }
+  },
+  "expected": [
+    {
+      "scenes": ["max-content-forward", "max-content-reverse"],
+      "columnsRationalPx": ["107/3", "125/3", "86/3"],
+      "rowsRationalPx": ["37/3", "37/3"],
+      "innerContentSizeRationalPx": [110, "80/3"],
+      "borderBoxRationalPx": [114, "92/3"],
+      "itemFramesRootRelativeRationalOrExactPx": {
+        "A": [2, 2, "238/3", "80/3"],
+        "B": ["119/3", 2, 40, "80/3"],
+        "C": [2, 2, 110, "80/3"]
+      },
+      "textLineWidthsPx": {"A": [60], "C": [110]}
+    },
+    {
+      "scenes": ["definite-forward", "definite-reverse"],
+      "columnsPx": [12, 12, 12],
+      "rowsPx": [19, 19],
+      "innerContentSizePx": [40, 40],
+      "borderBoxPx": [44, 44],
+      "itemFramesRootRelativeRationalOrExactPx": {
+        "A": [2, 2, 26, 40],
+        "B": [16, 2, 40, "80/3"],
+        "C": [2, 2, 40, 40]
+      },
+      "textLineWidthsPx": {"A": [20, 10, 10], "C": [20, 20, 20, 20]},
+      "imageOverflowBeyondRightBorderPx": 12
+    }
+  ],
+  "toleranceCssPx": 0.015625,
+  "sourceOrderInvariant": ["track sizes", "item-keyed frames", "text line widths", "intrinsic contributions"],
+  "limitations": [
+    "Chrome 156 observation is not the source of independent expectations.",
+    "The HTML fixture does not establish Spinon runtime or mobile surface behavior.",
+    "The four fixed scenes do not establish general CSS admission, WPT conformance, or completion of C11.4."
+  ]
+}
