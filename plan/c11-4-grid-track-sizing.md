@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-10-23 auto-repeat + `grid-template-areas` line 결합 계획
+
+현재 C11.4 auto-repeat과 C11.3 template areas는 함께 사용하면 fail-closed다. [집중 계획](./c11-4-auto-repeat-template-areas.md)과 [Chrome 156/규범 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/README.md)는 area line aliases, authored line-name collision, area dimension의 template 이하·초과, `auto-fit` 빈 반복 및 gutter 차이를 13개 고정 scene으로 분리했다. 이는 계획만 완료했으며 구현/runtime 결과는 없다. C11.4 checkbox와 공식 `77/213`은 그대로 미완료다.
+
 ## 2026-10-23 auto-repeat line name 보존과 배치 · PR #530
 
 auto-repeat fragment의 바깥·반복 내부 line name과 expanded repeat 뒤 named placement를 보존했다. Chrome 156 fixed oracle의 bare/positive/negative occurrence, named span, auto-fit collapse, fixed neighbors, repeated two-track pattern, repeat boundary merging, row axis 8 scene을 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 검증했다. 구현 PR [#530](https://github.com/ohah/spinon/pull/530)은 Rebase and merge됐고 merge SHA는 `776810ad5b4bc097d3d18c1871161471fed07974`다. missing-name implicit fallback은 해당 변경의 제외 범위였으며 다음 독립 계획에서 다룬다. [집중 계획](./c11-4-auto-repeat-named-lines.md) · [Chrome 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-named-lines-precomparison-2026-10-23/README.md) · [Android/iOS 실행 근거](../spec/internal/evidence/c11-4-auto-repeat-named-lines-runtime-2026-10-23/README.md). C11.4 체크와 `77/213`은 그대로 미완료다.
