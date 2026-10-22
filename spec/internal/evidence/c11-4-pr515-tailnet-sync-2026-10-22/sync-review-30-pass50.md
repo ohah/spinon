@@ -33,6 +33,6 @@
 | 27 | 파일을 직접 truncate해 동시 reader가 부분 output을 본다 | source bytes를 unique temp file에 쓰고 rename으로 적용한다. 통과. |
 | 28 | copy가 성공했지만 local preview hash가 다르다 | local final verify에서 7,033/7,033 target, 459/459 backup, 실패 0이다. 통과. |
 | 29 | local copy는 맞지만 Tailnet server가 stale/다른 파일을 응답한다 | origin의 7,033 routes가 모두 HTTP 200이며 source bytes와 SHA-256이 일치했다. 통과. |
-| 30 | browser check 과정에서 사용자 browser, preview server 또는 tmux를 닫는다 | isolated Agent Browser session만 사용하고 종료 후 session/process를 확인한다. PID 79812와 tmux·user Chrome을 보존한다. 통과. |
+| 30 | browser check 과정에서 사용자 browser, preview server 또는 tmux를 닫는다 | isolated Agent Browser에서 Tailnet과 PR body screenshot을 확인하고 session/process를 닫았다. PID 79812와 user Chrome PID 20311을 보존하고 tmux에는 접근하지 않았다. 통과. |
 
 최종 sync 수치는 [README-pass50](./README-pass50.md), [preflight summary](./preflight-summary-pass50.json), [local verify](./final-verification-pass50.json), [Tailnet verify](./remote-verification-pass50.json) 및 [Agent Browser 결과](./agent-browser-verification-pass50.json)에 있다.
