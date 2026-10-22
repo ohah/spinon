@@ -59,7 +59,7 @@ mod tests {
             .iter()
             .map(|scene| scene["id"].as_str().unwrap())
             .collect::<BTreeSet<_>>();
-        assert_eq!(scenes.len(), 18);
+        assert_eq!(scenes.len(), 28);
         assert_eq!(ids.len(), scenes.len());
         for scene in scenes {
             let scene_id = scene["id"].as_str().unwrap();

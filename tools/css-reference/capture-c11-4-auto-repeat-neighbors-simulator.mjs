@@ -3216,7 +3216,7 @@ async function autoRepeatNamedLineScenes() {
     readFile(androidPath, 'utf8'),
     readFile(iosPath, 'utf8'),
   ]);
-  assert.equal(fixtures.length, 18, 'named auto-repeat 고정 fixture는 18 scene이어야 합니다.');
+  assert.equal(fixtures.length, 28, 'named auto-repeat 고정 fixture는 28 scene이어야 합니다.');
   const allowlist = (source, expression, label) => {
     const match = source.match(expression);
     assert.ok(match, `${label} scene allowlist를 읽을 수 없습니다.`);
@@ -3270,7 +3270,8 @@ async function autoRepeatNamedLineScenes() {
         { id: `${id}-item-end-edge`, nodeId: itemNodeId, xCssPx: 20, yCssPx: itemY + itemHeight - 1, rgba: itemColor },
         { id: `${id}-after-item`, nodeId: rootNodeId, xCssPx: 20, yCssPx: itemY + itemHeight, rgba: background },
       ];
-    } else if (id.startsWith('auto-repeat-named-implicit-')) {
+    } else if (id.startsWith('auto-repeat-named-implicit-')
+      || id.startsWith('auto-fit-named-implicit-')) {
       const rowAxis = id.includes('-row-');
       const [rootWidth, rootHeight] = expect.root;
       const itemExtendsPastRoot = rowAxis
@@ -3310,7 +3311,7 @@ async function autoRepeatNamedLineScenes() {
 }
 
 scenes.push(...await autoRepeatNamedLineScenes());
-assert.equal(scenes.length, 297, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 307, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;

@@ -1,0 +1,4 @@
+10-23 07:42:46.046 28221 28221 E SpinonBootstrap: SPINON_C114_GRID_PIXEL_MATRIX status=error run_id=c114-android-avd-20261022T224233838Z-b3ade346-10 scene=auto-fit-named-implicit-positive-missing reason=invalid-c114-sample-fixture
+10-23 07:42:46.054 28221 28240 E SpinonBootstrap: SPINON_C114_GRID_PIXEL_MATRIX status=error reason=invalid-c114-sample-fixture
+10-23 07:42:46.091 28221 28221 I SpinonBootstrap: SPINON_C0410_SURFACE_CREATED generation=1
+10-23 07:42:46.092 28221 28221 I SpinonBootstrap: SPINON_C0410_SURFACE_CHANGED generation=2 size=840x630 changed=true

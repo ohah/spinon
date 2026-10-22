@@ -1,0 +1,33 @@
+{
+  "host": "macOS aarch64-apple-darwin",
+  "profile": "release staticlib",
+  "records": {
+    "product-core": {
+      "bytes": 75075384,
+      "sha256": "730b9e811edd2a5826b72ce6c849401a089429e3ccf702efa84754bb5519e2dc",
+      "markerPresence": {
+        "auto-fit-named-implicit-positive-missing": false,
+        "auto-fit-named-implicit-span-occupied-repeat": false,
+        "auto-fit-named-implicit-row-negative-missing": false
+      },
+      "fixtureSymbols": {
+        "_spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture": false,
+        "_spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture": false
+      }
+    },
+    "fixture-test": {
+      "bytes": 78111664,
+      "sha256": "2dd2ffed0756c19d12bef5762af80d7866ed7e9f11998367aa5a8047625d2462",
+      "markerPresence": {
+        "auto-fit-named-implicit-positive-missing": true,
+        "auto-fit-named-implicit-span-occupied-repeat": true,
+        "auto-fit-named-implicit-row-negative-missing": true
+      },
+      "fixtureSymbols": {
+        "_spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture": true,
+        "_spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture": true
+      }
+    }
+  },
+  "interpretation": "Fixture scene payload and C11.4 fixture FFI symbols are absent from the product/core archive and present in the fixture-test positive control. This does not verify APK/IPA product bundle exclusion."
+}

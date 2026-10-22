@@ -85,6 +85,16 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "auto-repeat-named-implicit-span-backward-insufficient",
     "auto-repeat-named-implicit-row-positive-missing",
     "auto-repeat-named-implicit-row-negative-missing",
+    "auto-fit-named-implicit-positive-missing",
+    "auto-fit-named-implicit-positive-insufficient",
+    "auto-fit-named-implicit-negative-missing",
+    "auto-fit-named-implicit-negative-insufficient",
+    "auto-fit-named-implicit-span-forward-missing",
+    "auto-fit-named-implicit-span-backward-missing",
+    "auto-fit-named-implicit-occupied-repeat",
+    "auto-fit-named-implicit-span-occupied-repeat",
+    "auto-fit-named-implicit-row-positive-missing",
+    "auto-fit-named-implicit-row-negative-missing",
     "auto-fill-two-track-columns-both-190", "auto-fill-two-track-columns-both-200",
     "auto-fill-two-track-columns-both-342", "auto-fill-two-track-columns-prefix-200",
     "auto-fill-two-track-columns-suffix-200", "auto-fill-two-track-rows-both-190",
@@ -252,6 +262,16 @@ private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "auto-repeat-named-implicit-span-backward-insufficient",
     "auto-repeat-named-implicit-row-positive-missing",
     "auto-repeat-named-implicit-row-negative-missing",
+    "auto-fit-named-implicit-positive-missing",
+    "auto-fit-named-implicit-positive-insufficient",
+    "auto-fit-named-implicit-negative-missing",
+    "auto-fit-named-implicit-negative-insufficient",
+    "auto-fit-named-implicit-span-forward-missing",
+    "auto-fit-named-implicit-span-backward-missing",
+    "auto-fit-named-implicit-occupied-repeat",
+    "auto-fit-named-implicit-span-occupied-repeat",
+    "auto-fit-named-implicit-row-positive-missing",
+    "auto-fit-named-implicit-row-negative-missing",
 ]
 
 private struct C114NegativeTrackExpectation {
@@ -2481,6 +2501,18 @@ private func c114NamedAutoRepeatRootFrame(_ sceneID: String) -> String? {
     case "auto-repeat-named-implicit-row-positive-missing",
          "auto-repeat-named-implicit-row-negative-missing":
         return "width=20,height=125"
+    case "auto-fit-named-implicit-positive-missing",
+         "auto-fit-named-implicit-positive-insufficient",
+         "auto-fit-named-implicit-negative-missing",
+         "auto-fit-named-implicit-negative-insufficient",
+         "auto-fit-named-implicit-span-forward-missing",
+         "auto-fit-named-implicit-span-backward-missing",
+         "auto-fit-named-implicit-occupied-repeat",
+         "auto-fit-named-implicit-span-occupied-repeat":
+        return "width=125,height=20"
+    case "auto-fit-named-implicit-row-positive-missing",
+         "auto-fit-named-implicit-row-negative-missing":
+        return "width=20,height=125"
     default:
         return nil
     }
@@ -2509,6 +2541,19 @@ private func c114NamedAutoRepeatItemFrame(_ sceneID: String) -> String? {
     case "auto-repeat-named-implicit-span-forward-insufficient",
          "auto-repeat-named-implicit-span-backward-insufficient":
         return "width=60,height=10"
+    case "auto-fit-named-implicit-positive-missing",
+         "auto-fit-named-implicit-positive-insufficient",
+         "auto-fit-named-implicit-negative-missing",
+         "auto-fit-named-implicit-negative-insufficient",
+         "auto-fit-named-implicit-span-forward-missing",
+         "auto-fit-named-implicit-span-backward-missing",
+         "auto-fit-named-implicit-row-positive-missing",
+         "auto-fit-named-implicit-row-negative-missing":
+        return "width=20,height=10"
+    case "auto-fit-named-implicit-occupied-repeat":
+        return "width=40,height=10"
+    case "auto-fit-named-implicit-span-occupied-repeat":
+        return "width=80,height=10"
     default:
         return nil
     }
@@ -2561,6 +2606,30 @@ private func c114NamedAutoRepeatNodeFrames(_ sceneID: String) -> String? {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=125;"
             + "1:node=2,x=0,y=220,width=20,height=10]"
     case "auto-repeat-named-implicit-row-negative-missing":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=125;"
+            + "1:node=2,x=0,y=0,width=20,height=10]"
+    case "auto-fit-named-implicit-positive-missing":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=125,height=20;"
+            + "1:node=2,x=100,y=0,width=20,height=10]"
+    case "auto-fit-named-implicit-positive-insufficient":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=125,height=20;"
+            + "1:node=2,x=20,y=0,width=20,height=10]"
+    case "auto-fit-named-implicit-negative-missing",
+         "auto-fit-named-implicit-negative-insufficient",
+         "auto-fit-named-implicit-span-forward-missing",
+         "auto-fit-named-implicit-span-backward-missing":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=125,height=20;"
+            + "1:node=2,x=0,y=0,width=20,height=10]"
+    case "auto-fit-named-implicit-occupied-repeat":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=125,height=20;"
+            + "1:node=2,x=0,y=0,width=40,height=10]"
+    case "auto-fit-named-implicit-span-occupied-repeat":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=125,height=20;"
+            + "1:node=2,x=0,y=0,width=80,height=10]"
+    case "auto-fit-named-implicit-row-positive-missing":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=125;"
+            + "1:node=2,x=0,y=100,width=20,height=10]"
+    case "auto-fit-named-implicit-row-negative-missing":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=125;"
             + "1:node=2,x=0,y=0,width=20,height=10]"
     default:
@@ -3999,7 +4068,8 @@ private struct C111MetalPixelRun {
                 (overflowSample.0, overflowSample.1, overflowSample.2, overflowSample.3,
                  [0, 255, 64, 255]),
             ]
-        case let namedSceneID where namedSceneID.hasPrefix("auto-repeat-named-"):
+        case let namedSceneID where namedSceneID.hasPrefix("auto-repeat-named-")
+            || namedSceneID.hasPrefix("auto-fit-named-"):
             guard let namedSamples = c114NamedAutoRepeatPixelSamples(namedSceneID) else { return false }
             expectedSamples = namedSamples
         case "auto-fill-overflow-neighbors":
@@ -4052,7 +4122,8 @@ private struct C111MetalPixelRun {
     private static func c114NamedAutoRepeatPixelSamples(
         _ sceneID: String
     ) -> [(String, String, UInt32, UInt32, [UInt32])]? {
-        if sceneID.hasPrefix("auto-repeat-named-implicit-") {
+        if sceneID.hasPrefix("auto-repeat-named-implicit-")
+            || sceneID.hasPrefix("auto-fit-named-implicit-") {
             let frame: (x: UInt32, y: UInt32, width: UInt32, height: UInt32)
             let rootWidth: UInt32
             let rootHeight: UInt32
@@ -4074,6 +4145,23 @@ private struct C111MetalPixelRun {
             case "auto-repeat-named-implicit-row-positive-missing":
                 frame = (0, 220, 20, 10); rootWidth = 20; rootHeight = 125
             case "auto-repeat-named-implicit-row-negative-missing":
+                frame = (0, 0, 20, 10); rootWidth = 20; rootHeight = 125
+            case "auto-fit-named-implicit-positive-missing":
+                frame = (100, 0, 20, 10); rootWidth = 125; rootHeight = 20
+            case "auto-fit-named-implicit-positive-insufficient":
+                frame = (20, 0, 20, 10); rootWidth = 125; rootHeight = 20
+            case "auto-fit-named-implicit-negative-missing",
+                 "auto-fit-named-implicit-negative-insufficient",
+                 "auto-fit-named-implicit-span-forward-missing",
+                 "auto-fit-named-implicit-span-backward-missing":
+                frame = (0, 0, 20, 10); rootWidth = 125; rootHeight = 20
+            case "auto-fit-named-implicit-occupied-repeat":
+                frame = (0, 0, 40, 10); rootWidth = 125; rootHeight = 20
+            case "auto-fit-named-implicit-span-occupied-repeat":
+                frame = (0, 0, 80, 10); rootWidth = 125; rootHeight = 20
+            case "auto-fit-named-implicit-row-positive-missing":
+                frame = (0, 100, 20, 10); rootWidth = 20; rootHeight = 125
+            case "auto-fit-named-implicit-row-negative-missing":
                 frame = (0, 0, 20, 10); rootWidth = 20; rootHeight = 125
             default: return nil
             }
