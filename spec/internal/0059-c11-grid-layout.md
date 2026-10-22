@@ -102,7 +102,7 @@ Template area 행·열 수와 explicit track 수가 다르면 `grid-template-are
 
 이 실행에서는 제품 layout source를 변경하지 않고 `c04-runtime-gpu-fixture-test`의 scene·Android/iOS fixture adapters와 surface sample expectations만 확장했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 auto-fill 10개와 auto-fit 신규 10개가 각각 20/20 통과했고, PixelCopy와 compositor 제출 전 Metal drawable 표본은 각 60/60 exact다. host release static archive의 기본 `c04-runtime-gpu` 조합에는 새 scene payload와 C11.4 fixture host symbols가 없고 fixture-test positive control에 포함된다. 이 archive 확인은 앱 bundle 전체의 fixture 제외를 의미하지 않는다.
 
-이 제한 matrix는 general CSS admission, 여러 auto-repeat, arbitrary/nested placement, areas, subgrid, writing mode, WPT, Android 실기기/hardware GPU, CSS border stroke 또는 iOS compositor 이후 pixel을 보장하지 않는다. 전체 C11.4 완료로 해석하지 않는다. [집중 계획](../../plan/c11-4-auto-fit-named-line-implicit-fallback.md) · [구현/runtime 실패 관점 20개](./evidence/c11-4-auto-fit-named-line-implicit-fallback-runtime-2026-10-23/implementation-runtime-review-20.md) · [실행·screenshots·artifact 근거](./evidence/c11-4-auto-fit-named-line-implicit-fallback-runtime-2026-10-23/README.md).
+이 제한 matrix는 general CSS admission, 여러 auto-repeat, arbitrary/nested placement, areas, subgrid, writing mode, WPT, Android 실기기/hardware GPU, CSS border stroke 또는 iOS compositor 이후 pixel을 보장하지 않는다. 전체 C11.4 완료로 해석하지 않는다. [집중 계획](../../plan/c11-4-auto-fit-named-line-implicit-fallback.md) · [구현/runtime 실패 관점 20개](./evidence/c11-4-auto-fit-named-line-implicit-fallback-runtime-2026-10-23/implementation-runtime-review-20.md) · [실행·screenshots·artifact 근거](./evidence/c11-4-auto-fit-named-line-implicit-fallback-runtime-2026-10-23/README.md) · 구현 PR [#537](https://github.com/ohah/spinon/pull/537).
 
 ## 현재 제안 입력과 출력
 

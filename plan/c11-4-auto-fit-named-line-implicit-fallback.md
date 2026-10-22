@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [auto-repeat authored line names](./c11-4-auto-repeat-named-lines.md) · [auto-fill implicit fallback](./c11-4-auto-repeat-named-line-implicit-fallback.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 구현/runtime 검증 완료(고정 fixture slice). Chrome 사전 비교와 계획 검토에 이어 두 simulator에서 auto-fill 회귀 10개와 auto-fit 신규 10개를 각 20/20 통과했다. 구현/runtime 검토 20개도 별도로 마쳤다. PR diff 검토·공유·merge 절차는 다음 단계다. C11.4 및 공식 `77/213`은 미완료로 유지한다.
+**상태:** 구현/runtime 검증 완료(고정 fixture slice). Chrome 사전 비교와 계획 검토에 이어 두 simulator에서 auto-fill 회귀 10개와 auto-fit 신규 10개를 각 20/20 통과했다. 구현/runtime 검토 20개도 별도로 마쳤다. 구현 PR [#537](https://github.com/ohah/spinon/pull/537)를 열었고 최종 diff 검토와 현재 CI 확인을 진행 중이다. C11.4 및 공식 `77/213`은 미완료로 유지한다.
 
 ## 결손과 가설
 
@@ -40,7 +40,7 @@ W3C CSS Grid 2025 CRD §7.2.3.2는 `auto-fit`이 item placement 뒤 비어 있�
 - Runtime의 symbolic named placement와 auto-fit collapse 경로가 고정 profile을 처리해 제품 layout algorithm source는 바꾸지 않았다. FFI fixture count와 scene data, Android/iOS allowlist·frame·surface sample mapping, simulator capture runner만 확장했다.
 - Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 20/20 scene, 40 node frame, track trace와 draw/present를 확인했다. PixelCopy와 Metal drawable 표본은 각 60/60 exact다. 상세 app/source hashes와 실행 로그는 [runtime evidence](../spec/internal/evidence/c11-4-auto-fit-named-line-implicit-fallback-runtime-2026-10-23/README.md)에 있다.
 - 기본 release static archive와 fixture-test positive control의 marker·fixture symbol 경계를 확인했다. 기본/양성 대조 hash는 evidence의 [artifact-boundary JSON](../spec/internal/evidence/c11-4-auto-fit-named-line-implicit-fallback-runtime-2026-10-23/artifact-boundary.json)에 보존했다.
-- [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-4-auto-fit-named-line-implicit-fallback-runtime-2026-10-23/implementation-runtime-review-20.md)는 계획 리뷰와 분리했다. PR diff 검토 30개는 final PR diff 기준으로 별도 수행한다.
+- [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-4-auto-fit-named-line-implicit-fallback-runtime-2026-10-23/implementation-runtime-review-20.md)는 계획 리뷰와 분리했다. PR diff 검토 30개는 구현 PR #537의 최종 diff 기준으로 별도 수행한다.
 - 남은 제한: simulator 외 Android 실기기/hardware GPU, iOS compositor 이후 출력, CSS border stroke, WPT, 일반 CSS admission과 C11.4 전체 완료는 확인하지 않았다.
 
 ## 계획 실패 관점 검토

@@ -1,6 +1,6 @@
 # C11.4 · auto-fit named-line implicit fallback 실행 근거
 
-이 evidence는 [집중 계획](../../../../plan/c11-4-auto-fit-named-line-implicit-fallback.md)의 고정 fixture 범위를 Android·iOS simulator에서 실행한 기록이다. 기존 auto-fill implicit fallback 10개를 회귀로 유지하고 auto-fit 10개를 추가했다. 제품 layout algorithm은 변경하지 않았다. 기존 symbolic named placement와 auto-fit track sizing 경로가 이 조합을 처리하는지 fixture와 platform harness에서 확인했다.
+이 evidence는 [집중 계획](../../../../plan/c11-4-auto-fit-named-line-implicit-fallback.md)의 고정 fixture 범위를 Android·iOS simulator에서 실행한 기록이다. 구현 PR [#537](https://github.com/ohah/spinon/pull/537)에 결과를 연결했다. 기존 auto-fill implicit fallback 10개를 회귀로 유지하고 auto-fit 10개를 추가했다. 제품 layout algorithm은 변경하지 않았다. 기존 symbolic named placement와 auto-fit track sizing 경로가 이 조합을 처리하는지 fixture와 platform harness에서 확인했다.
 
 ## 고정 입력과 기대값
 
