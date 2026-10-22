@@ -31,8 +31,8 @@
 | 25 | style test 파일이 fixture-test 밖의 production code로 편입되는가 | C11.4 track sizing test module은 `c11-4-grid-track-sizing-fixture-test` 조건으로 연결된다. |
 | 26 | scene table 크기나 single-file 책임이 과도하게 커지는가 | 12 scene data를 cohesive `scene.rs` matrix로 분리하고 adapter file을 398줄로 줄였다. |
 | 27 | default archive가 fixture ID/entry marker를 포함하는데 증거가 이를 누락하는가 | no-feature release archive는 새 ID 및 fixture host marker가 없고 opt-in positive archive에 둘 다 있다. 해시와 검사 범위를 README에 적었다. |
-| 28 | 공식 roadmap이 계획 상태·완료 수를 잘못 표시하는가 | plan과 `STATUS.md`는 fixed runtime 결과를 반영하지만 C11.4 checkbox와 `72/213`을 유지하며 미검증 범위를 적는다. |
-| 29 | PR/문서의 simulator 이미지 링크가 stale run이나 존재하지 않는 파일을 가리키는가 | README와 PR에 쓸 이미지들은 staged된 최신 source-hash run의 PNG를 가리킨다. README에는 Android/iOS 대표 화면이 inline이다. |
+| 28 | 공식 roadmap이 계획 상태·완료 수를 잘못 표시하는가 | plan과 `STATUS.md`는 fixed runtime 결과를 반영하고 PR #491을 연결하지만 C11.4 checkbox와 `72/213`을 유지하며 미검증 범위를 적는다. |
+| 29 | PR/문서의 simulator 이미지 링크가 stale run이나 존재하지 않는 파일을 가리키는가 | PR #491의 Android/iOS raw image 두 개를 Agent Browser로 열어 모두 `complete=true`와 본래 해상도 1080×2400, 1206×2622로 로드되는 것을 확인했다. README에도 같은 최신 source-hash run의 대표 화면이 inline이다. |
 | 30 | simulator-only evidence가 physical device, hardware GPU, WPT 또는 전체 CSS support로 확대되는가 | README, plan과 roadmap 모두 AVD/Simulator 범위, iOS pre-compositor 지점, 남은 한계를 명시한다. |
 
 **결과:** 이 30개 diff 관점에서 남은 결함은 찾지 못했다. 최신 source hash 기준 캡처, Rust tests, targeted Clippy, 두 platform build와 artifact positive/negative control을 대조했다.
