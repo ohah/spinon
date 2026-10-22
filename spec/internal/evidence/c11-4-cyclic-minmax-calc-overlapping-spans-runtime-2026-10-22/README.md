@@ -36,6 +36,10 @@ Representative iOS screenshot:
 
 ![iPhone 17 Pro iOS 26.2 Simulator, definite 100px forward scene](ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png)
 
+## PR screenshot rendering
+
+Agent Browser opened [PR #500](https://github.com/ohah/spinon/pull/500). Both committed raw GitHub images reported `complete=true`: Android `1080×2400`, iOS `1206×2622`. [DOM verification](pr-dom.json) records the source URLs and dimensions; [Android-visible PR capture](pr-agent-browser.png) and [iOS-visible PR capture](pr-agent-browser-ios.png) show the embedded images in the PR body.
+
 ## Build and code checks
 
 - Android fixture-enabled build: [final build log](android-build-three-samples.log), successful. The first Android build had `SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=0`; enabling the opt-in fixture flag fixed the route. The initial pixel oracle also lacked expected colors for new sample IDs; its RGB map was added and the final three-sample run passed.

@@ -25,4 +25,4 @@
 | 19 | Overflow evidence is confused with CSS border painting | `(126,7)` is described as red text outside the root border; border stroke pixels are explicitly excluded. Pass. |
 | 20 | PR description omits user-visible simulator screens | PR body includes one final Android AVD and one final iOS Simulator screenshot, with run links and limits. Pass. |
 
-No blocking diff issue was found. After push, the screenshot links and PR rendering still require Agent Browser confirmation; that check is not inferred from local file existence.
+No blocking diff issue was found. Agent Browser confirmed on PR #500 that both committed image URLs render with `complete=true`: Android `1080×2400`, iOS `1206×2622`. The captured DOM and browser screenshots are linked from the [runtime evidence](README.md).
