@@ -705,6 +705,40 @@ pub fn compute_runtime_style_layout_with_intrinsic_size_snapshot(
     )
 }
 
+/// C11.4 fixture-test에서 고정 two-axis Grid intrinsic image scene을 계산합니다.
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub fn compute_runtime_style_layout_with_intrinsic_size_snapshot_for_c11_4_two_axis_grid_fixture(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    intrinsic_sizes: LayoutIntrinsicSizeSnapshot,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    if computed_styles.profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
+        return Err(StyleLayoutError::UnsupportedProfile {
+            profile: format!("{:?}", computed_styles.profile),
+        });
+    }
+    if computed_styles.viewport != viewport {
+        return Err(StyleLayoutError::SnapshotMismatch { field: "viewport" });
+    }
+    compute_layout_from_styles_with_text_and_grid_options(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        Some(intrinsic_sizes),
+        None,
+        StyleLayoutProjectionOptions {
+            reject_cascade_diagnostics: true,
+            allow_implicit_named_lines: false,
+            allow_c11_4_anonymous_grid_text_items: false,
+            blockify_c11_4_anonymous_grid_images: false,
+            allow_c11_4_nested_grid_two_axis_intrinsics: true,
+        },
+    )
+}
+
 fn compute_profile_layout(
     snapshot: &HostDocumentSnapshot,
     view: &StyloDocumentView,

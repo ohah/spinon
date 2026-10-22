@@ -1,0 +1,23 @@
+4022 | function command(binary, args, { allowFailure = false, timeout = 120_000, encoding = 'utf8' } = {}) {
+4023 |   const result = spawnSync(binary, args, {
+4024 |     cwd: repositoryRoot, encoding, timeout, maxBuffer: 96 * 1024 * 1024,
+4025 |   });
+4026 |   if (result.error || (!allowFailure && result.status !== 0)) {
+4027 |     const error = new Error(`${binary} ${args.join(' ')} 실패: ${result.error?.message ?? result.stderr?.toString() ?? result.stdout?.toString()}`);
+                             ^
+error: adb -s emulator-5562 install -r /Users/yoonhb/Documents/workspace/spinon/platforms/android/app/build/outputs/apk/debug/app-debug.apk 실패: adb: failed to install /Users/yoonhb/Documents/workspace/spinon/platforms/android/app/build/outputs/apk/debug/app-debug.apk: Error: device is still booting.
+
+
+ result: {
+  signal: null,
+  status: 1,
+  output: [ null, "Performing Streamed Install\n", "adb: failed to install /Users/yoonhb/Documents/workspace/spinon/platforms/android/app/build/outputs/apk/debug/app-debug.apk: Error: device is still booting.\n\n" ],
+  pid: 68869,
+  stdout: "Performing Streamed Install\n",
+  stderr: "adb: failed to install /Users/yoonhb/Documents/workspace/spinon/platforms/android/app/build/outputs/apk/debug/app-debug.apk: Error: device is still booting.\n\n",
+},
+
+      at command (/Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs:4027:23)
+      at /Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs:5304:32
+
+Bun v1.4.2 (macOS arm64)

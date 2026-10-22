@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [cyclic minmax max-content span-groups](./c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** Chrome 156 Agent Browser 사전 관측, CSS Grid 2025 CRD 독립 기대값, 고정 HTML 입력 및 계획 실패 관점 검토를 기록했다. Runtime 구현은 시작하지 않았다. C11.4 checkbox와 공식 완료 수 `77/213`은 유지한다.
+**상태:** Chrome 156 Agent Browser 사전 관측, CSS Grid 2025 CRD 독립 기대값, 고정 HTML 입력과 계획 검토를 기록했다. 네 고정 scene의 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator 검증이 모두 통과했다. PR 검토·필수 CI·병합과 공식 상태 갱신 전까지 C11.4 checkbox와 완료 수 `77/213`은 유지한다.
 
 ## 목적
 
@@ -30,6 +30,8 @@ CSS Grid 2025 CRD §7.2.1은 intrinsic sizing 동안 cyclic percentage track siz
 | `definite-reverse` | `width/height:80px` | C, B, A |
 
 역순 장면은 DOM child 순서만 바꾼다. Identity, image source, CSS 크기, placement와 track expression은 그대로다.
+
+고정 입력은 root에 `align-items:start`를 두고 각 replaced item의 `justify-self`와 `align-self`를 `auto`로 둔다. 이는 item의 used alignment를 start로 유지하면서 fixture-test inline CSS profile이 허용하지 않는 item-level `start` keyword를 일반 admission에 추가하지 않는다. 독립 Chrome 입력도 같은 선언을 사용한다.
 
 ## 독립 기대값과 관측
 
@@ -74,4 +76,13 @@ Chrome 156 Agent Browser 관측은 forward와 reverse에서 동일한 tracks와 
 
 ## 구현 결과
 
-Runtime은 아직 구현하지 않았다. 이 절은 구현 PR을 시작할 때 simulator·artifact 결과와 새 runtime 검토를 추가한다.
+네 고정 scene을 Runtime, FFI, iOS harness와 capture validator에 연결했다. Intrinsic forward/reverse는 columns `[5,8,8]`, rows `[7,7]`, root border box `29×20px`와 identity별 A/B/C frame을 확인한다. Definite forward/reverse는 columns `[10,10,10]`, rows `[10,10]`, root border box `84×84px`를 확인한다.
+
+- Style/layout, Runtime scene matrix, FFI scene matrix focused test와 fixture-module boundary 18개가 통과했다. `cargo fmt --all -- --check`와 iOS/Android app build도 통과했다.
+- 기본 `spinon-ffi` static archive에는 C11.4 fixture FFI symbol과 scene payload가 없고, `c04-runtime-gpu-fixture-test` archive에는 둘 다 있다. 이는 static archive 확인이며 APK/IPA 전체나 release artifact 증거가 아니다.
+- iPhone 17 Pro / iOS 26.2 Simulator에서 최신 tracked source revision의 네 scene tracks, trace, identity별 node frame, draw/present가 통과했다. Metal drawable 표본은 scene마다 3/3이며 compositor 제출 전 값이다.
+- Android API 37 ARM64 AVD에서도 최신 tracked source revision의 네 scene tracks, trace, identity별 node frame, draw/present와 Surface PixelCopy 표본이 통과했다. 전용 AVD의 API descriptor, 메모리·userdata 크기와 하드웨어 가속 설정을 바로잡아 boot 완료 및 앱 설치를 확인했다. PixelCopy 표본은 scene마다 3/3이다.
+- 두 플랫폼 run metadata, app hash, screenshot과 원본 JSON은 [runtime evidence](../spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-runtime-2026-10-23/README.md)에 둔다. AVD/iOS Simulator 결과는 실기기·hardware GPU 결과로 확대하지 않는다.
+- [구현 runtime 실패 관점 20개](../spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-runtime-2026-10-23/runtime-code-review-20.md)와 [구현 diff 실패 관점 20개](../spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-runtime-2026-10-23/pr-diff-review-20.md)를 계획 검토와 분리해 기록했다. Root min/max/aspect-ratio 검사와 Android host 장면·PixelCopy·reversed input 누락을 발견해 보강했다.
+
+시뮬레이터 관문은 완료했다. PR의 적대적 검토와 필수 CI, 병합 및 그에 따른 공식 상태 갱신 전까지 전체 기능 또는 C11.4 완료로 표시하지 않는다. 이 계획은 C11.4 checkbox와 공식 `77/213`을 변경하지 않는다.

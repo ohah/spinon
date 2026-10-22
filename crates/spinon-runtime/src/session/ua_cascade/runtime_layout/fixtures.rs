@@ -82,6 +82,7 @@ pub(super) use c11_4_text::prepare_cyclic_fit_content_calc_render_input;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub(super) struct C11_4ImageInput {
     pub(super) intrinsic_sizes: spinon_layout::LayoutIntrinsicSizeSnapshot,
+    pub(super) allow_two_axis_root_intrinsic: bool,
 }
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]

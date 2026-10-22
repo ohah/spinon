@@ -22,6 +22,8 @@ pub(super) const NATURAL_HEIGHT: u32 = 16;
 
 #[path = "c11_4_image/cases.rs"]
 mod cases;
+#[path = "c11_4_image/cyclic_minmax_replaced_span.rs"]
+mod cyclic_minmax_replaced_span;
 #[path = "c11_4_image/multispan.rs"]
 mod multispan;
 use cases::{IMAGE_CASES, ImageCase, ImageSizing, Placement, Track};
@@ -39,6 +41,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         ));
     }
     if let Some(input) = super::c11_4_nested_grid_implicit_rows::prepare(snapshot, root, styles)? {
+        return Ok(Some(input));
+    }
+    if let Some(input) = cyclic_minmax_replaced_span::prepare(snapshot, root, styles)? {
         return Ok(Some(input));
     }
     if let Some(input) = multispan::prepare(snapshot, root, styles)? {
@@ -175,7 +180,10 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
             )
         })?;
 
-    Ok(Some(super::C11_4ImageInput { intrinsic_sizes }))
+    Ok(Some(super::C11_4ImageInput {
+        intrinsic_sizes,
+        allow_two_axis_root_intrinsic: false,
+    }))
 }
 
 fn images_in_subtree(

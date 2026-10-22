@@ -2,7 +2,7 @@
 
 ## 입력과 실행 경계
 
-이 사전 비교는 저장소의 [CSS fixture source](https://github.com/ohah/spinon/blob/main/tests/fixtures/css/c11/grid-track-sizing-c114-cyclic-minmax-replaced-image-precomparison.html) 하나를 Agent Browser Chrome에서 열어 측정했다. 3열 × 2행 Grid의 모든 track은 `minmax(calc(10% + 2px), max-content)`, gap은 2px, border는 2px다. A/B/C 세 `<img>`는 모두 같은 PNG를 사용하며 `width:auto`, CSS height 8/12/16px로 natural 3:2 비율을 유지한다. Forward/reverse variants는 DOM order만 바꾼다.
+이 사전 비교는 저장소의 [CSS fixture source](https://github.com/ohah/spinon/blob/main/tests/fixtures/css/c11/grid-track-sizing-c114-cyclic-minmax-replaced-image-precomparison.html) 하나를 Agent Browser Chrome에서 열어 측정했다. 3열 × 2행 Grid의 모든 track은 `minmax(calc(10% + 2px), max-content)`, gap은 2px, border는 2px다. Root `align-items:start`와 item `justify-self:auto;align-self:auto`를 사용한다. A/B/C 세 `<img>`는 모두 같은 PNG를 사용하며 `width:auto`, CSS height 8/12/16px로 natural 3:2 비율을 유지한다. Forward/reverse variants는 DOM order만 바꾼다.
 
 PNG natural dimension은 24×16px이고 SHA-256은 `5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2`다. Agent Browser 0.31.1의 HeadlessChrome 156.0.8078.48에서 viewport 1280×633 CSS px, DPR 1을 사용했고 각 image decode 완료 후 관측했다.
 
