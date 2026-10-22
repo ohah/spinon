@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "command": "cargo build --locked --release -p spinon-ffi [--features c04-runtime-gpu-fixture-test]",
+  "archives": [
+    {
+      "profile": "default-release",
+      "path": "build/spinon/c11-4-cyclic-minmax-calc-overlapping-rows-runtime-20261022/artifact-profile/default-release-libspinon_ffi.a",
+      "sizeBytes": 60096336,
+      "sha256": "6ba9369417ae964fea08250b3371fcbf16e1861548902e573a3aee889ce30393",
+      "markers": {
+        "cyclic-minmax-calc-overlap-rows-forward": false,
+        "unsupported_c114_cyclic_calc_overlapping_span_fixture": false
+      }
+    },
+    {
+      "profile": "fixture-test-release-positive-control",
+      "path": "build/spinon/c11-4-cyclic-minmax-calc-overlapping-rows-runtime-20261022/artifact-profile/fixture-test-release-libspinon_ffi.a",
+      "sizeBytes": 77828608,
+      "sha256": "7f617280666a6a5e3aec3b0965204ab1227bc5eeff2f052820d7c318aa4ebd42",
+      "markers": {
+        "cyclic-minmax-calc-overlap-rows-forward": true,
+        "unsupported_c114_cyclic_calc_overlapping_span_fixture": true
+      }
+    }
+  ]
+}
