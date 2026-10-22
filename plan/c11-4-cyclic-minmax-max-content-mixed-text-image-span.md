@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [cyclic max-content text span 그룹](./c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md) · [cyclic min-content mixed text/image](./c11-4-cyclic-minmax-mixed-text-image-span.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 네 고정 장면 입력, CSS Grid 2025 CRD에서 도출한 유리수 기대값, Chrome 156 Agent Browser 관측, 서로 다른 계획 실패 관점 20개를 기록했다. 계획 PR [#525](https://github.com/ohah/spinon/pull/525)는 2026-10-23 04:05:31 KST Rebase and merge로 병합되어 `bd665f12294fb4204500c17de51bcb7f5835a138`을 남겼다. 2026-10-23 runtime 변경은 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator에서 각 4/4 scene, definite overflow 표본 각 6/6, fixture archive 대조와 별도 구현 20관점 검토까지 통과했다. 구현 PR diff를 검토하고 PR을 올리는 중이다. C11.4 checkbox와 공식 완료 수 `77/213`은 유지한다.
+**상태:** 네 고정 장면 입력, CSS Grid 2025 CRD에서 도출한 유리수 기대값, Chrome 156 Agent Browser 관측, 서로 다른 계획 실패 관점 20개를 기록했다. 계획 PR [#525](https://github.com/ohah/spinon/pull/525)는 2026-10-23 04:05:31 KST Rebase and merge로 병합되어 `bd665f12294fb4204500c17de51bcb7f5835a138`을 남겼다. 2026-10-23 runtime 변경은 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator에서 각 4/4 scene, definite overflow 표본 각 6/6, fixture archive 대조와 별도 구현 20관점 검토까지 통과했다. 구현 PR [#526](https://github.com/ohah/spinon/pull/526)을 열었다. 서로 다른 PR diff 실패 관점 30개 검토를 마쳤고, GitHub status-check rollup은 비어 있으며 main required status check은 설정되어 있지 않다. merge 전 상태다. C11.4 checkbox와 공식 완료 수 `77/213`은 유지한다.
 
 ## 목적
 
@@ -67,7 +67,7 @@ Chrome 156 Agent Browser 관측은 독립 값과 분리해 기록했다. Fractio
 - max-content 장면은 root border box `114×92/3px`, Columns `[107/3,125/3,86/3]`, Rows `[37/3,37/3]`다. definite 장면은 `44×44px`, Columns `[12,12,12]`, Rows `[19,19]`이며 image가 오른쪽 border 밖으로 12px 나온다.
 - Android PixelCopy와 iOS compositor 제출 전 Metal drawable의 border/image/clear sample은 definite 네 실행에서 플랫폼별 `6/6` exact다. 앱 화면은 glyph를 그리지 않아 text 확인은 line geometry와 intrinsic trace에 한정한다.
 - 기본 `c04-runtime-gpu` static archive에는 새 ID·error marker·fixture source symbol이 없고 `c04-runtime-gpu-fixture-test` positive archive에는 있다. 이 검사는 최종 release APK/IPA 제외를 증명하지 않는다.
-- [Simulator 실행·screenshots·logs·archive 경계](../spec/internal/evidence/c11-4-cyclic-minmax-max-content-mixed-text-image-span-runtime-2026-10-23/README.md) · [구현/runtime 실패 관점 20개](../spec/internal/evidence/c11-4-cyclic-minmax-max-content-mixed-text-image-span-runtime-2026-10-23/implementation-runtime-review-20.md).
+- [Simulator 실행·screenshots·logs·archive 경계](../spec/internal/evidence/c11-4-cyclic-minmax-max-content-mixed-text-image-span-runtime-2026-10-23/README.md) · [구현/runtime 실패 관점 20개](../spec/internal/evidence/c11-4-cyclic-minmax-max-content-mixed-text-image-span-runtime-2026-10-23/implementation-runtime-review-20.md) · [PR diff 실패 관점 30개](../spec/internal/evidence/c11-4-cyclic-minmax-max-content-mixed-text-image-span-runtime-2026-10-23/pr-diff-review-30.md) · [PR 본문 이미지 Agent Browser 확인](../spec/internal/evidence/c11-4-cyclic-minmax-max-content-mixed-text-image-span-runtime-2026-10-23/pr526-agent-browser-verification.json).
 
 ## 판정
 
