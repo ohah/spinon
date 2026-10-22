@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "crate": "spinon-ffi",
+  "artifact": "target/release/libspinon_ffi.a",
+  "defaultBuild": {
+    "command": "mise exec -- cargo build --locked --release -p spinon-ffi --no-default-features",
+    "sha256": "44af952c38f322c5554bd70e812fcf5f9c3484e6e25dee9708f934255c94d32e",
+    "newSceneIDOrPayloadStringFound": false,
+    "c11_4FixtureABINameFound": false
+  },
+  "fixtureTestPositiveControl": {
+    "command": "mise exec -- cargo build --locked --release -p spinon-ffi --no-default-features --features c04-runtime-gpu-fixture-test,c11-grid-metal-surface-pixels-test",
+    "sha256": "9d420d9d2bc0ef7fab9861f1188eae3893ca07595745bde534ff90e7355ad3e1",
+    "newSceneIDOrPayloadStringFound": true,
+    "c11_4FixtureABINameFound": true,
+    "observedABIName": "_spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture"
+  },
+  "inspection": "strings -a on the host release static archive; this does not establish Android APK or iOS app fixture exclusion.",
+  "androidSimulatorAPK": {
+    "buildFlags": [
+      "SPINON_ENABLE_C04_RUNTIME_GPU=1",
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1"
+    ],
+    "apiLevel": 37,
+    "abi": "arm64-v8a",
+    "localSha256": "b4586f007b1d7e84350875cd71529744a09d5a6e516425f9431b470eb0fa610b",
+    "installedSha256": "b4586f007b1d7e84350875cd71529744a09d5a6e516425f9431b470eb0fa610b",
+    "matched": true
+  },
+  "iosSimulatorApp": {
+    "buildFlags": [
+      "SPINON_ENABLE_C04_RUNTIME_GPU=1",
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1",
+      "SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=1"
+    ],
+    "device": "iPhone 17 Pro",
+    "runtime": "iOS 26.2",
+    "executableSha256": "bd1a266282bb72b541cc9363606efde84a2520aa0fc828f0bc70a4bcb884e3a8"
+  }
+}

@@ -5,15 +5,17 @@ struct Scene {
     height: &'static str,
     columns: &'static str,
     rows: &'static str,
+    text: &'static str,
 }
 
-const SCENES: [Scene; 4] = [
+const SCENES: [Scene; 8] = [
     Scene {
         id: "cyclic-minmax-calc-min-column",
         width: "max-content",
         height: "10px",
         columns: "minmax(calc(200% + 4px),max-content)",
         rows: "10px",
+        text: "a",
     },
     Scene {
         id: "cyclic-minmax-calc-min-row",
@@ -21,6 +23,7 @@ const SCENES: [Scene; 4] = [
         height: "max-content",
         columns: "10px",
         rows: "minmax(calc(200% + 2px),max-content)",
+        text: "a",
     },
     Scene {
         id: "definite-minmax-calc-min-column",
@@ -28,6 +31,7 @@ const SCENES: [Scene; 4] = [
         height: "10px",
         columns: "minmax(calc(200% + 4px),max-content)",
         rows: "10px",
+        text: "a",
     },
     Scene {
         id: "definite-minmax-calc-min-row",
@@ -35,6 +39,39 @@ const SCENES: [Scene; 4] = [
         height: "10px",
         columns: "10px",
         rows: "minmax(calc(200% + 2px),max-content)",
+        text: "a",
+    },
+    Scene {
+        id: "cyclic-minmax-calc-min-both-axes",
+        width: "max-content",
+        height: "max-content",
+        columns: "minmax(calc(200% + 4px),max-content)",
+        rows: "minmax(calc(200% + 2px),max-content)",
+        text: "aa aa",
+    },
+    Scene {
+        id: "cyclic-minmax-calc-min-column-definite-row",
+        width: "max-content",
+        height: "10px",
+        columns: "minmax(calc(200% + 4px),max-content)",
+        rows: "10px",
+        text: "aa aa",
+    },
+    Scene {
+        id: "definite-column-cyclic-minmax-calc-min-row",
+        width: "10px",
+        height: "max-content",
+        columns: "10px",
+        rows: "minmax(calc(200% + 2px),max-content)",
+        text: "aa aa",
+    },
+    Scene {
+        id: "definite-minmax-calc-min-both-axes",
+        width: "10px",
+        height: "10px",
+        columns: "minmax(calc(200% + 4px),max-content)",
+        rows: "minmax(calc(200% + 2px),max-content)",
+        text: "aa aa",
     },
 ];
 
@@ -60,7 +97,7 @@ const item = document.createElement('div');
 item.setAttribute('id', {item_id:?});
 item.setAttribute('data-node', '');
 item.setAttribute('style', 'box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;color:#e5484d;background-color:#e5484d');
-item.appendChild(document.createTextNode('a'));
+item.appendChild(document.createTextNode({text:?}));
 root.appendChild(item);
 return {{ sceneId:{scene_id:?}, rootId:{root_id:?}, nodeIds:[{root_id:?}, {item_id:?}] }};
 }})()"#,
@@ -68,6 +105,7 @@ return {{ sceneId:{scene_id:?}, rootId:{root_id:?}, nodeIds:[{root_id:?}, {item_
         height = scene.height,
         columns = scene.columns,
         rows = scene.rows,
+        text = scene.text,
         scene_id = scene.id,
     )
 }
@@ -78,9 +116,9 @@ mod tests {
     use std::collections::BTreeSet;
 
     #[test]
-    fn exposes_only_four_fixed_minimum_calc_scenes_with_real_border_paint() {
+    fn exposes_only_fixed_minimum_calc_scenes_with_real_border_paint() {
         let unique_ids = SCENES.iter().map(|scene| scene.id).collect::<BTreeSet<_>>();
-        assert_eq!(SCENES.len(), 4);
+        assert_eq!(SCENES.len(), 8);
         assert_eq!(unique_ids.len(), SCENES.len());
         for scene in SCENES {
             let source = runtime_source(scene.id).expect("allowlisted minimum calc scene");
@@ -90,12 +128,13 @@ mod tests {
             assert!(source.contains(&format!("grid-template-columns:{}", scene.columns)));
             assert!(source.contains(&format!("grid-template-rows:{}", scene.rows)));
             assert!(source.contains("border:2px solid #f0c674"));
-            assert!(source.contains("document.createTextNode('a')"));
+            assert!(source.contains(&format!("document.createTextNode({:?})", scene.text)));
             assert!(source.contains("font-family:Ahem;font-size:10px"));
             assert!(source.contains("background-color:#e5484d"));
             assert_eq!(source.matches("document.createElement('div')").count(), 2);
             assert_eq!(source.matches("data-node").count(), 2);
         }
         assert!(runtime_source("cyclic-minmax-calc-min-unlisted").is_none());
+        assert!(runtime_source("cyclic-minmax-calc-min-unknown-axes").is_none());
     }
 }

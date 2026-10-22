@@ -37,7 +37,7 @@ const COLUMN_LIMIT: Track = Track::FitContentCalc {
     length_px: 4.0,
 };
 
-pub(super) const SCENES: [Scene; 12] = [
+pub(super) const SCENES: [Scene; 16] = [
     Scene {
         id: "cyclic-fit-content-calc-column",
         width: Dimension::MaxContent,
@@ -184,5 +184,63 @@ pub(super) const SCENES: [Scene; 12] = [
             length_px: 2.0,
         },
         text: "a",
+    },
+    Scene {
+        id: "cyclic-minmax-calc-min-both-axes",
+        width: Dimension::MaxContent,
+        height: Dimension::MaxContent,
+        box_sizing: BoxSizing::ContentBox,
+        border_width: 2.0,
+        columns: Track::MinMaxCalcMinimum {
+            percentage: 2.0,
+            length_px: 4.0,
+        },
+        rows: Track::MinMaxCalcMinimum {
+            percentage: 2.0,
+            length_px: 2.0,
+        },
+        text: "aa aa",
+    },
+    Scene {
+        id: "cyclic-minmax-calc-min-column-definite-row",
+        width: Dimension::MaxContent,
+        height: Dimension::Px(10.0),
+        box_sizing: BoxSizing::ContentBox,
+        border_width: 2.0,
+        columns: Track::MinMaxCalcMinimum {
+            percentage: 2.0,
+            length_px: 4.0,
+        },
+        rows: Track::Px(10.0),
+        text: "aa aa",
+    },
+    Scene {
+        id: "definite-column-cyclic-minmax-calc-min-row",
+        width: Dimension::Px(10.0),
+        height: Dimension::MaxContent,
+        box_sizing: BoxSizing::ContentBox,
+        border_width: 2.0,
+        columns: Track::Px(10.0),
+        rows: Track::MinMaxCalcMinimum {
+            percentage: 2.0,
+            length_px: 2.0,
+        },
+        text: "aa aa",
+    },
+    Scene {
+        id: "definite-minmax-calc-min-both-axes",
+        width: Dimension::Px(10.0),
+        height: Dimension::Px(10.0),
+        box_sizing: BoxSizing::ContentBox,
+        border_width: 2.0,
+        columns: Track::MinMaxCalcMinimum {
+            percentage: 2.0,
+            length_px: 4.0,
+        },
+        rows: Track::MinMaxCalcMinimum {
+            percentage: 2.0,
+            length_px: 2.0,
+        },
+        text: "aa aa",
     },
 ];

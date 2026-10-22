@@ -94,6 +94,7 @@ pub(super) fn prepare(
             || root_id.starts_with("c114-definite-fit-content-calc-")
             || root_id.starts_with("c114-cyclic-minmax-calc-")
             || root_id.starts_with("c114-definite-minmax-calc-")
+            || root_id.starts_with("c114-definite-column-cyclic-minmax-calc-")
         {
             return Err(unsupported(root, "unregistered cyclic calc track scene"));
         }
@@ -380,7 +381,7 @@ mod tests {
     #[test]
     fn exposes_fixed_cyclic_calc_track_scenes_by_function() {
         let scene_ids = SCENES.iter().map(|scene| scene.id).collect::<BTreeSet<_>>();
-        assert_eq!(SCENES.len(), 12);
+        assert_eq!(SCENES.len(), 16);
         assert_eq!(scene_ids.len(), SCENES.len());
         assert!(scene_ids.contains("cyclic-fit-content-calc-column"));
         assert!(scene_ids.contains("cyclic-fit-content-calc-row"));
@@ -394,5 +395,9 @@ mod tests {
         assert!(scene_ids.contains("cyclic-minmax-calc-min-row"));
         assert!(scene_ids.contains("definite-minmax-calc-min-column"));
         assert!(scene_ids.contains("definite-minmax-calc-min-row"));
+        assert!(scene_ids.contains("cyclic-minmax-calc-min-both-axes"));
+        assert!(scene_ids.contains("cyclic-minmax-calc-min-column-definite-row"));
+        assert!(scene_ids.contains("definite-column-cyclic-minmax-calc-min-row"));
+        assert!(scene_ids.contains("definite-minmax-calc-min-both-axes"));
     }
 }

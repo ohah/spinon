@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "target": "android-avd",
+  "runPrefix": "c114-cyclic-percent-tracks-android-avd-20261022T022619123Z-93c2e1cb",
+  "sceneCount": 4,
+  "observations": [
+    {
+      "sceneId": "cyclic-minmax-calc-min-both-axes",
+      "summary": "10-22 11:26:22.025 32684 32707 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261022T022619123Z-93c2e1cb-0 scene_id=cyclic-minmax-calc-min-both-axes expected_root_frame=width=54,height=14 expected_item_frame=width=104,height=22 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=54,height=14;1:node=2,x=2,y=2,width=104,height=22]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 54,
+          "height": 14
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 2,
+          "y": 2,
+          "width": 104,
+          "height": 22
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 104,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 22,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 9,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "cyclic-minmax-calc-min-column-definite-row",
+      "summary": "10-22 11:26:24.883 32749   321 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261022T022619123Z-93c2e1cb-1 scene_id=cyclic-minmax-calc-min-column-definite-row expected_root_frame=width=54,height=14 expected_item_frame=width=104,height=10 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=54,height=14;1:node=2,x=2,y=2,width=104,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 54,
+          "height": 14
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 2,
+          "y": 2,
+          "width": 104,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 104,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 5,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "definite-column-cyclic-minmax-calc-min-row",
+      "summary": "10-22 11:26:27.852   370   393 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261022T022619123Z-93c2e1cb-2 scene_id=definite-column-cyclic-minmax-calc-min-row expected_root_frame=width=14,height=24 expected_item_frame=width=10,height=42 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=14,height=24;1:node=2,x=2,y=2,width=10,height=42]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 14,
+          "height": 24
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 2,
+          "y": 2,
+          "width": 10,
+          "height": 42
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 42,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 5,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "definite-minmax-calc-min-both-axes",
+      "summary": "10-22 11:26:31.578   556   632 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261022T022619123Z-93c2e1cb-3 scene_id=definite-minmax-calc-min-both-axes expected_root_frame=width=14,height=14 expected_item_frame=width=24,height=22 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=14,height=14;1:node=2,x=2,y=2,width=24,height=22]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 14,
+          "height": 14
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 2,
+          "y": 2,
+          "width": 24,
+          "height": 22
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 24,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 22,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 5,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}

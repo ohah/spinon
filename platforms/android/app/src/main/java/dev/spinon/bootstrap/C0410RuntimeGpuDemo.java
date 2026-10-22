@@ -136,6 +136,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "definite-minmax-calc-column", "definite-minmax-calc-small-limit",
             "cyclic-minmax-calc-min-column", "cyclic-minmax-calc-min-row",
             "definite-minmax-calc-min-column", "definite-minmax-calc-min-row",
+            "cyclic-minmax-calc-min-both-axes",
+            "cyclic-minmax-calc-min-column-definite-row",
+            "definite-column-cyclic-minmax-calc-min-row",
+            "definite-minmax-calc-min-both-axes",
             "cyclic-percent-two-axis-multitrack", "cyclic-percent-columns-multitrack",
             "cyclic-percent-rows-multitrack", "definite-percent-two-axis-multitrack",
             "cyclic-calc-column", "cyclic-calc-row", "cyclic-calc-two-axis",
@@ -437,8 +441,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (sceneId.equals("cyclic-minmax-calc-min-column")
                 || sceneId.equals("cyclic-minmax-calc-min-row")
                 || sceneId.equals("definite-minmax-calc-min-column")
-                || sceneId.equals("definite-minmax-calc-min-row")) {
+                || sceneId.equals("definite-minmax-calc-min-row")
+                || sceneId.equals("definite-minmax-calc-min-both-axes")) {
             return "width=14,height=14";
+        }
+        if (sceneId.equals("cyclic-minmax-calc-min-both-axes")
+                || sceneId.equals("cyclic-minmax-calc-min-column-definite-row")) {
+            return "width=54,height=14";
+        }
+        if (sceneId.equals("definite-column-cyclic-minmax-calc-min-row")) {
+            return "width=14,height=24";
         }
         if (sceneId.equals("definite-minmax-calc-column")) return "width=40,height=20";
         if (sceneId.equals("definite-minmax-calc-small-limit")) {
@@ -659,6 +671,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (sceneId.equals("cyclic-minmax-calc-min-column")
                 || sceneId.equals("definite-minmax-calc-min-column")) {
             return "width=24,height=10";
+        }
+        if (sceneId.equals("cyclic-minmax-calc-min-both-axes")) {
+            return "width=104,height=22";
+        }
+        if (sceneId.equals("cyclic-minmax-calc-min-column-definite-row")) {
+            return "width=104,height=10";
+        }
+        if (sceneId.equals("definite-column-cyclic-minmax-calc-min-row")) {
+            return "width=10,height=42";
+        }
+        if (sceneId.equals("definite-minmax-calc-min-both-axes")) {
+            return "width=24,height=22";
         }
         if (sceneId.equals("cyclic-minmax-calc-min-row")
                 || sceneId.equals("definite-minmax-calc-min-row")) {
@@ -1827,6 +1851,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "definite-minmax-calc-min-row":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=14,height=14;"
                         + "1:node=2,x=2,y=2,width=10,height=22]";
+            case "cyclic-minmax-calc-min-both-axes":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=54,height=14;"
+                        + "1:node=2,x=2,y=2,width=104,height=22]";
+            case "cyclic-minmax-calc-min-column-definite-row":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=54,height=14;"
+                        + "1:node=2,x=2,y=2,width=104,height=10]";
+            case "definite-column-cyclic-minmax-calc-min-row":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=14,height=24;"
+                        + "1:node=2,x=2,y=2,width=10,height=42]";
+            case "definite-minmax-calc-min-both-axes":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=14,height=14;"
+                        + "1:node=2,x=2,y=2,width=24,height=22]";
             case "spanning-auto-min-flex-tracks":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=30;"
                         + "1:node=2,x=0,y=0,width=100,height=10]";
@@ -2580,6 +2616,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("cyclic-minmax-calc-row")
                 || sceneId.equals("cyclic-minmax-calc-min-column")
                 || sceneId.equals("cyclic-minmax-calc-min-row")
+                || sceneId.equals("cyclic-minmax-calc-min-both-axes")
+                || sceneId.equals("cyclic-minmax-calc-min-column-definite-row")
+                || sceneId.equals("definite-column-cyclic-minmax-calc-min-row")
+                || sceneId.equals("definite-minmax-calc-min-both-axes")
                 || sceneId.equals("definite-minmax-calc-min-column")
                 || sceneId.equals("definite-minmax-calc-min-row")
                 || sceneId.equals("definite-minmax-calc-column")
@@ -2857,6 +2897,74 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || !sample.targetNodeId.equals(expectedNodeIDs[expectedIndex])
                         || sample.xCssPx != expectedPoints[expectedIndex][0]
                         || sample.yCssPx != expectedPoints[expectedIndex][1]) {
+                    return false;
+                }
+                found[expectedIndex] = true;
+            }
+            for (boolean sampleFound : found) {
+                if (!sampleFound) return false;
+            }
+            return true;
+        }
+        if (sceneId.equals("cyclic-minmax-calc-min-both-axes")
+                || sceneId.equals("cyclic-minmax-calc-min-column-definite-row")
+                || sceneId.equals("definite-column-cyclic-minmax-calc-min-row")
+                || sceneId.equals("definite-minmax-calc-min-both-axes")) {
+            String[] suffixes;
+            String[] nodeKinds;
+            int[][] points;
+            switch (sceneId) {
+                case "cyclic-minmax-calc-min-both-axes":
+                    suffixes = new String[] {"left-border", "item-inside",
+                            "right-border-overpaint", "outside-root", "past-item-right",
+                            "bottom-border-overpaint", "outside-root-bottom", "past-item-bottom"};
+                    nodeKinds = new String[] {"grid", "item", "item", "item", "grid",
+                            "item", "item", "grid"};
+                    points = new int[][] {{1, 5}, {5, 5}, {53, 5}, {60, 5}, {106, 5},
+                            {5, 13}, {5, 16}, {5, 25}};
+                    break;
+                case "cyclic-minmax-calc-min-column-definite-row":
+                    suffixes = new String[] {"left-border", "item-inside",
+                            "right-border-overpaint", "outside-root", "last-item-column",
+                            "past-item-right"};
+                    nodeKinds = new String[] {"grid", "item", "item", "item", "item", "grid"};
+                    points = new int[][] {{1, 5}, {5, 5}, {53, 5}, {60, 5}, {105, 5}, {106, 5}};
+                    break;
+                case "definite-column-cyclic-minmax-calc-min-row":
+                    suffixes = new String[] {"left-border", "item-inside",
+                            "bottom-border-overpaint", "outside-root-bottom", "last-item-row",
+                            "past-item-bottom"};
+                    nodeKinds = new String[] {"grid", "item", "item", "item", "item", "grid"};
+                    points = new int[][] {{1, 5}, {5, 5}, {5, 23}, {5, 25}, {5, 43}, {5, 45}};
+                    break;
+                default:
+                    suffixes = new String[] {"left-border", "item-inside",
+                            "right-border-overpaint", "outside-root", "past-item-right",
+                            "bottom-border-overpaint", "outside-root-bottom", "past-item-bottom"};
+                    nodeKinds = new String[] {"grid", "item", "item", "item", "grid",
+                            "item", "item", "grid"};
+                    points = new int[][] {{1, 5}, {5, 5}, {13, 5}, {16, 5}, {27, 5},
+                            {5, 13}, {5, 16}, {5, 25}};
+                    break;
+            }
+            if (samples.size() != suffixes.length) return false;
+            String rootId = "c114-" + sceneId + "-grid";
+            String itemId = "c114-" + sceneId + "-item";
+            boolean[] found = new boolean[suffixes.length];
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                int expectedIndex = -1;
+                for (int index = 0; index < suffixes.length; index++) {
+                    if ((sceneId + "-" + suffixes[index]).equals(sample.id)) {
+                        expectedIndex = index;
+                        break;
+                    }
+                }
+                String expectedNode = expectedIndex < 0 ? ""
+                        : ("grid".equals(nodeKinds[expectedIndex]) ? rootId : itemId);
+                if (expectedIndex < 0 || found[expectedIndex]
+                        || !sample.targetNodeId.equals(expectedNode)
+                        || sample.xCssPx != points[expectedIndex][0]
+                        || sample.yCssPx != points[expectedIndex][1]) {
                     return false;
                 }
                 found[expectedIndex] = true;
@@ -4512,6 +4620,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "cyclic-minmax-calc-row".equals(pixelMatrixSceneId)
                         || "cyclic-minmax-calc-min-column".equals(pixelMatrixSceneId)
                         || "cyclic-minmax-calc-min-row".equals(pixelMatrixSceneId)
+                        || "cyclic-minmax-calc-min-both-axes".equals(pixelMatrixSceneId)
+                        || "cyclic-minmax-calc-min-column-definite-row".equals(pixelMatrixSceneId)
+                        || "definite-column-cyclic-minmax-calc-min-row".equals(pixelMatrixSceneId)
+                        || "definite-minmax-calc-min-both-axes".equals(pixelMatrixSceneId)
                         || "definite-minmax-calc-min-column".equals(pixelMatrixSceneId)
                         || "definite-minmax-calc-min-row".equals(pixelMatrixSceneId)
                         || "definite-minmax-calc-column".equals(pixelMatrixSceneId)
@@ -8096,19 +8208,41 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "cyclic-minmax-calc-min-row-item-inside":
             case "definite-minmax-calc-min-column-item-inside":
             case "definite-minmax-calc-min-row-item-inside":
+            case "cyclic-minmax-calc-min-both-axes-item-inside":
+            case "cyclic-minmax-calc-min-column-definite-row-item-inside":
+            case "definite-column-cyclic-minmax-calc-min-row-item-inside":
+            case "definite-minmax-calc-min-both-axes-item-inside":
             case "cyclic-minmax-calc-min-column-right-border-overpaint":
             case "definite-minmax-calc-min-column-right-border-overpaint":
             case "cyclic-minmax-calc-min-row-bottom-border-overpaint":
             case "definite-minmax-calc-min-row-bottom-border-overpaint":
+            case "cyclic-minmax-calc-min-both-axes-right-border-overpaint":
+            case "cyclic-minmax-calc-min-both-axes-bottom-border-overpaint":
+            case "cyclic-minmax-calc-min-column-definite-row-right-border-overpaint":
+            case "definite-column-cyclic-minmax-calc-min-row-bottom-border-overpaint":
+            case "definite-minmax-calc-min-both-axes-right-border-overpaint":
+            case "definite-minmax-calc-min-both-axes-bottom-border-overpaint":
             case "cyclic-minmax-calc-min-column-outside-root":
             case "definite-minmax-calc-min-column-outside-root":
             case "cyclic-minmax-calc-min-row-outside-root":
             case "definite-minmax-calc-min-row-outside-root":
+            case "cyclic-minmax-calc-min-both-axes-outside-root":
+            case "cyclic-minmax-calc-min-both-axes-outside-root-bottom":
+            case "cyclic-minmax-calc-min-column-definite-row-outside-root":
+            case "definite-column-cyclic-minmax-calc-min-row-outside-root-bottom":
+            case "definite-minmax-calc-min-both-axes-outside-root":
+            case "definite-minmax-calc-min-both-axes-outside-root-bottom":
+            case "cyclic-minmax-calc-min-column-definite-row-last-item-column":
+            case "definite-column-cyclic-minmax-calc-min-row-last-item-row":
                 return new int[] {229, 72, 77};
             case "cyclic-minmax-calc-min-column-left-border":
             case "cyclic-minmax-calc-min-row-left-border":
             case "definite-minmax-calc-min-column-left-border":
             case "definite-minmax-calc-min-row-left-border":
+            case "cyclic-minmax-calc-min-both-axes-left-border":
+            case "cyclic-minmax-calc-min-column-definite-row-left-border":
+            case "definite-column-cyclic-minmax-calc-min-row-left-border":
+            case "definite-minmax-calc-min-both-axes-left-border":
                 return new int[] {240, 198, 116};
             case "cyclic-fit-content-column-past-item":
             case "cyclic-fit-content-row-past-item-no-text":
@@ -8124,6 +8258,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "cyclic-minmax-calc-min-row-past-item":
             case "definite-minmax-calc-min-column-past-item":
             case "definite-minmax-calc-min-row-past-item":
+            case "cyclic-minmax-calc-min-both-axes-past-item-right":
+            case "cyclic-minmax-calc-min-both-axes-past-item-bottom":
+            case "cyclic-minmax-calc-min-column-definite-row-past-item-right":
+            case "definite-column-cyclic-minmax-calc-min-row-past-item-bottom":
+            case "definite-minmax-calc-min-both-axes-past-item-right":
+            case "definite-minmax-calc-min-both-axes-past-item-bottom":
                 return new int[] {0, 0, 0};
             case "definite-fit-content-calc-small-limit-past-text":
             case "definite-minmax-calc-small-limit-past-text":

@@ -1,0 +1,53 @@
+{
+  "tool": "Agent Browser 0.31.1",
+  "browser": {
+    "product": "Chrome",
+    "version": "156.0.8078.48",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+  },
+  "fixture": "tests/fixtures/css/c11/grid-cyclic-minmax-calc-minimum-two-axis-c114-precomparison.html",
+  "viewport": { "width": 1280, "height": 633, "dpr": 1 },
+  "font": { "status": "loaded", "ahemLoaded": true },
+  "scenes": [
+    {
+      "id": "cyclic-minmax-calc-min-both-axes",
+      "grid": { "x": 0, "y": 0, "width": 54, "height": 14 },
+      "content": { "width": "50px", "height": "10px" },
+      "border": { "width": "2px", "style": "solid", "color": "rgb(240, 198, 116)" },
+      "item": { "x": 2, "y": 2, "width": 104, "height": 22 },
+      "columns": "104px",
+      "rows": "22px",
+      "scroll": { "width": 104, "height": 22 }
+    },
+    {
+      "id": "cyclic-minmax-calc-min-column-definite-row",
+      "grid": { "x": 0, "y": 50, "width": 54, "height": 14 },
+      "content": { "width": "50px", "height": "10px" },
+      "border": { "width": "2px", "style": "solid", "color": "rgb(240, 198, 116)" },
+      "item": { "x": 2, "y": 52, "width": 104, "height": 10 },
+      "columns": "104px",
+      "rows": "10px",
+      "scroll": { "width": 104, "height": 10 }
+    },
+    {
+      "id": "definite-column-cyclic-minmax-calc-min-row",
+      "grid": { "x": 0, "y": 100, "width": 14, "height": 24 },
+      "content": { "width": "10px", "height": "20px" },
+      "border": { "width": "2px", "style": "solid", "color": "rgb(240, 198, 116)" },
+      "item": { "x": 2, "y": 102, "width": 10, "height": 42 },
+      "columns": "10px",
+      "rows": "42px",
+      "scroll": { "width": 20, "height": 42 }
+    },
+    {
+      "id": "definite-minmax-calc-min-both-axes",
+      "grid": { "x": 0, "y": 160, "width": 14, "height": 14 },
+      "content": { "width": "10px", "height": "10px" },
+      "border": { "width": "2px", "style": "solid", "color": "rgb(240, 198, 116)" },
+      "item": { "x": 2, "y": 162, "width": 24, "height": 22 },
+      "columns": "24px",
+      "rows": "22px",
+      "scroll": { "width": 24, "height": 22 }
+    }
+  ]
+}

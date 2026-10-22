@@ -8,3 +8,6 @@ spec/internal/evidence/c18-2-alpha-image-*/**/*.txt whitespace=-blank-at-eol,-bl
 
 # Preserve byte-exact generated Rspress logs with trailing spaces from tool output.
 spec/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/*.log whitespace=-blank-at-eol,-blank-at-eof
+
+# Preserve byte-exact C11.4 simulator logs with trailing spaces from tool output.
+spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-runtime-2026-10-22/**/*.log whitespace=-blank-at-eol,-blank-at-eof
