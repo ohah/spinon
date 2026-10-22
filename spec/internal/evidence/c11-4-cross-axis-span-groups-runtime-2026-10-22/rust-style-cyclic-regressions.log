@@ -1,0 +1,22 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-7f78b653f6fb953d)
+
+running 16 tests
+test projection::style_values::grid_values::tests::track_sizing_profile_preserves_cyclic_fit_content_percentage_limit ... ok
+test c14_intrinsic_contributions_tests::cyclic_min_content_parent_with_min_width_is_rejected ... ok
+test c14_intrinsic_contributions_tests::cyclic_min_content_parent_in_flex_context_is_rejected ... ok
+test c11_4_track_sizing_areas_tests::cyclic_calc::cyclic_calc_tracks_resolve_after_intrinsic_container_sizing ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_minimum::cyclic_minimum_calc_resolves_against_ten_pixel_content_box_after_intrinsic_sizing ... ok
+test c11_4_track_sizing_areas_tests::cyclic_fit_content::cyclic_fit_content_calc_text_scenes_match_tracks_and_frames ... ok
+test c11_4_track_sizing_areas_tests::cyclic_fit_content::cyclic_percentage_fit_content_text_scenes_match_chrome_tracks_and_frames ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_two_axis_spanning_text::cyclic_minmax_calc_two_axis_span_uses_column_width_for_text_row_contribution ... ok
+test c11_4_track_sizing_areas_tests::cyclic_fit_content::cyclic_minmax_calc_text_scenes_match_independent_tracks_and_frames ... ok
+test c11_4_track_sizing_areas_tests::cyclic_two_axis_multitrack::cyclic_percentages_size_both_three_track_axes_and_preserve_cell_overflow ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_minimum_span::cyclic_minmax_calc_minimum_distributes_span_then_resolves_two_tracks_and_overflow ... ok
+test spacing_percentage_tests::cases::cyclic_gap_root_spacing_and_unsupported_margin_fail_with_context ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_cross_axis_span_groups::cyclic_minmax_calc_cross_axis_span_groups_are_source_order_independent ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_minimum_two_axis::cyclic_minimum_calc_resolves_both_axes_against_separate_intrinsic_content_bases ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_overlapping_spans::cyclic_minmax_calc_overlapping_span_groups_are_source_order_independent ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_overlapping_rows::cyclic_minmax_calc_overlapping_row_span_groups_are_source_order_independent ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 210 filtered out; finished in 0.03s

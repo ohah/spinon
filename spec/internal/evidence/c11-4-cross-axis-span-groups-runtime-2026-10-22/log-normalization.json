@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "file": "android-avd-c114-cross-axis-span-groups-android-avd-20261022T094424880Z-1fe01e19/runtime-cyclic-minmax-calc-cross-axis-span-groups-intrinsic-forward.log",
+      "method": "preserve byte-exact input in .raw.gz; readable copy removes line-end tabs/spaces and collapses extra trailing blank lines to one final newline",
+      "rawSha256": "0232cfc32dc80fab1610b6094a4d8b1f516bd7a5f0fd8613b81fc6d7cc16aa98",
+      "rawGzip": "android-avd-c114-cross-axis-span-groups-android-avd-20261022T094424880Z-1fe01e19/runtime-cyclic-minmax-calc-cross-axis-span-groups-intrinsic-forward.log.raw.gz",
+      "rawGzipSha256": "0390aecde4f71eb70a8cb40b09f28786c77b93b4589dcadc93a7a6d5b0e6f0cc",
+      "normalizedSha256": "5013cf01a7dcd9f05134c069a0ac20ed425615797c3fba686008e8ca233240cd"
+    },
+    {
+      "file": "android-avd-c114-cross-axis-span-groups-android-avd-20261022T094424880Z-1fe01e19/runtime-definite-minmax-calc-cross-axis-span-groups-forward.log",
+      "method": "preserve byte-exact input in .raw.gz; readable copy removes line-end tabs/spaces and collapses extra trailing blank lines to one final newline",
+      "rawSha256": "6ace581fda1a8c91d4413f0793cc2d7b8de30a97adf1d08d2264689a35b10158",
+      "rawGzip": "android-avd-c114-cross-axis-span-groups-android-avd-20261022T094424880Z-1fe01e19/runtime-definite-minmax-calc-cross-axis-span-groups-forward.log.raw.gz",
+      "rawGzipSha256": "7717aa93d0cacdcb197265721f36b1b7f9400fabfdb27f26a8c334b24d4e711c",
+      "normalizedSha256": "d08d263a2271692fc9a3615284877bac761020f2c545d6a6788027df71960386"
+    },
+    {
+      "file": "rust-ffi-focused.log",
+      "method": "preserve byte-exact input in .raw.gz; readable copy removes line-end tabs/spaces and collapses extra trailing blank lines to one final newline",
+      "rawSha256": "ceca88b335ee342ae454d167c122291e504a834723bf0f22d10b288453d71349",
+      "rawGzip": "rust-ffi-focused.log.raw.gz",
+      "rawGzipSha256": "aae2a5e95b6a2ed87edf9f363d8d63ebb58c0f2af74eef0aa5883f2f09a17d13",
+      "normalizedSha256": "7be6d23116ce0ce371c6551d5edab5a60d3ddd83f66ad819eea480ce3c324f3b"
+    },
+    {
+      "file": "rust-runtime-focused.log",
+      "method": "preserve byte-exact input in .raw.gz; readable copy removes line-end tabs/spaces and collapses extra trailing blank lines to one final newline",
+      "rawSha256": "e71f5de76e2d1abf88ee977b8be0b875dc969f66f4e00fbfbe92cbec65b5f7e4",
+      "rawGzip": "rust-runtime-focused.log.raw.gz",
+      "rawGzipSha256": "d779d151eb61098e0afae3066aa068e4c7965af22aabe05ed28a7ed7df53bb59",
+      "normalizedSha256": "f3816671dde26fa64b744b6287c56f307af25854269204138dffc276aee02a2c"
+    },
+    {
+      "file": "rust-style-cyclic-regressions.log",
+      "method": "preserve byte-exact input in .raw.gz; readable copy removes line-end tabs/spaces and collapses extra trailing blank lines to one final newline",
+      "rawSha256": "4f22f58953f378c5156456cba01309148cf249bebe5df96255c83b12239e2d66",
+      "rawGzip": "rust-style-cyclic-regressions.log.raw.gz",
+      "rawGzipSha256": "42f70ee1b99ccda10fee519f048c0b1312c5b06fc2b70726d5056e227502661d",
+      "normalizedSha256": "1d47c542ca307d923496272daf583298f551d768669e9fec95f69dfef1076aa7"
+    },
+    {
+      "file": "rust-style-focused.log",
+      "method": "preserve byte-exact input in .raw.gz; readable copy removes line-end tabs/spaces and collapses extra trailing blank lines to one final newline",
+      "rawSha256": "20e00b002b3947c6b1fce9d00ac0b416d3823b79ff6244f4f4ec8a85d5d3a393",
+      "rawGzip": "rust-style-focused.log.raw.gz",
+      "rawGzipSha256": "414724debd65b5c5a7ac6f0fcf6538c15e31275dc28aeee9e9ccf7d7f62cd8f0",
+      "normalizedSha256": "aa6b62ef69dc6331ac37d746892eba18655000a5d6bb5266133cc17adf318c55"
+    }
+  ]
+}

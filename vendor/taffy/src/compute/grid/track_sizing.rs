@@ -573,6 +573,20 @@ fn initialize_track_sizes(
         let resolved_minimum = track
             .min_track_sizing_function
             .definite_value(track_percentage_basis, |val, basis| tree.calc(val, basis))
+            .or_else(|| {
+                // During intrinsic sizing, a cyclic percentage behaves like auto, but an absolute
+                // term inside calc() remains effective. Resolving the percentage at zero preserves
+                // that absolute term (for example, calc(10% + 2px) contributes 2px).
+                (track.kind == GridTrackKind::Track
+                    && axis_inner_node_size.is_none()
+                    && track.min_track_sizing_function.uses_percentage())
+                .then(|| {
+                    track
+                        .min_track_sizing_function
+                        .definite_value(Some(0.0), |val, basis| tree.calc(val, basis))
+                })
+                .flatten()
+            })
             .unwrap_or(0.0);
         // A cyclic percentage min track sizing function is treated as auto while the grid's
         // intrinsic size is calculated. Once it resolves, keep the intrinsic item contribution

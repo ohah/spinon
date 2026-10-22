@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [양축 span text 계획](./c11-4-cyclic-minmax-calc-two-axis-spanning-text.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** Chrome 156 사전 관측과 CSS Grid 2025 CRD에서 독립 계산한 네 고정 scene을 확정했다. 계획 실패 관점 검토 20개와 계획 PR 변경분 별도 검토 20개를 마쳤다. Runtime 구현은 시작하지 않았다. C11.4 상태와 공식 `77/213`은 유지한다.
+**상태:** 네 고정 scene을 기존 opt-in runtime에 연결했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 4/4 scene, track/frame trace 및 definite-width overflow 표본을 확인했다. intrinsic float 차이는 독립 계산 기준 대비 1/64 CSS px 이내다. 기본 release static archive에는 신규 scene ID와 fixture entry marker가 없고 opt-in positive control에는 모두 있다. 계획 실패 관점 검토 20개, 구현/runtime 실패 관점 검토 20개와 PR diff 검토 30개를 기록했다. 제한 fixture 구현이며 C11.4 checkbox와 공식 `77/213`은 유지한다. [실행·화면·artifact 근거](../spec/internal/evidence/c11-4-cross-axis-span-groups-runtime-2026-10-22/README.md)
 
 ## 목적
 
@@ -56,3 +56,6 @@ PR #506은 하나의 text item이 두 columns와 두 rows를 동시에 span하�
 - [계획 실패 관점 20개](./c11-4-cyclic-minmax-calc-cross-axis-span-groups-plan-review-20.md)
 - [CSS Grid CRD 규범 계산과 Chrome 156 사전 비교](../spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-span-groups-precomparison-2026-10-22/README.md)
 - [계획 PR 변경분 별도 실패 관점 검토 20개](../spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-span-groups-precomparison-2026-10-22/plan-pr-diff-review-20.md)
+- [실행·화면·artifact 근거](../spec/internal/evidence/c11-4-cross-axis-span-groups-runtime-2026-10-22/README.md)
+- [구현/runtime 실패 관점 20개](../spec/internal/evidence/c11-4-cross-axis-span-groups-runtime-2026-10-22/implementation-runtime-review-20.md)
+- [PR diff 실패 관점 30개](../spec/internal/evidence/c11-4-cross-axis-span-groups-runtime-2026-10-22/pr-diff-review-30.md)

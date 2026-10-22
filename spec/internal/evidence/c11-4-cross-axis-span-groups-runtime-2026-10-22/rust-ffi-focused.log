@@ -1,0 +1,8 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-acba8d1e5f485582)
+
+running 2 tests
+test runtime_gpu::fixtures::c11_4::cyclic_minmax_calc_cross_axis_span_groups::tests::reverses_only_dom_order_for_reverse_scenes ... ok
+test runtime_gpu::fixtures::c11_4::cyclic_minmax_calc_cross_axis_span_groups::tests::exposes_only_four_fixed_cross_axis_span_group_scenes ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 112 filtered out; finished in 0.02s

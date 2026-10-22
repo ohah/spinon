@@ -140,6 +140,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "cyclic-minmax-calc-two-axis-span-text-max-content",
             "definite-minmax-calc-two-axis-span-text-min-content",
             "definite-minmax-calc-two-axis-span-text-max-content",
+            "cyclic-minmax-calc-cross-axis-span-groups-intrinsic-forward",
+            "cyclic-minmax-calc-cross-axis-span-groups-intrinsic-reverse",
+            "definite-minmax-calc-cross-axis-span-groups-forward",
+            "definite-minmax-calc-cross-axis-span-groups-reverse",
             "cyclic-minmax-calc-min-span-columns", "definite-minmax-calc-min-span-columns",
             "cyclic-minmax-calc-min-span-rows", "definite-minmax-calc-min-span-rows",
             "cyclic-minmax-calc-overlap-forward", "cyclic-minmax-calc-overlap-reverse",
@@ -443,6 +447,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ExpectedRootFrame(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (sceneId.startsWith("cyclic-minmax-calc-cross-axis-span-groups-")) {
+            return "width=55,height=24";
+        }
+        if (sceneId.startsWith("definite-minmax-calc-cross-axis-span-groups-")) {
+            return "width=44,height=34";
+        }
         if (sceneId.equals("cyclic-minmax-calc-two-axis-span-text-min-content")
                 || sceneId.equals("definite-minmax-calc-two-axis-span-text-min-content")) {
             return "width=14,height=64";
@@ -697,6 +707,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        if (c114IsCrossAxisSpanGroupsScene(sceneId)) return "";
         if (sceneId.equals("cyclic-minmax-calc-two-axis-span-text-min-content")
                 || sceneId.equals("definite-minmax-calc-two-axis-span-text-min-content")) {
             return "width=10,height=60";
@@ -908,6 +919,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114ExpectedTextIntrinsicInputs(String sceneId, String report) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (c114IsCrossAxisSpanGroupsScene(sceneId)) {
+            return c114ExpectedCrossAxisSpanGroupIntrinsicInputs(sceneId, report);
+        }
         if (sceneId.startsWith("nested-text-span")) {
             return c114ExpectedNestedTextMultiSpanIntrinsicInputs(sceneId, report);
         }
@@ -1067,6 +1081,46 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     && source.optDouble("minContentHeight", Double.NaN) == minContentHeight
                     && source.optDouble("maxContent", Double.NaN) == maxContent
                     && source.optDouble("maxContentHeight", Double.NaN) == maxContentHeight;
+        } catch (org.json.JSONException | ClassCastException error) {
+            return false;
+        }
+    }
+
+    private static boolean c114ExpectedCrossAxisSpanGroupIntrinsicInputs(
+            String sceneId, String report
+    ) {
+        int diagnosticsMarker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (diagnosticsMarker < 0) return false;
+        String diagnosticsJson = report.substring(
+                diagnosticsMarker + "grid_track_sizing_diagnostics=".length());
+        try {
+            Object value = new org.json.JSONTokener(diagnosticsJson).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONObject diagnostics = (org.json.JSONObject) value;
+            org.json.JSONArray inputs = diagnostics.optJSONArray("gridItemIntrinsicInputs");
+            if (inputs == null || inputs.length() != 2) return false;
+            boolean reversed = sceneId.endsWith("-reverse");
+            int[][] expected = reversed
+                    ? new int[][] {{40, 10, 40, 10}, {20, 30, 60, 10}}
+                    : new int[][] {{20, 30, 60, 10}, {40, 10, 40, 10}};
+            for (int index = 0; index < expected.length; index++) {
+                org.json.JSONObject input = inputs.optJSONObject(index);
+                org.json.JSONObject source = input == null ? null : input.optJSONObject("source");
+                int node = index == 0 ? 2 : 4;
+                int[] sizes = expected[index];
+                if (input == null || input.optInt("grid", -1) != 1
+                        || input.optInt("node", -1) != node
+                        || input.optInt("sourceOrder", -1) != index || source == null
+                        || !"text".equals(source.optString("kind"))
+                        || source.optInt("fontRegistryRevision", -1) != 1
+                        || source.optDouble("minContent", Double.NaN) != sizes[0]
+                        || source.optDouble("minContentHeight", Double.NaN) != sizes[1]
+                        || source.optDouble("maxContent", Double.NaN) != sizes[2]
+                        || source.optDouble("maxContentHeight", Double.NaN) != sizes[3]) {
+                    return false;
+                }
+            }
+            return true;
         } catch (org.json.JSONException | ClassCastException error) {
             return false;
         }
@@ -1733,6 +1787,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (c114IsCrossAxisSpanGroupsScene(sceneId)) return null;
         if (c114IsOverlappingRowsScene(sceneId)) {
             return c114ExpectedOverlappingRowSpanNodeFrames(sceneId);
         }
@@ -2803,6 +2858,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int c114ExpectedBoxCount(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (c114IsCrossAxisSpanGroupsScene(sceneId)) return 3;
         if (sceneId.startsWith("cyclic-minmax-calc-overlap-")
                 || sceneId.startsWith("definite-minmax-calc-overlap-")) return 4;
         if (sceneId.equals("cyclic-percent-column")
@@ -3053,6 +3109,56 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("definite-minmax-calc-two-axis-span-text-max-content");
     }
 
+    private static boolean c114IsCrossAxisSpanGroupsScene(String sceneId) {
+        return sceneId.startsWith("cyclic-minmax-calc-cross-axis-span-groups-")
+                || sceneId.startsWith("definite-minmax-calc-cross-axis-span-groups-");
+    }
+
+    private static boolean c114ExpectedCrossAxisSpanGroupFramesMatch(
+            String sceneId, String report
+    ) {
+        if (!c114IsCrossAxisSpanGroupsScene(sceneId)) return true;
+        boolean intrinsic = sceneId.startsWith("cyclic-");
+        boolean reversed = sceneId.endsWith("-reverse");
+        double rootWidth = intrinsic ? 55.0 : 44.0;
+        double rootHeight = intrinsic ? 24.0 : 34.0;
+        double itemAWidth = intrinsic ? 33.34375 : 26.0;
+        double itemAHeight = intrinsic ? 20.0 : 30.0;
+        double itemBX = intrinsic ? 19.671875 : 16.0;
+        double[][] expected = reversed
+                ? new double[][] {
+                    {1, 0, 0, rootWidth, rootHeight},
+                    {2, itemBX, 2, 40, 10},
+                    {4, 2, 2, itemAWidth, itemAHeight},
+                }
+                : new double[][] {
+                    {1, 0, 0, rootWidth, rootHeight},
+                    {2, 2, 2, itemAWidth, itemAHeight},
+                    {4, itemBX, 2, 40, 10},
+                };
+        java.util.regex.Matcher matcher = java.util.regex.Pattern
+                .compile("node_frames_css_px=\\[([^\\]]+)\\]").matcher(report);
+        if (!matcher.find()) return false;
+        String[] frames = matcher.group(1).split(";");
+        if (frames.length != expected.length) return false;
+        java.util.regex.Pattern framePattern = java.util.regex.Pattern.compile(
+                "^(\\d+):node=(\\d+),x=(-?\\d+(?:\\.\\d+)?),y=(-?\\d+(?:\\.\\d+)?),"
+                        + "width=(\\d+(?:\\.\\d+)?),height=(\\d+(?:\\.\\d+)?)$");
+        for (int index = 0; index < frames.length; index++) {
+            java.util.regex.Matcher frame = framePattern.matcher(frames[index]);
+            if (!frame.matches() || Integer.parseInt(frame.group(1)) != index
+                    || Integer.parseInt(frame.group(2)) != (int) expected[index][0]) return false;
+            for (int component = 0; component < 4; component++) {
+                double actual = Double.parseDouble(frame.group(component + 3));
+                if (!Double.isFinite(actual)
+                        || Math.abs(actual - expected[index][component + 1]) > 1.0 / 64.0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     private static String c114AutoFitMinimumSizeRootFrame(String sceneId) {
         if (!c114IsAutoFitMinimumSizeScene(sceneId)) return null;
         String[] parts = sceneId.split("-");
@@ -3086,6 +3192,28 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (sceneId.equals("definite-minmax-calc-cross-axis-span-groups-forward")
+                || sceneId.equals("definite-minmax-calc-cross-axis-span-groups-reverse")) {
+            if (samples.size() != 2) return false;
+            String rootId = "c114-" + sceneId + "-grid";
+            String itemBId = "c114-" + sceneId + "-item-b";
+            boolean overflow = false;
+            boolean clear = false;
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                if (sample.id.equals(sceneId + "-overflow-item-b")) {
+                    overflow = sample.targetNodeId.equals(itemBId)
+                            && sample.xCssPx == 50 && sample.yCssPx == 4;
+                    if (!overflow) return false;
+                } else if (sample.id.equals(sceneId + "-clear-past-item-b")) {
+                    clear = sample.targetNodeId.equals(rootId)
+                            && sample.xCssPx == 60 && sample.yCssPx == 4;
+                    if (!clear) return false;
+                } else {
+                    return false;
+                }
+            }
+            return overflow && clear;
+        }
         if (c114IsTwoAxisSpanTextScene(sceneId)) {
             boolean minContent = sceneId.endsWith("min-content");
             String[] suffixes = {
@@ -4985,6 +5113,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "definite-minmax-calc-min-both-axes".equals(pixelMatrixSceneId)
                         || "definite-minmax-calc-min-column".equals(pixelMatrixSceneId)
                         || "definite-minmax-calc-min-row".equals(pixelMatrixSceneId)
+                        || "definite-minmax-calc-cross-axis-span-groups-forward".equals(
+                                pixelMatrixSceneId)
+                        || "definite-minmax-calc-cross-axis-span-groups-reverse".equals(
+                                pixelMatrixSceneId)
                         || c114IsTwoAxisSpanTextScene(pixelMatrixSceneId)
                         || "definite-minmax-calc-column".equals(pixelMatrixSceneId)
                         || "definite-minmax-calc-small-limit".equals(pixelMatrixSceneId)
@@ -6212,6 +6344,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     c114GridTrackSizingSceneId, result);
             boolean c114TextIntrinsicInputsMatch = c114ExpectedTextIntrinsicInputs(
                     c114GridTrackSizingSceneId, result);
+            boolean c114CrossAxisSpanGroupFramesMatch = c114ExpectedCrossAxisSpanGroupFramesMatch(
+                    c114GridTrackSizingSceneId, result);
             boolean c114ImageIntrinsicInputsMatch = c114ExpectedImageIntrinsicInputs(
                     c114GridTrackSizingSceneId, result);
             if (!result.startsWith("status=0 ") || !result.contains(
@@ -6219,6 +6353,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || (!expectedRootFrame.isEmpty() && !result.contains(expectedRootFrame))
                     || (!expectedItemFrame.isEmpty() && !result.contains(expectedItemFrame))
                     || (expectedNodeFrames != null && !result.contains(expectedNodeFrames))
+                    || !c114CrossAxisSpanGroupFramesMatch
                     || !c114MultiSpanFramesMatch
                     || !c114TextIntrinsicInputsMatch
                     || !c114ImageIntrinsicInputsMatch) {
@@ -6227,6 +6362,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + " expected_root_frame=" + expectedRootFrame
                         + " expected_item_frame=" + expectedItemFrame
                         + " expected_node_frames=" + expectedNodeFrames
+                        + " cross_axis_span_group_frames_match="
+                        + c114CrossAxisSpanGroupFramesMatch
                         + " multi_span_frames_match=" + c114MultiSpanFramesMatch
                         + " text_intrinsic_inputs_match=" + c114TextIntrinsicInputsMatch
                         + " image_intrinsic_inputs_match=" + c114ImageIntrinsicInputsMatch
@@ -8523,6 +8660,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c114GridExpectedRgb(String sampleId) {
+        if (sampleId.endsWith("-overflow-item-b")) return new int[] {229, 72, 77};
+        if (sampleId.endsWith("-clear-past-item-b")) return new int[] {0, 0, 0};
         if (c114IsTwoAxisSpanTextPixelSample(sampleId, "-left-border")
                 || c114IsTwoAxisSpanTextPixelSample(sampleId, "-right-border")
                 || c114IsTwoAxisSpanTextPixelSample(sampleId, "-bottom-border")) {
