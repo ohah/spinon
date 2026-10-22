@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "pass": "pass26-initial",
+  "baseline": "48eaefe89d1eaad81cd355e961dadd56e0078c00",
+  "sourceCommit": "4e7da7c409db21ad5d55e86442999071062c4c7c",
+  "sourceTree": "a7ba7b7d538d40e4564a2fe1d5c7c7384245bf34",
+  "sourceBranch": "docs/c11-4-overlapping-span-tailnet-20261022",
+  "archiveRoot": "build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial",
+  "archiveFiles": 23790,
+  "archiveBytes": 998199217,
+  "selectedRoot": "build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected",
+  "selectedFiles": 7839,
+  "selectedBytes": 325513966,
+  "changedPlanFiles": [
+    "plan/c11-4-cyclic-minmax-calc-minimum-plan-review-20.md",
+    "plan/c11-4-cyclic-minmax-calc-minimum-span-plan-review-20.md",
+    "plan/c11-4-cyclic-minmax-calc-minimum-span.md",
+    "plan/c11-4-cyclic-minmax-calc-minimum-two-axis-plan-review-20.md",
+    "plan/c11-4-cyclic-minmax-calc-minimum-two-axis.md",
+    "plan/c11-4-cyclic-minmax-calc-minimum.md",
+    "plan/c11-4-cyclic-minmax-calc-overlapping-spans-plan-review-20.md",
+    "plan/c11-4-cyclic-minmax-calc-overlapping-spans.md",
+    "plan/c11-4-grid-track-sizing.md"
+  ],
+  "changedInternalDocs": [
+    "spec/internal/0059-c11-grid-layout.md"
+  ],
+  "copiedDocumentFiles": 8,
+  "evidenceAliases": [
+    "internal/evidence",
+    "spec/internal/evidence",
+    "public/internal/evidence",
+    "public/spec/internal/evidence"
+  ],
+  "copiedEvidenceDirectories": [
+    {
+      "directory": "spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-precomparison-2026-10-22",
+      "trackedFiles": 9
+    },
+    {
+      "directory": "spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-runtime-2026-10-22",
+      "trackedFiles": 44
+    },
+    {
+      "directory": "spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-span-precomparison-2026-10-22",
+      "trackedFiles": 5
+    },
+    {
+      "directory": "spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-span-runtime-2026-10-22",
+      "trackedFiles": 75
+    },
+    {
+      "directory": "spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-precomparison-2026-10-22",
+      "trackedFiles": 8
+    },
+    {
+      "directory": "spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-runtime-2026-10-22",
+      "trackedFiles": 83
+    },
+    {
+      "directory": "spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-precomparison-2026-10-22",
+      "trackedFiles": 6
+    },
+    {
+      "directory": "spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22",
+      "trackedFiles": 70
+    },
+    {
+      "directory": "spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-sync-2026-10-22",
+      "trackedFiles": 5
+    },
+    {
+      "directory": "spec/internal/evidence/c11-4-cyclic-minmax-calc-tailnet-sync-2026-10-22",
+      "trackedFiles": 33
+    },
+    {
+      "directory": "spec/internal/evidence/c11-4-pr497-tailnet-roadmap-sync-2026-10-22",
+      "trackedFiles": 27
+    }
+  ],
+  "copiedTrackedEvidenceFiles": 365,
+  "copiedFixtureFiles": [
+    "tests/fixtures/css/c11/grid-cyclic-minmax-calc-minimum-c114-precomparison.html",
+    "tests/fixtures/css/c11/grid-cyclic-minmax-calc-minimum-span-c114-precomparison.html",
+    "tests/fixtures/css/c11/grid-cyclic-minmax-calc-minimum-two-axis-c114-precomparison.html",
+    "tests/fixtures/css/c11/grid-cyclic-minmax-calc-overlapping-spans-c114-precomparison.html"
+  ],
+  "omittedOperationalConfigs": [
+    {
+      "path": "internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-sync-2026-10-22/rspress-pass26.config.ts",
+      "bytes": 858,
+      "sha256": "75a67225cda49cf2a3e3dd56cc9b6e2ca9e17ee44811dc56d9932cb25b8158f9",
+      "reason": "선택 문서 root의 Rspress route로 해석되는 운영용 build config 제외"
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-minmax-calc-tailnet-sync-2026-10-22/rspress-pass46.config.ts",
+      "bytes": 636,
+      "sha256": "0b6ccb36bd9a34239ef2be847c33f5ed774ecc99ada7184da4b45296690e478e",
+      "reason": "선택 문서 root의 Rspress route로 해석되는 운영용 build config 제외"
+    },
+    {
+      "path": "internal/evidence/c11-4-pr497-tailnet-roadmap-sync-2026-10-22/rspress-pass25.config.ts",
+      "bytes": 627,
+      "sha256": "40a6571d7e108c65bab768d298f98cdb384b3edd569dd8fad9b4c2113e677151",
+      "reason": "선택 문서 root의 Rspress route로 해석되는 운영용 build config 제외"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-sync-2026-10-22/rspress-pass26.config.ts",
+      "bytes": 858,
+      "sha256": "75a67225cda49cf2a3e3dd56cc9b6e2ca9e17ee44811dc56d9932cb25b8158f9",
+      "reason": "선택 문서 root의 Rspress route로 해석되는 운영용 build config 제외"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-minmax-calc-tailnet-sync-2026-10-22/rspress-pass46.config.ts",
+      "bytes": 636,
+      "sha256": "0b6ccb36bd9a34239ef2be847c33f5ed774ecc99ada7184da4b45296690e478e",
+      "reason": "선택 문서 root의 Rspress route로 해석되는 운영용 build config 제외"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-pr497-tailnet-roadmap-sync-2026-10-22/rspress-pass25.config.ts",
+      "bytes": 627,
+      "sha256": "40a6571d7e108c65bab768d298f98cdb384b3edd569dd8fad9b4c2113e677151",
+      "reason": "선택 문서 root의 Rspress route로 해석되는 운영용 build config 제외"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-sync-2026-10-22/rspress-pass26.config.ts",
+      "bytes": 858,
+      "sha256": "75a67225cda49cf2a3e3dd56cc9b6e2ca9e17ee44811dc56d9932cb25b8158f9",
+      "reason": "선택 문서 root의 Rspress route로 해석되는 운영용 build config 제외"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-minmax-calc-tailnet-sync-2026-10-22/rspress-pass46.config.ts",
+      "bytes": 636,
+      "sha256": "0b6ccb36bd9a34239ef2be847c33f5ed774ecc99ada7184da4b45296690e478e",
+      "reason": "선택 문서 root의 Rspress route로 해석되는 운영용 build config 제외"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-pr497-tailnet-roadmap-sync-2026-10-22/rspress-pass25.config.ts",
+      "bytes": 627,
+      "sha256": "40a6571d7e108c65bab768d298f98cdb384b3edd569dd8fad9b4c2113e677151",
+      "reason": "선택 문서 root의 Rspress route로 해석되는 운영용 build config 제외"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-sync-2026-10-22/rspress-pass26.config.ts",
+      "bytes": 858,
+      "sha256": "75a67225cda49cf2a3e3dd56cc9b6e2ca9e17ee44811dc56d9932cb25b8158f9",
+      "reason": "선택 문서 root의 Rspress route로 해석되는 운영용 build config 제외"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-minmax-calc-tailnet-sync-2026-10-22/rspress-pass46.config.ts",
+      "bytes": 636,
+      "sha256": "0b6ccb36bd9a34239ef2be847c33f5ed774ecc99ada7184da4b45296690e478e",
+      "reason": "선택 문서 root의 Rspress route로 해석되는 운영용 build config 제외"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-pr497-tailnet-roadmap-sync-2026-10-22/rspress-pass25.config.ts",
+      "bytes": 627,
+      "sha256": "40a6571d7e108c65bab768d298f98cdb384b3edd569dd8fad9b4c2113e677151",
+      "reason": "선택 문서 root의 Rspress route로 해석되는 운영용 build config 제외"
+    }
+  ],
+  "ignoredUntrackedWorkspaceEvidence": true,
+  "selection": "previous committed docs root plus changed tracked C11.4 plans, STATUS, roadmap, internal index, evidence directories, and fixture pages since pass46",
+  "noPreviewWrites": true
+}

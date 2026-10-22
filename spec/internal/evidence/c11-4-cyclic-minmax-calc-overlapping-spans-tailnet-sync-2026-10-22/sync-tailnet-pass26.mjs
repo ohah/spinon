@@ -3,12 +3,13 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { gunzipSync } from 'node:zlib';
 
 const evidenceDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(evidenceDir, '../../../..');
 const [mode, preflightPath] = process.argv.slice(2);
 const pass = process.env.SPINON_TAILNET_RUN;
-const sourceRoot = path.join(repoRoot, 'build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-site-' + pass);
+const sourceRoot = path.join(repoRoot, 'build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-site-' + pass + '-retry');
 const targetRoot = '/Users/yoonhb/Library/Application Support/SpinonPreview';
 const backupRoot = '/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-sync-2026-10-22/' + pass;
 const targetRootRelative = 'SpinonPreview';
@@ -94,16 +95,20 @@ if (mode === 'preflight') {
       backup_path: status === 'replace' ? `${backupRootRelative}/${relative}` : null,
     };
   });
-  process.stdout.write(`${JSON.stringify(summarize(entries), null, 2)}\n`);
-  process.exit(0);
-}
-
-if (!preflightPath) throw new Error('copy mode requires a preflight JSON path');
-const expected = JSON.parse(fs.readFileSync(path.resolve(evidenceDir, preflightPath), 'utf8'));
-if (expected.pass !== pass || expected.preview_root_relative !== targetRootRelative
-    || expected.backup_root_relative !== backupRootRelative) {
-  throw new Error('preflight identity mismatch');
-}
+  await new Promise((resolve, reject) => process.stdout.write(
+    `${JSON.stringify(summarize(entries), null, 2)}\n`,
+    (error) => error ? reject(error) : resolve(),
+  ));
+  process.exitCode = 0;
+} else {
+  if (!preflightPath) throw new Error('copy mode requires a preflight JSON path');
+  const preflightBytes = fs.readFileSync(path.resolve(evidenceDir, preflightPath));
+  const preflightText = preflightPath.endsWith('.gz') ? gunzipSync(preflightBytes).toString('utf8') : preflightBytes.toString('utf8');
+  const expected = JSON.parse(preflightText);
+  if (expected.pass !== pass || expected.preview_root_relative !== targetRootRelative
+      || expected.backup_root_relative !== backupRootRelative) {
+    throw new Error('preflight identity mismatch');
+  }
 
 const byPath = new Map(expected.files.map((entry) => [entry.path, entry]));
 const sourcePaths = listFiles(sourceRoot);
@@ -138,7 +143,7 @@ if (mode === 'verify') {
       throw new Error(`selected build changed since preflight: ${relative}`);
     }
   }
-  process.stdout.write(`${JSON.stringify({
+  const result = {
     pass,
     target_count: targetResults.length,
     source_counts: expected.counts,
@@ -148,10 +153,13 @@ if (mode === 'verify') {
     no_deletes: true,
     targets: targetResults,
     backups: backupVerification,
-  }, null, 2)}\n`);
+  };
   if (targetResults.some((entry) => !entry.verified) || backupVerification.some((entry) => !entry.verified)) process.exitCode = 1;
-  process.exit();
-}
+  await new Promise((resolve, reject) => process.stdout.write(
+    `${JSON.stringify(result, null, 2)}\n`,
+    (error) => error ? reject(error) : resolve(),
+  ));
+} else {
 
 const copyResults = [];
 const backupResults = [];
@@ -266,3 +274,5 @@ process.stdout.write(`${JSON.stringify({
   files: copyResults,
   backups: backupResults,
 }, null, 2)}\n`);
+}
+}

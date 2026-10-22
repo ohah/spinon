@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "pass": "pass26-initial",
+  "selectedRoot": "build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected",
+  "markdownFilesVisited": 399,
+  "changedMarkdownFiles": 4,
+  "normalizedImageReferences": 8,
+  "skippedMissingLocalImageReferences": 0,
+  "changes": [
+    {
+      "source": "internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md",
+      "before": "android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png",
+      "after": "./android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png"
+    },
+    {
+      "source": "internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md",
+      "before": "ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png",
+      "after": "./ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png"
+    },
+    {
+      "file": "internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md",
+      "before_sha256": "e2ac0fb60d16e21e9314f54216d858d2276cccedef05fecaa8fcb6556d0788df",
+      "after_sha256": "85cf0abb88e7b5c94242cf1599d2901ee8dc9cfaeab92b923198afd298f20c3d"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md",
+      "before": "android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png",
+      "after": "./android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md",
+      "before": "ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png",
+      "after": "./ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png"
+    },
+    {
+      "file": "public/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md",
+      "before_sha256": "e2ac0fb60d16e21e9314f54216d858d2276cccedef05fecaa8fcb6556d0788df",
+      "after_sha256": "85cf0abb88e7b5c94242cf1599d2901ee8dc9cfaeab92b923198afd298f20c3d"
+    },
+    {
+      "source": "public/spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md",
+      "before": "android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png",
+      "after": "./android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png"
+    },
+    {
+      "source": "public/spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md",
+      "before": "ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png",
+      "after": "./ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png"
+    },
+    {
+      "file": "public/spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md",
+      "before_sha256": "e2ac0fb60d16e21e9314f54216d858d2276cccedef05fecaa8fcb6556d0788df",
+      "after_sha256": "85cf0abb88e7b5c94242cf1599d2901ee8dc9cfaeab92b923198afd298f20c3d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md",
+      "before": "android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png",
+      "after": "./android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md",
+      "before": "ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png",
+      "after": "./ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png"
+    },
+    {
+      "file": "spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md",
+      "before_sha256": "e2ac0fb60d16e21e9314f54216d858d2276cccedef05fecaa8fcb6556d0788df",
+      "after_sha256": "85cf0abb88e7b5c94242cf1599d2901ee8dc9cfaeab92b923198afd298f20c3d"
+    }
+  ],
+  "skippedMissing": [],
+  "scope": "selected RSPress root only; tracked Markdown sources remain unchanged"
+}

@@ -1,0 +1,13 @@
+{
+  "completion77of213": true,
+  "mergeShaPresent": true,
+  "parentCheckboxChecked": false,
+  "parentRect": {
+    "bottom": 13268.828125,
+    "top": 299.828125
+  },
+  "parentText": " C11.4 intrinsic track sizing — auto, minmax(), fit-content(), item intrinsic contribution, spans, cyclic percentage와 auto-repeat의 전체 CSS Grid 단계는 미완료다. 병합된 PR #338은 Taffy inherent-size callback trace를, PR #340은 callback과 분리된 direct-leaf text/image intrinsic input 및 outer-size contribution 후보를 보존한다. 현재 후보는 vendored Taffy 0.15.0 기반 RuntimeBlockFlexGridTrackSizingV1 typed track input과 제한 stage trace, opt-in CSS auto-repeat subset을 포함한다. 병합된 PR #345는 Android/iOS 앱 fixture에 stage trace 기록을 연결하고, frame assertion 실패 경로에서도 trace를 보존하도록 호출 순서를 고쳤다. 수정 후 두 simulator에서 7-scene을 재확인했다. C11.4 trace/source input과 Spinon projection/output buffer는 제한 및 fallible reservation을 적용해 해당 오류 시 부분 layout을 반환하지 않는다. 다만 vendored Taffy 내부 working vector의 일부는 일반 reserve/with_capacity를 사용하므로 이를 LayoutError로 변환하거나 전역 OOM 복구를 보장한다고 주장하지 않는다. Chrome 155 고정 26개 Rust 비교 case(이미지 8, span 3, text 10, indefinite percentage 1, auto-repeat 4)와 자동 최소 span 회귀를 확인했다. CARGO_INCREMENTAL=0 cargo test --locked --workspace, workspa",
+  "scrollY": 39530,
+  "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html"
+}

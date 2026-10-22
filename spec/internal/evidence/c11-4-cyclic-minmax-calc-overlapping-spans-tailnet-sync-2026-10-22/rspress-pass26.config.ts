@@ -10,8 +10,8 @@ if (!['pass26-initial', 'pass26-final'].includes(pass ?? '')) {
 
 export default {
   ...baseConfig,
-  root: path.join(repo, 'build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-' + pass),
-  outDir: path.join(repo, 'build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-site-' + pass),
+  root: path.join(repo, 'build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-' + pass + '-selected'),
+  outDir: path.join(repo, 'build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-site-' + pass + '-retry'),
   markdown: {
     ...baseConfig.markdown,
     link: { ...baseConfig.markdown?.link, checkDeadLinks: false },

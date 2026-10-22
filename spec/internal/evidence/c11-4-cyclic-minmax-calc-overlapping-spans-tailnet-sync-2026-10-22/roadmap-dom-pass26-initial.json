@@ -1,0 +1,45 @@
+{
+  "count77of213": true,
+  "links": [
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-cyclic-minmax-calc-overlapping-spans.html",
+      "text": "계획"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.html",
+      "text": "Simulator·화면·artifact 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/implementation-review-20.html",
+      "text": "구현 실패 관점 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/pr-diff-review-20.html",
+      "text": "PR diff 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png",
+      "text": "Android AVD 화면"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png",
+      "text": "iOS Simulator 화면"
+    },
+    {
+      "href": "https://github.com/ohah/spinon/pull/500",
+      "text": "PR #500"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html#c11-css-grid",
+      "text": "공식 상태"
+    }
+  ],
+  "mergeSha": true,
+  "noteRect": {
+    "bottom": 19834.03125,
+    "top": 19405.828125
+  },
+  "noteText": "2026-10-22 C11.4 cyclic `minmax(calc())` overlapping span-groups · PR #500 병합: 같은 span-2 group의 겹치는 70px·80px text contribution 뒤 span-3 140px contribution을 반영했다. 독립 planned increase는 [34,39,39], intrinsic/140px 최종 Columns는 [42,47,47], definite 100px control은 [32,32,32]다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 여섯 scene씩 확인했고, 두 small scene의 root 내부·root border 밖 text·text 뒤 clear 표본은 PixelCopy/Metal에서 각각 6/6 exact다. 기본 release FFI archive에는 새 ID와 fixture marker가 없고 opt-in archive에만 있다. PR #500은 2026-10-22 05:11:19 UTC Rebase and merge로 병합되어 SHA 2f3f45c6aa27f427b36e906fa3a72fd8d864e402를 남겼다. CSS border stroke, Android 실기기·hardware GPU, iOS compositor 이후 pixels, 일반 CSS admission, WPT와 전체 C11.4는 미검증이며 공식 완료 수 77/213을 유지한다. 계획 · Simulator·화면·artifact 근거 · 구현 실패 관점 20개 · PR diff 검토 20개 · Android AVD 화면 · iOS Simulator 화면 · PR #500 · 공식 상태",
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html"
+}
