@@ -75,4 +75,4 @@ strings target/aarch64-apple-ios-sim/release/libspinon_ffi.a | rg 'cyclic-minmax
 
 ## 검증 범위
 
-이 고정 fixture는 임의 CSS admission, 일반적인 Grid·nested Grid 범위, WPT, Android 실기기, hardware GPU, glyph raster equality, iOS compositor 이후 pixel 또는 전체 C11.4 완료를 주장하지 않는다. 구현 PR #516 계획을 실행 가능한 제한 fixture로 검증한 결과이며 C11.4 checkbox와 공식 완료 수 `77/213`을 유지한다. 앱 화면은 box geometry와 검증 상태를 보여주며 glyph paint 근거가 아니다.
+이 고정 fixture는 임의 CSS admission, 일반적인 Grid·nested Grid 범위, WPT, Android 실기기, hardware GPU, glyph raster equality, iOS compositor 이후 pixel 또는 전체 C11.4 완료를 주장하지 않는다. 계획 PR [#516](https://github.com/ohah/spinon/pull/516)에 따른 구현 PR [#517](https://github.com/ohah/spinon/pull/517)이며 C11.4 checkbox와 공식 완료 수 `77/213`을 유지한다. 앱 화면은 box geometry와 검증 상태를 보여주며 glyph paint 근거가 아니다.
