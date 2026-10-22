@@ -3,20 +3,16 @@ const SCENES_JSON: &str = include_str!("c11_4/auto_repeat_named_line_scenes.json
 pub(crate) fn runtime_source(scene_id: &str) -> Option<String> {
     let scenes: serde_json::Value = serde_json::from_str(SCENES_JSON).ok()?;
     let scene_ids = scenes.as_array()?;
-    scene_ids
-        .iter()
-        .any(|scene| {
-            scene
-                .get("id")
-                .and_then(serde_json::Value::as_str)
-                .is_some_and(|id| id == scene_id)
-        })
-        .then(|| {
-            format!(
-                r#"(() => {{
-const scenes = JSON.parse({SCENES_JSON:?});
-const scene = scenes.find(candidate => candidate.id === {scene_id:?});
-if (!scene) throw new Error('unknown auto-repeat named line scene');
+    let scene = scene_ids.iter().find(|scene| {
+        scene
+            .get("id")
+            .and_then(serde_json::Value::as_str)
+            .is_some_and(|id| id == scene_id)
+    })?;
+    let scene_json = serde_json::to_string(scene).ok()?;
+    Some(format!(
+        r#"(() => {{
+const scene = JSON.parse({scene_json:?});
 const rootId = `c114-${{scene.id}}-grid`;
 const itemId = `c114-${{scene.id}}-item`;
 const root = document.createElement('div');
@@ -26,6 +22,8 @@ root.setAttribute('style', [
   'box-sizing:border-box', 'display:grid', `width:${{scene.width}}`,
   `height:${{scene.height}}`, 'margin:0', 'padding:0', 'border:0',
   'align-content:start', 'justify-content:start', 'background-color:#e2e8f0',
+  `grid-auto-columns:${{scene.autoColumns ?? 'auto'}}`,
+  `grid-auto-rows:${{scene.autoRows ?? 'auto'}}`,
   `grid-template-columns:${{scene.columns}}`, `grid-template-rows:${{scene.rows}}`,
   `column-gap:${{scene.columnGap}}`, `row-gap:${{scene.rowGap}}`,
 ].join(';'));
@@ -34,7 +32,8 @@ const item = document.createElement('div');
 item.setAttribute('id', itemId);
 item.setAttribute('data-node', '');
 item.setAttribute('style', [
-  'box-sizing:border-box', 'display:block', 'width:auto', 'height:auto',
+  'box-sizing:border-box', 'display:block', 'width:auto',
+  `height:${{scene.item.height ?? 'auto'}}`,
   'min-width:0', 'min-height:0', 'margin:0', 'padding:0', 'border:0',
   `grid-column-start:${{scene.item.columnStart}}`,
   `grid-column-end:${{scene.item.columnEnd}}`,
@@ -43,9 +42,8 @@ item.setAttribute('style', [
 ].join(';'));
 root.appendChild(item);
 return {{ sceneId:scene.id, rootId, nodeIds:[rootId, itemId] }};
-}})()"#,
-            )
-        })
+}})()"#
+    ))
 }
 
 #[cfg(test)]
@@ -61,13 +59,13 @@ mod tests {
             .iter()
             .map(|scene| scene["id"].as_str().unwrap())
             .collect::<BTreeSet<_>>();
-        assert_eq!(scenes.len(), 8);
+        assert_eq!(scenes.len(), 18);
         assert_eq!(ids.len(), scenes.len());
         for scene in scenes {
             let scene_id = scene["id"].as_str().unwrap();
             let source = runtime_source(scene_id).unwrap();
             assert!(source.len() < 8 * 1024, "{scene_id} source is too large");
-            assert!(source.contains(&format!("candidate.id === {scene_id:?}")));
+            assert!(source.contains(scene_id));
             assert!(source.contains("grid-column-start"));
             assert!(source.contains("grid-row-end"));
         }

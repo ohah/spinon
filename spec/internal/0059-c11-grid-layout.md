@@ -84,6 +84,16 @@ Template area 행·열 수와 explicit track 수가 다르면 `grid-template-are
 
 이 후보는 C11.3.3 완료, WPT 적합성, 전체 CSS Grid 또는 공개 제품 CSS 지원을 선언하지 않는다. C11.3.3 상태와 공식 완료 집계는 미완료로 유지한다.
 
+## C11.4 auto-repeat named-line implicit fallback · 제한 fixture 계약
+
+내부 계약 숫자 버전은 `0.1.0`이다. 이 절은 `c04-runtime-gpu-fixture-test` 아래 고정 fixture에서만 적용하는 기존 Grid runtime profile의 제한 계약을 기록한다. 일반 CSS 입력 허용, 공개 CSS 지원 또는 C11.4 완료를 선언하지 않는다.
+
+한 축의 단일 `auto-fill`이 확장된 뒤 named integer line의 authored occurrence가 없거나 요청 occurrence보다 적으면, 남은 방향에서 필요한 implicit grid line을 해당 이름을 가진 것처럼 계산한다. Named span도 explicit occurrence가 부족하면 검색 방향의 implicit named line을 필요한 횟수만큼 센다. Negative integer line은 explicit grid 끝 기준 의미를 유지한다. 구현은 authored name 존재 여부를 사전 검사하지 않고 symbolic `NamedLine`/`SpanNamed`를 Taffy `0.15.0`의 확장된 named-line resolver에 전달한다.
+
+현재 검증 profile은 고정 `40px` repeated track, `20px` implicit track, gap 0과 한 repeat 축을 사용한다. Row/column 축을 각각 시험한다. Bare name의 첫 occurrence, authored name의 양·음 occurrence 부족, name 자체가 없는 경우, 정방향·역방향 span을 fixture에 포함한다. Layout 경계는 양 끝 span, explicit zero occurrence, zero/범위 초과 span과 Taffy integer 범위를 넘는 placement를 계속 거부하며 전체 계산을 실패 처리한다. 이 고정 fixture에서 row·column auto-track은 `20px`이며 `auto-fit` collapse는 포함하지 않는다.
+
+검증은 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 각 10 scene·20 node frame·track trace 및 draw/present를 포함한다. 고정 PixelCopy 및 iOS compositor 제출 전 Metal drawable 표본은 각 30/30 exact다. 이는 Android 실기기/hardware GPU, iOS compositor 이후 출력, border stroke, WPT, 임의 CSS, 여러 auto-repeat, `auto-fit`, areas, subgrid 또는 writing mode 검증이 아니다. 계획과 실행 결과는 [집중 계획](../../plan/c11-4-auto-repeat-named-line-implicit-fallback.md), [Chrome 156 사전 비교](./evidence/c11-4-auto-repeat-named-line-implicit-fallback-precomparison-2026-10-23/README.md), [실행 근거](./evidence/c11-4-auto-repeat-named-line-implicit-fallback-runtime-2026-10-23/README.md)에 기록한다.
+
 ## 현재 제안 입력과 출력
 
 `LayoutStyle.display`에 `Grid`가 추가될 때도 기존 값을 재해석하지 않는다. 새 Grid container input은 definite content-axis basis, ordered row/column track lists, row/column gap, auto-flow mode를 전달한다. 각 grid item은 source NodeId, optional explicit line/span placement, used margin/size/alignment 값을 받는다. 첫 구현은 다음 subset만 허용한다.

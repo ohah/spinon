@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [auto-repeat authored line names](./c11-4-auto-repeat-named-lines.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 구현 전 계획. C11.4 미완료 checkbox와 공식 `77/213`을 유지한다.
+**상태:** 계획 PR [#533](https://github.com/ohah/spinon/pull/533) 병합 뒤 제한 구현과 Android/iOS Simulator 검증을 마쳤다. 구현 PR과 근거는 아래 결과 절에 연결한다. C11.4 미완료 checkbox와 공식 `77/213`을 유지한다.
 
 ## 결손과 구현 경계
 
@@ -41,3 +41,9 @@ CSS Grid 2025 CRD §8.3은 integer named line에서 이름이 붙은 explicit li
 - [계획 실패 관점 검토 20개](./c11-4-auto-repeat-named-line-implicit-fallback-plan-review-20.md)
 - [Chrome 156 사전 비교·고정 입력](../spec/internal/evidence/c11-4-auto-repeat-named-line-implicit-fallback-precomparison-2026-10-23/README.md)
 - [계획 PR diff 검토 20개](../spec/internal/evidence/c11-4-auto-repeat-named-line-implicit-fallback-precomparison-2026-10-23/plan-pr-diff-review-20.md)
+
+## 제한 구현과 simulator 판정
+
+auto-repeat 축에서는 이름이 authored line metadata에 없거나 반복 뒤에도 occurrence가 모자랄 때 symbolic placement를 유지해 Taffy의 expanded named-line resolver가 implicit fallback을 계산하게 했다. Integer/span 범위, explicit occurrence 0, zero span, paired-span 충돌은 기존 거부 경계를 유지한다. 10 scene의 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 실행은 각 10/10이며, 모든 scene의 track 목록·node frame·draw/present가 통과했다. Android PixelCopy와 iOS compositor 제출 전 Metal drawable은 각각 30/30 고정 표본에서 exact였다. [실행·화면·artifact·검사 근거](../spec/internal/evidence/c11-4-auto-repeat-named-line-implicit-fallback-runtime-2026-10-23/README.md) · [구현/runtime 실패 관점 20개](../spec/internal/evidence/c11-4-auto-repeat-named-line-implicit-fallback-runtime-2026-10-23/implementation-runtime-review-20.md) · [구현 PR diff 실패 관점 30개](../spec/internal/evidence/c11-4-auto-repeat-named-line-implicit-fallback-runtime-2026-10-23/pr-diff-review-30.md).
+
+현재 결과는 한 axis의 단일 `auto-fill`과 고정 implicit px track subset에 한정한다. `auto-fit`, 복수 auto-repeat, areas, subgrid, writing mode, 임의 CSS, WPT, Android 실기기/hardware GPU와 iOS compositor 이후 pixel은 검증하지 않았다. 경계 밖 stroke 색은 이 fixture에서 그리지 않으며 검사하지 않았다. 이 slice는 공개 CSS admission이나 C11.4 완료를 뜻하지 않는다.

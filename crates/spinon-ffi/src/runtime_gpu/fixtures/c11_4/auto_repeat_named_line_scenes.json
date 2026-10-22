@@ -102,5 +102,145 @@
       "collapsed": { "Columns": [false], "Rows": [false, false, false] },
       "gaps": { "Columns": 0, "Rows": 10 }
     }
+  },
+  {
+    "id": "auto-repeat-named-implicit-positive-missing",
+    "width": "125px", "height": "20px",
+    "columns": "repeat(auto-fill, [cell] 40px [cell])", "rows": "20px",
+    "autoColumns": "20px", "autoRows": "20px",
+    "columnGap": "0px", "rowGap": "0px",
+    "item": { "columnStart": "5 ghost", "columnEnd": "6 ghost", "rowStart": "1", "rowEnd": "2", "height": "10px" },
+    "expect": {
+      "root": [125, 20], "item": [220, 0, 20, 10],
+      "tracks": { "Columns": [40, 40, 40, 20, 20, 20, 20, 20, 20], "Rows": [20] },
+      "collapsed": { "Columns": [false, false, false, false, false, false, false, false, false], "Rows": [false] },
+      "gaps": { "Columns": 0, "Rows": 0 }
+    }
+  },
+  {
+    "id": "auto-repeat-named-implicit-positive-insufficient",
+    "width": "125px", "height": "20px",
+    "columns": "repeat(auto-fill, [cell] 40px [cell])", "rows": "20px",
+    "autoColumns": "20px", "autoRows": "20px",
+    "columnGap": "0px", "rowGap": "0px",
+    "item": { "columnStart": "5 cell", "columnEnd": "6 cell", "rowStart": "1", "rowEnd": "2", "height": "10px" },
+    "expect": {
+      "root": [125, 20], "item": [140, 0, 20, 10],
+      "tracks": { "Columns": [40, 40, 40, 20, 20], "Rows": [20] },
+      "collapsed": { "Columns": [false, false, false, false, false], "Rows": [false] },
+      "gaps": { "Columns": 0, "Rows": 0 }
+    }
+  },
+  {
+    "id": "auto-repeat-named-implicit-negative-missing",
+    "width": "125px", "height": "20px",
+    "columns": "repeat(auto-fill, [cell] 40px [cell])", "rows": "20px",
+    "autoColumns": "20px", "autoRows": "20px",
+    "columnGap": "0px", "rowGap": "0px",
+    "item": { "columnStart": "-5 ghost", "columnEnd": "-4 ghost", "rowStart": "1", "rowEnd": "2", "height": "10px" },
+    "expect": {
+      "root": [125, 20], "item": [0, 0, 20, 10],
+      "tracks": { "Columns": [20, 20, 20, 20, 20, 40, 40, 40], "Rows": [20] },
+      "collapsed": { "Columns": [false, false, false, false, false, false, false, false], "Rows": [false] },
+      "gaps": { "Columns": 0, "Rows": 0 }
+    }
+  },
+  {
+    "id": "auto-repeat-named-implicit-negative-insufficient",
+    "width": "125px", "height": "20px",
+    "columns": "repeat(auto-fill, [cell] 40px [cell])", "rows": "20px",
+    "autoColumns": "20px", "autoRows": "20px",
+    "columnGap": "0px", "rowGap": "0px",
+    "item": { "columnStart": "-5 cell", "columnEnd": "-4 cell", "rowStart": "1", "rowEnd": "2", "height": "10px" },
+    "expect": {
+      "root": [125, 20], "item": [0, 0, 20, 10],
+      "tracks": { "Columns": [20, 40, 40, 40], "Rows": [20] },
+      "collapsed": { "Columns": [false, false, false, false], "Rows": [false] },
+      "gaps": { "Columns": 0, "Rows": 0 }
+    }
+  },
+  {
+    "id": "auto-repeat-named-implicit-span-forward-missing",
+    "width": "125px", "height": "20px",
+    "columns": "repeat(auto-fill, [cell] 40px [cell])", "rows": "20px",
+    "autoColumns": "20px", "autoRows": "20px",
+    "columnGap": "0px", "rowGap": "0px",
+    "item": { "columnStart": "4", "columnEnd": "span ghost", "rowStart": "1", "rowEnd": "2", "height": "10px" },
+    "expect": {
+      "root": [125, 20], "item": [120, 0, 20, 10],
+      "tracks": { "Columns": [40, 40, 40, 20], "Rows": [20] },
+      "collapsed": { "Columns": [false, false, false, false], "Rows": [false] },
+      "gaps": { "Columns": 0, "Rows": 0 }
+    }
+  },
+  {
+    "id": "auto-repeat-named-implicit-span-backward-missing",
+    "width": "125px", "height": "20px",
+    "columns": "repeat(auto-fill, [cell] 40px [cell])", "rows": "20px",
+    "autoColumns": "20px", "autoRows": "20px",
+    "columnGap": "0px", "rowGap": "0px",
+    "item": { "columnStart": "span ghost", "columnEnd": "1", "rowStart": "1", "rowEnd": "2", "height": "10px" },
+    "expect": {
+      "root": [125, 20], "item": [0, 0, 20, 10],
+      "tracks": { "Columns": [20, 40, 40, 40], "Rows": [20] },
+      "collapsed": { "Columns": [false, false, false, false], "Rows": [false] },
+      "gaps": { "Columns": 0, "Rows": 0 }
+    }
+  },
+  {
+    "id": "auto-repeat-named-implicit-span-forward-insufficient",
+    "width": "125px", "height": "20px",
+    "columns": "repeat(auto-fill, [cell] 40px [cell])", "rows": "20px",
+    "autoColumns": "20px", "autoRows": "20px",
+    "columnGap": "0px", "rowGap": "0px",
+    "item": { "columnStart": "3", "columnEnd": "span cell 2", "rowStart": "1", "rowEnd": "2", "height": "10px" },
+    "expect": {
+      "root": [125, 20], "item": [80, 0, 60, 10],
+      "tracks": { "Columns": [40, 40, 40, 20], "Rows": [20] },
+      "collapsed": { "Columns": [false, false, false, false], "Rows": [false] },
+      "gaps": { "Columns": 0, "Rows": 0 }
+    }
+  },
+  {
+    "id": "auto-repeat-named-implicit-span-backward-insufficient",
+    "width": "125px", "height": "20px",
+    "columns": "repeat(auto-fill, [cell] 40px [cell])", "rows": "20px",
+    "autoColumns": "20px", "autoRows": "20px",
+    "columnGap": "0px", "rowGap": "0px",
+    "item": { "columnStart": "span cell 2", "columnEnd": "2", "rowStart": "1", "rowEnd": "2", "height": "10px" },
+    "expect": {
+      "root": [125, 20], "item": [0, 0, 60, 10],
+      "tracks": { "Columns": [20, 40, 40, 40], "Rows": [20] },
+      "collapsed": { "Columns": [false, false, false, false], "Rows": [false] },
+      "gaps": { "Columns": 0, "Rows": 0 }
+    }
+  },
+  {
+    "id": "auto-repeat-named-implicit-row-positive-missing",
+    "width": "20px", "height": "125px",
+    "columns": "20px", "rows": "repeat(auto-fill, [cell] 40px [cell])",
+    "autoColumns": "20px", "autoRows": "20px",
+    "columnGap": "0px", "rowGap": "0px",
+    "item": { "columnStart": "1", "columnEnd": "2", "rowStart": "5 ghost", "rowEnd": "6 ghost", "height": "10px" },
+    "expect": {
+      "root": [20, 125], "item": [0, 220, 20, 10],
+      "tracks": { "Columns": [20], "Rows": [40, 40, 40, 20, 20, 20, 20, 20, 20] },
+      "collapsed": { "Columns": [false], "Rows": [false, false, false, false, false, false, false, false, false] },
+      "gaps": { "Columns": 0, "Rows": 0 }
+    }
+  },
+  {
+    "id": "auto-repeat-named-implicit-row-negative-missing",
+    "width": "20px", "height": "125px",
+    "columns": "20px", "rows": "repeat(auto-fill, [cell] 40px [cell])",
+    "autoColumns": "20px", "autoRows": "20px",
+    "columnGap": "0px", "rowGap": "0px",
+    "item": { "columnStart": "1", "columnEnd": "2", "rowStart": "-5 ghost", "rowEnd": "-4 ghost", "height": "10px" },
+    "expect": {
+      "root": [20, 125], "item": [0, 0, 20, 10],
+      "tracks": { "Columns": [20], "Rows": [20, 20, 20, 20, 20, 40, 40, 40] },
+      "collapsed": { "Columns": [false], "Rows": [false, false, false, false, false, false, false, false] },
+      "gaps": { "Columns": 0, "Rows": 0 }
+    }
   }
 ]

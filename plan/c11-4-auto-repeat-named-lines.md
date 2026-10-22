@@ -18,7 +18,7 @@
 - cascade snapshot은 repeated fragment의 `N+1` line-name group과 top-level component 경계 line-name group을 구조대로 보존한다. 비-auto-repeat track list의 기존 `N+1` line-name 의미는 바꾸지 않는다. allocation 실패와 잘못된 group 수는 구체적 오류로 닫는다.
 - auto-repeat 축의 named start/end 및 named span을 반복 수를 아는 Taffy 단계까지 보존한다. 일반(non-repeat) 축은 기존 projector의 이름 해석을 유지한다. auto-repeat이 없는 container/profile은 변경하지 않는다.
 - fixed prefix/suffix line, repeat fragment의 line, repeat 사이에서 합쳐지는 끝/시작 line을 named occurrence 검색에 포함한다. 같은 물리 line에 중복 기재된 같은 식별자는 여러 occurrence로 세지 않는다.
-- `grid-template-areas`와 auto-repeat의 결합, 없는 이름의 implicit-line fallback, subgrid, writing mode, auto-repeat과 integer `repeat()` 혼합은 계속 거부한다. line name이 없는 numeric placement 및 현재 auto-placement 동작은 회귀 확인한다.
+- `grid-template-areas`와 auto-repeat의 결합, subgrid, writing mode, auto-repeat과 integer `repeat()` 혼합은 계속 거부한다. line name이 없는 numeric placement 및 현재 auto-placement 동작은 회귀 확인한다.
 
 ## 고정 입력과 oracle
 
@@ -63,3 +63,5 @@
 - [Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 8-scene 결과, screenshot, artifact hash, 테스트와 제한](../spec/internal/evidence/c11-4-auto-repeat-named-lines-runtime-2026-10-23/README.md)
 - [구현/runtime 독립 실패 관점 20개](../spec/internal/evidence/c11-4-auto-repeat-named-lines-runtime-2026-10-23/implementation-runtime-review-20.md)
 - [PR diff 실패 관점 30개](../spec/internal/evidence/c11-4-auto-repeat-named-lines-runtime-2026-10-23/pr-diff-review-30.md)
+
+missing/insufficient named-line implicit fallback은 후속의 별도 고정 slice로 추가했다. 범위는 단일 `auto-fill` 축의 integer named line과 forward/backward named span에 한정하며, [집중 계획](./c11-4-auto-repeat-named-line-implicit-fallback.md), [Chrome 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-named-line-implicit-fallback-precomparison-2026-10-23/README.md), [Android/iOS Simulator 실행](../spec/internal/evidence/c11-4-auto-repeat-named-line-implicit-fallback-runtime-2026-10-23/README.md)을 따른다. 전체 Grid 지원이나 C11.4 완료로 확대하지 않는다.

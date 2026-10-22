@@ -487,78 +487,49 @@ fn normalize_auto_repeat_grid_items(
             repeat_end_property,
             repeat_start,
             repeat_end,
-            if repeat_columns {
-                &container.columns_line_names
-            } else {
-                &container.rows_line_names
-            },
-            if repeat_columns {
-                &container
-                    .columns_auto_repeat
-                    .as_ref()
-                    .expect("repeat column axis has auto-repeat")
-                    .line_names
-            } else {
-                &container
-                    .rows_auto_repeat
-                    .as_ref()
-                    .expect("repeat row axis has auto-repeat")
-                    .line_names
-            },
         )?;
-        let fixed_axis_is_definite = if let (Some(columns_auto_repeat), Some(rows_auto_repeat)) =
-            (&container.columns_auto_repeat, &container.rows_auto_repeat)
-        {
-            // Taffy must resolve both axes against their expanded auto-repeat counts. Here we
-            // only classify automatic placement; resolving coordinates against the authored
-            // pattern length rejects valid negative and positive lines on the secondary axis.
-            let (fixed_line_names, fixed_repeat_line_names) = if repeat_columns {
-                (&container.rows_line_names, &rows_auto_repeat.line_names)
+        let fixed_axis_is_definite =
+            if container.columns_auto_repeat.is_some() && container.rows_auto_repeat.is_some() {
+                // Taffy must resolve both axes against their expanded auto-repeat counts. Here we
+                // only classify automatic placement; resolving coordinates against the authored
+                // pattern length rejects valid negative and positive lines on the secondary axis.
+                validate_auto_repeat_placement(
+                    node,
+                    if repeat_columns {
+                        "grid-row-start"
+                    } else {
+                        "grid-column-start"
+                    },
+                    if repeat_columns {
+                        "grid-row-end"
+                    } else {
+                        "grid-column-end"
+                    },
+                    fixed_start,
+                    fixed_end,
+                )?;
+                has_definite_grid_axis(fixed_start, fixed_end)
             } else {
-                (
-                    &container.columns_line_names,
-                    &columns_auto_repeat.line_names,
-                )
+                resolve_axis(
+                    child,
+                    if repeat_columns {
+                        "grid-row-start"
+                    } else {
+                        "grid-column-start"
+                    },
+                    if repeat_columns {
+                        "grid-row-end"
+                    } else {
+                        "grid-column-end"
+                    },
+                    fixed_start,
+                    fixed_end,
+                    fixed_count,
+                    false,
+                )?
+                .start
+                .is_some()
             };
-            validate_auto_repeat_placement(
-                node,
-                if repeat_columns {
-                    "grid-row-start"
-                } else {
-                    "grid-column-start"
-                },
-                if repeat_columns {
-                    "grid-row-end"
-                } else {
-                    "grid-column-end"
-                },
-                fixed_start,
-                fixed_end,
-                fixed_line_names,
-                fixed_repeat_line_names,
-            )?;
-            has_definite_grid_axis(fixed_start, fixed_end)
-        } else {
-            resolve_axis(
-                child,
-                if repeat_columns {
-                    "grid-row-start"
-                } else {
-                    "grid-column-start"
-                },
-                if repeat_columns {
-                    "grid-row-end"
-                } else {
-                    "grid-column-end"
-                },
-                fixed_start,
-                fixed_end,
-                fixed_count,
-                false,
-            )?
-            .start
-            .is_some()
-        };
 
         if !fixed_axis_is_definite || !has_definite_grid_axis(repeat_start, repeat_end) {
             output.auto_placed_items.insert(child);
@@ -576,8 +547,6 @@ fn validate_auto_repeat_placement(
     end_property: &'static str,
     start: &GridPlacementInput,
     end: &GridPlacementInput,
-    outer_names: &[Vec<String>],
-    repeated_names: &[Vec<String>],
 ) -> Result<(), LayoutError> {
     if matches!(
         (start, end),
@@ -613,14 +582,7 @@ fn validate_auto_repeat_placement(
                     });
                 }
             }
-            GridPlacementInput::NamedLine { name, occurrence } => {
-                if !auto_repeat_name_exists(name, outer_names, repeated_names) {
-                    return Err(LayoutError::InvalidGridPlacement {
-                        node,
-                        property,
-                        reason: "named line이 authored auto-repeat line metadata에 없습니다",
-                    });
-                }
+            GridPlacementInput::NamedLine { occurrence, .. } => {
                 if i16::try_from(*occurrence).is_err() {
                     return Err(LayoutError::InvalidGridPlacement {
                         node,
@@ -629,14 +591,7 @@ fn validate_auto_repeat_placement(
                     });
                 }
             }
-            GridPlacementInput::SpanNamed { name, count } => {
-                if !auto_repeat_name_exists(name, outer_names, repeated_names) {
-                    return Err(LayoutError::InvalidGridPlacement {
-                        node,
-                        property,
-                        reason: "named span이 authored auto-repeat line metadata에 없습니다",
-                    });
-                }
+            GridPlacementInput::SpanNamed { count, .. } => {
                 if *count == 0 || u16::try_from(*count).is_err() {
                     return Err(LayoutError::InvalidGridPlacement {
                         node,
@@ -648,18 +603,6 @@ fn validate_auto_repeat_placement(
         }
     }
     Ok(())
-}
-
-fn auto_repeat_name_exists(
-    name: &str,
-    outer_names: &[Vec<String>],
-    repeated_names: &[Vec<String>],
-) -> bool {
-    outer_names
-        .iter()
-        .chain(repeated_names)
-        .flatten()
-        .any(|authored| authored == name)
 }
 
 fn has_definite_grid_axis(start: &GridPlacementInput, end: &GridPlacementInput) -> bool {
