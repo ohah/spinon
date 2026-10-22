@@ -18,6 +18,8 @@ use super::c11_4_text::AHEM;
 
 const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 
+#[path = "c11_4_mixed/cyclic_minmax_mixed_text_image_span.rs"]
+mod cyclic_minmax_mixed_text_image_span;
 #[path = "c11_4_mixed/style.rs"]
 mod style;
 
@@ -131,6 +133,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     root: HostNodeHandle,
     styles: &ComputedStyleSnapshot,
 ) -> Result<Option<super::C11_4MixedInput>, RuntimeLayoutFailure> {
+    if let Some(input) = cyclic_minmax_mixed_text_image_span::prepare(snapshot, root, styles)? {
+        return Ok(Some(input));
+    }
     let (namespace, tag, root_id) = element_identity(snapshot, root)?;
     let Some(scene_id) = root_id
         .strip_prefix("c114-")
@@ -292,6 +297,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         paragraph_styles,
         engine,
         intrinsic_sizes,
+        allow_two_axis_root_intrinsic: false,
     }))
 }
 

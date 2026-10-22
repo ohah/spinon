@@ -1,0 +1,409 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "width": 1280,
+    "height": 633,
+    "dpr": 1
+  },
+  "fontLoaded": true,
+  "imagesDecoded": [
+    true,
+    true,
+    true,
+    true
+  ],
+  "observations": [
+    {
+      "scene": "intrinsic-forward",
+      "borderBox": {
+        "width": 55,
+        "height": 30.65625
+      },
+      "columns": [
+        15.671875,
+        15.671875,
+        15.65625
+      ],
+      "rows": [
+        12.328125,
+        12.328125
+      ],
+      "items": [
+        {
+          "id": "A",
+          "kind": "div",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 33.34375,
+            "height": 26.65625
+          },
+          "columns": "1 / 3",
+          "rows": "1 / 3",
+          "textLines": [
+            {
+              "x": 2,
+              "y": 2,
+              "width": 20,
+              "height": 10
+            },
+            {
+              "x": 2,
+              "y": 12,
+              "width": 30,
+              "height": 10
+            }
+          ],
+          "natural": null
+        },
+        {
+          "id": "B",
+          "kind": "img",
+          "frame": {
+            "x": 19.671875,
+            "y": 2,
+            "width": 40,
+            "height": 26.65625
+          },
+          "columns": "2 / 4",
+          "rows": "1 / 3",
+          "textLines": null,
+          "natural": {
+            "width": 24,
+            "height": 16
+          }
+        },
+        {
+          "id": "C",
+          "kind": "div",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 51,
+            "height": 26.65625
+          },
+          "columns": "1 / 4",
+          "rows": "1 / 3",
+          "textLines": [
+            {
+              "x": 2,
+              "y": 2,
+              "width": 50,
+              "height": 10
+            },
+            {
+              "x": 2,
+              "y": 12,
+              "width": 50,
+              "height": 10
+            }
+          ],
+          "natural": null
+        }
+      ]
+    },
+    {
+      "scene": "intrinsic-reverse",
+      "borderBox": {
+        "width": 55,
+        "height": 30.65625
+      },
+      "columns": [
+        15.671875,
+        15.671875,
+        15.65625
+      ],
+      "rows": [
+        12.328125,
+        12.328125
+      ],
+      "items": [
+        {
+          "id": "C",
+          "kind": "div",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 51,
+            "height": 26.65625
+          },
+          "columns": "1 / 4",
+          "rows": "1 / 3",
+          "textLines": [
+            {
+              "x": 2,
+              "y": 2,
+              "width": 50,
+              "height": 10
+            },
+            {
+              "x": 2,
+              "y": 12,
+              "width": 50,
+              "height": 10
+            }
+          ],
+          "natural": null
+        },
+        {
+          "id": "B",
+          "kind": "img",
+          "frame": {
+            "x": 19.671875,
+            "y": 2,
+            "width": 40,
+            "height": 26.65625
+          },
+          "columns": "2 / 4",
+          "rows": "1 / 3",
+          "textLines": null,
+          "natural": {
+            "width": 24,
+            "height": 16
+          }
+        },
+        {
+          "id": "A",
+          "kind": "div",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 33.34375,
+            "height": 26.65625
+          },
+          "columns": "1 / 3",
+          "rows": "1 / 3",
+          "textLines": [
+            {
+              "x": 2,
+              "y": 2,
+              "width": 20,
+              "height": 10
+            },
+            {
+              "x": 2,
+              "y": 12,
+              "width": 30,
+              "height": 10
+            }
+          ],
+          "natural": null
+        }
+      ]
+    },
+    {
+      "scene": "definite-forward",
+      "borderBox": {
+        "width": 44,
+        "height": 44
+      },
+      "columns": [
+        12,
+        12,
+        12
+      ],
+      "rows": [
+        19,
+        19
+      ],
+      "items": [
+        {
+          "id": "A",
+          "kind": "div",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 26,
+            "height": 40
+          },
+          "columns": "1 / 3",
+          "rows": "1 / 3",
+          "textLines": [
+            {
+              "x": 2,
+              "y": 2,
+              "width": 20,
+              "height": 10
+            },
+            {
+              "x": 2,
+              "y": 12,
+              "width": 10,
+              "height": 10
+            },
+            {
+              "x": 2,
+              "y": 22,
+              "width": 10,
+              "height": 10
+            }
+          ],
+          "natural": null
+        },
+        {
+          "id": "B",
+          "kind": "img",
+          "frame": {
+            "x": 16,
+            "y": 2,
+            "width": 40,
+            "height": 26.65625
+          },
+          "columns": "2 / 4",
+          "rows": "1 / 3",
+          "textLines": null,
+          "natural": {
+            "width": 24,
+            "height": 16
+          }
+        },
+        {
+          "id": "C",
+          "kind": "div",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 40,
+            "height": 40
+          },
+          "columns": "1 / 4",
+          "rows": "1 / 3",
+          "textLines": [
+            {
+              "x": 2,
+              "y": 2,
+              "width": 20,
+              "height": 10
+            },
+            {
+              "x": 2,
+              "y": 12,
+              "width": 20,
+              "height": 10
+            },
+            {
+              "x": 2,
+              "y": 22,
+              "width": 20,
+              "height": 10
+            },
+            {
+              "x": 2,
+              "y": 32,
+              "width": 20,
+              "height": 10
+            }
+          ],
+          "natural": null
+        }
+      ]
+    },
+    {
+      "scene": "definite-reverse",
+      "borderBox": {
+        "width": 44,
+        "height": 44
+      },
+      "columns": [
+        12,
+        12,
+        12
+      ],
+      "rows": [
+        19,
+        19
+      ],
+      "items": [
+        {
+          "id": "C",
+          "kind": "div",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 40,
+            "height": 40
+          },
+          "columns": "1 / 4",
+          "rows": "1 / 3",
+          "textLines": [
+            {
+              "x": 2,
+              "y": 2,
+              "width": 20,
+              "height": 10
+            },
+            {
+              "x": 2,
+              "y": 12,
+              "width": 20,
+              "height": 10
+            },
+            {
+              "x": 2,
+              "y": 22,
+              "width": 20,
+              "height": 10
+            },
+            {
+              "x": 2,
+              "y": 32,
+              "width": 20,
+              "height": 10
+            }
+          ],
+          "natural": null
+        },
+        {
+          "id": "B",
+          "kind": "img",
+          "frame": {
+            "x": 16,
+            "y": 2,
+            "width": 40,
+            "height": 26.65625
+          },
+          "columns": "2 / 4",
+          "rows": "1 / 3",
+          "textLines": null,
+          "natural": {
+            "width": 24,
+            "height": 16
+          }
+        },
+        {
+          "id": "A",
+          "kind": "div",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 26,
+            "height": 40
+          },
+          "columns": "1 / 3",
+          "rows": "1 / 3",
+          "textLines": [
+            {
+              "x": 2,
+              "y": 2,
+              "width": 20,
+              "height": 10
+            },
+            {
+              "x": 2,
+              "y": 12,
+              "width": 10,
+              "height": 10
+            },
+            {
+              "x": 2,
+              "y": 22,
+              "width": 10,
+              "height": 10
+            }
+          ],
+          "natural": null
+        }
+      ]
+    }
+  ]
+}

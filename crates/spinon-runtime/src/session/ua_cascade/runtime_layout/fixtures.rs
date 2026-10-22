@@ -93,6 +93,7 @@ pub(super) struct C11_4MixedInput {
     pub(super) paragraph_styles: BTreeMap<NodeId, ParagraphStyle>,
     pub(super) engine: TextLayoutEngine,
     pub(super) intrinsic_sizes: spinon_layout::LayoutIntrinsicSizeSnapshot,
+    pub(super) allow_two_axis_root_intrinsic: bool,
 }
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]

@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [text/image mixed-span precedent](./c11-4-mixed-text-image-multispan-contributions.md) · [cyclic replaced-image precedent](./c11-4-cyclic-minmax-replaced-image-span.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** Chrome 156 Agent Browser 사전 관측과 CSS Grid 2025 CRD 독립 기대값을 네 fixed scene으로 기록했고, 계획 실패 관점 20개를 검토했다. Runtime 구현은 시작하지 않았다. 이 제한 slice는 C11.4 checkbox와 공식 `77/213`을 올리지 않는다.
+**상태:** exact scene adapter와 intrinsic trace 검증을 구현했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 장면의 frame·track·trace·draw/present가 각각 4/4 통과했고, definite 장면의 경계 PixelCopy/Metal 표본도 각 플랫폼에서 6/6 exact다. 기존 mixed text/image multispan 네 장면도 두 simulator에서 각각 4/4 통과했다. 기본/fixture artifact 경계, workspace 및 feature Clippy, Rust 회귀, 문서와 구현/runtime 20개·PR diff 30개 검토가 끝났다. PR·merge·Tailnet preview 반영만 남았다. 이 제한 slice는 C11.4 checkbox와 공식 `77/213`을 올리지 않는다.
 
 ## 목적
 
@@ -29,7 +29,7 @@ CSS Grid 2025 CRD §7.2.1 treats the cyclic percentage as auto during intrinsic 
 
 Columns then determine text wrapping. At intrinsic width, A has 20px and 30px lines, C has two 50px lines, and the image contributes block size `80/3px`. Rows start at `[2,2]`; with the 2px gutter, the image's 80/3px contribution proposes `31/3px` per track, yielding rational Rows `[37/3,37/3]` and intrinsic content height `80/3px`. The 40px definite-width control wraps A to three lines and C to four; C's 40px block contribution gives Rows `[19,19]`. The image ends 12px beyond the definite root's right border, so the simulator gate includes a sample in the image outside the border and a sample after its painted extent.
 
-Chrome 156 Agent Browser observed the same track sizes, root boxes, item frames, text line widths and source-order invariance. CSSOM values for the rational `80/3px` image-driven height are quantized to 1/64 CSS px; every used value is compared against the independent calculation with at most 1/64 CSS px tolerance. The browser capture is an observation, not the source of the expectations. See the [observation JSON](../spec/internal/evidence/c11-4-cyclic-minmax-mixed-text-image-span-precomparison-2026-10-23/chrome156-observation.json), [environment and asset revisions](../spec/internal/evidence/c11-4-cyclic-minmax-mixed-text-image-span-precomparison-2026-10-23/browser-environment.json), and [Chrome screenshot](../spec/internal/evidence/c11-4-cyclic-minmax-mixed-text-image-span-precomparison-2026-10-23/chrome-agent-browser-precomparison.png).
+Chrome 156 Agent Browser observed the same track sizes, root boxes, item frames, text line widths and source-order invariance. CSSOM values for the rational `80/3px` image-driven height are quantized to 1/64 CSS px; every used value is compared against the independent calculation with at most 1/64 CSS px tolerance. The browser capture is an observation, not the source of the expectations. The HTML now explicitly uses `align-self: start` for the replaced image, and a fresh Agent Browser capture confirmed the same four observations and screenshot hash. See the [observation JSON](../spec/internal/evidence/c11-4-cyclic-minmax-mixed-text-image-span-precomparison-2026-10-23/chrome156-observation.json), [recapture](../spec/internal/evidence/c11-4-cyclic-minmax-mixed-text-image-span-precomparison-2026-10-23/chrome156-observation-pass2.json), [environment and asset revisions](../spec/internal/evidence/c11-4-cyclic-minmax-mixed-text-image-span-precomparison-2026-10-23/browser-environment.json), and [Chrome screenshot](../spec/internal/evidence/c11-4-cyclic-minmax-mixed-text-image-span-precomparison-2026-10-23/chrome-agent-browser-precomparison-pass2.png).
 
 ## 구현 관문
 
@@ -39,10 +39,10 @@ Chrome 156 Agent Browser observed the same track sizes, root boxes, item frames,
 4. Columns가 확정된 뒤 text line widths로 Rows contribution을 측정한다. intrinsic rational Rows와 definite `[19,19]`를 구분하고, stretched item frame을 intrinsic contribution으로 재사용하지 않는다. Reverse source order는 item-keyed geometry와 track sizes를 바꾸지 않아야 한다.
 5. 기존 fixture-test feature만 사용한다. 기본 product artifact에 새 FFI symbol·scene marker·image/text payload가 없고 opt-in positive control에는 모두 있는지 확인한다. 기존 cyclic minmax, replaced-image, mixed text/image, text wrapping, cross-axis span regression을 실행한다.
 6. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 새 네 scene과 관련 C11.4 regression을 실행한다. 물리 Android 연결은 하지 않는다. Root/item frame·track stage·image draw·draw/present를 확인하고, PixelCopy 및 compositor 제출 전 Metal 표본을 서로 구분한다.
-7. Definite forward/reverse scene에서 root border 밖의 B image pixel과 image 뒤 surface clear를 각 simulator 표면에서 검사한다. Renderer가 CSS border stroke를 그리지 않는 경계와 iOS compositor 제출 이후 미검증을 명시한다.
+7. Definite forward/reverse scene에서 root 바깥의 B image pixel, image 뒤 surface clear와 각 scene의 지정된 root 위쪽 edge 표본을 simulator 표면에서 검사한다. 한 점의 root-edge 표본을 전체 CSS border stroke 검증으로 확대하지 않고 iOS compositor 제출 이후 미검증을 명시한다.
 8. Formatter, focused Rust/style/layout/FFI checks, workspace Clippy, Android/iOS fixture build와 fixture artifact 경계를 실행한다. 실패를 수정하고 영향 scene 및 표본을 다시 확인한다.
-9. 구현과 runtime을 계획과 독립된 새 실패 관점 20개로 검토한다. PR diff에는 사용자가 요청한 별도 20개 관점을 적용한다. 재사용·중복한 관점은 세지 않는다.
-10. PR 본문에는 실제 AVD/iOS Simulator screenshot raw image를 각각 연결하고, required check 및 merge state를 확인한 뒤 Rebase and merge한다. 병합 후 Tailnet roadmap을 동기화하고 Agent Browser로 화면을 확인한 뒤 브라우저 세션과 임시 로컬 HTTP server를 종료한다.
+9. 구현과 runtime을 계획과 독립된 새 실패 관점 20개로 검토한다. PR diff에는 별도의 서로 다른 실패 관점 30개를 적용한다. 재사용·중복한 관점은 세지 않는다.
+10. PR 본문에는 실제 AVD/iOS Simulator screenshot raw image를 각각 연결하고, required check 및 merge state를 확인한 뒤 Rebase and merge한다. 병합 후 Tailnet roadmap을 동기화하고 Agent Browser로 화면을 확인한 뒤 해당 브라우저 세션과 임시 로컬 HTTP server를 종료한다.
 
 ## 실패 판정과 제외 범위
 
@@ -57,6 +57,7 @@ Chrome 156 Agent Browser observed the same track sizes, root boxes, item frames,
 
 - [Chrome 156 관측·독립 기대값·asset hash](../spec/internal/evidence/c11-4-cyclic-minmax-mixed-text-image-span-precomparison-2026-10-23/README.md)
 - [계획 실패 관점 20개](./c11-4-cyclic-minmax-mixed-text-image-span-plan-review-20.md)
+- [구현/runtime 실패 관점 20개](../spec/internal/evidence/c11-4-cyclic-minmax-mixed-text-image-span-runtime-2026-10-23/implementation-runtime-review-20.md) · [PR diff 실패 관점 30개](../spec/internal/evidence/c11-4-cyclic-minmax-mixed-text-image-span-runtime-2026-10-23/pr-diff-review-30.md)
 - [text/image mixed multi-span 선행](./c11-4-mixed-text-image-multispan-contributions.md)
 - [cyclic cross-axis text precedent](./c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md) · [cyclic replaced-image precedent](./c11-4-cyclic-minmax-replaced-image-span.md)
 - [PR #515 precondition/regression evidence](../spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/README.md) · [PR #520 runtime evidence](../spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-runtime-2026-10-23/README.md)

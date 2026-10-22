@@ -300,6 +300,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "cyclic-minmax-replaced-image-span-intrinsic-reverse",
             "cyclic-minmax-replaced-image-span-definite-forward",
             "cyclic-minmax-replaced-image-span-definite-reverse",
+            "cyclic-minmax-calc-mixed-text-image-span-intrinsic-forward",
+            "cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse",
+            "definite-minmax-calc-mixed-text-image-span-forward",
+            "definite-minmax-calc-mixed-text-image-span-reverse",
             "nested-grid-span-two", "nested-grid-one-track",
             "nested-grid-definite-flex-control",
             "nested-grid-text-image-span-two", "nested-grid-text-image-one-track",
@@ -459,6 +463,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ExpectedRootFrame(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) return "";
         if (c114IsCyclicMinmaxReplacedImageSpanScene(sceneId)) {
             return sceneId.contains("-intrinsic-")
                     ? "width=29,height=20" : "width=84,height=84";
@@ -731,6 +736,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) return "";
         if (c114IsCyclicMinmaxReplacedImageSpanScene(sceneId)) return "";
         if (c114IsCrossAxisSpanGroupsScene(sceneId)
                 || c114IsMixedCrossAxisSpanGroupsScene(sceneId)) return "";
@@ -945,6 +951,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114ExpectedTextIntrinsicInputs(String sceneId, String report) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) {
+            return c114ExpectedCyclicMinmaxMixedTextImageSpanInputs(sceneId, report);
+        }
         if (c114IsMixedCrossAxisSpanGroupsScene(sceneId)) {
             return c114ExpectedMixedCrossAxisSpanGroupIntrinsicInputs(sceneId, report);
         }
@@ -1193,6 +1202,58 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
     }
 
+    private static boolean c114ExpectedCyclicMinmaxMixedTextImageSpanInputs(
+            String sceneId, String report
+    ) {
+        int diagnosticsMarker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (diagnosticsMarker < 0) return false;
+        String diagnosticsJson = report.substring(
+                diagnosticsMarker + "grid_track_sizing_diagnostics=".length());
+        try {
+            Object value = new org.json.JSONTokener(diagnosticsJson).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONObject diagnostics = (org.json.JSONObject) value;
+            org.json.JSONObject revision = diagnostics.optJSONObject("layoutInputRevision");
+            org.json.JSONArray inputs = diagnostics.optJSONArray("gridItemIntrinsicInputs");
+            if (revision == null || revision.optInt("intrinsicSize", 0) != 1
+                    || inputs == null || inputs.length() != 3) return false;
+            boolean reversed = sceneId.endsWith("-reverse");
+            int[] nodes = new int[] {2, 4, 5};
+            String[] kinds = new String[] {"text", "replaced", "text"};
+            int[][] metrics = reversed
+                    ? new int[][] {{20, 40, 110, 10}, null, {20, 30, 60, 10}}
+                    : new int[][] {{20, 30, 60, 10}, null, {20, 40, 110, 10}};
+            for (int index = 0; index < inputs.length(); index++) {
+                org.json.JSONObject input = inputs.optJSONObject(index);
+                org.json.JSONObject source = input == null ? null : input.optJSONObject("source");
+                if (input == null || input.optInt("grid", -1) != 1
+                        || input.optInt("node", -1) != nodes[index]
+                        || input.optInt("sourceOrder", -1) != index || source == null
+                        || !kinds[index].equals(source.optString("kind"))) return false;
+                if ("text".equals(kinds[index])) {
+                    int[] expected = metrics[index];
+                    if (source.optInt("fontRegistryRevision", -1) != 1
+                            || source.optDouble("minContent", Double.NaN) != expected[0]
+                            || source.optDouble("minContentHeight", Double.NaN) != expected[1]
+                            || source.optDouble("maxContent", Double.NaN) != expected[2]
+                            || source.optDouble("maxContentHeight", Double.NaN) != expected[3]) {
+                        return false;
+                    }
+                } else {
+                    org.json.JSONObject natural = source.optJSONObject("natural");
+                    if (natural == null || natural.optDouble("width", Double.NaN) != 24.0
+                            || natural.optDouble("height", Double.NaN) != 16.0
+                            || !natural.has("aspectRatio") || !natural.isNull("aspectRatio")) {
+                        return false;
+                    }
+                }
+            }
+            return c114CyclicMinmaxMixedTextImageSpanTraceMatches(sceneId, diagnostics);
+        } catch (org.json.JSONException | ClassCastException error) {
+            return false;
+        }
+    }
+
     private static boolean c114ExpectedTextMultiSpanIntrinsicInputs(String sceneId, String report) {
         int[][] expected;
         switch (sceneId) {
@@ -1331,6 +1392,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
     }
     private static boolean c114ExpectedImageIntrinsicInputs(String sceneId, String report) {
+        if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) {
+            return c114ExpectedCyclicMinmaxMixedTextImageSpanInputs(sceneId, report);
+        }
         if (c114IsCyclicMinmaxReplacedImageSpanScene(sceneId)) {
             return c114ExpectedCyclicMinmaxReplacedImageSpanInputs(sceneId, report);
         }
@@ -1676,6 +1740,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static boolean c114ImageTrackSizingTraceMatches(
             String sceneId, org.json.JSONObject diagnostics
     ) throws org.json.JSONException {
+        if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) {
+            return c114CyclicMinmaxMixedTextImageSpanTraceMatches(sceneId, diagnostics);
+        }
         if (c114IsCyclicMinmaxReplacedImageSpanScene(sceneId)) {
             return c114CyclicMinmaxReplacedImageSpanTraceMatches(sceneId, diagnostics);
         }
@@ -1880,6 +1947,158 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return true;
     }
 
+    private static boolean c114CyclicMinmaxMixedTextImageSpanTraceMatches(
+            String sceneId, org.json.JSONObject diagnostics
+    ) throws org.json.JSONException {
+        boolean intrinsic = sceneId.contains("-intrinsic-");
+        String[] expectedAxes = intrinsic
+                ? new String[] {"Columns", "Rows", "Columns", "Rows"}
+                : new String[] {"Columns", "Rows", "Rows"};
+        double[] expectedColumns = intrinsic
+                ? new double[] {15.671875, 15.671875, 15.65625}
+                : new double[] {12.0, 12.0, 12.0};
+        double[] expectedRows = intrinsic
+                ? new double[] {37.0 / 3.0, 37.0 / 3.0}
+                : new double[] {19.0, 19.0};
+        org.json.JSONArray traces = diagnostics.optJSONArray("trackSizingTraces");
+        if (traces == null || traces.length() != 1) return false;
+        org.json.JSONObject trace = traces.optJSONObject(0);
+        org.json.JSONArray passes = trace == null ? null : trace.optJSONArray("passes");
+        if (trace == null || trace.optInt("grid", -1) != 1
+                || passes == null || passes.length() != expectedAxes.length) return false;
+        for (int index = 0; index < passes.length(); index++) {
+            org.json.JSONObject pass = passes.optJSONObject(index);
+            String axis = expectedAxes[index];
+            if (pass == null || !axis.equals(pass.optString("axis"))) return false;
+            double[] finalTracks = intrinsic && index == 0
+                    ? new double[] {9.0, 19.0, 19.0}
+                    : "Columns".equals(axis) ? expectedColumns : expectedRows;
+            if (!c114CyclicMixedTextImageTracksMatch(pass, finalTracks)) return false;
+            org.json.JSONArray stages = pass.optJSONArray("stages");
+            if (stages == null) return false;
+            java.util.ArrayList<Integer> observedSpans = new java.util.ArrayList<>();
+            java.util.regex.Pattern pattern = java.util.regex.Pattern
+                    .compile("^IntrinsicItemBatch \\{ span: (\\d+),");
+            for (int stageIndex = 0; stageIndex < stages.length(); stageIndex++) {
+                org.json.JSONObject stage = stages.optJSONObject(stageIndex);
+                if (stage == null) return false;
+                java.util.regex.Matcher matcher = pattern.matcher(stage.optString("stage"));
+                if (matcher.find()) observedSpans.add(Integer.parseInt(matcher.group(1)));
+            }
+            java.util.List<Integer> expectedSpans = "Columns".equals(axis)
+                    ? java.util.List.of(2, 3) : java.util.List.of(2);
+            if (!observedSpans.equals(expectedSpans)) return false;
+            double[] initial;
+            if (intrinsic) {
+                if (index == 0) initial = new double[] {2, 2, 2};
+                else if (index == 1) initial = new double[] {2, 2};
+                else if (index == 2) initial = new double[] {7.1, 7.1, 7.1};
+                else initial = new double[] {14.0 / 3.0, 14.0 / 3.0};
+            } else if (index == 0) {
+                initial = new double[] {6, 6, 6};
+            } else if (index == 1) {
+                initial = new double[] {2, 2};
+            } else {
+                initial = new double[] {6, 6};
+            }
+            if (!c114ImageTrackSizesAtStageMatch(pass, "Initialize", initial)) return false;
+            if (intrinsic && index == 0
+                    && (!c114ImageTrackSizesAtStageMatch(pass,
+                            "IntrinsicItemBatch { span: 2, crosses_flexible_track: false }",
+                            new double[] {9, 19, 19})
+                    || !c114ImageTrackSizesAtStageMatch(pass,
+                            "IntrinsicItemBatch { span: 3, crosses_flexible_track: false }",
+                            new double[] {9, 19, 19}))) return false;
+            if (intrinsic && index == 1
+                    && !c114ImageTrackSizesAtStageMatch(pass,
+                            "IntrinsicItemBatch { span: 2, crosses_flexible_track: false }",
+                            new double[] {37.0 / 3.0, 37.0 / 3.0})) return false;
+        }
+        boolean reversed = sceneId.endsWith("-reverse");
+        int[] nodes = {2, 4, 5};
+        int[] spans = reversed ? new int[] {3, 2, 2} : new int[] {2, 2, 3};
+        double[] columnsMinimum = intrinsic
+                ? new double[] {20, 40, 20} : new double[] {0, 40, 0};
+        double[] rowMinimum = intrinsic
+                ? new double[] {20, 80.0 / 3.0, 20} : new double[] {0, 80.0 / 3.0, 0};
+        double[] columnsMinContent = {20, 40, 20};
+        double[] rowsMinContent = intrinsic
+                ? new double[] {20, 80.0 / 3.0, 20}
+                : reversed ? new double[] {40, 80.0 / 3.0, 30}
+                : new double[] {30, 80.0 / 3.0, 40};
+        double[] columnsMaxContent = reversed
+                ? new double[] {110, 40, 60} : new double[] {60, 40, 110};
+        double[] rowsMaxContent = intrinsic
+                ? new double[] {20, 80.0 / 3.0, 20}
+                : reversed ? new double[] {40, 80.0 / 3.0, 30}
+                : new double[] {30, 80.0 / 3.0, 40};
+        for (String axis : new String[] {"Columns", "Rows"}) {
+            double[] minimum = "Columns".equals(axis) ? columnsMinimum : rowMinimum;
+            double[] minContent = "Columns".equals(axis) ? columnsMinContent : rowsMinContent;
+            double[] maxContent = "Columns".equals(axis) ? columnsMaxContent : rowsMaxContent;
+            org.json.JSONArray axisPasses = new org.json.JSONArray();
+            for (int index = 0; index < passes.length(); index++) {
+                org.json.JSONObject pass = passes.optJSONObject(index);
+                if (pass != null && axis.equals(pass.optString("axis"))) axisPasses.put(pass);
+            }
+            for (int index = 0; index < nodes.length; index++) {
+                int span = "Rows".equals(axis) ? 2 : spans[index];
+                if (!c114MixedTextImageContributionMatches(
+                            axisPasses, nodes[index], span, "Minimum", minimum[index])
+                        || !c114MixedTextImageContributionMatches(
+                            axisPasses, nodes[index], span, "MinContent", minContent[index])
+                        || !c114MixedTextImageContributionMatches(
+                            axisPasses, nodes[index], span, "MaxContent", maxContent[index])) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private static boolean c114CyclicMixedTextImageTracksMatch(
+            org.json.JSONObject pass, double[] expectedSizes
+    ) throws org.json.JSONException {
+        org.json.JSONArray stages = pass.optJSONArray("stages");
+        if (stages == null || stages.length() == 0) return false;
+        org.json.JSONObject finalStage = stages.optJSONObject(stages.length() - 1);
+        org.json.JSONArray tracks = finalStage == null ? null : finalStage.optJSONArray("tracks");
+        if (tracks == null) return false;
+        int observedCount = 0;
+        for (int index = 0; index < tracks.length(); index++) {
+            org.json.JSONObject track = tracks.optJSONObject(index);
+            if (track == null || !track.has("gutter") || !track.has("collapsed")
+                    || !track.has("baseSize")) return false;
+            if (track.optBoolean("gutter", false) || track.optBoolean("collapsed", false)) {
+                continue;
+            }
+            double size = track.optDouble("baseSize", Double.NaN);
+            if (observedCount >= expectedSizes.length || !Double.isFinite(size)
+                    || Math.abs(size - expectedSizes[observedCount]) > 1.0 / 64.0) return false;
+            observedCount++;
+        }
+        return observedCount == expectedSizes.length;
+    }
+
+    private static boolean c114MixedTextImageContributionMatches(
+            org.json.JSONArray passes, int node, int span, String kind, double expected
+    ) throws org.json.JSONException {
+        for (int passIndex = 0; passIndex < passes.length(); passIndex++) {
+            org.json.JSONObject pass = passes.optJSONObject(passIndex);
+            org.json.JSONArray contributions = pass == null ? null : pass.optJSONArray("contributions");
+            if (contributions == null) return false;
+            for (int index = 0; index < contributions.length(); index++) {
+                org.json.JSONObject contribution = contributions.optJSONObject(index);
+                if (contribution != null && contribution.optInt("item", -1) == node
+                        && contribution.optInt("span", -1) == span
+                        && kind.equals(contribution.optString("kind"))
+                        && Math.abs(contribution.optDouble("value", Double.NaN) - expected)
+                                <= 1.0 / 64.0) return true;
+            }
+        }
+        return false;
+    }
+
     private static boolean c114ImageTrackSizesAtStageMatch(
             org.json.JSONObject pass, String stageName, double[] expectedSizes
     ) throws org.json.JSONException {
@@ -1981,6 +2200,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) return null;
         if (c114IsCyclicMinmaxReplacedImageSpanScene(sceneId)) {
             boolean intrinsic = sceneId.contains("-intrinsic-");
             int width = intrinsic ? 29 : 84;
@@ -3068,6 +3288,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int c114ExpectedBoxCount(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) return 4;
         if (c114IsCyclicMinmaxReplacedImageSpanScene(sceneId)) return 4;
         if (c114IsMixedCrossAxisSpanGroupsScene(sceneId)) return 4;
         if (c114IsCrossAxisSpanGroupsScene(sceneId)) return 3;
@@ -3199,6 +3420,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "cyclic-minmax-replaced-image-span-intrinsic-reverse":
             case "cyclic-minmax-replaced-image-span-definite-forward":
             case "cyclic-minmax-replaced-image-span-definite-reverse":
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    private static boolean c114IsCyclicMinmaxMixedTextImageSpanScene(String sceneId) {
+        switch (sceneId) {
+            case "cyclic-minmax-calc-mixed-text-image-span-intrinsic-forward":
+            case "cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse":
+            case "definite-minmax-calc-mixed-text-image-span-forward":
+            case "definite-minmax-calc-mixed-text-image-span-reverse":
                 return true;
             default:
                 return false;
@@ -3348,6 +3581,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static boolean c114ExpectedCrossAxisSpanGroupFramesMatch(
             String sceneId, String report
     ) {
+        if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) {
+            return c114ExpectedCyclicMinmaxMixedTextImageSpanFramesMatch(sceneId, report);
+        }
         if (c114IsMixedCrossAxisSpanGroupsScene(sceneId)) {
             return c114ExpectedMixedCrossAxisSpanGroupFramesMatch(sceneId, report);
         }
@@ -3370,6 +3606,51 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     {2, 2, 2, itemAWidth, itemAHeight},
                     {4, itemBX, 2, 40, 10},
                 };
+        java.util.regex.Matcher matcher = java.util.regex.Pattern
+                .compile("node_frames_css_px=\\[([^\\]]+)\\]").matcher(report);
+        if (!matcher.find()) return false;
+        String[] frames = matcher.group(1).split(";");
+        if (frames.length != expected.length) return false;
+        java.util.regex.Pattern framePattern = java.util.regex.Pattern.compile(
+                "^(\\d+):node=(\\d+),x=(-?\\d+(?:\\.\\d+)?),y=(-?\\d+(?:\\.\\d+)?),"
+                        + "width=(\\d+(?:\\.\\d+)?),height=(\\d+(?:\\.\\d+)?)$");
+        for (int index = 0; index < frames.length; index++) {
+            java.util.regex.Matcher frame = framePattern.matcher(frames[index]);
+            if (!frame.matches() || Integer.parseInt(frame.group(1)) != index
+                    || Integer.parseInt(frame.group(2)) != (int) expected[index][0]) return false;
+            for (int component = 0; component < 4; component++) {
+                double actual = Double.parseDouble(frame.group(component + 3));
+                if (!Double.isFinite(actual)
+                        || Math.abs(actual - expected[index][component + 1]) > 1.0 / 64.0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private static boolean c114ExpectedCyclicMinmaxMixedTextImageSpanFramesMatch(
+            String sceneId, String report
+    ) {
+        boolean intrinsic = sceneId.contains("-intrinsic-");
+        boolean reversed = sceneId.endsWith("-reverse");
+        double rootWidth = intrinsic ? 55.0 : 44.0;
+        double rootHeight = intrinsic ? 92.0 / 3.0 : 44.0;
+        double imageX = intrinsic ? 19.671875 : 16.0;
+        double[][] items = reversed
+                ? new double[][] {
+                    {2, 2, 2, intrinsic ? 51 : 40, intrinsic ? 80.0 / 3.0 : 40},
+                    {4, imageX, 2, 40, 80.0 / 3.0},
+                    {5, 2, 2, intrinsic ? 33.34375 : 26, intrinsic ? 80.0 / 3.0 : 40},
+                }
+                : new double[][] {
+                    {2, 2, 2, intrinsic ? 33.34375 : 26, intrinsic ? 80.0 / 3.0 : 40},
+                    {4, imageX, 2, 40, 80.0 / 3.0},
+                    {5, 2, 2, intrinsic ? 51 : 40, intrinsic ? 80.0 / 3.0 : 40},
+                };
+        double[][] expected = new double[][] {
+            {1, 0, 0, rootWidth, rootHeight}, items[0], items[1], items[2],
+        };
         java.util.regex.Matcher matcher = java.util.regex.Pattern
                 .compile("node_frames_css_px=\\[([^\\]]+)\\]").matcher(report);
         if (!matcher.find()) return false;
@@ -3479,6 +3760,32 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) {
+            if (sceneId.contains("-intrinsic-") || samples.size() != 3) return false;
+            String rootId = "c114-" + sceneId + "-grid";
+            String imageId = "c114-" + sceneId + "-item-b";
+            boolean topBorder = false;
+            boolean imageOverflow = false;
+            boolean clearPastImage = false;
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                if (sample.id.equals(sceneId + "-top-border")) {
+                    topBorder = sample.targetNodeId.equals(rootId)
+                            && sample.xCssPx == 8 && sample.yCssPx == 0;
+                    if (!topBorder) return false;
+                } else if (sample.id.equals(sceneId + "-image-b-overflow")) {
+                    imageOverflow = sample.targetNodeId.equals(imageId)
+                            && sample.xCssPx == 50 && sample.yCssPx == 6;
+                    if (!imageOverflow) return false;
+                } else if (sample.id.equals(sceneId + "-clear-past-image-b")) {
+                    clearPastImage = sample.targetNodeId.equals(rootId)
+                            && sample.xCssPx == 58 && sample.yCssPx == 6;
+                    if (!clearPastImage) return false;
+                } else {
+                    return false;
+                }
+            }
+            return topBorder && imageOverflow && clearPastImage;
+        }
         if (c114IsCyclicMinmaxReplacedImageSpanScene(sceneId)) {
             if (samples.size() != 3) return false;
             String rootId = "c114-" + sceneId + "-grid";
@@ -5497,6 +5804,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "column-transfer-input-capped-by-fixed-row-span".equals(pixelMatrixSceneId)
                         || "fixed-gutter-column-suggestion-clamp".equals(pixelMatrixSceneId)
                         || "fixed-gutter-row-suggestion-clamp".equals(pixelMatrixSceneId)
+                        || c114IsCyclicMinmaxMixedTextImageSpanScene(pixelMatrixSceneId)
                         || c114IsCyclicMinmaxReplacedImageSpanScene(pixelMatrixSceneId)
                         || c114IsImageMultiSpanScene(pixelMatrixSceneId)
                         || c114IsAnonymousGridBorderOverflowScene(pixelMatrixSceneId)
@@ -9018,6 +9326,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c114GridExpectedRgb(String sampleId) {
+        if (sampleId.endsWith("-top-border")) return new int[] {240, 198, 116};
+        if (sampleId.endsWith("-image-b-overflow")) return new int[] {0, 255, 64};
+        if (sampleId.endsWith("-clear-past-image-b")) return new int[] {0, 0, 0};
         if (sampleId.endsWith("-image-interior")) return new int[] {255, 255, 64};
         if (sampleId.endsWith("-right-border")) return new int[] {240, 198, 116};
         if (sampleId.endsWith("-after-root")) return new int[] {0, 0, 0};
@@ -9231,6 +9542,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c11GridExpectedRgb(String sampleId, boolean c1133TemplateAreas) {
+        if (sampleId.endsWith("-top-border")) return new int[] {240, 198, 116};
+        if (sampleId.endsWith("-image-b-overflow")) return new int[] {0, 255, 64};
+        if (sampleId.endsWith("-clear-past-image-b")) return new int[] {0, 0, 0};
         if (c1133TemplateAreas) {
             switch (sampleId) {
                 case "grid-interior":

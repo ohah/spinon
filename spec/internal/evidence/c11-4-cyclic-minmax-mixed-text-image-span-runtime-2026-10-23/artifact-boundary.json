@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "target": "aarch64-apple-ios-sim",
+  "defaultArtifact": {
+    "features": ["c04-runtime-gpu"],
+    "path": "target/c11-4-cyclic-minmax-mixed-text-image-span-default/aarch64-apple-ios-sim/release/libspinon_ffi.a",
+    "bytes": 74803072,
+    "sha256": "6a8419dd8d1234cdf3a2a662fb84858e647cc753fbdbc15aa4f935f161267897",
+    "newSceneStringsPresent": false,
+    "fixtureSourceMarkerPresent": false,
+    "fixtureRuntimeSourceSymbolPresent": false
+  },
+  "fixturePositiveControl": {
+    "features": ["c04-runtime-gpu-fixture-test", "c11-grid-metal-surface-pixels-test"],
+    "path": "build/spinon/iphonesimulator/libspinon_ffi.a",
+    "bytes": 67839616,
+    "sha256": "5bb5f1b68095543a898a0b7a4e3b508e350035da1589e782c244155efe198f70",
+    "newSceneStringsPresent": true,
+    "fixtureSourceMarkerPresent": true,
+    "fixtureRuntimeSourceSymbol": "__ZN10spinon_ffi11runtime_gpu8fixtures5c11_440cyclic_minmax_calc_mixed_text_image_span14runtime_source17hbeb1653e5663a627E",
+    "fixtureRuntimeSourceSymbolPresent": true
+  },
+  "inspection": {
+    "stringsMarker": "cyclic-minmax-calc-mixed-text-image-span-intrinsic-forward",
+    "fixtureSourceMarker": "cyclic_minmax_calc_mixed_text_image_span",
+    "symbolTool": "Rust 1.96.1 llvm-nm -g",
+    "note": "Static archive 검사만 의미하며 APK, IPA 또는 최종 앱 bundle의 fixture 제외를 입증하지 않는다."
+  }
+}

@@ -1,0 +1,31 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-7f78b653f6fb953d)
+
+running 25 tests
+test c11_4_track_sizing_areas_tests::cyclic_minmax_mixed_text_image_span::replaced_image_start_alignment_requires_the_fixed_fixture_projection ... ok
+test c11_4_track_sizing_areas_tests::cyclic_calc::cyclic_calc_tracks_resolve_after_intrinsic_container_sizing ... ok
+test c11_4_track_sizing_areas_tests::cyclic_fit_content::cyclic_percentage_fit_content_text_scenes_match_chrome_tracks_and_frames ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_replaced_image_span::cyclic_minmax_replaced_image_spans_match_all_four_fixed_scenes ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_minimum_two_axis::cyclic_minimum_calc_resolves_both_axes_against_separate_intrinsic_content_bases ... ok
+test c11_4_track_sizing_areas_tests::direct_html_image_ratio_constraints_are_scoped_to_track_sizing_profile ... ok
+test c11_4_track_sizing_areas_tests::ratio_constraints_remain_rejected_for_nested_html_images ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_minimum::cyclic_minimum_calc_resolves_against_ten_pixel_content_box_after_intrinsic_sizing ... ok
+test c11_4_track_sizing_areas_tests::cyclic_fit_content::cyclic_fit_content_calc_text_scenes_match_tracks_and_frames ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_cross_axis_span_groups::cyclic_minmax_calc_cross_axis_span_groups_are_source_order_independent ... ok
+test c11_4_track_sizing_areas_tests::cyclic_two_axis_multitrack::cyclic_percentages_size_both_three_track_axes_and_preserve_cell_overflow ... ok
+test c11_4_track_sizing_areas_tests::cyclic_fit_content::cyclic_minmax_calc_text_scenes_match_independent_tracks_and_frames ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_two_axis_spanning_text::cyclic_minmax_calc_two_axis_span_uses_column_width_for_text_row_contribution ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_profile_keeps_named_area_placement ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_mixed_text_image_span::cyclic_minmax_mixed_text_image_span_matches_fixed_geometry_and_trace ... ok
+test c11_4_track_sizing_areas_tests::ratio_constraints_remain_rejected_for_non_image_grid_items ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_profile_lays_out_css_auto_repeat_modes ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_profile_projects_negative_lines_and_reverse_auto_track_lists ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_profile_anchors_negative_lines_when_template_is_none ... ok
+test c11_4_track_sizing_areas_tests::root_grid_max_content_is_scoped_to_the_track_sizing_profile ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_minimum_span::cyclic_minmax_calc_minimum_distributes_span_then_resolves_two_tracks_and_overflow ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_overlapping_spans::cyclic_minmax_calc_overlapping_span_groups_are_source_order_independent ... ok
+test c11_4_track_sizing_areas_tests::auto_repeat_explicit_neighbors::auto_repeat_explicit_neighbor_matrix_uses_collapsed_auto_fit_gutters ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_cross_axis_mixed_span_groups::cyclic_minmax_calc_mixed_span_groups_match_fixed_geometry_and_trace ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_overlapping_rows::cyclic_minmax_calc_overlapping_row_span_groups_are_source_order_independent ... ok
+
+test result: ok. 25 passed; 0 failed; 0 ignored; 0 measured; 205 filtered out; finished in 0.03s

@@ -33,6 +33,10 @@ const cyclicPercentSceneIDs = new Set([
   'cyclic-minmax-calc-two-axis-span-text-max-content',
   'definite-minmax-calc-two-axis-span-text-min-content',
   'definite-minmax-calc-two-axis-span-text-max-content',
+  'cyclic-minmax-calc-mixed-text-image-span-intrinsic-forward',
+  'cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse',
+  'definite-minmax-calc-mixed-text-image-span-forward',
+  'definite-minmax-calc-mixed-text-image-span-reverse',
   'cyclic-minmax-calc-overlap-forward', 'cyclic-minmax-calc-overlap-reverse',
   'definite-minmax-calc-overlap-forward', 'definite-minmax-calc-overlap-reverse',
   'definite-minmax-calc-overlap-small-forward',
@@ -2567,6 +2571,99 @@ const mixedCrossAxisSpanGroupScene = ({
   }
   return scene;
 };
+const mixedTextImageSpanScene = ({ id, intrinsic, reverse }) => {
+  const order = reverse ? ['c', 'b', 'a'] : ['a', 'b', 'c'];
+  const itemNodes = { a: reverse ? 5 : 2, b: 4, c: reverse ? 2 : 5 };
+  const itemFrames = intrinsic
+    ? { a: [2, 2, 33.34375, 80 / 3], b: [19.671875, 2, 40, 80 / 3], c: [2, 2, 51, 80 / 3] }
+    : { a: [2, 2, 26, 40], b: [16, 2, 40, 80 / 3], c: [2, 2, 40, 40] };
+  const metrics = {
+    a: { kind: 'text', text: 'AA A A', minContent: 20, minContentHeight: 30, maxContent: 60, maxContentHeight: 10 },
+    b: { kind: 'replaced', natural: { width: 24, height: 16, aspectRatio: null }, minContent: 40, minContentHeight: 80 / 3, maxContent: 40, maxContentHeight: 80 / 3 },
+    c: { kind: 'text', text: 'AA AA AA AA', minContent: 20, minContentHeight: 40, maxContent: 110, maxContentHeight: 10 },
+  };
+  const intrinsicInputs = order.map((key, sourceOrder) => {
+    const input = {
+      grid: 1,
+      node: itemNodes[key],
+      sourceOrder,
+      kind: metrics[key].kind,
+    };
+    if (metrics[key].kind === 'text') {
+      Object.assign(input, {
+        fontRegistryRevision: 1,
+        minContent: metrics[key].minContent,
+        minContentHeight: metrics[key].minContentHeight,
+        maxContent: metrics[key].maxContent,
+        maxContentHeight: metrics[key].maxContentHeight,
+      });
+    } else {
+      input.natural = metrics[key].natural;
+    }
+    return input;
+  });
+  const root = intrinsic ? [55, 92 / 3] : [44, 44];
+  const columns = intrinsic ? [15.671875, 15.671875, 15.65625] : [12, 12, 12];
+  const rows = intrinsic ? [37 / 3, 37 / 3] : [19, 19];
+  const nodeFrames = order.map((key, index) => {
+    const [x, y, width, height] = itemFrames[key];
+    return `${index + 1}:node=${itemNodes[key]},x=${x},y=${y},width=${width},height=${height}`;
+  });
+  const items = ['a', 'b', 'c'].map((key) => ({
+    key, node: itemNodes[key], columnSpan: key === 'c' ? 3 : 2, rowSpan: 2,
+    ...metrics[key], frame: itemFrames[key],
+  }));
+  const scene = {
+    id,
+    boxCount: 4,
+    runtimeImageCount: 1,
+    // Runtime summary rounds fractional frame strings; compare parsed node frames at 1/64px below.
+    rootFrame: null,
+    itemFrame: null,
+    nodeFrames: `node_frames_css_px=[0:node=1,x=0,y=0,width=${root[0]},height=${root[1]};${nodeFrames.join(';')}]`,
+    axes: {
+      Columns: { tracks: columns, collapsed: columns.map(() => false) },
+      Rows: { tracks: rows, collapsed: rows.map(() => false) },
+    },
+    gaps: { Columns: 2, Rows: 2 },
+    intrinsicInputs,
+    intrinsicSpans: [2, 3],
+    intrinsicSpansByAxis: { Columns: [2, 3], Rows: [2] },
+    columnSizingFeedsRows: true,
+    mixedTextImageSpan: {
+      intrinsic, reverse, order, itemNodes, items,
+      minimum: {
+        Columns: { a: intrinsic ? 20 : 0, b: 40, c: intrinsic ? 20 : 0 },
+        Rows: { a: intrinsic ? 20 : 0, b: 80 / 3, c: intrinsic ? 20 : 0 },
+      },
+      minContent: {
+        Columns: { a: 20, b: 40, c: 20 },
+        Rows: {
+          a: intrinsic ? 20 : 30,
+          b: 80 / 3,
+          c: intrinsic ? 20 : 40,
+        },
+      },
+      maxContent: {
+        Columns: { a: 60, b: 40, c: 110 },
+        Rows: {
+          a: intrinsic ? 20 : 30,
+          b: 80 / 3,
+          c: intrinsic ? 20 : 40,
+        },
+      },
+    },
+  };
+  if (!intrinsic) {
+    const rootID = `c114-${id}-grid`;
+    scene.pixelSamples = [
+      { id: `${id}-top-border`, nodeId: rootID, xCssPx: 8, yCssPx: 0, rgba: [240, 198, 116, 255] },
+      { id: `${id}-image-b-overflow`, nodeId: `c114-${id}-item-b`, xCssPx: 50, yCssPx: 6, rgba: [0, 255, 64, 255] },
+      { id: `${id}-clear-past-image-b`, nodeId: rootID, xCssPx: 58, yCssPx: 6, rgba: [0, 0, 0, 255] },
+    ];
+  }
+  return scene;
+};
 scenes.push(
   minmaxCalcMinimumScene({
     id: 'cyclic-minmax-calc-min-both-axes', root: [54, 14], item: [2, 2, 104, 22],
@@ -2808,6 +2905,12 @@ scenes.push(
         xCssPx: 86, yCssPx: 6, rgba: [0, 0, 0, 255] },
     ],
   }),
+);
+scenes.push(
+  mixedTextImageSpanScene({ id: 'cyclic-minmax-calc-mixed-text-image-span-intrinsic-forward', intrinsic: true, reverse: false }),
+  mixedTextImageSpanScene({ id: 'cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse', intrinsic: true, reverse: true }),
+  mixedTextImageSpanScene({ id: 'definite-minmax-calc-mixed-text-image-span-forward', intrinsic: false, reverse: false }),
+  mixedTextImageSpanScene({ id: 'definite-minmax-calc-mixed-text-image-span-reverse', intrinsic: false, reverse: true }),
 );
 const spanColumnSamples = () => [
   ['outside-root-item', 'item', 58, 6, [229, 72, 77, 255]],
@@ -3094,7 +3197,7 @@ scenes.push(
     'cyclic-minmax-replaced-image-span-definite-reverse', ['c', 'b', 'a'], false,
   ),
 );
-assert.equal(scenes.length, 271, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 275, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -4169,7 +4272,7 @@ function verifyRuntimeLog(log, scene, runID) {
         `${scene.id}: node ${actual.node} ${property} 예상 ${expected[property]}, 실제 ${actual[property]}`);
     }
   }
-  assert.ok(log.includes(scene.rootFrame)
+  assert.ok((scene.rootFrame === null || log.includes(scene.rootFrame))
     && (scene.itemFrame === null || log.includes(scene.itemFrame)),
     `${scene.id}: root/item frame이 예상과 다릅니다.`);
   assert.ok(log.includes('SPINON_C114_GRID_TRACE_CHUNK'), `${scene.id}: track-sizing trace가 없습니다.`);
@@ -4589,6 +4692,31 @@ function verifyRuntimeLog(log, scene, runID) {
       `${scene.id}: 같은 Grid revision의 text/replaced intrinsic source mapping이 다릅니다.`);
     assert.equal(diagnostics.layoutInputRevision?.intrinsicSize, 1,
       `${scene.id}: mixed input의 image resource revision이 layout stamp에 없습니다.`);
+  } else if (scene.intrinsicInputs && scene.mixedTextImageSpan) {
+    const intrinsicInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => {
+      const source = input.source ?? {};
+      return source.kind === 'text' ? {
+        grid: input.grid,
+        node: input.node,
+        sourceOrder: input.sourceOrder,
+        kind: source.kind,
+        fontRegistryRevision: source.fontRegistryRevision,
+        minContent: source.minContent,
+        minContentHeight: source.minContentHeight,
+        maxContent: source.maxContent,
+        maxContentHeight: source.maxContentHeight,
+      } : {
+        grid: input.grid,
+        node: input.node,
+        sourceOrder: input.sourceOrder,
+        kind: source.kind,
+        natural: source.natural,
+      };
+    });
+    assert.deepEqual(intrinsicInputs, scene.intrinsicInputs,
+      `${scene.id}: fixed text/image intrinsic inputs differ`);
+    assert.equal(diagnostics.layoutInputRevision?.intrinsicSize, 1,
+      `${scene.id}: mixed image resource revision is not in the layout stamp`);
   } else if (scene.intrinsicInputs && scene.imageIntrinsicContributions) {
     const intrinsicInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => ({
       grid: input.grid,
@@ -4646,7 +4774,7 @@ function verifyRuntimeLog(log, scene, runID) {
       .filter((pass) => pass.axis === axis).at(-1);
     assert.ok(axisPass, `${scene.id}: ${axis} track-sizing pass가 없습니다.`);
     const intrinsicSpans = axisPass.stages.flatMap(({ stage }) => {
-      const match = stage.match(/^IntrinsicItemBatch \{ span: (\d+),/);
+      const match = stage.match(/^IntrinsicItemBatch\s*\{ span: (\d+),/);
       return match ? [Number(match[1])] : [];
     });
     const expectedSpans = scene.intrinsicSpansByAxis?.[axis] ?? scene.intrinsicSpans;
@@ -4834,6 +4962,118 @@ function verifyRuntimeLog(log, scene, runID) {
           `${scene.id}: C span-3 minimum exceeds the established track area`);
         assert.deepEqual(span3Columns, span2Columns,
           `${scene.id}: C span-3 contribution changed columns after the span-2 batch`);
+      }
+    }
+    if (scene.mixedTextImageSpan) {
+      const expected = scene.mixedTextImageSpan;
+      const revision = diagnostics.layoutInputRevision;
+      assert.ok(revision && revision.source.includes('HostDocument'),
+        `${scene.id}: HostDocument source revision is missing`);
+      for (const key of ['style', 'environment', 'intrinsicSize']) {
+        assert.ok(Number.isInteger(revision[key]), `${scene.id}: ${key} revision is missing`);
+      }
+      const actualInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => {
+        const source = input.source ?? {};
+        const normalized = {
+          grid: input.grid,
+          node: input.node,
+          sourceOrder: input.sourceOrder,
+          kind: source.kind,
+        };
+        if (source.kind === 'text') {
+          Object.assign(normalized, {
+            fontRegistryRevision: source.fontRegistryRevision,
+            minContent: source.minContent,
+            minContentHeight: source.minContentHeight,
+            maxContent: source.maxContent,
+            maxContentHeight: source.maxContentHeight,
+          });
+          assert.deepEqual(input.textSources, [],
+            `${scene.id}: direct element text must not become anonymous text input`);
+        } else if (source.kind === 'replaced') {
+          normalized.natural = source.natural;
+        }
+        return normalized;
+      });
+      const expectedInputs = scene.intrinsicInputs.map((input) => input.kind === 'text'
+        ? (({ grid, node, sourceOrder, kind, fontRegistryRevision,
+          minContent, minContentHeight, maxContent, maxContentHeight }) => ({
+          grid, node, sourceOrder, kind, fontRegistryRevision,
+          minContent, minContentHeight, maxContent, maxContentHeight,
+        }))(input)
+        : (({ grid, node, sourceOrder, kind, natural }) => ({
+          grid, node, sourceOrder, kind, natural,
+        }))(input));
+      assert.deepEqual(actualInputs, expectedInputs,
+        `${scene.id}: ordered text/replaced intrinsic source inputs differ`);
+
+      const expectedAxes = expected.intrinsic
+        ? ['Columns', 'Rows', 'Columns', 'Rows'] : ['Columns', 'Rows', 'Rows'];
+      assert.deepEqual(axisTrace.passes.map((pass) => pass.axis), expectedAxes,
+        `${scene.id}: cyclic-auto and resolved axis order differs`);
+      const spanForStage = (stage) => {
+        const match = stage.match(/^IntrinsicItemBatch\s*\{ span: (\d+),/);
+        return match ? Number(match[1]) : null;
+      };
+      const spanBases = (pass, span) => {
+        const stage = pass.stages.find((candidate) => spanForStage(candidate.stage) === span);
+        return stage?.tracks.filter(({ gutter, collapsed }) => !gutter && !collapsed)
+          .map(({ baseSize }) => baseSize);
+      };
+      const stageBases = (pass, name) => {
+        const stage = pass.stages.find((candidate) => candidate.stage === name);
+        return stage?.tracks.filter(({ gutter, collapsed }) => !gutter && !collapsed)
+          .map(({ baseSize }) => baseSize);
+      };
+      const closeArray = (actual, values, label) => {
+        assert.ok(actual && actual.length === values.length,
+          `${scene.id}: ${label} track state is missing`);
+        actual.forEach((value, index) => assert.ok(
+          Math.abs(value - values[index]) <= 1 / 64,
+          `${scene.id}: ${label} track ${index + 1} expected ${values[index]}, got ${value}`,
+        ));
+      };
+      for (const [index, pass] of axisTrace.passes.entries()) {
+        const axis = expectedAxes[index];
+        const spans = pass.stages.flatMap(({ stage }) => {
+          const span = spanForStage(stage);
+          return span === null ? [] : [span];
+        });
+        assert.deepEqual(spans, axis === 'Columns' ? [2, 3] : [2],
+          `${scene.id}: ${axis} span group order differs`);
+        const expectedFinal = expected.intrinsic && index === 0
+          ? [9, 19, 19]
+          : axis === 'Columns' ? scene.axes.Columns.tracks : scene.axes.Rows.tracks;
+        closeArray(pass.stages.at(-1)?.tracks
+          .filter(({ gutter, collapsed }) => !gutter && !collapsed)
+          .map(({ baseSize }) => baseSize), expectedFinal, `${axis} pass ${index + 1} final`);
+        const axisPasses = axisTrace.passes.filter((candidate) => candidate.axis === axis);
+        for (const [kind, values] of [
+          ['Minimum', expected.minimum[axis]],
+          ['MinContent', expected.minContent[axis]],
+          ['MaxContent', expected.maxContent[axis]],
+        ]) {
+          for (const item of expected.items) {
+            const span = axis === 'Columns' ? item.columnSpan : item.rowSpan;
+            assert.ok(axisPasses.some((candidate) => candidate.contributions.some((entry) => (
+              entry.item === item.node && entry.kind === kind && entry.span === span
+                && Math.abs(entry.value - values[item.key]) <= 1 / 64
+            ))), `${scene.id}: ${axis} ${item.key} ${kind} span-${span} is missing`);
+          }
+        }
+      }
+      if (expected.intrinsic) {
+        closeArray(stageBases(axisTrace.passes[0], 'Initialize'), [2, 2, 2], 'cyclic Columns Initialize');
+        closeArray(spanBases(axisTrace.passes[0], 2), [9, 19, 19], 'span-2 planned columns');
+        closeArray(spanBases(axisTrace.passes[0], 3), [9, 19, 19], 'span-3 columns');
+        closeArray(stageBases(axisTrace.passes[1], 'Initialize'), [2, 2], 'cyclic Rows Initialize');
+        closeArray(spanBases(axisTrace.passes[1], 2), [37 / 3, 37 / 3], 'cyclic row contributions');
+        closeArray(stageBases(axisTrace.passes[2], 'Initialize'), [7.1, 7.1, 7.1], 'resolved Columns Initialize');
+        closeArray(stageBases(axisTrace.passes[3], 'Initialize'), [14 / 3, 14 / 3], 'resolved Rows Initialize');
+      } else {
+        closeArray(stageBases(axisTrace.passes[0], 'Initialize'), [6, 6, 6], 'definite Columns Initialize');
+        closeArray(stageBases(axisTrace.passes[1], 'Initialize'), [2, 2], 'cyclic Rows Initialize');
+        closeArray(stageBases(axisTrace.passes[2], 'Initialize'), [6, 6], 'resolved Rows Initialize');
       }
     }
     if (scene.mixedIntrinsicContributions && axis === 'Columns') {

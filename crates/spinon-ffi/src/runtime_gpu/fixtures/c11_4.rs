@@ -26,6 +26,8 @@ mod cyclic_minmax_calc_cross_axis_span_groups;
 mod cyclic_minmax_calc_minimum;
 #[path = "c11_4/cyclic_minmax_calc_minimum_span.rs"]
 mod cyclic_minmax_calc_minimum_span;
+#[path = "c11_4/cyclic_minmax_calc_mixed_text_image_span.rs"]
+mod cyclic_minmax_calc_mixed_text_image_span;
 #[path = "c11_4/cyclic_minmax_calc_overlapping_rows.rs"]
 mod cyclic_minmax_calc_overlapping_rows;
 #[path = "c11_4/cyclic_minmax_calc_overlapping_spans.rs"]
@@ -1104,6 +1106,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     {
         return Ok(Cow::Owned(source));
     }
+    if let Some(source) = cyclic_minmax_calc_mixed_text_image_span::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = cyclic_minmax_calc_minimum::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
@@ -1873,6 +1878,38 @@ mod tests {
         assert!(
             c11_4_grid_track_sizing_runtime_source("cyclic-minmax-replaced-image-span-unlisted")
                 .is_err()
+        );
+    }
+
+    #[test]
+    fn exposes_four_fixed_cyclic_minmax_mixed_text_image_span_scenes() {
+        for (scene_id, root_width) in [
+            (
+                "cyclic-minmax-calc-mixed-text-image-span-intrinsic-forward",
+                "min-content",
+            ),
+            (
+                "cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse",
+                "min-content",
+            ),
+            ("definite-minmax-calc-mixed-text-image-span-forward", "40px"),
+            ("definite-minmax-calc-mixed-text-image-span-reverse", "40px"),
+        ] {
+            let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
+            assert!(source.len() < 7 * 1024);
+            assert!(source.contains(&format!("sceneId:{scene_id:?}")));
+            assert!(source.contains(&format!("width:{root_width};height:max-content")));
+            assert!(source.contains("repeat(3,minmax(calc(10% + 2px),max-content))"));
+            assert!(source.contains("repeat(2,minmax(calc(10% + 2px),max-content))"));
+            assert_eq!(source.matches("document.createElement('img')").count(), 1);
+            assert_eq!(source.matches("document.createTextNode(").count(), 2);
+            assert!(source.contains("align-self:start"));
+        }
+        assert!(
+            c11_4_grid_track_sizing_runtime_source(
+                "cyclic-minmax-calc-mixed-text-image-span-unlisted"
+            )
+            .is_err()
         );
     }
 

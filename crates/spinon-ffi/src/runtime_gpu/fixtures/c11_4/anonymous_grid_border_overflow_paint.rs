@@ -47,6 +47,14 @@ const CYCLIC_DEFINITE_REVERSE_IMAGE_IDS: &[&str] = &[
     "c114-cyclic-minmax-replaced-image-span-definite-reverse-image-b",
     "c114-cyclic-minmax-replaced-image-span-definite-reverse-image-a",
 ];
+const CYCLIC_MIXED_INTRINSIC_FORWARD_IMAGE_IDS: &[&str] =
+    &["c114-cyclic-minmax-calc-mixed-text-image-span-intrinsic-forward-item-b"];
+const CYCLIC_MIXED_INTRINSIC_REVERSE_IMAGE_IDS: &[&str] =
+    &["c114-cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse-item-b"];
+const CYCLIC_MIXED_DEFINITE_FORWARD_IMAGE_IDS: &[&str] =
+    &["c114-definite-minmax-calc-mixed-text-image-span-forward-item-b"];
+const CYCLIC_MIXED_DEFINITE_REVERSE_IMAGE_IDS: &[&str] =
+    &["c114-definite-minmax-calc-mixed-text-image-span-reverse-item-b"];
 
 pub(super) fn attach_images(
     document: &HostDocumentSnapshot,
@@ -63,6 +71,10 @@ pub(super) fn attach_images(
         "c114-cyclic-minmax-replaced-image-span-intrinsic-reverse-grid",
         "c114-cyclic-minmax-replaced-image-span-definite-forward-grid",
         "c114-cyclic-minmax-replaced-image-span-definite-reverse-grid",
+        "c114-cyclic-minmax-calc-mixed-text-image-span-intrinsic-forward-grid",
+        "c114-cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse-grid",
+        "c114-definite-minmax-calc-mixed-text-image-span-forward-grid",
+        "c114-definite-minmax-calc-mixed-text-image-span-reverse-grid",
     ];
     let mut stack = document.root_children().collect::<Vec<_>>();
     let mut roots = Vec::new();
@@ -105,6 +117,18 @@ pub(super) fn attach_images(
         "cyclic-minmax-replaced-image-span-intrinsic-reverse" => CYCLIC_INTRINSIC_REVERSE_IMAGE_IDS,
         "cyclic-minmax-replaced-image-span-definite-forward" => CYCLIC_DEFINITE_FORWARD_IMAGE_IDS,
         "cyclic-minmax-replaced-image-span-definite-reverse" => CYCLIC_DEFINITE_REVERSE_IMAGE_IDS,
+        "cyclic-minmax-calc-mixed-text-image-span-intrinsic-forward" => {
+            CYCLIC_MIXED_INTRINSIC_FORWARD_IMAGE_IDS
+        }
+        "cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse" => {
+            CYCLIC_MIXED_INTRINSIC_REVERSE_IMAGE_IDS
+        }
+        "definite-minmax-calc-mixed-text-image-span-forward" => {
+            CYCLIC_MIXED_DEFINITE_FORWARD_IMAGE_IDS
+        }
+        "definite-minmax-calc-mixed-text-image-span-reverse" => {
+            CYCLIC_MIXED_DEFINITE_REVERSE_IMAGE_IDS
+        }
         _ => return Ok((scene, String::new())),
     };
     let expected_non_image_children =
