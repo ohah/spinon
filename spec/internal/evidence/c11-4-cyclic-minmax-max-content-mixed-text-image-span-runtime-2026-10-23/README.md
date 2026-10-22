@@ -49,6 +49,10 @@ max-content content box는 `110 × 80/3px`다. 양방향 source order에서 ID�
 
 각 실패 실행의 로그는 같은 날짜 evidence group의 별도 run 폴더에 남아 있다. 최종 판정에는 위 표의 성공 실행만 사용했다. Android 실기기/hardware GPU, iOS compositor 이후 픽셀, WPT와 일반 CSS admission은 확인하지 않았으며 C11.4 완료를 뜻하지 않는다.
 
+## PR #526 병합
+
+구현 PR [#526](https://github.com/ohah/spinon/pull/526)은 `2026-10-23 04:48:48 KST`에 Rebase and merge되어 merge SHA `b87c2a7d5e68434335fed4418c9f95a3a0353c6f`를 남겼다. 병합 당시 status-check rollup은 비어 있었고 GitHub `main`에는 required status check이 설정되어 있지 않았다. 이 변경은 opt-in fixture slice이며 C11.4와 공식 `77/213`은 계속 미완료다.
+
 - [구현/runtime 실패 관점 검토](implementation-runtime-review-20.md)
 - [20개 scene·feature source 테스트 결과](artifact-boundary/ffi-scene-test.log)
 - [PR #526 diff 실패 관점 검토 30개](pr-diff-review-30.md)
