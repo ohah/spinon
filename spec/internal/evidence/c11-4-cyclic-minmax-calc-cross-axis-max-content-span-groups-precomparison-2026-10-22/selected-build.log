@@ -1,0 +1,15 @@
+@spinon/docs docs:build: 🔥 Rspress v2.0.22
+@spinon/docs docs:build:
+@spinon/docs docs:build: file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/dist/m.js:10064
+@spinon/docs docs:build:             throw Error(`Cannot find config file: ${customConfigPath}`);
+@spinon/docs docs:build:                   ^
+@spinon/docs docs:build:
+@spinon/docs docs:build: Error: Cannot find config file: /Users/yoonhb/Documents/workspace/spinon/packages/docs/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/rspress-plan-review.config.ts
+@spinon/docs docs:build:     at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/dist/m.js:10064:19
+@spinon/docs docs:build:     at dist_loadConfig (file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/dist/m.js:10071:7)
+@spinon/docs docs:build:     at loadConfig_loadConfig (file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/dist/m.js:10126:23)
+@spinon/docs docs:build:     at loadConfigFile (file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/config/loadConfigFile.js:4:26)
+@spinon/docs docs:build:     at async CAC.<anonymous> (file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/cli/index.js:62:30)
+@spinon/docs docs:build:
+@spinon/docs docs:build: Node.js v24.20.0
+@spinon/docs docs:build: Exited with code 1

@@ -1,0 +1,72 @@
+@spinon/docs docs:build: 🔥 Rspress v2.0.22
+@spinon/docs docs:build:
+@spinon/docs docs:build: info    build started...
+@spinon/docs docs:build: warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+@spinon/docs docs:build: warn    Please set `output.cleanDistPath` config manually.
+@spinon/docs docs:build: warn    Current root path: /Users/yoonhb/Documents/workspace/spinon/packages/docs
+@spinon/docs docs:build: warn    Current dist path: /Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022
+@spinon/docs docs:build: info    Rendering pages...
+@spinon/docs docs:build: success Pages rendered in 124 ms.
+@spinon/docs docs:build: ready   built in 0.89s (web)
+@spinon/docs docs:build: ready   built in 0.89s (node)
+@spinon/docs docs:build:
+@spinon/docs docs:build: File (web)                                                                                                                                                               Size        Gzip
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/i.25208e7c92.js                                                            0.10 kB     0.09 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/styles.2da0941fcb.js                                                             0.47 kB     0.23 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/icon.svg                                                                                   0.64 kB     0.42 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/route-032cdf59d043.c1114589a7.js                                           6.6 kB      2.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/route-8db272bc50bb.3b3c7b601f.js                                           6.6 kB      2.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/route-81c127bc4474.a87daf66b3.js                                           9.5 kB      3.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/route-f1308cb70ebe.bcc784a13f.js                                           9.5 kB      3.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/route-d2377d70f5ea.ec721fbd16.js                                           9.5 kB      3.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/route-5d9961d8b0e5.d1bbe1e6dc.js                                           9.6 kB      3.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/route-34df0f59bcce.8434729edb.js                                           9.6 kB      3.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/route-2b0fbc59e9fc.d91c4a738e.js                                           9.6 kB      3.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/route-75e055c53ca9.57d6a2799f.js                                           14.7 kB     4.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/route-0ec671d6555f.d50122fdd6.js                                           14.7 kB     4.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/image/chrome156-max-content-span-groups.1c1e93f54c.png                              15.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/route-f81cc1f3adc5.649bf44ab1.js                                           16.5 kB     4.9 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/route-a4a4403ed559.309bfd6234.js                                           16.7 kB     5.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/route-e997c537c651.3b21f4957b.js                                           16.7 kB     5.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/lib-router.1e14e568cb.js                                                         35.4 kB     12.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/css/styles.8d918fd78e.css                                                           74.0 kB     14.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/index.ed246454c2.js                                                              77.5 kB     15.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/image/cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-forward.66bb0c6f2d.png   78.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/route-c4dae6800800.97c829078d.js                                           127.6 kB    31.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/route-739571cd2ae5.6efaeba86e.js                                           127.6 kB    31.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/image/definite-minmax-cross-axis-mixed-span-groups-forward.95817adf88.png           133.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/route-04cbcabea10a.3760ebdb67.js                                           149.8 kB    33.5 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/route-b7ce154f07b0.db2236d7b9.js                                           149.8 kB    33.6 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/a.877e354479.js                                                                  217.1 kB    72.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/lib-react.9cdf8f49ce.js                                                          218.4 kB    68.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/route-6c33a3943990.bf5fc1a923.js                                           512.7 kB    115.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/js/async/route-7ce2535ac56d.5a1bfd606d.js                                           512.8 kB    115.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/static/search_index.ko.8ae650a2.json                                                       1017.4 kB   312.6 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build:                                                                                                                                                                 Total:   3599.1 kB   1135.7 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build: File (node)                                                                                                                                                                                                             Size        Gzip
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/404.html                                                                                                                                  8.5 kB      2.6 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/plan-pr-diff-review-20.html        36.2 kB     6.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/plan-pr-diff-review-20.html   36.2 kB     6.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/spec/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/README.html              36.5 kB     6.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/README.html                   36.7 kB     6.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/README.html                        36.7 kB     6.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/README.html                                                               36.9 kB     6.9 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/spec/plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-plan-review-20.html                                                 40.8 kB     6.5 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-plan-review-20.html                                                      40.8 kB     6.5 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/spec/plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.html                                                                      41.8 kB     8.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.html                                                                           41.8 kB     8.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.html                               42.5 kB     8.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.html                                                                     43.8 kB     8.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/spec/plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.html                                                                43.8 kB     8.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/internal/0059-c11-grid-layout.html                                                                                                        151.3 kB    35.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/spec/internal/0059-c11-grid-layout.html                                                                                                   151.8 kB    35.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/plan/c11-4-grid-track-sizing.html                                                                                                         168.7 kB    36.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/spec/plan/c11-4-grid-track-sizing.html                                                                                                    168.9 kB    36.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/STATUS.html                                                                                                                               491.4 kB    116.9 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass03-20261022/spec/STATUS.html                                                                                                                          492.0 kB    117.1 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build:                                                                                                                                                                                                                Total:   2147.1 kB   476.8 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build: Exited with code 0

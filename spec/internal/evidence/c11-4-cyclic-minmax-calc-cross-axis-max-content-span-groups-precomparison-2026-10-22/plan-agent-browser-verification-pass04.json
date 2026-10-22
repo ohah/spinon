@@ -1,0 +1,22 @@
+{
+  "buildPass": "pass06",
+  "url": "/spinon/plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.html",
+  "sceneRows": 4,
+  "sceneNames": [
+    "max-content-forward",
+    "max-content-reverse",
+    "definite-forward",
+    "definite-reverse"
+  ],
+  "twoStageChecks": {
+    "intrinsicPass": true,
+    "percentageResolvedPass": true
+  },
+  "selectedLocalRoutes": {
+    "checked": 28,
+    "http200": 28,
+    "omittedSiteHome": "/spinon/"
+  },
+  "planReviewItems": 20,
+  "prDiffReviewRows": 20
+}

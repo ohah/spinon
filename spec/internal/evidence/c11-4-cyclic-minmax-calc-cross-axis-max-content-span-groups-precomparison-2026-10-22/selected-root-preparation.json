@@ -1,0 +1,324 @@
+{
+  "purpose": "Isolated RSPress build for the max-content C11.4 plan, precomparison, STATUS, and public roadmap.",
+  "selectedRoot": "build/spinon/c11-4-c114-max-content-mixed-span-plan-root-20261022",
+  "sourceHead": "5ce56617365c3929e9c0db7d5b70306327abe476",
+  "copiedFiles": [
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "target": "plan/c11-4-grid-track-sizing.md",
+      "sha256": "0dd3bc88c3b533f01557761bd79862ec4768cf03b5012aaca8c93555e8173660"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md",
+      "target": "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md",
+      "sha256": "1c512f2b01eae9832f4485fa3bb34fd27d52cf3a7b67dca0ccc1b410952b93b6"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md",
+      "target": "plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md",
+      "sha256": "08bb44fc8126cf5739ce84197ae55d180d0da48b61ea52021cb5b580d2d8860b"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-plan-review-20.md",
+      "target": "plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-plan-review-20.md",
+      "sha256": "66958501b3f3db1d64b945c4605faeb4e8be1439f350a04af1571e27f133cf66"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/plan-pr-diff-review-20.md",
+      "target": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/plan-pr-diff-review-20.md",
+      "sha256": "2f0eaae73bc0794a6e38044ca0ababc8d723da252d05b72c75e873c007d061bc"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "target": "spec/plan/c11-4-grid-track-sizing.md",
+      "sha256": "0dd3bc88c3b533f01557761bd79862ec4768cf03b5012aaca8c93555e8173660"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md",
+      "target": "spec/plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md",
+      "sha256": "1c512f2b01eae9832f4485fa3bb34fd27d52cf3a7b67dca0ccc1b410952b93b6"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md",
+      "target": "spec/plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md",
+      "sha256": "08bb44fc8126cf5739ce84197ae55d180d0da48b61ea52021cb5b580d2d8860b"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-plan-review-20.md",
+      "target": "spec/plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-plan-review-20.md",
+      "sha256": "66958501b3f3db1d64b945c4605faeb4e8be1439f350a04af1571e27f133cf66"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/plan-pr-diff-review-20.md",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/plan-pr-diff-review-20.md",
+      "sha256": "2f0eaae73bc0794a6e38044ca0ababc8d723da252d05b72c75e873c007d061bc"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "target": "STATUS.md",
+      "sha256": "f5886db3e804b4aa5d8dff5dd5824173ed0b35f784c15c7d720557ed904b2218"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "target": "spec/STATUS.md",
+      "sha256": "f5886db3e804b4aa5d8dff5dd5824173ed0b35f784c15c7d720557ed904b2218"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "target": "public/roadmap.html",
+      "sha256": "892042c9565240ead1c1d131d75631d077c77ef32c13e466967d49e663907a11"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "target": "spec/public/roadmap.html",
+      "sha256": "892042c9565240ead1c1d131d75631d077c77ef32c13e466967d49e663907a11"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "target": "public/icon.svg",
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "target": "public/logo.svg",
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "target": "public/roadmap.svg",
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "target": "internal/0059-c11-grid-layout.md",
+      "sha256": "3160b9af06fdc08e956d683f4a6733746a01844ab95bb417efe5f351e26a5cee"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "target": "spec/internal/0059-c11-grid-layout.md",
+      "sha256": "3160b9af06fdc08e956d683f4a6733746a01844ab95bb417efe5f351e26a5cee"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/README.md",
+      "target": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/README.md",
+      "sha256": "02344ef86dcc2badbb2cb5dc3f6953afe77cb95f3e01ae7b75d1bb54c8cec082"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/README.md",
+      "target": "spec/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/README.md",
+      "sha256": "02344ef86dcc2badbb2cb5dc3f6953afe77cb95f3e01ae7b75d1bb54c8cec082"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/README.md",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/README.md",
+      "sha256": "02344ef86dcc2badbb2cb5dc3f6953afe77cb95f3e01ae7b75d1bb54c8cec082"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/oracle.html",
+      "target": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/oracle.html",
+      "sha256": "aaee994b84000c16980073cab2d6a5a8eccf691dd0d084141b970509a1785860"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/oracle.html",
+      "target": "spec/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/oracle.html",
+      "sha256": "aaee994b84000c16980073cab2d6a5a8eccf691dd0d084141b970509a1785860"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/oracle.html",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/oracle.html",
+      "sha256": "aaee994b84000c16980073cab2d6a5a8eccf691dd0d084141b970509a1785860"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/chrome156-max-content-span-groups.png",
+      "target": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/chrome156-max-content-span-groups.png",
+      "sha256": "4f570092ee6c3f59e3bd9985a0d689dc208a088131d30ea78ee7f7d8979b5c65"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/chrome156-max-content-span-groups.png",
+      "target": "spec/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/chrome156-max-content-span-groups.png",
+      "sha256": "4f570092ee6c3f59e3bd9985a0d689dc208a088131d30ea78ee7f7d8979b5c65"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/chrome156-max-content-span-groups.png",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/chrome156-max-content-span-groups.png",
+      "sha256": "4f570092ee6c3f59e3bd9985a0d689dc208a088131d30ea78ee7f7d8979b5c65"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/chrome156-observation.json",
+      "target": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/chrome156-observation.json",
+      "sha256": "036ec288bc5bdd42bcf84851edda772c12ca0a3bd10618d8b664a61d4705704f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/chrome156-observation.json",
+      "target": "spec/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/chrome156-observation.json",
+      "sha256": "036ec288bc5bdd42bcf84851edda772c12ca0a3bd10618d8b664a61d4705704f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/chrome156-observation.json",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/chrome156-observation.json",
+      "sha256": "036ec288bc5bdd42bcf84851edda772c12ca0a3bd10618d8b664a61d4705704f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/chrome156-diagnostic-variants.json",
+      "target": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/chrome156-diagnostic-variants.json",
+      "sha256": "acf3761f4f05917b15cf1c55db3c187506e10f98d6d219d861d857e40f1c7e2d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/chrome156-diagnostic-variants.json",
+      "target": "spec/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/chrome156-diagnostic-variants.json",
+      "sha256": "acf3761f4f05917b15cf1c55db3c187506e10f98d6d219d861d857e40f1c7e2d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/chrome156-diagnostic-variants.json",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/chrome156-diagnostic-variants.json",
+      "sha256": "acf3761f4f05917b15cf1c55db3c187506e10f98d6d219d861d857e40f1c7e2d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/spec-derived-expectations.json",
+      "target": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/spec-derived-expectations.json",
+      "sha256": "93845889f455eff9073dc8f6ddfbdbc8f4ce0de4ae926609482b07294deb6d0c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/spec-derived-expectations.json",
+      "target": "spec/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/spec-derived-expectations.json",
+      "sha256": "93845889f455eff9073dc8f6ddfbdbc8f4ce0de4ae926609482b07294deb6d0c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/spec-derived-expectations.json",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/spec-derived-expectations.json",
+      "sha256": "93845889f455eff9073dc8f6ddfbdbc8f4ce0de4ae926609482b07294deb6d0c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/SHA256SUMS.txt",
+      "target": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/SHA256SUMS.txt",
+      "sha256": "4b8d292d1f309c2ee4cd40176fdf37272f633907dec782980f01f9ef54d7ceeb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/SHA256SUMS.txt",
+      "target": "spec/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/SHA256SUMS.txt",
+      "sha256": "4b8d292d1f309c2ee4cd40176fdf37272f633907dec782980f01f9ef54d7ceeb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/SHA256SUMS.txt",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/SHA256SUMS.txt",
+      "sha256": "4b8d292d1f309c2ee4cd40176fdf37272f633907dec782980f01f9ef54d7ceeb"
+    },
+    {
+      "source": "tests/fixtures/css/c11/grid-cyclic-minmax-calc-cross-axis-max-content-span-groups-c114-precomparison.html",
+      "target": "tests/fixtures/css/c11/grid-cyclic-minmax-calc-cross-axis-max-content-span-groups-c114-precomparison.html",
+      "sha256": "09e60530d759b1e33bdc9d8f68bdd8e924dfaaa9035237eedd2dad207e4ba488"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md",
+      "sha256": "40d214b10b40801c600524a8094eff32075f9c8833382af3cbb2655e72604395"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/README.md",
+      "target": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/README.md",
+      "sha256": "a5edd0a74e3ca593d9732c0dbeecf06fe1aa6e84595dcb7ea9f0869b02e8ceec"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.png",
+      "target": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.png",
+      "sha256": "013550f391210cf5b29ff32dbf09faeea800d3f252cbafd1a43d00a8d726d6eb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.png",
+      "target": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.png",
+      "sha256": "82335e0bc5a4af00d661bce30e88038e8c4ffe27f9fe2da39c46fc009cf045c9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/android-avd-c114-cross-axis-mixed-span-groups-android-avd-20261022T112506735Z-3c8840f1/cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-forward.png",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/android-avd-c114-cross-axis-mixed-span-groups-android-avd-20261022T112506735Z-3c8840f1/cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-forward.png",
+      "sha256": "22de25a296057eafa05f0d822707acb82f6fe5972f49dc3dbbb882f3ed96dd33"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/ios-simulator-c114-cross-axis-mixed-span-groups-ios-simulator-20261022T113152006Z-b45c3622/definite-minmax-cross-axis-mixed-span-groups-forward.png",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/ios-simulator-c114-cross-axis-mixed-span-groups-ios-simulator-20261022T113152006Z-b45c3622/definite-minmax-cross-axis-mixed-span-groups-forward.png",
+      "sha256": "2f7c636e7708bb64301ac5a7bdb95277157d31d776aff0313a16a1d8d724f84f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/roadmap-agent-browser-row-pass04.png",
+      "target": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/roadmap-agent-browser-row-pass04.png",
+      "sha256": "da878ac7ed489c1863d8c85ddf8c048bc21473afb623d444cb278be8a693b754"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/roadmap-agent-browser-row-pass04.png",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/roadmap-agent-browser-row-pass04.png",
+      "sha256": "da878ac7ed489c1863d8c85ddf8c048bc21473afb623d444cb278be8a693b754"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/roadmap-agent-browser-row-pass04.png",
+      "target": "spec/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/roadmap-agent-browser-row-pass04.png",
+      "sha256": "da878ac7ed489c1863d8c85ddf8c048bc21473afb623d444cb278be8a693b754"
+    }
+  ],
+  "omitted": "Unrelated docs and evidence are excluded; dead-link and dead-image checks are disabled in the selected config.",
+  "sourceFilesRefreshed": [
+    {
+      "source": "spec/public/roadmap.html",
+      "target": "public/roadmap.html",
+      "sha256": "892042c9565240ead1c1d131d75631d077c77ef32c13e466967d49e663907a11"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "target": "spec/public/roadmap.html",
+      "sha256": "892042c9565240ead1c1d131d75631d077c77ef32c13e466967d49e663907a11"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md",
+      "target": "plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md",
+      "sha256": "08bb44fc8126cf5739ce84197ae55d180d0da48b61ea52021cb5b580d2d8860b"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md",
+      "target": "spec/plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md",
+      "sha256": "08bb44fc8126cf5739ce84197ae55d180d0da48b61ea52021cb5b580d2d8860b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/README.md",
+      "target": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/README.md",
+      "sha256": "28c4e3fb17ab07914f754904c745fe9cb9fe332c509628a8fa352e013649b14d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/README.md",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/README.md",
+      "sha256": "28c4e3fb17ab07914f754904c745fe9cb9fe332c509628a8fa352e013649b14d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/plan-pr-diff-review-20.md",
+      "target": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/plan-pr-diff-review-20.md",
+      "sha256": "2f0eaae73bc0794a6e38044ca0ababc8d723da252d05b72c75e873c007d061bc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/plan-pr-diff-review-20.md",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/plan-pr-diff-review-20.md",
+      "sha256": "2f0eaae73bc0794a6e38044ca0ababc8d723da252d05b72c75e873c007d061bc"
+    }
+  ],
+  "buildAttempts": [
+    {
+      "pass": "initial",
+      "result": "failed: relative config path resolved from packages/docs"
+    },
+    {
+      "pass": "pass02",
+      "result": "failed: selected root omitted two referenced simulator screenshots from prior runtime README"
+    },
+    {
+      "pass": "pass03",
+      "result": "success: selected docs rendered"
+    },
+    {
+      "pass": "pass05",
+      "result": "rebuilding after switching raw source links to persistent GitHub main URLs and recording the discovered/fixed roadmap image 404"
+    }
+  ],
+  "roadmapScreenshot": {
+    "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/roadmap-agent-browser-row-pass04.png",
+    "sha256": "da878ac7ed489c1863d8c85ddf8c048bc21473afb623d444cb278be8a693b754",
+    "width": 1280,
+    "height": 633
+  }
+}
