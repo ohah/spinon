@@ -1,0 +1,99 @@
+{
+  "caseFamily": "c11-4-cyclic-minmax-mixed-text-image-span",
+  "sourceRevision": {
+    "html": "e54b658f1ee5d0ed390b39b761fd0eeea70048a7a9d7e023c814800034e7b5c3",
+    "png": "5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2",
+    "ahem": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448"
+  },
+  "ruleBasis": [
+    "CSS Grid Layout 2025 CRD §7.2.1: cyclic percentages are treated as auto while intrinsic container size is calculated, then resolve against the resulting axis size.",
+    "CSS Grid Layout 2025 CRD §11.3–§11.5.1: process increasing span groups and retain each track's maximum planned increase across items in the same group.",
+    "Chrome observations are kept separate and are not used to derive these expectations."
+  ],
+  "inputs": {
+    "columns": 3,
+    "rows": 2,
+    "track": "minmax(calc(10% + 2px), max-content)",
+    "gapPx": 2,
+    "rootBorderPx": 2,
+    "imageNaturalSizePx": [24, 16],
+    "imageCssSize": { "widthPx": 40, "minWidthPx": 40, "height": "auto", "naturalRatio": "3/2", "blockContributionPx": "80/3" },
+    "textFont": "Ahem 400 10px/10px",
+    "items": {
+      "A": { "kind": "text", "text": "AA A A", "columnSpan": 2, "rowSpan": 2, "minContentInlinePx": 20, "maxContentInlinePx": 60 },
+      "B": { "kind": "replaced-image", "columnSpan": 2, "rowSpan": 2, "minContentInlinePx": 40, "blockContributionPx": "80/3" },
+      "C": { "kind": "text", "text": "AA AA AA AA", "columnSpan": 3, "rowSpan": 2, "minContentInlinePx": 20, "maxContentInlinePx": 110 }
+    }
+  },
+  "derived": {
+    "intrinsicColumnInitialBasesPx": [2, 2, 2],
+    "span2PlannedIncreasesPx": {
+      "A": [7, 7, 0],
+      "B": [0, 17, 17],
+      "sameSpanPerTrackMaximum": [7, 17, 17]
+    },
+    "intrinsicColumnConstraintBasesPx": [9, 19, 19],
+    "span3CMinContentAdditionalGrowthPx": 0,
+    "intrinsicContentWidthPx": 51,
+    "intrinsicFinalColumnsPx": [15.671875, 15.671875, 15.65625],
+    "intrinsicFinalRowsRationalPx": ["37/3", "37/3"],
+    "intrinsicContentHeightRationalPx": "80/3",
+    "definiteColumnsPx": [12, 12, 12],
+    "definiteRowsPx": [19, 19],
+    "definiteContentSizePx": [40, 40]
+  },
+  "expected": [
+    {
+      "scene": "intrinsic-forward",
+      "sourceOrder": ["A", "B", "C"],
+      "columnsPx": [15.671875, 15.671875, 15.65625],
+      "rowsRationalPx": ["37/3", "37/3"],
+      "contentSizeRationalPx": [51, "80/3"],
+      "borderBoxRationalPx": [55, "92/3"],
+      "framesRationalOrExactPx": {
+        "A": [2, 2, 33.34375, "80/3"],
+        "B": [19.671875, 2, 40, "80/3"],
+        "C": [2, 2, 51, "80/3"]
+      },
+      "textLineWidthsPx": { "A": [20, 30], "C": [50, 50] },
+      "imageOutsideRightBorderPx": 4.671875
+    },
+    {
+      "scene": "intrinsic-reverse",
+      "sourceOrder": ["C", "B", "A"],
+      "sameLayoutAs": "intrinsic-forward"
+    },
+    {
+      "scene": "definite-forward",
+      "sourceOrder": ["A", "B", "C"],
+      "columnsPx": [12, 12, 12],
+      "rowsPx": [19, 19],
+      "contentSizePx": [40, 40],
+      "borderBoxPx": [44, 44],
+      "framesPx": {
+        "A": [2, 2, 26, 40],
+        "B": [16, 2, 40, "80/3"],
+        "C": [2, 2, 40, 40]
+      },
+      "textLineWidthsPx": { "A": [20, 10, 10], "C": [20, 20, 20, 20] },
+      "imageOutsideRightBorderPx": 12
+    },
+    {
+      "scene": "definite-reverse",
+      "sourceOrder": ["C", "B", "A"],
+      "sameLayoutAs": "definite-forward"
+    }
+  ],
+  "comparison": {
+    "usedValueToleranceCssPx": 0.015625,
+    "rounding": "Chrome CSSOM reports fractional used values in 1/64 CSS px increments; compare each frame and track component independently.",
+    "sourceOrderInvariant": ["track sizes", "item-keyed frames", "text line widths", "row contributions"],
+    "requiredFailureCases": [
+      "unregistered scene or source order",
+      "wrong image bytes, natural dimensions, or image revision",
+      "font unavailable or Ahem revision mismatch",
+      "partial text/image intrinsic input list",
+      "numeric or geometry overflow beyond the registered root"
+    ]
+  }
+}
