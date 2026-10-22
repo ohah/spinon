@@ -1,0 +1,343 @@
+{
+  "ahemLoaded": true,
+  "fontStatus": "loaded",
+  "scenes": [
+    {
+      "id": "intrinsic-forward",
+      "items": [
+        {
+          "frame": {
+            "height": 20,
+            "width": 33.34375,
+            "x": 2,
+            "y": 2
+          },
+          "key": "a",
+          "lineRects": [
+            {
+              "top": 2,
+              "width": 20
+            },
+            {
+              "top": 12,
+              "width": 30
+            }
+          ],
+          "text": "AA A A"
+        },
+        {
+          "frame": {
+            "height": 10,
+            "width": 40,
+            "x": 19.671875,
+            "y": 2
+          },
+          "key": "b",
+          "lineRects": [
+            {
+              "top": 2,
+              "width": 40
+            }
+          ],
+          "text": "XXXX"
+        },
+        {
+          "frame": {
+            "height": 20,
+            "width": 51,
+            "x": 2,
+            "y": 2
+          },
+          "key": "c",
+          "lineRects": [
+            {
+              "top": 2,
+              "width": 50
+            },
+            {
+              "top": 12,
+              "width": 50
+            }
+          ],
+          "text": "AA AA AA AA"
+        }
+      ],
+      "root": {
+        "columns": [
+          "15.6719px",
+          "15.6719px",
+          "15.6562px"
+        ],
+        "contentHeight": "20px",
+        "contentWidth": "51px",
+        "height": 24,
+        "rows": [
+          "9px",
+          "9px"
+        ],
+        "width": 55
+      },
+      "width": "min-content"
+    },
+    {
+      "id": "intrinsic-reverse",
+      "items": [
+        {
+          "frame": {
+            "height": 20,
+            "width": 51,
+            "x": 2,
+            "y": 2
+          },
+          "key": "c",
+          "lineRects": [
+            {
+              "top": 2,
+              "width": 50
+            },
+            {
+              "top": 12,
+              "width": 50
+            }
+          ],
+          "text": "AA AA AA AA"
+        },
+        {
+          "frame": {
+            "height": 10,
+            "width": 40,
+            "x": 19.671875,
+            "y": 2
+          },
+          "key": "b",
+          "lineRects": [
+            {
+              "top": 2,
+              "width": 40
+            }
+          ],
+          "text": "XXXX"
+        },
+        {
+          "frame": {
+            "height": 20,
+            "width": 33.34375,
+            "x": 2,
+            "y": 2
+          },
+          "key": "a",
+          "lineRects": [
+            {
+              "top": 2,
+              "width": 20
+            },
+            {
+              "top": 12,
+              "width": 30
+            }
+          ],
+          "text": "AA A A"
+        }
+      ],
+      "root": {
+        "columns": [
+          "15.6719px",
+          "15.6719px",
+          "15.6562px"
+        ],
+        "contentHeight": "20px",
+        "contentWidth": "51px",
+        "height": 24,
+        "rows": [
+          "9px",
+          "9px"
+        ],
+        "width": 55
+      },
+      "width": "min-content"
+    },
+    {
+      "id": "definite-forward",
+      "items": [
+        {
+          "frame": {
+            "height": 40,
+            "width": 26,
+            "x": 2,
+            "y": 2
+          },
+          "key": "a",
+          "lineRects": [
+            {
+              "top": 2,
+              "width": 20
+            },
+            {
+              "top": 12,
+              "width": 10
+            },
+            {
+              "top": 22,
+              "width": 10
+            }
+          ],
+          "text": "AA A A"
+        },
+        {
+          "frame": {
+            "height": 10,
+            "width": 40,
+            "x": 16,
+            "y": 2
+          },
+          "key": "b",
+          "lineRects": [
+            {
+              "top": 2,
+              "width": 40
+            }
+          ],
+          "text": "XXXX"
+        },
+        {
+          "frame": {
+            "height": 40,
+            "width": 40,
+            "x": 2,
+            "y": 2
+          },
+          "key": "c",
+          "lineRects": [
+            {
+              "top": 2,
+              "width": 20
+            },
+            {
+              "top": 12,
+              "width": 20
+            },
+            {
+              "top": 22,
+              "width": 20
+            },
+            {
+              "top": 32,
+              "width": 20
+            }
+          ],
+          "text": "AA AA AA AA"
+        }
+      ],
+      "root": {
+        "columns": [
+          "12px",
+          "12px",
+          "12px"
+        ],
+        "contentHeight": "40px",
+        "contentWidth": "40px",
+        "height": 44,
+        "rows": [
+          "19px",
+          "19px"
+        ],
+        "width": 44
+      },
+      "width": "40px"
+    },
+    {
+      "id": "definite-reverse",
+      "items": [
+        {
+          "frame": {
+            "height": 40,
+            "width": 40,
+            "x": 2,
+            "y": 2
+          },
+          "key": "c",
+          "lineRects": [
+            {
+              "top": 2,
+              "width": 20
+            },
+            {
+              "top": 12,
+              "width": 20
+            },
+            {
+              "top": 22,
+              "width": 20
+            },
+            {
+              "top": 32,
+              "width": 20
+            }
+          ],
+          "text": "AA AA AA AA"
+        },
+        {
+          "frame": {
+            "height": 10,
+            "width": 40,
+            "x": 16,
+            "y": 2
+          },
+          "key": "b",
+          "lineRects": [
+            {
+              "top": 2,
+              "width": 40
+            }
+          ],
+          "text": "XXXX"
+        },
+        {
+          "frame": {
+            "height": 40,
+            "width": 26,
+            "x": 2,
+            "y": 2
+          },
+          "key": "a",
+          "lineRects": [
+            {
+              "top": 2,
+              "width": 20
+            },
+            {
+              "top": 12,
+              "width": 10
+            },
+            {
+              "top": 22,
+              "width": 10
+            }
+          ],
+          "text": "AA A A"
+        }
+      ],
+      "root": {
+        "columns": [
+          "12px",
+          "12px",
+          "12px"
+        ],
+        "contentHeight": "40px",
+        "contentWidth": "40px",
+        "height": 44,
+        "rows": [
+          "19px",
+          "19px"
+        ],
+        "width": 44
+      },
+      "width": "40px"
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "height": 1600,
+    "width": 1280
+  }
+}

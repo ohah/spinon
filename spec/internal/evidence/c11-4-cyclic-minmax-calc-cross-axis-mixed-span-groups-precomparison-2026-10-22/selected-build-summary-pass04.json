@@ -1,0 +1,46 @@
+{
+  "pass": "pass04",
+  "sourceHead": "c14a82b8e8999730815c8fedf1d74473a6283279",
+  "rspressVersion": "2.0.22",
+  "command": "mise exec -- bun run --filter @spinon/docs docs:build -c spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/rspress-plan-review.config.ts",
+  "exitCode": 0,
+  "selectedRoot": "build/spinon/c11-4-mixed-span-plan-docs-root-pass04",
+  "siteRoot": "build/spinon/c11-4-mixed-span-plan-docs-build-pass04",
+  "selectedRootPreparation": "selected-root-preparation-pass04.json",
+  "requiredRoutes": [
+    "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.html",
+    "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-plan-review-20.html",
+    "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/README.html",
+    "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/plan-pr-diff-review-30.html",
+    "spec/internal/evidence/c11-4-cross-axis-span-groups-runtime-2026-10-22/README.html",
+    "roadmap.html",
+    "STATUS.html"
+  ],
+  "agentBrowser": {
+    "session": "spinon-c114-mixed-span-plan-rspress-pass04",
+    "browserUserAgent": "HeadlessChrome/156.0.0.0",
+    "sessionClosed": true,
+    "remainingAgentBrowserProcesses": 0,
+    "planSceneRows": 4,
+    "planInternalLinks": { "checked": 14, "http200": 14 },
+    "planPrDiffReviewRows": 30,
+    "roadmapNewRowLinks": { "checked": 5, "http200": 5 },
+    "loadedImages": [
+      { "alt": "Chrome 156 mixed-span cross-axis fixture", "naturalWidth": 1280 },
+      { "alt": "Android API 37 AVD definite forward scene", "naturalWidth": 1080 },
+      { "alt": "iOS 26.2 Simulator definite forward scene", "naturalWidth": 1206 }
+    ],
+    "officialStatusRetained": "77/213; new plan states runtime has not started"
+  },
+  "fullRepositoryBuild": {
+    "exitCode": 1,
+    "observedUnrelatedErrors": [
+      "dead links in other documentation/evidence pages",
+      "Shiki does not include the existing rust,ignore language alias"
+    ]
+  },
+  "limitations": [
+    "The selected build disabled dead-link and dead-image checking because unrelated repository pages fail those checks.",
+    "Agent Browser checked the plan body links and the new roadmap row links; this is not a full-site link audit."
+  ]
+}
