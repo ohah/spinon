@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "agentBrowserVersion": "0.31.1",
+  "browser": "Agent Browser",
+  "terminalBrowserUsed": false,
+  "sourceCommit": "530691ee889b03f40e79e216bab042efd5427e09",
+  "baseUrl": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "roadmap": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html?rev=530691ee",
+    "title": "스피논 구현 로드맵",
+    "pr503MergedNoteVisible": true,
+    "mergeShaVisible": true,
+    "officialCompletionCount77of213Visible": true,
+    "pr503LinkPresent": true,
+    "screenshot": "tailnet-roadmap-agent-browser-pass28.png"
+  },
+  "status": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html?rev=530691ee",
+    "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+    "pr503Visible": true,
+    "mergeShaVisible": true,
+    "officialCompletionCount77of213Visible": true,
+    "noRequiredChecksNoteVisible": true,
+    "screenshot": "tailnet-status-agent-browser-pass28.png"
+  },
+  "plan": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-cyclic-minmax-calc-overlapping-rows.html?rev=530691ee",
+    "title": "C11.4 · cyclic minmax(calc()) 겹치는 row span 기여 계획 - 스피논 문서",
+    "mergeShaVisible": true,
+    "officialCompletionCount77of213Visible": true
+  },
+  "runtimeEvidence": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-rows-runtime-2026-10-22/README.html?rev=530691ee",
+    "title": "C11.4 cyclic minmax(calc()) 겹치는 row span runtime 근거 - 스피논 문서",
+    "prDiffReviewLinkPresent": true,
+    "screenshots": [
+      { "alt": "Android AVD의 100px 행 span overflow 장면", "loaded": true, "width": 1080, "height": 2400 },
+      { "alt": "iOS Simulator의 100px 행 span overflow 장면", "loaded": true, "width": 1206, "height": 2622 }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "530691ee889b03f40e79e216bab042efd5427e09",
+  "sourceTree": "4f2d459541782ff8a77a4b2d4f0dead6f19c6b75",
+  "selectedRoot": "build/spinon/c11-4-cyclic-minmax-calc-overlapping-rows-tailnet-root-pass28-selected",
+  "selectedFiles": 8190,
+  "selectedBytes": 344155309,
+  "siteRoot": "build/spinon/c11-4-cyclic-minmax-calc-overlapping-rows-tailnet-site-pass28-retry",
+  "rspressVersion": "2.0.22",
+  "siteFileCount": 4534,
+  "siteBytes": 229005804,
+  "siteTreeSha256": "b60c17e44313b90b19aaffab74b09c55601e3cbabab452a137a8e5ccc8b990fb",
+  "requiredRoutes": [
+    "roadmap.html",
+    "STATUS.html",
+    "spec/STATUS.html",
+    "plan/c11-4-cyclic-minmax-calc-overlapping-rows.html",
+    "plan/c11-4-cyclic-minmax-calc-overlapping-rows-plan-review-20.html",
+    "internal/evidence/c11-4-cyclic-minmax-calc-overlapping-rows-runtime-2026-10-22/README.html",
+    "internal/evidence/c11-4-cyclic-minmax-calc-overlapping-rows-runtime-2026-10-22/implementation-runtime-review-20.html",
+    "internal/evidence/c11-4-cyclic-minmax-calc-overlapping-rows-runtime-2026-10-22/pr-diff-review-20.html",
+    "static/image/definite-minmax-calc-overlap-rows-small-forward.002d038a46.png",
+    "static/image/definite-minmax-calc-overlap-rows-small-forward.995e5b3644.png"
+  ],
+  "noSymlinks": true,
+  "roadmapShowsPr503Merged": true,
+  "officialCompletionCountStill77of213": true,
+  "c114StillUnchecked": true,
+  "runtimeEvidenceRendered": true,
+  "buildLog": "selected-build-pass28.log.gz"
+}
