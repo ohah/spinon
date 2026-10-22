@@ -452,9 +452,8 @@ fn computed_auto_repeat_tracks(
     allow_intrinsic_tracks: bool,
     allow_auto_repeat: bool,
 ) -> Result<ComputedGridTracks, CssCascadeError> {
-    let has_valid_outer_line_names = list.values.len().checked_add(1)
-        == Some(list.line_names.len())
-        && list.line_names.iter().all(|names| names.is_empty());
+    let has_valid_outer_line_names =
+        list.values.len().checked_add(1) == Some(list.line_names.len());
     if !allow_auto_repeat || !has_valid_outer_line_names {
         return Err(unsupported_grid_value(node, property, serialized));
     }
@@ -486,11 +485,28 @@ fn computed_auto_repeat_tracks(
     if repeat.track_sizes.is_empty()
         || repeat.track_sizes.len() > MAX_COMPUTED_GRID_TRACKS
         || repeat.track_sizes.len().checked_add(1) != Some(repeat.line_names.len())
-        || repeat.line_names.iter().any(|names| !names.is_empty())
         || !allow_intrinsic_tracks
     {
         return Err(unsupported_grid_value(node, property, serialized));
     }
+
+    line_name_groups_metadata_bytes(list.line_names.iter().map(|group| group.iter()))
+        .and_then(|outer| {
+            line_name_groups_metadata_bytes(repeat.line_names.iter().map(|group| group.iter()))
+                .and_then(|inner| outer.checked_add(inner))
+        })
+        .filter(|bytes| *bytes <= MAX_COMPUTED_GRID_LINE_METADATA_BYTES)
+        .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+    let outer_line_names = copy_computed_line_name_groups(
+        list.line_names.iter().map(|group| group.iter()),
+        node,
+        property,
+    )?;
+    let repeated_line_names = copy_computed_line_name_groups(
+        repeat.line_names.iter().map(|group| group.iter()),
+        node,
+        property,
+    )?;
 
     let prefix_count = repeat_index;
     let repeat_end = prefix_count
@@ -507,7 +523,10 @@ fn computed_auto_repeat_tracks(
         total_track_count,
         node,
         property,
-        |tracks, count| tracks.try_reserve_exact(count).map_err(|_| ()),
+        |tracks, count| {
+            fail_integer_repeat_reservation_if_requested(IntegerRepeatReservationSite::Tracks)?;
+            tracks.try_reserve_exact(count).map_err(|_| ())
+        },
     )?;
 
     for value in list.values.iter().take(prefix_count) {
@@ -539,13 +558,72 @@ fn computed_auto_repeat_tracks(
     }
     Ok(ComputedGridTracks {
         tracks,
-        line_names: Vec::new(),
+        line_names: outer_line_names,
         auto_repeat: Some(ComputedCssGridAutoRepeat {
             mode,
             start: prefix_count,
             end: repeat_end,
+            line_names: repeated_line_names,
         }),
     })
+}
+
+fn line_name_groups_metadata_bytes<'a, Groups, Names>(groups: Groups) -> Option<usize>
+where
+    Groups: ExactSizeIterator<Item = Names>,
+    Names: ExactSizeIterator<Item = &'a style::values::CustomIdent>,
+{
+    let mut name_count = 0_usize;
+    let mut name_bytes = 0_usize;
+    let group_count = groups.len();
+    for group in groups {
+        name_count = name_count.checked_add(group.len())?;
+        for name in group {
+            name_bytes = name_bytes.checked_add(name.0.as_str().len())?;
+        }
+    }
+    group_count
+        .checked_mul(std::mem::size_of::<Vec<String>>())?
+        .checked_add(name_count.checked_mul(std::mem::size_of::<String>())?)?
+        .checked_add(name_bytes)
+}
+
+fn copy_computed_line_name_groups<'a, Groups, Names>(
+    groups: Groups,
+    node: NodeId,
+    property: &'static str,
+) -> Result<Vec<Vec<String>>, CssCascadeError>
+where
+    Groups: ExactSizeIterator<Item = Names>,
+    Names: ExactSizeIterator<Item = &'a style::values::CustomIdent>,
+{
+    let mut output = Vec::new();
+    reserve_integer_repeat_vec(
+        &mut output,
+        groups.len(),
+        IntegerRepeatReservationSite::LineGroups,
+        node,
+        property,
+    )?;
+    for names in groups {
+        let mut group = Vec::new();
+        reserve_integer_repeat_vec(
+            &mut group,
+            names.len(),
+            IntegerRepeatReservationSite::LineNames,
+            node,
+            property,
+        )?;
+        for name in names {
+            let value = name.0.as_str();
+            let mut owned = String::new();
+            reserve_integer_repeat_string(&mut owned, value.len(), node, property)?;
+            owned.push_str(value);
+            group.push(owned);
+        }
+        output.push(group);
+    }
+    Ok(output)
 }
 
 fn is_auto_repeat_neighbor_track(track: &ComputedCssGridTrackSize) -> bool {

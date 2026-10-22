@@ -22,8 +22,8 @@ pub(super) fn resolve_axis(
     node: NodeId,
     start_property: &'static str,
     end_property: &'static str,
-    start: GridPlacementInput,
-    end: GridPlacementInput,
+    start: &GridPlacementInput,
+    end: &GridPlacementInput,
     explicit_track_count: usize,
 ) -> Result<AxisPlacement, LayoutError> {
     let mut start = endpoint(node, start_property, start, explicit_track_count)?;
@@ -115,26 +115,26 @@ pub(super) fn resolve_axis(
 fn endpoint(
     node: NodeId,
     property: &'static str,
-    placement: GridPlacementInput,
+    placement: &GridPlacementInput,
     explicit_track_count: usize,
 ) -> Result<Endpoint, LayoutError> {
     match placement {
         GridPlacementInput::Auto => Ok(Endpoint::Auto),
         GridPlacementInput::Line(line) => {
-            if line == 0 {
+            if *line == 0 {
                 return Err(invalid_placement(
                     node,
                     property,
                     "line 0은 CSS Grid에서 유효하지 않습니다",
                 ));
             }
-            let boundary = if line > 0 {
-                i64::from(line) - 1
+            let boundary = if *line > 0 {
+                i64::from(*line) - 1
             } else {
                 i64::try_from(explicit_track_count)
                     .ok()
                     .and_then(|count| count.checked_add(1))
-                    .and_then(|last_boundary| last_boundary.checked_add(i64::from(line)))
+                    .and_then(|last_boundary| last_boundary.checked_add(i64::from(*line)))
                     .ok_or_else(|| {
                         invalid_placement(node, property, "음수 line 계산이 정수 범위를 넘었습니다")
                     })?
@@ -142,10 +142,17 @@ fn endpoint(
             Ok(Endpoint::Boundary(boundary))
         }
         GridPlacementInput::Span(span) => {
-            let span = positive_span(node, property, span)?;
+            let span = positive_span(node, property, *span)?;
             let span = usize::try_from(span)
                 .map_err(|_| invalid_placement(node, property, "span이 정수 범위를 넘었습니다"))?;
             Ok(Endpoint::Span(span))
+        }
+        GridPlacementInput::NamedLine { .. } | GridPlacementInput::SpanNamed { .. } => {
+            Err(invalid_placement(
+                node,
+                property,
+                "이름 있는 배치는 auto-repeat track count가 계산된 Taffy 경로에서만 지원됩니다",
+            ))
         }
     }
 }

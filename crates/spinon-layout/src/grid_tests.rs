@@ -452,6 +452,35 @@ fn grid_track_count_above_taffy_limit_fails_instead_of_being_truncated() {
 }
 
 #[test]
+fn auto_repeat_line_metadata_above_budget_fails_before_taffy() {
+    let mut input = grid_input(
+        vec![GridTrackSize::MinMax {
+            min: crate::GridTrackMinSizingFunction::LengthPx(1.0),
+            max: crate::GridTrackMaxSizingFunction::Fraction(1.0),
+        }],
+        vec![GridTrackSize::LengthPx(200.0)],
+        0,
+        LayoutGap::default(),
+    );
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::TrackSizing;
+    container.columns_auto_repeat = Some(crate::GridAutoRepeat {
+        mode: crate::GridAutoRepeatMode::AutoFill,
+        start: 0,
+        end: 1,
+        line_names: vec![vec!["x".repeat(1024 * 1024)], Vec::new()],
+    });
+
+    assert_eq!(
+        TaffyLayoutEngine.compute(&input),
+        Err(LayoutError::InvalidGridTrackList {
+            node: id(1),
+            property: "grid-template-columns",
+        })
+    );
+}
+
+#[test]
 fn grid_layout_preserves_child_flex_dispatch() {
     let flex = id(2);
     let item = id(3);

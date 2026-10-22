@@ -73,16 +73,26 @@ pub(super) fn normalize_grid_layout(
 }
 
 /// CSS Grid item의 계산된 배치 끝점입니다.
-#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+#[derive(Clone, Debug, Default, Eq, PartialEq)]
 pub enum GridPlacementInput {
     #[default]
     Auto,
     Line(i32),
     Span(u32),
+    /// auto-repeat track count가 알려진 Taffy 단계에서 해석할 이름 있는 line입니다.
+    NamedLine {
+        name: String,
+        occurrence: i32,
+    },
+    /// auto-repeat track count가 알려진 Taffy 단계에서 해석할 이름 있는 span입니다.
+    SpanNamed {
+        name: String,
+        count: u32,
+    },
 }
 
 /// 한 in-flow Grid item의 row·column 배치 입력입니다.
-#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+#[derive(Clone, Debug, Default, Eq, PartialEq)]
 pub struct GridItemInput {
     pub row_start: GridPlacementInput,
     pub row_end: GridPlacementInput,
@@ -91,7 +101,7 @@ pub struct GridItemInput {
 }
 
 impl GridItemInput {
-    pub(super) fn is_auto(self) -> bool {
+    pub(super) fn is_auto(&self) -> bool {
         self.row_start == GridPlacementInput::Auto
             && self.row_end == GridPlacementInput::Auto
             && self.column_start == GridPlacementInput::Auto
@@ -135,16 +145,15 @@ pub(super) fn normalize_grid_item_placements(
             input
                 .grid_items
                 .get(child)
-                .copied()
-                .unwrap_or_default()
-                .is_auto()
+                .is_none_or(GridItemInput::is_auto)
         });
         if all_auto {
             continue;
         }
 
         for child in visible_items {
-            let placement = input.grid_items.get(&child).copied().unwrap_or_default();
+            let default_placement = GridItemInput::default();
+            let placement = input.grid_items.get(&child).unwrap_or(&default_placement);
             if placement.is_auto() {
                 return Err(invalid_placement(
                     child,
@@ -156,16 +165,16 @@ pub(super) fn normalize_grid_item_placements(
                 child,
                 "grid-row-start",
                 "grid-row-end",
-                placement.row_start,
-                placement.row_end,
+                &placement.row_start,
+                &placement.row_end,
                 container.rows.len(),
             )?;
             let (column_start, column_end) = normalize_axis(
                 child,
                 "grid-column-start",
                 "grid-column-end",
-                placement.column_start,
-                placement.column_end,
+                &placement.column_start,
+                &placement.column_end,
                 container.columns.len(),
             )?;
             normalized.insert(
@@ -207,21 +216,23 @@ fn normalize_axis(
     node: NodeId,
     start_property: &'static str,
     end_property: &'static str,
-    start: GridPlacementInput,
-    end: GridPlacementInput,
+    start: &GridPlacementInput,
+    end: &GridPlacementInput,
     track_count: usize,
 ) -> Result<(i16, i16), LayoutError> {
     let start_line = match start {
         GridPlacementInput::Line(value) => {
-            Some(explicit_line(node, start_property, value, track_count)?)
+            Some(explicit_line(node, start_property, *value, track_count)?)
         }
         GridPlacementInput::Auto | GridPlacementInput::Span(_) => None,
+        GridPlacementInput::NamedLine { .. } | GridPlacementInput::SpanNamed { .. } => None,
     };
     let end_line = match end {
         GridPlacementInput::Line(value) => {
-            Some(explicit_line(node, end_property, value, track_count)?)
+            Some(explicit_line(node, end_property, *value, track_count)?)
         }
         GridPlacementInput::Auto | GridPlacementInput::Span(_) => None,
+        GridPlacementInput::NamedLine { .. } | GridPlacementInput::SpanNamed { .. } => None,
     };
 
     let bounds = explicit_line_bounds(track_count);
@@ -241,7 +252,7 @@ fn normalize_axis(
             }
         }
         (GridPlacementInput::Line(_), GridPlacementInput::Span(span), Some(start), None) => {
-            let span = positive_span(node, end_property, span)?;
+            let span = positive_span(node, end_property, *span)?;
             let end = start.checked_add(i64::from(span)).ok_or_else(|| {
                 invalid_placement(
                     node,
@@ -252,7 +263,7 @@ fn normalize_axis(
             (start, end)
         }
         (GridPlacementInput::Span(span), GridPlacementInput::Line(_), None, Some(end)) => {
-            let span = positive_span(node, start_property, span)?;
+            let span = positive_span(node, start_property, *span)?;
             let start = end.checked_sub(i64::from(span)).ok_or_else(|| {
                 invalid_placement(
                     node,
@@ -375,8 +386,8 @@ mod tests {
             id(),
             "grid-column-start",
             "grid-column-end",
-            start,
-            end,
+            &start,
+            &end,
             tracks,
         )
     }
@@ -418,7 +429,7 @@ mod tests {
             (P::Line(1), P::Line(5)),
         ] {
             assert!(
-                axis(start, end, 3).is_err(),
+                axis(start.clone(), end.clone(), 3).is_err(),
                 "unexpectedly accepted {start:?}/{end:?}"
             );
         }

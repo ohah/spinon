@@ -38,6 +38,7 @@ const canonicalFixtureSources = [
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_3_scroll_gesture_host.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_named_lines.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_2.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_4.rs',
@@ -124,6 +125,15 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
   );
   const runtimeFixtureSource = await readFile(
     resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/fixtures.rs'),
+    'utf8',
+  );
+  const c114RuntimeFixture = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs'),
+    'utf8',
+  );
+  const c114NamedLineRuntimeFixture = await readFile(
+    resolve(repositoryRoot,
+      'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_named_lines.rs'),
     'utf8',
   );
   const ffiFixtureSource = await readFile(
@@ -293,6 +303,12 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
   assert.match(runtimeGpuFixtureFeature[1], /"spinon-runtime\/c11-4-grid-track-sizing-fixture-test"/);
   assert.match(runtimeFixtureSource,
     /#\[cfg\(feature = "c13-1-overflow-clip-fixture-test"\)\]\s*pub\(crate\) mod c13_1;/);
+  assert.match(runtimeFixtureSource,
+    /pub\(crate\) mod c11_4_auto_repeat_named_lines;/);
+  assert.match(c114RuntimeFixture,
+    /super::c11_4_auto_repeat_named_lines::runtime_source/);
+  assert.match(c114NamedLineRuntimeFixture,
+    /include_str!\("c11_4\/auto_repeat_named_line_scenes\.json"\)/);
   assert.match(ffiFixtureSource,
     /#\[cfg\(feature = "c13-1-overflow-clip-fixture-test"\)\]\s*mod c13_1;/);
   assert.match(cargoManifest,

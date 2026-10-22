@@ -28,8 +28,8 @@ pub(super) fn resolve_axis(
     node: NodeId,
     start_property: &'static str,
     end_property: &'static str,
-    start: GridPlacementInput,
-    end: GridPlacementInput,
+    start: &GridPlacementInput,
+    end: &GridPlacementInput,
     track_count: usize,
     allow_positive_implicit: bool,
 ) -> Result<AxisPlacement, LayoutError> {
@@ -125,21 +125,28 @@ pub(super) fn resolve_axis(
 fn endpoint(
     node: NodeId,
     property: &'static str,
-    placement: GridPlacementInput,
+    placement: &GridPlacementInput,
     track_count: usize,
     allow_positive_implicit: bool,
 ) -> Result<Endpoint, LayoutError> {
     match placement {
         GridPlacementInput::Auto => Ok(Endpoint::Auto),
-        GridPlacementInput::Line(line) if allow_positive_implicit && line > 0 => {
-            Ok(Endpoint::Line(i64::from(line)))
+        GridPlacementInput::Line(line) if allow_positive_implicit && *line > 0 => {
+            Ok(Endpoint::Line(i64::from(*line)))
         }
         GridPlacementInput::Line(line) => {
-            explicit_line(node, property, line, track_count).map(Endpoint::Line)
+            explicit_line(node, property, *line, track_count).map(Endpoint::Line)
         }
         GridPlacementInput::Span(span) => {
-            let span = positive_span(node, property, span)?;
+            let span = positive_span(node, property, *span)?;
             Ok(Endpoint::Span(span as usize))
+        }
+        GridPlacementInput::NamedLine { .. } | GridPlacementInput::SpanNamed { .. } => {
+            Err(invalid_placement(
+                node,
+                property,
+                "이름 있는 배치는 auto-repeat track count가 계산된 Taffy 경로에서만 지원됩니다",
+            ))
         }
     }
 }

@@ -223,13 +223,15 @@ pub enum ComputedCssGridAutoRepeatMode {
 }
 
 /// Explicit track 목록 안에서 한 번 반복되는 CSS auto-repeat fragment입니다.
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub struct ComputedCssGridAutoRepeat {
     pub mode: ComputedCssGridAutoRepeatMode,
     /// `columns` 또는 `rows`에서 반복 fragment가 시작하는 inclusive track index입니다.
     pub start: usize,
     /// `columns` 또는 `rows`에서 반복 fragment가 끝나는 exclusive track index입니다.
     pub end: usize,
+    /// 반복 fragment의 각 track 경계에 있는 authored 이름 그룹입니다. 비어 있지 않으면 N+1개입니다.
+    pub line_names: Vec<Vec<String>>,
 }
 
 /// Stylo computed `grid-auto-rows` 값 중 제한 profile이 해석할 수 있는 형태입니다.
@@ -259,9 +261,9 @@ pub struct ComputedCssGridLayout {
     pub columns_auto_repeat: Option<ComputedCssGridAutoRepeat>,
     /// 반복이 있을 때 `rows`는 authored 순서로 fragment를 한 번 배치합니다.
     pub rows_auto_repeat: Option<ComputedCssGridAutoRepeat>,
-    /// 각 explicit column 경계의 authored line-name 목록입니다. C11.3부터 N+1개입니다.
+    /// 일반 축에서는 track 경계, auto-repeat 축에서는 component 경계의 authored 이름 그룹입니다.
     pub columns_line_names: Vec<Vec<String>>,
-    /// 각 explicit row 경계의 authored line-name 목록입니다. C11.3부터 N+1개입니다.
+    /// 일반 축에서는 track 경계, auto-repeat 축에서는 component 경계의 authored 이름 그룹입니다.
     pub rows_line_names: Vec<Vec<String>>,
     /// C11.3.3 named area는 셀 행렬 대신 크기와 직사각형 목록으로 보존합니다.
     pub template_areas: Option<ComputedCssGridTemplateAreas>,

@@ -275,6 +275,57 @@ fn named_line_metadata_shape_and_zero_span_count_fail_closed() {
 }
 
 #[test]
+fn auto_repeat_named_placements_remain_symbolic_and_require_authored_names() {
+    let outer_names = names(&[&[], &["repeat-start"], &[]]);
+    let repeated_names = names(&[&["item"], &["item"]]);
+    let projected = project_axis_for_auto_repeat(
+        NodeId::new(15).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &bare_named("item"),
+        &span_named("item", 2),
+        &outer_names,
+        &repeated_names,
+    )
+    .unwrap();
+    assert_eq!(
+        projected,
+        (
+            GridPlacementInput::NamedLine {
+                name: "item".to_owned(),
+                occurrence: 0,
+            },
+            GridPlacementInput::SpanNamed {
+                name: "item".to_owned(),
+                count: 2,
+            },
+            false,
+        )
+    );
+
+    for placement in [
+        bare_named("not-authored"),
+        named("item", 0),
+        named("item", 40_000),
+    ] {
+        let error = project_axis_for_auto_repeat(
+            NodeId::new(15).unwrap(),
+            "grid-column-start",
+            "grid-column-end",
+            &placement,
+            &ComputedCssGridPlacement::Auto,
+            &outer_names,
+            &repeated_names,
+        )
+        .unwrap_err();
+        assert!(matches!(
+            error,
+            StyleLayoutError::UnsupportedNamedGridLine { .. }
+        ));
+    }
+}
+
+#[test]
 fn named_span_shortage_fails_instead_of_creating_implicit_lines() {
     let line_names = names(&[&[], &["edge"], &[]]);
     assert!(

@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 구현 전 계획. C11.4 공식 완료 수 `77/213`과 미완료 checkbox는 그대로 둔다. 계획은 auto-repeat fragment에 authored line name을 보존하고 해당 named placement를 확장 후 해석하는 한정 slice만 다룬다.
+**상태:** 구현 및 양 simulator 고정 scene 검증 완료 후보. 이 slice를 병합해도 C11.4 공식 완료 수 `77/213`과 미완료 checkbox는 그대로 둔다. auto-repeat fragment의 authored line name 보존과 확장 후 named placement 해석만 다룬다.
 
 ## 결손과 실행 가능성
 
@@ -57,3 +57,9 @@
 
 - [계획 실패 관점 검토 20개](./c11-4-auto-repeat-named-lines-plan-review-20.md)
 - [Chrome 156 사전 비교와 고정 fixture](../spec/internal/evidence/c11-4-auto-repeat-named-lines-precomparison-2026-10-23/README.md)
+
+## 구현/runtime 결과
+
+- [Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 8-scene 결과, screenshot, artifact hash, 테스트와 제한](../spec/internal/evidence/c11-4-auto-repeat-named-lines-runtime-2026-10-23/README.md)
+- [구현/runtime 독립 실패 관점 20개](../spec/internal/evidence/c11-4-auto-repeat-named-lines-runtime-2026-10-23/implementation-runtime-review-20.md)
+- [PR diff 실패 관점 30개](../spec/internal/evidence/c11-4-auto-repeat-named-lines-runtime-2026-10-23/pr-diff-review-30.md)

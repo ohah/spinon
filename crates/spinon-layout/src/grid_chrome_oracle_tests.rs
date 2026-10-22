@@ -253,7 +253,7 @@ fn run_span_case(case: &ChromeSpanCase, owner: u64) {
                 ..GridContainerInput::default()
             },
         )]),
-        BTreeMap::from([(item.id(), case.placement)]),
+        BTreeMap::from([(item.id(), case.placement.clone())]),
     );
     let output = if case.has_natural_image {
         let snapshot = intrinsic_snapshot(&document, item);
@@ -774,6 +774,7 @@ fn chrome155_auto_repeat_track_oracle_cases_match_traces_and_frames() {
                         mode: case.mode,
                         start: 0,
                         end: 1,
+                        line_names: Vec::new(),
                     }),
                     placement_mode: GridPlacementMode::TrackSizing,
                     ..GridContainerInput::default()
@@ -900,6 +901,7 @@ fn chrome155_auto_fill_indefinite_grid_repeats_one_fixed_track() {
                     mode: GridAutoRepeatMode::AutoFill,
                     start: 0,
                     end: 1,
+                    line_names: Vec::new(),
                 }),
                 placement_mode: GridPlacementMode::TrackSizing,
                 ..GridContainerInput::default()

@@ -28,7 +28,7 @@ pub(super) struct GridTaffyStyleInput<'a> {
     pub(super) container: Option<&'a GridContainerInput>,
     pub(super) expanded_rows: Option<&'a [GridTrackSize]>,
     pub(super) expanded_columns: Option<&'a [GridTrackSize]>,
-    pub(super) item: Option<GridItemInput>,
+    pub(super) item: Option<&'a GridItemInput>,
 }
 
 pub(super) fn to_taffy_style(
@@ -51,7 +51,7 @@ pub(super) fn to_taffy_style(
                     node,
                     "grid-template-columns",
                     &container.columns,
-                    container.columns_auto_repeat,
+                    container.columns_auto_repeat.as_ref(),
                     calc_handles,
                 )
             })
@@ -67,7 +67,7 @@ pub(super) fn to_taffy_style(
                     node,
                     "grid-template-rows",
                     &container.rows,
-                    container.rows_auto_repeat,
+                    container.rows_auto_repeat.as_ref(),
                     calc_handles,
                 )
             })
@@ -94,6 +94,22 @@ pub(super) fn to_taffy_style(
         None => (Vec::new(), Vec::new()),
     };
     let grid_auto_flow = grid::to_taffy_grid_auto_flow(grid_input.container);
+    let grid_template_column_names = grid_input
+        .container
+        .filter(|container| container.columns_auto_repeat.is_some())
+        .map(|container| {
+            grid::copy_grid_line_names(node, "grid-template-columns", &container.columns_line_names)
+        })
+        .transpose()?
+        .unwrap_or_default();
+    let grid_template_row_names = grid_input
+        .container
+        .filter(|container| container.rows_auto_repeat.is_some())
+        .map(|container| {
+            grid::copy_grid_line_names(node, "grid-template-rows", &container.rows_line_names)
+        })
+        .transpose()?
+        .unwrap_or_default();
     let inset = if !flow_only && positioning.position != LayoutPosition::Static {
         positioning.inset
     } else {
@@ -305,6 +321,8 @@ pub(super) fn to_taffy_style(
         flex_shrink: style.flex_shrink,
         grid_template_columns: grid_columns,
         grid_template_rows: grid_rows,
+        grid_template_column_names,
+        grid_template_row_names,
         grid_auto_rows,
         grid_auto_columns,
         grid_auto_flow,
@@ -319,10 +337,10 @@ pub(super) fn to_taffy_style(
     compact.set_track_sizing_trace_enabled(trace_enabled);
     if let Some(item) = grid_input.item {
         compact.set_grid_item_placement(
-            grid::taffy_grid_placement_line(node, "grid-row-start", item.row_start)?,
-            grid::taffy_grid_placement_line(node, "grid-row-end", item.row_end)?,
-            grid::taffy_grid_placement_line(node, "grid-column-start", item.column_start)?,
-            grid::taffy_grid_placement_line(node, "grid-column-end", item.column_end)?,
+            grid::taffy_grid_placement_line(node, "grid-row-start", &item.row_start)?,
+            grid::taffy_grid_placement_line(node, "grid-row-end", &item.row_end)?,
+            grid::taffy_grid_placement_line(node, "grid-column-start", &item.column_start)?,
+            grid::taffy_grid_placement_line(node, "grid-column-end", &item.column_end)?,
         );
     }
     Ok(compact)

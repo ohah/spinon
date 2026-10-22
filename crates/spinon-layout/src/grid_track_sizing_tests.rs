@@ -144,51 +144,103 @@ fn track_sizing_profile_accepts_zero_fraction_tracks() {
     }));
 }
 
-#[test]
-fn auto_repeat_rejects_named_lines_through_the_layout_api() {
-    let mut columns = grid_input(
-        vec![GridTrackSize::LengthPx(80.0)],
+fn named_auto_repeat_input(item: GridItemInput) -> LayoutInput {
+    let mut input = grid_input(
+        vec![
+            GridTrackSize::LengthPx(20.0),
+            GridTrackSize::LengthPx(40.0),
+            GridTrackSize::LengthPx(10.0),
+        ],
         vec![GridTrackSize::LengthPx(80.0)],
         1,
         LayoutGap::default(),
     );
-    let container = columns.grid_containers.get_mut(&id(1)).unwrap();
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
     container.placement_mode = GridPlacementMode::TrackSizing;
     container.columns_auto_repeat = Some(GridAutoRepeat {
         mode: GridAutoRepeatMode::AutoFill,
-        start: 0,
-        end: container.columns.len(),
+        start: 1,
+        end: 2,
+        line_names: vec![vec!["item-start".into()], vec!["item-end".into()]],
     });
-    container.columns_line_names = vec![vec!["start".into()], vec!["end".into()]];
-    assert!(matches!(
-        TaffyLayoutEngine.compute(&columns),
-        Err(LayoutError::InvalidGridTrackList {
-            node,
-            property: "grid-template-columns",
-        }) if node == id(1)
-    ));
+    container.columns_line_names = vec![
+        vec!["container-start".into()],
+        vec!["repeat-start".into()],
+        vec!["repeat-end".into()],
+        vec!["container-end".into()],
+    ];
+    input.nodes[1].style.width = LayoutDimension::Auto;
+    input.grid_items.insert(id(2), item);
+    input
+}
 
-    let mut rows = grid_input(
-        vec![GridTrackSize::LengthPx(80.0)],
-        vec![GridTrackSize::LengthPx(80.0)],
-        1,
-        LayoutGap::default(),
-    );
-    let container = rows.grid_containers.get_mut(&id(1)).unwrap();
-    container.placement_mode = GridPlacementMode::TrackSizing;
-    container.rows_auto_repeat = Some(GridAutoRepeat {
-        mode: GridAutoRepeatMode::AutoFit,
-        start: 0,
-        end: container.rows.len(),
-    });
-    container.rows_line_names = vec![vec!["top".into()], vec!["bottom".into()]];
-    assert!(matches!(
-        TaffyLayoutEngine.compute(&rows),
-        Err(LayoutError::InvalidGridTrackList {
-            node,
-            property: "grid-template-rows",
-        }) if node == id(1)
-    ));
+#[test]
+fn auto_repeat_named_lines_resolve_after_repeat_expansion() {
+    let cases = [
+        (
+            GridPlacementInput::NamedLine {
+                name: "item-start".into(),
+                occurrence: 2,
+            },
+            GridPlacementInput::NamedLine {
+                name: "item-end".into(),
+                occurrence: 2,
+            },
+            60.0,
+            40.0,
+        ),
+        (
+            GridPlacementInput::NamedLine {
+                name: "item-start".into(),
+                occurrence: -1,
+            },
+            GridPlacementInput::NamedLine {
+                name: "item-end".into(),
+                occurrence: -1,
+            },
+            260.0,
+            40.0,
+        ),
+        (
+            GridPlacementInput::NamedLine {
+                name: "item-start".into(),
+                occurrence: 2,
+            },
+            GridPlacementInput::SpanNamed {
+                name: "item-end".into(),
+                count: 2,
+            },
+            60.0,
+            80.0,
+        ),
+        (
+            GridPlacementInput::NamedLine {
+                name: "repeat-start".into(),
+                occurrence: 0,
+            },
+            GridPlacementInput::NamedLine {
+                name: "item-end".into(),
+                occurrence: 1,
+            },
+            20.0,
+            40.0,
+        ),
+    ];
+
+    for (case_index, (column_start, column_end, expected_x, expected_width)) in
+        cases.into_iter().enumerate()
+    {
+        let input = named_auto_repeat_input(GridItemInput {
+            row_start: GridPlacementInput::Line(1),
+            row_end: GridPlacementInput::Line(2),
+            column_start,
+            column_end,
+        });
+        let output = TaffyLayoutEngine.compute(&input).unwrap();
+        let frame = output.frames[&id(2)];
+        assert_eq!(frame.x, expected_x, "case {case_index}");
+        assert_eq!(frame.width, expected_width, "case {case_index}");
+    }
 }
 
 #[test]
@@ -217,11 +269,13 @@ fn auto_repeat_accepts_independent_repeats_on_both_axes() {
         mode: GridAutoRepeatMode::AutoFill,
         start: 1,
         end: 2,
+        line_names: Vec::new(),
     });
     container.rows_auto_repeat = Some(GridAutoRepeat {
         mode: GridAutoRepeatMode::AutoFit,
         start: 1,
         end: 2,
+        line_names: Vec::new(),
     });
 
     let output = TaffyLayoutEngine.compute(&input).unwrap();
@@ -279,11 +333,13 @@ fn auto_fit_definite_minimum_uses_same_repeat_count_on_both_axes() {
         mode: GridAutoRepeatMode::AutoFit,
         start: 1,
         end: 3,
+        line_names: Vec::new(),
     });
     container.rows_auto_repeat = Some(GridAutoRepeat {
         mode: GridAutoRepeatMode::AutoFit,
         start: 1,
         end: 3,
+        line_names: Vec::new(),
     });
 
     let output = TaffyLayoutEngine.compute(&input).unwrap();
@@ -385,11 +441,13 @@ fn auto_repeat_minimum_size_repeat_counts_match_axis_and_fill_mode_at_boundaries
                 mode,
                 start: 1,
                 end: 3,
+                line_names: Vec::new(),
             });
             container.rows_auto_repeat = Some(GridAutoRepeat {
                 mode,
                 start: 1,
                 end: 3,
+                line_names: Vec::new(),
             });
 
             let output = TaffyLayoutEngine.compute(&input).unwrap();
@@ -485,11 +543,13 @@ fn auto_fit_collapsed_gutters_preserve_explicit_suffix_line_geometry() {
         mode: GridAutoRepeatMode::AutoFit,
         start: 1,
         end: 3,
+        line_names: Vec::new(),
     });
     container.rows_auto_repeat = Some(GridAutoRepeat {
         mode: GridAutoRepeatMode::AutoFit,
         start: 1,
         end: 3,
+        line_names: Vec::new(),
     });
     input.grid_items.insert(
         id(2),
@@ -551,6 +611,7 @@ fn auto_fit_end_repeat_collapses_leading_gutter_after_prefix_when_all_tracks_col
         mode: GridAutoRepeatMode::AutoFit,
         start: 1,
         end: 3,
+        line_names: Vec::new(),
     });
 
     let output = TaffyLayoutEngine.compute(&input).unwrap();
@@ -606,11 +667,13 @@ fn auto_repeat_rejects_an_invalid_second_axis_independently() {
         mode: GridAutoRepeatMode::AutoFill,
         start: 1,
         end: 2,
+        line_names: Vec::new(),
     });
     container.rows_auto_repeat = Some(GridAutoRepeat {
         mode: GridAutoRepeatMode::AutoFit,
         start: 2,
         end: 4,
+        line_names: Vec::new(),
     });
 
     assert!(matches!(
@@ -648,11 +711,13 @@ fn auto_repeat_rejects_an_invalid_first_axis_independently() {
         mode: GridAutoRepeatMode::AutoFill,
         start: 2,
         end: 4,
+        line_names: Vec::new(),
     });
     container.rows_auto_repeat = Some(GridAutoRepeat {
         mode: GridAutoRepeatMode::AutoFit,
         start: 1,
         end: 2,
+        line_names: Vec::new(),
     });
 
     assert!(matches!(

@@ -73,13 +73,14 @@ pub(super) fn normalize_sparse_grid_container(
     let mut auto_placed_items = BTreeSet::new();
 
     for child in visible_children {
-        let placement = input.grid_items.get(&child).copied().unwrap_or_default();
+        let default_placement = crate::GridItemInput::default();
+        let placement = input.grid_items.get(&child).unwrap_or(&default_placement);
         let row = resolve_axis(
             child,
             "grid-row-start",
             "grid-row-end",
-            placement.row_start,
-            placement.row_end,
+            &placement.row_start,
+            &placement.row_end,
             container.rows.len(),
             false,
         )?;
@@ -87,8 +88,8 @@ pub(super) fn normalize_sparse_grid_container(
             child,
             "grid-column-start",
             "grid-column-end",
-            placement.column_start,
-            placement.column_end,
+            &placement.column_start,
+            &placement.column_end,
             container.columns.len(),
             false,
         )?;

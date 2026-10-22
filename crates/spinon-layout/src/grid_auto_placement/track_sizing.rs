@@ -69,21 +69,22 @@ pub(super) fn normalize_track_sizing_grid_container(
         .copied()
         .filter(|child| !hidden[child])
     {
-        let placement = input.grid_items.get(&child).copied().unwrap_or_default();
+        let default_placement = crate::GridItemInput::default();
+        let placement = input.grid_items.get(&child).unwrap_or(&default_placement);
         let row = resolve_axis(
             child,
             "grid-row-start",
             "grid-row-end",
-            placement.row_start,
-            placement.row_end,
+            &placement.row_start,
+            &placement.row_end,
             container.rows.len(),
         )?;
         let column = resolve_axis(
             child,
             "grid-column-start",
             "grid-column-end",
-            placement.column_start,
-            placement.column_end,
+            &placement.column_start,
+            &placement.column_end,
             container.columns.len(),
         )?;
         if row.start.is_none() || column.start.is_none() {

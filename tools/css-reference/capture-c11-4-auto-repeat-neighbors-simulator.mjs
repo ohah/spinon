@@ -3205,7 +3205,85 @@ scenes.push(
     'cyclic-minmax-replaced-image-span-definite-reverse', ['c', 'b', 'a'], false,
   ),
 );
-assert.equal(scenes.length, 279, 'C11.4 fixture scene count differs.');
+async function autoRepeatNamedLineScenes() {
+  const fixturePath = resolve(repositoryRoot,
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_named_line_scenes.json');
+  const androidPath = resolve(repositoryRoot,
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java');
+  const iosPath = resolve(repositoryRoot, 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift');
+  const [fixtures, androidSource, iosSource] = await Promise.all([
+    readFile(fixturePath, 'utf8').then(JSON.parse),
+    readFile(androidPath, 'utf8'),
+    readFile(iosPath, 'utf8'),
+  ]);
+  assert.equal(fixtures.length, 8, 'named auto-repeat 고정 fixture는 8 scene이어야 합니다.');
+  const allowlist = (source, expression, label) => {
+    const match = source.match(expression);
+    assert.ok(match, `${label} scene allowlist를 읽을 수 없습니다.`);
+    return new Set([...match[1].matchAll(/"([^"]+)"/g)].map((entry) => entry[1]));
+  };
+  const androidScenes = allowlist(androidSource,
+    /C114_GRID_TRACK_SIZING_SCENE_IDS\s*=\s*\{([\s\S]*?)\};/,
+    'Android Grid track sizing');
+  const androidNamed = allowlist(androidSource,
+    /C114_AUTO_REPEAT_NEGATIVE_LINE_SCENE_IDS\s*=\s*\{([\s\S]*?)\};/,
+    'Android auto-repeat');
+  const iosScenes = allowlist(iosSource,
+    /c114GridTrackSizingSceneIDs:\s*Set<String>\s*=\s*\[([\s\S]*?)\]/,
+    'iOS Grid track sizing');
+  const iosNamed = allowlist(iosSource,
+    /c114AutoRepeatNegativeLineSceneIDs:\s*Set<String>\s*=\s*\[([\s\S]*?)\]/,
+    'iOS auto-repeat');
+
+  return fixtures.map(({ id, expect }) => {
+    for (const [label, ids] of [
+      ['Android Grid', androidScenes], ['Android auto-repeat', androidNamed],
+      ['iOS Grid', iosScenes], ['iOS auto-repeat', iosNamed],
+    ]) assert.ok(ids.has(id), `${label} allowlist에 ${id}가 없습니다.`);
+    const [itemX, itemY, itemWidth, itemHeight] = expect.item;
+    const [rootWidth, rootHeight] = expect.root;
+    const rootFrame = `width=${rootWidth},height=${rootHeight}`;
+    const itemFrame = `width=${itemWidth},height=${itemHeight}`;
+    const nodeFrames = `node_frames_css_px=[0:node=1,x=0,y=0,${rootFrame};`
+      + `1:node=2,x=${itemX},y=${itemY},width=${itemWidth},height=${itemHeight}]`;
+    const scene = {
+      id,
+      axis: expect.tracks.Columns.length > 1 ? 'Columns' : 'Rows',
+      boxCount: 2,
+      rootFrame,
+      itemFrame,
+      nodeFrames,
+      axes: Object.fromEntries(Object.entries(expect.tracks).map(([axis, tracks]) => [axis, {
+        tracks,
+        collapsed: expect.collapsed[axis],
+      }])),
+      gaps: expect.gaps,
+    };
+    const rootNodeId = `c114-${id}-grid`;
+    const itemNodeId = `c114-${id}-item`;
+    const background = [226, 232, 240, 255];
+    const itemColor = [57, 165, 219, 255];
+    if (id === 'auto-repeat-named-row') {
+      scene.pixelSamples = [
+        { id: `${id}-before-item`, nodeId: rootNodeId, xCssPx: 20, yCssPx: itemY - 1, rgba: background },
+        { id: `${id}-item-start-edge`, nodeId: itemNodeId, xCssPx: 20, yCssPx: itemY, rgba: itemColor },
+        { id: `${id}-item-end-edge`, nodeId: itemNodeId, xCssPx: 20, yCssPx: itemY + itemHeight - 1, rgba: itemColor },
+        { id: `${id}-after-item`, nodeId: rootNodeId, xCssPx: 20, yCssPx: itemY + itemHeight, rgba: background },
+      ];
+    } else {
+      scene.pixelSamples = [
+        ...(itemX > 0 ? [{ id: `${id}-before-item`, nodeId: rootNodeId, xCssPx: itemX - 1, yCssPx: 20, rgba: background }] : []),
+        { id: `${id}-item-start-edge`, nodeId: itemNodeId, xCssPx: itemX, yCssPx: 20, rgba: itemColor },
+        { id: `${id}-item-end-edge`, nodeId: itemNodeId, xCssPx: itemX + itemWidth - 1, yCssPx: 20, rgba: itemColor },
+        { id: `${id}-after-item`, nodeId: rootNodeId, xCssPx: itemX + itemWidth, yCssPx: 20, rgba: background },
+      ];
+    }
+    return scene;
+  });
+}
+
+scenes.push(...await autoRepeatNamedLineScenes());
+assert.equal(scenes.length, 287, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
