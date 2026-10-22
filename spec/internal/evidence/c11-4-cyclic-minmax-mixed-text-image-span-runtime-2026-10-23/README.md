@@ -24,7 +24,7 @@
 
 | Android API 37 AVD | iPhone 17 Pro iOS 26.2 Simulator |
 | --- | --- |
-| ![Android definite forward scene](android-avd-c114-cyclic-percent-tracks-android-avd-20261022T181721087Z-74c00bba/definite-minmax-calc-mixed-text-image-span-forward.png) | ![iOS definite forward scene](ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261022T181757837Z-37539e36/definite-minmax-calc-mixed-text-image-span-forward.png) |
+| ![Android definite forward scene](./android-avd-c114-cyclic-percent-tracks-android-avd-20261022T181721087Z-74c00bba/definite-minmax-calc-mixed-text-image-span-forward.png) | ![iOS definite forward scene](./ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261022T181757837Z-37539e36/definite-minmax-calc-mixed-text-image-span-forward.png) |
 
 앱 로그의 `runtime_text_count=0`과 `glyph_batch_draw_count=0` 때문에 화면에서 보이는 text item의 빨간색 box는 text glyph raster가 아니다. 이 결과는 text wrapping/line metrics와 item geometry를 확인하지만 글리프 픽셀 정확성을 확인하지 않는다. Android 결과는 emulator-only이며 물리 기기나 Android hardware GPU 증거가 아니다. iOS 결과도 compositor 이후 화면이나 scanout 검증이 아니다. WPT·전체 CSS Grid 적합성을 주장하지 않는다.
 
