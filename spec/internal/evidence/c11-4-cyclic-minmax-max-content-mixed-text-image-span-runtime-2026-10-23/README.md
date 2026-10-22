@@ -51,3 +51,5 @@ max-content content box는 `110 × 80/3px`다. 양방향 source order에서 ID�
 
 - [구현/runtime 실패 관점 검토](implementation-runtime-review-20.md)
 - [20개 scene·feature source 테스트 결과](artifact-boundary/ffi-scene-test.log)
+- [PR #526 diff 실패 관점 검토 30개](pr-diff-review-30.md)
+- [PR #526 화면의 Agent Browser 확인·프로세스 정리](pr526-agent-browser-verification.json) · [확인 화면](pr526-agent-browser-images.png)

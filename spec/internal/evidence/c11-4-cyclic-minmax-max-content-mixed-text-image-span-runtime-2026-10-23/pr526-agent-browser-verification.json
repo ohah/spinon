@@ -1,0 +1,54 @@
+{
+  "tool": "agent-browser",
+  "version": "0.31.1",
+  "session": "spinon-c114-pr526-20261023",
+  "page": {
+    "url": "https://github.com/ohah/spinon/pull/526",
+    "title": "C11.4: cyclic max-content mixed text/image span fixture by ohah · Pull Request #526 · ohah/spinon",
+    "bodyHasSimulatorHeading": true,
+    "bodyHasScopeLimits": true,
+    "imageCount": 4,
+    "images": [
+      {
+        "alt": "Android AVD max-content forward",
+        "complete": true,
+        "naturalWidth": 1080,
+        "naturalHeight": 2400,
+        "rendered": true
+      },
+      {
+        "alt": "iOS Simulator max-content forward",
+        "complete": true,
+        "naturalWidth": 1206,
+        "naturalHeight": 2622,
+        "rendered": true
+      },
+      {
+        "alt": "Android AVD definite forward",
+        "complete": true,
+        "naturalWidth": 1080,
+        "naturalHeight": 2400,
+        "rendered": true
+      },
+      {
+        "alt": "iOS Simulator definite forward",
+        "complete": true,
+        "naturalWidth": 1206,
+        "naturalHeight": 2622,
+        "rendered": true
+      }
+    ],
+    "screenshot": "pr526-agent-browser-images.png",
+    "screenshotSha256": "89ecfeecc6afd6719639948679d9e3da8dbac628e223d19193b89de966f68be6"
+  },
+  "cleanup": {
+    "command": "agent-browser --session spinon-c114-pr526-20261023 close",
+    "result": "Browser closed",
+    "pageCount": 0,
+    "browserLaunched": false,
+    "reportedBackgroundPid": 70379,
+    "agentBrowserProcessPresentAtFinalCheck": false,
+    "terminalBrowserProcessPresentAtFinalCheck": false,
+    "note": "The session closed and its reported PID exited before the targeted signal check. The existing Tailnet preview server PID 1191 remained running."
+  }
+}
