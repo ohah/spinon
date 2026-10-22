@@ -15,9 +15,23 @@ pub(super) enum BoxSizing {
 pub(super) enum Track {
     Auto,
     Px(f32),
-    FitContentCalc { percentage: f32, length_px: f32 },
-    MinMaxCalc { percentage: f32, length_px: f32 },
-    MinMaxCalcMinimum { percentage: f32, length_px: f32 },
+    FitContentCalc {
+        percentage: f32,
+        length_px: f32,
+    },
+    MinMaxCalc {
+        percentage: f32,
+        length_px: f32,
+    },
+    MinMaxCalcMinimum {
+        percentage: f32,
+        length_px: f32,
+    },
+    TwoMinMaxCalcMinimum {
+        percentage: f32,
+        length_px: f32,
+        gap_px: f32,
+    },
 }
 
 #[derive(Clone, Copy)]
@@ -37,7 +51,7 @@ const COLUMN_LIMIT: Track = Track::FitContentCalc {
     length_px: 4.0,
 };
 
-pub(super) const SCENES: [Scene; 16] = [
+pub(super) const SCENES: [Scene; 20] = [
     Scene {
         id: "cyclic-fit-content-calc-column",
         width: Dimension::MaxContent,
@@ -242,5 +256,61 @@ pub(super) const SCENES: [Scene; 16] = [
             length_px: 2.0,
         },
         text: "aa aa",
+    },
+    Scene {
+        id: "cyclic-minmax-calc-min-span-columns",
+        width: Dimension::MaxContent,
+        height: Dimension::Px(10.0),
+        box_sizing: BoxSizing::ContentBox,
+        border_width: 2.0,
+        columns: Track::TwoMinMaxCalcMinimum {
+            percentage: 0.5,
+            length_px: 4.0,
+            gap_px: 4.0,
+        },
+        rows: Track::Px(10.0),
+        text: "aa aa",
+    },
+    Scene {
+        id: "definite-minmax-calc-min-span-columns",
+        width: Dimension::Px(50.0),
+        height: Dimension::Px(10.0),
+        box_sizing: BoxSizing::ContentBox,
+        border_width: 2.0,
+        columns: Track::TwoMinMaxCalcMinimum {
+            percentage: 0.5,
+            length_px: 4.0,
+            gap_px: 4.0,
+        },
+        rows: Track::Px(10.0),
+        text: "aa aa",
+    },
+    Scene {
+        id: "cyclic-minmax-calc-min-span-rows",
+        width: Dimension::Px(20.0),
+        height: Dimension::MaxContent,
+        box_sizing: BoxSizing::ContentBox,
+        border_width: 2.0,
+        columns: Track::Px(20.0),
+        rows: Track::TwoMinMaxCalcMinimum {
+            percentage: 0.5,
+            length_px: 2.0,
+            gap_px: 4.0,
+        },
+        text: "a a",
+    },
+    Scene {
+        id: "definite-minmax-calc-min-span-rows",
+        width: Dimension::Px(20.0),
+        height: Dimension::Px(20.0),
+        box_sizing: BoxSizing::ContentBox,
+        border_width: 2.0,
+        columns: Track::Px(20.0),
+        rows: Track::TwoMinMaxCalcMinimum {
+            percentage: 0.5,
+            length_px: 2.0,
+            gap_px: 4.0,
+        },
+        text: "a a",
     },
 ];

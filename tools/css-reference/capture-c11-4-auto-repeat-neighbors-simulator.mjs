@@ -25,6 +25,10 @@ const cyclicPercentSceneIDs = new Set([
   'cyclic-minmax-calc-min-column-definite-row',
   'definite-column-cyclic-minmax-calc-min-row',
   'definite-minmax-calc-min-both-axes',
+  'cyclic-minmax-calc-min-span-columns',
+  'definite-minmax-calc-min-span-columns',
+  'cyclic-minmax-calc-min-span-rows',
+  'definite-minmax-calc-min-span-rows',
   'cyclic-percent-two-axis-multitrack', 'cyclic-percent-columns-multitrack',
   'cyclic-percent-rows-multitrack', 'definite-percent-two-axis-multitrack',
   'cyclic-calc-column', 'cyclic-calc-row', 'cyclic-calc-two-axis',
@@ -2339,6 +2343,32 @@ const minmaxCalcMinimumScene = ({ id, root, item, columns, rows, points }) => ({
   intrinsicInputs: minimumTextInput,
   pixelSamples: minimumPixelSamples(id, points),
 });
+const spanRowsTextInput = [{
+  grid: 1, node: 2, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+  minContent: 10, minContentHeight: 20, maxContent: 30, maxContentHeight: 10,
+}];
+const minmaxCalcMinimumSpanScene = ({
+  id, root, item, columns, rows, gaps, points, axis, intrinsicInputs,
+}) => ({
+  id,
+  axis,
+  boxCount: 2,
+  rootFrame: `width=${root[0]},height=${root[1]}`,
+  itemFrame: `width=${item[2]},height=${item[3]}`,
+  nodeFrames: `node_frames_css_px=[0:node=1,x=0,y=0,width=${root[0]},height=${root[1]};`
+    + `1:node=2,x=2,y=2,width=${item[2]},height=${item[3]}]`,
+  axes: {
+    Columns: { tracks: columns, collapsed: columns.map(() => false) },
+    Rows: { tracks: rows, collapsed: rows.map(() => false) },
+  },
+  gaps,
+  intrinsicInputs,
+  intrinsicSpans: [2],
+  intrinsicSpansByAxis: axis === 'Columns'
+    ? { Columns: [2], Rows: [] }
+    : { Columns: [], Rows: [2] },
+  pixelSamples: minimumPixelSamples(id, points),
+});
 scenes.push(
   minmaxCalcMinimumScene({
     id: 'cyclic-minmax-calc-min-both-axes', root: [54, 14], item: [2, 2, 104, 22],
@@ -2393,7 +2423,41 @@ scenes.push(
     ],
   }),
 );
-assert.equal(scenes.length, 235, 'C11.4 fixture scene count differs.');
+const spanColumnSamples = () => [
+  ['outside-root-item', 'item', 58, 6, [229, 72, 77, 255]],
+  ['past-item', 'grid', 66, 6, [0, 0, 0, 255]],
+];
+const spanRowSamples = () => [
+  ['outside-root-item', 'item', 8, 27, [229, 72, 77, 255]],
+  ['past-item', 'grid', 8, 31, [0, 0, 0, 255]],
+];
+scenes.push(
+  minmaxCalcMinimumSpanScene({
+    id: 'cyclic-minmax-calc-min-span-columns', root: [54, 14],
+    item: [2, 2, 62, 10], columns: [29, 29], rows: [10],
+    gaps: { Columns: 4, Rows: 0 }, points: spanColumnSamples(),
+    axis: 'Columns', intrinsicInputs: minimumTextInput,
+  }),
+  minmaxCalcMinimumSpanScene({
+    id: 'definite-minmax-calc-min-span-columns', root: [54, 14],
+    item: [2, 2, 62, 10], columns: [29, 29], rows: [10],
+    gaps: { Columns: 4, Rows: 0 }, points: spanColumnSamples(),
+    axis: 'Columns', intrinsicInputs: minimumTextInput,
+  }),
+  minmaxCalcMinimumSpanScene({
+    id: 'cyclic-minmax-calc-min-span-rows', root: [24, 24],
+    item: [2, 2, 20, 28], columns: [20], rows: [12, 12],
+    gaps: { Columns: 0, Rows: 4 }, points: spanRowSamples(),
+    axis: 'Rows', intrinsicInputs: spanRowsTextInput,
+  }),
+  minmaxCalcMinimumSpanScene({
+    id: 'definite-minmax-calc-min-span-rows', root: [24, 24],
+    item: [2, 2, 20, 28], columns: [20], rows: [12, 12],
+    gaps: { Columns: 0, Rows: 4 }, points: spanRowSamples(),
+    axis: 'Rows', intrinsicInputs: spanRowsTextInput,
+  }),
+);
+assert.equal(scenes.length, 239, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;

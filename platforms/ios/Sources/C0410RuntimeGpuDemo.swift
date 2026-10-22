@@ -24,6 +24,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "definite-minmax-calc-column", "definite-minmax-calc-small-limit",
     "cyclic-minmax-calc-min-column", "cyclic-minmax-calc-min-row",
     "definite-minmax-calc-min-column", "definite-minmax-calc-min-row",
+    "cyclic-minmax-calc-min-span-columns", "definite-minmax-calc-min-span-columns",
+    "cyclic-minmax-calc-min-span-rows", "definite-minmax-calc-min-span-rows",
     "cyclic-minmax-calc-min-both-axes",
     "cyclic-minmax-calc-min-column-definite-row",
     "definite-column-cyclic-minmax-calc-min-row",
@@ -237,6 +239,10 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
         || sceneID == "cyclic-minmax-calc-min-row"
         || sceneID == "definite-minmax-calc-min-column"
         || sceneID == "definite-minmax-calc-min-row" { return "width=14,height=14" }
+    if sceneID == "cyclic-minmax-calc-min-span-columns"
+        || sceneID == "definite-minmax-calc-min-span-columns" { return "width=54,height=14" }
+    if sceneID == "cyclic-minmax-calc-min-span-rows"
+        || sceneID == "definite-minmax-calc-min-span-rows" { return "width=24,height=24" }
     if sceneID == "cyclic-minmax-calc-min-both-axes"
         || sceneID == "cyclic-minmax-calc-min-column-definite-row" {
         return "width=54,height=14"
@@ -411,6 +417,10 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     if sceneID == "cyclic-minmax-calc-row" { return "width=20,height=22" }
     if sceneID == "cyclic-minmax-calc-min-column"
         || sceneID == "definite-minmax-calc-min-column" { return "width=24,height=10" }
+    if sceneID == "cyclic-minmax-calc-min-span-columns"
+        || sceneID == "definite-minmax-calc-min-span-columns" { return "width=62,height=10" }
+    if sceneID == "cyclic-minmax-calc-min-span-rows"
+        || sceneID == "definite-minmax-calc-min-span-rows" { return "width=20,height=28" }
     if sceneID == "cyclic-minmax-calc-min-both-axes" { return "width=104,height=22" }
     if sceneID == "cyclic-minmax-calc-min-column-definite-row" {
         return "width=104,height=10"
@@ -573,6 +583,10 @@ private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) 
     var expectedNode = 2
     var expectedSourceOrder = 0
     switch sceneID {
+    case "cyclic-minmax-calc-min-span-columns", "definite-minmax-calc-min-span-columns":
+        expected = (20, 20, 50, 10)
+    case "cyclic-minmax-calc-min-span-rows", "definite-minmax-calc-min-span-rows":
+        expected = (10, 20, 30, 10)
     case "auto-text-max-content", "min-content-text-normal", "max-content-text-normal",
          "fit-content-text-minimum", "min-content-text-edge", "min-content-text-min-width",
          "min-content-text-max-width":
@@ -1580,6 +1594,12 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "4:node=5,x=\(imageX),y=0,width=24,height=16]"
     }
     switch sceneID {
+    case "cyclic-minmax-calc-min-span-columns", "definite-minmax-calc-min-span-columns":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=54,height=14;"
+            + "1:node=2,x=2,y=2,width=62,height=10]"
+    case "cyclic-minmax-calc-min-span-rows", "definite-minmax-calc-min-span-rows":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=24;"
+            + "1:node=2,x=2,y=2,width=20,height=28]"
     case "cyclic-minmax-calc-min-column", "definite-minmax-calc-min-column":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=14,height=14;"
             + "1:node=2,x=2,y=2,width=24,height=10]"
@@ -2267,6 +2287,10 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
         || sceneID == "cyclic-minmax-calc-row"
         || sceneID == "cyclic-minmax-calc-min-column"
         || sceneID == "cyclic-minmax-calc-min-row"
+        || sceneID == "cyclic-minmax-calc-min-span-columns"
+        || sceneID == "definite-minmax-calc-min-span-columns"
+        || sceneID == "cyclic-minmax-calc-min-span-rows"
+        || sceneID == "definite-minmax-calc-min-span-rows"
         || sceneID == "definite-minmax-calc-min-column"
         || sceneID == "definite-minmax-calc-min-row"
         || sceneID == "cyclic-minmax-calc-min-both-axes"
@@ -2755,6 +2779,20 @@ private struct C111MetalPixelRun {
     ) -> Bool {
         let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])]
         switch sceneID {
+        case "cyclic-minmax-calc-min-span-columns", "definite-minmax-calc-min-span-columns",
+             "cyclic-minmax-calc-min-span-rows", "definite-minmax-calc-min-span-rows":
+            let columns = sceneID.hasSuffix("columns")
+            let itemID = "c114-\(sceneID)-item"
+            let rootID = "c114-\(sceneID)-grid"
+            expectedSamples = columns
+                ? [
+                    ("\(sceneID)-outside-root-item", itemID, 58, 6, [229, 72, 77, 255]),
+                    ("\(sceneID)-past-item", rootID, 66, 6, [0, 0, 0, 255]),
+                ]
+                : [
+                    ("\(sceneID)-outside-root-item", itemID, 8, 27, [229, 72, 77, 255]),
+                    ("\(sceneID)-past-item", rootID, 8, 31, [0, 0, 0, 255]),
+                ]
         case "cyclic-minmax-calc-min-column", "cyclic-minmax-calc-min-row",
              "definite-minmax-calc-min-column", "definite-minmax-calc-min-row":
             let rootID = "c114-\(sceneID)-grid"
