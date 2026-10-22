@@ -328,3 +328,7 @@ PR #493이 양축의 단일 calc-minimum track을 처리한 뒤, 두 explicit tr
 ### 2026-10-22 cyclic `minmax(calc())` overlapping spans 계획
 
 직전 slice가 제외한 두 겹치는 span-2 item의 same-span planned increase와 뒤따르는 span-3 contribution을 한 열 축 fixed fixture로 분리했다. forward/reverse DOM 순서, 140px cyclic/definite 대조와 100px definite overflow control 여섯 장면을 준비했다. CSS Grid 2025 CRD §7.2.1·§11.5.1 독립 계산은 final Columns `[42,47,47]`, constrained control `[32,32,32]`이며 root 밖 Ahem text 표본을 포함한다. [집중 계획](./c11-4-cyclic-minmax-calc-overlapping-spans.md) · [Chrome 156 관찰·독립 기대값·화면](../spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-precomparison-2026-10-22/README.md) · [계획 실패 관점 검토 20개](./c11-4-cyclic-minmax-calc-overlapping-spans-plan-review-20.md). runtime 구현은 시작하지 않았으며 C11.4 checkbox와 공식 완료 수 `77/213`은 바꾸지 않는다.
+
+### 2026-10-22 cyclic `minmax(calc())` overlapping row spans 후속 계획
+
+열 축 PR #500이 명시적으로 제외한 row-axis 겹치는 span 후속을 별도 고정 입력으로 준비했다. 10px Ahem column 안에서 7/8/14줄 text가 만드는 70/80/140px block contribution을 CSS Grid 2025 CRD §7.2.1·§11.5.1에서 독립 계산했다. cyclic/definite 140px controls의 Rows는 `[42,47,47]`, definite 100px overflow control은 `[32,32,32]`이며 Chrome 156 Agent Browser의 여섯 장면 관측과 일치한다. 이는 계획과 oracle 자료이며 runtime 구현은 아직 없다. [집중 계획](./c11-4-cyclic-minmax-calc-overlapping-rows.md) · [사전 비교·독립 기대값·screenshot](../spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-rows-precomparison-2026-10-22/README.md) · [계획 실패 관점 20개](./c11-4-cyclic-minmax-calc-overlapping-rows-plan-review-20.md). C11.4 checkbox와 `77/213`은 유지한다.

@@ -1,0 +1,144 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 cyclic minmax(calc()) overlapping row spans precomparison</title>
+<style>
+  @font-face { font-family: Ahem; src: url("../../resources/c15/Ahem.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #ffffff; color: #101820; font: 12px/16px sans-serif; }
+  .matrix {
+    display: grid;
+    grid-template-columns: repeat(2, 220px);
+    align-items: start;
+    column-gap: 24px;
+    row-gap: 12px;
+    padding: 12px;
+  }
+  .scene { min-width: 0; }
+  .label { margin: 0 0 4px; }
+  .grid {
+    box-sizing: content-box;
+    display: grid;
+    width: 10px;
+    margin: 0;
+    padding: 0;
+    border: 2px solid #f0c674;
+    column-gap: 0;
+    row-gap: 2px;
+    align-items: stretch;
+    align-content: start;
+    justify-content: start;
+    grid-template-columns: 10px;
+    grid-template-rows: repeat(3, minmax(calc(10% + 2px), max-content));
+    background: #101820;
+    font: 10px/10px Ahem, sans-serif;
+    color: #e5484d;
+  }
+  .grid.cyclic { height: max-content; }
+  .grid.definite { height: 140px; }
+  .grid.definite-small { height: 100px; }
+  .item {
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    white-space: normal;
+    word-break: break-all;
+    overflow-wrap: normal;
+    background: transparent;
+    color: #e5484d;
+  }
+  .span2-left { grid-row: 1 / 3; grid-column: 1; }
+  .span2-right { grid-row: 2 / 4; grid-column: 1; }
+  .span3 { grid-row: 1 / 4; grid-column: 1; }
+</style>
+<main class="matrix">
+  <section class="scene">
+    <p class="label">cyclic rows · forward</p>
+    <div id="cyclic-minmax-calc-overlap-rows-forward" class="grid cyclic">
+      <div class="item span2-left" data-kind="span2-left">aaaaaaa</div>
+      <div class="item span2-right" data-kind="span2-right">aaaaaaaa</div>
+      <div class="item span3" data-kind="span3">aaaaaaaaaaaaaa</div>
+    </div>
+  </section>
+  <section class="scene">
+    <p class="label">cyclic rows · reverse</p>
+    <div id="cyclic-minmax-calc-overlap-rows-reverse" class="grid cyclic">
+      <div class="item span3" data-kind="span3">aaaaaaaaaaaaaa</div>
+      <div class="item span2-right" data-kind="span2-right">aaaaaaaa</div>
+      <div class="item span2-left" data-kind="span2-left">aaaaaaa</div>
+    </div>
+  </section>
+  <section class="scene">
+    <p class="label">definite 140px rows · forward</p>
+    <div id="definite-minmax-calc-overlap-rows-forward" class="grid definite">
+      <div class="item span2-left" data-kind="span2-left">aaaaaaa</div>
+      <div class="item span2-right" data-kind="span2-right">aaaaaaaa</div>
+      <div class="item span3" data-kind="span3">aaaaaaaaaaaaaa</div>
+    </div>
+  </section>
+  <section class="scene">
+    <p class="label">definite 140px rows · reverse</p>
+    <div id="definite-minmax-calc-overlap-rows-reverse" class="grid definite">
+      <div class="item span3" data-kind="span3">aaaaaaaaaaaaaa</div>
+      <div class="item span2-right" data-kind="span2-right">aaaaaaaa</div>
+      <div class="item span2-left" data-kind="span2-left">aaaaaaa</div>
+    </div>
+  </section>
+  <section class="scene">
+    <p class="label">definite 100px rows · forward</p>
+    <div id="definite-minmax-calc-overlap-rows-small-forward" class="grid definite-small">
+      <div class="item span2-left" data-kind="span2-left">aaaaaaa</div>
+      <div class="item span2-right" data-kind="span2-right">aaaaaaaa</div>
+      <div class="item span3" data-kind="span3">aaaaaaaaaaaaaa</div>
+    </div>
+  </section>
+  <section class="scene">
+    <p class="label">definite 100px rows · reverse</p>
+    <div id="definite-minmax-calc-overlap-rows-small-reverse" class="grid definite-small">
+      <div class="item span3" data-kind="span3">aaaaaaaaaaaaaa</div>
+      <div class="item span2-right" data-kind="span2-right">aaaaaaaa</div>
+      <div class="item span2-left" data-kind="span2-left">aaaaaaa</div>
+    </div>
+  </section>
+</main>
+<script>
+  document.fonts.ready.then(() => {
+    const relativeRect = (element, origin) => {
+      const rect = element.getBoundingClientRect();
+      return { x: rect.x - origin.x, y: rect.y - origin.y, width: rect.width, height: rect.height };
+    };
+    window.cyclicMinmaxCalcOverlapRowsResults = {
+      userAgent: navigator.userAgent,
+      viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+      font: { status: document.fonts.status, loaded: document.fonts.check("10px Ahem") },
+      scenes: Array.from(document.querySelectorAll(".grid"), (grid) => {
+        const root = grid.getBoundingClientRect();
+        const style = getComputedStyle(grid);
+        return {
+          id: grid.id,
+          root: { x: root.x, y: root.y, width: root.width, height: root.height },
+          content: { width: style.width, height: style.height },
+          columns: style.gridTemplateColumns,
+          rows: style.gridTemplateRows,
+          rowGap: style.rowGap,
+          items: Array.from(grid.children, (item) => {
+            const range = document.createRange();
+            range.selectNodeContents(item);
+            return {
+              kind: item.dataset.kind,
+              frame: relativeRect(item, root),
+              row: getComputedStyle(item).gridRow,
+              text: item.textContent,
+              textLineRects: Array.from(range.getClientRects(), rect => ({ x: rect.x - root.x, y: rect.y - root.y, width: rect.width, height: rect.height })),
+              scrollHeight: item.scrollHeight,
+            };
+          }),
+        };
+      }),
+    };
+  });
+</script>
