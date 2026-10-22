@@ -2414,6 +2414,73 @@ const twoAxisSpanTextScene = ({ id, root, item, columns, rows, minContentHeight,
     ...points,
   ],
 });
+const crossAxisSpanGroupScene = ({ id, root, columns, rows, reverse, intrinsic, itemA, itemB, itemAHeight }) => {
+  const order = reverse
+    ? [{ key: 'b', frame: itemB }, { key: 'a', frame: itemA }]
+    : [{ key: 'a', frame: itemA }, { key: 'b', frame: itemB }];
+  const itemNodes = { a: reverse ? 4 : 2, b: reverse ? 2 : 4 };
+  const itemMetrics = {
+    a: { text: 'AA A A', minContent: 20, minContentHeight: 30, maxContent: 60, maxContentHeight: 10 },
+    b: { text: 'XXXX', minContent: 40, minContentHeight: 10, maxContent: 40, maxContentHeight: 10 },
+  };
+  const nodeFrames = order.map(({ key, frame }, index) => {
+    const [x, y, width, height] = frame;
+    return `${index + 1}:node=${2 + index * 2},x=${x},y=${y},width=${width},height=${height}`;
+  });
+  const intrinsicInputs = order.map(({ key }, sourceOrder) => ({
+    grid: 1,
+    node: itemNodes[key],
+    sourceOrder,
+    kind: 'text',
+    fontRegistryRevision: 1,
+    minContent: itemMetrics[key].minContent,
+    minContentHeight: itemMetrics[key].minContentHeight,
+    maxContent: itemMetrics[key].maxContent,
+    maxContentHeight: itemMetrics[key].maxContentHeight,
+  }));
+  const scene = {
+    id,
+    boxCount: 3,
+    rootFrame: `width=${root[0]},height=${root[1]}`,
+    itemFrame: null,
+    nodeFrames: `node_frames_css_px=[0:node=1,x=0,y=0,width=${root[0]},height=${root[1]};${nodeFrames.join(';')}]`,
+    axes: {
+      Columns: { tracks: columns, collapsed: columns.map(() => false) },
+      Rows: { tracks: rows, collapsed: rows.map(() => false) },
+    },
+    gaps: { Columns: 2, Rows: 2 },
+    intrinsicInputs,
+    intrinsicSpans: [2],
+    intrinsicSpansByAxis: { Columns: [2], Rows: [2] },
+    columnSizingFeedsRows: true,
+    crossAxisSpanGroups: {
+      itemNodes,
+      items: ['a', 'b'].map((key) => ({ key, ...itemMetrics[key] })),
+      minimum: {
+        Columns: { a: intrinsic ? 20 : 0, b: 40 },
+        Rows: { a: intrinsic ? 20 : 0, b: 10 },
+      },
+      minContent: { Columns: { a: 20, b: 40 }, Rows: { a: itemAHeight, b: 10 } },
+      maxContent: { Columns: { a: 60, b: 40 }, Rows: { a: itemAHeight, b: 10 } },
+      itemAHeight,
+      ...(intrinsic ? {
+        initialColumns: [2, 2, 2],
+        minContentColumns: [9, 19, 19],
+        perTrackPlannedIncreases: [7, 17, 17],
+        perItemPlannedIncreases: { a: [7, 7], b: [17, 17] },
+      } : {}),
+    },
+  };
+  if (!intrinsic) {
+    scene.pixelSamples = [
+      { id: `${id}-overflow-item-b`, nodeId: `c114-${id}-item-b`,
+        xCssPx: 50, yCssPx: 4, rgba: [229, 72, 77, 255] },
+      { id: `${id}-clear-past-item-b`, nodeId: `c114-${id}-grid`,
+        xCssPx: 60, yCssPx: 4, rgba: [0, 0, 0, 255] },
+    ];
+  }
+  return scene;
+};
 scenes.push(
   minmaxCalcMinimumScene({
     id: 'cyclic-minmax-calc-min-both-axes', root: [54, 14], item: [2, 2, 104, 22],
@@ -2544,6 +2611,32 @@ scenes.push(
         nodeId: 'c114-definite-minmax-calc-two-axis-span-text-max-content-grid',
         xCssPx: 6, yCssPx: 15, rgba: [0, 0, 0, 255] },
     ],
+  }),
+);
+scenes.push(
+  crossAxisSpanGroupScene({
+    id: 'cyclic-minmax-calc-cross-axis-span-groups-intrinsic-forward',
+    root: [55, 24], columns: [15.671875, 15.671875, 15.65625], rows: [9, 9],
+    reverse: false, intrinsic: true,
+    itemA: [2, 2, 33.34375, 20], itemB: [19.671875, 2, 40, 10], itemAHeight: 20,
+  }),
+  crossAxisSpanGroupScene({
+    id: 'cyclic-minmax-calc-cross-axis-span-groups-intrinsic-reverse',
+    root: [55, 24], columns: [15.671875, 15.671875, 15.65625], rows: [9, 9],
+    reverse: true, intrinsic: true,
+    itemA: [2, 2, 33.34375, 20], itemB: [19.671875, 2, 40, 10], itemAHeight: 20,
+  }),
+  crossAxisSpanGroupScene({
+    id: 'definite-minmax-calc-cross-axis-span-groups-forward',
+    root: [44, 34], columns: [12, 12, 12], rows: [14, 14],
+    reverse: false, intrinsic: false,
+    itemA: [2, 2, 26, 30], itemB: [16, 2, 40, 10], itemAHeight: 30,
+  }),
+  crossAxisSpanGroupScene({
+    id: 'definite-minmax-calc-cross-axis-span-groups-reverse',
+    root: [44, 34], columns: [12, 12, 12], rows: [14, 14],
+    reverse: true, intrinsic: false,
+    itemA: [2, 2, 26, 30], itemB: [16, 2, 40, 10], itemAHeight: 30,
   }),
 );
 const spanColumnSamples = () => [
@@ -2751,7 +2844,7 @@ for (const id of [
   }
   scenes.push(scene);
 }
-assert.equal(scenes.length, 255, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 259, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -4306,6 +4399,89 @@ function verifyRuntimeLog(log, scene, runID) {
         assert.ok(observed.some((contribution) => contribution.kind === kind
           && Math.abs(contribution.value - value) <= 1 / 64),
         `${scene.id}: ${axis} span-2 ${kind} contribution expected ${value}, got ${JSON.stringify(observed)}`);
+      }
+    }
+    if (scene.crossAxisSpanGroups) {
+      const expected = scene.crossAxisSpanGroups;
+      const passes = axisTrace.passes.filter((pass) => pass.axis === axis);
+      const kinds = [
+        ['Minimum', expected.minimum[axis]],
+        ['MinContent', expected.minContent[axis]],
+        ['MaxContent', expected.maxContent[axis]],
+      ];
+      for (const [kind, itemValues] of kinds) {
+        for (const item of expected.items) {
+          const node = expected.itemNodes[item.key];
+          const value = itemValues[item.key];
+          assert.ok(passes.some((pass) => pass.contributions.some((contribution) => (
+            contribution.item === node
+              && contribution.kind === kind
+              && contribution.span === 2
+              && Math.abs(contribution.value - value) <= 1 / 64
+          ))), `${scene.id}: ${axis} item ${item.key} ${kind} span-2 expected ${value}`);
+        }
+      }
+      const revision = diagnostics.layoutInputRevision;
+      assert.ok(revision && revision.source.includes('HostDocument'),
+        `${scene.id}: HostDocument source revision is missing`);
+      for (const key of ['style', 'environment', 'intrinsicSize']) {
+        assert.ok(Number.isInteger(revision[key]), `${scene.id}: ${key} revision is missing`);
+      }
+      const inputByNode = new Map((diagnostics.gridItemIntrinsicInputs ?? [])
+        .map((input) => [input.node, input]));
+      for (const item of expected.items) {
+        const input = inputByNode.get(expected.itemNodes[item.key]);
+        assert.ok(input, `${scene.id}: item ${item.key} intrinsic input is missing`);
+        assert.equal(input.source?.kind, 'text', `${scene.id}: item ${item.key} source kind`);
+        assert.ok(Number.isInteger(input.source?.fontRegistryRevision)
+          && input.source.fontRegistryRevision > 0,
+        `${scene.id}: item ${item.key} font registry revision is missing`);
+        assert.deepEqual(input.textSources, [],
+          `${scene.id}: direct child text must not be reclassified as anonymous text input`);
+      }
+      if (axis === 'Columns' && expected.initialColumns) {
+        const firstColumnPass = axisTrace.passes.find((pass) => pass.axis === 'Columns');
+        assert.ok(firstColumnPass, `${scene.id}: initial Columns pass is missing`);
+        const tracksInStage = (stage) => stage?.tracks
+          .filter(({ gutter, collapsed }) => !gutter && !collapsed)
+          .map(({ baseSize }) => baseSize);
+        const initialized = tracksInStage(firstColumnPass.stages.find(({ stage }) => stage === 'Initialize'));
+        const minContentBatch = tracksInStage(firstColumnPass.stages.find(({ stage }) => (
+          stage === 'IntrinsicItemBatch { span: 2, crosses_flexible_track: false }'
+        )));
+        for (const [label, actual, values] of [
+          ['Initialize', initialized, expected.initialColumns],
+          ['min-content batch', minContentBatch, expected.minContentColumns],
+        ]) {
+          assert.ok(actual && actual.length === values.length,
+            `${scene.id}: ${label} track state is missing`);
+          actual.forEach((value, index) => assert.ok(
+            Math.abs(value - values[index]) <= 1 / 64,
+            `${scene.id}: ${label} column ${index + 1} expected ${values[index]}, got ${value}`,
+          ));
+        }
+        const initialMinimum = Object.fromEntries(expected.items.map((item) => {
+          const contribution = firstColumnPass.contributions.find((entry) => (
+            entry.item === expected.itemNodes[item.key]
+              && entry.kind === 'Minimum'
+              && entry.span === 2
+          ));
+          assert.ok(contribution, `${scene.id}: item ${item.key} initial Minimum is missing`);
+          return [item.key, contribution.value];
+        }));
+        for (const [itemKey, start, planned] of [
+          ['a', [expected.initialColumns[0], expected.initialColumns[1]], expected.perItemPlannedIncreases.a],
+          ['b', [expected.initialColumns[1], expected.initialColumns[2]], expected.perItemPlannedIncreases.b],
+        ]) {
+          const share = (initialMinimum[itemKey] - start[0] - start[1] - 2) / 2;
+          assert.ok(planned.every((value) => Math.abs(value - share) <= 1 / 64),
+            `${scene.id}: item ${itemKey} planned span increase differs`);
+        }
+        const aggregateIncrease = minContentBatch.map((value, index) => value - initialized[index]);
+        aggregateIncrease.forEach((value, index) => assert.ok(
+          Math.abs(value - expected.perTrackPlannedIncreases[index]) <= 1 / 64,
+          `${scene.id}: track ${index + 1} planned increase expected ${expected.perTrackPlannedIncreases[index]}, got ${value}`,
+        ));
       }
     }
     if (scene.mixedIntrinsicContributions && axis === 'Columns') {

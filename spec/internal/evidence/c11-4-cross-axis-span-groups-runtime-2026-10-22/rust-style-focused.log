@@ -1,0 +1,7 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.21s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-7f78b653f6fb953d)
+
+running 1 test
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_cross_axis_span_groups::cyclic_minmax_calc_cross_axis_span_groups_are_source_order_independent ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 225 filtered out; finished in 0.07s

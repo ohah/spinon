@@ -566,6 +566,7 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
     // The container's size is now determined, so percentages resolve against its content box when re-running track sizing.
     // This may be a no-op if the container's size was known upfront (in which case it already equals `inner_node_size`).
     inner_node_size = container_content_box.map(Some);
+    let resolved_available_grid_space = container_content_box.map(AvailableSpace::Definite);
 
     // Column sizing must be re-run (once) if:
     //   - The grid container's width was initially indefinite and there are any columns with percentage track sizing functions
@@ -643,6 +644,11 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
     }
 
     if rerun_column_sizing {
+        let column_sizing_available_space = if rerun_percentage_column_sizing {
+            resolved_available_grid_space
+        } else {
+            available_grid_space
+        };
         // Re-run track sizing algorithm for Inline axis
         track_sizing_algorithm(
             tree,
@@ -651,14 +657,14 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
             inner_max_size.get(AbstractAxis::Inline),
             justify_content,
             align_content,
-            available_grid_space,
+            column_sizing_available_space,
             inner_node_size,
             &mut columns,
             &mut rows,
             &mut items,
             |track: &GridTrack, _, _| Some(track.base_size),
             has_baseline_aligned_item,
-            rerun_percentage_column_sizing,
+            false,
             track_sizing_trace.as_mut(),
         );
 
@@ -701,6 +707,11 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
     }
 
     if rerun_row_sizing {
+        let row_sizing_available_space = if rerun_percentage_row_sizing {
+            resolved_available_grid_space
+        } else {
+            available_grid_space
+        };
         // Re-run track sizing algorithm for Block axis
         track_sizing_algorithm(
             tree,
@@ -709,14 +720,14 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
             inner_max_size.get(AbstractAxis::Block),
             align_content,
             justify_content,
-            available_grid_space,
+            row_sizing_available_space,
             inner_node_size,
             &mut rows,
             &mut columns,
             &mut items,
             |track: &GridTrack, _, _| Some(track.base_size),
             false, // TODO: Support baseline alignment in the vertical axis
-            rerun_percentage_row_sizing,
+            false,
             track_sizing_trace.as_mut(),
         );
     }
