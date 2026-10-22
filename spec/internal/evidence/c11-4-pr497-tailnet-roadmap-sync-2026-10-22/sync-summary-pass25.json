@@ -1,0 +1,44 @@
+{
+  "pass": "pass25",
+  "pr_497": {
+    "url": "https://github.com/ohah/spinon/pull/497",
+    "state": "MERGED",
+    "merged_at_utc": "2026-10-22T04:04:38Z",
+    "merge_sha": "7de0bc1983a5c824468c9994b9ee6404dadef7ad"
+  },
+  "official_status": {
+    "complete": "77/213",
+    "c11_4": "incomplete",
+    "github_pages_deployed": false
+  },
+  "initial_full_copy": {
+    "file_count": 1746,
+    "source_bytes": 76159885,
+    "created": 107,
+    "replaced": 98,
+    "same": 1541,
+    "backups": 98,
+    "no_deletes": true,
+    "local_verified": 1746,
+    "served_hash_verified": 1746
+  },
+  "final_site_copy": {
+    "file_count": 1764,
+    "source_bytes": 82288278,
+    "created": 18,
+    "replaced": 103,
+    "same": 1643,
+    "backups": 103,
+    "no_deletes": true,
+    "local_verified": 1764,
+    "backups_verified": 103,
+    "served_hash_verified": 1764,
+    "served_mismatches": 0
+  },
+  "agent_browser": {
+    "session": "c114-span-roadmap-e00ea27987c0",
+    "closed": true,
+    "sessions_empty": true,
+    "spawned_processes_after_close": 0
+  }
+}
