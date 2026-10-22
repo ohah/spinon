@@ -1,0 +1,55 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 auto-repeat named-line implicit fallback oracle</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 16px; font: 14px/1.45 sans-serif; color: #111827; }
+  h1 { margin: 0 0 12px; font-size: 20px; }
+  p { margin: 0 0 16px; }
+  #scenes { display: grid; grid-template-columns: repeat(2, 230px); gap: 16px; }
+  .case { min-height: 104px; }
+  .case h2 { margin: 0 0 6px; font-size: 13px; }
+  .grid { display: grid; width: 125px; height: 20px; grid-template-rows: 20px; grid-template-columns: repeat(auto-fill, [cell] 40px [cell]); grid-auto-columns: 20px; grid-auto-rows: 20px; column-gap: 0; row-gap: 0; justify-content: start; align-content: start; background: #e5e7eb; overflow: visible; }
+  .row-grid { width: 20px; height: 125px; grid-template-columns: 20px; grid-template-rows: repeat(auto-fill, [cell] 40px [cell]); }
+  .item { min-width: 0; height: 10px; align-self: start; justify-self: stretch; background: #2583c5; }
+  pre { white-space: pre-wrap; font: 11px/1.4 ui-monospace, monospace; }
+</style>
+<h1>CSS Grid auto-repeat named-line implicit fallback</h1>
+<p>Fixed 125px container; auto-fill creates three 40px tracks. The repeated line name <code>cell</code> is present on each explicit line. Implicit tracks are 20px.</p>
+<div id="scenes">
+  <section class="case" id="positive-missing"><h2>Positive occurrence, absent name: 5 ghost / 6 ghost</h2><div class="grid"><div class="item" style="grid-column-start:5 ghost;grid-column-end:6 ghost"></div></div></section>
+  <section class="case" id="positive-insufficient"><h2>Positive occurrence, too few named lines: 5 cell / 6 cell</h2><div class="grid"><div class="item" style="grid-column-start:5 cell;grid-column-end:6 cell"></div></div></section>
+  <section class="case" id="negative-missing"><h2>Negative occurrence, absent name: -5 ghost / -4 ghost</h2><div class="grid"><div class="item" style="grid-column-start:-5 ghost;grid-column-end:-4 ghost"></div></div></section>
+  <section class="case" id="negative-insufficient"><h2>Negative occurrence, too few named lines: -5 cell / -4 cell</h2><div class="grid"><div class="item" style="grid-column-start:-5 cell;grid-column-end:-4 cell"></div></div></section>
+  <section class="case" id="span-forward-missing"><h2>Named span forward from explicit line 4</h2><div class="grid"><div class="item" style="grid-column-start:4;grid-column-end:span ghost"></div></div></section>
+  <section class="case" id="span-backward-missing"><h2>Named span backward from explicit line 1</h2><div class="grid"><div class="item" style="grid-column-start:span ghost;grid-column-end:1"></div></div></section>
+  <section class="case" id="span-forward-insufficient"><h2>Named span forward with one explicit name before fallback</h2><div class="grid"><div class="item" style="grid-column-start:3;grid-column-end:span cell 2"></div></div></section>
+  <section class="case" id="span-backward-insufficient"><h2>Named span backward with one explicit name before fallback</h2><div class="grid"><div class="item" style="grid-column-start:span cell 2;grid-column-end:2"></div></div></section>
+  <section class="case" id="row-positive-missing"><h2>Row-axis positive missing name</h2><div class="grid row-grid"><div class="item" style="grid-row-start:5 ghost;grid-row-end:6 ghost"></div></div></section>
+  <section class="case" id="row-negative-missing"><h2>Row-axis negative missing name</h2><div class="grid row-grid"><div class="item" style="grid-row-start:-5 ghost;grid-row-end:-4 ghost"></div></div></section>
+</div>
+<pre id="results"></pre>
+<script>
+  const sceneIds = ['positive-missing', 'positive-insufficient', 'negative-missing', 'negative-insufficient', 'span-forward-missing', 'span-backward-missing', 'span-forward-insufficient', 'span-backward-insufficient', 'row-positive-missing', 'row-negative-missing'];
+  window.oracle = sceneIds.map((id) => {
+    const root = document.querySelector(`#${id} .grid`);
+    const item = document.querySelector(`#${id} .item`);
+    const rootRect = root.getBoundingClientRect();
+    const itemRect = item.getBoundingClientRect();
+    const style = getComputedStyle(root);
+    return {
+      id,
+      columns: style.gridTemplateColumns,
+      rows: style.gridTemplateRows,
+      item: {
+        x: itemRect.x - rootRect.x,
+        y: itemRect.y - rootRect.y,
+        width: itemRect.width,
+        height: itemRect.height,
+      },
+      computedStart: getComputedStyle(item)[id.startsWith('row-') ? 'gridRowStart' : 'gridColumnStart'],
+      computedEnd: getComputedStyle(item)[id.startsWith('row-') ? 'gridRowEnd' : 'gridColumnEnd'],
+    };
+  });
+  document.querySelector('#results').textContent = JSON.stringify(window.oracle, null, 2);
+</script>

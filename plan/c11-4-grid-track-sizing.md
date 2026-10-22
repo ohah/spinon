@@ -1,8 +1,12 @@
 # C11.4 · CSS Grid track sizing 계획
 
-## 2026-10-23 auto-repeat line name 보존과 배치 계획
+## 2026-10-23 auto-repeat line name 보존과 배치 · PR #530
 
-현재 cascade/projection/layout bridge는 auto-repeat track list의 바깥·반복 내부 line name을 거부한다. Chrome 156 fixed oracle에서 bare/positive/negative occurrence, named span, auto-fit collapse, fixed neighbors와 two-track pattern, repeat 경계 병합, row axis를 관찰했다. vendored Taffy 0.15.0은 expanded auto-repeat count 이후 named-line resolver를 갖고 있어, 반복 수를 새로 계산하지 않고 이름과 placement를 전달하는 계획을 작성했다. [집중 계획](./c11-4-auto-repeat-named-lines.md) · [Chrome 사전 비교·고정 입력·관측 JSON](../spec/internal/evidence/c11-4-auto-repeat-named-lines-precomparison-2026-10-23/README.md) · [계획 실패 관점 검토 20개](./c11-4-auto-repeat-named-lines-plan-review-20.md). 구현 전이며 공식 C11.4 체크와 완료 수 `77/213`은 바뀌지 않는다.
+auto-repeat fragment의 바깥·반복 내부 line name과 expanded repeat 뒤 named placement를 보존했다. Chrome 156 fixed oracle의 bare/positive/negative occurrence, named span, auto-fit collapse, fixed neighbors, repeated two-track pattern, repeat boundary merging, row axis 8 scene을 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 검증했다. 구현 PR [#530](https://github.com/ohah/spinon/pull/530)은 Rebase and merge됐고 merge SHA는 `776810ad5b4bc097d3d18c1871161471fed07974`다. missing-name implicit fallback은 해당 변경의 제외 범위였으며 다음 독립 계획에서 다룬다. [집중 계획](./c11-4-auto-repeat-named-lines.md) · [Chrome 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-named-lines-precomparison-2026-10-23/README.md) · [Android/iOS 실행 근거](../spec/internal/evidence/c11-4-auto-repeat-named-lines-runtime-2026-10-23/README.md). C11.4 체크와 `77/213`은 그대로 미완료다.
+
+## 2026-10-23 auto-repeat named-line implicit fallback 계획
+
+PR #530 뒤에도 auto-repeat 축의 이름 없는 `NamedLine`·`SpanNamed`는 style projection과 layout validation에서 authored name이 없다는 이유로 거부된다. CSS Grid §8.3은 이름과 일치하는 explicit line이 모자라면 배치 방향의 implicit grid line을 해당 이름으로 간주한다. [집중 계획](./c11-4-auto-repeat-named-line-implicit-fallback.md)과 [Chrome 156 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-named-line-implicit-fallback-precomparison-2026-10-23/README.md)는 absent/insufficient name, positive/negative occurrence, 양방향 named span 및 row-axis controls를 고정한다. 이는 계획이며 구현 결과나 지원 완료가 아니다. C11.4 체크와 `77/213`은 유지한다.
 
 ## 2026-10-22 양축 cyclic `minmax(calc())` spanning text
 
