@@ -451,6 +451,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ExpectedRootFrame(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (c114IsMixedCrossAxisSpanGroupsScene(sceneId)) {
+            return sceneId.startsWith("cyclic-")
+                    ? "width=55,height=24" : "width=44,height=44";
+        }
         if (sceneId.startsWith("cyclic-minmax-calc-cross-axis-span-groups-")) {
             return "width=55,height=24";
         }
@@ -711,7 +715,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
-        if (c114IsCrossAxisSpanGroupsScene(sceneId)) return "";
+        if (c114IsCrossAxisSpanGroupsScene(sceneId)
+                || c114IsMixedCrossAxisSpanGroupsScene(sceneId)) return "";
         if (sceneId.equals("cyclic-minmax-calc-two-axis-span-text-min-content")
                 || sceneId.equals("definite-minmax-calc-two-axis-span-text-min-content")) {
             return "width=10,height=60";
@@ -923,6 +928,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114ExpectedTextIntrinsicInputs(String sceneId, String report) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (c114IsMixedCrossAxisSpanGroupsScene(sceneId)) {
+            return c114ExpectedMixedCrossAxisSpanGroupIntrinsicInputs(sceneId, report);
+        }
         if (c114IsCrossAxisSpanGroupsScene(sceneId)) {
             return c114ExpectedCrossAxisSpanGroupIntrinsicInputs(sceneId, report);
         }
@@ -1114,6 +1122,44 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 int[] sizes = expected[index];
                 if (input == null || input.optInt("grid", -1) != 1
                         || input.optInt("node", -1) != node
+                        || input.optInt("sourceOrder", -1) != index || source == null
+                        || !"text".equals(source.optString("kind"))
+                        || source.optInt("fontRegistryRevision", -1) != 1
+                        || source.optDouble("minContent", Double.NaN) != sizes[0]
+                        || source.optDouble("minContentHeight", Double.NaN) != sizes[1]
+                        || source.optDouble("maxContent", Double.NaN) != sizes[2]
+                        || source.optDouble("maxContentHeight", Double.NaN) != sizes[3]) {
+                    return false;
+                }
+            }
+            return true;
+        } catch (org.json.JSONException | ClassCastException error) {
+            return false;
+        }
+    }
+
+    private static boolean c114ExpectedMixedCrossAxisSpanGroupIntrinsicInputs(
+            String sceneId, String report
+    ) {
+        int diagnosticsMarker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (diagnosticsMarker < 0) return false;
+        String diagnosticsJson = report.substring(
+                diagnosticsMarker + "grid_track_sizing_diagnostics=".length());
+        try {
+            Object value = new org.json.JSONTokener(diagnosticsJson).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONObject diagnostics = (org.json.JSONObject) value;
+            org.json.JSONArray inputs = diagnostics.optJSONArray("gridItemIntrinsicInputs");
+            if (inputs == null || inputs.length() != 3) return false;
+            int[][] expected = sceneId.endsWith("-reverse")
+                    ? new int[][] {{20, 40, 110, 10}, {40, 10, 40, 10}, {20, 30, 60, 10}}
+                    : new int[][] {{20, 30, 60, 10}, {40, 10, 40, 10}, {20, 40, 110, 10}};
+            for (int index = 0; index < expected.length; index++) {
+                org.json.JSONObject input = inputs.optJSONObject(index);
+                org.json.JSONObject source = input == null ? null : input.optJSONObject("source");
+                int[] sizes = expected[index];
+                if (input == null || input.optInt("grid", -1) != 1
+                        || input.optInt("node", -1) != index * 2 + 2
                         || input.optInt("sourceOrder", -1) != index || source == null
                         || !"text".equals(source.optString("kind"))
                         || source.optInt("fontRegistryRevision", -1) != 1
@@ -1791,7 +1837,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
-        if (c114IsCrossAxisSpanGroupsScene(sceneId)) return null;
+        if (c114IsCrossAxisSpanGroupsScene(sceneId)
+                || c114IsMixedCrossAxisSpanGroupsScene(sceneId)) return null;
         if (c114IsOverlappingRowsScene(sceneId)) {
             return c114ExpectedOverlappingRowSpanNodeFrames(sceneId);
         }
@@ -2862,6 +2909,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int c114ExpectedBoxCount(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (c114IsMixedCrossAxisSpanGroupsScene(sceneId)) return 4;
         if (c114IsCrossAxisSpanGroupsScene(sceneId)) return 3;
         if (sceneId.startsWith("cyclic-minmax-calc-overlap-")
                 || sceneId.startsWith("definite-minmax-calc-overlap-")) return 4;
@@ -3118,9 +3166,17 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.startsWith("definite-minmax-calc-cross-axis-span-groups-");
     }
 
+    private static boolean c114IsMixedCrossAxisSpanGroupsScene(String sceneId) {
+        return sceneId.startsWith("cyclic-minmax-cross-axis-mixed-span-groups-")
+                || sceneId.startsWith("definite-minmax-cross-axis-mixed-span-groups-");
+    }
+
     private static boolean c114ExpectedCrossAxisSpanGroupFramesMatch(
             String sceneId, String report
     ) {
+        if (c114IsMixedCrossAxisSpanGroupsScene(sceneId)) {
+            return c114ExpectedMixedCrossAxisSpanGroupFramesMatch(sceneId, report);
+        }
         if (!c114IsCrossAxisSpanGroupsScene(sceneId)) return true;
         boolean intrinsic = sceneId.startsWith("cyclic-");
         boolean reversed = sceneId.endsWith("-reverse");
@@ -3139,6 +3195,54 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     {1, 0, 0, rootWidth, rootHeight},
                     {2, 2, 2, itemAWidth, itemAHeight},
                     {4, itemBX, 2, 40, 10},
+                };
+        java.util.regex.Matcher matcher = java.util.regex.Pattern
+                .compile("node_frames_css_px=\\[([^\\]]+)\\]").matcher(report);
+        if (!matcher.find()) return false;
+        String[] frames = matcher.group(1).split(";");
+        if (frames.length != expected.length) return false;
+        java.util.regex.Pattern framePattern = java.util.regex.Pattern.compile(
+                "^(\\d+):node=(\\d+),x=(-?\\d+(?:\\.\\d+)?),y=(-?\\d+(?:\\.\\d+)?),"
+                        + "width=(\\d+(?:\\.\\d+)?),height=(\\d+(?:\\.\\d+)?)$");
+        for (int index = 0; index < frames.length; index++) {
+            java.util.regex.Matcher frame = framePattern.matcher(frames[index]);
+            if (!frame.matches() || Integer.parseInt(frame.group(1)) != index
+                    || Integer.parseInt(frame.group(2)) != (int) expected[index][0]) return false;
+            for (int component = 0; component < 4; component++) {
+                double actual = Double.parseDouble(frame.group(component + 3));
+                if (!Double.isFinite(actual)
+                        || Math.abs(actual - expected[index][component + 1]) > 1.0 / 64.0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private static boolean c114ExpectedMixedCrossAxisSpanGroupFramesMatch(
+            String sceneId, String report
+    ) {
+        boolean intrinsic = sceneId.startsWith("cyclic-");
+        boolean reversed = sceneId.endsWith("-reverse");
+        double rootWidth = intrinsic ? 55.0 : 44.0;
+        double rootHeight = intrinsic ? 24.0 : 44.0;
+        double itemAWidth = intrinsic ? 33.34375 : 26.0;
+        double itemAHeight = intrinsic ? 20.0 : 40.0;
+        double itemBX = intrinsic ? 19.671875 : 16.0;
+        double itemCWidth = intrinsic ? 51.0 : 40.0;
+        double itemCHeight = intrinsic ? 20.0 : 40.0;
+        double[][] expected = reversed
+                ? new double[][] {
+                    {1, 0, 0, rootWidth, rootHeight},
+                    {2, 2, 2, itemCWidth, itemCHeight},
+                    {4, itemBX, 2, 40, 10},
+                    {6, 2, 2, itemAWidth, itemAHeight},
+                }
+                : new double[][] {
+                    {1, 0, 0, rootWidth, rootHeight},
+                    {2, 2, 2, itemAWidth, itemAHeight},
+                    {4, itemBX, 2, 40, 10},
+                    {6, 2, 2, itemCWidth, itemCHeight},
                 };
         java.util.regex.Matcher matcher = java.util.regex.Pattern
                 .compile("node_frames_css_px=\\[([^\\]]+)\\]").matcher(report);
@@ -3197,7 +3301,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
         if (sceneId.equals("definite-minmax-calc-cross-axis-span-groups-forward")
-                || sceneId.equals("definite-minmax-calc-cross-axis-span-groups-reverse")) {
+                || sceneId.equals("definite-minmax-calc-cross-axis-span-groups-reverse")
+                || sceneId.equals("definite-minmax-cross-axis-mixed-span-groups-forward")
+                || sceneId.equals("definite-minmax-cross-axis-mixed-span-groups-reverse")) {
             if (samples.size() != 2) return false;
             String rootId = "c114-" + sceneId + "-grid";
             String itemBId = "c114-" + sceneId + "-item-b";
@@ -5120,6 +5226,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "definite-minmax-calc-cross-axis-span-groups-forward".equals(
                                 pixelMatrixSceneId)
                         || "definite-minmax-calc-cross-axis-span-groups-reverse".equals(
+                                pixelMatrixSceneId)
+                        || "definite-minmax-cross-axis-mixed-span-groups-forward".equals(
+                                pixelMatrixSceneId)
+                        || "definite-minmax-cross-axis-mixed-span-groups-reverse".equals(
                                 pixelMatrixSceneId)
                         || c114IsTwoAxisSpanTextScene(pixelMatrixSceneId)
                         || "definite-minmax-calc-column".equals(pixelMatrixSceneId)

@@ -1,0 +1,31 @@
+{
+  "target": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "checks": [
+    {
+      "page": "roadmap.html",
+      "result": "passed",
+      "observed": "runtime 진행 중; Android definite presentation 미완료; iOS Simulator 4/4; 공식 수 77/213; 계획·runtime·상태 링크가 열리고 문서 폭은 viewport 1280px과 같다"
+    },
+    {
+      "page": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.html",
+      "result": "passed",
+      "observed": "검증 상태 제목과 완료된 두 리뷰가 보이고 이전 문구는 사라졌다. Android 제한과 Android/iOS 이미지가 유지되며 image naturalWidth는 1080px·1206px, viewport는 1280px이다"
+    },
+    {
+      "page": "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.html",
+      "result": "passed",
+      "observed": "페이지 제목과 네 fixed scene 확인; 계획 페이지는 작성 시점의 runtime 전 상태를 유지한다"
+    },
+    {
+      "page": "STATUS.html#c11-css-grid",
+      "result": "passed",
+      "observed": "상태 페이지와 공식 완료 수 77/213 확인; viewport 너비 1280px"
+    }
+  ],
+  "cleanup": {
+    "browser_close": "통과",
+    "active_agent_browser_sessions": 0,
+    "agent_browser_or_task_chrome_processes": 0,
+    "preserved_existing_chrome_pid": 20311
+  }
+}

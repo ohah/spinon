@@ -1,0 +1,80 @@
+10-22 20:30:08.202 16296 16296 I SystemServiceManager: Starting com.android.server.lights.LightsService
+10-22 20:30:08.203 16296 16296 V SystemServerTiming: StartLightsService took to complete: 1ms
+10-22 20:30:08.203 16296 16296 D SystemServerTiming: StartDisplayOffloadService
+10-22 20:30:08.203 16296 16296 V SystemServerTiming: StartDisplayOffloadService took to complete: 0ms
+10-22 20:30:08.203 16296 16296 D SystemServerTiming: StartDisplayManager
+10-22 20:30:08.203 16296 16296 I SystemServiceManager: Starting com.android.server.display.DisplayManagerService
+10-22 20:30:08.204 16296 16296 D PluginManager: loading plugins from:
+10-22 20:30:08.205 16296 16296 D PluginManager: loaded Plugins:[]
+10-22 20:30:08.205 16296 16296 V SystemServerTiming: StartDisplayManager took to complete: 1ms
+10-22 20:30:08.205 16296 16296 D SystemServerTiming: WaitForDisplay
+10-22 20:30:08.205 16296 16296 I SystemServiceManager: Starting phase 100
+10-22 20:30:08.205 16296 16296 D SystemServerTiming: OnBootPhase_100
+10-22 20:30:08.205 16296 16296 D SystemServerTiming: OnBootPhase_100_com.android.server.security.FileIntegrityService
+10-22 20:30:08.205 16296 16296 V SystemServerTiming: OnBootPhase_100_com.android.server.security.FileIntegrityService took to complete: 0ms
+10-22 20:30:08.205 16296 16296 D SystemServerTiming: OnBootPhase_100_com.android.server.pm.Installer
+10-22 20:30:08.205 16296 16296 V SystemServerTiming: OnBootPhase_100_com.android.server.pm.Installer took to complete: 0ms
+10-22 20:30:08.205 16296 16296 D SystemServerTiming: OnBootPhase_100_com.android.server.os.DeviceIdentifiersPolicyService
+10-22 20:30:08.206 16296 16296 V SystemServerTiming: OnBootPhase_100_com.android.server.os.DeviceIdentifiersPolicyService took to complete: 0ms
+10-22 20:30:08.206 16296 16296 D SystemServerTiming: OnBootPhase_100_com.android.server.flags.FeatureFlagsService
+10-22 20:30:08.206 16296 16296 V SystemServerTiming: OnBootPhase_100_com.android.server.flags.FeatureFlagsService took to complete: 0ms
+10-22 20:30:08.206 16296 16296 D SystemServerTiming: OnBootPhase_100_com.android.server.uri.UriGrantsManagerService$Lifecycle
+10-22 20:30:08.206 16296 16296 V SystemServerTiming: OnBootPhase_100_com.android.server.uri.UriGrantsManagerService$Lifecycle took to complete: 0ms
+10-22 20:30:08.206 16296 16296 D SystemServerTiming: OnBootPhase_100_com.android.server.powerstats.PowerStatsService
+10-22 20:30:08.206 16296 16296 V SystemServerTiming: OnBootPhase_100_com.android.server.powerstats.PowerStatsService took to complete: 0ms
+10-22 20:30:08.206 16296 16296 D SystemServerTiming: OnBootPhase_100_com.android.server.permission.access.AccessCheckingService
+10-22 20:30:08.206 16296 16296 V SystemServerTiming: OnBootPhase_100_com.android.server.permission.access.AccessCheckingService took to complete: 0ms
+10-22 20:30:08.206 16296 16296 D SystemServerTiming: OnBootPhase_100_com.android.server.wm.ActivityTaskManagerService$Lifecycle
+10-22 20:30:08.206 16296 16296 V SystemServerTiming: OnBootPhase_100_com.android.server.wm.ActivityTaskManagerService$Lifecycle took to complete: 0ms
+10-22 20:30:08.206 16296 16296 D SystemServerTiming: OnBootPhase_100_com.android.server.am.ActivityManagerService$Lifecycle
+10-22 20:30:08.206 16296 16296 V SystemServerTiming: OnBootPhase_100_com.android.server.am.ActivityManagerService$Lifecycle took to complete: 0ms
+10-22 20:30:08.206 16296 16296 D SystemServerTiming: OnBootPhase_100_com.android.server.pm.DataLoaderManagerService
+10-22 20:30:08.206 16296 16296 V SystemServerTiming: OnBootPhase_100_com.android.server.pm.DataLoaderManagerService took to complete: 0ms
+10-22 20:30:08.207 16296 16296 D SystemServerTiming: OnBootPhase_100_com.android.server.power.PowerManagerService
+10-22 20:30:08.207 16296 16296 V SystemServerTiming: OnBootPhase_100_com.android.server.power.PowerManagerService took to complete: 0ms
+10-22 20:30:08.207 16296 16296 D SystemServerTiming: OnBootPhase_100_com.android.server.power.thermal.ThermalManagerService
+10-22 20:30:08.207 16296 16296 V SystemServerTiming: OnBootPhase_100_com.android.server.power.thermal.ThermalManagerService took to complete: 0ms
+10-22 20:30:08.207 16296 16296 D SystemServerTiming: OnBootPhase_100_com.android.server.recoverysystem.RecoverySystemService$Lifecycle
+10-22 20:30:08.207 16296 16296 V SystemServerTiming: OnBootPhase_100_com.android.server.recoverysystem.RecoverySystemService$Lifecycle took to complete: 0ms
+10-22 20:30:08.207 16296 16296 D SystemServerTiming: OnBootPhase_100_com.android.server.lights.LightsService
+10-22 20:30:08.207 16296 16296 V SystemServerTiming: OnBootPhase_100_com.android.server.lights.LightsService took to complete: 0ms
+10-22 20:30:08.207 16296 16296 D SystemServerTiming: OnBootPhase_100_com.android.server.display.DisplayManagerService
+10-22 20:30:23.132 16296 16322 I Watchdog: WAITED_UNTIL_PRE_WATCHDOG
+10-22 20:30:23.136 16296 16322 I ActivityManager: dumpStackTraces pids={}
+10-22 20:30:23.346 16296 16322 I ActivityManager: Skipping next CPU consuming process, not a java proc: 453
+10-22 20:30:23.346 16296 16322 I ActivityManager: Skipping next CPU consuming process, not a java proc: 496
+10-22 20:30:23.346 16296 16322 I ActivityManager: Skipping next CPU consuming process, not a java proc: 16296
+10-22 20:30:23.347 16296 16322 I ActivityManager: Dumping to /data/anr/anr_2026-10-22-20-30-23-346
+10-22 20:30:23.348 16296 16322 I ActivityManager: Collecting stacks for pid 16296
+10-22 20:30:23.375 16296 16385 E OomConnection: failed waiting for OOM events: java.lang.RuntimeException: listener failed waiting for OOM event
+10-22 20:30:23.402 16296 16322 I ActivityManager: dumpStackTraces nativepids=[449, 451, 452, 453, 455, 16074, 529, 468, 469, 538, 539, 287, 547, 484, 485, 16230, 16231, 16232, 16233, 16234, 301, 429, 493, 496, 497, 437, 438, 313]
+10-22 20:30:23.402 16296 16322 I ActivityManager: Collecting stacks for native pid 449
+10-22 20:30:23.415 16296 16322 I ActivityManager: Collecting stacks for native pid 451
+10-22 20:30:23.426 16296 16322 I ActivityManager: Collecting stacks for native pid 452
+10-22 20:30:23.435 16296 16322 I ActivityManager: Collecting stacks for native pid 453
+10-22 20:30:23.452 16296 16322 I ActivityManager: Collecting stacks for native pid 455
+10-22 20:30:23.461 16296 16322 I ActivityManager: Collecting stacks for native pid 16074
+10-22 20:30:23.465 16296 16322 I ActivityManager: Collecting stacks for native pid 529
+10-22 20:30:23.476 16296 16322 I ActivityManager: Collecting stacks for native pid 468
+10-22 20:30:23.484 16296 16322 I ActivityManager: Collecting stacks for native pid 469
+10-22 20:30:23.495 16296 16322 I ActivityManager: Collecting stacks for native pid 538
+10-22 20:30:23.516 16296 16322 I ActivityManager: Collecting stacks for native pid 539
+10-22 20:30:23.529 16296 16322 I ActivityManager: Collecting stacks for native pid 287
+10-22 20:30:23.537 16296 16322 I ActivityManager: Collecting stacks for native pid 547
+10-22 20:30:23.602 16296 16322 I ActivityManager: Collecting stacks for native pid 484
+10-22 20:30:23.613 16296 16322 I ActivityManager: Collecting stacks for native pid 485
+10-22 20:30:23.623 16296 16322 I ActivityManager: Collecting stacks for native pid 16230
+10-22 20:30:23.643 16296 16322 I ActivityManager: Collecting stacks for native pid 16231
+10-22 20:30:23.659 16296 16322 I ActivityManager: Collecting stacks for native pid 16232
+10-22 20:30:23.671 16296 16322 I ActivityManager: Collecting stacks for native pid 16233
+10-22 20:30:23.685 16296 16322 I ActivityManager: Collecting stacks for native pid 16234
+10-22 20:30:23.696 16296 16322 I ActivityManager: Collecting stacks for native pid 301
+10-22 20:30:23.707 16296 16322 I ActivityManager: Collecting stacks for native pid 429
+10-22 20:30:23.724 16296 16322 I ActivityManager: Collecting stacks for native pid 493
+10-22 20:30:23.751 16296 16322 I ActivityManager: Collecting stacks for native pid 496
+10-22 20:30:23.772 16296 16322 I ActivityManager: Collecting stacks for native pid 497
+10-22 20:30:23.783 16296 16322 I ActivityManager: Collecting stacks for native pid 437
+10-22 20:30:23.799 16296 16322 I ActivityManager: Collecting stacks for native pid 438
+10-22 20:30:23.807 16296 16322 I ActivityManager: Collecting stacks for native pid 313
+10-22 20:30:23.816 16296 16322 I ActivityManager: dumpStackTraces extraPids=[]
+10-22 20:30:23.816 16296 16322 I ActivityManager: Done dumping

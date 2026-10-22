@@ -1,0 +1,79 @@
+{
+  "pass": "pass49",
+  "full_sync": {
+    "verified_before_runtime_route_overlay": true,
+    "file_count": 6997,
+    "http_200_count": 6997,
+    "matching_hash_count": 6997,
+    "failure_count": 0,
+    "all_verified": true,
+    "target_count": 6997,
+    "matching_target_count": 6997,
+    "backup_count": 446,
+    "matching_backup_count": 446,
+    "backup_bytes": 132649083,
+    "copy_counts": {
+      "create": 421,
+      "replace": 1,
+      "same": 5940,
+      "resumed-create": 190,
+      "resumed-replace": 445
+    },
+    "build_files_pruned_as_already_matching_target": 5940,
+    "pruned_bytes": 235714996,
+    "preview_deletions": 0,
+    "initial_site_bytes": 388574684,
+    "initial_site_tree_sha256": "f98739143d18884b3bce899db52b8af4d3b667e3c9d27dbf5a47f4b6605b8d03"
+  },
+  "runtime_route_overlay": {
+    "file_count": 6,
+    "http_200_count": 6,
+    "matching_hash_count": 6,
+    "failures": [],
+    "checks": [
+      {
+        "path": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.html",
+        "http_status": 200,
+        "expected_sha256": "807372a0a6e99f40f2cb70157af8a32830ffdb999e53ebf99a0277947fbdfd5c",
+        "served_sha256": "807372a0a6e99f40f2cb70157af8a32830ffdb999e53ebf99a0277947fbdfd5c",
+        "matches": true
+      },
+      {
+        "path": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md",
+        "http_status": 200,
+        "expected_sha256": "87ddb47fdedb8fd8a72b8d4eb547be6883be3507758d8d740883744653183e93",
+        "served_sha256": "87ddb47fdedb8fd8a72b8d4eb547be6883be3507758d8d740883744653183e93",
+        "matches": true
+      },
+      {
+        "path": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md",
+        "http_status": 200,
+        "expected_sha256": "87ddb47fdedb8fd8a72b8d4eb547be6883be3507758d8d740883744653183e93",
+        "served_sha256": "87ddb47fdedb8fd8a72b8d4eb547be6883be3507758d8d740883744653183e93",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-f81cc1f3adc5.9fa16e0f1b.js",
+        "http_status": 200,
+        "expected_sha256": "6ac4b0d93241d643350bf64157aeb8206433a23e627a334bbc7783e13a98171c",
+        "served_sha256": "6ac4b0d93241d643350bf64157aeb8206433a23e627a334bbc7783e13a98171c",
+        "matches": true
+      },
+      {
+        "path": "static/js/async/route-4a17fa161b97.7ad731f867.js",
+        "http_status": 200,
+        "expected_sha256": "74c71029bc6e1749bd68d1be04233fdf5d8143fcc97a215a1defaa303bbdb3a3",
+        "served_sha256": "74c71029bc6e1749bd68d1be04233fdf5d8143fcc97a215a1defaa303bbdb3a3",
+        "matches": true
+      },
+      {
+        "path": "static/search_index.ko.4e0aa793.json",
+        "http_status": 200,
+        "expected_sha256": "0e8282381b7e22545360d573f25b5201f5f5e28ee17dfa7e586b73a0101faffd",
+        "served_sha256": "0e8282381b7e22545360d573f25b5201f5f5e28ee17dfa7e586b73a0101faffd",
+        "matches": true
+      }
+    ],
+    "content_hashed_assets_note": "overlay changes use the existing pass49 asset filenames until a clean RSPress rebuild; preview responses use Cache-Control no-cache"
+  }
+}

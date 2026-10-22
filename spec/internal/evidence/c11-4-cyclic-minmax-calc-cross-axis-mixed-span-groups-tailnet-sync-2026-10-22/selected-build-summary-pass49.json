@@ -1,0 +1,30 @@
+{
+  "pass": "pass49",
+  "rspressVersion": "2.0.22",
+  "siteRoot": "build/spinon/c11-4-cyclic-minmax-calc-cross-axis-span-groups-tailnet-site-pass49",
+  "fileCount": 6997,
+  "bytes": 388574684,
+  "siteTreeSha256": "f98739143d18884b3bce899db52b8af4d3b667e3c9d27dbf5a47f4b6605b8d03",
+  "requiredRoutes": [
+    "roadmap.html",
+    "STATUS.html",
+    "spec/STATUS.html",
+    "internal/0059-c11-grid-layout.html",
+    "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.html",
+    "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.html",
+    "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/implementation-runtime-review-20.html",
+    "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/pr-diff-review-30.html",
+    "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/ios-simulator-c114-cross-axis-mixed-span-groups-ios-simulator-20261022T113152006Z-b45c3622/definite-minmax-cross-axis-mixed-span-groups-forward.png",
+    "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/android-avd-c114-cross-axis-mixed-span-groups-android-avd-20261022T112506735Z-3c8840f1/cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-forward.png"
+  ],
+  "renderedImageRoutes": [
+    "static/image/cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-forward.66bb0c6f2d.png",
+    "static/image/definite-minmax-cross-axis-mixed-span-groups-forward.95817adf88.png"
+  ],
+  "noSymlinks": true,
+  "publicRoadmapShowsRuntimeProgress": true,
+  "completionCountStill77of213": true,
+  "androidLimitExplicit": true,
+  "iosRuntimeEvidenceImagesPresent": true,
+  "androidRuntimeEvidenceImagePresent": true
+}
