@@ -1,0 +1,67 @@
+{
+  "checked_at_utc": "2026-10-22 04:14:25 UTC",
+  "browser": "Agent Browser CLI",
+  "terminal_browser_used": false,
+  "pages": {
+    "roadmap": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "has_77_of_213": true,
+      "has_pr_497": true
+    },
+    "internal_readme": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/README.html",
+      "has_tailnet_section": true,
+      "has_evidence_link": true
+    },
+    "sync_evidence": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-pr497-tailnet-roadmap-sync-2026-10-22/README.html",
+      "has_merge_sha": true,
+      "has_77_of_213": true,
+      "screenshot_count": 4,
+      "all_screenshots_loaded": true,
+      "screenshot_dimensions": [
+        {
+          "width": 1680,
+          "height": 1100
+        },
+        {
+          "width": 1680,
+          "height": 1100
+        },
+        {
+          "width": 1680,
+          "height": 1100
+        },
+        {
+          "width": 1680,
+          "height": 1100
+        }
+      ]
+    },
+    "plan": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-cyclic-minmax-calc-minimum-span.html",
+      "has_columns_29_29": true,
+      "has_rows_12_12": true,
+      "has_77_of_213": true
+    },
+    "runtime_evidence": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-minmax-calc-minimum-span-runtime-2026-10-22/README.html",
+      "android_image_loaded": true,
+      "android_image_dimensions": {
+        "width": 1080,
+        "height": 2400
+      },
+      "ios_image_loaded": true,
+      "ios_image_dimensions": {
+        "width": 1206,
+        "height": 2622
+      }
+    },
+    "official_status": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "c11_4_incomplete": true
+    }
+  },
+  "browser_errors_reported": []
+}

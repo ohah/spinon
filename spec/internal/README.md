@@ -1,5 +1,9 @@
 # 내부 인터페이스 명세
 
+## C11.4 PR #497 뒤 Tailnet 로드맵 미리보기
+
+[Tailnet 동기화·Agent Browser 화면·파일 해시 근거](./evidence/c11-4-pr497-tailnet-roadmap-sync-2026-10-22/README.md). PR #497을 Rebase and merge한 뒤 최신 C11.4 계획과 실행 결과를 선택 미리보기에 반영했다. 공식 `77/213` 및 C11.4 미완료 상태를 유지하며 GitHub Pages 배포는 하지 않았다.
+
 ## C11.4 cyclic `minmax(calc())` minimum spanning-item 후속 · 구현 중
 
 [계획](../../plan/c11-4-cyclic-minmax-calc-minimum-span.md) · [Chrome 156 사전 비교·독립 기대값](./evidence/c11-4-cyclic-minmax-calc-minimum-span-precomparison-2026-10-22/README.md) · [Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 실행·화면·artifact 경계](./evidence/c11-4-cyclic-minmax-calc-minimum-span-runtime-2026-10-22/README.md) · [구현/runtime 실패 관점 20개](./evidence/c11-4-cyclic-minmax-calc-minimum-span-runtime-2026-10-22/implementation-runtime-review-20.md) · [PR diff 적대 검토 30개](./evidence/c11-4-cyclic-minmax-calc-minimum-span-runtime-2026-10-22/pr-diff-review-30.md). 네 고정 scene은 양축 중 한 축의 두 identical cyclic `minmax(calc())` minimum과 span-2 Ahem text item만 검증한다. 각 Simulator 4/4 scene 및 native surface sample 8/8 exact다. 일반 CSS admission, WPT, Android 실기기/hardware GPU, iOS compositor 이후 pixels와 전체 C11.4는 미검증이며 현재 공식 `77/213` 집계는 유지한다.
