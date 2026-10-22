@@ -1,0 +1,141 @@
+{
+  "oracle": [
+    {
+      "columns": "[cell] 0px [cell cell] 0px [cell cell] 0px [cell] 20px 20px 20px 20px 20px 20px",
+      "computedEnd": "6 ghost",
+      "computedStart": "5 ghost",
+      "id": "positive-missing",
+      "item": {
+        "height": 10,
+        "width": 20,
+        "x": 100,
+        "y": 0
+      },
+      "rows": "20px"
+    },
+    {
+      "columns": "[cell] 0px [cell cell] 0px [cell cell] 0px [cell] 20px 20px",
+      "computedEnd": "6 cell",
+      "computedStart": "5 cell",
+      "id": "positive-insufficient",
+      "item": {
+        "height": 10,
+        "width": 20,
+        "x": 20,
+        "y": 0
+      },
+      "rows": "20px"
+    },
+    {
+      "columns": "20px 20px 20px 20px 20px [cell] 0px [cell cell] 0px [cell cell] 0px [cell]",
+      "computedEnd": "-4 ghost",
+      "computedStart": "-5 ghost",
+      "id": "negative-missing",
+      "item": {
+        "height": 10,
+        "width": 20,
+        "x": 0,
+        "y": 0
+      },
+      "rows": "20px"
+    },
+    {
+      "columns": "20px [cell] 0px [cell cell] 0px [cell cell] 0px [cell]",
+      "computedEnd": "-4 cell",
+      "computedStart": "-5 cell",
+      "id": "negative-insufficient",
+      "item": {
+        "height": 10,
+        "width": 20,
+        "x": 0,
+        "y": 0
+      },
+      "rows": "20px"
+    },
+    {
+      "columns": "[cell] 0px [cell cell] 0px [cell cell] 0px [cell] 20px",
+      "computedEnd": "span ghost",
+      "computedStart": "4",
+      "id": "span-forward-missing",
+      "item": {
+        "height": 10,
+        "width": 20,
+        "x": 0,
+        "y": 0
+      },
+      "rows": "20px"
+    },
+    {
+      "columns": "20px [cell] 0px [cell cell] 0px [cell cell] 0px [cell]",
+      "computedEnd": "1",
+      "computedStart": "span ghost",
+      "id": "span-backward-missing",
+      "item": {
+        "height": 10,
+        "width": 20,
+        "x": 0,
+        "y": 0
+      },
+      "rows": "20px"
+    },
+    {
+      "columns": "[cell] 0px [cell cell] 40px [cell cell] 0px [cell]",
+      "computedEnd": "3 cell",
+      "computedStart": "2 cell",
+      "id": "occupied-repeat",
+      "item": {
+        "height": 10,
+        "width": 40,
+        "x": 0,
+        "y": 0
+      },
+      "rows": "20px"
+    },
+    {
+      "columns": "[cell] 0px [cell cell] 40px [cell cell] 40px [cell]",
+      "computedEnd": "4 cell",
+      "computedStart": "2 cell",
+      "id": "span-occupied-repeat",
+      "item": {
+        "height": 10,
+        "width": 80,
+        "x": 0,
+        "y": 0
+      },
+      "rows": "20px"
+    },
+    {
+      "columns": "20px",
+      "computedEnd": "6 ghost",
+      "computedStart": "5 ghost",
+      "id": "row-positive-missing",
+      "item": {
+        "height": 10,
+        "width": 20,
+        "x": 0,
+        "y": 100
+      },
+      "rows": "[cell] 0px [cell cell] 0px [cell cell] 0px [cell] 20px 20px 20px 20px 20px 20px"
+    },
+    {
+      "columns": "20px",
+      "computedEnd": "-4 ghost",
+      "computedStart": "-5 ghost",
+      "id": "row-negative-missing",
+      "item": {
+        "height": 10,
+        "width": 20,
+        "x": 0,
+        "y": 0
+      },
+      "rows": "20px 20px 20px 20px 20px [cell] 0px [cell cell] 0px [cell cell] 0px [cell]"
+    }
+  ],
+  "title": "C11.4 auto-fit named-line implicit fallback oracle",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "dpr": 1,
+    "height": 1000,
+    "width": 1280
+  }
+}

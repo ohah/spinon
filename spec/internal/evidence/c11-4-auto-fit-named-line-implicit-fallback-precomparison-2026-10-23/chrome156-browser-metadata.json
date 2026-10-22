@@ -1,0 +1,15 @@
+{
+  "browser": "Google Chrome",
+  "version": "156.0.8078.48",
+  "automation": "Agent Browser 0.31.1",
+  "operatingSystem": "macOS 26.5.1",
+  "architecture": "arm64",
+  "viewportCssPixels": {
+    "width": 1280,
+    "height": 1000,
+    "deviceScaleFactor": 1
+  },
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "fixtureSha256": "f1ed92c6e2feda24fa1231bf0ba4d31ca14fa74acf3cc7de38149edf4e5b24de",
+  "screenshotSha256": "38941fc11fc7071f41d6d70fbcf65ca1d55192fd2fdbac25e9821db5094e3919"
+}

@@ -1,0 +1,11 @@
+{
+  "command": "agent-browser close --all",
+  "commandResult": "Closed session: default",
+  "sessionInfo": {
+    "active": false,
+    "pid": null,
+    "runtime": null
+  },
+  "agentBrowserProcessCountAfterClose": 0,
+  "unrelatedChromeProcessTerminated": false
+}
