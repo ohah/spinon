@@ -1,0 +1,32 @@
+{
+  "headings": [
+    "Navigation Menu",
+    "Repository navigation",
+    "feat(layout): 겹치는 cyclic minmax span fixture 추가#500ohah wants to merge 2 commits intomainohah/spinon:mainfrom feat/c11-4-cyclic-minmax-calc-overlapping-spans-20261022ohah/spinon:feat/c11-4-cyclic-minmax-calc-overlapping-spans-20261022Copy head branch name to clipboard",
+    "Conversation",
+    "변경한 항목",
+    "명세와 동작 근거",
+    "Simulator 화면",
+    "검증 결과",
+    "남은 범위",
+    "Footer"
+  ],
+  "images": [
+    {
+      "alt": "Android AVD C11.4 overlapping spans",
+      "complete": true,
+      "naturalHeight": 2400,
+      "naturalWidth": 1080,
+      "src": "https://raw.githubusercontent.com/ohah/spinon/ab916db3b4e45c7b2cabe4af8a9958762191ba91/spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png"
+    },
+    {
+      "alt": "iOS Simulator C11.4 overlapping spans",
+      "complete": true,
+      "naturalHeight": 2622,
+      "naturalWidth": 1206,
+      "src": "https://raw.githubusercontent.com/ohah/spinon/ab916db3b4e45c7b2cabe4af8a9958762191ba91/spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png"
+    }
+  ],
+  "title": "feat(layout): 겹치는 cyclic minmax span fixture 추가 by ohah · Pull Request #500 · ohah/spinon",
+  "url": "https://github.com/ohah/spinon/pull/500"
+}
