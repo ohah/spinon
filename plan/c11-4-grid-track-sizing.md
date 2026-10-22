@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-10-22 양축 cyclic `minmax(calc())` minimum
+
+양축 cyclic scene과 column-only·row-only·definite control을 고정 fixture에 연결했다. 각 플랫폼 4/4 scene, Android PixelCopy 28/28 및 iOS compositor 제출 전 Metal drawable 표본 28/28이 exact다. 두 axis basis는 50/10px에서 `[104]/[22]`, row-only wrapping control은 `[10]/[42]`다. 재실행 중 오래된 APK, Android definite-root 기대값과 item 바깥 표본 좌표 오류를 각각 찾아 수정하고 전체 행렬을 다시 통과했다. 기본 release FFI archive 문자열에는 새 scene ID·payload/fixture ABI 이름이 없고 opt-in positive control에는 있다. [상세 계획·판정](./c11-4-cyclic-minmax-calc-minimum-two-axis.md) · [사전 비교](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-precomparison-2026-10-22/README.md) · [실행·screenshots·artifact](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-runtime-2026-10-22/README.md). 일반 CSS admission, WPT, 실기기/hardware GPU, iOS compositor 이후 pixels와 전체 C11.4는 미검증이고 공식 완료 수 `72/213`은 유지한다.
+
 ## 2026-10-21 nested Grid 행 축 intrinsic contribution 계획
 
 한 단계 nested Grid의 Ahem text + natural PNG 입력에서 outer row track이 받는 block-axis contribution을 세 scene으로 고정했다. CSS Grid 2025 CRD 독립 기대값과 Chrome 156 Agent Browser 관측은 span-two `[18,18]`, one-track `[40,0]`, definite-flex control `[28,28]`이며, root heights는 각각 `40/44/60px`이다. 이는 사전 계획일 뿐 Spinon 결과가 아니다. [세부 계획](./c11-4-nested-grid-row-contribution.md) · [Chrome 156 사전 비교·독립 계산](../spec/internal/evidence/c11-4-nested-grid-rows-precomparison-2026-10-21/README.md) · [계획 실패 관점 20개](./c11-4-nested-grid-rows-plan-review-20.md) · [계획 PR diff 실패 관점 20개](../spec/internal/evidence/c11-4-nested-grid-rows-precomparison-2026-10-21/plan-pr-diff-review-20.md). C11.4와 공식 완료 수 72/213은 미완료로 유지한다.

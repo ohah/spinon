@@ -1,0 +1,25 @@
+{
+  "source": "Chrome 156 Agent Browser screenshot",
+  "image": "./chrome156-cyclic-minmax-calc-minimum-two-axis.png",
+  "imageSizePx": { "width": 1280, "height": 633 },
+  "purpose": "Spatial paint-order and overflow samples only; screenshot RGB is not an app-surface CSS sRGB oracle.",
+  "samples": [
+    { "scene": "cyclic-minmax-calc-min-both-axes", "meaning": "uncovered left border", "xy": [1, 5], "rgb": [239, 191, 114] },
+    { "scene": "cyclic-minmax-calc-min-both-axes", "meaning": "item interior", "xy": [5, 5], "rgb": [229, 72, 77] },
+    { "scene": "cyclic-minmax-calc-min-both-axes", "meaning": "item paints over right border", "xy": [53, 5], "rgb": [229, 72, 77] },
+    { "scene": "cyclic-minmax-calc-min-both-axes", "meaning": "item paints outside root border box", "xy": [60, 5], "rgb": [229, 72, 77] },
+    { "scene": "cyclic-minmax-calc-min-both-axes", "meaning": "last sampled item column", "xy": [105, 5], "rgb": [229, 72, 77] },
+    { "scene": "cyclic-minmax-calc-min-both-axes", "meaning": "after item right edge", "xy": [106, 5], "rgb": [255, 255, 255] },
+    { "scene": "cyclic-minmax-calc-min-both-axes", "meaning": "item paints over bottom border", "xy": [5, 13], "rgb": [229, 72, 77] },
+    { "scene": "cyclic-minmax-calc-min-both-axes", "meaning": "item paints below root border box", "xy": [5, 15], "rgb": [229, 72, 77] },
+    { "scene": "cyclic-minmax-calc-min-both-axes", "meaning": "last sampled item row", "xy": [5, 23], "rgb": [229, 72, 77] },
+    { "scene": "cyclic-minmax-calc-min-both-axes", "meaning": "after item bottom edge", "xy": [5, 24], "rgb": [255, 255, 255] },
+    { "scene": "cyclic-minmax-calc-min-column-definite-row", "meaning": "item extends beyond root right edge", "xy": [60, 55], "rgb": [229, 72, 77] },
+    { "scene": "cyclic-minmax-calc-min-column-definite-row", "meaning": "after item right edge", "xy": [106, 55], "rgb": [255, 255, 255] },
+    { "scene": "definite-column-cyclic-minmax-calc-min-row", "meaning": "item extends below root border box", "xy": [5, 125], "rgb": [229, 72, 77] },
+    { "scene": "definite-column-cyclic-minmax-calc-min-row", "meaning": "last sampled item row", "xy": [5, 143], "rgb": [229, 72, 77] },
+    { "scene": "definite-column-cyclic-minmax-calc-min-row", "meaning": "after item bottom edge", "xy": [5, 144], "rgb": [255, 255, 255] },
+    { "scene": "definite-minmax-calc-min-both-axes", "meaning": "item extends below root border box", "xy": [5, 175], "rgb": [229, 72, 77] },
+    { "scene": "definite-minmax-calc-min-both-axes", "meaning": "after item bottom edge", "xy": [5, 184], "rgb": [255, 255, 255] }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "spinon.c11-4.cyclic-minmax-calc-minimum-two-axis.w3c-observation.v1",
+  "url": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/",
+  "verifiedWith": "Agent Browser rendered page",
+  "sections": [
+    {
+      "id": "track-sizes",
+      "heading": "7.2.1 Track Sizes",
+      "observedText": "Percentages are relative to the inner inline size of the grid container in column tracks and inner block size in row tracks. If grid-container size depends on its tracks, the percentage is treated as auto for intrinsic size calculation, then resolved against the resulting grid-container size for layout.",
+      "observedText2": "For minmax(min, max), if max is less than min, max is floored by min."
+    },
+    {
+      "id": "algo-grid-sizing",
+      "heading": "Grid Sizing Algorithm",
+      "observedText": "The track sizing algorithm resolves the columns and then resolves the rows; row sizing can use the column sizes calculated in the preceding step."
+    }
+  ],
+  "limits": "This is a captured reading of the fixed 2025 CRD page, not a WPT run or implementation conformance result."
+}

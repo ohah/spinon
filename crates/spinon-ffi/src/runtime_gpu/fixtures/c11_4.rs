@@ -1479,30 +1479,62 @@ mod tests {
 
     #[test]
     fn exposes_only_fixed_cyclic_minimum_calc_runtime_scenes() {
-        for (scene_id, columns, rows, root_size) in [
+        for (scene_id, columns, rows, root_size, text) in [
             (
                 "cyclic-minmax-calc-min-column",
                 "minmax(calc(200% + 4px),max-content)",
                 "10px",
                 "width:max-content;height:10px",
+                "a",
             ),
             (
                 "cyclic-minmax-calc-min-row",
                 "10px",
                 "minmax(calc(200% + 2px),max-content)",
                 "width:10px;height:max-content",
+                "a",
             ),
             (
                 "definite-minmax-calc-min-column",
                 "minmax(calc(200% + 4px),max-content)",
                 "10px",
                 "width:10px;height:10px",
+                "a",
             ),
             (
                 "definite-minmax-calc-min-row",
                 "10px",
                 "minmax(calc(200% + 2px),max-content)",
                 "width:10px;height:10px",
+                "a",
+            ),
+            (
+                "cyclic-minmax-calc-min-both-axes",
+                "minmax(calc(200% + 4px),max-content)",
+                "minmax(calc(200% + 2px),max-content)",
+                "width:max-content;height:max-content",
+                "aa aa",
+            ),
+            (
+                "cyclic-minmax-calc-min-column-definite-row",
+                "minmax(calc(200% + 4px),max-content)",
+                "10px",
+                "width:max-content;height:10px",
+                "aa aa",
+            ),
+            (
+                "definite-column-cyclic-minmax-calc-min-row",
+                "10px",
+                "minmax(calc(200% + 2px),max-content)",
+                "width:10px;height:max-content",
+                "aa aa",
+            ),
+            (
+                "definite-minmax-calc-min-both-axes",
+                "minmax(calc(200% + 4px),max-content)",
+                "minmax(calc(200% + 2px),max-content)",
+                "width:10px;height:10px",
+                "aa aa",
             ),
         ] {
             let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
@@ -1512,7 +1544,7 @@ mod tests {
             assert!(source.contains(&format!("grid-template-rows:{rows}")));
             assert!(source.contains(root_size));
             assert!(source.contains("border:2px solid #f0c674"));
-            assert!(source.contains("document.createTextNode('a')"));
+            assert!(source.contains(&format!("document.createTextNode({text:?})")));
             assert!(source.contains("background-color:#e5484d"));
             assert_eq!(source.matches("document.createElement('div')").count(), 2);
         }

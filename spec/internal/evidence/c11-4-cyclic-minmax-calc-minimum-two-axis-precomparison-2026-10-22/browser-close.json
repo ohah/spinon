@@ -1,0 +1,12 @@
+{
+  "tool": "Agent Browser 0.31.1",
+  "namespace": "spinon-cyclic-minmax-two-axis-20261022",
+  "session": "plan",
+  "closeResult": "Browser closed",
+  "sessionInfoAfterClose": { "active": false, "pid": null, "runtime": null },
+  "activeSessionsAfterClose": "No active sessions",
+  "processScan": {
+    "agentBrowser": "no process",
+    "chromium": "no process"
+  }
+}

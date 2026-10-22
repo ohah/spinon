@@ -24,6 +24,10 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "definite-minmax-calc-column", "definite-minmax-calc-small-limit",
     "cyclic-minmax-calc-min-column", "cyclic-minmax-calc-min-row",
     "definite-minmax-calc-min-column", "definite-minmax-calc-min-row",
+    "cyclic-minmax-calc-min-both-axes",
+    "cyclic-minmax-calc-min-column-definite-row",
+    "definite-column-cyclic-minmax-calc-min-row",
+    "definite-minmax-calc-min-both-axes",
     "cyclic-percent-two-axis-multitrack", "cyclic-percent-columns-multitrack",
     "cyclic-percent-rows-multitrack", "definite-percent-two-axis-multitrack",
     "cyclic-calc-column", "cyclic-calc-row", "cyclic-calc-two-axis",
@@ -233,6 +237,14 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
         || sceneID == "cyclic-minmax-calc-min-row"
         || sceneID == "definite-minmax-calc-min-column"
         || sceneID == "definite-minmax-calc-min-row" { return "width=14,height=14" }
+    if sceneID == "cyclic-minmax-calc-min-both-axes"
+        || sceneID == "cyclic-minmax-calc-min-column-definite-row" {
+        return "width=54,height=14"
+    }
+    if sceneID == "definite-column-cyclic-minmax-calc-min-row" {
+        return "width=14,height=24"
+    }
+    if sceneID == "definite-minmax-calc-min-both-axes" { return "width=14,height=14" }
     if sceneID == "definite-minmax-calc-column" { return "width=40,height=20" }
     if sceneID == "definite-minmax-calc-small-limit" { return "width=10,height=20" }
     if sceneID == "cyclic-percent-column" || sceneID == "cyclic-percent-row"
@@ -399,6 +411,14 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     if sceneID == "cyclic-minmax-calc-row" { return "width=20,height=22" }
     if sceneID == "cyclic-minmax-calc-min-column"
         || sceneID == "definite-minmax-calc-min-column" { return "width=24,height=10" }
+    if sceneID == "cyclic-minmax-calc-min-both-axes" { return "width=104,height=22" }
+    if sceneID == "cyclic-minmax-calc-min-column-definite-row" {
+        return "width=104,height=10"
+    }
+    if sceneID == "definite-column-cyclic-minmax-calc-min-row" {
+        return "width=10,height=42"
+    }
+    if sceneID == "definite-minmax-calc-min-both-axes" { return "width=24,height=22" }
     if sceneID == "cyclic-minmax-calc-min-row"
         || sceneID == "definite-minmax-calc-min-row" { return "width=10,height=22" }
     if sceneID == "definite-minmax-calc-column" { return "width=24,height=20" }
@@ -1563,6 +1583,18 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     case "cyclic-minmax-calc-min-column", "definite-minmax-calc-min-column":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=14,height=14;"
             + "1:node=2,x=2,y=2,width=24,height=10]"
+    case "cyclic-minmax-calc-min-both-axes":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=54,height=14;"
+            + "1:node=2,x=2,y=2,width=104,height=22]"
+    case "cyclic-minmax-calc-min-column-definite-row":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=54,height=14;"
+            + "1:node=2,x=2,y=2,width=104,height=10]"
+    case "definite-column-cyclic-minmax-calc-min-row":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=14,height=24;"
+            + "1:node=2,x=2,y=2,width=10,height=42]"
+    case "definite-minmax-calc-min-both-axes":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=14,height=14;"
+            + "1:node=2,x=2,y=2,width=24,height=22]"
     case "cyclic-minmax-calc-min-row", "definite-minmax-calc-min-row":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=14,height=14;"
             + "1:node=2,x=2,y=2,width=10,height=22]"
@@ -2237,6 +2269,10 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
         || sceneID == "cyclic-minmax-calc-min-row"
         || sceneID == "definite-minmax-calc-min-column"
         || sceneID == "definite-minmax-calc-min-row"
+        || sceneID == "cyclic-minmax-calc-min-both-axes"
+        || sceneID == "cyclic-minmax-calc-min-column-definite-row"
+        || sceneID == "definite-column-cyclic-minmax-calc-min-row"
+        || sceneID == "definite-minmax-calc-min-both-axes"
         || sceneID == "definite-minmax-calc-column"
         || sceneID == "definite-minmax-calc-small-limit" {
         return 2
@@ -2734,6 +2770,64 @@ private struct C111MetalPixelRun {
                 ("\(sceneID)-past-item", rootID, column ? 27 : 5, column ? 5 : 25,
                  [0, 0, 0, 255]),
             ]
+        case "cyclic-minmax-calc-min-both-axes",
+             "cyclic-minmax-calc-min-column-definite-row",
+             "definite-column-cyclic-minmax-calc-min-row",
+             "definite-minmax-calc-min-both-axes":
+            let rootID = "c114-\(sceneID)-grid"
+            let itemID = "c114-\(sceneID)-item"
+            switch sceneID {
+            case "cyclic-minmax-calc-min-both-axes":
+                expectedSamples = [
+                    ("\(sceneID)-left-border", rootID, 1, 5, [240, 198, 116, 255]),
+                    ("\(sceneID)-item-inside", itemID, 5, 5, [229, 72, 77, 255]),
+                    ("\(sceneID)-right-border-overpaint", itemID, 53, 5,
+                     [229, 72, 77, 255]),
+                    ("\(sceneID)-outside-root", itemID, 60, 5, [229, 72, 77, 255]),
+                    ("\(sceneID)-past-item-right", rootID, 106, 5, [0, 0, 0, 255]),
+                    ("\(sceneID)-bottom-border-overpaint", itemID, 5, 13,
+                     [229, 72, 77, 255]),
+                    ("\(sceneID)-outside-root-bottom", itemID, 5, 16,
+                     [229, 72, 77, 255]),
+                    ("\(sceneID)-past-item-bottom", rootID, 5, 25, [0, 0, 0, 255]),
+                ]
+            case "cyclic-minmax-calc-min-column-definite-row":
+                expectedSamples = [
+                    ("\(sceneID)-left-border", rootID, 1, 5, [240, 198, 116, 255]),
+                    ("\(sceneID)-item-inside", itemID, 5, 5, [229, 72, 77, 255]),
+                    ("\(sceneID)-right-border-overpaint", itemID, 53, 5,
+                     [229, 72, 77, 255]),
+                    ("\(sceneID)-outside-root", itemID, 60, 5, [229, 72, 77, 255]),
+                    ("\(sceneID)-last-item-column", itemID, 105, 5,
+                     [229, 72, 77, 255]),
+                    ("\(sceneID)-past-item-right", rootID, 106, 5, [0, 0, 0, 255]),
+                ]
+            case "definite-column-cyclic-minmax-calc-min-row":
+                expectedSamples = [
+                    ("\(sceneID)-left-border", rootID, 1, 5, [240, 198, 116, 255]),
+                    ("\(sceneID)-item-inside", itemID, 5, 5, [229, 72, 77, 255]),
+                    ("\(sceneID)-bottom-border-overpaint", itemID, 5, 23,
+                     [229, 72, 77, 255]),
+                    ("\(sceneID)-outside-root-bottom", itemID, 5, 25,
+                     [229, 72, 77, 255]),
+                    ("\(sceneID)-last-item-row", itemID, 5, 43, [229, 72, 77, 255]),
+                    ("\(sceneID)-past-item-bottom", rootID, 5, 45, [0, 0, 0, 255]),
+                ]
+            default:
+                expectedSamples = [
+                    ("\(sceneID)-left-border", rootID, 1, 5, [240, 198, 116, 255]),
+                    ("\(sceneID)-item-inside", itemID, 5, 5, [229, 72, 77, 255]),
+                    ("\(sceneID)-right-border-overpaint", itemID, 13, 5,
+                     [229, 72, 77, 255]),
+                    ("\(sceneID)-outside-root", itemID, 16, 5, [229, 72, 77, 255]),
+                    ("\(sceneID)-past-item-right", rootID, 27, 5, [0, 0, 0, 255]),
+                    ("\(sceneID)-bottom-border-overpaint", itemID, 5, 13,
+                     [229, 72, 77, 255]),
+                    ("\(sceneID)-outside-root-bottom", itemID, 5, 16,
+                     [229, 72, 77, 255]),
+                    ("\(sceneID)-past-item-bottom", rootID, 5, 25, [0, 0, 0, 255]),
+                ]
+            }
         case "cyclic-calc-column", "cyclic-calc-row",
              "cyclic-calc-two-axis", "definite-calc-control":
             let itemID = "c114-\(sceneID)-item"

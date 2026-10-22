@@ -1,0 +1,97 @@
+{
+  "schema": "spinon.c11-4.cyclic-minmax-calc-minimum-two-axis.precomparison.v1",
+  "specification": {
+    "title": "CSS Grid Layout Module Level 1",
+    "version": "2025 CRD",
+    "trackSizes": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#track-sizes",
+    "gridSizingAlgorithm": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-grid-sizing",
+    "derivedRules": [
+      "Cyclic track percentages are treated as auto while calculating intrinsic grid-container sizes, then resolved against the resulting container size for layout.",
+      "Column percentages use the grid container inner inline size; row percentages use its inner block size.",
+      "If a minmax maximum is below its minimum, the maximum is floored by the minimum."
+    ]
+  },
+  "input": {
+    "font": "Ahem",
+    "fontSizeCssPx": 10,
+    "lineHeightCssPx": 10,
+    "text": "aa aa",
+    "minContentInlineCssPx": 20,
+    "maxContentInlineCssPx": 50,
+    "rootBoxSizing": "content-box",
+    "rootBorderCssPx": 2,
+    "rootBorderColor": "#f0c674",
+    "itemColor": "#e5484d",
+    "gapCssPx": 0,
+    "paddingCssPx": 0,
+    "writingMode": "horizontal-tb"
+  },
+  "calculation": {
+    "bothCyclicIntrinsicRootContentCssPx": { "width": 50, "height": 10 },
+    "bothCyclicFinalTrackCssPx": { "columns": [104], "rows": [22] },
+    "columnFormula": "200% * 50px + 4px = 104px",
+    "rowFormula": "200% * 10px + 2px = 22px",
+    "rowOnlyIntrinsicRootContentCssPx": { "width": 10, "height": 20 },
+    "rowOnlyFinalTrackCssPx": { "columns": [10], "rows": [42] },
+    "rowOnlyFormula": "200% * 20px + 2px = 42px",
+    "definiteBothFinalTrackCssPx": { "columns": [24], "rows": [22] },
+    "percentageBasisExcludesRootBorder": true
+  },
+  "scenes": [
+    {
+      "id": "cyclic-minmax-calc-min-both-axes",
+      "rootSizing": { "width": "max-content", "height": "max-content" },
+      "columns": [104],
+      "rows": [22],
+      "rootContentCssPx": { "width": 50, "height": 10 },
+      "rootBorderBoxCssPx": { "width": 54, "height": 14 },
+      "itemRootRelativeCssPx": { "x": 2, "y": 2, "width": 104, "height": 22 }
+    },
+    {
+      "id": "cyclic-minmax-calc-min-column-definite-row",
+      "rootSizing": { "width": "max-content", "height": "10px" },
+      "columns": [104],
+      "rows": [10],
+      "rootContentCssPx": { "width": 50, "height": 10 },
+      "rootBorderBoxCssPx": { "width": 54, "height": 14 },
+      "itemRootRelativeCssPx": { "x": 2, "y": 2, "width": 104, "height": 10 }
+    },
+    {
+      "id": "definite-column-cyclic-minmax-calc-min-row",
+      "rootSizing": { "width": "10px", "height": "max-content" },
+      "columns": [10],
+      "rows": [42],
+      "rootContentCssPx": { "width": 10, "height": 20 },
+      "rootBorderBoxCssPx": { "width": 14, "height": 24 },
+      "itemRootRelativeCssPx": { "x": 2, "y": 2, "width": 10, "height": 42 },
+      "scrollCssPx": { "width": 20, "height": 42 }
+    },
+    {
+      "id": "definite-minmax-calc-min-both-axes",
+      "rootSizing": { "width": "10px", "height": "10px" },
+      "columns": [24],
+      "rows": [22],
+      "rootContentCssPx": { "width": 10, "height": 10 },
+      "rootBorderBoxCssPx": { "width": 14, "height": 14 },
+      "itemRootRelativeCssPx": { "x": 2, "y": 2, "width": 24, "height": 22 }
+    }
+  ],
+  "browser": {
+    "tool": "Agent Browser 0.31.1",
+    "engine": "Chrome",
+    "version": "156.0.8078.48",
+    "viewportCssPx": { "width": 1280, "height": 633, "dpr": 1 },
+    "ahemLoaded": true,
+    "observation": "./chrome156-observation.json",
+    "screenshot": "./chrome156-cyclic-minmax-calc-minimum-two-axis.png",
+    "pixelSamples": "./chrome156-pixel-samples.json",
+    "closeEvidence": "./browser-close.json"
+  },
+  "scope": {
+    "runtimeImplemented": false,
+    "androidOrIosRun": false,
+    "generalCssAdmission": false,
+    "c114CompletionClaim": false,
+    "officialRoadmapCount": "72/213"
+  }
+}

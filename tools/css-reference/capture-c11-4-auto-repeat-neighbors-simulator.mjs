@@ -21,6 +21,10 @@ const cyclicPercentSceneIDs = new Set([
   'definite-minmax-calc-column', 'definite-minmax-calc-small-limit',
   'cyclic-minmax-calc-min-column', 'cyclic-minmax-calc-min-row',
   'definite-minmax-calc-min-column', 'definite-minmax-calc-min-row',
+  'cyclic-minmax-calc-min-both-axes',
+  'cyclic-minmax-calc-min-column-definite-row',
+  'definite-column-cyclic-minmax-calc-min-row',
+  'definite-minmax-calc-min-both-axes',
   'cyclic-percent-two-axis-multitrack', 'cyclic-percent-columns-multitrack',
   'cyclic-percent-rows-multitrack', 'definite-percent-two-axis-multitrack',
   'cyclic-calc-column', 'cyclic-calc-row', 'cyclic-calc-two-axis',
@@ -2309,7 +2313,87 @@ scenes.push(
     ],
   },
 );
-assert.equal(scenes.length, 231, 'C11.4 fixture scene count differs.');
+const minimumTextInput = [{
+  grid: 1, node: 2, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+  minContent: 20, minContentHeight: 20, maxContent: 50, maxContentHeight: 10,
+}];
+const minimumPixelSamples = (id, points) => points.map(([suffix, node, x, y, rgba]) => ({
+  id: `${id}-${suffix}`,
+  nodeId: `c114-${id}-${node}`,
+  xCssPx: x,
+  yCssPx: y,
+  rgba,
+}));
+const minmaxCalcMinimumScene = ({ id, root, item, columns, rows, points }) => ({
+  id,
+  boxCount: 2,
+  rootFrame: `width=${root[0]},height=${root[1]}`,
+  itemFrame: `width=${item[2]},height=${item[3]}`,
+  nodeFrames: `node_frames_css_px=[0:node=1,x=0,y=0,width=${root[0]},height=${root[1]};`
+    + `1:node=2,x=2,y=2,width=${item[2]},height=${item[3]}]`,
+  axes: {
+    Columns: { tracks: [columns], collapsed: [false] },
+    Rows: { tracks: [rows], collapsed: [false] },
+  },
+  gaps: { Columns: 0, Rows: 0 },
+  intrinsicInputs: minimumTextInput,
+  pixelSamples: minimumPixelSamples(id, points),
+});
+scenes.push(
+  minmaxCalcMinimumScene({
+    id: 'cyclic-minmax-calc-min-both-axes', root: [54, 14], item: [2, 2, 104, 22],
+    columns: 104, rows: 22,
+    points: [
+      ['left-border', 'grid', 1, 5, [240, 198, 116, 255]],
+      ['item-inside', 'item', 5, 5, [229, 72, 77, 255]],
+      ['right-border-overpaint', 'item', 53, 5, [229, 72, 77, 255]],
+      ['outside-root', 'item', 60, 5, [229, 72, 77, 255]],
+      ['past-item-right', 'grid', 106, 5, [0, 0, 0, 255]],
+      ['bottom-border-overpaint', 'item', 5, 13, [229, 72, 77, 255]],
+      ['outside-root-bottom', 'item', 5, 16, [229, 72, 77, 255]],
+      ['past-item-bottom', 'grid', 5, 25, [0, 0, 0, 255]],
+    ],
+  }),
+  minmaxCalcMinimumScene({
+    id: 'cyclic-minmax-calc-min-column-definite-row', root: [54, 14],
+    item: [2, 2, 104, 10], columns: 104, rows: 10,
+    points: [
+      ['left-border', 'grid', 1, 5, [240, 198, 116, 255]],
+      ['item-inside', 'item', 5, 5, [229, 72, 77, 255]],
+      ['right-border-overpaint', 'item', 53, 5, [229, 72, 77, 255]],
+      ['outside-root', 'item', 60, 5, [229, 72, 77, 255]],
+      ['last-item-column', 'item', 105, 5, [229, 72, 77, 255]],
+      ['past-item-right', 'grid', 106, 5, [0, 0, 0, 255]],
+    ],
+  }),
+  minmaxCalcMinimumScene({
+    id: 'definite-column-cyclic-minmax-calc-min-row', root: [14, 24],
+    item: [2, 2, 10, 42], columns: 10, rows: 42,
+    points: [
+      ['left-border', 'grid', 1, 5, [240, 198, 116, 255]],
+      ['item-inside', 'item', 5, 5, [229, 72, 77, 255]],
+      ['bottom-border-overpaint', 'item', 5, 23, [229, 72, 77, 255]],
+      ['outside-root-bottom', 'item', 5, 25, [229, 72, 77, 255]],
+      ['last-item-row', 'item', 5, 43, [229, 72, 77, 255]],
+      ['past-item-bottom', 'grid', 5, 45, [0, 0, 0, 255]],
+    ],
+  }),
+  minmaxCalcMinimumScene({
+    id: 'definite-minmax-calc-min-both-axes', root: [14, 14],
+    item: [2, 2, 24, 22], columns: 24, rows: 22,
+    points: [
+      ['left-border', 'grid', 1, 5, [240, 198, 116, 255]],
+      ['item-inside', 'item', 5, 5, [229, 72, 77, 255]],
+      ['right-border-overpaint', 'item', 13, 5, [229, 72, 77, 255]],
+      ['outside-root', 'item', 16, 5, [229, 72, 77, 255]],
+      ['past-item-right', 'grid', 27, 5, [0, 0, 0, 255]],
+      ['bottom-border-overpaint', 'item', 5, 13, [229, 72, 77, 255]],
+      ['outside-root-bottom', 'item', 5, 16, [229, 72, 77, 255]],
+      ['past-item-bottom', 'grid', 5, 25, [0, 0, 0, 255]],
+    ],
+  }),
+);
+assert.equal(scenes.length, 235, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
