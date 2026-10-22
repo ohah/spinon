@@ -1,0 +1,298 @@
+{
+  "cases": [
+    {
+      "columns": [
+        5,
+        8,
+        8
+      ],
+      "id": "intrinsic-forward",
+      "items": [
+        {
+          "frame": {
+            "height": 8,
+            "width": 12,
+            "x": 2,
+            "y": 2
+          },
+          "id": "intrinsic-forward-A",
+          "placement": {
+            "columns": "1 / 3",
+            "rows": "1 / 3"
+          },
+          "source": {
+            "complete": true,
+            "naturalHeight": 16,
+            "naturalWidth": 24
+          }
+        },
+        {
+          "frame": {
+            "height": 12,
+            "width": 18,
+            "x": 9,
+            "y": 2
+          },
+          "id": "intrinsic-forward-B",
+          "placement": {
+            "columns": "2 / 4",
+            "rows": "1 / 3"
+          },
+          "source": {
+            "complete": true,
+            "naturalHeight": 16,
+            "naturalWidth": 24
+          }
+        },
+        {
+          "frame": {
+            "height": 16,
+            "width": 24,
+            "x": 2,
+            "y": 2
+          },
+          "id": "intrinsic-forward-C",
+          "placement": {
+            "columns": "1 / 4",
+            "rows": "1 / 3"
+          },
+          "source": {
+            "complete": true,
+            "naturalHeight": 16,
+            "naturalWidth": 24
+          }
+        }
+      ],
+      "rootBorderBox": {
+        "height": 20,
+        "width": 29
+      },
+      "rows": [
+        7,
+        7
+      ]
+    },
+    {
+      "columns": [
+        5,
+        8,
+        8
+      ],
+      "id": "intrinsic-reverse",
+      "items": [
+        {
+          "frame": {
+            "height": 16,
+            "width": 24,
+            "x": 2,
+            "y": 2
+          },
+          "id": "intrinsic-reverse-C",
+          "placement": {
+            "columns": "1 / 4",
+            "rows": "1 / 3"
+          },
+          "source": {
+            "complete": true,
+            "naturalHeight": 16,
+            "naturalWidth": 24
+          }
+        },
+        {
+          "frame": {
+            "height": 12,
+            "width": 18,
+            "x": 9,
+            "y": 2
+          },
+          "id": "intrinsic-reverse-B",
+          "placement": {
+            "columns": "2 / 4",
+            "rows": "1 / 3"
+          },
+          "source": {
+            "complete": true,
+            "naturalHeight": 16,
+            "naturalWidth": 24
+          }
+        },
+        {
+          "frame": {
+            "height": 8,
+            "width": 12,
+            "x": 2,
+            "y": 2
+          },
+          "id": "intrinsic-reverse-A",
+          "placement": {
+            "columns": "1 / 3",
+            "rows": "1 / 3"
+          },
+          "source": {
+            "complete": true,
+            "naturalHeight": 16,
+            "naturalWidth": 24
+          }
+        }
+      ],
+      "rootBorderBox": {
+        "height": 20,
+        "width": 29
+      },
+      "rows": [
+        7,
+        7
+      ]
+    },
+    {
+      "columns": [
+        10,
+        10,
+        10
+      ],
+      "id": "definite-forward",
+      "items": [
+        {
+          "frame": {
+            "height": 8,
+            "width": 12,
+            "x": 2,
+            "y": 2
+          },
+          "id": "definite-forward-A",
+          "placement": {
+            "columns": "1 / 3",
+            "rows": "1 / 3"
+          },
+          "source": {
+            "complete": true,
+            "naturalHeight": 16,
+            "naturalWidth": 24
+          }
+        },
+        {
+          "frame": {
+            "height": 12,
+            "width": 18,
+            "x": 14,
+            "y": 2
+          },
+          "id": "definite-forward-B",
+          "placement": {
+            "columns": "2 / 4",
+            "rows": "1 / 3"
+          },
+          "source": {
+            "complete": true,
+            "naturalHeight": 16,
+            "naturalWidth": 24
+          }
+        },
+        {
+          "frame": {
+            "height": 16,
+            "width": 24,
+            "x": 2,
+            "y": 2
+          },
+          "id": "definite-forward-C",
+          "placement": {
+            "columns": "1 / 4",
+            "rows": "1 / 3"
+          },
+          "source": {
+            "complete": true,
+            "naturalHeight": 16,
+            "naturalWidth": 24
+          }
+        }
+      ],
+      "rootBorderBox": {
+        "height": 84,
+        "width": 84
+      },
+      "rows": [
+        10,
+        10
+      ]
+    },
+    {
+      "columns": [
+        10,
+        10,
+        10
+      ],
+      "id": "definite-reverse",
+      "items": [
+        {
+          "frame": {
+            "height": 16,
+            "width": 24,
+            "x": 2,
+            "y": 2
+          },
+          "id": "definite-reverse-C",
+          "placement": {
+            "columns": "1 / 4",
+            "rows": "1 / 3"
+          },
+          "source": {
+            "complete": true,
+            "naturalHeight": 16,
+            "naturalWidth": 24
+          }
+        },
+        {
+          "frame": {
+            "height": 12,
+            "width": 18,
+            "x": 14,
+            "y": 2
+          },
+          "id": "definite-reverse-B",
+          "placement": {
+            "columns": "2 / 4",
+            "rows": "1 / 3"
+          },
+          "source": {
+            "complete": true,
+            "naturalHeight": 16,
+            "naturalWidth": 24
+          }
+        },
+        {
+          "frame": {
+            "height": 8,
+            "width": 12,
+            "x": 2,
+            "y": 2
+          },
+          "id": "definite-reverse-A",
+          "placement": {
+            "columns": "1 / 3",
+            "rows": "1 / 3"
+          },
+          "source": {
+            "complete": true,
+            "naturalHeight": 16,
+            "naturalWidth": 24
+          }
+        }
+      ],
+      "rootBorderBox": {
+        "height": 84,
+        "width": 84
+      },
+      "rows": [
+        10,
+        10
+      ]
+    }
+  ],
+  "devicePixelRatio": 1,
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "height": 633,
+    "width": 1280
+  }
+}
