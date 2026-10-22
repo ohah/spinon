@@ -1,0 +1,24 @@
+{
+  "pullRequest": "https://github.com/ohah/spinon/pull/534",
+  "browser": "Agent Browser",
+  "imageRef": "https://raw.githubusercontent.com/ohah/spinon/refs/pull/534/head/",
+  "images": [
+    {
+      "platform": "Android API 37 ARM64 AVD",
+      "scene": "auto-repeat-named-implicit-positive-missing",
+      "alt": "Android AVD: missing named line item이 grid root 밖에 배치됨",
+      "complete": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    },
+    {
+      "platform": "iPhone 17 Pro / iOS 26.2 Simulator",
+      "scene": "auto-repeat-named-implicit-positive-missing",
+      "alt": "iOS Simulator: missing named line item이 grid root 밖에 배치됨",
+      "complete": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622
+    }
+  ],
+  "result": "두 simulator 이미지가 GitHub PR 본문에서 표시됨"
+}

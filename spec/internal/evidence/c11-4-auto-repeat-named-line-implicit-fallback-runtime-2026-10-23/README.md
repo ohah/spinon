@@ -33,6 +33,8 @@ Positive missing-name scene에서는 `grid-column-start/end: 5/6 ghost`의 파�
 
 나머지 9 scene screenshot 파일은 위 실행 디렉터리에 있고, 표의 Android/iOS filename이 각각의 캡처를 식별한다.
 
+PR [#534](https://github.com/ohah/spinon/pull/534) 본문은 Android와 iOS PNG를 `refs/pull/534/head` 고정 경로로 표시한다. Agent Browser에서 두 `<img>` 모두 `complete=true`로 로드되고 자연 크기가 각각 `1080×2400`, `1206×2622`임을 확인했다. 관측은 `pr-screenshot-agent-browser-verification.json`에 기록했다.
+
 ## 실행 환경과 결과
 
 ### Android
