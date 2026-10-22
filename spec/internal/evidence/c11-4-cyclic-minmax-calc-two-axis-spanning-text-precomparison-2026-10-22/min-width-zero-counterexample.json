@@ -1,0 +1,113 @@
+{
+  "note": "Rejected exploratory fixture variant; .item used min-width:0 and min-height:0. This is not an accepted expectation or runtime result.",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "width": 1280,
+    "height": 633,
+    "dpr": 1
+  },
+  "font": {
+    "status": "loaded",
+    "loaded": true
+  },
+  "scenes": [
+    {
+      "id": "min-content-width",
+      "root": {
+        "x": 12,
+        "y": 32,
+        "width": 6,
+        "height": 64
+      },
+      "content": {
+        "width": "2px",
+        "height": "60px"
+      },
+      "columns": "2.1875px 2.1875px",
+      "rows": "29px 29px",
+      "item": {
+        "frameRootRelative": [2, 2, 6.375, 60],
+        "text": "aaaaaa",
+        "lineBoxes": [
+          [2, 2, 10, 10],
+          [2, 12, 10, 10],
+          [2, 22, 10, 10],
+          [2, 32, 10, 10],
+          [2, 42, 10, 10],
+          [2, 52, 10, 10]
+        ],
+        "scrollSize": [10, 60]
+      }
+    },
+    {
+      "id": "max-content-width",
+      "root": {
+        "x": 276,
+        "y": 32,
+        "width": 64,
+        "height": 14
+      },
+      "content": {
+        "width": "60px",
+        "height": "10px"
+      },
+      "columns": "29px 29px",
+      "rows": "4px 4px",
+      "item": {
+        "frameRootRelative": [2, 2, 60, 10],
+        "text": "aaaaaa",
+        "lineBoxes": [[2, 2, 60, 10]],
+        "scrollSize": [60, 10]
+      }
+    },
+    {
+      "id": "definite-10px-width",
+      "root": {
+        "x": 12,
+        "y": 134,
+        "width": 14,
+        "height": 64
+      },
+      "content": {
+        "width": "10px",
+        "height": "60px"
+      },
+      "columns": "4px 4px",
+      "rows": "29px 29px",
+      "item": {
+        "frameRootRelative": [2, 2, 10, 60],
+        "text": "aaaaaa",
+        "lineBoxes": [
+          [2, 2, 10, 10],
+          [2, 12, 10, 10],
+          [2, 22, 10, 10],
+          [2, 32, 10, 10],
+          [2, 42, 10, 10],
+          [2, 52, 10, 10]
+        ],
+        "scrollSize": [10, 60]
+      }
+    },
+    {
+      "id": "definite-60px-width",
+      "root": {
+        "x": 276,
+        "y": 134,
+        "width": 64,
+        "height": 14
+      },
+      "content": {
+        "width": "60px",
+        "height": "10px"
+      },
+      "columns": "29px 29px",
+      "rows": "4px 4px",
+      "item": {
+        "frameRootRelative": [2, 2, 60, 10],
+        "text": "aaaaaa",
+        "lineBoxes": [[2, 2, 60, 10]],
+        "scrollSize": [60, 10]
+      }
+    }
+  ]
+}

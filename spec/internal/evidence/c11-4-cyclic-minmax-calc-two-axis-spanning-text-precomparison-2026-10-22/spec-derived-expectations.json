@@ -1,0 +1,93 @@
+{
+  "basis": {
+    "source": "CSS Grid Layout Module Level 1, 2025-03-26 CRD, sections 7.2.1, 11.1, 11.5.1",
+    "font": {
+      "family": "Ahem",
+      "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+      "glyphAdvanceCssPx": 10,
+      "lineHeightCssPx": 10
+    },
+    "text": "aaaaaa",
+    "textSizing": {
+      "minContentInlineCssPx": 10,
+      "maxContentInlineCssPx": 60,
+      "lineCountAt10px": 6,
+      "lineCountAt60px": 1
+    },
+    "trackListPerAxis": [
+      "minmax(calc(10% + 2px), max-content)",
+      "minmax(calc(10% + 2px), max-content)"
+    ],
+    "gapCssPx": 2,
+    "spanningTracksPerAxis": 2,
+    "trackContributionDistribution": "subtract the one 2px spanned gap, then distribute the remaining contribution equally across both tracks",
+    "cyclicPercentageMinimum": "10% of resulting content-box size + 2px; treated as auto during intrinsic grid-container sizing",
+    "rootBorderCssPxPerSide": 2
+  },
+  "scenes": [
+    {
+      "id": "min-content-width",
+      "rootWidth": "min-content",
+      "rootHeight": "max-content",
+      "contentSizeCssPx": [10, 60],
+      "borderBoxSizeCssPx": [14, 64],
+      "columnsCssPx": [4, 4],
+      "rowsCssPx": [29, 29],
+      "resolvedTrackMinimumsCssPx": {
+        "columns": [3, 3],
+        "rows": [8, 8]
+      },
+      "itemFrameRootRelativeCssPx": [2, 2, 10, 60],
+      "textLineCount": 6,
+      "lineBoxSizeCssPx": [10, 10]
+    },
+    {
+      "id": "max-content-width",
+      "rootWidth": "max-content",
+      "rootHeight": "max-content",
+      "contentSizeCssPx": [60, 10],
+      "borderBoxSizeCssPx": [64, 14],
+      "columnsCssPx": [29, 29],
+      "rowsCssPx": [4, 4],
+      "resolvedTrackMinimumsCssPx": {
+        "columns": [8, 8],
+        "rows": [3, 3]
+      },
+      "itemFrameRootRelativeCssPx": [2, 2, 60, 10],
+      "textLineCount": 1,
+      "lineBoxSizeCssPx": [60, 10]
+    },
+    {
+      "id": "definite-10px-width",
+      "rootWidth": "10px",
+      "rootHeight": "max-content",
+      "contentSizeCssPx": [10, 60],
+      "borderBoxSizeCssPx": [14, 64],
+      "columnsCssPx": [4, 4],
+      "rowsCssPx": [29, 29],
+      "resolvedTrackMinimumsCssPx": {
+        "columns": [3, 3],
+        "rows": [8, 8]
+      },
+      "itemFrameRootRelativeCssPx": [2, 2, 10, 60],
+      "textLineCount": 6,
+      "lineBoxSizeCssPx": [10, 10]
+    },
+    {
+      "id": "definite-60px-width",
+      "rootWidth": "60px",
+      "rootHeight": "max-content",
+      "contentSizeCssPx": [60, 10],
+      "borderBoxSizeCssPx": [64, 14],
+      "columnsCssPx": [29, 29],
+      "rowsCssPx": [4, 4],
+      "resolvedTrackMinimumsCssPx": {
+        "columns": [8, 8],
+        "rows": [3, 3]
+      },
+      "itemFrameRootRelativeCssPx": [2, 2, 60, 10],
+      "textLineCount": 1,
+      "lineBoxSizeCssPx": [60, 10]
+    }
+  ]
+}
