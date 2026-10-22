@@ -9,6 +9,10 @@ Chrome 156 Agent Browser에서 [고정 HTML fixture](../../../../tests/fixtures/
 - Ahem SHA-256: `b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448`
 - Screenshot SHA-256: `dc4ffb0e41e4eab344fbf7982d6ffac7446eb03a8e75ae0e4defd984e73ee588`
 
+## PR 화면과 Agent Browser 종료
+
+계획 PR [#525](https://github.com/ohah/spinon/pull/525)의 본문을 Agent Browser로 열어 이미지 DOM이 `complete=true`, natural size 1280×633으로 로드된 것을 확인했다. 본문에서 보인 실제 PR 화면은 [pr525-agent-browser-verification.png](./pr525-agent-browser-verification.png)이고 SHA-256은 `fa5065ec3a260279e8ceaca8c6185471ce57c548cb3e59fe4a791cd6837c13f9`다. 검증에 쓴 browser와 Agent Browser daemon을 닫은 뒤 [session 상태](./pr525-agent-browser-session-after-close.json)는 `active=false`, `pid:null`이며 활성 session은 없다.
+
 ## 독립 기대값
 
 CSS Grid Layout 2025 CRD §7.2.1에 따라 intrinsic sizing 중 cyclic percentage는 auto처럼 취급하고 계산된 inner size로 나중에 resolve한다. §11.3–§11.5.1의 span 길이 순서와 같은 span group 안의 per-track 최대 planned increase를 적용한다. Column 계산은 기존 text max-content 선행 fixture에서 독립 산출한 값을 따른다. span-2 min-content bases는 `[9,19,19]`; 110px content width와 최종 Columns `[107/3,125/3,86/3]`은 [spec-derived-expectations.json](./spec-derived-expectations.json)에 적었다.

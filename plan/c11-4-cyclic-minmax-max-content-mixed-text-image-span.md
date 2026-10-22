@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [cyclic max-content text span 그룹](./c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md) · [cyclic min-content mixed text/image](./c11-4-cyclic-minmax-mixed-text-image-span.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 네 고정 장면 입력, CSS Grid 2025 CRD에서 도출한 유리수 기대값, Chrome 156 Agent Browser 관측, 서로 다른 계획 실패 관점 20개를 기록했다. runtime 구현은 시작하지 않았다. 계획 PR은 아직 병합되지 않았다. C11.4 checkbox와 공식 완료 수 `77/213`은 유지한다.
+**상태:** 네 고정 장면 입력, CSS Grid 2025 CRD에서 도출한 유리수 기대값, Chrome 156 Agent Browser 관측, 서로 다른 계획 실패 관점 20개를 기록했다. 계획 PR [#525](https://github.com/ohah/spinon/pull/525)는 열려 있고 runtime 구현은 시작하지 않았다. C11.4 checkbox와 공식 완료 수 `77/213`은 유지한다.
 
 ## 목적
 

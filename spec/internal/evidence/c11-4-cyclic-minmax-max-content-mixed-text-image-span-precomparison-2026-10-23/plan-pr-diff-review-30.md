@@ -29,11 +29,11 @@
 | 23 | text line width가 사용 가능한 grid area와 맞는가 | max-content에서 한 줄, definite 40px에서는 A 3줄/C 4줄을 고정했다. |
 | 24 | frame을 DOM index로 비교해 reverse order가 깨지는가 | A/B/C identity 기준으로 frame을 비교한다. |
 | 25 | fractional CSSOM 값이 유리수 기대값과의 exact 불일치로 실패하는가 | 각 사용값에 1/64 CSS px tolerance를 적용한다. |
-| 26 | screenshot이 앱 실행 결과처럼 표기되는가 | Chrome Agent Browser 사전 비교라고 명시했다. |
+| 26 | screenshot이 앱 실행 결과처럼 표기되거나 PR에서 이미지가 렌더링되지 않는가 | Chrome Agent Browser 사전 비교라고 명시했고, PR #525에서 이미지가 1280×633으로 로드되는 것을 확인해 화면 근거를 저장했다. |
 | 27 | screenshot이 Android/iOS runtime 성공을 주장하는가 | 주장하지 않는다. 두 simulator는 후속 관문이다. |
 | 28 | border 한 점을 전체 border-stroke 적합성으로 부풀리는가 | 선택 지점 검증과 전체 stroke 한계를 구분했다. |
-| 29 | 브라우저 정리가 unrelated Chrome/tmux를 종료하는가 | 아니다. 지정한 격리 session만 닫았고 상태 파일은 `inactive`, `pid:null`이다. |
-| 30 | 최종 diff에 공유 checkout의 미관련 미추적 근거가 들어가는가 | 아니다. 이 계획·로드맵, 관련 stale-state 수정과 후보 사전 비교 자료만 포함했다. |
+| 29 | 브라우저 정리가 unrelated Chrome/tmux를 종료하는가 | 아니다. 지정한 Agent Browser session과 daemon만 닫았고 상태 파일은 `active=false`, `pid:null`이며 활성 session은 없다. |
+| 30 | 최종 diff에 공유 checkout의 미관련 미추적 근거가 들어가는가 | 아니다. 이 계획·로드맵, 관련 stale-state 수정, 후보 사전 비교와 PR 화면 확인 근거만 포함했다. |
 
 ## 결론
 
