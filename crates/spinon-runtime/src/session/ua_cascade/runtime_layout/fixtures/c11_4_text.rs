@@ -23,6 +23,8 @@ mod cases;
 mod cyclic_calc;
 #[path = "c11_4_text/cyclic_fit_content_calc.rs"]
 mod cyclic_fit_content_calc;
+#[path = "c11_4_text/cyclic_minmax_calc_cross_axis_mixed_span_groups.rs"]
+mod cyclic_minmax_calc_cross_axis_mixed_span_groups;
 #[path = "c11_4_text/cyclic_minmax_calc_cross_axis_span_groups.rs"]
 mod cyclic_minmax_calc_cross_axis_span_groups;
 #[path = "c11_4_text/cyclic_minmax_two_axis_span_text.rs"]
@@ -101,6 +103,11 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         return Ok(Some(input));
     }
     if let Some(input) = cyclic_minmax_two_axis_span_text::prepare(snapshot, root, styles)? {
+        return Ok(Some(input));
+    }
+    if let Some(input) =
+        cyclic_minmax_calc_cross_axis_mixed_span_groups::prepare(snapshot, root, styles)?
+    {
         return Ok(Some(input));
     }
     if let Some(input) = cyclic_minmax_calc_cross_axis_span_groups::prepare(snapshot, root, styles)?

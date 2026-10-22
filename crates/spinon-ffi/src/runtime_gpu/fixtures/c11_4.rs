@@ -18,6 +18,8 @@ mod cyclic_calc_tracks;
 mod cyclic_fit_content_calc;
 #[path = "c11_4/cyclic_minmax_calc.rs"]
 mod cyclic_minmax_calc;
+#[path = "c11_4/cyclic_minmax_calc_cross_axis_mixed_span_groups.rs"]
+mod cyclic_minmax_calc_cross_axis_mixed_span_groups;
 #[path = "c11_4/cyclic_minmax_calc_cross_axis_span_groups.rs"]
 mod cyclic_minmax_calc_cross_axis_span_groups;
 #[path = "c11_4/cyclic_minmax_calc_minimum.rs"]
@@ -1091,6 +1093,10 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = cyclic_minmax_calc_cross_axis_span_groups::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
+    if let Some(source) = cyclic_minmax_calc_cross_axis_mixed_span_groups::runtime_source(scene_id)
+    {
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = cyclic_minmax_calc_minimum::runtime_source(scene_id) {
