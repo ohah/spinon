@@ -1,0 +1,10 @@
+{
+  "c114Checked": false,
+  "c114Found": true,
+  "c114Label": "C11.4 intrinsic track sizing",
+  "containsCount": true,
+  "progressNote": "2026-10-22 C11.4 cyclic percentage를 포함한 minmax(0px, calc(50% + length)) fixed runtime slice: cyclic column·row, definite column control과 10px root 경계의 네 고정 scene을 기존 opt-in fixture 경로에서 확인했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 4/4 scene을 통과했고 PixelCopy 및 Metal drawable 표본은 9/9 exact다(iOS 표본은 compositor 제출 전). 기본 release static archive의 문자열 검사에는 신규 fixture marker가 없고 fixture-test positive control에는 포함된다. 이 검사는 APK/IPA 전체의 fixture 제외 판정이 아니다. small-limit 화면은 9px item·10px root 바깥 Ahem text paint를 보여 준다. fixture에 CSS border stroke가 없어 테두리 픽셀은 검증하지 않았다. 계획 · 실행·화면·artifact 근거 · 구현/runtime 검토 20개 · PR diff 검토 30개 · 문서 반영 PR diff 검토 30개. 구현 PR #487은 2026-10-22 00:50:38 UTC Rebase and merge됐고 merge SHA는 2a04286dba1da4bef45fb6b1a1ee9a1cace54e56다. 병합 당시 PR check rollup은 비어 있었고 main required status check는 설정되어 있지 않았다. 일반 CSS admission, WPT, Android 실기기, hardware GPU, iOS compositor 이후 pixels, CSS border stroke와 전체 C11.4는 미검증이다. C11.4 checkbox와 공식 완료 수 72/213은 그대로 유지한다.",
+  "progressNoteFound": true,
+  "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html#c11-css-grid"
+}

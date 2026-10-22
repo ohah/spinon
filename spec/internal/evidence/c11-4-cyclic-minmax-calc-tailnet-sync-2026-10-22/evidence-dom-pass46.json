@@ -1,0 +1,12 @@
+{
+  "containsApi37": true,
+  "containsBorderLimit": true,
+  "containsC114": true,
+  "containsFourScenes": true,
+  "containsIOSSimulator": true,
+  "mainExcerpt": "#\nC11.4 cyclic percentage minmax calc 런타임 근거\n\n상태: 고정된 opt-in fixture 네 장면을 Android AVD와 iOS Simulator에서 확인했다. 이 결과는 C11.4 전체 지원 완료나 일반 CSS admission을 뜻하지 않는다.\n\n#\n최종 실행\n대상\t환경\tscene\t화면 표본\nAndroid\tAPI 37 ARM64 AVD, emulator-5558, sdk_gphone64_arm64\t4/4\tPixelCopy 9/9 exact\niOS\tiPhone 17 Pro, iOS 26.2 Simulator, ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D\t4/4\t제출 전 Metal drawable 9/9 exact\n\n두 실행은 같은 tracked source diff SHA-256 c1961f49c9df02d3c444c1969e73b14424f2227f851b4da9b40abdd9138ad795를 기록했다. 각 실행의 simulator.json에는 소스 revision, 앱 hash, 기기 정보와 dirty path가 있다.\n\nscene\tColumns\tRows\troot\titem\ncyclic-minmax-calc-column\t[29]\t[20]\t50×20\t29×20\ncyclic-minmax-calc-row\t[20]\t[22]\t20×40\t20×22\ndefinite-minmax-calc-column\t[24]\t[20]\t40×20\t24×20\ndefinite-minmax-calc-small-limit\t[9]\t[20]\t10×20\t9×20\n\n모든 scene에서 root와 item의 CSS px frame, 한 track씩의 Columns/Rows trace, 두 box, draw/present를 확인했다. 최종 Android APK SHA-256과 설치된 APK SHA-256은 모두 ab1b488d8697bd12bdaeb18b07b0c5d9454857a1cf51a7ac914a0c1391856c88이다. 최종 iOS 앱 실행 파일 SHA-256은 d4d759808b133290817bdfcf55e60fdfe62c5ae98617abb5ab99895b3f4cca63이다.\n\n#\n화면 바깥 표본\n\nsmall-limit 장면의 item은 9px, root는 10px이다. root 기준 (5,5)의 item 안과 (15,5)의 root 바깥 표본은 Ahem text 색 #e5484d였고, (25,5)는 텍스트 뒤 배경색이었다. Android PixelCopy와 iOS Metal drawable에서 각각 세 표본이 모두 exact였다. 이는 텍스트 paint overflow만 확인한다. CSS border stroke의 색·두께는 이 fixture에 없으며 검사하지 않았다.\n\n최종 small-limit screenshot:\n\nAndroid AVD: android-avd-c114-cyclic-minmax-calc-android-avd-20261022T003653863Z-c6952f2b/definite-minmax-calc-small-limit.png\niOS Simulator: ios-simulator-c114-cyclic-minmax-calc-ios-simulator-20261022T003845541Z-fdde4073/definite-minmax-calc-small-limit.png\n#\n빌드와 자동 검사\nAndroid fixture APK는 android-apk-build-pass3.log의 Gradle :app:assembleDebug 성공 뒤 설치했다. installed-apk-verification.json은 APK hash 일치를 기록",
+  "mainSelector": "MAIN.rp-doc-layout__doc-container",
+  "screenshotNames": [],
+  "title": "C11.4 cyclic percentage minmax calc 런타임 근거 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-minmax-calc-runtime-2026-10-22/README.html"
+}
