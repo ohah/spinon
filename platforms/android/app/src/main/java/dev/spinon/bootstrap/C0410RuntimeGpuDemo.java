@@ -319,6 +319,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "auto-repeat-named-implicit-span-backward-insufficient",
             "auto-repeat-named-implicit-row-positive-missing",
             "auto-repeat-named-implicit-row-negative-missing",
+            "auto-fit-named-implicit-positive-missing",
+            "auto-fit-named-implicit-positive-insufficient",
+            "auto-fit-named-implicit-negative-missing",
+            "auto-fit-named-implicit-negative-insufficient",
+            "auto-fit-named-implicit-span-forward-missing",
+            "auto-fit-named-implicit-span-backward-missing",
+            "auto-fit-named-implicit-occupied-repeat",
+            "auto-fit-named-implicit-span-occupied-repeat",
+            "auto-fit-named-implicit-row-positive-missing",
+            "auto-fit-named-implicit-row-negative-missing",
             "anonymous-text-two-images-forward", "two-images-anonymous-text-reversed",
             "anonymous-text-three-images-forward", "three-images-anonymous-text-reversed",
             "anonymous-runs-two-images-forward", "two-images-anonymous-runs-reversed",
@@ -368,6 +378,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "auto-repeat-named-implicit-span-backward-insufficient",
             "auto-repeat-named-implicit-row-positive-missing",
             "auto-repeat-named-implicit-row-negative-missing",
+            "auto-fit-named-implicit-positive-missing",
+            "auto-fit-named-implicit-positive-insufficient",
+            "auto-fit-named-implicit-negative-missing",
+            "auto-fit-named-implicit-negative-insufficient",
+            "auto-fit-named-implicit-span-forward-missing",
+            "auto-fit-named-implicit-span-backward-missing",
+            "auto-fit-named-implicit-occupied-repeat",
+            "auto-fit-named-implicit-span-occupied-repeat",
+            "auto-fit-named-implicit-row-positive-missing",
+            "auto-fit-named-implicit-row-negative-missing",
     };
     private static final String[][] C114_NEGATIVE_TRACK_EXPECTATIONS = {
             {"columns-one-negative", "189", "22", "47", "20", "4"},
@@ -2676,6 +2696,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "auto-repeat-named-implicit-row-positive-missing":
             case "auto-repeat-named-implicit-row-negative-missing":
                 return "width=20,height=125";
+            case "auto-fit-named-implicit-positive-missing":
+            case "auto-fit-named-implicit-positive-insufficient":
+            case "auto-fit-named-implicit-negative-missing":
+            case "auto-fit-named-implicit-negative-insufficient":
+            case "auto-fit-named-implicit-span-forward-missing":
+            case "auto-fit-named-implicit-span-backward-missing":
+            case "auto-fit-named-implicit-occupied-repeat":
+            case "auto-fit-named-implicit-span-occupied-repeat":
+                return "width=125,height=20";
+            case "auto-fit-named-implicit-row-positive-missing":
+            case "auto-fit-named-implicit-row-negative-missing":
+                return "width=20,height=125";
             default:
                 return null;
         }
@@ -2703,7 +2735,19 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "auto-repeat-named-implicit-span-backward-missing":
             case "auto-repeat-named-implicit-row-positive-missing":
             case "auto-repeat-named-implicit-row-negative-missing":
+            case "auto-fit-named-implicit-positive-missing":
+            case "auto-fit-named-implicit-positive-insufficient":
+            case "auto-fit-named-implicit-negative-missing":
+            case "auto-fit-named-implicit-negative-insufficient":
+            case "auto-fit-named-implicit-span-forward-missing":
+            case "auto-fit-named-implicit-span-backward-missing":
+            case "auto-fit-named-implicit-row-positive-missing":
+            case "auto-fit-named-implicit-row-negative-missing":
                 return "width=20,height=10";
+            case "auto-fit-named-implicit-occupied-repeat":
+                return "width=40,height=10";
+            case "auto-fit-named-implicit-span-occupied-repeat":
+                return "width=80,height=10";
             case "auto-repeat-named-implicit-span-forward-insufficient":
             case "auto-repeat-named-implicit-span-backward-insufficient":
                 return "width=60,height=10";
@@ -2760,6 +2804,30 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=125;"
                         + "1:node=2,x=0,y=220,width=20,height=10]";
             case "auto-repeat-named-implicit-row-negative-missing":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=125;"
+                        + "1:node=2,x=0,y=0,width=20,height=10]";
+            case "auto-fit-named-implicit-positive-missing":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=125,height=20;"
+                        + "1:node=2,x=100,y=0,width=20,height=10]";
+            case "auto-fit-named-implicit-positive-insufficient":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=125,height=20;"
+                        + "1:node=2,x=20,y=0,width=20,height=10]";
+            case "auto-fit-named-implicit-negative-missing":
+            case "auto-fit-named-implicit-negative-insufficient":
+            case "auto-fit-named-implicit-span-forward-missing":
+            case "auto-fit-named-implicit-span-backward-missing":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=125,height=20;"
+                        + "1:node=2,x=0,y=0,width=20,height=10]";
+            case "auto-fit-named-implicit-occupied-repeat":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=125,height=20;"
+                        + "1:node=2,x=0,y=0,width=40,height=10]";
+            case "auto-fit-named-implicit-span-occupied-repeat":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=125,height=20;"
+                        + "1:node=2,x=0,y=0,width=80,height=10]";
+            case "auto-fit-named-implicit-row-positive-missing":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=125;"
+                        + "1:node=2,x=0,y=100,width=20,height=10]";
+            case "auto-fit-named-implicit-row-negative-missing":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=125;"
                         + "1:node=2,x=0,y=0,width=20,height=10]";
             default:
@@ -3943,7 +4011,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
-        if (sceneId.startsWith("auto-repeat-named-")) {
+        if (sceneId.startsWith("auto-repeat-named-")
+                || sceneId.startsWith("auto-fit-named-implicit-")) {
             String rootId = "c114-" + sceneId + "-grid";
             String itemId = "c114-" + sceneId + "-item";
             int itemX;
@@ -3969,6 +4038,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 case "auto-repeat-named-implicit-span-forward-insufficient": itemX = 80; itemY = 0; itemWidth = 60; itemHeight = 10; break;
                 case "auto-repeat-named-implicit-span-backward-insufficient": itemX = 0; itemY = 0; itemWidth = 60; itemHeight = 10; break;
                 case "auto-repeat-named-implicit-row-positive-missing": itemX = 0; itemY = 220; itemWidth = 20; itemHeight = 10; break;
+                case "auto-fit-named-implicit-positive-missing": itemX = 100; itemY = 0; itemWidth = 20; itemHeight = 10; break;
+                case "auto-fit-named-implicit-positive-insufficient": itemX = 20; itemY = 0; itemWidth = 20; itemHeight = 10; break;
+                case "auto-fit-named-implicit-negative-missing":
+                case "auto-fit-named-implicit-negative-insufficient":
+                case "auto-fit-named-implicit-span-forward-missing":
+                case "auto-fit-named-implicit-span-backward-missing":
+                case "auto-fit-named-implicit-row-negative-missing": itemX = 0; itemY = 0; itemWidth = 20; itemHeight = 10; break;
+                case "auto-fit-named-implicit-occupied-repeat": itemX = 0; itemY = 0; itemWidth = 40; itemHeight = 10; break;
+                case "auto-fit-named-implicit-span-occupied-repeat": itemX = 0; itemY = 0; itemWidth = 80; itemHeight = 10; break;
+                case "auto-fit-named-implicit-row-positive-missing": itemX = 0; itemY = 100; itemWidth = 20; itemHeight = 10; break;
                 default: return false;
             }
             List<String> ids = new ArrayList<>();
@@ -3976,7 +4055,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             List<int[]> points = new ArrayList<>();
             boolean rowAxis = sceneId.equals("auto-repeat-named-row")
                     || sceneId.contains("-implicit-row-");
-            if (sceneId.startsWith("auto-repeat-named-implicit-")) {
+            if (sceneId.startsWith("auto-repeat-named-implicit-")
+                    || sceneId.startsWith("auto-fit-named-implicit-")) {
                 int rootWidth = rowAxis ? 20 : 125;
                 int rootHeight = rowAxis ? 125 : 20;
                 boolean itemExtendsPastRoot = rowAxis
@@ -9592,7 +9672,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c114GridExpectedRgb(String sampleId) {
-        if (sampleId.startsWith("auto-repeat-named-")) {
+        if (sampleId.startsWith("auto-repeat-named-")
+                || sampleId.startsWith("auto-fit-named-")) {
             if (sampleId.endsWith("-root-interior")) {
                 return new int[] {226, 232, 240};
             }
