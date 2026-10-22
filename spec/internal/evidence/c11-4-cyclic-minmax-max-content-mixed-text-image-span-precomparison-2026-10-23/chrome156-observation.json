@@ -1,0 +1,370 @@
+[
+  {
+    "borderBox": {
+      "height": 30.65625,
+      "width": 114
+    },
+    "columns": [
+      35.65625,
+      41.671875,
+      28.671875
+    ],
+    "items": [
+      {
+        "columns": "1 / 3",
+        "frame": {
+          "height": 26.65625,
+          "width": 79.328125,
+          "x": 2,
+          "y": 2
+        },
+        "id": "A",
+        "kind": "div",
+        "natural": null,
+        "rows": "1 / 3",
+        "textLines": [
+          {
+            "height": 10,
+            "width": 60,
+            "x": 2,
+            "y": 2
+          }
+        ]
+      },
+      {
+        "columns": "2 / 4",
+        "frame": {
+          "height": 26.65625,
+          "width": 40,
+          "x": 39.65625,
+          "y": 2
+        },
+        "id": "B",
+        "kind": "img",
+        "natural": {
+          "height": 16,
+          "width": 24
+        },
+        "rows": "1 / 3",
+        "textLines": null
+      },
+      {
+        "columns": "1 / 4",
+        "frame": {
+          "height": 26.65625,
+          "width": 110,
+          "x": 2,
+          "y": 2
+        },
+        "id": "C",
+        "kind": "div",
+        "natural": null,
+        "rows": "1 / 3",
+        "textLines": [
+          {
+            "height": 10,
+            "width": 110,
+            "x": 2,
+            "y": 2
+          }
+        ]
+      }
+    ],
+    "rows": [
+      12.328125,
+      12.328125
+    ],
+    "scene": "max-content-forward"
+  },
+  {
+    "borderBox": {
+      "height": 30.65625,
+      "width": 114
+    },
+    "columns": [
+      35.65625,
+      41.671875,
+      28.671875
+    ],
+    "items": [
+      {
+        "columns": "1 / 4",
+        "frame": {
+          "height": 26.65625,
+          "width": 110,
+          "x": 2,
+          "y": 2
+        },
+        "id": "C",
+        "kind": "div",
+        "natural": null,
+        "rows": "1 / 3",
+        "textLines": [
+          {
+            "height": 10,
+            "width": 110,
+            "x": 2,
+            "y": 2
+          }
+        ]
+      },
+      {
+        "columns": "2 / 4",
+        "frame": {
+          "height": 26.65625,
+          "width": 40,
+          "x": 39.65625,
+          "y": 2
+        },
+        "id": "B",
+        "kind": "img",
+        "natural": {
+          "height": 16,
+          "width": 24
+        },
+        "rows": "1 / 3",
+        "textLines": null
+      },
+      {
+        "columns": "1 / 3",
+        "frame": {
+          "height": 26.65625,
+          "width": 79.328125,
+          "x": 2,
+          "y": 2
+        },
+        "id": "A",
+        "kind": "div",
+        "natural": null,
+        "rows": "1 / 3",
+        "textLines": [
+          {
+            "height": 10,
+            "width": 60,
+            "x": 2,
+            "y": 2
+          }
+        ]
+      }
+    ],
+    "rows": [
+      12.328125,
+      12.328125
+    ],
+    "scene": "max-content-reverse"
+  },
+  {
+    "borderBox": {
+      "height": 44,
+      "width": 44
+    },
+    "columns": [
+      12,
+      12,
+      12
+    ],
+    "items": [
+      {
+        "columns": "1 / 3",
+        "frame": {
+          "height": 40,
+          "width": 26,
+          "x": 2,
+          "y": 2
+        },
+        "id": "A",
+        "kind": "div",
+        "natural": null,
+        "rows": "1 / 3",
+        "textLines": [
+          {
+            "height": 10,
+            "width": 20,
+            "x": 2,
+            "y": 2
+          },
+          {
+            "height": 10,
+            "width": 10,
+            "x": 2,
+            "y": 12
+          },
+          {
+            "height": 10,
+            "width": 10,
+            "x": 2,
+            "y": 22
+          }
+        ]
+      },
+      {
+        "columns": "2 / 4",
+        "frame": {
+          "height": 26.65625,
+          "width": 40,
+          "x": 16,
+          "y": 2
+        },
+        "id": "B",
+        "kind": "img",
+        "natural": {
+          "height": 16,
+          "width": 24
+        },
+        "rows": "1 / 3",
+        "textLines": null
+      },
+      {
+        "columns": "1 / 4",
+        "frame": {
+          "height": 40,
+          "width": 40,
+          "x": 2,
+          "y": 2
+        },
+        "id": "C",
+        "kind": "div",
+        "natural": null,
+        "rows": "1 / 3",
+        "textLines": [
+          {
+            "height": 10,
+            "width": 20,
+            "x": 2,
+            "y": 2
+          },
+          {
+            "height": 10,
+            "width": 20,
+            "x": 2,
+            "y": 12
+          },
+          {
+            "height": 10,
+            "width": 20,
+            "x": 2,
+            "y": 22
+          },
+          {
+            "height": 10,
+            "width": 20,
+            "x": 2,
+            "y": 32
+          }
+        ]
+      }
+    ],
+    "rows": [
+      19,
+      19
+    ],
+    "scene": "definite-forward"
+  },
+  {
+    "borderBox": {
+      "height": 44,
+      "width": 44
+    },
+    "columns": [
+      12,
+      12,
+      12
+    ],
+    "items": [
+      {
+        "columns": "1 / 4",
+        "frame": {
+          "height": 40,
+          "width": 40,
+          "x": 2,
+          "y": 2
+        },
+        "id": "C",
+        "kind": "div",
+        "natural": null,
+        "rows": "1 / 3",
+        "textLines": [
+          {
+            "height": 10,
+            "width": 20,
+            "x": 2,
+            "y": 2
+          },
+          {
+            "height": 10,
+            "width": 20,
+            "x": 2,
+            "y": 12
+          },
+          {
+            "height": 10,
+            "width": 20,
+            "x": 2,
+            "y": 22
+          },
+          {
+            "height": 10,
+            "width": 20,
+            "x": 2,
+            "y": 32
+          }
+        ]
+      },
+      {
+        "columns": "2 / 4",
+        "frame": {
+          "height": 26.65625,
+          "width": 40,
+          "x": 16,
+          "y": 2
+        },
+        "id": "B",
+        "kind": "img",
+        "natural": {
+          "height": 16,
+          "width": 24
+        },
+        "rows": "1 / 3",
+        "textLines": null
+      },
+      {
+        "columns": "1 / 3",
+        "frame": {
+          "height": 40,
+          "width": 26,
+          "x": 2,
+          "y": 2
+        },
+        "id": "A",
+        "kind": "div",
+        "natural": null,
+        "rows": "1 / 3",
+        "textLines": [
+          {
+            "height": 10,
+            "width": 20,
+            "x": 2,
+            "y": 2
+          },
+          {
+            "height": 10,
+            "width": 10,
+            "x": 2,
+            "y": 12
+          },
+          {
+            "height": 10,
+            "width": 10,
+            "x": 2,
+            "y": 22
+          }
+        ]
+      }
+    ],
+    "rows": [
+      19,
+      19
+    ],
+    "scene": "definite-reverse"
+  }
+]
