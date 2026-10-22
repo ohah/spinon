@@ -336,6 +336,69 @@ fn track_sizing_profile_projects_typed_functions_and_axis_scoped_calc_ids() {
 }
 
 #[test]
+fn track_sizing_profile_projects_calc_minimums_on_their_own_axes() {
+    let node = NodeId::new(11_110).unwrap();
+    let column_calc = spinon_style::ComputedCssMath::Sum(vec![
+        spinon_style::ComputedCssMath::LengthPx(4.0),
+        spinon_style::ComputedCssMath::Percentage(2.0),
+    ]);
+    let row_calc = spinon_style::ComputedCssMath::Sum(vec![
+        spinon_style::ComputedCssMath::LengthPx(2.0),
+        spinon_style::ComputedCssMath::Percentage(2.0),
+    ]);
+    let minmax = |expression| ComputedCssGridTrackSize::MinMax {
+        min: spinon_style::ComputedCssGridTrackBreadth::Calc(expression),
+        max: spinon_style::ComputedCssGridTrackBreadth::MaxContent,
+    };
+    let grid = ComputedCssGridLayout {
+        columns: vec![minmax(column_calc)],
+        rows: vec![minmax(row_calc)],
+        columns_auto_repeat: None,
+        rows_auto_repeat: None,
+        columns_line_names: vec![Vec::new(); 2],
+        rows_line_names: vec![Vec::new(); 2],
+        template_areas: None,
+        auto_flow: ComputedCssGridAutoFlow::Row,
+        auto_rows: ComputedCssGridAutoRows::Auto,
+        auto_columns: spinon_style::ComputedCssGridAutoColumns::Auto,
+    };
+    let mut math = CssMathProjector::default();
+
+    let projected = project_grid_layout_with_math(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+        &mut math,
+    )
+    .unwrap();
+
+    assert_eq!(
+        projected.columns,
+        [GridTrackSize::MinMax {
+            min: spinon_layout::GridTrackMinSizingFunction::Calc(spinon_layout::LayoutCalcId(0)),
+            max: spinon_layout::GridTrackMaxSizingFunction::MaxContent,
+        }]
+    );
+    assert_eq!(
+        projected.rows,
+        [GridTrackSize::MinMax {
+            min: spinon_layout::GridTrackMinSizingFunction::Calc(spinon_layout::LayoutCalcId(1)),
+            max: spinon_layout::GridTrackMaxSizingFunction::MaxContent,
+        }]
+    );
+    assert_eq!(
+        math.into_values()
+            .iter()
+            .map(|value| value.property)
+            .collect::<Vec<_>>(),
+        [
+            spinon_layout::LayoutCssMathProperty::GridTemplateColumns,
+            spinon_layout::LayoutCssMathProperty::GridTemplateRows,
+        ]
+    );
+}
+
+#[test]
 fn track_sizing_profile_preserves_cyclic_fit_content_percentage_limit() {
     let node = NodeId::new(11_108).unwrap();
     let grid = ComputedCssGridLayout {
