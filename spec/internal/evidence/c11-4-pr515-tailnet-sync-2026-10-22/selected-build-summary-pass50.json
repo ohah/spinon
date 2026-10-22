@@ -1,0 +1,72 @@
+{
+  "pass": "pass50",
+  "sourceRoot": "build/spinon/c11-4-pr515-tailnet-root-pass50-selected",
+  "outputRoot": "build/spinon/c11-4-pr515-tailnet-site-pass50",
+  "fileCount": 7033,
+  "totalBytes": 393981667,
+  "treeSha256": "53bffe0273df4d55f17856a61a250c869896c7ece421b43ea72e6bf5ccaace5d",
+  "requiredRoutes": [
+    "roadmap.html",
+    "STATUS.html",
+    "spec/STATUS.html",
+    "internal/0059-c11-grid-layout.html",
+    "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.html",
+    "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.html",
+    "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/implementation-runtime-review-20.html",
+    "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/pr-diff-review-30.html",
+    "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/README.html",
+    "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.png",
+    "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.png"
+  ],
+  "routeChecks": [
+    {
+      "route": "roadmap.html",
+      "exists": true
+    },
+    {
+      "route": "STATUS.html",
+      "exists": true
+    },
+    {
+      "route": "spec/STATUS.html",
+      "exists": true
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "exists": true
+    },
+    {
+      "route": "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.html",
+      "exists": true
+    },
+    {
+      "route": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.html",
+      "exists": true
+    },
+    {
+      "route": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/implementation-runtime-review-20.html",
+      "exists": true
+    },
+    {
+      "route": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/pr-diff-review-30.html",
+      "exists": true
+    },
+    {
+      "route": "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/README.html",
+      "exists": true
+    },
+    {
+      "route": "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.png",
+      "exists": true
+    },
+    {
+      "route": "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.png",
+      "exists": true
+    }
+  ],
+  "publicRoadmapShowsRuntimeResults": true,
+  "completionCountStill77of213": true,
+  "c11_4RemainsIncomplete": true,
+  "androidAvdAndIosPrecompositorLimitsExplicit": true,
+  "noSymlinks": true
+}

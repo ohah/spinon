@@ -53,7 +53,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         return Ok(None);
     };
     if !SCENE_IDS.contains(&scene_id) {
-        return if scene_id.starts_with("anonymous-")
+        return if scene_id.starts_with("anonymous-text-image-")
             || scene_id.starts_with("image-before-comment-")
             || scene_id.starts_with("comment-group-before-")
             || scene_id.starts_with("whitespace-around-")

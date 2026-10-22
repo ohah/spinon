@@ -2988,7 +2988,7 @@ private struct C111MetalPixelRun {
         ("overflow-root-background", "c114-auto-fill-overflow-neighbors-grid", 10, 30, [34, 197, 94, 255]),
     ]
     private static let c114ImplicitTrackOverflowPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
-        ("overflow-root-border-inside", "c114-implicit-min-content-overflow-border-grid", 0, 8, [16, 24, 32, 255]),
+        ("overflow-root-border-inside", "c114-implicit-min-content-overflow-border-grid", 0, 8, [17, 204, 136, 255]),
         ("overflow-root-border-covered", "c114-implicit-min-content-overflow-border-grid", 43, 8, [229, 72, 77, 255]),
         ("overflow-root-border-outside", "c114-implicit-min-content-overflow-border-grid", 44, 8, [229, 72, 77, 255]),
         ("overflow-item-outside-root", "c114-implicit-min-content-overflow-border-item-2", 91, 8, [229, 72, 77, 255]),
@@ -3517,7 +3517,7 @@ private struct C111MetalPixelRun {
         if sceneID == "columns-negative-fixed-root-overflow" {
             return [
                 ("negative-root-interior", rootNodeID, 33, 10, [226, 232, 240, 255]),
-                ("negative-root-edge", rootNodeID, 0, 10, [226, 232, 240, 255]),
+                ("negative-root-edge", rootNodeID, 0, 10, [17, 24, 39, 255]),
                 ("negative-root-exterior", rootNodeID, 150, 10, [0, 0, 0, 255]),
                 ("negative-overflow-item", itemNodeID, 250, 10, [141, 95, 211, 255]),
                 ("negative-overflow-tail", rootNodeID, 273, 10, [0, 0, 0, 255]),
@@ -3526,7 +3526,7 @@ private struct C111MetalPixelRun {
         if sceneID == "rows-negative-fixed-root-overflow" {
             return [
                 ("negative-root-interior", rootNodeID, 10, 19, [226, 232, 240, 255]),
-                ("negative-root-edge", rootNodeID, 10, 0, [226, 232, 240, 255]),
+                ("negative-root-edge", rootNodeID, 10, 0, [17, 24, 39, 255]),
                 ("negative-root-exterior", rootNodeID, 10, 100, [0, 0, 0, 255]),
                 ("negative-overflow-item", itemNodeID, 10, 195, [141, 95, 211, 255]),
                 ("negative-overflow-tail", rootNodeID, 10, 209, [0, 0, 0, 255]),

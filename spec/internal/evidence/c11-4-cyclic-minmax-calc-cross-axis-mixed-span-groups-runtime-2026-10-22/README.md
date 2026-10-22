@@ -2,6 +2,10 @@
 
 **판정: 부분 검증.** 이 고정 fixture는 세 direct Ahem text item에서 겹치는 span-2 group을 span-3 item과 함께 처리하고, columns의 wrapping 결과가 rows sizing에 반영되는지 확인한다. C11.4 전체 또는 일반 CSS 지원은 완료 처리하지 않는다. 공식 상태는 `77/213`으로 유지한다.
 
+## 2026-10-22 최종 regression matrix 결과
+
+후속 수정 후 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 C11.4 고정 runtime matrix 263/263 scene이 각각 draw/present됐다. PixelCopy와 compositor 제출 전 Metal drawable 표본은 pixel-enabled 63 scene에서 각각 219/219 exact다. 이 최종 실행은 아래 Android의 초기 SwiftShader AVD 정지 기록을 갱신한다. matcher 및 border pixel oracle 수정 이유, 모든 JSON, 실행 대상 hash와 새 screenshots는 [PR #515 선행 회귀 근거](../c11-4-pr515-prereq-regression-2026-10-22/README.md)에 둔다. SwiftShader AVD의 초기 실패는 앱/ADB transport 실패로 판정하지 않았으며, 같은 AVD를 host GPU로 재실행해 전체 행렬을 완료했다.
+
 ## 기준과 구현 범위
 
 - [집중 계획](../../../../plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md)
@@ -43,7 +47,9 @@ For both definite scenes, the compositor-submission-before Metal drawable readba
 
 Run evidence: [`result.json`](./ios-simulator-c114-cross-axis-mixed-span-groups-ios-simulator-20261022T113152006Z-b45c3622/result.json), [simulator manifest](./ios-simulator-c114-cross-axis-mixed-span-groups-ios-simulator-20261022T113152006Z-b45c3622/simulator.json), and four per-scene runtime logs in the same directory.
 
-## Android AVD
+## Android AVD — 초기 SwiftShader run 기록
+
+아래 로그는 host GPU 재실행 전의 중간 상태이며 현재 최종 결과는 아니다.
 
 Android API 37 ARM64 AVD `emulator-5558` ran intrinsic forward and reverse through layout, frame checks, WGPU draw and screenshot capture. Definite forward reached the Rust runtime layout summary and all four expected node frames (`root`, A, B, C), but its log stops after `SPINON_C0410_SURFACE_CHANGED`: there is no `SPINON_C0410_RENDERER` or `SPINON_C0410_DRAW`, and no PixelCopy result. Definite reverse therefore did not run. This is not an Android presentation pass.
 
@@ -63,6 +69,5 @@ These captures show the box scene, including the red item crossing the root bord
 
 - [구현·runtime 실패 관점 검토 20개](./implementation-runtime-review-20.md)를 완료했다. Android definite presentation 누락을 부분 검증 판정에 반영했다.
 - [PR diff 실패 관점 검토 30개](./pr-diff-review-30.md)를 완료했다. C11.4 완료 수 `77/213`과 fixture 전용 범위를 유지한다.
-- Android definite forward/reverse 장면의 renderer draw·PixelCopy 표본과 4개 전체 AVD scene 실행.
-- 이 fixture build를 포함한 기존 C11.4 회귀 matrix.
-- AVD 재시작이 필요하다. host free space `1.3 GiB`에서 emulator preflight가 거부됐으나 필요 공간의 정확한 기준은 출력되지 않았다. `1.3 GiB`를 기준값으로 추정하지 않는다.
+- 최종 PR #515 fixture 네 장면 및 C11.4 263-scene 회귀 matrix는 Android/iOS simulator에서 모두 통과했다. 세부 evidence는 위의 [최종 regression matrix](../c11-4-pr515-prereq-regression-2026-10-22/README.md)를 기준으로 한다.
+- 실기기·hardware GPU, iOS compositor 이후 pixel, glyph raster, WPT, 일반 CSS admission과 전체 C11.4 적합성은 미검증이다.

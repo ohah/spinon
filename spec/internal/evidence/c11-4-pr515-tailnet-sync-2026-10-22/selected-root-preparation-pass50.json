@@ -1,0 +1,614 @@
+{
+  "pass": "pass50",
+  "sourceHead": "9b8978649feb404514e7fcff8a5fcbdb3a3b32b7",
+  "previousRoot": "build/spinon/c11-4-cyclic-minmax-calc-cross-axis-span-groups-tailnet-root-pass49-selected",
+  "selectedRoot": "build/spinon/c11-4-pr515-tailnet-root-pass50-selected",
+  "selectedFileCount": 12252,
+  "selectedBytes": 496644321,
+  "selectedTreeSha256": "a5d9d0b2ba4559f9806d903ac9de213804d1f659c953d0c0c59f8a4d2127c0f1",
+  "copiedDocuments": [
+    {
+      "source": "spec/STATUS.md",
+      "target": "STATUS.md",
+      "bytes": 380963,
+      "sha256": "63fe00633bd528eedd286c959dcd4bfb86eff5bc1c8b15f31ddba82d3cf31d2f"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "target": "spec/STATUS.md",
+      "bytes": 380963,
+      "sha256": "63fe00633bd528eedd286c959dcd4bfb86eff5bc1c8b15f31ddba82d3cf31d2f"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "target": "internal/0059-c11-grid-layout.md",
+      "bytes": 90044,
+      "sha256": "3160b9af06fdc08e956d683f4a6733746a01844ab95bb417efe5f351e26a5cee"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "target": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 90044,
+      "sha256": "3160b9af06fdc08e956d683f4a6733746a01844ab95bb417efe5f351e26a5cee"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "target": "public/internal/0059-c11-grid-layout.md",
+      "bytes": 90044,
+      "sha256": "3160b9af06fdc08e956d683f4a6733746a01844ab95bb417efe5f351e26a5cee"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "target": "public/spec/internal/0059-c11-grid-layout.md",
+      "bytes": 90044,
+      "sha256": "3160b9af06fdc08e956d683f4a6733746a01844ab95bb417efe5f351e26a5cee"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "target": "roadmap.html",
+      "bytes": 244299,
+      "sha256": "052cd0e615781d964f22b5fd5a0b1f8f70d3b515ab0890c2db1bf8e7e8744894"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "target": "public/roadmap.html",
+      "bytes": 244299,
+      "sha256": "052cd0e615781d964f22b5fd5a0b1f8f70d3b515ab0890c2db1bf8e7e8744894"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md",
+      "target": "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md",
+      "bytes": 8270,
+      "sha256": "1c512f2b01eae9832f4485fa3bb34fd27d52cf3a7b67dca0ccc1b410952b93b6"
+    }
+  ],
+  "copiedRuntimeEvidence": [
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md",
+      "target": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md",
+      "bytes": 8412,
+      "sha256": "40d214b10b40801c600524a8094eff32075f9c8833382af3cbb2655e72604395"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/implementation-runtime-review-20.md",
+      "target": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/implementation-runtime-review-20.md",
+      "bytes": 5306,
+      "sha256": "c4a75dc477f16bbd069cb798b8afb334cb8c186bd29166a14c1c56671ffd523a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/pr-diff-review-30.md",
+      "target": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/pr-diff-review-30.md",
+      "bytes": 6328,
+      "sha256": "18ddf6e12e628ed5b08c9ee8d0ed7075ebff590602a35d9ed603615e1d295088"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md",
+      "bytes": 8412,
+      "sha256": "40d214b10b40801c600524a8094eff32075f9c8833382af3cbb2655e72604395"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/implementation-runtime-review-20.md",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/implementation-runtime-review-20.md",
+      "bytes": 5306,
+      "sha256": "c4a75dc477f16bbd069cb798b8afb334cb8c186bd29166a14c1c56671ffd523a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/pr-diff-review-30.md",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/pr-diff-review-30.md",
+      "bytes": 6328,
+      "sha256": "18ddf6e12e628ed5b08c9ee8d0ed7075ebff590602a35d9ed603615e1d295088"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md",
+      "target": "public/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md",
+      "bytes": 8412,
+      "sha256": "40d214b10b40801c600524a8094eff32075f9c8833382af3cbb2655e72604395"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/implementation-runtime-review-20.md",
+      "target": "public/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/implementation-runtime-review-20.md",
+      "bytes": 5306,
+      "sha256": "c4a75dc477f16bbd069cb798b8afb334cb8c186bd29166a14c1c56671ffd523a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/pr-diff-review-30.md",
+      "target": "public/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/pr-diff-review-30.md",
+      "bytes": 6328,
+      "sha256": "18ddf6e12e628ed5b08c9ee8d0ed7075ebff590602a35d9ed603615e1d295088"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md",
+      "target": "public/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md",
+      "bytes": 8412,
+      "sha256": "40d214b10b40801c600524a8094eff32075f9c8833382af3cbb2655e72604395"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/implementation-runtime-review-20.md",
+      "target": "public/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/implementation-runtime-review-20.md",
+      "bytes": 5306,
+      "sha256": "c4a75dc477f16bbd069cb798b8afb334cb8c186bd29166a14c1c56671ffd523a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/pr-diff-review-30.md",
+      "target": "public/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/pr-diff-review-30.md",
+      "bytes": 6328,
+      "sha256": "18ddf6e12e628ed5b08c9ee8d0ed7075ebff590602a35d9ed603615e1d295088"
+    }
+  ],
+  "copiedRegressionEvidence": [
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/README.md",
+      "target": "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/README.md",
+      "bytes": 4993,
+      "sha256": "a5edd0a74e3ca593d9732c0dbeecf06fe1aa6e84595dcb7ea9f0869b02e8ceec"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/matrix-summary.json",
+      "target": "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/matrix-summary.json",
+      "bytes": 3153,
+      "sha256": "c14b9865dce4019aa7c3c4158f2369fb7b5ca29e6f68c5cb63703134ac2546c2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-matrix-result.json",
+      "target": "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-matrix-result.json",
+      "bytes": 430063,
+      "sha256": "c60a31a79d8674f3c1bc4573e9359d1b7fce0fc6dfdd923e3921de72247ba2ae"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-simulator.json",
+      "target": "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-simulator.json",
+      "bytes": 1023,
+      "sha256": "41410d12acd44032a192e216e2339166cfc614d48c0ae84bd184825120ed63fe"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-intrinsic-forward.log",
+      "target": "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-intrinsic-forward.log",
+      "bytes": 49110,
+      "sha256": "d86945f999571a5e3464db3348ea032e2250d5cc4c0b6cd15bd64762f9b47644"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.log",
+      "target": "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.log",
+      "bytes": 41736,
+      "sha256": "fb65888015378c974fcf98597d440ad2d9aeba1511d62c5906c7a13c9235f638"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-anonymous-routing-failure-before-fix.log",
+      "target": "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-anonymous-routing-failure-before-fix.log",
+      "bytes": 6731,
+      "sha256": "28cc2f388cae7923f5daa8c0d1c8ba870ece40e1f7576a9e2be9ecc70a196ea3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-anonymous-routing-after-fix.log",
+      "target": "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-anonymous-routing-after-fix.log",
+      "bytes": 23690,
+      "sha256": "c2ed967497cf1cb922af80a9cabf45264a039cac8883fdf3b3657e626b20281f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-swiftshader-watchdog-context.log",
+      "target": "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-swiftshader-watchdog-context.log",
+      "bytes": 538165,
+      "sha256": "5240a458c3f2e2118e22b391ffeb3e32f2ce1d11f15f6b97fa90fb1cf1c8dc71"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.png",
+      "target": "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.png",
+      "bytes": 74367,
+      "sha256": "013550f391210cf5b29ff32dbf09faeea800d3f252cbafd1a43d00a8d726d6eb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-matrix-result.json",
+      "target": "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-matrix-result.json",
+      "bytes": 438673,
+      "sha256": "2e71608e201b070673add0dc91b03eddbe7a9d5a4778ea28b466aaf516201034"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-simulator.json",
+      "target": "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-simulator.json",
+      "bytes": 853,
+      "sha256": "ec534c710a81d5e65ae562059e1de822b722527f9c3c12afaed0575f743b4bf2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-intrinsic-forward.log",
+      "target": "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-intrinsic-forward.log",
+      "bytes": 43761,
+      "sha256": "c0af330e303310579727158692a0a8b3f788920ea0b2668307504b1d48e7fa1b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.log",
+      "target": "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.log",
+      "bytes": 35084,
+      "sha256": "cb4cb8c7744ca394021c8bdce3a0cdf23e1ca319c7e6755dd6eb70145a1a94bc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.png",
+      "target": "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.png",
+      "bytes": 131865,
+      "sha256": "82335e0bc5a4af00d661bce30e88038e8c4ffe27f9fe2da39c46fc009cf045c9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-simulator-build.log",
+      "target": "internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-simulator-build.log",
+      "bytes": 86274,
+      "sha256": "cca373f5acb694839e507010483533d709114966af2980b64bf2aa89e62c3b66"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/README.md",
+      "target": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/README.md",
+      "bytes": 4993,
+      "sha256": "a5edd0a74e3ca593d9732c0dbeecf06fe1aa6e84595dcb7ea9f0869b02e8ceec"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/matrix-summary.json",
+      "target": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/matrix-summary.json",
+      "bytes": 3153,
+      "sha256": "c14b9865dce4019aa7c3c4158f2369fb7b5ca29e6f68c5cb63703134ac2546c2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-matrix-result.json",
+      "target": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-matrix-result.json",
+      "bytes": 430063,
+      "sha256": "c60a31a79d8674f3c1bc4573e9359d1b7fce0fc6dfdd923e3921de72247ba2ae"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-simulator.json",
+      "target": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-simulator.json",
+      "bytes": 1023,
+      "sha256": "41410d12acd44032a192e216e2339166cfc614d48c0ae84bd184825120ed63fe"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-intrinsic-forward.log",
+      "target": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-intrinsic-forward.log",
+      "bytes": 49110,
+      "sha256": "d86945f999571a5e3464db3348ea032e2250d5cc4c0b6cd15bd64762f9b47644"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.log",
+      "target": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.log",
+      "bytes": 41736,
+      "sha256": "fb65888015378c974fcf98597d440ad2d9aeba1511d62c5906c7a13c9235f638"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-anonymous-routing-failure-before-fix.log",
+      "target": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-anonymous-routing-failure-before-fix.log",
+      "bytes": 6731,
+      "sha256": "28cc2f388cae7923f5daa8c0d1c8ba870ece40e1f7576a9e2be9ecc70a196ea3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-anonymous-routing-after-fix.log",
+      "target": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-anonymous-routing-after-fix.log",
+      "bytes": 23690,
+      "sha256": "c2ed967497cf1cb922af80a9cabf45264a039cac8883fdf3b3657e626b20281f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-swiftshader-watchdog-context.log",
+      "target": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-swiftshader-watchdog-context.log",
+      "bytes": 538165,
+      "sha256": "5240a458c3f2e2118e22b391ffeb3e32f2ce1d11f15f6b97fa90fb1cf1c8dc71"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.png",
+      "target": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.png",
+      "bytes": 74367,
+      "sha256": "013550f391210cf5b29ff32dbf09faeea800d3f252cbafd1a43d00a8d726d6eb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-matrix-result.json",
+      "target": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-matrix-result.json",
+      "bytes": 438673,
+      "sha256": "2e71608e201b070673add0dc91b03eddbe7a9d5a4778ea28b466aaf516201034"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-simulator.json",
+      "target": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-simulator.json",
+      "bytes": 853,
+      "sha256": "ec534c710a81d5e65ae562059e1de822b722527f9c3c12afaed0575f743b4bf2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-intrinsic-forward.log",
+      "target": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-intrinsic-forward.log",
+      "bytes": 43761,
+      "sha256": "c0af330e303310579727158692a0a8b3f788920ea0b2668307504b1d48e7fa1b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.log",
+      "target": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.log",
+      "bytes": 35084,
+      "sha256": "cb4cb8c7744ca394021c8bdce3a0cdf23e1ca319c7e6755dd6eb70145a1a94bc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.png",
+      "target": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.png",
+      "bytes": 131865,
+      "sha256": "82335e0bc5a4af00d661bce30e88038e8c4ffe27f9fe2da39c46fc009cf045c9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-simulator-build.log",
+      "target": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-simulator-build.log",
+      "bytes": 86274,
+      "sha256": "cca373f5acb694839e507010483533d709114966af2980b64bf2aa89e62c3b66"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/README.md",
+      "target": "public/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/README.md",
+      "bytes": 4993,
+      "sha256": "a5edd0a74e3ca593d9732c0dbeecf06fe1aa6e84595dcb7ea9f0869b02e8ceec"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/matrix-summary.json",
+      "target": "public/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/matrix-summary.json",
+      "bytes": 3153,
+      "sha256": "c14b9865dce4019aa7c3c4158f2369fb7b5ca29e6f68c5cb63703134ac2546c2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-matrix-result.json",
+      "target": "public/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-matrix-result.json",
+      "bytes": 430063,
+      "sha256": "c60a31a79d8674f3c1bc4573e9359d1b7fce0fc6dfdd923e3921de72247ba2ae"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-simulator.json",
+      "target": "public/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-simulator.json",
+      "bytes": 1023,
+      "sha256": "41410d12acd44032a192e216e2339166cfc614d48c0ae84bd184825120ed63fe"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-intrinsic-forward.log",
+      "target": "public/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-intrinsic-forward.log",
+      "bytes": 49110,
+      "sha256": "d86945f999571a5e3464db3348ea032e2250d5cc4c0b6cd15bd64762f9b47644"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.log",
+      "target": "public/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.log",
+      "bytes": 41736,
+      "sha256": "fb65888015378c974fcf98597d440ad2d9aeba1511d62c5906c7a13c9235f638"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-anonymous-routing-failure-before-fix.log",
+      "target": "public/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-anonymous-routing-failure-before-fix.log",
+      "bytes": 6731,
+      "sha256": "28cc2f388cae7923f5daa8c0d1c8ba870ece40e1f7576a9e2be9ecc70a196ea3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-anonymous-routing-after-fix.log",
+      "target": "public/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-anonymous-routing-after-fix.log",
+      "bytes": 23690,
+      "sha256": "c2ed967497cf1cb922af80a9cabf45264a039cac8883fdf3b3657e626b20281f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-swiftshader-watchdog-context.log",
+      "target": "public/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-swiftshader-watchdog-context.log",
+      "bytes": 538165,
+      "sha256": "5240a458c3f2e2118e22b391ffeb3e32f2ce1d11f15f6b97fa90fb1cf1c8dc71"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.png",
+      "target": "public/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.png",
+      "bytes": 74367,
+      "sha256": "013550f391210cf5b29ff32dbf09faeea800d3f252cbafd1a43d00a8d726d6eb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-matrix-result.json",
+      "target": "public/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-matrix-result.json",
+      "bytes": 438673,
+      "sha256": "2e71608e201b070673add0dc91b03eddbe7a9d5a4778ea28b466aaf516201034"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-simulator.json",
+      "target": "public/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-simulator.json",
+      "bytes": 853,
+      "sha256": "ec534c710a81d5e65ae562059e1de822b722527f9c3c12afaed0575f743b4bf2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-intrinsic-forward.log",
+      "target": "public/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-intrinsic-forward.log",
+      "bytes": 43761,
+      "sha256": "c0af330e303310579727158692a0a8b3f788920ea0b2668307504b1d48e7fa1b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.log",
+      "target": "public/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.log",
+      "bytes": 35084,
+      "sha256": "cb4cb8c7744ca394021c8bdce3a0cdf23e1ca319c7e6755dd6eb70145a1a94bc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.png",
+      "target": "public/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.png",
+      "bytes": 131865,
+      "sha256": "82335e0bc5a4af00d661bce30e88038e8c4ffe27f9fe2da39c46fc009cf045c9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-simulator-build.log",
+      "target": "public/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-simulator-build.log",
+      "bytes": 86274,
+      "sha256": "cca373f5acb694839e507010483533d709114966af2980b64bf2aa89e62c3b66"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/README.md",
+      "target": "public/spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/README.md",
+      "bytes": 4993,
+      "sha256": "a5edd0a74e3ca593d9732c0dbeecf06fe1aa6e84595dcb7ea9f0869b02e8ceec"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/matrix-summary.json",
+      "target": "public/spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/matrix-summary.json",
+      "bytes": 3153,
+      "sha256": "c14b9865dce4019aa7c3c4158f2369fb7b5ca29e6f68c5cb63703134ac2546c2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-matrix-result.json",
+      "target": "public/spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-matrix-result.json",
+      "bytes": 430063,
+      "sha256": "c60a31a79d8674f3c1bc4573e9359d1b7fce0fc6dfdd923e3921de72247ba2ae"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-simulator.json",
+      "target": "public/spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-simulator.json",
+      "bytes": 1023,
+      "sha256": "41410d12acd44032a192e216e2339166cfc614d48c0ae84bd184825120ed63fe"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-intrinsic-forward.log",
+      "target": "public/spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-intrinsic-forward.log",
+      "bytes": 49110,
+      "sha256": "d86945f999571a5e3464db3348ea032e2250d5cc4c0b6cd15bd64762f9b47644"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.log",
+      "target": "public/spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.log",
+      "bytes": 41736,
+      "sha256": "fb65888015378c974fcf98597d440ad2d9aeba1511d62c5906c7a13c9235f638"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-anonymous-routing-failure-before-fix.log",
+      "target": "public/spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-anonymous-routing-failure-before-fix.log",
+      "bytes": 6731,
+      "sha256": "28cc2f388cae7923f5daa8c0d1c8ba870ece40e1f7576a9e2be9ecc70a196ea3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-anonymous-routing-after-fix.log",
+      "target": "public/spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-anonymous-routing-after-fix.log",
+      "bytes": 23690,
+      "sha256": "c2ed967497cf1cb922af80a9cabf45264a039cac8883fdf3b3657e626b20281f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-swiftshader-watchdog-context.log",
+      "target": "public/spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-swiftshader-watchdog-context.log",
+      "bytes": 538165,
+      "sha256": "5240a458c3f2e2118e22b391ffeb3e32f2ce1d11f15f6b97fa90fb1cf1c8dc71"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.png",
+      "target": "public/spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.png",
+      "bytes": 74367,
+      "sha256": "013550f391210cf5b29ff32dbf09faeea800d3f252cbafd1a43d00a8d726d6eb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-matrix-result.json",
+      "target": "public/spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-matrix-result.json",
+      "bytes": 438673,
+      "sha256": "2e71608e201b070673add0dc91b03eddbe7a9d5a4778ea28b466aaf516201034"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-simulator.json",
+      "target": "public/spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-simulator.json",
+      "bytes": 853,
+      "sha256": "ec534c710a81d5e65ae562059e1de822b722527f9c3c12afaed0575f743b4bf2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-intrinsic-forward.log",
+      "target": "public/spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-intrinsic-forward.log",
+      "bytes": 43761,
+      "sha256": "c0af330e303310579727158692a0a8b3f788920ea0b2668307504b1d48e7fa1b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.log",
+      "target": "public/spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.log",
+      "bytes": 35084,
+      "sha256": "cb4cb8c7744ca394021c8bdce3a0cdf23e1ca319c7e6755dd6eb70145a1a94bc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.png",
+      "target": "public/spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.png",
+      "bytes": 131865,
+      "sha256": "82335e0bc5a4af00d661bce30e88038e8c4ffe27f9fe2da39c46fc009cf045c9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-simulator-build.log",
+      "target": "public/spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-simulator-build.log",
+      "bytes": 86274,
+      "sha256": "cca373f5acb694839e507010483533d709114966af2980b64bf2aa89e62c3b66"
+    }
+  ],
+  "intentionalOverwrites": [
+    {
+      "path": "STATUS.md",
+      "previous_sha256": "961d33dabe12359221d488d44a744463121fa9d1c52c9e6bbf14cd722c38f2ec"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "previous_sha256": "961d33dabe12359221d488d44a744463121fa9d1c52c9e6bbf14cd722c38f2ec"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "previous_sha256": "1807190482bdfc7074471afa791de7161941ce98274d1702393d873a7b8b7b92"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "previous_sha256": "1807190482bdfc7074471afa791de7161941ce98274d1702393d873a7b8b7b92"
+    },
+    {
+      "path": "public/internal/0059-c11-grid-layout.md",
+      "previous_sha256": "1807190482bdfc7074471afa791de7161941ce98274d1702393d873a7b8b7b92"
+    },
+    {
+      "path": "public/spec/internal/0059-c11-grid-layout.md",
+      "previous_sha256": "1807190482bdfc7074471afa791de7161941ce98274d1702393d873a7b8b7b92"
+    },
+    {
+      "path": "roadmap.html",
+      "previous_sha256": "7815e6acdde6abfd063beef096e61283edd857c60c894cdfcd0d49364cef11ac"
+    },
+    {
+      "path": "public/roadmap.html",
+      "previous_sha256": "7815e6acdde6abfd063beef096e61283edd857c60c894cdfcd0d49364cef11ac"
+    },
+    {
+      "path": "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md",
+      "previous_sha256": "5d5f43a9e75fea6810fde729e5a3944ec8d94188cd97ac6177e30725dd19e362"
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md",
+      "previous_sha256": "57f71bf54c25b27b1a2d9de4f63933c4f9d5ce81da22f48b79815598aa2b16b8"
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/implementation-runtime-review-20.md",
+      "previous_sha256": "3293dadd4ce5a8ae2c36814e36a551717bf738a313efc85797f72493f3d6dd7e"
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/pr-diff-review-30.md",
+      "previous_sha256": "23aa6a732a4d98caf7f3b41b0c55946c126feb329f5c68955867b90cafa09721"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md",
+      "previous_sha256": "57f71bf54c25b27b1a2d9de4f63933c4f9d5ce81da22f48b79815598aa2b16b8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/implementation-runtime-review-20.md",
+      "previous_sha256": "3293dadd4ce5a8ae2c36814e36a551717bf738a313efc85797f72493f3d6dd7e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/pr-diff-review-30.md",
+      "previous_sha256": "23aa6a732a4d98caf7f3b41b0c55946c126feb329f5c68955867b90cafa09721"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md",
+      "previous_sha256": "57f71bf54c25b27b1a2d9de4f63933c4f9d5ce81da22f48b79815598aa2b16b8"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/implementation-runtime-review-20.md",
+      "previous_sha256": "3293dadd4ce5a8ae2c36814e36a551717bf738a313efc85797f72493f3d6dd7e"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/pr-diff-review-30.md",
+      "previous_sha256": "23aa6a732a4d98caf7f3b41b0c55946c126feb329f5c68955867b90cafa09721"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md",
+      "previous_sha256": "57f71bf54c25b27b1a2d9de4f63933c4f9d5ce81da22f48b79815598aa2b16b8"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/implementation-runtime-review-20.md",
+      "previous_sha256": "3293dadd4ce5a8ae2c36814e36a551717bf738a313efc85797f72493f3d6dd7e"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/pr-diff-review-30.md",
+      "previous_sha256": "23aa6a732a4d98caf7f3b41b0c55946c126feb329f5c68955867b90cafa09721"
+    }
+  ],
+  "ignoredUntrackedWorkspaceEvidence": true,
+  "noPreviewWrites": true,
+  "noDeletes": true
+}
