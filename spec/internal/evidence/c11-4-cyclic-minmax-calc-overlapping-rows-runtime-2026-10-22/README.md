@@ -31,7 +31,7 @@ Android 표본은 API 37 AVD의 PixelCopy이며 surface scale `2.625×`다. iOS 
 - `SPINON_ENABLE_C04_RUNTIME_GPU=1 SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=1 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 mise exec -- bun run build:ios-sim` — 성공, [build log](./ios-build.log.gz, gzip compressed).
 - Runtime allowlist test, style-to-layout geometry/trace test, FFI fixed-scene allowlist test는 각 1/1 통과했다.
 - 수정한 세 crate의 fixture feature `cargo clippy -- -D warnings`, `mise exec -- cargo fmt --all -- --check`, simulator capture script의 Node syntax check가 통과했다.
-- [`implementation-runtime-review-20.md`](./implementation-runtime-review-20.md)는 구현과 두 simulator의 별도 실패 관점 20개를 기록한다.
+- [`implementation-runtime-review-20.md`](./implementation-runtime-review-20.md)는 구현과 두 simulator의 별도 실패 관점 20개를 기록한다. [PR diff 검토 20개](./pr-diff-review-20.md)는 변경된 연결부·근거·상태 문서를 별도로 다룬다.
 
 ## 기본/fixture artifact 경계
 
