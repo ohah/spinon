@@ -26,6 +26,10 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "definite-minmax-calc-min-column", "definite-minmax-calc-min-row",
     "cyclic-minmax-calc-min-span-columns", "definite-minmax-calc-min-span-columns",
     "cyclic-minmax-calc-min-span-rows", "definite-minmax-calc-min-span-rows",
+    "cyclic-minmax-calc-two-axis-span-text-min-content",
+    "cyclic-minmax-calc-two-axis-span-text-max-content",
+    "definite-minmax-calc-two-axis-span-text-min-content",
+    "definite-minmax-calc-two-axis-span-text-max-content",
     "cyclic-minmax-calc-overlap-forward", "cyclic-minmax-calc-overlap-reverse",
     "definite-minmax-calc-overlap-forward", "definite-minmax-calc-overlap-reverse",
     "definite-minmax-calc-overlap-small-forward",
@@ -239,8 +243,23 @@ private func c114IsOverlappingRowsScene(_ sceneID: String) -> Bool {
         || sceneID.hasPrefix("definite-minmax-calc-overlap-rows-")
 }
 
+private func c114IsTwoAxisSpanTextScene(_ sceneID: String) -> Bool {
+    sceneID == "cyclic-minmax-calc-two-axis-span-text-min-content"
+        || sceneID == "cyclic-minmax-calc-two-axis-span-text-max-content"
+        || sceneID == "definite-minmax-calc-two-axis-span-text-min-content"
+        || sceneID == "definite-minmax-calc-two-axis-span-text-max-content"
+}
+
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if sceneID == "cyclic-minmax-calc-two-axis-span-text-min-content"
+        || sceneID == "definite-minmax-calc-two-axis-span-text-min-content" {
+        return "width=14,height=64"
+    }
+    if sceneID == "cyclic-minmax-calc-two-axis-span-text-max-content"
+        || sceneID == "definite-minmax-calc-two-axis-span-text-max-content" {
+        return "width=64,height=14"
+    }
     if sceneID == "cyclic-fit-content-column" { return "width=50,height=20" }
     if sceneID == "cyclic-fit-content-row" { return "width=20,height=40" }
     if sceneID == "definite-fit-content-column" { return "width=40,height=20" }
@@ -427,6 +446,14 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if sceneID == "cyclic-minmax-calc-two-axis-span-text-min-content"
+        || sceneID == "definite-minmax-calc-two-axis-span-text-min-content" {
+        return "width=10,height=60"
+    }
+    if sceneID == "cyclic-minmax-calc-two-axis-span-text-max-content"
+        || sceneID == "definite-minmax-calc-two-axis-span-text-max-content" {
+        return "width=60,height=10"
+    }
     if sceneID == "cyclic-fit-content-column" { return "width=25,height=20" }
     if sceneID == "cyclic-fit-content-row" || sceneID == "definite-fit-content-column" {
         return "width=20,height=20"
@@ -622,6 +649,11 @@ private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) 
     var expectedNode = 2
     var expectedSourceOrder = 0
     switch sceneID {
+    case "cyclic-minmax-calc-two-axis-span-text-min-content",
+         "cyclic-minmax-calc-two-axis-span-text-max-content",
+         "definite-minmax-calc-two-axis-span-text-min-content",
+         "definite-minmax-calc-two-axis-span-text-max-content":
+        expected = (10, 60, 60, 10)
     case "cyclic-minmax-calc-min-span-columns", "definite-minmax-calc-min-span-columns":
         expected = (20, 20, 50, 10)
     case "cyclic-minmax-calc-min-span-rows", "definite-minmax-calc-min-span-rows":
@@ -1640,6 +1672,17 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "4:node=5,x=\(imageX),y=0,width=24,height=16]"
     }
     switch sceneID {
+    case "cyclic-minmax-calc-two-axis-span-text-min-content",
+         "cyclic-minmax-calc-two-axis-span-text-max-content",
+         "definite-minmax-calc-two-axis-span-text-min-content",
+         "definite-minmax-calc-two-axis-span-text-max-content":
+        let minContent = sceneID.hasSuffix("min-content")
+        let rootWidth = minContent ? 14 : 64
+        let rootHeight = minContent ? 64 : 14
+        let itemWidth = minContent ? 10 : 60
+        let itemHeight = minContent ? 60 : 10
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=\(rootWidth),height=\(rootHeight);"
+            + "1:node=2,x=2,y=2,width=\(itemWidth),height=\(itemHeight)]"
     case "cyclic-minmax-calc-min-span-columns", "definite-minmax-calc-min-span-columns":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=54,height=14;"
             + "1:node=2,x=2,y=2,width=62,height=10]"
@@ -2376,6 +2419,7 @@ private func c114GapNodeFrames(
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if c114IsTwoAxisSpanTextScene(sceneID) { return 2 }
     if sceneID.hasPrefix("cyclic-minmax-calc-overlap-")
         || sceneID.hasPrefix("definite-minmax-calc-overlap-") { return 4 }
     if sceneID == "cyclic-percent-column" || sceneID == "cyclic-percent-row"
@@ -2883,6 +2927,25 @@ private struct C111MetalPixelRun {
     ) -> Bool {
         let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])]
         switch sceneID {
+        case "cyclic-minmax-calc-two-axis-span-text-min-content",
+             "cyclic-minmax-calc-two-axis-span-text-max-content",
+             "definite-minmax-calc-two-axis-span-text-min-content",
+             "definite-minmax-calc-two-axis-span-text-max-content":
+            let minContent = sceneID.hasSuffix("min-content")
+            let rootID = "c114-\(sceneID)-grid"
+            let itemID = "c114-\(sceneID)-item"
+            expectedSamples = [
+                ("\(sceneID)-left-border", rootID, 1, 6, [240, 198, 116, 255]),
+                ("\(sceneID)-item-inside", itemID, 5, 6, [229, 72, 77, 255]),
+                ("\(sceneID)-right-border", rootID, minContent ? 13 : 63, 6,
+                 [240, 198, 116, 255]),
+                ("\(sceneID)-outside-root", rootID, minContent ? 15 : 65, 6,
+                 [0, 0, 0, 255]),
+                ("\(sceneID)-bottom-border", rootID, 6, minContent ? 63 : 13,
+                 [240, 198, 116, 255]),
+                ("\(sceneID)-past-root", rootID, 6, minContent ? 65 : 15,
+                 [0, 0, 0, 255]),
+            ]
         case "definite-minmax-calc-overlap-rows-small-forward",
              "definite-minmax-calc-overlap-rows-small-reverse":
             expectedSamples = [

@@ -233,9 +233,20 @@ fn compute_in_flow_root_layout(
             .resolve_or_zero(available_space.width.into_option(), |val, basis| {
                 tree.calc(val, basis)
             });
-        available_space
+        let root_available_space = available_space
             .maybe_sub(margin.sum_axes())
-            .maybe_max(Size::ZERO)
+            .maybe_max(Size::ZERO);
+        #[cfg(feature = "grid")]
+        if style.is_grid() && style.size().width == crate::Dimension::min_content() {
+            Size {
+                width: AvailableSpace::MinContent,
+                height: root_available_space.height,
+            }
+        } else {
+            root_available_space
+        }
+        #[cfg(not(feature = "grid"))]
+        root_available_space
     };
 
     #[cfg(feature = "block_layout")]

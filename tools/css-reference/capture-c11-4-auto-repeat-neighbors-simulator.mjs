@@ -29,6 +29,10 @@ const cyclicPercentSceneIDs = new Set([
   'definite-minmax-calc-min-span-columns',
   'cyclic-minmax-calc-min-span-rows',
   'definite-minmax-calc-min-span-rows',
+  'cyclic-minmax-calc-two-axis-span-text-min-content',
+  'cyclic-minmax-calc-two-axis-span-text-max-content',
+  'definite-minmax-calc-two-axis-span-text-min-content',
+  'definite-minmax-calc-two-axis-span-text-max-content',
   'cyclic-minmax-calc-overlap-forward', 'cyclic-minmax-calc-overlap-reverse',
   'definite-minmax-calc-overlap-forward', 'definite-minmax-calc-overlap-reverse',
   'definite-minmax-calc-overlap-small-forward',
@@ -2377,6 +2381,39 @@ const minmaxCalcMinimumSpanScene = ({
     : { Columns: [], Rows: [2] },
   pixelSamples: minimumPixelSamples(id, points),
 });
+const twoAxisSpanTextInput = (minContentHeight) => [{
+  grid: 1, node: 2, sourceOrder: 0, kind: 'text', fontRegistryRevision: 1,
+  minContent: 10, minContentHeight, maxContent: 60, maxContentHeight: 10,
+}];
+const twoAxisSpanTextScene = ({ id, root, item, columns, rows, minContentHeight, points }) => ({
+  id,
+  axis: 'Rows',
+  boxCount: 2,
+  rootFrame: `width=${root[0]},height=${root[1]}`,
+  itemFrame: `width=${item[2]},height=${item[3]}`,
+  nodeFrames: `node_frames_css_px=[0:node=1,x=0,y=0,width=${root[0]},height=${root[1]};`
+    + `1:node=2,x=2,y=2,width=${item[2]},height=${item[3]}]`,
+  axes: {
+    Columns: { tracks: columns, collapsed: [false, false] },
+    Rows: { tracks: rows, collapsed: [false, false] },
+  },
+  gaps: { Columns: 2, Rows: 2 },
+  intrinsicInputs: twoAxisSpanTextInput(minContentHeight),
+  intrinsicSpans: [2],
+  intrinsicSpansByAxis: { Columns: [2], Rows: [2] },
+  twoAxisSpanningTextContributions: {
+    Columns: { minContent: 10, maxContent: 60 },
+    Rows: { minContent: item[3], maxContent: item[3] },
+  },
+  columnSizingFeedsRows: true,
+  pixelSamples: [
+    { id: `${id}-left-border`, nodeId: `c114-${id}-grid`,
+      xCssPx: 1, yCssPx: 6, rgba: [240, 198, 116, 255] },
+    { id: `${id}-item-inside`, nodeId: `c114-${id}-item`,
+      xCssPx: 5, yCssPx: 6, rgba: [229, 72, 77, 255] },
+    ...points,
+  ],
+});
 scenes.push(
   minmaxCalcMinimumScene({
     id: 'cyclic-minmax-calc-min-both-axes', root: [54, 14], item: [2, 2, 104, 22],
@@ -2428,6 +2465,84 @@ scenes.push(
       ['bottom-border-overpaint', 'item', 5, 13, [229, 72, 77, 255]],
       ['outside-root-bottom', 'item', 5, 16, [229, 72, 77, 255]],
       ['past-item-bottom', 'grid', 5, 25, [0, 0, 0, 255]],
+    ],
+  }),
+);
+scenes.push(
+  twoAxisSpanTextScene({
+    id: 'cyclic-minmax-calc-two-axis-span-text-min-content',
+    root: [14, 64], item: [2, 2, 10, 60], columns: [4, 4], rows: [29, 29],
+    minContentHeight: 60,
+    points: [
+      { id: 'cyclic-minmax-calc-two-axis-span-text-min-content-right-border',
+        nodeId: 'c114-cyclic-minmax-calc-two-axis-span-text-min-content-grid',
+        xCssPx: 13, yCssPx: 6, rgba: [240, 198, 116, 255] },
+      { id: 'cyclic-minmax-calc-two-axis-span-text-min-content-outside-root',
+        nodeId: 'c114-cyclic-minmax-calc-two-axis-span-text-min-content-grid',
+        xCssPx: 15, yCssPx: 6, rgba: [0, 0, 0, 255] },
+      { id: 'cyclic-minmax-calc-two-axis-span-text-min-content-bottom-border',
+        nodeId: 'c114-cyclic-minmax-calc-two-axis-span-text-min-content-grid',
+        xCssPx: 6, yCssPx: 63, rgba: [240, 198, 116, 255] },
+      { id: 'cyclic-minmax-calc-two-axis-span-text-min-content-past-root',
+        nodeId: 'c114-cyclic-minmax-calc-two-axis-span-text-min-content-grid',
+        xCssPx: 6, yCssPx: 65, rgba: [0, 0, 0, 255] },
+    ],
+  }),
+  twoAxisSpanTextScene({
+    id: 'cyclic-minmax-calc-two-axis-span-text-max-content',
+    root: [64, 14], item: [2, 2, 60, 10], columns: [29, 29], rows: [4, 4],
+    minContentHeight: 60,
+    points: [
+      { id: 'cyclic-minmax-calc-two-axis-span-text-max-content-right-border',
+        nodeId: 'c114-cyclic-minmax-calc-two-axis-span-text-max-content-grid',
+        xCssPx: 63, yCssPx: 6, rgba: [240, 198, 116, 255] },
+      { id: 'cyclic-minmax-calc-two-axis-span-text-max-content-outside-root',
+        nodeId: 'c114-cyclic-minmax-calc-two-axis-span-text-max-content-grid',
+        xCssPx: 65, yCssPx: 6, rgba: [0, 0, 0, 255] },
+      { id: 'cyclic-minmax-calc-two-axis-span-text-max-content-bottom-border',
+        nodeId: 'c114-cyclic-minmax-calc-two-axis-span-text-max-content-grid',
+        xCssPx: 6, yCssPx: 13, rgba: [240, 198, 116, 255] },
+      { id: 'cyclic-minmax-calc-two-axis-span-text-max-content-past-root',
+        nodeId: 'c114-cyclic-minmax-calc-two-axis-span-text-max-content-grid',
+        xCssPx: 6, yCssPx: 15, rgba: [0, 0, 0, 255] },
+    ],
+  }),
+  twoAxisSpanTextScene({
+    id: 'definite-minmax-calc-two-axis-span-text-min-content',
+    root: [14, 64], item: [2, 2, 10, 60], columns: [4, 4], rows: [29, 29],
+    minContentHeight: 60,
+    points: [
+      { id: 'definite-minmax-calc-two-axis-span-text-min-content-right-border',
+        nodeId: 'c114-definite-minmax-calc-two-axis-span-text-min-content-grid',
+        xCssPx: 13, yCssPx: 6, rgba: [240, 198, 116, 255] },
+      { id: 'definite-minmax-calc-two-axis-span-text-min-content-outside-root',
+        nodeId: 'c114-definite-minmax-calc-two-axis-span-text-min-content-grid',
+        xCssPx: 15, yCssPx: 6, rgba: [0, 0, 0, 255] },
+      { id: 'definite-minmax-calc-two-axis-span-text-min-content-bottom-border',
+        nodeId: 'c114-definite-minmax-calc-two-axis-span-text-min-content-grid',
+        xCssPx: 6, yCssPx: 63, rgba: [240, 198, 116, 255] },
+      { id: 'definite-minmax-calc-two-axis-span-text-min-content-past-root',
+        nodeId: 'c114-definite-minmax-calc-two-axis-span-text-min-content-grid',
+        xCssPx: 6, yCssPx: 65, rgba: [0, 0, 0, 255] },
+    ],
+  }),
+  twoAxisSpanTextScene({
+    id: 'definite-minmax-calc-two-axis-span-text-max-content',
+    root: [64, 14], item: [2, 2, 60, 10], columns: [29, 29], rows: [4, 4],
+    minContentHeight: 60,
+    points: [
+      { id: 'definite-minmax-calc-two-axis-span-text-max-content-right-border',
+        nodeId: 'c114-definite-minmax-calc-two-axis-span-text-max-content-grid',
+        xCssPx: 63, yCssPx: 6, rgba: [240, 198, 116, 255] },
+      { id: 'definite-minmax-calc-two-axis-span-text-max-content-outside-root',
+        nodeId: 'c114-definite-minmax-calc-two-axis-span-text-max-content-grid',
+        xCssPx: 65, yCssPx: 6, rgba: [0, 0, 0, 255] },
+      { id: 'definite-minmax-calc-two-axis-span-text-max-content-bottom-border',
+        nodeId: 'c114-definite-minmax-calc-two-axis-span-text-max-content-grid',
+        xCssPx: 6, yCssPx: 13, rgba: [240, 198, 116, 255] },
+      { id: 'definite-minmax-calc-two-axis-span-text-max-content-past-root',
+        nodeId: 'c114-definite-minmax-calc-two-axis-span-text-max-content-grid',
+        xCssPx: 6, yCssPx: 15, rgba: [0, 0, 0, 255] },
     ],
   }),
 );
@@ -2636,7 +2751,7 @@ for (const id of [
   }
   scenes.push(scene);
 }
-assert.equal(scenes.length, 251, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 255, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -4178,6 +4293,21 @@ function verifyRuntimeLog(log, scene, runID) {
       assert.deepEqual(intrinsicSpans, expectedSpans,
         `${scene.id}: intrinsic span stage 순서가 다릅니다.`);
     }
+    if (scene.twoAxisSpanningTextContributions) {
+      const expectedContributions = scene.twoAxisSpanningTextContributions[axis];
+      const input = scene.intrinsicInputs[0];
+      const observed = axisPass.contributions.filter((contribution) => (
+        contribution.item === input.node && contribution.span === 2
+      ));
+      for (const [kind, value] of [
+        ['MinContent', expectedContributions.minContent],
+        ['MaxContent', expectedContributions.maxContent],
+      ]) {
+        assert.ok(observed.some((contribution) => contribution.kind === kind
+          && Math.abs(contribution.value - value) <= 1 / 64),
+        `${scene.id}: ${axis} span-2 ${kind} contribution expected ${value}, got ${JSON.stringify(observed)}`);
+      }
+    }
     if (scene.mixedIntrinsicContributions && axis === 'Columns') {
       const expectedContributions = [];
       for (const span of scene.intrinsicSpans) {
@@ -4395,6 +4525,12 @@ function verifyRuntimeLog(log, scene, runID) {
       });
     }
     tracksByAxis[axis] = finalTracks.map(({ baseSize, collapsed }) => ({ baseSize, collapsed }));
+  }
+  if (scene.columnSizingFeedsRows) {
+    const columnPassIndex = axisTrace.passes.findLastIndex((pass) => pass.axis === 'Columns');
+    const rowPassIndex = axisTrace.passes.findLastIndex((pass) => pass.axis === 'Rows');
+    assert.ok(columnPassIndex >= 0 && rowPassIndex > columnPassIndex,
+      `${scene.id}: Columns must size before Rows use the item's available inline size`);
   }
   if (scene.pixelSamples) {
     const summaryMarker = target === 'ios-simulator'

@@ -209,6 +209,10 @@ impl CoreStyle for CompactTaffyStyle {
         self.display == Display::Block
     }
 
+    fn is_grid(&self) -> bool {
+        self.display == Display::Grid
+    }
+
     fn is_compressible_replaced(&self) -> bool {
         self.item_is_replaced
     }

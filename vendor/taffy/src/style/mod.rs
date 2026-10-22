@@ -109,6 +109,11 @@ pub trait CoreStyle {
     fn is_block(&self) -> bool {
         false
     }
+    /// Is this a grid container?
+    #[inline(always)]
+    fn is_grid(&self) -> bool {
+        false
+    }
     /// Is it a compressible replaced element: a replaced element (image, video, canvas, ...) or a
     /// form control with an intrinsic size (`input`, `select`, `textarea`, `meter`, ...)?
     /// Such boxes resolve an `auto` width to their intrinsic size rather than being stretched by
@@ -1019,6 +1024,11 @@ impl<S: CheapCloneStr> CoreStyle for Style<S> {
         matches!(self.display, Display::Block)
     }
     #[inline(always)]
+    #[cfg(feature = "grid")]
+    fn is_grid(&self) -> bool {
+        matches!(self.display, Display::Grid)
+    }
+    #[inline(always)]
     fn is_compressible_replaced(&self) -> bool {
         self.item_is_replaced || self.item_is_compressible_replaced
     }
@@ -1121,6 +1131,10 @@ impl<T: CoreStyle> CoreStyle for &'_ T {
     #[inline(always)]
     fn is_block(&self) -> bool {
         (*self).is_block()
+    }
+    #[inline(always)]
+    fn is_grid(&self) -> bool {
+        (*self).is_grid()
     }
     #[inline(always)]
     fn is_compressible_replaced(&self) -> bool {

@@ -26,6 +26,8 @@ mod cyclic_minmax_calc_minimum_span;
 mod cyclic_minmax_calc_overlapping_rows;
 #[path = "c11_4/cyclic_minmax_calc_overlapping_spans.rs"]
 mod cyclic_minmax_calc_overlapping_spans;
+#[path = "c11_4/cyclic_minmax_calc_two_axis_spanning_text.rs"]
+mod cyclic_minmax_calc_two_axis_spanning_text;
 #[path = "c11_4/cyclic_percentage_fit_content.rs"]
 mod cyclic_percentage_fit_content;
 #[path = "c11_4/cyclic_percentage_minmax.rs"]
@@ -1090,6 +1092,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = cyclic_minmax_calc_minimum_span::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
+    if let Some(source) = cyclic_minmax_calc_two_axis_spanning_text::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = cyclic_minmax_calc_overlapping_spans::runtime_source(scene_id) {
