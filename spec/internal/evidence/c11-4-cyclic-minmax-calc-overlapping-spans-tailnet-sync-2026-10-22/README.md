@@ -1,5 +1,6 @@
 # PR #500 뒤 Tailnet C11.4 로드맵 동기화
 
+- 문서 PR: [#501](https://github.com/ohah/spinon/pull/501)
 - 날짜: 2026-10-22
 - 기준 병합: [구현 PR #500](https://github.com/ohah/spinon/pull/500), Rebase and merge, SHA 2f3f45c6aa27f427b36e906fa3a72fd8d864e402
 - 미리보기: [Tailnet 로드맵](https://macstudio.tailed42f2.ts.net/spinon/roadmap.html) · [공식 상태](https://macstudio.tailed42f2.ts.net/spinon/STATUS.html) · [C11.4 계획](https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-cyclic-minmax-calc-overlapping-spans.html) · [실행 근거](https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.html)
