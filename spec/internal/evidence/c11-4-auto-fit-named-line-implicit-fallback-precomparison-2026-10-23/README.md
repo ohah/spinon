@@ -9,7 +9,7 @@
 - 고정 입력: [`grid-auto-fit-named-line-implicit-fallback.html`](./grid-auto-fit-named-line-implicit-fallback.html). `125px` definite axis, `repeat(auto-fit, [cell] 40px [cell])`, implicit track `20px`, gap 0이다. 배치 전 반복 수는 3이다. 모든 scene은 in-flow 단일 item 하나만 둔다.
 - 화면: ![Chrome 156 auto-fit named-line implicit fallback 관측](./chrome-auto-fit-named-line-implicit-fallback.png)
 - hash: fixture `f1ed92c6e2feda24fa1231bf0ba4d31ca14fa74acf3cc7de38149edf4e5b24de`; screenshot `38941fc11fc7071f41d6d70fbcf65ca1d55192fd2fdbac25e9821db5094e3919`.
-- Browser는 Agent Browser를 사용했고 `terminal-browser`는 사용하지 않았다. 관측 후 `agent-browser close --all`을 실행했고 session info는 `active=false`, `pid=null`이며 `agent-browser` 프로세스는 남지 않았다. 사용자의 일반 Chrome 앱은 별도 프로세스여서 유지했다. [`browser-shutdown.json`](./browser-shutdown.json)에 종료 확인을 기록했다.
+- Browser는 Agent Browser를 사용했고 `terminal-browser`는 사용하지 않았다. 관측 후 `agent-browser close --all`로 탭을 닫았다. 잠시 남았던 idle daemon은 이어진 확인에서 session list가 비고 session info가 `active=false`, `pid=null`이며 프로세스도 사라진 것을 확인했다. 사용자의 일반 Chrome 앱은 별도 프로세스여서 유지했다. [`browser-shutdown.json`](./browser-shutdown.json)에 종료 순서를 기록했다.
 
 ## 독립 기대값
 

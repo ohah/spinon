@@ -1,11 +1,16 @@
 {
   "command": "agent-browser close --all",
   "commandResult": "Closed session: default",
-  "sessionInfo": {
+  "immediatelyAfterClose": {
+    "pageCount": 0,
+    "backgroundPid": 42263,
+    "browserLaunched": false
+  },
+  "followupCheck": {
+    "sessionList": [],
     "active": false,
     "pid": null,
-    "runtime": null
+    "agentBrowserProcessCount": 0
   },
-  "agentBrowserProcessCountAfterClose": 0,
   "unrelatedChromeProcessTerminated": false
 }
