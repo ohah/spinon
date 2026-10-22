@@ -1,6 +1,6 @@
 # C11.4 cyclic `minmax(calc())` replaced image multi-span runtime 근거
 
-이 근거는 고정된 intrinsic/definite Grid 네 장면의 구현과 최신 tracked source revision 검증을 기록한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 장면이 모두 통과했다. 이 결과는 C11.4 전체 지원이나 실기기 동작을 뜻하지 않으며, PR 검토·필수 CI·병합은 남아 있다.
+이 근거는 고정된 intrinsic/definite Grid 네 장면의 구현과 최신 tracked source revision 검증을 기록한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 장면이 모두 통과했고, 이 변경의 PR 적대적 검토도 기록했다. 이 결과는 C11.4 전체 지원이나 실기기 동작을 뜻하지 않는다.
 
 ## 빌드와 focused checks
 
@@ -52,4 +52,4 @@
 ## 실패 관점 검토와 상태 경계
 
 - [runtime 실패 경로 검토 20개](./runtime-code-review-20.md), [구현 diff 검토 20개](./pr-diff-review-20.md)와 [PR diff 적대적 검토 30개](./pr-review-30.md)를 계획 검토와 분리했다. 앞선 검토에서 root min/max/aspect-ratio style 검증 및 Android host 계약 누락을 찾아 fail-closed 검증을 보강했다. 필수 CI와 merge는 남아 있다.
-- 공식 `spec/STATUS.md`, C11.4 checkbox와 완료 수 `77/213`은 바꾸지 않았다. PR 30개 적대적 검토, 필수 CI, 병합과 공식 상태 갱신이 남아 있다.
+- 공식 `spec/STATUS.md`, C11.4 checkbox와 완료 수 `77/213`은 바꾸지 않았다. 더 넓은 C11.4 scene과 임의 CSS/image 입력, 실기기 및 전체 제품 범위는 남아 있다. 이 slice의 PR 상태는 GitHub에서 추적하며, 이 변경의 병합만으로 상위 상태를 완료 처리하지 않는다.
