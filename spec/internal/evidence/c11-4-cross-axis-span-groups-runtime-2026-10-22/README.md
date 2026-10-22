@@ -29,7 +29,7 @@ Definite forward/reverse 각각에서 AVD PixelCopy가 root-relative `(50,4)`의
 
 대표 overflow 화면:
 
-![Android API 37 AVD의 definite forward scene, root border 바깥으로 이어지는 item B](android-avd-c114-cross-axis-span-groups-android-avd-20261022T094504492Z-be93d82d/definite-minmax-calc-cross-axis-span-groups-forward.png)
+![Android API 37 AVD의 definite forward scene, root border 바깥으로 이어지는 item B](./android-avd-c114-cross-axis-span-groups-android-avd-20261022T094504492Z-be93d82d/definite-minmax-calc-cross-axis-span-groups-forward.png)
 
 ## iPhone 17 Pro / iOS 26.2 Simulator
 
@@ -39,7 +39,7 @@ Definite forward/reverse의 Metal drawable 표본도 `(50,4)`에서 `229,72,77,2
 
 대표 overflow 화면:
 
-![iPhone 17 Pro iOS 26.2 Simulator의 definite forward scene, drawable submit 전 Metal 표본 통과](ios-simulator-c114-cross-axis-span-groups-ios-simulator-20261022T094650728Z-f1702aac/definite-minmax-calc-cross-axis-span-groups-forward.png)
+![iPhone 17 Pro iOS 26.2 Simulator의 definite forward scene, drawable submit 전 Metal 표본 통과](./ios-simulator-c114-cross-axis-span-groups-ios-simulator-20261022T094650728Z-f1702aac/definite-minmax-calc-cross-axis-span-groups-forward.png)
 
 ## 실행 명령과 빌드
 
@@ -72,3 +72,4 @@ mise exec -- node tools/css-reference/capture-c11-4-auto-repeat-neighbors-simula
 
 - [구현/runtime 실패 관점 검토 20개](implementation-runtime-review-20.md)
 - [최종 PR diff 실패 관점 검토 30개](pr-diff-review-30.md)
+- [RSPress 이미지 경로 보정 PR diff 검토 30개](rspress-image-path-pr-diff-review-30.md)
