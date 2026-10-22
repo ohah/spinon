@@ -1,0 +1,25 @@
+{
+  "serial": "emulator-5558",
+  "target": "android-avd",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone64_arm64",
+  "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+  "apkSha256": "51c0344fee4ef62e869f429339439d5eebb105d6c86038aa4a04dd6823be5e6e",
+  "installedApkSha256": "51c0344fee4ef62e869f429339439d5eebb105d6c86038aa4a04dd6823be5e6e",
+  "sourceRevision": {
+    "commit": "555766bd5ce1037a949b2dd931193e82aba7778b",
+    "tree": "be8df4904b23077be53f8e1a968de7cf73f33b0d",
+    "trackedDiffSha256": "a1dc390d99c4e3ea71018d25f284937fe1e92aee80f8bfa8f33b38cc778cb8f8",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/cyclic_minmax_calc_cross_axis_mixed_span_groups.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/cyclic_minmax_calc_cross_axis_mixed_span_groups.rs",
+      "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/cyclic_minmax_calc_cross_axis_mixed_span_groups.rs",
+      "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/cyclic_minmax_calc_cross_axis_mixed_span_groups/cases.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs"
+    ]
+  }
+}

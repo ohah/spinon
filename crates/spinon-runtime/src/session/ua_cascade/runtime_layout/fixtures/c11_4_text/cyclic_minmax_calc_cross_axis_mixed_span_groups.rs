@@ -17,6 +17,7 @@ use super::{AHEM, RuntimeLayoutFailure, layout_failure};
 #[derive(Clone, Copy)]
 enum Width {
     MinContent,
+    MaxContent,
     Px(f32),
 }
 
@@ -46,7 +47,7 @@ struct Scene {
     order: [&'static Item; 3],
 }
 
-const SCENES: [Scene; 4] = [
+const SCENES: [Scene; 8] = [
     Scene {
         id: "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-forward",
         width: Width::MinContent,
@@ -58,6 +59,16 @@ const SCENES: [Scene; 4] = [
         order: [&ITEM_C, &ITEM_B, &ITEM_A],
     },
     Scene {
+        id: "cyclic-minmax-cross-axis-max-content-span-groups-forward",
+        width: Width::MaxContent,
+        order: [&ITEM_A, &ITEM_B, &ITEM_C],
+    },
+    Scene {
+        id: "cyclic-minmax-cross-axis-max-content-span-groups-reverse",
+        width: Width::MaxContent,
+        order: [&ITEM_C, &ITEM_B, &ITEM_A],
+    },
+    Scene {
         id: "definite-minmax-cross-axis-mixed-span-groups-forward",
         width: Width::Px(40.0),
         order: [&ITEM_A, &ITEM_B, &ITEM_C],
@@ -65,6 +76,16 @@ const SCENES: [Scene; 4] = [
     Scene {
         id: "definite-minmax-cross-axis-mixed-span-groups-reverse",
         width: Width::Px(40.0),
+        order: [&ITEM_C, &ITEM_B, &ITEM_A],
+    },
+    Scene {
+        id: "definite-minmax-cross-axis-max-content-span-groups-forward",
+        width: Width::Px(80.0),
+        order: [&ITEM_A, &ITEM_B, &ITEM_C],
+    },
+    Scene {
+        id: "definite-minmax-cross-axis-max-content-span-groups-reverse",
+        width: Width::Px(80.0),
         order: [&ITEM_C, &ITEM_B, &ITEM_A],
     },
 ];
@@ -173,6 +194,7 @@ fn validate_grid_style(
 ) -> Result<(), RuntimeLayoutFailure> {
     let expected_width = match scene.width {
         Width::MinContent => ComputedCssDimension::MinContent,
+        Width::MaxContent => ComputedCssDimension::MaxContent,
         Width::Px(width) => ComputedCssDimension::LengthPx(width),
     };
     let expected_border = ComputedLayoutBorder {
@@ -350,13 +372,17 @@ mod tests {
     use std::collections::BTreeSet;
 
     #[test]
-    fn allowlists_only_four_three_item_mixed_span_scenes() {
+    fn allowlists_only_eight_three_item_mixed_span_scenes() {
         let ids = SCENES.iter().map(|scene| scene.id).collect::<BTreeSet<_>>();
-        assert_eq!(SCENES.len(), 4);
+        assert_eq!(SCENES.len(), 8);
         assert_eq!(ids.len(), SCENES.len());
         assert!(ids.contains("cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-forward"));
         assert!(ids.contains("cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-reverse"));
         assert!(ids.contains("definite-minmax-cross-axis-mixed-span-groups-forward"));
         assert!(ids.contains("definite-minmax-cross-axis-mixed-span-groups-reverse"));
+        assert!(ids.contains("cyclic-minmax-cross-axis-max-content-span-groups-forward"));
+        assert!(ids.contains("cyclic-minmax-cross-axis-max-content-span-groups-reverse"));
+        assert!(ids.contains("definite-minmax-cross-axis-max-content-span-groups-forward"));
+        assert!(ids.contains("definite-minmax-cross-axis-max-content-span-groups-reverse"));
     }
 }

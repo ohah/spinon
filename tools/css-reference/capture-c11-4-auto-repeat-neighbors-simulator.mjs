@@ -41,6 +41,10 @@ const cyclicPercentSceneIDs = new Set([
   'definite-minmax-calc-overlap-rows-forward', 'definite-minmax-calc-overlap-rows-reverse',
   'definite-minmax-calc-overlap-rows-small-forward',
   'definite-minmax-calc-overlap-rows-small-reverse',
+  'cyclic-minmax-cross-axis-max-content-span-groups-forward',
+  'cyclic-minmax-cross-axis-max-content-span-groups-reverse',
+  'definite-minmax-cross-axis-max-content-span-groups-forward',
+  'definite-minmax-cross-axis-max-content-span-groups-reverse',
   'cyclic-percent-two-axis-multitrack', 'cyclic-percent-columns-multitrack',
   'cyclic-percent-rows-multitrack', 'definite-percent-two-axis-multitrack',
   'cyclic-calc-column', 'cyclic-calc-row', 'cyclic-calc-two-axis',
@@ -2483,7 +2487,7 @@ const crossAxisSpanGroupScene = ({ id, root, columns, rows, reverse, intrinsic, 
 };
 const mixedCrossAxisSpanGroupScene = ({
   id, root, columns, rows, reverse, intrinsic, itemA, itemB, itemC,
-  itemAHeight, itemCHeight,
+  itemAHeight, itemCHeight, minimumRows, pixelSamples,
 }) => {
   const itemFrames = { a: itemA, b: itemB, c: itemC };
   const order = reverse ? ['c', 'b', 'a'] : ['a', 'b', 'c'];
@@ -2532,7 +2536,7 @@ const mixedCrossAxisSpanGroupScene = ({
       ],
       minimum: {
         Columns: { a: intrinsic ? 20 : 0, b: 40, c: intrinsic ? 20 : 0 },
-        Rows: { a: intrinsic ? 20 : 0, b: 10, c: intrinsic ? 20 : 0 },
+        Rows: minimumRows ?? { a: intrinsic ? 20 : 0, b: 10, c: intrinsic ? 20 : 0 },
       },
       minContent: {
         Columns: { a: 20, b: 40, c: 20 },
@@ -2551,7 +2555,9 @@ const mixedCrossAxisSpanGroupScene = ({
       } : {}),
     },
   };
-  if (!intrinsic) {
+  if (pixelSamples) {
+    scene.pixelSamples = pixelSamples;
+  } else if (!intrinsic) {
     scene.pixelSamples = [
       { id: `${id}-overflow-item-b`, nodeId: `c114-${id}-item-b`,
         xCssPx: 50, yCssPx: 4, rgba: [229, 72, 77, 255] },
@@ -2747,6 +2753,60 @@ scenes.push(
     reverse: true, intrinsic: false,
     itemA: [2, 2, 26, 40], itemB: [16, 2, 40, 10], itemC: [2, 2, 40, 40],
     itemAHeight: 30, itemCHeight: 40,
+  }),
+  mixedCrossAxisSpanGroupScene({
+    id: 'cyclic-minmax-cross-axis-max-content-span-groups-forward',
+    root: [114, 14], columns: [107 / 3, 125 / 3, 86 / 3], rows: [4, 4],
+    reverse: false, intrinsic: true,
+    itemA: [2, 2, 238 / 3, 10], itemB: [119 / 3, 2, 40, 10], itemC: [2, 2, 110, 10],
+    itemAHeight: 10, itemCHeight: 10,
+    minimumRows: { a: 10, b: 10, c: 10 },
+    pixelSamples: [
+      { id: 'max-content-forward-right-border', nodeId: 'c114-cyclic-minmax-cross-axis-max-content-span-groups-forward-grid',
+        xCssPx: 113, yCssPx: 6, rgba: [240, 198, 116, 255] },
+      { id: 'max-content-forward-clear-past-root', nodeId: 'c114-cyclic-minmax-cross-axis-max-content-span-groups-forward-grid',
+        xCssPx: 116, yCssPx: 6, rgba: [0, 0, 0, 255] },
+    ],
+  }),
+  mixedCrossAxisSpanGroupScene({
+    id: 'cyclic-minmax-cross-axis-max-content-span-groups-reverse',
+    root: [114, 14], columns: [107 / 3, 125 / 3, 86 / 3], rows: [4, 4],
+    reverse: true, intrinsic: true,
+    itemA: [2, 2, 238 / 3, 10], itemB: [119 / 3, 2, 40, 10], itemC: [2, 2, 110, 10],
+    itemAHeight: 10, itemCHeight: 10,
+    minimumRows: { a: 10, b: 10, c: 10 },
+    pixelSamples: [
+      { id: 'max-content-reverse-right-border', nodeId: 'c114-cyclic-minmax-cross-axis-max-content-span-groups-reverse-grid',
+        xCssPx: 113, yCssPx: 6, rgba: [240, 198, 116, 255] },
+      { id: 'max-content-reverse-clear-past-root', nodeId: 'c114-cyclic-minmax-cross-axis-max-content-span-groups-reverse-grid',
+        xCssPx: 116, yCssPx: 6, rgba: [0, 0, 0, 255] },
+    ],
+  }),
+  mixedCrossAxisSpanGroupScene({
+    id: 'definite-minmax-cross-axis-max-content-span-groups-forward',
+    root: [84, 24], columns: [76 / 3, 76 / 3, 76 / 3], rows: [9, 9],
+    reverse: false, intrinsic: false,
+    itemA: [2, 2, 158 / 3, 20], itemB: [88 / 3, 2, 40, 10], itemC: [2, 2, 80, 20],
+    itemAHeight: 20, itemCHeight: 20,
+    pixelSamples: [
+      { id: 'definite-80-forward-right-border', nodeId: 'c114-definite-minmax-cross-axis-max-content-span-groups-forward-grid',
+        xCssPx: 83, yCssPx: 6, rgba: [240, 198, 116, 255] },
+      { id: 'definite-80-forward-clear-past-root', nodeId: 'c114-definite-minmax-cross-axis-max-content-span-groups-forward-grid',
+        xCssPx: 86, yCssPx: 6, rgba: [0, 0, 0, 255] },
+    ],
+  }),
+  mixedCrossAxisSpanGroupScene({
+    id: 'definite-minmax-cross-axis-max-content-span-groups-reverse',
+    root: [84, 24], columns: [76 / 3, 76 / 3, 76 / 3], rows: [9, 9],
+    reverse: true, intrinsic: false,
+    itemA: [2, 2, 158 / 3, 20], itemB: [88 / 3, 2, 40, 10], itemC: [2, 2, 80, 20],
+    itemAHeight: 20, itemCHeight: 20,
+    pixelSamples: [
+      { id: 'definite-80-reverse-right-border', nodeId: 'c114-definite-minmax-cross-axis-max-content-span-groups-reverse-grid',
+        xCssPx: 83, yCssPx: 6, rgba: [240, 198, 116, 255] },
+      { id: 'definite-80-reverse-clear-past-root', nodeId: 'c114-definite-minmax-cross-axis-max-content-span-groups-reverse-grid',
+        xCssPx: 86, yCssPx: 6, rgba: [0, 0, 0, 255] },
+    ],
   }),
 );
 const spanColumnSamples = () => [
@@ -2954,7 +3014,7 @@ for (const id of [
   }
   scenes.push(scene);
 }
-assert.equal(scenes.length, 263, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 267, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;

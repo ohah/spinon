@@ -72,7 +72,18 @@ const DEFINITE_FRAMES: [[f32; 4]; 3] = [
     [16.0, 2.0, 40.0, 10.0],
     [2.0, 2.0, 40.0, 40.0],
 ];
-pub(super) const CASES: [Case; 4] = [
+const MAX_CONTENT_COLUMNS: [f32; 3] = [107.0 / 3.0, 125.0 / 3.0, 86.0 / 3.0];
+const MAX_CONTENT_FRAMES: [[f32; 4]; 3] = [
+    [2.0, 2.0, 238.0 / 3.0, 10.0],
+    [119.0 / 3.0, 2.0, 40.0, 10.0],
+    [2.0, 2.0, 110.0, 10.0],
+];
+const DEFINITE_80_FRAMES: [[f32; 4]; 3] = [
+    [2.0, 2.0, 158.0 / 3.0, 20.0],
+    [88.0 / 3.0, 2.0, 40.0, 10.0],
+    [2.0, 2.0, 80.0, 20.0],
+];
+pub(super) const CASES: [Case; 8] = [
     Case {
         id: "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-forward",
         width: "min-content",
@@ -100,6 +111,32 @@ pub(super) const CASES: [Case; 4] = [
         block_contributions: [20.0, 10.0, 20.0],
     },
     Case {
+        id: "cyclic-minmax-cross-axis-max-content-span-groups-forward",
+        width: "max-content",
+        order: [A, B, C],
+        root: [114.0, 14.0],
+        columns: MAX_CONTENT_COLUMNS,
+        rows: [4.0, 4.0],
+        item_frames: MAX_CONTENT_FRAMES,
+        line_counts: [1, 1, 1],
+        minimum_inline: [20.0, 40.0, 20.0],
+        minimum_block: [10.0, 10.0, 10.0],
+        block_contributions: [10.0, 10.0, 10.0],
+    },
+    Case {
+        id: "cyclic-minmax-cross-axis-max-content-span-groups-reverse",
+        width: "max-content",
+        order: [C, B, A],
+        root: [114.0, 14.0],
+        columns: MAX_CONTENT_COLUMNS,
+        rows: [4.0, 4.0],
+        item_frames: MAX_CONTENT_FRAMES,
+        line_counts: [1, 1, 1],
+        minimum_inline: [20.0, 40.0, 20.0],
+        minimum_block: [10.0, 10.0, 10.0],
+        block_contributions: [10.0, 10.0, 10.0],
+    },
+    Case {
         id: "definite-minmax-cross-axis-mixed-span-groups-forward",
         width: "40px",
         order: [A, B, C],
@@ -124,6 +161,32 @@ pub(super) const CASES: [Case; 4] = [
         minimum_inline: [0.0, 40.0, 0.0],
         minimum_block: [0.0, 10.0, 0.0],
         block_contributions: [30.0, 10.0, 40.0],
+    },
+    Case {
+        id: "definite-minmax-cross-axis-max-content-span-groups-forward",
+        width: "80px",
+        order: [A, B, C],
+        root: [84.0, 24.0],
+        columns: [76.0 / 3.0; 3],
+        rows: [9.0, 9.0],
+        item_frames: DEFINITE_80_FRAMES,
+        line_counts: [2, 1, 2],
+        minimum_inline: [0.0, 40.0, 0.0],
+        minimum_block: [0.0, 10.0, 0.0],
+        block_contributions: [20.0, 10.0, 20.0],
+    },
+    Case {
+        id: "definite-minmax-cross-axis-max-content-span-groups-reverse",
+        width: "80px",
+        order: [C, B, A],
+        root: [84.0, 24.0],
+        columns: [76.0 / 3.0; 3],
+        rows: [9.0, 9.0],
+        item_frames: DEFINITE_80_FRAMES,
+        line_counts: [2, 1, 2],
+        minimum_inline: [0.0, 40.0, 0.0],
+        minimum_block: [0.0, 10.0, 0.0],
+        block_contributions: [20.0, 10.0, 20.0],
     },
 ];
 
