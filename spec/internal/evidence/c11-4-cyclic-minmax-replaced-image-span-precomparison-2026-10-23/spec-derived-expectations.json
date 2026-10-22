@@ -15,7 +15,7 @@
     "rowGap": 2,
     "border": 2,
     "padding": 0,
-    "itemSizing": "width:auto; height:8px|12px|16px; justify-self:start; align-self:start"
+    "itemSizing": "width:auto; height:8px|12px|16px; root align-items:start; justify-self:auto; align-self:auto"
   },
   "items": {
     "A": {"width": 12, "height": 8, "columns": "1 / 3", "rows": "1 / 3"},

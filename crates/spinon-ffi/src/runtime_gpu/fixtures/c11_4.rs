@@ -32,6 +32,8 @@ mod cyclic_minmax_calc_overlapping_rows;
 mod cyclic_minmax_calc_overlapping_spans;
 #[path = "c11_4/cyclic_minmax_calc_two_axis_spanning_text.rs"]
 mod cyclic_minmax_calc_two_axis_spanning_text;
+#[path = "c11_4/cyclic_minmax_replaced_image_span.rs"]
+mod cyclic_minmax_replaced_image_span;
 #[path = "c11_4/cyclic_percentage_fit_content.rs"]
 mod cyclic_percentage_fit_content;
 #[path = "c11_4/cyclic_percentage_minmax.rs"]
@@ -1077,6 +1079,9 @@ const C11_4_IMAGE_FIXED_GUTTER_SCENES: [ImageSceneWithRowGap; 2] = [
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     scene_id: &str,
 ) -> Result<Cow<'static, str>, String> {
+    if let Some(source) = cyclic_minmax_replaced_image_span::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = cyclic_percentage_tracks::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
@@ -1824,6 +1829,49 @@ mod tests {
         }
         assert!(
             c11_4_grid_track_sizing_runtime_source("cyclic-percent-two-axis-multitrack-unlisted")
+                .is_err()
+        );
+    }
+
+    #[test]
+    fn exposes_four_fixed_cyclic_minmax_replaced_image_span_scenes() {
+        for (scene_id, root_size, item_ids) in [
+            (
+                "cyclic-minmax-replaced-image-span-intrinsic-forward",
+                "min-content",
+                ["image-a", "image-b", "image-c"],
+            ),
+            (
+                "cyclic-minmax-replaced-image-span-intrinsic-reverse",
+                "min-content",
+                ["image-c", "image-b", "image-a"],
+            ),
+            (
+                "cyclic-minmax-replaced-image-span-definite-forward",
+                "80px",
+                ["image-a", "image-b", "image-c"],
+            ),
+            (
+                "cyclic-minmax-replaced-image-span-definite-reverse",
+                "80px",
+                ["image-c", "image-b", "image-a"],
+            ),
+        ] {
+            let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
+            assert!(source.len() < 4 * 1024);
+            assert!(source.contains(&format!("sceneId:{scene_id:?}")));
+            assert!(source.contains(&format!("width:{root_size};height:{root_size}")));
+            assert!(source.contains("repeat(3,minmax(calc(10% + 2px),max-content))"));
+            assert!(source.contains("repeat(2,minmax(calc(10% + 2px),max-content))"));
+            assert!(source.contains("column-gap:2px;row-gap:2px"));
+            assert!(source.contains("grid-row:1 / 3"));
+            assert_eq!(source.matches("document.createElement('img')").count(), 3);
+            for image_id in item_ids {
+                assert!(source.contains(&format!("c114-{scene_id}-{image_id}")));
+            }
+        }
+        assert!(
+            c11_4_grid_track_sizing_runtime_source("cyclic-minmax-replaced-image-span-unlisted")
                 .is_err()
         );
     }

@@ -27,6 +27,26 @@ const REVERSED_THREE_IMAGE_IDS: &[&str] = &[
     "c114-overflow-three-image-b-reversed",
     "c114-overflow-three-image-a-reversed",
 ];
+const CYCLIC_INTRINSIC_FORWARD_IMAGE_IDS: &[&str] = &[
+    "c114-cyclic-minmax-replaced-image-span-intrinsic-forward-image-a",
+    "c114-cyclic-minmax-replaced-image-span-intrinsic-forward-image-b",
+    "c114-cyclic-minmax-replaced-image-span-intrinsic-forward-image-c",
+];
+const CYCLIC_INTRINSIC_REVERSE_IMAGE_IDS: &[&str] = &[
+    "c114-cyclic-minmax-replaced-image-span-intrinsic-reverse-image-c",
+    "c114-cyclic-minmax-replaced-image-span-intrinsic-reverse-image-b",
+    "c114-cyclic-minmax-replaced-image-span-intrinsic-reverse-image-a",
+];
+const CYCLIC_DEFINITE_FORWARD_IMAGE_IDS: &[&str] = &[
+    "c114-cyclic-minmax-replaced-image-span-definite-forward-image-a",
+    "c114-cyclic-minmax-replaced-image-span-definite-forward-image-b",
+    "c114-cyclic-minmax-replaced-image-span-definite-forward-image-c",
+];
+const CYCLIC_DEFINITE_REVERSE_IMAGE_IDS: &[&str] = &[
+    "c114-cyclic-minmax-replaced-image-span-definite-reverse-image-c",
+    "c114-cyclic-minmax-replaced-image-span-definite-reverse-image-b",
+    "c114-cyclic-minmax-replaced-image-span-definite-reverse-image-a",
+];
 
 pub(super) fn attach_images(
     document: &HostDocumentSnapshot,
@@ -39,6 +59,10 @@ pub(super) fn attach_images(
         "c114-two-images-anonymous-runs-reversed-grid",
         "c114-two-anonymous-runs-three-images-forward-grid",
         "c114-three-images-two-anonymous-runs-reversed-grid",
+        "c114-cyclic-minmax-replaced-image-span-intrinsic-forward-grid",
+        "c114-cyclic-minmax-replaced-image-span-intrinsic-reverse-grid",
+        "c114-cyclic-minmax-replaced-image-span-definite-forward-grid",
+        "c114-cyclic-minmax-replaced-image-span-definite-reverse-grid",
     ];
     let mut stack = document.root_children().collect::<Vec<_>>();
     let mut roots = Vec::new();
@@ -77,13 +101,19 @@ pub(super) fn attach_images(
         "two-images-anonymous-runs-reversed" => REVERSED_TWO_IMAGE_IDS,
         "two-anonymous-runs-three-images-forward" => FORWARD_THREE_IMAGE_IDS,
         "three-images-two-anonymous-runs-reversed" => REVERSED_THREE_IMAGE_IDS,
+        "cyclic-minmax-replaced-image-span-intrinsic-forward" => CYCLIC_INTRINSIC_FORWARD_IMAGE_IDS,
+        "cyclic-minmax-replaced-image-span-intrinsic-reverse" => CYCLIC_INTRINSIC_REVERSE_IMAGE_IDS,
+        "cyclic-minmax-replaced-image-span-definite-forward" => CYCLIC_DEFINITE_FORWARD_IMAGE_IDS,
+        "cyclic-minmax-replaced-image-span-definite-reverse" => CYCLIC_DEFINITE_REVERSE_IMAGE_IDS,
         _ => return Ok((scene, String::new())),
     };
+    let expected_non_image_children =
+        usize::from(!scene_id.starts_with("cyclic-minmax-replaced-image-span-")) * 2;
     let children = document
         .children(*root)
         .ok_or_else(|| "C11.4 bordered Grid child 목록이 없습니다".to_owned())?
         .collect::<Vec<_>>();
-    if children.len() != image_ids.len() + 2 {
+    if children.len() != image_ids.len() + expected_non_image_children {
         return Err("C11.4 bordered Grid direct child 구조가 다릅니다".to_owned());
     }
 

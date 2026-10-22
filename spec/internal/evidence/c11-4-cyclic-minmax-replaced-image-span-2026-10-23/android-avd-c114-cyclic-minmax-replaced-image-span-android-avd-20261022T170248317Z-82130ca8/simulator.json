@@ -1,0 +1,39 @@
+{
+  "serial": "emulator-5562",
+  "target": "android-avd",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone64_arm64",
+  "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+  "apkSha256": "80a0a70d93ae7d6e55a0ac59ad863b09d65855cb7cfb9aaa19e9ac1f9f15352b",
+  "installedApkSha256": "80a0a70d93ae7d6e55a0ac59ad863b09d65855cb7cfb9aaa19e9ac1f9f15352b",
+  "sourceRevision": {
+    "commit": "2c1a06e959e3d81c16c147d7c9e68af7904d5792",
+    "tree": "27e97ffddb38b2c5c474ee66c8e49e75de2b6c49",
+    "trackedDiffSha256": "3b761f6db06f2153b67967874eaf6dd3e9038aa1a7906029cf680ef0b69522e7",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_grid_border_overflow_paint.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/cyclic_minmax_replaced_image_span.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_image.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_image/cyclic_minmax_replaced_span.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_image/multispan.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_implicit_rows.rs",
+      "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests.rs",
+      "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/cyclic_minmax_replaced_image_span.rs",
+      "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/cyclic_minmax_replaced_image_span/assertions.rs",
+      "crates/spinon-style-to-layout/src/lib.rs",
+      "crates/spinon-style-to-layout/src/projection.rs",
+      "plan/c11-4-cyclic-minmax-replaced-image-span.md",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/README.md",
+      "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/spec-derived-expectations.json",
+      "tests/fixtures/css/c11/grid-track-sizing-c114-cyclic-minmax-replaced-image-precomparison.html",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs"
+    ]
+  }
+}

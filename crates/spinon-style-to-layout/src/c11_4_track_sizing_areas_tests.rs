@@ -10,6 +10,8 @@ use spinon_style::{
     compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets,
 };
 
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+use crate::compute_runtime_style_layout_with_intrinsic_size_snapshot_for_c11_4_two_axis_grid_fixture;
 use crate::{
     StyleLayoutError, StyleLayoutOutput, compute_runtime_block_flex_grid_template_style_layout,
     compute_runtime_block_flex_grid_track_sizing_style_layout,
@@ -47,6 +49,9 @@ mod cyclic_minmax_calc_overlapping_spans;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "c11_4_track_sizing_areas_tests/cyclic_minmax_calc_two_axis_spanning_text.rs"]
 mod cyclic_minmax_calc_two_axis_spanning_text;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "c11_4_track_sizing_areas_tests/cyclic_minmax_replaced_image_span.rs"]
+mod cyclic_minmax_replaced_image_span;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "c11_4_track_sizing_areas_tests/cyclic_two_axis_multitrack.rs"]
 mod cyclic_two_axis_multitrack;
@@ -168,6 +173,13 @@ impl Fixture {
     }
 
     fn compute_with_image_intrinsic_size(&self) -> Result<StyleLayoutOutput, StyleLayoutError> {
+        self.compute_with_image_intrinsic_sizes(&["image"])
+    }
+
+    fn compute_with_image_intrinsic_sizes(
+        &self,
+        image_ids: &[&str],
+    ) -> Result<StyleLayoutOutput, StyleLayoutError> {
         let snapshot = self.document.snapshot();
         let view =
             StyloDocumentView::new_html_runtime_mount_shared(Arc::new(snapshot.clone()), self.root)
@@ -193,12 +205,54 @@ impl Fixture {
                 render_tree: snapshot.render_tree_revision(),
             },
             IntrinsicSizeRevision::INITIAL.checked_next().unwrap(),
-            BTreeMap::from([(
-                self.nodes["image"].id(),
-                LayoutIntrinsicSize::new(24.0, 16.0),
-            )]),
+            image_ids
+                .iter()
+                .map(|id| (self.nodes[*id].id(), LayoutIntrinsicSize::new(24.0, 16.0))),
         )?;
         compute_runtime_style_layout_with_intrinsic_size_snapshot(
+            &snapshot,
+            self.root,
+            computed_styles,
+            viewport,
+            intrinsic_sizes,
+        )
+    }
+
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    fn compute_with_image_intrinsic_sizes_and_two_axis_grid(
+        &self,
+        image_ids: &[&str],
+    ) -> Result<StyleLayoutOutput, StyleLayoutError> {
+        let snapshot = self.document.snapshot();
+        let view =
+            StyloDocumentView::new_html_runtime_mount_shared(Arc::new(snapshot.clone()), self.root)
+                .unwrap();
+        let viewport = CssViewport {
+            width_css_px: 240.0,
+            height_css_px: 80.0,
+            device_scale_factor: 1.0,
+            environment_revision: Default::default(),
+            media_environment: CssMediaEnvironment::MOBILE,
+        };
+        let computed_styles =
+            compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+                &view,
+                &[],
+                viewport,
+                StyleRevision::INITIAL,
+            )?;
+        let intrinsic_sizes = LayoutIntrinsicSizeSnapshot::new(
+            LayoutSourceRevision::HostDocument {
+                generation: snapshot.generation(),
+                document: snapshot.document_revision(),
+                render_tree: snapshot.render_tree_revision(),
+            },
+            IntrinsicSizeRevision::INITIAL.checked_next().unwrap(),
+            image_ids
+                .iter()
+                .map(|id| (self.nodes[*id].id(), LayoutIntrinsicSize::new(24.0, 16.0))),
+        )?;
+        compute_runtime_style_layout_with_intrinsic_size_snapshot_for_c11_4_two_axis_grid_fixture(
             &snapshot,
             self.root,
             computed_styles,

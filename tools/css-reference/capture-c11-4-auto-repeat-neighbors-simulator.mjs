@@ -3014,7 +3014,87 @@ for (const id of [
   }
   scenes.push(scene);
 }
-assert.equal(scenes.length, 267, 'C11.4 fixture scene count differs.');
+function cyclicMinmaxReplacedImageSpanScene(id, order, intrinsic) {
+  const rootID = `c114-${id}-grid`;
+  const root = intrinsic ? [29, 20] : [84, 84];
+  const columns = intrinsic ? [5, 8, 8] : [10, 10, 10];
+  const rows = intrinsic ? [7, 7] : [10, 10];
+  const itemSpecs = {
+    a: { frame: [2, 2, 12, 8], columnSpan: 2 },
+    b: { frame: [intrinsic ? 9 : 14, 2, 18, 12], columnSpan: 2 },
+    c: { frame: [2, 2, 24, 16], columnSpan: 3 },
+  };
+  const nodeByKey = Object.fromEntries(order.map((key, index) => [key, index + 2]));
+  const itemFrames = order.map((key, index) => {
+    const [x, y, width, height] = itemSpecs[key].frame;
+    return `${index + 1}:node=${nodeByKey[key]},x=${x},y=${y},width=${width},height=${height}`;
+  });
+  const itemSizes = { a: [12, 8], b: [18, 12], c: [24, 16] };
+  const borderY = Math.floor(root[1] / 2);
+  return {
+    id,
+    axis: 'Columns',
+    boxCount: 4,
+    rootFrame: `width=${root[0]},height=${root[1]}`,
+    itemFrame: null,
+    nodeFrames: `node_frames_css_px=[0:node=1,x=0,y=0,width=${root[0]},height=${root[1]};${itemFrames.join(';')}]`,
+    axes: {
+      Columns: { tracks: columns, collapsed: [false, false, false] },
+      Rows: { tracks: rows, collapsed: [false, false] },
+    },
+    gaps: { Columns: 2, Rows: 2 },
+    intrinsicInputs: order.map((key, sourceOrder) => ({
+      grid: 1,
+      node: nodeByKey[key],
+      sourceOrder,
+      kind: 'replaced',
+      aspectRatio: null,
+      width: 24,
+      height: 16,
+    })),
+    intrinsicSpansByAxis: { Columns: [2, 3], Rows: [2] },
+    columnSizingFeedsRows: true,
+    replacedCyclicMinmaxImageSpan: { intrinsic, order, nodeByKey, itemSpecs, itemSizes },
+    pixelSamples: [
+      {
+        id: `${id}-image-interior`,
+        nodeId: rootID,
+        xCssPx: 4,
+        yCssPx: 4,
+        rgba: [255, 255, 64, 255],
+      },
+      {
+        id: `${id}-right-border`,
+        nodeId: rootID,
+        xCssPx: root[0] - 1,
+        yCssPx: borderY,
+        rgba: [240, 198, 116, 255],
+      },
+      {
+        id: `${id}-after-root`,
+        nodeId: rootID,
+        xCssPx: root[0],
+        yCssPx: borderY,
+        rgba: [0, 0, 0, 255],
+      },
+    ],
+  };
+}
+scenes.push(
+  cyclicMinmaxReplacedImageSpanScene(
+    'cyclic-minmax-replaced-image-span-intrinsic-forward', ['a', 'b', 'c'], true,
+  ),
+  cyclicMinmaxReplacedImageSpanScene(
+    'cyclic-minmax-replaced-image-span-intrinsic-reverse', ['c', 'b', 'a'], true,
+  ),
+  cyclicMinmaxReplacedImageSpanScene(
+    'cyclic-minmax-replaced-image-span-definite-forward', ['a', 'b', 'c'], false,
+  ),
+  cyclicMinmaxReplacedImageSpanScene(
+    'cyclic-minmax-replaced-image-span-definite-reverse', ['c', 'b', 'a'], false,
+  ),
+);
+assert.equal(scenes.length, 271, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -4386,7 +4466,8 @@ function verifyRuntimeLog(log, scene, runID) {
       }
     }
     if (scene.intrinsicInputs && !scene.mixedIntrinsicContributions
-      && !scene.nestedGridAnonymousTextImage) {
+      && !scene.nestedGridAnonymousTextImage
+      && !scene.replacedCyclicMinmaxImageSpan) {
       assert.deepEqual((diagnostics.gridItemIntrinsicInputs ?? []).map((input) => ({
         grid: input.grid,
         node: input.node,
@@ -4467,7 +4548,21 @@ function verifyRuntimeLog(log, scene, runID) {
     assert.deepEqual(actualInputs, scene.anonymousTextImageItems,
       `${scene.id}: anonymous text grouping, image intrinsic input, and item frames differ`);
   }
-  if (scene.intrinsicInputs
+  if (scene.intrinsicInputs && scene.replacedCyclicMinmaxImageSpan) {
+    const intrinsicInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => ({
+      grid: input.grid,
+      node: input.node,
+      sourceOrder: input.sourceOrder,
+      kind: input.source?.kind,
+      aspectRatio: input.source?.natural?.aspectRatio ?? null,
+      width: input.source?.natural?.width,
+      height: input.source?.natural?.height,
+    }));
+    assert.deepEqual(intrinsicInputs, scene.intrinsicInputs,
+      `${scene.id}: replaced image intrinsic input matrix differs from fixed PNG input`);
+    assert.equal(diagnostics.layoutInputRevision?.intrinsicSize, 1,
+      `${scene.id}: image intrinsic resource revision is not the fixed fixture revision`);
+  } else if (scene.intrinsicInputs
     && (scene.mixedIntrinsicContributions || scene.nestedGridAnonymousTextImage)) {
     const intrinsicInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => (
       input.source?.kind === 'text' ? {
@@ -4543,6 +4638,9 @@ function verifyRuntimeLog(log, scene, runID) {
               : scene.nestedGridTextMultiSpan.gridNodes[0]))
     : diagnostics.trackSizingTraces[0];
   assert.ok(axisTrace, `${scene.id}: expected track-sizing Grid trace가 없습니다.`);
+  if (scene.replacedCyclicMinmaxImageSpan) {
+    verifyCyclicMinmaxReplacedImageSpanTrace(scene, axisTrace);
+  }
   for (const [axis, expected] of Object.entries(axisSpecs)) {
     const axisPass = axisTrace.passes
       .filter((pass) => pass.axis === axis).at(-1);
@@ -4984,6 +5082,132 @@ function verifyRuntimeLog(log, scene, runID) {
     trackTraceChunks: traceParts.length,
     drawPresented: true,
   };
+}
+
+function verifyCyclicMinmaxReplacedImageSpanTrace(scene, trace) {
+  const expected = scene.replacedCyclicMinmaxImageSpan;
+  const { intrinsic, order, nodeByKey, itemSpecs, itemSizes } = expected;
+  const expectedPassAxes = intrinsic
+    ? ['Columns', 'Rows', 'Columns', 'Rows']
+    : ['Columns', 'Rows'];
+  assert.deepEqual(trace.passes.map((pass) => pass.axis), expectedPassAxes,
+    `${scene.id}: cyclic-auto passes must precede resolved Columns and Rows`);
+
+  const passesFor = (axis) => trace.passes.filter((pass) => pass.axis === axis);
+  const columns = passesFor('Columns');
+  const rows = passesFor('Rows');
+  assert.equal(columns.length, intrinsic ? 2 : 1, `${scene.id}: Columns pass count`);
+  assert.equal(rows.length, intrinsic ? 2 : 1, `${scene.id}: Rows pass count`);
+
+  const batchSpans = (pass) => pass.stages.flatMap(({ stage }) => {
+    const match = stage.match(/^IntrinsicItemBatch \{ span: (\d+),/);
+    return match ? [Number(match[1])] : [];
+  });
+  for (const pass of trace.passes) {
+    assert.deepEqual(batchSpans(pass), pass.axis === 'Columns' ? [2, 3] : [2],
+      `${scene.id}: ${pass.axis} span-group order`);
+  }
+  const stageBases = (pass, name) => {
+    const stage = pass.stages.find((candidate) => candidate.stage === name);
+    assert.ok(stage, `${scene.id}: ${pass.axis} ${name} stage missing`);
+    return stage.tracks.filter(({ gutter, collapsed }) => !gutter && !collapsed)
+      .map(({ baseSize }) => baseSize);
+  };
+  const spanBases = (pass, span) => {
+    const name = `IntrinsicItemBatch { span: ${span}, crosses_flexible_track: false }`;
+    return stageBases(pass, name);
+  };
+  const closeArray = (actual, expectedValues, label) => {
+    assert.equal(actual.length, expectedValues.length, `${scene.id}: ${label} track count`);
+    actual.forEach((value, index) => assert.ok(
+      Math.abs(value - expectedValues[index]) <= 1 / 64,
+      `${scene.id}: ${label} track ${index + 1} expected ${expectedValues[index]}, got ${value}`,
+    ));
+  };
+
+  for (const [axis, axisPasses] of [['Columns', columns], ['Rows', rows]]) {
+    for (const [passIndex, pass] of axisPasses.entries()) {
+      for (const key of order) {
+        const node = nodeByKey[key];
+        const span = axis === 'Columns' ? itemSpecs[key].columnSpan : 2;
+        const value = axis === 'Columns' ? itemSizes[key][0] : itemSizes[key][1];
+        const minimum = axis === 'Columns'
+          ? (intrinsic && passIndex === 0 ? value : 0)
+          : value;
+        for (const [kind, expectedValue] of [
+          ['Minimum', minimum],
+          ['MinContent', value],
+          ['MaxContent', value],
+        ]) {
+          assert.ok(pass.contributions.some((contribution) => (
+            contribution.item === node
+              && contribution.kind === kind
+              && contribution.span === span
+              && Math.abs(contribution.value - expectedValue) <= 1 / 64
+          )), `${scene.id}: ${axis} item ${key} ${kind} span-${span} expected ${expectedValue}`);
+        }
+      }
+    }
+  }
+
+  if (intrinsic) {
+    const initialColumns = stageBases(columns[0], 'Initialize');
+    closeArray(initialColumns, [2, 2, 2], 'cyclic-auto Columns Initialize');
+    closeArray(spanBases(columns[0], 2), [5, 8, 8], 'span-2 Columns');
+    closeArray(spanBases(columns[0], 3), [5, 8, 8], 'span-3 Columns');
+    const span2Columns = spanBases(columns[0], 2);
+    closeArray(
+      span2Columns.map((value, index) => value - initialColumns[index]),
+      [3, 6, 6],
+      'per-track maximum planned increase',
+    );
+    for (const [key, expectedShare] of [['a', 3], ['b', 6]]) {
+      const contribution = columns[0].contributions.find((entry) => (
+        entry.item === nodeByKey[key] && entry.kind === 'Minimum' && entry.span === 2
+      ));
+      assert.ok(contribution, `${scene.id}: item ${key} Minimum contribution missing`);
+      const share = (contribution.value - 2 - 2 - 2) / 2;
+      assert.ok(Math.abs(share - expectedShare) <= 1 / 64,
+        `${scene.id}: item ${key} planned increase per track expected ${expectedShare}, got ${share}`);
+    }
+    const cMinimum = columns[0].contributions.find((entry) => (
+      entry.item === nodeByKey.c && entry.kind === 'Minimum' && entry.span === 3
+    ));
+    assert.equal(cMinimum?.value, 24, `${scene.id}: span-3 C natural contribution`);
+    assert.ok(24 <= span2Columns.reduce((sum, value) => sum + value, 0) + 4,
+      `${scene.id}: C span-3 contribution exceeds the established tracks and gutters`);
+
+    const initialRows = stageBases(rows[0], 'Initialize');
+    closeArray(initialRows, [2, 2], 'cyclic-auto Rows Initialize');
+    const span2Rows = spanBases(rows[0], 2);
+    closeArray(span2Rows, [7, 7], 'span-2 Rows');
+    closeArray(
+      span2Rows.map((value, index) => value - initialRows[index]),
+      [5, 5],
+      'row per-track maximum planned increase',
+    );
+    for (const [key, expectedShare] of [['a', 1], ['b', 3], ['c', 5]]) {
+      const contribution = rows[0].contributions.find((entry) => (
+        entry.item === nodeByKey[key] && entry.kind === 'Minimum' && entry.span === 2
+      ));
+      assert.ok(contribution, `${scene.id}: item ${key} row Minimum contribution missing`);
+      const share = (contribution.value - 2 - 2 - 2) / 2;
+      assert.ok(Math.abs(share - expectedShare) <= 1 / 64,
+        `${scene.id}: item ${key} row planned increase expected ${expectedShare}, got ${share}`);
+    }
+    closeArray(stageBases(columns[1], 'Initialize'), [4.5, 4.5, 4.5],
+      'resolved Columns minimum basis');
+    closeArray(stageBases(rows[1], 'Initialize'), [3.6, 3.6],
+      'resolved Rows minimum basis');
+  } else {
+    closeArray(stageBases(columns[0], 'Initialize'), [10, 10, 10],
+      'definite Columns minimum');
+    closeArray(stageBases(rows[0], 'Initialize'), [10, 10],
+      'definite Rows minimum');
+    closeArray(spanBases(columns[0], 2), [10, 10, 10], 'definite span-2 Columns');
+    closeArray(spanBases(columns[0], 3), [10, 10, 10], 'definite span-3 Columns');
+    closeArray(spanBases(rows[0], 2), [10, 10], 'definite span-2 Rows');
+  }
 }
 
 function parseNodeFrames(value, sceneID) {

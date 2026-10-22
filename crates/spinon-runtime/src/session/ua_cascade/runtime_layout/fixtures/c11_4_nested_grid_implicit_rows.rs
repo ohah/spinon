@@ -188,7 +188,10 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
             )
         })?;
 
-    Ok(Some(super::C11_4ImageInput { intrinsic_sizes }))
+    Ok(Some(super::C11_4ImageInput {
+        intrinsic_sizes,
+        allow_two_axis_root_intrinsic: false,
+    }))
 }
 
 fn validate_grid_style(

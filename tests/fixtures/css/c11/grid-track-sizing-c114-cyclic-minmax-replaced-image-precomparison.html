@@ -5,10 +5,10 @@
   * { box-sizing: border-box; }
   body { margin: 0; padding: 16px; color: #fff; background: #20252b; font: 14px system-ui; }
   .case { display: inline-block; vertical-align: top; margin: 0 16px 16px 0; }
-  .root { display: grid; grid-template-columns: repeat(3, minmax(calc(10% + 2px), max-content)); grid-template-rows: repeat(2, minmax(calc(10% + 2px), max-content)); gap: 2px; box-sizing: content-box; border: 2px solid #f0c674; background: #101820; align-content: start; justify-content: start; }
+  .root { display: grid; grid-template-columns: repeat(3, minmax(calc(10% + 2px), max-content)); grid-template-rows: repeat(2, minmax(calc(10% + 2px), max-content)); gap: 2px; box-sizing: content-box; border: 2px solid #f0c674; background: #101820; align-items: start; align-content: start; justify-content: start; }
   .intrinsic { width: min-content; height: min-content; }
   .definite { width: 80px; height: 80px; }
-  img { display: block; width: auto; object-fit: fill; justify-self: start; align-self: start; background: #e5484d; }
+  img { display: block; width: auto; object-fit: fill; justify-self: auto; align-self: auto; background: #e5484d; }
   pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 </style>
 <div id="cases"></div>

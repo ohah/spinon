@@ -585,13 +585,23 @@ where
                 )
             }
         } else if let Some(image_input) = &c11_4_image_input {
-            spinon_style_to_layout::compute_runtime_style_layout_with_intrinsic_size_snapshot(
-                &request.snapshot,
-                root,
-                styles.clone(),
-                request.viewport,
-                image_input.intrinsic_sizes.clone(),
-            )
+            if image_input.allow_two_axis_root_intrinsic {
+                spinon_style_to_layout::compute_runtime_style_layout_with_intrinsic_size_snapshot_for_c11_4_two_axis_grid_fixture(
+                    &request.snapshot,
+                    root,
+                    styles.clone(),
+                    request.viewport,
+                    image_input.intrinsic_sizes.clone(),
+                )
+            } else {
+                spinon_style_to_layout::compute_runtime_style_layout_with_intrinsic_size_snapshot(
+                    &request.snapshot,
+                    root,
+                    styles.clone(),
+                    request.viewport,
+                    image_input.intrinsic_sizes.clone(),
+                )
+            }
         } else {
             #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
             if let Some(text_input) = &root_html_text_input {
