@@ -1,0 +1,49 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Spinon C11.4 auto-repeat named-line oracle</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 20px; font: 14px sans-serif; background: #fff; }
+  #scenes { display: grid; grid-template-columns: repeat(3, 260px); gap: 18px; align-items: start; }
+  .case { display: grid; align-content: start; gap: 6px; }
+  h2 { margin: 0; font: 600 14px sans-serif; color: #263449; }
+  .scene { display: grid; grid-auto-rows: 40px; column-gap: 10px; row-gap: 8px; width: 180px; height: 60px; padding: 0; border: 0; outline: 1px solid #8793a2; align-content: start; justify-content: start; background: #eeeeee; }
+  .scene > i { display: block; background: #39a5db; min-width: 0; min-height: 0; }
+  #positive { grid-template-columns: [outer-start] repeat(auto-fill, [cell] 40px [cell]) [outer-end]; }
+  #positive > i { grid-column-start: 2 cell; grid-column-end: 3 cell; }
+  #bare { grid-template-columns: [outer-start] repeat(auto-fill, [cell] 40px [cell]) [outer-end]; }
+  #bare > i { grid-column-start: cell; grid-column-end: 2 cell; }
+  #negative { grid-template-columns: [outer-start] repeat(auto-fill, [cell] 40px [cell]) [outer-end]; }
+  #negative > i { grid-column-start: -2 cell; grid-column-end: -1 cell; }
+  #span { grid-template-columns: [outer-start] repeat(auto-fill, [cell] 40px [cell]) [outer-end]; }
+  #span > i { grid-column-start: 1; grid-column-end: span 2 cell; }
+  #fit { grid-template-columns: [outer-start] repeat(auto-fit, [cell] 40px [cell]) [outer-end]; }
+  #fit > i { grid-column-start: 2 cell; grid-column-end: 3 cell; }
+  #neighbors { width: 260px; height: 50px; column-gap: 10px; grid-template-columns: [leading] 20px [join left] repeat(auto-fill, [loop loop-start] 40px [mid] 30px [loop loop-end]) [join right] 10px [trailing]; }
+  #neighbors > i { grid-column-start: loop 2; grid-column-end: loop-end 2; }
+  #merge { width: 120px; height: 50px; column-gap: 10px; grid-template-columns: [edge] 10px [same] repeat(auto-fill, [same] 20px [tail same]) [same] 10px [end]; }
+  #merge > i { grid-column-start: same 1; grid-column-end: same 4; }
+  #row { width: 100px; height: 180px; grid-template-columns: 100px; grid-template-rows: [row-edge] repeat(auto-fill, [row] 40px [row]) [row-end]; row-gap: 10px; }
+  #row > i { grid-row-start: 2 row; grid-row-end: 3 row; }
+</style>
+<div id="scenes">
+  <section class="case"><h2>Positive occurrence</h2><div class="scene" id="positive"><i></i></div></section>
+  <section class="case"><h2>Bare named line</h2><div class="scene" id="bare"><i></i></div></section>
+  <section class="case"><h2>Negative occurrence</h2><div class="scene" id="negative"><i></i></div></section>
+  <section class="case"><h2>Named span</h2><div class="scene" id="span"><i></i></div></section>
+  <section class="case"><h2>Auto-fit collapse</h2><div class="scene" id="fit"><i></i></div></section>
+  <section class="case"><h2>Two-track repeat + neighbors</h2><div class="scene" id="neighbors"><i></i></div></section>
+  <section class="case"><h2>Merged repeat boundaries</h2><div class="scene" id="merge"><i></i></div></section>
+  <section class="case"><h2>Row axis</h2><div class="scene" id="row"><i></i></div></section>
+</div>
+<pre id="observation" hidden></pre>
+<script>
+function rect(el) { const r = el.getBoundingClientRect(); return {x:r.x,y:r.y,width:r.width,height:r.height}; }
+window.__observation = [...document.querySelectorAll('.scene')].map(root => ({
+  id: root.id,
+  gridTemplateColumns: getComputedStyle(root).gridTemplateColumns,
+  gridTemplateRows: getComputedStyle(root).gridTemplateRows,
+  root: rect(root), item: rect(root.querySelector('i')),
+}));
+document.querySelector('#observation').textContent = JSON.stringify(window.__observation, null, 2);
+</script>
