@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [양축 span text 계획](./c11-4-cyclic-minmax-calc-two-axis-spanning-text.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 네 고정 scene을 기존 opt-in runtime에 연결했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 4/4 scene, track/frame trace 및 definite-width overflow 표본을 확인했다. intrinsic float 차이는 독립 계산 기준 대비 1/64 CSS px 이내다. 기본 release static archive에는 신규 scene ID와 fixture entry marker가 없고 opt-in positive control에는 모두 있다. 계획 실패 관점 검토 20개, 구현/runtime 실패 관점 검토 20개와 PR diff 검토 30개를 기록했다. 제한 fixture 구현이며 C11.4 checkbox와 공식 `77/213`은 유지한다. [실행·화면·artifact 근거](../spec/internal/evidence/c11-4-cross-axis-span-groups-runtime-2026-10-22/README.md)
+**상태:** 네 고정 scene을 기존 opt-in runtime에 연결했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 4/4 scene, track/frame trace 및 definite-width overflow 표본을 확인했다. intrinsic float 차이는 독립 계산 기준 대비 1/64 CSS px 이내다. 기본 release static archive에는 신규 scene ID와 fixture entry marker가 없고 opt-in positive control에는 모두 있다. 계획 실패 관점 검토 20개, 구현/runtime 실패 관점 검토 20개와 PR diff 검토 30개를 기록했다. 제한 fixture 구현이며 C11.4 checkbox와 공식 `77/213`은 유지한다. [실행·화면·artifact 근거](../spec/internal/evidence/c11-4-cross-axis-span-groups-runtime-2026-10-22/README.md) · 구현 PR [#510](https://github.com/ohah/spinon/pull/510)
 
 ## 목적
 
