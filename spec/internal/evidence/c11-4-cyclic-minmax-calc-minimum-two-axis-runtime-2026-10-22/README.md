@@ -5,7 +5,7 @@
 ## 입력과 실행
 
 - 기준 입력·규범 계산·Chrome 156 관측: [사전 비교](../c11-4-cyclic-minmax-calc-minimum-two-axis-precomparison-2026-10-22/README.md)
-- 계획과 정확한 기대값: [slice 계획](../../../../plan/c11-4-cyclic-minmax-calc-minimum-two-axis.md)
+- 계획과 정확한 기대값: [slice 계획](https://github.com/ohah/spinon/blob/main/plan/c11-4-cyclic-minmax-calc-minimum-two-axis.md)
 - base commit `8c7c412708ec4cb8bb78faf9366bb96c529c8938`; capture 당시 tracked diff SHA-256 `99592880f95dd909b2a556a4a242c51bf43958f20378a349ca9ffb5328ea8f81`.
 - Android: API 37 ARM64 AVD `emulator-5558`, Android 17, APK 설치 전후 SHA-256 일치 `b4586f007b1d7e84350875cd71529744a09d5a6e516425f9431b470eb0fa610b`.
 - iOS: iPhone 17 Pro / iOS 26.2 Simulator `ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D`, 앱 실행 파일 SHA-256 `bd1a266282bb72b541cc9363606efde84a2520aa0fc828f0bc70a4bcb884e3a8`.
@@ -22,13 +22,13 @@
 
 각 플랫폼에서 4/4 scene의 typed track trace, intrinsic input, root/item/node frame과 draw/present가 독립 기대값에 맞았다. Android PixelCopy는 28/28, iOS Metal drawable은 28/28 표본이 exact다. iOS 표본은 compositor 제출 전 drawable에서 읽었다. 표본은 border overpaint, root 밖 overflow, item 내부와 각 item 경계 바깥을 포함한다. 이 fixture의 표본은 CSS border stroke의 색상 일치나 glyph rasterization을 검사하지 않는다.
 
-![Android API 37 AVD · 양축 cyclic scene](android-avd-c114-cyclic-percent-tracks-android-avd-20261022T022619123Z-93c2e1cb/cyclic-minmax-calc-min-both-axes.png)
+<img src="/spinon/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-runtime-2026-10-22/android-avd-c114-cyclic-percent-tracks-android-avd-20261022T022619123Z-93c2e1cb/cyclic-minmax-calc-min-both-axes.png" alt="Android API 37 AVD · 양축 cyclic scene">
 
-![iPhone 17 Pro iOS 26.2 Simulator · 양축 cyclic scene](ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261022T022743674Z-063697ed/cyclic-minmax-calc-min-both-axes.png)
+<img src="/spinon/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-runtime-2026-10-22/ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261022T022743674Z-063697ed/cyclic-minmax-calc-min-both-axes.png" alt="iPhone 17 Pro iOS 26.2 Simulator · 양축 cyclic scene">
 
 ## Fixture artifact 경계
 
-[기본/positive-control release static archive 검사](artifact-boundary.json)는 `spinon-ffi` archive 문자열과 fixture ABI 이름을 비교한다. 기본 archive에는 새 scene ID·payload와 C11.4 fixture ABI 이름이 없고, `c04-runtime-gpu-fixture-test` positive control에는 둘 다 있다. 이 검사는 Android APK·iOS 앱 전체에서 fixture가 제거됐다는 증거로 확대하지 않는다.
+<a href="/spinon/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-runtime-2026-10-22/artifact-boundary.json">기본/positive-control release static archive 검사</a>는 `spinon-ffi` archive 문자열과 fixture ABI 이름을 비교한다. 기본 archive에는 새 scene ID·payload와 C11.4 fixture ABI 이름이 없고, `c04-runtime-gpu-fixture-test` positive control에는 둘 다 있다. 이 검사는 Android APK·iOS 앱 전체에서 fixture가 제거됐다는 증거로 확대하지 않는다.
 
 구현과 실제 실행 검토는 [서로 다른 runtime 실패 관점 20개](implementation-runtime-review-20.md), 이 PR 변경분 자체의 독립 검토는 [diff 실패 관점 30개](pr-diff-review-30.md)에 기록했다.
 
@@ -41,7 +41,7 @@
 3. 다음 실행에서는 definite control의 `x=25` 표본이 폭 24px item 내부여서 검정 경계 바깥 대신 빨강을 읽었다. item의 실제 오른쪽 다음 좌표 `x=27`로 옮기고 두 플랫폼 전체 matrix를 재실행해 통과했다.
 4. 신규 Android scene은 C11.4 scene registry뿐 아니라 pixel-matrix scene registry도 별도 갱신해야 했다. 두 허용 목록을 각각 연결하고 전체 AVD run에서 재검증했다.
 
-최초 Chrome precomparison 및 PR #493 화면 확인에는 Agent Browser를 사용했다. PR 본문 Android·iOS 이미지가 각각 1080×2400 및 1206×2622로 실제 로드되는 것을 확인했다. namespace를 지정해 session을 종료한 뒤 해당 browser/Chrome 프로세스와 session이 남지 않는 것도 확인했다. 검증 결과는 [Agent Browser 확인 기록](agent-browser-pr-493-verification.json)에 있다. terminal-browser는 사용하지 않았다. 두 simulator runtime capture에서는 브라우저를 열지 않았다.
+최초 Chrome precomparison 및 PR #493 화면 확인에는 Agent Browser를 사용했다. PR 본문 Android·iOS 이미지가 각각 1080×2400 및 1206×2622로 실제 로드되는 것을 확인했다. namespace를 지정해 session을 종료한 뒤 해당 browser/Chrome 프로세스와 session이 남지 않는 것도 확인했다. 검증 결과는 <a href="/spinon/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-runtime-2026-10-22/agent-browser-pr-493-verification.json">Agent Browser 확인 기록</a>에 있다. terminal-browser는 사용하지 않았다. 두 simulator runtime capture에서는 브라우저를 열지 않았다.
 
 ## 범위
 

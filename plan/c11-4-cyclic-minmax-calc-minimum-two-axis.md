@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [직전 단일 축 최솟값 계획](./c11-4-cyclic-minmax-calc-minimum.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획·사전 비교·고정 runtime fixture와 양 플랫폼 Simulator 검증 완료. 구현 PR [#493](https://github.com/ohah/spinon/pull/493)에서 추적하며 병합 여부와 SHA는 해당 GitHub PR 이력이 기준이다. 구현 전용 fixture 조각이며 C11.4 공식 체크와 완료 수 `72/213`은 유지한다.
+**상태:** 계획·사전 비교·고정 runtime fixture와 양 플랫폼 Simulator 검증 완료. 구현 PR [#493](https://github.com/ohah/spinon/pull/493)은 2026-10-22 02:41:32 UTC에 Rebase and merge됐고 merge SHA는 `3ffd2b5a39f27dc45d8235bdf830678e4d3c0a15`이다. 병합 당시 PR status check rollup은 비어 있었고 `main` required status checks는 설정되지 않았다. 구현 전용 fixture 조각이며 C11.4 공식 체크와 완료 수 `72/213`은 유지한다.
 
 ## 목적과 범위
 
@@ -52,4 +52,4 @@
 
 첫 AVD 실행에서 오래된 APK가 새 scene argument를 거부해 opt-in APK를 명시 재빌드했다. 재실행 중 Android expected-root helper의 definite-control fallback과 right-edge 표본 좌표가 각각 잘못된 것을 찾아 고치고 최종 전체 행렬을 두 플랫폼에서 다시 통과시켰다. 기본 release FFI archive 문자열 검사에는 신규 ID/payload와 C11.4 fixture ABI 이름이 없고 positive control에는 포함된다. archive 검사는 전체 APK/앱 번들 제외 증명이 아니다.
 
-고정 fixture 이외의 일반 CSS admission, WPT, 실기기/hardware GPU 및 iOS compositor 이후 pixels는 미검증이다. [실행·화면·artifact 근거](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-runtime-2026-10-22/README.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-runtime-2026-10-22/implementation-runtime-review-20.md) · [PR diff 적대 검토 30개](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-runtime-2026-10-22/pr-diff-review-30.md) · [계획 검토 21개](./c11-4-cyclic-minmax-calc-minimum-two-axis-plan-review-20.md).
+고정 fixture 이외의 일반 CSS admission, WPT, 실기기/hardware GPU 및 iOS compositor 이후 pixels는 미검증이다. [실행·화면·artifact 근거](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-runtime-2026-10-22/README.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-runtime-2026-10-22/implementation-runtime-review-20.md) · [PR diff 적대 검토 30개](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-runtime-2026-10-22/pr-diff-review-30.md) · [로드맵 반영 PR diff 검토 30개](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-runtime-2026-10-22/roadmap-pr-diff-review-30.md) · [계획 검토 21개](./c11-4-cyclic-minmax-calc-minimum-two-axis-plan-review-20.md).
