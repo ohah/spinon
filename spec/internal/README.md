@@ -1,5 +1,9 @@
 # 내부 인터페이스 명세
 
+## C11.4 overlapping cyclic minmax span-groups · PR #500
+
+[구현 PR #500](https://github.com/ohah/spinon/pull/500)은 2026-10-22 05:11:19 UTC Rebase and merge로 병합됐다(merge SHA `2f3f45c6aa27f427b36e906fa3a72fd8d864e402`; 병합 당시 status-check rollup 없음, main required status checks 미설정). [집중 계획](../../plan/c11-4-cyclic-minmax-calc-overlapping-spans.md) · [Android/iOS 6-scene 실행·화면·pixel·artifact 근거](./evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md) · [구현 실패 관점 20개](./evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/implementation-review-20.md) · [PR diff 검토 20개](./evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/pr-diff-review-20.md). 제한된 opt-in fixture이며 C11.4 전체는 미완료, 공식 집계는 `77/213`이다. [Tailnet 로드맵 동기화·Agent Browser 근거](./evidence/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-sync-2026-10-22/README.md).
+
 ## C11.4 PR #497 뒤 Tailnet 로드맵 미리보기
 
 [Tailnet 동기화·Agent Browser 화면·파일 해시 근거](./evidence/c11-4-pr497-tailnet-roadmap-sync-2026-10-22/README.md). PR #497을 Rebase and merge한 뒤 최신 C11.4 계획과 실행 결과를 선택 미리보기에 반영했다. 공식 `77/213` 및 C11.4 미완료 상태를 유지하며 GitHub Pages 배포는 하지 않았다.

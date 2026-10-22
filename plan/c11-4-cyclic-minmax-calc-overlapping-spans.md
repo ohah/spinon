@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 CSS Grid track sizing](./c11-4-grid-track-sizing.md) · [직전 cyclic minimum span slice](./c11-4-cyclic-minmax-calc-minimum-span.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 여섯 fixed scene을 style-to-layout, opt-in runtime fixture, Android·iOS simulator harness에 연결했다. 두 simulator에서 각 6/6 scene과 경계 바깥 text 표본을 확인했다. 구현 PR [#500](https://github.com/ohah/spinon/pull/500)이 열려 있으며 C11.4 checkbox와 공식 완료 수 `77/213`은 유지한다.
+**상태:** 구현 PR [#500](https://github.com/ohah/spinon/pull/500)은 2026-10-22 05:11:19 UTC에 Rebase and merge되어 `2f3f45c6aa27f427b36e906fa3a72fd8d864e402`를 남겼다. 여섯 fixed scene은 Android·iOS simulator에서 각 6/6 통과했다. C11.4 checkbox와 공식 완료 수 `77/213`은 유지한다.
 
 ## 목적과 경계
 
