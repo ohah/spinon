@@ -1,0 +1,338 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "width": 1280,
+    "height": 633,
+    "dpr": 1
+  },
+  "font": {
+    "status": "loaded",
+    "loaded": true
+  },
+  "scenes": [
+    {
+      "id": "cyclic-minmax-calc-overlap-forward",
+      "root": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 14
+      },
+      "content": {
+        "width": "140px",
+        "height": "10px"
+      },
+      "columns": "42px 47px 47px",
+      "rows": "10px",
+      "columnGap": "2px",
+      "items": [
+        {
+          "kind": "span2-left",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 91,
+            "height": 10
+          },
+          "column": "1 / 3",
+          "text": "aaaaaaa",
+          "scrollWidth": 91
+        },
+        {
+          "kind": "span2-right",
+          "frame": {
+            "x": 46,
+            "y": 2,
+            "width": 96,
+            "height": 10
+          },
+          "column": "2 / 4",
+          "text": "aaaaaaaa",
+          "scrollWidth": 96
+        },
+        {
+          "kind": "span3",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 140,
+            "height": 10
+          },
+          "column": "1 / 4",
+          "text": "aaaaaaaaaaaaaa",
+          "scrollWidth": 140
+        }
+      ]
+    },
+    {
+      "id": "cyclic-minmax-calc-overlap-reverse",
+      "root": {
+        "x": 0,
+        "y": 26,
+        "width": 144,
+        "height": 14
+      },
+      "content": {
+        "width": "140px",
+        "height": "10px"
+      },
+      "columns": "42px 47px 47px",
+      "rows": "10px",
+      "columnGap": "2px",
+      "items": [
+        {
+          "kind": "span3",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 140,
+            "height": 10
+          },
+          "column": "1 / 4",
+          "text": "aaaaaaaaaaaaaa",
+          "scrollWidth": 140
+        },
+        {
+          "kind": "span2-right",
+          "frame": {
+            "x": 46,
+            "y": 2,
+            "width": 96,
+            "height": 10
+          },
+          "column": "2 / 4",
+          "text": "aaaaaaaa",
+          "scrollWidth": 96
+        },
+        {
+          "kind": "span2-left",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 91,
+            "height": 10
+          },
+          "column": "1 / 3",
+          "text": "aaaaaaa",
+          "scrollWidth": 91
+        }
+      ]
+    },
+    {
+      "id": "definite-minmax-calc-overlap-forward",
+      "root": {
+        "x": 0,
+        "y": 52,
+        "width": 144,
+        "height": 14
+      },
+      "content": {
+        "width": "140px",
+        "height": "10px"
+      },
+      "columns": "42px 47px 47px",
+      "rows": "10px",
+      "columnGap": "2px",
+      "items": [
+        {
+          "kind": "span2-left",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 91,
+            "height": 10
+          },
+          "column": "1 / 3",
+          "text": "aaaaaaa",
+          "scrollWidth": 91
+        },
+        {
+          "kind": "span2-right",
+          "frame": {
+            "x": 46,
+            "y": 2,
+            "width": 96,
+            "height": 10
+          },
+          "column": "2 / 4",
+          "text": "aaaaaaaa",
+          "scrollWidth": 96
+        },
+        {
+          "kind": "span3",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 140,
+            "height": 10
+          },
+          "column": "1 / 4",
+          "text": "aaaaaaaaaaaaaa",
+          "scrollWidth": 140
+        }
+      ]
+    },
+    {
+      "id": "definite-minmax-calc-overlap-reverse",
+      "root": {
+        "x": 0,
+        "y": 78,
+        "width": 144,
+        "height": 14
+      },
+      "content": {
+        "width": "140px",
+        "height": "10px"
+      },
+      "columns": "42px 47px 47px",
+      "rows": "10px",
+      "columnGap": "2px",
+      "items": [
+        {
+          "kind": "span3",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 140,
+            "height": 10
+          },
+          "column": "1 / 4",
+          "text": "aaaaaaaaaaaaaa",
+          "scrollWidth": 140
+        },
+        {
+          "kind": "span2-right",
+          "frame": {
+            "x": 46,
+            "y": 2,
+            "width": 96,
+            "height": 10
+          },
+          "column": "2 / 4",
+          "text": "aaaaaaaa",
+          "scrollWidth": 96
+        },
+        {
+          "kind": "span2-left",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 91,
+            "height": 10
+          },
+          "column": "1 / 3",
+          "text": "aaaaaaa",
+          "scrollWidth": 91
+        }
+      ]
+    },
+    {
+      "id": "definite-minmax-calc-overlap-small-forward",
+      "root": {
+        "x": 0,
+        "y": 104,
+        "width": 104,
+        "height": 14
+      },
+      "content": {
+        "width": "100px",
+        "height": "10px"
+      },
+      "columns": "32px 32px 32px",
+      "rows": "10px",
+      "columnGap": "2px",
+      "items": [
+        {
+          "kind": "span2-left",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 66,
+            "height": 10
+          },
+          "column": "1 / 3",
+          "text": "aaaaaaa",
+          "scrollWidth": 70
+        },
+        {
+          "kind": "span2-right",
+          "frame": {
+            "x": 36,
+            "y": 2,
+            "width": 66,
+            "height": 10
+          },
+          "column": "2 / 4",
+          "text": "aaaaaaaa",
+          "scrollWidth": 80
+        },
+        {
+          "kind": "span3",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 100,
+            "height": 10
+          },
+          "column": "1 / 4",
+          "text": "aaaaaaaaaaaaaa",
+          "scrollWidth": 140
+        }
+      ]
+    },
+    {
+      "id": "definite-minmax-calc-overlap-small-reverse",
+      "root": {
+        "x": 0,
+        "y": 130,
+        "width": 104,
+        "height": 14
+      },
+      "content": {
+        "width": "100px",
+        "height": "10px"
+      },
+      "columns": "32px 32px 32px",
+      "rows": "10px",
+      "columnGap": "2px",
+      "items": [
+        {
+          "kind": "span3",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 100,
+            "height": 10
+          },
+          "column": "1 / 4",
+          "text": "aaaaaaaaaaaaaa",
+          "scrollWidth": 140
+        },
+        {
+          "kind": "span2-right",
+          "frame": {
+            "x": 36,
+            "y": 2,
+            "width": 66,
+            "height": 10
+          },
+          "column": "2 / 4",
+          "text": "aaaaaaaa",
+          "scrollWidth": 80
+        },
+        {
+          "kind": "span2-left",
+          "frame": {
+            "x": 2,
+            "y": 2,
+            "width": 66,
+            "height": 10
+          },
+          "column": "1 / 3",
+          "text": "aaaaaaa",
+          "scrollWidth": 70
+        }
+      ]
+    }
+  ]
+}
