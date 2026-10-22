@@ -308,3 +308,7 @@ CSS Grid 2025 CRD §7.2.1에 따라 intrinsic container sizing에서는 cyclic p
 ### 2026-10-22 cyclic percentage `fit-content(calc())` 후속 계획
 
 직전 `calc()` scene은 해당 expression이 직접 track sizing function인 경우만 확인했다. 다음 계획은 같은 opt-in fixture 경로에서 `fit-content(calc(50% + length))`의 cyclic intrinsic basis와 final limit을 네 fixed scene으로 확인한다. Chrome 156 Agent Browser 사전 비교와 CSS Grid 2025 CRD §7.2.1 독립 기대값은 column `29px`, row `22px`, definite controls `24px`·`9px`이며 small-limit control의 Ahem text가 10px root 밖에서 그려지는 표본을 포함한다. [집중 계획](./c11-4-cyclic-fit-content-calc.md) · [Chrome 사전 비교·overflow 표본](../spec/internal/evidence/c11-4-cyclic-fit-content-calc-precomparison-2026-10-22/README.md) · [계획 실패 관점 검토 20개](./c11-4-cyclic-fit-content-calc-plan-review-20.md). Runtime 구현은 시작하지 않았으며 C11.4 checkbox와 공식 `72/213`은 유지한다.
+
+### 2026-10-22 cyclic percentage `minmax(calc())` minimum 후속 계획
+
+직전 slice는 `minmax(0px, calc(50% + length))`의 maximum만 확인했다. 다음 고정 slice는 cyclic column·row와 definite controls에서 `minmax(calc(200% + length), max-content)`의 minimum을 확인한다. Chrome 156 관측과 CSS Grid 2025 CRD 독립 기대값은 10px content basis에서 columns 24px, rows 22px이며, 2px root border 바깥으로 item이 그려지는 pixel 좌표를 포함한다. [집중 계획](./c11-4-cyclic-minmax-calc-minimum.md) · [Chrome·규범 사전 비교](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-precomparison-2026-10-22/README.md) · [계획 실패 관점 검토 20개](./c11-4-cyclic-minmax-calc-minimum-plan-review-20.md). Runtime 구현은 아직 시작하지 않았고 C11.4 checkbox와 `72/213`은 유지한다.

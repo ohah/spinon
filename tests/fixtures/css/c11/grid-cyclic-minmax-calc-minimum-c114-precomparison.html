@@ -1,0 +1,61 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 cyclic minmax(calc()) minimum track sizing precomparison</title>
+<style>
+  @font-face { font-family: Ahem; src: url("../../resources/c15/Ahem.ttf") format("truetype"); }
+  html, body { margin: 0; padding: 0; }
+  body { background: #ffffff; }
+  .grid {
+    box-sizing: content-box;
+    display: grid;
+    margin: 0 0 8px;
+    padding: 0;
+    border: 2px solid #f0c674;
+    gap: 0;
+    align-items: stretch;
+    align-content: start;
+    justify-content: start;
+    background: #101820;
+    font: 10px/10px Ahem, sans-serif;
+    color: #e5484d;
+  }
+  .item {
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #e5484d;
+  }
+</style>
+<div id="cyclic-minmax-calc-min-column" class="grid" style="width:max-content;height:10px;grid-template-columns:minmax(calc(200% + 4px),max-content);grid-template-rows:10px"><div class="item">a</div></div>
+<div id="cyclic-minmax-calc-min-row" class="grid" style="width:10px;height:max-content;grid-template-columns:10px;grid-template-rows:minmax(calc(200% + 2px),max-content)"><div class="item">a</div></div>
+<div id="definite-minmax-calc-min-column" class="grid" style="width:10px;height:10px;grid-template-columns:minmax(calc(200% + 4px),max-content);grid-template-rows:10px"><div class="item">a</div></div>
+<div id="definite-minmax-calc-min-row" class="grid" style="width:10px;height:10px;grid-template-columns:10px;grid-template-rows:minmax(calc(200% + 2px),max-content)"><div class="item">a</div></div>
+<script>
+  document.fonts.ready.then(() => {
+    window.cyclicMinmaxCalcMinimumResults = {
+      userAgent: navigator.userAgent,
+      viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+      font: { status: document.fonts.status, loaded: document.fonts.check("10px Ahem") },
+      scenes: Array.from(document.querySelectorAll(".grid"), (grid) => {
+        const item = grid.firstElementChild;
+        const rect = (element) => {
+          const { x, y, width, height } = element.getBoundingClientRect();
+          return { x, y, width, height };
+        };
+        const style = getComputedStyle(grid);
+        return {
+          id: grid.id,
+          grid: rect(grid),
+          content: { width: style.width, height: style.height },
+          border: { width: style.borderTopWidth, style: style.borderTopStyle, color: style.borderTopColor },
+          item: rect(item),
+          columns: style.gridTemplateColumns,
+          rows: style.gridTemplateRows,
+          scroll: { width: grid.scrollWidth, height: grid.scrollHeight },
+        };
+      }),
+    };
+  });
+</script>

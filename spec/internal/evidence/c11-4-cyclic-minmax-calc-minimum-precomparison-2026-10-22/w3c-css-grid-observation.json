@@ -1,0 +1,16 @@
+{
+  "source": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/",
+  "title": "CSS Grid Layout Module Level 1",
+  "version": "2025 CRD",
+  "verifiedWith": "Agent Browser rendered page",
+  "observedSections": [
+    {
+      "id": "track-sizes",
+      "summary": "Track percentages use the grid container inner size; minmax maximum is bounded below by its minimum."
+    },
+    {
+      "id": "algo-grid-sizing",
+      "summary": "Cyclic track percentages act as auto during intrinsic grid-container sizing and resolve against the resulting size in the later grid-sizing pass."
+    }
+  ]
+}
