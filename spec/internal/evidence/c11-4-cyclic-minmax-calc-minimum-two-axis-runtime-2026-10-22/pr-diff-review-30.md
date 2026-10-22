@@ -1,4 +1,4 @@
-# C11.4 양축 cyclic `minmax(calc())` minimum PR diff 적대 검토 30개
+# C11.4 양축 cyclic `minmax(calc())` minimum PR diff 적대 검토 30개와 후속 확인
 
 계획 자체의 20개 검토와 구현/runtime의 20개 검토를 재사용하지 않고, 이번 PR diff에서 서로 다른 계약·실패 경계를 대조했다. 검토 대상은 Rust fixture 입력·trace 검사, FFI/runtime scene 등록, Android/iOS 앱 검증기, simulator capture, 문서와 근거 자료다.
 
@@ -36,3 +36,5 @@
 | 30 | 부분 fixture 결과를 일반 CSS 지원·WPT·전체 C11.4 완료로 표현하는가? | STATUS와 실행 README는 고정 fixture 및 simulator 증거로 한정하고 WPT, 일반 CSS admission, 실기기, hardware GPU, iOS compositor 이후 픽셀을 미검증으로 유지한다. C11.4 체크와 `72/213` 완료 수는 바꾸지 않았다. |
 
 **판정:** 검토 중 발견한 stale APK 실행 경로, Android pixel-scene 등록 누락, definite control root 기대값 및 item 밖 경계 좌표를 수정한 뒤 영향받는 전체 4-scene Android/iOS 행렬을 다시 통과시켰다. 남은 범위는 30번에 적은 대로 고정 fixture 밖의 동작이다.
+
+31. **PR 생성 후 roadmap 참조와 공개 screenshot URL이 실제 PR을 가리키는가?** PR #493 계획 링크가 해당 slice를 가리키고, Agent Browser에서 Android 1080×2400 및 iOS 1206×2622 이미지 두 개의 `complete=true`와 `naturalWidth>0`을 확인했다. cleanup 뒤 지정 namespace의 session 목록은 비었다.

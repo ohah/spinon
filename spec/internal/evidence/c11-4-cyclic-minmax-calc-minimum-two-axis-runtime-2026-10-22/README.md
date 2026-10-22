@@ -41,7 +41,7 @@
 3. 다음 실행에서는 definite control의 `x=25` 표본이 폭 24px item 내부여서 검정 경계 바깥 대신 빨강을 읽었다. item의 실제 오른쪽 다음 좌표 `x=27`로 옮기고 두 플랫폼 전체 matrix를 재실행해 통과했다.
 4. 신규 Android scene은 C11.4 scene registry뿐 아니라 pixel-matrix scene registry도 별도 갱신해야 했다. 두 허용 목록을 각각 연결하고 전체 AVD run에서 재검증했다.
 
-최초 Chrome precomparison 및 이번 캡처는 Agent Browser/시뮬레이터 기반이다. terminal-browser는 사용하지 않았다. Agent Browser session은 precomparison에서 종료했고, 이번 runtime capture에서는 브라우저를 열지 않았다.
+최초 Chrome precomparison 및 PR #493 화면 확인에는 Agent Browser를 사용했다. PR 본문 Android·iOS 이미지가 각각 1080×2400 및 1206×2622로 실제 로드되는 것을 확인했다. namespace를 지정해 session을 종료한 뒤 해당 browser/Chrome 프로세스와 session이 남지 않는 것도 확인했다. 검증 결과는 [Agent Browser 확인 기록](agent-browser-pr-493-verification.json)에 있다. terminal-browser는 사용하지 않았다. 두 simulator runtime capture에서는 브라우저를 열지 않았다.
 
 ## 범위
 
