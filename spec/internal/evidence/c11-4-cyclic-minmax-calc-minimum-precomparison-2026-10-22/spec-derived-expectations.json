@@ -1,0 +1,95 @@
+{
+  "schema": "spinon.c11-4.cyclic-minmax-calc-minimum.precomparison.v1",
+  "specification": {
+    "title": "CSS Grid Layout Module Level 1",
+    "version": "2025 CRD",
+    "trackSizes": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#track-sizes",
+    "gridLayoutAlgorithm": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-grid-sizing",
+    "derivedRules": [
+      "Cyclic track percentages are treated as auto while calculating the grid container intrinsic size, then resolved against that resulting size for final grid sizing.",
+      "If a minmax maximum is below its minimum, the maximum is floored by the minimum."
+    ]
+  },
+  "input": {
+    "font": "Ahem",
+    "fontSizeCssPx": 10,
+    "lineHeightCssPx": 10,
+    "text": "a",
+    "intrinsicContentSizeCssPx": 10,
+    "rootBoxSizing": "content-box",
+    "rootBorderCssPx": 2,
+    "rootBorderColor": "#f0c674",
+    "itemColor": "#e5484d",
+    "gapCssPx": 0,
+    "paddingCssPx": 0
+  },
+  "calculation": {
+    "cyclicContainerContentSizeCssPx": 10,
+    "cyclicPercentageIntrinsicPhase": "treated as auto",
+    "columnMinimumExpression": "calc(200% + 4px)",
+    "columnFinalMinimumCssPx": 24,
+    "rowMinimumExpression": "calc(200% + 2px)",
+    "rowFinalMinimumCssPx": 22,
+    "maxContentMaximumCssPx": 10,
+    "maxIsFlooredByMin": true,
+    "rootBorderBoxCssPx": { "width": 14, "height": 14 }
+  },
+  "scenes": [
+    {
+      "id": "cyclic-minmax-calc-min-column",
+      "rootSizing": { "width": "max-content", "height": "10px" },
+      "columns": [24],
+      "rows": [10],
+      "rootContentCssPx": { "width": 10, "height": 10 },
+      "rootBorderBoxCssPx": { "width": 14, "height": 14 },
+      "itemRootRelativeCssPx": { "x": 2, "y": 2, "width": 24, "height": 10 },
+      "scrollCssPx": { "width": 24, "height": 10 }
+    },
+    {
+      "id": "cyclic-minmax-calc-min-row",
+      "rootSizing": { "width": "10px", "height": "max-content" },
+      "columns": [10],
+      "rows": [22],
+      "rootContentCssPx": { "width": 10, "height": 10 },
+      "rootBorderBoxCssPx": { "width": 14, "height": 14 },
+      "itemRootRelativeCssPx": { "x": 2, "y": 2, "width": 10, "height": 22 },
+      "scrollCssPx": { "width": 10, "height": 22 }
+    },
+    {
+      "id": "definite-minmax-calc-min-column",
+      "rootSizing": { "width": "10px", "height": "10px" },
+      "columns": [24],
+      "rows": [10],
+      "rootContentCssPx": { "width": 10, "height": 10 },
+      "rootBorderBoxCssPx": { "width": 14, "height": 14 },
+      "itemRootRelativeCssPx": { "x": 2, "y": 2, "width": 24, "height": 10 },
+      "scrollCssPx": { "width": 24, "height": 10 }
+    },
+    {
+      "id": "definite-minmax-calc-min-row",
+      "rootSizing": { "width": "10px", "height": "10px" },
+      "columns": [10],
+      "rows": [22],
+      "rootContentCssPx": { "width": 10, "height": 10 },
+      "rootBorderBoxCssPx": { "width": 14, "height": 14 },
+      "itemRootRelativeCssPx": { "x": 2, "y": 2, "width": 10, "height": 22 },
+      "scrollCssPx": { "width": 10, "height": 22 }
+    }
+  ],
+  "chrome156": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.48 Safari/537.36",
+    "viewportCssPx": { "width": 1280, "height": 633, "dpr": 1 },
+    "ahemLoaded": true,
+    "observation": "./chrome156-observation.json",
+    "screenshot": "./chrome156-minmax-calc-minimum.png",
+    "pixelSamples": "./chrome156-pixel-samples.json",
+    "pixelSampleUse": "Spatial paint-order oracle only; Chrome screenshot RGB is not the app surface CSS sRGB expectation."
+  },
+  "scope": {
+    "runtimeImplemented": false,
+    "androidOrIosRun": false,
+    "generalCssAdmission": false,
+    "c114CompletionClaim": false,
+    "officialRoadmapCount": "72/213"
+  }
+}

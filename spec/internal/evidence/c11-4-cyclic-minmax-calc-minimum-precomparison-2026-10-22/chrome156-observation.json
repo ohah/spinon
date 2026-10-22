@@ -1,0 +1,134 @@
+{
+  "font": {
+    "loaded": true,
+    "status": "loaded"
+  },
+  "scenes": [
+    {
+      "border": {
+        "color": "rgb(240, 198, 116)",
+        "style": "solid",
+        "width": "2px"
+      },
+      "columns": "24px",
+      "content": {
+        "height": "10px",
+        "width": "10px"
+      },
+      "grid": {
+        "height": 14,
+        "width": 14,
+        "x": 0,
+        "y": 0
+      },
+      "id": "cyclic-minmax-calc-min-column",
+      "item": {
+        "height": 10,
+        "width": 24,
+        "x": 2,
+        "y": 2
+      },
+      "rows": "10px",
+      "scroll": {
+        "height": 10,
+        "width": 24
+      }
+    },
+    {
+      "border": {
+        "color": "rgb(240, 198, 116)",
+        "style": "solid",
+        "width": "2px"
+      },
+      "columns": "10px",
+      "content": {
+        "height": "10px",
+        "width": "10px"
+      },
+      "grid": {
+        "height": 14,
+        "width": 14,
+        "x": 0,
+        "y": 22
+      },
+      "id": "cyclic-minmax-calc-min-row",
+      "item": {
+        "height": 22,
+        "width": 10,
+        "x": 2,
+        "y": 24
+      },
+      "rows": "22px",
+      "scroll": {
+        "height": 22,
+        "width": 10
+      }
+    },
+    {
+      "border": {
+        "color": "rgb(240, 198, 116)",
+        "style": "solid",
+        "width": "2px"
+      },
+      "columns": "24px",
+      "content": {
+        "height": "10px",
+        "width": "10px"
+      },
+      "grid": {
+        "height": 14,
+        "width": 14,
+        "x": 0,
+        "y": 44
+      },
+      "id": "definite-minmax-calc-min-column",
+      "item": {
+        "height": 10,
+        "width": 24,
+        "x": 2,
+        "y": 46
+      },
+      "rows": "10px",
+      "scroll": {
+        "height": 10,
+        "width": 24
+      }
+    },
+    {
+      "border": {
+        "color": "rgb(240, 198, 116)",
+        "style": "solid",
+        "width": "2px"
+      },
+      "columns": "10px",
+      "content": {
+        "height": "10px",
+        "width": "10px"
+      },
+      "grid": {
+        "height": 14,
+        "width": 14,
+        "x": 0,
+        "y": 66
+      },
+      "id": "definite-minmax-calc-min-row",
+      "item": {
+        "height": 22,
+        "width": 10,
+        "x": 2,
+        "y": 68
+      },
+      "rows": "22px",
+      "scroll": {
+        "height": 22,
+        "width": 10
+      }
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "dpr": 1,
+    "height": 633,
+    "width": 1280
+  }
+}

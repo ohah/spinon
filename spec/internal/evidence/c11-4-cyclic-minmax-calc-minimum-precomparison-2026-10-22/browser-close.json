@@ -1,0 +1,9 @@
+{
+  "namespace": "spinon-cyclic-minmax-minimum-plan-20261022",
+  "session": "plan",
+  "closeCommand": "agent-browser --namespace spinon-cyclic-minmax-minimum-plan-20261022 --session plan close",
+  "sessionInfo": { "active": false, "pid": null },
+  "doctor": { "offlineQuick": true, "activeDaemons": 0, "failures": 0 },
+  "postCloseProcessScan": { "agentBrowserProcesses": 0 },
+  "unrelatedTmuxSessions": "preserved"
+}

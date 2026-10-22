@@ -1,0 +1,81 @@
+{
+  "image": "spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-precomparison-2026-10-22/chrome156-minmax-calc-minimum.png",
+  "size": [
+    1280,
+    633
+  ],
+  "samples": {
+    "column_left_border": {
+      "x": 1,
+      "y": 5,
+      "rgb": [
+        239,
+        191,
+        114
+      ]
+    },
+    "column_item_inside": {
+      "x": 5,
+      "y": 5,
+      "rgb": [
+        229,
+        72,
+        77
+      ]
+    },
+    "column_right_border_overpaint": {
+      "x": 13,
+      "y": 5,
+      "rgb": [
+        229,
+        72,
+        77
+      ]
+    },
+    "column_outside_root": {
+      "x": 16,
+      "y": 5,
+      "rgb": [
+        229,
+        72,
+        77
+      ]
+    },
+    "column_past_item": {
+      "x": 27,
+      "y": 5,
+      "rgb": [
+        255,
+        255,
+        255
+      ]
+    },
+    "row_left_border": {
+      "x": 1,
+      "y": 30,
+      "rgb": [
+        239,
+        191,
+        114
+      ]
+    },
+    "row_bottom_border_overpaint": {
+      "x": 5,
+      "y": 35,
+      "rgb": [
+        229,
+        72,
+        77
+      ]
+    },
+    "row_outside_root": {
+      "x": 5,
+      "y": 40,
+      "rgb": [
+        229,
+        72,
+        77
+      ]
+    }
+  }
+}
