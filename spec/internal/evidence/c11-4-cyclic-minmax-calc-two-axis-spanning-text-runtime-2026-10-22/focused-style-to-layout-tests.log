@@ -1,0 +1,13 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.23s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-7f78b653f6fb953d)
+
+running 7 tests
+test c11_4_track_sizing_areas_tests::cyclic_fit_content::cyclic_minmax_calc_text_scenes_match_independent_tracks_and_frames ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_minimum::cyclic_minimum_calc_resolves_against_ten_pixel_content_box_after_intrinsic_sizing ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_minimum_two_axis::cyclic_minimum_calc_resolves_both_axes_against_separate_intrinsic_content_bases ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_minimum_span::cyclic_minmax_calc_minimum_distributes_span_then_resolves_two_tracks_and_overflow ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_two_axis_spanning_text::cyclic_minmax_calc_two_axis_span_uses_column_width_for_text_row_contribution ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_overlapping_spans::cyclic_minmax_calc_overlapping_span_groups_are_source_order_independent ... ok
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_overlapping_rows::cyclic_minmax_calc_overlapping_row_span_groups_are_source_order_independent ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 218 filtered out; finished in 0.08s
