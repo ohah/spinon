@@ -37,6 +37,7 @@ fn cyclic_minmax_calc_mixed_span_groups_match_fixed_geometry_and_trace() {
                 &format!("item {} frame", item.key),
             );
         }
+        assert_text_lines(&output, &fixture, case);
         assert_axis_tracks(
             &output,
             fixture.root.id(),
@@ -53,10 +54,251 @@ fn cyclic_minmax_calc_mixed_span_groups_match_fixed_geometry_and_trace() {
         );
         assert_intrinsic_sources(&output, &fixture, case);
         assert_contributions(&output, &fixture, case);
-        if case.width == "min-content" {
+        if case.width == "min-content" || case.width == "max-content" {
             assert_span_ordered_column_growth(&output, &fixture, case.id);
         }
+        if case.width == "max-content" {
+            assert_cyclic_percentage_column_passes(&output, &fixture, case);
+        } else if case.width == "80px" {
+            assert_definite_80px_passes(&output, &fixture, case);
+        }
     }
+}
+
+fn assert_text_lines(output: &crate::StyleLayoutOutput, fixture: &Fixture, case: &Case) {
+    let expected = match case.id {
+        "cyclic-minmax-cross-axis-max-content-span-groups-forward"
+        | "cyclic-minmax-cross-axis-max-content-span-groups-reverse" => {
+            [&[60.0][..], &[40.0][..], &[110.0][..]]
+        }
+        "definite-minmax-cross-axis-max-content-span-groups-forward"
+        | "definite-minmax-cross-axis-max-content-span-groups-reverse" => {
+            [&[40.0, 10.0][..], &[40.0][..], &[80.0, 20.0][..]]
+        }
+        _ => return,
+    };
+    for (index, item) in ITEMS.iter().enumerate() {
+        let snapshot = output
+            .layout
+            .text_layouts
+            .get(&fixture.nodes[item.id].id())
+            .unwrap_or_else(|| panic!("{}: missing final text layout for {}", case.id, item.key));
+        let lines = &snapshot.layout.lines;
+        assert_eq!(
+            lines.len(),
+            expected[index].len(),
+            "{}: {} final text line count",
+            case.id,
+            item.key
+        );
+        for (line, expected_width) in lines.iter().zip(expected[index]) {
+            assert_close(
+                line.advance,
+                *expected_width,
+                case.id,
+                &format!("{} text line advance", item.key),
+            );
+        }
+    }
+}
+
+fn assert_cyclic_percentage_column_passes(
+    output: &crate::StyleLayoutOutput,
+    fixture: &Fixture,
+    case: &Case,
+) {
+    let trace = output
+        .layout
+        .grid_track_sizing_traces
+        .iter()
+        .find(|trace| trace.node == fixture.root.id())
+        .unwrap_or_else(|| panic!("{}: missing Grid track-sizing trace", case.id));
+    let columns = trace
+        .passes
+        .iter()
+        .filter(|pass| pass.axis == LayoutGridTrackSizingAxis::Columns)
+        .collect::<Vec<_>>();
+    assert_eq!(
+        columns.len(),
+        2,
+        "{}: expected cyclic-auto and resolved Columns passes; got {:#?}",
+        case.id,
+        trace.passes
+    );
+    assert_eq!(
+        stage_bases(
+            columns[0],
+            LayoutGridTrackSizingStageKind::Initialize,
+            case.id
+        ),
+        [2.0, 2.0, 2.0],
+        "{}: cyclic-auto initial column minimums",
+        case.id
+    );
+    let span2 = columns[0]
+        .stages
+        .iter()
+        .find(|stage| {
+            matches!(
+                stage.stage,
+                LayoutGridTrackSizingStageKind::IntrinsicItemBatch { span: 2, .. }
+            )
+        })
+        .unwrap_or_else(|| panic!("{}: missing intrinsic span-2 batch", case.id));
+    assert_eq!(
+        span2
+            .tracks
+            .iter()
+            .filter(|track| !track.is_gutter && !track.is_collapsed)
+            .map(|track| track.base_size)
+            .collect::<Vec<_>>(),
+        [9.0, 19.0, 19.0],
+        "{}: maximum planned increases across span-2 A/B",
+        case.id
+    );
+    assert_eq!(
+        stage_bases(
+            columns[1],
+            LayoutGridTrackSizingStageKind::Initialize,
+            case.id
+        ),
+        [13.0, 13.0, 13.0],
+        "{}: resolved 110px basis column minimums",
+        case.id
+    );
+    for (index, (actual, expected)) in
+        stage_bases(columns[1], columns[1].stages.last().unwrap().stage, case.id)
+            .iter()
+            .zip(case.columns)
+            .enumerate()
+    {
+        assert_close(
+            *actual,
+            expected,
+            case.id,
+            &format!("resolved column track {}", index + 1),
+        );
+    }
+    let rows = trace
+        .passes
+        .iter()
+        .filter(|pass| pass.axis == LayoutGridTrackSizingAxis::Rows)
+        .collect::<Vec<_>>();
+    assert_eq!(
+        rows.len(),
+        2,
+        "{}: expected cyclic-auto and resolved Rows passes; got {:#?}",
+        case.id,
+        trace.passes
+    );
+    assert_eq!(
+        stage_bases(rows[0], LayoutGridTrackSizingStageKind::Initialize, case.id),
+        [2.0, 2.0],
+        "{}: cyclic-auto initial row minimums",
+        case.id
+    );
+    assert_eq!(
+        stage_bases(rows[1], LayoutGridTrackSizingStageKind::Initialize, case.id),
+        [3.0, 3.0],
+        "{}: resolved 10px basis row minimums",
+        case.id
+    );
+    assert_eq!(
+        stage_bases(rows[1], rows[1].stages.last().unwrap().stage, case.id),
+        [4.0, 4.0],
+        "{}: resolved max-content rows",
+        case.id
+    );
+}
+
+fn assert_definite_80px_passes(output: &crate::StyleLayoutOutput, fixture: &Fixture, case: &Case) {
+    let trace = output
+        .layout
+        .grid_track_sizing_traces
+        .iter()
+        .find(|trace| trace.node == fixture.root.id())
+        .unwrap_or_else(|| panic!("{}: missing Grid track-sizing trace", case.id));
+    let columns = trace
+        .passes
+        .iter()
+        .filter(|pass| pass.axis == LayoutGridTrackSizingAxis::Columns)
+        .collect::<Vec<_>>();
+    assert_eq!(
+        columns.len(),
+        1,
+        "{}: definite width should use one Columns pass; got {:#?}",
+        case.id,
+        trace.passes
+    );
+    assert_eq!(
+        stage_bases(
+            columns[0],
+            LayoutGridTrackSizingStageKind::Initialize,
+            case.id
+        ),
+        [10.0, 10.0, 10.0],
+        "{}: 80px-resolved column minimums",
+        case.id
+    );
+    for (index, (actual, expected)) in
+        stage_bases(columns[0], columns[0].stages.last().unwrap().stage, case.id)
+            .iter()
+            .zip(case.columns)
+            .enumerate()
+    {
+        assert_close(
+            *actual,
+            expected,
+            case.id,
+            &format!("80px maximized column track {}", index + 1),
+        );
+    }
+    let rows = trace
+        .passes
+        .iter()
+        .filter(|pass| pass.axis == LayoutGridTrackSizingAxis::Rows)
+        .collect::<Vec<_>>();
+    assert_eq!(
+        rows.len(),
+        2,
+        "{}: expected cyclic-auto and resolved Rows passes; got {:#?}",
+        case.id,
+        trace.passes
+    );
+    assert_eq!(
+        stage_bases(rows[0], LayoutGridTrackSizingStageKind::Initialize, case.id),
+        [2.0, 2.0],
+        "{}: cyclic-auto initial row minimums",
+        case.id
+    );
+    assert_eq!(
+        stage_bases(rows[1], LayoutGridTrackSizingStageKind::Initialize, case.id),
+        [4.0, 4.0],
+        "{}: resolved 20px basis row minimums",
+        case.id
+    );
+    assert_eq!(
+        stage_bases(rows[1], rows[1].stages.last().unwrap().stage, case.id),
+        [9.0, 9.0],
+        "{}: final definite-control rows",
+        case.id
+    );
+}
+
+fn stage_bases(
+    pass: &spinon_layout::LayoutGridTrackSizingPassTrace,
+    kind: LayoutGridTrackSizingStageKind,
+    scene: &str,
+) -> Vec<f32> {
+    pass.stages
+        .iter()
+        .find(|stage| stage.stage == kind)
+        .unwrap_or_else(|| panic!("{scene}: missing {kind:?} stage"))
+        .tracks
+        .iter()
+        .filter(|track| !track.is_gutter && !track.is_collapsed)
+        .map(|track| track.base_size)
+        .collect()
 }
 
 fn assert_intrinsic_sources(output: &crate::StyleLayoutOutput, fixture: &Fixture, case: &Case) {
@@ -314,7 +556,7 @@ fn assert_frame<const N: usize>(actual: [f32; N], expected: [f32; N], scene: &st
 
 fn assert_close(actual: f32, expected: f32, scene: &str, label: &str) {
     assert!(
-        (actual - expected).abs() <= 0.05,
+        (actual - expected).abs() <= 1.0 / 64.0,
         "{scene}: {label} expected {expected}, got {actual}"
     );
 }

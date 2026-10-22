@@ -37,7 +37,7 @@ const ITEM_C: Item = Item {
     height: "auto",
 };
 
-const SCENES: [Scene; 4] = [
+const SCENES: [Scene; 8] = [
     Scene {
         id: "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-forward",
         width: "min-content",
@@ -49,6 +49,16 @@ const SCENES: [Scene; 4] = [
         order: [ITEM_C, ITEM_B, ITEM_A],
     },
     Scene {
+        id: "cyclic-minmax-cross-axis-max-content-span-groups-forward",
+        width: "max-content",
+        order: [ITEM_A, ITEM_B, ITEM_C],
+    },
+    Scene {
+        id: "cyclic-minmax-cross-axis-max-content-span-groups-reverse",
+        width: "max-content",
+        order: [ITEM_C, ITEM_B, ITEM_A],
+    },
+    Scene {
         id: "definite-minmax-cross-axis-mixed-span-groups-forward",
         width: "40px",
         order: [ITEM_A, ITEM_B, ITEM_C],
@@ -56,6 +66,16 @@ const SCENES: [Scene; 4] = [
     Scene {
         id: "definite-minmax-cross-axis-mixed-span-groups-reverse",
         width: "40px",
+        order: [ITEM_C, ITEM_B, ITEM_A],
+    },
+    Scene {
+        id: "definite-minmax-cross-axis-max-content-span-groups-forward",
+        width: "80px",
+        order: [ITEM_A, ITEM_B, ITEM_C],
+    },
+    Scene {
+        id: "definite-minmax-cross-axis-max-content-span-groups-reverse",
+        width: "80px",
         order: [ITEM_C, ITEM_B, ITEM_A],
     },
 ];
@@ -129,9 +149,9 @@ mod tests {
     use std::collections::BTreeSet;
 
     #[test]
-    fn exposes_only_four_fixed_three_item_mixed_span_scenes() {
+    fn exposes_only_eight_fixed_three_item_mixed_span_scenes() {
         let ids = SCENES.iter().map(|scene| scene.id).collect::<BTreeSet<_>>();
-        assert_eq!(SCENES.len(), 4);
+        assert_eq!(SCENES.len(), 8);
         assert_eq!(ids.len(), SCENES.len());
         for scene in SCENES {
             let source = runtime_source(scene.id).expect("allowlisted mixed-span scene");
@@ -166,6 +186,8 @@ mod tests {
             "cyclic-minmax-cross-axis-mixed-span-groups-unlisted",
             "cyclic-minmax-cross-axis-mixed-span-groups-four-items",
             "definite-minmax-cross-axis-mixed-span-groups-item-a-only",
+            "cyclic-minmax-cross-axis-max-content-span-groups-unlisted",
+            "definite-minmax-cross-axis-max-content-span-groups-four-items",
         ] {
             assert!(runtime_source(unlisted).is_none(), "{unlisted}");
         }
@@ -181,6 +203,14 @@ mod tests {
             (
                 "definite-minmax-cross-axis-mixed-span-groups-forward",
                 "definite-minmax-cross-axis-mixed-span-groups-reverse",
+            ),
+            (
+                "cyclic-minmax-cross-axis-max-content-span-groups-forward",
+                "cyclic-minmax-cross-axis-max-content-span-groups-reverse",
+            ),
+            (
+                "definite-minmax-cross-axis-max-content-span-groups-forward",
+                "definite-minmax-cross-axis-max-content-span-groups-reverse",
             ),
         ] {
             let forward = runtime_source(forward).unwrap();

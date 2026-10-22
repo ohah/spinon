@@ -148,6 +148,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-reverse",
             "definite-minmax-cross-axis-mixed-span-groups-forward",
             "definite-minmax-cross-axis-mixed-span-groups-reverse",
+            "cyclic-minmax-cross-axis-max-content-span-groups-forward",
+            "cyclic-minmax-cross-axis-max-content-span-groups-reverse",
+            "definite-minmax-cross-axis-max-content-span-groups-forward",
+            "definite-minmax-cross-axis-max-content-span-groups-reverse",
             "cyclic-minmax-calc-min-span-columns", "definite-minmax-calc-min-span-columns",
             "cyclic-minmax-calc-min-span-rows", "definite-minmax-calc-min-span-rows",
             "cyclic-minmax-calc-overlap-forward", "cyclic-minmax-calc-overlap-reverse",
@@ -452,6 +456,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static String c114ExpectedRootFrame(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
         if (c114IsMixedCrossAxisSpanGroupsScene(sceneId)) {
+            if (sceneId.contains("-max-content-span-groups-")) {
+                return sceneId.startsWith("cyclic-")
+                        ? "width=114,height=14" : "width=84,height=24";
+            }
             return sceneId.startsWith("cyclic-")
                     ? "width=55,height=24" : "width=44,height=44";
         }
@@ -3168,7 +3176,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114IsMixedCrossAxisSpanGroupsScene(String sceneId) {
         return sceneId.startsWith("cyclic-minmax-cross-axis-mixed-span-groups-")
-                || sceneId.startsWith("definite-minmax-cross-axis-mixed-span-groups-");
+                || sceneId.startsWith("definite-minmax-cross-axis-mixed-span-groups-")
+                || sceneId.startsWith("cyclic-minmax-cross-axis-max-content-span-groups-")
+                || sceneId.startsWith("definite-minmax-cross-axis-max-content-span-groups-");
     }
 
     private static boolean c114ExpectedCrossAxisSpanGroupFramesMatch(
@@ -3224,13 +3234,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     ) {
         boolean intrinsic = sceneId.startsWith("cyclic-");
         boolean reversed = sceneId.endsWith("-reverse");
-        double rootWidth = intrinsic ? 55.0 : 44.0;
-        double rootHeight = intrinsic ? 24.0 : 44.0;
-        double itemAWidth = intrinsic ? 33.34375 : 26.0;
-        double itemAHeight = intrinsic ? 20.0 : 40.0;
-        double itemBX = intrinsic ? 19.671875 : 16.0;
-        double itemCWidth = intrinsic ? 51.0 : 40.0;
-        double itemCHeight = intrinsic ? 20.0 : 40.0;
+        boolean maxContent = sceneId.contains("-max-content-span-groups-");
+        double rootWidth = maxContent ? (intrinsic ? 114.0 : 84.0) : (intrinsic ? 55.0 : 44.0);
+        double rootHeight = maxContent ? (intrinsic ? 14.0 : 24.0) : (intrinsic ? 24.0 : 44.0);
+        double itemAWidth = maxContent
+                ? (intrinsic ? 238.0 / 3.0 : 158.0 / 3.0)
+                : (intrinsic ? 33.34375 : 26.0);
+        double itemAHeight = maxContent ? (intrinsic ? 10.0 : 20.0) : (intrinsic ? 20.0 : 40.0);
+        double itemBX = maxContent
+                ? (intrinsic ? 119.0 / 3.0 : 88.0 / 3.0)
+                : (intrinsic ? 19.671875 : 16.0);
+        double itemCWidth = maxContent ? (intrinsic ? 110.0 : 80.0) : (intrinsic ? 51.0 : 40.0);
+        double itemCHeight = maxContent ? (intrinsic ? 10.0 : 20.0) : (intrinsic ? 20.0 : 40.0);
         double[][] expected = reversed
                 ? new double[][] {
                     {1, 0, 0, rootWidth, rootHeight},
@@ -3300,6 +3315,32 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (sceneId.startsWith("cyclic-minmax-cross-axis-max-content-span-groups-")
+                || sceneId.startsWith("definite-minmax-cross-axis-max-content-span-groups-")) {
+            if (samples.size() != 2) return false;
+            String rootId = "c114-" + sceneId + "-grid";
+            boolean intrinsic = sceneId.startsWith("cyclic-");
+            String direction = sceneId.endsWith("-reverse") ? "reverse" : "forward";
+            String prefix = intrinsic ? "max-content-" + direction : "definite-80-" + direction;
+            int borderX = intrinsic ? 113 : 83;
+            int clearX = intrinsic ? 116 : 86;
+            boolean border = false;
+            boolean clear = false;
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                if (sample.id.equals(prefix + "-right-border")) {
+                    border = sample.targetNodeId.equals(rootId)
+                            && sample.xCssPx == borderX && sample.yCssPx == 6;
+                    if (!border) return false;
+                } else if (sample.id.equals(prefix + "-clear-past-root")) {
+                    clear = sample.targetNodeId.equals(rootId)
+                            && sample.xCssPx == clearX && sample.yCssPx == 6;
+                    if (!clear) return false;
+                } else {
+                    return false;
+                }
+            }
+            return border && clear;
+        }
         if (sceneId.equals("definite-minmax-calc-cross-axis-span-groups-forward")
                 || sceneId.equals("definite-minmax-calc-cross-axis-span-groups-reverse")
                 || sceneId.equals("definite-minmax-cross-axis-mixed-span-groups-forward")
@@ -5230,6 +5271,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "definite-minmax-cross-axis-mixed-span-groups-forward".equals(
                                 pixelMatrixSceneId)
                         || "definite-minmax-cross-axis-mixed-span-groups-reverse".equals(
+                                pixelMatrixSceneId)
+                        || "cyclic-minmax-cross-axis-max-content-span-groups-forward".equals(
+                                pixelMatrixSceneId)
+                        || "cyclic-minmax-cross-axis-max-content-span-groups-reverse".equals(
+                                pixelMatrixSceneId)
+                        || "definite-minmax-cross-axis-max-content-span-groups-forward".equals(
+                                pixelMatrixSceneId)
+                        || "definite-minmax-cross-axis-max-content-span-groups-reverse".equals(
                                 pixelMatrixSceneId)
                         || c114IsTwoAxisSpanTextScene(pixelMatrixSceneId)
                         || "definite-minmax-calc-column".equals(pixelMatrixSceneId)
@@ -8774,6 +8823,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c114GridExpectedRgb(String sampleId) {
+        if ((sampleId.startsWith("max-content-")
+                        || sampleId.startsWith("definite-80-"))
+                && sampleId.endsWith("-right-border")) {
+            return new int[] {240, 198, 116};
+        }
+        if ((sampleId.startsWith("max-content-")
+                        || sampleId.startsWith("definite-80-"))
+                && sampleId.endsWith("-clear-past-root")) {
+            return new int[] {0, 0, 0};
+        }
         if (sampleId.endsWith("-overflow-item-b")) return new int[] {229, 72, 77};
         if (sampleId.endsWith("-clear-past-item-b")) return new int[] {0, 0, 0};
         if (c114IsTwoAxisSpanTextPixelSample(sampleId, "-left-border")

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "target": "aarch64-apple-ios-sim",
+  "defaultArtifact": {
+    "features": ["c04-runtime-gpu"],
+    "path": "target/c11-4-cyclic-max-content-default-artifact/aarch64-apple-ios-sim/release/libspinon_ffi.a",
+    "bytes": 74799856,
+    "sha256": "1522bf325065d4d993f47c74b1b35b422dbf8c16d25c582b14d89ebb79088516",
+    "newSceneStringsPresent": false,
+    "fixturePrepareSymbolPresent": false
+  },
+  "fixturePositiveControl": {
+    "features": ["c04-runtime-gpu-fixture-test", "c11-grid-metal-surface-pixels-test"],
+    "path": "target/aarch64-apple-ios-sim/release/libspinon_ffi.a",
+    "bytes": 67713568,
+    "sha256": "ac08e79e79630781f96b1e720276e460da7ddac5facbbc29304594a4308120cc",
+    "newSceneStringsPresent": true,
+    "fixturePrepareSymbol": "__ZN14spinon_runtime7session10ua_cascade14runtime_layout8fixtures10c11_4_text47cyclic_minmax_calc_cross_axis_mixed_span_groups7prepare17he5ee9f35a4b12522E",
+    "fixturePrepareSymbolPresent": true
+  },
+  "inspection": {
+    "stringsMarker": "cyclic-minmax-cross-axis-max-content-span-groups-forward",
+    "fixtureSourceMarker": "cyclic_minmax_calc_cross_axis_mixed_span_groups",
+    "symbolTool": "nm -g",
+    "note": "Static archive inspection only; this does not prove fixture exclusion from an APK, IPA, or final app bundle."
+  }
+}

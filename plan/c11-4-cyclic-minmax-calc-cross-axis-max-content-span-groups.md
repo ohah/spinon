@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [기존 mixed cross-axis span-groups 계획](./c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** Chrome 156 Agent Browser 사전 관측과 CSS Grid 2025 CRD의 독립 계산을 네 fixed scene에서 기록했다. 구현은 시작하지 않았다. 이 계획은 기존 span-2/3 세 text item topology에 max-content sizing과 80px definite width 대조를 추가한다. C11.4 checkbox와 공식 완료 수 <code>77/213</code>은 그대로 둔다.
+**상태:** Chrome 156 Agent Browser 사전 관측과 CSS Grid 2025 CRD 독립 계산을 네 fixed scene에서 기록했고, opt-in runtime fixture와 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 검증을 마쳤다. 각 플랫폼 4/4 scene, PixelCopy 및 compositor 제출 전 Metal 표본 8/8 exact다. 구현·artifact·검증 범위는 [runtime evidence](../spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-runtime-2026-10-22/README.md)에 기록했다. C11.4 checkbox와 공식 완료 수 <code>77/213</code>은 그대로 둔다.
 
 ## 목적
 
@@ -63,3 +63,11 @@ Chrome 156's computed tracks are rounded to 1/64 CSS px and differ from the rati
 - [계획 실패 관점 20개](./c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-plan-review-20.md)
 - [계획 PR 변경 실패 관점 20개](../spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/plan-pr-diff-review-20.md)
 - 기존 [mixed-span 계획](./c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md), [실행 근거](../spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md) 및 [PR #515 회귀 근거](../spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/README.md)
+
+## 구현 결과 (2026-10-22)
+
+기존 `c11-4-grid-track-sizing-fixture-test`에 MaxContent width scene 두 개와 80px definite control 두 개를 추가했다. Rust trace의 cyclic-auto intrinsic basis와 resolved percentage pass를 분리하고 span-group 순서, Columns→Rows 의존성, text line widths, reverse-order geometry를 검사한다. Android runtime pixel expectation에 신규 고정 sample ID를 추가했고 iOS fixture build에서는 `SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=1`을 켰다.
+
+시뮬레이터 캡처 도구는 이미 빌드된 앱을 설치한다. 첫 Android 시도는 오래된 APK여서 새 scene ID를 거부했다. 최신 fixture APK로 다시 빌드한 뒤 네 scene이 통과했다. 다음 PixelCopy 시도에서 새 sample ID의 Android 기대색이 미등록이라 `-1` mismatch가 드러나 border/clear mapping을 수정하고 재실행했다. 첫 iOS capture도 Metal surface-pixel build flag가 꺼져 `status=-90`으로 거부됐으며 해당 fixture flag를 켜고 재빌드한 뒤 네 scene을 통과했다. 실패 및 재실행 이유를 숨기지 않고 최종 성공 로그·hash를 runtime evidence에 보존한다.
+
+기본 release FFI archive에는 새 scene 문자열과 fixture prepare symbol이 없고 fixture-test positive control에는 있다. 이 검사는 정적 archive 경계이며 최종 APK/IPA 증명이 아니다. 구현/runtime 실패 관점 20개 및 PR 변경 실패 관점 30개는 runtime evidence에 별도로 기록한다. 일반 CSS admission, WPT, 실기기/hardware GPU, glyph raster equality, iOS compositor 이후 pixel과 전체 C11.4는 범위 밖이며 C11.4 checkbox와 공식 `77/213`은 유지한다.

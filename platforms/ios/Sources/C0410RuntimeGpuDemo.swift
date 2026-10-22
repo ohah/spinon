@@ -38,6 +38,10 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-reverse",
     "definite-minmax-cross-axis-mixed-span-groups-forward",
     "definite-minmax-cross-axis-mixed-span-groups-reverse",
+    "cyclic-minmax-cross-axis-max-content-span-groups-forward",
+    "cyclic-minmax-cross-axis-max-content-span-groups-reverse",
+    "definite-minmax-cross-axis-max-content-span-groups-forward",
+    "definite-minmax-cross-axis-max-content-span-groups-reverse",
     "cyclic-minmax-calc-overlap-forward", "cyclic-minmax-calc-overlap-reverse",
     "definite-minmax-calc-overlap-forward", "definite-minmax-calc-overlap-reverse",
     "definite-minmax-calc-overlap-small-forward",
@@ -266,11 +270,17 @@ private func c114IsCrossAxisSpanGroupsScene(_ sceneID: String) -> Bool {
 private func c114IsMixedCrossAxisSpanGroupsScene(_ sceneID: String) -> Bool {
     sceneID.hasPrefix("cyclic-minmax-cross-axis-mixed-span-groups-")
         || sceneID.hasPrefix("definite-minmax-cross-axis-mixed-span-groups-")
+        || sceneID.hasPrefix("cyclic-minmax-cross-axis-max-content-span-groups-")
+        || sceneID.hasPrefix("definite-minmax-cross-axis-max-content-span-groups-")
 }
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
     if c114IsMixedCrossAxisSpanGroupsScene(sceneID) {
+        if sceneID.contains("-max-content-span-groups-") {
+            return sceneID.hasPrefix("cyclic-")
+                ? "width=114,height=14" : "width=84,height=24"
+        }
         return sceneID.hasPrefix("cyclic-")
             ? "width=55,height=24" : "width=44,height=44"
     }
@@ -2149,11 +2159,23 @@ private func c114ExpectedMixedCrossAxisSpanGroupFramesMatch(
 ) -> Bool {
     let intrinsic = sceneID.hasPrefix("cyclic-")
     let reversed = sceneID.hasSuffix("-reverse")
-    let rootWidth = intrinsic ? 55.0 : 44.0
-    let rootHeight = intrinsic ? 24.0 : 44.0
-    let itemA: [Double] = [2, 2, intrinsic ? 33.34375 : 26, intrinsic ? 20 : 40]
-    let itemB: [Double] = [intrinsic ? 19.671875 : 16, 2, 40, 10]
-    let itemC: [Double] = [2, 2, intrinsic ? 51 : 40, intrinsic ? 20 : 40]
+    let maxContent = sceneID.contains("-max-content-span-groups-")
+    let rootWidth = maxContent ? (intrinsic ? 114.0 : 84.0) : (intrinsic ? 55.0 : 44.0)
+    let rootHeight = maxContent ? (intrinsic ? 14.0 : 24.0) : (intrinsic ? 24.0 : 44.0)
+    let itemA: [Double] = [
+        2, 2,
+        maxContent ? (intrinsic ? 238.0 / 3.0 : 158.0 / 3.0) : (intrinsic ? 33.34375 : 26),
+        maxContent ? (intrinsic ? 10 : 20) : (intrinsic ? 20 : 40),
+    ]
+    let itemB: [Double] = [
+        maxContent ? (intrinsic ? 119.0 / 3.0 : 88.0 / 3.0) : (intrinsic ? 19.671875 : 16),
+        2, 40, 10,
+    ]
+    let itemC: [Double] = [
+        2, 2,
+        maxContent ? (intrinsic ? 110 : 80) : (intrinsic ? 51 : 40),
+        maxContent ? (intrinsic ? 10 : 20) : (intrinsic ? 20 : 40),
+    ]
     let expectedItems: [(Int, [Double])] = reversed
         ? [(2, itemC), (4, itemB), (6, itemA)]
         : [(2, itemA), (4, itemB), (6, itemC)]
@@ -3102,6 +3124,24 @@ private struct C111MetalPixelRun {
     ) -> Bool {
         let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])]
         switch sceneID {
+        case "cyclic-minmax-cross-axis-max-content-span-groups-forward",
+             "cyclic-minmax-cross-axis-max-content-span-groups-reverse":
+            let direction = sceneID.hasSuffix("-reverse") ? "reverse" : "forward"
+            expectedSamples = [
+                ("max-content-\(direction)-right-border", "c114-\(sceneID)-grid", 113, 6,
+                 [240, 198, 116, 255]),
+                ("max-content-\(direction)-clear-past-root", "c114-\(sceneID)-grid", 116, 6,
+                 [0, 0, 0, 255]),
+            ]
+        case "definite-minmax-cross-axis-max-content-span-groups-forward",
+             "definite-minmax-cross-axis-max-content-span-groups-reverse":
+            let direction = sceneID.hasSuffix("-reverse") ? "reverse" : "forward"
+            expectedSamples = [
+                ("definite-80-\(direction)-right-border", "c114-\(sceneID)-grid", 83, 6,
+                 [240, 198, 116, 255]),
+                ("definite-80-\(direction)-clear-past-root", "c114-\(sceneID)-grid", 86, 6,
+                 [0, 0, 0, 255]),
+            ]
         case "definite-minmax-calc-cross-axis-span-groups-forward",
              "definite-minmax-calc-cross-axis-span-groups-reverse",
              "definite-minmax-cross-axis-mixed-span-groups-forward",
