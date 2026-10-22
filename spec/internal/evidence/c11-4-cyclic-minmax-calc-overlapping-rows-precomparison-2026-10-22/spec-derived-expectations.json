@@ -1,0 +1,126 @@
+{
+  "schema": "spinon.c11_4.cyclic_minmax_calc_overlapping_rows.spec_expectations.v1",
+  "basis": {
+    "spec": "CSS Grid Layout Module Level 1, 2025 CRD",
+    "sections": ["7.2.1", "11.3", "11.5", "11.5.1"],
+    "browserIsNotSourceOfExpectedValues": true
+  },
+  "fontAndWrapping": {
+    "family": "Ahem",
+    "fontSizeCssPx": 10,
+    "lineHeightCssPx": 10,
+    "columnInlineSizeCssPx": 10,
+    "wordBreak": "break-all",
+    "itemLines": {
+      "span2-left": { "glyphs": 7, "lines": 7, "blockContributionCssPx": 70 },
+      "span2-right": { "glyphs": 8, "lines": 8, "blockContributionCssPx": 80 },
+      "span3": { "glyphs": 14, "lines": 14, "blockContributionCssPx": 140 }
+    }
+  },
+  "intrinsicDistribution": {
+    "tracks": 3,
+    "trackFunction": "minmax(calc(10% + 2px), max-content)",
+    "rowGapCssPx": 2,
+    "span2Group": {
+      "leftContributionCssPx": 70,
+      "leftSpaceAfterOneGutterCssPx": 68,
+      "leftPlannedIncreasePerTrackCssPx": 34,
+      "rightContributionCssPx": 80,
+      "rightSpaceAfterOneGutterCssPx": 78,
+      "rightPlannedIncreasePerTrackCssPx": 39,
+      "maxPlannedIncreaseByTrackCssPx": [34, 39, 39]
+    },
+    "span3Group": {
+      "contributionCssPx": 140,
+      "currentTrackSumCssPx": 112,
+      "twoGuttersCssPx": 4,
+      "remainingSpaceCssPx": 24,
+      "increasePerTrackCssPx": 8,
+      "maxContentUpperSizeByTrackCssPx": [42, 47, 47]
+    },
+    "cyclicMaxContentRootHeightCssPx": 140,
+    "cyclicFinalCalcMinimumCssPx": 16,
+    "definite100px": {
+      "calcMinimumPerTrackCssPx": 12,
+      "freeSpaceAfterMinimumsAndGuttersCssPx": 60,
+      "freeSpacePerTrackCssPx": 20,
+      "finalRowsCssPx": [32, 32, 32]
+    }
+  },
+  "scenes": [
+    {
+      "id": "cyclic-minmax-calc-overlap-rows-forward",
+      "height": "max-content",
+      "contentHeightCssPx": 140,
+      "rowsCssPx": [42, 47, 47],
+      "rootBorderBoxCssPx": [14, 144],
+      "itemsByKind": {
+        "span2-left": { "frameFromBorderOriginCssPx": [2, 2, 10, 91], "lineCount": 7 },
+        "span2-right": { "frameFromBorderOriginCssPx": [2, 46, 10, 96], "lineCount": 8 },
+        "span3": { "frameFromBorderOriginCssPx": [2, 2, 10, 140], "lineCount": 14 }
+      }
+    },
+    {
+      "id": "cyclic-minmax-calc-overlap-rows-reverse",
+      "height": "max-content",
+      "contentHeightCssPx": 140,
+      "rowsCssPx": [42, 47, 47],
+      "rootBorderBoxCssPx": [14, 144],
+      "sameKindFramesAs": "cyclic-minmax-calc-overlap-rows-forward"
+    },
+    {
+      "id": "definite-minmax-calc-overlap-rows-forward",
+      "heightCssPx": 140,
+      "contentHeightCssPx": 140,
+      "rowsCssPx": [42, 47, 47],
+      "rootBorderBoxCssPx": [14, 144],
+      "sameKindFramesAs": "cyclic-minmax-calc-overlap-rows-forward"
+    },
+    {
+      "id": "definite-minmax-calc-overlap-rows-reverse",
+      "heightCssPx": 140,
+      "contentHeightCssPx": 140,
+      "rowsCssPx": [42, 47, 47],
+      "rootBorderBoxCssPx": [14, 144],
+      "sameKindFramesAs": "cyclic-minmax-calc-overlap-rows-forward"
+    },
+    {
+      "id": "definite-minmax-calc-overlap-rows-small-forward",
+      "heightCssPx": 100,
+      "contentHeightCssPx": 100,
+      "finalCalcMinimumCssPx": 12,
+      "rowsCssPx": [32, 32, 32],
+      "rootBorderBoxCssPx": [14, 104],
+      "itemsByKind": {
+        "span2-left": { "frameFromBorderOriginCssPx": [2, 2, 10, 66], "lineCount": 7, "textScrollHeightCssPx": 70 },
+        "span2-right": { "frameFromBorderOriginCssPx": [2, 36, 10, 66], "lineCount": 8, "textScrollHeightCssPx": 80 },
+        "span3": { "frameFromBorderOriginCssPx": [2, 2, 10, 100], "lineCount": 14, "textScrollHeightCssPx": 140 }
+      },
+      "span3TextEndFromBorderOriginCssPx": [12, 142],
+      "textOverflowBeyondContentHeightCssPx": 40,
+      "plannedNativeSurfaceSamples": {
+        "redTextOutsideRoot": { "rootRelativeCssPx": [7, 126] },
+        "clearAfterText": { "rootRelativeCssPx": [7, 150] }
+      }
+    },
+    {
+      "id": "definite-minmax-calc-overlap-rows-small-reverse",
+      "heightCssPx": 100,
+      "contentHeightCssPx": 100,
+      "rowsCssPx": [32, 32, 32],
+      "rootBorderBoxCssPx": [14, 104],
+      "sameKindFramesAs": "definite-minmax-calc-overlap-rows-small-forward",
+      "samePlannedNativeSurfaceSamplesAs": "definite-minmax-calc-overlap-rows-small-forward"
+    }
+  ],
+  "sourceOrderInvariant": {
+    "forwardKinds": ["span2-left", "span2-right", "span3"],
+    "reverseKinds": ["span3", "span2-right", "span2-left"],
+    "expectedSameRowsAndKindFrames": true
+  },
+  "surfaceBoundary": {
+    "browserPageBackground": [255, 255, 255, 255],
+    "futureNativeHostClearSampleMustComeFromRuntimeEvidence": true,
+    "cssBorderStrokeVerified": false
+  }
+}
