@@ -183,6 +183,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "auto-fill-indefinite-neighbors", "auto-fill-max-size-neighbors",
             "auto-fill-min-size-neighbors", "auto-fill-overflow-neighbors",
             "auto-fill-row-neighbors", "auto-fit-row-neighbors",
+            "auto-repeat-named-positive", "auto-repeat-named-bare",
+            "auto-repeat-named-negative", "auto-repeat-named-span",
+            "auto-repeat-named-fit", "auto-repeat-named-neighbors",
+            "auto-repeat-named-merge", "auto-repeat-named-row",
             "auto-fill-two-track-columns-both-190", "auto-fill-two-track-columns-both-200",
             "auto-fill-two-track-columns-both-342", "auto-fill-two-track-columns-prefix-200",
             "auto-fill-two-track-columns-suffix-200", "auto-fill-two-track-rows-both-190",
@@ -291,6 +295,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "typed-minmax-max-content", "typed-fit-content", "typed-fraction",
             "typed-percentage", "typed-calc", "typed-auto-fit-occupied",
             "typed-auto-fit-empty", "typed-auto-fit-gutter",
+            "auto-repeat-named-positive", "auto-repeat-named-bare",
+            "auto-repeat-named-negative", "auto-repeat-named-span",
+            "auto-repeat-named-fit", "auto-repeat-named-neighbors",
+            "auto-repeat-named-merge", "auto-repeat-named-row",
             "anonymous-text-two-images-forward", "two-images-anonymous-text-reversed",
             "anonymous-text-three-images-forward", "three-images-anonymous-text-reversed",
             "anonymous-runs-two-images-forward", "two-images-anonymous-runs-reversed",
@@ -326,6 +334,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "typed-minmax-max-content", "typed-fit-content", "typed-fraction",
             "typed-percentage", "typed-calc", "typed-auto-fit-occupied",
             "typed-auto-fit-empty", "typed-auto-fit-gutter",
+            "auto-repeat-named-positive", "auto-repeat-named-bare",
+            "auto-repeat-named-negative", "auto-repeat-named-span",
+            "auto-repeat-named-fit", "auto-repeat-named-neighbors",
+            "auto-repeat-named-merge", "auto-repeat-named-row",
     };
     private static final String[][] C114_NEGATIVE_TRACK_EXPECTATIONS = {
             {"columns-one-negative", "189", "22", "47", "20", "4"},
@@ -465,6 +477,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ExpectedRootFrame(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        String namedAutoRepeatFrame = c114NamedAutoRepeatRootFrame(sceneId);
+        if (namedAutoRepeatFrame != null) return namedAutoRepeatFrame;
         if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) return "";
         if (c114IsCyclicMinmaxReplacedImageSpanScene(sceneId)) {
             return sceneId.contains("-intrinsic-")
@@ -738,6 +752,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        String namedAutoRepeatFrame = c114NamedAutoRepeatItemFrame(sceneId);
+        if (namedAutoRepeatFrame != null) return namedAutoRepeatFrame;
         if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) return "";
         if (c114IsCyclicMinmaxReplacedImageSpanScene(sceneId)) return "";
         if (c114IsCrossAxisSpanGroupsScene(sceneId)
@@ -2209,6 +2225,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        String namedAutoRepeatFrames = c114NamedAutoRepeatNodeFrames(sceneId);
+        if (namedAutoRepeatFrames != null) return namedAutoRepeatFrames;
         if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) return null;
         if (c114IsCyclicMinmaxReplacedImageSpanScene(sceneId)) {
             boolean intrinsic = sceneId.contains("-intrinsic-");
@@ -2237,6 +2255,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (sceneId.startsWith("nested-text-span")) {
             return null;
         }
+
         if (c114IsNestedGridDepthAnonymousImageScene(sceneId)) {
             boolean minContent = sceneId.contains("-min-content-");
             boolean imageBeforeText = sceneId.contains("-image-before-text");
@@ -2596,6 +2615,73 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 String imageXy = sceneId.startsWith("fixed-gutter-") ? "x=1,y=1," : "x=0,y=0,";
                 return "node_frames_css_px=[0:node=1,x=0,y=0," + c114ExpectedRootFrame(sceneId)
                         + ";1:node=2," + imageXy + c114ExpectedItemFrame(sceneId) + "]";
+            default:
+                return null;
+        }
+    }
+
+    private static String c114NamedAutoRepeatRootFrame(String sceneId) {
+        switch (sceneId) {
+            case "auto-repeat-named-positive":
+            case "auto-repeat-named-bare":
+            case "auto-repeat-named-negative":
+            case "auto-repeat-named-span":
+            case "auto-repeat-named-fit":
+                return "width=180,height=60";
+            case "auto-repeat-named-neighbors":
+                return "width=260,height=50";
+            case "auto-repeat-named-merge":
+                return "width=120,height=50";
+            case "auto-repeat-named-row":
+                return "width=100,height=180";
+            default:
+                return null;
+        }
+    }
+
+    private static String c114NamedAutoRepeatItemFrame(String sceneId) {
+        switch (sceneId) {
+            case "auto-repeat-named-positive":
+            case "auto-repeat-named-bare":
+            case "auto-repeat-named-negative":
+            case "auto-repeat-named-fit":
+                return "width=40,height=40";
+            case "auto-repeat-named-span":
+                return "width=90,height=40";
+            case "auto-repeat-named-neighbors":
+            case "auto-repeat-named-merge":
+                return "width=80,height=40";
+            case "auto-repeat-named-row":
+                return "width=100,height=40";
+            default:
+                return null;
+        }
+    }
+
+    private static String c114NamedAutoRepeatNodeFrames(String sceneId) {
+        switch (sceneId) {
+            case "auto-repeat-named-positive":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=180,height=60;"
+                        + "1:node=2,x=50,y=0,width=40,height=40]";
+            case "auto-repeat-named-bare":
+            case "auto-repeat-named-fit":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=180,height=60;"
+                        + "1:node=2,x=0,y=0,width=40,height=40]";
+            case "auto-repeat-named-negative":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=180,height=60;"
+                        + "1:node=2,x=100,y=0,width=40,height=40]";
+            case "auto-repeat-named-span":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=180,height=60;"
+                        + "1:node=2,x=0,y=0,width=90,height=40]";
+            case "auto-repeat-named-neighbors":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=260,height=50;"
+                        + "1:node=2,x=120,y=0,width=80,height=40]";
+            case "auto-repeat-named-merge":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=50;"
+                        + "1:node=2,x=20,y=0,width=80,height=40]";
+            case "auto-repeat-named-row":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=180;"
+                        + "1:node=2,x=0,y=50,width=100,height=40]";
             default:
                 return null;
         }
@@ -3777,6 +3863,60 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (sceneId.startsWith("auto-repeat-named-")) {
+            String rootId = "c114-" + sceneId + "-grid";
+            String itemId = "c114-" + sceneId + "-item";
+            int itemX;
+            int itemY;
+            int itemWidth;
+            int itemHeight;
+            switch (sceneId) {
+                case "auto-repeat-named-positive": itemX = 50; itemY = 0; itemWidth = 40; itemHeight = 40; break;
+                case "auto-repeat-named-bare":
+                case "auto-repeat-named-fit": itemX = 0; itemY = 0; itemWidth = 40; itemHeight = 40; break;
+                case "auto-repeat-named-negative": itemX = 100; itemY = 0; itemWidth = 40; itemHeight = 40; break;
+                case "auto-repeat-named-span": itemX = 0; itemY = 0; itemWidth = 90; itemHeight = 40; break;
+                case "auto-repeat-named-neighbors": itemX = 120; itemY = 0; itemWidth = 80; itemHeight = 40; break;
+                case "auto-repeat-named-merge": itemX = 20; itemY = 0; itemWidth = 80; itemHeight = 40; break;
+                case "auto-repeat-named-row": itemX = 0; itemY = 50; itemWidth = 100; itemHeight = 40; break;
+                default: return false;
+            }
+            List<String> ids = new ArrayList<>();
+            List<String> nodeIds = new ArrayList<>();
+            List<int[]> points = new ArrayList<>();
+            boolean rowAxis = sceneId.equals("auto-repeat-named-row");
+            if (rowAxis) {
+                ids.add(sceneId + "-before-item"); nodeIds.add(rootId); points.add(new int[]{20, itemY - 1});
+                ids.add(sceneId + "-item-start-edge"); nodeIds.add(itemId); points.add(new int[]{20, itemY});
+                ids.add(sceneId + "-item-end-edge"); nodeIds.add(itemId); points.add(new int[]{20, itemY + itemHeight - 1});
+                ids.add(sceneId + "-after-item"); nodeIds.add(rootId); points.add(new int[]{20, itemY + itemHeight});
+            } else {
+                if (itemX > 0) {
+                    ids.add(sceneId + "-before-item"); nodeIds.add(rootId); points.add(new int[]{itemX - 1, 20});
+                }
+                ids.add(sceneId + "-item-start-edge"); nodeIds.add(itemId); points.add(new int[]{itemX, 20});
+                ids.add(sceneId + "-item-end-edge"); nodeIds.add(itemId); points.add(new int[]{itemX + itemWidth - 1, 20});
+                ids.add(sceneId + "-after-item"); nodeIds.add(rootId); points.add(new int[]{itemX + itemWidth, 20});
+            }
+            if (samples.size() != ids.size()) return false;
+            boolean[] found = new boolean[ids.size()];
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                int index = -1;
+                for (int candidate = 0; candidate < ids.size(); candidate++) {
+                    if (ids.get(candidate).equals(sample.id)) {
+                        index = candidate;
+                        break;
+                    }
+                }
+                if (index < 0 || found[index]
+                        || !nodeIds.get(index).equals(sample.targetNodeId)
+                        || sample.xCssPx != points.get(index)[0]
+                        || sample.yCssPx != points.get(index)[1]) return false;
+                found[index] = true;
+            }
+            for (boolean sampleFound : found) if (!sampleFound) return false;
+            return true;
+        }
         if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) {
             if (sceneId.contains("-intrinsic-") || sceneId.startsWith("max-content-")
                     || samples.size() != 3) return false;
@@ -5811,6 +5951,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "cyclic-calc-two-axis".equals(pixelMatrixSceneId)
                         || "definite-calc-control".equals(pixelMatrixSceneId)
                         || "auto-fill-overflow-neighbors".equals(pixelMatrixSceneId)
+                        || c114IsAutoRepeatNegativeLineScene(pixelMatrixSceneId)
                         || "columns-fill-negative-positive-cycle".equals(pixelMatrixSceneId)
                         || "implicit-min-content-overflow-border".equals(pixelMatrixSceneId)
                         || "columns-negative-fixed-root-overflow".equals(pixelMatrixSceneId)
@@ -9344,6 +9485,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c114GridExpectedRgb(String sampleId) {
+        if (sampleId.startsWith("auto-repeat-named-")) {
+            if (sampleId.endsWith("-item-start-edge")
+                    || sampleId.endsWith("-item-end-edge")) {
+                return new int[] {57, 165, 219};
+            }
+            if (sampleId.endsWith("-before-item") || sampleId.endsWith("-after-item")) {
+                return new int[] {226, 232, 240};
+            }
+        }
         if (sampleId.endsWith("-top-border")) return new int[] {240, 198, 116};
         if (sampleId.endsWith("-image-b-overflow")) return new int[] {0, 255, 64};
         if (sampleId.endsWith("-clear-past-image-b")) return new int[] {0, 0, 0};

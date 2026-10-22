@@ -455,11 +455,13 @@ fn track_sizing_profile_projects_independent_auto_repeat_modes_on_both_axes() {
             mode: ComputedCssGridAutoRepeatMode::AutoFill,
             start: 1,
             end: 2,
+            line_names: Vec::new(),
         }),
         rows_auto_repeat: Some(ComputedCssGridAutoRepeat {
             mode: ComputedCssGridAutoRepeatMode::AutoFit,
             start: 1,
             end: 2,
+            line_names: Vec::new(),
         }),
         columns_line_names: Vec::new(),
         rows_line_names: Vec::new(),
@@ -482,6 +484,7 @@ fn track_sizing_profile_projects_independent_auto_repeat_modes_on_both_axes() {
             mode: spinon_layout::GridAutoRepeatMode::AutoFill,
             start: 1,
             end: 2,
+            line_names: Vec::new(),
         })
     );
     assert_eq!(
@@ -490,12 +493,60 @@ fn track_sizing_profile_projects_independent_auto_repeat_modes_on_both_axes() {
             mode: spinon_layout::GridAutoRepeatMode::AutoFit,
             start: 1,
             end: 2,
+            line_names: Vec::new(),
         })
     );
     assert!(projected.columns_line_names.is_empty());
     assert_eq!(projected.columns.len(), 3);
     assert_eq!(projected.columns[0], GridTrackSize::LengthPx(20.0));
     assert_eq!(projected.columns[2], GridTrackSize::LengthPx(10.0));
+}
+
+#[test]
+fn track_sizing_profile_projects_auto_repeat_inner_and_component_names() {
+    let node = NodeId::new(11_110).unwrap();
+    let grid = ComputedCssGridLayout {
+        columns: vec![
+            ComputedCssGridTrackSize::LengthPx(20.0),
+            ComputedCssGridTrackSize::LengthPx(40.0),
+            ComputedCssGridTrackSize::LengthPx(10.0),
+        ],
+        rows: vec![ComputedCssGridTrackSize::LengthPx(40.0)],
+        columns_auto_repeat: Some(ComputedCssGridAutoRepeat {
+            mode: ComputedCssGridAutoRepeatMode::AutoFill,
+            start: 1,
+            end: 2,
+            line_names: vec![vec!["item-start".into()], vec!["item-end".into()]],
+        }),
+        rows_auto_repeat: None,
+        columns_line_names: vec![
+            vec!["container-start".into()],
+            vec!["repeat-start".into()],
+            vec!["repeat-end".into()],
+            vec!["container-end".into()],
+        ],
+        rows_line_names: vec![Vec::new(), Vec::new()],
+        template_areas: None,
+        auto_flow: ComputedCssGridAutoFlow::Row,
+        auto_rows: ComputedCssGridAutoRows::Auto,
+        auto_columns: spinon_style::ComputedCssGridAutoColumns::Auto,
+    };
+
+    let projected = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+    )
+    .unwrap();
+
+    assert_eq!(projected.columns_line_names, grid.columns_line_names);
+    assert_eq!(
+        projected.columns_auto_repeat.unwrap().line_names,
+        vec![
+            vec![String::from("item-start")],
+            vec![String::from("item-end")],
+        ]
+    );
 }
 
 #[test]
@@ -515,6 +566,7 @@ fn track_sizing_profile_keeps_single_axis_auto_repeat_projection() {
             mode: ComputedCssGridAutoRepeatMode::AutoFill,
             start: 1,
             end: 2,
+            line_names: Vec::new(),
         }),
         rows_auto_repeat: None,
         columns_line_names: Vec::new(),
@@ -538,6 +590,7 @@ fn track_sizing_profile_keeps_single_axis_auto_repeat_projection() {
             mode: spinon_layout::GridAutoRepeatMode::AutoFill,
             start: 1,
             end: 2,
+            line_names: Vec::new(),
         })
     );
     assert_eq!(projected.rows_auto_repeat, None);

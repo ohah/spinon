@@ -23,11 +23,13 @@ fn track_sizing_projects_axis_specific_auto_track_lists_and_math() {
             mode: ComputedCssGridAutoRepeatMode::AutoFill,
             start: 0,
             end: 1,
+            line_names: Vec::new(),
         }),
         rows_auto_repeat: Some(ComputedCssGridAutoRepeat {
             mode: ComputedCssGridAutoRepeatMode::AutoFit,
             start: 0,
             end: 1,
+            line_names: Vec::new(),
         }),
         columns_line_names: Vec::new(),
         rows_line_names: Vec::new(),
@@ -57,6 +59,7 @@ fn track_sizing_projects_axis_specific_auto_track_lists_and_math() {
             mode: spinon_layout::GridAutoRepeatMode::AutoFill,
             start: 0,
             end: 1,
+            line_names: Vec::new(),
         })
     );
     assert_eq!(
@@ -65,6 +68,7 @@ fn track_sizing_projects_axis_specific_auto_track_lists_and_math() {
             mode: spinon_layout::GridAutoRepeatMode::AutoFit,
             start: 0,
             end: 1,
+            line_names: Vec::new(),
         })
     );
 

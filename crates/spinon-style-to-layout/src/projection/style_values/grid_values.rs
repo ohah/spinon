@@ -145,36 +145,28 @@ fn project_grid_layout_with_reservations(
             "grid-template-columns",
             &grid.columns,
             &grid.columns_line_names,
-            grid.columns_auto_repeat.is_some(),
+            grid.columns_auto_repeat.as_ref(),
         )?;
         validate_axis_line_names(
             node,
             "grid-template-rows",
             &grid.rows,
             &grid.rows_line_names,
-            grid.rows_auto_repeat.is_some(),
+            grid.rows_auto_repeat.as_ref(),
         )?;
         (
-            if grid.columns_auto_repeat.is_some() {
-                Vec::new()
-            } else {
-                project_line_names(
-                    node,
-                    "grid-template-columns",
-                    &grid.columns_line_names,
-                    &mut reserve_line_metadata,
-                )?
-            },
-            if grid.rows_auto_repeat.is_some() {
-                Vec::new()
-            } else {
-                project_line_names(
-                    node,
-                    "grid-template-rows",
-                    &grid.rows_line_names,
-                    &mut reserve_line_metadata,
-                )?
-            },
+            project_line_names(
+                node,
+                "grid-template-columns",
+                &grid.columns_line_names,
+                &mut reserve_line_metadata,
+            )?,
+            project_line_names(
+                node,
+                "grid-template-rows",
+                &grid.rows_line_names,
+                &mut reserve_line_metadata,
+            )?,
         )
     } else {
         (Vec::new(), Vec::new())
@@ -196,11 +188,35 @@ fn project_grid_layout_with_reservations(
     } else {
         GridAutoColumns::Auto
     };
+    let columns_auto_repeat = grid
+        .columns_auto_repeat
+        .as_ref()
+        .map(|auto_repeat| {
+            project_auto_repeat(
+                node,
+                "grid-template-columns",
+                auto_repeat,
+                &mut reserve_line_metadata,
+            )
+        })
+        .transpose()?;
+    let rows_auto_repeat = grid
+        .rows_auto_repeat
+        .as_ref()
+        .map(|auto_repeat| {
+            project_auto_repeat(
+                node,
+                "grid-template-rows",
+                auto_repeat,
+                &mut reserve_line_metadata,
+            )
+        })
+        .transpose()?;
     Ok(GridContainerInput {
         columns,
         rows,
-        columns_auto_repeat: grid.columns_auto_repeat.map(project_auto_repeat),
-        rows_auto_repeat: grid.rows_auto_repeat.map(project_auto_repeat),
+        columns_auto_repeat,
+        rows_auto_repeat,
         columns_line_names,
         rows_line_names,
         auto_flow: match grid.auto_flow {
@@ -247,12 +263,18 @@ fn project_auto_repeat_mode(
     }
 }
 
-fn project_auto_repeat(auto_repeat: ComputedCssGridAutoRepeat) -> GridAutoRepeat {
-    GridAutoRepeat {
+fn project_auto_repeat(
+    node: NodeId,
+    property: &'static str,
+    auto_repeat: &ComputedCssGridAutoRepeat,
+    reserve: &mut impl FnMut(GridLineNameReservationSite) -> Result<(), ()>,
+) -> Result<GridAutoRepeat, StyleLayoutError> {
+    Ok(GridAutoRepeat {
         mode: project_auto_repeat_mode(auto_repeat.mode),
         start: auto_repeat.start,
         end: auto_repeat.end,
-    }
+        line_names: project_line_names(node, property, &auto_repeat.line_names, reserve)?,
+    })
 }
 
 fn validate_line_name_count(
@@ -284,21 +306,47 @@ fn validate_axis_line_names(
     property: &'static str,
     tracks: &[ComputedCssGridTrackSize],
     names: &[Vec<String>],
-    auto_repeat: bool,
+    auto_repeat: Option<&ComputedCssGridAutoRepeat>,
 ) -> Result<(), StyleLayoutError> {
-    if auto_repeat {
-        if names.is_empty() {
-            Ok(())
-        } else {
-            Err(StyleLayoutError::UnsupportedComputedValue {
-                node,
-                property,
-                value: "auto-repeat의 line name은 현재 지원 범위 밖입니다".to_owned(),
-            })
-        }
-    } else {
-        validate_line_name_count(node, property, tracks, names)
+    let Some(auto_repeat) = auto_repeat else {
+        return validate_line_name_count(node, property, tracks, names);
+    };
+    if auto_repeat.start >= auto_repeat.end || auto_repeat.end > tracks.len() {
+        return Err(StyleLayoutError::UnsupportedComputedValue {
+            node,
+            property,
+            value: "auto-repeat fragment 범위가 track 목록을 벗어났습니다".to_owned(),
+        });
     }
+    let repeated_track_count = auto_repeat.end - auto_repeat.start;
+    let component_count = tracks
+        .len()
+        .checked_sub(repeated_track_count)
+        .and_then(|count| count.checked_add(1));
+    let valid_outer_count = component_count.and_then(|count| count.checked_add(1));
+    let has_authored_names = names
+        .iter()
+        .chain(&auto_repeat.line_names)
+        .any(|group| !group.is_empty());
+    let valid_outer_names = if has_authored_names {
+        valid_outer_count == Some(names.len())
+    } else {
+        names.is_empty() || valid_outer_count == Some(names.len())
+    };
+    let valid_repeated_names = if auto_repeat.line_names.iter().any(|group| !group.is_empty()) {
+        auto_repeat.line_names.len() == repeated_track_count + 1
+    } else {
+        auto_repeat.line_names.is_empty()
+            || auto_repeat.line_names.len() == repeated_track_count + 1
+    };
+    if !valid_outer_names || !valid_repeated_names {
+        return Err(StyleLayoutError::UnsupportedComputedValue {
+            node,
+            property,
+            value: "auto-repeat line-name group 수가 component 경계 N+1 규칙과 다릅니다".to_owned(),
+        });
+    }
+    Ok(())
 }
 
 fn project_line_names(

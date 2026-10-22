@@ -41,11 +41,13 @@ fn two_axis_auto_repeat_grid(
         mode,
         start: 1,
         end: 2,
+        line_names: Vec::new(),
     });
     container.rows_auto_repeat = Some(crate::GridAutoRepeat {
         mode,
         start: 1,
         end: 2,
+        line_names: Vec::new(),
     });
     container.auto_rows = auto_rows;
     container.auto_columns = auto_columns;
@@ -126,6 +128,7 @@ fn numeric_negative_line_uses_expanded_auto_repeat_track_count() {
         mode: crate::GridAutoRepeatMode::AutoFill,
         start: 1,
         end: 2,
+        line_names: Vec::new(),
     });
     input.grid_items.insert(
         id(2),

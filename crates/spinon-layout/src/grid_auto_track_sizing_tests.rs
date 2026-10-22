@@ -489,6 +489,7 @@ fn track_sizing_accepts_fixed_px_auto_track_lists_with_auto_repeat() {
         mode: crate::GridAutoRepeatMode::AutoFill,
         start: 0,
         end: 1,
+        line_names: Vec::new(),
     });
     container.auto_columns = crate::GridAutoColumns::TrackList(vec![GridTrackSize::LengthPx(10.0)]);
     assert!(TaffyLayoutEngine.compute(&columns).is_ok());
@@ -505,6 +506,7 @@ fn track_sizing_accepts_fixed_px_auto_track_lists_with_auto_repeat() {
         mode: crate::GridAutoRepeatMode::AutoFit,
         start: 0,
         end: 1,
+        line_names: Vec::new(),
     });
     container.auto_rows = GridAutoRows::TrackList(vec![GridTrackSize::LengthPx(10.0)]);
     assert!(TaffyLayoutEngine.compute(&rows).is_ok());

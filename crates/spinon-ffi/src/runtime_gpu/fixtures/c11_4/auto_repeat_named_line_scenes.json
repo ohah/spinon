@@ -1,0 +1,106 @@
+[
+  {
+    "id": "auto-repeat-named-positive",
+    "width": "180px", "height": "60px",
+    "columns": "[outer-start] repeat(auto-fill, [cell] 40px [cell]) [outer-end]",
+    "rows": "40px", "columnGap": "10px", "rowGap": "0px",
+    "item": { "columnStart": "2 cell", "columnEnd": "3 cell", "rowStart": "1", "rowEnd": "2" },
+    "expect": {
+      "root": [180, 60], "item": [50, 0, 40, 40],
+      "tracks": { "Columns": [40, 40, 40], "Rows": [40] },
+      "collapsed": { "Columns": [false, false, false], "Rows": [false] },
+      "gaps": { "Columns": 10, "Rows": 0 }
+    }
+  },
+  {
+    "id": "auto-repeat-named-bare",
+    "width": "180px", "height": "60px",
+    "columns": "[outer-start] repeat(auto-fill, [cell] 40px [cell]) [outer-end]",
+    "rows": "40px", "columnGap": "10px", "rowGap": "0px",
+    "item": { "columnStart": "cell", "columnEnd": "2 cell", "rowStart": "1", "rowEnd": "2" },
+    "expect": {
+      "root": [180, 60], "item": [0, 0, 40, 40],
+      "tracks": { "Columns": [40, 40, 40], "Rows": [40] },
+      "collapsed": { "Columns": [false, false, false], "Rows": [false] },
+      "gaps": { "Columns": 10, "Rows": 0 }
+    }
+  },
+  {
+    "id": "auto-repeat-named-negative",
+    "width": "180px", "height": "60px",
+    "columns": "[outer-start] repeat(auto-fill, [cell] 40px [cell]) [outer-end]",
+    "rows": "40px", "columnGap": "10px", "rowGap": "0px",
+    "item": { "columnStart": "-2 cell", "columnEnd": "-1 cell", "rowStart": "1", "rowEnd": "2" },
+    "expect": {
+      "root": [180, 60], "item": [100, 0, 40, 40],
+      "tracks": { "Columns": [40, 40, 40], "Rows": [40] },
+      "collapsed": { "Columns": [false, false, false], "Rows": [false] },
+      "gaps": { "Columns": 10, "Rows": 0 }
+    }
+  },
+  {
+    "id": "auto-repeat-named-span",
+    "width": "180px", "height": "60px",
+    "columns": "[outer-start] repeat(auto-fill, [cell] 40px [cell]) [outer-end]",
+    "rows": "40px", "columnGap": "10px", "rowGap": "0px",
+    "item": { "columnStart": "1", "columnEnd": "span 2 cell", "rowStart": "1", "rowEnd": "2" },
+    "expect": {
+      "root": [180, 60], "item": [0, 0, 90, 40],
+      "tracks": { "Columns": [40, 40, 40], "Rows": [40] },
+      "collapsed": { "Columns": [false, false, false], "Rows": [false] },
+      "gaps": { "Columns": 10, "Rows": 0 }
+    }
+  },
+  {
+    "id": "auto-repeat-named-fit",
+    "width": "180px", "height": "60px",
+    "columns": "[outer-start] repeat(auto-fit, [cell] 40px [cell]) [outer-end]",
+    "rows": "40px", "columnGap": "10px", "rowGap": "0px",
+    "item": { "columnStart": "2 cell", "columnEnd": "3 cell", "rowStart": "1", "rowEnd": "2" },
+    "expect": {
+      "root": [180, 60], "item": [0, 0, 40, 40],
+      "tracks": { "Columns": [0, 40, 0], "Rows": [40] },
+      "collapsed": { "Columns": [true, false, true], "Rows": [false] },
+      "gaps": { "Columns": 10, "Rows": 0 }
+    }
+  },
+  {
+    "id": "auto-repeat-named-neighbors",
+    "width": "260px", "height": "50px",
+    "columns": "[leading] 20px [join left] repeat(auto-fill, [loop loop-start] 40px [mid] 30px [loop loop-end]) [join right] 10px [trailing]",
+    "rows": "40px", "columnGap": "10px", "rowGap": "0px",
+    "item": { "columnStart": "loop 2", "columnEnd": "loop-end 2", "rowStart": "1", "rowEnd": "2" },
+    "expect": {
+      "root": [260, 50], "item": [120, 0, 80, 40],
+      "tracks": { "Columns": [20, 40, 30, 40, 30, 10], "Rows": [40] },
+      "collapsed": { "Columns": [false, false, false, false, false, false], "Rows": [false] },
+      "gaps": { "Columns": 10, "Rows": 0 }
+    }
+  },
+  {
+    "id": "auto-repeat-named-merge",
+    "width": "120px", "height": "50px",
+    "columns": "[edge] 10px [same] repeat(auto-fill, [same] 20px [tail same]) [same] 10px [end]",
+    "rows": "40px", "columnGap": "10px", "rowGap": "0px",
+    "item": { "columnStart": "same 1", "columnEnd": "same 4", "rowStart": "1", "rowEnd": "2" },
+    "expect": {
+      "root": [120, 50], "item": [20, 0, 80, 40],
+      "tracks": { "Columns": [10, 20, 20, 20, 10], "Rows": [40] },
+      "collapsed": { "Columns": [false, false, false, false, false], "Rows": [false] },
+      "gaps": { "Columns": 10, "Rows": 0 }
+    }
+  },
+  {
+    "id": "auto-repeat-named-row",
+    "width": "100px", "height": "180px",
+    "columns": "100px", "rows": "[row-edge] repeat(auto-fill, [row] 40px [row]) [row-end]",
+    "columnGap": "0px", "rowGap": "10px",
+    "item": { "columnStart": "1", "columnEnd": "2", "rowStart": "2 row", "rowEnd": "3 row" },
+    "expect": {
+      "root": [100, 180], "item": [0, 50, 100, 40],
+      "tracks": { "Columns": [100], "Rows": [40, 40, 40] },
+      "collapsed": { "Columns": [false], "Rows": [false, false, false] },
+      "gaps": { "Columns": 0, "Rows": 10 }
+    }
+  }
+]

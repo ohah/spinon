@@ -285,7 +285,7 @@ impl CalcLayoutTree {
                         .expanded_columns
                         .get(&external_id)
                         .map(Vec::as_slice),
-                    item: normalized_grid.item_placements.get(&external_id).copied(),
+                    item: normalized_grid.item_placements.get(&external_id),
                 },
             )?;
             let order = u32::try_from(position).map_err(|_| LayoutError::TooManyNodes)?;

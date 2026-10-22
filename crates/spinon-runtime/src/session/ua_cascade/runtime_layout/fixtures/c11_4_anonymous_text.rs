@@ -543,6 +543,7 @@ mod tests {
                 mode: ComputedCssGridAutoRepeatMode::AutoFill,
                 start: 0,
                 end: 1,
+                line_names: Vec::new(),
             });
         });
         rejects_grid_mutation!("row auto-repeat", |grid: &mut ComputedCssGridLayout| {
@@ -550,6 +551,7 @@ mod tests {
                 mode: ComputedCssGridAutoRepeatMode::AutoFit,
                 start: 0,
                 end: 1,
+                line_names: Vec::new(),
             });
         });
         rejects_grid_mutation!("template areas", |grid: &mut ComputedCssGridLayout| {

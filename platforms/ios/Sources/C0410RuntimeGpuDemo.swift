@@ -71,6 +71,10 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "auto-fill-indefinite-neighbors", "auto-fill-max-size-neighbors",
     "auto-fill-min-size-neighbors", "auto-fill-overflow-neighbors",
     "auto-fill-row-neighbors", "auto-fit-row-neighbors",
+    "auto-repeat-named-positive", "auto-repeat-named-bare",
+    "auto-repeat-named-negative", "auto-repeat-named-span",
+    "auto-repeat-named-fit", "auto-repeat-named-neighbors",
+    "auto-repeat-named-merge", "auto-repeat-named-row",
     "auto-fill-two-track-columns-both-190", "auto-fill-two-track-columns-both-200",
     "auto-fill-two-track-columns-both-342", "auto-fill-two-track-columns-prefix-200",
     "auto-fill-two-track-columns-suffix-200", "auto-fill-two-track-rows-both-190",
@@ -224,6 +228,10 @@ private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "typed-minmax-max-content", "typed-fit-content", "typed-fraction",
     "typed-percentage", "typed-calc", "typed-auto-fit-occupied",
     "typed-auto-fit-empty", "typed-auto-fit-gutter",
+    "auto-repeat-named-positive", "auto-repeat-named-bare",
+    "auto-repeat-named-negative", "auto-repeat-named-span",
+    "auto-repeat-named-fit", "auto-repeat-named-neighbors",
+    "auto-repeat-named-merge", "auto-repeat-named-row",
 ]
 
 private struct C114NegativeTrackExpectation {
@@ -300,6 +308,7 @@ private func c114IsMixedCrossAxisSpanGroupsScene(_ sceneID: String) -> Bool {
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if let namedFrame = c114NamedAutoRepeatRootFrame(sceneID) { return namedFrame }
     if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) { return "" }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) {
         return sceneID.contains("-intrinsic-")
@@ -513,6 +522,7 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if let namedFrame = c114NamedAutoRepeatItemFrame(sceneID) { return namedFrame }
     if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) { return "" }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) { return "" }
     if c114IsCrossAxisSpanGroupsScene(sceneID)
@@ -2046,6 +2056,7 @@ private func c114ImageTrackPassMatches(
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if let namedFrames = c114NamedAutoRepeatNodeFrames(sceneID) { return namedFrames }
     if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) { return nil }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) {
         let intrinsic = sceneID.contains("-intrinsic-")
@@ -2422,6 +2433,66 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
         let itemOrigin = sceneID.hasPrefix("fixed-gutter-") ? "x=1,y=1," : "x=0,y=0,"
         return "node_frames_css_px=[0:node=1,x=0,y=0,\(c114ExpectedRootFrame(sceneID));"
             + "1:node=2,\(itemOrigin)\(c114ExpectedItemFrame(sceneID))]"
+    default:
+        return nil
+    }
+}
+
+private func c114NamedAutoRepeatRootFrame(_ sceneID: String) -> String? {
+    switch sceneID {
+    case "auto-repeat-named-positive", "auto-repeat-named-bare",
+         "auto-repeat-named-negative", "auto-repeat-named-span", "auto-repeat-named-fit":
+        return "width=180,height=60"
+    case "auto-repeat-named-neighbors":
+        return "width=260,height=50"
+    case "auto-repeat-named-merge":
+        return "width=120,height=50"
+    case "auto-repeat-named-row":
+        return "width=100,height=180"
+    default:
+        return nil
+    }
+}
+
+private func c114NamedAutoRepeatItemFrame(_ sceneID: String) -> String? {
+    switch sceneID {
+    case "auto-repeat-named-positive", "auto-repeat-named-bare",
+         "auto-repeat-named-negative", "auto-repeat-named-fit":
+        return "width=40,height=40"
+    case "auto-repeat-named-span":
+        return "width=90,height=40"
+    case "auto-repeat-named-neighbors", "auto-repeat-named-merge":
+        return "width=80,height=40"
+    case "auto-repeat-named-row":
+        return "width=100,height=40"
+    default:
+        return nil
+    }
+}
+
+private func c114NamedAutoRepeatNodeFrames(_ sceneID: String) -> String? {
+    switch sceneID {
+    case "auto-repeat-named-positive":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=180,height=60;"
+            + "1:node=2,x=50,y=0,width=40,height=40]"
+    case "auto-repeat-named-bare", "auto-repeat-named-fit":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=180,height=60;"
+            + "1:node=2,x=0,y=0,width=40,height=40]"
+    case "auto-repeat-named-negative":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=180,height=60;"
+            + "1:node=2,x=100,y=0,width=40,height=40]"
+    case "auto-repeat-named-span":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=180,height=60;"
+            + "1:node=2,x=0,y=0,width=90,height=40]"
+    case "auto-repeat-named-neighbors":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=260,height=50;"
+            + "1:node=2,x=120,y=0,width=80,height=40]"
+    case "auto-repeat-named-merge":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=50;"
+            + "1:node=2,x=20,y=0,width=80,height=40]"
+    case "auto-repeat-named-row":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=180;"
+            + "1:node=2,x=0,y=50,width=100,height=40]"
     default:
         return nil
     }
@@ -3858,6 +3929,11 @@ private struct C111MetalPixelRun {
                 (overflowSample.0, overflowSample.1, overflowSample.2, overflowSample.3,
                  [0, 255, 64, 255]),
             ]
+        case "auto-repeat-named-positive", "auto-repeat-named-bare",
+             "auto-repeat-named-negative", "auto-repeat-named-span", "auto-repeat-named-fit",
+             "auto-repeat-named-neighbors", "auto-repeat-named-merge", "auto-repeat-named-row":
+            guard let namedSamples = c114NamedAutoRepeatPixelSamples(sceneID) else { return false }
+            expectedSamples = namedSamples
         case "auto-fill-overflow-neighbors":
             expectedSamples = c114AutoRepeatOverflowPixelSamples
         case "implicit-min-content-overflow-border":
@@ -3903,6 +3979,43 @@ private struct C111MetalPixelRun {
                     && sample.rgba == expected.4
             }
         }
+    }
+
+    private static func c114NamedAutoRepeatPixelSamples(
+        _ sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])]? {
+        let frame: (x: UInt32, y: UInt32, width: UInt32, height: UInt32)
+        switch sceneID {
+        case "auto-repeat-named-positive": frame = (50, 0, 40, 40)
+        case "auto-repeat-named-bare", "auto-repeat-named-fit": frame = (0, 0, 40, 40)
+        case "auto-repeat-named-negative": frame = (100, 0, 40, 40)
+        case "auto-repeat-named-span": frame = (0, 0, 90, 40)
+        case "auto-repeat-named-neighbors": frame = (120, 0, 80, 40)
+        case "auto-repeat-named-merge": frame = (20, 0, 80, 40)
+        case "auto-repeat-named-row": frame = (0, 50, 100, 40)
+        default: return nil
+        }
+        let rootID = "c114-\(sceneID)-grid"
+        let itemID = "c114-\(sceneID)-item"
+        let background: [UInt32] = [226, 232, 240, 255]
+        let itemColor: [UInt32] = [57, 165, 219, 255]
+        if sceneID == "auto-repeat-named-row" {
+            return [
+                ("\(sceneID)-before-item", rootID, 20, frame.y - 1, background),
+                ("\(sceneID)-item-start-edge", itemID, 20, frame.y, itemColor),
+                ("\(sceneID)-item-end-edge", itemID, 20, frame.y + frame.height - 1, itemColor),
+                ("\(sceneID)-after-item", rootID, 20, frame.y + frame.height, background),
+            ]
+        }
+        var samples: [(String, String, UInt32, UInt32, [UInt32])] = []
+        if frame.x > 0 {
+            samples.append(("\(sceneID)-before-item", rootID, frame.x - 1, 20, background))
+        }
+        samples.append(("\(sceneID)-item-start-edge", itemID, frame.x, 20, itemColor))
+        samples.append(("\(sceneID)-item-end-edge", itemID, frame.x + frame.width - 1, 20,
+                        itemColor))
+        samples.append(("\(sceneID)-after-item", rootID, frame.x + frame.width, 20, background))
+        return samples
     }
 
     private static func c114ImageMultiSpanPixelSamples(

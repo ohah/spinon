@@ -1,13 +1,10 @@
-use std::marker::PhantomData;
-
 use taffy::geometry::{Line, Point, Rect, Size};
 use taffy::style::{
     AlignContent, AlignItems, AlignSelf, BlockContainerStyle, BlockItemStyle, BoxGenerationMode,
     BoxSizing, Contain, Direction, Display, FlexDirection, FlexWrap, FlexboxContainerStyle,
     FlexboxItemStyle, GenericGridTemplateComponent, GridAutoFlow, GridContainerStyle,
     GridItemStyle, GridPlacement, GridTemplateArea, GridTemplateRepetition, JustifyContent,
-    LengthPercentage, LengthPercentageAuto, OofItemStyle, Overflow, Position, TemplateLineNames,
-    TextAlign,
+    LengthPercentage, LengthPercentageAuto, OofItemStyle, Overflow, Position, TextAlign,
 };
 use taffy::{CoreStyle, Dimension, GridTemplateComponent, TrackSizingFunction};
 
@@ -17,6 +14,10 @@ type GridTemplateIterator<'a> = std::iter::Map<
     std::slice::Iter<'a, GridTemplateComponent<String>>,
     fn(&'a GridTemplateComponent<String>) -> GridTemplateReference<'a>,
 >;
+type TemplateLineNameGroups<'a> = std::iter::Map<
+    std::slice::Iter<'a, Vec<String>>,
+    fn(&Vec<String>) -> std::slice::Iter<'_, String>,
+>;
 
 fn grid_template_reference<'a>(
     component: &'a GridTemplateComponent<String>,
@@ -24,32 +25,10 @@ fn grid_template_reference<'a>(
     component.as_component_ref()
 }
 
-#[derive(Clone)]
-pub(super) struct EmptyTemplateLineNames<'a>(PhantomData<&'a String>);
-
-impl<'a> Iterator for EmptyTemplateLineNames<'a> {
-    type Item = std::iter::Empty<&'a String>;
-
-    fn next(&mut self) -> Option<Self::Item> {
-        None
-    }
-
-    fn size_hint(&self) -> (usize, Option<usize>) {
-        (0, Some(0))
-    }
-}
-
-impl ExactSizeIterator for EmptyTemplateLineNames<'_> {
-    fn len(&self) -> usize {
-        0
-    }
-}
-
-impl<'a> TemplateLineNames<'a, String> for EmptyTemplateLineNames<'a> {
-    type LineNameSet<'b>
-        = std::iter::Empty<&'b String>
-    where
-        Self: 'b;
+// Taffy 0.15's TemplateLineNames implementation requires this exact `fn(&Vec<_>)` map shape.
+#[allow(clippy::ptr_arg)]
+fn grid_line_name_group<'a>(group: &'a Vec<String>) -> std::slice::Iter<'a, String> {
+    group.iter()
 }
 
 /// Taffy `Style`은 모든 노드에 Grid track·line·area 필드를 포함합니다.
@@ -87,6 +66,8 @@ pub(super) struct CompactTaffyStyle {
     flex_shrink: f32,
     grid_template_rows: Vec<GridTemplateComponent<String>>,
     grid_template_columns: Vec<GridTemplateComponent<String>>,
+    grid_template_row_names: Vec<Vec<String>>,
+    grid_template_column_names: Vec<Vec<String>>,
     grid_auto_rows: Vec<TrackSizingFunction>,
     grid_auto_columns: Vec<TrackSizingFunction>,
     grid_auto_flow: GridAutoFlow,
@@ -178,6 +159,8 @@ impl From<taffy::Style> for CompactTaffyStyle {
             flex_shrink: style.flex_shrink,
             grid_template_rows: style.grid_template_rows,
             grid_template_columns: style.grid_template_columns,
+            grid_template_row_names: style.grid_template_row_names,
+            grid_template_column_names: style.grid_template_column_names,
             grid_auto_rows: style.grid_auto_rows,
             grid_auto_columns: style.grid_auto_columns,
             grid_auto_flow: style.grid_auto_flow,
@@ -338,7 +321,7 @@ impl GridContainerStyle for CompactTaffyStyle {
     type Repetition<'a> = &'a GridTemplateRepetition<String>;
     type TemplateTrackList<'a> = GridTemplateIterator<'a>;
     type AutoTrackList<'a> = std::iter::Copied<std::slice::Iter<'a, TrackSizingFunction>>;
-    type TemplateLineNames<'a> = EmptyTemplateLineNames<'a>;
+    type TemplateLineNames<'a> = TemplateLineNameGroups<'a>;
     type GridTemplateAreas<'a> = std::iter::Empty<GridTemplateArea<String>>;
 
     fn grid_template_rows(&self) -> Option<Self::TemplateTrackList<'_>> {
@@ -370,11 +353,19 @@ impl GridContainerStyle for CompactTaffyStyle {
     }
 
     fn grid_template_column_names(&self) -> Option<Self::TemplateLineNames<'_>> {
-        None
+        Some(
+            self.grid_template_column_names
+                .iter()
+                .map(grid_line_name_group as fn(&Vec<String>) -> std::slice::Iter<'_, String>),
+        )
     }
 
     fn grid_template_row_names(&self) -> Option<Self::TemplateLineNames<'_>> {
-        None
+        Some(
+            self.grid_template_row_names
+                .iter()
+                .map(grid_line_name_group as fn(&Vec<String>) -> std::slice::Iter<'_, String>),
+        )
     }
 
     fn grid_auto_flow(&self) -> GridAutoFlow {

@@ -112,6 +112,121 @@ pub(super) fn project_axis_with_areas_and_implicit_named_lines(
     ))
 }
 
+/// Auto-repeat 축의 line index는 반복 수에 따라 달라지므로 이름 있는 배치를 Taffy까지 보존합니다.
+pub(super) fn project_axis_for_auto_repeat(
+    node: NodeId,
+    start_property: &'static str,
+    end_property: &'static str,
+    start: &ComputedCssGridPlacement,
+    end: &ComputedCssGridPlacement,
+    outer_names: &[Vec<String>],
+    repeated_names: &[Vec<String>],
+) -> Result<(GridPlacementInput, GridPlacementInput, bool), StyleLayoutError> {
+    let start = decode(node, start_property, start)?;
+    let end = decode(node, end_property, end)?;
+    Ok((
+        to_auto_repeat_layout(node, start_property, start, outer_names, repeated_names)?,
+        to_auto_repeat_layout(node, end_property, end, outer_names, repeated_names)?,
+        false,
+    ))
+}
+
+fn to_auto_repeat_layout(
+    node: NodeId,
+    property: &'static str,
+    placement: Placement<'_>,
+    outer_names: &[Vec<String>],
+    repeated_names: &[Vec<String>],
+) -> Result<GridPlacementInput, StyleLayoutError> {
+    match placement {
+        Placement::Auto => Ok(GridPlacementInput::Auto),
+        Placement::Line(line) => Ok(GridPlacementInput::Line(line)),
+        Placement::Span(count) => Ok(GridPlacementInput::Span(count)),
+        Placement::NamedLine { name, occurrence } => {
+            if !auto_repeat_name_exists(name, outer_names, repeated_names) {
+                return Err(unsupported_named_line(
+                    node,
+                    property,
+                    name,
+                    "이름이 auto-repeat 축의 authored explicit line metadata에 없습니다",
+                ));
+            }
+            let occurrence_was_explicit = occurrence.is_some();
+            let occurrence = occurrence.unwrap_or(0);
+            if occurrence == 0 && occurrence_was_explicit {
+                return Err(unsupported_named_line(
+                    node,
+                    property,
+                    name,
+                    "explicit named-line occurrence는 0일 수 없습니다",
+                ));
+            }
+            i16::try_from(occurrence).map_err(|_| {
+                unsupported_named_line(
+                    node,
+                    property,
+                    name,
+                    "named-line occurrence가 Taffy의 정수 범위를 넘었습니다",
+                )
+            })?;
+            Ok(GridPlacementInput::NamedLine {
+                name: copy_layout_name(node, property, name)?,
+                occurrence,
+            })
+        }
+        Placement::SpanNamed { name, count } => {
+            if !auto_repeat_name_exists(name, outer_names, repeated_names) {
+                return Err(unsupported_named_line(
+                    node,
+                    property,
+                    name,
+                    "이름이 auto-repeat 축의 authored explicit line metadata에 없습니다",
+                ));
+            }
+            u16::try_from(count).map_err(|_| {
+                unsupported_named_line(
+                    node,
+                    property,
+                    name,
+                    "named span이 Taffy의 정수 범위를 넘었습니다",
+                )
+            })?;
+            Ok(GridPlacementInput::SpanNamed {
+                name: copy_layout_name(node, property, name)?,
+                count,
+            })
+        }
+    }
+}
+
+fn auto_repeat_name_exists(
+    name: &str,
+    outer_names: &[Vec<String>],
+    repeated_names: &[Vec<String>],
+) -> bool {
+    outer_names
+        .iter()
+        .chain(repeated_names)
+        .flatten()
+        .any(|authored| authored == name)
+}
+
+fn copy_layout_name(
+    node: NodeId,
+    property: &'static str,
+    name: &str,
+) -> Result<String, StyleLayoutError> {
+    let mut owned = String::new();
+    owned.try_reserve(name.len()).map_err(|_| {
+        StyleLayoutError::Layout(spinon_layout::LayoutError::GridAllocationFailure {
+            node,
+            property,
+        })
+    })?;
+    owned.push_str(name);
+    Ok(owned)
+}
+
 fn decode<'a>(
     node: NodeId,
     property: &'static str,

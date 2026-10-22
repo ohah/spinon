@@ -173,12 +173,17 @@ fn track_sizing_profile_preserves_fixed_minimum_auto_repeat_modes() {
                 mode: expected,
                 start: 0,
                 end: 1,
+                line_names: vec![Vec::new(); 2],
             }),
             "{keyword}"
         );
         assert_eq!(grid.rows_auto_repeat, None, "{keyword}");
         assert_eq!(grid.columns.len(), 1, "{keyword} retains one pattern track");
-        assert_eq!(grid.columns_line_names, Vec::<Vec<String>>::new());
+        assert_eq!(grid.columns_line_names, vec![Vec::<String>::new(); 2]);
+        assert_eq!(
+            grid.columns_auto_repeat.as_ref().unwrap().line_names,
+            vec![Vec::<String>::new(); 2]
+        );
         assert_eq!(grid.rows, [ComputedCssGridTrackSize::LengthPx(40.0)]);
     }
 }
@@ -203,6 +208,7 @@ fn track_sizing_profile_preserves_independent_auto_repeats_on_both_axes() {
             mode: ComputedCssGridAutoRepeatMode::AutoFit,
             start: 1,
             end: 2,
+            line_names: vec![Vec::new(); 2],
         })
     );
     assert_eq!(
@@ -211,10 +217,42 @@ fn track_sizing_profile_preserves_independent_auto_repeats_on_both_axes() {
             mode: ComputedCssGridAutoRepeatMode::AutoFill,
             start: 1,
             end: 2,
+            line_names: vec![Vec::new(); 2],
         })
     );
     assert_eq!(grid.columns.len(), 3);
     assert_eq!(grid.rows.len(), 3);
+}
+
+#[test]
+fn track_sizing_profile_preserves_auto_repeat_inner_and_component_line_names() {
+    let fixture = fixture(
+        "display:grid;box-sizing:border-box;width:210px;height:100px;grid-template-columns:[container-start] 20px [prefix-end repeat-start] repeat(auto-fill,[item-start] minmax(40px,1fr) [item-end]) [repeat-end suffix-start] 10px [container-end];grid-template-rows:40px;margin:0;padding:0",
+    );
+    let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+        &fixture.view,
+        &[],
+        viewport(),
+        Default::default(),
+    )
+    .unwrap_or_else(|error| panic!("named auto-repeat cascade: {error:?}"));
+    let grid = snapshot.elements[0].grid_layout.as_ref().unwrap();
+
+    assert_eq!(
+        grid.columns_line_names,
+        [
+            vec!["container-start"],
+            vec!["prefix-end", "repeat-start"],
+            vec!["repeat-end", "suffix-start"],
+            vec!["container-end"],
+        ]
+        .map(|group| group.into_iter().map(str::to_owned).collect::<Vec<_>>())
+    );
+    assert_eq!(
+        grid.columns_auto_repeat.as_ref().unwrap().line_names,
+        [vec!["item-start"], vec!["item-end"]]
+            .map(|group| group.into_iter().map(str::to_owned).collect::<Vec<_>>())
+    );
 }
 
 #[test]
@@ -287,10 +325,18 @@ fn track_sizing_profile_preserves_auto_repeat_neighbors_and_fragment_order() {
                 },
                 start,
                 end,
+                line_names: vec![Vec::new(); end - start + 1],
             }),
             "{columns}"
         );
-        assert_eq!(grid.columns_line_names, Vec::<Vec<String>>::new());
+        assert_eq!(
+            grid.columns_line_names,
+            vec![Vec::<String>::new(); grid.columns.len() - (end - start) + 2]
+        );
+        assert_eq!(
+            grid.columns_auto_repeat.as_ref().unwrap().line_names,
+            vec![Vec::<String>::new(); end - start + 1]
+        );
     }
 }
 
@@ -313,8 +359,6 @@ fn auto_repeat_rejects_profiles_and_shapes_outside_the_supported_subset() {
         "grid-template-columns:20% repeat(auto-fill,minmax(24px,1fr))",
         "grid-template-columns:minmax(10px,20px) repeat(auto-fill,minmax(24px,1fr))",
         "grid-template-columns:repeat(2,20px) repeat(auto-fill,minmax(24px,1fr))",
-        "grid-template-columns:[neighbor] 20px repeat(auto-fill,minmax(24px,1fr))",
-        "grid-template-columns:repeat(auto-fit,[named] minmax(24px,1fr))",
         "grid-template-columns:repeat(auto-fill,minmax(24px,1fr));grid-template-rows:40px;grid-template-areas:\"area\"",
     ] {
         let fixture = fixture(&format!(
@@ -492,6 +536,53 @@ fn integer_repeat_allocation_failures_are_contextual_and_recoverable() {
         );
         assert!(
             compute_runtime_block_flex_grid_template_cascade_with_stylesheets(
+                &fixture.view,
+                &[],
+                viewport(),
+                Default::default(),
+            )
+            .is_ok()
+        );
+    }
+}
+
+#[test]
+fn auto_repeat_line_metadata_allocation_failures_are_contextual_and_recoverable() {
+    use super::super::incremental::{
+        IntegerRepeatReservationSite, inject_integer_repeat_reservation_failure,
+    };
+
+    let fixture = fixture(
+        "display:grid;box-sizing:border-box;width:300px;height:200px;grid-template-columns:[outer] repeat(auto-fill,[item] minmax(40px,1fr) [end]) [tail];grid-template-rows:40px;margin:0;padding:0",
+    );
+    for site in [
+        IntegerRepeatReservationSite::Tracks,
+        IntegerRepeatReservationSite::LineGroups,
+        IntegerRepeatReservationSite::LineNames,
+        IntegerRepeatReservationSite::LineNameText,
+    ] {
+        let error = {
+            let _guard = inject_integer_repeat_reservation_failure(site);
+            compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+                &fixture.view,
+                &[],
+                viewport(),
+                Default::default(),
+            )
+            .unwrap_err()
+        };
+        assert!(
+            matches!(
+                error,
+                crate::CssCascadeError::GridAllocationFailure {
+                    node,
+                    property: "grid-template-columns"
+                } if node == fixture.root
+            ),
+            "예약 실패 지점: {site:?}, 실제 오류: {error:?}"
+        );
+        assert!(
+            compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
                 &fixture.view,
                 &[],
                 viewport(),

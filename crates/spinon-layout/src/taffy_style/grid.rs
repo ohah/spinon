@@ -30,34 +30,70 @@ pub(super) fn to_taffy_grid_auto_flow(container: Option<&GridContainerInput>) ->
 pub(super) fn taffy_grid_placement_line(
     node: NodeId,
     property: &'static str,
-    placement: GridPlacementInput,
+    placement: &GridPlacementInput,
 ) -> Result<taffy::style::GridPlacement<String>, LayoutError> {
     match placement {
         GridPlacementInput::Auto => Ok(taffy::style::GridPlacement::Auto),
-        GridPlacementInput::Line(line) if line != 0 => {
-            let line = i16::try_from(line).map_err(|_| LayoutError::InvalidGridPlacement {
+        GridPlacementInput::Line(line) if *line != 0 => {
+            let line = i16::try_from(*line).map_err(|_| LayoutError::InvalidGridPlacement {
                 node,
                 property,
                 reason: "line이 Taffy의 정수 범위를 넘었습니다",
             })?;
             Ok(taffy::style::GridPlacement::from_line_index(line))
         }
-        GridPlacementInput::Span(span) if span > 0 => {
-            let span = u16::try_from(span).map_err(|_| LayoutError::InvalidGridPlacement {
+        GridPlacementInput::Span(span) if *span > 0 => {
+            let span = u16::try_from(*span).map_err(|_| LayoutError::InvalidGridPlacement {
                 node,
                 property,
                 reason: "span이 Taffy의 정수 범위를 넘었습니다",
             })?;
             Ok(taffy::style::GridPlacement::Span(span))
         }
-        GridPlacementInput::Line(_) | GridPlacementInput::Span(_) => {
-            Err(LayoutError::InvalidGridPlacement {
+        GridPlacementInput::NamedLine { name, occurrence } => {
+            let occurrence =
+                i16::try_from(*occurrence).map_err(|_| LayoutError::InvalidGridPlacement {
+                    node,
+                    property,
+                    reason: "named line occurrence가 Taffy의 정수 범위를 넘었습니다",
+                })?;
+            Ok(taffy::style::GridPlacement::NamedLine(
+                copy_grid_line_name(node, property, name)?,
+                occurrence,
+            ))
+        }
+        GridPlacementInput::SpanNamed { name, count } if *count > 0 => {
+            let count = u16::try_from(*count).map_err(|_| LayoutError::InvalidGridPlacement {
                 node,
                 property,
-                reason: "line은 0이 아니고 span은 양수여야 합니다",
-            })
+                reason: "named span이 Taffy의 정수 범위를 넘었습니다",
+            })?;
+            Ok(taffy::style::GridPlacement::NamedSpan(
+                copy_grid_line_name(node, property, name)?,
+                count,
+            ))
         }
+        GridPlacementInput::Line(_)
+        | GridPlacementInput::Span(_)
+        | GridPlacementInput::SpanNamed { .. } => Err(LayoutError::InvalidGridPlacement {
+            node,
+            property,
+            reason: "line은 0이 아니고 span은 양수여야 합니다",
+        }),
     }
+}
+
+fn copy_grid_line_name(
+    node: NodeId,
+    property: &'static str,
+    name: &str,
+) -> Result<String, LayoutError> {
+    let mut owned = String::new();
+    owned
+        .try_reserve(name.len())
+        .map_err(|_| LayoutError::GridAllocationFailure { node, property })?;
+    owned.push_str(name);
+    Ok(owned)
 }
 
 pub(super) fn to_taffy_grid_tracks(
@@ -107,7 +143,7 @@ pub(super) fn to_taffy_grid_tracks_with_auto_repeat(
     node: NodeId,
     property: &'static str,
     tracks: &[GridTrackSize],
-    auto_repeat: Option<GridAutoRepeat>,
+    auto_repeat: Option<&GridAutoRepeat>,
     calc_handles: &BTreeMap<LayoutCalcId, *const ()>,
 ) -> Result<Vec<TaffyGridTemplateComponent<String>>, LayoutError> {
     let mut output = Vec::new();
@@ -149,7 +185,7 @@ pub(super) fn to_taffy_grid_tracks_with_auto_repeat(
                 GridAutoRepeatMode::AutoFit => RepetitionCount::AutoFit,
             },
             tracks: repeated_tracks,
-            line_names: Vec::new(),
+            line_names: copy_grid_line_names(node, property, &auto_repeat.line_names)?,
         }));
 
         for track in &tracks[auto_repeat.end..] {
@@ -165,6 +201,33 @@ pub(super) fn to_taffy_grid_tracks_with_auto_repeat(
             let sizing = to_taffy_track_sizing_function(node, property, *track, calc_handles)?;
             output.push(TaffyGridTemplateComponent::Single(sizing));
         }
+    }
+    Ok(output)
+}
+
+pub(super) fn copy_grid_line_names(
+    node: NodeId,
+    property: &'static str,
+    source: &[Vec<String>],
+) -> Result<Vec<Vec<String>>, LayoutError> {
+    let mut output = Vec::new();
+    output
+        .try_reserve_exact(source.len())
+        .map_err(|_| LayoutError::GridAllocationFailure { node, property })?;
+    for group in source {
+        let mut names = Vec::new();
+        names
+            .try_reserve_exact(group.len())
+            .map_err(|_| LayoutError::GridAllocationFailure { node, property })?;
+        for name in group {
+            let mut owned = String::new();
+            owned
+                .try_reserve(name.len())
+                .map_err(|_| LayoutError::GridAllocationFailure { node, property })?;
+            owned.push_str(name);
+            names.push(owned);
+        }
+        output.push(names);
     }
     Ok(output)
 }
