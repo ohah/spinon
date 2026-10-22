@@ -6,7 +6,7 @@ use spinon_render::RuntimeSrgbColor;
 use spinon_style::{
     ComputedCssDimension, ComputedCssGridTrackBreadth, ComputedCssGridTrackLengthPercentage,
     ComputedCssGridTrackSize, ComputedCssMath, ComputedCssMaxSize, ComputedCssSpacingValue,
-    ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
+    ComputedElementStyle, ComputedLayoutBorder, ComputedStyleProfile, ComputedStyleSnapshot,
 };
 
 use super::super::C11_4TextInput;
@@ -15,117 +15,9 @@ use super::super::c11_4_nested_grid_depth_two::{
 };
 use super::{AHEM, RuntimeLayoutFailure, layout_failure};
 
-#[derive(Clone, Copy)]
-enum Dimension {
-    Auto,
-    MaxContent,
-    Px(f32),
-}
-
-#[derive(Clone, Copy)]
-enum Track {
-    Auto,
-    Px(f32),
-    FitContentCalc { percentage: f32, length_px: f32 },
-    MinMaxCalc { percentage: f32, length_px: f32 },
-}
-
-#[derive(Clone, Copy)]
-struct Scene {
-    id: &'static str,
-    width: Dimension,
-    height: Dimension,
-    columns: Track,
-    rows: Track,
-    text: &'static str,
-}
-
-const COLUMN_LIMIT: Track = Track::FitContentCalc {
-    percentage: 0.5,
-    length_px: 4.0,
-};
-
-const SCENES: [Scene; 8] = [
-    Scene {
-        id: "cyclic-fit-content-calc-column",
-        width: Dimension::MaxContent,
-        height: Dimension::Auto,
-        columns: COLUMN_LIMIT,
-        rows: Track::Auto,
-        text: "aa aa",
-    },
-    Scene {
-        id: "cyclic-fit-content-calc-row",
-        width: Dimension::Px(20.0),
-        height: Dimension::MaxContent,
-        columns: Track::Px(20.0),
-        rows: Track::FitContentCalc {
-            percentage: 0.5,
-            length_px: 2.0,
-        },
-        text: "a a a a",
-    },
-    Scene {
-        id: "definite-fit-content-calc-column",
-        width: Dimension::Px(40.0),
-        height: Dimension::Auto,
-        columns: COLUMN_LIMIT,
-        rows: Track::Auto,
-        text: "aa aa",
-    },
-    Scene {
-        id: "definite-fit-content-calc-small-limit",
-        width: Dimension::Px(10.0),
-        height: Dimension::Auto,
-        columns: COLUMN_LIMIT,
-        rows: Track::Auto,
-        text: "aa aa",
-    },
-    Scene {
-        id: "cyclic-minmax-calc-column",
-        width: Dimension::MaxContent,
-        height: Dimension::Auto,
-        columns: Track::MinMaxCalc {
-            percentage: 0.5,
-            length_px: 4.0,
-        },
-        rows: Track::Auto,
-        text: "aa aa",
-    },
-    Scene {
-        id: "cyclic-minmax-calc-row",
-        width: Dimension::Px(20.0),
-        height: Dimension::MaxContent,
-        columns: Track::Px(20.0),
-        rows: Track::MinMaxCalc {
-            percentage: 0.5,
-            length_px: 2.0,
-        },
-        text: "a a a a",
-    },
-    Scene {
-        id: "definite-minmax-calc-column",
-        width: Dimension::Px(40.0),
-        height: Dimension::Auto,
-        columns: Track::MinMaxCalc {
-            percentage: 0.5,
-            length_px: 4.0,
-        },
-        rows: Track::Auto,
-        text: "aa aa",
-    },
-    Scene {
-        id: "definite-minmax-calc-small-limit",
-        width: Dimension::Px(10.0),
-        height: Dimension::Auto,
-        columns: Track::MinMaxCalc {
-            percentage: 0.5,
-            length_px: 4.0,
-        },
-        rows: Track::Auto,
-        text: "aa aa",
-    },
-];
+#[path = "cyclic_fit_content_calc/scene.rs"]
+mod scene;
+use scene::{BoxSizing, Dimension, SCENES, Scene, Track};
 
 pub(super) fn is_scene_root(
     snapshot: &HostDocumentSnapshot,
@@ -271,8 +163,18 @@ fn validate_grid_style(
     style: &ComputedElementStyle,
     scene: Scene,
 ) -> Result<(), RuntimeLayoutFailure> {
+    let expected_box_sizing = match scene.box_sizing {
+        BoxSizing::ContentBox => "content-box",
+        BoxSizing::BorderBox => "border-box",
+    };
+    let expected_border = ComputedLayoutBorder {
+        top: scene.border_width,
+        right: scene.border_width,
+        bottom: scene.border_width,
+        left: scene.border_width,
+    };
     if style.properties.get("display").map(String::as_str) != Some("grid")
-        || style.properties.get("box-sizing").map(String::as_str) != Some("border-box")
+        || style.properties.get("box-sizing").map(String::as_str) != Some(expected_box_sizing)
         || style.properties.get("align-content").map(String::as_str) != Some("start")
         || style.properties.get("justify-content").map(String::as_str) != Some("start")
         || !dimension_matches(style.layout_dimensions.width, scene.width)
@@ -285,7 +187,7 @@ fn validate_grid_style(
         || !zero_edges(style.layout_spacing.padding)
         || !zero_spacing(style.layout_spacing.row_gap)
         || !zero_spacing(style.layout_spacing.column_gap)
-        || style.layout_border != Default::default()
+        || style.layout_border != expected_border
     {
         return Err(unsupported_node(
             style.node_id.get(),
@@ -407,6 +309,22 @@ fn track_matches(actual: &[ComputedCssGridTrackSize], expected: Track) -> bool {
                             ComputedCssMath::LengthPx(length_px),
                         ]
             }
+            (
+                Some(ComputedCssGridTrackSize::MinMax {
+                    min: ComputedCssGridTrackBreadth::Calc(ComputedCssMath::Sum(terms)),
+                    max: ComputedCssGridTrackBreadth::MaxContent,
+                }),
+                Track::MinMaxCalcMinimum {
+                    percentage,
+                    length_px,
+                },
+            ) => {
+                terms.as_slice()
+                    == [
+                        ComputedCssMath::Percentage(percentage),
+                        ComputedCssMath::LengthPx(length_px),
+                    ]
+            }
             _ => false,
         }
 }
@@ -462,7 +380,7 @@ mod tests {
     #[test]
     fn exposes_fixed_cyclic_calc_track_scenes_by_function() {
         let scene_ids = SCENES.iter().map(|scene| scene.id).collect::<BTreeSet<_>>();
-        assert_eq!(SCENES.len(), 8);
+        assert_eq!(SCENES.len(), 12);
         assert_eq!(scene_ids.len(), SCENES.len());
         assert!(scene_ids.contains("cyclic-fit-content-calc-column"));
         assert!(scene_ids.contains("cyclic-fit-content-calc-row"));
@@ -472,5 +390,9 @@ mod tests {
         assert!(scene_ids.contains("cyclic-minmax-calc-row"));
         assert!(scene_ids.contains("definite-minmax-calc-column"));
         assert!(scene_ids.contains("definite-minmax-calc-small-limit"));
+        assert!(scene_ids.contains("cyclic-minmax-calc-min-column"));
+        assert!(scene_ids.contains("cyclic-minmax-calc-min-row"));
+        assert!(scene_ids.contains("definite-minmax-calc-min-column"));
+        assert!(scene_ids.contains("definite-minmax-calc-min-row"));
     }
 }

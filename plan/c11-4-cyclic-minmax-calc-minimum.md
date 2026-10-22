@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [직전 `minmax(calc())` 최댓값 계획](./c11-4-cyclic-minmax-calc.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** Chrome 156 사전 비교와 규범 알고리즘에서 독립 계산한 네 fixed scene을 기록했다. 계획 단계이며 Spinon runtime 구현·Android/iOS 실행은 아직 하지 않았다. C11.4 공식 checkbox와 완료 수 `72/213`은 유지한다.
+**상태:** 네 fixed scene의 opt-in runtime 구현, Rust 회귀, Android API 37 AVD와 iOS 26.2 Simulator 검증을 마쳤다. 각 플랫폼에서 4/4 scene과 20/20 표면 표본이 통과했다. 고정 fixture 범위만 다루며 C11.4 공식 checkbox와 완료 수 `72/213`은 유지한다. 구현 근거는 [runtime evidence](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-runtime-2026-10-22/README.md)에 기록했다.
 
 ## 목적과 범위
 
@@ -37,6 +37,12 @@
 6. 계획 검토와 별도의 구현/runtime 실패 관점 20개를 기록하고, PR diff는 별도 30개 실패 관점으로 검토한다. 발견한 결함은 수정 후 해당 Rust·artifact·simulator·surface 표본을 다시 실행한다.
 7. PR은 고정 fixture 구현임을 설명하고 C11.4 완료로 승격하지 않는다. live required-check 및 merge 상태를 확인하고 Rebase and merge를 사용한다. PR에 넣는 simulator 화면은 Agent Browser로 로드 여부를 확인한 뒤 해당 Agent Browser session을 종료한다.
 
+## 구현 결과
+
+Style projection은 min-side calc를 axis-scoped `LayoutCalcId`로 보존하고, 기존 `Calc`→Taffy `GridTrackMinSizingFunction::Calc` 연결을 네 장면의 regression으로 고정했다. 별도 runtime scene matrix는 root content-box sizing·2px border·exact track formula·직접 Ahem text를 검사한다. Android PixelCopy와 iOS Metal drawable은 border control, item 내부, border overpaint, root 밖 item overflow와 item 바깥을 각 scene에서 확인했다.
+
+첫 Android 실행에서 FFI/native allowlist와 별개인 runtime scene registry의 누락을 재현해 보정했고, 실패 로그를 evidence에 보존했다. 이후 최신 source diff hash 기준으로 두 플랫폼 앱을 다시 빌드·캡처했다. 구현 실패 관점 20개는 [별도 검토](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-runtime-2026-10-22/implementation-review-20.md)에서 다뤘다. PR diff 검토, 병합 상태와 Tailnet 로드맵 동기화는 PR 진행과 함께 기록한다.
+
 ## 범위 밖과 판정
 
 다중 track/item, span, nested·anonymous·replaced item, negative calc term, `minmax()` 바깥의 calc 함수, gap·writing-mode 변형, auto-repeat, 일반 CSS admission, WPT, Android 실기기, hardware GPU, iOS compositor 이후 pixel 및 전체 C11.4는 다루지 않는다. 네 fixed scene의 성공만으로 전체 CSS Grid나 C11.4를 지원한다고 표시하지 않는다. C11.4 checkbox와 공식 `72/213`은 유지한다.
@@ -47,4 +53,5 @@
 - [독립 기대값과 Chrome 관측](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-precomparison-2026-10-22/spec-derived-expectations.json)
 - [계획 실패 관점 검토 20개](./c11-4-cyclic-minmax-calc-minimum-plan-review-20.md)
 - [계획 PR diff 검토 30개](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-precomparison-2026-10-22/plan-pr-diff-review-30.md)
+- [구현/runtime 근거와 실패 관점 검토 20개](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-runtime-2026-10-22/README.md)
 - [CSS Grid 2025 CRD §7.2.1](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#track-sizes) · [§10.6](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-grid-sizing)

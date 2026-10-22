@@ -22,6 +22,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "definite-fit-content-calc-column", "definite-fit-content-calc-small-limit",
     "cyclic-minmax-calc-column", "cyclic-minmax-calc-row",
     "definite-minmax-calc-column", "definite-minmax-calc-small-limit",
+    "cyclic-minmax-calc-min-column", "cyclic-minmax-calc-min-row",
+    "definite-minmax-calc-min-column", "definite-minmax-calc-min-row",
     "cyclic-percent-two-axis-multitrack", "cyclic-percent-columns-multitrack",
     "cyclic-percent-rows-multitrack", "definite-percent-two-axis-multitrack",
     "cyclic-calc-column", "cyclic-calc-row", "cyclic-calc-two-axis",
@@ -227,6 +229,10 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if sceneID == "definite-fit-content-calc-small-limit" { return "width=10,height=20" }
     if sceneID == "cyclic-minmax-calc-column" { return "width=50,height=20" }
     if sceneID == "cyclic-minmax-calc-row" { return "width=20,height=40" }
+    if sceneID == "cyclic-minmax-calc-min-column"
+        || sceneID == "cyclic-minmax-calc-min-row"
+        || sceneID == "definite-minmax-calc-min-column"
+        || sceneID == "definite-minmax-calc-min-row" { return "width=14,height=14" }
     if sceneID == "definite-minmax-calc-column" { return "width=40,height=20" }
     if sceneID == "definite-minmax-calc-small-limit" { return "width=10,height=20" }
     if sceneID == "cyclic-percent-column" || sceneID == "cyclic-percent-row"
@@ -391,6 +397,10 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     if sceneID == "definite-fit-content-calc-small-limit" { return "width=9,height=20" }
     if sceneID == "cyclic-minmax-calc-column" { return "width=29,height=20" }
     if sceneID == "cyclic-minmax-calc-row" { return "width=20,height=22" }
+    if sceneID == "cyclic-minmax-calc-min-column"
+        || sceneID == "definite-minmax-calc-min-column" { return "width=24,height=10" }
+    if sceneID == "cyclic-minmax-calc-min-row"
+        || sceneID == "definite-minmax-calc-min-row" { return "width=10,height=22" }
     if sceneID == "definite-minmax-calc-column" { return "width=24,height=20" }
     if sceneID == "definite-minmax-calc-small-limit" { return "width=9,height=20" }
     if sceneID == "cyclic-percent-column" || sceneID == "cyclic-percent-row"
@@ -1550,6 +1560,12 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "4:node=5,x=\(imageX),y=0,width=24,height=16]"
     }
     switch sceneID {
+    case "cyclic-minmax-calc-min-column", "definite-minmax-calc-min-column":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=14,height=14;"
+            + "1:node=2,x=2,y=2,width=24,height=10]"
+    case "cyclic-minmax-calc-min-row", "definite-minmax-calc-min-row":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=14,height=14;"
+            + "1:node=2,x=2,y=2,width=10,height=22]"
     case "cyclic-calc-column", "cyclic-calc-row", "cyclic-calc-two-axis":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;"
             + "1:node=2,x=0,y=0,width=24,height=16]"
@@ -2217,6 +2233,10 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
         || sceneID == "definite-fit-content-calc-small-limit"
         || sceneID == "cyclic-minmax-calc-column"
         || sceneID == "cyclic-minmax-calc-row"
+        || sceneID == "cyclic-minmax-calc-min-column"
+        || sceneID == "cyclic-minmax-calc-min-row"
+        || sceneID == "definite-minmax-calc-min-column"
+        || sceneID == "definite-minmax-calc-min-row"
         || sceneID == "definite-minmax-calc-column"
         || sceneID == "definite-minmax-calc-small-limit" {
         return 2
@@ -2699,6 +2719,21 @@ private struct C111MetalPixelRun {
     ) -> Bool {
         let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])]
         switch sceneID {
+        case "cyclic-minmax-calc-min-column", "cyclic-minmax-calc-min-row",
+             "definite-minmax-calc-min-column", "definite-minmax-calc-min-row":
+            let rootID = "c114-\(sceneID)-grid"
+            let itemID = "c114-\(sceneID)-item"
+            let column = sceneID.hasSuffix("column")
+            expectedSamples = [
+                ("\(sceneID)-left-border", rootID, 1, 5, [240, 198, 116, 255]),
+                ("\(sceneID)-item-inside", itemID, 5, 5, [229, 72, 77, 255]),
+                ("\(sceneID)-\(column ? "right-border-overpaint" : "bottom-border-overpaint")",
+                 itemID, column ? 13 : 5, column ? 5 : 13, [229, 72, 77, 255]),
+                ("\(sceneID)-outside-root", itemID, column ? 16 : 5, column ? 5 : 16,
+                 [229, 72, 77, 255]),
+                ("\(sceneID)-past-item", rootID, column ? 27 : 5, column ? 5 : 25,
+                 [0, 0, 0, 255]),
+            ]
         case "cyclic-calc-column", "cyclic-calc-row",
              "cyclic-calc-two-axis", "definite-calc-control":
             let itemID = "c114-\(sceneID)-item"
