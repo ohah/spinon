@@ -1,0 +1,22 @@
+{
+  "pullRequest": 535,
+  "url": "https://github.com/ohah/spinon/pull/535",
+  "browser": "Agent Browser",
+  "pageTitle": "docs(c11.4): 로드맵에 implicit fallback 반영 by ohah · Pull Request #535 · ohah/spinon",
+  "image": {
+    "src": "https://raw.githubusercontent.com/ohah/spinon/refs/pull/535/head/spec/internal/evidence/c11-4-pr534-tailnet-roadmap-sync-2026-10-23/roadmap-agent-browser-pass60-source.png",
+    "complete": true,
+    "naturalWidth": 1280,
+    "naturalHeight": 633,
+    "alt": "수정된 C11.4 로드맵을 Agent Browser로 확인한 화면",
+    "localFile": "roadmap-agent-browser-pass60-source.png",
+    "bytes": 249402,
+    "sha256": "46ce23432c225681bb1a2360cf48f3a3e1643bdb8c7f05fe6c78c55934362046"
+  },
+  "verifiedVisibleBody": [
+    "PR #535",
+    "77/213",
+    "Android 실기기/hardware GPU",
+    "Agent Browser 화면"
+  ]
+}
