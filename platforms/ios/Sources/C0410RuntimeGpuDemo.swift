@@ -30,6 +30,12 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "definite-minmax-calc-overlap-forward", "definite-minmax-calc-overlap-reverse",
     "definite-minmax-calc-overlap-small-forward",
     "definite-minmax-calc-overlap-small-reverse",
+    "cyclic-minmax-calc-overlap-rows-forward",
+    "cyclic-minmax-calc-overlap-rows-reverse",
+    "definite-minmax-calc-overlap-rows-forward",
+    "definite-minmax-calc-overlap-rows-reverse",
+    "definite-minmax-calc-overlap-rows-small-forward",
+    "definite-minmax-calc-overlap-rows-small-reverse",
     "cyclic-minmax-calc-min-both-axes",
     "cyclic-minmax-calc-min-column-definite-row",
     "definite-column-cyclic-minmax-calc-min-row",
@@ -228,6 +234,11 @@ private func c114NegativeTrackExpectation(_ sceneID: String) -> C114NegativeTrac
     c114NegativeTrackExpectations[sceneID]
 }
 
+private func c114IsOverlappingRowsScene(_ sceneID: String) -> Bool {
+    sceneID.hasPrefix("cyclic-minmax-calc-overlap-rows-")
+        || sceneID.hasPrefix("definite-minmax-calc-overlap-rows-")
+}
+
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
     if sceneID == "cyclic-fit-content-column" { return "width=50,height=20" }
@@ -247,6 +258,9 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
         || sceneID == "definite-minmax-calc-min-span-columns" { return "width=54,height=14" }
     if sceneID == "cyclic-minmax-calc-min-span-rows"
         || sceneID == "definite-minmax-calc-min-span-rows" { return "width=24,height=24" }
+    if c114IsOverlappingRowsScene(sceneID) {
+        return sceneID.contains("-small-") ? "width=14,height=104" : "width=14,height=144"
+    }
     if sceneID.hasPrefix("cyclic-minmax-calc-overlap-")
         || sceneID.hasPrefix("definite-minmax-calc-overlap-") {
         return sceneID.contains("-small-") ? "width=104,height=14" : "width=144,height=14"
@@ -429,6 +443,12 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         || sceneID == "definite-minmax-calc-min-span-columns" { return "width=62,height=10" }
     if sceneID == "cyclic-minmax-calc-min-span-rows"
         || sceneID == "definite-minmax-calc-min-span-rows" { return "width=20,height=28" }
+    if c114IsOverlappingRowsScene(sceneID) {
+        let small = sceneID.contains("-small-")
+        let reversed = sceneID.hasSuffix("-reverse")
+        let height = reversed ? (small ? 100 : 140) : (small ? 66 : 91)
+        return "width=10,height=\(height)"
+    }
     if sceneID.hasPrefix("cyclic-minmax-calc-overlap-")
         || sceneID.hasPrefix("definite-minmax-calc-overlap-") {
         let small = sceneID.contains("-small-")
@@ -1598,6 +1618,9 @@ private func c114ImageTrackPassMatches(
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if c114IsOverlappingRowsScene(sceneID) {
+        return c114ExpectedOverlappingRowSpanNodeFrames(sceneID)
+    }
     if sceneID.hasPrefix("cyclic-minmax-calc-overlap-")
         || sceneID.hasPrefix("definite-minmax-calc-overlap-") {
         return c114ExpectedOverlappingSpanNodeFrames(sceneID)
@@ -2060,6 +2083,14 @@ private func c114ExpectedTextMultiSpanIntrinsicInputs(_ sceneID: String, report:
          "definite-minmax-calc-overlap-reverse",
          "definite-minmax-calc-overlap-small-reverse":
         expected = [[140, 10, 140, 10], [80, 10, 80, 10], [70, 10, 70, 10]]
+    case "cyclic-minmax-calc-overlap-rows-forward",
+         "definite-minmax-calc-overlap-rows-forward",
+         "definite-minmax-calc-overlap-rows-small-forward":
+        expected = [[10, 70, 70, 10], [10, 80, 80, 10], [10, 140, 140, 10]]
+    case "cyclic-minmax-calc-overlap-rows-reverse",
+         "definite-minmax-calc-overlap-rows-reverse",
+         "definite-minmax-calc-overlap-rows-small-reverse":
+        expected = [[10, 140, 140, 10], [10, 80, 80, 10], [10, 70, 70, 10]]
     default:
         return false
     }
@@ -2309,6 +2340,26 @@ private func c114ExpectedOverlappingSpanNodeFrames(_ sceneID: String) -> String 
         let width = kind == "span2-left" ? leftWidth
             : kind == "span2-right" ? rightWidth : span3Width
         frames.append("\(index + 1):node=\(2 + index * 2),x=\(x),y=2,width=\(width),height=10")
+    }
+    return "node_frames_css_px=[\(frames.joined(separator: ";"))]"
+}
+
+private func c114ExpectedOverlappingRowSpanNodeFrames(_ sceneID: String) -> String {
+    let small = sceneID.contains("-small-")
+    let reversed = sceneID.hasSuffix("-reverse")
+    let rootHeight = small ? 104 : 144
+    let leftHeight = small ? 66 : 91
+    let rightY = small ? 36 : 46
+    let rightHeight = small ? 66 : 96
+    let span3Height = small ? 100 : 140
+    let kinds = reversed ? ["span3", "span2-right", "span2-left"]
+        : ["span2-left", "span2-right", "span3"]
+    var frames = ["0:node=1,x=0,y=0,width=14,height=\(rootHeight)"]
+    for (index, kind) in kinds.enumerated() {
+        let y = kind == "span2-right" ? rightY : 2
+        let height = kind == "span2-left" ? leftHeight
+            : kind == "span2-right" ? rightHeight : span3Height
+        frames.append("\(index + 1):node=\(2 + index * 2),x=2,y=\(y),width=10,height=\(height)")
     }
     return "node_frames_css_px=[\(frames.joined(separator: ";"))]"
 }
@@ -2832,6 +2883,16 @@ private struct C111MetalPixelRun {
     ) -> Bool {
         let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])]
         switch sceneID {
+        case "definite-minmax-calc-overlap-rows-small-forward",
+             "definite-minmax-calc-overlap-rows-small-reverse":
+            expectedSamples = [
+                ("\(sceneID)-inside-root-text",
+                 "c114-\(sceneID)-item-span2-left", 7, 7, [229, 72, 77, 255]),
+                ("\(sceneID)-red-text-outside-root",
+                 "c114-\(sceneID)-item-span3", 7, 126, [229, 72, 77, 255]),
+                ("\(sceneID)-clear-after-text", "c114-\(sceneID)-grid",
+                 7, 150, [0, 0, 0, 255]),
+            ]
         case "definite-minmax-calc-overlap-small-forward",
              "definite-minmax-calc-overlap-small-reverse":
             expectedSamples = [
