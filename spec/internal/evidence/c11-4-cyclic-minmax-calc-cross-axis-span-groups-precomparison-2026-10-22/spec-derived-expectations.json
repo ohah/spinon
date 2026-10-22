@@ -1,0 +1,212 @@
+{
+  "schema": "spinon.c11-4-cross-axis-span-groups-precomparison.v1",
+  "specification": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-track-sizing",
+  "sectionPins": [
+    "5.2",
+    "7.2.1",
+    "11.1",
+    "11.3",
+    "11.5",
+    "11.5.1"
+  ],
+  "fixture": {
+    "columns": 3,
+    "rows": 2,
+    "track": "minmax(calc(10% + 2px), max-content)",
+    "columnGap": 2,
+    "rowGap": 2,
+    "border": 2,
+    "itemA": {
+      "id": "item-a",
+      "placement": {
+        "columns": [
+          1,
+          3
+        ],
+        "rows": [
+          1,
+          3
+        ]
+      },
+      "text": "AA A A",
+      "minContentInline": 20,
+      "maxContentInline": 60
+    },
+    "itemB": {
+      "id": "item-b",
+      "placement": {
+        "columns": [
+          2,
+          4
+        ],
+        "rows": [
+          1,
+          3
+        ]
+      },
+      "text": "XXXX",
+      "minContentInline": 40,
+      "maxContentInline": 40,
+      "preferredInlineSize": 40,
+      "preferredBlockSize": 10
+    },
+    "font": {
+      "family": "Ahem",
+      "size": 10,
+      "lineHeight": 10,
+      "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448"
+    }
+  },
+  "derivation": {
+    "intrinsicContainerInlineSize": [
+      "During the min-content constraint, the cyclic percentage component contributes zero and the absolute 2px minimum remains as each track base.",
+      "A minimum contribution 20px across tracks 1-2 subtracts 2px base + 2px gutter + 2px base = 6px, then proposes a 7px planned increase per affected track.",
+      "B minimum contribution 40px across tracks 2-3 subtracts the same 6px and proposes 17px per affected track.",
+      "Per-track maximum planned increases are [7,17,17]; adding the initial bases gives min-content-constraint track bases [9,19,19]. Tracks plus two gutters occupy 51px; adding the 4px border gives a 55px root border box."
+    ],
+    "finalIntrinsicColumns": [
+      "The 51px min-content container size is definite for the final layout pass; calc(10% + 2px) resolves to about 7.1px per minimum track.",
+      "After the 4px gutters and resolved minimum bases, the remaining free space is distributed among the three max-content tracks. The resulting equal CSS sizes are quantized to 1/64px as [15.671875,15.671875,15.65625].",
+      "A spans columns 1-2 for 33.34375px, so AA A A wraps to line widths [20,30]. B remains 40x10px."
+    ],
+    "definiteColumns": [
+      "With a definite 40px content width, each min track is 10% of 40px plus 2px = 6px. The 18px remaining after bases and gutters is distributed equally, giving [12,12,12].",
+      "A spans 26px. Its 20px min-content word AA fits, but the remaining 30px phrase A A does not, producing line widths [20,10,10] and a 30px block contribution."
+    ],
+    "rows": [
+      "Columns are resolved before rows. For intrinsic width, A contributes 20px and B 10px across two rows: each starts at 2px with a 2px gutter, so A proposes +7px per row and B +2px; maxima give [9,9].",
+      "At definite 40px width, A contributes 30px and B 10px; proposals are +12px and +2px per row, yielding [14,14]."
+    ],
+    "sourceOrder": "Reverse scenes change only the DOM child order. The same item-keyed planned-increase maxima, final tracks, line counts, and frames must result."
+  },
+  "expected": {
+    "intrinsicMinContent": {
+      "minContentConstraintTrackBases": [
+        9,
+        19,
+        19
+      ],
+      "columns": [
+        15.671875,
+        15.671875,
+        15.65625
+      ],
+      "rows": [
+        9,
+        9
+      ],
+      "rootBorderBox": [
+        55,
+        24
+      ],
+      "items": {
+        "a": {
+          "frame": [
+            2,
+            2,
+            33.34375,
+            20
+          ],
+          "lineCount": 2,
+          "lineWidths": [
+            20,
+            30
+          ],
+          "blockContribution": 20
+        },
+        "b": {
+          "frame": [
+            19.671875,
+            2,
+            40,
+            10
+          ],
+          "lineCount": 1,
+          "lineWidths": [
+            40
+          ],
+          "blockContribution": 10
+        }
+      }
+    },
+    "definite40pxContentWidth": {
+      "columns": [
+        12,
+        12,
+        12
+      ],
+      "rows": [
+        14,
+        14
+      ],
+      "rootBorderBox": [
+        44,
+        34
+      ],
+      "items": {
+        "a": {
+          "frame": [
+            2,
+            2,
+            26,
+            30
+          ],
+          "lineCount": 3,
+          "lineWidths": [
+            20,
+            10,
+            10
+          ],
+          "blockContribution": 30
+        },
+        "b": {
+          "frame": [
+            16,
+            2,
+            40,
+            10
+          ],
+          "lineCount": 1,
+          "lineWidths": [
+            40
+          ],
+          "blockContribution": 10,
+          "overflowPastRootRight": 12
+        }
+      },
+      "outsideBorderSample": {
+        "rootRelativeCssPoint": [
+          50,
+          4
+        ],
+        "target": "item-b",
+        "rgba": [
+          229,
+          72,
+          77,
+          255
+        ]
+      },
+      "pastItemSample": {
+        "rootRelativeCssPoint": [
+          60,
+          4
+        ],
+        "target": "surface-clear",
+        "rgba": [
+          0,
+          0,
+          0,
+          255
+        ]
+      }
+    },
+    "sourceOrderInvariant": true,
+    "maxTrackQuantizationToleranceCssPx": 0.015625
+  },
+  "limitations": [
+    "Chrome observations are measurements, not the independent normative derivation.",
+    "The screenshot is not Spinon runtime evidence and does not establish Android or iOS surface pixels.",
+    "The fixed fixture does not close general Grid intrinsic sizing, WPT conformance, glyph raster equality, or the C11.4 parent item."
+  ]
+}

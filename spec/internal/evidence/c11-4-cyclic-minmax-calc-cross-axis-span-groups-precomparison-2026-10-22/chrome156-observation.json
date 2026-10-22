@@ -1,0 +1,233 @@
+{
+  "browser": "Agent Browser 0.31.1 / HeadlessChrome 156.0.0.0",
+  "platform": "macOS arm64",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "width": 1280,
+    "height": 633
+  },
+  "devicePixelRatio": 1,
+  "ahemLoaded": true,
+  "ahemSha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+  "cases": [
+    {
+      "id": "intrinsic-forward",
+      "columns": [
+        15.671875,
+        15.671875,
+        15.65625
+      ],
+      "rows": [
+        9,
+        9
+      ],
+      "rootBorderBox": [
+        55,
+        24
+      ],
+      "items": {
+        "a": {
+          "frame": [
+            2,
+            2,
+            33.34375,
+            20
+          ],
+          "lineWidths": [
+            20,
+            30
+          ]
+        },
+        "b": {
+          "frame": [
+            19.671875,
+            2,
+            40,
+            10
+          ],
+          "lineWidths": [
+            40
+          ]
+        }
+      }
+    },
+    {
+      "id": "intrinsic-reverse",
+      "columns": [
+        15.671875,
+        15.671875,
+        15.65625
+      ],
+      "rows": [
+        9,
+        9
+      ],
+      "rootBorderBox": [
+        55,
+        24
+      ],
+      "items": {
+        "a": {
+          "frame": [
+            2,
+            2,
+            33.34375,
+            20
+          ],
+          "lineWidths": [
+            20,
+            30
+          ]
+        },
+        "b": {
+          "frame": [
+            19.671875,
+            2,
+            40,
+            10
+          ],
+          "lineWidths": [
+            40
+          ]
+        }
+      }
+    },
+    {
+      "id": "definite-forward",
+      "columns": [
+        12,
+        12,
+        12
+      ],
+      "rows": [
+        14,
+        14
+      ],
+      "rootBorderBox": [
+        44,
+        34
+      ],
+      "items": {
+        "a": {
+          "frame": [
+            2,
+            2,
+            26,
+            30
+          ],
+          "lineWidths": [
+            20,
+            10,
+            10
+          ]
+        },
+        "b": {
+          "frame": [
+            16,
+            2,
+            40,
+            10
+          ],
+          "lineWidths": [
+            40
+          ],
+          "overflowPastRootRight": 12
+        }
+      },
+      "outsideBorderProbe": {
+        "rootRelativeCssPoint": [
+          50,
+          4
+        ],
+        "elementClass": "item b",
+        "backgroundColor": "rgb(229, 72, 77)"
+      },
+      "pastItemProbe": {
+        "rootRelativeCssPoint": [
+          60,
+          4
+        ],
+        "elementClass": "case definite",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "id": "definite-reverse",
+      "columns": [
+        12,
+        12,
+        12
+      ],
+      "rows": [
+        14,
+        14
+      ],
+      "rootBorderBox": [
+        44,
+        34
+      ],
+      "items": {
+        "a": {
+          "frame": [
+            2,
+            2,
+            26,
+            30
+          ],
+          "lineWidths": [
+            20,
+            10,
+            10
+          ]
+        },
+        "b": {
+          "frame": [
+            16,
+            2,
+            40,
+            10
+          ],
+          "lineWidths": [
+            40
+          ],
+          "overflowPastRootRight": 12
+        }
+      },
+      "outsideBorderProbe": {
+        "rootRelativeCssPoint": [
+          50,
+          4
+        ],
+        "elementClass": "item b",
+        "backgroundColor": "rgb(229, 72, 77)"
+      },
+      "pastItemProbe": {
+        "rootRelativeCssPoint": [
+          60,
+          4
+        ],
+        "elementClass": "case definite",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      }
+    }
+  ],
+  "sourceOrderInvariantObserved": true,
+  "crossAxisWrappingObserved": {
+    "intrinsicLineCount": 2,
+    "definiteLineCount": 3,
+    "intrinsicRows": [
+      9,
+      9
+    ],
+    "definiteRows": [
+      14,
+      14
+    ]
+  },
+  "screenshot": {
+    "file": "chrome156-cross-axis-span-groups.png",
+    "width": 1280,
+    "height": 633,
+    "sha256": "3bffa3fd80c04607e5a591f7739ace0fad4df90a097bdcbfdbcef79dd54a58f5"
+  }
+}
