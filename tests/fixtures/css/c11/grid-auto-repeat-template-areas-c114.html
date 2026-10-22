@@ -1,0 +1,191 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 auto-repeat template-area line aliases</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; font: 10px/10px monospace; }
+.scene {
+  display: grid;
+  position: absolute;
+  align-content: start;
+  justify-content: start;
+  gap: 4px;
+  background: #101820;
+}
+.scene::before {
+  content: attr(data-label);
+  position: absolute;
+  top: -13px;
+  left: 0;
+  color: #202830;
+  white-space: nowrap;
+}
+.child {
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #e5484d;
+}
+.marker { background: #30a46c; }
+.tail { background: #7257ff; }
+#columns-fill {
+  left: 0;
+  top: 16px;
+  width: 116px;
+  height: 20px;
+  grid-template-columns: 20px repeat(auto-fill, 20px) 20px;
+  grid-template-rows: 20px;
+  grid-template-areas: "prefix hero hero hero suffix";
+}
+#columns-fit {
+  left: 160px;
+  top: 16px;
+  width: 140px;
+  height: 20px;
+  grid-template-columns: 20px repeat(auto-fit, 20px) 20px;
+  grid-template-rows: 20px;
+  grid-template-areas: "prefix hero . . . suffix";
+}
+#columns-area-shorter {
+  left: 340px;
+  top: 16px;
+  width: 140px;
+  height: 20px;
+  grid-template-columns: 20px repeat(auto-fill, 20px) 20px;
+  grid-template-rows: 20px;
+  grid-template-areas: "prefix hero hero hero suffix";
+}
+#columns-area-larger {
+  left: 1060px;
+  top: 16px;
+  width: 100px;
+  height: 20px;
+  grid-template-columns: 20px repeat(auto-fill, 20px) 20px;
+  grid-template-rows: 20px;
+  grid-auto-columns: 20px;
+  grid-template-areas: "prefix hero hero hero suffix";
+}
+#columns-area-line-collision {
+  left: 880px;
+  top: 16px;
+  width: 116px;
+  height: 20px;
+  grid-template-columns: [hero-start] 20px [hero-start] repeat(auto-fill, 20px) [hero-end] 20px [hero-end];
+  grid-template-rows: 20px;
+  grid-template-areas: "prefix hero hero hero suffix";
+}
+#columns-fit-numeric {
+  left: 520px;
+  top: 16px;
+  width: 140px;
+  height: 20px;
+  grid-template-columns: 20px repeat(auto-fit, 20px) 20px;
+  grid-template-rows: 20px;
+}
+#columns-fit-empty-area {
+  left: 700px;
+  top: 16px;
+  width: 140px;
+  height: 20px;
+  grid-template-columns: 20px repeat(auto-fit, 20px) 20px;
+  grid-template-rows: 20px;
+  grid-template-areas: "prefix hero . . . suffix";
+}
+#rows-fill {
+  left: 0;
+  top: 240px;
+  width: 20px;
+  height: 116px;
+  grid-template-columns: 20px;
+  grid-template-rows: 20px repeat(auto-fill, 20px) 20px;
+  grid-template-areas: "prefix" "hero" "hero" "hero" "suffix";
+}
+#rows-fit {
+  left: 100px;
+  top: 240px;
+  width: 20px;
+  height: 140px;
+  grid-template-columns: 20px;
+  grid-template-rows: 20px repeat(auto-fit, 20px) 20px;
+  grid-template-areas: "prefix" "hero" "." "." "." "suffix";
+}
+#rows-area-shorter {
+  left: 200px;
+  top: 240px;
+  width: 20px;
+  height: 140px;
+  grid-template-columns: 20px;
+  grid-template-rows: 20px repeat(auto-fill, 20px) 20px;
+  grid-template-areas: "prefix" "hero" "hero" "hero" "suffix";
+}
+#rows-area-larger {
+  left: 500px;
+  top: 240px;
+  width: 20px;
+  height: 100px;
+  grid-template-columns: 20px;
+  grid-template-rows: 20px repeat(auto-fill, 20px) 20px;
+  grid-auto-rows: 20px;
+  grid-template-areas: "prefix" "hero" "hero" "hero" "suffix";
+}
+#rows-fit-numeric {
+  left: 300px;
+  top: 240px;
+  width: 20px;
+  height: 140px;
+  grid-template-columns: 20px;
+  grid-template-rows: 20px repeat(auto-fit, 20px) 20px;
+}
+#rows-fit-empty-area {
+  left: 400px;
+  top: 240px;
+  width: 20px;
+  height: 140px;
+  grid-template-columns: 20px;
+  grid-template-rows: 20px repeat(auto-fit, 20px) 20px;
+  grid-template-areas: "prefix" "hero" "." "." "." "suffix";
+}
+.prefix { grid-area: prefix; }
+.suffix { grid-area: suffix; }
+#columns-fill .hero, #columns-fit .hero, #columns-area-shorter .hero, #columns-area-larger .hero {
+  grid-row: 1 / 2;
+  grid-column: hero-start / hero-end;
+}
+#columns-area-line-collision .hero { grid-area: hero; }
+#columns-area-line-collision .alias-probe {
+  grid-row: 1 / 2;
+  grid-column: hero-start 2 / hero-end 1;
+  visibility: hidden;
+}
+#rows-fill .hero, #rows-fit .hero, #rows-area-shorter .hero, #rows-area-larger .hero {
+  grid-column: 1 / 2;
+  grid-row: hero-start / hero-end;
+}
+#columns-area-shorter .tail { grid-column: -2 / -1; grid-row: 1 / 2; }
+#rows-area-shorter .tail { grid-column: 1 / 2; grid-row: -2 / -1; }
+#columns-fit-numeric .prefix { grid-column: 1 / 2; grid-row: 1 / 2; }
+#columns-fit-numeric .hero { grid-column: 2 / 3; grid-row: 1 / 2; }
+#columns-fit-numeric .suffix { grid-column: 6 / 7; grid-row: 1 / 2; }
+#rows-fit-numeric .prefix { grid-column: 1 / 2; grid-row: 1 / 2; }
+#rows-fit-numeric .hero { grid-column: 1 / 2; grid-row: 2 / 3; }
+#rows-fit-numeric .suffix { grid-column: 1 / 2; grid-row: 6 / 7; }
+</style>
+<div id="columns-fill" class="scene" data-label="c-fill"><div class="child prefix"></div><div class="child hero"></div><div class="child suffix marker"></div></div>
+<div id="columns-fit" class="scene" data-label="c-fit"><div class="child prefix"></div><div class="child hero"></div><div class="child suffix marker"></div></div>
+<div id="columns-area-shorter" class="scene" data-label="c-area-short"><div class="child prefix"></div><div class="child hero"></div><div class="child suffix marker"></div><div class="child tail"></div></div>
+<div id="columns-area-larger" class="scene" data-label="c-area-large"><div class="child prefix"></div><div class="child hero"></div><div class="child suffix marker"></div></div>
+<div id="columns-area-line-collision" class="scene" data-label="c-line-collision"><div class="child prefix"></div><div class="child hero"></div><div class="child suffix marker"></div><div class="child alias-probe"></div></div>
+<div id="columns-fit-numeric" class="scene" data-label="c-fit-num"><div class="child prefix"></div><div class="child hero"></div><div class="child suffix marker"></div></div>
+<div id="columns-fit-empty-area" class="scene" data-label="c-empty"><div class="child prefix"></div><div class="child suffix marker"></div></div>
+<div id="rows-fill" class="scene" data-label="r-fill"><div class="child prefix"></div><div class="child hero"></div><div class="child suffix marker"></div></div>
+<div id="rows-fit" class="scene" data-label="r-fit"><div class="child prefix"></div><div class="child hero"></div><div class="child suffix marker"></div></div>
+<div id="rows-area-shorter" class="scene" data-label="r-area-short"><div class="child prefix"></div><div class="child hero"></div><div class="child suffix marker"></div><div class="child tail"></div></div>
+<div id="rows-area-larger" class="scene" data-label="r-area-large"><div class="child prefix"></div><div class="child hero"></div><div class="child suffix marker"></div></div>
+<div id="rows-fit-numeric" class="scene" data-label="r-fit-num"><div class="child prefix"></div><div class="child hero"></div><div class="child suffix marker"></div></div>
+<div id="rows-fit-empty-area" class="scene" data-label="r-empty"><div class="child prefix"></div><div class="child suffix marker"></div></div>
+<script>
+const ids=['columns-fill','columns-fit','columns-area-shorter','columns-area-larger','columns-area-line-collision','columns-fit-numeric','columns-fit-empty-area','rows-fill','rows-fit','rows-area-shorter','rows-area-larger','rows-fit-numeric','rows-fit-empty-area'];
+window.result=ids.map(id=>{const root=document.getElementById(id),s=getComputedStyle(root),r=e=>{const x=e.getBoundingClientRect();return [x.x,x.y,x.width,x.height]};return{id,columns:s.gridTemplateColumns,rows:s.gridTemplateRows,areas:s.gridTemplateAreas,root:r(root),children:Array.from(root.children).map(e=>({class:e.className,rect:r(e),area:getComputedStyle(e).gridArea}))}});
+</script>
