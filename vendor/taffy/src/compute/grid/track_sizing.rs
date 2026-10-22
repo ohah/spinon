@@ -354,6 +354,7 @@ pub(super) fn track_sizing_algorithm<Tree: LayoutPartialTree>(
     items: &mut [GridItem],
     get_track_size_estimate: fn(&GridTrack, Option<f32>, &Tree) -> Option<f32>,
     has_baseline_aligned_item: bool,
+    preserve_existing_base_sizes: bool,
     mut trace: Option<&mut GridTrackSizingTrace>,
 ) {
     if let Some(trace) = trace.as_deref_mut() {
@@ -364,7 +365,13 @@ pub(super) fn track_sizing_algorithm<Tree: LayoutPartialTree>(
     // Initialize each track’s base size and growth limit.
     let percentage_basis = inner_node_size.get(axis).or(axis_min_size);
     let axis_inner_node_size = inner_node_size.get(axis);
-    initialize_track_sizes(tree, axis_tracks, percentage_basis, axis_inner_node_size);
+    initialize_track_sizes(
+        tree,
+        axis_tracks,
+        percentage_basis,
+        axis_inner_node_size,
+        preserve_existing_base_sizes,
+    );
 
     // Resolve fit-content() limits against the container's inner size (these are fixed for the rest of this pass)
     for track in axis_tracks.iter_mut() {
@@ -543,8 +550,10 @@ fn initialize_track_sizes(
     axis_tracks: &mut [GridTrack],
     percentage_basis: Option<f32>,
     axis_inner_node_size: Option<f32>,
+    preserve_existing_base_sizes: bool,
 ) {
     for track in axis_tracks.iter_mut() {
+        let previous_base_size = track.base_size;
         // Grid 고유 크기 계산에서 순환 백분율 gap은 0으로 기여한다.
         // 확정된 최소 크기가 다른 track의 백분율 기준으로 쓰여도 gutter에는 적용하지 않는다.
         // 이렇게 하면 calc()의 고정 길이 항은 보존하면서 순환 백분율 항만 제외할 수 있다.
@@ -561,10 +570,22 @@ fn initialize_track_sizes(
         //     Note: Indefinite lengths cannot occur, as they’re treated as auto.
         // - An intrinsic sizing function
         //     Use an initial base size of zero.
-        track.base_size = track
+        let resolved_minimum = track
             .min_track_sizing_function
             .definite_value(track_percentage_basis, |val, basis| tree.calc(val, basis))
             .unwrap_or(0.0);
+        // A cyclic percentage min track sizing function is treated as auto while the grid's
+        // intrinsic size is calculated. Once it resolves, keep the intrinsic item contribution
+        // already distributed to the track; reinitializing it to a smaller percentage minimum
+        // would lose that contribution. A percentage max function does not get this treatment.
+        track.base_size = if preserve_existing_base_sizes
+            && track.min_track_sizing_function.uses_percentage()
+            && track.max_track_sizing_function.is_intrinsic()
+        {
+            f32_max(previous_base_size, resolved_minimum)
+        } else {
+            resolved_minimum
+        };
 
         // For each track, if the track’s max track sizing function is:
         // - A fixed sizing function

@@ -23,6 +23,8 @@ mod cases;
 mod cyclic_calc;
 #[path = "c11_4_text/cyclic_fit_content_calc.rs"]
 mod cyclic_fit_content_calc;
+#[path = "c11_4_text/cyclic_minmax_two_axis_span_text.rs"]
+mod cyclic_minmax_two_axis_span_text;
 #[path = "c11_4_text/cyclic_two_axis_multitrack.rs"]
 mod cyclic_two_axis_multitrack;
 #[path = "c11_4_text/flex_span.rs"]
@@ -94,6 +96,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         return Ok(Some(input));
     }
     if let Some(input) = overlapping_spans::prepare(snapshot, root, styles)? {
+        return Ok(Some(input));
+    }
+    if let Some(input) = cyclic_minmax_two_axis_span_text::prepare(snapshot, root, styles)? {
         return Ok(Some(input));
     }
     if let Some(input) = cyclic_fit_content_calc::prepare(snapshot, root, styles)? {

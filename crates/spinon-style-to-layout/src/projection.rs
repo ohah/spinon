@@ -1260,6 +1260,11 @@ fn validate_intrinsic_image_inputs(
                         | spinon_layout::LayoutDimension::FitContent
                 )
             });
+        let root_grid_min_content_width_max_content_height = allow_root_grid_intrinsic_content
+            && handle == root
+            && style.display == spinon_layout::LayoutDisplay::Grid
+            && style.width == spinon_layout::LayoutDimension::MinContent
+            && style.height == spinon_layout::LayoutDimension::MaxContent;
         let c11_4_nested_grid_two_axis_intrinsics = allow_c11_4_nested_grid_two_axis_intrinsics
             && style.display == spinon_layout::LayoutDisplay::Grid
             && matches!(
@@ -1274,6 +1279,7 @@ fn validate_intrinsic_image_inputs(
             );
         let root_grid_intrinsic_content = c11_4_grid_intrinsic_width
             || root_grid_max_content
+            || root_grid_min_content_width_max_content_height
             || c11_4_nested_grid_two_axis_intrinsics;
         if has_intrinsic_keyword && !is_html_image && !root_grid_intrinsic_content {
             let supported_image = if style.width == spinon_layout::LayoutDimension::MinContent {

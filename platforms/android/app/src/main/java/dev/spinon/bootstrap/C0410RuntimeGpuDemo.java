@@ -136,6 +136,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "definite-minmax-calc-column", "definite-minmax-calc-small-limit",
             "cyclic-minmax-calc-min-column", "cyclic-minmax-calc-min-row",
             "definite-minmax-calc-min-column", "definite-minmax-calc-min-row",
+            "cyclic-minmax-calc-two-axis-span-text-min-content",
+            "cyclic-minmax-calc-two-axis-span-text-max-content",
+            "definite-minmax-calc-two-axis-span-text-min-content",
+            "definite-minmax-calc-two-axis-span-text-max-content",
             "cyclic-minmax-calc-min-span-columns", "definite-minmax-calc-min-span-columns",
             "cyclic-minmax-calc-min-span-rows", "definite-minmax-calc-min-span-rows",
             "cyclic-minmax-calc-overlap-forward", "cyclic-minmax-calc-overlap-reverse",
@@ -439,6 +443,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ExpectedRootFrame(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (sceneId.equals("cyclic-minmax-calc-two-axis-span-text-min-content")
+                || sceneId.equals("definite-minmax-calc-two-axis-span-text-min-content")) {
+            return "width=14,height=64";
+        }
+        if (sceneId.equals("cyclic-minmax-calc-two-axis-span-text-max-content")
+                || sceneId.equals("definite-minmax-calc-two-axis-span-text-max-content")) {
+            return "width=64,height=14";
+        }
         if (sceneId.equals("cyclic-fit-content-column")) return "width=50,height=20";
         if (sceneId.equals("cyclic-fit-content-row")) return "width=20,height=40";
         if (sceneId.equals("definite-fit-content-column")) return "width=40,height=20";
@@ -685,6 +697,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        if (sceneId.equals("cyclic-minmax-calc-two-axis-span-text-min-content")
+                || sceneId.equals("definite-minmax-calc-two-axis-span-text-min-content")) {
+            return "width=10,height=60";
+        }
+        if (sceneId.equals("cyclic-minmax-calc-two-axis-span-text-max-content")
+                || sceneId.equals("definite-minmax-calc-two-axis-span-text-max-content")) {
+            return "width=60,height=10";
+        }
         if (sceneId.equals("cyclic-fit-content-column")) return "width=25,height=20";
         if (sceneId.equals("cyclic-fit-content-row")
                 || sceneId.equals("definite-fit-content-column")) return "width=20,height=20";
@@ -903,10 +923,6 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (c114IsTextMultiSpanScene(sceneId)) {
             return c114ExpectedTextMultiSpanIntrinsicInputs(sceneId, report);
         }
-        if (sceneId.startsWith("cyclic-minmax-calc-overlap-")
-                || sceneId.startsWith("definite-minmax-calc-overlap-")) {
-            return c114ExpectedTextMultiSpanIntrinsicInputs(sceneId, report);
-        }
         int minContent;
         int minContentHeight;
         int maxContent;
@@ -914,105 +930,119 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         int expectedGrid = 1;
         int expectedNode = 2;
         int expectedSourceOrder = 0;
-        switch (sceneId) {
-            case "cyclic-minmax-calc-min-span-columns":
-            case "definite-minmax-calc-min-span-columns":
-                minContent = 20;
-                minContentHeight = 20;
-                maxContent = 50;
-                maxContentHeight = 10;
-                break;
-            case "cyclic-minmax-calc-min-span-rows":
-            case "definite-minmax-calc-min-span-rows":
-                minContent = 10;
-                minContentHeight = 20;
-                maxContent = 30;
-                maxContentHeight = 10;
-                break;
-            case "auto-text-max-content":
-            case "min-content-text-normal":
-            case "max-content-text-normal":
-            case "fit-content-text-minimum":
-            case "min-content-text-edge":
-            case "min-content-text-min-width":
-            case "min-content-text-max-width":
-            case "nested-depth-one-min-content":
-            case "nested-depth-two-min-content":
-            case "nested-depth-three-min-content":
-                minContent = 70;
-                minContentHeight = 20;
-                maxContent = 100;
-                maxContentHeight = 10;
-                if (sceneId.equals("nested-depth-one-min-content")) {
-                    expectedGrid = 2;
+        if (sceneId.equals("cyclic-minmax-calc-two-axis-span-text-min-content")
+                || sceneId.equals("cyclic-minmax-calc-two-axis-span-text-max-content")
+                || sceneId.equals("definite-minmax-calc-two-axis-span-text-min-content")
+                || sceneId.equals("definite-minmax-calc-two-axis-span-text-max-content")) {
+            minContent = 10;
+            minContentHeight = 60;
+            maxContent = 60;
+            maxContentHeight = 10;
+        } else {
+            if (sceneId.startsWith("cyclic-minmax-calc-overlap-")
+                    || sceneId.startsWith("definite-minmax-calc-overlap-")) {
+                return c114ExpectedTextMultiSpanIntrinsicInputs(sceneId, report);
+            }
+            switch (sceneId) {
+                case "cyclic-minmax-calc-min-span-columns":
+                case "definite-minmax-calc-min-span-columns":
+                    minContent = 20;
+                    minContentHeight = 20;
+                    maxContent = 50;
+                    maxContentHeight = 10;
+                    break;
+                case "cyclic-minmax-calc-min-span-rows":
+                case "definite-minmax-calc-min-span-rows":
+                    minContent = 10;
+                    minContentHeight = 20;
+                    maxContent = 30;
+                    maxContentHeight = 10;
+                    break;
+                case "auto-text-max-content":
+                case "min-content-text-normal":
+                case "max-content-text-normal":
+                case "fit-content-text-minimum":
+                case "min-content-text-edge":
+                case "min-content-text-min-width":
+                case "min-content-text-max-width":
+                case "nested-depth-one-min-content":
+                case "nested-depth-two-min-content":
+                case "nested-depth-three-min-content":
+                    minContent = 70;
+                    minContentHeight = 20;
+                    maxContent = 100;
+                    maxContentHeight = 10;
+                    if (sceneId.equals("nested-depth-one-min-content")) {
+                        expectedGrid = 2;
+                        expectedNode = 3;
+                    } else if (sceneId.equals("nested-depth-two-min-content")) {
+                        expectedGrid = 3;
+                        expectedNode = 4;
+                    } else if (sceneId.equals("nested-depth-three-min-content")) {
+                        expectedGrid = 4;
+                        expectedNode = 5;
+                    }
+                    break;
+                case "nested-depth-one-max-content":
+                case "nested-depth-two-max-content":
+                case "nested-depth-three-max-content":
+                    minContent = 70;
+                    minContentHeight = 20;
+                    maxContent = 100;
+                    maxContentHeight = 10;
+                    if (sceneId.equals("nested-depth-one-max-content")) {
+                        expectedGrid = 2;
+                        expectedNode = 3;
+                    } else if (sceneId.equals("nested-depth-two-max-content")) {
+                        expectedGrid = 3;
+                        expectedNode = 4;
+                    } else {
+                        expectedGrid = 4;
+                        expectedNode = 5;
+                    }
+                    break;
+                case "fit-content-calc-limit":
+                case "min-content-text-break-all":
+                    minContent = 10;
+                    minContentHeight = 80;
+                    maxContent = 80;
+                    maxContentHeight = 10;
+                    break;
+                case "min-content-text-nowrap":
+                    minContent = 100;
+                    minContentHeight = 10;
+                    maxContent = 100;
+                    maxContentHeight = 10;
+                    break;
+                case "spanning-auto-min-flex-tracks":
+                    minContent = 200;
+                    minContentHeight = 10;
+                    maxContent = 200;
+                    maxContentHeight = 10;
+                    break;
+                case "typed-mixed-cycle":
+                case "typed-auto":
+                case "typed-min-content":
+                case "typed-max-content":
+                case "typed-minmax-max-content":
+                case "typed-fit-content":
+                    minContent = 48;
+                    minContentHeight = 36;
+                    maxContent = 108;
+                    maxContentHeight = 12;
+                    break;
+                case "typed-auto-fit-occupied":
+                case "typed-auto-fit-gutter":
+                    minContent = 48;
+                    minContentHeight = 36;
+                    maxContent = 108;
+                    maxContentHeight = 12;
                     expectedNode = 3;
-                } else if (sceneId.equals("nested-depth-two-min-content")) {
-                    expectedGrid = 3;
-                    expectedNode = 4;
-                } else if (sceneId.equals("nested-depth-three-min-content")) {
-                    expectedGrid = 4;
-                    expectedNode = 5;
+                    expectedSourceOrder = 1;
+                    break;
+                default:
+                    return true;
                 }
-                break;
-            case "nested-depth-one-max-content":
-            case "nested-depth-two-max-content":
-            case "nested-depth-three-max-content":
-                minContent = 70;
-                minContentHeight = 20;
-                maxContent = 100;
-                maxContentHeight = 10;
-                if (sceneId.equals("nested-depth-one-max-content")) {
-                    expectedGrid = 2;
-                    expectedNode = 3;
-                } else if (sceneId.equals("nested-depth-two-max-content")) {
-                    expectedGrid = 3;
-                    expectedNode = 4;
-                } else {
-                    expectedGrid = 4;
-                    expectedNode = 5;
-                }
-                break;
-            case "fit-content-calc-limit":
-            case "min-content-text-break-all":
-                minContent = 10;
-                minContentHeight = 80;
-                maxContent = 80;
-                maxContentHeight = 10;
-                break;
-            case "min-content-text-nowrap":
-                minContent = 100;
-                minContentHeight = 10;
-                maxContent = 100;
-                maxContentHeight = 10;
-                break;
-            case "spanning-auto-min-flex-tracks":
-                minContent = 200;
-                minContentHeight = 10;
-                maxContent = 200;
-                maxContentHeight = 10;
-                break;
-            case "typed-mixed-cycle":
-            case "typed-auto":
-            case "typed-min-content":
-            case "typed-max-content":
-            case "typed-minmax-max-content":
-            case "typed-fit-content":
-                minContent = 48;
-                minContentHeight = 36;
-                maxContent = 108;
-                maxContentHeight = 12;
-                break;
-            case "typed-auto-fit-occupied":
-            case "typed-auto-fit-gutter":
-                minContent = 48;
-                minContentHeight = 36;
-                maxContent = 108;
-                maxContentHeight = 12;
-                expectedNode = 3;
-                expectedSourceOrder = 1;
-                break;
-            default:
-                return true;
         }
         int diagnosticsMarker = report.indexOf("grid_track_sizing_diagnostics=");
         if (diagnosticsMarker < 0) return false;
@@ -1727,6 +1757,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + ";4:node=5,x=" + imageX + ",y=0,width=24,height=16]";
         }
         switch (sceneId) {
+            case "cyclic-minmax-calc-two-axis-span-text-min-content":
+            case "definite-minmax-calc-two-axis-span-text-min-content":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=14,height=64;"
+                        + "1:node=2,x=2,y=2,width=10,height=60]";
+            case "cyclic-minmax-calc-two-axis-span-text-max-content":
+            case "definite-minmax-calc-two-axis-span-text-max-content":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=64,height=14;"
+                        + "1:node=2,x=2,y=2,width=60,height=10]";
             case "cyclic-minmax-calc-min-span-columns":
             case "definite-minmax-calc-min-span-columns":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=54,height=14;"
@@ -2784,6 +2822,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("cyclic-minmax-calc-row")
                 || sceneId.equals("cyclic-minmax-calc-min-column")
                 || sceneId.equals("cyclic-minmax-calc-min-row")
+                || sceneId.equals("cyclic-minmax-calc-two-axis-span-text-min-content")
+                || sceneId.equals("cyclic-minmax-calc-two-axis-span-text-max-content")
+                || sceneId.equals("definite-minmax-calc-two-axis-span-text-min-content")
+                || sceneId.equals("definite-minmax-calc-two-axis-span-text-max-content")
                 || sceneId.equals("cyclic-minmax-calc-min-both-axes")
                 || sceneId.equals("cyclic-minmax-calc-min-span-columns")
                 || sceneId.equals("definite-minmax-calc-min-span-columns")
@@ -3004,6 +3046,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return sceneId.startsWith("auto-fit-min-");
     }
 
+    private static boolean c114IsTwoAxisSpanTextScene(String sceneId) {
+        return sceneId.equals("cyclic-minmax-calc-two-axis-span-text-min-content")
+                || sceneId.equals("cyclic-minmax-calc-two-axis-span-text-max-content")
+                || sceneId.equals("definite-minmax-calc-two-axis-span-text-min-content")
+                || sceneId.equals("definite-minmax-calc-two-axis-span-text-max-content");
+    }
+
     private static String c114AutoFitMinimumSizeRootFrame(String sceneId) {
         if (!c114IsAutoFitMinimumSizeScene(sceneId)) return null;
         String[] parts = sceneId.split("-");
@@ -3037,6 +3086,40 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (c114IsTwoAxisSpanTextScene(sceneId)) {
+            boolean minContent = sceneId.endsWith("min-content");
+            String[] suffixes = {
+                "left-border", "item-inside", "right-border",
+                "outside-root", "bottom-border", "past-root",
+            };
+            int[][] points = minContent
+                    ? new int[][] {{1, 6}, {5, 6}, {13, 6}, {15, 6}, {6, 63}, {6, 65}}
+                    : new int[][] {{1, 6}, {5, 6}, {63, 6}, {65, 6}, {6, 13}, {6, 15}};
+            if (samples.size() != suffixes.length) return false;
+            String rootId = "c114-" + sceneId + "-grid";
+            String itemId = "c114-" + sceneId + "-item";
+            boolean[] found = new boolean[suffixes.length];
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                int expectedIndex = -1;
+                for (int index = 0; index < suffixes.length; index++) {
+                    if ((sceneId + "-" + suffixes[index]).equals(sample.id)) {
+                        expectedIndex = index;
+                        break;
+                    }
+                }
+                if (expectedIndex < 0 || found[expectedIndex]
+                        || !sample.targetNodeId.equals(expectedIndex == 1 ? itemId : rootId)
+                        || sample.xCssPx != points[expectedIndex][0]
+                        || sample.yCssPx != points[expectedIndex][1]) {
+                    return false;
+                }
+                found[expectedIndex] = true;
+            }
+            for (boolean sampleFound : found) {
+                if (!sampleFound) return false;
+            }
+            return true;
+        }
         if (sceneId.equals("definite-minmax-calc-overlap-rows-small-forward")
                 || sceneId.equals("definite-minmax-calc-overlap-rows-small-reverse")) {
             String[] expectedIDs = {
@@ -4902,6 +4985,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "definite-minmax-calc-min-both-axes".equals(pixelMatrixSceneId)
                         || "definite-minmax-calc-min-column".equals(pixelMatrixSceneId)
                         || "definite-minmax-calc-min-row".equals(pixelMatrixSceneId)
+                        || c114IsTwoAxisSpanTextScene(pixelMatrixSceneId)
                         || "definite-minmax-calc-column".equals(pixelMatrixSceneId)
                         || "definite-minmax-calc-small-limit".equals(pixelMatrixSceneId)
                         || "cyclic-percent-two-axis-multitrack".equals(pixelMatrixSceneId)
@@ -8439,6 +8523,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c114GridExpectedRgb(String sampleId) {
+        if (c114IsTwoAxisSpanTextPixelSample(sampleId, "-left-border")
+                || c114IsTwoAxisSpanTextPixelSample(sampleId, "-right-border")
+                || c114IsTwoAxisSpanTextPixelSample(sampleId, "-bottom-border")) {
+            return new int[] {240, 198, 116};
+        }
+        if (c114IsTwoAxisSpanTextPixelSample(sampleId, "-item-inside")) {
+            return new int[] {229, 72, 77};
+        }
+        if (c114IsTwoAxisSpanTextPixelSample(sampleId, "-outside-root")
+                || c114IsTwoAxisSpanTextPixelSample(sampleId, "-past-root")) {
+            return new int[] {0, 0, 0};
+        }
         if (sampleId.endsWith("-text-red")) return new int[] {229, 72, 77};
         if (sampleId.endsWith("-inside-root-text")) return new int[] {229, 72, 77};
         if (sampleId.endsWith("-red-text-outside-root")) return new int[] {229, 72, 77};
@@ -8652,6 +8748,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int[] c11GridExpectedRgb(String sampleId) {
         return c11GridExpectedRgb(sampleId, false);
+    }
+
+    private static boolean c114IsTwoAxisSpanTextPixelSample(String sampleId, String suffix) {
+        for (String sceneId : new String[] {
+                "cyclic-minmax-calc-two-axis-span-text-min-content",
+                "cyclic-minmax-calc-two-axis-span-text-max-content",
+                "definite-minmax-calc-two-axis-span-text-min-content",
+                "definite-minmax-calc-two-axis-span-text-max-content",
+        }) {
+            if ((sceneId + suffix).equals(sampleId)) return true;
+        }
+        return false;
     }
 
     private void scheduleRuntimeInitializationForReadySurface() {

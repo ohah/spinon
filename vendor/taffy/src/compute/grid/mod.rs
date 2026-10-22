@@ -488,6 +488,7 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
                 .definite_value(parent_size, |val, basis| tree.calc(val, basis))
         },
         has_baseline_aligned_item,
+        false,
         track_sizing_trace.as_mut(),
     );
     let initial_column_sum = columns.iter().map(|track| track.base_size).sum::<f32>();
@@ -522,6 +523,7 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
         &mut items,
         |track: &GridTrack, _, _| Some(track.base_size),
         false, // TODO: Support baseline alignment in the vertical axis
+        false,
         track_sizing_trace.as_mut(),
     );
     let initial_row_sum = rows.iter().map(|track| track.base_size).sum::<f32>();
@@ -575,7 +577,8 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
     let has_percentage_column = columns.iter().any(|track| track.uses_percentage());
     let has_percentage_row = rows.iter().any(|track| track.uses_percentage());
     let parent_width_indefinite = outer_node_size.width.is_none();
-    rerun_column_sizing = parent_width_indefinite && has_percentage_column;
+    let rerun_percentage_column_sizing = parent_width_indefinite && has_percentage_column;
+    rerun_column_sizing = rerun_percentage_column_sizing;
 
     if !rerun_column_sizing {
         // Note: every item must be visited (no short-circuiting) as the closure updates each item's caches
@@ -625,7 +628,8 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
     //   - Column sizing was re-run and any grid item crossing an intrinsically sized track's min content contribution height has changed
     // TODO: Only rerun sizing for tracks that actually require it rather than for all tracks if any need it.
     let parent_height_indefinite = outer_node_size.height.is_none();
-    let mut rerun_row_sizing = parent_height_indefinite && has_percentage_row;
+    let rerun_percentage_row_sizing = parent_height_indefinite && has_percentage_row;
+    let mut rerun_row_sizing = rerun_percentage_row_sizing;
     let mut intrinsic_row_contribution_changed = false;
 
     if rerun_row_sizing {
@@ -654,6 +658,7 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
             &mut items,
             |track: &GridTrack, _, _| Some(track.base_size),
             has_baseline_aligned_item,
+            rerun_percentage_column_sizing,
             track_sizing_trace.as_mut(),
         );
 
@@ -711,6 +716,7 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
             &mut items,
             |track: &GridTrack, _, _| Some(track.base_size),
             false, // TODO: Support baseline alignment in the vertical axis
+            rerun_percentage_row_sizing,
             track_sizing_trace.as_mut(),
         );
     }
