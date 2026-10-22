@@ -1,0 +1,23 @@
+{
+  "checked_at_utc": "2026-10-22 04:16:51 UTC",
+  "pr": "https://github.com/ohah/spinon/pull/498",
+  "head_sha": "eb331dc4aac72f948e5a805f4d861a28004c9b45",
+  "merge_state": "CLEAN",
+  "status_check_rollup": [],
+  "required_checks": "none reported by gh pr checks --required",
+  "browser": "Agent Browser CLI, isolated session c114-tailnet-pr498-e00ea27987c0",
+  "images": [
+    {
+      "alt": "Tailnet roadmap PR 497",
+      "complete": true,
+      "natural_width": 1680,
+      "natural_height": 1100
+    },
+    {
+      "alt": "Tailnet runtime evidence",
+      "complete": true,
+      "natural_width": 1680,
+      "natural_height": 1100
+    }
+  ]
+}
