@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 구현 및 양 simulator 고정 scene 검증 완료 후보. 이 slice를 병합해도 C11.4 공식 완료 수 `77/213`과 미완료 checkbox는 그대로 둔다. auto-repeat fragment의 authored line name 보존과 확장 후 named placement 해석만 다룬다.
+**상태:** 구현 및 양 simulator 고정 scene 검증 완료. 구현 PR [#530](https://github.com/ohah/spinon/pull/530)은 2026-10-22 21:14:42 UTC Rebase and merge로 병합되어 `776810ad5b4bc097d3d18c1871161471fed07974`를 남겼다. 이 제한 slice를 병합해도 C11.4 공식 완료 수 `77/213`과 미완료 checkbox는 그대로 둔다. auto-repeat fragment의 authored line name 보존과 확장 후 named placement 해석만 다룬다.
 
 ## 결손과 실행 가능성
 
