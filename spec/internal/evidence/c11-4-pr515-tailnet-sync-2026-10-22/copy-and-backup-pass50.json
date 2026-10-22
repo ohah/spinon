@@ -1,0 +1,12 @@
+{
+  "pass": "pass50",
+  "fileCount": 7033,
+  "counts": {
+    "create": 485,
+    "replace": 459,
+    "same": 6089
+  },
+  "backupsVerified": 459,
+  "noDeletes": true,
+  "backupRootRelative": "SpinonPreviewBackups/c11-4-pr515-tailnet-sync-2026-10-22/pass50"
+}

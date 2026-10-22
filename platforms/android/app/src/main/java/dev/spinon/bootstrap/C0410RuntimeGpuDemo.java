@@ -8919,7 +8919,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "image-c-overflow-green-png-texel":
                 return new int[] {0, 255, 64};
             case "overflow-root-border-inside":
-                return new int[] {16, 24, 32};
+                return new int[] {17, 204, 136};
             case "overflow-root-border-covered":
             case "overflow-root-border-outside":
                 return new int[] {229, 72, 77};
@@ -8955,7 +8955,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "negative-root-interior":
                 return new int[] {226, 232, 240};
             case "negative-root-edge":
-                return new int[] {226, 232, 240};
+                return new int[] {17, 24, 39};
             case "negative-cycle-root-interior":
             case "negative-cycle-root-edge":
                 return new int[] {226, 232, 240};

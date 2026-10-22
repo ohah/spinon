@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-22",
+  "task": "PR #515 C11.4 mixed cross-axis span groups plus broad C11.4 simulator regression matrix",
+  "sourceRevision": {
+    "commit": "9b8978649feb404514e7fcff8a5fcbdb3a3b32b7",
+    "tree": "60b792f7a2a3295f51ecc1d81440b095aaabbd66",
+    "trackedDiffSha256": "0599c427d1c418e9686592c68fba63fe286259aa4b8cc1b1764be851994e3e38",
+    "trackedDirtyPaths": [
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_image.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs"
+    ]
+  },
+  "android": {
+    "target": "android-avd",
+    "serial": "emulator-5558",
+    "apiLevel": 37,
+    "abi": "arm64-v8a",
+    "renderer": "Android Emulator OpenGL ES Translator (Apple M4 Max)",
+    "sceneCount": 263,
+    "observations": 263,
+    "drawPresented": 263,
+    "failures": 0,
+    "pixelCopyExact": {
+      "sampleCount": 219,
+      "matchedScenes": 63,
+      "logsScanned": 263
+    },
+    "apkSha256": "83c9938fed977eeed47d51729eedd05f5f498e4c22717fc7b13b5a2bd1360664",
+    "installedApkSha256": "83c9938fed977eeed47d51729eedd05f5f498e4c22717fc7b13b5a2bd1360664"
+  },
+  "ios": {
+    "target": "ios-simulator",
+    "device": "iPhone 17 Pro",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "sceneCount": 263,
+    "observations": 263,
+    "drawPresented": 263,
+    "failures": 0,
+    "metalDrawableExact": {
+      "sampleCount": 219,
+      "matchedScenes": 63,
+      "logsScanned": 263
+    },
+    "appSha256": "235d0bdda061c2cbe46530c052ee86308a6b6a7c5a068b201308a9e02ee680b7"
+  },
+  "pr515Scenes": [
+    "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-forward",
+    "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-reverse",
+    "definite-minmax-cross-axis-mixed-span-groups-forward",
+    "definite-minmax-cross-axis-mixed-span-groups-reverse"
+  ],
+  "pr515SceneSamples": {
+    "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-forward": {
+      "androidPixelCopyExact": 0,
+      "iosMetalExact": 0
+    },
+    "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-reverse": {
+      "androidPixelCopyExact": 0,
+      "iosMetalExact": 0
+    },
+    "definite-minmax-cross-axis-mixed-span-groups-forward": {
+      "androidPixelCopyExact": 2,
+      "iosMetalExact": 2
+    },
+    "definite-minmax-cross-axis-mixed-span-groups-reverse": {
+      "androidPixelCopyExact": 2,
+      "iosMetalExact": 2
+    }
+  },
+  "screenshotSha256": {
+    "android": "013550f391210cf5b29ff32dbf09faeea800d3f252cbafd1a43d00a8d726d6eb",
+    "ios": "82335e0bc5a4af00d661bce30e88038e8c4ffe27f9fe2da39c46fc009cf045c9"
+  },
+  "boundaries": [
+    "Android AVD host GPU is simulator evidence, not a physical Android device or device hardware GPU run.",
+    "iOS Metal readback is before compositor submission.",
+    "Pixel samples validate fixed box and surface colors; glyph raster, WPT, arbitrary CSS admission, and full C11.4 conformance remain unverified."
+  ]
+}

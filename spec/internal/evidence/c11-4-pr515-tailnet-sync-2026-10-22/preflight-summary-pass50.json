@@ -1,0 +1,20 @@
+{
+  "pass": "pass50",
+  "sourceRoot": "build/spinon/c11-4-pr515-tailnet-site-pass50",
+  "previewRoot": "SpinonPreview",
+  "backupRoot": "SpinonPreviewBackups/c11-4-pr515-tailnet-sync-2026-10-22/pass50",
+  "fileCount": 7033,
+  "sourceBytes": 393981667,
+  "replacementBackupBytes": 136724115,
+  "counts": {
+    "create": 485,
+    "replace": 459,
+    "same": 6089
+  },
+  "noDeletes": true,
+  "selectedBuild": {
+    "fileCount": 7033,
+    "totalBytes": 393981667,
+    "treeSha256": "53bffe0273df4d55f17856a61a250c869896c7ece421b43ea72e6bf5ccaace5d"
+  }
+}

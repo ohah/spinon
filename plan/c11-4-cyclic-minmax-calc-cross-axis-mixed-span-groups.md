@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [기존 two-item cross-axis 계획](./c11-4-cyclic-minmax-calc-cross-axis-span-groups.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 네 fixed scene의 Agent Browser 관측과 CSS Grid 2025 CRD 독립 계산을 기록했고 계획 실패 관점 20개를 검토했다. Runtime은 시작하지 않았다. C11.4 checkbox와 공식 `77/213`은 유지한다.
+**상태:** 네 fixed scene의 기준 관측·독립 계산, 계획 실패 관점 20개와 Android/iOS runtime 행렬을 확인했다. PR #515의 네 장면은 두 플랫폼에서 각 4/4 draw/present됐고, definite 두 장면의 overflow·clear 표본은 각각 4/4 exact다. C11.4 전체 회귀 행렬도 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 263/263 draw/present, 표면 표본 219/219 exact(63개 표본 대상 scene)를 확인했다. 이 제한 fixture와 simulator 결과는 일반 CSS 지원 또는 C11.4 완료를 뜻하지 않는다. checkbox와 공식 `77/213`은 유지한다. [최종 회귀 실행·화면·로그](../spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/README.md)
 
 ## 목적
 
@@ -53,3 +53,4 @@ Forward/reverse는 document order만 바꾸고 node identity·placement·style�
 - [계획 실패 관점 20개](./c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-plan-review-20.md)
 - [계획 PR 변경 실패 관점 30개](../spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/plan-pr-diff-review-30.md)
 - 기존 [two-item 실행 계획](./c11-4-cyclic-minmax-calc-cross-axis-span-groups.md)과 [실행 evidence](../spec/internal/evidence/c11-4-cross-axis-span-groups-runtime-2026-10-22/README.md)
+- [PR #515 최종 행렬·수정한 regression oracle](../spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/README.md)

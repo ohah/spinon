@@ -3144,7 +3144,7 @@ async function negativeImplicitTrackScenes() {
     if (id === 'columns-negative-fixed-root-overflow') {
       scene.pixelSamples = [
         { id: 'negative-root-interior', nodeId: `c114-${id}-grid`, xCssPx: 33, yCssPx: 10, rgba: [226, 232, 240, 255] },
-        { id: 'negative-root-edge', nodeId: `c114-${id}-grid`, xCssPx: 0, yCssPx: 10, rgba: [226, 232, 240, 255] },
+        { id: 'negative-root-edge', nodeId: `c114-${id}-grid`, xCssPx: 0, yCssPx: 10, rgba: [17, 24, 39, 255] },
         { id: 'negative-root-exterior', nodeId: `c114-${id}-grid`, xCssPx: 150, yCssPx: 10, rgba: [0, 0, 0, 255] },
         { id: 'negative-overflow-item', nodeId: `c114-${id}-item-${observation.items.length}`, xCssPx: 250, yCssPx: 10, rgba: [141, 95, 211, 255] },
         { id: 'negative-overflow-tail', nodeId: `c114-${id}-grid`, xCssPx: 273, yCssPx: 10, rgba: [0, 0, 0, 255] },
@@ -3152,7 +3152,7 @@ async function negativeImplicitTrackScenes() {
     } else if (id === 'rows-negative-fixed-root-overflow') {
       scene.pixelSamples = [
         { id: 'negative-root-interior', nodeId: `c114-${id}-grid`, xCssPx: 10, yCssPx: 19, rgba: [226, 232, 240, 255] },
-        { id: 'negative-root-edge', nodeId: `c114-${id}-grid`, xCssPx: 10, yCssPx: 0, rgba: [226, 232, 240, 255] },
+        { id: 'negative-root-edge', nodeId: `c114-${id}-grid`, xCssPx: 10, yCssPx: 0, rgba: [17, 24, 39, 255] },
         { id: 'negative-root-exterior', nodeId: `c114-${id}-grid`, xCssPx: 10, yCssPx: 100, rgba: [0, 0, 0, 255] },
         { id: 'negative-overflow-item', nodeId: `c114-${id}-item-${observation.items.length}`, xCssPx: 10, yCssPx: 195, rgba: [141, 95, 211, 255] },
         { id: 'negative-overflow-tail', nodeId: `c114-${id}-grid`, xCssPx: 10, yCssPx: 209, rgba: [0, 0, 0, 255] },
@@ -3802,7 +3802,7 @@ function implicitIntrinsicTrackScenes() {
   const overflowRoot = 'c114-implicit-min-content-overflow-border-grid';
   const overflowSamples = [
     { id: 'overflow-root-border-inside', nodeId: overflowRoot,
-      xCssPx: 0, yCssPx: 8, rgba: [16, 24, 32, 255] },
+      xCssPx: 0, yCssPx: 8, rgba: [17, 204, 136, 255] },
     { id: 'overflow-root-border-covered', nodeId: overflowRoot,
       xCssPx: 43, yCssPx: 8, rgba: [229, 72, 77, 255] },
     { id: 'overflow-root-border-outside', nodeId: overflowRoot,
