@@ -1,0 +1,21 @@
+{
+  "pass": "roadmap-source-change",
+  "browser": "Agent Browser",
+  "url": "file:///Users/yoonhb/Documents/workspace/spinon/spec/public/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "visibleTextChecks": [
+    "PR #530/#534 병합",
+    "implicit fallback 계획",
+    "구현 PR #534",
+    "77/213",
+    "border stroke",
+    "Android API 37 ARM64 AVD",
+    "iPhone 17 Pro/iOS 26.2 Simulator"
+  ],
+  "screenshot": {
+    "file": "roadmap-agent-browser-pass60-source.png",
+    "bytes": 249402,
+    "sha256": "46ce23432c225681bb1a2360cf48f3a3e1643bdb8c7f05fe6c78c55934362046"
+  },
+  "sourcePreviewOnly": true
+}
