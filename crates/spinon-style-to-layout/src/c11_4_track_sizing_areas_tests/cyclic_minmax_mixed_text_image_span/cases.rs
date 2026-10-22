@@ -144,6 +144,40 @@ pub(super) const CASES: [Case; 4] = [
     },
 ];
 
+const MAX_CONTENT_LINES: [&[f32]; 2] = [&[60.0], &[110.0]];
+const MAX_CONTENT_FRAMES: [[f32; 4]; 3] = [
+    [2.0, 2.0, 238.0 / 3.0, 80.0 / 3.0],
+    [119.0 / 3.0, 2.0, 40.0, 80.0 / 3.0],
+    [2.0, 2.0, 110.0, 80.0 / 3.0],
+];
+
+pub(super) const MAX_CONTENT_CASES: [Case; 2] = [
+    Case {
+        id: "max-content-forward",
+        root_width: "max-content",
+        intrinsic: true,
+        order: &FORWARD,
+        root: [114.0, 92.0 / 3.0],
+        columns: [107.0 / 3.0, 125.0 / 3.0, 86.0 / 3.0],
+        rows: [37.0 / 3.0, 37.0 / 3.0],
+        frames: MAX_CONTENT_FRAMES,
+        lines: MAX_CONTENT_LINES,
+        line_heights: [10.0, 10.0],
+    },
+    Case {
+        id: "max-content-reverse",
+        root_width: "max-content",
+        intrinsic: true,
+        order: &REVERSE,
+        root: [114.0, 92.0 / 3.0],
+        columns: [107.0 / 3.0, 125.0 / 3.0, 86.0 / 3.0],
+        rows: [37.0 / 3.0, 37.0 / 3.0],
+        frames: MAX_CONTENT_FRAMES,
+        lines: MAX_CONTENT_LINES,
+        line_heights: [10.0, 10.0],
+    },
+];
+
 pub(super) fn fixture(case: &Case) -> Fixture {
     let root_style = format!(
         "box-sizing:content-box;display:grid;width:{};height:max-content;margin:0;padding:0;border:2px solid #f0c674;column-gap:2px;row-gap:2px;align-content:start;justify-content:start;grid-template-columns:repeat(3,{TRACK});grid-template-rows:repeat(2,{TRACK});background-color:#101820;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;color:#e5484d",

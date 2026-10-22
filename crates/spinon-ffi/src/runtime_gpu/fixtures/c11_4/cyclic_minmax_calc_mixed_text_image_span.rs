@@ -36,7 +36,7 @@ const REVERSE: [Item; 3] = [C, B, A];
 const TRACK: &str = "minmax(calc(10% + 2px),max-content)";
 const IMAGE_URL: &str = "https://spinon.invalid/c14-1-png-basic.png";
 
-const SCENES: [Scene; 4] = [
+const SCENES: [Scene; 8] = [
     Scene {
         id: "cyclic-minmax-calc-mixed-text-image-span-intrinsic-forward",
         width: "min-content",
@@ -54,6 +54,26 @@ const SCENES: [Scene; 4] = [
     },
     Scene {
         id: "definite-minmax-calc-mixed-text-image-span-reverse",
+        width: "40px",
+        order: REVERSE,
+    },
+    Scene {
+        id: "max-content-forward",
+        width: "max-content",
+        order: FORWARD,
+    },
+    Scene {
+        id: "max-content-reverse",
+        width: "max-content",
+        order: REVERSE,
+    },
+    Scene {
+        id: "definite-forward",
+        width: "40px",
+        order: FORWARD,
+    },
+    Scene {
+        id: "definite-reverse",
         width: "40px",
         order: REVERSE,
     },
@@ -139,7 +159,7 @@ mod tests {
     use super::runtime_source;
 
     #[test]
-    fn exposes_only_four_mixed_text_image_scenes() {
+    fn exposes_only_eight_fixed_mixed_text_image_scenes() {
         for (scene_id, root_width, reverse) in [
             (
                 "cyclic-minmax-calc-mixed-text-image-span-intrinsic-forward",
@@ -161,6 +181,10 @@ mod tests {
                 "40px",
                 true,
             ),
+            ("max-content-forward", "max-content", false),
+            ("max-content-reverse", "max-content", true),
+            ("definite-forward", "40px", false),
+            ("definite-reverse", "40px", true),
         ] {
             let source = runtime_source(scene_id).expect("registered scene");
             assert!(source.len() < 7 * 1024);
