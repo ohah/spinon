@@ -1,0 +1,127 @@
+{
+  "schema": "spinon.c11_4.cyclic_minmax_calc_overlapping_spans.spec_expectations.v1",
+  "basis": {
+    "spec": "CSS Grid Layout Module Level 1, 2025 CRD",
+    "sections": ["7.2.1", "11.3", "11.5", "11.5.1"],
+    "browser_is_not_the_source_of_expected_values": true
+  },
+  "font": {
+    "family": "Ahem",
+    "fontSizeCssPx": 10,
+    "lineHeightCssPx": 10,
+    "whiteSpace": "nowrap",
+    "minContentEqualsMaxContent": true,
+    "items": {
+      "span2-left": { "glyphs": 7, "minContentCssPx": 70, "maxContentCssPx": 70 },
+      "span2-right": { "glyphs": 8, "minContentCssPx": 80, "maxContentCssPx": 80 },
+      "span3": { "glyphs": 14, "minContentCssPx": 140, "maxContentCssPx": 140 }
+    }
+  },
+  "intrinsicDistribution": {
+    "tracks": 3,
+    "initialCyclicMinimum": "percentage treated as auto during intrinsic grid sizing; fixed contribution is not assumed to be final",
+    "gutterCssPx": 2,
+    "span2Group": {
+      "leftContributionCssPx": 70,
+      "leftSpaceAfterOneGutterCssPx": 68,
+      "leftPlannedIncreasePerTrackCssPx": 34,
+      "rightContributionCssPx": 80,
+      "rightSpaceAfterOneGutterCssPx": 78,
+      "rightPlannedIncreasePerTrackCssPx": 39,
+      "maxPlannedIncreaseByTrackCssPx": [34, 39, 39]
+    },
+    "span3Group": {
+      "contributionCssPx": 140,
+      "currentTrackSumCssPx": 112,
+      "twoGuttersCssPx": 4,
+      "remainingSpaceCssPx": 24,
+      "increasePerTrackCssPx": 8,
+      "growthLimitByTrackCssPx": [42, 47, 47]
+    },
+    "maxContentRootWidthCssPx": 140,
+    "finalMinmaxMinimumAtCyclicWidthCssPx": "10% * 140 + 2 = 16"
+  },
+  "scenes": [
+    {
+      "id": "cyclic-minmax-calc-overlap-forward",
+      "width": "max-content",
+      "contentWidthCssPx": 140,
+      "columnsCssPx": [42, 47, 47],
+      "rowsCssPx": [10],
+      "rootBorderBoxCssPx": [144, 14],
+      "itemsByKind": {
+        "span2-left": { "frameFromBorderOriginCssPx": [2, 2, 91, 10] },
+        "span2-right": { "frameFromBorderOriginCssPx": [46, 2, 96, 10] },
+        "span3": { "frameFromBorderOriginCssPx": [2, 2, 140, 10] }
+      }
+    },
+    {
+      "id": "cyclic-minmax-calc-overlap-reverse",
+      "width": "max-content",
+      "contentWidthCssPx": 140,
+      "columnsCssPx": [42, 47, 47],
+      "rowsCssPx": [10],
+      "rootBorderBoxCssPx": [144, 14],
+      "sameTrackAndKindFramesAs": "cyclic-minmax-calc-overlap-forward"
+    },
+    {
+      "id": "definite-minmax-calc-overlap-forward",
+      "widthCssPx": 140,
+      "contentWidthCssPx": 140,
+      "columnsCssPx": [42, 47, 47],
+      "rowsCssPx": [10],
+      "rootBorderBoxCssPx": [144, 14],
+      "sameTrackAndKindFramesAs": "cyclic-minmax-calc-overlap-forward"
+    },
+    {
+      "id": "definite-minmax-calc-overlap-reverse",
+      "widthCssPx": 140,
+      "contentWidthCssPx": 140,
+      "columnsCssPx": [42, 47, 47],
+      "rowsCssPx": [10],
+      "rootBorderBoxCssPx": [144, 14],
+      "sameTrackAndKindFramesAs": "cyclic-minmax-calc-overlap-forward"
+    },
+    {
+      "id": "definite-minmax-calc-overlap-small-forward",
+      "widthCssPx": 100,
+      "contentWidthCssPx": 100,
+      "finalCalcMinimumCssPx": 12,
+      "columnsCssPx": [32, 32, 32],
+      "rowsCssPx": [10],
+      "rootBorderBoxCssPx": [104, 14],
+      "itemsByKind": {
+        "span2-left": { "frameFromBorderOriginCssPx": [2, 2, 66, 10], "textScrollWidthCssPx": 70 },
+        "span2-right": { "frameFromBorderOriginCssPx": [36, 2, 66, 10], "textScrollWidthCssPx": 80 },
+        "span3": { "frameFromBorderOriginCssPx": [2, 2, 100, 10], "textScrollWidthCssPx": 140 }
+      },
+      "span3TextEndFromBorderOriginCssPx": [142, 12],
+      "textOverflowBeyondContentWidthCssPx": 40,
+      "nativeSurfaceSamples": {
+        "redTextOutsideRoot": { "rootRelativeCssPx": [126, 7], "rgba": [229, 72, 77, 255] },
+        "clearAfterText": { "rootRelativeCssPx": [150, 7], "rgba": [0, 0, 0, 255] }
+      }
+    },
+    {
+      "id": "definite-minmax-calc-overlap-small-reverse",
+      "widthCssPx": 100,
+      "contentWidthCssPx": 100,
+      "finalCalcMinimumCssPx": 12,
+      "columnsCssPx": [32, 32, 32],
+      "rowsCssPx": [10],
+      "rootBorderBoxCssPx": [104, 14],
+      "sameTrackAndKindFramesAs": "definite-minmax-calc-overlap-small-forward",
+      "sameNativeSurfaceSamplesAs": "definite-minmax-calc-overlap-small-forward"
+    }
+  ],
+  "sourceOrderInvariant": {
+    "forwardKinds": ["span2-left", "span2-right", "span3"],
+    "reverseKinds": ["span3", "span2-right", "span2-left"],
+    "expectedSameUsedTracksAndKindFrames": true
+  },
+  "surfaceBoundary": {
+    "browserPageBackground": [255, 255, 255, 255],
+    "nativeHostSurfaceClear": [0, 0, 0, 255],
+    "cssBorderStrokeVerified": false
+  }
+}
