@@ -35,4 +35,6 @@
 | 29 | Clippy 결과나 build feature를 제품 전체로 과장하는가 | 통과. 변경 crate의 feature-enabled all-target Clippy와 opt-in Simulator builds만 근거로 적는다. |
 | 30 | 문서가 전체 C11.4·공식 완료 count·미검증 범위를 과장하는가 | 통과. `spec/STATUS.md`와 현재 공식 77-of-213 집계는 변경하지 않고 일반 CSS admission, WPT, Android physical/hardware GPU, iOS compositor-after pixels를 제외했다. |
 
-게시 전 보충: Agent Browser에서 Tailnet roadmap 링크와 GitHub PR body의 simulator screenshot 원격 로드를 확인하고, 해당 session/process 종료 및 live PR check/merge state를 기록한다.
+### PR 화면 및 병합 전 상태 보충
+
+2026-10-22에 Agent Browser로 [PR #497](https://github.com/ohah/spinon/pull/497)을 열어 본문에 올린 Android AVD와 iPhone Simulator 이미지를 확인했다. 둘 다 complete=true, 자연 크기 각각 1080×2400과 1206×2622로 로드됐다. 응답 JSON은 pr-497-agent-browser-verification.json에 저장한다. gh pr view는 mergeStateStatus=CLEAN, 빈 statusCheckRollup을 반환했고 gh pr checks --required는 이 branch에 보고된 required checks가 없다고 반환했다. Tailnet 페이지 확인과 브라우저 종료 상태는 별도 동기화 근거에 기록한다.

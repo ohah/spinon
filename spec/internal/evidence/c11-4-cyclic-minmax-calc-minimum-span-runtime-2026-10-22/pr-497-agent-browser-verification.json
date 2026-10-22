@@ -1,0 +1,23 @@
+{
+  "checked_at_utc": "2026-10-22 04:04:07 UTC",
+  "pr": "https://github.com/ohah/spinon/pull/497",
+  "head_sha": "8594c5abdfcce3b9dac92e5e2992a2150a17bd9e",
+  "merge_state": "CLEAN",
+  "status_check_rollup": [],
+  "required_checks": "none reported by gh pr checks --required",
+  "browser": "agent-browser isolated session c114-span-roadmap-e00ea27987c0",
+  "images": [
+    {
+      "alt": "Android AVD cyclic columns",
+      "complete": true,
+      "natural_width": 1080,
+      "natural_height": 2400
+    },
+    {
+      "alt": "iOS Simulator cyclic rows",
+      "complete": true,
+      "natural_width": 1206,
+      "natural_height": 2622
+    }
+  ]
+}
