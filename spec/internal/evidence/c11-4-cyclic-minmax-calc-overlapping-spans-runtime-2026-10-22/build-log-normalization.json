@@ -1,0 +1,23 @@
+{
+  "ios-build-three-samples.log": {
+    "originalSha256": "8401543e0110a83b2e708218c0be8ea9f83570b45bd67c444b73222a060b8af5",
+    "rawGzipSha256": "dad55b55b1c36b2d4c8bdbd35701e5b2f4faad56f270655b4401127f6ed9bb5e",
+    "normalizedSha256": "dcf538b0a155638303f6eaff506b811e35c2ba92230b99de71cf34d741faafcb",
+    "normalization": "Removed trailing whitespace from rendered Xcode environment lines and terminal blank lines; build status and commands retained."
+  },
+  "rust-style-focused.log": {
+    "originalSha256": "3b54ae9f650cd38601f4a75cadbb64327ccdd03ff5b91d916cd427cba09d58e3",
+    "normalizedSha256": "b27e186a1325c9f39f5af130d60bf7b847f2b9de34257fa66f2216a352f7cb44",
+    "normalization": "Removed terminal blank lines only."
+  },
+  "rust-runtime-focused.log": {
+    "originalSha256": "c5c7abc09b59e7682d377ee25e10acb5f84a7c64e7f90b0a4e889d0909d17abf",
+    "normalizedSha256": "e2c81f05736038572183a9671f5c23728239d7a0c22bd57e72e72bddac6bb733",
+    "normalization": "Removed terminal blank lines only."
+  },
+  "rust-ffi-focused.log": {
+    "originalSha256": "d6e80dcb0ac120ffa877e6095aa4d82951129c56aadd79a814fec8d57d518a2e",
+    "normalizedSha256": "d9d8b2080b0f5afaffad829667c96d2a28103c7befdd8ddb964dfdbc350133ed",
+    "normalization": "Removed terminal blank lines only."
+  }
+}

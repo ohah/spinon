@@ -29,6 +29,10 @@ const cyclicPercentSceneIDs = new Set([
   'definite-minmax-calc-min-span-columns',
   'cyclic-minmax-calc-min-span-rows',
   'definite-minmax-calc-min-span-rows',
+  'cyclic-minmax-calc-overlap-forward', 'cyclic-minmax-calc-overlap-reverse',
+  'definite-minmax-calc-overlap-forward', 'definite-minmax-calc-overlap-reverse',
+  'definite-minmax-calc-overlap-small-forward',
+  'definite-minmax-calc-overlap-small-reverse',
   'cyclic-percent-two-axis-multitrack', 'cyclic-percent-columns-multitrack',
   'cyclic-percent-rows-multitrack', 'definite-percent-two-axis-multitrack',
   'cyclic-calc-column', 'cyclic-calc-row', 'cyclic-calc-two-axis',
@@ -2457,7 +2461,92 @@ scenes.push(
     axis: 'Rows', intrinsicInputs: spanRowsTextInput,
   }),
 );
-assert.equal(scenes.length, 239, 'C11.4 fixture scene count differs.');
+for (const id of [
+  'cyclic-minmax-calc-overlap-forward',
+  'cyclic-minmax-calc-overlap-reverse',
+  'definite-minmax-calc-overlap-forward',
+  'definite-minmax-calc-overlap-reverse',
+  'definite-minmax-calc-overlap-small-forward',
+  'definite-minmax-calc-overlap-small-reverse',
+]) {
+  const small = id.includes('-small-');
+  const reversed = id.endsWith('-reverse');
+  const root = small ? [104, 14] : [144, 14];
+  const columns = small ? [32, 32, 32] : [42, 47, 47];
+  const order = reversed ? ['span3', 'span2-right', 'span2-left']
+    : ['span2-left', 'span2-right', 'span3'];
+  const framesByKind = small
+    ? {
+      'span2-left': [2, 2, 66, 10],
+      'span2-right': [36, 2, 66, 10],
+      span3: [2, 2, 100, 10],
+    }
+    : {
+      'span2-left': [2, 2, 91, 10],
+      'span2-right': [46, 2, 96, 10],
+      span3: [2, 2, 140, 10],
+    };
+  const itemFrames = order.map((kind, index) => {
+    const [x, y, width, height] = framesByKind[kind];
+    return `${index + 1}:node=${2 + index * 2},x=${x},y=${y},width=${width},height=${height}`;
+  });
+  const firstFrame = framesByKind[order[0]];
+  const textWidths = { 'span2-left': 70, 'span2-right': 80, span3: 140 };
+  const intrinsicInputs = order.map((kind, index) => ({
+    grid: 1,
+    node: 2 + index * 2,
+    sourceOrder: index,
+    kind: 'text',
+    fontRegistryRevision: 1,
+    minContent: textWidths[kind],
+    minContentHeight: 10,
+    maxContent: textWidths[kind],
+    maxContentHeight: 10,
+  }));
+  const scene = {
+    id,
+    axis: 'Columns',
+    boxCount: 4,
+    rootFrame: `width=${root[0]},height=${root[1]}`,
+    itemFrame: `width=${firstFrame[2]},height=${firstFrame[3]}`,
+    nodeFrames: `node_frames_css_px=[0:node=1,x=0,y=0,width=${root[0]},height=${root[1]};${itemFrames.join(';')}]`,
+    axes: {
+      Columns: { tracks: columns, collapsed: [false, false, false] },
+      Rows: { tracks: [10], collapsed: [false] },
+    },
+    gaps: { Columns: 2, Rows: 0 },
+    intrinsicInputs,
+    intrinsicSpans: [2, 3],
+    intrinsicSpansByAxis: { Columns: [2, 3], Rows: [] },
+  };
+  if (small) {
+    scene.pixelSamples = [
+      {
+        id: `${id}-inside-root-text`,
+        nodeId: `c114-${id}-item-span2-left`,
+        xCssPx: 4,
+        yCssPx: 7,
+        rgba: [229, 72, 77, 255],
+      },
+      {
+        id: `${id}-red-text-outside-root`,
+        nodeId: `c114-${id}-item-span3`,
+        xCssPx: 126,
+        yCssPx: 7,
+        rgba: [229, 72, 77, 255],
+      },
+      {
+        id: `${id}-clear-after-text`,
+        nodeId: `c114-${id}-grid`,
+        xCssPx: 150,
+        yCssPx: 7,
+        rgba: [0, 0, 0, 255],
+      },
+    ];
+  }
+  scenes.push(scene);
+}
+assert.equal(scenes.length, 245, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous text/image scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;

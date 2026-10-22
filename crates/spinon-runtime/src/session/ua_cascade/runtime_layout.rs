@@ -434,30 +434,23 @@ where
                 None,
             )
         })?;
-        if text_input.paragraph_styles.len() != 1 {
+        let owners = text_input
+            .paragraph_styles
+            .keys()
+            .copied()
+            .collect::<Vec<_>>();
+        if owners.is_empty() {
             return Err(layout_failure(
                 "c114_fit_content_calc_text_owner_count",
                 Some(root.id().get()),
                 None,
             ));
         }
-        let owner = text_input
-            .paragraph_styles
-            .keys()
-            .next()
-            .copied()
-            .ok_or_else(|| {
-                layout_failure(
-                    "c114_fit_content_calc_text_owner_count",
-                    Some(root.id().get()),
-                    None,
-                )
-            })?;
         Some(fixtures::prepare_cyclic_fit_content_calc_render_input(
             &request.snapshot,
             root,
             &styles,
-            owner,
+            &owners,
             &text_input.engine,
         )?)
     } else {
