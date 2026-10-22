@@ -1,0 +1,41 @@
+{
+  "found": true,
+  "images": [],
+  "links": [
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-cyclic-minmax-calc.html",
+      "text": "계획"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-minmax-calc-runtime-2026-10-22/README.html",
+      "text": "Simulator·화면·artifact 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-minmax-calc-runtime-2026-10-22/implementation-review-20.html",
+      "text": "구현/runtime 검토"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-minmax-calc-runtime-2026-10-22/roadmap-pr-diff-review-30.html",
+      "text": "문서 PR diff 검토"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-minmax-calc-runtime-2026-10-22/android-avd-c114-cyclic-minmax-calc-android-avd-20261022T003653863Z-c6952f2b/definite-minmax-calc-small-limit.png",
+      "text": "Android AVD 화면"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-minmax-calc-runtime-2026-10-22/ios-simulator-c114-cyclic-minmax-calc-ios-simulator-20261022T003845541Z-fdde4073/definite-minmax-calc-small-limit.png",
+      "text": "iOS Simulator 화면"
+    },
+    {
+      "href": "https://github.com/ohah/spinon/pull/487",
+      "text": "PR #487"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html#c11-css-grid",
+      "text": "공식 상태"
+    }
+  ],
+  "text": "2026-10-22 C11.4 cyclic minmax calc fixed runtime slice · PR #487 병합: minmax(0px, calc(50% + length))의 cyclic column·row, definite column control과 10px root small-limit을 포함한 네 고정 scene을 opt-in fixture로 확인했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 4/4 scene, PixelCopy와 제출 전 Metal drawable 표본 9/9 exact다. small-limit 화면에서는 9px item과 10px root 바깥에 Ahem text paint가 보인다. 이 fixture는 CSS border stroke를 그리지 않으므로 테두리 픽셀 검증은 아니다. PR #487은 2026-10-22 00:50:38 UTC Rebase and merge됐고 SHA 2a04286dba1da4bef45fb6b1a1ee9a1cace54e56다. 병합 당시 check rollup은 비었고 main required status check는 설정되어 있지 않았다. Android 실기기, hardware GPU, iOS compositor 이후 pixel, 일반 CSS admission, WPT와 전체 C11.4는 미검증이며 완료 수 72/213은 유지한다. 계획 · Simulator·화면·artifact 근거 · 구현/runtime 검토 · 문서 PR diff 검토 · Android AVD 화면 · iOS Simulator 화면 · PR #487 · 공식 상태",
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html"
+}

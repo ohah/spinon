@@ -1,0 +1,7 @@
+{
+  "bodyExcerpt": "스피논\n0.1.0-draft\n검색\n⌘K\n0001 · 범위와 적합성\ninternal\n0059 · C11 Grid 레이아웃 내부 계약\nevidence\nc11-4-anonymous-grid-text-2026-10-21\nC11.4 anonymous Grid text 구현 실패 관점 검토 20개\nC11.4 anonymous Grid text 계획 범위 보강 검토 20개\nC11.4 anonymous Grid text 구현 PR diff 적대 검토 30개\nC11.4 anonymous Grid text 제한 구현 근거\nc11-4-anonymous-grid-text-image-precomparison-2026-10-21\n계획 PR #424 변경분 적대 검토 20개\nC11.4 anonymous Grid text와 replaced image 사전 비교\nc11-4-anonymous-grid-text-image-runtime-2026-10-21\nC11.4 anonymous text/image FFI artifact 경계\nC11.4 anonymous Grid text + image 구현·runtime 실패 관점 검토 20개\nC11.4 anonymous Grid text + image 구현 PR diff 실패 관점 검토 30개\nC11.4 anonymous Grid text + image runtime evidence\n로드맵 반영 PR 변경 실패 관점 검토 30개\nc11-4-anonymous-grid-text-precomparison-2026-10-21\nC11.4 anonymous Grid text 계획 PR diff 적대 검토 30개\nC11.4 anonymous Grid text item Chrome 155 사전 비교\nc11-4-anonymous-text-multi-image-2026-10-21\nC11.4 an",
+  "containsExpectation": true,
+  "containsPrReview": true,
+  "title": "C11.4 · cyclic percentage minmax(calc()) track sizing 계획 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-cyclic-minmax-calc.html"
+}

@@ -1,0 +1,17 @@
+{
+  "namespace": "spinon-c114-roadmap-pr488",
+  "session": "pr488",
+  "close_command_exit_code": 0,
+  "close_output": "Browser closed",
+  "session_info": {
+    "active": false,
+    "pid": null,
+    "runtime": null,
+    "namespace": "spinon-c114-roadmap-pr488"
+  },
+  "doctor": {
+    "active_daemons": false,
+    "status": "pass"
+  },
+  "agent_browser_and_chrome_process_scan": []
+}

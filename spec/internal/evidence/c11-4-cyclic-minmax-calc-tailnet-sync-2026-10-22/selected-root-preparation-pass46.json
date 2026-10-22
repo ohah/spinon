@@ -1,0 +1,38 @@
+{
+  "pass": "pass46",
+  "baseline": "2f6876c62985a5e8cccd62d34c9fb7ad854a9bde",
+  "sourceHead": "48eaefe89d1eaad81cd355e961dadd56e0078c00",
+  "sourceTree": "475b0b7eb866769ff2a52324441fc7c98974dd29",
+  "workTree": "475b0b7eb866769ff2a52324441fc7c98974dd29",
+  "selectedRoot": "build/spinon/c11-4-cyclic-minmax-calc-tailnet-root-pass46-selected",
+  "previousRoot": "build/spinon/c11-4-cyclic-fit-content-calc-tailnet-root-pass45-selected",
+  "localChanges": [],
+  "changedPlanFiles": [
+    "plan/c11-4-cyclic-minmax-calc-plan-review-20.md",
+    "plan/c11-4-cyclic-minmax-calc.md"
+  ],
+  "copiedDocumentFiles": 4,
+  "evidenceAliases": [
+    "internal/evidence",
+    "spec/internal/evidence",
+    "public/internal/evidence",
+    "public/spec/internal/evidence"
+  ],
+  "copiedEvidenceDirectories": [
+    {
+      "directory": "spec/internal/evidence/c11-4-cyclic-minmax-calc-precomparison-2026-10-22",
+      "trackedFiles": 6
+    },
+    {
+      "directory": "spec/internal/evidence/c11-4-cyclic-minmax-calc-runtime-2026-10-22",
+      "trackedFiles": 107
+    }
+  ],
+  "copiedTrackedEvidenceFiles": 113,
+  "copiedFixtureFiles": [
+    "tests/fixtures/css/c11/grid-cyclic-minmax-calc-c114-precomparison.html"
+  ],
+  "omittedOperationalConfigs": [],
+  "ignoredUntrackedWorkspaceEvidence": true,
+  "noPreviewWrites": true
+}

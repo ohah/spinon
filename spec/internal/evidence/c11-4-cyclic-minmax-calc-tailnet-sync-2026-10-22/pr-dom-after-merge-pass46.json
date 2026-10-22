@@ -1,0 +1,21 @@
+{
+  "images": [
+    {
+      "alt": "Android AVD C11.4 small-limit text paint overflow",
+      "complete": true,
+      "height": 2400,
+      "src": "https://raw.githubusercontent.com/ohah/spinon/910a02bdc452f187c3db27585500d69f8ac43f5d/spec/internal/evidence/c11-4-cyclic-minmax-calc-runtime-2026-10-22/android-avd-c114-cyclic-minmax-calc-android-avd-20261022T003653863Z-c6952f2b/definite-minmax-calc-small-limit.png",
+      "width": 1080
+    },
+    {
+      "alt": "iOS Simulator C11.4 small-limit text paint overflow",
+      "complete": true,
+      "height": 2622,
+      "src": "https://raw.githubusercontent.com/ohah/spinon/910a02bdc452f187c3db27585500d69f8ac43f5d/spec/internal/evidence/c11-4-cyclic-minmax-calc-runtime-2026-10-22/ios-simulator-c114-cyclic-minmax-calc-ios-simulator-20261022T003845541Z-fdde4073/definite-minmax-calc-small-limit.png",
+      "width": 1206
+    }
+  ],
+  "merged": true,
+  "title": "docs: C11.4 cyclic minmax calc 진행 상태 갱신 by ohah · Pull Request #488 · ohah/spinon",
+  "url": "https://github.com/ohah/spinon/pull/488"
+}
