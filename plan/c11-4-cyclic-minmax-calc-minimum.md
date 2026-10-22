@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [직전 `minmax(calc())` 최댓값 계획](./c11-4-cyclic-minmax-calc.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 네 fixed scene의 opt-in runtime 구현, Rust 회귀, Android API 37 AVD와 iOS 26.2 Simulator 검증을 마쳤다. 각 플랫폼에서 4/4 scene과 20/20 표면 표본이 통과했다. 고정 fixture 범위만 다루며 C11.4 공식 checkbox와 완료 수 `72/213`은 유지한다. 구현 근거는 [runtime evidence](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-runtime-2026-10-22/README.md)에 기록했다.
+**상태:** 네 fixed scene의 opt-in runtime 구현, Rust 회귀, Android API 37 AVD와 iOS 26.2 Simulator 검증을 마쳤다. 각 플랫폼에서 4/4 scene과 20/20 표면 표본이 통과했다. 고정 fixture 범위만 다루며 C11.4 공식 checkbox와 완료 수 `72/213`은 유지한다. 구현 근거는 [runtime evidence](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-runtime-2026-10-22/README.md)에 기록했다. 구현 PR [#491](https://github.com/ohah/spinon/pull/491)은 2026-10-22 01:58:08 UTC Rebase and merge됐고 merge SHA는 `5210435a43ce92d4309636dc0deeae1657cf7c06`다. PR check rollup은 비어 있었고 main required status check는 설정되어 있지 않았다.
 
 ## 목적과 범위
 
