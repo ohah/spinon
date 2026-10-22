@@ -424,6 +424,46 @@ where
         None
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_fit_content_calc_render_input = if runtime_paint_enabled
+        && fixtures::is_cyclic_fit_content_calc_scene_root(&request.snapshot, root)?
+    {
+        let text_input = c11_4_text_input.as_ref().ok_or_else(|| {
+            layout_failure(
+                "c114_fit_content_calc_text_input_missing",
+                Some(root.id().get()),
+                None,
+            )
+        })?;
+        if text_input.paragraph_styles.len() != 1 {
+            return Err(layout_failure(
+                "c114_fit_content_calc_text_owner_count",
+                Some(root.id().get()),
+                None,
+            ));
+        }
+        let owner = text_input
+            .paragraph_styles
+            .keys()
+            .next()
+            .copied()
+            .ok_or_else(|| {
+                layout_failure(
+                    "c114_fit_content_calc_text_owner_count",
+                    Some(root.id().get()),
+                    None,
+                )
+            })?;
+        Some(fixtures::prepare_cyclic_fit_content_calc_render_input(
+            &request.snapshot,
+            root,
+            &styles,
+            owner,
+            &text_input.engine,
+        )?)
+    } else {
+        None
+    };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_image_input = if c11_4_nested_grid_replaced_item_input.is_none()
         && c11_4_nested_grid_depth_three_anonymous_image_input.is_none()
         && c11_4_anonymous_text_multi_image_input.is_none()
@@ -681,6 +721,12 @@ where
             scene
         };
         let scene = if let Some(text_input) = &root_html_default_render_input {
+            root_html_default_render::attach(&request.snapshot, root, &output, text_input, scene)?
+        } else {
+            scene
+        };
+        #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+        let scene = if let Some(text_input) = &c11_4_fit_content_calc_render_input {
             root_html_default_render::attach(&request.snapshot, root, &output, text_input, scene)?
         } else {
             scene

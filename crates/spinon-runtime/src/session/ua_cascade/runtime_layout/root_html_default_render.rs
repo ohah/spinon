@@ -13,10 +13,16 @@ use spinon_style::ComputedStyleSnapshot;
 
 use super::{RuntimeLayoutFailure, layout_failure};
 
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "root_html_default_render/fixture.rs"]
+mod fixture;
 #[path = "root_html_default_render/style.rs"]
 mod style;
 #[path = "root_html_default_render/tree.rs"]
 mod tree;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) use self::fixture::prepare_text_owner as prepare_fixture_text_owner;
 
 use self::style::{
     inline_run_style, paragraph_style, property, runtime_text_color, unsupported_style,

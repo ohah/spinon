@@ -18,6 +18,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "cyclic-percent-column", "cyclic-percent-row", "definite-percent-column",
     "cyclic-minmax-column", "cyclic-minmax-row", "definite-minmax-column",
     "cyclic-fit-content-column", "cyclic-fit-content-row", "definite-fit-content-column",
+    "cyclic-fit-content-calc-column", "cyclic-fit-content-calc-row",
+    "definite-fit-content-calc-column", "definite-fit-content-calc-small-limit",
     "cyclic-percent-two-axis-multitrack", "cyclic-percent-columns-multitrack",
     "cyclic-percent-rows-multitrack", "definite-percent-two-axis-multitrack",
     "cyclic-calc-column", "cyclic-calc-row", "cyclic-calc-two-axis",
@@ -217,6 +219,10 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if sceneID == "cyclic-fit-content-column" { return "width=50,height=20" }
     if sceneID == "cyclic-fit-content-row" { return "width=20,height=40" }
     if sceneID == "definite-fit-content-column" { return "width=40,height=20" }
+    if sceneID == "cyclic-fit-content-calc-column" { return "width=50,height=20" }
+    if sceneID == "cyclic-fit-content-calc-row" { return "width=20,height=40" }
+    if sceneID == "definite-fit-content-calc-column" { return "width=40,height=20" }
+    if sceneID == "definite-fit-content-calc-small-limit" { return "width=10,height=20" }
     if sceneID == "cyclic-percent-column" || sceneID == "cyclic-percent-row"
         || sceneID == "cyclic-minmax-column" || sceneID == "cyclic-minmax-row" {
         return "width=24,height=16"
@@ -373,6 +379,10 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     if sceneID == "cyclic-fit-content-row" || sceneID == "definite-fit-content-column" {
         return "width=20,height=20"
     }
+    if sceneID == "cyclic-fit-content-calc-column" { return "width=29,height=20" }
+    if sceneID == "cyclic-fit-content-calc-row" { return "width=20,height=22" }
+    if sceneID == "definite-fit-content-calc-column" { return "width=24,height=20" }
+    if sceneID == "definite-fit-content-calc-small-limit" { return "width=9,height=20" }
     if sceneID == "cyclic-percent-column" || sceneID == "cyclic-percent-row"
         || sceneID == "definite-percent-column" || sceneID == "cyclic-minmax-column"
         || sceneID == "cyclic-minmax-row" || sceneID == "definite-minmax-column" {
@@ -1550,6 +1560,18 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     case "definite-fit-content-column":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;"
             + "1:node=2,x=0,y=0,width=20,height=20]"
+    case "cyclic-fit-content-calc-column":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=50,height=20;"
+            + "1:node=2,x=0,y=0,width=29,height=20]"
+    case "cyclic-fit-content-calc-row":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=40;"
+            + "1:node=2,x=0,y=0,width=20,height=22]"
+    case "definite-fit-content-calc-column":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20;"
+            + "1:node=2,x=0,y=0,width=24,height=20]"
+    case "definite-fit-content-calc-small-limit":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=10,height=20;"
+            + "1:node=2,x=0,y=0,width=9,height=20]"
     case "cyclic-percent-column", "cyclic-percent-row",
          "cyclic-minmax-column", "cyclic-minmax-row":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;"
@@ -2166,7 +2188,11 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
         || sceneID == "definite-percent-column" || sceneID == "cyclic-minmax-column"
         || sceneID == "cyclic-minmax-row" || sceneID == "definite-minmax-column"
         || sceneID == "cyclic-fit-content-column" || sceneID == "cyclic-fit-content-row"
-        || sceneID == "definite-fit-content-column" {
+        || sceneID == "definite-fit-content-column"
+        || sceneID == "cyclic-fit-content-calc-column"
+        || sceneID == "cyclic-fit-content-calc-row"
+        || sceneID == "definite-fit-content-calc-column"
+        || sceneID == "definite-fit-content-calc-small-limit" {
         return 2
     }
     if sceneID == "cyclic-percent-two-axis-multitrack"
@@ -2706,6 +2732,40 @@ private struct C111MetalPixelRun {
             expectedSamples = [
                 ("definite-fit-content-column-inside-item", itemID, 19, 5, [229, 72, 77, 255]),
                 ("definite-fit-content-column-past-item", itemID, 21, 5, [16, 24, 32, 255]),
+            ]
+        case "cyclic-fit-content-calc-column":
+            let itemID = "c114-\(sceneID)-item"
+            expectedSamples = [
+                ("cyclic-fit-content-calc-column-inside-item", itemID, 28, 5,
+                 [229, 72, 77, 255]),
+                ("cyclic-fit-content-calc-column-past-item", itemID, 30, 5,
+                 [16, 24, 32, 255]),
+            ]
+        case "cyclic-fit-content-calc-row":
+            let itemID = "c114-\(sceneID)-item"
+            expectedSamples = [
+                ("cyclic-fit-content-calc-row-inside-item", itemID, 19, 21,
+                 [229, 72, 77, 255]),
+                ("cyclic-fit-content-calc-row-past-item", itemID, 19, 23,
+                 [16, 24, 32, 255]),
+            ]
+        case "definite-fit-content-calc-column":
+            let itemID = "c114-\(sceneID)-item"
+            expectedSamples = [
+                ("definite-fit-content-calc-column-inside-item", itemID, 23, 5,
+                 [229, 72, 77, 255]),
+                ("definite-fit-content-calc-column-past-item", itemID, 25, 5,
+                 [16, 24, 32, 255]),
+            ]
+        case "definite-fit-content-calc-small-limit":
+            let itemID = "c114-\(sceneID)-item"
+            expectedSamples = [
+                ("definite-fit-content-calc-small-limit-inside-item", itemID, 5, 5,
+                 [229, 72, 77, 255]),
+                ("definite-fit-content-calc-small-limit-text-overflow", itemID, 15, 5,
+                 [229, 72, 77, 255]),
+                ("definite-fit-content-calc-small-limit-past-text", itemID, 25, 5,
+                 [0, 0, 0, 255]),
             ]
         case "cyclic-percent-column":
             let itemID = "c114-\(sceneID)-item"

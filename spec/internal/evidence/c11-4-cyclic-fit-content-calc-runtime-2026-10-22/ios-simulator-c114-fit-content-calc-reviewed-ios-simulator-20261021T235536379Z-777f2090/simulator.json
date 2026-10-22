@@ -1,0 +1,24 @@
+{
+  "target": "ios-simulator",
+  "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "name": "iPhone 17 Pro",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "f3d6a173f431fa74e77a64aa1ae3dc07ee45052f2381fc17c6014beb16829347",
+  "sourceRevision": {
+    "commit": "7aaeb7a60373914f8097919546d21e2ac0c50d1d",
+    "tree": "70f532aca0d4b00d1640f4119b9e3c092e52b746",
+    "trackedDiffSha256": "ba65b319266091ec3ed40114fe152587f50e0e49387cc6aaa2975c7d7929343d",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/root_html_default_render.rs",
+      "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/cyclic_fit_content.rs",
+      "plan/c11-4-cyclic-fit-content-calc.md",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs"
+    ]
+  }
+}
