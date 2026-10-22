@@ -114,6 +114,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse",
     "definite-minmax-calc-mixed-text-image-span-forward",
     "definite-minmax-calc-mixed-text-image-span-reverse",
+    "max-content-forward", "max-content-reverse",
+    "definite-forward", "definite-reverse",
     "grid-gap-definite-percent", "grid-gap-cyclic-percent",
     "grid-gap-definite-calc", "grid-gap-cyclic-calc",
     "grid-gap-cyclic-percent-min-basis", "grid-gap-cyclic-calc-min-basis",
@@ -204,6 +206,8 @@ private let c114CyclicMinmaxMixedTextImageSpanSceneIDs: Set<String> = [
     "cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse",
     "definite-minmax-calc-mixed-text-image-span-forward",
     "definite-minmax-calc-mixed-text-image-span-reverse",
+    "max-content-forward", "max-content-reverse",
+    "definite-forward", "definite-reverse",
 ]
 private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -1630,11 +1634,13 @@ private func c114ImageMultiSpanTracksMatch(
 private func c114CyclicMinmaxMixedTextImageSpanTraceMatches(
     _ sceneID: String, diagnostics: [String: Any]
 ) -> Bool {
-    let intrinsic = sceneID.contains("-intrinsic-")
+    let maxContent = sceneID.hasPrefix("max-content-")
+    let intrinsic = sceneID.contains("-intrinsic-") || maxContent
     let reversed = sceneID.hasSuffix("-reverse")
     let expectedAxes = intrinsic ? ["Columns", "Rows", "Columns", "Rows"]
         : ["Columns", "Rows", "Rows"]
-    let columns = intrinsic ? [15.671875, 15.671875, 15.65625] : [12.0, 12.0, 12.0]
+    let columns = maxContent ? [107.0 / 3.0, 125.0 / 3.0, 86.0 / 3.0]
+        : intrinsic ? [15.671875, 15.671875, 15.65625] : [12.0, 12.0, 12.0]
     let rows = intrinsic ? [37.0 / 3.0, 37.0 / 3.0] : [19.0, 19.0]
     guard let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
           traces.count == 1,
@@ -1659,8 +1665,9 @@ private func c114CyclicMinmaxMixedTextImageSpanTraceMatches(
     }
     for (index, pass) in passes.enumerated() {
         let axis = expectedAxes[index]
-        let expectedTracks = intrinsic && index == 0
-            ? [9.0, 19.0, 19.0]
+        let expectedTracks = maxContent && index == 0
+            ? [24.0, 34.0, 48.0]
+            : intrinsic && index == 0 ? [9.0, 19.0, 19.0]
             : axis == "Columns" ? columns : rows
         guard (pass["axis"] as? String) == axis,
               let stages = pass["stages"] as? [[String: Any]],
@@ -1681,7 +1688,7 @@ private func c114CyclicMinmaxMixedTextImageSpanTraceMatches(
             switch index {
             case 0: initial = [2, 2, 2]
             case 1: initial = [2, 2]
-            case 2: initial = [7.1, 7.1, 7.1]
+            case 2: initial = maxContent ? [13, 13, 13] : [7.1, 7.1, 7.1]
             default: initial = [14.0 / 3.0, 14.0 / 3.0]
             }
         } else {
@@ -1709,12 +1716,16 @@ private func c114CyclicMinmaxMixedTextImageSpanTraceMatches(
     let nodes = [2, 4, 5]
     let itemSpans = reversed ? [3, 2, 2] : [2, 2, 3]
     let columnMinimum = intrinsic ? [20.0, 40, 20] : [0.0, 40, 0]
-    let rowMinimum = intrinsic ? [20.0, 80.0 / 3.0, 20] : [0.0, 80.0 / 3.0, 0]
+    let rowMinimum = intrinsic
+        ? [maxContent ? 10.0 : 20.0, 80.0 / 3.0, maxContent ? 10.0 : 20.0]
+        : [0.0, 80.0 / 3.0, 0]
     let columnMinContent = [20.0, 40, 20]
-    let rowMinContent = intrinsic ? [20.0, 80.0 / 3.0, 20]
+    let rowMinContent = intrinsic
+        ? [maxContent ? 10.0 : 20.0, 80.0 / 3.0, maxContent ? 10.0 : 20.0]
         : reversed ? [40.0, 80.0 / 3.0, 30] : [30.0, 80.0 / 3.0, 40]
     let columnMaxContent = reversed ? [110.0, 40, 60] : [60.0, 40, 110]
-    let rowMaxContent = intrinsic ? [20.0, 80.0 / 3.0, 20]
+    let rowMaxContent = intrinsic
+        ? [maxContent ? 10.0 : 20.0, 80.0 / 3.0, maxContent ? 10.0 : 20.0]
         : reversed ? [40.0, 80.0 / 3.0, 30] : [30.0, 80.0 / 3.0, 40]
     for axis in ["Columns", "Rows"] {
         let axisPasses = passes.filter { ($0["axis"] as? String) == axis }
@@ -2465,13 +2476,18 @@ private func c114ExpectedCrossAxisSpanGroupFramesMatch(
 private func c114ExpectedCyclicMinmaxMixedTextImageSpanFramesMatch(
     _ sceneID: String, report: String
 ) -> Bool {
-    let intrinsic = sceneID.contains("-intrinsic-")
+    let maxContent = sceneID.hasPrefix("max-content-")
+    let intrinsic = sceneID.contains("-intrinsic-") || maxContent
     let reversed = sceneID.hasSuffix("-reverse")
-    let root: [Double] = [0, 0, intrinsic ? 55 : 44, intrinsic ? 92.0 / 3.0 : 44]
-    let imageX = intrinsic ? 19.671875 : 16.0
-    let itemA: [Double] = [2, 2, intrinsic ? 33.34375 : 26, intrinsic ? 80.0 / 3.0 : 40]
+    let root: [Double] = [0, 0, maxContent ? 114 : intrinsic ? 55 : 44,
+                          intrinsic ? 92.0 / 3.0 : 44]
+    let imageX = maxContent ? 119.0 / 3.0 : intrinsic ? 19.671875 : 16.0
+    let itemA: [Double] = [2, 2,
+                           maxContent ? 238.0 / 3.0 : intrinsic ? 33.34375 : 26,
+                           intrinsic ? 80.0 / 3.0 : 40]
     let itemB: [Double] = [imageX, 2, 40, 80.0 / 3.0]
-    let itemC: [Double] = [2, 2, intrinsic ? 51 : 40, intrinsic ? 80.0 / 3.0 : 40]
+    let itemC: [Double] = [2, 2, maxContent ? 110 : intrinsic ? 51 : 40,
+                           intrinsic ? 80.0 / 3.0 : 40]
     let expected: [(Int, [Double])] = [(1, root)] + (reversed
         ? [(2, itemC), (4, itemB), (5, itemA)]
         : [(2, itemA), (4, itemB), (5, itemC)])
@@ -3818,10 +3834,12 @@ private struct C111MetalPixelRun {
                 ("\(sceneID)-after-root", rootID, rootWidth, borderY, [0, 0, 0, 255]),
             ]
         case "cyclic-minmax-calc-mixed-text-image-span-intrinsic-forward",
-             "cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse":
+             "cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse",
+             "max-content-forward", "max-content-reverse":
             return false
         case "definite-minmax-calc-mixed-text-image-span-forward",
-             "definite-minmax-calc-mixed-text-image-span-reverse":
+             "definite-minmax-calc-mixed-text-image-span-reverse",
+             "definite-forward", "definite-reverse":
             let rootID = "c114-\(sceneID)-grid"
             expectedSamples = [
                 ("\(sceneID)-top-border", rootID, 8, 0, [240, 198, 116, 255]),

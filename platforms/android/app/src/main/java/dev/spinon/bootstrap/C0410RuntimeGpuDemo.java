@@ -304,6 +304,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse",
             "definite-minmax-calc-mixed-text-image-span-forward",
             "definite-minmax-calc-mixed-text-image-span-reverse",
+            "max-content-forward", "max-content-reverse",
+            "definite-forward", "definite-reverse",
             "nested-grid-span-two", "nested-grid-one-track",
             "nested-grid-definite-flex-control",
             "nested-grid-text-image-span-two", "nested-grid-text-image-one-track",
@@ -1950,12 +1952,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static boolean c114CyclicMinmaxMixedTextImageSpanTraceMatches(
             String sceneId, org.json.JSONObject diagnostics
     ) throws org.json.JSONException {
-        boolean intrinsic = sceneId.contains("-intrinsic-");
+        boolean maxContent = sceneId.startsWith("max-content-");
+        boolean intrinsic = sceneId.contains("-intrinsic-") || maxContent;
         String[] expectedAxes = intrinsic
                 ? new String[] {"Columns", "Rows", "Columns", "Rows"}
                 : new String[] {"Columns", "Rows", "Rows"};
-        double[] expectedColumns = intrinsic
-                ? new double[] {15.671875, 15.671875, 15.65625}
+        double[] expectedColumns = maxContent
+                ? new double[] {107.0 / 3.0, 125.0 / 3.0, 86.0 / 3.0}
+                : intrinsic ? new double[] {15.671875, 15.671875, 15.65625}
                 : new double[] {12.0, 12.0, 12.0};
         double[] expectedRows = intrinsic
                 ? new double[] {37.0 / 3.0, 37.0 / 3.0}
@@ -1970,8 +1974,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             org.json.JSONObject pass = passes.optJSONObject(index);
             String axis = expectedAxes[index];
             if (pass == null || !axis.equals(pass.optString("axis"))) return false;
-            double[] finalTracks = intrinsic && index == 0
-                    ? new double[] {9.0, 19.0, 19.0}
+            double[] finalTracks = maxContent && index == 0
+                    ? new double[] {24.0, 34.0, 48.0}
+                    : intrinsic && index == 0 ? new double[] {9.0, 19.0, 19.0}
                     : "Columns".equals(axis) ? expectedColumns : expectedRows;
             if (!c114CyclicMixedTextImageTracksMatch(pass, finalTracks)) return false;
             org.json.JSONArray stages = pass.optJSONArray("stages");
@@ -1992,7 +1997,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             if (intrinsic) {
                 if (index == 0) initial = new double[] {2, 2, 2};
                 else if (index == 1) initial = new double[] {2, 2};
-                else if (index == 2) initial = new double[] {7.1, 7.1, 7.1};
+                else if (index == 2) initial = maxContent
+                        ? new double[] {13, 13, 13} : new double[] {7.1, 7.1, 7.1};
                 else initial = new double[] {14.0 / 3.0, 14.0 / 3.0};
             } else if (index == 0) {
                 initial = new double[] {6, 6, 6};
@@ -2020,22 +2026,24 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         double[] columnsMinimum = intrinsic
                 ? new double[] {20, 40, 20} : new double[] {0, 40, 0};
         double[] rowMinimum = intrinsic
-                ? new double[] {20, 80.0 / 3.0, 20} : new double[] {0, 80.0 / 3.0, 0};
+                ? new double[] {maxContent ? 10 : 20, 80.0 / 3.0, maxContent ? 10 : 20}
+                : new double[] {0, 80.0 / 3.0, 0};
         double[] columnsMinContent = {20, 40, 20};
         double[] rowsMinContent = intrinsic
-                ? new double[] {20, 80.0 / 3.0, 20}
+                ? new double[] {maxContent ? 10 : 20, 80.0 / 3.0, maxContent ? 10 : 20}
                 : reversed ? new double[] {40, 80.0 / 3.0, 30}
                 : new double[] {30, 80.0 / 3.0, 40};
         double[] columnsMaxContent = reversed
                 ? new double[] {110, 40, 60} : new double[] {60, 40, 110};
         double[] rowsMaxContent = intrinsic
-                ? new double[] {20, 80.0 / 3.0, 20}
+                ? new double[] {maxContent ? 10 : 20, 80.0 / 3.0, maxContent ? 10 : 20}
                 : reversed ? new double[] {40, 80.0 / 3.0, 30}
                 : new double[] {30, 80.0 / 3.0, 40};
         for (String axis : new String[] {"Columns", "Rows"}) {
             double[] minimum = "Columns".equals(axis) ? columnsMinimum : rowMinimum;
             double[] minContent = "Columns".equals(axis) ? columnsMinContent : rowsMinContent;
-            double[] maxContent = "Columns".equals(axis) ? columnsMaxContent : rowsMaxContent;
+            double[] maxContentContributions = "Columns".equals(axis)
+                    ? columnsMaxContent : rowsMaxContent;
             org.json.JSONArray axisPasses = new org.json.JSONArray();
             for (int index = 0; index < passes.length(); index++) {
                 org.json.JSONObject pass = passes.optJSONObject(index);
@@ -2048,7 +2056,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || !c114MixedTextImageContributionMatches(
                             axisPasses, nodes[index], span, "MinContent", minContent[index])
                         || !c114MixedTextImageContributionMatches(
-                            axisPasses, nodes[index], span, "MaxContent", maxContent[index])) {
+                            axisPasses, nodes[index], span, "MaxContent",
+                            maxContentContributions[index])) {
                     return false;
                 }
             }
@@ -3432,6 +3441,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse":
             case "definite-minmax-calc-mixed-text-image-span-forward":
             case "definite-minmax-calc-mixed-text-image-span-reverse":
+            case "max-content-forward":
+            case "max-content-reverse":
+            case "definite-forward":
+            case "definite-reverse":
                 return true;
             default:
                 return false;
@@ -3632,21 +3645,25 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static boolean c114ExpectedCyclicMinmaxMixedTextImageSpanFramesMatch(
             String sceneId, String report
     ) {
-        boolean intrinsic = sceneId.contains("-intrinsic-");
+        boolean maxContent = sceneId.startsWith("max-content-");
+        boolean intrinsic = sceneId.contains("-intrinsic-") || maxContent;
         boolean reversed = sceneId.endsWith("-reverse");
-        double rootWidth = intrinsic ? 55.0 : 44.0;
+        double rootWidth = maxContent ? 114.0 : intrinsic ? 55.0 : 44.0;
         double rootHeight = intrinsic ? 92.0 / 3.0 : 44.0;
-        double imageX = intrinsic ? 19.671875 : 16.0;
+        double imageX = maxContent ? 119.0 / 3.0 : intrinsic ? 19.671875 : 16.0;
+        double itemAWidth = maxContent ? 238.0 / 3.0 : intrinsic ? 33.34375 : 26.0;
+        double itemCWidth = maxContent ? 110.0 : intrinsic ? 51.0 : 40.0;
+        double itemHeight = intrinsic ? 80.0 / 3.0 : 40.0;
         double[][] items = reversed
                 ? new double[][] {
-                    {2, 2, 2, intrinsic ? 51 : 40, intrinsic ? 80.0 / 3.0 : 40},
+                    {2, 2, 2, itemCWidth, itemHeight},
                     {4, imageX, 2, 40, 80.0 / 3.0},
-                    {5, 2, 2, intrinsic ? 33.34375 : 26, intrinsic ? 80.0 / 3.0 : 40},
+                    {5, 2, 2, itemAWidth, itemHeight},
                 }
                 : new double[][] {
-                    {2, 2, 2, intrinsic ? 33.34375 : 26, intrinsic ? 80.0 / 3.0 : 40},
+                    {2, 2, 2, itemAWidth, itemHeight},
                     {4, imageX, 2, 40, 80.0 / 3.0},
-                    {5, 2, 2, intrinsic ? 51 : 40, intrinsic ? 80.0 / 3.0 : 40},
+                    {5, 2, 2, itemCWidth, itemHeight},
                 };
         double[][] expected = new double[][] {
             {1, 0, 0, rootWidth, rootHeight}, items[0], items[1], items[2],
@@ -3761,7 +3778,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
         if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) {
-            if (sceneId.contains("-intrinsic-") || samples.size() != 3) return false;
+            if (sceneId.contains("-intrinsic-") || sceneId.startsWith("max-content-")
+                    || samples.size() != 3) return false;
             String rootId = "c114-" + sceneId + "-grid";
             String imageId = "c114-" + sceneId + "-item-b";
             boolean topBorder = false;

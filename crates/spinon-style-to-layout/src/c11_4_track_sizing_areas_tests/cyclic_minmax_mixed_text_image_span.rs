@@ -7,6 +7,8 @@ use spinon_layout::{
 use super::Fixture;
 #[path = "cyclic_minmax_mixed_text_image_span/cases.rs"]
 mod cases;
+#[path = "cyclic_minmax_mixed_text_image_span/max_content.rs"]
+mod max_content;
 use cases::{
     A, B, C, CASES, Case, Item, assert_close, assert_frame, assert_size, compute,
     compute_without_fixture_alignment_opt_in, fixture,

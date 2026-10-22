@@ -1882,7 +1882,7 @@ mod tests {
     }
 
     #[test]
-    fn exposes_four_fixed_cyclic_minmax_mixed_text_image_span_scenes() {
+    fn exposes_eight_fixed_cyclic_minmax_mixed_text_image_span_scenes() {
         for (scene_id, root_width) in [
             (
                 "cyclic-minmax-calc-mixed-text-image-span-intrinsic-forward",
@@ -1894,6 +1894,10 @@ mod tests {
             ),
             ("definite-minmax-calc-mixed-text-image-span-forward", "40px"),
             ("definite-minmax-calc-mixed-text-image-span-reverse", "40px"),
+            ("max-content-forward", "max-content"),
+            ("max-content-reverse", "max-content"),
+            ("definite-forward", "40px"),
+            ("definite-reverse", "40px"),
         ] {
             let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
             assert!(source.len() < 7 * 1024);

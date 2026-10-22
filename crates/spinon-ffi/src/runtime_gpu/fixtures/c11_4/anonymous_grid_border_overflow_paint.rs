@@ -55,6 +55,10 @@ const CYCLIC_MIXED_DEFINITE_FORWARD_IMAGE_IDS: &[&str] =
     &["c114-definite-minmax-calc-mixed-text-image-span-forward-item-b"];
 const CYCLIC_MIXED_DEFINITE_REVERSE_IMAGE_IDS: &[&str] =
     &["c114-definite-minmax-calc-mixed-text-image-span-reverse-item-b"];
+const MAX_CONTENT_FORWARD_IMAGE_IDS: &[&str] = &["c114-max-content-forward-item-b"];
+const MAX_CONTENT_REVERSE_IMAGE_IDS: &[&str] = &["c114-max-content-reverse-item-b"];
+const DEFINITE_FORWARD_IMAGE_IDS: &[&str] = &["c114-definite-forward-item-b"];
+const DEFINITE_REVERSE_IMAGE_IDS: &[&str] = &["c114-definite-reverse-item-b"];
 
 pub(super) fn attach_images(
     document: &HostDocumentSnapshot,
@@ -75,6 +79,10 @@ pub(super) fn attach_images(
         "c114-cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse-grid",
         "c114-definite-minmax-calc-mixed-text-image-span-forward-grid",
         "c114-definite-minmax-calc-mixed-text-image-span-reverse-grid",
+        "c114-max-content-forward-grid",
+        "c114-max-content-reverse-grid",
+        "c114-definite-forward-grid",
+        "c114-definite-reverse-grid",
     ];
     let mut stack = document.root_children().collect::<Vec<_>>();
     let mut roots = Vec::new();
@@ -129,6 +137,10 @@ pub(super) fn attach_images(
         "definite-minmax-calc-mixed-text-image-span-reverse" => {
             CYCLIC_MIXED_DEFINITE_REVERSE_IMAGE_IDS
         }
+        "max-content-forward" => MAX_CONTENT_FORWARD_IMAGE_IDS,
+        "max-content-reverse" => MAX_CONTENT_REVERSE_IMAGE_IDS,
+        "definite-forward" => DEFINITE_FORWARD_IMAGE_IDS,
+        "definite-reverse" => DEFINITE_REVERSE_IMAGE_IDS,
         _ => return Ok((scene, String::new())),
     };
     let expected_non_image_children =

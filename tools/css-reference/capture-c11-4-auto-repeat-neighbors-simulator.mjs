@@ -37,6 +37,7 @@ const cyclicPercentSceneIDs = new Set([
   'cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse',
   'definite-minmax-calc-mixed-text-image-span-forward',
   'definite-minmax-calc-mixed-text-image-span-reverse',
+  'max-content-forward', 'max-content-reverse', 'definite-forward', 'definite-reverse',
   'cyclic-minmax-calc-overlap-forward', 'cyclic-minmax-calc-overlap-reverse',
   'definite-minmax-calc-overlap-forward', 'definite-minmax-calc-overlap-reverse',
   'definite-minmax-calc-overlap-small-forward',
@@ -2571,10 +2572,12 @@ const mixedCrossAxisSpanGroupScene = ({
   }
   return scene;
 };
-const mixedTextImageSpanScene = ({ id, intrinsic, reverse }) => {
+const mixedTextImageSpanScene = ({ id, intrinsic, reverse, maxContent = false }) => {
   const order = reverse ? ['c', 'b', 'a'] : ['a', 'b', 'c'];
   const itemNodes = { a: reverse ? 5 : 2, b: 4, c: reverse ? 2 : 5 };
-  const itemFrames = intrinsic
+  const itemFrames = maxContent
+    ? { a: [2, 2, 238 / 3, 80 / 3], b: [119 / 3, 2, 40, 80 / 3], c: [2, 2, 110, 80 / 3] }
+    : intrinsic
     ? { a: [2, 2, 33.34375, 80 / 3], b: [19.671875, 2, 40, 80 / 3], c: [2, 2, 51, 80 / 3] }
     : { a: [2, 2, 26, 40], b: [16, 2, 40, 80 / 3], c: [2, 2, 40, 40] };
   const metrics = {
@@ -2602,8 +2605,9 @@ const mixedTextImageSpanScene = ({ id, intrinsic, reverse }) => {
     }
     return input;
   });
-  const root = intrinsic ? [55, 92 / 3] : [44, 44];
-  const columns = intrinsic ? [15.671875, 15.671875, 15.65625] : [12, 12, 12];
+  const root = maxContent ? [114, 92 / 3] : intrinsic ? [55, 92 / 3] : [44, 44];
+  const columns = maxContent ? [107 / 3, 125 / 3, 86 / 3]
+    : intrinsic ? [15.671875, 15.671875, 15.65625] : [12, 12, 12];
   const rows = intrinsic ? [37 / 3, 37 / 3] : [19, 19];
   const nodeFrames = order.map((key, index) => {
     const [x, y, width, height] = itemFrames[key];
@@ -2631,25 +2635,25 @@ const mixedTextImageSpanScene = ({ id, intrinsic, reverse }) => {
     intrinsicSpansByAxis: { Columns: [2, 3], Rows: [2] },
     columnSizingFeedsRows: true,
     mixedTextImageSpan: {
-      intrinsic, reverse, order, itemNodes, items,
+      intrinsic, maxContentWidth: maxContent, reverse, order, itemNodes, items,
       minimum: {
         Columns: { a: intrinsic ? 20 : 0, b: 40, c: intrinsic ? 20 : 0 },
-        Rows: { a: intrinsic ? 20 : 0, b: 80 / 3, c: intrinsic ? 20 : 0 },
+        Rows: { a: maxContent ? 10 : intrinsic ? 20 : 0, b: 80 / 3, c: maxContent ? 10 : intrinsic ? 20 : 0 },
       },
       minContent: {
         Columns: { a: 20, b: 40, c: 20 },
         Rows: {
-          a: intrinsic ? 20 : 30,
+          a: maxContent ? 10 : intrinsic ? 20 : 30,
           b: 80 / 3,
-          c: intrinsic ? 20 : 40,
+          c: maxContent ? 10 : intrinsic ? 20 : 40,
         },
       },
       maxContent: {
         Columns: { a: 60, b: 40, c: 110 },
         Rows: {
-          a: intrinsic ? 20 : 30,
+          a: maxContent ? 10 : intrinsic ? 20 : 30,
           b: 80 / 3,
-          c: intrinsic ? 20 : 40,
+          c: maxContent ? 10 : intrinsic ? 20 : 40,
         },
       },
     },
@@ -2911,6 +2915,10 @@ scenes.push(
   mixedTextImageSpanScene({ id: 'cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse', intrinsic: true, reverse: true }),
   mixedTextImageSpanScene({ id: 'definite-minmax-calc-mixed-text-image-span-forward', intrinsic: false, reverse: false }),
   mixedTextImageSpanScene({ id: 'definite-minmax-calc-mixed-text-image-span-reverse', intrinsic: false, reverse: true }),
+  mixedTextImageSpanScene({ id: 'max-content-forward', intrinsic: true, maxContent: true, reverse: false }),
+  mixedTextImageSpanScene({ id: 'max-content-reverse', intrinsic: true, maxContent: true, reverse: true }),
+  mixedTextImageSpanScene({ id: 'definite-forward', intrinsic: false, reverse: false }),
+  mixedTextImageSpanScene({ id: 'definite-reverse', intrinsic: false, reverse: true }),
 );
 const spanColumnSamples = () => [
   ['outside-root-item', 'item', 58, 6, [229, 72, 77, 255]],
@@ -3197,7 +3205,7 @@ scenes.push(
     'cyclic-minmax-replaced-image-span-definite-reverse', ['c', 'b', 'a'], false,
   ),
 );
-assert.equal(scenes.length, 275, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 279, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -5041,8 +5049,9 @@ function verifyRuntimeLog(log, scene, runID) {
         });
         assert.deepEqual(spans, axis === 'Columns' ? [2, 3] : [2],
           `${scene.id}: ${axis} span group order differs`);
-        const expectedFinal = expected.intrinsic && index === 0
-          ? [9, 19, 19]
+        const expectedFinal = expected.maxContentWidth && index === 0
+          ? [24, 34, 48]
+          : expected.intrinsic && index === 0 ? [9, 19, 19]
           : axis === 'Columns' ? scene.axes.Columns.tracks : scene.axes.Rows.tracks;
         closeArray(pass.stages.at(-1)?.tracks
           .filter(({ gutter, collapsed }) => !gutter && !collapsed)
@@ -5068,7 +5077,8 @@ function verifyRuntimeLog(log, scene, runID) {
         closeArray(spanBases(axisTrace.passes[0], 3), [9, 19, 19], 'span-3 columns');
         closeArray(stageBases(axisTrace.passes[1], 'Initialize'), [2, 2], 'cyclic Rows Initialize');
         closeArray(spanBases(axisTrace.passes[1], 2), [37 / 3, 37 / 3], 'cyclic row contributions');
-        closeArray(stageBases(axisTrace.passes[2], 'Initialize'), [7.1, 7.1, 7.1], 'resolved Columns Initialize');
+        closeArray(stageBases(axisTrace.passes[2], 'Initialize'),
+          expected.maxContentWidth ? [13, 13, 13] : [7.1, 7.1, 7.1], 'resolved Columns Initialize');
         closeArray(stageBases(axisTrace.passes[3], 'Initialize'), [14 / 3, 14 / 3], 'resolved Rows Initialize');
       } else {
         closeArray(stageBases(axisTrace.passes[0], 'Initialize'), [6, 6, 6], 'definite Columns Initialize');

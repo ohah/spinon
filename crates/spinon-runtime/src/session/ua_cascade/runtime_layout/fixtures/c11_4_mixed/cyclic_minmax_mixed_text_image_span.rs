@@ -23,6 +23,7 @@ use super::{AHEM, IMAGE_URL, NATURAL_HEIGHT, NATURAL_WIDTH, PNG, ahem_paragraph_
 #[derive(Clone, Copy)]
 enum Width {
     MinContent,
+    MaxContent,
     Px(f32),
 }
 
@@ -68,7 +69,7 @@ const C: Item = Item {
 const FORWARD: [Item; 3] = [A, B, C];
 const REVERSE: [Item; 3] = [C, B, A];
 
-const SCENES: [Scene; 4] = [
+const SCENES: [Scene; 8] = [
     Scene {
         id: "cyclic-minmax-calc-mixed-text-image-span-intrinsic-forward",
         width: Width::MinContent,
@@ -86,6 +87,26 @@ const SCENES: [Scene; 4] = [
     },
     Scene {
         id: "definite-minmax-calc-mixed-text-image-span-reverse",
+        width: Width::Px(40.0),
+        order: &REVERSE,
+    },
+    Scene {
+        id: "max-content-forward",
+        width: Width::MaxContent,
+        order: &FORWARD,
+    },
+    Scene {
+        id: "max-content-reverse",
+        width: Width::MaxContent,
+        order: &REVERSE,
+    },
+    Scene {
+        id: "definite-forward",
+        width: Width::Px(40.0),
+        order: &FORWARD,
+    },
+    Scene {
+        id: "definite-reverse",
         width: Width::Px(40.0),
         order: &REVERSE,
     },
@@ -233,6 +254,7 @@ fn validate_grid_style(
 ) -> Result<(), RuntimeLayoutFailure> {
     let expected_width = match scene.width {
         Width::MinContent => ComputedCssDimension::MinContent,
+        Width::MaxContent => ComputedCssDimension::MaxContent,
         Width::Px(value) => ComputedCssDimension::LengthPx(value),
     };
     let expected_border = ComputedLayoutBorder {
@@ -441,8 +463,8 @@ mod tests {
     use super::{FORWARD, REVERSE, SCENES, Width};
 
     #[test]
-    fn exposes_only_four_fixed_source_order_scenes() {
-        assert_eq!(SCENES.len(), 4);
+    fn exposes_only_eight_fixed_source_order_scenes() {
+        assert_eq!(SCENES.len(), 8);
         assert_eq!(
             SCENES.map(|scene| scene.id),
             [
@@ -450,12 +472,20 @@ mod tests {
                 "cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse",
                 "definite-minmax-calc-mixed-text-image-span-forward",
                 "definite-minmax-calc-mixed-text-image-span-reverse",
+                "max-content-forward",
+                "max-content-reverse",
+                "definite-forward",
+                "definite-reverse",
             ]
         );
         assert!(matches!(SCENES[0].width, Width::MinContent));
         assert!(matches!(SCENES[1].width, Width::MinContent));
         assert!(matches!(SCENES[2].width, Width::Px(value) if value == 40.0));
         assert!(matches!(SCENES[3].width, Width::Px(value) if value == 40.0));
+        assert!(matches!(SCENES[4].width, Width::MaxContent));
+        assert!(matches!(SCENES[5].width, Width::MaxContent));
+        assert!(matches!(SCENES[6].width, Width::Px(value) if value == 40.0));
+        assert!(matches!(SCENES[7].width, Width::Px(value) if value == 40.0));
         assert_eq!(FORWARD.map(|item| item.key), ["a", "b", "c"]);
         assert_eq!(REVERSE.map(|item| item.key), ["c", "b", "a"]);
         for scene in SCENES {
