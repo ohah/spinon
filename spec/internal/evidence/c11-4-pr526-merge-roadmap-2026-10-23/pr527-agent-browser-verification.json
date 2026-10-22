@@ -1,0 +1,35 @@
+{
+  "tool": "agent-browser",
+  "version": "0.31.1",
+  "session": "spinon-c114-pr527-20261023",
+  "page": {
+    "url": "https://github.com/ohah/spinon/pull/527",
+    "title": "C11.4: record cyclic max-content fixture merge by ohah · Pull Request #527 · ohah/spinon",
+    "imageCount": 2,
+    "images": [
+      {
+        "alt": "Android API 37 ARM64 AVD definite overflow",
+        "complete": true,
+        "naturalWidth": 1080,
+        "naturalHeight": 2400,
+        "rendered": true
+      },
+      {
+        "alt": "iOS 26.2 Simulator definite overflow",
+        "complete": true,
+        "naturalWidth": 1206,
+        "naturalHeight": 2622,
+        "rendered": true
+      }
+    ],
+    "screenshot": "pr527-agent-browser-images.png",
+    "screenshotSha256": "4925d1990e9d675bae0a23fa48048619883ed073958bc94efb1011da0f36f710"
+  },
+  "cleanup": {
+    "result": "Browser closed; pageCount=0; browserLaunched=false",
+    "reportedBackgroundPid": 74527,
+    "agentBrowserProcessPresentAtFinalCheck": false,
+    "terminalBrowserProcessPresentAtFinalCheck": false,
+    "note": "The Agent Browser session was closed and its daemon exited before the targeted process check. Tailnet preview server PID 1191 remained running."
+  }
+}
