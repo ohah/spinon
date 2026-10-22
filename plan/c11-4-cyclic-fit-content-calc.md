@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [직전 cyclic `calc()` 계획](./c11-4-cyclic-calc-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 고정 입력, 독립 기대값, Chrome 156 비교와 계획 실패 관점 검토 20개를 기록했다. runtime 구현은 시작하지 않았다. C11.4 공식 checkbox와 완료 수 `72/213`은 그대로다.
+**상태:** 고정 입력, 독립 기대값, Chrome 156 비교와 계획 실패 관점 검토 20개를 기록했다. 네 고정 scene의 runtime fixture 구현과 Android/iOS Simulator 4/4 검증을 마쳤고, 구현 실패 관점 검토와 PR 준비를 진행 중이다. C11.4 공식 checkbox와 완료 수 `72/213`은 그대로다.
 
 ## 목적과 범위
 
@@ -33,7 +33,13 @@
 4. 기본 제품 FFI archive에서 신규 fixture symbol·scene ID·payload가 빠지고 fixture-test positive control에만 포함되는지 비교한다. 관련 Rust tests, fixture boundary, `cargo fmt`, Clippy와 Android/iOS fixture build를 실제 실행하고 로그를 연결한다.
 5. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 scene 전부 frame·track trace·draw/present를 확인한다. Android PixelCopy와 iOS compositor 제출 전 Metal drawable 표본을 기록한다. 실기기는 사용하지 않는다.
 6. 계획 검토와 다른 실패 관점 20개로 구현/runtime을 검토한다. PR diff는 별도 30개 실패 관점으로 병합 전에 검토한다. 발견한 결함은 수정 후 영향받은 matrix를 재실행한다.
-7. PR 본문에는 시뮬레이터 화면과 fixed-fixture 한계를 적고 C11.4 완료를 주장하지 않는다. GitHub required checks와 merge state를 live 확인한 뒤 Rebase and merge한다.
+7. PR 본문에는 시뮬레이터 화면과 fixed-fixture 한계를 적고 C11.4 완료를 주장하지 않는다. 구현/runtime 검토와 별도로 PR diff 실패 관점 30개를 기록한다. GitHub required checks와 merge state를 live 확인한 뒤 Rebase and merge한다.
+
+## 구현 진행 결과
+
+- 네 scene 모두 기존 `c04-runtime-gpu-fixture-test` 안에서만 생성한다. runtime fixture의 기존 Ahem text layout을 GPU render snapshot에 연결해 small-limit scene의 text overflow를 실제 색상 픽셀로 확인한다. 일반 CSS admission과 계산 profile은 바꾸지 않았다.
+- Android API 37 ARM64 AVD `emulator-5558`와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 네 scene의 Columns/Rows track, root/item frame, draw/present를 통과했다. Android PixelCopy와 iOS 제출 전 Metal drawable은 각 9/9 표본이 exact다.
+- 실행 로그, scene별 화면, 기본/fixture-test FFI artifact 대조 및 범위 한계는 [구현 실행 근거](../spec/internal/evidence/c11-4-cyclic-fit-content-calc-runtime-2026-10-22/README.md)에 둔다. C11.4 전체와 공식 완료 수는 미완료로 유지한다.
 
 ## 범위 밖
 

@@ -14,6 +14,8 @@ mod anonymous_text_multi_image;
 mod auto_repeat_negative_lines;
 #[path = "c11_4/cyclic_calc_tracks.rs"]
 mod cyclic_calc_tracks;
+#[path = "c11_4/cyclic_fit_content_calc.rs"]
+mod cyclic_fit_content_calc;
 #[path = "c11_4/cyclic_percentage_fit_content.rs"]
 mod cyclic_percentage_fit_content;
 #[path = "c11_4/cyclic_percentage_minmax.rs"]
@@ -1068,6 +1070,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     if let Some(source) = cyclic_percentage_fit_content::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
+    if let Some(source) = cyclic_fit_content_calc::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = cyclic_calc_tracks::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
@@ -1372,6 +1377,53 @@ mod tests {
             );
         }
         assert!(c11_4_grid_track_sizing_runtime_source("cyclic-fit-content-unlisted").is_err());
+    }
+
+    #[test]
+    fn exposes_only_fixed_cyclic_fit_content_calc_runtime_scenes() {
+        for (scene_id, columns, rows, root_size, text) in [
+            (
+                "cyclic-fit-content-calc-column",
+                "fit-content(calc(50% + 4px))",
+                "auto",
+                "width:max-content;height:auto",
+                "aa aa",
+            ),
+            (
+                "cyclic-fit-content-calc-row",
+                "20px",
+                "fit-content(calc(50% + 2px))",
+                "width:20px;height:max-content",
+                "a a a a",
+            ),
+            (
+                "definite-fit-content-calc-column",
+                "fit-content(calc(50% + 4px))",
+                "auto",
+                "width:40px;height:auto",
+                "aa aa",
+            ),
+            (
+                "definite-fit-content-calc-small-limit",
+                "fit-content(calc(50% + 4px))",
+                "auto",
+                "width:10px;height:auto",
+                "aa aa",
+            ),
+        ] {
+            let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
+            assert!(source.len() < 3 * 1024);
+            assert!(source.contains(&format!("sceneId:{scene_id:?}")));
+            assert!(source.contains(&format!("grid-template-columns:{columns}")));
+            assert!(source.contains(&format!("grid-template-rows:{rows}")));
+            assert!(source.contains(root_size));
+            assert!(source.contains(&format!("document.createTextNode({text:?})")));
+            assert!(source.contains("min-width:0;min-height:0"));
+            assert_eq!(source.matches("document.createElement('div')").count(), 2);
+        }
+        assert!(
+            c11_4_grid_track_sizing_runtime_source("cyclic-fit-content-calc-unlisted").is_err()
+        );
     }
 
     #[test]

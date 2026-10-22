@@ -74,6 +74,12 @@ pub(super) struct C11_4TextInput {
 pub(super) use c11_4_text::prepare as prepare_c11_4_text;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) use c11_4_text::is_cyclic_fit_content_calc_scene_root;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) use c11_4_text::prepare_cyclic_fit_content_calc_render_input;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub(super) struct C11_4ImageInput {
     pub(super) intrinsic_sizes: spinon_layout::LayoutIntrinsicSizeSnapshot,
 }
