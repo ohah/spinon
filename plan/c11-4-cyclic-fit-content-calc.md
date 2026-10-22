@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [직전 cyclic `calc()` 계획](./c11-4-cyclic-calc-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 고정 입력, 독립 기대값, Chrome 156 비교와 계획 실패 관점 검토 20개를 기록했다. 네 고정 scene의 runtime fixture 구현과 Android/iOS Simulator 4/4 검증을 마쳤고, 구현 실패 관점 검토와 PR 준비를 진행 중이다. C11.4 공식 checkbox와 완료 수 `72/213`은 그대로다.
+**상태:** 고정 입력, 독립 기대값, Chrome 156 비교와 계획 실패 관점 검토 20개를 기록했다. 네 고정 scene의 runtime fixture 구현과 Android/iOS Simulator 4/4 검증을 마쳤고, 구현/runtime 및 PR diff 검토를 마치고 [PR #485](https://github.com/ohah/spinon/pull/485)를 열었다. live required checks와 merge state를 확인한 뒤 Rebase and merge한다. C11.4 공식 checkbox와 완료 수 `72/213`은 그대로다.
 
 ## 목적과 범위
 
