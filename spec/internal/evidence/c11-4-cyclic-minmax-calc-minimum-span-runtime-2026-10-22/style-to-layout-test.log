@@ -1,0 +1,7 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.34s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-7f78b653f6fb953d)
+
+running 1 test
+test c11_4_track_sizing_areas_tests::cyclic_minmax_calc_minimum_span::cyclic_minmax_calc_minimum_distributes_span_then_resolves_two_tracks_and_overflow ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 221 filtered out; finished in 0.07s

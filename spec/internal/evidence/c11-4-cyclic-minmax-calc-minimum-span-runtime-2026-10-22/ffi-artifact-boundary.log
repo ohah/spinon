@@ -1,0 +1,7 @@
+46a1faec3adc1676d339d997c9cc6ae71c4f148725972384d39556f0929d1ecf  build/spinon/c11-4-cyclic-minmax-span-artifact-default/release/libspinon_ffi.a
+acbbb686f6bade18eabc48e8684a881ea50086a6eb064af37fbccae006173502  build/spinon/c11-4-cyclic-minmax-span-artifact-fixture/release/libspinon_ffi.a
+cyclic-minmax-calc-min-span-columns default=absent fixture=present
+definite-minmax-calc-min-span-columns default=absent fixture=present
+cyclic-minmax-calc-min-span-rows default=absent fixture=present
+definite-minmax-calc-min-span-rows default=absent fixture=present
+_spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture default=absent fixture=present

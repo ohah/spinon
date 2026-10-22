@@ -28,6 +28,9 @@ mod cyclic_fit_content;
 #[path = "c11_4_track_sizing_areas_tests/cyclic_minmax_calc_minimum.rs"]
 mod cyclic_minmax_calc_minimum;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "c11_4_track_sizing_areas_tests/cyclic_minmax_calc_minimum_span.rs"]
+mod cyclic_minmax_calc_minimum_span;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "c11_4_track_sizing_areas_tests/cyclic_minmax_calc_minimum_two_axis.rs"]
 mod cyclic_minmax_calc_minimum_two_axis;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]

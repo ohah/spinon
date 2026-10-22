@@ -4,9 +4,10 @@ use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent
 use spinon_layout::{ParagraphStyle, TextLayoutEngine, WhiteSpaceMode};
 use spinon_render::RuntimeSrgbColor;
 use spinon_style::{
-    ComputedCssDimension, ComputedCssGridTrackBreadth, ComputedCssGridTrackLengthPercentage,
-    ComputedCssGridTrackSize, ComputedCssMath, ComputedCssMaxSize, ComputedCssSpacingValue,
-    ComputedElementStyle, ComputedLayoutBorder, ComputedStyleProfile, ComputedStyleSnapshot,
+    ComputedCssDimension, ComputedCssGridPlacement, ComputedCssGridTrackBreadth,
+    ComputedCssGridTrackLengthPercentage, ComputedCssGridTrackSize, ComputedCssMath,
+    ComputedCssMaxSize, ComputedCssSpacingValue, ComputedElementStyle, ComputedLayoutBorder,
+    ComputedStyleProfile, ComputedStyleSnapshot,
 };
 
 use super::super::C11_4TextInput;
@@ -174,6 +175,8 @@ fn validate_grid_style(
         bottom: scene.border_width,
         left: scene.border_width,
     };
+    let expected_column_gap = track_gap(scene.columns);
+    let expected_row_gap = track_gap(scene.rows);
     if style.properties.get("display").map(String::as_str) != Some("grid")
         || style.properties.get("box-sizing").map(String::as_str) != Some(expected_box_sizing)
         || style.properties.get("align-content").map(String::as_str) != Some("start")
@@ -186,8 +189,8 @@ fn validate_grid_style(
         || style.layout_dimensions.max_height != ComputedCssMaxSize::None
         || !zero_edges(style.layout_spacing.margin)
         || !zero_edges(style.layout_spacing.padding)
-        || !zero_spacing(style.layout_spacing.row_gap)
-        || !zero_spacing(style.layout_spacing.column_gap)
+        || !spacing_matches(style.layout_spacing.row_gap, expected_row_gap)
+        || !spacing_matches(style.layout_spacing.column_gap, expected_column_gap)
         || style.layout_border != expected_border
     {
         return Err(unsupported_node(
@@ -252,6 +255,32 @@ fn validate_item_style(
             ));
         }
     }
+    let placement_matches = match scene_id {
+        "cyclic-minmax-calc-min-span-columns" | "definite-minmax-calc-min-span-columns" => {
+            style.grid_item_placement.as_ref().is_some_and(|placement| {
+                placement.column_start == ComputedCssGridPlacement::Line(1)
+                    && placement.column_end == ComputedCssGridPlacement::Span(2)
+                    && placement.row_start == ComputedCssGridPlacement::Auto
+                    && placement.row_end == ComputedCssGridPlacement::Auto
+            })
+        }
+        "cyclic-minmax-calc-min-span-rows" | "definite-minmax-calc-min-span-rows" => {
+            style.grid_item_placement.as_ref().is_some_and(|placement| {
+                placement.row_start == ComputedCssGridPlacement::Line(1)
+                    && placement.row_end == ComputedCssGridPlacement::Span(2)
+                    && placement.column_start == ComputedCssGridPlacement::Auto
+                    && placement.column_end == ComputedCssGridPlacement::Auto
+            })
+        }
+        _ => true,
+    };
+    if !placement_matches {
+        return Err(layout_failure(
+            "unsupported_c114_cyclic_calc_placement",
+            Some(style.node_id.get()),
+            Some(scene_id.to_owned()),
+        ));
+    }
     if (style.font_size_css_px - 10.0).abs() > f32::EPSILON
         || style.layout_dimensions.width != ComputedCssDimension::Auto
         || style.layout_dimensions.height != ComputedCssDimension::Auto
@@ -272,6 +301,17 @@ fn validate_item_style(
 }
 
 fn track_matches(actual: &[ComputedCssGridTrackSize], expected: Track) -> bool {
+    if let Track::TwoMinMaxCalcMinimum {
+        percentage,
+        length_px,
+        ..
+    } = expected
+    {
+        return actual.len() == 2
+            && actual
+                .iter()
+                .all(|track| minmax_calc_minimum_track_matches(track, percentage, length_px));
+    }
     actual.len() == 1
         && match (actual.first(), expected) {
             (Some(ComputedCssGridTrackSize::Auto), Track::Auto) => true,
@@ -311,23 +351,39 @@ fn track_matches(actual: &[ComputedCssGridTrackSize], expected: Track) -> bool {
                         ]
             }
             (
-                Some(ComputedCssGridTrackSize::MinMax {
-                    min: ComputedCssGridTrackBreadth::Calc(ComputedCssMath::Sum(terms)),
-                    max: ComputedCssGridTrackBreadth::MaxContent,
-                }),
+                Some(track),
                 Track::MinMaxCalcMinimum {
                     percentage,
                     length_px,
                 },
-            ) => {
-                terms.as_slice()
-                    == [
-                        ComputedCssMath::Percentage(percentage),
-                        ComputedCssMath::LengthPx(length_px),
-                    ]
-            }
+            ) => minmax_calc_minimum_track_matches(track, percentage, length_px),
             _ => false,
         }
+}
+
+fn minmax_calc_minimum_track_matches(
+    actual: &ComputedCssGridTrackSize,
+    percentage: f32,
+    length_px: f32,
+) -> bool {
+    matches!(
+        actual,
+        ComputedCssGridTrackSize::MinMax {
+            min: ComputedCssGridTrackBreadth::Calc(ComputedCssMath::Sum(terms)),
+            max: ComputedCssGridTrackBreadth::MaxContent,
+        } if terms.as_slice()
+            == [
+                ComputedCssMath::Percentage(percentage),
+                ComputedCssMath::LengthPx(length_px),
+            ]
+    )
+}
+
+fn track_gap(track: Track) -> f32 {
+    match track {
+        Track::TwoMinMaxCalcMinimum { gap_px, .. } => gap_px,
+        _ => 0.0,
+    }
 }
 
 fn dimension_matches(actual: ComputedCssDimension, expected: Dimension) -> bool {
@@ -348,7 +404,11 @@ fn zero_edges(edges: spinon_style::ComputedCssEdges) -> bool {
 }
 
 fn zero_spacing(value: ComputedCssSpacingValue) -> bool {
-    matches!(value, ComputedCssSpacingValue::LengthPx(actual) if actual.abs() <= f32::EPSILON)
+    spacing_matches(value, 0.0)
+}
+
+fn spacing_matches(value: ComputedCssSpacingValue, expected: f32) -> bool {
+    matches!(value, ComputedCssSpacingValue::LengthPx(actual) if (actual - expected).abs() <= f32::EPSILON)
 }
 
 fn ahem_paragraph_style() -> ParagraphStyle {
@@ -381,7 +441,7 @@ mod tests {
     #[test]
     fn exposes_fixed_cyclic_calc_track_scenes_by_function() {
         let scene_ids = SCENES.iter().map(|scene| scene.id).collect::<BTreeSet<_>>();
-        assert_eq!(SCENES.len(), 16);
+        assert_eq!(SCENES.len(), 20);
         assert_eq!(scene_ids.len(), SCENES.len());
         assert!(scene_ids.contains("cyclic-fit-content-calc-column"));
         assert!(scene_ids.contains("cyclic-fit-content-calc-row"));
@@ -399,5 +459,9 @@ mod tests {
         assert!(scene_ids.contains("cyclic-minmax-calc-min-column-definite-row"));
         assert!(scene_ids.contains("definite-column-cyclic-minmax-calc-min-row"));
         assert!(scene_ids.contains("definite-minmax-calc-min-both-axes"));
+        assert!(scene_ids.contains("cyclic-minmax-calc-min-span-columns"));
+        assert!(scene_ids.contains("definite-minmax-calc-min-span-columns"));
+        assert!(scene_ids.contains("cyclic-minmax-calc-min-span-rows"));
+        assert!(scene_ids.contains("definite-minmax-calc-min-span-rows"));
     }
 }

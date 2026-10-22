@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [직전 양축 minimum 계획](./c11-4-cyclic-minmax-calc-minimum-two-axis.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** CSS Grid 2025 CRD에서 독립 계산한 네 scene과 Agent Browser Chrome 156 사전 관측이 일치한다. 계획 실패 관점 20개 검토를 마쳤다. 계획 PR을 병합한 뒤 구현을 시작한다. 현재는 계획·사전 비교 단계이며 C11.4 체크와 공식 완료 수 `72/213`은 유지한다. [사전 비교 근거](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-span-precomparison-2026-10-22/README.md).
+**상태:** 계획 PR [#496](https://github.com/ohah/spinon/pull/496)이 병합된 뒤 네 고정 scene의 style-to-layout·runtime fixture를 구현했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 4/4 scene, 각 플랫폼 표면 표본 8/8 exact를 확인했다. 구현/runtime 실패 관점 20개 검토와 PR diff 30개 검토를 별도로 기록한다. 현재 C11.4 전체 완료 판정은 아니며 체크와 현재 공식 완료 수 `77/213`은 유지한다. [사전 비교 근거](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-span-precomparison-2026-10-22/README.md) · [구현·Simulator 근거](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-span-runtime-2026-10-22/README.md).
 
 ## 목적과 범위
 
@@ -35,17 +35,20 @@ Rows의 Ahem `a a`는 definite 20px inline size에서 두 줄, 20px block max-co
 2. 직접 layout regression에서 cyclic percentage minimum을 intrinsic contribution 단계에서 auto처럼 취급한 값과 final resolve 값을 분리한다. columns/rows의 span contribution, gap subtraction, min/max flooring, final track 및 root/item frame을 각각 검사한다.
 3. 기존 `c04-runtime-gpu-fixture-test` C11.4 경로에 정확히 네 scene, 두 explicit track, 한 span-2 item, Ahem text와 지정 gap/border만 허용한다. 추가·누락 item, 변경된 ID/DOM/source order/style/track expression은 partial output 없이 거부한다.
 4. Rust focused tests, fixture module boundary, `cargo fmt --all -- --check`, workspace all-target Clippy, Android/iOS fixture builds를 실행한다. 기본 product archive에서 새 fixture ID/marker/symbol/payload가 빠지고 opt-in archive에서 positive control로 들어오는지 비교한다.
-5. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 scene 각각의 trace, used tracks, node frame, draw/present를 확인한다. Android PixelCopy와 iOS compositor 제출 전 Metal drawable에서 root-relative `(58,6)` column sample은 border 오른쪽 바깥/item 내부 `#e5484d`, `(66,6)`은 item 밖 page `#ffffff`이어야 한다. Row sample `(8,27)`은 아래 border 바깥/item 내부 `#e5484d`, `(8,31)`은 item 밖 page `#ffffff`이어야 한다. 이는 border stroke 픽셀 검증이 아니다.
+5. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 scene 각각의 trace, used tracks, node frame, draw/present를 확인한다. Android PixelCopy와 iOS compositor 제출 전 Metal drawable에서 root-relative `(58,6)` column sample은 border 오른쪽 바깥/item 내부 `#e5484d`, `(66,6)`은 item 밖 native surface clear `#000000`이다. Row sample `(8,27)`은 아래 border 바깥/item 내부 `#e5484d`, `(8,31)`은 item 밖 native surface clear `#000000`이다. Chrome precomparison의 white page backdrop은 별도 browser oracle이며 앱 표면 표본의 기대색이 아니다. 이 표본은 border stroke 픽셀 검증이 아니다.
 6. 새 코드/runtime 동작을 계획 리뷰와 별도의 실패 관점 20개로 검토한다. 최종 PR diff는 30개의 독립 관점으로 확인한다. 발견을 수정하면 영향받은 regression·artifact·simulator 표본을 다시 확인한다.
 7. 구현 PR 본문에 C11.4 미완료, 지원 경계, 실행 화면과 미검증 범위를 기록한다. PR screenshot은 Agent Browser에서 열어 로드 여부를 확인하고 사용한 session과 process를 닫는다. Live merge state/checks를 확인하고 Rebase and merge를 사용한다.
 
 ## 범위 밖과 한계
 
-네 고정 scene은 span-2 item 하나의 cyclic min calc만 검증한다. span이 다른 여러 item의 순서, span-3 이상, `fit-content()`, flex track, nested/anonymous/replaced item, WPT, Android 실기기/hardware GPU, iOS compositor 이후 pixel 및 일반 CSS Grid 지원은 검증하지 않는다. C11.4 checkbox와 공식 완료 수 `72/213`은 변경하지 않는다.
+네 고정 scene은 span-2 item 하나의 cyclic min calc만 검증한다. span이 다른 여러 item의 순서, span-3 이상, `fit-content()`, flex track, nested/anonymous/replaced item, WPT, Android 실기기/hardware GPU, iOS compositor 이후 pixel 및 일반 CSS Grid 지원은 검증하지 않는다. C11.4 checkbox는 그대로 미완료이며 현재 공식 완료 수 `77/213`도 이 slice에서 바꾸지 않는다.
 
 ## 근거와 검토
 
 - [Chrome 156 precomparison·독립 기대값](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-span-precomparison-2026-10-22/README.md)
 - [계획 실패 관점 검토 20개](./c11-4-cyclic-minmax-calc-minimum-span-plan-review-20.md)
 - [계획 PR 변경 검토 30개](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-span-precomparison-2026-10-22/plan-pr-diff-review-30.md)
+- [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-span-runtime-2026-10-22/implementation-runtime-review-20.md)
+- [최종 구현 PR diff 검토 30개](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-span-runtime-2026-10-22/pr-diff-review-30.md)
+- [Android/iOS Simulator 실행·화면·artifact 경계](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-span-runtime-2026-10-22/README.md)
 - [CSS Grid 2025 CRD §7.2.1, §11.4, §11.5.1](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/)

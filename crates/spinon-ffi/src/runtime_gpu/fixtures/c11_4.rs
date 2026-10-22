@@ -20,6 +20,8 @@ mod cyclic_fit_content_calc;
 mod cyclic_minmax_calc;
 #[path = "c11_4/cyclic_minmax_calc_minimum.rs"]
 mod cyclic_minmax_calc_minimum;
+#[path = "c11_4/cyclic_minmax_calc_minimum_span.rs"]
+mod cyclic_minmax_calc_minimum_span;
 #[path = "c11_4/cyclic_percentage_fit_content.rs"]
 mod cyclic_percentage_fit_content;
 #[path = "c11_4/cyclic_percentage_minmax.rs"]
@@ -1083,6 +1085,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     if let Some(source) = cyclic_minmax_calc_minimum::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
+    if let Some(source) = cyclic_minmax_calc_minimum_span::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = cyclic_calc_tracks::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
@@ -1549,6 +1554,68 @@ mod tests {
             assert_eq!(source.matches("document.createElement('div')").count(), 2);
         }
         assert!(c11_4_grid_track_sizing_runtime_source("cyclic-minmax-calc-min-unlisted").is_err());
+    }
+
+    #[test]
+    fn exposes_fixed_cyclic_minimum_calc_span_runtime_scenes() {
+        for (scene_id, columns, rows, root_size, column_gap, row_gap, placement, text) in [
+            (
+                "cyclic-minmax-calc-min-span-columns",
+                "minmax(calc(50% + 4px),max-content) minmax(calc(50% + 4px),max-content)",
+                "10px",
+                "width:max-content;height:10px",
+                4,
+                0,
+                "grid-column:1 / span 2",
+                "aa aa",
+            ),
+            (
+                "definite-minmax-calc-min-span-columns",
+                "minmax(calc(50% + 4px),max-content) minmax(calc(50% + 4px),max-content)",
+                "10px",
+                "width:50px;height:10px",
+                4,
+                0,
+                "grid-column:1 / span 2",
+                "aa aa",
+            ),
+            (
+                "cyclic-minmax-calc-min-span-rows",
+                "20px",
+                "minmax(calc(50% + 2px),max-content) minmax(calc(50% + 2px),max-content)",
+                "width:20px;height:max-content",
+                0,
+                4,
+                "grid-row:1 / span 2",
+                "a a",
+            ),
+            (
+                "definite-minmax-calc-min-span-rows",
+                "20px",
+                "minmax(calc(50% + 2px),max-content) minmax(calc(50% + 2px),max-content)",
+                "width:20px;height:20px",
+                0,
+                4,
+                "grid-row:1 / span 2",
+                "a a",
+            ),
+        ] {
+            let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
+            assert!(source.len() < 3 * 1024);
+            assert!(source.contains(&format!("sceneId:{scene_id:?}")));
+            assert!(source.contains(&format!("grid-template-columns:{columns}")));
+            assert!(source.contains(&format!("grid-template-rows:{rows}")));
+            assert!(source.contains(root_size));
+            assert!(source.contains(&format!("column-gap:{column_gap}px;row-gap:{row_gap}px")));
+            assert!(source.contains(&format!("{placement};font-family:Ahem")));
+            assert!(source.contains("border:2px solid #f0c674"));
+            assert!(source.contains(&format!("document.createTextNode({text:?})")));
+            assert!(source.contains("background-color:#e5484d"));
+            assert_eq!(source.matches("document.createElement('div')").count(), 2);
+        }
+        assert!(
+            c11_4_grid_track_sizing_runtime_source("cyclic-minmax-calc-min-span-unlisted").is_err()
+        );
     }
 
     #[test]
