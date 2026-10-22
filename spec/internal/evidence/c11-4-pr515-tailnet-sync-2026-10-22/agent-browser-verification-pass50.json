@@ -1,0 +1,77 @@
+{
+  "schema": "spinon-agent-browser-verification-v1",
+  "verifiedAtUtc": "2026-10-22T13:36:47Z",
+  "tool": {
+    "name": "Agent Browser",
+    "version": "0.31.1",
+    "session": "spinon-pr515-pass50",
+    "closedAfterVerification": true,
+    "sessionsAfterClose": []
+  },
+  "checks": {
+    "tailnetRoadmap": {
+      "result": "pass",
+      "observed": {
+        "c11_4DrawPresent": "263/263",
+        "pixelEnabledExactSamples": "219/219",
+        "officialCompletion": "77/213",
+        "c11_4MarkedComplete": false
+      },
+      "screenshot": "tailnet-roadmap-agent-browser-pass50.png"
+    },
+    "statusLedger": {
+      "result": "pass",
+      "c11_4Checked": false,
+      "officialCompletion": "77/213",
+      "screenshot": "tailnet-status-agent-browser-pass50.png"
+    },
+    "executionEvidence": {
+      "result": "pass",
+      "screenshot": "tailnet-evidence-agent-browser-pass50.png"
+    },
+    "runtimeImages": [
+      {
+        "platform": "Android API 37 ARM64 AVD",
+        "dimensions": "1080x2400",
+        "result": "loaded"
+      },
+      {
+        "platform": "iPhone 17 Pro iOS 26.2 Simulator",
+        "dimensions": "1206x2622",
+        "result": "loaded"
+      }
+    ],
+    "githubPullRequest": {
+      "url": "https://github.com/ohah/spinon/pull/515",
+      "result": "pass",
+      "bodyImages": [
+        {
+          "platform": "Android API 37 ARM64 AVD",
+          "url": "https://raw.githubusercontent.com/ohah/spinon/997563e35ed0e1b62a47a56bb0c91472c6f5bd2a/spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/android-definite-forward.png",
+          "dimensions": "1080x2400",
+          "result": "loaded"
+        },
+        {
+          "platform": "iPhone 17 Pro iOS 26.2 Simulator",
+          "url": "https://raw.githubusercontent.com/ohah/spinon/997563e35ed0e1b62a47a56bb0c91472c6f5bd2a/spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/ios-definite-forward.png",
+          "dimensions": "1206x2622",
+          "result": "loaded"
+        }
+      ],
+      "screenshot": "pr-agent-browser-pass50.png"
+    }
+  },
+  "cleanup": {
+    "agentBrowserSessionListEmpty": true,
+    "agentBrowserOwnedBrowserProcessesRemaining": 0,
+    "userChromePid20311Preserved": true,
+    "previewServerPid79812Preserved": true,
+    "tmuxAccessed": false
+  },
+  "screenshotEvidence": {
+    "pr-agent-browser-pass50.png": {
+      "dimensions": "1280x633",
+      "sha256": "e3aa1411015c9ac73b1390a158227c987be35348298957dd73e4c4dfa3982c39"
+    }
+  }
+}
