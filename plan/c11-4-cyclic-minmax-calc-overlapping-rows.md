@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 CSS Grid track sizing](./c11-4-grid-track-sizing.md) · [열 축 겹치는 span 선행 계획](./c11-4-cyclic-minmax-calc-overlapping-spans.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** Chrome 156 사전 비교와 독립 계산을 마쳤고, 계획한 고정 runtime slice를 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 확인했다. 구현 PR [#503](https://github.com/ohah/spinon/pull/503)은 검토 중이다. C11.4 checkbox와 공식 완료 수 `77/213`은 그대로 둔다.
+**상태:** Chrome 156 사전 비교와 독립 계산을 마쳤고, 계획한 고정 runtime slice를 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 확인했다. 구현 PR [#503](https://github.com/ohah/spinon/pull/503)은 2026-10-22 06:31:18 UTC Rebase and merge됐고 SHA `36acdd4f48f23499835530704fa8aef20590a6e5`를 남겼다. 병합 당시 PR status-check rollup은 비어 있었고 main required status checks는 설정되지 않았다. C11.4 checkbox와 공식 완료 수 `77/213`은 그대로 둔다.
 
 ## 목적과 경계
 
