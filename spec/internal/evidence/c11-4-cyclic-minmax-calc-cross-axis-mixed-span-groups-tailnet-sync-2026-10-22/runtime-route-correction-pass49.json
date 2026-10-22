@@ -1,0 +1,14 @@
+{
+  "route": "SpinonPreview/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.html",
+  "build_output": "build/spinon/c11-4-cyclic-minmax-calc-cross-axis-span-groups-tailnet-site-pass49/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.html",
+  "target_before_sha256": "d22a8a656d35a8fb3240e28ac4d0f3860103d3b542b1fc987e33d3b76c3d00eb",
+  "backup_sha256": "d22a8a656d35a8fb3240e28ac4d0f3860103d3b542b1fc987e33d3b76c3d00eb",
+  "target_after_sha256": "807372a0a6e99f40f2cb70157af8a32830ffdb999e53ebf99a0277947fbdfd5c",
+  "generated_after_sha256": "807372a0a6e99f40f2cb70157af8a32830ffdb999e53ebf99a0277947fbdfd5c",
+  "target_bytes_before": 301842,
+  "target_bytes_after": 302073,
+  "changed_files": 1,
+  "target_deletions": 0,
+  "open_handles_at_write": 0,
+  "full_site_tree_hash_note": "pass49 전체 사이트 tree hash는 이 단일 route 정정 전 값이다"
+}

@@ -1,0 +1,4 @@
+10-22 20:23:08.108 13547 13547 E SpinonBootstrap: SPINON_C114_GRID_PIXEL_MATRIX status=error run_id=c114-android-avd-20261022T112303495Z-48775a0d-2 scene=definite-minmax-cross-axis-mixed-span-groups-forward reason=scene-index-mismatch
+10-22 20:23:08.129 13547 13566 E SpinonBootstrap: SPINON_C114_GRID_PIXEL_MATRIX status=error reason=scene-index-mismatch
+10-22 20:23:08.237 13547 13547 I SpinonBootstrap: SPINON_C0410_SURFACE_CREATED generation=1
+10-22 20:23:08.237 13547 13547 I SpinonBootstrap: SPINON_C0410_SURFACE_CHANGED generation=2 size=840x630 changed=true

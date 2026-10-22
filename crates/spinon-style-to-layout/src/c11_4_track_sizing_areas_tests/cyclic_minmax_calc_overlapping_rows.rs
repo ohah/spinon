@@ -204,8 +204,8 @@ fn compute(fixture: &Fixture) -> crate::StyleLayoutOutput {
     .unwrap();
     let paragraphs = fixture
         .nodes
-        .iter()
-        .map(|(_, node)| {
+        .values()
+        .map(|node| {
             (
                 node.id(),
                 ParagraphStyle {

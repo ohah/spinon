@@ -263,8 +263,17 @@ private func c114IsCrossAxisSpanGroupsScene(_ sceneID: String) -> Bool {
         || sceneID.hasPrefix("definite-minmax-calc-cross-axis-span-groups-")
 }
 
+private func c114IsMixedCrossAxisSpanGroupsScene(_ sceneID: String) -> Bool {
+    sceneID.hasPrefix("cyclic-minmax-cross-axis-mixed-span-groups-")
+        || sceneID.hasPrefix("definite-minmax-cross-axis-mixed-span-groups-")
+}
+
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if c114IsMixedCrossAxisSpanGroupsScene(sceneID) {
+        return sceneID.hasPrefix("cyclic-")
+            ? "width=55,height=24" : "width=44,height=44"
+    }
     if sceneID.hasPrefix("cyclic-minmax-calc-cross-axis-span-groups-") {
         return "width=55,height=24"
     }
@@ -465,7 +474,8 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
-    if c114IsCrossAxisSpanGroupsScene(sceneID) { return "" }
+    if c114IsCrossAxisSpanGroupsScene(sceneID)
+        || c114IsMixedCrossAxisSpanGroupsScene(sceneID) { return "" }
     if sceneID == "cyclic-minmax-calc-two-axis-span-text-min-content"
         || sceneID == "definite-minmax-calc-two-axis-span-text-min-content" {
         return "width=10,height=60"
@@ -645,6 +655,9 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
 
 private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if c114IsMixedCrossAxisSpanGroupsScene(sceneID) {
+        return c114ExpectedMixedCrossAxisSpanGroupIntrinsicInputs(sceneID, report: report)
+    }
     if c114IsCrossAxisSpanGroupsScene(sceneID) {
         return c114ExpectedCrossAxisSpanGroupIntrinsicInputs(sceneID, report: report)
     }
@@ -786,6 +799,32 @@ private func c114ExpectedCrossAxisSpanGroupIntrinsicInputs(
     for (index, input) in inputs.enumerated() {
         guard (input["grid"] as? Int) == 1,
               (input["node"] as? Int) == expectedNodes[index],
+              (input["sourceOrder"] as? Int) == index,
+              let source = input["source"] as? [String: Any],
+              (source["kind"] as? String) == "text",
+              (source["fontRegistryRevision"] as? Int) == 1 else { return false }
+        let values = ["minContent", "minContentHeight", "maxContent", "maxContentHeight"]
+            .compactMap { (source[$0] as? NSNumber)?.doubleValue }
+        guard values.count == 4,
+              zip(values, expectedSources[index]).allSatisfy({ abs($0.0 - $0.1) <= 0.0001 }) else {
+            return false
+        }
+    }
+    return true
+}
+
+private func c114ExpectedMixedCrossAxisSpanGroupIntrinsicInputs(
+    _ sceneID: String, report: String
+) -> Bool {
+    guard let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
+          inputs.count == 3 else { return false }
+    let expectedSources: [[Double]] = sceneID.hasSuffix("-reverse")
+        ? [[20, 40, 110, 10], [40, 10, 40, 10], [20, 30, 60, 10]]
+        : [[20, 30, 60, 10], [40, 10, 40, 10], [20, 40, 110, 10]]
+    for (index, input) in inputs.enumerated() {
+        guard (input["grid"] as? Int) == 1,
+              (input["node"] as? Int) == index * 2 + 2,
               (input["sourceOrder"] as? Int) == index,
               let source = input["source"] as? [String: Any],
               (source["kind"] as? String) == "text",
@@ -1701,7 +1740,8 @@ private func c114ImageTrackPassMatches(
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
-    if c114IsCrossAxisSpanGroupsScene(sceneID) { return nil }
+    if c114IsCrossAxisSpanGroupsScene(sceneID)
+        || c114IsMixedCrossAxisSpanGroupsScene(sceneID) { return nil }
     if c114IsOverlappingRowsScene(sceneID) {
         return c114ExpectedOverlappingRowSpanNodeFrames(sceneID)
     }
@@ -2064,6 +2104,9 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
 private func c114ExpectedCrossAxisSpanGroupFramesMatch(
     _ sceneID: String, report: String
 ) -> Bool {
+    if c114IsMixedCrossAxisSpanGroupsScene(sceneID) {
+        return c114ExpectedMixedCrossAxisSpanGroupFramesMatch(sceneID, report: report)
+    }
     guard c114IsCrossAxisSpanGroupsScene(sceneID) else { return true }
     let intrinsic = sceneID.hasPrefix("cyclic-")
     let reversed = sceneID.hasSuffix("-reverse")
@@ -2076,6 +2119,44 @@ private func c114ExpectedCrossAxisSpanGroupFramesMatch(
     let itemA: [Double] = [2, 2, itemAWidth, itemAHeight]
     let expectedItems: [(Int, [Double])] = reversed ? [(2, itemB), (4, itemA)]
         : [(2, itemA), (4, itemB)]
+    let expected: [(Int, [Double])] = [(1, [0, 0, rootWidth, rootHeight])] + expectedItems
+    guard let marker = report.range(of: "node_frames_css_px=["),
+          let end = report[marker.upperBound...].firstIndex(of: "]") else { return false }
+    let frames = report[marker.upperBound..<end].split(separator: ";")
+    guard frames.count == expected.count else { return false }
+    for (index, frame) in frames.enumerated() {
+        let fields = frame.split(separator: ",")
+        guard fields.count == 5 else { return false }
+        let identity = fields[0].split(separator: ":node=")
+        guard identity.count == 2,
+              Int(identity[0]) == index,
+              Int(identity[1]) == expected[index].0 else { return false }
+        let prefixes = ["x=", "y=", "width=", "height="]
+        let values = (0..<4).compactMap { property -> Double? in
+            guard fields[property + 1].hasPrefix(prefixes[property]) else { return nil }
+            return Double(fields[property + 1].dropFirst(prefixes[property].count))
+        }
+        guard values.count == 4,
+              zip(values, expected[index].1).allSatisfy({ abs($0.0 - $0.1) <= 1.0 / 64.0 }) else {
+            return false
+        }
+    }
+    return true
+}
+
+private func c114ExpectedMixedCrossAxisSpanGroupFramesMatch(
+    _ sceneID: String, report: String
+) -> Bool {
+    let intrinsic = sceneID.hasPrefix("cyclic-")
+    let reversed = sceneID.hasSuffix("-reverse")
+    let rootWidth = intrinsic ? 55.0 : 44.0
+    let rootHeight = intrinsic ? 24.0 : 44.0
+    let itemA: [Double] = [2, 2, intrinsic ? 33.34375 : 26, intrinsic ? 20 : 40]
+    let itemB: [Double] = [intrinsic ? 19.671875 : 16, 2, 40, 10]
+    let itemC: [Double] = [2, 2, intrinsic ? 51 : 40, intrinsic ? 20 : 40]
+    let expectedItems: [(Int, [Double])] = reversed
+        ? [(2, itemC), (4, itemB), (6, itemA)]
+        : [(2, itemA), (4, itemB), (6, itemC)]
     let expected: [(Int, [Double])] = [(1, [0, 0, rootWidth, rootHeight])] + expectedItems
     guard let marker = report.range(of: "node_frames_css_px=["),
           let end = report[marker.upperBound...].firstIndex(of: "]") else { return false }
@@ -2511,6 +2592,7 @@ private func c114GapNodeFrames(
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if c114IsMixedCrossAxisSpanGroupsScene(sceneID) { return 4 }
     if c114IsCrossAxisSpanGroupsScene(sceneID) { return 3 }
     if c114IsTwoAxisSpanTextScene(sceneID) { return 2 }
     if sceneID.hasPrefix("cyclic-minmax-calc-overlap-")
@@ -3021,7 +3103,9 @@ private struct C111MetalPixelRun {
         let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])]
         switch sceneID {
         case "definite-minmax-calc-cross-axis-span-groups-forward",
-             "definite-minmax-calc-cross-axis-span-groups-reverse":
+             "definite-minmax-calc-cross-axis-span-groups-reverse",
+             "definite-minmax-cross-axis-mixed-span-groups-forward",
+             "definite-minmax-cross-axis-mixed-span-groups-reverse":
             expectedSamples = [
                 ("\(sceneID)-overflow-item-b", "c114-\(sceneID)-item-b", 50, 4,
                  [229, 72, 77, 255]),

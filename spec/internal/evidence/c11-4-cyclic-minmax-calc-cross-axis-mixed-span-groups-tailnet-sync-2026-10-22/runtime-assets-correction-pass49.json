@@ -1,0 +1,61 @@
+{
+  "reason": "HTML만 수정한 뒤에도 RSPress가 이전 route chunk를 hydrate해 나머지 생성 자산을 정정했다",
+  "changed_file_count": 5,
+  "target_deletions": 0,
+  "open_handles_at_write": 0,
+  "full_site_tree_hash_note": "pass49 전체 사이트 tree hash는 이 생성 route 정정 전 값이다",
+  "before": {
+    "static/js/async/route-f81cc1f3adc5.9fa16e0f1b.js": {
+      "served_sha256": "227f66d4751b36457960181cb5adda86060a02bb878ff643a781093efd4a6dab",
+      "build_sha256": "227f66d4751b36457960181cb5adda86060a02bb878ff643a781093efd4a6dab",
+      "served_bytes": 14992
+    },
+    "static/js/async/route-4a17fa161b97.7ad731f867.js": {
+      "served_sha256": "5560d711668a1f55ecdd89ff6c48ea8429f6400ccda22f43a236b354c6c22ae4",
+      "build_sha256": "5560d711668a1f55ecdd89ff6c48ea8429f6400ccda22f43a236b354c6c22ae4",
+      "served_bytes": 14982
+    },
+    "static/search_index.ko.4e0aa793.json": {
+      "served_sha256": "4e0aa793ddb2802ba11c71773ecf71ca9d95be939275d81a05d0365eac22b5a5",
+      "build_sha256": "4e0aa793ddb2802ba11c71773ecf71ca9d95be939275d81a05d0365eac22b5a5",
+      "served_bytes": 3906242
+    },
+    "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md": {
+      "served_sha256": "57f71bf54c25b27b1a2d9de4f63933c4f9d5ce81da22f48b79815598aa2b16b8",
+      "build_sha256": "57f71bf54c25b27b1a2d9de4f63933c4f9d5ce81da22f48b79815598aa2b16b8",
+      "served_bytes": 7293
+    },
+    "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md": {
+      "served_sha256": "57f71bf54c25b27b1a2d9de4f63933c4f9d5ce81da22f48b79815598aa2b16b8",
+      "build_sha256": "57f71bf54c25b27b1a2d9de4f63933c4f9d5ce81da22f48b79815598aa2b16b8",
+      "served_bytes": 7293
+    }
+  },
+  "after": {
+    "static/js/async/route-f81cc1f3adc5.9fa16e0f1b.js": {
+      "sha256": "6ac4b0d93241d643350bf64157aeb8206433a23e627a334bbc7783e13a98171c",
+      "bytes": 15068,
+      "backup_sha256": "227f66d4751b36457960181cb5adda86060a02bb878ff643a781093efd4a6dab"
+    },
+    "static/js/async/route-4a17fa161b97.7ad731f867.js": {
+      "sha256": "74c71029bc6e1749bd68d1be04233fdf5d8143fcc97a215a1defaa303bbdb3a3",
+      "bytes": 15058,
+      "backup_sha256": "5560d711668a1f55ecdd89ff6c48ea8429f6400ccda22f43a236b354c6c22ae4"
+    },
+    "static/search_index.ko.4e0aa793.json": {
+      "sha256": "0e8282381b7e22545360d573f25b5201f5f5e28ee17dfa7e586b73a0101faffd",
+      "bytes": 3906639,
+      "backup_sha256": "4e0aa793ddb2802ba11c71773ecf71ca9d95be939275d81a05d0365eac22b5a5"
+    },
+    "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md": {
+      "sha256": "87ddb47fdedb8fd8a72b8d4eb547be6883be3507758d8d740883744653183e93",
+      "bytes": 7500,
+      "backup_sha256": "57f71bf54c25b27b1a2d9de4f63933c4f9d5ce81da22f48b79815598aa2b16b8"
+    },
+    "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-runtime-2026-10-22/README.md": {
+      "sha256": "87ddb47fdedb8fd8a72b8d4eb547be6883be3507758d8d740883744653183e93",
+      "bytes": 7500,
+      "backup_sha256": "57f71bf54c25b27b1a2d9de4f63933c4f9d5ce81da22f48b79815598aa2b16b8"
+    }
+  }
+}

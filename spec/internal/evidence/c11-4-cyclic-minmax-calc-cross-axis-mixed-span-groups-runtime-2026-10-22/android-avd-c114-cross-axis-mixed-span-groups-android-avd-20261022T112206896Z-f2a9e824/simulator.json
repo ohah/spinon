@@ -1,0 +1,20 @@
+{
+  "serial": "emulator-5558",
+  "target": "android-avd",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone64_arm64",
+  "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+  "apkSha256": "6bba3e76e0e30d6c6208bb10cd9c8f8c1f1ad41c1b5460f9834a0348221bc702",
+  "installedApkSha256": "6bba3e76e0e30d6c6208bb10cd9c8f8c1f1ad41c1b5460f9834a0348221bc702",
+  "sourceRevision": {
+    "commit": "954a688070eca4f321cc543b3fcec00cd1f7b80c",
+    "tree": "4a1d30d1b18c649cc58eb63e02dbd87e122cde22",
+    "trackedDiffSha256": "f330cac7bc5fffc360e3887ce1945a966c4cd19c8e1e3851fcd86642379205a9",
+    "trackedDirtyPaths": [
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift"
+    ]
+  }
+}
