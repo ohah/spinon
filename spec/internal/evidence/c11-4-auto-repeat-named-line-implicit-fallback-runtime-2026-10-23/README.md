@@ -1,6 +1,6 @@
 # C11.4 auto-repeat named-line implicit fallback · simulator 실행 근거
 
-이 문서는 [집중 계획](../../../plan/c11-4-auto-repeat-named-line-implicit-fallback.md)의 제한 구현을 최신 source로 실행한 결과다. 계획 PR #533은 병합됐고 구현 PR은 별도로 검토한다. 이 결과만으로 C11.4, 일반 CSS admission, 전체 Grid 또는 WPT 적합성을 완료 처리하지 않는다.
+이 문서는 [집중 계획](../../../plan/c11-4-auto-repeat-named-line-implicit-fallback.md)의 제한 구현을 최신 source로 실행한 결과다. 계획 PR #533과 구현 PR [#534](https://github.com/ohah/spinon/pull/534)의 범위·근거를 기록한다. 이 결과만으로 C11.4, 일반 CSS admission, 전체 Grid 또는 WPT 적합성을 완료 처리하지 않는다.
 
 ## 고정 범위와 기대값
 
