@@ -1,0 +1,99 @@
+{
+  "browser": {
+    "tool": "agent-browser",
+    "version": "0.31.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewport": {
+      "width": 1280,
+      "height": 633,
+      "dpr": 1
+    }
+  },
+  "fixture": "tests/fixtures/css/c11/grid-cyclic-minmax-calc-minimum-span-c114-precomparison.html",
+  "fixtureSha256": "05a674fffb38b9fff186a48755b9d2e96e3878d41680f9a3614271e0503933f8",
+  "font": {
+    "family": "Ahem",
+    "size": "10px/10px",
+    "status": "loaded",
+    "check": true,
+    "path": "tests/fixtures/resources/c15/Ahem.ttf",
+    "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448"
+  },
+  "scenes": [
+    {
+      "id": "cyclic-minmax-calc-min-span-columns",
+      "grid": { "x": 0, "y": 0, "width": 54, "height": 14 },
+      "content": { "width": "50px", "height": "10px" },
+      "border": { "width": "2px", "style": "solid", "color": "rgb(240, 198, 116)" },
+      "item": { "x": 2, "y": 2, "width": 62, "height": 10 },
+      "columns": "29px 29px",
+      "rows": "10px",
+      "columnGap": "4px",
+      "rowGap": "0px",
+      "placement": { "column": "1 / span 2", "row": "auto" },
+      "scroll": { "width": 62, "height": 10 }
+    },
+    {
+      "id": "definite-minmax-calc-min-span-columns",
+      "grid": { "x": 0, "y": 26, "width": 54, "height": 14 },
+      "content": { "width": "50px", "height": "10px" },
+      "border": { "width": "2px", "style": "solid", "color": "rgb(240, 198, 116)" },
+      "item": { "x": 2, "y": 28, "width": 62, "height": 10 },
+      "columns": "29px 29px",
+      "rows": "10px",
+      "columnGap": "4px",
+      "rowGap": "0px",
+      "placement": { "column": "1 / span 2", "row": "auto" },
+      "scroll": { "width": 62, "height": 10 }
+    },
+    {
+      "id": "cyclic-minmax-calc-min-span-rows",
+      "grid": { "x": 0, "y": 52, "width": 24, "height": 24 },
+      "content": { "width": "20px", "height": "20px" },
+      "border": { "width": "2px", "style": "solid", "color": "rgb(240, 198, 116)" },
+      "item": { "x": 2, "y": 54, "width": 20, "height": 28 },
+      "columns": "20px",
+      "rows": "12px 12px",
+      "columnGap": "0px",
+      "rowGap": "4px",
+      "placement": { "column": "auto", "row": "1 / span 2" },
+      "scroll": { "width": 20, "height": 28 }
+    },
+    {
+      "id": "definite-minmax-calc-min-span-rows",
+      "grid": { "x": 0, "y": 88, "width": 24, "height": 24 },
+      "content": { "width": "20px", "height": "20px" },
+      "border": { "width": "2px", "style": "solid", "color": "rgb(240, 198, 116)" },
+      "item": { "x": 2, "y": 90, "width": 20, "height": 28 },
+      "columns": "20px",
+      "rows": "12px 12px",
+      "columnGap": "0px",
+      "rowGap": "4px",
+      "placement": { "column": "auto", "row": "1 / span 2" },
+      "scroll": { "width": 20, "height": 28 }
+    }
+  ],
+  "specComparison": {
+    "cyclicPercentageIntrinsicTreatment": "auto",
+    "columnMaxContentBasis": 50,
+    "rowMaxContentBasis": 20,
+    "columnResolvedMinimumPerTrack": 29,
+    "rowResolvedMinimumPerTrack": 12,
+    "allObservedTracksMatchIndependentExpectations": true,
+    "allObservedFramesMatchIndependentExpectations": true
+  },
+  "specSources": [
+    "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#track-sizes",
+    "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-track-sizing",
+    "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-spanning-items"
+  ],
+  "browserCleanup": {
+    "namespace": "s45r",
+    "session": "p45r",
+    "pid": 44443,
+    "closeCommandSucceeded": true,
+    "globalSessionsAfterClose": [],
+    "pidExited": true,
+    "terminalBrowserUsed": false
+  }
+}
