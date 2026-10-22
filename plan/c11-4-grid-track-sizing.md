@@ -350,3 +350,7 @@ PR #506의 단일 양축 span text 뒤에, 가운데 열을 공유하는 두 spa
 ### 2026-10-22 cyclic `minmax(calc())` mixed cross-axis span groups 후속 계획
 
 기존 two-item cross-axis slice가 제외한 세 번째 item과 mixed span length를 추가한다. 가운데 column을 공유하는 두 span-2 Ahem text item 뒤에 세 column span-3 text item을 놓고, CSS Grid 2025 CRD의 span별 planned-increase 순서 및 Columns→Rows text wrapping을 네 fixed DOM-order scene으로 확인한다. [집중 계획](./c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md) · [Chrome 156 사전 비교와 독립 기대값](../spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/README.md) · [계획 실패 관점 20개](./c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-plan-review-20.md). Runtime은 시작하지 않았으며 C11.4 checkbox와 공식 `77/213`은 유지한다.
+
+### 2026-10-22 cyclic <code>minmax(calc())</code> mixed cross-axis span groups max-content 후속 계획
+
+PR #515에서 확인한 3-column × 2-row, span-2/2/3 direct Ahem text topology를 max-content width와 80px definite control로 확장하는 다음 fixed-slice 계획이다. Chrome 156 Agent Browser와 CSS Grid 2025 CRD 독립 계산을 분리해 네 scene의 resolved Columns [107/3,125/3,86/3] 및 [76/3,76/3,76/3], Rows [4,4]/[9,9], text wrapping을 고정했다. 계획 검토 20개를 마쳤으며 runtime은 시작하지 않았다. C11.4 checkbox와 공식 77/213은 유지한다. [계획](./c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md) · [사전 비교](../spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/README.md) · [계획 검토 20개](./c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-plan-review-20.md).

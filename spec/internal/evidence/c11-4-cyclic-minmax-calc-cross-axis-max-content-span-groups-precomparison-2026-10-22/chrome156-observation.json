@@ -1,0 +1,532 @@
+{
+  "success": true,
+  "data": {
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 6847324482101409511
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    },
+    "origin": "file:///Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/oracle.html",
+    "result": {
+      "orderComparison": {
+        "definiteColumnsEqual": true,
+        "definiteRowsEqual": true,
+        "maxColumnsEqual": true,
+        "maxRowsEqual": true
+      },
+      "scenes": [
+        {
+          "domOrder": [
+            "a",
+            "b",
+            "c"
+          ],
+          "id": "max-content-forward",
+          "items": [
+            {
+              "computedHeight": "10px",
+              "computedWidth": "79.3281px",
+              "frame": {
+                "bottom": 82.8125,
+                "height": 10,
+                "left": 26,
+                "right": 105.3281,
+                "top": 72.8125,
+                "width": 79.3281,
+                "x": 26,
+                "y": 72.8125
+              },
+              "id": "item-a-max-content-forward",
+              "key": "a",
+              "text": "AA A A",
+              "textLines": [
+                {
+                  "height": 10,
+                  "width": 60,
+                  "x": 26,
+                  "y": 72.8125
+                }
+              ]
+            },
+            {
+              "computedHeight": "10px",
+              "computedWidth": "40px",
+              "frame": {
+                "bottom": 82.8125,
+                "height": 10,
+                "left": 63.6563,
+                "right": 103.6563,
+                "top": 72.8125,
+                "width": 40,
+                "x": 63.6563,
+                "y": 72.8125
+              },
+              "id": "item-b-max-content-forward",
+              "key": "b",
+              "text": "XXXX",
+              "textLines": [
+                {
+                  "height": 10,
+                  "width": 40,
+                  "x": 63.6563,
+                  "y": 72.8125
+                }
+              ]
+            },
+            {
+              "computedHeight": "10px",
+              "computedWidth": "110px",
+              "frame": {
+                "bottom": 82.8125,
+                "height": 10,
+                "left": 26,
+                "right": 136,
+                "top": 72.8125,
+                "width": 110,
+                "x": 26,
+                "y": 72.8125
+              },
+              "id": "item-c-max-content-forward",
+              "key": "c",
+              "text": "AA AA AA AA",
+              "textLines": [
+                {
+                  "height": 10,
+                  "width": 110,
+                  "x": 26,
+                  "y": 72.8125
+                }
+              ]
+            }
+          ],
+          "root": {
+            "clientHeight": 10,
+            "clientWidth": 110,
+            "columnsCssom": "35.6562px 41.6719px 28.6719px",
+            "columnsPx": [
+              35.6562,
+              41.6719,
+              28.6719
+            ],
+            "computedHeight": "10px",
+            "computedWidth": "110px",
+            "frame": {
+              "bottom": 84.8125,
+              "height": 14,
+              "left": 24,
+              "right": 138,
+              "top": 70.8125,
+              "width": 114,
+              "x": 24,
+              "y": 70.8125
+            },
+            "offsetHeight": 14,
+            "offsetWidth": 114,
+            "rowsCssom": "4px 4px",
+            "rowsPx": [
+              4,
+              4
+            ]
+          },
+          "widthInput": "max-content"
+        },
+        {
+          "domOrder": [
+            "c",
+            "b",
+            "a"
+          ],
+          "id": "max-content-reverse",
+          "items": [
+            {
+              "computedHeight": "10px",
+              "computedWidth": "110px",
+              "frame": {
+                "bottom": 175.625,
+                "height": 10,
+                "left": 26,
+                "right": 136,
+                "top": 165.625,
+                "width": 110,
+                "x": 26,
+                "y": 165.625
+              },
+              "id": "item-c-max-content-reverse",
+              "key": "c",
+              "text": "AA AA AA AA",
+              "textLines": [
+                {
+                  "height": 10,
+                  "width": 110,
+                  "x": 26,
+                  "y": 165.625
+                }
+              ]
+            },
+            {
+              "computedHeight": "10px",
+              "computedWidth": "40px",
+              "frame": {
+                "bottom": 175.625,
+                "height": 10,
+                "left": 63.6563,
+                "right": 103.6563,
+                "top": 165.625,
+                "width": 40,
+                "x": 63.6563,
+                "y": 165.625
+              },
+              "id": "item-b-max-content-reverse",
+              "key": "b",
+              "text": "XXXX",
+              "textLines": [
+                {
+                  "height": 10,
+                  "width": 40,
+                  "x": 63.6563,
+                  "y": 165.625
+                }
+              ]
+            },
+            {
+              "computedHeight": "10px",
+              "computedWidth": "79.3281px",
+              "frame": {
+                "bottom": 175.625,
+                "height": 10,
+                "left": 26,
+                "right": 105.3281,
+                "top": 165.625,
+                "width": 79.3281,
+                "x": 26,
+                "y": 165.625
+              },
+              "id": "item-a-max-content-reverse",
+              "key": "a",
+              "text": "AA A A",
+              "textLines": [
+                {
+                  "height": 10,
+                  "width": 60,
+                  "x": 26,
+                  "y": 165.625
+                }
+              ]
+            }
+          ],
+          "root": {
+            "clientHeight": 10,
+            "clientWidth": 110,
+            "columnsCssom": "35.6562px 41.6719px 28.6719px",
+            "columnsPx": [
+              35.6562,
+              41.6719,
+              28.6719
+            ],
+            "computedHeight": "10px",
+            "computedWidth": "110px",
+            "frame": {
+              "bottom": 177.625,
+              "height": 14,
+              "left": 24,
+              "right": 138,
+              "top": 163.625,
+              "width": 114,
+              "x": 24,
+              "y": 163.625
+            },
+            "offsetHeight": 14,
+            "offsetWidth": 114,
+            "rowsCssom": "4px 4px",
+            "rowsPx": [
+              4,
+              4
+            ]
+          },
+          "widthInput": "max-content"
+        },
+        {
+          "domOrder": [
+            "a",
+            "b",
+            "c"
+          ],
+          "id": "definite-forward",
+          "items": [
+            {
+              "computedHeight": "20px",
+              "computedWidth": "52.6719px",
+              "frame": {
+                "bottom": 278.4375,
+                "height": 20,
+                "left": 26,
+                "right": 78.6719,
+                "top": 258.4375,
+                "width": 52.6719,
+                "x": 26,
+                "y": 258.4375
+              },
+              "id": "item-a-definite-forward",
+              "key": "a",
+              "text": "AA A A",
+              "textLines": [
+                {
+                  "height": 10,
+                  "width": 40,
+                  "x": 26,
+                  "y": 258.4375
+                },
+                {
+                  "height": 10,
+                  "width": 10,
+                  "x": 26,
+                  "y": 268.4375
+                }
+              ]
+            },
+            {
+              "computedHeight": "10px",
+              "computedWidth": "40px",
+              "frame": {
+                "bottom": 268.4375,
+                "height": 10,
+                "left": 53.3281,
+                "right": 93.3281,
+                "top": 258.4375,
+                "width": 40,
+                "x": 53.3281,
+                "y": 258.4375
+              },
+              "id": "item-b-definite-forward",
+              "key": "b",
+              "text": "XXXX",
+              "textLines": [
+                {
+                  "height": 10,
+                  "width": 40,
+                  "x": 53.3281,
+                  "y": 258.4375
+                }
+              ]
+            },
+            {
+              "computedHeight": "20px",
+              "computedWidth": "80px",
+              "frame": {
+                "bottom": 278.4375,
+                "height": 20,
+                "left": 26,
+                "right": 106,
+                "top": 258.4375,
+                "width": 80,
+                "x": 26,
+                "y": 258.4375
+              },
+              "id": "item-c-definite-forward",
+              "key": "c",
+              "text": "AA AA AA AA",
+              "textLines": [
+                {
+                  "height": 10,
+                  "width": 80,
+                  "x": 26,
+                  "y": 258.4375
+                },
+                {
+                  "height": 10,
+                  "width": 20,
+                  "x": 26,
+                  "y": 268.4375
+                }
+              ]
+            }
+          ],
+          "root": {
+            "clientHeight": 20,
+            "clientWidth": 80,
+            "columnsCssom": "25.3281px 25.3438px 25.3281px",
+            "columnsPx": [
+              25.3281,
+              25.3438,
+              25.3281
+            ],
+            "computedHeight": "20px",
+            "computedWidth": "80px",
+            "frame": {
+              "bottom": 280.4375,
+              "height": 24,
+              "left": 24,
+              "right": 108,
+              "top": 256.4375,
+              "width": 84,
+              "x": 24,
+              "y": 256.4375
+            },
+            "offsetHeight": 24,
+            "offsetWidth": 84,
+            "rowsCssom": "9px 9px",
+            "rowsPx": [
+              9,
+              9
+            ]
+          },
+          "widthInput": "80px"
+        },
+        {
+          "domOrder": [
+            "c",
+            "b",
+            "a"
+          ],
+          "id": "definite-reverse",
+          "items": [
+            {
+              "computedHeight": "20px",
+              "computedWidth": "80px",
+              "frame": {
+                "bottom": 381.25,
+                "height": 20,
+                "left": 26,
+                "right": 106,
+                "top": 361.25,
+                "width": 80,
+                "x": 26,
+                "y": 361.25
+              },
+              "id": "item-c-definite-reverse",
+              "key": "c",
+              "text": "AA AA AA AA",
+              "textLines": [
+                {
+                  "height": 10,
+                  "width": 80,
+                  "x": 26,
+                  "y": 361.25
+                },
+                {
+                  "height": 10,
+                  "width": 20,
+                  "x": 26,
+                  "y": 371.25
+                }
+              ]
+            },
+            {
+              "computedHeight": "10px",
+              "computedWidth": "40px",
+              "frame": {
+                "bottom": 371.25,
+                "height": 10,
+                "left": 53.3281,
+                "right": 93.3281,
+                "top": 361.25,
+                "width": 40,
+                "x": 53.3281,
+                "y": 361.25
+              },
+              "id": "item-b-definite-reverse",
+              "key": "b",
+              "text": "XXXX",
+              "textLines": [
+                {
+                  "height": 10,
+                  "width": 40,
+                  "x": 53.3281,
+                  "y": 361.25
+                }
+              ]
+            },
+            {
+              "computedHeight": "20px",
+              "computedWidth": "52.6719px",
+              "frame": {
+                "bottom": 381.25,
+                "height": 20,
+                "left": 26,
+                "right": 78.6719,
+                "top": 361.25,
+                "width": 52.6719,
+                "x": 26,
+                "y": 361.25
+              },
+              "id": "item-a-definite-reverse",
+              "key": "a",
+              "text": "AA A A",
+              "textLines": [
+                {
+                  "height": 10,
+                  "width": 40,
+                  "x": 26,
+                  "y": 361.25
+                },
+                {
+                  "height": 10,
+                  "width": 10,
+                  "x": 26,
+                  "y": 371.25
+                }
+              ]
+            }
+          ],
+          "root": {
+            "clientHeight": 20,
+            "clientWidth": 80,
+            "columnsCssom": "25.3281px 25.3438px 25.3281px",
+            "columnsPx": [
+              25.3281,
+              25.3438,
+              25.3281
+            ],
+            "computedHeight": "20px",
+            "computedWidth": "80px",
+            "frame": {
+              "bottom": 383.25,
+              "height": 24,
+              "left": 24,
+              "right": 108,
+              "top": 359.25,
+              "width": 84,
+              "x": 24,
+              "y": 359.25
+            },
+            "offsetHeight": 24,
+            "offsetWidth": 84,
+            "rowsCssom": "9px 9px",
+            "rowsPx": [
+              9,
+              9
+            ]
+          },
+          "widthInput": "80px"
+        }
+      ],
+      "source": {
+        "fonts": {
+          "ahemReady": true,
+          "status": "loaded"
+        },
+        "observationRounding": "DOM geometry rounded to 1e-4 CSS px; computed track list retained verbatim",
+        "platform": "MacIntel",
+        "title": "C11.4 max-content mixed cross-axis span groups oracle",
+        "url": "file:///Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/oracle.html",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "viewport": {
+          "devicePixelRatio": 1,
+          "height": 633,
+          "width": 1280
+        }
+      }
+    },
+    "agentBrowserVersion": "0.31.1",
+    "browserEngine": "HeadlessChrome 156.0.0.0"
+  },
+  "error": null
+}

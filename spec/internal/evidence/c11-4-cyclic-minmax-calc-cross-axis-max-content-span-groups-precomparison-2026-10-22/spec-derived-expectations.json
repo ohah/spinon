@@ -1,0 +1,364 @@
+{
+  "schema": "spinon.c11-4-max-content-cross-axis-span-groups-precomparison.v1",
+  "specification": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/",
+  "sections": [
+    "5.2",
+    "7.2.1",
+    "11.3",
+    "11.5",
+    "11.5.1",
+    "11.6"
+  ],
+  "oracleIndependence": "The rational tracks are derived from contribution sizes, span grouping, growth limits, and available space; Chrome measurements are recorded separately.",
+  "fixture": {
+    "columns": 3,
+    "rows": 2,
+    "track": "minmax(calc(10% + 2px), max-content)",
+    "columnGap": 2,
+    "rowGap": 2,
+    "rootBorderEachSide": 2,
+    "rootBoxSizing": "content-box",
+    "rootHeight": "max-content",
+    "font": {
+      "family": "Ahem",
+      "weight": 400,
+      "size": 10,
+      "lineHeight": 10,
+      "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448"
+    },
+    "items": {
+      "a": {
+        "columns": [
+          1,
+          3
+        ],
+        "rows": [
+          1,
+          3
+        ],
+        "text": "AA A A",
+        "minContentInline": 20,
+        "maxContentInline": 60,
+        "width": "auto",
+        "height": "auto"
+      },
+      "b": {
+        "columns": [
+          2,
+          4
+        ],
+        "rows": [
+          1,
+          3
+        ],
+        "text": "XXXX",
+        "minContentInline": 40,
+        "maxContentInline": 40,
+        "width": 40,
+        "height": 10
+      },
+      "c": {
+        "columns": [
+          1,
+          4
+        ],
+        "rows": [
+          1,
+          3
+        ],
+        "text": "AA AA AA AA",
+        "minContentInline": 20,
+        "maxContentInline": 110,
+        "width": "auto",
+        "height": "auto"
+      }
+    },
+    "scenes": [
+      {
+        "id": "max-content-forward",
+        "width": "max-content",
+        "order": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "id": "max-content-reverse",
+        "width": "max-content",
+        "order": [
+          "c",
+          "b",
+          "a"
+        ]
+      },
+      {
+        "id": "definite-forward",
+        "width": 80,
+        "order": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "id": "definite-reverse",
+        "width": 80,
+        "order": [
+          "c",
+          "b",
+          "a"
+        ]
+      }
+    ]
+  },
+  "derivation": {
+    "maxContentIntrinsicPass": {
+      "cyclicPercentageTreatment": "Treat the cyclic percentage component as auto while computing intrinsic container sizes; resolve it against the resulting inner size for layout.",
+      "span2MinContentPlannedIncreaseMaximum": [
+        9,
+        19,
+        19
+      ],
+      "basesAfterSpan2": [
+        9,
+        19,
+        19
+      ],
+      "span2MaxContentGrowthLimitsAfterA": [
+        24,
+        34,
+        19
+      ],
+      "span3CMaxContentContribution": 110,
+      "span3RemainingSpace": "110 - (24 + 34 + 19 + 2*2) = 29",
+      "span3PlannedIncreaseEach": "29/3",
+      "trackRationalsBeforePercentageResolve": [
+        "101/3",
+        "131/3",
+        "86/3"
+      ],
+      "trackDecimalsBeforePercentageResolve": [
+        33.6666666667,
+        43.6666666667,
+        28.6666666667
+      ],
+      "innerContainerSize": [
+        110,
+        10
+      ],
+      "rootBorderBox": [
+        114,
+        14
+      ]
+    },
+    "maxContentResolvedLayoutPass": {
+      "columnPercentageBasis": 110,
+      "resolvedColumnMinimum": "10% * 110 + 2 = 13px",
+      "bases": [
+        13,
+        13,
+        13
+      ],
+      "growthLimitsAfterSpan2MinContentB": [
+        "infinity",
+        19,
+        19
+      ],
+      "growthLimitsAfterSpan2MaxContentA": [
+        26,
+        32,
+        19
+      ],
+      "span3CMaxContentRemainingSpace": "110 - (26 + 32 + 19 + 2*2) = 29",
+      "trackRationals": [
+        "107/3",
+        "125/3",
+        "86/3"
+      ],
+      "trackDecimals": [
+        35.6666666667,
+        41.6666666667,
+        28.6666666667
+      ],
+      "rows": [
+        4,
+        4
+      ],
+      "rootBorderBox": [
+        114,
+        14
+      ],
+      "itemFramesRootRelative": {
+        "a": [
+          2,
+          2,
+          "238/3",
+          10
+        ],
+        "b": [
+          "119/3",
+          2,
+          40,
+          10
+        ],
+        "c": [
+          2,
+          2,
+          110,
+          10
+        ]
+      },
+      "textLineWidths": {
+        "a": [
+          60
+        ],
+        "b": [
+          40
+        ],
+        "c": [
+          110
+        ]
+      }
+    },
+    "definite80pxControl": {
+      "resolvedColumnMinimum": "10% * 80 + 2 = 10px",
+      "initialBases": [
+        10,
+        10,
+        10
+      ],
+      "growthLimitsAfterSpan2MinContentB": [
+        "infinity",
+        19,
+        19
+      ],
+      "growthLimitsAfterSpan2MaxContentA": [
+        24.5,
+        33.5,
+        19
+      ],
+      "growthLimitsAfterSpan3MaxContentC": [
+        "205/6",
+        "259/6",
+        "86/3"
+      ],
+      "availableTrackSpace": "80 - 2*2 gaps = 76px",
+      "maximizeTrackFreeSpace": "76 - 3*10 = 46px",
+      "trackRationals": [
+        "76/3",
+        "76/3",
+        "76/3"
+      ],
+      "trackDecimals": [
+        25.3333333333,
+        25.3333333333,
+        25.3333333333
+      ],
+      "textLineWidths": {
+        "a": [
+          40,
+          10
+        ],
+        "b": [
+          40
+        ],
+        "c": [
+          80,
+          20
+        ]
+      },
+      "columnIntrinsicHeight": 20,
+      "resolvedRowMinimum": "10% * 20 + 2 = 4px",
+      "rows": [
+        9,
+        9
+      ],
+      "innerContainerSize": [
+        80,
+        20
+      ],
+      "rootBorderBox": [
+        84,
+        24
+      ],
+      "itemFramesRootRelative": {
+        "a": [
+          2,
+          2,
+          "158/3",
+          20
+        ],
+        "b": [
+          "88/3",
+          2,
+          40,
+          10
+        ],
+        "c": [
+          2,
+          2,
+          80,
+          20
+        ]
+      }
+    }
+  },
+  "expected": {
+    "maxContentForwardAndReverse": {
+      "columns": [
+        35.6666666667,
+        41.6666666667,
+        28.6666666667
+      ],
+      "rows": [
+        4,
+        4
+      ],
+      "rootContentBox": [
+        110,
+        10
+      ],
+      "rootBorderBox": [
+        114,
+        14
+      ],
+      "lineCountsByItemKey": {
+        "a": 1,
+        "b": 1,
+        "c": 1
+      }
+    },
+    "definite80ForwardAndReverse": {
+      "columns": [
+        25.3333333333,
+        25.3333333333,
+        25.3333333333
+      ],
+      "rows": [
+        9,
+        9
+      ],
+      "rootContentBox": [
+        80,
+        20
+      ],
+      "rootBorderBox": [
+        84,
+        24
+      ],
+      "lineCountsByItemKey": {
+        "a": 2,
+        "b": 1,
+        "c": 2
+      }
+    },
+    "sourceOrderInvariant": true,
+    "maxTrackQuantizationToleranceCssPx": 0.015625
+  },
+  "limitations": [
+    "The Chrome observation does not provide the independent normative expectation.",
+    "The explicit-auto and explicit-px variants are Chromium diagnostics only.",
+    "The fixture does not establish Spinon runtime behavior, Android/iOS surfaces, WPT conformance, general CSS admission, glyph raster equality, or C11.4 completion."
+  ]
+}

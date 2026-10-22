@@ -1,0 +1,89 @@
+{
+  "schema": "spinon.c11-4-max-content-plan-docs-verification.v2",
+  "date": "2026-10-22",
+  "sourceHead": "5ce56617365c3929e9c0db7d5b70306327abe476",
+  "selectedBuild": {
+    "tool": "RSPress 2.0.22",
+    "command": "mise exec -- bun run --filter @spinon/docs docs:build -c <selected rspress config>",
+    "exitCode": 0,
+    "log": "selected-build-pass06.log",
+    "selectedRoot": "build/spinon/c11-4-c114-max-content-mixed-span-plan-root-20261022",
+    "output": "build/spinon/c11-4-c114-max-content-mixed-span-plan-out-pass06-20261022",
+    "fullRepositoryBuild": "not run; selected-page build only",
+    "pagesBuildDeploy": "not run",
+    "logNormalization": "Removed trailing spaces emitted by RSPress table formatting; command lines, build result, and route output are unchanged."
+  },
+  "agentBrowser": {
+    "version": "0.31.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "session": "spinon-c114-plan-pass05",
+    "planSceneRows": 4,
+    "planTwoStageChecks": {
+      "intrinsicPass": true,
+      "percentageResolvedPass": true
+    },
+    "planLocalRoutes": {
+      "checked": 28,
+      "http200": 28,
+      "excludedSelectedSiteHomeRoute": "/spinon/ (not part of selected-page build)"
+    },
+    "planReviewRows": 20,
+    "planPrDiffReviewRows": 20,
+    "precomparisonImages": [
+      {
+        "alt": "Chrome 156 max-content and definite mixed cross-axis span groups",
+        "complete": true,
+        "naturalWidth": 1280,
+        "naturalHeight": 633
+      },
+      {
+        "alt": "Agent Browser에서 확인한 새 로드맵 계획 행",
+        "complete": true,
+        "naturalWidth": 1280,
+        "naturalHeight": 633
+      }
+    ],
+    "roadmapNewLinks": {
+      "checked": 6,
+      "http200": 6
+    },
+    "roadmapRowVisible": true,
+    "roadmapRowCapture": "roadmap-agent-browser-row-pass04.png",
+    "officialStatus": {
+      "c11_4Checked": false,
+      "roadmapCompletion": "77/213"
+    },
+    "githubMainBlobLinks": "Pending live verification after merge"
+  },
+  "captures": {
+    "roadmap-agent-browser-row-pass04.png": {
+      "width": 1280,
+      "height": 633,
+      "sha256": "da878ac7ed489c1863d8c85ddf8c048bc21473afb623d444cb278be8a693b754"
+    },
+    "plan-page-agent-browser-pass03.png": {
+      "width": 1280,
+      "height": 5416,
+      "sha256": "8b4b280446fe80405631721f67b7342471f9069cc110a94f6033721eaaff7457",
+      "note": "Historical selected-build screenshot from pass03"
+    },
+    "precomparison-page-agent-browser-pass03.png": {
+      "width": 1280,
+      "height": 4061,
+      "sha256": "34c19691026aa818a700c96c453ff015cdeb8209d51094ed57f77aba53dc1fd7",
+      "note": "Historical selected-build screenshot from pass03"
+    }
+  },
+  "cleanup": {
+    "browserSessionClosed": true,
+    "agentBrowserDaemonPid": 14899,
+    "ownedAgentBrowserAndChromeProcessesRemaining": 0,
+    "selectedBuildServerStopped": true
+  },
+  "limitations": [
+    "Selected build disables dead-link and dead-image checks for unrelated repository pages.",
+    "The selected build omits the site home route, so its shared logo link is not included in the 28 checked selected routes.",
+    "This did not audit every repository route or deploy GitHub Pages.",
+    "Source GitHub main links and the PR image still require live verification after merge."
+  ]
+}

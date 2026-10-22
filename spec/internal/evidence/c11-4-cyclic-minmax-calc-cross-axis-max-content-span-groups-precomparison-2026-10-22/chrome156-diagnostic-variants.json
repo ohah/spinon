@@ -1,0 +1,103 @@
+{
+  "success": true,
+  "data": {
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 6847324482101409511
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    },
+    "origin": "file:///Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/oracle.html",
+    "result": {
+      "source": {
+        "classification": "diagnostic Chromium variants; not independent specification expectations",
+        "url": "file:///Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-precomparison-2026-10-22/oracle.html",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+      },
+      "variants": [
+        {
+          "columnsInput": "minmax(auto,max-content) minmax(auto,max-content) minmax(auto,max-content)",
+          "computedColumns": "33.6562px 43.6719px 28.6719px",
+          "items": [
+            {
+              "height": 10,
+              "key": "a",
+              "width": 79.328125
+            },
+            {
+              "height": 10,
+              "key": "b",
+              "width": 40
+            },
+            {
+              "height": 10,
+              "key": "c",
+              "width": 110
+            }
+          ],
+          "rootHeight": 14,
+          "rootWidth": 114,
+          "sourceId": "max-content-forward"
+        },
+        {
+          "columnsInput": "minmax(13px,max-content) minmax(13px,max-content) minmax(13px,max-content)",
+          "computedColumns": "35.6562px 41.6719px 28.6719px",
+          "items": [
+            {
+              "height": 10,
+              "key": "a",
+              "width": 79.328125
+            },
+            {
+              "height": 10,
+              "key": "b",
+              "width": 40
+            },
+            {
+              "height": 10,
+              "key": "c",
+              "width": 110
+            }
+          ],
+          "rootHeight": 14,
+          "rootWidth": 114,
+          "sourceId": "max-content-forward"
+        },
+        {
+          "columnsInput": "minmax(10px,max-content) minmax(10px,max-content) minmax(10px,max-content)",
+          "computedColumns": "25.3281px 25.3438px 25.3281px",
+          "items": [
+            {
+              "height": 20,
+              "key": "a",
+              "width": 52.671875
+            },
+            {
+              "height": 10,
+              "key": "b",
+              "width": 40
+            },
+            {
+              "height": 20,
+              "key": "c",
+              "width": 80
+            }
+          ],
+          "rootHeight": 24,
+          "rootWidth": 84,
+          "sourceId": "definite-forward"
+        }
+      ]
+    },
+    "agentBrowserVersion": "0.31.1",
+    "browserEngine": "HeadlessChrome 156.0.0.0"
+  },
+  "error": null
+}
