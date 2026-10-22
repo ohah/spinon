@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [cyclic minmax max-content span-groups](./c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** Chrome 156 Agent Browser 사전 관측, CSS Grid 2025 CRD 독립 기대값, 고정 HTML 입력과 계획 검토를 기록했다. 네 고정 scene의 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator 검증이 모두 통과했다. PR 검토·필수 CI·병합과 공식 상태 갱신 전까지 C11.4 checkbox와 완료 수 `77/213`은 유지한다.
+**상태:** Chrome 156 Agent Browser 사전 관측, CSS Grid 2025 CRD 독립 기대값, 고정 HTML 입력과 계획 검토를 기록했다. 네 고정 scene의 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator 검증과 PR 적대적 검토가 완료됐다. 이 slice는 C11.4 전체가 아니므로 C11.4 checkbox와 공식 완료 수 `77/213`은 변경하지 않는다.
 
 ## 목적
 
@@ -85,4 +85,4 @@ Chrome 156 Agent Browser 관측은 forward와 reverse에서 동일한 tracks와 
 - 두 플랫폼 run metadata, app hash, screenshot과 원본 JSON은 [runtime evidence](../spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-runtime-2026-10-23/README.md)에 둔다. AVD/iOS Simulator 결과는 실기기·hardware GPU 결과로 확대하지 않는다.
 - [구현 runtime 실패 관점 20개](../spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-runtime-2026-10-23/runtime-code-review-20.md)와 [구현 diff 실패 관점 20개](../spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-runtime-2026-10-23/pr-diff-review-20.md)를 계획 검토와 분리해 기록했다. Root min/max/aspect-ratio 검사와 Android host 장면·PixelCopy·reversed input 누락을 발견해 보강했다.
 
-시뮬레이터 관문은 완료했다. PR의 적대적 검토와 필수 CI, 병합 및 그에 따른 공식 상태 갱신 전까지 전체 기능 또는 C11.4 완료로 표시하지 않는다. 이 계획은 C11.4 checkbox와 공식 `77/213`을 변경하지 않는다.
+시뮬레이터 관문과 PR 적대적 검토는 완료했다. 이 고정 scene slice가 병합되어도 전체 기능 또는 C11.4 완료를 뜻하지 않는다. 더 넓은 Grid/image 입력과 상위 C11.4 범위가 남아 있으므로 이 계획은 C11.4 checkbox와 공식 `77/213`을 변경하지 않는다.
