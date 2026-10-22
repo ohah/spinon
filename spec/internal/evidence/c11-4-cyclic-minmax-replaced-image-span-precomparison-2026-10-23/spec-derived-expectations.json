@@ -1,0 +1,79 @@
+{
+  "source": "CSS Grid Layout Module Level 1 2025-03-26 CRD, sections 7.2.1, 11.5, 11.5.1",
+  "sourceUrl": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/",
+  "derivation": "Independent arithmetic from fixed image dimensions and spanning-track planned-increase rules; not derived from Chrome observations.",
+  "asset": {
+    "path": "tests/fixtures/resources/c14-1-png-basic.png",
+    "sha256": "5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2",
+    "naturalWidth": 24,
+    "naturalHeight": 16
+  },
+  "css": {
+    "columns": "repeat(3, minmax(calc(10% + 2px), max-content))",
+    "rows": "repeat(2, minmax(calc(10% + 2px), max-content))",
+    "columnGap": 2,
+    "rowGap": 2,
+    "border": 2,
+    "padding": 0,
+    "itemSizing": "width:auto; height:8px|12px|16px; justify-self:start; align-self:start"
+  },
+  "items": {
+    "A": {"width": 12, "height": 8, "columns": "1 / 3", "rows": "1 / 3"},
+    "B": {"width": 18, "height": 12, "columns": "2 / 4", "rows": "1 / 3"},
+    "C": {"width": 24, "height": 16, "columns": "1 / 4", "rows": "1 / 3"}
+  },
+  "intrinsic": {
+    "sizing": "min-content",
+    "cyclicPercentageIntrinsicBasis": {
+      "columnTrackBases": [2, 2, 2],
+      "rowTrackBases": [2, 2],
+      "note": "The cyclic percentage component behaves as auto for intrinsic sizing; the absolute 2px calc() term remains."
+    },
+    "columnSpan2PlannedIncreases": {
+      "A": [3, 3, 0],
+      "B": [0, 6, 6],
+      "trackwiseMaximum": [3, 6, 6],
+      "basesAfterGroup": [5, 8, 8]
+    },
+    "columnSpan3C": {
+      "contribution": 24,
+      "availableTrackAndGapSum": 25,
+      "additionalGrowth": 0
+    },
+    "columns": [5, 8, 8],
+    "rowSpan2PlannedIncreases": {
+      "A": [1, 1],
+      "B": [3, 3],
+      "C": [5, 5],
+      "trackwiseMaximum": [5, 5],
+      "rows": [7, 7]
+    },
+    "contentBox": {"width": 25, "height": 16},
+    "borderBox": {"width": 29, "height": 20},
+    "items": {
+      "A": {"x": 2, "y": 2, "width": 12, "height": 8},
+      "B": {"x": 9, "y": 2, "width": 18, "height": 12},
+      "C": {"x": 2, "y": 2, "width": 24, "height": 16}
+    }
+  },
+  "definite": {
+    "sizing": {"width": 80, "height": 80},
+    "resolvedMinimum": 10,
+    "columns": [10, 10, 10],
+    "rows": [10, 10],
+    "contentBox": {"width": 80, "height": 80},
+    "borderBox": {"width": 84, "height": 84},
+    "items": {
+      "A": {"x": 2, "y": 2, "width": 12, "height": 8},
+      "B": {"x": 14, "y": 2, "width": 18, "height": 12},
+      "C": {"x": 2, "y": 2, "width": 24, "height": 16}
+    }
+  },
+  "cases": [
+    {"id": "intrinsic-forward", "order": ["A", "B", "C"], "expectation": "intrinsic"},
+    {"id": "intrinsic-reverse", "order": ["C", "B", "A"], "expectation": "intrinsic"},
+    {"id": "definite-forward", "order": ["A", "B", "C"], "expectation": "definite"},
+    {"id": "definite-reverse", "order": ["C", "B", "A"], "expectation": "definite"}
+  ],
+  "toleranceCssPx": 0.015625
+}

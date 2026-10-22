@@ -1,0 +1,187 @@
+{
+  "pass": "pass08",
+  "sourceRevision": "a9a1abdaaf75bf3e8bcf70dccc8cfed2d2040f99",
+  "sourceMain": "a9a1abdaaf75bf3e8bcf70dccc8cfed2d2040f99",
+  "previousRoot": "build/spinon/c11-4-pr517-tailnet-root-pass52-selected",
+  "selectedRoot": "build/spinon/c11-4-cyclic-replaced-image-plan-root-pass08",
+  "method": "hard-linked prior selected tree with copy-on-write file overlays",
+  "copied": [
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "target": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 101184,
+      "sha256": "8d233c550dabdd0975ef0bd1089e564c1362ea24a92d0b0d4b7f7454e3f5610b"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-replaced-image-span.md",
+      "target": "plan/c11-4-cyclic-minmax-replaced-image-span.md",
+      "bytes": 9476,
+      "sha256": "1076282c194d9e7137bc3c99577b45d4f45547618651d06c6af08c9f918859ff"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-replaced-image-span-plan-review-20.md",
+      "target": "plan/c11-4-cyclic-minmax-replaced-image-span-plan-review-20.md",
+      "bytes": 4067,
+      "sha256": "001e9c05f8eaa55046fea9ed4dcd1920087450ebe0720284ffd12283b1c0e576"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "target": "roadmap.html",
+      "bytes": 248943,
+      "sha256": "3708f67d384676cdd4553286b50123e5739004645ca60a36910496936f26f80e"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "target": "public/roadmap.html",
+      "bytes": 248943,
+      "sha256": "3708f67d384676cdd4553286b50123e5739004645ca60a36910496936f26f80e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/README.md",
+      "target": "internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/README.md",
+      "bytes": 6869,
+      "sha256": "a83ed84d5060e3eb4a495a4e1583da46802b51eb49e89d217932b815749bf5c4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/spec-derived-expectations.json",
+      "target": "internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/spec-derived-expectations.json",
+      "bytes": 2915,
+      "sha256": "7fcdddbd8935343b68db42a262488874a1a739971715fe39e2be8d4d868a9338"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/chrome156-observation.json",
+      "target": "internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/chrome156-observation.json",
+      "bytes": 6175,
+      "sha256": "6f64249bf7dc2973c3c574c49a9f828de7c4eff271cb1ca0470829b44b6f1b94"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/chrome-agent-browser-precomparison.png",
+      "target": "internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/chrome-agent-browser-precomparison.png",
+      "bytes": 62586,
+      "sha256": "088d89db83da7a4690e6e4163e797731cbcb5d460da8a27e1e1b5d0e76b10963"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/plan-pr-diff-review-20.md",
+      "target": "internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/plan-pr-diff-review-20.md",
+      "bytes": 5536,
+      "sha256": "f848b0ce5fcae894f3a711d3be058aae0a9661daec62296224a1aaaff975514a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/roadmap-browser-verification.json",
+      "target": "internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/roadmap-browser-verification.json",
+      "bytes": 1661,
+      "sha256": "496ddecb49ac29321db66262a4911243ade41a2aedf67a169c2e087a1e477228"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/README.md",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/README.md",
+      "bytes": 6869,
+      "sha256": "a83ed84d5060e3eb4a495a4e1583da46802b51eb49e89d217932b815749bf5c4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/spec-derived-expectations.json",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/spec-derived-expectations.json",
+      "bytes": 2915,
+      "sha256": "7fcdddbd8935343b68db42a262488874a1a739971715fe39e2be8d4d868a9338"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/chrome156-observation.json",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/chrome156-observation.json",
+      "bytes": 6175,
+      "sha256": "6f64249bf7dc2973c3c574c49a9f828de7c4eff271cb1ca0470829b44b6f1b94"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/chrome-agent-browser-precomparison.png",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/chrome-agent-browser-precomparison.png",
+      "bytes": 62586,
+      "sha256": "088d89db83da7a4690e6e4163e797731cbcb5d460da8a27e1e1b5d0e76b10963"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/plan-pr-diff-review-20.md",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/plan-pr-diff-review-20.md",
+      "bytes": 5536,
+      "sha256": "f848b0ce5fcae894f3a711d3be058aae0a9661daec62296224a1aaaff975514a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/roadmap-browser-verification.json",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/roadmap-browser-verification.json",
+      "bytes": 1661,
+      "sha256": "496ddecb49ac29321db66262a4911243ade41a2aedf67a169c2e087a1e477228"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/README.md",
+      "target": "public/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/README.md",
+      "bytes": 6869,
+      "sha256": "a83ed84d5060e3eb4a495a4e1583da46802b51eb49e89d217932b815749bf5c4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/spec-derived-expectations.json",
+      "target": "public/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/spec-derived-expectations.json",
+      "bytes": 2915,
+      "sha256": "7fcdddbd8935343b68db42a262488874a1a739971715fe39e2be8d4d868a9338"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/chrome156-observation.json",
+      "target": "public/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/chrome156-observation.json",
+      "bytes": 6175,
+      "sha256": "6f64249bf7dc2973c3c574c49a9f828de7c4eff271cb1ca0470829b44b6f1b94"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/chrome-agent-browser-precomparison.png",
+      "target": "public/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/chrome-agent-browser-precomparison.png",
+      "bytes": 62586,
+      "sha256": "088d89db83da7a4690e6e4163e797731cbcb5d460da8a27e1e1b5d0e76b10963"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/plan-pr-diff-review-20.md",
+      "target": "public/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/plan-pr-diff-review-20.md",
+      "bytes": 5536,
+      "sha256": "f848b0ce5fcae894f3a711d3be058aae0a9661daec62296224a1aaaff975514a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/roadmap-browser-verification.json",
+      "target": "public/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/roadmap-browser-verification.json",
+      "bytes": 1661,
+      "sha256": "496ddecb49ac29321db66262a4911243ade41a2aedf67a169c2e087a1e477228"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/README.md",
+      "target": "public/spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/README.md",
+      "bytes": 6869,
+      "sha256": "a83ed84d5060e3eb4a495a4e1583da46802b51eb49e89d217932b815749bf5c4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/spec-derived-expectations.json",
+      "target": "public/spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/spec-derived-expectations.json",
+      "bytes": 2915,
+      "sha256": "7fcdddbd8935343b68db42a262488874a1a739971715fe39e2be8d4d868a9338"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/chrome156-observation.json",
+      "target": "public/spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/chrome156-observation.json",
+      "bytes": 6175,
+      "sha256": "6f64249bf7dc2973c3c574c49a9f828de7c4eff271cb1ca0470829b44b6f1b94"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/chrome-agent-browser-precomparison.png",
+      "target": "public/spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/chrome-agent-browser-precomparison.png",
+      "bytes": 62586,
+      "sha256": "088d89db83da7a4690e6e4163e797731cbcb5d460da8a27e1e1b5d0e76b10963"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/plan-pr-diff-review-20.md",
+      "target": "public/spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/plan-pr-diff-review-20.md",
+      "bytes": 5536,
+      "sha256": "f848b0ce5fcae894f3a711d3be058aae0a9661daec62296224a1aaaff975514a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/roadmap-browser-verification.json",
+      "target": "public/spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/roadmap-browser-verification.json",
+      "bytes": 1661,
+      "sha256": "496ddecb49ac29321db66262a4911243ade41a2aedf67a169c2e087a1e477228"
+    }
+  ],
+  "unrelatedUntrackedWorkspaceFilesTouched": false,
+  "existingPreviewServerTouched": false,
+  "existingTmuxSessionsTouched": false
+}

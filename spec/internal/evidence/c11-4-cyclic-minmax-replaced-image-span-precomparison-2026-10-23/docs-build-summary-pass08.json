@@ -1,0 +1,75 @@
+{
+  "sourceRevision": "a9a1abdaaf75bf3e8bcf70dccc8cfed2d2040f99",
+  "sourceMain": "a9a1abdaaf75bf3e8bcf70dccc8cfed2d2040f99",
+  "selectedBuild": {
+    "command": "mise exec -- bun run --filter @spinon/docs docs:build -- --config <rspress-pass08.config.ts>",
+    "rspressVersion": "2.0.22",
+    "exitCode": 0,
+    "rendered": 4,
+    "deadLinkAndImageChecks": false,
+    "routeResults": [
+      {
+        "route": "/plan/c11-4-cyclic-minmax-replaced-image-span.html",
+        "exists": true,
+        "bytes": 318564
+      },
+      {
+        "route": "/plan/c11-4-cyclic-minmax-replaced-image-span-plan-review-20.html",
+        "exists": true,
+        "bytes": 315781
+      },
+      {
+        "route": "/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/README.html",
+        "exists": true,
+        "bytes": 314702
+      },
+      {
+        "route": "/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/plan-pr-diff-review-20.html",
+        "exists": true,
+        "bytes": 312314
+      }
+    ],
+    "successLines": [
+      "@spinon/docs docs:build: success Pages rendered in 3684 ms.",
+      "@spinon/docs docs:build: ready   built in 6.76s (web)",
+      "@spinon/docs docs:build: ready   built in 6.76s (node)",
+      "@spinon/docs docs:build: Exited with code 0"
+    ]
+  },
+  "fullRepositoryBuild": {
+    "command": "mise exec -- bun run docs:build",
+    "exitCode": 1,
+    "deadLinkErrorPages": 774,
+    "deadLinkErrorsInNewSlice": 0
+  },
+  "roadmapAgentBrowser": {
+    "url": "file:///Users/yoonhb/Documents/workspace/spinon/spec/public/roadmap.html",
+    "title": "스피논 구현 로드맵",
+    "cardFound": true,
+    "linkCount": 5,
+    "links": [
+      {
+        "href": "/spinon/plan/c11-4-cyclic-minmax-replaced-image-span.html",
+        "text": "계획"
+      },
+      {
+        "href": "/spinon/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/README.html",
+        "text": "사전 비교·화면"
+      },
+      {
+        "href": "/spinon/plan/c11-4-cyclic-minmax-replaced-image-span-plan-review-20.html",
+        "text": "계획 검토 20개"
+      },
+      {
+        "href": "/spinon/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-precomparison-2026-10-23/plan-pr-diff-review-20.html",
+        "text": "계획 PR diff 검토 20개"
+      },
+      {
+        "href": "/spinon/STATUS.html#c11-css-grid",
+        "text": "공식 상태"
+      }
+    ]
+  },
+  "fixtureSha256": "5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2",
+  "chromeScreenshotSha256": "088d89db83da7a4690e6e4163e797731cbcb5d460da8a27e1e1b5d0e76b10963"
+}
