@@ -31,7 +31,7 @@
 | 25 | 화면 PR에서 raw screenshot 링크가 404인가 | PR #527 본문의 Android/iOS raw URL은 각각 HTTP 200이다. 통과. |
 | 26 | PR 본문에 기존 화면이 아닌 다른 산출물이 표시되는가 | Agent Browser DOM alt·src가 PR 본문의 Android definite-forward와 iOS definite-forward 파일에 대응한다. 통과. |
 | 27 | GitHub가 이미지를 내려받지 않았는데 성공으로 판단하는가 | Agent Browser에서 두 이미지 모두 `complete=true`, `rendered=true`; dimensions는 1080×2400 및 1206×2622다. 통과. |
-| 28 | Agent Browser나 terminal-browser가 확인 뒤 남아 있는가 | Agent Browser 탭은 0으로 닫았고 세션 daemon은 종료 확인 대상이다. `terminal-browser` 프로세스는 없으며 Tailnet 서버 PID 1191은 보존한다. 통과. |
+| 28 | Agent Browser나 terminal-browser가 확인 뒤 남아 있는가 | Agent Browser 탭은 0으로 닫혔고 마지막 process check에서 agent-browser와 `terminal-browser` 프로세스가 모두 없었다. Tailnet 서버 PID 1191은 보존했다. 통과. |
 | 29 | PR diff review evidence 자체가 계획/runtime 검토를 재탕하는가 | 이 문서는 merge metadata, docs consistency, routes, limits, rendered links만 검토한다. 기존 20·30개 구현 검토를 다시 세지 않는다. 통과. |
 | 30 | Tailnet 미리보기 동기화를 완료 전에 주장하는가 | README와 PR body는 sync가 PR #527 병합 후라고 명시하며 아직 성공한 preview sync를 주장하지 않는다. 통과. |
 
