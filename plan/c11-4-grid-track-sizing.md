@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-10-23 auto-repeat line name 보존과 배치 계획
+
+현재 cascade/projection/layout bridge는 auto-repeat track list의 바깥·반복 내부 line name을 거부한다. Chrome 156 fixed oracle에서 bare/positive/negative occurrence, named span, auto-fit collapse, fixed neighbors와 two-track pattern, repeat 경계 병합, row axis를 관찰했다. vendored Taffy 0.15.0은 expanded auto-repeat count 이후 named-line resolver를 갖고 있어, 반복 수를 새로 계산하지 않고 이름과 placement를 전달하는 계획을 작성했다. [집중 계획](./c11-4-auto-repeat-named-lines.md) · [Chrome 사전 비교·고정 입력·관측 JSON](../spec/internal/evidence/c11-4-auto-repeat-named-lines-precomparison-2026-10-23/README.md) · [계획 실패 관점 검토 20개](./c11-4-auto-repeat-named-lines-plan-review-20.md). 구현 전이며 공식 C11.4 체크와 완료 수 `77/213`은 바뀌지 않는다.
+
 ## 2026-10-22 양축 cyclic `minmax(calc())` spanning text
 
 explicit 2×2 track을 가로·세로로 동시에 span하는 direct Ahem text 한 개의 열→행 wrapping 의존성을 네 fixed scene으로 연결했다. cyclic/definite `min-content`는 Columns `[4,4]`, Rows `[29,29]`, root `14×64px`, item `10×60px`; `max-content`는 Columns `[29,29]`, Rows `[4,4]`, root `64×14px`, item `60×10px`다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 4/4 scene, PixelCopy 24/24, compositor 제출 전 Metal drawable 24/24 exact를 확인했다. 기본 `spinon-ffi` static archive에는 새 fixture scene/error/font marker가 없고 opt-in fixture archive에는 포함된다. 앱 화면은 box geometry만 보여주며 glyph paint를 검증하지 않는다. [계획](./c11-4-cyclic-minmax-calc-two-axis-spanning-text.md) · 구현 PR [#506](https://github.com/ohah/spinon/pull/506) · [Chrome oracle·Simulator 실행·화면·artifact 근거](../spec/internal/evidence/c11-4-cyclic-minmax-calc-two-axis-spanning-text-runtime-2026-10-22/README.md) · [구현 runtime 적대 검토 20개](../spec/internal/evidence/c11-4-cyclic-minmax-calc-two-axis-spanning-text-runtime-2026-10-22/implementation-runtime-review-20.md). C11.4 체크박스와 공식 `77/213`은 그대로 유지한다.
