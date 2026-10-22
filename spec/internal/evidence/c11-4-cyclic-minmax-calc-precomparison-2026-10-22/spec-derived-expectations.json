@@ -1,0 +1,54 @@
+{
+  "source": "CSS Grid Layout Module Level 1, 2025 CRD, sections 7.2.1 and 11.1",
+  "method": "Resolve cyclic percentages as auto for intrinsic container sizing, then resolve the calc maximum against the resulting container size.",
+  "font": {
+    "family": "Ahem",
+    "fontSizePx": 10,
+    "lineHeightPx": 10,
+    "aaSpaceMinContentWidthPx": 20,
+    "aaSpaceMaxContentWidthPx": 50
+  },
+  "scenes": [
+    {
+      "id": "cyclic-minmax-calc-column",
+      "rootSizePx": [50, 20],
+      "columnsPx": [29],
+      "rowsPx": [20],
+      "itemFramePx": [0, 0, 29, 20],
+      "calcBasisPx": 50,
+      "resolvedMaxPx": 29
+    },
+    {
+      "id": "cyclic-minmax-calc-row",
+      "rootSizePx": [20, 40],
+      "columnsPx": [20],
+      "rowsPx": [22],
+      "itemFramePx": [0, 0, 20, 22],
+      "calcBasisPx": 40,
+      "resolvedMaxPx": 22
+    },
+    {
+      "id": "definite-minmax-calc-column",
+      "rootSizePx": [40, 20],
+      "columnsPx": [24],
+      "rowsPx": [20],
+      "itemFramePx": [0, 0, 24, 20],
+      "calcBasisPx": 40,
+      "resolvedMaxPx": 24
+    },
+    {
+      "id": "definite-minmax-calc-small-limit",
+      "rootSizePx": [10, 20],
+      "columnsPx": [9],
+      "rowsPx": [20],
+      "itemFramePx": [0, 0, 9, 20],
+      "calcBasisPx": 10,
+      "resolvedMaxPx": 9
+    }
+  ],
+  "smallLimitScreenshotSamples": [
+    { "rootRelativeCssPx": [5, 5], "expectedRgb": [229, 72, 77], "meaning": "inside item" },
+    { "rootRelativeCssPx": [15, 5], "expectedRgb": [229, 72, 77], "meaning": "text outside item and root" },
+    { "rootRelativeCssPx": [25, 5], "expectedRgb": [255, 255, 255], "meaning": "past text on page background" }
+  ]
+}

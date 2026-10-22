@@ -4,9 +4,9 @@ use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent
 use spinon_layout::{ParagraphStyle, TextLayoutEngine, WhiteSpaceMode};
 use spinon_render::RuntimeSrgbColor;
 use spinon_style::{
-    ComputedCssDimension, ComputedCssGridTrackLengthPercentage, ComputedCssGridTrackSize,
-    ComputedCssMath, ComputedCssMaxSize, ComputedCssSpacingValue, ComputedElementStyle,
-    ComputedStyleProfile, ComputedStyleSnapshot,
+    ComputedCssDimension, ComputedCssGridTrackBreadth, ComputedCssGridTrackLengthPercentage,
+    ComputedCssGridTrackSize, ComputedCssMath, ComputedCssMaxSize, ComputedCssSpacingValue,
+    ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
 };
 
 use super::super::C11_4TextInput;
@@ -27,6 +27,7 @@ enum Track {
     Auto,
     Px(f32),
     FitContentCalc { percentage: f32, length_px: f32 },
+    MinMaxCalc { percentage: f32, length_px: f32 },
 }
 
 #[derive(Clone, Copy)]
@@ -44,7 +45,7 @@ const COLUMN_LIMIT: Track = Track::FitContentCalc {
     length_px: 4.0,
 };
 
-const SCENES: [Scene; 4] = [
+const SCENES: [Scene; 8] = [
     Scene {
         id: "cyclic-fit-content-calc-column",
         width: Dimension::MaxContent,
@@ -77,6 +78,50 @@ const SCENES: [Scene; 4] = [
         width: Dimension::Px(10.0),
         height: Dimension::Auto,
         columns: COLUMN_LIMIT,
+        rows: Track::Auto,
+        text: "aa aa",
+    },
+    Scene {
+        id: "cyclic-minmax-calc-column",
+        width: Dimension::MaxContent,
+        height: Dimension::Auto,
+        columns: Track::MinMaxCalc {
+            percentage: 0.5,
+            length_px: 4.0,
+        },
+        rows: Track::Auto,
+        text: "aa aa",
+    },
+    Scene {
+        id: "cyclic-minmax-calc-row",
+        width: Dimension::Px(20.0),
+        height: Dimension::MaxContent,
+        columns: Track::Px(20.0),
+        rows: Track::MinMaxCalc {
+            percentage: 0.5,
+            length_px: 2.0,
+        },
+        text: "a a a a",
+    },
+    Scene {
+        id: "definite-minmax-calc-column",
+        width: Dimension::Px(40.0),
+        height: Dimension::Auto,
+        columns: Track::MinMaxCalc {
+            percentage: 0.5,
+            length_px: 4.0,
+        },
+        rows: Track::Auto,
+        text: "aa aa",
+    },
+    Scene {
+        id: "definite-minmax-calc-small-limit",
+        width: Dimension::Px(10.0),
+        height: Dimension::Auto,
+        columns: Track::MinMaxCalc {
+            percentage: 0.5,
+            length_px: 4.0,
+        },
         rows: Track::Auto,
         text: "aa aa",
     },
@@ -118,13 +163,13 @@ pub(super) fn prepare_render_input(
     if !is_scene_root(snapshot, root)? {
         return Err(unsupported(
             root,
-            "not an allowlisted fit-content calc scene",
+            "not an allowlisted cyclic calc track scene",
         ));
     }
     let owner_style = style_for(styles, owner)?;
     if owner_style.properties.get("color").map(String::as_str) != Some("rgb(229, 72, 77)") {
         return Err(layout_failure(
-            "unsupported_c114_fit_content_calc_text_color",
+            "unsupported_c114_cyclic_calc_track_text_color",
             Some(owner.get()),
             None,
         ));
@@ -132,7 +177,7 @@ pub(super) fn prepare_render_input(
     let color =
         RuntimeSrgbColor::new(229.0 / 255.0, 72.0 / 255.0, 77.0 / 255.0, 1.0).map_err(|error| {
             layout_failure(
-                "c114_fit_content_calc_text_color_invalid",
+                "c114_cyclic_calc_track_text_color_invalid",
                 Some(owner.get()),
                 Some(error.to_string()),
             )
@@ -155,8 +200,10 @@ pub(super) fn prepare(
     else {
         if root_id.starts_with("c114-cyclic-fit-content-calc-")
             || root_id.starts_with("c114-definite-fit-content-calc-")
+            || root_id.starts_with("c114-cyclic-minmax-calc-")
+            || root_id.starts_with("c114-definite-minmax-calc-")
         {
-            return Err(unsupported(root, "unregistered fit-content calc scene"));
+            return Err(unsupported(root, "unregistered cyclic calc track scene"));
         }
         return Ok(None);
     };
@@ -208,7 +255,7 @@ pub(super) fn prepare(
     let mut engine = TextLayoutEngine::new_without_system_fonts();
     engine.register_font("Ahem", AHEM).map_err(|error| {
         layout_failure(
-            "c114_fit_content_calc_font_registration",
+            "c114_cyclic_calc_track_font_registration",
             Some(item.id().get()),
             Some(error.to_string()),
         )
@@ -262,7 +309,7 @@ fn validate_grid_style(
     {
         return Err(unsupported_node(
             style.node_id.get(),
-            "typed fit-content calc track matrix differs",
+            "typed cyclic calc track matrix differs",
         ));
     }
     Ok(())
@@ -296,7 +343,7 @@ fn validate_item_style(
     ] {
         if style.properties.get(name).map(String::as_str) != Some(expected) {
             return Err(layout_failure(
-                "unsupported_c114_fit_content_calc_style",
+                "unsupported_c114_cyclic_calc_track_style",
                 Some(style.node_id.get()),
                 Some(format!("{scene_id}: {name} expected {expected}")),
             ));
@@ -343,6 +390,23 @@ fn track_matches(actual: &[ComputedCssGridTrackSize], expected: Track) -> bool {
                         ComputedCssMath::LengthPx(length_px),
                     ]
             }
+            (
+                Some(ComputedCssGridTrackSize::MinMax {
+                    min: ComputedCssGridTrackBreadth::LengthPx(min),
+                    max: ComputedCssGridTrackBreadth::Calc(ComputedCssMath::Sum(terms)),
+                }),
+                Track::MinMaxCalc {
+                    percentage,
+                    length_px,
+                },
+            ) => {
+                min.abs() <= f32::EPSILON
+                    && terms.as_slice()
+                        == [
+                            ComputedCssMath::Percentage(percentage),
+                            ComputedCssMath::LengthPx(length_px),
+                        ]
+            }
             _ => false,
         }
 }
@@ -384,7 +448,7 @@ fn unsupported(node: HostNodeHandle, detail: &str) -> RuntimeLayoutFailure {
 
 fn unsupported_node(node: u64, detail: &str) -> RuntimeLayoutFailure {
     layout_failure(
-        "unsupported_c114_fit_content_calc_fixture",
+        "unsupported_c114_cyclic_calc_track_fixture",
         Some(node),
         Some(detail.to_owned()),
     )
@@ -396,13 +460,17 @@ mod tests {
     use std::collections::BTreeSet;
 
     #[test]
-    fn exposes_only_four_fixed_cyclic_fit_content_calc_scenes() {
+    fn exposes_fixed_cyclic_calc_track_scenes_by_function() {
         let scene_ids = SCENES.iter().map(|scene| scene.id).collect::<BTreeSet<_>>();
-        assert_eq!(SCENES.len(), 4);
+        assert_eq!(SCENES.len(), 8);
         assert_eq!(scene_ids.len(), SCENES.len());
         assert!(scene_ids.contains("cyclic-fit-content-calc-column"));
         assert!(scene_ids.contains("cyclic-fit-content-calc-row"));
         assert!(scene_ids.contains("definite-fit-content-calc-column"));
         assert!(scene_ids.contains("definite-fit-content-calc-small-limit"));
+        assert!(scene_ids.contains("cyclic-minmax-calc-column"));
+        assert!(scene_ids.contains("cyclic-minmax-calc-row"));
+        assert!(scene_ids.contains("definite-minmax-calc-column"));
+        assert!(scene_ids.contains("definite-minmax-calc-small-limit"));
     }
 }

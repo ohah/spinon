@@ -1,0 +1,11 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.86s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-f822121069dc3a19)
+
+running 1 test
+test runtime_gpu::fixtures::c11_4::cyclic_minmax_calc::tests::exposes_only_four_fixed_cyclic_minmax_calc_scenes ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 91 filtered out; finished in 0.01s
