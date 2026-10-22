@@ -35,4 +35,8 @@ PR diff의 문서와 sync 증거를 구현 계약, 게시 경로, 복구 가능�
 | 29 | 증거 파일이 review 이후 변했는데 manifest가 오래됐는가 | 통과. 로그 끝 공백을 정규화한 뒤 SHA256SUMS.txt를 다시 만들고 모든 항목의 체크섬이 일치했다. |
 | 30 | 이전 개발 작업물이나 untracked evidence를 함께 stage하는가 | 통과. staged path는 spec/internal/README.md와 이번 Tailnet sync evidence 폴더 26개 파일뿐이다. |
 
-PR 본문에는 Tailnet 로드맵과 runtime evidence 화면을 올린다. 검토 29–30의 final manifest와 staged path 검사는 commit 직전 실제 결과로 갱신한다.
+### PR #498 화면·병합 전 상태
+
+PR #498 본문에 Tailnet 로드맵과 runtime evidence screenshot을 올렸다. Agent Browser에서 두 raw GitHub 이미지가 `complete=true`, 각각 1680×1100으로 로드되는 것을 확인했다. `gh pr view`의 merge state는 `CLEAN`, status rollup은 비어 있고 `gh pr checks --required`는 이 branch에 보고된 required checks가 없다고 반환했다. 이 응답은 `pr-498-agent-browser-verification.json`에 저장했다. Rebase merge 뒤 PR 본문 image URL은 최종 merge SHA로 바꾸고 다시 확인한다.
+
+최종 manifest는 로그 공백 정규화 뒤 재생성하고 모든 checksum을 확인했다. PR diff는 `spec/internal/README.md`와 Tailnet sync evidence 폴더만 포함한다.
