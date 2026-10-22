@@ -1,0 +1,196 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+warn    Please set `output.cleanDistPath` config manually.
+warn    Current root path: /Users/yoonhb/Documents/workspace/spinon/packages/docs
+warn    Current dist path: /Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-site-pass26-initial
+error   build failed in 2.75s (node)
+error   build failed in 2.91s (web)
+error   Build errors:
+File: ../../build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md:3:1-151
+  × Module not found: Can't resolve 'android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png";
+   · ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ 4 │ import image1 from "ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png";
+ 5 │ function _createMdxContent(props) {
+   ╰────
+  help: Did you mean './android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md ×
+
+File: ../../build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md:4:1-155
+  × Module not found: Can't resolve 'ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png";
+ 4 │ import image1 from "ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png";
+   · ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ 5 │ function _createMdxContent(props) {
+ 6 │     const _components = {
+   ╰────
+  help: Did you mean './ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md ×
+
+File: ../../build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md:3:1-151
+  × Module not found: Can't resolve 'android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png";
+   · ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ 4 │ import image1 from "ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png";
+ 5 │ function _createMdxContent(props) {
+   ╰────
+  help: Did you mean './android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md ×
+
+File: ../../build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md:4:1-155
+  × Module not found: Can't resolve 'ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png";
+ 4 │ import image1 from "ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png";
+   · ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ 5 │ function _createMdxContent(props) {
+ 6 │     const _components = {
+   ╰────
+  help: Did you mean './ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md ×
+
+File: ../../build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md:3:1-151
+  × Module not found: Can't resolve 'android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png";
+   · ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ 4 │ import image1 from "ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png";
+ 5 │ function _createMdxContent(props) {
+   ╰────
+  help: Did you mean './android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md ×
+
+File: ../../build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md:4:1-155
+  × Module not found: Can't resolve 'ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png";
+ 4 │ import image1 from "ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png";
+   · ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ 5 │ function _createMdxContent(props) {
+ 6 │     const _components = {
+   ╰────
+  help: Did you mean './ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md ×
+
+File: ../../build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md:3:1-151
+  × Module not found: Can't resolve 'android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png";
+   · ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ 4 │ import image1 from "ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png";
+ 5 │ function _createMdxContent(props) {
+   ╰────
+  help: Did you mean './android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md ×
+
+File: ../../build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md:4:1-155
+  × Module not found: Can't resolve 'ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "android-avd-c114-overlapping-span-groups-android-avd-20261022T045550962Z-9ada2377/definite-minmax-calc-overlap-small-forward.png";
+ 4 │ import image1 from "ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png";
+   · ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ 5 │ function _createMdxContent(props) {
+ 6 │     const _components = {
+   ╰────
+  help: Did you mean './ios-simulator-c114-overlapping-span-groups-ios-simulator-20261022T045608568Z-282431e3/definite-minmax-calc-overlap-small-forward.png'?
+
+        Requests that should resolve in the current directory need to start with './'.
+        Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+
+        If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+        which tries to resolve these kind of requests in the current directory too.
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial-selected/spec/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md ×
+
+error   Rspack build failed.
+    at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/dist/m.js:4309:141
+    at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9074:31
+    at callback1 (file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9082:78)
+    at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9088:36
+    at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:12604:36

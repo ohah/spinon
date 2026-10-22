@@ -1,0 +1,11 @@
+{
+  "count77of213": true,
+  "rect": {
+    "bottom": 533.828125,
+    "top": 219.828125
+  },
+  "scrollY": 53240,
+  "text": "2026-10-22 C11.4 cyclic minmax(calc()) overlapping span-groups fixed runtime slice: 같은 span-2 group의 겹치는 70px·80px text contribution 뒤 span-3 140px contribution을 적용하는 여섯 fixed scene을 추가했다. 독립 planned increase [34,39,39], 최종 Columns [42,47,47]; definite 100px control은 [32,32,32]다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 6/6 scene, 두 small control의 root 내부·바깥 text·text 뒤 clear 표본을 각각 6/6 exact로 확인했다. Android는 AVD PixelCopy, iOS는 compositor 제출 전 Metal drawable이다. 기본 release FFI archive에는 신규 ID와 fixture marker가 없고 opt-in positive control에만 있다. 제한 fixture이며 일반 CSS admission, WPT, 실기기/hardware GPU, CSS border stroke, iOS compositor 이후 pixel 및 전체 C11.4를 검증하지 않는다. 구현 PR #500은 2026-10-22 05:11:19 UTC Rebase and merge로 병합되어 2f3f45c6aa27f427b36e906fa3a72fd8d864e402를 남겼다. 병합 당시 status-check rollup은 비어 있었고 main required status checks는 설정되어 있지 않았다. C11.4 checkbox와 공식 완료 수 77/213은 유지한다. 계획 · 실행 화면·pixel·build·artifact 근거 · 구현 실패 관점 20개 · PR diff 검토 20개.",
+  "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html"
+}

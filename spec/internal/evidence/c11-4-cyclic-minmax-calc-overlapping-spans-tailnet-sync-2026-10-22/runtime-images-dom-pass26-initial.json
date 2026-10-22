@@ -1,0 +1,28 @@
+{
+  "images": [
+    {
+      "alt": "logo",
+      "complete": true,
+      "naturalHeight": 150,
+      "naturalWidth": 150,
+      "src": "https://macstudio.tailed42f2.ts.net/spinon/logo.svg"
+    },
+    {
+      "alt": "Android API 37 AVD, definite 100px forward scene",
+      "complete": true,
+      "naturalHeight": 2400,
+      "naturalWidth": 1080,
+      "src": "https://macstudio.tailed42f2.ts.net/spinon/static/image/definite-minmax-calc-overlap-small-forward.b8cc4c8c0d.png"
+    },
+    {
+      "alt": "iPhone 17 Pro iOS 26.2 Simulator, definite 100px forward scene",
+      "complete": true,
+      "naturalHeight": 2622,
+      "naturalWidth": 1206,
+      "src": "https://macstudio.tailed42f2.ts.net/spinon/static/image/definite-minmax-calc-overlap-small-forward.2e824efe34.png"
+    }
+  ],
+  "textHasSixOfSix": true,
+  "title": "C11.4 overlapping cyclic minmax(calc()) span runtime - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.html"
+}
