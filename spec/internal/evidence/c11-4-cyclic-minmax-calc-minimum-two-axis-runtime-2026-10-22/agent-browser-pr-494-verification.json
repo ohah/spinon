@@ -1,0 +1,43 @@
+{
+  "verifiedAtUtc": "2026-10-22T02:49:27Z",
+  "pullRequest": {
+    "number": 494,
+    "url": "https://github.com/ohah/spinon/pull/494",
+    "title": "docs(c11.4): PR #493 병합 결과를 로드맵에 반영"
+  },
+  "browser": {
+    "tool": "agent-browser",
+    "version": "0.31.1",
+    "namespace": "s494r",
+    "session": "p494r",
+    "pageHeadingObserved": "docs(c11.4): PR #493 병합 결과를 로드맵에 반영 - #494"
+  },
+  "images": [
+    {
+      "alt": "Android API 37 ARM64 AVD 양축 cyclic scene",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/main/spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-runtime-2026-10-22/android-avd-c114-cyclic-percent-tracks-android-avd-20261022T022619123Z-93c2e1cb/cyclic-minmax-calc-min-both-axes.png",
+      "complete": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400,
+      "renderedWidth": 782,
+      "renderedHeight": 1738
+    },
+    {
+      "alt": "iPhone 17 Pro iOS 26.2 Simulator 양축 cyclic scene",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/main/spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-runtime-2026-10-22/ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261022T022743674Z-063697ed/cyclic-minmax-calc-min-both-axes.png",
+      "complete": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622,
+      "renderedWidth": 782,
+      "renderedHeight": 1700
+    }
+  ],
+  "cleanup": {
+    "closeCommand": "agent-browser --namespace s494r --session p494r close",
+    "backgroundPidBeforeClose": 25079,
+    "backgroundPidExited": true,
+    "sessionInfoActiveAfterClose": false,
+    "globalSessionListAfterClose": [],
+    "chromeRemoteDebuggingProcessesAfterClose": []
+  }
+}
