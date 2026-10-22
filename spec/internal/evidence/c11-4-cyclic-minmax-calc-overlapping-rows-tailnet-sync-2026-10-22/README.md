@@ -1,5 +1,7 @@
 # PR #503 병합 뒤 Tailnet 로드맵 동기화
 
+문서 sync 근거 PR: [#504](https://github.com/ohah/spinon/pull/504).
+
 PR [#503](https://github.com/ohah/spinon/pull/503)은 2026-10-22 06:31:18 UTC Rebase and merge되어 `36acdd4f48f23499835530704fa8aef20590a6e5`를 남겼다. 이 동기화는 그 merge 상태를 집중 계획·공식 상태·공개 로드맵의 private Tailnet 미리보기에 반영했다. GitHub Pages와 `gh-pages`는 배포하지 않았다.
 
 ## 선택 문서 build
@@ -31,4 +33,4 @@ PR [#503](https://github.com/ohah/spinon/pull/503)은 2026-10-22 06:31:18 UTC Re
 
 ![Tailnet STATUS에 보이는 C11.4 결과와 미완료 수](./tailnet-status-agent-browser-pass28.png)
 
-이 preview 작업은 공식 C11.4 상태를 완료로 표시하지 않는다. C11.4는 미완료이며 공식 완료 수 `77/213`을 유지한다. sync safety 점검은 [서로 다른 실패 관점 20개](./sync-review-20.md)에 기록했다.
+이 preview 작업은 공식 C11.4 상태를 완료로 표시하지 않는다. C11.4는 미완료이며 공식 완료 수 `77/213`을 유지한다. sync safety 점검은 [서로 다른 실패 관점 20개](./sync-review-20.md)에 기록했다. PR 변경 검토는 [별도 실패 관점 20개](./pr-diff-review-20.md)에 기록했다.
