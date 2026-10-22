@@ -16,14 +16,12 @@ pub(super) fn project_grid_item_placement(
 ) -> Result<(Option<GridItemInput>, bool), StyleLayoutError> {
     let (row_start, row_end, row_used_implicit_named_line) =
         match container.rows_auto_repeat.as_ref() {
-            Some(auto_repeat) => named_line::project_axis_for_auto_repeat(
+            Some(_) => named_line::project_axis_for_auto_repeat(
                 node,
                 "grid-row-start",
                 "grid-row-end",
                 &placement.row_start,
                 &placement.row_end,
-                &container.rows_line_names,
-                &auto_repeat.line_names,
             )?,
             None => named_line::project_axis_with_areas_and_implicit_named_lines(
                 node,
@@ -43,14 +41,12 @@ pub(super) fn project_grid_item_placement(
         };
     let (column_start, column_end, column_used_implicit_named_line) =
         match container.columns_auto_repeat.as_ref() {
-            Some(auto_repeat) => named_line::project_axis_for_auto_repeat(
+            Some(_) => named_line::project_axis_for_auto_repeat(
                 node,
                 "grid-column-start",
                 "grid-column-end",
                 &placement.column_start,
                 &placement.column_end,
-                &container.columns_line_names,
-                &auto_repeat.line_names,
             )?,
             None => named_line::project_axis_with_areas_and_implicit_named_lines(
                 node,
@@ -171,7 +167,7 @@ mod tests {
     }
 
     #[test]
-    fn auto_repeat_item_projection_rejects_an_unlisted_name() {
+    fn auto_repeat_item_projection_preserves_an_unlisted_name_for_implicit_fallback() {
         let placement = ComputedCssGridItemPlacement {
             row_start: ComputedCssGridPlacement::Auto,
             row_end: ComputedCssGridPlacement::Auto,
@@ -181,15 +177,23 @@ mod tests {
             },
             column_end: ComputedCssGridPlacement::Auto,
         };
-        assert!(matches!(
-            project_grid_item_placement(
-                NodeId::new(23).unwrap(),
-                &placement,
-                &container(),
-                None,
-                false,
-            ),
-            Err(crate::StyleLayoutError::UnsupportedNamedGridLine { .. })
-        ));
+        let (item, used_implicit) = project_grid_item_placement(
+            NodeId::new(23).unwrap(),
+            &placement,
+            &container(),
+            None,
+            false,
+        )
+        .unwrap();
+        let item = item.unwrap();
+        assert_eq!(
+            item.column_start,
+            GridPlacementInput::NamedLine {
+                name: "missing".into(),
+                occurrence: 0,
+            }
+        );
+        assert_eq!(item.column_end, GridPlacementInput::Auto);
+        assert!(!used_implicit);
     }
 }

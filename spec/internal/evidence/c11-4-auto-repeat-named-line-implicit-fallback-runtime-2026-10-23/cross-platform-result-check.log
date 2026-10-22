@@ -1,0 +1,6 @@
+Android/iOS observation, frame, track, and draw/present summaries match exactly.
+scenes=10
+node_frames=20
+draw_presented=true
+Android PixelCopy exact samples=30/30
+iOS Metal drawable exact samples=30/30

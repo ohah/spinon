@@ -275,17 +275,13 @@ fn named_line_metadata_shape_and_zero_span_count_fail_closed() {
 }
 
 #[test]
-fn auto_repeat_named_placements_remain_symbolic_and_require_authored_names() {
-    let outer_names = names(&[&[], &["repeat-start"], &[]]);
-    let repeated_names = names(&[&["item"], &["item"]]);
+fn auto_repeat_named_placements_remain_symbolic_with_or_without_authored_names() {
     let projected = project_axis_for_auto_repeat(
         NodeId::new(15).unwrap(),
         "grid-column-start",
         "grid-column-end",
         &bare_named("item"),
         &span_named("item", 2),
-        &outer_names,
-        &repeated_names,
     )
     .unwrap();
     assert_eq!(
@@ -303,19 +299,53 @@ fn auto_repeat_named_placements_remain_symbolic_and_require_authored_names() {
         )
     );
 
-    for placement in [
-        bare_named("not-authored"),
-        named("item", 0),
-        named("item", 40_000),
-    ] {
+    let missing_name = project_axis_for_auto_repeat(
+        NodeId::new(16).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &bare_named("not-authored"),
+        &ComputedCssGridPlacement::Auto,
+    )
+    .unwrap();
+    assert_eq!(
+        missing_name,
+        (
+            GridPlacementInput::NamedLine {
+                name: "not-authored".to_owned(),
+                occurrence: 0,
+            },
+            GridPlacementInput::Auto,
+            false,
+        )
+    );
+
+    let missing_span = project_axis_for_auto_repeat(
+        NodeId::new(17).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &ComputedCssGridPlacement::Line(4),
+        &span_named("not-authored", 2),
+    )
+    .unwrap();
+    assert_eq!(
+        missing_span,
+        (
+            GridPlacementInput::Line(4),
+            GridPlacementInput::SpanNamed {
+                name: "not-authored".to_owned(),
+                count: 2,
+            },
+            false,
+        )
+    );
+
+    for placement in [named("item", 0), named("item", 40_000)] {
         let error = project_axis_for_auto_repeat(
             NodeId::new(15).unwrap(),
             "grid-column-start",
             "grid-column-end",
             &placement,
             &ComputedCssGridPlacement::Auto,
-            &outer_names,
-            &repeated_names,
         )
         .unwrap_err();
         assert!(matches!(
@@ -323,6 +353,19 @@ fn auto_repeat_named_placements_remain_symbolic_and_require_authored_names() {
             StyleLayoutError::UnsupportedNamedGridLine { .. }
         ));
     }
+
+    let error = project_axis_for_auto_repeat(
+        NodeId::new(18).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &ComputedCssGridPlacement::Line(1),
+        &span_named("not-authored", 70_000),
+    )
+    .unwrap_err();
+    assert!(matches!(
+        error,
+        StyleLayoutError::UnsupportedNamedGridLine { .. }
+    ));
 }
 
 #[test]

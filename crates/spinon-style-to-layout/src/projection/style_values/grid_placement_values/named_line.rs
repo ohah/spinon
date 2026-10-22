@@ -119,14 +119,12 @@ pub(super) fn project_axis_for_auto_repeat(
     end_property: &'static str,
     start: &ComputedCssGridPlacement,
     end: &ComputedCssGridPlacement,
-    outer_names: &[Vec<String>],
-    repeated_names: &[Vec<String>],
 ) -> Result<(GridPlacementInput, GridPlacementInput, bool), StyleLayoutError> {
     let start = decode(node, start_property, start)?;
     let end = decode(node, end_property, end)?;
     Ok((
-        to_auto_repeat_layout(node, start_property, start, outer_names, repeated_names)?,
-        to_auto_repeat_layout(node, end_property, end, outer_names, repeated_names)?,
+        to_auto_repeat_layout(node, start_property, start)?,
+        to_auto_repeat_layout(node, end_property, end)?,
         false,
     ))
 }
@@ -135,22 +133,12 @@ fn to_auto_repeat_layout(
     node: NodeId,
     property: &'static str,
     placement: Placement<'_>,
-    outer_names: &[Vec<String>],
-    repeated_names: &[Vec<String>],
 ) -> Result<GridPlacementInput, StyleLayoutError> {
     match placement {
         Placement::Auto => Ok(GridPlacementInput::Auto),
         Placement::Line(line) => Ok(GridPlacementInput::Line(line)),
         Placement::Span(count) => Ok(GridPlacementInput::Span(count)),
         Placement::NamedLine { name, occurrence } => {
-            if !auto_repeat_name_exists(name, outer_names, repeated_names) {
-                return Err(unsupported_named_line(
-                    node,
-                    property,
-                    name,
-                    "이름이 auto-repeat 축의 authored explicit line metadata에 없습니다",
-                ));
-            }
             let occurrence_was_explicit = occurrence.is_some();
             let occurrence = occurrence.unwrap_or(0);
             if occurrence == 0 && occurrence_was_explicit {
@@ -175,14 +163,6 @@ fn to_auto_repeat_layout(
             })
         }
         Placement::SpanNamed { name, count } => {
-            if !auto_repeat_name_exists(name, outer_names, repeated_names) {
-                return Err(unsupported_named_line(
-                    node,
-                    property,
-                    name,
-                    "이름이 auto-repeat 축의 authored explicit line metadata에 없습니다",
-                ));
-            }
             u16::try_from(count).map_err(|_| {
                 unsupported_named_line(
                     node,
@@ -197,18 +177,6 @@ fn to_auto_repeat_layout(
             })
         }
     }
-}
-
-fn auto_repeat_name_exists(
-    name: &str,
-    outer_names: &[Vec<String>],
-    repeated_names: &[Vec<String>],
-) -> bool {
-    outer_names
-        .iter()
-        .chain(repeated_names)
-        .flatten()
-        .any(|authored| authored == name)
 }
 
 fn copy_layout_name(

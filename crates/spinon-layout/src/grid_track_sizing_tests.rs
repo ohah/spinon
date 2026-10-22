@@ -243,6 +243,163 @@ fn auto_repeat_named_lines_resolve_after_repeat_expansion() {
     }
 }
 
+fn implicit_fallback_auto_repeat_input(
+    columns_axis: bool,
+    repeat_start: GridPlacementInput,
+    repeat_end: GridPlacementInput,
+) -> LayoutInput {
+    let mut input = grid_input(
+        if columns_axis {
+            vec![GridTrackSize::LengthPx(40.0)]
+        } else {
+            vec![GridTrackSize::LengthPx(20.0)]
+        },
+        if columns_axis {
+            vec![GridTrackSize::LengthPx(20.0)]
+        } else {
+            vec![GridTrackSize::LengthPx(40.0)]
+        },
+        1,
+        LayoutGap::default(),
+    );
+    input.nodes[0].style.width = LayoutDimension::Fixed(if columns_axis { 125.0 } else { 20.0 });
+    input.nodes[0].style.height = LayoutDimension::Fixed(if columns_axis { 20.0 } else { 125.0 });
+    input.viewport.width = if columns_axis { 125.0 } else { 20.0 };
+    input.viewport.height = if columns_axis { 20.0 } else { 125.0 };
+    input.nodes[1].style.width = if columns_axis {
+        LayoutDimension::Auto
+    } else {
+        LayoutDimension::Fixed(20.0)
+    };
+    input.nodes[1].style.height = LayoutDimension::Fixed(10.0);
+
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::TrackSizing;
+    container.auto_rows = GridAutoRows::LengthPx(20.0);
+    container.auto_columns = crate::GridAutoColumns::LengthPx(20.0);
+    if columns_axis {
+        container.columns_auto_repeat = Some(GridAutoRepeat {
+            mode: GridAutoRepeatMode::AutoFill,
+            start: 0,
+            end: 1,
+            line_names: vec![vec!["cell".into()], vec!["cell".into()]],
+        });
+        container.columns_line_names = vec![Vec::new(), Vec::new()];
+        input.grid_items.insert(
+            id(2),
+            GridItemInput {
+                column_start: repeat_start,
+                column_end: repeat_end,
+                row_start: GridPlacementInput::Line(1),
+                row_end: GridPlacementInput::Line(2),
+            },
+        );
+    } else {
+        container.rows_auto_repeat = Some(GridAutoRepeat {
+            mode: GridAutoRepeatMode::AutoFill,
+            start: 0,
+            end: 1,
+            line_names: vec![vec!["cell".into()], vec!["cell".into()]],
+        });
+        container.rows_line_names = vec![Vec::new(), Vec::new()];
+        input.grid_items.insert(
+            id(2),
+            GridItemInput {
+                column_start: GridPlacementInput::Line(1),
+                column_end: GridPlacementInput::Line(2),
+                row_start: repeat_start,
+                row_end: repeat_end,
+            },
+        );
+    }
+    input
+}
+
+#[test]
+fn auto_repeat_named_placement_uses_implicit_lines_when_name_is_missing_or_short() {
+    let named = |name: &str, occurrence| GridPlacementInput::NamedLine {
+        name: name.to_owned(),
+        occurrence,
+    };
+    let span = |name: &str, count| GridPlacementInput::SpanNamed {
+        name: name.to_owned(),
+        count,
+    };
+    let cases = [
+        (
+            true,
+            named("ghost", 5),
+            named("ghost", 6),
+            (220.0, 0.0, 20.0, 10.0),
+        ),
+        (
+            true,
+            named("cell", 5),
+            named("cell", 6),
+            (140.0, 0.0, 20.0, 10.0),
+        ),
+        (
+            true,
+            named("ghost", -5),
+            named("ghost", -4),
+            (0.0, 0.0, 20.0, 10.0),
+        ),
+        (
+            true,
+            named("cell", -5),
+            named("cell", -4),
+            (0.0, 0.0, 20.0, 10.0),
+        ),
+        (
+            true,
+            GridPlacementInput::Line(4),
+            span("ghost", 1),
+            (120.0, 0.0, 20.0, 10.0),
+        ),
+        (
+            true,
+            span("ghost", 1),
+            GridPlacementInput::Line(1),
+            (0.0, 0.0, 20.0, 10.0),
+        ),
+        (
+            true,
+            GridPlacementInput::Line(3),
+            span("cell", 2),
+            (80.0, 0.0, 60.0, 10.0),
+        ),
+        (
+            true,
+            span("cell", 2),
+            GridPlacementInput::Line(2),
+            (0.0, 0.0, 60.0, 10.0),
+        ),
+        (
+            false,
+            named("ghost", 5),
+            named("ghost", 6),
+            (0.0, 220.0, 20.0, 10.0),
+        ),
+        (
+            false,
+            named("ghost", -5),
+            named("ghost", -4),
+            (0.0, 0.0, 20.0, 10.0),
+        ),
+    ];
+
+    for (case_index, (columns_axis, start, end, expected)) in cases.into_iter().enumerate() {
+        let input = implicit_fallback_auto_repeat_input(columns_axis, start, end);
+        let output = TaffyLayoutEngine.compute(&input).unwrap();
+        let frame = output.frames[&id(2)];
+        assert_eq!(
+            (frame.x, frame.y, frame.width, frame.height),
+            expected,
+            "case {case_index}"
+        );
+    }
+}
+
 #[test]
 fn auto_repeat_accepts_independent_repeats_on_both_axes() {
     let repeated = GridTrackSize::MinMax {

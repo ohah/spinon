@@ -1,0 +1,28 @@
+{
+  "serial": "emulator-5558",
+  "target": "android-avd",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone64_arm64",
+  "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+  "apkSha256": "3ba65f987a5e358e274f773895429c7e6a1889030aad2cb0047a7ea40ad4c129",
+  "installedApkSha256": "3ba65f987a5e358e274f773895429c7e6a1889030aad2cb0047a7ea40ad4c129",
+  "sourceRevision": {
+    "commit": "5b7b2be667b298c2a927c0c9bf3135ebf6752b4b",
+    "tree": "8759ff36abc83cd19510f1ae6262a809c98a50fa",
+    "trackedDiffSha256": "f172120401195f2938932b4f6f129b6a6295f945e7a0f91074c7d115d768e6f2",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_named_line_scenes.json",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_named_lines.rs",
+      "crates/spinon-layout/src/grid_auto_placement/dense_column.rs",
+      "crates/spinon-layout/src/grid_track_sizing_tests.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values/grid_placement_values.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values/grid_placement_values/named_line.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values/grid_placement_values/named_line/tests.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs"
+    ]
+  }
+}
