@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11.4 cyclic minmax calc cross-axis span groups</title>
+<style>
+  @font-face { font-family: Ahem; src: url("../../resources/c15/Ahem.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+  * { box-sizing: content-box; }
+  body { margin: 0; padding: 16px; color: #24292f; font: 14px/1.4 sans-serif; }
+  .case { margin: 0 0 24px; }
+  .grid {
+    display: grid;
+    width: min-content;
+    height: max-content;
+    grid-template-columns: repeat(3, minmax(calc(10% + 2px), max-content));
+    grid-template-rows: repeat(2, minmax(calc(10% + 2px), max-content));
+    gap: 2px;
+    border: 2px solid #f0c674;
+    padding: 0;
+    overflow: visible;
+    background: #101820;
+    font: 10px/10px Ahem, sans-serif;
+    white-space: normal;
+  }
+  .definite .grid { width: 40px; }
+  .item { margin: 0; padding: 0; border: 0; min-width: auto; min-height: auto; color: #101820; background: #e5484d; }
+  .item.b { width: 40px; height: 10px; }
+  .a { grid-column: 1 / 3; grid-row: 1 / 3; }
+  .b { grid-column: 2 / 4; grid-row: 1 / 3; }
+</style>
+<main>
+  <section class="case intrinsic" data-case="intrinsic-forward">
+    <h2>Intrinsic forward</h2>
+    <div class="grid"><div class="item a">AA A A</div><div class="item b">XXXX</div></div>
+  </section>
+  <section class="case intrinsic reverse" data-case="intrinsic-reverse">
+    <h2>Intrinsic reverse</h2>
+    <div class="grid"><div class="item b">XXXX</div><div class="item a">AA A A</div></div>
+  </section>
+  <section class="case definite" data-case="definite-forward">
+    <h2>Definite 40px forward</h2>
+    <div class="grid"><div class="item a">AA A A</div><div class="item b">XXXX</div></div>
+  </section>
+  <section class="case definite reverse" data-case="definite-reverse">
+    <h2>Definite 40px reverse</h2>
+    <div class="grid"><div class="item b">XXXX</div><div class="item a">AA A A</div></div>
+  </section>
+</main>
+<script>
+  window.__C114_SPAN_GROUPS_READY__ = document.fonts.load("10px Ahem").then(() => document.fonts.ready).then(() => {
+    const rect = (element) => {
+      const box = element.getBoundingClientRect();
+      return { x: box.x, y: box.y, width: box.width, height: box.height, right: box.right, bottom: box.bottom };
+    };
+    return {
+      userAgent: navigator.userAgent,
+      viewport: { width: innerWidth, height: innerHeight },
+      devicePixelRatio,
+      ahemLoaded: document.fonts.check("10px Ahem"),
+      cases: [...document.querySelectorAll(".case")].map((section) => {
+        const grid = section.querySelector(".grid");
+        return {
+          id: section.dataset.case,
+          root: rect(grid),
+          border: getComputedStyle(grid).borderTopWidth,
+          columns: getComputedStyle(grid).gridTemplateColumns,
+          rows: getComputedStyle(grid).gridTemplateRows,
+          items: [...grid.children].map((item) => {
+            const range = document.createRange();
+            range.selectNodeContents(item);
+            return { id: item.className, text: item.textContent, rect: rect(item), lineRects: [...range.getClientRects()].map((r) => ({ x:r.x, y:r.y, width:r.width, height:r.height })), scrollWidth:item.scrollWidth, scrollHeight:item.scrollHeight };
+          })
+        };
+      })
+    };
+  });
+</script>
+</html>
