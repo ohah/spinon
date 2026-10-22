@@ -30,6 +30,29 @@
     "reportedBackgroundPid": 74527,
     "agentBrowserProcessPresentAtFinalCheck": false,
     "terminalBrowserProcessPresentAtFinalCheck": false,
-    "note": "The Agent Browser session was closed and its daemon exited before the targeted process check. Tailnet preview server PID 1191 remained running."
+    "note": "Both Agent Browser sessions were closed. The final daemon exited before the targeted process check. Tailnet preview server PID 1191 remained running.",
+    "finalSession": "spinon-c114-pr527-final-20261023",
+    "finalReportedBackgroundPid": 75090
+  },
+  "finalVerification": {
+    "session": "spinon-c114-pr527-final-20261023",
+    "headCommit": "6ab3daf1d17f19725cbdc4e89a3ac58bf1f25be9",
+    "imageCount": 2,
+    "images": [
+      {
+        "alt": "Android API 37 ARM64 AVD definite overflow",
+        "complete": true,
+        "naturalWidth": 1080,
+        "naturalHeight": 2400,
+        "rendered": true
+      },
+      {
+        "alt": "iOS 26.2 Simulator definite overflow",
+        "complete": true,
+        "naturalWidth": 1206,
+        "naturalHeight": 2622,
+        "rendered": true
+      }
+    ]
   }
 }
