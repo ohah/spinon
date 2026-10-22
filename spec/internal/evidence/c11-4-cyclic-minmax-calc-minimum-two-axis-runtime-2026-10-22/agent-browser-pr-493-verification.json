@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "pullRequest": "https://github.com/ohah/spinon/pull/493",
+  "browser": "Agent Browser with headless Chrome 156.0.8078.48",
+  "sessionNamespace": "spinon-c11-493-pr-images",
+  "terminalBrowserUsed": false,
+  "images": [
+    {
+      "alt": "Android API 37 AVD 양축 cyclic scene",
+      "loaded": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400,
+      "source": "https://raw.githubusercontent.com/ohah/spinon/feat/c11-4-cyclic-minmax-calc-two-axis-20261022/spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-runtime-2026-10-22/android-avd-c114-cyclic-percent-tracks-android-avd-20261022T022619123Z-93c2e1cb/cyclic-minmax-calc-min-both-axes.png"
+    },
+    {
+      "alt": "iOS Simulator 양축 cyclic scene",
+      "loaded": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622,
+      "source": "https://raw.githubusercontent.com/ohah/spinon/feat/c11-4-cyclic-minmax-calc-two-axis-20261022/spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-runtime-2026-10-22/ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261022T022743674Z-063697ed/cyclic-minmax-calc-min-both-axes.png"
+    }
+  ],
+  "cleanup": {
+    "command": "agent-browser --namespace spinon-c11-493-pr-images close --all",
+    "sessionInfoActive": false,
+    "namespaceSessionsAfterClose": [],
+    "launchedBrowserProcessAndChromeChildrenAfterClose": false
+  }
+}

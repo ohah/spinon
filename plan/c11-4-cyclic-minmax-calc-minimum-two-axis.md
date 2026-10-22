@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [직전 단일 축 최솟값 계획](./c11-4-cyclic-minmax-calc-minimum.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획·사전 비교·고정 runtime fixture와 양 플랫폼 Simulator 검증 완료. PR 및 병합 결과는 연결할 GitHub PR 이력에서 확인한다. 구현 전용 fixture 조각이며 C11.4 공식 체크와 완료 수 `72/213`은 유지한다.
+**상태:** 계획·사전 비교·고정 runtime fixture와 양 플랫폼 Simulator 검증 완료. 구현 PR [#493](https://github.com/ohah/spinon/pull/493)에서 추적하며 병합 여부와 SHA는 해당 GitHub PR 이력이 기준이다. 구현 전용 fixture 조각이며 C11.4 공식 체크와 완료 수 `72/213`은 유지한다.
 
 ## 목적과 범위
 
