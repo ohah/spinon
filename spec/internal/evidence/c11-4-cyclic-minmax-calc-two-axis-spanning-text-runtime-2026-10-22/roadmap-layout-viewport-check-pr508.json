@@ -1,0 +1,36 @@
+{
+  "browser": "Agent Browser 0.31.1",
+  "page": "roadmap.html from the isolated PR #508 Rspress build",
+  "checks": [
+    {
+      "viewport_width": 1280,
+      "document_width": 1280,
+      "hero_width": 1240,
+      "row_width": 1240,
+      "row_x": 20,
+      "grid_column": "1 / -1",
+      "screenshot": "roadmap-layout-agent-browser-pr508.png"
+    },
+    {
+      "viewport_width": 900,
+      "document_width": 900,
+      "hero_width": 860,
+      "row_width": 860,
+      "row_x": 20,
+      "grid_column": "1 / -1",
+      "media_query_max_width_900": true
+    },
+    {
+      "viewport_width": 600,
+      "document_width": 600,
+      "hero_width": 572,
+      "row_width": 572,
+      "row_x": 14,
+      "grid_column": "1 / -1",
+      "media_query_max_width_600": true,
+      "screenshot": "roadmap-layout-agent-browser-pr508-600-row-final.png"
+    }
+  ],
+  "horizontal_overflow": false,
+  "tailnet_deployment_verified": false
+}
