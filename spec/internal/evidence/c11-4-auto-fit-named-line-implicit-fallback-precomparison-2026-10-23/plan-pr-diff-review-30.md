@@ -38,3 +38,7 @@
 ## 판정
 
 이 diff에 구현 완료 주장, status 집계 변경, WPT/physical device 주장 또는 active Agent Browser process 증거는 없다. 계획과 관측 artifact 링크를 추가했고, 차후 implementation PR에는 별도 runtime review와 새로운 30-point diff review를 작성한다.
+
+## 병합 전 재확인
+
+종료 artifact의 첫 스냅샷에서 `close --all` 직후 background daemon이 잠시 남은 것을 찾아 즉시 종료라고 단정하지 않았다. 후속 확인에서 page count 0, session list 빈 값, `active=false`, `pid=null`과 process count 0을 확인하고 [`browser-shutdown.json`](./browser-shutdown.json)에 두 시점을 보존했다. 이 수정은 PR diff review #30의 process 수명 경계에 반영되었다.
