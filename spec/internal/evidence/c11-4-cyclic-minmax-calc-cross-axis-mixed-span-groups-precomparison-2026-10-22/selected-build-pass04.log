@@ -1,0 +1,68 @@
+@spinon/docs docs:build: 🔥 Rspress v2.0.22
+@spinon/docs docs:build:
+@spinon/docs docs:build: info    build started...
+@spinon/docs docs:build: warn    The dist path is not a subdir of root path, Rsbuild will not empty it.
+@spinon/docs docs:build: warn    Please set `output.cleanDistPath` config manually.
+@spinon/docs docs:build: warn    Current root path: /Users/yoonhb/Documents/workspace/spinon/packages/docs
+@spinon/docs docs:build: warn    Current dist path: /Users/yoonhb/Documents/workspace/spinon/build/spinon/c11-4-mixed-span-plan-docs-build-pass04
+@spinon/docs docs:build: info    Rendering pages...
+@spinon/docs docs:build: success Pages rendered in 127 ms.
+@spinon/docs docs:build: ready   built in 1.05s (web)
+@spinon/docs docs:build: ready   built in 1.05s (node)
+@spinon/docs docs:build:
+@spinon/docs docs:build: File (web)                                                                                                                                   Size        Gzip
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/async/i.25208e7c92.js                                                   0.10 kB     0.09 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/styles.2da0941fcb.js                                                    0.47 kB     0.23 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/icon.svg                                                                          0.64 kB     0.42 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/async/route-9f4fd6f78fe0.ec7e234443.js                                  9.0 kB      2.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/async/route-ab440d8f8827.339d8303de.js                                  9.0 kB      2.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/async/route-d61d9905bb2c.1f7c447355.js                                  12.4 kB     4.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/async/route-21dd46b5c2d5.e74a3ba2a2.js                                  12.4 kB     4.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/async/route-0eb4c02452b2.7cd639d3b5.js                                  12.6 kB     3.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/async/route-029d433086ed.081684f5b7.js                                  12.6 kB     3.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/async/route-75e055c53ca9.4798cf6e7d.js                                  14.0 kB     4.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/async/route-0ec671d6555f.127f9551f2.js                                  14.0 kB     4.5 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/async/route-96e15c430eeb.18527defeb.js                                  16.4 kB     5.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/async/route-e2bf423a9fa0.fa7fde9f0a.js                                  16.4 kB     5.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/image/chrome156-mixed-span-groups.f5153885b1.png                           20.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/async/route-b91f8d9e02f4.d9c3598be1.js                                  24.1 kB     6.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/lib-router.1e14e568cb.js                                                35.4 kB     12.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/index.50d5739302.js                                                     64.4 kB     12.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/css/styles.8d918fd78e.css                                                  74.0 kB     14.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/image/definite-minmax-calc-cross-axis-span-groups-forward.dbdf90b0f6.png   78.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/async/route-c4dae6800800.e145f716a0.js                                  123.9 kB    30.9 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/async/route-739571cd2ae5.c50e5a3eff.js                                  123.9 kB    30.9 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/image/definite-minmax-calc-cross-axis-span-groups-forward.d442e26da5.png   132.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/async/route-04cbcabea10a.ad912fc8c1.js                                  148.2 kB    33.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/async/route-b7ce154f07b0.646c5811b6.js                                  148.3 kB    33.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/a.877e354479.js                                                         217.1 kB    72.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/lib-react.9cdf8f49ce.js                                                 218.4 kB    68.8 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/async/route-6c33a3943990.09ad626857.js                                  510.2 kB    114.5 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/js/async/route-7ce2535ac56d.c4d816c286.js                                  510.2 kB    114.6 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/static/search_index.ko.52b8d350.json                                              994.8 kB    307.3 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build:                                                                                                                                     Total:   3554.1 kB   1123.9 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build: File (node)                                                                                                                                                                                    Size        Gzip
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/404.html                                                                                                                            8.5 kB      2.6 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-plan-review-20.html                                                      30.4 kB     6.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/spec/plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-plan-review-20.html                                                 30.4 kB     6.1 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/plan-pr-diff-review-30.html        33.1 kB     7.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/plan-pr-diff-review-30.html   33.2 kB     7.0 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/README.html                        34.2 kB     7.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/README.html                   34.2 kB     7.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/spec/plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.html                                                                36.0 kB     7.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.html                                                                     36.0 kB     7.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/spec/plan/c11-4-cyclic-minmax-calc-cross-axis-span-groups.html                                                                      38.7 kB     8.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/plan/c11-4-cyclic-minmax-calc-cross-axis-span-groups.html                                                                           38.7 kB     8.2 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/spec/internal/evidence/c11-4-cross-axis-span-groups-runtime-2026-10-22/README.html                                                  45.7 kB     9.7 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/internal/0059-c11-grid-layout.html                                                                                                  143.4 kB    34.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/spec/internal/0059-c11-grid-layout.html                                                                                             143.8 kB    34.4 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/spec/plan/c11-4-grid-track-sizing.html                                                                                              162.6 kB    36.5 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/plan/c11-4-grid-track-sizing.html                                                                                                   162.6 kB    36.5 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/STATUS.html                                                                                                                         484.7 kB    116.3 kB
+@spinon/docs docs:build: ../../build/spinon/c11-4-mixed-span-plan-docs-build-pass04/spec/STATUS.html                                                                                                                    485.2 kB    116.3 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build:                                                                                                                                                                                       Total:   1981.4 kB   459.3 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build: Exited with code 0

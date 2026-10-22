@@ -1,0 +1,143 @@
+{
+  "purpose": "Isolated RSPress compile for the mixed-span plan pages and roadmap.",
+  "sourceHead": "c14a82b8e8999730815c8fedf1d74473a6283279",
+  "selectedRoot": "build/spinon/c11-4-mixed-span-plan-docs-root-pass04",
+  "copiedFiles": [
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "target": "plan/c11-4-grid-track-sizing.md",
+      "sha256": "a49a090baeae43ead80b56f0d8c26bb5779d92463c50331847b0004ef82e7e70"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-span-groups.md",
+      "target": "plan/c11-4-cyclic-minmax-calc-cross-axis-span-groups.md",
+      "sha256": "37cb934488b004affa5691c8ba7c9b58d45a3f5c1fb1101850824462e473c4e5"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md",
+      "target": "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md",
+      "sha256": "5d5f43a9e75fea6810fde729e5a3944ec8d94188cd97ac6177e30725dd19e362"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-plan-review-20.md",
+      "target": "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-plan-review-20.md",
+      "sha256": "a433d1303e3a2e51a8e4bbf5fb079e38c7d501e086664dfbd80457bb04967259"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/plan-pr-diff-review-30.md",
+      "target": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/plan-pr-diff-review-30.md",
+      "sha256": "ad530921e2d1926561e15c39a08e266987884174861f1a425496eecbe8857094"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "target": "spec/plan/c11-4-grid-track-sizing.md",
+      "sha256": "a49a090baeae43ead80b56f0d8c26bb5779d92463c50331847b0004ef82e7e70"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-span-groups.md",
+      "target": "spec/plan/c11-4-cyclic-minmax-calc-cross-axis-span-groups.md",
+      "sha256": "37cb934488b004affa5691c8ba7c9b58d45a3f5c1fb1101850824462e473c4e5"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md",
+      "target": "spec/plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md",
+      "sha256": "5d5f43a9e75fea6810fde729e5a3944ec8d94188cd97ac6177e30725dd19e362"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-plan-review-20.md",
+      "target": "spec/plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-plan-review-20.md",
+      "sha256": "a433d1303e3a2e51a8e4bbf5fb079e38c7d501e086664dfbd80457bb04967259"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/plan-pr-diff-review-30.md",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/plan-pr-diff-review-30.md",
+      "sha256": "ad530921e2d1926561e15c39a08e266987884174861f1a425496eecbe8857094"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "target": "STATUS.md",
+      "sha256": "dd32153d753fbee98c46316472421cfd1d7366d5d34a85d980b8cd25f5cf5f1b"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "target": "spec/STATUS.md",
+      "sha256": "dd32153d753fbee98c46316472421cfd1d7366d5d34a85d980b8cd25f5cf5f1b"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "target": "public/roadmap.html",
+      "sha256": "e8445e5d5f948931764a179aa1bef98f989a3633470ed8ee656208c71e7ac7fa"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "target": "spec/public/roadmap.html",
+      "sha256": "e8445e5d5f948931764a179aa1bef98f989a3633470ed8ee656208c71e7ac7fa"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "target": "public/icon.svg",
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "target": "public/logo.svg",
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "target": "public/roadmap.svg",
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "target": "internal/0059-c11-grid-layout.md",
+      "sha256": "7ff03565d6a06a1e9a014ae4d3d95325500e8707f953697327c9a313be599839"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "target": "spec/internal/0059-c11-grid-layout.md",
+      "sha256": "7ff03565d6a06a1e9a014ae4d3d95325500e8707f953697327c9a313be599839"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/README.md",
+      "target": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/README.md",
+      "sha256": "33c6ff5f64350e964573a43341cc7374b28dd4bb7b186a16975b8ea37bf3a4ab"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/README.md",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/README.md",
+      "sha256": "33c6ff5f64350e964573a43341cc7374b28dd4bb7b186a16975b8ea37bf3a4ab"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/chrome156-mixed-span-groups.png",
+      "target": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/chrome156-mixed-span-groups.png",
+      "sha256": "7619a84a034861384ad93e3d18cb01706fe85978ea8dc3ef1175150faa6c3079"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/chrome156-mixed-span-groups.png",
+      "target": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/chrome156-mixed-span-groups.png",
+      "sha256": "7619a84a034861384ad93e3d18cb01706fe85978ea8dc3ef1175150faa6c3079"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/chrome156-observation.json",
+      "target": "internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups-precomparison-2026-10-22/chrome156-observation.json",
+      "sha256": "d5fbe653bf01127b4182b519e7f045ebd3ecdf43ec0ddae3e19e5dbb338811b9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cross-axis-span-groups-runtime-2026-10-22/README.md",
+      "target": "spec/internal/evidence/c11-4-cross-axis-span-groups-runtime-2026-10-22/README.md",
+      "sha256": "7a817a1e3075ea873451ca02a950444ff1177222a09c561e29ad1a0c4215e8bf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cross-axis-span-groups-runtime-2026-10-22/android-avd-c114-cross-axis-span-groups-android-avd-20261022T094504492Z-be93d82d/definite-minmax-calc-cross-axis-span-groups-forward.png",
+      "target": "spec/internal/evidence/c11-4-cross-axis-span-groups-runtime-2026-10-22/android-avd-c114-cross-axis-span-groups-android-avd-20261022T094504492Z-be93d82d/definite-minmax-calc-cross-axis-span-groups-forward.png",
+      "sha256": "526bce17b8594d996ebe7e8978589cc901ab96da8c32b74d520c9e503607909a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cross-axis-span-groups-runtime-2026-10-22/ios-simulator-c114-cross-axis-span-groups-ios-simulator-20261022T094650728Z-f1702aac/definite-minmax-calc-cross-axis-span-groups-forward.png",
+      "target": "spec/internal/evidence/c11-4-cross-axis-span-groups-runtime-2026-10-22/ios-simulator-c114-cross-axis-span-groups-ios-simulator-20261022T094650728Z-f1702aac/definite-minmax-calc-cross-axis-span-groups-forward.png",
+      "sha256": "34bc4f031cd1f01e42364bcda23250a9677e198dc712288edf407b0af425405f"
+    }
+  ],
+  "omittedRepositoryContent": "Other Markdown and untracked evidence are excluded to avoid unrelated Shiki, asset, and legacy dead-link failures."
+}
