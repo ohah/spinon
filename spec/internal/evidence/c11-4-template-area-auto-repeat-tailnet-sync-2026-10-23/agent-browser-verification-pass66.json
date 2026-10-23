@@ -1,0 +1,24 @@
+{
+  "pass": "pass66",
+  "browser": "Agent Browser",
+  "roadmap": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "title": "스피논 구현 로드맵",
+    "pr539Visible": true,
+    "mergeShaVisible": "0f46437c299df6f0c069b694a3f2184ac464ad3d",
+    "completeCountVisible": "77/213",
+    "c114Incomplete": true,
+    "previousAnchorAbsentFromParagraph": true,
+    "correctedStatusHref": "/spinon/STATUS.html#css-구현-체크리스트",
+    "screenshot": "tailnet-roadmap-agent-browser-pass66.png"
+  },
+  "clickedStatusLink": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html#css-%EA%B5%AC%ED%98%84-%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8",
+    "decodedFragment": "css-구현-체크리스트",
+    "targetExists": true,
+    "targetHeading": "CSS 구현 체크리스트",
+    "completeCountVisible": "77/213",
+    "screenshot": "tailnet-status-anchor-agent-browser-pass66.png"
+  },
+  "scope": "Tailnet document route, rendered link and fragment only"
+}

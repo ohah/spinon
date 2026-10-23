@@ -1,0 +1,13 @@
+{
+  "pass": "pass66",
+  "closedSessions": ["spinon-pass65", "default"],
+  "agentBrowserProcessesAfterClose": 0,
+  "agentBrowserChromeChildrenAfterClose": 0,
+  "tailnetPreviewServer": {
+    "pid": 1191,
+    "state": "running",
+    "port": 8768,
+    "preserved": true
+  },
+  "tmux": "preserved"
+}
