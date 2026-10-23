@@ -1,0 +1,37 @@
+{
+  "archivePath": "target/release/libspinon_ffi.a",
+  "bytes": 78138384,
+  "sha256": "c22a374345c499c60e9a0d4f80560b0b1add9883a5d72f266ed6041664499220",
+  "expectedMarkers": "present",
+  "checks": [
+    {
+      "marker": "c11_4_auto_repeat_calc_minimum",
+      "present": true
+    },
+    {
+      "marker": "columns-calc-fill",
+      "present": true
+    },
+    {
+      "marker": "columns-fixed-fill-control",
+      "present": true
+    },
+    {
+      "marker": "columns-calc-fit",
+      "present": true
+    },
+    {
+      "marker": "rows-calc-fill",
+      "present": true
+    },
+    {
+      "marker": "rows-fixed-fill-control",
+      "present": true
+    },
+    {
+      "marker": "rows-calc-fit",
+      "present": true
+    }
+  ],
+  "pass": true
+}

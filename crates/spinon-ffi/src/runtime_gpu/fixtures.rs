@@ -30,6 +30,8 @@ pub(crate) mod c11_3_2;
 pub(crate) mod c11_3_3;
 pub(crate) mod c11_4;
 pub(crate) mod c11_4_auto_fit_min_size_axis;
+#[cfg(feature = "c04-runtime-gpu-fixture-test")]
+pub(crate) mod c11_4_auto_repeat_calc_minimum;
 pub(crate) mod c11_4_auto_repeat_named_lines;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
 pub(crate) mod c11_4_template_area_auto_repeat;

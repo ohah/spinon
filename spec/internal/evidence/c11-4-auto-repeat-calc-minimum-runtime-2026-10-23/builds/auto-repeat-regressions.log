@@ -1,0 +1,17 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 17.77s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 8 tests
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_rejects_percentage_calc_auto_repeat_minimum ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::track_sizing_profile_preserves_auto_repeat_inner_and_component_line_names ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::track_sizing_profile_preserves_independent_auto_repeats_on_both_axes ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::track_sizing_profile_preserves_fixed_minimum_auto_repeat_modes ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::track_sizing_profile_preserves_auto_repeat_neighbors_and_fragment_order ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::auto_repeat_line_metadata_allocation_failures_are_contextual_and_recoverable ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::auto_repeat_rejects_profiles_and_shapes_outside_the_supported_subset ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_normalizes_absolute_calc_auto_repeat_minimums ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 186 filtered out; finished in 0.04s

@@ -168,6 +168,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "cyclic-minmax-calc-min-column-definite-row",
             "definite-column-cyclic-minmax-calc-min-row",
             "definite-minmax-calc-min-both-axes",
+            "columns-calc-fill", "columns-fixed-fill-control", "columns-calc-fit",
+            "rows-calc-fill", "rows-fixed-fill-control", "rows-calc-fit",
             "cyclic-percent-two-axis-multitrack", "cyclic-percent-columns-multitrack",
             "cyclic-percent-rows-multitrack", "definite-percent-two-axis-multitrack",
             "cyclic-calc-column", "cyclic-calc-row", "cyclic-calc-two-axis",
@@ -552,10 +554,61 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return null;
     }
 
+    private static int[] c114AutoRepeatCalcMinimumRootSize(String sceneId) {
+        switch (sceneId) {
+            case "columns-calc-fill":
+            case "columns-fixed-fill-control":
+            case "columns-calc-fit":
+                return new int[] {184, 48};
+            case "rows-calc-fill":
+            case "rows-fixed-fill-control":
+            case "rows-calc-fit":
+                return new int[] {48, 184};
+            default:
+                return null;
+        }
+    }
+
+    private static String c114AutoRepeatCalcMinimumRootFrame(String sceneId) {
+        int[] root = c114AutoRepeatCalcMinimumRootSize(sceneId);
+        return root == null ? null : "width=" + root[0] + ",height=" + root[1];
+    }
+
+    private static String c114AutoRepeatCalcMinimumItemFrame(String sceneId) {
+        return c114AutoRepeatCalcMinimumRootSize(sceneId) == null ? null : "";
+    }
+
+    private static String c114AutoRepeatCalcMinimumNodeFrames(String sceneId) {
+        int[] root = c114AutoRepeatCalcMinimumRootSize(sceneId);
+        if (root == null) return null;
+        boolean rows = sceneId.startsWith("rows-");
+        boolean fit = sceneId.endsWith("-fit");
+        int count = fit ? 1 : 4;
+        int trackWidth = rows ? root[0] : fit ? root[0] : 46;
+        int trackHeight = rows ? fit ? root[1] : 46 : root[1];
+        StringBuilder frames = new StringBuilder("node_frames_css_px=[0:node=1,x=0,y=0,")
+                .append("width=").append(root[0]).append(",height=").append(root[1]);
+        for (int index = 0; index < count; index++) {
+            int x = rows ? 0 : fit ? 0 : index * 46;
+            int y = rows ? fit ? 0 : index * 46 : 0;
+            frames.append(';').append(index + 1).append(":node=").append(index + 2)
+                    .append(",x=").append(x).append(",y=").append(y)
+                    .append(",width=").append(trackWidth).append(",height=").append(trackHeight);
+        }
+        return frames.append(']').toString();
+    }
+
+    private static int c114AutoRepeatCalcMinimumBoxCount(String sceneId) {
+        return c114AutoRepeatCalcMinimumRootSize(sceneId) == null
+                ? 0 : (sceneId.endsWith("-fit") ? 2 : 5);
+    }
+
     private static String c114ExpectedRootFrame(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
         String areaRepeatFrame = c114TemplateAreaRepeatRootFrame(sceneId);
         if (areaRepeatFrame != null) return areaRepeatFrame;
+        String calcMinimumFrame = c114AutoRepeatCalcMinimumRootFrame(sceneId);
+        if (calcMinimumFrame != null) return calcMinimumFrame;
         String namedAutoRepeatFrame = c114NamedAutoRepeatRootFrame(sceneId);
         if (namedAutoRepeatFrame != null) return namedAutoRepeatFrame;
         if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) return "";
@@ -833,6 +886,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static String c114ExpectedItemFrame(String sceneId) {
         String areaRepeatFrame = c114TemplateAreaRepeatItemFrame(sceneId);
         if (areaRepeatFrame != null) return areaRepeatFrame;
+        String calcMinimumFrame = c114AutoRepeatCalcMinimumItemFrame(sceneId);
+        if (calcMinimumFrame != null) return calcMinimumFrame;
         String namedAutoRepeatFrame = c114NamedAutoRepeatItemFrame(sceneId);
         if (namedAutoRepeatFrame != null) return namedAutoRepeatFrame;
         if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) return "";
@@ -2308,6 +2363,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         sceneId = c114BaseNestedGridSceneId(sceneId);
         String areaRepeatFrames = c114TemplateAreaRepeatNodeFrames(sceneId);
         if (areaRepeatFrames != null) return areaRepeatFrames;
+        String calcMinimumFrames = c114AutoRepeatCalcMinimumNodeFrames(sceneId);
+        if (calcMinimumFrames != null) return calcMinimumFrames;
         String namedAutoRepeatFrames = c114NamedAutoRepeatNodeFrames(sceneId);
         if (namedAutoRepeatFrames != null) return namedAutoRepeatFrames;
         if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) return null;
@@ -3913,6 +3970,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         sceneId = c114BaseNestedGridSceneId(sceneId);
         int[][] areaRepeatItems = c114TemplateAreaRepeatItemRects(sceneId);
         if (areaRepeatItems != null) return areaRepeatItems.length + 1;
+        int calcMinimumBoxCount = c114AutoRepeatCalcMinimumBoxCount(sceneId);
+        if (calcMinimumBoxCount != 0) return calcMinimumBoxCount;
         if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) return 4;
         if (c114IsCyclicMinmaxReplacedImageSpanScene(sceneId)) return 4;
         if (c114IsMixedCrossAxisSpanGroupsScene(sceneId)) return 4;
