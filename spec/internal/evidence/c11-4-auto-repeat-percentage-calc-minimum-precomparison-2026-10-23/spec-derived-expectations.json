@@ -1,0 +1,112 @@
+{
+  "source": "CSS Grid Layout Module Level 1 2025 CRD §§7.2.1, 7.2.3.1–7.2.3.2",
+  "definiteAxisInnerSizePx": 112,
+  "percentage": 0.1,
+  "resolvedPercentagePx": 11.2,
+  "minimumPx": 31.2,
+  "autoRepeatCount": 3,
+  "idealFrTrackPx": 37.333333333333336,
+  "chromeQuantizationTolerancePx": 0.015625,
+  "scenes": {
+    "columns-calc-fill": {
+      "rootSizePx": [
+        112,
+        48
+      ],
+      "tracksPx": [
+        37.333333333333336,
+        37.333333333333336,
+        37.333333333333336
+      ],
+      "itemsRootRelativePx": [
+        [
+          0,
+          0,
+          37.333333333333336,
+          48
+        ],
+        [
+          37.333333333333336,
+          0,
+          37.333333333333336,
+          48
+        ],
+        [
+          74.66666666666667,
+          0,
+          37.333333333333336,
+          48
+        ]
+      ]
+    },
+    "columns-fixed-fill-control": {
+      "matches": "columns-calc-fill"
+    },
+    "columns-calc-fit": {
+      "preCollapseTrackCount": 3,
+      "tracksAfterCollapsePx": [
+        112,
+        0,
+        0
+      ],
+      "itemsRootRelativePx": [
+        [
+          0,
+          0,
+          112,
+          48
+        ]
+      ]
+    },
+    "rows-calc-fill": {
+      "rootSizePx": [
+        48,
+        112
+      ],
+      "tracksPx": [
+        37.333333333333336,
+        37.333333333333336,
+        37.333333333333336
+      ],
+      "itemsRootRelativePx": [
+        [
+          0,
+          0,
+          48,
+          37.333333333333336
+        ],
+        [
+          0,
+          37.333333333333336,
+          48,
+          37.333333333333336
+        ],
+        [
+          0,
+          74.66666666666667,
+          48,
+          37.333333333333336
+        ]
+      ]
+    },
+    "rows-fixed-fill-control": {
+      "matches": "rows-calc-fill"
+    },
+    "rows-calc-fit": {
+      "preCollapseTrackCount": 3,
+      "tracksAfterCollapsePx": [
+        112,
+        0,
+        0
+      ],
+      "itemsRootRelativePx": [
+        [
+          0,
+          0,
+          48,
+          112
+        ]
+      ]
+    }
+  }
+}
