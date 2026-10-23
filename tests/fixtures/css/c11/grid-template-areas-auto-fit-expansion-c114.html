@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C11.4 auto-fit with area-expanded explicit tracks</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 16px; font: 12px/1.35 sans-serif; color: #172033; }
+      h1 { margin: 0 0 12px; font-size: 16px; }
+      #scenes { display: grid; grid-template-columns: repeat(3, max-content); gap: 24px; align-items: start; }
+      .scene { display: grid; gap: 6px; align-content: start; }
+      .label { min-height: 34px; max-width: 170px; }
+      .grid {
+        display: grid;
+        width: 52px;
+        height: 52px;
+        gap: 4px;
+        grid-auto-columns: 16px;
+        grid-auto-rows: 12px;
+        background: #e5e7eb;
+        outline: 1px solid #334155;
+      }
+      .item { min-width: 0; min-height: 0; background: #e5484d; }
+      .fit-fit-empty {
+        grid-template-columns: repeat(auto-fit, 20px);
+        grid-template-rows: repeat(auto-fit, 20px);
+        grid-template-areas: ". . ." ". . ." ". . .";
+      }
+      .fit-fit-item, .fit-fit-span, .fit-fill-item, .fill-fit-item {
+        grid-template-areas: ". . ." ". . ." ". . hero";
+      }
+      .fit-fit-item, .fit-fit-span {
+        grid-template-columns: repeat(auto-fit, 20px);
+        grid-template-rows: repeat(auto-fit, 20px);
+      }
+      .fit-fit-span { grid-template-areas: "hero hero hero" "hero hero hero" "hero hero hero"; }
+      .fit-fill-item {
+        grid-template-columns: repeat(auto-fit, 20px);
+        grid-template-rows: repeat(auto-fill, 20px);
+      }
+      .fill-fit-item {
+        grid-template-columns: repeat(auto-fill, 20px);
+        grid-template-rows: repeat(auto-fit, 20px);
+      }
+      .fit-fit-column {
+        grid-template-columns: repeat(auto-fit, 20px);
+        grid-template-rows: repeat(auto-fit, 20px);
+        grid-template-areas: ". . hero";
+      }
+      .fit-fit-row {
+        grid-template-columns: repeat(auto-fit, 20px);
+        grid-template-rows: repeat(auto-fit, 20px);
+        grid-template-areas: "." "." "hero";
+      }
+      .fit-fit-item .item, .fit-fill-item .item, .fill-fit-item .item,
+      .fit-fit-column .item, .fit-fit-row .item { grid-area: hero; }
+      .fit-fit-span .item { grid-area: hero; }
+    </style>
+  </head>
+  <body>
+    <h1>C11.4 · auto-fit × template-area expansion (52px container, 20px tracks, 4px gap)</h1>
+    <main id="scenes">
+      <section class="scene" id="fit-fit-empty">
+        <div class="label">dual auto-fit; area extends both axes; no item</div>
+        <div class="grid fit-fit-empty"></div>
+      </section>
+      <section class="scene" id="fit-fit-item">
+        <div class="label">dual auto-fit; item only in added row and column</div>
+        <div class="grid fit-fit-item"><div class="item"></div></div>
+      </section>
+      <section class="scene" id="fit-fit-span">
+        <div class="label">dual auto-fit; item spans repeated and added tracks</div>
+        <div class="grid fit-fit-span"><div class="item"></div></div>
+      </section>
+      <section class="scene" id="fit-fill-item">
+        <div class="label">columns auto-fit; rows auto-fill; item in added cell</div>
+        <div class="grid fit-fill-item"><div class="item"></div></div>
+      </section>
+      <section class="scene" id="fill-fit-item">
+        <div class="label">columns auto-fill; rows auto-fit; item in added cell</div>
+        <div class="grid fill-fit-item"><div class="item"></div></div>
+      </section>
+      <section class="scene" id="fit-fit-column">
+        <div class="label">dual auto-fit; areas add only a column</div>
+        <div class="grid fit-fit-column"><div class="item"></div></div>
+      </section>
+      <section class="scene" id="fit-fit-row">
+        <div class="label">dual auto-fit; areas add only a row</div>
+        <div class="grid fit-fit-row"><div class="item"></div></div>
+      </section>
+    </main>
+    <script>
+      const rect = element => {
+        const { x, y, width, height } = element.getBoundingClientRect();
+        return [x, y, width, height];
+      };
+      window.c114Result = Array.from(document.querySelectorAll(".scene")).map(scene => {
+        const root = scene.querySelector(".grid");
+        const style = getComputedStyle(root);
+        return {
+          id: scene.id,
+          columns: style.gridTemplateColumns,
+          rows: style.gridTemplateRows,
+          areas: style.gridTemplateAreas,
+          root: rect(root),
+          scroll: [root.scrollWidth, root.scrollHeight],
+          items: Array.from(root.children).map(item => ({ area: getComputedStyle(item).gridArea, rect: rect(item) }))
+        };
+      });
+    </script>
+  </body>
+</html>
