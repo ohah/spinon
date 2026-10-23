@@ -1,0 +1,49 @@
+{
+  "pass": "pass02",
+  "roadmap": {
+    "title": "스피논 구현 로드맵",
+    "route": "roadmap.html",
+    "viewport": {
+      "width": 1280,
+      "height": 633
+    },
+    "hasCurrentC114Card": true,
+    "hasMergeSha": true,
+    "hasOfficialTally": true,
+    "dynamicBoard": {
+      "totalTasks": 213,
+      "checkedTasks": 72,
+      "c114Checked": false,
+      "c13Checked": false,
+      "visibleCounter": "213개 표시 · 공식 완료 72/213"
+    }
+  },
+  "status": {
+    "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+    "route": "STATUS.html",
+    "hasPr573": true,
+    "hasMergeSha": true,
+    "hasOfficialTally": true,
+    "c114TopLevelChecked": false,
+    "c13TopLevelChecked": false
+  },
+  "simulatorImages": [
+    {
+      "platform": "Android API 37 ARM64 AVD",
+      "complete": true,
+      "width": 1080,
+      "height": 2400
+    },
+    {
+      "platform": "iPhone 17 / iOS 26.2 Simulator",
+      "complete": true,
+      "width": 1206,
+      "height": 2622
+    }
+  ],
+  "remoteRoutes": {
+    "verified": 12,
+    "http200": 12,
+    "localAndRemoteSha256Match": 12
+  }
+}

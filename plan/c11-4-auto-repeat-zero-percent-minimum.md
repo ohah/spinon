@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [기존 definite positive percentage minimum slice](./c11-4-auto-repeat-positive-percent-minimum.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 제한 구현과 Android/iOS Simulator runtime 13/13 검증을 마쳤다. Stylo cascade와 layout preflight가 finite `Percentage(0)`을 기존 gate 안에서 허용하고, vendored Taffy는 repeat count에만 track별 UA 1px floor를 적용한다. 실제 zero minimum과 auto-fit collapse는 유지한다. 구현/runtime 적대 검토는 [20개 관점](../spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/implementation-runtime-review-20.md)에 별도 기록했으며 계획 검토를 재사용하지 않았다. PR diff 검토와 병합은 후속 관문이며 C11.4 전체는 미완료다.
+**상태:** 제한 구현과 Android/iOS Simulator runtime 13/13 검증을 마쳤다. Stylo cascade와 layout preflight가 finite `Percentage(0)`을 기존 gate 안에서 허용하고, vendored Taffy는 repeat count에만 track별 UA 1px floor를 적용한다. 실제 zero minimum과 auto-fit collapse는 유지한다. 구현/runtime 적대 검토는 [20개 관점](../spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/implementation-runtime-review-20.md)에 별도 기록했으며 계획 검토를 재사용하지 않았다. PR diff 검토 30개를 마쳤다. PR [#573](https://github.com/ohah/spinon/pull/573)은 2026-10-23T17:19:38Z Rebase and merge됐고 merge SHA는 a97324c1b208e1f9ab58de96e0d9885164365532다. check rollup은 비어 있고 main required status checks는 설정되지 않았다. C11.4 전체는 미완료다.
 
 ## 결손과 목표
 
@@ -45,12 +45,12 @@
 2. `vendor/taffy/src/compute/grid/explicit_grid.rs`에서 auto-repeat count에 사용되는 각 repeated track의 definite selected size만 UA floor 1px로 올린다. fixed prefix/suffix는 floor하지 않고 gap 계산은 별도로 유지한다. 이 값을 실제 track sizing, flex expansion, auto-fit collapse에 전달하지 않는다.
 3. Taffy unit tests는 zero minimum/gap 0 → 120, zero minimum/gap 4 → 24, 120px·gap 0의 `minmax(0%, 1fr) 0.5px` two-track group → 60 repetitions(각 repeated track을 개별 floor), explicit subpixel neighbors, positive maximum selection, auto-fit pre-placement count와 placement 후 collapse를 검사한다. 0 denominator 및 NaN/Infinity clamp 경로가 다시 생기지 않아야 한다.
 4. layout/preflight tests는 13 scene의 columns·rows content basis, repeat count, used track histogram, item size, collapse/trace를 독립 기대값과 대조한다. count·histogram·collapse는 exact, fraction track/frame은 1/64 CSS px 이내다. zero/indefinite basis와 invalid percentage controls는 기존 typed error로 거부한다.
-5. opt-in C11.4 runtime fixture를 V8-authored HTML → HostDocument → Stylo → typed layout input → Taffy → WGPU scene/draw/present 경로에 연결한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 13/13 scene을 실행한다. 화면은 scene/frame 근거이며, 별도 readback 없는 pixel equality나 hardware GPU 결과를 주장하지 않는다.
+5. opt-in C11.4 runtime fixture를 V8-authored HTML → HostDocument → Stylo → typed layout input → Taffy → WGPU scene/draw/present 경로에 연결한다. Android API 37 ARM64 AVD와 iPhone 17/iOS 26.2 Simulator에서 각 13/13 scene을 실행한다. 화면은 scene/frame 근거이며, 별도 readback 없는 pixel equality나 hardware GPU 결과를 주장하지 않는다.
 6. default/product FFI artifact와 opt-in fixture-test positive control에서 scene marker, payload, host symbol 경계를 비교한다. 정적 archive 결과를 APK/IPA 전체 fixture 제외로 확대하지 않는다.
 7. 내부 계약 [0059](../spec/internal/0059-c11-grid-layout.md)에 이 제한 slice의 `0%` admission gate, count-only 1px floor, unchanged actual sizing, auto-fit collapse 및 fail-closed 입력을 기록한다. 계약 숫자 버전 `0.1.0`은 유지한다.
 8. 관련 Rust/FFI tests, fixture/catalog validator, `cargo fmt --all -- --check`, workspace Clippy `-D warnings`, Android/iOS Simulator app builds를 수행해 기록한다. 구현 전 비교와 겹치지 않는 새 구현/runtime 실패 관점 20개를 검토한다.
 9. 구현 PR의 변경 범위를 대상으로 구현/runtime 20개 검토와 겹치지 않는 PR diff 실패 관점 30개를 검토하고 발견 사항을 수정한 뒤 영향을 받은 관점을 다시 확인한다. [PR diff 검토](../spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/pr-diff-review-30.md)에 결과를 남긴다. simulator 화면을 PR 본문에 넣고 GitHub 표시를 Agent Browser로 확인한 뒤 해당 browser session/process만 종료한다.
-10. Rebase and merge 후 live merge SHA/check state를 조회한다. `spec/STATUS.md`와 공개 roadmap에는 C11.4 미완료·72/213 유지와 제한 slice 결과를 반영하고, Tailnet preview에 선택한 문서만 backup + SHA manifest로 동기화한 뒤 HTTP 200/content hash/Agent Browser 화면을 확인한다.
+10. PR #573의 live Rebase and merge 결과를 공식 상태 대장과 공개 roadmap에 기록했다. Tailnet preview에는 선택한 문서만 backup + SHA manifest로 동기화하고 HTTP 200/content hash/Agent Browser 화면을 확인한다.
 
 전체 CSS Grid, 일반 authored CSS admission, WPT, 실기기, hardware GPU, iOS compositor 이후 pixels와 C11.4 완료는 범위 밖이다. 내부 계약 0059는 `0.1.0`, C11.4 체크와 공식 완료 수는 `72/213`으로 유지한다.
 
