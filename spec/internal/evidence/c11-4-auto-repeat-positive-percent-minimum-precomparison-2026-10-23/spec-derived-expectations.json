@@ -1,0 +1,48 @@
+{
+  "standard": "CSS Grid Layout Module Level 1 2025 CRD",
+  "sections": [
+    "7.2.1 Track Sizes",
+    "7.2.3.1 Syntax of repeat()",
+    "7.2.3.2 Repeat-to-fill: auto-fill and auto-fit repetitions"
+  ],
+  "inputs": {
+    "calcNormalizedComputedValue": "Percentage(0.1)",
+    "directPercentageComputedValue": "Percentage(0.1)",
+    "numericControlMinimum": "12px",
+    "columnsInnerInlineSizePx": 120,
+    "rowsInnerBlockSizePx": 120,
+    "boxSizing": "content-box",
+    "borderPxPerSide": 2,
+    "paddingPxPerSide": 0,
+    "gapPx": 0,
+    "inFlowItemsPerScene": 1
+  },
+  "positivePercentageCalculation": {
+    "percentage": 0.1,
+    "resolvedMinimumPx": 12,
+    "repeatCount": 10,
+    "autoFillTracksPx": [12, 12, 12, 12, 12, 12, 12, 12, 12, 12],
+    "autoFillSingleItemSizePx": 12,
+    "autoFitTracksAfterCollapsePx": [120, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "autoFitSingleItemSizePx": 120,
+    "calcDirectPercentageAndFixedControlMustMatch": true
+  },
+  "overflowCalculation": {
+    "percentage": 1.5,
+    "resolvedMinimumPx": 180,
+    "repeatCount": 1,
+    "trackPx": 180,
+    "gridContentAxisPx": 120,
+    "gridBorderBoxAxisPx": 124,
+    "itemStartOffsetFromBorderBoxPx": 2,
+    "itemOverflowBeyondOuterBorderPx": 58,
+    "fixed180pxControlMustMatch": true
+  },
+  "sceneCount": 16,
+  "scopeLimitations": [
+    "A positive explicit fixed axis and finite positive resolved minimum are required",
+    "No zero-size, indefinite, or cyclic percentage basis",
+    "No nonzero gaps or padding",
+    "No general CSS admission, WPT conformance, or Spinon runtime claim"
+  ]
+}

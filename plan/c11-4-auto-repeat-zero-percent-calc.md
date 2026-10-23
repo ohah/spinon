@@ -1,8 +1,8 @@
-# C11.4 · zero-length percentage `calc()` auto-repeat minimum 계획
+# C11.4 · zero-length percentage `calc()` auto-repeat minimum 이전 계획
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** [독립 규범 계산](../spec/internal/evidence/c11-4-auto-repeat-zero-percent-calc-precomparison-2026-10-23/spec-derived-expectations.json), Chrome 156의 8개 비교 장면, [계획 실패 관점 20개](./c11-4-auto-repeat-zero-percent-calc-plan-review-20.md), [계획 PR 변경 검토 20개](../spec/internal/evidence/c11-4-auto-repeat-zero-percent-calc-precomparison-2026-10-23/plan-pr-diff-review-20.md)를 기록했다. 아직 구현/runtime 결과가 아니며 C11.4를 완료 처리하지 않는다.
+**상태:** 이 계획은 PR [#559](https://github.com/ohah/spinon/pull/559)에서 검토·병합됐지만, implementation 전 computed AST probe가 `calc(0px + 10%)`를 `Percentage(0.1)`로 정규화하는 사실을 확인했다. authored calc만 분리할 수 없어서 이 범위는 구현하지 않는다. 수정된 [definite positive percentage minimum 계획](./c11-4-auto-repeat-positive-percent-minimum.md)을 별도 계획 PR로 검토한다. C11.4 전체는 미완료다.
 
 ## 결손과 목표
 

@@ -1,0 +1,20 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.16s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 1 test
+
+thread 'stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_retains_zero_length_percentage_calc_ast' (126208125) panicked at crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/auto_repeat_calc_minimum.rs:175:5:
+assertion `left == right` failed: Stylo must retain the zero length term so this slice does not admit bare percentages
+  left: [MinMax { min: Percentage(0.1), max: Fraction(1.0) }]
+ right: [MinMax { min: Calc(Sum([Percentage(0.1), LengthPx(0.0)])), max: Fraction(1.0) }]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_retains_zero_length_percentage_calc_ast ... FAILED
+
+failures:
+
+failures:
+    stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_retains_zero_length_percentage_calc_ast
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 195 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p spinon-style --lib`
