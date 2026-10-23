@@ -1,10 +1,12 @@
+use spinon_core::NodeId;
 use taffy::geometry::{Line, Point, Rect, Size};
 use taffy::style::{
     AlignContent, AlignItems, AlignSelf, BlockContainerStyle, BlockItemStyle, BoxGenerationMode,
     BoxSizing, Contain, Direction, Display, FlexDirection, FlexWrap, FlexboxContainerStyle,
     FlexboxItemStyle, GenericGridTemplateComponent, GridAutoFlow, GridContainerStyle,
-    GridItemStyle, GridPlacement, GridTemplateArea, GridTemplateRepetition, JustifyContent,
-    LengthPercentage, LengthPercentageAuto, OofItemStyle, Overflow, Position, TextAlign,
+    GridItemStyle, GridPlacement, GridTemplateArea, GridTemplateAreas, GridTemplateRepetition,
+    JustifyContent, LengthPercentage, LengthPercentageAuto, OofItemStyle, Overflow, Position,
+    TextAlign,
 };
 use taffy::{CoreStyle, Dimension, GridTemplateComponent, TrackSizingFunction};
 
@@ -68,6 +70,7 @@ pub(super) struct CompactTaffyStyle {
     grid_template_columns: Vec<GridTemplateComponent<String>>,
     grid_template_row_names: Vec<Vec<String>>,
     grid_template_column_names: Vec<Vec<String>>,
+    grid_template_areas: Vec<GridTemplateAreas<String>>,
     grid_auto_rows: Vec<TrackSizingFunction>,
     grid_auto_columns: Vec<TrackSizingFunction>,
     grid_auto_flow: GridAutoFlow,
@@ -91,6 +94,23 @@ impl CompactTaffyStyle {
 
     pub(super) fn set_track_sizing_trace_enabled(&mut self, enabled: bool) {
         self.track_sizing_trace_enabled = enabled;
+    }
+
+    pub(super) fn set_grid_template_areas(
+        &mut self,
+        node: NodeId,
+        areas: Option<GridTemplateAreas<String>>,
+    ) -> Result<(), crate::LayoutError> {
+        if let Some(areas) = areas {
+            self.grid_template_areas.try_reserve_exact(1).map_err(|_| {
+                crate::LayoutError::GridAllocationFailure {
+                    node,
+                    property: "grid-template-areas",
+                }
+            })?;
+            self.grid_template_areas.push(areas);
+        }
+        Ok(())
     }
 
     pub(super) fn set_used_replaced_border_box_size(&mut self, width: f32, height: f32) {
@@ -161,6 +181,7 @@ impl From<taffy::Style> for CompactTaffyStyle {
             grid_template_columns: style.grid_template_columns,
             grid_template_row_names: style.grid_template_row_names,
             grid_template_column_names: style.grid_template_column_names,
+            grid_template_areas: Vec::new(),
             grid_auto_rows: style.grid_auto_rows,
             grid_auto_columns: style.grid_auto_columns,
             grid_auto_flow: style.grid_auto_flow,
@@ -322,7 +343,7 @@ impl GridContainerStyle for CompactTaffyStyle {
     type TemplateTrackList<'a> = GridTemplateIterator<'a>;
     type AutoTrackList<'a> = std::iter::Copied<std::slice::Iter<'a, TrackSizingFunction>>;
     type TemplateLineNames<'a> = TemplateLineNameGroups<'a>;
-    type GridTemplateAreas<'a> = std::iter::Empty<GridTemplateArea<String>>;
+    type GridTemplateAreas<'a> = std::iter::Cloned<std::slice::Iter<'a, GridTemplateArea<String>>>;
 
     fn grid_template_rows(&self) -> Option<Self::TemplateTrackList<'_>> {
         Some(
@@ -349,7 +370,23 @@ impl GridContainerStyle for CompactTaffyStyle {
     }
 
     fn grid_template_areas(&self) -> Option<Self::GridTemplateAreas<'_>> {
-        None
+        self.grid_template_areas
+            .first()
+            .map(|template| template.areas.iter().cloned())
+    }
+
+    fn grid_template_area_row_count(&self) -> u16 {
+        self.grid_template_areas
+            .first()
+            .map(|template| template.row_count)
+            .unwrap_or(0)
+    }
+
+    fn grid_template_area_column_count(&self) -> u16 {
+        self.grid_template_areas
+            .first()
+            .map(|template| template.column_count)
+            .unwrap_or(0)
     }
 
     fn grid_template_column_names(&self) -> Option<Self::TemplateLineNames<'_>> {
@@ -439,9 +476,11 @@ mod tests {
 
     #[test]
     fn grid_style_projection_is_smaller_than_taffy_style() {
+        let compact_size = std::mem::size_of::<CompactTaffyStyle>();
+        let taffy_size = std::mem::size_of::<taffy::Style>();
         assert!(
-            std::mem::size_of::<CompactTaffyStyle>() < std::mem::size_of::<taffy::Style>(),
-            "the runtime layout node must not retain Taffy's unused Grid line/area buffers",
+            compact_size < taffy_size,
+            "compact layout style is {compact_size} bytes; Taffy style is {taffy_size} bytes",
         );
     }
 }

@@ -1,0 +1,37 @@
+{
+  "target": "ios-simulator",
+  "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "name": "iPhone 17 Pro",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "1c2a0bd3096088632f74788120461c299a3c8bd7477b009646154e851cb2bfbe",
+  "sourceRevision": {
+    "commit": "3df7fe704fe253e5edcc4946ed215e33dc2e935e",
+    "tree": "aa7328c6c1db2a58f1b7c18ba16877370450c309",
+    "trackedDiffSha256": "915cea94331bbd621b3e7a4f19b6dac1c6e6a974ab7d24ede80b7c8b698cedea",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-layout/src/compact_taffy_style.rs",
+      "crates/spinon-layout/src/grid.rs",
+      "crates/spinon-layout/src/grid_auto_placement/dense_column_tests.rs",
+      "crates/spinon-layout/src/grid_auto_placement/track_sizing_tests.rs",
+      "crates/spinon-layout/src/grid_auto_placement_tests.rs",
+      "crates/spinon-layout/src/grid_auto_track_sizing_tests.rs",
+      "crates/spinon-layout/src/grid_tests.rs",
+      "crates/spinon-layout/src/grid_track_sizing_tests.rs",
+      "crates/spinon-layout/src/lib.rs",
+      "crates/spinon-layout/src/taffy_style.rs",
+      "crates/spinon-layout/src/taffy_style/grid.rs",
+      "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values/grid_placement_values/named_line/area.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values/grid_values/tests.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/template_repeat.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs"
+    ]
+  }
+}

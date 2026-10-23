@@ -94,6 +94,11 @@ pub(super) fn to_taffy_style(
         None => (Vec::new(), Vec::new()),
     };
     let grid_auto_flow = grid::to_taffy_grid_auto_flow(grid_input.container);
+    let grid_template_areas = grid_input
+        .container
+        .and_then(|container| container.template_areas.as_ref())
+        .map(|areas| grid::to_taffy_grid_template_areas(node, areas))
+        .transpose()?;
     let grid_template_column_names = grid_input
         .container
         .filter(|container| container.columns_auto_repeat.is_some())
@@ -329,6 +334,7 @@ pub(super) fn to_taffy_style(
         ..Default::default()
     };
     let mut compact = CompactTaffyStyle::from(style);
+    compact.set_grid_template_areas(node, grid_template_areas)?;
     // The auxiliary normal-flow pass is not returned as final layout diagnostics.
     let trace_enabled = !flow_only
         && grid_input.container.is_some_and(|container| {

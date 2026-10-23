@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [C11.3 area 구현](./c11-3-template-repeat-named-lines-areas.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** Chrome 156의 13개 장면 사전 비교와 계획 실패 관점 20개 재검토 완료. 이 브랜치는 계획 변경만 담는다. 구현/runtime은 시작하지 않았다. C11.4 미완료 checkbox와 공식 `77/213`을 유지한다.
+**상태:** Chrome 156의 13개 장면 사전 비교와 계획 실패 관점 20개 검토를 마쳤고 계획 PR #538이 병합됐다. 구현 branch `feat/c11-4-template-areas-auto-repeat-20261023`에서 typed area metadata 전달, focused 회귀, 13개 scene의 Android/iOS simulator 실행과 FFI static archive 경계 대조를 마쳤다. 구현/runtime 검토와 구현 PR 검토·병합 및 Tailnet roadmap 반영을 진행한다. C11.4 미완료 checkbox와 공식 `77/213`을 유지한다.
 
 ## 결손
 
@@ -61,6 +61,19 @@ Chrome float frame과 used track은 `1/64 CSS px` 이하로 비교한다. CSSOM 
 8. 계획 검토와 관점이 겹치지 않는 implementation/runtime 20개를 새로 검토한다. 최종 구현 PR diff는 30개의 독립 실패 관점으로 검토한다. 발견 결함은 수정한 뒤 영향을 받은 관점을 재확인한다.
 9. 구현 PR은 `.github/pull_request_template.md`에 맞춰 상태 ID·명세·oracle·실행 화면·artifact hash·한계를 기록한다. 가능한 simulator 화면을 본문에 올리고 Agent Browser에서 GitHub 이미지 링크가 실제로 표시되는지 확인한 뒤 세션/process를 종료한다.
 10. Tailnet preview는 문서 preview 경로를 확인한 뒤 hash-manifest 방식으로 선택된 결과만 sync하고 HTTP 응답/hash를 검증한다. Agent Browser로 roadmap·화면 링크를 확인한 후 브라우저를 닫는다. 최신 GitHub required checks와 merge state를 확인하고 PR을 Rebase and merge한다.
+
+## 구현 진행 기록
+
+- [x] 계획 PR #538 병합, cascade → projection → layout → Taffy data flow 추적, one-axis repeat과 fixed-axis dimension gate 확인.
+- [x] layout-owned half-open area type, `u16` bounds, duplicate/name/rectangle/metadata 한도 검증과 fallible reservation 연결. malformed input은 layout 결과를 게시하기 전에 거부한다.
+- [x] cascade, style projection, layout의 focused 회귀와 fixture module/artifact 경계 검사를 추가했다. Rust focused test는 layout 238, style-to-layout 192, style 221개가 통과했다.
+- [x] 최종 source 기준 Android API 37 ARM64 AVD `emulator-5558` 및 iPhone 17 Pro / iOS 26.2 Simulator에서 각각 13/13 scene의 root/child frame, used tracks, auto-fit collapse, trace, draw/present를 확인했다. PixelCopy 및 compositor 제출 전 Metal drawable에서 각각 66/66 고정 표본이 exact였다.
+- [x] `cargo fmt`, workspace all-target Clippy, Android/iOS simulator app builds 및 `c04-runtime-gpu` 기본 FFI archive와 `c04-runtime-gpu-fixture-test` positive control을 확인했다. [archive 경계와 실행 근거](../spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.md)에 기록했다. 최종 APK/IPA 전체에서 fixture payload가 빠지는지는 검증하지 않았다.
+- [x] 계획과 다른 실패 관점 20개로 implementation/runtime을 새로 검토했다. [검토 결과](../spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/implementation-runtime-review-20.md).
+- [ ] PR diff 실패 관점 30개 검토, GitHub screenshot link 확인, merge를 진행한다.
+- [ ] 병합 후 Tailnet roadmap을 선택 파일 hash manifest로 갱신하고 Agent Browser에서 roadmap·runtime 화면 링크를 확인한 뒤 Agent Browser session/process를 닫는다.
+
+Android runtime의 `visibility:hidden` 장면은 현재 runtime CSS parser가 해당 선언을 지원하지 않아 matrix에서 제외했다. authored alias 충돌은 화면상 동일 색의 겹친 box로 두고 DOM node frame과 track trace로 검증한다. 이는 visibility cascade 동작 검증이 아니다. Chrome 156 auto-fit suffix의 4px 관측 차이는 기존 사전 비교와 같이 규범 기대를 판정값으로 쓰고 Chrome 값은 관측으로만 둔다.
 
 ## 계획 검토
 

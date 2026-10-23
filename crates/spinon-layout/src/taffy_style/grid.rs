@@ -6,7 +6,7 @@ use taffy::prelude::{
     GridTemplateComponent as TaffyGridTemplateComponent, LengthPercentage, MaxTrackSizingFunction,
     MinTrackSizingFunction, TrackSizingFunction,
 };
-use taffy::style::{GridTemplateRepetition, RepetitionCount};
+use taffy::style::{GridTemplateArea, GridTemplateAreas, GridTemplateRepetition, RepetitionCount};
 use taffy::style_helpers::{
     TaffyAuto, TaffyFitContent, TaffyGridLine, TaffyMaxContent, TaffyMinContent,
 };
@@ -25,6 +25,51 @@ pub(super) fn to_taffy_grid_auto_flow(container: Option<&GridContainerInput>) ->
         Some(GridAutoFlow::RowDense) => TaffyGridAutoFlow::RowDense,
         Some(GridAutoFlow::ColumnDense) => TaffyGridAutoFlow::ColumnDense,
     }
+}
+
+pub(super) fn to_taffy_grid_template_areas(
+    node: NodeId,
+    areas: &crate::GridTemplateAreasInput,
+) -> Result<GridTemplateAreas<String>, LayoutError> {
+    let property = "grid-template-areas";
+    let mut output = Vec::new();
+    output
+        .try_reserve_exact(areas.areas.len())
+        .map_err(|_| LayoutError::GridAllocationFailure { node, property })?;
+    for area in &areas.areas {
+        let mut name = String::new();
+        name.try_reserve(area.name.len())
+            .map_err(|_| LayoutError::GridAllocationFailure { node, property })?;
+        name.push_str(&area.name);
+        let row_start = area
+            .row_start
+            .checked_add(1)
+            .ok_or(LayoutError::InvalidGridTrackList { node, property })?;
+        let row_end = area
+            .row_end
+            .checked_add(1)
+            .ok_or(LayoutError::InvalidGridTrackList { node, property })?;
+        let column_start = area
+            .column_start
+            .checked_add(1)
+            .ok_or(LayoutError::InvalidGridTrackList { node, property })?;
+        let column_end = area
+            .column_end
+            .checked_add(1)
+            .ok_or(LayoutError::InvalidGridTrackList { node, property })?;
+        output.push(GridTemplateArea {
+            name,
+            row_start,
+            row_end,
+            column_start,
+            column_end,
+        });
+    }
+    Ok(GridTemplateAreas {
+        areas: output,
+        row_count: areas.rows,
+        column_count: areas.columns,
+    })
 }
 
 pub(super) fn taffy_grid_placement_line(

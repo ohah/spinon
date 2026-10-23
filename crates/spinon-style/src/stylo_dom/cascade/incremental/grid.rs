@@ -110,19 +110,11 @@ pub(super) fn computed_grid_layout(
         allow_intrinsic_tracks,
         allow_auto_repeat,
     )?;
-    if template_areas.is_some() && (columns_auto_repeat.is_some() || rows_auto_repeat.is_some()) {
+    if template_areas.is_some() && columns_auto_repeat.is_some() && rows_auto_repeat.is_some() {
         return Err(unsupported_grid_value(
             node,
-            if columns_auto_repeat.is_some() {
-                "grid-template-columns"
-            } else {
-                "grid-template-rows"
-            },
-            if columns_auto_repeat.is_some() {
-                columns_value
-            } else {
-                rows_value
-            },
+            "grid-template-columns",
+            columns_value,
         ));
     }
     let auto_rows = computed_grid_auto_rows(

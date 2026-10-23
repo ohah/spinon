@@ -69,6 +69,7 @@ fn grid_input(
                 rows_auto_repeat: None,
                 columns_line_names: Vec::new(),
                 rows_line_names: Vec::new(),
+                template_areas: None,
                 auto_flow: GridAutoFlow::Row,
                 auto_rows: GridAutoRows::Auto,
                 auto_columns: crate::GridAutoColumns::Auto,
@@ -241,6 +242,70 @@ fn auto_repeat_named_lines_resolve_after_repeat_expansion() {
         assert_eq!(frame.x, expected_x, "case {case_index}");
         assert_eq!(frame.width, expected_width, "case {case_index}");
     }
+}
+
+#[test]
+fn auto_repeat_template_area_extends_the_explicit_grid_and_resolves_area_lines() {
+    let mut input = grid_input(
+        vec![
+            GridTrackSize::LengthPx(20.0),
+            GridTrackSize::LengthPx(20.0),
+            GridTrackSize::LengthPx(20.0),
+        ],
+        vec![GridTrackSize::LengthPx(20.0)],
+        1,
+        LayoutGap {
+            row: LayoutLengthPercentage::length(0.0),
+            column: LayoutLengthPercentage::length(4.0),
+        },
+    );
+    input.nodes[0].style.width = LayoutDimension::Fixed(100.0);
+    input.nodes[0].style.height = LayoutDimension::Fixed(20.0);
+    input.viewport.width = 100.0;
+    input.viewport.height = 20.0;
+
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::TrackSizing;
+    container.columns_auto_repeat = Some(GridAutoRepeat {
+        mode: GridAutoRepeatMode::AutoFill,
+        start: 1,
+        end: 2,
+        line_names: vec![Vec::new(), Vec::new()],
+    });
+    container.auto_columns = crate::GridAutoColumns::LengthPx(20.0);
+    container.template_areas = Some(crate::GridTemplateAreasInput {
+        rows: 1,
+        columns: 5,
+        areas: vec![crate::GridTemplateAreaInput {
+            name: "suffix".into(),
+            row_start: 0,
+            row_end: 1,
+            column_start: 4,
+            column_end: 5,
+        }],
+    });
+    input.grid_items.insert(
+        id(2),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(1),
+            row_end: GridPlacementInput::Line(2),
+            column_start: GridPlacementInput::NamedLine {
+                name: "suffix-start".into(),
+                occurrence: 1,
+            },
+            column_end: GridPlacementInput::NamedLine {
+                name: "suffix-end".into(),
+                occurrence: 1,
+            },
+        },
+    );
+
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+    let frame = output.frames[&id(2)];
+    assert_eq!(
+        (frame.x, frame.y, frame.width, frame.height),
+        (96.0, 0.0, 20.0, 10.0)
+    );
 }
 
 fn implicit_fallback_auto_repeat_input(

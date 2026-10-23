@@ -81,6 +81,27 @@ pub struct GridAutoRepeat {
     pub line_names: Vec<Vec<String>>,
 }
 
+/// Auto-repeat과 함께 Taffy로 전달하는 `grid-template-areas` 입력입니다.
+#[derive(Clone, Debug, Default, Eq, PartialEq)]
+pub struct GridTemplateAreasInput {
+    /// 모든 셀을 포함하는 authored template 행 수입니다.
+    pub rows: u16,
+    /// 모든 셀을 포함하는 authored template 열 수입니다.
+    pub columns: u16,
+    /// 이름이 있는 area의 0-based half-open rectangle 목록입니다.
+    pub areas: Vec<GridTemplateAreaInput>,
+}
+
+/// Taffy Grid named resolver에 전달하는 하나의 area rectangle입니다.
+#[derive(Clone, Debug, Eq, PartialEq)]
+pub struct GridTemplateAreaInput {
+    pub name: String,
+    pub row_start: u16,
+    pub row_end: u16,
+    pub column_start: u16,
+    pub column_end: u16,
+}
+
 /// C11.4 Taffy 후보 trace에 기록되는 축입니다.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum LayoutGridTrackSizingAxis {
@@ -246,6 +267,8 @@ pub struct GridContainerInput {
     pub columns_line_names: Vec<Vec<String>>,
     /// 일반 축에서는 track 경계 이름이고, auto-repeat 축에서는 template component 경계 이름입니다.
     pub rows_line_names: Vec<Vec<String>>,
+    /// auto-repeat과 `grid-template-areas`를 함께 쓸 때만 전달합니다.
+    pub template_areas: Option<GridTemplateAreasInput>,
     pub auto_flow: GridAutoFlow,
     pub auto_rows: GridAutoRows,
     pub auto_columns: GridAutoColumns,
@@ -273,6 +296,7 @@ pub(super) fn validate_grid_layout(
     }
 
     for (&id, container) in &input.grid_containers {
+        validate_template_areas(id, container)?;
         match (container.placement_mode, &container.auto_rows) {
             (GridPlacementMode::TrackSizing, _) => {}
             (GridPlacementMode::TemplateGridImplicitTracks, GridAutoRows::Auto) => {
@@ -693,6 +717,61 @@ fn track_is_indefinite_height_safe(track: &GridTrackSize) -> bool {
     }
 }
 
+fn validate_template_areas(
+    node: NodeId,
+    container: &GridContainerInput,
+) -> Result<(), LayoutError> {
+    let Some(areas) = &container.template_areas else {
+        return Ok(());
+    };
+    let property = "grid-template-areas";
+    let one_auto_repeat_axis =
+        container.columns_auto_repeat.is_some() ^ container.rows_auto_repeat.is_some();
+    if container.placement_mode != GridPlacementMode::TrackSizing
+        || !one_auto_repeat_axis
+        || areas.rows == 0
+        || areas.columns == 0
+        || usize::from(areas.rows) > GRID_MAX_TRACKS
+        || usize::from(areas.columns) > GRID_MAX_TRACKS
+    {
+        return Err(LayoutError::InvalidGridTrackList { node, property });
+    }
+    if (container.rows_auto_repeat.is_none() && usize::from(areas.rows) != container.rows.len())
+        || (container.columns_auto_repeat.is_none()
+            && usize::from(areas.columns) != container.columns.len())
+    {
+        return Err(LayoutError::InvalidGridTrackList { node, property });
+    }
+
+    let mut metadata_bytes = areas
+        .areas
+        .len()
+        .checked_mul(std::mem::size_of::<GridTemplateAreaInput>())
+        .filter(|bytes| *bytes <= MAX_GRID_LINE_METADATA_BYTES)
+        .ok_or(LayoutError::InvalidGridTrackList { node, property })?;
+    let mut names = std::collections::HashSet::new();
+    names
+        .try_reserve(areas.areas.len())
+        .map_err(|_| LayoutError::GridAllocationFailure { node, property })?;
+    for area in &areas.areas {
+        if area.name.is_empty()
+            || area.name.as_bytes().contains(&0)
+            || area.row_start >= area.row_end
+            || area.row_end > areas.rows
+            || area.column_start >= area.column_end
+            || area.column_end > areas.columns
+            || !names.insert(area.name.as_str())
+        {
+            return Err(LayoutError::InvalidGridTrackList { node, property });
+        }
+        metadata_bytes = metadata_bytes
+            .checked_add(area.name.len())
+            .filter(|bytes| *bytes <= MAX_GRID_LINE_METADATA_BYTES)
+            .ok_or(LayoutError::InvalidGridTrackList { node, property })?;
+    }
+    Ok(())
+}
+
 fn validate_auto_repeat_axis(
     node: NodeId,
     property: &'static str,
@@ -1020,6 +1099,10 @@ fn valid_max_track_sizing_function(value: GridTrackMaxSizingFunction) -> bool {
 #[cfg(test)]
 #[path = "grid_tests.rs"]
 mod tests;
+
+#[cfg(test)]
+#[path = "grid_template_areas_tests.rs"]
+mod template_areas_tests;
 
 #[cfg(test)]
 #[path = "grid_track_sizing_tests.rs"]
