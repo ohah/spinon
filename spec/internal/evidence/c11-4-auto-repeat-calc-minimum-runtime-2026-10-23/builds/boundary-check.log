@@ -1,0 +1,41 @@
+bun test v1.4.2 (744846f84)
+
+tools/css-reference/fixture-module-boundary.test.mjs:
+126 |   assert.deepEqual(matrixManifest.templateAreaSceneIDs, fixtures.map(({ id }) => id));
+127 |   const listScenes = spawnSync(process.execPath, [
+128 |     resolve(repositoryRoot, 'tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs'),
+129 |     'android-avd', '--list-scenes',
+130 |   ], { cwd: repositoryRoot, encoding: 'utf8' });
+131 |   assert.equal(listScenes.status, 0, listScenes.stderr);
+               ^
+AssertionError: 3556 |       }),
+3557 |     ].join(';');
+3558 |     return {
+3559 |       id,
+3560 |       axis,
+3561 |       boxCount: fixtureItems.length + 1,
+                       ^
+ReferenceError: fixtureItems is not defined
+      at <anonymous> (/Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs:3561:17)
+      at map (1:11)
+
+Bun v1.4.2 (macOS arm64)
+
+
+1 !== 0
+
+ generatedMessage: false,
+     actual: 1,
+   expected: 0,
+   operator: "strictEqual",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /Users/yoonhb/Documents/workspace/spinon/tools/css-reference/fixture-module-boundary.test.mjs:131:10
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:63)
+(fail) 41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host 경로에 고정된다 [62.07ms]
+
+ 18 pass
+ 1 fail
+Ran 19 tests across 3 files. [25.46s]

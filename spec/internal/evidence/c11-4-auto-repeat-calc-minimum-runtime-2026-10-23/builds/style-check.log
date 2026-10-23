@@ -1,0 +1,10 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.37s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 2 tests
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_rejects_percentage_calc_auto_repeat_minimum ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_normalizes_absolute_calc_auto_repeat_minimums ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 192 filtered out; finished in 0.04s

@@ -60,6 +60,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "cyclic-percent-rows-multitrack", "definite-percent-two-axis-multitrack",
     "cyclic-calc-column", "cyclic-calc-row", "cyclic-calc-two-axis",
     "definite-calc-control",
+    "columns-calc-fill", "columns-fixed-fill-control", "columns-calc-fit",
+    "rows-calc-fill", "rows-fixed-fill-control", "rows-calc-fit",
     "auto-fixed-width-item", "minmax-auto-fixed-width-item",
     "fit-content-below-item-size", "spanning-auto-tracks",
     "spanning-auto-min-flex-tracks",
@@ -369,9 +371,53 @@ private func c114IsMixedCrossAxisSpanGroupsScene(_ sceneID: String) -> Bool {
         || sceneID.hasPrefix("definite-minmax-cross-axis-max-content-span-groups-")
 }
 
+private func c114AutoRepeatCalcMinimumRootSize(_ sceneID: String) -> (width: Int, height: Int)? {
+    switch sceneID {
+    case "columns-calc-fill", "columns-fixed-fill-control", "columns-calc-fit":
+        return (184, 48)
+    case "rows-calc-fill", "rows-fixed-fill-control", "rows-calc-fit":
+        return (48, 184)
+    default:
+        return nil
+    }
+}
+
+private func c114AutoRepeatCalcMinimumRootFrame(_ sceneID: String) -> String? {
+    guard let root = c114AutoRepeatCalcMinimumRootSize(sceneID) else { return nil }
+    return "width=\(root.width),height=\(root.height)"
+}
+
+private func c114AutoRepeatCalcMinimumItemFrame(_ sceneID: String) -> String? {
+    c114AutoRepeatCalcMinimumRootSize(sceneID) == nil ? nil : ""
+}
+
+private func c114AutoRepeatCalcMinimumNodeFrames(_ sceneID: String) -> String? {
+    guard let root = c114AutoRepeatCalcMinimumRootSize(sceneID) else { return nil }
+    let rows = sceneID.hasPrefix("rows-")
+    let fit = sceneID.hasSuffix("-fit")
+    let itemCount = fit ? 1 : 4
+    let itemWidth = rows || fit ? root.width : 46
+    let itemHeight = rows ? (fit ? root.height : 46) : root.height
+    let itemFrames = (0..<itemCount).map { index in
+        let x = rows || fit ? 0 : index * 46
+        let y = rows && !fit ? index * 46 : 0
+        return "\(index + 1):node=\(index + 2),x=\(x),y=\(y),width=\(itemWidth),height=\(itemHeight)"
+    }
+    return "node_frames_css_px=[0:node=1,x=0,y=0,width=\(root.width),height=\(root.height);"
+        + itemFrames.joined(separator: ";") + "]"
+}
+
+private func c114AutoRepeatCalcMinimumBoxCount(_ sceneID: String) -> Int? {
+    guard c114AutoRepeatCalcMinimumRootSize(sceneID) != nil else { return nil }
+    return sceneID.hasSuffix("-fit") ? 2 : 5
+}
+
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
     if let areaRepeatFrame = c114TemplateAreaRepeatRootFrame(sceneID) { return areaRepeatFrame }
+    if let calcMinimumFrame = c114AutoRepeatCalcMinimumRootFrame(sceneID) {
+        return calcMinimumFrame
+    }
     if let namedFrame = c114NamedAutoRepeatRootFrame(sceneID) { return namedFrame }
     if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) { return "" }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) {
@@ -587,6 +633,9 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     if let areaRepeatFrame = c114TemplateAreaRepeatItemFrame(sceneID) { return areaRepeatFrame }
+    if let calcMinimumFrame = c114AutoRepeatCalcMinimumItemFrame(sceneID) {
+        return calcMinimumFrame
+    }
     if let namedFrame = c114NamedAutoRepeatItemFrame(sceneID) { return namedFrame }
     if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) { return "" }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) { return "" }
@@ -2122,6 +2171,9 @@ private func c114ImageTrackPassMatches(
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
     if let areaRepeatFrames = c114TemplateAreaRepeatNodeFrames(sceneID) { return areaRepeatFrames }
+    if let calcMinimumFrames = c114AutoRepeatCalcMinimumNodeFrames(sceneID) {
+        return calcMinimumFrames
+    }
     if let namedFrames = c114NamedAutoRepeatNodeFrames(sceneID) { return namedFrames }
     if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) { return nil }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) {
@@ -3488,6 +3540,9 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
     if let areaRepeatItems = c114TemplateAreaRepeatItemRects(sceneID) {
         return areaRepeatItems.count + 1
+    }
+    if let calcMinimumCount = c114AutoRepeatCalcMinimumBoxCount(sceneID) {
+        return calcMinimumCount
     }
     if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) { return 4 }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) { return 4 }
