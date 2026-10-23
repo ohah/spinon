@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 const evidenceDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(evidenceDirectory, '../../../..');
 const sourceHead = '10ae04a09f9f0b1b97056693dad0438a2c022b62';
+const branchHead = '1d04fec9b174ed16a65021129134145684b01bcc';
 const originMain = '22eafb6cad66b6be8facaf264299e7bd6073d0f5';
 const sourceRelative = 'build/spinon/c11-4-pr562-tailnet-site-pass70-selected';
 const sourceRoot = path.join(repositoryRoot, sourceRelative);
@@ -20,7 +21,7 @@ const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 function assertSourceRevision() {
   const localHead = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repositoryRoot, encoding: 'utf8' }).trim();
   const remoteHead = execFileSync('git', ['rev-parse', 'origin/main'], { cwd: repositoryRoot, encoding: 'utf8' }).trim();
-  assert.equal(localHead, sourceHead, 'checkout is not the selected PR candidate revision');
+  assert.equal(localHead, branchHead, 'checkout is not the selected Tailnet sync PR revision');
   assert.equal(remoteHead, originMain, 'origin/main changed after site build');
 }
 
@@ -110,6 +111,7 @@ if (mode === 'preflight') {
     pass: 'pass70',
     createdAt: new Date().toISOString(),
     sourceHead,
+    branchHead: localHead,
     originMain,
     sourceRoot: sourceRelative,
     targetRootRelative: 'SpinonPreview',
@@ -135,6 +137,7 @@ if (mode === 'copy') {
   const preflight = readJson('preflight-pass70.json');
   const delta = readJson('delta-manifest-pass70.json');
   assert.equal(preflight.sourceHead, sourceHead);
+  assert.equal(preflight.branchHead, branchHead);
   assert.ok(!fs.existsSync(backupRoot), `refusing to reuse backup root: ${backupRoot}`);
   const backupDevice = fs.statSync(targetRoot).dev;
   fs.mkdirSync(backupRoot, { recursive: true });
@@ -276,6 +279,7 @@ if (mode === 'verify') {
   const result = {
     pass: 'pass70',
     sourceHead,
+    branchHead,
     localDeltaFilesVerified: delta.length,
     localMismatches,
     targetFilesBefore: preflight.previousTargetFiles,

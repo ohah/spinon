@@ -7,15 +7,13 @@ import { fileURLToPath } from 'node:url';
 
 const evidenceDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(evidenceDirectory, '../../../..');
-const sourcePath = path.join(repositoryRoot, 'spec/public/roadmap.html');
 const outputRoot = path.join(repositoryRoot, 'build/spinon/c11-4-pr562-tailnet-site-pass70-selected');
 const reportPath = path.join(evidenceDirectory, 'public-roadmap-staging-pass70.json');
-const branchHead = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repositoryRoot, encoding: 'utf8' }).trim();
-const expectedBranchHead = '10ae04a09f9f0b1b97056693dad0438a2c022b62';
+const branchHead = '10ae04a09f9f0b1b97056693dad0438a2c022b62';
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
-assert.equal(branchHead, expectedBranchHead, 'unexpected Tailnet docs candidate revision');
+execFileSync('git', ['cat-file', '-e', `${branchHead}^{commit}`], { cwd: repositoryRoot, stdio: 'ignore' });
 assert.ok(!fs.existsSync(reportPath), 'refusing to overwrite public roadmap staging report');
-const sourceBytes = fs.readFileSync(sourcePath);
+const sourceBytes = execFileSync('git', ['show', `${branchHead}:spec/public/roadmap.html`], { cwd: repositoryRoot, maxBuffer: 32 * 1024 * 1024 });
 const sourceText = sourceBytes.toString('utf8');
 assert.ok(sourceText.includes('/spinon/internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/'), 'roadmap evidence routes must use the established /internal/ path');
 assert.ok(!sourceText.includes('/spinon/spec/internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/'), 'stale /spec/internal/ evidence route remains');
@@ -28,7 +26,7 @@ for (const relative of routes) {
   assert.ok(targetStat.isFile() && !targetStat.isSymbolicLink(), `unsafe build route: ${relative}`);
   const temporaryPath = `${targetPath}.spinon-pass70-${randomUUID()}.tmp`;
   try {
-    fs.copyFileSync(sourcePath, temporaryPath, fs.constants.COPYFILE_EXCL);
+    fs.writeFileSync(temporaryPath, sourceBytes, { flag: 'wx' });
     fs.renameSync(temporaryPath, targetPath);
   } catch (error) {
     if (fs.existsSync(temporaryPath)) fs.unlinkSync(temporaryPath);

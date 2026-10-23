@@ -5,6 +5,7 @@
 - 구현 PR [#561](https://github.com/ohah/spinon/pull/561)은 `ff4233d0df00a632d71c28398c9a8274fb4abc16`로 병합됐다. simulator evidence source commit은 `d2b4826e4a76de5367e0671984d5e7b2c8c62ae0`이다.
 - 상태·공개 roadmap PR [#562](https://github.com/ohah/spinon/pull/562)은 2026-10-23 10:57:28 UTC에 Rebase and merge되어 `22eafb6cad66b6be8facaf264299e7bd6073d0f5`에 병합됐다. `spec/STATUS.md`와 공개 roadmap은 C11.4 미완료·공식 `72/213`을 유지한다.
 - PR #562 이후 공개 roadmap의 새 카드에 있던 내부 근거 경로를 기존 `/spinon/internal/...` route 형식에 맞춘 branch source commit은 `10ae04a09f9f0b1b97056693dad0438a2c022b62`이다. 이 경로 수정과 Tailnet sync 근거는 현재 docs PR에서 검토한다.
+- 선택 사이트와 Tailnet sync manifest는 branch commit `10ae04a`의 public roadmap route를 담고 있으며, sync evidence를 기록한 branch commit은 `1d04fec9b174ed16a65021129134145684b01bcc`이다.
 
 ## 선택 문서 빌드
 
