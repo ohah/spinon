@@ -170,6 +170,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "definite-minmax-calc-min-both-axes",
             "columns-calc-fill", "columns-fixed-fill-control", "columns-calc-fit",
             "rows-calc-fill", "rows-fixed-fill-control", "rows-calc-fit",
+            "columns-percent-calc-fill", "columns-percent-fixed-fill-control",
+            "columns-percent-calc-fit", "rows-percent-calc-fill",
+            "rows-percent-fixed-fill-control", "rows-percent-calc-fit",
             "cyclic-percent-two-axis-multitrack", "cyclic-percent-columns-multitrack",
             "cyclic-percent-rows-multitrack", "definite-percent-two-axis-multitrack",
             "cyclic-calc-column", "cyclic-calc-row", "cyclic-calc-two-axis",
@@ -564,6 +567,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "rows-fixed-fill-control":
             case "rows-calc-fit":
                 return new int[] {48, 184};
+            case "columns-percent-calc-fill":
+            case "columns-percent-fixed-fill-control":
+            case "columns-percent-calc-fit":
+                return new int[] {112, 48};
+            case "rows-percent-calc-fill":
+            case "rows-percent-fixed-fill-control":
+            case "rows-percent-calc-fit":
+                return new int[] {48, 112};
             default:
                 return null;
         }
@@ -583,24 +594,40 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (root == null) return null;
         boolean rows = sceneId.startsWith("rows-");
         boolean fit = sceneId.endsWith("-fit");
-        int count = fit ? 1 : 4;
-        int trackWidth = rows ? root[0] : fit ? root[0] : 46;
-        int trackHeight = rows ? fit ? root[1] : 46 : root[1];
+        boolean percentage = sceneId.startsWith("columns-percent-")
+                || sceneId.startsWith("rows-percent-");
+        boolean fractional = percentage && !fit;
+        int count = fit ? 1 : percentage ? 3 : 4;
+        float trackWidth = rows ? root[0] : fit ? root[0] : percentage ? root[0] / 3.0f : 46.0f;
+        float trackHeight = rows ? fit ? root[1] : percentage ? root[1] / 3.0f : 46.0f : root[1];
         StringBuilder frames = new StringBuilder("node_frames_css_px=[0:node=1,x=0,y=0,")
                 .append("width=").append(root[0]).append(",height=").append(root[1]);
         for (int index = 0; index < count; index++) {
-            int x = rows ? 0 : fit ? 0 : index * 46;
-            int y = rows ? fit ? 0 : index * 46 : 0;
+            float x = rows ? 0 : fit ? 0 : percentage ? index * trackWidth : index * 46;
+            float y = rows ? fit ? 0 : percentage ? index * trackHeight : index * 46 : 0;
+            float itemWidth = percentage && !fit && !rows && index == count - 1
+                    ? root[0] - 2.0f * trackWidth : trackWidth;
+            float itemHeight = percentage && !fit && rows && index == count - 1
+                    ? root[1] - 2.0f * trackHeight : trackHeight;
             frames.append(';').append(index + 1).append(":node=").append(index + 2)
-                    .append(",x=").append(x).append(",y=").append(y)
-                    .append(",width=").append(trackWidth).append(",height=").append(trackHeight);
+                    .append(",x=").append(c114AutoRepeatCalcMinimumFrameNumber(x, fractional))
+                    .append(",y=").append(c114AutoRepeatCalcMinimumFrameNumber(y, fractional))
+                    .append(",width=").append(c114AutoRepeatCalcMinimumFrameNumber(itemWidth, fractional))
+                    .append(",height=").append(c114AutoRepeatCalcMinimumFrameNumber(itemHeight, fractional));
         }
         return frames.append(']').toString();
     }
 
+    private static String c114AutoRepeatCalcMinimumFrameNumber(float value, boolean fractional) {
+        return fractional && value != Math.round(value)
+                ? Float.toString(value) : Integer.toString(Math.round(value));
+    }
+
     private static int c114AutoRepeatCalcMinimumBoxCount(String sceneId) {
         return c114AutoRepeatCalcMinimumRootSize(sceneId) == null
-                ? 0 : (sceneId.endsWith("-fit") ? 2 : 5);
+                ? 0 : (sceneId.endsWith("-fit") ? 2
+                        : sceneId.startsWith("columns-percent-")
+                                || sceneId.startsWith("rows-percent-") ? 4 : 5);
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {

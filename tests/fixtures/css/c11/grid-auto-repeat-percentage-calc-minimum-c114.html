@@ -18,43 +18,43 @@ html, body { margin: 0; width: 600px; height: 250px; font: 12px sans-serif; }
 .item { min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0; background: #e5484d; }
 .item:nth-of-type(2) { background: #2563eb; }
 .item:nth-of-type(3) { background: #16a34a; }
-#columns-calc-fill {
+#columns-percent-calc-fill {
   left: 0; top: 32px; width: 112px; height: 48px;
   grid-template-columns: repeat(auto-fill, minmax(calc(20px + 10%), 1fr));
   grid-template-rows: 48px;
 }
-#columns-fixed-fill-control {
+#columns-percent-fixed-fill-control {
   left: 140px; top: 32px; width: 112px; height: 48px;
   grid-template-columns: repeat(auto-fill, minmax(31.2px, 1fr));
   grid-template-rows: 48px;
 }
-#columns-calc-fit {
+#columns-percent-calc-fit {
   left: 280px; top: 32px; width: 112px; height: 48px;
   grid-template-columns: repeat(auto-fit, minmax(calc(20px + 10%), 1fr));
   grid-template-rows: 48px;
 }
-#rows-calc-fill {
+#rows-percent-calc-fill {
   left: 0; top: 120px; width: 48px; height: 112px;
   grid-template-columns: 48px;
   grid-template-rows: repeat(auto-fill, minmax(calc(20px + 10%), 1fr));
   grid-auto-flow: column;
 }
-#rows-fixed-fill-control {
+#rows-percent-fixed-fill-control {
   left: 140px; top: 120px; width: 48px; height: 112px;
   grid-template-columns: 48px;
   grid-template-rows: repeat(auto-fill, minmax(31.2px, 1fr));
   grid-auto-flow: column;
 }
-#rows-calc-fit {
+#rows-percent-calc-fit {
   left: 280px; top: 120px; width: 48px; height: 112px;
   grid-template-columns: 48px;
   grid-template-rows: repeat(auto-fit, minmax(calc(20px + 10%), 1fr));
   grid-auto-flow: column;
 }
 </style>
-<div id="columns-calc-fill" class="scene" data-scene-id="columns-calc-fill"><span class="caption">columns / calc / auto-fill</span><div class="item"></div><div class="item"></div><div class="item"></div></div>
-<div id="columns-fixed-fill-control" class="scene" data-scene-id="columns-fixed-fill-control"><span class="caption">columns / 31.2px control</span><div class="item"></div><div class="item"></div><div class="item"></div></div>
-<div id="columns-calc-fit" class="scene" data-scene-id="columns-calc-fit"><span class="caption">columns / calc / auto-fit</span><div class="item"></div></div>
-<div id="rows-calc-fill" class="scene" data-scene-id="rows-calc-fill"><span class="caption">rows / calc / auto-fill</span><div class="item"></div><div class="item"></div><div class="item"></div></div>
-<div id="rows-fixed-fill-control" class="scene" data-scene-id="rows-fixed-fill-control"><span class="caption">rows / 31.2px control</span><div class="item"></div><div class="item"></div><div class="item"></div></div>
-<div id="rows-calc-fit" class="scene" data-scene-id="rows-calc-fit"><span class="caption">rows / calc / auto-fit</span><div class="item"></div></div>
+<div id="columns-percent-calc-fill" class="scene" data-scene-id="columns-percent-calc-fill"><span class="caption">columns / calc / auto-fill</span><div class="item"></div><div class="item"></div><div class="item"></div></div>
+<div id="columns-percent-fixed-fill-control" class="scene" data-scene-id="columns-percent-fixed-fill-control"><span class="caption">columns / 31.2px control</span><div class="item"></div><div class="item"></div><div class="item"></div></div>
+<div id="columns-percent-calc-fit" class="scene" data-scene-id="columns-percent-calc-fit"><span class="caption">columns / calc / auto-fit</span><div class="item"></div></div>
+<div id="rows-percent-calc-fill" class="scene" data-scene-id="rows-percent-calc-fill"><span class="caption">rows / calc / auto-fill</span><div class="item"></div><div class="item"></div><div class="item"></div></div>
+<div id="rows-percent-fixed-fill-control" class="scene" data-scene-id="rows-percent-fixed-fill-control"><span class="caption">rows / 31.2px control</span><div class="item"></div><div class="item"></div><div class="item"></div></div>
+<div id="rows-percent-calc-fit" class="scene" data-scene-id="rows-percent-calc-fit"><span class="caption">rows / calc / auto-fit</span><div class="item"></div></div>

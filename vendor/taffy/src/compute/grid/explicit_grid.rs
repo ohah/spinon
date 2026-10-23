@@ -498,6 +498,40 @@ mod test {
         assert_eq!(auto_row_reps, 4);
     }
 
+    #[cfg(feature = "calc")]
+    #[test]
+    fn explicit_grid_sizing_auto_fill_with_calc_minimum() {
+        use RepetitionCount::AutoFill;
+        let calc_storage = 0_u64;
+        let calc_handle = (&calc_storage as *const u64).cast::<()>();
+        let grid_style: Style<DefaultCheapStr> = Style {
+            display: Display::Grid,
+            size: Size {
+                width: length(112.0),
+                height: length(48.0),
+            },
+            grid_template_columns: vec![repeat(
+                AutoFill,
+                vec![TrackSizingFunction {
+                    min: MinTrackSizingFunction::calc(calc_handle),
+                    max: MaxTrackSizingFunction::from_fr(1.0),
+                }],
+            )],
+            ..Default::default()
+        };
+        let preferred_size = grid_style.size.map(|size| size.into_option());
+        let (auto_repetitions, track_count) = compute_explicit_grid_size_in_axis(
+            &grid_style,
+            preferred_size.get_abs(AbsoluteAxis::Horizontal),
+            AutoRepeatStrategy::MaxRepetitionsThatDoNotOverflow,
+            |_, _| 31.2,
+            AbsoluteAxis::Horizontal,
+        );
+
+        assert_eq!(auto_repetitions, 3);
+        assert_eq!(track_count, 3);
+    }
+
     #[test]
     fn explicit_grid_sizing_auto_fill_non_exact_fit() {
         use RepetitionCount::AutoFill;

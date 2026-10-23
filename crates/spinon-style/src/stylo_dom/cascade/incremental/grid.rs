@@ -15,7 +15,8 @@ use super::super::{
     ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRepeat,
     ComputedCssGridAutoRepeatMode, ComputedCssGridAutoRows, ComputedCssGridItemPlacement,
     ComputedCssGridLayout, ComputedCssGridPlacement, ComputedCssGridTrackBreadth,
-    ComputedCssGridTrackLengthPercentage, ComputedCssGridTrackSize, CssCascadeError,
+    ComputedCssGridTrackLengthPercentage, ComputedCssGridTrackSize, ComputedCssMath,
+    CssCascadeError,
 };
 
 const MAX_COMPUTED_GRID_TRACKS: usize = 10_000;
@@ -1033,8 +1034,29 @@ fn auto_repeat_track_has_fixed_minimum(track: &ComputedCssGridTrackSize) -> bool
             min: ComputedCssGridTrackBreadth::LengthPx(value),
             max: ComputedCssGridTrackBreadth::LengthPx(_) | ComputedCssGridTrackBreadth::Fraction(_),
         } => value.is_finite() && *value >= 0.0,
+        ComputedCssGridTrackSize::MinMax {
+            min: ComputedCssGridTrackBreadth::Calc(value),
+            max: ComputedCssGridTrackBreadth::LengthPx(_) | ComputedCssGridTrackBreadth::Fraction(_),
+        } => auto_repeat_minimum_calc_is_supported(value),
         _ => false,
     }
+}
+
+fn auto_repeat_minimum_calc_is_supported(value: &ComputedCssMath) -> bool {
+    let ComputedCssMath::Sum(terms) = value else {
+        return false;
+    };
+    let [first, second] = terms.as_slice() else {
+        return false;
+    };
+    let (length, percentage) = match (first, second) {
+        (ComputedCssMath::LengthPx(length), ComputedCssMath::Percentage(percentage))
+        | (ComputedCssMath::Percentage(percentage), ComputedCssMath::LengthPx(length)) => {
+            (length, percentage)
+        }
+        _ => return false,
+    };
+    length.is_finite() && *length > 0.0 && percentage.is_finite() && *percentage >= 0.0
 }
 
 fn property_value<'a>(properties: &'a BTreeMap<String, String>, property: &str) -> &'a str {

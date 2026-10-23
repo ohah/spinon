@@ -3530,7 +3530,8 @@ async function autoRepeatCalcMinimumScenes() {
     readFile(androidPath, 'utf8'),
     readFile(iosPath, 'utf8'),
   ]);
-  assert.equal(fixtures.length, 6, 'absolute calc auto-repeat fixture는 6 scene이어야 합니다.');
+  assert.equal(fixtures.length, 12,
+    'absolute 및 percentage calc auto-repeat fixture는 12 scene이어야 합니다.');
   const allowlist = (source, expression, label) => {
     const match = source.match(expression);
     assert.ok(match, `${label} scene allowlist를 읽을 수 없습니다.`);
@@ -3576,7 +3577,7 @@ async function autoRepeatCalcMinimumScenes() {
 scenes.push(...await templateAreaRepeatScenes());
 scenes.push(...await autoRepeatNamedLineScenes());
 scenes.push(...await autoRepeatCalcMinimumScenes());
-assert.equal(scenes.length, 342, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 348, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;

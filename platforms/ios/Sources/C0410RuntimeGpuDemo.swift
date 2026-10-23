@@ -62,6 +62,9 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "definite-calc-control",
     "columns-calc-fill", "columns-fixed-fill-control", "columns-calc-fit",
     "rows-calc-fill", "rows-fixed-fill-control", "rows-calc-fit",
+    "columns-percent-calc-fill", "columns-percent-fixed-fill-control",
+    "columns-percent-calc-fit", "rows-percent-calc-fill",
+    "rows-percent-fixed-fill-control", "rows-percent-calc-fit",
     "auto-fixed-width-item", "minmax-auto-fixed-width-item",
     "fit-content-below-item-size", "spanning-auto-tracks",
     "spanning-auto-min-flex-tracks",
@@ -377,6 +380,10 @@ private func c114AutoRepeatCalcMinimumRootSize(_ sceneID: String) -> (width: Int
         return (184, 48)
     case "rows-calc-fill", "rows-fixed-fill-control", "rows-calc-fit":
         return (48, 184)
+    case "columns-percent-calc-fill", "columns-percent-fixed-fill-control", "columns-percent-calc-fit":
+        return (112, 48)
+    case "rows-percent-calc-fill", "rows-percent-fixed-fill-control", "rows-percent-calc-fit":
+        return (48, 112)
     default:
         return nil
     }
@@ -395,13 +402,27 @@ private func c114AutoRepeatCalcMinimumNodeFrames(_ sceneID: String) -> String? {
     guard let root = c114AutoRepeatCalcMinimumRootSize(sceneID) else { return nil }
     let rows = sceneID.hasPrefix("rows-")
     let fit = sceneID.hasSuffix("-fit")
-    let itemCount = fit ? 1 : 4
-    let itemWidth = rows || fit ? root.width : 46
-    let itemHeight = rows ? (fit ? root.height : 46) : root.height
+    let percentage = sceneID.hasPrefix("columns-percent-") || sceneID.hasPrefix("rows-percent-")
+    let fractional = percentage && !fit
+    let itemCount = fit ? 1 : percentage ? 3 : 4
+    let trackWidth = percentage ? Float(root.width) / 3.0 : 46.0
+    let trackHeight = percentage ? Float(root.height) / 3.0 : 46.0
+    let itemWidth = rows || fit ? Float(root.width) : percentage ? trackWidth : 46.0
+    let itemHeight = rows ? (fit ? Float(root.height) : percentage ? trackHeight : 46.0)
+        : Float(root.height)
     let itemFrames = (0..<itemCount).map { index in
-        let x = rows || fit ? 0 : index * 46
-        let y = rows && !fit ? index * 46 : 0
-        return "\(index + 1):node=\(index + 2),x=\(x),y=\(y),width=\(itemWidth),height=\(itemHeight)"
+        let x = rows || fit ? 0.0 : percentage ? Float(index) * trackWidth : Float(index * 46)
+        let y = rows && !fit ? (percentage ? Float(index) * trackHeight : Float(index * 46)) : 0.0
+        let frameWidth = percentage && !fit && !rows && index == itemCount - 1
+            ? Float(root.width) - 2.0 * trackWidth : itemWidth
+        let frameHeight = percentage && !fit && rows && index == itemCount - 1
+            ? Float(root.height) - 2.0 * trackHeight : itemHeight
+        let number: (Float) -> String = { value in
+            fractional && value.rounded() != value
+                ? String(value) : String(Int(value.rounded()))
+        }
+        return "\(index + 1):node=\(index + 2),x=\(number(x)),y=\(number(y)),"
+            + "width=\(number(frameWidth)),height=\(number(frameHeight))"
     }
     return "node_frames_css_px=[0:node=1,x=0,y=0,width=\(root.width),height=\(root.height);"
         + itemFrames.joined(separator: ";") + "]"
@@ -409,7 +430,8 @@ private func c114AutoRepeatCalcMinimumNodeFrames(_ sceneID: String) -> String? {
 
 private func c114AutoRepeatCalcMinimumBoxCount(_ sceneID: String) -> Int? {
     guard c114AutoRepeatCalcMinimumRootSize(sceneID) != nil else { return nil }
-    return sceneID.hasSuffix("-fit") ? 2 : 5
+    if sceneID.hasSuffix("-fit") { return 2 }
+    return sceneID.hasPrefix("columns-percent-") || sceneID.hasPrefix("rows-percent-") ? 4 : 5
 }
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {

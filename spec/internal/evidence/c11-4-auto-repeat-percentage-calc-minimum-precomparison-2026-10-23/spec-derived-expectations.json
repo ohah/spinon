@@ -8,7 +8,7 @@
   "idealFrTrackPx": 37.333333333333336,
   "chromeQuantizationTolerancePx": 0.015625,
   "scenes": {
-    "columns-calc-fill": {
+    "columns-percent-calc-fill": {
       "rootSizePx": [
         112,
         48
@@ -39,10 +39,10 @@
         ]
       ]
     },
-    "columns-fixed-fill-control": {
-      "matches": "columns-calc-fill"
+    "columns-percent-fixed-fill-control": {
+      "matches": "columns-percent-calc-fill"
     },
-    "columns-calc-fit": {
+    "columns-percent-calc-fit": {
       "preCollapseTrackCount": 3,
       "tracksAfterCollapsePx": [
         112,
@@ -58,7 +58,7 @@
         ]
       ]
     },
-    "rows-calc-fill": {
+    "rows-percent-calc-fill": {
       "rootSizePx": [
         48,
         112
@@ -89,10 +89,10 @@
         ]
       ]
     },
-    "rows-fixed-fill-control": {
-      "matches": "rows-calc-fill"
+    "rows-percent-fixed-fill-control": {
+      "matches": "rows-percent-calc-fill"
     },
-    "rows-calc-fit": {
+    "rows-percent-calc-fit": {
       "preCollapseTrackCount": 3,
       "tracksAfterCollapsePx": [
         112,

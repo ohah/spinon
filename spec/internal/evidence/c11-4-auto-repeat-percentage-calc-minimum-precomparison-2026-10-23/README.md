@@ -7,11 +7,11 @@
 - 규범 기준: CSS Grid Layout Module Level 1, 2025 CRD [§7.2.1](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#track-sizes) 및 [§7.2.3.1–§7.2.3.2](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#repeat-syntax), CSS Values and Units Level 4 [§5.6, §10](https://www.w3.org/TR/css-values/). `<fixed-breadth>`는 `<length-percentage>`이고 CSS math function은 해당 type이 허용되는 곳에서 사용할 수 있다. Column percentages는 inner inline size, row percentages는 inner block size에 상대적이다. Auto-repeat은 fixed-size를 요구하며, definite preferred/max size에서는 fixed sizing function과 gap을 사용해 가장 큰 fitting repetition count를 고른다.
 - 브라우저: Agent Browser 0.31.1, `HeadlessChrome/156.0.0.0`, macOS ARM64
 - viewport 1280×633 CSS px, DPR 1
-- 정확 입력: [fixture](../../../../tests/fixtures/css/c11/grid-auto-repeat-percentage-calc-minimum-c114.html)
-- 실제 관찰: [chrome-observation.json](./chrome-observation.json)
-- 독립 기대값: [spec-derived-expectations.json](./spec-derived-expectations.json)
-- 화면: [chrome156-agent-browser.png](./chrome156-agent-browser.png)
-- SHA-256 목록: [sha256.txt](./sha256.txt)
+- 정확 입력: [고정 CSS fixture](https://github.com/ohah/spinon/blob/main/tests/fixtures/css/c11/grid-auto-repeat-percentage-calc-minimum-c114.html)
+- 실제 관찰: [chrome-observation.json](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-4-auto-repeat-percentage-calc-minimum-precomparison-2026-10-23/chrome-observation.json)
+- 독립 기대값: [spec-derived-expectations.json](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-4-auto-repeat-percentage-calc-minimum-precomparison-2026-10-23/spec-derived-expectations.json)
+- 화면: [chrome156-agent-browser.png](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-4-auto-repeat-percentage-calc-minimum-precomparison-2026-10-23/chrome156-agent-browser.png)
+- SHA-256 목록: [sha256.txt](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-4-auto-repeat-percentage-calc-minimum-precomparison-2026-10-23/sha256.txt)
 
 ## 독립 기대값
 

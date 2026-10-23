@@ -4,8 +4,8 @@ use spinon_core::NodeId;
 
 use crate::grid_placement::normalize_grid_layout;
 use crate::{
-    GridPlacementInput, LayoutDisplay, LayoutError, LayoutInput, LayoutPosition,
-    percentage_basis::DefiniteAxes,
+    GridPlacementInput, LayoutCssMath, LayoutCssMathProperty, LayoutDisplay, LayoutError,
+    LayoutInput, LayoutPosition, percentage_basis::DefiniteAxes,
 };
 
 /// Taffy Grid 코드가 축마다 내부적으로 허용하는 최대 track 수입니다.
@@ -458,6 +458,8 @@ pub(super) fn validate_grid_layout(
                 &container.columns,
                 &container.columns_line_names,
                 container.columns_auto_repeat.as_ref(),
+                definite_axes.get(&node.id).is_some_and(|axes| axes.width),
+                &input.css_math,
             )?;
             validate_auto_repeat_axis(
                 node.id,
@@ -465,6 +467,8 @@ pub(super) fn validate_grid_layout(
                 &container.rows,
                 &container.rows_line_names,
                 container.rows_auto_repeat.as_ref(),
+                definite_axes.get(&node.id).is_some_and(|axes| axes.height),
+                &input.css_math,
             )?;
         }
         if container.placement_mode == GridPlacementMode::SparseRow
@@ -778,6 +782,8 @@ fn validate_auto_repeat_axis(
     tracks: &[GridTrackSize],
     outer_line_names: &[Vec<String>],
     auto_repeat: Option<&GridAutoRepeat>,
+    percentage_basis_is_definite: bool,
+    css_math: &[crate::LayoutCssMathValue],
 ) -> Result<(), LayoutError> {
     let Some(auto_repeat) = auto_repeat else {
         return Ok(());
@@ -808,9 +814,15 @@ fn validate_auto_repeat_axis(
         .iter()
         .chain(suffix.iter())
         .all(auto_repeat_neighbor_track_is_fixed_px)
-        || !repeat_tracks
-            .iter()
-            .all(auto_repeat_track_has_fixed_minimum)
+        || !repeat_tracks.iter().all(|track| {
+            auto_repeat_track_has_fixed_minimum(
+                track,
+                node,
+                property,
+                percentage_basis_is_definite,
+                css_math,
+            )
+        })
     {
         return Err(LayoutError::InvalidGridTrackList { node, property });
     }
@@ -1058,15 +1070,61 @@ fn valid_grid_track_length_percentage(value: GridTrackLengthPercentage) -> bool 
     }
 }
 
-fn auto_repeat_track_has_fixed_minimum(track: &GridTrackSize) -> bool {
+fn auto_repeat_track_has_fixed_minimum(
+    track: &GridTrackSize,
+    node: NodeId,
+    property: &'static str,
+    percentage_basis_is_definite: bool,
+    css_math: &[crate::LayoutCssMathValue],
+) -> bool {
     match track {
         GridTrackSize::LengthPx(value) => value.is_finite() && *value >= 0.0,
         GridTrackSize::MinMax {
             min: GridTrackMinSizingFunction::LengthPx(value),
             max: GridTrackMaxSizingFunction::LengthPx(_) | GridTrackMaxSizingFunction::Fraction(_),
         } => value.is_finite() && *value >= 0.0,
+        GridTrackSize::MinMax {
+            min: GridTrackMinSizingFunction::Calc(id),
+            max: GridTrackMaxSizingFunction::LengthPx(_) | GridTrackMaxSizingFunction::Fraction(_),
+        } => {
+            percentage_basis_is_definite
+                && auto_repeat_minimum_calc_is_supported(*id, node, property, css_math)
+        }
         _ => false,
     }
+}
+
+fn auto_repeat_minimum_calc_is_supported(
+    id: crate::LayoutCalcId,
+    node: NodeId,
+    property: &'static str,
+    css_math: &[crate::LayoutCssMathValue],
+) -> bool {
+    let math_property = match property {
+        "grid-template-columns" => LayoutCssMathProperty::GridTemplateColumns,
+        "grid-template-rows" => LayoutCssMathProperty::GridTemplateRows,
+        _ => return false,
+    };
+    let Some(value) = css_math.iter().find(|value| value.id == id) else {
+        return false;
+    };
+    if value.node_id != node || value.property != math_property {
+        return false;
+    }
+    let LayoutCssMath::Sum(terms) = &value.expression else {
+        return false;
+    };
+    let [first, second] = terms.as_slice() else {
+        return false;
+    };
+    let (length, percentage) = match (first, second) {
+        (LayoutCssMath::LengthPx(length), LayoutCssMath::Percentage(percentage))
+        | (LayoutCssMath::Percentage(percentage), LayoutCssMath::LengthPx(length)) => {
+            (length, percentage)
+        }
+        _ => return false,
+    };
+    length.is_finite() && *length > 0.0 && percentage.is_finite() && *percentage >= 0.0
 }
 
 fn auto_repeat_neighbor_track_is_fixed_px(track: &GridTrackSize) -> bool {

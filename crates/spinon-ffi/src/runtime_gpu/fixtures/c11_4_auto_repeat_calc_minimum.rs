@@ -55,12 +55,22 @@ mod tests {
     fn calc_minimum_scenes_have_unique_ids_and_fixed_frames() {
         let scenes: Value = serde_json::from_str(SCENES_JSON).unwrap();
         let scenes = scenes.as_array().unwrap();
-        assert_eq!(scenes.len(), 6);
+        assert_eq!(scenes.len(), 12);
         let ids = scenes
             .iter()
             .map(|scene| scene["id"].as_str().unwrap())
             .collect::<BTreeSet<_>>();
         assert_eq!(ids.len(), scenes.len());
+        for expected in [
+            "columns-percent-calc-fill",
+            "columns-percent-fixed-fill-control",
+            "columns-percent-calc-fit",
+            "rows-percent-calc-fill",
+            "rows-percent-fixed-fill-control",
+            "rows-percent-calc-fit",
+        ] {
+            assert!(ids.contains(expected), "missing scene {expected}");
+        }
 
         for scene in scenes {
             let scene_id = scene["id"].as_str().unwrap();
