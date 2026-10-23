@@ -1,16 +1,21 @@
 # 내부 인터페이스 명세
 
+## C11.4 auto-fit + area-expanded tracks · PR #549
+
+[구현 PR #549](https://github.com/ohah/spinon/pull/549)은 fdf5a3a24f3f5f3f1e2f1bc2f5e871f29dbf7ca8로 Rebase and merge했다. [집중 계획](https://github.com/ohah/spinon/blob/main/plan/c11-4-auto-fit-area-expansion.md) · [Android/iOS Simulator 41-scene 실행·화면·artifact 근거](./evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/README.md) · [공식 집계 정정과 Agent Browser 확인](./evidence/c11-4-auto-fit-area-expansion-status-correction-2026-10-23/README.md) · [문서 변경 적대 검토](./evidence/c11-4-auto-fit-area-expansion-status-correction-2026-10-23/pr-diff-review-30.md). C11.4 checkbox는 미완료이며 현재 live DOM 집계 72/213이다. 해당 PR의 사전 검토 파일에 남은 77/213 문자열은 당시 표시 문구를 옮긴 기록이며 checked checkbox 수의 근거가 아니다.
+
+
 ## C11.4 overlapping cyclic minmax span-groups · PR #500
 
-[구현 PR #500](https://github.com/ohah/spinon/pull/500)은 2026-10-22 05:11:19 UTC Rebase and merge로 병합됐다(merge SHA `2f3f45c6aa27f427b36e906fa3a72fd8d864e402`; 병합 당시 status-check rollup 없음, main required status checks 미설정). [집중 계획](../../plan/c11-4-cyclic-minmax-calc-overlapping-spans.md) · [Android/iOS 6-scene 실행·화면·pixel·artifact 근거](./evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md) · [구현 실패 관점 20개](./evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/implementation-review-20.md) · [PR diff 검토 20개](./evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/pr-diff-review-20.md). 제한된 opt-in fixture이며 C11.4 전체는 미완료, 공식 집계는 `77/213`이다. [Tailnet 로드맵 동기화·Agent Browser 근거](./evidence/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-sync-2026-10-22/README.md).
+[구현 PR #500](https://github.com/ohah/spinon/pull/500)은 2026-10-22 05:11:19 UTC Rebase and merge로 병합됐다(merge SHA `2f3f45c6aa27f427b36e906fa3a72fd8d864e402`; 병합 당시 status-check rollup 없음, main required status checks 미설정). [집중 계획](../../plan/c11-4-cyclic-minmax-calc-overlapping-spans.md) · [Android/iOS 6-scene 실행·화면·pixel·artifact 근거](./evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/README.md) · [구현 실패 관점 20개](./evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/implementation-review-20.md) · [PR diff 검토 20개](./evidence/c11-4-cyclic-minmax-calc-overlapping-spans-runtime-2026-10-22/pr-diff-review-20.md). 제한된 opt-in fixture이며 C11.4 전체는 미완료, 공식 집계는 `72/213`이다. [Tailnet 로드맵 동기화·Agent Browser 근거](./evidence/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-sync-2026-10-22/README.md).
 
 ## C11.4 PR #497 뒤 Tailnet 로드맵 미리보기
 
-[Tailnet 동기화·Agent Browser 화면·파일 해시 근거](./evidence/c11-4-pr497-tailnet-roadmap-sync-2026-10-22/README.md). PR #497을 Rebase and merge한 뒤 최신 C11.4 계획과 실행 결과를 선택 미리보기에 반영했다. 공식 `77/213` 및 C11.4 미완료 상태를 유지하며 GitHub Pages 배포는 하지 않았다.
+[Tailnet 동기화·Agent Browser 화면·파일 해시 근거](./evidence/c11-4-pr497-tailnet-roadmap-sync-2026-10-22/README.md). PR #497을 Rebase and merge한 뒤 최신 C11.4 계획과 실행 결과를 선택 미리보기에 반영했다. 공식 `72/213` 및 C11.4 미완료 상태를 유지하며 GitHub Pages 배포는 하지 않았다.
 
 ## C11.4 cyclic `minmax(calc())` minimum spanning-item 후속 · 구현 중
 
-[계획](../../plan/c11-4-cyclic-minmax-calc-minimum-span.md) · [Chrome 156 사전 비교·독립 기대값](./evidence/c11-4-cyclic-minmax-calc-minimum-span-precomparison-2026-10-22/README.md) · [Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 실행·화면·artifact 경계](./evidence/c11-4-cyclic-minmax-calc-minimum-span-runtime-2026-10-22/README.md) · [구현/runtime 실패 관점 20개](./evidence/c11-4-cyclic-minmax-calc-minimum-span-runtime-2026-10-22/implementation-runtime-review-20.md) · [PR diff 적대 검토 30개](./evidence/c11-4-cyclic-minmax-calc-minimum-span-runtime-2026-10-22/pr-diff-review-30.md). 네 고정 scene은 양축 중 한 축의 두 identical cyclic `minmax(calc())` minimum과 span-2 Ahem text item만 검증한다. 각 Simulator 4/4 scene 및 native surface sample 8/8 exact다. 일반 CSS admission, WPT, Android 실기기/hardware GPU, iOS compositor 이후 pixels와 전체 C11.4는 미검증이며 현재 공식 `77/213` 집계는 유지한다.
+[계획](../../plan/c11-4-cyclic-minmax-calc-minimum-span.md) · [Chrome 156 사전 비교·독립 기대값](./evidence/c11-4-cyclic-minmax-calc-minimum-span-precomparison-2026-10-22/README.md) · [Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 실행·화면·artifact 경계](./evidence/c11-4-cyclic-minmax-calc-minimum-span-runtime-2026-10-22/README.md) · [구현/runtime 실패 관점 20개](./evidence/c11-4-cyclic-minmax-calc-minimum-span-runtime-2026-10-22/implementation-runtime-review-20.md) · [PR diff 적대 검토 30개](./evidence/c11-4-cyclic-minmax-calc-minimum-span-runtime-2026-10-22/pr-diff-review-30.md). 네 고정 scene은 양축 중 한 축의 두 identical cyclic `minmax(calc())` minimum과 span-2 Ahem text item만 검증한다. 각 Simulator 4/4 scene 및 native surface sample 8/8 exact다. 일반 CSS admission, WPT, Android 실기기/hardware GPU, iOS compositor 이후 pixels와 전체 C11.4는 미검증이며 현재 공식 `72/213` 집계는 유지한다.
 
 ## C11.4 depth-three anonymous text + image 후속
 

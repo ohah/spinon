@@ -1,8 +1,7 @@
 # C11.4 · `auto-fit`과 area 확장 track 결합 계획
 
-**상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [양 축 auto-repeat과 template areas](./c11-4-two-axis-template-areas.md) · [CSS Grid 내부 계약](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
+**상태:** 계획 PR [#548](https://github.com/ohah/spinon/pull/548)이 병합됐고 구현 PR [#549](https://github.com/ohah/spinon/pull/549)은 2026-10-23 15:40:56 KST Rebase and merge로 fdf5a3a24f3f5f3f1e2f1bc2f5e871f29dbf7ca8에 병합됐다. 7개 신규 scene을 포함한 구현은 layout·projection·opt-in FFI 검사, fixture-boundary Node 7/7, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 선택된 41/41 scene을 통과했다. 두 플랫폼의 node frame·used tracks·draw/present는 41/41 exact match이며, 29 area scene의 PixelCopy/Metal 표본은 각각 116/116 exact다. 첫 Android 실행에서 empty-area scene의 item-rect host map 누락을 찾아 양 플랫폼 host mapping과 회귀 guard를 수정한 뒤 전체 실행을 다시 통과했다. 병합 당시 check rollup은 비어 있었고 required check은 보고되지 않았다. PR 본문 Android/iOS 이미지는 Agent Browser에서 각각 1080×2400, 1206×2622로 렌더링됨을 확인했다. C11.4 checkbox는 미완료이며 공식 집계 72/213은 바뀌지 않았다. [검증·한계·화면](../spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/README.md) · [집계 정정 근거](../spec/internal/evidence/c11-4-auto-fit-area-expansion-status-correction-2026-10-23/README.md).
 
-**상태:** 계획 PR [#548](https://github.com/ohah/spinon/pull/548)이 병합됐고 구현 PR [#549](https://github.com/ohah/spinon/pull/549)이 열렸다. 7개 신규 scene을 포함한 구현 후보는 최신 source에서 layout·projection·opt-in FFI 검사를 통과했고, fixture-boundary Node 검사는 7/7이다. 전체 336-scene route에서 정해진 41개 ID를 선택해 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 41/41을 실행했다. 두 플랫폼의 node frame·used tracks·draw/present는 41/41 exact match이며, 29 area scene의 PixelCopy/Metal 표본은 각각 116/116 exact다. 첫 Android 실행 중 empty-area scene의 item-rect host map 누락을 찾아 Android/iOS에 빈 배열을 추가하고 전 scene host mapping 회귀검사를 넣은 뒤 전체 실행을 다시 통과했다. workspace와 fixture feature Clippy, static archive의 기본/fixture negative·positive control도 통과했다. 현재 `mergeStateStatus=CLEAN`이며 `gh pr checks --required`에는 check가 보고되지 않았다. Agent Browser에서 본문 Android/iOS 이미지가 각각 1080×2400, 1206×2622로 렌더링됨을 확인했다. C11.4 checkbox와 공식 `77/213` 집계는 병합 전까지 그대로 둔다. [검증·한계·화면](../spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/README.md).
 
 ## 결손과 기존 경계
 
@@ -65,4 +64,4 @@
 
 ## 제외 범위
 
-새 CSS grammar, arbitrary/non-px `grid-auto-*`, intrinsic·percentage·fraction sizing, 여러 auto-repeat이 한 track list에 있는 경우, authored line-name collision 확장, auto-placement 확장, RTL·writing mode·subgrid, public CSS support, WPT, 전체 C11.4 완료는 다루지 않는다. Android 실기기, Android hardware GPU, iOS 실기기, iOS compositor 이후 pixels와 최종 APK/IPA fixture exclusion도 주장하지 않는다. 내부 계약 `0059`의 숫자 버전 `0.1.0`, C11.4 checkbox와 공식 `77/213`은 유지한다.
+새 CSS grammar, arbitrary/non-px `grid-auto-*`, intrinsic·percentage·fraction sizing, 여러 auto-repeat이 한 track list에 있는 경우, authored line-name collision 확장, auto-placement 확장, RTL·writing mode·subgrid, public CSS support, WPT, 전체 C11.4 완료는 다루지 않는다. Android 실기기, Android hardware GPU, iOS 실기기, iOS compositor 이후 pixels와 최종 APK/IPA fixture exclusion도 주장하지 않는다. 내부 계약 `0059`의 숫자 버전 `0.1.0`, C11.4 checkbox와 공식 `72/213`은 유지한다.
