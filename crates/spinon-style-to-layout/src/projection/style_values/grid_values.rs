@@ -41,17 +41,13 @@ pub(super) fn project_grid_layout_with_math(
     math: &mut CssMathProjector,
 ) -> Result<GridContainerInput, StyleLayoutError> {
     let has_auto_repeat = grid.columns_auto_repeat.is_some() || grid.rows_auto_repeat.is_some();
-    let has_two_auto_repeat_axes =
-        grid.columns_auto_repeat.is_some() && grid.rows_auto_repeat.is_some();
     if has_auto_repeat {
         let property = if grid.columns_auto_repeat.is_some() {
             "grid-template-columns"
         } else {
             "grid-template-rows"
         };
-        if profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
-            || (grid.template_areas.is_some() && has_two_auto_repeat_axes)
-        {
+        if profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
             return Err(StyleLayoutError::UnsupportedComputedValue {
                 node,
                 property,

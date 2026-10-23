@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [단일 축 area 결합](./c11-4-auto-repeat-template-areas.md) · [양 축 auto-repeat](./c11-4-two-axis-auto-repeat.md) · [CSS Grid 내부 계약](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획 PR [#543](https://github.com/ohah/spinon/pull/543)이 병합됐다. 구현 전 소스 재추적에서 cascade gate를 추가 발견해 이 계획 수정에 반영하고, 계획 수정 관점 20개와 계획 수정 PR diff 30개를 새로 검토했다. Chrome 156의 9 scene oracle은 유지한다. 구현·Simulator 결과는 아직 없고 C11.4 checkbox와 `77/213`도 유지한다.
+**상태:** 계획 PR [#543](https://github.com/ohah/spinon/pull/543)이 병합됐다. 구현 전 소스 재추적에서 cascade gate를 추가 발견해 이 계획 수정에 반영하고, 계획 수정 관점 20개와 계획 수정 PR diff 30개를 새로 검토했다. Chrome 156 9-scene oracle을 유지했다. 구현과 Android/iOS Simulator 34-scene matrix가 통과했고 구현 PR은 준비 중이다. default/product FFI archive negative control은 simulator build 후 남은 저장 공간이 112 MiB라 다시 실행하지 않았다. C11.4 checkbox와 공식 `77/213`은 유지한다. [구현 실행 근거](../spec/internal/evidence/c11-4-two-axis-template-areas-runtime-2026-10-23/README.md).
 
 ## 결손
 
@@ -32,9 +32,9 @@ Chrome for Testing `156.0.8078.48`, Agent Browser `0.31.1`, macOS arm64, viewpor
 | Scene ID | CSS 조합과 기대 결과 |
 | --- | --- |
 | `area-short` | 양 축 `auto-fill`; 100×76 root, area 2×2가 expanded 4×3보다 짧음. Columns `[20,20,20,20]`, Rows `[20,20,20]`, item `[24,0,8,8]`. |
-| `area-added-columns` | 양 축 `auto-fill`; 40×76 root, area가 columns만 3개로 늘림. Columns `[20,16,16]`, Rows `[20,20,20]`, item `[44,0,8,8]`. |
-| `area-added-rows` | 양 축 `auto-fill`; 76×40 root, area가 rows만 3개로 늘림. Columns `[20,20,20]`, Rows `[20,12,12]`, item `[24,40,8,8]`. |
-| `area-added-both` | 양 축 `auto-fill`; 40×40 root, area가 두 축을 각 3개로 늘림. Columns `[20,16,16]`, Rows `[20,12,12]`, item `[44,40,8,8]`. 오른쪽·아래 root overflow surface 색을 확인한다. |
+| `area-added-columns` | 양 축 `auto-fill`; 40×76 root에서 repeat은 columns 1개를 만들고 area는 explicit columns를 총 3개로 늘린다. Columns `[20,16,16]`, Rows `[20,20,20]`, item `[44,0,8,8]`. |
+| `area-added-rows` | 양 축 `auto-fill`; 76×40 root에서 repeat은 rows 1개를 만들고 area는 explicit rows를 총 3개로 늘린다. Columns `[20,20,20]`, Rows `[20,12,12]`, item `[24,40,8,8]`. |
+| `area-added-both` | 양 축 `auto-fill`; 40×40 root에서 각 repeat은 track 1개를 만들고 area는 두 축을 각각 총 3개로 늘린다. Columns `[20,16,16]`, Rows `[20,12,12]`, item `[44,40,8,8]`. 오른쪽·아래 root overflow surface 색을 확인한다. |
 | `fill-fit` | columns `auto-fill`, rows `auto-fit`; area item 한 개. Columns `[20,20,20,20]`, Rows `[0,20,0]`, item `[24,0,8,8]`. |
 | `fit-fill` | columns `auto-fit`, rows `auto-fill`; area item 한 개. Columns `[0,20,0,0]`, Rows `[20,20,20]`, item `[0,24,8,8]`. |
 | `fit-fit-empty` | 양 축 `auto-fit`; named area는 정의하지만 in-flow item은 없다. 모든 repeated track은 `[0,…]`으로 collapse한다. |

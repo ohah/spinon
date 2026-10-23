@@ -1048,5 +1048,250 @@
         20
       ]
     }
+  },
+  {
+    "id": "template-area-repeat-two-axis-area-short",
+    "width": "100px",
+    "height": "76px",
+    "columns": "repeat(auto-fill,20px)",
+    "rows": "repeat(auto-fill,20px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoColumns": "16px",
+    "autoRows": "12px",
+    "rootColor": "#e5e7eb",
+    "areas": "\". hero\" \". .\"",
+    "items": [
+      {
+        "name": "hero",
+        "placement": { "gridArea": "hero" },
+        "width": "8px",
+        "height": "8px",
+        "color": "#e5484d"
+      }
+    ],
+    "expect": {
+      "root": [100, 76],
+      "scroll": [100, 76],
+      "items": [{ "name": "hero", "frame": [24, 0, 8, 8] }],
+      "tracks": { "columns": [20, 20, 20, 20], "rows": [20, 20, 20] }
+    }
+  },
+  {
+    "id": "template-area-repeat-two-axis-area-added-columns",
+    "width": "40px",
+    "height": "76px",
+    "columns": "repeat(auto-fill,20px)",
+    "rows": "repeat(auto-fill,20px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoColumns": "16px",
+    "autoRows": "12px",
+    "rootColor": "#e5e7eb",
+    "areas": "\". . hero\" \". . .\"",
+    "items": [
+      {
+        "name": "hero",
+        "placement": { "gridArea": "hero" },
+        "width": "8px",
+        "height": "8px",
+        "color": "#e5484d"
+      }
+    ],
+    "expect": {
+      "root": [40, 76],
+      "scroll": [52, 76],
+      "items": [{ "name": "hero", "frame": [44, 0, 8, 8] }],
+      "tracks": { "columns": [20, 16, 16], "rows": [20, 20, 20] }
+    }
+  },
+  {
+    "id": "template-area-repeat-two-axis-area-added-rows",
+    "width": "76px",
+    "height": "40px",
+    "columns": "repeat(auto-fill,20px)",
+    "rows": "repeat(auto-fill,20px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoColumns": "16px",
+    "autoRows": "12px",
+    "rootColor": "#e5e7eb",
+    "areas": "\". .\" \". .\" \". hero\"",
+    "items": [
+      {
+        "name": "hero",
+        "placement": { "gridArea": "hero" },
+        "width": "8px",
+        "height": "8px",
+        "color": "#e5484d"
+      }
+    ],
+    "expect": {
+      "root": [76, 40],
+      "scroll": [76, 48],
+      "items": [{ "name": "hero", "frame": [24, 40, 8, 8] }],
+      "tracks": { "columns": [20, 20, 20], "rows": [20, 12, 12] }
+    }
+  },
+  {
+    "id": "template-area-repeat-two-axis-area-added-both",
+    "width": "40px",
+    "height": "40px",
+    "columns": "repeat(auto-fill,20px)",
+    "rows": "repeat(auto-fill,20px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoColumns": "16px",
+    "autoRows": "12px",
+    "rootColor": "#e5e7eb",
+    "areas": "\". . .\" \". . .\" \". . hero\"",
+    "items": [
+      {
+        "name": "hero",
+        "placement": { "gridArea": "hero" },
+        "width": "8px",
+        "height": "8px",
+        "color": "#e5484d"
+      }
+    ],
+    "expect": {
+      "root": [40, 40],
+      "scroll": [52, 48],
+      "items": [{ "name": "hero", "frame": [44, 40, 8, 8] }],
+      "tracks": { "columns": [20, 16, 16], "rows": [20, 12, 12] }
+    }
+  },
+  {
+    "id": "template-area-repeat-two-axis-fill-fit",
+    "width": "100px",
+    "height": "76px",
+    "columns": "repeat(auto-fill,20px)",
+    "rows": "repeat(auto-fit,20px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoColumns": "16px",
+    "autoRows": "12px",
+    "rootColor": "#e5e7eb",
+    "areas": "\". .\" \". hero\"",
+    "items": [
+      {
+        "name": "hero",
+        "placement": { "gridArea": "hero" },
+        "width": "8px",
+        "height": "8px",
+        "color": "#e5484d"
+      }
+    ],
+    "expect": {
+      "root": [100, 76],
+      "scroll": [100, 76],
+      "items": [{ "name": "hero", "frame": [24, 0, 8, 8] }],
+      "tracks": { "columns": [20, 20, 20, 20], "rows": [0, 20, 0] }
+    }
+  },
+  {
+    "id": "template-area-repeat-two-axis-fit-fill",
+    "width": "100px",
+    "height": "76px",
+    "columns": "repeat(auto-fit,20px)",
+    "rows": "repeat(auto-fill,20px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoColumns": "16px",
+    "autoRows": "12px",
+    "rootColor": "#e5e7eb",
+    "areas": "\". .\" \". hero\"",
+    "items": [
+      {
+        "name": "hero",
+        "placement": { "gridArea": "hero" },
+        "width": "8px",
+        "height": "8px",
+        "color": "#e5484d"
+      }
+    ],
+    "expect": {
+      "root": [100, 76],
+      "scroll": [100, 76],
+      "items": [{ "name": "hero", "frame": [0, 24, 8, 8] }],
+      "tracks": { "columns": [0, 20, 0, 0], "rows": [20, 20, 20] }
+    }
+  },
+  {
+    "id": "template-area-repeat-two-axis-fit-fit-empty",
+    "width": "100px",
+    "height": "76px",
+    "columns": "repeat(auto-fit,20px)",
+    "rows": "repeat(auto-fit,20px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoColumns": "16px",
+    "autoRows": "12px",
+    "rootColor": "#e5e7eb",
+    "areas": "\". hero\" \". .\"",
+    "items": [],
+    "expect": {
+      "root": [100, 76],
+      "scroll": [100, 76],
+      "items": [],
+      "tracks": { "columns": [0, 0, 0, 0], "rows": [0, 0, 0] }
+    }
+  },
+  {
+    "id": "template-area-repeat-two-axis-fit-fit-span",
+    "width": "100px",
+    "height": "76px",
+    "columns": "repeat(auto-fit,20px)",
+    "rows": "repeat(auto-fit,20px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoColumns": "16px",
+    "autoRows": "12px",
+    "rootColor": "#e5e7eb",
+    "areas": "\"hero hero\" \"hero hero\"",
+    "items": [
+      {
+        "name": "hero",
+        "placement": { "gridArea": "hero" },
+        "color": "#e5484d"
+      }
+    ],
+    "expect": {
+      "root": [100, 76],
+      "scroll": [100, 76],
+      "items": [{ "name": "hero", "frame": [0, 0, 44, 44] }],
+      "tracks": { "columns": [20, 20, 0, 0], "rows": [20, 20, 0] }
+    }
+  },
+  {
+    "id": "template-area-repeat-two-axis-area-longhand",
+    "width": "100px",
+    "height": "76px",
+    "columns": "repeat(auto-fill,20px)",
+    "rows": "repeat(auto-fill,20px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoColumns": "16px",
+    "autoRows": "12px",
+    "rootColor": "#e5e7eb",
+    "areas": "\". .\" \"hero .\"",
+    "items": [
+      {
+        "name": "hero",
+        "placement": {
+          "gridColumn": "hero-start / hero-end",
+          "gridRow": "hero-start / hero-end"
+        },
+        "width": "8px",
+        "height": "8px",
+        "color": "#e5484d"
+      }
+    ],
+    "expect": {
+      "root": [100, 76],
+      "scroll": [100, 76],
+      "items": [{ "name": "hero", "frame": [0, 24, 8, 8] }],
+      "tracks": { "columns": [20, 20, 20, 20], "rows": [20, 20, 20] }
+    }
   }
 ]

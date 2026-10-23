@@ -198,6 +198,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "template-area-repeat-rows-area-larger",
             "template-area-repeat-rows-fit-numeric",
             "template-area-repeat-rows-fit-empty-area",
+            "template-area-repeat-two-axis-area-short",
+            "template-area-repeat-two-axis-area-added-columns",
+            "template-area-repeat-two-axis-area-added-rows",
+            "template-area-repeat-two-axis-area-added-both",
+            "template-area-repeat-two-axis-fill-fit",
+            "template-area-repeat-two-axis-fit-fill",
+            "template-area-repeat-two-axis-fit-fit-empty",
+            "template-area-repeat-two-axis-fit-fit-span",
+            "template-area-repeat-two-axis-area-longhand",
             "auto-repeat-named-implicit-positive-missing",
             "auto-repeat-named-implicit-positive-insufficient",
             "auto-repeat-named-implicit-negative-missing",
@@ -2732,6 +2741,19 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114TemplateAreaRepeatRootFrame(String sceneId) {
         switch (sceneId) {
+            case "template-area-repeat-two-axis-area-short":
+            case "template-area-repeat-two-axis-fill-fit":
+            case "template-area-repeat-two-axis-fit-fill":
+            case "template-area-repeat-two-axis-fit-fit-empty":
+            case "template-area-repeat-two-axis-fit-fit-span":
+            case "template-area-repeat-two-axis-area-longhand":
+                return "width=100,height=76";
+            case "template-area-repeat-two-axis-area-added-columns":
+                return "width=40,height=76";
+            case "template-area-repeat-two-axis-area-added-rows":
+                return "width=76,height=40";
+            case "template-area-repeat-two-axis-area-added-both":
+                return "width=40,height=40";
             case "template-area-repeat-columns-fill":
             case "template-area-repeat-columns-line-collision":
                 return "width=116,height=20";
@@ -2762,6 +2784,17 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String[] c114TemplateAreaRepeatItemNames(String sceneId) {
         switch (sceneId) {
+            case "template-area-repeat-two-axis-area-short":
+            case "template-area-repeat-two-axis-area-added-columns":
+            case "template-area-repeat-two-axis-area-added-rows":
+            case "template-area-repeat-two-axis-area-added-both":
+            case "template-area-repeat-two-axis-fill-fit":
+            case "template-area-repeat-two-axis-fit-fill":
+            case "template-area-repeat-two-axis-fit-fit-span":
+            case "template-area-repeat-two-axis-area-longhand":
+                return new String[] {"hero"};
+            case "template-area-repeat-two-axis-fit-fit-empty":
+                return new String[0];
             case "template-area-repeat-columns-area-shorter":
             case "template-area-repeat-rows-area-shorter":
                 return new String[] {"prefix", "hero", "suffix", "tail"};
@@ -2786,6 +2819,24 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int[][] c114TemplateAreaRepeatItemRects(String sceneId) {
         switch (sceneId) {
+            case "template-area-repeat-two-axis-area-short":
+                return new int[][] {{24, 0, 8, 8}};
+            case "template-area-repeat-two-axis-area-added-columns":
+                return new int[][] {{44, 0, 8, 8}};
+            case "template-area-repeat-two-axis-area-added-rows":
+                return new int[][] {{24, 40, 8, 8}};
+            case "template-area-repeat-two-axis-area-added-both":
+                return new int[][] {{44, 40, 8, 8}};
+            case "template-area-repeat-two-axis-fill-fit":
+                return new int[][] {{24, 0, 8, 8}};
+            case "template-area-repeat-two-axis-fit-fill":
+                return new int[][] {{0, 24, 8, 8}};
+            case "template-area-repeat-two-axis-fit-fit-empty":
+                return new int[0][0];
+            case "template-area-repeat-two-axis-fit-fit-span":
+                return new int[][] {{0, 0, 44, 44}};
+            case "template-area-repeat-two-axis-area-longhand":
+                return new int[][] {{0, 24, 8, 8}};
             case "template-area-repeat-columns-fill":
             case "template-area-repeat-columns-area-larger":
                 return new int[][] {{0, 0, 20, 20}, {24, 0, 68, 20}, {96, 0, 20, 20}};
@@ -2838,6 +2889,19 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static int[] c114TemplateAreaRepeatRootSize(String sceneId) {
         if (c114TemplateAreaRepeatRootFrame(sceneId) == null) return null;
         switch (sceneId) {
+            case "template-area-repeat-two-axis-area-short":
+            case "template-area-repeat-two-axis-fill-fit":
+            case "template-area-repeat-two-axis-fit-fill":
+            case "template-area-repeat-two-axis-fit-fit-empty":
+            case "template-area-repeat-two-axis-fit-fit-span":
+            case "template-area-repeat-two-axis-area-longhand":
+                return new int[] {100, 76};
+            case "template-area-repeat-two-axis-area-added-columns":
+                return new int[] {40, 76};
+            case "template-area-repeat-two-axis-area-added-rows":
+                return new int[] {76, 40};
+            case "template-area-repeat-two-axis-area-added-both":
+                return new int[] {40, 40};
             case "template-area-repeat-columns-fill":
             case "template-area-repeat-columns-line-collision":
                 return new int[] {116, 20};
@@ -2865,8 +2929,51 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         int[][] items = c114TemplateAreaRepeatItemRects(sceneId);
         String[] names = c114TemplateAreaRepeatItemNames(sceneId);
         if (root == null || items == null || names == null || items.length != names.length
-                || samples.size() != items.length + 2) return false;
+                || samples.size() != (sceneId.endsWith("-area-added-both")
+                        ? 4 : items.length + 2)) return false;
         String rootId = "c114-" + sceneId + "-grid";
+        if (sceneId.startsWith("template-area-repeat-two-axis-")) {
+            List<String> ids = new ArrayList<>();
+            List<String> nodes = new ArrayList<>();
+            List<int[]> points = new ArrayList<>();
+            ids.add(sceneId + "-root-interior");
+            nodes.add(rootId);
+            points.add(new int[] {root[0] - 2, root[1] - 2});
+            if (sceneId.endsWith("-area-added-both")) {
+                ids.add(sceneId + "-hero-overflow-outside-root");
+                nodes.add("c114-" + sceneId + "-hero");
+                points.add(new int[] {47, 43});
+                ids.add(sceneId + "-after-root");
+                nodes.add(rootId);
+                points.add(new int[] {53, 43});
+                ids.add(sceneId + "-after-root-bottom");
+                nodes.add(rootId);
+                points.add(new int[] {47, 49});
+            } else {
+                int furthestX = root[0];
+                for (int index = 0; index < items.length; index++) {
+                    int[] item = items[index];
+                    ids.add(sceneId + "-" + names[index] + "-interior");
+                    nodes.add("c114-" + sceneId + "-" + names[index]);
+                    points.add(new int[] {item[0] + item[2] / 2, item[1] + item[3] / 2});
+                    furthestX = Math.max(furthestX, item[0] + item[2]);
+                }
+                ids.add(sceneId + "-after-root");
+                nodes.add(rootId);
+                points.add(new int[] {furthestX, 10});
+            }
+            boolean[] found = new boolean[ids.size()];
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                int index = ids.indexOf(sample.id);
+                if (index < 0 || found[index]
+                        || !nodes.get(index).equals(sample.targetNodeId)
+                        || sample.xCssPx != points.get(index)[0]
+                        || sample.yCssPx != points.get(index)[1]) return false;
+                found[index] = true;
+            }
+            for (boolean sampleFound : found) if (!sampleFound) return false;
+            return true;
+        }
         boolean rowAxis = sceneId.startsWith("template-area-repeat-rows-");
         int rootX = rowAxis ? 2 : 22;
         int rootY = rowAxis ? 22 : 2;
@@ -9877,12 +9984,17 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int[] c114GridExpectedRgb(String sampleId) {
         if (sampleId.startsWith("template-area-repeat-")) {
+            if (sampleId.startsWith("template-area-repeat-two-axis-")
+                    && sampleId.endsWith("-root-interior")) {
+                return new int[] {229, 231, 235};
+            }
             if (sampleId.endsWith("-root-interior")) return new int[] {16, 24, 32};
             if (sampleId.endsWith("-suffix-interior")) return new int[] {48, 164, 108};
             if (sampleId.endsWith("-tail-interior")) return new int[] {114, 87, 255};
             if (sampleId.endsWith("-prefix-interior")
                     || sampleId.endsWith("-hero-interior")
-                    || sampleId.endsWith("-alias-probe-interior")) {
+                    || sampleId.endsWith("-alias-probe-interior")
+                    || sampleId.endsWith("-hero-overflow-outside-root")) {
                 return new int[] {229, 72, 77};
             }
         }
@@ -9905,7 +10017,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (sampleId.endsWith("-clear-past-image-b")) return new int[] {0, 0, 0};
         if (sampleId.endsWith("-image-interior")) return new int[] {255, 255, 64};
         if (sampleId.endsWith("-right-border")) return new int[] {240, 198, 116};
-        if (sampleId.endsWith("-after-root")) return new int[] {0, 0, 0};
+        if (sampleId.endsWith("-after-root")
+                || sampleId.endsWith("-after-root-bottom")) return new int[] {0, 0, 0};
         if ((sampleId.startsWith("max-content-")
                         || sampleId.startsWith("definite-80-"))
                 && sampleId.endsWith("-right-border")) {

@@ -308,6 +308,81 @@ fn auto_repeat_template_area_extends_the_explicit_grid_and_resolves_area_lines()
     );
 }
 
+#[test]
+fn two_axis_auto_repeat_template_area_extends_both_axes_and_resolves_area_lines() {
+    let mut input = grid_input(
+        vec![GridTrackSize::LengthPx(20.0)],
+        vec![GridTrackSize::LengthPx(20.0)],
+        1,
+        LayoutGap {
+            row: LayoutLengthPercentage::length(4.0),
+            column: LayoutLengthPercentage::length(4.0),
+        },
+    );
+    input.nodes[0].style.width = LayoutDimension::Fixed(40.0);
+    input.nodes[0].style.height = LayoutDimension::Fixed(40.0);
+    input.nodes[1].style.width = LayoutDimension::Fixed(8.0);
+    input.nodes[1].style.height = LayoutDimension::Fixed(8.0);
+    input.viewport.width = 40.0;
+    input.viewport.height = 40.0;
+
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::TrackSizing;
+    container.columns_auto_repeat = Some(GridAutoRepeat {
+        mode: GridAutoRepeatMode::AutoFill,
+        start: 0,
+        end: 1,
+        line_names: Vec::new(),
+    });
+    container.rows_auto_repeat = Some(GridAutoRepeat {
+        mode: GridAutoRepeatMode::AutoFill,
+        start: 0,
+        end: 1,
+        line_names: Vec::new(),
+    });
+    container.auto_columns = crate::GridAutoColumns::LengthPx(16.0);
+    container.auto_rows = GridAutoRows::LengthPx(12.0);
+    container.template_areas = Some(crate::GridTemplateAreasInput {
+        rows: 3,
+        columns: 3,
+        areas: vec![crate::GridTemplateAreaInput {
+            name: "hero".into(),
+            row_start: 2,
+            row_end: 3,
+            column_start: 2,
+            column_end: 3,
+        }],
+    });
+    input.grid_items.insert(
+        id(2),
+        GridItemInput {
+            row_start: GridPlacementInput::NamedLine {
+                name: "hero-start".into(),
+                occurrence: 1,
+            },
+            row_end: GridPlacementInput::NamedLine {
+                name: "hero-end".into(),
+                occurrence: 1,
+            },
+            column_start: GridPlacementInput::NamedLine {
+                name: "hero-start".into(),
+                occurrence: 1,
+            },
+            column_end: GridPlacementInput::NamedLine {
+                name: "hero-end".into(),
+                occurrence: 1,
+            },
+        },
+    );
+
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+    let frame = output.frames[&id(2)];
+    assert_eq!(
+        (frame.x, frame.y, frame.width, frame.height),
+        (44.0, 40.0, 8.0, 8.0)
+    );
+}
+
 fn implicit_fallback_auto_repeat_input(
     columns_axis: bool,
     repeat_start: GridPlacementInput,

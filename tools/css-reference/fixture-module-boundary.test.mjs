@@ -72,6 +72,46 @@ test('fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다', () =
   }
 });
 
+test('양 축 template-area auto-repeat 아홉 scene이 두 플랫폼 경로에 고정된다', async () => {
+  const expectedIDs = [
+    'template-area-repeat-two-axis-area-short',
+    'template-area-repeat-two-axis-area-added-columns',
+    'template-area-repeat-two-axis-area-added-rows',
+    'template-area-repeat-two-axis-area-added-both',
+    'template-area-repeat-two-axis-fill-fit',
+    'template-area-repeat-two-axis-fit-fill',
+    'template-area-repeat-two-axis-fit-fit-empty',
+    'template-area-repeat-two-axis-fit-fit-span',
+    'template-area-repeat-two-axis-area-longhand',
+  ];
+  const [fixtureText, android, ios] = await Promise.all([
+    readFile(resolve(repositoryRoot,
+      'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/template_area_auto_repeat_scenes.json'),
+    'utf8'),
+    readFile(resolve(repositoryRoot,
+      'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java'),
+    'utf8'),
+    readFile(resolve(repositoryRoot, 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift'), 'utf8'),
+  ]);
+  const fixtures = JSON.parse(fixtureText);
+  assert.equal(fixtures.length, 22, 'template-area fixture는 기존 13개와 신규 9개다.');
+  assert.deepEqual(
+    fixtures.map(({ id }) => id).filter((id) => id.startsWith('template-area-repeat-two-axis-')),
+    expectedIDs,
+  );
+  const overflow = fixtures.find(({ id }) => id === 'template-area-repeat-two-axis-area-added-both');
+  assert.deepEqual(overflow.expect.root, [40, 40]);
+  assert.deepEqual(overflow.expect.items, [{ name: 'hero', frame: [44, 40, 8, 8] }]);
+  assert.deepEqual(overflow.expect.tracks, {
+    columns: [20, 16, 16],
+    rows: [20, 12, 12],
+  });
+  for (const id of expectedIDs) {
+    assert.ok(android.includes(`"${id}"`), `Android allowlist is missing ${id}`);
+    assert.ok(ios.includes(`"${id}"`), `iOS allowlist is missing ${id}`);
+  }
+});
+
 test('CSS reference 도구가 삭제된 Rust fixture 경로를 참조하지 않는다', async () => {
   const entries = await readdir(resolve(repositoryRoot, 'tools/css-reference'));
   const sources = await Promise.all(entries
