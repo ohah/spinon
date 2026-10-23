@@ -1,0 +1,16 @@
+{
+  "pass": "pass65",
+  "fileCount": 9640,
+  "counts": {
+    "create": 835,
+    "replace": 553,
+    "same": 8252
+  },
+  "backupsVerified": 553,
+  "noDeletes": true,
+  "resumedItems": 0,
+  "fallbackReplacements": 0,
+  "copyStorage": "same-volume hard links to verified build files",
+  "backupStorage": "same-volume hard links preserving replaced target bytes",
+  "backupRootRelative": "SpinonPreviewBackups/c11-4-pr540-tailnet-sync-2026-10-23/pass65"
+}

@@ -31,8 +31,8 @@
 27. **PR diff 검토 링크** — 현재 구현 PR의 검토와 새 roadmap 문서 PR의 검토를 혼동하지 않는가? 링크는 #539 구현 diff 검토 30개로 라벨링한다.
 28. **Android 화면 링크** — 화면 파일이 저장소에서 추적되는가? 병합된 #539 Android AVD PNG 경로가 존재한다.
 29. **iOS 화면 링크** — 화면 파일이 저장소에서 추적되는가? 병합된 #539 iOS Simulator PNG 경로가 존재한다.
-30. **상태 anchor** — `#c11-css-grid`가 공식 상태 페이지의 Grid 항목을 가리키는가? 저장소 현재 상태 문서의 해당 anchor를 유지한다.
+30. **상태 anchor** — 처음 사용한 `#c11-css-grid`가 렌더된 공식 상태 페이지에 존재하는가? pass65 Agent Browser에서 target이 없음을 발견했다. 후속 PR #541은 실제 렌더된 `#css-구현-체크리스트` heading으로 바꾸고, 이 anchor가 Tailnet HTML에 존재하는지 다시 확인한다.
 
 ## 검토 결과
 
-위 30개 관점을 모두 확인했다. 문구·경계·링크에서 차단할 결함은 찾지 못했다. 마지막 HTML diff의 경로·화면 링크는 PR 머지 뒤 선택 문서 build와 Agent Browser로 다시 확인한다.
+초기 diff 검토의 나머지 29개 관점은 통과했다. Tailnet pass65 Agent Browser 검증에서 기존 `#c11-css-grid` target이 없음을 발견해 30번 관점을 수정했다. PR #541은 `#css-구현-체크리스트`로 고치며 이 렌더된 heading을 다시 검증한다. 따라서 최초 PR 검토 결과에는 이 후속 수정 기록을 함께 읽어야 한다.

@@ -1,0 +1,15 @@
+{
+  "pass": "pass65",
+  "sourceHead": "92b447f687e751cfc2c333bd17e22c4271c36536",
+  "outputRoot": "build/spinon/c11-4-pr540-tailnet-site-pass65-selected",
+  "fileCount": 9640,
+  "totalBytes": 540457131,
+  "treeSha256": "5ae4914feb71dfb8bbca505ee071c9b5b3e47409ba62d2e59f436942c676248b",
+  "rspressVersion": "2.0.22",
+  "buildLog": "selected-build-pass65.log",
+  "publicFileCount": 8424,
+  "publicLinked": 8423,
+  "publicAlreadySame": 1,
+  "publicBytesLinked": 300245765,
+  "storage": "same-volume hardlinks for public assets"
+}

@@ -1,0 +1,3117 @@
+{
+  "pass": "pass65",
+  "baseHead": "31610361bedd27a7dc2b0013ae19bd05f68a5c66",
+  "sourceHead": "92b447f687e751cfc2c333bd17e22c4271c36536",
+  "previousRoot": "build/spinon/c11-4-pr537-tailnet-root-pass64-selected",
+  "selectedRoot": "build/spinon/c11-4-pr540-tailnet-root-pass65-selected",
+  "selectedFileCount": 16989,
+  "selectedBytes": 623979370,
+  "selectedTreeSha256": "3ecf12c0fa32b3963ed271fe80b23cb6a6c018ea75c7a4186c4b77c940778f89",
+  "gitChangedDocumentCount": 131,
+  "gitChangedDocuments": [
+    {
+      "status": "A",
+      "path": "plan/c11-4-auto-repeat-template-areas-plan-review-20.md"
+    },
+    {
+      "status": "A",
+      "path": "plan/c11-4-auto-repeat-template-areas.md"
+    },
+    {
+      "status": "M",
+      "path": "plan/c11-4-grid-track-sizing.md"
+    },
+    {
+      "status": "M",
+      "path": "spec/STATUS.md"
+    },
+    {
+      "status": "M",
+      "path": "spec/internal/0059-c11-grid-layout.md"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/README.md"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/SHA256SUMS.txt"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/chrome156-auto-repeat-areas.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/chrome156-observation.json"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/plan-pr-diff-review-30.md"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/README.md"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/install.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/installed-apk-verification.json"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-area-larger.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-area-shorter.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fill.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fit-empty-area.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fit-numeric.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fit.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-line-collision.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-area-larger.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-area-shorter.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fill.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fit-empty-area.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fit-numeric.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fit.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/result.json"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-area-larger.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-area-shorter.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fill.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fit-empty-area.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fit-numeric.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fit.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-line-collision.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-area-larger.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-area-shorter.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fill.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fit-empty-area.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fit-numeric.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fit.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/simulator.json"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-area-larger.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-area-shorter.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fill.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fit-empty-area.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fit-numeric.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fit.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-line-collision.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-area-larger.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-area-shorter.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fill.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fit-empty-area.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fit-numeric.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fit.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/install.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-area-larger.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-area-shorter.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fill.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fit-empty-area.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fit-numeric.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fit.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-line-collision.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-area-larger.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-area-shorter.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fill.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fit-empty-area.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fit-numeric.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fit.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/result.json"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-area-larger.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-area-shorter.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fill.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fit-empty-area.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fit-numeric.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fit.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-line-collision.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-area-larger.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-area-shorter.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fill.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fit-empty-area.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fit-numeric.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fit.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-area-larger.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-area-shorter.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fill.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fit-empty-area.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fit-numeric.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fit.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-line-collision.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-area-larger.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-area-shorter.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fill.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fit-empty-area.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fit-numeric.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fit.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/simulator.json"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-area-larger.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-area-shorter.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fill.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fit-empty-area.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fit-numeric.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fit.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-line-collision.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-area-larger.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-area-shorter.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fill.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fit-empty-area.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fit-numeric.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fit.png"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-roadmap-html-2026-10-23/pr-diff-review-30.md"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.md"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/android-build-final.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/android-capture-final.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/cargo-fmt-final.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/compare-platform-results.mjs"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/cross-platform-comparison.json"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-fixture-archive-build-final.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-fixture-archive.json"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-fixture-test-final.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-product-archive-build-final.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-product-archive.json"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/fixture-module-boundary-final.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/focused-rust-tests-final.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/implementation-runtime-review-20.md"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ios-build-final.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ios-capture-final.log"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/pr-diff-review-30.md"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/screenshot-manifest.json"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/source-files-manifest.json"
+    },
+    {
+      "status": "A",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/workspace-clippy-final.log"
+    },
+    {
+      "status": "M",
+      "path": "spec/public/roadmap.html"
+    }
+  ],
+  "overlayCount": 515,
+  "overlays": [
+    {
+      "path": "plan/c11-4-auto-repeat-template-areas-plan-review-20.md",
+      "bytes": 6008,
+      "sha256": "6539a2c62075e83098a67a3c66222e8d3a374f4c71f69677f5f8755186ba9705"
+    },
+    {
+      "path": "spec/plan/c11-4-auto-repeat-template-areas-plan-review-20.md",
+      "bytes": 6008,
+      "sha256": "6539a2c62075e83098a67a3c66222e8d3a374f4c71f69677f5f8755186ba9705"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-template-areas.md",
+      "bytes": 16435,
+      "sha256": "241eeb9ee8d4dfc4b1ffac531c7436a92eb92e46f12c26a2551a0c85345e3adf"
+    },
+    {
+      "path": "spec/plan/c11-4-auto-repeat-template-areas.md",
+      "bytes": 16435,
+      "sha256": "241eeb9ee8d4dfc4b1ffac531c7436a92eb92e46f12c26a2551a0c85345e3adf"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 108172,
+      "sha256": "603309effecbc79009f5f7a66aa89768836e206262b804f4d8a0d15f7f5d4dd9"
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.md",
+      "bytes": 108172,
+      "sha256": "603309effecbc79009f5f7a66aa89768836e206262b804f4d8a0d15f7f5d4dd9"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "bytes": 392074,
+      "sha256": "619775ba59c0d7138a4b586137983b96fe00535daabb77bc7c00abde0056385f"
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 392074,
+      "sha256": "619775ba59c0d7138a4b586137983b96fe00535daabb77bc7c00abde0056385f"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 102587,
+      "sha256": "dfa42af3788e49f4bfac2ba1aac0a39103f1c5ac86cee98716234bcf5f04f939"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "bytes": 102587,
+      "sha256": "dfa42af3788e49f4bfac2ba1aac0a39103f1c5ac86cee98716234bcf5f04f939"
+    },
+    {
+      "path": "public/internal/0059-c11-grid-layout.md",
+      "bytes": 102587,
+      "sha256": "dfa42af3788e49f4bfac2ba1aac0a39103f1c5ac86cee98716234bcf5f04f939"
+    },
+    {
+      "path": "public/spec/internal/0059-c11-grid-layout.md",
+      "bytes": 102587,
+      "sha256": "dfa42af3788e49f4bfac2ba1aac0a39103f1c5ac86cee98716234bcf5f04f939"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/README.md",
+      "bytes": 6775,
+      "sha256": "62331ccca78bb95c76b26998b6472176179967817668342063a8f138fdb270ef"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/README.md",
+      "bytes": 6775,
+      "sha256": "62331ccca78bb95c76b26998b6472176179967817668342063a8f138fdb270ef"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/README.md",
+      "bytes": 6775,
+      "sha256": "62331ccca78bb95c76b26998b6472176179967817668342063a8f138fdb270ef"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/README.md",
+      "bytes": 6775,
+      "sha256": "62331ccca78bb95c76b26998b6472176179967817668342063a8f138fdb270ef"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/SHA256SUMS.txt",
+      "bytes": 494,
+      "sha256": "f0ede2192c8a5850a8e4d319f45735b6e71e39af3fdbfeb7d33d35bcb5dcf065"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/SHA256SUMS.txt",
+      "bytes": 494,
+      "sha256": "f0ede2192c8a5850a8e4d319f45735b6e71e39af3fdbfeb7d33d35bcb5dcf065"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/SHA256SUMS.txt",
+      "bytes": 494,
+      "sha256": "f0ede2192c8a5850a8e4d319f45735b6e71e39af3fdbfeb7d33d35bcb5dcf065"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/SHA256SUMS.txt",
+      "bytes": 494,
+      "sha256": "f0ede2192c8a5850a8e4d319f45735b6e71e39af3fdbfeb7d33d35bcb5dcf065"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/chrome156-auto-repeat-areas.png",
+      "bytes": 9821,
+      "sha256": "71d345d9af157be22b86f339f5abf2774df159c18c207fe2394ee7dba87a5c12"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/chrome156-auto-repeat-areas.png",
+      "bytes": 9821,
+      "sha256": "71d345d9af157be22b86f339f5abf2774df159c18c207fe2394ee7dba87a5c12"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/chrome156-auto-repeat-areas.png",
+      "bytes": 9821,
+      "sha256": "71d345d9af157be22b86f339f5abf2774df159c18c207fe2394ee7dba87a5c12"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/chrome156-auto-repeat-areas.png",
+      "bytes": 9821,
+      "sha256": "71d345d9af157be22b86f339f5abf2774df159c18c207fe2394ee7dba87a5c12"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/chrome156-observation.json",
+      "bytes": 11291,
+      "sha256": "c0b305777e33f0cbd99038b34f735694a7bbff84a330ebdeaa03d7c2b06809a0"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/chrome156-observation.json",
+      "bytes": 11291,
+      "sha256": "c0b305777e33f0cbd99038b34f735694a7bbff84a330ebdeaa03d7c2b06809a0"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/chrome156-observation.json",
+      "bytes": 11291,
+      "sha256": "c0b305777e33f0cbd99038b34f735694a7bbff84a330ebdeaa03d7c2b06809a0"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/chrome156-observation.json",
+      "bytes": 11291,
+      "sha256": "c0b305777e33f0cbd99038b34f735694a7bbff84a330ebdeaa03d7c2b06809a0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/plan-pr-diff-review-30.md",
+      "bytes": 6299,
+      "sha256": "f8472d2a7224b02fe5df14604eb46f304568685910ea13842297473abe5dd40b"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/plan-pr-diff-review-30.md",
+      "bytes": 6299,
+      "sha256": "f8472d2a7224b02fe5df14604eb46f304568685910ea13842297473abe5dd40b"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/plan-pr-diff-review-30.md",
+      "bytes": 6299,
+      "sha256": "f8472d2a7224b02fe5df14604eb46f304568685910ea13842297473abe5dd40b"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/plan-pr-diff-review-30.md",
+      "bytes": 6299,
+      "sha256": "f8472d2a7224b02fe5df14604eb46f304568685910ea13842297473abe5dd40b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/README.md",
+      "bytes": 4131,
+      "sha256": "524173cc5928fffc0851be432416f8e89e37c1416b985f9bd6a62858719f0e01"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/README.md",
+      "bytes": 4131,
+      "sha256": "524173cc5928fffc0851be432416f8e89e37c1416b985f9bd6a62858719f0e01"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/README.md",
+      "bytes": 4131,
+      "sha256": "524173cc5928fffc0851be432416f8e89e37c1416b985f9bd6a62858719f0e01"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/README.md",
+      "bytes": 4131,
+      "sha256": "524173cc5928fffc0851be432416f8e89e37c1416b985f9bd6a62858719f0e01"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "c4773eadb9f09acc0fc47e124bb9e5da1ea0835ad04f555020128f49b3a7cbc6"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "c4773eadb9f09acc0fc47e124bb9e5da1ea0835ad04f555020128f49b3a7cbc6"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "c4773eadb9f09acc0fc47e124bb9e5da1ea0835ad04f555020128f49b3a7cbc6"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "c4773eadb9f09acc0fc47e124bb9e5da1ea0835ad04f555020128f49b3a7cbc6"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-area-larger.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-area-larger.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-area-larger.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-area-larger.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-area-shorter.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-area-shorter.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-area-shorter.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-area-shorter.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fill.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fill.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fill.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fill.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fit.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fit.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fit.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-fit.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-line-collision.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-line-collision.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-line-collision.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-columns-line-collision.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-area-larger.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-area-larger.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-area-larger.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-area-larger.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-area-shorter.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-area-shorter.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-area-shorter.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-area-shorter.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fill.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fill.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fill.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fill.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fit.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fit.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fit.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/launch-template-area-repeat-rows-fit.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/result.json",
+      "bytes": 24336,
+      "sha256": "6d1916f8b68b81095b2edb3239b3332e3dcafa8895fc879e08672dfb9a3556d5"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/result.json",
+      "bytes": 24336,
+      "sha256": "6d1916f8b68b81095b2edb3239b3332e3dcafa8895fc879e08672dfb9a3556d5"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/result.json",
+      "bytes": 24336,
+      "sha256": "6d1916f8b68b81095b2edb3239b3332e3dcafa8895fc879e08672dfb9a3556d5"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/result.json",
+      "bytes": 24336,
+      "sha256": "6d1916f8b68b81095b2edb3239b3332e3dcafa8895fc879e08672dfb9a3556d5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-area-larger.log",
+      "bytes": 21835,
+      "sha256": "a185049af3467483849ba7d43ee4ac8d7f28752ed5c07415ae2df864e13553e4"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-area-larger.log",
+      "bytes": 21835,
+      "sha256": "a185049af3467483849ba7d43ee4ac8d7f28752ed5c07415ae2df864e13553e4"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-area-larger.log",
+      "bytes": 21835,
+      "sha256": "a185049af3467483849ba7d43ee4ac8d7f28752ed5c07415ae2df864e13553e4"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-area-larger.log",
+      "bytes": 21835,
+      "sha256": "a185049af3467483849ba7d43ee4ac8d7f28752ed5c07415ae2df864e13553e4"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-area-shorter.log",
+      "bytes": 23023,
+      "sha256": "76dc1615731a09a06e000f0d24f1d067b897b4ab0661e605dc8be63c5b396e53"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-area-shorter.log",
+      "bytes": 23023,
+      "sha256": "76dc1615731a09a06e000f0d24f1d067b897b4ab0661e605dc8be63c5b396e53"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-area-shorter.log",
+      "bytes": 23023,
+      "sha256": "76dc1615731a09a06e000f0d24f1d067b897b4ab0661e605dc8be63c5b396e53"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-area-shorter.log",
+      "bytes": 23023,
+      "sha256": "76dc1615731a09a06e000f0d24f1d067b897b4ab0661e605dc8be63c5b396e53"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fill.log",
+      "bytes": 22038,
+      "sha256": "1355481e06ab15727070b17c3df94d90eb740c640836e9f75a90b1f9d6632cf6"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fill.log",
+      "bytes": 22038,
+      "sha256": "1355481e06ab15727070b17c3df94d90eb740c640836e9f75a90b1f9d6632cf6"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fill.log",
+      "bytes": 22038,
+      "sha256": "1355481e06ab15727070b17c3df94d90eb740c640836e9f75a90b1f9d6632cf6"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fill.log",
+      "bytes": 22038,
+      "sha256": "1355481e06ab15727070b17c3df94d90eb740c640836e9f75a90b1f9d6632cf6"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 26891,
+      "sha256": "c8d2c55d7b315ba6756fd27607f581b29d0211f772baeb2b66beb1e5598a2c6a"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 26891,
+      "sha256": "c8d2c55d7b315ba6756fd27607f581b29d0211f772baeb2b66beb1e5598a2c6a"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 26891,
+      "sha256": "c8d2c55d7b315ba6756fd27607f581b29d0211f772baeb2b66beb1e5598a2c6a"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 26891,
+      "sha256": "c8d2c55d7b315ba6756fd27607f581b29d0211f772baeb2b66beb1e5598a2c6a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 22266,
+      "sha256": "8e3f46a694cacece70087a0baa95e63266b8f17308018d1a22856613f8cd318b"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 22266,
+      "sha256": "8e3f46a694cacece70087a0baa95e63266b8f17308018d1a22856613f8cd318b"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 22266,
+      "sha256": "8e3f46a694cacece70087a0baa95e63266b8f17308018d1a22856613f8cd318b"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 22266,
+      "sha256": "8e3f46a694cacece70087a0baa95e63266b8f17308018d1a22856613f8cd318b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fit.log",
+      "bytes": 22443,
+      "sha256": "b6a57635e8f6ca625dd1300c6a02af558fd5dc10a65b30290946828b1f00a0d8"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fit.log",
+      "bytes": 22443,
+      "sha256": "b6a57635e8f6ca625dd1300c6a02af558fd5dc10a65b30290946828b1f00a0d8"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fit.log",
+      "bytes": 22443,
+      "sha256": "b6a57635e8f6ca625dd1300c6a02af558fd5dc10a65b30290946828b1f00a0d8"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-fit.log",
+      "bytes": 22443,
+      "sha256": "b6a57635e8f6ca625dd1300c6a02af558fd5dc10a65b30290946828b1f00a0d8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-line-collision.log",
+      "bytes": 22634,
+      "sha256": "e7ddea799a265d357fb7ba90819942bd2b81de82d5dcebaaf63747824e13dd71"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-line-collision.log",
+      "bytes": 22634,
+      "sha256": "e7ddea799a265d357fb7ba90819942bd2b81de82d5dcebaaf63747824e13dd71"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-line-collision.log",
+      "bytes": 22634,
+      "sha256": "e7ddea799a265d357fb7ba90819942bd2b81de82d5dcebaaf63747824e13dd71"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-columns-line-collision.log",
+      "bytes": 22634,
+      "sha256": "e7ddea799a265d357fb7ba90819942bd2b81de82d5dcebaaf63747824e13dd71"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-area-larger.log",
+      "bytes": 22151,
+      "sha256": "432708fb5daa497cea4b6e5a2eb14ffdd01656fd6edbc803061b09062f1d113a"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-area-larger.log",
+      "bytes": 22151,
+      "sha256": "432708fb5daa497cea4b6e5a2eb14ffdd01656fd6edbc803061b09062f1d113a"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-area-larger.log",
+      "bytes": 22151,
+      "sha256": "432708fb5daa497cea4b6e5a2eb14ffdd01656fd6edbc803061b09062f1d113a"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-area-larger.log",
+      "bytes": 22151,
+      "sha256": "432708fb5daa497cea4b6e5a2eb14ffdd01656fd6edbc803061b09062f1d113a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-area-shorter.log",
+      "bytes": 23315,
+      "sha256": "402ea0969593b887d8bb4e13b48613a842d4e39f0dbc4385a0f8f96b7328c26c"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-area-shorter.log",
+      "bytes": 23315,
+      "sha256": "402ea0969593b887d8bb4e13b48613a842d4e39f0dbc4385a0f8f96b7328c26c"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-area-shorter.log",
+      "bytes": 23315,
+      "sha256": "402ea0969593b887d8bb4e13b48613a842d4e39f0dbc4385a0f8f96b7328c26c"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-area-shorter.log",
+      "bytes": 23315,
+      "sha256": "402ea0969593b887d8bb4e13b48613a842d4e39f0dbc4385a0f8f96b7328c26c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fill.log",
+      "bytes": 21963,
+      "sha256": "0c3bb96dc515e0ac2318d5448acabd9674f105d377fe002b4e42dff39f7f11f7"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fill.log",
+      "bytes": 21963,
+      "sha256": "0c3bb96dc515e0ac2318d5448acabd9674f105d377fe002b4e42dff39f7f11f7"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fill.log",
+      "bytes": 21963,
+      "sha256": "0c3bb96dc515e0ac2318d5448acabd9674f105d377fe002b4e42dff39f7f11f7"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fill.log",
+      "bytes": 21963,
+      "sha256": "0c3bb96dc515e0ac2318d5448acabd9674f105d377fe002b4e42dff39f7f11f7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 21951,
+      "sha256": "b147c1da548ba75f3ce081c54fd7476140ee1da52cca4f8e942ac72d80bec18e"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 21951,
+      "sha256": "b147c1da548ba75f3ce081c54fd7476140ee1da52cca4f8e942ac72d80bec18e"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 21951,
+      "sha256": "b147c1da548ba75f3ce081c54fd7476140ee1da52cca4f8e942ac72d80bec18e"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 21951,
+      "sha256": "b147c1da548ba75f3ce081c54fd7476140ee1da52cca4f8e942ac72d80bec18e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 22581,
+      "sha256": "3c9b2172ac1b115343e91805f65f5b5be20002ae395b8c58347dfa646032115d"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 22581,
+      "sha256": "3c9b2172ac1b115343e91805f65f5b5be20002ae395b8c58347dfa646032115d"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 22581,
+      "sha256": "3c9b2172ac1b115343e91805f65f5b5be20002ae395b8c58347dfa646032115d"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 22581,
+      "sha256": "3c9b2172ac1b115343e91805f65f5b5be20002ae395b8c58347dfa646032115d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fit.log",
+      "bytes": 22368,
+      "sha256": "ac8beb190ccd6575da3803c6ba0f3c46555337a3820dcf149a2ace9c9dcba659"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fit.log",
+      "bytes": 22368,
+      "sha256": "ac8beb190ccd6575da3803c6ba0f3c46555337a3820dcf149a2ace9c9dcba659"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fit.log",
+      "bytes": 22368,
+      "sha256": "ac8beb190ccd6575da3803c6ba0f3c46555337a3820dcf149a2ace9c9dcba659"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/runtime-template-area-repeat-rows-fit.log",
+      "bytes": 22368,
+      "sha256": "ac8beb190ccd6575da3803c6ba0f3c46555337a3820dcf149a2ace9c9dcba659"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/simulator.json",
+      "bytes": 2241,
+      "sha256": "1a43b83d7b1da9a8ab8af990996301e372668c874d21185ce938c6a99b3a4bfe"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/simulator.json",
+      "bytes": 2241,
+      "sha256": "1a43b83d7b1da9a8ab8af990996301e372668c874d21185ce938c6a99b3a4bfe"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/simulator.json",
+      "bytes": 2241,
+      "sha256": "1a43b83d7b1da9a8ab8af990996301e372668c874d21185ce938c6a99b3a4bfe"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/simulator.json",
+      "bytes": 2241,
+      "sha256": "1a43b83d7b1da9a8ab8af990996301e372668c874d21185ce938c6a99b3a4bfe"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-area-larger.png",
+      "bytes": 74922,
+      "sha256": "09690b19a8d1cfa4e849baa76b072507ccd02fbec59ca6c8196e3359e116485a"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-area-larger.png",
+      "bytes": 74922,
+      "sha256": "09690b19a8d1cfa4e849baa76b072507ccd02fbec59ca6c8196e3359e116485a"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-area-larger.png",
+      "bytes": 74922,
+      "sha256": "09690b19a8d1cfa4e849baa76b072507ccd02fbec59ca6c8196e3359e116485a"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-area-larger.png",
+      "bytes": 74922,
+      "sha256": "09690b19a8d1cfa4e849baa76b072507ccd02fbec59ca6c8196e3359e116485a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-area-shorter.png",
+      "bytes": 75950,
+      "sha256": "ea02ad905797fd2b4bff8a2876543680077a540a8715062268d20cb9c79e56f8"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-area-shorter.png",
+      "bytes": 75950,
+      "sha256": "ea02ad905797fd2b4bff8a2876543680077a540a8715062268d20cb9c79e56f8"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-area-shorter.png",
+      "bytes": 75950,
+      "sha256": "ea02ad905797fd2b4bff8a2876543680077a540a8715062268d20cb9c79e56f8"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-area-shorter.png",
+      "bytes": 75950,
+      "sha256": "ea02ad905797fd2b4bff8a2876543680077a540a8715062268d20cb9c79e56f8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fill.png",
+      "bytes": 74947,
+      "sha256": "9e8495278a05bfa51bb37898a2f964ee106d29af557d79c91d0b8ef479951398"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fill.png",
+      "bytes": 74947,
+      "sha256": "9e8495278a05bfa51bb37898a2f964ee106d29af557d79c91d0b8ef479951398"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fill.png",
+      "bytes": 74947,
+      "sha256": "9e8495278a05bfa51bb37898a2f964ee106d29af557d79c91d0b8ef479951398"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fill.png",
+      "bytes": 74947,
+      "sha256": "9e8495278a05bfa51bb37898a2f964ee106d29af557d79c91d0b8ef479951398"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fit-empty-area.png",
+      "bytes": 74494,
+      "sha256": "9237d17e1c1ab800ddbefb471e8ddc06eb5d45af62db790775bb5028fe41133a"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fit-empty-area.png",
+      "bytes": 74494,
+      "sha256": "9237d17e1c1ab800ddbefb471e8ddc06eb5d45af62db790775bb5028fe41133a"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fit-empty-area.png",
+      "bytes": 74494,
+      "sha256": "9237d17e1c1ab800ddbefb471e8ddc06eb5d45af62db790775bb5028fe41133a"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fit-empty-area.png",
+      "bytes": 74494,
+      "sha256": "9237d17e1c1ab800ddbefb471e8ddc06eb5d45af62db790775bb5028fe41133a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fit-numeric.png",
+      "bytes": 74931,
+      "sha256": "cabe77cbee416f5ec83edaa6b85b47b9fe8ec41e0b8e80760c937499867a8c1b"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fit-numeric.png",
+      "bytes": 74931,
+      "sha256": "cabe77cbee416f5ec83edaa6b85b47b9fe8ec41e0b8e80760c937499867a8c1b"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fit-numeric.png",
+      "bytes": 74931,
+      "sha256": "cabe77cbee416f5ec83edaa6b85b47b9fe8ec41e0b8e80760c937499867a8c1b"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fit-numeric.png",
+      "bytes": 74931,
+      "sha256": "cabe77cbee416f5ec83edaa6b85b47b9fe8ec41e0b8e80760c937499867a8c1b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fit.png",
+      "bytes": 77525,
+      "sha256": "08d9c50ab5fe80947ec5264d4721b21a62e857da89dc0fdae2e2b2ef991a8fcb"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fit.png",
+      "bytes": 77525,
+      "sha256": "08d9c50ab5fe80947ec5264d4721b21a62e857da89dc0fdae2e2b2ef991a8fcb"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fit.png",
+      "bytes": 77525,
+      "sha256": "08d9c50ab5fe80947ec5264d4721b21a62e857da89dc0fdae2e2b2ef991a8fcb"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fit.png",
+      "bytes": 77525,
+      "sha256": "08d9c50ab5fe80947ec5264d4721b21a62e857da89dc0fdae2e2b2ef991a8fcb"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-line-collision.png",
+      "bytes": 74858,
+      "sha256": "9ad57dfc0a92e0c2683f65153b42ab5ea4441d4bfd40222ac2b41db35855d98d"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-line-collision.png",
+      "bytes": 74858,
+      "sha256": "9ad57dfc0a92e0c2683f65153b42ab5ea4441d4bfd40222ac2b41db35855d98d"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-line-collision.png",
+      "bytes": 74858,
+      "sha256": "9ad57dfc0a92e0c2683f65153b42ab5ea4441d4bfd40222ac2b41db35855d98d"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-line-collision.png",
+      "bytes": 74858,
+      "sha256": "9ad57dfc0a92e0c2683f65153b42ab5ea4441d4bfd40222ac2b41db35855d98d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-area-larger.png",
+      "bytes": 74965,
+      "sha256": "eb03aed394c749aa26fa0ca2cc44cec150f98e2718a693231b9d903b333c9eaa"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-area-larger.png",
+      "bytes": 74965,
+      "sha256": "eb03aed394c749aa26fa0ca2cc44cec150f98e2718a693231b9d903b333c9eaa"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-area-larger.png",
+      "bytes": 74965,
+      "sha256": "eb03aed394c749aa26fa0ca2cc44cec150f98e2718a693231b9d903b333c9eaa"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-area-larger.png",
+      "bytes": 74965,
+      "sha256": "eb03aed394c749aa26fa0ca2cc44cec150f98e2718a693231b9d903b333c9eaa"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-area-shorter.png",
+      "bytes": 76027,
+      "sha256": "500a7c2273ddda86079dd356705f457a49ca014039c4df5c0ad97be32056ad63"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-area-shorter.png",
+      "bytes": 76027,
+      "sha256": "500a7c2273ddda86079dd356705f457a49ca014039c4df5c0ad97be32056ad63"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-area-shorter.png",
+      "bytes": 76027,
+      "sha256": "500a7c2273ddda86079dd356705f457a49ca014039c4df5c0ad97be32056ad63"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-area-shorter.png",
+      "bytes": 76027,
+      "sha256": "500a7c2273ddda86079dd356705f457a49ca014039c4df5c0ad97be32056ad63"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fill.png",
+      "bytes": 74965,
+      "sha256": "eb03aed394c749aa26fa0ca2cc44cec150f98e2718a693231b9d903b333c9eaa"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fill.png",
+      "bytes": 74965,
+      "sha256": "eb03aed394c749aa26fa0ca2cc44cec150f98e2718a693231b9d903b333c9eaa"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fill.png",
+      "bytes": 74965,
+      "sha256": "eb03aed394c749aa26fa0ca2cc44cec150f98e2718a693231b9d903b333c9eaa"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fill.png",
+      "bytes": 74965,
+      "sha256": "eb03aed394c749aa26fa0ca2cc44cec150f98e2718a693231b9d903b333c9eaa"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fit-empty-area.png",
+      "bytes": 74512,
+      "sha256": "3a28c3d5cd934b14209d026323793f419ed9eb5902e43365e6985683d390fc07"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fit-empty-area.png",
+      "bytes": 74512,
+      "sha256": "3a28c3d5cd934b14209d026323793f419ed9eb5902e43365e6985683d390fc07"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fit-empty-area.png",
+      "bytes": 74512,
+      "sha256": "3a28c3d5cd934b14209d026323793f419ed9eb5902e43365e6985683d390fc07"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fit-empty-area.png",
+      "bytes": 74512,
+      "sha256": "3a28c3d5cd934b14209d026323793f419ed9eb5902e43365e6985683d390fc07"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fit-numeric.png",
+      "bytes": 74966,
+      "sha256": "33df5fec9ec445850fb2a35d27e5c522416f300b10197d01ccb24fa7ac97cb0e"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fit-numeric.png",
+      "bytes": 74966,
+      "sha256": "33df5fec9ec445850fb2a35d27e5c522416f300b10197d01ccb24fa7ac97cb0e"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fit-numeric.png",
+      "bytes": 74966,
+      "sha256": "33df5fec9ec445850fb2a35d27e5c522416f300b10197d01ccb24fa7ac97cb0e"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fit-numeric.png",
+      "bytes": 74966,
+      "sha256": "33df5fec9ec445850fb2a35d27e5c522416f300b10197d01ccb24fa7ac97cb0e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fit.png",
+      "bytes": 74966,
+      "sha256": "33df5fec9ec445850fb2a35d27e5c522416f300b10197d01ccb24fa7ac97cb0e"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fit.png",
+      "bytes": 74966,
+      "sha256": "33df5fec9ec445850fb2a35d27e5c522416f300b10197d01ccb24fa7ac97cb0e"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fit.png",
+      "bytes": 74966,
+      "sha256": "33df5fec9ec445850fb2a35d27e5c522416f300b10197d01ccb24fa7ac97cb0e"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fit.png",
+      "bytes": 74966,
+      "sha256": "33df5fec9ec445850fb2a35d27e5c522416f300b10197d01ccb24fa7ac97cb0e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-area-larger.log",
+      "bytes": 27,
+      "sha256": "a51dd527a458cae755f57b55f2c25e68ec6a775e914bc13ed1037b3724215606"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-area-larger.log",
+      "bytes": 27,
+      "sha256": "a51dd527a458cae755f57b55f2c25e68ec6a775e914bc13ed1037b3724215606"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-area-larger.log",
+      "bytes": 27,
+      "sha256": "a51dd527a458cae755f57b55f2c25e68ec6a775e914bc13ed1037b3724215606"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-area-larger.log",
+      "bytes": 27,
+      "sha256": "a51dd527a458cae755f57b55f2c25e68ec6a775e914bc13ed1037b3724215606"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-area-shorter.log",
+      "bytes": 27,
+      "sha256": "4fa551f4938da613ca492f68cc43e25071728f8e4425a935922487a74f7f5c64"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-area-shorter.log",
+      "bytes": 27,
+      "sha256": "4fa551f4938da613ca492f68cc43e25071728f8e4425a935922487a74f7f5c64"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-area-shorter.log",
+      "bytes": 27,
+      "sha256": "4fa551f4938da613ca492f68cc43e25071728f8e4425a935922487a74f7f5c64"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-area-shorter.log",
+      "bytes": 27,
+      "sha256": "4fa551f4938da613ca492f68cc43e25071728f8e4425a935922487a74f7f5c64"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fill.log",
+      "bytes": 27,
+      "sha256": "63949aa9da2149c22b19ce3889f39d30d6d1ce622c3d08eea06949391d35e4c8"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fill.log",
+      "bytes": 27,
+      "sha256": "63949aa9da2149c22b19ce3889f39d30d6d1ce622c3d08eea06949391d35e4c8"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fill.log",
+      "bytes": 27,
+      "sha256": "63949aa9da2149c22b19ce3889f39d30d6d1ce622c3d08eea06949391d35e4c8"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fill.log",
+      "bytes": 27,
+      "sha256": "63949aa9da2149c22b19ce3889f39d30d6d1ce622c3d08eea06949391d35e4c8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 27,
+      "sha256": "ddfec7f1319b8018ea534c8fb08f73f2a8470e54414f78ec383f9bdc52b4f32f"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 27,
+      "sha256": "ddfec7f1319b8018ea534c8fb08f73f2a8470e54414f78ec383f9bdc52b4f32f"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 27,
+      "sha256": "ddfec7f1319b8018ea534c8fb08f73f2a8470e54414f78ec383f9bdc52b4f32f"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 27,
+      "sha256": "ddfec7f1319b8018ea534c8fb08f73f2a8470e54414f78ec383f9bdc52b4f32f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 27,
+      "sha256": "48fd06be67c14dd0dc29bcd40eddd92b857fbff288b1da21e5c2079e740146fc"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 27,
+      "sha256": "48fd06be67c14dd0dc29bcd40eddd92b857fbff288b1da21e5c2079e740146fc"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 27,
+      "sha256": "48fd06be67c14dd0dc29bcd40eddd92b857fbff288b1da21e5c2079e740146fc"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 27,
+      "sha256": "48fd06be67c14dd0dc29bcd40eddd92b857fbff288b1da21e5c2079e740146fc"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fit.log",
+      "bytes": 27,
+      "sha256": "44a80028b0debec65017270201531fe0a918d298525f7ee6f66be3e3431efb56"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fit.log",
+      "bytes": 27,
+      "sha256": "44a80028b0debec65017270201531fe0a918d298525f7ee6f66be3e3431efb56"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fit.log",
+      "bytes": 27,
+      "sha256": "44a80028b0debec65017270201531fe0a918d298525f7ee6f66be3e3431efb56"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-fit.log",
+      "bytes": 27,
+      "sha256": "44a80028b0debec65017270201531fe0a918d298525f7ee6f66be3e3431efb56"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-line-collision.log",
+      "bytes": 27,
+      "sha256": "b9dfd5c6a2058015743f0a0267a5ae968acbf85ced094ebfa6f445c3b2f8a36e"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-line-collision.log",
+      "bytes": 27,
+      "sha256": "b9dfd5c6a2058015743f0a0267a5ae968acbf85ced094ebfa6f445c3b2f8a36e"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-line-collision.log",
+      "bytes": 27,
+      "sha256": "b9dfd5c6a2058015743f0a0267a5ae968acbf85ced094ebfa6f445c3b2f8a36e"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-columns-line-collision.log",
+      "bytes": 27,
+      "sha256": "b9dfd5c6a2058015743f0a0267a5ae968acbf85ced094ebfa6f445c3b2f8a36e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-area-larger.log",
+      "bytes": 27,
+      "sha256": "e3bae0f9956e8427f00bc056ddc481e23c8402af19bd1d5a62934ebed5302656"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-area-larger.log",
+      "bytes": 27,
+      "sha256": "e3bae0f9956e8427f00bc056ddc481e23c8402af19bd1d5a62934ebed5302656"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-area-larger.log",
+      "bytes": 27,
+      "sha256": "e3bae0f9956e8427f00bc056ddc481e23c8402af19bd1d5a62934ebed5302656"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-area-larger.log",
+      "bytes": 27,
+      "sha256": "e3bae0f9956e8427f00bc056ddc481e23c8402af19bd1d5a62934ebed5302656"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-area-shorter.log",
+      "bytes": 27,
+      "sha256": "8ceb5f054adee1378534a403a2a1932c6109d42d31e7ccdb0c3ebe70fdece918"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-area-shorter.log",
+      "bytes": 27,
+      "sha256": "8ceb5f054adee1378534a403a2a1932c6109d42d31e7ccdb0c3ebe70fdece918"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-area-shorter.log",
+      "bytes": 27,
+      "sha256": "8ceb5f054adee1378534a403a2a1932c6109d42d31e7ccdb0c3ebe70fdece918"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-area-shorter.log",
+      "bytes": 27,
+      "sha256": "8ceb5f054adee1378534a403a2a1932c6109d42d31e7ccdb0c3ebe70fdece918"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fill.log",
+      "bytes": 27,
+      "sha256": "9b152491e32016b9808d6cacc45ecd4248f74f1facf89b9b0c7bbd1c76ae2b70"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fill.log",
+      "bytes": 27,
+      "sha256": "9b152491e32016b9808d6cacc45ecd4248f74f1facf89b9b0c7bbd1c76ae2b70"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fill.log",
+      "bytes": 27,
+      "sha256": "9b152491e32016b9808d6cacc45ecd4248f74f1facf89b9b0c7bbd1c76ae2b70"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fill.log",
+      "bytes": 27,
+      "sha256": "9b152491e32016b9808d6cacc45ecd4248f74f1facf89b9b0c7bbd1c76ae2b70"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 27,
+      "sha256": "4aa8d769de4e137b30d2d26a324d151c53286a5e02ad36dcb25e73c336dda268"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 27,
+      "sha256": "4aa8d769de4e137b30d2d26a324d151c53286a5e02ad36dcb25e73c336dda268"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 27,
+      "sha256": "4aa8d769de4e137b30d2d26a324d151c53286a5e02ad36dcb25e73c336dda268"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 27,
+      "sha256": "4aa8d769de4e137b30d2d26a324d151c53286a5e02ad36dcb25e73c336dda268"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 27,
+      "sha256": "f42a1404f49602335b56511b57500a74219fc2316d68b12a4959677dc3e6084f"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 27,
+      "sha256": "f42a1404f49602335b56511b57500a74219fc2316d68b12a4959677dc3e6084f"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 27,
+      "sha256": "f42a1404f49602335b56511b57500a74219fc2316d68b12a4959677dc3e6084f"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 27,
+      "sha256": "f42a1404f49602335b56511b57500a74219fc2316d68b12a4959677dc3e6084f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fit.log",
+      "bytes": 27,
+      "sha256": "691e292efdae8c4a2213868b385ce788112cac6e0a639525a97ecb87dea943f5"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fit.log",
+      "bytes": 27,
+      "sha256": "691e292efdae8c4a2213868b385ce788112cac6e0a639525a97ecb87dea943f5"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fit.log",
+      "bytes": 27,
+      "sha256": "691e292efdae8c4a2213868b385ce788112cac6e0a639525a97ecb87dea943f5"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/launch-template-area-repeat-rows-fit.log",
+      "bytes": 27,
+      "sha256": "691e292efdae8c4a2213868b385ce788112cac6e0a639525a97ecb87dea943f5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/result.json",
+      "bytes": 24743,
+      "sha256": "98c0e2d46153e560d0b62d43fbb31bb72ad6a60938c83eff1f77193508898d8d"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/result.json",
+      "bytes": 24743,
+      "sha256": "98c0e2d46153e560d0b62d43fbb31bb72ad6a60938c83eff1f77193508898d8d"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/result.json",
+      "bytes": 24743,
+      "sha256": "98c0e2d46153e560d0b62d43fbb31bb72ad6a60938c83eff1f77193508898d8d"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/result.json",
+      "bytes": 24743,
+      "sha256": "98c0e2d46153e560d0b62d43fbb31bb72ad6a60938c83eff1f77193508898d8d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-area-larger.log",
+      "bytes": 12625,
+      "sha256": "7705144840eb3f2613d8548fc6913a01576afdc93d67fa55961d20228654e33c"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-area-larger.log",
+      "bytes": 12625,
+      "sha256": "7705144840eb3f2613d8548fc6913a01576afdc93d67fa55961d20228654e33c"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-area-larger.log",
+      "bytes": 12625,
+      "sha256": "7705144840eb3f2613d8548fc6913a01576afdc93d67fa55961d20228654e33c"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-area-larger.log",
+      "bytes": 12625,
+      "sha256": "7705144840eb3f2613d8548fc6913a01576afdc93d67fa55961d20228654e33c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-area-shorter.log",
+      "bytes": 13850,
+      "sha256": "731d97ea3e3b5e8b40ee028db58da5d840ee25b50d018532ed5665fd94a04574"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-area-shorter.log",
+      "bytes": 13850,
+      "sha256": "731d97ea3e3b5e8b40ee028db58da5d840ee25b50d018532ed5665fd94a04574"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-area-shorter.log",
+      "bytes": 13850,
+      "sha256": "731d97ea3e3b5e8b40ee028db58da5d840ee25b50d018532ed5665fd94a04574"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-area-shorter.log",
+      "bytes": 13850,
+      "sha256": "731d97ea3e3b5e8b40ee028db58da5d840ee25b50d018532ed5665fd94a04574"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fill.log",
+      "bytes": 12558,
+      "sha256": "44c879e9e4015209a0ffb3ebe0bcc3efbc3ccf8e0e0ae51afafb90a35bdbdf4a"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fill.log",
+      "bytes": 12558,
+      "sha256": "44c879e9e4015209a0ffb3ebe0bcc3efbc3ccf8e0e0ae51afafb90a35bdbdf4a"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fill.log",
+      "bytes": 12558,
+      "sha256": "44c879e9e4015209a0ffb3ebe0bcc3efbc3ccf8e0e0ae51afafb90a35bdbdf4a"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fill.log",
+      "bytes": 12558,
+      "sha256": "44c879e9e4015209a0ffb3ebe0bcc3efbc3ccf8e0e0ae51afafb90a35bdbdf4a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 12676,
+      "sha256": "f1ebbdd80787bd4baf9fba1921fdfcd243ac16f805181d26776c9851df2a0766"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 12676,
+      "sha256": "f1ebbdd80787bd4baf9fba1921fdfcd243ac16f805181d26776c9851df2a0766"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 12676,
+      "sha256": "f1ebbdd80787bd4baf9fba1921fdfcd243ac16f805181d26776c9851df2a0766"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 12676,
+      "sha256": "f1ebbdd80787bd4baf9fba1921fdfcd243ac16f805181d26776c9851df2a0766"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 13232,
+      "sha256": "60d5d3b37fd505ea37ac7866c54198333ca32abd4124b10f143c5b11c0834797"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 13232,
+      "sha256": "60d5d3b37fd505ea37ac7866c54198333ca32abd4124b10f143c5b11c0834797"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 13232,
+      "sha256": "60d5d3b37fd505ea37ac7866c54198333ca32abd4124b10f143c5b11c0834797"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 13232,
+      "sha256": "60d5d3b37fd505ea37ac7866c54198333ca32abd4124b10f143c5b11c0834797"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fit.log",
+      "bytes": 13152,
+      "sha256": "d80937350cda365670cfeed0394509b91176d95746b066bf6779f7736565187b"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fit.log",
+      "bytes": 13152,
+      "sha256": "d80937350cda365670cfeed0394509b91176d95746b066bf6779f7736565187b"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fit.log",
+      "bytes": 13152,
+      "sha256": "d80937350cda365670cfeed0394509b91176d95746b066bf6779f7736565187b"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-fit.log",
+      "bytes": 13152,
+      "sha256": "d80937350cda365670cfeed0394509b91176d95746b066bf6779f7736565187b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-line-collision.log",
+      "bytes": 13244,
+      "sha256": "01cd60217e98accb76c64e5db1abe4de556df3314174896fd81ce27a6b8f1c5b"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-line-collision.log",
+      "bytes": 13244,
+      "sha256": "01cd60217e98accb76c64e5db1abe4de556df3314174896fd81ce27a6b8f1c5b"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-line-collision.log",
+      "bytes": 13244,
+      "sha256": "01cd60217e98accb76c64e5db1abe4de556df3314174896fd81ce27a6b8f1c5b"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-columns-line-collision.log",
+      "bytes": 13244,
+      "sha256": "01cd60217e98accb76c64e5db1abe4de556df3314174896fd81ce27a6b8f1c5b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-area-larger.log",
+      "bytes": 12611,
+      "sha256": "8963971bc5625933e835a0c40dafb4759c4cb79e44da86e57b2420b29943f7c6"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-area-larger.log",
+      "bytes": 12611,
+      "sha256": "8963971bc5625933e835a0c40dafb4759c4cb79e44da86e57b2420b29943f7c6"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-area-larger.log",
+      "bytes": 12611,
+      "sha256": "8963971bc5625933e835a0c40dafb4759c4cb79e44da86e57b2420b29943f7c6"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-area-larger.log",
+      "bytes": 12611,
+      "sha256": "8963971bc5625933e835a0c40dafb4759c4cb79e44da86e57b2420b29943f7c6"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-area-shorter.log",
+      "bytes": 13817,
+      "sha256": "012811ca27337547563184069496634fefc4de8a78bdfee441d1ff9b627326ff"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-area-shorter.log",
+      "bytes": 13817,
+      "sha256": "012811ca27337547563184069496634fefc4de8a78bdfee441d1ff9b627326ff"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-area-shorter.log",
+      "bytes": 13817,
+      "sha256": "012811ca27337547563184069496634fefc4de8a78bdfee441d1ff9b627326ff"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-area-shorter.log",
+      "bytes": 13817,
+      "sha256": "012811ca27337547563184069496634fefc4de8a78bdfee441d1ff9b627326ff"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fill.log",
+      "bytes": 12525,
+      "sha256": "1392022e172e199efcf7389845680a2b3d24709813b6a23f8d800a8adc9ac3be"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fill.log",
+      "bytes": 12525,
+      "sha256": "1392022e172e199efcf7389845680a2b3d24709813b6a23f8d800a8adc9ac3be"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fill.log",
+      "bytes": 12525,
+      "sha256": "1392022e172e199efcf7389845680a2b3d24709813b6a23f8d800a8adc9ac3be"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fill.log",
+      "bytes": 12525,
+      "sha256": "1392022e172e199efcf7389845680a2b3d24709813b6a23f8d800a8adc9ac3be"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 12665,
+      "sha256": "8437354b8681ec207cf051a7e10d5cd576b78826817cde8f31d136fcf0798583"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 12665,
+      "sha256": "8437354b8681ec207cf051a7e10d5cd576b78826817cde8f31d136fcf0798583"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 12665,
+      "sha256": "8437354b8681ec207cf051a7e10d5cd576b78826817cde8f31d136fcf0798583"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 12665,
+      "sha256": "8437354b8681ec207cf051a7e10d5cd576b78826817cde8f31d136fcf0798583"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 13219,
+      "sha256": "94e2a45c230f79ec079f7b1ca34fd650df013ba098489001fd54e264bce5ead5"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 13219,
+      "sha256": "94e2a45c230f79ec079f7b1ca34fd650df013ba098489001fd54e264bce5ead5"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 13219,
+      "sha256": "94e2a45c230f79ec079f7b1ca34fd650df013ba098489001fd54e264bce5ead5"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 13219,
+      "sha256": "94e2a45c230f79ec079f7b1ca34fd650df013ba098489001fd54e264bce5ead5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fit.log",
+      "bytes": 13122,
+      "sha256": "4c8957695f61839f8fae832295e91186a4b605f569b6735d4661fdb913cc97d0"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fit.log",
+      "bytes": 13122,
+      "sha256": "4c8957695f61839f8fae832295e91186a4b605f569b6735d4661fdb913cc97d0"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fit.log",
+      "bytes": 13122,
+      "sha256": "4c8957695f61839f8fae832295e91186a4b605f569b6735d4661fdb913cc97d0"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/runtime-template-area-repeat-rows-fit.log",
+      "bytes": 13122,
+      "sha256": "4c8957695f61839f8fae832295e91186a4b605f569b6735d4661fdb913cc97d0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-area-larger.log",
+      "bytes": 268,
+      "sha256": "0fe416ce9668d1c9ceca8e862194cf187250544dad43c3f5a11a5b15f67fe403"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-area-larger.log",
+      "bytes": 268,
+      "sha256": "0fe416ce9668d1c9ceca8e862194cf187250544dad43c3f5a11a5b15f67fe403"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-area-larger.log",
+      "bytes": 268,
+      "sha256": "0fe416ce9668d1c9ceca8e862194cf187250544dad43c3f5a11a5b15f67fe403"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-area-larger.log",
+      "bytes": 268,
+      "sha256": "0fe416ce9668d1c9ceca8e862194cf187250544dad43c3f5a11a5b15f67fe403"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-area-shorter.log",
+      "bytes": 269,
+      "sha256": "1df2d4155fa5540324ec9ccd21382ac6595b79dc06a02cd31f821cdb49a34fb4"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-area-shorter.log",
+      "bytes": 269,
+      "sha256": "1df2d4155fa5540324ec9ccd21382ac6595b79dc06a02cd31f821cdb49a34fb4"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-area-shorter.log",
+      "bytes": 269,
+      "sha256": "1df2d4155fa5540324ec9ccd21382ac6595b79dc06a02cd31f821cdb49a34fb4"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-area-shorter.log",
+      "bytes": 269,
+      "sha256": "1df2d4155fa5540324ec9ccd21382ac6595b79dc06a02cd31f821cdb49a34fb4"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fill.log",
+      "bytes": 261,
+      "sha256": "6cb84a43f43e48ae8694bf04c76700801945b221bb77679ed2814aa0710206b3"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fill.log",
+      "bytes": 261,
+      "sha256": "6cb84a43f43e48ae8694bf04c76700801945b221bb77679ed2814aa0710206b3"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fill.log",
+      "bytes": 261,
+      "sha256": "6cb84a43f43e48ae8694bf04c76700801945b221bb77679ed2814aa0710206b3"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fill.log",
+      "bytes": 261,
+      "sha256": "6cb84a43f43e48ae8694bf04c76700801945b221bb77679ed2814aa0710206b3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 271,
+      "sha256": "5b846de1040da51938bd127f0261d29af470800517ddac49a307b81b512c8e32"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 271,
+      "sha256": "5b846de1040da51938bd127f0261d29af470800517ddac49a307b81b512c8e32"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 271,
+      "sha256": "5b846de1040da51938bd127f0261d29af470800517ddac49a307b81b512c8e32"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fit-empty-area.log",
+      "bytes": 271,
+      "sha256": "5b846de1040da51938bd127f0261d29af470800517ddac49a307b81b512c8e32"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 268,
+      "sha256": "1007a67942c3c809882a582e32742d38ae0465e666ed579417af85694de84f37"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 268,
+      "sha256": "1007a67942c3c809882a582e32742d38ae0465e666ed579417af85694de84f37"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 268,
+      "sha256": "1007a67942c3c809882a582e32742d38ae0465e666ed579417af85694de84f37"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fit-numeric.log",
+      "bytes": 268,
+      "sha256": "1007a67942c3c809882a582e32742d38ae0465e666ed579417af85694de84f37"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fit.log",
+      "bytes": 260,
+      "sha256": "679cad4b4755db7eefe552620b2c342cda9c0bbded0f1fbe2a557a4e5deb3410"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fit.log",
+      "bytes": 260,
+      "sha256": "679cad4b4755db7eefe552620b2c342cda9c0bbded0f1fbe2a557a4e5deb3410"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fit.log",
+      "bytes": 260,
+      "sha256": "679cad4b4755db7eefe552620b2c342cda9c0bbded0f1fbe2a557a4e5deb3410"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-fit.log",
+      "bytes": 260,
+      "sha256": "679cad4b4755db7eefe552620b2c342cda9c0bbded0f1fbe2a557a4e5deb3410"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-line-collision.log",
+      "bytes": 271,
+      "sha256": "7f19b52456c1172a012bc9491605141a1b0a6abc01eb11215a9b7d8b3c8bc7eb"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-line-collision.log",
+      "bytes": 271,
+      "sha256": "7f19b52456c1172a012bc9491605141a1b0a6abc01eb11215a9b7d8b3c8bc7eb"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-line-collision.log",
+      "bytes": 271,
+      "sha256": "7f19b52456c1172a012bc9491605141a1b0a6abc01eb11215a9b7d8b3c8bc7eb"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-columns-line-collision.log",
+      "bytes": 271,
+      "sha256": "7f19b52456c1172a012bc9491605141a1b0a6abc01eb11215a9b7d8b3c8bc7eb"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-area-larger.log",
+      "bytes": 265,
+      "sha256": "ce97b164797ea09eb81839f12d3efe2bb32ffd2cf6bf358f6067215c8a9abaa6"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-area-larger.log",
+      "bytes": 265,
+      "sha256": "ce97b164797ea09eb81839f12d3efe2bb32ffd2cf6bf358f6067215c8a9abaa6"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-area-larger.log",
+      "bytes": 265,
+      "sha256": "ce97b164797ea09eb81839f12d3efe2bb32ffd2cf6bf358f6067215c8a9abaa6"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-area-larger.log",
+      "bytes": 265,
+      "sha256": "ce97b164797ea09eb81839f12d3efe2bb32ffd2cf6bf358f6067215c8a9abaa6"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-area-shorter.log",
+      "bytes": 266,
+      "sha256": "d1117dc0da31b5f7a5b461f47f1496478a6717cfcf5535c6483a327a8cd5c341"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-area-shorter.log",
+      "bytes": 266,
+      "sha256": "d1117dc0da31b5f7a5b461f47f1496478a6717cfcf5535c6483a327a8cd5c341"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-area-shorter.log",
+      "bytes": 266,
+      "sha256": "d1117dc0da31b5f7a5b461f47f1496478a6717cfcf5535c6483a327a8cd5c341"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-area-shorter.log",
+      "bytes": 266,
+      "sha256": "d1117dc0da31b5f7a5b461f47f1496478a6717cfcf5535c6483a327a8cd5c341"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fill.log",
+      "bytes": 258,
+      "sha256": "7568ccaa2bccb3d7e58c7f32a08a4a8c7af1c11e04358d19cd6ac8b454a88359"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fill.log",
+      "bytes": 258,
+      "sha256": "7568ccaa2bccb3d7e58c7f32a08a4a8c7af1c11e04358d19cd6ac8b454a88359"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fill.log",
+      "bytes": 258,
+      "sha256": "7568ccaa2bccb3d7e58c7f32a08a4a8c7af1c11e04358d19cd6ac8b454a88359"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fill.log",
+      "bytes": 258,
+      "sha256": "7568ccaa2bccb3d7e58c7f32a08a4a8c7af1c11e04358d19cd6ac8b454a88359"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 268,
+      "sha256": "20cd65d8f87612c2b87905b6ffb61a4d44889070a81188f6e9ddc8b730b1cdf4"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 268,
+      "sha256": "20cd65d8f87612c2b87905b6ffb61a4d44889070a81188f6e9ddc8b730b1cdf4"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 268,
+      "sha256": "20cd65d8f87612c2b87905b6ffb61a4d44889070a81188f6e9ddc8b730b1cdf4"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fit-empty-area.log",
+      "bytes": 268,
+      "sha256": "20cd65d8f87612c2b87905b6ffb61a4d44889070a81188f6e9ddc8b730b1cdf4"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 265,
+      "sha256": "98b3c6804e581c857b69ac350e4bbc83200840b03342afb74a8b707cef4b8e6d"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 265,
+      "sha256": "98b3c6804e581c857b69ac350e4bbc83200840b03342afb74a8b707cef4b8e6d"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 265,
+      "sha256": "98b3c6804e581c857b69ac350e4bbc83200840b03342afb74a8b707cef4b8e6d"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fit-numeric.log",
+      "bytes": 265,
+      "sha256": "98b3c6804e581c857b69ac350e4bbc83200840b03342afb74a8b707cef4b8e6d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fit.log",
+      "bytes": 257,
+      "sha256": "e1fc4eccf6ea103dcfc8696e870504050d1961f9364ce746aa0fc0204b0cd71b"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fit.log",
+      "bytes": 257,
+      "sha256": "e1fc4eccf6ea103dcfc8696e870504050d1961f9364ce746aa0fc0204b0cd71b"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fit.log",
+      "bytes": 257,
+      "sha256": "e1fc4eccf6ea103dcfc8696e870504050d1961f9364ce746aa0fc0204b0cd71b"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/screenshot-template-area-repeat-rows-fit.log",
+      "bytes": 257,
+      "sha256": "e1fc4eccf6ea103dcfc8696e870504050d1961f9364ce746aa0fc0204b0cd71b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/simulator.json",
+      "bytes": 2071,
+      "sha256": "86e847e733ac836dbddccce5ca23ba9fe2ff81aea1a5419f6eb678a57e662576"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/simulator.json",
+      "bytes": 2071,
+      "sha256": "86e847e733ac836dbddccce5ca23ba9fe2ff81aea1a5419f6eb678a57e662576"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/simulator.json",
+      "bytes": 2071,
+      "sha256": "86e847e733ac836dbddccce5ca23ba9fe2ff81aea1a5419f6eb678a57e662576"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/simulator.json",
+      "bytes": 2071,
+      "sha256": "86e847e733ac836dbddccce5ca23ba9fe2ff81aea1a5419f6eb678a57e662576"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-area-larger.png",
+      "bytes": 134002,
+      "sha256": "262b8b0138920d5742f08d63824b5ef790e00e53b0f7d6abc05a77dd60dd3e22"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-area-larger.png",
+      "bytes": 134002,
+      "sha256": "262b8b0138920d5742f08d63824b5ef790e00e53b0f7d6abc05a77dd60dd3e22"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-area-larger.png",
+      "bytes": 134002,
+      "sha256": "262b8b0138920d5742f08d63824b5ef790e00e53b0f7d6abc05a77dd60dd3e22"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-area-larger.png",
+      "bytes": 134002,
+      "sha256": "262b8b0138920d5742f08d63824b5ef790e00e53b0f7d6abc05a77dd60dd3e22"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-area-shorter.png",
+      "bytes": 133996,
+      "sha256": "4c7370e8735e70d5fe4c007e06a69b82393157d0cb42c3ccd21f5db08bc20459"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-area-shorter.png",
+      "bytes": 133996,
+      "sha256": "4c7370e8735e70d5fe4c007e06a69b82393157d0cb42c3ccd21f5db08bc20459"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-area-shorter.png",
+      "bytes": 133996,
+      "sha256": "4c7370e8735e70d5fe4c007e06a69b82393157d0cb42c3ccd21f5db08bc20459"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-area-shorter.png",
+      "bytes": 133996,
+      "sha256": "4c7370e8735e70d5fe4c007e06a69b82393157d0cb42c3ccd21f5db08bc20459"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fill.png",
+      "bytes": 132324,
+      "sha256": "cfc99c859cfd340528a8194fa481c5acee72982acb64b8d3e80b2a23d4199280"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fill.png",
+      "bytes": 132324,
+      "sha256": "cfc99c859cfd340528a8194fa481c5acee72982acb64b8d3e80b2a23d4199280"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fill.png",
+      "bytes": 132324,
+      "sha256": "cfc99c859cfd340528a8194fa481c5acee72982acb64b8d3e80b2a23d4199280"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fill.png",
+      "bytes": 132324,
+      "sha256": "cfc99c859cfd340528a8194fa481c5acee72982acb64b8d3e80b2a23d4199280"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fit-empty-area.png",
+      "bytes": 132058,
+      "sha256": "5d76d3ed77d5b4eb14ab05850f8b7f76204fa05f119ec01e5c9773cca708e531"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fit-empty-area.png",
+      "bytes": 132058,
+      "sha256": "5d76d3ed77d5b4eb14ab05850f8b7f76204fa05f119ec01e5c9773cca708e531"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fit-empty-area.png",
+      "bytes": 132058,
+      "sha256": "5d76d3ed77d5b4eb14ab05850f8b7f76204fa05f119ec01e5c9773cca708e531"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fit-empty-area.png",
+      "bytes": 132058,
+      "sha256": "5d76d3ed77d5b4eb14ab05850f8b7f76204fa05f119ec01e5c9773cca708e531"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fit-numeric.png",
+      "bytes": 133709,
+      "sha256": "e18ef9018ba6a836d1b389ada1d199837496ed7410acba79f35f4b742e80c5dc"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fit-numeric.png",
+      "bytes": 133709,
+      "sha256": "e18ef9018ba6a836d1b389ada1d199837496ed7410acba79f35f4b742e80c5dc"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fit-numeric.png",
+      "bytes": 133709,
+      "sha256": "e18ef9018ba6a836d1b389ada1d199837496ed7410acba79f35f4b742e80c5dc"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fit-numeric.png",
+      "bytes": 133709,
+      "sha256": "e18ef9018ba6a836d1b389ada1d199837496ed7410acba79f35f4b742e80c5dc"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fit.png",
+      "bytes": 133709,
+      "sha256": "e18ef9018ba6a836d1b389ada1d199837496ed7410acba79f35f4b742e80c5dc"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fit.png",
+      "bytes": 133709,
+      "sha256": "e18ef9018ba6a836d1b389ada1d199837496ed7410acba79f35f4b742e80c5dc"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fit.png",
+      "bytes": 133709,
+      "sha256": "e18ef9018ba6a836d1b389ada1d199837496ed7410acba79f35f4b742e80c5dc"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fit.png",
+      "bytes": 133709,
+      "sha256": "e18ef9018ba6a836d1b389ada1d199837496ed7410acba79f35f4b742e80c5dc"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-line-collision.png",
+      "bytes": 133873,
+      "sha256": "162f0711f4e66e229ff70b0d03c48dcdaaf1752f24fe0eadf6c43b405e71c437"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-line-collision.png",
+      "bytes": 133873,
+      "sha256": "162f0711f4e66e229ff70b0d03c48dcdaaf1752f24fe0eadf6c43b405e71c437"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-line-collision.png",
+      "bytes": 133873,
+      "sha256": "162f0711f4e66e229ff70b0d03c48dcdaaf1752f24fe0eadf6c43b405e71c437"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-line-collision.png",
+      "bytes": 133873,
+      "sha256": "162f0711f4e66e229ff70b0d03c48dcdaaf1752f24fe0eadf6c43b405e71c437"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-area-larger.png",
+      "bytes": 134040,
+      "sha256": "78007d5f0099f0481b942c37233a4ac730b3ed42bc821daeef92b5c223642f0a"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-area-larger.png",
+      "bytes": 134040,
+      "sha256": "78007d5f0099f0481b942c37233a4ac730b3ed42bc821daeef92b5c223642f0a"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-area-larger.png",
+      "bytes": 134040,
+      "sha256": "78007d5f0099f0481b942c37233a4ac730b3ed42bc821daeef92b5c223642f0a"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-area-larger.png",
+      "bytes": 134040,
+      "sha256": "78007d5f0099f0481b942c37233a4ac730b3ed42bc821daeef92b5c223642f0a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-area-shorter.png",
+      "bytes": 134028,
+      "sha256": "5d26e24c461f90acc1913ac3dba97d6e1f762b850d6eb2f9be5a5b645f14ea6a"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-area-shorter.png",
+      "bytes": 134028,
+      "sha256": "5d26e24c461f90acc1913ac3dba97d6e1f762b850d6eb2f9be5a5b645f14ea6a"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-area-shorter.png",
+      "bytes": 134028,
+      "sha256": "5d26e24c461f90acc1913ac3dba97d6e1f762b850d6eb2f9be5a5b645f14ea6a"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-area-shorter.png",
+      "bytes": 134028,
+      "sha256": "5d26e24c461f90acc1913ac3dba97d6e1f762b850d6eb2f9be5a5b645f14ea6a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fill.png",
+      "bytes": 134040,
+      "sha256": "78007d5f0099f0481b942c37233a4ac730b3ed42bc821daeef92b5c223642f0a"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fill.png",
+      "bytes": 134040,
+      "sha256": "78007d5f0099f0481b942c37233a4ac730b3ed42bc821daeef92b5c223642f0a"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fill.png",
+      "bytes": 134040,
+      "sha256": "78007d5f0099f0481b942c37233a4ac730b3ed42bc821daeef92b5c223642f0a"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fill.png",
+      "bytes": 134040,
+      "sha256": "78007d5f0099f0481b942c37233a4ac730b3ed42bc821daeef92b5c223642f0a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fit-empty-area.png",
+      "bytes": 133194,
+      "sha256": "7b4e77a7a74eaab7c7a33e5bde7d936bd540b30f9799bdcb6ea0581494d61553"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fit-empty-area.png",
+      "bytes": 133194,
+      "sha256": "7b4e77a7a74eaab7c7a33e5bde7d936bd540b30f9799bdcb6ea0581494d61553"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fit-empty-area.png",
+      "bytes": 133194,
+      "sha256": "7b4e77a7a74eaab7c7a33e5bde7d936bd540b30f9799bdcb6ea0581494d61553"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fit-empty-area.png",
+      "bytes": 133194,
+      "sha256": "7b4e77a7a74eaab7c7a33e5bde7d936bd540b30f9799bdcb6ea0581494d61553"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fit-numeric.png",
+      "bytes": 133159,
+      "sha256": "096bf8674219d79c73b339e1d09d01faf1f521619787d3ce4617b24dbaf7b8d8"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fit-numeric.png",
+      "bytes": 133159,
+      "sha256": "096bf8674219d79c73b339e1d09d01faf1f521619787d3ce4617b24dbaf7b8d8"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fit-numeric.png",
+      "bytes": 133159,
+      "sha256": "096bf8674219d79c73b339e1d09d01faf1f521619787d3ce4617b24dbaf7b8d8"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fit-numeric.png",
+      "bytes": 133159,
+      "sha256": "096bf8674219d79c73b339e1d09d01faf1f521619787d3ce4617b24dbaf7b8d8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fit.png",
+      "bytes": 133111,
+      "sha256": "cb74d120cf48ed3590645a84ba1b126fa35d1492ba3924c565e4fbbe400e8991"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fit.png",
+      "bytes": 133111,
+      "sha256": "cb74d120cf48ed3590645a84ba1b126fa35d1492ba3924c565e4fbbe400e8991"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fit.png",
+      "bytes": 133111,
+      "sha256": "cb74d120cf48ed3590645a84ba1b126fa35d1492ba3924c565e4fbbe400e8991"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fit.png",
+      "bytes": 133111,
+      "sha256": "cb74d120cf48ed3590645a84ba1b126fa35d1492ba3924c565e4fbbe400e8991"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-roadmap-html-2026-10-23/pr-diff-review-30.md",
+      "bytes": 5154,
+      "sha256": "c6bcb70b5ec2f1562e38d878f5b7f3efe391a27facc14c4f9f40268b2f3e8bc4"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-roadmap-html-2026-10-23/pr-diff-review-30.md",
+      "bytes": 5154,
+      "sha256": "c6bcb70b5ec2f1562e38d878f5b7f3efe391a27facc14c4f9f40268b2f3e8bc4"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-roadmap-html-2026-10-23/pr-diff-review-30.md",
+      "bytes": 5154,
+      "sha256": "c6bcb70b5ec2f1562e38d878f5b7f3efe391a27facc14c4f9f40268b2f3e8bc4"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-roadmap-html-2026-10-23/pr-diff-review-30.md",
+      "bytes": 5154,
+      "sha256": "c6bcb70b5ec2f1562e38d878f5b7f3efe391a27facc14c4f9f40268b2f3e8bc4"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.md",
+      "bytes": 6166,
+      "sha256": "0ae5bf33a47f4124f867f51276ebfca4256232fe1d52f80a01f6eade138bf35e"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.md",
+      "bytes": 6166,
+      "sha256": "0ae5bf33a47f4124f867f51276ebfca4256232fe1d52f80a01f6eade138bf35e"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.md",
+      "bytes": 6166,
+      "sha256": "0ae5bf33a47f4124f867f51276ebfca4256232fe1d52f80a01f6eade138bf35e"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.md",
+      "bytes": 6166,
+      "sha256": "0ae5bf33a47f4124f867f51276ebfca4256232fe1d52f80a01f6eade138bf35e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/android-build-final.log",
+      "bytes": 4748,
+      "sha256": "30f2faf0f6379204da35016af629ac6594ffb04b3e9092869201837c0cffd13f"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/android-build-final.log",
+      "bytes": 4748,
+      "sha256": "30f2faf0f6379204da35016af629ac6594ffb04b3e9092869201837c0cffd13f"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/android-build-final.log",
+      "bytes": 4748,
+      "sha256": "30f2faf0f6379204da35016af629ac6594ffb04b3e9092869201837c0cffd13f"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/android-build-final.log",
+      "bytes": 4748,
+      "sha256": "30f2faf0f6379204da35016af629ac6594ffb04b3e9092869201837c0cffd13f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/android-capture-final.log",
+      "bytes": 25374,
+      "sha256": "2f028b71f6f783defb9cc3c8393b58b18056e318f1ef92ae7966951d8728f0f8"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/android-capture-final.log",
+      "bytes": 25374,
+      "sha256": "2f028b71f6f783defb9cc3c8393b58b18056e318f1ef92ae7966951d8728f0f8"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/android-capture-final.log",
+      "bytes": 25374,
+      "sha256": "2f028b71f6f783defb9cc3c8393b58b18056e318f1ef92ae7966951d8728f0f8"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/android-capture-final.log",
+      "bytes": 25374,
+      "sha256": "2f028b71f6f783defb9cc3c8393b58b18056e318f1ef92ae7966951d8728f0f8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/cargo-fmt-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/cargo-fmt-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/cargo-fmt-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/cargo-fmt-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/compare-platform-results.mjs",
+      "bytes": 2289,
+      "sha256": "7935bb2d5d59cbce8e49c5e5916ac7923d14e1696ae2bd7bc200ea94887f5dab"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/compare-platform-results.mjs",
+      "bytes": 2289,
+      "sha256": "7935bb2d5d59cbce8e49c5e5916ac7923d14e1696ae2bd7bc200ea94887f5dab"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/compare-platform-results.mjs",
+      "bytes": 2289,
+      "sha256": "7935bb2d5d59cbce8e49c5e5916ac7923d14e1696ae2bd7bc200ea94887f5dab"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/compare-platform-results.mjs",
+      "bytes": 2289,
+      "sha256": "7935bb2d5d59cbce8e49c5e5916ac7923d14e1696ae2bd7bc200ea94887f5dab"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/cross-platform-comparison.json",
+      "bytes": 3784,
+      "sha256": "2a961aa822ccccb9dca088cad87ca7af3f70ef04e47b58f971b694e6926f843c"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/cross-platform-comparison.json",
+      "bytes": 3784,
+      "sha256": "2a961aa822ccccb9dca088cad87ca7af3f70ef04e47b58f971b694e6926f843c"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/cross-platform-comparison.json",
+      "bytes": 3784,
+      "sha256": "2a961aa822ccccb9dca088cad87ca7af3f70ef04e47b58f971b694e6926f843c"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/cross-platform-comparison.json",
+      "bytes": 3784,
+      "sha256": "2a961aa822ccccb9dca088cad87ca7af3f70ef04e47b58f971b694e6926f843c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-fixture-archive-build-final.log",
+      "bytes": 62,
+      "sha256": "765f1396d07f30f3a451cd3f9d9cad4e83c92c8e0aecf955ffc09061a6cf1e02"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-fixture-archive-build-final.log",
+      "bytes": 62,
+      "sha256": "765f1396d07f30f3a451cd3f9d9cad4e83c92c8e0aecf955ffc09061a6cf1e02"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-fixture-archive-build-final.log",
+      "bytes": 62,
+      "sha256": "765f1396d07f30f3a451cd3f9d9cad4e83c92c8e0aecf955ffc09061a6cf1e02"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-fixture-archive-build-final.log",
+      "bytes": 62,
+      "sha256": "765f1396d07f30f3a451cd3f9d9cad4e83c92c8e0aecf955ffc09061a6cf1e02"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-fixture-archive.json",
+      "bytes": 279,
+      "sha256": "99de1c016eb11be7dde35023109134a01e029d98adc3a542ff77c314c2e63bac"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-fixture-archive.json",
+      "bytes": 279,
+      "sha256": "99de1c016eb11be7dde35023109134a01e029d98adc3a542ff77c314c2e63bac"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-fixture-archive.json",
+      "bytes": 279,
+      "sha256": "99de1c016eb11be7dde35023109134a01e029d98adc3a542ff77c314c2e63bac"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-fixture-archive.json",
+      "bytes": 279,
+      "sha256": "99de1c016eb11be7dde35023109134a01e029d98adc3a542ff77c314c2e63bac"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-fixture-test-final.log",
+      "bytes": 866,
+      "sha256": "231955a8c8054ddb58540b0d9278558ed08bf5bfc4f2a635b8ee6f47dd77dbdd"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-fixture-test-final.log",
+      "bytes": 866,
+      "sha256": "231955a8c8054ddb58540b0d9278558ed08bf5bfc4f2a635b8ee6f47dd77dbdd"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-fixture-test-final.log",
+      "bytes": 866,
+      "sha256": "231955a8c8054ddb58540b0d9278558ed08bf5bfc4f2a635b8ee6f47dd77dbdd"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-fixture-test-final.log",
+      "bytes": 866,
+      "sha256": "231955a8c8054ddb58540b0d9278558ed08bf5bfc4f2a635b8ee6f47dd77dbdd"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-product-archive-build-final.log",
+      "bytes": 62,
+      "sha256": "d1235ea4563620b53ef5bdd2da5f595fec9d54f9efb48376378c20547dd95e57"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-product-archive-build-final.log",
+      "bytes": 62,
+      "sha256": "d1235ea4563620b53ef5bdd2da5f595fec9d54f9efb48376378c20547dd95e57"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-product-archive-build-final.log",
+      "bytes": 62,
+      "sha256": "d1235ea4563620b53ef5bdd2da5f595fec9d54f9efb48376378c20547dd95e57"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-product-archive-build-final.log",
+      "bytes": 62,
+      "sha256": "d1235ea4563620b53ef5bdd2da5f595fec9d54f9efb48376378c20547dd95e57"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-product-archive.json",
+      "bytes": 264,
+      "sha256": "bbdd3af9846c1e34fba1e83c3b2960c16390e0524f648f0cec9df7c5d1eaf84c"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-product-archive.json",
+      "bytes": 264,
+      "sha256": "bbdd3af9846c1e34fba1e83c3b2960c16390e0524f648f0cec9df7c5d1eaf84c"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-product-archive.json",
+      "bytes": 264,
+      "sha256": "bbdd3af9846c1e34fba1e83c3b2960c16390e0524f648f0cec9df7c5d1eaf84c"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ffi-product-archive.json",
+      "bytes": 264,
+      "sha256": "bbdd3af9846c1e34fba1e83c3b2960c16390e0524f648f0cec9df7c5d1eaf84c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/fixture-module-boundary-final.log",
+      "bytes": 674,
+      "sha256": "e257bd13a64dba0cbdaec680cc87f999052283ad6fa1687a324a537436d392b1"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/fixture-module-boundary-final.log",
+      "bytes": 674,
+      "sha256": "e257bd13a64dba0cbdaec680cc87f999052283ad6fa1687a324a537436d392b1"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/fixture-module-boundary-final.log",
+      "bytes": 674,
+      "sha256": "e257bd13a64dba0cbdaec680cc87f999052283ad6fa1687a324a537436d392b1"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/fixture-module-boundary-final.log",
+      "bytes": 674,
+      "sha256": "e257bd13a64dba0cbdaec680cc87f999052283ad6fa1687a324a537436d392b1"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/focused-rust-tests-final.log",
+      "bytes": 72373,
+      "sha256": "e3d878ed0a00d06752c97dc72d6b74721150bb4e4f56afa5226f90885cc0aa72"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/focused-rust-tests-final.log",
+      "bytes": 72373,
+      "sha256": "e3d878ed0a00d06752c97dc72d6b74721150bb4e4f56afa5226f90885cc0aa72"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/focused-rust-tests-final.log",
+      "bytes": 72373,
+      "sha256": "e3d878ed0a00d06752c97dc72d6b74721150bb4e4f56afa5226f90885cc0aa72"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/focused-rust-tests-final.log",
+      "bytes": 72373,
+      "sha256": "e3d878ed0a00d06752c97dc72d6b74721150bb4e4f56afa5226f90885cc0aa72"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/implementation-runtime-review-20.md",
+      "bytes": 6621,
+      "sha256": "152bce0dc0fe0aeeda110600ba941d1d49406a49088ff7586d1d0e1d3f1976cb"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/implementation-runtime-review-20.md",
+      "bytes": 6621,
+      "sha256": "152bce0dc0fe0aeeda110600ba941d1d49406a49088ff7586d1d0e1d3f1976cb"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/implementation-runtime-review-20.md",
+      "bytes": 6621,
+      "sha256": "152bce0dc0fe0aeeda110600ba941d1d49406a49088ff7586d1d0e1d3f1976cb"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/implementation-runtime-review-20.md",
+      "bytes": 6621,
+      "sha256": "152bce0dc0fe0aeeda110600ba941d1d49406a49088ff7586d1d0e1d3f1976cb"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ios-build-final.log",
+      "bytes": 60949,
+      "sha256": "c72c0c0dd242fcb185941a42a814e2d6d2757c4e6c1f247d30c7303bba14f25c"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ios-build-final.log",
+      "bytes": 60949,
+      "sha256": "c72c0c0dd242fcb185941a42a814e2d6d2757c4e6c1f247d30c7303bba14f25c"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ios-build-final.log",
+      "bytes": 60949,
+      "sha256": "c72c0c0dd242fcb185941a42a814e2d6d2757c4e6c1f247d30c7303bba14f25c"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ios-build-final.log",
+      "bytes": 60949,
+      "sha256": "c72c0c0dd242fcb185941a42a814e2d6d2757c4e6c1f247d30c7303bba14f25c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ios-capture-final.log",
+      "bytes": 25809,
+      "sha256": "43739b87185ed47585c1a945c14efc3ee68ee037df03d95d37160384c41d7b12"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ios-capture-final.log",
+      "bytes": 25809,
+      "sha256": "43739b87185ed47585c1a945c14efc3ee68ee037df03d95d37160384c41d7b12"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ios-capture-final.log",
+      "bytes": 25809,
+      "sha256": "43739b87185ed47585c1a945c14efc3ee68ee037df03d95d37160384c41d7b12"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/ios-capture-final.log",
+      "bytes": 25809,
+      "sha256": "43739b87185ed47585c1a945c14efc3ee68ee037df03d95d37160384c41d7b12"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/pr-diff-review-30.md",
+      "bytes": 7573,
+      "sha256": "64d3ae227dc6fb9ad8ad87e5744b08d558afd1e5f236ec148402e5ab6bb28013"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/pr-diff-review-30.md",
+      "bytes": 7573,
+      "sha256": "64d3ae227dc6fb9ad8ad87e5744b08d558afd1e5f236ec148402e5ab6bb28013"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/pr-diff-review-30.md",
+      "bytes": 7573,
+      "sha256": "64d3ae227dc6fb9ad8ad87e5744b08d558afd1e5f236ec148402e5ab6bb28013"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/pr-diff-review-30.md",
+      "bytes": 7573,
+      "sha256": "64d3ae227dc6fb9ad8ad87e5744b08d558afd1e5f236ec148402e5ab6bb28013"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/screenshot-manifest.json",
+      "bytes": 8504,
+      "sha256": "7fd41e8aa34d5f1819235d4f67b655365bfd49eb73dc074cde78ff0a212493b1"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/screenshot-manifest.json",
+      "bytes": 8504,
+      "sha256": "7fd41e8aa34d5f1819235d4f67b655365bfd49eb73dc074cde78ff0a212493b1"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/screenshot-manifest.json",
+      "bytes": 8504,
+      "sha256": "7fd41e8aa34d5f1819235d4f67b655365bfd49eb73dc074cde78ff0a212493b1"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/screenshot-manifest.json",
+      "bytes": 8504,
+      "sha256": "7fd41e8aa34d5f1819235d4f67b655365bfd49eb73dc074cde78ff0a212493b1"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/source-files-manifest.json",
+      "bytes": 5465,
+      "sha256": "8e290ab2d9b1c7289214b2f8149f34fe061b052504d2fb1315485df0b4edbce1"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/source-files-manifest.json",
+      "bytes": 5465,
+      "sha256": "8e290ab2d9b1c7289214b2f8149f34fe061b052504d2fb1315485df0b4edbce1"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/source-files-manifest.json",
+      "bytes": 5465,
+      "sha256": "8e290ab2d9b1c7289214b2f8149f34fe061b052504d2fb1315485df0b4edbce1"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/source-files-manifest.json",
+      "bytes": 5465,
+      "sha256": "8e290ab2d9b1c7289214b2f8149f34fe061b052504d2fb1315485df0b4edbce1"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/workspace-clippy-final.log",
+      "bytes": 941,
+      "sha256": "a918711ba2cbf6460a4da5dc9a1d23b31ffe0ea542f0673418d2e8f6706923ce"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/workspace-clippy-final.log",
+      "bytes": 941,
+      "sha256": "a918711ba2cbf6460a4da5dc9a1d23b31ffe0ea542f0673418d2e8f6706923ce"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/workspace-clippy-final.log",
+      "bytes": 941,
+      "sha256": "a918711ba2cbf6460a4da5dc9a1d23b31ffe0ea542f0673418d2e8f6706923ce"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/workspace-clippy-final.log",
+      "bytes": 941,
+      "sha256": "a918711ba2cbf6460a4da5dc9a1d23b31ffe0ea542f0673418d2e8f6706923ce"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "bytes": 263320,
+      "sha256": "f99f0a0d58c7e9da107dafedb789e3a8d24b3fe67dacaa940b454b4ebb387b0a"
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 263320,
+      "sha256": "f99f0a0d58c7e9da107dafedb789e3a8d24b3fe67dacaa940b454b4ebb387b0a"
+    },
+    {
+      "path": "public/roadmap.html",
+      "bytes": 263320,
+      "sha256": "f99f0a0d58c7e9da107dafedb789e3a8d24b3fe67dacaa940b454b4ebb387b0a"
+    }
+  ],
+  "ignoredUntrackedWorkspaceEvidence": true,
+  "noDeletes": true
+}
