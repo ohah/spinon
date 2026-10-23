@@ -33,6 +33,6 @@
 | 27 | 파일 복사 중 부분 응답 또는 다른 listener로 쓰는가? | 같은 listener PID를 재확인하고 임시 파일 후 rename, 복사 hash 확인을 쓴다. 통과. |
 | 28 | 12개 원격 route 확인을 전체 사이트 검증으로 확대하는가? | 보고서와 README가 HTTP 200·hash 확인을 지정된 12개 핵심 route로 한정한다. 통과. |
 | 29 | Agent Browser가 stale page나 예전 집계를 보여주는가? | live roadmap/status route에서 #573 SHA, 72/213, C11.4/C13 unchecked를 확인했다. 통과. |
-| 30 | simulator image 링크가 깨졌거나 플랫폼 캡처를 혼동하는가? | Tailnet 원본에서 Android `complete=true`, 1080×2400 및 iOS `complete=true`, 1206×2622를 확인했다. 통과. |
+| 30 | simulator image 링크가 깨졌거나 PR 본문에서 플랫폼 캡처를 혼동하는가? | Tailnet 원본과 PR #574 본문에서 세 이미지가 모두 `complete=true`로 표시됐다. roadmap 1280×633, Android 1080×2400, iOS 1206×2622다. 통과. |
 
 30개 관점에서 수정이 필요한 불일치는 발견하지 않았다. 다만 원격 전체 1,078개 route, WPT, pixel equality, 실기기 및 hardware GPU는 검증하지 않았다.

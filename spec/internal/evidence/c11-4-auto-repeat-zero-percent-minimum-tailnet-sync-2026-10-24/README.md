@@ -20,6 +20,7 @@
 - roadmap 화면에서 C11.4 0% 제한 slice, PR #573 merge SHA, `72/213`, C11.4 미완료 상태를 확인했다. 동적 task board에는 213개 checkbox 중 72개가 checked였고 C11.4와 C13은 unchecked였다.
 - status 화면에서 PR #573, merge SHA, `72/213`, C11.4 및 C13 미완료 항목을 확인했다.
 - roadmap 화면은 1280×633 viewport로 저장했다. Android AVD 화면은 `complete=true`, 1080×2400이고 iOS Simulator 화면은 `complete=true`, 1206×2622였다.
+- PR [#574](https://github.com/ohah/spinon/pull/574) 본문에 Tailnet roadmap과 Android/iOS Simulator 화면을 올렸다. Agent Browser에서 세 이미지 모두 `complete=true`와 예상 크기로 표시되는 것을 확인했다.
 - Agent Browser 종료 결과는 [종료 보고서](./browser-close-pass02.json)에 기록한다.
 
 ![Tailnet roadmap의 C11.4 상태](./tailnet-roadmap-agent-browser-pass02.png)
