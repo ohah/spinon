@@ -1032,17 +1032,29 @@ fn auto_repeat_track_has_fixed_minimum(track: &ComputedCssGridTrackSize) -> bool
         ComputedCssGridTrackSize::LengthPx(value) => value.is_finite() && *value >= 0.0,
         ComputedCssGridTrackSize::MinMax {
             min: ComputedCssGridTrackBreadth::LengthPx(value),
-            max: ComputedCssGridTrackBreadth::LengthPx(_) | ComputedCssGridTrackBreadth::Fraction(_),
-        } => value.is_finite() && *value >= 0.0,
+            max,
+        } => value.is_finite() && *value >= 0.0 && auto_repeat_maximum_is_supported(max),
         ComputedCssGridTrackSize::MinMax {
             min: ComputedCssGridTrackBreadth::Percentage(value),
-            max: ComputedCssGridTrackBreadth::LengthPx(_) | ComputedCssGridTrackBreadth::Fraction(_),
-        } => value.is_finite() && *value > 0.0,
+            max,
+        } => value.is_finite() && *value > 0.0 && auto_repeat_maximum_is_supported(max),
         ComputedCssGridTrackSize::MinMax {
             min: ComputedCssGridTrackBreadth::Calc(value),
-            max: ComputedCssGridTrackBreadth::LengthPx(_) | ComputedCssGridTrackBreadth::Fraction(_),
-        } => auto_repeat_minimum_calc_is_supported(value),
+            max,
+        } => auto_repeat_minimum_calc_is_supported(value) && auto_repeat_maximum_is_supported(max),
         _ => false,
+    }
+}
+
+fn auto_repeat_maximum_is_supported(value: &ComputedCssGridTrackBreadth) -> bool {
+    match value {
+        ComputedCssGridTrackBreadth::LengthPx(value)
+        | ComputedCssGridTrackBreadth::Percentage(value)
+        | ComputedCssGridTrackBreadth::Fraction(value) => value.is_finite() && *value >= 0.0,
+        ComputedCssGridTrackBreadth::Calc(value) => auto_repeat_minimum_calc_is_supported(value),
+        ComputedCssGridTrackBreadth::Auto
+        | ComputedCssGridTrackBreadth::MinContent
+        | ComputedCssGridTrackBreadth::MaxContent => false,
     }
 }
 

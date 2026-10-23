@@ -1,0 +1,11 @@
+{
+  "archive": "target/release/libspinon_ffi.a",
+  "sizeBytes": 75137392,
+  "sha256": "4f2920449309c4cb521b044e1205c720b5d06456688e6892d990def04f7e9007",
+  "buildFeatures": [
+    "c04-runtime-gpu"
+  ],
+  "fixtureSymbolsFound": [],
+  "fixturePayloadMarkersFound": [],
+  "fixturePayloadAbsent": true
+}

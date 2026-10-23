@@ -157,6 +157,8 @@ fn placement_fixture(
 mod auto_placement;
 #[path = "runtime_grid_tests/auto_repeat_calc_minimum.rs"]
 mod auto_repeat_calc_minimum;
+#[path = "runtime_grid_tests/auto_repeat_percentage_maximum.rs"]
+mod auto_repeat_percentage_maximum;
 #[path = "runtime_grid_tests/hidden_context.rs"]
 mod hidden_context;
 #[path = "runtime_grid_tests/placement.rs"]

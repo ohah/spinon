@@ -1,0 +1,19 @@
+{
+  "archive": "target/release/libspinon_ffi.a",
+  "sizeBytes": 78284392,
+  "sha256": "b60c6af05b433b2447583e8f1c0b6f600edcc98d85183175adf01c5d94df42f0",
+  "buildFeatures": [
+    "c04-runtime-gpu-fixture-test",
+    "c11-grid-metal-surface-pixels-test"
+  ],
+  "fixtureSymbolsFound": [
+    "U __ZN10spinon_ffi11runtime_gpu8fixtures36c11_4_auto_repeat_percentage_maximum14runtime_source17hcc46d9ed45ee62e0E",
+    "000000000000221c T __ZN10spinon_ffi11runtime_gpu8fixtures36c11_4_auto_repeat_percentage_maximum14runtime_source17hcc46d9ed45ee62e0E",
+    "0000000000005040 T _spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture"
+  ],
+  "fixturePayloadMarkersFound": [
+    "both-calc-percent-max-fill-control",
+    "columns-percent-max-fill"
+  ],
+  "fixturePayloadPresent": true
+}

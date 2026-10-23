@@ -1,0 +1,46 @@
+{
+  "c114": {
+    "ariaLabel": "intrinsic track sizing 공식 미완료",
+    "checked": false,
+    "disabled": true,
+    "title": "intrinsic track sizing"
+  },
+  "c13": {
+    "ariaLabel": "overflow·scroll·클리핑 공식 미완료",
+    "checked": false,
+    "disabled": true,
+    "title": "overflow·scroll·클리핑"
+  },
+  "capturedAt": "2026-10-23T13:40:28.488Z",
+  "checkedCount": 72,
+  "completed": [
+    "완료",
+    "72",
+    "Vue·Svelte 호스트…",
+    "R07 · DONE",
+    "iOS 배포·OTA 정책 …",
+    "R09 · DONE",
+    "Taffy 적합성 실험",
+    "R10 · DONE",
+    "+69개 완료 항목",
+    "ARCHIVED · DETAIL BELOW"
+  ],
+  "displayedCount": 213,
+  "note": "2026-10-23 C13 overflow·scroll 상태 대조: C13은 미완료지만 현재 활성 작업은 아니며 진행 중 lane은 C11.4다. C13.1/2/3의 clip, scroll snapshot, gesture, fixture wheel은 제한된 slice다. C13.2 ink-only box-shadow overflow는 fail-closed 상태이고 public DOM scroll event/CSSOM은 없으며 OS-native wheel/trackpad은 부분 검증이다. C13.3 policy simulator 후속은 병합된 PR #185로 끝났으므로 낡은 “진행 중” 표시를 제거했다. C13 공식 상태.",
+  "progress": [
+    "진행 중",
+    "1/2",
+    "intrinsic trac…",
+    "C11.4 · ACTIVE"
+  ],
+  "statusResources": [
+    "https://api.github.com/repos/ohah/spinon/contents/spec/STATUS.md?ref=main&v=1792762827198"
+  ],
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "viewport": {
+    "devicePixelRatio": 1,
+    "height": 633,
+    "width": 1280
+  }
+}

@@ -1,0 +1,52 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.50s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 41 tests
+test grid::auto_track_sizing_tests::auto_repeat::auto_repeat_calc_implicit_track_rejects_missing_axis_binding ... ok
+test grid::auto_track_sizing_tests::auto_repeat::typed_auto_track_lists_remain_rejected_outside_track_sizing_profile ... ok
+test grid::auto_track_sizing_tests::auto_repeat::zero_secondary_line_fails_before_layout ... ok
+test grid::template_areas_tests::auto_repeat_template_areas_accept_empty_and_bounded_metadata ... ok
+test grid::auto_track_sizing_tests::auto_repeat::auto_repeat_percentage_calc_minimum_rejects_unbounded_or_indefinite_cases ... ok
+test grid::template_areas_tests::auto_repeat_template_areas_accept_two_auto_repeat_axes_and_area_extension ... ok
+test grid::tests::auto_repeat_line_metadata_above_budget_fails_before_taffy ... ok
+test grid::auto_track_sizing_tests::auto_repeat::numeric_negative_line_uses_expanded_auto_repeat_track_count ... ok
+test grid::auto_track_sizing_tests::auto_repeat::auto_repeat_calc_implicit_tracks_use_axis_math_bindings ... ok
+test grid::auto_track_sizing_tests::auto_repeat::auto_fit_keeps_repeat_count_and_collapses_empty_repeats_after_leading_placement ... ok
+test grid::auto_track_sizing_tests::auto_repeat::zero_px_auto_track_size_remains_zero_on_leading_implicit_tracks ... ok
+test grid::track_sizing_tests::auto_repeat_accepts_independent_repeats_on_both_axes ... ok
+test grid::auto_track_sizing_tests::auto_repeat::secondary_positive_line_uses_expanded_repeat_grid ... ok
+test grid::auto_track_sizing_tests::auto_repeat::auto_repeat_scalar_auto_track_sizes_cover_leading_implicit_tracks ... ok
+test grid::auto_track_sizing_tests::auto_repeat::auto_repeat_nested_calc_tracks_validate_axis_and_node_binding ... ok
+test grid::auto_track_sizing_tests::track_sizing_accepts_fixed_px_auto_track_lists_with_auto_repeat ... ok
+test grid::auto_track_sizing_tests::auto_repeat::definite_percentage_calc_auto_repeat_minimum_uses_its_axis_basis ... ok
+test grid::auto_track_sizing_tests::auto_repeat::secondary_reversed_and_equal_lines_follow_taffy_grid_placement ... ok
+test grid::track_sizing_tests::auto_repeat_rejects_an_invalid_first_axis_independently ... ok
+test grid::track_sizing_tests::auto_repeat_rejects_an_invalid_second_axis_independently ... ok
+test grid::auto_track_sizing_tests::auto_repeat::auto_repeat_leading_auto_track_lists_cycle_backwards_on_both_axes ... ok
+test grid::track_sizing_tests::auto_repeat_template_area_extends_the_explicit_grid_and_resolves_area_lines ... ok
+test grid::track_sizing_tests::auto_repeat_minimum_size_repeat_counts_match_axis_and_fill_mode_at_boundaries ... ok
+test grid::track_sizing_tests::positive_percentage_auto_repeat::finite_percentage_maximum_that_overflows_f32_resolution_fails_closed ... ok
+test grid::track_sizing_tests::positive_percentage_auto_repeat::auto_repeat_calc_maximum_rejects_unlisted_tree_shapes ... ok
+test grid::track_sizing_tests::positive_percentage_auto_repeat::percentage_auto_repeat_maximum_requires_a_definite_positive_content_axis ... ok
+test grid::auto_track_sizing_tests::auto_repeat::auto_repeat_implicit_lists_convert_supported_track_sizing_functions ... ok
+test grid::auto_track_sizing_tests::auto_repeat::area_expansion::area_expansion_tracks_keep_auto_fit_collapse_and_item_geometry ... ok
+test grid::track_sizing_tests::two_axis_auto_repeat_template_area_extends_both_axes_and_resolves_area_lines ... ok
+test grid::track_sizing_tests::positive_percentage_auto_repeat::percentage_and_calc_maximum_use_border_box_content_size_after_insets ... ok
+test grid::track_sizing_tests::positive_percentage_auto_repeat::percentage_minimum_with_fixed_maximum_keeps_auto_repeat_count ... ok
+test grid::track_sizing_tests::positive_percentage_auto_repeat::percentage_auto_repeat_rejects_zero_indefinite_and_clamped_axes_before_taffy ... ok
+test grid::track_sizing_tests::auto_repeat_named_lines_resolve_after_repeat_expansion ... ok
+test grid::track_sizing_tests::positive_percentage_auto_repeat::definite_percentage_maximum_uses_the_content_axis_and_gap_for_auto_repeat ... ok
+test grid::track_sizing_tests::positive_percentage_auto_repeat::percentage_minimum_overflow_matches_fixed_control_past_outer_border ... ok
+test grid_chrome_oracle_tests::chrome155_auto_repeat_track_oracle_cases_match_traces_and_frames ... ok
+test grid::track_sizing_tests::auto_repeat_named_placement_uses_implicit_lines_when_name_is_missing_or_short ... ok
+test grid::track_sizing_tests::positive_percentage_auto_repeat::length_percentage_calc_maximum_is_typed_to_its_axis_and_keeps_repeat_count ... ok
+test grid::template_areas_tests::auto_repeat_template_areas_reject_invalid_shape_names_bounds_and_metadata ... ok
+test grid::track_sizing_tests::positive_percentage_auto_repeat::percentage_maxima_below_the_minimum_and_zero_are_floored_to_the_minimum ... ok
+test grid::track_sizing_tests::positive_percentage_auto_repeat::positive_percentage_auto_repeat_matches_fixed_controls_on_both_axes ... ok
+
+test result: ok. 41 passed; 0 failed; 0 ignored; 0 measured; 213 filtered out; finished in 0.01s
+
