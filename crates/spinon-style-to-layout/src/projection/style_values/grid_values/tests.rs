@@ -759,3 +759,93 @@ fn track_sizing_profile_keeps_single_axis_auto_repeat_projection() {
         spinon_layout::GridPlacementMode::TrackSizing
     );
 }
+
+#[test]
+fn auto_fit_projection_preserves_area_dimensions_beyond_both_repeat_axes() {
+    let node = NodeId::new(11_122).unwrap();
+    let auto_fit = || {
+        Some(ComputedCssGridAutoRepeat {
+            mode: ComputedCssGridAutoRepeatMode::AutoFit,
+            start: 0,
+            end: 1,
+            line_names: vec![Vec::new(), Vec::new()],
+        })
+    };
+    let grid = ComputedCssGridLayout {
+        columns: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        rows: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        columns_auto_repeat: auto_fit(),
+        rows_auto_repeat: auto_fit(),
+        columns_line_names: vec![Vec::new(), Vec::new()],
+        rows_line_names: vec![Vec::new(), Vec::new()],
+        template_areas: Some(ComputedCssGridTemplateAreas {
+            rows: 3,
+            columns: 3,
+            areas: vec![ComputedCssGridArea {
+                name: "hero".to_owned(),
+                row_start: 2,
+                row_end: 3,
+                column_start: 2,
+                column_end: 3,
+            }],
+        }),
+        auto_flow: ComputedCssGridAutoFlow::Row,
+        auto_rows: ComputedCssGridAutoRows::LengthPx(12.0),
+        auto_columns: spinon_style::ComputedCssGridAutoColumns::LengthPx(16.0),
+    };
+
+    let projected = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+    )
+    .unwrap();
+
+    assert_eq!(
+        projected
+            .columns_auto_repeat
+            .as_ref()
+            .map(|repeat| repeat.mode),
+        Some(spinon_layout::GridAutoRepeatMode::AutoFit)
+    );
+    assert_eq!(
+        projected
+            .rows_auto_repeat
+            .as_ref()
+            .map(|repeat| repeat.mode),
+        Some(spinon_layout::GridAutoRepeatMode::AutoFit)
+    );
+    assert_eq!(
+        projected
+            .template_areas
+            .as_ref()
+            .map(|areas| (areas.rows, areas.columns)),
+        Some((3, 3))
+    );
+    assert_eq!(
+        projected.template_areas,
+        Some(spinon_layout::GridTemplateAreasInput {
+            rows: 3,
+            columns: 3,
+            areas: vec![spinon_layout::GridTemplateAreaInput {
+                name: "hero".to_owned(),
+                row_start: 2,
+                row_end: 3,
+                column_start: 2,
+                column_end: 3,
+            }],
+        })
+    );
+    assert_eq!(
+        projected.placement_mode,
+        spinon_layout::GridPlacementMode::TrackSizing
+    );
+    assert_eq!(
+        projected.auto_columns,
+        spinon_layout::GridAutoColumns::LengthPx(16.0)
+    );
+    assert_eq!(
+        projected.auto_rows,
+        spinon_layout::GridAutoRows::LengthPx(12.0)
+    );
+}

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "repository": "ohah/spinon",
+  "branch": "feat/c11-4-auto-fit-area-expansion-runtime-20261023",
+  "baseRevision": "1a17365d5d3ceaf72c499ecbcf9bec362c50b293",
+  "files": [
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/template_area_auto_repeat_scenes.json",
+      "bytes": 29984,
+      "sha256": "60e932052dce0df6ce54f4706dcb49035d9e21843de363337a3dcfc491dbbe4a"
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_template_area_auto_repeat.rs",
+      "bytes": 7124,
+      "sha256": "ad54226747cfa5a5c250960ea4bb6f4bd86e1b55d011da07a8c5d991b3ae2394"
+    },
+    {
+      "path": "crates/spinon-layout/src/grid_auto_track_sizing_tests/auto_repeat.rs",
+      "bytes": 17618,
+      "sha256": "0b016b0caeaae44701b05a3fe3ada6ec9141a794ad5b4306c114816bc477c575"
+    },
+    {
+      "path": "crates/spinon-layout/src/grid_auto_track_sizing_tests/auto_repeat/area_expansion.rs",
+      "bytes": 7818,
+      "sha256": "1c70fdf589ebe551276c8da4b80587d9facfab0c937dc4c2607076d11dacec03"
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/projection/style_values/grid_values/tests.rs",
+      "bytes": 28790,
+      "sha256": "08f5e50c7cc365a65f21ebdaa30eaafdd2dbea9322e5b3bac519d4384f63266d"
+    },
+    {
+      "path": "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "bytes": 699673,
+      "sha256": "d318d347ad634c752f5840030ed4f6233da74bd6a527ed8397d33f182112861d"
+    },
+    {
+      "path": "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "bytes": 597446,
+      "sha256": "f940bf0eebd363e3c68e69fb841fe05ecda7f8d597543bd52695916bcae3484f"
+    },
+    {
+      "path": "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "bytes": 282675,
+      "sha256": "a5f9a4f2f783034445cade3aeb13dd036ea227216dfefa7b6bead3bfdf45b854"
+    },
+    {
+      "path": "tools/css-reference/fixture-module-boundary.test.mjs",
+      "bytes": 45828,
+      "sha256": "3b6d8747687213ed98faccd5e0a0d860b8e3685aa7457a3f14f03cdbdd3b7e8d"
+    }
+  ]
+}

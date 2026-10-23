@@ -3321,7 +3321,7 @@ async function templateAreaRepeatScenes() {
     readFile(androidPath, 'utf8'),
     readFile(iosPath, 'utf8'),
   ]);
-  assert.equal(fixtures.length, 22, 'template-area auto-repeat fixture는 22 scene이어야 합니다.');
+  assert.equal(fixtures.length, 29, 'template-area auto-repeat fixture는 29 scene이어야 합니다.');
   const allowlist = (source, expression, label) => {
     const match = source.match(expression);
     assert.ok(match, `${label} scene allowlist를 읽을 수 없습니다.`);
@@ -3355,9 +3355,11 @@ async function templateAreaRepeatScenes() {
         Number.parseInt(color.slice(5, 7), 16),
         255,
       ];
+      const expandedSpan = id.endsWith('-fit-fit-area-span');
       const pixelSamples = [{
         id: `${id}-root-interior`, nodeId: rootNodeId,
-        xCssPx: rootWidth - 2, yCssPx: rootHeight - 2, rgba: rgba(rootColor),
+        xCssPx: rootWidth - 2, yCssPx: rootHeight - 2,
+        rgba: expandedSpan ? [229, 72, 77, 255] : rgba(rootColor),
       }];
       if (id.endsWith('-area-added-both')) {
         pixelSamples.push(
@@ -3372,6 +3374,54 @@ async function templateAreaRepeatScenes() {
           },
           {
             id: `${id}-after-root-bottom`, nodeId: rootNodeId, xCssPx: 47, yCssPx: 49,
+            rgba: [0, 0, 0, 255],
+          },
+        );
+      } else if (expandedSpan) {
+        pixelSamples.push(
+          {
+            id: `${id}-hero-overflow-outside-root`,
+            nodeId: `c114-${id}-hero`, xCssPx: 60, yCssPx: 50,
+            rgba: [229, 72, 77, 255],
+          },
+          {
+            id: `${id}-after-root`, nodeId: rootNodeId, xCssPx: 64, yCssPx: 50,
+            rgba: [0, 0, 0, 255],
+          },
+          {
+            id: `${id}-after-root-bottom`, nodeId: rootNodeId, xCssPx: 50, yCssPx: 60,
+            rgba: [0, 0, 0, 255],
+          },
+        );
+      } else if (id.endsWith('-fit-fill-area-item')) {
+        pixelSamples.push(
+          {
+            id: `${id}-hero-overflow-outside-root`,
+            nodeId: `c114-${id}-hero`, xCssPx: 8, yCssPx: 56,
+            rgba: [229, 72, 77, 255],
+          },
+          {
+            id: `${id}-after-root`, nodeId: rootNodeId, xCssPx: 8, yCssPx: 60,
+            rgba: [0, 0, 0, 255],
+          },
+          {
+            id: `${id}-after-root-bottom`, nodeId: rootNodeId, xCssPx: 50, yCssPx: 56,
+            rgba: [0, 0, 0, 255],
+          },
+        );
+      } else if (id.endsWith('-fill-fit-area-item')) {
+        pixelSamples.push(
+          {
+            id: `${id}-hero-overflow-outside-root`,
+            nodeId: `c114-${id}-hero`, xCssPx: 56, yCssPx: 8,
+            rgba: [229, 72, 77, 255],
+          },
+          {
+            id: `${id}-after-root`, nodeId: rootNodeId, xCssPx: 64, yCssPx: 8,
+            rgba: [0, 0, 0, 255],
+          },
+          {
+            id: `${id}-after-root-bottom`, nodeId: rootNodeId, xCssPx: 56, yCssPx: 50,
             rgba: [0, 0, 0, 255],
           },
         );
@@ -3471,7 +3521,7 @@ async function templateAreaRepeatScenes() {
 
 scenes.push(...await templateAreaRepeatScenes());
 scenes.push(...await autoRepeatNamedLineScenes());
-assert.equal(scenes.length, 329, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 336, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -5763,7 +5813,12 @@ function pixelCaptureArguments(scene, runID, platform) {
 }
 
 if (process.argv.includes('--list-scenes')) {
-  console.log(JSON.stringify({ sceneCount: scenes.length, sceneIDs: scenes.map(({ id }) => id) }, null, 2));
+  console.log(JSON.stringify({
+    sceneCount: scenes.length,
+    sceneIDs: scenes.map(({ id }) => id),
+    selectedSceneCount: runScenes.length,
+    selectedSceneIDs: runScenes.map(({ id }) => id),
+  }, null, 2));
   process.exit(0);
 }
 

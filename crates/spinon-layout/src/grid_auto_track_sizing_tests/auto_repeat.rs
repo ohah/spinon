@@ -231,6 +231,9 @@ fn zero_px_auto_track_size_remains_zero_on_leading_implicit_tracks() {
     );
 }
 
+#[path = "auto_repeat/area_expansion.rs"]
+mod area_expansion;
+
 #[test]
 fn auto_fit_keeps_repeat_count_and_collapses_empty_repeats_after_leading_placement() {
     let input = two_axis_auto_repeat_grid(

@@ -207,6 +207,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "template-area-repeat-two-axis-fit-fit-empty",
             "template-area-repeat-two-axis-fit-fit-span",
             "template-area-repeat-two-axis-area-longhand",
+            "template-area-repeat-two-axis-fit-fit-area-empty",
+            "template-area-repeat-two-axis-fit-fit-area-item",
+            "template-area-repeat-two-axis-fit-fit-area-span",
+            "template-area-repeat-two-axis-fit-fill-area-item",
+            "template-area-repeat-two-axis-fill-fit-area-item",
+            "template-area-repeat-two-axis-fit-fit-area-column",
+            "template-area-repeat-two-axis-fit-fit-area-row",
             "auto-repeat-named-implicit-positive-missing",
             "auto-repeat-named-implicit-positive-insufficient",
             "auto-repeat-named-implicit-negative-missing",
@@ -2748,6 +2755,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "template-area-repeat-two-axis-fit-fit-span":
             case "template-area-repeat-two-axis-area-longhand":
                 return "width=100,height=76";
+            case "template-area-repeat-two-axis-fit-fit-area-empty":
+            case "template-area-repeat-two-axis-fit-fit-area-item":
+            case "template-area-repeat-two-axis-fit-fit-area-span":
+            case "template-area-repeat-two-axis-fit-fill-area-item":
+            case "template-area-repeat-two-axis-fill-fit-area-item":
+            case "template-area-repeat-two-axis-fit-fit-area-column":
+            case "template-area-repeat-two-axis-fit-fit-area-row":
+                return "width=52,height=52";
             case "template-area-repeat-two-axis-area-added-columns":
                 return "width=40,height=76";
             case "template-area-repeat-two-axis-area-added-rows":
@@ -2792,8 +2807,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "template-area-repeat-two-axis-fit-fill":
             case "template-area-repeat-two-axis-fit-fit-span":
             case "template-area-repeat-two-axis-area-longhand":
+            case "template-area-repeat-two-axis-fit-fit-area-item":
+            case "template-area-repeat-two-axis-fit-fit-area-span":
+            case "template-area-repeat-two-axis-fit-fill-area-item":
+            case "template-area-repeat-two-axis-fill-fit-area-item":
+            case "template-area-repeat-two-axis-fit-fit-area-column":
+            case "template-area-repeat-two-axis-fit-fit-area-row":
                 return new String[] {"hero"};
             case "template-area-repeat-two-axis-fit-fit-empty":
+            case "template-area-repeat-two-axis-fit-fit-area-empty":
                 return new String[0];
             case "template-area-repeat-columns-area-shorter":
             case "template-area-repeat-rows-area-shorter":
@@ -2832,11 +2854,24 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "template-area-repeat-two-axis-fit-fill":
                 return new int[][] {{0, 24, 8, 8}};
             case "template-area-repeat-two-axis-fit-fit-empty":
+            case "template-area-repeat-two-axis-fit-fit-area-empty":
                 return new int[0][0];
             case "template-area-repeat-two-axis-fit-fit-span":
                 return new int[][] {{0, 0, 44, 44}};
             case "template-area-repeat-two-axis-area-longhand":
                 return new int[][] {{0, 24, 8, 8}};
+            case "template-area-repeat-two-axis-fit-fit-area-item":
+                return new int[][] {{0, 0, 16, 12}};
+            case "template-area-repeat-two-axis-fit-fit-area-span":
+                return new int[][] {{0, 0, 64, 60}};
+            case "template-area-repeat-two-axis-fit-fill-area-item":
+                return new int[][] {{0, 48, 16, 12}};
+            case "template-area-repeat-two-axis-fill-fit-area-item":
+                return new int[][] {{48, 0, 16, 12}};
+            case "template-area-repeat-two-axis-fit-fit-area-column":
+                return new int[][] {{0, 0, 16, 20}};
+            case "template-area-repeat-two-axis-fit-fit-area-row":
+                return new int[][] {{0, 0, 20, 12}};
             case "template-area-repeat-columns-fill":
             case "template-area-repeat-columns-area-larger":
                 return new int[][] {{0, 0, 20, 20}, {24, 0, 68, 20}, {96, 0, 20, 20}};
@@ -2896,6 +2931,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "template-area-repeat-two-axis-fit-fit-span":
             case "template-area-repeat-two-axis-area-longhand":
                 return new int[] {100, 76};
+            case "template-area-repeat-two-axis-fit-fit-area-empty":
+            case "template-area-repeat-two-axis-fit-fit-area-item":
+            case "template-area-repeat-two-axis-fit-fit-area-span":
+            case "template-area-repeat-two-axis-fit-fill-area-item":
+            case "template-area-repeat-two-axis-fill-fit-area-item":
+            case "template-area-repeat-two-axis-fit-fit-area-column":
+            case "template-area-repeat-two-axis-fit-fit-area-row":
+                return new int[] {52, 52};
             case "template-area-repeat-two-axis-area-added-columns":
                 return new int[] {40, 76};
             case "template-area-repeat-two-axis-area-added-rows":
@@ -2928,9 +2971,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         int[] root = c114TemplateAreaRepeatRootSize(sceneId);
         int[][] items = c114TemplateAreaRepeatItemRects(sceneId);
         String[] names = c114TemplateAreaRepeatItemNames(sceneId);
+        boolean overflowSamples = sceneId.endsWith("-area-added-both")
+                || sceneId.endsWith("-fit-fit-area-span")
+                || sceneId.endsWith("-fit-fill-area-item")
+                || sceneId.endsWith("-fill-fit-area-item");
         if (root == null || items == null || names == null || items.length != names.length
-                || samples.size() != (sceneId.endsWith("-area-added-both")
-                        ? 4 : items.length + 2)) return false;
+                || samples.size() != (overflowSamples ? 4 : items.length + 2)) return false;
         String rootId = "c114-" + sceneId + "-grid";
         if (sceneId.startsWith("template-area-repeat-two-axis-")) {
             List<String> ids = new ArrayList<>();
@@ -2949,6 +2995,36 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ids.add(sceneId + "-after-root-bottom");
                 nodes.add(rootId);
                 points.add(new int[] {47, 49});
+            } else if (sceneId.endsWith("-fit-fit-area-span")) {
+                ids.add(sceneId + "-hero-overflow-outside-root");
+                nodes.add("c114-" + sceneId + "-hero");
+                points.add(new int[] {60, 50});
+                ids.add(sceneId + "-after-root");
+                nodes.add(rootId);
+                points.add(new int[] {64, 50});
+                ids.add(sceneId + "-after-root-bottom");
+                nodes.add(rootId);
+                points.add(new int[] {50, 60});
+            } else if (sceneId.endsWith("-fit-fill-area-item")) {
+                ids.add(sceneId + "-hero-overflow-outside-root");
+                nodes.add("c114-" + sceneId + "-hero");
+                points.add(new int[] {8, 56});
+                ids.add(sceneId + "-after-root");
+                nodes.add(rootId);
+                points.add(new int[] {8, 60});
+                ids.add(sceneId + "-after-root-bottom");
+                nodes.add(rootId);
+                points.add(new int[] {50, 56});
+            } else if (sceneId.endsWith("-fill-fit-area-item")) {
+                ids.add(sceneId + "-hero-overflow-outside-root");
+                nodes.add("c114-" + sceneId + "-hero");
+                points.add(new int[] {56, 8});
+                ids.add(sceneId + "-after-root");
+                nodes.add(rootId);
+                points.add(new int[] {64, 8});
+                ids.add(sceneId + "-after-root-bottom");
+                nodes.add(rootId);
+                points.add(new int[] {56, 50});
             } else {
                 int furthestX = root[0];
                 for (int index = 0; index < items.length; index++) {
@@ -9984,6 +10060,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int[] c114GridExpectedRgb(String sampleId) {
         if (sampleId.startsWith("template-area-repeat-")) {
+            if (sampleId.equals(
+                    "template-area-repeat-two-axis-fit-fit-area-span-root-interior")) {
+                return new int[] {229, 72, 77};
+            }
             if (sampleId.startsWith("template-area-repeat-two-axis-")
                     && sampleId.endsWith("-root-interior")) {
                 return new int[] {229, 231, 235};
