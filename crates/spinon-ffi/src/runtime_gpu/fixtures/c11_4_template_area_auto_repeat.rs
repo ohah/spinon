@@ -69,7 +69,7 @@ mod tests {
             .iter()
             .map(|scene| scene["id"].as_str().unwrap())
             .collect::<BTreeSet<_>>();
-        const TWO_AXIS_SCENES: [&str; 9] = [
+        const TWO_AXIS_SCENES: [&str; 16] = [
             "template-area-repeat-two-axis-area-short",
             "template-area-repeat-two-axis-area-added-columns",
             "template-area-repeat-two-axis-area-added-rows",
@@ -79,8 +79,15 @@ mod tests {
             "template-area-repeat-two-axis-fit-fit-empty",
             "template-area-repeat-two-axis-fit-fit-span",
             "template-area-repeat-two-axis-area-longhand",
+            "template-area-repeat-two-axis-fit-fit-area-empty",
+            "template-area-repeat-two-axis-fit-fit-area-item",
+            "template-area-repeat-two-axis-fit-fit-area-span",
+            "template-area-repeat-two-axis-fit-fill-area-item",
+            "template-area-repeat-two-axis-fill-fit-area-item",
+            "template-area-repeat-two-axis-fit-fit-area-column",
+            "template-area-repeat-two-axis-fit-fit-area-row",
         ];
-        assert_eq!(scenes.len(), 22);
+        assert_eq!(scenes.len(), 29);
         assert_eq!(ids.len(), scenes.len());
         for scene_id in TWO_AXIS_SCENES {
             assert!(ids.contains(scene_id), "missing {scene_id}");
@@ -93,12 +100,10 @@ mod tests {
             let expected_items = expected["items"].as_array().unwrap();
             assert_eq!(items.len(), expected_items.len(), "{scene_id}");
             if scene_id.starts_with("template-area-repeat-two-axis-") {
-                let expected_item_count =
-                    if scene_id == "template-area-repeat-two-axis-fit-fit-empty" {
-                        0
-                    } else {
-                        1
-                    };
+                let expected_item_count = usize::from(
+                    scene_id != "template-area-repeat-two-axis-fit-fit-empty"
+                        && scene_id != "template-area-repeat-two-axis-fit-fit-area-empty",
+                );
                 assert_eq!(items.len(), expected_item_count, "{scene_id}");
                 let tracks = &expected["tracks"];
                 assert!(tracks["columns"].as_array().is_some(), "{scene_id} columns");

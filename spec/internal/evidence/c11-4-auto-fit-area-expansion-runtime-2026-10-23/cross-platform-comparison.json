@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "sceneCount": 41,
+  "sceneIDs": [
+    "columns-fill-control",
+    "rows-fill-control",
+    "both-fill-square",
+    "both-fill-asymmetric",
+    "both-fit-empty",
+    "both-fit-single",
+    "both-fit-span-two",
+    "both-fit-second-repeat",
+    "columns-fit-rows-fill-empty",
+    "columns-fill-rows-fit-empty",
+    "columns-fit-rows-fill-second-repeat",
+    "columns-fill-rows-fit-second-repeat",
+    "template-area-repeat-columns-fill",
+    "template-area-repeat-columns-fit",
+    "template-area-repeat-columns-area-shorter",
+    "template-area-repeat-columns-area-larger",
+    "template-area-repeat-columns-line-collision",
+    "template-area-repeat-columns-fit-numeric",
+    "template-area-repeat-columns-fit-empty-area",
+    "template-area-repeat-rows-fill",
+    "template-area-repeat-rows-fit",
+    "template-area-repeat-rows-area-shorter",
+    "template-area-repeat-rows-area-larger",
+    "template-area-repeat-rows-fit-numeric",
+    "template-area-repeat-rows-fit-empty-area",
+    "template-area-repeat-two-axis-area-short",
+    "template-area-repeat-two-axis-area-added-columns",
+    "template-area-repeat-two-axis-area-added-rows",
+    "template-area-repeat-two-axis-area-added-both",
+    "template-area-repeat-two-axis-fill-fit",
+    "template-area-repeat-two-axis-fit-fill",
+    "template-area-repeat-two-axis-fit-fit-empty",
+    "template-area-repeat-two-axis-fit-fit-span",
+    "template-area-repeat-two-axis-area-longhand",
+    "template-area-repeat-two-axis-fit-fit-area-empty",
+    "template-area-repeat-two-axis-fit-fit-area-item",
+    "template-area-repeat-two-axis-fit-fit-area-span",
+    "template-area-repeat-two-axis-fit-fill-area-item",
+    "template-area-repeat-two-axis-fill-fit-area-item",
+    "template-area-repeat-two-axis-fit-fit-area-column",
+    "template-area-repeat-two-axis-fit-fit-area-row"
+  ],
+  "platforms": {
+    "android": {
+      "target": "android-avd",
+      "evidenceDirectory": "android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa",
+      "sceneCount": 41,
+      "observations": 41,
+      "drawPresentedCount": 41,
+      "pixelMatchedSceneCount": 29,
+      "exactPixelSamples": 116,
+      "simulator": {
+        "serial": "emulator-5558",
+        "target": "android-avd",
+        "qemu": "1",
+        "apiLevel": 37,
+        "abi": "arm64-v8a",
+        "model": "sdk_gphone64_arm64",
+        "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+        "apkSha256": "220da16026052ea72b06be48e34337d7cf3f113d6043305dfbc82edbde7d0628",
+        "installedApkSha256": "220da16026052ea72b06be48e34337d7cf3f113d6043305dfbc82edbde7d0628",
+        "sourceRevision": {
+          "commit": "1a17365d5d3ceaf72c499ecbcf9bec362c50b293",
+          "tree": "fbf11df2106facf0d7079088df7fbc3cc8bde7df",
+          "trackedDiffSha256": "76518381d97379b5602d027c9121d09f3a7f53ed6a6bfb2741c7b508a055c2c8",
+          "trackedDirtyPaths": [
+            "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/template_area_auto_repeat_scenes.json",
+            "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_template_area_auto_repeat.rs",
+            "crates/spinon-layout/src/grid_auto_track_sizing_tests/auto_repeat.rs",
+            "crates/spinon-style-to-layout/src/projection/style_values/grid_values/tests.rs",
+            "plan/c11-4-auto-fit-area-expansion.md",
+            "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+            "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+            "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+            "tools/css-reference/fixture-module-boundary.test.mjs"
+          ]
+        }
+      }
+    },
+    "ios": {
+      "target": "ios-simulator",
+      "evidenceDirectory": "ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81",
+      "sceneCount": 41,
+      "observations": 41,
+      "drawPresentedCount": 41,
+      "pixelMatchedSceneCount": 29,
+      "exactPixelSamples": 116,
+      "simulator": {
+        "target": "ios-simulator",
+        "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+        "name": "iPhone 17 Pro",
+        "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+        "appSha256": "77b5fbd57d50461a3d9a345b97baf24d61af3ce7d44cff93f49696e77c1b9900",
+        "sourceRevision": {
+          "commit": "1a17365d5d3ceaf72c499ecbcf9bec362c50b293",
+          "tree": "fbf11df2106facf0d7079088df7fbc3cc8bde7df",
+          "trackedDiffSha256": "76518381d97379b5602d027c9121d09f3a7f53ed6a6bfb2741c7b508a055c2c8",
+          "trackedDirtyPaths": [
+            "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/template_area_auto_repeat_scenes.json",
+            "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_template_area_auto_repeat.rs",
+            "crates/spinon-layout/src/grid_auto_track_sizing_tests/auto_repeat.rs",
+            "crates/spinon-style-to-layout/src/projection/style_values/grid_values/tests.rs",
+            "plan/c11-4-auto-fit-area-expansion.md",
+            "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+            "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+            "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+            "tools/css-reference/fixture-module-boundary.test.mjs"
+          ]
+        }
+      }
+    }
+  },
+  "crossPlatform": {
+    "frameMismatches": [],
+    "usedTrackMismatches": [],
+    "drawPresentedMismatches": [],
+    "frameMatchCount": 41,
+    "usedTrackMatchCount": 41,
+    "drawPresentedMatchCount": 41
+  }
+}

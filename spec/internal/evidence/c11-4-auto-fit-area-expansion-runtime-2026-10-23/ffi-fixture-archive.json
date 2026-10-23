@@ -1,0 +1,9 @@
+{
+  "featureSet": "c04-runtime-gpu-fixture-test",
+  "artifact": "target/release/libspinon_ffi.a",
+  "bytes": 78115832,
+  "sha256": "3361a7190f8ec54b35d2d627f60a874ce92545786f923a288837233349571717",
+  "sceneMarker": "present",
+  "fixtureModuleSymbol": "present",
+  "symbolTool": "Rust LLVM 22.1.2 llvm-nm"
+}

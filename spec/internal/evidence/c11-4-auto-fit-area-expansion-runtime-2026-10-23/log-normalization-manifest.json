@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "operation": "trailing spaces and tabs, plus redundant empty lines at EOF, normalized; all other file content preserved",
+  "files": [
+    {
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062223313Z-1ee1ae50/runtime-both-fill-square.log",
+      "originalBytes": 34244,
+      "originalSha256": "e7e754f13724f2dab8863f7970c8c7268fe7aa0c41ecc4fa33c79c4df6fb9aba",
+      "normalizedBytes": 34243,
+      "normalizedSha256": "66dda39107c7686f1bacc51f4e60015bcdde470c816efa1923e0f6fc9fdb8de3",
+      "removedTrailingHorizontalWhitespaceBytes": 1
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062223313Z-1ee1ae50/runtime-both-fit-second-repeat.log",
+      "originalBytes": 34480,
+      "originalSha256": "728d83f008db5cd974855d3ce1fa86fb89314029495c3ad22c88b33fa2452108",
+      "normalizedBytes": 34479,
+      "normalizedSha256": "e84e00f7268420e752d6c1799394c87360fdfa97952387cedd43d02e13d80c1a",
+      "removedTrailingHorizontalWhitespaceBytes": 1
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062223313Z-1ee1ae50/runtime-both-fit-span-two.log",
+      "originalBytes": 34142,
+      "originalSha256": "262f1bd8d2e859b924c5b0a4fd46d350c94642cbfab1fed85bbc54187298c096",
+      "normalizedBytes": 34141,
+      "normalizedSha256": "8dfbec5c4d9f5b1bbaae3070b3ae68d5fa597ef83ba1113efe4d0b7ef8c3e20c",
+      "removedTrailingHorizontalWhitespaceBytes": 1
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062223313Z-1ee1ae50/runtime-template-area-repeat-rows-area-larger.log",
+      "originalBytes": 21779,
+      "originalSha256": "b13fa297b953336fd4d20f598732d90cf80ab400e0865561ad3c3e1b59aec956",
+      "normalizedBytes": 21778,
+      "normalizedSha256": "f7daed3a4c7b406f20d08f67e324b9c6e8955d2150c14aab6c92faea7fc45e43",
+      "removedTrailingHorizontalWhitespaceBytes": 1
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062223313Z-1ee1ae50/runtime-template-area-repeat-rows-area-shorter.log",
+      "originalBytes": 22960,
+      "originalSha256": "b4fbc60b69c78342ccc9949eea612583bb61138c8f50b874ef1295891c7c06df",
+      "normalizedBytes": 22959,
+      "normalizedSha256": "6a4e38e72965d42bc42644d562252bf0d5de03d5156c93fd2f792171a651f680",
+      "removedTrailingHorizontalWhitespaceBytes": 1
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062223313Z-1ee1ae50/runtime-template-area-repeat-two-axis-area-short.log",
+      "originalBytes": 21283,
+      "originalSha256": "c6513c23538f5d99c6fce637376be48f38869a5f22a66eedd14f93e1c88f1ff1",
+      "normalizedBytes": 21282,
+      "normalizedSha256": "69a15abce9b7b37788abf95f4392c4f76f9d4f9057a4668888b326466c6c48bd",
+      "removedTrailingHorizontalWhitespaceBytes": 1
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062223313Z-1ee1ae50/runtime-template-area-repeat-two-axis-fill-fit.log",
+      "originalBytes": 20854,
+      "originalSha256": "9505be37caf31b0f4af998a4c3142880bcbcee90c493f549b0dfaf52a0323bfd",
+      "normalizedBytes": 20853,
+      "normalizedSha256": "ab7dfdd928c62357aa650f868a3f428730adbaa4105aee13adeae7529485f18c",
+      "removedTrailingHorizontalWhitespaceBytes": 1
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/runtime-both-fill-square.log",
+      "originalBytes": 34619,
+      "originalSha256": "653249ded80595286774deb4a1117b46e04893fb3180077acedb821b1a62729c",
+      "normalizedBytes": 34618,
+      "normalizedSha256": "1879fafa20a46e613e072ff8c9e6856d968c20366063fd22c979898071889d78",
+      "removedTrailingHorizontalWhitespaceBytes": 1
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/runtime-template-area-repeat-two-axis-fill-fit.log",
+      "originalBytes": 21233,
+      "originalSha256": "dfa95f48d31bc853767f6eba58002a28b32fa852d48845cb52a93e0c37474aab",
+      "normalizedBytes": 21232,
+      "normalizedSha256": "ecb266211bb499c7345c4edfb8d737abcff1fc7e53f9d53b0d983f0a9ffa35b0",
+      "removedTrailingHorizontalWhitespaceBytes": 1
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-build-after-empty-area-fix.log",
+      "originalBytes": 91787,
+      "originalSha256": "d9370cff6a7e06f69b123e5f496f558ced95c53eb08b7e3008737641a28dcb6c",
+      "normalizedBytes": 91775,
+      "normalizedSha256": "0193272893feca98e9a57bbfef8fbbf6db3a5322d63af1365a4b1749445ad482",
+      "removedTrailingHorizontalWhitespaceBytes": 11,
+      "beforeEofNormalizationBytes": 91776,
+      "beforeEofNormalizationSha256": "88c0fc29e953f88aa8e0347fe00cd4cabfce944eecfdc4a90bcdccdd1a9cd8ba",
+      "removedTrailingBlankLineBytes": 1
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-build.log",
+      "originalBytes": 94221,
+      "originalSha256": "ce431393cdb495b0491f8a1223b1d25c88b69d8fbd6cc4d420cfe25c3a8dc642",
+      "normalizedBytes": 94205,
+      "normalizedSha256": "5d6a6457351de7b564fe106064faf1b82f0bd4905ea7c9b10d6602cdf6aef479",
+      "removedTrailingHorizontalWhitespaceBytes": 15,
+      "beforeEofNormalizationBytes": 94206,
+      "beforeEofNormalizationSha256": "4186436a91c7e334a57da768c6b2685db6a39a0dec33503deb92aa13aa779ee7",
+      "removedTrailingBlankLineBytes": 1
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ffi-fixture-cargo-test.log",
+      "beforeEofNormalizationBytes": 1117,
+      "beforeEofNormalizationSha256": "f225f95a300b253934bf00de29c37439ec2aefa627d2377298a40087cf850207",
+      "removedTrailingBlankLineBytes": 0,
+      "normalizedBytes": 1117,
+      "normalizedSha256": "f225f95a300b253934bf00de29c37439ec2aefa627d2377298a40087cf850207"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/layout-area-expansion-cargo-test.log",
+      "beforeEofNormalizationBytes": 407,
+      "beforeEofNormalizationSha256": "8f2289e7e8d6579f525a41d82f21244b3e2b4b6150ed2ac8b7259b504d66e66a",
+      "removedTrailingBlankLineBytes": 1,
+      "normalizedBytes": 406,
+      "normalizedSha256": "f9909cb2f02b50e1775f96442b1dc1f72ec2b0b2ee93290a1efbb4abafa56cb8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/layout-area-expansion-test.log",
+      "beforeEofNormalizationBytes": 249,
+      "beforeEofNormalizationSha256": "110f8194dbe545198f5a82beada529d4d79dc1ed2e99baea0ecd828be308a2ee",
+      "removedTrailingBlankLineBytes": 1,
+      "normalizedBytes": 248,
+      "normalizedSha256": "d0ae26e9109e243cf13713f4442de71e0afd780b1a2fbc0e7382618a07873787"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/style-projection-cargo-test.log",
+      "beforeEofNormalizationBytes": 815,
+      "beforeEofNormalizationSha256": "9079884d5ff986424126809a7ee556482bf12a2f82f8502916f0a0edc517b852",
+      "removedTrailingBlankLineBytes": 1,
+      "normalizedBytes": 814,
+      "normalizedSha256": "a2f4cf17763c8a462e28ad307da7d428140b484328d3bf480c6a3cd1e909fc9d"
+    }
+  ]
+}

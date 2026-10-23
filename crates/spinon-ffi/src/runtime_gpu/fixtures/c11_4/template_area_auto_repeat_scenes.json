@@ -1293,5 +1293,181 @@
       "items": [{ "name": "hero", "frame": [0, 24, 8, 8] }],
       "tracks": { "columns": [20, 20, 20, 20], "rows": [20, 20, 20] }
     }
+  },
+  {
+    "id": "template-area-repeat-two-axis-fit-fit-area-empty",
+    "width": "52px",
+    "height": "52px",
+    "columns": "repeat(auto-fit,20px)",
+    "rows": "repeat(auto-fit,20px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoColumns": "16px",
+    "autoRows": "12px",
+    "rootColor": "#e5e7eb",
+    "areas": "\". . .\" \". . .\" \". . .\"",
+    "items": [],
+    "expect": {
+      "root": [52, 52],
+      "scroll": [52, 52],
+      "items": [],
+      "tracks": { "columns": [0, 0, 16], "rows": [0, 0, 12] }
+    }
+  },
+  {
+    "id": "template-area-repeat-two-axis-fit-fit-area-item",
+    "width": "52px",
+    "height": "52px",
+    "columns": "repeat(auto-fit,20px)",
+    "rows": "repeat(auto-fit,20px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoColumns": "16px",
+    "autoRows": "12px",
+    "rootColor": "#e5e7eb",
+    "areas": "\". . .\" \". . .\" \". . hero\"",
+    "items": [
+      {
+        "name": "hero",
+        "placement": { "gridArea": "hero" },
+        "color": "#e5484d"
+      }
+    ],
+    "expect": {
+      "root": [52, 52],
+      "scroll": [52, 52],
+      "items": [{ "name": "hero", "frame": [0, 0, 16, 12] }],
+      "tracks": { "columns": [0, 0, 16], "rows": [0, 0, 12] }
+    }
+  },
+  {
+    "id": "template-area-repeat-two-axis-fit-fit-area-span",
+    "width": "52px",
+    "height": "52px",
+    "columns": "repeat(auto-fit,20px)",
+    "rows": "repeat(auto-fit,20px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoColumns": "16px",
+    "autoRows": "12px",
+    "rootColor": "#e5e7eb",
+    "areas": "\"hero hero hero\" \"hero hero hero\" \"hero hero hero\"",
+    "items": [
+      {
+        "name": "hero",
+        "placement": { "gridArea": "hero" },
+        "color": "#e5484d"
+      }
+    ],
+    "expect": {
+      "root": [52, 52],
+      "scroll": [64, 60],
+      "items": [{ "name": "hero", "frame": [0, 0, 64, 60] }],
+      "tracks": { "columns": [20, 20, 16], "rows": [20, 20, 12] }
+    }
+  },
+  {
+    "id": "template-area-repeat-two-axis-fit-fill-area-item",
+    "width": "52px",
+    "height": "52px",
+    "columns": "repeat(auto-fit,20px)",
+    "rows": "repeat(auto-fill,20px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoColumns": "16px",
+    "autoRows": "12px",
+    "rootColor": "#e5e7eb",
+    "areas": "\". . .\" \". . .\" \". . hero\"",
+    "items": [
+      {
+        "name": "hero",
+        "placement": { "gridArea": "hero" },
+        "color": "#e5484d"
+      }
+    ],
+    "expect": {
+      "root": [52, 52],
+      "scroll": [52, 60],
+      "items": [{ "name": "hero", "frame": [0, 48, 16, 12] }],
+      "tracks": { "columns": [0, 0, 16], "rows": [20, 20, 12] }
+    }
+  },
+  {
+    "id": "template-area-repeat-two-axis-fill-fit-area-item",
+    "width": "52px",
+    "height": "52px",
+    "columns": "repeat(auto-fill,20px)",
+    "rows": "repeat(auto-fit,20px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoColumns": "16px",
+    "autoRows": "12px",
+    "rootColor": "#e5e7eb",
+    "areas": "\". . .\" \". . .\" \". . hero\"",
+    "items": [
+      {
+        "name": "hero",
+        "placement": { "gridArea": "hero" },
+        "color": "#e5484d"
+      }
+    ],
+    "expect": {
+      "root": [52, 52],
+      "scroll": [64, 52],
+      "items": [{ "name": "hero", "frame": [48, 0, 16, 12] }],
+      "tracks": { "columns": [20, 20, 16], "rows": [0, 0, 12] }
+    }
+  },
+  {
+    "id": "template-area-repeat-two-axis-fit-fit-area-column",
+    "width": "52px",
+    "height": "52px",
+    "columns": "repeat(auto-fit,20px)",
+    "rows": "repeat(auto-fit,20px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoColumns": "16px",
+    "autoRows": "12px",
+    "rootColor": "#e5e7eb",
+    "areas": "\". . hero\"",
+    "items": [
+      {
+        "name": "hero",
+        "placement": { "gridArea": "hero" },
+        "color": "#e5484d"
+      }
+    ],
+    "expect": {
+      "root": [52, 52],
+      "scroll": [52, 52],
+      "items": [{ "name": "hero", "frame": [0, 0, 16, 20] }],
+      "tracks": { "columns": [0, 0, 16], "rows": [20, 0] }
+    }
+  },
+  {
+    "id": "template-area-repeat-two-axis-fit-fit-area-row",
+    "width": "52px",
+    "height": "52px",
+    "columns": "repeat(auto-fit,20px)",
+    "rows": "repeat(auto-fit,20px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoColumns": "16px",
+    "autoRows": "12px",
+    "rootColor": "#e5e7eb",
+    "areas": "\".\" \".\" \"hero\"",
+    "items": [
+      {
+        "name": "hero",
+        "placement": { "gridArea": "hero" },
+        "color": "#e5484d"
+      }
+    ],
+    "expect": {
+      "root": [52, 52],
+      "scroll": [52, 52],
+      "items": [{ "name": "hero", "frame": [0, 0, 20, 12] }],
+      "tracks": { "columns": [20, 0], "rows": [0, 0, 12] }
+    }
   }
 ]

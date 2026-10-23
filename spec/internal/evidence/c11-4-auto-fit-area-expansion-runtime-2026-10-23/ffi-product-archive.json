@@ -1,0 +1,9 @@
+{
+  "featureSet": "c04-runtime-gpu",
+  "artifact": "target/release/libspinon_ffi.a",
+  "bytes": 75100880,
+  "sha256": "0406dfcf2a1e5b6b0526d14db74f421b4bc802e8d363c541f5c059bf651e9712",
+  "sceneMarker": "absent",
+  "fixtureModuleSymbol": "absent",
+  "symbolTool": "Rust LLVM 22.1.2 llvm-nm"
+}

@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [양 축 auto-repeat과 template areas](./c11-4-two-axis-template-areas.md) · [CSS Grid 내부 계약](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 구현 전 계획이다. Chrome 156 Agent Browser의 사전 oracle 7/7을 CSS Grid 규범에서 도출한 독립 기대와 대조했다. 기존 계획은 area가 auto-repeat 확장보다 큰 `auto-fill` 장면과 반복 안의 `auto-fit` 장면을 각각 검증했지만, area 확장 track과 빈 `auto-fit` collapse를 같은 장면에서 교차하지 않았다. 계획 자체의 실패 관점 20개를 검토한 뒤 계획 PR을 연다. C11.4 checkbox와 공식 `77/213` 집계는 그대로 둔다.
+**상태:** 계획 PR [#548](https://github.com/ohah/spinon/pull/548)이 병합됐다. 7개 신규 scene을 포함한 구현 후보는 최신 source에서 layout·projection·opt-in FFI 검사를 통과했고, fixture-boundary Node 검사는 7/7이다. 전체 336-scene route에서 정해진 41개 ID를 선택해 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 41/41을 실행했다. 두 플랫폼의 node frame·used tracks·draw/present는 41/41 exact match이며, 29 area scene의 PixelCopy/Metal 표본은 각각 116/116 exact다. 첫 Android 실행 중 empty-area scene의 item-rect host map 누락을 찾아 Android/iOS에 빈 배열을 추가하고 전 scene host mapping 회귀검사를 넣은 뒤 전체 실행을 다시 통과했다. workspace와 fixture feature Clippy, static archive의 기본/fixture negative·positive control도 통과했다. 구현 후보 PR은 아직 만들지 않았으며, 적대적 diff 검토 및 PR check 확인 뒤 진행한다. C11.4 checkbox와 공식 `77/213` 집계는 병합 전까지 그대로 둔다. [검증·한계·화면](../spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/README.md).
 
 ## 결손과 기존 경계
 
@@ -50,7 +50,7 @@
 1. 각 profile의 cascade `allow_auto_repeat`, area metadata copying, projection validation, `GridContainerInput`의 두 repeat·area 전달 및 vendored Taffy explicit-grid/collapse 경로를 다시 대조한다. 구현 코드 변경 여부는 실제 mismatch 증거로 결정한다.
 2. 사전 oracle의 seven IDs와 expected table을 Rust layout regression 및 runtime scene JSON에 일치시킨다. Added-area-only, empty-area, only-one-axis-fit controls와 full-span occupancy를 모두 실행한다. 이전 no-area 12 및 area 22 scene의 ID와 결과도 유지한다.
 3. focused crate tests, fixture ID validator, `mise exec -- cargo fmt --all -- --check`, `mise exec -- cargo clippy --locked --workspace --all-targets -- -D warnings`를 실행한다. 실패하거나 자원 때문에 미실행인 검사는 근거와 제한을 기록한다.
-4. Android API 37 ARM64 AVD는 emulator serial을 명시하고, iOS는 iPhone 17 Pro / iOS 26.2 Simulator의 선택된 UDID를 명시한다. USB physical device는 사용하지 않는다. 이미 실행 중인 기기·세션·build/cache 프로세스는 먼저 owner와 route를 확인하고 중단하거나 reset하지 않는다.
+4. Android target은 API 37 ARM64 AVD `emulator-5558` (`spinon_api37_0_applied_txn`), iOS target은 iPhone 17 Pro / iOS 26.2 Simulator `ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D`로 고정한다. USB physical device는 사용하지 않는다. 이미 실행 중인 기기·세션·build/cache 프로세스는 먼저 owner와 route를 확인하고 중단하거나 reset하지 않는다.
 5. 각 플랫폼의 41-scene exact ID set, root/item frame, axis별 used track/collapse count, stage trace 및 draw/present를 비교한다. span/mixed overflow 표본은 screenshot, Android PixelCopy와 iOS drawable readback에서 확인한다.
 6. source revision, simulator/app/build metadata, 원본 로그·JSON·screenshots·artifact hashes와 archive 경계 검사를 runtime evidence에 기록한다. 운영체제 compositor가 만든 최종 화면 검증으로 부풀리지 않는다.
 7. 구현/runtime failure review 20개와 PR diff review 20개를 독립적으로 마친 뒤, 현재 required checks·merge state를 조회하고 `Rebase and merge`한다. PR 본문에 runtime 화면이 있으면 screenshot을 붙이고 Agent Browser로 이미지 표시를 확인한다.

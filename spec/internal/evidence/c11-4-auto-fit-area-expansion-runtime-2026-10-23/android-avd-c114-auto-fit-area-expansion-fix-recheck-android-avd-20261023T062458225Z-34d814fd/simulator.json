@@ -1,0 +1,27 @@
+{
+  "serial": "emulator-5558",
+  "target": "android-avd",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone64_arm64",
+  "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+  "apkSha256": "220da16026052ea72b06be48e34337d7cf3f113d6043305dfbc82edbde7d0628",
+  "installedApkSha256": "220da16026052ea72b06be48e34337d7cf3f113d6043305dfbc82edbde7d0628",
+  "sourceRevision": {
+    "commit": "1a17365d5d3ceaf72c499ecbcf9bec362c50b293",
+    "tree": "fbf11df2106facf0d7079088df7fbc3cc8bde7df",
+    "trackedDiffSha256": "76518381d97379b5602d027c9121d09f3a7f53ed6a6bfb2741c7b508a055c2c8",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/template_area_auto_repeat_scenes.json",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_template_area_auto_repeat.rs",
+      "crates/spinon-layout/src/grid_auto_track_sizing_tests/auto_repeat.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values/grid_values/tests.rs",
+      "plan/c11-4-auto-fit-area-expansion.md",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs"
+    ]
+  }
+}

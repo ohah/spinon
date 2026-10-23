@@ -1,0 +1,580 @@
+{
+  "schemaVersion": 1,
+  "screenshotCount": 82,
+  "screenshots": [
+    {
+      "platform": "android",
+      "sceneId": "both-fill-asymmetric",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/both-fill-asymmetric.png",
+      "bytes": 75138,
+      "sha256": "d3528bb70ce88d7dc63721988f3ebbd1ec5e73fc98035e3624a6eaf36e85db22"
+    },
+    {
+      "platform": "android",
+      "sceneId": "both-fill-square",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/both-fill-square.png",
+      "bytes": 75154,
+      "sha256": "0443753d5a526f1929c162d981d9de7a7cf64899c447ff3d179485928e132646"
+    },
+    {
+      "platform": "android",
+      "sceneId": "both-fit-empty",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/both-fit-empty.png",
+      "bytes": 75801,
+      "sha256": "1181f06a2bdc6ca730316794e489e59fdf6df9006f5b1ffaf8f80f1ca851088f"
+    },
+    {
+      "platform": "android",
+      "sceneId": "both-fit-second-repeat",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/both-fit-second-repeat.png",
+      "bytes": 75152,
+      "sha256": "b51afecccd17896594459bc590441d06de893ceb4df3dc5d3919a84d104f5754"
+    },
+    {
+      "platform": "android",
+      "sceneId": "both-fit-single",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/both-fit-single.png",
+      "bytes": 75150,
+      "sha256": "8e708e410787637ef3861f985cffbee338bfa81e3eddaaf3ba8998c4596ba837"
+    },
+    {
+      "platform": "android",
+      "sceneId": "both-fit-span-two",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/both-fit-span-two.png",
+      "bytes": 75150,
+      "sha256": "8e708e410787637ef3861f985cffbee338bfa81e3eddaaf3ba8998c4596ba837"
+    },
+    {
+      "platform": "android",
+      "sceneId": "columns-fill-control",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/columns-fill-control.png",
+      "bytes": 75154,
+      "sha256": "0443753d5a526f1929c162d981d9de7a7cf64899c447ff3d179485928e132646"
+    },
+    {
+      "platform": "android",
+      "sceneId": "columns-fill-rows-fit-empty",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/columns-fill-rows-fit-empty.png",
+      "bytes": 77338,
+      "sha256": "640958397189f8c6622d56d3f92feddcf321422e416677821313b9abaaa3d98f"
+    },
+    {
+      "platform": "android",
+      "sceneId": "columns-fill-rows-fit-second-repeat",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/columns-fill-rows-fit-second-repeat.png",
+      "bytes": 78135,
+      "sha256": "91017c408bc81d457fb03c3b1b1e103dd4fda84d340917e7156d6f823fe2b4d5"
+    },
+    {
+      "platform": "android",
+      "sceneId": "columns-fit-rows-fill-empty",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/columns-fit-rows-fill-empty.png",
+      "bytes": 77386,
+      "sha256": "8b14258095218094b28a6517a6e16236fd04d47093ba6633616fe68d6311e870"
+    },
+    {
+      "platform": "android",
+      "sceneId": "columns-fit-rows-fill-second-repeat",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/columns-fit-rows-fill-second-repeat.png",
+      "bytes": 75152,
+      "sha256": "dad0a496adbd33e6b3aa14152964dbb5a7b771beaab1df3f3cd8231ca681d8e3"
+    },
+    {
+      "platform": "android",
+      "sceneId": "rows-fill-control",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/rows-fill-control.png",
+      "bytes": 75154,
+      "sha256": "0443753d5a526f1929c162d981d9de7a7cf64899c447ff3d179485928e132646"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-columns-area-larger",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-columns-area-larger.png",
+      "bytes": 78486,
+      "sha256": "b151b572d66138fb13329f0ab5288e3e17bac7aef945a3a490b17aa9eb551fc6"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-columns-area-shorter",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-columns-area-shorter.png",
+      "bytes": 75466,
+      "sha256": "288312034cc4cb1918c657309b3b8eb12643ce8c12fada108ee396abc022a949"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-columns-fill",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-columns-fill.png",
+      "bytes": 78477,
+      "sha256": "796f18a5d95d7ef51d2ff102f9c3710cdd278f5ad9f8b0456fcd2b3c537443e4"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-columns-fit-empty-area",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-columns-fit-empty-area.png",
+      "bytes": 75092,
+      "sha256": "484cf0677adaa5f82e84bbba214565c9a108c751223fbe1569a02ec248ca262e"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-columns-fit-numeric",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-columns-fit-numeric.png",
+      "bytes": 78490,
+      "sha256": "2b2a6332da44df12966b9484052a9fe9a42be2bff29d665f65de8f2037523198"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-columns-fit",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-columns-fit.png",
+      "bytes": 75511,
+      "sha256": "6ae5fed4b7f54f5aed371ebcaf76dd2fed6cac89dc9bfd841b00e74ecfc9a5ef"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-columns-line-collision",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-columns-line-collision.png",
+      "bytes": 75438,
+      "sha256": "5b2ddf4b96f9672e6b551ffcd3d4ff9f9a8deda87d75c4fedad4805580f88506"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-rows-area-larger",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-rows-area-larger.png",
+      "bytes": 75545,
+      "sha256": "cdbf944893bdb551cd70bd4b11af7de9e50ff57c3c02cd3f39c6a1279fbf1e2c"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-rows-area-shorter",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-rows-area-shorter.png",
+      "bytes": 75550,
+      "sha256": "e4b2d3f77fd12c9d074fa3fbed540ea131910a0b8d8f27c74e87923b923b7ec2"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-rows-fill",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-rows-fill.png",
+      "bytes": 78462,
+      "sha256": "280a445799b3d6d337889bc68537aedfc97f95364e41aeec070b84a35815871c"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-rows-fit-empty-area",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-rows-fit-empty-area.png",
+      "bytes": 75109,
+      "sha256": "091bb12d05e8519db6629ac48850e700a840aebd098d221e385b3dac7120a67d"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-rows-fit-numeric",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-rows-fit-numeric.png",
+      "bytes": 78506,
+      "sha256": "0d496878e69658430eb2e7d9057bd603b9d7fe8fffe0cb4dc07027bb3fc0baac"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-rows-fit",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-rows-fit.png",
+      "bytes": 75545,
+      "sha256": "1f7409879601e4f81cb1dc8323f43f4c315aa5ef4bd8177e7efc2c456c82fcdb"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-two-axis-area-added-both",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-area-added-both.png",
+      "bytes": 78178,
+      "sha256": "3eb843fcb7f7601272bb96a15a08debbf235182eabdbbb33dbcf875124249aec"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-two-axis-area-added-columns",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-area-added-columns.png",
+      "bytes": 78132,
+      "sha256": "77735268b5dabaefff262db4850f04ec6cc4de7cb737823eafa345d5a9546965"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-two-axis-area-added-rows",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-area-added-rows.png",
+      "bytes": 75148,
+      "sha256": "b58baf57e9bcc4e9e93b1261ec51f3c252e16177a4199de43df29ab9a4b0f0d1"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-two-axis-area-longhand",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-area-longhand.png",
+      "bytes": 75130,
+      "sha256": "1d98736148564f723b43b34b54b55c665db7e9f6bfd0b58838af9ef89be33b64"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-two-axis-area-short",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-area-short.png",
+      "bytes": 78129,
+      "sha256": "a70434a444e2349a22e383426caf7f0260183e54f9a472c697c2e62c68919c56"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-two-axis-fill-fit-area-item",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-fill-fit-area-item.png",
+      "bytes": 78103,
+      "sha256": "27c355060d49363fdad8cf54dd1c4e4ce6943a068d9fc0e943b24e4978f81240"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-two-axis-fill-fit",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-fill-fit.png",
+      "bytes": 78129,
+      "sha256": "a70434a444e2349a22e383426caf7f0260183e54f9a472c697c2e62c68919c56"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-two-axis-fit-fill-area-item",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-fit-fill-area-item.png",
+      "bytes": 75135,
+      "sha256": "6649dd67575a22844ddd3e02b67590977ec683c7e7d72ceec0d2ba88faf849e7"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-two-axis-fit-fill",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-fit-fill.png",
+      "bytes": 78131,
+      "sha256": "e928e52b8cb14e4684cab253119bb69ea124fe4a6cba9c246e0dcc528567993d"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-two-axis-fit-fit-area-column",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-fit-fit-area-column.png",
+      "bytes": 78101,
+      "sha256": "ab8e65e85ffbc6715381e0879bb9ba48e8aa95ebb270dd7d01c5a1ab458129f2"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-two-axis-fit-fit-area-empty",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-fit-fit-area-empty.png",
+      "bytes": 77402,
+      "sha256": "235edd8debbcd22d619a77654e99b30a925b998a57c046ff14c0e71e36f41a9a"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-two-axis-fit-fit-area-item",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-fit-fit-area-item.png",
+      "bytes": 75119,
+      "sha256": "55aaa5d2ae3283506efeba726d9ab4b3c871667bbacfca37ded40df5a781acb3"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-two-axis-fit-fit-area-row",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-fit-fit-area-row.png",
+      "bytes": 77869,
+      "sha256": "c5625b3d90176afcea0075f926d88fffb85e2da91cc3c8e9c6ef6829b1e9fed8"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-two-axis-fit-fit-area-span",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-fit-fit-area-span.png",
+      "bytes": 78089,
+      "sha256": "8fcdc243a080b8080b2357a6fdb88e53e75b7b121a0176a4de07807341ecae3f"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-two-axis-fit-fit-empty",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-fit-fit-empty.png",
+      "bytes": 74354,
+      "sha256": "9538b20f5072e80938a49118ee29ad5b5adf94904a0a08fbf56256d0a43e06f0"
+    },
+    {
+      "platform": "android",
+      "sceneId": "template-area-repeat-two-axis-fit-fit-span",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-fit-fit-span.png",
+      "bytes": 75120,
+      "sha256": "6731ef07816643079757221bd5e937e922865479c5c6cc9645f9e094496cfcab"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "both-fill-asymmetric",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/both-fill-asymmetric.png",
+      "bytes": 146981,
+      "sha256": "f304ecb3126bccdcf31abac0338efc52745b743c5283f60e12c9ca097e467f1d"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "both-fill-square",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/both-fill-square.png",
+      "bytes": 147077,
+      "sha256": "13ac835c960b469b8d445cf58503018aabaa2a67a247d199e3539bf2076a00c1"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "both-fit-empty",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/both-fit-empty.png",
+      "bytes": 143646,
+      "sha256": "1391bf1e42ff3e0d4884240e7177b98d8a47d039e0d4942ce0581fbbc44fc9ab"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "both-fit-second-repeat",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/both-fit-second-repeat.png",
+      "bytes": 146187,
+      "sha256": "bb5ef5d9c1357bfef69ae27a27e86947935a403cc0d2fd42d0600cb60a8491a7"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "both-fit-single",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/both-fit-single.png",
+      "bytes": 146347,
+      "sha256": "8ea10a8cab6b90bd1b9a2c5fdf5160204f488427f318a6f647abd4b7bac5c544"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "both-fit-span-two",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/both-fit-span-two.png",
+      "bytes": 146347,
+      "sha256": "8ea10a8cab6b90bd1b9a2c5fdf5160204f488427f318a6f647abd4b7bac5c544"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "columns-fill-control",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/columns-fill-control.png",
+      "bytes": 145531,
+      "sha256": "f15f31ebf5bc517de8fd86e7f61263639563384f8c748c48481909a26c57c8e0"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "columns-fill-rows-fit-empty",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/columns-fill-rows-fit-empty.png",
+      "bytes": 143646,
+      "sha256": "1391bf1e42ff3e0d4884240e7177b98d8a47d039e0d4942ce0581fbbc44fc9ab"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "columns-fill-rows-fit-second-repeat",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/columns-fill-rows-fit-second-repeat.png",
+      "bytes": 146081,
+      "sha256": "dcdd7ba5ab51c4c37daa728a60951e4e090ff3b3f9a7295964ac9730dcf74fc7"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "columns-fit-rows-fill-empty",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/columns-fit-rows-fill-empty.png",
+      "bytes": 143646,
+      "sha256": "1391bf1e42ff3e0d4884240e7177b98d8a47d039e0d4942ce0581fbbc44fc9ab"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "columns-fit-rows-fill-second-repeat",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/columns-fit-rows-fill-second-repeat.png",
+      "bytes": 146032,
+      "sha256": "8f26d9ae6ab4f50040427c84234ee131a643bd23abcc4b72812b63e98e00d05d"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "rows-fill-control",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/rows-fill-control.png",
+      "bytes": 147077,
+      "sha256": "13ac835c960b469b8d445cf58503018aabaa2a67a247d199e3539bf2076a00c1"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-columns-area-larger",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-columns-area-larger.png",
+      "bytes": 133261,
+      "sha256": "aad9cd5ed4a17149206b6959e673582cbe0d8ef62de7ad54151928e5cb2268ef"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-columns-area-shorter",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-columns-area-shorter.png",
+      "bytes": 133245,
+      "sha256": "06899b008728f840225b1517c484565fe8af01cc0eece76a987e3f4ac8c76c9c"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-columns-fill",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-columns-fill.png",
+      "bytes": 133233,
+      "sha256": "f626ec934b0f8e5103fd7d8de7dc4a9c4a930641d837e6b420f796a9cbdfecc7"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-columns-fit-empty-area",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-columns-fit-empty-area.png",
+      "bytes": 131260,
+      "sha256": "bf2cd9f399d26a49b7eebaad45b8db7e766862646e12e0b36c874444e14a9257"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-columns-fit-numeric",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-columns-fit-numeric.png",
+      "bytes": 133001,
+      "sha256": "f9007a9b8a9bf0a6d8bc4ca13f6b9858b264cbf6d1a07954d52a121522063016"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-columns-fit",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-columns-fit.png",
+      "bytes": 133001,
+      "sha256": "f9007a9b8a9bf0a6d8bc4ca13f6b9858b264cbf6d1a07954d52a121522063016"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-columns-line-collision",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-columns-line-collision.png",
+      "bytes": 133128,
+      "sha256": "eef6592491f83409dc0d18409160eb8d8161207dd8e3597e77f3cf1012743d76"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-rows-area-larger",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-rows-area-larger.png",
+      "bytes": 133283,
+      "sha256": "16dd6b51add1181236c84f267e304eb5d005619598f9eb6a74ce3675903ef14d"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-rows-area-shorter",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-rows-area-shorter.png",
+      "bytes": 133270,
+      "sha256": "0593d4f89f97d37f30ea24f47d05fcea4d3c070260cbf1790b26f4bba4b72a08"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-rows-fill",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-rows-fill.png",
+      "bytes": 133283,
+      "sha256": "16dd6b51add1181236c84f267e304eb5d005619598f9eb6a74ce3675903ef14d"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-rows-fit-empty-area",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-rows-fit-empty-area.png",
+      "bytes": 132419,
+      "sha256": "da31d32c473a32c74abd567ccc4497ae67d1da6a8249c84db5b8abad0bf877ab"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-rows-fit-numeric",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-rows-fit-numeric.png",
+      "bytes": 132382,
+      "sha256": "76e6264895118378d1087cad2827173183a9929e2e936cde496f47bd4a3f34c0"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-rows-fit",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-rows-fit.png",
+      "bytes": 132382,
+      "sha256": "76e6264895118378d1087cad2827173183a9929e2e936cde496f47bd4a3f34c0"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-two-axis-area-added-both",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-two-axis-area-added-both.png",
+      "bytes": 132474,
+      "sha256": "eade001b232cd19de59dc4883a3e477c3105be15abd54e834f9fed0df214289c"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-two-axis-area-added-columns",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-two-axis-area-added-columns.png",
+      "bytes": 132465,
+      "sha256": "f21fd20654242fe7a70f8dcd51399479715d285f54f4eeb84ed3c31daebba121"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-two-axis-area-added-rows",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-two-axis-area-added-rows.png",
+      "bytes": 133312,
+      "sha256": "af0fff4bfc1c5d6d869ce2c03b501adab33dce067fa308a1bd0527f4e4459366"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-two-axis-area-longhand",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-two-axis-area-longhand.png",
+      "bytes": 133328,
+      "sha256": "9201a1eed35e43336f42b58e5e4bec7c88efca5962449e50ba17ef6348b67fd7"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-two-axis-area-short",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-two-axis-area-short.png",
+      "bytes": 132705,
+      "sha256": "44d4fa49ccc2df488924fa25c147abd4fa77789059802d74aadef6fc701a3fd3"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-two-axis-fill-fit-area-item",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-two-axis-fill-fit-area-item.png",
+      "bytes": 132692,
+      "sha256": "b4f57a471386b98e2c852ff86cc47e13bcacfffe4d397e83231b20fb47b3c060"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-two-axis-fill-fit",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-two-axis-fill-fit.png",
+      "bytes": 132705,
+      "sha256": "44d4fa49ccc2df488924fa25c147abd4fa77789059802d74aadef6fc701a3fd3"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-two-axis-fit-fill-area-item",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-two-axis-fit-fill-area-item.png",
+      "bytes": 132570,
+      "sha256": "f24700ad7b2124525651e277486243499e686cdc2b47b08e3a9288690ed61e8e"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-two-axis-fit-fill",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-two-axis-fit-fill.png",
+      "bytes": 133294,
+      "sha256": "a2f4aaf237f5cbdc238caaedfc94486b47d10b5ebe51214a2e1525f469d8664b"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-two-axis-fit-fit-area-column",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-two-axis-fit-fit-area-column.png",
+      "bytes": 133041,
+      "sha256": "e78f9ad5b72a02fe55d7520952eba2434ad8c3bfc1bfcded1b3e7b23ee26c5e0"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-two-axis-fit-fit-area-empty",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-two-axis-fit-fit-area-empty.png",
+      "bytes": 132941,
+      "sha256": "ba893a33470242171d6d7319b7cd00ff4fa98ac29b0258a36c5aac7b256d110a"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-two-axis-fit-fit-area-item",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-two-axis-fit-fit-area-item.png",
+      "bytes": 133093,
+      "sha256": "179fbe57c9321c8f1366b37f7f24668befd040e6102336979c2f82e43a66b489"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-two-axis-fit-fit-area-row",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-two-axis-fit-fit-area-row.png",
+      "bytes": 132478,
+      "sha256": "2f8f4049efb3f1d88a9d2def3c1bff780574403a6d40d2c46ec07ae27e28b16d"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-two-axis-fit-fit-area-span",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-two-axis-fit-fit-area-span.png",
+      "bytes": 132746,
+      "sha256": "9c47bcd2f4e29baab8d6d4a0e9c3e29f6aeb129c0004e64fa0460ad7480954ac"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-two-axis-fit-fit-empty",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-two-axis-fit-fit-empty.png",
+      "bytes": 133084,
+      "sha256": "83a16d2f58b2468274f5935f59eeecea43b75c0b1727ad2ca7679125013bd2a3"
+    },
+    {
+      "platform": "ios",
+      "sceneId": "template-area-repeat-two-axis-fit-fit-span",
+      "path": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-two-axis-fit-fit-span.png",
+      "bytes": 132418,
+      "sha256": "200424ef4ecc23bb26dbf53195f527bff087ad47272e7b83d8f1a258724fd9ed"
+    }
+  ]
+}

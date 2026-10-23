@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { readdir, readFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
@@ -72,7 +73,7 @@ test('fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다', () =
   }
 });
 
-test('양 축 template-area auto-repeat 아홉 scene이 두 플랫폼 경로에 고정된다', async () => {
+test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host 경로에 고정된다', async () => {
   const expectedIDs = [
     'template-area-repeat-two-axis-area-short',
     'template-area-repeat-two-axis-area-added-columns',
@@ -83,8 +84,15 @@ test('양 축 template-area auto-repeat 아홉 scene이 두 플랫폼 경로에 
     'template-area-repeat-two-axis-fit-fit-empty',
     'template-area-repeat-two-axis-fit-fit-span',
     'template-area-repeat-two-axis-area-longhand',
+    'template-area-repeat-two-axis-fit-fit-area-empty',
+    'template-area-repeat-two-axis-fit-fit-area-item',
+    'template-area-repeat-two-axis-fit-fit-area-span',
+    'template-area-repeat-two-axis-fit-fill-area-item',
+    'template-area-repeat-two-axis-fill-fit-area-item',
+    'template-area-repeat-two-axis-fit-fit-area-column',
+    'template-area-repeat-two-axis-fit-fit-area-row',
   ];
-  const [fixtureText, android, ios] = await Promise.all([
+  const [fixtureText, android, ios, captureSource, noAreaOracleText, matrixManifestText] = await Promise.all([
     readFile(resolve(repositoryRoot,
       'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/template_area_auto_repeat_scenes.json'),
     'utf8'),
@@ -92,9 +100,50 @@ test('양 축 template-area auto-repeat 아홉 scene이 두 플랫폼 경로에 
       'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java'),
     'utf8'),
     readFile(resolve(repositoryRoot, 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift'), 'utf8'),
+    readFile(resolve(repositoryRoot,
+      'tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs'), 'utf8'),
+    readFile(resolve(repositoryRoot,
+      'spec/internal/evidence/c11-4-two-axis-auto-repeat-precomparison-2026-10-20/chrome155-observation.json'),
+    'utf8'),
+    readFile(resolve(repositoryRoot,
+      'spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/focused-matrix-41-scenes.json'),
+    'utf8'),
   ]);
   const fixtures = JSON.parse(fixtureText);
-  assert.equal(fixtures.length, 22, 'template-area fixture는 기존 13개와 신규 9개다.');
+  assert.equal(fixtures.length, 29, 'template-area fixture는 단일 축 13개와 양 축 16개다.');
+  assert.match(captureSource, /assert\.equal\(scenes\.length, 336,/,
+    'C11.4 simulator capture scene count must include the seven new cases.');
+  const noAreaIDs = JSON.parse(noAreaOracleText).cases.map(({ id }) => id);
+  assert.equal(noAreaIDs.length, 12, 'the no-area dual-axis oracle must contain 12 scenes.');
+  const matrixManifest = JSON.parse(matrixManifestText);
+  assert.deepEqual(matrixManifest.noAreaDualAxisSceneIDs, noAreaIDs);
+  assert.deepEqual(matrixManifest.templateAreaSceneIDs, fixtures.map(({ id }) => id));
+  const listScenes = spawnSync(process.execPath, [
+    resolve(repositoryRoot, 'tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs'),
+    'android-avd', '--list-scenes',
+  ], { cwd: repositoryRoot, encoding: 'utf8' });
+  assert.equal(listScenes.status, 0, listScenes.stderr);
+  const captureCatalog = JSON.parse(listScenes.stdout);
+  assert.equal(captureCatalog.sceneCount, 336);
+  const matrixIDs = [...noAreaIDs, ...fixtures.map(({ id }) => id)];
+  assert.equal(matrixIDs.length, 41, 'the focused C11.4 matrix must contain 41 scenes.');
+  assert.equal(new Set(matrixIDs).size, matrixIDs.length,
+    'the focused C11.4 matrix must not repeat scene IDs.');
+  assert.equal(matrixManifest.sceneCount, matrixIDs.length);
+  assert.equal(matrixManifest.uniqueSceneCount, matrixIDs.length);
+  const captureIDs = new Set(captureCatalog.sceneIDs);
+  assert.deepEqual(matrixIDs.filter((id) => !captureIDs.has(id)), [],
+    'every focused matrix scene must be present in the simulator capture route.');
+  const selectedCatalogResult = spawnSync(process.execPath, [
+    resolve(repositoryRoot, 'tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs'),
+    'android-avd', `--scene-id=${matrixIDs.join(',')}`, '--list-scenes',
+  ], { cwd: repositoryRoot, encoding: 'utf8' });
+  assert.equal(selectedCatalogResult.status, 0, selectedCatalogResult.stderr);
+  const selectedCatalog = JSON.parse(selectedCatalogResult.stdout);
+  assert.equal(selectedCatalog.sceneCount, 336);
+  assert.equal(selectedCatalog.selectedSceneCount, 41);
+  assert.deepEqual([...selectedCatalog.selectedSceneIDs].sort(), [...matrixIDs].sort(),
+    'the simulator selection must resolve to exactly the 41 focused matrix IDs.');
   assert.deepEqual(
     fixtures.map(({ id }) => id).filter((id) => id.startsWith('template-area-repeat-two-axis-')),
     expectedIDs,
@@ -106,9 +155,72 @@ test('양 축 template-area auto-repeat 아홉 scene이 두 플랫폼 경로에 
     columns: [20, 16, 16],
     rows: [20, 12, 12],
   });
+  const areaExpandedSpan = fixtures.find(({ id }) =>
+    id === 'template-area-repeat-two-axis-fit-fit-area-span');
+  assert.deepEqual(areaExpandedSpan.expect.scroll, [64, 60]);
+  assert.deepEqual(areaExpandedSpan.expect.items, [{ name: 'hero', frame: [0, 0, 64, 60] }]);
+  const fitRowsFill = fixtures.find(({ id }) =>
+    id === 'template-area-repeat-two-axis-fit-fill-area-item');
+  assert.deepEqual(fitRowsFill.expect.items, [{ name: 'hero', frame: [0, 48, 16, 12] }]);
+  const fillColumnsFit = fixtures.find(({ id }) =>
+    id === 'template-area-repeat-two-axis-fill-fit-area-item');
+  assert.deepEqual(fillColumnsFit.expect.items, [{ name: 'hero', frame: [48, 0, 16, 12] }]);
+  const expectedAreaExpansion = [
+    ['fit-fit-area-empty', [0, 0, 16], [0, 0, 12], [], [52, 52]],
+    ['fit-fit-area-item', [0, 0, 16], [0, 0, 12], [[0, 0, 16, 12]], [52, 52]],
+    ['fit-fit-area-span', [20, 20, 16], [20, 20, 12], [[0, 0, 64, 60]], [64, 60]],
+    ['fit-fill-area-item', [0, 0, 16], [20, 20, 12], [[0, 48, 16, 12]], [52, 60]],
+    ['fill-fit-area-item', [20, 20, 16], [0, 0, 12], [[48, 0, 16, 12]], [64, 52]],
+    ['fit-fit-area-column', [0, 0, 16], [20, 0], [[0, 0, 16, 20]], [52, 52]],
+    ['fit-fit-area-row', [20, 0], [0, 0, 12], [[0, 0, 20, 12]], [52, 52]],
+  ];
+  for (const [suffix, columns, rows, itemFrames, scroll] of expectedAreaExpansion) {
+    const id = `template-area-repeat-two-axis-${suffix}`;
+    const scene = fixtures.find((fixture) => fixture.id === id);
+    assert.ok(scene, `missing ${id}`);
+    assert.deepEqual(scene.expect.root, [52, 52], `${id} root`);
+    assert.deepEqual(scene.expect.scroll, scroll, `${id} scroll`);
+    assert.deepEqual(scene.expect.tracks, { columns, rows }, `${id} used tracks`);
+    assert.deepEqual(scene.expect.items.map(({ frame }) => frame), itemFrames, `${id} items`);
+  }
+  for (const suffix of ['-fit-fit-area-span', '-fit-fill-area-item', '-fill-fit-area-item']) {
+    assert.ok(captureSource.includes(`id.endsWith('${suffix}')`),
+      `simulator capture is missing overflow samples for ${suffix}`);
+  }
   for (const id of expectedIDs) {
     assert.ok(android.includes(`"${id}"`), `Android allowlist is missing ${id}`);
     assert.ok(ios.includes(`"${id}"`), `iOS allowlist is missing ${id}`);
+  }
+  const hostMappings = [
+    ['Android', android, [
+      ['root frame', 'private static String c114TemplateAreaRepeatRootFrame',
+        'private static String c114TemplateAreaRepeatItemFrame'],
+      ['item names', 'private static String[] c114TemplateAreaRepeatItemNames',
+        'private static int[][] c114TemplateAreaRepeatItemRects'],
+      ['item rects', 'private static int[][] c114TemplateAreaRepeatItemRects',
+        'private static int[] c114TemplateAreaRepeatRootSize'],
+    ]],
+    ['iOS', ios, [
+      ['root frame', 'private func c114TemplateAreaRepeatRootFrame',
+        'private func c114TemplateAreaRepeatItemFrame'],
+      ['item names', 'private func c114TemplateAreaRepeatItemNames',
+        'private func c114TemplateAreaRepeatItemRects'],
+      ['item rects', 'private func c114TemplateAreaRepeatItemRects',
+        'private func c114TemplateAreaRepeatNodeFrames'],
+    ]],
+  ];
+  for (const [platform, source, mappings] of hostMappings) {
+    for (const [mappingName, startMarker, endMarker] of mappings) {
+      const start = source.indexOf(startMarker);
+      const end = source.indexOf(endMarker, start + startMarker.length);
+      assert.ok(start >= 0 && end > start,
+        `${platform} ${mappingName} helper boundary is missing`);
+      const mapping = source.slice(start, end);
+      for (const { id } of fixtures) {
+        assert.ok(mapping.includes(`"${id}"`),
+          `${platform} ${mappingName} helper is missing ${id}`);
+      }
+    }
   }
 });
 

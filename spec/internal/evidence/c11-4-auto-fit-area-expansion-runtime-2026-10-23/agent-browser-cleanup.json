@@ -1,0 +1,14 @@
+{
+  "sessionInventory": {
+    "command": "agent-browser session list --json",
+    "success": true,
+    "spinonOwnedSessions": [],
+    "unrelatedActiveSessionCount": 1
+  },
+  "processScan": {
+    "command": "ps -axo pid,command | rg '[a]gent-browser'",
+    "unrelatedAgentBrowserChromeProcessTreeCount": 1
+  },
+  "browserStartedThisTurn": false,
+  "cleanup": "No Spinon-owned session was created. The unrelated active HWPJS session and process tree were preserved."
+}

@@ -91,6 +91,13 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "template-area-repeat-two-axis-fit-fit-empty",
     "template-area-repeat-two-axis-fit-fit-span",
     "template-area-repeat-two-axis-area-longhand",
+    "template-area-repeat-two-axis-fit-fit-area-empty",
+    "template-area-repeat-two-axis-fit-fit-area-item",
+    "template-area-repeat-two-axis-fit-fit-area-span",
+    "template-area-repeat-two-axis-fit-fill-area-item",
+    "template-area-repeat-two-axis-fill-fit-area-item",
+    "template-area-repeat-two-axis-fit-fit-area-column",
+    "template-area-repeat-two-axis-fit-fit-area-row",
     "auto-repeat-named-implicit-positive-missing",
     "auto-repeat-named-implicit-positive-insufficient",
     "auto-repeat-named-implicit-negative-missing",
@@ -2546,6 +2553,14 @@ private func c114TemplateAreaRepeatRootFrame(_ sceneID: String) -> String? {
          "template-area-repeat-two-axis-fit-fit-span",
          "template-area-repeat-two-axis-area-longhand":
         return "width=100,height=76"
+    case "template-area-repeat-two-axis-fit-fit-area-empty",
+         "template-area-repeat-two-axis-fit-fit-area-item",
+         "template-area-repeat-two-axis-fit-fit-area-span",
+         "template-area-repeat-two-axis-fit-fill-area-item",
+         "template-area-repeat-two-axis-fill-fit-area-item",
+         "template-area-repeat-two-axis-fit-fit-area-column",
+         "template-area-repeat-two-axis-fit-fit-area-row":
+        return "width=52,height=52"
     case "template-area-repeat-two-axis-area-added-columns":
         return "width=40,height=76"
     case "template-area-repeat-two-axis-area-added-rows":
@@ -2590,9 +2605,16 @@ private func c114TemplateAreaRepeatItemNames(_ sceneID: String) -> [String]? {
          "template-area-repeat-two-axis-fill-fit",
          "template-area-repeat-two-axis-fit-fill",
          "template-area-repeat-two-axis-fit-fit-span",
+         "template-area-repeat-two-axis-fit-fit-area-item",
+         "template-area-repeat-two-axis-fit-fit-area-span",
+         "template-area-repeat-two-axis-fit-fill-area-item",
+         "template-area-repeat-two-axis-fill-fit-area-item",
+         "template-area-repeat-two-axis-fit-fit-area-column",
+         "template-area-repeat-two-axis-fit-fit-area-row",
          "template-area-repeat-two-axis-area-longhand":
         return ["hero"]
-    case "template-area-repeat-two-axis-fit-fit-empty":
+    case "template-area-repeat-two-axis-fit-fit-empty",
+         "template-area-repeat-two-axis-fit-fit-area-empty":
         return []
     case "template-area-repeat-columns-area-shorter", "template-area-repeat-rows-area-shorter":
         return ["prefix", "hero", "suffix", "tail"]
@@ -2626,12 +2648,25 @@ private func c114TemplateAreaRepeatItemRects(
         return [(24, 0, 8, 8)]
     case "template-area-repeat-two-axis-fit-fill":
         return [(0, 24, 8, 8)]
-    case "template-area-repeat-two-axis-fit-fit-empty":
+    case "template-area-repeat-two-axis-fit-fit-empty",
+         "template-area-repeat-two-axis-fit-fit-area-empty":
         return []
     case "template-area-repeat-two-axis-fit-fit-span":
         return [(0, 0, 44, 44)]
     case "template-area-repeat-two-axis-area-longhand":
         return [(0, 24, 8, 8)]
+    case "template-area-repeat-two-axis-fit-fit-area-item":
+        return [(0, 0, 16, 12)]
+    case "template-area-repeat-two-axis-fit-fit-area-span":
+        return [(0, 0, 64, 60)]
+    case "template-area-repeat-two-axis-fit-fill-area-item":
+        return [(0, 48, 16, 12)]
+    case "template-area-repeat-two-axis-fill-fit-area-item":
+        return [(48, 0, 16, 12)]
+    case "template-area-repeat-two-axis-fit-fit-area-column":
+        return [(0, 0, 16, 20)]
+    case "template-area-repeat-two-axis-fit-fit-area-row":
+        return [(0, 0, 20, 12)]
     case "template-area-repeat-columns-fill", "template-area-repeat-columns-area-larger":
         return [(0, 0, 20, 20), (24, 0, 68, 20), (96, 0, 20, 20)]
     case "template-area-repeat-columns-fit":
@@ -2685,6 +2720,14 @@ private func c114TemplateAreaRepeatPixelSamples(
          "template-area-repeat-two-axis-fit-fit-span",
          "template-area-repeat-two-axis-area-longhand":
         root = (100, 76)
+    case "template-area-repeat-two-axis-fit-fit-area-empty",
+         "template-area-repeat-two-axis-fit-fit-area-item",
+         "template-area-repeat-two-axis-fit-fit-area-span",
+         "template-area-repeat-two-axis-fit-fill-area-item",
+         "template-area-repeat-two-axis-fill-fit-area-item",
+         "template-area-repeat-two-axis-fit-fit-area-column",
+         "template-area-repeat-two-axis-fit-fit-area-row":
+        root = (52, 52)
     case "template-area-repeat-two-axis-area-added-columns":
         root = (40, 76)
     case "template-area-repeat-two-axis-area-added-rows":
@@ -2703,9 +2746,11 @@ private func c114TemplateAreaRepeatPixelSamples(
     }
     let rootID = "c114-\(sceneID)-grid"
     if sceneID.hasPrefix("template-area-repeat-two-axis-") {
+        let rootColor: [UInt32] = sceneID.hasSuffix("-fit-fit-area-span")
+            ? [229, 72, 77, 255] : [229, 231, 235, 255]
         var samples: [(String, String, UInt32, UInt32, [UInt32])] = [
             ("\(sceneID)-root-interior", rootID, root.width - 2, root.height - 2,
-             [229, 231, 235, 255]),
+             rootColor),
         ]
         if sceneID.hasSuffix("-area-added-both") {
             samples.append(contentsOf: [
@@ -2713,6 +2758,27 @@ private func c114TemplateAreaRepeatPixelSamples(
                  47, 43, [229, 72, 77, 255]),
                 ("\(sceneID)-after-root", rootID, 53, 43, [0, 0, 0, 255]),
                 ("\(sceneID)-after-root-bottom", rootID, 47, 49, [0, 0, 0, 255]),
+            ])
+        } else if sceneID.hasSuffix("-fit-fit-area-span") {
+            samples.append(contentsOf: [
+                ("\(sceneID)-hero-overflow-outside-root", "c114-\(sceneID)-hero",
+                 60, 50, [229, 72, 77, 255]),
+                ("\(sceneID)-after-root", rootID, 64, 50, [0, 0, 0, 255]),
+                ("\(sceneID)-after-root-bottom", rootID, 50, 60, [0, 0, 0, 255]),
+            ])
+        } else if sceneID.hasSuffix("-fit-fill-area-item") {
+            samples.append(contentsOf: [
+                ("\(sceneID)-hero-overflow-outside-root", "c114-\(sceneID)-hero",
+                 8, 56, [229, 72, 77, 255]),
+                ("\(sceneID)-after-root", rootID, 8, 60, [0, 0, 0, 255]),
+                ("\(sceneID)-after-root-bottom", rootID, 50, 56, [0, 0, 0, 255]),
+            ])
+        } else if sceneID.hasSuffix("-fill-fit-area-item") {
+            samples.append(contentsOf: [
+                ("\(sceneID)-hero-overflow-outside-root", "c114-\(sceneID)-hero",
+                 56, 8, [229, 72, 77, 255]),
+                ("\(sceneID)-after-root", rootID, 64, 8, [0, 0, 0, 255]),
+                ("\(sceneID)-after-root-bottom", rootID, 56, 50, [0, 0, 0, 255]),
             ])
         } else {
             for (name, item) in zip(names, items) {
