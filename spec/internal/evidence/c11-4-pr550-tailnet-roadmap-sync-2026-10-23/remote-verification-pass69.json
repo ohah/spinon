@@ -1,0 +1,201 @@
+{
+  "pass": "pass69",
+  "sourceHead": "82f7514dc51bedd4160f27180145a13bc3df8750",
+  "localDeltaFilesVerified": 1171,
+  "localMismatches": [],
+  "targetFilesBefore": 58774,
+  "targetFilesAfter": 59377,
+  "noDeletes": true,
+  "remoteChecks": [
+    {
+      "path": "roadmap.html",
+      "status": 200,
+      "bytes": 267555,
+      "sha256": "d01d12f91617c559772ec61f0fd934994dba22e80f7534d825e483b6ee296f09",
+      "matchesSource": true
+    },
+    {
+      "path": "STATUS.html",
+      "status": 200,
+      "bytes": 858037,
+      "sha256": "f6251606c6db7c01412972639b0b774409ea0bbe05c8adf8c6a7304c04b53805",
+      "matchesSource": true
+    },
+    {
+      "path": "0001-conformance.html",
+      "status": 200,
+      "bytes": 405070,
+      "sha256": "81248e9bcc9b60aaddc02174de37249c91e0aadde4778dbb081e7c730c726d7d",
+      "matchesSource": true
+    },
+    {
+      "path": "internal/README.html",
+      "status": 200,
+      "bytes": 562994,
+      "sha256": "74729a75ad8cd71ea52ed62a63c380ae49966e220669aea69f684b0f08bc4085",
+      "matchesSource": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "bytes": 525349,
+      "sha256": "649f99c7f3721407e1b2f2d219f513524af7afb05f6d81196f005b5b127d85be",
+      "matchesSource": true
+    },
+    {
+      "path": "plan/c11-4-auto-fit-area-expansion.html",
+      "status": 200,
+      "bytes": 397170,
+      "sha256": "68463aed34c9f2f35d83deb82d62a5bc09e2797b1cd8ae96b725ad16655ff703",
+      "matchesSource": true
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/README.html",
+      "status": 200,
+      "bytes": 391994,
+      "sha256": "c9829348df186ee9cf60d4cdf27c7264b06b570838b86c18fc9c77360b77caa9",
+      "matchesSource": true
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-fit-area-expansion-status-correction-2026-10-23/README.html",
+      "status": 200,
+      "bytes": 383598,
+      "sha256": "b48735d946b4768a06643d0537e7dffb121cc47c0ee8d75353307e9199e36c1a",
+      "matchesSource": true
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-fit-area-expansion-precomparison-2026-10-23/README.html",
+      "status": 200,
+      "bytes": 386631,
+      "sha256": "0418be1eb2da3af014ae5c59dc44974ed4190e912a3c6261032e217146088b16",
+      "matchesSource": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": 200,
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "matchesSource": true
+    },
+    {
+      "path": "static/image/chrome-156.d823eded79.png",
+      "status": 200,
+      "bytes": 29417,
+      "sha256": "1b94044bdcd8d80430d7e33d70fa049eb04bffa29d2be9763cfcf946fa09bc06",
+      "matchesSource": true
+    },
+    {
+      "path": "static/image/tailnet-before-correction.01320de6b5.png",
+      "status": 200,
+      "bytes": 249472,
+      "sha256": "ba5d32805197374ac3f3282d08a7afcd8fd51a84733b615c1e5f7d6ac149a6d9",
+      "matchesSource": true
+    },
+    {
+      "path": "static/image/template-area-repeat-two-axis-fit-fit-area-span.ed10962b63.png",
+      "status": 200,
+      "bytes": 78089,
+      "sha256": "8fcdc243a080b8080b2357a6fdb88e53e75b7b121a0176a4de07807341ecae3f",
+      "matchesSource": true
+    },
+    {
+      "path": "static/image/template-area-repeat-two-axis-fit-fit-area-span.f6256b7c25.png",
+      "status": 200,
+      "bytes": 132746,
+      "sha256": "9c47bcd2f4e29baab8d6d4a0e9c3e29f6aeb129c0004e64fa0460ad7480954ac",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/3.7ca8a2b0df.js",
+      "status": 200,
+      "bytes": 217062,
+      "sha256": "eef621f8ab726c459d2e2843de2416fbe2779df6bbd9c5aac5a3893010c7ddcc",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/async/route-21b3b10e7b45.64c043f797.js",
+      "status": 200,
+      "bytes": 19953,
+      "sha256": "d33fb3a382587275e4e20919bcd2d208a32344f4b2f5457fef7832efa89455b4",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/async/route-37a4c3ef7390.b01467a1d3.js",
+      "status": 200,
+      "bytes": 9891,
+      "sha256": "48cbe75593a037280fbd9223c68f458adfd4780ce92f3c785e13d7c9a96c1e40",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/async/route-5cb924813a32.1c9626426a.js",
+      "status": 200,
+      "bytes": 4868,
+      "sha256": "cdc196fc6469c5d71db5e0edd3d93bc8736a14c9faa3f576fc6ace4aedd25c4b",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.0fd6b75b82.js",
+      "status": 200,
+      "bytes": 529807,
+      "sha256": "18e71726647720dc087fc48fd05e62890c3cf47af8039295281e6eeb87b7ec48",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/async/route-793979f66295.61b3d13d77.js",
+      "status": 200,
+      "bytes": 14575,
+      "sha256": "a4044d7170cb9a6de3d858084d218d7e8cbfd27c12a4d94071c661d5c94b3f2b",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.9ff9b15e54.js",
+      "status": 200,
+      "bytes": 210311,
+      "sha256": "250a8a57fbeed4b1b90786fd822b9f218495952cd5d45bc1dd440ae3b57269ad",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.e0118b2f50.js",
+      "status": 200,
+      "bytes": 151790,
+      "sha256": "aec72b580ac97818992b0b63bd9b726ad56c3f24d9f54faeba84b86aa82dac68",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/async/route-ecf129b09e78.74fdd53e30.js",
+      "status": 200,
+      "bytes": 29743,
+      "sha256": "5e745f6aa3265a8ad79b78b8ff0ce1eaa8bd7cb17b0e9cfeb90fce14a34d10dd",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/index.428a3151a2.js",
+      "status": 200,
+      "bytes": 1296791,
+      "sha256": "18319310881578c02d6e0bf70bf07a76acac276a7a4132c71c2aff06a8aca1cb",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "status": 200,
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "status": 200,
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/styles.d1b89531e2.js",
+      "status": 200,
+      "bytes": 473,
+      "sha256": "55c22f8920d663c08c338e6c2a852c87fe3763156d2b5275db6b23a15c23d443",
+      "matchesSource": true
+    }
+  ],
+  "allVerified": true
+}

@@ -1,0 +1,10 @@
+{
+  "pass": "pass69",
+  "addedFiles": 603,
+  "replacedFiles": 568,
+  "alreadyAppliedFiles": 0,
+  "backupRootRelative": "SpinonPreviewBackups/c11-4-pr550-tailnet-roadmap-sync-2026-10-23/pass69",
+  "backupMethod": "same-volume hard link where possible; otherwise exclusive copy",
+  "replacementMethod": "copy to unique sibling temporary file then atomic rename",
+  "noDeletes": true
+}

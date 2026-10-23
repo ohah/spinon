@@ -1,0 +1,44 @@
+{
+  "pass": "pass69",
+  "sourceHead": "82f7514dc51bedd4160f27180145a13bc3df8750",
+  "selectedRoot": "build/spinon/c11-4-pr550-tailnet-root-pass69-selected",
+  "selectedSite": "build/spinon/c11-4-pr550-tailnet-site-pass69-selected",
+  "baseRoot": "build/spinon/c11-4-pr540-tailnet-root-pass65-selected",
+  "preparation": {
+    "copiedFiles": 1845,
+    "copiedBytes": 61395824,
+    "deletes": 0
+  },
+  "rspress": {
+    "package": "@rspress/core",
+    "version": "2.0.22",
+    "command": "mise exec -- packages/docs/node_modules/.bin/rspress build --config build/spinon/rspress-pass69.config.ts",
+    "exitCode": 0,
+    "log": {
+      "path": "/tmp/spinon-selected-pass69-build.log",
+      "bytes": 237890,
+      "sha256": "075db41d62ad3bfd19fbbc235d785b3b29eef000b7c1c10cfed6f2224e85fe3f"
+    },
+    "outputFiles": 1255,
+    "outputBytes": 253750035
+  },
+  "staticRoadmap": {
+    "source": "spec/public/roadmap.html",
+    "bytes": 267555,
+    "sha256": "d01d12f91617c559772ec61f0fd934994dba22e80f7534d825e483b6ee296f09",
+    "tailnetAlreadyMatched": true,
+    "noReplacementNeeded": true
+  },
+  "augmentedStaticRoute": {
+    "path": "roadmap.html",
+    "source": "spec/public/roadmap.html",
+    "bytes": 267555,
+    "sha256": "d01d12f91617c559772ec61f0fd934994dba22e80f7534d825e483b6ee296f09",
+    "alreadyMatchedTailnet": true,
+    "addedToSelectedArtifactForVerification": true
+  },
+  "finalSelectedArtifact": {
+    "files": 1256,
+    "bytes": 254017590
+  }
+}

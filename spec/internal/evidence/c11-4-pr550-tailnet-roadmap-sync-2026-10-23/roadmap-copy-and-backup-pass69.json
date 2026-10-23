@@ -1,0 +1,11 @@
+{
+  "pass": "pass69",
+  "sourceBytes": 267555,
+  "sourceSha256": "d01d12f91617c559772ec61f0fd934994dba22e80f7534d825e483b6ee296f09",
+  "previousBackedUp": false,
+  "backupSha256": null,
+  "targetMatchesSource": true,
+  "copyMethod": "no Tailnet write; source route staged for cross-route verification",
+  "targetAlreadyMatched": true,
+  "noDeletes": true
+}
