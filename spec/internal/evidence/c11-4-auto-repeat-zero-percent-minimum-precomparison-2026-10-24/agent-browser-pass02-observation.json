@@ -1,0 +1,162 @@
+{
+  "devicePixelRatio": 1,
+  "fixturePath": "tests/fixtures/css/c11/grid-auto-repeat-zero-percent-minimum-c114.html",
+  "observedBy": "Agent Browser",
+  "scenes": [
+    {
+      "contentAxisCssPx": 120,
+      "id": "fill-col-zero-gap",
+      "itemRectCssPx": null,
+      "repeatTrackCount": 120,
+      "totalTrackCount": 120,
+      "trackHistogram": {
+        "1px": 120
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "id": "fill-col-zero-px-gap",
+      "itemRectCssPx": null,
+      "repeatTrackCount": 120,
+      "totalTrackCount": 120,
+      "trackHistogram": {
+        "1px": 120
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "id": "fill-col-gap-four",
+      "itemRectCssPx": null,
+      "repeatTrackCount": 24,
+      "totalTrackCount": 24,
+      "trackHistogram": {
+        "1.15625px": 24
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "id": "fill-col-half-px-gap-zero",
+      "itemRectCssPx": null,
+      "repeatTrackCount": 120,
+      "totalTrackCount": 120,
+      "trackHistogram": {
+        "1px": 120
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "id": "fill-col-half-px-gap-four",
+      "itemRectCssPx": null,
+      "repeatTrackCount": 24,
+      "totalTrackCount": 24,
+      "trackHistogram": {
+        "1.15625px": 24
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "id": "fill-col-half-percent-gap-four",
+      "itemRectCssPx": null,
+      "repeatTrackCount": 24,
+      "totalTrackCount": 24,
+      "trackHistogram": {
+        "1.15625px": 24
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "id": "fill-col-zero-neighbors-subpixel",
+      "itemRectCssPx": null,
+      "repeatTrackCount": 23,
+      "totalTrackCount": 25,
+      "trackHistogram": {
+        "0.5px": 2,
+        "1px": 23
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "id": "fit-col-empty",
+      "itemRectCssPx": null,
+      "repeatTrackCount": 120,
+      "totalTrackCount": 120,
+      "trackHistogram": {
+        "0px": 120
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "id": "fit-col-first",
+      "itemRectCssPx": [
+        14,
+        488,
+        120,
+        12
+      ],
+      "repeatTrackCount": 120,
+      "totalTrackCount": 120,
+      "trackHistogram": {
+        "0px": 119,
+        "120px": 1
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "id": "fit-col-span-two",
+      "itemRectCssPx": [
+        14,
+        514,
+        120,
+        12
+      ],
+      "repeatTrackCount": 24,
+      "totalTrackCount": 24,
+      "trackHistogram": {
+        "0px": 22,
+        "58px": 2
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "id": "fill-row-gap-four",
+      "itemRectCssPx": null,
+      "repeatTrackCount": 24,
+      "totalTrackCount": 24,
+      "trackHistogram": {
+        "1.15625px": 24
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "id": "fit-row-first",
+      "itemRectCssPx": [
+        14,
+        674,
+        12,
+        120
+      ],
+      "repeatTrackCount": 120,
+      "totalTrackCount": 120,
+      "trackHistogram": {
+        "0px": 119,
+        "120px": 1
+      }
+    },
+    {
+      "contentAxisCssPx": 116,
+      "id": "border-box-col",
+      "itemRectCssPx": null,
+      "repeatTrackCount": 24,
+      "totalTrackCount": 24,
+      "trackHistogram": {
+        "1px": 24
+      }
+    }
+  ],
+  "scrollHeight": 848,
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewportCssPx": {
+    "height": 633,
+    "width": 1280
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "pass": "pass01",
+  "head": "912b88d1890755108279ca124d8f196e9dc10e5f",
+  "fetchedMain": "912b88d1890755108279ca124d8f196e9dc10e5f",
+  "baseRoot": "build/spinon/c11-4-pr562-tailnet-root-pass70-selected",
+  "selectedRoot": "build/spinon/c11-4-roadmap-status-sync-pass01-root-selected",
+  "outputRoot": "build/spinon/c11-4-roadmap-status-sync-pass01-site-selected",
+  "overlaySourceFiles": [
+    "spec/STATUS.md",
+    "spec/public/roadmap.html",
+    "plan/c11-4-grid-track-sizing.md",
+    "plan/c11-4-auto-repeat-zero-percent-minimum.md",
+    "plan/c11-4-auto-repeat-zero-percent-minimum-plan-review-20.md",
+    "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/agent-browser-pass02-observation.json",
+    "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-observation.json",
+    "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser-pass02.png",
+    "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser.png",
+    "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.md",
+    "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/README.md",
+    "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/SHA256SUMS",
+    "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/spec-derived-expectations.json",
+    "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/validate-precomparison.mjs"
+  ],
+  "overlays": [
+    {
+      "source": "spec/STATUS.md",
+      "path": "spec/STATUS.md",
+      "bytes": 403925,
+      "sha256": "4db15e8b8f6bdaea290f1530952223061828c13d8708742c16bc52d6491873a8"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "STATUS.md",
+      "bytes": 403925,
+      "sha256": "4db15e8b8f6bdaea290f1530952223061828c13d8708742c16bc52d6491873a8"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "spec/public/roadmap.html",
+      "bytes": 277632,
+      "sha256": "3e36cbe8077bb9e36b58a8b0a0203359edcc7de3380b05e0e4628c3d32c33ef9"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "roadmap.html",
+      "bytes": 277632,
+      "sha256": "3e36cbe8077bb9e36b58a8b0a0203359edcc7de3380b05e0e4628c3d32c33ef9"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 112367,
+      "sha256": "290526ae01076c7b43647c6ca79324642f36b636694d0986c2c0d82eb3765086"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "path": "spec/plan/c11-4-grid-track-sizing.md",
+      "bytes": 112367,
+      "sha256": "290526ae01076c7b43647c6ca79324642f36b636694d0986c2c0d82eb3765086"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-zero-percent-minimum.md",
+      "path": "plan/c11-4-auto-repeat-zero-percent-minimum.md",
+      "bytes": 8966,
+      "sha256": "5d5fc4046853fa8fe217a8f8a9d62f16e8ec2c657218635905e953d7a1c48ca9"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-zero-percent-minimum.md",
+      "path": "spec/plan/c11-4-auto-repeat-zero-percent-minimum.md",
+      "bytes": 8966,
+      "sha256": "5d5fc4046853fa8fe217a8f8a9d62f16e8ec2c657218635905e953d7a1c48ca9"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-zero-percent-minimum-plan-review-20.md",
+      "path": "plan/c11-4-auto-repeat-zero-percent-minimum-plan-review-20.md",
+      "bytes": 6164,
+      "sha256": "4a5280bc4eff1e42a393e062f0e590feeb1214ffda7b55017d1247c2ab3ed2c5"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-zero-percent-minimum-plan-review-20.md",
+      "path": "spec/plan/c11-4-auto-repeat-zero-percent-minimum-plan-review-20.md",
+      "bytes": 6164,
+      "sha256": "4a5280bc4eff1e42a393e062f0e590feeb1214ffda7b55017d1247c2ab3ed2c5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/agent-browser-pass02-observation.json",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/agent-browser-pass02-observation.json",
+      "bytes": 3535,
+      "sha256": "a46b8830720a9ca4fee0585e9b8fdf7158afa18535a20a55a52d6f8d11bea988"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/agent-browser-pass02-observation.json",
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/agent-browser-pass02-observation.json",
+      "bytes": 3535,
+      "sha256": "a46b8830720a9ca4fee0585e9b8fdf7158afa18535a20a55a52d6f8d11bea988"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/agent-browser-pass02-observation.json",
+      "path": "public/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/agent-browser-pass02-observation.json",
+      "bytes": 3535,
+      "sha256": "a46b8830720a9ca4fee0585e9b8fdf7158afa18535a20a55a52d6f8d11bea988"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/agent-browser-pass02-observation.json",
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/agent-browser-pass02-observation.json",
+      "bytes": 3535,
+      "sha256": "a46b8830720a9ca4fee0585e9b8fdf7158afa18535a20a55a52d6f8d11bea988"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-observation.json",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-observation.json",
+      "bytes": 4585,
+      "sha256": "fd21c63988c0b5854b3e43cb05d880999300a0a178676e74a2007bad1ed24896"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-observation.json",
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-observation.json",
+      "bytes": 4585,
+      "sha256": "fd21c63988c0b5854b3e43cb05d880999300a0a178676e74a2007bad1ed24896"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-observation.json",
+      "path": "public/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-observation.json",
+      "bytes": 4585,
+      "sha256": "fd21c63988c0b5854b3e43cb05d880999300a0a178676e74a2007bad1ed24896"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-observation.json",
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-observation.json",
+      "bytes": 4585,
+      "sha256": "fd21c63988c0b5854b3e43cb05d880999300a0a178676e74a2007bad1ed24896"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser-pass02.png",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser-pass02.png",
+      "bytes": 69679,
+      "sha256": "10e2df8df4b04ca7622c31618a4d1e0f9163999f5fd5968084071082b478509e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser-pass02.png",
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser-pass02.png",
+      "bytes": 69679,
+      "sha256": "10e2df8df4b04ca7622c31618a4d1e0f9163999f5fd5968084071082b478509e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser-pass02.png",
+      "path": "public/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser-pass02.png",
+      "bytes": 69679,
+      "sha256": "10e2df8df4b04ca7622c31618a4d1e0f9163999f5fd5968084071082b478509e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser-pass02.png",
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser-pass02.png",
+      "bytes": 69679,
+      "sha256": "10e2df8df4b04ca7622c31618a4d1e0f9163999f5fd5968084071082b478509e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser.png",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser.png",
+      "bytes": 69679,
+      "sha256": "10e2df8df4b04ca7622c31618a4d1e0f9163999f5fd5968084071082b478509e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser.png",
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser.png",
+      "bytes": 69679,
+      "sha256": "10e2df8df4b04ca7622c31618a4d1e0f9163999f5fd5968084071082b478509e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser.png",
+      "path": "public/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser.png",
+      "bytes": 69679,
+      "sha256": "10e2df8df4b04ca7622c31618a4d1e0f9163999f5fd5968084071082b478509e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser.png",
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser.png",
+      "bytes": 69679,
+      "sha256": "10e2df8df4b04ca7622c31618a4d1e0f9163999f5fd5968084071082b478509e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.md",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.md",
+      "bytes": 5153,
+      "sha256": "19a1ce7ee884aa2e65cf7296c7bb005c1fefc02f49eaab13c205dceb74f8dcd0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.md",
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.md",
+      "bytes": 5153,
+      "sha256": "19a1ce7ee884aa2e65cf7296c7bb005c1fefc02f49eaab13c205dceb74f8dcd0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.md",
+      "path": "public/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.md",
+      "bytes": 5153,
+      "sha256": "19a1ce7ee884aa2e65cf7296c7bb005c1fefc02f49eaab13c205dceb74f8dcd0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.md",
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.md",
+      "bytes": 5153,
+      "sha256": "19a1ce7ee884aa2e65cf7296c7bb005c1fefc02f49eaab13c205dceb74f8dcd0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/README.md",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/README.md",
+      "bytes": 4447,
+      "sha256": "373e185713987e7ad6ac97f06bb8d6803d0b2016a6402089580685cb4a11b03f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/README.md",
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/README.md",
+      "bytes": 4447,
+      "sha256": "373e185713987e7ad6ac97f06bb8d6803d0b2016a6402089580685cb4a11b03f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/README.md",
+      "path": "public/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/README.md",
+      "bytes": 4447,
+      "sha256": "373e185713987e7ad6ac97f06bb8d6803d0b2016a6402089580685cb4a11b03f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/README.md",
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/README.md",
+      "bytes": 4447,
+      "sha256": "373e185713987e7ad6ac97f06bb8d6803d0b2016a6402089580685cb4a11b03f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/SHA256SUMS",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/SHA256SUMS",
+      "bytes": 2144,
+      "sha256": "143b372afc771f876191434adebe948a56a5e544c5b794c803a6d9ef22bfa79f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/SHA256SUMS",
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/SHA256SUMS",
+      "bytes": 2144,
+      "sha256": "143b372afc771f876191434adebe948a56a5e544c5b794c803a6d9ef22bfa79f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/SHA256SUMS",
+      "path": "public/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/SHA256SUMS",
+      "bytes": 2144,
+      "sha256": "143b372afc771f876191434adebe948a56a5e544c5b794c803a6d9ef22bfa79f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/SHA256SUMS",
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/SHA256SUMS",
+      "bytes": 2144,
+      "sha256": "143b372afc771f876191434adebe948a56a5e544c5b794c803a6d9ef22bfa79f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/spec-derived-expectations.json",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/spec-derived-expectations.json",
+      "bytes": 3974,
+      "sha256": "2dfd0806e3f5b717b6d234cb87fd2d1239c49dbc81f9918395515528ec019d15"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/spec-derived-expectations.json",
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/spec-derived-expectations.json",
+      "bytes": 3974,
+      "sha256": "2dfd0806e3f5b717b6d234cb87fd2d1239c49dbc81f9918395515528ec019d15"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/spec-derived-expectations.json",
+      "path": "public/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/spec-derived-expectations.json",
+      "bytes": 3974,
+      "sha256": "2dfd0806e3f5b717b6d234cb87fd2d1239c49dbc81f9918395515528ec019d15"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/spec-derived-expectations.json",
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/spec-derived-expectations.json",
+      "bytes": 3974,
+      "sha256": "2dfd0806e3f5b717b6d234cb87fd2d1239c49dbc81f9918395515528ec019d15"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/validate-precomparison.mjs",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/validate-precomparison.mjs",
+      "bytes": 4665,
+      "sha256": "60d0c4da2d4de0d87ea3909f8c62d5836dcf032e1bfb44c2ad6daaf405791555"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/validate-precomparison.mjs",
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/validate-precomparison.mjs",
+      "bytes": 4665,
+      "sha256": "60d0c4da2d4de0d87ea3909f8c62d5836dcf032e1bfb44c2ad6daaf405791555"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/validate-precomparison.mjs",
+      "path": "public/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/validate-precomparison.mjs",
+      "bytes": 4665,
+      "sha256": "60d0c4da2d4de0d87ea3909f8c62d5836dcf032e1bfb44c2ad6daaf405791555"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/validate-precomparison.mjs",
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/validate-precomparison.mjs",
+      "bytes": 4665,
+      "sha256": "60d0c4da2d4de0d87ea3909f8c62d5836dcf032e1bfb44c2ad6daaf405791555"
+    }
+  ],
+  "storageMethod": "hardlink the known-good selected root; unlink each overlay destination before writing its isolated copy",
+  "deadLinkChecks": "disabled only for this isolated preview build because repository-wide existing dead links are documented",
+  "noDeletes": true
+}

@@ -1,0 +1,45 @@
+{
+  "verifiedAtUtc": "2026-10-23T16:16:19Z",
+  "agentBrowserVersion": "0.31.1",
+  "session": "spinon-roadmap-status-sync-20261024",
+  "pages": [
+    {
+      "route": "/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "rendered": true,
+      "count": "213개 표시 · 공식 완료 72/213",
+      "c11_4ZeroPercentCard": "계획 단계",
+      "activeLane": "C11.4",
+      "c13": "미완료·비활성",
+      "pageErrors": 0,
+      "linkedScreenshot": {
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 69679
+      }
+    },
+    {
+      "route": "/spinon/plan/c11-4-auto-repeat-zero-percent-minimum.html",
+      "title": "C11.4 · zero-percent auto-repeat minimum 계획 - 스피논 문서",
+      "rendered": true,
+      "zeroPercentRejectedByCurrentPreflight": true,
+      "countFloorOnly": true,
+      "runtimeNotStarted": true,
+      "c11_4Incomplete": true
+    },
+    {
+      "route": "/spinon/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/README.html",
+      "title": "C11.4 · auto-repeat 0% minimum 사전 비교 - 스피논 문서",
+      "rendered": true,
+      "thirteenScenesDescribed": true,
+      "runtimeLimitsShown": true,
+      "evidenceImage": {
+        "loaded": true,
+        "width": 1280,
+        "height": 848,
+        "src": "/spinon/static/image/chrome156-zero-percent-auto-repeat-agent-browser-pass02.d9add6adc9.png"
+      }
+    }
+  ],
+  "roadmapScreenshot": "tailnet-roadmap-agent-browser.png"
+}

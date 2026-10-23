@@ -1,0 +1,58 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 zero percentage auto-repeat minimum</title>
+<style>
+  body { margin: 0; padding: 12px; font: 14px sans-serif; color: #202124; }
+  h1 { margin: 0 0 8px; font-size: 20px; }
+  p { margin: 0 0 8px; }
+  table { border-collapse: collapse; margin-bottom: 10px; font: 12px ui-monospace, monospace; }
+  th, td { border: 1px solid #999; padding: 3px 6px; text-align: left; }
+  .case { position: relative; display: grid; grid-auto-flow: row; grid-auto-rows: 12px; grid-auto-columns: 12px; border: 2px solid #111; margin: 10px 0; overflow: visible; }
+  .item { min-width: 0; min-height: 0; background: #e5484d; }
+  #fill-col-zero-gap { width: 120px; grid-template-columns: repeat(auto-fill, minmax(0%, 1fr)); column-gap: 0; }
+  #fill-col-zero-px-gap { width: 120px; grid-template-columns: repeat(auto-fill, minmax(0px, 1fr)); column-gap: 0; }
+  #fill-col-gap-four { width: 120px; grid-template-columns: repeat(auto-fill, minmax(0%, 1fr)); column-gap: 4px; }
+  #fill-col-half-px-gap-zero { width: 120px; grid-template-columns: repeat(auto-fill, minmax(0.5px, 1fr)); column-gap: 0; }
+  #fill-col-half-px-gap-four { width: 120px; grid-template-columns: repeat(auto-fill, minmax(0.5px, 1fr)); column-gap: 4px; }
+  #fill-col-half-percent-gap-four { width: 120px; grid-template-columns: repeat(auto-fill, minmax(0.5%, 1fr)); column-gap: 4px; }
+  #fill-col-zero-neighbors-subpixel { width: 120px; grid-template-columns: 0.5px repeat(auto-fill, minmax(0%, 1fr)) 0.5px; column-gap: 4px; }
+  #fit-col-empty { width: 120px; grid-template-columns: repeat(auto-fit, minmax(0%, 1fr)); column-gap: 0; }
+  #fit-col-first { width: 120px; grid-template-columns: repeat(auto-fit, minmax(0%, 1fr)); column-gap: 0; }
+  #fit-col-span-two { width: 120px; grid-template-columns: repeat(auto-fit, minmax(0%, 1fr)); column-gap: 4px; }
+  #fill-row-gap-four { height: 120px; grid-template-rows: repeat(auto-fill, minmax(0%, 1fr)); row-gap: 4px; }
+  #fit-row-first { height: 120px; grid-template-rows: repeat(auto-fit, minmax(0%, 1fr)); row-gap: 0; }
+  #border-box-col { box-sizing: border-box; width: 136px; padding: 8px; grid-template-columns: repeat(auto-fill, minmax(0%, 1fr)); column-gap: 4px; }
+</style>
+<h1>C11.4 · auto-repeat 0% minimum</h1>
+<p>Agent Browser / Chrome 156 observation. 0% minimum resolution is separate from the 1px repeat-count floor.</p>
+<table id="observations">
+  <thead><tr><th>Scene</th><th>Tracks</th><th>Track values</th><th>Item frame</th></tr></thead>
+  <tbody></tbody>
+</table>
+<div id="fill-col-zero-gap" class="case"></div>
+<div id="fill-col-zero-px-gap" class="case"></div>
+<div id="fill-col-gap-four" class="case"></div>
+<div id="fill-col-half-px-gap-zero" class="case"></div>
+<div id="fill-col-half-px-gap-four" class="case"></div>
+<div id="fill-col-half-percent-gap-four" class="case"></div>
+<div id="fill-col-zero-neighbors-subpixel" class="case"></div>
+<div id="fit-col-empty" class="case"></div>
+<div id="fit-col-first" class="case"><div class="item" style="grid-column: 1"></div></div>
+<div id="fit-col-span-two" class="case"><div class="item" style="grid-column: 1 / span 2"></div></div>
+<div id="fill-row-gap-four" class="case"></div>
+<div id="fit-row-first" class="case"><div class="item" style="grid-row: 1"></div></div>
+<div id="border-box-col" class="case"></div>
+<script>
+  const round64 = value => Math.round(value * 64) / 64;
+  const body = document.querySelector('#observations tbody');
+  for (const grid of document.querySelectorAll('.case')) {
+    const style = getComputedStyle(grid);
+    const trackText = grid.id.includes('-row-') ? style.gridTemplateRows : style.gridTemplateColumns;
+    const tracks = trackText.trim().split(/\s+/).filter(Boolean);
+    const item = grid.firstElementChild;
+    const rect = item?.getBoundingClientRect();
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>${grid.id}</td><td>${tracks.length}</td><td>${tracks[0] || '—'}${tracks.length > 1 ? ` … ${tracks[tracks.length - 1]}` : ''}</td><td>${rect ? [rect.x, rect.y, rect.width, rect.height].map(round64).join(', ') : '—'}</td>`;
+    body.append(row);
+  }
+</script>

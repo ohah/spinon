@@ -1,0 +1,239 @@
+{
+  "browser": {
+    "agentBrowser": "0.31.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewportCssPx": {
+      "width": 1280,
+      "height": 633
+    },
+    "devicePixelRatio": 1
+  },
+  "fixture": {
+    "path": "tests/fixtures/css/c11/grid-auto-repeat-zero-percent-minimum-c114.html",
+    "sha256": "cf06ba027c282ec96361a3dccd1df1e6e17d74cc110e4b1e4000fa25cf43d62a"
+  },
+  "screenshot": {
+    "path": "chrome156-zero-percent-auto-repeat-agent-browser.png",
+    "sha256": "10e2df8df4b04ca7622c31618a4d1e0f9163999f5fd5968084071082b478509e",
+    "width": 1280,
+    "height": 848
+  },
+  "observedAt": "2026-10-24",
+  "scenes": [
+    {
+      "contentAxisCssPx": 120,
+      "gridRectCssPx": [
+        12,
+        374,
+        124,
+        4
+      ],
+      "id": "fill-col-zero-gap",
+      "itemRectCssPx": null,
+      "totalTrackCount": 120,
+      "trackHistogram": {
+        "1px": 120
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "gridRectCssPx": [
+        12,
+        388,
+        124,
+        4
+      ],
+      "id": "fill-col-zero-px-gap",
+      "itemRectCssPx": null,
+      "totalTrackCount": 120,
+      "trackHistogram": {
+        "1px": 120
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "gridRectCssPx": [
+        12,
+        402,
+        124,
+        4
+      ],
+      "id": "fill-col-gap-four",
+      "itemRectCssPx": null,
+      "totalTrackCount": 24,
+      "trackHistogram": {
+        "1.15625px": 24
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "gridRectCssPx": [
+        12,
+        416,
+        124,
+        4
+      ],
+      "id": "fill-col-half-px-gap-zero",
+      "itemRectCssPx": null,
+      "totalTrackCount": 120,
+      "trackHistogram": {
+        "1px": 120
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "gridRectCssPx": [
+        12,
+        430,
+        124,
+        4
+      ],
+      "id": "fill-col-half-px-gap-four",
+      "itemRectCssPx": null,
+      "totalTrackCount": 24,
+      "trackHistogram": {
+        "1.15625px": 24
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "gridRectCssPx": [
+        12,
+        444,
+        124,
+        4
+      ],
+      "id": "fill-col-half-percent-gap-four",
+      "itemRectCssPx": null,
+      "totalTrackCount": 24,
+      "trackHistogram": {
+        "1.15625px": 24
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "gridRectCssPx": [
+        12,
+        458,
+        124,
+        4
+      ],
+      "id": "fill-col-zero-neighbors-subpixel",
+      "itemRectCssPx": null,
+      "repeatTrackCount": 23,
+      "totalTrackCount": 25,
+      "trackHistogram": {
+        "0.5px": 2,
+        "1px": 23
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "gridRectCssPx": [
+        12,
+        472,
+        124,
+        4
+      ],
+      "id": "fit-col-empty",
+      "itemRectCssPx": null,
+      "totalTrackCount": 120,
+      "trackHistogram": {
+        "0px": 120
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "gridRectCssPx": [
+        12,
+        486,
+        124,
+        16
+      ],
+      "id": "fit-col-first",
+      "itemRectCssPx": [
+        14,
+        488,
+        120,
+        12
+      ],
+      "totalTrackCount": 120,
+      "trackHistogram": {
+        "0px": 119,
+        "120px": 1
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "gridRectCssPx": [
+        12,
+        512,
+        124,
+        16
+      ],
+      "id": "fit-col-span-two",
+      "itemRectCssPx": [
+        14,
+        514,
+        120,
+        12
+      ],
+      "totalTrackCount": 24,
+      "trackHistogram": {
+        "0px": 22,
+        "58px": 2
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "gridRectCssPx": [
+        12,
+        538,
+        1256,
+        124
+      ],
+      "id": "fill-row-gap-four",
+      "itemRectCssPx": null,
+      "totalTrackCount": 24,
+      "trackHistogram": {
+        "1.15625px": 24
+      }
+    },
+    {
+      "contentAxisCssPx": 120,
+      "gridRectCssPx": [
+        12,
+        672,
+        1256,
+        124
+      ],
+      "id": "fit-row-first",
+      "itemRectCssPx": [
+        14,
+        674,
+        12,
+        120
+      ],
+      "totalTrackCount": 120,
+      "trackHistogram": {
+        "0px": 119,
+        "120px": 1
+      }
+    },
+    {
+      "contentAxisCssPx": 116,
+      "gridRectCssPx": [
+        12,
+        806,
+        136,
+        20
+      ],
+      "id": "border-box-col",
+      "itemRectCssPx": null,
+      "totalTrackCount": 24,
+      "trackHistogram": {
+        "1px": 24
+      }
+    }
+  ]
+}
