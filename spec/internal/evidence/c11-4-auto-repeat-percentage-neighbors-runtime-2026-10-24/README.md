@@ -4,7 +4,7 @@
 
 현재 checkout의 제한 후보에서 13개 고정 scene이 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 13/13 통과했다. 각 플랫폼에서 track 목록·collapse·node frame·draw/present를 확인했다. Android PixelCopy와 iOS compositor 제출 전 Metal drawable 표본은 각각 15/15 exact다. 고정 표본은 렌더 전체 또는 실제 화면의 pixel equality를 뜻하지 않는다.
 
-구현 변경은 이 기록 시점에 미커밋이다. 공식 C11.4 상태는 미완료이고 `spec/STATUS.md`의 공식 표시 수 `72/213`을 바꾸지 않는다. Chrome 156 `col-fit-first` CSSOM 관측 196px은 CSS Grid 2025 CRD로 계산한 200px과 분리한다.
+실행 검증 기록 당시에는 구현 PR 전 candidate였다. 구현 PR [#580](https://github.com/ohah/spinon/pull/580)은 2026-10-23T20:46:27Z Rebase and merge되어 SHA `33b00d077147ad9f2102af3220daa2c6cf74e2f9`를 남겼다. C11.4 공식 상태는 미완료이고 `spec/STATUS.md`의 공식 표시 수 `72/213`을 바꾸지 않는다. Chrome 156 `col-fit-first` CSSOM 관측 196px은 CSS Grid 2025 CRD로 계산한 200px과 분리한다.
 
 ## 코드·빌드 출처
 
@@ -75,4 +75,4 @@ cargo clippy --locked --workspace --all-targets -- -D warnings
 
 ## 한계와 다음 관문
 
-이 결과는 고정 13-scene 후보와 두 simulator에 한정된다. 실기기, Android hardware GPU, iOS compositor 이후 픽셀, 일반 author CSS admission, WPT 전체는 검증하지 않았다. Chrome 156의 196px 관측 차이는 규범 oracle과 계속 분리한다. C11.4 전체 지원 또는 완료 판정으로 확대하지 않는다. 구현/runtime 실패 관점 20개 검토는 [별도 문서](implementation-runtime-review-20.md), 독립 PR diff 실패 관점 30개 검토는 [검토 기록](pr-diff-review-30.md)에 있다. PR 병합과 병합 후 Tailnet preview 동기화는 남아 있다.
+이 결과는 고정 13-scene 후보와 두 simulator에 한정된다. 실기기, Android hardware GPU, iOS compositor 이후 픽셀, 일반 author CSS admission, WPT 전체는 검증하지 않았다. Chrome 156의 196px 관측 차이는 규범 oracle과 계속 분리한다. C11.4 전체 지원 또는 완료 판정으로 확대하지 않는다. 구현/runtime 실패 관점 20개 검토는 [별도 문서](implementation-runtime-review-20.md), 독립 PR diff 실패 관점 30개 검토는 [검토 기록](pr-diff-review-30.md)에 있다. PR #580 병합은 완료했다. 병합 당시 required check은 설정되지 않았고 GitHub check은 보고되지 않았다. 병합된 문서 상태를 반영한 Tailnet preview 동기화는 별도 문서 PR 병합 뒤 진행한다.
