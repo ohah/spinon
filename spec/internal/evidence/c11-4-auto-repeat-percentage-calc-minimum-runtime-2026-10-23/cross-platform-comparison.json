@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "android": "spec/internal/evidence/c11-4-auto-repeat-percentage-calc-minimum-2026-10-23/android-avd-c114-percentage-calc-minimum-android-avd-20261023T092106329Z-9b39fb3b/result.json",
+  "ios": "spec/internal/evidence/c11-4-auto-repeat-percentage-calc-minimum-2026-10-23/ios-simulator-c114-percentage-calc-minimum-ios-simulator-20261023T092117937Z-c0ff8228/result.json",
+  "sceneCount": 6,
+  "frameToleranceCssPx": 0.015625,
+  "trackToleranceCssPx": 0.015625,
+  "scenes": [
+    {
+      "sceneId": "columns-percent-calc-fill",
+      "nodeCount": 4,
+      "maxFrameDeltaCssPx": 0,
+      "maxTrackDeltaCssPx": 0,
+      "drawPresented": true,
+      "androidTraceChunks": 5,
+      "iosTraceChunks": 9
+    },
+    {
+      "sceneId": "columns-percent-fixed-fill-control",
+      "nodeCount": 4,
+      "maxFrameDeltaCssPx": 0,
+      "maxTrackDeltaCssPx": 0,
+      "drawPresented": true,
+      "androidTraceChunks": 5,
+      "iosTraceChunks": 9
+    },
+    {
+      "sceneId": "columns-percent-calc-fit",
+      "nodeCount": 2,
+      "maxFrameDeltaCssPx": 0,
+      "maxTrackDeltaCssPx": 0,
+      "drawPresented": true,
+      "androidTraceChunks": 4,
+      "iosTraceChunks": 8
+    },
+    {
+      "sceneId": "rows-percent-calc-fill",
+      "nodeCount": 4,
+      "maxFrameDeltaCssPx": 0,
+      "maxTrackDeltaCssPx": 0,
+      "drawPresented": true,
+      "androidTraceChunks": 5,
+      "iosTraceChunks": 9
+    },
+    {
+      "sceneId": "rows-percent-fixed-fill-control",
+      "nodeCount": 4,
+      "maxFrameDeltaCssPx": 0,
+      "maxTrackDeltaCssPx": 0,
+      "drawPresented": true,
+      "androidTraceChunks": 5,
+      "iosTraceChunks": 9
+    },
+    {
+      "sceneId": "rows-percent-calc-fit",
+      "nodeCount": 2,
+      "maxFrameDeltaCssPx": 0,
+      "maxTrackDeltaCssPx": 0,
+      "drawPresented": true,
+      "androidTraceChunks": 4,
+      "iosTraceChunks": 8
+    }
+  ]
+}

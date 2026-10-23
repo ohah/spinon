@@ -1,0 +1,68 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-14945bab067de552)
+
+running 30 tests
+test grid::auto_track_sizing_tests::auto_repeat::auto_repeat_calc_implicit_track_rejects_missing_axis_binding ... ok
+test grid::auto_track_sizing_tests::auto_repeat::typed_auto_track_lists_remain_rejected_outside_track_sizing_profile ... ok
+test grid::auto_track_sizing_tests::auto_repeat::zero_secondary_line_fails_before_layout ... ok
+test grid::auto_track_sizing_tests::auto_repeat::auto_repeat_percentage_calc_minimum_rejects_unbounded_or_indefinite_cases ... ok
+test grid::auto_track_sizing_tests::auto_repeat::auto_fit_keeps_repeat_count_and_collapses_empty_repeats_after_leading_placement ... ok
+test grid::auto_track_sizing_tests::auto_repeat::zero_px_auto_track_size_remains_zero_on_leading_implicit_tracks ... ok
+test grid::auto_track_sizing_tests::auto_repeat::auto_repeat_nested_calc_tracks_validate_axis_and_node_binding ... ok
+test grid::template_areas_tests::auto_repeat_template_areas_accept_empty_and_bounded_metadata ... ok
+test grid::template_areas_tests::auto_repeat_template_areas_accept_two_auto_repeat_axes_and_area_extension ... ok
+test grid::auto_track_sizing_tests::auto_repeat::auto_repeat_scalar_auto_track_sizes_cover_leading_implicit_tracks ... ok
+test grid::auto_track_sizing_tests::auto_repeat::numeric_negative_line_uses_expanded_auto_repeat_track_count ... ok
+test grid::auto_track_sizing_tests::auto_repeat::secondary_positive_line_uses_expanded_repeat_grid ... ok
+test grid::auto_track_sizing_tests::auto_repeat::auto_repeat_calc_implicit_tracks_use_axis_math_bindings ... ok
+test grid::auto_track_sizing_tests::track_sizing_accepts_fixed_px_auto_track_lists_with_auto_repeat ... ok
+test grid::auto_track_sizing_tests::auto_repeat::secondary_reversed_and_equal_lines_follow_taffy_grid_placement ... ok
+test grid::auto_track_sizing_tests::auto_repeat::auto_repeat_leading_auto_track_lists_cycle_backwards_on_both_axes ... ok
+test grid::auto_track_sizing_tests::auto_repeat::definite_percentage_calc_auto_repeat_minimum_uses_its_axis_basis ... ok
+test grid::track_sizing_tests::auto_repeat_rejects_an_invalid_second_axis_independently ... ok
+test grid::track_sizing_tests::auto_repeat_rejects_an_invalid_first_axis_independently ... ok
+test grid::tests::auto_repeat_line_metadata_above_budget_fails_before_taffy ... ok
+test grid::track_sizing_tests::auto_repeat_accepts_independent_repeats_on_both_axes ... ok
+test grid::track_sizing_tests::auto_repeat_template_area_extends_the_explicit_grid_and_resolves_area_lines ... ok
+test grid::track_sizing_tests::two_axis_auto_repeat_template_area_extends_both_axes_and_resolves_area_lines ... ok
+test grid::auto_track_sizing_tests::auto_repeat::auto_repeat_implicit_lists_convert_supported_track_sizing_functions ... ok
+test grid::auto_track_sizing_tests::auto_repeat::area_expansion::area_expansion_tracks_keep_auto_fit_collapse_and_item_geometry ... ok
+test grid::track_sizing_tests::auto_repeat_minimum_size_repeat_counts_match_axis_and_fill_mode_at_boundaries ... ok
+test grid::track_sizing_tests::auto_repeat_named_lines_resolve_after_repeat_expansion ... ok
+test grid_chrome_oracle_tests::chrome155_auto_repeat_track_oracle_cases_match_traces_and_frames ... ok
+test grid::track_sizing_tests::auto_repeat_named_placement_uses_implicit_lines_when_name_is_missing_or_short ... ok
+test grid::template_areas_tests::auto_repeat_template_areas_reject_invalid_shape_names_bounds_and_metadata ... ok
+
+test result: ok. 30 passed; 0 failed; 0 ignored; 0 measured; 213 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-7f32cb811abf76a2)
+
+running 9 tests
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::track_sizing_profile_preserves_auto_repeat_inner_and_component_line_names ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::track_sizing_profile_preserves_independent_auto_repeats_on_both_axes ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::track_sizing_profile_preserves_fixed_minimum_auto_repeat_modes ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_rejects_unsupported_percentage_calc_auto_repeat_minimums ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::track_sizing_profile_preserves_auto_repeat_neighbors_and_fragment_order ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_preserves_definite_percentage_calc_auto_repeat_minimums ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::auto_repeat_line_metadata_allocation_failures_are_contextual_and_recoverable ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::auto_repeat_rejects_profiles_and_shapes_outside_the_supported_subset ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_normalizes_absolute_calc_auto_repeat_minimums ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 186 filtered out; finished in 0.01s
+
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 11 tests
+test projection::style_values::grid_placement_values::tests::auto_repeat_item_projection_preserves_named_placements_for_taffy ... ok
+test projection::style_values::grid_placement_values::tests::auto_repeat_item_projection_preserves_an_unlisted_name_for_implicit_fallback ... ok
+test projection::style_values::grid_placement_values::named_line::tests::auto_repeat_named_placements_remain_symbolic_with_or_without_authored_names ... ok
+test projection::style_values::grid_values::tests::track_sizing_profile_keeps_single_axis_auto_repeat_projection ... ok
+test projection::style_values::grid_values::tests::track_sizing_profile_projects_independent_auto_repeat_modes_on_both_axes ... ok
+test projection::style_values::grid_values::tests::track_sizing_projects_areas_with_one_auto_repeat_axis_and_preserves_authored_size ... ok
+test projection::style_values::grid_values::tests::auto_repeat_template_areas_project_two_axes_and_reject_allocation_failures ... ok
+test projection::style_values::grid_values::tests::track_sizing_profile_projects_auto_repeat_inner_and_component_names ... ok
+test c11_4_track_sizing_areas_tests::auto_repeat_template_areas_accept_bare_grid_area_placement_on_both_axes ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_profile_lays_out_css_auto_repeat_modes ... ok
+test c11_4_track_sizing_areas_tests::auto_repeat_explicit_neighbors::auto_repeat_explicit_neighbor_matrix_uses_collapsed_auto_fit_gutters ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 211 filtered out; finished in 0.02s

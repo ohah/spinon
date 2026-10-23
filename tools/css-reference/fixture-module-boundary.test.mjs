@@ -116,9 +116,10 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
   const fixtures = JSON.parse(fixtureText);
   const calcFixtures = JSON.parse(calcFixtureText);
   assert.equal(fixtures.length, 29, 'template-area fixture는 단일 축 13개와 양 축 16개다.');
-  assert.equal(calcFixtures.length, 6, 'absolute calc auto-repeat fixture는 6개다.');
-  assert.match(captureSource, /assert\.equal\(scenes\.length, 342,/,
-    'C11.4 simulator capture scene count must include the absolute calc cases.');
+  assert.equal(calcFixtures.length, 12,
+    'absolute 및 percentage calc auto-repeat fixture는 12개다.');
+  assert.match(captureSource, /assert\.equal\(scenes\.length, 348,/,
+    'C11.4 simulator capture scene count must include the absolute and percentage calc cases.');
   const noAreaIDs = JSON.parse(noAreaOracleText).cases.map(({ id }) => id);
   assert.equal(noAreaIDs.length, 12, 'the no-area dual-axis oracle must contain 12 scenes.');
   const matrixManifest = JSON.parse(matrixManifestText);
@@ -130,7 +131,7 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(listScenes.status, 0, listScenes.stderr);
   const captureCatalog = JSON.parse(listScenes.stdout);
-  assert.equal(captureCatalog.sceneCount, 342);
+  assert.equal(captureCatalog.sceneCount, 348);
   const matrixIDs = [...noAreaIDs, ...fixtures.map(({ id }) => id)];
   assert.equal(matrixIDs.length, 41, 'the focused C11.4 matrix must contain 41 scenes.');
   assert.equal(new Set(matrixIDs).size, matrixIDs.length,
@@ -146,7 +147,7 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selectedCatalogResult.status, 0, selectedCatalogResult.stderr);
   const selectedCatalog = JSON.parse(selectedCatalogResult.stdout);
-  assert.equal(selectedCatalog.sceneCount, 342);
+  assert.equal(selectedCatalog.sceneCount, 348);
   assert.equal(selectedCatalog.selectedSceneCount, 41);
   assert.deepEqual([...selectedCatalog.selectedSceneIDs].sort(), [...matrixIDs].sort(),
     'the simulator selection must resolve to exactly the 41 focused matrix IDs.');
@@ -154,6 +155,9 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
   assert.deepEqual(calcIDs, [
     'columns-calc-fill', 'columns-fixed-fill-control', 'columns-calc-fit',
     'rows-calc-fill', 'rows-fixed-fill-control', 'rows-calc-fit',
+    'columns-percent-calc-fill', 'columns-percent-fixed-fill-control',
+    'columns-percent-calc-fit', 'rows-percent-calc-fill',
+    'rows-percent-fixed-fill-control', 'rows-percent-calc-fit',
   ]);
   assert.deepEqual(calcIDs.filter((id) => !captureIDs.has(id)), [],
     'every calc fixture must be present in the simulator capture route.');
@@ -167,7 +171,7 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selectedCalcResult.status, 0, selectedCalcResult.stderr);
   const selectedCalcCatalog = JSON.parse(selectedCalcResult.stdout);
-  assert.equal(selectedCalcCatalog.selectedSceneCount, 6);
+  assert.equal(selectedCalcCatalog.selectedSceneCount, 12);
   assert.deepEqual([...selectedCalcCatalog.selectedSceneIDs].sort(), [...calcIDs].sort());
   assert.deepEqual(
     fixtures.map(({ id }) => id).filter((id) => id.startsWith('template-area-repeat-two-axis-')),

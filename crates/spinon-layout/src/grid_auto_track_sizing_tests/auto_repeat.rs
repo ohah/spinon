@@ -63,6 +63,156 @@ fn two_axis_auto_repeat_grid(
     input
 }
 
+fn percentage_calc_auto_repeat_input(
+    columns_axis: bool,
+    expression: LayoutCssMath,
+    indefinite_axis: bool,
+) -> LayoutInput {
+    let calc_id = LayoutCalcId(7_100);
+    let repeated = GridTrackSize::MinMax {
+        min: GridTrackMinSizingFunction::Calc(calc_id),
+        max: GridTrackMaxSizingFunction::Fraction(1.0),
+    };
+    let mut input = grid_input(
+        if columns_axis {
+            vec![repeated]
+        } else {
+            vec![GridTrackSize::LengthPx(48.0)]
+        },
+        if columns_axis {
+            vec![GridTrackSize::LengthPx(48.0)]
+        } else {
+            vec![repeated]
+        },
+        3,
+        LayoutGap {
+            column: crate::LayoutLengthPercentage::length(0.0),
+            row: crate::LayoutLengthPercentage::length(0.0),
+        },
+    );
+    input.nodes[0].style.width = LayoutDimension::Fixed(if columns_axis { 112.0 } else { 48.0 });
+    input.nodes[0].style.height = LayoutDimension::Fixed(if columns_axis { 48.0 } else { 112.0 });
+    input.viewport = Viewport {
+        width: if columns_axis { 112.0 } else { 48.0 },
+        height: if columns_axis { 48.0 } else { 112.0 },
+    };
+    if indefinite_axis {
+        input.root_sizing = crate::RootSizingPolicy::ResolveWithin;
+        if columns_axis {
+            input.nodes[0].style.width = LayoutDimension::Auto;
+        } else {
+            input.nodes[0].style.height = LayoutDimension::Auto;
+        }
+    }
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::TrackSizing;
+    container.auto_flow = if columns_axis {
+        GridAutoFlow::Row
+    } else {
+        GridAutoFlow::Column
+    };
+    if columns_axis {
+        container.columns_auto_repeat = Some(crate::GridAutoRepeat {
+            mode: crate::GridAutoRepeatMode::AutoFill,
+            start: 0,
+            end: 1,
+            line_names: Vec::new(),
+        });
+    } else {
+        container.rows_auto_repeat = Some(crate::GridAutoRepeat {
+            mode: crate::GridAutoRepeatMode::AutoFill,
+            start: 0,
+            end: 1,
+            line_names: Vec::new(),
+        });
+    }
+    input.css_math = vec![LayoutCssMathValue {
+        id: calc_id,
+        node_id: id(1),
+        property: if columns_axis {
+            LayoutCssMathProperty::GridTemplateColumns
+        } else {
+            LayoutCssMathProperty::GridTemplateRows
+        },
+        expression,
+    }];
+    input
+}
+
+#[test]
+fn definite_percentage_calc_auto_repeat_minimum_uses_its_axis_basis() {
+    for columns_axis in [true, false] {
+        let input = percentage_calc_auto_repeat_input(
+            columns_axis,
+            LayoutCssMath::Sum(vec![
+                LayoutCssMath::LengthPx(20.0),
+                LayoutCssMath::Percentage(0.1),
+            ]),
+            false,
+        );
+
+        let output = TaffyLayoutEngine.compute(&input).unwrap();
+        let axis = if columns_axis {
+            LayoutGridTrackSizingAxis::Columns
+        } else {
+            LayoutGridTrackSizingAxis::Rows
+        };
+        let tracks = final_axis_track_sizes(&output, axis);
+
+        assert_eq!(tracks.len(), 3, "columns_axis={columns_axis}");
+        for size in tracks {
+            assert!(
+                (size - 112.0 / 3.0).abs() <= 1.0 / 64.0,
+                "columns_axis={columns_axis}: expected 112/3px track, got {size}"
+            );
+        }
+    }
+}
+
+#[test]
+fn auto_repeat_percentage_calc_minimum_rejects_unbounded_or_indefinite_cases() {
+    for expression in [
+        LayoutCssMath::Sum(vec![
+            LayoutCssMath::LengthPx(0.0),
+            LayoutCssMath::Percentage(0.0),
+        ]),
+        LayoutCssMath::Sum(vec![
+            LayoutCssMath::LengthPx(20.0),
+            LayoutCssMath::Percentage(0.1),
+            LayoutCssMath::LengthPx(0.0),
+        ]),
+        LayoutCssMath::Sum(vec![
+            LayoutCssMath::LengthPx(20.0),
+            LayoutCssMath::Negate(Box::new(LayoutCssMath::Percentage(0.1))),
+        ]),
+    ] {
+        let input = percentage_calc_auto_repeat_input(true, expression, false);
+        assert!(matches!(
+            TaffyLayoutEngine.compute(&input),
+            Err(LayoutError::InvalidGridTrackList {
+                node,
+                property: "grid-template-columns",
+            }) if node == id(1)
+        ));
+    }
+
+    let input = percentage_calc_auto_repeat_input(
+        false,
+        LayoutCssMath::Sum(vec![
+            LayoutCssMath::LengthPx(20.0),
+            LayoutCssMath::Percentage(0.1),
+        ]),
+        true,
+    );
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(LayoutError::InvalidGridTrackList {
+            node,
+            property: "grid-template-rows",
+        }) if node == id(1)
+    ));
+}
+
 fn set_two_axis_leading_span(input: &mut LayoutInput, columns: i32, rows: i32) {
     let (column_start, column_end) = negative_leading_span(5, columns);
     let (row_start, row_end) = negative_leading_span(6, rows);
