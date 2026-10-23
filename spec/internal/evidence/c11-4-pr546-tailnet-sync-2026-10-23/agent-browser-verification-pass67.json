@@ -1,0 +1,59 @@
+{
+  "pass": "pass67",
+  "sourceHead": "849f04fbffc6f9efb85f7269791c7b6c51768724",
+  "roadmap": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "title": "스피논 구현 로드맵",
+    "entryHeading": "2026-10-23 C11.4 양축 auto-repeat + grid-template-areas runtime 제한 slice · PR #545 병합",
+    "androidSimulatorScenes": "34/34",
+    "iosSimulatorScenes": "34/34",
+    "chrome156Oracle": "9/9",
+    "overflow": {
+      "root": "40×40px",
+      "item": "(44,40,8,8)",
+      "columns": [20, 16, 16],
+      "rows": [20, 12, 12],
+      "pixelCopy": "4/4 exact",
+      "metalDrawableBeforeCompositor": "4/4 exact"
+    },
+    "implementationMergeSha": "d7a6b35966f7ba9ad53fc5c450bfd1e6ec9ead34",
+    "officialCount": "77/213",
+    "c114Complete": false,
+    "statusLink": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html#css-%EA%B5%AC%ED%98%84-%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8",
+    "screenshot": {
+      "path": "tailnet-roadmap-agent-browser-pass67.png",
+      "bytes": 573565,
+      "sha256": "e0d563c8e6efb00674cb99dfc0144ca782678eeeb303e5e2bfaf71d38eba5b21",
+      "width": 1440,
+      "height": 1200
+    }
+  },
+  "statusAnchor": {
+    "decodedFragment": "css-구현-체크리스트",
+    "targetExists": true,
+    "targetTag": "H2",
+    "targetText": "CSS 구현 체크리스트",
+    "routeContentRefreshed": false,
+    "screenshot": {
+      "path": "tailnet-status-anchor-agent-browser-pass67.png",
+      "bytes": 453716,
+      "sha256": "fbc3cb17aeb9352abfb6d7e90224e6517492ab01f8a5c1af0694aa7df1afbd95",
+      "width": 1440,
+      "height": 1200
+    }
+  },
+  "sessionCleanup": {
+    "session": "spinon-tailnet-pass67",
+    "closeReportedSuccess": true,
+    "sessionInfoAfterClose": {
+      "active": false,
+      "pid": null
+    },
+    "unrelatedSessionTouched": false
+  },
+  "scopeLimits": [
+    "Only Tailnet roadmap.html was replaced.",
+    "STATUS.html and other rendered routes were not rebuilt.",
+    "No app, simulator, or physical-device test was performed in this pass."
+  ]
+}
