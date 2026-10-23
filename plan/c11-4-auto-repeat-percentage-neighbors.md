@@ -14,7 +14,15 @@ CSS Grid Layout Module Level 1, 2025 CRD §7.2.3.2는 definite preferred/max siz
 
 [Chrome 156 Agent Browser 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-precomparison-2026-10-24/README.md)는 13개 고정 scene의 computed track 목록과 item frame을 보존한다. 기본 content axis는 240px이고 gap은 4px다. 10% prefix와 5% suffix는 24px·12px이므로 minmax(40px, 1fr)의 auto-fill 반복 수는 4이고 used tracks는 [24,46,46,46,46,12]다. 한쪽 12.5% neighbor의 30px used size는 네 repeat track을 남기며, definite 136px border-box는 padding/border를 뺀 116px content basis를 사용한다. Auto-fit은 네 번 반복한 뒤 placement에 따라 빈 repeat track과 그 gutter를 collapse한다. 80% + 30% neighbor 합계가 content axis보다 큰 경우에는 최소 1회 반복을 유지한다.
 
-Acceptance는 repeat count와 expanded line/track order를 exact로 비교하고, used track size와 item frame은 Chrome 값에서 1/64 CSS px 안에 들어야 한다. Count만 맞거나 frame만 맞으면 실패다.
+## 수용 oracle과 Chrome 차이 판정
+
+이 slice의 필수 수용값은 CSS Grid Layout Module Level 1, 2025 CRD §7.2.1·§7.2.3.2에서 독립 계산한다. Chrome 156은 같은 입력을 관측하는 호환성 비교값으로 보존하되, 규범값과 다를 때 Chrome 값을 규범 기대값으로 덮어쓰지 않는다. 차이는 browser compatibility 차이로 명시하고 runtime 결과는 규범값과 별도로 보고한다.
+
+`col-fit-first`와 `row-fit-first`는 240px content axis, 24px prefix, 12px suffix, 4px gap, 네 번 반복을 사용한다. 첫 반복 track에만 item을 놓으면 나머지 세 auto-fit track이 collapse한다. collapse된 track 양쪽 gutter도 없어지므로 prefix와 첫 반복 track 사이의 gutter 하나만 남고 첫 반복 track은 `240 - 24 - 12 - 4 = 200px`이다. Chrome 156은 같은 고정 CSS에서 `196px`을 관측했다. 2px item을 해당 track 끝에 정렬한 DOM-only 진단에서는 Chrome이 x/y `232px`, 규범 계산이 x/y `236px`이다. 이는 4px의 Chrome 관측 차이며 원인은 확정하지 않는다. suffix track item의 x/y `238px` 관측만으로는 gutter 차이를 구분할 수 없다. 규범 결과의 한 gutter/200px과 Chrome 관측의 두 gutter/196px이 같은 suffix 시작 좌표를 내기 때문이다.
+
+사전 비교 자료에는 독립 계산, Chrome CSSOM 관측, end-alignment 진단을 별도 기록한다. Chromium `main` 소스는 collapsed range를 gap geometry에서 건너뛰는 경로를 보여주지만 Chrome 156 바이너리의 정확한 source revision을 연결하지 않았으므로 구현 원인 증거로 일반화하지 않는다. Chrome 관측의 세부와 한계는 [규범·Chromium·Taffy 대조](../spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-precomparison-2026-10-24/normative-chromium-taffy-audit-2026-10-24.md)에 둔다.
+
+Acceptance는 scene별 repeat count와 expanded line/track order를 exact로 비교하고, independently calculated used track size와 runtime item frame을 1/64 CSS px 안에서 판정한다. Chrome CSSOM 값은 raw browser observation과 exact track order로 별도 검증한다. 규범값과 Chrome이 다르면 discrepancy를 남기며 두 오라클을 하나의 pass 조건으로 합치지 않는다. Count만 맞거나 frame만 맞으면 실패다.
 
 ## 구현 범위와 제한
 
@@ -33,8 +41,8 @@ Acceptance는 repeat count와 expanded line/track order를 exact로 비교하고
 | row-fill-both | 같은 입력을 240px rows에 적용; [24,46,46,46,46,12] |
 | col-fill-prefix | prefix 12.5%, suffix 없음; 4회, [30,48.5,48.5,48.5,48.5] |
 | row-fill-suffix | prefix 없음, suffix 12.5%; 4회, [48.5,48.5,48.5,48.5,30] |
-| col-fit-first | 양쪽 neighbor, 첫 repeat에 item 배치; count 4, [24,196,0,0,0,12] |
-| row-fit-first | rows 축에서 첫 repeat에 item 배치; 같은 track 결과 |
+| col-fit-first | 양쪽 neighbor, 첫 repeat에 item 배치; count 4, 규범값 [24,200,0,0,0,12], Chrome 관측 [24,196,0,0,0,12] |
+| row-fit-first | rows 축에서 첫 repeat에 item 배치; 규범값 [24,200,0,0,0,12], Chrome 관측 [24,196,0,0,0,12] |
 | col-fit-empty | 양쪽 neighbor, item 없음; count 4, [24,0,0,0,0,12] |
 | row-fit-empty | rows 축, item 없음; 같은 track 결과 |
 | col-fill-overflow | prefix 80%, suffix 30%; count 1, [192,40,72] |
@@ -49,10 +57,10 @@ Runtime fixture는 V8-authored HostDocument → Stylo computed style → typed l
 
 1. 계획 PR 병합 뒤 최신 main에서 구현 branch를 만든다. 기존 미추적 자료와 tmux 세션은 보존한다.
 2. Cascade is_auto_repeat_neighbor_track, layout validate_auto_repeat_axis와 percentage-basis 생성자를 추적해 두 축의 gate가 일치하는지 확인한다.
-3. W3C 규칙에서 count와 used-size 기대값을 독립 계산하고 Chrome 156 Agent Browser에서 13개 고정 scene을 다시 수집한다. fixture, browser metadata, 관찰 JSON, screenshot과 SHA-256을 보존한다.
+3. W3C 규칙으로 count, collapsed gutter 수와 used-size 기대값을 독립 계산하고 Chrome 156 Agent Browser에서 13개 고정 scene 및 별도 end-alignment 진단을 수집한다. 규범값·browser 관측·차이를 분리한 fixture, browser metadata, 관찰 JSON, screenshot과 SHA-256을 보존한다.
 4. focused Rust/style/layout tests, 전체 workspace tests, Clippy, rustfmt, CSS fixture validator와 default/fixture-test artifact 경계를 검사한다.
 5. Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 13/13 scene을 실행하고 해당 run의 source/build hash를 연결한다.
-6. 구현/runtime의 새 실패 관점 20개를 별도로 검토한다. PR diff review는 그 기록과 독립된 실패 관점 30개로 진행하며 발견한 결함을 고친 뒤 영향받은 항목을 재검토한다.
+6. 이 계획 보정은 [별도 실패 관점 20개 검토](./c11-4-auto-repeat-percentage-neighbors-amendment-plan-review-20.md)를 거친다. 구현/runtime의 새 실패 관점 20개도 별도 작성한다. 각 PR diff review는 각 작업 검토와 독립된 실패 관점 30개로 진행하며 발견한 결함을 고친 뒤 영향받은 항목을 재검토한다.
 7. 상태 대장·내부 계약·상위 C11.4 계획에 제한 범위와 근거를 연결하되 C11.4 checkbox와 72/213은 유지한다.
 8. Tailnet 미리보기를 선택한 문서만 backup + hash manifest 방식으로 갱신하고 Agent Browser로 실제 화면·이미지를 확인한다. PR 본문에 화면을 넣은 경우 GitHub 표시도 확인한다. 종료 후 이 작업의 Agent Browser session/process를 닫는다.
 9. PR은 템플릿·작업 유형/영역 라벨·명세·남은 범위를 채우고 Rebase and merge를 사용한다. 병합 직전 live required checks와 merge state를 확인한다.

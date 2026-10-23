@@ -1,0 +1,43 @@
+{
+  "purpose": "Distinguish the collapsed auto-fit track's used size from a Chrome CSSOM observation without changing the saved oracle fixture.",
+  "sourceFixture": "oracle.html#col-fit-first and oracle.html#row-fit-first",
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "devicePixelRatio": 1,
+  "viewportCssPx": [1280, 633],
+  "procedure": "Agent Browser opened the checked-in oracle. The existing fixed-size 2x2 item was changed in memory only to justify-self:end for columns and align-self:end for rows. No fixture file was modified.",
+  "chrome156Observation": [
+    {
+      "scene": "col-fit-first",
+      "computedTracksPx": [24, 196, 0, 0, 0, 12],
+      "gapPx": 4,
+      "endAlignedItemFrameFromGridBorderPx": [232, 10, 2, 2]
+    },
+    {
+      "scene": "row-fit-first",
+      "computedTracksPx": [24, 196, 0, 0, 0, 12],
+      "gapPx": 4,
+      "endAlignedItemFrameFromGridBorderPx": [10, 232, 2, 2]
+    }
+  ],
+  "specDerivedExpectation": [
+    {
+      "scene": "col-fit-first",
+      "computedTracksPx": [24, 200, 0, 0, 0, 12],
+      "survivingGuttersPx": 1,
+      "endAlignedItemFrameFromGridBorderPx": [236, 10, 2, 2]
+    },
+    {
+      "scene": "row-fit-first",
+      "computedTracksPx": [24, 200, 0, 0, 0, 12],
+      "survivingGuttersPx": 1,
+      "endAlignedItemFrameFromGridBorderPx": [10, 236, 2, 2]
+    }
+  ],
+  "suffixItemDiscriminatorCheck": {
+    "probe": "A second item was appended in memory at explicit suffix track 6 while the first repeated track stayed occupied.",
+    "chromeColumnItemFrameFromGridBorderPx": [238, 10, 2, 2],
+    "chromeRowItemFrameFromGridBorderPx": [10, 238, 2, 2],
+    "interpretation": "This coordinate does not reveal whether one or two gutters contributed: spec 200px plus one 4px gutter and Chrome 196px plus two 4px gutters produce the same suffix start. Do not use this probe to claim a surviving Chrome gutter."
+  },
+  "runtimeScope": "Browser-only diagnostic. The runtime fixture still tests the CSS Grid sizing profile and does not add justify-self or align-self support."
+}

@@ -28,7 +28,16 @@
         12
       ],
       "prefixTrackCount": 1,
-      "suffixTrackCount": 1
+      "suffixTrackCount": 1,
+      "inputs": {
+        "contentAxisPx": 240,
+        "gapPx": 4,
+        "repeatMinimumPx": 40,
+        "repeatMode": "auto-fill",
+        "prefixPercent": 10,
+        "suffixPercent": 5,
+        "occupiedRepeatIndexes": []
+      }
     },
     {
       "id": "row-fill-both",
@@ -44,7 +53,16 @@
         12
       ],
       "prefixTrackCount": 1,
-      "suffixTrackCount": 1
+      "suffixTrackCount": 1,
+      "inputs": {
+        "contentAxisPx": 240,
+        "gapPx": 4,
+        "repeatMinimumPx": 40,
+        "repeatMode": "auto-fill",
+        "prefixPercent": 10,
+        "suffixPercent": 5,
+        "occupiedRepeatIndexes": []
+      }
     },
     {
       "id": "col-fill-prefix",
@@ -59,7 +77,16 @@
         48.5
       ],
       "prefixTrackCount": 1,
-      "suffixTrackCount": 0
+      "suffixTrackCount": 0,
+      "inputs": {
+        "contentAxisPx": 240,
+        "gapPx": 4,
+        "repeatMinimumPx": 40,
+        "repeatMode": "auto-fill",
+        "prefixPercent": 12.5,
+        "suffixPercent": null,
+        "occupiedRepeatIndexes": []
+      }
     },
     {
       "id": "row-fill-suffix",
@@ -74,7 +101,16 @@
         30
       ],
       "prefixTrackCount": 0,
-      "suffixTrackCount": 1
+      "suffixTrackCount": 1,
+      "inputs": {
+        "contentAxisPx": 240,
+        "gapPx": 4,
+        "repeatMinimumPx": 40,
+        "repeatMode": "auto-fill",
+        "prefixPercent": null,
+        "suffixPercent": 12.5,
+        "occupiedRepeatIndexes": []
+      }
     },
     {
       "id": "col-fit-first",
@@ -83,7 +119,7 @@
       "repeatCount": 4,
       "usedTracksPx": [
         24,
-        196,
+        200,
         0,
         0,
         0,
@@ -96,7 +132,26 @@
         2
       ],
       "prefixTrackCount": 1,
-      "suffixTrackCount": 1
+      "suffixTrackCount": 1,
+      "inputs": {
+        "contentAxisPx": 240,
+        "gapPx": 4,
+        "repeatMinimumPx": 40,
+        "repeatMode": "auto-fit",
+        "prefixPercent": 10,
+        "suffixPercent": 5,
+        "occupiedRepeatIndexes": [
+          0
+        ]
+      },
+      "chromeObservedTracksPx": [
+        24,
+        196,
+        0,
+        0,
+        0,
+        12
+      ]
     },
     {
       "id": "row-fit-first",
@@ -105,7 +160,7 @@
       "repeatCount": 4,
       "usedTracksPx": [
         24,
-        196,
+        200,
         0,
         0,
         0,
@@ -118,7 +173,26 @@
         2
       ],
       "prefixTrackCount": 1,
-      "suffixTrackCount": 1
+      "suffixTrackCount": 1,
+      "inputs": {
+        "contentAxisPx": 240,
+        "gapPx": 4,
+        "repeatMinimumPx": 40,
+        "repeatMode": "auto-fit",
+        "prefixPercent": 10,
+        "suffixPercent": 5,
+        "occupiedRepeatIndexes": [
+          0
+        ]
+      },
+      "chromeObservedTracksPx": [
+        24,
+        196,
+        0,
+        0,
+        0,
+        12
+      ]
     },
     {
       "id": "col-fit-empty",
@@ -134,7 +208,16 @@
         12
       ],
       "prefixTrackCount": 1,
-      "suffixTrackCount": 1
+      "suffixTrackCount": 1,
+      "inputs": {
+        "contentAxisPx": 240,
+        "gapPx": 4,
+        "repeatMinimumPx": 40,
+        "repeatMode": "auto-fit",
+        "prefixPercent": 10,
+        "suffixPercent": 5,
+        "occupiedRepeatIndexes": []
+      }
     },
     {
       "id": "row-fit-empty",
@@ -150,7 +233,16 @@
         12
       ],
       "prefixTrackCount": 1,
-      "suffixTrackCount": 1
+      "suffixTrackCount": 1,
+      "inputs": {
+        "contentAxisPx": 240,
+        "gapPx": 4,
+        "repeatMinimumPx": 40,
+        "repeatMode": "auto-fit",
+        "prefixPercent": 10,
+        "suffixPercent": 5,
+        "occupiedRepeatIndexes": []
+      }
     },
     {
       "id": "col-fill-overflow",
@@ -163,7 +255,16 @@
         72
       ],
       "prefixTrackCount": 1,
-      "suffixTrackCount": 1
+      "suffixTrackCount": 1,
+      "inputs": {
+        "contentAxisPx": 240,
+        "gapPx": 4,
+        "repeatMinimumPx": 40,
+        "repeatMode": "auto-fill",
+        "prefixPercent": 80,
+        "suffixPercent": 30,
+        "occupiedRepeatIndexes": []
+      }
     },
     {
       "id": "row-fill-overflow",
@@ -176,7 +277,16 @@
         72
       ],
       "prefixTrackCount": 1,
-      "suffixTrackCount": 1
+      "suffixTrackCount": 1,
+      "inputs": {
+        "contentAxisPx": 240,
+        "gapPx": 4,
+        "repeatMinimumPx": 40,
+        "repeatMode": "auto-fill",
+        "prefixPercent": 80,
+        "suffixPercent": 30,
+        "occupiedRepeatIndexes": []
+      }
     },
     {
       "id": "col-fill-zero-prefix",
@@ -192,7 +302,18 @@
         40.8,
         12
       ],
-      "chromeUsedTracksPx": [
+      "prefixTrackCount": 1,
+      "suffixTrackCount": 1,
+      "inputs": {
+        "contentAxisPx": 240,
+        "gapPx": 4,
+        "repeatMinimumPx": 40,
+        "repeatMode": "auto-fill",
+        "prefixPercent": 0,
+        "suffixPercent": 5,
+        "occupiedRepeatIndexes": []
+      },
+      "chromeObservedTracksPx": [
         0,
         40.796875,
         40.796875,
@@ -200,9 +321,7 @@
         40.796875,
         40.796875,
         12
-      ],
-      "prefixTrackCount": 1,
-      "suffixTrackCount": 1
+      ]
     },
     {
       "id": "col-fill-border-box",
@@ -215,14 +334,26 @@
         43.3,
         5.8
       ],
-      "chromeUsedTracksPx": [
+      "prefixTrackCount": 1,
+      "suffixTrackCount": 1,
+      "inputs": {
+        "contentAxisPx": 116,
+        "gapPx": 4,
+        "repeatMinimumPx": 40,
+        "repeatMode": "auto-fill",
+        "prefixPercent": 10,
+        "suffixPercent": 5,
+        "occupiedRepeatIndexes": [],
+        "outerAxisPx": 136,
+        "paddingEachSidePx": 8,
+        "borderEachSidePx": 2
+      },
+      "chromeObservedTracksPx": [
         11.59375,
         43.296875,
         43.296875,
         5.796875
-      ],
-      "prefixTrackCount": 1,
-      "suffixTrackCount": 1
+      ]
     },
     {
       "id": "row-fill-border-box",
@@ -235,14 +366,26 @@
         43.3,
         5.8
       ],
-      "chromeUsedTracksPx": [
+      "prefixTrackCount": 1,
+      "suffixTrackCount": 1,
+      "inputs": {
+        "contentAxisPx": 116,
+        "gapPx": 4,
+        "repeatMinimumPx": 40,
+        "repeatMode": "auto-fill",
+        "prefixPercent": 10,
+        "suffixPercent": 5,
+        "occupiedRepeatIndexes": [],
+        "outerAxisPx": 136,
+        "paddingEachSidePx": 8,
+        "borderEachSidePx": 2
+      },
+      "chromeObservedTracksPx": [
         11.59375,
         43.296875,
         43.296875,
         5.796875
-      ],
-      "prefixTrackCount": 1,
-      "suffixTrackCount": 1
+      ]
     }
   ],
   "comparison": {
@@ -250,5 +393,11 @@
     "autoFitCollapse": "exact",
     "itemFrameToleranceCssPx": 0.015625,
     "fractionalUsedTrackToleranceCssPx": 0.015625
+  },
+  "acceptanceOracle": "CSS Grid 2025 CRD independently derived sizing is normative; Chrome CSSOM values are independently validated compatibility observations and are not substituted for normative expectations.",
+  "fixtureGeometry": {
+    "borderEachSidePx": 2,
+    "paddingEachSidePx": 8,
+    "itemSizePx": 2
   }
 }
