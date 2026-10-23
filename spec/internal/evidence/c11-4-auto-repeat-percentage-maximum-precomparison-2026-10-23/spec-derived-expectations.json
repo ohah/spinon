@@ -1,0 +1,1156 @@
+{
+  "source": "Independent application of CSS Grid Layout Module Level 1, 2025 CRD, sections 7.2.3.1, 7.2.3.2 and 11.4.",
+  "formula": "For each candidate repetition count n, n * effectiveTrackSize + (n - 1) * gap <= definite content size. Choose the largest positive n. If both sizing functions are definite, floor the maximum by the minimum before counting. auto-fit collapses empty repeated tracks after placement.",
+  "inputs": {
+    "contentSizePx": 184,
+    "gapPx": 8,
+    "percentageBasisAxis": "the same definite grid content-box axis",
+    "calc": "20px + 10% = 38.4px",
+    "maxPercentage": "25% = 46px",
+    "smallerMax": "20% = 36.8px",
+    "minPercentage": "25% = 46px"
+  },
+  "sceneCount": 28,
+  "scenes": [
+    {
+      "id": "columns-percent-max-fill",
+      "axis": "columns",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": 3,
+      "effectiveDefiniteTrackSizePx": 46,
+      "expectedUsedTracksPx": [
+        46,
+        46,
+        46
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        46,
+        46,
+        46
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          46,
+          20
+        ],
+        [
+          54,
+          0,
+          46,
+          20
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "columns-percent-max-fill-control",
+      "axis": "columns",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": 3,
+      "effectiveDefiniteTrackSizePx": 46,
+      "expectedUsedTracksPx": [
+        46,
+        46,
+        46
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        46,
+        46,
+        46
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          46,
+          20
+        ],
+        [
+          54,
+          0,
+          46,
+          20
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "columns-percent-max-fit",
+      "axis": "columns",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 1,
+      "repeatCountBeforeAutoFitCollapse": 3,
+      "effectiveDefiniteTrackSizePx": 46,
+      "expectedUsedTracksPx": [
+        46,
+        46,
+        46
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        46,
+        0,
+        0
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          46,
+          20
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "columns-percent-max-fit-control",
+      "axis": "columns",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 1,
+      "repeatCountBeforeAutoFitCollapse": 3,
+      "effectiveDefiniteTrackSizePx": 46,
+      "expectedUsedTracksPx": [
+        46,
+        46,
+        46
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        46,
+        0,
+        0
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          46,
+          20
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "columns-max-below-min-fill",
+      "axis": "columns",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": 3,
+      "effectiveDefiniteTrackSizePx": 46,
+      "expectedUsedTracksPx": [
+        46,
+        46,
+        46
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        46,
+        46,
+        46
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          46,
+          20
+        ],
+        [
+          54,
+          0,
+          46,
+          20
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "columns-max-below-min-control",
+      "axis": "columns",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": 3,
+      "effectiveDefiniteTrackSizePx": 46,
+      "expectedUsedTracksPx": [
+        46,
+        46,
+        46
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        46,
+        46,
+        46
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          46,
+          20
+        ],
+        [
+          54,
+          0,
+          46,
+          20
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "columns-zero-percent-max-fill",
+      "axis": "columns",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": 3,
+      "effectiveDefiniteTrackSizePx": 46,
+      "expectedUsedTracksPx": [
+        46,
+        46,
+        46
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        46,
+        46,
+        46
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          46,
+          20
+        ],
+        [
+          54,
+          0,
+          46,
+          20
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "columns-zero-percent-max-control",
+      "axis": "columns",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": 3,
+      "effectiveDefiniteTrackSizePx": 46,
+      "expectedUsedTracksPx": [
+        46,
+        46,
+        46
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        46,
+        46,
+        46
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          46,
+          20
+        ],
+        [
+          54,
+          0,
+          46,
+          20
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "columns-calc-percent-max-fill",
+      "axis": "columns",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": 4,
+      "effectiveDefiniteTrackSizePx": 38.4,
+      "expectedUsedTracksPx": [
+        38.4,
+        38.4,
+        38.4,
+        38.4
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        38.4,
+        38.4,
+        38.4,
+        38.4
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          38.4,
+          20
+        ],
+        [
+          46.4,
+          0,
+          38.4,
+          20
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "columns-calc-percent-max-control",
+      "axis": "columns",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": 4,
+      "effectiveDefiniteTrackSizePx": 38.4,
+      "expectedUsedTracksPx": [
+        38.4,
+        38.4,
+        38.4,
+        38.4
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        38.4,
+        38.4,
+        38.4,
+        38.4
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          38.4,
+          20
+        ],
+        [
+          46.4,
+          0,
+          38.4,
+          20
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "rows-percent-max-fill",
+      "axis": "rows",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": 3,
+      "effectiveDefiniteTrackSizePx": 46,
+      "expectedUsedTracksPx": [
+        46,
+        46,
+        46
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        46,
+        46,
+        46
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          20,
+          46
+        ],
+        [
+          0,
+          54,
+          20,
+          46
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "rows-percent-max-fill-control",
+      "axis": "rows",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": 3,
+      "effectiveDefiniteTrackSizePx": 46,
+      "expectedUsedTracksPx": [
+        46,
+        46,
+        46
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        46,
+        46,
+        46
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          20,
+          46
+        ],
+        [
+          0,
+          54,
+          20,
+          46
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "rows-percent-max-fit",
+      "axis": "rows",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 1,
+      "repeatCountBeforeAutoFitCollapse": 3,
+      "effectiveDefiniteTrackSizePx": 46,
+      "expectedUsedTracksPx": [
+        46,
+        46,
+        46
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        46,
+        0,
+        0
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          20,
+          46
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "rows-percent-max-fit-control",
+      "axis": "rows",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 1,
+      "repeatCountBeforeAutoFitCollapse": 3,
+      "effectiveDefiniteTrackSizePx": 46,
+      "expectedUsedTracksPx": [
+        46,
+        46,
+        46
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        46,
+        0,
+        0
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          20,
+          46
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "rows-max-below-min-fill",
+      "axis": "rows",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": 3,
+      "effectiveDefiniteTrackSizePx": 46,
+      "expectedUsedTracksPx": [
+        46,
+        46,
+        46
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        46,
+        46,
+        46
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          20,
+          46
+        ],
+        [
+          0,
+          54,
+          20,
+          46
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "rows-max-below-min-control",
+      "axis": "rows",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": 3,
+      "effectiveDefiniteTrackSizePx": 46,
+      "expectedUsedTracksPx": [
+        46,
+        46,
+        46
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        46,
+        46,
+        46
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          20,
+          46
+        ],
+        [
+          0,
+          54,
+          20,
+          46
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "rows-zero-percent-max-fill",
+      "axis": "rows",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": 3,
+      "effectiveDefiniteTrackSizePx": 46,
+      "expectedUsedTracksPx": [
+        46,
+        46,
+        46
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        46,
+        46,
+        46
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          20,
+          46
+        ],
+        [
+          0,
+          54,
+          20,
+          46
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "rows-zero-percent-max-control",
+      "axis": "rows",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": 3,
+      "effectiveDefiniteTrackSizePx": 46,
+      "expectedUsedTracksPx": [
+        46,
+        46,
+        46
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        46,
+        46,
+        46
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          20,
+          46
+        ],
+        [
+          0,
+          54,
+          20,
+          46
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "rows-calc-percent-max-fill",
+      "axis": "rows",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": 4,
+      "effectiveDefiniteTrackSizePx": 38.4,
+      "expectedUsedTracksPx": [
+        38.4,
+        38.4,
+        38.4,
+        38.4
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        38.4,
+        38.4,
+        38.4,
+        38.4
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          20,
+          38.4
+        ],
+        [
+          0,
+          46.4,
+          20,
+          38.4
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "rows-calc-percent-max-control",
+      "axis": "rows",
+      "contentBasisPx": 184,
+      "gapPx": 8,
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": 4,
+      "effectiveDefiniteTrackSizePx": 38.4,
+      "expectedUsedTracksPx": [
+        38.4,
+        38.4,
+        38.4,
+        38.4
+      ],
+      "expectedTracksAfterAutoFitCollapsePx": [
+        38.4,
+        38.4,
+        38.4,
+        38.4
+      ],
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          20,
+          38.4
+        ],
+        [
+          0,
+          46.4,
+          20,
+          38.4
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "both-percent-max-fill",
+      "axis": "both",
+      "contentBasisPx": {
+        "columns": 184,
+        "rows": 184
+      },
+      "gapPx": {
+        "columns": 8,
+        "rows": 8
+      },
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": {
+        "columns": 3,
+        "rows": 3
+      },
+      "effectiveDefiniteTrackSizePx": {
+        "columns": 46,
+        "rows": 46
+      },
+      "expectedUsedTracksPx": {
+        "columns": [
+          46,
+          46,
+          46
+        ],
+        "rows": [
+          46,
+          46,
+          46
+        ]
+      },
+      "expectedTracksAfterAutoFitCollapsePx": {
+        "columns": [
+          46,
+          46,
+          46
+        ],
+        "rows": [
+          46,
+          46,
+          46
+        ]
+      },
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          46,
+          46
+        ],
+        [
+          54,
+          0,
+          46,
+          46
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "both-percent-max-fill-control",
+      "axis": "both",
+      "contentBasisPx": {
+        "columns": 184,
+        "rows": 184
+      },
+      "gapPx": {
+        "columns": 8,
+        "rows": 8
+      },
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": {
+        "columns": 3,
+        "rows": 3
+      },
+      "effectiveDefiniteTrackSizePx": {
+        "columns": 46,
+        "rows": 46
+      },
+      "expectedUsedTracksPx": {
+        "columns": [
+          46,
+          46,
+          46
+        ],
+        "rows": [
+          46,
+          46,
+          46
+        ]
+      },
+      "expectedTracksAfterAutoFitCollapsePx": {
+        "columns": [
+          46,
+          46,
+          46
+        ],
+        "rows": [
+          46,
+          46,
+          46
+        ]
+      },
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          46,
+          46
+        ],
+        [
+          54,
+          0,
+          46,
+          46
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "both-percent-max-fit",
+      "axis": "both",
+      "contentBasisPx": {
+        "columns": 184,
+        "rows": 184
+      },
+      "gapPx": {
+        "columns": 8,
+        "rows": 8
+      },
+      "itemCount": 1,
+      "repeatCountBeforeAutoFitCollapse": {
+        "columns": 3,
+        "rows": 3
+      },
+      "effectiveDefiniteTrackSizePx": {
+        "columns": 46,
+        "rows": 46
+      },
+      "expectedUsedTracksPx": {
+        "columns": [
+          46,
+          46,
+          46
+        ],
+        "rows": [
+          46,
+          46,
+          46
+        ]
+      },
+      "expectedTracksAfterAutoFitCollapsePx": {
+        "columns": [
+          46,
+          0,
+          0
+        ],
+        "rows": [
+          46,
+          0,
+          0
+        ]
+      },
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          46,
+          46
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "both-percent-max-fit-control",
+      "axis": "both",
+      "contentBasisPx": {
+        "columns": 184,
+        "rows": 184
+      },
+      "gapPx": {
+        "columns": 8,
+        "rows": 8
+      },
+      "itemCount": 1,
+      "repeatCountBeforeAutoFitCollapse": {
+        "columns": 3,
+        "rows": 3
+      },
+      "effectiveDefiniteTrackSizePx": {
+        "columns": 46,
+        "rows": 46
+      },
+      "expectedUsedTracksPx": {
+        "columns": [
+          46,
+          46,
+          46
+        ],
+        "rows": [
+          46,
+          46,
+          46
+        ]
+      },
+      "expectedTracksAfterAutoFitCollapsePx": {
+        "columns": [
+          46,
+          0,
+          0
+        ],
+        "rows": [
+          46,
+          0,
+          0
+        ]
+      },
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          46,
+          46
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "both-flooring-fill",
+      "axis": "both",
+      "contentBasisPx": {
+        "columns": 184,
+        "rows": 184
+      },
+      "gapPx": {
+        "columns": 8,
+        "rows": 8
+      },
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": {
+        "columns": 3,
+        "rows": 3
+      },
+      "effectiveDefiniteTrackSizePx": {
+        "columns": 46,
+        "rows": 46
+      },
+      "expectedUsedTracksPx": {
+        "columns": [
+          46,
+          46,
+          46
+        ],
+        "rows": [
+          46,
+          46,
+          46
+        ]
+      },
+      "expectedTracksAfterAutoFitCollapsePx": {
+        "columns": [
+          46,
+          46,
+          46
+        ],
+        "rows": [
+          46,
+          46,
+          46
+        ]
+      },
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          46,
+          46
+        ],
+        [
+          54,
+          0,
+          46,
+          46
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "both-flooring-fill-control",
+      "axis": "both",
+      "contentBasisPx": {
+        "columns": 184,
+        "rows": 184
+      },
+      "gapPx": {
+        "columns": 8,
+        "rows": 8
+      },
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": {
+        "columns": 3,
+        "rows": 3
+      },
+      "effectiveDefiniteTrackSizePx": {
+        "columns": 46,
+        "rows": 46
+      },
+      "expectedUsedTracksPx": {
+        "columns": [
+          46,
+          46,
+          46
+        ],
+        "rows": [
+          46,
+          46,
+          46
+        ]
+      },
+      "expectedTracksAfterAutoFitCollapsePx": {
+        "columns": [
+          46,
+          46,
+          46
+        ],
+        "rows": [
+          46,
+          46,
+          46
+        ]
+      },
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          46,
+          46
+        ],
+        [
+          54,
+          0,
+          46,
+          46
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "both-calc-percent-max-fill",
+      "axis": "both",
+      "contentBasisPx": {
+        "columns": 184,
+        "rows": 184
+      },
+      "gapPx": {
+        "columns": 8,
+        "rows": 8
+      },
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": {
+        "columns": 4,
+        "rows": 4
+      },
+      "effectiveDefiniteTrackSizePx": {
+        "columns": 38.4,
+        "rows": 38.4
+      },
+      "expectedUsedTracksPx": {
+        "columns": [
+          38.4,
+          38.4,
+          38.4,
+          38.4
+        ],
+        "rows": [
+          38.4,
+          38.4,
+          38.4,
+          38.4
+        ]
+      },
+      "expectedTracksAfterAutoFitCollapsePx": {
+        "columns": [
+          38.4,
+          38.4,
+          38.4,
+          38.4
+        ],
+        "rows": [
+          38.4,
+          38.4,
+          38.4,
+          38.4
+        ]
+      },
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          38.4,
+          38.4
+        ],
+        [
+          46.4,
+          0,
+          38.4,
+          38.4
+        ]
+      ],
+      "tolerancePx": 0.015625
+    },
+    {
+      "id": "both-calc-percent-max-fill-control",
+      "axis": "both",
+      "contentBasisPx": {
+        "columns": 184,
+        "rows": 184
+      },
+      "gapPx": {
+        "columns": 8,
+        "rows": 8
+      },
+      "itemCount": 2,
+      "repeatCountBeforeAutoFitCollapse": {
+        "columns": 4,
+        "rows": 4
+      },
+      "effectiveDefiniteTrackSizePx": {
+        "columns": 38.4,
+        "rows": 38.4
+      },
+      "expectedUsedTracksPx": {
+        "columns": [
+          38.4,
+          38.4,
+          38.4,
+          38.4
+        ],
+        "rows": [
+          38.4,
+          38.4,
+          38.4,
+          38.4
+        ]
+      },
+      "expectedTracksAfterAutoFitCollapsePx": {
+        "columns": [
+          38.4,
+          38.4,
+          38.4,
+          38.4
+        ],
+        "rows": [
+          38.4,
+          38.4,
+          38.4,
+          38.4
+        ]
+      },
+      "expectedItemFramesRootContentOriginPx": [
+        [
+          0,
+          0,
+          38.4,
+          38.4
+        ],
+        [
+          46.4,
+          0,
+          38.4,
+          38.4
+        ]
+      ],
+      "tolerancePx": 0.015625
+    }
+  ]
+}

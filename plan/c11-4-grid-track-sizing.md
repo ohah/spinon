@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-10-23 definite percentage maximum auto-repeat 계획
+
+positive percentage maximum, minimum보다 작은 maximum 및 zero flooring, percentage calc maximum과 gap을 포함한 repeat count를 [집중 계획](./c11-4-auto-repeat-percentage-maximum.md)과 [Agent Browser 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-percentage-maximum-precomparison-2026-10-23/README.md)에 고정했다. CSS Grid 2025 CRD §7.2.3.2는 definite maximum sizing function을 사용하고 둘 다 definite이면 minimum보다 작지 않게 floor하며 gap을 계산에 포함한다. Chrome 156의 28개 고정 장면은 columns/rows 단독 case와 양축 동시 case, auto-fill/fit, numeric control 및 minmax flooring을 다룬다. 계획은 구현 결과가 아니며 C11.4 체크와 공식 집계는 변경하지 않는다.
+
 ## 2026-10-23 definite positive percentage auto-repeat minimum 계획 수정
 
 PR #559의 computed AST probe에서 Stylo `0.22.0`이 `calc(0px + 10%)`를 `Percentage(0.1)`로 정규화했다. calc만 구분하는 이전 계획은 superseded됐다. [수정된 집중 계획](./c11-4-auto-repeat-positive-percent-minimum.md)은 opt-in profile의 positive percentage minimum을 대상으로 하고, 직접 10% control과 실제 border 밖 overflow를 비교한다. [독립 규범 계산·Chrome 156 관측·normalization log](../spec/internal/evidence/c11-4-auto-repeat-positive-percent-minimum-precomparison-2026-10-23/README.md) · [수정 계획 실패 관점 20개](./c11-4-auto-repeat-positive-percent-minimum-revision-review-20.md). 구현 전 계획이며 C11.4 체크와 공식 `72/213`을 유지한다.
