@@ -32,7 +32,7 @@
 | 26 | overflow geometry 또는 track 값이 누락되는가 | 새 카드의 root/item geometry와 columns/rows 값을 rendered text에서 확인했다. |
 | 27 | 체크 범위가 full CSS Grid 지원으로 과장되는가 | 카드와 README 모두 전체 C11.4 미완료 및 미검증 범위를 유지한다. |
 | 28 | status 링크가 잘못된 fragment로 이동하는가 | 링크를 클릭해 decoded target이 있고 H2 제목이 “CSS 구현 체크리스트”임을 확인했다. STATUS route 본문 갱신은 이 pass의 범위가 아니다. |
-| 29 | browser screenshot이 다른 세션 또는 페이지를 기록하는가 | named session `spinon-tailnet-pass67`에서 로드맵과 anchor 화면을 각각 캡처했다. |
+| 29 | browser screenshot이 다른 세션 또는 페이지를 기록하거나 PR 본문에서 깨지는가 | named session `spinon-tailnet-pass67`에서 로드맵과 anchor 화면을 각각 캡처했다. GitHub PR #547 본문 이미지도 Agent Browser에서 `complete: true`, 1440×1200으로 로드됐다. |
 | 30 | 이 변경이 무관한 서비스나 tmux를 종료하는가 | PID 1191과 tmux 세션을 유지하고 본 작업의 Agent Browser session만 닫았다. |
 
 ## 결과
