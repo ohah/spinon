@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [C11.3 area 구현](./c11-3-template-repeat-named-lines-areas.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** Chrome 156의 13개 장면 사전 비교와 계획 실패 관점 20개 검토를 마쳤고 계획 PR #538이 병합됐다. 구현 branch `feat/c11-4-template-areas-auto-repeat-20261023`에서 typed area metadata 전달, focused 회귀, 13개 scene의 Android/iOS simulator 실행과 FFI static archive 경계 대조를 마쳤다. 구현/runtime 검토와 구현 PR 검토·병합 및 Tailnet roadmap 반영을 진행한다. C11.4 미완료 checkbox와 공식 `77/213`을 유지한다.
+**상태:** Chrome 156의 13개 장면 사전 비교와 계획 실패 관점 20개 검토를 마쳤고 계획 PR #538이 병합됐다. 구현 branch `feat/c11-4-template-areas-auto-repeat-20261023`에서 typed area metadata 전달, focused 회귀, 13개 scene의 Android/iOS simulator 실행과 FFI static archive 경계 대조를 마쳤다. 구현/runtime 검토 20개를 기록했고 구현 PR [#539](https://github.com/ohah/spinon/pull/539)을 열었다. PR diff 검토 30개, Agent Browser screenshot 확인, merge와 Tailnet roadmap 반영은 진행 중이다. C11.4 미완료 checkbox와 공식 `77/213`을 유지한다.
 
 ## 결손
 
