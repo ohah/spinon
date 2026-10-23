@@ -187,6 +187,17 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "auto-repeat-named-negative", "auto-repeat-named-span",
             "auto-repeat-named-fit", "auto-repeat-named-neighbors",
             "auto-repeat-named-merge", "auto-repeat-named-row",
+            "template-area-repeat-columns-fill", "template-area-repeat-columns-fit",
+            "template-area-repeat-columns-area-shorter",
+            "template-area-repeat-columns-area-larger",
+            "template-area-repeat-columns-line-collision",
+            "template-area-repeat-columns-fit-numeric",
+            "template-area-repeat-columns-fit-empty-area",
+            "template-area-repeat-rows-fill", "template-area-repeat-rows-fit",
+            "template-area-repeat-rows-area-shorter",
+            "template-area-repeat-rows-area-larger",
+            "template-area-repeat-rows-fit-numeric",
+            "template-area-repeat-rows-fit-empty-area",
             "auto-repeat-named-implicit-positive-missing",
             "auto-repeat-named-implicit-positive-insufficient",
             "auto-repeat-named-implicit-negative-missing",
@@ -527,6 +538,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ExpectedRootFrame(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        String areaRepeatFrame = c114TemplateAreaRepeatRootFrame(sceneId);
+        if (areaRepeatFrame != null) return areaRepeatFrame;
         String namedAutoRepeatFrame = c114NamedAutoRepeatRootFrame(sceneId);
         if (namedAutoRepeatFrame != null) return namedAutoRepeatFrame;
         if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) return "";
@@ -802,6 +815,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        String areaRepeatFrame = c114TemplateAreaRepeatItemFrame(sceneId);
+        if (areaRepeatFrame != null) return areaRepeatFrame;
         String namedAutoRepeatFrame = c114NamedAutoRepeatItemFrame(sceneId);
         if (namedAutoRepeatFrame != null) return namedAutoRepeatFrame;
         if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) return "";
@@ -2275,6 +2290,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        String areaRepeatFrames = c114TemplateAreaRepeatNodeFrames(sceneId);
+        if (areaRepeatFrames != null) return areaRepeatFrames;
         String namedAutoRepeatFrames = c114NamedAutoRepeatNodeFrames(sceneId);
         if (namedAutoRepeatFrames != null) return namedAutoRepeatFrames;
         if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) return null;
@@ -2711,6 +2728,186 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             default:
                 return null;
         }
+    }
+
+    private static String c114TemplateAreaRepeatRootFrame(String sceneId) {
+        switch (sceneId) {
+            case "template-area-repeat-columns-fill":
+            case "template-area-repeat-columns-line-collision":
+                return "width=116,height=20";
+            case "template-area-repeat-columns-area-larger":
+                return "width=100,height=20";
+            case "template-area-repeat-columns-fit":
+            case "template-area-repeat-columns-area-shorter":
+            case "template-area-repeat-columns-fit-numeric":
+            case "template-area-repeat-columns-fit-empty-area":
+                return "width=140,height=20";
+            case "template-area-repeat-rows-fill":
+                return "width=20,height=116";
+            case "template-area-repeat-rows-area-larger":
+                return "width=20,height=100";
+            case "template-area-repeat-rows-fit":
+            case "template-area-repeat-rows-area-shorter":
+            case "template-area-repeat-rows-fit-numeric":
+            case "template-area-repeat-rows-fit-empty-area":
+                return "width=20,height=140";
+            default:
+                return null;
+        }
+    }
+
+    private static String c114TemplateAreaRepeatItemFrame(String sceneId) {
+        return c114TemplateAreaRepeatRootFrame(sceneId) == null ? null : "";
+    }
+
+    private static String[] c114TemplateAreaRepeatItemNames(String sceneId) {
+        switch (sceneId) {
+            case "template-area-repeat-columns-area-shorter":
+            case "template-area-repeat-rows-area-shorter":
+                return new String[] {"prefix", "hero", "suffix", "tail"};
+            case "template-area-repeat-columns-line-collision":
+                return new String[] {"prefix", "hero", "suffix", "alias-probe"};
+            case "template-area-repeat-columns-fit-empty-area":
+            case "template-area-repeat-rows-fit-empty-area":
+                return new String[] {"prefix", "suffix"};
+            case "template-area-repeat-columns-fill":
+            case "template-area-repeat-columns-fit":
+            case "template-area-repeat-columns-area-larger":
+            case "template-area-repeat-columns-fit-numeric":
+            case "template-area-repeat-rows-fill":
+            case "template-area-repeat-rows-fit":
+            case "template-area-repeat-rows-area-larger":
+            case "template-area-repeat-rows-fit-numeric":
+                return new String[] {"prefix", "hero", "suffix"};
+            default:
+                return null;
+        }
+    }
+
+    private static int[][] c114TemplateAreaRepeatItemRects(String sceneId) {
+        switch (sceneId) {
+            case "template-area-repeat-columns-fill":
+            case "template-area-repeat-columns-area-larger":
+                return new int[][] {{0, 0, 20, 20}, {24, 0, 68, 20}, {96, 0, 20, 20}};
+            case "template-area-repeat-columns-fit":
+                return new int[][] {{0, 0, 20, 20}, {24, 0, 20, 20}, {44, 0, 20, 20}};
+            case "template-area-repeat-columns-area-shorter":
+                return new int[][] {
+                    {0, 0, 20, 20}, {24, 0, 68, 20}, {96, 0, 20, 20}, {120, 0, 20, 20}
+                };
+            case "template-area-repeat-columns-line-collision":
+                return new int[][] {
+                    {0, 0, 20, 20}, {0, 0, 92, 20}, {96, 0, 20, 20}, {24, 0, 68, 20}
+                };
+            case "template-area-repeat-columns-fit-numeric":
+                return new int[][] {{0, 0, 20, 20}, {24, 0, 20, 20}, {44, 0, 20, 20}};
+            case "template-area-repeat-columns-fit-empty-area":
+                return new int[][] {{0, 0, 20, 20}, {20, 0, 20, 20}};
+            case "template-area-repeat-rows-fill":
+            case "template-area-repeat-rows-area-larger":
+                return new int[][] {{0, 0, 20, 20}, {0, 24, 20, 68}, {0, 96, 20, 20}};
+            case "template-area-repeat-rows-fit":
+            case "template-area-repeat-rows-fit-numeric":
+                return new int[][] {{0, 0, 20, 20}, {0, 24, 20, 20}, {0, 44, 20, 20}};
+            case "template-area-repeat-rows-area-shorter":
+                return new int[][] {
+                    {0, 0, 20, 20}, {0, 24, 20, 68}, {0, 96, 20, 20}, {0, 120, 20, 20}
+                };
+            case "template-area-repeat-rows-fit-empty-area":
+                return new int[][] {{0, 0, 20, 20}, {0, 20, 20, 20}};
+            default:
+                return null;
+        }
+    }
+
+    private static String c114TemplateAreaRepeatNodeFrames(String sceneId) {
+        String rootFrame = c114TemplateAreaRepeatRootFrame(sceneId);
+        int[][] items = c114TemplateAreaRepeatItemRects(sceneId);
+        if (rootFrame == null || items == null) return null;
+        StringBuilder result = new StringBuilder("node_frames_css_px=[0:node=1,x=0,y=0,")
+                .append(rootFrame);
+        for (int index = 0; index < items.length; index++) {
+            int[] rect = items[index];
+            result.append(';').append(index + 1).append(":node=").append(index + 2)
+                    .append(",x=").append(rect[0]).append(",y=").append(rect[1])
+                    .append(",width=").append(rect[2]).append(",height=").append(rect[3]);
+        }
+        return result.append(']').toString();
+    }
+
+    private static int[] c114TemplateAreaRepeatRootSize(String sceneId) {
+        if (c114TemplateAreaRepeatRootFrame(sceneId) == null) return null;
+        switch (sceneId) {
+            case "template-area-repeat-columns-fill":
+            case "template-area-repeat-columns-line-collision":
+                return new int[] {116, 20};
+            case "template-area-repeat-columns-area-larger":
+                return new int[] {100, 20};
+            case "template-area-repeat-columns-fit":
+            case "template-area-repeat-columns-area-shorter":
+            case "template-area-repeat-columns-fit-numeric":
+            case "template-area-repeat-columns-fit-empty-area":
+                return new int[] {140, 20};
+            case "template-area-repeat-rows-fill":
+                return new int[] {20, 116};
+            case "template-area-repeat-rows-area-larger":
+                return new int[] {20, 100};
+            default:
+                return new int[] {20, 140};
+        }
+    }
+
+    private static boolean c114TemplateAreaRepeatPixelSamplesMatch(
+            String sceneId,
+            List<SurfaceViewPixelCapture.Sample> samples
+    ) {
+        int[] root = c114TemplateAreaRepeatRootSize(sceneId);
+        int[][] items = c114TemplateAreaRepeatItemRects(sceneId);
+        String[] names = c114TemplateAreaRepeatItemNames(sceneId);
+        if (root == null || items == null || names == null || items.length != names.length
+                || samples.size() != items.length + 2) return false;
+        String rootId = "c114-" + sceneId + "-grid";
+        boolean rowAxis = sceneId.startsWith("template-area-repeat-rows-");
+        int rootX = rowAxis ? 2 : 22;
+        int rootY = rowAxis ? 22 : 2;
+        if (sceneId.endsWith("-line-collision")) {
+            rootX = 94;
+            rootY = 10;
+        } else if (sceneId.endsWith("-fit-empty-area")) {
+            rootX = rowAxis ? 2 : 60;
+            rootY = rowAxis ? 60 : 2;
+        }
+        List<String> ids = new ArrayList<>();
+        List<String> nodes = new ArrayList<>();
+        List<int[]> points = new ArrayList<>();
+        ids.add(sceneId + "-root-interior");
+        nodes.add(rootId);
+        points.add(new int[] {rootX, rootY});
+        int furthestX = root[0];
+        int furthestY = root[1];
+        for (int index = 0; index < items.length; index++) {
+            int[] item = items[index];
+            String itemId = "c114-" + sceneId + "-" + names[index];
+            ids.add(sceneId + "-" + names[index] + "-interior");
+            nodes.add(itemId);
+            points.add(new int[] {item[0] + item[2] / 2, item[1] + item[3] / 2});
+            furthestX = Math.max(furthestX, item[0] + item[2]);
+            furthestY = Math.max(furthestY, item[1] + item[3]);
+        }
+        ids.add(sceneId + "-after-root");
+        nodes.add(rootId);
+        points.add(new int[] {rowAxis ? 10 : furthestX, rowAxis ? furthestY : 10});
+        boolean[] found = new boolean[ids.size()];
+        for (SurfaceViewPixelCapture.Sample sample : samples) {
+            int index = ids.indexOf(sample.id);
+            if (index < 0 || found[index]
+                    || !nodes.get(index).equals(sample.targetNodeId)
+                    || sample.xCssPx != points.get(index)[0]
+                    || sample.yCssPx != points.get(index)[1]) return false;
+            found[index] = true;
+        }
+        for (boolean sampleFound : found) if (!sampleFound) return false;
+        return true;
     }
 
     private static String c114NamedAutoRepeatItemFrame(String sceneId) {
@@ -3531,6 +3728,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int c114ExpectedBoxCount(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        int[][] areaRepeatItems = c114TemplateAreaRepeatItemRects(sceneId);
+        if (areaRepeatItems != null) return areaRepeatItems.length + 1;
         if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) return 4;
         if (c114IsCyclicMinmaxReplacedImageSpanScene(sceneId)) return 4;
         if (c114IsMixedCrossAxisSpanGroupsScene(sceneId)) return 4;
@@ -4011,6 +4210,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (sceneId.startsWith("template-area-repeat-")) {
+            return c114TemplateAreaRepeatPixelSamplesMatch(sceneId, samples);
+        }
         if (sceneId.startsWith("auto-repeat-named-")
                 || sceneId.startsWith("auto-fit-named-implicit-")) {
             String rootId = "c114-" + sceneId + "-grid";
@@ -6079,7 +6281,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getStringExtra("spinon_c11_grid_pixel_matrix_samples");
         boolean pixelMatrixRequested = pixelMatrixRunId != null || pixelMatrixEncodedSamples != null;
         boolean pixelMatrixSceneMatches = c114GridTrackSizingRequested
-                ? ("cyclic-percent-column".equals(pixelMatrixSceneId)
+                ? ((pixelMatrixSceneId != null
+                                && c114TemplateAreaRepeatRootFrame(pixelMatrixSceneId) != null)
+                        || "cyclic-percent-column".equals(pixelMatrixSceneId)
                         || "cyclic-percent-row".equals(pixelMatrixSceneId)
                         || "definite-percent-column".equals(pixelMatrixSceneId)
                         || "cyclic-minmax-column".equals(pixelMatrixSceneId)
@@ -9672,6 +9876,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c114GridExpectedRgb(String sampleId) {
+        if (sampleId.startsWith("template-area-repeat-")) {
+            if (sampleId.endsWith("-root-interior")) return new int[] {16, 24, 32};
+            if (sampleId.endsWith("-suffix-interior")) return new int[] {48, 164, 108};
+            if (sampleId.endsWith("-tail-interior")) return new int[] {114, 87, 255};
+            if (sampleId.endsWith("-prefix-interior")
+                    || sampleId.endsWith("-hero-interior")
+                    || sampleId.endsWith("-alias-probe-interior")) {
+                return new int[] {229, 72, 77};
+            }
+        }
         if (sampleId.startsWith("auto-repeat-named-")
                 || sampleId.startsWith("auto-fit-named-")) {
             if (sampleId.endsWith("-root-interior")) {

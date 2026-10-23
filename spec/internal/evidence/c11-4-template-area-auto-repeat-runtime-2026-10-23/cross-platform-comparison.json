@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "androidRunPrefix": "c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78",
+  "iosRunPrefix": "c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290",
+  "sceneCount": 13,
+  "exactFrameAndTrackMatches": 13,
+  "comparisons": [
+    {
+      "sceneId": "template-area-repeat-columns-fill",
+      "nodeCount": 4,
+      "trackCount": 5,
+      "collapsedTrackCount": 0,
+      "framesEqual": true,
+      "tracksEqual": true,
+      "androidDrawPresented": true,
+      "iosDrawPresented": true
+    },
+    {
+      "sceneId": "template-area-repeat-columns-fit",
+      "nodeCount": 4,
+      "trackCount": 6,
+      "collapsedTrackCount": 3,
+      "framesEqual": true,
+      "tracksEqual": true,
+      "androidDrawPresented": true,
+      "iosDrawPresented": true
+    },
+    {
+      "sceneId": "template-area-repeat-columns-area-shorter",
+      "nodeCount": 5,
+      "trackCount": 6,
+      "collapsedTrackCount": 0,
+      "framesEqual": true,
+      "tracksEqual": true,
+      "androidDrawPresented": true,
+      "iosDrawPresented": true
+    },
+    {
+      "sceneId": "template-area-repeat-columns-area-larger",
+      "nodeCount": 4,
+      "trackCount": 5,
+      "collapsedTrackCount": 0,
+      "framesEqual": true,
+      "tracksEqual": true,
+      "androidDrawPresented": true,
+      "iosDrawPresented": true
+    },
+    {
+      "sceneId": "template-area-repeat-columns-line-collision",
+      "nodeCount": 5,
+      "trackCount": 5,
+      "collapsedTrackCount": 0,
+      "framesEqual": true,
+      "tracksEqual": true,
+      "androidDrawPresented": true,
+      "iosDrawPresented": true
+    },
+    {
+      "sceneId": "template-area-repeat-columns-fit-numeric",
+      "nodeCount": 4,
+      "trackCount": 6,
+      "collapsedTrackCount": 3,
+      "framesEqual": true,
+      "tracksEqual": true,
+      "androidDrawPresented": true,
+      "iosDrawPresented": true
+    },
+    {
+      "sceneId": "template-area-repeat-columns-fit-empty-area",
+      "nodeCount": 3,
+      "trackCount": 6,
+      "collapsedTrackCount": 4,
+      "framesEqual": true,
+      "tracksEqual": true,
+      "androidDrawPresented": true,
+      "iosDrawPresented": true
+    },
+    {
+      "sceneId": "template-area-repeat-rows-fill",
+      "nodeCount": 4,
+      "trackCount": 5,
+      "collapsedTrackCount": 0,
+      "framesEqual": true,
+      "tracksEqual": true,
+      "androidDrawPresented": true,
+      "iosDrawPresented": true
+    },
+    {
+      "sceneId": "template-area-repeat-rows-fit",
+      "nodeCount": 4,
+      "trackCount": 6,
+      "collapsedTrackCount": 3,
+      "framesEqual": true,
+      "tracksEqual": true,
+      "androidDrawPresented": true,
+      "iosDrawPresented": true
+    },
+    {
+      "sceneId": "template-area-repeat-rows-area-shorter",
+      "nodeCount": 5,
+      "trackCount": 6,
+      "collapsedTrackCount": 0,
+      "framesEqual": true,
+      "tracksEqual": true,
+      "androidDrawPresented": true,
+      "iosDrawPresented": true
+    },
+    {
+      "sceneId": "template-area-repeat-rows-area-larger",
+      "nodeCount": 4,
+      "trackCount": 5,
+      "collapsedTrackCount": 0,
+      "framesEqual": true,
+      "tracksEqual": true,
+      "androidDrawPresented": true,
+      "iosDrawPresented": true
+    },
+    {
+      "sceneId": "template-area-repeat-rows-fit-numeric",
+      "nodeCount": 4,
+      "trackCount": 6,
+      "collapsedTrackCount": 3,
+      "framesEqual": true,
+      "tracksEqual": true,
+      "androidDrawPresented": true,
+      "iosDrawPresented": true
+    },
+    {
+      "sceneId": "template-area-repeat-rows-fit-empty-area",
+      "nodeCount": 3,
+      "trackCount": 6,
+      "collapsedTrackCount": 4,
+      "framesEqual": true,
+      "tracksEqual": true,
+      "androidDrawPresented": true,
+      "iosDrawPresented": true
+    }
+  ]
+}

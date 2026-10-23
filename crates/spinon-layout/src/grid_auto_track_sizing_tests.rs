@@ -69,6 +69,7 @@ fn grid_input(
                 rows_auto_repeat: None,
                 columns_line_names: Vec::new(),
                 rows_line_names: Vec::new(),
+                template_areas: None,
                 auto_flow: GridAutoFlow::Row,
                 auto_rows: GridAutoRows::Auto,
                 auto_columns: crate::GridAutoColumns::Auto,

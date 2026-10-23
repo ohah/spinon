@@ -91,6 +91,7 @@ fn grid(
                 rows_auto_repeat: None,
                 columns_line_names: Vec::new(),
                 rows_line_names: Vec::new(),
+                template_areas: None,
                 auto_flow: flow,
                 auto_rows,
                 auto_columns,

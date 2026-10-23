@@ -13,11 +13,15 @@ use spinon_style::{
 use super::super::typed_math::CssMathProjector;
 use crate::StyleLayoutError;
 
+const MAX_GRID_TEMPLATE_AREAS_METADATA_BYTES: usize = 1024 * 1024;
+
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 enum GridLineNameReservationSite {
     Groups,
     Names,
     NameText,
+    Areas,
+    AreaName,
 }
 
 #[cfg(test)]
@@ -36,14 +40,17 @@ pub(super) fn project_grid_layout_with_math(
     profile: ComputedStyleProfile,
     math: &mut CssMathProjector,
 ) -> Result<GridContainerInput, StyleLayoutError> {
-    if grid.columns_auto_repeat.is_some() || grid.rows_auto_repeat.is_some() {
+    let has_auto_repeat = grid.columns_auto_repeat.is_some() || grid.rows_auto_repeat.is_some();
+    let has_two_auto_repeat_axes =
+        grid.columns_auto_repeat.is_some() && grid.rows_auto_repeat.is_some();
+    if has_auto_repeat {
         let property = if grid.columns_auto_repeat.is_some() {
             "grid-template-columns"
         } else {
             "grid-template-rows"
         };
         if profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
-            || grid.template_areas.is_some()
+            || (grid.template_areas.is_some() && has_two_auto_repeat_axes)
         {
             return Err(StyleLayoutError::UnsupportedComputedValue {
                 node,
@@ -53,20 +60,24 @@ pub(super) fn project_grid_layout_with_math(
             });
         }
     }
-    if let Some(areas) = &grid.template_areas
-        && (areas.rows != grid.rows.len() || areas.columns != grid.columns.len())
-    {
-        return Err(StyleLayoutError::UnsupportedComputedValue {
-            node,
-            property: "grid-template-areas",
-            value: format!(
-                "area grid {}x{}가 explicit track {}x{}와 다릅니다",
-                areas.rows,
-                areas.columns,
-                grid.rows.len(),
-                grid.columns.len()
-            ),
-        });
+    if let Some(areas) = &grid.template_areas {
+        let row_dimension_matches =
+            grid.rows_auto_repeat.is_some() || areas.rows == grid.rows.len();
+        let column_dimension_matches =
+            grid.columns_auto_repeat.is_some() || areas.columns == grid.columns.len();
+        if !row_dimension_matches || !column_dimension_matches {
+            return Err(StyleLayoutError::UnsupportedComputedValue {
+                node,
+                property: "grid-template-areas",
+                value: format!(
+                    "area grid {}x{}가 auto-repeat 없는 축의 explicit track {}x{}와 다릅니다",
+                    areas.rows,
+                    areas.columns,
+                    grid.rows.len(),
+                    grid.columns.len()
+                ),
+            });
+        }
     }
     project_grid_layout_with_reservations(
         node,
@@ -212,6 +223,14 @@ fn project_grid_layout_with_reservations(
             )
         })
         .transpose()?;
+    let template_areas = if columns_auto_repeat.is_some() || rows_auto_repeat.is_some() {
+        grid.template_areas
+            .as_ref()
+            .map(|areas| project_template_areas(node, areas, &mut reserve_line_metadata))
+            .transpose()?
+    } else {
+        None
+    };
     Ok(GridContainerInput {
         columns,
         rows,
@@ -219,6 +238,7 @@ fn project_grid_layout_with_reservations(
         rows_auto_repeat,
         columns_line_names,
         rows_line_names,
+        template_areas,
         auto_flow: match grid.auto_flow {
             ComputedCssGridAutoFlow::Row => GridAutoFlow::Row,
             ComputedCssGridAutoFlow::Column => GridAutoFlow::Column,
@@ -251,6 +271,113 @@ fn project_grid_layout_with_reservations(
             }
             _ => GridPlacementMode::Existing,
         },
+    })
+}
+
+fn project_template_areas(
+    node: NodeId,
+    source: &spinon_style::ComputedCssGridTemplateAreas,
+    reserve: &mut impl FnMut(GridLineNameReservationSite) -> Result<(), ()>,
+) -> Result<spinon_layout::GridTemplateAreasInput, StyleLayoutError> {
+    let property = "grid-template-areas";
+    let rows = u16::try_from(source.rows)
+        .ok()
+        .filter(|rows| *rows != 0 && usize::from(*rows) <= spinon_layout::GRID_MAX_TRACKS);
+    let columns = u16::try_from(source.columns)
+        .ok()
+        .filter(|columns| *columns != 0 && usize::from(*columns) <= spinon_layout::GRID_MAX_TRACKS);
+    let (Some(rows), Some(columns)) = (rows, columns) else {
+        return Err(StyleLayoutError::UnsupportedComputedValue {
+            node,
+            property,
+            value: "area dimension이 Taffy의 grid coordinate 한도를 벗어났습니다".to_owned(),
+        });
+    };
+    let mut metadata_bytes = source
+        .areas
+        .len()
+        .checked_mul(std::mem::size_of::<spinon_layout::GridTemplateAreaInput>())
+        .filter(|bytes| *bytes <= MAX_GRID_TEMPLATE_AREAS_METADATA_BYTES)
+        .ok_or_else(|| StyleLayoutError::UnsupportedComputedValue {
+            node,
+            property,
+            value: "area metadata가 1 MiB 한도를 넘었습니다".to_owned(),
+        })?;
+    for area in &source.areas {
+        if area.name.is_empty()
+            || area.name.as_bytes().contains(&0)
+            || area.row_start >= area.row_end
+            || area.row_end > source.rows
+            || area.column_start >= area.column_end
+            || area.column_end > source.columns
+        {
+            return Err(StyleLayoutError::UnsupportedComputedValue {
+                node,
+                property,
+                value: "area 이름 또는 rectangle이 유효하지 않습니다".to_owned(),
+            });
+        }
+        metadata_bytes = metadata_bytes
+            .checked_add(area.name.len())
+            .filter(|bytes| *bytes <= MAX_GRID_TEMPLATE_AREAS_METADATA_BYTES)
+            .ok_or_else(|| StyleLayoutError::UnsupportedComputedValue {
+                node,
+                property,
+                value: "area metadata가 1 MiB 한도를 넘었습니다".to_owned(),
+            })?;
+    }
+    reserve(GridLineNameReservationSite::Areas).map_err(|_| {
+        StyleLayoutError::Layout(spinon_layout::LayoutError::GridAllocationFailure {
+            node,
+            property,
+        })
+    })?;
+    let mut areas = Vec::new();
+    areas.try_reserve_exact(source.areas.len()).map_err(|_| {
+        StyleLayoutError::Layout(spinon_layout::LayoutError::GridAllocationFailure {
+            node,
+            property,
+        })
+    })?;
+    for area in &source.areas {
+        let (Some(row_start), Some(row_end), Some(column_start), Some(column_end)) = (
+            u16::try_from(area.row_start).ok(),
+            u16::try_from(area.row_end).ok(),
+            u16::try_from(area.column_start).ok(),
+            u16::try_from(area.column_end).ok(),
+        ) else {
+            return Err(StyleLayoutError::UnsupportedComputedValue {
+                node,
+                property,
+                value: "area rectangle이 Taffy의 grid coordinate 범위를 벗어났습니다".to_owned(),
+            });
+        };
+        let mut name = String::new();
+        reserve(GridLineNameReservationSite::AreaName).map_err(|_| {
+            StyleLayoutError::Layout(spinon_layout::LayoutError::GridAllocationFailure {
+                node,
+                property,
+            })
+        })?;
+        name.try_reserve(area.name.len()).map_err(|_| {
+            StyleLayoutError::Layout(spinon_layout::LayoutError::GridAllocationFailure {
+                node,
+                property,
+            })
+        })?;
+        name.push_str(&area.name);
+        areas.push(spinon_layout::GridTemplateAreaInput {
+            name,
+            row_start,
+            row_end,
+            column_start,
+            column_end,
+        });
+    }
+    Ok(spinon_layout::GridTemplateAreasInput {
+        rows,
+        columns,
+        areas,
     })
 }
 

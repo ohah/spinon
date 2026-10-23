@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "imageCount": 26,
+  "images": [
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-area-larger.png",
+      "bytes": 74922,
+      "sha256": "09690b19a8d1cfa4e849baa76b072507ccd02fbec59ca6c8196e3359e116485a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-area-shorter.png",
+      "bytes": 75950,
+      "sha256": "ea02ad905797fd2b4bff8a2876543680077a540a8715062268d20cb9c79e56f8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fill.png",
+      "bytes": 74947,
+      "sha256": "9e8495278a05bfa51bb37898a2f964ee106d29af557d79c91d0b8ef479951398"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fit-empty-area.png",
+      "bytes": 74494,
+      "sha256": "9237d17e1c1ab800ddbefb471e8ddc06eb5d45af62db790775bb5028fe41133a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fit-numeric.png",
+      "bytes": 74931,
+      "sha256": "cabe77cbee416f5ec83edaa6b85b47b9fe8ec41e0b8e80760c937499867a8c1b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-fit.png",
+      "bytes": 77525,
+      "sha256": "08d9c50ab5fe80947ec5264d4721b21a62e857da89dc0fdae2e2b2ef991a8fcb"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-columns-line-collision.png",
+      "bytes": 74858,
+      "sha256": "9ad57dfc0a92e0c2683f65153b42ab5ea4441d4bfd40222ac2b41db35855d98d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-area-larger.png",
+      "bytes": 74965,
+      "sha256": "eb03aed394c749aa26fa0ca2cc44cec150f98e2718a693231b9d903b333c9eaa"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-area-shorter.png",
+      "bytes": 76027,
+      "sha256": "500a7c2273ddda86079dd356705f457a49ca014039c4df5c0ad97be32056ad63"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fill.png",
+      "bytes": 74965,
+      "sha256": "eb03aed394c749aa26fa0ca2cc44cec150f98e2718a693231b9d903b333c9eaa"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fit-empty-area.png",
+      "bytes": 74512,
+      "sha256": "3a28c3d5cd934b14209d026323793f419ed9eb5902e43365e6985683d390fc07"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fit-numeric.png",
+      "bytes": 74966,
+      "sha256": "33df5fec9ec445850fb2a35d27e5c522416f300b10197d01ccb24fa7ac97cb0e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/android-avd-c114-template-area-repeat-android-avd-20261023T002240504Z-8c091e78/template-area-repeat-rows-fit.png",
+      "bytes": 74966,
+      "sha256": "33df5fec9ec445850fb2a35d27e5c522416f300b10197d01ccb24fa7ac97cb0e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-area-larger.png",
+      "bytes": 134002,
+      "sha256": "262b8b0138920d5742f08d63824b5ef790e00e53b0f7d6abc05a77dd60dd3e22"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-area-shorter.png",
+      "bytes": 133996,
+      "sha256": "4c7370e8735e70d5fe4c007e06a69b82393157d0cb42c3ccd21f5db08bc20459"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fill.png",
+      "bytes": 132324,
+      "sha256": "cfc99c859cfd340528a8194fa481c5acee72982acb64b8d3e80b2a23d4199280"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fit-empty-area.png",
+      "bytes": 132058,
+      "sha256": "5d76d3ed77d5b4eb14ab05850f8b7f76204fa05f119ec01e5c9773cca708e531"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fit-numeric.png",
+      "bytes": 133709,
+      "sha256": "e18ef9018ba6a836d1b389ada1d199837496ed7410acba79f35f4b742e80c5dc"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-fit.png",
+      "bytes": 133709,
+      "sha256": "e18ef9018ba6a836d1b389ada1d199837496ed7410acba79f35f4b742e80c5dc"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-columns-line-collision.png",
+      "bytes": 133873,
+      "sha256": "162f0711f4e66e229ff70b0d03c48dcdaaf1752f24fe0eadf6c43b405e71c437"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-area-larger.png",
+      "bytes": 134040,
+      "sha256": "78007d5f0099f0481b942c37233a4ac730b3ed42bc821daeef92b5c223642f0a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-area-shorter.png",
+      "bytes": 134028,
+      "sha256": "5d26e24c461f90acc1913ac3dba97d6e1f762b850d6eb2f9be5a5b645f14ea6a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fill.png",
+      "bytes": 134040,
+      "sha256": "78007d5f0099f0481b942c37233a4ac730b3ed42bc821daeef92b5c223642f0a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fit-empty-area.png",
+      "bytes": 133194,
+      "sha256": "7b4e77a7a74eaab7c7a33e5bde7d936bd540b30f9799bdcb6ea0581494d61553"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fit-numeric.png",
+      "bytes": 133159,
+      "sha256": "096bf8674219d79c73b339e1d09d01faf1f521619787d3ce4617b24dbaf7b8d8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-2026-10-23/ios-simulator-c114-template-area-repeat-ios-simulator-20261023T002340216Z-ea7c6290/template-area-repeat-rows-fit.png",
+      "bytes": 133111,
+      "sha256": "cb74d120cf48ed3590645a84ba1b126fa35d1492ba3924c565e4fbbe400e8991"
+    }
+  ]
+}

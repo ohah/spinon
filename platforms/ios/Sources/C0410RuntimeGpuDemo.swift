@@ -75,6 +75,13 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "auto-repeat-named-negative", "auto-repeat-named-span",
     "auto-repeat-named-fit", "auto-repeat-named-neighbors",
     "auto-repeat-named-merge", "auto-repeat-named-row",
+    "template-area-repeat-columns-fill", "template-area-repeat-columns-fit",
+    "template-area-repeat-columns-area-shorter", "template-area-repeat-columns-area-larger",
+    "template-area-repeat-columns-line-collision", "template-area-repeat-columns-fit-numeric",
+    "template-area-repeat-columns-fit-empty-area", "template-area-repeat-rows-fill",
+    "template-area-repeat-rows-fit", "template-area-repeat-rows-area-shorter",
+    "template-area-repeat-rows-area-larger", "template-area-repeat-rows-fit-numeric",
+    "template-area-repeat-rows-fit-empty-area",
     "auto-repeat-named-implicit-positive-missing",
     "auto-repeat-named-implicit-positive-insufficient",
     "auto-repeat-named-implicit-negative-missing",
@@ -348,6 +355,7 @@ private func c114IsMixedCrossAxisSpanGroupsScene(_ sceneID: String) -> Bool {
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if let areaRepeatFrame = c114TemplateAreaRepeatRootFrame(sceneID) { return areaRepeatFrame }
     if let namedFrame = c114NamedAutoRepeatRootFrame(sceneID) { return namedFrame }
     if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) { return "" }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) {
@@ -562,6 +570,7 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if let areaRepeatFrame = c114TemplateAreaRepeatItemFrame(sceneID) { return areaRepeatFrame }
     if let namedFrame = c114NamedAutoRepeatItemFrame(sceneID) { return namedFrame }
     if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) { return "" }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) { return "" }
@@ -2096,6 +2105,7 @@ private func c114ImageTrackPassMatches(
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if let areaRepeatFrames = c114TemplateAreaRepeatNodeFrames(sceneID) { return areaRepeatFrames }
     if let namedFrames = c114NamedAutoRepeatNodeFrames(sceneID) { return namedFrames }
     if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) { return nil }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) {
@@ -2516,6 +2526,145 @@ private func c114NamedAutoRepeatRootFrame(_ sceneID: String) -> String? {
     default:
         return nil
     }
+}
+
+private func c114TemplateAreaRepeatRootFrame(_ sceneID: String) -> String? {
+    switch sceneID {
+    case "template-area-repeat-columns-fill",
+         "template-area-repeat-columns-line-collision":
+        return "width=116,height=20"
+    case "template-area-repeat-columns-area-larger":
+        return "width=100,height=20"
+    case "template-area-repeat-columns-fit",
+         "template-area-repeat-columns-area-shorter",
+         "template-area-repeat-columns-fit-numeric",
+         "template-area-repeat-columns-fit-empty-area":
+        return "width=140,height=20"
+    case "template-area-repeat-rows-fill":
+        return "width=20,height=116"
+    case "template-area-repeat-rows-area-larger":
+        return "width=20,height=100"
+    case "template-area-repeat-rows-fit",
+         "template-area-repeat-rows-area-shorter",
+         "template-area-repeat-rows-fit-numeric",
+         "template-area-repeat-rows-fit-empty-area":
+        return "width=20,height=140"
+    default:
+        return nil
+    }
+}
+
+private func c114TemplateAreaRepeatItemFrame(_ sceneID: String) -> String? {
+    guard c114TemplateAreaRepeatRootFrame(sceneID) != nil else { return nil }
+    return ""
+}
+
+private func c114TemplateAreaRepeatItemNames(_ sceneID: String) -> [String]? {
+    switch sceneID {
+    case "template-area-repeat-columns-area-shorter", "template-area-repeat-rows-area-shorter":
+        return ["prefix", "hero", "suffix", "tail"]
+    case "template-area-repeat-columns-line-collision":
+        return ["prefix", "hero", "suffix", "alias-probe"]
+    case "template-area-repeat-columns-fit-empty-area", "template-area-repeat-rows-fit-empty-area":
+        return ["prefix", "suffix"]
+    case "template-area-repeat-columns-fill", "template-area-repeat-columns-fit",
+         "template-area-repeat-columns-area-larger", "template-area-repeat-columns-fit-numeric",
+         "template-area-repeat-rows-fill", "template-area-repeat-rows-fit",
+         "template-area-repeat-rows-area-larger", "template-area-repeat-rows-fit-numeric":
+        return ["prefix", "hero", "suffix"]
+    default:
+        return nil
+    }
+}
+
+private func c114TemplateAreaRepeatItemRects(
+    _ sceneID: String
+) -> [(x: UInt32, y: UInt32, width: UInt32, height: UInt32)]? {
+    switch sceneID {
+    case "template-area-repeat-columns-fill", "template-area-repeat-columns-area-larger":
+        return [(0, 0, 20, 20), (24, 0, 68, 20), (96, 0, 20, 20)]
+    case "template-area-repeat-columns-fit":
+        return [(0, 0, 20, 20), (24, 0, 20, 20), (44, 0, 20, 20)]
+    case "template-area-repeat-columns-area-shorter":
+        return [(0, 0, 20, 20), (24, 0, 68, 20), (96, 0, 20, 20), (120, 0, 20, 20)]
+    case "template-area-repeat-columns-line-collision":
+        return [(0, 0, 20, 20), (0, 0, 92, 20), (96, 0, 20, 20), (24, 0, 68, 20)]
+    case "template-area-repeat-columns-fit-numeric":
+        return [(0, 0, 20, 20), (24, 0, 20, 20), (44, 0, 20, 20)]
+    case "template-area-repeat-columns-fit-empty-area":
+        return [(0, 0, 20, 20), (20, 0, 20, 20)]
+    case "template-area-repeat-rows-fill", "template-area-repeat-rows-area-larger":
+        return [(0, 0, 20, 20), (0, 24, 20, 68), (0, 96, 20, 20)]
+    case "template-area-repeat-rows-fit", "template-area-repeat-rows-fit-numeric":
+        return [(0, 0, 20, 20), (0, 24, 20, 20), (0, 44, 20, 20)]
+    case "template-area-repeat-rows-area-shorter":
+        return [(0, 0, 20, 20), (0, 24, 20, 68), (0, 96, 20, 20), (0, 120, 20, 20)]
+    case "template-area-repeat-rows-fit-empty-area":
+        return [(0, 0, 20, 20), (0, 20, 20, 20)]
+    default:
+        return nil
+    }
+}
+
+private func c114TemplateAreaRepeatNodeFrames(_ sceneID: String) -> String? {
+    guard let rootFrame = c114TemplateAreaRepeatRootFrame(sceneID),
+          let items = c114TemplateAreaRepeatItemRects(sceneID) else { return nil }
+    var frames = ["0:node=1,x=0,y=0,\(rootFrame)"]
+    for (index, item) in items.enumerated() {
+        frames.append("\(index + 1):node=\(index + 2),x=\(item.x),y=\(item.y),"
+            + "width=\(item.width),height=\(item.height)")
+    }
+    return "node_frames_css_px=[\(frames.joined(separator: ";"))]"
+}
+
+private func c114TemplateAreaRepeatPixelSamples(
+    _ sceneID: String
+) -> [(String, String, UInt32, UInt32, [UInt32])]? {
+    guard c114TemplateAreaRepeatRootFrame(sceneID) != nil,
+          let names = c114TemplateAreaRepeatItemNames(sceneID),
+          let items = c114TemplateAreaRepeatItemRects(sceneID), names.count == items.count else {
+        return nil
+    }
+    let root: (width: UInt32, height: UInt32)
+    switch sceneID {
+    case "template-area-repeat-columns-fill", "template-area-repeat-columns-line-collision":
+        root = (116, 20)
+    case "template-area-repeat-columns-area-larger": root = (100, 20)
+    case "template-area-repeat-columns-fit", "template-area-repeat-columns-area-shorter",
+         "template-area-repeat-columns-fit-numeric", "template-area-repeat-columns-fit-empty-area":
+        root = (140, 20)
+    case "template-area-repeat-rows-fill": root = (20, 116)
+    case "template-area-repeat-rows-area-larger": root = (20, 100)
+    default: root = (20, 140)
+    }
+    let rootID = "c114-\(sceneID)-grid"
+    let rowAxis = sceneID.hasPrefix("template-area-repeat-rows-")
+    let rootX: UInt32 = sceneID.hasSuffix("-line-collision") ? 94
+        : sceneID.hasSuffix("-fit-empty-area") ? (rowAxis ? 2 : 60)
+        : rowAxis ? 2 : 22
+    let rootY: UInt32 = sceneID.hasSuffix("-line-collision") ? 10
+        : sceneID.hasSuffix("-fit-empty-area") ? (rowAxis ? 60 : 2)
+        : rowAxis ? 22 : 2
+    var furthestX = root.width
+    var furthestY = root.height
+    var samples: [(String, String, UInt32, UInt32, [UInt32])] = [
+        ("\(sceneID)-root-interior", rootID, rootX, rootY, [16, 24, 32, 255]),
+    ]
+    for (name, item) in zip(names, items) {
+        let color: [UInt32]
+        switch name {
+        case "suffix": color = [48, 164, 108, 255]
+        case "tail": color = [114, 87, 255, 255]
+        default: color = [229, 72, 77, 255]
+        }
+        samples.append(("\(sceneID)-\(name)-interior", "c114-\(sceneID)-\(name)",
+            item.x + item.width / 2, item.y + item.height / 2, color))
+        furthestX = max(furthestX, item.x + item.width)
+        furthestY = max(furthestY, item.y + item.height)
+    }
+    samples.append(("\(sceneID)-after-root", rootID,
+        rowAxis ? 10 : furthestX, rowAxis ? furthestY : 10, [0, 0, 0, 255]))
+    return samples
 }
 
 private func c114NamedAutoRepeatItemFrame(_ sceneID: String) -> String? {
@@ -3185,6 +3334,9 @@ private func c114GapNodeFrames(
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if let areaRepeatItems = c114TemplateAreaRepeatItemRects(sceneID) {
+        return areaRepeatItems.count + 1
+    }
     if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) { return 4 }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) { return 4 }
     if c114IsMixedCrossAxisSpanGroupsScene(sceneID) { return 4 }
@@ -4068,6 +4220,11 @@ private struct C111MetalPixelRun {
                 (overflowSample.0, overflowSample.1, overflowSample.2, overflowSample.3,
                  [0, 255, 64, 255]),
             ]
+        case let areaSceneID where areaSceneID.hasPrefix("template-area-repeat-"):
+            guard let areaSamples = c114TemplateAreaRepeatPixelSamples(areaSceneID) else {
+                return false
+            }
+            expectedSamples = areaSamples
         case let namedSceneID where namedSceneID.hasPrefix("auto-repeat-named-")
             || namedSceneID.hasPrefix("auto-fit-named-"):
             guard let namedSamples = c114NamedAutoRepeatPixelSamples(namedSceneID) else { return false }

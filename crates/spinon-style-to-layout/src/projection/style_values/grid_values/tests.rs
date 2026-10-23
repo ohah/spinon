@@ -20,7 +20,7 @@ fn projection_reservation_failure_keeps_node_and_axis_context() {
         columns_auto_repeat: None,
         rows_auto_repeat: None,
         columns_line_names: Vec::new(),
-        rows_line_names: Vec::new(),
+        rows_line_names: vec![Vec::new(), Vec::new()],
         template_areas: None,
         auto_flow: ComputedCssGridAutoFlow::Row,
         auto_rows: ComputedCssGridAutoRows::Auto,
@@ -134,6 +134,140 @@ fn template_area_profile_selects_template_grid_sizing_mode() {
         projected.placement_mode,
         spinon_layout::GridPlacementMode::TemplateGrid
     );
+}
+
+#[test]
+fn track_sizing_projects_areas_with_one_auto_repeat_axis_and_preserves_authored_size() {
+    let node = NodeId::new(11_117).unwrap();
+    let grid = ComputedCssGridLayout {
+        columns: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        rows: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        columns_auto_repeat: Some(ComputedCssGridAutoRepeat {
+            mode: ComputedCssGridAutoRepeatMode::AutoFill,
+            start: 0,
+            end: 1,
+            line_names: vec![Vec::new(), Vec::new()],
+        }),
+        rows_auto_repeat: None,
+        columns_line_names: Vec::new(),
+        rows_line_names: vec![Vec::new(), Vec::new()],
+        template_areas: Some(ComputedCssGridTemplateAreas {
+            rows: 1,
+            columns: 5,
+            areas: vec![ComputedCssGridArea {
+                name: "suffix".to_owned(),
+                row_start: 0,
+                row_end: 1,
+                column_start: 4,
+                column_end: 5,
+            }],
+        }),
+        auto_flow: ComputedCssGridAutoFlow::Row,
+        auto_rows: ComputedCssGridAutoRows::LengthPx(20.0),
+        auto_columns: spinon_style::ComputedCssGridAutoColumns::LengthPx(20.0),
+    };
+
+    let projected = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+    )
+    .unwrap();
+
+    assert_eq!(
+        projected.placement_mode,
+        spinon_layout::GridPlacementMode::TrackSizing
+    );
+    assert_eq!(
+        projected.template_areas,
+        Some(spinon_layout::GridTemplateAreasInput {
+            rows: 1,
+            columns: 5,
+            areas: vec![spinon_layout::GridTemplateAreaInput {
+                name: "suffix".to_owned(),
+                row_start: 0,
+                row_end: 1,
+                column_start: 4,
+                column_end: 5,
+            }],
+        })
+    );
+}
+
+#[test]
+fn auto_repeat_template_areas_reject_two_axes_and_area_metadata_allocation_failures() {
+    let node = NodeId::new(11_118).unwrap();
+    let mut grid = ComputedCssGridLayout {
+        columns: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        rows: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        columns_auto_repeat: Some(ComputedCssGridAutoRepeat {
+            mode: ComputedCssGridAutoRepeatMode::AutoFill,
+            start: 0,
+            end: 1,
+            line_names: vec![Vec::new(), Vec::new()],
+        }),
+        rows_auto_repeat: None,
+        columns_line_names: Vec::new(),
+        rows_line_names: vec![Vec::new(), Vec::new()],
+        template_areas: Some(ComputedCssGridTemplateAreas {
+            rows: 1,
+            columns: 1,
+            areas: vec![ComputedCssGridArea {
+                name: "area".to_owned(),
+                row_start: 0,
+                row_end: 1,
+                column_start: 0,
+                column_end: 1,
+            }],
+        }),
+        auto_flow: ComputedCssGridAutoFlow::Row,
+        auto_rows: ComputedCssGridAutoRows::Auto,
+        auto_columns: spinon_style::ComputedCssGridAutoColumns::Auto,
+    };
+    grid.rows_auto_repeat = Some(ComputedCssGridAutoRepeat {
+        mode: ComputedCssGridAutoRepeatMode::AutoFit,
+        start: 0,
+        end: 1,
+        line_names: vec![Vec::new(), Vec::new()],
+    });
+    let error = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+    )
+    .unwrap_err();
+    assert!(matches!(
+        error,
+        crate::StyleLayoutError::UnsupportedComputedValue {
+            node: error_node,
+            property: "grid-template-columns",
+            ..
+        } if error_node == node
+    ));
+
+    grid.rows_auto_repeat = None;
+    for site in [
+        GridLineNameReservationSite::Areas,
+        GridLineNameReservationSite::AreaName,
+    ] {
+        let mut math = CssMathProjector::default();
+        let error = project_grid_layout_with_reservations(
+            node,
+            &grid,
+            ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+            &mut math,
+            |_, _| Ok(()),
+            |requested| if requested == site { Err(()) } else { Ok(()) },
+        )
+        .unwrap_err();
+        assert!(matches!(
+            error,
+            crate::StyleLayoutError::Layout(LayoutError::GridAllocationFailure {
+                node: error_node,
+                property: "grid-template-areas",
+            }) if error_node == node
+        ));
+    }
 }
 
 #[test]

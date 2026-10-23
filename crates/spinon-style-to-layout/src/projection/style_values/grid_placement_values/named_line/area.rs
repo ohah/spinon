@@ -95,32 +95,29 @@ fn validate_area_line_metadata(
     line_metadata: &LineMetadata<'_>,
 ) -> Result<(), StyleLayoutError> {
     validate_line_metadata(node, property, name, line_metadata)?;
-    let opposite_track_count = if let Some(areas) = line_metadata.areas {
-        let axis_track_count = match line_metadata.axis {
-            GridAxis::Rows => areas.rows,
-            GridAxis::Columns => areas.columns,
-        };
-        if axis_track_count != line_metadata.track_count {
+    let Some(areas) = line_metadata.areas else {
+        let opposite_track_count = line_metadata.opposite_names.len().saturating_sub(1);
+        if opposite_track_count.checked_add(1) != Some(line_metadata.opposite_names.len()) {
             return Err(unsupported_named_line(
                 node,
                 property,
                 name,
-                "template-area dimensions do not match the explicit grid",
+                "opposite grid line-name metadata is missing or has the wrong length",
             ));
         }
-        match line_metadata.axis {
-            GridAxis::Rows => areas.columns,
-            GridAxis::Columns => areas.rows,
-        }
-    } else {
-        line_metadata.opposite_names.len().saturating_sub(1)
+        return Ok(());
     };
-    if opposite_track_count.checked_add(1) != Some(line_metadata.opposite_names.len()) {
+
+    let axis_track_count = match line_metadata.axis {
+        GridAxis::Rows => areas.rows,
+        GridAxis::Columns => areas.columns,
+    };
+    if axis_track_count != line_metadata.track_count {
         return Err(unsupported_named_line(
             node,
             property,
             name,
-            "opposite grid line-name metadata is missing or has the wrong length",
+            "template-area dimensions do not match the explicit grid",
         ));
     }
     Ok(())

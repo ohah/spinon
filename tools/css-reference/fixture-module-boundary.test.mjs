@@ -39,6 +39,7 @@ const canonicalFixtureSources = [
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_named_lines.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_template_area_auto_repeat.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_2.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_4.rs',
@@ -134,6 +135,15 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
   const c114NamedLineRuntimeFixture = await readFile(
     resolve(repositoryRoot,
       'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_named_lines.rs'),
+    'utf8',
+  );
+  const c114TemplateAreaRuntimeFixture = await readFile(
+    resolve(repositoryRoot,
+      'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_template_area_auto_repeat.rs'),
+    'utf8',
+  );
+  const c114RuntimeFixtureHost = await readFile(
+    resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs'),
     'utf8',
   );
   const ffiFixtureSource = await readFile(
@@ -305,6 +315,12 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     /#\[cfg\(feature = "c13-1-overflow-clip-fixture-test"\)\]\s*pub\(crate\) mod c13_1;/);
   assert.match(runtimeFixtureSource,
     /pub\(crate\) mod c11_4_auto_repeat_named_lines;/);
+  assert.match(runtimeFixtureSource,
+    /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*pub\(crate\) mod c11_4_template_area_auto_repeat;/);
+  assert.match(c114RuntimeFixtureHost,
+    /super::c11_4_template_area_auto_repeat::runtime_source\(scene_id\)/);
+  assert.match(c114TemplateAreaRuntimeFixture,
+    /include_str!\("c11_4\/template_area_auto_repeat_scenes\.json"\)/);
   assert.match(c114RuntimeFixture,
     /super::c11_4_auto_repeat_named_lines::runtime_source/);
   assert.match(c114NamedLineRuntimeFixture,

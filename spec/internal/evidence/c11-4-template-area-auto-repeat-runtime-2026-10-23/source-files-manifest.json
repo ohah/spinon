@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "baseCommit": "3df7fe704fe253e5edcc4946ed215e33dc2e935e",
+  "trackedDiffSha256": "915cea94331bbd621b3e7a4f19b6dac1c6e6a974ab7d24ede80b7c8b698cedea",
+  "files": [
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures.rs",
+      "bytes": 1797,
+      "sha256": "0293c2ab04e775dc0457fcd1f47e04e0c33d900c54a73918e481d04d43a42910"
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_template_area_auto_repeat.rs",
+      "bytes": 4318,
+      "sha256": "c1e059f6d4bd610cca3053558fb99b7f4909d4b9b7894737429ac5c3f6e7c612"
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "bytes": 96924,
+      "sha256": "8fd4c919aeb83bd580db58576701f8156270689f85048d4ad62f9b3968b09ae2"
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/template_area_auto_repeat_scenes.json",
+      "bytes": 18853,
+      "sha256": "14a849778d10515ebe7e28caedbcc6328742b1684463975ade0220e57f667068"
+    },
+    {
+      "path": "crates/spinon-layout/src/compact_taffy_style.rs",
+      "bytes": 13888,
+      "sha256": "ae9ef59ea726f6e6a5b0134547712634b9c0b27364126f7cc835998d51758c05"
+    },
+    {
+      "path": "crates/spinon-layout/src/grid_auto_placement_tests.rs",
+      "bytes": 11881,
+      "sha256": "7664f77d789ccc90d5a8935954325c4b460f382fd1eb0a458616f9bd54acf30e"
+    },
+    {
+      "path": "crates/spinon-layout/src/grid_auto_placement/dense_column_tests.rs",
+      "bytes": 9245,
+      "sha256": "d3d19d1260cfa74a708124d838d56cd27d8207cfc29326af41406e0f6237b46c"
+    },
+    {
+      "path": "crates/spinon-layout/src/grid_auto_placement/track_sizing_tests.rs",
+      "bytes": 14837,
+      "sha256": "c91d523ad43ebe3610cee3b8e8529d7c5828b23447a33620453eac3c5799c434"
+    },
+    {
+      "path": "crates/spinon-layout/src/grid_auto_track_sizing_tests.rs",
+      "bytes": 22145,
+      "sha256": "4521b598abbfbd7c8a0163dbc3d9b94b69b2843ab6388d211240852c5d2a8e67"
+    },
+    {
+      "path": "crates/spinon-layout/src/grid_template_areas_tests.rs",
+      "bytes": 5000,
+      "sha256": "7c3303ef841ede1ebaeefe302d07203c4a925a6f97235c009eb4f19e37f89542"
+    },
+    {
+      "path": "crates/spinon-layout/src/grid_tests.rs",
+      "bytes": 16618,
+      "sha256": "1069bf994e5b0ac3abec4dc5a45fdb5ef03491c809e4d5e4ac53c8b496907f88"
+    },
+    {
+      "path": "crates/spinon-layout/src/grid_track_sizing_tests.rs",
+      "bytes": 30756,
+      "sha256": "d99e73ef41a436e2f26ed043ad5777ea5c41d41cd4de894e0fce83a1341a15dd"
+    },
+    {
+      "path": "crates/spinon-layout/src/grid.rs",
+      "bytes": 43385,
+      "sha256": "385b3340bd41ffd2ccb00656910c1603beaf6399b9a9ed91106c3dd2cb9f4ed2"
+    },
+    {
+      "path": "crates/spinon-layout/src/lib.rs",
+      "bytes": 23037,
+      "sha256": "d329195ea7f9e618e773c09594ab4ea26491720464f3fb944265ca26f9e0b246"
+    },
+    {
+      "path": "crates/spinon-layout/src/taffy_style.rs",
+      "bytes": 23814,
+      "sha256": "d486861c2edd9c901d26e7e4257840ad1bc87e5276fd629a4d4ae66877842564"
+    },
+    {
+      "path": "crates/spinon-layout/src/taffy_style/grid.rs",
+      "bytes": 16693,
+      "sha256": "1ad73f756873e9c5136c02c680d9893769e580fae6ee8b50b1651285dc4afa80"
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests.rs",
+      "bytes": 22070,
+      "sha256": "028fbbbe5db90500d17a97c5d2a61d063b015712d341445804ae741f15fba519"
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/projection/style_values/grid_placement_values/named_line/area.rs",
+      "bytes": 5691,
+      "sha256": "86eae527e712f7457c54aec8b696db472d52316ea540f2749df5f53742f079aa"
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs",
+      "bytes": 27268,
+      "sha256": "9b4dbad9bc4988a7496c46d616e302d2d567687a0a56658dec209a718cb644fe"
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/projection/style_values/grid_values/tests.rs",
+      "bytes": 25423,
+      "sha256": "1dde36d29c257da64e5eba2452b4a8045d6bf5de5d43cedcd3be3af34c82a040"
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs",
+      "bytes": 37788,
+      "sha256": "5d1ae44d0031b46e96936644ea4b4d4779d91e1ca6c4d8a2e5807955136742c9"
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/template_repeat.rs",
+      "bytes": 22502,
+      "sha256": "53d60480eef96f7bd2a5e943dc89f2eb881401710f5fcaa3d961baffdc617a7e"
+    },
+    {
+      "path": "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "bytes": 688769,
+      "sha256": "9caa9240a2f52d2e2aa8fc08b2303efe4693abbbd03510d2b205ac013e529659"
+    },
+    {
+      "path": "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "bytes": 589641,
+      "sha256": "d9f9078ffb42b331cef6342923090496d9c951048f58157149b696c4dc5ba961"
+    },
+    {
+      "path": "tests/fixtures/css/c11/grid-auto-repeat-template-areas-c114.html",
+      "bytes": 7623,
+      "sha256": "4be9054c0d960e7c09eb87ea859fde5f5bb2b78d6de755f0d5de5862f81cc957"
+    },
+    {
+      "path": "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "bytes": 278100,
+      "sha256": "d91e5271b07a79af90ea9a2660d76ba542ed64c5d2e773d95b1a6bba6c0decf4"
+    },
+    {
+      "path": "tools/css-reference/fixture-module-boundary.test.mjs",
+      "bytes": 37210,
+      "sha256": "eb606de5abcba4c664723fa9b751e581d524329d520dc9e5862d9559ba577e8e"
+    }
+  ]
+}

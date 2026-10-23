@@ -3310,8 +3310,95 @@ async function autoRepeatNamedLineScenes() {
   });
 }
 
+async function templateAreaRepeatScenes() {
+  const fixturePath = resolve(repositoryRoot,
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/template_area_auto_repeat_scenes.json');
+  const androidPath = resolve(repositoryRoot,
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java');
+  const iosPath = resolve(repositoryRoot, 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift');
+  const [fixtures, androidSource, iosSource] = await Promise.all([
+    readFile(fixturePath, 'utf8').then(JSON.parse),
+    readFile(androidPath, 'utf8'),
+    readFile(iosPath, 'utf8'),
+  ]);
+  assert.equal(fixtures.length, 13, 'template-area auto-repeat fixture는 13 scene이어야 합니다.');
+  const allowlist = (source, expression, label) => {
+    const match = source.match(expression);
+    assert.ok(match, `${label} scene allowlist를 읽을 수 없습니다.`);
+    return new Set([...match[1].matchAll(/"([^"]+)"/g)].map((entry) => entry[1]));
+  };
+  const androidScenes = allowlist(androidSource,
+    /C114_GRID_TRACK_SIZING_SCENE_IDS\s*=\s*\{([\s\S]*?)\};/,
+    'Android Grid track sizing');
+  const iosScenes = allowlist(iosSource,
+    /c114GridTrackSizingSceneIDs:\s*Set<String>\s*=\s*\[([\s\S]*?)\]/,
+    'iOS Grid track sizing');
+
+  return fixtures.map(({ id, expect }) => {
+    assert.ok(androidScenes.has(id), `Android Grid allowlist에 ${id}가 없습니다.`);
+    assert.ok(iosScenes.has(id), `iOS Grid allowlist에 ${id}가 없습니다.`);
+    const [rootWidth, rootHeight] = expect.root;
+    const items = expect.items;
+    const axis = id.includes('-columns-') ? 'Columns' : 'Rows';
+    const tracks = expect.tracks;
+    const rootFrame = `width=${rootWidth},height=${rootHeight}`;
+    const rootNodeId = `c114-${id}-grid`;
+    const itemFrames = items.map(({ name, frame }, index) => {
+      const [x, y, width, height] = frame;
+      return `${index + 1}:node=${index + 2},x=${x},y=${y},width=${width},height=${height}`;
+    });
+    const nodeFrames = `node_frames_css_px=[0:node=1,x=0,y=0,${rootFrame};${itemFrames.join(';')}]`;
+    const allFrames = items.map(({ frame }) => frame);
+    const furthestX = Math.max(rootWidth, ...allFrames.map(([x, , width]) => x + width));
+    const furthestY = Math.max(rootHeight, ...allFrames.map(([, y, , height]) => y + height));
+    const rootSamplePoint = id.endsWith('-line-collision') ? [94, 10]
+      : id.endsWith('-fit-empty-area') ? (axis === 'Rows' ? [2, 60] : [60, 2])
+        : axis === 'Rows' ? [2, 22] : [22, 2];
+    const pixelSamples = [
+      {
+        id: `${id}-root-interior`, nodeId: rootNodeId,
+        xCssPx: rootSamplePoint[0], yCssPx: rootSamplePoint[1], rgba: [16, 24, 32, 255],
+      },
+      ...items.map(({ name, frame }) => {
+        const [x, y, width, height] = frame;
+        const rgb = name === 'suffix' ? [48, 164, 108]
+          : name === 'tail' ? [114, 87, 255] : [229, 72, 77];
+        return {
+          id: `${id}-${name}-interior`,
+          nodeId: `c114-${id}-${name}`,
+          xCssPx: x + Math.floor(width / 2),
+          yCssPx: y + Math.floor(height / 2),
+          rgba: [...rgb, 255],
+        };
+      }),
+      {
+        id: `${id}-after-root`,
+        nodeId: rootNodeId,
+        xCssPx: axis === 'Rows' ? 10 : furthestX,
+        yCssPx: axis === 'Rows' ? furthestY : 10,
+        rgba: [0, 0, 0, 255],
+      },
+    ];
+
+    return {
+      id,
+      axis,
+      boxCount: items.length + 1,
+      rootFrame,
+      itemFrame: null,
+      nodeFrames,
+      axes: {
+        [axis]: { tracks, collapsed: tracks.map((track) => track === 0) },
+      },
+      gaps: { Columns: 4, Rows: 4 },
+      pixelSamples,
+    };
+  });
+}
+
+scenes.push(...await templateAreaRepeatScenes());
 scenes.push(...await autoRepeatNamedLineScenes());
-assert.equal(scenes.length, 307, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 320, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;

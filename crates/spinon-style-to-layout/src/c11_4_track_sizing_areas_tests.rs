@@ -421,6 +421,28 @@ fn track_sizing_profile_keeps_named_area_placement() {
 }
 
 #[test]
+fn auto_repeat_template_areas_accept_bare_grid_area_placement_on_both_axes() {
+    let fixture = Fixture::new(
+        "display:grid;box-sizing:border-box;width:116px;height:20px;grid-template-columns:20px repeat(auto-fill,20px) 20px;grid-template-rows:20px;grid-template-areas:'prefix hero hero hero suffix';column-gap:4px;row-gap:4px;align-content:start;justify-content:start;margin:0;padding:0;border:0",
+        &[(
+            "hero",
+            "box-sizing:border-box;width:auto;height:auto;grid-area:hero;margin:0;padding:0;border:0",
+        )],
+    );
+    let output = fixture.try_compute();
+    assert!(
+        output.is_ok(),
+        "unexpected area placement result: {output:?}"
+    );
+    let output = output.unwrap();
+    let frame = output.layout.frames[&fixture.nodes["hero"].id()];
+    assert_eq!(
+        (frame.x, frame.y, frame.width, frame.height),
+        (24.0, 0.0, 68.0, 20.0)
+    );
+}
+
+#[test]
 fn root_grid_max_content_is_scoped_to_the_track_sizing_profile() {
     let grid_style = "display:grid;box-sizing:border-box;width:max-content;height:max-content;grid-template-columns:40px 60px;grid-template-rows:10px 10px;column-gap:10%;row-gap:25%;margin:0;padding:0;border:0";
     let fixture = Fixture::new(grid_style, &[]);
