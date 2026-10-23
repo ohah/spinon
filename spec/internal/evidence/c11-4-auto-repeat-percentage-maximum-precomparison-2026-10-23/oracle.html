@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 percentage auto-repeat maximum oracle</title>
+  <style>
+    :root { color-scheme: light; font: 14px/1.4 system-ui, sans-serif; }
+    body { margin: 20px; color: #172033; background: #f4f6fa; }
+    header { margin-bottom: 16px; }
+    h1 { margin: 0 0 4px; font-size: 20px; }
+    p { margin: 0; color: #526078; }
+    #matrix { display: grid; grid-template-columns: repeat(2, minmax(250px, 1fr)); gap: 12px; }
+    section { padding: 10px; background: white; border: 1px solid #cbd5e1; border-radius: 8px; }
+    h2 { margin: 0 0 8px; font: 600 12px/1.4 ui-monospace, monospace; }
+    .grid { display: grid; box-sizing: content-box; width: 184px; height: 184px; border: 2px solid #475569; gap: 8px;
+      align-content: start; justify-content: start; background: #e2e8f0; }
+    .grid > div { box-sizing: border-box; min-width: 0; min-height: 0; background: #e5484d; }
+    .grid > div:nth-child(2) { background: #2563eb; }
+    .grid > div:nth-child(3) { background: #16a34a; }
+    .grid > div:nth-child(4) { background: #9333ea; }
+    footer { margin-top: 14px; color: #526078; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Definite percentage maximum in auto-repeat</h1>
+    <p>184px content basis, 8px gap. Compare max-percentage count, min/max flooring, auto-fit collapse, axes, and fixed controls.</p>
+  </header>
+  <main id="matrix"></main>
+  <footer>Chrome computed used tracks and item frames are captured in window.results. CSS Grid 2025 CRD §7.2.3.2 supplies the independent repetition rule.</footer>
+  <script>
+    const specs = [];
+    for (const axis of ["columns", "rows"]) {
+      specs.push(
+        {id: axis + "-percent-max-fill", axis, mode: "auto-fill", min: "16px", max: "25%", count: 2},
+        {id: axis + "-percent-max-fill-control", axis, mode: "auto-fill", min: "16px", max: "46px", count: 2},
+        {id: axis + "-percent-max-fit", axis, mode: "auto-fit", min: "16px", max: "25%", count: 1},
+        {id: axis + "-percent-max-fit-control", axis, mode: "auto-fit", min: "16px", max: "46px", count: 1},
+        {id: axis + "-max-below-min-fill", axis, mode: "auto-fill", min: "25%", max: "20%", count: 2},
+        {id: axis + "-max-below-min-control", axis, mode: "auto-fill", min: "46px", max: "46px", count: 2},
+        {id: axis + "-zero-percent-max-fill", axis, mode: "auto-fill", min: "25%", max: "0%", count: 2},
+        {id: axis + "-zero-percent-max-control", axis, mode: "auto-fill", min: "46px", max: "46px", count: 2},
+        {id: axis + "-calc-percent-max-fill", axis, mode: "auto-fill", min: "16px", max: "calc(20px + 10%)", count: 2},
+        {id: axis + "-calc-percent-max-control", axis, mode: "auto-fill", min: "16px", max: "38.4px", count: 2}
+      );
+    }
+    specs.push(
+      {id:"both-percent-max-fill", axis:"both", mode:"auto-fill", columnsMin:"16px", columnsMax:"25%", rowsMin:"16px", rowsMax:"25%", count:2},
+      {id:"both-percent-max-fill-control", axis:"both", mode:"auto-fill", columnsMin:"16px", columnsMax:"46px", rowsMin:"16px", rowsMax:"46px", count:2},
+      {id:"both-percent-max-fit", axis:"both", mode:"auto-fit", columnsMin:"16px", columnsMax:"25%", rowsMin:"16px", rowsMax:"25%", count:1},
+      {id:"both-percent-max-fit-control", axis:"both", mode:"auto-fit", columnsMin:"16px", columnsMax:"46px", rowsMin:"16px", rowsMax:"46px", count:1},
+      {id:"both-flooring-fill", axis:"both", mode:"auto-fill", columnsMin:"25%", columnsMax:"20%", rowsMin:"25%", rowsMax:"0%", count:2},
+      {id:"both-flooring-fill-control", axis:"both", mode:"auto-fill", columnsMin:"46px", columnsMax:"46px", rowsMin:"46px", rowsMax:"46px", count:2},
+      {id:"both-calc-percent-max-fill", axis:"both", mode:"auto-fill", columnsMin:"16px", columnsMax:"calc(20px + 10%)", rowsMin:"16px", rowsMax:"calc(20px + 10%)", count:2},
+      {id:"both-calc-percent-max-fill-control", axis:"both", mode:"auto-fill", columnsMin:"16px", columnsMax:"38.4px", rowsMin:"16px", rowsMax:"38.4px", count:2}
+    );
+    const matrix = document.getElementById("matrix");
+    const grids = new Map();
+    for (const spec of specs) {
+      const section = document.createElement("section");
+      const heading = document.createElement("h2");
+      heading.textContent = spec.id;
+      section.append(heading);
+      const grid = document.createElement("div");
+      grid.className = "grid";
+      if (spec.axis === "both") {
+        grid.style.gridTemplateColumns = "repeat(" + spec.mode + ", minmax(" + spec.columnsMin + ", " + spec.columnsMax + "))";
+        grid.style.gridTemplateRows = "repeat(" + spec.mode + ", minmax(" + spec.rowsMin + ", " + spec.rowsMax + "))";
+      } else if (spec.axis === "columns") {
+        grid.style.gridTemplateColumns = "repeat(" + spec.mode + ", minmax(" + spec.min + ", " + spec.max + "))";
+        grid.style.gridTemplateRows = "20px";
+      } else {
+        grid.style.gridTemplateColumns = "20px";
+        grid.style.gridTemplateRows = "repeat(" + spec.mode + ", minmax(" + spec.min + ", " + spec.max + "))";
+      }
+      for (let index = 0; index < spec.count; index += 1) {
+        grid.append(document.createElement("div"));
+      }
+      section.append(grid);
+      matrix.append(section);
+      grids.set(spec.id, {spec, grid});
+    }
+    window.results = Array.from(grids, ([id, entry]) => {
+      const {spec, grid} = entry;
+      const style = getComputedStyle(grid);
+      const root = grid.getBoundingClientRect();
+      const items = Array.from(grid.children, item => {
+        const rect = item.getBoundingClientRect();
+        return [rect.left - root.left - 2, rect.top - root.top - 2, rect.width, rect.height];
+      });
+      return {
+        id,
+        axis: spec.axis,
+        mode: spec.mode,
+        template: spec.axis === "both"
+          ? {columns:style.gridTemplateColumns, rows:style.gridTemplateRows}
+          : spec.axis === "columns" ? style.gridTemplateColumns : style.gridTemplateRows,
+        gap: spec.axis === "both"
+          ? {columns:style.columnGap, rows:style.rowGap}
+          : spec.axis === "columns" ? style.columnGap : style.rowGap,
+        contentSize: spec.axis === "both"
+          ? {columns:grid.clientWidth, rows:grid.clientHeight}
+          : spec.axis === "columns" ? grid.clientWidth : grid.clientHeight,
+        items
+      };
+    });
+  </script>
+</body>
+</html>
