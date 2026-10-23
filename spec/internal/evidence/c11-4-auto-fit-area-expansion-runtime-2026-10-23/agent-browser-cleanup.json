@@ -1,14 +1,20 @@
 {
-  "sessionInventory": {
+  "preflight": {
     "command": "agent-browser session list --json",
     "success": true,
-    "spinonOwnedSessions": [],
-    "unrelatedActiveSessionCount": 1
+    "activeSessions": []
   },
-  "processScan": {
-    "command": "ps -axo pid,command | rg '[a]gent-browser'",
-    "unrelatedAgentBrowserChromeProcessTreeCount": 1
+  "browserStartedThisTurn": true,
+  "session": "spinon-c114-pr549-images-20261023",
+  "purpose": "Verify PR 549 body image rendering",
+  "imagesLoadedAndRendered": 2,
+  "closeCommand": "agent-browser --session spinon-c114-pr549-images-20261023 close",
+  "closeResult": "Browser closed",
+  "postCloseSessionInfo": {
+    "active": false,
+    "pid": null,
+    "runtime": null
   },
-  "browserStartedThisTurn": false,
-  "cleanup": "No Spinon-owned session was created. The unrelated active HWPJS session and process tree were preserved."
+  "processScan": "pgrep -alf agent-browser and process table scan: no Agent Browser or Chrome child process remained",
+  "unrelatedSessionsTouched": 0
 }

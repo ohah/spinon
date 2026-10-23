@@ -1,1 +1,17 @@
-{"success":true,"data":{"sessions":[]}}
+{
+  "command": "agent-browser session list --json",
+  "postCloseResult": {
+    "success": true,
+    "reportedSessions": [
+      "spinon-c114-pr549-images-20261023"
+    ]
+  },
+  "sessionInfoCommand": "agent-browser --session spinon-c114-pr549-images-20261023 session info --json",
+  "sessionInfo": {
+    "active": false,
+    "pid": null,
+    "runtime": null,
+    "version": null
+  },
+  "note": "The CLI retained inactive session metadata; no browser process remained."
+}

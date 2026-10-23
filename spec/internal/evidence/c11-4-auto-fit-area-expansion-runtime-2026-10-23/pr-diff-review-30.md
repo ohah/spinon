@@ -44,4 +44,14 @@
 | 모든 renderer/backend에서 empty scene sample을 실제 surface에서 읽는다. | Android PixelCopy와 iOS drawable에서 root/clear sample이 exact; 전체 area 116/116씩 통과. |
 | runtime 요약 없이 앱 설정 오류가 성공처럼 기록되지 않는다. | 최초 실패는 `runtime summary` 검사 전 config error로 종료됐다. 수정 뒤 전체 41/41에서 summary·trace·present가 확인됐다. 통과. |
 
-최신 source의 focused tests, workspace/fixture-feature Clippy, Android/iOS app build, 41-scene runtime 및 FFI archive 경계는 각각 근거 파일에 기록했다. 구현 PR을 만든 뒤 현재 required checks와 merge state를 다시 조회하고, Agent Browser로 본문 이미지가 렌더링되는지 확인한 다음 task 소유 browser process만 종료한다.
+최신 source의 focused tests, workspace/fixture-feature Clippy, Android/iOS app build, 41-scene runtime 및 FFI archive 경계는 각각 근거 파일에 기록했다. PR #549를 열고 required checks와 merge state를 다시 조회했다. Agent Browser로 본문 이미지를 확인한 뒤 task 전용 session과 process를 닫았다.
+
+## PR 게시·Agent Browser 후속 검토
+
+| 추가 실패 관점 | 확인 내용과 판정 |
+| --- | --- |
+| PR screenshot URL이 relative path나 틀린 scene을 가리킨다. | 양쪽 링크는 fixture screenshot이 있는 commit `9749e0b7f8baadb6bd786b61f6f89c37ecf9b93f`를 pin한다. 통과. |
+| GitHub가 이미지 URL을 표시만 하고 실제 image를 로드하지 않는다. | Agent Browser DOM에서 두 `img` 모두 `complete=true`, `naturalWidth>0`, rendered이며 크기는 Android 1080×2400, iOS 1206×2622다. 통과. |
+| PR review/check 상태가 확인 없이 clean 또는 통과로 기록된다. | `gh pr view`는 `mergeStateStatus=CLEAN`, `gh pr checks --required`는 check가 보고되지 않는다고 반환했다. 결과와 빈 check rollup을 분리해 기록했다. |
+| 브라우저 종료가 기존 Agent Browser 작업이나 공유 Chrome을 닫는다. | 생성 전 inventory는 active session 0개였다. 닫은 뒤 task session `active=false`, `pid=null`이고 process scan에 browser process가 없다. 다른 session은 종료하지 않았다. |
+| 게시 근거가 공식 지원 집계나 Tailnet을 앞당긴다. | 계획 문서와 evidence만 갱신했고 `spec/STATUS.md`, 공식 `77/213`, Tailnet은 그대로다. 통과. |

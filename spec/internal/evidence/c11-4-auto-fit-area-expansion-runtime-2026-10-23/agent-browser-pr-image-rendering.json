@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "verificationTool": "Agent Browser 0.31.1",
+  "pullRequest": "https://github.com/ohah/spinon/pull/549",
+  "session": "spinon-c114-pr549-images-20261023",
+  "result": "both PR body image elements loaded and rendered",
+  "images": [
+    {
+      "alt": "Android AVD auto-fit area span",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/9749e0b7f8baadb6bd786b61f6f89c37ecf9b93f/spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-fit-fit-area-span.png",
+      "complete": true,
+      "rendered": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    },
+    {
+      "alt": "iOS Simulator auto-fit area span",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/9749e0b7f8baadb6bd786b61f6f89c37ecf9b93f/spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/ios-simulator-c114-auto-fit-area-expansion-ios-simulator-20261023T062653064Z-051a4e81/template-area-repeat-two-axis-fit-fit-area-span.png",
+      "complete": true,
+      "rendered": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622
+    }
+  ]
+}
