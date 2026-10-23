@@ -1,0 +1,236 @@
+{
+  "pass": "pass70",
+  "sourceHead": "10ae04a09f9f0b1b97056693dad0438a2c022b62",
+  "localDeltaFilesVerified": 1699,
+  "localMismatches": [],
+  "targetFilesBefore": 62768,
+  "targetFilesAfter": 63735,
+  "noDeletes": true,
+  "remoteChecks": [
+    {
+      "path": "roadmap.html",
+      "status": 200,
+      "bytes": 273412,
+      "sha256": "4977714f82425515e61a314136776c83584b8e90985101cfbd3ecfe4ece51007",
+      "matchesSource": true
+    },
+    {
+      "path": "STATUS.html",
+      "status": 200,
+      "bytes": 902613,
+      "sha256": "33b1d643193dd712b8435ae032cabfa2bc1bea7e06ad4264522aca35c3681b97",
+      "matchesSource": true
+    },
+    {
+      "path": "0001-conformance.html",
+      "status": 200,
+      "bytes": 444334,
+      "sha256": "7a4403197072aad48baac35ad5d35ab8df1d2578ec39bcfa7c8036f6dbfb3287",
+      "matchesSource": true
+    },
+    {
+      "path": "internal/README.html",
+      "status": 200,
+      "bytes": 601555,
+      "sha256": "08b83991cdbac88d5e3bbf80a783a24baf6e1da031ba17b1fd9bff6ea184c611",
+      "matchesSource": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "bytes": 566886,
+      "sha256": "617e8151ca6041a00f79d3169fc8338380710e330ba82b6e8aab6c20c681bd69",
+      "matchesSource": true
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-positive-percent-minimum.html",
+      "status": 200,
+      "bytes": 427641,
+      "sha256": "4ea475bd4a1e96be1a5195d857f4d903d0a46863e45bd7ab226a8d4bce92103d",
+      "matchesSource": true
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-positive-percent-minimum-revision-review-20.html",
+      "status": 200,
+      "bytes": 423436,
+      "sha256": "600355cc7326b0e0913be3a1fe7ebbeefbdb047344a50b060d21d2da77ad05b8",
+      "matchesSource": true
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-positive-percent-minimum-precomparison-2026-10-23/README.html",
+      "status": 200,
+      "bytes": 423316,
+      "sha256": "306dab23ad7b4590d0f135c11a6240218e73425a6d5935d2da45b23ffba22121",
+      "matchesSource": true
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/README.html",
+      "status": 200,
+      "bytes": 425503,
+      "sha256": "592cfe8155611952fa3ce69f8546e94ff3cad2addf4ea8178d7e8f12c58995c7",
+      "matchesSource": true
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/implementation-runtime-review-20.html",
+      "status": 200,
+      "bytes": 425706,
+      "sha256": "c32a4733bfadb1b904e70fc633c4d5b3b8288218e49f641f1ae2fccd867d5da3",
+      "matchesSource": true
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/pr-diff-review-20.html",
+      "status": 200,
+      "bytes": 425002,
+      "sha256": "408a9137b03191b505cdc781de52294e761947595c4ace752db6ae57baa7376b",
+      "matchesSource": true
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/android-avd-c114-positive-percent-minimum-commit-android-avd-20261023T104649350Z-da0f371b/percentage-overflow-columns-calc.png",
+      "status": 200,
+      "bytes": 74022,
+      "sha256": "58bbfb14ab52a8357f7c1aaaf8954018c05aba7d5b5c7521ba3e1d3e1e791371",
+      "matchesSource": true
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/ios-simulator-c114-positive-percent-minimum-commit-ios-simulator-20261023T104719112Z-2d91e097/percentage-overflow-columns-calc.png",
+      "status": 200,
+      "bytes": 145446,
+      "sha256": "1159088a69d645a861dbf8488f534d0eb72687992e50ab8b69e01e623c8853e6",
+      "matchesSource": true
+    },
+    {
+      "path": "internal/evidence/c11-4-positive-percent-status-update-2026-10-23/pr-diff-review-20.html",
+      "status": 200,
+      "bytes": 424001,
+      "sha256": "3150012515869b4d85b51271bb13806938427cab2793caa8c9edf3abe2de0793",
+      "matchesSource": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": 200,
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "matchesSource": true
+    },
+    {
+      "path": "static/image/template-area-repeat-two-axis-fit-fit-area-span.ed10962b63.png",
+      "status": 200,
+      "bytes": 78089,
+      "sha256": "8fcdc243a080b8080b2357a6fdb88e53e75b7b121a0176a4de07807341ecae3f",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "status": 200,
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/async/route-0b2769a13e2f.293a9322a6.js",
+      "status": 200,
+      "bytes": 8731,
+      "sha256": "ac099bb4dfc0a4573868bb8f048532da65ad4d0698b0ea433830c38d9a122dbd",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/async/route-39f2d69cb77c.6e437bbe0f.js",
+      "status": 200,
+      "bytes": 9845,
+      "sha256": "7906a07fc205583f23d4de80a9068c8a3032b0b89707fd90d60353cccee2b9b8",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/async/route-5b8d196fa4e9.0cac484887.js",
+      "status": 200,
+      "bytes": 10418,
+      "sha256": "d4059f03c3b241aff1c24ed52bb5fc91eee68f1a0d1cd97e058130bbc6b4a3e0",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.ba98f32adc.js",
+      "status": 200,
+      "bytes": 536504,
+      "sha256": "6be06e5ef292d1b3a966def05199d68f5b186282cc6ce9a2ff8a031fa68f5867",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/async/route-a1017bdf23ca.1438c34fec.js",
+      "status": 200,
+      "bytes": 210311,
+      "sha256": "699ac87e4b0d10cfdad65198f004584759587df7758be16c2393b351e62491b6",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/async/route-a539c8909d0a.6a6074eae6.js",
+      "status": 200,
+      "bytes": 8374,
+      "sha256": "bf7bb4c3f56d6adfd2b211cc90a9ee2c6a1b9fa0d2610677943957b837c7de28",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/async/route-a9f35c5818c5.57174fc5f1.js",
+      "status": 200,
+      "bytes": 6057,
+      "sha256": "ebfb028498207ab0d086602e416de461995159c2986a5a18e5baac8fc844766b",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/async/route-aac8d7ecf520.da4373e68d.js",
+      "status": 200,
+      "bytes": 10483,
+      "sha256": "0a58f988ac30690a375f9f45a273c452f84ec818f5cfa1c596ceda48cdc1d0d8",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.db98171d66.js",
+      "status": 200,
+      "bytes": 155074,
+      "sha256": "cae3d3ac58959741a91aea9f8662507950b64573255d5a7920556ff7c120cd95",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/async/route-e171f493121a.31cd8356dd.js",
+      "status": 200,
+      "bytes": 8689,
+      "sha256": "aa0985e4caa00e052cc854f6fa08b2123d61960c617f6d71f257d32eaadc0f9e",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/async/route-ecf129b09e78.cc77e97387.js",
+      "status": 200,
+      "bytes": 30540,
+      "sha256": "4e0cd18e656c6e8ae9ac04a03a56675ff280775a335d3a3fc4191d69c56f0d69",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/index.2cd8da3d28.js",
+      "status": 200,
+      "bytes": 1406285,
+      "sha256": "a8def87d6ebe74b53eb64fc0c0c28823c618dc943df50a1bb904482e7920131f",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "status": 200,
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "status": 200,
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "matchesSource": true
+    },
+    {
+      "path": "static/js/styles.d1b89531e2.js",
+      "status": 200,
+      "bytes": 473,
+      "sha256": "55c22f8920d663c08c338e6c2a852c87fe3763156d2b5275db6b23a15c23d443",
+      "matchesSource": true
+    }
+  ],
+  "allVerified": true
+}

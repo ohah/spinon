@@ -1,0 +1,58 @@
+{
+  "pass": "pass70",
+  "tool": "Agent Browser",
+  "session": "spinon-c11-4-zero-calc-plan-20261023",
+  "roadmap": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "pageTitle": "스피논 구현 로드맵",
+    "pr561CardFound": true,
+    "mergeSha": "ff4233d0df00a632d71c28398c9a8274fb4abc16",
+    "checkboxCount": 213,
+    "checkedCount": 72,
+    "displayedCount": "72/213",
+    "c114Incomplete": true,
+    "screenshot": {
+      "path": "tailnet-roadmap-c114-pr561-agent-browser-pass70.png",
+      "sha256": "70c60b90a366d57ab4267ba8cb1cbca1c9561159754ceb4167fac2834eaeda8d",
+      "width": 700,
+      "height": 800
+    }
+  },
+  "status": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html#css-%EA%B5%AC%ED%98%84-%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8",
+    "pageTitle": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+    "anchorExists": true,
+    "anchorVisible": true,
+    "c114CheckboxChecked": false,
+    "displayedCount": "72/213",
+    "containsMergeSha": true,
+    "screenshot": {
+      "path": "tailnet-status-c114-pass70.png",
+      "sha256": "4dfa0818801839e4b764a54c189b2dd1a18f28e34c7396908a4e096cee40ff8e",
+      "width": 700,
+      "height": 800
+    }
+  },
+  "runtimeReadme": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/README.html",
+    "title": "C11.4 positive percentage auto-repeat minimum runtime - 스피논 문서",
+    "mentions16Scenes": true,
+    "mentionsPixelEqualityLimit": true,
+    "sourceCommit": "d2b4826e4a76de5367e0671984d5e7b2c8c62ae0"
+  },
+  "images": [
+    {
+      "platform": "Android API 37 ARM64 AVD",
+      "width": 1080,
+      "height": 2400,
+      "route": "internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/android-avd-c114-positive-percent-minimum-commit-android-avd-20261023T104649350Z-da0f371b/percentage-overflow-columns-calc.png"
+    },
+    {
+      "platform": "iOS 26.2 iPhone 17 Simulator",
+      "width": 1206,
+      "height": 2622,
+      "route": "internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/ios-simulator-c114-positive-percent-minimum-commit-ios-simulator-20261023T104719112Z-2d91e097/percentage-overflow-columns-calc.png"
+    }
+  ],
+  "browserSessionClosed": false
+}
