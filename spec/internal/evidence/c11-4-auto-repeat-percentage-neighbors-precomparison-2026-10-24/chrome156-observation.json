@@ -1,0 +1,305 @@
+{
+  "devicePixelRatio": 1,
+  "platform": "MacIntel",
+  "scenes": [
+    {
+      "columnGap": "4px",
+      "columns": [
+        "24px",
+        "46px",
+        "46px",
+        "46px",
+        "46px",
+        "12px"
+      ],
+      "id": "col-fill-both",
+      "item": null,
+      "rect": {
+        "height": 48,
+        "width": 260,
+        "x": 0,
+        "y": 0
+      },
+      "rowGap": "normal",
+      "rows": [
+        "12px"
+      ]
+    },
+    {
+      "columnGap": "normal",
+      "columns": [
+        "12px"
+      ],
+      "id": "row-fill-both",
+      "item": null,
+      "rect": {
+        "height": 260,
+        "width": 48,
+        "x": 268,
+        "y": 0
+      },
+      "rowGap": "4px",
+      "rows": [
+        "24px",
+        "46px",
+        "46px",
+        "46px",
+        "46px",
+        "12px"
+      ]
+    },
+    {
+      "columnGap": "4px",
+      "columns": [
+        "30px",
+        "48.5px",
+        "48.5px",
+        "48.5px",
+        "48.5px"
+      ],
+      "id": "col-fill-prefix",
+      "item": null,
+      "rect": {
+        "height": 48,
+        "width": 260,
+        "x": 0,
+        "y": 268
+      },
+      "rowGap": "normal",
+      "rows": [
+        "12px"
+      ]
+    },
+    {
+      "columnGap": "normal",
+      "columns": [
+        "12px"
+      ],
+      "id": "row-fill-suffix",
+      "item": null,
+      "rect": {
+        "height": 260,
+        "width": 48,
+        "x": 268,
+        "y": 268
+      },
+      "rowGap": "4px",
+      "rows": [
+        "48.5px",
+        "48.5px",
+        "48.5px",
+        "48.5px",
+        "30px"
+      ]
+    },
+    {
+      "columnGap": "4px",
+      "columns": [
+        "24px",
+        "196px",
+        "0px",
+        "0px",
+        "0px",
+        "12px"
+      ],
+      "id": "col-fit-first",
+      "item": {
+        "height": 2,
+        "width": 2,
+        "x": 38,
+        "y": 10
+      },
+      "rect": {
+        "height": 48,
+        "width": 260,
+        "x": 0,
+        "y": 536
+      },
+      "rowGap": "normal",
+      "rows": [
+        "12px"
+      ]
+    },
+    {
+      "columnGap": "normal",
+      "columns": [
+        "12px"
+      ],
+      "id": "row-fit-first",
+      "item": {
+        "height": 2,
+        "width": 2,
+        "x": 10,
+        "y": 38
+      },
+      "rect": {
+        "height": 260,
+        "width": 48,
+        "x": 268,
+        "y": 536
+      },
+      "rowGap": "4px",
+      "rows": [
+        "24px",
+        "196px",
+        "0px",
+        "0px",
+        "0px",
+        "12px"
+      ]
+    },
+    {
+      "columnGap": "4px",
+      "columns": [
+        "24px",
+        "0px",
+        "0px",
+        "0px",
+        "0px",
+        "12px"
+      ],
+      "id": "col-fit-empty",
+      "item": null,
+      "rect": {
+        "height": 48,
+        "width": 260,
+        "x": 0,
+        "y": 804
+      },
+      "rowGap": "normal",
+      "rows": [
+        "12px"
+      ]
+    },
+    {
+      "columnGap": "normal",
+      "columns": [
+        "12px"
+      ],
+      "id": "row-fit-empty",
+      "item": null,
+      "rect": {
+        "height": 260,
+        "width": 48,
+        "x": 268,
+        "y": 804
+      },
+      "rowGap": "4px",
+      "rows": [
+        "24px",
+        "0px",
+        "0px",
+        "0px",
+        "0px",
+        "12px"
+      ]
+    },
+    {
+      "columnGap": "4px",
+      "columns": [
+        "192px",
+        "40px",
+        "72px"
+      ],
+      "id": "col-fill-overflow",
+      "item": null,
+      "rect": {
+        "height": 48,
+        "width": 260,
+        "x": 0,
+        "y": 1072
+      },
+      "rowGap": "normal",
+      "rows": [
+        "12px"
+      ]
+    },
+    {
+      "columnGap": "normal",
+      "columns": [
+        "12px"
+      ],
+      "id": "row-fill-overflow",
+      "item": null,
+      "rect": {
+        "height": 260,
+        "width": 48,
+        "x": 268,
+        "y": 1072
+      },
+      "rowGap": "4px",
+      "rows": [
+        "192px",
+        "40px",
+        "72px"
+      ]
+    },
+    {
+      "columnGap": "4px",
+      "columns": [
+        "0px",
+        "40.7969px",
+        "40.7969px",
+        "40.7969px",
+        "40.7969px",
+        "40.7969px",
+        "12px"
+      ],
+      "id": "col-fill-zero-prefix",
+      "item": null,
+      "rect": {
+        "height": 48,
+        "width": 260,
+        "x": 0,
+        "y": 1340
+      },
+      "rowGap": "normal",
+      "rows": [
+        "12px"
+      ]
+    },
+    {
+      "columnGap": "4px",
+      "columns": [
+        "11.5938px",
+        "43.2969px",
+        "43.2969px",
+        "5.79688px"
+      ],
+      "id": "col-fill-border-box",
+      "item": null,
+      "rect": {
+        "height": 48,
+        "width": 136,
+        "x": 268,
+        "y": 1340
+      },
+      "rowGap": "normal",
+      "rows": [
+        "12px"
+      ]
+    },
+    {
+      "columnGap": "normal",
+      "columns": [
+        "12px"
+      ],
+      "id": "row-fill-border-box",
+      "item": null,
+      "rect": {
+        "height": 136,
+        "width": 48,
+        "x": 0,
+        "y": 1396
+      },
+      "rowGap": "4px",
+      "rows": [
+        "11.5938px",
+        "43.2969px",
+        "43.2969px",
+        "5.79688px"
+      ]
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+}

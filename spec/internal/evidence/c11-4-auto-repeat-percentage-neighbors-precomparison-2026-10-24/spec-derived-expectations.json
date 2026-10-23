@@ -1,0 +1,254 @@
+{
+  "source": "CSS Grid Layout Module Level 1, 2025 CRD, sections 7.2.1 and 7.2.3.1-7.2.3.2",
+  "browser": "Chrome 156.0.8078.48 via Agent Browser",
+  "viewport": {
+    "devicePixelRatio": 1,
+    "platform": "macOS ARM64"
+  },
+  "defaultContentAxisPx": 240,
+  "defaultGapPx": 4,
+  "borderBox": {
+    "outerPx": 136,
+    "paddingEachSidePx": 8,
+    "borderEachSidePx": 2,
+    "contentAxisPx": 116
+  },
+  "cases": [
+    {
+      "id": "col-fill-both",
+      "axis": "columns",
+      "mode": "auto-fill",
+      "repeatCount": 4,
+      "usedTracksPx": [
+        24,
+        46,
+        46,
+        46,
+        46,
+        12
+      ],
+      "prefixTrackCount": 1,
+      "suffixTrackCount": 1
+    },
+    {
+      "id": "row-fill-both",
+      "axis": "rows",
+      "mode": "auto-fill",
+      "repeatCount": 4,
+      "usedTracksPx": [
+        24,
+        46,
+        46,
+        46,
+        46,
+        12
+      ],
+      "prefixTrackCount": 1,
+      "suffixTrackCount": 1
+    },
+    {
+      "id": "col-fill-prefix",
+      "axis": "columns",
+      "mode": "auto-fill",
+      "repeatCount": 4,
+      "usedTracksPx": [
+        30,
+        48.5,
+        48.5,
+        48.5,
+        48.5
+      ],
+      "prefixTrackCount": 1,
+      "suffixTrackCount": 0
+    },
+    {
+      "id": "row-fill-suffix",
+      "axis": "rows",
+      "mode": "auto-fill",
+      "repeatCount": 4,
+      "usedTracksPx": [
+        48.5,
+        48.5,
+        48.5,
+        48.5,
+        30
+      ],
+      "prefixTrackCount": 0,
+      "suffixTrackCount": 1
+    },
+    {
+      "id": "col-fit-first",
+      "axis": "columns",
+      "mode": "auto-fit",
+      "repeatCount": 4,
+      "usedTracksPx": [
+        24,
+        196,
+        0,
+        0,
+        0,
+        12
+      ],
+      "itemFrameOuterPx": [
+        38,
+        10,
+        2,
+        2
+      ],
+      "prefixTrackCount": 1,
+      "suffixTrackCount": 1
+    },
+    {
+      "id": "row-fit-first",
+      "axis": "rows",
+      "mode": "auto-fit",
+      "repeatCount": 4,
+      "usedTracksPx": [
+        24,
+        196,
+        0,
+        0,
+        0,
+        12
+      ],
+      "itemFrameOuterPx": [
+        10,
+        38,
+        2,
+        2
+      ],
+      "prefixTrackCount": 1,
+      "suffixTrackCount": 1
+    },
+    {
+      "id": "col-fit-empty",
+      "axis": "columns",
+      "mode": "auto-fit",
+      "repeatCount": 4,
+      "usedTracksPx": [
+        24,
+        0,
+        0,
+        0,
+        0,
+        12
+      ],
+      "prefixTrackCount": 1,
+      "suffixTrackCount": 1
+    },
+    {
+      "id": "row-fit-empty",
+      "axis": "rows",
+      "mode": "auto-fit",
+      "repeatCount": 4,
+      "usedTracksPx": [
+        24,
+        0,
+        0,
+        0,
+        0,
+        12
+      ],
+      "prefixTrackCount": 1,
+      "suffixTrackCount": 1
+    },
+    {
+      "id": "col-fill-overflow",
+      "axis": "columns",
+      "mode": "auto-fill",
+      "repeatCount": 1,
+      "usedTracksPx": [
+        192,
+        40,
+        72
+      ],
+      "prefixTrackCount": 1,
+      "suffixTrackCount": 1
+    },
+    {
+      "id": "row-fill-overflow",
+      "axis": "rows",
+      "mode": "auto-fill",
+      "repeatCount": 1,
+      "usedTracksPx": [
+        192,
+        40,
+        72
+      ],
+      "prefixTrackCount": 1,
+      "suffixTrackCount": 1
+    },
+    {
+      "id": "col-fill-zero-prefix",
+      "axis": "columns",
+      "mode": "auto-fill",
+      "repeatCount": 5,
+      "usedTracksPx": [
+        0,
+        40.8,
+        40.8,
+        40.8,
+        40.8,
+        40.8,
+        12
+      ],
+      "chromeUsedTracksPx": [
+        0,
+        40.796875,
+        40.796875,
+        40.796875,
+        40.796875,
+        40.796875,
+        12
+      ],
+      "prefixTrackCount": 1,
+      "suffixTrackCount": 1
+    },
+    {
+      "id": "col-fill-border-box",
+      "axis": "columns",
+      "mode": "auto-fill",
+      "repeatCount": 2,
+      "usedTracksPx": [
+        11.6,
+        43.3,
+        43.3,
+        5.8
+      ],
+      "chromeUsedTracksPx": [
+        11.59375,
+        43.296875,
+        43.296875,
+        5.796875
+      ],
+      "prefixTrackCount": 1,
+      "suffixTrackCount": 1
+    },
+    {
+      "id": "row-fill-border-box",
+      "axis": "rows",
+      "mode": "auto-fill",
+      "repeatCount": 2,
+      "usedTracksPx": [
+        11.6,
+        43.3,
+        43.3,
+        5.8
+      ],
+      "chromeUsedTracksPx": [
+        11.59375,
+        43.296875,
+        43.296875,
+        5.796875
+      ],
+      "prefixTrackCount": 1,
+      "suffixTrackCount": 1
+    }
+  ],
+  "comparison": {
+    "repeatCountAndTrackOrder": "exact",
+    "autoFitCollapse": "exact",
+    "itemFrameToleranceCssPx": 0.015625,
+    "fractionalUsedTrackToleranceCssPx": 0.015625
+  }
+}
