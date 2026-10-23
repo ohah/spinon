@@ -1,0 +1,16 @@
+{
+  "pass": "pass69",
+  "session": "spinon-tailnet-pr550-pass69",
+  "closeReportedSuccess": true,
+  "sessionInfoAfterClose": {
+    "active": false,
+    "pid": null
+  },
+  "activeSessionsAfterClose": 0,
+  "agentBrowserProcessesAfterClose": 0,
+  "unrelatedSessionsTouched": false,
+  "tailnetPreviewServerPreserved": {
+    "pid": 1191,
+    "command": "/Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs"
+  }
+}
