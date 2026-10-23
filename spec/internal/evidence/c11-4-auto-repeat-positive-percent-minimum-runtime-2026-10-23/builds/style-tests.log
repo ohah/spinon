@@ -1,0 +1,18 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.25s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 12 tests
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_admits_positive_percentage_minimum_with_fixed_maximum ... ok
+test stylo_dom::cascade::runtime_grid_tests::track_sizing::track_sizing_profile_preserves_grid_auto_track_lists_on_both_axes ... ok
+test stylo_dom::cascade::runtime_grid_tests::track_sizing::track_sizing_profile_preserves_intrinsic_track_functions_and_calc_values ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::track_sizing_profile_preserves_independent_auto_repeats_on_both_axes ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::track_sizing_profile_preserves_auto_repeat_inner_and_component_line_names ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::track_sizing_profile_preserves_fixed_minimum_auto_repeat_modes ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_rejects_unsupported_percentage_calc_auto_repeat_minimums ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::track_sizing_profile_preserves_auto_repeat_neighbors_and_fragment_order ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_preserves_definite_percentage_calc_auto_repeat_minimums ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_admits_positive_percentage_auto_repeat_minimums ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_normalizes_absolute_calc_auto_repeat_minimums ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_rejects_out_of_scope_percentage_auto_repeat_minimums ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 186 filtered out; finished in 0.04s

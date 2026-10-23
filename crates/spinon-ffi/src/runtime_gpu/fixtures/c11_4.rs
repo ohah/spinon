@@ -12,6 +12,8 @@ mod anonymous_text_items;
 mod anonymous_text_multi_image;
 #[path = "c11_4/auto_repeat_negative_lines.rs"]
 mod auto_repeat_negative_lines;
+#[path = "c11_4_auto_repeat_positive_percent_minimum.rs"]
+mod auto_repeat_positive_percent_minimum;
 #[path = "c11_4/cyclic_calc_tracks.rs"]
 mod cyclic_calc_tracks;
 #[path = "c11_4/cyclic_fit_content_calc.rs"]
@@ -1188,6 +1190,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = super::c11_4_auto_repeat_calc_minimum::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
+    if let Some(source) = auto_repeat_positive_percent_minimum::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = negative_implicit_tracks::runtime_source(scene_id) {
