@@ -1,0 +1,83 @@
+{
+  "pass": "pass02",
+  "selectedRouteCount": 1078,
+  "changedRouteCount": 985,
+  "verifiedRouteCount": 12,
+  "allVerifiedRoutesHttp200": true,
+  "allVerifiedLocalAndRemoteHashesMatchSelectedBuild": true,
+  "noDeletes": true,
+  "routes": [
+    {
+      "path": "roadmap.html",
+      "status": 200,
+      "bytes": 278745,
+      "sha256": "3e6c79d96b36055e011701311f9f7b8141793388e68f9b71f4d2100f382826a5"
+    },
+    {
+      "path": "STATUS.html",
+      "status": 200,
+      "bytes": 924004,
+      "sha256": "36c23f2c8b19c5174adef21f7851f8c20d511257ad7d6010cddb3611ee499ef4"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-zero-percent-minimum.html",
+      "status": 200,
+      "bytes": 448006,
+      "sha256": "4dddfb55defecfd3e17c11dbd62838104d92df0d792f4e733ec03e6e0ffbb554"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "bytes": 585129,
+      "sha256": "58cf004eaf581d51b3bf0114fb15440b28c7aa50d51a4b42c6f6f55beaaa3123"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/README.html",
+      "status": 200,
+      "bytes": 440363,
+      "sha256": "e821e790ca9d7a970be57b93d9dfd50fcf27c9e0c570c53c887176a55e899984"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser-pass02.png",
+      "status": 200,
+      "bytes": 69679,
+      "sha256": "10e2df8df4b04ca7622c31618a4d1e0f9163999f5fd5968084071082b478509e"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/README.html",
+      "status": 200,
+      "bytes": 441369,
+      "sha256": "a5257560f533064ab436c8c5b0a19aa01e848686be03dc74be7cbaebdeade09b"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 442995,
+      "sha256": "b6080d6991e8a4a5fe6c8761279a5318d089f648867a917f569a88e8a6bbf1e7"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/android-avd-c114-auto-repeat-zero-percent-minimum-android-avd-20261023T170458589Z-c0537217/result.json",
+      "status": 200,
+      "bytes": 87595,
+      "sha256": "fc241e6b83f42c1407301d5e255841134812639ed3516aaa421005c1ee41d6cf"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/android-avd-c114-auto-repeat-zero-percent-minimum-android-avd-20261023T170458589Z-c0537217/fit-col-first.png",
+      "status": 200,
+      "bytes": 77931,
+      "sha256": "905c4646cff6f6d5c47571960f6551e36ae859fd42052f89dfe68dba172b94ac"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/ios-simulator-c114-auto-repeat-zero-percent-minimum-ios-simulator-20261023T170458589Z-b80ae17b/result.json",
+      "status": 200,
+      "bytes": 88018,
+      "sha256": "c501f30d25a2099f7d794e3c49532448efa0b665653fd3b0a3d1ac277f2e9b31"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/ios-simulator-c114-auto-repeat-zero-percent-minimum-ios-simulator-20261023T170458589Z-b80ae17b/fit-col-first.png",
+      "status": 200,
+      "bytes": 147125,
+      "sha256": "4dbbbf227e51b4dddb1a7bf2300e22eb99b286ed9d2ae7c89a079fc648cb18d2"
+    }
+  ]
+}
