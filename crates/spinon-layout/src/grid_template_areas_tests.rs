@@ -64,6 +64,27 @@ fn auto_repeat_template_areas_accept_empty_and_bounded_metadata() {
 }
 
 #[test]
+fn auto_repeat_template_areas_accept_two_auto_repeat_axes_and_area_extension() {
+    let node = NodeId::new(11_121).unwrap();
+    let mut container = valid_container();
+    container.rows_auto_repeat = Some(GridAutoRepeat {
+        mode: GridAutoRepeatMode::AutoFit,
+        start: 0,
+        end: 1,
+        line_names: Vec::new(),
+    });
+    let areas = areas(&mut container);
+    areas.rows = 3;
+    areas.columns = 3;
+    areas.areas[0].row_start = 2;
+    areas.areas[0].row_end = 3;
+    areas.areas[0].column_start = 2;
+    areas.areas[0].column_end = 3;
+
+    assert!(validate_template_areas(node, &container).is_ok());
+}
+
+#[test]
 fn auto_repeat_template_areas_reject_invalid_shape_names_bounds_and_metadata() {
     let node = NodeId::new(11_120).unwrap();
     let mut invalid = Vec::new();
@@ -71,15 +92,6 @@ fn auto_repeat_template_areas_reject_invalid_shape_names_bounds_and_metadata() {
     let mut no_auto_repeat = valid_container();
     no_auto_repeat.columns_auto_repeat = None;
     invalid.push(("no auto-repeat axis", no_auto_repeat));
-
-    let mut two_auto_repeat_axes = valid_container();
-    two_auto_repeat_axes.rows_auto_repeat = Some(GridAutoRepeat {
-        mode: GridAutoRepeatMode::AutoFit,
-        start: 0,
-        end: 1,
-        line_names: Vec::new(),
-    });
-    invalid.push(("two auto-repeat axes", two_auto_repeat_axes));
 
     let mut zero_rows = valid_container();
     areas(&mut zero_rows).rows = 0;

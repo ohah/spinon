@@ -1,0 +1,15 @@
+✔ fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다 (0.489167ms)
+✔ 양 축 template-area auto-repeat 아홉 scene이 두 플랫폼 경로에 고정된다 (3.579625ms)
+✔ CSS reference 도구가 삭제된 Rust fixture 경로를 참조하지 않는다 (24.984125ms)
+✔ 이동한 fixture 구현은 정해진 fixtures 모듈 경로에 있다 (0.700333ms)
+✔ 작업별 FFI fixture 모듈은 runtime 소스 루트에 남지 않는다 (1.476375ms)
+✔ 앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리된다 (17.838291ms)
+✔ C15.3 glyph paint 앱 adapter와 고정 글꼴은 opt-in feature 경계에 묶인다 (4.983542ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 90.336375

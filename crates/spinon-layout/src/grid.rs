@@ -725,10 +725,10 @@ fn validate_template_areas(
         return Ok(());
     };
     let property = "grid-template-areas";
-    let one_auto_repeat_axis =
-        container.columns_auto_repeat.is_some() ^ container.rows_auto_repeat.is_some();
+    let has_auto_repeat_axis =
+        container.columns_auto_repeat.is_some() || container.rows_auto_repeat.is_some();
     if container.placement_mode != GridPlacementMode::TrackSizing
-        || !one_auto_repeat_axis
+        || !has_auto_repeat_axis
         || areas.rows == 0
         || areas.columns == 0
         || usize::from(areas.rows) > GRID_MAX_TRACKS

@@ -195,7 +195,7 @@ fn track_sizing_projects_areas_with_one_auto_repeat_axis_and_preserves_authored_
 }
 
 #[test]
-fn auto_repeat_template_areas_reject_two_axes_and_area_metadata_allocation_failures() {
+fn auto_repeat_template_areas_project_two_axes_and_reject_allocation_failures() {
     let node = NodeId::new(11_118).unwrap();
     let mut grid = ComputedCssGridLayout {
         columns: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
@@ -230,10 +230,32 @@ fn auto_repeat_template_areas_reject_two_axes_and_area_metadata_allocation_failu
         end: 1,
         line_names: vec![Vec::new(), Vec::new()],
     });
-    let error = project_grid_layout(
+    let projected = project_grid_layout(
         node,
         &grid,
         ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+    )
+    .unwrap();
+    assert!(projected.columns_auto_repeat.is_some());
+    assert!(projected.rows_auto_repeat.is_some());
+    assert_eq!(
+        projected.template_areas,
+        Some(spinon_layout::GridTemplateAreasInput {
+            rows: 1,
+            columns: 1,
+            areas: vec![spinon_layout::GridTemplateAreaInput {
+                name: "area".to_owned(),
+                row_start: 0,
+                row_end: 1,
+                column_start: 0,
+                column_end: 1,
+            }],
+        })
+    );
+    let error = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1,
     )
     .unwrap_err();
     assert!(matches!(

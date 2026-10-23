@@ -399,14 +399,32 @@ fn auto_repeat_rejects_profiles_and_shapes_outside_the_supported_subset() {
     let two_axes_with_areas = fixture(
         "display:grid;box-sizing:border-box;width:300px;height:200px;grid-template-columns:repeat(auto-fill,minmax(24px,1fr));grid-template-rows:repeat(auto-fill,minmax(24px,1fr));grid-template-areas:\"area\";margin:0;padding:0",
     );
+    let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+        &two_axes_with_areas.view,
+        &[],
+        viewport(),
+        Default::default(),
+    )
+    .unwrap_or_else(|error| panic!("two-axis auto-repeat with areas: {error:?}"));
+    let grid = snapshot.elements[0].grid_layout.as_ref().unwrap();
+    assert!(grid.columns_auto_repeat.is_some());
+    assert!(grid.rows_auto_repeat.is_some());
+    assert_eq!(
+        (
+            grid.template_areas.as_ref().unwrap().rows,
+            grid.template_areas.as_ref().unwrap().columns
+        ),
+        (1, 1)
+    );
     assert!(
-        compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+        compute_runtime_block_flex_grid_template_cascade_with_stylesheets(
             &two_axes_with_areas.view,
             &[],
             viewport(),
             Default::default(),
         )
-        .is_err()
+        .is_err(),
+        "TemplateV1 must keep rejecting auto-repeat even when areas are present"
     );
 
     // CSS discards a declaration with two auto-repeat functions, leaving the

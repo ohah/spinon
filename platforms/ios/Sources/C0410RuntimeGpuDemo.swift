@@ -82,6 +82,15 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "template-area-repeat-rows-fit", "template-area-repeat-rows-area-shorter",
     "template-area-repeat-rows-area-larger", "template-area-repeat-rows-fit-numeric",
     "template-area-repeat-rows-fit-empty-area",
+    "template-area-repeat-two-axis-area-short",
+    "template-area-repeat-two-axis-area-added-columns",
+    "template-area-repeat-two-axis-area-added-rows",
+    "template-area-repeat-two-axis-area-added-both",
+    "template-area-repeat-two-axis-fill-fit",
+    "template-area-repeat-two-axis-fit-fill",
+    "template-area-repeat-two-axis-fit-fit-empty",
+    "template-area-repeat-two-axis-fit-fit-span",
+    "template-area-repeat-two-axis-area-longhand",
     "auto-repeat-named-implicit-positive-missing",
     "auto-repeat-named-implicit-positive-insufficient",
     "auto-repeat-named-implicit-negative-missing",
@@ -2530,6 +2539,19 @@ private func c114NamedAutoRepeatRootFrame(_ sceneID: String) -> String? {
 
 private func c114TemplateAreaRepeatRootFrame(_ sceneID: String) -> String? {
     switch sceneID {
+    case "template-area-repeat-two-axis-area-short",
+         "template-area-repeat-two-axis-fill-fit",
+         "template-area-repeat-two-axis-fit-fill",
+         "template-area-repeat-two-axis-fit-fit-empty",
+         "template-area-repeat-two-axis-fit-fit-span",
+         "template-area-repeat-two-axis-area-longhand":
+        return "width=100,height=76"
+    case "template-area-repeat-two-axis-area-added-columns":
+        return "width=40,height=76"
+    case "template-area-repeat-two-axis-area-added-rows":
+        return "width=76,height=40"
+    case "template-area-repeat-two-axis-area-added-both":
+        return "width=40,height=40"
     case "template-area-repeat-columns-fill",
          "template-area-repeat-columns-line-collision":
         return "width=116,height=20"
@@ -2561,6 +2583,17 @@ private func c114TemplateAreaRepeatItemFrame(_ sceneID: String) -> String? {
 
 private func c114TemplateAreaRepeatItemNames(_ sceneID: String) -> [String]? {
     switch sceneID {
+    case "template-area-repeat-two-axis-area-short",
+         "template-area-repeat-two-axis-area-added-columns",
+         "template-area-repeat-two-axis-area-added-rows",
+         "template-area-repeat-two-axis-area-added-both",
+         "template-area-repeat-two-axis-fill-fit",
+         "template-area-repeat-two-axis-fit-fill",
+         "template-area-repeat-two-axis-fit-fit-span",
+         "template-area-repeat-two-axis-area-longhand":
+        return ["hero"]
+    case "template-area-repeat-two-axis-fit-fit-empty":
+        return []
     case "template-area-repeat-columns-area-shorter", "template-area-repeat-rows-area-shorter":
         return ["prefix", "hero", "suffix", "tail"]
     case "template-area-repeat-columns-line-collision":
@@ -2581,6 +2614,24 @@ private func c114TemplateAreaRepeatItemRects(
     _ sceneID: String
 ) -> [(x: UInt32, y: UInt32, width: UInt32, height: UInt32)]? {
     switch sceneID {
+    case "template-area-repeat-two-axis-area-short":
+        return [(24, 0, 8, 8)]
+    case "template-area-repeat-two-axis-area-added-columns":
+        return [(44, 0, 8, 8)]
+    case "template-area-repeat-two-axis-area-added-rows":
+        return [(24, 40, 8, 8)]
+    case "template-area-repeat-two-axis-area-added-both":
+        return [(44, 40, 8, 8)]
+    case "template-area-repeat-two-axis-fill-fit":
+        return [(24, 0, 8, 8)]
+    case "template-area-repeat-two-axis-fit-fill":
+        return [(0, 24, 8, 8)]
+    case "template-area-repeat-two-axis-fit-fit-empty":
+        return []
+    case "template-area-repeat-two-axis-fit-fit-span":
+        return [(0, 0, 44, 44)]
+    case "template-area-repeat-two-axis-area-longhand":
+        return [(0, 24, 8, 8)]
     case "template-area-repeat-columns-fill", "template-area-repeat-columns-area-larger":
         return [(0, 0, 20, 20), (24, 0, 68, 20), (96, 0, 20, 20)]
     case "template-area-repeat-columns-fit":
@@ -2627,6 +2678,19 @@ private func c114TemplateAreaRepeatPixelSamples(
     }
     let root: (width: UInt32, height: UInt32)
     switch sceneID {
+    case "template-area-repeat-two-axis-area-short",
+         "template-area-repeat-two-axis-fill-fit",
+         "template-area-repeat-two-axis-fit-fill",
+         "template-area-repeat-two-axis-fit-fit-empty",
+         "template-area-repeat-two-axis-fit-fit-span",
+         "template-area-repeat-two-axis-area-longhand":
+        root = (100, 76)
+    case "template-area-repeat-two-axis-area-added-columns":
+        root = (40, 76)
+    case "template-area-repeat-two-axis-area-added-rows":
+        root = (76, 40)
+    case "template-area-repeat-two-axis-area-added-both":
+        root = (40, 40)
     case "template-area-repeat-columns-fill", "template-area-repeat-columns-line-collision":
         root = (116, 20)
     case "template-area-repeat-columns-area-larger": root = (100, 20)
@@ -2638,6 +2702,28 @@ private func c114TemplateAreaRepeatPixelSamples(
     default: root = (20, 140)
     }
     let rootID = "c114-\(sceneID)-grid"
+    if sceneID.hasPrefix("template-area-repeat-two-axis-") {
+        var samples: [(String, String, UInt32, UInt32, [UInt32])] = [
+            ("\(sceneID)-root-interior", rootID, root.width - 2, root.height - 2,
+             [229, 231, 235, 255]),
+        ]
+        if sceneID.hasSuffix("-area-added-both") {
+            samples.append(contentsOf: [
+                ("\(sceneID)-hero-overflow-outside-root", "c114-\(sceneID)-hero",
+                 47, 43, [229, 72, 77, 255]),
+                ("\(sceneID)-after-root", rootID, 53, 43, [0, 0, 0, 255]),
+                ("\(sceneID)-after-root-bottom", rootID, 47, 49, [0, 0, 0, 255]),
+            ])
+        } else {
+            for (name, item) in zip(names, items) {
+                samples.append(("\(sceneID)-\(name)-interior", "c114-\(sceneID)-\(name)",
+                    item.x + item.width / 2, item.y + item.height / 2, [229, 72, 77, 255]))
+            }
+            let furthestX = max(root.width, items.map { $0.x + $0.width }.max() ?? root.width)
+            samples.append(("\(sceneID)-after-root", rootID, furthestX, 10, [0, 0, 0, 255]))
+        }
+        return samples
+    }
     let rowAxis = sceneID.hasPrefix("template-area-repeat-rows-")
     let rootX: UInt32 = sceneID.hasSuffix("-line-collision") ? 94
         : sceneID.hasSuffix("-fit-empty-area") ? (rowAxis ? 2 : 60)
