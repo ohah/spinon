@@ -1,0 +1,20 @@
+{
+  "pass": "pass66",
+  "local": {
+    "sourceBytes": 263334,
+    "sourceSha256": "fb51cbb07f2cb27e36af04a5d5e1700bfb31cb61ba69b4c0f382bc3a2013ba8b",
+    "targetBytes": 263334,
+    "targetSha256": "fb51cbb07f2cb27e36af04a5d5e1700bfb31cb61ba69b4c0f382bc3a2013ba8b",
+    "backupBytes": 263320,
+    "backupSha256": "f99f0a0d58c7e9da107dafedb789e3a8d24b3fe67dacaa940b454b4ebb387b0a"
+  },
+  "remote": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "status": 200,
+    "bytes": 263334,
+    "sha256": "fb51cbb07f2cb27e36af04a5d5e1700bfb31cb61ba69b4c0f382bc3a2013ba8b",
+    "matchesSource": true
+  },
+  "noDeletes": true,
+  "allVerified": true
+}
