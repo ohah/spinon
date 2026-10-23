@@ -827,10 +827,7 @@ fn validate_auto_repeat_axis(
     let prefix = &tracks[..auto_repeat.start];
     let repeat_tracks = &tracks[auto_repeat.start..auto_repeat.end];
     let suffix = &tracks[auto_repeat.end..];
-    if !prefix
-        .iter()
-        .chain(suffix.iter())
-        .all(auto_repeat_neighbor_track_is_fixed_px)
+    if !auto_repeat_neighbor_tracks_are_supported(prefix, suffix, property, context)
         || !repeat_tracks.iter().all(|track| {
             auto_repeat_track_has_fixed_minimum(track, node, property, context, css_math)
         })
@@ -1276,8 +1273,48 @@ fn auto_repeat_maximum_calc_is_supported(
         && resolved.is_finite()
 }
 
-fn auto_repeat_neighbor_track_is_fixed_px(track: &GridTrackSize) -> bool {
-    matches!(track, GridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0)
+fn auto_repeat_neighbor_tracks_are_supported(
+    prefix: &[GridTrackSize],
+    suffix: &[GridTrackSize],
+    property: &str,
+    context: AutoRepeatAxisContext<'_>,
+) -> bool {
+    let mut neighbors = prefix.iter().chain(suffix);
+    let has_percentage = neighbors
+        .clone()
+        .any(|track| matches!(track, GridTrackSize::Percentage(_)));
+    if !has_percentage {
+        return neighbors.all(|track| match track {
+            GridTrackSize::LengthPx(value) => value.is_finite() && *value >= 0.0,
+            _ => false,
+        });
+    }
+
+    if !context.percentage_basis_is_definite {
+        return false;
+    }
+    let Some(basis) = explicit_positive_content_axis(context.style, property) else {
+        return false;
+    };
+    let mut resolved_neighbor_sum = 0.0_f64;
+    for track in neighbors {
+        let resolved = match track {
+            GridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0 => *value,
+            GridTrackSize::Percentage(value) if value.is_finite() && *value >= 0.0 => {
+                let resolved = value * basis;
+                if !resolved.is_finite() {
+                    return false;
+                }
+                resolved
+            }
+            _ => return false,
+        };
+        resolved_neighbor_sum += f64::from(resolved);
+        if resolved_neighbor_sum > f64::from(f32::MAX) {
+            return false;
+        }
+    }
+    true
 }
 
 fn valid_min_track_sizing_function(value: GridTrackMinSizingFunction) -> bool {

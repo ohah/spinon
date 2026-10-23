@@ -208,11 +208,11 @@ Taffy intrinsic sizing에서 cyclic percentage gutter는 0 basis를 사용하되
 
 이 slice는 horizontal writing mode의 explicit fixed track, definite/max-content sizing 및 이 문서의 six-case gap matrix에 한정한다. track sizing 전체 stage·intrinsic contributions·auto-repeat interaction·nested/anonymous item·WPT·실기기·compositor 이후 surface를 보장하지 않으며 C11.4 및 C11 완료 판정을 바꾸지 않는다. 내부 계약 숫자 버전은 `0.1.0` 그대로다.
 
-## C11.4 auto-repeat explicit fixed-neighbor 제한 후보
+## C11.4 auto-repeat explicit-neighbor 초기 제한 후보
 
 2026-10-20 후속은 `RuntimeBlockFlexGridTrackSizingV1`에서 한 track axis의 단일 `auto-fill` 또는 `auto-fit` component 앞뒤에 직접 쓴 유한·0 이상 `px` track을 보존한다. computed track list는 authored order를 유지하고 `ComputedCssGridAutoRepeat { mode, start, end }`가 fragment의 half-open index를 전달한다. Layout projection은 같은 범위를 `GridAutoRepeat` metadata로 보존하고 Taffy explicit-grid input에 repeat 앞·뒤 `Single` component와 반복 `Repeat` component를 순서대로 전달한다. 반복 fragment는 기존 고정 최소 track subset이며 one-/two-track pattern을 지원한다.
 
-Placement는 auto-repeat expanded track을 Taffy가 처리하도록 raw numeric line/span 입력을 보존한다. 반복축 line은 0이 아니고 Taffy 정수 범위 안이어야 하며 span은 양수여야 한다. 반대 축은 기존 explicit placement resolver로 검증한다. 2026-10-20 양축 후속은 columns와 rows의 각 track list에 하나씩 auto-repeat을 함께 허용하고 mode, half-open repeat range 및 placement 결과에 따른 collapse를 독립 보존한다. line names, `grid-template-areas`, 비-`px` neighbor, 한 list 안의 여러 auto-repeat, repeat fragment 밖 integer `repeat()` 및 기타 unsupported sizing은 fail-closed한다. `auto-fit` empty track과 관련 gutter collapse 판정은 placement 이후 Taffy 결과 trace에서 검사한다.
+Placement는 auto-repeat expanded track을 Taffy가 처리하도록 raw numeric line/span 입력을 보존한다. 반복축 line은 0이 아니고 Taffy 정수 범위 안이어야 하며 span은 양수여야 한다. 반대 축은 기존 explicit placement resolver로 검증한다. 2026-10-20 양축 후속은 columns와 rows의 각 track list에 하나씩 auto-repeat을 함께 허용하고 mode, half-open repeat range 및 placement 결과에 따른 collapse를 독립 보존한다. 초기 fixed-neighbor slice에서는 line names, `grid-template-areas`, 비-`px` neighbor, 한 list 안의 여러 auto-repeat, repeat fragment 밖 integer `repeat()` 및 기타 unsupported sizing을 fail-closed했다. percentage neighbor에 대한 후속 제한은 아래 2026-10-24 항목에서 별도로 정의한다. `auto-fit` empty track과 관련 gutter collapse 판정은 placement 이후 Taffy 결과 trace에서 검사한다.
 
 Chrome 155 Rust matrix 13/13과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 각각 13/13 scene을 확인했다. 두 앱 matrix는 row/column sizing, indefinite/min/max basis, empty·span auto-fit collapse와 overflow scene을 포함한다. overflow item frame은 양 플랫폼에서 root width 40px 안에 있지 않고 x=86px에 놓이며, screenshots에서도 root background 바깥에 표시된다. 이건 border stroke pixel 비교나 hardware GPU 검증이 아니다. [실행 로그·화면·해시](./evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.md).
 
@@ -220,13 +220,21 @@ Chrome 155 Rust matrix 13/13과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2
 
 이 후보는 auto-repeat의 전체 grammar, preferred/max/min basis 조합, 10,000-track 경계, 전체 placement/span/gutter matrix, WPT, 실기기·hardware GPU 및 compositor 이후 surface를 닫지 않는다. 공개 API가 아니고 C11.4·C11 완료 상태를 바꾸지 않는다. 내부 계약 숫자 버전은 `0.1.0` 그대로다.
 
+## C11.4 definite percentage auto-repeat neighbor 제한 slice
+
+2026-10-24 후속은 기존 단일 auto-repeat fixed-minimum profile에서 repeat fragment 바로 앞·뒤의 직접 percentage track neighbor를 제한적으로 보존한다. 이는 일반 percentage track sizing admission을 넓히지 않는다. percentage neighbor는 해당 Grid axis가 definite이고, 명시된 fixed dimension의 content box가 양수이며, min dimension이 fixed zero이고 max dimension이 auto인 경우에만 layout projection에서 허용한다. `border-box` 축의 percentage basis는 dimension에서 양쪽 padding과 border를 뺀 content size다. columns는 width/inline-axis basis, rows는 height/block-axis basis를 각각 사용한다.
+
+각 percentage는 finite·nonnegative여야 하며 `percentage × content-basis`가 finite `f32` used size를 만들어야 한다. percentage neighbor가 포함된 양쪽 neighbor list의 used-size 합은 `f32::MAX`를 넘으면 fail-closed한다. indefinite/cyclic basis, 음수·NaN·infinite 값, 곱셈 또는 합산 overflow, percentage `calc()` neighbor, intrinsic/flexible neighbor 및 일반 CSS admission은 지원하지 않는다. 기존 single-repeat·fixed-minimum·line/placement 제한은 유지한다. auto-fill/auto-fit count, expanded track, gap와 collapse는 Taffy track-sizing trace 및 독립 oracle로 검사한다.
+
+고정 13 scene은 columns/rows, 양쪽·한쪽 neighbor, auto-fill/auto-fit, occupied/empty collapse, 0% prefix, overflowing neighbor와 border-box content basis를 다룬다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 13/13 scene씩 draw/present를 확인했고 PixelCopy·제출 전 Metal drawable 표본은 각각 15/15 exact다. 이는 실기기, Android hardware GPU, iOS compositor 이후 pixels, WPT 또는 전체 C11.4를 검증하지 않는다. 규범 `col-fit-first` 200px과 Chrome 156 CSSOM 관측 196px은 별도 oracle로 유지한다. [구현 계획](../../plan/c11-4-auto-repeat-percentage-neighbors.md) · [Chrome·규범 사전 비교](./evidence/c11-4-auto-repeat-percentage-neighbors-precomparison-2026-10-24/README.md) · [runtime·artifact 근거](./evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/README.md) · [구현/runtime 실패 관점 20개](./evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/implementation-runtime-review-20.md). C11.4와 내부 계약 `0.1.0`은 미완료·유지 상태다.
+
 ## C11.4 양쪽 Grid 축 auto-repeat 제한 후보
 
 양쪽 track list가 각각 현재 제한 grammar를 만족하면 columns와 rows의 `auto-fill` 또는 `auto-fit`을 동시에 사용할 수 있다. Cascade는 `ComputedCssGridAutoRepeat` metadata를 axis별로 유지한다. Typed projection은 각 axis의 mode와 half-open track range를 `GridAutoRepeat`에 독립 전달하고, layout validation은 columns와 rows를 별도로 확인한다. 한 axis의 range 오류가 반대 축의 valid range에 의해 가려지지 않도록 한다. auto-repeat이 없는 축의 기존 projection 동작은 별도 regression으로 보존한다.
 
 고정 Chrome 155 사전 비교 12-case와 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 각 33-scene matrix는 mixed `auto-fill`/`auto-fit`, 서로 다른 repeat count, empty/single/span/second-repeat occupancy와 suffix-line geometry를 확인한다. [양축 구현 근거·화면·해시·검증 한계](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/README.md) · [독립 구현 실패 관점 20개](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/implementation-review-20.md) · [PR diff 검토 30개](./evidence/c11-4-two-axis-auto-repeat-2026-10-20/pr-diff-review-30.md).
 
-이 profile은 한 track list 내 복수 auto-repeat, line names, template areas, 비-`px` neighbor, integer-repeat 혼합 또는 arbitrary track grammar를 지원하지 않는다. WPT·실기기·Android hardware GPU 및 iOS compositor 이후 pixel equality는 미검증이다. 공식 C11.4/C11 완료 판정과 내부 계약 `0.1.0`은 그대로다.
+이 날짜의 profile은 한 track list 내 복수 auto-repeat, line names, template areas, percentage subset 밖의 비-`px` neighbor, integer-repeat 혼합 또는 arbitrary track grammar를 지원하지 않는다. 아래 percentage-neighbor 후속은 이 중 비-`px` neighbor에만 제한적으로 추가된 예외다. WPT·실기기·Android hardware GPU 및 iOS compositor 이후 pixel equality는 미검증이다. 공식 C11.4/C11 완료 판정과 내부 계약 `0.1.0`은 그대로다.
 
 ## C11.4 positive implicit `grid-auto-*` track-size lists
 
@@ -234,7 +242,7 @@ Chrome 155 Rust matrix 13/13과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2
 
 Grid 축의 zero-based normalized track index를 `i`라 할 때, `i >= explicit_track_count`인 양의 implicit track에는 해당 축의 `auto_tracks[(i - explicit_track_count) % auto_tracks.len()]`을 적용한다. 명시적 positive line placement 또는 auto-placement로 늘어난 양의 implicit tracks를 sizing하며 rows와 columns는 각자 authored order와 목록 길이를 사용한다. 현재 10,000-track 제한, fallible Spinon-owned allocation, 오류 시 부분 `LayoutOutput` 미게시 계약을 유지한다.
 
-PR #375 slice는 explicit grid 앞의 negative implicit tracks와 역방향 목록 순환을 포함하지 않았다. 아래 negative implicit track sizing slice에서 제한 numeric placement를 추가했고, PR #385가 그 placement를 제한 auto-repeat grammar와 연결했다. 현재 지원되는 유한·0 이상 fixed-px `LengthPx`와 `TrackList` auto sizing은 해당 repeat profile에서 동작하며, 비-px와 unsupported projected value는 fail-closed한다. `grid-auto-*`의 line names·`repeat()` 문법, nested/anonymous/out-of-flow item, full placement/span matrix, WPT 및 전체 C11.4 단계 적합성은 포함하지 않는다.
+PR #375 slice는 explicit grid 앞의 negative implicit tracks와 역방향 목록 순환을 포함하지 않았다. 아래 negative implicit track sizing slice에서 제한 numeric placement를 추가했고, PR #385가 그 placement를 제한 auto-repeat grammar와 연결했다. 당시 지원되는 유한·0 이상 fixed-px `LengthPx`와 `TrackList` auto sizing은 해당 repeat profile에서 동작했으며, percentage neighbor 후속은 아래 별도 조건으로만 추가한다. 그 외 비-px와 unsupported projected value는 fail-closed한다. `grid-auto-*`의 line names·`repeat()` 문법, nested/anonymous/out-of-flow item, full placement/span matrix, WPT 및 전체 C11.4 단계 적합성은 포함하지 않는다.
 
 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 고정 73-scene app matrix를 실행했고, Chrome 155 Agent Browser의 20-case precomparison과 비교했다. overflow surface 표본은 각각 5/5 exact이나 OS compositor 뒤의 pixel equality 증거가 아니다. [구현 계획](../../plan/c11-4-positive-implicit-track-sizing.md) · [실행·artifact 근거와 화면](./evidence/c11-4-implicit-intrinsic-auto-tracks-2026-10-20/README.md) · [PR #375](https://github.com/ohah/spinon/pull/375).
 

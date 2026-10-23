@@ -45,6 +45,7 @@ const canonicalFixtureSources = [
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_positive_percent_minimum.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_zero_percent_minimum.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_percentage_maximum.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_percentage_neighbors.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_2.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c18_4.rs',
@@ -96,7 +97,9 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
     'template-area-repeat-two-axis-fit-fit-area-column',
     'template-area-repeat-two-axis-fit-fit-area-row',
   ];
-  const [fixtureText, calcFixtureText, percentFixtureText, zeroPercentFixtureText, maximumFixtureText, android, ios, captureSource, noAreaOracleText, matrixManifestText] = await Promise.all([
+  const [fixtureText, calcFixtureText, percentFixtureText, zeroPercentFixtureText,
+    maximumFixtureText, neighborFixtureText, neighborExpectationText, neighborChromeText,
+    android, ios, captureSource, noAreaOracleText, matrixManifestText] = await Promise.all([
     readFile(resolve(repositoryRoot,
       'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/template_area_auto_repeat_scenes.json'),
     'utf8'),
@@ -111,6 +114,15 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
     'utf8'),
     readFile(resolve(repositoryRoot,
       'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_percentage_maximum_scenes.json'),
+    'utf8'),
+    readFile(resolve(repositoryRoot,
+      'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_percentage_neighbor_scenes.json'),
+    'utf8'),
+    readFile(resolve(repositoryRoot,
+      'spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-precomparison-2026-10-24/spec-derived-expectations.json'),
+    'utf8'),
+    readFile(resolve(repositoryRoot,
+      'spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-precomparison-2026-10-24/chrome156-observation.json'),
     'utf8'),
     readFile(resolve(repositoryRoot,
       'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java'),
@@ -129,11 +141,24 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
   const calcFixtures = JSON.parse(calcFixtureText);
   const percentFixtures = JSON.parse(percentFixtureText);
   const zeroPercentFixtures = JSON.parse(zeroPercentFixtureText);
+  const neighborFixtures = JSON.parse(neighborFixtureText);
+  const neighborExpectations = JSON.parse(neighborExpectationText);
+  const neighborChromeObservations = JSON.parse(neighborChromeText);
   assert.ok(captureSource.includes('function c114TraceChunkState(log, runID)'),
     'C11.4 simulator capture must verify complete trace chunk sets.');
   assert.ok((captureSource.match(/c114TraceChunkState\(log, runID\)/g) ?? []).length >= 2,
     'C11.4 simulator capture must wait for complete trace chunks and verify the saved set.');
   const maximumFixtures = JSON.parse(maximumFixtureText);
+  assert.equal(neighborFixtures.length, 13,
+    'percentage auto-repeat neighbor fixture는 13 scene이어야 합니다.');
+  assert.equal(neighborExpectations.cases.length, 13,
+    'percentage auto-repeat neighbor normative matrix는 13 case여야 합니다.');
+  assert.equal(neighborChromeObservations.scenes.length, 13,
+    'percentage auto-repeat neighbor Chrome observation은 13 scene이어야 합니다.');
+  assert.deepEqual(neighborFixtures.map(({ id }) => id),
+    neighborExpectations.cases.map(({ id }) => id));
+  assert.deepEqual(neighborFixtures.map(({ id }) => id),
+    neighborChromeObservations.scenes.map(({ id }) => id));
   assert.equal(fixtures.length, 29, 'template-area fixture는 단일 축 13개와 양 축 16개다.');
   assert.equal(calcFixtures.length, 12,
     'absolute 및 percentage calc auto-repeat fixture는 12개다.');
@@ -143,8 +168,8 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
     'zero-percent auto-repeat fixture는 13개다.');
   assert.equal(maximumFixtures.length, 28,
     'percentage auto-repeat maximum fixture는 28개다.');
-  assert.match(captureSource, /assert\.equal\(scenes\.length, 405,/,
-    'C11.4 simulator capture scene count must include zero-percent and percentage maximum cases.');
+  assert.match(captureSource, /assert\.equal\(scenes\.length, 418,/,
+    'C11.4 simulator capture scene count must include percentage-neighbor cases.');
   const noAreaIDs = JSON.parse(noAreaOracleText).cases.map(({ id }) => id);
   assert.equal(noAreaIDs.length, 12, 'the no-area dual-axis oracle must contain 12 scenes.');
   const matrixManifest = JSON.parse(matrixManifestText);
@@ -156,7 +181,7 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(listScenes.status, 0, listScenes.stderr);
   const captureCatalog = JSON.parse(listScenes.stdout);
-  assert.equal(captureCatalog.sceneCount, 405);
+  assert.equal(captureCatalog.sceneCount, 418);
   const matrixIDs = [...noAreaIDs, ...fixtures.map(({ id }) => id)];
   assert.equal(matrixIDs.length, 41, 'the focused C11.4 matrix must contain 41 scenes.');
   assert.equal(new Set(matrixIDs).size, matrixIDs.length,
@@ -172,7 +197,7 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selectedCatalogResult.status, 0, selectedCatalogResult.stderr);
   const selectedCatalog = JSON.parse(selectedCatalogResult.stdout);
-  assert.equal(selectedCatalog.sceneCount, 405);
+  assert.equal(selectedCatalog.sceneCount, 418);
   assert.equal(selectedCatalog.selectedSceneCount, 41);
   assert.deepEqual([...selectedCatalog.selectedSceneIDs].sort(), [...matrixIDs].sort(),
     'the simulator selection must resolve to exactly the 41 focused matrix IDs.');
@@ -213,7 +238,7 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selectedPercentResult.status, 0, selectedPercentResult.stderr);
   const selectedPercentCatalog = JSON.parse(selectedPercentResult.stdout);
-  assert.equal(selectedPercentCatalog.sceneCount, 405);
+  assert.equal(selectedPercentCatalog.sceneCount, 418);
   assert.equal(selectedPercentCatalog.selectedSceneCount, 16);
   assert.deepEqual([...selectedPercentCatalog.selectedSceneIDs].sort(), [...percentIDs].sort());
   const zeroPercentIDs = zeroPercentFixtures.map(({ id }) => id);
@@ -246,7 +271,7 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selectedZeroPercentResult.status, 0, selectedZeroPercentResult.stderr);
   const selectedZeroPercentCatalog = JSON.parse(selectedZeroPercentResult.stdout);
-  assert.equal(selectedZeroPercentCatalog.sceneCount, 405);
+  assert.equal(selectedZeroPercentCatalog.sceneCount, 418);
   assert.equal(selectedZeroPercentCatalog.selectedSceneCount, 13);
   assert.deepEqual([...selectedZeroPercentCatalog.selectedSceneIDs].sort(), [...zeroPercentIDs].sort());
   const maximumIDs = maximumFixtures.map(({ id }) => id);
@@ -274,9 +299,49 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selectedMaximumResult.status, 0, selectedMaximumResult.stderr);
   const selectedMaximumCatalog = JSON.parse(selectedMaximumResult.stdout);
-  assert.equal(selectedMaximumCatalog.sceneCount, 405);
+  assert.equal(selectedMaximumCatalog.sceneCount, 418);
   assert.equal(selectedMaximumCatalog.selectedSceneCount, 28);
   assert.deepEqual([...selectedMaximumCatalog.selectedSceneIDs].sort(), [...maximumIDs].sort());
+  const neighborIDs = neighborFixtures.map(({ id }) => id);
+  assert.deepEqual(neighborIDs, [
+    'col-fill-both', 'row-fill-both', 'col-fill-prefix', 'row-fill-suffix',
+    'col-fit-first', 'row-fit-first', 'col-fit-empty', 'row-fit-empty',
+    'col-fill-overflow', 'row-fill-overflow', 'col-fill-zero-prefix',
+    'col-fill-border-box', 'row-fill-border-box',
+  ]);
+  assert.deepEqual(neighborIDs.filter((id) => !captureIDs.has(id)), [],
+    'every percentage-neighbor fixture must be present in the simulator capture route.');
+  for (const id of neighborIDs) {
+    assert.ok(android.includes(`"${id}"`), `Android allowlist is missing ${id}`);
+    assert.ok(ios.includes(`"${id}"`), `iOS allowlist is missing ${id}`);
+  }
+  assert.ok(captureSource.includes('function autoRepeatPercentageNeighborScenes()'),
+    'percentage-neighbor fixtures must flow through the fixed simulator capture route.');
+  assert.ok(captureSource.includes('oracleScene.chromeObservedTracksPx ?? oracleScene.usedTracksPx'),
+    'Chrome auto-fit values and normative used-track values must be checked separately.');
+  assert.ok(android.includes('c114PercentageNeighborPixelSamplesMatch'),
+    'Android must validate the declared percentage-neighbor PixelCopy sample locations.');
+  assert.ok(android.includes('isC114PercentageNeighborPixelSceneId(pixelMatrixSceneId)'),
+    'Android PixelCopy preflight must admit the percentage-neighbor scene IDs.');
+  assert.ok(android.includes('return c114PercentageNeighborRootSize(sceneId) != null;'),
+    'Android percentage-neighbor PixelCopy admission must use the fixed scene table.');
+  assert.match(android,
+    /int\[\]\[\] percentageNeighborItems = c114PercentageNeighborItemFrames\(sceneId\);\s*if \(percentageNeighborItems != null\) return percentageNeighborItems\.length \+ 1;/,
+    'Android runtime must derive expected box count from the percentage-neighbor item table.');
+  assert.match(ios,
+    /if let percentageNeighborItems = c114PercentageNeighborItemFrames\(sceneID\) \{\s*return percentageNeighborItems\.count \+ 1\s*\}/,
+    'iOS runtime must derive expected box count from the percentage-neighbor item table.');
+  assert.ok(ios.includes('c114PercentageNeighborPixelSamples'),
+    'iOS must validate the declared percentage-neighbor Metal sample locations.');
+  const selectedNeighborResult = spawnSync(process.execPath, [
+    resolve(repositoryRoot, 'tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs'),
+    'android-avd', `--scene-id=${neighborIDs.join(',')}`, '--list-scenes',
+  ], { cwd: repositoryRoot, encoding: 'utf8' });
+  assert.equal(selectedNeighborResult.status, 0, selectedNeighborResult.stderr);
+  const selectedNeighborCatalog = JSON.parse(selectedNeighborResult.stdout);
+  assert.equal(selectedNeighborCatalog.sceneCount, 418);
+  assert.equal(selectedNeighborCatalog.selectedSceneCount, 13);
+  assert.deepEqual([...selectedNeighborCatalog.selectedSceneIDs].sort(), [...neighborIDs].sort());
   assert.deepEqual(
     fixtures.map(({ id }) => id).filter((id) => id.startsWith('template-area-repeat-two-axis-')),
     expectedIDs,
@@ -445,6 +510,11 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
   const c114PercentageMaximumRuntimeFixture = await readFile(
     resolve(repositoryRoot,
       'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_percentage_maximum.rs'),
+    'utf8',
+  );
+  const c114PercentageNeighborRuntimeFixture = await readFile(
+    resolve(repositoryRoot,
+      'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_percentage_neighbors.rs'),
     'utf8',
   );
   const c114RuntimeFixtureHost = await readFile(
@@ -626,6 +696,8 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*pub\(crate\) mod c11_4_auto_repeat_calc_minimum;/);
   assert.match(runtimeFixtureSource,
     /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*pub\(crate\) mod c11_4_auto_repeat_percentage_maximum;/);
+  assert.match(runtimeFixtureSource,
+    /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*pub\(crate\) mod c11_4_auto_repeat_percentage_neighbors;/);
   assert.match(c114RuntimeFixtureHost,
     /#\[path = "c11_4_auto_repeat_positive_percent_minimum\.rs"\]\s*mod auto_repeat_positive_percent_minimum;/);
   assert.match(c114RuntimeFixtureHost,
@@ -640,6 +712,8 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     /auto_repeat_zero_percent_minimum::runtime_source\(scene_id\)/);
   assert.match(c114RuntimeFixtureHost,
     /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*if let Some\(source\) = super::c11_4_auto_repeat_percentage_maximum::runtime_source\(scene_id\)/);
+  assert.match(c114RuntimeFixtureHost,
+    /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*if let Some\(source\) = super::c11_4_auto_repeat_percentage_neighbors::runtime_source\(scene_id\)/);
   assert.match(c114TemplateAreaRuntimeFixture,
     /include_str!\("c11_4\/template_area_auto_repeat_scenes\.json"\)/);
   assert.match(c114CalcMinimumRuntimeFixture,
@@ -650,6 +724,8 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     /include_str!\("c11_4\/auto_repeat_zero_percent_minimum_scenes\.json"\)/);
   assert.match(c114PercentageMaximumRuntimeFixture,
     /include_str!\("c11_4\/auto_repeat_percentage_maximum_scenes\.json"\)/);
+  assert.match(c114PercentageNeighborRuntimeFixture,
+    /include_str!\("c11_4\/auto_repeat_percentage_neighbor_scenes\.json"\)/);
   assert.match(c114RuntimeFixture,
     /super::c11_4_auto_repeat_named_lines::runtime_source/);
   assert.match(c114NamedLineRuntimeFixture,
