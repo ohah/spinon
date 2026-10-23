@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** CSS Grid 2025 CRD 독립 기대값·Chrome 156 비교와 [계획 실패 관점 20개](./c11-4-auto-repeat-percentage-calc-minimum-plan-review-20.md)를 고정했다. definite axis에 한정한 `calc(length + percentage)` minimum slice를 구현하고 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 6/6 scene을 확인했다. [구현/runtime 실패 관점 20개](../spec/internal/evidence/c11-4-auto-repeat-percentage-calc-minimum-runtime-2026-10-23/implementation-runtime-review-20.md)와 [PR diff 실패 관점 30개](../spec/internal/evidence/c11-4-auto-repeat-percentage-calc-minimum-runtime-2026-10-23/pr-diff-review-30.md)를 별도 기록했다. C11.4 전체 완료 판정은 아니다.
+**상태:** CSS Grid 2025 CRD 독립 기대값·Chrome 156 비교와 [계획 실패 관점 20개](./c11-4-auto-repeat-percentage-calc-minimum-plan-review-20.md)를 고정했다. definite axis에 한정한 `calc(length + percentage)` minimum slice를 구현하고 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 6/6 scene을 확인했다. [구현/runtime 실패 관점 20개](../spec/internal/evidence/c11-4-auto-repeat-percentage-calc-minimum-runtime-2026-10-23/implementation-runtime-review-20.md)와 [PR diff 실패 관점 30개](../spec/internal/evidence/c11-4-auto-repeat-percentage-calc-minimum-runtime-2026-10-23/pr-diff-review-30.md)를 별도 기록했다. 구현 PR [#556](https://github.com/ohah/spinon/pull/556)이 열려 있으며 C11.4 전체 완료 판정은 아니다.
 
 ## 결손과 목표
 
