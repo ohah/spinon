@@ -1,6 +1,6 @@
 # C13 · overflow·스크롤·클리핑
 
-**현재 상태:** 계획 초안 · C13.1–C13.3 제한 runtime/fixture slice 구현 근거가 main에 있음 · C13 전체 미완료
+**현재 상태:** C13 전체 미완료·비활성(현재 작업 lane은 C11.4) · C13.1–C13.3 제한 runtime/fixture slice 구현 근거가 main에 있음 · C13.4–C13.6과 전체 완료 관문은 남아 있음
 **공식 상위 항목:** [구현 상태 대장](../spec/STATUS.md#css-구현-체크리스트)
 **전제:** C04 CSS cascade, C07 상자 geometry, C08/C12 paint 입력, C12.1–C12.4의 source/position/paint order
 **후속:** C12.5 sticky는 C13 scrollport·scroll offset·clip 기초 뒤 진행한다. C17 logical axis, C22 border radius, C23 transform/clip, C29 CSSOM, S05 입력·이벤트와의 교차 경계를 완료 게이트로 유지한다.
