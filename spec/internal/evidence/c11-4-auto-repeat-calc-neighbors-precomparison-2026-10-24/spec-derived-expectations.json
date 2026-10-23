@@ -1,0 +1,204 @@
+{
+  "source": "CSS Grid 2025 CRD \u00a77.2.1 and \u00a77.2.3.1-\u00a77.2.3.2; values independently derived from fixture inputs",
+  "gapCssPx": 4.0,
+  "repeatMinimumCssPx": 40.0,
+  "trackValueToleranceCssPx": 0.015625,
+  "cases": {
+    "col-fill-both": {
+      "axis": "columns",
+      "definiteContentSize": 240.0,
+      "repeatCount": 4,
+      "usedTracksCssPx": [
+        22.0,
+        47.0,
+        47.0,
+        47.0,
+        47.0,
+        10.0
+      ],
+      "overflowBeyondRepeatMinimumCssPx": 0.0,
+      "fixtureScope": "in-scope oracle"
+    },
+    "row-fill-both": {
+      "axis": "rows",
+      "definiteContentSize": 240.0,
+      "repeatCount": 4,
+      "usedTracksCssPx": [
+        22.0,
+        47.0,
+        47.0,
+        47.0,
+        47.0,
+        10.0
+      ],
+      "overflowBeyondRepeatMinimumCssPx": 0.0,
+      "fixtureScope": "in-scope oracle"
+    },
+    "col-fill-prefix": {
+      "axis": "columns",
+      "definiteContentSize": 240.0,
+      "repeatCount": 4,
+      "usedTracksCssPx": [
+        22.0,
+        50.5,
+        50.5,
+        50.5,
+        50.5
+      ],
+      "overflowBeyondRepeatMinimumCssPx": 0.0,
+      "fixtureScope": "in-scope oracle"
+    },
+    "row-fill-suffix": {
+      "axis": "rows",
+      "definiteContentSize": 240.0,
+      "repeatCount": 5,
+      "usedTracksCssPx": [
+        42.0,
+        42.0,
+        42.0,
+        42.0,
+        42.0,
+        10.0
+      ],
+      "overflowBeyondRepeatMinimumCssPx": 0.0,
+      "fixtureScope": "in-scope oracle"
+    },
+    "col-fit-first": {
+      "axis": "columns",
+      "definiteContentSize": 240.0,
+      "repeatCount": 4,
+      "usedTracksCssPx": [
+        22.0,
+        200.0,
+        0.0,
+        0.0,
+        0.0,
+        10.0
+      ],
+      "overflowBeyondRepeatMinimumCssPx": 0.0,
+      "fixtureScope": "in-scope oracle"
+    },
+    "col-fit-empty": {
+      "axis": "columns",
+      "definiteContentSize": 240.0,
+      "repeatCount": 4,
+      "usedTracksCssPx": [
+        22.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        10.0
+      ],
+      "overflowBeyondRepeatMinimumCssPx": 0.0,
+      "fixtureScope": "in-scope oracle"
+    },
+    "col-fill-overflow": {
+      "axis": "columns",
+      "definiteContentSize": 240.0,
+      "repeatCount": 1,
+      "usedTracksCssPx": [
+        196.0,
+        40.0,
+        74.0
+      ],
+      "overflowBeyondRepeatMinimumCssPx": 78.0,
+      "fixtureScope": "in-scope oracle"
+    },
+    "col-fill-border-box": {
+      "axis": "columns",
+      "definiteContentSize": 116.0,
+      "repeatCount": 2,
+      "usedTracksCssPx": [
+        9.8,
+        44.15,
+        44.15,
+        5.9
+      ],
+      "overflowBeyondRepeatMinimumCssPx": 0.0,
+      "fixtureScope": "in-scope oracle"
+    },
+    "col-fill-extra-term": {
+      "axis": "columns",
+      "definiteContentSize": 240.0,
+      "repeatCount": 4,
+      "usedTracksCssPx": [
+        23.0,
+        50.25,
+        50.25,
+        50.25,
+        50.25
+      ],
+      "overflowBeyondRepeatMinimumCssPx": 0.0,
+      "fixtureScope": "out-of-scope negative control"
+    },
+    "col-fill-negative-term": {
+      "axis": "columns",
+      "definiteContentSize": 240.0,
+      "repeatCount": 5,
+      "usedTracksCssPx": [
+        10.0,
+        42.0,
+        42.0,
+        42.0,
+        42.0,
+        42.0
+      ],
+      "overflowBeyondRepeatMinimumCssPx": 0.0,
+      "fixtureScope": "in-scope oracle"
+    },
+    "col-fill-negative-final": {
+      "axis": "columns",
+      "definiteContentSize": 240.0,
+      "repeatCount": 5,
+      "usedTracksCssPx": [
+        0.0,
+        44.0,
+        44.0,
+        44.0,
+        44.0,
+        44.0
+      ],
+      "overflowBeyondRepeatMinimumCssPx": 0.0,
+      "fixtureScope": "in-scope oracle"
+    },
+    "col-fill-negative-percentage-term": {
+      "axis": "columns",
+      "definiteContentSize": 240.0,
+      "repeatCount": 5,
+      "usedTracksCssPx": [
+        8.0,
+        42.4,
+        42.4,
+        42.4,
+        42.4,
+        42.4
+      ],
+      "overflowBeyondRepeatMinimumCssPx": 0.0,
+      "fixtureScope": "out-of-scope negative control"
+    },
+    "col-max-content": {
+      "axis": "columns",
+      "definiteContentSize": null,
+      "repeatCount": 1,
+      "usedTracksCssPx": null,
+      "overflowBeyondRepeatMinimumCssPx": null,
+      "fixtureScope": "out-of-scope negative control"
+    },
+    "col-fill-fixed-control": {
+      "axis": "columns",
+      "definiteContentSize": 240.0,
+      "repeatCount": 4,
+      "usedTracksCssPx": [
+        22.0,
+        47.0,
+        47.0,
+        47.0,
+        47.0,
+        10.0
+      ],
+      "overflowBeyondRepeatMinimumCssPx": 0.0,
+      "fixtureScope": "in-scope oracle"
+    }
+  }
+}

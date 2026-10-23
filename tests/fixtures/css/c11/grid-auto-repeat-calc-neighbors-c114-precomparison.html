@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C11.4 auto-repeat calc neighbors</title>
+    <style>
+      * { box-sizing: content-box; }
+      html, body { margin: 0; padding: 0; }
+      body { color: #111; background: #fff; font: 12px/16px sans-serif; }
+      main { display: grid; grid-template-columns: repeat(2, max-content); gap: 16px; padding: 8px; }
+      figure { margin: 0; width: 360px; min-height: 64px; }
+      figcaption { margin-bottom: 4px; font: 12px/16px monospace; }
+      .grid { display: grid; align-content: start; justify-content: start; gap: 4px; outline: 1px solid #64748b; background: #eef2ff; }
+      .item { width: 2px; height: 2px; background: #e5484d; }
+      #col-fill-both { width: 240px; height: 10px; grid-template-columns: calc(10px + 5%) repeat(auto-fill, minmax(40px, 1fr)) calc(4px + 2.5%); grid-template-rows: 10px; }
+      #row-fill-both { width: 10px; height: 240px; grid-template-columns: 10px; grid-template-rows: calc(10px + 5%) repeat(auto-fill, minmax(40px, 1fr)) calc(4px + 2.5%); }
+      #col-fill-prefix { width: 240px; height: 10px; grid-template-columns: calc(10px + 5%) repeat(auto-fill, minmax(40px, 1fr)); grid-template-rows: 10px; }
+      #row-fill-suffix { width: 10px; height: 240px; grid-template-columns: 10px; grid-template-rows: repeat(auto-fill, minmax(40px, 1fr)) calc(4px + 2.5%); }
+      #col-fit-first { width: 240px; height: 10px; grid-template-columns: calc(10px + 5%) repeat(auto-fit, minmax(40px, 1fr)) calc(4px + 2.5%); grid-template-rows: 10px; }
+      #col-fit-empty { width: 240px; height: 10px; grid-template-columns: calc(10px + 5%) repeat(auto-fit, minmax(40px, 1fr)) calc(4px + 2.5%); grid-template-rows: 10px; }
+      #col-fill-overflow { width: 240px; height: 10px; grid-template-columns: calc(80% + 4px) repeat(auto-fill, minmax(40px, 1fr)) calc(30% + 2px); grid-template-rows: 10px; }
+      #col-fill-border-box { box-sizing: border-box; width: 136px; height: 34px; padding: 8px; border: 2px solid transparent; grid-template-columns: calc(4px + 5%) repeat(auto-fill, minmax(40px, 1fr)) calc(3px + 2.5%); grid-template-rows: 10px; }
+      #col-fill-extra-term { width: 240px; height: 10px; grid-template-columns: calc(10px + 5% + 1px) repeat(auto-fill, minmax(40px, 1fr)); grid-template-rows: 10px; }
+      #col-fill-negative-term { width: 240px; height: 10px; grid-template-columns: calc(-2px + 5%) repeat(auto-fill, minmax(40px, 1fr)); grid-template-rows: 10px; }
+      #col-fill-negative-final { width: 240px; height: 10px; grid-template-columns: calc(-20px + 5%) repeat(auto-fill, minmax(40px, 1fr)); grid-template-rows: 10px; }
+      #col-fill-negative-percentage-term { width: 240px; height: 10px; grid-template-columns: calc(20px - 5%) repeat(auto-fill, minmax(40px, 1fr)); grid-template-rows: 10px; }
+      #col-max-content { width: max-content; height: 10px; grid-template-columns: calc(10px + 5%) repeat(auto-fill, minmax(40px, 1fr)); grid-template-rows: 10px; }
+      #col-fill-fixed-control { width: 240px; height: 10px; grid-template-columns: 22px repeat(auto-fill, minmax(40px, 1fr)) 10px; grid-template-rows: 10px; }
+      #row-fill-both > .item,
+      #row-fill-suffix > .item { grid-column: 1; grid-row: 2; }
+      #col-fit-first > .item { grid-column: 2; grid-row: 1; }
+      #col-fill-overflow > .item { grid-column: 3; grid-row: 1; }
+      #col-fill-border-box > .item { grid-column: 2; grid-row: 1; }
+      #col-fill-fixed-control > .item { grid-column: 2; grid-row: 1; }
+    </style>
+  </head>
+  <body>
+    <main id="scenes">
+      <figure><figcaption>col-fill-both</figcaption><div class="grid" id="col-fill-both"><div class="item"></div></div></figure>
+      <figure><figcaption>row-fill-both</figcaption><div class="grid" id="row-fill-both"><div class="item"></div></div></figure>
+      <figure><figcaption>col-fill-prefix</figcaption><div class="grid" id="col-fill-prefix"><div class="item"></div></div></figure>
+      <figure><figcaption>row-fill-suffix</figcaption><div class="grid" id="row-fill-suffix"><div class="item"></div></div></figure>
+      <figure><figcaption>col-fit-first</figcaption><div class="grid" id="col-fit-first"><div class="item"></div></div></figure>
+      <figure><figcaption>col-fit-empty</figcaption><div class="grid" id="col-fit-empty"></div></figure>
+      <figure><figcaption>col-fill-overflow</figcaption><div class="grid" id="col-fill-overflow"><div class="item"></div></div></figure>
+      <figure><figcaption>col-fill-border-box</figcaption><div class="grid" id="col-fill-border-box"><div class="item"></div></div></figure>
+      <figure><figcaption>col-fill-extra-term</figcaption><div class="grid" id="col-fill-extra-term"><div class="item"></div></div></figure>
+      <figure><figcaption>col-fill-negative-term</figcaption><div class="grid" id="col-fill-negative-term"><div class="item"></div></div></figure>
+      <figure><figcaption>col-fill-negative-final</figcaption><div class="grid" id="col-fill-negative-final"><div class="item"></div></div></figure>
+      <figure><figcaption>col-fill-negative-percentage-term</figcaption><div class="grid" id="col-fill-negative-percentage-term"><div class="item"></div></div></figure>
+      <figure><figcaption>col-max-content</figcaption><div class="grid" id="col-max-content"><div class="item"></div></div></figure>
+      <figure><figcaption>col-fill-fixed-control</figcaption><div class="grid" id="col-fill-fixed-control"><div class="item"></div></div></figure>
+    </main>
+    <pre id="observation"></pre>
+    <script>
+      const scenes = [...document.querySelectorAll('.grid')].map(grid => {
+        const style = getComputedStyle(grid);
+        const rect = element => {
+          const value = element.getBoundingClientRect();
+          return { x: value.x, y: value.y, width: value.width, height: value.height };
+        };
+        return {
+          id: grid.id,
+          display: style.display,
+          columns: style.gridTemplateColumns,
+          rows: style.gridTemplateRows,
+          columnGap: style.columnGap,
+          rowGap: style.rowGap,
+          grid: rect(grid),
+          item: grid.firstElementChild ? rect(grid.firstElementChild) : null,
+        };
+      });
+      const observation = {
+        userAgent: navigator.userAgent,
+        viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+        scenes,
+      };
+      document.querySelector('#observation').textContent = JSON.stringify(observation, null, 2);
+      window.__c114CalcNeighborsObservation = observation;
+    </script>
+  </body>
+</html>
