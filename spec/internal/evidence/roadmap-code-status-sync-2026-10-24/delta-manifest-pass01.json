@@ -1,0 +1,222 @@
+[
+  {
+    "path": "STATUS.html",
+    "operation": "replace",
+    "bytes": 914200,
+    "sha256": "8a0b63745293efda38476f9a58751a6fc99d4746f8cb416d36f86ddc0c73d499",
+    "previousBytes": 909479,
+    "previousSha256": "16ee4f22a4d9a7d2fa87888843c12e502337cda05e789811d774955a6bef1d52"
+  },
+  {
+    "path": "plan/c11-4-auto-fit-named-line-implicit-fallback.html",
+    "operation": "replace",
+    "bytes": 439121,
+    "sha256": "137e7599bf0aa205c02a631f3f6690e6d5b5e3832676665eee05cc7d38d8492d",
+    "previousBytes": 431653,
+    "previousSha256": "03da1c73f68dd7803a641208cb500b9a33bab975cfcf0ec93c3e5a49463d42e4"
+  },
+  {
+    "path": "plan/c11-4-auto-repeat-named-line-implicit-fallback.html",
+    "operation": "replace",
+    "bytes": 437289,
+    "sha256": "867e5cc9d17d2486f8dbbbbeff53775e29e01a629327831b04af62af71fe098c",
+    "previousBytes": 429821,
+    "previousSha256": "6a125e7d67563c8af1f137a651965180ca1d1abb31c59d4a685a1bedc4047b4c"
+  },
+  {
+    "path": "plan/c11-4-auto-repeat-named-lines.html",
+    "operation": "replace",
+    "bytes": 440169,
+    "sha256": "8ee766810a3cf0cf5efe9332efbfeb514bef4084b3a784e2affbe745f6bc2623",
+    "previousBytes": 432701,
+    "previousSha256": "cd2f096ee794c1f74fef2c3befa9193875a0dc2cb67223742dbdd347775bc9fe"
+  },
+  {
+    "path": "plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.html",
+    "operation": "replace",
+    "bytes": 443380,
+    "sha256": "9878eb13e092989b36aabdab30db61fe7925610ecd3765879d9579b4f5df82d1",
+    "previousBytes": 435912,
+    "previousSha256": "9446392123272cbf17758095d7b4c957b109d328d97889eb874a981e12ad32ae"
+  },
+  {
+    "path": "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.html",
+    "operation": "replace",
+    "bytes": 438472,
+    "sha256": "e923d8c335443d9edf953615fb6873d5388e164ba0f172070c55281e8a7c658e",
+    "previousBytes": 431004,
+    "previousSha256": "3af4397aca7ed66571dc5c768ac28ad671248f5c429c3411cbfd396ab83a9653"
+  },
+  {
+    "path": "plan/c11-4-cyclic-minmax-calc-cross-axis-span-groups.html",
+    "operation": "replace",
+    "bytes": 439751,
+    "sha256": "938916cba6e1e530a8c8bd4f21a0e2f8bd40630a66f21e6f630265b714536105",
+    "previousBytes": 432283,
+    "previousSha256": "c53fed1d2cb57a619edcfa816164facf3fa145826bb390b28f260a997dfc6923"
+  },
+  {
+    "path": "plan/c11-4-cyclic-minmax-calc-minimum-span.html",
+    "operation": "replace",
+    "bytes": 439758,
+    "sha256": "102c769134cbc4f84ee65dd9b6b01a438275276f271798e4a2b0336b4d5ba425",
+    "previousBytes": 432290,
+    "previousSha256": "9d41544f47a49d60fabbd41fecc36e71e70eeaea5de83ef05eb92cb6b57738c4"
+  },
+  {
+    "path": "plan/c11-4-cyclic-minmax-calc-overlapping-rows.html",
+    "operation": "replace",
+    "bytes": 439096,
+    "sha256": "68a67b1b54dd271d61fd8d032b5e037d231a383d43090268528e4a2ffaebed2c",
+    "previousBytes": 431628,
+    "previousSha256": "d7ae0bba33c25d04950592fa24e88364fdc18c06017d80d2e700a065dfab4532"
+  },
+  {
+    "path": "plan/c11-4-cyclic-minmax-calc-overlapping-spans.html",
+    "operation": "replace",
+    "bytes": 439402,
+    "sha256": "8d57a8322e4d53e7e0098c3c4cb6c948501ab948a22007a0979e27d95fd3900d",
+    "previousBytes": 431934,
+    "previousSha256": "d2e99344434abefa6495517464dc2e4649b84a872796fd6081831511af8f9508"
+  },
+  {
+    "path": "plan/c11-4-cyclic-minmax-calc-two-axis-spanning-text.html",
+    "operation": "replace",
+    "bytes": 436603,
+    "sha256": "b19747858da55fd24b1aac01bba9587d86aa92f8d9b06915b57ac4c83b7cce4f",
+    "previousBytes": 429135,
+    "previousSha256": "7b060bd443fb7fcd99c529dd766d9fdb0b4228215b418c13a1f502d1976dfee5"
+  },
+  {
+    "path": "plan/c11-4-cyclic-minmax-max-content-mixed-text-image-span.html",
+    "operation": "replace",
+    "bytes": 442830,
+    "sha256": "5fa95445e2f19bb38beb96900e3f9edf7512ee136f38429563431311eb623e8d",
+    "previousBytes": 435362,
+    "previousSha256": "dab31de0f48f8ff54cb68617f00c59fc20ab5c6ca8a1c486699a028931562aac"
+  },
+  {
+    "path": "plan/c11-4-cyclic-minmax-mixed-text-image-span.html",
+    "operation": "replace",
+    "bytes": 442702,
+    "sha256": "85da561be891d485c54c63ceaa29938c2d441b976dae607e980aad731c929537",
+    "previousBytes": 435234,
+    "previousSha256": "0ec2b519bbbc0310856d06b2aacc4b2bdd325fd4afd0d8c913bf86edbc9b144a"
+  },
+  {
+    "path": "plan/c11-4-cyclic-minmax-replaced-image-span.html",
+    "operation": "replace",
+    "bytes": 444027,
+    "sha256": "670906a6c0ebf65233a083f5956ebade8b4c774af49de4de4ac89e89d54cd512",
+    "previousBytes": 432648,
+    "previousSha256": "400fe803d7b714dedc4bd322cce4c2d3ff31a9e4e5bbc1232f0a2d4f646bcc55"
+  },
+  {
+    "path": "plan/c11-4-two-axis-template-areas.html",
+    "operation": "replace",
+    "bytes": 445194,
+    "sha256": "bc4ea8b945c32f8ba20ecd1e6072ccc255e201e135222485c805751e567d310a",
+    "previousBytes": 445102,
+    "previousSha256": "90228e01088c58bf2871f637006fd1c14d94401e33fa3f564080e07e818f1745"
+  },
+  {
+    "path": "roadmap.html",
+    "operation": "replace",
+    "bytes": 276501,
+    "sha256": "79e86877052f56ab4040db18e85055ccef3a512d6160f3be9aed1281b435ae5f",
+    "previousBytes": 276405,
+    "previousSha256": "01659634af042c1708e29681073a815c6b248cfbebcda65efb8dd22b7132f538"
+  },
+  {
+    "path": "spec/plan/c11-4-auto-fit-named-line-implicit-fallback.html",
+    "operation": "replace",
+    "bytes": 439095,
+    "sha256": "432c8906e1ca312d09579c126e8b0a4c8b09bedf3b3651634aa1f89b79d8b5be",
+    "previousBytes": 431627,
+    "previousSha256": "b6ab58b9b9f1751fd0a6bd4b90b900cf14bb54060cc2e67e5cadeae4bd2926c4"
+  },
+  {
+    "path": "spec/plan/c11-4-auto-repeat-named-line-implicit-fallback.html",
+    "operation": "replace",
+    "bytes": 437258,
+    "sha256": "8498d2a4d53e6847e5d5567eeaf0ea12a0b601f06a38be0a449e34589afc1b20",
+    "previousBytes": 429790,
+    "previousSha256": "f54d6a7b469a3d9f9d8ed744cf9343bdbb38328211a58feda97af8aa1e90fbe9"
+  },
+  {
+    "path": "spec/plan/c11-4-auto-repeat-named-lines.html",
+    "operation": "replace",
+    "bytes": 440124,
+    "sha256": "06fabd79c0bc99faaaee8bfe066fb453000d85fc44cfc5d9f106cd0fb29610dc",
+    "previousBytes": 432656,
+    "previousSha256": "0c87c4b96bdcfed8a2ba4ed3fff6420afbc222a7c7428a77d174d993f84c5330"
+  },
+  {
+    "path": "spec/plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.html",
+    "operation": "add",
+    "bytes": 443310,
+    "sha256": "de0783e6d8d8a7a54b3db241694d6e57d4b2831b9abe6ea7566a81ee538c8f58"
+  },
+  {
+    "path": "spec/plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.html",
+    "operation": "add",
+    "bytes": 438458,
+    "sha256": "f415bfaed041b2ef3c2110a22d8024ce9b2df5f1b1456cb11a6bbfc1f8afb8a5"
+  },
+  {
+    "path": "spec/plan/c11-4-cyclic-minmax-calc-cross-axis-span-groups.html",
+    "operation": "add",
+    "bytes": 439709,
+    "sha256": "9ffa4f7eac4b34d96f931175e73fefa6ee5dd46f3e3b18d160fb7a619c77d047"
+  },
+  {
+    "path": "spec/plan/c11-4-cyclic-minmax-calc-minimum-span.html",
+    "operation": "add",
+    "bytes": 439669,
+    "sha256": "661d70866227fe519d568a4b077cbdf72a62621723cb1e853e50578538609c53"
+  },
+  {
+    "path": "spec/plan/c11-4-cyclic-minmax-calc-overlapping-rows.html",
+    "operation": "add",
+    "bytes": 439050,
+    "sha256": "9fc9a9a99c3881aba99ef34c097e754bb8ce0f3b4d92f4ed1aebe47c1448e679"
+  },
+  {
+    "path": "spec/plan/c11-4-cyclic-minmax-calc-overlapping-spans.html",
+    "operation": "add",
+    "bytes": 439393,
+    "sha256": "3ac4c9bb3d92313aedffffefcc220b8a6cf84595ad944de51b6a441d76d3d368"
+  },
+  {
+    "path": "spec/plan/c11-4-cyclic-minmax-calc-two-axis-spanning-text.html",
+    "operation": "add",
+    "bytes": 436573,
+    "sha256": "526f3f786ac9c354b11620370e8d0eb06be3d020bdb69226032af7d813ee4a3e"
+  },
+  {
+    "path": "spec/plan/c11-4-cyclic-minmax-max-content-mixed-text-image-span.html",
+    "operation": "add",
+    "bytes": 442783,
+    "sha256": "df3fcd3a00030b7a6a138855f551a02e4600921401bb1269503cc2f295695201"
+  },
+  {
+    "path": "spec/plan/c11-4-cyclic-minmax-mixed-text-image-span.html",
+    "operation": "add",
+    "bytes": 442667,
+    "sha256": "3ae9a9d8f3a016a5316726ff465c5ccd0b544341ae6be401ddcc5c0db27f802e"
+  },
+  {
+    "path": "spec/plan/c11-4-cyclic-minmax-replaced-image-span.html",
+    "operation": "add",
+    "bytes": 443924,
+    "sha256": "e5850ea14702c187a5db2bbd616e559e5b97dcc3d0cd664076bd90218e388193"
+  },
+  {
+    "path": "spec/plan/c11-4-two-axis-template-areas.html",
+    "operation": "replace",
+    "bytes": 445166,
+    "sha256": "cae06e8cc578f52f4bd0c475946aaeed18d37dcd9284bacc8dbf2c395dd16c9a",
+    "previousBytes": 445054,
+    "previousSha256": "b6ea5327bd136f314a4820cb952ecaa876f3dbf769e798ef677cd848e2b4fc0a"
+  }
+]

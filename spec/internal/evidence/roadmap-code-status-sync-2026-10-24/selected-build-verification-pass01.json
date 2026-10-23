@@ -1,0 +1,111 @@
+{
+  "pass": "pass01",
+  "selectedOutputRoot": "build/spinon/roadmap-code-status-sync-20261024-site-pass01-selected",
+  "roadmapSourceSha256": "79e86877052f56ab4040db18e85055ccef3a512d6160f3be9aed1281b435ae5f",
+  "roadmapBuiltSha256": "79e86877052f56ab4040db18e85055ccef3a512d6160f3be9aed1281b435ae5f",
+  "officialCountAndC13StateMarkersVerified": true,
+  "livePlanPagesWithCurrentCount": 14,
+  "allRequiredRoutesPresent": true,
+  "routeHashes": [
+    {
+      "path": "roadmap.html",
+      "bytes": 276501,
+      "sha256": "79e86877052f56ab4040db18e85055ccef3a512d6160f3be9aed1281b435ae5f"
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 914200,
+      "sha256": "8a0b63745293efda38476f9a58751a6fc99d4746f8cb416d36f86ddc0c73d499"
+    },
+    {
+      "path": "plan/c11-4-auto-fit-named-line-implicit-fallback.html",
+      "bytes": 439121,
+      "sha256": "137e7599bf0aa205c02a631f3f6690e6d5b5e3832676665eee05cc7d38d8492d"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-named-line-implicit-fallback.html",
+      "bytes": 437289,
+      "sha256": "867e5cc9d17d2486f8dbbbbeff53775e29e01a629327831b04af62af71fe098c"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-named-lines.html",
+      "bytes": 440169,
+      "sha256": "8ee766810a3cf0cf5efe9332efbfeb514bef4084b3a784e2affbe745f6bc2623"
+    },
+    {
+      "path": "plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.html",
+      "bytes": 443380,
+      "sha256": "9878eb13e092989b36aabdab30db61fe7925610ecd3765879d9579b4f5df82d1"
+    },
+    {
+      "path": "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.html",
+      "bytes": 438472,
+      "sha256": "e923d8c335443d9edf953615fb6873d5388e164ba0f172070c55281e8a7c658e"
+    },
+    {
+      "path": "plan/c11-4-cyclic-minmax-calc-cross-axis-span-groups.html",
+      "bytes": 439751,
+      "sha256": "938916cba6e1e530a8c8bd4f21a0e2f8bd40630a66f21e6f630265b714536105"
+    },
+    {
+      "path": "plan/c11-4-cyclic-minmax-calc-minimum-span.html",
+      "bytes": 439758,
+      "sha256": "102c769134cbc4f84ee65dd9b6b01a438275276f271798e4a2b0336b4d5ba425"
+    },
+    {
+      "path": "plan/c11-4-cyclic-minmax-calc-overlapping-rows.html",
+      "bytes": 439096,
+      "sha256": "68a67b1b54dd271d61fd8d032b5e037d231a383d43090268528e4a2ffaebed2c"
+    },
+    {
+      "path": "plan/c11-4-cyclic-minmax-calc-overlapping-spans.html",
+      "bytes": 439402,
+      "sha256": "8d57a8322e4d53e7e0098c3c4cb6c948501ab948a22007a0979e27d95fd3900d"
+    },
+    {
+      "path": "plan/c11-4-cyclic-minmax-calc-two-axis-spanning-text.html",
+      "bytes": 436603,
+      "sha256": "b19747858da55fd24b1aac01bba9587d86aa92f8d9b06915b57ac4c83b7cce4f"
+    },
+    {
+      "path": "plan/c11-4-cyclic-minmax-max-content-mixed-text-image-span.html",
+      "bytes": 442830,
+      "sha256": "5fa95445e2f19bb38beb96900e3f9edf7512ee136f38429563431311eb623e8d"
+    },
+    {
+      "path": "plan/c11-4-cyclic-minmax-mixed-text-image-span.html",
+      "bytes": 442702,
+      "sha256": "85da561be891d485c54c63ceaa29938c2d441b976dae607e980aad731c929537"
+    },
+    {
+      "path": "plan/c11-4-cyclic-minmax-replaced-image-span.html",
+      "bytes": 444027,
+      "sha256": "670906a6c0ebf65233a083f5956ebade8b4c774af49de4de4ac89e89d54cd512"
+    },
+    {
+      "path": "plan/c11-4-two-axis-template-areas.html",
+      "bytes": 445194,
+      "sha256": "bc4ea8b945c32f8ba20ecd1e6072ccc255e201e135222485c805751e567d310a"
+    },
+    {
+      "path": "internal/evidence/roadmap-code-status-sync-2026-10-24/README.html",
+      "bytes": 430367,
+      "sha256": "c0d88f64fd592af784dbcb5580a759987874c7d82636f4cb23d022f88310263b"
+    },
+    {
+      "path": "internal/evidence/roadmap-code-status-sync-2026-10-24/pr-diff-review-20.html",
+      "bytes": 430611,
+      "sha256": "d358434bc38d411af0962561cc8140b26c903e78d063e7b93cce60a75eedbc16"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-code-status-sync-2026-10-24/README.html",
+      "bytes": 430382,
+      "sha256": "fb2c59610329a60a9fb47287ec8663a198718da3c7b2f034cf53697e232e9fb2"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-code-status-sync-2026-10-24/pr-diff-review-20.html",
+      "bytes": 430621,
+      "sha256": "2e8dc403d930455a0362dba3023137f92e8d39ca9932d80675f7b2fd421710af"
+    }
+  ]
+}

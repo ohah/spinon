@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 구현 및 양 simulator 고정 scene 검증 완료. 구현 PR [#530](https://github.com/ohah/spinon/pull/530)은 2026-10-22 21:14:42 UTC Rebase and merge로 병합되어 `776810ad5b4bc097d3d18c1871161471fed07974`를 남겼다. 이 제한 slice를 병합해도 C11.4 공식 완료 수 `77/213`과 미완료 checkbox는 그대로 둔다. auto-repeat fragment의 authored line name 보존과 확장 후 named placement 해석만 다룬다.
+**상태:** 구현 및 양 simulator 고정 scene 검증 완료. 구현 PR [#530](https://github.com/ohah/spinon/pull/530)은 2026-10-22 21:14:42 UTC Rebase and merge로 병합되어 `776810ad5b4bc097d3d18c1871161471fed07974`를 남겼다. 이 제한 slice를 병합해도 C11.4 공식 완료 수 `72/213`과 미완료 checkbox는 그대로 둔다. auto-repeat fragment의 authored line name 보존과 확장 후 named placement 해석만 다룬다.
 
 ## 결손과 실행 가능성
 
@@ -46,7 +46,7 @@
 5. 최신 앱의 `c04-runtime-gpu-fixture-test` opt-in fixture 경로를 사용해 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 8/8 scene을 실행한다. Android PixelCopy와 iOS Metal drawable 표본에서 각 item의 안쪽, 바깥쪽 edge와 인접 track/gutter를 확인한다. 앱 renderer가 실제 border stroke를 그리지 않으면 border paint 통과를 주장하지 않는다. 설치 artifact SHA가 빌드 산출물과 일치해야 한다.
 6. 기본/product archive와 fixture-test archive를 음성/양성 대조하고 Rust focused tests, `cargo fmt --all -- --check`, workspace Clippy, Android/iOS simulator build 및 fixture module-boundary 검사 결과를 별개로 기록한다. 실제 수행한 검사만 통과로 쓴다.
 7. 구현과 runtime을 계획 검토와 다른 실패 관점 20개로 검토한다. 최종 PR diff를 30개의 서로 다른 계약·회귀 관점으로 검토하며, 발견 결함은 고친 뒤 영향받는 관점을 재검토한다.
-8. 구현 PR 본문에는 C11.4 미완료와 `77/213` 유지, 명세·Chrome oracle·simulator evidence 및 제외 범위를 적는다. 가능한 simulator screenshot을 PR 본문에 넣고 Agent Browser로 이미지 URL이 실제 표시되는지 확인한다. 브라우저는 그 확인 뒤 닫고 `agent-browser session list`와 process 목록이 비었는지 검사한다.
+8. 구현 PR 본문에는 C11.4 미완료와 `72/213` 유지, 명세·Chrome oracle·simulator evidence 및 제외 범위를 적는다. 가능한 simulator screenshot을 PR 본문에 넣고 Agent Browser로 이미지 URL이 실제 표시되는지 확인한다. 브라우저는 그 확인 뒤 닫고 `agent-browser session list`와 process 목록이 비었는지 검사한다.
 9. 최신 GitHub required checks와 merge state를 확인하고 Rebase and merge한다. 병합 SHA/rollup을 기록한 뒤 기존 Tailnet preview 경로를 hash로 동기화·검증하고, Agent Browser로 Tailnet roadmap과 연결된 evidence image를 확인한 후 브라우저를 종료한다.
 
 ## 제외 범위와 완료 해석

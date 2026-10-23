@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 CSS Grid track sizing](./c11-4-grid-track-sizing.md) · [직전 cyclic minimum span slice](./c11-4-cyclic-minmax-calc-minimum-span.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 구현 PR [#500](https://github.com/ohah/spinon/pull/500)은 2026-10-22 05:11:19 UTC에 Rebase and merge되어 `2f3f45c6aa27f427b36e906fa3a72fd8d864e402`를 남겼다. 여섯 fixed scene은 Android·iOS simulator에서 각 6/6 통과했다. C11.4 checkbox와 공식 완료 수 `77/213`은 유지한다.
+**상태:** 구현 PR [#500](https://github.com/ohah/spinon/pull/500)은 2026-10-22 05:11:19 UTC에 Rebase and merge되어 `2f3f45c6aa27f427b36e906fa3a72fd8d864e402`를 남겼다. 여섯 fixed scene은 Android·iOS simulator에서 각 6/6 통과했다. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다.
 
 ## 목적과 경계
 
@@ -43,7 +43,7 @@ CSS Grid 2025 CRD §7.2.1에서 cyclic percentage는 intrinsic container size를
 5. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 여섯 scene을 각각 실행한다. Frame, track/input trace, draw/present, PixelCopy·Metal 표본을 기록한다. 실기기는 연결하지 않는다.
 6. 기본 release FFI archive에서 새 scene ID, payload와 fixture entry가 빠지고 opt-in fixture positive control에 포함되는지 검사한다. 필요한 focused Rust tests, modified crate Clippy, `cargo fmt`, simulator app builds를 실행한다.
 7. 새 code/runtime을 기존 계획 실패 관점과 다른 20개 실패 경로로 검토한다. 정확한 PR diff도 별도 20개 관점으로 검토한다. 수정 후 영향받은 scene과 표면 표본을 재실행한다.
-8. PR은 화면·실행 자료와 이 fixed-profile의 한계를 기술한다. C11.4 checkbox와 `77/213`을 올리지 않는다. 병합 전에 현재 required checks와 merge state를 조회하고 프로젝트의 `Rebase and merge` 정책을 따른다.
+8. PR은 화면·실행 자료와 이 fixed-profile의 한계를 기술한다. C11.4 checkbox와 `72/213`을 올리지 않는다. 병합 전에 현재 required checks와 merge state를 조회하고 프로젝트의 `Rebase and merge` 정책을 따른다.
 
 ## 구현 결과
 

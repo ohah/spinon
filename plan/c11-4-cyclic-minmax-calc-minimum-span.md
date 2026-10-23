@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [직전 양축 minimum 계획](./c11-4-cyclic-minmax-calc-minimum-two-axis.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획 PR [#496](https://github.com/ohah/spinon/pull/496)이 병합된 뒤 네 고정 scene의 style-to-layout·runtime fixture를 구현했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 4/4 scene, 각 플랫폼 표면 표본 8/8 exact를 확인했다. 구현/runtime 실패 관점 20개 검토와 PR diff 30개 검토를 별도로 기록한다. 현재 C11.4 전체 완료 판정은 아니며 체크와 현재 공식 완료 수 `77/213`은 유지한다. [사전 비교 근거](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-span-precomparison-2026-10-22/README.md) · [구현·Simulator 근거](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-span-runtime-2026-10-22/README.md).
+**상태:** 계획 PR [#496](https://github.com/ohah/spinon/pull/496)이 병합된 뒤 네 고정 scene의 style-to-layout·runtime fixture를 구현했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 4/4 scene, 각 플랫폼 표면 표본 8/8 exact를 확인했다. 구현/runtime 실패 관점 20개 검토와 PR diff 30개 검토를 별도로 기록한다. 현재 C11.4 전체 완료 판정은 아니며 체크와 현재 공식 완료 수 `72/213`은 유지한다. [사전 비교 근거](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-span-precomparison-2026-10-22/README.md) · [구현·Simulator 근거](../spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-span-runtime-2026-10-22/README.md).
 
 ## 목적과 범위
 
@@ -41,7 +41,7 @@ Rows의 Ahem `a a`는 definite 20px inline size에서 두 줄, 20px block max-co
 
 ## 범위 밖과 한계
 
-네 고정 scene은 span-2 item 하나의 cyclic min calc만 검증한다. span이 다른 여러 item의 순서, span-3 이상, `fit-content()`, flex track, nested/anonymous/replaced item, WPT, Android 실기기/hardware GPU, iOS compositor 이후 pixel 및 일반 CSS Grid 지원은 검증하지 않는다. C11.4 checkbox는 그대로 미완료이며 현재 공식 완료 수 `77/213`도 이 slice에서 바꾸지 않는다.
+네 고정 scene은 span-2 item 하나의 cyclic min calc만 검증한다. span이 다른 여러 item의 순서, span-3 이상, `fit-content()`, flex track, nested/anonymous/replaced item, WPT, Android 실기기/hardware GPU, iOS compositor 이후 pixel 및 일반 CSS Grid 지원은 검증하지 않는다. C11.4 checkbox는 그대로 미완료이며 현재 공식 완료 수 `72/213`도 이 slice에서 바꾸지 않는다.
 
 ## 근거와 검토
 

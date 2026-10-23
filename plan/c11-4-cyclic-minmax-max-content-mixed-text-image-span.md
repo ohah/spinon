@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [cyclic max-content text span 그룹](./c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md) · [cyclic min-content mixed text/image](./c11-4-cyclic-minmax-mixed-text-image-span.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 네 고정 장면 입력, CSS Grid 2025 CRD에서 도출한 유리수 기대값, Chrome 156 Agent Browser 관측, 서로 다른 계획 실패 관점 20개를 기록했다. 계획 PR [#525](https://github.com/ohah/spinon/pull/525)는 2026-10-23 04:05:31 KST Rebase and merge로 병합되어 `bd665f12294fb4204500c17de51bcb7f5835a138`을 남겼다. 2026-10-23 runtime 변경은 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator에서 각 4/4 scene, definite overflow 표본 각 6/6, fixture archive 대조와 별도 구현 20관점 검토까지 통과했다. PR #526은 2026-10-23 04:48:48 KST Rebase and merge로 병합됐으며 merge SHA는 `b87c2a7d5e68434335fed4418c9f95a3a0353c6f`다. 병합 당시 status-check rollup은 비었고 GitHub `main` required status check은 설정되어 있지 않았다. PR diff 실패 관점 30개 검토와 PR 본문 screenshot 렌더링 확인도 마쳤다. C11.4 checkbox와 공식 완료 수 `77/213`은 유지한다.
+**상태:** 네 고정 장면 입력, CSS Grid 2025 CRD에서 도출한 유리수 기대값, Chrome 156 Agent Browser 관측, 서로 다른 계획 실패 관점 20개를 기록했다. 계획 PR [#525](https://github.com/ohah/spinon/pull/525)는 2026-10-23 04:05:31 KST Rebase and merge로 병합되어 `bd665f12294fb4204500c17de51bcb7f5835a138`을 남겼다. 2026-10-23 runtime 변경은 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator에서 각 4/4 scene, definite overflow 표본 각 6/6, fixture archive 대조와 별도 구현 20관점 검토까지 통과했다. PR #526은 2026-10-23 04:48:48 KST Rebase and merge로 병합됐으며 merge SHA는 `b87c2a7d5e68434335fed4418c9f95a3a0353c6f`다. 병합 당시 status-check rollup은 비었고 GitHub `main` required status check은 설정되어 있지 않았다. PR diff 실패 관점 30개 검토와 PR 본문 screenshot 렌더링 확인도 마쳤다. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다.
 
 ## 목적
 
@@ -43,7 +43,7 @@ Chrome 156 Agent Browser 관측은 독립 값과 분리해 기록했다. Fractio
 5. 기본 제품 archive에는 새 fixture ID/symbol/payload가 없고 opt-in fixture-test archive에는 있는지 대조한다. Static archive 검사는 APK/IPA release 전체를 증명하지 않는다고 기록한다.
 6. focused Rust/style/layout/FFI checks, fixture boundary, formatter, 관련 workspace/fixture Clippy와 Android/iOS Simulator build를 실행한다. 수정한 항목과 영향받은 행렬을 다시 실행한다.
 7. 구현/runtime 실패 관점 20개와 PR diff 실패 관점 30개를 서로 분리해 기록한다. 이 계획 검토 행은 재사용하지 않는다.
-8. 구현 PR에 Android/iOS simulator screenshot을 넣는다. live required checks와 merge 상태를 확인하고 Rebase and merge한다. C11.4와 `77/213`은 미완료로 유지한다.
+8. 구현 PR에 Android/iOS simulator screenshot을 넣는다. live required checks와 merge 상태를 확인하고 Rebase and merge한다. C11.4와 `72/213`은 미완료로 유지한다.
 9. 병합 뒤 Tailnet preview를 갱신하고 제공 파일의 hash와 화면을 Agent Browser로 확인한 뒤 사용한 session만 종료한다.
 
 ## 실패 조건과 제외 범위
@@ -71,4 +71,4 @@ Chrome 156 Agent Browser 관측은 독립 값과 분리해 기록했다. Fractio
 
 ## 판정
 
-구현 후보는 등록된 네 scene과 그 고정 입력에만 적용한다. 이 통과가 일반 CSS Grid 지원, WPT 적합성 또는 C11.4 완료를 뜻하지 않으며 상위 checkbox와 `77/213`은 바꾸지 않는다.
+구현 후보는 등록된 네 scene과 그 고정 입력에만 적용한다. 이 통과가 일반 CSS Grid 지원, WPT 적합성 또는 C11.4 완료를 뜻하지 않으며 상위 checkbox와 `72/213`은 바꾸지 않는다.
