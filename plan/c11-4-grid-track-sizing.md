@@ -1,8 +1,12 @@
 # C11.4 · CSS Grid track sizing 계획
 
-## 2026-10-23 auto-repeat + `grid-template-areas` line 결합 계획
+## 2026-10-23 auto-repeat 고정 `calc()` 최소 track 계획
 
-현재 C11.4 auto-repeat과 C11.3 template areas는 함께 사용하면 fail-closed다. [집중 계획](./c11-4-auto-repeat-template-areas.md)과 [Chrome 156/규범 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/README.md)는 area line aliases, authored line-name collision, area dimension의 template 이하·초과, `auto-fit` 빈 반복 및 gutter 차이를 13개 고정 scene으로 분리했다. 이는 계획만 완료했으며 구현/runtime 결과는 없다. C11.4 checkbox와 공식 `77/213`은 그대로 미완료다.
+[집중 계획](./c11-4-auto-repeat-calc-minimum.md)과 [Chrome 156 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-calc-minimum-precomparison-2026-10-23/README.md)는 순수 절대 길이 `calc()` 최소값을 쓰는 `minmax(calc(),1fr)`의 auto-fill/fit을 columns·rows 여섯 scene으로 분리했다. CSS Grid 2025 CRD 독립 계산과 Chrome used tracks는 각각 `[46,46,46,46]` 및 auto-fit `[184,0,0,0]`이다. 계획 실패 관점 20개를 검토한 뒤 구현한다. Percent, zero, intrinsic maximum 및 일반 CSS admission은 제외한다. C11.4 checkbox와 공식 `72/213`은 유지한다.
+
+## 2026-10-23 auto-repeat + `grid-template-areas` 결합 계획과 구현 · PR #539/#545/#549
+
+Chrome 156 13-scene 계획은 [집중 계획](./c11-4-auto-repeat-template-areas.md)과 [사전 비교](../spec/internal/evidence/c11-4-auto-repeat-template-area-lines-precomparison-2026-10-23/README.md)에 기록했다. 이후 단일 축 결합 [PR #539](https://github.com/ohah/spinon/pull/539), 양 축 결합 [PR #545](https://github.com/ohah/spinon/pull/545), auto-fit area-expanded explicit track [PR #549](https://github.com/ohah/spinon/pull/549)가 모두 Rebase and merge됐다. 이 고정 subset의 Android API 37 ARM64 AVD/iPhone 17 Pro iOS 26.2 Simulator 결과는 각 실행 근거에 기록하며 일반 CSS admission, WPT 및 전체 C11.4 적합성을 뜻하지 않는다. C11.4 checkbox와 공식 `72/213`은 미완료다.
 
 ## 2026-10-23 auto-repeat line name 보존과 배치 · PR #530
 

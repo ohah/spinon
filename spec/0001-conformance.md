@@ -37,6 +37,8 @@ React, Vue, Svelte는 서로 다른 작성 문법과 상태 관리 방식을 가
 
 비교 모델·fixture가 준비되지 않은 구현 작업은 제품 지원 완료로 판정하지 않는다. 새 기능이나 수정이 이 모델을 바꾸면 입력·기대값·판정 기준도 함께 갱신한다. 기능별 시각·레이아웃 비교의 세부 측정은 [CSS 호환 명세](0008-css-compatibility.md)를 따른다.
 
+2026-10-23 C11.4 auto-repeat fixed `calc()` minimum의 구현 전 판정은 [계획](../plan/c11-4-auto-repeat-calc-minimum.md), [6-scene fixture](../tests/fixtures/css/c11/grid-auto-repeat-calc-minimum-c114.html), [Chrome 156 관찰과 규범 독립 계산](internal/evidence/c11-4-auto-repeat-calc-minimum-precomparison-2026-10-23/README.md)에 고정한다. 적용 범위는 positive finite absolute-length calc가 최소값인 `minmax(calc(),1fr)`이며, percent/zero/intrinsic·일반 CSS admission은 제외한다. 이는 계획 oracle이며 Spinon 구현 결과가 아니다.
+
 C04 runtime CSS→Taffy 작업의 구현 전 oracle, 입력 hash, computed value와 CSS px 좌표 기준은 [runtime style-layout 비교 근거](internal/evidence/css-c04-runtime-style-layout-precomparison-2026-10-09.md)에 고정했다. 이는 Chromium 출력 기준이며 Spinon 구현 결과를 포함하지 않는다.
 
 S03.3 세션 종료 검증은 [종료 경합 사전 비교 모델](internal/evidence/s03-shutdown-precomparison-2026-10-05.md)에 고정했다. 이 검증은 Rust 세션의 `Closing` 전환, 실행 중 V8 취소, 대기 명령의 종료 오류, 이후 접수 거부와 소유 스레드 종료를 대상으로 한다. raw C ABI 세션 포인터에 대한 동시 `free`는 기존 계약에서 금지하므로 시험하지 않는다.

@@ -1,0 +1,83 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 auto-repeat fixed calc minimum</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; }
+.scene {
+  display: grid;
+  position: absolute;
+  align-content: start;
+  justify-content: start;
+  gap: 0;
+  background: #e2e8f0;
+}
+.item {
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #e5484d;
+}
+.item:nth-child(2) { background: #2563eb; }
+.item:nth-child(3) { background: #16a34a; }
+.item:nth-child(4) { background: #f59e0b; }
+#columns-calc-fill {
+  left: 0;
+  top: 0;
+  width: 184px;
+  height: 48px;
+  grid-template-columns: repeat(auto-fill, minmax(calc(20px + 20px), 1fr));
+  grid-template-rows: 48px;
+}
+#columns-fixed-fill-control {
+  left: 200px;
+  top: 0;
+  width: 184px;
+  height: 48px;
+  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  grid-template-rows: 48px;
+}
+#columns-calc-fit {
+  left: 400px;
+  top: 0;
+  width: 184px;
+  height: 48px;
+  grid-template-columns: repeat(auto-fit, minmax(calc(20px + 20px), 1fr));
+  grid-template-rows: 48px;
+}
+#rows-calc-fill {
+  left: 0;
+  top: 64px;
+  width: 48px;
+  height: 184px;
+  grid-template-columns: 48px;
+  grid-template-rows: repeat(auto-fill, minmax(calc(20px + 20px), 1fr));
+  grid-auto-flow: column;
+}
+#rows-fixed-fill-control {
+  left: 200px;
+  top: 64px;
+  width: 48px;
+  height: 184px;
+  grid-template-columns: 48px;
+  grid-template-rows: repeat(auto-fill, minmax(40px, 1fr));
+  grid-auto-flow: column;
+}
+#rows-calc-fit {
+  left: 400px;
+  top: 64px;
+  width: 48px;
+  height: 184px;
+  grid-template-columns: 48px;
+  grid-template-rows: repeat(auto-fit, minmax(calc(20px + 20px), 1fr));
+  grid-auto-flow: column;
+}
+</style>
+<div id="columns-calc-fill" class="scene" data-scene-id="columns-calc-fill"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div></div>
+<div id="columns-fixed-fill-control" class="scene" data-scene-id="columns-fixed-fill-control"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div></div>
+<div id="columns-calc-fit" class="scene" data-scene-id="columns-calc-fit"><div class="item"></div></div>
+<div id="rows-calc-fill" class="scene" data-scene-id="rows-calc-fill"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div></div>
+<div id="rows-fixed-fill-control" class="scene" data-scene-id="rows-fixed-fill-control"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div></div>
+<div id="rows-calc-fit" class="scene" data-scene-id="rows-calc-fit"><div class="item"></div></div>
