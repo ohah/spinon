@@ -59,4 +59,4 @@ Android APK SHA-256은 `220da16026052ea72b06be48e34337d7cf3f113d6043305dfbc82edb
 
 ## 한계
 
-Android 실기기·hardware GPU, iOS 실기기·compositor 이후 최종 surface, CSS border stroke, 일반 CSS admission, WPT 및 전체 C11.4 구현 완료는 검증하지 않았다. Chrome screenshot은 사전 CSS oracle이며 Spinon runtime 화면으로 취급하지 않는다. 기존 HWPJS Agent Browser session 한 개는 별도 작업 소유라 보존했다. 이 task에서 만든 browser session은 정리 후 별도로 기록한다.
+Android 실기기·hardware GPU, iOS 실기기·compositor 이후 최종 surface, CSS border stroke, 일반 CSS admission, WPT 및 전체 C11.4 구현 완료는 검증하지 않았다. Chrome screenshot은 사전 CSS oracle이며 Spinon runtime 화면으로 취급하지 않는다. PR #549 본문 이미지가 Agent Browser에서 실제 로드되는 것을 확인했다. task 전용 session을 닫았고 session info는 `active=false`, `pid=null`이며 후속 process scan에서 Agent Browser/Chrome task process가 남지 않았다. [browser image rendering](./agent-browser-pr-image-rendering.json) · [session 상태](./agent-browser-sessions.json) · [cleanup](./agent-browser-cleanup.json).
