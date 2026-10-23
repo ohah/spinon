@@ -1,0 +1,28 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 percentage auto-repeat neighbors oracle</title>
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; font: 10px sans-serif; }
+#fixtures { display: grid; grid-template-columns: repeat(2, max-content); gap: 8px; align-items: start; }
+.grid { display: grid; position: relative; border: 2px solid #111; padding: 8px; margin: 0; align-content: start; justify-content: normal; }
+.grid::before { content: attr(id); position: absolute; left: 2px; top: 2px; color: #555; font-size: 9px; line-height: 10px; }
+.horizontal { width: 260px; height: 48px; grid-template-rows: 12px; column-gap: 4px; }
+.vertical { width: 48px; height: 260px; grid-template-columns: 12px; row-gap: 4px; }
+.item { width: 2px; height: 2px; background: #e5484d; }
+</style>
+<div id="fixtures">
+  <div id="col-fill-both" class="grid horizontal" style="grid-template-columns:10% repeat(auto-fill,minmax(40px,1fr)) 5%"></div>
+  <div id="row-fill-both" class="grid vertical" style="grid-template-rows:10% repeat(auto-fill,minmax(40px,1fr)) 5%"></div>
+  <div id="col-fill-prefix" class="grid horizontal" style="grid-template-columns:12.5% repeat(auto-fill,minmax(40px,1fr))"></div>
+  <div id="row-fill-suffix" class="grid vertical" style="grid-template-rows:repeat(auto-fill,minmax(40px,1fr)) 12.5%"></div>
+  <div id="col-fit-first" class="grid horizontal" style="grid-template-columns:10% repeat(auto-fit,minmax(40px,1fr)) 5%"><div class="item" style="grid-column:2;grid-row:1"></div></div>
+  <div id="row-fit-first" class="grid vertical" style="grid-template-rows:10% repeat(auto-fit,minmax(40px,1fr)) 5%"><div class="item" style="grid-row:2;grid-column:1"></div></div>
+  <div id="col-fit-empty" class="grid horizontal" style="grid-template-columns:10% repeat(auto-fit,minmax(40px,1fr)) 5%"></div>
+  <div id="row-fit-empty" class="grid vertical" style="grid-template-rows:10% repeat(auto-fit,minmax(40px,1fr)) 5%"></div>
+  <div id="col-fill-overflow" class="grid horizontal" style="grid-template-columns:80% repeat(auto-fill,minmax(40px,1fr)) 30%"></div>
+  <div id="row-fill-overflow" class="grid vertical" style="grid-template-rows:80% repeat(auto-fill,minmax(40px,1fr)) 30%"></div>
+  <div id="col-fill-zero-prefix" class="grid horizontal" style="grid-template-columns:0% repeat(auto-fill,minmax(40px,1fr)) 5%"></div>
+  <div id="col-fill-border-box" class="grid horizontal" style="width:136px;grid-template-columns:10% repeat(auto-fill,minmax(40px,1fr)) 5%"></div>
+  <div id="row-fill-border-box" class="grid vertical" style="height:136px;grid-template-rows:10% repeat(auto-fill,minmax(40px,1fr)) 5%"></div>
+</div>

@@ -1,0 +1,13 @@
+{
+  "agentBrowserSession": "spinon-c114-percentage-neighbor-oracle-20261024",
+  "architecture": "arm",
+  "bitness": "64",
+  "browserName": "Google Chrome",
+  "browserVersion": "156.0.8078.48",
+  "devicePixelRatio": 1,
+  "observationFile": "chrome156-observation.json",
+  "platform": "macOS",
+  "platformVersion": "26.5.1",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "versionSource": "navigator.userAgentData.getHighEntropyValues(fullVersionList, platformVersion, architecture, bitness)"
+}
