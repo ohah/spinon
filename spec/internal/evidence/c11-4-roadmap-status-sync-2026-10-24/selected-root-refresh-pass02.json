@@ -1,0 +1,28 @@
+{
+  "pass": "pass02",
+  "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.md",
+  "sha256": "e3067a5e534d44bdfb66cecd781e8b226dad82f4046a4552221656380fa5e1ff",
+  "refreshed": [
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.md",
+      "bytes": 5606,
+      "sha256": "e3067a5e534d44bdfb66cecd781e8b226dad82f4046a4552221656380fa5e1ff"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.md",
+      "bytes": 5606,
+      "sha256": "e3067a5e534d44bdfb66cecd781e8b226dad82f4046a4552221656380fa5e1ff"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.md",
+      "bytes": 5606,
+      "sha256": "e3067a5e534d44bdfb66cecd781e8b226dad82f4046a4552221656380fa5e1ff"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.md",
+      "bytes": 5606,
+      "sha256": "e3067a5e534d44bdfb66cecd781e8b226dad82f4046a4552221656380fa5e1ff"
+    }
+  ],
+  "noDeletes": true
+}

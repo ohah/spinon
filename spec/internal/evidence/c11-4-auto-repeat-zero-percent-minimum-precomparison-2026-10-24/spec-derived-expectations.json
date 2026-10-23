@@ -1,0 +1,32 @@
+{
+  "specification": "CSS Grid Layout Module Level 1, 2025 CRD, section 7.2.3.2",
+  "uaRepeatCountFloorCssPx": 1,
+  "floorAppliesTo": "each auto-repeated track's size only while computing the repetition count; it does not change the track's actual sizing function or non-repeated prefix/suffix sizes",
+  "formula": {
+    "zeroGap": "For a 120 CSS px definite content axis, minmax(0%, 1fr) uses the 1 CSS px UA floor for count, so auto-fill/auto-fit repeats 120 times.",
+    "fourPxGap": "Each repeated track contributes the 1 CSS px floor and each following repetition adds one 4 CSS px gap; a 120 CSS px axis therefore fits 24 repetitions.",
+    "borderBox": "A 136 CSS px border-box with 8 CSS px inline padding and 2 CSS px border on each inline side has a 116 CSS px content axis; 24 one-pixel floored tracks plus 23 four-pixel gaps fit exactly.",
+    "subpixelNeighbors": "A 0.5 CSS px prefix and suffix remain 0.5 CSS px each. The 1 CSS px floor applies only to repeated tracks; 23 repeated tracks plus 24 gaps and both explicit neighbors use 120 CSS px."
+  },
+  "scenes": [
+    { "id": "fill-col-zero-gap", "contentAxisCssPx": 120, "repeatTrackCount": 120, "totalTrackCount": 120, "expectedTracks": { "1px": 120 }, "expectedItemSizeCssPx": null },
+    { "id": "fill-col-zero-px-gap", "contentAxisCssPx": 120, "repeatTrackCount": 120, "totalTrackCount": 120, "expectedTracks": { "1px": 120 }, "expectedItemSizeCssPx": null },
+    { "id": "fill-col-gap-four", "contentAxisCssPx": 120, "repeatTrackCount": 24, "totalTrackCount": 24, "expectedTrackSizeCssPx": 1.1666666666666667, "actualChromeQuantizationToleranceCssPx": 0.015625, "expectedItemSizeCssPx": null },
+    { "id": "fill-col-half-px-gap-zero", "contentAxisCssPx": 120, "repeatTrackCount": 120, "totalTrackCount": 120, "expectedTracks": { "1px": 120 }, "expectedItemSizeCssPx": null },
+    { "id": "fill-col-half-px-gap-four", "contentAxisCssPx": 120, "repeatTrackCount": 24, "totalTrackCount": 24, "expectedTrackSizeCssPx": 1.1666666666666667, "actualChromeQuantizationToleranceCssPx": 0.015625, "expectedItemSizeCssPx": null },
+    { "id": "fill-col-half-percent-gap-four", "contentAxisCssPx": 120, "repeatTrackCount": 24, "totalTrackCount": 24, "expectedTrackSizeCssPx": 1.1666666666666667, "actualChromeQuantizationToleranceCssPx": 0.015625, "expectedItemSizeCssPx": null },
+    { "id": "fill-col-zero-neighbors-subpixel", "contentAxisCssPx": 120, "repeatTrackCount": 23, "totalTrackCount": 25, "explicitPrefixCssPx": 0.5, "explicitSuffixCssPx": 0.5, "expectedTracks": { "0.5px": 2, "1px": 23 }, "expectedItemSizeCssPx": null },
+    { "id": "fit-col-empty", "contentAxisCssPx": 120, "repeatTrackCount": 120, "totalTrackCount": 120, "expectedTracks": { "0px": 120 }, "expectedItemSizeCssPx": null },
+    { "id": "fit-col-first", "contentAxisCssPx": 120, "repeatTrackCount": 120, "totalTrackCount": 120, "expectedTracks": { "120px": 1, "0px": 119 }, "expectedItemSizeCssPx": [120, 12] },
+    { "id": "fit-col-span-two", "contentAxisCssPx": 120, "repeatTrackCount": 24, "totalTrackCount": 24, "expectedTracks": { "58px": 2, "0px": 22 }, "expectedItemSizeCssPx": [120, 12] },
+    { "id": "fill-row-gap-four", "contentAxisCssPx": 120, "repeatTrackCount": 24, "totalTrackCount": 24, "expectedTrackSizeCssPx": 1.1666666666666667, "actualChromeQuantizationToleranceCssPx": 0.015625, "expectedItemSizeCssPx": null },
+    { "id": "fit-row-first", "contentAxisCssPx": 120, "repeatTrackCount": 120, "totalTrackCount": 120, "expectedTracks": { "120px": 1, "0px": 119 }, "expectedItemSizeCssPx": [12, 120] },
+    { "id": "border-box-col", "contentAxisCssPx": 116, "repeatTrackCount": 24, "totalTrackCount": 24, "expectedTracks": { "1px": 24 }, "expectedItemSizeCssPx": null }
+  ],
+  "unsupportedControls": [
+    "zero content basis",
+    "indefinite percentage basis",
+    "negative percentage minimum",
+    "unrelated nonzero percentage/minmax expressions that do not pass the existing typed auto-repeat profile"
+  ]
+}

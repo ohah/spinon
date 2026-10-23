@@ -1,0 +1,92 @@
+[
+  {
+    "path": "STATUS.html",
+    "operation": "replace",
+    "bytes": 912006,
+    "sha256": "19d26aa9565356b8727c62fc03ee6674b31eb489166eb4397415f2544e9eadb9",
+    "previousBytes": 912006,
+    "previousSha256": "89602c1055d2cb813b56fdc7530aa9a1893718c6ea3d78da3835963d4fc99cb6"
+  },
+  {
+    "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/README.html",
+    "operation": "replace",
+    "bytes": 429788,
+    "sha256": "a0c6c39e1688fe8a1b15280d9d0212fbe92fcd4d618ccbe4fe808cd5c18f938d",
+    "previousBytes": 429788,
+    "previousSha256": "4260038224c92160a262ebc3110b2a31416ef7c4bdd21c32e97b8410dbe098d0"
+  },
+  {
+    "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.html",
+    "operation": "replace",
+    "bytes": 430932,
+    "sha256": "852fe2f69d0c0c43581e52da793365e4fd1d8f96655d803024ea02872c58bbb9",
+    "previousBytes": 429868,
+    "previousSha256": "de4ac45fa32841e5902f3acc67f552b3b0309830e79447bd14664ec614cb31a6"
+  },
+  {
+    "path": "plan/c11-4-auto-repeat-zero-percent-minimum-plan-review-20.html",
+    "operation": "replace",
+    "bytes": 431355,
+    "sha256": "804503e504f1f1d38fdd4dcbe28b3ded4ba7008c7424be65fc9d9d9ae37bcdaa",
+    "previousBytes": 431355,
+    "previousSha256": "6d425dcf2c98309750677554d57421bbfffcaf3f5dc1182c0a0ff5cc92307b22"
+  },
+  {
+    "path": "plan/c11-4-auto-repeat-zero-percent-minimum.html",
+    "operation": "replace",
+    "bytes": 436007,
+    "sha256": "74945f68c3a3bf8181f2de5e5d65445a9eb0a72c31f66d4abc3f44711506d11e",
+    "previousBytes": 436007,
+    "previousSha256": "bf91bfd506a8740ad6e511609a8538e32ec66e530253e607de72651e73d2dc6e"
+  },
+  {
+    "path": "plan/c11-4-grid-track-sizing.html",
+    "operation": "replace",
+    "bytes": 585187,
+    "sha256": "8db054f8a1917aa9bdf952e813f70ad4b48c3b1d70067a8c211223f279e919b7",
+    "previousBytes": 585187,
+    "previousSha256": "7b45f3b1083da5762c40f9811d55cf66c2b04f6b98babf2f2d66a51fd90b9104"
+  },
+  {
+    "path": "spec/STATUS.html",
+    "operation": "replace",
+    "bytes": 913511,
+    "sha256": "19b57824926cc8e1b54cd868938cdd8b5b91c4aab91a5a3c418e2396dd2c113e",
+    "previousBytes": 913511,
+    "previousSha256": "70a7a75ac69af30d85334337abe2929b87d64e75e443958dbb525a4b1b848110"
+  },
+  {
+    "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/README.html",
+    "operation": "replace",
+    "bytes": 429799,
+    "sha256": "3cb91efc89d487cab0bc1e9dd0135af24023b3a2c4050c9a846d3da8571c1e9c",
+    "previousBytes": 429799,
+    "previousSha256": "8b923b634f1a45beac9403c6931199f9d3b91d9e81fd704e8731b4536a651a02"
+  },
+  {
+    "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.html",
+    "operation": "replace",
+    "bytes": 430940,
+    "sha256": "075f89e0671dd19c6a17a44948c4d2b457392d5f3f4b16c860c4cd5b4f89de8a",
+    "previousBytes": 429876,
+    "previousSha256": "b9fc38f052bf7cb2ae21046250f38335432f0859d4a714e924abe932d3553fca"
+  },
+  {
+    "path": "static/js/async/route-495ac68a001e.8153bb4718.js",
+    "operation": "add",
+    "bytes": 10816,
+    "sha256": "926dbbeaa6d57e3244180ab17c8d794d61032ee632162a85d820d6376385db4f"
+  },
+  {
+    "path": "static/js/async/route-59b3b5f984d0.5a3e61202c.js",
+    "operation": "add",
+    "bytes": 10814,
+    "sha256": "e6df4da8dd35aeab9c77ea2df23af12a2aa8241d03ce0c263975b51abf88835f"
+  },
+  {
+    "path": "static/js/index.f7efd4b50c.js",
+    "operation": "add",
+    "bytes": 1420551,
+    "sha256": "ae54a22ed784f410ce68cdea9174fd9f2f0c8e614c98cb0db75a04ae4b0f6e4a"
+  }
+]

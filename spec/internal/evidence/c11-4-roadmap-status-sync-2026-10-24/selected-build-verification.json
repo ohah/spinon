@@ -1,0 +1,86 @@
+{
+  "rspressVersion": "2.0.22",
+  "selectedBuildCommand": "./packages/docs/node_modules/.bin/rspress build --config spec/internal/evidence/c11-4-roadmap-status-sync-2026-10-24/rspress.config.ts",
+  "sourceRoadmapSha256": "3e36cbe8077bb9e36b58a8b0a0203359edcc7de3380b05e0e4628c3d32c33ef9",
+  "outputRoadmapSha256": "3e36cbe8077bb9e36b58a8b0a0203359edcc7de3380b05e0e4628c3d32c33ef9",
+  "sourceStatusSha256": "4db15e8b8f6bdaea290f1530952223061828c13d8708742c16bc52d6491873a8",
+  "outputStatusRouteSha256": "89602c1055d2cb813b56fdc7530aa9a1893718c6ea3d78da3835963d4fc99cb6",
+  "expectedRoutes": [
+    {
+      "path": "roadmap.html",
+      "bytes": 277632,
+      "sha256": "3e36cbe8077bb9e36b58a8b0a0203359edcc7de3380b05e0e4628c3d32c33ef9"
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 912006,
+      "sha256": "89602c1055d2cb813b56fdc7530aa9a1893718c6ea3d78da3835963d4fc99cb6"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "bytes": 913511,
+      "sha256": "70a7a75ac69af30d85334337abe2929b87d64e75e443958dbb525a4b1b848110"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 585187,
+      "sha256": "7b45f3b1083da5762c40f9811d55cf66c2b04f6b98babf2f2d66a51fd90b9104"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-zero-percent-minimum.html",
+      "bytes": 436007,
+      "sha256": "bf91bfd506a8740ad6e511609a8538e32ec66e530253e607de72651e73d2dc6e"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-zero-percent-minimum-plan-review-20.html",
+      "bytes": 431355,
+      "sha256": "6d425dcf2c98309750677554d57421bbfffcaf3f5dc1182c0a0ff5cc92307b22"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/README.html",
+      "bytes": 429788,
+      "sha256": "4260038224c92160a262ebc3110b2a31416ef7c4bdd21c32e97b8410dbe098d0"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.html",
+      "bytes": 429868,
+      "sha256": "de4ac45fa32841e5902f3acc67f552b3b0309830e79447bd14664ec614cb31a6"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser-pass02.png",
+      "bytes": 69679,
+      "sha256": "10e2df8df4b04ca7622c31618a4d1e0f9163999f5fd5968084071082b478509e"
+    },
+    {
+      "path": "static/image/chrome156-zero-percent-auto-repeat-agent-browser-pass02.d9add6adc9.png",
+      "bytes": 69679,
+      "sha256": "10e2df8df4b04ca7622c31618a4d1e0f9163999f5fd5968084071082b478509e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/README.html",
+      "bytes": 429799,
+      "sha256": "8b923b634f1a45beac9403c6931199f9d3b91d9e81fd704e8731b4536a651a02"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.html",
+      "bytes": 429876,
+      "sha256": "b9fc38f052bf7cb2ae21046250f38335432f0859d4a714e924abe932d3553fca"
+    }
+  ],
+  "explicitlyStagedStaticRoutes": [
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "roadmap.html",
+      "bytes": 277632,
+      "sha256": "3e36cbe8077bb9e36b58a8b0a0203359edcc7de3380b05e0e4628c3d32c33ef9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser-pass02.png",
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser-pass02.png",
+      "bytes": 69679,
+      "sha256": "10e2df8df4b04ca7622c31618a4d1e0f9163999f5fd5968084071082b478509e"
+    }
+  ],
+  "markerChecksPassed": true,
+  "fullRepositoryDeadLinkChecks": "not run in this isolated build; the full build previously failed on unrelated existing dead links"
+}

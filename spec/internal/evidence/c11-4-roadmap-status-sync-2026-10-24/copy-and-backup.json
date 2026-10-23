@@ -1,0 +1,164 @@
+{
+  "added": 18,
+  "replaced": 4,
+  "unchanged": 5,
+  "backedUp": 4,
+  "files": [
+    {
+      "path": "STATUS.html",
+      "operation": "replace",
+      "bytes": 912006,
+      "sha256": "89602c1055d2cb813b56fdc7530aa9a1893718c6ea3d78da3835963d4fc99cb6",
+      "previousSha256": "8a0b63745293efda38476f9a58751a6fc99d4746f8cb416d36f86ddc0c73d499"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/README.html",
+      "operation": "add",
+      "bytes": 429788,
+      "sha256": "4260038224c92160a262ebc3110b2a31416ef7c4bdd21c32e97b8410dbe098d0",
+      "previousSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/chrome156-zero-percent-auto-repeat-agent-browser-pass02.png",
+      "operation": "add",
+      "bytes": 69679,
+      "sha256": "10e2df8df4b04ca7622c31618a4d1e0f9163999f5fd5968084071082b478509e",
+      "previousSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.html",
+      "operation": "add",
+      "bytes": 429868,
+      "sha256": "de4ac45fa32841e5902f3acc67f552b3b0309830e79447bd14664ec614cb31a6",
+      "previousSha256": null
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-zero-percent-minimum-plan-review-20.html",
+      "operation": "add",
+      "bytes": 431355,
+      "sha256": "6d425dcf2c98309750677554d57421bbfffcaf3f5dc1182c0a0ff5cc92307b22",
+      "previousSha256": null
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-zero-percent-minimum.html",
+      "operation": "add",
+      "bytes": 436007,
+      "sha256": "bf91bfd506a8740ad6e511609a8538e32ec66e530253e607de72651e73d2dc6e",
+      "previousSha256": null
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "operation": "replace",
+      "bytes": 585187,
+      "sha256": "7b45f3b1083da5762c40f9811d55cf66c2b04f6b98babf2f2d66a51fd90b9104",
+      "previousSha256": "b9de544e5a161711b94b8f9b74c34f1d29b850d2923f81e32c7d5b27df8d4d5c"
+    },
+    {
+      "path": "roadmap.html",
+      "operation": "replace",
+      "bytes": 277632,
+      "sha256": "3e36cbe8077bb9e36b58a8b0a0203359edcc7de3380b05e0e4628c3d32c33ef9",
+      "previousSha256": "79e86877052f56ab4040db18e85055ccef3a512d6160f3be9aed1281b435ae5f"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "operation": "replace",
+      "bytes": 913511,
+      "sha256": "70a7a75ac69af30d85334337abe2929b87d64e75e443958dbb525a4b1b848110",
+      "previousSha256": "02428b30c61d77a31e3f075a69fbc00a4f480558690423fb25d0cf715ede3d0e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/README.html",
+      "operation": "add",
+      "bytes": 429799,
+      "sha256": "8b923b634f1a45beac9403c6931199f9d3b91d9e81fd704e8731b4536a651a02",
+      "previousSha256": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/plan-pr-diff-review-20.html",
+      "operation": "add",
+      "bytes": 429876,
+      "sha256": "b9fc38f052bf7cb2ae21046250f38335432f0859d4a714e924abe932d3553fca",
+      "previousSha256": null
+    },
+    {
+      "path": "static/image/chrome156-zero-percent-auto-repeat-agent-browser-pass02.d9add6adc9.png",
+      "operation": "add",
+      "bytes": 69679,
+      "sha256": "10e2df8df4b04ca7622c31618a4d1e0f9163999f5fd5968084071082b478509e",
+      "previousSha256": null
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.7e53a362ec.js",
+      "operation": "add",
+      "bytes": 171384,
+      "sha256": "d639c01e42600832c93ea045ec3a1f2de5658c7c7abe0b7cfa01ac8d954c5630",
+      "previousSha256": null
+    },
+    {
+      "path": "static/js/async/route-1ebfe578f1a1.57e540b214.js",
+      "operation": "add",
+      "bytes": 9886,
+      "sha256": "df990f9efc5da2c9d4de703967917e3670196c924eeb0aa7828b28263e3ffd8c",
+      "previousSha256": null
+    },
+    {
+      "path": "static/js/async/route-495ac68a001e.f9eda03d8e.js",
+      "operation": "add",
+      "bytes": 10327,
+      "sha256": "e2c42778f638d473d36a435a8722afc721439551015c49724cba55e56d3857af",
+      "previousSha256": null
+    },
+    {
+      "path": "static/js/async/route-59b3b5f984d0.ea4171883b.js",
+      "operation": "add",
+      "bytes": 10325,
+      "sha256": "3ea74c108bbc6d36a13e5a9a1a3713cd36e7db0e6ef183ac27f1f1f120e491c3",
+      "previousSha256": null
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.9632b961bd.js",
+      "operation": "add",
+      "bytes": 541886,
+      "sha256": "b5201d211763be6eccf3d0481588e0e6e5e4bc09c94235616fa2e3fa4628eba1",
+      "previousSha256": null
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.3c0d740625.js",
+      "operation": "add",
+      "bytes": 542634,
+      "sha256": "968d86068d1706031983d7429b522ec89f1fb36152630d6ab99fa3020060fb04",
+      "previousSha256": null
+    },
+    {
+      "path": "static/js/async/route-9b224ee8c09f.4d6d9584c8.js",
+      "operation": "add",
+      "bytes": 9880,
+      "sha256": "1bfc30f88eddf1cd65e94e1a6b394e1123c918bb89b1fa190ec2e624469ff8f0",
+      "previousSha256": null
+    },
+    {
+      "path": "static/js/async/route-b2cc63a6e36e.960d174d96.js",
+      "operation": "add",
+      "bytes": 16439,
+      "sha256": "689ebd13da8d9fe4a249b3a0fd7faefa3d7da8d52cfa1589efc3062395f510a5",
+      "previousSha256": null
+    },
+    {
+      "path": "static/js/async/route-bf382b2fdb65.ccf9160866.js",
+      "operation": "add",
+      "bytes": 11659,
+      "sha256": "5d88bf2ba5beadd83d2fc90ecdae72a75875ae17bdc4275de94a0beb64a3fa33",
+      "previousSha256": null
+    },
+    {
+      "path": "static/js/index.2b9eb8b26c.js",
+      "operation": "add",
+      "bytes": 1419951,
+      "sha256": "b564eabab5617828368e35e712533d06660f7023e17f63983fbe7d444b2d1336",
+      "previousSha256": null
+    }
+  ],
+  "backupRoot": "SpinonPreviewBackups/c11-4-roadmap-status-sync-2026-10-24/pass01",
+  "noDeletes": true
+}
