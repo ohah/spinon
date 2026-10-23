@@ -1,0 +1,35 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11.4 auto-repeat zero-length percentage calc precomparison</title>
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 650px; height: 280px; font: 12px sans-serif; }
+.scene {
+  position: absolute;
+  display: grid;
+  align-content: start;
+  justify-content: start;
+  gap: 0;
+  background: #e2e8f0;
+  outline: 1px solid #64748b;
+}
+.caption { position: absolute; left: 0; top: -31px; width: 132px; white-space: normal; line-height: 14px; color: #0f172a; }
+.item { min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0; background: #e5484d; }
+#columns-fill-calc { left: 0; top: 32px; width: 120px; height: 48px; grid-template-columns: repeat(auto-fill, minmax(calc(0px + 10%), 1fr)); grid-template-rows: 48px; }
+#columns-fill-fixed { left: 140px; top: 32px; width: 120px; height: 48px; grid-template-columns: repeat(auto-fill, minmax(12px, 1fr)); grid-template-rows: 48px; }
+#columns-fit-calc { left: 280px; top: 32px; width: 120px; height: 48px; grid-template-columns: repeat(auto-fit, minmax(calc(0px + 10%), 1fr)); grid-template-rows: 48px; }
+#columns-fit-fixed { left: 420px; top: 32px; width: 120px; height: 48px; grid-template-columns: repeat(auto-fit, minmax(12px, 1fr)); grid-template-rows: 48px; }
+#rows-fill-calc { left: 0; top: 140px; width: 48px; height: 120px; grid-template-columns: 48px; grid-template-rows: repeat(auto-fill, minmax(calc(0px + 10%), 1fr)); grid-auto-flow: column; }
+#rows-fill-fixed { left: 140px; top: 140px; width: 48px; height: 120px; grid-template-columns: 48px; grid-template-rows: repeat(auto-fill, minmax(12px, 1fr)); grid-auto-flow: column; }
+#rows-fit-calc { left: 280px; top: 140px; width: 48px; height: 120px; grid-template-columns: 48px; grid-template-rows: repeat(auto-fit, minmax(calc(0px + 10%), 1fr)); grid-auto-flow: column; }
+#rows-fit-fixed { left: 420px; top: 140px; width: 48px; height: 120px; grid-template-columns: 48px; grid-template-rows: repeat(auto-fit, minmax(12px, 1fr)); grid-auto-flow: column; }
+</style>
+<div id="columns-fill-calc" class="scene" data-scene-id="columns-fill-calc"><span class="caption">columns / calc(0px + 10%) / auto-fill</span><div class="item"></div></div>
+<div id="columns-fill-fixed" class="scene" data-scene-id="columns-fill-fixed"><span class="caption">columns / 12px control / auto-fill</span><div class="item"></div></div>
+<div id="columns-fit-calc" class="scene" data-scene-id="columns-fit-calc"><span class="caption">columns / calc(0px + 10%) / auto-fit</span><div class="item"></div></div>
+<div id="columns-fit-fixed" class="scene" data-scene-id="columns-fit-fixed"><span class="caption">columns / 12px control / auto-fit</span><div class="item"></div></div>
+<div id="rows-fill-calc" class="scene" data-scene-id="rows-fill-calc"><span class="caption">rows / calc(0px + 10%) / auto-fill</span><div class="item"></div></div>
+<div id="rows-fill-fixed" class="scene" data-scene-id="rows-fill-fixed"><span class="caption">rows / 12px control / auto-fill</span><div class="item"></div></div>
+<div id="rows-fit-calc" class="scene" data-scene-id="rows-fit-calc"><span class="caption">rows / calc(0px + 10%) / auto-fit</span><div class="item"></div></div>
+<div id="rows-fit-fixed" class="scene" data-scene-id="rows-fit-fixed"><span class="caption">rows / 12px control / auto-fit</span><div class="item"></div></div>

@@ -1,0 +1,34 @@
+{
+  "standard": "CSS Grid Layout Module Level 1 2025 CRD",
+  "sections": [
+    "7.2.1 Track Sizes",
+    "7.2.3.1 Syntax of repeat()",
+    "7.2.3.2 Repeat-to-fill: auto-fill and auto-fit repetitions"
+  ],
+  "inputs": {
+    "autoRepeatMinimum": "calc(0px + 10%)",
+    "maximum": "1fr",
+    "numericControlMinimum": "12px",
+    "columnsInnerInlineSizePx": 120,
+    "rowsInnerBlockSizePx": 120,
+    "gapPx": 0,
+    "paddingPx": 0,
+    "borderPx": 0,
+    "inFlowItemsPerScene": 1
+  },
+  "calculation": {
+    "resolvedMinimumPx": 12,
+    "repeatCount": 10,
+    "autoFillTracksPx": [12, 12, 12, 12, 12, 12, 12, 12, 12, 12],
+    "autoFillSingleItemTrackPx": 12,
+    "autoFitTracksAfterCollapsePx": [120, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "autoFitSingleItemTrackPx": 120,
+    "controlMustMatchCalc": true
+  },
+  "scopeLimitations": [
+    "No zero-size percentage basis",
+    "No indefinite or cyclic percentage basis",
+    "No nonzero gaps, padding, border, or other auto-repeat combinations",
+    "No claim of Spinon behavior, WPT conformance, or general CSS admission"
+  ]
+}

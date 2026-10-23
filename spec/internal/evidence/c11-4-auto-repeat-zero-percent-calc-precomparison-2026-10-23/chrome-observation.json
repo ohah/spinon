@@ -1,0 +1,20 @@
+{
+  "title": "C11.4 auto-repeat zero-length percentage calc precomparison",
+  "browser": "Chrome/156.0.8078.48",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "viewport": { "width": 650, "height": 280 },
+  "devicePixelRatio": 1,
+  "cssSupportsAutoRepeatCalc": true,
+  "scenes": [
+    { "id": "columns-fill-calc", "columns": [12,12,12,12,12,12,12,12,12,12], "rows": [48], "root": [0,32,120,48], "item": [0,32,12,48] },
+    { "id": "columns-fill-fixed", "columns": [12,12,12,12,12,12,12,12,12,12], "rows": [48], "root": [140,32,120,48], "item": [140,32,12,48] },
+    { "id": "columns-fit-calc", "columns": [120,0,0,0,0,0,0,0,0,0], "rows": [48], "root": [280,32,120,48], "item": [280,32,120,48] },
+    { "id": "columns-fit-fixed", "columns": [120,0,0,0,0,0,0,0,0,0], "rows": [48], "root": [420,32,120,48], "item": [420,32,120,48] },
+    { "id": "rows-fill-calc", "columns": [48], "rows": [12,12,12,12,12,12,12,12,12,12], "root": [0,140,48,120], "item": [0,140,48,12] },
+    { "id": "rows-fill-fixed", "columns": [48], "rows": [12,12,12,12,12,12,12,12,12,12], "root": [140,140,48,120], "item": [140,140,48,12] },
+    { "id": "rows-fit-calc", "columns": [48], "rows": [120,0,0,0,0,0,0,0,0,0], "root": [280,140,48,120], "item": [280,140,48,120] },
+    { "id": "rows-fit-fixed", "columns": [48], "rows": [120,0,0,0,0,0,0,0,0,0], "root": [420,140,48,120], "item": [420,140,48,120] }
+  ],
+  "frameTupleOrder": ["x", "y", "width", "height"],
+  "source": "tests/fixtures/css/c11/grid-auto-repeat-zero-percent-calc-c114-precomparison.html"
+}

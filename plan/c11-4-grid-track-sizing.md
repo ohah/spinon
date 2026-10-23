@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-10-23 definite auto-repeat zero-length percentage `calc()` 후속 계획
+
+직전 definite percentage minimum slice가 제외한 `calc(0px + 10%)`를 positive definite axis에서 확인한다. CSS Grid 2025 CRD §7.2.1은 nonnegative length-percentage를 허용한다. Chrome 156 비교에서 120px content 축의 10개 12px track 및 auto-fit `[120,0×9]`가 12px numeric control과 일치했다. [집중 계획](./c11-4-auto-repeat-zero-percent-calc.md) · [독립 계산 및 Chrome 관측](../spec/internal/evidence/c11-4-auto-repeat-zero-percent-calc-precomparison-2026-10-23/README.md) · [계획 실패 관점 20개](./c11-4-auto-repeat-zero-percent-calc-plan-review-20.md). 구현 전 계획이며 C11.4 체크와 공식 `72/213`을 유지한다.
+
 ## 2026-10-23 auto-repeat 고정 `calc()` 최소 track 계획
 
 [집중 계획](./c11-4-auto-repeat-calc-minimum.md)과 [Chrome 156 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-calc-minimum-precomparison-2026-10-23/README.md)는 순수 절대 길이 `calc()` 최소값을 쓰는 `minmax(calc(),1fr)`의 auto-fill/fit을 columns·rows 여섯 scene으로 분리했다. CSS Grid 2025 CRD 독립 계산과 Chrome used tracks는 각각 `[46,46,46,46]` 및 auto-fit `[184,0,0,0]`이다. 계획 실패 관점 20개를 검토한 뒤 구현한다. Percent, zero, intrinsic maximum 및 일반 CSS admission은 제외한다. C11.4 checkbox와 공식 `72/213`은 유지한다.
