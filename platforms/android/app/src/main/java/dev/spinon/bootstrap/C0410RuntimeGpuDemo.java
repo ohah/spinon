@@ -392,6 +392,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "positive-percentage-rows-fit-calc",
             "positive-percentage-rows-fit-direct",
             "positive-percentage-rows-fit-fixed",
+            "fill-col-zero-gap", "fill-col-zero-px-gap", "fill-col-gap-four",
+            "fill-col-half-px-gap-zero", "fill-col-half-px-gap-four",
+            "fill-col-half-percent-gap-four", "fill-col-zero-neighbors-subpixel",
+            "fit-col-empty", "fit-col-first", "fit-col-span-two",
+            "fill-row-gap-four", "fit-row-first", "border-box-col",
             "percentage-overflow-columns-calc", "percentage-overflow-columns-fixed",
             "percentage-overflow-rows-calc", "percentage-overflow-rows-fixed",
             "columns-percent-max-fill",
@@ -708,6 +713,52 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 + ",height=" + root[1] + ";1:node=2,x=2,y=2," + item + "]";
     }
 
+    private static String c114ZeroPercentMinimumRootFrame(String sceneId) {
+        switch (sceneId) {
+            case "fill-col-zero-gap":
+            case "fill-col-zero-px-gap":
+            case "fill-col-gap-four":
+            case "fill-col-half-px-gap-zero":
+            case "fill-col-half-px-gap-four":
+            case "fill-col-half-percent-gap-four":
+            case "fill-col-zero-neighbors-subpixel":
+            case "fit-col-empty":
+            case "fit-col-first":
+            case "fit-col-span-two":
+                return "width=124,height=52";
+            case "fill-row-gap-four":
+            case "fit-row-first":
+                return "width=52,height=124";
+            case "border-box-col":
+                return "width=136,height=48";
+            default:
+                return null;
+        }
+    }
+
+    private static String c114ZeroPercentMinimumItemFrame(String sceneId) {
+        switch (sceneId) {
+            case "fit-col-first":
+            case "fit-col-span-two":
+                return "width=120,height=12";
+            case "fit-row-first":
+                return "width=12,height=120";
+            case "fill-col-zero-gap":
+            case "fill-col-zero-px-gap":
+            case "fill-col-gap-four":
+            case "fill-col-half-px-gap-zero":
+            case "fill-col-half-px-gap-four":
+            case "fill-col-half-percent-gap-four":
+            case "fill-col-zero-neighbors-subpixel":
+            case "fit-col-empty":
+            case "fill-row-gap-four":
+            case "border-box-col":
+                return "";
+            default:
+                return null;
+        }
+    }
+
     private static float[][] c114PercentageMaximumItemFrames(String sceneId) {
         boolean percentageMaximum = sceneId.contains("-percent-max-")
                 || sceneId.contains("-max-below-min-")
@@ -770,6 +821,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (percentageMaximumFrame != null) return percentageMaximumFrame;
         String areaRepeatFrame = c114TemplateAreaRepeatRootFrame(sceneId);
         if (areaRepeatFrame != null) return areaRepeatFrame;
+        String zeroPercentFrame = c114ZeroPercentMinimumRootFrame(sceneId);
+        if (zeroPercentFrame != null) return zeroPercentFrame;
         String positivePercentFrame = c114PositivePercentMinimumRootFrame(sceneId);
         if (positivePercentFrame != null) return positivePercentFrame;
         String calcMinimumFrame = c114AutoRepeatCalcMinimumRootFrame(sceneId);
@@ -1053,6 +1106,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (percentageMaximumFrame != null) return percentageMaximumFrame;
         String areaRepeatFrame = c114TemplateAreaRepeatItemFrame(sceneId);
         if (areaRepeatFrame != null) return areaRepeatFrame;
+        String zeroPercentFrame = c114ZeroPercentMinimumItemFrame(sceneId);
+        if (zeroPercentFrame != null) return zeroPercentFrame;
         String positivePercentFrame = c114PositivePercentMinimumItemFrame(sceneId);
         if (positivePercentFrame != null) return positivePercentFrame;
         String calcMinimumFrame = c114AutoRepeatCalcMinimumItemFrame(sceneId);
@@ -4145,6 +4200,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (percentageMaximumItems != null) return percentageMaximumItems.length + 1;
         int[][] areaRepeatItems = c114TemplateAreaRepeatItemRects(sceneId);
         if (areaRepeatItems != null) return areaRepeatItems.length + 1;
+        if (c114ZeroPercentMinimumRootFrame(sceneId) != null) {
+            return c114ZeroPercentMinimumItemFrame(sceneId).isEmpty() ? 1 : 2;
+        }
         if (c114PositivePercentMinimumRootSize(sceneId) != null) return 2;
         int calcMinimumBoxCount = c114AutoRepeatCalcMinimumBoxCount(sceneId);
         if (calcMinimumBoxCount != 0) return calcMinimumBoxCount;
@@ -10906,6 +10964,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             Log.i(TAG, "SPINON_C114_GRID_TRACE_CHUNK run_id=" + runId
                     + " part=" + (chunkIndex + 1) + "/" + chunkCount + " "
                     + trace.substring(start, end));
+            // AVD logd가 trace chunk burst를 누락하지 않도록 전송 속도를 제한한다.
+            if (chunkIndex + 1 < chunkCount) {
+                SystemClock.sleep(2);
+            }
         }
         return true;
     }

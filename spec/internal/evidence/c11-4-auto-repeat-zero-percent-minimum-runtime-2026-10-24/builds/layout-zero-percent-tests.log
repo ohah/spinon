@@ -1,0 +1,16 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.22s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 3 tests
+test grid::track_sizing_tests::zero_percent_auto_repeat_minimum::zero_percent_minimum_admits_only_definite_positive_content_axes ... ok
+test grid::track_sizing_tests::zero_percent_auto_repeat_minimum::zero_percent_repeat_count_keeps_gaps_and_border_box_content_basis ... ok
+test grid::track_sizing_tests::zero_percent_auto_repeat_minimum::zero_percent_repeat_uses_count_floor_without_changing_auto_fit_sizing ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 254 filtered out; finished in 0.00s
+

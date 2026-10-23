@@ -1103,9 +1103,9 @@ fn auto_repeat_track_has_fixed_minimum(
             max,
         } => {
             value.is_finite()
-                && *value > 0.0
+                && *value >= 0.0
                 && explicit_positive_content_axis(context.style, property)
-                    .is_some_and(|basis| (value * basis).is_finite() && value * basis > 0.0)
+                    .is_some_and(|basis| (value * basis).is_finite())
                 && auto_repeat_maximum_is_supported(*max, node, property, context, css_math)
         }
         GridTrackSize::MinMax {

@@ -1037,7 +1037,7 @@ fn auto_repeat_track_has_fixed_minimum(track: &ComputedCssGridTrackSize) -> bool
         ComputedCssGridTrackSize::MinMax {
             min: ComputedCssGridTrackBreadth::Percentage(value),
             max,
-        } => value.is_finite() && *value > 0.0 && auto_repeat_maximum_is_supported(max),
+        } => value.is_finite() && *value >= 0.0 && auto_repeat_maximum_is_supported(max),
         ComputedCssGridTrackSize::MinMax {
             min: ComputedCssGridTrackBreadth::Calc(value),
             max,

@@ -1,0 +1,181 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+error[E0308]: mismatched types
+   --> crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:634:22
+    |
+627 |               Box::new(|input: &mut LayoutInput| {
+    |                        ------------------------- the expected closure
+...
+634 |               Box::new(|input: &mut LayoutInput| {
+    |  _____________--------_^
+    | |             |
+    | |             arguments to this function are incorrect
+635 | |                 input.nodes[0].style.width = LayoutDimension::Fixed(0.0);
+636 | |                 input.root_sizing = RootSizingPolicy::ResolveWithin;
+637 | |             }),
+    | |_____________^ expected closure, found a different closure
+    |
+    = note: expected closure `{closure@crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:627:22: 627:47}`
+               found closure `{closure@crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:634:22: 634:47}`
+    = note: no two closures, even if identical, have the same type
+    = help: consider boxing your closure and/or using it as a trait object
+note: associated function defined here
+   --> /Users/yoonhb/.rustup/toolchains/1.96.1-aarch64-apple-darwin/lib/rustlib/src/rust/library/alloc/src/boxed.rs:284:12
+    |
+284 |     pub fn new(x: T) -> Self {
+    |            ^^^
+
+error[E0308]: mismatched types
+   --> crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:641:22
+    |
+627 |               Box::new(|input: &mut LayoutInput| {
+    |                        ------------------------- the expected closure
+...
+641 |               Box::new(|input: &mut LayoutInput| {
+    |  _____________--------_^
+    | |             |
+    | |             arguments to this function are incorrect
+642 | |                 input.nodes[0].style.width = LayoutDimension::CyclicMinContentPercent(0.5);
+643 | |                 input.root_sizing = RootSizingPolicy::ResolveWithin;
+644 | |             }),
+    | |_____________^ expected closure, found a different closure
+    |
+    = note: expected closure `{closure@crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:627:22: 627:47}`
+               found closure `{closure@crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:641:22: 641:47}`
+    = note: no two closures, even if identical, have the same type
+    = help: consider boxing your closure and/or using it as a trait object
+note: associated function defined here
+   --> /Users/yoonhb/.rustup/toolchains/1.96.1-aarch64-apple-darwin/lib/rustlib/src/rust/library/alloc/src/boxed.rs:284:12
+    |
+284 |     pub fn new(x: T) -> Self {
+    |            ^^^
+
+error[E0308]: mismatched types
+   --> crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:648:22
+    |
+627 |               Box::new(|input: &mut LayoutInput| {
+    |                        ------------------------- the expected closure
+...
+648 |               Box::new(|input: &mut LayoutInput| {
+    |  _____________--------_^
+    | |             |
+    | |             arguments to this function are incorrect
+649 | |                 input.nodes[0].style.width = LayoutDimension::MaxContent;
+650 | |                 input.root_sizing = RootSizingPolicy::ResolveWithin;
+651 | |             }),
+    | |_____________^ expected closure, found a different closure
+    |
+    = note: expected closure `{closure@crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:627:22: 627:47}`
+               found closure `{closure@crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:648:22: 648:47}`
+    = note: no two closures, even if identical, have the same type
+    = help: consider boxing your closure and/or using it as a trait object
+note: associated function defined here
+   --> /Users/yoonhb/.rustup/toolchains/1.96.1-aarch64-apple-darwin/lib/rustlib/src/rust/library/alloc/src/boxed.rs:284:12
+    |
+284 |     pub fn new(x: T) -> Self {
+    |            ^^^
+
+error[E0308]: mismatched types
+   --> crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:655:22
+    |
+627 |               Box::new(|input: &mut LayoutInput| {
+    |                        ------------------------- the expected closure
+...
+655 |               Box::new(|input: &mut LayoutInput| {
+    |  _____________--------_^
+    | |             |
+    | |             arguments to this function are incorrect
+656 | |                 input.nodes[0].style.min_width = LayoutDimension::Auto;
+657 | |             }),
+    | |_____________^ expected closure, found a different closure
+    |
+    = note: expected closure `{closure@crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:627:22: 627:47}`
+               found closure `{closure@crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:655:22: 655:47}`
+    = note: no two closures, even if identical, have the same type
+    = help: consider boxing your closure and/or using it as a trait object
+note: associated function defined here
+   --> /Users/yoonhb/.rustup/toolchains/1.96.1-aarch64-apple-darwin/lib/rustlib/src/rust/library/alloc/src/boxed.rs:284:12
+    |
+284 |     pub fn new(x: T) -> Self {
+    |            ^^^
+
+error[E0308]: mismatched types
+   --> crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:661:22
+    |
+627 |               Box::new(|input: &mut LayoutInput| {
+    |                        ------------------------- the expected closure
+...
+661 |               Box::new(|input: &mut LayoutInput| {
+    |  _____________--------_^
+    | |             |
+    | |             arguments to this function are incorrect
+662 | |                 input.nodes[0].style.max_width = LayoutDimension::Fixed(100.0);
+663 | |             }),
+    | |_____________^ expected closure, found a different closure
+    |
+    = note: expected closure `{closure@crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:627:22: 627:47}`
+               found closure `{closure@crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:661:22: 661:47}`
+    = note: no two closures, even if identical, have the same type
+    = help: consider boxing your closure and/or using it as a trait object
+note: associated function defined here
+   --> /Users/yoonhb/.rustup/toolchains/1.96.1-aarch64-apple-darwin/lib/rustlib/src/rust/library/alloc/src/boxed.rs:284:12
+    |
+284 |     pub fn new(x: T) -> Self {
+    |            ^^^
+
+error[E0308]: mismatched types
+   --> crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:667:22
+    |
+627 |               Box::new(|input: &mut LayoutInput| {
+    |                        ------------------------- the expected closure
+...
+667 |               Box::new(|input: &mut LayoutInput| {
+    |  _____________--------_^
+    | |             |
+    | |             arguments to this function are incorrect
+668 | |                 input.nodes[0].style.box_sizing = LayoutBoxSizing::BorderBox;
+669 | |                 input.nodes[0].style.width = LayoutDimension::Fixed(124.0);
+670 | |                 input.nodes[0].style.padding.left = LayoutLengthPercentage::LengthPx(60.0);
+671 | |                 input.nodes[0].style.padding.right = LayoutLengthPercentage::LengthPx(60.0);
+672 | |                 input.root_sizing = RootSizingPolicy::ResolveWithin;
+673 | |             }),
+    | |_____________^ expected closure, found a different closure
+    |
+    = note: expected closure `{closure@crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:627:22: 627:47}`
+               found closure `{closure@crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:667:22: 667:47}`
+    = note: no two closures, even if identical, have the same type
+    = help: consider boxing your closure and/or using it as a trait object
+note: associated function defined here
+   --> /Users/yoonhb/.rustup/toolchains/1.96.1-aarch64-apple-darwin/lib/rustlib/src/rust/library/alloc/src/boxed.rs:284:12
+    |
+284 |     pub fn new(x: T) -> Self {
+    |            ^^^
+
+error[E0308]: mismatched types
+   --> crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:677:22
+    |
+627 |               Box::new(|input: &mut LayoutInput| {
+    |                        ------------------------- the expected closure
+...
+677 |               Box::new(|input: &mut LayoutInput| {
+    |  _____________--------_^
+    | |             |
+    | |             arguments to this function are incorrect
+678 | |                 input.grid_containers.get_mut(&id(1)).unwrap().columns[0] = GridTrackSize::MinMax {
+679 | |                     min: GridTrackMinSizingFunction::Percentage(f32::MAX),
+680 | |                     max: GridTrackMaxSizingFunction::Fraction(1.0),
+681 | |                 };
+682 | |             }),
+    | |_____________^ expected closure, found a different closure
+    |
+    = note: expected closure `{closure@crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:627:22: 627:47}`
+               found closure `{closure@crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs:677:22: 677:47}`
+    = note: no two closures, even if identical, have the same type
+    = help: consider boxing your closure and/or using it as a trait object
+note: associated function defined here
+   --> /Users/yoonhb/.rustup/toolchains/1.96.1-aarch64-apple-darwin/lib/rustlib/src/rust/library/alloc/src/boxed.rs:284:12
+    |
+284 |     pub fn new(x: T) -> Self {
+    |            ^^^
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `spinon-layout` (lib test) due to 7 previous errors

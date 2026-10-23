@@ -1,0 +1,10 @@
+{
+  "archive": "target/release/libspinon_ffi.a",
+  "bytes": 78217904,
+  "sha256": "446ffed6e1b207fde8dc8c50da077d64e431261cc1c91e24946e10a7e7c74b4b",
+  "markers": {
+    "fill-col-zero-gap": true,
+    "spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture": true
+  },
+  "fixturePayloadPresent": true
+}

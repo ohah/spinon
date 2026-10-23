@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "checkoutHead": "cf1357997d0a802c68ef5b24dd3c355b2a9032f7",
+  "checkoutTree": "0dda970a4c22f504de0b7808dac6299ddfdf8148",
+  "captureTrackedDiffSha256": "ac41b806847cf75d38baac5fc238d5791c52dd13fa5e7685f35550a94efeb9bb",
+  "currentTrackedDiffSha256": "128caacb0e8bd349fb072ab3c4b0eb91ff2c5b09e4d109d4bbe9a6409478567a",
+  "captureTrackedDirtyPaths": [
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+    "crates/spinon-layout/src/grid.rs",
+    "crates/spinon-layout/src/grid_track_sizing_tests.rs",
+    "crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs",
+    "crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs",
+    "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/auto_repeat_calc_minimum.rs",
+    "plan/c11-4-auto-repeat-zero-percent-minimum.md",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+    "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+    "spec/STATUS.md",
+    "spec/internal/0059-c11-grid-layout.md",
+    "spec/public/roadmap.html",
+    "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+    "tools/css-reference/fixture-module-boundary.test.mjs",
+    "vendor/taffy/src/compute/grid/explicit_grid.rs"
+  ],
+  "runtimeSourceSha256": {
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "45b1c64ccde0e1c6cf8c5a302c638637b135f88c4dde5b1dbf91254f6807110d",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_zero_percent_minimum.rs": "d06e81f439f97f2642374960433b6aab66bf0165a9e6c47881d16f657cebab0e",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_zero_percent_minimum_scenes.json": "6fc5863e9a7f057d009b2ae10ec3e4eedb0ae638545f18d0eda4cf73fe271211",
+    "crates/spinon-layout/src/grid.rs": "3a9bc7ba9565582d307fd6e776663335bb96e31fe02c7e226b4458dac54a83dc",
+    "crates/spinon-layout/src/grid_track_sizing_tests.rs": "b77f00c3a804a31d1185cc5d6c8db1b7d6516ca465c9843a7a94d8f1fb2b4721",
+    "crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs": "733d4762a24fabb9dda4e9590459bedc1dbdf4855cd34ddabc54545da2bd9210",
+    "crates/spinon-layout/src/grid_track_sizing_tests/zero_percent_auto_repeat_minimum.rs": "675478a4ce088686cdd8dd1a825770dff1d5aa11113ab7527d7139203b81f30c",
+    "crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs": "1691ff3e449be374c4eceac51d304b8ff39bfadefaa3f268dc697444665d6432",
+    "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/auto_repeat_calc_minimum.rs": "bfaea785e22c4f614ef00b114f49fb0d738dd43ae2bd7ba56e4d465ca42594a8",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "5e7a44ea6bec404007d035758ecef85f48ebed8657007f2f1abcb1d5c154e8f9",
+    "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "36435513b2f09f1b6233a6b348d0c4c448f5cc7d49b86c8604aee6b561bfeb0c",
+    "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs": "6ceb2f3e12706f44f1d057a9b4341a9791c9af8ae08e0627fbefa38a6176cf57",
+    "tools/css-reference/fixture-module-boundary.test.mjs": "73cb0e38730afa87aa2be49a25f5854f26a1fdb7f83e743ae45a2dbc6ee86edc",
+    "vendor/taffy/src/compute/grid/explicit_grid.rs": "732c7b98ef7795beea949c8e1c25915cce6d1ecd6f07ea9fb4045718d3ee6a43"
+  },
+  "android": {
+    "serial": "emulator-5558",
+    "target": "android-avd",
+    "qemu": "1",
+    "apiLevel": 37,
+    "abi": "arm64-v8a",
+    "model": "sdk_gphone64_arm64",
+    "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+    "apkSha256": "cda6867db59db76ccfc476ab5e3c9982d828c128d2085550d51fb00c0436b66f",
+    "installedApkSha256": "cda6867db59db76ccfc476ab5e3c9982d828c128d2085550d51fb00c0436b66f",
+    "sourceRevision": {
+      "commit": "cf1357997d0a802c68ef5b24dd3c355b2a9032f7",
+      "tree": "0dda970a4c22f504de0b7808dac6299ddfdf8148",
+      "trackedDiffSha256": "ac41b806847cf75d38baac5fc238d5791c52dd13fa5e7685f35550a94efeb9bb",
+      "trackedDirtyPaths": [
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+        "crates/spinon-layout/src/grid.rs",
+        "crates/spinon-layout/src/grid_track_sizing_tests.rs",
+        "crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs",
+        "crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs",
+        "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/auto_repeat_calc_minimum.rs",
+        "plan/c11-4-auto-repeat-zero-percent-minimum.md",
+        "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+        "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+        "spec/STATUS.md",
+        "spec/internal/0059-c11-grid-layout.md",
+        "spec/public/roadmap.html",
+        "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+        "tools/css-reference/fixture-module-boundary.test.mjs",
+        "vendor/taffy/src/compute/grid/explicit_grid.rs"
+      ]
+    }
+  },
+  "ios": {
+    "target": "ios-simulator",
+    "udid": "D6E8EEE5-62C2-4BED-960A-F49F06158B06",
+    "name": "iPhone 17",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+    "appSha256": "df7a22dfa781c7afebc076e66ddfcaa990b8abc3bbaef5b76fe112483dccc5b4",
+    "sourceRevision": {
+      "commit": "cf1357997d0a802c68ef5b24dd3c355b2a9032f7",
+      "tree": "0dda970a4c22f504de0b7808dac6299ddfdf8148",
+      "trackedDiffSha256": "ac41b806847cf75d38baac5fc238d5791c52dd13fa5e7685f35550a94efeb9bb",
+      "trackedDirtyPaths": [
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+        "crates/spinon-layout/src/grid.rs",
+        "crates/spinon-layout/src/grid_track_sizing_tests.rs",
+        "crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs",
+        "crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs",
+        "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/auto_repeat_calc_minimum.rs",
+        "plan/c11-4-auto-repeat-zero-percent-minimum.md",
+        "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+        "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+        "spec/STATUS.md",
+        "spec/internal/0059-c11-grid-layout.md",
+        "spec/public/roadmap.html",
+        "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+        "tools/css-reference/fixture-module-boundary.test.mjs",
+        "vendor/taffy/src/compute/grid/explicit_grid.rs"
+      ]
+    }
+  },
+  "artifacts": {
+    "androidResult": {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/android-avd-c114-auto-repeat-zero-percent-minimum-android-avd-20261023T170458589Z-c0537217/result.json",
+      "sha256": "fc241e6b83f42c1407301d5e255841134812639ed3516aaa421005c1ee41d6cf",
+      "bytes": 87595
+    },
+    "androidFitScene": {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/android-avd-c114-auto-repeat-zero-percent-minimum-android-avd-20261023T170458589Z-c0537217/fit-col-first.png",
+      "sha256": "905c4646cff6f6d5c47571960f6551e36ae859fd42052f89dfe68dba172b94ac",
+      "bytes": 77931
+    },
+    "iosResult": {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/ios-simulator-c114-auto-repeat-zero-percent-minimum-ios-simulator-20261023T170458589Z-b80ae17b/result.json",
+      "sha256": "c501f30d25a2099f7d794e3c49532448efa0b665653fd3b0a3d1ac277f2e9b31",
+      "bytes": 88018
+    },
+    "iosFitScene": {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/ios-simulator-c114-auto-repeat-zero-percent-minimum-ios-simulator-20261023T170458589Z-b80ae17b/fit-col-first.png",
+      "sha256": "4dbbbf227e51b4dddb1a7bf2300e22eb99b286ed9d2ae7c89a079fc648cb18d2",
+      "bytes": 147125
+    },
+    "productArchiveBoundary": {
+      "archive": "target/release/libspinon_ffi.a",
+      "bytes": 75137640,
+      "sha256": "16bf2144a2d8f85a6297c009c2885aa8e9af8f1db6c7b029f2ecae43ee752921",
+      "markers": {
+        "fill-col-zero-gap": false,
+        "spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture": false
+      },
+      "fixturePayloadAbsent": true
+    },
+    "fixtureArchiveBoundary": {
+      "archive": "target/release/libspinon_ffi.a",
+      "bytes": 78217904,
+      "sha256": "446ffed6e1b207fde8dc8c50da077d64e431261cc1c91e24946e10a7e7c74b4b",
+      "markers": {
+        "fill-col-zero-gap": true,
+        "spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture": true
+      },
+      "fixturePayloadPresent": true
+    }
+  }
+}
