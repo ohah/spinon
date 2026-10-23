@@ -1,0 +1,16 @@
+{
+  "pass": "pass70",
+  "closedAt": "2026-10-23T11:12:15Z",
+  "tool": "Agent Browser",
+  "session": "spinon-c11-4-zero-calc-plan-20261023",
+  "closeResult": "Browser closed",
+  "activeSessionsAfterClose": [],
+  "matchingPersistentAgentBrowserProcessesAfterClose": [],
+  "previewServer": {
+    "pid": 1191,
+    "address": "127.0.0.1:8768",
+    "listening": true,
+    "preserved": true
+  },
+  "otherChromeProcessesTerminated": false
+}
