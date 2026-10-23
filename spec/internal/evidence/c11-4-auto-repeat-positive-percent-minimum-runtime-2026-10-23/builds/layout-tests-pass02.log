@@ -1,0 +1,11 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.20s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 4 tests
+test grid::track_sizing_tests::positive_percentage_auto_repeat::percentage_auto_repeat_rejects_zero_indefinite_and_clamped_axes_before_taffy ... ok
+test grid::track_sizing_tests::positive_percentage_auto_repeat::percentage_minimum_with_fixed_maximum_keeps_auto_repeat_count ... ok
+test grid::track_sizing_tests::positive_percentage_auto_repeat::percentage_minimum_overflow_matches_fixed_control_past_outer_border ... ok
+test grid::track_sizing_tests::positive_percentage_auto_repeat::positive_percentage_auto_repeat_matches_fixed_controls_on_both_axes ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 243 filtered out; finished in 0.00s

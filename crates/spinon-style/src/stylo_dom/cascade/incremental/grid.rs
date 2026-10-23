@@ -1035,6 +1035,10 @@ fn auto_repeat_track_has_fixed_minimum(track: &ComputedCssGridTrackSize) -> bool
             max: ComputedCssGridTrackBreadth::LengthPx(_) | ComputedCssGridTrackBreadth::Fraction(_),
         } => value.is_finite() && *value >= 0.0,
         ComputedCssGridTrackSize::MinMax {
+            min: ComputedCssGridTrackBreadth::Percentage(value),
+            max: ComputedCssGridTrackBreadth::LengthPx(_) | ComputedCssGridTrackBreadth::Fraction(_),
+        } => value.is_finite() && *value > 0.0,
+        ComputedCssGridTrackSize::MinMax {
             min: ComputedCssGridTrackBreadth::Calc(value),
             max: ComputedCssGridTrackBreadth::LengthPx(_) | ComputedCssGridTrackBreadth::Fraction(_),
         } => auto_repeat_minimum_calc_is_supported(value),

@@ -3574,10 +3574,66 @@ async function autoRepeatCalcMinimumScenes() {
   });
 }
 
+async function autoRepeatPositivePercentMinimumScenes() {
+  const fixturePath = resolve(repositoryRoot,
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_positive_percent_minimum_scenes.json');
+  const androidPath = resolve(repositoryRoot,
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java');
+  const iosPath = resolve(repositoryRoot, 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift');
+  const [fixtures, androidSource, iosSource] = await Promise.all([
+    readFile(fixturePath, 'utf8').then(JSON.parse),
+    readFile(androidPath, 'utf8'),
+    readFile(iosPath, 'utf8'),
+  ]);
+  assert.equal(fixtures.length, 16,
+    'positive percentage auto-repeat fixture는 16 scene이어야 합니다.');
+  const allowlist = (source, expression, label) => {
+    const match = source.match(expression);
+    assert.ok(match, `${label} scene allowlist를 읽을 수 없습니다.`);
+    return new Set([...match[1].matchAll(/"([^"]+)"/g)].map((entry) => entry[1]));
+  };
+  const androidScenes = allowlist(androidSource,
+    /C114_GRID_TRACK_SIZING_SCENE_IDS\s*=\s*\{([\s\S]*?)\};/,
+    'Android Grid track sizing');
+  const iosScenes = allowlist(iosSource,
+    /c114GridTrackSizingSceneIDs:\s*Set<String>\s*=\s*\[([\s\S]*?)\]/,
+    'iOS Grid track sizing');
+
+  return fixtures.map(({ id, expect, columnGap, rowGap, items }) => {
+    assert.ok(androidScenes.has(id), `Android Grid allowlist에 ${id}가 없습니다.`);
+    assert.ok(iosScenes.has(id), `iOS Grid allowlist에 ${id}가 없습니다.`);
+    const [rootWidth, rootHeight] = expect.root;
+    const axis = id.includes('-columns-') ? 'Columns' : 'Rows';
+    const nodeFrames = [
+      `0:node=1,x=0,y=0,width=${rootWidth},height=${rootHeight}`,
+      ...expect.items.map(({ frame }, index) => {
+        const [x, y, width, height] = frame;
+        return `${index + 1}:node=${index + 2},x=${x},y=${y},width=${width},height=${height}`;
+      }),
+    ].join(';');
+    return {
+      id,
+      axis,
+      boxCount: items.length + 1,
+      rootFrame: `width=${rootWidth},height=${rootHeight}`,
+      itemFrame: null,
+      nodeFrames: `node_frames_css_px=[${nodeFrames}]`,
+      axes: Object.fromEntries(Object.entries(expect.tracks).map(([trackAxis, tracks]) => [
+        trackAxis === 'columns' ? 'Columns' : 'Rows', {
+          tracks,
+          collapsed: expect.collapsed[trackAxis],
+        },
+      ])),
+      gaps: { Columns: Number.parseFloat(columnGap), Rows: Number.parseFloat(rowGap) },
+    };
+  });
+}
+
 scenes.push(...await templateAreaRepeatScenes());
 scenes.push(...await autoRepeatNamedLineScenes());
 scenes.push(...await autoRepeatCalcMinimumScenes());
-assert.equal(scenes.length, 348, 'C11.4 fixture scene count differs.');
+scenes.push(...await autoRepeatPositivePercentMinimumScenes());
+assert.equal(scenes.length, 364, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -5888,7 +5944,8 @@ if (target === 'ios-simulator') {
     .map((device) => ({ ...device, runtime })));
   assert.equal(simulator.length, 1, `Booted iOS Simulator를 찾지 못했습니다: ${simulatorUDID}`);
   assert.match(simulator[0].runtime, /iOS-26-2$/);
-  assert.equal(simulator[0].name, 'iPhone 17 Pro');
+  assert.ok(['iPhone 17', 'iPhone 17 Pro'].includes(simulator[0].name),
+    `지원하지 않는 iOS 시뮬레이터 모델입니다: ${simulator[0].name}`);
   await saveLog('install.log', command('xcrun', ['simctl', 'install', simulatorUDID, appPath]));
   const appSha256 = sha256(await readFile(resolve(appPath, 'SpinonBootstrap')));
   for (const [index, scene] of runScenes.entries()) {

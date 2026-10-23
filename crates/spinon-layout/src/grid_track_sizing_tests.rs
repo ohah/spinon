@@ -1025,3 +1025,6 @@ fn auto_repeat_rejects_an_invalid_first_axis_independently() {
         }) if node == id(1)
     ));
 }
+
+#[path = "grid_track_sizing_tests/positive_percentage_auto_repeat.rs"]
+mod positive_percentage_auto_repeat;

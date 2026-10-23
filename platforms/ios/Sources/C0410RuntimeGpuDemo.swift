@@ -246,6 +246,20 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "depth-three-min-content-image-before-text",
     "depth-three-max-content-text-before-image",
     "depth-three-max-content-image-before-text",
+    "positive-percentage-columns-fill-calc",
+    "positive-percentage-columns-fill-direct",
+    "positive-percentage-columns-fill-fixed",
+    "positive-percentage-columns-fit-calc",
+    "positive-percentage-columns-fit-direct",
+    "positive-percentage-columns-fit-fixed",
+    "positive-percentage-rows-fill-calc",
+    "positive-percentage-rows-fill-direct",
+    "positive-percentage-rows-fill-fixed",
+    "positive-percentage-rows-fit-calc",
+    "positive-percentage-rows-fit-direct",
+    "positive-percentage-rows-fit-fixed",
+    "percentage-overflow-columns-calc", "percentage-overflow-columns-fixed",
+    "percentage-overflow-rows-calc", "percentage-overflow-rows-fixed",
 ]
 private let c114CyclicMinmaxReplacedImageSpanSceneIDs: Set<String> = [
     "cyclic-minmax-replaced-image-span-intrinsic-forward",
@@ -434,9 +448,42 @@ private func c114AutoRepeatCalcMinimumBoxCount(_ sceneID: String) -> Int? {
     return sceneID.hasPrefix("columns-percent-") || sceneID.hasPrefix("rows-percent-") ? 4 : 5
 }
 
+private func c114PositivePercentMinimumRootSize(_ sceneID: String) -> (width: Int, height: Int)? {
+    if sceneID.hasPrefix("positive-percentage-columns-")
+        || sceneID.hasPrefix("percentage-overflow-columns-") { return (124, 52) }
+    if sceneID.hasPrefix("positive-percentage-rows-")
+        || sceneID.hasPrefix("percentage-overflow-rows-") { return (52, 124) }
+    return nil
+}
+
+private func c114PositivePercentMinimumRootFrame(_ sceneID: String) -> String? {
+    guard let root = c114PositivePercentMinimumRootSize(sceneID) else { return nil }
+    return "width=\(root.width),height=\(root.height)"
+}
+
+private func c114PositivePercentMinimumItemFrame(_ sceneID: String) -> String? {
+    guard c114PositivePercentMinimumRootSize(sceneID) != nil else { return nil }
+    let columns = sceneID.contains("-columns-")
+    let overflow = sceneID.hasPrefix("percentage-overflow-")
+    let fit = sceneID.contains("-fit-")
+    let width = columns ? (overflow ? 180 : (fit ? 120 : 12)) : 48
+    let height = columns ? 48 : (overflow ? 180 : (fit ? 120 : 12))
+    return "width=\(width),height=\(height)"
+}
+
+private func c114PositivePercentMinimumNodeFrames(_ sceneID: String) -> String? {
+    guard let root = c114PositivePercentMinimumRootSize(sceneID),
+          let item = c114PositivePercentMinimumItemFrame(sceneID) else { return nil }
+    return "node_frames_css_px=[0:node=1,x=0,y=0,width=\(root.width),height=\(root.height);"
+        + "1:node=2,x=2,y=2,\(item)]"
+}
+
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
     if let areaRepeatFrame = c114TemplateAreaRepeatRootFrame(sceneID) { return areaRepeatFrame }
+    if let positivePercentFrame = c114PositivePercentMinimumRootFrame(sceneID) {
+        return positivePercentFrame
+    }
     if let calcMinimumFrame = c114AutoRepeatCalcMinimumRootFrame(sceneID) {
         return calcMinimumFrame
     }
@@ -655,6 +702,9 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     if let areaRepeatFrame = c114TemplateAreaRepeatItemFrame(sceneID) { return areaRepeatFrame }
+    if let positivePercentFrame = c114PositivePercentMinimumItemFrame(sceneID) {
+        return positivePercentFrame
+    }
     if let calcMinimumFrame = c114AutoRepeatCalcMinimumItemFrame(sceneID) {
         return calcMinimumFrame
     }
@@ -2193,6 +2243,9 @@ private func c114ImageTrackPassMatches(
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
     if let areaRepeatFrames = c114TemplateAreaRepeatNodeFrames(sceneID) { return areaRepeatFrames }
+    if let positivePercentFrames = c114PositivePercentMinimumNodeFrames(sceneID) {
+        return positivePercentFrames
+    }
     if let calcMinimumFrames = c114AutoRepeatCalcMinimumNodeFrames(sceneID) {
         return calcMinimumFrames
     }
@@ -3563,6 +3616,7 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     if let areaRepeatItems = c114TemplateAreaRepeatItemRects(sceneID) {
         return areaRepeatItems.count + 1
     }
+    if c114PositivePercentMinimumRootSize(sceneID) != nil { return 2 }
     if let calcMinimumCount = c114AutoRepeatCalcMinimumBoxCount(sceneID) {
         return calcMinimumCount
     }

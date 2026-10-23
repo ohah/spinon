@@ -380,6 +380,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "nested-grid-definite-flex-control",
             "nested-grid-text-image-span-two", "nested-grid-text-image-one-track",
             "nested-grid-text-image-definite-flex-control",
+            "positive-percentage-columns-fill-calc",
+            "positive-percentage-columns-fill-direct",
+            "positive-percentage-columns-fill-fixed",
+            "positive-percentage-columns-fit-calc",
+            "positive-percentage-columns-fit-direct",
+            "positive-percentage-columns-fit-fixed",
+            "positive-percentage-rows-fill-calc",
+            "positive-percentage-rows-fill-direct",
+            "positive-percentage-rows-fill-fixed",
+            "positive-percentage-rows-fit-calc",
+            "positive-percentage-rows-fit-direct",
+            "positive-percentage-rows-fit-fixed",
+            "percentage-overflow-columns-calc", "percentage-overflow-columns-fixed",
+            "percentage-overflow-rows-calc", "percentage-overflow-rows-fixed",
     };
     private static final String[] C114_AUTO_REPEAT_NEGATIVE_LINE_SCENE_IDS = {
             "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -630,10 +644,47 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                                 || sceneId.startsWith("rows-percent-") ? 4 : 5);
     }
 
+    private static int[] c114PositivePercentMinimumRootSize(String sceneId) {
+        if (sceneId.startsWith("positive-percentage-columns-")
+                || sceneId.startsWith("percentage-overflow-columns-")) {
+            return new int[] {124, 52};
+        }
+        if (sceneId.startsWith("positive-percentage-rows-")
+                || sceneId.startsWith("percentage-overflow-rows-")) {
+            return new int[] {52, 124};
+        }
+        return null;
+    }
+
+    private static String c114PositivePercentMinimumRootFrame(String sceneId) {
+        int[] root = c114PositivePercentMinimumRootSize(sceneId);
+        return root == null ? null : "width=" + root[0] + ",height=" + root[1];
+    }
+
+    private static String c114PositivePercentMinimumItemFrame(String sceneId) {
+        if (c114PositivePercentMinimumRootSize(sceneId) == null) return null;
+        boolean columns = sceneId.contains("-columns-");
+        boolean overflow = sceneId.startsWith("percentage-overflow-");
+        boolean fit = sceneId.contains("-fit-");
+        int width = columns ? overflow ? 180 : fit ? 120 : 12 : 48;
+        int height = columns ? 48 : overflow ? 180 : fit ? 120 : 12;
+        return "width=" + width + ",height=" + height;
+    }
+
+    private static String c114PositivePercentMinimumNodeFrames(String sceneId) {
+        int[] root = c114PositivePercentMinimumRootSize(sceneId);
+        String item = c114PositivePercentMinimumItemFrame(sceneId);
+        if (root == null || item == null) return null;
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=" + root[0]
+                + ",height=" + root[1] + ";1:node=2,x=2,y=2," + item + "]";
+    }
+
     private static String c114ExpectedRootFrame(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
         String areaRepeatFrame = c114TemplateAreaRepeatRootFrame(sceneId);
         if (areaRepeatFrame != null) return areaRepeatFrame;
+        String positivePercentFrame = c114PositivePercentMinimumRootFrame(sceneId);
+        if (positivePercentFrame != null) return positivePercentFrame;
         String calcMinimumFrame = c114AutoRepeatCalcMinimumRootFrame(sceneId);
         if (calcMinimumFrame != null) return calcMinimumFrame;
         String namedAutoRepeatFrame = c114NamedAutoRepeatRootFrame(sceneId);
@@ -913,6 +964,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static String c114ExpectedItemFrame(String sceneId) {
         String areaRepeatFrame = c114TemplateAreaRepeatItemFrame(sceneId);
         if (areaRepeatFrame != null) return areaRepeatFrame;
+        String positivePercentFrame = c114PositivePercentMinimumItemFrame(sceneId);
+        if (positivePercentFrame != null) return positivePercentFrame;
         String calcMinimumFrame = c114AutoRepeatCalcMinimumItemFrame(sceneId);
         if (calcMinimumFrame != null) return calcMinimumFrame;
         String namedAutoRepeatFrame = c114NamedAutoRepeatItemFrame(sceneId);
@@ -2390,6 +2443,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         sceneId = c114BaseNestedGridSceneId(sceneId);
         String areaRepeatFrames = c114TemplateAreaRepeatNodeFrames(sceneId);
         if (areaRepeatFrames != null) return areaRepeatFrames;
+        String positivePercentFrames = c114PositivePercentMinimumNodeFrames(sceneId);
+        if (positivePercentFrames != null) return positivePercentFrames;
         String calcMinimumFrames = c114AutoRepeatCalcMinimumNodeFrames(sceneId);
         if (calcMinimumFrames != null) return calcMinimumFrames;
         String namedAutoRepeatFrames = c114NamedAutoRepeatNodeFrames(sceneId);
@@ -3997,6 +4052,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         sceneId = c114BaseNestedGridSceneId(sceneId);
         int[][] areaRepeatItems = c114TemplateAreaRepeatItemRects(sceneId);
         if (areaRepeatItems != null) return areaRepeatItems.length + 1;
+        if (c114PositivePercentMinimumRootSize(sceneId) != null) return 2;
         int calcMinimumBoxCount = c114AutoRepeatCalcMinimumBoxCount(sceneId);
         if (calcMinimumBoxCount != 0) return calcMinimumBoxCount;
         if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) return 4;

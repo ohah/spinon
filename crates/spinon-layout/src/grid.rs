@@ -4,8 +4,9 @@ use spinon_core::NodeId;
 
 use crate::grid_placement::normalize_grid_layout;
 use crate::{
-    GridPlacementInput, LayoutCssMath, LayoutCssMathProperty, LayoutDisplay, LayoutError,
-    LayoutInput, LayoutPosition, percentage_basis::DefiniteAxes,
+    GridPlacementInput, LayoutBoxSizing, LayoutCssMath, LayoutCssMathProperty, LayoutDimension,
+    LayoutDisplay, LayoutError, LayoutInput, LayoutLengthPercentage, LayoutPosition, LayoutStyle,
+    percentage_basis::DefiniteAxes,
 };
 
 /// Taffy Grid 코드가 축마다 내부적으로 허용하는 최대 track 수입니다.
@@ -458,7 +459,12 @@ pub(super) fn validate_grid_layout(
                 &container.columns,
                 &container.columns_line_names,
                 container.columns_auto_repeat.as_ref(),
-                definite_axes.get(&node.id).is_some_and(|axes| axes.width),
+                AutoRepeatAxisContext {
+                    style: &node.style,
+                    percentage_basis_is_definite: definite_axes
+                        .get(&node.id)
+                        .is_some_and(|axes| axes.width),
+                },
                 &input.css_math,
             )?;
             validate_auto_repeat_axis(
@@ -467,7 +473,12 @@ pub(super) fn validate_grid_layout(
                 &container.rows,
                 &container.rows_line_names,
                 container.rows_auto_repeat.as_ref(),
-                definite_axes.get(&node.id).is_some_and(|axes| axes.height),
+                AutoRepeatAxisContext {
+                    style: &node.style,
+                    percentage_basis_is_definite: definite_axes
+                        .get(&node.id)
+                        .is_some_and(|axes| axes.height),
+                },
                 &input.css_math,
             )?;
         }
@@ -776,13 +787,19 @@ fn validate_template_areas(
     Ok(())
 }
 
+#[derive(Clone, Copy)]
+struct AutoRepeatAxisContext<'a> {
+    style: &'a LayoutStyle,
+    percentage_basis_is_definite: bool,
+}
+
 fn validate_auto_repeat_axis(
     node: NodeId,
     property: &'static str,
     tracks: &[GridTrackSize],
     outer_line_names: &[Vec<String>],
     auto_repeat: Option<&GridAutoRepeat>,
-    percentage_basis_is_definite: bool,
+    context: AutoRepeatAxisContext<'_>,
     css_math: &[crate::LayoutCssMathValue],
 ) -> Result<(), LayoutError> {
     let Some(auto_repeat) = auto_repeat else {
@@ -815,13 +832,7 @@ fn validate_auto_repeat_axis(
         .chain(suffix.iter())
         .all(auto_repeat_neighbor_track_is_fixed_px)
         || !repeat_tracks.iter().all(|track| {
-            auto_repeat_track_has_fixed_minimum(
-                track,
-                node,
-                property,
-                percentage_basis_is_definite,
-                css_math,
-            )
+            auto_repeat_track_has_fixed_minimum(track, node, property, context, css_math)
         })
     {
         return Err(LayoutError::InvalidGridTrackList { node, property });
@@ -1074,7 +1085,7 @@ fn auto_repeat_track_has_fixed_minimum(
     track: &GridTrackSize,
     node: NodeId,
     property: &'static str,
-    percentage_basis_is_definite: bool,
+    context: AutoRepeatAxisContext<'_>,
     css_math: &[crate::LayoutCssMathValue],
 ) -> bool {
     match track {
@@ -1084,14 +1095,77 @@ fn auto_repeat_track_has_fixed_minimum(
             max: GridTrackMaxSizingFunction::LengthPx(_) | GridTrackMaxSizingFunction::Fraction(_),
         } => value.is_finite() && *value >= 0.0,
         GridTrackSize::MinMax {
+            min: GridTrackMinSizingFunction::Percentage(value),
+            max: GridTrackMaxSizingFunction::LengthPx(_) | GridTrackMaxSizingFunction::Fraction(_),
+        } => {
+            value.is_finite()
+                && *value > 0.0
+                && explicit_positive_content_axis(context.style, property)
+                    .is_some_and(|basis| (value * basis).is_finite() && value * basis > 0.0)
+        }
+        GridTrackSize::MinMax {
             min: GridTrackMinSizingFunction::Calc(id),
             max: GridTrackMaxSizingFunction::LengthPx(_) | GridTrackMaxSizingFunction::Fraction(_),
         } => {
-            percentage_basis_is_definite
+            context.percentage_basis_is_definite
                 && auto_repeat_minimum_calc_is_supported(*id, node, property, css_math)
         }
         _ => false,
     }
+}
+
+fn explicit_positive_content_axis(style: &LayoutStyle, property: &str) -> Option<f32> {
+    let (dimension, minimum, maximum, padding_start, padding_end, border_start, border_end) =
+        match property {
+            "grid-template-columns" => (
+                style.width,
+                style.min_width,
+                style.max_width,
+                style.padding.left,
+                style.padding.right,
+                style.border.left,
+                style.border.right,
+            ),
+            "grid-template-rows" => (
+                style.height,
+                style.min_height,
+                style.max_height,
+                style.padding.top,
+                style.padding.bottom,
+                style.border.top,
+                style.border.bottom,
+            ),
+            _ => return None,
+        };
+    if minimum != LayoutDimension::Fixed(0.0) || maximum != LayoutDimension::Auto {
+        return None;
+    }
+    let LayoutDimension::Fixed(dimension) = dimension else {
+        return None;
+    };
+    if !dimension.is_finite() || dimension <= 0.0 {
+        return None;
+    }
+    let content_size = match style.box_sizing {
+        LayoutBoxSizing::ContentBox => dimension,
+        LayoutBoxSizing::BorderBox => {
+            let LayoutLengthPercentage::LengthPx(padding_start) = padding_start else {
+                return None;
+            };
+            let LayoutLengthPercentage::LengthPx(padding_end) = padding_end else {
+                return None;
+            };
+            if !padding_start.is_finite()
+                || !padding_end.is_finite()
+                || padding_start < 0.0
+                || padding_end < 0.0
+            {
+                return None;
+            }
+            dimension - padding_start - padding_end - border_start - border_end
+        }
+    };
+    (content_size.is_finite() && content_size > 0.0).then_some(content_size)
 }
 
 fn auto_repeat_minimum_calc_is_supported(
