@@ -41,6 +41,30 @@
       "height": 2622
     }
   ],
+  "prBody": {
+    "number": 574,
+    "imagesLoaded": 3,
+    "images": [
+      {
+        "alt": "Tailnet roadmap의 C11.4 현재 상태",
+        "complete": true,
+        "width": 1280,
+        "height": 633
+      },
+      {
+        "alt": "Android API 37 ARM64 AVD",
+        "complete": true,
+        "width": 1080,
+        "height": 2400
+      },
+      {
+        "alt": "iPhone 17 iOS 26.2 Simulator",
+        "complete": true,
+        "width": 1206,
+        "height": 2622
+      }
+    ]
+  },
   "remoteRoutes": {
     "verified": 12,
     "http200": 12,
