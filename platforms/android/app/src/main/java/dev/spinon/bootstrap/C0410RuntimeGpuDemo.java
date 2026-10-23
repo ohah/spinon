@@ -427,6 +427,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "both-flooring-fill-control",
             "both-calc-percent-max-fill",
             "both-calc-percent-max-fill-control",
+            "col-fill-both", "row-fill-both", "col-fill-prefix", "row-fill-suffix",
+            "col-fit-first", "row-fit-first", "col-fit-empty", "row-fit-empty",
+            "col-fill-overflow", "row-fill-overflow", "col-fill-zero-prefix",
+            "col-fill-border-box", "row-fill-border-box",
 
     };
     private static final String[] C114_AUTO_REPEAT_NEGATIVE_LINE_SCENE_IDS = {
@@ -815,8 +819,75 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return frames.append(']').toString();
     }
 
+    private static final String[] C114_PERCENTAGE_NEIGHBOR_SCENE_IDS = {
+        "col-fill-both", "row-fill-both", "col-fill-prefix", "row-fill-suffix",
+        "col-fit-first", "row-fit-first", "col-fit-empty", "row-fit-empty",
+        "col-fill-overflow", "row-fill-overflow", "col-fill-zero-prefix",
+        "col-fill-border-box", "row-fill-border-box",
+    };
+
+    private static int[] c114PercentageNeighborRootSize(String sceneId) {
+        switch (sceneId) {
+            case "col-fill-both":
+            case "col-fill-prefix":
+            case "col-fit-first":
+            case "col-fit-empty":
+            case "col-fill-overflow":
+            case "col-fill-zero-prefix":
+                return new int[] {260, 48};
+            case "row-fill-both":
+            case "row-fill-suffix":
+            case "row-fit-first":
+            case "row-fit-empty":
+            case "row-fill-overflow":
+                return new int[] {48, 260};
+            case "col-fill-border-box": return new int[] {136, 48};
+            case "row-fill-border-box": return new int[] {48, 136};
+            default: return null;
+        }
+    }
+
+    private static int[][] c114PercentageNeighborItemFrames(String sceneId) {
+        if (c114PercentageNeighborRootSize(sceneId) == null) return null;
+        switch (sceneId) {
+            case "col-fit-first": return new int[][] {{38, 10, 2, 2}};
+            case "row-fit-first": return new int[][] {{10, 38, 2, 2}};
+            default: return new int[0][4];
+        }
+    }
+
+    private static String c114PercentageNeighborRootFrame(String sceneId) {
+        int[] size = c114PercentageNeighborRootSize(sceneId);
+        return size == null ? null : "width=" + size[0] + ",height=" + size[1];
+    }
+
+    private static String c114PercentageNeighborItemFrame(String sceneId) {
+        int[][] items = c114PercentageNeighborItemFrames(sceneId);
+        if (items == null) return null;
+        if (items.length == 0) return "";
+        return "width=" + items[0][2] + ",height=" + items[0][3];
+    }
+
+    private static String c114PercentageNeighborNodeFrames(String sceneId) {
+        int[] size = c114PercentageNeighborRootSize(sceneId);
+        int[][] items = c114PercentageNeighborItemFrames(sceneId);
+        if (size == null || items == null) return null;
+        StringBuilder frames = new StringBuilder("node_frames_css_px=[0:node=1,x=0,y=0,width=")
+                .append(size[0]).append(",height=").append(size[1]);
+        for (int index = 0; index < items.length; index++) {
+            frames.append(';').append(index + 1).append(":node=").append(index + 2)
+                    .append(",x=").append(items[index][0])
+                    .append(",y=").append(items[index][1])
+                    .append(",width=").append(items[index][2])
+                    .append(",height=").append(items[index][3]);
+        }
+        return frames.append(']').toString();
+    }
+
     private static String c114ExpectedRootFrame(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        String percentageNeighborFrame = c114PercentageNeighborRootFrame(sceneId);
+        if (percentageNeighborFrame != null) return percentageNeighborFrame;
         String percentageMaximumFrame = c114PercentageMaximumRootFrame(sceneId);
         if (percentageMaximumFrame != null) return percentageMaximumFrame;
         String areaRepeatFrame = c114TemplateAreaRepeatRootFrame(sceneId);
@@ -1102,6 +1173,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        String percentageNeighborFrame = c114PercentageNeighborItemFrame(sceneId);
+        if (percentageNeighborFrame != null) return percentageNeighborFrame;
         String percentageMaximumFrame = c114PercentageMaximumItemFrame(sceneId);
         if (percentageMaximumFrame != null) return percentageMaximumFrame;
         String areaRepeatFrame = c114TemplateAreaRepeatItemFrame(sceneId);
@@ -2585,6 +2658,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        String percentageNeighborFrames = c114PercentageNeighborNodeFrames(sceneId);
+        if (percentageNeighborFrames != null) return percentageNeighborFrames;
         String percentageMaximumFrames = c114PercentageMaximumNodeFrames(sceneId);
         if (percentageMaximumFrames != null) return percentageMaximumFrames;
         String areaRepeatFrames = c114TemplateAreaRepeatNodeFrames(sceneId);
@@ -4196,6 +4271,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int c114ExpectedBoxCount(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        int[][] percentageNeighborItems = c114PercentageNeighborItemFrames(sceneId);
+        if (percentageNeighborItems != null) return percentageNeighborItems.length + 1;
         float[][] percentageMaximumItems = c114PercentageMaximumItemFrames(sceneId);
         if (percentageMaximumItems != null) return percentageMaximumItems.length + 1;
         int[][] areaRepeatItems = c114TemplateAreaRepeatItemRects(sceneId);
@@ -4750,9 +4827,46 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return true;
     }
 
+    private static boolean c114PercentageNeighborPixelSamplesMatch(
+            String sceneId,
+            List<SurfaceViewPixelCapture.Sample> samples
+    ) {
+        int[] size = c114PercentageNeighborRootSize(sceneId);
+        int[][] items = c114PercentageNeighborItemFrames(sceneId);
+        if (size == null || items == null || samples.size() != items.length + 1) return false;
+        String rootId = "c114-" + sceneId + "-grid";
+        boolean rootFound = false;
+        boolean[] itemsFound = new boolean[items.length];
+        for (SurfaceViewPixelCapture.Sample sample : samples) {
+            if (sample.id.equals(sceneId + "-root-interior")) {
+                if (rootFound || !rootId.equals(sample.targetNodeId)
+                        || sample.xCssPx != size[0] / 2 || sample.yCssPx != size[1] / 2) {
+                    return false;
+                }
+                rootFound = true;
+                continue;
+            }
+            int itemIndex = sample.id.equals(sceneId + "-item-1-interior") ? 0 : -1;
+            if (itemIndex < 0 || itemIndex >= items.length || itemsFound[itemIndex]
+                    || !sample.targetNodeId.equals("c114-" + sceneId + "-item-1")
+                    || sample.xCssPx != items[itemIndex][0] + items[itemIndex][2] / 2
+                    || sample.yCssPx != items[itemIndex][1] + items[itemIndex][3] / 2) {
+                return false;
+            }
+            itemsFound[itemIndex] = true;
+        }
+        if (!rootFound) return false;
+        for (boolean itemFound : itemsFound) if (!itemFound) return false;
+        return true;
+    }
+
     private static boolean isC114PercentageMaximumPixelSceneId(String sceneId) {
         return java.util.Arrays.asList(C114_PERCENTAGE_MAXIMUM_PIXEL_SCENE_IDS)
                 .contains(sceneId);
+    }
+
+    private static boolean isC114PercentageNeighborPixelSceneId(String sceneId) {
+        return c114PercentageNeighborRootSize(sceneId) != null;
     }
 
     private static boolean isC114GridTrackSizingPixelSamples(
@@ -4760,6 +4874,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
         if (c114PercentageMaximumPixelSamplesMatch(sceneId, samples)) return true;
+        if (c114PercentageNeighborPixelSamplesMatch(sceneId, samples)) return true;
         if (sceneId.startsWith("template-area-repeat-")) {
             return c114TemplateAreaRepeatPixelSamplesMatch(sceneId, samples);
         }
@@ -6915,7 +7030,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "grid-gap-cyclic-percent-min-basis".equals(pixelMatrixSceneId)
                         || "grid-gap-cyclic-calc-min-basis".equals(pixelMatrixSceneId)
                         || "nested-grid-definite-flex-control".equals(pixelMatrixSceneId)
-                        || isC114PercentageMaximumPixelSceneId(pixelMatrixSceneId))
+                        || isC114PercentageMaximumPixelSceneId(pixelMatrixSceneId)
+                        || isC114PercentageNeighborPixelSceneId(pixelMatrixSceneId))
                         && c114GridTrackSizingRunId.equals(pixelMatrixRunId)
                 : c1133GridTemplateAreasRequested
                 ? (C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(pixelMatrixSceneId)
@@ -10427,6 +10543,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c114GridExpectedRgb(String sampleId) {
+        int[] percentageNeighborPixel = c114PercentageNeighborPixelRgb(sampleId);
+        if (percentageNeighborPixel != null) return percentageNeighborPixel;
         int[] percentageMaximumPixel = c114PercentageMaximumPixelRgb(sampleId);
         if (percentageMaximumPixel != null) return percentageMaximumPixel;
         if (sampleId.startsWith("template-area-repeat-")) {
@@ -10688,6 +10806,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
             if (sampleId.equals(sceneId + "-item-2-interior")) {
                 return new int[] {37, 99, 235};
+            }
+        }
+        return null;
+    }
+
+    private static int[] c114PercentageNeighborPixelRgb(String sampleId) {
+        for (String sceneId : C114_PERCENTAGE_NEIGHBOR_SCENE_IDS) {
+            if (sampleId.equals(sceneId + "-root-interior")) {
+                return new int[] {226, 232, 240};
+            }
+            if (sampleId.equals(sceneId + "-item-1-interior")) {
+                return new int[] {229, 72, 77};
             }
         }
         return null;

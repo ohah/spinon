@@ -624,7 +624,12 @@ where
 }
 
 fn is_auto_repeat_neighbor_track(track: &ComputedCssGridTrackSize) -> bool {
-    matches!(track, ComputedCssGridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0)
+    matches!(
+        track,
+        ComputedCssGridTrackSize::LengthPx(value)
+            | ComputedCssGridTrackSize::Percentage(value)
+            if value.is_finite() && *value >= 0.0
+    )
 }
 
 fn expand_integer_repeats(

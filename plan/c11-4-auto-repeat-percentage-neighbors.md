@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [fixed-px 이웃 track slice](../spec/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획 · 구현 결과가 아니다. C11.4 상위 체크와 공식 완료 수 72/213은 유지한다.
+**상태:** 계획 PR #577 병합 후 제한 구현 후보 검증과 독립 PR diff 실패 관점 30개 검토를 마쳤다. 구현/runtime 검토 20개와 PR diff 검토 30개는 별도 문서다. Android/iOS 13-scene runtime matrix는 각각 통과했으며 candidate branch는 아직 병합 전이다. C11.4 상위 체크는 미완료이며 공식 완료 수 72/213을 유지한다.
 
 ## 결손과 목표
 
@@ -53,14 +53,20 @@ Acceptance는 scene별 repeat count와 expanded line/track order를 exact로 비
 
 Runtime fixture는 V8-authored HostDocument → Stylo computed style → typed layout input → Taffy → WGPU scene/draw/present 경로로 13개 scene을 실행한다. Chrome CSSOM track list와 독립 산술을 scene별로 대조한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 최신 앱 빌드의 track trace, item frame과 draw/present를 확인한다. PixelCopy와 제출 전 Metal 표본은 선언한 표본 위치에서만 비교하며, 이는 실기기·hardware GPU·iOS compositor 이후 픽셀 일치 근거가 아니다.
 
+## 현재 checkout 구현 진행 · 2026-10-24
+
+candidate branch의 cascade/layout 변경은 definite positive content axis에서 finite·nonnegative percentage neighbor를 받도록 연결됐다. 규범 `col-fit-first` 200px과 Chrome 156 CSSOM 관측 196px은 별도 oracle이다. `spinon-layout` percentage-neighbor 3/3, `spinon-style` auto-repeat 16/16, FFI fixture test 1/1 및 전체 workspace tests가 통과했다. workspace Clippy와 rustfmt도 통과했다.
+
+13개 scene JSON과 opt-in FFI fixture adapter를 추가했고, Android/iOS demo runner의 scene allowlist·frame·pixel expectations 및 simulator capture/boundary route를 연결했다. [FFI adapter](../crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_percentage_neighbors.rs), [scene matrix](../crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_percentage_neighbor_scenes.json), [Android runner](../platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java), [iOS runner](../platforms/ios/Sources/C0410RuntimeGpuDemo.swift), [capture tool](../tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs), [fixture boundary validator](../tools/css-reference/fixture-module-boundary.test.mjs)에 있다. API 37 ARM64 Android AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 13/13 scene이 각각 통과했다. Android PixelCopy와 compositor 제출 전 iOS Metal drawable은 각각 15/15 표본 exact이며, 전체 런·hash·제외 범위는 [runtime 근거](../spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/README.md)에 기록했다. [구현/runtime 실패 관점 20개 검토](../spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/implementation-runtime-review-20.md)를 마쳤다. 독립 PR diff 실패 관점 30개 검토, PR 병합, 병합 후 공개 미리보기 동기화는 남아 있다.
+
 ## 검증 관문
 
-1. 계획 PR 병합 뒤 최신 main에서 구현 branch를 만든다. 기존 미추적 자료와 tmux 세션은 보존한다.
+1. 계획 PR #577은 병합됐다. 현재 구현 후보의 출처 revision과 남은 검증을 기록하고, 기존 미추적 자료와 tmux 세션을 보존한다.
 2. Cascade is_auto_repeat_neighbor_track, layout validate_auto_repeat_axis와 percentage-basis 생성자를 추적해 두 축의 gate가 일치하는지 확인한다.
 3. W3C 규칙으로 count, collapsed gutter 수와 used-size 기대값을 독립 계산하고 Chrome 156 Agent Browser에서 13개 고정 scene 및 별도 end-alignment 진단을 수집한다. 규범값·browser 관측·차이를 분리한 fixture, browser metadata, 관찰 JSON, screenshot과 SHA-256을 보존한다.
 4. focused Rust/style/layout tests, 전체 workspace tests, Clippy, rustfmt, CSS fixture validator와 default/fixture-test artifact 경계를 검사한다.
 5. Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 13/13 scene을 실행하고 해당 run의 source/build hash를 연결한다.
-6. 이 계획 보정은 [별도 실패 관점 20개 검토](./c11-4-auto-repeat-percentage-neighbors-amendment-plan-review-20.md)를 거친다. 구현/runtime의 새 실패 관점 20개도 별도 작성한다. 각 PR diff review는 각 작업 검토와 독립된 실패 관점 30개로 진행하며 발견한 결함을 고친 뒤 영향받은 항목을 재검토한다.
+6. 이 계획 보정은 [별도 실패 관점 20개 검토](./c11-4-auto-repeat-percentage-neighbors-amendment-plan-review-20.md)를 통과했다. 구현/runtime은 [새 실패 관점 20개 검토](../spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/implementation-runtime-review-20.md), PR 변경은 이 두 검토와 별도의 [실패 관점 30개 검토](../spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/pr-diff-review-30.md)를 통과했다.
 7. 상태 대장·내부 계약·상위 C11.4 계획에 제한 범위와 근거를 연결하되 C11.4 checkbox와 72/213은 유지한다.
 8. Tailnet 미리보기를 선택한 문서만 backup + hash manifest 방식으로 갱신하고 Agent Browser로 실제 화면·이미지를 확인한다. PR 본문에 화면을 넣은 경우 GitHub 표시도 확인한다. 종료 후 이 작업의 Agent Browser session/process를 닫는다.
 9. PR은 템플릿·작업 유형/영역 라벨·명세·남은 범위를 채우고 Rebase and merge를 사용한다. 병합 직전 live required checks와 merge state를 확인한다.

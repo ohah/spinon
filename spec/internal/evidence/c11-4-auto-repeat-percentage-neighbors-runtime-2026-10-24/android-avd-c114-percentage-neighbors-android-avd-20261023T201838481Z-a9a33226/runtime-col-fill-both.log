@@ -1,0 +1,4 @@
+10-24 05:18:39.477 25729 25729 E SpinonBootstrap: SPINON_C114_GRID_PIXEL_MATRIX status=error run_id=c114-android-avd-20261023T201838481Z-a9a33226-0 scene=col-fill-both reason=scene-index-mismatch
+10-24 05:18:39.484 25729 25752 E SpinonBootstrap: SPINON_C114_GRID_PIXEL_MATRIX status=error reason=scene-index-mismatch
+10-24 05:18:39.524 25729 25729 I SpinonBootstrap: SPINON_C0410_SURFACE_CREATED generation=1
+10-24 05:18:39.524 25729 25729 I SpinonBootstrap: SPINON_C0410_SURFACE_CHANGED generation=2 size=840x630 changed=true

@@ -1,0 +1,9 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.16s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 3 tests
+test grid::track_sizing_tests::percentage_auto_repeat_neighbors::percentage_neighbors_with_individually_finite_sum_overflow_fail_closed ... ok
+test grid::track_sizing_tests::percentage_auto_repeat_neighbors::percentage_neighbors_reject_indefinite_non_finite_and_negative_inputs ... ok
+test grid::track_sizing_tests::percentage_auto_repeat_neighbors::definite_percentage_neighbors_match_the_fixed_thirteen_scene_matrix ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 257 filtered out; finished in 0.02s

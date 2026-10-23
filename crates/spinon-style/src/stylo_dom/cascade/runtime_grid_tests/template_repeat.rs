@@ -299,6 +299,27 @@ fn track_sizing_profile_preserves_auto_repeat_neighbors_and_fragment_order() {
             ],
             (1, 3),
         ),
+        (
+            "10% repeat(auto-fill,minmax(24px,1fr)) 5%",
+            vec![
+                ComputedCssGridTrackSize::Percentage(0.1),
+                ComputedCssGridTrackSize::MinMax {
+                    min: ComputedCssGridTrackBreadth::LengthPx(24.0),
+                    max: ComputedCssGridTrackBreadth::Fraction(1.0),
+                },
+                ComputedCssGridTrackSize::Percentage(0.05),
+            ],
+            (1, 2),
+        ),
+        (
+            "0% repeat(auto-fit,40px) 12.5%",
+            vec![
+                ComputedCssGridTrackSize::Percentage(0.0),
+                ComputedCssGridTrackSize::LengthPx(40.0),
+                ComputedCssGridTrackSize::Percentage(0.125),
+            ],
+            (1, 2),
+        ),
     ];
 
     for (columns, expected_tracks, (start, end)) in cases {
@@ -341,6 +362,41 @@ fn track_sizing_profile_preserves_auto_repeat_neighbors_and_fragment_order() {
 }
 
 #[test]
+fn track_sizing_profile_preserves_percentage_auto_repeat_neighbors_on_rows() {
+    let fixture = fixture(
+        "display:grid;box-sizing:border-box;width:80px;height:200px;grid-template-columns:40px;grid-template-rows:10% repeat(auto-fit,minmax(24px,1fr)) 5%;margin:0;padding:0",
+    );
+    let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+        &fixture.view,
+        &[],
+        viewport(),
+        Default::default(),
+    )
+    .unwrap_or_else(|error| panic!("row percentage auto-repeat neighbors: {error:?}"));
+    let grid = snapshot.elements[0].grid_layout.as_ref().unwrap();
+    assert_eq!(
+        grid.rows,
+        [
+            ComputedCssGridTrackSize::Percentage(0.1),
+            ComputedCssGridTrackSize::MinMax {
+                min: ComputedCssGridTrackBreadth::LengthPx(24.0),
+                max: ComputedCssGridTrackBreadth::Fraction(1.0),
+            },
+            ComputedCssGridTrackSize::Percentage(0.05),
+        ]
+    );
+    assert_eq!(
+        grid.rows_auto_repeat,
+        Some(ComputedCssGridAutoRepeat {
+            mode: ComputedCssGridAutoRepeatMode::AutoFit,
+            start: 1,
+            end: 2,
+            line_names: vec![Vec::new(); 2],
+        })
+    );
+}
+
+#[test]
 fn auto_repeat_rejects_profiles_and_shapes_outside_the_supported_subset() {
     let template_fixture = fixture(
         "display:grid;box-sizing:border-box;width:300px;height:200px;grid-template-columns:repeat(auto-fill,minmax(24px,1fr));grid-template-rows:40px;margin:0;padding:0",
@@ -356,8 +412,8 @@ fn auto_repeat_rejects_profiles_and_shapes_outside_the_supported_subset() {
     );
 
     for style in [
-        "grid-template-columns:20% repeat(auto-fill,minmax(24px,1fr))",
         "grid-template-columns:minmax(10px,20px) repeat(auto-fill,minmax(24px,1fr))",
+        "grid-template-columns:20% repeat(auto-fill,minmax(24px,1fr)) calc(10px + 5%)",
         "grid-template-columns:repeat(2,20px) repeat(auto-fill,minmax(24px,1fr))",
     ] {
         let fixture = fixture(&format!(
