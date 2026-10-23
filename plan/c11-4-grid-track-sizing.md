@@ -1,16 +1,18 @@
 # C11.4 · CSS Grid track sizing 계획
 
+**현재 상태 · 2026-10-23:** 활성 lane은 C11.4이고 상위 체크는 미완료다. 공식 집계는 `72/213`이다. 아래 날짜별 기록의 `74/207`, `77/213` 등은 각 기록 시점의 스냅샷이며 현재 집계가 아니다.
+
 ## 2026-10-23 definite percentage maximum auto-repeat 계획
 
-positive percentage maximum, minimum보다 작은 maximum 및 zero flooring, percentage calc maximum과 gap을 포함한 repeat count를 [집중 계획](./c11-4-auto-repeat-percentage-maximum.md)과 [Agent Browser 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-percentage-maximum-precomparison-2026-10-23/README.md)에 고정했다. CSS Grid 2025 CRD §7.2.3.2는 definite maximum sizing function을 사용하고 둘 다 definite이면 minimum보다 작지 않게 floor하며 gap을 계산에 포함한다. Chrome 156의 28개 고정 장면은 columns/rows 단독 case와 양축 동시 case, auto-fill/fit, numeric control 및 minmax flooring을 다룬다. 계획은 구현 결과가 아니며 C11.4 체크와 공식 집계는 변경하지 않는다.
+positive percentage maximum, minimum보다 작은 maximum 및 zero flooring, percentage calc maximum과 gap을 포함한 repeat count를 [집중 계획](./c11-4-auto-repeat-percentage-maximum.md)과 [Agent Browser 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-percentage-maximum-precomparison-2026-10-23/README.md)에 고정했다. CSS Grid 2025 CRD §7.2.3.2는 definite maximum sizing function을 사용하고 둘 다 definite이면 minimum보다 작지 않게 floor하며 gap을 계산에 포함한다. 계획 범위는 PR [#568](https://github.com/ohah/spinon/pull/568)로 제한 구현됐고 Android API 37 AVD·iOS 26.2 Simulator에서 28/28 scene 및 플랫폼별 78/78 surface 표본이 통과했다. Android는 ANGLE/SwiftShader이며 hardware GPU 결과가 아니다. 병합 SHA는 `c436a38388fe8a191fd374495c516c88d1e3cd54`다. C11.4 체크와 현재 `72/213`은 유지한다.
 
 ## 2026-10-23 definite positive percentage auto-repeat minimum 계획 수정
 
-PR #559의 computed AST probe에서 Stylo `0.22.0`이 `calc(0px + 10%)`를 `Percentage(0.1)`로 정규화했다. calc만 구분하는 이전 계획은 superseded됐다. [수정된 집중 계획](./c11-4-auto-repeat-positive-percent-minimum.md)은 opt-in profile의 positive percentage minimum을 대상으로 하고, 직접 10% control과 실제 border 밖 overflow를 비교한다. [독립 규범 계산·Chrome 156 관측·normalization log](../spec/internal/evidence/c11-4-auto-repeat-positive-percent-minimum-precomparison-2026-10-23/README.md) · [수정 계획 실패 관점 20개](./c11-4-auto-repeat-positive-percent-minimum-revision-review-20.md). 구현 전 계획이며 C11.4 체크와 공식 `72/213`을 유지한다.
+PR #559의 computed AST probe에서 Stylo `0.22.0`이 `calc(0px + 10%)`를 `Percentage(0.1)`로 정규화했다. calc만 구분하는 이전 계획은 superseded됐다. 수정 계획은 PR [#561](https://github.com/ohah/spinon/pull/561)로 제한 구현됐고 `ff4233d0df00a632d71c28398c9a8274fb4abc16`에 병합됐다. Android API 37 AVD와 iPhone 17/iOS 26.2 Simulator에서 각 16/16 scene의 frame·track·collapse·trace·draw/present를 확인했다. [집중 계획](./c11-4-auto-repeat-positive-percent-minimum.md) · [사전 비교](../spec/internal/evidence/c11-4-auto-repeat-positive-percent-minimum-precomparison-2026-10-23/README.md) · [실행 근거](../spec/internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/README.md). 제한된 typed percentage subset이며 C11.4 체크와 현재 `72/213`은 유지한다.
 
 ## 2026-10-23 auto-repeat 고정 `calc()` 최소 track 계획
 
-[집중 계획](./c11-4-auto-repeat-calc-minimum.md)과 [Chrome 156 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-calc-minimum-precomparison-2026-10-23/README.md)는 순수 절대 길이 `calc()` 최소값을 쓰는 `minmax(calc(),1fr)`의 auto-fill/fit을 columns·rows 여섯 scene으로 분리했다. CSS Grid 2025 CRD 독립 계산과 Chrome used tracks는 각각 `[46,46,46,46]` 및 auto-fit `[184,0,0,0]`이다. 계획 실패 관점 20개를 검토한 뒤 구현한다. Percent, zero, intrinsic maximum 및 일반 CSS admission은 제외한다. C11.4 checkbox와 공식 `72/213`은 유지한다.
+[집중 계획](./c11-4-auto-repeat-calc-minimum.md)과 [Chrome 156 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-calc-minimum-precomparison-2026-10-23/README.md)는 순수 절대 길이 `calc()` 최소값을 쓰는 `minmax(calc(),1fr)`의 auto-fill/fit을 columns·rows 여섯 scene으로 분리했다. CSS Grid 2025 CRD 독립 계산과 Chrome used tracks는 각각 `[46,46,46,46]` 및 auto-fit `[184,0,0,0]`이다. 이 제한 slice는 PR [#553](https://github.com/ohah/spinon/pull/553)으로 병합되어 Android API 37 AVD·iPhone 17/iOS 26.2 Simulator에서 각각 6/6 scene을 통과했다. 당시 실행 근거에는 `74/207` 스냅샷이 기록됐고 현재 공식 집계는 `72/213`이다. PixelCopy/Metal pixel equality는 검사하지 않았다. Percent, zero, intrinsic maximum 및 일반 CSS admission은 제외한다.
 
 ## 2026-10-23 auto-repeat + `grid-template-areas` 결합 계획과 구현 · PR #539/#545/#549
 

@@ -1,0 +1,88 @@
+{
+  "pass": "pass01",
+  "selectedRoutes": [
+    "roadmap.html",
+    "STATUS.html",
+    "internal/0059-c11-grid-layout.html",
+    "plan/c11-4-grid-track-sizing.html",
+    "plan/c11-4-auto-repeat-template-areas.html",
+    "plan/c11-4-auto-repeat-calc-minimum.html",
+    "plan/c11-4-auto-repeat-positive-percent-minimum.html",
+    "internal/evidence/c11-4-auto-repeat-calc-minimum-runtime-2026-10-23/README.html",
+    "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.html",
+    "internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.html",
+    "internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.html"
+  ],
+  "verifiedChangedFiles": 11,
+  "unchangedFiles": 0,
+  "remoteRoutes": [
+    {
+      "path": "roadmap.html",
+      "status": 200,
+      "bytes": 276405,
+      "sha256": "01659634af042c1708e29681073a815c6b248cfbebcda65efb8dd22b7132f538"
+    },
+    {
+      "path": "STATUS.html",
+      "status": 200,
+      "bytes": 909479,
+      "sha256": "16ee4f22a4d9a7d2fa87888843c12e502337cda05e789811d774955a6bef1d52"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "bytes": 569733,
+      "sha256": "a6c26a0aa2768f74f93f4b5cd0a1745a1bda3a82448a52360135b42005faf63d"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "status": 200,
+      "bytes": 582042,
+      "sha256": "b9de544e5a161711b94b8f9b74c34f1d29b850d2923f81e32c7d5b27df8d4d5c"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-template-areas.html",
+      "status": 200,
+      "bytes": 444787,
+      "sha256": "9b8ae6e25dcc1a06eaacc2e1d4c2ebaea9d19180648704fa5a845a3167c3b802"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-calc-minimum.html",
+      "status": 200,
+      "bytes": 435797,
+      "sha256": "a2d75b04fdb84c690dab273c5b60309fb121e71676fcfc1007d7264f0f3c8bd3"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-positive-percent-minimum.html",
+      "status": 200,
+      "bytes": 431962,
+      "sha256": "722ea8bc1806c6b687d33bd73a96d9df6323111a3f4dc5aecf4948388f86f1d3"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-calc-minimum-runtime-2026-10-23/README.html",
+      "status": 200,
+      "bytes": 433552,
+      "sha256": "fac604a88c7ce45de69811441200e2932214c295ecbd21fbab4e8f9baa0e64f0"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.html",
+      "status": 200,
+      "bytes": 430772,
+      "sha256": "74154b2003f230e2b2931f3acb6bdea53ef4e17be9bc218f172cc6931dc65172"
+    },
+    {
+      "path": "internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.html",
+      "status": 200,
+      "bytes": 429911,
+      "sha256": "50fe416f8e4c79926c515bbc115350d28f7ff8514688f007f4081855f80e75ae"
+    },
+    {
+      "path": "internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.html",
+      "status": 200,
+      "bytes": 425494,
+      "sha256": "c16df945eda9ca39aa088461c4457faa4a047f20c730b90ac3c60352053a83ba"
+    }
+  ],
+  "allHttp200AndHashesMatch": true,
+  "noDeletes": true
+}

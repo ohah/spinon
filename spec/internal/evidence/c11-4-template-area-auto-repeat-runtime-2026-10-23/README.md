@@ -36,7 +36,7 @@ The focused Rust test totals are `spinon-layout` 238, `spinon-style-to-layout` 1
 
 ## 한계
 
-Android 실기기, Android hardware GPU, iOS 실기기, compositor 이후 iOS 픽셀, CSS border stroke, 일반 CSS 지원 또는 WPT 결과를 주장하지 않는다. Taffy 0.15.0 내부 allocation의 전역 OOM 복구를 보장하지 않는다. 고정 runtime parser/fixture 경로는 일반 HTML/CSS 파싱 동작을 입증하지 않는다. 공식 C11.4는 미완료이고 완료 수는 `77/213`이며 내부 계약 `0059`의 numeric version은 `0.1.0`으로 유지한다.
+Android 실기기, Android hardware GPU, iOS 실기기, compositor 이후 iOS 픽셀, CSS border stroke, 일반 CSS 지원 또는 WPT 결과를 주장하지 않는다. Taffy 0.15.0 내부 allocation의 전역 OOM 복구를 보장하지 않는다. 고정 runtime parser/fixture 경로는 일반 HTML/CSS 파싱 동작을 입증하지 않는다. 이 실행 기록 당시 공식 집계는 `77/213`이었고 현재 공식 집계는 `72/213`이다. C11.4는 미완료이며 내부 계약 `0059`의 numeric version은 `0.1.0`으로 유지한다.
 
 ## 원본 근거
 

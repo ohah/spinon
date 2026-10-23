@@ -1,0 +1,52 @@
+{
+  "pass": "pass01",
+  "verifiedAt": "2026-10-24 Asia/Seoul",
+  "session": "spinon-roadmap-code-sync-20261023",
+  "pages": {
+    "roadmap": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "counterLines": [
+        "공식 상태 동기화 완료 · 상위 78개 + 세부 ID 133개 + ID 없는 하위 체크 2개 · 완료 72/213개",
+        "213개 표시 · 공식 완료 72/213"
+      ],
+      "c114Active": true,
+      "c13IncompleteInactive": true,
+      "pr553CardShowsHistorical74_207AndCurrent72_213": true
+    },
+    "status": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "rawCheckboxInputs": 226,
+      "rawCheckedCheckboxInputs": 87,
+      "officialRoadmapTaskCount": 213,
+      "officialRoadmapCheckedCount": 72,
+      "c114TopLevelUnchecked": true,
+      "c13TopLevelUnchecked": true
+    },
+    "c114TemplateAreasPlan": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-auto-repeat-template-areas.html",
+      "githubMergeShaCorrect": "0f46437c299df6f0c069b694a3f2184ac464ad3d",
+      "malformedOldShaPresent": false,
+      "pr539AndPr540Merged": true,
+      "currentCount72_213": true
+    },
+    "c114PositivePercentageMinimumPlan": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-auto-repeat-positive-percent-minimum.html",
+      "pr561MergedSha": "ff4233d0df00a632d71c28398c9a8274fb4abc16",
+      "simulatorMatrix16Of16": true,
+      "parentC114Incomplete": true,
+      "staleImplementationPendingTextPresent": false
+    },
+    "auditEvidence": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.html",
+      "loaded": true,
+      "c114IncompleteAndC13Inactive": true,
+      "currentCount72_213": true,
+      "pr539MergeShaCorrect": true,
+      "malformedShaPresent": false
+    }
+  },
+  "screenshots": [
+    "tailnet-roadmap-agent-browser-pass01.png",
+    "tailnet-roadmap-c11-4-count-agent-browser-pass01.png"
+  ]
+}

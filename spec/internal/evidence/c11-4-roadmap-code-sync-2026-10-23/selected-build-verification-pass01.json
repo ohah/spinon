@@ -1,0 +1,76 @@
+{
+  "pass": "pass01",
+  "selectedOutputRoot": "build/spinon/c11-4-roadmap-code-sync-site-pass01-selected",
+  "roadmapSource": "spec/public/roadmap.html",
+  "roadmapSourceSha256": "01659634af042c1708e29681073a815c6b248cfbebcda65efb8dd22b7132f538",
+  "roadmapBuiltSha256": "01659634af042c1708e29681073a815c6b248cfbebcda65efb8dd22b7132f538",
+  "roadmapAndStatusMarkersVerified": true,
+  "routes": [
+    {
+      "path": "roadmap.html",
+      "bytes": 276405,
+      "sha256": "01659634af042c1708e29681073a815c6b248cfbebcda65efb8dd22b7132f538"
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 909479,
+      "sha256": "9f03f4a40eddaffb939eebd17969a949cffce7c56d38896585157225a99d7ea8"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "bytes": 569733,
+      "sha256": "398495694b581e67e9b63ab01484cc96a6f01cf8ba22237dd29bd74635a2b3ae"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 582042,
+      "sha256": "ea0c39545de9b31f160844cb85b780f557d779c68e7c9994ed4a41096c85f825"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-template-areas.html",
+      "bytes": 444787,
+      "sha256": "c63664f5ef482effe89f7d1df96da898c9bf6cf8074036436224464cac7c4183"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-calc-minimum.html",
+      "bytes": 435797,
+      "sha256": "1f5087358c433d7f29e83c1242a2887e5531881aa1de30a8261178f1067eec48"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-positive-percent-minimum.html",
+      "bytes": 431962,
+      "sha256": "b4952d82581058e17995d3242b7bcadb95c5cfd3a2c6a16d6621243bd96a7f84"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-calc-minimum-runtime-2026-10-23/README.html",
+      "bytes": 433552,
+      "sha256": "d029c02f980a01e4a06ad8bf5f79c3297fd252255df76665967853506665afea"
+    },
+    {
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.html",
+      "bytes": 430772,
+      "sha256": "7ba7b163165139f5d15481fbbbc4d2991d64c6b1f9af0961fd5653f482d47fea"
+    },
+    {
+      "path": "internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.html",
+      "bytes": 434328,
+      "sha256": "033be416a834c69d45584619be56def29e591b2c9f30919c3fcd4eba55512136"
+    },
+    {
+      "path": "internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.html",
+      "bytes": 425612,
+      "sha256": "7ff6f150e5ab221d979cff16b33a99ef4a9c3ed4ef3e5501a1cfd5f9d8dc0ab1"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.html",
+      "bytes": 434349,
+      "sha256": "cbbaab6c67edd0a4062a114606903d221ee1a68574aea726e6cb1cb055a679b7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.html",
+      "bytes": 425622,
+      "sha256": "d45e5fe9437bd6a344d4147f379d67397cb4aeb26d2d9174063dfc5dbc89f02b"
+    }
+  ],
+  "allRequiredRoutesPresent": true
+}

@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [C11.3 area 구현](./c11-3-template-repeat-named-lines-areas.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** Chrome 156의 13개 장면 사전 비교와 계획 실패 관점 20개 검토를 마쳤고 계획 PR #538이 병합됐다. 구현 branch `feat/c11-4-template-areas-auto-repeat-20261023`에서 typed area metadata 전달, focused 회귀, 13개 scene의 Android/iOS simulator 실행과 FFI static archive 경계 대조를 마쳤다. 구현/runtime 검토 20개를 기록했고 구현 PR [#539](https://github.com/ohah/spinon/pull/539)을 열었다. PR diff 실패 관점 30개 검토와 Agent Browser에서 GitHub screenshot 링크 표시 확인을 마쳤다. 최신 required-check 조회·merge와 Tailnet roadmap 반영이 남아 있다. C11.4 미완료 checkbox와 공식 `77/213`을 유지한다.
+**현재 상태 · 2026-10-23:** 계획 PR #538과 구현 PR [#539](https://github.com/ohah/spinon/pull/539)은 병합됐다. #539는 2026-10-23T00:36:05Z Rebase and merge로 `0f46437c299df6f0c069b694a3f2184ac464ad3d`에 반영됐고 당시 status-check rollup은 비어 있었다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 13/13 scene 및 66/66 surface 표본이 통과했다. 상태·roadmap 기록 PR [#540](https://github.com/ohah/spinon/pull/540)도 병합됐다. 후속 양축 조합 #545와 auto-fit area 확장 #549는 각자 별도 계획으로 병합됐다. 현재 공식 집계는 `72/213`이며 C11.4 상위 체크는 미완료다.
 
 ## 결손
 
@@ -71,8 +71,8 @@ Chrome float frame과 used track은 `1/64 CSS px` 이하로 비교한다. CSSOM 
 - [x] `cargo fmt`, workspace all-target Clippy, Android/iOS simulator app builds 및 `c04-runtime-gpu` 기본 FFI archive와 `c04-runtime-gpu-fixture-test` positive control을 확인했다. [archive 경계와 실행 근거](../spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.md)에 기록했다. 최종 APK/IPA 전체에서 fixture payload가 빠지는지는 검증하지 않았다.
 - [x] 계획과 다른 실패 관점 20개로 implementation/runtime을 새로 검토했다. [검토 결과](../spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/implementation-runtime-review-20.md).
 - [x] PR #539 변경 diff의 독립 실패 관점 30개를 검토하고 Agent Browser에서 Android/iOS screenshot link 표시를 확인했다. [PR diff 검토](../spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/pr-diff-review-30.md).
-- [ ] 최신 required check과 merge 상태를 확인해 PR #539를 Rebase and merge하고 Tailnet roadmap을 갱신한다.
-- [ ] 병합 후 Tailnet roadmap을 선택 파일 hash manifest로 갱신하고 Agent Browser에서 roadmap·runtime 화면 링크를 확인한 뒤 Agent Browser session/process를 닫는다.
+- [x] PR #539 merge 상태와 check rollup을 확인했다: Rebase and merge 완료, merge SHA `0f46437c299df6f0c069b694a3f2184ac464ad3d`, status-check rollup은 비어 있었다. 상태·roadmap 수정은 PR #540으로 병합됐다.
+- [x] Tailnet preview를 갱신하고 Agent Browser로 roadmap의 #539/#545/#549 기록, 공식 `72/213`, Android/iOS 근거 링크를 확인한 뒤 해당 브라우저 세션을 종료했다. 현재 파일의 재동기화 및 확인 근거는 [C11.4 roadmap 동기화 근거](../spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.md)에 둔다.
 
 Android runtime의 `visibility:hidden` 장면은 현재 runtime CSS parser가 해당 선언을 지원하지 않아 matrix에서 제외했다. authored alias 충돌은 화면상 동일 색의 겹친 box로 두고 DOM node frame과 track trace로 검증한다. 이는 visibility cascade 동작 검증이 아니다. Chrome 156 auto-fit suffix의 4px 관측 차이는 기존 사전 비교와 같이 규범 기대를 판정값으로 쓰고 Chrome 값은 관측으로만 둔다.
 
@@ -84,4 +84,4 @@ Android runtime의 `visibility:hidden` 장면은 현재 runtime CSS parser가 �
 
 ## 완료 해석
 
-이 제한 조합이 병합돼도 C11.4와 C11 전체를 완료 처리하지 않는다. 공개 CSS admission, WPT conformance 및 internal contract numeric version `0.1.0`은 이 계획에서 승격하지 않는다. 공식 C11.4 checkbox와 `77/213`은 미완료로 남는다.
+이 제한 조합이 병합돼도 C11.4와 C11 전체를 완료 처리하지 않는다. 공개 CSS admission, WPT conformance 및 internal contract numeric version `0.1.0`은 이 계획에서 승격하지 않는다. 당시 계획 기록의 `77/213`은 이전 집계 스냅샷이고 현재 공식 집계는 `72/213`이다. C11.4 checkbox는 미완료로 남는다.
