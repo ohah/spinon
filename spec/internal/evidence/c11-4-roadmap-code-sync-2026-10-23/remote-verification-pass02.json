@@ -1,0 +1,32 @@
+{
+  "pass": "pass02",
+  "changedFiles": 4,
+  "routes": [
+    {
+      "path": "internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.html",
+      "status": 200,
+      "bytes": 434328,
+      "sha256": "033be416a834c69d45584619be56def29e591b2c9f30919c3fcd4eba55512136"
+    },
+    {
+      "path": "internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.html",
+      "status": 200,
+      "bytes": 425612,
+      "sha256": "7ff6f150e5ab221d979cff16b33a99ef4a9c3ed4ef3e5501a1cfd5f9d8dc0ab1"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.html",
+      "status": 200,
+      "bytes": 434349,
+      "sha256": "cbbaab6c67edd0a4062a114606903d221ee1a68574aea726e6cb1cb055a679b7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.html",
+      "status": 200,
+      "bytes": 425622,
+      "sha256": "d45e5fe9437bd6a344d4147f379d67397cb4aeb26d2d9174063dfc5dbc89f02b"
+    }
+  ],
+  "allHttp200AndHashesMatch": true,
+  "noDeletes": true
+}

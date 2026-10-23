@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** Chrome 156 oracle와 CSS Grid 2025 CRD 독립 기대값을 여섯 고정 scene으로 기록했다. Stylo computed-value 정규화 뒤 기존 `LengthPx` 경로가 calc scene과 fixed numeric control에 동일하게 작동하는지 style·Android/iOS 시뮬레이터에서 확인했다. 이 제한 runtime 검증은 C11.4 전체 완료 판정이 아니다.
+**상태:** Chrome 156 oracle와 CSS Grid 2025 CRD 독립 기대값을 여섯 고정 scene으로 기록했고, Stylo computed-value 정규화 뒤 기존 `LengthPx` 경로가 calc scene과 fixed numeric control에 동일하게 작동함을 확인했다. [PR #553](https://github.com/ohah/spinon/pull/553)은 2026-10-23T08:16:34Z Rebase and merge로 `7151605419e4777e2bd0c8ced5cb6a926d4bddab`에 병합됐다. Android API 37 AVD·iPhone 17/iOS 26.2 Simulator에서 각 6/6 scene을 통과했으며 pixel equality는 검사하지 않았다. 당시 실행 근거 집계는 `74/207` 스냅샷이고 현재 공식 집계는 `72/213`이다. 이 제한 runtime 결과는 C11.4 전체 완료 판정이 아니다.
 
 ## 결손과 목표
 
@@ -55,4 +55,4 @@
 
 ## 상태·계약 해석
 
-이 제한 slice는 C11.4 또는 C11 전체 완료를 뜻하지 않는다. 미지원 calc 형태는 계속 fail-closed다. 공개 CSS admission과 WPT 적합성 주장을 추가하지 않는다. 내부 계약 numeric version `0.1.0`을 유지한다. 공식 집계는 계획 초안의 `72/213`에서 이후 상태 대장에 기록된 `74/207`로 갱신되어 있으며, 이 slice는 그 수를 바꾸지 않는다.
+이 제한 slice는 C11.4 또는 C11 전체 완료를 뜻하지 않는다. 미지원 calc 형태는 계속 fail-closed다. 공개 CSS admission과 WPT 적합성 주장을 추가하지 않는다. 내부 계약 numeric version `0.1.0`을 유지한다. 실행 기록의 `74/207`은 당시 화면 집계 스냅샷이며 현재 공식 집계는 `72/213`이다. 이 slice는 공식 체크 수를 바꾸지 않는다.

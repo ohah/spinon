@@ -1,0 +1,21 @@
+{
+  "pass": "pass01",
+  "routes": [
+    {
+      "path": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.html",
+      "operation": "added",
+      "status": 200,
+      "bytes": 429932,
+      "sha256": "d300ba8f3902804ed677a57e37d529a24c5331f658a04f99980720cc24f80c5c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.html",
+      "operation": "added",
+      "status": 200,
+      "bytes": 425504,
+      "sha256": "3e3aadbfbd461657a8ff6d59220c5c7383f6a27fa7caf95f76e8ace1fcfdc57f"
+    }
+  ],
+  "allHttp200AndHashesMatch": true,
+  "noDeletes": true
+}

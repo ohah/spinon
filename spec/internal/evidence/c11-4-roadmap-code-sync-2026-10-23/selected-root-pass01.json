@@ -1,0 +1,204 @@
+{
+  "pass": "pass01",
+  "baseSelectedRoot": "build/spinon/c11-4-pr562-tailnet-root-pass70-selected",
+  "selectedRoot": "build/spinon/c11-4-roadmap-code-sync-root-pass01-selected",
+  "outputRoot": "build/spinon/c11-4-roadmap-code-sync-site-pass01-selected",
+  "headTree": "c60273288c48b5f0ea60a2d823a05a1fd42d88a1",
+  "originMainTree": "c60273288c48b5f0ea60a2d823a05a1fd42d88a1",
+  "overlaySourceFiles": [
+    "plan/c11-4-grid-track-sizing.md",
+    "plan/c11-4-auto-repeat-template-areas.md",
+    "plan/c11-4-auto-repeat-calc-minimum.md",
+    "plan/c11-4-auto-repeat-positive-percent-minimum.md",
+    "spec/STATUS.md",
+    "spec/internal/0059-c11-grid-layout.md",
+    "spec/internal/evidence/c11-4-auto-repeat-calc-minimum-runtime-2026-10-23/README.md",
+    "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.md",
+    "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.md",
+    "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.md"
+  ],
+  "overlays": [
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 111430,
+      "sha256": "3c1fda5b28a6d5205aa7757f9bb29bc486f8e4d45ed36ccf4bd8ea17799cbe51"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "path": "spec/plan/c11-4-grid-track-sizing.md",
+      "bytes": 111430,
+      "sha256": "3c1fda5b28a6d5205aa7757f9bb29bc486f8e4d45ed36ccf4bd8ea17799cbe51"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-template-areas.md",
+      "path": "plan/c11-4-auto-repeat-template-areas.md",
+      "bytes": 16763,
+      "sha256": "360218d64b0bec1baf4ec7013f597c5526dc06ebb8aebc0552e9f34d8a2423d6"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-template-areas.md",
+      "path": "spec/plan/c11-4-auto-repeat-template-areas.md",
+      "bytes": 16763,
+      "sha256": "360218d64b0bec1baf4ec7013f597c5526dc06ebb8aebc0552e9f34d8a2423d6"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-calc-minimum.md",
+      "path": "plan/c11-4-auto-repeat-calc-minimum.md",
+      "bytes": 9635,
+      "sha256": "b70b02ec1f82a36a9275df371beac8a8a2b8c2aafd4445c63969f5fe9794dad1"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-calc-minimum.md",
+      "path": "spec/plan/c11-4-auto-repeat-calc-minimum.md",
+      "bytes": 9635,
+      "sha256": "b70b02ec1f82a36a9275df371beac8a8a2b8c2aafd4445c63969f5fe9794dad1"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-positive-percent-minimum.md",
+      "path": "plan/c11-4-auto-repeat-positive-percent-minimum.md",
+      "bytes": 7542,
+      "sha256": "6c13be9caf0cf501a091a6f54e68f870022cabb4f38dd6c1d43eae95cd3342e8"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-positive-percent-minimum.md",
+      "path": "spec/plan/c11-4-auto-repeat-positive-percent-minimum.md",
+      "bytes": 7542,
+      "sha256": "6c13be9caf0cf501a091a6f54e68f870022cabb4f38dd6c1d43eae95cd3342e8"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "spec/STATUS.md",
+      "bytes": 403082,
+      "sha256": "ca05a1501a2f4a471a974b6f651aa1a611cb8af283aff6308cd7a5f78ff7eb16"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "STATUS.md",
+      "bytes": 403082,
+      "sha256": "ca05a1501a2f4a471a974b6f651aa1a611cb8af283aff6308cd7a5f78ff7eb16"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 108527,
+      "sha256": "99014d5a2400ad9fc2ed376eac86c579871eb3fe43d6ec2cfa098176fccc95ea"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "internal/0059-c11-grid-layout.md",
+      "bytes": 108527,
+      "sha256": "99014d5a2400ad9fc2ed376eac86c579871eb3fe43d6ec2cfa098176fccc95ea"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "public/internal/0059-c11-grid-layout.md",
+      "bytes": 108527,
+      "sha256": "99014d5a2400ad9fc2ed376eac86c579871eb3fe43d6ec2cfa098176fccc95ea"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "public/spec/internal/0059-c11-grid-layout.md",
+      "bytes": 108527,
+      "sha256": "99014d5a2400ad9fc2ed376eac86c579871eb3fe43d6ec2cfa098176fccc95ea"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-calc-minimum-runtime-2026-10-23/README.md",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-calc-minimum-runtime-2026-10-23/README.md",
+      "bytes": 8321,
+      "sha256": "550cf71bd802ec9df5ee9be3b5aff6fff41c7a5ed9e214ca087f6e6416f57817"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-calc-minimum-runtime-2026-10-23/README.md",
+      "path": "internal/evidence/c11-4-auto-repeat-calc-minimum-runtime-2026-10-23/README.md",
+      "bytes": 8321,
+      "sha256": "550cf71bd802ec9df5ee9be3b5aff6fff41c7a5ed9e214ca087f6e6416f57817"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-calc-minimum-runtime-2026-10-23/README.md",
+      "path": "public/internal/evidence/c11-4-auto-repeat-calc-minimum-runtime-2026-10-23/README.md",
+      "bytes": 8321,
+      "sha256": "550cf71bd802ec9df5ee9be3b5aff6fff41c7a5ed9e214ca087f6e6416f57817"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-calc-minimum-runtime-2026-10-23/README.md",
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-calc-minimum-runtime-2026-10-23/README.md",
+      "bytes": 8321,
+      "sha256": "550cf71bd802ec9df5ee9be3b5aff6fff41c7a5ed9e214ca087f6e6416f57817"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.md",
+      "path": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.md",
+      "bytes": 6230,
+      "sha256": "ea7696fdcb3acd17ba0d1ec0029eea290b004032e50d88b93ceafc68a17111c8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.md",
+      "path": "internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.md",
+      "bytes": 6230,
+      "sha256": "ea7696fdcb3acd17ba0d1ec0029eea290b004032e50d88b93ceafc68a17111c8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.md",
+      "path": "public/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.md",
+      "bytes": 6230,
+      "sha256": "ea7696fdcb3acd17ba0d1ec0029eea290b004032e50d88b93ceafc68a17111c8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.md",
+      "path": "public/spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.md",
+      "bytes": 6230,
+      "sha256": "ea7696fdcb3acd17ba0d1ec0029eea290b004032e50d88b93ceafc68a17111c8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.md",
+      "path": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.md",
+      "bytes": 5584,
+      "sha256": "206ebf2cd66489a312e139e64643162e9c2f17ca3f40046ab174d66ae0719eb9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.md",
+      "path": "internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.md",
+      "bytes": 5584,
+      "sha256": "206ebf2cd66489a312e139e64643162e9c2f17ca3f40046ab174d66ae0719eb9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.md",
+      "path": "public/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.md",
+      "bytes": 5584,
+      "sha256": "206ebf2cd66489a312e139e64643162e9c2f17ca3f40046ab174d66ae0719eb9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.md",
+      "path": "public/spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.md",
+      "bytes": 5584,
+      "sha256": "206ebf2cd66489a312e139e64643162e9c2f17ca3f40046ab174d66ae0719eb9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.md",
+      "path": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.md",
+      "bytes": 3434,
+      "sha256": "7f70ad9d9210f09e1e1abe35466b532e69903ba1868f4d2c4e9e980a809cbbce"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.md",
+      "path": "internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.md",
+      "bytes": 3434,
+      "sha256": "7f70ad9d9210f09e1e1abe35466b532e69903ba1868f4d2c4e9e980a809cbbce"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.md",
+      "path": "public/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.md",
+      "bytes": 3434,
+      "sha256": "7f70ad9d9210f09e1e1abe35466b532e69903ba1868f4d2c4e9e980a809cbbce"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.md",
+      "path": "public/spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.md",
+      "bytes": 3434,
+      "sha256": "7f70ad9d9210f09e1e1abe35466b532e69903ba1868f4d2c4e9e980a809cbbce"
+    }
+  ],
+  "storageMethod": "hardlink the existing selected root; unlink each overlay target before writing its selected copy",
+  "noDeletes": true
+}

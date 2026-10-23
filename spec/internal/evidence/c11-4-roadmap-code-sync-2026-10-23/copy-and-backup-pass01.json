@@ -1,0 +1,10 @@
+{
+  "pass": "pass01",
+  "addedFiles": 2,
+  "replacedFiles": 9,
+  "alreadyAppliedFiles": 0,
+  "backupRootRelative": "SpinonPreviewBackups/c11-4-roadmap-code-sync-2026-10-23/pass01",
+  "backupMethod": "copy only each replaced selected page to a unique backup path",
+  "replacementMethod": "write a unique sibling temporary file then atomic rename",
+  "noDeletes": true
+}

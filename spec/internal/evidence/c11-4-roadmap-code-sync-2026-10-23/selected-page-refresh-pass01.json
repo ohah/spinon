@@ -1,0 +1,54 @@
+{
+  "pass": "pass01",
+  "refreshed": [
+    {
+      "source": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.md",
+      "path": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.md",
+      "bytes": 8897,
+      "sha256": "30ac567e20dbd5e647ca762b868a698bed74f11911bcfa8ad689e7c02ebc50a8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.md",
+      "path": "internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.md",
+      "bytes": 8897,
+      "sha256": "30ac567e20dbd5e647ca762b868a698bed74f11911bcfa8ad689e7c02ebc50a8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.md",
+      "path": "public/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.md",
+      "bytes": 8897,
+      "sha256": "30ac567e20dbd5e647ca762b868a698bed74f11911bcfa8ad689e7c02ebc50a8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.md",
+      "path": "public/spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/README.md",
+      "bytes": 8897,
+      "sha256": "30ac567e20dbd5e647ca762b868a698bed74f11911bcfa8ad689e7c02ebc50a8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.md",
+      "path": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.md",
+      "bytes": 3579,
+      "sha256": "812a2948a138a0655e48ee49afe560711d0489c2ef9b55482c3ee9a5b9ee579f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.md",
+      "path": "internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.md",
+      "bytes": 3579,
+      "sha256": "812a2948a138a0655e48ee49afe560711d0489c2ef9b55482c3ee9a5b9ee579f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.md",
+      "path": "public/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.md",
+      "bytes": 3579,
+      "sha256": "812a2948a138a0655e48ee49afe560711d0489c2ef9b55482c3ee9a5b9ee579f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.md",
+      "path": "public/spec/internal/evidence/c11-4-roadmap-code-sync-2026-10-23/pr-diff-review-20.md",
+      "bytes": 3579,
+      "sha256": "812a2948a138a0655e48ee49afe560711d0489c2ef9b55482c3ee9a5b9ee579f"
+    }
+  ],
+  "noDeletes": true
+}
