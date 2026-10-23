@@ -28,3 +28,11 @@
 - 같은 Tailnet `/spinon/roadmap.html`을 Agent Browser에서 다시 열었다. [화면](./roadmap-after-agent-browser.png)에는 갱신된 C13.2/C13.3 요약이 보이고, C13 checkbox는 disabled·unchecked로 남았다. 집계는 `72/213`이다. [DOM 관찰](./roadmap-after-observation.json)은 2026-10-23T11:42:28.687Z, viewport 1280×633 CSS px, DPR 1을 기록한다.
 - `spec/public/roadmap.html`은 GitHub `main`의 `spec/STATUS.md`를 가져오며 요청에 `cache: 'no-store'`를 사용한다. Tailnet preview server나 정적 사이트 파일을 교체하지 않고, 기존 route의 실제 재요청 결과를 확인했다.
 - before/after 캡처와 DOM JSON의 SHA-256은 `SHA256SUMS`에 있다.
+
+## 현재 진행 칸과 공식 상태의 재대조 · 2026-10-23
+
+- 확인 결과 `main`의 `spec/public/roadmap.html`에는 `execution.inProgress: ['C13']`가 남아 있었지만, C13.3 computed-policy simulator matrix PR #185는 이미 병합됐고 C13 전체는 미완료다. 이 수동 칸반 설정이 C13을 여전히 진행 중처럼 보이게 한 원인이다.
+- 보드 설정을 현재 작업 lane인 C11.4로 바꾸고, C13 계획·상태 대장에는 C13이 비활성임을 명시했다. C13과 C11.4의 공식 체크박스는 모두 미완료이며 집계는 `72/213`으로 유지한다.
+- Agent Browser가 같은 Tailnet route를 2026-10-23T13:33:55.387Z에 확인했다. 칸반의 진행 중 열은 `1/2`와 `C11.4 · ACTIVE`, C13은 disabled·unchecked, 완료는 `72`였다. [현재 화면](./roadmap-current-agent-browser.png) · [DOM 관찰](./roadmap-current-observation.json).
+- 이 캡처는 Tailnet preview의 현재 작업 표시를 검증한다. 현재 변경이 GitHub `main`에 반영된 뒤에는 새로고침으로 동일한 상태를 다시 확인한다. browser process는 검증 직후 종료했고 `agent-browser session info --json`에서 `active: false`를 확인했다.
+- 새 화면과 DOM 관찰의 SHA-256은 `SHA256SUMS`에 있다.
