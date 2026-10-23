@@ -1,6 +1,6 @@
 # C11.4 `auto-fit`과 area 확장 track 결합
 
-**상태:** 구현 후보의 현재 runtime·build gate는 통과했다. 구현 PR은 적대적 diff 검토와 현재 GitHub check 상태를 확인한 뒤 만든다. 공식 C11.4 checkbox와 완료 집계 `77/213`은 병합 전까지 그대로다.
+**상태:** 구현 PR [#549](https://github.com/ohah/spinon/pull/549)은 2026-10-23 15:40:56 KST Rebase and merge로 fdf5a3a24f3f5f3f1e2f1bc2f5e871f29dbf7ca8에 병합됐다. C11.4 checkbox는 미완료이며 현재 공식 집계 72/213은 그대로다. 이 slice는 제품 Grid 계산 알고리즘을 바꾸지 않고 기존 제한 profile의 host/runtime 검증을 추가했다. [집계 정정 근거](../c11-4-auto-fit-area-expansion-status-correction-2026-10-23/README.md).
 
 ## 변경 범위와 판정
 

@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-23",
+  "session": "spinon-tailnet-c114-presync-20261023",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "purpose": "Official roadmap checkbox counter before correcting prose and syncing the merged PR #549 documentation.",
+  "sourceRequest": "https://api.github.com/repos/ohah/spinon/contents/spec/STATUS.md?ref=main",
+  "dom": {
+    "checkboxCount": 213,
+    "checkedCount": 72,
+    "disabledCount": 213,
+    "allDisabled": true,
+    "readOnly": true
+  },
+  "screenshot": {
+    "path": "tailnet-before-correction.png",
+    "width": 1280,
+    "height": 633,
+    "sha256": "ba5d32805197374ac3f3282d08a7afcd8fd51a84733b615c1e5f7d6ac149a6d9"
+  },
+  "agentBrowserCleanup": {
+    "sessionClosed": true,
+    "finalSessionActive": false,
+    "finalPageCount": 0,
+    "finalProcessScan": "No Agent Browser or task Chrome process remained.",
+    "tailnetServerPreserved": true
+  },
+  "interpretation": "The official display count is 72/213. PR #549 did not change any status checkbox; C11.4 remains incomplete."
+}

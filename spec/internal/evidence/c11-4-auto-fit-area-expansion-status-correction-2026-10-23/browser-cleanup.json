@@ -1,0 +1,17 @@
+{
+  "session": "spinon-tailnet-c114-presync-20261023",
+  "closed": true,
+  "finalActive": false,
+  "pageCount": 0,
+  "browserLaunched": false,
+  "transientDaemon": {
+    "pid": 35610,
+    "observedAfterClose": true,
+    "termAttempt": "Process had already exited; no such process.",
+    "finalProcessScan": "No Agent Browser or task Chrome processes."
+  },
+  "preserved": [
+    "Tailnet preview server PID 1191",
+    "all unrelated browser and simulator processes"
+  ]
+}
