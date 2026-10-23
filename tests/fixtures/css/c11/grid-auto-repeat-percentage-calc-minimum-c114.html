@@ -1,0 +1,60 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11.4 auto-repeat percentage calc minimum</title>
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 600px; height: 250px; font: 12px sans-serif; }
+.scene {
+  position: absolute;
+  display: grid;
+  align-content: start;
+  justify-content: start;
+  gap: 0;
+  background: #e2e8f0;
+  outline: 1px solid #64748b;
+}
+.caption { position: absolute; left: 0; top: -17px; white-space: nowrap; color: #0f172a; }
+.item { min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0; background: #e5484d; }
+.item:nth-of-type(2) { background: #2563eb; }
+.item:nth-of-type(3) { background: #16a34a; }
+#columns-calc-fill {
+  left: 0; top: 32px; width: 112px; height: 48px;
+  grid-template-columns: repeat(auto-fill, minmax(calc(20px + 10%), 1fr));
+  grid-template-rows: 48px;
+}
+#columns-fixed-fill-control {
+  left: 140px; top: 32px; width: 112px; height: 48px;
+  grid-template-columns: repeat(auto-fill, minmax(31.2px, 1fr));
+  grid-template-rows: 48px;
+}
+#columns-calc-fit {
+  left: 280px; top: 32px; width: 112px; height: 48px;
+  grid-template-columns: repeat(auto-fit, minmax(calc(20px + 10%), 1fr));
+  grid-template-rows: 48px;
+}
+#rows-calc-fill {
+  left: 0; top: 120px; width: 48px; height: 112px;
+  grid-template-columns: 48px;
+  grid-template-rows: repeat(auto-fill, minmax(calc(20px + 10%), 1fr));
+  grid-auto-flow: column;
+}
+#rows-fixed-fill-control {
+  left: 140px; top: 120px; width: 48px; height: 112px;
+  grid-template-columns: 48px;
+  grid-template-rows: repeat(auto-fill, minmax(31.2px, 1fr));
+  grid-auto-flow: column;
+}
+#rows-calc-fit {
+  left: 280px; top: 120px; width: 48px; height: 112px;
+  grid-template-columns: 48px;
+  grid-template-rows: repeat(auto-fit, minmax(calc(20px + 10%), 1fr));
+  grid-auto-flow: column;
+}
+</style>
+<div id="columns-calc-fill" class="scene" data-scene-id="columns-calc-fill"><span class="caption">columns / calc / auto-fill</span><div class="item"></div><div class="item"></div><div class="item"></div></div>
+<div id="columns-fixed-fill-control" class="scene" data-scene-id="columns-fixed-fill-control"><span class="caption">columns / 31.2px control</span><div class="item"></div><div class="item"></div><div class="item"></div></div>
+<div id="columns-calc-fit" class="scene" data-scene-id="columns-calc-fit"><span class="caption">columns / calc / auto-fit</span><div class="item"></div></div>
+<div id="rows-calc-fill" class="scene" data-scene-id="rows-calc-fill"><span class="caption">rows / calc / auto-fill</span><div class="item"></div><div class="item"></div><div class="item"></div></div>
+<div id="rows-fixed-fill-control" class="scene" data-scene-id="rows-fixed-fill-control"><span class="caption">rows / 31.2px control</span><div class="item"></div><div class="item"></div><div class="item"></div></div>
+<div id="rows-calc-fit" class="scene" data-scene-id="rows-calc-fit"><span class="caption">rows / calc / auto-fit</span><div class="item"></div></div>
