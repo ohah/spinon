@@ -1,6 +1,6 @@
 # C11.4 definite percentage auto-repeat maximum PR diff 적대 검토 30개
 
-검토 대상은 `origin/main` 대비 현재 작업 브랜치의 구현·fixture·시뮬레이터 route·상태/로드맵 변경이다. 구현/runtime 검토 20개와 겹치지 않도록 PR diff 연결, 검증 데이터, 패키징, 범위 표현의 별도 실패 경로를 확인했다. PR은 아직 생성 전이며, 생성 뒤 GitHub가 보여주는 최종 diff를 다시 대조한다.
+검토 대상은 `origin/main` 대비 구현 PR #568의 구현·fixture·시뮬레이터 route·상태/로드맵 변경이다. 구현/runtime 검토 20개와 겹치지 않도록 PR diff 연결, 검증 데이터, 패키징, 범위 표현의 별도 실패 경로를 확인했다. 생성 뒤 GitHub 최종 diff와 화면 이미지를 확인했다.
 
 | # | 실패 관점 | 판정 |
 | ---: | --- | --- |
@@ -35,4 +35,4 @@
 | 29 | 상태 대장이나 계획이 C11.4 완료/공식 집계 증가를 암시하는가? | 통과: checkbox와 `72/213`을 유지하고 이 구현을 PR 전 후보로 표시한다. |
 | 30 | 공개 roadmap이 C13을 활성으로 보이게 하거나 C11.4 slice를 일반 CSS 완료로 보이는가? | 통과: C11.4 active와 제한 profile 경계를 쓰고 C13은 incomplete/inactive, 부분 wheel 및 미구현 CSSOM을 명시한다. |
 
-**결과:** 현재 diff에서 미해결 P1/P2는 찾지 못했다. C11.4는 미완료다. 이 검토 결과를 반영해 계획·상태 대장·로드맵 표기를 “검토 완료, PR 미생성”으로 정정했고 `72/213` 및 제한 범위 주장을 다시 확인했다. PR 생성 후 GitHub diff, 변경 파일 수, 이미지 URL과 branch base가 이 검토 대상과 같은지 최종 재확인한다.
+**결과:** 미해결 P1/P2는 찾지 못했다. C11.4는 미완료다. PR #568의 GitHub diff는 로컬 기준 243개 파일과 일치했고 base는 `main`, head는 `7ed088a5b08a847627f7fab5ac4ce0d14d5fc61a`였다. 본문 이미지 두 장은 Agent Browser에서 각각 `complete=true`, natural size 1080×2400 및 1206×2622였다. PR은 2026-10-23T14:16:01Z Rebase and merge됐고 merge SHA는 `c436a38388fe8a191fd374495c516c88d1e3cd54`다. GitHub check rollup은 비어 있고 `main` required status checks도 설정되지 않았다. 후속 merge 기록으로 계획·상태 대장·로드맵을 갱신하되 C11.4 checkbox와 `72/213`은 유지한다.
