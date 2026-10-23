@@ -1,6 +1,6 @@
 # C13.2 · Scroll container와 revision 분리
 
-- **상태:** Chrome 155 사전 기준·내부 계약 고정 · 구현 및 시뮬레이터 검증 진행 중 (2026-10-15)
+- **현재 상태:** 제한 scroll owner·offset snapshot, root/body 전파·lifecycle와 visible-overflow 표면 표본 구현이 main에 있음. ink-only `box-shadow` overflow는 fail-closed라 C13.2는 미완료 (2026-10-23)
 - **기준 커밋:** `e2f346f3dda6d56f68fd6ef2d0255610a282d0f3` (C13.1 surface pixel-center gate 통합 뒤)
 - **내부 계약:** [`0062-c13-2-scroll-state`](../spec/internal/0062-c13-2-scroll-state.md), 숫자 버전 `0.1.0-draft` 유지
 - **visible overflow 표면 픽셀 후속:** [계획](./c13-2-visible-overflow-surface-pixels.md) · [PR #176 Android PixelCopy/iOS Metal run5 실행 근거](../spec/internal/evidence/c13-2-visible-overflow-surface-pixels-2026-10-15/README.md) · 각 Simulator 5/5 exact. ink-only `box-shadow` overflow는 여전히 미지원.

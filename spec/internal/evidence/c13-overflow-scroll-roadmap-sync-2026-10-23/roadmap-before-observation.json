@@ -1,0 +1,17 @@
+{
+  "c13": {
+    "ariaLabel": "overflow·scroll·클리핑 공식 미완료",
+    "checked": false,
+    "disabled": true,
+    "summary": "visible·clip·hidden·scroll·auto, scroll container, overscroll·scrollbar·scroll snap과 clip geometry를 구현한다. C13.1 제한 runtime profile에서 typed overflow·clip-margin cascade, 중첩 paint/hit clip과 positioned containing-block 예외를 구현했다. Chrome geometry 13/13, Android API 37 ARM64 AVD PixelCopy 11/11, Android 앱 및 iOS Simulator fixed hit query 15/15, viewport 밖 null control 4/4를 확인했다. iOS Simulator geometry는 Chrome과 13/13, 최대 차이 0 CSS px이며 Metal surface 제출을 확인했다. clip ancestry 예약 오류 뒤 실제 CSS runtime worker 복구 테스트도 통과했다. profile은 fixture-test 전용이다. C13.1 WPT 후보 source 58개를 13/17/28으로 분류했지만 WPT는 실행하지 않았다. 고정 Chrome의 clip-y·border-box margin·hidden margin-ignore 세 행은 Rust clip geometry와 전체 정수 hit range를 대조했다(선택 matrix 근거). 17행의 런타임 판정은 13개 유효행의 geometry·hit identity, invalid margin 1행 거부, float 3변형 fail-closed까지 확인했다. compact 13-case Android AVD surface pixel-center matrix는 PR #162에서 30,000/30,000 exact를 확인했다. Android 앱 compact fixture의 full hit identity grid 30,000/30,000 일치 근거는 AVD 실행·화면에 기록했다. Clip frame 밖 draw/hit/event negative-control breadth, WPT 실행, scroll/CSSOM 기능과 Spinon float geometry parity는 미완료다. WPT 분류와 제한. float/BFC 경계는 비교 근거에 기록했다. Spinon float geometry parity는 C26 소유 범위다. 계획 PR #157은 2026-10-14 rebase 방식으로 main에 병합됨(merge SHA 310d5f8) · C13.1 구현 PR #158은 2026-10-14 rebase 방식으로 병합됨(merge SHA c551b0e) · 내부 계약 0060 · AVD paint 근거 · Android 앱 hit-test · viewport negative-control · worker recovery · iOS Simulator · iOS 구현 실패 관점 20개 · iOS PR 변경 관점 30개 · 계획 · 계획 실패 관점 20개 · 계획 변경 관점 30개 · 기본 Chrome 사전 비교 · C13.1 clip·hit-test 사전 비교 · radius/transform fail-closed · 기존 C13.1 구현 검토 20개 · 기존 PR 변경 검토 30개. 상위: S02, U07, E06.",
+    "title": "overflow·scroll·클리핑"
+  },
+  "capturedAt": "2026-10-23T11:38:30.718Z",
+  "progress": {
+    "completed": 72,
+    "total": 213
+  },
+  "scrollY": 45529,
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html"
+}
