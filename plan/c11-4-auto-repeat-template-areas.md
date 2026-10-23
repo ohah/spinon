@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [C11.3 area 구현](./c11-3-template-repeat-named-lines-areas.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** Chrome 156의 13개 장면 사전 비교와 계획 실패 관점 20개 검토를 마쳤고 계획 PR #538이 병합됐다. 구현 branch `feat/c11-4-template-areas-auto-repeat-20261023`에서 typed area metadata 전달, focused 회귀, 13개 scene의 Android/iOS simulator 실행과 FFI static archive 경계 대조를 마쳤다. 구현/runtime 검토 20개를 기록했고 구현 PR [#539](https://github.com/ohah/spinon/pull/539)을 열었다. PR diff 검토 30개, Agent Browser screenshot 확인, merge와 Tailnet roadmap 반영은 진행 중이다. C11.4 미완료 checkbox와 공식 `77/213`을 유지한다.
+**상태:** Chrome 156의 13개 장면 사전 비교와 계획 실패 관점 20개 검토를 마쳤고 계획 PR #538이 병합됐다. 구현 branch `feat/c11-4-template-areas-auto-repeat-20261023`에서 typed area metadata 전달, focused 회귀, 13개 scene의 Android/iOS simulator 실행과 FFI static archive 경계 대조를 마쳤다. 구현/runtime 검토 20개를 기록했고 구현 PR [#539](https://github.com/ohah/spinon/pull/539)을 열었다. PR diff 실패 관점 30개 검토와 Agent Browser에서 GitHub screenshot 링크 표시 확인을 마쳤다. 최신 required-check 조회·merge와 Tailnet roadmap 반영이 남아 있다. C11.4 미완료 checkbox와 공식 `77/213`을 유지한다.
 
 ## 결손
 
@@ -70,7 +70,8 @@ Chrome float frame과 used track은 `1/64 CSS px` 이하로 비교한다. CSSOM 
 - [x] 최종 source 기준 Android API 37 ARM64 AVD `emulator-5558` 및 iPhone 17 Pro / iOS 26.2 Simulator에서 각각 13/13 scene의 root/child frame, used tracks, auto-fit collapse, trace, draw/present를 확인했다. PixelCopy 및 compositor 제출 전 Metal drawable에서 각각 66/66 고정 표본이 exact였다.
 - [x] `cargo fmt`, workspace all-target Clippy, Android/iOS simulator app builds 및 `c04-runtime-gpu` 기본 FFI archive와 `c04-runtime-gpu-fixture-test` positive control을 확인했다. [archive 경계와 실행 근거](../spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.md)에 기록했다. 최종 APK/IPA 전체에서 fixture payload가 빠지는지는 검증하지 않았다.
 - [x] 계획과 다른 실패 관점 20개로 implementation/runtime을 새로 검토했다. [검토 결과](../spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/implementation-runtime-review-20.md).
-- [ ] PR diff 실패 관점 30개 검토, GitHub screenshot link 확인, merge를 진행한다.
+- [x] PR #539 변경 diff의 독립 실패 관점 30개를 검토하고 Agent Browser에서 Android/iOS screenshot link 표시를 확인했다. [PR diff 검토](../spec/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/pr-diff-review-30.md).
+- [ ] 최신 required check과 merge 상태를 확인해 PR #539를 Rebase and merge하고 Tailnet roadmap을 갱신한다.
 - [ ] 병합 후 Tailnet roadmap을 선택 파일 hash manifest로 갱신하고 Agent Browser에서 roadmap·runtime 화면 링크를 확인한 뒤 Agent Browser session/process를 닫는다.
 
 Android runtime의 `visibility:hidden` 장면은 현재 runtime CSS parser가 해당 선언을 지원하지 않아 matrix에서 제외했다. authored alias 충돌은 화면상 동일 색의 겹친 box로 두고 DOM node frame과 track trace로 검증한다. 이는 visibility cascade 동작 검증이 아니다. Chrome 156 auto-fit suffix의 4px 관측 차이는 기존 사전 비교와 같이 규범 기대를 판정값으로 쓰고 Chrome 값은 관측으로만 둔다.
