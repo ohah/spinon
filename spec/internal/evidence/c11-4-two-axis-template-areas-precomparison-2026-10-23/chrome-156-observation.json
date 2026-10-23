@@ -1,0 +1,213 @@
+{
+  "scenes": [
+    {
+      "areas": "\". hero\" \". .\"",
+      "columns": "20px 20px 20px 20px",
+      "grid": [
+        12,
+        79,
+        100,
+        76
+      ],
+      "id": "area-short",
+      "item": [
+        24,
+        0,
+        8,
+        8
+      ],
+      "rows": "20px 20px 20px",
+      "scroll": [
+        100,
+        76
+      ]
+    },
+    {
+      "areas": "\". . hero\" \". . .\"",
+      "columns": "20px 16px 16px",
+      "grid": [
+        216,
+        79,
+        40,
+        76
+      ],
+      "id": "area-added-columns",
+      "item": [
+        44,
+        0,
+        8,
+        8
+      ],
+      "rows": "20px 20px 20px",
+      "scroll": [
+        52,
+        76
+      ]
+    },
+    {
+      "areas": "\". .\" \". .\" \". hero\"",
+      "columns": "20px 20px 20px",
+      "grid": [
+        420,
+        77,
+        76,
+        40
+      ],
+      "id": "area-added-rows",
+      "item": [
+        24,
+        40,
+        8,
+        8
+      ],
+      "rows": "20px 12px 12px",
+      "scroll": [
+        76,
+        48
+      ]
+    },
+    {
+      "areas": "\". . .\" \". . .\" \". . hero\"",
+      "columns": "20px 16px 16px",
+      "grid": [
+        12,
+        215,
+        40,
+        40
+      ],
+      "id": "area-added-both",
+      "item": [
+        44,
+        40,
+        8,
+        8
+      ],
+      "rows": "20px 12px 12px",
+      "scroll": [
+        52,
+        48
+      ]
+    },
+    {
+      "areas": "\". .\" \". hero\"",
+      "columns": "20px 20px 20px 20px",
+      "grid": [
+        216,
+        215,
+        100,
+        76
+      ],
+      "id": "fill-fit",
+      "item": [
+        24,
+        0,
+        8,
+        8
+      ],
+      "rows": "0px 20px 0px",
+      "scroll": [
+        100,
+        76
+      ]
+    },
+    {
+      "areas": "\". .\" \". hero\"",
+      "columns": "0px 20px 0px 0px",
+      "grid": [
+        420,
+        215,
+        100,
+        76
+      ],
+      "id": "fit-fill",
+      "item": [
+        0,
+        24,
+        8,
+        8
+      ],
+      "rows": "20px 20px 20px",
+      "scroll": [
+        100,
+        76
+      ]
+    },
+    {
+      "areas": "\". hero\" \". .\"",
+      "columns": "0px 0px 0px 0px",
+      "grid": [
+        12,
+        351,
+        100,
+        76
+      ],
+      "id": "fit-fit-empty",
+      "item": null,
+      "rows": "0px 0px 0px",
+      "scroll": [
+        100,
+        76
+      ]
+    },
+    {
+      "areas": "\"hero hero\" \"hero hero\"",
+      "columns": "20px 20px 0px 0px",
+      "grid": [
+        216,
+        351,
+        100,
+        76
+      ],
+      "id": "fit-fit-span",
+      "item": [
+        0,
+        0,
+        44,
+        44
+      ],
+      "rows": "20px 20px 0px",
+      "scroll": [
+        100,
+        76
+      ]
+    },
+    {
+      "areas": "\". .\" \"hero .\"",
+      "columns": "20px 20px 20px 20px",
+      "grid": [
+        420,
+        351,
+        100,
+        76
+      ],
+      "id": "area-longhand",
+      "item": [
+        0,
+        24,
+        8,
+        8
+      ],
+      "rows": "20px 20px 20px",
+      "scroll": [
+        100,
+        76
+      ]
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "devicePixelRatio": 1,
+    "height": 633,
+    "width": 1280
+  },
+  "environment": {
+    "browser": "Google Chrome 156.0.8078.48",
+    "agentBrowser": "0.31.1",
+    "host": "macOS arm64",
+    "viewport": {
+      "width": 1280,
+      "height": 633,
+      "devicePixelRatio": 1
+    }
+  }
+}
