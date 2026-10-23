@@ -1,0 +1,26 @@
+{
+  "pass": "pass01",
+  "sourceRoot": "build/spinon/c11-4-code-roadmap-sync-20261024-site-pass01-selected",
+  "targetRootRelative": "SpinonPreview",
+  "backupRootRelative": "SpinonPreviewBackups/c11-4-code-roadmap-sync-2026-10-24/pass01",
+  "previewServer": {
+    "pid": 1191,
+    "command": "node"
+  },
+  "selectedRouteCount": 7,
+  "activeTcpConnectionCount": 0,
+  "changedFiles": 7,
+  "addedFiles": 4,
+  "replacedFiles": 3,
+  "backupBytes": 2122241,
+  "selectedRoutes": [
+    "STATUS.html",
+    "plan/c11-4-grid-track-sizing.html",
+    "spec/plan/c11-4-grid-track-sizing.html",
+    "internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.html",
+    "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.html",
+    "internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.html",
+    "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.html"
+  ],
+  "noDeletes": true
+}

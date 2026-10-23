@@ -1,0 +1,53 @@
+{
+  "pass": "pass01",
+  "selectedRouteCount": 7,
+  "changedRouteCount": 7,
+  "verifiedRouteCount": 7,
+  "allVerifiedRoutesHttp200": true,
+  "allVerifiedLocalAndRemoteHashesMatchSelectedBuild": true,
+  "noDeletes": true,
+  "routes": [
+    {
+      "path": "STATUS.html",
+      "status": 200,
+      "bytes": 929041,
+      "sha256": "ea9d24b34a1db20826ccc35827d92c2c5efd3c4452afc5e559f92cbbce97c312"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "status": 200,
+      "bytes": 603283,
+      "sha256": "9f1d737e002ebce5d0834f52675f024392a3adec8ae1ef9838ebfd5ec7646f48"
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "status": 200,
+      "bytes": 602313,
+      "sha256": "862949f9bdaa0b66f6d6f72d0feba371ed1e35d73e035f22fe3bc5b0e7b17190"
+    },
+    {
+      "path": "internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.html",
+      "status": 200,
+      "bytes": 441565,
+      "sha256": "adbd013aa0e2f5517d49d254eff87c498b284ec574bed1ab4bca7a8baac820fe"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.html",
+      "status": 200,
+      "bytes": 441583,
+      "sha256": "3d162eaef689f2ae3d9dba36537905ecd04e628fef615cc67e855d2a0cf89406"
+    },
+    {
+      "path": "internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.html",
+      "status": 200,
+      "bytes": 442555,
+      "sha256": "ed6c90a33da7625a25dba0b2ec2ab60b5c6bf2f5cd04e9a1cbca3c8285b2fbdb"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.html",
+      "status": 200,
+      "bytes": 442565,
+      "sha256": "03337192339f001847b9505ed602a8f34d509bab4537df8d9ea350a58332793a"
+    }
+  ]
+}

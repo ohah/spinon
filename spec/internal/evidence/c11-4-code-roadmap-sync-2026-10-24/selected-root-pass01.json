@@ -1,0 +1,78 @@
+{
+  "pass": "pass01",
+  "baseSelectedRoot": "build/spinon/c11-4-roadmap-plan-status-sync-20261024-root-pass03-selected",
+  "selectedRoot": "build/spinon/c11-4-code-roadmap-sync-20261024-root-pass01-selected",
+  "outputRoot": "build/spinon/c11-4-code-roadmap-sync-20261024-site-pass01-selected",
+  "head": "1b00ba0d8c5e0014c3b41ff2efb1a093917980b8",
+  "originMain": "1b00ba0d8c5e0014c3b41ff2efb1a093917980b8",
+  "sourceFiles": [
+    "plan/c11-4-grid-track-sizing.md",
+    "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md",
+    "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.md"
+  ],
+  "overlayCount": 10,
+  "overlays": [
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 114367,
+      "sha256": "3dbff18ef3860a8ebd5599fe7f3a72a0691b9ad610822efb20044acfe4be7dc3"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "path": "spec/plan/c11-4-grid-track-sizing.md",
+      "bytes": 114367,
+      "sha256": "3dbff18ef3860a8ebd5599fe7f3a72a0691b9ad610822efb20044acfe4be7dc3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md",
+      "path": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md",
+      "bytes": 2340,
+      "sha256": "73e625d9f63035f0ad129146e6949721ae235799bca0dfac4d0c0157efed638d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md",
+      "path": "internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md",
+      "bytes": 2340,
+      "sha256": "73e625d9f63035f0ad129146e6949721ae235799bca0dfac4d0c0157efed638d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md",
+      "path": "public/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md",
+      "bytes": 2340,
+      "sha256": "73e625d9f63035f0ad129146e6949721ae235799bca0dfac4d0c0157efed638d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md",
+      "path": "public/spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md",
+      "bytes": 2340,
+      "sha256": "73e625d9f63035f0ad129146e6949721ae235799bca0dfac4d0c0157efed638d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.md",
+      "path": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.md",
+      "bytes": 3262,
+      "sha256": "a138c3efc79f7c4924bdfad29b84353e0bf03b75f7b6f80a9856f6b0fdf655b0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.md",
+      "path": "internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.md",
+      "bytes": 3262,
+      "sha256": "a138c3efc79f7c4924bdfad29b84353e0bf03b75f7b6f80a9856f6b0fdf655b0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.md",
+      "path": "public/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.md",
+      "bytes": 3262,
+      "sha256": "a138c3efc79f7c4924bdfad29b84353e0bf03b75f7b6f80a9856f6b0fdf655b0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.md",
+      "path": "public/spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.md",
+      "bytes": 3262,
+      "sha256": "a138c3efc79f7c4924bdfad29b84353e0bf03b75f7b6f80a9856f6b0fdf655b0"
+    }
+  ],
+  "storageMethod": "hardlink previous curated root, unlink overlay target, write current source bytes",
+  "noDeletes": true
+}

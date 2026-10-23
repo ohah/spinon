@@ -1,0 +1,50 @@
+[
+  {
+    "path": "STATUS.html",
+    "operation": "replace",
+    "bytes": 929041,
+    "sha256": "ea9d24b34a1db20826ccc35827d92c2c5efd3c4452afc5e559f92cbbce97c312",
+    "previousBytes": 924004,
+    "previousSha256": "36c23f2c8b19c5174adef21f7851f8c20d511257ad7d6010cddb3611ee499ef4"
+  },
+  {
+    "path": "plan/c11-4-grid-track-sizing.html",
+    "operation": "replace",
+    "bytes": 603283,
+    "sha256": "9f1d737e002ebce5d0834f52675f024392a3adec8ae1ef9838ebfd5ec7646f48",
+    "previousBytes": 599600,
+    "previousSha256": "3d3e66441bb65391a6a8d13b16b9af3bf1cf1cfec84422815ce1e9e43f3965f8"
+  },
+  {
+    "path": "spec/plan/c11-4-grid-track-sizing.html",
+    "operation": "replace",
+    "bytes": 602313,
+    "sha256": "862949f9bdaa0b66f6d6f72d0feba371ed1e35d73e035f22fe3bc5b0e7b17190",
+    "previousBytes": 598637,
+    "previousSha256": "f7fcb6f8949d136bc70379f76b330de067c03d6513aad48dbf9df8b9275db255"
+  },
+  {
+    "path": "internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.html",
+    "operation": "add",
+    "bytes": 441565,
+    "sha256": "adbd013aa0e2f5517d49d254eff87c498b284ec574bed1ab4bca7a8baac820fe"
+  },
+  {
+    "path": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.html",
+    "operation": "add",
+    "bytes": 441583,
+    "sha256": "3d162eaef689f2ae3d9dba36537905ecd04e628fef615cc67e855d2a0cf89406"
+  },
+  {
+    "path": "internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.html",
+    "operation": "add",
+    "bytes": 442555,
+    "sha256": "ed6c90a33da7625a25dba0b2ec2ab60b5c6bf2f5cd04e9a1cbca3c8285b2fbdb"
+  },
+  {
+    "path": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.html",
+    "operation": "add",
+    "bytes": 442565,
+    "sha256": "03337192339f001847b9505ed602a8f34d509bab4537df8d9ea350a58332793a"
+  }
+]

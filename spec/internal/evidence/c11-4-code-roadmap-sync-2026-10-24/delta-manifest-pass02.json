@@ -1,0 +1,40 @@
+[
+  {
+    "path": "internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.html",
+    "operation": "replace",
+    "bytes": 442595,
+    "sha256": "5fc782f261ecf09b7ad78f1f7dbd28d14eef27f0b277652d53c9b2ba393c714a",
+    "previousBytes": 441565,
+    "previousSha256": "adbd013aa0e2f5517d49d254eff87c498b284ec574bed1ab4bca7a8baac820fe"
+  },
+  {
+    "path": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.html",
+    "operation": "replace",
+    "bytes": 442613,
+    "sha256": "13c350cd0aa72ba1d8036574dc140cc09dcb6cd9b2f758baf56808e107e6de47",
+    "previousBytes": 441583,
+    "previousSha256": "3d162eaef689f2ae3d9dba36537905ecd04e628fef615cc67e855d2a0cf89406"
+  },
+  {
+    "path": "internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.html",
+    "operation": "replace",
+    "bytes": 443064,
+    "sha256": "5fbf6828c17d1d7c5cd27b9d8a4be657c82f421d020de5974f11729970b16cca",
+    "previousBytes": 442555,
+    "previousSha256": "ed6c90a33da7625a25dba0b2ec2ab60b5c6bf2f5cd04e9a1cbca3c8285b2fbdb"
+  },
+  {
+    "path": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.html",
+    "operation": "replace",
+    "bytes": 443074,
+    "sha256": "5d52ca86d869a1f7230f416020d263b9f89a57955e6304657442c3f852581046",
+    "previousBytes": 442565,
+    "previousSha256": "03337192339f001847b9505ed602a8f34d509bab4537df8d9ea350a58332793a"
+  },
+  {
+    "path": "static/image/tailnet-c114-plan-agent-browser-pass01.65153520e0.png",
+    "operation": "add",
+    "bytes": 234871,
+    "sha256": "0362454ca835f950f659b4168127c87f201d838703f21f5e594e108b11c3b0d9"
+  }
+]
