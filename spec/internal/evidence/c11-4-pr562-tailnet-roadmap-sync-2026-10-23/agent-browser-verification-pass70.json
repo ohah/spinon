@@ -54,5 +54,19 @@
       "route": "internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/ios-simulator-c114-positive-percent-minimum-commit-ios-simulator-20261023T104719112Z-2d91e097/percentage-overflow-columns-calc.png"
     }
   ],
-  "browserSessionClosed": false
+  "browserSessionClosed": true,
+  "pr563": {
+    "url": "https://github.com/ohah/spinon/pull/563",
+    "title": "docs: sync C11.4 positive percentage Tailnet roadmap by ohah · Pull Request #563 · ohah/spinon",
+    "bodyHas72of213": true,
+    "bodyHasPR561": true,
+    "bodyHasPR562": true,
+    "bodyHasReview20": true,
+    "tailnetScreenshot": {
+      "url": "https://raw.githubusercontent.com/ohah/spinon/a262afd5b67e1eed709f32592a92e8a15789508f/spec/internal/evidence/c11-4-pr562-tailnet-roadmap-sync-2026-10-23/tailnet-roadmap-c114-pr561-agent-browser-pass70.png",
+      "complete": true,
+      "naturalWidth": 700,
+      "naturalHeight": 800
+    }
+  }
 }
