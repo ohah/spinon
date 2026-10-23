@@ -1,0 +1,35 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 auto-repeat calc fixed minimum oracle</title>
+<style>
+  body { margin: 24px; font: 14px/1.45 system-ui, sans-serif; color: #111827; background: #f8fafc; }
+  h1 { font-size: 20px; margin: 0 0 16px; }
+  .case { display: grid; grid-template-columns: 280px 1fr; align-items: center; gap: 20px; margin: 12px 0; }
+  .label { font-weight: 600; }
+  .grid { display: grid; gap: 0; border: 2px solid #334155; background: #e2e8f0; }
+  .columns { width: 184px; height: 48px; }
+  .rows { width: 48px; height: 184px; grid-auto-flow: column; }
+  #calc-fill { grid-template-columns: repeat(auto-fill, minmax(calc(20px + 20px), 1fr)); }
+  #fixed-fill { grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); }
+  #calc-fit { grid-template-columns: repeat(auto-fit, minmax(calc(20px + 20px), 1fr)); }
+  #rows-calc-fill { grid-template-rows: repeat(auto-fill, minmax(calc(20px + 20px), 1fr)); }
+  #rows-fixed-fill { grid-template-rows: repeat(auto-fill, minmax(40px, 1fr)); }
+  #rows-calc-fit { grid-template-rows: repeat(auto-fit, minmax(calc(20px + 20px), 1fr)); }
+  .item { min-width: 0; background: #e5484d; border: 1px solid #fff; }
+  .item:nth-child(2) { background: #2563eb; }
+  .item:nth-child(3) { background: #16a34a; }
+  .item:nth-child(4) { background: #f59e0b; }
+  output { display: none; }
+</style>
+<h1>auto-repeat: calc() fixed minimum with 1fr maximum</h1>
+<div class="case"><div class="label">columns auto-fill: minmax(calc(20px + 20px), 1fr)</div><div id="calc-fill" class="grid columns"><i class="item"></i><i class="item"></i><i class="item"></i><i class="item"></i></div></div>
+<div class="case"><div class="label">columns auto-fill: minmax(40px, 1fr) control</div><div id="fixed-fill" class="grid columns"><i class="item"></i><i class="item"></i><i class="item"></i><i class="item"></i></div></div>
+<div class="case"><div class="label">columns auto-fit: calc() with one placed item</div><div id="calc-fit" class="grid columns"><i class="item"></i></div></div>
+<div class="case"><div class="label">rows auto-fill: minmax(calc(20px + 20px), 1fr)</div><div id="rows-calc-fill" class="grid rows"><i class="item"></i><i class="item"></i><i class="item"></i><i class="item"></i></div></div>
+<div class="case"><div class="label">rows auto-fill: minmax(40px, 1fr) control</div><div id="rows-fixed-fill" class="grid rows"><i class="item"></i><i class="item"></i><i class="item"></i><i class="item"></i></div></div>
+<div class="case"><div class="label">rows auto-fit: calc() with one placed item</div><div id="rows-calc-fit" class="grid rows"><i class="item"></i></div></div>
+<output id="result"></output>
+<script>
+  const scenes = [...document.querySelectorAll('.grid')].map(el => ({id:el.id, columns:getComputedStyle(el).gridTemplateColumns, rows:getComputedStyle(el).gridTemplateRows, rect:[el.getBoundingClientRect().width,el.getBoundingClientRect().height]}));
+  document.querySelector('#result').textContent = JSON.stringify({ua:navigator.userAgent, scenes}, null, 2);
+</script>

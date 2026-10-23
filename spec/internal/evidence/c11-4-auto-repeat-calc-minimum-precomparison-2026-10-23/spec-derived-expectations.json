@@ -1,0 +1,46 @@
+{
+  "spec": "CSS Grid Layout Module Level 1, 2025-03-26 CRD, sections 7.2.1 and 7.2.3.2",
+  "input": {
+    "contentBoxInlineSizePx": 184,
+    "contentBoxBlockSizePx": 184,
+    "repeatTrack": "minmax(calc(20px + 20px), 1fr)",
+    "gapPx": 0,
+    "fixedMinimumPx": 40
+  },
+  "scenes": [
+    {
+      "id": "columns-calc-fill",
+      "usedTracksPx": [46, 46, 46, 46],
+      "itemFramesRelativeToRoot": [[0, 0, 46, 48], [46, 0, 46, 48], [92, 0, 46, 48], [138, 0, 46, 48]]
+    },
+    {
+      "id": "columns-fixed-fill-control",
+      "usedTracksPx": [46, 46, 46, 46],
+      "itemFramesRelativeToRoot": [[0, 0, 46, 48], [46, 0, 46, 48], [92, 0, 46, 48], [138, 0, 46, 48]]
+    },
+    {
+      "id": "columns-calc-fit",
+      "repetitionCountBeforeCollapse": 4,
+      "usedTracksPx": [184, 0, 0, 0],
+      "itemFramesRelativeToRoot": [[0, 0, 184, 48]]
+    },
+    {
+      "id": "rows-calc-fill",
+      "usedTracksPx": [46, 46, 46, 46],
+      "itemFramesRelativeToRoot": [[0, 0, 48, 46], [0, 46, 48, 46], [0, 92, 48, 46], [0, 138, 48, 46]]
+    },
+    {
+      "id": "rows-fixed-fill-control",
+      "usedTracksPx": [46, 46, 46, 46],
+      "itemFramesRelativeToRoot": [[0, 0, 48, 46], [0, 46, 48, 46], [0, 92, 48, 46], [0, 138, 48, 46]]
+    },
+    {
+      "id": "rows-calc-fit",
+      "repetitionCountBeforeCollapse": 4,
+      "usedTracksPx": [184, 0, 0, 0],
+      "itemFramesRelativeToRoot": [[0, 0, 48, 184]]
+    }
+  ],
+  "derivation": "184 / 40 admits four repetitions; 24px free space is divided evenly among four 1fr tracks. auto-fit collapses the three empty tracks after placement; zero gap leaves the occupied track at 184px.",
+  "outsideScope": ["percentage in calc", "zero or negative/non-finite result", "intrinsic max track function", "multiple repeated tracks", "WPT conformance"]
+}

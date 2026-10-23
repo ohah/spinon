@@ -1,0 +1,46 @@
+{
+  "browser": "HeadlessChrome/156.0.0.0",
+  "agentBrowser": "0.31.1",
+  "fixture": "tests/fixtures/css/c11/grid-auto-repeat-calc-minimum-c114.html",
+  "viewportCssPixels": [1280, 633],
+  "devicePixelRatio": 1,
+  "scenes": [
+    {
+      "id": "columns-calc-fill",
+      "gridTemplateColumns": "46px 46px 46px 46px",
+      "rootFrame": [0, 0, 184, 48],
+      "itemFrames": [[0, 0, 46, 48], [46, 0, 46, 48], [92, 0, 46, 48], [138, 0, 46, 48]]
+    },
+    {
+      "id": "columns-fixed-fill-control",
+      "gridTemplateColumns": "46px 46px 46px 46px",
+      "rootFrame": [200, 0, 184, 48],
+      "itemFrames": [[200, 0, 46, 48], [246, 0, 46, 48], [292, 0, 46, 48], [338, 0, 46, 48]]
+    },
+    {
+      "id": "columns-calc-fit",
+      "gridTemplateColumns": "184px 0px 0px 0px",
+      "rootFrame": [400, 0, 184, 48],
+      "itemFrames": [[400, 0, 184, 48]]
+    },
+    {
+      "id": "rows-calc-fill",
+      "gridTemplateRows": "46px 46px 46px 46px",
+      "rootFrame": [0, 64, 48, 184],
+      "itemFrames": [[0, 64, 48, 46], [0, 110, 48, 46], [0, 156, 48, 46], [0, 202, 48, 46]]
+    },
+    {
+      "id": "rows-fixed-fill-control",
+      "gridTemplateRows": "46px 46px 46px 46px",
+      "rootFrame": [200, 64, 48, 184],
+      "itemFrames": [[200, 64, 48, 46], [200, 110, 48, 46], [200, 156, 48, 46], [200, 202, 48, 46]]
+    },
+    {
+      "id": "rows-calc-fit",
+      "gridTemplateRows": "184px 0px 0px 0px",
+      "rootFrame": [400, 64, 48, 184],
+      "itemFrames": [[400, 64, 48, 184]]
+    }
+  ],
+  "source": "Agent Browser eval on canonical fixed fixture"
+}
