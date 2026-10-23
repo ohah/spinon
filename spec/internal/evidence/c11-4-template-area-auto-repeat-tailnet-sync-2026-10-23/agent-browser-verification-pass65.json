@@ -1,0 +1,47 @@
+{
+  "pass": "pass65",
+  "browser": "Agent Browser",
+  "checks": {
+    "roadmap": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "pr539Visible": true,
+      "mergeShaVisible": "0f46437c299df6f0c069b694a3f2184ac464ad3d",
+      "completeCountVisible": "77/213",
+      "c114MarkedIncomplete": true,
+      "screenshot": "tailnet-roadmap-agent-browser-pass65.png"
+    },
+    "roadmapReview": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-template-area-auto-repeat-roadmap-html-2026-10-23/pr-diff-review-30.html",
+      "title": "C11.4 roadmap HTML PR diff 검토 30개 - 스피논 문서",
+      "orderedItems": 30
+    },
+    "runtimeEvidence": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-template-area-auto-repeat-runtime-2026-10-23/README.html",
+      "mentions": ["13/13", "66/66", "APK/IPA", "visibility:hidden"],
+      "images": [
+        {"alt": "Android AVD C11.4 area-larger", "complete": true, "width": 1080, "height": 2400},
+        {"alt": "iOS Simulator C11.4 area-larger", "complete": true, "width": 1206, "height": 2622}
+      ]
+    },
+    "plan": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-auto-repeat-template-areas.html",
+      "title": "C11.4 · auto-repeat과 grid-template-areas line 결합 계획 - 스피논 문서",
+      "pr539Visible": true,
+      "planReview20Visible": true
+    },
+    "contract": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/0059-c11-grid-layout.html",
+      "title": "0059 · C11 Grid 레이아웃 내부 계약 - 스피논 문서",
+      "version": "0.1.0"
+    },
+    "statusAnchor": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html#c11-css-grid",
+      "completeCountVisible": "77/213",
+      "previousAnchorExists": false,
+      "correctedAnchor": "css-구현-체크리스트",
+      "correctedAnchorExists": true,
+      "correctedAnchorScreenshot": "../c11-4-template-area-auto-repeat-status-anchor-fix-2026-10-23/status-css-checklist-anchor-agent-browser-pass65.png"
+    }
+  },
+  "limitation": "The previous roadmap status fragment is absent. PR #541 corrects the source; pass66 must sync and verify the corrected roadmap URL."
+}
