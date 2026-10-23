@@ -32,9 +32,9 @@
 | 26 | scene fixture 코드나 payload가 기본 제품 산출물에 연결되는가 | module은 `c04-runtime-gpu-fixture-test` gate 아래 있다. 다만 current-source default/product archive와 최종 APK/IPA 제외는 확인하지 못해 이 위험은 미해결 검증 한계로 남겼다. |
 | 27 | 화면 sample이 기대 색상/좌표와 맞지 않거나 화면 proof를 과장하는가 | Android PixelCopy 및 iOS 제출 전 Metal drawable이 4/4 exact다. border stroke, Android hardware GPU와 iOS compositor 이후 화면은 주장하지 않는다. |
 | 28 | 캡처 harness가 node frame·track trace·draw/present 실패를 누락하는가 | Android와 iOS 최종 result JSON은 각각 34 scene, 34 `drawPresented=true`이며 scene별 frame·tracks·trace chunk를 보존한다. |
-| 29 | PR screenshots의 이미지 경로가 branch와 증거 파일 위치를 가리키는가 | 최종 PR 본문에 commit 고정 raw image를 넣고 Agent Browser에서 실제 렌더링까지 확인한다. 확인 전에는 성공으로 판정하지 않는다. |
+| 29 | PR screenshots의 이미지 경로가 branch와 증거 파일 위치를 가리키는가 | Agent Browser로 PR #545를 열어 두 이미지가 모두 `complete=true`로 렌더링되고 각각 1080×2400, 1206×2622 natural pixels를 반환함을 확인했다. 지정 session을 닫고 fresh session/process scan에서 실행 항목이 없는 것도 확인했다. [검증 JSON](agent-browser-pr-545-images.json). |
 | 30 | plan, conformance, contract, STATUS가 서로 다른 완료 범위를 선언하는가 | 네 문서와 runtime README가 동일한 제한 slice, `0.1.0`, unchecked C11.4 및 `77/213`을 기록한다. |
 
 ## 판정
 
-구현과 simulator runtime의 검토 항목은 통과했다. 26번의 current-source product archive negative control과 최종 APK/IPA exclusion, 29번의 GitHub 렌더링 확인은 아직 증명이 필요하다. WPT, 실기기·hardware GPU, iOS compositor 이후 pixels, border stroke와 전체 C11.4 지원은 PR 범위 밖으로 남는다. 이 파일은 독립 reviewer 수를 뜻하지 않으며, 30개의 개별 관점과 그 판정 근거를 기록한다.
+구현과 simulator runtime 검토 및 GitHub 이미지 렌더링 확인은 통과했다. 26번의 current-source product archive negative control과 최종 APK/IPA exclusion은 여전히 증명이 필요하다. WPT, 실기기·hardware GPU, iOS compositor 이후 pixels, border stroke와 전체 C11.4 지원은 PR 범위 밖으로 남는다. 이 파일은 독립 reviewer 수를 뜻하지 않으며, 30개의 개별 관점과 그 판정 근거를 기록한다.

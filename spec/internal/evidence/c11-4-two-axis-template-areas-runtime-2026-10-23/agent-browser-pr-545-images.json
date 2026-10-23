@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-23 01:50:05 UTC",
+  "tool": "agent-browser 0.31.1",
+  "session": "spinon-pr545",
+  "page": "https://github.com/ohah/spinon/pull/545",
+  "headCommit": "e972abad18734fd06283dadd125d827f2709a2bb",
+  "images": [
+    {
+      "alt": "Android AVD에서 root 바깥으로 확장된 grid area",
+      "src": "https://github.com/ohah/spinon/blob/e972abad18734fd06283dadd125d827f2709a2bb/spec/internal/evidence/c11-4-two-axis-template-areas-runtime-2026-10-23/android-avd-c114-two-axis-areas-overflow-android-avd-20261023T013400226Z-c6218d0c/template-area-repeat-two-axis-area-added-both.png?raw=1",
+      "complete": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    },
+    {
+      "alt": "iOS Simulator에서 root 바깥으로 확장된 grid area",
+      "src": "https://github.com/ohah/spinon/blob/e972abad18734fd06283dadd125d827f2709a2bb/spec/internal/evidence/c11-4-two-axis-template-areas-runtime-2026-10-23/ios-simulator-c114-two-axis-areas-overflow-ios-simulator-20261023T013607344Z-14f770b2/template-area-repeat-two-axis-area-added-both.png?raw=1",
+      "complete": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622
+    }
+  ],
+  "closedSession": true,
+  "activeSessionsAfterClose": [],
+  "agentBrowserProcessesAfterClose": []
+}

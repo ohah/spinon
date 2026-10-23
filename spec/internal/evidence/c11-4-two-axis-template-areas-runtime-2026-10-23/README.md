@@ -26,6 +26,7 @@
 - [Android result JSON](android-avd-c114-two-axis-areas-overflow-android-avd-20261023T013400226Z-c6218d0c/result.json) · [Android PixelCopy log](android-avd-c114-two-axis-areas-overflow-android-avd-20261023T013400226Z-c6218d0c/runtime-template-area-repeat-two-axis-area-added-both.log) · [Android matrix output](android-matrix-final-output.log)
 - [iOS result JSON](ios-simulator-c114-two-axis-areas-overflow-ios-simulator-20261023T013607344Z-14f770b2/result.json) · [iOS Metal log](ios-simulator-c114-two-axis-areas-overflow-ios-simulator-20261023T013607344Z-14f770b2/runtime-template-area-repeat-two-axis-area-added-both.log) · [iOS matrix output](ios-matrix-output.log)
 - [Android build](android-build-final.log) · [iOS build with `DEBUG_INFORMATION_FORMAT=dwarf` and Metal pixel readback enabled](ios-build-metal-pixels-final.log)
+- [PR #545 screenshot rendering and Agent Browser shutdown verification](agent-browser-pr-545-images.json)
 
 ## Rust와 fixture 검사
 
