@@ -1,0 +1,53 @@
+{
+  "pass": "pass02",
+  "baseSelectedRoot": "build/spinon/c11-4-code-roadmap-sync-20261024-root-pass01-selected",
+  "selectedRoot": "build/spinon/c11-4-code-roadmap-sync-20261024-root-pass02-selected",
+  "outputRoot": "build/spinon/c11-4-code-roadmap-sync-20261024-site-pass02-selected",
+  "head": "1b00ba0d8c5e0014c3b41ff2efb1a093917980b8",
+  "sourceFiles": [
+    "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md",
+    "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.md",
+    "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/tailnet-c114-plan-agent-browser-pass01.png"
+  ],
+  "overlayCount": 6,
+  "overlays": [
+    {
+      "source": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md",
+      "path": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md",
+      "bytes": 3125,
+      "sha256": "742ea5d6178ac82543745bc7af1c30daedcbe975dd64b03a67d0257f9d88f84c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md",
+      "path": "internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md",
+      "bytes": 3125,
+      "sha256": "742ea5d6178ac82543745bc7af1c30daedcbe975dd64b03a67d0257f9d88f84c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.md",
+      "path": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.md",
+      "bytes": 3427,
+      "sha256": "a634ce25f1f3432d789f3283167e70773c85cd367dea4aeb797e267fdd1ce094"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.md",
+      "path": "internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.md",
+      "bytes": 3427,
+      "sha256": "a634ce25f1f3432d789f3283167e70773c85cd367dea4aeb797e267fdd1ce094"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/tailnet-c114-plan-agent-browser-pass01.png",
+      "path": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/tailnet-c114-plan-agent-browser-pass01.png",
+      "bytes": 234871,
+      "sha256": "0362454ca835f950f659b4168127c87f201d838703f21f5e594e108b11c3b0d9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/tailnet-c114-plan-agent-browser-pass01.png",
+      "path": "internal/evidence/c11-4-code-roadmap-sync-2026-10-24/tailnet-c114-plan-agent-browser-pass01.png",
+      "bytes": 234871,
+      "sha256": "0362454ca835f950f659b4168127c87f201d838703f21f5e594e108b11c3b0d9"
+    }
+  ],
+  "storageMethod": "hardlink pass01 curated root, unlink overlay target, write current source bytes",
+  "noDeletes": true
+}

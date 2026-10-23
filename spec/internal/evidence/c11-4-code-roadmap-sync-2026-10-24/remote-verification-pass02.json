@@ -1,0 +1,41 @@
+{
+  "pass": "pass02",
+  "selectedRouteCount": 5,
+  "changedRouteCount": 5,
+  "verifiedRouteCount": 5,
+  "allVerifiedRoutesHttp200": true,
+  "allVerifiedLocalAndRemoteHashesMatchSelectedBuild": true,
+  "noDeletes": true,
+  "routes": [
+    {
+      "path": "internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.html",
+      "status": 200,
+      "bytes": 442595,
+      "sha256": "5fc782f261ecf09b7ad78f1f7dbd28d14eef27f0b277652d53c9b2ba393c714a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.html",
+      "status": 200,
+      "bytes": 442613,
+      "sha256": "13c350cd0aa72ba1d8036574dc140cc09dcb6cd9b2f758baf56808e107e6de47"
+    },
+    {
+      "path": "internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.html",
+      "status": 200,
+      "bytes": 443064,
+      "sha256": "5fbf6828c17d1d7c5cd27b9d8a4be657c82f421d020de5974f11729970b16cca"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/pr-diff-review-20.html",
+      "status": 200,
+      "bytes": 443074,
+      "sha256": "5d52ca86d869a1f7230f416020d263b9f89a57955e6304657442c3f852581046"
+    },
+    {
+      "path": "static/image/tailnet-c114-plan-agent-browser-pass01.65153520e0.png",
+      "status": 200,
+      "bytes": 234871,
+      "sha256": "0362454ca835f950f659b4168127c87f201d838703f21f5e594e108b11c3b0d9"
+    }
+  ]
+}
