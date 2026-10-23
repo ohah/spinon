@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [cyclic minmax max-content span-groups](./c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** Chrome 156 Agent Browser 사전 관측, CSS Grid 2025 CRD 독립 기대값, 네 고정 scene의 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 검증과 PR 적대적 검토가 끝났다. 구현 PR [#520](https://github.com/ohah/spinon/pull/520)은 2026-10-23 02:21:48 KST Rebase and merge로 병합됐고 SHA는 `861f69862de34858d522b380f25b52dc5310ef5d`다. PR check rollup은 비었고 main에 required status check은 설정되어 있지 않았다. 이 slice는 C11.4 전체가 아니므로 checkbox와 공식 완료 수 `77/213`은 변경하지 않는다.
+**상태:** Chrome 156 Agent Browser 사전 관측, CSS Grid 2025 CRD 독립 기대값, 네 고정 scene의 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 검증과 PR 적대적 검토가 끝났다. 구현 PR [#520](https://github.com/ohah/spinon/pull/520)은 2026-10-23 02:21:48 KST Rebase and merge로 병합됐고 SHA는 `861f69862de34858d522b380f25b52dc5310ef5d`다. PR check rollup은 비었고 main에 required status check은 설정되어 있지 않았다. 이 slice는 C11.4 전체가 아니므로 checkbox와 공식 완료 수 `72/213`은 변경하지 않는다.
 
 ## 목적
 
@@ -52,7 +52,7 @@ Chrome 156 Agent Browser 관측은 forward와 reverse에서 동일한 tracks와 
 5. 기본 release artifact에서 새 fixture scene ID, preparation FFI symbol과 고정 image payload가 제외되고 opt-in fixture-test positive control에 포함되는지 각각 확인한다. 정적 archive 검사는 APK/IPA 전체 또는 출시 artifact를 증명하지 않는다.
 6. 최신 source revision의 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 scene의 track·frame·trace·draw/present를 확인한다. 사용자가 시뮬레이터를 허용했으므로 실기기 연결은 요구하지 않는다. Android surface PixelCopy와 iOS compositor 제출 전 Metal drawable은 각 플랫폼에서 별도 표본으로 기록한다.
 7. 기능 구현 후 새 runtime/code 실패 관점 20개와 PR diff 실패 관점 20개를 따로 기록한다. 발견 수정은 영향을 받는 scene, trace, artifact positive/negative control 및 simulator 관문을 재실행한다.
-8. 내부 계약 0059, 상위 C11.4 계획, 공개 roadmap과 실행 evidence만 필요한 범위로 갱신한다. 새 일반 CSS admission이나 public API를 만들지 않으며 C11.4 checkbox와 공식 `77/213`은 유지한다.
+8. 내부 계약 0059, 상위 C11.4 계획, 공개 roadmap과 실행 evidence만 필요한 범위로 갱신한다. 새 일반 CSS admission이나 public API를 만들지 않으며 C11.4 checkbox와 공식 `72/213`은 유지한다.
 
 ## 성공·실패 판정
 
@@ -85,4 +85,4 @@ Chrome 156 Agent Browser 관측은 forward와 reverse에서 동일한 tracks와 
 - 두 플랫폼 run metadata, app hash, screenshot과 원본 JSON은 [runtime evidence](../spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-runtime-2026-10-23/README.md)에 둔다. AVD/iOS Simulator 결과는 실기기·hardware GPU 결과로 확대하지 않는다.
 - [구현 runtime 실패 관점 20개](../spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-runtime-2026-10-23/runtime-code-review-20.md)와 [구현 diff 실패 관점 20개](../spec/internal/evidence/c11-4-cyclic-minmax-replaced-image-span-runtime-2026-10-23/pr-diff-review-20.md)를 계획 검토와 분리해 기록했다. Root min/max/aspect-ratio 검사와 Android host 장면·PixelCopy·reversed input 누락을 발견해 보강했다.
 
-시뮬레이터 관문과 PR 적대적 검토는 완료했고 구현 PR #520을 병합했다. 이 제한 slice는 전체 기능 또는 C11.4 완료를 뜻하지 않는다. 더 넓은 Grid/image 입력과 상위 C11.4 범위가 남아 있으므로 C11.4 checkbox와 공식 `77/213`은 그대로 유지한다.
+시뮬레이터 관문과 PR 적대적 검토는 완료했고 구현 PR #520을 병합했다. 이 제한 slice는 전체 기능 또는 C11.4 완료를 뜻하지 않는다. 더 넓은 Grid/image 입력과 상위 C11.4 범위가 남아 있으므로 C11.4 checkbox와 공식 `72/213`은 그대로 유지한다.

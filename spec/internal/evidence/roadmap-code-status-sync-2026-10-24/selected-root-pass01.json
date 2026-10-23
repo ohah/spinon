@@ -1,0 +1,272 @@
+{
+  "pass": "pass01",
+  "baseSelectedRoot": "build/spinon/c11-4-pr562-tailnet-root-pass70-selected",
+  "selectedRoot": "build/spinon/roadmap-code-status-sync-20261024-root-pass01-selected",
+  "outputRoot": "build/spinon/roadmap-code-status-sync-20261024-site-pass01-selected",
+  "head": "af23eded0853732379b2f46a1d72b74ba6bfe8f4",
+  "originMain": "af23eded0853732379b2f46a1d72b74ba6bfe8f4",
+  "sourceFiles": [
+    "spec/STATUS.md",
+    "spec/public/roadmap.html",
+    "plan/c11-4-auto-fit-named-line-implicit-fallback.md",
+    "plan/c11-4-auto-repeat-named-line-implicit-fallback.md",
+    "plan/c11-4-auto-repeat-named-lines.md",
+    "plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md",
+    "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md",
+    "plan/c11-4-cyclic-minmax-calc-cross-axis-span-groups.md",
+    "plan/c11-4-cyclic-minmax-calc-minimum-span.md",
+    "plan/c11-4-cyclic-minmax-calc-overlapping-rows.md",
+    "plan/c11-4-cyclic-minmax-calc-overlapping-spans.md",
+    "plan/c11-4-cyclic-minmax-calc-two-axis-spanning-text.md",
+    "plan/c11-4-cyclic-minmax-max-content-mixed-text-image-span.md",
+    "plan/c11-4-cyclic-minmax-mixed-text-image-span.md",
+    "plan/c11-4-cyclic-minmax-replaced-image-span.md",
+    "plan/c11-4-two-axis-template-areas.md",
+    "spec/internal/evidence/roadmap-code-status-sync-2026-10-24/README.md",
+    "spec/internal/evidence/roadmap-code-status-sync-2026-10-24/pr-diff-review-20.md"
+  ],
+  "overlays": [
+    {
+      "source": "spec/STATUS.md",
+      "path": "spec/STATUS.md",
+      "bytes": 403177,
+      "sha256": "026c907fb98423cd1990e290bbb3e112372748c1c05116492be636938a90253a"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "STATUS.md",
+      "bytes": 403177,
+      "sha256": "026c907fb98423cd1990e290bbb3e112372748c1c05116492be636938a90253a"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "roadmap.html",
+      "bytes": 276501,
+      "sha256": "79e86877052f56ab4040db18e85055ccef3a512d6160f3be9aed1281b435ae5f"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "public/roadmap.html",
+      "bytes": 276501,
+      "sha256": "79e86877052f56ab4040db18e85055ccef3a512d6160f3be9aed1281b435ae5f"
+    },
+    {
+      "source": "plan/c11-4-auto-fit-named-line-implicit-fallback.md",
+      "path": "plan/c11-4-auto-fit-named-line-implicit-fallback.md",
+      "bytes": 9079,
+      "sha256": "00b82c2c25c6e1ec449e336a8234f092d354e2657f882ebb7f91fc3c94f422e9"
+    },
+    {
+      "source": "plan/c11-4-auto-fit-named-line-implicit-fallback.md",
+      "path": "spec/plan/c11-4-auto-fit-named-line-implicit-fallback.md",
+      "bytes": 9079,
+      "sha256": "00b82c2c25c6e1ec449e336a8234f092d354e2657f882ebb7f91fc3c94f422e9"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-named-line-implicit-fallback.md",
+      "path": "plan/c11-4-auto-repeat-named-line-implicit-fallback.md",
+      "bytes": 7728,
+      "sha256": "9f3acca3631b3220bd11e4b9764b6c1eab8c739540187680490c7fc563109afd"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-named-line-implicit-fallback.md",
+      "path": "spec/plan/c11-4-auto-repeat-named-line-implicit-fallback.md",
+      "bytes": 7728,
+      "sha256": "9f3acca3631b3220bd11e4b9764b6c1eab8c739540187680490c7fc563109afd"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-named-lines.md",
+      "path": "plan/c11-4-auto-repeat-named-lines.md",
+      "bytes": 9724,
+      "sha256": "f56b3234094cba883856eca6b07391fedf3762b498a7335b012b513ccac07b28"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-named-lines.md",
+      "path": "spec/plan/c11-4-auto-repeat-named-lines.md",
+      "bytes": 9724,
+      "sha256": "f56b3234094cba883856eca6b07391fedf3762b498a7335b012b513ccac07b28"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md",
+      "path": "plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md",
+      "bytes": 12664,
+      "sha256": "af4e6bff1d65dda5e52868f7f0f1459bdf24dbfb9e1e3be3c5e715b5816d8ac7"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md",
+      "path": "spec/plan/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups.md",
+      "bytes": 12664,
+      "sha256": "af4e6bff1d65dda5e52868f7f0f1459bdf24dbfb9e1e3be3c5e715b5816d8ac7"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md",
+      "path": "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md",
+      "bytes": 8270,
+      "sha256": "11f1a9702829739089cc59151655b04da2baaf4163efba848817392d44689dc2"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md",
+      "path": "spec/plan/c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md",
+      "bytes": 8270,
+      "sha256": "11f1a9702829739089cc59151655b04da2baaf4163efba848817392d44689dc2"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-span-groups.md",
+      "path": "plan/c11-4-cyclic-minmax-calc-cross-axis-span-groups.md",
+      "bytes": 9170,
+      "sha256": "c6cc78d624fee246a7c2435db2138d803a891b9d12f287da3b61643e95e690ce"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-cross-axis-span-groups.md",
+      "path": "spec/plan/c11-4-cyclic-minmax-calc-cross-axis-span-groups.md",
+      "bytes": 9170,
+      "sha256": "c6cc78d624fee246a7c2435db2138d803a891b9d12f287da3b61643e95e690ce"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-minimum-span.md",
+      "path": "plan/c11-4-cyclic-minmax-calc-minimum-span.md",
+      "bytes": 9042,
+      "sha256": "fbc70b7267ca4d83aaf2d4d3853d140909af513fd51afbf78ca113049741ac10"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-minimum-span.md",
+      "path": "spec/plan/c11-4-cyclic-minmax-calc-minimum-span.md",
+      "bytes": 9042,
+      "sha256": "fbc70b7267ca4d83aaf2d4d3853d140909af513fd51afbf78ca113049741ac10"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-overlapping-rows.md",
+      "path": "plan/c11-4-cyclic-minmax-calc-overlapping-rows.md",
+      "bytes": 8447,
+      "sha256": "b9039810b25263f4ca596753bf1bd5ac1cf9ca38a2596253303e360fe20fcec1"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-overlapping-rows.md",
+      "path": "spec/plan/c11-4-cyclic-minmax-calc-overlapping-rows.md",
+      "bytes": 8447,
+      "sha256": "b9039810b25263f4ca596753bf1bd5ac1cf9ca38a2596253303e360fe20fcec1"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-overlapping-spans.md",
+      "path": "plan/c11-4-cyclic-minmax-calc-overlapping-spans.md",
+      "bytes": 8728,
+      "sha256": "43c44652db90c18c6a30cda985b0c2467a0bec819476cf00708afd894e99da93"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-overlapping-spans.md",
+      "path": "spec/plan/c11-4-cyclic-minmax-calc-overlapping-spans.md",
+      "bytes": 8728,
+      "sha256": "43c44652db90c18c6a30cda985b0c2467a0bec819476cf00708afd894e99da93"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-two-axis-spanning-text.md",
+      "path": "plan/c11-4-cyclic-minmax-calc-two-axis-spanning-text.md",
+      "bytes": 6859,
+      "sha256": "15d8c3571175f04174c1e55cefcf0450a3255a4ad2ec69a960caca8d0a6159a5"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-calc-two-axis-spanning-text.md",
+      "path": "spec/plan/c11-4-cyclic-minmax-calc-two-axis-spanning-text.md",
+      "bytes": 6859,
+      "sha256": "15d8c3571175f04174c1e55cefcf0450a3255a4ad2ec69a960caca8d0a6159a5"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-max-content-mixed-text-image-span.md",
+      "path": "plan/c11-4-cyclic-minmax-max-content-mixed-text-image-span.md",
+      "bytes": 11308,
+      "sha256": "a117d99e802a7a8001ff2240bcf41b50c3347f4fa643450d55970337f6e98695"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-max-content-mixed-text-image-span.md",
+      "path": "spec/plan/c11-4-cyclic-minmax-max-content-mixed-text-image-span.md",
+      "bytes": 11308,
+      "sha256": "a117d99e802a7a8001ff2240bcf41b50c3347f4fa643450d55970337f6e98695"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-mixed-text-image-span.md",
+      "path": "plan/c11-4-cyclic-minmax-mixed-text-image-span.md",
+      "bytes": 11374,
+      "sha256": "b53cb0b2be238f0abbcc3a66ef3577b8fe6387e94cd9625261964daa82df85a6"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-mixed-text-image-span.md",
+      "path": "spec/plan/c11-4-cyclic-minmax-mixed-text-image-span.md",
+      "bytes": 11374,
+      "sha256": "b53cb0b2be238f0abbcc3a66ef3577b8fe6387e94cd9625261964daa82df85a6"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-replaced-image-span.md",
+      "path": "plan/c11-4-cyclic-minmax-replaced-image-span.md",
+      "bytes": 12439,
+      "sha256": "4a83d21384013a85967fc8f0a43d8be56705e2184690d72bfbd1b0393bf5775c"
+    },
+    {
+      "source": "plan/c11-4-cyclic-minmax-replaced-image-span.md",
+      "path": "spec/plan/c11-4-cyclic-minmax-replaced-image-span.md",
+      "bytes": 12439,
+      "sha256": "4a83d21384013a85967fc8f0a43d8be56705e2184690d72bfbd1b0393bf5775c"
+    },
+    {
+      "source": "plan/c11-4-two-axis-template-areas.md",
+      "path": "plan/c11-4-two-axis-template-areas.md",
+      "bytes": 13118,
+      "sha256": "1c7f1c1ae693c65d6f8769d948e403b9e1dd9315ec8e8e06fafc5974ffc19274"
+    },
+    {
+      "source": "plan/c11-4-two-axis-template-areas.md",
+      "path": "spec/plan/c11-4-two-axis-template-areas.md",
+      "bytes": 13118,
+      "sha256": "1c7f1c1ae693c65d6f8769d948e403b9e1dd9315ec8e8e06fafc5974ffc19274"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-code-status-sync-2026-10-24/README.md",
+      "path": "spec/internal/evidence/roadmap-code-status-sync-2026-10-24/README.md",
+      "bytes": 3438,
+      "sha256": "8e052bae4a33d3b3740bb3474d58698c788b0153fdc6cb7a9f0bcb9d92a41150"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-code-status-sync-2026-10-24/README.md",
+      "path": "internal/evidence/roadmap-code-status-sync-2026-10-24/README.md",
+      "bytes": 3438,
+      "sha256": "8e052bae4a33d3b3740bb3474d58698c788b0153fdc6cb7a9f0bcb9d92a41150"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-code-status-sync-2026-10-24/README.md",
+      "path": "public/internal/evidence/roadmap-code-status-sync-2026-10-24/README.md",
+      "bytes": 3438,
+      "sha256": "8e052bae4a33d3b3740bb3474d58698c788b0153fdc6cb7a9f0bcb9d92a41150"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-code-status-sync-2026-10-24/README.md",
+      "path": "public/spec/internal/evidence/roadmap-code-status-sync-2026-10-24/README.md",
+      "bytes": 3438,
+      "sha256": "8e052bae4a33d3b3740bb3474d58698c788b0153fdc6cb7a9f0bcb9d92a41150"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-code-status-sync-2026-10-24/pr-diff-review-20.md",
+      "path": "spec/internal/evidence/roadmap-code-status-sync-2026-10-24/pr-diff-review-20.md",
+      "bytes": 3200,
+      "sha256": "8c3b98bbf00f48025dad57ca14d26fdf041072f597e4e183bf8055a61364cd18"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-code-status-sync-2026-10-24/pr-diff-review-20.md",
+      "path": "internal/evidence/roadmap-code-status-sync-2026-10-24/pr-diff-review-20.md",
+      "bytes": 3200,
+      "sha256": "8c3b98bbf00f48025dad57ca14d26fdf041072f597e4e183bf8055a61364cd18"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-code-status-sync-2026-10-24/pr-diff-review-20.md",
+      "path": "public/internal/evidence/roadmap-code-status-sync-2026-10-24/pr-diff-review-20.md",
+      "bytes": 3200,
+      "sha256": "8c3b98bbf00f48025dad57ca14d26fdf041072f597e4e183bf8055a61364cd18"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-code-status-sync-2026-10-24/pr-diff-review-20.md",
+      "path": "public/spec/internal/evidence/roadmap-code-status-sync-2026-10-24/pr-diff-review-20.md",
+      "bytes": 3200,
+      "sha256": "8c3b98bbf00f48025dad57ca14d26fdf041072f597e4e183bf8055a61364cd18"
+    }
+  ],
+  "storageMethod": "hardlink the previous selected root; unlink each overlay target before writing the current source",
+  "noDeletes": true
+}

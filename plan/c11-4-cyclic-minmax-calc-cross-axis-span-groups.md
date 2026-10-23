@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [양축 span text 계획](./c11-4-cyclic-minmax-calc-two-axis-spanning-text.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 네 고정 scene을 기존 opt-in runtime에 연결했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 4/4 scene, track/frame trace 및 definite-width overflow 표본을 확인했다. intrinsic float 차이는 독립 계산 기준 대비 1/64 CSS px 이내다. 기본 release static archive에는 신규 scene ID와 fixture entry marker가 없고 opt-in positive control에는 모두 있다. 계획 실패 관점 검토 20개, 구현/runtime 실패 관점 검토 20개와 PR diff 검토 30개를 기록했다. 제한 fixture 구현이며 C11.4 checkbox와 공식 `77/213`은 유지한다. [실행·화면·artifact 근거](../spec/internal/evidence/c11-4-cross-axis-span-groups-runtime-2026-10-22/README.md) · 구현 PR [#510](https://github.com/ohah/spinon/pull/510)
+**상태:** 네 고정 scene을 기존 opt-in runtime에 연결했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 4/4 scene, track/frame trace 및 definite-width overflow 표본을 확인했다. intrinsic float 차이는 독립 계산 기준 대비 1/64 CSS px 이내다. 기본 release static archive에는 신규 scene ID와 fixture entry marker가 없고 opt-in positive control에는 모두 있다. 계획 실패 관점 검토 20개, 구현/runtime 실패 관점 검토 20개와 PR diff 검토 30개를 기록했다. 제한 fixture 구현이며 C11.4 checkbox와 공식 `72/213`은 유지한다. [실행·화면·artifact 근거](../spec/internal/evidence/c11-4-cross-axis-span-groups-runtime-2026-10-22/README.md) · 구현 PR [#510](https://github.com/ohah/spinon/pull/510)
 
 ## 목적
 
@@ -36,7 +36,7 @@ PR #506은 하나의 text item이 두 columns와 두 rows를 동시에 span하�
 4. Definite-width 두 scene에서 Android PixelCopy와 iOS Metal drawable을 사용해 root-relative `(50,4)`의 `#e5484d` item B background와 `(60,4)`의 native surface clear를 검사한다. scale, viewport origin과 physical sample 좌표를 기록한다. `(50,4)`는 44px root border box 바깥, 40px item B 안이어야 한다. iOS 표본은 compositor 제출 전 결과다.
 5. 기본 release FFI artifact에서 신규 scene ID·fixture marker·Ahem payload가 제외되고 opt-in fixture-test positive control에만 들어가는지 각각 확인한다. 변경한 Rust crate의 focused tests, formatter/lint, FFI tests와 Android/iOS Simulator app builds를 실행한다. 실기기·hardware GPU·WPT·iOS compositor 이후 pixels는 범위 밖이다.
 6. 기존 양축 span, overlapping span, minmax(calc()) 및 multi-span ordering tests를 재실행한다. 새 구현/runtime 실패 관점 20개와 구현 PR diff 실패 관점 20개를 각각 독립적으로 기록한다. 발견한 결함은 영향 scene과 surface sample까지 다시 실행한다.
-7. 내부 계약 0059의 existing opt-in fixture 경계를 따른다. 새 일반 CSS admission이나 public API를 추가하지 않는다. `spec/STATUS.md`, `plan/c11-4-grid-track-sizing.md`, conformance evidence와 공개 로드맵에는 제한 slice와 미검증 범위만 기록하고 C11.4 checkbox와 `77/213`을 올리지 않는다.
+7. 내부 계약 0059의 existing opt-in fixture 경계를 따른다. 새 일반 CSS admission이나 public API를 추가하지 않는다. `spec/STATUS.md`, `plan/c11-4-grid-track-sizing.md`, conformance evidence와 공개 로드맵에는 제한 slice와 미검증 범위만 기록하고 C11.4 checkbox와 `72/213`을 올리지 않는다.
 
 ## 성공·오류 판정
 

@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [단일 축 area 결합](./c11-4-auto-repeat-template-areas.md) · [양 축 auto-repeat](./c11-4-two-axis-auto-repeat.md) · [CSS Grid 내부 계약](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획 PR [#543](https://github.com/ohah/spinon/pull/543)이 병합됐다. 구현 전 소스 재추적에서 cascade gate를 추가 발견해 이 계획 수정에 반영하고, 계획 수정 관점 20개와 계획 수정 PR diff 30개를 새로 검토했다. Chrome 156 9-scene oracle을 유지했다. 구현과 Android/iOS Simulator 34-scene matrix가 통과했고 구현 PR [#545](https://github.com/ohah/spinon/pull/545)은 Rebase and merge로 병합돼 SHA `d7a6b35966f7ba9ad53fc5c450bfd1e6ec9ead34`를 남겼다. default/product FFI archive negative control은 simulator build 뒤 공간이 부족해 실행하지 않았으며 최종 APK/IPA fixture exclusion도 미검증이다. 구현/runtime 실패 관점 20개와 PR 변경사항 실패 관점 30개를 별도로 기록했다. C11.4 checkbox와 공식 `77/213`은 유지한다. [구현 실행 근거](../spec/internal/evidence/c11-4-two-axis-template-areas-runtime-2026-10-23/README.md).
+**상태:** 계획 PR [#543](https://github.com/ohah/spinon/pull/543)이 병합됐다. 구현 전 소스 재추적에서 cascade gate를 추가 발견해 이 계획 수정에 반영하고, 계획 수정 관점 20개와 계획 수정 PR diff 30개를 새로 검토했다. Chrome 156 9-scene oracle을 유지했다. 구현과 Android/iOS Simulator 34-scene matrix가 통과했고 구현 PR [#545](https://github.com/ohah/spinon/pull/545)은 Rebase and merge로 병합돼 SHA `d7a6b35966f7ba9ad53fc5c450bfd1e6ec9ead34`를 남겼다. default/product FFI archive negative control은 simulator build 뒤 공간이 부족해 실행하지 않았으며 최종 APK/IPA fixture exclusion도 미검증이다. 구현/runtime 실패 관점 20개와 PR 변경사항 실패 관점 30개를 별도로 기록했다. C11.4 checkbox와 공식 `72/213`은 유지한다. [구현 실행 근거](../spec/internal/evidence/c11-4-two-axis-template-areas-runtime-2026-10-23/README.md).
 
 ## 결손
 
@@ -67,4 +67,4 @@ Chrome for Testing `156.0.8078.48`, Agent Browser `0.31.1`, macOS arm64, viewpor
 
 ## 제외 범위
 
-한 track list의 복수 auto-repeat, integer repeat 혼합, repeated line names, authored/generated alias collision의 추가 조합, subgrid, non-fixed `grid-auto-*`, intrinsic/percentage/fraction track, implicit placement 확장, RTL·writing mode, arbitrary runtime CSS, 공개 CSS admission, WPT와 전체 C11.4 완료는 다루지 않는다. Android 물리 기기·hardware GPU, iOS 물리 기기와 compositor 제출 후 픽셀도 검증하지 않는다. 내부 계약 `0059` 숫자 버전 `0.1.0`, C11.4 checkbox와 공식 `77/213`은 그대로 유지한다.
+한 track list의 복수 auto-repeat, integer repeat 혼합, repeated line names, authored/generated alias collision의 추가 조합, subgrid, non-fixed `grid-auto-*`, intrinsic/percentage/fraction track, implicit placement 확장, RTL·writing mode, arbitrary runtime CSS, 공개 CSS admission, WPT와 전체 C11.4 완료는 다루지 않는다. Android 물리 기기·hardware GPU, iOS 물리 기기와 compositor 제출 후 픽셀도 검증하지 않는다. 내부 계약 `0059` 숫자 버전 `0.1.0`, C11.4 checkbox와 공식 `72/213`은 그대로 유지한다.

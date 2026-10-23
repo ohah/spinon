@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [auto-repeat authored line names](./c11-4-auto-repeat-named-lines.md) · [auto-fill implicit fallback](./c11-4-auto-repeat-named-line-implicit-fallback.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 구현/runtime 검증 완료(고정 fixture slice). Chrome 사전 비교와 계획 검토에 이어 두 simulator에서 auto-fill 회귀 10개와 auto-fit 신규 10개를 각 20/20 통과했다. 구현/runtime 검토 20개도 별도로 마쳤다. 구현 PR [#537](https://github.com/ohah/spinon/pull/537)에 결과를 연결했다. C11.4 및 공식 `77/213`은 미완료로 유지한다.
+**상태:** 구현/runtime 검증 완료(고정 fixture slice). Chrome 사전 비교와 계획 검토에 이어 두 simulator에서 auto-fill 회귀 10개와 auto-fit 신규 10개를 각 20/20 통과했다. 구현/runtime 검토 20개도 별도로 마쳤다. 구현 PR [#537](https://github.com/ohah/spinon/pull/537)에 결과를 연결했다. C11.4 및 공식 `72/213`은 미완료로 유지한다.
 
 ## 결손과 가설
 

@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [기존 two-item cross-axis 계획](./c11-4-cyclic-minmax-calc-cross-axis-span-groups.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 네 fixed scene의 기준 관측·독립 계산, 계획 실패 관점 20개와 Android/iOS runtime 행렬을 확인했다. PR #515의 네 장면은 두 플랫폼에서 각 4/4 draw/present됐고, definite 두 장면의 overflow·clear 표본은 각각 4/4 exact다. C11.4 전체 회귀 행렬도 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 263/263 draw/present, 표면 표본 219/219 exact(63개 표본 대상 scene)를 확인했다. 이 제한 fixture와 simulator 결과는 일반 CSS 지원 또는 C11.4 완료를 뜻하지 않는다. checkbox와 공식 `77/213`은 유지한다. [최종 회귀 실행·화면·로그](../spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/README.md)
+**상태:** 네 fixed scene의 기준 관측·독립 계산, 계획 실패 관점 20개와 Android/iOS runtime 행렬을 확인했다. PR #515의 네 장면은 두 플랫폼에서 각 4/4 draw/present됐고, definite 두 장면의 overflow·clear 표본은 각각 4/4 exact다. C11.4 전체 회귀 행렬도 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 263/263 draw/present, 표면 표본 219/219 exact(63개 표본 대상 scene)를 확인했다. 이 제한 fixture와 simulator 결과는 일반 CSS 지원 또는 C11.4 완료를 뜻하지 않는다. checkbox와 공식 `72/213`은 유지한다. [최종 회귀 실행·화면·로그](../spec/internal/evidence/c11-4-pr515-prereq-regression-2026-10-22/README.md)
 
 ## 목적
 
@@ -33,7 +33,7 @@ Forward/reverse는 document order만 바꾸고 node identity·placement·style�
 4. AVD PixelCopy definite sample에서 root border 바깥의 B 색과 item 이후 surface clear를 기록한다. iOS Simulator Metal drawable에서 같은 논리 표본을 제출 전에 검사하고 좌표·scale·surface origin을 manifest에 남긴다. Android 실기기는 연결하지 않는다.
 5. 기본 release FFI artifact에서 새 scene ID·fixture marker·Ahem payload가 빠지고 opt-in fixture artifact에 포함되는지 대조한다. Focused Rust tests, workspace formatter/lint, FFI checks, Android API 37 ARM64 AVD와 iOS 26.2 Simulator app builds를 실행한다.
 6. 기존 C11.4 cyclic minmax cross-axis, overlapping-span, two-axis text, mixed item 및 row-order regression을 재실행한다. **새 구현/runtime 실패 관점 20개**와 별도 PR diff 실패 관점 **30개**를 기록한다. 결함을 찾으면 해당 scene, source order, contribution trace와 surface sample을 다시 확인한다.
-7. `spec/internal/0059-c11-grid-layout.md`, C11.4 parent plan, `spec/STATUS.md`, 공개 로드맵 및 runtime README의 지원 제한을 일치시킨다. C11.4 checkbox, top-level item 수, 공식 `77/213`, 공개 CSS 지원 상태는 올리지 않는다.
+7. `spec/internal/0059-c11-grid-layout.md`, C11.4 parent plan, `spec/STATUS.md`, 공개 로드맵 및 runtime README의 지원 제한을 일치시킨다. C11.4 checkbox, top-level item 수, 공식 `72/213`, 공개 CSS 지원 상태는 올리지 않는다.
 
 ## 성공·실패 판정
 

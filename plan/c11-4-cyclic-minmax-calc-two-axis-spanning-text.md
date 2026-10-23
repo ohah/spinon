@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [겹치는 span 선행 계획](./c11-4-cyclic-minmax-calc-overlapping-rows.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** Chrome 156 사전 비교와 독립 기대값을 네 고정 장면으로 확정했다. 계획 검토 뒤 구현을 추가했고, commit `514a2ee73b807fdd2b19d57016adb976dae34d17` 기준 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 장면씩 통과했다. 기본/fixture static archive 경계와 새 구현 runtime 실패 관점 20개도 기록했다. 구현 변경은 [PR #506](https://github.com/ohah/spinon/pull/506), [실행 근거](../spec/internal/evidence/c11-4-cyclic-minmax-calc-two-axis-spanning-text-runtime-2026-10-22/README.md)에 연결한다. C11.4 체크박스와 `77/213` 집계는 유지한다.
+**상태:** Chrome 156 사전 비교와 독립 기대값을 네 고정 장면으로 확정했다. 계획 검토 뒤 구현을 추가했고, commit `514a2ee73b807fdd2b19d57016adb976dae34d17` 기준 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 장면씩 통과했다. 기본/fixture static archive 경계와 새 구현 runtime 실패 관점 20개도 기록했다. 구현 변경은 [PR #506](https://github.com/ohah/spinon/pull/506), [실행 근거](../spec/internal/evidence/c11-4-cyclic-minmax-calc-two-axis-spanning-text-runtime-2026-10-22/README.md)에 연결한다. C11.4 체크박스와 `72/213` 집계는 유지한다.
 
 ## 목적과 경계
 
@@ -31,7 +31,7 @@ Each scene's item frame is root-relative `(2,2)` with the content-box dimensions
 4. Android PixelCopy와 iOS drawable readback은 각 scene에서 item 내부의 `#e5484d` sample을 검사하고 scale·native viewport origin을 기록한다. iOS readback은 compositor 제출 전 결과다. Box screenshot은 text glyph raster equality나 CSS border stroke 증거가 아니다.
 5. 기본 product FFI artifact에서 신규 fixture marker가 없는 것과 opt-in fixture-test artifact의 positive control을 검사한다. 변경한 Rust crate focused tests, formatter/lint, JS syntax와 Android/iOS Simulator app builds만 실행하고 무관한 전체 workspace 재검증은 근거 없이 확대하지 않는다.
 6. 계획 검토와 겹치지 않는 구현/runtime 실패 관점 20개와 PR diff의 별도 20개 검토를 기록한다. 결함을 고치면 영향받은 Rust case, 두 Simulator scene, pixel sample을 재검증한다.
-7. PR 본문에는 상태 ID C11.4, 입력·기대값, 실제 simulator/화면 근거와 미검증 범위를 연결한다. 일반 CSS 지원, WPT, 실기기, Android hardware GPU, iOS compositor 이후 pixels 또는 C11.4 전체 완료를 주장하지 않는다. C11.4 체크박스와 `77/213`은 유지한다.
+7. PR 본문에는 상태 ID C11.4, 입력·기대값, 실제 simulator/화면 근거와 미검증 범위를 연결한다. 일반 CSS 지원, WPT, 실기기, Android hardware GPU, iOS compositor 이후 pixels 또는 C11.4 전체 완료를 주장하지 않는다. C11.4 체크박스와 `72/213`은 유지한다.
 
 ## 범위 밖
 

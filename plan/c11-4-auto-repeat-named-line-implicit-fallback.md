@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [auto-repeat authored line names](./c11-4-auto-repeat-named-lines.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획 PR [#533](https://github.com/ohah/spinon/pull/533) 병합 뒤 제한 구현과 Android/iOS Simulator 검증을 마쳤다. 구현 PR [#534](https://github.com/ohah/spinon/pull/534)와 실행 근거를 아래에 연결한다. C11.4 미완료 checkbox와 공식 `77/213`을 유지한다.
+**상태:** 계획 PR [#533](https://github.com/ohah/spinon/pull/533) 병합 뒤 제한 구현과 Android/iOS Simulator 검증을 마쳤다. 구현 PR [#534](https://github.com/ohah/spinon/pull/534)와 실행 근거를 아래에 연결한다. C11.4 미완료 checkbox와 공식 `72/213`을 유지한다.
 
 ## 결손과 구현 경계
 

@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [기존 mixed cross-axis span-groups 계획](./c11-4-cyclic-minmax-calc-cross-axis-mixed-span-groups.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** Chrome 156 Agent Browser 사전 관측과 CSS Grid 2025 CRD 독립 계산을 네 fixed scene에서 기록했고, opt-in runtime fixture와 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 검증을 마쳤다. 각 플랫폼 4/4 scene, PixelCopy 및 compositor 제출 전 Metal 표본 8/8 exact다. 구현·artifact·검증 범위는 [runtime evidence](../spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-runtime-2026-10-22/README.md)에 기록했다. C11.4 checkbox와 공식 완료 수 <code>77/213</code>은 그대로 둔다.
+**상태:** Chrome 156 Agent Browser 사전 관측과 CSS Grid 2025 CRD 독립 계산을 네 fixed scene에서 기록했고, opt-in runtime fixture와 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 검증을 마쳤다. 각 플랫폼 4/4 scene, PixelCopy 및 compositor 제출 전 Metal 표본 8/8 exact다. 구현·artifact·검증 범위는 [runtime evidence](../spec/internal/evidence/c11-4-cyclic-minmax-calc-cross-axis-max-content-span-groups-runtime-2026-10-22/README.md)에 기록했다. C11.4 checkbox와 공식 완료 수 <code>72/213</code>은 그대로 둔다.
 
 ## 목적
 
@@ -42,7 +42,7 @@ Chrome 156's computed tracks are rounded to 1/64 CSS px and differ from the rati
 5. 기존 fixture feature를 사용한다. 제품 CSS admission이나 새 공개 API를 추가하지 않는다. 기본 release artifact와 opt-in fixture-test artifact의 경계를 검증하고, C11.4 cyclic/min-content 및 mixed-span 회귀를 실행한다.
 6. 고정 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 앱 runtime geometry와 draw/present를 검사한다. 실기기 연결은 요구하지 않는다. AVD screenshot/PixelCopy와 iOS Metal drawable은 제출 전 표본으로 분리하고, glyph raster·iOS compositor 이후 pixels를 주장하지 않는다.
 7. 구현 뒤 서로 다른 새 runtime 실패 관점 20개를 검토하고, PR 변경에는 별도 20개 관점을 기록한다. 결함을 찾으면 영향받는 scene·trace·Simulator 표본을 다시 확인한다.
-8. 내부 계약 0059, C11.4 parent, <code>spec/STATUS.md</code>, 공개 roadmap과 runtime README의 표현을 일치시킨다. C11.4 checkbox, 77/213, 공개 CSS 지원 상태를 올리지 않는다.
+8. 내부 계약 0059, C11.4 parent, <code>spec/STATUS.md</code>, 공개 roadmap과 runtime README의 표현을 일치시킨다. C11.4 checkbox, 72/213, 공개 CSS 지원 상태를 올리지 않는다.
 
 ## 성공·실패 판정
 
@@ -70,4 +70,4 @@ Chrome 156's computed tracks are rounded to 1/64 CSS px and differ from the rati
 
 시뮬레이터 캡처 도구는 이미 빌드된 앱을 설치한다. 첫 Android 시도는 오래된 APK여서 새 scene ID를 거부했다. 최신 fixture APK로 다시 빌드한 뒤 네 scene이 통과했다. 다음 PixelCopy 시도에서 새 sample ID의 Android 기대색이 미등록이라 `-1` mismatch가 드러나 border/clear mapping을 수정하고 재실행했다. 첫 iOS capture도 Metal surface-pixel build flag가 꺼져 `status=-90`으로 거부됐으며 해당 fixture flag를 켜고 재빌드한 뒤 네 scene을 통과했다. 실패 및 재실행 이유를 숨기지 않고 최종 성공 로그·hash를 runtime evidence에 보존한다.
 
-기본 release FFI archive에는 새 scene 문자열과 fixture prepare symbol이 없고 fixture-test positive control에는 있다. 이 검사는 정적 archive 경계이며 최종 APK/IPA 증명이 아니다. 구현/runtime 실패 관점 20개 및 PR 변경 실패 관점 30개는 runtime evidence에 별도로 기록한다. 일반 CSS admission, WPT, 실기기/hardware GPU, glyph raster equality, iOS compositor 이후 pixel과 전체 C11.4는 범위 밖이며 C11.4 checkbox와 공식 `77/213`은 유지한다.
+기본 release FFI archive에는 새 scene 문자열과 fixture prepare symbol이 없고 fixture-test positive control에는 있다. 이 검사는 정적 archive 경계이며 최종 APK/IPA 증명이 아니다. 구현/runtime 실패 관점 20개 및 PR 변경 실패 관점 30개는 runtime evidence에 별도로 기록한다. 일반 CSS admission, WPT, 실기기/hardware GPU, glyph raster equality, iOS compositor 이후 pixel과 전체 C11.4는 범위 밖이며 C11.4 checkbox와 공식 `72/213`은 유지한다.

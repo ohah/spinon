@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 CSS Grid track sizing](./c11-4-grid-track-sizing.md) · [열 축 겹치는 span 선행 계획](./c11-4-cyclic-minmax-calc-overlapping-spans.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** Chrome 156 사전 비교와 독립 계산을 마쳤고, 계획한 고정 runtime slice를 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 확인했다. 구현 PR [#503](https://github.com/ohah/spinon/pull/503)은 2026-10-22 06:31:18 UTC Rebase and merge됐고 SHA `36acdd4f48f23499835530704fa8aef20590a6e5`를 남겼다. 병합 당시 PR status-check rollup은 비어 있었고 main required status checks는 설정되지 않았다. C11.4 checkbox와 공식 완료 수 `77/213`은 그대로 둔다.
+**상태:** Chrome 156 사전 비교와 독립 계산을 마쳤고, 계획한 고정 runtime slice를 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 확인했다. 구현 PR [#503](https://github.com/ohah/spinon/pull/503)은 2026-10-22 06:31:18 UTC Rebase and merge됐고 SHA `36acdd4f48f23499835530704fa8aef20590a6e5`를 남겼다. 병합 당시 PR status-check rollup은 비어 있었고 main required status checks는 설정되지 않았다. C11.4 checkbox와 공식 완료 수 `72/213`은 그대로 둔다.
 
 ## 목적과 경계
 
@@ -39,7 +39,7 @@
 5. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 여섯 장면의 track/frame/draw/present를 각각 확인한다. 실기기는 연결하지 않는다.
 6. 기본 release FFI artifact에는 신규 scene ID/payload/fixture entry가 없어야 하며 opt-in fixture-test positive control에는 포함되어야 한다. 필요한 focused Rust 검사, 수정 crate lint/format과 Android/iOS Simulator build를 기록한다.
 7. 구현/runtime 검토는 이 계획 리뷰와 겹치지 않는 20개 실패 경로로 수행하고, 정확한 구현 PR diff도 별도 20개 관점으로 검토한다. 문제를 고친 뒤 영향을 받는 장면과 표본을 재실행한다.
-8. PR은 입력·관측·기대값, 실제 실행 근거와 제한을 연결한다. C11.4 checkbox와 `77/213`을 올리지 않는다. 필수 check와 merge state를 확인하고 `Rebase and merge` 정책을 따른다.
+8. PR은 입력·관측·기대값, 실제 실행 근거와 제한을 연결한다. C11.4 checkbox와 `72/213`을 올리지 않는다. 필수 check와 merge state를 확인하고 `Rebase and merge` 정책을 따른다.
 
 ## 사전 비교 결과
 
