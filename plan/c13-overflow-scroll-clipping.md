@@ -1,6 +1,6 @@
 # C13 · overflow·스크롤·클리핑
 
-**상태:** 계획 초안 · C13.1 제한 profile 구현 중 · C13 미완료
+**현재 상태:** 계획 초안 · C13.1–C13.3 제한 runtime/fixture slice 구현 근거가 main에 있음 · C13 전체 미완료
 **공식 상위 항목:** [구현 상태 대장](../spec/STATUS.md#css-구현-체크리스트)
 **전제:** C04 CSS cascade, C07 상자 geometry, C08/C12 paint 입력, C12.1–C12.4의 source/position/paint order
 **후속:** C12.5 sticky는 C13 scrollport·scroll offset·clip 기초 뒤 진행한다. C17 logical axis, C22 border radius, C23 transform/clip, C29 CSSOM, S05 입력·이벤트와의 교차 경계를 완료 게이트로 유지한다.
@@ -46,9 +46,9 @@ C13은 `overflow-x/y`와 `overflow`의 `visible`, `clip`, `hidden`, `scroll`, `a
 | C13.5 | `scroll-snap-type`, `scroll-snap-align`, `scroll-snap-stop`, `scroll-padding`, `scroll-margin`, `scroll-behavior`; user/programmatic scroll 완료 뒤 snap 결정과 layout/style/tree 변화 뒤 re-snap. mandatory/proximity, axis, oversized snap target을 포함한다. | Chrome offset과 선택된 snap target을 끝 상태에서 비교하고, 입력 시간/애니메이션 표본은 별도 기록한다. oversized content를 중간부터 모두 접근할 수 있는지, nested container가 가장 가까운 snap owner를 고르는지, DOM update 후 target 유지/삭제, mandatory와 proximity를 각각 negative/control fixture로 확인한다. |
 | C13.6 | C17의 writing-mode/direction 계약과 합쳐 `overflow-block/inline`, logical overscroll, snap logical axes 및 scroll origin/negative RTL offset을 통합한다. | C17 merge 뒤 horizontal-tb/LTR 외 vertical/RTL fixtures, DOM scroll APIs의 좌표 부호, platform gesture 방향·scrollbar inline edge와 Chrome 대조를 수행한다. 이 관문 전에는 C13 완료를 표시하지 않는다. |
 
-**단계 계획:** [C13.2 scroll container와 revision 분리](c13-2-scroll-container-state.md) · [C13.2 내부 계약 0062](../spec/internal/0062-c13-2-scroll-state.md) · [C13.2 visible overflow pixel 후속](c13-2-visible-overflow-surface-pixels.md) · [C13.3 scroll gesture 계획](c13-3-scroll-gestures.md) · [C13.3 내부 계약 0063](../spec/internal/0063-c13-3-scroll-gestures.md) · [C13.3 Chrome 사전 기준](../spec/internal/evidence/c13-3-scroll-gesture-precomparison-2026-10-15/README.md). C13.2는 제한 구현·Simulator 검증이 진행 중이나 ink-only overflow가 남아 미완료다. C13.3은 계획/Chrome oracle 단계이며 구현 전이다.
+**단계 계획:** [C13.2 scroll container와 revision 분리](c13-2-scroll-container-state.md) · [C13.2 내부 계약 0062](../spec/internal/0062-c13-2-scroll-state.md) · [C13.2 visible overflow pixel 후속](c13-2-visible-overflow-surface-pixels.md) · [C13.3 scroll gesture 계획](c13-3-scroll-gestures.md) · [C13.3 내부 계약 0063](../spec/internal/0063-c13-3-scroll-gestures.md) · [C13.3 Chrome 사전 기준](../spec/internal/evidence/c13-3-scroll-gesture-precomparison-2026-10-15/README.md). C13.2는 scroll owner·offset snapshot, root/body 전파·lifecycle과 visible-overflow 표면 표본의 제한 구현이 있으나 ink-only box-shadow overflow가 남아 미완료다. C13.3는 typed policy·delta router·session/queue 및 opt-in Android/iOS direct-pan·wheel fixture 경로가 있지만 native wheel 검증은 부분이며 public DOM event/CSSOM과 S04.10 displayed-frame target은 미완료다. C13.4–C13.6의 scrollbar, snap, logical-axis 관문도 남아 있다. 현재 근거는 [공식 C13 상태](../spec/STATUS.md#css-구현-체크리스트)와 [C13.3 구현 범위](./c13-3-scroll-gestures.md)에 연결한다.
 
-### 현재 C13.1 브랜치 진행 상태 · 2026-10-15
+### C13.1 구현 follow-up 근거 · 2026-10-15
 
 - Android API 37 ARM64 AVD의 compact 13-case surface는 PR #162에서 30,000 CSS pixel center exact를 확인했다. iOS Simulator는 geometry/hit identity·화면만 확인했고 Metal drawable readback은 없다. 같은 고정 viewport의 iOS 표면 비교는 별도 [계획](c13-1-ios-full-surface-pixel-centers.md)에서 다룬다. 그 실행이 끝나기 전 iOS pixel parity를 확인했다고 주장하지 않는다.
 

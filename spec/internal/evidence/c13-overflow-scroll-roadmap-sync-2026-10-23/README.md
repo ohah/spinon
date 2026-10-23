@@ -1,0 +1,23 @@
+# C13 실제 코드와 로드맵 동기화
+
+## 변경 전 Agent Browser 관찰
+
+- URL: `https://macstudio.tailed42f2.ts.net/spinon/roadmap.html`
+- 표시 집계: 공식 완료 `72/213`; 체크박스 213개 중 72개가 선택됐다.
+- `overflow·scroll·클리핑`은 비활성화된 unchecked 항목이다. 카드에는 C13.1 clip runtime 근거만 요약되어 있고, 현재 대장과 코드에 이미 기록된 C13.2 scroll-state 및 C13.3 gesture 구현 범위가 보이지 않았다.
+- 실제 화면과 DOM 관찰은 [Agent Browser 캡처](./roadmap-before-agent-browser.png), [관찰 JSON](./roadmap-before-observation.json)에 보존했다.
+
+## 코드와 공식 대조
+
+- 공식 원본은 [구현 상태 대장](../../../STATUS.md)의 C13 항목이다. 부모 C13은 미완료로 유지한다. 같은 대장의 하위 기록은 C13.2 scroll owner·offset snapshot, root/body 전파·lifecycle과 visible-overflow 표면 표본, C13.3 typed policy·delta router·gesture session/queue 및 플랫폼 fixture 결과를 기록한다.
+- [`spinon-ffi` feature 선언](../../../../crates/spinon-ffi/Cargo.toml)은 `c13-2-scroll-fixture-test`와 `c13-3-gesture-fixture-test`를 별도로 둔다. [`runtime_gpu.rs`](../../../../crates/spinon-ffi/src/runtime_gpu.rs)는 해당 adapter state와 재적용 경로를 이 feature들로 조건부 컴파일한다.
+- C13.2의 제한 경로는 [`c13_2_scroll_host.rs`](../../../../crates/spinon-ffi/src/runtime_gpu/fixtures/c13_2_scroll_host.rs), C13.3의 앱 검증 경로는 [`c13_3_scroll_gesture_host.rs`](../../../../crates/spinon-ffi/src/runtime_gpu/fixtures/c13_3_scroll_gesture_host.rs)에 있다. Gesture style projection과 Rust routing/session은 [`runtime_scroll_gesture.rs`](../../../../crates/spinon-style/src/stylo_dom/cascade/runtime_scroll_gesture.rs), [`scroll_gesture.rs`](../../../../crates/spinon-render/src/runtime/scroll_gesture.rs), [`scroll_gesture_session.rs`](../../../../crates/spinon-render/src/runtime/scroll_gesture_session.rs), [`scroll_input_queue.rs`](../../../../crates/spinon-render/src/runtime/scroll_input_queue.rs)에 있다.
+- 남은 경계는 ink-only `box-shadow` overflow, 플랫폼별 native wheel의 부분 callback 근거, 공개 DOM scroll event/CSSOM과 displayed-frame input 연결, scrollbar/gutter·scroll snap·logical-axis gate다. 이 동기화는 구현 완료 체크를 추가하지 않는다.
+
+## 동기화할 문서
+
+- `spec/STATUS.md`의 C13 요약에 C13.2·C13.3의 제한 구현과 남은 경계를 추가한다. C13 checkbox와 집계는 유지한다.
+- `plan/c13-overflow-scroll-clipping.md`의 현재 상태를 고치고 C13.2/C13.3 단계 요약을 실제 코드와 맞춘다. 2026-10-15 실행 기록은 역사적 근거로 표시한다.
+- Tailnet roadmap은 `roadmap.html`에서 `main`의 `spec/STATUS.md`를 읽기 전용으로 다시 가져온다. PR 병합 뒤 Agent Browser로 같은 항목과 `72/213`을 다시 확인하고 캡처를 추가한다.
+
+`SHA256SUMS`는 변경 전 화면과 DOM 관찰 파일의 무결성을 기록한다.
