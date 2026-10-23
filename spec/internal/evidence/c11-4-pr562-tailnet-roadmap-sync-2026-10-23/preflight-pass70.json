@@ -1,0 +1,20 @@
+{
+  "pass": "pass70",
+  "createdAt": "2026-10-23T11:03:46.462Z",
+  "sourceHead": "10ae04a09f9f0b1b97056693dad0438a2c022b62",
+  "originMain": "22eafb6cad66b6be8facaf264299e7bd6073d0f5",
+  "sourceRoot": "build/spinon/c11-4-pr562-tailnet-site-pass70-selected",
+  "targetRootRelative": "SpinonPreview",
+  "backupRootRelative": "SpinonPreviewBackups/c11-4-pr562-tailnet-roadmap-sync-2026-10-23/pass70",
+  "sourceFiles": 11551,
+  "sourceBytes": 657473256,
+  "previousTargetFiles": 62768,
+  "previousTargetBytes": 2684729238,
+  "unchangedFiles": 9852,
+  "addedFiles": 967,
+  "replacedFiles": 732,
+  "deltaFiles": 1699,
+  "deltaBytes": 304106328,
+  "backupBytes": 273408169,
+  "noDeletes": true
+}

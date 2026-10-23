@@ -1,0 +1,30 @@
+{
+  "pass": "pass70",
+  "originMainBase": "22eafb6cad66b6be8facaf264299e7bd6073d0f5",
+  "branchSourceHead": "10ae04a09f9f0b1b97056693dad0438a2c022b62",
+  "selectedRoot": "build/spinon/c11-4-pr562-tailnet-root-pass70-selected",
+  "selectedRootFiles": 20500,
+  "selectedRootBytes": 730166856,
+  "trackedPlanAndSpecChangesSinceBase": 429,
+  "branchOnlyOverride": [
+    "spec/public/roadmap.html"
+  ],
+  "rspressPackage": "@rspress/core",
+  "rspressVersion": "2.0.22",
+  "command": "RSPRESS_PERSISTENT_CACHE=false packages/docs/node_modules/.bin/rspress build --config spec/internal/evidence/c11-4-pr562-tailnet-roadmap-sync-2026-10-23/rspress-pass70.config.ts",
+  "exitCode": 0,
+  "selectedSiteFilesAfterPublicLinks": 11551,
+  "selectedSiteBytesAfterPublicLinks": 657473256,
+  "publicFilesLinked": 10168,
+  "publicFilesAlreadySame": 1,
+  "publicBytesLinked": 353260765,
+  "checkDeadLinks": false,
+  "checkDeadImages": false,
+  "routeVerification": "selected-site-verification-final-pass70.json",
+  "buildLog": {
+    "path": "selected-build-pass70.log",
+    "bytes": 262065,
+    "sha256": "7a51812b2e2da29d0caeea92d55626c1bc99c2787dfab8130254d82cbedd4309",
+    "trailingWhitespaceNormalized": true
+  }
+}

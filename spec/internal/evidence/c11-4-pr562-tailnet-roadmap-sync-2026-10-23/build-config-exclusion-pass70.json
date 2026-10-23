@@ -1,0 +1,8 @@
+{
+  "pass": "pass70",
+  "excludedSourceFiles": [
+    "public/internal/evidence/c11-4-image-tailnet-sync-2026-10-19/rspress.tailnet-sync.config.ts"
+  ],
+  "reason": "build configuration helpers are not documentation routes",
+  "sourceWorkspaceFilesPreserved": true
+}

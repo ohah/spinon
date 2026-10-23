@@ -1,0 +1,51 @@
+{
+  "pass": "pass70",
+  "sourceHead": "22eafb6cad66b6be8facaf264299e7bd6073d0f5",
+  "requiredRoutesAndAssets": [
+    "roadmap.html",
+    "STATUS.html",
+    "0001-conformance.html",
+    "internal/README.html",
+    "internal/0059-c11-grid-layout.html",
+    "plan/c11-4-auto-repeat-positive-percent-minimum.html",
+    "internal/evidence/c11-4-auto-repeat-positive-percent-minimum-precomparison-2026-10-23/README.html",
+    "internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/README.html",
+    "internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/implementation-runtime-review-20.html",
+    "internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/pr-diff-review-20.html",
+    "internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/android-avd-c114-positive-percent-minimum-commit-android-avd-20261023T104649350Z-da0f371b/percentage-overflow-columns-calc.png",
+    "internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/ios-simulator-c114-positive-percent-minimum-commit-ios-simulator-20261023T104719112Z-2d91e097/percentage-overflow-columns-calc.png",
+    "internal/evidence/c11-4-positive-percent-status-update-2026-10-23/pr-diff-review-20.html"
+  ],
+  "publicRoadmapInternalLinks": [
+    {
+      "href": "/spinon/internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/android-avd-c114-positive-percent-minimum-commit-android-avd-20261023T104649350Z-da0f371b/percentage-overflow-columns-calc.png",
+      "path": "internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/android-avd-c114-positive-percent-minimum-commit-android-avd-20261023T104649350Z-da0f371b/percentage-overflow-columns-calc.png"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/ios-simulator-c114-positive-percent-minimum-commit-ios-simulator-20261023T104719112Z-2d91e097/percentage-overflow-columns-calc.png",
+      "path": "internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/ios-simulator-c114-positive-percent-minimum-commit-ios-simulator-20261023T104719112Z-2d91e097/percentage-overflow-columns-calc.png"
+    },
+    {
+      "href": "/spinon/plan/c11-4-auto-repeat-positive-percent-minimum.html",
+      "path": "plan/c11-4-auto-repeat-positive-percent-minimum.html"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/README.html",
+      "path": "internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/README.html"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/implementation-runtime-review-20.html",
+      "path": "internal/evidence/c11-4-auto-repeat-positive-percent-minimum-runtime-2026-10-23/implementation-runtime-review-20.html"
+    },
+    {
+      "href": "/spinon/STATUS.html#css-구현-체크리스트",
+      "path": "STATUS.html"
+    }
+  ],
+  "roadmapSource": "spec/public/roadmap.html at branch head",
+  "roadmapSha256": "4977714f82425515e61a314136776c83584b8e90985101cfbd3ecfe4ece51007",
+  "officialCount": "72/213",
+  "c11_4Incomplete": true,
+  "allVerified": true,
+  "branchHead": "10ae04a09f9f0b1b97056693dad0438a2c022b62"
+}

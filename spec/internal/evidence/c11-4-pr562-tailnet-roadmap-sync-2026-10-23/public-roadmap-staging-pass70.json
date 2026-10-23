@@ -1,0 +1,16 @@
+{
+  "pass": "pass70",
+  "source": "spec/public/roadmap.html at branch head",
+  "sourceBytes": 273412,
+  "sourceSha256": "4977714f82425515e61a314136776c83584b8e90985101cfbd3ecfe4ece51007",
+  "staged": [
+    {
+      "path": "roadmap.html",
+      "bytes": 273412,
+      "sha256": "4977714f82425515e61a314136776c83584b8e90985101cfbd3ecfe4ece51007",
+      "method": "unique sibling temporary file followed by atomic rename"
+    }
+  ],
+  "noOtherBuildRoutesChanged": true,
+  "branchHead": "10ae04a09f9f0b1b97056693dad0438a2c022b62"
+}
