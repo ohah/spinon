@@ -1,0 +1,15 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+   Compiling spinon-style v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.63s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 2 tests
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_percentage_maximum::track_sizing_profile_rejects_unsupported_auto_repeat_maximum_calc_shapes ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_percentage_maximum::track_sizing_profile_preserves_definite_percentage_auto_repeat_maximums ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 198 filtered out; finished in 0.01s
+

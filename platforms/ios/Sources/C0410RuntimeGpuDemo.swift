@@ -260,6 +260,35 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "positive-percentage-rows-fit-fixed",
     "percentage-overflow-columns-calc", "percentage-overflow-columns-fixed",
     "percentage-overflow-rows-calc", "percentage-overflow-rows-fixed",
+    "columns-percent-max-fill",
+    "columns-percent-max-fill-control",
+    "columns-percent-max-fit",
+    "columns-percent-max-fit-control",
+    "columns-max-below-min-fill",
+    "columns-max-below-min-control",
+    "columns-zero-percent-max-fill",
+    "columns-zero-percent-max-control",
+    "columns-calc-percent-max-fill",
+    "columns-calc-percent-max-control",
+    "rows-percent-max-fill",
+    "rows-percent-max-fill-control",
+    "rows-percent-max-fit",
+    "rows-percent-max-fit-control",
+    "rows-max-below-min-fill",
+    "rows-max-below-min-control",
+    "rows-zero-percent-max-fill",
+    "rows-zero-percent-max-control",
+    "rows-calc-percent-max-fill",
+    "rows-calc-percent-max-control",
+    "both-percent-max-fill",
+    "both-percent-max-fill-control",
+    "both-percent-max-fit",
+    "both-percent-max-fit-control",
+    "both-flooring-fill",
+    "both-flooring-fill-control",
+    "both-calc-percent-max-fill",
+    "both-calc-percent-max-fill-control",
+
 ]
 private let c114CyclicMinmaxReplacedImageSpanSceneIDs: Set<String> = [
     "cyclic-minmax-replaced-image-span-intrinsic-forward",
@@ -478,8 +507,71 @@ private func c114PositivePercentMinimumNodeFrames(_ sceneID: String) -> String? 
         + "1:node=2,x=2,y=2,\(item)]"
 }
 
+private struct C114PercentageMaximumItemFrame {
+    let x: Float
+    let y: Float
+    let width: Float
+    let height: Float
+}
+
+private func c114PercentageMaximumItemFrames(_ sceneID: String) -> [C114PercentageMaximumItemFrame]? {
+    let isPercentageMaximum = sceneID.contains("-percent-max-")
+        || sceneID.contains("-max-below-min-")
+        || sceneID.contains("-zero-percent-max-")
+        || sceneID.hasPrefix("both-flooring-")
+    guard isPercentageMaximum else { return nil }
+    let track: Float = sceneID.contains("-calc-percent-max-") ? 38.4 : 46
+    let fit = sceneID.contains("-max-fit")
+    let columns = sceneID.hasPrefix("columns-")
+    let rows = sceneID.hasPrefix("rows-")
+    let count = fit ? 1 : 2
+    return (0..<count).map { index in
+        let offset = Float(index) * (track + 8)
+        if rows {
+            return C114PercentageMaximumItemFrame(
+                x: 2, y: 2 + offset, width: columns ? track : 20,
+                height: track
+            )
+        }
+        return C114PercentageMaximumItemFrame(
+            x: 2 + offset, y: 2, width: track,
+            height: rows ? track : (sceneID.hasPrefix("both-") ? track : 20)
+        )
+    }
+}
+
+private func c114PercentageMaximumRootFrame(_ sceneID: String) -> String? {
+    c114PercentageMaximumItemFrames(sceneID) == nil ? nil : "width=188,height=188"
+}
+
+private func c114PercentageMaximumItemFrame(_ sceneID: String) -> String? {
+    guard let item = c114PercentageMaximumItemFrames(sceneID)?.first else { return nil }
+    return "width=\(c114PercentageMaximumFrameNumber(item.width)),"
+        + "height=\(c114PercentageMaximumFrameNumber(item.height))"
+}
+
+private func c114PercentageMaximumFrameNumber(_ value: Float) -> String {
+    let rounded = value.rounded()
+    return abs(value - rounded) < 0.0001 ? String(Int(rounded)) : String(value)
+}
+
+private func c114PercentageMaximumNodeFrames(_ sceneID: String) -> String? {
+    guard let items = c114PercentageMaximumItemFrames(sceneID) else { return nil }
+    let itemFrames = items.enumerated().map { index, item in
+        "\(index + 1):node=\(index + 2),x=\(c114PercentageMaximumFrameNumber(item.x)),"
+            + "y=\(c114PercentageMaximumFrameNumber(item.y)),"
+            + "width=\(c114PercentageMaximumFrameNumber(item.width)),"
+            + "height=\(c114PercentageMaximumFrameNumber(item.height))"
+    }
+    return "node_frames_css_px=[0:node=1,x=0,y=0,width=188,height=188;"
+        + itemFrames.joined(separator: ";") + "]"
+}
+
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if let percentageMaximumFrame = c114PercentageMaximumRootFrame(sceneID) {
+        return percentageMaximumFrame
+    }
     if let areaRepeatFrame = c114TemplateAreaRepeatRootFrame(sceneID) { return areaRepeatFrame }
     if let positivePercentFrame = c114PositivePercentMinimumRootFrame(sceneID) {
         return positivePercentFrame
@@ -701,6 +793,9 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if let percentageMaximumFrame = c114PercentageMaximumItemFrame(sceneID) {
+        return percentageMaximumFrame
+    }
     if let areaRepeatFrame = c114TemplateAreaRepeatItemFrame(sceneID) { return areaRepeatFrame }
     if let positivePercentFrame = c114PositivePercentMinimumItemFrame(sceneID) {
         return positivePercentFrame
@@ -2242,6 +2337,9 @@ private func c114ImageTrackPassMatches(
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if let percentageMaximumFrames = c114PercentageMaximumNodeFrames(sceneID) {
+        return percentageMaximumFrames
+    }
     if let areaRepeatFrames = c114TemplateAreaRepeatNodeFrames(sceneID) { return areaRepeatFrames }
     if let positivePercentFrames = c114PositivePercentMinimumNodeFrames(sceneID) {
         return positivePercentFrames
@@ -3613,6 +3711,9 @@ private func c114GapNodeFrames(
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if let percentageMaximumItems = c114PercentageMaximumItemFrames(sceneID) {
+        return percentageMaximumItems.count + 1
+    }
     if let areaRepeatItems = c114TemplateAreaRepeatItemRects(sceneID) {
         return areaRepeatItems.count + 1
     }
@@ -4127,9 +4228,73 @@ private struct C111MetalPixelRun {
         }
     }
 
+    private static let c114PercentageMaximumPixelSceneIDs: Set<String> = [
+        "columns-percent-max-fill", "columns-percent-max-fill-control",
+        "columns-percent-max-fit", "columns-percent-max-fit-control",
+        "columns-max-below-min-fill", "columns-max-below-min-control",
+        "columns-zero-percent-max-fill", "columns-zero-percent-max-control",
+        "columns-calc-percent-max-fill", "columns-calc-percent-max-control",
+        "rows-percent-max-fill", "rows-percent-max-fill-control",
+        "rows-percent-max-fit", "rows-percent-max-fit-control",
+        "rows-max-below-min-fill", "rows-max-below-min-control",
+        "rows-zero-percent-max-fill", "rows-zero-percent-max-control",
+        "rows-calc-percent-max-fill", "rows-calc-percent-max-control",
+        "both-percent-max-fill", "both-percent-max-fill-control",
+        "both-percent-max-fit", "both-percent-max-fit-control",
+        "both-flooring-fill", "both-flooring-fill-control",
+        "both-calc-percent-max-fill", "both-calc-percent-max-fill-control",
+    ]
+
+    private static func c114PercentageMaximumPixelSamples(
+        sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])] {
+        let trackSize = sceneID.contains("calc-percent-max") ? 38.4 : 46.0
+        let fit = sceneID.contains("-fit")
+        let itemCount = fit ? 1 : 2
+        let axis = sceneID.hasPrefix("columns-") ? "columns"
+            : sceneID.hasPrefix("rows-") ? "rows"
+            : sceneID.hasPrefix("both-") ? "both" : ""
+        let rootID = "c114-\(sceneID)-grid"
+        var frames: [(Double, Double, Double, Double)] = []
+        for itemIndex in 0..<itemCount {
+            let repeatedStart = itemIndex == 0 ? 2.0 : 2.0 + trackSize + 8.0
+            switch axis {
+            case "columns": frames.append((repeatedStart, 2, trackSize, 20))
+            case "rows": frames.append((2, repeatedStart, 20, trackSize))
+            case "both": frames.append((repeatedStart, 2, trackSize, trackSize))
+            default: return []
+            }
+        }
+
+        var expected: [(String, String, UInt32, UInt32, [UInt32])] = [
+            ("\(sceneID)-root-interior", rootID, 180, 180, [226, 232, 240, 255]),
+        ]
+        for (index, frame) in frames.enumerated() {
+            expected.append((
+                "\(sceneID)-item-\(index + 1)-interior",
+                "c114-\(sceneID)-item-\(index + 1)",
+                UInt32(floor(frame.0 + frame.2 / 2)),
+                UInt32(floor(frame.1 + frame.3 / 2)),
+                index == 0 ? [229, 72, 77, 255] : [37, 99, 235, 255]
+            ))
+        }
+        return expected
+    }
+
     private static func hasFixedC114TrackSizingSamples(
         _ samples: [C111MetalPixelSample], sceneID: String
     ) -> Bool {
+        if c114PercentageMaximumPixelSceneIDs.contains(sceneID) {
+            let expectedSamples = c114PercentageMaximumPixelSamples(sceneID: sceneID)
+            guard samples.count == expectedSamples.count else { return false }
+            return expectedSamples.allSatisfy { expected in
+                samples.contains { sample in
+                    sample.id == expected.0 && sample.nodeId == expected.1
+                        && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                        && sample.rgba == expected.4
+                }
+            }
+        }
         let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])]
         switch sceneID {
         case "cyclic-minmax-cross-axis-max-content-span-groups-forward",

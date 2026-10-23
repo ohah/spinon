@@ -268,7 +268,7 @@ fn track_sizing_profile_rejects_out_of_scope_percentage_auto_repeat_minimums() {
         );
     }
     for minimum in ["0%", "10%"] {
-        for maximum in ["auto", "max-content", "10%"] {
+        for maximum in ["auto", "max-content"] {
             let fixture = fixture(&format!(
                 "display:grid;box-sizing:border-box;width:124px;height:124px;min-width:0;min-height:0;border:2px solid;padding:0;grid-template-columns:repeat(auto-fill,minmax({minimum},{maximum}));grid-template-rows:48px;margin:0"
             ));

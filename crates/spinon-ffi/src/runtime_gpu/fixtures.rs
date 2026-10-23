@@ -34,6 +34,8 @@ pub(crate) mod c11_4_auto_fit_min_size_axis;
 pub(crate) mod c11_4_auto_repeat_calc_minimum;
 pub(crate) mod c11_4_auto_repeat_named_lines;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
+pub(crate) mod c11_4_auto_repeat_percentage_maximum;
+#[cfg(feature = "c04-runtime-gpu-fixture-test")]
 pub(crate) mod c11_4_template_area_auto_repeat;
 #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
 pub(crate) mod c13_1;

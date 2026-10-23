@@ -1,7 +1,14 @@
 # C11.4 · definite percentage auto-repeat maximum 계획
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
-**상태:** 구현 전 계획. Chrome 156 Agent Browser 관찰과 CSS Grid 2025 CRD 독립 계산을 고정했다. C11.4는 미완료이며 이 변경은 공식 집계를 수정하지 않는다.
+**상태:** 작업 브랜치의 미병합 구현 후보다. Chrome 156 Agent Browser 관찰과 CSS Grid 2025 CRD 독립 계산을 고정했고 cascade/layout gate, Rust 회귀 테스트, 28-scene opt-in fixture를 추가했다. 구현/runtime 실패 관점 20개와 PR diff 실패 관점 30개 검토 및 후속 회귀 검증은 완료했다. PR은 아직 생성하지 않았다. iPhone 17 Pro / iOS 26.2 Simulator는 28/28 scene과 78/78 Metal drawable 표본(Compositor 제출 전)이 통과했다. Android API 37 ARM64 AVD도 28/28 scene, 78/78 PixelCopy 표본이 통과했다. 두 결과는 각 시뮬레이터 경로에 한정한다. C11.4는 미완료이며 공식 집계는 수정하지 않는다.
+
+## 현재 진행 상태 · 2026-10-23
+
+- definite percentage 및 제한 `calc(length + percentage)` maximum의 cascade/layout 투영과 28개 fixture scene을 구현했다. focused style/layout/FFI tests와 fixture module boundary 검사는 통과했다.
+- iPhone 17 Pro / iOS 26.2 Simulator에서 28/28 scene의 expected/observed root/item/node frame, tracks, draw/present가 통과했고 78/78 선택된 Metal drawable 표본이 exact다. 표본은 compositor 제출 전 경계에 한정한다. [iOS 결과 JSON](../spec/internal/evidence/c11-4-auto-repeat-percentage-maximum-2026-10-23/ios-simulator-c114-percentage-maximum-ios-simulator-20261023T122917798Z-9678b290/result.json)
+- Android API 37 ARM64 AVD `emulator-5570`에서 28/28 scene의 root/item frame, used tracks, trace, draw/present가 통과했고 78/78 PixelCopy 표본이 exact였다. EGL renderer는 ANGLE/SwiftShader이며 실기기나 hardware GPU 결과가 아니다. [Android 결과 JSON](../spec/internal/evidence/c11-4-auto-repeat-percentage-maximum-2026-10-23/android-avd-c114-percentage-maximum-android-avd-20261023T130834339Z-da0fb0d3/result.json) · [Android 화면](../spec/internal/evidence/c11-4-auto-repeat-percentage-maximum-2026-10-23/android-avd-c114-percentage-maximum-android-avd-20261023T130834339Z-da0fb0d3/columns-percent-max-fill.png)
+- full Rust workspace 테스트는 첫 실행에서 새로 지원한 percentage maximum을 여전히 거부하도록 기대하던 cascade 회귀 테스트 하나가 실패했다. 해당 기대 범위를 고친 뒤 전체 workspace 재실행과 workspace Clippy가 통과했다. 구현/runtime 실패 관점 20개와 PR diff 실패 관점 30개 검토를 완료했고, 계산식 항 순서와 percentage overflow의 테스트 공백을 보완해 재실행했다. PR은 아직 생성하지 않았다. product/fixture static archive 경계는 기본 artifact에서 fixture payload 부재와 opt-in positive control 포함을 확인했다. C11.4 체크와 공식 `72/213`은 그대로 둔다. [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-auto-repeat-percentage-maximum-2026-10-23/implementation-runtime-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-auto-repeat-percentage-maximum-2026-10-23/pr-diff-review-30.md) · [현재 진행 증거](../spec/internal/evidence/c11-4-auto-repeat-percentage-maximum-2026-10-23/README.md)
 
 ## 결손과 목표
 
@@ -42,7 +49,7 @@ definite positive content-axis subset에서 fixed percentage maximum을 projecti
 - 관련 Rust tests, fixture catalog/route 검사, fixture-module-boundary, cargo fmt --all -- --check, workspace all-target Clippy, Android/iOS app build 및 default/product 대 fixture FFI artifact 비교를 기록한다.
 - 구현/runtime은 계획 검토와 겹치지 않는 새 실패 관점 20개, 구현 PR diff는 별도 30개로 검토한다. 결함을 고치면 영향을 받는 검토 관점을 다시 판정한다.
 - PR 본문에는 Android/iOS screenshot을 가능한 범위에서 첨부한다. Agent Browser로 PR 화면과 이미지 로딩을 확인한 후 세션과 해당 browser process를 닫는다.
-- 구현 병합 뒤 내부 계약/상태/공개 roadmap과 사용자 지정 Tailnet 미리보기를 별도 문서 PR로 갱신한다. route, HTTP response, served SHA-256과 Agent Browser 렌더를 확인한다. 이 계획은 C11.4 checkbox와 공식 집계를 변경하지 않는다.
+- 구현 PR에는 검증이 끝난 범위·남은 한계와 현재 코드 상태를 상태 대장·공개 roadmap에 함께 반영하되, C11.4 checkbox와 공식 집계는 완료 관문 전까지 유지한다. PR 병합 뒤 사용자 지정 Tailnet 미리보기를 갱신하고 route, HTTP response, served SHA-256과 Agent Browser 렌더를 확인한다.
 
 ## 계획 자체 적대 검토
 

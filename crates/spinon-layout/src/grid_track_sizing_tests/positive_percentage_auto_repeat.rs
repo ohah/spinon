@@ -90,6 +90,78 @@ fn initial_tracks(input: &LayoutInput, axis: LayoutGridTrackSizingAxis) -> Vec<(
         .collect()
 }
 
+fn definite_maximum_input(
+    axis: LayoutGridTrackSizingAxis,
+    mode: GridAutoRepeatMode,
+    minimum: GridTrackMinSizingFunction,
+    maximum: GridTrackMaxSizingFunction,
+) -> LayoutInput {
+    let mut input = input_with_track(
+        axis,
+        mode,
+        LayoutBoxSizing::ContentBox,
+        GridTrackMinSizingFunction::LengthPx(16.0),
+    );
+    input.nodes[0].style.box_sizing = LayoutBoxSizing::ContentBox;
+    input.nodes[0].style.width = LayoutDimension::Fixed(184.0);
+    input.nodes[0].style.height = LayoutDimension::Fixed(184.0);
+    input.nodes[0].style.border = LayoutBorder::default();
+    input.nodes[0].style.gap = crate::LayoutGap {
+        column: LayoutLengthPercentage::length(8.0),
+        row: LayoutLengthPercentage::length(8.0),
+    };
+    input.viewport = Viewport {
+        width: 184.0,
+        height: 184.0,
+    };
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    let repeated_track = GridTrackSize::MinMax {
+        min: minimum,
+        max: maximum,
+    };
+    match axis {
+        LayoutGridTrackSizingAxis::Columns => container.columns[0] = repeated_track,
+        LayoutGridTrackSizingAxis::Rows => container.rows[0] = repeated_track,
+    }
+    input
+}
+
+fn calc_maximum_input(
+    axis: LayoutGridTrackSizingAxis,
+    mode: GridAutoRepeatMode,
+    property: crate::LayoutCssMathProperty,
+) -> LayoutInput {
+    let mut input = definite_maximum_input(
+        axis,
+        mode,
+        GridTrackMinSizingFunction::LengthPx(16.0),
+        GridTrackMaxSizingFunction::Calc(crate::LayoutCalcId(7)),
+    );
+    input.css_math = vec![crate::LayoutCssMathValue {
+        id: crate::LayoutCalcId(7),
+        node_id: id(1),
+        property,
+        expression: crate::LayoutCssMath::Sum(vec![
+            crate::LayoutCssMath::LengthPx(20.0),
+            crate::LayoutCssMath::Percentage(0.1),
+        ]),
+    }];
+    input
+}
+
+fn assert_axis_frame_size(input: &LayoutInput, axis: LayoutGridTrackSizingAxis, expected: f32) {
+    let output = TaffyLayoutEngine.compute(input).unwrap();
+    let frame = &output.frames[&id(2)];
+    let actual = match axis {
+        LayoutGridTrackSizingAxis::Columns => frame.width,
+        LayoutGridTrackSizingAxis::Rows => frame.height,
+    };
+    assert!(
+        (actual - expected).abs() <= 1.0 / 64.0,
+        "{axis:?}: {actual} != {expected}"
+    );
+}
+
 #[test]
 fn positive_percentage_auto_repeat_matches_fixed_controls_on_both_axes() {
     for axis in [
@@ -181,6 +253,316 @@ fn percentage_minimum_with_fixed_maximum_keeps_auto_repeat_count() {
     );
     assert_eq!(output.frames[&id(2)].x, 2.0);
     assert_eq!(output.frames[&id(2)].width, 12.0);
+}
+
+#[test]
+fn definite_percentage_maximum_uses_the_content_axis_and_gap_for_auto_repeat() {
+    for axis in [
+        LayoutGridTrackSizingAxis::Columns,
+        LayoutGridTrackSizingAxis::Rows,
+    ] {
+        for mode in [GridAutoRepeatMode::AutoFill, GridAutoRepeatMode::AutoFit] {
+            let input = definite_maximum_input(
+                axis,
+                mode,
+                GridTrackMinSizingFunction::LengthPx(16.0),
+                GridTrackMaxSizingFunction::Percentage(0.25),
+            );
+            let tracks = initial_tracks(&input, axis);
+            let collapsed_count = tracks.iter().filter(|(collapsed, _)| *collapsed).count();
+
+            assert_eq!(tracks.len(), 3, "{axis:?}/{mode:?} repeat count");
+            assert_eq!(
+                collapsed_count,
+                if mode == GridAutoRepeatMode::AutoFill {
+                    0
+                } else {
+                    2
+                },
+                "{axis:?}/{mode:?} auto-fit collapse"
+            );
+            assert_axis_frame_size(&input, axis, 46.0);
+        }
+    }
+}
+
+#[test]
+fn percentage_maxima_below_the_minimum_and_zero_are_floored_to_the_minimum() {
+    for axis in [
+        LayoutGridTrackSizingAxis::Columns,
+        LayoutGridTrackSizingAxis::Rows,
+    ] {
+        for mode in [GridAutoRepeatMode::AutoFill, GridAutoRepeatMode::AutoFit] {
+            for maximum in [0.2, 0.0] {
+                let percentage = definite_maximum_input(
+                    axis,
+                    mode,
+                    GridTrackMinSizingFunction::Percentage(0.25),
+                    GridTrackMaxSizingFunction::Percentage(maximum),
+                );
+                let fixed = definite_maximum_input(
+                    axis,
+                    mode,
+                    GridTrackMinSizingFunction::LengthPx(46.0),
+                    GridTrackMaxSizingFunction::LengthPx(46.0),
+                );
+                let tracks = initial_tracks(&percentage, axis);
+                let fixed_tracks = initial_tracks(&fixed, axis);
+                assert_eq!(tracks.len(), 3, "{axis:?}/{mode:?}/{maximum} count");
+                assert_eq!(
+                    tracks
+                        .iter()
+                        .map(|(collapsed, _)| collapsed)
+                        .collect::<Vec<_>>(),
+                    fixed_tracks
+                        .iter()
+                        .map(|(collapsed, _)| collapsed)
+                        .collect::<Vec<_>>(),
+                    "{axis:?}/{mode:?}/{maximum} collapse matches fixed control"
+                );
+                assert_axis_frame_size(&percentage, axis, 46.0);
+                assert_axis_frame_size(&fixed, axis, 46.0);
+            }
+        }
+    }
+}
+
+#[test]
+fn length_percentage_calc_maximum_is_typed_to_its_axis_and_keeps_repeat_count() {
+    for (axis, property) in [
+        (
+            LayoutGridTrackSizingAxis::Columns,
+            crate::LayoutCssMathProperty::GridTemplateColumns,
+        ),
+        (
+            LayoutGridTrackSizingAxis::Rows,
+            crate::LayoutCssMathProperty::GridTemplateRows,
+        ),
+    ] {
+        for mode in [GridAutoRepeatMode::AutoFill, GridAutoRepeatMode::AutoFit] {
+            let input = calc_maximum_input(axis, mode, property);
+            let tracks = initial_tracks(&input, axis);
+            assert_eq!(tracks.len(), 4, "{axis:?}/{mode:?} repeat count");
+            assert_axis_frame_size(&input, axis, 38.4);
+        }
+    }
+
+    let mismatched = calc_maximum_input(
+        LayoutGridTrackSizingAxis::Columns,
+        GridAutoRepeatMode::AutoFill,
+        crate::LayoutCssMathProperty::GridTemplateRows,
+    );
+    let mismatch_result = TaffyLayoutEngine.compute(&mismatched);
+    assert!(
+        matches!(
+            &mismatch_result,
+        Err(crate::LayoutError::CssMathBindingMismatch {
+                node,
+                property: "grid-template-columns",
+            id: crate::LayoutCalcId(7),
+            }) if *node == id(1)
+        ),
+        "mismatched calc identity must fail closed: {mismatch_result:?}"
+    );
+
+    for axis in [
+        LayoutGridTrackSizingAxis::Columns,
+        LayoutGridTrackSizingAxis::Rows,
+    ] {
+        for mode in [GridAutoRepeatMode::AutoFill, GridAutoRepeatMode::AutoFit] {
+            let property = match axis {
+                LayoutGridTrackSizingAxis::Columns => {
+                    crate::LayoutCssMathProperty::GridTemplateColumns
+                }
+                LayoutGridTrackSizingAxis::Rows => crate::LayoutCssMathProperty::GridTemplateRows,
+            };
+            let mut input = calc_maximum_input(axis, mode, property);
+            input.css_math[0].expression = crate::LayoutCssMath::Sum(vec![
+                crate::LayoutCssMath::Percentage(0.1),
+                crate::LayoutCssMath::LengthPx(20.0),
+            ]);
+            assert_eq!(initial_tracks(&input, axis).len(), 4, "{axis:?}/{mode:?}");
+            assert_axis_frame_size(&input, axis, 38.4);
+        }
+    }
+}
+
+#[test]
+fn percentage_and_calc_maximum_use_border_box_content_size_after_insets() {
+    for (axis, maximum, expected) in [
+        (
+            LayoutGridTrackSizingAxis::Columns,
+            GridTrackMaxSizingFunction::Percentage(0.25),
+            44.0,
+        ),
+        (
+            LayoutGridTrackSizingAxis::Rows,
+            GridTrackMaxSizingFunction::Calc(crate::LayoutCalcId(7)),
+            37.6,
+        ),
+    ] {
+        let mut input = definite_maximum_input(
+            axis,
+            GridAutoRepeatMode::AutoFill,
+            GridTrackMinSizingFunction::LengthPx(16.0),
+            maximum,
+        );
+        input.nodes[0].style.box_sizing = LayoutBoxSizing::BorderBox;
+        input.nodes[0].style.width = LayoutDimension::Fixed(200.0);
+        input.nodes[0].style.height = LayoutDimension::Fixed(200.0);
+        input.nodes[0].style.padding = crate::LayoutEdges {
+            top: LayoutLengthPercentage::length(5.0),
+            right: LayoutLengthPercentage::length(11.0),
+            bottom: LayoutLengthPercentage::length(13.0),
+            left: LayoutLengthPercentage::length(7.0),
+        };
+        input.nodes[0].style.border = LayoutBorder {
+            top: 2.0,
+            right: 4.0,
+            bottom: 4.0,
+            left: 2.0,
+        };
+        input.viewport = Viewport {
+            width: 200.0,
+            height: 200.0,
+        };
+        if matches!(maximum, GridTrackMaxSizingFunction::Calc(_)) {
+            input.css_math = vec![crate::LayoutCssMathValue {
+                id: crate::LayoutCalcId(7),
+                node_id: id(1),
+                property: match axis {
+                    LayoutGridTrackSizingAxis::Columns => {
+                        crate::LayoutCssMathProperty::GridTemplateColumns
+                    }
+                    LayoutGridTrackSizingAxis::Rows => {
+                        crate::LayoutCssMathProperty::GridTemplateRows
+                    }
+                },
+                expression: crate::LayoutCssMath::Sum(vec![
+                    crate::LayoutCssMath::LengthPx(20.0),
+                    crate::LayoutCssMath::Percentage(0.1),
+                ]),
+            }];
+        }
+
+        let tracks = initial_tracks(&input, axis);
+        assert_eq!(
+            tracks.len(),
+            if expected == 44.0 { 3 } else { 4 },
+            "{axis:?}"
+        );
+        assert_axis_frame_size(&input, axis, expected);
+    }
+}
+
+#[test]
+fn percentage_auto_repeat_maximum_requires_a_definite_positive_content_axis() {
+    for (label, mutate) in [
+        (
+            "indefinite width",
+            Box::new(|input: &mut LayoutInput| {
+                input.nodes[0].style.width = LayoutDimension::Auto;
+                input.root_sizing = RootSizingPolicy::ResolveWithin;
+            }) as Box<dyn Fn(&mut LayoutInput)>,
+        ),
+        (
+            "zero width",
+            Box::new(|input: &mut LayoutInput| {
+                input.nodes[0].style.width = LayoutDimension::Fixed(0.0);
+                input.root_sizing = RootSizingPolicy::ResolveWithin;
+            }),
+        ),
+        (
+            "constrained maximum",
+            Box::new(|input: &mut LayoutInput| {
+                input.nodes[0].style.max_width = LayoutDimension::Fixed(100.0);
+            }),
+        ),
+        (
+            "zero border-box content",
+            Box::new(|input: &mut LayoutInput| {
+                input.nodes[0].style.box_sizing = LayoutBoxSizing::BorderBox;
+                input.nodes[0].style.padding.left = LayoutLengthPercentage::length(100.0);
+                input.nodes[0].style.padding.right = LayoutLengthPercentage::length(100.0);
+                input.root_sizing = RootSizingPolicy::ResolveWithin;
+            }),
+        ),
+    ] {
+        let mut input = definite_maximum_input(
+            LayoutGridTrackSizingAxis::Columns,
+            GridAutoRepeatMode::AutoFill,
+            GridTrackMinSizingFunction::LengthPx(16.0),
+            GridTrackMaxSizingFunction::Percentage(0.25),
+        );
+        mutate(&mut input);
+        let result = TaffyLayoutEngine.compute(&input);
+        assert!(
+            matches!(
+                result,
+                Err(crate::LayoutError::InvalidGridTrackList {
+                    node,
+                    property: "grid-template-columns",
+                }) if node == id(1)
+            ),
+            "{label} percentage maximum must fail before Taffy sizing"
+        );
+    }
+}
+
+#[test]
+fn auto_repeat_calc_maximum_rejects_unlisted_tree_shapes() {
+    for expression in [
+        crate::LayoutCssMath::Max(vec![
+            crate::LayoutCssMath::LengthPx(20.0),
+            crate::LayoutCssMath::Percentage(0.1),
+        ]),
+        crate::LayoutCssMath::Sum(vec![
+            crate::LayoutCssMath::LengthPx(20.0),
+            crate::LayoutCssMath::Percentage(-0.1),
+        ]),
+        crate::LayoutCssMath::Sum(vec![
+            crate::LayoutCssMath::LengthPx(-20.0),
+            crate::LayoutCssMath::Percentage(0.1),
+        ]),
+        crate::LayoutCssMath::Sum(vec![
+            crate::LayoutCssMath::LengthPx(20.0),
+            crate::LayoutCssMath::Percentage(0.1),
+            crate::LayoutCssMath::LengthPx(1.0),
+        ]),
+    ] {
+        let mut input = calc_maximum_input(
+            LayoutGridTrackSizingAxis::Columns,
+            GridAutoRepeatMode::AutoFill,
+            crate::LayoutCssMathProperty::GridTemplateColumns,
+        );
+        input.css_math[0].expression = expression;
+
+        assert!(matches!(
+            TaffyLayoutEngine.compute(&input),
+            Err(crate::LayoutError::InvalidGridTrackList {
+                node,
+                property: "grid-template-columns",
+            }) if node == id(1)
+        ));
+    }
+}
+
+#[test]
+fn finite_percentage_maximum_that_overflows_f32_resolution_fails_closed() {
+    let input = definite_maximum_input(
+        LayoutGridTrackSizingAxis::Columns,
+        GridAutoRepeatMode::AutoFill,
+        GridTrackMinSizingFunction::LengthPx(16.0),
+        GridTrackMaxSizingFunction::Percentage(f32::MAX),
+    );
+
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(crate::LayoutError::InvalidGridTrackList {
+            node,
+            property: "grid-template-columns",
+        }) if node == id(1)
+    ));
 }
 
 #[test]

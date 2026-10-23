@@ -394,6 +394,35 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "positive-percentage-rows-fit-fixed",
             "percentage-overflow-columns-calc", "percentage-overflow-columns-fixed",
             "percentage-overflow-rows-calc", "percentage-overflow-rows-fixed",
+            "columns-percent-max-fill",
+            "columns-percent-max-fill-control",
+            "columns-percent-max-fit",
+            "columns-percent-max-fit-control",
+            "columns-max-below-min-fill",
+            "columns-max-below-min-control",
+            "columns-zero-percent-max-fill",
+            "columns-zero-percent-max-control",
+            "columns-calc-percent-max-fill",
+            "columns-calc-percent-max-control",
+            "rows-percent-max-fill",
+            "rows-percent-max-fill-control",
+            "rows-percent-max-fit",
+            "rows-percent-max-fit-control",
+            "rows-max-below-min-fill",
+            "rows-max-below-min-control",
+            "rows-zero-percent-max-fill",
+            "rows-zero-percent-max-control",
+            "rows-calc-percent-max-fill",
+            "rows-calc-percent-max-control",
+            "both-percent-max-fill",
+            "both-percent-max-fill-control",
+            "both-percent-max-fit",
+            "both-percent-max-fit-control",
+            "both-flooring-fill",
+            "both-flooring-fill-control",
+            "both-calc-percent-max-fill",
+            "both-calc-percent-max-fill-control",
+
     };
     private static final String[] C114_AUTO_REPEAT_NEGATIVE_LINE_SCENE_IDS = {
             "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -679,8 +708,66 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 + ",height=" + root[1] + ";1:node=2,x=2,y=2," + item + "]";
     }
 
+    private static float[][] c114PercentageMaximumItemFrames(String sceneId) {
+        boolean percentageMaximum = sceneId.contains("-percent-max-")
+                || sceneId.contains("-max-below-min-")
+                || sceneId.contains("-zero-percent-max-")
+                || sceneId.startsWith("both-flooring-");
+        if (!percentageMaximum) return null;
+        float track = sceneId.contains("-calc-percent-max-") ? 38.4f : 46f;
+        boolean fit = sceneId.contains("-max-fit");
+        boolean columns = sceneId.startsWith("columns-");
+        boolean rows = sceneId.startsWith("rows-");
+        boolean both = sceneId.startsWith("both-");
+        int count = fit ? 1 : 2;
+        float[][] frames = new float[count][4];
+        for (int index = 0; index < count; index++) {
+            float offset = index * (track + 8f);
+            if (rows) {
+                frames[index] = new float[] {2, 2 + offset, 20, track};
+            } else {
+                frames[index] = new float[] {2 + offset, 2, track, both ? track : 20};
+            }
+        }
+        return frames;
+    }
+
+    private static String c114PercentageMaximumFrameNumber(float value) {
+        return value == Math.round(value)
+                ? Integer.toString(Math.round(value)) : Float.toString(value);
+    }
+
+    private static String c114PercentageMaximumRootFrame(String sceneId) {
+        return c114PercentageMaximumItemFrames(sceneId) == null
+                ? null : "width=188,height=188";
+    }
+
+    private static String c114PercentageMaximumItemFrame(String sceneId) {
+        float[][] items = c114PercentageMaximumItemFrames(sceneId);
+        if (items == null || items.length == 0) return null;
+        return "width=" + c114PercentageMaximumFrameNumber(items[0][2])
+                + ",height=" + c114PercentageMaximumFrameNumber(items[0][3]);
+    }
+
+    private static String c114PercentageMaximumNodeFrames(String sceneId) {
+        float[][] items = c114PercentageMaximumItemFrames(sceneId);
+        if (items == null) return null;
+        StringBuilder frames = new StringBuilder(
+                "node_frames_css_px=[0:node=1,x=0,y=0,width=188,height=188");
+        for (int index = 0; index < items.length; index++) {
+            frames.append(';').append(index + 1).append(":node=").append(index + 2)
+                    .append(",x=").append(c114PercentageMaximumFrameNumber(items[index][0]))
+                    .append(",y=").append(c114PercentageMaximumFrameNumber(items[index][1]))
+                    .append(",width=").append(c114PercentageMaximumFrameNumber(items[index][2]))
+                    .append(",height=").append(c114PercentageMaximumFrameNumber(items[index][3]));
+        }
+        return frames.append(']').toString();
+    }
+
     private static String c114ExpectedRootFrame(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        String percentageMaximumFrame = c114PercentageMaximumRootFrame(sceneId);
+        if (percentageMaximumFrame != null) return percentageMaximumFrame;
         String areaRepeatFrame = c114TemplateAreaRepeatRootFrame(sceneId);
         if (areaRepeatFrame != null) return areaRepeatFrame;
         String positivePercentFrame = c114PositivePercentMinimumRootFrame(sceneId);
@@ -962,6 +1049,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        String percentageMaximumFrame = c114PercentageMaximumItemFrame(sceneId);
+        if (percentageMaximumFrame != null) return percentageMaximumFrame;
         String areaRepeatFrame = c114TemplateAreaRepeatItemFrame(sceneId);
         if (areaRepeatFrame != null) return areaRepeatFrame;
         String positivePercentFrame = c114PositivePercentMinimumItemFrame(sceneId);
@@ -2441,6 +2530,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        String percentageMaximumFrames = c114PercentageMaximumNodeFrames(sceneId);
+        if (percentageMaximumFrames != null) return percentageMaximumFrames;
         String areaRepeatFrames = c114TemplateAreaRepeatNodeFrames(sceneId);
         if (areaRepeatFrames != null) return areaRepeatFrames;
         String positivePercentFrames = c114PositivePercentMinimumNodeFrames(sceneId);
@@ -4050,6 +4141,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int c114ExpectedBoxCount(String sceneId) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        float[][] percentageMaximumItems = c114PercentageMaximumItemFrames(sceneId);
+        if (percentageMaximumItems != null) return percentageMaximumItems.length + 1;
         int[][] areaRepeatItems = c114TemplateAreaRepeatItemRects(sceneId);
         if (areaRepeatItems != null) return areaRepeatItems.length + 1;
         if (c114PositivePercentMinimumRootSize(sceneId) != null) return 2;
@@ -4531,10 +4624,84 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 + ";1:node=2," + position + ",width=12,height=12]";
     }
 
+    private static final String[] C114_PERCENTAGE_MAXIMUM_PIXEL_SCENE_IDS = {
+        "columns-percent-max-fill", "columns-percent-max-fill-control",
+        "columns-percent-max-fit", "columns-percent-max-fit-control",
+        "columns-max-below-min-fill", "columns-max-below-min-control",
+        "columns-zero-percent-max-fill", "columns-zero-percent-max-control",
+        "columns-calc-percent-max-fill", "columns-calc-percent-max-control",
+        "rows-percent-max-fill", "rows-percent-max-fill-control",
+        "rows-percent-max-fit", "rows-percent-max-fit-control",
+        "rows-max-below-min-fill", "rows-max-below-min-control",
+        "rows-zero-percent-max-fill", "rows-zero-percent-max-control",
+        "rows-calc-percent-max-fill", "rows-calc-percent-max-control",
+        "both-percent-max-fill", "both-percent-max-fill-control",
+        "both-percent-max-fit", "both-percent-max-fit-control",
+        "both-flooring-fill", "both-flooring-fill-control",
+        "both-calc-percent-max-fill", "both-calc-percent-max-fill-control",
+    };
+
+    private static boolean c114PercentageMaximumPixelSamplesMatch(
+            String sceneId,
+            List<SurfaceViewPixelCapture.Sample> samples
+    ) {
+        if (!isC114PercentageMaximumPixelSceneId(sceneId)) return false;
+        String axis = sceneId.startsWith("columns-") ? "columns"
+                : sceneId.startsWith("rows-") ? "rows"
+                : sceneId.startsWith("both-") ? "both" : "";
+        double trackSize = sceneId.contains("calc-percent-max") ? 38.4 : 46.0;
+        int itemCount = sceneId.contains("-fit") ? 1 : 2;
+        if (samples.size() != itemCount + 1) return false;
+        String rootId = "c114-" + sceneId + "-grid";
+        boolean rootFound = false;
+        boolean[] itemsFound = new boolean[itemCount];
+        for (SurfaceViewPixelCapture.Sample sample : samples) {
+            if (sample.id.equals(sceneId + "-root-interior")) {
+                if (rootFound || !rootId.equals(sample.targetNodeId)
+                        || sample.xCssPx != 180 || sample.yCssPx != 180) return false;
+                rootFound = true;
+                continue;
+            }
+            int itemIndex = -1;
+            for (int index = 0; index < itemCount; index++) {
+                if (sample.id.equals(sceneId + "-item-" + (index + 1) + "-interior")) {
+                    itemIndex = index;
+                    break;
+                }
+            }
+            if (itemIndex < 0 || itemsFound[itemIndex]
+                    || !sample.targetNodeId.equals(
+                            "c114-" + sceneId + "-item-" + (itemIndex + 1))) return false;
+            double repeatedStart = itemIndex == 0 ? 2.0 : 2.0 + trackSize + 8.0;
+            double x;
+            double y;
+            double width;
+            double height;
+            switch (axis) {
+                case "columns": x = repeatedStart; y = 2; width = trackSize; height = 20; break;
+                case "rows": x = 2; y = repeatedStart; width = 20; height = trackSize; break;
+                case "both": x = repeatedStart; y = 2; width = trackSize; height = trackSize; break;
+                default: return false;
+            }
+            if (sample.xCssPx != Math.floor(x + width / 2)
+                    || sample.yCssPx != Math.floor(y + height / 2)) return false;
+            itemsFound[itemIndex] = true;
+        }
+        if (!rootFound) return false;
+        for (boolean itemFound : itemsFound) if (!itemFound) return false;
+        return true;
+    }
+
+    private static boolean isC114PercentageMaximumPixelSceneId(String sceneId) {
+        return java.util.Arrays.asList(C114_PERCENTAGE_MAXIMUM_PIXEL_SCENE_IDS)
+                .contains(sceneId);
+    }
+
     private static boolean isC114GridTrackSizingPixelSamples(
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (c114PercentageMaximumPixelSamplesMatch(sceneId, samples)) return true;
         if (sceneId.startsWith("template-area-repeat-")) {
             return c114TemplateAreaRepeatPixelSamplesMatch(sceneId, samples);
         }
@@ -6689,7 +6856,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "grid-gap-cyclic-calc".equals(pixelMatrixSceneId)
                         || "grid-gap-cyclic-percent-min-basis".equals(pixelMatrixSceneId)
                         || "grid-gap-cyclic-calc-min-basis".equals(pixelMatrixSceneId)
-                        || "nested-grid-definite-flex-control".equals(pixelMatrixSceneId))
+                        || "nested-grid-definite-flex-control".equals(pixelMatrixSceneId)
+                        || isC114PercentageMaximumPixelSceneId(pixelMatrixSceneId))
                         && c114GridTrackSizingRunId.equals(pixelMatrixRunId)
                 : c1133GridTemplateAreasRequested
                 ? (C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(pixelMatrixSceneId)
@@ -10201,6 +10369,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c114GridExpectedRgb(String sampleId) {
+        int[] percentageMaximumPixel = c114PercentageMaximumPixelRgb(sampleId);
+        if (percentageMaximumPixel != null) return percentageMaximumPixel;
         if (sampleId.startsWith("template-area-repeat-")) {
             if (sampleId.equals(
                     "template-area-repeat-two-axis-fit-fit-area-span-root-interior")) {
@@ -10448,6 +10618,21 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             default:
                 return new int[] {-1, -1, -1};
         }
+    }
+
+    private static int[] c114PercentageMaximumPixelRgb(String sampleId) {
+        for (String sceneId : C114_PERCENTAGE_MAXIMUM_PIXEL_SCENE_IDS) {
+            if (sampleId.equals(sceneId + "-root-interior")) {
+                return new int[] {226, 232, 240};
+            }
+            if (sampleId.equals(sceneId + "-item-1-interior")) {
+                return new int[] {229, 72, 77};
+            }
+            if (sampleId.equals(sceneId + "-item-2-interior")) {
+                return new int[] {37, 99, 235};
+            }
+        }
+        return null;
     }
 
     private static int[] c11GridExpectedRgb(String sampleId, boolean c1133TemplateAreas) {
