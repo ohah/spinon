@@ -1,0 +1,7 @@
+{
+  "verifiedAtUtc": "2026-10-23T01:07:34.666957+00:00",
+  "closeCommand": "agent-browser --session c114-two-axis-areas-plan close",
+  "doctorCommand": "agent-browser doctor --offline --quick",
+  "activeDaemons": true,
+  "matchingProcesses": []
+}

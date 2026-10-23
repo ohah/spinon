@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C11.4 two-axis auto-repeat and template areas</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 12px; font: 12px sans-serif; color: #172033; }
+      h1 { margin: 0 0 12px; font-size: 16px; }
+      .scenes { display: grid; grid-template-columns: repeat(3, max-content); gap: 24px; }
+      .scene { display: grid; gap: 6px; align-content: start; }
+      .label { min-height: 28px; max-width: 180px; }
+      .grid {
+        display: grid;
+        gap: 4px;
+        grid-auto-columns: 16px;
+        grid-auto-rows: 12px;
+        background: #e5e7eb;
+      }
+      .item { width: 8px; height: 8px; background: #e5484d; }
+      .w100h76 { width: 100px; height: 76px; }
+      .w40h40 { width: 40px; height: 40px; }
+      .w40h76 { width: 40px; height: 76px; }
+      .w76h40 { width: 76px; height: 40px; }
+      .area-short {
+        grid-template-columns: repeat(auto-fill, 20px);
+        grid-template-rows: repeat(auto-fill, 20px);
+        grid-template-areas: ". hero" ". .";
+      }
+      .area-added-columns {
+        grid-template-columns: repeat(auto-fill, 20px);
+        grid-template-rows: repeat(auto-fill, 20px);
+        grid-template-areas: ". . hero" ". . .";
+      }
+      .area-added-rows {
+        grid-template-columns: repeat(auto-fill, 20px);
+        grid-template-rows: repeat(auto-fill, 20px);
+        grid-template-areas: ". ." ". ." ". hero";
+      }
+      .area-added-both {
+        grid-template-columns: repeat(auto-fill, 20px);
+        grid-template-rows: repeat(auto-fill, 20px);
+        grid-template-areas: ". . ." ". . ." ". . hero";
+      }
+      .fill-fit {
+        grid-template-columns: repeat(auto-fill, 20px);
+        grid-template-rows: repeat(auto-fit, 20px);
+        grid-template-areas: ". ." ". hero";
+      }
+      .fit-fill {
+        grid-template-columns: repeat(auto-fit, 20px);
+        grid-template-rows: repeat(auto-fill, 20px);
+        grid-template-areas: ". ." ". hero";
+      }
+      .fit-fit-empty {
+        grid-template-columns: repeat(auto-fit, 20px);
+        grid-template-rows: repeat(auto-fit, 20px);
+        grid-template-areas: ". hero" ". .";
+      }
+      .fit-fit-span {
+        grid-template-columns: repeat(auto-fit, 20px);
+        grid-template-rows: repeat(auto-fit, 20px);
+        grid-template-areas: "hero hero" "hero hero";
+      }
+      .area-longhand {
+        grid-template-columns: repeat(auto-fill, 20px);
+        grid-template-rows: repeat(auto-fill, 20px);
+        grid-template-areas: ". ." "hero .";
+      }
+      #area-short .item, #area-added-columns .item,
+      #area-added-rows .item, #area-added-both .item,
+      #fill-fit .item, #fit-fill .item, #fit-fit-span .item {
+        grid-area: hero;
+      }
+      #area-longhand .item {
+        grid-column: hero-start / hero-end;
+        grid-row: hero-start / hero-end;
+      }
+      #fit-fit-span .item { width: auto; height: auto; }
+    </style>
+  </head>
+  <body>
+    <h1>Two-axis auto-repeat + template areas</h1>
+    <main class="scenes">
+      <section class="scene" id="area-short">
+        <div class="label">dual auto-fill; area shorter on both axes</div>
+        <div class="grid area-short w100h76"><div class="item"></div></div>
+      </section>
+      <section class="scene" id="area-added-columns">
+        <div class="label">dual auto-fill; area adds one column</div>
+        <div class="grid area-added-columns w40h76"><div class="item"></div></div>
+      </section>
+      <section class="scene" id="area-added-rows">
+        <div class="label">dual auto-fill; area adds one row</div>
+        <div class="grid area-added-rows w76h40"><div class="item"></div></div>
+      </section>
+      <section class="scene" id="area-added-both">
+        <div class="label">dual auto-fill; area adds a track on both axes</div>
+        <div class="grid area-added-both w40h40"><div class="item"></div></div>
+      </section>
+      <section class="scene" id="fill-fit">
+        <div class="label">auto-fill columns + auto-fit rows; one named-area item</div>
+        <div class="grid fill-fit w100h76"><div class="item"></div></div>
+      </section>
+      <section class="scene" id="fit-fill">
+        <div class="label">auto-fit columns + auto-fill rows; one named-area item</div>
+        <div class="grid fit-fill w100h76"><div class="item"></div></div>
+      </section>
+      <section class="scene" id="fit-fit-empty">
+        <div class="label">dual auto-fit; named area without an in-flow item</div>
+        <div class="grid fit-fit-empty w100h76"></div>
+      </section>
+      <section class="scene" id="fit-fit-span">
+        <div class="label">dual auto-fit; one item spans the 2×2 named area</div>
+        <div class="grid fit-fit-span w100h76"><div class="item"></div></div>
+      </section>
+      <section class="scene" id="area-longhand">
+        <div class="label">dual auto-fill; generated aliases used by longhand placement</div>
+        <div class="grid area-longhand w100h76"><div class="item"></div></div>
+      </section>
+    </main>
+  </body>
+</html>

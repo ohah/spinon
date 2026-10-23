@@ -1,0 +1,33 @@
+agent-browser doctor
+
+Environment
+  pass  CLI version 0.31.1 (macos aarch64)
+  pass  Home directory /Users/yoonhb
+  pass  State and socket directory /Users/yoonhb/.agent-browser
+  warn  Low disk space at state dir: 227.3 MB free
+        fix: free up disk space; Chrome installs require ~500 MB
+
+Chrome
+  pass  Google Chrome 156.0.8078.48 at /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+  info  1 Chrome profile(s) at /Users/yoonhb/Library/Application Support/Google/Chrome
+
+Daemons
+  pass  No active daemons
+
+Security
+  info  No encryption key set (will be auto-generated on first auth save)
+        fix: export AGENT_BROWSER_ENCRYPTION_KEY=$(openssl rand -hex 32)
+  pass  18 saved state file(s)
+
+Providers
+  info  Browserless: BROWSERLESS_API_KEY not set
+  info  Browserbase: BROWSERBASE_API_KEY not set
+  info  Browser Use: BROWSER_USE_API_KEY not set
+  info  Kernel: KERNEL_API_KEY not set
+  info  AgentCore: no AWS credentials in env (AWS_ACCESS_KEY_ID / AWS_PROFILE)
+  info  AI_GATEWAY_API_KEY not set (chat command disabled)
+        fix: export AI_GATEWAY_API_KEY=gw_...
+
+Summary: 6 pass, 1 warn, 0 fail
+
+tip: Run with --fix to attempt repairs.
