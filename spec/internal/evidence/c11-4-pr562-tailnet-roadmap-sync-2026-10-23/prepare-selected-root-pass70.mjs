@@ -12,9 +12,8 @@ const selectedRoot = path.join(repositoryRoot, 'build/spinon/c11-4-pr562-tailnet
 const outputRoot = path.join(repositoryRoot, 'build/spinon/c11-4-pr562-tailnet-site-pass70-selected');
 const baseHead = '82f7514dc51bedd4160f27180145a13bc3df8750';
 const sourceHead = execFileSync('git', ['rev-parse', 'origin/main'], { cwd: repositoryRoot, encoding: 'utf8' }).trim();
-const branchHead = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repositoryRoot, encoding: 'utf8' }).trim();
+const branchHead = '10ae04a09f9f0b1b97056693dad0438a2c022b62';
 const expectedHead = '22eafb6cad66b6be8facaf264299e7bd6073d0f5';
-const expectedBranchHead = '10ae04a09f9f0b1b97056693dad0438a2c022b62';
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const sanitize = (bytes, relative) => {
   if (relative.toLowerCase().endsWith('.png')) return bytes;
@@ -25,7 +24,7 @@ const sanitize = (bytes, relative) => {
 };
 
 assert.equal(sourceHead, expectedHead, 'unexpected origin/main revision');
-assert.equal(branchHead, expectedBranchHead, 'unexpected Tailnet docs candidate revision');
+execFileSync('git', ['cat-file', '-e', `${branchHead}^{commit}`], { cwd: repositoryRoot, stdio: 'ignore' });
 const branchChangeText = execFileSync('git', ['diff', '--name-status', '--no-renames', sourceHead, branchHead, '--', 'plan', 'spec'], { cwd: repositoryRoot, encoding: 'utf8' }).trim();
 assert.equal(branchChangeText, 'M\tspec/public/roadmap.html', 'only the verified public roadmap route correction may overlay origin/main');
 assert.ok(fs.lstatSync(previousRoot).isDirectory(), 'pass69 selected root is required');
