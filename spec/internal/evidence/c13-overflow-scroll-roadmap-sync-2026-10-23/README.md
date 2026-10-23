@@ -21,3 +21,10 @@
 - Tailnet roadmap은 `roadmap.html`에서 `main`의 `spec/STATUS.md`를 읽기 전용으로 다시 가져온다. PR 병합 뒤 Agent Browser로 같은 항목과 `72/213`을 다시 확인하고 캡처를 추가한다.
 
 `SHA256SUMS`는 변경 전 화면과 DOM 관찰 파일의 무결성을 기록한다.
+
+## 병합 후 Tailnet 재확인
+
+- 공식 상태 동기화 PR [#565](https://github.com/ohah/spinon/pull/565)은 2026-10-23 11:41:31 UTC에 병합됐고 merge SHA는 `af8baa7bbed5a415f078f084cac323f77804d143`다.
+- 같은 Tailnet `/spinon/roadmap.html`을 Agent Browser에서 다시 열었다. [화면](./roadmap-after-agent-browser.png)에는 갱신된 C13.2/C13.3 요약이 보이고, C13 checkbox는 disabled·unchecked로 남았다. 집계는 `72/213`이다. [DOM 관찰](./roadmap-after-observation.json)은 2026-10-23T11:42:28.687Z, viewport 1280×633 CSS px, DPR 1을 기록한다.
+- `spec/public/roadmap.html`은 GitHub `main`의 `spec/STATUS.md`를 가져오며 요청에 `cache: 'no-store'`를 사용한다. Tailnet preview server나 정적 사이트 파일을 교체하지 않고, 기존 route의 실제 재요청 결과를 확인했다.
+- before/after 캡처와 DOM JSON의 SHA-256은 `SHA256SUMS`에 있다.
