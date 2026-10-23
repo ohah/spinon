@@ -1,0 +1,129 @@
+{
+  "pass": "pass02",
+  "variant": "-final",
+  "rspressVersion": "2.0.22",
+  "selectedBuildExitCode": 0,
+  "pageRoutes": [
+    {
+      "path": "roadmap.html",
+      "bytes": 281898,
+      "sha256": "9ca9427037361e559c54e7a6c71d01887b5e711166e3b7952f39d9ee51a42fff"
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 922531,
+      "sha256": "d32d43d2f94b3a3c5df08dbda7a2ba2225a725c085980dfea240a67fa9ed166c"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-percentage-neighbors.html",
+      "bytes": 444768,
+      "sha256": "b293a77ba43b3cebbacfff02d507088cffe592d635afc170490eafeba01d344b"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/README.html",
+      "bytes": 448733,
+      "sha256": "bf227c0aeae848e20df2c985b0cf60f5ee2f32c1be83b6e36231e8b8b851c8bc"
+    },
+    {
+      "path": "internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/README.html",
+      "bytes": 433107,
+      "sha256": "a81400b5b70d99fc5f400949b6c31b490027b1b0120a41767665d41c8fc32feb"
+    },
+    {
+      "path": "internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/pr-diff-review-30.html",
+      "bytes": 434335,
+      "sha256": "794315d102f4aab9506538681bf8700fb39bcefa0fcf4366134ed88e25cf2d46"
+    }
+  ],
+  "selectedStaticAssets": [
+    {
+      "path": "roadmap.html",
+      "bytes": 281898,
+      "sha256": "9ca9427037361e559c54e7a6c71d01887b5e711166e3b7952f39d9ee51a42fff",
+      "selectedRootPublic": true,
+      "selectedOutput": true
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/android-avd-c114-percentage-neighbors-android-avd-20261023T203439598Z-425fea5b/col-fill-both.png",
+      "bytes": 75330,
+      "sha256": "7959907f671ca6d805b69063263d1957103380f00082ad3e522ec828aee37e2f",
+      "selectedRootPublic": true,
+      "selectedOutput": true
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/ios-simulator-c114-percentage-neighbors-ios-simulator-20261023T203501591Z-007b4f1b/col-fill-both.png",
+      "bytes": 131597,
+      "sha256": "2f22d1cc6d83f1531a309576734c765b944289ce6b6966d1cbfa6ebae0464b3d",
+      "selectedRootPublic": true,
+      "selectedOutput": true
+    },
+    {
+      "path": "internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/tailnet-roadmap-before-sync.png",
+      "bytes": 304578,
+      "sha256": "c0b67c48a7dbeee200ac340ee471df9ef793addd63ae5882277e53b12387ddbb",
+      "selectedRootPublic": true,
+      "selectedOutput": true
+    }
+  ],
+  "referencedStaticFiles": [
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/js/a.055f13cc7d.js",
+      "bytes": 217086,
+      "sha256": "ce0474f0e6d34c961807d9a7b557eb59f3811071cb9cda31b96d49e472ebb3a6"
+    },
+    {
+      "path": "static/js/async/route-2414c684afa3.abde31c34e.js",
+      "bytes": 19443,
+      "sha256": "66ac7d561812ba2a8f1bb532a7a05725d73ed2ca7a6f747c719ee69805e31bcd"
+    },
+    {
+      "path": "static/js/async/route-3b5573407cd2.948772968a.js",
+      "bytes": 23242,
+      "sha256": "3b3295ea6c0322696de56a6c68728eafeeb76679dacd85a6331af6357c1516aa"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.8ffa0057ee.js",
+      "bytes": 548676,
+      "sha256": "32ab7511d0de01c4e10f3a7d206ede8c563c0e042a6d6d020653ea210df474cd"
+    },
+    {
+      "path": "static/js/async/route-705d0978b7a0.e69db7744e.js",
+      "bytes": 12177,
+      "sha256": "7e3bab9e948c32c53d774abd6919f11f3c4ae96d6f5800a846a5149b9130b952"
+    },
+    {
+      "path": "static/js/async/route-72be57c6af5d.8b9787f2a7.js",
+      "bytes": 7705,
+      "sha256": "ee2ec2a3d0174e9bd43a8e5bf63a1db11dd95d73321ace0f442bb378ec61b785"
+    },
+    {
+      "path": "static/js/index.3951c61e52.js",
+      "bytes": 1426193,
+      "sha256": "ca7bc140c3ad7efc6f7a19e173e6cb185fed1efc34c6524a90455f86945dc079"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13"
+    },
+    {
+      "path": "static/js/styles.b4a8fccc7f.js",
+      "bytes": 474,
+      "sha256": "8ec67f1094a649a98b7e7797496e956059ccec02fba1cf7c29ec9ac73ca66e2b"
+    }
+  ],
+  "roadmapSourceSha256": "9ca9427037361e559c54e7a6c71d01887b5e711166e3b7952f39d9ee51a42fff",
+  "officialCountAndLaneVerified": true,
+  "staleCandidateClaimAbsent": true,
+  "noDeletes": true
+}

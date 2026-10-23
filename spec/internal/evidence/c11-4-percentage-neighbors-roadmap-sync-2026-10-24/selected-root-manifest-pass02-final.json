@@ -1,0 +1,235 @@
+{
+  "baseSelectedRoot": "build/spinon/c11-4-percentage-neighbors-roadmap-sync-20261024-root-selected",
+  "selectedRoot": "build/spinon/c11-4-percentage-neighbors-roadmap-sync-20261024-root-pass02-selected",
+  "outputRoot": "build/spinon/c11-4-percentage-neighbors-roadmap-sync-20261024-site-pass02-selected",
+  "headTree": "6f8b42dd70bacfba16632760dd79ff2cd282dc05",
+  "originMainTree": "6f8b42dd70bacfba16632760dd79ff2cd282dc05",
+  "overlaySourceFiles": [
+    "plan/c11-4-auto-repeat-percentage-neighbors.md",
+    "spec/STATUS.md",
+    "spec/public/roadmap.html",
+    "spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/README.md",
+    "spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/android-avd-c114-percentage-neighbors-android-avd-20261023T203439598Z-425fea5b/col-fill-both.png",
+    "spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/ios-simulator-c114-percentage-neighbors-ios-simulator-20261023T203501591Z-007b4f1b/col-fill-both.png",
+    "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/README.md",
+    "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/pr-diff-review-30.md",
+    "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/tailnet-roadmap-before-sync.png"
+  ],
+  "overlays": [
+    {
+      "source": "plan/c11-4-auto-repeat-percentage-neighbors.md",
+      "path": "plan/c11-4-auto-repeat-percentage-neighbors.md",
+      "bytes": 12701,
+      "sha256": "8eb24de5f028f66603b34b01b27f236bfd59ec34981349d8a1014e08a6e0c0f6"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-percentage-neighbors.md",
+      "path": "spec/plan/c11-4-auto-repeat-percentage-neighbors.md",
+      "bytes": 12701,
+      "sha256": "8eb24de5f028f66603b34b01b27f236bfd59ec34981349d8a1014e08a6e0c0f6"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "spec/STATUS.md",
+      "bytes": 409524,
+      "sha256": "7955923e43859216c7a097b5401bbb167c382363bdabde062e1f4f4daa0ed9d0"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "STATUS.md",
+      "bytes": 409524,
+      "sha256": "7955923e43859216c7a097b5401bbb167c382363bdabde062e1f4f4daa0ed9d0"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "spec/public/roadmap.html",
+      "bytes": 281898,
+      "sha256": "9ca9427037361e559c54e7a6c71d01887b5e711166e3b7952f39d9ee51a42fff"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "public/roadmap.html",
+      "bytes": 281898,
+      "sha256": "9ca9427037361e559c54e7a6c71d01887b5e711166e3b7952f39d9ee51a42fff"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "public/spec/public/roadmap.html",
+      "bytes": 281898,
+      "sha256": "9ca9427037361e559c54e7a6c71d01887b5e711166e3b7952f39d9ee51a42fff"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/README.md",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/README.md",
+      "bytes": 10349,
+      "sha256": "39d7fa3edfc137d2735e8b12707bb9fb2919cb236335fc0d79c180f8d45e99c3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/README.md",
+      "path": "internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/README.md",
+      "bytes": 10349,
+      "sha256": "39d7fa3edfc137d2735e8b12707bb9fb2919cb236335fc0d79c180f8d45e99c3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/README.md",
+      "path": "public/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/README.md",
+      "bytes": 10349,
+      "sha256": "39d7fa3edfc137d2735e8b12707bb9fb2919cb236335fc0d79c180f8d45e99c3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/README.md",
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/README.md",
+      "bytes": 10349,
+      "sha256": "39d7fa3edfc137d2735e8b12707bb9fb2919cb236335fc0d79c180f8d45e99c3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/android-avd-c114-percentage-neighbors-android-avd-20261023T203439598Z-425fea5b/col-fill-both.png",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/android-avd-c114-percentage-neighbors-android-avd-20261023T203439598Z-425fea5b/col-fill-both.png",
+      "bytes": 75330,
+      "sha256": "7959907f671ca6d805b69063263d1957103380f00082ad3e522ec828aee37e2f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/android-avd-c114-percentage-neighbors-android-avd-20261023T203439598Z-425fea5b/col-fill-both.png",
+      "path": "internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/android-avd-c114-percentage-neighbors-android-avd-20261023T203439598Z-425fea5b/col-fill-both.png",
+      "bytes": 75330,
+      "sha256": "7959907f671ca6d805b69063263d1957103380f00082ad3e522ec828aee37e2f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/android-avd-c114-percentage-neighbors-android-avd-20261023T203439598Z-425fea5b/col-fill-both.png",
+      "path": "public/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/android-avd-c114-percentage-neighbors-android-avd-20261023T203439598Z-425fea5b/col-fill-both.png",
+      "bytes": 75330,
+      "sha256": "7959907f671ca6d805b69063263d1957103380f00082ad3e522ec828aee37e2f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/android-avd-c114-percentage-neighbors-android-avd-20261023T203439598Z-425fea5b/col-fill-both.png",
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/android-avd-c114-percentage-neighbors-android-avd-20261023T203439598Z-425fea5b/col-fill-both.png",
+      "bytes": 75330,
+      "sha256": "7959907f671ca6d805b69063263d1957103380f00082ad3e522ec828aee37e2f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/ios-simulator-c114-percentage-neighbors-ios-simulator-20261023T203501591Z-007b4f1b/col-fill-both.png",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/ios-simulator-c114-percentage-neighbors-ios-simulator-20261023T203501591Z-007b4f1b/col-fill-both.png",
+      "bytes": 131597,
+      "sha256": "2f22d1cc6d83f1531a309576734c765b944289ce6b6966d1cbfa6ebae0464b3d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/ios-simulator-c114-percentage-neighbors-ios-simulator-20261023T203501591Z-007b4f1b/col-fill-both.png",
+      "path": "internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/ios-simulator-c114-percentage-neighbors-ios-simulator-20261023T203501591Z-007b4f1b/col-fill-both.png",
+      "bytes": 131597,
+      "sha256": "2f22d1cc6d83f1531a309576734c765b944289ce6b6966d1cbfa6ebae0464b3d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/ios-simulator-c114-percentage-neighbors-ios-simulator-20261023T203501591Z-007b4f1b/col-fill-both.png",
+      "path": "public/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/ios-simulator-c114-percentage-neighbors-ios-simulator-20261023T203501591Z-007b4f1b/col-fill-both.png",
+      "bytes": 131597,
+      "sha256": "2f22d1cc6d83f1531a309576734c765b944289ce6b6966d1cbfa6ebae0464b3d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/ios-simulator-c114-percentage-neighbors-ios-simulator-20261023T203501591Z-007b4f1b/col-fill-both.png",
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/ios-simulator-c114-percentage-neighbors-ios-simulator-20261023T203501591Z-007b4f1b/col-fill-both.png",
+      "bytes": 131597,
+      "sha256": "2f22d1cc6d83f1531a309576734c765b944289ce6b6966d1cbfa6ebae0464b3d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/README.md",
+      "path": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/README.md",
+      "bytes": 4137,
+      "sha256": "f4925f814bac7a5d0b45b0fd77c654a5597ea37a0d34298c0fdc0e3cb2bfcd43"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/README.md",
+      "path": "internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/README.md",
+      "bytes": 4137,
+      "sha256": "f4925f814bac7a5d0b45b0fd77c654a5597ea37a0d34298c0fdc0e3cb2bfcd43"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/README.md",
+      "path": "public/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/README.md",
+      "bytes": 4137,
+      "sha256": "f4925f814bac7a5d0b45b0fd77c654a5597ea37a0d34298c0fdc0e3cb2bfcd43"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/README.md",
+      "path": "public/spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/README.md",
+      "bytes": 4137,
+      "sha256": "f4925f814bac7a5d0b45b0fd77c654a5597ea37a0d34298c0fdc0e3cb2bfcd43"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/pr-diff-review-30.md",
+      "path": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/pr-diff-review-30.md",
+      "bytes": 5061,
+      "sha256": "162de34e27f1e508607b490bf53b009514c32ffe8575612110c69d13d404f808"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/pr-diff-review-30.md",
+      "path": "internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/pr-diff-review-30.md",
+      "bytes": 5061,
+      "sha256": "162de34e27f1e508607b490bf53b009514c32ffe8575612110c69d13d404f808"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/pr-diff-review-30.md",
+      "path": "public/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/pr-diff-review-30.md",
+      "bytes": 5061,
+      "sha256": "162de34e27f1e508607b490bf53b009514c32ffe8575612110c69d13d404f808"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/pr-diff-review-30.md",
+      "path": "public/spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/pr-diff-review-30.md",
+      "bytes": 5061,
+      "sha256": "162de34e27f1e508607b490bf53b009514c32ffe8575612110c69d13d404f808"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/tailnet-roadmap-before-sync.png",
+      "path": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/tailnet-roadmap-before-sync.png",
+      "bytes": 304578,
+      "sha256": "c0b67c48a7dbeee200ac340ee471df9ef793addd63ae5882277e53b12387ddbb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/tailnet-roadmap-before-sync.png",
+      "path": "internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/tailnet-roadmap-before-sync.png",
+      "bytes": 304578,
+      "sha256": "c0b67c48a7dbeee200ac340ee471df9ef793addd63ae5882277e53b12387ddbb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/tailnet-roadmap-before-sync.png",
+      "path": "public/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/tailnet-roadmap-before-sync.png",
+      "bytes": 304578,
+      "sha256": "c0b67c48a7dbeee200ac340ee471df9ef793addd63ae5882277e53b12387ddbb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/tailnet-roadmap-before-sync.png",
+      "path": "public/spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/tailnet-roadmap-before-sync.png",
+      "bytes": 304578,
+      "sha256": "c0b67c48a7dbeee200ac340ee471df9ef793addd63ae5882277e53b12387ddbb"
+    }
+  ],
+  "storageMethod": "hardlink pass01 selected root; unlink each overlay target before writing selected copies",
+  "noDeletes": true,
+  "refreshedSourceFiles": [
+    {
+      "source": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/README.md",
+      "path": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/README.md",
+      "bytes": 4137,
+      "sha256": "f4925f814bac7a5d0b45b0fd77c654a5597ea37a0d34298c0fdc0e3cb2bfcd43"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/README.md",
+      "path": "internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/README.md",
+      "bytes": 4137,
+      "sha256": "f4925f814bac7a5d0b45b0fd77c654a5597ea37a0d34298c0fdc0e3cb2bfcd43"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/README.md",
+      "path": "public/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/README.md",
+      "bytes": 4137,
+      "sha256": "f4925f814bac7a5d0b45b0fd77c654a5597ea37a0d34298c0fdc0e3cb2bfcd43"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/README.md",
+      "path": "public/spec/internal/evidence/c11-4-percentage-neighbors-roadmap-sync-2026-10-24/README.md",
+      "bytes": 4137,
+      "sha256": "f4925f814bac7a5d0b45b0fd77c654a5597ea37a0d34298c0fdc0e3cb2bfcd43"
+    }
+  ],
+  "refreshMethod": "verify old overlay hash; write unique sibling temp; atomic rename each selected copy"
+}

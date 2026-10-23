@@ -2,13 +2,13 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [fixed-px 이웃 track slice](../spec/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획 PR #577 병합 후 제한 구현 후보 검증과 독립 PR diff 실패 관점 30개 검토를 마쳤다. 구현/runtime 검토 20개와 PR diff 검토 30개는 별도 문서다. Android/iOS 13-scene runtime matrix는 각각 통과했으며 candidate branch는 아직 병합 전이다. C11.4 상위 체크는 미완료이며 공식 완료 수 72/213을 유지한다.
+**상태:** 계획 PR #577과 제한 구현 PR #580이 Rebase and merge됐다. 구현/runtime 실패 관점 20개와 별도 PR diff 실패 관점 30개 검토, Android/iOS 13-scene runtime matrix가 통과했다. PR #580 merge SHA는 `33b00d077147ad9f2102af3220daa2c6cf74e2f9`다. 병합 당시 required checks는 설정되지 않았고 GitHub는 check을 보고하지 않았다. C11.4 상위 체크는 미완료이며 공식 완료 수 72/213을 유지한다.
 
-## 결손과 목표
+## 병합된 제한 구현과 남은 결손
 
-현재 auto-repeat 입력은 repeat 앞·뒤의 explicit neighbor를 유한하고 0 이상인 px track으로만 받는다. Cascade의 is_auto_repeat_neighbor_track와 layout의 auto_repeat_neighbor_track_is_fixed_px가 percentage neighbor를 거부한다. Taffy 0.15.0의 repeat-count 계산은 다른 definite track의 used space를 해당 축의 definite content size로 계산하므로, 거부 조건을 지우기 전에 percentage basis와 overflow·gap 경계를 확인해야 한다.
+PR #580 이전에는 repeat 앞·뒤의 explicit neighbor를 유한하고 0 이상인 px track으로만 받았다. Cascade와 layout은 percentage neighbor를 거부했다. Taffy 0.15.0의 repeat-count 계산이 다른 definite track의 used space를 해당 축의 definite content size로 계산하므로, percentage basis와 overflow·gap 경계가 수용 조건이었다.
 
-CSS Grid Layout Module Level 1, 2025 CRD §7.2.3.2는 definite preferred/max size가 있으면 content box를 넘지 않는 가장 큰 양의 repeat count를 선택하고, repeat fragment 밖의 track과 gutter도 그 계산에 포함한다. §7.2.1은 definite grid axis에서 percentage track sizing을 해당 축의 grid container content size로 해석한다. 이 계획은 해당 축이 definite이고 양수인 제한 RuntimeBlockFlexGridTrackSizingV1 profile에 finite nonnegative percentage neighbor를 추가한다. auto-fill/auto-fit의 percentage minimum/maximum 처리, 실제 track sizing, implicit placement 및 일반 author CSS admission은 바꾸지 않는다.
+CSS Grid Layout Module Level 1, 2025 CRD §7.2.3.2는 definite preferred/max size가 있으면 content box를 넘지 않는 가장 큰 양의 repeat count를 선택하고, repeat fragment 밖의 track과 gutter도 그 계산에 포함한다. §7.2.1은 definite grid axis에서 percentage track sizing을 해당 축의 grid container content size로 해석한다. PR #580은 이 기준에 맞춰 definite positive content axis에서만 유한·0 이상 percentage neighbor를 제한 profile에 허용하고, percentage 합산 및 basis 곱셈 overflow는 거부한다. auto-fill/auto-fit percentage minimum/maximum, actual track sizing 확장, implicit placement와 일반 author CSS admission은 이 slice에 포함하지 않는다.
 
 ## 사전 비교와 독립 기대값
 
@@ -53,11 +53,11 @@ Acceptance는 scene별 repeat count와 expanded line/track order를 exact로 비
 
 Runtime fixture는 V8-authored HostDocument → Stylo computed style → typed layout input → Taffy → WGPU scene/draw/present 경로로 13개 scene을 실행한다. Chrome CSSOM track list와 독립 산술을 scene별로 대조한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 최신 앱 빌드의 track trace, item frame과 draw/present를 확인한다. PixelCopy와 제출 전 Metal 표본은 선언한 표본 위치에서만 비교하며, 이는 실기기·hardware GPU·iOS compositor 이후 픽셀 일치 근거가 아니다.
 
-## 현재 checkout 구현 진행 · 2026-10-24
+## PR #580 병합 구현 slice · 2026-10-24
 
-candidate branch의 cascade/layout 변경은 definite positive content axis에서 finite·nonnegative percentage neighbor를 받도록 연결됐다. 규범 `col-fit-first` 200px과 Chrome 156 CSSOM 관측 196px은 별도 oracle이다. `spinon-layout` percentage-neighbor 3/3, `spinon-style` auto-repeat 16/16, FFI fixture test 1/1 및 전체 workspace tests가 통과했다. workspace Clippy와 rustfmt도 통과했다.
+PR #580에 병합된 cascade/layout 변경은 definite positive content axis에서 finite·nonnegative percentage neighbor를 받도록 연결됐다. 규범 `col-fit-first` 200px과 Chrome 156 CSSOM 관측 196px은 별도 oracle이다. `spinon-layout` percentage-neighbor 3/3, `spinon-style` auto-repeat 16/16, FFI fixture test 1/1 및 전체 workspace tests가 통과했다. workspace Clippy와 rustfmt도 통과했다.
 
-13개 scene JSON과 opt-in FFI fixture adapter를 추가했고, Android/iOS demo runner의 scene allowlist·frame·pixel expectations 및 simulator capture/boundary route를 연결했다. [FFI adapter](../crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_percentage_neighbors.rs), [scene matrix](../crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_percentage_neighbor_scenes.json), [Android runner](../platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java), [iOS runner](../platforms/ios/Sources/C0410RuntimeGpuDemo.swift), [capture tool](../tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs), [fixture boundary validator](../tools/css-reference/fixture-module-boundary.test.mjs)에 있다. API 37 ARM64 Android AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 13/13 scene이 각각 통과했다. Android PixelCopy와 compositor 제출 전 iOS Metal drawable은 각각 15/15 표본 exact이며, 전체 런·hash·제외 범위는 [runtime 근거](../spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/README.md)에 기록했다. [구현/runtime 실패 관점 20개 검토](../spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/implementation-runtime-review-20.md)를 마쳤다. 독립 PR diff 실패 관점 30개 검토, PR 병합, 병합 후 공개 미리보기 동기화는 남아 있다.
+13개 scene JSON과 opt-in FFI fixture adapter를 추가했고, Android/iOS demo runner의 scene allowlist·frame·pixel expectations 및 simulator capture/boundary route를 연결했다. [FFI adapter](../crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_percentage_neighbors.rs), [scene matrix](../crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_percentage_neighbor_scenes.json), [Android runner](../platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java), [iOS runner](../platforms/ios/Sources/C0410RuntimeGpuDemo.swift), [capture tool](../tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs), [fixture boundary validator](../tools/css-reference/fixture-module-boundary.test.mjs)에 있다. API 37 ARM64 Android AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 13/13 scene이 각각 통과했다. Android PixelCopy와 compositor 제출 전 iOS Metal drawable은 각각 15/15 표본 exact이며, 전체 런·hash·제외 범위는 [runtime 근거](../spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/README.md)에 기록했다. [구현/runtime 실패 관점 20개 검토](../spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/implementation-runtime-review-20.md)를 마쳤다. 독립 PR diff 실패 관점 30개 검토와 PR #580 병합을 마쳤다. Tailnet 공개 미리보기 동기화는 별도 문서 PR 병합 뒤 진행한다.
 
 ## 검증 관문
 
@@ -69,7 +69,7 @@ candidate branch의 cascade/layout 변경은 definite positive content axis에�
 6. 이 계획 보정은 [별도 실패 관점 20개 검토](./c11-4-auto-repeat-percentage-neighbors-amendment-plan-review-20.md)를 통과했다. 구현/runtime은 [새 실패 관점 20개 검토](../spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/implementation-runtime-review-20.md), PR 변경은 이 두 검토와 별도의 [실패 관점 30개 검토](../spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/pr-diff-review-30.md)를 통과했다.
 7. 상태 대장·내부 계약·상위 C11.4 계획에 제한 범위와 근거를 연결하되 C11.4 checkbox와 72/213은 유지한다.
 8. Tailnet 미리보기를 선택한 문서만 backup + hash manifest 방식으로 갱신하고 Agent Browser로 실제 화면·이미지를 확인한다. PR 본문에 화면을 넣은 경우 GitHub 표시도 확인한다. 종료 후 이 작업의 Agent Browser session/process를 닫는다.
-9. PR은 템플릿·작업 유형/영역 라벨·명세·남은 범위를 채우고 Rebase and merge를 사용한다. 병합 직전 live required checks와 merge state를 확인한다.
+9. 구현 PR [#580](https://github.com/ohah/spinon/pull/580)을 Rebase and merge로 병합했다. 병합 직전 `mergeStateStatus=CLEAN`, required check 미설정, check 미보고를 재확인했다. 이 문서의 merge SHA는 `33b00d077147ad9f2102af3220daa2c6cf74e2f9`다. 병합 후 Tailnet 미리보기는 문서 PR이 병합된 뒤 sync한다.
 
 ## 제외 범위
 
