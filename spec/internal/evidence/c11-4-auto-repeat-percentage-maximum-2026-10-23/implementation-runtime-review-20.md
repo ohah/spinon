@@ -35,4 +35,4 @@
 - Android API 37 ARM64 AVD: 28/28 scene, 78/78 PixelCopy sample exact; ANGLE/SwiftShader software renderer.
 - iPhone 17 Pro / iOS 26.2 Simulator: 28/28 scene, 78/78 Metal drawable sample exact; compositor 제출 전.
 
-런타임 구현 결함은 발견하지 못했다. 검토에서 드러난 calc 항 순서와 percentage 곱셈 overflow의 테스트 공백은 회귀 테스트로 보완하고 다시 실행했다. 위 결과는 opt-in fixture slice에 한정한다. 구현 변경과 공개 범위를 대상으로 한 별도 PR diff 실패 관점 30개는 [검토 기록](./pr-diff-review-30.md)에 완료 상태로 남겼고, PR은 아직 생성하지 않았다.
+런타임 구현 결함은 발견하지 못했다. 검토에서 드러난 calc 항 순서와 percentage 곱셈 overflow의 테스트 공백은 회귀 테스트로 보완하고 다시 실행했다. 위 결과는 opt-in fixture slice에 한정한다. 구현 변경과 공개 범위를 대상으로 한 별도 PR diff 실패 관점 30개는 [검토 기록](./pr-diff-review-30.md)에 남겼다. PR #568은 로컬·GitHub diff 일치와 본문 화면 로딩을 확인한 뒤 `c436a38388fe8a191fd374495c516c88d1e3cd54`로 병합됐으며, check rollup은 비어 있었다.

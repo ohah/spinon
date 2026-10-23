@@ -2,7 +2,7 @@
 
 ## 판정
 
-구현 후보는 작업 브랜치에 있으며 Android·iOS simulator runtime 28/28씩을 통과했다. 구현/runtime 실패 관점 20개와 별도 PR diff 실패 관점 30개 검토를 완료했고, 두 검토에서 발견한 세부 입력 coverage 공백은 회귀 테스트로 보완했다. PR은 아직 생성하지 않았다. C11.4 체크와 공식 완료 수 `72/213`은 변경하지 않는다.
+제한 구현 PR [#568](https://github.com/ohah/spinon/pull/568)은 2026-10-23T14:16:01Z에 Rebase and merge됐고 merge SHA는 `c436a38388fe8a191fd374495c516c88d1e3cd54`다. Android·iOS simulator runtime은 각각 28/28 scene을 통과했다. 구현/runtime 실패 관점 20개와 별도 PR diff 실패 관점 30개 검토를 완료했고, 검토 중 찾은 세부 입력 coverage 공백은 회귀 테스트로 보완했다. PR check rollup은 비어 있었고 `main` required status checks도 설정되지 않았다. C11.4 체크와 공식 완료 수 `72/213`은 변경하지 않는다. 이 병합 기록 변경은 별도 [문서 diff 검토](./post-merge-roadmap-sync-pr-diff-review-30.md)에 남긴다.
 
 ## 구현 범위
 
@@ -26,7 +26,7 @@
 
 - iPhone 17 Pro / iOS 26.2 Simulator에서 새 expected root/item/node frames를 연결한 앱으로 28/28 scene의 track trace, frame, draw/present가 통과했다. 78/78 선택된 Metal drawable RGBA 표본은 exact match이며 compositor 제출 전 결과다. [결과 JSON](./ios-simulator-c114-percentage-maximum-ios-simulator-20261023T122917798Z-9678b290/result.json) · [iOS Simulator 화면](./ios-simulator-c114-percentage-maximum-ios-simulator-20261023T122917798Z-9678b290/columns-percent-max-fill.png)
 - Android API 37 ARM64 AVD `emulator-5570`에서 28/28 scene의 expected node frames, used tracks, trace chunks, draw/present가 통과했고 78/78 PixelCopy RGBA 표본이 exact였다. 앱 renderer는 ANGLE/SwiftShader software path다. local/installed APK SHA-256은 `3d421afc506db85c7dfd703f64c24902c333658c14f64a58b374e76ffe680ee6`으로 일치했다. [Android build log](./android-build-route-color-fix.log) · [결과 JSON](./android-avd-c114-percentage-maximum-android-avd-20261023T130834339Z-da0fb0d3/result.json) · [AVD metadata](./android-avd-c114-percentage-maximum-android-avd-20261023T130834339Z-da0fb0d3/simulator.json) · [Android AVD 화면](./android-avd-c114-percentage-maximum-android-avd-20261023T130834339Z-da0fb0d3/columns-percent-max-fill.png)
-- [구현/runtime 실패 관점 20개](./implementation-runtime-review-20.md)와 [구현 PR diff 실패 관점 30개](./pr-diff-review-30.md) 검토를 완료했다. 두 검토 기록에서 확인한 회귀 coverage를 보완하고 테스트를 재실행했다. PR은 아직 생성하지 않았다. 기본·opt-in static archive boundary는 확인했으나 Android hardware GPU, 실기기, iOS compositor 이후 pixel은 검증하지 않았다.
+- [구현/runtime 실패 관점 20개](./implementation-runtime-review-20.md)와 [구현 PR diff 실패 관점 30개](./pr-diff-review-30.md) 검토를 완료했다. GitHub diff는 로컬 243개 파일과 일치했고 PR 본문의 Android·iOS 이미지는 Agent Browser에서 각각 1080×2400 및 1206×2622로 로드됐다. PR #568은 위 merge SHA로 병합됐다. 기본·opt-in static archive boundary는 확인했으나 Android hardware GPU, 실기기, iOS compositor 이후 pixel은 검증하지 않았다.
 
 ## 공식 상태와 범위
 
