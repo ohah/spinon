@@ -1,0 +1,28 @@
+{
+  "browser": {
+    "name": "Chrome for Testing",
+    "version": "156.0.8078.48",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "agentBrowser": "0.31.1",
+    "platform": "macOS arm64",
+    "viewport": [1280, 633],
+    "devicePixelRatio": 1
+  },
+  "css": {
+    "container": [52, 52],
+    "repeatedTrack": 20,
+    "gap": 4,
+    "gridAutoColumns": 16,
+    "gridAutoRows": 12,
+    "autoRepeatCountPerAxis": 2
+  },
+  "cases": [
+    {"id":"fit-fit-empty","columns":"0px 0px 16px","rows":"0px 0px 12px","rootSize":[52,52],"scrollExtent":[52,52],"items":[]},
+    {"id":"fit-fit-item","columns":"0px 0px 16px","rows":"0px 0px 12px","rootSize":[52,52],"scrollExtent":[52,52],"items":[{"area":"hero","rectFromRoot":[0,0,16,12]}]},
+    {"id":"fit-fit-span","columns":"20px 20px 16px","rows":"20px 20px 12px","rootSize":[52,52],"scrollExtent":[64,60],"items":[{"area":"hero","rectFromRoot":[0,0,64,60]}]},
+    {"id":"fit-fill-item","columns":"0px 0px 16px","rows":"20px 20px 12px","rootSize":[52,52],"scrollExtent":[52,60],"items":[{"area":"hero","rectFromRoot":[0,48,16,12]}]},
+    {"id":"fill-fit-item","columns":"20px 20px 16px","rows":"0px 0px 12px","rootSize":[52,52],"scrollExtent":[64,52],"items":[{"area":"hero","rectFromRoot":[48,0,16,12]}]},
+    {"id":"fit-fit-column","columns":"0px 0px 16px","rows":"20px 0px","rootSize":[52,52],"scrollExtent":[52,52],"items":[{"area":"hero","rectFromRoot":[0,0,16,20]}]},
+    {"id":"fit-fit-row","columns":"20px 0px","rows":"0px 0px 12px","rootSize":[52,52],"scrollExtent":[52,52],"items":[{"area":"hero","rectFromRoot":[0,0,20,12]}]}
+  ]
+}
