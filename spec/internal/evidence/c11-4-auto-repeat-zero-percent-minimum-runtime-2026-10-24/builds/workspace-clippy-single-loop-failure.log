@@ -1,0 +1,51 @@
+    Checking taffy v0.15.0 (/Users/yoonhb/Documents/workspace/spinon/vendor/taffy)
+    Checking spinon-style v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style)
+    Checking spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+    Checking spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Checking spinon-image v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-image)
+error: for loop over a single element
+   --> crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/auto_repeat_calc_minimum.rs:280:5
+    |
+280 | /     for template in ["repeat(auto-fill,10%)"] {
+281 | |         let fixture = fixture(&format!(
+282 | |             "display:grid;box-sizing:border-box;width:124px;height:124px;min-width:0;min-height:0;border:2px solid;padding:0;grid...
+283 | |         ));
+...   |
+302 | |         );
+303 | |     }
+    | |_____^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#single_element_loop
+    = note: `-D clippy::single-element-loop` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::single_element_loop)]`
+help: try
+    |
+280 ~     {
+281 +         let template = "repeat(auto-fill,10%)";
+282 +         let fixture = fixture(&format!(
+283 +             "display:grid;box-sizing:border-box;width:124px;height:124px;min-width:0;min-height:0;border:2px solid;padding:0;grid-template-columns:{template};grid-template-rows:48px;margin:0"
+284 +         ));
+285 +         let error = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+286 +             &fixture.view,
+287 +             &[],
+288 +             viewport(),
+289 +             Default::default(),
+290 +         )
+291 +         .unwrap_err();
+292 + 
+293 +         assert!(
+294 +             matches!(
+295 +                 error,
+296 +                 crate::stylo_dom::cascade::CssCascadeError::UnsupportedComputedGridValue {
+297 +                     node,
+298 +                     property: "grid-template-columns",
+299 +                     ..
+300 +                 } if node == fixture.root
+301 +             ),
+302 +             "out-of-scope {template} must remain fail-closed"
+303 +         );
+304 +     }
+    |
+
+error: could not compile `spinon-style` (lib test) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...

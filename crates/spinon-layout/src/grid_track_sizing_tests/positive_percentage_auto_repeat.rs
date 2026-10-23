@@ -620,24 +620,14 @@ fn percentage_minimum_overflow_matches_fixed_control_past_outer_border() {
 }
 
 #[test]
-fn percentage_auto_repeat_rejects_zero_indefinite_and_clamped_axes_before_taffy() {
+fn percentage_auto_repeat_rejects_indefinite_and_clamped_axes_before_taffy() {
     for (label, mutate) in [
-        (
-            "zero percentage",
-            Box::new(|input: &mut LayoutInput| {
-                let track = &mut input.grid_containers.get_mut(&id(1)).unwrap().columns[0];
-                *track = GridTrackSize::MinMax {
-                    min: GridTrackMinSizingFunction::Percentage(0.0),
-                    max: GridTrackMaxSizingFunction::Fraction(1.0),
-                };
-            }) as Box<dyn Fn(&mut LayoutInput)>,
-        ),
         (
             "indefinite width",
             Box::new(|input: &mut LayoutInput| {
                 input.nodes[0].style.width = LayoutDimension::Auto;
                 input.root_sizing = RootSizingPolicy::ResolveWithin;
-            }),
+            }) as Box<dyn Fn(&mut LayoutInput)>,
         ),
         (
             "zero content width",

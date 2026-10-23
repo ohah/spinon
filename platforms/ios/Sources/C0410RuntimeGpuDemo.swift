@@ -258,6 +258,11 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "positive-percentage-rows-fit-calc",
     "positive-percentage-rows-fit-direct",
     "positive-percentage-rows-fit-fixed",
+    "fill-col-zero-gap", "fill-col-zero-px-gap", "fill-col-gap-four",
+    "fill-col-half-px-gap-zero", "fill-col-half-px-gap-four",
+    "fill-col-half-percent-gap-four", "fill-col-zero-neighbors-subpixel",
+    "fit-col-empty", "fit-col-first", "fit-col-span-two",
+    "fill-row-gap-four", "fit-row-first", "border-box-col",
     "percentage-overflow-columns-calc", "percentage-overflow-columns-fixed",
     "percentage-overflow-rows-calc", "percentage-overflow-rows-fixed",
     "columns-percent-max-fill",
@@ -507,6 +512,38 @@ private func c114PositivePercentMinimumNodeFrames(_ sceneID: String) -> String? 
         + "1:node=2,x=2,y=2,\(item)]"
 }
 
+private func c114ZeroPercentMinimumRootFrame(_ sceneID: String) -> String? {
+    switch sceneID {
+    case "fill-col-zero-gap", "fill-col-zero-px-gap", "fill-col-gap-four",
+         "fill-col-half-px-gap-zero", "fill-col-half-px-gap-four",
+         "fill-col-half-percent-gap-four", "fill-col-zero-neighbors-subpixel",
+         "fit-col-empty", "fit-col-first", "fit-col-span-two":
+        return "width=124,height=52"
+    case "fill-row-gap-four", "fit-row-first":
+        return "width=52,height=124"
+    case "border-box-col":
+        return "width=136,height=48"
+    default:
+        return nil
+    }
+}
+
+private func c114ZeroPercentMinimumItemFrame(_ sceneID: String) -> String? {
+    switch sceneID {
+    case "fit-col-first", "fit-col-span-two":
+        return "width=120,height=12"
+    case "fit-row-first":
+        return "width=12,height=120"
+    case "fill-col-zero-gap", "fill-col-zero-px-gap", "fill-col-gap-four",
+         "fill-col-half-px-gap-zero", "fill-col-half-px-gap-four",
+         "fill-col-half-percent-gap-four", "fill-col-zero-neighbors-subpixel",
+         "fit-col-empty", "fill-row-gap-four", "border-box-col":
+        return ""
+    default:
+        return nil
+    }
+}
+
 private struct C114PercentageMaximumItemFrame {
     let x: Float
     let y: Float
@@ -573,6 +610,7 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
         return percentageMaximumFrame
     }
     if let areaRepeatFrame = c114TemplateAreaRepeatRootFrame(sceneID) { return areaRepeatFrame }
+    if let zeroPercentFrame = c114ZeroPercentMinimumRootFrame(sceneID) { return zeroPercentFrame }
     if let positivePercentFrame = c114PositivePercentMinimumRootFrame(sceneID) {
         return positivePercentFrame
     }
@@ -797,6 +835,7 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         return percentageMaximumFrame
     }
     if let areaRepeatFrame = c114TemplateAreaRepeatItemFrame(sceneID) { return areaRepeatFrame }
+    if let zeroPercentFrame = c114ZeroPercentMinimumItemFrame(sceneID) { return zeroPercentFrame }
     if let positivePercentFrame = c114PositivePercentMinimumItemFrame(sceneID) {
         return positivePercentFrame
     }
@@ -3716,6 +3755,9 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     }
     if let areaRepeatItems = c114TemplateAreaRepeatItemRects(sceneID) {
         return areaRepeatItems.count + 1
+    }
+    if c114ZeroPercentMinimumRootFrame(sceneID) != nil {
+        return c114ZeroPercentMinimumItemFrame(sceneID)?.isEmpty == false ? 2 : 1
     }
     if c114PositivePercentMinimumRootSize(sceneID) != nil { return 2 }
     if let calcMinimumCount = c114AutoRepeatCalcMinimumBoxCount(sceneID) {

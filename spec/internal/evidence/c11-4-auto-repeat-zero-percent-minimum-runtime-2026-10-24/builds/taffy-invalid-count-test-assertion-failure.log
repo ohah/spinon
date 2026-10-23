@@ -1,0 +1,24 @@
+   Compiling taffy v0.15.0 (/Users/yoonhb/Documents/workspace/spinon/vendor/taffy)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.83s
+     Running unittests src/lib.rs (vendor/taffy/target/debug/deps/taffy-1f7be1a77e56d93e)
+
+running 1 test
+test compute::grid::explicit_grid::test::auto_repeat_count_falls_back_before_non_finite_arithmetic_is_cast ... FAILED
+
+failures:
+
+---- compute::grid::explicit_grid::test::auto_repeat_count_falls_back_before_non_finite_arithmetic_is_cast stdout ----
+
+thread 'compute::grid::explicit_grid::test::auto_repeat_count_falls_back_before_non_finite_arithmetic_is_cast' (128076465) panicked at src/compute/grid/explicit_grid.rs:1084:13:
+assertion `left == right` failed: negative repeated tracks must not be hidden by the UA count floor
+  left: (1, 2)
+ right: (1, 1)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    compute::grid::explicit_grid::test::auto_repeat_count_falls_back_before_non_finite_arithmetic_is_cast
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 172 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--lib`

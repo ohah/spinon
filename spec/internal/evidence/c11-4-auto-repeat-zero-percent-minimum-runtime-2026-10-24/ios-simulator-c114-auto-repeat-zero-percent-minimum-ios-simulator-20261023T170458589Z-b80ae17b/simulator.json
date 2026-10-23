@@ -1,0 +1,29 @@
+{
+  "target": "ios-simulator",
+  "udid": "D6E8EEE5-62C2-4BED-960A-F49F06158B06",
+  "name": "iPhone 17",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "df7a22dfa781c7afebc076e66ddfcaa990b8abc3bbaef5b76fe112483dccc5b4",
+  "sourceRevision": {
+    "commit": "cf1357997d0a802c68ef5b24dd3c355b2a9032f7",
+    "tree": "0dda970a4c22f504de0b7808dac6299ddfdf8148",
+    "trackedDiffSha256": "ac41b806847cf75d38baac5fc238d5791c52dd13fa5e7685f35550a94efeb9bb",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-layout/src/grid.rs",
+      "crates/spinon-layout/src/grid_track_sizing_tests.rs",
+      "crates/spinon-layout/src/grid_track_sizing_tests/positive_percentage_auto_repeat.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/auto_repeat_calc_minimum.rs",
+      "plan/c11-4-auto-repeat-zero-percent-minimum.md",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "spec/STATUS.md",
+      "spec/internal/0059-c11-grid-layout.md",
+      "spec/public/roadmap.html",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs",
+      "vendor/taffy/src/compute/grid/explicit_grid.rs"
+    ]
+  }
+}

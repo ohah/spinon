@@ -242,31 +242,68 @@ fn track_sizing_profile_admits_positive_percentage_minimum_with_fixed_maximum() 
 }
 
 #[test]
-fn track_sizing_profile_rejects_out_of_scope_percentage_auto_repeat_minimums() {
-    for template in ["repeat(auto-fill,minmax(0%,1fr))", "repeat(auto-fill,10%)"] {
+fn track_sizing_profile_admits_zero_percentage_minimum_with_flexible_maximum() {
+    for minimum in ["0%", "calc(0px + 0%)"] {
         let fixture = fixture(&format!(
-            "display:grid;box-sizing:border-box;width:124px;height:124px;min-width:0;min-height:0;border:2px solid;padding:0;grid-template-columns:{template};grid-template-rows:48px;margin:0"
+            "display:grid;box-sizing:content-box;width:120px;height:48px;min-width:0;min-height:0;border:2px solid;padding:0;grid-template-columns:repeat(auto-fill,minmax({minimum},1fr));grid-template-rows:48px;margin:0"
         ));
-        let error = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+        let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
             &fixture.view,
             &[],
             viewport(),
             Default::default(),
         )
-        .unwrap_err();
+        .unwrap();
+        let grid = snapshot
+            .elements
+            .iter()
+            .find(|style| style.node_id == fixture.root)
+            .unwrap()
+            .grid_layout
+            .as_ref()
+            .unwrap();
 
-        assert!(
-            matches!(
-                error,
-                crate::stylo_dom::cascade::CssCascadeError::UnsupportedComputedGridValue {
-                    node,
-                    property: "grid-template-columns",
-                    ..
-                } if node == fixture.root
-            ),
-            "out-of-scope {template} must remain fail-closed"
+        assert_eq!(
+            grid.columns,
+            vec![ComputedCssGridTrackSize::MinMax {
+                min: ComputedCssGridTrackBreadth::Percentage(0.0),
+                max: ComputedCssGridTrackBreadth::Fraction(1.0),
+            }],
+            "Stylo computed minimum for {minimum}"
+        );
+        assert_eq!(
+            grid.columns_auto_repeat.as_ref().map(|repeat| repeat.mode),
+            Some(ComputedCssGridAutoRepeatMode::AutoFill),
+            "auto-repeat metadata for {minimum}"
         );
     }
+}
+
+#[test]
+fn track_sizing_profile_rejects_out_of_scope_percentage_auto_repeat_minimums() {
+    let template = "repeat(auto-fill,10%)";
+    let bad_percent_fixture = fixture(&format!(
+        "display:grid;box-sizing:border-box;width:124px;height:124px;min-width:0;min-height:0;border:2px solid;padding:0;grid-template-columns:{template};grid-template-rows:48px;margin:0"
+    ));
+    let error = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+        &bad_percent_fixture.view,
+        &[],
+        viewport(),
+        Default::default(),
+    )
+    .unwrap_err();
+
+    assert!(
+        matches!(
+            error,
+            crate::stylo_dom::cascade::CssCascadeError::UnsupportedComputedGridValue {
+                node,
+                property: "grid-template-columns",
+                ..
+            } if node == bad_percent_fixture.root
+        ),
+        "out-of-scope {template} must remain fail-closed"
+    );
     for minimum in ["0%", "10%"] {
         for maximum in ["auto", "max-content"] {
             let fixture = fixture(&format!(
@@ -297,7 +334,7 @@ fn track_sizing_profile_rejects_out_of_scope_percentage_auto_repeat_minimums() {
 
 #[test]
 fn track_sizing_profile_rejects_unsupported_percentage_calc_auto_repeat_minimums() {
-    for calc in ["calc(0px + 0%)", "calc(20px - 5%)", "max(20px, 5%)"] {
+    for calc in ["calc(20px - 5%)", "max(20px, 5%)"] {
         let fixture = fixture(&format!(
             "display:grid;box-sizing:border-box;width:112px;height:48px;grid-template-columns:repeat(auto-fill,minmax({calc},1fr));grid-template-rows:48px;margin:0;padding:0"
         ));

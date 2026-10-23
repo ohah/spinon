@@ -3629,6 +3629,104 @@ async function autoRepeatPositivePercentMinimumScenes() {
   });
 }
 
+async function autoRepeatZeroPercentMinimumScenes() {
+  const fixturePath = resolve(repositoryRoot,
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_zero_percent_minimum_scenes.json');
+  const oraclePath = resolve(repositoryRoot,
+    'spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/spec-derived-expectations.json');
+  const androidPath = resolve(repositoryRoot,
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java');
+  const iosPath = resolve(repositoryRoot, 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift');
+  const [fixtures, oracle, androidSource, iosSource] = await Promise.all([
+    readFile(fixturePath, 'utf8').then(JSON.parse),
+    readFile(oraclePath, 'utf8').then(JSON.parse),
+    readFile(androidPath, 'utf8'),
+    readFile(iosPath, 'utf8'),
+  ]);
+  assert.equal(fixtures.length, 13,
+    'zero-percent auto-repeat fixture는 13 scene이어야 합니다.');
+  assert.equal(oracle.scenes.length, 13,
+    'zero-percent Chrome oracle은 13 scene이어야 합니다.');
+  const allowlist = (source, expression, label) => {
+    const match = source.match(expression);
+    assert.ok(match, `${label} scene allowlist를 읽을 수 없습니다.`);
+    return new Set([...match[1].matchAll(/"([^"]+)"/g)].map((entry) => entry[1]));
+  };
+  const androidScenes = allowlist(androidSource,
+    /C114_GRID_TRACK_SIZING_SCENE_IDS\s*=\s*\{([\s\S]*?)\};/,
+    'Android Grid track sizing');
+  const iosScenes = allowlist(iosSource,
+    /c114GridTrackSizingSceneIDs:\s*Set<String>\s*=\s*\[([\s\S]*?)\]/,
+    'iOS Grid track sizing');
+  const oracleById = new Map(oracle.scenes.map((scene) => [scene.id, scene]));
+  const expandRuns = (runs) => {
+    const tracks = [];
+    const collapsed = [];
+    for (const [size, count, isCollapsed] of runs) {
+      tracks.push(...Array(count).fill(size));
+      collapsed.push(...Array(count).fill(isCollapsed));
+    }
+    return { tracks, collapsed };
+  };
+  const expectedHistogram = (runs) => {
+    const histogram = new Map();
+    for (const [size, count] of runs) {
+      const key = `${Number(size.toFixed(6))}px`;
+      histogram.set(key, (histogram.get(key) ?? 0) + count);
+    }
+    return Object.fromEntries([...histogram].sort(([left], [right]) => left.localeCompare(right)));
+  };
+
+  return fixtures.map(({ id, expect, columnGap, rowGap, items }) => {
+    const oracleScene = oracleById.get(id);
+    assert.ok(oracleScene, `독립 Chrome oracle에 ${id}가 없습니다.`);
+    assert.ok(androidScenes.has(id), `Android Grid allowlist에 ${id}가 없습니다.`);
+    assert.ok(iosScenes.has(id), `iOS Grid allowlist에 ${id}가 없습니다.`);
+    const [rootWidth, rootHeight] = expect.root;
+    const axis = id.startsWith('fill-row') || id.startsWith('fit-row')
+      ? 'Rows' : 'Columns';
+    const axes = Object.fromEntries(Object.entries(expect.trackRuns).map(([trackAxis, runs]) => [
+      trackAxis === 'columns' ? 'Columns' : 'Rows', expandRuns(runs),
+    ]));
+    const activeTrackRuns = expect.trackRuns[axis.toLowerCase()];
+    const actualTotalTrackCount = activeTrackRuns.reduce((sum, [, count]) => sum + count, 0);
+    assert.equal(actualTotalTrackCount, oracleScene.totalTrackCount,
+      `${id} total track count differs from independent oracle`);
+    assert.equal(oracleScene.repeatTrackCount, oracleScene.totalTrackCount
+      - (id === 'fill-col-zero-neighbors-subpixel' ? 2 : 0),
+    `${id} repeat count differs from independent oracle`);
+    if (oracleScene.expectedTracks) {
+      assert.deepEqual(expectedHistogram(activeTrackRuns.map(([size, count]) => [size, count])),
+        oracleScene.expectedTracks, `${id} track histogram differs from independent oracle`);
+    }
+    if (oracleScene.expectedTrackSizeCssPx !== undefined) {
+      const tolerance = oracleScene.actualChromeQuantizationToleranceCssPx ?? 1 / 64;
+      for (const [size, count] of activeTrackRuns) {
+        assert.ok(Math.abs(size - oracleScene.expectedTrackSizeCssPx) <= tolerance,
+          `${id} expected repeated track ${size} to match ${oracleScene.expectedTrackSizeCssPx}`);
+        assert.ok(count > 0, `${id} has an empty expected track run`);
+      }
+    }
+    const nodeFrames = [
+      `0:node=1,x=0,y=0,width=${rootWidth},height=${rootHeight}`,
+      ...expect.items.map(({ frame }, index) => {
+        const [x, y, width, height] = frame;
+        return `${index + 1}:node=${index + 2},x=${x},y=${y},width=${width},height=${height}`;
+      }),
+    ].join(';');
+    return {
+      id,
+      axis,
+      boxCount: items.length + 1,
+      rootFrame: `width=${rootWidth},height=${rootHeight}`,
+      itemFrame: null,
+      nodeFrames: `node_frames_css_px=[${nodeFrames}]`,
+      axes,
+      gaps: { Columns: Number.parseFloat(columnGap), Rows: Number.parseFloat(rowGap) },
+    };
+  });
+}
+
 async function autoRepeatPercentageMaximumScenes() {
   const fixturePath = resolve(repositoryRoot,
     'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_percentage_maximum_scenes.json');
@@ -3714,8 +3812,9 @@ scenes.push(...await templateAreaRepeatScenes());
 scenes.push(...await autoRepeatNamedLineScenes());
 scenes.push(...await autoRepeatCalcMinimumScenes());
 scenes.push(...await autoRepeatPositivePercentMinimumScenes());
+scenes.push(...await autoRepeatZeroPercentMinimumScenes());
 scenes.push(...await autoRepeatPercentageMaximumScenes());
-assert.equal(scenes.length, 392, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 405, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -4733,20 +4832,48 @@ function iosProcessLog(pid) {
   return output.split(/\r?\n/).filter((line) => processMarker.test(line)).join('\n');
 }
 
+function c114TraceChunkState(log, runID) {
+  const marker = `SPINON_C114_GRID_TRACE_CHUNK run_id=${runID} `;
+  const parts = log.split(/\r?\n/).flatMap((line) => {
+    const markerOffset = line.indexOf(marker);
+    if (markerOffset < 0) return [];
+    const match = line.slice(markerOffset + marker.length).match(/\bpart=(\d+)\/(\d+)\s+(.*)$/);
+    return match ? [{ index: Number(match[1]), total: Number(match[2]), payload: match[3] }] : [];
+  });
+  const total = parts[0]?.total ?? null;
+  const byIndex = new Map();
+  let consistent = total !== null;
+  for (const part of parts) {
+    if (part.total !== total || part.index < 1 || part.index > part.total) consistent = false;
+    byIndex.set(part.index, part);
+  }
+  const missing = total === null
+    ? []
+    : Array.from({ length: total }, (_, index) => index + 1).filter((index) => !byIndex.has(index));
+  const orderedParts = [...byIndex.values()].sort((left, right) => left.index - right.index);
+  return {
+    complete: consistent && missing.length === 0,
+    total,
+    count: byIndex.size,
+    missing,
+    parts: orderedParts,
+  };
+}
+
 function waitForLog(readLog, scene, runID) {
   const deadline = Date.now() + 150_000;
   let latest = '';
   while (Date.now() < deadline) {
     latest = readLog();
     const summary = latest.includes(`SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${scene.id} `);
-    const trace = latest.includes('SPINON_C114_GRID_TRACE_CHUNK');
+    const traceComplete = c114TraceChunkState(latest, runID).complete;
     const draw = latest.includes('SPINON_C0410_DRAW')
       && latest.includes(`presented boxes=${scene.boxCount}`);
     const pixelSummary = !scene.pixelSamples
       || (target === 'ios-simulator'
         ? latest.includes(`SPINON_C114_METAL_PIXEL_SUMMARY status=matched run_id=${runID}`)
         : latest.includes(`SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=${runID}`));
-    if ((summary && trace && draw && pixelSummary)
+    if ((summary && traceComplete && draw && pixelSummary)
         || latest.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID}`)
         || latest.includes('SPINON_C114_GRID_ARGUMENT_ERROR')
         || latest.includes(`SPINON_C114_GRID_PIXEL_MATRIX status=error run_id=${runID}`)
@@ -4793,7 +4920,9 @@ function verifyRuntimeLog(log, scene, runID) {
   assert.ok((scene.rootFrame === null || log.includes(scene.rootFrame))
     && (scene.itemFrame === null || log.includes(scene.itemFrame)),
     `${scene.id}: root/item frame이 예상과 다릅니다.`);
-  assert.ok(log.includes('SPINON_C114_GRID_TRACE_CHUNK'), `${scene.id}: track-sizing trace가 없습니다.`);
+  const traceState = c114TraceChunkState(log, runID);
+  assert.ok(traceState.complete,
+    `${scene.id}: track-sizing trace chunk이 누락됐습니다 (${traceState.count}/${traceState.total ?? '?'}, missing: ${traceState.missing.join(', ')}).`);
   assert.ok(log.includes('SPINON_C0410_DRAW')
     && log.includes(`presented boxes=${scene.boxCount}`),
     `${scene.id}: 화면 표시 결과가 없습니다.`);
@@ -4803,16 +4932,7 @@ function verifyRuntimeLog(log, scene, runID) {
     `${scene.id}: 고정 PNG 전체가 runtime scene과 실제 draw에 포함되지 않았습니다.`);
   }
   assert.ok(!log.includes('SPINON_C114_GRID_ARGUMENT_ERROR'), `${scene.id}: 실행 인자가 거부됐습니다.`);
-  const traceParts = log.split(/\r?\n/).flatMap((line) => {
-    if (!line.includes(`SPINON_C114_GRID_TRACE_CHUNK run_id=${runID} `)) return [];
-    const match = line.match(/\bpart=(\d+)\/(\d+)\s+(.*)$/);
-    return match ? [{ index: Number(match[1]), total: Number(match[2]), payload: match[3] }] : [];
-  }).sort((left, right) => left.index - right.index);
-  assert.ok(traceParts.length > 0 && traceParts.length === traceParts[0].total,
-    `${scene.id}: track-sizing trace chunk이 누락됐습니다.`);
-  assert.ok(traceParts.every(({ total }) => total === traceParts[0].total),
-    `${scene.id}: track-sizing trace chunk 수가 일치하지 않습니다.`);
-  const tracePayload = traceParts.map(({ payload }) => payload).join('')
+  const tracePayload = traceState.parts.map(({ payload }) => payload).join('')
     .replace(/^grid_track_sizing_diagnostics=/, '');
   const diagnostics = JSON.parse(tracePayload);
   if (scene.nestedGridIntrinsic) {
@@ -5839,7 +5959,7 @@ function verifyRuntimeLog(log, scene, runID) {
     observedNodeFrames: actualNodeFrames,
     tracks: scene.axes ? tracksByAxis : tracksByAxis[scene.axis],
     ...(scene.intrinsicSpans ? { intrinsicSpans: observedIntrinsicSpans } : {}),
-    trackTraceChunks: traceParts.length,
+    trackTraceChunks: traceState.parts.length,
     drawPresented: true,
   };
 }
@@ -6108,14 +6228,14 @@ if (target === 'ios-simulator') {
           .stdout.trim().split(/\s+/)[0]) || null;
         if (pid) log = androidLog(adb, pid);
         const summary = log.includes(`SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${scene.id} `);
-        const trace = log.includes('SPINON_C114_GRID_TRACE_CHUNK');
+        const traceComplete = c114TraceChunkState(log, runID).complete;
         const draw = log.includes('SPINON_C0410_DRAW')
           && log.includes(`presented boxes=${scene.boxCount}`);
         const pixelSummary = !scene.pixelSamples
           || log.includes(`SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=${runID}`);
         const pixelError = log.includes(`SPINON_C114_GRID_PIXEL_MATRIX status=error run_id=${runID}`)
           || log.includes(`SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=mismatch run_id=${runID}`);
-        if ((summary && trace && draw && pixelSummary)
+        if ((summary && traceComplete && draw && pixelSummary)
             || pixelError
             || log.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID}`)
             || log.includes('SPINON_C114_GRID_ARGUMENT_ERROR')) break;

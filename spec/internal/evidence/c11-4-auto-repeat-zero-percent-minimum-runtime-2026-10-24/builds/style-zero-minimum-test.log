@@ -1,0 +1,13 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+   Compiling spinon-style v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.61s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 1 test
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_admits_zero_percentage_minimum_with_flexible_maximum ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 200 filtered out; finished in 0.01s
+

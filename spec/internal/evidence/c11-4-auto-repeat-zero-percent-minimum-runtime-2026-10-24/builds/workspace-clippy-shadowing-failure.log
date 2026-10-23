@@ -1,0 +1,56 @@
+    Checking spinon-style v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style)
+    Checking spinon-style-to-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-render)
+    Checking spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Checking spinon-render-wgpu v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-render-wgpu)
+error[E0618]: expected function, found `stylo_dom::cascade::runtime_grid_tests::Fixture`
+   --> crates/spinon-style/src/stylo_dom/cascade/runtime_stacking_tests.rs:22:1
+    |
+ 22 |   fn fixture(root_style: &str, child_style: &str) -> Fixture {
+    |   ---------------------------------------------------------- this function of the same name is available here, but it's shadowed by the local binding
+    |
+   ::: crates/spinon-style/src/stylo_dom/cascade/runtime_overflow_tests.rs:23:1
+    |
+ 23 |   fn fixture(root_style: &str, child_style: &str) -> Fixture {
+    |   ---------------------------------------------------------- this function of the same name is available here, but it's shadowed by the local binding
+    |
+   ::: crates/spinon-style/src/stylo_dom/cascade/runtime_scroll_gesture_tests.rs:26:1
+    |
+ 26 |   fn fixture(root_style: &str, child_style: &str) -> Fixture {
+    |   ---------------------------------------------------------- this function of the same name is available here, but it's shadowed by the local binding
+    |
+   ::: crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests.rs:32:1
+    |
+ 32 |   fn fixture(style: &str) -> Fixture {
+    |   ---------------------------------- this function of the same name is available here, but it's shadowed by the local binding
+    |
+   ::: crates/spinon-style/src/stylo_dom/cascade/runtime_layout_tests/c19_1_color.rs:25:1
+    |
+ 25 |   fn fixture(rows: &[Value]) -> Fixture {
+    |   ------------------------------------- this function of the same name is available here, but it's shadowed by the local binding
+    |
+   ::: crates/spinon-style/src/stylo_dom/cascade/custom_properties_tests.rs:50:1
+    |
+ 50 |   fn fixture(root_style: &str, child_styles: &[&str]) -> Fixture {
+    |   -------------------------------------------------------------- this function of the same name is available here, but it's shadowed by the local binding
+    |
+   ::: crates/spinon-style/src/stylo_dom/cascade/registered_properties_tests.rs:45:1
+    |
+ 45 |   fn fixture() -> Fixture {
+    |   ----------------------- this function of the same name is available here, but it's shadowed by the local binding
+    |
+   ::: crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/auto_repeat_calc_minimum.rs:281:9
+    |
+281 |       let fixture = fixture(&format!(
+    |           ------- `fixture` has type `stylo_dom::cascade::runtime_grid_tests::Fixture`
+...
+305 |               let fixture = fixture(&format!(
+    |                             -^^^^^^- help: consider using a semicolon here to finish the statement: `;`
+    |  ___________________________|
+    | |
+306 | |                 "display:grid;box-sizing:border-box;width:124px;height:124px;min-width:0;min-height:0;border:2px solid;padding:0;...
+307 | |             ));
+    | |______________- call expression requires function
+
+For more information about this error, try `rustc --explain E0618`.
+error: could not compile `spinon-style` (lib test) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...

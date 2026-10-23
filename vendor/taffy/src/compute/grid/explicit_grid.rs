@@ -12,6 +12,10 @@ use core::cmp::min;
 use super::MAX_GRID_TRACKS;
 use crate::{GenericGridTemplateComponent, GenericRepetition, GridContainerStyle};
 
+/// The UA floor used only when calculating the number of auto-repetitions.
+/// It must not affect the actual track sizing functions.
+const AUTO_REPEAT_COUNT_MIN_TRACK_SIZE: f32 = 1.0;
+
 /// The auto-repeat fit strategy to use
 pub(crate) enum AutoRepeatStrategy {
     /// If the grid container has a definite size or max size in the relevant axis:
@@ -175,10 +179,19 @@ pub(crate) fn compute_explicit_grid_size_in_axis(
                 .get_abs(axis)
                 .resolve_or_zero(Some(inner_container_size), &resolve_calc_value);
 
-            // Compute the amount of space that a single repetition of the repeated track list takes
+            // Compute the amount of space that a single repetition of the repeated track list takes.
+            // CSS Grid applies the UA minimum to each repeated track for this count calculation
+            // only. Keep the original sizing functions for track initialization and flex sizing.
             let per_repetition_track_used_space: f32 = repetition_definition_iter
                 .map(|sizing_function| {
-                    track_definite_value(sizing_function, parent_size, &resolve_calc_value)
+                    let track_size =
+                        track_definite_value(sizing_function, parent_size, &resolve_calc_value);
+                    if track_size.is_finite() && track_size >= 0.0 {
+                        track_size.max(AUTO_REPEAT_COUNT_MIN_TRACK_SIZE)
+                    } else {
+                        // Invalid repeated sizes must not be made valid by the UA floor.
+                        f32::NAN
+                    }
                 })
                 .sum::<f32>();
 
@@ -191,32 +204,58 @@ pub(crate) fn compute_explicit_grid_size_in_axis(
                         .saturating_sub(1) as f32
                         * gap_size);
 
+            // Invalid arithmetic must not reach float-to-int conversion or the track-count clamp.
+            // Preflight normally rejects these inputs, but Taffy also guards its generic entry point.
+            let count_inputs_are_finite = inner_container_size.is_finite()
+                && non_repeating_track_used_space.is_finite()
+                && gap_size.is_finite()
+                && per_repetition_track_used_space.is_finite()
+                && first_repetition_and_non_repeating_tracks_used_space.is_finite();
+
             // If a single repetition already overflows the container then we return 1 as the repetition count
-            // (the number of repetitions is floored at 1)
-            if first_repetition_and_non_repeating_tracks_used_space > inner_container_size {
+            // (the number of repetitions is floored at 1). The same conservative count handles invalid
+            // zero/negative denominators and non-finite inputs.
+            if !count_inputs_are_finite
+                || inner_container_size <= 0.0
+                || gap_size < 0.0
+                || first_repetition_and_non_repeating_tracks_used_space < 0.0
+                || first_repetition_and_non_repeating_tracks_used_space > inner_container_size
+            {
                 1u32
             } else {
                 let per_repetition_gap_used_space = (repetition_track_count as f32) * gap_size;
                 let per_repetition_used_space =
                     per_repetition_track_used_space + per_repetition_gap_used_space;
-                let num_repetition_that_fit = (inner_container_size
-                    - first_repetition_and_non_repeating_tracks_used_space)
-                    / per_repetition_used_space;
+                if !per_repetition_used_space.is_finite() || per_repetition_used_space <= 0.0 {
+                    1u32
+                } else {
+                    let num_repetition_that_fit = (inner_container_size
+                        - first_repetition_and_non_repeating_tracks_used_space)
+                        / per_repetition_used_space;
 
-                // If the container size is a preferred or maximum size:
-                //   Then we return the maximum number of repetitions that fit into the container without overflowing.
-                // If the container size is a minimum size:
-                //   - Then we return the minimum number of repetitions required to overflow the size.
-                //
-                // In all cases we add the additional repetition that was already accounted for in the special-case computation above
-                // Note: as-casts from f32 to u32 saturate, so a huge or infinite number of repetitions
-                // (e.g. due to zero-sized tracks) resolves to u32::MAX and is clamped below
-                match auto_fit_strategy {
-                    AutoRepeatStrategy::MaxRepetitionsThatDoNotOverflow => {
-                        (floor(num_repetition_that_fit) as u32).saturating_add(1)
-                    }
-                    AutoRepeatStrategy::MinRepetitionsThatDoOverflow => {
-                        (ceil(num_repetition_that_fit) as u32).saturating_add(1)
+                    if num_repetition_that_fit.is_nan() || num_repetition_that_fit < 0.0 {
+                        1u32
+                    } else if num_repetition_that_fit.is_infinite() {
+                        if num_repetition_that_fit.is_sign_positive() {
+                            u32::MAX
+                        } else {
+                            1u32
+                        }
+                    } else {
+                        // If the container size is a preferred or maximum size:
+                        //   Then we return the maximum number of repetitions that fit into the container without overflowing.
+                        // If the container size is a minimum size:
+                        //   - Then we return the minimum number of repetitions required to overflow the size.
+                        //
+                        // In all cases we add the additional repetition that was already accounted for in the special-case computation above.
+                        match auto_fit_strategy {
+                            AutoRepeatStrategy::MaxRepetitionsThatDoNotOverflow => {
+                                (floor(num_repetition_that_fit) as u32).saturating_add(1)
+                            }
+                            AutoRepeatStrategy::MinRepetitionsThatDoOverflow => {
+                                (ceil(num_repetition_that_fit) as u32).saturating_add(1)
+                            }
+                        }
                     }
                 }
             }
@@ -899,6 +938,168 @@ mod test {
             AbsoluteAxis::Horizontal,
         );
         assert_eq!(result, (0, 10_000));
+    }
+
+    fn column_auto_repeat_count(
+        style: &Style<DefaultCheapStr>,
+        container_size: Option<f32>,
+    ) -> (u16, u16) {
+        compute_explicit_grid_size_in_axis(
+            style,
+            container_size,
+            AutoRepeatStrategy::MaxRepetitionsThatDoNotOverflow,
+            |_, _| 0.0,
+            AbsoluteAxis::Horizontal,
+        )
+    }
+
+    #[test]
+    fn auto_repeat_count_floors_zero_sized_tracks_to_one_px() {
+        use RepetitionCount::AutoFill;
+
+        for (gap, expected_repetitions) in [(0.0, 120), (4.0, 24)] {
+            let grid_style: Style<DefaultCheapStr> = Style {
+                display: Display::Grid,
+                size: Size {
+                    width: length(120.0),
+                    height: length(20.0),
+                },
+                gap: length(gap),
+                grid_template_columns: vec![repeat(AutoFill, vec![minmax(percent(0.0), fr(1.0))])],
+                ..Default::default()
+            };
+
+            assert_eq!(
+                column_auto_repeat_count(&grid_style, Some(120.0)),
+                (expected_repetitions, expected_repetitions),
+                "gap {gap}"
+            );
+        }
+
+        let zero_length_control: Style<DefaultCheapStr> = Style {
+            display: Display::Grid,
+            size: Size {
+                width: length(120.0),
+                height: length(20.0),
+            },
+            grid_template_columns: vec![repeat(AutoFill, vec![minmax(length(0.0), fr(1.0))])],
+            ..Default::default()
+        };
+        assert_eq!(
+            column_auto_repeat_count(&zero_length_control, Some(120.0)),
+            (120, 120)
+        );
+    }
+
+    #[test]
+    fn auto_repeat_count_floors_each_repeated_track_but_not_fixed_neighbors() {
+        use RepetitionCount::AutoFill;
+
+        let two_track_group: Style<DefaultCheapStr> = Style {
+            display: Display::Grid,
+            size: Size {
+                width: length(120.0),
+                height: length(20.0),
+            },
+            grid_template_columns: vec![repeat(
+                AutoFill,
+                vec![minmax(percent(0.0), fr(1.0)), length(0.5)],
+            )],
+            ..Default::default()
+        };
+        assert_eq!(
+            column_auto_repeat_count(&two_track_group, Some(120.0)),
+            (60, 120)
+        );
+
+        let subpixel_neighbors: Style<DefaultCheapStr> = Style {
+            display: Display::Grid,
+            size: Size {
+                width: length(120.0),
+                height: length(20.0),
+            },
+            gap: length(4.0),
+            grid_template_columns: vec![
+                length(0.5),
+                repeat(AutoFill, vec![minmax(percent(0.0), fr(1.0))]),
+                length(0.5),
+            ],
+            ..Default::default()
+        };
+        assert_eq!(
+            column_auto_repeat_count(&subpixel_neighbors, Some(120.0)),
+            (23, 25)
+        );
+
+        let definite_maximum: Style<DefaultCheapStr> = Style {
+            display: Display::Grid,
+            size: Size {
+                width: length(120.0),
+                height: length(20.0),
+            },
+            gap: length(4.0),
+            grid_template_columns: vec![repeat(AutoFill, vec![minmax(percent(0.0), length(12.0))])],
+            ..Default::default()
+        };
+        assert_eq!(
+            column_auto_repeat_count(&definite_maximum, Some(120.0)),
+            (7, 7)
+        );
+    }
+
+    #[test]
+    fn auto_repeat_count_falls_back_before_non_finite_arithmetic_is_cast() {
+        use RepetitionCount::AutoFill;
+
+        for minimum in [f32::NAN, f32::INFINITY, f32::NEG_INFINITY] {
+            let invalid_minimum: Style<DefaultCheapStr> = Style {
+                display: Display::Grid,
+                size: Size {
+                    width: length(120.0),
+                    height: length(20.0),
+                },
+                grid_template_columns: vec![repeat(
+                    AutoFill,
+                    vec![minmax(percent(minimum), fr(1.0))],
+                )],
+                ..Default::default()
+            };
+            assert_eq!(
+                column_auto_repeat_count(&invalid_minimum, Some(120.0)),
+                (1, 1),
+                "minimum {minimum}"
+            );
+        }
+
+        for repeated_tracks in [vec![length(-1.0)], vec![length(-1.0), length(2.0)]] {
+            let invalid_repeated_tracks: Style<DefaultCheapStr> = Style {
+                display: Display::Grid,
+                size: Size {
+                    width: length(120.0),
+                    height: length(20.0),
+                },
+                grid_template_columns: vec![repeat(AutoFill, repeated_tracks)],
+                ..Default::default()
+            };
+            assert_eq!(
+                column_auto_repeat_count(&invalid_repeated_tracks, Some(120.0)).0,
+                1,
+                "negative repeated tracks must not be hidden by the UA count floor"
+            );
+        }
+
+        let zero_minimum: Style<DefaultCheapStr> = Style {
+            display: Display::Grid,
+            grid_template_columns: vec![repeat(AutoFill, vec![minmax(percent(0.0), fr(1.0))])],
+            ..Default::default()
+        };
+        for container_size in [0.0, f32::NAN, f32::INFINITY] {
+            assert_eq!(
+                column_auto_repeat_count(&zero_minimum, Some(container_size)),
+                (1, 1),
+                "container size {container_size}"
+            );
+        }
     }
 
     #[test]

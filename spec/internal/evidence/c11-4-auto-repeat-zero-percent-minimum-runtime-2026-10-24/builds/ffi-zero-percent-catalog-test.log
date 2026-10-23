@@ -1,0 +1,17 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+   Compiling spinon-style v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style)
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+   Compiling spinon-style-to-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-render)
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+   Compiling spinon-ffi v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-ffi)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.01s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-f822121069dc3a19)
+
+running 1 test
+test runtime_gpu::fixtures::c11_4::auto_repeat_zero_percent_minimum::tests::zero_percent_auto_repeat_catalog_is_exact_and_routed ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 114 filtered out; finished in 0.04s
+
