@@ -51,6 +51,21 @@
     },
     "unrelatedSessionTouched": false
   },
+  "pullRequestBodyImageVerification": {
+    "pullRequest": 547,
+    "url": "https://github.com/ohah/spinon/pull/547",
+    "session": "spinon-pr547",
+    "image": {
+      "alt": "Tailnet road map with the merged C11.4 result",
+      "src": "https://github.com/ohah/spinon/blob/20b958f1ffa406b352cf0070b9601fe8e9e107b1/spec/internal/evidence/c11-4-pr546-tailnet-sync-2026-10-23/tailnet-roadmap-agent-browser-pass67.png?raw=1",
+      "complete": true,
+      "width": 1440,
+      "height": 1200
+    },
+    "sessionCloseReportedSuccess": true,
+    "activeSessionsAfterClose": 0,
+    "agentBrowserProcessesAfterClose": 0
+  },
   "scopeLimits": [
     "Only Tailnet roadmap.html was replaced.",
     "STATUS.html and other rendered routes were not rebuilt.",

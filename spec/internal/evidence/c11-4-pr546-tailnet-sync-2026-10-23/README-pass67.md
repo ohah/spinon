@@ -14,6 +14,7 @@ PR #546의 Rebase and merge 결과 `849f04fbffc6f9efb85f7269791c7b6c51768724`를
 - 로드맵의 “공식 상태” 링크를 클릭했다. decoded fragment `css-구현-체크리스트`의 target은 존재하며 제목은 “CSS 구현 체크리스트”다. [anchor 화면](./tailnet-status-anchor-agent-browser-pass67.png).
 - 이 pass는 정적 preview의 `roadmap.html`만 교체했다. `STATUS.html`과 다른 기존 정적 route는 다시 빌드하거나 갱신하지 않았으므로 그 내용은 현재 Markdown보다 오래됐을 수 있다. anchor 존재 확인은 STATUS route 전체가 최신이라는 검증이 아니다.
 - 브라우저 검증 상세와 이미지 hash는 [Agent Browser 기록](./agent-browser-verification-pass67.json)에 있다. 작업 세션을 닫은 뒤 그 session info는 `active: false`, `pid: null`이었다. 별도로 보인 `hwpjs-table-height-35c54947528a` 세션은 이 작업에서 종료하지 않았다.
+- PR #547 본문에 넣은 로드맵 화면도 Agent Browser에서 `complete: true`, 1440×1200으로 렌더링됐다. PR 확인 세션을 닫은 뒤 활성 세션과 Agent Browser 프로세스는 없었다.
 
 ## 유지한 경계
 
