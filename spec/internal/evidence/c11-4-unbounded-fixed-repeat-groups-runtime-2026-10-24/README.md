@@ -35,6 +35,10 @@ iPhone 17 Pro / iOS 26.2 Simulator에서 같은 12개 장면이 **12/12** 통과
 
 양 플랫폼 capture의 source dirty diff SHA-256은 `e13793c2e08e4c406b10114769f484ee91356c62cdfebda4e651859b7dc2d735`로 같다. Chrome 사전 비교와 runtime 결과는 fixture scene geometry, track size, item frame을 각각 대조한다.
 
+## PR 병합 상태 · 2026-10-24
+
+구현 [PR #597](https://github.com/ohah/spinon/pull/597)은 2026-10-24T11:34:18Z Rebase and merge로 `ddea615bf488628bb77059fbe9e46551dfa36400`에 병합됐다. GitHub PR check rollup은 비었고 main required status checks는 설정되지 않았다. C11.4 공식 checkbox와 `72/213`은 유지된다.
+
 ## 남은 범위
 
 세 번째 fixed-repeat을 포함한 이 제한 grammar 외의 모든 breadth·line-name·template-area profile, 일반 CSS admission, WPT, Android 실기기/hardware GPU, iOS compositor 이후 pixels, 전체 C11 및 C11.4는 미완료다. 내부 계약 `0059`는 `0.1.0`을 유지하고 공식 완료 집계 `72/213`을 올리지 않는다.
