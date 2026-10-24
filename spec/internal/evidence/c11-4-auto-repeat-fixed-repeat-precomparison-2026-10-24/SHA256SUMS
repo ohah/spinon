@@ -2,13 +2,14 @@
 5126eaab9d85f4e86f96e0e82b030e6bdc2ec86391c7e626067c7eef66bc733d  plan/c11-4-auto-repeat-fixed-repeat-pr-diff-review-30.md
 090e0b01576152d51a49992f508a5376c98ee178866b74ef296cbe7c5b8397e6  plan/c11-4-auto-repeat-fixed-repeat-revision-pr-diff-review-30.md
 cdc5eefc342a1dd6d73381584b0292aad43f8cf7adc98efff38c3e79b019a6b6  plan/c11-4-auto-repeat-fixed-repeat-revision-review-20.md
+1fa9ade8922a6cc2637c727c0c3b4d8cf006a567b4c14dc927790192f14291d5  plan/c11-4-auto-repeat-fixed-repeat-roadmap-link-review-30.md
 0be030e4bd514e7cf11138a6cb306b6542305c57b48939fdef4120e7ea8b2fae  plan/c11-4-auto-repeat-fixed-repeat.md
 b4b5d69fca68ae16f2173c2632ced414b1762713a2c7e2cefd338115f91b3b99  spec/0001-conformance.md
-5e9ac861184fc34c8ee2bfda55ea2cca491b1072d30ce60253e82685ed25f719  spec/STATUS.md
+d432068e56e976db94fc0b7559fca1a86f4a11ccf5a5d757a1598c196ccbe71d  spec/STATUS.md
 eeee6d90b884f74b084fd4b5c6cd61a575f69b28633717c2b2bcfe8545fb4f47  spec/internal/0059-c11-grid-layout.md
 c44927b7e09c6c86d4870ea8dce4918dabc81df3490b405ffa74f479ba3f1ac7  spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/README.md
 4ef459d0c585668611103ed2cccd5310ee2dec982f7960adedbe083e5270f378  spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/chrome156-fixed-repeat-auto-repeat.png
 11389692dfd4564255cd652864f8b611f097bcaf93e7823022b4d99f4cdf9677  spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/chrome156-observation.json
 dea7c545a779aca2e4786b1b43363c769936700e683cbcfb6b090db8301ef5cd  spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/stylo-computed-ast-observation.json
-7bf108f1bd7ebaacdcfc1848cc98bd1dd8d72a35fc7725c7883aaa46e4e402a4  spec/public/roadmap.html
+8f097d55b3e72cb1be9b68013c7a79868bc6078b187b29178dcb54675eb0c20e  spec/public/roadmap.html
 7b4d4f1f1a6dcebda96ce0f184a4e141fedc92c232d639f198c1071614dcec59  tests/fixtures/css/c11/grid-auto-repeat-fixed-repeat-c114-precomparison.html
