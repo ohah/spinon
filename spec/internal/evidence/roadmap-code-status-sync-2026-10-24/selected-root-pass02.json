@@ -1,0 +1,192 @@
+{
+  "pass": "pass02",
+  "baseHead": "af23eded0853732379b2f46a1d72b74ba6bfe8f4",
+  "currentHead": "4faabe77c6b3a9a87fa1e50503649b8fcdc803d7",
+  "baseSelectedRoot": "build/spinon/roadmap-code-status-sync-20261024-root-pass01-selected",
+  "selectedRoot": "build/spinon/roadmap-code-status-sync-20261024-root-pass02-selected",
+  "outputRoot": "build/spinon/roadmap-code-status-sync-20261024-site-pass02-selected",
+  "sourceFiles": [
+    "spec/STATUS.md",
+    "spec/public/roadmap.html",
+    "plan/c11-4-auto-repeat-calc-neighbors.md",
+    "plan/c11-4-auto-repeat-negative-percentage-neighbors.md",
+    "plan/c11-4-auto-repeat-negative-percentage-neighbors-plan-review-20.md",
+    "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/README.md",
+    "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-observation.json",
+    "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/validate-precomparison.py",
+    "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-full.png",
+    "tests/fixtures/css/c11/grid-auto-repeat-negative-percentage-neighbors-c114-precomparison.html"
+  ],
+  "overlays": [
+    {
+      "source": "spec/STATUS.md",
+      "path": "spec/STATUS.md",
+      "bytes": 414438,
+      "sha256": "687d54c73d1cb735cda7908a05ff7d268f784cf872d9c06fc1e6929d7a41d2df"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "STATUS.md",
+      "bytes": 414438,
+      "sha256": "687d54c73d1cb735cda7908a05ff7d268f784cf872d9c06fc1e6929d7a41d2df"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "roadmap.html",
+      "bytes": 284782,
+      "sha256": "d802af712d4eee6568abc94fc9f7bba229c4e46dd2c8bfeb0cdbcc3ba2af4cf0"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "public/roadmap.html",
+      "bytes": 284782,
+      "sha256": "d802af712d4eee6568abc94fc9f7bba229c4e46dd2c8bfeb0cdbcc3ba2af4cf0"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-calc-neighbors.md",
+      "path": "plan/c11-4-auto-repeat-calc-neighbors.md",
+      "bytes": 11337,
+      "sha256": "ff30220958f341c516803ea6fc054958fadefe3265a8aea7730f18463d3b658c"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-calc-neighbors.md",
+      "path": "spec/plan/c11-4-auto-repeat-calc-neighbors.md",
+      "bytes": 11337,
+      "sha256": "ff30220958f341c516803ea6fc054958fadefe3265a8aea7730f18463d3b658c"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-negative-percentage-neighbors.md",
+      "path": "plan/c11-4-auto-repeat-negative-percentage-neighbors.md",
+      "bytes": 8877,
+      "sha256": "0b2aeff164381072daaa2f9af1d34d7f5f40c23509a57e5f5da184834dbeb89f"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-negative-percentage-neighbors.md",
+      "path": "spec/plan/c11-4-auto-repeat-negative-percentage-neighbors.md",
+      "bytes": 8877,
+      "sha256": "0b2aeff164381072daaa2f9af1d34d7f5f40c23509a57e5f5da184834dbeb89f"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-negative-percentage-neighbors-plan-review-20.md",
+      "path": "plan/c11-4-auto-repeat-negative-percentage-neighbors-plan-review-20.md",
+      "bytes": 4591,
+      "sha256": "8ec8e8a4be2684daad1454dcc4cc9fb2874b0ab788245907663e951e0ba1691b"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-negative-percentage-neighbors-plan-review-20.md",
+      "path": "spec/plan/c11-4-auto-repeat-negative-percentage-neighbors-plan-review-20.md",
+      "bytes": 4591,
+      "sha256": "8ec8e8a4be2684daad1454dcc4cc9fb2874b0ab788245907663e951e0ba1691b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/README.md",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/README.md",
+      "bytes": 4581,
+      "sha256": "bcbbb7eac32ec99308bd9bcf8c6740b428690257c961705b776a312d0e23eae9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/README.md",
+      "path": "internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/README.md",
+      "bytes": 4581,
+      "sha256": "bcbbb7eac32ec99308bd9bcf8c6740b428690257c961705b776a312d0e23eae9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/README.md",
+      "path": "public/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/README.md",
+      "bytes": 4581,
+      "sha256": "bcbbb7eac32ec99308bd9bcf8c6740b428690257c961705b776a312d0e23eae9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/README.md",
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/README.md",
+      "bytes": 4581,
+      "sha256": "bcbbb7eac32ec99308bd9bcf8c6740b428690257c961705b776a312d0e23eae9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-observation.json",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-observation.json",
+      "bytes": 6670,
+      "sha256": "cd9e1561a250d55a3b52cc1996f7a2b70992275cf6fe8245ba5e03251fd46af3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-observation.json",
+      "path": "internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-observation.json",
+      "bytes": 6670,
+      "sha256": "cd9e1561a250d55a3b52cc1996f7a2b70992275cf6fe8245ba5e03251fd46af3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-observation.json",
+      "path": "public/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-observation.json",
+      "bytes": 6670,
+      "sha256": "cd9e1561a250d55a3b52cc1996f7a2b70992275cf6fe8245ba5e03251fd46af3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-observation.json",
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-observation.json",
+      "bytes": 6670,
+      "sha256": "cd9e1561a250d55a3b52cc1996f7a2b70992275cf6fe8245ba5e03251fd46af3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/validate-precomparison.py",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/validate-precomparison.py",
+      "bytes": 3765,
+      "sha256": "7f6ffba1aefbed690f89e0c8f87efbaace3c0e490980ad841c46dbb867478337"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/validate-precomparison.py",
+      "path": "internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/validate-precomparison.py",
+      "bytes": 3765,
+      "sha256": "7f6ffba1aefbed690f89e0c8f87efbaace3c0e490980ad841c46dbb867478337"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/validate-precomparison.py",
+      "path": "public/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/validate-precomparison.py",
+      "bytes": 3765,
+      "sha256": "7f6ffba1aefbed690f89e0c8f87efbaace3c0e490980ad841c46dbb867478337"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/validate-precomparison.py",
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/validate-precomparison.py",
+      "bytes": 3765,
+      "sha256": "7f6ffba1aefbed690f89e0c8f87efbaace3c0e490980ad841c46dbb867478337"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-full.png",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-full.png",
+      "bytes": 15197,
+      "sha256": "bb8d80977b0911ff0a4d33b6264374cb4cbcd952f5cbe74afe448ef89545ed89"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-full.png",
+      "path": "internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-full.png",
+      "bytes": 15197,
+      "sha256": "bb8d80977b0911ff0a4d33b6264374cb4cbcd952f5cbe74afe448ef89545ed89"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-full.png",
+      "path": "public/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-full.png",
+      "bytes": 15197,
+      "sha256": "bb8d80977b0911ff0a4d33b6264374cb4cbcd952f5cbe74afe448ef89545ed89"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-full.png",
+      "path": "public/spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-full.png",
+      "bytes": 15197,
+      "sha256": "bb8d80977b0911ff0a4d33b6264374cb4cbcd952f5cbe74afe448ef89545ed89"
+    },
+    {
+      "source": "tests/fixtures/css/c11/grid-auto-repeat-negative-percentage-neighbors-c114-precomparison.html",
+      "path": "tests/fixtures/css/c11/grid-auto-repeat-negative-percentage-neighbors-c114-precomparison.html",
+      "bytes": 4432,
+      "sha256": "f155a83fb205e7f756205da6cecb7f7d0f23130afc8464a9d575c64f29127288"
+    },
+    {
+      "source": "tests/fixtures/css/c11/grid-auto-repeat-negative-percentage-neighbors-c114-precomparison.html",
+      "path": "public/tests/fixtures/css/c11/grid-auto-repeat-negative-percentage-neighbors-c114-precomparison.html",
+      "bytes": 4432,
+      "sha256": "f155a83fb205e7f756205da6cecb7f7d0f23130afc8464a9d575c64f29127288"
+    }
+  ],
+  "storageMethod": "hardlink previous selected tree; unlink overlay destinations before copying current source bytes",
+  "noDeletes": true
+}

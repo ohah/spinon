@@ -1,0 +1,37 @@
+{
+  "pass": "pass02",
+  "browser": {
+    "product": "Agent Browser",
+    "version": "0.31.1",
+    "engine": "Chrome 156.0.8078.48"
+  },
+  "pages": [
+    {
+      "path": "/spinon/STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "verified": [
+        "contains the plan-only negative-percentage C11.4 entry",
+        "shows official completion count 72/213",
+        "records PR #583 merged at 4faabe77c6b3a9a87fa1e50503649b8fcdc803d7"
+      ]
+    },
+    {
+      "path": "/spinon/plan/c11-4-auto-repeat-negative-percentage-neighbors.html",
+      "title": "C11.4 · auto-repeat 이웃 calc()의 음수 percentage 항 계획 - 스피논 문서",
+      "verified": [
+        "states that calc(20px - 5%) is CSS-valid and remains unsupported by the current profile",
+        "keeps C11.4 incomplete and official completion count at 72/213",
+        "distinguishes the Chrome oracle from Spinon runtime evidence"
+      ],
+      "screenshot": {
+        "path": "tailnet-plan-agent-browser-pass02.png",
+        "width": 1280,
+        "height": 633,
+        "sha256": "b0d16e8d1d4fb38080e3e6acd318f14291f59ba3184e2b6ecbfb51b10b8569b4"
+      }
+    }
+  ],
+  "closeAllExecuted": true,
+  "agentBrowserManagedProcessesAfterClose": 0,
+  "independentGoogleChromeProcessesPreserved": true
+}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C11.4 auto-repeat negative percentage neighbors</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 16px; font: 13px/18px sans-serif; color: #172033; }
+      main { display: grid; grid-template-columns: repeat(3, 260px); gap: 20px 16px; }
+      figure { margin: 0; min-width: 0; }
+      figcaption { margin-bottom: 4px; font: 12px/16px monospace; }
+      .grid {
+        display: grid;
+        align-content: start;
+        justify-content: start;
+        gap: 4px;
+        outline: 1px solid #64748b;
+        background: #eef2ff;
+      }
+      .item { width: 2px; height: 2px; background: #e5484d; }
+      #col-prefix-positive { width: 240px; height: 10px; grid-template-columns: calc(20px - 5%) repeat(auto-fill, minmax(40px, 1fr)); grid-template-rows: 10px; }
+      #col-suffix-positive { width: 240px; height: 10px; grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)) calc(20px - 5%); grid-template-rows: 10px; }
+      #row-prefix-positive { width: 10px; height: 240px; grid-template-columns: 10px; grid-template-rows: calc(20px - 5%) repeat(auto-fill, minmax(40px, 1fr)); }
+      #row-suffix-positive { width: 10px; height: 240px; grid-template-columns: 10px; grid-template-rows: repeat(auto-fill, minmax(40px, 1fr)) calc(20px - 5%); }
+      #col-prefix-negative-final { width: 240px; height: 10px; grid-template-columns: calc(8px - 5%) repeat(auto-fill, minmax(40px, 1fr)); grid-template-rows: 10px; }
+      #row-suffix-negative-final { width: 10px; height: 240px; grid-template-columns: 10px; grid-template-rows: repeat(auto-fill, minmax(40px, 1fr)) calc(8px - 5%); }
+      #col-border-box { box-sizing: border-box; width: 136px; height: 34px; padding: 8px; border: 2px solid transparent; grid-template-columns: calc(20px - 5%) repeat(auto-fill, minmax(40px, 1fr)); grid-template-rows: 10px; }
+      #col-fit-prefix-item { width: 240px; height: 10px; grid-template-columns: calc(20px - 5%) repeat(auto-fit, minmax(40px, 1fr)); grid-template-rows: 10px; }
+      #col-fit-prefix-item > .item { grid-column: 2; }
+      #col-both-negative-final { width: 240px; height: 10px; grid-template-columns: calc(-2px - 1%) repeat(auto-fill, minmax(40px, 1fr)); grid-template-rows: 10px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <figure><figcaption>col-prefix-positive</figcaption><div class="grid" id="col-prefix-positive"><div class="item"></div></div></figure>
+      <figure><figcaption>col-suffix-positive</figcaption><div class="grid" id="col-suffix-positive"><div class="item"></div></div></figure>
+      <figure><figcaption>row-prefix-positive</figcaption><div class="grid" id="row-prefix-positive"><div class="item"></div></div></figure>
+      <figure><figcaption>row-suffix-positive</figcaption><div class="grid" id="row-suffix-positive"><div class="item"></div></div></figure>
+      <figure><figcaption>col-prefix-negative-final</figcaption><div class="grid" id="col-prefix-negative-final"><div class="item"></div></div></figure>
+      <figure><figcaption>row-suffix-negative-final</figcaption><div class="grid" id="row-suffix-negative-final"><div class="item"></div></div></figure>
+      <figure><figcaption>col-border-box</figcaption><div class="grid" id="col-border-box"><div class="item"></div></div></figure>
+      <figure><figcaption>col-fit-prefix-item</figcaption><div class="grid" id="col-fit-prefix-item"><div class="item"></div></div></figure>
+      <figure><figcaption>col-both-negative-final</figcaption><div class="grid" id="col-both-negative-final"><div class="item"></div></div></figure>
+    </main>
+    <script>
+      window.__c114NegativePercentageObservation = () => Array.from(document.querySelectorAll('.grid')).map((grid) => {
+        const style = getComputedStyle(grid);
+        const rect = grid.getBoundingClientRect();
+        const item = grid.querySelector('.item').getBoundingClientRect();
+        return {
+          id: grid.id,
+          columns: style.gridTemplateColumns,
+          rows: style.gridTemplateRows,
+          columnGap: style.columnGap,
+          rowGap: style.rowGap,
+          grid: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },
+          item: { x: item.x, y: item.y, width: item.width, height: item.height },
+        };
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,177 @@
+{
+  "pass": "pass02",
+  "selected_build_relative": "build/spinon/roadmap-code-status-sync-20261024-site-pass02-selected",
+  "selected_route_count": 16,
+  "preview_root_relative": "SpinonPreview",
+  "backup_root_relative": "SpinonPreviewBackups/roadmap-code-status-sync-2026-10-24/pass02",
+  "source_bytes_total": 4353715,
+  "backup_bytes_total": 1427208,
+  "counts": {
+    "create": 13,
+    "replace": 2,
+    "same": 1
+  },
+  "no_deletes": true,
+  "files": [
+    {
+      "path": "roadmap.html",
+      "status": "same",
+      "source_bytes": 284782,
+      "source_sha256": "d802af712d4eee6568abc94fc9f7bba229c4e46dd2c8bfeb0cdbcc3ba2af4cf0",
+      "target_exists": true,
+      "previous_bytes": 284782,
+      "previous_sha256": "d802af712d4eee6568abc94fc9f7bba229c4e46dd2c8bfeb0cdbcc3ba2af4cf0",
+      "backup_path": null
+    },
+    {
+      "path": "STATUS.html",
+      "status": "replace",
+      "source_bytes": 931461,
+      "source_sha256": "bede837cc8ec1da75c520dfa3a76de7b64c052d568b800314ef68798c6b6278f",
+      "target_exists": true,
+      "previous_bytes": 954893,
+      "previous_sha256": "d862204eb3ff69d0072f55df84f497870066d7a71fb7a759a2ab3a6c0f5857f2",
+      "backup_path": "SpinonPreviewBackups/roadmap-code-status-sync-2026-10-24/pass02/STATUS.html"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-calc-neighbors.html",
+      "status": "replace",
+      "source_bytes": 447638,
+      "source_sha256": "f90e4ad13468be18548d349bafec5e3e223d3286962bcacd3a6ee53d52f39964",
+      "target_exists": true,
+      "previous_bytes": 472315,
+      "previous_sha256": "4176ec20f8ad18ae527aeef3307b9f5f3b6be6fd51252e7130c3d98169c689b9",
+      "backup_path": "SpinonPreviewBackups/roadmap-code-status-sync-2026-10-24/pass02/plan/c11-4-auto-repeat-calc-neighbors.html"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-negative-percentage-neighbors.html",
+      "status": "create",
+      "source_bytes": 443531,
+      "source_sha256": "b7de7c07d858d9cba7de80c9247495478b738fafd8f154eb66e628fff5d227f1",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-negative-percentage-neighbors-plan-review-20.html",
+      "status": "create",
+      "source_bytes": 436768,
+      "source_sha256": "0c670e7f10a157d12ab36308a894dea3510aca946091e544e34598035d1157da",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/plan/c11-4-auto-repeat-negative-percentage-neighbors.html",
+      "status": "create",
+      "source_bytes": 443521,
+      "source_sha256": "03974f68fa9ca47bebd0deccd7cfcd07cf6763d620a1adf26c5e63986b5a74f7",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/plan/c11-4-auto-repeat-negative-percentage-neighbors-plan-review-20.html",
+      "status": "create",
+      "source_bytes": 436776,
+      "source_sha256": "f123605038be3d822a43afa3284e809a3d162d9996a96ec1197c6335c5ba007f",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/README.html",
+      "status": "create",
+      "source_bytes": 436767,
+      "source_sha256": "f3850327f30de2cc780abe52124ec12986602d3c4a3a0995065400eb857510ce",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/README.html",
+      "status": "create",
+      "source_bytes": 436775,
+      "source_sha256": "d477fc82f66ac1d0a1278f49d220cbb5f114d922ec9e0505b41f079c148675da",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "tests/fixtures/css/c11/grid-auto-repeat-negative-percentage-neighbors-c114-precomparison.html",
+      "status": "create",
+      "source_bytes": 4432,
+      "source_sha256": "f155a83fb205e7f756205da6cecb7f7d0f23130afc8464a9d575c64f29127288",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-observation.json",
+      "status": "create",
+      "source_bytes": 6670,
+      "source_sha256": "cd9e1561a250d55a3b52cc1996f7a2b70992275cf6fe8245ba5e03251fd46af3",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-full.png",
+      "status": "create",
+      "source_bytes": 15197,
+      "source_sha256": "bb8d80977b0911ff0a4d33b6264374cb4cbcd952f5cbe74afe448ef89545ed89",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/validate-precomparison.py",
+      "status": "create",
+      "source_bytes": 3765,
+      "source_sha256": "7f6ffba1aefbed690f89e0c8f87efbaace3c0e490980ad841c46dbb867478337",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-observation.json",
+      "status": "create",
+      "source_bytes": 6670,
+      "source_sha256": "cd9e1561a250d55a3b52cc1996f7a2b70992275cf6fe8245ba5e03251fd46af3",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-full.png",
+      "status": "create",
+      "source_bytes": 15197,
+      "source_sha256": "bb8d80977b0911ff0a4d33b6264374cb4cbcd952f5cbe74afe448ef89545ed89",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/validate-precomparison.py",
+      "status": "create",
+      "source_bytes": 3765,
+      "source_sha256": "7f6ffba1aefbed690f89e0c8f87efbaace3c0e490980ad841c46dbb867478337",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    }
+  ]
+}
