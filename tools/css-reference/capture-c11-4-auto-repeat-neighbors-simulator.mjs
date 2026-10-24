@@ -4316,6 +4316,7 @@ async function autoRepeatNegativePercentageNeighborScenes() {
 async function fixedRepeatAutoRepeatScenes({
   fixtureRelativePath = 'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_fixed_repeat_scenes.json',
   chromeRelativePath = 'spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/chrome156-observation.json',
+  additionalChromeRelativePaths = [],
   chromeInputRelativePath = 'tests/fixtures/css/c11/grid-auto-repeat-fixed-repeat-c114-precomparison.html',
   expectedCount = 9,
 } = {}) {
@@ -4332,9 +4333,21 @@ async function fixedRepeatAutoRepeatScenes({
     readFile(androidPath, 'utf8'),
     readFile(iosPath, 'utf8'),
   ]);
+  const additionalChrome = await Promise.all(additionalChromeRelativePaths.map(async (relativePath) => {
+    const observation = JSON.parse(await readFile(resolve(repositoryRoot, relativePath), 'utf8'));
+    return observation.observations.map((scene) => ({
+      id: scene.id,
+      trackAxis: scene.trackAxis,
+      ...(scene.trackAxis === 'columns'
+        ? { templateColumns: scene.tracks }
+        : { templateRows: scene.tracks }),
+      grid: scene.grid,
+      items: scene.items,
+    }));
+  }));
   assert.equal(fixtures.length, expectedCount,
     `fixed-repeat + auto-repeat runtime matrix는 ${expectedCount} scene이어야 합니다.`);
-  const chromeCases = chrome.cases ?? chrome.scenes;
+  const chromeCases = [...(chrome.cases ?? chrome.scenes), ...additionalChrome.flat()];
   assert.equal(chromeCases.length, expectedCount,
     `Chrome 156 사전 비교는 ${expectedCount} case여야 합니다.`);
   assert.ok(chromeInput.includes('gap: 8px;'), 'Chrome oracle input must keep its fixed 8px gutter.');
@@ -4447,11 +4460,14 @@ scenes.push(...await fixedRepeatAutoRepeatScenes({
     'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/multiple_fixed_repeat_groups_scenes.json',
   chromeRelativePath:
     'spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-precomparison-2026-10-24/chrome156-observation.json',
+  additionalChromeRelativePaths: [
+    'spec/internal/evidence/c11-4-unbounded-fixed-repeat-groups-precomparison-2026-10-24/chrome156-observation.json',
+  ],
   chromeInputRelativePath:
-    'tests/fixtures/css/c11/grid-multiple-fixed-repeat-auto-repeat-c114-precomparison.html',
-  expectedCount: 10,
+    'tests/fixtures/css/c11/grid-unbounded-fixed-repeat-auto-repeat-c114-precomparison.html',
+  expectedCount: 12,
 }));
-assert.equal(scenes.length, 459, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 461, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;

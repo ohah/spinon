@@ -64,6 +64,13 @@ fn auto_track_30() -> ComputedCssGridTrackSize {
     }
 }
 
+fn auto_track_200() -> ComputedCssGridTrackSize {
+    ComputedCssGridTrackSize::MinMax {
+        min: ComputedCssGridTrackBreadth::LengthPx(200.0),
+        max: ComputedCssGridTrackBreadth::Fraction(1.0),
+    }
+}
+
 #[test]
 fn fixed_repeat_prefix_and_suffix_expand_in_authored_order_on_both_axes() {
     let prefix_columns = fixture_style(
@@ -318,6 +325,83 @@ fn two_fixed_repeat_groups_expand_in_authored_order_and_rebase_auto_repeat() {
 }
 
 #[test]
+fn three_four_and_eight_fixed_repeat_groups_expand_in_authored_order() {
+    let three = computed_grid(&fixture_style_with_size(
+        "repeat(2,11px) repeat(1,13px) repeat(auto-fill,minmax(200px,1fr)) repeat(2,17px)",
+        "80px",
+        "320px",
+        "80px",
+    ))
+    .1;
+    assert_eq!(
+        three.columns,
+        vec![
+            ComputedCssGridTrackSize::LengthPx(11.0),
+            ComputedCssGridTrackSize::LengthPx(11.0),
+            ComputedCssGridTrackSize::LengthPx(13.0),
+            auto_track_200(),
+            ComputedCssGridTrackSize::LengthPx(17.0),
+            ComputedCssGridTrackSize::LengthPx(17.0),
+        ]
+    );
+    assert_eq!(
+        three.columns_auto_repeat,
+        auto_repeat(ComputedCssGridAutoRepeatMode::AutoFill, 3, 4)
+    );
+    assert_eq!(three.columns_line_names, vec![Vec::<String>::new(); 7]);
+
+    let four = computed_grid(&fixture_style_with_size(
+        "repeat(1,11px) repeat(1,12px) repeat(auto-fill,minmax(200px,1fr)) repeat(1,13px) repeat(1,14px)",
+        "80px",
+        "320px",
+        "80px",
+    ))
+    .1;
+    assert_eq!(
+        four.columns,
+        vec![
+            ComputedCssGridTrackSize::LengthPx(11.0),
+            ComputedCssGridTrackSize::LengthPx(12.0),
+            auto_track_200(),
+            ComputedCssGridTrackSize::LengthPx(13.0),
+            ComputedCssGridTrackSize::LengthPx(14.0),
+        ]
+    );
+    assert_eq!(
+        four.columns_auto_repeat,
+        auto_repeat(ComputedCssGridAutoRepeatMode::AutoFill, 2, 3)
+    );
+
+    let eight = computed_grid(&fixture_style_with_size(
+        "80px",
+        "repeat(1,11px) repeat(1,12px) repeat(auto-fill,minmax(200px,1fr)) repeat(1,13px) repeat(1,14px) repeat(1,15px) repeat(1,16px) repeat(1,17px) repeat(1,18px)",
+        "80px",
+        "320px",
+    ))
+    .1;
+    assert_eq!(
+        eight.rows,
+        vec![
+            ComputedCssGridTrackSize::LengthPx(11.0),
+            ComputedCssGridTrackSize::LengthPx(12.0),
+            auto_track_200(),
+            ComputedCssGridTrackSize::LengthPx(13.0),
+            ComputedCssGridTrackSize::LengthPx(14.0),
+            ComputedCssGridTrackSize::LengthPx(15.0),
+            ComputedCssGridTrackSize::LengthPx(16.0),
+            ComputedCssGridTrackSize::LengthPx(17.0),
+            ComputedCssGridTrackSize::LengthPx(18.0),
+        ]
+    );
+    assert_eq!(
+        eight.rows_auto_repeat,
+        auto_repeat(ComputedCssGridAutoRepeatMode::AutoFill, 2, 3)
+    );
+    assert_eq!(eight.columns_auto_repeat, None);
+    assert_eq!(eight.rows_line_names, vec![Vec::<String>::new(); 10]);
+}
+
+#[test]
 fn constant_absolute_calc_and_absolute_units_normalize_to_computed_length_px() {
     let literal = computed_grid(&fixture_style(
         "repeat(2,20px 10px) repeat(auto-fill,minmax(32px,1fr)) 16px",
@@ -352,7 +436,7 @@ fn constant_absolute_calc_and_absolute_units_normalize_to_computed_length_px() {
 }
 
 #[test]
-fn fixed_repeat_mixed_profile_rejects_names_non_px_tracks_and_extra_groups() {
+fn fixed_repeat_mixed_profile_rejects_names_non_px_tracks_and_unsupported_shapes() {
     for columns in [
         "[outer] repeat(2,20px) repeat(auto-fill,minmax(32px,1fr))",
         "repeat(2,[fixed] 20px) repeat(auto-fill,minmax(32px,1fr))",
@@ -360,7 +444,6 @@ fn fixed_repeat_mixed_profile_rejects_names_non_px_tracks_and_extra_groups() {
         "repeat(2,calc(20px + 5%)) repeat(auto-fill,minmax(32px,1fr))",
         "repeat(2,minmax(20px,40px)) repeat(auto-fill,minmax(32px,1fr))",
         "repeat(2,20px 10px 5px) repeat(auto-fill,minmax(32px,1fr))",
-        "repeat(2,20px) repeat(3,10px) repeat(4,5px) repeat(auto-fill,minmax(32px,1fr))",
     ] {
         let fixture = fixture(&fixture_style(columns, "200px"));
         let error = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
@@ -382,6 +465,30 @@ fn fixed_repeat_mixed_profile_rejects_names_non_px_tracks_and_extra_groups() {
             "{columns}: {error:?}"
         );
     }
+
+    let fixture = fixture(&fixture_style(
+        "repeat(2,20px) repeat(auto-fill,minmax(32px,1fr)) repeat(auto-fit,minmax(32px,1fr))",
+        "200px",
+    ));
+    let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+        &fixture.view,
+        &[],
+        viewport(),
+        Default::default(),
+    )
+    .expect("Stylo should reject the second auto-repeat declaration during parsing");
+    assert!(
+        snapshot.elements[0]
+            .grid_layout
+            .as_ref()
+            .is_some_and(|grid| grid.columns.is_empty())
+    );
+    assert!(snapshot.diagnostics.iter().any(|diagnostic| {
+        diagnostic
+            .diagnostic
+            .message
+            .contains("grid-template-columns:")
+    }));
 }
 
 #[test]
@@ -518,9 +625,9 @@ fn fixed_repeat_mixture_rejects_template_areas_without_changing_auto_repeat_area
 }
 
 #[test]
-fn two_fixed_repeat_groups_obey_descriptor_limit_without_partial_tracks() {
+fn four_fixed_repeat_groups_obey_descriptor_limit_without_partial_tracks() {
     let within_limit = fixture(&fixture_style(
-        "repeat(4999,1px) repeat(5000,1px) repeat(auto-fill,minmax(32px,1fr))",
+        "repeat(2499,1px) repeat(2500,1px) repeat(2500,1px) repeat(2500,1px) repeat(auto-fill,minmax(32px,1fr))",
         "200px",
     ));
     let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
@@ -541,7 +648,7 @@ fn two_fixed_repeat_groups_obey_descriptor_limit_without_partial_tracks() {
     assert_eq!(grid.columns_line_names.len(), 10_001);
 
     let over_limit = fixture(&fixture_style(
-        "repeat(5000,1px) repeat(5000,1px) repeat(auto-fill,minmax(32px,1fr))",
+        "repeat(2500,1px) repeat(2500,1px) repeat(2500,1px) repeat(2500,1px) repeat(auto-fill,minmax(32px,1fr))",
         "200px",
     ));
     assert!(matches!(
@@ -566,10 +673,11 @@ fn fixed_repeat_allocation_failures_are_contextual_and_recoverable() {
     };
 
     let fixture = fixture(&fixture_style(
-        "repeat(2,20px 10px) repeat(3,12px) repeat(auto-fill,minmax(32px,1fr))",
+        "repeat(2,20px 10px) repeat(3,12px) repeat(4,8px) repeat(auto-fill,minmax(32px,1fr))",
         "200px",
     ));
     for site in [
+        IntegerRepeatReservationSite::FixedRepeatGroups,
         IntegerRepeatReservationSite::Tracks,
         IntegerRepeatReservationSite::LineGroups,
         IntegerRepeatReservationSite::LineNames,

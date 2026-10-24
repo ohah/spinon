@@ -415,6 +415,8 @@ Adapter는 integer-repeat pattern을 authored order로 펼치고 stored track li
 
 ## C11.4 fixed-repeat 두 그룹 + auto-repeat · 제한 runtime slice
 
+이 절은 구현 PR #594 시점의 profile snapshot이다. 세 번째 fixed-repeat group 거부는 당시 코드 기준이며, 후속 그룹 수 제한 제거 slice는 아래 절에 기록한다.
+
 후속 `RuntimeBlockFlexGridTrackSizingV1` computed track-list adapter는 단일 axis/list에서 하나의 `auto-fill` 또는 `auto-fit`과 최대 두 integer fixed-repeat group을 authored order로 확장한다. 각 fixed group은 positive integer count와 1–2개의 computed finite nonnegative `LengthPx` pattern을 가져야 한다. 두 fixed group은 auto-repeat 앞, 뒤 또는 auto-repeat 양쪽에 둘 수 있다. 하나의 list에 auto-repeat이 두 개 있거나 fixed-repeat이 세 개 이상이면 node와 `grid-template-*` property를 포함한 unsupported-value 오류로 거부한다.
 
 각 fixed group의 outer/fixed line-name metadata와 auto-repeat 내부 line names는 허용하지 않는다. percentage/unresolved `Calc`, flex·intrinsic breadth, `minmax()` fixed pattern, nested repeat, template areas 결합 및 동시 dual-axis repeat 확장은 이 제한 slice의 지원 범위가 아니다. `checked_mul`/`checked_add`로 계산한 fixed/ordinary authored descriptor 합계는 최대 10,000이며, track·line-group·line-name reservation 실패는 부분 Grid 결과 대신 contextual error로 끝난다. auto-repeat의 realized count, flex sizing, placement와 `auto-fit` collapse는 기존 layout 경로에 맡긴다.
@@ -422,3 +424,15 @@ Adapter는 integer-repeat pattern을 authored order로 펼치고 stored track li
 Chrome 156 사전 비교의 열 장면과 CSS Grid 2025 CRD 독립 산술을 기준으로 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 10/10 runtime scene을 확인했다. PixelCopy와 compositor 제출 전 Metal drawable 표본은 각 12/12 exact다. 기본 macOS ARM64 debug FFI archive에는 fixture scene marker와 ABI가 없고 opt-in fixture positive control에만 포함된다. 이것은 일반 CSS admission, WPT, 실기기/hardware GPU, iOS compositor 이후 pixel 또는 전체 C11.4 지원 선언이 아니다.
 
 세 번째 fixed-repeat, named-line merge, arbitrary CSS admission, WPT, Android hardware GPU, iOS compositor 이후 pixels 및 전체 C11.4는 남는다. 내부 계약 숫자 버전 `0.1.0`과 공식 C11.4 checkbox/`72/213`은 그대로다. 구현 PR [#594](https://github.com/ohah/spinon/pull/594)은 2026-10-24 10:14:36 UTC Rebase and merge로 병합됐고 merge SHA는 `1339874a04b2bc9866ce6eb6e0172e26dddf56ef`다. PR check rollup은 비었고 required status check은 설정되지 않았다. [집중 계획](https://github.com/ohah/spinon/blob/main/plan/c11-4-multiple-fixed-repeat-groups.md) · [Chrome 156 사전 비교](./evidence/c11-4-multiple-fixed-repeat-groups-precomparison-2026-10-24/README.md) · [runtime evidence](./evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/README.md) · [implementation/runtime review 20](./evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/implementation-runtime-review-20.md) · [PR diff review 30](./evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/pr-diff-review-30.md).
+
+## C11.4 fixed-repeat 그룹 수 제한 제거 · 제한 runtime slice
+
+이 절은 위 PR #594 profile에서 fixed-repeat group 개수만 제한하던 두-slot 상한을 제거한 후속 구현이다. 내부 계약 숫자 버전 `0.1.0`을 유지하고 일반 CSS admission이나 C11.4 완료를 선언하지 않는다.
+
+단일 axis/list에서 하나의 `auto-fill` 또는 `auto-fit`과 임의 개수의 positive integer fixed-repeat group을 authored order대로 허용한다. 각 fixed group의 pattern은 computed finite nonnegative `LengthPx` 1–2개다. authored component 수와 expanded descriptor 수는 각각 10,000 이하여야 한다. group metadata는 component index에 직접 저장·조회하여 group 수에 따른 반복 검색을 피하고, metadata vector는 fallibly reserve한다. count 변환, `count × pattern length`, total track 수와 line metadata bytes는 checked arithmetic으로 검사한다. reservation 실패는 node/property 맥락의 기존 cascade error로 끝내며 partial Grid result를 반환하지 않는다.
+
+outer/fixed/auto line names, 두 번째 auto-repeat, percentage·unresolved `Calc`, flex·intrinsic·`minmax()` fixed breadth, nested/other repeat, template areas 결합 및 동시 dual-axis 확장은 지원하지 않는다. auto-repeat expansion, flex sizing, placement와 `auto-fit` collapse는 기존 layout 경로를 사용한다.
+
+Chrome 156 observation과 CSS Grid 2025 CRD 독립 산술을 고정한 4-group prefix/split scene을 추가해 총 12개 opt-in scene을 확인했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator가 각각 12/12 통과했고 PixelCopy 및 compositor 제출 전 Metal drawable sample은 각각 15/15 RGBA exact다. macOS ARM64 debug FFI archive 기본 조합에는 새 marker/fixture ABI가 없고 `c04-runtime-gpu-fixture-test` positive control에는 포함된다. 이 결과는 release APK/IPA 전체 exclusion이나 Android hardware GPU, iOS compositor 이후 pixels를 증명하지 않는다.
+
+이 제한 profile도 C11.4 intrinsic track sizing 전체를 닫지 않는다. 공식 C11.4 checkbox와 aggregate `72/213`은 유지한다. [계획](../../plan/c11-4-unbounded-fixed-repeat-groups.md) · [Chrome·독립 산술 사전 비교](./evidence/c11-4-unbounded-fixed-repeat-groups-precomparison-2026-10-24/README.md) · [구현/runtime 근거](./evidence/c11-4-unbounded-fixed-repeat-groups-runtime-2026-10-24/README.md) · [구현/runtime 실패 관점 20개](./evidence/c11-4-unbounded-fixed-repeat-groups-runtime-2026-10-24/implementation-runtime-review-20.md) · [PR diff 실패 관점 30개](./evidence/c11-4-unbounded-fixed-repeat-groups-runtime-2026-10-24/pr-diff-review-30.md).
