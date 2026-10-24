@@ -1,0 +1,148 @@
+{
+  "source": {
+    "title": "CSS Grid Layout Module Level 1, 2025 Candidate Recommendation Draft",
+    "url": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#repeat-notation",
+    "sections": ["7.2.3.1", "7.2.3.2", "7.2.4", "11.7", "11.7.1"],
+    "status": "Candidate Recommendation Draft; work in progress"
+  },
+  "profile": "one auto-repeat and one or more integer fixed-repeat groups in one axis; fixed-repeat pattern entries are finite nonnegative LengthPx or minmax(finite nonnegative LengthPx, finite nonnegative Fraction)",
+  "units": "CSS px",
+  "gap": 4,
+  "scenes": [
+    {
+      "id": "columns-fill",
+      "axis": "columns",
+      "mode": "auto-fill",
+      "container": 200,
+      "fixedMinimums": [12, 12],
+      "repeatedMinimum": 24,
+      "repeatCountInequality": "28*m + 28 <= 200",
+      "repeatCount": 6,
+      "expectedTracks": [14, 14, 24, 24, 24, 24, 24, 24],
+      "expectedItemStarts": [0, 18, 36, 64, 92, 120, 148, 176],
+      "flexCheck": "six 1fr tracks freeze at their 24px minimum; the remaining 28px is shared by the two 1fr tracks"
+    },
+    {
+      "id": "columns-fit",
+      "axis": "columns",
+      "mode": "auto-fit",
+      "container": 200,
+      "fixedMinimums": [12, 12],
+      "repeatedMinimum": 24,
+      "repeatCountInequality": "28*m + 28 <= 200",
+      "repeatCount": 6,
+      "occupiedAutoRepeatTracks": [0],
+      "collapsedAutoRepeatTracks": [1, 2, 3, 4, 5],
+      "expectedTracks": [64, 0, 0, 0, 0, 0, 64, 64],
+      "expectedItemStarts": [0, 68, 136],
+      "flexCheck": "one occupied auto-fit track and two fixed-repeat tracks share the 192px remaining after two 4px gutters"
+    },
+    {
+      "id": "rows-fill",
+      "axis": "rows",
+      "mode": "auto-fill",
+      "container": 120,
+      "fixedMinimums": [12, 12],
+      "repeatedMinimum": 24,
+      "repeatCountInequality": "28*m + 28 <= 120",
+      "repeatCount": 3,
+      "expectedTracks": [16, 16, 24, 24, 24],
+      "expectedItemStarts": [0, 20, 40, 68, 96],
+      "flexCheck": "three 1fr tracks freeze at 24px; the remaining 32px is shared by the two 1fr tracks"
+    },
+    {
+      "id": "rows-fit",
+      "axis": "rows",
+      "mode": "auto-fit",
+      "container": 120,
+      "fixedMinimums": [12, 12],
+      "repeatedMinimum": 24,
+      "repeatCountInequality": "28*m + 28 <= 120",
+      "repeatCount": 3,
+      "occupiedAutoRepeatTracks": [0],
+      "collapsedAutoRepeatTracks": [1, 2],
+      "expectedTracks": [37.333333333333336, 0, 0, 37.333333333333336, 37.333333333333336],
+      "expectedItemStarts": [0, 41.333333333333336, 82.66666666666667],
+      "flexCheck": "one occupied auto-fit track and two fixed-repeat tracks share 112px after two 4px gutters"
+    },
+    {
+      "id": "columns-groups",
+      "axis": "columns",
+      "mode": "auto-fill",
+      "container": 300,
+      "fixedMinimums": [12, 8, 12, 8, 16, 16],
+      "repeatedMinimum": 24,
+      "repeatCountInequality": "28*m + 92 <= 300",
+      "repeatCount": 7,
+      "expectedTracks": [12, 8, 12, 8, 24, 24, 24, 24, 24, 24, 24, 22, 22],
+      "expectedItemStarts": [0, 16, 28, 44, 56, 84, 112, 140, 168, 196, 224, 252, 278],
+      "flexCheck": "seven auto-repeat tracks freeze at 24px; two 12px prefix tracks freeze at their minimum; the 2fr suffix tracks resolve to 22px each"
+    },
+    {
+      "id": "columns-flex-factor-low",
+      "axis": "columns",
+      "mode": "auto-fill",
+      "container": 200,
+      "fixedMinimums": [12],
+      "repeatedMinimum": 24,
+      "repeatCountInequality": "28*m + 12 <= 200",
+      "repeatCount": 6,
+      "expectedTracks": [16, 24, 24, 24, 24, 24, 24],
+      "expectedItemStarts": [0, 20, 48, 76, 104, 132, 160],
+      "flexCheck": "the 0fr auto-repeat tracks freeze at 24px; the sole 0.5fr fixed track resolves to 16px from a 32px flex unit, leaving 16px unused in the 200px container"
+    }
+  ],
+  "comparison": {
+    "chromeObservation": "chrome156-observation.json",
+    "usedTrackCssomTolerance": "Chrome reports fractional used sizes at 1/64 CSS px increments; compare exact integer sizes and collapsed zeroes, and accept at most 1/64 CSS px for non-integer sizes",
+    "independentRuntimeTolerance": "0.02 CSS px for f32 layout/frame comparisons"
+  },
+  "controls": [
+    {
+      "css": "repeat(2, minmax(20%, 1fr)) repeat(auto-fill, minmax(24px, 1fr))",
+      "cssSupports": true,
+      "profileResult": "reject with UnsupportedComputedGridValue"
+    },
+    {
+      "css": "repeat(2, minmax(12px, max-content)) repeat(auto-fill, minmax(24px, 1fr))",
+      "cssSupports": true,
+      "profileResult": "reject with UnsupportedComputedGridValue"
+    },
+    {
+      "css": "repeat(2, minmax(1fr, 12px)) repeat(auto-fill, minmax(24px, 1fr))",
+      "cssSupports": false,
+      "profileResult": "CSS parser rejects invalid min track breadth"
+    },
+    {
+      "css": "repeat(4, minmax(12px, 1e38fr)) repeat(auto-fill, minmax(24px, 1fr))",
+      "cssSupports": true,
+      "computedInput": "four finite Fraction(1e38) tracks; their expanded f32 flex-factor sum is non-finite",
+      "profileResult": "reject with UnsupportedComputedGridValue before calling Taffy"
+    },
+    {
+      "css": "repeat(1, minmax(12px, 1fr)) repeat(auto-fill, minmax(24px, 1e38fr))",
+      "cssSupports": true,
+      "computedInput": "one finite 1fr fixed track plus one finite 1e38fr auto-repeat pattern whose maximum feasible expansion exceeds the finite f32 aggregate",
+      "profileResult": "reject with UnsupportedComputedGridValue before calling Taffy"
+    },
+    {
+      "computedInput": "MinMax { min: LengthPx(-1), max: Fraction(1) }, NaN or infinity in either typed operand",
+      "cssSupports": null,
+      "profileResult": "reject with UnsupportedComputedGridValue and preserve node/property context"
+    },
+    {
+      "css": "repeat(2, minmax(calc(20px), 1fr)) repeat(auto-fill, minmax(24px, 1fr))",
+      "cssSupports": true,
+      "profileResult": "accept only if Stylo computed projection yields MinMax { min: LengthPx(20), max: Fraction(1) }; reject unresolved Calc breadth"
+    }
+  ],
+  "resourceBoundaries": {
+    "maxTrackDescriptors": 10000,
+    "maxLineMetadataBytes": 1048576,
+    "fixedRepeatGroupComponents": "9999 fixed groups plus one auto-repeat at 10000 list components is the largest possible passing component input; 10000 fixed groups plus auto-repeat is rejected at 10001 components",
+    "projectedTrackDescriptors": "fixed repeat count 9998 with one MinMax pattern plus one ordinary track and one auto-repeat pattern track gives 10000 ComputedGridTracks descriptors; count 9999 gives 10001 and must fail before Taffy. The auto-repeat is represented once at this projection stage.",
+    "taffyExpandedTracks": "the actual auto-repeat expansion remains separately capped at MAX_GRID_TRACKS=10000; the projection descriptor boundary is not a claim that this template count equals its used CSS repetition count",
+    "lineMetadata": "exercise computed expanded metadata at 1048576 bytes and 1048577 bytes; the former is allowed when all other gates pass, the latter fails closed",
+    "reservationFailure": "inject MinMax-path reservation failures for fixed-repeat metadata, track vector, and expanded line-name storage; require no partial result and successful next call"
+  }
+}

@@ -1,0 +1,41 @@
+# C11.4 fixed-repeat `minmax(px, fr)` 개정 계획 검토 · 새 실패 관점 20개
+
+**검토 대상:** [개정 계획](./c11-4-fixed-repeat-minmax-flex.md), [사전 비교 README](../spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-precomparison-2026-10-25/README.md), [기대값 JSON](../spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-precomparison-2026-10-25/spec-derived-expectations.json), 현재 `auto_repeat.rs`, `grid.rs::track_size()`·`track_size_is_valid()`, Taffy의 track 변환·repeat 확장·flex sizing 코드, CSS Grid 2025 CRD 링크.
+
+**개정 계획 SHA-256:** `b846c15b772cdc4b63dc4b8a136f1ece8db40427b8b78fdb6efb3b85a7f40df2`
+
+**기대값 JSON SHA-256:** `9af8e900835b43a8c7347af2878a646b6d724fdb8b3da1881fbfe8336138ac6c`
+README에 적힌 기대값 JSON hash와 실제 값이 일치한다. 기존 Chrome observation, screenshot, HTML fixture hash도 README와 일치한다. 이 검토는 저장된 관찰만 사용했으며 테스트, 브라우저, simulator 또는 프로세스를 실행하지 않았다.
+
+| # | 검사 경계 | 구체적인 실패 경로 | 근거와 영향 | 판정 |
+|---:|---|---|---|---|
+| 1 | CSS 문법에서 Stylo computed shape까지의 admission 경로 | 구현자가 `track_size()`가 이미 만드는 `MinMax`만 보고 preflight만 고치면, `auto_repeat.rs`의 고정 반복 확장 gate가 `LengthPx`만 받아 새 shape를 계속 거부한다. 반대로 두 gate를 고쳐도 최소값·최대값 타입을 뒤바꾸면 CSS에 없는 shape가 투영된다. | 현 source에서 preflight와 확장 모두 `LengthPx`를 제한하고, `track_size()`는 `MinMax { min, max }`를 typed 형태로 보존한다. 계획 3단계가 두 gate를 함께 바꾸고 allowlist를 `min: LengthPx, max: Fraction`으로 고정한다. | **COVERED** |
+| 2 | auto-repeat count가 사용하는 fixed minimum | `fr` maximum을 definite count 크기로 계산하거나 gutter를 반복 개수에서 한 번 빠뜨려 scene별 반복 수가 달라진다. | CRD §7.2.3.2와 JSON은 fixed px minimum 기준을 사용한다. `28m+28`, `28m+92`, `28m+12` 경계가 각각 관찰 장면의 count 6·7·6을 독립 산출한다. | **COVERED** |
+| 3 | sub-unit factor의 독립 계산 | 구현이 0.5를 1로 정규화해 남는 공간을 전부 쓰거나, base size를 빼는 순서를 잘못 잡아 `columns-flex-factor-low`를 Chrome/규범 기대와 다르게 계산한다. | 관찰과 JSON은 `[16, 24×6]`, 16px unused space를 고정한다. 12px fixed minimum, 6개 24px repeated minimum, 6개 4px gutter 뒤의 flex sizing에서 0fr은 확장하지 않고 0.5fr은 16px이 된다. §7.2.4 partial-fill 의미와 맞는다. | **COVERED** |
+| 4 | 0fr와 Taffy의 초기 hypothetical fraction | `0 × infinity`가 NaN이 되는 첫 pass를 일반 비유한 operand 오류로 처리하거나, 0fr track이 minimum에서 이탈하거나, sizing 반복이 끝나지 않는다. | Taffy `find_size_of_fr()`는 초기 hypothetical 값으로 infinity를 쓰고 restart 횟수를 track 수로 제한한다. 개정 계획은 CSS 유효 입력인 0fr positive scene과 별도의 NaN typed rejection을 나눠 확인한다. | **COVERED** |
+| 5 | Chrome CSSOM 양자화와 규범 수치 비교 | CSSOM `37.328125px`를 산술 기대값 `112/3px`와 exact 대조해 올바른 결과를 실패 처리하거나, 양자화 허용치를 정수·collapsed zero에도 적용한다. | JSON은 비정수 CSSOM에만 1/64px 오차를 허용하고 integer/zero 및 item offset은 exact로 분리한다. `rows-fit` 관찰차는 약 0.00521px로 제한 안에 있다. | **COVERED** |
+| 6 | Taffy 호출 전 factor aggregate의 축 범위 | 합계 검사가 fixed group만 포함하고 ordinary `fr` 또는 auto-repeat pattern의 최대 가능한 사용 횟수를 빼면, Taffy accumulator가 계산 중 infinity가 될 수 있다. | 계획은 fixed·ordinary factor와 가능한 최대 auto-repeat expansion을 합친 축 단위 upper bound를 명시하고, `0fr`, `0.5fr`, 일반 flex와 auto-repeat factor를 Rust projection 경계에서 고정한다. | **COVERED** |
+| 7 | 개별 finite factor와 aggregate overflow의 차이 | 각 Fraction이 finite라는 이유만으로 `1e38fr` 네 항을 통과시키고, Taffy의 반복 합산에서 f32 infinity 및 잘못된 restart 판정이 발생한다. | Chrome 관찰은 CSS-valid `1e38fr`를 분리하고 JSON은 네 fixed track 합을 Taffy 전에 거부하도록 한다. 이 profile 거부는 문법 invalid 판정이 아니다. | **COVERED** |
+| 8 | auto-repeat pattern의 최대 반복 factor overflow | fixed track factor만 합산해 통과시킨 뒤, 유한한 `1e38fr` auto-repeat pattern이 최대 사용 횟수만큼 Taffy에서 반복되어 aggregate를 infinity로 만든다. | 개정 JSON은 `1fr` fixed track과 `1e38fr` auto-repeat을 별도 control로 둬 최대 feasible expansion 합이 비유한이면 Taffy 전에 거부한다. plan 4단계에도 fixed/auto 각각의 overflow control이 분리됐다. | **COVERED** |
+| 9 | profile rejection과 CSS parser rejection | `minmax(1fr, 12px)`처럼 invalid syntax를 `UnsupportedComputedGridValue`로 기록하거나, valid percentage/intrinsic shape를 새 allowlist에 끼워 넣는다. | JSON에서 invalid flex minimum은 parser rejection, valid percentage/intrinsic controls는 profile error로 나뉜다. negative/non-finite synthetic typed 값은 `cssSupports: null`과 node/property diagnostic으로 구분한다. | **COVERED** |
+| 10 | authored calc가 아닌 computed-value 판정 | authored `calc(20px)`가 Stylo에서 `LengthPx(20)`로 접혔는데 모두 거부하거나, computed `Calc`를 evaluator 없이 허용한다. | 계획과 JSON은 computed `LengthPx`일 때만 allowlist에 들어가며 unresolved `Calc`는 fail-closed라고 일치하게 쓴다. | **COVERED** |
+| 11 | MinMax typed shape에서 Taffy max function으로의 전달 | snapshot은 `MinMax`를 보존하지만 layout 변환에서 `Fraction` max를 px·기본값으로 내보내거나 값이 누락되어 Chrome scene이 다른 flex 결과를 낸다. | 현 `to_taffy_track_sizing_function()`은 MinMax를 min/max 변환 함수로 보내고, max 변환은 `Fraction`을 `MaxTrackSizingFunction::from_fr`로 보존한다. 이 slice는 해당 변환을 유지하고 결과 fixture로 확인하도록 계획한다. | **COVERED** |
+| 12 | fixed-repeat group의 source order와 auto-repeat 삽입 위치 | auto-repeat 전후 fixed group을 합치거나 reorder해 prefix/suffix의 item line, track geometry와 Taffy의 overlarge-grid suffix truncation을 바꾼다. | `columns-fill`, `rows-fill`, `columns-fit`, `rows-fit`, `columns-groups`는 양쪽 배치와 복수 group을 나눠 기록한다. 계획은 authored order와 기존 prefix/suffix 계약을 유지한다. | **COVERED** |
+| 13 | auto-fit placement 뒤 collapse와 gutter | 빈 auto-fit track을 placement 전 접거나, collapsed line을 인접 fixed track의 gutter 계산에서 제거하지 않아 item 시작점이 틀린다. | JSON은 occupied/collapsed auto index, exact zero track 및 item starts를 고정하고, fit scene에서 fixed suffix track도 확인한다. | **COVERED** |
+| 14 | fixed-repeat line-name arity와 seam merge | pattern의 `N+1` line-name shape를 보존하지 않거나 반복 경계의 두 physical-line 이름을 순서대로 합치지 않아 named placement가 달라진다. | 현 코드가 `track_sizes.len()+1 == line_names.len()`을 검사하고 계획은 MinMax pattern을 넣은 seam 입력에서 authored order·physical-line merge를 확인한다. 일반 repeat grammar 확장으로 확대하지 않는다. | **COVERED** |
+| 15 | 10,000 projection descriptor와 Taffy 사용 track ceiling | `ComputedGridTracks`에 auto-repeat pattern을 이미 반복 확장해 projection cap을 잘못 적용하거나, 반대로 projection의 10,000 통과를 Taffy used repetition 수도 10,000이라는 증거로 오해한다. | JSON은 projection에서 fixed groups만 확장하고 auto-repeat pattern은 1회 저장하는 10,000/10,001 검사를 지정한다. Taffy `MAX_GRID_TRACKS=10,000`은 별도 실제 확장 cap으로 기술하며 두 개수가 같다고 주장하지 않는다. vendored Taffy는 explicit total을 clamp하고 삽입 지점을 기준으로 auto-repeat을 제한한다. | **COVERED** |
+| 16 | component·descriptor count의 경계 산술 | repeat count×pattern 길이 또는 total descriptor 합이 `usize` overflow하거나 10,001개가 된 뒤 reserve를 시도해 fail-closed 경계를 우회한다. | 현 source는 checked multiplication/addition과 10,000 cap을 사용한다. 개정 JSON은 list component와 projection descriptor 각각의 10,000 통과·10,001 거부 입력을 따로 정한다. | **COVERED** |
+| 17 | 1 MiB expanded line metadata 비용 | outer line groups만 세고 fixed-repeat 이름 복제나 auto-repeat inner names의 Vec/String header·text를 더하지 않아 한도보다 큰 metadata를 승인한다. | 현재 구현은 outer expanded bytes와 auto-repeat inner bytes를 합산한다. 개정 JSON은 computed expanded metadata의 1,048,576/1,048,577 경계를 고정하고 계획은 named MinMax seam을 별도로 둔다. | **COVERED** |
+| 18 | reservation 실패의 반환 원자성과 같은 worker 복구 | MinMax 경로의 group/track/line-name reserve 중간 실패가 부분 metadata를 반환하거나 이후 호출까지 failpoint 상태를 남긴다. | JSON과 계획은 MinMax pattern의 fixed-repeat metadata, track vector, expanded line-name storage failure를 주입하고 부분 결과 없음 및 같은 worker의 다음 valid call 성공을 요구한다. 구현 시 line-name Vec와 owned text reservation site를 포함해 이 조건을 충족해야 한다. | **COVERED** |
+| 19 | fixture artifact에서 simulator PR 화면까지의 증거 lifecycle | fixture만 넣은 정적 archive를 APK/IPA 전체 제외로 과장하거나, simulator track/frame만 기록하고 draw/present 또는 PR screenshot을 누락한다. 이미지 검증 뒤 브라우저 세션을 남긴다. | 계획은 기본/opt-in archive를 대조하고 APK/IPA로 일반화하지 않으며, 여섯 scene의 source/revision·track·frame·trace·draw/present와 PR 이미지 로드를 지정한다. 최신 개정은 Agent Browser 세션을 닫고 관련 browser/preview 프로세스가 남지 않았는지 확인하도록 명시한다. | **COVERED** |
+| 20 | 제한 slice의 부모 C11.4 상태와 공식 완료 집계 | 계획/구현 PR 병합을 전체 intrinsic track sizing 완료 또는 공식 체크 증가로 기록한다. | 개정 계획 9단계와 완료 판정은 C11.4 checkbox를 미완료로 두고 공식 `72/213`을 유지한다. `spec/STATUS.md`의 C11.4 항목도 미완료다. | **COVERED** |
+
+## 판정
+
+수정된 산술, CSSOM rounding, fixed/auto-repeat 각각의 fail-closed overflow control, 두 단계의 track/resource ceiling, artifact·simulator evidence lifecycle과 parent status는 계획·JSON·README·현재 source에서 일관된다. Taffy projection descriptor 10,000은 auto-repeat 사용 count 10,000과 같은 양이라고 취급하지 않는다. Agent Browser 확인 뒤 세션을 닫고 관련 프로세스가 남지 않았는지 확인하는 단계도 반영됐다. **현재 개정안에서 blocking issue를 찾지 못했다.**
+
+## 기준 링크
+
+- [CSS Grid 2025 CRD §7.2.3.1–§7.2.3.2: fixed/auto repeat](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#repeat-notation)
+- [CSS Grid 2025 CRD §7.2.4: flex factor](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#fr-unit)
+- [CSS Grid 2025 CRD §11.7–§11.7.1: flexible track sizing](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-flex-tracks)
