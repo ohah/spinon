@@ -1,0 +1,16 @@
+{
+  "testedCommit": "2c4c278f0facd31ac3e0cc60dce1f27575628b35",
+  "scope": "post-merge focused C11.4 tests on main merge commit before documentation-only follow-up",
+  "results": [
+    {
+      "name": "runtime-focused",
+      "command": "mise exec -- cargo test --locked -p spinon-runtime --features c11-4-grid-track-sizing-fixture-test exposes_four_direct_nonspanning_text_image_intrinsic_scenes",
+      "exitCode": 0
+    },
+    {
+      "name": "ffi-focused",
+      "command": "mise exec -- cargo test --locked -p spinon-ffi --features c04-runtime-gpu-fixture-test exposes_only_four_direct_nonspanning_mixed_intrinsic_scenes",
+      "exitCode": 0
+    }
+  ]
+}
