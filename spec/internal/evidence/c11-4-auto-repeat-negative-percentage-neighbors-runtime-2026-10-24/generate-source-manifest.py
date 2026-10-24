@@ -33,6 +33,7 @@ paths = [
     "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-runtime-2026-10-24/README.md",
     "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-runtime-2026-10-24/implementation-runtime-review-20.md",
     "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-runtime-2026-10-24/pr-diff-review-30.md",
+    "spec/internal/evidence/c11-4-negative-percentage-merge-status-sync-2026-10-24/pr-diff-review-30.md",
     "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-runtime-2026-10-24/generate-source-manifest.py",
     "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-artifact-2026-10-24/README.md",
     "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-artifact-2026-10-24/scan-ffi-archives.py",

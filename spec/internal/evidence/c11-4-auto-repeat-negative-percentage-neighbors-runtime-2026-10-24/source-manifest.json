@@ -4,7 +4,7 @@
     "commit": "411bda24e2525b55d48a6c14ec484aec6ef8e97a",
     "tree": "b42e6e11d099b6fc590e1733275e12ec36a55bbb"
   },
-  "sourceDiffSha256": "592dc1708ae26f431c3bb138eb67c29e31d00af23ffba5a8ef913d37a53c294b",
+  "sourceDiffSha256": "0da016e4b91d74ce98e65e284f95bf2b547709f6d4c1dbc102eee0d03f6644ca",
   "sourceDiffPaths": [
     "crates/spinon-ffi/src/runtime_gpu/fixtures.rs",
     "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
@@ -120,18 +120,18 @@
     },
     {
       "path": "plan/c11-4-auto-repeat-negative-percentage-neighbors.md",
-      "bytes": 9018,
-      "sha256": "6db99fe43b20a8f386db289b217cb5c5a7e747788c35f88fcd2538af35f68192"
+      "bytes": 9147,
+      "sha256": "dec4a06466545332bebc1034fc889db577515d7dcb9df798e106f834ba9107d7"
     },
     {
       "path": "spec/internal/0059-c11-grid-layout.md",
-      "bytes": 120755,
-      "sha256": "d8c77e48c0fb03bf61211307aa78dc8f8e8cf9fcfe1310e21bc71972d26e0f9d"
+      "bytes": 120905,
+      "sha256": "8838a54d3a0fb45ff81950856a9e8408af7298a737ae6acb10b8ed7424294f41"
     },
     {
       "path": "spec/STATUS.md",
-      "bytes": 416053,
-      "sha256": "88bd64b72b497b0e2b65286bf719aed4cbc6a0ce5735038d91d0d7b18f046b54"
+      "bytes": 416419,
+      "sha256": "25347d8a2d8a5563e4ec15fb8318e0d1fe704c1567135939604f9272b3274fdf"
     },
     {
       "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-runtime-2026-10-24/README.md",
@@ -149,9 +149,14 @@
       "sha256": "f4b2ad02123459556dbb170ea3eebc7e563130b46ee81c5e92d26af396d2ffbc"
     },
     {
+      "path": "spec/internal/evidence/c11-4-negative-percentage-merge-status-sync-2026-10-24/pr-diff-review-30.md",
+      "bytes": 5887,
+      "sha256": "7d99d8cf5b0f9ce30558200b17bd8ae7e74f7391f1873fc430ba95f3b210d7ec"
+    },
+    {
       "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-runtime-2026-10-24/generate-source-manifest.py",
-      "bytes": 6800,
-      "sha256": "54068b5eab3f545693e5f444edfff6f7bbdbe9b02a154a60e6869b828227e999"
+      "bytes": 6906,
+      "sha256": "23faad029d22167e95dc259f4be5ff7ae369b2aee4689048b731dac4877736a6"
     },
     {
       "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-artifact-2026-10-24/README.md",
