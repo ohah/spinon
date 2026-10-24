@@ -52,3 +52,7 @@ iOS는 iOS 26.2 / `com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro` Simulato
 - 각 로그 옆 `.exit` 파일은 명령 종료 코드이며, runtime과 FFI 로그에는 실제 1/1 실행 결과가 담겨 있다.
 
 이 slice는 span 1 direct text + replaced image의 `min-content`/`max-content` column 집계와 source-order reversal만 다룬다. 일반 CSS admission, arbitrary/nested/anonymous content, multi-span distribution, intrinsic row sizing, cyclic percentage, WPT, 전체 C11.4 완료로 일반화할 수 없다. 공식 상태는 [STATUS.md](../../../STATUS.md#c11-css-grid)에서 관리한다.
+
+## 병합 후 main 재검증
+
+PR #611의 merge commit `2c4c278f0facd31ac3e0cc60dce1f27575628b35`에서 런타임 focused test와 FFI focused test를 다시 실행해 각각 1/1 통과했다. 재실행은 문서 전용 후속 변경 전이며 제품 코드는 merge commit과 같다. [실행 manifest](post-merge-main/manifest.json), [runtime log](post-merge-main/runtime-focused.log), [FFI log](post-merge-main/ffi-focused.log), [종료 코드](post-merge-main/runtime-focused.exit) · [FFI 종료 코드](post-merge-main/ffi-focused.exit)를 보존한다.
