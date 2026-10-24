@@ -7,6 +7,7 @@ from pathlib import Path
 
 root = Path(__file__).resolve().parents[4]
 runtime = Path(__file__).resolve().parent
+base_revision = "411bda24e2525b55d48a6c14ec484aec6ef8e97a"
 paths = [
     "crates/spinon-ffi/src/runtime_gpu/fixtures.rs",
     "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
@@ -70,19 +71,19 @@ def entry(relative):
     return {"path": relative, "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()}
 
 
-diff = subprocess.check_output(["git", "diff", "--binary", "HEAD", "--", *source_diff_paths], cwd=root)
+diff = subprocess.check_output(["git", "diff", "--binary", base_revision, "--", *source_diff_paths], cwd=root)
 source_diff_paths_changed = subprocess.check_output(
-    ["git", "diff", "--name-only", "HEAD", "--", *source_diff_paths], cwd=root, text=True
+    ["git", "diff", "--name-only", base_revision, "--", *source_diff_paths], cwd=root, text=True
 ).splitlines()
 manifest = {
     "schemaVersion": 1,
     "sourceRevision": {
-        "commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip(),
-        "tree": subprocess.check_output(["git", "rev-parse", "HEAD^{tree}"], cwd=root, text=True).strip(),
+        "commit": base_revision,
+        "tree": subprocess.check_output(["git", "rev-parse", f"{base_revision}^{{tree}}"], cwd=root, text=True).strip(),
     },
     "sourceDiffSha256": hashlib.sha256(diff).hexdigest(),
     "sourceDiffPaths": source_diff_paths_changed,
-    "scopeBoundary": "sourceDiffSha256 hashes git diff --binary HEAD for implementation, fixture, capture, plan, and official contract/status paths; evidence inputs and screenshots have file-level hashes below.",
+    "scopeBoundary": "sourceDiffSha256 hashes git diff --binary from the plan merge base for implementation, fixture, capture, plan, and official contract/status paths; evidence inputs and screenshots have file-level hashes below.",
     "files": [entry(path) for path in paths],
     "screenshots": [entry(path) for path in screenshots],
     "runs": {
