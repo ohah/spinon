@@ -1,0 +1,13 @@
+{
+  "agentBrowser": "0.31.1",
+  "browser": "Chrome for Testing 156.0.8078.48 (HeadlessChrome)",
+  "headless": true,
+  "platform": "macOS ARM64",
+  "viewportCssPixels": [1280, 633],
+  "devicePixelRatio": 1,
+  "direction": "ltr",
+  "writingMode": "horizontal-tb",
+  "servedAt": "http://127.0.0.1:8891/grid-fixed-auto-repeat-template-areas-c114.html",
+  "fixture": "tests/fixtures/css/c11/grid-fixed-auto-repeat-template-areas-c114.html",
+  "fixtureSha256": "76693fa8eb5f656de5ae40ea6456b8850b7ca9602c69b9d688db9f7e5f4007e8"
+}

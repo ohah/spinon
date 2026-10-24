@@ -1,0 +1,168 @@
+{
+  "basis": {
+    "fixedPrefixTrackSizesPx": [10, 6, 10, 6],
+    "fixedSuffixTrackSizesPx": [10, 10],
+    "autoRepeatTrackSizePx": 20,
+    "gapPx": 4,
+    "autoRepeatTrackCountFormula": "72px + 24px * n <= availableSize",
+    "autoFillCountsBySizePx": {
+      "148": 3,
+      "168": 4,
+      "188": 4
+    }
+  },
+  "namedLineCollision": {
+    "fixedExplicitLineNumbers1Based": {
+      "hero-start": [1, 3],
+      "hero-end": [3, 5]
+    },
+    "autoRepeatExplicitLineNumbers1Based": {
+      "hero-start": [5, 6, 7, 8],
+      "hero-end": [6, 7, 8, 9]
+    },
+    "areaGeneratedLineNumbers1Based": {
+      "hero-start": [5],
+      "hero-end": [9]
+    },
+    "mergedDistinctPhysicalLineNumbers1Based": {
+      "hero-start": [1, 3, 5, 6, 7, 8],
+      "hero-end": [3, 5, 6, 7, 8, 9]
+    },
+    "bareAreaPlacementUsesEarlierAuthoredAliases": true,
+    "positiveOccurrenceProbe": "hero-start 3 / hero-end 3 selects auto-repeat track 1",
+    "negativeOccurrenceProbe": "hero-start -1 / hero-end -1 selects auto-repeat track 4"
+  },
+  "scenes": {
+    "columns-fill-collision": {
+      "axis": "columns",
+      "mode": "auto-fill",
+      "availableSizePx": 168,
+      "autoRepeatCount": 4,
+      "areaDimensionTracks": 10,
+      "expandedTemplateTracks": 10,
+      "usedTrackSizesPx": [10, 6, 10, 6, 20, 20, 20, 20, 10, 10],
+      "children": {
+        "child left": [0, 0, 44, 20],
+        "child hero": [0, 0, 20, 20],
+        "child right": [144, 0, 24, 20],
+        "child probe": [48, 0, 20, 20],
+        "child negative-probe": [120, 0, 20, 20]
+      }
+    },
+    "columns-fit-empty": {
+      "axis": "columns",
+      "mode": "auto-fit-empty",
+      "availableSizePx": 168,
+      "autoRepeatCount": 4,
+      "areaDimensionTracks": 10,
+      "expandedTemplateTracks": 10,
+      "usedTrackSizesPx": [10, 6, 10, 6, 0, 0, 0, 0, 10, 10],
+      "children": {
+        "child left": [0, 0, 44, 20],
+        "child right": [48, 0, 24, 20]
+      }
+    },
+    "columns-fit-occupied": {
+      "axis": "columns",
+      "mode": "auto-fit-occupied",
+      "availableSizePx": 168,
+      "autoRepeatCount": 4,
+      "areaDimensionTracks": 10,
+      "expandedTemplateTracks": 10,
+      "usedTrackSizesPx": [10, 6, 10, 6, 20, 20, 20, 20, 10, 10],
+      "children": {
+        "child left": [0, 0, 44, 20],
+        "child hero": [48, 0, 92, 20],
+        "child right": [144, 0, 24, 20]
+      }
+    },
+    "columns-area-larger": {
+      "axis": "columns",
+      "mode": "auto-fill",
+      "availableSizePx": 148,
+      "autoRepeatCount": 3,
+      "areaDimensionTracks": 10,
+      "expandedTemplateTracks": 9,
+      "usedTrackSizesPx": [10, 6, 10, 6, 20, 20, 20, 10, 10, 20],
+      "children": {
+        "child left": [0, 0, 44, 20],
+        "child hero": [48, 0, 68, 20],
+        "child right": [120, 0, 48, 20]
+      },
+      "overflowBeyondRootPx": 20
+    },
+    "columns-area-shorter": {
+      "axis": "columns",
+      "mode": "auto-fill",
+      "availableSizePx": 188,
+      "autoRepeatCount": 4,
+      "areaDimensionTracks": 8,
+      "expandedTemplateTracks": 10,
+      "usedTrackSizesPx": [10, 6, 10, 6, 20, 20, 20, 20, 10, 10],
+      "children": {
+        "child left": [0, 0, 44, 20],
+        "child hero": [48, 0, 68, 20],
+        "child right": [120, 0, 20, 20],
+        "child tail": [158, 0, 10, 20]
+      }
+    },
+    "rows-fill-collision": {
+      "axis": "rows",
+      "mode": "auto-fill",
+      "availableSizePx": 168,
+      "autoRepeatCount": 4,
+      "areaDimensionTracks": 10,
+      "expandedTemplateTracks": 10,
+      "usedTrackSizesPx": [10, 6, 10, 6, 20, 20, 20, 20, 10, 10],
+      "children": {
+        "child left": [0, 0, 20, 44],
+        "child hero": [0, 0, 20, 20],
+        "child right": [0, 144, 20, 24],
+        "child probe": [0, 48, 20, 20],
+        "child negative-probe": [0, 120, 20, 20]
+      }
+    },
+    "rows-fit-empty": {
+      "axis": "rows",
+      "mode": "auto-fit-empty",
+      "availableSizePx": 168,
+      "autoRepeatCount": 4,
+      "areaDimensionTracks": 10,
+      "expandedTemplateTracks": 10,
+      "usedTrackSizesPx": [10, 6, 10, 6, 0, 0, 0, 0, 10, 10],
+      "children": {
+        "child left": [0, 0, 20, 44],
+        "child right": [0, 48, 20, 24]
+      }
+    },
+    "rows-fit-occupied": {
+      "axis": "rows",
+      "mode": "auto-fit-occupied",
+      "availableSizePx": 168,
+      "autoRepeatCount": 4,
+      "areaDimensionTracks": 10,
+      "expandedTemplateTracks": 10,
+      "usedTrackSizesPx": [10, 6, 10, 6, 20, 20, 20, 20, 10, 10],
+      "children": {
+        "child left": [0, 0, 20, 44],
+        "child hero": [0, 48, 20, 92],
+        "child right": [0, 144, 20, 24]
+      }
+    },
+    "rows-area-larger": {
+      "axis": "rows",
+      "mode": "auto-fill",
+      "availableSizePx": 148,
+      "autoRepeatCount": 3,
+      "areaDimensionTracks": 10,
+      "expandedTemplateTracks": 9,
+      "usedTrackSizesPx": [10, 6, 10, 6, 20, 20, 20, 10, 10, 20],
+      "children": {
+        "child left": [0, 0, 20, 44],
+        "child hero": [0, 48, 20, 68],
+        "child right": [0, 120, 20, 48]
+      },
+      "overflowBeyondRootPx": 20
+    }
+  }
+}
