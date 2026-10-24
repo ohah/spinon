@@ -1,0 +1,65 @@
+{
+  "selectedOutputRoot": "build/spinon/c114-merge-roadmap-20261025-selected",
+  "sourceBuild": "build/spinon/c114-merge-roadmap-20261025-selected-site",
+  "selectedRouteCount": 11,
+  "selectedRoutes": [
+    {
+      "path": "roadmap.html",
+      "bytes": 300661,
+      "sha256": "01c08ec3430d67cf6daa5c2baffa9953f2112ee28119be6502d7ad08c3092ea2"
+    },
+    {
+      "path": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 534574,
+      "sha256": "12ac8e54ee23f7c564704b1d737ac1db1c782c8966a3a742402e85d8890f7fa0"
+    },
+    {
+      "path": "plan/c11-4-fixed-auto-repeat-template-areas.html",
+      "bytes": 32052,
+      "sha256": "f4e808a68d02ce6ce6c1989a3ec660772985433966ee9a0834ccb4093847b519"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "bytes": 202061,
+      "sha256": "49031b6d35c3e3d9a880354c38261c5046d1e435a994c34d274f059181ff5a6c"
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/README.html",
+      "bytes": 28484,
+      "sha256": "1b43386f4d2c81c92366022a49275497f8893d29954e24068303e58561df7c72"
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/implementation-runtime-review-20.html",
+      "bytes": 29774,
+      "sha256": "9ee6082097caa76154a060a761acaefa63e8a100af3fe69d7712754dd8ba9390"
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/pr-diff-review-30.html",
+      "bytes": 32600,
+      "sha256": "eeccd5b46d55b31074b293c9e3a7cb840ef8946e507de54be74374a8a45c539d"
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-25/android-avd-final-2026-10-25/fixed-auto-area-columns-area-larger.png",
+      "bytes": 77795,
+      "sha256": "4e693b8349985d6941af38a1fb6f48895a78a1e69b9df8d6f847abb42ee220ca"
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-25/ios-simulator-final-2026-10-25/fixed-auto-area-columns-area-larger.png",
+      "bytes": 133225,
+      "sha256": "5a9333b9d975a9ead3a28112850017e9b60d2a3282fc36fe7c0e100391a20e0f"
+    }
+  ],
+  "roadmap_merge_sha": "912c10bee4e2d88374a2a32689ac37c824b1207d",
+  "official_completion_count": "72/213",
+  "noDeletes": true
+}

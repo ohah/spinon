@@ -1,0 +1,279 @@
+{
+  "documentRouteCount": 11,
+  "rspressStaticAssetCount": 19,
+  "distinctPreviewRouteCount": 30,
+  "local_targets_verified": 30,
+  "remote_http_200_and_hash_verified": 30,
+  "historical_replacement_backups_verified": 4,
+  "all_targets_verified": true,
+  "all_backups_verified": true,
+  "no_deletes": true,
+  "targets": [
+    {
+      "path": "roadmap.html",
+      "kind": "document-or-direct-asset",
+      "bytes": 300661,
+      "sha256": "01c08ec3430d67cf6daa5c2baffa9953f2112ee28119be6502d7ad08c3092ea2",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "icon.svg",
+      "kind": "document-or-direct-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "logo.svg",
+      "kind": "document-or-direct-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "kind": "document-or-direct-asset",
+      "bytes": 534574,
+      "sha256": "12ac8e54ee23f7c564704b1d737ac1db1c782c8966a3a742402e85d8890f7fa0",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-fixed-auto-repeat-template-areas.html",
+      "kind": "document-or-direct-asset",
+      "bytes": 32052,
+      "sha256": "f4e808a68d02ce6ce6c1989a3ec660772985433966ee9a0834ccb4093847b519",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "kind": "document-or-direct-asset",
+      "bytes": 202061,
+      "sha256": "49031b6d35c3e3d9a880354c38261c5046d1e435a994c34d274f059181ff5a6c",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/README.html",
+      "kind": "document-or-direct-asset",
+      "bytes": 28484,
+      "sha256": "1b43386f4d2c81c92366022a49275497f8893d29954e24068303e58561df7c72",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/implementation-runtime-review-20.html",
+      "kind": "document-or-direct-asset",
+      "bytes": 29774,
+      "sha256": "9ee6082097caa76154a060a761acaefa63e8a100af3fe69d7712754dd8ba9390",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/pr-diff-review-30.html",
+      "kind": "document-or-direct-asset",
+      "bytes": 32600,
+      "sha256": "eeccd5b46d55b31074b293c9e3a7cb840ef8946e507de54be74374a8a45c539d",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-25/android-avd-final-2026-10-25/fixed-auto-area-columns-area-larger.png",
+      "kind": "document-or-direct-asset",
+      "bytes": 77795,
+      "sha256": "4e693b8349985d6941af38a1fb6f48895a78a1e69b9df8d6f847abb42ee220ca",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-25/ios-simulator-final-2026-10-25/fixed-auto-area-columns-area-larger.png",
+      "kind": "document-or-direct-asset",
+      "bytes": 133225,
+      "sha256": "5a9333b9d975a9ead3a28112850017e9b60d2a3282fc36fe7c0e100391a20e0f",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "kind": "rspress-static-asset",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/image/fixed-auto-area-columns-area-larger.02a04bef88.png",
+      "kind": "rspress-static-asset",
+      "bytes": 133225,
+      "sha256": "5a9333b9d975a9ead3a28112850017e9b60d2a3282fc36fe7c0e100391a20e0f",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/image/fixed-auto-area-columns-area-larger.9b02657e20.png",
+      "kind": "rspress-static-asset",
+      "bytes": 77795,
+      "sha256": "4e693b8349985d6941af38a1fb6f48895a78a1e69b9df8d6f847abb42ee220ca",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "kind": "rspress-static-asset",
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "kind": "rspress-static-asset",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "kind": "rspress-static-asset",
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-109d18bc6ef3.e378b8b420.js",
+      "kind": "rspress-static-asset",
+      "bytes": 12739,
+      "sha256": "b173c96c093034959d936dfc427c82f3e3a4bf52e90be4d3b18bdb14bf4edbf0",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.bacd84eaf7.js",
+      "kind": "rspress-static-asset",
+      "bytes": 573519,
+      "sha256": "6b4f75c171de692cdc1e71c7cf2b64370246339af56c898e564bbadcb040f836",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-938c2d0d3348.b2cdd9105d.js",
+      "kind": "rspress-static-asset",
+      "bytes": 15733,
+      "sha256": "3953df3ce20f434bc95a89ac754014cf416f357dd1472811b599923ed80f6532",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-c1e40d0dd1d7.6c298cafee.js",
+      "kind": "rspress-static-asset",
+      "bytes": 19319,
+      "sha256": "411ade0d904f52c95f18a63fd78ce7a25f0cd86eea77e208fba3ced14d50bf21",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.fa6e2891b1.js",
+      "kind": "rspress-static-asset",
+      "bytes": 194818,
+      "sha256": "a252905cc01aadf268aed282f291a7008ec835ef7f15114711ebd9afcc0a7492",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-f5d4100ab8a8.435d16339c.js",
+      "kind": "rspress-static-asset",
+      "bytes": 15632,
+      "sha256": "de260dc250cea8237dead76775b38ff5f8c3889fbedea88c51e988d04167097c",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/index.d0519311c4.js",
+      "kind": "rspress-static-asset",
+      "bytes": 29505,
+      "sha256": "1e1c312919f19bf5dc671d4b380bbe914d8bfc3d88797f990d82ea17d31e00d8",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "kind": "rspress-static-asset",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "kind": "rspress-static-asset",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "kind": "rspress-static-asset",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "kind": "rspress-static-asset",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/styles.b5d9a69293.js",
+      "kind": "rspress-static-asset",
+      "bytes": 471,
+      "sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/search_index.ko.9de30340.json",
+      "kind": "rspress-static-asset",
+      "bytes": 497822,
+      "sha256": "9de303407061e98617a12cd3b04a411e36f8d182d0cff34840f2ab9ca74e7378",
+      "http_status": 200,
+      "verified": true
+    }
+  ],
+  "backups": [
+    {
+      "path": "roadmap.html",
+      "bytes": 298768,
+      "sha256": "eab09ef77ba98effaf466a400e5e6a6d934aa723d9dc36cb6cd779f0d69d5560",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 960001,
+      "sha256": "8ebb4af34755b68febd36607b7044a22075875aba6e9a0c783d597d898944b4c",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-fixed-auto-repeat-template-areas.html",
+      "bytes": 455891,
+      "sha256": "925b070c9d1095596953ca498730c23bd3690ad43e6f54696599186e796da412",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "bytes": 607751,
+      "sha256": "c2d68ae13f053f0943aa51922dc0eb5eaf5f5027db2c6ece8f6f429974a3c03d",
+      "verified": true
+    }
+  ]
+}

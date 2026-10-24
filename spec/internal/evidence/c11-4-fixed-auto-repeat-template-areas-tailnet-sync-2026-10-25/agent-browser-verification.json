@@ -1,0 +1,91 @@
+{
+  "browser": {
+    "tool": "agent-browser 0.31.1",
+    "session": "spinon-roadmap-sync-20261025",
+    "closed": true,
+    "session_process_and_chrome_listener_absent_after_close": true,
+    "sessions": [
+      {
+        "name": "spinon-roadmap-sync-20261025",
+        "closed": true
+      },
+      {
+        "name": "spinon-roadmap-asset-check-20261025",
+        "closed": true
+      },
+      {
+        "name": "spinon-roadmap-asset-check-final-20261025",
+        "closed": true
+      }
+    ],
+    "closeAllUsed": true,
+    "activeSessionsAfterClose": 0,
+    "agentBrowserListenersAfterClose": 0
+  },
+  "roadmap": {
+    "path": "/spinon/roadmap.html?sync=c114-merge-20261025",
+    "title": "스피논 구현 로드맵",
+    "merge_card_found": true,
+    "merge_sha_visible": true,
+    "official_count_visible": true,
+    "c114_incomplete": true,
+    "screenshot_links": [
+      "/spinon/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-25/android-avd-final-2026-10-25/fixed-auto-area-columns-area-larger.png",
+      "/spinon/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-25/ios-simulator-final-2026-10-25/fixed-auto-area-columns-area-larger.png"
+    ]
+  },
+  "status": {
+    "path": "/spinon/STATUS.html?sync=c114-merge-20261025",
+    "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+    "merge_row_found": true,
+    "merge_sha_visible": true,
+    "official_count_visible": true,
+    "c114_checked": false
+  },
+  "plan": {
+    "path": "/spinon/plan/c11-4-fixed-auto-repeat-template-areas.html?sync=c114-merge-20261025",
+    "title": "C11.4 · fixed-repeat + auto-repeat + grid-template-areas - 스피논 문서",
+    "merge_pr_visible": true,
+    "merge_sha_visible": true,
+    "official_count_visible": true,
+    "marks_incomplete": true
+  },
+  "screenshot": {
+    "path": "roadmap-agent-browser.png",
+    "width": 1280,
+    "height": 633,
+    "bytes": 288952,
+    "sha256": "d8153e60b10587296f96d466bee5600dcfb39c01ceae4b7fba944504171635b4"
+  },
+  "tailnet": {
+    "documentAndDirectAssetRoutes": 11,
+    "rspressStaticAssets": 19,
+    "finalDistinctRoutes": 30,
+    "localRoutesVerified": 30,
+    "remoteHttp200AndHashVerified": 30,
+    "initialReplacementBackupsVerified": 4,
+    "staticAssetReplacementBackupsVerified": 0,
+    "allRemoteVerified": true
+  },
+  "runtimeEvidenceInitialAssetCheck": {
+    "path": "/spinon/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/README.html",
+    "androidImageNaturalWidthBeforeAssetSync": 0,
+    "iosImageNaturalWidthBeforeAssetSync": 0,
+    "cause": "selected Rspress output static image and lazy route assets were missing from the first 11-route preview copy"
+  },
+  "runtimeEvidenceFinalAssetCheck": {
+    "path": "/spinon/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/README.html?assetcheck=final-c114-merge-20261025",
+    "title": "C11.4 fixed-repeat + auto-repeat + template-area 제한 runtime slice - 스피논 문서",
+    "androidImage": {
+      "naturalWidth": 1080,
+      "loaded": true
+    },
+    "iosImage": {
+      "naturalWidth": 1206,
+      "loaded": true
+    },
+    "staticAssetCount": 19,
+    "staticAssetsLocalHashVerified": 19,
+    "staticAssetsRemoteHttp200AndHashVerified": 19
+  }
+}

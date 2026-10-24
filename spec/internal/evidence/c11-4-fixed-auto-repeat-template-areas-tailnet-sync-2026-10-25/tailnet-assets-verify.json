@@ -1,0 +1,262 @@
+{
+  "selected_static_route_count": 19,
+  "local_targets_verified": 19,
+  "backups_verified": 0,
+  "remote_targets_verified": 19,
+  "all_local_targets_verified": true,
+  "all_backups_verified": true,
+  "all_remote_targets_http_200_and_hash_verified": true,
+  "no_deletes": true,
+  "local_targets": [
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "verified": true
+    },
+    {
+      "path": "static/image/fixed-auto-area-columns-area-larger.02a04bef88.png",
+      "bytes": 133225,
+      "sha256": "5a9333b9d975a9ead3a28112850017e9b60d2a3282fc36fe7c0e100391a20e0f",
+      "verified": true
+    },
+    {
+      "path": "static/image/fixed-auto-area-columns-area-larger.9b02657e20.png",
+      "bytes": 77795,
+      "sha256": "4e693b8349985d6941af38a1fb6f48895a78a1e69b9df8d6f847abb42ee220ca",
+      "verified": true
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "verified": true
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-109d18bc6ef3.e378b8b420.js",
+      "bytes": 12739,
+      "sha256": "b173c96c093034959d936dfc427c82f3e3a4bf52e90be4d3b18bdb14bf4edbf0",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.bacd84eaf7.js",
+      "bytes": 573519,
+      "sha256": "6b4f75c171de692cdc1e71c7cf2b64370246339af56c898e564bbadcb040f836",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-938c2d0d3348.b2cdd9105d.js",
+      "bytes": 15733,
+      "sha256": "3953df3ce20f434bc95a89ac754014cf416f357dd1472811b599923ed80f6532",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-c1e40d0dd1d7.6c298cafee.js",
+      "bytes": 19319,
+      "sha256": "411ade0d904f52c95f18a63fd78ce7a25f0cd86eea77e208fba3ced14d50bf21",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.fa6e2891b1.js",
+      "bytes": 194818,
+      "sha256": "a252905cc01aadf268aed282f291a7008ec835ef7f15114711ebd9afcc0a7492",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-f5d4100ab8a8.435d16339c.js",
+      "bytes": 15632,
+      "sha256": "de260dc250cea8237dead76775b38ff5f8c3889fbedea88c51e988d04167097c",
+      "verified": true
+    },
+    {
+      "path": "static/js/index.d0519311c4.js",
+      "bytes": 29505,
+      "sha256": "1e1c312919f19bf5dc671d4b380bbe914d8bfc3d88797f990d82ea17d31e00d8",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "verified": true
+    },
+    {
+      "path": "static/js/styles.b5d9a69293.js",
+      "bytes": 471,
+      "sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "verified": true
+    },
+    {
+      "path": "static/search_index.ko.9de30340.json",
+      "bytes": 497822,
+      "sha256": "9de303407061e98617a12cd3b04a411e36f8d182d0cff34840f2ab9ca74e7378",
+      "verified": true
+    }
+  ],
+  "backups": [],
+  "remote_targets": [
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "http_status": 200,
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "verified": true
+    },
+    {
+      "path": "static/image/fixed-auto-area-columns-area-larger.02a04bef88.png",
+      "http_status": 200,
+      "bytes": 133225,
+      "sha256": "5a9333b9d975a9ead3a28112850017e9b60d2a3282fc36fe7c0e100391a20e0f",
+      "verified": true
+    },
+    {
+      "path": "static/image/fixed-auto-area-columns-area-larger.9b02657e20.png",
+      "http_status": 200,
+      "bytes": 77795,
+      "sha256": "4e693b8349985d6941af38a1fb6f48895a78a1e69b9df8d6f847abb42ee220ca",
+      "verified": true
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "http_status": 200,
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "verified": true
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "http_status": 200,
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "http_status": 200,
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-109d18bc6ef3.e378b8b420.js",
+      "http_status": 200,
+      "bytes": 12739,
+      "sha256": "b173c96c093034959d936dfc427c82f3e3a4bf52e90be4d3b18bdb14bf4edbf0",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.bacd84eaf7.js",
+      "http_status": 200,
+      "bytes": 573519,
+      "sha256": "6b4f75c171de692cdc1e71c7cf2b64370246339af56c898e564bbadcb040f836",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-938c2d0d3348.b2cdd9105d.js",
+      "http_status": 200,
+      "bytes": 15733,
+      "sha256": "3953df3ce20f434bc95a89ac754014cf416f357dd1472811b599923ed80f6532",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-c1e40d0dd1d7.6c298cafee.js",
+      "http_status": 200,
+      "bytes": 19319,
+      "sha256": "411ade0d904f52c95f18a63fd78ce7a25f0cd86eea77e208fba3ced14d50bf21",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.fa6e2891b1.js",
+      "http_status": 200,
+      "bytes": 194818,
+      "sha256": "a252905cc01aadf268aed282f291a7008ec835ef7f15114711ebd9afcc0a7492",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-f5d4100ab8a8.435d16339c.js",
+      "http_status": 200,
+      "bytes": 15632,
+      "sha256": "de260dc250cea8237dead76775b38ff5f8c3889fbedea88c51e988d04167097c",
+      "verified": true
+    },
+    {
+      "path": "static/js/index.d0519311c4.js",
+      "http_status": 200,
+      "bytes": 29505,
+      "sha256": "1e1c312919f19bf5dc671d4b380bbe914d8bfc3d88797f990d82ea17d31e00d8",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "http_status": 200,
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "http_status": 200,
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "http_status": 200,
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "http_status": 200,
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "verified": true
+    },
+    {
+      "path": "static/js/styles.b5d9a69293.js",
+      "http_status": 200,
+      "bytes": 471,
+      "sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "verified": true
+    },
+    {
+      "path": "static/search_index.ko.9de30340.json",
+      "http_status": 200,
+      "bytes": 497822,
+      "sha256": "9de303407061e98617a12cd3b04a411e36f8d182d0cff34840f2ab9ca74e7378",
+      "verified": true
+    }
+  ]
+}
