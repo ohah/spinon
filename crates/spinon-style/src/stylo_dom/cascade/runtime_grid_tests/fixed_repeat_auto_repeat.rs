@@ -567,21 +567,155 @@ fn fixed_repeat_mixture_is_limited_to_one_auto_repeat_axis() {
 
     let fixed_repeat_on_other_axis = fixture(&format!(
         "{};grid-template-areas:'left' 'right'",
-        fixture_style("repeat(auto-fill,minmax(32px,1fr))", "repeat(2,20px)",)
+        fixture_style("repeat(auto-fill,20px)", "repeat(2,20px)",)
     ));
-    assert!(matches!(
-        compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
-            &fixed_repeat_on_other_axis.view,
-            &[],
-            viewport(),
-            Default::default(),
+    let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+        &fixed_repeat_on_other_axis.view,
+        &[],
+        viewport(),
+        Default::default(),
+    )
+    .expect("one fixed row repeat and one bounded auto column repeat with areas");
+    let grid = snapshot
+        .elements
+        .iter()
+        .find(|element| element.node_id == fixed_repeat_on_other_axis.root)
+        .and_then(|element| element.grid_layout.as_ref())
+        .expect("cross-axis grid layout");
+    assert_eq!(
+        grid.rows,
+        vec![
+            ComputedCssGridTrackSize::LengthPx(20.0),
+            ComputedCssGridTrackSize::LengthPx(20.0),
+        ]
+    );
+    assert!(grid.columns_auto_repeat.is_some());
+    assert_eq!(
+        grid.template_areas
+            .as_ref()
+            .map(|areas| (areas.rows, areas.columns)),
+        Some((2, 1))
+    );
+
+    let fixed_columns_auto_rows = computed_grid(&format!(
+        "{};grid-template-areas:'left left right right'",
+        fixture_style("repeat(2,16px 20px)", "repeat(auto-fit,20px)")
+    ));
+    assert_eq!(
+        fixed_columns_auto_rows.1.columns,
+        [16.0, 20.0, 16.0, 20.0].map(ComputedCssGridTrackSize::LengthPx)
+    );
+    assert!(fixed_columns_auto_rows.1.rows_auto_repeat.is_some());
+    assert_eq!(
+        fixed_columns_auto_rows
+            .1
+            .template_areas
+            .as_ref()
+            .map(|areas| (areas.rows, areas.columns)),
+        Some((1, 4))
+    );
+
+    for (columns, rows, areas) in [
+        ("repeat(2,20px)", "repeat(auto-fill,20px)", None),
+        (
+            "repeat(2,20px) 8px",
+            "repeat(auto-fill,20px)",
+            Some("'a b c'"),
         ),
-        Err(crate::CssCascadeError::UnsupportedComputedGridValue {
-            node,
-            property: "grid-template-columns",
-            ..
-        }) if node == fixed_repeat_on_other_axis.root
-    ));
+        (
+            "repeat(2,20px)",
+            "8px repeat(auto-fill,20px)",
+            Some("'a b'"),
+        ),
+        (
+            "repeat(2,20px)",
+            "repeat(auto-fill,20px 24px)",
+            Some("'a b'"),
+        ),
+        (
+            "repeat(2,20px) repeat(2,24px)",
+            "repeat(auto-fill,20px)",
+            Some("'a b c d'"),
+        ),
+        (
+            "repeat(2,20px)",
+            "repeat(2,20px) repeat(auto-fill,20px)",
+            Some("'a b'"),
+        ),
+        (
+            "repeat(2,20px 24px 28px)",
+            "repeat(auto-fill,20px)",
+            Some("'a b c d e f'"),
+        ),
+    ] {
+        let area_declaration = areas
+            .map(|areas| format!(";grid-template-areas:{areas}"))
+            .unwrap_or_default();
+        let invalid = fixture(&format!(
+            "{}{}",
+            fixture_style(columns, rows),
+            area_declaration
+        ));
+        assert!(
+            compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+                &invalid.view,
+                &[],
+                viewport(),
+                Default::default(),
+            )
+            .is_err(),
+            "unsupported cross-axis combination accepted: columns={columns}, rows={rows}, areas={areas:?}"
+        );
+    }
+
+    let unsupported_fixed_repeat_breadths = [
+        "minmax(20px,40px)",
+        "20%",
+        "1fr",
+        "min-content",
+        "calc(10px + 5%)",
+    ];
+    for (fixed_axis, area, expected_rejection_property) in [
+        ("columns", "'left right'", "grid-template-rows"),
+        ("rows", "'top' 'bottom'", "grid-template-columns"),
+    ] {
+        for breadth in unsupported_fixed_repeat_breadths {
+            let (columns, rows) = if fixed_axis == "columns" {
+                (
+                    format!("repeat(2,{breadth})"),
+                    "repeat(auto-fill,20px)".to_owned(),
+                )
+            } else {
+                (
+                    "repeat(auto-fill,20px)".to_owned(),
+                    format!("repeat(2,{breadth})"),
+                )
+            };
+            let area_declaration = format!(
+                "{};grid-template-areas:{area}",
+                fixture_style(&columns, &rows)
+            );
+            let invalid = fixture(&area_declaration);
+            let error = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+                &invalid.view,
+                &[],
+                viewport(),
+                Default::default(),
+            )
+            .expect_err("unsupported cross-axis fixed-repeat breadth must fail closed");
+            assert!(
+                matches!(
+                    error,
+                    crate::CssCascadeError::UnsupportedComputedGridValue {
+                        node,
+                        property,
+                        ..
+                    } if node == invalid.root && property == expected_rejection_property
+                ),
+                "unsupported fixed {fixed_axis} breadth {breadth} must reject its track-list property: {error:?}"
+            );
+        }
+    }
 }
 
 #[test]
@@ -974,6 +1108,48 @@ fn fixed_repeat_allocation_failures_are_contextual_and_recoverable() {
                 Default::default(),
             )
             .is_ok()
+        );
+    }
+}
+
+#[test]
+fn fixed_repeat_mixed_into_both_auto_repeat_axes_is_rejected_in_both_orientations() {
+    for (columns, rows, areas, expected_property) in [
+        (
+            "repeat(2,20px) repeat(auto-fill,20px)",
+            "repeat(auto-fill,20px)",
+            "'a b'",
+            "grid-template-rows",
+        ),
+        (
+            "repeat(auto-fill,20px)",
+            "repeat(2,20px) repeat(auto-fill,20px)",
+            "'a' 'b'",
+            "grid-template-columns",
+        ),
+    ] {
+        let invalid = fixture(&format!(
+            "{};grid-template-areas:{areas}",
+            fixture_style(columns, rows)
+        ));
+        let error = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+            &invalid.view,
+            &[],
+            viewport(),
+            Default::default(),
+        )
+        .expect_err("fixed repeat mixed into two auto-repeat axes must be unsupported");
+
+        assert!(
+            matches!(
+                error,
+                crate::CssCascadeError::UnsupportedComputedGridValue {
+                    node,
+                    property,
+                    ..
+                } if node == invalid.root && property == expected_property
+            ),
+            "wrong rejection for columns={columns}, rows={rows}, areas={areas}: {error:?}"
         );
     }
 }

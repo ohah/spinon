@@ -29,6 +29,9 @@ struct ComputedGridTracks {
     line_names: Vec<Vec<String>>,
     auto_repeat: Option<ComputedCssGridAutoRepeat>,
     has_fixed_repeat: bool,
+    fixed_repeat_group_count: usize,
+    single_bounded_fixed_repeat: bool,
+    single_bounded_auto_repeat: bool,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -94,6 +97,9 @@ pub(super) fn computed_grid_layout(
         line_names: columns_line_names,
         auto_repeat: columns_auto_repeat,
         has_fixed_repeat: columns_has_fixed_repeat,
+        fixed_repeat_group_count: columns_fixed_repeat_group_count,
+        single_bounded_fixed_repeat: columns_single_bounded_fixed_repeat,
+        single_bounded_auto_repeat: columns_single_bounded_auto_repeat,
     } = computed_grid_tracks(
         computed.clone_grid_template_columns(),
         node,
@@ -108,6 +114,9 @@ pub(super) fn computed_grid_layout(
         line_names: rows_line_names,
         auto_repeat: rows_auto_repeat,
         has_fixed_repeat: rows_has_fixed_repeat,
+        fixed_repeat_group_count: rows_fixed_repeat_group_count,
+        single_bounded_fixed_repeat: rows_single_bounded_fixed_repeat,
+        single_bounded_auto_repeat: rows_single_bounded_auto_repeat,
     } = computed_grid_tracks(
         computed.clone_grid_template_rows(),
         node,
@@ -117,15 +126,31 @@ pub(super) fn computed_grid_layout(
         allow_intrinsic_tracks,
         allow_auto_repeat,
     )?;
-    if (columns_has_fixed_repeat && rows_auto_repeat.is_some())
-        || (rows_has_fixed_repeat && columns_auto_repeat.is_some())
-    {
-        let (property, value) = if columns_has_fixed_repeat {
-            ("grid-template-rows", rows_value)
-        } else {
-            ("grid-template-columns", columns_value)
-        };
-        return Err(unsupported_grid_value(node, property, value));
+    let has_cross_axis_fixed_and_auto_repeat = (columns_has_fixed_repeat
+        && rows_auto_repeat.is_some())
+        || (rows_has_fixed_repeat && columns_auto_repeat.is_some());
+    if has_cross_axis_fixed_and_auto_repeat {
+        let bounded_cross_axis_combination = template_areas.is_some()
+            && ((columns_auto_repeat.is_none()
+                && columns_fixed_repeat_group_count == 1
+                && columns_single_bounded_fixed_repeat
+                && rows_auto_repeat.is_some()
+                && rows_fixed_repeat_group_count == 0
+                && rows_single_bounded_auto_repeat)
+                || (rows_auto_repeat.is_none()
+                    && rows_fixed_repeat_group_count == 1
+                    && rows_single_bounded_fixed_repeat
+                    && columns_auto_repeat.is_some()
+                    && columns_fixed_repeat_group_count == 0
+                    && columns_single_bounded_auto_repeat));
+        if !bounded_cross_axis_combination {
+            let (property, value) = if columns_has_fixed_repeat {
+                ("grid-template-rows", rows_value)
+            } else {
+                ("grid-template-columns", columns_value)
+            };
+            return Err(unsupported_grid_value(node, property, value));
+        }
     }
     if template_areas.is_some()
         && columns_auto_repeat.is_some()
@@ -393,6 +418,9 @@ fn computed_grid_tracks(
                 line_names: Vec::new(),
                 auto_repeat: None,
                 has_fixed_repeat: false,
+                fixed_repeat_group_count: 0,
+                single_bounded_fixed_repeat: false,
+                single_bounded_auto_repeat: false,
             });
         }
         GridTemplateComponent::None
@@ -447,23 +475,56 @@ fn computed_grid_tracks(
             line_names: Vec::new(),
             auto_repeat: None,
             has_fixed_repeat: false,
+            fixed_repeat_group_count: 0,
+            single_bounded_fixed_repeat: false,
+            single_bounded_auto_repeat: false,
         });
     }
 
+    let fixed_repeat_group_count = list
+        .values
+        .iter()
+        .filter(|value| {
+            matches!(
+                value,
+                TrackListValue::TrackRepeat(repeat)
+                    if matches!(repeat.count, RepeatCount::Number(_))
+            )
+        })
+        .count();
+    let single_bounded_fixed_repeat = single_bounded_fixed_repeat(&list, allow_intrinsic_tracks);
     expand_integer_repeats(&list, node, property, serialized, allow_intrinsic_tracks).map(
         |(tracks, line_names)| ComputedGridTracks {
             tracks,
             line_names,
             auto_repeat: None,
-            has_fixed_repeat: list.values.iter().any(|value| {
-                matches!(
-                    value,
-                    TrackListValue::TrackRepeat(repeat)
-                        if matches!(repeat.count, RepeatCount::Number(_))
-                )
-            }),
+            has_fixed_repeat: fixed_repeat_group_count > 0,
+            fixed_repeat_group_count,
+            single_bounded_fixed_repeat,
+            single_bounded_auto_repeat: false,
         },
     )
+}
+
+fn single_bounded_fixed_repeat(
+    list: &style::values::computed::TrackList,
+    allow_intrinsic_tracks: bool,
+) -> bool {
+    if list.values.len() != 1 {
+        return false;
+    }
+    let Some(TrackListValue::TrackRepeat(repeat)) = list.values.first() else {
+        return false;
+    };
+    matches!(repeat.count, RepeatCount::Number(count) if count > 0)
+        && (1..=2).contains(&repeat.track_sizes.len())
+        && repeat.track_sizes.iter().all(|size| {
+            matches!(
+                track_size(size, allow_intrinsic_tracks),
+                Some(ComputedCssGridTrackSize::LengthPx(value))
+                    if value.is_finite() && value >= 0.0
+            )
+        })
 }
 
 fn line_name_groups_metadata_bytes<'a, Groups, Names>(groups: Groups) -> Option<usize>

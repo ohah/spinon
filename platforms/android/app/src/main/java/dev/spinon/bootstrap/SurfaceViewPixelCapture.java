@@ -159,7 +159,7 @@ final class SurfaceViewPixelCapture {
             completion.accept(Result.failure("잘못된 surface 크기, viewport 또는 density", 0));
             return;
         }
-        if (!caseId.matches("[a-z0-9-]{1,80}")
+        if (!caseId.matches("[a-z0-9-]{1,128}")
                 || !runId.matches("[A-Za-z0-9_-]{1,80}")
                 || samples.isEmpty()) {
             completion.accept(Result.failure("case/run ID 또는 표본 목록이 올바르지 않음", 0));

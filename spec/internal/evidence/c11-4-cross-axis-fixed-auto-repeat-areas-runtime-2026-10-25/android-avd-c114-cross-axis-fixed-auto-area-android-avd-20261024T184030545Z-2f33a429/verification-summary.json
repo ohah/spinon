@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "result": "PASS",
+  "target": "android-avd",
+  "sceneCount": 11,
+  "sceneIds": [
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-short",
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-two-track-pattern",
+    "template-area-repeat-cross-axis-fixed-cols-fit-rows-one-row-occupied",
+    "template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area",
+    "template-area-repeat-cross-axis-fixed-cols-fit-rows-middle-collapsed-between-occupied",
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows",
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-one-row",
+    "template-area-repeat-cross-axis-fixed-rows-fill-cols-shorthand-area-short",
+    "template-area-repeat-cross-axis-fixed-rows-fit-cols-two-track-span",
+    "template-area-repeat-cross-axis-fixed-rows-fit-cols-empty-area",
+    "template-area-repeat-cross-axis-fixed-rows-fill-cols-area-adds-one-column"
+  ],
+  "frameChecks": 11,
+  "trackVectorAndCollapseChecks": 22,
+  "finalTraceChecks": 11,
+  "traceChunksPerScene": 3,
+  "drawPresentedCount": 11,
+  "supersededRetriesCount": 0,
+  "pixelCopySampleCount": 35,
+  "pixelCopyExactCount": 35,
+  "overflowEdgeSamples": {
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows": {
+      "axis": "cssY",
+      "before": 76,
+      "hero": 94,
+      "after": 100
+    },
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-one-row": {
+      "axis": "cssY",
+      "before": 44,
+      "hero": 54,
+      "after": 60
+    },
+    "template-area-repeat-cross-axis-fixed-rows-fill-cols-area-adds-one-column": {
+      "axis": "cssX",
+      "before": 44,
+      "hero": 54,
+      "after": 60
+    }
+  },
+  "emptyAutoFitGutterChecks": {
+    "template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area": {
+      "axis": "Rows",
+      "collapsedTracks": 3,
+      "zeroGutters": 4
+    },
+    "template-area-repeat-cross-axis-fixed-rows-fit-cols-empty-area": {
+      "axis": "Columns",
+      "collapsedTracks": 3,
+      "zeroGutters": 4
+    }
+  },
+  "middleCollapsedSharedGutter": {
+    "rowTrackIndex": 1,
+    "precedingGutterPx": 4.0,
+    "collapsedTrackPx": 0.0,
+    "followingGutterPx": 0.0
+  },
+  "sourceDiffSha256AtBuildAndCapture": "a333584407cc48415199d3f24bd2e8bb86d978113c9555346ec1a617ca2bc525",
+  "currentTrackedDiffSha256AfterCapture": "8813bd18fded1925f177e269d93c310845d13815949744b03ca6470ce9ba2151",
+  "trackedPathsModifiedAfterCaptureByMtime": [
+    "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests.rs"
+  ],
+  "apkSha256": "67694e83395886400f21f2d72add35aea91bcd7d4707db96d926000e8e16dcc2",
+  "installedApkMatches": true,
+  "screenshotCount": 11,
+  "runtimeLogCount": 11,
+  "screenshotSha256": {
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-one-row.png": "4f62cfcd888a2ca3abcb4e20d7ca8fcd7dd07a309673faa8ff4f8b9ca2d5ddc7",
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png": "5d95544ae7157f3c1bd9ab0a3fab964aba8b62a717647d7e3589d5db26ee48f4",
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-short.png": "4575f64e55e407f33cb66cba1ac141e92d24fb70d77804af733e6c8183ad15b6",
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-two-track-pattern.png": "1e1fe55f145a5e1c3e0d883e423062c9e2072613ebaee67b4fcc40dc5cbf3e66",
+    "template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png": "e5587d22c5fdd2a36f4e380a1eb59370d2338fa8545129267799405ac9553bc0",
+    "template-area-repeat-cross-axis-fixed-cols-fit-rows-middle-collapsed-between-occupied.png": "9a1cf8c77f05c5382451965c4bde22964fb4f0b899b7da608e56c4fa9b38ff56",
+    "template-area-repeat-cross-axis-fixed-cols-fit-rows-one-row-occupied.png": "4e113f772c14a7a8a1c30764bd1874bce71d75fc94cce95df16d84b21cfb427d",
+    "template-area-repeat-cross-axis-fixed-rows-fill-cols-area-adds-one-column.png": "62a66abdc3367a409e993ca183dfe94c3ec92b8cab0a40557579293142748035",
+    "template-area-repeat-cross-axis-fixed-rows-fill-cols-shorthand-area-short.png": "45eec8eab1e070b06b88e3d5e9d54ad4e3f2a330a3c98b541cda6d5e8de5e17a",
+    "template-area-repeat-cross-axis-fixed-rows-fit-cols-empty-area.png": "b929a1d10d8a575ec74e2f095c5dfc879801ccca0d6aaad6db02a1902de050ad",
+    "template-area-repeat-cross-axis-fixed-rows-fit-cols-two-track-span.png": "66f552e6bf67862b757e4654470c04fa255cdde1ec3984e722c5ebe39b4b744c"
+  },
+  "sourceRevision": {
+    "commit": "96efeebd9e816110ac981b6c24eecd3e88b620a8",
+    "tree": "0692abb4f20d50f7f96f3be1f9152fa50172cf8e",
+    "trackedDiffSha256": "a333584407cc48415199d3f24bd2e8bb86d978113c9555346ec1a617ca2bc525",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/include/spinon_ffi.h",
+      "crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_4.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/template_area_auto_repeat_scenes.json",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_template_area_auto_repeat.rs",
+      "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/incremental/grid/auto_repeat.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/fixed_repeat_auto_repeat.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/SurfaceViewPixelCapture.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "spec/0001-conformance.md",
+      "spec/internal/0059-c11-grid-layout.md",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs"
+    ]
+  }
+}

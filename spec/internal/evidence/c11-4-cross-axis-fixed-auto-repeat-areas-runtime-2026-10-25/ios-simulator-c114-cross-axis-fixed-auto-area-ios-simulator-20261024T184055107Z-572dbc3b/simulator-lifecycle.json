@@ -1,0 +1,14 @@
+{
+  "createdByThisRun": {
+    "udid": "B2F23503-85DF-42F8-A3A4-5600DC8D6983",
+    "initialName": "C11.4 cross-axis owned 2026-10-25T0340",
+    "finalCaptureName": "iPhone 17 Pro",
+    "runtime": "iOS 26.2",
+    "cleanup": "shutdown and deleted after capture"
+  },
+  "preExistingBootedDevicesLeftUntouched": [
+    "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+    "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D"
+  ],
+  "simulatorAppAndBrowserProcesses": "not launched or terminated by this run"
+}

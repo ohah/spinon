@@ -125,6 +125,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     };
     private static final String C1133_GRID_TEMPLATE_AREAS_REJECT_SCENE_ID =
             "area-track-count-mismatch";
+    private static final String C114_CROSS_AXIS_TEMPLATE_AREA_SCENE_PREFIX =
+            "template-area-repeat-cross-axis-";
     private static final String[] C114_GRID_TRACK_SIZING_SCENE_IDS = {
             "cyclic-percent-column", "cyclic-percent-row", "definite-percent-column",
             "cyclic-minmax-column", "cyclic-minmax-row", "definite-minmax-column",
@@ -616,6 +618,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return "revision-reuse".equals(sceneId);
     }
     static boolean isC114GridTrackSizingScene(String sceneId) {
+        if (sceneId != null && sceneId.startsWith(C114_CROSS_AXIS_TEMPLATE_AREA_SCENE_PREFIX)) {
+            return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST
+                    && c114CrossAxisTemplateAreaCanonicalSceneId(sceneId) != null;
+        }
         if (c114IsFixedAutoAreaScene(sceneId)) return true;
         if (c114IsFixedRepeatAutoRepeatScene(sceneId)) return true;
         for (String candidate : C114_GRID_TRACK_SIZING_SCENE_IDS) {
@@ -3495,7 +3501,55 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
     }
 
+    private static String c114CrossAxisTemplateAreaCanonicalSceneId(String sceneId) {
+        if (sceneId == null
+                || !sceneId.startsWith(C114_CROSS_AXIS_TEMPLATE_AREA_SCENE_PREFIX)) {
+            return null;
+        }
+        String canonical = sceneId.substring(
+                C114_CROSS_AXIS_TEMPLATE_AREA_SCENE_PREFIX.length());
+        switch (canonical) {
+            case "fixed-cols-fill-rows-area-short":
+            case "fixed-cols-fill-rows-two-track-pattern":
+            case "fixed-cols-fit-rows-one-row-occupied":
+            case "fixed-cols-fit-rows-empty-area":
+            case "fixed-cols-fit-rows-middle-collapsed-between-occupied":
+            case "fixed-cols-fill-rows-area-adds-two-rows":
+            case "fixed-cols-fill-rows-area-adds-one-row":
+            case "fixed-rows-fill-cols-shorthand-area-short":
+            case "fixed-rows-fit-cols-two-track-span":
+            case "fixed-rows-fit-cols-empty-area":
+            case "fixed-rows-fill-cols-area-adds-one-column":
+                return canonical;
+            default:
+                return null;
+        }
+    }
+
     private static String c114TemplateAreaRepeatRootFrame(String sceneId) {
+        String crossAxisScene = c114CrossAxisTemplateAreaCanonicalSceneId(sceneId);
+        if (crossAxisScene != null) {
+            switch (crossAxisScene) {
+                case "fixed-cols-fill-rows-area-short":
+                case "fixed-cols-fit-rows-one-row-occupied":
+                case "fixed-cols-fit-rows-empty-area":
+                case "fixed-cols-fit-rows-middle-collapsed-between-occupied":
+                case "fixed-cols-fill-rows-area-adds-two-rows":
+                    return "width=44,height=76";
+                case "fixed-cols-fill-rows-two-track-pattern":
+                    return "width=84,height=44";
+                case "fixed-cols-fill-rows-area-adds-one-row":
+                    return "width=44,height=44";
+                case "fixed-rows-fill-cols-shorthand-area-short":
+                case "fixed-rows-fit-cols-two-track-span":
+                case "fixed-rows-fit-cols-empty-area":
+                    return "width=76,height=44";
+                case "fixed-rows-fill-cols-area-adds-one-column":
+                    return "width=44,height=44";
+                default:
+                    return null;
+            }
+        }
         switch (sceneId) {
             case "template-area-repeat-two-axis-area-short":
             case "template-area-repeat-two-axis-fill-fit":
@@ -3547,6 +3601,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String[] c114TemplateAreaRepeatItemNames(String sceneId) {
+        String crossAxisScene = c114CrossAxisTemplateAreaCanonicalSceneId(sceneId);
+        if (crossAxisScene != null) {
+            switch (crossAxisScene) {
+                case "fixed-cols-fit-rows-middle-collapsed-between-occupied":
+                    return new String[] {"first", "last"};
+                case "fixed-cols-fit-rows-empty-area":
+                case "fixed-rows-fit-cols-empty-area":
+                    return new String[0];
+                default:
+                    return new String[] {"hero"};
+            }
+        }
         switch (sceneId) {
             case "template-area-repeat-two-axis-area-short":
             case "template-area-repeat-two-axis-area-added-columns":
@@ -3589,6 +3655,34 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[][] c114TemplateAreaRepeatItemRects(String sceneId) {
+        String crossAxisScene = c114CrossAxisTemplateAreaCanonicalSceneId(sceneId);
+        if (crossAxisScene != null) {
+            switch (crossAxisScene) {
+                case "fixed-cols-fill-rows-area-short":
+                    return new int[][] {{0, 0, 20, 44}};
+                case "fixed-cols-fill-rows-two-track-pattern":
+                    return new int[][] {{0, 0, 16, 44}};
+                case "fixed-cols-fit-rows-one-row-occupied":
+                    return new int[][] {{0, 0, 20, 20}};
+                case "fixed-cols-fit-rows-empty-area":
+                case "fixed-rows-fit-cols-empty-area":
+                    return new int[0][0];
+                case "fixed-cols-fit-rows-middle-collapsed-between-occupied":
+                    return new int[][] {{0, 0, 20, 20}, {0, 24, 20, 20}};
+                case "fixed-cols-fill-rows-area-adds-two-rows":
+                    return new int[][] {{0, 88, 44, 12}};
+                case "fixed-cols-fill-rows-area-adds-one-row":
+                    return new int[][] {{0, 48, 44, 12}};
+                case "fixed-rows-fill-cols-shorthand-area-short":
+                    return new int[][] {{0, 0, 44, 20}};
+                case "fixed-rows-fit-cols-two-track-span":
+                    return new int[][] {{0, 0, 44, 44}};
+                case "fixed-rows-fill-cols-area-adds-one-column":
+                    return new int[][] {{48, 24, 12, 20}};
+                default:
+                    return null;
+            }
+        }
         switch (sceneId) {
             case "template-area-repeat-two-axis-area-short":
                 return new int[][] {{24, 0, 8, 8}};
@@ -3670,7 +3764,216 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return result.append(']').toString();
     }
 
+    private static int[] c114CrossAxisTemplateAreaRepeatTrackSizes(
+            String sceneId, boolean columns
+    ) {
+        String canonical = c114CrossAxisTemplateAreaCanonicalSceneId(sceneId);
+        if (canonical == null) return null;
+        switch (canonical) {
+            case "fixed-cols-fill-rows-area-short":
+                return columns ? new int[] {20, 20} : new int[] {20, 20, 20};
+            case "fixed-cols-fill-rows-two-track-pattern":
+                return columns ? new int[] {16, 20, 16, 20} : new int[] {20, 20};
+            case "fixed-cols-fit-rows-one-row-occupied":
+                return columns ? new int[] {20, 20} : new int[] {20, 0, 0};
+            case "fixed-cols-fit-rows-empty-area":
+                return columns ? new int[] {20, 20} : new int[] {0, 0, 0};
+            case "fixed-cols-fit-rows-middle-collapsed-between-occupied":
+                return columns ? new int[] {20, 20} : new int[] {20, 0, 20};
+            case "fixed-cols-fill-rows-area-adds-two-rows":
+                return columns ? new int[] {20, 20} : new int[] {20, 20, 20, 12, 12};
+            case "fixed-cols-fill-rows-area-adds-one-row":
+                return columns ? new int[] {20, 20} : new int[] {20, 20, 12};
+            case "fixed-rows-fill-cols-shorthand-area-short":
+                return columns ? new int[] {20, 20, 20} : new int[] {20, 20};
+            case "fixed-rows-fit-cols-two-track-span":
+                return columns ? new int[] {20, 20, 0} : new int[] {20, 20};
+            case "fixed-rows-fit-cols-empty-area":
+                return columns ? new int[] {0, 0, 0} : new int[] {20, 20};
+            case "fixed-rows-fill-cols-area-adds-one-column":
+                return columns ? new int[] {20, 20, 12} : new int[] {20, 20};
+            default:
+                return null;
+        }
+    }
+
+    private static boolean c114CrossAxisTemplateAreaTrackAxisMatches(
+            org.json.JSONObject pass, String expectedAxis, int[] expectedSizes
+    ) throws org.json.JSONException {
+        if (pass == null || !expectedAxis.equals(pass.optString("axis"))) return false;
+        org.json.JSONArray stages = pass.optJSONArray("stages");
+        if (stages == null || stages.length() == 0) return false;
+        org.json.JSONObject finalStage = stages.optJSONObject(stages.length() - 1);
+        org.json.JSONArray tracks = finalStage == null ? null : finalStage.optJSONArray("tracks");
+        if (tracks == null) return false;
+        int expectedIndex = 0;
+        for (int index = 0; index < tracks.length(); index++) {
+            org.json.JSONObject track = tracks.optJSONObject(index);
+            if (track == null) return false;
+            if (track.optBoolean("gutter", false)) continue;
+            if (expectedIndex >= expectedSizes.length) return false;
+            double actualSize = track.optDouble("baseSize", Double.NaN);
+            boolean expectedCollapsed = expectedSizes[expectedIndex] == 0;
+            if (!Double.isFinite(actualSize)
+                    || Math.abs(actualSize - expectedSizes[expectedIndex]) > 0.015625
+                    || track.optBoolean("collapsed", false) != expectedCollapsed) return false;
+            expectedIndex++;
+        }
+        return expectedIndex == expectedSizes.length;
+    }
+
+    private static boolean c114CrossAxisTemplateAreaCollapsedTrackAdjacentGuttersAreZero(
+            org.json.JSONObject pass, int[] expectedSizes
+    ) {
+        if (pass == null || expectedSizes == null || expectedSizes.length == 0) return false;
+        org.json.JSONArray stages = pass.optJSONArray("stages");
+        if (stages == null || stages.length() == 0) return false;
+        org.json.JSONObject finalStage = stages.optJSONObject(stages.length() - 1);
+        org.json.JSONArray tracks = finalStage == null ? null : finalStage.optJSONArray("tracks");
+        if (tracks == null || tracks.length() != expectedSizes.length * 2 + 1) return false;
+
+        int expectedCollapsedTrackCount = 0;
+        for (int expectedSize : expectedSizes) {
+            if (expectedSize == 0) expectedCollapsedTrackCount++;
+        }
+        int collapsedTrackCount = 0;
+        int expectedAdjacentGutterCount = 0;
+        int checkedAdjacentGutterCount = 0;
+        for (int index = 0; index < tracks.length(); index++) {
+            org.json.JSONObject track = tracks.optJSONObject(index);
+            if (track == null) return false;
+            boolean gutter = index % 2 == 0;
+            if (track.optBoolean("gutter", false) != gutter) return false;
+            if (!gutter) {
+                int trackIndex = index / 2;
+                boolean expectedCollapsed = expectedSizes[trackIndex] == 0;
+                if (track.optBoolean("collapsed", false) != expectedCollapsed) return false;
+                if (expectedCollapsed) {
+                    double baseSize = track.optDouble("baseSize", Double.NaN);
+                    if (!Double.isFinite(baseSize) || Math.abs(baseSize) > 0.015625) {
+                        return false;
+                    }
+                    collapsedTrackCount++;
+                }
+                continue;
+            }
+
+            int boundaryIndex = index / 2;
+            boolean adjacentToCollapsedTrack = boundaryIndex > 0
+                    && expectedSizes[boundaryIndex - 1] == 0;
+            adjacentToCollapsedTrack |= boundaryIndex < expectedSizes.length
+                    && expectedSizes[boundaryIndex] == 0;
+            if (adjacentToCollapsedTrack) {
+                expectedAdjacentGutterCount++;
+                double baseSize = track.optDouble("baseSize", Double.NaN);
+                if (!Double.isFinite(baseSize) || Math.abs(baseSize) > 0.015625) return false;
+                checkedAdjacentGutterCount++;
+            }
+        }
+        return expectedCollapsedTrackCount > 0
+                && collapsedTrackCount == expectedCollapsedTrackCount
+                && checkedAdjacentGutterCount == expectedAdjacentGutterCount;
+    }
+
+    private static boolean c114CrossAxisTemplateAreaSharedCollapsedTrackGutterMatches(
+            org.json.JSONObject pass, int[] expectedSizes
+    ) {
+        if (pass == null || !"Rows".equals(pass.optString("axis"))
+                || expectedSizes == null || expectedSizes.length != 3
+                || expectedSizes[0] != 20 || expectedSizes[1] != 0 || expectedSizes[2] != 20) {
+            return false;
+        }
+        org.json.JSONArray stages = pass.optJSONArray("stages");
+        if (stages == null || stages.length() == 0) return false;
+        org.json.JSONObject finalStage = stages.optJSONObject(stages.length() - 1);
+        org.json.JSONArray tracks = finalStage == null ? null : finalStage.optJSONArray("tracks");
+        if (tracks == null || tracks.length() != 7) return false;
+
+        // [거터, 0번 행, 앞 거터, 접힌 1번 행, 뒤 거터, 2번 행, 거터]
+        org.json.JSONObject precedingGutter = tracks.optJSONObject(2);
+        org.json.JSONObject collapsedTrack = tracks.optJSONObject(3);
+        org.json.JSONObject followingGutter = tracks.optJSONObject(4);
+        if (precedingGutter == null || collapsedTrack == null || followingGutter == null
+                || !precedingGutter.optBoolean("gutter", false)
+                || !collapsedTrack.has("baseSize")
+                || collapsedTrack.optBoolean("gutter", true)
+                || !collapsedTrack.optBoolean("collapsed", false)
+                || !followingGutter.optBoolean("gutter", false)) {
+            return false;
+        }
+        double precedingSize = precedingGutter.optDouble("baseSize", Double.NaN);
+        double collapsedSize = collapsedTrack.optDouble("baseSize", Double.NaN);
+        double followingSize = followingGutter.optDouble("baseSize", Double.NaN);
+        return Double.isFinite(precedingSize) && Math.abs(precedingSize - 4.0) <= 1.0 / 64.0
+                && Double.isFinite(collapsedSize) && Math.abs(collapsedSize) <= 1.0 / 64.0
+                && Double.isFinite(followingSize) && Math.abs(followingSize) <= 1.0 / 64.0;
+    }
+
+    private static boolean c114CrossAxisTemplateAreaTraceMatches(String sceneId, String report) {
+        int[] expectedColumns = c114CrossAxisTemplateAreaRepeatTrackSizes(sceneId, true);
+        int[] expectedRows = c114CrossAxisTemplateAreaRepeatTrackSizes(sceneId, false);
+        if (expectedColumns == null || expectedRows == null) return true;
+        int diagnosticsMarker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (diagnosticsMarker < 0) return false;
+        String diagnosticsJson = report.substring(
+                diagnosticsMarker + "grid_track_sizing_diagnostics=".length());
+        try {
+            Object value = new org.json.JSONTokener(diagnosticsJson).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONObject diagnostics = (org.json.JSONObject) value;
+            org.json.JSONArray traces = diagnostics.optJSONArray("trackSizingTraces");
+            if (traces == null || traces.length() != 1) return false;
+            org.json.JSONObject trace = traces.optJSONObject(0);
+            org.json.JSONArray passes = trace == null ? null : trace.optJSONArray("passes");
+            if (trace == null || trace.optInt("grid", -1) != 1
+                    || passes == null || passes.length() != 2) return false;
+            boolean trackAxesMatch = c114CrossAxisTemplateAreaTrackAxisMatches(
+                            passes.optJSONObject(0), "Columns", expectedColumns)
+                    && c114CrossAxisTemplateAreaTrackAxisMatches(
+                            passes.optJSONObject(1), "Rows", expectedRows);
+            if (!trackAxesMatch) return false;
+            String canonical = c114CrossAxisTemplateAreaCanonicalSceneId(sceneId);
+            if ("fixed-cols-fit-rows-empty-area".equals(canonical)) {
+                return c114CrossAxisTemplateAreaCollapsedTrackAdjacentGuttersAreZero(
+                        passes.optJSONObject(1), expectedRows);
+            }
+            if ("fixed-cols-fit-rows-middle-collapsed-between-occupied".equals(canonical)) {
+                return c114CrossAxisTemplateAreaSharedCollapsedTrackGutterMatches(
+                        passes.optJSONObject(1), expectedRows);
+            }
+            if ("fixed-rows-fit-cols-empty-area".equals(canonical)) {
+                return c114CrossAxisTemplateAreaCollapsedTrackAdjacentGuttersAreZero(
+                        passes.optJSONObject(0), expectedColumns);
+            }
+            return true;
+        } catch (org.json.JSONException | ClassCastException error) {
+            return false;
+        }
+    }
+
     private static int[] c114TemplateAreaRepeatRootSize(String sceneId) {
+        String crossAxisScene = c114CrossAxisTemplateAreaCanonicalSceneId(sceneId);
+        if (crossAxisScene != null) {
+            switch (crossAxisScene) {
+                case "fixed-cols-fill-rows-area-short":
+                case "fixed-cols-fit-rows-one-row-occupied":
+                case "fixed-cols-fit-rows-empty-area":
+                case "fixed-cols-fit-rows-middle-collapsed-between-occupied":
+                case "fixed-cols-fill-rows-area-adds-two-rows":
+                    return new int[] {44, 76};
+                case "fixed-cols-fill-rows-two-track-pattern":
+                    return new int[] {84, 44};
+                case "fixed-cols-fill-rows-area-adds-one-row":
+                case "fixed-rows-fill-cols-area-adds-one-column":
+                    return new int[] {44, 44};
+                case "fixed-rows-fill-cols-shorthand-area-short":
+                case "fixed-rows-fit-cols-two-track-span":
+                case "fixed-rows-fit-cols-empty-area":
+                    return new int[] {76, 44};
+                default:
+                    return null;
+            }
+        }
         if (c114TemplateAreaRepeatRootFrame(sceneId) == null) return null;
         switch (sceneId) {
             case "template-area-repeat-two-axis-area-short":
@@ -3720,13 +4023,84 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         int[] root = c114TemplateAreaRepeatRootSize(sceneId);
         int[][] items = c114TemplateAreaRepeatItemRects(sceneId);
         String[] names = c114TemplateAreaRepeatItemNames(sceneId);
+        String crossAxisScene = c114CrossAxisTemplateAreaCanonicalSceneId(sceneId);
+        boolean crossAxisOverflow =
+                "fixed-cols-fill-rows-area-adds-two-rows".equals(crossAxisScene)
+                || "fixed-cols-fill-rows-area-adds-one-row".equals(crossAxisScene)
+                || "fixed-rows-fill-cols-area-adds-one-column".equals(crossAxisScene);
         boolean overflowSamples = sceneId.endsWith("-area-added-both")
                 || sceneId.endsWith("-fit-fit-area-span")
                 || sceneId.endsWith("-fit-fill-area-item")
-                || sceneId.endsWith("-fill-fit-area-item");
+                || sceneId.endsWith("-fill-fit-area-item")
+                || crossAxisOverflow;
         if (root == null || items == null || names == null || items.length != names.length
                 || samples.size() != (overflowSamples ? 4 : items.length + 2)) return false;
         String rootId = "c114-" + sceneId + "-grid";
+        if (crossAxisScene != null) {
+            boolean rowAxis = crossAxisScene.startsWith("fixed-cols-");
+            List<String> ids = new ArrayList<>();
+            List<String> nodes = new ArrayList<>();
+            List<int[]> points = new ArrayList<>();
+            ids.add(sceneId + "-root-interior");
+            nodes.add(rootId);
+            points.add(new int[] {root[0] - 2, root[1] - 2});
+            if ("fixed-cols-fill-rows-area-adds-two-rows".equals(crossAxisScene)) {
+                ids.add(sceneId + "-before-overflow-item");
+                nodes.add(rootId);
+                points.add(new int[] {22, 76});
+                ids.add(sceneId + "-hero-overflow-outside-root");
+                nodes.add("c114-" + sceneId + "-hero");
+                points.add(new int[] {22, 94});
+                ids.add(sceneId + "-after-overflow-item");
+                nodes.add(rootId);
+                points.add(new int[] {22, 100});
+            } else if ("fixed-cols-fill-rows-area-adds-one-row".equals(crossAxisScene)) {
+                ids.add(sceneId + "-before-overflow-item");
+                nodes.add(rootId);
+                points.add(new int[] {22, 44});
+                ids.add(sceneId + "-hero-overflow-outside-root");
+                nodes.add("c114-" + sceneId + "-hero");
+                points.add(new int[] {22, 54});
+                ids.add(sceneId + "-after-overflow-item");
+                nodes.add(rootId);
+                points.add(new int[] {22, 60});
+            } else if ("fixed-rows-fill-cols-area-adds-one-column".equals(crossAxisScene)) {
+                ids.add(sceneId + "-before-overflow-item");
+                nodes.add(rootId);
+                points.add(new int[] {44, 34});
+                ids.add(sceneId + "-hero-overflow-outside-root");
+                nodes.add("c114-" + sceneId + "-hero");
+                points.add(new int[] {54, 34});
+                ids.add(sceneId + "-after-overflow-item");
+                nodes.add(rootId);
+                points.add(new int[] {60, 34});
+            } else {
+                int furthestX = root[0];
+                int furthestY = root[1];
+                for (int index = 0; index < items.length; index++) {
+                    int[] item = items[index];
+                    ids.add(sceneId + "-" + names[index] + "-interior");
+                    nodes.add("c114-" + sceneId + "-" + names[index]);
+                    points.add(new int[] {item[0] + item[2] / 2, item[1] + item[3] / 2});
+                    furthestX = Math.max(furthestX, item[0] + item[2]);
+                    furthestY = Math.max(furthestY, item[1] + item[3]);
+                }
+                ids.add(sceneId + "-after-root");
+                nodes.add(rootId);
+                points.add(rowAxis ? new int[] {10, furthestY} : new int[] {furthestX, 10});
+            }
+            boolean[] found = new boolean[ids.size()];
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                int index = ids.indexOf(sample.id);
+                if (index < 0 || found[index]
+                        || !nodes.get(index).equals(sample.targetNodeId)
+                        || sample.xCssPx != points.get(index)[0]
+                        || sample.yCssPx != points.get(index)[1]) return false;
+                found[index] = true;
+            }
+            for (boolean sampleFound : found) if (!sampleFound) return false;
+            return true;
+        }
         if (sceneId.startsWith("template-area-repeat-two-axis-")) {
             List<String> ids = new ArrayList<>();
             List<String> nodes = new ArrayList<>();
@@ -8840,6 +9214,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             boolean fixedAutoAreaTraceMatches = !c114IsFixedAutoAreaScene(
                     c114GridTrackSizingSceneId) || c114FixedAutoAreaTraceMatches(
                             c114GridTrackSizingSceneId, result);
+            boolean crossAxisTemplateAreaTraceMatches =
+                    c114CrossAxisTemplateAreaTraceMatches(c114GridTrackSizingSceneId, result);
             boolean c114GridTrackSizingTraceAvailable =
                     logC114GridTrackSizingTraceChunks(c114GridTrackSizingRunId, result);
             boolean c114MultiSpanFramesMatch = c114ExpectedMultiSpanFramesMatch(
@@ -8856,6 +9232,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || (!expectedItemFrame.isEmpty() && !result.contains(expectedItemFrame))
                     || !c114ExpectedNodeFramesMatch(c114GridTrackSizingSceneId, result)
                     || !fixedAutoAreaTraceMatches
+                    || !crossAxisTemplateAreaTraceMatches
                     || !c114CrossAxisSpanGroupFramesMatch
                     || !c114MultiSpanFramesMatch
                     || !c114TextIntrinsicInputsMatch
@@ -8866,6 +9243,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + " expected_item_frame=" + expectedItemFrame
                         + " expected_node_frames=" + expectedNodeFrames
                         + " fixed_auto_area_trace_matches=" + fixedAutoAreaTraceMatches
+                        + " cross_axis_template_area_trace_matches="
+                        + crossAxisTemplateAreaTraceMatches
                         + " cross_axis_span_group_frames_match="
                         + c114CrossAxisSpanGroupFramesMatch
                         + " multi_span_frames_match=" + c114MultiSpanFramesMatch
@@ -10918,7 +11297,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 Object nodeIdValue = record.get("nodeId");
                 if (!(nodeIdValue instanceof String)) return List.of();
                 targetNodeId = (String) nodeIdValue;
-                if (!targetNodeId.matches("[a-z0-9-]{1,80}")) return List.of();
+                if (!targetNodeId.matches("[a-z0-9-]{1,128}")) return List.of();
             }
             Object xValue = record.get("xCssPx");
             Object yValue = record.get("yCssPx");
@@ -10929,7 +11308,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             Number yNumber = (Number) yValue;
             double x = xNumber.doubleValue();
             double y = yNumber.doubleValue();
-            if (!id.matches("[a-z0-9-]{1,80}") || !Double.isFinite(x) || !Double.isFinite(y)
+            if (!id.matches("[a-z0-9-]{1,128}") || !Double.isFinite(x) || !Double.isFinite(y)
                     || x != Math.rint(x) || y != Math.rint(y)
                     || x < 0 || x >= 320 || y < 0 || y >= 240
                     || !ids.add(id) || !coordinates.add((int) x + "," + (int) y)) {
@@ -11187,6 +11566,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (percentageNeighborPixel != null) return percentageNeighborPixel;
         int[] percentageMaximumPixel = c114PercentageMaximumPixelRgb(sampleId);
         if (percentageMaximumPixel != null) return percentageMaximumPixel;
+        if (sampleId.startsWith("template-area-repeat-cross-axis-")) {
+            if (sampleId.endsWith("-root-interior")) return new int[] {229, 231, 235};
+            if (sampleId.endsWith("-before-overflow-item")
+                    || sampleId.endsWith("-after-overflow-item")) {
+                return new int[] {0, 0, 0};
+            }
+        }
         if (sampleId.startsWith("template-area-repeat-")) {
             if (sampleId.equals(
                     "template-area-repeat-two-axis-fit-fit-area-span-root-interior")) {
@@ -11199,8 +11585,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             if (sampleId.endsWith("-root-interior")) return new int[] {16, 24, 32};
             if (sampleId.endsWith("-suffix-interior")) return new int[] {48, 164, 108};
             if (sampleId.endsWith("-tail-interior")) return new int[] {114, 87, 255};
+            if (sampleId.endsWith("-last-interior")) return new int[] {37, 99, 235};
             if (sampleId.endsWith("-prefix-interior")
                     || sampleId.endsWith("-hero-interior")
+                    || sampleId.endsWith("-first-interior")
                     || sampleId.endsWith("-alias-probe-interior")
                     || sampleId.endsWith("-hero-overflow-outside-root")) {
                 return new int[] {229, 72, 77};
