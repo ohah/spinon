@@ -29,4 +29,4 @@
 
 - 구현 소스: `crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs`, `crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs`, `crates/spinon-layout/src/grid.rs`, `crates/spinon-layout/src/css_math.rs`, `vendor/taffy/src/compute/grid/explicit_grid.rs`, `crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs`.
 - 기존 focused test 기록: layout 51/51, style 19/19, style-to-layout 15/15, runtime diagnostic regression 1/1. [검증된 Android/iOS simulator 실행과 입력 hash](./c11-4-auto-repeat-calc-neighbors-projection-pass03-2026-10-24/README.md) 및 [FFI archive feature 경계](./c11-4-auto-repeat-calc-neighbors-artifact-2026-10-24/README.md)를 현재 source/status와 대조했다.
-- 20개 관점에서 병합을 막는 구현 결함은 찾지 못했다. 이것은 새 테스트 실행이나 PR diff 검토 30개를 대신하지 않는다. C11.4 상위 완료와 공식 집계 승격은 남아 있는 CSS 지원·WPT·최종 앱 artifact 등 범위가 해결되기 전까지 하지 않는다.
+- 20개 관점에서 병합을 막는 구현 결함은 찾지 못했다. 이 검토 시점에는 새 테스트 실행이나 PR diff 검토 30개를 대신하지 않았으며, 이후 [PR #583 diff 30개 검토](./c11-4-auto-repeat-calc-neighbors-pr-diff-review-30-2026-10-24.md)를 별도로 기록했다. C11.4 상위 완료와 공식 집계 승격은 남아 있는 CSS 지원·WPT·최종 앱 artifact 등 범위가 해결되기 전까지 하지 않는다.

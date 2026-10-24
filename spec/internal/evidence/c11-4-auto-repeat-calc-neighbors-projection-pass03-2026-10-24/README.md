@@ -31,6 +31,6 @@ mise exec -- bun run build:ios-sim
 
 ## 소스와 남은 artifact 경계
 
-두 `simulator.json`은 commit `81ad15c7f502c82494bc0f6fdad38ec72307d51d`와 tracked diff SHA-256 `0f6c3897613af55d199643fa855e573a3b077528dfa039c9b4b79e417c92726a`를 기록한다. untracked Rust fixture/test 입력의 해시는 [`source-files.sha256`](./source-files.sha256)에 별도 고정했다. 앱 SHA-256은 Android `c13ffe4596595e450cb7b292dced4dccbc26a994664620e292e3397d3a63d7c5`, iOS `5598f15a6f16005dddfb0202fd4ba9f9c1ab03df60b7a21e7c3d736aa17acedb`다.
+두 `simulator.json`은 capture 당시 base commit `81ad15c7f502c82494bc0f6fdad38ec72307d51d`와 tracked diff SHA-256 `0f6c3897613af55d199643fa855e573a3b077528dfa039c9b4b79e417c92726a`를 기록한다. 당시 미추적 Rust fixture/test 입력의 해시는 [`source-files.sha256`](./source-files.sha256)에 별도 고정했다. 이 소스는 이후 commit `c60227f5`에 포함됐다. 앱 SHA-256은 Android `c13ffe4596595e450cb7b292dced4dccbc26a994664620e292e3397d3a63d7c5`, iOS `5598f15a6f16005dddfb0202fd4ba9f9c1ab03df60b7a21e7c3d736aa17acedb`다.
 
-기본 product FFI archive에서 fixture symbol/string/payload가 빠지는지는 아직 확인하지 않았다. 이 작업 트리는 미커밋이며 PR/merge가 없다. C11.4 상위 체크는 미완료이고 공식 집계 `72/213`은 유지한다.
+후속 [archive 경계 검사](../c11-4-auto-repeat-calc-neighbors-artifact-2026-10-24/README.md)는 macOS ARM64 product FFI archive에서 scene ID 0/14·fixture symbol 부재, fixture-test positive control에서 14/14·symbol 존재를 확인했다. APK/IPA 전체 fixture exclusion 증거로 확대하지 않는다. 이 simulator capture가 실행될 때는 미커밋이고 PR/merge가 없었으며, 이후 소스는 [PR #583](https://github.com/ohah/spinon/pull/583)에 제출했다. C11.4 상위 체크는 미완료이고 공식 집계 `72/213`은 유지한다.
