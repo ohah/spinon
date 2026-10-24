@@ -38,3 +38,7 @@
 ## 최종 판정
 
 이 30개 관점에서 PR 변경분의 차단 결함을 찾지 못했다. GitHub PR #600은 `CLEAN` merge state이나 check rollup과 required status checks가 없으므로 이는 CI 성공 근거가 아니다. Merge 전 실제 `gh pr checks`/merge 상태를 다시 확인한다. AVD는 software-rendered simulator이며 iOS Metal 표본은 compositor 제출 전이다.
+
+## 최종 head 문서 delta 확인
+
+검토 기록을 추가한 후속 PR commit `39a796c689645319eeb35ca5d11a70de6901c054`는 review 파일과 plan/status/contract/evidence 사이의 링크·상태 문구만 바꾼다. 해당 문구를 reread해 72/213, 미완료 C11.3.3/C11.4, 빈 GitHub check rollup과 merge 대기 상태가 실제 PR/GitHub 조회와 일치하는지 확인했다. 이 후속 delta에는 source, fixture, app adapter 또는 runtime artifact 변경이 없다.
