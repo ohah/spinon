@@ -4,7 +4,7 @@
     "commit": "411bda24e2525b55d48a6c14ec484aec6ef8e97a",
     "tree": "b42e6e11d099b6fc590e1733275e12ec36a55bbb"
   },
-  "sourceDiffSha256": "9c3ad9a3ce4aa62f6567e8abbb0e02494f79b5ea3cf27fefab0d77c0c54943e5",
+  "sourceDiffSha256": "592dc1708ae26f431c3bb138eb67c29e31d00af23ffba5a8ef913d37a53c294b",
   "sourceDiffPaths": [
     "crates/spinon-ffi/src/runtime_gpu/fixtures.rs",
     "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
@@ -26,7 +26,7 @@
     "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
     "tools/css-reference/fixture-module-boundary.test.mjs"
   ],
-  "scopeBoundary": "sourceDiffSha256 hashes git diff --binary HEAD for implementation, fixture, capture, plan, and official contract/status paths; evidence inputs and screenshots have file-level hashes below.",
+  "scopeBoundary": "sourceDiffSha256 hashes git diff --binary from the plan merge base for implementation, fixture, capture, plan, and official contract/status paths; evidence inputs and screenshots have file-level hashes below.",
   "files": [
     {
       "path": "crates/spinon-ffi/src/runtime_gpu/fixtures.rs",
@@ -120,18 +120,18 @@
     },
     {
       "path": "plan/c11-4-auto-repeat-negative-percentage-neighbors.md",
-      "bytes": 9013,
-      "sha256": "877dad9aa1b5e992438bf5b7bb6aac371d0c129759a4f6f84ba077f505d5ab2d"
+      "bytes": 9018,
+      "sha256": "6db99fe43b20a8f386db289b217cb5c5a7e747788c35f88fcd2538af35f68192"
     },
     {
       "path": "spec/internal/0059-c11-grid-layout.md",
-      "bytes": 120623,
-      "sha256": "0f69e25d0282bb3cd0903918bfbd17690fb51a0f1b28d9ea4a3a4a9aa224e770"
+      "bytes": 120755,
+      "sha256": "d8c77e48c0fb03bf61211307aa78dc8f8e8cf9fcfe1310e21bc71972d26e0f9d"
     },
     {
       "path": "spec/STATUS.md",
-      "bytes": 415993,
-      "sha256": "74d623b15f194a4d4157828fa2b84222ca9eb87a58f553bcb27f7a91bb321b20"
+      "bytes": 416053,
+      "sha256": "88bd64b72b497b0e2b65286bf719aed4cbc6a0ce5735038d91d0d7b18f046b54"
     },
     {
       "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-runtime-2026-10-24/README.md",
@@ -150,8 +150,8 @@
     },
     {
       "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-runtime-2026-10-24/generate-source-manifest.py",
-      "bytes": 6762,
-      "sha256": "4b891e532204bd977aba29aaeca8874f18878e51222b3899b07a9518ad6ebb74"
+      "bytes": 6800,
+      "sha256": "54068b5eab3f545693e5f444edfff6f7bbdbe9b02a154a60e6869b828227e999"
     },
     {
       "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-artifact-2026-10-24/README.md",
