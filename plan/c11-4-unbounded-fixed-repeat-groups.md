@@ -44,6 +44,6 @@ CSS Grid 2025 CRD §7.2.3.1의 auto-track-list 문법은 하나의 auto-repeat�
 
 ## 남은 범위
 
-named-line metadata merge/collision, fixed-size `minmax()`와 percentage breadth, 일반 CSS admission, WPT, 실기기/hardware GPU, iOS compositor 이후 pixels 및 C11.4 intrinsic track sizing 전체는 미완료다. 이 제한 profile은 제품 CSS 지원 범위 전체나 공식 완료 항목을 뜻하지 않는다.
+named-line metadata merge/collision은 [후속 계획](./c11-4-fixed-repeat-line-name-merge.md)에서 plan-only로 정리했다. fixed-size `minmax()`와 percentage breadth, 일반 CSS admission, WPT, 실기기/hardware GPU, iOS compositor 이후 pixels 및 C11.4 intrinsic track sizing 전체도 미완료다. 이 제한 profile은 제품 CSS 지원 범위 전체나 공식 완료 항목을 뜻하지 않는다.
 
 계획 실패 관점은 [20개 검토](./c11-4-unbounded-fixed-repeat-groups-plan-review-20.md), 변경 파일의 별도 검토는 [계획 PR diff 검토](./c11-4-unbounded-fixed-repeat-groups-pr-diff-review-20.md)에 기록한다.

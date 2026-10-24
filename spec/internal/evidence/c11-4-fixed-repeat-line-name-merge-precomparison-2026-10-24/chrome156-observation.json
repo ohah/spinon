@@ -1,0 +1,194 @@
+{
+  "scenes": [
+    {
+      "columns": "[outer-start start] 12px [seam] 8px [join start] 12px [seam] 8px [join join mid] 6px [seam] 6px [mid-end mid] 6px [seam] 6px [mid-end seam seam] 24px [repeat-end seam] 24px [repeat-end seam] 24px [repeat-end seam] 24px [repeat-end seam] 24px [repeat-end seam] 24px [repeat-end repeat-end join] 10px [tail join] 10px [tail outer-end]",
+      "grid": {
+        "height": 40,
+        "width": 300,
+        "x": 37,
+        "y": 103.78125
+      },
+      "id": "col-auto-fill",
+      "items": [
+        {
+          "gridColumnEnd": "2 join",
+          "gridColumnStart": "2 start",
+          "gridRowEnd": "2",
+          "gridRowStart": "1",
+          "height": 40,
+          "id": "col-start-join",
+          "width": 24,
+          "x": 28,
+          "y": 0
+        },
+        {
+          "gridColumnEnd": "6 seam",
+          "gridColumnStart": "5 seam",
+          "gridRowEnd": "2",
+          "gridRowStart": "1",
+          "height": 40,
+          "id": "col-seam-forward",
+          "width": 24,
+          "x": 96,
+          "y": 0
+        },
+        {
+          "gridColumnEnd": "-2 seam",
+          "gridColumnStart": "-3 seam",
+          "gridRowEnd": "2",
+          "gridRowStart": "1",
+          "height": 40,
+          "id": "col-seam-negative",
+          "width": 24,
+          "x": 180,
+          "y": 0
+        },
+        {
+          "gridColumnEnd": "2 mid-end",
+          "gridColumnStart": "2 mid",
+          "gridRowEnd": "2",
+          "gridRowStart": "1",
+          "height": 40,
+          "id": "col-mid",
+          "width": 16,
+          "x": 76,
+          "y": 0
+        },
+        {
+          "gridColumnEnd": "2 tail",
+          "gridColumnStart": "1 tail",
+          "gridRowEnd": "2",
+          "gridRowStart": "1",
+          "height": 40,
+          "id": "col-tail",
+          "width": 10,
+          "x": 278,
+          "y": 0
+        },
+        {
+          "gridColumnEnd": "2 repeat-end",
+          "gridColumnStart": "1 repeat-end",
+          "gridRowEnd": "2",
+          "gridRowStart": "1",
+          "height": 40,
+          "id": "col-repeat-end",
+          "width": 24,
+          "x": 124,
+          "y": 0
+        },
+        {
+          "gridColumnEnd": "2 mid-end",
+          "gridColumnStart": "span 2 mid",
+          "gridRowEnd": "2",
+          "gridRowStart": "1",
+          "height": 40,
+          "id": "col-named-span",
+          "width": 36,
+          "x": 56,
+          "y": 0
+        }
+      ],
+      "rows": "40px"
+    },
+    {
+      "columns": "[outer-start start] 12px [seam] 8px [join start] 12px [seam] 8px [join join mid] 6px [seam] 6px [mid-end mid] 6px [seam] 6px [mid-end seam seam] 0px [repeat-end seam] 0px [repeat-end seam] 0px [repeat-end seam] 24px [repeat-end seam] 0px [repeat-end seam] 0px [repeat-end repeat-end join] 10px [tail join] 10px [tail outer-end]",
+      "grid": {
+        "height": 40,
+        "width": 300,
+        "x": 37,
+        "y": 260.96875
+      },
+      "id": "col-auto-fit",
+      "items": [
+        {
+          "gridColumnEnd": "4 repeat-end",
+          "gridColumnStart": "3 repeat-end",
+          "gridRowEnd": "2",
+          "gridRowStart": "1",
+          "height": 40,
+          "id": "col-fit-item",
+          "width": 24,
+          "x": 96,
+          "y": 0
+        }
+      ],
+      "rows": "40px"
+    },
+    {
+      "columns": "[before fixed] 10px [edge fixed] 10px [edge edge] 8px [ordinary-end auto-start auto-start] 12px [auto-end auto-start] 12px [auto-end auto-start] 12px [auto-end auto-start] 12px [auto-end auto-start] 12px [auto-end after]",
+      "grid": {
+        "height": 40,
+        "width": 120,
+        "x": 37,
+        "y": 399.15625
+      },
+      "id": "col-ordinary-join",
+      "items": [
+        {
+          "gridColumnEnd": "1 auto-start",
+          "gridColumnStart": "2 edge",
+          "gridRowEnd": "2",
+          "gridRowStart": "1",
+          "height": 40,
+          "id": "col-ordinary-neighbor",
+          "width": 8,
+          "x": 28,
+          "y": 0
+        },
+        {
+          "gridColumnEnd": "2 auto-end",
+          "gridColumnStart": "2 auto-start",
+          "gridRowEnd": "2",
+          "gridRowStart": "1",
+          "height": 40,
+          "id": "col-ordinary-auto",
+          "width": 12,
+          "x": 56,
+          "y": 0
+        }
+      ],
+      "rows": "40px"
+    },
+    {
+      "columns": "40px",
+      "grid": {
+        "height": 300,
+        "width": 40,
+        "x": 37,
+        "y": 556.34375
+      },
+      "id": "row-auto-fill",
+      "items": [
+        {
+          "gridColumnEnd": "2",
+          "gridColumnStart": "1",
+          "gridRowEnd": "6 seam",
+          "gridRowStart": "5 seam",
+          "height": 24,
+          "id": "row-seam-forward",
+          "width": 40,
+          "x": 0,
+          "y": 96
+        },
+        {
+          "gridColumnEnd": "2",
+          "gridColumnStart": "1",
+          "gridRowEnd": "-1 tail",
+          "gridRowStart": "-2 tail",
+          "height": 10,
+          "id": "row-tail",
+          "width": 40,
+          "x": 0,
+          "y": 278
+        }
+      ],
+      "rows": "[outer-start start] 12px [seam] 8px [join start] 12px [seam] 8px [join join mid] 6px [seam] 6px [mid-end mid] 6px [seam] 6px [mid-end seam seam] 24px [repeat-end seam] 24px [repeat-end seam] 24px [repeat-end seam] 24px [repeat-end seam] 24px [repeat-end seam] 24px [repeat-end repeat-end join] 10px [tail join] 10px [tail outer-end]"
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "dpr": 1,
+    "height": 633,
+    "width": 1280
+  }
+}
