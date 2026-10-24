@@ -1,6 +1,6 @@
 # C11.4 · auto-repeat과 fixed-repeat 두 그룹 조합
 
-**상태:** 제한 구현과 runtime 검증 완료, PR 준비 중. CSS Grid 2025 CRD와 Chrome 156의 10개 사전 비교 장면을 기준으로 Stylo cascade 변환, opt-in runtime fixture, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator를 검증했다. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다.
+**상태:** 제한 구현과 runtime 검증 완료, 구현 PR [#594](https://github.com/ohah/spinon/pull/594) 검토 중. CSS Grid 2025 CRD와 Chrome 156의 10개 사전 비교 장면을 기준으로 Stylo cascade 변환, opt-in runtime fixture, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator를 검증했다. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다.
 
 ## 기존 동작과 결손
 
