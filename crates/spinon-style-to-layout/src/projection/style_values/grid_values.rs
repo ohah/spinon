@@ -14,6 +14,7 @@ use super::super::typed_math::CssMathProjector;
 use crate::StyleLayoutError;
 
 const MAX_GRID_TEMPLATE_AREAS_METADATA_BYTES: usize = 1024 * 1024;
+const MAX_COMBINED_GRID_LINE_AREA_METADATA_BYTES: usize = 1024 * 1024;
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 enum GridLineNameReservationSite {
@@ -86,6 +87,7 @@ pub(super) fn project_grid_layout_with_math(
     if let Some(auto_repeat) = &grid.rows_auto_repeat {
         validate_auto_repeat_neighbor_tracks(node, "grid-template-rows", &grid.rows, auto_repeat)?;
     }
+    validate_combined_grid_line_area_metadata(node, grid)?;
     project_grid_layout_with_reservations(
         node,
         grid,
@@ -94,6 +96,116 @@ pub(super) fn project_grid_layout_with_math(
         |tracks, count| tracks.try_reserve_exact(count).map_err(|_| ()),
         |_| Ok(()),
     )
+}
+
+fn validate_combined_grid_line_area_metadata(
+    node: NodeId,
+    grid: &ComputedCssGridLayout,
+) -> Result<(), StyleLayoutError> {
+    let Some(areas) = &grid.template_areas else {
+        return Ok(());
+    };
+    if grid.columns_auto_repeat.is_none() && grid.rows_auto_repeat.is_none() {
+        return Ok(());
+    }
+
+    fn add_bytes(total: &mut usize, bytes: usize) -> bool {
+        let Some(next) = total.checked_add(bytes) else {
+            return false;
+        };
+        if next > MAX_COMBINED_GRID_LINE_AREA_METADATA_BYTES {
+            return false;
+        }
+        *total = next;
+        true
+    }
+
+    fn add_line_names(total: &mut usize, groups: &[Vec<String>]) -> bool {
+        let Some(group_headers) = groups.len().checked_mul(std::mem::size_of::<Vec<String>>())
+        else {
+            return false;
+        };
+        if !add_bytes(total, group_headers) {
+            return false;
+        }
+        for group in groups {
+            let Some(name_headers) = group.len().checked_mul(std::mem::size_of::<String>()) else {
+                return false;
+            };
+            if !add_bytes(total, name_headers) {
+                return false;
+            }
+            for name in group {
+                if !add_bytes(total, name.len()) {
+                    return false;
+                }
+            }
+        }
+        true
+    }
+
+    // Budget the projected Rust headers and UTF-8 payload before any projection allocation.
+    // Allocator rounding and allocator-internal bookkeeping are outside this logical byte cap.
+    let mut metadata_bytes = 0;
+    for _ in 0..2 {
+        if !add_bytes(&mut metadata_bytes, std::mem::size_of::<Vec<Vec<String>>>()) {
+            return Err(combined_grid_line_area_metadata_error(node));
+        }
+    }
+    for groups in [&grid.columns_line_names, &grid.rows_line_names] {
+        if !add_line_names(&mut metadata_bytes, groups) {
+            return Err(combined_grid_line_area_metadata_error(node));
+        }
+    }
+    for auto_repeat in [
+        grid.columns_auto_repeat.as_ref(),
+        grid.rows_auto_repeat.as_ref(),
+    ]
+    .into_iter()
+    .flatten()
+    {
+        if !add_bytes(
+            &mut metadata_bytes,
+            std::mem::size_of::<Option<spinon_layout::GridAutoRepeat>>(),
+        ) {
+            return Err(combined_grid_line_area_metadata_error(node));
+        }
+        if !add_line_names(&mut metadata_bytes, &auto_repeat.line_names) {
+            return Err(combined_grid_line_area_metadata_error(node));
+        }
+    }
+
+    if !add_bytes(
+        &mut metadata_bytes,
+        std::mem::size_of::<Option<spinon_layout::GridTemplateAreasInput>>(),
+    ) {
+        return Err(combined_grid_line_area_metadata_error(node));
+    }
+    let Some(area_headers) = areas
+        .areas
+        .len()
+        .checked_mul(std::mem::size_of::<spinon_layout::GridTemplateAreaInput>())
+    else {
+        return Err(combined_grid_line_area_metadata_error(node));
+    };
+    if !add_bytes(&mut metadata_bytes, area_headers) {
+        return Err(combined_grid_line_area_metadata_error(node));
+    }
+    for area in &areas.areas {
+        if !add_bytes(&mut metadata_bytes, area.name.len()) {
+            return Err(combined_grid_line_area_metadata_error(node));
+        }
+    }
+
+    Ok(())
+}
+
+fn combined_grid_line_area_metadata_error(node: NodeId) -> StyleLayoutError {
+    StyleLayoutError::UnsupportedComputedValue {
+        node,
+        property: "grid-template-areas",
+        value: "line-name과 template-area metadata 합계가 1 MiB 한도를 넘었습니다".to_owned(),
+    }
 }
 
 fn has_implicit_template_area_line_aliases(grid: &ComputedCssGridLayout) -> bool {
@@ -826,3 +938,7 @@ mod auto_repeat_neighbor_tests;
 #[cfg(test)]
 #[path = "grid_values/auto_track_tests.rs"]
 mod auto_track_tests;
+
+#[cfg(test)]
+#[path = "grid_values/combined_metadata_tests.rs"]
+mod combined_metadata_tests;

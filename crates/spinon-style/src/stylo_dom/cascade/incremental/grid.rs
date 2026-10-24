@@ -128,16 +128,6 @@ pub(super) fn computed_grid_layout(
         return Err(unsupported_grid_value(node, property, value));
     }
     if template_areas.is_some()
-        && ((columns_has_fixed_repeat && columns_auto_repeat.is_some())
-            || (rows_has_fixed_repeat && rows_auto_repeat.is_some()))
-    {
-        return Err(unsupported_grid_value(
-            node,
-            "grid-template-areas",
-            property_value(properties, "grid-template-areas"),
-        ));
-    }
-    if template_areas.is_some()
         && columns_auto_repeat.is_some()
         && rows_auto_repeat.is_some()
         && !allow_auto_repeat

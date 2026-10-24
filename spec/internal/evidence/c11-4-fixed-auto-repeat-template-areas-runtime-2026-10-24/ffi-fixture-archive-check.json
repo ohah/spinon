@@ -1,0 +1,22 @@
+{
+  "featureSet": "c04-runtime-gpu-fixture-test",
+  "artifact": "target/release/libspinon_ffi.a",
+  "sha256": "827b8a51ac3e5fa6d560fabf8546b0a2bc2181f9516d6a9b12f5dab3a5b487c1",
+  "sceneMarkersExpected": 9,
+  "sceneMarkersPresent": [
+    "fixed-auto-area-columns-fill-collision",
+    "fixed-auto-area-columns-fit-empty",
+    "fixed-auto-area-columns-fit-occupied",
+    "fixed-auto-area-columns-area-larger",
+    "fixed-auto-area-columns-area-shorter",
+    "fixed-auto-area-rows-fill-collision",
+    "fixed-auto-area-rows-fit-empty",
+    "fixed-auto-area-rows-fit-occupied",
+    "fixed-auto-area-rows-area-larger"
+  ],
+  "c11_4FixtureSymbols": [
+    "0000000000004068 T _spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture",
+    "00000000000071d4 T _spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture"
+  ],
+  "llvmNmExit": 0
+}

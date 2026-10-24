@@ -37,6 +37,15 @@ private let c114FixedRepeatAutoRepeatSceneIDs: Set<String> = [
     "fixed-repeat-groups-row-prefix-fit-occupied",
     "fixed-repeat-groups-four-prefix-fill",
     "fixed-repeat-groups-four-row-split-fill",
+    "fixed-auto-area-columns-fill-collision",
+    "fixed-auto-area-columns-fit-empty",
+    "fixed-auto-area-columns-fit-occupied",
+    "fixed-auto-area-columns-area-larger",
+    "fixed-auto-area-columns-area-shorter",
+    "fixed-auto-area-rows-fill-collision",
+    "fixed-auto-area-rows-fit-empty",
+    "fixed-auto-area-rows-fit-occupied",
+    "fixed-auto-area-rows-area-larger",
 ]
 #else
 private let c114FixedRepeatAutoRepeatSceneIDs: Set<String> = []
@@ -825,7 +834,101 @@ private func c114PercentageNeighborNodeFrames(_ sceneID: String) -> String? {
         + (itemFrames.isEmpty ? "" : ";" + itemFrames.joined(separator: ";")) + "]"
 }
 
+private struct C114FixedAutoAreaExpectation {
+    let width: Int
+    let height: Int
+    let items: [(name: String, x: Int, y: Int, width: Int, height: Int)]
+    let columnTrackSizes: [Double]
+    let rowTrackSizes: [Double]
+    let collapsedColumns: [Bool]
+    let collapsedRows: [Bool]
+}
+
+private let c114FixedAutoAreaCanonicalSceneIDs: Set<String> = [
+    "columns-fill-collision", "columns-fit-empty", "columns-fit-occupied",
+    "columns-area-larger", "columns-area-shorter", "rows-fill-collision",
+    "rows-fit-empty", "rows-fit-occupied", "rows-area-larger",
+]
+
+private func c114FixedAutoAreaCanonicalSceneID(_ sceneID: String) -> String? {
+    let prefix = "fixed-auto-area-"
+    guard sceneID.hasPrefix(prefix) else { return nil }
+    let canonicalSceneID = String(sceneID.dropFirst(prefix.count))
+    return c114FixedAutoAreaCanonicalSceneIDs.contains(canonicalSceneID)
+        ? canonicalSceneID : nil
+}
+
+private func c114FixedAutoAreaExpectation(_ sceneID: String) -> C114FixedAutoAreaExpectation? {
+    guard let canonicalSceneID = c114FixedAutoAreaCanonicalSceneID(sceneID) else { return nil }
+    let expectation: (width: Int, height: Int,
+        items: [(name: String, x: Int, y: Int, width: Int, height: Int)],
+        columns: [Double], rows: [Double])
+    switch canonicalSceneID {
+    case "columns-fill-collision":
+        expectation = (168, 20, [
+            ("left", 0, 0, 44, 20), ("hero", 0, 0, 20, 20),
+            ("right", 144, 0, 24, 20), ("probe", 48, 0, 20, 20),
+            ("negative-probe", 120, 0, 20, 20),
+        ], [10, 6, 10, 6, 20, 20, 20, 20, 10, 10], [20])
+    case "columns-fit-empty":
+        expectation = (168, 20, [
+            ("left", 0, 0, 44, 20), ("right", 48, 0, 24, 20),
+        ], [10, 6, 10, 6, 0, 0, 0, 0, 10, 10], [20])
+    case "columns-fit-occupied":
+        expectation = (168, 20, [
+            ("left", 0, 0, 44, 20), ("hero", 48, 0, 92, 20),
+            ("right", 144, 0, 24, 20),
+        ], [10, 6, 10, 6, 20, 20, 20, 20, 10, 10], [20])
+    case "columns-area-larger":
+        expectation = (148, 20, [
+            ("left", 0, 0, 44, 20), ("hero", 48, 0, 68, 20),
+            ("right", 120, 0, 48, 20),
+        ], [10, 6, 10, 6, 20, 20, 20, 10, 10, 20], [20])
+    case "columns-area-shorter":
+        expectation = (188, 20, [
+            ("left", 0, 0, 44, 20), ("hero", 48, 0, 68, 20),
+            ("right", 120, 0, 20, 20), ("tail", 158, 0, 10, 20),
+        ], [10, 6, 10, 6, 20, 20, 20, 20, 10, 10], [20])
+    case "rows-fill-collision":
+        expectation = (20, 168, [
+            ("left", 0, 0, 20, 44), ("hero", 0, 0, 20, 20),
+            ("right", 0, 144, 20, 24), ("probe", 0, 48, 20, 20),
+            ("negative-probe", 0, 120, 20, 20),
+        ], [20], [10, 6, 10, 6, 20, 20, 20, 20, 10, 10])
+    case "rows-fit-empty":
+        expectation = (20, 168, [
+            ("left", 0, 0, 20, 44), ("right", 0, 48, 20, 24),
+        ], [20], [10, 6, 10, 6, 0, 0, 0, 0, 10, 10])
+    case "rows-fit-occupied":
+        expectation = (20, 168, [
+            ("left", 0, 0, 20, 44), ("hero", 0, 48, 20, 92),
+            ("right", 0, 144, 20, 24),
+        ], [20], [10, 6, 10, 6, 20, 20, 20, 20, 10, 10])
+    case "rows-area-larger":
+        expectation = (20, 148, [
+            ("left", 0, 0, 20, 44), ("hero", 0, 48, 20, 68),
+            ("right", 0, 120, 20, 48),
+        ], [20], [10, 6, 10, 6, 20, 20, 20, 10, 10, 20])
+    default:
+        return nil
+    }
+    let collapsedColumns = expectation.columns.indices.map { index in
+        canonicalSceneID == "columns-fit-empty" && (4...7).contains(index)
+    }
+    let collapsedRows = expectation.rows.indices.map { index in
+        canonicalSceneID == "rows-fit-empty" && (4...7).contains(index)
+    }
+    return C114FixedAutoAreaExpectation(
+        width: expectation.width, height: expectation.height, items: expectation.items,
+        columnTrackSizes: expectation.columns, rowTrackSizes: expectation.rows,
+        collapsedColumns: collapsedColumns, collapsedRows: collapsedRows
+    )
+}
+
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    if let fixedAutoArea = c114FixedAutoAreaExpectation(sceneID) {
+        return "width=\(fixedAutoArea.width),height=\(fixedAutoArea.height)"
+    }
     if sceneID.hasPrefix("fixed-repeat-") {
         if sceneID.contains("-groups-") {
             if sceneID.hasSuffix("-four-prefix-fill") { return "width=320,height=80" }
@@ -1065,6 +1168,10 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if let fixedAutoArea = c114FixedAutoAreaExpectation(sceneID),
+       let item = fixedAutoArea.items.first {
+        return "width=\(item.width),height=\(item.height)"
+    }
     if sceneID.hasPrefix("fixed-repeat-") {
         return sceneID.hasSuffix("-occupied") || sceneID.hasSuffix("-four-row-split-fill")
             ? "width=10,height=10" : ""
@@ -2136,6 +2243,39 @@ private func c114GridTrackSizingDiagnostics(_ report: String) -> [String: Any]? 
     return diagnostics
 }
 
+private func c114FixedAutoAreaTraceMatches(_ sceneID: String, report: String) -> Bool {
+    guard let expectation = c114FixedAutoAreaExpectation(sceneID),
+          let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
+          traces.count == 1,
+          (traces[0]["grid"] as? Int) == 1,
+          let passes = traces[0]["passes"] as? [[String: Any]],
+          passes.count == 2 else { return false }
+
+    let expectedPasses: [(axis: String, sizes: [Double], collapsed: [Bool])] = [
+        ("Columns", expectation.columnTrackSizes, expectation.collapsedColumns),
+        ("Rows", expectation.rowTrackSizes, expectation.collapsedRows),
+    ]
+    for (passIndex, expected) in expectedPasses.enumerated() {
+        let pass = passes[passIndex]
+        guard (pass["axis"] as? String) == expected.axis,
+              let stages = pass["stages"] as? [[String: Any]],
+              let finalStage = stages.last,
+              let tracks = finalStage["tracks"] as? [[String: Any]] else { return false }
+        let cssTracks = tracks.filter { ($0["gutter"] as? Bool) == false }
+        guard cssTracks.count == expected.sizes.count,
+              expected.collapsed.count == expected.sizes.count else { return false }
+        for (trackIndex, expectedSize) in expected.sizes.enumerated() {
+            let track = cssTracks[trackIndex]
+            guard let baseSize = track["baseSize"] as? NSNumber,
+                  abs(baseSize.doubleValue - expectedSize) <= 0.0001,
+                  let collapsed = track["collapsed"] as? Bool,
+                  collapsed == expected.collapsed[trackIndex] else { return false }
+        }
+    }
+    return true
+}
+
 private func c114ImageMultiSpanTraceMatches(
     _ sceneID: String, _ spansAndWidths: [[Int]], diagnostics: [String: Any]
 ) -> Bool {
@@ -2617,6 +2757,14 @@ private func c114ImageTrackPassMatches(
 }
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+    if let fixedAutoArea = c114FixedAutoAreaExpectation(sceneID) {
+        var frames = ["0:node=1,x=0,y=0,width=\(fixedAutoArea.width),height=\(fixedAutoArea.height)"]
+        for (index, item) in fixedAutoArea.items.enumerated() {
+            frames.append("\(index + 1):node=\(index + 2),x=\(item.x),y=\(item.y),"
+                + "width=\(item.width),height=\(item.height)")
+        }
+        return "node_frames_css_px=[\(frames.joined(separator: ";"))]"
+    }
     if sceneID.hasPrefix("fixed-repeat-") {
         let rowAxis = sceneID.contains("-row-")
         let multipleGroups = sceneID.contains("-groups-")
@@ -4037,6 +4185,9 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if let fixedAutoArea = c114FixedAutoAreaExpectation(sceneID) {
+        return fixedAutoArea.items.count + 1
+    }
     if sceneID.hasPrefix("fixed-repeat-") {
         return sceneID.hasSuffix("-occupied") || sceneID.hasSuffix("-four-row-split-fill") ? 2 : 1
     }
@@ -4567,6 +4718,90 @@ private struct C111MetalPixelRun {
         }
     }
 
+    private static func c114FixedAutoAreaPixelSamples(
+        _ sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])]? {
+        guard let canonicalSceneID = c114FixedAutoAreaCanonicalSceneID(sceneID),
+              let expectation = c114FixedAutoAreaExpectation(sceneID) else { return nil }
+        let rootID = "c114-\(sceneID)-grid"
+        let green = [UInt32(34), 197, 94, 255] // #22c55e
+        let blue = [UInt32(37), 99, 235, 255] // #2563eb
+        let clear = [UInt32(0), 0, 0, 255] // Opaque black clear from the C11 Metal drawable contract.
+        let rootBackgroundPoint: (UInt32, UInt32)
+        switch canonicalSceneID {
+        case "columns-fill-collision", "columns-fit-occupied", "columns-area-shorter":
+            rootBackgroundPoint = (46, 10)
+        case "columns-fit-empty":
+            rootBackgroundPoint = (100, 10)
+        case "columns-area-larger":
+            rootBackgroundPoint = (118, 10)
+        case "rows-fill-collision", "rows-fit-occupied":
+            rootBackgroundPoint = (10, 46)
+        case "rows-fit-empty":
+            rootBackgroundPoint = (10, 100)
+        case "rows-area-larger":
+            rootBackgroundPoint = (10, 118)
+        default:
+            return nil
+        }
+
+        var samples: [(String, String, UInt32, UInt32, [UInt32])]
+        if canonicalSceneID == "columns-area-larger" {
+            // These are CSS viewport coordinates relative to the fixture root at (0, 0).
+            // Metal readback samples pixel centers at floor((cssPx + 0.5) * drawableScale).
+            samples = [
+                ("root-interior-gap", rootID, rootBackgroundPoint.0,
+                 rootBackgroundPoint.1, green),
+                ("item-crosses-root-edge", "c114-\(sceneID)-right",
+                 147, 10, blue),
+                ("overflow-item-outside-root", "c114-\(sceneID)-right",
+                 160, 10, blue),
+                ("clear-outside-item", rootID, 171, 10, clear),
+            ]
+        } else if canonicalSceneID == "rows-area-larger" {
+            // Row samples transpose the columns coordinates while using the same drawable mapping.
+            samples = [
+                ("root-interior-gap", rootID, rootBackgroundPoint.0,
+                 rootBackgroundPoint.1, green),
+                ("item-crosses-root-edge", "c114-\(sceneID)-right",
+                 10, 147, blue),
+                ("overflow-item-outside-root", "c114-\(sceneID)-right",
+                 10, 160, blue),
+                ("clear-outside-item", rootID, 10, 171, clear),
+            ]
+        } else {
+            samples = [("\(sceneID)-root-background", rootID,
+                rootBackgroundPoint.0, rootBackgroundPoint.1, green)]
+        }
+
+        if canonicalSceneID == "columns-area-larger"
+            || canonicalSceneID == "rows-area-larger" {
+            return samples
+        }
+        for item in expectation.items {
+            let point: (UInt32, UInt32)
+            if item.name == "left" && canonicalSceneID == "columns-fill-collision" {
+                point = (30, 10) // The hero overlaps the first 20px of the left area.
+            } else if item.name == "left" && canonicalSceneID == "rows-fill-collision" {
+                point = (10, 30)
+            } else {
+                point = (UInt32(item.x + item.width / 2), UInt32(item.y + item.height / 2))
+            }
+            let color: [UInt32]
+            switch item.name {
+            case "left": color = [48, 164, 108, 255] // #30a46c
+            case "hero": color = [229, 72, 77, 255] // #e5484d
+            case "right": color = blue
+            case "probe": color = [245, 158, 11, 255] // #f59e0b
+            case "negative-probe", "tail": color = [23, 147, 209, 255] // #1793d1
+            default: return nil
+            }
+            samples.append(("\(sceneID)-\(item.name)-interior",
+                "c114-\(sceneID)-\(item.name)", point.0, point.1, color))
+        }
+        return samples
+    }
+
     private static let c114PercentageMaximumPixelSceneIDs: Set<String> = [
         "columns-percent-max-fill", "columns-percent-max-fill-control",
         "columns-percent-max-fit", "columns-percent-max-fit-control",
@@ -4674,6 +4909,16 @@ private struct C111MetalPixelRun {
     private static func hasFixedC114TrackSizingSamples(
         _ samples: [C111MetalPixelSample], sceneID: String
     ) -> Bool {
+        if let expectedSamples = c114FixedAutoAreaPixelSamples(sceneID) {
+            guard samples.count == expectedSamples.count else { return false }
+            return expectedSamples.allSatisfy { expected in
+                samples.contains { sample in
+                    sample.id == expected.0 && sample.nodeId == expected.1
+                        && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                        && sample.rgba == expected.4
+                }
+            }
+        }
         if sceneID.hasPrefix("fixed-repeat-") {
             let multipleGroups = sceneID.contains("-groups-")
             let rowAxis = sceneID.contains("-row-")
@@ -8837,6 +9082,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 c114GridTrackSizingSceneID, report: report)
             let expectedNodeFramesMatch = c114ExpectedNodeFramesMatch(
                 c114GridTrackSizingSceneID, report: report)
+            let expectedFixedAutoAreaTraceMatches = c114FixedAutoAreaExpectation(
+                c114GridTrackSizingSceneID
+            ) == nil || c114FixedAutoAreaTraceMatches(
+                c114GridTrackSizingSceneID, report: report
+            )
             let expectedCrossAxisSpanGroupFramesMatch = c114ExpectedCrossAxisSpanGroupFramesMatch(
                 c114GridTrackSizingSceneID, report: report)
             let expectedTextMultiSpanFramesMatch = c114ExpectedTextMultiSpanFramesMatch(
@@ -8853,10 +9103,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                   report.contains("layout=ready boxes=\(c114ExpectedBoxCount(c114GridTrackSizingSceneID))"),
                   expectedRootFrameMatches, expectedItemFrameMatches, expectedTextInputs,
                   expectedImageInputs, expectedNodeFramesMatch,
+                  expectedFixedAutoAreaTraceMatches,
                   expectedCrossAxisSpanGroupFramesMatch,
                   expectedTextMultiSpanFramesMatch, expectedImageMultiSpanFramesMatch,
                   expectedMixedMultiSpanFramesMatch else {
-                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) report=\(report)")
+                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) report=\(report)")
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치")
                 return
             }

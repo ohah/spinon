@@ -173,5 +173,1005 @@
       "tracks": { "columns": [80], "rows": [20, 10, 20, 10, 84, 0, 16] },
       "collapsed": { "columns": [false], "rows": [false, false, false, false, false, true, false] }
     }
+  },
+  {
+    "id": "fixed-auto-area-columns-fill-collision",
+    "oracleId": "columns-fill-collision",
+    "width": "168px",
+    "height": "20px",
+    "columns": "repeat(2, [hero-start] 10px 6px [hero-end]) repeat(auto-fill, [hero-start] 20px [hero-end]) repeat(2, 10px)",
+    "rows": "20px",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "repeatAxis": "columns",
+    "rootColor": "#22c55e",
+    "areas": "\"left left left left hero hero hero hero right right\"",
+    "items": [
+      {
+        "name": "left",
+        "color": "#30a46c",
+        "placement": {
+          "gridArea": "left"
+        }
+      },
+      {
+        "name": "hero",
+        "color": "#e5484d",
+        "placement": {
+          "gridArea": "hero"
+        }
+      },
+      {
+        "name": "right",
+        "color": "#2563eb",
+        "placement": {
+          "gridArea": "right"
+        }
+      },
+      {
+        "name": "probe",
+        "color": "#f59e0b",
+        "placement": {
+          "gridRow": "1 / 2",
+          "gridColumn": "hero-start 3 / hero-end 3"
+        }
+      },
+      {
+        "name": "negative-probe",
+        "color": "#1793d1",
+        "placement": {
+          "gridRow": "1 / 2",
+          "gridColumn": "hero-start -1 / hero-end -1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        168,
+        20
+      ],
+      "items": [
+        {
+          "name": "left",
+          "frame": [
+            0,
+            0,
+            44,
+            20
+          ]
+        },
+        {
+          "name": "hero",
+          "frame": [
+            0,
+            0,
+            20,
+            20
+          ]
+        },
+        {
+          "name": "right",
+          "frame": [
+            144,
+            0,
+            24,
+            20
+          ]
+        },
+        {
+          "name": "probe",
+          "frame": [
+            48,
+            0,
+            20,
+            20
+          ]
+        },
+        {
+          "name": "negative-probe",
+          "frame": [
+            120,
+            0,
+            20,
+            20
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          10,
+          6,
+          10,
+          6,
+          20,
+          20,
+          20,
+          20,
+          10,
+          10
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "fixed-auto-area-columns-fit-empty",
+    "oracleId": "columns-fit-empty",
+    "width": "168px",
+    "height": "20px",
+    "columns": "repeat(2, 10px 6px) repeat(auto-fit, 20px) repeat(2, 10px)",
+    "rows": "20px",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "repeatAxis": "columns",
+    "rootColor": "#22c55e",
+    "areas": "\"left left left left hero hero hero hero right right\"",
+    "items": [
+      {
+        "name": "left",
+        "color": "#30a46c",
+        "placement": {
+          "gridArea": "left"
+        }
+      },
+      {
+        "name": "right",
+        "color": "#2563eb",
+        "placement": {
+          "gridArea": "right"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        168,
+        20
+      ],
+      "items": [
+        {
+          "name": "left",
+          "frame": [
+            0,
+            0,
+            44,
+            20
+          ]
+        },
+        {
+          "name": "right",
+          "frame": [
+            48,
+            0,
+            24,
+            20
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          10,
+          6,
+          10,
+          6,
+          0,
+          0,
+          0,
+          0,
+          10,
+          10
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "fixed-auto-area-columns-fit-occupied",
+    "oracleId": "columns-fit-occupied",
+    "width": "168px",
+    "height": "20px",
+    "columns": "repeat(2, 10px 6px) repeat(auto-fit, 20px) repeat(2, 10px)",
+    "rows": "20px",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "repeatAxis": "columns",
+    "rootColor": "#22c55e",
+    "areas": "\"left left left left hero hero hero hero right right\"",
+    "items": [
+      {
+        "name": "left",
+        "color": "#30a46c",
+        "placement": {
+          "gridArea": "left"
+        }
+      },
+      {
+        "name": "hero",
+        "color": "#e5484d",
+        "placement": {
+          "gridArea": "hero"
+        }
+      },
+      {
+        "name": "right",
+        "color": "#2563eb",
+        "placement": {
+          "gridArea": "right"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        168,
+        20
+      ],
+      "items": [
+        {
+          "name": "left",
+          "frame": [
+            0,
+            0,
+            44,
+            20
+          ]
+        },
+        {
+          "name": "hero",
+          "frame": [
+            48,
+            0,
+            92,
+            20
+          ]
+        },
+        {
+          "name": "right",
+          "frame": [
+            144,
+            0,
+            24,
+            20
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          10,
+          6,
+          10,
+          6,
+          20,
+          20,
+          20,
+          20,
+          10,
+          10
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "fixed-auto-area-columns-area-larger",
+    "oracleId": "columns-area-larger",
+    "width": "148px",
+    "height": "20px",
+    "columns": "repeat(2, 10px 6px) repeat(auto-fill, 20px) repeat(2, 10px)",
+    "rows": "20px",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "repeatAxis": "columns",
+    "rootColor": "#22c55e",
+    "autoColumns": "20px",
+    "areas": "\"left left left left hero hero hero right right right\"",
+    "items": [
+      {
+        "name": "left",
+        "color": "#30a46c",
+        "placement": {
+          "gridArea": "left"
+        }
+      },
+      {
+        "name": "hero",
+        "color": "#e5484d",
+        "placement": {
+          "gridArea": "hero"
+        }
+      },
+      {
+        "name": "right",
+        "color": "#2563eb",
+        "placement": {
+          "gridArea": "right"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        148,
+        20
+      ],
+      "items": [
+        {
+          "name": "left",
+          "frame": [
+            0,
+            0,
+            44,
+            20
+          ]
+        },
+        {
+          "name": "hero",
+          "frame": [
+            48,
+            0,
+            68,
+            20
+          ]
+        },
+        {
+          "name": "right",
+          "frame": [
+            120,
+            0,
+            48,
+            20
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          10,
+          6,
+          10,
+          6,
+          20,
+          20,
+          20,
+          10,
+          10,
+          20
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "fixed-auto-area-columns-area-shorter",
+    "oracleId": "columns-area-shorter",
+    "width": "188px",
+    "height": "20px",
+    "columns": "repeat(2, 10px 6px) repeat(auto-fill, 20px) repeat(2, 10px)",
+    "rows": "20px",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "repeatAxis": "columns",
+    "rootColor": "#22c55e",
+    "areas": "\"left left left left hero hero hero right\"",
+    "items": [
+      {
+        "name": "left",
+        "color": "#30a46c",
+        "placement": {
+          "gridArea": "left"
+        }
+      },
+      {
+        "name": "hero",
+        "color": "#e5484d",
+        "placement": {
+          "gridArea": "hero"
+        }
+      },
+      {
+        "name": "right",
+        "color": "#2563eb",
+        "placement": {
+          "gridArea": "right"
+        }
+      },
+      {
+        "name": "tail",
+        "color": "#1793d1",
+        "placement": {
+          "gridColumn": "-2 / -1",
+          "gridRow": "1 / 2"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        188,
+        20
+      ],
+      "items": [
+        {
+          "name": "left",
+          "frame": [
+            0,
+            0,
+            44,
+            20
+          ]
+        },
+        {
+          "name": "hero",
+          "frame": [
+            48,
+            0,
+            68,
+            20
+          ]
+        },
+        {
+          "name": "right",
+          "frame": [
+            120,
+            0,
+            20,
+            20
+          ]
+        },
+        {
+          "name": "tail",
+          "frame": [
+            158,
+            0,
+            10,
+            20
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          10,
+          6,
+          10,
+          6,
+          20,
+          20,
+          20,
+          20,
+          10,
+          10
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "fixed-auto-area-rows-fill-collision",
+    "oracleId": "rows-fill-collision",
+    "width": "20px",
+    "height": "168px",
+    "columns": "20px",
+    "rows": "repeat(2, [hero-start] 10px 6px [hero-end]) repeat(auto-fill, [hero-start] 20px [hero-end]) repeat(2, 10px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "repeatAxis": "rows",
+    "rootColor": "#22c55e",
+    "areas": "\"left\" \"left\" \"left\" \"left\" \"hero\" \"hero\" \"hero\" \"hero\" \"right\" \"right\"",
+    "items": [
+      {
+        "name": "left",
+        "color": "#30a46c",
+        "placement": {
+          "gridArea": "left"
+        }
+      },
+      {
+        "name": "hero",
+        "color": "#e5484d",
+        "placement": {
+          "gridArea": "hero"
+        }
+      },
+      {
+        "name": "right",
+        "color": "#2563eb",
+        "placement": {
+          "gridArea": "right"
+        }
+      },
+      {
+        "name": "probe",
+        "color": "#f59e0b",
+        "placement": {
+          "gridColumn": "1 / 2",
+          "gridRow": "hero-start 3 / hero-end 3"
+        }
+      },
+      {
+        "name": "negative-probe",
+        "color": "#1793d1",
+        "placement": {
+          "gridColumn": "1 / 2",
+          "gridRow": "hero-start -1 / hero-end -1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        20,
+        168
+      ],
+      "items": [
+        {
+          "name": "left",
+          "frame": [
+            0,
+            0,
+            20,
+            44
+          ]
+        },
+        {
+          "name": "hero",
+          "frame": [
+            0,
+            0,
+            20,
+            20
+          ]
+        },
+        {
+          "name": "right",
+          "frame": [
+            0,
+            144,
+            20,
+            24
+          ]
+        },
+        {
+          "name": "probe",
+          "frame": [
+            0,
+            48,
+            20,
+            20
+          ]
+        },
+        {
+          "name": "negative-probe",
+          "frame": [
+            0,
+            120,
+            20,
+            20
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          20
+        ],
+        "rows": [
+          10,
+          6,
+          10,
+          6,
+          20,
+          20,
+          20,
+          20,
+          10,
+          10
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false
+        ],
+        "rows": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "fixed-auto-area-rows-fit-empty",
+    "oracleId": "rows-fit-empty",
+    "width": "20px",
+    "height": "168px",
+    "columns": "20px",
+    "rows": "repeat(2, 10px 6px) repeat(auto-fit, 20px) repeat(2, 10px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "repeatAxis": "rows",
+    "rootColor": "#22c55e",
+    "areas": "\"left\" \"left\" \"left\" \"left\" \"hero\" \"hero\" \"hero\" \"hero\" \"right\" \"right\"",
+    "items": [
+      {
+        "name": "left",
+        "color": "#30a46c",
+        "placement": {
+          "gridArea": "left"
+        }
+      },
+      {
+        "name": "right",
+        "color": "#2563eb",
+        "placement": {
+          "gridArea": "right"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        20,
+        168
+      ],
+      "items": [
+        {
+          "name": "left",
+          "frame": [
+            0,
+            0,
+            20,
+            44
+          ]
+        },
+        {
+          "name": "right",
+          "frame": [
+            0,
+            48,
+            20,
+            24
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          20
+        ],
+        "rows": [
+          10,
+          6,
+          10,
+          6,
+          0,
+          0,
+          0,
+          0,
+          10,
+          10
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false
+        ],
+        "rows": [
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "fixed-auto-area-rows-fit-occupied",
+    "oracleId": "rows-fit-occupied",
+    "width": "20px",
+    "height": "168px",
+    "columns": "20px",
+    "rows": "repeat(2, 10px 6px) repeat(auto-fit, 20px) repeat(2, 10px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "repeatAxis": "rows",
+    "rootColor": "#22c55e",
+    "areas": "\"left\" \"left\" \"left\" \"left\" \"hero\" \"hero\" \"hero\" \"hero\" \"right\" \"right\"",
+    "items": [
+      {
+        "name": "left",
+        "color": "#30a46c",
+        "placement": {
+          "gridArea": "left"
+        }
+      },
+      {
+        "name": "hero",
+        "color": "#e5484d",
+        "placement": {
+          "gridArea": "hero"
+        }
+      },
+      {
+        "name": "right",
+        "color": "#2563eb",
+        "placement": {
+          "gridArea": "right"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        20,
+        168
+      ],
+      "items": [
+        {
+          "name": "left",
+          "frame": [
+            0,
+            0,
+            20,
+            44
+          ]
+        },
+        {
+          "name": "hero",
+          "frame": [
+            0,
+            48,
+            20,
+            92
+          ]
+        },
+        {
+          "name": "right",
+          "frame": [
+            0,
+            144,
+            20,
+            24
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          20
+        ],
+        "rows": [
+          10,
+          6,
+          10,
+          6,
+          20,
+          20,
+          20,
+          20,
+          10,
+          10
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false
+        ],
+        "rows": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "fixed-auto-area-rows-area-larger",
+    "oracleId": "rows-area-larger",
+    "width": "20px",
+    "height": "148px",
+    "columns": "20px",
+    "rows": "repeat(2, 10px 6px) repeat(auto-fill, 20px) repeat(2, 10px)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "repeatAxis": "rows",
+    "rootColor": "#22c55e",
+    "autoRows": "20px",
+    "areas": "\"left\" \"left\" \"left\" \"left\" \"hero\" \"hero\" \"hero\" \"right\" \"right\" \"right\"",
+    "items": [
+      {
+        "name": "left",
+        "color": "#30a46c",
+        "placement": {
+          "gridArea": "left"
+        }
+      },
+      {
+        "name": "hero",
+        "color": "#e5484d",
+        "placement": {
+          "gridArea": "hero"
+        }
+      },
+      {
+        "name": "right",
+        "color": "#2563eb",
+        "placement": {
+          "gridArea": "right"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        20,
+        148
+      ],
+      "items": [
+        {
+          "name": "left",
+          "frame": [
+            0,
+            0,
+            20,
+            44
+          ]
+        },
+        {
+          "name": "hero",
+          "frame": [
+            0,
+            48,
+            20,
+            68
+          ]
+        },
+        {
+          "name": "right",
+          "frame": [
+            0,
+            120,
+            20,
+            48
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          20
+        ],
+        "rows": [
+          10,
+          6,
+          10,
+          6,
+          20,
+          20,
+          20,
+          10,
+          10,
+          20
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false
+        ],
+        "rows": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    }
   }
 ]

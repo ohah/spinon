@@ -1,0 +1,9 @@
+{
+  "featureSet": "c04-runtime-gpu (product)",
+  "artifact": "target/release/libspinon_ffi.a",
+  "sha256": "0099eef36a8bdd7edc216770f0b99d2d4595edd9fbf866c62271d52d5659026f",
+  "sceneMarkersExpected": 9,
+  "sceneMarkersPresent": [],
+  "c11_4FixtureSymbols": 0,
+  "llvmNmExit": 0
+}

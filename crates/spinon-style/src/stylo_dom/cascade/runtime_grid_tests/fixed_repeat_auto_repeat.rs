@@ -544,9 +544,12 @@ fn fixed_repeat_mixed_profile_records_stylo_parser_rejection_of_inflexible_fixed
 
 #[test]
 fn fixed_repeat_mixture_is_limited_to_one_auto_repeat_axis() {
-    let cross_axis_fixture = fixture(&fixture_style(
-        "repeat(2,20px) repeat(auto-fill,minmax(32px,1fr))",
-        "repeat(auto-fit,minmax(32px,1fr))",
+    let cross_axis_fixture = fixture(&format!(
+        "{};grid-template-areas:'left right'",
+        fixture_style(
+            "repeat(2,20px) repeat(auto-fill,minmax(32px,1fr))",
+            "repeat(auto-fit,minmax(32px,1fr))",
+        )
     ));
     assert!(matches!(
         compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
@@ -562,9 +565,9 @@ fn fixed_repeat_mixture_is_limited_to_one_auto_repeat_axis() {
         }) if node == cross_axis_fixture.root
     ));
 
-    let fixed_repeat_on_other_axis = fixture(&fixture_style(
-        "repeat(auto-fill,minmax(32px,1fr))",
-        "repeat(2,20px)",
+    let fixed_repeat_on_other_axis = fixture(&format!(
+        "{};grid-template-areas:'left' 'right'",
+        fixture_style("repeat(auto-fill,minmax(32px,1fr))", "repeat(2,20px)",)
     ));
     assert!(matches!(
         compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
@@ -582,35 +585,306 @@ fn fixed_repeat_mixture_is_limited_to_one_auto_repeat_axis() {
 }
 
 #[test]
-fn fixed_repeat_mixture_rejects_template_areas_without_changing_auto_repeat_area_profile() {
-    let area_fixture = fixture(
-        "display:grid;box-sizing:border-box;width:200px;height:200px;grid-template-columns:repeat(2,20px) repeat(auto-fill,minmax(32px,1fr));grid-template-rows:40px;grid-template-areas:'area';column-gap:8px;row-gap:8px;margin:0;padding:0",
+fn same_axis_fixed_auto_repeat_areas_preserve_tracks_lines_and_rectangles_on_both_axes() {
+    let columns_style = format!(
+        "{};grid-template-areas:'left left left left hero hero hero hero right right'",
+        fixture_style_with_size(
+            "repeat(2,[hero-start] 10px 6px [hero-end]) repeat(auto-fill,[hero-start] 20px [hero-end]) repeat(2,10px)",
+            "20px",
+            "168px",
+            "20px",
+        )
     );
-    assert!(matches!(
-        compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
-            &area_fixture.view,
-            &[],
-            viewport(),
-            Default::default(),
-        ),
-        Err(crate::CssCascadeError::UnsupportedComputedGridValue {
-            node,
-            property: "grid-template-areas",
-            ..
-        }) if node == area_fixture.root
-    ));
+    let (_, columns_grid) = computed_grid(&columns_style);
+    assert_eq!(columns_grid.columns.len(), 7);
+    assert_eq!(columns_grid.columns_line_names.len(), 8);
+    assert_eq!(
+        columns_grid.columns_auto_repeat.as_ref().map(|repeat| {
+            (
+                repeat.mode,
+                repeat.start,
+                repeat.end,
+                repeat.line_names.clone(),
+            )
+        }),
+        Some((
+            ComputedCssGridAutoRepeatMode::AutoFill,
+            4,
+            5,
+            vec![vec!["hero-start".to_owned()], vec!["hero-end".to_owned()]],
+        ))
+    );
+    assert_eq!(columns_grid.rows_auto_repeat, None);
+    assert_eq!(
+        columns_grid.template_areas.as_ref().map(|areas| (
+            areas.rows,
+            areas.columns,
+            areas.areas.len()
+        )),
+        Some((1, 10, 3))
+    );
+    let column_areas = columns_grid.template_areas.as_ref().unwrap();
+    let mut column_rectangles = column_areas
+        .areas
+        .iter()
+        .map(|area| {
+            (
+                area.name.as_str(),
+                area.row_start,
+                area.row_end,
+                area.column_start,
+                area.column_end,
+            )
+        })
+        .collect::<Vec<_>>();
+    column_rectangles.sort_unstable();
+    assert_eq!(
+        column_rectangles,
+        [
+            ("hero", 0, 1, 4, 8),
+            ("left", 0, 1, 0, 4),
+            ("right", 0, 1, 8, 10),
+        ]
+    );
 
-    let existing_auto_repeat_profile = fixture(
-        "display:grid;box-sizing:border-box;width:200px;height:200px;grid-template-columns:repeat(auto-fill,minmax(32px,1fr));grid-template-rows:40px;grid-template-areas:'area';column-gap:8px;row-gap:8px;margin:0;padding:0",
+    let rows_style = format!(
+        "{};grid-template-areas:'left' 'left' 'left' 'left' 'hero' 'hero' 'hero' 'hero' 'right' 'right'",
+        fixture_style_with_size(
+            "20px",
+            "repeat(2,[hero-start] 10px 6px [hero-end]) repeat(auto-fill,[hero-start] 20px [hero-end]) repeat(2,10px)",
+            "20px",
+            "168px",
+        )
     );
-    assert!(
-        compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
-            &existing_auto_repeat_profile.view,
-            &[],
+    let (_, rows_grid) = computed_grid(&rows_style);
+    assert_eq!(rows_grid.rows.len(), 7);
+    assert_eq!(rows_grid.rows_line_names.len(), 8);
+    assert_eq!(
+        rows_grid.rows_auto_repeat.as_ref().map(|repeat| {
+            (
+                repeat.mode,
+                repeat.start,
+                repeat.end,
+                repeat.line_names.clone(),
+            )
+        }),
+        Some((
+            ComputedCssGridAutoRepeatMode::AutoFill,
+            4,
+            5,
+            vec![vec!["hero-start".to_owned()], vec!["hero-end".to_owned()]],
+        ))
+    );
+    assert_eq!(rows_grid.columns_auto_repeat, None);
+    assert_eq!(
+        rows_grid.template_areas.as_ref().map(|areas| (
+            areas.rows,
+            areas.columns,
+            areas.areas.len()
+        )),
+        Some((10, 1, 3))
+    );
+    let row_areas = rows_grid.template_areas.as_ref().unwrap();
+    let mut row_rectangles = row_areas
+        .areas
+        .iter()
+        .map(|area| {
+            (
+                area.name.as_str(),
+                area.row_start,
+                area.row_end,
+                area.column_start,
+                area.column_end,
+            )
+        })
+        .collect::<Vec<_>>();
+    row_rectangles.sort_unstable();
+    assert_eq!(
+        row_rectangles,
+        [
+            ("hero", 4, 8, 0, 1),
+            ("left", 0, 4, 0, 1),
+            ("right", 8, 10, 0, 1),
+        ]
+    );
+
+    let shorter_area_style = format!(
+        "{};grid-template-areas:'left left left left hero hero hero right'",
+        fixture_style_with_size(
+            "repeat(2,[hero-start] 10px 6px [hero-end]) repeat(auto-fill,[hero-start] 20px [hero-end]) repeat(2,10px)",
+            "20px",
+            "188px",
+            "20px",
+        )
+    );
+    let (_, shorter_area_grid) = computed_grid(&shorter_area_style);
+    assert_eq!(shorter_area_grid.columns.len(), 7);
+    assert_eq!(
+        shorter_area_grid.template_areas.as_ref().map(|areas| (
+            areas.rows,
+            areas.columns,
+            areas.areas.len()
+        )),
+        Some((1, 8, 3))
+    );
+}
+
+#[test]
+fn same_axis_fixed_auto_repeat_areas_match_grid_template_and_grid_shorthands() {
+    let columns = "repeat(2,[hero-start] 10px 6px [hero-end]) repeat(auto-fill,[hero-start] 20px [hero-end]) repeat(2,10px)";
+    let area_row = "left left left left hero hero hero hero right right";
+    let longhand_style = format!(
+        "{};grid-template-areas:'{area_row}'",
+        fixture_style_with_size(columns, "20px", "168px", "20px")
+    );
+    let (_, longhand) = computed_grid(&longhand_style);
+
+    for shorthand in ["grid-template", "grid"] {
+        let fixture = fixture(
+            "display:grid;box-sizing:border-box;width:168px;height:20px;margin:0;padding:0;column-gap:8px;row-gap:8px",
+        );
+        let stylesheet = StylesheetSource {
+            id: format!("c114-{shorthand}-areas"),
+            base_url: format!("https://spinon.invalid/c114-{shorthand}-areas.css"),
+            origin: CssOrigin::Author,
+            css: format!(
+                "#root {{{shorthand}:20px / {columns};grid-template-areas:\"{area_row}\";}}"
+            ),
+        };
+        let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+            &fixture.view,
+            &[stylesheet],
             viewport(),
             Default::default(),
         )
-        .is_ok()
+        .unwrap_or_else(|error| panic!("{shorthand} cascade: {error:?}"));
+        let computed = snapshot.elements[0].grid_layout.as_ref().unwrap();
+        assert_eq!(computed.columns.len(), 7, "{shorthand}");
+        assert_eq!(computed.columns, longhand.columns, "{shorthand}");
+        assert_eq!(
+            computed.columns_line_names, longhand.columns_line_names,
+            "{shorthand}"
+        );
+        assert_eq!(
+            computed.columns_auto_repeat, longhand.columns_auto_repeat,
+            "{shorthand}"
+        );
+        assert_eq!(
+            computed.template_areas, longhand.template_areas,
+            "{shorthand}"
+        );
+    }
+}
+
+#[test]
+fn same_node_area_none_area_revisions_do_not_retain_stale_area_metadata() {
+    let mut document = HostDocument::new().unwrap();
+    let root = document.reserve_node_handle().unwrap();
+    let child = document.reserve_node_handle().unwrap();
+    let base_style = "display:grid;box-sizing:border-box;width:168px;height:20px;grid-template-columns:repeat(2,[area-start] 10px [area-end]) repeat(auto-fill,[area-start] 20px [area-end]) repeat(2,10px);grid-template-rows:20px;column-gap:8px;row-gap:8px;margin:0;padding:0";
+    let with_area = format!("{base_style};grid-template-areas:'area area area area'");
+    let mut batch =
+        DocumentChangeBatch::new(OwnerId::new(6_802).unwrap(), document.document_revision());
+    for (node, name, parent, style) in [
+        (root, "root", HostParent::Root, with_area.as_str()),
+        (
+            child,
+            "child",
+            HostParent::Node(root),
+            "display:block;width:10px;height:10px;margin:0;padding:0",
+        ),
+    ] {
+        batch.push(DocumentOperation::CreateElement {
+            node,
+            namespace: HTML.to_owned(),
+            local_name: "div".to_owned(),
+        });
+        batch.push(DocumentOperation::SetAttribute {
+            node,
+            name: AttributeName::new(None, "id").unwrap(),
+            value: name.to_owned().into(),
+        });
+        batch.push(DocumentOperation::SetAttribute {
+            node,
+            name: AttributeName::new(None, "style").unwrap(),
+            value: style.to_owned().into(),
+        });
+        batch.push(DocumentOperation::InsertBefore {
+            parent,
+            node,
+            before: None,
+        });
+    }
+    document.commit(batch).unwrap();
+
+    let snapshot_for_style = |document: &HostDocument, style_revision| {
+        let view =
+            StyloDocumentView::new_html_fragment_child_shared(Arc::new(document.snapshot()), root)
+                .unwrap();
+        compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+            &view,
+            &[],
+            viewport(),
+            style_revision,
+        )
+        .unwrap()
+    };
+    let initial = snapshot_for_style(&document, StyleRevision::INITIAL);
+    let initial_grid = initial
+        .elements
+        .iter()
+        .find(|element| element.node_id == root.id())
+        .and_then(|element| element.grid_layout.clone())
+        .unwrap();
+    assert_eq!(initial_grid.template_areas.as_ref().unwrap().columns, 4);
+
+    let without_area = format!("{base_style};grid-template-areas:none");
+    let mut update =
+        DocumentChangeBatch::new(OwnerId::new(6_802).unwrap(), document.document_revision());
+    update.push(DocumentOperation::SetAttribute {
+        node: root,
+        name: AttributeName::new(None, "style").unwrap(),
+        value: without_area.into(),
+    });
+    document.commit(update).unwrap();
+    let without_area_revision = StyleRevision::INITIAL.checked_next().unwrap();
+    let cleared = snapshot_for_style(&document, without_area_revision);
+    let cleared_grid = cleared
+        .elements
+        .iter()
+        .find(|element| element.node_id == root.id())
+        .and_then(|element| element.grid_layout.as_ref())
+        .unwrap();
+    assert_eq!(cleared_grid.template_areas, None);
+    assert_eq!(
+        cleared_grid.columns_line_names,
+        initial_grid.columns_line_names
+    );
+
+    let mut update =
+        DocumentChangeBatch::new(OwnerId::new(6_802).unwrap(), document.document_revision());
+    update.push(DocumentOperation::SetAttribute {
+        node: root,
+        name: AttributeName::new(None, "style").unwrap(),
+        value: with_area.into(),
+    });
+    document.commit(update).unwrap();
+    let restored_revision = without_area_revision.checked_next().unwrap();
+    let restored = snapshot_for_style(&document, restored_revision);
+    let restored_grid = restored
+        .elements
+        .iter()
+        .find(|element| element.node_id == root.id())
+        .and_then(|element| element.grid_layout.as_ref())
+        .unwrap();
+    assert_eq!(restored_grid.template_areas, initial_grid.template_areas);
+    assert_eq!(
+        restored_grid.columns_line_names,
+        initial_grid.columns_line_names
+    );
+    assert_eq!(
+        restored_grid.columns_auto_repeat,
+        initial_grid.columns_auto_repeat
     );
 }
 

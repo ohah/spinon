@@ -4,6 +4,8 @@
 
 이 근거는 CSS Grid fixed-repeat, 같은 track list의 auto-repeat, `grid-template-areas`의 implicit line alias를 함께 쓰는 C11.4 제한 profile의 사전 기준이다. 구현 출력에서 기대값을 만들지 않았다. 고정된 CSS Grid 2025 CRD 규칙으로 반복 수, explicit track 수, named-line occurrence와 item frame을 먼저 계산했고 Chrome 156은 교차 관찰값으로 기록했다.
 
+`grid-template`/`grid`의 valid track-list shorthand와 `grid-template-areas` longhand 조합은 지원 slice에 포함한다. Area 문자열을 shorthand 안에 직접 두는 syntax의 track listing에는 `repeat()`을 사용할 수 없으므로 이 fixed/auto-repeat combination의 지원 요구로 해석하지 않는다 ([CSS Grid §7.4](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#explicit-grid-shorthand-the-grid-template-property)).
+
 고정 입력은 [fixture](../../../../tests/fixtures/css/c11/grid-fixed-auto-repeat-template-areas-c114.html)이며 브라우저 관찰 JSON, 독립 기대값, 실행 환경과 PNG 화면을 이 디렉터리에 보존한다.
 
 ## 독립 기대값
@@ -35,7 +37,7 @@ Collision 장면은 prefix fixed-repeat의 authored `hero-start`/`hero-end`, aut
 
 Chrome for Testing `156.0.8078.48` / Agent Browser `0.31.1`, macOS ARM64, viewport `1280×633` CSS px, DPR 1, `ltr`, `horizontal-tb`에서 아홉 scene을 관찰했다. 모든 CSSOM used-track list와 30개 child frame이 independent expectation과 `1/64 CSS px` 이내로 일치했다. `validate-precomparison.mjs`는 반복 수 산식, area/template track 수, 사용 track list, expanded named-line occurrence와 area alias 위치를 각각 검사한다.
 
-`chrome156-fixed-auto-repeat-areas.png`는 Chrome 장면 화면이다. columns/rows의 `area-larger` scene에서 파란 item이 root 바깥으로 20px 나오는 경계를 볼 수 있다. 이 PNG는 Chrome oracle 화면이며 Spinon app, simulator, WPT 결과가 아니다. 픽셀 표본이나 border stroke도 주장하지 않는다.
+2026-10-25에 canonical HTML의 root와 item 색상을 앱 fixture 팔레트에 맞춘 뒤 Agent Browser에서 화면을 다시 캡처했다. 색만 달라졌으므로 기존 Chrome CSSOM/geometry observation JSON과 독립 layout 기대값은 그대로 유효하다. `chrome156-fixed-auto-repeat-areas.png`는 현재 HTML palette를 반영한 Chrome 장면 화면이다. columns/rows의 `area-larger` scene에서 파란 item이 root 바깥으로 20px 나오는 경계를 볼 수 있다. 이 PNG는 Chrome oracle 화면이며 Spinon app, simulator, WPT 결과가 아니다. 픽셀 표본이나 border stroke도 주장하지 않는다.
 
 Taffy 대조는 저장소 고정 vendor `0.15.0`의 [`NamedLineResolver::new`](../../../../vendor/taffy/src/compute/grid/types/named.rs)와 `area_edges_are_merged_with_explicitly_named_lines` test다. Grid sizing의 explicit count는 [`max(expanded template, area dimension)`](../../../../vendor/taffy/src/compute/grid/mod.rs)으로 결정한다. 이 코드 참조는 비교 모델 작성에만 쓰이며 변경하지 않았다.
 
