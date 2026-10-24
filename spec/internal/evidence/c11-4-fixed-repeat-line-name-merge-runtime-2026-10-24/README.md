@@ -38,5 +38,5 @@
 ## Review and remaining gates
 
 - [20 implementation failure perspectives](implementation-review-20.md) found no blocking source defect within this slice.
-- A separate 30-perspective review of the final PR diff, GitHub CI/check state, merge, and post-merge main verification remain required.
+- [The separate 30-perspective PR diff review](pr-diff-review-30.md) found no blocking diff issue. GitHub CI/check state is still empty; merge and post-merge main verification remain.
 - Plan and official status remain limited: C11.3.3 template-areas follow-up and broad C11.4 track-sizing scope are open; C11 and official `72/213` remain unchanged.
