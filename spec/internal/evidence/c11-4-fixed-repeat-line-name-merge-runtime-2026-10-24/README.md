@@ -1,4 +1,4 @@
-# C11.4 fixed-repeat named-line merge · 구현 후보 실행 근거
+# C11.4 fixed-repeat named-line merge · 구현·병합 실행 근거
 
 ## 범위
 
@@ -35,8 +35,8 @@
 - The verbose Xcode build transcript is preserved as `ios-build.log.gz`; Xcode's generated transcript contains whitespace-only lines and is compressed in the evidence bundle.
 - Both runs bind to source commit `626dd9e1f220b41c9e878257a4a5c74e833bd7b6`, tree `35f9bdbb13f2eff7f65be7167ad87a83db950540`, and implementation diff SHA-256 `49bffb910fe7db6ae5447511d7d9eb815dd0b46ab5878bda29e454ea0ef9e378`.
 
-## Review and remaining gates
+## 병합·남은 검증 범위
 
-- [20 implementation failure perspectives](implementation-review-20.md) found no blocking source defect within this slice.
-- [The separate 30-perspective PR diff review](pr-diff-review-30.md) found no blocking diff issue. GitHub CI/check state is still empty; merge and post-merge main verification remain.
-- Plan and official status remain limited: C11.3.3 template-areas follow-up and broad C11.4 track-sizing scope are open; C11 and official `72/213` remain unchanged.
+- [구현 실패 관점 20개](implementation-review-20.md)와 [별도 PR diff 실패 관점 30개](pr-diff-review-30.md)를 검토해 이 제한 slice에서 차단 결함을 찾지 못했다.
+- PR [#600](https://github.com/ohah/spinon/pull/600)은 2026-10-24T13:12:01Z Rebase and merge됐고 merge SHA는 `d1d6c3c20b7a27d6af84e982df507193799a7f7d`다. 병합 당시 check rollup은 비어 있었고 required status checks가 없어 CI 통과로 표시하지 않는다. 병합 후 main focused tests style 16/16, layout 4/4, FFI scene 1/1, fixture boundary 11/11과 workspace Clippy는 통과했다.
+- [병합 후 상태·로드맵 문서 검토 30개](post-merge-roadmap-status-review-30.md)를 통해 PR 상태를 바로잡았고, C11.3.3 template-areas 후속과 넓은 C11.4 track-sizing 범위는 계속 열려 있다. C11과 공식 `72/213`은 변경하지 않는다. AVD 결과는 실기기/hardware GPU를 뜻하지 않고 iOS Metal 표본은 compositor 제출 전이다.
